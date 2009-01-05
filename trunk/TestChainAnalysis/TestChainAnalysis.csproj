@@ -61,7 +61,16 @@
     <Compile Include="Classes\AuxiliaryClasses\WebServices\Additional\Threads\TestThread.cs" />
     <Compile Include="Classes\AuxiliaryClasses\WebServices\Additional\Types\TestActionType.cs" />
     <Compile Include="Classes\AuxiliaryClasses\WebServices\Additional\Types\TestTypeBase.cs" />
+    <Compile Include="Classes\AuxiliaryClasses\WebServices\db_interface\AnswerChains.cs" />
+    <Compile Include="Classes\AuxiliaryClasses\WebServices\db_interface\DBAlphabet.cs" />
+    <Compile Include="Classes\AuxiliaryClasses\WebServices\db_interface\DBBuilding.cs" />
     <Compile Include="Classes\AuxiliaryClasses\WebServices\db_interface\DBCalculate.cs" />
+    <Compile Include="Classes\AuxiliaryClasses\WebServices\db_interface\DBChain.cs" />
+    <Compile Include="Classes\AuxiliaryClasses\WebServices\db_interface\DBChainMessage.cs" />
+    <Compile Include="Classes\AuxiliaryClasses\WebServices\db_interface\DBCharacteristic.cs" />
+    <Compile Include="Classes\AuxiliaryClasses\WebServices\db_interface\DBFrequencyList.cs" />
+    <Compile Include="Classes\AuxiliaryClasses\WebServices\db_interface\DBMessage.cs" />
+    <Compile Include="Classes\AuxiliaryClasses\WebServices\db_interface\DBUniformChain.cs" />
     <Compile Include="Classes\AuxiliaryClasses\WebServices\db_interface\TestCalculation.cs" />
     <Compile Include="Classes\AuxiliaryClasses\WebServices\TestAlphabetService.cs" />
     <Compile Include="Classes\AuxiliaryClasses\WebServices\TestCalculationService.cs" />

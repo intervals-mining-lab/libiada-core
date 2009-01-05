@@ -10,9 +10,10 @@ namespace ChainAnalises.Classes.AuxiliaryClasses.DataManipulators.SpaceRebuilder
 {
     ///<summary>
     ///</summary>
-    public class SpaceRebuilderFromChainToChainByBlock<ChainTo, ChainFrom> : SpaceRebuilder<ChainTo, ChainFrom>
+    public class SpaceRebuilderFromChainToChainByBlock<ChainTo, ChainFrom, ChainItem> : SpaceRebuilder<ChainTo, ChainFrom>
         where ChainTo : BaseChain, new()
         where ChainFrom : BaseChain, new()
+        where ChainItem: BaseChain, new()
     {
         private readonly LinkUp Link;
         private readonly int blocksize;
@@ -35,17 +36,17 @@ namespace ChainAnalises.Classes.AuxiliaryClasses.DataManipulators.SpaceRebuilder
 
             ChainTo temp = new ChainTo();
             temp.ClearAndSetNewLength(A.Length / blocksize);
-            IteratorBase<ChainTo, ChainFrom> From;
+            IteratorBase<ChainItem, ChainFrom> From;
             IWritableIterator<ChainTo, ChainTo> To;
 
             if (Link != LinkUp.End)
             {
-                From = new IteratorStart<ChainTo, ChainFrom>(A, blocksize, blocksize);
+                From = new IteratorStart<ChainItem, ChainFrom>(A, blocksize, blocksize);
                 To = new IteratorWritableStart<ChainTo, ChainTo>(temp);
             }
             else
             {
-                From = new IteratorEnd<ChainTo, ChainFrom>(A, blocksize, blocksize);
+                From = new IteratorEnd<ChainItem, ChainFrom>(A, blocksize, blocksize);
                 To = new IteratorWritableEnd<ChainTo, ChainTo>(temp);
             }
 

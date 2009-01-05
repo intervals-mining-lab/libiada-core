@@ -110,6 +110,7 @@
     <Compile Include="Classes\DivizionToAccords\SimpleFilter.cs" />
     <Compile Include="Classes\DivizionToAccords\StdCalculator.cs" />
     <Compile Include="Classes\DivizionToAccords\ProbabilityCountStrateges\Strategy.cs" />
+    <Compile Include="Classes\IntervalAnalysis\ChainMessage.cs" />
     <Compile Include="Classes\IntervalAnalysis\Characteristics\Calculators\AlphabetPower.cs" />
     <Compile Include="Classes\IntervalAnalysis\Characteristics\Calculators\CutLength.cs" />
     <Compile Include="Classes\IntervalAnalysis\Characteristics\Calculators\CutLengthVocabularyEntropy.cs" />

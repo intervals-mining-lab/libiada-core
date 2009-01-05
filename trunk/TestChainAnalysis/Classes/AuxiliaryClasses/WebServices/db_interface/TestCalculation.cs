@@ -1,45 +1,44 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.IO;
+using System.Text;
 using System.Xml.Serialization;
-using ChainAnalises;
 using ChainAnalises.Classes;
 using ChainAnalises.Classes.AuxiliaryClasses.DataManipulators;
 using ChainAnalises.Classes.AuxiliaryClasses.DataManipulators.ElementStreamCreators;
 using ChainAnalises.Classes.AuxiliaryClasses.DataManipulators.SpaceRebuilders;
 using ChainAnalises.Classes.AuxiliaryClasses.DBInterface;
+using ChainAnalises.Classes.AuxiliaryClasses.WebServices.Additional;
 using ChainAnalises.Classes.AuxiliaryClasses.WebServices.Additional.Types;
 using ChainAnalises.Classes.AuxiliaryClasses.WebServices.Answers;
-using ChainAnalises.Classes.AuxiliaryClasses.WebServices.CreateAlphabet;
-using ChainAnalises.Classes.AuxiliaryClasses.WebServices.Requests;
-using ChainAnalises.Classes.DivizionToAccords.Criteria;
 using ChainAnalises.Classes.IntervalAnalysis;
 using ChainAnalises.Classes.IntervalAnalysis.Characteristics;
-using ChainAnalises.Classes.IntervalAnalysis.Characteristics.Calculators;
-using ChainAnalises.Classes.PhantomChains;
+using ChainAnalises.Classes.Root;
+using ChainAnalises.Classes.Root.SimpleTypes;
+using ChainAnalises.Classes.Statistics;
+using ChainAnalises.Classes.TheoryOfSet;
 using NHibernate;
-using NHibernate.Cfg;
 using NUnit.Framework;
-using File = ChainAnalises.Classes.AuxiliaryClasses.WebServices.Additional.File;
 
 namespace TestChainAnalysis.Classes.AuxiliaryClasses.WebServices.db_interface
 {
     [TestFixture]
     public class TestCalculation
     {
-        private DBCalculate db_calculate;
+        #region Setup/Teardown
 
         [SetUp]
         public void init()
         {
             db_calculate = new DBCalculate();
-            db_calculate.nids.Add(13);
-/*           db_calculate.nids.Add(11);
-           db_calculate.nids.Add(12);
-*/
+            db_calculate.nids.Add(7);
             db_calculate.length = 1;
             db_calculate.uid = 11;
         }
+
+        #endregion
+
+        private DBCalculate db_calculate;
 
         [Test]
         public void TestCalucation()
@@ -73,13 +72,14 @@ namespace TestChainAnalysis.Classes.AuxiliaryClasses.WebServices.db_interface
                 OVB.LoadElements(ElStream);
 
 
-                SpaceRebuilder<Chain, Chain> RebuildMethod = new SpaceRebuilderFromChainToChainByBlock<Chain, Chain>(action);
+                SpaceRebuilder<Chain, Chain> RebuildMethod =
+                    new SpaceRebuilderFromChainToChainByBlock<Chain, Chain, ChainMessage>(action);
 
                 OVB.RebuildSpace(RebuildMethod);
 
                 OVB.Calculate();
 
-                ChainBin Temp = (ChainBin)OVB.Chain.GetBin();
+                ChainBin Temp = (ChainBin) OVB.Chain.GetBin();
 
                 DBChain db_chain = DBMapping.Convert(Temp);
 
@@ -94,46 +94,35 @@ namespace TestChainAnalysis.Classes.AuxiliaryClasses.WebServices.db_interface
         }
 
         [Test]
-        public void TestDBFileType()
-        {
-            DBConfig DBConf = DBConfig.GetInstance();
-            ISession session = DBConf.CreateSession();
-            ITransaction tx = session.BeginTransaction();
-            DBFileType file = (DBFileType) session.Load(typeof (DBFileType), 10);
-            tx.Rollback();
-            session.Close();
-            Assert.AreEqual("txt", file.name);
-            Assert.AreEqual("text", file.mime);
-            Assert.AreEqual(1, file.size);
-            
-        }
-
-        [Test]
         public void TestDBFile()
         {
             DBConfig DBConf = DBConfig.GetInstance();
             ISession session = DBConf.CreateSession();
             ITransaction tx = session.BeginTransaction();
-            DBFile file = (DBFile)session.Load(typeof(DBFile), 13);
+            DBFile file = (DBFile) session.Load(typeof (DBFile), 7);
             tx.Rollback();
             session.Close();
-            Assert.AreEqual("test content of file.", file.value);
+            Assert.AreEqual("This is our test file", file.value);
             Assert.AreEqual("text", file.field_type.mime);
             Assert.AreEqual("txt", file.field_type.name);
             Assert.AreEqual(1, file.field_type.size);
+        }
 
+        [Test]
+        public void TestDBFileType()
+        {
+            DBConfig DBConf = DBConfig.GetInstance();
+            ISession session = DBConf.CreateSession();
+            ITransaction tx = session.BeginTransaction();
+            DBFileType file = (DBFileType) session.Load(typeof (DBFileType), 4);
+            tx.Rollback();
+            session.Close();
+            Assert.AreEqual("txt", file.name);
+            Assert.AreEqual("text", file.mime);
+            Assert.AreEqual(1, file.size);
         }
     }
 
-    public class DBChain:Node
-    {
-    }
-
-    public class AnswerChains:Answer
-    {
-        [XmlArrayItem(typeof(int))]
-        public ArrayList chains = new ArrayList();
-    }
     public static class DBMapping
     {
         public static File Convert(DBFile dbfile)
@@ -147,15 +136,104 @@ namespace TestChainAnalysis.Classes.AuxiliaryClasses.WebServices.db_interface
         private static FileType Convert(DBFileType field_type)
         {
             FileType temp = new FileType();
-            temp.Size= field_type.size;
-            temp.Name= field_type.name;
-            temp.MIME= field_type.mime;
+            temp.Size = field_type.size;
+            temp.Name = field_type.name;
+            temp.MIME = field_type.mime;
             return temp;
         }
 
-        public static DBChain Convert(ChainBin temp)
+        public static DBChain Convert(ChainBin input)
         {
-            throw new System.NotImplementedException();
+            DBChain temp = new DBChain();
+            temp.alphabet = Convert(input.Alphabet);
+            temp.building = Convert(input.Building);
+
+            temp.characteristics = new ArrayList();
+
+            foreach (CharacteristicBin charact in input.Characteristics)
+            {
+                temp.characteristics.Add(Convert(charact));
+            }
+
+            temp.common_intervals = Convert(input.CommonIntervals);
+            temp.start_intervals = Convert(input.StartIntervals);
+            temp.end_intervals = Convert(input.EndInterval);
+
+            temp.uniformchains = new ArrayList();
+
+            foreach (UniformChainBin uniformchain in input.Characteristics)
+            {
+                temp.uniformchains.Add(Convert(uniformchain));
+            }
+
+            temp.length = input.Building.Length;
+
+            return temp;
+        }
+
+
+        private static DBAlphabet Convert(AlphabetBin alphabet)
+        {
+            DBAlphabet temp = new DBAlphabet();
+            temp.elements = new Dictionary<int, DBChainMessage>();
+            int pos = 0;
+            foreach (ChainMessageBin item in alphabet.Items)
+            {
+                temp.elements.Add(pos, Convert(item));
+            }
+            return temp;
+        }
+
+        private static DBChainMessage Convert(ChainMessageBin item)
+        {
+            DBChainMessage temp = new DBChainMessage();
+            temp.elements = new Dictionary<int, DBMessage>();
+            int pos = 0;
+            foreach (ValueStringBin value in item.values)
+            {
+                temp.elements.Add(pos, Convert(value));
+            }
+            return temp;
+        }
+
+        private static DBMessage Convert(ValueStringBin value)
+        {
+            DBMessage temp = new DBMessage();
+            temp.value = value.value;
+            return temp;
+        }
+
+        private static DBBuilding Convert(long[] building)
+        {
+            DBBuilding temp = new DBBuilding();
+            temp.length = building.Length;
+
+            string[] building_as_string = new string[building.Length];
+            long pos = 0;
+            foreach (long num in building)
+            {
+                building_as_string.SetValue(num, pos);
+                pos++;
+            }
+            temp.value = string.Join("|", building_as_string);
+            return temp;
+        }
+
+        private static DBCharacteristic Convert(CharacteristicBin charact)
+        {
+            DBCharacteristic temp = new DBCharacteristic();
+            // TODO: Add characterisitc refleactions
+            return temp;
+        }
+
+        private static DBFrequencyList Convert(FrequencyListBin intervals)
+        {
+            throw new NotImplementedException();
+        }
+
+        private static DBUniformChain Convert(UniformChainBin uniformchain)
+        {
+            throw new NotImplementedException();
         }
     }
 }
