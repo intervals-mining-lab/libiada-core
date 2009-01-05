@@ -4,9 +4,9 @@ using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using System.Threading;
-using ChainAnalises.Classes.AuxiliaryClasses.WebServices;
 using ChainAnalises.Classes.AuxiliaryClasses.WebServices.Additional.Threads;
 using ChainAnalises.Classes.AuxiliaryClasses.WebServices.Additional.Types;
+using ChainAnalises.Classes.AuxiliaryClasses.WebServices.Calculate;
 using ChainAnalises.Classes.AuxiliaryClasses.WebServices.CreateAlphabet;
 using NUnit.Framework;
 

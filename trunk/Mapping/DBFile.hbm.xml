@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2">
+  <class name="LearningTests.Dummy, LearningTests" table="node">
+    <id name="nid">
+      <column name="nid" sql-type="int(10)" not-null="true"/>
+      <generator class="native" />
+    </id>
+
+    <property name="type" column="type"/>
+    <property name="title" column="title"/>
+    <property name="uid" column="uid"/>
+    <property name="status" column="status"/>
+    <property name="language" column="language"/>
+    <property name="comment" column="comment"/>
+    <property name="moderate" column="moderate"/>
+    <property name="use_trigger" column="use_trigger"/>
+    
+    <join table="content_type_element" >
+      <key>
+        <column name = "nid"/>
+      </key>      
+      <property name="Value" type="string" column="field_value_value"/>      
+    </join>
+
+    <join table="content_field_hash_md5" >
+      <key>
+        <column name = "nid"/>
+      </key>
+      <property name="Md5" type="string" column=" field_hash_md5_value"/>
+    </join>
+
+  </class>  
+</hibernate-mapping>

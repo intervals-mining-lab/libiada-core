@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2">
+  <class name="ChainAnalises.Classes.AuxiliaryClasses.DBInterface.DBFileType, ChainAnalises" table="node" lazy="false">
+    <id name="nid">
+      <column name="nid" sql-type="int(10)" not-null="true"/>
+      <generator class="native" />
+    </id>
+
+    <property name="type" column="type"/>
+    <property name="title" column="title"/>
+    <property name="uid" column="uid"/>
+    <property name="status" column="status"/>
+    <property name="language" column="language"/>
+    <property name="comment" column="comment"/>
+    <property name="moderate" column="moderate"/>
+    <property name="use_trigger" column="use_trigger"/>
+    
+    
+    
+    <join table="content_type_file_type" >
+      <key>
+        <column name = "nid"/>
+      </key>      
+      <property name="mime" type="string" column="field_mime_value"/>
+      <property name="size" type="int" column="field_size_value"/>
+      <property name="name" type="string" column="field_name_value"/>
+    </join>
+  </class>  
+</hibernate-mapping>

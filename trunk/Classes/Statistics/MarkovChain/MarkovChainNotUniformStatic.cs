@@ -40,11 +40,11 @@ namespace ChainAnalises.Classes.Statistics.MarkovChain
             }
             else
             {
-                IRead = new NullIteratorStart<ChainGenerated, ChainGenerated>(Temp, 1);
+              //TODO: FIX MISSING OF FILE  IRead = new NullIteratorStart<ChainGenerated, ChainGenerated>(Temp, 1);
             }
             IteratorWritableStart<ChainGenerated, ChainGenerated> IWrite = new IteratorWritableStart<ChainGenerated, ChainGenerated>(Temp);
-            IRead.Reset();
-            IRead.Next();
+           // IRead.Reset();
+           // IRead.Next();
             IWrite.Reset();
             pGenerator.Resert();
 
@@ -59,17 +59,17 @@ namespace ChainAnalises.Classes.Statistics.MarkovChain
 
                 if (j >= rang)
                 {
-                    IRead.Next();
+                   // IRead.Next();
                 }
 
-                ChainGenerated chain = IRead.Current();
-                int[] indexedChain = new int[chain.Length];
-                for (int k = 0; k < chain.Length; k++)
+               // ChainGenerated chain = IRead.Current();
+               // int[] indexedChain = new int[chain.Length];
+               // for (int k = 0; k < chain.Length; k++)
                 {
-                    indexedChain[k] = alphabet.IndexOf(chain[k]);
+               //     indexedChain[k] = alphabet.IndexOf(chain[k]);
                 }
 
-                IWrite.SetCurrent(GetObject(ProbabilityMatrix[m-1].GetProbabilityVector(alphabet, indexedChain)));
+               // IWrite.SetCurrent(GetObject(ProbabilityMatrix[m-1].GetProbabilityVector(alphabet, indexedChain)));
             }
             return Temp;
         }

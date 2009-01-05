@@ -6,6 +6,7 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Threading;
 using ChainAnalises.Classes.AuxiliaryClasses.WebServices.Additional.Types;
+using ChainAnalises.Classes.AuxiliaryClasses.WebServices.Calculate;
 using ChainAnalises.Classes.AuxiliaryClasses.WebServices.Clusterization;
 using ChainAnalises.Classes.AuxiliaryClasses.WebServices.CreateAlphabet;
 using ChainAnalises.Classes.AuxiliaryClasses.WebServices.GenerateMarkovChains;
@@ -106,8 +107,9 @@ namespace ChainAnalises.Classes.AuxiliaryClasses.WebServices.Additional.Threads
                 {
                     obj = ThreadPool[hashvalue];
                 }
+                // TODO: REFACTORING FACTORY 
                 if (obj == null)
-                {
+                { 
                     switch (type)
                     {
                         case WebServiceType.Alphabet:

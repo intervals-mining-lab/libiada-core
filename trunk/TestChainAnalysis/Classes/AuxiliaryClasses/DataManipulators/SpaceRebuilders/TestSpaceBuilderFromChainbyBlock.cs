@@ -20,7 +20,7 @@ namespace TestChainAnalysis.Classes.AuxiliaryClasses.DataManipulators.SpaceRebui
         private Chain Empty = null;
 //        private Event NotChain = null;
         private ActionType Act = null;
-        private SpaceRebuilderFromChainToChainByBlock<Chain, Chain> Builder = null;
+        private SpaceRebuilderFromChainToChainByBlockPM<Chain, Chain> Builder = null;
 
 
         ///<summary>
@@ -117,7 +117,7 @@ namespace TestChainAnalysis.Classes.AuxiliaryClasses.DataManipulators.SpaceRebui
             Act.BlockSize = 2;
             Act.LinkUp = LinkUp.Start;
 
-            Builder = new SpaceRebuilderFromChainToChainByBlock<Chain, Chain>(Act);
+            Builder = new SpaceRebuilderFromChainToChainByBlockPM<Chain, Chain>(Act);
 
             Builder.Rebuild(null);
         }
@@ -150,7 +150,7 @@ namespace TestChainAnalysis.Classes.AuxiliaryClasses.DataManipulators.SpaceRebui
             Act.BlockSize = 2;
             Act.LinkUp = LinkUp.Start;
 
-            Builder = new SpaceRebuilderFromChainToChainByBlock<Chain, Chain>(Act);
+            Builder = new SpaceRebuilderFromChainToChainByBlockPM<Chain, Chain>(Act);
 
             From = Builder.Rebuild(From);
             Chain El = new Chain(2);
@@ -215,7 +215,7 @@ namespace TestChainAnalysis.Classes.AuxiliaryClasses.DataManipulators.SpaceRebui
             Act.BlockSize = 2;
             Act.LinkUp = LinkUp.End;
 
-            Builder = new SpaceRebuilderFromChainToChainByBlock<Chain, Chain>(Act);
+            Builder = new SpaceRebuilderFromChainToChainByBlockPM<Chain, Chain>(Act);
 
             From = Builder.Rebuild(From);
             Chain El = new Chain(2);
@@ -281,7 +281,7 @@ namespace TestChainAnalysis.Classes.AuxiliaryClasses.DataManipulators.SpaceRebui
             Act.BlockSize = 2;
             Act.LinkUp = LinkUp.Start;
 
-            Builder = new SpaceRebuilderFromChainToChainByBlock<Chain, Chain>(Act);
+            Builder = new SpaceRebuilderFromChainToChainByBlockPM<Chain, Chain>(Act);
 
             NotDivCorrect = Builder.Rebuild(NotDivCorrect);
             Chain El = new Chain(2);
@@ -338,7 +338,7 @@ namespace TestChainAnalysis.Classes.AuxiliaryClasses.DataManipulators.SpaceRebui
             Act.BlockSize = 2;
             Act.LinkUp = LinkUp.End;
 
-            Builder = new SpaceRebuilderFromChainToChainByBlock<Chain, Chain>(Act);
+            Builder = new SpaceRebuilderFromChainToChainByBlockPM<Chain, Chain>(Act);
 
             NotDivCorrect = Builder.Rebuild(NotDivCorrect);
             Chain El = new Chain(2);
@@ -394,7 +394,7 @@ namespace TestChainAnalysis.Classes.AuxiliaryClasses.DataManipulators.SpaceRebui
             Act.BlockSize = 2;
             Act.LinkUp = LinkUp.End;
 
-            Builder = new SpaceRebuilderFromChainToChainByBlock<Chain, Chain>(Act);
+            Builder = new SpaceRebuilderFromChainToChainByBlockPM<Chain, Chain>(Act);
 
             Empty = Builder.Rebuild(Empty);
 

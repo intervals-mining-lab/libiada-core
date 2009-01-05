@@ -1,5 +1,6 @@
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
+using ChainAnalises.Classes.AuxiliaryClasses.WebServices.Calculate;
 using ChainAnalises.Classes.AuxiliaryClasses.WebServices.CreateAlphabet;
 
 namespace ChainAnalises.Classes.AuxiliaryClasses.WebServices.Additional.Threads

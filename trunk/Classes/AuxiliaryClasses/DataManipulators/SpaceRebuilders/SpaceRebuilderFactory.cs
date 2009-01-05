@@ -18,9 +18,9 @@ namespace ChainAnalises.Classes.AuxiliaryClasses.DataManipulators.SpaceRebuilder
             switch (Method.GetHashCode())
             {
                 case -1667684723:
-                    return new SpaceRebuilderFromChainToChainByBlock<ChainTo, ChainFrom>(Method);
+                    return new SpaceRebuilderFromChainToChainByBlockPM<ChainTo, ChainFrom>(Method);
                 case -772858697:
-                    return new SpaceRebuilderFromChainToChainByBlock<ChainTo, ChainFrom>(Method);
+                    return new SpaceRebuilderFromChainToChainByBlockPM<ChainTo, ChainFrom>(Method);
                 default:
                     throw new Exception("Неизвестный метод");
             }

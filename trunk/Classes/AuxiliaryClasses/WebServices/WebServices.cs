@@ -4,6 +4,7 @@ using ChainAnalises.Classes.AuxiliaryClasses.DataManipulators;
 using ChainAnalises.Classes.AuxiliaryClasses.DataManipulators.ElementStreamCreators;
 using ChainAnalises.Classes.AuxiliaryClasses.DataManipulators.SpaceRebuilders;
 using ChainAnalises.Classes.AuxiliaryClasses.WebServices.Additional.Types;
+using ChainAnalises.Classes.AuxiliaryClasses.WebServices.Calculate;
 using ChainAnalises.Classes.AuxiliaryClasses.WebServices.Clusterization;
 using ChainAnalises.Classes.AuxiliaryClasses.WebServices.CreateAlphabet;
 using ChainAnalises.Classes.AuxiliaryClasses.WebServices.GenerateMarkovChains;

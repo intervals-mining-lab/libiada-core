@@ -10,8 +10,9 @@ namespace ChainAnalises.Classes.AuxiliaryClasses.DataManipulators.SpaceRebuilder
 {
     ///<summary>
     ///</summary>
-    public class SpaceRebuilderFromChainToChainByBlock<ChainTo ,ChainFrom> : SpaceRebuilder<ChainTo, ChainFrom>
-        where ChainTo : BaseChain, new() where ChainFrom : BaseChain, new()
+    public class SpaceRebuilderFromChainToChainByBlock<ChainTo, ChainFrom> : SpaceRebuilder<ChainTo, ChainFrom>
+        where ChainTo : BaseChain, new()
+        where ChainFrom : BaseChain, new()
     {
         private readonly LinkUp Link;
         private readonly int blocksize;
@@ -31,6 +32,7 @@ namespace ChainAnalises.Classes.AuxiliaryClasses.DataManipulators.SpaceRebuilder
             {
                 throw new Exception();
             }
+
             ChainTo temp = new ChainTo();
             temp.ClearAndSetNewLength(A.Length / blocksize);
             IteratorBase<ChainTo, ChainFrom> From;
@@ -47,14 +49,9 @@ namespace ChainAnalises.Classes.AuxiliaryClasses.DataManipulators.SpaceRebuilder
                 To = new IteratorWritableEnd<ChainTo, ChainTo>(temp);
             }
 
-            PsevdoValue Psevdo = PsevdoValue.Instance();
-            MessagePhantom Message = null;
             while (To.Next() && From.Next())
             {
-                Message = new MessagePhantom();
-
-                Message.Add(From.Current());
-                To.SetCurrent(Message.power == 0 ? (IBaseObject) Psevdo : Message);
+                To.SetCurrent(From.Current());
             }
             return temp;
         }
