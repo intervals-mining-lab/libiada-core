@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<RequestFiles>
+  <ActionType>
+    <Name>Calculate</Name>
+    <MIME>Calculate</MIME>
+    <Size>1</Size>
+    <Hash>1983783733</Hash>
+    <MetaInfo>
+      <record>
+        <Key>LinkUp</Key>
+        <Value>Start</Value>
+      </record>
+      <record>
+        <Key>blocksize</Key>
+        <Value>1</Value>
+      </record>
+    </MetaInfo>
+  </ActionType>
+  <Files>
+    <File>
+      <Data>dsfdskhkldhg</Data>
+      <Type>
+        <Name>txt</Name>
+        <MIME>text</MIME>
+        <Size>1</Size>
+        <Hash>1054010489</Hash>
+        <MetaInfo />
+      </Type>
+    </File>
+  </Files>
+</RequestFiles>

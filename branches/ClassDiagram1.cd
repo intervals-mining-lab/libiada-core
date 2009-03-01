@@ -1,0 +1,1617 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Font Name="Tahoma" Size="8.25" />
+  <Class Name="ChainAnalises.Classes.AlphabetCheker.ActualChain" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="40.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Classes\AlphabetCheker\ActualChain.cs</FileName>
+      <HashCode>AAAAAAAAAAAAQAAAEAAAAAAAAAAAAAAAQEAAAAQAABA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ChainAnalises.Classes.AlphabetCheker.AlpabetChains">
+    <Position X="0.75" Y="9" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Classes\AlphabetCheker\AlpabetChains.cs</FileName>
+      <HashCode>AAIAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChainAnalises.Classes.AlphabetCheker.Checker" Collapsed="true">
+    <Position X="40.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Classes\AlphabetCheker\Checker.cs</FileName>
+      <HashCode>AAAAAAAAAQAIAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChainAnalises.Classes.AuxiliaryClasses.DataManipulators.ElementStream" Collapsed="true">
+    <Position X="54.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Classes\AuxiliaryClasses\DataManipulators\ElementStream.cs</FileName>
+      <HashCode>QAIAAAAAAAAAgAAACAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChainAnalises.Classes.AuxiliaryClasses.DataManipulators.ObjectVirtualBase&lt;ChainBase&gt;" Collapsed="true">
+    <Position X="47.25" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Classes\AuxiliaryClasses\DataManipulators\ObjectVirtualBase.cs</FileName>
+      <HashCode>BAAAgAAABAAAIAAAAAAAAAAAACAACAAAAAAAEAAQAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChainAnalises.Classes.AuxiliaryClasses.DataManipulators.ElementStreamCreators.ElementStreamBuilderFactory" Collapsed="true">
+    <Position X="56" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Classes\AuxiliaryClasses\DataManipulators\ElementStreamCreators\ElementStreamBuilderFactory.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAUAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChainAnalises.Classes.AuxiliaryClasses.DataManipulators.ElementStreamCreators.ElementStreamCreator">
+    <Position X="23.75" Y="8.5" Width="1.75" />
+    <TypeIdentifier>
+      <FileName>Classes\AuxiliaryClasses\DataManipulators\ElementStreamCreators\ElementStreamCreator.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChainAnalises.Classes.AuxiliaryClasses.DataManipulators.ElementStreamCreators.FonemStreamCreator">
+    <Position X="22.5" Y="10.25" Width="1.75" />
+    <TypeIdentifier>
+      <FileName>Classes\AuxiliaryClasses\DataManipulators\ElementStreamCreators\FonemStreamCreator.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChainAnalises.Classes.AuxiliaryClasses.DataManipulators.ElementStreamCreators.TextStreamCreator">
+    <Position X="25" Y="10.25" Width="1.75" />
+    <TypeIdentifier>
+      <FileName>Classes\AuxiliaryClasses\DataManipulators\ElementStreamCreators\TextStreamCreator.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChainAnalises.Classes.AuxiliaryClasses.DataManipulators.Iterators.IteratorBase&lt;ChainReturn, ChainToIterate&gt;">
+    <Position X="31.5" Y="20.5" Width="3" />
+    <TypeIdentifier>
+      <FileName>Classes\AuxiliaryClasses\DataManipulators\Iterators\IteratorBase.cs</FileName>
+      <HashCode>AwAAAAAAAAACBAAAAACAAoAAAAAAAAKAAAAEAAAAAAA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="ChainAnalises.Classes.AuxiliaryClasses.DataManipulators.Iterators.IteratorEnd&lt;ChainReturn, ChainToIterate&gt;">
+    <Position X="27.25" Y="24.25" Width="3" />
+    <TypeIdentifier>
+      <FileName>Classes\AuxiliaryClasses\DataManipulators\Iterators\IteratorEnd.cs</FileName>
+      <HashCode>AgAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChainAnalises.Classes.AuxiliaryClasses.DataManipulators.Iterators.IteratorSimpleStart&lt;ChainToIterate&gt;" Collapsed="true">
+    <Position X="43.75" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Classes\AuxiliaryClasses\DataManipulators\Iterators\IteratorSimpleStart.cs</FileName>
+      <HashCode>AwAAAAAAAIACBAAAAACAAoAAAAAAAAKAAAAEAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChainAnalises.Classes.AuxiliaryClasses.DataManipulators.Iterators.IteratorStart&lt;ChainReturn, ChainToIterate&gt;">
+    <Position X="35.75" Y="24.25" Width="3.25" />
+    <TypeIdentifier>
+      <FileName>Classes\AuxiliaryClasses\DataManipulators\Iterators\IteratorStart.cs</FileName>
+      <HashCode>AgAAAAAAAIAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChainAnalises.Classes.AuxiliaryClasses.DataManipulators.Iterators.IteratorWritableEnd&lt;ChainReturn, ChainToIterate&gt;">
+    <Position X="27" Y="26.5" Width="3.5" />
+    <TypeIdentifier>
+      <FileName>Classes\AuxiliaryClasses\DataManipulators\Iterators\IteratorWritableEnd.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="ChainAnalises.Classes.AuxiliaryClasses.DataManipulators.Iterators.IteratorWritableStart&lt;ChainReturn, ChainToIterate&gt;">
+    <Position X="35.5" Y="26.75" Width="3.75" />
+    <TypeIdentifier>
+      <FileName>Classes\AuxiliaryClasses\DataManipulators\Iterators\IteratorWritableStart.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="ChainAnalises.Classes.AuxiliaryClasses.DataManipulators.SpaceRebuilders.NullRebuilder&lt;ChainTo, ChainFrom&gt;">
+    <Position X="12" Y="13.25" Width="2.75" />
+    <TypeIdentifier>
+      <FileName>Classes\AuxiliaryClasses\DataManipulators\SpaceRebuilders\NullRebuilder.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChainAnalises.Classes.AuxiliaryClasses.DataManipulators.SpaceRebuilders.PsevdoCycleSpace&lt;ChainTo, ChainFrom&gt;">
+    <Position X="15.5" Y="13.25" Width="3" />
+    <TypeIdentifier>
+      <FileName>Classes\AuxiliaryClasses\DataManipulators\SpaceRebuilders\PsevdoCycleSpace.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABACAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChainAnalises.Classes.AuxiliaryClasses.DataManipulators.SpaceRebuilders.SpacePhantomRebuilder&lt;ChainTo, ChainFrom&gt;">
+    <Position X="19.25" Y="13.25" Width="3.25" />
+    <TypeIdentifier>
+      <FileName>Classes\AuxiliaryClasses\DataManipulators\SpaceRebuilders\SpacePhantomRebuilder.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChainAnalises.Classes.AuxiliaryClasses.DataManipulators.SpaceRebuilders.SpaceRebuilder&lt;ChainTo, ChainFrom&gt;">
+    <Position X="18.5" Y="11.5" Width="2.75" />
+    <TypeIdentifier>
+      <FileName>Classes\AuxiliaryClasses\DataManipulators\SpaceRebuilders\SpaceRebuilder.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChainAnalises.Classes.AuxiliaryClasses.DataManipulators.SpaceRebuilders.SpaceRebuilderFactory&lt;ChainTo, ChainFrom&gt;" Collapsed="true">
+    <Position X="52.5" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Classes\AuxiliaryClasses\DataManipulators\SpaceRebuilders\SpaceRebuilderFactory.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChainAnalises.Classes.AuxiliaryClasses.DataManipulators.SpaceRebuilders.SpaceRebuilderFromChainToChainByBlock&lt;ChainTo, ChainFrom&gt;">
+    <Position X="23.25" Y="13.25" Width="4.5" />
+    <TypeIdentifier>
+      <FileName>Classes\AuxiliaryClasses\DataManipulators\SpaceRebuilders\SpaceRebuilderFromChainToChainByBlock.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAICAAQAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChainAnalises.Classes.AuxiliaryClasses.WebServices.Answers.Answer">
+    <Position X="5.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Classes\AuxiliaryClasses\WebServices\Additional\Answer.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChainAnalises.Classes.AuxiliaryClasses.WebServices.Additional.File" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="57.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Classes\AuxiliaryClasses\WebServices\Additional\File.cs</FileName>
+      <HashCode>ABAAggAAAAAAAAAAgAAAAAAABAAAABAAAQAAAAAACBA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ChainAnalises.Classes.AuxiliaryClasses.WebServices.Requests.Request">
+    <Position X="27.5" Y="15.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Classes\AuxiliaryClasses\WebServices\Additional\Request.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAgAAAAAAAAAAAIAAAAAAAAAAAAAQ=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChainAnalises.Classes.AuxiliaryClasses.WebServices.Additional.Types.ActionType">
+    <Position X="14" Y="8.75" Width="1.75" />
+    <TypeIdentifier>
+      <FileName>Classes\AuxiliaryClasses\WebServices\Additional\Types\ActionType.cs</FileName>
+      <HashCode>AAAAAAAAAAAQAAAAAAAAAAAAACAAAAAAAgAAACAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChainAnalises.Classes.AuxiliaryClasses.WebServices.Additional.Types.ErrorType">
+    <Position X="16.5" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Classes\AuxiliaryClasses\WebServices\Additional\Types\ErrorType.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAIAAAAAIAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChainAnalises.Classes.AuxiliaryClasses.WebServices.Additional.Types.TypeBase">
+    <Position X="15.25" Y="4.5" Width="1.75" />
+    <TypeIdentifier>
+      <FileName>Classes\AuxiliaryClasses\WebServices\Additional\Types\TypeBase.cs</FileName>
+      <HashCode>AAAEAAAIgAAAgAAAgAAAAIQABAAAAIAAAAAAQAAACBA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="ChainAnalises.Classes.FileType">
+    <Position X="18.75" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Classes\AuxiliaryClasses\WebServices\Additional\Types\FileType.cs</FileName>
+      <HashCode>AAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChainAnalises.Classes.MessageType">
+    <Position X="11.75" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Classes\AuxiliaryClasses\WebServices\Additional\Types\MessageType.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChainAnalises.Classes.AuxiliaryClasses.WebServices.AnswerChain">
+    <Position X="1" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Classes\AuxiliaryClasses\WebServices\Calculate\AnswerChain.cs</FileName>
+      <HashCode>BAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChainAnalises.Classes.AuxiliaryClasses.WebServices.WebServices" Collapsed="true">
+    <Position X="49" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Classes\AuxiliaryClasses\WebServices\WebServices.cs</FileName>
+      <HashCode>AAAAAAAAAAAIAAAAAAAAAAAAACAKAAAAAQAAAAAACAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChainAnalises.Classes.AuxiliaryClasses.WebServices.Clusterization.AnswerClusterization">
+    <Position X="5.75" Y="2.25" Width="1.75" />
+    <TypeIdentifier>
+      <FileName>Classes\AuxiliaryClasses\WebServices\Clusterization\AnswerClusterization.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChainAnalises.Classes.AuxiliaryClasses.WebServices.Clusterization.RequestClusterization">
+    <Position X="27.25" Y="17.75" Width="1.75" />
+    <TypeIdentifier>
+      <FileName>Classes\AuxiliaryClasses\WebServices\Clusterization\RequestClusterization.cs</FileName>
+      <HashCode>AAAEAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAQAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChainAnalises.Classes.AuxiliaryClasses.WebServices.Clusterization.SoapCluster" Collapsed="true">
+    <Position X="47.25" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Classes\AuxiliaryClasses\WebServices\SOAP\SoapCluster.cs</FileName>
+      <HashCode>AAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChainAnalises.Classes.AuxiliaryClasses.WebServices.Clusterization.SoapClusterizationResult" Collapsed="true">
+    <Position X="49" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Classes\AuxiliaryClasses\WebServices\SOAP\SoapClusterizationResult.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAACAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChainAnalises.Classes.AuxiliaryClasses.WebServices.Clusterization.SoapClusterizationVaraints" Collapsed="true">
+    <Position X="50.75" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Classes\AuxiliaryClasses\WebServices\SOAP\SoapClusterizationVarints.cs</FileName>
+      <HashCode>AAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChainAnalises.Classes.AuxiliaryClasses.WebServices.CreateAlphabet.AnswerObjects">
+    <Position X="10.75" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Classes\AuxiliaryClasses\WebServices\CreateAlphabet\AnswerObjects.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChainAnalises.Classes.AuxiliaryClasses.WebServices.CreateAlphabet.RequestFiles" Collapsed="true">
+    <Position X="49" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Classes\AuxiliaryClasses\WebServices\CreateAlphabet\RequestFiles.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIQ=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChainAnalises.Classes.AuxiliaryClasses.WebServices.CreateAlphabet.Converter" Collapsed="true">
+    <Position X="56" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Classes\AuxiliaryClasses\WebServices\SOAP\Converter.cs</FileName>
+      <HashCode>BACAaAAAAwoAABABEAAxFAIEEEAQAQAJQAIsEgAQEqQ=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChainAnalises.Classes.AuxiliaryClasses.WebServices.CreateAlphabet.SoapAlphabetOfChains" Collapsed="true">
+    <Position X="40.25" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Classes\AuxiliaryClasses\WebServices\SOAP\SoapAlphabetOfChains.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChainAnalises.Classes.AuxiliaryClasses.WebServices.CreateAlphabet.SoapAlphabetOfValueChar" Collapsed="true">
+    <Position X="42" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Classes\AuxiliaryClasses\WebServices\SOAP\SoapAlphabetOfValueChar.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChainAnalises.Classes.AuxiliaryClasses.WebServices.CreateAlphabet.SoapBaseChainOfValueChar">
+    <Position X="2" Y="24.5" Width="2.25" />
+    <TypeIdentifier>
+      <FileName>Classes\AuxiliaryClasses\WebServices\SOAP\SoapBaseChainOfValueChar.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChainAnalises.Classes.AuxiliaryClasses.WebServices.CreateAlphabet.SoapChainOfChains">
+    <Position X="7.5" Y="30.5" Width="2.25" />
+    <TypeIdentifier>
+      <FileName>Classes\AuxiliaryClasses\WebServices\SOAP\SoapChainOfChains.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChainAnalises.Classes.AuxiliaryClasses.WebServices.CreateAlphabet.SoapUniformChainOfChains">
+    <Position X="10.5" Y="30.5" Width="2.25" />
+    <TypeIdentifier>
+      <FileName>Classes\AuxiliaryClasses\WebServices\SOAP\SoapChainOfChains.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChainAnalises.Classes.AuxiliaryClasses.WebServices.CreateAlphabet.SoapChainWithCharacteristicOfChains">
+    <Position X="8.75" Y="28.25" Width="2.75" />
+    <TypeIdentifier>
+      <FileName>Classes\AuxiliaryClasses\WebServices\SOAP\SoapChainOfChains.cs</FileName>
+      <HashCode>ABAAAACBAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChainAnalises.Classes.AuxiliaryClasses.WebServices.CreateAlphabet.SoapBaseChainOfChains">
+    <Position X="9.25" Y="26.5" Width="2" />
+    <TypeIdentifier>
+      <FileName>Classes\AuxiliaryClasses\WebServices\SOAP\SoapChainOfChains.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChainAnalises.Classes.AuxiliaryClasses.WebServices.CreateAlphabet.SoapSpaceOfChains">
+    <Position X="9.25" Y="24.5" Width="1.75" />
+    <TypeIdentifier>
+      <FileName>Classes\AuxiliaryClasses\WebServices\SOAP\SoapChainOfChains.cs</FileName>
+      <HashCode>AAAAABAAAAAAAAAAAAAAAAIAAAAACAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChainAnalises.Classes.AuxiliaryClasses.WebServices.CreateAlphabet.SoapChainOfValueChar">
+    <Position X="3.5" Y="28.5" Width="2.25" />
+    <TypeIdentifier>
+      <FileName>Classes\AuxiliaryClasses\WebServices\SOAP\SoapChainOfValueChar.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChainAnalises.Classes.AuxiliaryClasses.WebServices.CreateAlphabet.SoapChainWithCharacteristicOfValueChar">
+    <Position X="1.75" Y="26.25" Width="3" />
+    <TypeIdentifier>
+      <FileName>Classes\AuxiliaryClasses\WebServices\SOAP\SoapChainWithCharacteristicOfValueChar.cs</FileName>
+      <HashCode>ABAAAACBAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChainAnalises.Classes.AuxiliaryClasses.WebServices.CreateAlphabet.SoapChainWithCharacteristicOfValueString">
+    <Position X="22.75" Y="4.25" Width="3" />
+    <TypeIdentifier>
+      <FileName>Classes\AuxiliaryClasses\WebServices\SOAP\SoapChainWithCharacteristicOfValueString.cs</FileName>
+      <HashCode>ABAAAACBAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChainAnalises.Classes.AuxiliaryClasses.WebServices.CreateAlphabet.SoapCharacteristic" Collapsed="true">
+    <Position X="45.5" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Classes\AuxiliaryClasses\WebServices\SOAP\SoapCharacteristic.cs</FileName>
+      <HashCode>AAIAAAAAACAAAAAAAgAAAAAAAAAAAAAAAQAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChainAnalises.Classes.AuxiliaryClasses.WebServices.CreateAlphabet.SoapDimension" Collapsed="true">
+    <Position X="57.75" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Classes\AuxiliaryClasses\WebServices\SOAP\SoapDimension.cs</FileName>
+      <HashCode>AAAAAAAAABAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChainAnalises.Classes.AuxiliaryClasses.WebServices.CreateAlphabet.SoapFrequencyList" Collapsed="true">
+    <Position X="40.25" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Classes\AuxiliaryClasses\WebServices\SOAP\SoapFrequencyList.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChainAnalises.Classes.AuxiliaryClasses.WebServices.CreateAlphabet.SoapFrequencyListItem" Collapsed="true">
+    <Position X="42" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Classes\AuxiliaryClasses\WebServices\SOAP\SoapFrequencyListItem.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAgAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChainAnalises.Classes.AuxiliaryClasses.WebServices.CreateAlphabet.SoapPhantomMessageOfChains" Collapsed="true">
+    <Position X="43.75" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Classes\AuxiliaryClasses\WebServices\SOAP\SoapPhantomMessageOfChains.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChainAnalises.Classes.AuxiliaryClasses.WebServices.CreateAlphabet.SoapPhantomMessageOfValueChar" Collapsed="true">
+    <Position X="45.5" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Classes\AuxiliaryClasses\WebServices\SOAP\SoapPhantomMessageOfValueChar.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChainAnalises.Classes.AuxiliaryClasses.WebServices.CreateAlphabet.SoapSpaceOfValueChar">
+    <Position X="2.25" Y="22.5" Width="2" />
+    <TypeIdentifier>
+      <FileName>Classes\AuxiliaryClasses\WebServices\SOAP\SoapSpaceOfValueChar.cs</FileName>
+      <HashCode>AAAAABAAAAAAAAAAAAAAAAIAAAAACAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChainAnalises.Classes.AuxiliaryClasses.WebServices.CreateAlphabet.SoapValueChar" Collapsed="true">
+    <Position X="49" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Classes\AuxiliaryClasses\WebServices\SOAP\SoapValueChar.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChainAnalises.Classes.AuxiliaryClasses.WebServices.GenerateMarkovChains.AnswerMarkovChain">
+    <Position X="3.25" Y="2.25" Width="1.75" />
+    <TypeIdentifier>
+      <FileName>Classes\AuxiliaryClasses\WebServices\GenerateMarkovChains\AnswerMarkovChain.cs</FileName>
+      <HashCode>BAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChainAnalises.Classes.AuxiliaryClasses.WebServices.GenerateMarkovChains.RequestMarkovChain">
+    <Position X="24.75" Y="17.75" Width="1.75" />
+    <TypeIdentifier>
+      <FileName>Classes\AuxiliaryClasses\WebServices\GenerateMarkovChains\RequestMarkovChain.cs</FileName>
+      <HashCode>BAAAAAAAACAQAAAAAAAgAABAAEAAAAAAAACAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChainAnalises.Classes.AuxiliaryClasses.WebServices.PhantomChains.AnswerPhantomChains" Collapsed="true">
+    <Position X="43.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Classes\AuxiliaryClasses\WebServices\PhantomChains\AnswerPhantomChains.cs</FileName>
+      <HashCode>BAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChainAnalises.Classes.AuxiliaryClasses.WebServices.PhantomChains.RequestPhantomChains" Collapsed="true">
+    <Position X="50.75" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Classes\AuxiliaryClasses\WebServices\PhantomChains\RequestPhantomChains.cs</FileName>
+      <HashCode>BAAAAAAAAAAQAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChainAnalises.Classes.AuxiliaryClasses.WebServices.Segmentation.AnswerSegmentation">
+    <Position X="8.25" Y="2.25" Width="1.75" />
+    <TypeIdentifier>
+      <FileName>Classes\AuxiliaryClasses\WebServices\Segmentation\AnswerSegmentation.cs</FileName>
+      <HashCode>BAAEAABAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChainAnalises.Classes.AuxiliaryClasses.WebServices.Segmentation.RequestSegmentation">
+    <Position X="29.75" Y="17.75" Width="2" />
+    <TypeIdentifier>
+      <FileName>Classes\AuxiliaryClasses\WebServices\Segmentation\RequestSegmentation.cs</FileName>
+      <HashCode>AgAAABCAAAAAAEAAAAAAAAAAAAAAAAAAAAAAQAACAIA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChainAnalises.Classes.AuxiliaryClasses.WebServices.SOAP.SoapAlphabetOfValueString" Collapsed="true">
+    <Position X="43.75" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Classes\AuxiliaryClasses\WebServices\SOAP\SoapAlphabetOfValueString.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChainAnalises.Classes.AuxiliaryClasses.WebServices.SOAP.SoapBaseChainOfValueString">
+    <Position X="23.25" Y="2.5" Width="2.25" />
+    <TypeIdentifier>
+      <FileName>Classes\AuxiliaryClasses\WebServices\SOAP\SoapBaseChainOfValueString.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChainAnalises.Classes.AuxiliaryClasses.WebServices.SOAP.SoapChainOfValueString">
+    <Position X="24.75" Y="6.5" Width="2.25" />
+    <TypeIdentifier>
+      <FileName>Classes\AuxiliaryClasses\WebServices\SOAP\SoapChainOfValueString.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChainAnalises.Classes.AuxiliaryClasses.WebServices.SOAP.SoapDataCharacteristic" Collapsed="true">
+    <Position X="52.5" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Classes\AuxiliaryClasses\WebServices\SOAP\SoapDataCharacteristic.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAgAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChainAnalises.Classes.AuxiliaryClasses.WebServices.SOAP.SoapDataObject" Collapsed="true">
+    <Position X="54.25" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Classes\AuxiliaryClasses\WebServices\SOAP\SoapDataObject.cs</FileName>
+      <HashCode>AAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAgA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChainAnalises.Classes.AuxiliaryClasses.WebServices.SOAP.SoapDataTable" Collapsed="true">
+    <Position X="56" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Classes\AuxiliaryClasses\WebServices\SOAP\SoapDataTable.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChainAnalises.Classes.AuxiliaryClasses.WebServices.SOAP.SoapPhantomMessageOfValueString" Collapsed="true">
+    <Position X="47.25" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Classes\AuxiliaryClasses\WebServices\SOAP\SoapPhantomMessageOfValueString.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChainAnalises.Classes.AuxiliaryClasses.WebServices.SOAP.SoapSpaceOfValueString">
+    <Position X="23.25" Y="0.5" Width="2" />
+    <TypeIdentifier>
+      <FileName>Classes\AuxiliaryClasses\WebServices\SOAP\SoapSpaceOfValueString.cs</FileName>
+      <HashCode>AAAAABAAAAAAAAAAAAAAAAIAAAAACAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChainAnalises.Classes.AuxiliaryClasses.WebServices.SOAP.SoapUniformChainOfValueChar">
+    <Position X="0.5" Y="28.5" Width="2.25" />
+    <TypeIdentifier>
+      <FileName>Classes\AuxiliaryClasses\WebServices\SOAP\SoapUniformChainOfValueChar.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChainAnalises.Classes.AuxiliaryClasses.WebServices.SOAP.SoapUniformChainOfValueString">
+    <Position X="21.5" Y="6.5" Width="2.5" />
+    <TypeIdentifier>
+      <FileName>Classes\AuxiliaryClasses\WebServices\SOAP\SoapUniformChainOfValueString.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChainAnalises.Classes.AuxiliaryClasses.WebServices.SOAP.SoapValueString" Collapsed="true">
+    <Position X="50.75" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Classes\AuxiliaryClasses\WebServices\SOAP\SoapValueString.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChainAnalises.Classes.DataMining.Clusterization.ClustarizationResult" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="42" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Classes\DataMining\Clusterization\ClustarizationResult.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAACAAAAAACBA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ChainAnalises.Classes.DataMining.Clusterization.ClustarizationResultBin" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="43.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Classes\DataMining\Clusterization\ClustarizationResult.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAABAAAAAAAAABAAAAAAAACAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ChainAnalises.Classes.DataMining.Clusterization.ClustarizationVariants" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="45.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Classes\DataMining\Clusterization\ClustarizationVariants.cs</FileName>
+      <HashCode>AAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACBA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ChainAnalises.Classes.DataMining.Clusterization.ClustarizationVariantsBin" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="47.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Classes\DataMining\Clusterization\ClustarizationVariants.cs</FileName>
+      <HashCode>AAAAABAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ChainAnalises.Classes.DataMining.Clusterization.Cluster" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="49" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Classes\DataMining\Clusterization\Cluster.cs</FileName>
+      <HashCode>AAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAACBA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ChainAnalises.Classes.DataMining.Clusterization.ClusterBin" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="50.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Classes\DataMining\Clusterization\Cluster.cs</FileName>
+      <HashCode>AAAAAAAAAAAACAAAAAAAAAAABAAAAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ChainAnalises.Classes.DataMining.Clusterization.DataObject" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="50.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Classes\DataMining\Clusterization\DataObject.cs</FileName>
+      <HashCode>AAICAAAAAAAAgBBAAAAAAAAAAAAAAABAAAAAAAAAChA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ChainAnalises.Classes.DataMining.Clusterization.DataObjectBin" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="52.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Classes\DataMining\Clusterization\DataObject.cs</FileName>
+      <HashCode>AAAAAAAAAAAAgAAAAAAAAAAABAAAAAAAAAAAAAAAAgA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ChainAnalises.Classes.DataMining.Clusterization.DataTable" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="54.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Classes\DataMining\Clusterization\DataTable.cs</FileName>
+      <HashCode>AAIAAAAAAAAAgBAACAAAAAQAAAAAAABAAAAAAAAACBA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ChainAnalises.Classes.DataMining.Clusterization.DataTableBin" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="56" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Classes\DataMining\Clusterization\DataTable.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAABAAAAAEAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ChainAnalises.Classes.DataMining.Clusterization.KRAB.GraphCalculator" Collapsed="true">
+    <Position X="57.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Classes\DataMining\Clusterization\KRAB\GraphCalculator.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChainAnalises.Classes.DataMining.Clusterization.KRAB.KrabCalusterization" Collapsed="true">
+    <Position X="45.5" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Classes\DataMining\Clusterization\KRAB\KrabCalusterization.cs</FileName>
+      <HashCode>AAAAAAgAAAAAAAAEAAAAAEAAAAAAgAACAEQAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChainAnalises.Classes.DataMining.Dictionary" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="40.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Classes\DataMining\Dictionary.cs</FileName>
+      <HashCode>AAIAAAAAAAAAARAACAAABAQAAAAAAAAACAAAAAAAABA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ChainAnalises.Classes.DivizionToAccords.AlphabetChain">
+    <Position X="3" Y="9" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Classes\DivizionToAccords\AlphabetChain.cs</FileName>
+      <HashCode>AAIAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChainAnalises.Classes.DivizionToAccords.Calculator" Collapsed="true">
+    <Position X="50.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Classes\DivizionToAccords\Calculator.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAQBAAAACAIAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChainAnalises.Classes.DivizionToAccords.ChainConvolutor" Collapsed="true">
+    <Position X="52.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Classes\DivizionToAccords\ChainConvolutor.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChainAnalises.Classes.DivizionToAccords.CriteriaStrategy" Collapsed="true">
+    <Position X="40.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Classes\DivizionToAccords\Criteria\CriteriaStrategy.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChainAnalises.Classes.DivizionToAccords.DataCollector" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="45.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Classes\DivizionToAccords\DataCollectors\DataCollector.cs</FileName>
+      <HashCode>AAIAAAAAAAAAABAACAAAAAAEAAAAAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ChainAnalises.Classes.DivizionToAccords.DataCollectorFactory" Collapsed="true">
+    <Position X="47.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Classes\DivizionToAccords\DataCollectors\DataCollectorFactory.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChainAnalises.Classes.DivizionToAccords.NullDataCollector" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="42" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Classes\DivizionToAccords\DataCollectors\NullDataCollector.cs</FileName>
+      <HashCode>AAIAAAAAAAAAABAACAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ChainAnalises.Classes.DivizionToAccords.Divider" Collapsed="true">
+    <Position X="50.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Classes\DivizionToAccords\Divider.cs</FileName>
+      <HashCode>gCQCAAAAAAAAEBCAkAAACACAAAAAAQAAAAMAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChainAnalises.Classes.DivizionToAccords.CommonLessOneStratagy" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="52.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Classes\DivizionToAccords\ProbabilityCountStrateges\CommonLessOneStratagy.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ChainAnalises.Classes.DivizionToAccords.CommonLessTwoStratagy" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="54.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Classes\DivizionToAccords\ProbabilityCountStrateges\CommonLessTwoStratagy.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ChainAnalises.Classes.DivizionToAccords.FirstLessOneStrategy" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="40.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Classes\DivizionToAccords\ProbabilityCountStrateges\FirstLessOneStrategy.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ChainAnalises.Classes.DivizionToAccords.FirstLessTwoStrategy" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="42" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Classes\DivizionToAccords\ProbabilityCountStrateges\FirstLessTwoStrategy.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ChainAnalises.Classes.DivizionToAccords.GetStrategyForLessOne" Collapsed="true">
+    <Position X="52.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Classes\DivizionToAccords\ProbabilityCountStrateges\GetStrategyForLessOne.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChainAnalises.Classes.DivizionToAccords.GetStrategyForLessTwo" Collapsed="true">
+    <Position X="54.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Classes\DivizionToAccords\ProbabilityCountStrateges\GetStrategyForLessTwo.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChainAnalises.Classes.DivizionToAccords.LastLessTwoStrategy" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="47.25" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Classes\DivizionToAccords\ProbabilityCountStrateges\LastLessTwoStrategy.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ChainAnalises.Classes.DivizionToAccords.NullStrategy" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="45.5" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Classes\DivizionToAccords\ProbabilityCountStrateges\NullStrategy.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ChainAnalises.Classes.DivizionToAccords.SimpleDivider" Collapsed="true">
+    <Position X="54.25" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Classes\DivizionToAccords\SimpleDivider.cs</FileName>
+      <HashCode>ACAIAAAAAAAAEACAAAAACACABAAAAAAAAAgAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChainAnalises.Classes.DivizionToAccords.SimpleFilter" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="56" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Classes\DivizionToAccords\SimpleFilter.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ChainAnalises.Classes.DivizionToAccords.StdCalculator" Collapsed="true">
+    <Position X="54.25" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Classes\DivizionToAccords\StdCalculator.cs</FileName>
+      <HashCode>AAAAAAEACAAAAAAAAAAAAAAAAAACAIAAAAgAAAAIAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChainAnalises.Classes.DivizionToAccords.AuxiliaryClasses.DataForStd" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="49" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Classes\DivizionToAccords\AuxiliaryClasses\DataForStd.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAgAAAAIIAAAAAAAAAAEAAAADAAQAA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ChainAnalises.Classes.DivizionToAccords.AuxiliaryClasses.NullDataForStd" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="43.75" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Classes\DivizionToAccords\AuxiliaryClasses\NullDataForStd.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAgAAAAAIAAAAAAAAAAEAAAACAAQAA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ChainAnalises.Classes.DivizionToAccords.Criteria.ConvolutedCriteiaMethod">
+    <Position X="28.5" Y="9.5" Width="2" />
+    <TypeIdentifier>
+      <FileName>Classes\DivizionToAccords\Criteria\ConvolutedCriteiaMethod.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChainAnalises.Classes.DivizionToAccords.Criteria.CriteiaMethod">
+    <Position X="30.25" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Classes\DivizionToAccords\Criteria\CriteiaMethod.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAgAAAAAACAAAAEAAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChainAnalises.Classes.DivizionToAccords.Criteria.NotConvolutedCriteiaMethod">
+    <Position X="31.25" Y="9.5" Width="2.25" />
+    <TypeIdentifier>
+      <FileName>Classes\DivizionToAccords\Criteria\NotConvolutedCriteiaMethod.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChainAnalises.Classes.EventTheory.Dimension" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="45.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Classes\EventTheory\Dimension.cs</FileName>
+      <HashCode>AAgAEAAAAAAQAAAAgAAAAABAAAAAAIAAAIAAAAAACDA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ChainAnalises.Classes.EventTheory.DimensionBin" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="47.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Classes\EventTheory\Dimension.cs</FileName>
+      <HashCode>AAAAAAAAABAAAAAAEAAAAAAABAAAAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ChainAnalises.Classes.EventTheory.Event">
+    <Position X="17.75" Y="22.75" Width="2.25" />
+    <TypeIdentifier>
+      <FileName>Classes\EventTheory\Event.cs</FileName>
+      <HashCode>EAIAAAAAAAIALExAiEAgCQAQAAEQAYAIAEAgBkCAADA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="ChainAnalises.Classes.EventTheory.Place" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="52.5" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Classes\EventTheory\Place.cs</FileName>
+      <HashCode>AAAACAAAIAAgAgAAgAAAAAQAAAAASAAAAAAgAAAAGBA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ChainAnalises.Classes.EventTheory.PsevdoValue" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="40.25" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Classes\EventTheory\PsevdoValue.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAEgAAAAAAAAAAAACAAQAAAAAAACBA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ChainAnalises.Classes.EventTheory.PsevdoValueBin" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="42" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Classes\EventTheory\PsevdoValue.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ChainAnalises.Classes.EventTheory.ReadPath" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="43.75" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Classes\EventTheory\ReadPath.cs</FileName>
+      <HashCode>AAIAAAAAAAAAgBAACAAABABQAAAAAAAAAAAAAAAQABA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ChainAnalises.Classes.EventTheory.ReadRule" Collapsed="true">
+    <Position X="45.5" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Classes\EventTheory\ReadRule.cs</FileName>
+      <HashCode>AAIAAAAAAAAAgAAAiAAABAQAAAAAAAAAAACAAAQQABA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChainAnalises.Classes.EventTheory.Space">
+    <Position X="20.75" Y="15.5" Width="1.75" />
+    <TypeIdentifier>
+      <FileName>Classes\EventTheory\Space.cs</FileName>
+      <HashCode>EAAAABAAEABQlEQAgQCBCAAAoACACEAIKkIAAoAECBA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="ChainAnalises.Classes.EventTheory.SpaceBin">
+    <Position X="13" Y="15.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Classes\EventTheory\Space.cs</FileName>
+      <HashCode>AAAAABAAAAAAAAAAAAAAAAIABAAACAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="ChainAnalises.Classes.IntervalAnalysis.BaseChain">
+    <Position X="22.25" Y="22.75" Width="2" />
+    <TypeIdentifier>
+      <FileName>Classes\IntervalAnalysis\BaseChain.cs</FileName>
+      <HashCode>AAIAAAAAAAAAAABEyAAAAABAAAAAAAAACAAAAAAACBA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="ChainAnalises.Classes.IntervalAnalysis.BaseChainBin">
+    <Position X="13" Y="18" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Classes\IntervalAnalysis\BaseChain.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="ChainAnalises.Classes.IntervalAnalysis.Chain">
+    <Position X="23.75" Y="32.75" Width="2" />
+    <TypeIdentifier>
+      <FileName>Classes\IntervalAnalysis\Chain.cs</FileName>
+      <HashCode>ABAAAAAAAAAACAAAQAAAAAEggAQAABAIQAAAAIAACBA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="ChainAnalises.Classes.IntervalAnalysis.ChainBin">
+    <Position X="14" Y="22.5" Width="1.75" />
+    <TypeIdentifier>
+      <FileName>Classes\IntervalAnalysis\Chain.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAIAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="ChainAnalises.Classes.IntervalAnalysis.ChainWithCharacteristic">
+    <Position X="21.75" Y="26.5" Width="2.75" />
+    <TypeIdentifier>
+      <FileName>Classes\IntervalAnalysis\ChainWithCharacteristic.cs</FileName>
+      <HashCode>CDAAABAAAAIAABAAQIAQAAABgAQAABAJSIAEAIACCII=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="ChainAnalises.Classes.IntervalAnalysis.ChainWithCharacteristicBin">
+    <Position X="12.5" Y="19.75" Width="2.25" />
+    <TypeIdentifier>
+      <FileName>Classes\IntervalAnalysis\ChainWithCharacteristic.cs</FileName>
+      <HashCode>ABAAAACBAAAAAAAACAAAAAAABAAAAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="ChainAnalises.Classes.IntervalAnalysis.UniformChain">
+    <Position X="20.75" Y="32.75" Width="2.25" />
+    <TypeIdentifier>
+      <FileName>Classes\IntervalAnalysis\UniformChain.cs</FileName>
+      <HashCode>BAAAAAAAAAAAAAAAAAAAAAAAgAQAABAICACAIIAACBA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="ChainAnalises.Classes.IntervalAnalysis.UniformChainBin">
+    <Position X="11.5" Y="22.5" Width="1.75" />
+    <TypeIdentifier>
+      <FileName>Classes\IntervalAnalysis\UniformChain.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAIAAAAAA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="ChainAnalises.Classes.IntervalAnalysis.Characteristics.Calculators.AlphabetPower" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="42" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Classes\IntervalAnalysis\Characteristics\Calculators\AlphabetPower.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ChainAnalises.Classes.IntervalAnalysis.Characteristics.Calculators.ArithmeticMean" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="45.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Classes\IntervalAnalysis\Characteristics\Calculators\ArithmeticMean.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ChainAnalises.Classes.IntervalAnalysis.Characteristics.Calculators.AverageRemoteness" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="47.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Classes\IntervalAnalysis\Characteristics\Calculators\AverageRemoteness.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ChainAnalises.Classes.IntervalAnalysis.Characteristics.Calculators.Count" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="57.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Classes\IntervalAnalysis\Characteristics\Calculators\Count.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAACAAAAAACAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ChainAnalises.Classes.IntervalAnalysis.Characteristics.Calculators.CutLength" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="42" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Classes\IntervalAnalysis\Characteristics\Calculators\CutLength.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAAAgAAAAACEAAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ChainAnalises.Classes.IntervalAnalysis.Characteristics.Calculators.CutLengthVocabularyEntropy" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="43.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Classes\IntervalAnalysis\Characteristics\Calculators\CutLengthVocabularyEntropy.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAICAAAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ChainAnalises.Classes.IntervalAnalysis.Characteristics.Calculators.DescriptiveInformation" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="57.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Classes\IntervalAnalysis\Characteristics\Calculators\DescriptiveInformation.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ChainAnalises.Classes.IntervalAnalysis.Characteristics.Calculators.Gamut" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="47.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Classes\IntervalAnalysis\Characteristics\Calculators\Gamut.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ChainAnalises.Classes.IntervalAnalysis.Characteristics.Calculators.GeometricMiddling" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="50.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Classes\IntervalAnalysis\Characteristics\Calculators\GeometricMiddling.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ChainAnalises.Classes.IntervalAnalysis.Characteristics.Calculators.IdentificationInformation" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="40.25" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Classes\IntervalAnalysis\Characteristics\Calculators\IdentificationInformation.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ChainAnalises.Classes.IntervalAnalysis.Characteristics.Calculators.Length" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="49" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Classes\IntervalAnalysis\Characteristics\Calculators\Length.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ChainAnalises.Classes.IntervalAnalysis.Characteristics.Calculators.NomalizationGamut" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="40.25" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Classes\IntervalAnalysis\Characteristics\Calculators\NomalizationGamut.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ChainAnalises.Classes.IntervalAnalysis.Characteristics.Calculators.Periodicity" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="49" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Classes\IntervalAnalysis\Characteristics\Calculators\Periodicity.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ChainAnalises.Classes.IntervalAnalysis.Characteristics.Calculators.Probability" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="56" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Classes\IntervalAnalysis\Characteristics\Calculators\Probability.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ChainAnalises.Classes.IntervalAnalysis.Characteristics.Calculators.Regularity" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="47.25" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Classes\IntervalAnalysis\Characteristics\Calculators\Regularity.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAACAAAAAACAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ChainAnalises.Classes.IntervalAnalysis.Characteristics.IntervalsCount" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="42" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Classes\IntervalAnalysis\Characteristics\Calculators\IntervalsCount.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAACAAAAAACAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ChainAnalises.Classes.IntervalAnalysis.Characteristics.Characteristic" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="54.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Classes\IntervalAnalysis\Characteristics\Characteristic.cs</FileName>
+      <HashCode>AAAAAAAEAAAAAAAAAAICAIAQAAAAABCAAAAgBIAACBA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ChainAnalises.Classes.IntervalAnalysis.Characteristics.CharacteristicBin" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="56" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Classes\IntervalAnalysis\Characteristics\Characteristic.cs</FileName>
+      <HashCode>BAAAAAAAAAAAQAAAACABAAAABAAAAAAAAQAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ChainAnalises.Classes.IntervalAnalysis.Characteristics.CharacteristicsFactory" Collapsed="true">
+    <Position X="57.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Classes\IntervalAnalysis\Characteristics\CharacteristicsFactory.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAQAAAgAAABAAAAAAEAJEAQBDEBAIAI=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChainAnalises.Classes.MatrixCalculus.Matrix" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="52.5" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Classes\MatrixCalculus\Matrix.cs</FileName>
+      <HashCode>AAAAAAAAAAAAlBBAAAAAAAAIAAAACAIAAAAAAAAAAhA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ChainAnalises.Classes.MatrixCalculus.MatrixCalculator" Collapsed="true">
+    <Position X="56" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Classes\MatrixCalculus\MatrixCalculator.cs</FileName>
+      <HashCode>ASAAAAEAAAAQAAAAAIAEAAAAABiAAAAAAAABAQAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChainAnalises.Classes.MatrixCalculus.Operations.Divide" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="49" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Classes\MatrixCalculus\Operations\Divide.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ChainAnalises.Classes.MatrixCalculus.Operations.Multiplicate" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="57.75" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Classes\MatrixCalculus\Operations\Multiplicate.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ChainAnalises.Classes.MatrixCalculus.Operations.Power" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="54.25" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Classes\MatrixCalculus\Operations\Power.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ChainAnalises.Classes.PhantomChains.MessagePhantom">
+    <Position X="8" Y="9" Width="2.25" />
+    <TypeIdentifier>
+      <FileName>Classes\PhantomChains\MessagePhantom.cs</FileName>
+      <HashCode>AAIAAAAAAAAAAAAAgAAAAAAAAAAQAAAAAAIgAAAACBA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="ChainAnalises.Classes.PhantomChains.MessagePhantomBin">
+    <Position X="0.5" Y="13.5" Width="1.75" />
+    <TypeIdentifier>
+      <FileName>Classes\PhantomChains\MessagePhantom.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="ChainAnalises.Classes.PhantomChains.PhantomChainGenerator&lt;ChainTo, ChainFrom&gt;" Collapsed="true">
+    <Position X="50.75" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Classes\PhantomChains\PhantomChainGenerator.cs</FileName>
+      <HashCode>AAAAAAAAAAAQAABAAAAAAAAAAAAAAAAAAAAAAEAABAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChainAnalises.Classes.Root.SimpleTypes.ValueChar" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="56" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Classes\Root\SimpleTypes\ValueChar.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAgAEgAAAAAAAAAAAACAAQAAAAAAACBA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ChainAnalises.Classes.Root.SimpleTypes.ValueCharBin" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="57.75" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Classes\Root\SimpleTypes\ValueChar.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAABAAAACAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ChainAnalises.Classes.Root.SimpleTypes.ValueString" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="43.75" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Classes\Root\SimpleTypes\ValueString.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAgAEgAAAAAAAAAAAACAAAAAAAAAACBA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ChainAnalises.Classes.Root.SimpleTypes.ValueStringBin" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="45.5" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Classes\Root\SimpleTypes\ValueString.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAABAAAACAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ChainAnalises.Classes.Root.SimpleTypes.ValueInt" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="40.25" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Classes\Root\SimpleTypes\VauleInt.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAgAEgAAAAAAAAAAAACAAAAAAAAAACBA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ChainAnalises.Classes.Root.SimpleTypes.ValueIntBin" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="42" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Classes\Root\SimpleTypes\VauleInt.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAgAAAAAAA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ChainAnalises.Classes.Statistics.DictionaryEntryBase" Collapsed="true">
+    <Position X="42" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Classes\Statistics\DictionaryEntryBase.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAQAAAAEAAAAABAAACAAAAAgAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChainAnalises.Classes.Statistics.DictionaryEntryBaseStruct" Collapsed="true">
+    <Position X="43.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Classes\Statistics\DictionaryEntryBase.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAgAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChainAnalises.Classes.Statistics.FrequencyList">
+    <Position X="5.25" Y="9" Width="2" />
+    <TypeIdentifier>
+      <FileName>Classes\Statistics\FrequencyList.cs</FileName>
+      <HashCode>AAIAAAAAAAAAAAAACAAABQQAAIAAAAAAAAAgAMAACBQ=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="ChainAnalises.Classes.Statistics.FrequencyListBin" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="43.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Classes\Statistics\FrequencyList.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAAAQAAAABAAAAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ChainAnalises.Classes.Statistics.FrequencyListItemBin" Collapsed="true">
+    <Position X="45.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Classes\Statistics\FrequencyList.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAgAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChainAnalises.Classes.Statistics.MarkovChain.Builders.MatrixBuilder" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="54.25" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Classes\Statistics\MarkovChain\Builders\MatrixBuilder.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ChainAnalises.Classes.Statistics.MarkovChain.Builders.ProbabilityMatixBuilder" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="57.75" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Classes\Statistics\MarkovChain\Builders\ProbabilityMatixBuilder.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ChainAnalises.Classes.Statistics.MarkovChain.MarkovChainBase&lt;ChainGenerated, ChainTeached&gt;">
+    <Position X="31.25" Y="0.5" Width="3.5" />
+    <TypeIdentifier>
+      <FileName>Classes\Statistics\MarkovChain\MarkovChainBase.cs</FileName>
+      <HashCode>AAAAABAAAAAAIAAAAAAIAAAAAAAAAAAEAAAAAMAABAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChainAnalises.Classes.Statistics.MarkovChain.MarkovChainFactory&lt;ChainGenerated, ChainTeached&gt;" Collapsed="true">
+    <Position X="50.75" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Classes\Statistics\MarkovChain\MarkovChainFactory.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChainAnalises.Classes.Statistics.MarkovChain.MarkovChainNotUniform&lt;ChainGenerated, ChainTeached&gt;">
+    <Position X="28.75" Y="3.5" Width="4" />
+    <TypeIdentifier>
+      <FileName>Classes\Statistics\MarkovChain\MarkovChainNotUniform.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAQAgAAAAAAAAAAEAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChainAnalises.Classes.Statistics.MarkovChain.NullIteratorStart&lt;ChainReturn, ChainToIterate&gt;">
+    <Position X="31.25" Y="24.25" Width="3.5" />
+    <TypeIdentifier>
+      <FileName>Classes\Statistics\MarkovChain\MarkovChainNotUniform.cs</FileName>
+      <HashCode>AgAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChainAnalises.Classes.Statistics.MarkovChain.MarkovChainRandom&lt;ChainGenerated, ChainTeached&gt;">
+    <Position X="33.5" Y="5.5" Width="3.75" />
+    <TypeIdentifier>
+      <FileName>Classes\Statistics\MarkovChain\MarkovChainRandom.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChainAnalises.Classes.Statistics.MarkovChain.MarkovChainUniform&lt;ChainGenerated, ChainTeached&gt;">
+    <Position X="33.5" Y="3.5" Width="3.75" />
+    <TypeIdentifier>
+      <FileName>Classes\Statistics\MarkovChain\MarkovChainUniform.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChainAnalises.Classes.Statistics.MarkovChain.Generators.GeneratorFactory" Collapsed="true">
+    <Position X="49" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Classes\Statistics\MarkovChain\Generators\GeneratorFactory.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChainAnalises.Classes.Statistics.MarkovChain.Generators.SimpleGenerator" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="57.75" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Classes\Statistics\MarkovChain\Generators\SimpleGenerator.cs</FileName>
+      <HashCode>AgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQBAA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ChainAnalises.Classes.Statistics.MarkovChain.Matrixes.Absolute.Matrix">
+    <Position X="3.25" Y="19.25" Width="1.75" />
+    <TypeIdentifier>
+      <FileName>Classes\Statistics\MarkovChain\Matrixes\Absolute\Matrix.cs</FileName>
+      <HashCode>AAIAAEAAAAAAAACEAAAIAAQAAAAEAABAAAAAAAAAAAQ=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="ChainAnalises.Classes.Statistics.MarkovChain.Matrixes.Absolute.MatrixRow">
+    <Position X="5.75" Y="19" Width="1.75" />
+    <TypeIdentifier>
+      <FileName>Classes\Statistics\MarkovChain\Matrixes\Absolute\MatrixRow.cs</FileName>
+      <HashCode>AAIAAEAAAAAAAACEAAAIAAQAAAAEAABAAAAAAAAAAAQ=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="ChainAnalises.Classes.Statistics.MarkovChain.Matrixes.Base.MatrixBase">
+    <Position X="4.5" Y="13.5" Width="1.75" />
+    <TypeIdentifier>
+      <FileName>Classes\Statistics\MarkovChain\Matrixes\Base\MatrixBase.cs</FileName>
+      <HashCode>EAAAABAAIAAAAgAAAAAAAAAAAAAACAAAAAIgAEAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChainAnalises.Classes.Statistics.MarkovChain.Matrixes.Base.MatrixCommon">
+    <Position X="2" Y="17" Width="1.75" />
+    <TypeIdentifier>
+      <FileName>Classes\Statistics\MarkovChain\Matrixes\Base\MatrixCommon.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAEAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChainAnalises.Classes.Statistics.MarkovChain.Matrixes.Base.MatrixRowCommon">
+    <Position X="7" Y="17" Width="1.75" />
+    <TypeIdentifier>
+      <FileName>Classes\Statistics\MarkovChain\Matrixes\Base\MatrixRowCommon.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChainAnalises.Classes.Statistics.MarkovChain.Matrixes.Probability.ProbabilityMatixRow">
+    <Position X="8.25" Y="19" Width="1.75" />
+    <TypeIdentifier>
+      <FileName>Classes\Statistics\MarkovChain\Matrixes\Probability\ProbabilityMatixRow.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAACCAAAAAAAAAAAAAQ=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="ChainAnalises.Classes.Statistics.MarkovChain.Matrixes.Probability.ProbabilityMatrix">
+    <Position X="0.75" Y="19.25" Width="1.75" />
+    <TypeIdentifier>
+      <FileName>Classes\Statistics\MarkovChain\Matrixes\Probability\ProbabilityMatrix.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAACCAAAAAAAAAAAAAQ=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="ChainAnalises.Classes.TheoryOfGraphs.Branch" Collapsed="true">
+    <Position X="49" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Classes\TheoryOfGraphs\Branch.cs</FileName>
+      <HashCode>AgBAAAAAAAAAAAAAgAAAAAAAAAAMAAAAAQAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChainAnalises.Classes.TheoryOfGraphs.Divider" Collapsed="true">
+    <Position X="52.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Classes\TheoryOfGraphs\Divider.cs</FileName>
+      <HashCode>AAAAAAAAAQAAQAAAAAAAAAAAAAAAAAAAAAAAgAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChainAnalises.Classes.TheoryOfGraphs.Graph" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="56" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Classes\TheoryOfGraphs\Graph.cs</FileName>
+      <HashCode>AIIAAACAAAAQwAAAiAAgBAQAAAAAAAAAAAAAAAAQQBA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ChainAnalises.Classes.TheoryOfGraphs.ShortestOpenLoopPathBuilder" Collapsed="true">
+    <Position X="52.5" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Classes\TheoryOfGraphs\ShortestOpenLoopPathBuilder.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChainAnalises.Classes.TheoryOfGraphs.WavePathFinder" Collapsed="true">
+    <Position X="47.25" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Classes\TheoryOfGraphs\WavePathFinder.cs</FileName>
+      <HashCode>AKAAAQAAAAAAAAAAAAAAAAAIAAAAAAwACAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChainAnalises.Classes.TheoryOfSet.Alphabet">
+    <Position X="4.75" Y="4.5" Width="1.75" />
+    <TypeIdentifier>
+      <FileName>Classes\TheoryOfSet\Alphabet.cs</FileName>
+      <HashCode>AEIAAAAAAAAAgBAAiAAABAAAQAEAAIAAAAAAAIAQCBA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="ChainAnalises.Classes.TheoryOfSet.AlphabetBin">
+    <Position X="0.5" Y="11.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Classes\TheoryOfSet\Alphabet.cs</FileName>
+      <HashCode>AAAAAAAAAAAACAAAAAAAAAAABAAAAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Interface Name="ChainAnalises.Classes.AuxiliaryClasses.DataManipulators.Iterators.IIterator&lt;ChainRetrun, ChainToIterate&gt;">
+    <Position X="27.75" Y="28.5" Width="3" />
+    <TypeIdentifier>
+      <FileName>Classes\AuxiliaryClasses\DataManipulators\Iterators\IIterator.cs</FileName>
+      <HashCode>AgAAAAAAAAAABAAAAACAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="ChainAnalises.Classes.AuxiliaryClasses.DataManipulators.Iterators.IWritableIterator&lt;ChainReturn, ChainToIterate&gt;">
+    <Position X="27.5" Y="30.5" Width="3.5" />
+    <TypeIdentifier>
+      <FileName>Classes\AuxiliaryClasses\DataManipulators\Iterators\IWritableIterator.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="ChainAnalises.Classes.DivizionToAccords.IDataCollector" Collapsed="true">
+    <Position X="49" Y="11.75" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Classes\DivizionToAccords\DataCollectors\IDataCollector.cs</FileName>
+      <HashCode>AAIAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="ChainAnalises.Classes.DivizionToAccords.Filter" Collapsed="true">
+    <Position X="40.25" Y="11.75" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Classes\DivizionToAccords\Filter.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="ChainAnalises.Classes.DivizionToAccords.AuxiliaryClasses.IDataForStd" Collapsed="true">
+    <Position X="50.75" Y="11.75" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Classes\DivizionToAccords\AuxiliaryClasses\IDataForStd.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAgAAAAAIAAAAAAAAAAEAAAACAAQAA=</HashCode>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="ChainAnalises.Classes.DivizionToAccords.ProbabilityCountStrateges.Strategy" Collapsed="true">
+    <Position X="45.5" Y="12.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Classes\DivizionToAccords\ProbabilityCountStrateges\Strategy.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="ChainAnalises.Classes.IntervalAnalysis.Characteristics.AuxiliaryInterfaces.IChainDataForCalculaton">
+    <Position X="16.5" Y="17.5" Width="2" />
+    <TypeIdentifier>
+      <FileName>Classes\IntervalAnalysis\Characteristics\AuxiliaryInterfaces\IChainDataForCalculaton.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="ChainAnalises.Classes.IntervalAnalysis.Characteristics.AuxiliaryInterfaces.IDataForCalculator">
+    <Position X="16.75" Y="15.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Classes\IntervalAnalysis\Characteristics\AuxiliaryInterfaces\IDataForCalculator.cs</FileName>
+      <HashCode>ABAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="ChainAnalises.Classes.IntervalAnalysis.Characteristics.Calculators.ICharacteristicCalculator" Collapsed="true">
+    <Position X="47.25" Y="11.75" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Classes\IntervalAnalysis\Characteristics\Calculators\ICharacteristicCalculator.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="ChainAnalises.Classes.MatrixCalculus.IMatrixBin" Collapsed="true">
+    <Position X="54.25" Y="11.75" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Classes\MatrixCalculus\IMatrixBin.cs</FileName>
+      <HashCode>AAAAAAAAAAAABABAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="ChainAnalises.Classes.MatrixCalculus.Operations.IOperator" Collapsed="true">
+    <Position X="40.25" Y="12.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Classes\MatrixCalculus\Operations\IOperator.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="ChainAnalises.Classes.Root.IBaseObject" Collapsed="true">
+    <Position X="43.75" Y="11.75" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Classes\Root\IBaseObject.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAACBA=</HashCode>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="ChainAnalises.Classes.Root.IBin" Collapsed="true">
+    <Position X="45.5" Y="11.75" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Classes\Root\IBin.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="ChainAnalises.Classes.Statistics.MarkovChain.Builders.IMatrixBuilder" Collapsed="true">
+    <Position X="56" Y="11.75" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Classes\Statistics\MarkovChain\Builders\IMatrixBuilder.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="ChainAnalises.Classes.Statistics.MarkovChain.Generators.IGenerator" Collapsed="true">
+    <Position X="52.5" Y="11.75" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Classes\Statistics\MarkovChain\Generators\IGenerator.cs</FileName>
+      <HashCode>AgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAA=</HashCode>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="ChainAnalises.Classes.Statistics.MarkovChain.Matrixes.Absolute.IAbsoluteMatrix" Collapsed="true">
+    <Position X="42" Y="11.75" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Classes\Statistics\MarkovChain\Matrixes\Absolute\IAbsoluteMatrix.cs</FileName>
+      <HashCode>AAIAAAAAAAAAAAAEAAAIAAQAAAAAAAAAAAAAAAAAAAQ=</HashCode>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="ChainAnalises.Classes.Statistics.MarkovChain.Matrixes.Absolute.IOpenMatrix" Collapsed="true">
+    <Position X="57.75" Y="11.75" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Classes\Statistics\MarkovChain\Matrixes\Absolute\IOpenMatrix.cs</FileName>
+      <HashCode>AAAAABAAAAAAAgAAAAAAAAAAAAAACAAAAAAgAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="ChainAnalises.Classes.Statistics.MarkovChain.Matrixes.Probability.IProbabilityMatrix" Collapsed="true">
+    <Position X="42" Y="12.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Classes\Statistics\MarkovChain\Matrixes\Probability\IProbabilityMatrix.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAQ=</HashCode>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="ChainAnalises.Classes.Statistics.MarkovChain.Matrixes.Probability.IWritebleMatrix" Collapsed="true">
+    <Position X="43.75" Y="12.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Classes\Statistics\MarkovChain\Matrixes\Probability\IWritebleMatrix.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Interface>
+  <Enum Name="ChainAnalises.Classes.AuxiliaryClasses.WebServices.Clusterization.MethodClusterization" Collapsed="true">
+    <Position X="47.25" Y="13.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Classes\AuxiliaryClasses\WebServices\Clusterization\MethodClusterization.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAQIAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ChainAnalises.Classes.AuxiliaryClasses.WordPriority" Collapsed="true">
+    <Position X="50.75" Y="13.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Classes\AuxiliaryClasses\WordPriority.cs</FileName>
+      <HashCode>AAAAAAEAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ChainAnalises.Classes.DivizionToAccords.Criteria.Method" Collapsed="true">
+    <Position X="45.5" Y="13.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Classes\DivizionToAccords\Criteria\Method.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAgAAEAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ChainAnalises.Classes.IntervalAnalysis.LinkUp" Collapsed="true">
+    <Position X="43.75" Y="13.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Classes\IntervalAnalysis\Link.cs</FileName>
+      <HashCode>AAIAAAAAACAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ChainAnalises.Classes.Statistics.MarkovChain.GeneratingMethod" Collapsed="true">
+    <Position X="40.25" Y="13.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Classes\Statistics\MarkovChain\GeneratingMethod.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAFAAAAAAAAAAAAgA=</HashCode>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ChainAnalises.Classes.Statistics.MarkovChain.TeachingMethod" Collapsed="true">
+    <Position X="49" Y="13.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Classes\Statistics\MarkovChain\TeachingMethod.cs</FileName>
+      <HashCode>AAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAIEAAAA=</HashCode>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ChainAnalises.Classes.Statistics.MarkovChain.Generators.GeneratorType" Collapsed="true">
+    <Position X="42" Y="13.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Classes\Statistics\MarkovChain\Generators\GeneratorType.cs</FileName>
+      <HashCode>AAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Enum>
+</ClassDiagram>
