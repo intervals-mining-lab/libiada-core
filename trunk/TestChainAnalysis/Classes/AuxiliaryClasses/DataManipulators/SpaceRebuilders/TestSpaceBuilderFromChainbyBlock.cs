@@ -1,6 +1,5 @@
 using System;
 using ChainAnalises.Classes.AuxiliaryClasses.DataManipulators.SpaceRebuilders;
-using ChainAnalises.Classes.AuxiliaryClasses.WebServices.Additional.Types;
 using ChainAnalises.Classes.EventTheory;
 using ChainAnalises.Classes.IntervalAnalysis;
 using ChainAnalises.Classes.PhantomChains;
@@ -19,7 +18,6 @@ namespace TestChainAnalysis.Classes.AuxiliaryClasses.DataManipulators.SpaceRebui
         private Chain NotDivCorrect = null;
         private Chain Empty = null;
 //        private Event NotChain = null;
-        private ActionType Act = null;
         private SpaceRebuilderFromChainToChainByBlockPM<Chain, Chain> Builder = null;
 
 
@@ -97,7 +95,6 @@ namespace TestChainAnalysis.Classes.AuxiliaryClasses.DataManipulators.SpaceRebui
             NotChain.AddItem(new ValueChar('t'), NotChainPlace.SetValues(new long[] { 3, 3 }));
  */
 
-            Act = ActionType.CreateAlphabetByBlock;
         }
 
         ///<summary>
@@ -114,10 +111,8 @@ namespace TestChainAnalysis.Classes.AuxiliaryClasses.DataManipulators.SpaceRebui
         [ExpectedException(typeof (NullReferenceException))]
         public void TestNull()
         {
-            Act.BlockSize = 2;
-            Act.LinkUp = LinkUp.Start;
-
-            Builder = new SpaceRebuilderFromChainToChainByBlockPM<Chain, Chain>(Act);
+            int BlockSize = 2;
+            Builder = new SpaceRebuilderFromChainToChainByBlockPM<Chain, Chain>(LinkUp.Start, BlockSize);
 
             Builder.Rebuild(null);
         }
@@ -147,10 +142,8 @@ namespace TestChainAnalysis.Classes.AuxiliaryClasses.DataManipulators.SpaceRebui
         [Test]
         public void TestinWorkModeLinkStart()
         {
-            Act.BlockSize = 2;
-            Act.LinkUp = LinkUp.Start;
-
-            Builder = new SpaceRebuilderFromChainToChainByBlockPM<Chain, Chain>(Act);
+            int BlockSize = 2;
+            Builder = new SpaceRebuilderFromChainToChainByBlockPM<Chain, Chain>(LinkUp.Start, BlockSize);
 
             From = Builder.Rebuild(From);
             Chain El = new Chain(2);
@@ -212,10 +205,8 @@ namespace TestChainAnalysis.Classes.AuxiliaryClasses.DataManipulators.SpaceRebui
         [Test]
         public void TestinWorkModeLinkEnd()
         {
-            Act.BlockSize = 2;
-            Act.LinkUp = LinkUp.End;
-
-            Builder = new SpaceRebuilderFromChainToChainByBlockPM<Chain, Chain>(Act);
+            int BlockSize = 2;
+            Builder = new SpaceRebuilderFromChainToChainByBlockPM<Chain, Chain>(LinkUp.End, BlockSize);
 
             From = Builder.Rebuild(From);
             Chain El = new Chain(2);
@@ -278,10 +269,8 @@ namespace TestChainAnalysis.Classes.AuxiliaryClasses.DataManipulators.SpaceRebui
         ///</summary>
         public void TestNotDivCorrectLinkStart()
         {
-            Act.BlockSize = 2;
-            Act.LinkUp = LinkUp.Start;
-
-            Builder = new SpaceRebuilderFromChainToChainByBlockPM<Chain, Chain>(Act);
+            int BlockSize = 2;
+            Builder = new SpaceRebuilderFromChainToChainByBlockPM<Chain, Chain>(LinkUp.Start, BlockSize);
 
             NotDivCorrect = Builder.Rebuild(NotDivCorrect);
             Chain El = new Chain(2);
@@ -335,10 +324,8 @@ namespace TestChainAnalysis.Classes.AuxiliaryClasses.DataManipulators.SpaceRebui
         ///</summary>
         public void TestNotDivCorrectLinkEnd()
         {
-            Act.BlockSize = 2;
-            Act.LinkUp = LinkUp.End;
-
-            Builder = new SpaceRebuilderFromChainToChainByBlockPM<Chain, Chain>(Act);
+            int BlockSize = 2;
+            Builder = new SpaceRebuilderFromChainToChainByBlockPM<Chain, Chain>(LinkUp.End, BlockSize);
 
             NotDivCorrect = Builder.Rebuild(NotDivCorrect);
             Chain El = new Chain(2);
@@ -391,10 +378,8 @@ namespace TestChainAnalysis.Classes.AuxiliaryClasses.DataManipulators.SpaceRebui
         [Test]
         public void TestEmpty()
         {
-            Act.BlockSize = 2;
-            Act.LinkUp = LinkUp.End;
-
-            Builder = new SpaceRebuilderFromChainToChainByBlockPM<Chain, Chain>(Act);
+            int BlockSize = 2;
+            Builder = new SpaceRebuilderFromChainToChainByBlockPM<Chain, Chain>(LinkUp.Start, BlockSize);
 
             Empty = Builder.Rebuild(Empty);
 

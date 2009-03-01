@@ -1,6 +1,5 @@
 using System;
 using ChainAnalises.Classes.AuxiliaryClasses.DataManipulators.Iterators;
-using ChainAnalises.Classes.AuxiliaryClasses.WebServices.Additional.Types;
 using ChainAnalises.Classes.EventTheory;
 using ChainAnalises.Classes.IntervalAnalysis;
 using ChainAnalises.Classes.PhantomChains;
@@ -18,11 +17,10 @@ namespace ChainAnalises.Classes.AuxiliaryClasses.DataManipulators.SpaceRebuilder
 
         ///<summary>
         ///</summary>
-        ///<param name="act"></param>
-        public SpaceRebuilderFromChainToChainByBlockPM(ActionType act)
+        public SpaceRebuilderFromChainToChainByBlockPM(LinkUp link, int BlockSize)
         {
-            Link = act.LinkUp;
-            blocksize = act.BlockSize;
+            Link = link;
+            blocksize = BlockSize;
         }
 
         public override ChainTo Rebuild(ChainFrom A)

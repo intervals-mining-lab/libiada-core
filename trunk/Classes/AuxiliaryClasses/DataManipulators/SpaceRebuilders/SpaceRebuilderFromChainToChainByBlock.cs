@@ -1,30 +1,26 @@
 using System;
 using ChainAnalises.Classes.AuxiliaryClasses.DataManipulators.Iterators;
-using ChainAnalises.Classes.AuxiliaryClasses.WebServices.Additional.Types;
-using ChainAnalises.Classes.EventTheory;
 using ChainAnalises.Classes.IntervalAnalysis;
-using ChainAnalises.Classes.PhantomChains;
-using ChainAnalises.Classes.Root;
 
 namespace ChainAnalises.Classes.AuxiliaryClasses.DataManipulators.SpaceRebuilders
 {
     ///<summary>
     ///</summary>
-    public class SpaceRebuilderFromChainToChainByBlock<ChainTo, ChainFrom, ChainItem> : SpaceRebuilder<ChainTo, ChainFrom>
+    public class SpaceRebuilderFromChainToChainByBlock<ChainTo, ChainFrom, ChainItem> :
+        SpaceRebuilder<ChainTo, ChainFrom>
         where ChainTo : BaseChain, new()
         where ChainFrom : BaseChain, new()
-        where ChainItem: BaseChain, new()
+        where ChainItem : BaseChain, new()
     {
-        private readonly LinkUp Link;
         private readonly int blocksize;
+        private readonly LinkUp Link;
 
         ///<summary>
         ///</summary>
-        ///<param name="act"></param>
-        public SpaceRebuilderFromChainToChainByBlock(ActionType act)
+        public SpaceRebuilderFromChainToChainByBlock(LinkUp link, int BlockSize)
         {
-            Link = act.LinkUp;
-            blocksize = act.BlockSize;
+            Link = link;
+            blocksize = BlockSize;
         }
 
         public override ChainTo Rebuild(ChainFrom A)
@@ -35,7 +31,7 @@ namespace ChainAnalises.Classes.AuxiliaryClasses.DataManipulators.SpaceRebuilder
             }
 
             ChainTo temp = new ChainTo();
-            temp.ClearAndSetNewLength(A.Length / blocksize);
+            temp.ClearAndSetNewLength(A.Length/blocksize);
             IteratorBase<ChainItem, ChainFrom> From;
             IWritableIterator<ChainTo, ChainTo> To;
 
