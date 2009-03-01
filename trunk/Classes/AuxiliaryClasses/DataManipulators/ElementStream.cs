@@ -13,7 +13,7 @@ namespace ChainAnalises.Classes.AuxiliaryClasses.DataManipulators
         ///<summary>
         ///</summary>
         ///<param name="MetaInfo"></param>
-        public ElementStream(IBaseObject MetaInfo)
+        public ElementStream(FileType MetaInfo)
         {
             pMetaInfo = MetaInfo;
         }

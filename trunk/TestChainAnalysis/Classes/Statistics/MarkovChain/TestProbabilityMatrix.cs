@@ -158,11 +158,11 @@ namespace TestChainAnalysis.Classes.Statistics.MarkovChain
 
 
 
-           //TODO: FIX MISSING OF FILE MarkovChainNotUniformDynamic<Chain, Chain> Markov = new MarkovChainNotUniformDynamic<Chain, Chain>(2, 0, new MockGenerator());
-            //Markov.Teach(TestChain2, TeachingMethod.Cycle);
+            MarkovChainNotUniformDynamic<Chain, Chain> Markov = new MarkovChainNotUniformDynamic<Chain, Chain>(2, 0, new MockGenerator());
+            Markov.Teach(TestChain2, TeachingMethod.Cycle);
 
-            //Chain ResultPractice = Markov.Generate(30);
-            //Assert.AreEqual(ResultTheory, ResultPractice);
+            Chain ResultPractice = Markov.Generate(30);
+            Assert.AreEqual(ResultTheory, ResultPractice);
         }
     }
 }
