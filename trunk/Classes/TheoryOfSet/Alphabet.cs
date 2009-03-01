@@ -198,7 +198,7 @@ namespace ChainAnalises.Classes.TheoryOfSet
             int temp = 0;
             foreach (object o in vault)
             {
-                temp += 29*o.GetHashCode();
+                temp =temp ^ 29*o.GetHashCode();
             }
             return temp;
         }

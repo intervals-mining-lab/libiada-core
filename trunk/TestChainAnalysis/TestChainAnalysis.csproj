@@ -57,12 +57,33 @@
     <Compile Include="Classes\AuxiliaryClasses\WebServices\Additional\Threads\TestThread.cs" />
     <Compile Include="Classes\AuxiliaryClasses\WebServices\Additional\Types\TestActionType.cs" />
     <Compile Include="Classes\AuxiliaryClasses\WebServices\Additional\Types\TestTypeBase.cs" />
+    <Compile Include="Classes\AuxiliaryClasses\WebServices\db_interface\AnswerChains.cs" />
+    <Compile Include="Classes\AuxiliaryClasses\WebServices\db_interface\DBAlphabet.cs" />
+    <Compile Include="Classes\AuxiliaryClasses\WebServices\db_interface\DBBuilding.cs" />
+    <Compile Include="Classes\AuxiliaryClasses\WebServices\db_interface\DBCalculate.cs" />
+    <Compile Include="Classes\AuxiliaryClasses\WebServices\db_interface\DBChain.cs" />
+    <Compile Include="Classes\AuxiliaryClasses\WebServices\db_interface\DBChainMessage.cs" />
+    <Compile Include="Classes\AuxiliaryClasses\WebServices\db_interface\DBCharacteristic.cs" />
+    <Compile Include="Classes\AuxiliaryClasses\WebServices\db_interface\DBFrequencyList.cs" />
+    <Compile Include="Classes\AuxiliaryClasses\WebServices\db_interface\DBMessage.cs" />
+    <Compile Include="Classes\AuxiliaryClasses\WebServices\db_interface\DBUniformChain.cs" />
+    <Compile Include="Classes\AuxiliaryClasses\WebServices\db_interface\TestCalculation.cs" />
+    <Compile Include="Classes\AuxiliaryClasses\WebServices\db_interface\AnswerChains.cs" />
+    <Compile Include="Classes\AuxiliaryClasses\WebServices\db_interface\DBAlphabet.cs" />
+    <Compile Include="Classes\AuxiliaryClasses\WebServices\db_interface\DBBuilding.cs" />
+    <Compile Include="Classes\AuxiliaryClasses\WebServices\db_interface\DBCalculate.cs" />
+    <Compile Include="Classes\AuxiliaryClasses\WebServices\db_interface\DBChain.cs" />
+    <Compile Include="Classes\AuxiliaryClasses\WebServices\db_interface\DBCharacteristic.cs" />
+    <Compile Include="Classes\AuxiliaryClasses\WebServices\db_interface\DBFrequencyList.cs" />
+    <Compile Include="Classes\AuxiliaryClasses\WebServices\db_interface\DBUniformChain.cs" />
+    <Compile Include="Classes\AuxiliaryClasses\WebServices\db_interface\TestCalculation.cs" />
     <Compile Include="Classes\AuxiliaryClasses\WebServices\TestAlphabetService.cs" />
     <Compile Include="Classes\AuxiliaryClasses\WebServices\TestCalculationService.cs" />
     <Compile Include="Classes\AuxiliaryClasses\WebServices\TestClusterizationService.cs" />
     <Compile Include="Classes\AuxiliaryClasses\WebServices\TestMarkovService.cs" />
     <Compile Include="Classes\AuxiliaryClasses\WebServices\TestPhantomService.cs" />
     <Compile Include="Classes\AuxiliaryClasses\WebServices\TestSegmentationService.cs" />
+    <Compile Include="Classes\Compress\TestHennon.cs" />
     <Compile Include="Classes\DataMining\Clusterization\KRAB\TestGraphCalculator.cs" />
     <Compile Include="Classes\DataMining\Clusterization\KRAB\TestKrab.cs" />
     <Compile Include="Classes\DataMining\Clusterization\TestDataObject.cs" />
@@ -109,6 +130,7 @@
     <Compile Include="Classes\Statistics\MarkovChain\TestMarkovChainNotUniform.cs" />
     <Compile Include="Classes\Statistics\MarkovChain\TestMarkovChainUniform.cs" />
     <Compile Include="Classes\Statistics\MarkovChain\TestProbabilityMatrix.cs" />
+    <Compile Include="Classes\Statistics\TestSortDictionary.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Classes\Root\SimpleTypes\TestValueInt.cs" />
     <Compile Include="Classes\Root\SimpleTypes\TestValueString.cs" />
@@ -183,6 +205,24 @@
       <Project>{E3B8B4A4-5B6F-4D2F-8422-46A12D64D23C}</Project>
       <Name>ChainAnalysis</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="libs\Castle.Core.dll" />
+    <Content Include="libs\Castle.DynamicProxy2.dll" />
+    <Content Include="libs\Iesi.Collections.dll" />
+    <Content Include="libs\Iesi.Collections.pdb" />
+    <Content Include="libs\LearningTests.dll" />
+    <Content Include="libs\LearningTests.pdb" />
+    <Content Include="libs\log4net.dll" />
+    <Content Include="libs\MySql.Data.dll" />
+    <Content Include="libs\NHibernate.dll" />
+    <Content Include="libs\NHibernate.pdb" />
+    <Content Include="libs\nunit.framework.dll" />
+    <Content Include="libs\nunit.framework.xml" />
+    <Content Include="Mapping\DBChainMessage.hbm.xml" />
+    <Content Include="Mapping\DBMessage.hbm.xml" />
+    <Content Include="Mapping\DBFileType.hbm.xml" />
+    <Content Include="Mapping\DBFile.hbm.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

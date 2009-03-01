@@ -225,6 +225,11 @@ namespace ChainAnalises.Classes.EventTheory
             return EqualsAsSpace(obj as Space);
         }
 
+        public override int GetHashCode()
+        {
+            return 29 * this.pAlphabet.GetHashCode() ^ 29 * this.pDimension.GetHashCode() ^ 29 * this.vault.GetHashCode();
+        }
+
         public IBin GetBin()
         {
             SpaceBin Temp = new SpaceBin();

@@ -14,6 +14,9 @@ namespace ChainAnalises.Classes.Root.SimpleTypes
             
         }
 
+        ///<summary>
+        ///</summary>
+        ///<param name="bin"></param>
         public ValueString(ValueStringBin bin)
         {
             value = (string)bin.value.Clone();
@@ -50,6 +53,11 @@ namespace ChainAnalises.Classes.Root.SimpleTypes
             return value == ((ValueString) obj).value;
         }
 
+        public override int GetHashCode()
+        {
+            return value.GetHashCode();
+        }
+
         public IBin GetBin()
         {
             ValueStringBin temp = new ValueStringBin();
@@ -81,6 +89,8 @@ namespace ChainAnalises.Classes.Root.SimpleTypes
         }
     }
 
+    ///<summary>
+    ///</summary>
     public class ValueStringBin:IBin
     {
         public string value;
