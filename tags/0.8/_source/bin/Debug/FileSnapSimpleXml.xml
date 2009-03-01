@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<File xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <FileType>
+    <MetaInfo>
+      <DictionaryEntry>
+        <Key xsi:type="xsd:string">First</Key>
+        <Value xsi:type="xsd:int">6</Value>
+      </DictionaryEntry>
+      <DictionaryEntry>
+        <Key xsi:type="xsd:string">Second</Key>
+        <Value xsi:type="xsd:int">16</Value>
+      </DictionaryEntry>
+    </MetaInfo>
+    <Name>txt</Name>
+    <MIME>text</MIME>
+    <Size>1</Size>
+    <HashCode>1054010489</HashCode>
+    <Type>ChainAnalises.Classes.FileType</Type>
+  </FileType>
+  <Data>dsfdskhkldhg</Data>
+  <Type>ChainAnalises.Classes.AuxiliaryClasses.WebServices.Additional.File</Type>
+</File>

@@ -1,0 +1,32 @@
+<SOAP-ENV:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/" xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns:clr="http://schemas.microsoft.com/soap/encoding/clr/1.0" SOAP-ENV:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/">
+<SOAP-ENV:Body>
+<a1:File id="ref-1" xmlns:a1="http://schemas.microsoft.com/clr/nsassem/ChainAnalises.Classes/ChainAnalises%2C%20Version%3D1.0.0.0%2C%20Culture%3Dneutral%2C%20PublicKeyToken%3Dnull">
+<pFileType href="#ref-3"/>
+<pData id="ref-4">dsfdskhkldhg</pData>
+</a1:File>
+<a1:FileType id="ref-3" xmlns:a1="http://schemas.microsoft.com/clr/nsassem/ChainAnalises.Classes/ChainAnalises%2C%20Version%3D1.0.0.0%2C%20Culture%3Dneutral%2C%20PublicKeyToken%3Dnull">
+<pname id="ref-5">txt</pname>
+<pMIME id="ref-6">text</pMIME>
+<psize>1</psize>
+<MetaInfo href="#ref-7"/>
+<pHashCode>1054010489</pHashCode>
+<TypeBase_x002B_pname href="#ref-5"/>
+<TypeBase_x002B_pMIME href="#ref-6"/>
+<TypeBase_x002B_psize>1</TypeBase_x002B_psize>
+<TypeBase_x002B_pHashCode>1054010489</TypeBase_x002B_pHashCode>
+</a1:FileType>
+<a2:Hashtable id="ref-7" xmlns:a2="http://schemas.microsoft.com/clr/ns/System.Collections">
+<LoadFactor>0.72</LoadFactor>
+<Version>0</Version>
+<Comparer xsi:null="1"/>
+<HashCodeProvider xsi:null="1"/>
+<HashSize>11</HashSize>
+<Keys href="#ref-8"/>
+<Values href="#ref-9"/>
+</a2:Hashtable>
+<SOAP-ENC:Array id="ref-8" SOAP-ENC:arrayType="xsd:anyType[0]">
+</SOAP-ENC:Array>
+<SOAP-ENC:Array id="ref-9" SOAP-ENC:arrayType="xsd:anyType[0]">
+</SOAP-ENC:Array>
+</SOAP-ENV:Body>
+</SOAP-ENV:Envelope>
