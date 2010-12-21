@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="FullSignature">
+  <Class Name="TestChainAnalysis.Classes.DataMining.AlternativeClusterization.TestAlternativeKRAB">
+    <Position X="3.75" Y="2.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAEAAAAAAAAAAAAAAAABAIAAAAAAAAAAAA=</HashCode>
+      <FileName>Classes\DataMining\AlternativeClusterization\TestAlternativeKRAB.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TestChainAnalysis.Classes.DataMining.AlternativeClusterization.TestGraphElement">
+    <Position X="3.75" Y="0.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAgAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Classes\DataMining\AlternativeClusterization\TestGraphElement.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TestChainAnalysis.Classes.DataMining.AlternativeClusterization.TestGraphManager">
+    <Position X="0.5" Y="0.5" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAgQAAAAgAAAAQAAAACIAAIAEAIASIAAAAAAAAAgABA=</HashCode>
+      <FileName>Classes\DataMining\AlternativeClusterization\TestGraphManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
