@@ -4,6 +4,10 @@ using ChainAnalises.Classes.IntervalAnalysis.Characteristics.Calculators;
 
 namespace ChainAnalises.Classes.IntervalAnalysis.Characteristics.Calculators
 {
+    ///<summary>
+    /// Периодичность.
+    /// Имеет смысл только для однородной цепи.
+    ///</summary>
     public class Periodicity : ICharacteristicCalculator
     {
         public double Calculate(UniformChain pChain, LinkUp Link)
@@ -19,6 +23,11 @@ namespace ChainAnalises.Classes.IntervalAnalysis.Characteristics.Calculators
                 pChain.GetCharacteristic(Link, CharacteristicsFactory.deltaG) /
                 pChain.GetCharacteristic(Link, CharacteristicsFactory.deltaA);
 
+        }
+
+        public CharacteristicsEnum GetCharacteristicName()
+        {
+            return CharacteristicsEnum.Periodicity;
         }
     }
 }

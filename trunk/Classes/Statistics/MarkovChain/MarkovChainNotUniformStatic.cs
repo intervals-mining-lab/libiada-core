@@ -2,6 +2,7 @@ using ChainAnalises.Classes.AuxiliaryClasses.DataManipulators.Iterators;
 using ChainAnalises.Classes.IntervalAnalysis;
 using ChainAnalises.Classes.Statistics.MarkovChain.Generators;
 
+
 namespace ChainAnalises.Classes.Statistics.MarkovChain
 {
     ///<summary>
@@ -27,9 +28,9 @@ namespace ChainAnalises.Classes.Statistics.MarkovChain
         /// Генерация марковской цепочки
         ///</summary>
         ///<param name="i">Длинна генерируемой цепи</param>
-        ///<param name="rang">Ранг генерируемой цепи</param>
+        ///<param name="chainRang">Ранг генерируемой цепи</param>
         ///<returns>Сгенерированная цепь</returns>
-        public override ChainGenerated Generate(int i, int rang)
+        public override ChainGenerated Generate(int i, int chainRang)
         {
             ChainGenerated Temp = new ChainGenerated();
             Temp.ClearAndSetNewLength(i);
@@ -40,11 +41,14 @@ namespace ChainAnalises.Classes.Statistics.MarkovChain
             }
             else
             {
-              //TODO: FIX MISSING OF FILE  IRead = new NullIteratorStart<ChainGenerated, ChainGenerated>(Temp, 1);
+                IRead =null; //new NullIteratorStart<ChainGenerated, ChainGenerated>(Temp, 1);
             }
             IteratorWritableStart<ChainGenerated, ChainGenerated> IWrite = new IteratorWritableStart<ChainGenerated, ChainGenerated>(Temp);
-           // IRead.Reset();
-           // IRead.Next();
+            if (IRead != null)
+            {
+                IRead.Reset();
+                IRead.Next();
+            }
             IWrite.Reset();
             pGenerator.Resert();
 
@@ -59,17 +63,20 @@ namespace ChainAnalises.Classes.Statistics.MarkovChain
 
                 if (j >= rang)
                 {
-                   // IRead.Next();
+                    if (IRead != null) IRead.Next();
                 }
 
-               // ChainGenerated chain = IRead.Current();
-               // int[] indexedChain = new int[chain.Length];
-               // for (int k = 0; k < chain.Length; k++)
+                if (IRead != null)
                 {
-               //     indexedChain[k] = alphabet.IndexOf(chain[k]);
-                }
+                    ChainGenerated chain = IRead.Current();
+                    int[] indexedChain = new int[chain.Length];
+                    for (int k = 0; k < chain.Length; k++)
+                    {
+                        indexedChain[k] = alphabet.IndexOf(chain[k]);
+                    }
 
-               // IWrite.SetCurrent(GetObject(ProbabilityMatrix[m-1].GetProbabilityVector(alphabet, indexedChain)));
+                    IWrite.SetCurrent(GetObject(ProbabilityMatrix[m-1].GetProbabilityVector(alphabet, indexedChain)));
+                }
             }
             return Temp;
         }

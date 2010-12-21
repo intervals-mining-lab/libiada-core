@@ -1,9 +1,7 @@
 using System;
-using System.Collections;
 using ChainAnalises.Classes.AuxiliaryClasses.DataManipulators.SpaceRebuilders;
 using ChainAnalises.Classes.IntervalAnalysis;
 using ChainAnalises.Classes.IntervalAnalysis.Characteristics;
-using ChainAnalises.Classes.IntervalAnalysis.Characteristics.Calculators;
 using ChainAnalises.Classes.TheoryOfSet;
 
 namespace ChainAnalises.Classes.AuxiliaryClasses.DataManipulators
@@ -56,9 +54,9 @@ namespace ChainAnalises.Classes.AuxiliaryClasses.DataManipulators
             }
         }
 
-        ///<summary>
-        ///</summary>
-        ///<exception cref="NotImplementedException"></exception>
+        /// <summary>
+        /// 
+        /// </summary>
         public virtual void Calculate()
         {
             pBuilding.CalculateCharacteristicList(CharacteristicsFactory.List);

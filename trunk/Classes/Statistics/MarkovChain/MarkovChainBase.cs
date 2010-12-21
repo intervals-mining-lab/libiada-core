@@ -19,11 +19,11 @@ namespace ChainAnalises.Classes.Statistics.MarkovChain
         where ChainTeached: BaseChain, new() 
         where ChainGenerated: BaseChain,new()
     {
-        protected Alphabet alphabet = null;
-        protected IGenerator pGenerator = null;
-        protected int rang = 0;
-        protected IProbabilityMatrix[] ProbabilityMatrix = null;
-        protected int uniformRang = 0;
+        protected Alphabet alphabet;
+        protected IGenerator pGenerator;
+        protected int rang;
+        protected IProbabilityMatrix[] ProbabilityMatrix;
+        protected int uniformRang;
 
         ///<summary>
         /// Конструктор
@@ -77,7 +77,7 @@ namespace ChainAnalises.Classes.Statistics.MarkovChain
             foreach (KeyValuePair<IBaseObject, double> pair in List)
             {
                 Temp += pair.Value;
-                if ((Temp >= Probability) && (null == Result))
+                if (Temp >= Probability)
                 {
                     Result = pair.Key;
                     break;
@@ -142,11 +142,22 @@ namespace ChainAnalises.Classes.Statistics.MarkovChain
         /// <summary>
         /// Возвращает матрицу вероятностей марковской цепи
         /// </summary>
-        public IProbabilityMatrix GetPropabilityMatrix //Lesha
+        public IProbabilityMatrix PropabilityMatrix
         {
             get
             {
                 return ProbabilityMatrix[0];
+            }
+        }
+
+        ///<summary>
+        /// Возвращает алфавит цепи
+        ///</summary>
+        public Alphabet Alphabet
+        {
+            get
+            {
+                return alphabet;
             }
         }
     }

@@ -1,5 +1,6 @@
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
+using ChainAnalises.Classes.AuxiliaryClasses.WebServices.Calculate;
 using ChainAnalises.Classes.AuxiliaryClasses.WebServices.CreateAlphabet;
 
 namespace ChainAnalises.Classes.AuxiliaryClasses.WebServices.Additional.Threads
@@ -10,7 +11,7 @@ namespace ChainAnalises.Classes.AuxiliaryClasses.WebServices.Additional.Threads
     {
         private RequestFiles InputData = null;
 
-        public override void SetData(object data)
+        public override void SetData(Request data)
         {
             InputData = (RequestFiles) data;
         }

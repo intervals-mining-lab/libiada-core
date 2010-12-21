@@ -4,9 +4,17 @@ using ChainAnalises.Classes.IntervalAnalysis.Characteristics.Calculators;
 namespace ChainAnalises.Classes.IntervalAnalysis.Characteristics.Calculators
 {
     ///<summary>
+    /// Среднее арифметическое значение длин интервалов.
     ///</summary>
     public class ArithmeticMean : ICharacteristicCalculator
     {
+        /// <summary>
+        /// Для однородной цепи данная характеристика 
+        /// вычисляется как 1/вероятность или чеастоту её элемента.
+        /// </summary>
+        /// <param name="chain"></param>
+        /// <param name="Link"></param>
+        /// <returns></returns>
         public double Calculate(UniformChain chain, LinkUp Link)
         {
             double n = chain.GetCharacteristic(LinkUp.Both, CharacteristicsFactory.Length);
@@ -16,6 +24,7 @@ namespace ChainAnalises.Classes.IntervalAnalysis.Characteristics.Calculators
         }
 
         ///<summary>
+        /// Вычисляется как среднее значение от среднего интервала однородных цепей
         ///</summary>
         ///<param name="pChain"></param>
         ///<param name="Link"></param>
@@ -29,6 +38,11 @@ namespace ChainAnalises.Classes.IntervalAnalysis.Characteristics.Calculators
                 sum += Data.IUniformChain(i).GetCharacteristic(Link, CharacteristicsFactory.deltaA);
             }
             return sum/pChain.Alpahbet.power;
+        }
+
+        public CharacteristicsEnum GetCharacteristicName()
+        {
+            return CharacteristicsEnum.ArithmeticMean;
         }
     }
 }

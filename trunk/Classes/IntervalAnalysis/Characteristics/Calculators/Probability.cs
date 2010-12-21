@@ -3,6 +3,7 @@ using ChainAnalises.Classes.IntervalAnalysis.Characteristics.AuxiliaryInterfaces
 namespace ChainAnalises.Classes.IntervalAnalysis.Characteristics.Calculators
 {
     ///<summary>
+    /// Вероятность (частота).
     ///</summary>
     public class Probability : ICharacteristicCalculator
     {
@@ -12,6 +13,12 @@ namespace ChainAnalises.Classes.IntervalAnalysis.Characteristics.Calculators
                    pChain.GetCharacteristic(LinkUp.Both, CharacteristicsFactory.Length);
         }
 
+        /// <summary>
+        /// Для неоднородной, заполненной цепи всегда равна 1.
+        /// </summary>
+        /// <param name="pChain"></param>
+        /// <param name="Link"></param>
+        /// <returns></returns>
         public double Calculate(Chain pChain, LinkUp Link)
         {
             IChainDataForCalculaton Data = pChain;
@@ -20,7 +27,16 @@ namespace ChainAnalises.Classes.IntervalAnalysis.Characteristics.Calculators
             {
                 temp += Data.IUniformChain(i).GetCharacteristic(Link, CharacteristicsFactory.P);
             }
+            if (temp > 1)
+            {
+                temp = 1;
+            }
             return temp;
+        }
+
+        public CharacteristicsEnum GetCharacteristicName()
+        {
+            return CharacteristicsEnum.Propability;
         }
     }
 }

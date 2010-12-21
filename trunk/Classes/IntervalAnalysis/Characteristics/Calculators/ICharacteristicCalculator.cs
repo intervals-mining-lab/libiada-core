@@ -1,6 +1,7 @@
 namespace ChainAnalises.Classes.IntervalAnalysis.Characteristics.Calculators
 {
     ///<summary>
+    /// Интерфейс калькулатора
     ///</summary>
     public interface ICharacteristicCalculator
     {
@@ -17,5 +18,11 @@ namespace ChainAnalises.Classes.IntervalAnalysis.Characteristics.Calculators
         ///<param name="Link"></param>
         ///<returns></returns>
         double Calculate(Chain pChain, LinkUp Link);
+
+        ///<summary>
+        /// Возвращает имя характеристики вычисляемой калькулятором
+        ///</summary>
+        ///<returns>Имя в виде строки, например Entropy</returns>
+        CharacteristicsEnum GetCharacteristicName();
     }
 }

@@ -5,9 +5,17 @@ using ChainAnalises.Classes.Root.SimpleTypes;
 namespace ChainAnalises.Classes.IntervalAnalysis.Characteristics.Calculators
 {
     ///<summary>
+    /// ƒлинна как сумма длин интервалов.
     ///</summary>
     public class Length : ICharacteristicCalculator
     {
+        /// <summary>
+        /// ƒл€ однородной цепи считаетс€ по первому 
+        /// или последнему значащему сообщению в зависимости от прив€зки.
+        /// </summary>
+        /// <param name="pChain"></param>
+        /// <param name="Link"></param>
+        /// <returns></returns>
         public double Calculate(UniformChain pChain, LinkUp Link)
         {
             switch(Link)
@@ -27,6 +35,11 @@ namespace ChainAnalises.Classes.IntervalAnalysis.Characteristics.Calculators
         public double Calculate(Chain pChain, LinkUp Link)
         {
             return pChain.Length;
+        }
+
+        public CharacteristicsEnum GetCharacteristicName()
+        {
+            return CharacteristicsEnum.Length;
         }
     }
 }

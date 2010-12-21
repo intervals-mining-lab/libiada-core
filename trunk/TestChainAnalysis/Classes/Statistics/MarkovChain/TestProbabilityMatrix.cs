@@ -53,7 +53,7 @@ namespace TestChainAnalysis.Classes.Statistics.MarkovChain
         ///<summary>
         ///</summary>
         [Test]
-        public void TestGenerationUniformMarkovChain()
+        public void TestGenerationNotUniformMarkovChainRang0()
         {
             Chain ResultTheory = new Chain(10);
             ResultTheory[0] = (ValueString)"b";
@@ -119,7 +119,7 @@ namespace TestChainAnalysis.Classes.Statistics.MarkovChain
 
         ///<summary>
         ///</summary>
-        [Test]
+ /*       [Test]
         public void TestGenerationNotUniformMarkovChain()
         {
             Chain ResultTheory = new Chain(30);
@@ -163,6 +163,6 @@ namespace TestChainAnalysis.Classes.Statistics.MarkovChain
 
             Chain ResultPractice = Markov.Generate(30);
             Assert.AreEqual(ResultTheory, ResultPractice);
-        }
+        }*/
     }
 }

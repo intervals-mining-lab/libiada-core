@@ -1,17 +1,14 @@
 using System;
-using System.Xml;
-using System.Xml.Schema;
-using System.Xml.Serialization;
 using ChainAnalises.Classes.AuxiliaryClasses.WebServices.Additional.Types;
 
-namespace ChainAnalises.Classes.AuxiliaryClasses.WebServices.Requests
+namespace ChainAnalises.Classes.AuxiliaryClasses.WebServices.Additional
 {
     ///<summary>
     ///</summary>
     [Serializable]
-    public class Request //: IXmlSerializable
+    public abstract class Request //: IXmlSerializable
     {
-        public ActionType Action;
+        /*public ActionType Action;
 
         public override bool Equals(object obj)
         {
@@ -25,7 +22,7 @@ namespace ChainAnalises.Classes.AuxiliaryClasses.WebServices.Requests
         private bool EqualsAsRequest(Request request)
         {
             return Action.Equals(request.Action);
-        }
+        }*/
 
       /*  public virtual XmlSchema GetSchema()
         {

@@ -7,12 +7,14 @@ using ChainAnalises.Classes.TheoryOfSet;
 namespace ChainAnalises.Classes.PhantomChains
 {
     ///<summary>
+    /// Фантомное сообщение, хранящее в себе несколько вариантов значений одной позиции.
     ///</summary>
     [Serializable]
     public class MessagePhantom : Alphabet, IBaseObject
     {
 
         ///<summary>
+        /// Конструктор без параметров
         ///</summary>
         public MessagePhantom()
         {
@@ -20,7 +22,6 @@ namespace ChainAnalises.Classes.PhantomChains
         }
         ///<summary>
         ///</summary>
-        ///<exception cref="NotImplementedException"></exception>
         public MessagePhantom(AlphabetBin Bin) : base(Bin)
         {
         }
@@ -72,32 +73,6 @@ namespace ChainAnalises.Classes.PhantomChains
 
         private bool EqualsAsPhantom(MessagePhantom messagePhantom)
         {
-            /*if (messagePhantom == null)
-            {
-                return false;
-            }
-            bool result = false;
-            MessagePhantom In;
-            MessagePhantom what;
-
-            if (power > messagePhantom.power)
-            {
-                In = messagePhantom;
-                what = this;
-            }
-            else
-            {
-                In = this;
-                what = messagePhantom;
-            }
-            for (int i = 0; i < what.power; i++)
-            {
-                if (In.IndexOf(what[i]) != -1)
-                {
-                    return true;
-                }
-            }
-            return result;*/
             return base.Equals(messagePhantom);
         }
 
@@ -122,6 +97,11 @@ namespace ChainAnalises.Classes.PhantomChains
             }
         }
 
+        /// <summary>
+        /// Добавляет объект в фантомное сообщение.
+        /// </summary>
+        /// <param name="BaseObject">Новый объект</param>
+        /// <returns>Индекс нового объекта или -1 если его не удалось добавить</returns>
         public override int Add(IBaseObject BaseObject)
         {
             if (BaseObject != null && !BaseObject.Equals(PsevdoValue.Instance()))
@@ -131,6 +111,16 @@ namespace ChainAnalises.Classes.PhantomChains
             return -1;
         }
 
+        public override string ToString()
+        {
+            return vault[0].ToString();
+        }
+
+
+        /// <summary>
+        /// Метод копирования фантомного сообщения
+        /// </summary>
+        /// <returns>Копия объекта</returns>
         public new IBaseObject Clone()
         {
             MessagePhantom temp = new MessagePhantom();

@@ -10,7 +10,7 @@ namespace ChainAnalises.Classes.DataMining.Clusterization
     public class DataObject :IBaseObject,  IEnumerable
     {
         private int id;
-        private readonly HybridDictionary vault = new HybridDictionary();
+        public readonly HybridDictionary vault = new HybridDictionary();
 
         ///<summary>
         ///</summary>

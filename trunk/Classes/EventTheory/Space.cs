@@ -36,11 +36,9 @@ namespace ChainAnalises.Classes.EventTheory
         ///<summary>
         ///Advances the enumerator to the next element of the collection.
         ///</summary>
-        ///
         ///<returns>
         ///true if the enumerator was successfully advanced to the next element; false if the enumerator has passed the end of the collection.
         ///</returns>
-        ///
         ///<exception cref="T:System.InvalidOperationException">The collection was modified after the enumerator was created. </exception><filterpriority>2</filterpriority>
         public bool MoveNext()
         {
@@ -60,7 +58,6 @@ namespace ChainAnalises.Classes.EventTheory
         ///<summary>
         ///Sets the enumerator to its initial position, which is before the first element in the collection.
         ///</summary>
-        ///
         ///<exception cref="T:System.InvalidOperationException">The collection was modified after the enumerator was created. </exception><filterpriority>2</filterpriority>
         public void Reset()
         {
@@ -71,11 +68,9 @@ namespace ChainAnalises.Classes.EventTheory
         ///<summary>
         ///Gets the current element in the collection.
         ///</summary>
-        ///
         ///<returns>
         ///The current element in the collection.
         ///</returns>
-        ///
         ///<exception cref="T:System.InvalidOperationException">The enumerator is positioned before the first element of the collection or after the last element. </exception><filterpriority>2</filterpriority>
         public object Current
         {
@@ -96,6 +91,7 @@ namespace ChainAnalises.Classes.EventTheory
         #region <Other>
 
         ///<summary>
+        /// Строй.
         ///</summary>
         public Int64[] Building
         {
@@ -128,7 +124,7 @@ namespace ChainAnalises.Classes.EventTheory
 
         ///<summary>
         /// Метод реализует отношение эквивалентности.
-        /// Два пространста эквиваленты при условии эквивалентности их пространсв, алфавитов
+        /// Два пространста эквиваленты при условии эквивалентности их пространств, алфавитов
         /// и порядка следования элементов.
         ///</summary>
         ///<param name="discrete">Объект прострнства с которым сравниваем</param>
@@ -225,11 +221,6 @@ namespace ChainAnalises.Classes.EventTheory
             return EqualsAsSpace(obj as Space);
         }
 
-        public override int GetHashCode()
-        {
-            return 29 * this.pAlphabet.GetHashCode() ^ 29 * this.pDimension.GetHashCode() ^ 29 * this.vault.GetHashCode();
-        }
-
         public IBin GetBin()
         {
             SpaceBin Temp = new SpaceBin();
@@ -245,8 +236,8 @@ namespace ChainAnalises.Classes.EventTheory
         /// Увеличивает размерность пространства.
         /// При передачи в качесвте параметра null вызыватся null исключение.
         /// Измерение копируестя, последующее изменение объекта класса измерние, передаваемого в качестве
-        /// параметра, ни как не скажется на состоянии пространства.
-        /// При добавлении измерения в пространство (минимум одномерное) в случии если 
+        /// параметра, никак не скажется на состоянии пространства.
+        /// При добавлении измерения в пространство (минимум одномерное) в случае если 
         /// предварительно в пространство были установденнны элементы они сохранят свои позиции. 
         ///</summary>
         /// <example>
@@ -321,10 +312,10 @@ namespace ChainAnalises.Classes.EventTheory
         }
 
         ///<summary>
-        /// Позволяет получить одно из измерение пространтсва 
+        /// Позволяет получить одно из измерений пространтсва.
         ///</summary>
         ///<param name="i">Номер измерния в пространстве</param>
-        ///<returns>Объект измерения</returns>
+        ///<returns>Объект измерение</returns>
         protected Dimension GetDimension(int i)
         {
             return (Dimension) pDimension[i];

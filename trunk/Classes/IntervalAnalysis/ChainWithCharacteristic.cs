@@ -27,6 +27,10 @@ namespace ChainAnalises.Classes.IntervalAnalysis
             endinterval = new FrequencyList();
         }
 
+        protected ChainWithCharacteristic(string s) : base(s)
+        {
+        }
+
         ///<summary>
         ///</summary>
         ///<param name="length"></param>

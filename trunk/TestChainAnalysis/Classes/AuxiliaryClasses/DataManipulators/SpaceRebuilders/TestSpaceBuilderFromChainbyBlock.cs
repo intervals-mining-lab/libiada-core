@@ -111,14 +111,13 @@ namespace TestChainAnalysis.Classes.AuxiliaryClasses.DataManipulators.SpaceRebui
         /// Тестриует попытку перестроить null событие. 
         ///</summary>
         [Test]
-        [ExpectedException(typeof (NullReferenceException))]
+        [ExpectedException(typeof(NullReferenceException))]
         public void TestNull()
         {
             Act.BlockSize = 2;
             Act.LinkUp = LinkUp.Start;
 
             Builder = new SpaceRebuilderFromChainToChainByBlock<Chain, Chain>(Act);
-
             Builder.Rebuild(null);
         }
 

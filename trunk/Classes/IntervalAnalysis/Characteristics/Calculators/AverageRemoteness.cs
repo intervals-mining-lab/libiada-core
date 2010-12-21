@@ -5,6 +5,8 @@ using ChainAnalises.Classes.IntervalAnalysis.Characteristics.Calculators;
 namespace ChainAnalises.Classes.IntervalAnalysis.Characteristics.Calculators
 {
     ///<summary>
+    /// Среднегеометрическая удалённость,
+    /// логарифм по основанию 2 от среднегеометрического интервала.
     ///</summary>
     public class AverageRemoteness : ICharacteristicCalculator
     {
@@ -34,6 +36,11 @@ namespace ChainAnalises.Classes.IntervalAnalysis.Characteristics.Calculators
                 temp += n_j/n*Math.Log(Uniformdg, 2);
             }
             return temp;
+        }
+
+        public CharacteristicsEnum GetCharacteristicName()
+        {
+            return CharacteristicsEnum.AverangeRemoteness;
         }
     }
 }

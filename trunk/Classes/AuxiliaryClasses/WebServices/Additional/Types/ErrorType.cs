@@ -3,13 +3,15 @@ using System;
 namespace ChainAnalises.Classes.AuxiliaryClasses.WebServices.Additional.Types
 {
     ///<summary>
+    /// Класс содержащий стандартные ответы 
+    /// о состоянии вычислений и их результатах
     ///</summary>
     [Serializable]
     public class ErrorType : TypeBase
     {
         ///<summary>
+        /// В процессе вычислений произошла ошибка
         ///</summary>
-        ///<returns></returns>
         public static ErrorType FullP
         {
             get
@@ -23,8 +25,8 @@ namespace ChainAnalises.Classes.AuxiliaryClasses.WebServices.Additional.Types
         }
 
         ///<summary>
+        /// Вычисления завершены
         ///</summary>
-        ///<returns></returns>
         public static ErrorType CalculationsComplete
         {
             get
@@ -39,6 +41,7 @@ namespace ChainAnalises.Classes.AuxiliaryClasses.WebServices.Additional.Types
         }
 
         ///<summary>
+        /// Вычисления производятся
         ///</summary>
         public static ErrorType Calculating
         {
@@ -54,6 +57,7 @@ namespace ChainAnalises.Classes.AuxiliaryClasses.WebServices.Additional.Types
         }
 
           ///<summary>
+          /// Неверный хеш-код вычисления
           ///</summary>
         public static ErrorType IdError
         {
@@ -67,5 +71,19 @@ namespace ChainAnalises.Classes.AuxiliaryClasses.WebServices.Additional.Types
             }
         }
 
+        ///<summary>
+        /// Файл с результатами вычислений не найден либо недоступен
+        ///</summary>
+        public static ErrorType FileError
+        {
+            get
+            {
+                ErrorType EType = new ErrorType();
+                EType.Name = "Cannot open result file";
+                EType.pMIME = "FileError";
+                EType.Size = 0;
+                return EType;
+            }
+        }
     }
 }

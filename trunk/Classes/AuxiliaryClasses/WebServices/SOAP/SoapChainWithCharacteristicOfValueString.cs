@@ -1,10 +1,9 @@
 using System;
 using System.Collections;
 using System.Xml.Serialization;
-using ChainAnalises.Classes.AuxiliaryClasses.WebServices.SOAP;
-using ChainAnalises.Classes.Statistics;
+using ChainAnalises.Classes.AuxiliaryClasses.WebServices.CreateAlphabet;
 
-namespace ChainAnalises.Classes.AuxiliaryClasses.WebServices.CreateAlphabet
+namespace ChainAnalises.Classes.AuxiliaryClasses.WebServices.SOAP
 {
     ///<summary>
     ///</summary>

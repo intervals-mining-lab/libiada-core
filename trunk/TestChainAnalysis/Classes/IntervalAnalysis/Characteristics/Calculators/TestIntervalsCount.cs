@@ -1,5 +1,6 @@
 using ChainAnalises.Classes.IntervalAnalysis;
 using ChainAnalises.Classes.IntervalAnalysis.Characteristics;
+using ChainAnalises.Classes.IntervalAnalysis.Characteristics.Calculators;
 using NUnit.Framework;
 
 namespace TestChainAnalysis.Classes.IntervalAnalysis.Characteristics.Calculators

@@ -1,7 +1,5 @@
 using System.Collections;
-using ChainAnalises.Classes.IntervalAnalysis;
 using ChainAnalises.Classes.Statistics.MarkovChain.Builders;
-using ChainAnalises.Classes.TheoryOfSet;
 
 namespace ChainAnalises.Classes.Statistics.MarkovChain.Matrixes.Base
 {
@@ -10,10 +8,10 @@ namespace ChainAnalises.Classes.Statistics.MarkovChain.Matrixes.Base
     ///</summary>
     public abstract class MatrixBase
     {
-        protected int alphPower = 0;
-        protected ArrayList ValueList = null;
+        protected int alphPower;
+        protected ArrayList ValueList;
         protected int rang;
-        protected double Value = 0;
+        protected double Value;
 
 
         /// <summary>
@@ -71,7 +69,10 @@ namespace ChainAnalises.Classes.Statistics.MarkovChain.Matrixes.Base
             return Value;
         }
 
-        public ArrayList GetValueList  //Lesha
+        ///<summary>
+        /// Возвращает вектор элементов матрицы
+        ///</summary>
+        public ArrayList GetValueList
         {
             get
             {

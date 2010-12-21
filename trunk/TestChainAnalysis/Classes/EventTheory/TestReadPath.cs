@@ -7,7 +7,7 @@ using NUnit.Framework;
 namespace TestChainAnalysis.Classes.EventTheory
 {
     ///<summary>
-    /// НАдор тестов для маршрута
+    /// Набор тестов для маршрута
     ///</summary>
     [TestFixture]
     public class TestReadPath

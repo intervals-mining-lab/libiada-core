@@ -15,25 +15,26 @@ using ChainAnalises.Classes.AuxiliaryClasses.WebServices.Segmentation;
 namespace ChainAnalises.Classes.AuxiliaryClasses.WebServices.Additional.Threads
 {
     ///<summary>
+    /// Класс-менеджер вычислительных потоков. Синглтон.
     ///</summary>
     public class ServiceManager
     {
-        private static Hashtable  ThreadPool= null; 
+        private static Hashtable ThreadPool = null;
         private static ServiceManager state = null;
         private FactoryThreads ThreadsFactory = new FactoryThreads();
-        //private Mutex mutex = new Mutex();
         private Random RandomGenerator = new Random();
 
         ///<summary>
+        /// Метод, возвращающий ссылку на экземпляр ServiceManager.
+        /// Создает новый экземпляр если к объекту раньше не обращались.
         ///</summary>
-        ///<returns></returns>
+        ///<returns>Ссылка на экземпляр ServiceManager</returns>
         public static ServiceManager Create()
         {
             if (state == null)
             {
-                ServiceManager SM = new ServiceManager();
-                state = SM;
-               
+                state = new ServiceManager();
+
             }
 
             return state;
@@ -45,18 +46,23 @@ namespace ChainAnalises.Classes.AuxiliaryClasses.WebServices.Additional.Threads
         }
 
         ///<summary>
+        /// Метод запускающий новый поток вычислений. 
+        /// Также добавляет нить в пул потоков по хеш коду от времени создания нити.
         ///</summary>
-        ///<param name="data"></param>
-        ///<param name="type"></param>
-        ///<returns></returns>
-        public string NewCalculation(object data,WebServiceType type)
+        ///<param name="data">Исходные данные для вычислений</param>
+        ///<param name="type">Название сервиса, который надо запустить</param>
+        ///<returns>Хеш-код запущенной нити.</returns>
+        public string NewCalculation(Request data, WebServiceType type)
         {
+            //Вычисляем хеш
             string hash = getMd5Hash(DateTime.Now.ToString("F") + DateTime.Now.Millisecond.ToString() + RandomGenerator.Next(100).ToString());
+            //Создаём нить и запускаемеё на вычисление
             IThread Thr = ThreadsFactory.CreateThread(type);
             Thr.SetData(data);
             Thr.SetHash(hash);
             Thread thread = new Thread(Thr.Calculate);
             thread.Start();
+            //Добавляем нить в пул
             lock (ThreadPool.SyncRoot)
             {
                 ThreadPool.Add(hash, thread);
@@ -64,7 +70,13 @@ namespace ChainAnalises.Classes.AuxiliaryClasses.WebServices.Additional.Threads
             return hash;
         }
 
-        static string getMd5Hash(string input)
+
+        /// <summary>
+        /// Метод, вычисляющий хэш код для произвольных данных.
+        /// </summary>
+        /// <param name="input">Исходные данные</param>
+        /// <returns>Хеш</returns>
+        private string getMd5Hash(string input)
         {
             // Create a new instance of the MD5CryptoServiceProvider object.
             MD5 md5Hasher = MD5.Create();
@@ -87,165 +99,71 @@ namespace ChainAnalises.Classes.AuxiliaryClasses.WebServices.Additional.Threads
             return sBuilder.ToString();
         }
 
-        ///<summary>
-        ///</summary>
-        ///<param name="hashvalue"></param>
-        ///<returns></returns>
-        ///<param name="type"></param>
-        public object Check(string hashvalue,WebServiceType type)
+        /// <summary>
+        /// Метод позволяющий проверять ход вычислений.
+        /// </summary>
+        /// <param name="hashvalue">Хеш-код</param>
+        /// <param name="type">Тип веб-сервиса</param>
+        /// <returns>Стандарный объект-ответ</returns>
+        public object Check(string hashvalue, WebServiceType type)
         {
+            //Ищем нить в хэш-таблице(пул) нитей
             Thread thread = null;
             lock (ThreadPool.SyncRoot)
             {
                 thread = ThreadPool[hashvalue] as Thread;
             }
-            if(thread == null)
+            //Создаём контейнер-ответ для клиента
+            Answer answer = AnswerFactory.CreateAnswer(type);
+            if (thread == null)
             {
                 Object obj = null;
                 lock (ThreadPool.SyncRoot)
                 {
                     obj = ThreadPool[hashvalue];
                 }
+                //если нити с заданным кодом нет в пуле
                 if (obj == null)
                 {
-                    switch (type)
-                    {
-                        case WebServiceType.Alphabet:
-                            AnswerObjects answer1 = new AnswerObjects();
-                            answer1.Error = ErrorType.IdError;
-                            return answer1;
-
-                        case WebServiceType.Calculate:
-                            AnswerChain answer2 = new AnswerChain();
-                            answer2.Error = ErrorType.IdError;
-                            return answer2;
-
-                        case WebServiceType.MarkovChain:
-                            AnswerMarkovChain answer3 = new AnswerMarkovChain();
-                            answer3.Error = ErrorType.IdError;
-                            return answer3;
-
-                        case WebServiceType.Segmentation:
-                            AnswerSegmentation answer4 = new AnswerSegmentation();
-                            answer4.Error = ErrorType.IdError;
-                            return answer4;
-
-                        case WebServiceType.PhantomChain:
-                            AnswerPhantomChains answer5 = new AnswerPhantomChains();
-                            answer5.Error = ErrorType.IdError;
-                            return answer5;
-
-                        case WebServiceType.Clusterization:
-                            AnswerClusterization answer6 = new AnswerClusterization();
-                            answer6.Error = ErrorType.IdError;
-                            return answer6;
-
-                        default:
-                            throw new Exception("Wrong action type");
-                    }
+                    answer.Error = ErrorType.IdError;
+                    return answer;
                 }
-                else
-                {
-                    switch (type)
-                    {
-                        case WebServiceType.Alphabet:
-                            AnswerObjects answer1 = new AnswerObjects();
-                            answer1.Error = ErrorType.FullP;
-                            return answer1;
-
-                        case WebServiceType.Calculate:
-                            AnswerChain answer2 = new AnswerChain();
-                            answer2.Error = ErrorType.FullP;
-                            return answer2;
-
-                        case WebServiceType.MarkovChain:
-                            AnswerMarkovChain answer3 = new AnswerMarkovChain();
-                            answer3.Error = ErrorType.FullP;
-                            return answer3;
-
-                        case WebServiceType.Segmentation:
-                            AnswerSegmentation answer4 = new AnswerSegmentation();
-                            answer4.Error = ErrorType.FullP;
-                            return answer4;
-
-                        case WebServiceType.PhantomChain:
-                            AnswerPhantomChains answer5 = new AnswerPhantomChains();
-                            answer5.Error = ErrorType.FullP;
-                            return answer5;
-
-                        case WebServiceType.Clusterization:
-                            AnswerClusterization answer6 = new AnswerClusterization();
-                            answer6.Error = ErrorType.FullP;
-                            return answer6;
-
-                        default:
-                            throw new Exception("Wrong action type");
-                    }
-                }
+                answer.Error = ErrorType.FullP;
+                return answer;
             }
-            else if(thread.IsAlive)
+            //если нить есть и вычисления ещё идут
+            if (thread.IsAlive)
             {
-                switch(type)
-                {
-                    case WebServiceType.Alphabet:
-                        AnswerObjects answer1 = new AnswerObjects();
-                        answer1.Error = ErrorType.Calculating;
-                        return answer1;
-
-                    case WebServiceType.Calculate:
-                        AnswerChain answer2 = new AnswerChain();
-                        answer2.Error = ErrorType.Calculating;
-                        return answer2;
-
-                    case WebServiceType.MarkovChain:
-                        AnswerMarkovChain answer3 = new AnswerMarkovChain();
-                        answer3.Error = ErrorType.Calculating;
-                        return answer3;
-
-                    case WebServiceType.Segmentation:
-                        AnswerSegmentation answer4 = new AnswerSegmentation();
-                        answer4.Error = ErrorType.Calculating;
-                        return answer4;
-
-                    case WebServiceType.PhantomChain:
-                        AnswerPhantomChains answer5 = new AnswerPhantomChains();
-                        answer5.Error = ErrorType.Calculating;
-                        return answer5;
-
-                    case WebServiceType.Clusterization:
-                        AnswerClusterization answer6 = new AnswerClusterization();
-                        answer6.Error = ErrorType.Calculating;
-                        return answer6;
-
-                    default:
-                        throw new Exception("Wrong action type");
-
-
-                }
-
+                answer.Error = ErrorType.Calculating;
+                return answer;
             }
-            else
+            //если вычисления закончены
+            Object result = null;
+            lock (ThreadPool.SyncRoot)
             {
-                Object result = null;
-                /*Monitor.Enter(this);
-                lock (this)
-                {*/
-                lock(ThreadPool.SyncRoot)
+                try
                 {
-                    //mutex.WaitOne();
+                    //десериализуем файл с результатами, созданный вычислительной нитью
                     BinaryFormatter deserializer = new BinaryFormatter();
                     FileStream FileS = new FileStream(hashvalue + ".csd", FileMode.Open, FileAccess.Read);
                     result = deserializer.Deserialize(FileS);
                     FileS.Close();
-                    System.IO.File.Delete(hashvalue + ".csd");
-                    ThreadPool.Remove(hashvalue);
-                    //mutex.ReleaseMutex();
                 }
-                /*}
-                Monitor.Exit(this);*/
-                return result;
-            }
+                catch (Exception e)
+                {
+                    
+                    answer.Error = ErrorType.FileError;
+                    return answer;
+                }               
 
+                string dir = Directory.GetCurrentDirectory();
+                string fileName = hashvalue + ".csd";
+                string resFile = System.IO.Path.Combine(dir, fileName);
+                System.IO.File.Delete(resFile);
+
+                ThreadPool.Remove(hashvalue);
+            }
+            return result;
         }
     }
 }

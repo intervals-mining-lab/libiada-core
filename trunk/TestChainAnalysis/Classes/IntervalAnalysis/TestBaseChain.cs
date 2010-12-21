@@ -11,7 +11,7 @@ namespace TestChainAnalysis.Classes.IntervalAnalysis
     [TestFixture]
     public class TestBaseChain
     {
-        private BaseChain ChainBase = null;
+        private BaseChain ChainBase;
 
         ///<summary>
         /// »ициализирующа€ часть
@@ -36,20 +36,35 @@ namespace TestChainAnalysis.Classes.IntervalAnalysis
         /// “естирует вариант создани€ цепи 0 длинны
         ///</summary>
         [Test]
-        [ExpectedException(typeof (Exception))]
         public void TestConstructorCreateZero()
         {
-            new Chain(0);
+            try
+            {
+                new Chain(0);
+            }
+            catch (Exception)
+            {
+                return;
+            }
+            Assert.Fail();
+            
         }
 
         ///<summary>
         /// “естирует вариант создани€ цепи отрицательной длинны
         ///</summary>
         [Test]
-        [ExpectedException(typeof (Exception))]
         public void TestConstructorLessZero()
         {
-            new Chain(-10);
+            try
+            {
+                new Chain(-10);
+            }
+            catch (Exception)
+            {
+                return;
+            }
+            Assert.Fail();
         }
 
         ///<summary>

@@ -7,6 +7,7 @@ using ChainAnalises.Classes.Statistics;
 namespace ChainAnalises.Classes.IntervalAnalysis.Characteristics.Calculators
 {
     ///<summary>
+    /// Удалённость.
     ///</summary>
     public class Gamut : ICharacteristicCalculator
     {
@@ -53,6 +54,11 @@ namespace ChainAnalises.Classes.IntervalAnalysis.Characteristics.Calculators
                 temp += Data.IUniformChain(i).GetCharacteristic(Link, CharacteristicsFactory.G);
             }
             return temp;
+        }
+
+        public CharacteristicsEnum GetCharacteristicName()
+        {
+            return CharacteristicsEnum.Gamut;
         }
     }
 }

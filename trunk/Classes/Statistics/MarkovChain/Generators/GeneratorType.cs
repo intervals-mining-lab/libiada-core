@@ -1,7 +1,7 @@
 namespace ChainAnalises.Classes.Statistics.MarkovChain.Generators
 {
     ///<summary>
-    /// Типы генераторов
+    /// Типы генераторов случайных величин
     ///</summary>
     public enum GeneratorType
     {

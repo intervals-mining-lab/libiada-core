@@ -34,12 +34,19 @@ namespace TestChainAnalysis.Classes.EventTheory
         /// Ожидется исключительная ситуация.
         ///</summary>
         [Test]
-        [ExpectedException(typeof (Exception))]
         public void TestAddToRuleSelf()
         {
-            Key.SetValues(new long[] {1, 1});
-            Value.SetValues(new long[] {1, 1});
-            BaseEvent.AddToReadRule(Key, Value);
+            try
+            {
+                Key.SetValues(new long[] {1, 1});
+                Value.SetValues(new long[] {1, 1});
+                BaseEvent.AddToReadRule(Key, Value);
+            }
+            catch (Exception)
+            {
+                return;
+            }
+            Assert.Fail();
         }
 
         ///<summary>
@@ -60,22 +67,36 @@ namespace TestChainAnalysis.Classes.EventTheory
         /// Метод тестирует добавление null точки в правило
         ///</summary>
         [Test]
-        [ExpectedException(typeof (NullReferenceException))]
         public void TestAddToRuleNullValue()
         {
-            Key.SetValues(new long[] {1, 1});
-            BaseEvent.AddToReadRule(Key, (Place) null);
+            try
+            {
+                Key.SetValues(new long[] {1, 1});
+                BaseEvent.AddToReadRule(Key, (Place) null);
+            }
+            catch (Exception)
+            {
+                return;
+            }
+            Assert.Fail();
         }
 
         ///<summary>
         /// Метод тестирует добавление точки в правило для null ключа.
         ///</summary>
         [Test]
-        [ExpectedException(typeof (NullReferenceException))]
         public void TestAddToRuleNullKey()
         {
-            Value.SetValues(new long[] {1, 1});
-            BaseEvent.AddToReadRule(null, Value);
+            try
+            {
+                Value.SetValues(new long[] {1, 1});
+                BaseEvent.AddToReadRule(null, Value);
+            }
+            catch (Exception)
+            {
+                return;
+            }
+            Assert.Fail();
         }
 
         ///<summary>
@@ -97,10 +118,17 @@ namespace TestChainAnalysis.Classes.EventTheory
         ///Тестирует ситуацию когда из правила чтения удалятся правило для места null
         ///</summary>
         [Test]
-        [ExpectedException(typeof (NullReferenceException))]
         public void TestRemoveFromNull()
         {
-            BaseEvent.RemoveFromReadRule(null);
+            try
+            {
+                BaseEvent.RemoveFromReadRule(null);
+            }
+            catch (Exception)
+            {
+                return;
+            }
+            Assert.Fail();
         }
 
         ///<summary>
@@ -121,16 +149,24 @@ namespace TestChainAnalysis.Classes.EventTheory
         /// Тестирует вариант попытки удаления элемента из события с использованем места принадлежащего другому пространству
         ///</summary>
         [Test]
-        [ExpectedException(typeof (Exception))]
         public void TestRemoveFromWrongPlace()
         {
-            BaseEvent.AddDimension(new Dimension(0, 10));
-            BaseEvent.AddDimension(new Dimension(-10, 10));
-            Place PlaceOtherSpace = BaseEvent.GetPlacePattern();
-            BaseEvent.AddDimension(new Dimension(10, 100));
-            Place PlaceSpace = BaseEvent.GetPlacePattern();
-            BaseEvent.AddItem(new ValueInt(1), PlaceSpace.SetValues(new long[] {0, 0, 0}));
-            BaseEvent.RemoveFromReadRule(PlaceOtherSpace.SetValues(new long[] {0, 0}));
+
+            try
+            {            
+                BaseEvent.AddDimension(new Dimension(0, 10));
+                BaseEvent.AddDimension(new Dimension(-10, 10));
+                Place PlaceOtherSpace = BaseEvent.GetPlacePattern();
+                BaseEvent.AddDimension(new Dimension(10, 100));
+                Place PlaceSpace = BaseEvent.GetPlacePattern();
+                BaseEvent.AddItem(new ValueInt(1), PlaceSpace.SetValues(new long[] {0, 0, 0}));
+                BaseEvent.RemoveFromReadRule(PlaceOtherSpace.SetValues(new long[] {0, 0})); 
+            }
+            catch (Exception)
+            {
+                return;
+            }
+            Assert.Fail();
         }
 
 
@@ -152,10 +188,17 @@ namespace TestChainAnalysis.Classes.EventTheory
         /// Тестирует попытку получить правило чтения с использованием парамтра null
         ///</summary>
         [Test]
-        [ExpectedException(typeof (NullReferenceException))]
         public void TestGetFromRuleNUll()
         {
-            BaseEvent.GetFromReadRule(null);
+            try
+            {
+                BaseEvent.GetFromReadRule(null);
+            }
+            catch (NullReferenceException)
+            {
+                return;
+            }
+            Assert.Fail();
         }
 
         ///<summary>
@@ -182,27 +225,41 @@ namespace TestChainAnalysis.Classes.EventTheory
         /// Метод тестирует добавление null правила в правила чтения
         ///</summary>
         [Test]
-        [ExpectedException(typeof (NullReferenceException))]
         public void TestAddRuleNullValue()
         {
-            Key.SetValues(new long[] {1, 1});
-            BaseEvent.AddToReadRule(Key, (ReadRule) null);
+            try
+            {
+                Key.SetValues(new long[] {1, 1});
+                BaseEvent.AddToReadRule(Key, (ReadRule) null);
+            }
+            catch (Exception)
+            {
+                return;
+            }
+            Assert.Fail();
         }
 
         ///<summary>
         /// метод тестирует поведение объекта при добавлении правила для null места
         ///</summary>
         [Test]
-        [ExpectedException(typeof (NullReferenceException))]
         public void TestAddRuleNullKey()
         {
-            ReadRule rr = new ReadRule(BaseEvent.GetPlacePattern());
-            Value.SetValues(new long[] {0, 1});
-            rr.Add(Value);
-
-            Value.SetValues(new long[] {1, 0});
-            rr.Add(Value);
-            BaseEvent.AddToReadRule(null, rr);
+            try
+            {
+                ReadRule rr = new ReadRule(BaseEvent.GetPlacePattern());
+                Value.SetValues(new long[] {0, 1});
+                rr.Add(Value);
+                
+                Value.SetValues(new long[] {1, 0});
+                rr.Add(Value);
+                BaseEvent.AddToReadRule(null, rr);
+            }
+            catch (NullReferenceException)
+            {
+                return;
+            }
+            Assert.Fail();
         }
 
         ///<summary>

@@ -26,11 +26,11 @@ namespace ChainAnalises.Classes.Statistics.MarkovChain
             switch(method)
             {
                 case GeneratingMethod.DynamicNotUniform:
-      //TODO: FIX MISSING OF FILE              return new MarkovChainNotUniformDynamic<ChainGenerated, ChainTeached>(rang, uniformRang, Generator);
+                    return null;// new MarkovChainNotUniformDynamic<ChainGenerated, ChainTeached>(rang, uniformRang, Generator);
                 case GeneratingMethod.StaticNotUniform:
                     return new MarkovChainNotUniformStatic<ChainGenerated, ChainTeached>(rang, uniformRang, Generator);
                 case GeneratingMethod.DynamicUniform:
-     //TODO: FIX MISSING OF FILE            return new MarkovChainUniformDynamic<ChainGenerated, ChainTeached>(rang, Generator);
+                    return null; //new MarkovChainUniformDynamic<ChainGenerated, ChainTeached>(rang, Generator);
                 case GeneratingMethod.StaticUniform:
                     return new MarkovChainUniformStatic<ChainGenerated, ChainTeached>(rang, Generator);
                 case GeneratingMethod.Random:

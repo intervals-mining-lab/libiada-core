@@ -3,8 +3,9 @@ namespace ChainAnalises.Classes.Root
     ///<summary>
     ///Интерфейс являющийся базовым для всех (наследуемый всеми) классами библиотеки
     ///Позоляет корректно сравнивать объекты и делать их копии.
+    /// Любой элемент данных наследует данный интерфейс.
     ///</summary>
-    public interface IBaseObject /*:IXmlSerializable*/
+    public interface IBaseObject
     {
         ///<summary>
         /// Метод клонирования объекта
@@ -22,7 +23,6 @@ namespace ChainAnalises.Classes.Root
         ///<summary>
         ///</summary>
         ///<returns></returns>
-     //   object GetDataStruct();
         IBin GetBin();
     }
 }

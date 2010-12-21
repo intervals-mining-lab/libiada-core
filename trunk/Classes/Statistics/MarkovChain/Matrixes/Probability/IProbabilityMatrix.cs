@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using ChainAnalises.Classes.IntervalAnalysis;
 using ChainAnalises.Classes.Root;
 using ChainAnalises.Classes.Statistics.MarkovChain.Matrixes.Absolute;
 using ChainAnalises.Classes.TheoryOfSet;
@@ -20,6 +19,7 @@ namespace ChainAnalises.Classes.Statistics.MarkovChain.Matrixes.Probability
         ///<summary>
         /// Получение вектора вероятностей лежащего по адресу
         ///</summary>
+        ///<param name="alphabet"></param>
         ///<param name="Pred">Адрес</param>
         ///<returns>Список пар "событие - вероятность"</returns>
         Dictionary<IBaseObject, double> GetProbabilityVector(Alphabet alphabet, int[] Pred);

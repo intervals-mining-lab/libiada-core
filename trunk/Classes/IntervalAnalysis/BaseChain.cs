@@ -1,10 +1,12 @@
 using System;
 using ChainAnalises.Classes.EventTheory;
 using ChainAnalises.Classes.Root;
+using ChainAnalises.Classes.Root.SimpleTypes;
 
 namespace ChainAnalises.Classes.IntervalAnalysis
 {
     ///<summary>
+    /// 
     ///</summary>
     [Serializable]
     public class BaseChain : Space, IBaseObject
@@ -108,6 +110,21 @@ namespace ChainAnalises.Classes.IntervalAnalysis
         public BaseChain()
         {
             
+        }
+
+        
+        ///<summary>
+        /// Создает цепь из строки символов
+        ///</summary>
+        ///<param name="s"></param>
+        ///<exception cref="NotImplementedException"></exception>
+        public BaseChain(string s)
+        {
+            ClearAndSetNewLength(s.Length);
+            for (int i = 0; i < s.Length; i++)
+            {
+                Add((ValueChar) s[i], i);
+            }
         }
 
         ///<summary>

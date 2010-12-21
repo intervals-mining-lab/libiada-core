@@ -1,14 +1,36 @@
-﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>8.0.50727</ProductVersion>
+    <ProductVersion>9.0.30729</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{375017A0-630D-4A5F-BB73-F94CB897595C}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>TestChainAnalysis</RootNamespace>
     <AssemblyName>TestChainAnalysis</AssemblyName>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -19,6 +41,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -27,16 +50,15 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="nunit.framework, Version=2.4.3.0, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>C:\Program Files\NUnit 2.4.3\bin\nunit.framework.dll</HintPath>
-    </Reference>
+    <Reference Include="nunit.framework, Version=2.5.7.10213, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.EnterpriseServices" />
     <Reference Include="System.Web.Services" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
@@ -52,38 +74,28 @@
     <Compile Include="Classes\AuxiliaryClasses\DataManipulators\SpaceRebuilders\TestPsevdoCycleSpace.cs" />
     <Compile Include="Classes\AuxiliaryClasses\DataManipulators\SpaceRebuilders\TestSpaceBuilderFromChainbyBlock.cs" />
     <Compile Include="Classes\AuxiliaryClasses\DataManipulators\SpaceRebuilders\TestSpaceRebuilderFactory.cs" />
+    <Compile Include="Classes\AuxiliaryClasses\WebServices\Additional\TestAnswerFactory.cs" />
     <Compile Include="Classes\AuxiliaryClasses\WebServices\Additional\TestRequest.cs" />
     <Compile Include="Classes\AuxiliaryClasses\WebServices\Additional\Threads\TestServiceManager.cs" />
     <Compile Include="Classes\AuxiliaryClasses\WebServices\Additional\Threads\TestThread.cs" />
     <Compile Include="Classes\AuxiliaryClasses\WebServices\Additional\Types\TestActionType.cs" />
     <Compile Include="Classes\AuxiliaryClasses\WebServices\Additional\Types\TestTypeBase.cs" />
-    <Compile Include="Classes\AuxiliaryClasses\WebServices\db_interface\AnswerChains.cs" />
-    <Compile Include="Classes\AuxiliaryClasses\WebServices\db_interface\DBAlphabet.cs" />
-    <Compile Include="Classes\AuxiliaryClasses\WebServices\db_interface\DBBuilding.cs" />
-    <Compile Include="Classes\AuxiliaryClasses\WebServices\db_interface\DBCalculate.cs" />
-    <Compile Include="Classes\AuxiliaryClasses\WebServices\db_interface\DBChain.cs" />
-    <Compile Include="Classes\AuxiliaryClasses\WebServices\db_interface\DBChainMessage.cs" />
-    <Compile Include="Classes\AuxiliaryClasses\WebServices\db_interface\DBCharacteristic.cs" />
-    <Compile Include="Classes\AuxiliaryClasses\WebServices\db_interface\DBFrequencyList.cs" />
-    <Compile Include="Classes\AuxiliaryClasses\WebServices\db_interface\DBMessage.cs" />
-    <Compile Include="Classes\AuxiliaryClasses\WebServices\db_interface\DBUniformChain.cs" />
-    <Compile Include="Classes\AuxiliaryClasses\WebServices\db_interface\TestCalculation.cs" />
-    <Compile Include="Classes\AuxiliaryClasses\WebServices\db_interface\AnswerChains.cs" />
-    <Compile Include="Classes\AuxiliaryClasses\WebServices\db_interface\DBAlphabet.cs" />
-    <Compile Include="Classes\AuxiliaryClasses\WebServices\db_interface\DBBuilding.cs" />
-    <Compile Include="Classes\AuxiliaryClasses\WebServices\db_interface\DBCalculate.cs" />
-    <Compile Include="Classes\AuxiliaryClasses\WebServices\db_interface\DBChain.cs" />
-    <Compile Include="Classes\AuxiliaryClasses\WebServices\db_interface\DBCharacteristic.cs" />
-    <Compile Include="Classes\AuxiliaryClasses\WebServices\db_interface\DBFrequencyList.cs" />
-    <Compile Include="Classes\AuxiliaryClasses\WebServices\db_interface\DBUniformChain.cs" />
-    <Compile Include="Classes\AuxiliaryClasses\WebServices\db_interface\TestCalculation.cs" />
     <Compile Include="Classes\AuxiliaryClasses\WebServices\TestAlphabetService.cs" />
     <Compile Include="Classes\AuxiliaryClasses\WebServices\TestCalculationService.cs" />
     <Compile Include="Classes\AuxiliaryClasses\WebServices\TestClusterizationService.cs" />
     <Compile Include="Classes\AuxiliaryClasses\WebServices\TestMarkovService.cs" />
     <Compile Include="Classes\AuxiliaryClasses\WebServices\TestPhantomService.cs" />
     <Compile Include="Classes\AuxiliaryClasses\WebServices\TestSegmentationService.cs" />
-    <Compile Include="Classes\Compress\TestHennon.cs" />
+    <Compile Include="Classes\DataMining\AlternativeClusterization\TestAlternativeKRAB.cs" />
+    <Compile Include="Classes\DataMining\AlternativeClusterization\TestConnection.cs" />
+    <Compile Include="Classes\DataMining\AlternativeClusterization\TestGraphManager.cs" />
+    <Compile Include="Classes\DataMining\AlternativeClusterization\Calculators\TestHCalculator.cs" />
+    <Compile Include="Classes\DataMining\AlternativeClusterization\Calculators\TestLambdaCalculator.cs" />
+    <Compile Include="Classes\DataMining\AlternativeClusterization\Calculators\TestLinearCalculator.cs" />
+    <Compile Include="Classes\DataMining\AlternativeClusterization\TestGraphElement.cs" />
+    <Compile Include="Classes\DataMining\AlternativeClusterization\Calculators\TestNormalezedDistCalculator.cs" />
+    <Compile Include="Classes\DataMining\AlternativeClusterization\Calculators\TestTauCalculator.cs" />
+    <Compile Include="Classes\DataMining\AlternativeClusterization\Calculators\TestTauStarCalculator.cs" />
     <Compile Include="Classes\DataMining\Clusterization\KRAB\TestGraphCalculator.cs" />
     <Compile Include="Classes\DataMining\Clusterization\KRAB\TestKrab.cs" />
     <Compile Include="Classes\DataMining\Clusterization\TestDataObject.cs" />
@@ -125,12 +137,13 @@
     <Compile Include="Classes\MatrixCalculus\TestMatrixCalculator.cs" />
     <Compile Include="Classes\PhantomChains\Characteristics\TestPhantonChainsCount.cs" />
     <Compile Include="Classes\PhantomChains\ObjectMotherPMessageTest.cs" />
+    <Compile Include="Classes\PhantomChains\TestCoder.cs" />
     <Compile Include="Classes\PhantomChains\TestMessagePhantom.cs" />
+    <Compile Include="Classes\PhantomChains\TestPhantomTable.cs" />
     <Compile Include="Classes\PhantomChains\TestProbabilityPhantomChainGenerator.cs" />
-    <Compile Include="Classes\Statistics\MarkovChain\TestMarkovChainNotUniform.cs" />
-    <Compile Include="Classes\Statistics\MarkovChain\TestMarkovChainUniform.cs" />
+    <Compile Include="Classes\PhantomChains\TestTree.cs" />
+    <Compile Include="Classes\Statistics\Markov Compare\MarkovCompare1.cs" />
     <Compile Include="Classes\Statistics\MarkovChain\TestProbabilityMatrix.cs" />
-    <Compile Include="Classes\Statistics\TestSortDictionary.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Classes\Root\SimpleTypes\TestValueInt.cs" />
     <Compile Include="Classes\Root\SimpleTypes\TestValueString.cs" />
@@ -158,10 +171,10 @@
     <WebReferences Include="Web References\" />
   </ItemGroup>
   <ItemGroup>
-    <WebReferenceUrl Include="http://localhost:52836/Services/Service.asmx">
+    <WebReferenceUrl Include="http://localhost:1948/Services/Service.asmx">
       <UrlBehavior>Dynamic</UrlBehavior>
       <RelPath>Web References\localhost\</RelPath>
-      <UpdateFromURL>http://localhost:52836/Services/Service.asmx</UpdateFromURL>
+      <UpdateFromURL>http://localhost:1948/Services/Service.asmx</UpdateFromURL>
       <ServiceLocationURL>
       </ServiceLocationURL>
       <CachedDynamicPropName>
@@ -171,6 +184,8 @@
     </WebReferenceUrl>
   </ItemGroup>
   <ItemGroup>
+    <None Include="app.config" />
+    <None Include="Classes\DataMining\AlternativeClusterization\TestClusterizationClassDiagram.cd" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -201,28 +216,40 @@
     <None Include="Web References\localhost\Service.wsdl" />
   </ItemGroup>
   <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>Клиентский профиль .NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.2.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 2.0 %28x86%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.0 %28x86%29</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
     <ProjectReference Include="..\ChainAnalysis.csproj">
       <Project>{E3B8B4A4-5B6F-4D2F-8422-46A12D64D23C}</Project>
       <Name>ChainAnalysis</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="libs\Castle.Core.dll" />
-    <Content Include="libs\Castle.DynamicProxy2.dll" />
-    <Content Include="libs\Iesi.Collections.dll" />
-    <Content Include="libs\Iesi.Collections.pdb" />
-    <Content Include="libs\LearningTests.dll" />
-    <Content Include="libs\LearningTests.pdb" />
-    <Content Include="libs\log4net.dll" />
-    <Content Include="libs\MySql.Data.dll" />
-    <Content Include="libs\NHibernate.dll" />
-    <Content Include="libs\NHibernate.pdb" />
-    <Content Include="libs\nunit.framework.dll" />
-    <Content Include="libs\nunit.framework.xml" />
-    <Content Include="Mapping\DBChainMessage.hbm.xml" />
-    <Content Include="Mapping\DBMessage.hbm.xml" />
-    <Content Include="Mapping\DBFileType.hbm.xml" />
-    <Content Include="Mapping\DBFile.hbm.xml" />
+    <Folder Include="Classes\Project A\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

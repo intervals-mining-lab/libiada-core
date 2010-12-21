@@ -13,7 +13,7 @@ using NUnit.Framework;
 
 namespace TestChainAnalysis.Classes.AuxiliaryClasses.WebServices
 {
-    [TestFixture]
+    //[TestFixture]
     public class TestPhantomService
     {
        /* private string HashPhantom = null;

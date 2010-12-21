@@ -4,6 +4,7 @@ using ChainAnalises.Classes.TheoryOfSet;
 namespace ChainAnalises.Classes.IntervalAnalysis.Characteristics.Calculators
 {
     ///<summary>
+    /// Длина обрезания по Садовскому.
     ///</summary>
     public class CutLength : ICharacteristicCalculator
     {
@@ -15,6 +16,11 @@ namespace ChainAnalises.Classes.IntervalAnalysis.Characteristics.Calculators
         public double Calculate(Chain pChain, LinkUp Link)
         {
             return CutCommon(pChain);
+        }
+
+        public CharacteristicsEnum GetCharacteristicName()
+        {
+            return CharacteristicsEnum.CutLength;
         }
 
         private double CutCommon(ChainWithCharacteristic pChain)

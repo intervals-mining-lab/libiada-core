@@ -1,6 +1,7 @@
 using System;
 using ChainAnalises.Classes;
 using ChainAnalises.Classes.AuxiliaryClasses.DataManipulators.ElementStreamCreators;
+using ChainAnalises.Classes.AuxiliaryClasses.WebServices.Additional.Types;
 using NUnit.Framework;
 
 namespace TestChainAnalysis.Classes.AuxiliaryClasses.DataManipulators.ElementStreamCreators
@@ -25,10 +26,11 @@ namespace TestChainAnalysis.Classes.AuxiliaryClasses.DataManipulators.ElementStr
         /// Тестирует создание про null.
         ///</summary>
         [Test]
-        [ExpectedException(typeof (NullReferenceException))]
+        [ExpectedException(typeof(NullReferenceException))]
         public void TestCreateFromNull()
         {
             ElementStreamBuilderFactory.Create(null);
+
         }
     }
 }

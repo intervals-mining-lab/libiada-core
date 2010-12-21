@@ -4,6 +4,8 @@ using ChainAnalises.Classes.IntervalAnalysis.Characteristics.AuxiliaryInterfaces
 namespace ChainAnalises.Classes.IntervalAnalysis.Characteristics.Calculators
 {
     ///<summary>
+    /// Количество идентифицирующих информаций приходящихся на одно значащее сообщение.
+    /// Энтропия, количество информации.
     ///</summary>
     public class IdentificationInformation : ICharacteristicCalculator
     {
@@ -24,6 +26,11 @@ namespace ChainAnalises.Classes.IntervalAnalysis.Characteristics.Calculators
                 temp += P*Math.Log(da, 2);
             }
             return temp;
+        }
+
+        public CharacteristicsEnum GetCharacteristicName()
+        {
+            return CharacteristicsEnum.Entropy;
         }
     }
 }

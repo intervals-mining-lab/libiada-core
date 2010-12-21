@@ -1,9 +1,4 @@
 using System;
-using System.Collections;
-using System.Xml;
-using System.Xml.Schema;
-using System.Xml.Serialization;
-using ChainAnalises.Classes.IntervalAnalysis;
 using ChainAnalises.Classes.Root;
 
 namespace ChainAnalises.Classes.AuxiliaryClasses.WebServices.Additional.Types

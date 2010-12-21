@@ -2,6 +2,7 @@ using ChainAnalises.Classes.IntervalAnalysis;
 
 namespace ChainAnalises.Classes.AuxiliaryClasses.DataManipulators.Iterators
 {
+
     ///<summary>
     /// Интерфейс итератор по цепочке.
     ///</summary>

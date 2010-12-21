@@ -1,4 +1,5 @@
 using System.Collections;
+using ChainAnalises.Classes.AuxiliaryClasses.WebServices.Additional.Types;
 using ChainAnalises.Classes.Root;
 
 namespace ChainAnalises.Classes.AuxiliaryClasses.DataManipulators
@@ -40,7 +41,6 @@ namespace ChainAnalises.Classes.AuxiliaryClasses.DataManipulators
 
         ///<summary>
         /// Добавляет элемент в поток
-        /// 
         ///</summary>
         ///<param name="baseObject">ДОбавляемый элемент</param>
         public void Add(IBaseObject baseObject)

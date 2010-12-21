@@ -1,6 +1,7 @@
 namespace ChainAnalises.Classes.IntervalAnalysis.Characteristics.Calculators
 {
     ///<summary>
+    /// –егул€рность.
     ///</summary>
     public class Regularity : ICharacteristicCalculator
     {
@@ -24,6 +25,11 @@ namespace ChainAnalises.Classes.IntervalAnalysis.Characteristics.Calculators
         public double Calculate(Chain pChain, LinkUp Link)
         {
             return CommonCalculate(pChain, Link);
+        }
+
+        public CharacteristicsEnum GetCharacteristicName()
+        {
+            return CharacteristicsEnum.Regularity;
         }
     }
 }

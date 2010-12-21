@@ -1,10 +1,10 @@
 using System;
 using ChainAnalises.Classes.IntervalAnalysis.Characteristics.AuxiliaryInterfaces;
-using ChainAnalises.Classes.IntervalAnalysis.Characteristics.Calculators;
 
-namespace ChainAnalises.Classes.IntervalAnalysis.Characteristics
+namespace ChainAnalises.Classes.IntervalAnalysis.Characteristics.Calculators
 {
     ///<summary>
+    ///  оличество интервалов в зависимости от прив€зки.
     ///</summary>
     public class IntervalsCount : ICharacteristicCalculator
     {
@@ -16,6 +16,11 @@ namespace ChainAnalises.Classes.IntervalAnalysis.Characteristics
         public double Calculate(Chain pChain, LinkUp Link)
         {
             return CommonCalculate(pChain, Link);
+        }
+
+        public CharacteristicsEnum GetCharacteristicName()
+        {
+            return CharacteristicsEnum.IntervalsCount;
         }
 
         private double CommonCalculate(ChainWithCharacteristic pChain, LinkUp Link)

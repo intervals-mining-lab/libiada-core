@@ -6,7 +6,8 @@ using ChainAnalises.Classes.TheoryOfSet;
 
 namespace ChainAnalises.Classes.AlphabetCheker
 {
-    ///<summary>Класс реализующий проверку соответствия заданного
+    ///<summary>
+    /// Класс реализующий проверку соответствия заданного
     /// алфавита и заданной цепи
     ///</summary>
     public class Checker

@@ -4,18 +4,21 @@ using ChainAnalises.Classes.IntervalAnalysis.Characteristics.Calculators;
 namespace ChainAnalises.Classes.IntervalAnalysis.Characteristics
 {
     ///<summary>
+    /// Статическая фабрика различных калькуляторов.
     ///</summary>
     public static class CharacteristicsFactory
     {
+        ///<summary>
+        /// Число возможных цепочек которые можно сгенерировать 
+        /// из данной цепочки, содержащей фантомные сообщения.
+        ///</summary>
         public static ICharacteristicCalculator PhChainCount
         {
-            get
-            {
-                return new PhantomMessagesCount();
-            }
+            get { return new PhantomMessagesCount(); }
         }
 
         ///<summary>
+        /// Вероятность (частота).
         ///</summary>
         public static ICharacteristicCalculator P
         {
@@ -23,13 +26,7 @@ namespace ChainAnalises.Classes.IntervalAnalysis.Characteristics
         }
 
         ///<summary>
-        ///</summary>
-        public static ICharacteristicCalculator Ph
-        {
-            get { return new PhantomMessagesCount(); }
-        }
-
-        ///<summary>
+        /// Количество интервалов в зависимости от привязки.
         ///</summary>
         public static ICharacteristicCalculator IntervalsCount
         {
@@ -37,6 +34,7 @@ namespace ChainAnalises.Classes.IntervalAnalysis.Characteristics
         }
 
         ///<summary>
+        /// Длина обрезания по Садовскому.
         ///</summary>
         public static ICharacteristicCalculator CutLength
         {
@@ -44,6 +42,7 @@ namespace ChainAnalises.Classes.IntervalAnalysis.Characteristics
         }
 
         ///<summary>
+        /// Удалённость.
         ///</summary>
         public static ICharacteristicCalculator G
         {
@@ -51,6 +50,10 @@ namespace ChainAnalises.Classes.IntervalAnalysis.Characteristics
         }
 
         ///<summary>
+        /// Количество элементов.
+        /// Для однородной цепи это количество 
+        /// непустых элементов.
+        /// Для неоднородной цепи это её длина.
         ///</summary>
         public static ICharacteristicCalculator n
         {
@@ -58,6 +61,7 @@ namespace ChainAnalises.Classes.IntervalAnalysis.Characteristics
         }
 
         ///<summary>
+        /// Среднегеометрический интервал.
         ///</summary>
         public static ICharacteristicCalculator deltaG
         {
@@ -65,6 +69,7 @@ namespace ChainAnalises.Classes.IntervalAnalysis.Characteristics
         }
 
         ///<summary>
+        /// Длинна как сумма длин интервалов.
         ///</summary>
         public static ICharacteristicCalculator Length
         {
@@ -72,6 +77,7 @@ namespace ChainAnalises.Classes.IntervalAnalysis.Characteristics
         }
 
         ///<summary>
+        /// Среднее арифметическое значение длин интервалов.
         ///</summary>
         public static ICharacteristicCalculator deltaA
         {
@@ -79,6 +85,7 @@ namespace ChainAnalises.Classes.IntervalAnalysis.Characteristics
         }
 
         ///<summary>
+        /// Число описательных информаций.
         ///</summary>
         public static ICharacteristicCalculator D
         {
@@ -86,6 +93,7 @@ namespace ChainAnalises.Classes.IntervalAnalysis.Characteristics
         }
 
         ///<summary>
+        /// Регулярность.
         ///</summary>
         public static ICharacteristicCalculator r
         {
@@ -93,6 +101,7 @@ namespace ChainAnalises.Classes.IntervalAnalysis.Characteristics
         }
 
         ///<summary>
+        /// Среднегеометрическая удалённость.
         ///</summary>
         public static ICharacteristicCalculator g
         {
@@ -100,6 +109,8 @@ namespace ChainAnalises.Classes.IntervalAnalysis.Characteristics
         }
 
         ///<summary>
+        /// Количество идентифицирующих информаций приходящихся на одно значащее сообщение.
+        /// Энтропия, количество информации.
         ///</summary>
         public static ICharacteristicCalculator H
         {
@@ -107,6 +118,15 @@ namespace ChainAnalises.Classes.IntervalAnalysis.Characteristics
         }
 
         ///<summary>
+        /// Объём цепи. Произведение длин всех её интервалов.
+        ///</summary>
+        public static ICharacteristicCalculator V
+        {
+            get { return new Volume(); }
+        }
+
+        ///<summary>
+        /// Мощность алфавита.
         ///</summary>
         public static ICharacteristicCalculator Power
         {
@@ -114,6 +134,7 @@ namespace ChainAnalises.Classes.IntervalAnalysis.Characteristics
         }
 
         ///<summary>
+        /// Удалённость приходящаяся на одно сообщение.
         ///</summary>
         public static ICharacteristicCalculator nG
         {
@@ -122,6 +143,7 @@ namespace ChainAnalises.Classes.IntervalAnalysis.Characteristics
 
 
         ///<summary>
+        /// Периодичность.
         ///</summary>
         public static ICharacteristicCalculator t
         {
@@ -129,6 +151,15 @@ namespace ChainAnalises.Classes.IntervalAnalysis.Characteristics
         }
 
         ///<summary>
+        /// Энтропия словаря по Садовскому.
+        ///</summary>
+        public static ICharacteristicCalculator CutLenVocEntropy
+        {
+            get { return new CutLengthVocabularyEntropy(); }
+        }
+
+        ///<summary>
+        /// Список калькуляторов характеристик.
         ///</summary>
         public static ArrayList List
         {
@@ -150,8 +181,10 @@ namespace ChainAnalises.Classes.IntervalAnalysis.Characteristics
                 temp.Add(Power);
                 temp.Add(nG);
                 temp.Add(t);
-                temp.Add(Ph);
-               // temp.Add(CutLength);
+                temp.Add(PhChainCount);
+                //temp.Add(CutLength);
+                //temp.Add(V);
+                //temp.Add(CutLenVocEntropy);
                 return temp;
             }
         }

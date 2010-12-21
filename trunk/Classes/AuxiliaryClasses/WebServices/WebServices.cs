@@ -1,9 +1,11 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using ChainAnalises.Classes.AuxiliaryClasses.DataManipulators;
 using ChainAnalises.Classes.AuxiliaryClasses.DataManipulators.ElementStreamCreators;
 using ChainAnalises.Classes.AuxiliaryClasses.DataManipulators.SpaceRebuilders;
 using ChainAnalises.Classes.AuxiliaryClasses.WebServices.Additional.Types;
+using ChainAnalises.Classes.AuxiliaryClasses.WebServices.Calculate;
 using ChainAnalises.Classes.AuxiliaryClasses.WebServices.Clusterization;
 using ChainAnalises.Classes.AuxiliaryClasses.WebServices.CreateAlphabet;
 using ChainAnalises.Classes.AuxiliaryClasses.WebServices.GenerateMarkovChains;
@@ -23,6 +25,7 @@ using ChainAnalises.Classes.TheoryOfSet;
 namespace ChainAnalises.Classes.AuxiliaryClasses.WebServices
 {
     ///<summary>
+    /// Класс вебсервисов запускаемых классом в отдельных вычислительных нитях
     ///</summary>
     public class WebServices
     {
@@ -103,11 +106,11 @@ namespace ChainAnalises.Classes.AuxiliaryClasses.WebServices
             return Answer;
         }
 
-        ///<summary>
-        ///</summary>
-        ///<param name="request"></param>
-        ///<returns></returns>
-        ///<exception cref="NotImplementedException"></exception>
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
         public AnswerMarkovChain GenerateMarkovChains(RequestMarkovChain request)
         {
             AnswerMarkovChain Result = new AnswerMarkovChain();
@@ -116,8 +119,7 @@ namespace ChainAnalises.Classes.AuxiliaryClasses.WebServices
             ChainBin Bin = Convert.ToChainBin(request.Chain);
 
             Chain InputChain = (Chain) Bin.GetInstance();
-            GeneratorFactory GeneratorFabric = new GeneratorFactory();
-            IGenerator Generator = GeneratorFabric.Create(request.Generator);
+            IGenerator Generator = GeneratorFactory.Create(request.Generator);
 
             MarkovChainFactory<Chain, Chain> MarkovChainFabric = new MarkovChainFactory<Chain, Chain>();
             //TODO: Change 0 value of uniforRang to something.
@@ -135,17 +137,17 @@ namespace ChainAnalises.Classes.AuxiliaryClasses.WebServices
             return Result;
         }
 
-        ///<summary>
-        ///</summary>
-        ///<param name="request"></param>
-        ///<returns></returns>
-        ///<exception cref="NotImplementedException"></exception>
+        /// <summary>
+        /// Сервис, осуществляющй кластеризацию.
+        /// </summary>
+        /// <param name="request">Контейнер с исходными данными</param>
+        /// <returns>Результаты кластеризации</returns>
         public AnswerClusterization KRAB(RequestClusterization request)
         {
             Converter Convert = new Converter();
             DataTable Data = (DataTable) Convert.ToDataTableBin(request.DataTable).GetInstance();
 
-            KrabCalusterization Clusterizator = new KrabCalusterization(Data);
+            IClusterization Clusterizator = new KrabCalusterization(Data);
             ClustarizationVariants Result;
             switch(request.Method)
             {
@@ -168,18 +170,21 @@ namespace ChainAnalises.Classes.AuxiliaryClasses.WebServices
         }
 
         ///<summary>
+        /// Сервис, генерирующий фантомные цепочки
         ///</summary>
-        ///<param name="request"></param>
-        ///<returns></returns>
-        ///<exception cref="NotImplementedException"></exception>
+        ///<param name="request">Контейнер с исходными данными</param>
+        ///<returns>Результаты кластеризации</returns>
         public AnswerPhantomChains PhantomChains(RequestPhantomChains request)
         {
             AnswerPhantomChains Answer = new AnswerPhantomChains();
             Answer.Error = ErrorType.CalculationsComplete;
             Converter Convert = new Converter();
             Chain SourceChain = (Chain) Convert.ToChainBin(request.Chain).GetInstance();
-            PhantomChainGenerator<Chain, Chain> Generator = new PhantomChainGenerator<Chain, Chain>(SourceChain, new SimpleGenerator());
-            ArrayList Temp = Generator.Generate(request.GenerateChainsCount);
+            //создание генератора фантомных цепей
+            PhantomChainGenerator<Chain, Chain> Generator = new PhantomChainGenerator<Chain, Chain>(SourceChain, GeneratorFactory.Create(request.Generator));
+            //генерация цепей
+            List<BaseChain> Temp = Generator.Generate((uint)request.GenerateChainsCount);
+            //преобразоввание результатов
             ObjectVirtualBase<Chain> OVB = new ObjectVirtualBase<Chain>();
             for (int i = 0; i < Temp.Count; i++)
             {
@@ -193,12 +198,11 @@ namespace ChainAnalises.Classes.AuxiliaryClasses.WebServices
             return Answer;
         }
 
-
-        ///<summary>
-        ///</summary>
-        ///<param name="request"></param>
-        ///<returns></returns>
-        ///<exception cref="NotImplementedException"></exception>
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
         public AnswerSegmentation Segmentation(RequestSegmentation request)
         {
             AnswerSegmentation Result = new AnswerSegmentation();

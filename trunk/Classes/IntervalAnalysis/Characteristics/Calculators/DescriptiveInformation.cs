@@ -5,6 +5,7 @@ using ChainAnalises.Classes.IntervalAnalysis.Characteristics.Calculators;
 namespace ChainAnalises.Classes.IntervalAnalysis.Characteristics.Calculators
 {
     ///<summary>
+    /// Число описательных информаций.
     ///</summary>
     public class DescriptiveInformation : ICharacteristicCalculator
     {
@@ -12,6 +13,8 @@ namespace ChainAnalises.Classes.IntervalAnalysis.Characteristics.Calculators
         {
             double P = pChain.GetCharacteristic(Link, CharacteristicsFactory.P);
             double Result = Math.Pow(pChain.GetCharacteristic(Link, CharacteristicsFactory.deltaA), P);
+            //Если вся цепь заполнена одинаковыми сообщениями
+            //то вероятность равна 1 и считать описательные информации не имеет смысла.
             if (1!=P)
             {
                 double P_1 = 1 - P;
@@ -43,6 +46,11 @@ namespace ChainAnalises.Classes.IntervalAnalysis.Characteristics.Calculators
                 temp *= Math.Pow(1 / (1 - P_sum), 1 - P_sum);
             }
             return temp;
+        }
+
+        public CharacteristicsEnum GetCharacteristicName()
+        {
+            return CharacteristicsEnum.DescriptiveInformation;
         }
     }
 }

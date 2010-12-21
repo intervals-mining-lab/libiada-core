@@ -22,7 +22,6 @@ namespace ChainAnalises.Classes.AuxiliaryClasses.DataManipulators.SpaceRebuilder
             else
             {
                 // TODO: Realize variant when we have Chain Rebuild(BaseChain A)
-                // throw new Exception("Not Implemented");
                 ChainTo TempChainTo = new ChainTo();
                 TempChainTo.ClearAndSetNewLength(A.Length);
                 IteratorSimpleStart<ChainFrom> IteratorRead = new IteratorSimpleStart<ChainFrom>(Temp, 1);

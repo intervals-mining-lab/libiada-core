@@ -44,10 +44,17 @@ namespace TestChainAnalysis.Classes.EventTheory
         /// Тест проверящий поведение при добавлении null в качестве измерения
         ///</summary>
         [Test]
-        [ExpectedException(typeof (NullReferenceException))]
         public void TestAddDimensionNULL()
         {
-            BaseSpace.AddDimension(null);
+            try
+            {
+                BaseSpace.AddDimension(null);
+            }
+            catch (Exception)
+            {
+                return;
+            }
+            Assert.Fail();
         }
 
         ///<summary>
@@ -75,16 +82,23 @@ namespace TestChainAnalysis.Classes.EventTheory
         /// тест проверяет поведение системы при добавлении null объекта в пространство
         ///</summary>
         [Test]
-        [ExpectedException(typeof (NullReferenceException))]
         public void TestAddItemNull()
         {
-            Dimension dm1 = new Dimension(0, 10);
-            Dimension dm2 = new Dimension(-1, 10);
-
-            BaseSpace.AddDimension(dm1);
-            BaseSpace.AddDimension(dm2);
-
-            BaseSpace.AddItem(null, BaseSpace.GetPlacePattern().SetValues(new long[] {1, 1}));
+            try
+            {
+                Dimension dm1 = new Dimension(0, 10);
+                Dimension dm2 = new Dimension(-1, 10);
+                
+                BaseSpace.AddDimension(dm1);
+                BaseSpace.AddDimension(dm2);
+                
+                BaseSpace.AddItem(null, BaseSpace.GetPlacePattern().SetValues(new long[] {1, 1}));
+            }
+            catch (NullReferenceException)
+            {
+                return;
+            }
+            Assert.Fail();
         }
 
         ///<summary>
@@ -115,9 +129,10 @@ namespace TestChainAnalysis.Classes.EventTheory
         /// места передается null;
         ///</summary>
         [Test]
-        [ExpectedException(typeof (NullReferenceException))]
+        [ExpectedException(typeof(NullReferenceException))]
         public void TestAddItemInNull()
         {
+
             Dimension dm1 = new Dimension(0, 10);
             Dimension dm2 = new Dimension(-1, 10);
 
@@ -344,13 +359,20 @@ namespace TestChainAnalysis.Classes.EventTheory
         /// принадлежашего другому пространству
         ///</summary>
         [Test]
-        [ExpectedException(typeof (Exception))]
         public void TestGetWrongPlace()
         {
-            BaseSpace.AddDimension(new Dimension(0, 10));
-            Place Pl = BaseSpace.GetPlacePattern();
-            BaseSpace.AddDimension(new Dimension(-10, 10));
-            BaseSpace.GetItem(Pl);
+            try
+            {
+                BaseSpace.AddDimension(new Dimension(0, 10));
+                Place Pl = BaseSpace.GetPlacePattern();
+                BaseSpace.AddDimension(new Dimension(-10, 10));
+                BaseSpace.GetItem(Pl);
+            }
+            catch (Exception)
+            {
+                return;
+            }
+            Assert.Fail();
         }
 
         ///<summary>
@@ -358,13 +380,20 @@ namespace TestChainAnalysis.Classes.EventTheory
         /// объекта место принадлежащего другому пространству
         ///</summary>
         [Test]
-        [ExpectedException(typeof (Exception))]
         public void TestAddWrongPlace()
         {
-            BaseSpace.AddDimension(new Dimension(0, 10));
-            Place Pl = BaseSpace.GetPlacePattern();
-            BaseSpace.AddDimension(new Dimension(-10, 10));
-            BaseSpace.AddItem(new ValueInt(1), Pl);
+            try
+            {
+                BaseSpace.AddDimension(new Dimension(0, 10));
+                Place Pl = BaseSpace.GetPlacePattern();
+                BaseSpace.AddDimension(new Dimension(-10, 10));
+                BaseSpace.AddItem(new ValueInt(1), Pl);
+            }
+            catch (Exception)
+            {
+                return;
+            }
+            Assert.Fail();
         }
 
         ///<summary>
@@ -422,124 +451,159 @@ namespace TestChainAnalysis.Classes.EventTheory
         /// Тестирует поведение методов от IEnumerator при удалении объекта
         ///</summary>
         [Test]
-        [ExpectedException(typeof (InvalidOperationException))]
         public void TestENumiratorRemove()
         {
-            BaseSpace.AddDimension(new Dimension(0, 10));
-
-            for (int i = 0; i <= 10; i++)
+            try
             {
-                BaseSpace.AddItem(new ValueInt(i*i), BaseSpace.GetPlacePattern().SetValues(new long[] {i}));
-            }
+                BaseSpace.AddDimension(new Dimension(0, 10));
 
-
-            for (int i = 0; BaseSpace.MoveNext(); i++)
-            {
-                Assert.AreEqual(new ValueInt(i*i),
-                                BaseSpace.GetItem(BaseSpace.GetPlacePattern().SetValues(new long[] {i})));
-                if (i == 5)
+                for (int i = 0; i <= 10; i++)
                 {
-                    BaseSpace.RemoveAt(BaseSpace.GetPlacePattern().SetValues(new long[] {2}));
+                    BaseSpace.AddItem(new ValueInt(i * i), BaseSpace.GetPlacePattern().SetValues(new long[] { i }));
                 }
-                Assert.AreEqual(new ValueInt(i*i), BaseSpace.Current);
+
+
+                for (int i = 0; BaseSpace.MoveNext(); i++)
+                {
+                    Assert.AreEqual(new ValueInt(i * i),
+                                    BaseSpace.GetItem(BaseSpace.GetPlacePattern().SetValues(new long[] { i })));
+                    if (i == 5)
+                    {
+                        BaseSpace.RemoveAt(BaseSpace.GetPlacePattern().SetValues(new long[] { 2 }));
+                    }
+                    Assert.AreEqual(new ValueInt(i * i), BaseSpace.Current);
+                }
             }
+            catch (InvalidOperationException)
+            {
+                return;
+            }
+            Assert.Fail();
         }
 
         ///<summary>
         /// Тестирует поведение методов от IEnumerator при увеличении размерости пространства
         ///</summary>
         [Test]
-        [ExpectedException(typeof (InvalidOperationException))]
         public void TestENumiratorAddDimension()
         {
-            BaseSpace.AddDimension(new Dimension(0, 10));
-
-            for (int i = 0; i <= 10; i++)
+            try
             {
-                BaseSpace.AddItem(new ValueInt(i*i), BaseSpace.GetPlacePattern().SetValues(new long[] {i}));
-            }
+                BaseSpace.AddDimension(new Dimension(0, 10));
 
-
-            for (int i = 0; BaseSpace.MoveNext(); i++)
-            {
-                Assert.AreEqual(new ValueInt(i*i),
-                                BaseSpace.GetItem(BaseSpace.GetPlacePattern().SetValues(new long[] {i})));
-                if (i == 5)
+                for (int i = 0; i <= 10; i++)
                 {
-                    BaseSpace.AddDimension(new Dimension(-10, 10));
+                    BaseSpace.AddItem(new ValueInt(i * i), BaseSpace.GetPlacePattern().SetValues(new long[] { i }));
                 }
-                Assert.AreEqual(new ValueInt(i*i), BaseSpace.Current);
+
+
+                for (int i = 0; BaseSpace.MoveNext(); i++)
+                {
+                    Assert.AreEqual(new ValueInt(i * i),
+                                    BaseSpace.GetItem(BaseSpace.GetPlacePattern().SetValues(new long[] { i })));
+                    if (i == 5)
+                    {
+                        BaseSpace.AddDimension(new Dimension(-10, 10));
+                    }
+                    Assert.AreEqual(new ValueInt(i * i), BaseSpace.Current);
+                }
             }
+            catch (InvalidOperationException)
+            {
+                return;
+            }
+            Assert.Fail();
         }
 
         ///<summary>
         ///  Тестирует поведение методов от IEnumerator при добавлении нового объекта в пространство
         ///</summary>
         [Test]
-        [ExpectedException(typeof (InvalidOperationException))]
         public void TestENumiratorAddItem()
         {
-            BaseSpace.AddDimension(new Dimension(0, 10));
-
-            for (int i = 0; i <= 10; i++)
+            try
             {
-                BaseSpace.AddItem(new ValueInt(i*i), BaseSpace.GetPlacePattern().SetValues(new long[] {i}));
-            }
+                BaseSpace.AddDimension(new Dimension(0, 10));
 
-
-            for (int i = 0; BaseSpace.MoveNext(); i++)
-            {
-                Assert.AreEqual(new ValueInt(i*i),
-                                BaseSpace.GetItem(BaseSpace.GetPlacePattern().SetValues(new long[] {i})));
-                if (i == 5)
+                for (int i = 0; i <= 10; i++)
                 {
-                    BaseSpace.AddItem(new ValueInt(10), BaseSpace.GetPlacePattern().SetValues(new long[] {7}));
+                    BaseSpace.AddItem(new ValueInt(i * i), BaseSpace.GetPlacePattern().SetValues(new long[] { i }));
                 }
-                Assert.AreEqual(new ValueInt(i*i), BaseSpace.Current);
+
+
+                for (int i = 0; BaseSpace.MoveNext(); i++)
+                {
+                    Assert.AreEqual(new ValueInt(i * i),
+                                    BaseSpace.GetItem(BaseSpace.GetPlacePattern().SetValues(new long[] { i })));
+                    if (i == 5)
+                    {
+                        BaseSpace.AddItem(new ValueInt(10), BaseSpace.GetPlacePattern().SetValues(new long[] { 7 }));
+                    }
+                    Assert.AreEqual(new ValueInt(i * i), BaseSpace.Current);
+                }
             }
+            catch (Exception)
+            {
+                return;
+            }
+            Assert.Fail();
         }
 
         ///<summary>
         ///  Тестирует поведение методов от IEnumerator при очищении пространства (удалении)
         ///</summary>
         [Test]
-        [ExpectedException(typeof (InvalidOperationException))]
         public void TestENumiratorDeleteDimensions()
         {
-            BaseSpace.AddDimension(new Dimension(0, 10));
-
-            for (int i = 0; i <= 10; i++)
+            try
             {
-                BaseSpace.AddItem(new ValueInt(i*i), BaseSpace.GetPlacePattern().SetValues(new long[] {i}));
-            }
+                BaseSpace.AddDimension(new Dimension(0, 10));
 
-
-            for (int i = 0; BaseSpace.MoveNext(); i++)
-            {
-                Assert.AreEqual(new ValueInt(i*i),
-                                BaseSpace.GetItem(BaseSpace.GetPlacePattern().SetValues(new long[] {i})));
-                if (i == 5)
+                for (int i = 0; i <= 10; i++)
                 {
-                    BaseSpace.DeleteDimesnions();
+                    BaseSpace.AddItem(new ValueInt(i * i), BaseSpace.GetPlacePattern().SetValues(new long[] { i }));
                 }
-                Assert.AreEqual(new ValueInt(i*i), BaseSpace.Current);
+
+
+                for (int i = 0; BaseSpace.MoveNext(); i++)
+                {
+                    Assert.AreEqual(new ValueInt(i * i),
+                                    BaseSpace.GetItem(BaseSpace.GetPlacePattern().SetValues(new long[] { i })));
+                    if (i == 5)
+                    {
+                        BaseSpace.DeleteDimesnions();
+                    }
+                    Assert.AreEqual(new ValueInt(i * i), BaseSpace.Current);
+                }
             }
+            catch (Exception)
+            {
+                return;
+            }
+            Assert.Fail();
         }
 
         ///<summary>
         ///  Тестирует поведение метода current при усливии его вызова перед первым вызовом метода MoveNext
         ///</summary>
         [Test]
-        [ExpectedException(typeof (InvalidOperationException))]
         public void TestENumiratorPreFirst()
         {
-            BaseSpace.AddDimension(new Dimension(0, 10));
-
-            for (int i = 0; i <= 10; i++)
+            try
             {
-                BaseSpace.AddItem(new ValueInt(i*i), BaseSpace.GetPlacePattern().SetValues(new long[] {i}));
+                BaseSpace.AddDimension(new Dimension(0, 10));
+
+                for (int i = 0; i <= 10; i++)
+                {
+                    BaseSpace.AddItem(new ValueInt(i * i), BaseSpace.GetPlacePattern().SetValues(new long[] { i }));
+                }
+                object current = BaseSpace.Current;
             }
-            object current = BaseSpace.Current;
+            catch (Exception)
+            {
+                return;
+            }
+            Assert.Fail();
         }
 
         ///<summary>
@@ -547,20 +611,27 @@ namespace TestChainAnalysis.Classes.EventTheory
         /// MoveNext начает возвращать false 
         ///</summary>
         [Test]
-        [ExpectedException(typeof (InvalidOperationException))]
         public void TestENumiratorPostLast()
         {
-            BaseSpace.AddDimension(new Dimension(0, 10));
-
-            for (int i = 0; i <= 10; i++)
+            try
             {
-                BaseSpace.AddItem(new ValueInt(i*i), BaseSpace.GetPlacePattern().SetValues(new long[] {i}));
-            }
+                BaseSpace.AddDimension(new Dimension(0, 10));
 
-            for (; BaseSpace.MoveNext();)
-            {
+                for (int i = 0; i <= 10; i++)
+                {
+                    BaseSpace.AddItem(new ValueInt(i * i), BaseSpace.GetPlacePattern().SetValues(new long[] { i }));
+                }
+
+                for (; BaseSpace.MoveNext(); )
+                {
+                }
+                object current = BaseSpace.Current;
             }
-            object current = BaseSpace.Current;
+            catch (Exception)
+            {
+                return;
+            }
+            Assert.Fail();
         }
 
         ///<summary>

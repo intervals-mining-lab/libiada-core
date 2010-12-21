@@ -1,9 +1,12 @@
 using System;
+using ChainAnalises.Classes;
 using ChainAnalises.Classes.AuxiliaryClasses.DataManipulators.ElementStreamCreators;
+using ChainAnalises.Classes.AuxiliaryClasses.DataManipulators.SpaceRebuilders;
+using ChainAnalises.Classes.AuxiliaryClasses.WebServices.Additional.Types;
 using ChainAnalises.Classes.IntervalAnalysis;
 using NUnit.Framework;
 
-namespace ChainAnalises.Classes.AuxiliaryClasses.DataManipulators.SpaceRebuilders.Test
+namespace TestChainAnalysis.Classes.AuxiliaryClasses.DataManipulators.SpaceRebuilders
 {
     ///<summary>
     /// Тестирует класс фабрика методов конвертирования пространства
@@ -25,10 +28,17 @@ namespace ChainAnalises.Classes.AuxiliaryClasses.DataManipulators.SpaceRebuilder
         /// Тестирует создание про null.
         ///</summary>
         [Test]
-        [ExpectedException(typeof (NullReferenceException))]
         public void TestCreateFromNull()
         {
-            SpaceRebuilderFactory<Chain,Chain>.Create(null);
+            try
+            {
+                SpaceRebuilderFactory<Chain,Chain>.Create(null);
+            }
+            catch (NullReferenceException)
+            {
+                return;
+            }
+            Assert.Fail();
         }
     }
 }

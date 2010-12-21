@@ -7,7 +7,7 @@ namespace ChainAnalises.Classes.DataMining.Clusterization.KRAB
 {
     ///<summary>
     ///</summary>
-    public class KrabCalusterization
+    public class KrabCalusterization:IClusterization
     {
         private readonly DataTable dt = null;
         private Graph VoltageGraph = null;

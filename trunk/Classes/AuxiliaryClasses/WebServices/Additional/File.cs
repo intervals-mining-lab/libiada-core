@@ -1,4 +1,5 @@
 using System;
+using ChainAnalises.Classes.AuxiliaryClasses.WebServices.Additional.Types;
 using ChainAnalises.Classes.Root;
 
 namespace ChainAnalises.Classes.AuxiliaryClasses.WebServices.Additional

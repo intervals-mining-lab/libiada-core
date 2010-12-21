@@ -1,14 +1,36 @@
-﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>8.0.50727</ProductVersion>
+    <ProductVersion>9.0.30729</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{E3B8B4A4-5B6F-4D2F-8422-46A12D64D23C}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>ChainAnalises</RootNamespace>
     <AssemblyName>ChainAnalises</AssemblyName>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -19,6 +41,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <DocumentationFile>bin\Debug\ChainAnalises.XML</DocumentationFile>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -27,18 +50,14 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Castle.Core, Version=1.0.3.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL" />
-    <Reference Include="Castle.DynamicProxy2, Version=2.0.3.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL" />
-    <Reference Include="Iesi.Collections, Version=1.0.0.3, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL" />
-    <Reference Include="LearningTests, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
-    <Reference Include="log4net, Version=1.2.10.0, Culture=neutral, PublicKeyToken=1b44e1d426115821, processorArchitecture=MSIL" />
-    <Reference Include="MySql.Data, Version=5.2.5.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
-    <Reference Include="NHibernate, Version=2.0.1.4000, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL" />
+    <Reference Include="nunit.framework, Version=2.5.7.10213, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Design" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
@@ -49,18 +68,7 @@
     <Compile Include="Classes\AuxiliaryClasses\DataManipulators\SpaceRebuilders\PsevdoCycleSpace.cs" />
     <Compile Include="Classes\AuxiliaryClasses\DataManipulators\SpaceRebuilders\SpaceNotPhantomRebuilder.cs" />
     <Compile Include="Classes\AuxiliaryClasses\DataManipulators\SpaceRebuilders\SpacePhantomRebuilder.cs" />
-    <Compile Include="Classes\AuxiliaryClasses\DataManipulators\SpaceRebuilders\SpaceRebuilderFromChainToChainByBlock.cs" />
-    <Compile Include="Classes\AuxiliaryClasses\DBInterface\DBConfig.cs" />
-    <Compile Include="Classes\AuxiliaryClasses\DBInterface\DBFile.cs" />
-    <Compile Include="Classes\AuxiliaryClasses\DBInterface\DBFileType.cs" />
-    <Compile Include="Classes\AuxiliaryClasses\DBInterface\Node.cs" />
-    <Compile Include="Classes\AuxiliaryClasses\DataManipulators\SpaceRebuilders\SpaceRebuilderFromChainToChainByBlock.cs" />
-    <Compile Include="Classes\AuxiliaryClasses\DBInterface\DBChainMessage.cs" />
-    <Compile Include="Classes\AuxiliaryClasses\DBInterface\DBConfig.cs" />
-    <Compile Include="Classes\AuxiliaryClasses\DBInterface\DBFile.cs" />
-    <Compile Include="Classes\AuxiliaryClasses\DBInterface\DBFileType.cs" />
-    <Compile Include="Classes\AuxiliaryClasses\DBInterface\DBMessage.cs" />
-    <Compile Include="Classes\AuxiliaryClasses\DBInterface\Node.cs" />
+    <Compile Include="Classes\AuxiliaryClasses\WebServices\Additional\AnswerFactory.cs" />
     <Compile Include="Classes\AuxiliaryClasses\WebServices\Additional\Threads\AlphabetThread.cs" />
     <Compile Include="Classes\AuxiliaryClasses\WebServices\Additional\Threads\CalculatingThread.cs" />
     <Compile Include="Classes\AuxiliaryClasses\WebServices\Additional\Threads\ClusterizationThread.cs" />
@@ -87,7 +95,20 @@
     <Compile Include="Classes\AuxiliaryClasses\WebServices\SOAP\SoapUniformChainOfChains.cs" />
     <Compile Include="Classes\AuxiliaryClasses\WebServices\SOAP\SoapUniformChainOfValueString.cs" />
     <Compile Include="Classes\AuxiliaryClasses\WebServices\SOAP\SoapValueString.cs" />
-    <Compile Include="Classes\Compress\CoderHannon.cs" />
+    <Compile Include="Classes\DataMining\Clusterization\AlternativeClusterization\AlternativeKRAB.cs" />
+    <Compile Include="Classes\DataMining\Clusterization\AlternativeClusterization\Calculators\CommonCalculator.cs" />
+    <Compile Include="Classes\DataMining\Clusterization\AlternativeClusterization\Connection.cs" />
+    <Compile Include="Classes\DataMining\Clusterization\AlternativeClusterization\Calculators\FCalculator.cs" />
+    <Compile Include="Classes\DataMining\Clusterization\AlternativeClusterization\GraphElement.cs" />
+    <Compile Include="Classes\DataMining\Clusterization\AlternativeClusterization\GraphManager.cs" />
+    <Compile Include="Classes\DataMining\Clusterization\AlternativeClusterization\Calculators\HCalculator.cs" />
+    <Compile Include="Classes\DataMining\Clusterization\AlternativeClusterization\Calculators\ICalculator.cs" />
+    <Compile Include="Classes\DataMining\Clusterization\AlternativeClusterization\Calculators\LambdaCalculator.cs" />
+    <Compile Include="Classes\DataMining\Clusterization\AlternativeClusterization\Calculators\LinearCalculator.cs" />
+    <Compile Include="Classes\DataMining\Clusterization\AlternativeClusterization\Calculators\NormalizedLinearCalculator.cs" />
+    <Compile Include="Classes\DataMining\Clusterization\AlternativeClusterization\Calculators\TauCalculator.cs" />
+    <Compile Include="Classes\DataMining\Clusterization\AlternativeClusterization\Calculators\TauStarCalculator.cs" />
+    <Compile Include="Classes\DataMining\Clusterization\IClusterization.cs" />
     <Compile Include="Classes\DivizionToAccords\AlphabetChain.cs" />
     <Compile Include="Classes\DivizionToAccords\AuxiliaryClasses\IDataForStd.cs" />
     <Compile Include="Classes\DivizionToAccords\Calculator.cs" />
@@ -118,14 +139,35 @@
     <Compile Include="Classes\DivizionToAccords\SimpleFilter.cs" />
     <Compile Include="Classes\DivizionToAccords\StdCalculator.cs" />
     <Compile Include="Classes\DivizionToAccords\ProbabilityCountStrateges\Strategy.cs" />
-    <Compile Include="Classes\IntervalAnalysis\ChainMessage.cs" />
     <Compile Include="Classes\IntervalAnalysis\Characteristics\Calculators\AlphabetPower.cs" />
+    <Compile Include="Classes\IntervalAnalysis\Characteristics\CharacteristicsEnum.cs" />
     <Compile Include="Classes\IntervalAnalysis\Characteristics\Calculators\CutLength.cs" />
     <Compile Include="Classes\IntervalAnalysis\Characteristics\Calculators\CutLengthVocabularyEntropy.cs" />
     <Compile Include="Classes\IntervalAnalysis\Characteristics\Calculators\NomalizationGamut.cs" />
     <Compile Include="Classes\IntervalAnalysis\Characteristics\Calculators\Periodicity.cs" />
     <Compile Include="Classes\IntervalAnalysis\Characteristics\Calculators\PhantomMessagesCount.cs" />
+    <Compile Include="Classes\IntervalAnalysis\Characteristics\Calculators\Volume.cs" />
     <Compile Include="Classes\MatrixCalculus\IMatrixBin.cs" />
+    <Compile Include="Classes\PhantomChains\Coder.cs" />
+    <Compile Include="Classes\PhantomChains\ITreeNode.cs" />
+    <Compile Include="Classes\PhantomChains\PhantomTable.cs" />
+    <Compile Include="Classes\PhantomChains\Record.cs" />
+    <Compile Include="Classes\PhantomChains\TreeNode.cs" />
+    <Compile Include="Classes\PhantomChains\TreeTop.cs" />
+    <Compile Include="Classes\Project A\ArrayToString.cs" />
+    <Compile Include="Classes\Project A\ChainPicksWithCharacteristics.cs" />
+    <Compile Include="Classes\Project A\Filters\ChainFilterBySameFrequency.cs" />
+    <Compile Include="Classes\Project A\Filters\ChinFilterByAlphabetPower.cs" />
+    <Compile Include="Classes\Project A\Filters\IChainFilter.cs" />
+    <Compile Include="Classes\Project A\Statistics\Calculators\ExpectationCalculator.cs" />
+    <Compile Include="Classes\Project A\Statistics\Calculators\IOnePicksCalculator.cs" />
+    <Compile Include="Classes\Project A\LinkedUpCharacteristic.cs" />
+    <Compile Include="Classes\Project A\Statistics\Calculators\MaxCalculator.cs" />
+    <Compile Include="Classes\Project A\Statistics\Calculators\MinCalculator.cs" />
+    <Compile Include="Classes\Project A\Statistics\Calculators\StartingPointCalculator.cs" />
+    <Compile Include="Classes\Project A\Statistics\Picks.cs" />
+    <Compile Include="Classes\Project A\ScramblingGenerator.cs" />
+    <Compile Include="Classes\Root\SimpleTypes\ValueDouble.cs" />
     <Compile Include="Classes\Statistics\DictionaryEntryBase.cs" />
     <Compile Include="Classes\AuxiliaryClasses\WebServices\Calculate\AnswerChain.cs" />
     <Compile Include="Classes\AuxiliaryClasses\WebServices\Clusterization\AnswerClusterization.cs" />
@@ -161,7 +203,7 @@
     <Compile Include="Classes\MatrixCalculus\Operations\IOperator.cs" />
     <Compile Include="Classes\MatrixCalculus\Operations\Multiplicate.cs" />
     <Compile Include="Classes\MatrixCalculus\Operations\Power.cs" />
-    <Compile Include="Classes\Statistics\MarkovChain\MarkovChainUniformDynamic.cs" />
+    <Compile Include="Classes\Statistics\MarkovCompare\MarkovMetrics.cs" />
     <Compile Include="Classes\Statistics\MarkovChain\Generators\GeneratorFactory.cs" />
     <Compile Include="Classes\Statistics\MarkovChain\MarkovChainFactory.cs" />
     <Compile Include="Classes\AuxiliaryClasses\WebServices\PhantomChains\AnswerPhantomChains.cs" />
@@ -169,7 +211,6 @@
     <Compile Include="Classes\Statistics\MarkovChain\MarkovChainNotUniformStatic.cs" />
     <Compile Include="Classes\Statistics\MarkovChain\MarkovChainRandom.cs" />
     <Compile Include="Classes\Statistics\MarkovChain\MarkovChainUniformStatic.cs" />
-    <Compile Include="Classes\Statistics\SortDictionary.cs" />
     <Compile Include="Classes\TheoryOfGraphs\Branch.cs" />
     <Compile Include="Classes\DataMining\Clusterization\ClustarizationResult.cs" />
     <Compile Include="Classes\DataMining\Clusterization\ClustarizationVariants.cs" />
@@ -221,7 +262,6 @@
     <Compile Include="Classes\Statistics\MarkovChain\Matrixes\Probability\ProbabilityMatixRow.cs" />
     <Compile Include="Classes\Statistics\MarkovChain\Matrixes\Probability\ProbabilityMatrix.cs" />
     <Compile Include="Classes\Statistics\MarkovChain\TeachingMethod.cs" />
-    <Compile Include="Classes\Statistics\MarkovChain\MarkovChainNotUniformDynamic.cs" />
     <Compile Include="Classes\TheoryOfSet\Alphabet.cs" />
     <Compile Include="Classes\Root\IBaseObject.cs" />
     <Compile Include="Classes\EventTheory\Dimension.cs" />
@@ -273,21 +313,25 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram1.cd" />
+    <None Include="Classes\DataMining\Clusterization\AlternativeClusterization\ClusterizationClassDiagram.cd" />
+    <None Include="Classes\PhantomChains\PhantomClassDiagram.cd" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="libs\Castle.Core.dll" />
-    <Content Include="libs\Castle.DynamicProxy2.dll" />
-    <Content Include="libs\Iesi.Collections.dll" />
-    <Content Include="libs\Iesi.Collections.pdb" />
-    <Content Include="libs\LearningTests.dll" />
-    <Content Include="libs\LearningTests.pdb" />
-    <Content Include="libs\log4net.dll" />
-    <Content Include="libs\MySql.Data.dll" />
-    <Content Include="libs\NHibernate.dll" />
-    <Content Include="libs\NHibernate.pdb" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Mapping\" />
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>Клиентский профиль .NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Установщик Windows 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -55,10 +55,17 @@ namespace TestChainAnalysis.Classes.EventTheory
         /// Ожидаем исключение
         ///</summary>
         [Test]
-        [ExpectedException(typeof (NullReferenceException))]
         public void TestConstructorNull()
         {
-            new ReadRule(null);
+            try
+            {
+                new ReadRule(null);
+            }
+            catch (NullReferenceException)
+            {
+                return;
+            }
+            Assert.Fail();
         }
 
         ///<summary>
@@ -74,11 +81,18 @@ namespace TestChainAnalysis.Classes.EventTheory
         /// Тест проверяющий добавление места принадлежащего другому пространству
         ///</summary>
         [Test]
-        [ExpectedException(typeof (Exception))]
         public void TestAddPlaceFromOtherSpace()
         {
-            ReadRule Test = new ReadRule(PlBase);
-            Test.Add(PlFromOtherSpace);
+            try
+            {
+                ReadRule Test = new ReadRule(PlBase);
+                Test.Add(PlFromOtherSpace);
+            }
+            catch (Exception)
+            {
+                return;
+            }
+            Assert.Fail();
         }
 
         ///<summary>
@@ -94,31 +108,52 @@ namespace TestChainAnalysis.Classes.EventTheory
         /// Проверяет добавление места в рабочем режиме
         ///</summary>
         [Test]
-        [ExpectedException(typeof (Exception))]
         public void TestAddPlaceNotNeighbour()
         {
-            rrTest.Add(PlNotNeighbour);
+            try
+            {
+                rrTest.Add(PlNotNeighbour);
+            }
+            catch (Exception)
+            {
+                return;
+            }
+            Assert.Fail();
         }
 
         ///<summary>
         /// Проверяет добавление одного и того же места дважды
         ///</summary>
         [Test]
-        [ExpectedException(typeof (Exception))]
         public void TestAddTwise()
         {
-            rrTest.Add(PlNeighbour);
-            rrTest.Add(PlNeighbour);
+            try
+            {
+                rrTest.Add(PlNeighbour);
+                rrTest.Add(PlNeighbour);
+            }
+            catch (Exception)
+            {
+                return;
+            }
+            Assert.Fail();
         }
 
         ///<summary>
         /// Тeстирует вариант добавления null места
         ///</summary>
         [Test]
-        [ExpectedException(typeof (NullReferenceException))]
         public void TestAddNull()
         {
-            rrTest.Add((Place) null);
+            try
+            {
+                rrTest.Add((Place) null);
+            }
+            catch (NullReferenceException)
+            {
+                return;
+            }
+            Assert.Fail();
         }
 
         ///<summary>
@@ -165,11 +200,18 @@ namespace TestChainAnalysis.Classes.EventTheory
         /// Тестирует установку места принадлежащего другому пространству 
         ///</summary>
         [Test]
-        [ExpectedException(typeof (Exception))]
         public void TestSetFromOtherSpace()
         {
-            rrTest.Add(PlNeighbour);
-            rrTest[0] = PlFromOtherSpace;
+            try
+            {
+                rrTest.Add(PlNeighbour);
+                rrTest[0] = PlFromOtherSpace;
+            }
+            catch (Exception)
+            {
+                return;
+            }
+            Assert.Fail();
         }
 
 
@@ -177,34 +219,55 @@ namespace TestChainAnalysis.Classes.EventTheory
         /// Тестирует установку места дважды
         ///</summary>
         [Test]
-        [ExpectedException(typeof (Exception))]
         public void TestSetTwise()
         {
-            rrTest.Add(PlNeighbour);
-            rrTest.Add(PlNeighbour2);
-            rrTest[0] = PlNeighbour2;
+            try
+            {
+                rrTest.Add(PlNeighbour);
+                rrTest.Add(PlNeighbour2);
+                rrTest[0] = PlNeighbour2;
+            }
+            catch (Exception)
+            {
+                return;
+            }
+            Assert.Fail();
         }
 
         ///<summary>
         /// Тестирует установку несоседнего места 
         ///</summary>
         [Test]
-        [ExpectedException(typeof (Exception))]
         public void TestSetNotNeighbour()
         {
-            rrTest.Add(PlNeighbour);
-            rrTest[0] = PlNotNeighbour;
+            try
+            {
+                rrTest.Add(PlNeighbour);
+                rrTest[0] = PlNotNeighbour;
+            }
+            catch (Exception)
+            {
+                return;
+            }
+            Assert.Fail();
         }
 
         ///<summary>
         /// Тестирует установку null места
         ///</summary>
         [Test]
-        [ExpectedException(typeof (NullReferenceException))]
         public void TestSetNull()
         {
-            rrTest.Add(PlNeighbour);
-            rrTest[0] = null;
+            try
+            {
+                rrTest.Add(PlNeighbour);
+                rrTest[0] = null;
+            }
+            catch (NullReferenceException)
+            {
+                return;
+            }
+            Assert.Fail();
         }
 
         ///<summary>
@@ -224,12 +287,19 @@ namespace TestChainAnalysis.Classes.EventTheory
         /// Тестиует удаление не существующего элемента
         ///</summary>
         [Test]
-        [ExpectedException(typeof (ArgumentOutOfRangeException))]
         public void TestRemoveOutOfRange()
         {
-            rrTest.Add(PlNeighbour);
-            rrTest.Add(PlNeighbour2);
-            rrTest.Remove(6);
+            try
+            {
+                rrTest.Add(PlNeighbour);
+                rrTest.Add(PlNeighbour2);
+                rrTest.Remove(6);
+            }
+            catch (Exception)
+            {
+                return;
+            }
+            Assert.Fail();
         }
 
         ///<summary>
@@ -251,12 +321,19 @@ namespace TestChainAnalysis.Classes.EventTheory
         /// Тестирует метод эквивалентности с null
         ///</summary>
         [Test]
-        [ExpectedException(typeof (NullReferenceException))]
         public void TestEqualNull()
         {
-            rrTest.Add(PlNeighbour);
-            rrTest.Add(PlNeighbour2);
-            Assert.IsTrue(rrTest.EqualAsRule(null));
+            try
+            {
+                rrTest.Add(PlNeighbour);
+                rrTest.Add(PlNeighbour2);
+                Assert.IsTrue(rrTest.EqualAsRule(null));
+            }
+            catch (NullReferenceException)
+            {
+                return;
+            }
+            Assert.Fail();
         }
 
 
@@ -309,32 +386,53 @@ namespace TestChainAnalysis.Classes.EventTheory
         /// Тестирует объекдинение с правилом принадлежаещей другому пространству
         ///</summary>
         [Test]
-        [ExpectedException(typeof (Exception))]
         public void TestAddWithRuleOther()
         {
-            ReadRule rr2 = new ReadRule(PlFromOtherSpace);
-            rrTest.Add(rr2);
+            try
+            {
+                ReadRule rr2 = new ReadRule(PlFromOtherSpace);
+                rrTest.Add(rr2);
+            }
+            catch (Exception)
+            {
+                return;
+            }
+            Assert.Fail();
         }
 
         ///<summary>
         /// Метод тестирующий объединение с null правилом.
         ///</summary>
         [Test]
-        [ExpectedException(typeof (NullReferenceException))]
         public void TestAddWithRuleNull()
         {
-            rrTest.Add((ReadRule) null);
+            try
+            {
+                rrTest.Add((ReadRule) null);
+            }
+            catch (Exception)
+            {
+                return;
+            }
+            Assert.Fail();
         }
 
         ///<summary>
         /// Тестирует метод объединения с правилом принаддежащим другому месту
         ///</summary>
         [Test]
-        [ExpectedException(typeof (Exception))]
         public void TestAddWithRuleOtherPlace()
         {
-            ReadRule rr2 = new ReadRule(PlNotNeighbour);
-            rrTest.Add(rr2);
+            try
+            {
+                ReadRule rr2 = new ReadRule(PlNotNeighbour);
+                rrTest.Add(rr2);
+            }
+            catch (Exception)
+            {
+                return;
+            }
+            Assert.Fail();
         }
 
         ///<summary>

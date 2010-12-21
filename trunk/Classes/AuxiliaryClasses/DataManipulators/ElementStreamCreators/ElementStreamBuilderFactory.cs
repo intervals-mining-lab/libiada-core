@@ -1,4 +1,5 @@
 using System;
+using ChainAnalises.Classes.AuxiliaryClasses.WebServices.Additional.Types;
 
 namespace ChainAnalises.Classes.AuxiliaryClasses.DataManipulators.ElementStreamCreators
 {

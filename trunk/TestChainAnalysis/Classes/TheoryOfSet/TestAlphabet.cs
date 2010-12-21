@@ -38,11 +38,18 @@ namespace TestChainAnalysis.Classes.TheoryOfSet
         ///<summary>
         ///</summary>
         [Test]
-        [ExpectedException(typeof (Exception))]
         public void TestAddSame()
         {
-            AlBase.Add(new ValueInt(2));
-            AlBase.Add(new ValueInt(2));
+            try
+            {
+                AlBase.Add(new ValueInt(2));
+                AlBase.Add(new ValueInt(2));
+            }
+            catch (Exception)
+            {
+                return;
+            }
+            Assert.Fail();
         }
 
         ///<summary>
@@ -154,7 +161,7 @@ namespace TestChainAnalysis.Classes.TheoryOfSet
         ///<summary>
         ///</summary>
         [Test]
-        [ExpectedException(typeof (NullReferenceException))]
+        [ExpectedException(typeof(NullReferenceException))]
         public void TestNull()
         {
             AlBase.Add(null);
@@ -325,39 +332,46 @@ namespace TestChainAnalysis.Classes.TheoryOfSet
         /// עוסע וא
         /// </summary>
         [Test]
-        [ExpectedException(typeof (InvalidOperationException))]
         public void TestGetEnumerableAfterChageMOde()
         {
-            ArrayList ar = new ArrayList(2);
-            ar.Add(new Dimension(0, 10));
-            ar.Add(new Dimension(0, 20));
+            try
+            {
+                ArrayList ar = new ArrayList(2);
+                ar.Add(new Dimension(0, 10));
+                ar.Add(new Dimension(0, 20));
 
-            Place P1 = new Place(ar);
-            P1.SetValues(new long[] {0, 1});
+                Place P1 = new Place(ar);
+                P1.SetValues(new long[] { 0, 1 });
 
-            Place P2 = new Place(ar);
-            P2.SetValues(new long[] {2, 2});
+                Place P2 = new Place(ar);
+                P2.SetValues(new long[] { 2, 2 });
 
-            Place P3 = new Place(ar);
-            P3.SetValues(new long[] {1, 0});
+                Place P3 = new Place(ar);
+                P3.SetValues(new long[] { 1, 0 });
 
-            AlBase.Add(P1);
-            AlBase.Add(P2);
-            AlBase.Add(P3);
+                AlBase.Add(P1);
+                AlBase.Add(P2);
+                AlBase.Add(P3);
 
-            IEnumerator IE = AlBase.GetEnumerator();
-            IE.MoveNext();
-            Assert.IsTrue((IE.Current).Equals(P1));
+                IEnumerator IE = AlBase.GetEnumerator();
+                IE.MoveNext();
+                Assert.IsTrue((IE.Current).Equals(P1));
 
-            AlBase.Remove(1);
+                AlBase.Remove(1);
 
-            IE.MoveNext();
-            Assert.IsTrue((IE.Current).Equals(P2));
+                IE.MoveNext();
+                Assert.IsTrue((IE.Current).Equals(P2));
 
-            IE.MoveNext();
-            Assert.IsTrue((IE.Current).Equals(P3));
+                IE.MoveNext();
+                Assert.IsTrue((IE.Current).Equals(P3));
 
-            Assert.IsFalse(IE.MoveNext());
+                Assert.IsFalse(IE.MoveNext());
+            }
+            catch (Exception)
+            {
+                return;
+            }
+            Assert.Fail();
         }
 
 /*

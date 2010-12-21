@@ -40,7 +40,7 @@ namespace TestChainAnalysis.Classes.PhantomChains
         }
 
         ///<summary>
-        /// Тестирует доюавление фантомного сообющения
+        /// Тестирует до,бавление фантомного сообющения
         ///</summary>
         [Test]
         public void TestAddMessagePhantom()

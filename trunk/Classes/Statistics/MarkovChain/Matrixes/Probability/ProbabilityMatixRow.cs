@@ -1,12 +1,10 @@
 using System;
 using System.Collections.Generic;
 using ChainAnalises.Classes.EventTheory;
-using ChainAnalises.Classes.IntervalAnalysis;
 using ChainAnalises.Classes.Root;
 using ChainAnalises.Classes.Statistics.MarkovChain.Builders;
 using ChainAnalises.Classes.Statistics.MarkovChain.Matrixes.Absolute;
 using ChainAnalises.Classes.Statistics.MarkovChain.Matrixes.Base;
-using ChainAnalises.Classes.Statistics.MarkovChain.Matrixes.Probability;
 using ChainAnalises.Classes.TheoryOfSet;
 
 namespace ChainAnalises.Classes.Statistics.MarkovChain.Matrixes.Probability
@@ -19,7 +17,7 @@ namespace ChainAnalises.Classes.Statistics.MarkovChain.Matrixes.Probability
         ///<summary>
         /// Конструктор
         ///</summary>
-        ///<param name="alphabet">Алфавит для матрицы</param>
+        ///<param name="powerOfAlphabet">Мощность алфавита</param>
         ///<param name="razmernost">Размерность матрицы</param>
         public ProbabilityMatixRow(int powerOfAlphabet, int razmernost)
             : base(powerOfAlphabet, razmernost, new ProbabilityMatixBuilder())

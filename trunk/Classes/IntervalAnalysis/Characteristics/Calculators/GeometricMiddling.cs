@@ -4,6 +4,7 @@ using ChainAnalises.Classes.IntervalAnalysis.Characteristics.Calculators;
 namespace ChainAnalises.Classes.IntervalAnalysis.Characteristics.Calculators
 {
     ///<summary>
+    /// Среднегеометрический интервал.
     ///</summary>
     public class GeometricMiddling : ICharacteristicCalculator
     {
@@ -25,6 +26,11 @@ namespace ChainAnalises.Classes.IntervalAnalysis.Characteristics.Calculators
             double n_j = pChain.GetCharacteristic(Link, CharacteristicsFactory.IntervalsCount);
             return Math.Pow(2, G / n_j);
 
+        }
+
+        public CharacteristicsEnum GetCharacteristicName()
+        {
+            return CharacteristicsEnum.GeometricMiddling;
         }
     }
 }

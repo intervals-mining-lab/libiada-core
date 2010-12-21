@@ -4,6 +4,7 @@ using System.Xml.Serialization;
 using ChainAnalises.Classes;
 using ChainAnalises.Classes.AuxiliaryClasses.DataManipulators;
 using ChainAnalises.Classes.AuxiliaryClasses.DataManipulators.ElementStreamCreators;
+using ChainAnalises.Classes.AuxiliaryClasses.WebServices.Additional.Types;
 using ChainAnalises.Classes.Root.SimpleTypes;
 using NUnit.Framework;
 using File=ChainAnalises.Classes.AuxiliaryClasses.WebServices.Additional.File;

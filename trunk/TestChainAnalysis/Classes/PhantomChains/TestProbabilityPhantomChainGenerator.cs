@@ -1,7 +1,9 @@
 using System.Collections;
+using System.Collections.Generic;
 using ChainAnalises.Classes.AuxiliaryClasses.DataManipulators.Iterators;
 using ChainAnalises.Classes.IntervalAnalysis;
 using ChainAnalises.Classes.PhantomChains;
+using ChainAnalises.Classes.Root.SimpleTypes;
 using ChainAnalises.Classes.Statistics.MarkovChain.Generators;
 using NUnit.Framework;
 using TestChainAnalysis.Classes.Statistics.MarkovChain.Generators;
@@ -41,7 +43,7 @@ namespace TestChainAnalysis.Classes.PhantomChains
             ResultChain.Add(Mother.PhantomMessage_A[0], 9);
 
             PhantomChainGenerator<BaseChain, BaseChain> Gen = new PhantomChainGenerator<BaseChain, BaseChain>(Mother.SourceChain, new MockGenerator());
-            ArrayList res = Gen.Generate(1);
+            List<BaseChain> res = Gen.Generate(1);
             Assert.AreEqual(res.Count, 1);
             Assert.AreEqual(ResultChain,res[0]);
         }
@@ -57,7 +59,7 @@ namespace TestChainAnalysis.Classes.PhantomChains
             ResultChain.Add(Mother.PhantomMessage_A[0], 3);
             ResultChain.Add(Mother.PhantomMessage_B_C[0], 4);
             PhantomChainGenerator<BaseChain, BaseChain> Gen = new PhantomChainGenerator<BaseChain, BaseChain>(Mother.UnnormalChain, new MockGenerator());
-            ArrayList res = Gen.Generate(1);
+            List<BaseChain> res = Gen.Generate(1);
             Assert.AreEqual(1, res.Count);
             Assert.AreEqual(ResultChain, res[0]);
         }
@@ -65,10 +67,9 @@ namespace TestChainAnalysis.Classes.PhantomChains
         ///<summary>
         ///</summary>
         [Test]
-        [Ignore]
-        public void Tes3t()
+        public void Test3()
         {
-            BaseChain ResultChain = new BaseChain(50);
+            BaseChain ResultChain = new BaseChain(63);
             IteratorWritableStart<BaseChain, BaseChain> Iter = new IteratorWritableStart<BaseChain, BaseChain>(ResultChain);
             Iter.Reset();
             while(Iter.Next())
@@ -77,9 +78,78 @@ namespace TestChainAnalysis.Classes.PhantomChains
             }
 
             PhantomChainGenerator<BaseChain, BaseChain> Gen = new PhantomChainGenerator<BaseChain, BaseChain>(ResultChain, new SimpleGenerator());
-            ArrayList res = Gen.Generate(3000);
+            List<BaseChain> res = Gen.Generate(3000);
             Assert.AreEqual(res.Count, 3000);
         }
 
+        /*[Test]
+        public void Test4()
+        {
+            BaseChain ResultChain = new BaseChain(10);
+            IteratorWritableStart<BaseChain, BaseChain> Iter = new IteratorWritableStart<BaseChain, BaseChain>(ResultChain);
+            Iter.Reset();
+            while (Iter.Next())
+            {
+                Iter.SetCurrent(Mother.PhantomMessage_B_C);
+            }
+            PhantomChainGenerator<BaseChain, BaseChain> Gen = new PhantomChainGenerator<BaseChain, BaseChain>(ResultChain, new SimpleGenerator());
+            List<BaseChain> res = Gen.Generate(1);
+            TreeNode Cur1 = Gen.GetTree().GetChild(0);
+            TreeNode Cur2 = Gen.GetTree().GetChild(1);
+            for (int i = 0; i < ResultChain.Length - 2;i++)
+            {
+                Assert.IsTrue(((Cur1.Children.Count == 0) && (Cur2.Children.Count == 2)) || ((Cur1.Children.Count == 2) && (Cur2.Children.Count == 0)));
+                if(Cur1.Children.Count==2)
+                {
+                    Cur2 = Cur1.GetChild(0);
+                    Cur1 = Cur1.GetChild(1);
+                }
+                else
+                {
+                    Cur1 = Cur2.GetChild(0);
+                    Cur2 = Cur2.GetChild(1);
+                }
+            }
+        }*/
+
+        [Test]
+        public void Test5()
+        {
+            BaseChain ResultChain = new BaseChain(10);
+            IteratorWritableStart<BaseChain, BaseChain> Iter = new IteratorWritableStart<BaseChain, BaseChain>(ResultChain);
+            Iter.Reset();
+            while (Iter.Next())
+            {
+                Iter.SetCurrent(Mother.PhantomMessage_B_C);
+            }
+
+            PhantomChainGenerator<BaseChain, BaseChain> Gen = new PhantomChainGenerator<BaseChain, BaseChain>(ResultChain, new SimpleGenerator());
+            List<BaseChain> res = Gen.Generate(1000);
+            int counter = 0;
+            for(int i = 0; i < 999;i++)
+            {
+                for(int j = i+1;j < 1000;j++)
+                {
+                        if (((BaseChain)res[i]).Equals(res[j]))
+                        {
+                            counter++;
+                        }
+                }
+            }
+            Assert.AreEqual(0, counter);
+        }
+
+        [Test]
+        public void Test6()
+        {
+            BaseChain SourceChain = new BaseChain(3);
+            SourceChain.Add(new ValueString("St"),0);
+            SourceChain.Add(new ValueString("Ser"), 1);
+            SourceChain.Add(new ValueString("Cys"), 2);
+            BaseChain ForBuild = Coder.Decode(SourceChain); 
+            PhantomChainGenerator<BaseChain, BaseChain> Gen = new PhantomChainGenerator<BaseChain, BaseChain>(ForBuild, new SimpleGenerator());
+            List<BaseChain> res = Gen.Generate(1);
+            Assert.AreEqual(9, res[0].Length);
+        }
     }
 }

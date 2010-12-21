@@ -1,4 +1,5 @@
 using System.Collections;
+using ChainAnalises.Classes.DataMining.Clusterization.AlternativeClusterization;
 using ChainAnalises.Classes.Root;
 using ChainAnalises.Classes.TheoryOfGraphs;
 
@@ -15,6 +16,14 @@ namespace ChainAnalises.Classes.DataMining.Clusterization
         public Cluster(Graph graph)
         {
             Items = (ArrayList) graph.Points.Clone();
+        }
+
+        public Cluster(ArrayList points)
+        {
+            for (int i = 0; i < points.Count; i++)
+            {
+                Items.Add(((GraphElement) points[i]).Id);
+            }
         }
 
         ///<summary>

@@ -1,8 +1,5 @@
 using System;
-using ChainAnalises.Classes.IntervalAnalysis;
 using ChainAnalises.Classes.Statistics.MarkovChain.Builders;
-using ChainAnalises.Classes.Statistics.MarkovChain.Matrixes.Base;
-using ChainAnalises.Classes.TheoryOfSet;
 
 namespace ChainAnalises.Classes.Statistics.MarkovChain.Matrixes.Base
 {
@@ -15,7 +12,7 @@ namespace ChainAnalises.Classes.Statistics.MarkovChain.Matrixes.Base
         ///<summary>
         /// Конструктор
         ///</summary>
-        ///<param name="alphabet">Алфавит на котором реализованна матрица</param>
+        ///<param name="powerOfAlphabet">Мощность алфавита</param>
         ///<param name="razmernost">размерность матрицы</param>
         ///<param name="builder">Правило создания матриц</param>
         public MatrixRowCommon(int powerOfAlphabet, int razmernost, IMatrixBuilder builder)

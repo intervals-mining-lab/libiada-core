@@ -51,6 +51,14 @@ namespace ChainAnalises.Classes.IntervalAnalysis
             }
         }
 
+        ///<summary>
+        /// Кнструктор, создает цепь из строки символов
+        ///</summary>
+        ///<param name="s"></param>
+        public Chain(string s) : base(s)
+        {
+        }
+
         public override IBaseObject Clone()
         {
             Chain temp = new Chain(Length);

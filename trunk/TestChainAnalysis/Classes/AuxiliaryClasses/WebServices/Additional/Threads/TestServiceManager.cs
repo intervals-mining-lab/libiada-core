@@ -26,6 +26,8 @@ namespace TestChainAnalysis.Classes.AuxiliaryClasses.WebServices.Additional.Thre
         [Test]
         public void MultiThreading()
         {
+            Process wp = Process.GetCurrentProcess();
+            int  ExpectedCount = wp.Threads.Count + 4;
             ServiceManager SM = ServiceManager.Create();
             BinaryFormatter deserializer = new BinaryFormatter();
             FileStream FileS = new FileStream("../TestCalculate.tst", FileMode.Open, FileAccess.Read);
@@ -35,9 +37,8 @@ namespace TestChainAnalysis.Classes.AuxiliaryClasses.WebServices.Additional.Thre
             SM.NewCalculation(Request, WebServiceType.Calculate);
             SM.NewCalculation(Request, WebServiceType.Calculate);
             SM.NewCalculation(Request, WebServiceType.Calculate);
-            Process wp = Process.GetCurrentProcess();
-            Assert.AreEqual("15", wp.Threads.Count.ToString());
-
+            wp = Process.GetCurrentProcess();
+            Assert.AreEqual(ExpectedCount, wp.Threads.Count);
         }
     }
 }

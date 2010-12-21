@@ -5,15 +5,17 @@ using System.Text;
 namespace ChainAnalises.Classes.AuxiliaryClasses.WebServices.Additional.Threads
 {
     ///<summary>
+    /// Фабрика нитей различных сервисов
     ///</summary>
     public class FactoryThreads
     {
 
        ///<summary>
+       /// Создёт новую нить заданного вычислительного сервиса.
        ///</summary>
-       ///<param name="wstype"></param>
-       ///<returns></returns>
-       ///<exception cref="Exception"></exception>
+       ///<param name="wstype">Тип сервиса</param>
+       ///<returns>Нить</returns>
+       ///<exception cref="Exception">Неизвестный тип нити</exception>
        public IThread CreateThread(WebServiceType wstype)
        {
            switch(wstype)
@@ -32,8 +34,6 @@ namespace ChainAnalises.Classes.AuxiliaryClasses.WebServices.Additional.Threads
                    return new SegmentationThread();
                default:
                    throw new Exception("Wrong action");
-
-
            }
        }
     }

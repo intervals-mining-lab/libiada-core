@@ -1,12 +1,9 @@
 using System;
 using System.Collections.Generic;
-using ChainAnalises.Classes.EventTheory;
-using ChainAnalises.Classes.IntervalAnalysis;
 using ChainAnalises.Classes.Root;
 using ChainAnalises.Classes.Statistics.MarkovChain.Builders;
 using ChainAnalises.Classes.Statistics.MarkovChain.Matrixes.Absolute;
 using ChainAnalises.Classes.Statistics.MarkovChain.Matrixes.Base;
-using ChainAnalises.Classes.Statistics.MarkovChain.Matrixes.Probability;
 using ChainAnalises.Classes.TheoryOfSet;
 
 namespace ChainAnalises.Classes.Statistics.MarkovChain.Matrixes.Probability
@@ -19,7 +16,7 @@ namespace ChainAnalises.Classes.Statistics.MarkovChain.Matrixes.Probability
         ///<summary>
         /// Конструктор
         ///</summary>
-        ///<param name="alphabet">Алфавит для матрицы</param>
+        ///<param name="alphPower">Мощность алфавита</param>
         ///<param name="razmernost">Размерность матрицы</param>
         public ProbabilityMatrix(int alphPower, int razmernost)
             : base(alphPower, razmernost, new ProbabilityMatixBuilder())
@@ -51,7 +48,7 @@ namespace ChainAnalises.Classes.Statistics.MarkovChain.Matrixes.Probability
                 throw new Exception();
             }
 
-            if (Pred != null && (Pred[0] != -1))
+            if ((Pred[0] != -1))
             {
                 int[] newIndexes = (Pred.Length == 1) ? null : GetChainLess(Pred);
                 return ((IProbabilityMatrix)ValueList[Pred[0]]).GetProbabilityVector(alphabet, newIndexes);

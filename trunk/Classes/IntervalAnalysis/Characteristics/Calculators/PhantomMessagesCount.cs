@@ -5,7 +5,11 @@ using ChainAnalises.Classes.PhantomChains;
 
 namespace ChainAnalises.Classes.IntervalAnalysis.Characteristics.Calculators
 {
-    class PhantomMessagesCount:ICharacteristicCalculator
+    ///<summary>
+    /// Число возможных цепочек которые можно сгенерировать 
+    /// из данной цепочки, содержащей фантомные сообщения.
+    ///</summary>
+    public class PhantomMessagesCount:ICharacteristicCalculator
     {
         public double Calculate(UniformChain chain, LinkUp Link)
         {
@@ -33,6 +37,11 @@ namespace ChainAnalises.Classes.IntervalAnalysis.Characteristics.Calculators
                 }
             }
             return count;
+        }
+
+        public CharacteristicsEnum GetCharacteristicName()
+        {
+            return CharacteristicsEnum.PhantomMessageCount;
         }
     }
 }

@@ -3,6 +3,7 @@ using System;
 namespace ChainAnalises.Classes.IntervalAnalysis.Characteristics.Calculators
 {
     ///<summary>
+    /// Энтропия словаря по Садовскому.
     ///</summary>
     public class CutLengthVocabularyEntropy : ICharacteristicCalculator
     {
@@ -19,6 +20,11 @@ namespace ChainAnalises.Classes.IntervalAnalysis.Characteristics.Calculators
         public double Calculate(Chain pChain, LinkUp Link)
         {
             return CutLengthVocabularyEntropyCommon(pChain, Link);
+        }
+
+        public CharacteristicsEnum GetCharacteristicName()
+        {
+            return CharacteristicsEnum.CutLengthVocabularyEntropy;
         }
     }
 }

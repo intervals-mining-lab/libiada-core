@@ -1,6 +1,6 @@
 using System.Web.Services;
-using ChainAnalises.Classes.AuxiliaryClasses.WebServices;
 using ChainAnalises.Classes.AuxiliaryClasses.WebServices.Additional.Threads;
+using ChainAnalises.Classes.AuxiliaryClasses.WebServices.Calculate;
 using ChainAnalises.Classes.AuxiliaryClasses.WebServices.Clusterization;
 using ChainAnalises.Classes.AuxiliaryClasses.WebServices.CreateAlphabet;
 using ChainAnalises.Classes.AuxiliaryClasses.WebServices.GenerateMarkovChains;

@@ -1,5 +1,4 @@
 using System;
-using ChainAnalises.Classes.AuxiliaryClasses.WebServices.Additional.Types;
 using ChainAnalises.Classes.IntervalAnalysis;
 
 namespace ChainAnalises.Classes.AuxiliaryClasses.WebServices.Additional.Types

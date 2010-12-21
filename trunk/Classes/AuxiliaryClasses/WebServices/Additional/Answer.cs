@@ -1,16 +1,18 @@
 using System;
-using System.Xml;
-using System.Xml.Schema;
-using System.Xml.Serialization;
 using ChainAnalises.Classes.AuxiliaryClasses.WebServices.Additional.Types;
 
-namespace ChainAnalises.Classes.AuxiliaryClasses.WebServices.Answers
+namespace ChainAnalises.Classes.AuxiliaryClasses.WebServices.Additional
 {
     ///<summary>
+    /// јбстрактный класс-ответ от которого наследуютс€
+    /// все контейнеры с результатами вычислений сервисов
     ///</summary>
     [Serializable]
-    public abstract class Answer //: IXmlSerializable
+    public abstract class Answer
     {
+        ///<summary>
+        /// ƒанные о текущем состо€нии вычислений
+        ///</summary>
         public ErrorType Error;
 
         /*public virtual XmlSchema GetSchema()

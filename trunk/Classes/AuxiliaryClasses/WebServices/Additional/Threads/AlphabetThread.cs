@@ -8,7 +8,7 @@ namespace ChainAnalises.Classes.AuxiliaryClasses.WebServices.Additional.Threads
     {
         private RequestFiles InputData = null;
 
-        public override void SetData(object data)
+        public override void SetData(Request data)
         {
            InputData = (RequestFiles) data;
         }

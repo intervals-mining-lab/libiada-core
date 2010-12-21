@@ -495,7 +495,8 @@ namespace TestChainAnalysis.Classes.EventTheory
         }
 
         ///<summary>
-        /// Тестирует  установку значений из массива длинна которого меньше размерности пространства которому принадлежит место
+        /// Тестирует  установку значений из массива 
+        /// длинна которого меньше размерности пространства которому принадлежит место
         ///</summary>
         public void TestSetValuesCountNotEqualsDimensionCount()
         {

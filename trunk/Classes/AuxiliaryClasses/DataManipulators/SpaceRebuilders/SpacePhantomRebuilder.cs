@@ -13,15 +13,15 @@ namespace ChainAnalises.Classes.AuxiliaryClasses.DataManipulators.SpaceRebuilder
             Resent.ClearAndSetNewLength(A.Length);
             for (int i = 0; i < A.Length; i++)
             {
-              MessagePhantom Mes = A[i].Clone() as MessagePhantom;
+                MessagePhantom Mes = A[i].Clone() as MessagePhantom;
 
-              if(Mes == null)
-              {
-                  Mes = new MessagePhantom();
-                  Mes.Add(A[i]);
-              }
+                if (Mes == null)
+                {
+                    Mes = new MessagePhantom();
+                    Mes.Add(A[i]);
+                }
 
-              Resent.Add(Mes, i);
+                Resent.Add(Mes, i);
             }
             return Resent;
         }

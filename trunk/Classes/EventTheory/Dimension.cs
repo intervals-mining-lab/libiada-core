@@ -23,12 +23,12 @@ namespace ChainAnalises.Classes.EventTheory
         /// <example>
         ///   Если измерение определно на интервале (-100,500)
         ///   <code>
-        ///     X= new dimension(-100,500);
+        ///     X = new dimension(-100,500);
         ///   </code> 
         /// </example>
         /// <summary>
         /// Конструктор
-        /// В случае, если min>max внешная системане оповещается, а происходит автоматическая замена значений.
+        /// В случае, если min>max внешная система не оповещается, а происходит автоматическая замена значений.
         /// Однако при этом сыбрасывается сообщение в дебагер.
         /// </summary>
         public Dimension(Int64 min, Int64 max)
@@ -85,7 +85,6 @@ namespace ChainAnalises.Classes.EventTheory
         ///<summary>
         ///Serves as a hash function for a particular type. <see cref="M:System.Object.GetHashCode"></see> is suitable for use in hashing algorithms and data structures like a hash table.
         ///</summary>
-        ///
         ///<returns>
         ///A hash code for the current <see cref="T:System.Object"></see>.
         ///</returns>
@@ -106,11 +105,9 @@ namespace ChainAnalises.Classes.EventTheory
         ///<summary>
         ///Determines whether the specified <see cref="T:System.Object"></see> is equal to the current <see cref="T:System.Object"></see>.
         ///</summary>
-        ///
         ///<returns>
         ///true if the specified <see cref="T:System.Object"></see> is equal to the current <see cref="T:System.Object"></see>; otherwise, false.
         ///</returns>
-        ///
         ///<param name="obj">The <see cref="T:System.Object"></see> to compare with the current <see cref="T:System.Object"></see>. </param><filterpriority>2</filterpriority>
         public override bool Equals(object obj)
         {

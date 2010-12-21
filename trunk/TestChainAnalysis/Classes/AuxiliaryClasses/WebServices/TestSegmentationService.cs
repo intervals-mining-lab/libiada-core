@@ -61,10 +61,15 @@ namespace TestChainAnalysis.Classes.AuxiliaryClasses.WebServices
         [Test]
         public void TestSegmentationOutputComplete()
         {
-            Thread.Sleep(10000);
-            ServiceManager SM = ServiceManager.Create();
-            AnswerSegmentation result = (AnswerSegmentation)SM.Check(HashSegmentation, WebServiceType.Segmentation);
-            Assert.AreEqual(ErrorType.CalculationsComplete, result.Error);
+            AnswerSegmentation result;
+            do
+            {
+                Thread.Sleep(10000);
+                ServiceManager SM = ServiceManager.Create();
+                result = (AnswerSegmentation)SM.Check(HashSegmentation, WebServiceType.Segmentation);
+            }
+            while (ErrorType.CalculationsComplete == result.Error);
+            Assert.AreEqual(ErrorType.CalculationsComplete.ToString(), result.Error.ToString());
         }
     }
 }

@@ -1,5 +1,5 @@
 using ChainAnalises.Classes;
-using ChainAnalises.Classes.AuxiliaryClasses.WebServices.Additional;
+using ChainAnalises.Classes.AuxiliaryClasses.WebServices.Additional.Types;
 using NUnit.Framework;
 
 namespace TestChainAnalysis.Classes.AuxiliaryClasses.WebServices.Additional.Types

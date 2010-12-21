@@ -71,13 +71,13 @@ namespace ChainAnalises.Classes.TheoryOfSet
         ///<exception cref="NullReferenceException">В случае если добавляемый элемент null</exception>
         public virtual int Add(IBaseObject o)
         {
-            if (vault.Contains((o)))
-            {
-                throw new Exception();
-            }
             if (o == null)
             {
                 throw new NullReferenceException();
+            }
+            if (vault.Contains((o)))
+            {
+                throw new Exception();
             }
             return vault.Add(o.Clone());
         }
@@ -198,7 +198,7 @@ namespace ChainAnalises.Classes.TheoryOfSet
             int temp = 0;
             foreach (object o in vault)
             {
-                temp =temp ^ 29*o.GetHashCode();
+                temp += 29*o.GetHashCode();
             }
             return temp;
         }
