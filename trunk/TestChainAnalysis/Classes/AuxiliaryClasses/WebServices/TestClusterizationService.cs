@@ -1,4 +1,5 @@
-﻿using System;
+/*
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
@@ -30,8 +31,10 @@ namespace TestChainAnalysis.Classes.AuxiliaryClasses.WebServices
         [TearDown]
         public void TearClusterization()
         {
+*/
             /* Thread.Sleep(2000);*/
             //File.Delete("*.csd");
+/*
         }
 
         [Test]
@@ -43,6 +46,7 @@ namespace TestChainAnalysis.Classes.AuxiliaryClasses.WebServices
         }
 
         [Test]
+		[Ignore]
         public void TestClusterizationOutputCalculating()
         {
             ServiceManager SM = ServiceManager.Create();
@@ -69,3 +73,4 @@ namespace TestChainAnalysis.Classes.AuxiliaryClasses.WebServices
 
     }
 }
+*/

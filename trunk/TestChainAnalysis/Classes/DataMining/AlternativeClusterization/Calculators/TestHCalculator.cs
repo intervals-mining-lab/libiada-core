@@ -42,7 +42,7 @@ namespace TestChainAnalysis.Classes.DataMining.AlternativeClusterization.Calcula
             manager = new GraphManager(connections,elements);
         }
 
-        //TODO: тесты для H
+        //TODO: пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ H
         [Test]
         public void Test4Points0()
         {

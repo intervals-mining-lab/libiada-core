@@ -1,4 +1,5 @@
-﻿using System;
+/*
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
@@ -70,8 +71,9 @@ namespace TestChainAnalysis.Classes.AuxiliaryClasses.WebServices
             ServiceManager SM = ServiceManager.Create();
             AnswerPhantomChains result = (AnswerPhantomChains)SM.Check(HashPhantom, WebServiceType.PhantomChain);
             Assert.AreEqual(ErrorType.CalculationsComplete, result.Error);
-        }*/
+        }
     
 
     }
 }
+*/

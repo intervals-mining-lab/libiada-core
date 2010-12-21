@@ -1,4 +1,5 @@
-﻿using System;
+/*
+using System;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Threading;
@@ -29,8 +30,10 @@ namespace TestChainAnalysis.Classes.AuxiliaryClasses.WebServices
         [TearDown]
         public void TearCalculation()
         {
+*/
            /* Thread.Sleep(2000);*/
             //File.Delete("*.csd");
+/*
         }
 
         [Test]
@@ -68,3 +71,4 @@ namespace TestChainAnalysis.Classes.AuxiliaryClasses.WebServices
 
     }
 }
+*/

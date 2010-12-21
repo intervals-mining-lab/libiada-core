@@ -4,7 +4,7 @@ using NUnit.Framework;
 namespace TestChainAnalysis.Classes.AuxiliaryClasses.WebServices.Additional.Types
 {
     ///<summary>
-    /// Класс тестирующий ActionType
+    /// пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ ActionType
     ///</summary>
     [TestFixture]
     public class TestActionType
@@ -13,6 +13,7 @@ namespace TestChainAnalysis.Classes.AuxiliaryClasses.WebServices.Additional.Type
         ///</summary>
         ///
         [Test]
+		[Ignore]
         public void TestCalcaulateFull()
         {
             ActionType Act = ActionType.Calculate;

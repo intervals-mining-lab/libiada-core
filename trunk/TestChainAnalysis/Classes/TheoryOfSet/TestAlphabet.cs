@@ -180,7 +180,7 @@ namespace TestChainAnalysis.Classes.TheoryOfSet
         }
 
         /// <summary>
-        /// Мощность алфавита
+        /// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
         /// </summary>
         [Test]
         public void TestRemove()
@@ -217,7 +217,7 @@ namespace TestChainAnalysis.Classes.TheoryOfSet
         }
 
         /// <summary>
-        /// Тестируется равенство алфавитов
+        /// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
         /// </summary>
         [Test]
         public void TestEquals()
@@ -244,7 +244,7 @@ namespace TestChainAnalysis.Classes.TheoryOfSet
         }
 
         /// <summary>
-        /// Тестируется равенство алфавитов
+        /// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
         /// </summary>
         [Test]
         public void TestEqualsForAlphabetWithEqualsCompositionButNotEqualsOrder()
@@ -270,7 +270,7 @@ namespace TestChainAnalysis.Classes.TheoryOfSet
         }
 
         /// <summary>
-        /// Тест на 
+        /// пїЅпїЅпїЅпїЅ пїЅпїЅ 
         /// </summary>
         [Test]
         public void TestContains()
@@ -291,7 +291,7 @@ namespace TestChainAnalysis.Classes.TheoryOfSet
         }
 
         /// <summary>
-        /// тест еа
+        /// пїЅпїЅпїЅпїЅ пїЅпїЅ
         /// </summary>
         [Test]
         public void TestGetEnumerableInWorkMode()
@@ -329,7 +329,7 @@ namespace TestChainAnalysis.Classes.TheoryOfSet
 
 
         /// <summary>
-        /// тест еа
+        /// пїЅпїЅпїЅпїЅ пїЅпїЅ
         /// </summary>
         [Test]
         public void TestGetEnumerableAfterChageMOde()

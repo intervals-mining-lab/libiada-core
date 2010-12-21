@@ -1,4 +1,5 @@
-﻿using System;
+/*
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
@@ -30,10 +31,13 @@ namespace TestChainAnalysis.Classes.AuxiliaryClasses.WebServices
         [TearDown]
         public void TearMarkov()
         {
+*/        
             /* Thread.Sleep(2000);*/
             //File.Delete("*.csd");
+/*
         }
 
+	
         [Test]
         public void TestMarkovInput()
         {
@@ -70,3 +74,4 @@ namespace TestChainAnalysis.Classes.AuxiliaryClasses.WebServices
 
     }
 }
+ */

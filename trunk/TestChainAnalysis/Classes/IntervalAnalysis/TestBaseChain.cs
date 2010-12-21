@@ -14,7 +14,7 @@ namespace TestChainAnalysis.Classes.IntervalAnalysis
         private BaseChain ChainBase;
 
         ///<summary>
-        /// Иициализирующая часть
+        /// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
         ///</summary>
         [SetUp]
         public void init()
@@ -23,7 +23,7 @@ namespace TestChainAnalysis.Classes.IntervalAnalysis
         }
 
         ///<summary>
-        /// Тестирует конструктор в рабочем режиме
+        /// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
         ///</summary>
         public void TestConstructor()
         {
@@ -33,7 +33,7 @@ namespace TestChainAnalysis.Classes.IntervalAnalysis
         }
 
         ///<summary>
-        /// Тестирует вариант создания цепи 0 длинны
+        /// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ 0 пїЅпїЅпїЅпїЅпїЅпїЅ
         ///</summary>
         [Test]
         public void TestConstructorCreateZero()
@@ -51,7 +51,7 @@ namespace TestChainAnalysis.Classes.IntervalAnalysis
         }
 
         ///<summary>
-        /// Тестирует вариант создания цепи отрицательной длинны
+        /// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
         ///</summary>
         [Test]
         public void TestConstructorLessZero()
@@ -68,7 +68,7 @@ namespace TestChainAnalysis.Classes.IntervalAnalysis
         }
 
         ///<summary>
-        /// Тестирует [] получение элемента
+        /// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ [] пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
         ///</summary>
         [Test]
         public void TestGetbyThis()
@@ -79,7 +79,7 @@ namespace TestChainAnalysis.Classes.IntervalAnalysis
         }
 
         ///<summary>
-        /// Тестирует [] установку элемента
+        /// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ [] пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
         ///</summary>
         [Test]
         public void TestSetByThis()
@@ -91,7 +91,7 @@ namespace TestChainAnalysis.Classes.IntervalAnalysis
 
 
         ///<summary>
-        /// Тестирует получение
+        /// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
         ///</summary>
         [Test]
         public void TestGet()
@@ -102,7 +102,7 @@ namespace TestChainAnalysis.Classes.IntervalAnalysis
         }
 
         ///<summary>
-        /// Тестирует добавление
+        /// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
         ///</summary>
         [Test]
         public void TestSet()
@@ -113,7 +113,7 @@ namespace TestChainAnalysis.Classes.IntervalAnalysis
         }
 
         ///<summary>
-        /// Тестирует удалние элемента
+        /// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
         ///</summary>
         public void TestRemove()
         {
@@ -125,7 +125,7 @@ namespace TestChainAnalysis.Classes.IntervalAnalysis
         }
 
         ///<summary>
-        /// Тестирует получение длинны цепи
+        /// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
         ///</summary>
         [Test]
         public void TestGetLength()
@@ -135,7 +135,7 @@ namespace TestChainAnalysis.Classes.IntervalAnalysis
 
 
         ///<summary>
-        /// Тестирует  клонорование 
+        /// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ  пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ 
         ///</summary>
         [Test]
         public void TestClone()
@@ -157,7 +157,7 @@ namespace TestChainAnalysis.Classes.IntervalAnalysis
 /*
 
         ///<summary>
-        /// Тестирует корректную сериализацию и десериализацию цепи
+        /// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
         ///</summary>
         [Test]
         public void TestSerializeDeserialize()

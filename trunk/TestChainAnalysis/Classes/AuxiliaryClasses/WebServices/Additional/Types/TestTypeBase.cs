@@ -5,13 +5,13 @@ using NUnit.Framework;
 namespace TestChainAnalysis.Classes.AuxiliaryClasses.WebServices.Additional.Types
 {
     ///<summary>
-    /// Класс реализующий тестирование класса Базовый тип TypeBase
+    /// пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ TypeBase
     ///</summary>
     [TestFixture]
     public class TestTypeBase
     {
         ///<summary>
-        /// метод инициализирующий тесты
+        /// пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
         ///</summary>
         [SetUp]
         public void init()
@@ -20,7 +20,7 @@ namespace TestChainAnalysis.Classes.AuxiliaryClasses.WebServices.Additional.Type
         }
 
         /// <summary> 
-        /// Тест конструктора TypeBase
+        /// пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ TypeBase
         /// </summary>
         [Test]
         public void TestTypeBaseChangeName()
@@ -40,8 +40,8 @@ namespace TestChainAnalysis.Classes.AuxiliaryClasses.WebServices.Additional.Type
         }
 
         /// <summary>
-        /// Тест Проверяющмй отношения эквивалентности
-        /// Два Тип эквивалентны если эквивалентны их Name, Size, MIME.
+        /// пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+        /// пїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ Name, Size, MIME.
         /// </summary>
         [Test]
         public void TestEquals()
@@ -56,7 +56,7 @@ namespace TestChainAnalysis.Classes.AuxiliaryClasses.WebServices.Additional.Type
         }
 
         ///<summary>
-        /// Тестирует HashCode 
+        /// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ HashCode 
         ///</summary>
         public void TestHashCode()
         {

@@ -85,7 +85,7 @@ namespace TestChainAnalysis.Classes.Statistics.MarkovChain
         [Ignore]
         public void TestGet()
         {
-            // Заполняем 
+            // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ 
             alph.Add(a);
             alph.Add(b);
             alph.Add(c);
@@ -147,138 +147,138 @@ namespace TestChainAnalysis.Classes.Statistics.MarkovChain
         [Test]
         public void TestGetWithIndexes()
         {
-            // Заполняем Алфавит элементами из которых может состоять цепь
+            // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
             alph.Add(a); // 0 => a
             alph.Add(b); // 1 => b
             alph.Add(c); // 2 => c
             alph.Add(d); // 3 => d
 
-            // Вместо итератора перемещаюшегося по одной цепи используем 
-            // несколько цепей которые используются в качестве очередных окон (значений) итератора
-            // Значния итератора используемые для записи в матрицу
-                      ch = new BaseChain(2); // Значение итератора 1
-            BaseChain ch1 = new BaseChain(2); // Значение итератора 2
-            BaseChain ch_1 = new BaseChain(2); // Значение итератора 3
-            BaseChain ch1_1 = new BaseChain(2); // Значение итератора 4
+            // пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ 
+            // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ (пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ) пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+            // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+                      ch = new BaseChain(2); // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ 1
+            BaseChain ch1 = new BaseChain(2); // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ 2
+            BaseChain ch_1 = new BaseChain(2); // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ 3
+            BaseChain ch1_1 = new BaseChain(2); // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ 4
 
-            // Значния итератора используемые при чтении из матрицы
-            BaseChain ch2 = new BaseChain(2); // Значение итератора 5
-            BaseChain ch3 = new BaseChain(1); // Значение итератора 6
-            BaseChain ch4 = new BaseChain(1); // Значение итератора 7
-            BaseChain ch5 = new BaseChain(1); // Значение итератора 8
+            // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+            BaseChain ch2 = new BaseChain(2); // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ 5
+            BaseChain ch3 = new BaseChain(1); // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ 6
+            BaseChain ch4 = new BaseChain(1); // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ 7
+            BaseChain ch5 = new BaseChain(1); // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ 8
 
-            ch.Add(a, 0);  // Заполним значение итератора 1
+            ch.Add(a, 0);  // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ 1
             ch.Add(b, 1);  // ab
 
-            ch1.Add(c, 0); // Заполним значение итератора 2
+            ch1.Add(c, 0); // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ 2
             ch1.Add(b, 1); // bc
 
 
-            ch_1.Add(b, 0); // Заполним значение итератора 3
+            ch_1.Add(b, 0); // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ 3
             ch_1.Add(a, 1); // ba
 
 
-            ch1_1.Add(b, 0); // Заполним значение итератора 4
+            ch1_1.Add(b, 0); // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ 4
             ch1_1.Add(c, 1);// bc
 
 
-            // Создаем матрицу с мошностью алфавита равной мощности алфавита на котором определена цепь  и рангом равном           
-            // размеру окна итератора (использыемого при обучении и чтении)
-            // Старая версия интерфейса (вызята из теста ) TestGet()
+            // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ  пїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ           
+            // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ (пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅ)
+            // пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ (пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ ) TestGet()
             /*matr = new ChainAnalises.Classes.Statistics.MarkovChain.Matrixes.Absolute.Matrix(alph, 2);*/
-            // Теперь выглядет так
+            // пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ
             matr = new ChainAnalises.Classes.Statistics.MarkovChain.Matrixes.Absolute.Matrix(alph.power, 2);
 
-            // Для обучени используем теперь не цепь а массив int
-            // Старая версия интерфейса (вызята из теста ) TestGet()
+            // пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅ int
+            // пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ (пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ ) TestGet()
             /*matr.Add(ch1);*/
 
-            // Теперь выглядет так
-            // Заменяем цепь массивом а элементы их индексом
+            // пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ
+            // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
             int[] array_to_teach = new int[2];
             array_to_teach[0] = alph.IndexOf(ch1[0]);
             array_to_teach[1] = alph.IndexOf(ch1[1]);
-            matr.Add(array_to_teach); // Добавили в матрицу сh1 (bc) 
+            matr.Add(array_to_teach); // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅh1 (bc) 
 
-            // Теперь выглядет так
-            // Заменяем цепь массивом а элементы их индексом
+            // пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ
+            // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
             array_to_teach = new int[2];
             array_to_teach[0] = alph.IndexOf(ch_1[0]);
             array_to_teach[1] = alph.IndexOf(ch_1[1]);
-            matr.Add(array_to_teach); // Добавили в матрицу сh_1 (ba)
+            matr.Add(array_to_teach); // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅh_1 (ba)
 
-            // Теперь выглядет так
-            // Заменяем цепь массивом а элементы их индексом
+            // пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ
+            // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
             array_to_teach = new int[2];
             array_to_teach[0] = alph.IndexOf(ch[0]);
             array_to_teach[1] = alph.IndexOf(ch[1]);
-            matr.Add(array_to_teach); // Добавили в матрицу сh (ab)
+            matr.Add(array_to_teach); // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅh (ab)
 
-            // Теперь выглядет так
-            // Заменяем цепь массивом а элементы их индексом
+            // пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ
+            // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
             array_to_teach = new int[2];
             array_to_teach[0] = alph.IndexOf(ch1_1[0]);
             array_to_teach[1] = alph.IndexOf(ch1_1[1]);
-            matr.Add(array_to_teach); // Добавили в матрицу сh1_1 (bc)
+            matr.Add(array_to_teach); // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅh1_1 (bc)
 
-            // Теперь выглядет так
-            // Заменяем цепь массивом а элементы их индексом
+            // пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ
+            // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
             array_to_teach = new int[2];
             array_to_teach[0] = alph.IndexOf(ch1[0]);
             array_to_teach[1] = alph.IndexOf(ch1[1]);
-            matr.Add(array_to_teach); // Добавили в матрицу сh1 (bc) 
+            matr.Add(array_to_teach); // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅh1 (bc) 
 
 
-            // Теперь выглядет так
-            // Заменяем цепь массивом а элементы их индексом
+            // пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ
+            // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
             array_to_teach = new int[2];
             array_to_teach[0] = alph.IndexOf(ch1_1[0]);
             array_to_teach[1] = alph.IndexOf(ch1_1[1]);
-            matr.Add(array_to_teach); // Добавили в матрицу сh1_1 (bc)
+            matr.Add(array_to_teach); // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅh1_1 (bc)
 
 
-            // Проверяем что фрагмент bc (ch1) встретилось 2 раза
-            // Для чтении используем теперь не цепь а массив int
-            // Старая версия интерфейса (вызята из теста ) TestGet()
+            // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ bc (ch1) пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ 2 пїЅпїЅпїЅпїЅ
+            // пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅ int
+            // пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ (пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ ) TestGet()
             /*Assert.AreEqual(2, matr.FrequencyFromObject(ch1));*/
 
-            // Теперь выглядет так
-            // Заменяем цепь массивом а элементы их индексом
+            // пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ
+            // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
             array_to_teach = new int[2];
             array_to_teach[0] = alph.IndexOf(ch1[0]);
             array_to_teach[1] = alph.IndexOf(ch1[1]);
             Assert.AreEqual(2, matr.FrequencyFromObject(array_to_teach));
 
-            // Заполняем значение итератора сh2 
+            // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅh2 
             ch2.Add(a, 0); // ac
             ch2.Add(c, 1);
 
-            // Проверяем что фрагмент ac (ch2) встретилось 0 раза
+            // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ ac (ch2) пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ 0 пїЅпїЅпїЅпїЅ
             array_to_teach = new int[2];
             array_to_teach[0] = alph.IndexOf(ch2[0]);
             array_to_teach[1] = alph.IndexOf(ch2[1]);
             Assert.AreEqual(0, matr.FrequencyFromObject(array_to_teach));
 
-            // Заполняем значение итератора сh3 
+            // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅh3 
             ch3.Add(b, 0); // b
 
-            // Проверяем что фрагмент b (ch3) встретилось 3 раза
+            // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ b (ch3) пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ 3 пїЅпїЅпїЅпїЅ
             array_to_teach = new int[1];
             array_to_teach[0] = alph.IndexOf(ch3[0]);
             Assert.AreEqual(3, matr.FrequencyFromObject(array_to_teach));
 
-            // Заполняем значение итератора сh4 
+            // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅh4 
             ch4.Add(a, 0); // a
 
-            // Проверяем что фрагмент a (ch4) встретилось 1 раза
+            // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ a (ch4) пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ 1 пїЅпїЅпїЅпїЅ
             array_to_teach = new int[1];
             array_to_teach[0] = alph.IndexOf(ch4[0]);
             Assert.AreEqual(1, matr.FrequencyFromObject(array_to_teach));
 
-            // Заполняем значение итератора сh5 
+            // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅh5 
             ch5.Add(c, 0); // c
 
-            // Проверяем что фрагмент c (ch5) встретилось 2 раза
+            // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ c (ch5) пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ 2 пїЅпїЅпїЅпїЅ
             array_to_teach = new int[1];
             array_to_teach[0] = alph.IndexOf(ch5[0]);
             Assert.AreEqual(2, matr.FrequencyFromObject(array_to_teach));
@@ -311,7 +311,7 @@ namespace TestChainAnalysis.Classes.Statistics.MarkovChain
 
             int[] ToGet = new int[1];
 
-            // Проверяем безусловные вероятности
+            // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
             ToGet[0] = TestChain.Alpahbet.IndexOf((ValueString)"a");
             Assert.AreEqual(6, matr.FrequencyFromObject(ToGet));
 
@@ -326,7 +326,7 @@ namespace TestChainAnalysis.Classes.Statistics.MarkovChain
 
             ToGet = new int[2];
 
-            // Проверяем переходыне вероятности марковской цепи 2 порядка
+            // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ 2 пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
             ToGet[0] = TestChain.Alpahbet.IndexOf((ValueString)"a");
             ToGet[1] = TestChain.Alpahbet.IndexOf((ValueString)"a");
             Assert.AreEqual(3, matr.FrequencyFromObject(ToGet));
@@ -393,8 +393,8 @@ namespace TestChainAnalysis.Classes.Statistics.MarkovChain
 
             ToGet = new int[3];
 
-            // Проверяем переходыне вероятности марковской цепи 1 порядка
-            // Если первое событие а
+            // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ 1 пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+            // пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ
             ToGet[0] = TestChain.Alpahbet.IndexOf((ValueString)"a");
             ToGet[1] = TestChain.Alpahbet.IndexOf((ValueString)"a");
             ToGet[2] = TestChain.Alpahbet.IndexOf((ValueString)"c");
@@ -425,7 +425,7 @@ namespace TestChainAnalysis.Classes.Statistics.MarkovChain
             ToGet[2] = TestChain.Alpahbet.IndexOf((ValueString)"b");
             Assert.AreEqual(0, matr.FrequencyFromObject(ToGet));
 
-            // Если первое событие b
+            // пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ b
 
             ToGet[0] = TestChain.Alpahbet.IndexOf((ValueString)"b");
             ToGet[1] = TestChain.Alpahbet.IndexOf((ValueString)"a");
@@ -457,7 +457,7 @@ namespace TestChainAnalysis.Classes.Statistics.MarkovChain
             ToGet[2] = TestChain.Alpahbet.IndexOf((ValueString)"b");
             Assert.AreEqual(0, matr.FrequencyFromObject(ToGet));
 
-            // Если первое событие c
+            // пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ c
             ToGet[0] = TestChain.Alpahbet.IndexOf((ValueString)"c");
             ToGet[1] = TestChain.Alpahbet.IndexOf((ValueString)"a");
             ToGet[2] = TestChain.Alpahbet.IndexOf((ValueString)"a");
@@ -488,7 +488,7 @@ namespace TestChainAnalysis.Classes.Statistics.MarkovChain
             ToGet[2] = TestChain.Alpahbet.IndexOf((ValueString)"c");
             Assert.AreEqual(0, matr.FrequencyFromObject(ToGet));
 
-            // Если первое событие d
+            // пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ d
             ToGet[0] = TestChain.Alpahbet.IndexOf((ValueString)"d");
             ToGet[1] = TestChain.Alpahbet.IndexOf((ValueString)"b");
             ToGet[2] = TestChain.Alpahbet.IndexOf((ValueString)"a");
@@ -547,7 +547,7 @@ namespace TestChainAnalysis.Classes.Statistics.MarkovChain
 
             int[] ToGet = new int[1];
 
-            // Проверяем безусловные вероятности
+            // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
             ToGet[0] = TestChain.Alpahbet.IndexOf((ValueString)"a");
             Assert.AreEqual(0.5, PMatrix.FrequencyFromObject(ToGet));
 
@@ -562,7 +562,7 @@ namespace TestChainAnalysis.Classes.Statistics.MarkovChain
 
             ToGet = new int[2];
 
-            // Проверяем переходыне вероятности марковской цепи 2 порядка
+            // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ 2 пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
             ToGet[0] = TestChain.Alpahbet.IndexOf((ValueString)"a");
             ToGet[1] = TestChain.Alpahbet.IndexOf((ValueString)"a");
             Assert.AreEqual(0.5, PMatrix.FrequencyFromObject(ToGet));
@@ -629,8 +629,8 @@ namespace TestChainAnalysis.Classes.Statistics.MarkovChain
 
             ToGet = new int[3];
 
-            // Проверяем переходыне вероятности марковской цепи 1 порядка
-            // Если первое событие а
+            // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ 1 пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+            // пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ
             ToGet[0] = TestChain.Alpahbet.IndexOf((ValueString)"a");
             ToGet[1] = TestChain.Alpahbet.IndexOf((ValueString)"a");
             ToGet[2] = TestChain.Alpahbet.IndexOf((ValueString)"c");
@@ -661,7 +661,7 @@ namespace TestChainAnalysis.Classes.Statistics.MarkovChain
             ToGet[2] = TestChain.Alpahbet.IndexOf((ValueString)"b");
             Assert.AreEqual(0, PMatrix.FrequencyFromObject(ToGet));
 
-            // Если первое событие b
+            // пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ b
 
             ToGet[0] = TestChain.Alpahbet.IndexOf((ValueString)"b");
             ToGet[1] = TestChain.Alpahbet.IndexOf((ValueString)"a");
@@ -693,7 +693,7 @@ namespace TestChainAnalysis.Classes.Statistics.MarkovChain
             ToGet[2] = TestChain.Alpahbet.IndexOf((ValueString)"b");
             Assert.AreEqual(0, PMatrix.FrequencyFromObject(ToGet));
 
-            // Если первое событие c
+            // пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ c
             ToGet[0] = TestChain.Alpahbet.IndexOf((ValueString)"c");
             ToGet[1] = TestChain.Alpahbet.IndexOf((ValueString)"a");
             ToGet[2] = TestChain.Alpahbet.IndexOf((ValueString)"a");
@@ -724,7 +724,7 @@ namespace TestChainAnalysis.Classes.Statistics.MarkovChain
             ToGet[2] = TestChain.Alpahbet.IndexOf((ValueString)"c");
             Assert.AreEqual(0, PMatrix.FrequencyFromObject(ToGet));
 
-            // Если первое событие d
+            // пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ d
             ToGet[0] = TestChain.Alpahbet.IndexOf((ValueString)"d");
             ToGet[1] = TestChain.Alpahbet.IndexOf((ValueString)"b");
             ToGet[2] = TestChain.Alpahbet.IndexOf((ValueString)"a");

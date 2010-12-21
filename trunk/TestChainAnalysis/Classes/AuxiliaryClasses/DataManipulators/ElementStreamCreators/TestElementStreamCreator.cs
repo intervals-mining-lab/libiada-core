@@ -12,7 +12,7 @@ using File=ChainAnalises.Classes.AuxiliaryClasses.WebServices.Additional.File;
 namespace TestChainAnalysis.Classes.AuxiliaryClasses.DataManipulators.ElementStreamCreators
 {
     ///<summary>
-    /// Тестирует класс конструктор потока элементов
+    /// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
     ///</summary>
     [TestFixture]
     public class TestElementStreamCreator
@@ -39,7 +39,7 @@ namespace TestChainAnalysis.Classes.AuxiliaryClasses.DataManipulators.ElementStr
 
 
         ///<summary> 
-        /// Тестирует создание потока элементов-символов
+        /// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ-пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
         ///</summary>
         [Test]
         [Ignore]

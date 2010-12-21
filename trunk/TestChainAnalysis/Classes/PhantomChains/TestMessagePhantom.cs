@@ -7,7 +7,7 @@ using NUnit.Framework;
 namespace TestChainAnalysis.Classes.PhantomChains
 {
     ///<summary>
-    /// Тестирует фантомное сообщение
+    /// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
     ///</summary>
     [TestFixture]
     public class TestMessagePhantom
@@ -20,7 +20,7 @@ namespace TestChainAnalysis.Classes.PhantomChains
         }
 
         ///<summary>
-        /// Тестирует отношение эквивалентности
+        /// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
         ///</summary>
         [Test]
         public void TestEquals()
@@ -40,7 +40,7 @@ namespace TestChainAnalysis.Classes.PhantomChains
         }
 
         ///<summary>
-        /// Тестирует до,бавление фантомного сообющения
+        /// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ,пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
         ///</summary>
         [Test]
         public void TestAddMessagePhantom()
@@ -66,7 +66,7 @@ namespace TestChainAnalysis.Classes.PhantomChains
         }
 
         ///<summary>
-        /// Тестирует  клонорование 
+        /// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ  пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ 
         ///</summary>
         [Test]
         public void TestClone()
@@ -82,7 +82,7 @@ namespace TestChainAnalysis.Classes.PhantomChains
         }
 
         /*      ///<summary>
-        /// Тестирует корректную сериализацию и десериализацию
+        /// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
         ///</summary>
         [Test]
         public void TestSerializeDeserialize()

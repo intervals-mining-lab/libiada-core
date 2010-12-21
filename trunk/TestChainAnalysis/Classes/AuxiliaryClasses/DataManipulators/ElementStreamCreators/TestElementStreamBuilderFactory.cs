@@ -7,13 +7,13 @@ using NUnit.Framework;
 namespace TestChainAnalysis.Classes.AuxiliaryClasses.DataManipulators.ElementStreamCreators
 {
     ///<summary>
-    /// Тестирует фабрику конструкторов элементов
+    /// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
     ///</summary>
     [TestFixture]
     public class TestElementStreamBuilderFactory
     {
         ///<summary>
-        /// Тестирует создание при создании как текст
+        /// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
         ///</summary>
         [Test]
         public void TestCreate()
@@ -23,7 +23,7 @@ namespace TestChainAnalysis.Classes.AuxiliaryClasses.DataManipulators.ElementStr
         }
 
         ///<summary>
-        /// Тестирует создание про null.
+        /// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ null.
         ///</summary>
         [Test]
         [ExpectedException(typeof(NullReferenceException))]

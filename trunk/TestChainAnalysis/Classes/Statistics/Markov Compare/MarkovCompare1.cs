@@ -1,4 +1,4 @@
-﻿using ChainAnalises.Classes.IntervalAnalysis;
+using ChainAnalises.Classes.IntervalAnalysis;
 using ChainAnalises.Classes.Root.SimpleTypes;
 using ChainAnalises.Classes.Statistics.MarkovChain;
 using NUnit.Framework;

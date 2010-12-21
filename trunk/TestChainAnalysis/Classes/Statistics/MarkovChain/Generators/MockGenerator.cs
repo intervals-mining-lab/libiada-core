@@ -3,7 +3,7 @@ using ChainAnalises.Classes.Statistics.MarkovChain.Generators;
 namespace TestChainAnalysis.Classes.Statistics.MarkovChain.Generators
 {
     ///<summary>
-    /// Генератор Заглушка Используется в тестах для проверки коректности генерирования цепей.
+    /// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ.
     ///</summary>
     public class MockGenerator : IGenerator
     {
@@ -48,7 +48,7 @@ namespace TestChainAnalysis.Classes.Statistics.MarkovChain.Generators
         }
 
         ///<summary>
-        /// Переустановить стартовое число.
+        /// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ.
         ///</summary>
         public void Resert()
         {
@@ -56,9 +56,9 @@ namespace TestChainAnalysis.Classes.Statistics.MarkovChain.Generators
         }
 
         ///<summary>
-        /// Получить следующие значение псевдослучаной величины.
+        /// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ.
         ///</summary>
-        ///<returns>[0..1] значение</returns>
+        ///<returns>[0..1] пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ</returns>
         public double Next()
         {
             step++;

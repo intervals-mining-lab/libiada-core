@@ -10,7 +10,7 @@ using NUnit.Framework;
 namespace TestChainAnalysis.Classes.AuxiliaryClasses.DataManipulators.SpaceRebuilders
 {
     ///<summary>
-    /// Тестирует класс-метод изменябщий пространство методом разбиения на блоки.
+    /// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ-пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ.
     ///</summary>
     [TestFixture]
     public class TestSpaceBuilderFromChainbyBlock
@@ -24,7 +24,7 @@ namespace TestChainAnalysis.Classes.AuxiliaryClasses.DataManipulators.SpaceRebui
 
 
         ///<summary>
-        /// Инициализирующая часть.
+        /// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ.
         ///</summary>
         [SetUp]
         public void init()
@@ -108,7 +108,7 @@ namespace TestChainAnalysis.Classes.AuxiliaryClasses.DataManipulators.SpaceRebui
         }
 
         ///<summary>
-        /// Тестриует попытку перестроить null событие. 
+        /// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ null пїЅпїЅпїЅпїЅпїЅпїЅпїЅ. 
         ///</summary>
         [Test]
         [ExpectedException(typeof(NullReferenceException))]
@@ -122,8 +122,8 @@ namespace TestChainAnalysis.Classes.AuxiliaryClasses.DataManipulators.SpaceRebui
         }
 
         /*      ///<summary>
-        /// Тестирует ситуацию когда мы пытаемся преобразовать не одномерное пространство с помощью 
-        /// преобразование с помощью SpaceRebuilderFromChainToChainByBlock
+        /// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ 
+        /// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ SpaceRebuilderFromChainToChainByBlock
         /// </summary>
         [Test]
         [ExpectedException(typeof(Exception))]
@@ -139,9 +139,9 @@ namespace TestChainAnalysis.Classes.AuxiliaryClasses.DataManipulators.SpaceRebui
 */
 
         ///<summary>
-        /// Тестирует перестроение цепи путем разбиения на блоки.
-        /// Разбиение в данном тесте без остатка.
-        /// Привязка к началу
+        /// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ.
+        /// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ.
+        /// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
         ///</summary>
         [Test]
         public void TestinWorkModeLinkStart()
@@ -204,9 +204,9 @@ namespace TestChainAnalysis.Classes.AuxiliaryClasses.DataManipulators.SpaceRebui
         }
 
         ///<summary>
-        /// Тестирует перестроение цепи путем разбиения на блоки.
-        /// Разбиение в данном тесте без остатка.
-        /// Привязка к началу
+        /// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ.
+        /// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ.
+        /// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
         ///</summary>
         [Test]
         public void TestinWorkModeLinkEnd()
@@ -271,9 +271,9 @@ namespace TestChainAnalysis.Classes.AuxiliaryClasses.DataManipulators.SpaceRebui
         }
 
         ///<summary>
-        /// Тестирует ситуацию когда длинна цепи не кратна длинна блока
-        /// Остаток отбрасывается
-        /// Привязка к началу
+        /// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
+        /// пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+        /// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
         ///</summary>
         public void TestNotDivCorrectLinkStart()
         {
@@ -328,9 +328,9 @@ namespace TestChainAnalysis.Classes.AuxiliaryClasses.DataManipulators.SpaceRebui
         }
 
         ///<summary>
-        /// Тестирует ситуацию когда длинна цепи не кратна длинна блока
-        /// Остаток отбрасывается
-        /// Привязка к началу
+        /// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
+        /// пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+        /// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
         ///</summary>
         public void TestNotDivCorrectLinkEnd()
         {
@@ -385,7 +385,7 @@ namespace TestChainAnalysis.Classes.AuxiliaryClasses.DataManipulators.SpaceRebui
         }
 
         ///<summary>
-        /// Передаем пустую цепь
+        /// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
         ///</summary>
         [Test]
         public void TestEmpty()

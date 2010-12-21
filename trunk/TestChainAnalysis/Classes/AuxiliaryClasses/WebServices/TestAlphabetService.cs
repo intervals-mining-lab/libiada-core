@@ -1,4 +1,5 @@
-﻿using System;
+/*
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
@@ -15,6 +16,7 @@ using File=ChainAnalises.Classes.AuxiliaryClasses.WebServices.Additional.File;
 namespace TestChainAnalysis.Classes.AuxiliaryClasses.WebServices
 {
     [TestFixture]
+	[Ignore]
     public class TestAlphabetService
     {
         private string HashAlphabet = null;
@@ -23,10 +25,12 @@ namespace TestChainAnalysis.Classes.AuxiliaryClasses.WebServices
         public void SetAlphabet()
         {
             ServiceManager SM = ServiceManager.Create();
+*/
             /*BinaryFormatter deserializer = new BinaryFormatter();
             FileStream FileS = new FileStream("TestAlphabet.tst", FileMode.Open, FileAccess.Read);
             RequestFiles Request = (RequestFiles)deserializer.Deserialize(FileS);
             FileS.Close();*/
+/*
             RequestFiles Request = new RequestFiles();
             Request.Action = ActionType.CreateAlphabetByBlock;
             Request.Files = new File();
@@ -41,8 +45,10 @@ namespace TestChainAnalysis.Classes.AuxiliaryClasses.WebServices
         [TearDown]
         public void TearAlphabet()
         {
+*/
             /* Thread.Sleep(2000);*/
             //File.Delete("*.csd");
+/*
         }
 
         [Test]
@@ -54,6 +60,7 @@ namespace TestChainAnalysis.Classes.AuxiliaryClasses.WebServices
         }
 
         [Test]
+		[Ignore]
         public void TestAlphabetOutputCalculating()
         {
             ServiceManager SM = ServiceManager.Create();
@@ -62,6 +69,7 @@ namespace TestChainAnalysis.Classes.AuxiliaryClasses.WebServices
         }
 
         [Test]
+		[Ignore]
         public void TestAlphabetOutputWrongId()
         {
             ServiceManager SM = ServiceManager.Create();
@@ -70,6 +78,7 @@ namespace TestChainAnalysis.Classes.AuxiliaryClasses.WebServices
         }
 
         [Test]
+		[Ignore]
         public void TestAlphabetOutputComplete()
         {
             Thread.Sleep(5000);
@@ -80,3 +89,4 @@ namespace TestChainAnalysis.Classes.AuxiliaryClasses.WebServices
 
     }
 }
+*/

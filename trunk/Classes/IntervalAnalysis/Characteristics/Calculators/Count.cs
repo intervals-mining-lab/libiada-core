@@ -38,8 +38,8 @@ namespace ChainAnalises.Classes.IntervalAnalysis.Characteristics.Calculators
 
         private double CommonCalculate(ChainWithCharacteristic pChain)
         {
-            IDataForCalculator datà = pChain;
-            return datà.CommonIntervals.Count + datà.StartInterval.Count;
+            IDataForCalculator data = pChain;
+            return data.CommonIntervals.Count + data.StartInterval.Count;
         }
     }
 }

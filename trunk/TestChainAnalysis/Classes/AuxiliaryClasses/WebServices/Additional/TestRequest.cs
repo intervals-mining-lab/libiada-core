@@ -7,13 +7,13 @@ using NUnit.Framework;
 namespace TestChainAnalysis.Classes.AuxiliaryClasses.WebServices.Additional
 {
     ///<summary>
-    /// Класс тестирует класс Request
+    /// пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ Request
     ///</summary>
     [TestFixture]
     public class TestRequest
     {
 /*        ///<summary>
-        /// Тест проверяющий корректность сериализации и десериализации
+        /// пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
         ///</summary>
         public void TestSerializationDeSerialization()
         {
@@ -31,7 +31,7 @@ namespace TestChainAnalysis.Classes.AuxiliaryClasses.WebServices.Additional
         }*/
 
         ///<summary>
-        /// Тест проверяющий корректность Xml сериализации и десериализации
+        /// пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ Xml пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
         ///</summary>
         ///
         /*[Test]

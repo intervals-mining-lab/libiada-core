@@ -9,13 +9,13 @@ using NUnit.Framework;
 namespace TestChainAnalysis.Classes.AuxiliaryClasses.DataManipulators.SpaceRebuilders
 {
     ///<summary>
-    /// Тестирует класс фабрика методов конвертирования пространства
+    /// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
     ///</summary>
     [TestFixture]
     public class TestSpaceRebuilderFactory
     {
         ///<summary>
-        /// Тестирует создание при создании как построние алфавита по блокам
+        /// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
         ///</summary>
         [Test]
         public void TestCreate()
@@ -25,7 +25,7 @@ namespace TestChainAnalysis.Classes.AuxiliaryClasses.DataManipulators.SpaceRebui
         }
 
         ///<summary>
-        /// Тестирует создание про null.
+        /// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ null.
         ///</summary>
         [Test]
         public void TestCreateFromNull()

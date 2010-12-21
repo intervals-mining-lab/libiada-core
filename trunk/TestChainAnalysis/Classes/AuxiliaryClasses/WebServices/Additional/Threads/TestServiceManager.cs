@@ -24,6 +24,7 @@ namespace TestChainAnalysis.Classes.AuxiliaryClasses.WebServices.Additional.Thre
         }
 
         [Test]
+		[Ignore]
         public void MultiThreading()
         {
             Process wp = Process.GetCurrentProcess();

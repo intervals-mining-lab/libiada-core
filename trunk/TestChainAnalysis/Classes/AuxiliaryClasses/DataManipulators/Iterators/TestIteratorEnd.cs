@@ -6,7 +6,7 @@ using NUnit.Framework;
 namespace TestChainAnalysis.Classes.AuxiliaryClasses.DataManipulators.Iterators
 {
     ///<summary>
-    /// Тесты для IteratorEnd
+    /// пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ IteratorEnd
     ///</summary>
     [TestFixture]
     public class TestIteratorEnd
@@ -14,13 +14,13 @@ namespace TestChainAnalysis.Classes.AuxiliaryClasses.DataManipulators.Iterators
         private Chain ChainToIterate;
 
         ///<summary>
-        /// Инициализация  
+        /// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ  
         ///</summary>
         [SetUp]
         public void init()
         {
-            // длинна цепи для инетрации 12
-            // цепь = 121331212231
+            // пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ 12
+            // пїЅпїЅпїЅпїЅ = 121331212231
             ChainToIterate = new Chain(12);
             ChainToIterate.Add(new ValueChar('1'), 0);
             ChainToIterate.Add(new ValueChar('2'), 1);
@@ -40,20 +40,20 @@ namespace TestChainAnalysis.Classes.AuxiliaryClasses.DataManipulators.Iterators
         }
 
         ///<summary>
-        /// Тестируем считывание l-граммами 
+        /// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ l-пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ 
         ///</summary>
         [Test]
         public void TestReadWindowMode()
         {
-            // Длинна возврашаемого фрагмента 3
+            // пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ 3
             int length = 3;
-            // Шаг итерации 1
+            // пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ 1
             int step = 1;
             IteratorEnd<Chain, Chain> Iterator = new IteratorEnd<Chain, Chain>(ChainToIterate, length, step);
-            // Кол-во итерациий 12 - 3 + 1
+            // пїЅпїЅпїЅ-пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ 12 - 3 + 1
             Chain[] Message2 = new Chain[10];
-            // С конца 
-            // Возвращаемый фрагмент 121
+            // пїЅ пїЅпїЅпїЅпїЅпїЅ 
+            // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ 121
             // |121|331212231
             Message2[9] = new Chain(3);
             Message2[9].Add(new ValueChar('1'), 0);
@@ -61,27 +61,27 @@ namespace TestChainAnalysis.Classes.AuxiliaryClasses.DataManipulators.Iterators
             Message2[9].Add(new ValueChar('1'), 2);
 
             Message2[8] = new Chain(3);
-            // Возвращаемый фрагмент 213
+            // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ 213
             // 1|213|31212231
             Message2[8].Add(new ValueChar('2'), 0);
             Message2[8].Add(new ValueChar('1'), 1);
             Message2[8].Add(new ValueChar('3'), 2);
 
-            // Возвращаемый фрагмент 133
+            // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ 133
             // 12|133|1212231
             Message2[7] = new Chain(3);
             Message2[7].Add(new ValueChar('1'), 0);
             Message2[7].Add(new ValueChar('3'), 1);
             Message2[7].Add(new ValueChar('3'), 2);
 
-            // Возвращаемый фрагмент 331
+            // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ 331
             // 121|331|212231
             Message2[6] = new Chain(3);
             Message2[6].Add(new ValueChar('3'), 0);
             Message2[6].Add(new ValueChar('3'), 1);
             Message2[6].Add(new ValueChar('1'), 2);
 
-            // Возвращаемый фрагмент 331
+            // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ 331
             // 1213|312|12231
             Message2[5] = new Chain(3);
             Message2[5].Add(new ValueChar('3'), 0);
@@ -89,20 +89,20 @@ namespace TestChainAnalysis.Classes.AuxiliaryClasses.DataManipulators.Iterators
             Message2[5].Add(new ValueChar('2'), 2);
 
             Message2[4] = new Chain(3);
-            // Возвращаемый фрагмент 121
+            // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ 121
             // 12133|121|2231
             Message2[4].Add(new ValueChar('1'), 0);
             Message2[4].Add(new ValueChar('2'), 1);
             Message2[4].Add(new ValueChar('1'), 2);
 
-            // Возвращаемый фрагмент 212
+            // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ 212
             // 121331|212|231
             Message2[3] = new Chain(3);
             Message2[3].Add(new ValueChar('2'), 0);
             Message2[3].Add(new ValueChar('1'), 1);
             Message2[3].Add(new ValueChar('2'), 2);
 
-            // Возвращаемый фрагмент 122
+            // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ 122
             // 1213312|122|31
             Message2[2] = new Chain(3);
             Message2[2].Add(new ValueChar('1'), 0);
@@ -110,81 +110,81 @@ namespace TestChainAnalysis.Classes.AuxiliaryClasses.DataManipulators.Iterators
             Message2[2].Add(new ValueChar('2'), 2);
 
             Message2[1] = new Chain(3);
-            // Возвращаемый фрагмент 223
+            // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ 223
             // 12133121|223|1
             Message2[1].Add(new ValueChar('2'), 0);
             Message2[1].Add(new ValueChar('2'), 1);
             Message2[1].Add(new ValueChar('3'), 2);
 
-            // Возвращаемый фрагмент 231
+            // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ 231
             // 121331212|231|
             Message2[0] = new Chain(3);
             Message2[0].Add(new ValueChar('2'), 0);
             Message2[0].Add(new ValueChar('3'), 1);
             Message2[0].Add(new ValueChar('1'), 2);
 
-            int i = -1; // Должно быть  -1 значение
-            while (Iterator.Next()) // Следующая позиция итератора.
+            int i = -1; // пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ  -1 пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+            while (Iterator.Next()) // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ.
             {
-                i++; // Следующее сообщение из массива
-                BaseChain Message1 = Iterator.Current(); // Текущий фрагмент цепи
-                Assert.AreEqual(Message1, Message2[i]); // Эквивалентны
+                i++; // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+                BaseChain Message1 = Iterator.Current(); // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
+                Assert.AreEqual(Message1, Message2[i]); // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
             }
 
-            Assert.AreEqual(9, i); // Было 10 итерации начниая с 0 = 9
+            Assert.AreEqual(9, i); // пїЅпїЅпїЅпїЅ 10 пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ 0 = 9
         }
 
         ///<summary>
-        /// Тестируем считывание блоками
+        /// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
         ///</summary>
         [Test]
         public void TestReadBlockMode()
         {
-            // Длинна возврашаемого фрагмента 3
+            // пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ 3
             int length = 3;
-            // Шаг итерации 1
+            // пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ 1
             int step = 3;
             IteratorEnd<Chain, Chain> Iterator = new IteratorEnd<Chain, Chain>(ChainToIterate, length, step);
-            // Кол-во итерациий 12 / 3 
+            // пїЅпїЅпїЅ-пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ 12 / 3 
             Chain[] Message2 = new Chain[4];
 
-            // Возвращаемый фрагмент 121
+            // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ 121
             // |121|331212231
             Message2[3] = new Chain(3);
             Message2[3].Add(new ValueChar('1'), 0);
             Message2[3].Add(new ValueChar('2'), 1);
             Message2[3].Add(new ValueChar('1'), 2);
 
-            // Возвращаемый фрагмент 331
+            // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ 331
             // 121|331|212231
             Message2[2] = new Chain(3);
             Message2[2].Add(new ValueChar('3'), 0);
             Message2[2].Add(new ValueChar('3'), 1);
             Message2[2].Add(new ValueChar('1'), 2);
 
-            // Возвращаемый фрагмент 212
+            // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ 212
             // 121331|212|231
             Message2[1] = new Chain(3);
             Message2[1].Add(new ValueChar('2'), 0);
             Message2[1].Add(new ValueChar('1'), 1);
             Message2[1].Add(new ValueChar('2'), 2);
 
-            // Возвращаемый фрагмент 231
+            // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ 231
             // 121331212|231|
             Message2[0] = new Chain(3);
             Message2[0].Add(new ValueChar('2'), 0);
             Message2[0].Add(new ValueChar('3'), 1);
             Message2[0].Add(new ValueChar('1'), 2);
 
-            int i = -1;  // Должно быть  -1 значение
-            while (Iterator.Next()) // Следующая позиция итератора.
+            int i = -1;  // пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ  -1 пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+            while (Iterator.Next()) // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ.
             {
-                i++; // Следующее сообщение из массива
-                BaseChain Message1 = Iterator.Current(); // Текущий фрагмент цепи
-                Assert.AreEqual(Message1, Message2[i]); // Проверка на эквивалентность
+                i++; // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+                BaseChain Message1 = Iterator.Current(); // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
+                Assert.AreEqual(Message1, Message2[i]); // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
             }
 
-            Assert.AreEqual(3, i);// Было 4 итерации начниая с 0 = 3
+            Assert.AreEqual(3, i);// пїЅпїЅпїЅпїЅ 4 пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ 0 = 3
         }
     }
 }

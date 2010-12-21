@@ -6,7 +6,7 @@ using NUnit.Framework;
 namespace TestChainAnalysis.Classes.EventTheory
 {
     ///<summary>
-    /// Класс содержит тесты для тестирования класса правило чтения ReadRule
+    /// пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ ReadRule
     ///</summary>
     [TestFixture]
     public class TestReadRule
@@ -51,8 +51,8 @@ namespace TestChainAnalysis.Classes.EventTheory
         }
 
         ///<summary>
-        /// Тестирует конструктор если ему передается null место
-        /// Ожидаем исключение
+        /// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ null пїЅпїЅпїЅпїЅпїЅ
+        /// пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
         ///</summary>
         [Test]
         public void TestConstructorNull()
@@ -69,7 +69,7 @@ namespace TestChainAnalysis.Classes.EventTheory
         }
 
         ///<summary>
-        /// Тестирует конструктор если ему передается место (Рабочий режим)
+        /// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ (пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ)
         ///</summary>
         [Test]
         public void TestConstructorInWorkMode()
@@ -78,7 +78,7 @@ namespace TestChainAnalysis.Classes.EventTheory
         }
 
         ///<summary>
-        /// Тест проверяющий добавление места принадлежащего другому пространству
+        /// пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
         ///</summary>
         [Test]
         public void TestAddPlaceFromOtherSpace()
@@ -96,7 +96,7 @@ namespace TestChainAnalysis.Classes.EventTheory
         }
 
         ///<summary>
-        /// Проверяет добавление места в рабочем режиме
+        /// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
         ///</summary>
         [Test]
         public void TestAddPlaceInWorkMode()
@@ -105,7 +105,7 @@ namespace TestChainAnalysis.Classes.EventTheory
         }
 
         ///<summary>
-        /// Проверяет добавление места в рабочем режиме
+        /// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
         ///</summary>
         [Test]
         public void TestAddPlaceNotNeighbour()
@@ -122,7 +122,7 @@ namespace TestChainAnalysis.Classes.EventTheory
         }
 
         ///<summary>
-        /// Проверяет добавление одного и того же места дважды
+        /// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
         ///</summary>
         [Test]
         public void TestAddTwise()
@@ -140,7 +140,7 @@ namespace TestChainAnalysis.Classes.EventTheory
         }
 
         ///<summary>
-        /// Тeстирует вариант добавления null места
+        /// пїЅeпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ null пїЅпїЅпїЅпїЅпїЅ
         ///</summary>
         [Test]
         public void TestAddNull()
@@ -157,7 +157,7 @@ namespace TestChainAnalysis.Classes.EventTheory
         }
 
         ///<summary>
-        /// Тестирует получение элемента
+        /// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
         ///</summary>
         [Test]
         public void TestGet()
@@ -171,7 +171,7 @@ namespace TestChainAnalysis.Classes.EventTheory
         }
 
         ///<summary>
-        /// Тестирует невозможность изменения из вне элементов класса
+        /// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
         ///</summary>
         [Test]
         public void TestGetAndChange()
@@ -184,7 +184,7 @@ namespace TestChainAnalysis.Classes.EventTheory
         }
 
         ///<summary>
-        /// Тестирует установку в арбочем режиме
+        /// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
         ///</summary>
         [Test]
         public void TestSetInWorkMode()
@@ -197,7 +197,7 @@ namespace TestChainAnalysis.Classes.EventTheory
         }
 
         ///<summary>
-        /// Тестирует установку места принадлежащего другому пространству 
+        /// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ 
         ///</summary>
         [Test]
         public void TestSetFromOtherSpace()
@@ -216,7 +216,7 @@ namespace TestChainAnalysis.Classes.EventTheory
 
 
         ///<summary>
-        /// Тестирует установку места дважды
+        /// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
         ///</summary>
         [Test]
         public void TestSetTwise()
@@ -235,7 +235,7 @@ namespace TestChainAnalysis.Classes.EventTheory
         }
 
         ///<summary>
-        /// Тестирует установку несоседнего места 
+        /// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ 
         ///</summary>
         [Test]
         public void TestSetNotNeighbour()
@@ -253,7 +253,7 @@ namespace TestChainAnalysis.Classes.EventTheory
         }
 
         ///<summary>
-        /// Тестирует установку null места
+        /// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ null пїЅпїЅпїЅпїЅпїЅ
         ///</summary>
         [Test]
         public void TestSetNull()
@@ -271,7 +271,7 @@ namespace TestChainAnalysis.Classes.EventTheory
         }
 
         ///<summary>
-        /// Тестирует удаление места
+        /// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
         ///</summary>
         [Test]
         public void TestRemove()
@@ -284,7 +284,7 @@ namespace TestChainAnalysis.Classes.EventTheory
         }
 
         ///<summary>
-        /// Тестиует удаление не существующего элемента
+        /// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
         ///</summary>
         [Test]
         public void TestRemoveOutOfRange()
@@ -303,7 +303,7 @@ namespace TestChainAnalysis.Classes.EventTheory
         }
 
         ///<summary>
-        /// Тестирует метод эквивалентности в рабочем режиме
+        /// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
         ///</summary>
         [Test]
         public void TestEqualAsRule()
@@ -318,7 +318,7 @@ namespace TestChainAnalysis.Classes.EventTheory
         }
 
         ///<summary>
-        /// Тестирует метод эквивалентности с null
+        /// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ null
         ///</summary>
         [Test]
         public void TestEqualNull()
@@ -338,7 +338,7 @@ namespace TestChainAnalysis.Classes.EventTheory
 
 
         ///<summary>
-        /// Тестирует метод эквивалентности в рабочем режиме
+        /// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
         ///</summary>
         [Test]
         public void TestEqualAsRuleFalse()
@@ -352,7 +352,7 @@ namespace TestChainAnalysis.Classes.EventTheory
         }
 
         ///<summary>
-        /// Тестирует клонирование
+        /// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
         ///</summary>
         [Test]
         public void TestClone()
@@ -366,7 +366,7 @@ namespace TestChainAnalysis.Classes.EventTheory
 /*
 
         ///<summary>
-        /// Тест проверяющий корректность сериализации и десериализации
+        /// пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
         ///</summary>
         [Test]
         public void TestSerializationDeSerialization()
@@ -383,7 +383,7 @@ namespace TestChainAnalysis.Classes.EventTheory
 */
 
         ///<summary>
-        /// Тестирует объекдинение с правилом принадлежаещей другому пространству
+        /// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
         ///</summary>
         [Test]
         public void TestAddWithRuleOther()
@@ -401,7 +401,7 @@ namespace TestChainAnalysis.Classes.EventTheory
         }
 
         ///<summary>
-        /// Метод тестирующий объединение с null правилом.
+        /// пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ null пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ.
         ///</summary>
         [Test]
         public void TestAddWithRuleNull()
@@ -418,7 +418,7 @@ namespace TestChainAnalysis.Classes.EventTheory
         }
 
         ///<summary>
-        /// Тестирует метод объединения с правилом принаддежащим другому месту
+        /// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
         ///</summary>
         [Test]
         public void TestAddWithRuleOtherPlace()
@@ -436,7 +436,7 @@ namespace TestChainAnalysis.Classes.EventTheory
         }
 
         ///<summary>
-        /// Тестирует объединение с правилом в рабочем режиме( правила принадлежать одному и тому же месту) 
+        /// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ( пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ) 
         ///</summary>
         [Test]
         public void TestAddWithRuleInWorkMode()

@@ -4,13 +4,13 @@ using NUnit.Framework;
 namespace TestChainAnalysis.Classes.EventTheory
 {
     ///<summary>
-    /// Содержит тесты для класса PsevdoValue
+    /// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ PsevdoValue
     ///</summary>
     [TestFixture]
     public class TestPsevdoValue
     {
         ///<summary>
-        /// Тестирует Instance 
+        /// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ Instance 
         ///</summary>
         [Test]
         public void TestIncstanceNotNull()
@@ -19,7 +19,7 @@ namespace TestChainAnalysis.Classes.EventTheory
         }
 
         ///<summary>
-        /// Тест проверяющий работу паттрена SingleTone
+        /// пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ SingleTone
         ///</summary>
         [Test]
         public void TestInstanceSingleTone()
