@@ -12,6 +12,7 @@ using ChainAnalises.Classes.AuxiliaryClasses.WebServices.GenerateMarkovChains;
 using ChainAnalises.Classes.AuxiliaryClasses.WebServices.PhantomChains;
 using ChainAnalises.Classes.AuxiliaryClasses.WebServices.Segmentation;
 using ChainAnalises.Classes.DataMining.Clusterization;
+using ChainAnalises.Classes.DataMining.Clusterization.AlternativeClusterization;
 using ChainAnalises.Classes.DataMining.Clusterization.KRAB;
 using ChainAnalises.Classes.DivizionToAccords;
 using ChainAnalises.Classes.IntervalAnalysis;
@@ -147,7 +148,7 @@ namespace ChainAnalises.Classes.AuxiliaryClasses.WebServices
             Converter Convert = new Converter();
             DataTable Data = (DataTable) Convert.ToDataTableBin(request.DataTable).GetInstance();
 
-            IClusterization Clusterizator = new KrabCalusterization(Data);
+            IClusterization Clusterizator = new AlternativeKRAB(Data);
             ClustarizationVariants Result;
             switch(request.Method)
             {

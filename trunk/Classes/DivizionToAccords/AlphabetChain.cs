@@ -1,5 +1,6 @@
-using System;
+﻿using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.Text;
 using ChainAnalises.Classes.IntervalAnalysis;
 using ChainAnalises.Classes.Root;
@@ -7,7 +8,7 @@ using ChainAnalises.Classes.TheoryOfSet;
 
 namespace ChainAnalises.Classes.DivizionToAccords
 {
-    public class AlphabetChain : Alphabet
+    public class AlphabetChain:Alphabet
     {
         public override int Add(IBaseObject item)
         {

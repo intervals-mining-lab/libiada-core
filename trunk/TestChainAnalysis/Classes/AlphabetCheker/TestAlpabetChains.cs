@@ -1,5 +1,6 @@
 using System.Collections;
 using ChainAnalises.Classes.AlphabetCheker;
+using ChainAnalises.Classes.DivizionToAccords;
 using ChainAnalises.Classes.IntervalAnalysis;
 using ChainAnalises.Classes.Root.SimpleTypes;
 using NUnit.Framework;
