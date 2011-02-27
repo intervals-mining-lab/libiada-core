@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Text;
 
@@ -10,12 +11,23 @@ namespace ChainAnalises.Classes.AuxiliaryClasses.WebServices.Additional.Threads
     public abstract class IThread
     {
         protected string hashvalue = null;
+        protected Hashtable ResultsTable;
 
         ///<summary>
         /// Устанавливает исходные данные для вычислений.
         ///</summary>
         ///<param name="data">Исходные данные</param>
         public abstract void SetData(Request data);
+
+        ///<summary>
+        /// Метод в котором устанавливается хеш-таблица 
+        /// в которую будет складываться результат вычислений
+        ///</summary>
+        ///<param name="resultContainer">Хеш-таблица</param>
+        public void SetResultContainer(Hashtable resultContainer)
+        {
+            ResultsTable = resultContainer;
+        }
 
         ///<summary>
         /// Устанавливает значение хеш-кода вычислительного потока.

@@ -10,7 +10,6 @@ namespace TestChainAnalysis.Classes.Root.SimpleTypes
     {
         ///<summary>
         ///</summary>
-        ///
         [Test]
         public void TestSum()
         {

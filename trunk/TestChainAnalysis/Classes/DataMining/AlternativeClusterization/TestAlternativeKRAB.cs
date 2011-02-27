@@ -72,5 +72,80 @@ namespace TestChainAnalysis.Classes.DataMining.AlternativeClusterization
             Assert.IsTrue(((Cluster)Result[0]).Items.Contains(5));
             Assert.IsTrue(((Cluster)Result[0]).Items.Contains(6));
         }
+
+        [Test]
+        public void TestSimpleAllVariantsClusterization()
+        {
+            DataTable dataTable=new DataTable();
+
+            DataObject DObject1 = new DataObject();
+            DObject1.Id = 1;
+            DObject1.Add("x", 2);
+            
+            DataObject DObject2 = new DataObject();
+            DObject2.Id = 2;
+            DObject2.Add("x", 5);
+           
+            DataObject DObject3 = new DataObject();
+            DObject3.Id = 3;
+            DObject3.Add("x", 4);
+
+            DataObject DObject4 = new DataObject();
+            DObject4.Id = 4;
+            DObject4.Add("x", 3);
+            
+
+            dataTable.Add(DObject1);
+            dataTable.Add(DObject2);
+            dataTable.Add(DObject3); 
+            dataTable.Add(DObject4);
+            
+            AlternativeKRAB Krab = new AlternativeKRAB(dataTable);
+            ArrayList Result = Krab.ClusterizateAllVariants().Variants;
+            //Assert.IsTrue(true);
+            Assert.AreEqual(3,Result.Count);
+
+           
+        }
+
+        [Test]
+        public void Test2DAllVariantsClusterization()
+        {
+            DataTable dataTable = new DataTable();
+
+            DataObject DObject1 = new DataObject();
+            DObject1.Id = 1;
+            DObject1.Add("x", 2);
+            DObject1.Add("y", 2);
+
+            DataObject DObject2 = new DataObject();
+            DObject2.Id = 2;
+            DObject2.Add("x", 5);
+            DObject2.Add("y", 2);
+
+            DataObject DObject3 = new DataObject();
+            DObject3.Id = 3;
+            DObject3.Add("x", 4);
+            DObject3.Add("y", 3);
+
+            DataObject DObject4 = new DataObject();
+            DObject4.Id = 4;
+            DObject4.Add("x", 3);
+            DObject4.Add("y", 6);
+
+
+            dataTable.Add(DObject1);
+            dataTable.Add(DObject2);
+            dataTable.Add(DObject3);
+            dataTable.Add(DObject4);
+
+            AlternativeKRAB Krab = new AlternativeKRAB(dataTable);
+            ArrayList Result = Krab.ClusterizateAllVariants().Variants;
+            //Assert.IsTrue(true);
+            Assert.AreEqual(3, Result.Count);
+
+
+        }
+
     }
 }

@@ -7,7 +7,7 @@ namespace ChainAnalises.Classes.AuxiliaryClasses.WebServices.Additional.Threads
     ///<summary>
     /// Фабрика нитей различных сервисов
     ///</summary>
-    public class FactoryThreads
+    public static class ThreadsFactory
     {
 
        ///<summary>
@@ -16,7 +16,7 @@ namespace ChainAnalises.Classes.AuxiliaryClasses.WebServices.Additional.Threads
        ///<param name="wstype">Тип сервиса</param>
        ///<returns>Нить</returns>
        ///<exception cref="Exception">Неизвестный тип нити</exception>
-       public IThread CreateThread(WebServiceType wstype)
+       public static IThread CreateThread(WebServiceType wstype)
        {
            switch(wstype)
            {

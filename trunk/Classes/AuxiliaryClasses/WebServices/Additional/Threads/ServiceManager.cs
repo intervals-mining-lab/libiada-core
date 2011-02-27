@@ -6,11 +6,6 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Threading;
 using ChainAnalises.Classes.AuxiliaryClasses.WebServices.Additional.Types;
-using ChainAnalises.Classes.AuxiliaryClasses.WebServices.Clusterization;
-using ChainAnalises.Classes.AuxiliaryClasses.WebServices.CreateAlphabet;
-using ChainAnalises.Classes.AuxiliaryClasses.WebServices.GenerateMarkovChains;
-using ChainAnalises.Classes.AuxiliaryClasses.WebServices.PhantomChains;
-using ChainAnalises.Classes.AuxiliaryClasses.WebServices.Segmentation;
 
 namespace ChainAnalises.Classes.AuxiliaryClasses.WebServices.Additional.Threads
 {
@@ -20,9 +15,8 @@ namespace ChainAnalises.Classes.AuxiliaryClasses.WebServices.Additional.Threads
     public class ServiceManager
     {
         private static Hashtable ThreadPool = null;
+        private static Hashtable ResultsPool = null;
         private static ServiceManager state = null;
-        private FactoryThreads ThreadsFactory = new FactoryThreads();
-        private Random RandomGenerator = new Random();
 
         ///<summary>
         /// Метод, возвращающий ссылку на экземпляр ServiceManager.
@@ -43,6 +37,7 @@ namespace ChainAnalises.Classes.AuxiliaryClasses.WebServices.Additional.Threads
         protected ServiceManager()
         {
             ThreadPool = new Hashtable();
+            ResultsPool = new Hashtable();
         }
 
         ///<summary>
@@ -54,12 +49,14 @@ namespace ChainAnalises.Classes.AuxiliaryClasses.WebServices.Additional.Threads
         ///<returns>Хеш-код запущенной нити.</returns>
         public string NewCalculation(Request data, WebServiceType type)
         {
+            Random RandomGenerator = new Random();
             //Вычисляем хеш
-            string hash = getMd5Hash(DateTime.Now.ToString("F") + DateTime.Now.Millisecond.ToString() + RandomGenerator.Next(100).ToString());
-            //Создаём нить и запускаемеё на вычисление
+            string hash = getMd5Hash(DateTime.Now.ToString("F") + DateTime.Now.Millisecond.ToString() + RandomGenerator.Next(1000).ToString());
+            //Создаём нить и запускаем её на вычисление
             IThread Thr = ThreadsFactory.CreateThread(type);
             Thr.SetData(data);
             Thr.SetHash(hash);
+            Thr.SetResultContainer(ResultsPool);
             Thread thread = new Thread(Thr.Calculate);
             thread.Start();
             //Добавляем нить в пул
@@ -138,30 +135,28 @@ namespace ChainAnalises.Classes.AuxiliaryClasses.WebServices.Additional.Threads
                 return answer;
             }
             //если вычисления закончены
-            Object result = null;
             lock (ThreadPool.SyncRoot)
             {
-                try
-                {
-                    //десериализуем файл с результатами, созданный вычислительной нитью
-                    BinaryFormatter deserializer = new BinaryFormatter();
-                    FileStream FileS = new FileStream(hashvalue + ".csd", FileMode.Open, FileAccess.Read);
-                    result = deserializer.Deserialize(FileS);
-                    FileS.Close();
-                }
-                catch (Exception e)
-                {
-                    
-                    answer.Error = ErrorType.FileError;
-                    return answer;
-                }               
-
-                string dir = Directory.GetCurrentDirectory();
-                string fileName = hashvalue + ".csd";
-                string resFile = System.IO.Path.Combine(dir, fileName);
-                System.IO.File.Delete(resFile);
-
                 ThreadPool.Remove(hashvalue);
+            }
+
+            Object result = null;
+            //получаем результат из таблицы
+            lock (ResultsPool.SyncRoot)
+            {
+                result = ResultsPool[hashvalue];
+
+            }
+            //если результата нет
+            if (result == null)
+            {
+                answer.Error = ErrorType.FileError;
+                return answer;
+            }
+            //кдаляем результат из таблицы
+            lock (ResultsPool.SyncRoot)
+            {
+                ResultsPool.Remove(hashvalue);
             }
             return result;
         }

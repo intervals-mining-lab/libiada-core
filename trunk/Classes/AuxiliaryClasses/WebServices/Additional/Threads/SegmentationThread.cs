@@ -17,10 +17,10 @@ namespace ChainAnalises.Classes.AuxiliaryClasses.WebServices.Additional.Threads
         {
             WebServices WS = new WebServices();
             AnswerSegmentation result = WS.Segmentation(InputData);
-            BinaryFormatter serializer = new BinaryFormatter();
-            FileStream File = new FileStream(hashvalue + ".csd", FileMode.CreateNew, FileAccess.Write);
-            serializer.Serialize(File, result);
-            File.Close();
+            lock (ResultsTable.SyncRoot)
+            {
+                ResultsTable.Add(hashvalue, result);
+            }
         }
     }
 }

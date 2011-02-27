@@ -1,9 +1,11 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using ChainAnalises.Classes.EventTheory;
 using ChainAnalises.Classes.IntervalAnalysis.Characteristics;
 using ChainAnalises.Classes.IntervalAnalysis.Characteristics.AuxiliaryInterfaces;
 using ChainAnalises.Classes.Root;
+using ChainAnalises.Classes.Root.SimpleTypes;
 
 namespace ChainAnalises.Classes.IntervalAnalysis
 {
@@ -14,6 +16,7 @@ namespace ChainAnalises.Classes.IntervalAnalysis
     public class Chain : ChainWithCharacteristic, IChainDataForCalculaton, IBaseObject
     {
         protected ArrayList pUniformChains = new ArrayList();
+        protected ArrayList pNotUniformChains = new ArrayList();
 
         ///<summary>
         /// Конструктор 
@@ -38,6 +41,7 @@ namespace ChainAnalises.Classes.IntervalAnalysis
         {
             base.ClearAndSetNewLength(length);
             pUniformChains = new ArrayList();
+            pNotUniformChains = new ArrayList();
         }
 
         ///<summary>
@@ -66,6 +70,10 @@ namespace ChainAnalises.Classes.IntervalAnalysis
             return temp;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="temp"></param>
         protected override void FillClone(IBaseObject temp)
         {
             Chain TempChain = temp as Chain;
@@ -154,6 +162,28 @@ namespace ChainAnalises.Classes.IntervalAnalysis
         public UniformChain IUniformChain(int i)
         {
             return (UniformChain) pUniformChains[i];
+        }
+
+        public void FillNotUniformChains()
+        {
+            if(pNotUniformChains.Count > 0)
+                return;
+            List<int> Counters = new List<int>();
+            for (int j = 0; j < Alpahbet.power; j++)
+            {
+                Counters.Add(0);
+            }
+
+            for (int i = 0; i < vault.Length; i++)
+            {
+                int Element = ++Counters[(int)vault[i]];
+                if(pNotUniformChains.Count < Element) 
+                {
+                    pNotUniformChains.Add(new Chain());
+                }
+                ((Chain)pNotUniformChains[Element]).Add(new ValueInt((int)vault[i]),i);
+            }
+
         }
 
         public new IBin GetBin()

@@ -123,8 +123,8 @@ namespace ChainAnalises.Classes.DataMining.Clusterization.AlternativeClusterizat
         /// <returns>Результат разбиения</returns>
         public ClustarizationVariants ClusterizateVariantCountClustersBelow (int Clusters)
         {
-            ClustarizationVariants temp=new ClustarizationVariants();
-            for (int i = 2; i < Clusters; i++)
+            ClustarizationVariants temp = new ClustarizationVariants();
+            for (int i = 2; i <= Clusters; i++)
             {
                 temp.Variants.Add(Clusterizate(i));
             }
