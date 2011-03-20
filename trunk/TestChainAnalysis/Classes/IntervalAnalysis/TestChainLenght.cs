@@ -2,6 +2,8 @@
 using System.Collections.Specialized;
 using ChainAnalises.Classes.DataMining.Clusterization.AlternativeClusterization;
 using ChainAnalises.Classes.DataMining.Clusterization.AlternativeClusterization.Calculators;
+using ChainAnalises.Classes.IntervalAnalysis;
+using ChainAnalises.Classes.Root.SimpleTypes;
 using NUnit.Framework;
 using System.Collections.Generic;
 
@@ -106,6 +108,46 @@ namespace TestChainAnalysis.Classes.IntervalAnalysis
             second.Insert(1000000, GetElement(random.Next(3)).ToString());
             first[1000000].ToString();
             Assert.Fail();
+
+        }
+
+        [Test]
+        public void Test5Chain10()
+        {
+            char simbol;
+
+            Chain chain1 = new Chain(10);//дата грид не забудь!!!!
+            Chain chain2 = new Chain(11);//дата грид не забудь!!!!
+            Random random = new Random();
+           for (int i = 0; i <10 ; i++)
+            {
+                simbol = GetElement(random.Next(3));
+                chain1[i] = new ValueChar(simbol);
+                chain2[i] = new ValueChar(simbol);
+                Assert.IsTrue(chain2[i].Equals(chain1[i]));
+                Assert.AreEqual(chain2[i].ToString(), simbol.ToString());
+            }
+          
+
+        }
+
+        [Test]
+        public void Test6Chain1000000()
+        {
+            char simbol;
+
+            Chain chain1 = new Chain(1000000);//дата грид не забудь!!!!
+            Chain chain2 = new Chain(1000000);//дата грид не забудь!!!!
+            Random random = new Random();
+            for (int i = 0; i < 1000000; i++)
+            {
+                simbol = GetElement(random.Next(3));
+                chain1[i] = new ValueChar(simbol);
+                chain2[i] = new ValueChar(simbol);
+                Assert.IsTrue(chain2[i].Equals(chain1[i]));
+                Assert.AreEqual(chain2[i].ToString(), simbol.ToString());
+            }
+
 
         }
 
