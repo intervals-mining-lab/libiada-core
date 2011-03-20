@@ -131,6 +131,7 @@
     <Compile Include="Classes\IntervalAnalysis\Characteristics\Calculators\TestRegularity.cs" />
     <Compile Include="Classes\IntervalAnalysis\TestBaseChain.cs" />
     <Compile Include="Classes\IntervalAnalysis\TestChain.cs" />
+    <Compile Include="Classes\IntervalAnalysis\TestChainLenght.cs" />
     <Compile Include="Classes\IntervalAnalysis\TestUniformChain.cs" />
     <Compile Include="Classes\MatrixCalculus\TestMatrix.cs" />
     <Compile Include="Classes\MatrixCalculus\TestMatrixCalculator.cs" />
