@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<TestRun id="f36ed84b-d3b2-4a70-aa55-48e71a6e9013" name="Антошка@АНТОШКА-ПК 2011-03-29 21:23:55" runUser="Антошка-ПК\Антошка" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <TestSettings name="Параметры тестирования по умолчанию" id="efee74fe-a556-4dcb-a88b-722ff4b575b5">
+    <Deployment runDeploymentRoot="Антошка_АНТОШКА-ПК 2011-03-29 21_23_55">
+      <DeploymentItem filename="C:\Users\Антошка\Documents\Visual Studio 2010\Projects\libiamisc\trunk\MDA\bin\Debug\MDA.exe" />
+    </Deployment>
+    <Execution>
+      <TestTypeSpecific />
+      <AgentRule name="Execution Agents">
+      </AgentRule>
+    </Execution>
+  </TestSettings>
+  <Times creation="2011-03-29T21:23:55.4548112+07:00" queuing="2011-03-29T21:23:56.6028768+07:00" start="2011-03-29T21:23:56.7268839+07:00" finish="2011-03-29T21:23:57.9219523+07:00" />
+  <ResultSummary outcome="Completed">
+    <Counters total="3" executed="3" passed="3" error="0" failed="0" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" completed="0" inProgress="0" pending="0" />
+  </ResultSummary>
+  <TestDefinitions>
+    <UnitTest name="TestXMLReader1" storage="c:\users\антошка\documents\visual studio 2010\projects\libiamisc\trunk\mdatest\bin\debug\mdatest.dll" id="14d94656-d132-3c5d-2b32-ea017b71346a">
+      <Execution id="88ece371-5108-444c-8268-79666412cf5a" />
+      <TestMethod codeBase="C:/Users/Антошка/Documents/Visual Studio 2010/Projects/libiamisc/trunk/MDATest/bin/Debug/MDATest.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="TestMDA.OIP.TestXmlReader, MDATest, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="TestXMLReader1" />
+    </UnitTest>
+    <UnitTest name="Test2" storage="c:\users\антошка\documents\visual studio 2010\projects\libiamisc\trunk\mdatest\bin\debug\mdatest.dll" id="3b9482db-3132-8634-61b9-2d3b895a88d0">
+      <Execution id="4e42eae5-4705-4794-bda0-2d1b432de25f" />
+      <TestMethod codeBase="C:/Users/Антошка/Documents/Visual Studio 2010/Projects/libiamisc/trunk/MDATest/bin/Debug/MDATest.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="TestMDA.Test, MDATest, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="Test2" />
+    </UnitTest>
+    <UnitTest name="Test1" storage="c:\users\антошка\documents\visual studio 2010\projects\libiamisc\trunk\mdatest\bin\debug\mdatest.dll" id="38be1589-5c39-600c-9d31-c6106087e460">
+      <Execution id="7069f02c-26e3-41d1-b376-809655cefe02" />
+      <TestMethod codeBase="C:/Users/Антошка/Documents/Visual Studio 2010/Projects/libiamisc/trunk/MDATest/bin/Debug/MDATest.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="TestMDA.Test, MDATest, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="Test1" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestLists>
+    <TestList name="Отсутствующие в списке результаты" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="Все загруженные результаты" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <TestEntries>
+    <TestEntry testId="14d94656-d132-3c5d-2b32-ea017b71346a" executionId="88ece371-5108-444c-8268-79666412cf5a" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="38be1589-5c39-600c-9d31-c6106087e460" executionId="7069f02c-26e3-41d1-b376-809655cefe02" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="3b9482db-3132-8634-61b9-2d3b895a88d0" executionId="4e42eae5-4705-4794-bda0-2d1b432de25f" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <Results>
+    <UnitTestResult executionId="88ece371-5108-444c-8268-79666412cf5a" testId="14d94656-d132-3c5d-2b32-ea017b71346a" testName="TestXMLReader1" computerName="АНТОШКА-ПК" duration="00:00:00.0765443" startTime="2011-03-29T21:23:56.7798869+07:00" endTime="2011-03-29T21:23:57.7689435+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="88ece371-5108-444c-8268-79666412cf5a">
+      <Output>
+        <StdOut>MDA: Файл 'D:\Учеба\НИРС\midi example\MDAexample7Liga.xml1' не найден.</StdOut>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="7069f02c-26e3-41d1-b376-809655cefe02" testId="38be1589-5c39-600c-9d31-c6106087e460" testName="Test1" computerName="АНТОШКА-ПК" duration="00:00:00.0168866" startTime="2011-03-29T21:23:57.7829443+07:00" endTime="2011-03-29T21:23:57.8089458+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="7069f02c-26e3-41d1-b376-809655cefe02">
+    </UnitTestResult>
+    <UnitTestResult executionId="4e42eae5-4705-4794-bda0-2d1b432de25f" testId="3b9482db-3132-8634-61b9-2d3b895a88d0" testName="Test2" computerName="АНТОШКА-ПК" duration="00:00:00.0013016" startTime="2011-03-29T21:23:57.8209465+07:00" endTime="2011-03-29T21:23:57.8409476+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="4e42eae5-4705-4794-bda0-2d1b432de25f">
+    </UnitTestResult>
+  </Results>
+</TestRun>
