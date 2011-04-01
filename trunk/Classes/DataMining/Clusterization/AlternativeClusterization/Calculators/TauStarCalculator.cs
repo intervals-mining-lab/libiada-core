@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 
 namespace ChainAnalises.Classes.DataMining.Clusterization.AlternativeClusterization.Calculators
@@ -32,22 +33,43 @@ namespace ChainAnalises.Classes.DataMining.Clusterization.AlternativeClusterizat
         /// <returns>Bmin - минимальное расстояние</returns>
         private double GetBmin(List<Connection> graph,int firstElement,int secondElement)
         {
-            double min=double.MaxValue;
-            for (int i = 0; i < graph.Count; i++)
+            double min = Math.Min(SearchForMinimum(graph, firstElement, secondElement),
+                                  SearchForMinimum(graph, secondElement, firstElement));
+            return min;
+        }
+
+        private double SearchForMinimum(List<Connection> graph,int Element,int ExceptedElement)
+        {
+            double min = double.MaxValue;//текущее минимальное расстояние
+
+            int BlockBegining = 0;
+            for (int i = 0; i < Element; i++)
             {
-                bool FirstFirst = graph[i].FirstElementIndex == firstElement;
-                bool FirstSecond = graph[i].FirstElementIndex == secondElement;
-                bool SecondFirst = graph[i].SecondElementIndex == firstElement;
-                bool SecondSecond = graph[i].SecondElementIndex == secondElement;
-                //проверяем есть ли в паре хотя бы одна из переданых точек 
-                //и что пара не содержит обе точки одновременно
-                if (((FirstFirst)||(FirstSecond)||(SecondFirst)||(SecondSecond))&&!((FirstFirst)&&(SecondSecond))&&!((SecondFirst)&&(FirstSecond)))
+                int blockLength = graph.Count - (i + 1);//graph.Count - мощность алфавита 
+                                                        //вычисляем длину блока, где на первом месте стоит один и тот же элемент
+                BlockBegining += blockLength;//ищём начало нужного нам блока
+            }
+
+            int blockSumm = 0;//сумма длин предыдущих блоков
+            int shift = Element - 1; //сдвиг внутри блока
+
+            //цикл перебора отдельных значений в массиве пар вершин 
+            for (int k=0, j = Element - 1; shift >= 0; j = blockSumm + (--shift), k++)
+            {
+                if ((min > graph[j].distance) && (graph[j].SecondElementIndex != ExceptedElement) && (graph[j].FirstElementIndex != ExceptedElement))
                 {
-                    if (min > graph[i].distance)
-                    {
-                        min = graph[i].distance;
-                    } 
-                }   
+                    min = graph[j].distance;
+                }
+                blockSumm += graph.Count - (k + 1);
+            }
+
+            int OurBlockLength = graph.Count - (Element + 1);//вычисляем длину блока
+            for (int k = BlockBegining; k < BlockBegining + OurBlockLength; k++)//перебор блока от начала до конца
+            {
+                if ((min > graph[k].distance) && (graph[k].SecondElementIndex != ExceptedElement) && (graph[k].FirstElementIndex != ExceptedElement))
+                {
+                    min = graph[k].distance;
+                }
             }
             return min;
         }

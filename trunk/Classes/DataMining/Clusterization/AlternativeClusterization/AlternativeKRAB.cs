@@ -19,15 +19,15 @@ namespace ChainAnalises.Classes.DataMining.Clusterization.AlternativeClusterizat
         /// <param name="dataTable">Таблица с данными</param>
         public AlternativeKRAB(DataTable dataTable)
         {
-            List<Connection> Connections = new List<Connection>();
-            List<GraphElement> Elements = new List<GraphElement>();
-            IEnumerator Counter = dataTable.GetEnumerator();
+            List<Connection> Connections = new List<Connection>(); //массив связей(пар вершин)
+            List<GraphElement> Elements = new List<GraphElement>();//массив вершин
+            IEnumerator Counter = dataTable.GetEnumerator();//итератор
             Counter.Reset();
-            Counter.MoveNext();
+            Counter.MoveNext();//Установка на нулевой элемент
             for (int i = 0; i < dataTable.Count; i++)
             {
                 Elements.Add(new GraphElement(((DataObject)((DictionaryEntry)Counter.Current).Value).vault, ((DictionaryEntry)Counter.Current).Key));
-                Counter.MoveNext();
+                Counter.MoveNext();//переход к следующему элементу
             }
             for (int j = 0; j < Elements.Count - 1; j++)
             {

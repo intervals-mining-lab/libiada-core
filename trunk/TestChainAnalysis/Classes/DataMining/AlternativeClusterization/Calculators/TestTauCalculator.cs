@@ -33,8 +33,9 @@ namespace TestChainAnalysis.Classes.DataMining.AlternativeClusterization.Calcula
             el.Add(Node3);
 
             Connection Conn1 = new Connection(0, 1);
-            Connection Conn2 = new Connection(1, 2);
-            Connection Conn3 = new Connection(0, 2);
+            Connection Conn2 = new Connection(0, 2);
+            Connection Conn3 = new Connection(1, 2);
+            
             
             graph.Add(Conn1);
             graph.Add(Conn2);
@@ -51,8 +52,8 @@ namespace TestChainAnalysis.Classes.DataMining.AlternativeClusterization.Calcula
             Calc = new TauCalculator();
             Calc.Calculate(GM);
             Assert.AreEqual(107, Math.Round(GM.Connections[0].tau * 1000));
-            Assert.AreEqual(722, Math.Round(GM.Connections[1].tau * 1000));
-            Assert.AreEqual(1, GM.Connections[2].tau);
+            Assert.AreEqual(722, Math.Round(GM.Connections[2].tau * 1000));
+            Assert.AreEqual(1, GM.Connections[1].tau);
         }
 
         [Test]
