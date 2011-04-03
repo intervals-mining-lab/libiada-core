@@ -1,6 +1,5 @@
 using System;
 using ChainAnalises.Classes.AuxiliaryClasses.WebServices.Additional;
-using ChainAnalises.Classes.AuxiliaryClasses.WebServices.CreateAlphabet;
 using ChainAnalises.Classes.AuxiliaryClasses.WebServices.SOAP;
 using ChainAnalises.Classes.Statistics.MarkovChain;
 using ChainAnalises.Classes.Statistics.MarkovChain.Generators;

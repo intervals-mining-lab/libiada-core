@@ -1,7 +1,5 @@
 using System;
 using System.Collections;
-using ChainAnalises.Classes.AuxiliaryClasses.WebServices.Clusterization;
-using ChainAnalises.Classes.AuxiliaryClasses.WebServices.SOAP;
 using ChainAnalises.Classes.DataMining.Clusterization;
 using ChainAnalises.Classes.EventTheory;
 using ChainAnalises.Classes.IntervalAnalysis;
@@ -11,7 +9,7 @@ using ChainAnalises.Classes.Root.SimpleTypes;
 using ChainAnalises.Classes.Statistics;
 using ChainAnalises.Classes.TheoryOfSet;
 
-namespace ChainAnalises.Classes.AuxiliaryClasses.WebServices.CreateAlphabet
+namespace ChainAnalises.Classes.AuxiliaryClasses.WebServices.SOAP
 {
     ///<summary>
     ///</summary>

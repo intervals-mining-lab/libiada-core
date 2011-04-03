@@ -18,7 +18,7 @@ namespace ChainAnalises.Classes.DataMining.Clusterization.AlternativeClusterizat
         {
             for (int i = 0; i < graph.Connections.Count; i++)
             {
-                graph.Connections[i].tauStar = graph.Connections[i].distance/GetBmin(graph.Connections,graph.Connections[i].FirstElementIndex, graph.Connections[i].SecondElementIndex);
+                graph.Connections[i].tauStar = graph.Connections[i].distance / GetBmin(graph.Connections, graph.Elements.Count, graph.Connections[i].FirstElementIndex, graph.Connections[i].SecondElementIndex);
             }
            
         }
@@ -31,23 +31,21 @@ namespace ChainAnalises.Classes.DataMining.Clusterization.AlternativeClusterizat
         /// <param name="firstElement">перва€ точка</param>
         /// <param name="secondElement">втора€ точка</param>
         /// <returns>Bmin - минимальное рассто€ние</returns>
-        private double GetBmin(List<Connection> graph,int firstElement,int secondElement)
+        private double GetBmin(List<Connection> graph, int ElementsPower, int firstElement, int secondElement)
         {
-            double min = Math.Min(SearchForMinimum(graph, firstElement, secondElement),
-                                  SearchForMinimum(graph, secondElement, firstElement));
+             double min = Math.Min(SearchForMinimum(graph, ElementsPower, firstElement, secondElement),
+                                  SearchForMinimum(graph, ElementsPower, secondElement, firstElement));
             return min;
         }
 
-        private double SearchForMinimum(List<Connection> graph,int Element,int ExceptedElement)
+        private double SearchForMinimum(List<Connection> graph, int ElementsPower, int Element, int ExceptedElement)
         {
             double min = double.MaxValue;//текущее минимальное рассто€ние
 
             int BlockBegining = 0;
             for (int i = 0; i < Element; i++)
             {
-                int blockLength = graph.Count - (i + 1);//graph.Count - мощность алфавита 
-                                                        //вычисл€ем длину блока, где на первом месте стоит один и тот же элемент
-                BlockBegining += blockLength;//ищЄм начало нужного нам блока
+                BlockBegining += BlockLength(i,ElementsPower);//ищЄм начало нужного нам блока
             }
 
             int blockSumm = 0;//сумма длин предыдущих блоков
@@ -60,10 +58,10 @@ namespace ChainAnalises.Classes.DataMining.Clusterization.AlternativeClusterizat
                 {
                     min = graph[j].distance;
                 }
-                blockSumm += graph.Count - (k + 1);
+                blockSumm += BlockLength(k,ElementsPower);
             }
 
-            int OurBlockLength = graph.Count - (Element + 1);//вычисл€ем длину блока
+            int OurBlockLength = BlockLength(Element,ElementsPower);//вычисл€ем длину блока
             for (int k = BlockBegining; k < BlockBegining + OurBlockLength; k++)//перебор блока от начала до конца
             {
                 if ((min > graph[k].distance) && (graph[k].SecondElementIndex != ExceptedElement) && (graph[k].FirstElementIndex != ExceptedElement))
@@ -72,6 +70,11 @@ namespace ChainAnalises.Classes.DataMining.Clusterization.AlternativeClusterizat
                 }
             }
             return min;
+        }
+
+        private int BlockLength(int Element, int Power)
+        {
+            return Power - (Element + 1);
         }
     }
 }

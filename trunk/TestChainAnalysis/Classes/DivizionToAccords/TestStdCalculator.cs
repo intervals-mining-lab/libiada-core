@@ -1,9 +1,6 @@
-using ChainAnalises.Classes.IntervalAnalysis;
-using ChainAnalises.Classes.Root;
-using ChainAnalises.Classes.Root.SimpleTypes;
 using NUnit.Framework;
 
-namespace ChainAnalises.Classes.DivizionToAccords.Test
+namespace TestChainAnalysis.Classes.DivizionToAccords
 {
     [TestFixture]
     public class TestStdCalculator

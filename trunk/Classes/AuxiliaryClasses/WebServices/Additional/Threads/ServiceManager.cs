@@ -1,7 +1,5 @@
 using System;
 using System.Collections;
-using System.IO;
-using System.Runtime.Serialization.Formatters.Binary;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading;
@@ -17,6 +15,7 @@ namespace ChainAnalises.Classes.AuxiliaryClasses.WebServices.Additional.Threads
         private static Hashtable ThreadPool = null;
         private static Hashtable ResultsPool = null;
         private static ServiceManager state = null;
+        private static Random RandomGenerator = null;
 
         ///<summary>
         /// Метод, возвращающий ссылку на экземпляр ServiceManager.
@@ -38,6 +37,7 @@ namespace ChainAnalises.Classes.AuxiliaryClasses.WebServices.Additional.Threads
         {
             ThreadPool = new Hashtable();
             ResultsPool = new Hashtable();
+            RandomGenerator = new Random();
         }
 
         ///<summary>
@@ -49,9 +49,8 @@ namespace ChainAnalises.Classes.AuxiliaryClasses.WebServices.Additional.Threads
         ///<returns>Хеш-код запущенной нити.</returns>
         public string NewCalculation(Request data, WebServiceType type)
         {
-            Random RandomGenerator = new Random();
             //Вычисляем хеш
-            string hash = getMd5Hash(DateTime.Now.ToString("F") + DateTime.Now.Millisecond.ToString() + RandomGenerator.Next(1000).ToString());
+            string hash = getMd5Hash(DateTime.Now.ToString("F") + DateTime.Now.Millisecond.ToString() + RandomGenerator.NextDouble().ToString());
             //Создаём нить и запускаем её на вычисление
             IThread Thr = ThreadsFactory.CreateThread(type);
             Thr.SetData(data);

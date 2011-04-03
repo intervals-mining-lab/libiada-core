@@ -1,6 +1,4 @@
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace ChainAnalises.Classes.AuxiliaryClasses.WebServices.Additional.Threads
 {
@@ -9,7 +7,6 @@ namespace ChainAnalises.Classes.AuxiliaryClasses.WebServices.Additional.Threads
     ///</summary>
     public static class ThreadsFactory
     {
-
        ///<summary>
        /// Создёт новую нить заданного вычислительного сервиса.
        ///</summary>

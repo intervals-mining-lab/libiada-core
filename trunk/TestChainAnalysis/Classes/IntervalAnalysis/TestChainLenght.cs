@@ -25,6 +25,7 @@ namespace TestChainAnalysis.Classes.IntervalAnalysis
             
         }
 
+        [Ignore]
         [Test]
         [ExpectedException(typeof(IndexOutOfRangeException))]
         public void Test1()
@@ -47,7 +48,7 @@ namespace TestChainAnalysis.Classes.IntervalAnalysis
         }
 
 
-
+        [Ignore]
         [Test]
         [ExpectedException(typeof(IndexOutOfRangeException))]
         public void Test2()
@@ -69,6 +70,7 @@ namespace TestChainAnalysis.Classes.IntervalAnalysis
 
         }
 
+        [Ignore]
         [Test]
         [ExpectedException(typeof(IndexOutOfRangeException))]
         public void Test3()
@@ -90,6 +92,7 @@ namespace TestChainAnalysis.Classes.IntervalAnalysis
 
         }
 
+        [Ignore]
         [Test]
         [ExpectedException(typeof(IndexOutOfRangeException))]
         public void Test4()
@@ -111,6 +114,7 @@ namespace TestChainAnalysis.Classes.IntervalAnalysis
 
         }
 
+        [Ignore]
         [Test]
         public void Test5Chain10()
         {
@@ -131,6 +135,7 @@ namespace TestChainAnalysis.Classes.IntervalAnalysis
 
         }
 
+        [Ignore]
         [Test]
         public void Test6Chain1000000()
         {

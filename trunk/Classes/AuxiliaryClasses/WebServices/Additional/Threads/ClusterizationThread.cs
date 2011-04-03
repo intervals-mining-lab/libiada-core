@@ -1,5 +1,3 @@
-using System.IO;
-using System.Runtime.Serialization.Formatters.Binary;
 using ChainAnalises.Classes.AuxiliaryClasses.WebServices.Clusterization;
 
 namespace ChainAnalises.Classes.AuxiliaryClasses.WebServices.Additional.Threads
@@ -9,8 +7,6 @@ namespace ChainAnalises.Classes.AuxiliaryClasses.WebServices.Additional.Threads
     /// </summary>
     internal class ClusterizationThread : IThread
     {
-        private RequestClusterization InputData = null;
-
         /// <summary>
         /// Метод устанавливает исходные данные для вычислений.
         /// Требуемый тип данных  <see cref="RequestClusterization"/>.
@@ -29,7 +25,7 @@ namespace ChainAnalises.Classes.AuxiliaryClasses.WebServices.Additional.Threads
         public override void Calculate()
         {
             WebServices WS = new WebServices();
-            AnswerClusterization result = WS.KRAB(InputData);
+            AnswerClusterization result = WS.KRAB((RequestClusterization)InputData);
             lock (ResultsTable.SyncRoot)
             {
                 ResultsTable.Add(hashvalue, result);

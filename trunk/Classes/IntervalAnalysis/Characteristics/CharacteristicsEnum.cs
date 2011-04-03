@@ -81,6 +81,11 @@ namespace ChainAnalises.Classes.IntervalAnalysis.Characteristics
         ///<summary>
         /// —реднегеометрический интервал.
         ///</summary>
-        GeometricMiddling
+        GeometricMiddling,
+        /// <summary>
+        /// Ќормализованный среднегеометрический интервал
+        /// </summary>
+        NormalizedAverageRemoteness
+
     }
 }

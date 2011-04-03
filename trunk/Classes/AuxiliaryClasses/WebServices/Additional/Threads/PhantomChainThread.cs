@@ -1,5 +1,3 @@
-using System.IO;
-using System.Runtime.Serialization.Formatters.Binary;
 using ChainAnalises.Classes.AuxiliaryClasses.WebServices.PhantomChains;
 
 namespace ChainAnalises.Classes.AuxiliaryClasses.WebServices.Additional.Threads
@@ -9,8 +7,6 @@ namespace ChainAnalises.Classes.AuxiliaryClasses.WebServices.Additional.Threads
     /// </summary>
     internal class PhantomChainThread : IThread
     {
-        private RequestPhantomChains InputData = null;
-
         /// <summary>
         /// Метод устанавливает исходные данные для вычислений.
         /// Требуемый тип данных  <see cref="RequestPhantomChains"/>.
@@ -28,7 +24,7 @@ namespace ChainAnalises.Classes.AuxiliaryClasses.WebServices.Additional.Threads
         public override void Calculate()
         {
             WebServices WS = new WebServices();
-            AnswerPhantomChains result = WS.PhantomChains(InputData);
+            AnswerPhantomChains result = WS.PhantomChains((RequestPhantomChains)InputData);
             lock (ResultsTable.SyncRoot)
             {
                 ResultsTable.Add(hashvalue, result);

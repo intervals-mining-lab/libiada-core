@@ -1,7 +1,6 @@
 using System;
-using ChainAnalises.Classes.AuxiliaryClasses.WebServices.Additional.Types;
 
-namespace ChainAnalises.Classes
+namespace ChainAnalises.Classes.AuxiliaryClasses.WebServices.Additional.Types
 {
     ///<summary>
     ///</summary>

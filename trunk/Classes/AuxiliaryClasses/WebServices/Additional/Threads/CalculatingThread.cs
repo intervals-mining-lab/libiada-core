@@ -1,5 +1,3 @@
-using System.IO;
-using System.Runtime.Serialization.Formatters.Binary;
 using ChainAnalises.Classes.AuxiliaryClasses.WebServices.Calculate;
 using ChainAnalises.Classes.AuxiliaryClasses.WebServices.CreateAlphabet;
 
@@ -9,8 +7,6 @@ namespace ChainAnalises.Classes.AuxiliaryClasses.WebServices.Additional.Threads
     ///</summary>
     public class CalculatingThread: IThread
     {
-        private RequestFiles InputData = null;
-
         public override void SetData(Request data)
         {
             InputData = (RequestFiles) data;
@@ -19,7 +15,7 @@ namespace ChainAnalises.Classes.AuxiliaryClasses.WebServices.Additional.Threads
         public override void Calculate()
         {
             WebServices WS = new WebServices();
-            AnswerChain result = WS.Calculate(InputData);
+            AnswerChain result = WS.Calculate((RequestFiles)InputData);
             lock (ResultsTable.SyncRoot)
             {
                 ResultsTable.Add(hashvalue, result);

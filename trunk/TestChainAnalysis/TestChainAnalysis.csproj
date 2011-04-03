@@ -76,7 +76,6 @@
     <Compile Include="Classes\AuxiliaryClasses\WebServices\Additional\TestAnswerFactory.cs" />
     <Compile Include="Classes\AuxiliaryClasses\WebServices\Additional\TestRequest.cs" />
     <Compile Include="Classes\AuxiliaryClasses\WebServices\Additional\Threads\TestServiceManager.cs" />
-    <Compile Include="Classes\AuxiliaryClasses\WebServices\Additional\Threads\TestThread.cs" />
     <Compile Include="Classes\AuxiliaryClasses\WebServices\Additional\Types\TestActionType.cs" />
     <Compile Include="Classes\AuxiliaryClasses\WebServices\Additional\Types\TestTypeBase.cs" />
     <Compile Include="Classes\AuxiliaryClasses\WebServices\TestAlphabetService.cs" />
@@ -112,6 +111,7 @@
     <Compile Include="Classes\EventTheory\TestReadPath.cs" />
     <Compile Include="Classes\EventTheory\TestReadRule.cs" />
     <Compile Include="Classes\EventTheory\TestSpaceOverEvent.cs" />
+    <Compile Include="Classes\IntervalAnalysis\Characteristics\Calculators\TestNormalizedAverageRemoteness.cs" />
     <Compile Include="Classes\IntervalAnalysis\Characteristics\Calculators\TestPeriodicity.cs" />
     <Compile Include="Classes\IntervalAnalysis\Characteristics\Calculators\TestNormalizationGamut.cs" />
     <Compile Include="Classes\IntervalAnalysis\Characteristics\Calculators\TestAlphabetPower.cs" />

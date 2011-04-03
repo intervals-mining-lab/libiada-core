@@ -139,6 +139,7 @@
     <Compile Include="Classes\DivizionToAccords\StdCalculator.cs" />
     <Compile Include="Classes\DivizionToAccords\ProbabilityCountStrateges\Strategy.cs" />
     <Compile Include="Classes\IntervalAnalysis\Characteristics\Calculators\AlphabetPower.cs" />
+    <Compile Include="Classes\IntervalAnalysis\Characteristics\Calculators\NormalizedAverageRemoteness.cs" />
     <Compile Include="Classes\IntervalAnalysis\Characteristics\CharacteristicsEnum.cs" />
     <Compile Include="Classes\IntervalAnalysis\Characteristics\Calculators\CutLength.cs" />
     <Compile Include="Classes\IntervalAnalysis\Characteristics\Calculators\CutLengthVocabularyEntropy.cs" />

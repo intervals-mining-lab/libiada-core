@@ -11,6 +11,7 @@ using ChainAnalises.Classes.AuxiliaryClasses.WebServices.CreateAlphabet;
 using ChainAnalises.Classes.AuxiliaryClasses.WebServices.GenerateMarkovChains;
 using ChainAnalises.Classes.AuxiliaryClasses.WebServices.PhantomChains;
 using ChainAnalises.Classes.AuxiliaryClasses.WebServices.Segmentation;
+using ChainAnalises.Classes.AuxiliaryClasses.WebServices.SOAP;
 using ChainAnalises.Classes.DataMining.Clusterization;
 using ChainAnalises.Classes.DataMining.Clusterization.AlternativeClusterization;
 using ChainAnalises.Classes.DataMining.Clusterization.KRAB;

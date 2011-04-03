@@ -76,7 +76,7 @@ namespace TestChainAnalysis.Classes.DataMining.AlternativeClusterization
         [Test]
         public void TestSimpleAllVariantsClusterization()
         {
-            DataTable dataTable=new DataTable();
+            DataTable dataTable = new DataTable();
 
             DataObject DObject1 = new DataObject();
             DObject1.Id = 1;

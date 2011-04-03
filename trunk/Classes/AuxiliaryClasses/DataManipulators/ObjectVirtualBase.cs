@@ -1,5 +1,6 @@
 using System;
 using ChainAnalises.Classes.AuxiliaryClasses.DataManipulators.SpaceRebuilders;
+using ChainAnalises.Classes.AuxiliaryClasses.WebServices.Additional.Types;
 using ChainAnalises.Classes.IntervalAnalysis;
 using ChainAnalises.Classes.IntervalAnalysis.Characteristics;
 using ChainAnalises.Classes.TheoryOfSet;

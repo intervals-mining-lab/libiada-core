@@ -1,6 +1,6 @@
 using System;
 
-namespace ChainAnalises.Classes.AuxiliaryClasses.WebServices.CreateAlphabet
+namespace ChainAnalises.Classes.AuxiliaryClasses.WebServices.SOAP
 {
     ///<summary>
     ///</summary>

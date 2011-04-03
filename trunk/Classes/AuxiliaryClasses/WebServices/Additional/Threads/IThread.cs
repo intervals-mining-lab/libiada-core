@@ -1,7 +1,4 @@
-using System;
 using System.Collections;
-using System.Collections.Generic;
-using System.Text;
 
 namespace ChainAnalises.Classes.AuxiliaryClasses.WebServices.Additional.Threads
 {
@@ -12,6 +9,7 @@ namespace ChainAnalises.Classes.AuxiliaryClasses.WebServices.Additional.Threads
     {
         protected string hashvalue = null;
         protected Hashtable ResultsTable;
+        protected Request InputData = null;
 
         ///<summary>
         /// ”станавливает исходные данные дл€ вычислений.

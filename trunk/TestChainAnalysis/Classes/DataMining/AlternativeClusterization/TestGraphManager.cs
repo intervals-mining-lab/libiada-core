@@ -67,7 +67,6 @@ namespace TestChainAnalysis.Classes.DataMining.AlternativeClusterization
         [Test]
         public void TestUnConnectedGraphs()
         {
-
             GraphManager connector = new GraphManager(ConnectionsList, ElementsList);
             connector.Connect(2, 3);
             Assert.IsTrue(ConnectionsList[9].Connected);
@@ -98,6 +97,7 @@ namespace TestChainAnalysis.Classes.DataMining.AlternativeClusterization
             Assert.AreEqual(1, ElementsList[1].TaxonNumber);
             Assert.AreEqual(1, ElementsList[2].TaxonNumber);
         }
+
         [Test]
         public void TestBothConnectionGraph()
         {
@@ -109,6 +109,7 @@ namespace TestChainAnalysis.Classes.DataMining.AlternativeClusterization
             Assert.AreEqual(1, ElementsList[4].TaxonNumber);
             Assert.AreEqual(1, ElementsList[5].TaxonNumber);
         }
+
         [Test]
         public void TestUnBothConnectionGraph()
         {
@@ -121,17 +122,19 @@ namespace TestChainAnalysis.Classes.DataMining.AlternativeClusterization
             Assert.AreEqual(1, ElementsList[1].TaxonNumber);
             Assert.AreEqual(1, ElementsList[2].TaxonNumber);
         }
+
         [Test]
         public void TestCutGraph()
         {
             GraphManager connector = new GraphManager(ConnectionsList, ElementsList);
             connector.Cut(ElementsList[0], ElementsList[1]);
             Assert.IsFalse(ConnectionsList[0].Connected);
-            Assert.AreEqual(0, ElementsList[0].TaxonNumber);
-            Assert.AreEqual(0, ElementsList[1].TaxonNumber);
+            Assert.AreEqual(3, ElementsList[0].TaxonNumber);
+            Assert.AreEqual(1, ElementsList[1].TaxonNumber);
             Assert.AreEqual(2, ElementsList[4].TaxonNumber);
             Assert.AreEqual(2, ElementsList[5].TaxonNumber);
         }
+
         [Test]
         public void TestCutGraphTrio()
         {
@@ -142,9 +145,10 @@ namespace TestChainAnalysis.Classes.DataMining.AlternativeClusterization
             Assert.IsFalse(ConnectionsList[1].Connected);
             Assert.AreEqual(3, ElementsList[0].TaxonNumber);
             Assert.AreEqual(3, ElementsList[1].TaxonNumber);
-            Assert.AreEqual(0, ElementsList[2].TaxonNumber);
+            Assert.AreEqual(1, ElementsList[2].TaxonNumber);
 
         }
+
         [Test]
         public void TestClone()
         {
@@ -208,8 +212,8 @@ namespace TestChainAnalysis.Classes.DataMining.AlternativeClusterization
             GraphManager connector = new GraphManager(ConnectionsList, ElementsList);
             connector.Cut(connector.Connections[0]);
             Assert.IsFalse(ConnectionsList[0].Connected);
-            Assert.AreEqual(0, ElementsList[0].TaxonNumber);
-            Assert.AreEqual(0, ElementsList[1].TaxonNumber);
+            Assert.AreEqual(3, ElementsList[0].TaxonNumber);
+            Assert.AreEqual(1, ElementsList[1].TaxonNumber);
             Assert.AreEqual(2, ElementsList[4].TaxonNumber);
             Assert.AreEqual(2, ElementsList[5].TaxonNumber);
 
@@ -225,7 +229,7 @@ namespace TestChainAnalysis.Classes.DataMining.AlternativeClusterization
             Assert.IsFalse(ConnectionsList[1].Connected);
             Assert.AreEqual(3, ElementsList[0].TaxonNumber);
             Assert.AreEqual(3, ElementsList[1].TaxonNumber);
-            Assert.AreEqual(0, ElementsList[2].TaxonNumber);
+            Assert.AreEqual(1, ElementsList[2].TaxonNumber);
         }
     }
 

@@ -1,9 +1,6 @@
 using System;
 using System.Collections;
-using System.Collections.Specialized;
 using System.Xml.Serialization;
-using ChainAnalises.Classes.AuxiliaryClasses.WebServices.CreateAlphabet;
-using ChainAnalises.Classes.AuxiliaryClasses.WebServices.SOAP;
 using ChainAnalises.Classes.DataMining.Clusterization;
 
 namespace ChainAnalises.Classes.AuxiliaryClasses.WebServices.SOAP

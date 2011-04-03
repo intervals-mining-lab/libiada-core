@@ -33,8 +33,9 @@ namespace TestChainAnalysis.Classes.DataMining.AlternativeClusterization.Calcula
             el.Add(Node3);
 
             Connection Conn1 = new Connection(0, 1);
-            Connection Conn2 = new Connection(1, 2);
-            Connection Conn3 = new Connection(0, 2);
+            Connection Conn2 = new Connection(0, 2);
+            Connection Conn3 = new Connection(1, 2);
+            
 
             graph.Add(Conn1);
             graph.Add(Conn2);
@@ -53,8 +54,8 @@ namespace TestChainAnalysis.Classes.DataMining.AlternativeClusterization.Calcula
             Calc = new LambdaCalculator();
             Calc.Calculate(GM);
             Assert.AreEqual(57, Math.Round(GM.Connections[0].λ * 1000));
-            Assert.AreEqual(678, Math.Round(GM.Connections[1].λ * 100));
-            Assert.AreEqual(18, GM.Connections[2].λ);
+            Assert.AreEqual(678, Math.Round(GM.Connections[2].λ * 100));
+            Assert.AreEqual(18, GM.Connections[1].λ);
         }
 
         [Test]
@@ -86,10 +87,11 @@ namespace TestChainAnalysis.Classes.DataMining.AlternativeClusterization.Calcula
             el.Add(Node3);
 
             Connection Conn1 = new Connection(0, 1);
+            Connection Conn2 = new Connection(0, 2);
+            Connection Conn3 = new Connection(1, 2);
+
             graph.Add(Conn1);
-            Connection Conn2 = new Connection(1, 2);
             graph.Add(Conn2);
-            Connection Conn3 = new Connection(0, 2);
             graph.Add(Conn3);
 
             GraphManager GM = new GraphManager(graph, el);
@@ -105,8 +107,8 @@ namespace TestChainAnalysis.Classes.DataMining.AlternativeClusterization.Calcula
             Calc = new LambdaCalculator();
             Calc.Calculate(GM);
             Assert.AreEqual(1625, Math.Round(GM.Connections[0].λ * 100));
-            Assert.AreEqual(9, Math.Round(GM.Connections[2].λ * 1000));
-            Assert.AreEqual(2612, Math.Round(GM.Connections[1].λ * 100));
+            Assert.AreEqual(9, Math.Round(GM.Connections[1].λ * 1000));
+            Assert.AreEqual(2612, Math.Round(GM.Connections[2].λ * 100));
         }
     }
 }
