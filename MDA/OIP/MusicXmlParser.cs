@@ -4,6 +4,7 @@ using System.Data;
 using System.IO;
 using System.Collections.Generic;
 using System.Text;
+using MDA.OIP.ScoreModel;
 
 namespace MDA.OIP
 {
@@ -23,5 +24,9 @@ namespace MDA.OIP
 				nnewlist= newlist[j].ChildNodes;
 			}
         */
+    public MusicXmlParser()
+    {
+        
+    }
     }
 }

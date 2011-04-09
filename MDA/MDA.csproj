@@ -84,10 +84,17 @@
     <Compile Include="Analisis\Form1.Designer.cs" />
     <Compile Include="Analisis\Lexicon.cs" />
     <Compile Include="Analisis\Reader.cs" />
+    <Compile Include="OIP\ScoreModel\Attributes.cs" />
+    <Compile Include="OIP\ScoreModel\Duration.cs" />
+    <Compile Include="OIP\ScoreModel\Key.cs" />
+    <Compile Include="OIP\ScoreModel\Measure.cs" />
     <Compile Include="OIP\MusicXmlParser.cs" />
     <Compile Include="OIP\MusicXmlReader.cs" />
-    <Compile Include="OIP\ScoreTrack.cs" />
-    <Compile Include="OIP\UniformScoreTrack.cs" />
+    <Compile Include="OIP\ScoreModel\Note.cs" />
+    <Compile Include="OIP\ScoreModel\Pitch.cs" />
+    <Compile Include="OIP\ScoreModel\ScoreTrack.cs" />
+    <Compile Include="OIP\ScoreModel\Size.cs" />
+    <Compile Include="OIP\ScoreModel\UniformScoreTrack.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="app.desktop" />

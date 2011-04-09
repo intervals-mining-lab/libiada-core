@@ -24,7 +24,6 @@ namespace MDA.OIP
         {
             // Объявляем и забиваем файл в документ  
             XmlDocument xd = new XmlDocument();
-
             try
             {
                 curDoc = null;
@@ -35,7 +34,7 @@ namespace MDA.OIP
             }
             catch (Exception e)
             {
-                Console.WriteLine("MDA: " + e.Message);
+                Console.WriteLine("MDA Error opening file: " + e.Message);
             }
 
         }
