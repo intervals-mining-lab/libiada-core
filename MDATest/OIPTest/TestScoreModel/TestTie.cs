@@ -1,4 +1,4 @@
-﻿using System;
+ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,17 +13,17 @@ namespace MDATest.OIPTest.TestScoreModel
         [TestMethod]
         public void TestTie1()
         {
-            Assert.AreEqual(-1, Tie.None);
+            Assert.AreEqual(-1, Tie.None);// Если нет лиги, должен выводить -1
         }
         [TestMethod]
         public void TestTie2()
         {
-            Assert.AreEqual(0, Tie.Start);
+            Assert.AreEqual(0, Tie.Start);// Если начало лиги, должен выводить 0
         }
         [TestMethod]
         public void TestTie3()
         {
-            Assert.AreEqual(1, Tie.Stop);
+            Assert.AreEqual(1, Tie.Stop);// Если конец лиги, должен выводить 1
         }
     }
 }
