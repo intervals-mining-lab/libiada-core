@@ -94,6 +94,7 @@
     <Compile Include="OIP\ScoreModel\Pitch.cs" />
     <Compile Include="OIP\ScoreModel\ScoreTrack.cs" />
     <Compile Include="OIP\ScoreModel\Size.cs" />
+    <Compile Include="OIP\ScoreModel\Tie.cs" />
     <Compile Include="OIP\ScoreModel\UniformScoreTrack.cs" />
   </ItemGroup>
   <ItemGroup>
