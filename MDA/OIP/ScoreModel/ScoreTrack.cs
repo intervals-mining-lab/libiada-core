@@ -10,12 +10,14 @@ namespace MDA.OIP.ScoreModel
     {
     private string name; // имя музыкального текста ( муз. произведения)
     private List<UniformScoreTrack> uniformscoretracks; // список моно треков
-
+    //TODO: сделать поля жанра/автора/типа произведения, для дальнейшего анализа, 
+    //PS:либо сделать на уровень структуры выше, где будет разбиение на Ф-мотивы
     public ScoreTrack(string name, List<UniformScoreTrack> uniformscoretracks) 
     {
         this.name = name; // присваиваем имя музыкального трека
         for (int i = 0; i < uniformscoretracks.Count; i++) // создаем список монотреков, по средствам клонирования каждого монотрека.
         {
+            this.uniformscoretracks = new List<UniformScoreTrack>();
             this.uniformscoretracks.Add((UniformScoreTrack)uniformscoretracks[i].Clone());
         }
     }

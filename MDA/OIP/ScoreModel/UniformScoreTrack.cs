@@ -12,6 +12,7 @@ namespace MDA.OIP.ScoreModel
         
         public UniformScoreTrack(string name, List<Measure> measurelist) 
         {
+            this.measurelist = new List<Measure>();
             for (int i = 0; i < measurelist.Count; i++) // создаем список тактов, по средствам клонирования каждого такта.
             {
                 this.measurelist.Add((Measure)measurelist[i].Clone());
