@@ -10,6 +10,7 @@ namespace MDATest.OIPTest.TestScoreModel
     [TestClass]
     public class TestTie
     {
+        //Тесты для класса, способстующего удобному заполнению параметра для лиги в объекте класса Note
         [TestMethod]
         public void TestTie1()
         {
