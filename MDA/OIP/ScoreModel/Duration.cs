@@ -81,7 +81,7 @@ namespace MDA.OIP.ScoreModel
 
         public override bool Equals(object obj)
         {
-            if (ReferenceEquals(this, obj))
+            if ((this.Value - ((Duration)obj).Value)<0.000001)
             {
                 return true;
             }

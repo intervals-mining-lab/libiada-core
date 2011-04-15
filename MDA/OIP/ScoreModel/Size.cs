@@ -57,7 +57,7 @@ namespace MDA.OIP.ScoreModel
 
         public override bool Equals(object obj)
         {
-            if (ReferenceEquals(this, obj))
+            if ((this.Beats == ((Size)obj).Beats) && (this.Beatbase == ((Size)obj).Beatbase) && (this.Ticksperbeat == ((Size)obj).Ticksperbeat))
             {
                 return true;
             }

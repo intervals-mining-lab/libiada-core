@@ -53,11 +53,18 @@ namespace MDA.OIP.ScoreModel
 
     public override bool Equals(object obj)
     {
-        if (ReferenceEquals(this, obj))
-            {
-                return true;
-            }
-            return false;
+        bool equalUniformscoretracks = true;
+
+        if (this.UniformScoreTracks.Count != ((ScoreTrack)obj).UniformScoreTracks.Count) { equalUniformscoretracks = false; }
+        for (int i = 0; i < this.UniformScoreTracks.Count; i++)
+        {
+            if (!this.UniformScoreTracks[i].Equals(((ScoreTrack)obj).UniformScoreTracks[i])) { equalUniformscoretracks = false; }
+        }
+        if (equalUniformscoretracks)
+        {
+            return true;
+        }
+        return false;
     }
 
     public IBin GetBin()

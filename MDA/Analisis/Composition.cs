@@ -32,7 +32,11 @@ namespace MDA.Analisis
         private DisplayData disp = new DisplayData();
 		
 		static object lchain = new object();
-		
+
+        public Composition() 
+        {
+
+        }
         public Composition Clone()
         {
             return (Composition) this.MemberwiseClone();

@@ -47,7 +47,7 @@ namespace MDA.OIP.ScoreModel
 
         public override bool Equals(object obj)
         {
-            if (ReferenceEquals(this, obj))
+            if (this.Key.Equals(((Attributes)obj).Key) && this.Size.Equals(((Attributes)obj).Size))
             {
                 return true;
             }

@@ -69,7 +69,16 @@ namespace MDA.OIP.ScoreModel
 
         public override bool Equals(object obj)
         {
-            if (ReferenceEquals(this, obj))
+            if (this.Pitch == null) 
+            {
+                if (((Note)obj).Pitch == null)
+                { return true; }
+                else
+                { return false; }
+            }
+
+
+            if ((this.Duration.Equals(((Note)obj).Duration)) && (this.Pitch.Equals(((Note)obj).Pitch)) && (this.Tie == ((Note)obj).Tie) && (this.Triplet == ((Note)obj).Triplet))
             {
                 return true;
             }

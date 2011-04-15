@@ -51,7 +51,14 @@ namespace MDA.OIP.ScoreModel
 
         public override bool Equals(object obj)
         {
-            if (ReferenceEquals(this, obj))
+            bool equalNoteList = true;
+
+            if (this.Notelist.Count!= ((Measure)obj).Notelist.Count) {equalNoteList = false;}
+            for(int i=0; i < this.Notelist.Count; i++)
+            {
+                if (!this.Notelist[i].Equals(((Measure)obj).Notelist[i])) {equalNoteList = false;}
+            }
+            if ( this.Attributes.Equals(((Measure)obj).Attributes) && equalNoteList )
             {
                 return true;
             }

@@ -45,7 +45,7 @@ namespace MDA.OIP.ScoreModel
 
         public override bool Equals(object obj)
         {
-            if (ReferenceEquals(this, obj))
+            if ((this.Fifths==((Key)obj).Fifths)&&(this.Mode==((Key)obj).Mode))
             {
                 return true;
             }

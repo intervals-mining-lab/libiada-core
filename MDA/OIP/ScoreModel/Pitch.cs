@@ -40,7 +40,6 @@ namespace MDA.OIP.ScoreModel
         private int getmidinumberbyparam(int octave, char step , int alter) // вычисление глобального номера ноты через параметры
         {
             int offset; // сдвиг от начала октавы, в зависимости от буквы ноты
-
             switch (step)
         {
             case 'C': offset = 0;
@@ -60,7 +59,7 @@ namespace MDA.OIP.ScoreModel
     default:
         throw new Exception("Error Pitch contains non-recognized STEP letters!");
         }
-            int numer = (12*(octave+1))+alter;
+            int numer = (12 * (octave + 1)) + offset + alter;
             return numer;
         }
         private void getparamsbymidinumber(int midinumber) 
@@ -86,7 +85,8 @@ namespace MDA.OIP.ScoreModel
 
         public override bool Equals(object obj)
         {
-            if (ReferenceEquals(this, obj))
+            if (obj == null) { return false; }
+            if (this.Midinumber == ((Pitch)obj).Midinumber)
             {
                 return true;
             }
