@@ -26,6 +26,19 @@ namespace ChainAnalises.Classes.AuxiliaryClasses.WebServices.Clusterization
         /// </summary>
         public int ClusterCount;
 
+        /// <summary>
+        /// Вес равномощности множеств при оценке качества разбиения
+        /// </summary>
+        public double PowerWeight = 4;
 
+        /// <summary>
+        /// Вес нормализованного расстояния при оценке качества разбиения
+        /// </summary>
+        public double NormalizedDistanseWeight = 2;
+
+        /// <summary>
+        /// Вес обычного расстояния при оценке качества разбиения
+        /// </summary>
+        public double DistanseWeight = 1;
     }
 }

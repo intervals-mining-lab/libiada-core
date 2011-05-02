@@ -12,15 +12,23 @@ namespace ChainAnalises.Classes.DataMining.Clusterization.AlternativeClusterizat
         private GraphManager manager;
         private GraphManager optimalDivide;
         private double optimalF = 0;
+        private double powerWeight;
+        private double normalizedDistanseWeight;
+        private double distanseWeight;
 
         /// <summary>
         ///  онструктор класса
         /// </summary>
         /// <param name="dataTable">“аблица с данными</param>
-        public AlternativeKRAB(DataTable dataTable)
+        public AlternativeKRAB(DataTable dataTable, double PowerWeight, double NormalizedDistanseWeight, double DistanseWeight)
         {
             List<Connection> Connections = new List<Connection>(); //массив св€зей(пар вершин)
             List<GraphElement> Elements = new List<GraphElement>();//массив вершин
+
+            powerWeight = PowerWeight;
+            normalizedDistanseWeight = NormalizedDistanseWeight;
+            distanseWeight = DistanseWeight;
+
             IEnumerator Counter = dataTable.GetEnumerator();//итератор
             Counter.Reset();
             Counter.MoveNext();//”становка на нулевой элемент
@@ -36,8 +44,9 @@ namespace ChainAnalises.Classes.DataMining.Clusterization.AlternativeClusterizat
                     Connections.Add(new Connection(j,k));
                 }
             }
+
             manager = new GraphManager(Connections, Elements);
-            CommonCalculator.CalculateCharacteristic(manager);
+            CommonCalculator.CalculateCharacteristic(manager, normalizedDistanseWeight, distanseWeight); //вычисление рассто€ний
             manager.ConnectGraph();
         }
 
@@ -105,7 +114,7 @@ namespace ChainAnalises.Classes.DataMining.Clusterization.AlternativeClusterizat
             else
             {
                 //вычисление качества разбиени€
-                double f = FCalculator.Calculate(currentManager, manager);
+                double f = FCalculator.Calculate(currentManager, manager, powerWeight);
                 if (f > optimalF)
                 {
                     //сохранение оптимального разбиени€

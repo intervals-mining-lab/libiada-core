@@ -51,8 +51,8 @@ namespace TestChainAnalysis.Classes.DataMining.AlternativeClusterization.Calcula
             Calc.Calculate(GM);
             Calc = new TauCalculator();
             Calc.Calculate(GM);
-            Calc = new LambdaCalculator();
-            Calc.Calculate(GM);
+            LambdaCalculator lmbdaCalc = new LambdaCalculator();
+            lmbdaCalc.Calculate(GM,2,1);
             Assert.AreEqual(57, Math.Round(GM.Connections[0].λ * 1000));
             Assert.AreEqual(678, Math.Round(GM.Connections[2].λ * 100));
             Assert.AreEqual(18, GM.Connections[1].λ);
@@ -104,8 +104,8 @@ namespace TestChainAnalysis.Classes.DataMining.AlternativeClusterization.Calcula
             Calc.Calculate(GM);
             Calc = new TauCalculator();
             Calc.Calculate(GM);
-            Calc = new LambdaCalculator();
-            Calc.Calculate(GM);
+            LambdaCalculator lmbdaCalc = new LambdaCalculator();
+            lmbdaCalc.Calculate(GM, 2, 1);
             Assert.AreEqual(1625, Math.Round(GM.Connections[0].λ * 100));
             Assert.AreEqual(9, Math.Round(GM.Connections[1].λ * 1000));
             Assert.AreEqual(2612, Math.Round(GM.Connections[2].λ * 100));

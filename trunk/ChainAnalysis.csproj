@@ -313,6 +313,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram1.cd" />
+    <None Include="Classes\DataMining\Clusterization\AlternativeClusterization\Calculators\ClassDiagram1.cd" />
     <None Include="Classes\DataMining\Clusterization\AlternativeClusterization\ClusterizationClassDiagram.cd" />
     <None Include="Classes\DataMining\Clusterization\KRAB\ClusterizationClassDiagram.cd" />
     <None Include="Classes\PhantomChains\PhantomClassDiagram.cd" />

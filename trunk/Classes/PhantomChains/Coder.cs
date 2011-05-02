@@ -364,5 +364,26 @@ namespace ChainAnalises.Classes.PhantomChains
             }
             return OutChain;
         }
+
+        ///<summary>
+        /// Метод преобразующий нуклеотидное представление цепочек в триплетное
+        ///</summary>
+        ///<param name="InputChain">Исходная нуклеотидная цепочка</param>
+        ///<returns>Цепоччка, состоящая из триплетов</returns>
+        ///<exception cref="Exception">Допустимая мощность алфавита - 4</exception>
+        public static BaseChain EncodeTriplets(BaseChain InputChain)
+        {
+            if(InputChain.Alpahbet.power>4)
+            {
+                throw new Exception();
+            }
+            int Count = (int) Math.Floor((double)InputChain.Length / 3);
+            BaseChain OutChain = new BaseChain(Count);
+            for (int i = 0; i < Count * 3; i += 3)
+            {
+                OutChain[i/3] = new ValueString(InputChain[i].ToString() + InputChain[i+1].ToString() + InputChain[i+2].ToString());
+            }
+            return OutChain;
+        }
     }
 }

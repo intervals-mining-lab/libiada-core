@@ -61,7 +61,7 @@ namespace TestChainAnalysis.Classes.DataMining.AlternativeClusterization
         [Test]
         public void TestClusterization()
         {
-            AlternativeKRAB Krab = new AlternativeKRAB(Dt);
+            AlternativeKRAB Krab = new AlternativeKRAB(Dt,4,2,1);
             ArrayList Result = Krab.Clusterizate(2).Clusters;
 
             Assert.IsTrue(((Cluster)Result[1]).Items.Contains(1));
@@ -100,7 +100,7 @@ namespace TestChainAnalysis.Classes.DataMining.AlternativeClusterization
             dataTable.Add(DObject3); 
             dataTable.Add(DObject4);
             
-            AlternativeKRAB Krab = new AlternativeKRAB(dataTable);
+            AlternativeKRAB Krab = new AlternativeKRAB(dataTable,4,2,1);
             ArrayList Result = Krab.ClusterizateAllVariants().Variants;
             //Assert.IsTrue(true);
             Assert.AreEqual(3,Result.Count);
@@ -139,7 +139,7 @@ namespace TestChainAnalysis.Classes.DataMining.AlternativeClusterization
             dataTable.Add(DObject3);
             dataTable.Add(DObject4);
 
-            AlternativeKRAB Krab = new AlternativeKRAB(dataTable);
+            AlternativeKRAB Krab = new AlternativeKRAB(dataTable,4,2,1);
             ArrayList Result = Krab.ClusterizateAllVariants().Variants;
             //Assert.IsTrue(true);
             Assert.AreEqual(3, Result.Count);

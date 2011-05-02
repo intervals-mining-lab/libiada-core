@@ -170,5 +170,21 @@ namespace TestChainAnalysis.Classes.DataMining.AlternativeClusterization.Calcula
             manager.Elements[3].TaxonNumber = 2;
             Assert.AreEqual(1, HCalculator.Calculate(manager));
         }
+
+        [Test]
+        public void Test4Points11()
+        {
+            manager.Connections[0].Connected = false;
+            manager.Connections[1].Connected = true;
+            manager.Connections[2].Connected = false;
+            manager.Connections[3].Connected = false;
+            manager.Connections[4].Connected = true;
+            manager.Connections[5].Connected = false;
+            manager.Elements[0].TaxonNumber = 1;
+            manager.Elements[1].TaxonNumber = 2;
+            manager.Elements[2].TaxonNumber = 1;
+            manager.Elements[3].TaxonNumber = 2;
+            Assert.AreEqual(1, HCalculator.Calculate(manager));
+        }
     }
 }

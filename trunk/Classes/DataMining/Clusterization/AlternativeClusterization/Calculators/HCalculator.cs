@@ -36,11 +36,13 @@ namespace ChainAnalises.Classes.DataMining.Clusterization.AlternativeClusterizat
                 }
             }
             // Вычисляем характеристику равномощности таксонов - h
+            //количество таксонов в степени количества таксонов
             double h = Math.Pow(TaxonCount, TaxonCount);
             for (int m = 0; m < TaxonPower.Count; m++)
             {
                 if (TaxonPower[m]!=0)
                 {
+                    //мощность таксона, делёная на общее количество элементов
                     h *= (double)TaxonPower[m]/manager.Elements.Count;    
                 } 
             }

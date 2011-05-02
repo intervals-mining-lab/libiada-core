@@ -149,7 +149,7 @@ namespace ChainAnalises.Classes.AuxiliaryClasses.WebServices
             Converter Convert = new Converter();
             DataTable Data = (DataTable) Convert.ToDataTableBin(request.DataTable).GetInstance();
 
-            IClusterization Clusterizator = new AlternativeKRAB(Data);
+            IClusterization Clusterizator = new AlternativeKRAB(Data, request.PowerWeight,request.NormalizedDistanseWeight,request.DistanseWeight);
             ClustarizationVariants Result;
             switch(request.Method)
             {

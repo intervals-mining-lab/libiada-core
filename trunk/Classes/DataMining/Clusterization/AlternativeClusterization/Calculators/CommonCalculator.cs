@@ -10,7 +10,7 @@ namespace ChainAnalises.Classes.DataMining.Clusterization.AlternativeClusterizat
         ///  локальную плотность точек, нормированную локальную плотность точек и лямбда-расстояние
         /// </summary>
         /// <param name="graph"> Массив связей графа</param>
-        public  static void CalculateCharacteristic(GraphManager graph)
+        public static void CalculateCharacteristic(GraphManager graph, double normalizedDistanseWeight, double distanseWeight)
         {
             ICalculator Calc = new LinearCalculator();
             Calc.Calculate(graph);
@@ -20,8 +20,8 @@ namespace ChainAnalises.Classes.DataMining.Clusterization.AlternativeClusterizat
             Calc.Calculate(graph);
             Calc = new TauCalculator();
             Calc.Calculate(graph);
-            Calc = new LambdaCalculator();
-            Calc.Calculate(graph);
+            LambdaCalculator lambdaCalc = new LambdaCalculator();
+            lambdaCalc.Calculate(graph,normalizedDistanseWeight, distanseWeight);
         }
     }
 }
