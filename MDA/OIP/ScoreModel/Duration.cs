@@ -11,10 +11,16 @@ namespace MDA.OIP.ScoreModel
         private int denominator; // знаменатель в дроби доли
         private int ticks; // сколько МИДИ тиков в доле
 
+        private int onumerator; // оригинальный числитель в дроби доли (для сохранения после наложения триоли на длительность)
+        private int odenominator; // оригинальный знаменатель в дроби доли(для сохранения после наложения триоли на длительность)
+
+
         public Duration(int numerator, int denominator, bool doted, int ticks) 
         {
             this.numerator = numerator;
             this.denominator = denominator;
+            this.onumerator = numerator;
+            this.odenominator = denominator;
             this.ticks = ticks;
             if (doted) this.placedot();
         }
@@ -22,6 +28,8 @@ namespace MDA.OIP.ScoreModel
         {
             this.numerator = numerator;
             this.denominator = denominator;
+            this.onumerator = numerator;
+            this.odenominator = denominator;
             this.ticks = ticks;
             this.placetriplet(tripletnum, tripletdenom);
             if (doted) this.placedot();
@@ -29,8 +37,29 @@ namespace MDA.OIP.ScoreModel
         
         public double Value
         {
-            get { return (numerator/denominator); }
+            get {
+                    double val;
+                    val = numerator;
+                    val = val / denominator;
+                    return val; 
+                // это жесть, когда делятся два инта, то результат возвращается уже округленный,
+                // и не важно куда он записывается
+                }
         } // значение доли в десятичной дроби
+
+        public double oValue
+        {
+            get
+            {
+                double val;
+                val = onumerator;
+                val = val / odenominator;
+                return val;
+                // это жесть, когда делятся два инта, то результат возвращается уже округленный,
+                // и не важно куда он записывается
+            }
+        } // значение ОРИГИНАЛЬНОЙ доли в десятичной дроби
+
         public int Numerator
         {
             get { return numerator; }
@@ -76,6 +105,8 @@ namespace MDA.OIP.ScoreModel
         public IBaseObject Clone()
         {
             Duration Temp = new Duration(this.numerator, this.denominator, false, this.ticks);
+            Temp.onumerator = this.onumerator;
+            Temp.odenominator = this.odenominator;
             return Temp;
         }
 

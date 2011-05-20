@@ -1,29 +1,22 @@
 ﻿using System;
-using System.Text;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using MDA.OIP.BorodaDivider;
 using MDA.OIP.ScoreModel;
-using MDA.OIP;
-using System.Xml;
 
-namespace MDATest.OIPTest
+namespace MDATest.OIPTest.TestBorodaDivider
 {
     [TestClass]
-    public class TestMusicXmlParser
+    public class TestFmotivDivider
     {
         [TestMethod]
-        public void TestXmlParser()
+        public void TestFmotivDivider1() 
         {
-            XmlDocument xmldocument = new XmlDocument();
-            MusicXmlReader xmlreader = new MusicXmlReader("C:\\Users\\Антошка\\Documents\\Visual Studio 2010\\Projects\\MDA\\MDATest\\OIPTest\\MDAexample7Liga.xml");
-            MusicXmlParser Parser = new MusicXmlParser();
-
-            Parser.Execute(xmlreader.MusicXmlDocument, xmlreader.FileName);
-
-            #region Creating EqualScoreModel
+            #region Creating Uniformscoretrack - unitrack
             // Создание атрибутов для такта
-            Attributes attributes1 = new Attributes(new Size(7, 8, 1024), new Key(0,"major"));
+            Attributes attributes1 = new Attributes(new Size(7, 8, 1024), new Key(0, "major"));
             // Создание списков нот для каждого из 4 тактов
             List<Note> notes1 = new List<Note>();
             notes1.Add(new Note(new Pitch(3, 'E', 0), new Duration(1, 2, false, 2048), false, Tie.None));
@@ -65,59 +58,22 @@ namespace MDATest.OIPTest
             notes4.Add(new Note(new Pitch(4, 'C', 0), new Duration(1, 16, false, 256), false, Tie.None));
             //создание списка тактов для монофонического трека p0
             List<Measure> measures1 = new List<Measure>();
-            measures1.Add(new Measure(notes1, (Attributes) attributes1.Clone()));
-            measures1.Add(new Measure(notes2, (Attributes) attributes1.Clone()));
-            measures1.Add(new Measure(notes3, (Attributes) attributes1.Clone()));
-            measures1.Add(new Measure(notes4, (Attributes) attributes1.Clone()));
-            //создание списка монофонических треков для полного музыкального трека
-            List <UniformScoreTrack> utracks = new List<UniformScoreTrack>();
-            utracks.Add(new UniformScoreTrack("p0", measures1));
-            //создание полной модели музыкального трека/текста, с присвоением имени файла
-            ScoreTrack Scoremodel = new ScoreTrack("MDAexample7Liga",utracks);
+            measures1.Add(new Measure(notes1, (Attributes)attributes1.Clone()));
+            measures1.Add(new Measure(notes2, (Attributes)attributes1.Clone()));
+            measures1.Add(new Measure(notes3, (Attributes)attributes1.Clone()));
+            measures1.Add(new Measure(notes4, (Attributes)attributes1.Clone()));
+            //создание списка монофонического трека
+            UniformScoreTrack unitrack = new UniformScoreTrack("track1", measures1);
 
             #endregion
 
-            Assert.AreEqual(xmlreader.FileName , Parser.ScoreModel.Name);
-            Assert.AreEqual(Scoremodel.UniformScoreTracks[0].Measurelist[0].Attributes, Parser.ScoreModel.UniformScoreTracks[0].Measurelist[0].Attributes);
-            Assert.AreEqual(Scoremodel.UniformScoreTracks[0].Measurelist[0].Notelist[0], Parser.ScoreModel.UniformScoreTracks[0].Measurelist[0].Notelist[0]);
-            Assert.AreEqual(Scoremodel.UniformScoreTracks[0].Measurelist[0], Parser.ScoreModel.UniformScoreTracks[0].Measurelist[0]);
-            Assert.AreEqual(Scoremodel.UniformScoreTracks[0].Measurelist[1], Parser.ScoreModel.UniformScoreTracks[0].Measurelist[1]);
-            Assert.AreEqual(Scoremodel.UniformScoreTracks[0].Measurelist[2], Parser.ScoreModel.UniformScoreTracks[0].Measurelist[2]);
-            Assert.AreEqual(Scoremodel.UniformScoreTracks[0].Measurelist[3], Parser.ScoreModel.UniformScoreTracks[0].Measurelist[3]);
-            Assert.AreEqual(Scoremodel.UniformScoreTracks[0], Parser.ScoreModel.UniformScoreTracks[0]);
-            Assert.AreEqual(Scoremodel, Parser.ScoreModel);
-        }
-        [TestMethod]
-        public void TestXmlParserFileName()
-        {
-        }
-        public void TestXmlParserScoretrack()
-        {
-        }
-        public void TestXmlParserUniformScoretrack()
-        {
-        }
-        public void TestXmlParserMeasure()
-        {
-        }
-        public void TestXmlParserNote()
-        {
-        }
-        public void TestXmlParserAttributes()
-        {
-        }
-        public void TestXmlParserPitch()
-        {
-        }
-        public void TestXmlParserDuration()
-        {
-        }
-        public void TestXmlParserTie()
-        {
-        }
-        public void TestXmlParserTriplet()
-        {
-        }
+            FmotivDivider fmdivider = new FmotivDivider();
+            FmotivChain fmchain;
+            fmchain = fmdivider.GetDivision(unitrack);
+            fmchain.Id = 0;
 
+
+
+        }
     }
 }

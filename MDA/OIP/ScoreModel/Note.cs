@@ -11,6 +11,7 @@ namespace MDA.OIP.ScoreModel
         private int tie; // есть ли лига (-1 : нет; 0 - начало; 1 - конец)
         private Pitch pitch; // высота ноты
         private Duration duration; // длительность ноты
+        private int priority; // сильная/слабая доля - приоритет доли
 
         public Note(Pitch pitch, Duration duration, bool triplet, int tie) 
         {
@@ -22,6 +23,19 @@ namespace MDA.OIP.ScoreModel
             this.tie = -1; // если нота - пауза, то не может быть лиги на паузу
             this.duration = (Duration) duration.Clone();
             this.triplet = triplet;
+            this.priority = -1; // приоритет не определен
+        }
+        public Note(Pitch pitch, Duration duration, bool triplet, int tie, int priority)
+        {
+            if (pitch != null) // если не пауза то записываем высоту и наличие лиги
+            {
+                this.pitch = (Pitch)pitch.Clone();
+                this.tie = tie;
+            }
+            this.tie = -1; // если нота - пауза, то не может быть лиги на паузу
+            this.duration = (Duration)duration.Clone();
+            this.triplet = triplet;
+            this.priority = priority; // приоритет если указан
         }
         public bool Triplet
         {
@@ -51,6 +65,17 @@ namespace MDA.OIP.ScoreModel
                 return duration;
             }
         }
+        public int Priority
+        {
+            set
+            {
+                this.priority = value;
+            }
+            get
+            {
+                return priority;
+            }
+        }
 
         #region IBaseMethods
 
@@ -63,7 +88,7 @@ namespace MDA.OIP.ScoreModel
 
         public IBaseObject Clone()
         {
-            Note Temp = new Note(this.pitch, this.duration, this.triplet, this.tie);
+            Note Temp = new Note(this.pitch, this.duration, this.triplet, this.tie, this.priority);
             return Temp;
         }
 

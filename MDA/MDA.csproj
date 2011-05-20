@@ -84,6 +84,11 @@
     <Compile Include="Analisis\Form1.Designer.cs" />
     <Compile Include="Analisis\Lexicon.cs" />
     <Compile Include="Analisis\Reader.cs" />
+    <Compile Include="OIP\BorodaDivider\BorodaDivider.cs" />
+    <Compile Include="OIP\BorodaDivider\Fmotiv.cs" />
+    <Compile Include="OIP\BorodaDivider\FmotivChain.cs" />
+    <Compile Include="OIP\BorodaDivider\FmotivDivider.cs" />
+    <Compile Include="OIP\BorodaDivider\PriorityDiscover.cs" />
     <Compile Include="OIP\ScoreModel\Attributes.cs" />
     <Compile Include="OIP\ScoreModel\Duration.cs" />
     <Compile Include="OIP\ScoreModel\DurationType.cs" />
@@ -128,4 +133,5 @@
       <Install>true</Install>
     </BootstrapperPackage>
   </ItemGroup>
+  <ItemGroup />
 </Project>

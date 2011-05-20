@@ -18,3 +18,13 @@ C:\Users\Антошка\Documents\Visual Studio 2010\Projects\libiamisc\trunk\MD
 C:\Users\Антошка\Documents\Visual Studio 2010\Projects\libiamisc\trunk\MDATest\obj\Debug\MDATest.dll
 C:\Users\Антошка\Documents\Visual Studio 2010\Projects\libiamisc\trunk\MDATest\obj\Debug\MDATest.pdb
 C:\Users\Антошка\Documents\Visual Studio 2010\Projects\libiamisc\trunk\MDATest\bin\Debug\libiada.dll
+C:\Users\Антошка\Documents\Visual Studio 2010\Projects\MDA\MDATest\bin\Debug\MDATest.dll
+C:\Users\Антошка\Documents\Visual Studio 2010\Projects\MDA\MDATest\bin\Debug\MDATest.pdb
+C:\Users\Антошка\Documents\Visual Studio 2010\Projects\MDA\MDATest\bin\Debug\MDA.exe
+C:\Users\Антошка\Documents\Visual Studio 2010\Projects\MDA\MDATest\bin\Debug\ZedGraph.dll
+C:\Users\Антошка\Documents\Visual Studio 2010\Projects\MDA\MDATest\bin\Debug\MDA.pdb
+C:\Users\Антошка\Documents\Visual Studio 2010\Projects\MDA\MDATest\bin\Debug\ZedGraph.xml
+C:\Users\Антошка\Documents\Visual Studio 2010\Projects\MDA\MDATest\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Антошка\Documents\Visual Studio 2010\Projects\MDA\MDATest\obj\Debug\MDATest.dll
+C:\Users\Антошка\Documents\Visual Studio 2010\Projects\MDA\MDATest\obj\Debug\MDATest.pdb
+C:\Users\Антошка\Documents\Visual Studio 2010\Projects\MDA\MDATest\bin\Debug\libiada.dll

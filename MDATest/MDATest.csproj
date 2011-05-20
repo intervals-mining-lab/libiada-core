@@ -49,6 +49,12 @@
     </CodeAnalysisDependentAssemblyPaths>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="OIPTest\TestBorodaDivider\TestFmotiv.cs" />
+    <Compile Include="OIPTest\TestBorodaDivider\TestBorodaDivider.cs" />
+    <Compile Include="OIPTest\TestBorodaDivider\TestFmotivChain.cs" />
+    <Compile Include="OIPTest\TestBorodaDivider\TestFmotivDivider.cs" />
+    <Compile Include="OIPTest\TestBorodaDivider\TestFmotivVerifier.cs" />
+    <Compile Include="OIPTest\TestBorodaDivider\TestPriorityDiscover.cs" />
     <Compile Include="OIPTest\TestMusicXmlParser.cs" />
     <Compile Include="OIPTest\TestMusicXmlReader.cs" />
     <Compile Include="OIPTest\TestScoreModel\TestTie.cs" />
@@ -61,6 +67,7 @@
       <Name>MDA</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

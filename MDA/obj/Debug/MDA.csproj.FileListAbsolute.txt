@@ -14,3 +14,11 @@ C:\Users\Антошка\Documents\Visual Studio 2010\Projects\libiamisc\trunk\MD
 C:\Users\Антошка\Documents\Visual Studio 2010\Projects\libiamisc\trunk\MDA\obj\Debug\GenerateResource-ResGen.write.1.tlog
 C:\Users\Антошка\Documents\Visual Studio 2010\Projects\libiamisc\trunk\MDA\bin\Debug\MDA.exe
 C:\Users\Антошка\Documents\Visual Studio 2010\Projects\libiamisc\trunk\MDA\bin\Debug\MDA.pdb
+C:\Users\Антошка\Documents\Visual Studio 2010\Projects\MDA\MDA\bin\Debug\MDA.exe
+C:\Users\Антошка\Documents\Visual Studio 2010\Projects\MDA\MDA\bin\Debug\MDA.pdb
+C:\Users\Антошка\Documents\Visual Studio 2010\Projects\MDA\MDA\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Антошка\Documents\Visual Studio 2010\Projects\MDA\MDA\obj\Debug\MDA.Analisis.Form11.resources
+C:\Users\Антошка\Documents\Visual Studio 2010\Projects\MDA\MDA\obj\Debug\GenerateResource-ResGen.read.1.tlog
+C:\Users\Антошка\Documents\Visual Studio 2010\Projects\MDA\MDA\obj\Debug\GenerateResource-ResGen.write.1.tlog
+C:\Users\Антошка\Documents\Visual Studio 2010\Projects\MDA\MDA\obj\Debug\MDA.exe
+C:\Users\Антошка\Documents\Visual Studio 2010\Projects\MDA\MDA\obj\Debug\MDA.pdb
