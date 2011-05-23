@@ -57,6 +57,7 @@
     <Compile Include="OIPTest\TestBorodaDivider\TestPriorityDiscover.cs" />
     <Compile Include="OIPTest\TestMusicXmlParser.cs" />
     <Compile Include="OIPTest\TestMusicXmlReader.cs" />
+    <Compile Include="OIPTest\TestScoreModel\TestDuration.cs" />
     <Compile Include="OIPTest\TestScoreModel\TestTie.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Test.cs" />

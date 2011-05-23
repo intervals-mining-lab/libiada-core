@@ -46,7 +46,6 @@ namespace MDA.OIP.ScoreModel
                 // и не важно куда он записывается
                 }
         } // значение доли в десятичной дроби
-
         public double oValue
         {
             get
@@ -59,6 +58,57 @@ namespace MDA.OIP.ScoreModel
                 // и не важно куда он записывается
             }
         } // значение ОРИГИНАЛЬНОЙ доли в десятичной дроби
+        public Duration AddDuration(Duration duration) 
+        {
+            int newnum = 0;
+            int newdenom = 0;
+
+            newnum = (this.numerator*duration.denominator) + (duration.numerator*this.denominator);
+            newdenom = this.denominator * duration.denominator;
+
+            for (int i = 2; i <= newnum; i++)
+            {
+                if (newnum % i == 0) // если числитель делится на i
+                {
+                    if ((newdenom % i == 0)) // и знаменатель делится на i (на случай триоли например)
+                    {
+                        newnum = newnum / i;
+                        newdenom = newdenom / i;
+                        i = i-1; // находим оставшиешся множители (могут входить в множимое по несколько раз)
+                    }
+                }
+            }
+
+            //--cокращение получившейся дроби--
+            while (newdenom > 2) // пока знаменатель больше 2
+            {
+                if (newnum % 2 == 0) // если числитель делится на 2
+                    {
+                        if ((newdenom % 2 == 0)) // и знаменатель делится на 2 (на случай триоли например)
+                        {
+                            // сокращаем на 2 дробь
+                            newnum = newnum / 2;
+                            newdenom = newdenom / 2;
+                        }
+                        else 
+                        {
+                            break;
+                        }
+                    }
+                else
+                {
+                    break;
+                }
+            }
+            //-------------------------------
+            Duration Temp = new Duration(newnum, newdenom, false, (this.Ticks + duration.Ticks));
+            return Temp;  
+            /*
+             this.numerator = newnum;
+             this.denominator = newdenom;
+             this.ticks = this.Ticks + duration.Ticks;
+            */
+        }
 
         public int Numerator
         {

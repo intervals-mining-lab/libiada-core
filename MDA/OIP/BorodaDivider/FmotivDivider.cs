@@ -10,11 +10,13 @@ namespace MDA.OIP.BorodaDivider
         public FmotivChain GetDivision(UniformScoreTrack unitrack)
         {
             FmotivChain Temp = new FmotivChain();
-
             Temp.Name = unitrack.Name;
+            for (int i = 0; i < unitrack.Measurelist.Count; i++) 
+            {
 
+            }
 
-            return Temp;
+                return Temp;
         }
     }
 }

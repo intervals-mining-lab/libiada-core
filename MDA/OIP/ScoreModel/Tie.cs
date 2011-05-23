@@ -27,6 +27,13 @@ namespace MDA.OIP.ScoreModel
                 return 1;
             }    
         }
+        static public int StartStop  // Конец и Начало следущей Лиги (2)
+        {
+            get
+            {
+                return 2;
+            }
+        }
 
     }
 }

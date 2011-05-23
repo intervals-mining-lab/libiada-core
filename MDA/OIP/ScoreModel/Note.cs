@@ -20,19 +20,26 @@ namespace MDA.OIP.ScoreModel
                 this.pitch = (Pitch)pitch.Clone(); 
                 this.tie = tie; 
             }
-            this.tie = -1; // если нота - пауза, то не может быть лиги на паузу
+            else
+            {
+                this.tie = -1; // если нота - пауза, то не может быть лиги на паузу
+            }
             this.duration = (Duration) duration.Clone();
             this.triplet = triplet;
             this.priority = -1; // приоритет не определен
         }
         public Note(Pitch pitch, Duration duration, bool triplet, int tie, int priority)
         {
+
             if (pitch != null) // если не пауза то записываем высоту и наличие лиги
             {
                 this.pitch = (Pitch)pitch.Clone();
                 this.tie = tie;
             }
-            this.tie = -1; // если нота - пауза, то не может быть лиги на паузу
+            else
+            {
+                this.tie = -1; // если нота - пауза, то не может быть лиги на паузу
+            }
             this.duration = (Duration)duration.Clone();
             this.triplet = triplet;
             this.priority = priority; // приоритет если указан

@@ -305,23 +305,47 @@ namespace MDA.OIP
 
         private int parseTie(XmlNode noteNode)
         {
+            bool start = false; // флаг наличия начала лиги
+            bool stop = false; // флаг наличия конца лиги
             foreach (XmlNode noteChild in noteNode.ChildNodes)
             {
                 if (noteChild.Name == "tie")
                 {
-                    if (noteChild.Attributes["type"].Value == "start") 
+                    if (noteChild.Attributes["type"].Value == "start")
                     {
-                        return Tie.Start;
+                        start = true;
                     }
-
-                    if (noteChild.Attributes["type"].Value == "stop")
+                    else
                     {
-                        return Tie.Stop;
+                        if (noteChild.Attributes["type"].Value == "stop")
+                        {
+                            stop = true;
+                        }
+                        else 
+                        {
+                            throw new Exception("MDA.XmlParser: error while Note parsing: Tie type unknow");
+                        }
                     }
-                    throw new Exception("MDA.XmlParser: error while Note parsing: Tie type unknow");
                 }
             }
-            return Tie.None;
+                if (start && stop) 
+                {
+                    // случай когда лига приходит в эту ноту, и с этой же ноты начинается следущая лига
+                    return Tie.StartStop;
+                }
+                if (start)
+                {
+                    // случай когда лига начинается с этой ноты
+                    return Tie.Start;
+                }
+                if (stop)
+                {
+                    // случай когда лига заканчивается на этой ноте
+                    return Tie.Stop;
+                }
+
+                // когда нету лиги
+                return Tie.None;
         }
 
         private bool parseTriplet(XmlNode noteNode)

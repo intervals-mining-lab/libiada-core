@@ -19,7 +19,8 @@ namespace MDA.OIP.ScoreModel
             }
             this.attributes = (Attributes) attributes.Clone(); 
         }
-        public List<Note> Notelist
+
+        public List<Note> NoteList
         {
             get
             {
@@ -53,10 +54,10 @@ namespace MDA.OIP.ScoreModel
         {
             bool equalNoteList = true;
 
-            if (this.Notelist.Count!= ((Measure)obj).Notelist.Count) {equalNoteList = false;}
-            for(int i=0; i < this.Notelist.Count; i++)
+            if (this.NoteList.Count!= ((Measure)obj).NoteList.Count) {equalNoteList = false;}
+            for(int i=0; i < this.NoteList.Count; i++)
             {
-                if (!this.Notelist[i].Equals(((Measure)obj).Notelist[i])) {equalNoteList = false;}
+                if (!this.NoteList[i].Equals(((Measure)obj).NoteList[i])) {equalNoteList = false;}
             }
             if ( this.Attributes.Equals(((Measure)obj).Attributes) && equalNoteList )
             {
