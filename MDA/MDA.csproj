@@ -88,20 +88,27 @@
     <Compile Include="OIP\BorodaDivider\Fmotiv.cs" />
     <Compile Include="OIP\BorodaDivider\FmotivChain.cs" />
     <Compile Include="OIP\BorodaDivider\FmotivDivider.cs" />
+    <Compile Include="OIP\BorodaDivider\FmotivIdentificator.cs" />
     <Compile Include="OIP\BorodaDivider\PriorityDiscover.cs" />
     <Compile Include="OIP\ScoreModel\Attributes.cs" />
     <Compile Include="OIP\ScoreModel\Duration.cs" />
     <Compile Include="OIP\ScoreModel\DurationType.cs" />
     <Compile Include="OIP\ScoreModel\Key.cs" />
     <Compile Include="OIP\ScoreModel\Measure.cs" />
-    <Compile Include="OIP\MusicXmlParser.cs" />
-    <Compile Include="OIP\MusicXmlReader.cs" />
+    <Compile Include="OIP\MusicXml\MusicXmlParser.cs" />
+    <Compile Include="OIP\MusicXml\MusicXmlReader.cs" />
     <Compile Include="OIP\ScoreModel\Note.cs" />
     <Compile Include="OIP\ScoreModel\Pitch.cs" />
     <Compile Include="OIP\ScoreModel\ScoreTrack.cs" />
     <Compile Include="OIP\ScoreModel\Size.cs" />
     <Compile Include="OIP\ScoreModel\Tie.cs" />
     <Compile Include="OIP\ScoreModel\UniformScoreTrack.cs" />
+    <Compile Include="OIP\View\Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OIP\View\Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="app.desktop" />
@@ -114,6 +121,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Analisis\Form11.resx">
       <LogicalName>MDA.Analisis.Form1.resources</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OIP\View\Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

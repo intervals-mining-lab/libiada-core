@@ -4,10 +4,10 @@ using System.Collections.Generic;
 using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using MDA.OIP.ScoreModel;
-using MDA.OIP;
+using MDA.OIP.MusicXml;
 using System.Xml;
 
-namespace MDATest.OIPTest
+namespace TestMusicXml.MDATest.OIPTest
 {
     [TestClass]
     public class TestMusicXmlParser

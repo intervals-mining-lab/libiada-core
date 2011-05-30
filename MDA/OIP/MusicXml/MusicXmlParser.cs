@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using System.Text;
 using MDA.OIP.ScoreModel;
 
-namespace MDA.OIP
+namespace MDA.OIP.MusicXml
 {
     public class MusicXmlParser
     {

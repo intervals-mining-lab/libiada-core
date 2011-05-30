@@ -5,7 +5,7 @@ using System.IO;
 using System.Text;
 using System.Windows.Forms;
 
-namespace MDA.OIP
+namespace MDA.OIP.MusicXml
 {
 	public class MusicXmlReader
 	{

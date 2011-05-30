@@ -149,8 +149,7 @@ namespace MDA.OIP.BorodaDivider
             return TempGathered;
         }
 
-        //TODO: реализовать методы IBASEOBJECT!
-                #region IBaseMethods
+        #region IBaseMethods
 
         private Fmotiv()
         {
@@ -186,7 +185,7 @@ namespace MDA.OIP.BorodaDivider
             for(int i = 0; i < Temp1.notelist.Count; i++)
             {
                 // одинаковы ли длительности у нот?
-                if ((Temp1.notelist[i].Duration.Value - Temp2.notelist[i].Duration.Value) > 0.0000001)
+                if (!Temp1.notelist[i].Duration.Equals(Temp2.notelist[i].Duration))
                 {
                     //если нет - фмотивы - неодинаковы
                     return false;

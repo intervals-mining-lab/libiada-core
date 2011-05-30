@@ -48,12 +48,12 @@ namespace MDATest.OIPTest.TestBorodaDivider
             notes.Add(anote);
             Measure measure = new Measure(notes, attributes);
             //минимальнвя длительность ноты в такте measure 1/16 = 0.0625 у ноты dnote
-            Assert.IsTrue((pd.minDuration(measure) - 0.0625) < 0.00001);
+            Assert.IsTrue(Math.Abs(pd.minDuration(measure) - 0.0625) < 0.00001);
             // когда такт передается пустой, должен выкинуться эксепшн
             measure.NoteList.Clear();
             try 
             {
-                Assert.IsTrue((pd.minDuration(measure) - 0.0625) < 0.00001);
+                Assert.IsTrue(Math.Abs(pd.minDuration(measure) - 0.0625) < 0.00001);
                 Assert.Fail("нет эксепшна при пустом такте");
             }
             catch (Exception e)

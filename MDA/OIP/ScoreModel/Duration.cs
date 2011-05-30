@@ -162,8 +162,9 @@ namespace MDA.OIP.ScoreModel
 
         public override bool Equals(object obj)
         {
-            if ((this.Value - ((Duration)obj).Value)<0.000001)
+            if (Math.Abs(this.Value - ((Duration)obj).Value)<0.000001)
             {
+                // если модул разности двух double меньше заданной точности то можно считать что эти double равны
                 return true;
             }
             return false;

@@ -150,10 +150,14 @@ namespace MDA.OIP.BorodaDivider
                 maskBuf.Clear();
                 bufduration = 0;
             }
-            // присваиваем входному объекту собранный заново но уже с приоритетами такт
+            // присваиваем полю приоритет входного объекта, вычисленный приоритет в Temp соответственно
             for (int i = 0; i < measure.NoteList.Count; i++) 
             {
                 measure.NoteList[i].Priority = Temp.NoteList[i].Priority;
+                if (measure.NoteList[i].Priority < 0) 
+                {
+                    throw new Exception("MDA.PriorityDiscover: не выявлен приоритет для одной из нот (равен -1)");
+                }
             }
         }
 
@@ -165,7 +169,8 @@ namespace MDA.OIP.BorodaDivider
             for (int i = 0; i < count; i++ )
             {
                 if (maskBuf.Count < 1)
-                {
+                { // если для разбираемой очереди нот-триолей, в очереди нот маски приоритетов не осталось нот,
+                  //то следущей ноте-триоли присваивается приоритеты предыдущей ноты-триоли
                     noteBuf[0].Priority = TTemp[TTemp.Count - 1].Priority;
                     TTemp.Add((Note)noteBuf[0].Clone());
                     noteBuf.RemoveAt(0);
@@ -173,20 +178,22 @@ namespace MDA.OIP.BorodaDivider
                 else
                 {
                     noteBuf[0].Priority = maskBuf[0].Priority;
-                    bufduration = noteBuf[0].Duration.oValue;
-                    TTemp.Add((Note)noteBuf[0].Clone());
-                    noteBuf.RemoveAt(0);
+                    // отнимаем из маски приоритетов нот на сумму равную номинальному (не реальному) значению длительности триольной ноты
+                    bufduration = noteBuf[0].Duration.oValue; // оиргинальная длительность
+                    TTemp.Add((Note)noteBuf[0].Clone()); // добавляем ноту триоль в выходной буфер
+                    noteBuf.RemoveAt(0); // удаляем ноту-триоль из разбираемой очереди
                     while (bufduration > 0.0000001)
                     {
-                        if (maskBuf.Count < 1) break;
-                        bufduration = bufduration - maskBuf[0].Duration.Value;
-                        maskBuf.RemoveAt(0);
+                        // по одной удаляем из маски приоритетов ноты, сумма длительностей которых равна номинальной длительности текущей разбираемой ноты
+                        if (maskBuf.Count < 1) break; // если ноты в маске закончились то выходим из цикла
+                        bufduration = bufduration - maskBuf[0].Duration.Value; // отнимаем из значения длительности ноты-триоли длительность очередной ноты маски
+                        maskBuf.RemoveAt(0); // удаляем ноту маски из очереди (маски приоритетов)
                     }
                 }
                 
             }
 
-            return (List<Note>)TTemp;
+            return (List<Note>)TTemp; // возвращаем результат
         }
 
         public double minDuration(Measure measure) 

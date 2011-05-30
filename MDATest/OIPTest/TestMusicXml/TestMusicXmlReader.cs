@@ -4,10 +4,10 @@ using System.Text;
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using MDA.OIP;
+using MDA.OIP.MusicXml;
 
 
-namespace TestMDA.OIPTest
+namespace TestMusicXml.TestMDA.OIPTest
 {
 	[TestClass]
 	public class TestXmlReader

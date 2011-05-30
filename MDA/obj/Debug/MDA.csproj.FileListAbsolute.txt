@@ -22,3 +22,4 @@ C:\Users\Антошка\Documents\Visual Studio 2010\Projects\MDA\MDA\obj\Debug\
 C:\Users\Антошка\Documents\Visual Studio 2010\Projects\MDA\MDA\obj\Debug\GenerateResource-ResGen.write.1.tlog
 C:\Users\Антошка\Documents\Visual Studio 2010\Projects\MDA\MDA\obj\Debug\MDA.exe
 C:\Users\Антошка\Documents\Visual Studio 2010\Projects\MDA\MDA\obj\Debug\MDA.pdb
+C:\Users\Антошка\Documents\Visual Studio 2010\Projects\MDA\MDA\obj\Debug\MDA.OIP.View.Form1.resources
