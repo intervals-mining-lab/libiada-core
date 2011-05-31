@@ -55,8 +55,15 @@ namespace MDA.OIP.View
                             Console.WriteLine("Fmotiv Chain № " + fmchain.Id.ToString() + " Name = " + fmchain.Name);
                             Console.WriteLine();
                             Console.WriteLine("------------------------");
+
+                            // записываем строй в файл с таким же именем только с припиской .txt
+                            FileStream fs = new FileStream(item.FullName + ".txt", FileMode.OpenOrCreate, FileAccess.Write);
+                            StreamWriter st = new StreamWriter(fs);
+
                             foreach (Fmotiv fmotiv in fmchain.FmotivList) 
                             {
+                                st.WriteLine(fmotiv.Id.ToString());
+
                                 Console.WriteLine("Fmotiv № " + fmotiv.Id.ToString() + " | type " + fmotiv.Type);
                                 Console.WriteLine();
                                 foreach (Note note in fmotiv.NoteList) 
@@ -92,6 +99,8 @@ namespace MDA.OIP.View
                                 }
                                 Console.WriteLine("------------------------");
                             }
+                            st.Close();
+                            fs.Close();
                         }
                     }
                 }

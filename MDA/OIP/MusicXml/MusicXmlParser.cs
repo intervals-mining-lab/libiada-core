@@ -24,6 +24,7 @@ namespace MDA.OIP.MusicXml
                 return scoremodel;
             }
         }
+
         public void Execute(XmlDocument xmldocument, string filename)
         {
             // TODO: проверка схемы Xml на соотвествие схеме MusicXml
@@ -33,6 +34,30 @@ namespace MDA.OIP.MusicXml
             }
             // создаем объект модели музыкального текста из Xml документа
             scoremodel = new ScoreTrack(filename, parseUniformScoreTracks((XmlDocument)xmldocument.Clone()));
+
+            // не в каждом такте проставленны аттрибуты, если не проставлены - значит они остаются такие же как и в предыдущем такте
+            // заполнение отсутствующих объектов класса атрибут во всем треке
+            #region заполнение аттрибутов
+
+            foreach (UniformScoreTrack utrack in scoremodel.UniformScoreTracks) 
+            {
+                if (utrack.Measurelist[0].Attributes == null) 
+                {
+                    throw new Exception("MDA PARSER: в модели для 1 такта нет аттрибутов");
+                }
+                for (int i = 1; i < utrack.Measurelist.Count; i++) 
+                {
+                    if (utrack.Measurelist[i].Attributes == null) 
+                    {
+                        // копируем аттрибуты предыдущего такта
+                        utrack.Measurelist[i].Attributes = (Attributes)utrack.Measurelist[i - 1].Attributes.Clone();
+                    }
+                }
+            }
+
+#endregion
+
+
         }
 
         private bool ChordFound(XmlDocument xmldocument) 
@@ -79,7 +104,6 @@ namespace MDA.OIP.MusicXml
                     Attributes Temp = new Attributes(parseSize((XmlNode)measureChild.Clone()), parseKey((XmlNode)measureChild.Clone()));
                     return Temp;
                 }
-                break;
             }
             return null;
             #region old method

@@ -12,12 +12,16 @@ namespace MDA.OIP.ScoreModel
 
         public Measure(List<Note> notelist, Attributes attributes)
         {
-            this.notelist = new List<Note>();
-            for (int i= 0; i < notelist.Count; i++) // создаем список нот, по средствам клонирования каждой ноты.
+            if (attributes != null)
             {
-               this.notelist.Add((Note) notelist[i].Clone());
+                this.attributes = (Attributes)attributes.Clone();
             }
-            this.attributes = (Attributes) attributes.Clone(); 
+
+            this.notelist = new List<Note>();
+            for (int i = 0; i < notelist.Count; i++) // создаем список нот, по средствам клонирования каждой ноты.
+            {
+                this.notelist.Add((Note)notelist[i].Clone());
+            }
         }
 
         public List<Note> NoteList
@@ -32,6 +36,10 @@ namespace MDA.OIP.ScoreModel
             get
             {
                 return attributes;
+            }
+            set
+            {
+                this.attributes = value;
             }
         }
         
