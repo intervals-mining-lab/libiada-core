@@ -12,8 +12,8 @@ namespace MDA.OIP.ScoreModel
 
         public Attributes(Size size, Key key)
         {
-            this.size = (Size) size.Clone();
-            this.key = (Key) key.Clone();
+            if (size != null) { this.size = (Size)size.Clone(); }
+            if (key != null)  { this.key = (Key)key.Clone(); }
         }
         public Size Size
         {

@@ -163,16 +163,17 @@ namespace MDA.OIP.BorodaDivider
 
                                 // отправляем последовательность равнодлительных звуков на анализ, получаем цепочку фмотивов и заносим их в выходную последовательность
                                 // заисключением последнего фмотива - он останется в буфере вместе с нотой длительность которой больше последней ноты этого фмотива
-                                for (int i = 0; i < (DivideSameDurationNotes(FmotivBuffer).Count-1); i++)
+                                List <Fmotiv> DividedSameDuration = DivideSameDurationNotes(FmotivBuffer);
+                                for (int i = 0; i < (DividedSameDuration.Count - 1); i++)
                                 {
                                     // заносим очередной фмотив
-                                    Temp.FmotivList.Add(((Fmotiv)DivideSameDurationNotes(FmotivBuffer)[i].Clone()));
+                                    Temp.FmotivList.Add(((Fmotiv)DividedSameDuration[i].Clone()));
                                     // присваиваем очередной id
                                     Temp.FmotivList[Temp.FmotivList.Count - 1].Id = (Temp.FmotivList.Count - 1);
                                 }
 
                                 // в буфер заносим последний фмотив цепочки фмотивов нот с равнодлительностью
-                                FmotivBuffer = (Fmotiv)DivideSameDurationNotes(FmotivBuffer)[DivideSameDurationNotes(FmotivBuffer).Count - 1].Clone();
+                                FmotivBuffer = (Fmotiv)DividedSameDuration[DividedSameDuration.Count - 1].Clone();
                                 // добавляем сохраненную ноту с большой длительностью
                                 for (int i = 0; i < Fmotivbuffer2.NoteList.Count; i++)
                                 {
@@ -514,11 +515,12 @@ namespace MDA.OIP.BorodaDivider
                         {
                             // если больше 1 ноты, то вызываем рекурсию на оставшиеся ноты
                             // отправляем последовательность равнодлительных звуков на анализ, получаем цепочку фмотивов и заносим их в выходную последовательность
+                            List<Fmotiv> DividedSameDuration = DivideSameDurationNotes(FmotivBuffer);
                             for (int j = 0;
-                                j < DivideSameDurationNotes(FmotivBuffer).Count; j++)
+                                j < DividedSameDuration.Count; j++)
                             {
                                 // заносим очередной фмотив
-                                FLTemp.Add(((Fmotiv)DivideSameDurationNotes(FmotivBuffer)[j].Clone()));
+                                FLTemp.Add(((Fmotiv)DividedSameDuration[j].Clone()));
                             }
                         }
 
@@ -669,11 +671,12 @@ namespace MDA.OIP.BorodaDivider
                                 {
                                     // если больше 1 ноты, то вызываем рекурсию на оставшиеся ноты
                                     // отправляем последовательность равнодлительных звуков на анализ, получаем цепочку фмотивов и заносим их в выходную последовательность
+                                    List<Fmotiv> DividedSameDuration = DivideSameDurationNotes(FmotivBuffer);
                                     for (int j = 0;
-                                        j < DivideSameDurationNotes(FmotivBuffer).Count; j++)
+                                        j < DividedSameDuration.Count; j++)
                                     {
                                         // заносим очередной фмотив
-                                        FLTemp.Add(((Fmotiv)DivideSameDurationNotes(FmotivBuffer)[j].Clone()));
+                                        FLTemp.Add(((Fmotiv)DividedSameDuration[j].Clone()));
                                     }
                                 }
                                 return FLTemp;
@@ -749,11 +752,12 @@ namespace MDA.OIP.BorodaDivider
                             {
                                 // если больше 1 ноты, то вызываем рекурсию на оставшиеся ноты
                                 // отправляем последовательность равнодлительных звуков на анализ, получаем цепочку фмотивов и заносим их в выходную последовательность
+                                List<Fmotiv> DividedSameDuration = DivideSameDurationNotes(FmotivBuffer);
                                 for (int j = 0;
-                                    j < DivideSameDurationNotes(FmotivBuffer).Count; j++)
+                                    j < DividedSameDuration.Count; j++)
                                 {
                                     // заносим очередной фмотив
-                                    FLTemp.Add(((Fmotiv)DivideSameDurationNotes(FmotivBuffer)[j].Clone()));
+                                    FLTemp.Add(((Fmotiv)DividedSameDuration[j].Clone()));
                                 }
                             }
                             return FLTemp;
@@ -878,11 +882,12 @@ namespace MDA.OIP.BorodaDivider
 
                             // вызываем рекурсию на оставшиеся ноты
                             // отправляем последовательность равнодлительных звуков на анализ, получаем цепочку фмотивов и заносим их в выходную последовательность
+                            List<Fmotiv> DividedSameDuration = DivideSameDurationNotes(FmotivBuffer);
                             for (int j = 0;
-                                j < DivideSameDurationNotes(FmotivBuffer).Count; j++)
+                                j < DividedSameDuration.Count; j++)
                             {
                                 // заносим очередной фмотив
-                                FLTemp.Add(((Fmotiv)DivideSameDurationNotes(FmotivBuffer)[j].Clone()));
+                                FLTemp.Add(((Fmotiv)DividedSameDuration[j].Clone()));
                             }
 
                             return FLTemp;
@@ -1020,11 +1025,12 @@ namespace MDA.OIP.BorodaDivider
                             {
                                 // если больше 1 ноты, то вызываем рекурсию на оставшиеся ноты
                                 // отправляем последовательность равнодлительных звуков на анализ, получаем цепочку фмотивов и заносим их в выходную последовательность
+                                List<Fmotiv> DividedSameDuration = DivideSameDurationNotes(FmotivBuffer);
                                 for (int j = 0;
-                                    j < DivideSameDurationNotes(FmotivBuffer).Count; j++)
+                                    j < DividedSameDuration.Count; j++)
                                 {
                                     // заносим очередной фмотив
-                                    FLTemp.Add(((Fmotiv)DivideSameDurationNotes(FmotivBuffer)[j].Clone()));
+                                    FLTemp.Add(((Fmotiv)DividedSameDuration[j].Clone()));
                                 }
                             }
                             return FLTemp;
@@ -1100,11 +1106,12 @@ namespace MDA.OIP.BorodaDivider
                         {
                             // если больше 1 ноты, то вызываем рекурсию на оставшиеся ноты
                             // отправляем последовательность равнодлительных звуков на анализ, получаем цепочку фмотивов и заносим их в выходную последовательность
+                            List<Fmotiv> DividedSameDuration = DivideSameDurationNotes(FmotivBuffer);
                             for (int j = 0;
-                                j < DivideSameDurationNotes(FmotivBuffer).Count; j++)
+                                j < DividedSameDuration.Count; j++)
                             {
                                 // заносим очередной фмотив
-                                FLTemp.Add(((Fmotiv)DivideSameDurationNotes(FmotivBuffer)[j].Clone()));
+                                FLTemp.Add(((Fmotiv)DividedSameDuration[j].Clone()));
                             }
                         }
                         return FLTemp;

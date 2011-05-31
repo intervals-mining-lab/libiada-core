@@ -10,6 +10,7 @@ namespace MDA.OIP.MusicXml
 {
     public class MusicXmlParser
     {
+        private Attributes CurrentAttributes;
         private ScoreTrack scoremodel; // модель в которую разбирается XML документ
 
 
@@ -37,6 +38,8 @@ namespace MDA.OIP.MusicXml
 
             // не в каждом такте проставленны аттрибуты, если не проставлены - значит они остаются такие же как и в предыдущем такте
             // заполнение отсутствующих объектов класса атрибут во всем треке
+
+            /*
             #region заполнение аттрибутов
 
             foreach (UniformScoreTrack utrack in scoremodel.UniformScoreTracks) 
@@ -56,7 +59,7 @@ namespace MDA.OIP.MusicXml
             }
 
 #endregion
-
+            */
 
         }
 
@@ -101,11 +104,25 @@ namespace MDA.OIP.MusicXml
             {
                 if (measureChild.Name == "attributes")
                 {
-                    Attributes Temp = new Attributes(parseSize((XmlNode)measureChild.Clone()), parseKey((XmlNode)measureChild.Clone()));
-                    return Temp;
+                    //Attributes Temp = new Attributes(parseSize((XmlNode)measureChild.Clone()), parseKey((XmlNode)measureChild.Clone()));
+
+                    Size size = parseSize((XmlNode)measureChild.Clone());;
+                    Key key = parseKey((XmlNode)measureChild.Clone()); ;
+
+                    if (key == null)
+                    {
+                        key = (Key) CurrentAttributes.Key.Clone();
+                    }
+                    if (size == null)
+                    {
+                        size = (Size) CurrentAttributes.Size.Clone();
+                    }
+
+                    CurrentAttributes = new Attributes(size, key);
+                    return CurrentAttributes;
                 }
             }
-            return null;
+            return CurrentAttributes;
             #region old method
             /*foreach (XmlNode measureChild in MeasureNode.ChildNodes)
             {
@@ -225,7 +242,7 @@ namespace MDA.OIP.MusicXml
                     }
                     else
                     {
-                        return new Size(beats, beatbase);
+                        return new Size(beats, beatbase, CurrentAttributes.Size.Ticksperbeat);
                     }
 
                 }

@@ -115,6 +115,10 @@ namespace MDA.OIP.BorodaDivider
                         // цикл, если набралось в буфер нот общей длительностью равной реальной ноте, то переходим к следующей реальной ноте
                         while (bufduration < note.Duration.Value)
                         {
+                            if (priorityMask.NoteList.Count < 1) 
+                            {
+                                throw new Exception("MDA Priority Discover: такт построен не по правилам, не хватает ноты");
+                            }
                             //набор длительностей нот маски, и их удаление из очереди
                             bufduration = bufduration + priorityMask.NoteList[0].Duration.Value;
                             priorityMask.NoteList.RemoveAt(0);

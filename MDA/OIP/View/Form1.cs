@@ -37,70 +37,77 @@ namespace MDA.OIP.View
                 {
                     if (item.Name.EndsWith(".xml"))
                     {
-                        Console.WriteLine("_________________________________________________");
-                        Console.WriteLine(item.FullName);
-                        Console.WriteLine();
-
-                        XmlDocument xmldocument = new XmlDocument();
-                        MusicXmlReader xmlreader = new MusicXmlReader(item.FullName);
-                        MusicXmlParser Parser = new MusicXmlParser();
-                        Parser.Execute(xmlreader.MusicXmlDocument, xmlreader.FileName);
-
-                        BorodaDivider.BorodaDivider bd = new BorodaDivider.BorodaDivider();
-
-                        List<FmotivChain> Listfmotivchains = bd.Divide(Parser.ScoreModel);
-
-                        foreach (FmotivChain fmchain in Listfmotivchains) 
+                        try
                         {
-                            Console.WriteLine("Fmotiv Chain № " + fmchain.Id.ToString() + " Name = " + fmchain.Name);
+                            Console.WriteLine("_________________________________________________");
+                            Console.WriteLine(item.FullName);
                             Console.WriteLine();
-                            Console.WriteLine("------------------------");
 
-                            // записываем строй в файл с таким же именем только с припиской .txt
-                            FileStream fs = new FileStream(item.FullName + ".txt", FileMode.OpenOrCreate, FileAccess.Write);
-                            StreamWriter st = new StreamWriter(fs);
+                            XmlDocument xmldocument = new XmlDocument();
+                            MusicXmlReader xmlreader = new MusicXmlReader(item.FullName);
+                            MusicXmlParser Parser = new MusicXmlParser();
+                            Parser.Execute(xmlreader.MusicXmlDocument, xmlreader.FileName);
 
-                            foreach (Fmotiv fmotiv in fmchain.FmotivList) 
+                            BorodaDivider.BorodaDivider bd = new BorodaDivider.BorodaDivider();
+
+                            List<FmotivChain> Listfmotivchains = bd.Divide(Parser.ScoreModel);
+
+                            foreach (FmotivChain fmchain in Listfmotivchains)
                             {
-                                st.WriteLine(fmotiv.Id.ToString());
-
-                                Console.WriteLine("Fmotiv № " + fmotiv.Id.ToString() + " | type " + fmotiv.Type);
+                                Console.WriteLine("Fmotiv Chain № " + fmchain.Id.ToString() + " Name = " + fmchain.Name);
                                 Console.WriteLine();
-                                foreach (Note note in fmotiv.NoteList) 
-                                {
-                                    // TODO : добавить вывод триоли и лиги
-                                    if (note.Pitch != null)
-                                    {
-                                        // если есть лига, то определяем ее тип по номеру
-                                        string tietype = "";
-                                        switch (note.Tie)
-                                        {
-                                            case 0:
-                                                tietype = " TieStarts";
-                                                break;
-                                            case 1:
-                                                tietype = " TieStops";
-                                                break;
-                                            case 2:
-                                                tietype = " TieContinues";
-                                                break;
-                                            default:
-                                                break;
-                                        }
-                                        Console.WriteLine("Note: duration = " + note.Duration.Numerator.ToString() + "/" + note.Duration.Denominator.ToString() +
-                                        " step = " + note.Pitch.Step.ToString() + " priority = " + note.Priority.ToString() + tietype);
-                                    }
-                                    else 
-                                    {
-                                        Console.WriteLine("Pause: duration = " + note.Duration.Numerator.ToString() + "/" + note.Duration.Denominator.ToString() +
-                                        " priority = " + note.Priority.ToString());
-                                    }
-                                    
-                                }
                                 Console.WriteLine("------------------------");
+
+                                // записываем строй в файл с таким же именем только с припиской .txt
+                                FileStream fs = new FileStream(item.FullName + ".txt", FileMode.OpenOrCreate, FileAccess.Write);
+                                StreamWriter st = new StreamWriter(fs);
+
+                                foreach (Fmotiv fmotiv in fmchain.FmotivList)
+                                {
+                                    st.WriteLine(fmotiv.Id.ToString());
+
+                                    Console.WriteLine("Fmotiv № " + fmotiv.Id.ToString() + " | type " + fmotiv.Type);
+                                    Console.WriteLine();
+                                    foreach (Note note in fmotiv.NoteList)
+                                    {
+                                        // TODO : добавить вывод триоли и лиги
+                                        if (note.Pitch != null)
+                                        {
+                                            // если есть лига, то определяем ее тип по номеру
+                                            string tietype = "";
+                                            switch (note.Tie)
+                                            {
+                                                case 0:
+                                                    tietype = " TieStarts";
+                                                    break;
+                                                case 1:
+                                                    tietype = " TieStops";
+                                                    break;
+                                                case 2:
+                                                    tietype = " TieContinues";
+                                                    break;
+                                                default:
+                                                    break;
+                                            }
+                                            Console.WriteLine("Note: duration = " + note.Duration.Numerator.ToString() + "/" + note.Duration.Denominator.ToString() +
+                                            " step = " + note.Pitch.Step.ToString() + " priority = " + note.Priority.ToString() + tietype);
+                                        }
+                                        else
+                                        {
+                                            Console.WriteLine("Pause: duration = " + note.Duration.Numerator.ToString() + "/" + note.Duration.Denominator.ToString() +
+                                            " priority = " + note.Priority.ToString());
+                                        }
+
+                                    }
+                                    Console.WriteLine("------------------------");
+                                }
+                                st.Close();
+                                fs.Close();
                             }
-                            st.Close();
-                            fs.Close();
+                        }
+                        catch (Exception ex)
+                        {
+                            Console.WriteLine(item.FullName + " "+ ex);
                         }
                     }
                 }
