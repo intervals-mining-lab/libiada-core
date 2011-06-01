@@ -23,6 +23,9 @@ namespace MDA.OIP.ScoreModel
                     break;
                 case "32nd": { numDenom[0] = 1; numDenom[1] = 32; }
                     break;
+                    // в Guiter Pro обозначается 32th - как 1/32.. мде..
+                case "32th": { numDenom[0] = 1; numDenom[1] = 32; }
+                    break;
                 case "64th": { numDenom[0] = 1; numDenom[1] = 64; }
                     break;
                 case "128th": { numDenom[0] = 1; numDenom[1] = 128; }

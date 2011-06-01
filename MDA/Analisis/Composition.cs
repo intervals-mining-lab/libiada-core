@@ -15,11 +15,11 @@ namespace MDA.Analisis
 {
     public class Composition
     {
-        private double Regularity;
-        private double Periodicity;
-        private double AvgRemoteness;
-        private double AvgDepth;
-        private double Entropy;
+        public double Regularity;
+        public double Periodicity;
+        public double AvgRemoteness;
+        public double AvgDepth;
+        public double Entropy;
         private double IInfo;
         private double OIInfo;
         private FMArray Range = new FMArray();
@@ -28,7 +28,7 @@ namespace MDA.Analisis
         private Chain chain =null;
         private Difference FreqDiff= new Difference();
         private Difference LogNDiff= new Difference();
-        private Difference VDiff = new Difference();
+        public Difference VDiff = new Difference();
         private DisplayData disp = new DisplayData();
 		
 		static object lchain = new object();

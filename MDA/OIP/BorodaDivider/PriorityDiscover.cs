@@ -113,7 +113,8 @@ namespace MDA.OIP.BorodaDivider
                         priorityMask.NoteList.RemoveAt(0);
 
                         // цикл, если набралось в буфер нот общей длительностью равной реальной ноте, то переходим к следующей реальной ноте
-                        while (bufduration < note.Duration.Value)
+                        while ((note.Duration.Value - bufduration)> 0.0000001) 
+                        //while (bufduration < note.Duration.Value) 
                         {
                             if (priorityMask.NoteList.Count < 1) 
                             {
@@ -126,7 +127,8 @@ namespace MDA.OIP.BorodaDivider
                         
                         //переход к следующей реальной ноте
                         Temp.NoteList.Add((Note)note.Clone());
-                        bufduration = 0;
+                        bufduration = bufduration - note.Duration.Value; 
+                        //bufduration = 0;
                     
                 }
             }
@@ -306,11 +308,12 @@ namespace MDA.OIP.BorodaDivider
 //---------------------------пока не будут известны приоритеты для нот с минимальной длительностью------
 //------------------------------------------------------------------------------------------------------                
                 bool stop = true; // флаг останова, когда просчитаются приоритеты для всех нот,
-                //длительность которых окажется меньше либо равна минимальной, если они уже просчитаны для всех нот, то процесс заканчивается
+                //длительность которых окажется меньше либо равна минимальной, деленной на 2 (так как может быть точка у ноты, котору. возможно описать только 3 нотами короче в два раза чем сама нота),
+                //если они уже просчитаны для всех нот, то процесс заканчивается
                 // проверка: останов будет тогда, когда длительности ВСЕХ нот в маске будут меньше либо равны длительности минимально ноты
                 foreach (Note note in priorityMask.NoteList)
                 {
-                    if (note.Duration.Value > minDuration(measure))
+                    if (note.Duration.Value > minDuration(measure)/2)
                     {
                         stop = false;
                     }
@@ -346,10 +349,12 @@ namespace MDA.OIP.BorodaDivider
 
                 // высталение флага останова
                 stop = true;
-                // проверка: останов будет тогда, когда длительности ВСЕХ нот в маске будут меньше либо равны длительности минимально ноты
+
+                // проверка: останов будет тогда, когда длительности ВСЕХ нот в маске будут меньше либо равны длительности минимальной ноты 
+                //деленной на два (смотри выше из-за точки)
                 foreach (Note note in priorityMask.NoteList)
                 {
-                    if (note.Duration.Value > minDuration(measure)) 
+                    if (note.Duration.Value > minDuration(measure)/2) 
                     {
                         stop = false;
                     }
