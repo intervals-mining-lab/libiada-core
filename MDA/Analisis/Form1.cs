@@ -10,6 +10,9 @@ using System.Text;
 using System.Windows.Forms;
 using System.Windows.Forms.VisualStyles;
 using ZedGraph;
+using System.Xml;
+using MDA.OIP.MusicXml;
+using MDA.OIP.BorodaDivider;
 
 namespace MDA.Analisis
 {
@@ -54,25 +57,34 @@ namespace MDA.Analisis
         }
 //-----------------------------------------------------------------------
 
-//----------------------Load XMl (failed) button-------------------------	
+//----------------------Load XMl button-------------------------	
         private void button20_Click_1(object sender, EventArgs e)
         {
+
+
 			try
             {
                 textBox1.Clear();
                 openFileDialog1.FileName = "";
-                openFileDialog1.Filter = "Xml|*.block.xml|All files|*.*";
+                openFileDialog1.Filter = "Xml|*.xml|All files|*.*";
                 openFileDialog1.ShowDialog();
 
-                Reader r = new Reader();
-                r.SetXmlData(openFileDialog1.FileName);
+            XmlDocument xmldocument = new XmlDocument();
+            MusicXmlReader xmlreader = new MusicXmlReader(openFileDialog1.FileName);
+            MusicXmlParser Parser = new MusicXmlParser();
+            Parser.Execute(xmlreader.MusicXmlDocument, xmlreader.FileName);
+
+            BorodaDivider bd = new BorodaDivider();
+
+            List<FmotivChain> Listfmotivchains = bd.Divide(Parser.ScoreModel);
+
                 textBox1.Clear();
                 int i = 0;
-                for (i = 0; i < ((string [])r.GetData()).Length - 1; i++) // COUNT -> (string []) LENGTH error
+                for (i = 0; i < Listfmotivchains[0].FmotivList.Count; i++) // COUNT -> (string []) LENGTH error
                 {
-                    textBox1.Text = textBox1.Text + r.GetData()[i] + '\r' + '\n';
+                    textBox1.Text = textBox1.Text + Listfmotivchains[0].FmotivList[i].Id + '\r' + '\n';
                 }
-                textBox1.Text = textBox1.Text + r.GetData()[i];
+                //textBox1.Text = textBox1.Text + r.GetData()[i];
                 new Drawer().Clean(this);
                 label24.Text = openFileDialog1.FileName;
             }

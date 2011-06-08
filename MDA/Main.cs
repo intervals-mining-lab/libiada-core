@@ -10,9 +10,10 @@ public class MainClass
 	{
 		    Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            //MDA.Analisis.Form1 form = new MDA.Analisis.Form1();
+            MDA.Analisis.Form1 form1 = new MDA.Analisis.Form1();
             MDA.OIP.View.Form1 form = new MDA.OIP.View.Form1();
 			form.Show();
+            form1.Show();
 			Application.Run();
 	}
 	
