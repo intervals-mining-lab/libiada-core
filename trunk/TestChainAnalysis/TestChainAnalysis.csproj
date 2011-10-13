@@ -86,6 +86,7 @@
     <Compile Include="Classes\AuxiliaryClasses\WebServices\TestMarkovService.cs" />
     <Compile Include="Classes\AuxiliaryClasses\WebServices\TestPhantomService.cs" />
     <Compile Include="Classes\AuxiliaryClasses\WebServices\TestSegmentationService.cs" />
+    <Compile Include="Classes\DataMining\AlternativeClusterization\Calculators\TestFCalculator.cs" />
     <Compile Include="Classes\DataMining\AlternativeClusterization\Calculators\TestHCalculator2.cs" />
     <Compile Include="Classes\DataMining\AlternativeClusterization\TestAlternativeKRAB.cs" />
     <Compile Include="Classes\DataMining\AlternativeClusterization\TestConnection.cs" />

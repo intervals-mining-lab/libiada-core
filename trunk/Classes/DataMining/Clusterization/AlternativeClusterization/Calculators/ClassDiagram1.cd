@@ -76,14 +76,14 @@
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="ChainAnalises.Classes.DataMining.Clusterization.AlternativeClusterization.Connection">
-    <Position X="6.5" Y="4.5" Width="1.75" />
+    <Position X="6.5" Y="4" Width="1.75" />
     <TypeIdentifier>
       <HashCode>AEGAACAAAAAAQAABAQAAAAEAAEAAAAAAAAAEAAAAABA=</HashCode>
       <FileName>Classes\DataMining\Clusterization\AlternativeClusterization\Connection.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="ChainAnalises.Classes.DataMining.Clusterization.AlternativeClusterization.GraphElement">
-    <Position X="4.5" Y="4.5" Width="1.5" />
+    <Position X="4.5" Y="4" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAACAAAAAgAAAgAAAAIAAAAAAAAAAAAAAAAAAAAAAhA=</HashCode>
       <FileName>Classes\DataMining\Clusterization\AlternativeClusterization\GraphElement.cs</FileName>
