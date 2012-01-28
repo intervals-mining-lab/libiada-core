@@ -1,0 +1,4 @@
+# git ignore file
+_ReSharper*
+*.suo
+obj
