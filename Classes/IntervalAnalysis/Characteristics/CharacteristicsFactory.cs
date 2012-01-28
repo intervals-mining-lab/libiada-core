@@ -8,14 +8,6 @@ namespace ChainAnalises.Classes.IntervalAnalysis.Characteristics
     ///</summary>
     public static class CharacteristicsFactory
     {
-        ///<summary>
-        /// „исло возможных цепочек которые можно сгенерировать 
-        /// из данной цепочки, содержащей фантомные сообщени€.
-        ///</summary>
-        public static ICharacteristicCalculator PhChainCount
-        {
-            get { return new PhantomMessagesCount(); }
-        }
 
         ///<summary>
         /// ¬еро€тность (частота).
@@ -181,7 +173,7 @@ namespace ChainAnalises.Classes.IntervalAnalysis.Characteristics
                 temp.Add(Power);
                 temp.Add(nG);
                 temp.Add(t);
-                temp.Add(PhChainCount);
+                //temp.Add(PhChainCount);
                 //temp.Add(CutLength);
                 //temp.Add(V);
                 //temp.Add(CutLenVocEntropy);

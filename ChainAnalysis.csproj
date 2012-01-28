@@ -67,15 +67,14 @@
     <Compile Include="Classes\IntervalAnalysis\Characteristics\Calculators\CutLengthVocabularyEntropy.cs" />
     <Compile Include="Classes\IntervalAnalysis\Characteristics\Calculators\NomalizationGamut.cs" />
     <Compile Include="Classes\IntervalAnalysis\Characteristics\Calculators\Periodicity.cs" />
-    <Compile Include="Classes\IntervalAnalysis\Characteristics\Calculators\PhantomMessagesCount.cs" />
     <Compile Include="Classes\IntervalAnalysis\Characteristics\Calculators\Volume.cs" />
+    <Compile Include="Classes\IntervalAnalysis\Characteristics\CharacteristicsFactory.cs" />
     <Compile Include="Classes\Root\SimpleTypes\ValueDouble.cs" />
     <Compile Include="Classes\Statistics\DictionaryEntryBase.cs" />
     <Compile Include="Classes\IntervalAnalysis\Characteristics\Calculators\ArithmeticMean.cs" />
     <Compile Include="Classes\IntervalAnalysis\Characteristics\Calculators\AverageRemoteness.cs" />
     <Compile Include="Classes\IntervalAnalysis\Characteristics\Characteristic.cs" />
     <Compile Include="Classes\IntervalAnalysis\Chain.cs" />
-    <Compile Include="Classes\IntervalAnalysis\Characteristics\CharacteristicsFactory.cs" />
     <Compile Include="Classes\IntervalAnalysis\Characteristics\AuxiliaryInterfaces\IChainDataForCalculaton.cs" />
     <Compile Include="Classes\IntervalAnalysis\Characteristics\Calculators\ICharacteristicCalculator.cs" />
     <Compile Include="Classes\IntervalAnalysis\Characteristics\Calculators\Count.cs" />
