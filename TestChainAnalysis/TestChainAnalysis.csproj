@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -63,145 +63,30 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Classes\AlphabetCheker\TestAlpabetChains.cs" />
-    <Compile Include="Classes\AlphabetCheker\TestChecker.cs" />
-    <Compile Include="Classes\AuxiliaryClasses\DataManipulators\ElementStreamCreators\TestElementStreamBuilderFactory.cs" />
-    <Compile Include="Classes\AuxiliaryClasses\DataManipulators\ElementStreamCreators\TestElementStreamCreator.cs" />
-    <Compile Include="Classes\AuxiliaryClasses\DataManipulators\Iterators\TestIteratorEnd.cs" />
-    <Compile Include="Classes\AuxiliaryClasses\DataManipulators\Iterators\TestIteratorStart.cs" />
-    <Compile Include="Classes\AuxiliaryClasses\DataManipulators\Iterators\TestIteratorWritableEnd.cs" />
-    <Compile Include="Classes\AuxiliaryClasses\DataManipulators\Iterators\TestIteratorWritebleStart.cs" />
-    <Compile Include="Classes\AuxiliaryClasses\DataManipulators\SpaceRebuilders\TestNullRebuilder.cs" />
-    <Compile Include="Classes\AuxiliaryClasses\DataManipulators\SpaceRebuilders\TestPsevdoCycleSpace.cs" />
-    <Compile Include="Classes\AuxiliaryClasses\DataManipulators\SpaceRebuilders\TestSpaceBuilderFromChainbyBlock.cs" />
-    <Compile Include="Classes\AuxiliaryClasses\DataManipulators\SpaceRebuilders\TestSpaceRebuilderFactory.cs" />
-    <Compile Include="Classes\AuxiliaryClasses\WebServices\Additional\TestAnswerFactory.cs" />
-    <Compile Include="Classes\AuxiliaryClasses\WebServices\Additional\TestRequest.cs" />
-    <Compile Include="Classes\AuxiliaryClasses\WebServices\Additional\Threads\TestServiceManager.cs" />
-    <Compile Include="Classes\AuxiliaryClasses\WebServices\Additional\Types\TestActionType.cs" />
-    <Compile Include="Classes\AuxiliaryClasses\WebServices\Additional\Types\TestTypeBase.cs" />
-    <Compile Include="Classes\AuxiliaryClasses\WebServices\TestAlphabetService.cs" />
-    <Compile Include="Classes\AuxiliaryClasses\WebServices\TestCalculationService.cs" />
-    <Compile Include="Classes\AuxiliaryClasses\WebServices\TestClusterizationService.cs" />
-    <Compile Include="Classes\AuxiliaryClasses\WebServices\TestMarkovService.cs" />
-    <Compile Include="Classes\AuxiliaryClasses\WebServices\TestPhantomService.cs" />
-    <Compile Include="Classes\AuxiliaryClasses\WebServices\TestSegmentationService.cs" />
-    <Compile Include="Classes\DataMining\AlternativeClusterization\Calculators\TestFCalculator.cs" />
-    <Compile Include="Classes\DataMining\AlternativeClusterization\Calculators\TestHCalculator2.cs" />
-    <Compile Include="Classes\DataMining\AlternativeClusterization\TestAlternativeKRAB.cs" />
-    <Compile Include="Classes\DataMining\AlternativeClusterization\TestConnection.cs" />
-    <Compile Include="Classes\DataMining\AlternativeClusterization\TestGraphManager.cs" />
-    <Compile Include="Classes\DataMining\AlternativeClusterization\Calculators\TestHCalculator.cs" />
-    <Compile Include="Classes\DataMining\AlternativeClusterization\Calculators\TestLambdaCalculator.cs" />
-    <Compile Include="Classes\DataMining\AlternativeClusterization\Calculators\TestLinearCalculator.cs" />
-    <Compile Include="Classes\DataMining\AlternativeClusterization\TestGraphElement.cs" />
-    <Compile Include="Classes\DataMining\AlternativeClusterization\Calculators\TestNormalezedDistCalculator.cs" />
-    <Compile Include="Classes\DataMining\AlternativeClusterization\Calculators\TestTauCalculator.cs" />
-    <Compile Include="Classes\DataMining\AlternativeClusterization\Calculators\TestTauStarCalculator.cs" />
-    <Compile Include="Classes\DataMining\Clusterization\KRAB\TestGraphCalculator.cs" />
-    <Compile Include="Classes\DataMining\Clusterization\KRAB\TestKrab.cs" />
-    <Compile Include="Classes\DataMining\Clusterization\TestDataObject.cs" />
-    <Compile Include="Classes\DataMining\Clusterization\TestDataTable.cs" />
-    <Compile Include="Classes\DivizionToAccords\TestChainConvolutor.cs" />
-    <Compile Include="Classes\DivizionToAccords\TestDezignExpextedFrecuncy.cs" />
-    <Compile Include="Classes\DivizionToAccords\TestDivider.cs" />
-    <Compile Include="Classes\DivizionToAccords\TestFrequencyCalculator.cs" />
-    <Compile Include="Classes\DivizionToAccords\TestSimpleDivider.cs" />
-    <Compile Include="Classes\DivizionToAccords\TestStdCalculator.cs" />
-    <Compile Include="Classes\EventTheory\TestDimension.cs" />
-    <Compile Include="Classes\EventTheory\TestEvent.cs" />
-    <Compile Include="Classes\EventTheory\TestPlace.cs" />
-    <Compile Include="Classes\EventTheory\TestPsevdoValue.cs" />
-    <Compile Include="Classes\EventTheory\TestReadPath.cs" />
-    <Compile Include="Classes\EventTheory\TestReadRule.cs" />
-    <Compile Include="Classes\EventTheory\TestSpaceOverEvent.cs" />
-    <Compile Include="Classes\IntervalAnalysis\Characteristics\Calculators\TestNormalizedAverageRemoteness.cs" />
-    <Compile Include="Classes\IntervalAnalysis\Characteristics\Calculators\TestPeriodicity.cs" />
-    <Compile Include="Classes\IntervalAnalysis\Characteristics\Calculators\TestNormalizationGamut.cs" />
-    <Compile Include="Classes\IntervalAnalysis\Characteristics\Calculators\TestAlphabetPower.cs" />
-    <Compile Include="Classes\IntervalAnalysis\Characteristics\Calculators\ObjectMother.cs" />
-    <Compile Include="Classes\IntervalAnalysis\Characteristics\Calculators\TestArithmeticMean.cs" />
-    <Compile Include="Classes\IntervalAnalysis\Characteristics\Calculators\TestAverageRemoteness.cs" />
-    <Compile Include="Classes\IntervalAnalysis\Characteristics\Calculators\TestCount.cs" />
-    <Compile Include="Classes\IntervalAnalysis\Characteristics\Calculators\TestCutLength.cs" />
-    <Compile Include="Classes\IntervalAnalysis\Characteristics\Calculators\TestCutLengthVocabularyEntropy.cs" />
-    <Compile Include="Classes\IntervalAnalysis\Characteristics\Calculators\TestDescriptiveInformation.cs" />
-    <Compile Include="Classes\IntervalAnalysis\Characteristics\Calculators\TestGamut.cs" />
-    <Compile Include="Classes\IntervalAnalysis\Characteristics\Calculators\TestGeometricMiddling.cs" />
-    <Compile Include="Classes\IntervalAnalysis\Characteristics\Calculators\TestIdentificationInformation.cs" />
-    <Compile Include="Classes\IntervalAnalysis\Characteristics\Calculators\TestIntervalsCount.cs" />
-    <Compile Include="Classes\IntervalAnalysis\Characteristics\Calculators\TestLength.cs" />
-    <Compile Include="Classes\IntervalAnalysis\Characteristics\Calculators\TestProbability.cs" />
-    <Compile Include="Classes\IntervalAnalysis\Characteristics\Calculators\TestRegularity.cs" />
-    <Compile Include="Classes\IntervalAnalysis\TestBaseChain.cs" />
-    <Compile Include="Classes\IntervalAnalysis\TestChain.cs" />
-    <Compile Include="Classes\IntervalAnalysis\TestChainLenght.cs" />
-    <Compile Include="Classes\IntervalAnalysis\TestUniformChain.cs" />
-    <Compile Include="Classes\MatrixCalculus\TestMatrix.cs" />
-    <Compile Include="Classes\MatrixCalculus\TestMatrixCalculator.cs" />
-    <Compile Include="Classes\PhantomChains\Characteristics\TestPhantonChainsCount.cs" />
-    <Compile Include="Classes\PhantomChains\ObjectMotherPMessageTest.cs" />
-    <Compile Include="Classes\PhantomChains\TestCoder.cs" />
-    <Compile Include="Classes\PhantomChains\TestMessagePhantom.cs" />
-    <Compile Include="Classes\PhantomChains\TestPhantomTable.cs" />
-    <Compile Include="Classes\PhantomChains\TestProbabilityPhantomChainGenerator.cs" />
-    <Compile Include="Classes\PhantomChains\TestTree.cs" />
-    <Compile Include="Classes\Statistics\Markov Compare\MarkovCompare1.cs" />
-    <Compile Include="Classes\Statistics\MarkovChain\TestProbabilityMatrix.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Classes\Root\SimpleTypes\TestValueInt.cs" />
-    <Compile Include="Classes\Root\SimpleTypes\TestValueString.cs" />
-    <Compile Include="Classes\Statistics\MarkovChain\Generators\MockGenerator.cs" />
-    <Compile Include="Classes\Statistics\MarkovChain\TestIterationMatrix.cs" />
-    <Compile Include="Classes\Statistics\TestFreauncyList.cs" />
-    <Compile Include="Classes\TheoryOfGraphs\TestBranch.cs" />
-    <Compile Include="Classes\TheoryOfGraphs\TestGraph.cs" />
-    <Compile Include="Classes\TheoryOfGraphs\TestGraphDivider.cs" />
-    <Compile Include="Classes\TheoryOfGraphs\TestLShortestOpenLoopPathBuilder.cs" />
-    <Compile Include="Classes\TheoryOfGraphs\TestWavePathFinder.cs" />
-    <Compile Include="Classes\TheoryOfSet\TestAlphabet.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
-    <Compile Include="Web References\localhost\Reference.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Reference.map</DependentUpon>
-    </Compile>
+    <Compile Include="Classes\DataMining\Clusterization\TestDataObject.cs" />
+    <Compile Include="Classes\DataMining\Clusterization\TestDataTable.cs" />
+    <Compile Include="Classes\DataMining\Clusterization\KRAB\TestGraphCalculator.cs" />
+    <Compile Include="Classes\DataMining\Clusterization\KRAB\TestKrab.cs" />
+    <Compile Include="Classes\MatrixCalculus\TestMatrix.cs" />
+    <Compile Include="Classes\MatrixCalculus\TestMatrixCalculator.cs" />
+    <Compile Include="Classes\TheoryOfGraphs\TestBranch.cs" />
+    <Compile Include="Classes\TheoryOfGraphs\TestGraph.cs" />
+    <Compile Include="Classes\TheoryOfGraphs\TestGraphDivider.cs" />
+    <Compile Include="Classes\TheoryOfGraphs\TestLShortestOpenLoopPathBuilder.cs" />
+    <Compile Include="Classes\TheoryOfGraphs\TestWavePathFinder.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
-    <None Include="Classes\DataMining\AlternativeClusterization\TestClusterizationClassDiagram.cd" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
-    <None Include="Web References\localhost\AnswerChain.datasource">
-      <DependentUpon>Reference.map</DependentUpon>
-    </None>
-    <None Include="Web References\localhost\AnswerClusterization.datasource">
-      <DependentUpon>Reference.map</DependentUpon>
-    </None>
-    <None Include="Web References\localhost\AnswerMarkovChain.datasource">
-      <DependentUpon>Reference.map</DependentUpon>
-    </None>
-    <None Include="Web References\localhost\AnswerObjects.datasource">
-      <DependentUpon>Reference.map</DependentUpon>
-    </None>
-    <None Include="Web References\localhost\AnswerPhantomChains.datasource">
-      <DependentUpon>Reference.map</DependentUpon>
-    </None>
-    <None Include="Web References\localhost\AnswerSegmentation.datasource">
-      <DependentUpon>Reference.map</DependentUpon>
-    </None>
-    <None Include="Web References\localhost\Reference.map">
-      <Generator>MSDiscoCodeGenerator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
-    <None Include="Web References\localhost\Service.disco" />
-    <None Include="Web References\localhost\Service.wsdl" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
@@ -235,9 +120,6 @@
       <Project>{E3B8B4A4-5B6F-4D2F-8422-46A12D64D23C}</Project>
       <Name>ChainAnalysis</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Classes\Project A\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
