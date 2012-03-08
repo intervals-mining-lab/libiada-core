@@ -1,0 +1,1 @@
+﻿Зависит от libiada-core

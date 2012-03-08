@@ -1,0 +1,7 @@
+# git ignore file
+*.pidb
+*.userprefs
+*.DotSettings.user
+*.suo
+obj
+_ReSharper*
