@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AlphaberCheckers", "AlphaberCheckers\AlphaberCheckers.csproj", "{7D33D7CD-019A-474E-9C63-C52BA2DE9B7B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestAlphabetCheckers", "TestAlphabetCheckers\TestAlphabetCheckers.csproj", "{4DF6AE15-7EB9-4057-A04C-32711FBA7C7C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7D33D7CD-019A-474E-9C63-C52BA2DE9B7B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7D33D7CD-019A-474E-9C63-C52BA2DE9B7B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7D33D7CD-019A-474E-9C63-C52BA2DE9B7B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7D33D7CD-019A-474E-9C63-C52BA2DE9B7B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4DF6AE15-7EB9-4057-A04C-32711FBA7C7C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4DF6AE15-7EB9-4057-A04C-32711FBA7C7C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4DF6AE15-7EB9-4057-A04C-32711FBA7C7C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4DF6AE15-7EB9-4057-A04C-32711FBA7C7C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
