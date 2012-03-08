@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Segmentation", "Segmentation\Segmentation.csproj", "{458F7934-4B6F-4ACD-955D-255A7F123886}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestSegmentation", "TestSegmentation\TestSegmentation.csproj", "{B8910171-7604-49BF-B288-F87BDC9BA508}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{458F7934-4B6F-4ACD-955D-255A7F123886}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{458F7934-4B6F-4ACD-955D-255A7F123886}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{458F7934-4B6F-4ACD-955D-255A7F123886}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{458F7934-4B6F-4ACD-955D-255A7F123886}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B8910171-7604-49BF-B288-F87BDC9BA508}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B8910171-7604-49BF-B288-F87BDC9BA508}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B8910171-7604-49BF-B288-F87BDC9BA508}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B8910171-7604-49BF-B288-F87BDC9BA508}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
