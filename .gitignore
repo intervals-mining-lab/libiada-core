@@ -1,4 +1,7 @@
 # git ignore file
-_ReSharper*
+*.pidb
+*.userprefs
+*.DotSettings.user
 *.suo
 obj
+_ReSharper*

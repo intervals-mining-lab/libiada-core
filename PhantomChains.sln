@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PhantomChains", "PhantomChains\PhantomChains.csproj", "{B1CFAFC9-FC61-425F-9728-5D1316ED0B7D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestPhantomChains", "TestPhantomChains\TestPhantomChains.csproj", "{258D919F-708B-4238-93A8-AD008661BE78}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B1CFAFC9-FC61-425F-9728-5D1316ED0B7D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B1CFAFC9-FC61-425F-9728-5D1316ED0B7D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B1CFAFC9-FC61-425F-9728-5D1316ED0B7D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B1CFAFC9-FC61-425F-9728-5D1316ED0B7D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{258D919F-708B-4238-93A8-AD008661BE78}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{258D919F-708B-4238-93A8-AD008661BE78}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{258D919F-708B-4238-93A8-AD008661BE78}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{258D919F-708B-4238-93A8-AD008661BE78}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

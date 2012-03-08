@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{258D919F-708B-4238-93A8-AD008661BE78}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>TestPhantomChains</RootNamespace>
+    <AssemblyName>TestPhantomChains</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="nunit.framework, Version=2.5.7.10213, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Classes\PhantomChains\Characteristics\TestPhantonChainsCount.cs" />
+    <Compile Include="Classes\PhantomChains\ObjectMotherPMessageTest.cs" />
+    <Compile Include="Classes\PhantomChains\TestCoder.cs" />
+    <Compile Include="Classes\PhantomChains\TestMessagePhantom.cs" />
+    <Compile Include="Classes\PhantomChains\TestPhantomTable.cs" />
+    <Compile Include="Classes\PhantomChains\TestProbabilityPhantomChainGenerator.cs" />
+    <Compile Include="Classes\PhantomChains\TestTree.cs" />
+    <Compile Include="Classes\Statistics\Markov Compare\MarkovCompare1.cs" />
+    <Compile Include="Classes\Statistics\MarkovChain\Generators\MockGenerator.cs" />
+    <Compile Include="Classes\Statistics\MarkovChain\TestIterationMatrix.cs" />
+    <Compile Include="Classes\Statistics\MarkovChain\TestMarkovChainNotIniform.cs" />
+    <Compile Include="Classes\Statistics\MarkovChain\TestProbabilityMatrix.cs" />
+    <Compile Include="Classes\Statistics\TestFreauncyList.cs" />
+    <Compile Include="Classes\Statistics\TestSortDictionary.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\PhantomChains\PhantomChains.csproj">
+      <Project>{B1CFAFC9-FC61-425F-9728-5D1316ED0B7D}</Project>
+      <Name>PhantomChains</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
