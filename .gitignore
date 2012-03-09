@@ -1,5 +1,6 @@
-ChainAnalysis.pidb
-ChainAnalysis.sln
-TestChainAnalysis/obj/
-TestChainAnalysis.suo
-obj/
+*.pidb
+*.userprefs
+*.DotSettings.user
+*.suo
+obj
+_ReSharper*

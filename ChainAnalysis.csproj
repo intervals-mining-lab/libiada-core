@@ -60,6 +60,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Classes\auxularyClasses\IIterator.cs" />
+    <Compile Include="Classes\auxularyClasses\IteratorBase.cs" />
+    <Compile Include="Classes\auxularyClasses\IteratorEnd.cs" />
+    <Compile Include="Classes\auxularyClasses\IteratorSimpleStart.cs" />
+    <Compile Include="Classes\auxularyClasses\IteratorStart.cs" />
+    <Compile Include="Classes\auxularyClasses\IteratorWritableEnd.cs" />
+    <Compile Include="Classes\auxularyClasses\IteratorWritableStart.cs" />
+    <Compile Include="Classes\auxularyClasses\IWritableIterator.cs" />
     <Compile Include="Classes\IntervalAnalysis\Characteristics\Calculators\AlphabetPower.cs" />
     <Compile Include="Classes\IntervalAnalysis\Characteristics\Calculators\NormalizedAverageRemoteness.cs" />
     <Compile Include="Classes\IntervalAnalysis\Characteristics\CharacteristicsEnum.cs" />

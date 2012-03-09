@@ -1,11 +1,7 @@
 ﻿using System;
-using System.Collections.Specialized;
-using ChainAnalises.Classes.DataMining.Clusterization.AlternativeClusterization;
-using ChainAnalises.Classes.DataMining.Clusterization.AlternativeClusterization.Calculators;
 using ChainAnalises.Classes.IntervalAnalysis;
 using ChainAnalises.Classes.Root.SimpleTypes;
 using NUnit.Framework;
-using System.Collections.Generic;
 
 namespace TestChainAnalysis.Classes.IntervalAnalysis
 {

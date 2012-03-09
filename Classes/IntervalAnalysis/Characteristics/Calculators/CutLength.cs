@@ -1,3 +1,4 @@
+using ChainAnalises.Classes.AuxiliaryClasses.DataManipulators.Iterators;
 using ChainAnalises.Classes.TheoryOfSet;
 
 namespace ChainAnalises.Classes.IntervalAnalysis.Characteristics.Calculators
