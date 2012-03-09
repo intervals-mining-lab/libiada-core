@@ -1,4 +1,5 @@
 using System.Collections;
+using ChainAnalises.Classes.Root;
 using NewClusterization.Classes.DataMining.Clusterization.AlternativeClusterization;
 
 namespace NewClusterization.Classes.DataMining.Clusterization
