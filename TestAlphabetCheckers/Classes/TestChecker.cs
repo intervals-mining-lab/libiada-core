@@ -1,4 +1,7 @@
 using AlphaberCheckers.Classes;
+using ChainAnalises.Classes.IntervalAnalysis;
+using ChainAnalises.Classes.Root.SimpleTypes;
+using ChainAnalises.Classes.TheoryOfSet;
 using NUnit.Framework;
 
 namespace TestAlphabetCheckers.Classes

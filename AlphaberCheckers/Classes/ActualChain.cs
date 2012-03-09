@@ -1,4 +1,6 @@
 using System;
+using ChainAnalises.Classes.AuxiliaryClasses.DataManipulators.Iterators;
+using ChainAnalises.Classes.IntervalAnalysis;
 
 namespace AlphaberCheckers.Classes
 {
