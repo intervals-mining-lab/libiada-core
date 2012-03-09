@@ -1,3 +1,5 @@
+using ChainAnalises.Classes.AuxiliaryClasses.DataManipulators.Iterators;
+using ChainAnalises.Classes.IntervalAnalysis;
 using Segmentation.Classes.DataCollectors;
 
 namespace Segmentation.Classes.ProbabilityCountStrateges

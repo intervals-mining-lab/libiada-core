@@ -1,4 +1,7 @@
 ﻿using System.Collections;
+using ChainAnalises.Classes.IntervalAnalysis;
+using ChainAnalises.Classes.Root;
+using ChainAnalises.Classes.TheoryOfSet;
 
 namespace Segmentation.Classes
 {

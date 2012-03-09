@@ -1,3 +1,5 @@
+using ChainAnalises.Classes.IntervalAnalysis;
+using ChainAnalises.Classes.Root.SimpleTypes;
 using NUnit.Framework;
 using Segmentation.Classes;
 using Segmentation.Classes.Criteria;

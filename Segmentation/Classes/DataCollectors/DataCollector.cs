@@ -1,5 +1,7 @@
 using System.Collections;
 using System.Collections.Specialized;
+using ChainAnalises.Classes.AuxiliaryClasses.DataManipulators.Iterators;
+using ChainAnalises.Classes.IntervalAnalysis;
 using Segmentation.Classes.AuxiliaryClasses;
 
 namespace Segmentation.Classes.DataCollectors

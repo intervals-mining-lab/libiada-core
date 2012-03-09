@@ -1,3 +1,7 @@
+using ChainAnalises.Classes.AuxiliaryClasses.DataManipulators.Iterators;
+using ChainAnalises.Classes.IntervalAnalysis;
+using ChainAnalises.Classes.IntervalAnalysis.Characteristics;
+
 namespace Segmentation.Classes
 {
     public static class Calculator

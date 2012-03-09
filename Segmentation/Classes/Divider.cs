@@ -1,4 +1,5 @@
 using System;
+using ChainAnalises.Classes.IntervalAnalysis;
 using Segmentation.Classes.Criteria;
 
 namespace Segmentation.Classes

@@ -1,3 +1,6 @@
+using ChainAnalises.Classes.AuxiliaryClasses.DataManipulators.Iterators;
+using ChainAnalises.Classes.IntervalAnalysis;
+
 namespace Segmentation.Classes.ProbabilityCountStrateges
 {
     public static class GetStrategyForLessTwo
