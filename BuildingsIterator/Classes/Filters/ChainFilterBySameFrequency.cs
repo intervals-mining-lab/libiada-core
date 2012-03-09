@@ -1,3 +1,6 @@
+using ChainAnalises.Classes.IntervalAnalysis;
+using ChainAnalises.Classes.IntervalAnalysis.Characteristics;
+
 namespace BuildingsIterator.Classes.Filters
 {
     ///<summary>

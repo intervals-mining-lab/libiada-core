@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using ChainAnalises.Classes.IntervalAnalysis;
+using ChainAnalises.Classes.TheoryOfSet;
 
 namespace BuildingsIterator.Classes
 {
