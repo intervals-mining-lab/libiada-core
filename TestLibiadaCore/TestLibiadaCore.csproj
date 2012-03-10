@@ -1,0 +1,99 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{934D10F1-0F12-4046-B9D6-4ECE76EB8672}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>TestLibiadaCore</RootNamespace>
+    <AssemblyName>TestLibiadaCore</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="nunit.framework, Version=2.5.7.10213, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Classes\EventTheory\TestDimension.cs" />
+    <Compile Include="Classes\EventTheory\TestEvent.cs" />
+    <Compile Include="Classes\EventTheory\TestPlace.cs" />
+    <Compile Include="Classes\EventTheory\TestPsevdoValue.cs" />
+    <Compile Include="Classes\EventTheory\TestReadPath.cs" />
+    <Compile Include="Classes\EventTheory\TestReadRule.cs" />
+    <Compile Include="Classes\EventTheory\TestSpaceOverEvent.cs" />
+    <Compile Include="Classes\Misc\Iterators\TestIteratorEnd.cs" />
+    <Compile Include="Classes\Misc\Iterators\TestIteratorStart.cs" />
+    <Compile Include="Classes\Misc\Iterators\TestIteratorWritableEnd.cs" />
+    <Compile Include="Classes\Misc\Iterators\TestIteratorWritebleStart.cs" />
+    <Compile Include="Classes\Root\Characteristics\Calculators\ObjectMother.cs" />
+    <Compile Include="Classes\Root\Characteristics\Calculators\TestAlphabetPower.cs" />
+    <Compile Include="Classes\Root\Characteristics\Calculators\TestArithmeticMean.cs" />
+    <Compile Include="Classes\Root\Characteristics\Calculators\TestAverageRemoteness.cs" />
+    <Compile Include="Classes\Root\Characteristics\Calculators\TestCount.cs" />
+    <Compile Include="Classes\Root\Characteristics\Calculators\TestCutLength.cs" />
+    <Compile Include="Classes\Root\Characteristics\Calculators\TestCutLengthVocabularyEntropy.cs" />
+    <Compile Include="Classes\Root\Characteristics\Calculators\TestDescriptiveInformation.cs" />
+    <Compile Include="Classes\Root\Characteristics\Calculators\TestGamut.cs" />
+    <Compile Include="Classes\Root\Characteristics\Calculators\TestGeometricMiddling.cs" />
+    <Compile Include="Classes\Root\Characteristics\Calculators\TestIdentificationInformation.cs" />
+    <Compile Include="Classes\Root\Characteristics\Calculators\TestIntervalsCount.cs" />
+    <Compile Include="Classes\Root\Characteristics\Calculators\TestLength.cs" />
+    <Compile Include="Classes\Root\Characteristics\Calculators\TestNormalizationGamut.cs" />
+    <Compile Include="Classes\Root\Characteristics\Calculators\TestNormalizedAverageRemoteness.cs" />
+    <Compile Include="Classes\Root\Characteristics\Calculators\TestPeriodicity.cs" />
+    <Compile Include="Classes\Root\Characteristics\Calculators\TestProbability.cs" />
+    <Compile Include="Classes\Root\Characteristics\Calculators\TestRegularity.cs" />
+    <Compile Include="Classes\Root\SimpleTypes\TestValueInt.cs" />
+    <Compile Include="Classes\Root\SimpleTypes\TestValueString.cs" />
+    <Compile Include="Classes\Root\TestBaseChain.cs" />
+    <Compile Include="Classes\Root\TestChain.cs" />
+    <Compile Include="Classes\Root\TestChainLenght.cs" />
+    <Compile Include="Classes\Root\TestUniformChain.cs" />
+    <Compile Include="Classes\Statistics\TestFreauncyList.cs" />
+    <Compile Include="Classes\Statistics\TestSortDictionary.cs" />
+    <Compile Include="Classes\TheoryOfSet\TestAlphabet.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\LibiadaCore\LibiadaCore.csproj">
+      <Project>{AF8DF9BB-B796-457E-91AB-E41674BEB92B}</Project>
+      <Name>LibiadaCore</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,109 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{AF8DF9BB-B796-457E-91AB-E41674BEB92B}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>LibiadaCore</RootNamespace>
+    <AssemblyName>LibiadaCore</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Classes\EventTheory\Dimension.cs" />
+    <Compile Include="Classes\EventTheory\Event.cs" />
+    <Compile Include="Classes\EventTheory\Place.cs" />
+    <Compile Include="Classes\EventTheory\PsevdoValue.cs" />
+    <Compile Include="Classes\EventTheory\ReadPath.cs" />
+    <Compile Include="Classes\EventTheory\ReadRule.cs" />
+    <Compile Include="Classes\EventTheory\Space.cs" />
+    <Compile Include="Classes\Misc\Iterators\IIterator.cs" />
+    <Compile Include="Classes\Misc\Iterators\IteratorBase.cs" />
+    <Compile Include="Classes\Misc\Iterators\IteratorEnd.cs" />
+    <Compile Include="Classes\Misc\Iterators\IteratorSimpleStart.cs" />
+    <Compile Include="Classes\Misc\Iterators\IteratorStart.cs" />
+    <Compile Include="Classes\Misc\Iterators\IteratorWritableEnd.cs" />
+    <Compile Include="Classes\Misc\Iterators\IteratorWritableStart.cs" />
+    <Compile Include="Classes\Misc\Iterators\IWritableIterator.cs" />
+    <Compile Include="Classes\Root\BaseChain.cs" />
+    <Compile Include="Classes\Root\Chain.cs" />
+    <Compile Include="Classes\Root\ChainMessage.cs" />
+    <Compile Include="Classes\Root\ChainWithCharacteristic.cs" />
+    <Compile Include="Classes\Root\Characteristics\AuxiliaryInterfaces\IChainDataForCalculaton.cs" />
+    <Compile Include="Classes\Root\Characteristics\AuxiliaryInterfaces\IDataForCalculator.cs" />
+    <Compile Include="Classes\Root\Characteristics\Calculators\AlphabetPower.cs" />
+    <Compile Include="Classes\Root\Characteristics\Calculators\ArithmeticMean.cs" />
+    <Compile Include="Classes\Root\Characteristics\Calculators\AverageRemoteness.cs" />
+    <Compile Include="Classes\Root\Characteristics\Calculators\Count.cs" />
+    <Compile Include="Classes\Root\Characteristics\Calculators\CutLength.cs" />
+    <Compile Include="Classes\Root\Characteristics\Calculators\CutLengthVocabularyEntropy.cs" />
+    <Compile Include="Classes\Root\Characteristics\Calculators\DescriptiveInformation.cs" />
+    <Compile Include="Classes\Root\Characteristics\Calculators\Gamut.cs" />
+    <Compile Include="Classes\Root\Characteristics\Calculators\GeometricMiddling.cs" />
+    <Compile Include="Classes\Root\Characteristics\Calculators\ICharacteristicCalculator.cs" />
+    <Compile Include="Classes\Root\Characteristics\Calculators\IdentificationInformation.cs" />
+    <Compile Include="Classes\Root\Characteristics\Calculators\IntervalsCount.cs" />
+    <Compile Include="Classes\Root\Characteristics\Calculators\Length.cs" />
+    <Compile Include="Classes\Root\Characteristics\Calculators\NomalizationGamut.cs" />
+    <Compile Include="Classes\Root\Characteristics\Calculators\NormalizedAverageRemoteness.cs" />
+    <Compile Include="Classes\Root\Characteristics\Calculators\Periodicity.cs" />
+    <Compile Include="Classes\Root\Characteristics\Calculators\Probability.cs" />
+    <Compile Include="Classes\Root\Characteristics\Calculators\Regularity.cs" />
+    <Compile Include="Classes\Root\Characteristics\Calculators\Volume.cs" />
+    <Compile Include="Classes\Root\Characteristics\Characteristic.cs" />
+    <Compile Include="Classes\Root\Characteristics\CharacteristicsEnum.cs" />
+    <Compile Include="Classes\Root\Characteristics\CharacteristicsFactory.cs" />
+    <Compile Include="Classes\Root\IBaseObject.cs" />
+    <Compile Include="Classes\Root\IBin.cs" />
+    <Compile Include="Classes\Root\LinkUp.cs" />
+    <Compile Include="Classes\Root\SimpleTypes\ValueChar.cs" />
+    <Compile Include="Classes\Root\SimpleTypes\ValueDouble.cs" />
+    <Compile Include="Classes\Root\SimpleTypes\ValueString.cs" />
+    <Compile Include="Classes\Root\SimpleTypes\VauleInt.cs" />
+    <Compile Include="Classes\Root\UniformChain.cs" />
+    <Compile Include="Classes\Statistics\DictionaryEntryBase.cs" />
+    <Compile Include="Classes\Statistics\FrequencyList.cs" />
+    <Compile Include="Classes\Statistics\SortDictionary.cs" />
+    <Compile Include="Classes\TheoryOfSet\Alphabet.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
