@@ -1,8 +1,7 @@
 using System.Collections;
-using ChainAnalises.Classes.AuxiliaryClasses.DataManipulators.Iterators;
-using ChainAnalises.Classes.IntervalAnalysis;
-using ChainAnalises.Classes.Root;
-using ChainAnalises.Classes.TheoryOfSet;
+using LibiadaCore.Classes.Misc.Iterators;
+using LibiadaCore.Classes.Root;
+using LibiadaCore.Classes.TheoryOfSet;
 
 namespace AlphaberCheckers.Classes
 {

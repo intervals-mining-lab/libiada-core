@@ -3,4 +3,5 @@
 *.DotSettings.user
 *.suo
 obj
+bin
 _ReSharper*

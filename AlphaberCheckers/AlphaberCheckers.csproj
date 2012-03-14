@@ -31,8 +31,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="ChainAnalises">
-      <HintPath>..\..\libiada-core\bin\Debug\ChainAnalises.dll</HintPath>
+    <Reference Include="LibiadaCore, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\libiada-core\LibiadaCore\bin\Debug\LibiadaCore.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />

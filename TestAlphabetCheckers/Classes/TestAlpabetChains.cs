@@ -1,7 +1,7 @@
 using System.Collections;
 using AlphaberCheckers.Classes;
-using ChainAnalises.Classes.IntervalAnalysis;
-using ChainAnalises.Classes.Root.SimpleTypes;
+using LibiadaCore.Classes.Root;
+using LibiadaCore.Classes.Root.SimpleTypes;
 using NUnit.Framework;
 
 namespace TestAlphabetCheckers.Classes
