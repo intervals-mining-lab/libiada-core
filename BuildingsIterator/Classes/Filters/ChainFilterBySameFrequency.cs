@@ -1,5 +1,5 @@
-using ChainAnalises.Classes.IntervalAnalysis;
-using ChainAnalises.Classes.IntervalAnalysis.Characteristics;
+using LibiadaCore.Classes.Root;
+using LibiadaCore.Classes.Root.Characteristics;
 
 namespace BuildingsIterator.Classes.Filters
 {

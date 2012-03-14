@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using BuildingsIterator.Classes.Filters;
 using BuildingsIterator.Classes.Statistics;
-using ChainAnalises.Classes.IntervalAnalysis.Characteristics;
+using LibiadaCore.Classes.Root.Characteristics;
 
 namespace BuildingsIterator.Classes
 {
