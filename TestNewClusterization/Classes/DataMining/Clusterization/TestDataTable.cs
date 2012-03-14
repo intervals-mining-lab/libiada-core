@@ -54,6 +54,7 @@ namespace TestNewClusterization.Classes.DataMining.Clusterization
 
         ///<summary>
         ///</summary>
+        [Test]
         public void TestInputOutput()
         {
             DataTable DTable = new DataTable();

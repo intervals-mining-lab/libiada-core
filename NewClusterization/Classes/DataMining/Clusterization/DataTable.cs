@@ -1,7 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Specialized;
-using ChainAnalises.Classes.Root;
+using LibiadaCore.Classes.Root;
 
 namespace NewClusterization.Classes.DataMining.Clusterization
 {
