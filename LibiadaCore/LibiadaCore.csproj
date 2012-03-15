@@ -55,6 +55,12 @@
     <Compile Include="Classes\Misc\Iterators\IteratorWritableEnd.cs" />
     <Compile Include="Classes\Misc\Iterators\IteratorWritableStart.cs" />
     <Compile Include="Classes\Misc\Iterators\IWritableIterator.cs" />
+    <Compile Include="Classes\Misc\SpaceRebuilders\NullRebuilder.cs" />
+    <Compile Include="Classes\Misc\SpaceRebuilders\PsevdoCycleSpaceRebuilder.cs" />
+    <Compile Include="Classes\Misc\SpaceRebuilders\SpaceNotPhantomRebuilder.cs" />
+    <Compile Include="Classes\Misc\SpaceRebuilders\SpacePhantomRebuilder.cs" />
+    <Compile Include="Classes\Misc\SpaceRebuilders\SpaceRebuilder.cs" />
+    <Compile Include="Classes\Misc\SpaceRebuilders\SpaceRebuilderFromChainToChainByBlock.cs" />
     <Compile Include="Classes\Root\BaseChain.cs" />
     <Compile Include="Classes\Root\Chain.cs" />
     <Compile Include="Classes\Root\ChainMessage.cs" />
@@ -77,6 +83,7 @@
     <Compile Include="Classes\Root\Characteristics\Calculators\NomalizationGamut.cs" />
     <Compile Include="Classes\Root\Characteristics\Calculators\NormalizedAverageRemoteness.cs" />
     <Compile Include="Classes\Root\Characteristics\Calculators\Periodicity.cs" />
+    <Compile Include="Classes\Root\Characteristics\Calculators\PhantomMessagesCount.cs" />
     <Compile Include="Classes\Root\Characteristics\Calculators\Probability.cs" />
     <Compile Include="Classes\Root\Characteristics\Calculators\Regularity.cs" />
     <Compile Include="Classes\Root\Characteristics\Calculators\Volume.cs" />
@@ -86,6 +93,7 @@
     <Compile Include="Classes\Root\IBaseObject.cs" />
     <Compile Include="Classes\Root\IBin.cs" />
     <Compile Include="Classes\Root\LinkUp.cs" />
+    <Compile Include="Classes\Root\SimpleTypes\ValuePhantom.cs" />
     <Compile Include="Classes\Root\SimpleTypes\ValueChar.cs" />
     <Compile Include="Classes\Root\SimpleTypes\ValueDouble.cs" />
     <Compile Include="Classes\Root\SimpleTypes\ValueString.cs" />
