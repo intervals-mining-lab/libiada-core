@@ -1,8 +1,8 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using ChainAnalises.Classes.AuxiliaryClasses.DataManipulators.Iterators;
-using ChainAnalises.Classes.IntervalAnalysis;
+using LibiadaCore.Classes.Misc.Iterators;
+using LibiadaCore.Classes.Root;
 using Segmentation.Classes.AuxiliaryClasses;
 using Segmentation.Classes.Criteria;
 using Segmentation.Classes.DataCollectors;

@@ -1,5 +1,5 @@
 using System;
-using ChainAnalises.Classes.IntervalAnalysis;
+using LibiadaCore.Classes.Root;
 using Segmentation.Classes.Criteria;
 
 namespace Segmentation.Classes

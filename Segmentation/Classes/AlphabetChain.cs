@@ -1,7 +1,6 @@
 ﻿using System.Collections;
-using ChainAnalises.Classes.IntervalAnalysis;
-using ChainAnalises.Classes.Root;
-using ChainAnalises.Classes.TheoryOfSet;
+using LibiadaCore.Classes.Root;
+using LibiadaCore.Classes.TheoryOfSet;
 
 namespace Segmentation.Classes
 {

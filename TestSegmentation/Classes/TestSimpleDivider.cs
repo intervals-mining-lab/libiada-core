@@ -1,5 +1,5 @@
-using ChainAnalises.Classes.IntervalAnalysis;
-using ChainAnalises.Classes.Root.SimpleTypes;
+using LibiadaCore.Classes.Root;
+using LibiadaCore.Classes.Root.SimpleTypes;
 using NUnit.Framework;
 using Segmentation.Classes;
 using Segmentation.Classes.Criteria;
@@ -69,7 +69,7 @@ namespace TestSegmentation.Classes
             SimpleDivider s_div = new SimpleDivider(chain_for_divizion, 0.7,4,LinkUp.Both,Method.Convoluted);
             double level = 0;
             AlphabetChain alph=s_div.DivideToAccords(level);
-//            Assert.AreEqual(alph_expected, alph);
+            Assert.AreEqual(alph_expected, alph);
             
         }
     }

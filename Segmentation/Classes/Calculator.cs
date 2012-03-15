@@ -1,6 +1,6 @@
-using ChainAnalises.Classes.AuxiliaryClasses.DataManipulators.Iterators;
-using ChainAnalises.Classes.IntervalAnalysis;
-using ChainAnalises.Classes.IntervalAnalysis.Characteristics;
+using LibiadaCore.Classes.Misc.Iterators;
+using LibiadaCore.Classes.Root;
+using LibiadaCore.Classes.Root.Characteristics;
 
 namespace Segmentation.Classes
 {

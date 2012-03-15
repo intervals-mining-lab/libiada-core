@@ -1,4 +1,4 @@
-using ChainAnalises.Classes.IntervalAnalysis;
+using LibiadaCore.Classes.Root;
 using Segmentation.Classes.DataCollectors;
 
 namespace Segmentation.Classes.ProbabilityCountStrateges

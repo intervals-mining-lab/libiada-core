@@ -1,6 +1,6 @@
 using System.Collections;
-using ChainAnalises.Classes.AuxiliaryClasses.DataManipulators.Iterators;
-using ChainAnalises.Classes.IntervalAnalysis;
+using LibiadaCore.Classes.Misc.Iterators;
+using LibiadaCore.Classes.Root;
 using Segmentation.Classes.AuxiliaryClasses;
 
 namespace Segmentation.Classes.DataCollectors
