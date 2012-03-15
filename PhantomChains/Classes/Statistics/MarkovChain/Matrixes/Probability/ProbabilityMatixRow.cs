@@ -1,5 +1,8 @@
 using System;
 using System.Collections.Generic;
+using LibiadaCore.Classes.EventTheory;
+using LibiadaCore.Classes.Root;
+using LibiadaCore.Classes.TheoryOfSet;
 using PhantomChains.Classes.Statistics.MarkovChain.Builders;
 using PhantomChains.Classes.Statistics.MarkovChain.Matrixes.Absolute;
 using PhantomChains.Classes.Statistics.MarkovChain.Matrixes.Base;

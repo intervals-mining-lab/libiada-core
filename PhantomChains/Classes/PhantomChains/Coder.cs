@@ -1,4 +1,6 @@
 ﻿using System;
+using LibiadaCore.Classes.Root;
+using LibiadaCore.Classes.Root.SimpleTypes;
 
 namespace PhantomChains.Classes.PhantomChains
 {
@@ -236,7 +238,7 @@ namespace PhantomChains.Classes.PhantomChains
         /// Метод преобразующий аминокислотные цепи в фантомные.
         ///</summary>
         ///<param name="InputChain">Аминокислотная цепь типа <see cref="BaseChain"/></param>
-        ///<returns>Фантомная цепь типа <see cref="BaseChain"/>, в качестве элементов используются <see cref="MessagePhantom"/></returns>
+        ///<returns>Фантомная цепь типа <see cref="BaseChain"/>, в качестве элементов используются <see cref="ValuePhantom"/></returns>
         ///<exception cref="Exception">Исключение возникает в случае наличия в цепи элементов не являющихся аминокислотами</exception>
         public static BaseChain Decode(BaseChain InputChain)
         {
@@ -244,7 +246,7 @@ namespace PhantomChains.Classes.PhantomChains
             for (int i = 0; i < InputChain.Length; i++)
             {
                 string str = InputChain[i].ToString();
-                MessagePhantom m = new MessagePhantom();
+                ValuePhantom m = new ValuePhantom();
                 switch (str)
                 {
                     case "Phe":

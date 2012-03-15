@@ -1,5 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using LibiadaCore.Classes.EventTheory;
+using LibiadaCore.Classes.Root;
+using LibiadaCore.Classes.Root.SimpleTypes;
 
 namespace PhantomChains.Classes.PhantomChains
 {
@@ -27,10 +30,10 @@ namespace PhantomChains.Classes.PhantomChains
             for (int j = 0; j < InternalChain.Length; j++)
             {
 
-                if ((((MessagePhantom) InternalChain[j])[0] is ValueString) ||
-                    (((MessagePhantom) InternalChain[j])[0] is BaseChain))
+                if ((((ValuePhantom) InternalChain[j])[0] is ValueString) ||
+                    (((ValuePhantom) InternalChain[j])[0] is BaseChain))
                 {
-                    StartPositions.Add(StartPositions[j] + ((MessagePhantom) InternalChain[j])[0].ToString().Length);
+                    StartPositions.Add(StartPositions[j] + ((ValuePhantom) InternalChain[j])[0].ToString().Length);
                 }
                 else
                 {
@@ -41,12 +44,12 @@ namespace PhantomChains.Classes.PhantomChains
             table.Add(null);
             for(int i=InternalChain.Length;i>0;i--)
             {
-                MessagePhantom Temp = (MessagePhantom)InternalChain[i-1];
+                ValuePhantom Temp = (ValuePhantom)InternalChain[i-1];
                 table[i] = new Record(Temp, v);
                 v *= (uint)Temp.power;
             }
             //корню дерева не ставится в соответствие фантомное сообщение
-            MessagePhantom t = new MessagePhantom();
+            ValuePhantom t = new ValuePhantom();
             t.Add(PsevdoValue.Instance());
             table[0] = new Record(t, v);
         }

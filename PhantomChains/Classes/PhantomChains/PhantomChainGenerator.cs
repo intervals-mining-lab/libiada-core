@@ -1,5 +1,8 @@
 using System;
 using System.Collections.Generic;
+using LibiadaCore.Classes.Misc.SpaceRebuilders;
+using LibiadaCore.Classes.Root;
+using LibiadaCore.Classes.Root.SimpleTypes;
 using PhantomChains.Classes.Statistics.MarkovChain.Generators;
 
 namespace PhantomChains.Classes.PhantomChains
@@ -39,11 +42,11 @@ namespace PhantomChains.Classes.PhantomChains
             InternalChain = rebuilder.Rebuild(chain);
             for(int w=0;w<InternalChain.Length;w++)
             {
-                TotalLength += ((MessagePhantom) InternalChain[w])[0].ToString().Length;
+                TotalLength += ((ValuePhantom) InternalChain[w])[0].ToString().Length;
             }
             UInt64 TempVariants = 1;
             int counter = 0;
-            MessagePhantom TempMessage = null;
+            ValuePhantom TempMessage = null;
             for (int k = 0; k < (int)Math.Ceiling((double)InternalChain.Length / BasicChainLength); k++)
             {
                 TempChains.Add(new ChainTo());
@@ -58,12 +61,12 @@ namespace PhantomChains.Classes.PhantomChains
                 {
                     if (counter < InternalChain.Length)
                     {
-                        TempMessage = (MessagePhantom)InternalChain[counter];
+                        TempMessage = (ValuePhantom)InternalChain[counter];
                         TempChains[i][j] = TempMessage;
                     }
                     else
                     {
-                        TempMessage = new MessagePhantom();
+                        TempMessage = new ValuePhantom();
                         TempMessage.Add(new ValueChar('a'));
                         TempChains[i][j] = TempMessage;
                     }

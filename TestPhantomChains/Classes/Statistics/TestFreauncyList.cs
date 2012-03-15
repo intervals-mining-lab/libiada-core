@@ -1,3 +1,4 @@
+using LibiadaCore.Classes.Root.SimpleTypes;
 using NUnit.Framework;
 using PhantomChains.Classes.Statistics;
 

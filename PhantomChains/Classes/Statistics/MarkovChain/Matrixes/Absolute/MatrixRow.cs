@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using LibiadaCore.Classes.EventTheory;
 using PhantomChains.Classes.Statistics.MarkovChain.Builders;
 using PhantomChains.Classes.Statistics.MarkovChain.Matrixes.Base;
 using PhantomChains.Classes.Statistics.MarkovChain.Matrixes.Probability;

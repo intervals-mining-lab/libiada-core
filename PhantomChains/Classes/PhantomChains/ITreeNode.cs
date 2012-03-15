@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using LibiadaCore.Classes.Root;
 using PhantomChains.Classes.Statistics.MarkovChain.Generators;
 
 namespace PhantomChains.Classes.PhantomChains

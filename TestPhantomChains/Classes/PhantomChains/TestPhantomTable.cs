@@ -1,3 +1,5 @@
+using LibiadaCore.Classes.Root;
+using LibiadaCore.Classes.Root.SimpleTypes;
 using NUnit.Framework;
 using PhantomChains.Classes.PhantomChains;
 
@@ -9,9 +11,9 @@ namespace TestPhantomChains.Classes.PhantomChains
         [Test]
         public void TestVolume()
         {
-            MessagePhantom M1 = new MessagePhantom();
-            MessagePhantom M2 = new MessagePhantom();
-            MessagePhantom M3 = new MessagePhantom();
+            ValuePhantom M1 = new ValuePhantom();
+            ValuePhantom M2 = new ValuePhantom();
+            ValuePhantom M3 = new ValuePhantom();
 
             M1.Add(new ValueChar('1'));
             M1.Add(new ValueChar('2'));
@@ -38,8 +40,8 @@ namespace TestPhantomChains.Classes.PhantomChains
         [Test]
         public void TestContent()
         {
-            MessagePhantom M1 = new MessagePhantom();
-            MessagePhantom M2 = new MessagePhantom();
+            ValuePhantom M1 = new ValuePhantom();
+            ValuePhantom M2 = new ValuePhantom();
 
             M1.Add(new ValueChar('1'));
             M1.Add(new ValueChar('2'));

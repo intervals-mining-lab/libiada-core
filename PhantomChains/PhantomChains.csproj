@@ -31,6 +31,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="LibiadaCore, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\libiada-core\LibiadaCore\bin\Debug\LibiadaCore.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -42,7 +46,6 @@
   <ItemGroup>
     <Compile Include="Classes\PhantomChains\Coder.cs" />
     <Compile Include="Classes\PhantomChains\ITreeNode.cs" />
-    <Compile Include="Classes\PhantomChains\MessagePhantom.cs" />
     <Compile Include="Classes\PhantomChains\PhantomChainGenerator.cs" />
     <Compile Include="Classes\PhantomChains\PhantomTable.cs" />
     <Compile Include="Classes\PhantomChains\Record.cs" />

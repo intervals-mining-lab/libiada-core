@@ -1,5 +1,9 @@
 using System;
 using System.Collections.Generic;
+using LibiadaCore.Classes.Misc.Iterators;
+using LibiadaCore.Classes.Misc.SpaceRebuilders;
+using LibiadaCore.Classes.Root;
+using LibiadaCore.Classes.TheoryOfSet;
 using PhantomChains.Classes.Statistics.MarkovChain.Builders;
 using PhantomChains.Classes.Statistics.MarkovChain.Generators;
 using PhantomChains.Classes.Statistics.MarkovChain.Matrixes.Absolute;
@@ -88,7 +92,7 @@ namespace PhantomChains.Classes.Statistics.MarkovChain
                 case TeachingMethod.None:
                     return new NullRebuilder<ChainTeached, ChainTeached>();
                 case TeachingMethod.Cycle:
-                    return new PsevdoCycleSpace<ChainTeached, ChainTeached>(rang - 1);
+                    return new PsevdoCycleSpaceRebuilder<ChainTeached, ChainTeached>(rang - 1);
                 default:
                     throw new Exception();
             }

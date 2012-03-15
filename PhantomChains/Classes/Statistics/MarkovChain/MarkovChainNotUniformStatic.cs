@@ -1,3 +1,5 @@
+using LibiadaCore.Classes.Misc.Iterators;
+using LibiadaCore.Classes.Root;
 using PhantomChains.Classes.Statistics.MarkovChain.Generators;
 
 namespace PhantomChains.Classes.Statistics.MarkovChain

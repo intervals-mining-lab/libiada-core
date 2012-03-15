@@ -1,4 +1,9 @@
 using System;
+using LibiadaCore.Classes.Misc.Iterators;
+using LibiadaCore.Classes.Misc.SpaceRebuilders;
+using LibiadaCore.Classes.Root;
+using LibiadaCore.Classes.Root.SimpleTypes;
+using LibiadaCore.Classes.TheoryOfSet;
 using PhantomChains.Classes.Statistics.MarkovChain.Matrixes.Absolute;
 using PhantomChains.Classes.Statistics.MarkovChain.Matrixes.Probability;
 using NUnit.Framework;
@@ -288,7 +293,7 @@ namespace TestPhantomChains.Classes.Statistics.MarkovChain
         {
             matr = new Matrix(TestChain.Alpahbet.power, 3);
 
-            PsevdoCycleSpace<Chain, Chain> Rebuilder = new PsevdoCycleSpace<Chain, Chain>(2);
+            PsevdoCycleSpaceRebuilder<Chain, Chain> Rebuilder = new PsevdoCycleSpaceRebuilder<Chain, Chain>(2);
             TestChain = Rebuilder.Rebuild(TestChain);
 
             IteratorStart<Chain, Chain> It = new IteratorStart<Chain, Chain>(TestChain, 3, 1);
@@ -522,7 +527,7 @@ namespace TestPhantomChains.Classes.Statistics.MarkovChain
         {
             matr = new Matrix(TestChain.Alpahbet.power, 3);
 
-            PsevdoCycleSpace<Chain, Chain> Rebuilder = new PsevdoCycleSpace<Chain, Chain>(2);
+            PsevdoCycleSpaceRebuilder<Chain, Chain> Rebuilder = new PsevdoCycleSpaceRebuilder<Chain, Chain>(2);
             TestChain = Rebuilder.Rebuild(TestChain);
 
             IteratorStart<Chain, Chain> It = new IteratorStart<Chain, Chain>(TestChain, 3, 1);

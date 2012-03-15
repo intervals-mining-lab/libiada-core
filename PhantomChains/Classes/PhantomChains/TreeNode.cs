@@ -1,4 +1,6 @@
 using System;
+using LibiadaCore.Classes.Root;
+using LibiadaCore.Classes.Root.SimpleTypes;
 using PhantomChains.Classes.Statistics.MarkovChain.Generators;
 
 namespace PhantomChains.Classes.PhantomChains
@@ -74,7 +76,7 @@ namespace PhantomChains.Classes.PhantomChains
         {
             if ((table.Length != (level + 2))&&(Children.Count==0))
             {
-                MessagePhantom temp = table[level + 2].Content;
+                ValuePhantom temp = table[level + 2].Content;
                 for (int i = 0; i < temp.power; i++)
                 {
                     Children.Add(new TreeNode(this, temp[i], table));

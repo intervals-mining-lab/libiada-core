@@ -1,4 +1,7 @@
 using System.Collections.Generic;
+using LibiadaCore.Classes.Misc.Iterators;
+using LibiadaCore.Classes.Root;
+using LibiadaCore.Classes.Root.SimpleTypes;
 using NUnit.Framework;
 using PhantomChains.Classes.PhantomChains;
 using PhantomChains.Classes.Statistics.MarkovChain.Generators;

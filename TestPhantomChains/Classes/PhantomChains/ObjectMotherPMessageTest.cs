@@ -1,3 +1,6 @@
+using LibiadaCore.Classes.Root;
+using LibiadaCore.Classes.Root.SimpleTypes;
+using LibiadaCore.Classes.TheoryOfSet;
 using PhantomChains.Classes.PhantomChains;
 
 namespace TestPhantomChains.Classes.PhantomChains
@@ -6,8 +9,8 @@ namespace TestPhantomChains.Classes.PhantomChains
     ///</summary>
     public class ObjectMotherPMessageTest
     {
-        private readonly MessagePhantom PM1 = null;
-        private readonly MessagePhantom PM2 = null;
+        private readonly ValuePhantom PM1 = null;
+        private readonly ValuePhantom PM2 = null;
         private readonly BaseChain Chain = null;
 
         private readonly Alphabet alpha = new Alphabet();
@@ -24,10 +27,10 @@ namespace TestPhantomChains.Classes.PhantomChains
             alpha.Add((ValueChar) 'a');
             alpha.Add((ValueChar)'b');
             alpha.Add((ValueChar)'c');
-            PM1 = new MessagePhantom();
+            PM1 = new ValuePhantom();
             PM1.Add(alpha[2]);
             PM1.Add(alpha[1]);
-            PM2 = new MessagePhantom();
+            PM2 = new ValuePhantom();
             PM2.Add(alpha[0]);
 
             Chain.Add(PhantomMessage_B_C,0);
@@ -52,16 +55,16 @@ namespace TestPhantomChains.Classes.PhantomChains
 
         ///<summary>
         ///</summary>
-        public MessagePhantom PhantomMessage_B_C
+        public ValuePhantom PhantomMessage_B_C
         {
-            get { return (MessagePhantom) PM1.Clone(); }
+            get { return (ValuePhantom) PM1.Clone(); }
         }
 
         ///<summary>
         ///</summary>
-        public MessagePhantom PhantomMessage_A
+        public ValuePhantom PhantomMessage_A
         {
-            get { return (MessagePhantom) PM2.Clone(); }
+            get { return (ValuePhantom) PM2.Clone(); }
         }
 
         ///<summary>

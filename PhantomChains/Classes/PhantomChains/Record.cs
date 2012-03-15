@@ -1,4 +1,5 @@
 ﻿using System;
+using LibiadaCore.Classes.Root.SimpleTypes;
 
 namespace PhantomChains.Classes.PhantomChains
 {
@@ -11,7 +12,7 @@ namespace PhantomChains.Classes.PhantomChains
         /// Фантомное сообщение, находящееся в определенной позиции фантомной цепи 
         /// и представляющее варианты содержимого узлов этого же уровня в дереве вариантов.
         ///</summary>
-        public MessagePhantom Content = null;
+        public ValuePhantom Content = null;
         ///<summary>
         /// Количество варинтов, накопившееся к данному уровню дерева.
         ///</summary>
@@ -23,7 +24,7 @@ namespace PhantomChains.Classes.PhantomChains
         ///<param name="message">Фантомное сообщение в данной позиции фантомной цепи</param>
         ///<param name="volume">Суммарное количество варинтов построения до данной позиции</param>
         ///<exception cref="Exception">Исключение возникает в слчае отирицательного количества вариантов</exception>
-        public Record(MessagePhantom message,UInt64 volume)
+        public Record(ValuePhantom message,UInt64 volume)
         {
             if(volume<0)
             {

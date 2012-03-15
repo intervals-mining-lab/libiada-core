@@ -1,3 +1,5 @@
+using LibiadaCore.Classes.Root;
+using LibiadaCore.Classes.Root.SimpleTypes;
 using NUnit.Framework;
 using PhantomChains.Classes.Statistics.MarkovChain;
 using PhantomChains.Classes.Statistics.MarkovCompare;

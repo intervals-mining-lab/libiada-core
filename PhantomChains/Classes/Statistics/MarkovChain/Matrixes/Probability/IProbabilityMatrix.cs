@@ -1,4 +1,6 @@
 using System.Collections.Generic;
+using LibiadaCore.Classes.Root;
+using LibiadaCore.Classes.TheoryOfSet;
 using PhantomChains.Classes.Statistics.MarkovChain.Matrixes.Absolute;
 
 namespace PhantomChains.Classes.Statistics.MarkovChain.Matrixes.Probability
