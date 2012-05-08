@@ -51,7 +51,6 @@ namespace Segmentation.Classes
         ///<returns></returns>
         public Chain Convolute(Chain chain_for_convolution, Chain one_symbol_chain,IDataForStd data_for_convolution)
         {
-            int actual_length = 0;
             Chain result_chain = new Chain((chain_for_convolution.Length - (data_for_convolution.n * (one_symbol_chain.Length - 1))));
 
             IteratorStart<Chain, Chain> it =

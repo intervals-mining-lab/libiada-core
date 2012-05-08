@@ -76,7 +76,6 @@ namespace Segmentation.Classes
                 if (!alphabet.ContainsKey(std))
                     alphabet.Add(std, accord);
             }
-            DictionaryEntry answer = new DictionaryEntry();
 
             ArrayList tmp = new ArrayList(alphabet.Keys);
             ArrayList tmp2 = new ArrayList(alphabet.Values);
