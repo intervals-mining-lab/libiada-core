@@ -19,7 +19,7 @@ namespace PhantomChains.Classes.PhantomChains
         ///<exception cref="Exception">Исключение возникает в случае наличия в нуклеотидной цепи значений отличных от A,C,T и G</exception>
         public static BaseChain Encode(BaseChain InputChain)
         {
-            if(InputChain.Alpahbet.power>4)
+            if(InputChain.Alphabet.power>4)
             {
                 throw new Exception();
             }
@@ -371,7 +371,7 @@ namespace PhantomChains.Classes.PhantomChains
         ///<exception cref="Exception">Допустимая мощность алфавита - 4</exception>
         public static BaseChain EncodeTriplets(BaseChain InputChain)
         {
-            if(InputChain.Alpahbet.power>4)
+            if(InputChain.Alphabet.power>4)
             {
                 throw new Exception();
             }

@@ -54,8 +54,6 @@
     <Compile Include="Classes\Statistics\MarkovChain\TestIterationMatrix.cs" />
     <Compile Include="Classes\Statistics\MarkovChain\TestMarkovChainNotIniform.cs" />
     <Compile Include="Classes\Statistics\MarkovChain\TestProbabilityMatrix.cs" />
-    <Compile Include="Classes\Statistics\TestFreauncyList.cs" />
-    <Compile Include="Classes\Statistics\TestSortDictionary.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

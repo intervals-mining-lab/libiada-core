@@ -107,7 +107,7 @@ namespace PhantomChains.Classes.Statistics.MarkovChain
         {
             MatrixBuilder builder = new MatrixBuilder();
             IAbsoluteMatrix[] absMatrix = new IAbsoluteMatrix[uniformRang + 1];
-            alphabet = chain.Alpahbet;
+            alphabet = chain.Alphabet;
             for (int i = 0; i < uniformRang + 1; i++)
                 absMatrix[i] = (IAbsoluteMatrix)builder.Create(alphabet.power, rang);
             SpaceRebuilder<ChainTeached, ChainTeached> Rebuilder = GetRebuilder(Method);
@@ -129,7 +129,7 @@ namespace PhantomChains.Classes.Statistics.MarkovChain
                 int[] indexedChain = new int[rang];
                 for (int i = 0; i < rang; i++)
                 {
-                    indexedChain[i] = chain.Alpahbet.IndexOf(chainToTeach[i]);
+                    indexedChain[i] = chain.Alphabet.IndexOf(chainToTeach[i]);
                 }
                 absMatrix[m - 1].Add(indexedChain);
             }

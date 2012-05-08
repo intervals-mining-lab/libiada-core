@@ -51,8 +51,6 @@
     <Compile Include="Classes\PhantomChains\Record.cs" />
     <Compile Include="Classes\PhantomChains\TreeNode.cs" />
     <Compile Include="Classes\PhantomChains\TreeTop.cs" />
-    <Compile Include="Classes\Statistics\DictionaryEntryBase.cs" />
-    <Compile Include="Classes\Statistics\FrequencyList.cs" />
     <Compile Include="Classes\Statistics\MarkovChain\Builders\IMatrixBuilder.cs" />
     <Compile Include="Classes\Statistics\MarkovChain\Builders\MatrixBuilder.cs" />
     <Compile Include="Classes\Statistics\MarkovChain\Builders\ProbabilityMatixBuilder.cs" />
@@ -79,7 +77,6 @@
     <Compile Include="Classes\Statistics\MarkovChain\Matrixes\Probability\ProbabilityMatrix.cs" />
     <Compile Include="Classes\Statistics\MarkovChain\TeachingMethod.cs" />
     <Compile Include="Classes\Statistics\MarkovCompare\MarkovMetrics.cs" />
-    <Compile Include="Classes\Statistics\SortDictionary.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />
