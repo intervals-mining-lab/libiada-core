@@ -35,7 +35,7 @@ namespace LibiadaCore.Classes.Root.Characteristics.Calculators
                         result + Math.Log((ValueInt) StartInterval[0].Key, 2) +
                         Math.Log((ValueInt) EndInterval[0].Key, 2);
                 default:
-                    throw new Exception("Супер странная ошибка :)");
+                    throw new Exception("Неизвестная привязка");
             }
         }
 
@@ -48,7 +48,7 @@ namespace LibiadaCore.Classes.Root.Characteristics.Calculators
         {
             IChainDataForCalculaton Data = pChain;
             double temp = 0;
-            for (int i = 0; i < pChain.Alpahbet.power; i++)
+            for (int i = 0; i < pChain.Alphabet.power; i++)
             {
                 temp += Data.IUniformChain(i).GetCharacteristic(Link, CharacteristicsFactory.G);
             }

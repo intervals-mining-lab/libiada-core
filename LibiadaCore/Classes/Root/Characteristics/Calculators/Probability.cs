@@ -23,7 +23,7 @@ namespace LibiadaCore.Classes.Root.Characteristics.Calculators
         {
             IChainDataForCalculaton Data = pChain;
             double temp = 0;
-            for (int i = 0; i < pChain.Alpahbet.power; i++)
+            for (int i = 0; i < pChain.Alphabet.power; i++)
             {
                 temp += Data.IUniformChain(i).GetCharacteristic(Link, CharacteristicsFactory.P);
             }

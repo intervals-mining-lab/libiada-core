@@ -100,7 +100,7 @@ namespace LibiadaCore.Classes.Root
         public ChainWithCharacteristic UniformChain(IBaseObject baseObject)
         {
             ChainWithCharacteristic result = null;
-            int pos = Alpahbet.IndexOf(baseObject);
+            int pos = Alphabet.IndexOf(baseObject);
             if (pos != -1)
             {
                 result = (UniformChain) ((UniformChain) pUniformChains[pos]).Clone();
@@ -112,7 +112,7 @@ namespace LibiadaCore.Classes.Root
         {
             base.AddItem(what, where);
 
-            if (pUniformChains.Count != Alpahbet.power)
+            if (pUniformChains.Count != Alphabet.power)
             {
                 pUniformChains.Add(new UniformChain(Length, what));
             }
@@ -168,7 +168,7 @@ namespace LibiadaCore.Classes.Root
             if(pNotUniformChains.Count > 0)
                 return;
             List<int> Counters = new List<int>();
-            for (int j = 0; j < Alpahbet.power; j++)
+            for (int j = 0; j < Alphabet.power; j++)
             {
                 Counters.Add(0);
             }

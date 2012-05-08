@@ -76,7 +76,7 @@ namespace TestLibiadaCore.Classes.Root.Characteristics.Calculators
             Characteristic ARemoteness = new Characteristic(new AverageRemoteness());
 
             int Alphabet_power = 3;
-            Assert.AreEqual(Alphabet_power, TestChain.Alpahbet.power);
+            Assert.AreEqual(Alphabet_power, TestChain.Alphabet.power);
 
 
             double remoutness11 = Math.Log(1, 2);

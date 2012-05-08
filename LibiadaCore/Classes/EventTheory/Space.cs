@@ -106,7 +106,7 @@ namespace LibiadaCore.Classes.EventTheory
         /// Алфавит является копией и его последующее изменение не как не скажется на состоянии
         /// пространства. алфавит не содержит псеводовеличины.
         ///</summary>
-        public Alphabet Alpahbet
+        public Alphabet Alphabet
         {
             get
             {
@@ -141,7 +141,7 @@ namespace LibiadaCore.Classes.EventTheory
                 return false;
             }
 
-            if (!Alpahbet.Equals(discrete.Alpahbet))
+            if (!Alphabet.Equals(discrete.Alphabet))
             {
                 return false;
             }
@@ -175,7 +175,7 @@ namespace LibiadaCore.Classes.EventTheory
         ///<param name="Temp"></param>
         public void FillBin(SpaceBin Temp)
         {
-            Temp.Alphabet = (AlphabetBin) Alpahbet.GetBin();
+            Temp.Alphabet = (AlphabetBin) Alphabet.GetBin();
             Temp.Building = (long[])vault.Clone();
             foreach (Dimension dimension in pDimension)
             {

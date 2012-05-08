@@ -25,7 +25,7 @@ namespace LibiadaCore.Classes.Root.Characteristics.Calculators
             IChainDataForCalculaton Data = pChain;
             double temp = 0;
             double n = pChain.GetCharacteristic(Link, CharacteristicsFactory.IntervalsCount);
-            for (int i = 0; i < pChain.Alpahbet.power; i++)
+            for (int i = 0; i < pChain.Alphabet.power; i++)
             {
                 double Uniformdg =
                     Data.IUniformChain(i).GetCharacteristic(Link, CharacteristicsFactory.deltaG);

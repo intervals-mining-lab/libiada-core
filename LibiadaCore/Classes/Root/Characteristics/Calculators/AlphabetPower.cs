@@ -7,12 +7,12 @@ namespace LibiadaCore.Classes.Root.Characteristics.Calculators
     {
         public double Calculate(UniformChain pChain, LinkUp Link)
         {
-            return pChain.Alpahbet.power;
+            return pChain.Alphabet.power;
         }
 
         public double Calculate(Chain pChain, LinkUp Link)
         {
-            return pChain.Alpahbet.power;
+            return pChain.Alphabet.power;
         }
 
         public CharacteristicsEnum GetCharacteristicName()

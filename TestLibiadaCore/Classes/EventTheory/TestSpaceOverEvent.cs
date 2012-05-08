@@ -211,11 +211,11 @@ namespace TestLibiadaCore.Classes.EventTheory
 
             BaseSpace.AddItem(int1, Pl);
 
-            Alphabet Alp = BaseSpace.Alpahbet;
+            Alphabet Alp = BaseSpace.Alphabet;
 
             Alp.Add(new ValueInt(4));
 
-            Assert.IsFalse(BaseSpace.Alpahbet.Equals(Alp));
+            Assert.IsFalse(BaseSpace.Alphabet.Equals(Alp));
         }
 
         ///<summary>
@@ -257,8 +257,8 @@ namespace TestLibiadaCore.Classes.EventTheory
             Alp.Add(int1);
             Alp.Add(int2);
 
-            Assert.AreEqual(BaseSpace.Alpahbet.power, Alp.power);
-            Assert.IsTrue(BaseSpace.Alpahbet.Equals(Alp));
+            Assert.AreEqual(BaseSpace.Alphabet.power, Alp.power);
+            Assert.IsTrue(BaseSpace.Alphabet.Equals(Alp));
 
             Pl.SetValues(new long[] {1, 1});
             Assert.AreEqual(int1, BaseSpace.GetItem(Pl));

@@ -58,7 +58,7 @@ namespace TestLibiadaCore.Classes.Root.Characteristics.Calculators
             double n_C = 3;
             double sum_ariphmetical = (n/n_A) + (n/n_B) + (n/n_C);
             int Alphabet_power = 3;
-            Assert.AreEqual(Alphabet_power, TestChain.Alpahbet.power);
+            Assert.AreEqual(Alphabet_power, TestChain.Alphabet.power);
             Assert.AreEqual(sum_ariphmetical/Alphabet_power, deltaA.Value(TestChain, LinkUp.Start));
             Assert.AreEqual(sum_ariphmetical/Alphabet_power, deltaA.Value(TestChain, LinkUp.End));
             Assert.AreEqual(sum_ariphmetical/Alphabet_power, deltaA.Value(TestChain, LinkUp.Both));
