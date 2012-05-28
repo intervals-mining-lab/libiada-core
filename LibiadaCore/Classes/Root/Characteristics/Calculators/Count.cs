@@ -20,7 +20,7 @@ namespace LibiadaCore.Classes.Root.Characteristics.Calculators
         }
 
         /// <summary>
-        /// Для неоднородной цепи это её длина.
+        /// Для полной неоднородной цепи это её длина.
         /// </summary>
         /// <param name="pChain"></param>
         /// <param name="Link"></param>

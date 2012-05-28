@@ -11,6 +11,46 @@ namespace LibiadaCore.Classes.Root
     public class BaseChain : Space, IBaseObject
     {
         ///<summary>
+        ///</summary>
+        ///<param name="length">Длинна создаваемой цепочки</param>
+        ///<exception cref="Exception"></exception>
+        public BaseChain(int length)
+        {
+            ClearAndSetNewLength(length);
+        }
+
+        ///<summary>
+        ///</summary>
+        ///<param name="Bin"></param>
+        public BaseChain(BaseChainBin Bin)
+            : base(Bin)
+        {
+
+        }
+
+        ///<summary>
+        ///</summary>
+        public BaseChain()
+        {
+
+        }
+
+
+        ///<summary>
+        /// Создает цепь из строки символов
+        ///</summary>
+        ///<param name="s"></param>
+        ///<exception cref="NotImplementedException"></exception>
+        public BaseChain(string s)
+        {
+            ClearAndSetNewLength(s.Length);
+            for (int i = 0; i < s.Length; i++)
+            {
+                Add((ValueChar)s[i], i);
+            }
+        }
+
+        ///<summary>
         /// Длинна цепи.
         /// Только для чтения
         ///</summary>
@@ -77,15 +117,6 @@ namespace LibiadaCore.Classes.Root
         ///</summary>
         ///<param name="length"></param>
         ///<exception cref="Exception"></exception>
-        public BaseChain(int length)
-        {
-            ClearAndSetNewLength(length);
-        }
-
-        ///<summary>
-        ///</summary>
-        ///<param name="length"></param>
-        ///<exception cref="Exception"></exception>
         public void ClearAndSetNewLength(int length)
         {
             if (length <= 0)
@@ -94,36 +125,6 @@ namespace LibiadaCore.Classes.Root
             }
             DeleteDimesnions();
             AddDimension(new Dimension(0, length - 1));            
-        }
-
-        ///<summary>
-        ///</summary>
-        ///<param name="Bin"></param>
-        public BaseChain(BaseChainBin Bin):base(Bin)
-        {
-            
-        }
-
-        ///<summary>
-        ///</summary>
-        public BaseChain()
-        {
-            
-        }
-
-        
-        ///<summary>
-        /// Создает цепь из строки символов
-        ///</summary>
-        ///<param name="s"></param>
-        ///<exception cref="NotImplementedException"></exception>
-        public BaseChain(string s)
-        {
-            ClearAndSetNewLength(s.Length);
-            for (int i = 0; i < s.Length; i++)
-            {
-                Add((ValueChar) s[i], i);
-            }
         }
 
         ///<summary>

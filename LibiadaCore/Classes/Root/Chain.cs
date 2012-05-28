@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using LibiadaCore.Classes.EventTheory;
 using LibiadaCore.Classes.Root.Characteristics;
 using LibiadaCore.Classes.Root.Characteristics.AuxiliaryInterfaces;
+using LibiadaCore.Classes.Root.Characteristics.Calculators;
 using LibiadaCore.Classes.Root.SimpleTypes;
 
 namespace LibiadaCore.Classes.Root
@@ -30,7 +31,6 @@ namespace LibiadaCore.Classes.Root
         ///</summary>
         public Chain()
         {
-            
         }
 
         ///<summary>
@@ -55,7 +55,7 @@ namespace LibiadaCore.Classes.Root
         }
 
         ///<summary>
-        /// Кнструктор, создает цепь из строки символов
+        /// Конструктор, создает цепь из строки символов
         ///</summary>
         ///<param name="s"></param>
         public Chain(string s) : base(s)
@@ -183,6 +183,160 @@ namespace LibiadaCore.Classes.Root
                 ((Chain)pNotUniformChains[Element]).Add(new ValueInt((int)vault[i]),i);
             }
 
+        }
+
+        public int Get(IBaseObject element, int entry)
+        {
+            int entranceCount = 0;
+            for (int i = 0; i < Building.Length; i++)
+            {
+                if (this[i].Equals(element))
+                {
+                    entranceCount++;
+                    if (entranceCount == entry)
+                    {
+                        return i;
+                    }
+                }
+            }
+            return -1;
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="j">j</param>
+        /// <param name="L">L</param>
+        /// <param name="entry"></param>
+        /// <returns></returns>
+        public int GetBinaryInterval(IBaseObject j, IBaseObject L, int entry)
+        {
+            int jEntry = Get(j, entry);
+            if (jEntry == -1)
+            {
+                return -1;
+            }
+            for (int i = jEntry + 1; i < Building.Length; i++)
+            {
+                if (j.Equals(this[i]))
+                {
+                    return - 1;
+                }
+                if (L.Equals(this[i]))
+                {
+                    return i - jEntry;
+                }
+            }
+            return -1;
+            //return this.Length - jEntry;
+        }
+
+        public double SpatialDependence(IBaseObject j, IBaseObject L)
+        {
+            int jElementCount = (int)UniformChain(j).GetCharacteristic(LinkUp.Start, new Count());
+            int intervals = 1;
+            int pairs = 0;
+            for (int i = 1; i <= jElementCount; i++)
+            {
+                int binaryInterval = GetBinaryInterval(j, L, i);
+                if(binaryInterval > 0)
+                {
+                    intervals *= binaryInterval;
+                    pairs++;
+                }
+            }
+            return Math.Pow(intervals, 1.0/pairs);
+        }
+
+        public int GetAfter(IBaseObject element, int from)
+        {
+            for (int i = from; i < Building.Length; i++)
+            {
+                if (this[i].Equals(element))
+                {
+                    return i;
+                }
+            }
+            return -1;
+        }
+
+        public double Redundancy(IBaseObject j, IBaseObject L)
+        {
+            UniformChain jChain = (UniformChain)UniformChain(j);
+            int jElementCount = (int)jChain.GetCharacteristic(LinkUp.Start, new Count());
+            int pairedj = 0;
+            double avG = 1;
+            int currentEntrance = 0;
+            for (int i = 1; i <= jElementCount; i++ )
+            {
+                if(GetBinaryInterval(j, L, i) > 0)
+                {
+                    pairedj++;
+                    if(currentEntrance == 0)
+                    {
+                        currentEntrance = GetAfter(L, Get(j, i));
+                    }
+                    else
+                    {
+                        int nextEntrance = GetAfter(L, Get(j, i));
+                        avG *= nextEntrance - currentEntrance;
+                        currentEntrance = nextEntrance;
+                    }
+                }
+            }
+            avG *= this.Length - currentEntrance;
+            avG = Math.Pow(avG, 1.0/pairedj);
+            return 1 - (SpatialDependence(j, L) / avG);
+        }
+
+        public double PartialDependenceCoefficient(IBaseObject j, IBaseObject L)
+        {
+            UniformChain jChain = (UniformChain)UniformChain(j);
+            UniformChain LChain = (UniformChain)UniformChain(L);
+            int jElementCount = (int)jChain.GetCharacteristic(LinkUp.Start, new Count());
+            int LElementCount = (int)LChain.GetCharacteristic(LinkUp.Start, new Count());
+            int intervals = 1;
+            int pairs = 0;
+            for (int i = 1; i <= jElementCount; i++)
+            {
+                int binaryInterval = GetBinaryInterval(j, L, i);
+                if (binaryInterval > 0)
+                {
+                    intervals *= binaryInterval;
+                    pairs++;
+                }
+            }
+            return Redundancy(j, L) * pairs / LElementCount;
+        }
+
+        public double K2(IBaseObject j, IBaseObject L)
+        {
+            UniformChain jChain = (UniformChain)UniformChain(j);
+            UniformChain LChain = (UniformChain)UniformChain(L);
+            int jElementCount = (int)jChain.GetCharacteristic(LinkUp.Start, new Count());
+            int LElementCount = (int)LChain.GetCharacteristic(LinkUp.Start, new Count());
+            int intervals = 1;
+            int pairs = 0;
+            for (int i = 1; i <= jElementCount; i++)
+            {
+                int binaryInterval = GetBinaryInterval(j, L, i);
+                if (binaryInterval > 0)
+                {
+                    intervals *= binaryInterval;
+                    pairs++;
+                }
+            }
+            return Redundancy(j, L) * (2 * pairs) / (jElementCount + LElementCount);
+        }
+
+        public double K3(IBaseObject j, IBaseObject L)
+        {
+            double firstK2 = K2(j, L);
+            double secondK2 = K2(L, j);
+            if(firstK2 < 0 || secondK2 < 0)
+            {
+                return 0;
+            }
+            return Math.Sqrt(firstK2*secondK2);
         }
 
         public new IBin GetBin()

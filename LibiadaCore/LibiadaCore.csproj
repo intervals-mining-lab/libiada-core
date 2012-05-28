@@ -47,6 +47,7 @@
     <Compile Include="Classes\EventTheory\ReadPath.cs" />
     <Compile Include="Classes\EventTheory\ReadRule.cs" />
     <Compile Include="Classes\EventTheory\Space.cs" />
+    <Compile Include="Classes\Misc\DissimilarChainFactory.cs" />
     <Compile Include="Classes\Misc\Iterators\IIterator.cs" />
     <Compile Include="Classes\Misc\Iterators\IteratorBase.cs" />
     <Compile Include="Classes\Misc\Iterators\IteratorEnd.cs" />

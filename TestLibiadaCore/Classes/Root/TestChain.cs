@@ -1,3 +1,4 @@
+using System;
 using LibiadaCore.Classes.Root;
 using LibiadaCore.Classes.Root.SimpleTypes;
 using NUnit.Framework;
@@ -85,16 +86,448 @@ namespace TestLibiadaCore.Classes.Root
             Assert.AreEqual(2, NotUniformChain.Intervals(LinkUp.Start).FrequencyFromObject((ValueInt) 4));
             Assert.AreEqual(1, NotUniformChain.Intervals(LinkUp.Start).FrequencyFromObject((ValueInt) 5));
         }
-        /*[Test]
-        public void TestRegularityCharacteristic()
+
+        [Test]
+        public void TestGetElementPosition()
         {
-            string temp = "GGTGATTAACGCAGATGGGGCAATTTCGCAAGCATGGCTCTAAGCTGTCCAAGGCTTAGGCCTCACCAACGAGGGTAAGCCTTGGGGTTCAAAATGGAAGCTCTATCAAGGGCGGGTCAGGAGATGTCGCTGGCAGCCCTAAAACAACATGATCCGTACATAACCTCAATAGCGGATCTAACGGGTCAGGTGGCCCTCTATACTTTCTGCCCCAAGGCGAACCAATGGGAAAAAACAGACATTGAGGGTACGCTCTTTGTCTATCGGCGCTCAGCTTCGCCCTACCACGGTTTCACAATTGTTAACCGGCTTAACATGCATAATCTAGTTGAACCAGTTAACAAAGACTTAGAGTTTCAATTGCACGAGCCATTTTTGTTATATCGTAATGCTTCACTAAGTATCTACTCAATCTGGTTTTATGATAAGAATGACTGCCATAGAATAGCGAAGCTCATGGCAGACGTAGTTGAGGAAGAAACAAGAAGGTCACAACAAGCGGCCCGAGACAAACAATCACCTTCTCAGGCGAATGGGTGTTCTGATCACCGCCCAATCGACATTCTGGAGATGCTTTCCAGAGCAAAAGATGAATATGAGCGTAACCAAATGGGCGATTCCAATATCTCTTCGCCTGGTCTGCAACCCTCCACACAGCTATCCAACCTTGGCTCCACGGAAACACTCGAGGAAATGCCAAGCGGTTCACAGGATAAGTCAGCTCCATCGGGGCATAAACATTTGACCGTTGAAGAGCTCTTCGGAACATCCCTGCCGAAAGAACAGCCAGCGGTAGTTGGCTTGGACAGCGAAGAGATGGAACGGCTCCCGGGAGATGCGTCGCAGAAAGAACCAAACAGCTTCCTTCCATTTCCGTTCGAACAACTCGGGGGGGCTCCTCAATCTGAAACCCTAGGCGTGCCCTCTGCTGCACACCACAGCGTGCAACCCGAAATTACTACTCCCGTGTTAATAACCCCTGCATCTATAACACAATCAAACGAGAAACATGCGCCAACCTACACAATACCCTTATCACCTGTGCTTAGCCCTACACTACCTGCTGAGGCCCCCACAGCCCAAGTCCCTCCTTCACTTCCTAGAAATTCAACGATGATGCAGGCCGTAAAGACAACTCCCCGCCAACGTTCCCCGCTGCTTAATCAGCCTGTTCCTGAATTGTCCCATGCCAGTCTGATCGCCAATCAGTCTCCGTTCCGTGCTCCACTTAATGTGACTAATACTGCGGGTACGTCCCTCCCGAGCGTGGATTTGCTGCAAAAGCTTCGTTTAACGCCACAACATGACCAGATACAAACCCAGCCCCTAGGCAAGGGCGCGATGGTGGCTTCTTTCTCACCCGCAGCCGGACAACTGGCTACCCCAGAGTCATTTATTGAACCGCCTTCAAAAACCGCAGCGGCACGGGTTGCCGCCAGCGCTTCCCTCTCTAACATGGTCTTGGCGCCATTACAATCTATGCAACAAAACCAAGATCCAGAAGTTTTCGTACAGCCGAAGGTCCTATCTTCAGCCATACAAGTTGCTGGGGCACCACTGGTAACGGCGACCACCACGGCTGTCAGCTCCGTGCTACTTGCACCATCTGTCTTTCAACAAACAGTTACACGGTCAAGTGATCTGGAACGTAAAGCTAGTTCCCCGTCACCTCTCACTATTGGAACCCCCGAATCCCAGAGGAAACCCAGCATAATACTTTCGAAATCGCAACTTCAAGACACCTTGATTCACCTGATCAAAAATGACTCCAGCTTCCTGTCTACCTTGCACGAAGTCTACCTACAAGTATTGACTAAAAACAAAGACAATCATAACCTCTAACTGGAGCAAAATAAAAGTAAGGGGCGGGCCCCTGCTTCTGAAACCAACAGGTTACATCATGGGAATTTCTAAGCAGAGCACTGAGTTTAGGAATCCTAAAACTAAGCGTATGAAAAGGAGACTCACTTCTTGCGCATGTTTTCGAAGTAACATTCTCAGTAATAATGGAGATTCCACTGCGAAGCGTCGCCTGCTGACCCGTGTTTTGATAAGAAGAAAAAAAAAAAGAAAAAAAAGGAGTCCGATCACTGTGTGAAGCTCTGCGGCTGTTTCCATCAACTGGGCGCCCGACTTTGGAATAAAGAATCAGATTCCCAGCTGGCTTTTACCTTTAAAGATTTGCAGCGTAGCTCACATCAACCTCATAGCAGATCATCGGCCCGACCTCCGCCATTACCCCCAGCCTATCCAATCGAGACCGGTTTTGGGTTAACTTCGCAAGTTTTAAATCGAGTGGAAGGATCCTCCGCTAAGTAACTCTTGGTCTTTCGCACACGTATATAGGCGGGAAAACTCGGAATAATTAGTTCTAGCGAGGTGTATTTTATTTAGATGCCGCACCTAGGCTTGAAAAGCTGTGAAATTTCGTAATGACATTTTGTATTCAAATGCCCTAGCCCCGCTCTTCAACAAGCTCCTTCCGCTGCTTTACCATTCGAGTAAGGCACTGTACGACTTTGGTGGTGCGGACATCGACACGTAATTCCGCTAAAGGAGCGGCTTGGGTTGGGGATGCCTACGTCTTATCAGATCTTCATACTTGGGTAGACCCTACATTGGTTCTAAAAATGCTAAGTATGTGTATGATCCACCGCCCTGTTTTCGTTTTCTGTCATCGTTGACTGTTTTCCGTAACACTTCGATAAGAGAACCTCTGGCCCGATATAGCAGTCACACTCAGGGTCCTTTCCGTAGGTTTACTAGGAGTAGTTTTAATCTTATGCTGAGAAAGGCGCGGTCATTCACACGGCTCTGATTCTGCTGTAGAATTACGGAGTAAAACGAAAATGCGATTCCGAGCTGTACCAGTGTATCCCCCGTCTTTGAGTCTTGTCACGGCCCAAAGTGTAAAAATACGTCAAAAAGTTGTGCTACGCAGCCATAGACCTACCATGATTCCTGTTTATTCTTCTGTGGCACGTTATGGTGTTCAGCAATATTTTGATGTAGATTCTGATTTACTTCAGCAACAGTAATTTCAAGATTTTCTTTGAGTAAAAATGCCTGCGTTTTTATGATACTGGCCACTTTGTTGTGTTCAACCAATTAAGGTGCACAGCGTATTTTTCGGAACACTACCTAATGATGGGGTGAAAACCAAACTGGTTGAACCAACTAGCATGAGGATTAGCGGTAAATAACGCCGACCGTTACGACGGTTCATTGGGCACCATAATATAGGCATTGATGGTAACTCAGTCCTGAGTTCATCGCCTATTCTTTAGTTCATAAAACTTCCGGAAATTGTTGGTTAATTATATTTTAGTACTGGTGTGGTCGTAATTCCTAGCCTAGCGGATGATAGGGTTTTGCTGATCTAAGCACGCAAGTTGGACAGGGTTTCTTCTTCTGATTCTCGTGAGCTCTATTGCTGTCTATTTAATAATGTGTGAACTATGTCGCATACAAGGGAGTTTGTAAGTATTTATGCTAAACTGTGAATAGTTCGTCTTCACCGACAGTATGTGAATCAAACAACCAAAGATGAACTCGCTATGCATCATATGGGAGCGGGAAAGCTACTCCGGAATCCAATCAGTTGCGGACACTGGGCGCTGGTGTCCCGGCTCTCACGTAACATCAATTAAATGGACGCATCAATGAGTATAACTACACCTCAAGTGTTCATTATCCGGCCTACGTTGAACCGACGAGTCCCGTGATTCTTAAATTGAAATAATGCTTCTCTCCATGTAGTATTATGAACGAGTTAAACGTGAGTATCCTAAAGAAAGCCTCTGATCATACTGATTTTCTCCACTGATGCTAGGCATGGACATGATTGATTCGAAAGAGCACCTGTAGTGAGGATTTTTGTCAGTAAAGGTCAACCTATCCGCCCAAGTTATGGAGACGTAAAAGGGCTGAACATGTTTTACATCCCAGATATATATATTTAAAGTATTTACATAAAATTCCGAGGCTCGTTCCAGTTGCCACGATTACCAGGAAGTACAAGCGCGGATGAACCCTTAGCGTAGTCAAGCGAAGCCGGGTTAACTGCAGCTCGACGACCCCGGACCCAAGGTCACCGTGCAGTTACCTTATAGCTAGTTCCGACTCACAATATAGAACCTCATGCTCGCCTAAGTTGCTTGCTTGCACTGTTGTTCCGTGTTTACGGGAAGCCTTGTCGGTAGCAAGTGGACGCCTCGATGGAGATGCTTTTGGTTAGACTTTGCTGAGCCTCAAGAAACTTGTATTTAAACGACGCTCAGTATCTGTGTGCCGACACCCACACCACGAGTTTAGGTCTGAACTCCGCGAGGAGCAGCCCAAAGTTTGGAGGAACGATGTGTTTGGGGAACGACAGGTGGATGGTGCTGTAGTTCATTTTGCTGTTCATGATGCGGAGTTTTTTAATGGACGCTTCGCCCACCTCGTCAACCCTGTTCATTTAAAGCGGAGGCACTTCTTCACTGTGTCCCCCCAGGCATTCACGAGGTCTAGGATCTGGCCTGCCTGACGCTAAATTCCTCATTTTCGTCAGACTCACAATGCCAGAAAAAGCATTTTATGCTTTCTACGTGTGGCATGTCTACTGCTCACCTCCAACGGTTACGATGTAGCCATCATCGCGAGTGGTACTTCATCAAAAATCCCAGCCCCAGTCTCACAAACATGGTGAAACCACACTTGTATTAGAAATACAAGAATTGACCGGGAGTCGTAGCCAGAGCTTATACGCCCAGCTACTTAGGGGGGTAAGGAAGGCGTATAACTTAAACACGTGAAGCAGAAGTGGCAGTCAGTCAAGATCACACCACAGCACTGTAACCAGGACGTCAGTAGGATAGCACCTCAAAAAAAAAAAAGAAGAAGAAGAAGAAGGTCACTCTGGGACCTAGCCTACAGGGGGACACACAAGCTTAGTTCTCGATCTGTCTGACCCGTTTCTGTATGAGTTCGATTTGCCCGTTTCCCGGGCTCTGCTTTCTAGTCGAGATTATTTAAACGCTCTCAAACCCGTTGCTAGGAAAATTTCTCAACCATGCGGCACTGCTATTATCGTCGCCGAAGGAATGTTCGCTAAAATTTAGCCATTTTCACAGTCGTGGCCCTAACTGTCACTGTATCACTAATAATGCAACCTAAAACTAGAGATGCCTGACAGCACAAAAGACTAAATCCGCTATAATCCTATAACTATGAGAGGAATAGGAGGTTGCACAAGCTCGTGTAGGATCCGCCCGAGTATCGGAGGAAAACTAGGGTATTCTAGGCTGCGCAAGCTGCATCTTAGCCGCTCGCTTACTTCAGTCCATGTTCTTTTTCCTCGCAAGTCTTCAGTTCAGTTCGGTCGCGTTCAGTGTTTCGAGCGGAACTAACTCCGCACTCTGCTCTCAAGTCAGCAAAATGCTCCGCAGTGAACAGAGCCAGGCCGCTTATACTCGTTTATTTTATTCCTGCGCCTAAGAACATTTTCGTGTTGATCAAGGTCTAGAGGAGCCGGTGTTTCAGCAGATTCAACAAATGTGTGCGGTAATCCCTTCGGTTCTTTATCTAACGCCCTCTTTCAAAATGTTACGCTGCAACATTATACACTTCAAAGTTGGTAAGATGCAAAACTGTGTGTCTTTCCTCAGCGTGTGATTCTTGAAGAAGCACGTGTTTAAGATATGTGTTCTGAACGGATTTTTATTCTGTATAACTGCTCTTGCCATGTGGCTGAGTTAGTTATCCCTTTACCAAATCCTGTCGTCCCTGAAGCACGGTGATGAAAAGTTGTGGAATTACTCGAAAATTTTCGTTCCGTAGGCTCAGTACTGCATTATTAACATATTCAACGGAATGGATTTCATCGCGAGTGTTTACGTGTGCAAATACTGAGTGATAACTTGCTTTAAAATGTCAGTCTTCCACCTAAAATTTTACATGTTTGCAAATATTTTCTTCTGATGAAACTTTAAAACCAAATTTTGACATTTGAAGAAGAAAAAGAAG";
-            Chain chain = new Chain(temp.Length);
-            for(int i = 0;i<temp.Length;i++)
-            {
-                chain[i] = new ValueChar(temp[i]);
-            }
-            Assert.IsNaN(chain.GetCharacteristic(LinkUp.Both, CharacteristicsFactory.r));
-        }*/
+            ValueChar MessageA = new ValueChar('a');
+            ValueChar MessageC = new ValueChar('c');
+            ValueChar MessageG = new ValueChar('g');
+            ValueChar MessageT = new ValueChar('t');
+
+            ChainBase.Add(MessageC, 0);
+            ChainBase.Add(MessageC, 1);
+            ChainBase.Add(MessageA, 2);
+            ChainBase.Add(MessageC, 3);
+            ChainBase.Add(MessageG, 4);
+            ChainBase.Add(MessageC, 5);
+            ChainBase.Add(MessageT, 6);
+            ChainBase.Add(MessageT, 7);
+            ChainBase.Add(MessageA, 8);
+            ChainBase.Add(MessageC, 9);
+
+            Assert.AreEqual(2,ChainBase.Get(MessageA, 1));
+            Assert.AreEqual(8, ChainBase.Get(MessageA, 2));
+            Assert.AreEqual(-1, ChainBase.Get(MessageA, 3));
+
+            Assert.AreEqual(0, ChainBase.Get(MessageC, 1));
+            Assert.AreEqual(1, ChainBase.Get(MessageC, 2));
+            Assert.AreEqual(3, ChainBase.Get(MessageC, 3));
+            Assert.AreEqual(5, ChainBase.Get(MessageC, 4));
+            Assert.AreEqual(9, ChainBase.Get(MessageC, 5));
+            Assert.AreEqual(-1, ChainBase.Get(MessageC, 6));
+
+            Assert.AreEqual(4, ChainBase.Get(MessageG, 1));
+            Assert.AreEqual(-1, ChainBase.Get(MessageG, 2));
+            Assert.AreEqual(-1, ChainBase.Get(MessageG, 3));
+
+            Assert.AreEqual(6, ChainBase.Get(MessageT, 1));
+            Assert.AreEqual(7, ChainBase.Get(MessageT, 2));
+            Assert.AreEqual(-1, ChainBase.Get(MessageT, 3));
+        }
+
+        [Test]
+        public void TestGetBinaryInterval()
+        {
+            ValueChar MessageA = new ValueChar('a');
+            ValueChar MessageC = new ValueChar('c');
+            ValueChar MessageG = new ValueChar('g');
+            ValueChar MessageT = new ValueChar('t');
+
+            ChainBase.Add(MessageC, 0);
+            ChainBase.Add(MessageC, 1);
+            ChainBase.Add(MessageA, 2);
+            ChainBase.Add(MessageC, 3);
+            ChainBase.Add(MessageG, 4);
+            ChainBase.Add(MessageC, 5);
+            ChainBase.Add(MessageT, 6);
+            ChainBase.Add(MessageT, 7);
+            ChainBase.Add(MessageA, 8);
+            ChainBase.Add(MessageC, 9);
+
+            Assert.AreEqual(1, ChainBase.GetBinaryInterval(MessageA, MessageC, 1));
+            Assert.AreEqual(1, ChainBase.GetBinaryInterval(MessageA, MessageC, 2));
+            Assert.AreEqual(-1, ChainBase.GetBinaryInterval(MessageA, MessageC, 3));
+
+            Assert.AreEqual(-1, ChainBase.GetBinaryInterval(MessageC, MessageA, 1));
+            Assert.AreEqual(1, ChainBase.GetBinaryInterval(MessageC, MessageA, 2));
+            Assert.AreEqual(-1, ChainBase.GetBinaryInterval(MessageC, MessageA, 3));
+            Assert.AreEqual(3, ChainBase.GetBinaryInterval(MessageC, MessageA, 4));
+            Assert.AreEqual(-1, ChainBase.GetBinaryInterval(MessageC, MessageA, 5));
+
+            Assert.AreEqual(-1, ChainBase.GetBinaryInterval(MessageC, MessageT, 1));
+            Assert.AreEqual(-1, ChainBase.GetBinaryInterval(MessageC, MessageT, 2));
+            Assert.AreEqual(-1, ChainBase.GetBinaryInterval(MessageC, MessageT, 3));
+            Assert.AreEqual(1, ChainBase.GetBinaryInterval(MessageC, MessageT, 4));
+            Assert.AreEqual(1, ChainBase.GetBinaryInterval(MessageC, MessageT, 4));
+
+            // oxo_xx_oooxxo
+            Chain testChain = new Chain(13);
+            testChain.Add(MessageA, 0);
+            testChain.Add(MessageC, 1);
+            testChain.Add(MessageA, 2);
+
+            testChain.Add(MessageC, 4);
+            testChain.Add(MessageC, 5);
+
+            testChain.Add(MessageA, 7);
+            testChain.Add(MessageA, 8);
+            testChain.Add(MessageA, 9);
+            testChain.Add(MessageC, 10);
+            testChain.Add(MessageC, 11);
+            testChain.Add(MessageA, 12);
+
+            Assert.AreEqual(1, testChain.GetBinaryInterval(MessageA, MessageC, 1));
+            Assert.AreEqual(2, testChain.GetBinaryInterval(MessageA, MessageC, 2));
+            Assert.AreEqual(-1, testChain.GetBinaryInterval(MessageA, MessageC, 3));
+            Assert.AreEqual(-1, testChain.GetBinaryInterval(MessageA, MessageC, 4));
+            Assert.AreEqual(1, testChain.GetBinaryInterval(MessageA, MessageC, 5));
+            Assert.AreEqual(-1, testChain.GetBinaryInterval(MessageA, MessageC, 6));
+            Assert.AreEqual(-1, testChain.GetBinaryInterval(MessageA, MessageC, 7));
+
+            Assert.AreEqual(1, testChain.GetBinaryInterval(MessageC, MessageA, 1));
+            Assert.AreEqual(-1, testChain.GetBinaryInterval(MessageC, MessageA, 2));
+            Assert.AreEqual(2, testChain.GetBinaryInterval(MessageC, MessageA, 3));
+            Assert.AreEqual(-1, testChain.GetBinaryInterval(MessageC, MessageA, 4));
+            Assert.AreEqual(1, testChain.GetBinaryInterval(MessageC, MessageA, 5));
+            Assert.AreEqual(-1, testChain.GetBinaryInterval(MessageC, MessageA, 6));
+        }
+
+        [Test]
+        public void TestSpatialDependence()
+        {
+            ValueChar MessageA = new ValueChar('a');
+            ValueChar MessageC = new ValueChar('c');
+            ValueChar MessageG = new ValueChar('g');
+            ValueChar MessageT = new ValueChar('t');
+
+            ChainBase.Add(MessageC, 0);
+            ChainBase.Add(MessageC, 1);
+            ChainBase.Add(MessageA, 2);
+            ChainBase.Add(MessageC, 3);
+            ChainBase.Add(MessageG, 4);
+            ChainBase.Add(MessageC, 5);
+            ChainBase.Add(MessageT, 6);
+            ChainBase.Add(MessageT, 7);
+            ChainBase.Add(MessageA, 8);
+            ChainBase.Add(MessageC, 9);
+
+            Assert.AreEqual(Math.Pow(3, 1.0 / 2), ChainBase.SpatialDependence(MessageC, MessageA));
+            Assert.AreEqual(Math.Pow(1, 1.0 / 2), ChainBase.SpatialDependence(MessageA, MessageC));
+        }
+
+        [Test]
+        public void TestRedundancy()
+        {
+            ValueChar MessageA = new ValueChar('a');
+            ValueChar MessageB = new ValueChar('b');
+
+            Chain testChain = new Chain(13);
+            testChain.Add(MessageA, 0);
+            testChain.Add(MessageB, 12);
+
+
+        }
+
+        [Test]
+        public void TestKs()
+        {
+            ValueChar MessageA = new ValueChar('a');
+            ValueChar MessageB = new ValueChar('b');
+
+            // ----------- цепочки из работы Морозенко
+
+            Chain testChain = new Chain(2);
+            testChain.Add(MessageA, 0);
+            testChain.Add(MessageB, 1);
+
+            Assert.AreEqual(0, Math.Round(testChain.PartialDependenceCoefficient(MessageA, MessageB), 3));
+            Assert.AreEqual(0, Math.Round(testChain.PartialDependenceCoefficient(MessageB, MessageA), 3));
+
+            Assert.AreEqual(0, Math.Round(testChain.K2(MessageA, MessageB), 3));
+            Assert.AreEqual(0, Math.Round(testChain.K2(MessageB, MessageA), 3));
+
+            Assert.AreEqual(0, Math.Round(testChain.K3(MessageA, MessageB), 3));
+
+
+            testChain = new Chain(6);
+            testChain.Add(MessageA, 0);
+            testChain.Add(MessageB, 3);
+
+            Assert.AreEqual(0, Math.Round(testChain.PartialDependenceCoefficient(MessageA, MessageB), 3));
+            Assert.AreEqual(0, Math.Round(testChain.PartialDependenceCoefficient(MessageB, MessageA), 3));
+
+            Assert.AreEqual(0, Math.Round(testChain.K2(MessageA, MessageB), 3));
+            Assert.AreEqual(0, Math.Round(testChain.K2(MessageB, MessageA), 3));
+
+            Assert.AreEqual(0, Math.Round(testChain.K3(MessageA, MessageB), 3));
+
+
+            testChain = new Chain(27);
+            testChain.Add(MessageA, 0);
+            testChain.Add(MessageA, 4);
+            testChain.Add(MessageA, 12);
+            testChain.Add(MessageA, 19);
+            testChain.Add(MessageB, 3);
+            testChain.Add(MessageB, 9);
+            testChain.Add(MessageB, 16);
+            testChain.Add(MessageB, 26);
+
+            Assert.AreEqual(0, Math.Round(testChain.PartialDependenceCoefficient(MessageA, MessageB), 3));
+            Assert.AreEqual(0.546, Math.Round(testChain.PartialDependenceCoefficient(MessageB, MessageA), 3));
+
+            Assert.AreEqual(0, Math.Round(testChain.K2(MessageA, MessageB), 3));
+            Assert.AreEqual(0.546, Math.Round(testChain.K2(MessageB, MessageA), 3));
+
+            Assert.AreEqual(0, Math.Round(testChain.K3(MessageA, MessageB), 3));
+
+
+            testChain = new Chain(5);
+            testChain.Add(MessageA, 0);
+            testChain.Add(MessageB, 1);
+
+            Assert.AreEqual(0.75, Math.Round(testChain.PartialDependenceCoefficient(MessageA, MessageB), 3));
+            Assert.AreEqual(0, Math.Round(testChain.PartialDependenceCoefficient(MessageB, MessageA), 3));
+
+            Assert.AreEqual(0.75, Math.Round(testChain.K2(MessageA, MessageB), 3));
+            Assert.AreEqual(0, Math.Round(testChain.K2(MessageB, MessageA), 3));
+
+            Assert.AreEqual(0, Math.Round(testChain.K3(MessageA, MessageB), 3));
+
+
+            testChain = new Chain(12);
+            testChain.Add(MessageA, 0);
+            testChain.Add(MessageB, 1);
+
+            Assert.AreEqual(0.9091, Math.Round(testChain.PartialDependenceCoefficient(MessageA, MessageB), 4));
+            Assert.AreEqual(0, Math.Round(testChain.PartialDependenceCoefficient(MessageB, MessageA), 3));
+
+            Assert.AreEqual(0.9091, Math.Round(testChain.K2(MessageA, MessageB), 4));
+            Assert.AreEqual(0, Math.Round(testChain.K2(MessageB, MessageA), 3));
+
+            Assert.AreEqual(0, Math.Round(testChain.K3(MessageA, MessageB), 3));
+
+
+            testChain = new Chain(13);
+            testChain.Add(MessageA, 0);
+            testChain.Add(MessageB, 12);
+
+            Assert.AreEqual(-11, testChain.PartialDependenceCoefficient(MessageA, MessageB));
+            Assert.AreEqual(0, testChain.PartialDependenceCoefficient(MessageB, MessageA));
+
+            Assert.AreEqual(-11, testChain.K2(MessageA, MessageB));
+            Assert.AreEqual(0, testChain.K2(MessageB, MessageA));
+
+            Assert.AreEqual(0, testChain.K3(MessageA, MessageB));
+
+
+            testChain = new Chain(29);
+            testChain.Add(MessageA, 0);
+            testChain.Add(MessageA, 14);
+            testChain.Add(MessageA, 17);
+            testChain.Add(MessageA, 18);
+            testChain.Add(MessageA, 19);
+            testChain.Add(MessageA, 22);
+            testChain.Add(MessageB, 8);
+            testChain.Add(MessageB, 10);
+            testChain.Add(MessageB, 12);
+            testChain.Add(MessageB, 13);
+            testChain.Add(MessageB, 28);
+
+            Assert.AreEqual(-0.22, Math.Round(testChain.PartialDependenceCoefficient(MessageA, MessageB), 2));
+            Assert.AreEqual(0.1556, Math.Round(testChain.PartialDependenceCoefficient(MessageB, MessageA), 4));
+
+            //            Assert.AreEqual(-0.509, Math.Round(testChain.K2(MessageA, MessageB), 3));
+            //            Assert.AreEqual(0.1697, Math.Round(testChain.K2(MessageB, MessageA), 4));
+
+            //            Assert.AreEqual(0, Math.Round(testChain.K3(MessageA, MessageB), 3));
+
+
+            testChain = new Chain(25);
+            testChain.Add(MessageA, 0);
+            testChain.Add(MessageA, 3);
+            testChain.Add(MessageA, 12);
+            testChain.Add(MessageA, 13);
+            testChain.Add(MessageA, 15);
+            testChain.Add(MessageA, 17);
+            testChain.Add(MessageA, 23);
+            testChain.Add(MessageB, 6);
+            testChain.Add(MessageB, 21);
+            testChain.Add(MessageB, 24);
+
+            Assert.AreEqual(0.356, Math.Round(testChain.PartialDependenceCoefficient(MessageA, MessageB), 3));
+            Assert.AreEqual(0.075, Math.Round(testChain.PartialDependenceCoefficient(MessageB, MessageA), 3));
+
+            Assert.AreEqual(0.214, Math.Round(testChain.K2(MessageA, MessageB), 3));
+            Assert.AreEqual(0.105, Math.Round(testChain.K2(MessageB, MessageA), 3));
+
+            Assert.AreEqual(0.15, Math.Round(testChain.K3(MessageA, MessageB), 2));
+
+
+            testChain = new Chain(29);
+            testChain.Add(MessageA, 0);
+            testChain.Add(MessageA, 3);
+            testChain.Add(MessageA, 4);
+            testChain.Add(MessageA, 6);
+            testChain.Add(MessageA, 18);
+            testChain.Add(MessageA, 21);
+            testChain.Add(MessageB, 2);
+            testChain.Add(MessageB, 17);
+            testChain.Add(MessageB, 28);
+
+            Assert.AreEqual(0.023, Math.Round(testChain.PartialDependenceCoefficient(MessageA, MessageB), 3));
+            Assert.AreEqual(0.307, Math.Round(testChain.PartialDependenceCoefficient(MessageB, MessageA), 3));
+
+            //            Assert.AreEqual(0.0445, Math.Round(testChain.K2(MessageA, MessageB), 4));
+            //            Assert.AreEqual(0.4418, Math.Round(testChain.K2(MessageB, MessageA), 4));
+
+            //            Assert.AreEqual(0.1402, Math.Round(testChain.K3(MessageA, MessageB), 4));
+
+
+            testChain = new Chain(28);
+            testChain.Add(MessageA, 0);
+            testChain.Add(MessageA, 8);
+            testChain.Add(MessageA, 16);
+            testChain.Add(MessageA, 18);
+            testChain.Add(MessageB, 4);
+            testChain.Add(MessageB, 12);
+            testChain.Add(MessageB, 17);
+            testChain.Add(MessageB, 19);
+
+            Assert.AreEqual(0.614, Math.Round(testChain.PartialDependenceCoefficient(MessageA, MessageB), 3));
+            Assert.AreEqual(0.402, Math.Round(testChain.PartialDependenceCoefficient(MessageB, MessageA), 3));
+
+            Assert.AreEqual(0.614, Math.Round(testChain.K2(MessageA, MessageB), 3));
+            Assert.AreEqual(0.402, Math.Round(testChain.K2(MessageB, MessageA), 3));
+
+            Assert.AreEqual(0.497, Math.Round(testChain.K3(MessageA, MessageB), 3));
+
+
+            testChain = new Chain(28);
+            testChain.Add(MessageA, 0);
+            testChain.Add(MessageA, 9);
+            testChain.Add(MessageA, 16);
+            testChain.Add(MessageA, 24);
+            testChain.Add(MessageB, 2);
+            testChain.Add(MessageB, 11);
+            testChain.Add(MessageB, 19);
+            testChain.Add(MessageB, 25);
+
+            Assert.AreEqual(0.69, Math.Round(testChain.PartialDependenceCoefficient(MessageA, MessageB), 2));
+            Assert.AreEqual(0.059, Math.Round(testChain.PartialDependenceCoefficient(MessageB, MessageA), 3));
+
+            Assert.AreEqual(0.69, Math.Round(testChain.K2(MessageA, MessageB), 2));
+            Assert.AreEqual(0.059, Math.Round(testChain.K2(MessageB, MessageA), 3));
+
+            Assert.AreEqual(0.202, Math.Round(testChain.K3(MessageA, MessageB), 3));
+
+
+            testChain = new Chain(16);
+            testChain.Add(MessageA, 0);
+            testChain.Add(MessageA, 8);
+            testChain.Add(MessageB, 4);
+            testChain.Add(MessageB, 12);
+
+            Assert.AreEqual(0.293, Math.Round(testChain.PartialDependenceCoefficient(MessageA, MessageB), 3));
+            Assert.AreEqual(0.25, testChain.PartialDependenceCoefficient(MessageB, MessageA));
+
+            Assert.AreEqual(0.293, Math.Round(testChain.K2(MessageA, MessageB), 3));
+            Assert.AreEqual(0.25, testChain.K2(MessageB, MessageA));
+
+            Assert.AreEqual(0.271, Math.Round(testChain.K3(MessageA, MessageB), 3));
+
+
+            testChain = new Chain(30);
+            testChain.Add(MessageA, 0);
+            testChain.Add(MessageA, 6);
+            testChain.Add(MessageA, 10);
+            testChain.Add(MessageA, 18);
+            testChain.Add(MessageB, 3);
+            testChain.Add(MessageB, 9);
+            testChain.Add(MessageB, 13);
+            testChain.Add(MessageB, 21);
+
+            Assert.AreEqual(0.535, Math.Round(testChain.PartialDependenceCoefficient(MessageA, MessageB), 3));
+            Assert.AreEqual(0.496, Math.Round(testChain.PartialDependenceCoefficient(MessageB, MessageA), 3));
+
+            Assert.AreEqual(0.535, Math.Round(testChain.K2(MessageA, MessageB), 3));
+            Assert.AreEqual(0.496, Math.Round(testChain.K2(MessageB, MessageA), 3));
+
+            Assert.AreEqual(0.515, Math.Round(testChain.K3(MessageA, MessageB), 3));
+
+
+            testChain = new Chain(23);
+            testChain.Add(MessageA, 4);
+            testChain.Add(MessageA, 8);
+            testChain.Add(MessageA, 14);
+            testChain.Add(MessageA, 18);
+            testChain.Add(MessageB, 5);
+            testChain.Add(MessageB, 9);
+            testChain.Add(MessageB, 15);
+            testChain.Add(MessageB, 19);
+
+            Assert.AreEqual(0.774, Math.Round(testChain.PartialDependenceCoefficient(MessageA, MessageB), 3));
+            Assert.AreEqual(0.209, Math.Round(testChain.PartialDependenceCoefficient(MessageB, MessageA), 3));
+
+            Assert.AreEqual(0.774, Math.Round(testChain.K2(MessageA, MessageB), 3));
+            Assert.AreEqual(0.209, Math.Round(testChain.K2(MessageB, MessageA), 3));
+
+            Assert.AreEqual(0.402, Math.Round(testChain.K3(MessageA, MessageB), 3));
+
+
+            testChain = new Chain(12);
+            testChain.Add(MessageA, 4);
+            testChain.Add(MessageB, 1);
+            testChain.Add(MessageB, 3);
+            testChain.Add(MessageB, 5);
+            testChain.Add(MessageB, 8);
+
+            Assert.AreEqual(0.2143, Math.Round(testChain.PartialDependenceCoefficient(MessageA, MessageB), 4));
+            Assert.AreEqual(0.875, Math.Round(testChain.PartialDependenceCoefficient(MessageB, MessageA), 3));
+
+            Assert.AreEqual(0.3429, Math.Round(testChain.K2(MessageA, MessageB), 4));
+            Assert.AreEqual(0.35, Math.Round(testChain.K2(MessageB, MessageA), 2));
+
+            Assert.AreEqual(0.3464, Math.Round(testChain.K3(MessageA, MessageB), 4));
+
+
+            // -------------- дальше цепочки из монографии
+
+            testChain = new Chain(26);
+            testChain.Add(MessageA, 0);
+            testChain.Add(MessageA, 6);
+            testChain.Add(MessageA, 12);
+            testChain.Add(MessageB, 2);
+            testChain.Add(MessageB, 8);
+            testChain.Add(MessageB, 19);
+
+            Assert.AreEqual(0.607, Math.Round(testChain.PartialDependenceCoefficient(MessageA, MessageB), 3));
+            Assert.AreEqual(0.376, Math.Round(testChain.PartialDependenceCoefficient(MessageB, MessageA), 3));
+
+            Assert.AreEqual(0.607, Math.Round(testChain.K2(MessageA, MessageB), 3));
+            Assert.AreEqual(0.376, Math.Round(testChain.K2(MessageB, MessageA), 3));
+
+            Assert.AreEqual(0.478, Math.Round(testChain.K3(MessageA, MessageB), 3));
+
+
+            testChain = new Chain(23);
+            testChain.Add(MessageA, 0);
+            testChain.Add(MessageA, 6);
+            testChain.Add(MessageA, 11);
+            testChain.Add(MessageA, 21);
+            testChain.Add(MessageB, 1);
+            testChain.Add(MessageB, 7);
+            testChain.Add(MessageB, 12);
+            testChain.Add(MessageB, 22);
+
+//            Assert.AreEqual(0.798, Math.Round(testChain.PartialDependenceCoefficient(MessageA, MessageB),3));
+//            Assert.AreEqual(-0.046, Math.Round(testChain.PartialDependenceCoefficient(MessageB, MessageA), 3));
+
+//            Assert.AreEqual(0.798, Math.Round(testChain.K2(MessageA, MessageB),3));
+//            Assert.AreEqual(-0.046, Math.Round(testChain.K2(MessageB, MessageA),3));
+
+//            Assert.AreEqual(0, testChain.K3(MessageA, MessageB));
+
+        }
     }
 }
