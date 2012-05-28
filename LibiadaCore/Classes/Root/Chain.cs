@@ -339,6 +339,57 @@ namespace LibiadaCore.Classes.Root
             return Math.Sqrt(firstK2*secondK2);
         }
 
+        public List<List<double>> GetK1()
+        {
+            List<List<double>> result = new List<List<double>>();
+            for (int i = 0; i < Alphabet.power; i++)
+            {
+                result.Add(new List<double>());
+                for (int j = 0; j < Alphabet.power; j++)
+                {
+                    if(i != j)
+                    {
+                        result[i].Add(PartialDependenceCoefficient(Alphabet[i], Alphabet[j]));
+                    }
+                }
+            }
+            return result;
+        }
+
+        public List<List<double>> GetK2()
+        {
+            List<List<double>> result = new List<List<double>>();
+            for (int i = 0; i < Alphabet.power; i++)
+            {
+                result.Add(new List<double>());
+                for (int j = 0; j < Alphabet.power; j++)
+                {
+                    if (i != j)
+                    {
+                        result[i].Add(K2(Alphabet[i], Alphabet[j]));
+                    }
+                }
+            }
+            return result;
+        }
+
+        public List<List<double>> GetK3()
+        {
+            List<List<double>> result = new List<List<double>>();
+            for (int i = 0; i < Alphabet.power; i++)
+            {
+                result.Add(new List<double>());
+                for (int j = 0; j < Alphabet.power; j++)
+                {
+                    if (i != j)
+                    {
+                        result[i].Add(K3(Alphabet[i], Alphabet[j]));
+                    }
+                }
+            }
+            return result;
+        }
+
         public new IBin GetBin()
         {
             ChainBin Temp = new ChainBin();
