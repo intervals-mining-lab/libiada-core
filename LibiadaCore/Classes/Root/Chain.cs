@@ -385,6 +385,10 @@ namespace LibiadaCore.Classes.Root
                     {
                         result[i].Add(K3(Alphabet[i], Alphabet[j]));
                     }
+                    else
+                    {
+                        result[i].Add(0);
+                    }
                 }
             }
             return result;
