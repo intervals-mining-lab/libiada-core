@@ -15,8 +15,8 @@ namespace LibiadaCore.Classes.Root
     [Serializable]
     public class Chain : ChainWithCharacteristic, IChainDataForCalculaton, IBaseObject
     {
-        protected ArrayList pUniformChains = new ArrayList();
-        protected ArrayList pNotUniformChains = new ArrayList();
+        protected ArrayList PUniformChains = new ArrayList();
+        protected ArrayList PNotUniformChains = new ArrayList();
 
         ///<summary>
         /// Конструктор 
@@ -39,18 +39,18 @@ namespace LibiadaCore.Classes.Root
         public new void ClearAndSetNewLength(int length)
         {
             base.ClearAndSetNewLength(length);
-            pUniformChains = new ArrayList();
-            pNotUniformChains = new ArrayList();
+            PUniformChains = new ArrayList();
+            PNotUniformChains = new ArrayList();
         }
 
         ///<summary>
         ///</summary>
-        ///<param name="Bin"></param>
-        public Chain(ChainBin Bin): base(Bin)
+        ///<param name="bin"></param>
+        public Chain(ChainBin bin): base(bin)
         {
-            foreach (UniformChainBin uchain in Bin.UniformChains)
+            foreach (UniformChainBin uchain in bin.uniformChains)
             {
-                pUniformChains.Add(new UniformChain(uchain));
+                PUniformChains.Add(new UniformChain(uchain));
             }
         }
 
@@ -75,18 +75,18 @@ namespace LibiadaCore.Classes.Root
         /// <param name="temp"></param>
         protected override void FillClone(IBaseObject temp)
         {
-            Chain TempChain = temp as Chain;
-            base.FillClone(TempChain);
-            if (TempChain != null)
+            Chain tempChain = temp as Chain;
+            base.FillClone(tempChain);
+            if (tempChain != null)
             {
-                TempChain.pUniformChains = (ArrayList) pUniformChains.Clone();
+                tempChain.PUniformChains = (ArrayList) PUniformChains.Clone();
             }
         }
 
         public override void CalculateCharacteristicList(ArrayList list)
         {
             base.CalculateCharacteristicList(list);
-            foreach (UniformChain uniformChain in pUniformChains)
+            foreach (UniformChain uniformChain in PUniformChains)
             {
                 uniformChain.CalculateCharacteristicList(list);
             }
@@ -103,7 +103,7 @@ namespace LibiadaCore.Classes.Root
             int pos = Alphabet.IndexOf(baseObject);
             if (pos != -1)
             {
-                result = (UniformChain) ((UniformChain) pUniformChains[pos]).Clone();
+                result = (UniformChain) ((UniformChain) PUniformChains[pos]).Clone();
             }
             return result;
         }
@@ -112,12 +112,12 @@ namespace LibiadaCore.Classes.Root
         {
             base.AddItem(what, where);
 
-            if (pUniformChains.Count != Alphabet.power)
+            if (PUniformChains.Count != Alphabet.power)
             {
-                pUniformChains.Add(new UniformChain(Length, what));
+                PUniformChains.Add(new UniformChain(Length, what));
             }
 
-            foreach (UniformChain chain in pUniformChains)
+            foreach (UniformChain chain in PUniformChains)
             {
                 chain.AddItem(what, where);
             }
@@ -129,12 +129,12 @@ namespace LibiadaCore.Classes.Root
 
             IntervalsChanged = false;
 
-            foreach (UniformChain uniformChain in pUniformChains)
+            foreach (UniformChain uniformChain in PUniformChains)
             {
-                IDataForCalculator Datainterface = uniformChain;
-                pIntervals.Sum(Datainterface.CommonIntervals);
-                startinterval.Sum(Datainterface.StartInterval);
-                endinterval.Sum(Datainterface.EndInterval);
+                IDataForCalculator dataInterface = uniformChain;
+                pIntervals.Sum(dataInterface.CommonIntervals);
+                startinterval.Sum(dataInterface.StartInterval);
+                endinterval.Sum(dataInterface.EndInterval);
             }
         }
 
@@ -144,7 +144,7 @@ namespace LibiadaCore.Classes.Root
         ///<returns></returns>
         public UniformChain GetUniformChain(int i)
         {
-            return (UniformChain) ((UniformChain) pUniformChains[i]).Clone();
+            return (UniformChain) ((UniformChain) PUniformChains[i]).Clone();
         }
 
         ///<summary>
@@ -160,27 +160,27 @@ namespace LibiadaCore.Classes.Root
 
         public UniformChain IUniformChain(int i)
         {
-            return (UniformChain) pUniformChains[i];
+            return (UniformChain) PUniformChains[i];
         }
 
         public void FillNotUniformChains()
         {
-            if(pNotUniformChains.Count > 0)
+            if(PNotUniformChains.Count > 0)
                 return;
-            List<int> Counters = new List<int>();
+            List<int> counters = new List<int>();
             for (int j = 0; j < Alphabet.power; j++)
             {
-                Counters.Add(0);
+                counters.Add(0);
             }
 
             for (int i = 0; i < vault.Length; i++)
             {
-                int Element = ++Counters[(int)vault[i]];
-                if(pNotUniformChains.Count < Element) 
+                int element = ++counters[(int)vault[i]];
+                if(PNotUniformChains.Count < element) 
                 {
-                    pNotUniformChains.Add(new Chain());
+                    PNotUniformChains.Add(new Chain());
                 }
-                ((Chain)pNotUniformChains[Element]).Add(new ValueInt((int)vault[i]),i);
+                ((Chain)PNotUniformChains[element]).Add(new ValueInt((int)vault[i]),i);
             }
 
         }
@@ -204,9 +204,9 @@ namespace LibiadaCore.Classes.Root
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="j">j</param>
-        /// <param name="L">L</param>
-        /// <param name="entry"></param>
+        /// <param name="j">первый элементы пары</param>
+        /// <param name="L">второй элемент пары</param>
+        /// <param name="entry">номер вхождения начиная с 1</param>
         /// <returns></returns>
         public int GetBinaryInterval(IBaseObject j, IBaseObject L, int entry)
         {
@@ -227,7 +227,6 @@ namespace LibiadaCore.Classes.Root
                 }
             }
             return -1;
-            //return this.Length - jEntry;
         }
 
         public double SpatialDependence(IBaseObject j, IBaseObject L)
@@ -351,6 +350,10 @@ namespace LibiadaCore.Classes.Root
                     {
                         result[i].Add(PartialDependenceCoefficient(Alphabet[i], Alphabet[j]));
                     }
+                    else
+                    {
+                        result[i].Add(0);
+                    }
                 }
             }
             return result;
@@ -367,6 +370,10 @@ namespace LibiadaCore.Classes.Root
                     if (i != j)
                     {
                         result[i].Add(K2(Alphabet[i], Alphabet[j]));
+                    }
+                    else
+                    {
+                        result[i].Add(0);
                     }
                 }
             }
@@ -396,20 +403,20 @@ namespace LibiadaCore.Classes.Root
 
         public new IBin GetBin()
         {
-            ChainBin Temp = new ChainBin();
-            FillBin(Temp);
-            return Temp;
+            ChainBin temp = new ChainBin();
+            FillBin(temp);
+            return temp;
         }
 
         ///<summary>
         ///</summary>
         ///<param name="Bin"></param>
-        public void FillBin(ChainBin Bin)
+        public void FillBin(ChainBin bin)
         {
-            base.FillBin(Bin);
-            foreach (UniformChain chain in pUniformChains)
+            base.FillBin(bin);
+            foreach (UniformChain chain in PUniformChains)
             {
-                Bin.UniformChains.Add(chain.GetBin());
+                bin.uniformChains.Add(chain.GetBin());
             }
         }
     }
@@ -418,7 +425,7 @@ namespace LibiadaCore.Classes.Root
     ///</summary>
     public class ChainBin : ChainWithCharacteristicBin, IBin
     {
-        public ArrayList UniformChains = new ArrayList();
+        public ArrayList uniformChains = new ArrayList();
 
         public new IBaseObject GetInstance()
         {
