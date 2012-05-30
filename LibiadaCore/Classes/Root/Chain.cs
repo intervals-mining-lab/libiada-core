@@ -232,18 +232,19 @@ namespace LibiadaCore.Classes.Root
         public double SpatialDependence(IBaseObject j, IBaseObject L)
         {
             int jElementCount = (int)UniformChain(j).GetCharacteristic(LinkUp.Start, new Count());
-            int intervals = 1;
+            double intervals = 0;
             int pairs = 0;
             for (int i = 1; i <= jElementCount; i++)
             {
                 int binaryInterval = GetBinaryInterval(j, L, i);
                 if(binaryInterval > 0)
                 {
-                    intervals *= binaryInterval;
+                    intervals += Math.Log(binaryInterval, 2);
                     pairs++;
                 }
             }
-            return Math.Pow(intervals, 1.0/pairs);
+            
+            return Math.Pow(2, pairs == 0 ? 0 : intervals/pairs);
         }
 
         public int GetAfter(IBaseObject element, int from)
@@ -258,18 +259,31 @@ namespace LibiadaCore.Classes.Root
             return -1;
         }
 
+        public int GetPairsCount(IBaseObject j, IBaseObject L)
+        {
+            int jElementCount = (int)UniformChain(j).GetCharacteristic(LinkUp.Start, new Count());
+            int pairs = 0;
+            for (int i = 1; i <= jElementCount; i++)
+            {
+                int binaryInterval = GetBinaryInterval(j, L, i);
+                if (binaryInterval > 0)
+                {
+                    pairs++;
+                }
+            }
+            return pairs;
+        }
+
         public double Redundancy(IBaseObject j, IBaseObject L)
         {
             UniformChain jChain = (UniformChain)UniformChain(j);
             int jElementCount = (int)jChain.GetCharacteristic(LinkUp.Start, new Count());
-            int pairedj = 0;
-            double avG = 1;
+            double avG = 0;
             int currentEntrance = 0;
             for (int i = 1; i <= jElementCount; i++ )
             {
                 if(GetBinaryInterval(j, L, i) > 0)
                 {
-                    pairedj++;
                     if(currentEntrance == 0)
                     {
                         currentEntrance = GetAfter(L, Get(j, i));
@@ -277,34 +291,21 @@ namespace LibiadaCore.Classes.Root
                     else
                     {
                         int nextEntrance = GetAfter(L, Get(j, i));
-                        avG *= nextEntrance - currentEntrance;
+                        avG += Math.Log(nextEntrance - currentEntrance, 2);
                         currentEntrance = nextEntrance;
                     }
                 }
             }
-            avG *= this.Length - currentEntrance;
-            avG = Math.Pow(avG, 1.0/pairedj);
-            return 1 - (SpatialDependence(j, L) / avG);
+            avG += Math.Log(this.Length - currentEntrance, 2);
+            avG = GetPairsCount(j, L) == 0 ? 0 : avG / GetPairsCount(j, L);
+            return 1 -  SpatialDependence(j, L) / Math.Pow(2,avG);
         }
 
         public double PartialDependenceCoefficient(IBaseObject j, IBaseObject L)
         {
-            UniformChain jChain = (UniformChain)UniformChain(j);
             UniformChain LChain = (UniformChain)UniformChain(L);
-            int jElementCount = (int)jChain.GetCharacteristic(LinkUp.Start, new Count());
             int LElementCount = (int)LChain.GetCharacteristic(LinkUp.Start, new Count());
-            int intervals = 1;
-            int pairs = 0;
-            for (int i = 1; i <= jElementCount; i++)
-            {
-                int binaryInterval = GetBinaryInterval(j, L, i);
-                if (binaryInterval > 0)
-                {
-                    intervals *= binaryInterval;
-                    pairs++;
-                }
-            }
-            return Redundancy(j, L) * pairs / LElementCount;
+            return Redundancy(j, L) * GetPairsCount(j, L) / LElementCount;
         }
 
         public double K2(IBaseObject j, IBaseObject L)

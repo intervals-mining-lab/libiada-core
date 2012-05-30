@@ -213,7 +213,7 @@ namespace TestLibiadaCore.Classes.Root
             ChainBase.Add(MessageA, 8);
             ChainBase.Add(MessageC, 9);
 
-            Assert.AreEqual(Math.Pow(3, 1.0 / 2), ChainBase.SpatialDependence(MessageC, MessageA));
+            Assert.AreEqual(1.732, Math.Round(ChainBase.SpatialDependence(MessageC, MessageA), 3));
             Assert.AreEqual(Math.Pow(1, 1.0 / 2), ChainBase.SpatialDependence(MessageA, MessageC));
         }
 
@@ -313,10 +313,10 @@ namespace TestLibiadaCore.Classes.Root
             testChain.Add(MessageA, 0);
             testChain.Add(MessageB, 12);
 
-            Assert.AreEqual(-11, testChain.PartialDependenceCoefficient(MessageA, MessageB));
+            Assert.AreEqual(-11, Math.Round(testChain.PartialDependenceCoefficient(MessageA, MessageB), 3));
             Assert.AreEqual(0, testChain.PartialDependenceCoefficient(MessageB, MessageA));
 
-            Assert.AreEqual(-11, testChain.K2(MessageA, MessageB));
+            Assert.AreEqual(-11, Math.Round(testChain.K2(MessageA, MessageB),3));
             Assert.AreEqual(0, testChain.K2(MessageB, MessageA));
 
             Assert.AreEqual(0, testChain.K3(MessageA, MessageB));
@@ -591,8 +591,8 @@ namespace TestLibiadaCore.Classes.Root
             Assert.AreEqual(0, result[1][0], 3);
             Assert.AreEqual(0, result[1][1]);
             Assert.AreEqual(0.349, Math.Round(result[1][2], 3));
-            Assert.AreEqual(0.402, Math.Round(result[2][0], 3));
-            Assert.AreEqual(0.402, Math.Round(result[2][1], 3));
+            Assert.AreEqual(0.375, Math.Round(result[2][0], 3));
+            Assert.AreEqual(0.388, Math.Round(result[2][1], 3));
             Assert.AreEqual(0, result[2][2]);
 
         }
