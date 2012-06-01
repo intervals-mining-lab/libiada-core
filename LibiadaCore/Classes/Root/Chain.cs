@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
 using LibiadaCore.Classes.EventTheory;
 using LibiadaCore.Classes.Root.Characteristics;
 using LibiadaCore.Classes.Root.Characteristics.AuxiliaryInterfaces;
@@ -301,11 +302,16 @@ namespace LibiadaCore.Classes.Root
             return 1 -  SpatialDependence(j, L) / Math.Pow(2,avG);
         }
 
-        public double PartialDependenceCoefficient(IBaseObject j, IBaseObject L)
+        public double K1(IBaseObject j, IBaseObject L)
         {
             UniformChain LChain = (UniformChain)UniformChain(L);
             int LElementCount = (int)LChain.GetCharacteristic(LinkUp.Start, new Count());
             return Redundancy(j, L) * GetPairsCount(j, L) / LElementCount;
+        }
+
+        public double NormalizedK1(IBaseObject j, IBaseObject L)
+        {
+            return K1(j, L) * 2 * GetPairsCount(j, L) / this.Length;
         }
 
         public double K2(IBaseObject j, IBaseObject L)
@@ -349,7 +355,7 @@ namespace LibiadaCore.Classes.Root
                 {
                     if(i != j)
                     {
-                        result[i].Add(PartialDependenceCoefficient(Alphabet[i], Alphabet[j]));
+                        result[i].Add(K1(Alphabet[i], Alphabet[j]));
                     }
                     else
                     {

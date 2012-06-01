@@ -242,28 +242,34 @@ namespace TestLibiadaCore.Classes.Root
             testChain.Add(MessageA, 0);
             testChain.Add(MessageB, 1);
 
-            Assert.AreEqual(0, Math.Round(testChain.PartialDependenceCoefficient(MessageA, MessageB), 3));
-            Assert.AreEqual(0, Math.Round(testChain.PartialDependenceCoefficient(MessageB, MessageA), 3));
+            Assert.AreEqual(0, Math.Round(testChain.K1(MessageA, MessageB), 3));
+            Assert.AreEqual(0, Math.Round(testChain.K1(MessageB, MessageA), 3));
 
             Assert.AreEqual(0, Math.Round(testChain.K2(MessageA, MessageB), 3));
             Assert.AreEqual(0, Math.Round(testChain.K2(MessageB, MessageA), 3));
 
             Assert.AreEqual(0, Math.Round(testChain.K3(MessageA, MessageB), 3));
+
+            Assert.AreEqual(0, Math.Round(testChain.NormalizedK1(MessageA, MessageB), 3));
+            Assert.AreEqual(0, Math.Round(testChain.NormalizedK1(MessageB, MessageA), 3));
 
 
             testChain = new Chain(6);
             testChain.Add(MessageA, 0);
             testChain.Add(MessageB, 3);
 
-            Assert.AreEqual(0, Math.Round(testChain.PartialDependenceCoefficient(MessageA, MessageB), 3));
-            Assert.AreEqual(0, Math.Round(testChain.PartialDependenceCoefficient(MessageB, MessageA), 3));
+            Assert.AreEqual(0, Math.Round(testChain.K1(MessageA, MessageB), 3));
+            Assert.AreEqual(0, Math.Round(testChain.K1(MessageB, MessageA), 3));
 
             Assert.AreEqual(0, Math.Round(testChain.K2(MessageA, MessageB), 3));
             Assert.AreEqual(0, Math.Round(testChain.K2(MessageB, MessageA), 3));
 
             Assert.AreEqual(0, Math.Round(testChain.K3(MessageA, MessageB), 3));
 
+            Assert.AreEqual(0, Math.Round(testChain.NormalizedK1(MessageA, MessageB), 3));
+            Assert.AreEqual(0, Math.Round(testChain.NormalizedK1(MessageB, MessageA), 3));
 
+            
             testChain = new Chain(27);
             testChain.Add(MessageA, 0);
             testChain.Add(MessageA, 4);
@@ -274,54 +280,66 @@ namespace TestLibiadaCore.Classes.Root
             testChain.Add(MessageB, 16);
             testChain.Add(MessageB, 26);
 
-            Assert.AreEqual(0, Math.Round(testChain.PartialDependenceCoefficient(MessageA, MessageB), 3));
-            Assert.AreEqual(0.546, Math.Round(testChain.PartialDependenceCoefficient(MessageB, MessageA), 3));
+            Assert.AreEqual(0, Math.Round(testChain.K1(MessageA, MessageB), 3));
+            Assert.AreEqual(0.546, Math.Round(testChain.K1(MessageB, MessageA), 3));
 
             Assert.AreEqual(0, Math.Round(testChain.K2(MessageA, MessageB), 3));
             Assert.AreEqual(0.546, Math.Round(testChain.K2(MessageB, MessageA), 3));
 
             Assert.AreEqual(0, Math.Round(testChain.K3(MessageA, MessageB), 3));
 
+            Assert.AreEqual(0, Math.Round(testChain.NormalizedK1(MessageA, MessageB), 3));
+            Assert.AreEqual(0.121, Math.Round(testChain.NormalizedK1(MessageB, MessageA), 3));
 
+            
             testChain = new Chain(5);
             testChain.Add(MessageA, 0);
             testChain.Add(MessageB, 1);
 
-            Assert.AreEqual(0.75, Math.Round(testChain.PartialDependenceCoefficient(MessageA, MessageB), 3));
-            Assert.AreEqual(0, Math.Round(testChain.PartialDependenceCoefficient(MessageB, MessageA), 3));
+            Assert.AreEqual(0.75, Math.Round(testChain.K1(MessageA, MessageB), 3));
+            Assert.AreEqual(0, Math.Round(testChain.K1(MessageB, MessageA), 3));
 
             Assert.AreEqual(0.75, Math.Round(testChain.K2(MessageA, MessageB), 3));
             Assert.AreEqual(0, Math.Round(testChain.K2(MessageB, MessageA), 3));
 
             Assert.AreEqual(0, Math.Round(testChain.K3(MessageA, MessageB), 3));
 
+            Assert.AreEqual(0.3, Math.Round(testChain.NormalizedK1(MessageA, MessageB), 3));
+            Assert.AreEqual(0, Math.Round(testChain.NormalizedK1(MessageB, MessageA), 3));
 
+            
             testChain = new Chain(12);
             testChain.Add(MessageA, 0);
             testChain.Add(MessageB, 1);
 
-            Assert.AreEqual(0.9091, Math.Round(testChain.PartialDependenceCoefficient(MessageA, MessageB), 4));
-            Assert.AreEqual(0, Math.Round(testChain.PartialDependenceCoefficient(MessageB, MessageA), 3));
+            Assert.AreEqual(0.9091, Math.Round(testChain.K1(MessageA, MessageB), 4));
+            Assert.AreEqual(0, Math.Round(testChain.K1(MessageB, MessageA), 3));
 
             Assert.AreEqual(0.9091, Math.Round(testChain.K2(MessageA, MessageB), 4));
             Assert.AreEqual(0, Math.Round(testChain.K2(MessageB, MessageA), 3));
 
             Assert.AreEqual(0, Math.Round(testChain.K3(MessageA, MessageB), 3));
 
+            Assert.AreEqual(0.152, Math.Round(testChain.NormalizedK1(MessageA, MessageB), 3));
+            Assert.AreEqual(0, Math.Round(testChain.NormalizedK1(MessageB, MessageA), 3));
 
+            
             testChain = new Chain(13);
             testChain.Add(MessageA, 0);
             testChain.Add(MessageB, 12);
 
-            Assert.AreEqual(-11, Math.Round(testChain.PartialDependenceCoefficient(MessageA, MessageB), 3));
-            Assert.AreEqual(0, testChain.PartialDependenceCoefficient(MessageB, MessageA));
+            Assert.AreEqual(-11, Math.Round(testChain.K1(MessageA, MessageB), 3));
+            Assert.AreEqual(0, testChain.K1(MessageB, MessageA));
 
             Assert.AreEqual(-11, Math.Round(testChain.K2(MessageA, MessageB),3));
             Assert.AreEqual(0, testChain.K2(MessageB, MessageA));
 
             Assert.AreEqual(0, testChain.K3(MessageA, MessageB));
 
+            Assert.AreEqual(-1.692, Math.Round(testChain.NormalizedK1(MessageA, MessageB), 3));
+            Assert.AreEqual(0, Math.Round(testChain.NormalizedK1(MessageB, MessageA), 3));
 
+            
             testChain = new Chain(29);
             testChain.Add(MessageA, 0);
             testChain.Add(MessageA, 14);
@@ -335,15 +353,18 @@ namespace TestLibiadaCore.Classes.Root
             testChain.Add(MessageB, 13);
             testChain.Add(MessageB, 28);
 
-            Assert.AreEqual(-0.22, Math.Round(testChain.PartialDependenceCoefficient(MessageA, MessageB), 2));
-            Assert.AreEqual(0.1556, Math.Round(testChain.PartialDependenceCoefficient(MessageB, MessageA), 4));
+            Assert.AreEqual(-0.22, Math.Round(testChain.K1(MessageA, MessageB), 2));
+            Assert.AreEqual(0.1556, Math.Round(testChain.K1(MessageB, MessageA), 4));
 
             //            Assert.AreEqual(-0.509, Math.Round(testChain.K2(MessageA, MessageB), 3));
             //            Assert.AreEqual(0.1697, Math.Round(testChain.K2(MessageB, MessageA), 4));
 
             //            Assert.AreEqual(0, Math.Round(testChain.K3(MessageA, MessageB), 3));
 
+            Assert.AreEqual(-0.03, Math.Round(testChain.NormalizedK1(MessageA, MessageB), 3));
+            Assert.AreEqual(0.011, Math.Round(testChain.NormalizedK1(MessageB, MessageA), 3));
 
+            
             testChain = new Chain(25);
             testChain.Add(MessageA, 0);
             testChain.Add(MessageA, 3);
@@ -356,15 +377,18 @@ namespace TestLibiadaCore.Classes.Root
             testChain.Add(MessageB, 21);
             testChain.Add(MessageB, 24);
 
-            Assert.AreEqual(0.356, Math.Round(testChain.PartialDependenceCoefficient(MessageA, MessageB), 3));
-            Assert.AreEqual(0.075, Math.Round(testChain.PartialDependenceCoefficient(MessageB, MessageA), 3));
+            Assert.AreEqual(0.356, Math.Round(testChain.K1(MessageA, MessageB), 3));
+            Assert.AreEqual(0.075, Math.Round(testChain.K1(MessageB, MessageA), 3));
 
             Assert.AreEqual(0.214, Math.Round(testChain.K2(MessageA, MessageB), 3));
             Assert.AreEqual(0.105, Math.Round(testChain.K2(MessageB, MessageA), 3));
 
             Assert.AreEqual(0.15, Math.Round(testChain.K3(MessageA, MessageB), 2));
 
+            Assert.AreEqual(0.086, Math.Round(testChain.NormalizedK1(MessageA, MessageB), 3));
+            Assert.AreEqual(0.012, Math.Round(testChain.NormalizedK1(MessageB, MessageA), 3));
 
+            
             testChain = new Chain(29);
             testChain.Add(MessageA, 0);
             testChain.Add(MessageA, 3);
@@ -376,15 +400,18 @@ namespace TestLibiadaCore.Classes.Root
             testChain.Add(MessageB, 17);
             testChain.Add(MessageB, 28);
 
-            Assert.AreEqual(0.023, Math.Round(testChain.PartialDependenceCoefficient(MessageA, MessageB), 3));
-            Assert.AreEqual(0.307, Math.Round(testChain.PartialDependenceCoefficient(MessageB, MessageA), 3));
+            Assert.AreEqual(0.023, Math.Round(testChain.K1(MessageA, MessageB), 3));
+            Assert.AreEqual(0.307, Math.Round(testChain.K1(MessageB, MessageA), 3));
 
             //            Assert.AreEqual(0.0445, Math.Round(testChain.K2(MessageA, MessageB), 4));
             //            Assert.AreEqual(0.4418, Math.Round(testChain.K2(MessageB, MessageA), 4));
 
             //            Assert.AreEqual(0.1402, Math.Round(testChain.K3(MessageA, MessageB), 4));
 
+            Assert.AreEqual(0.005, Math.Round(testChain.NormalizedK1(MessageA, MessageB), 3));
+            Assert.AreEqual(0.042, Math.Round(testChain.NormalizedK1(MessageB, MessageA), 3));
 
+            
             testChain = new Chain(28);
             testChain.Add(MessageA, 0);
             testChain.Add(MessageA, 8);
@@ -395,15 +422,18 @@ namespace TestLibiadaCore.Classes.Root
             testChain.Add(MessageB, 17);
             testChain.Add(MessageB, 19);
 
-            Assert.AreEqual(0.614, Math.Round(testChain.PartialDependenceCoefficient(MessageA, MessageB), 3));
-            Assert.AreEqual(0.402, Math.Round(testChain.PartialDependenceCoefficient(MessageB, MessageA), 3));
+            Assert.AreEqual(0.614, Math.Round(testChain.K1(MessageA, MessageB), 3));
+            Assert.AreEqual(0.402, Math.Round(testChain.K1(MessageB, MessageA), 3));
 
             Assert.AreEqual(0.614, Math.Round(testChain.K2(MessageA, MessageB), 3));
             Assert.AreEqual(0.402, Math.Round(testChain.K2(MessageB, MessageA), 3));
 
             Assert.AreEqual(0.497, Math.Round(testChain.K3(MessageA, MessageB), 3));
 
+            Assert.AreEqual(0.175, Math.Round(testChain.NormalizedK1(MessageA, MessageB), 3));
+            Assert.AreEqual(0.086, Math.Round(testChain.NormalizedK1(MessageB, MessageA), 3));
 
+            
             testChain = new Chain(28);
             testChain.Add(MessageA, 0);
             testChain.Add(MessageA, 9);
@@ -414,30 +444,36 @@ namespace TestLibiadaCore.Classes.Root
             testChain.Add(MessageB, 19);
             testChain.Add(MessageB, 25);
 
-            Assert.AreEqual(0.69, Math.Round(testChain.PartialDependenceCoefficient(MessageA, MessageB), 2));
-            Assert.AreEqual(0.059, Math.Round(testChain.PartialDependenceCoefficient(MessageB, MessageA), 3));
+            Assert.AreEqual(0.69, Math.Round(testChain.K1(MessageA, MessageB), 2));
+            Assert.AreEqual(0.059, Math.Round(testChain.K1(MessageB, MessageA), 3));
 
             Assert.AreEqual(0.69, Math.Round(testChain.K2(MessageA, MessageB), 2));
             Assert.AreEqual(0.059, Math.Round(testChain.K2(MessageB, MessageA), 3));
 
             Assert.AreEqual(0.202, Math.Round(testChain.K3(MessageA, MessageB), 3));
 
+            Assert.AreEqual(0.197, Math.Round(testChain.NormalizedK1(MessageA, MessageB), 3));
+            Assert.AreEqual(0.013, Math.Round(testChain.NormalizedK1(MessageB, MessageA), 3));
 
+            
             testChain = new Chain(16);
             testChain.Add(MessageA, 0);
             testChain.Add(MessageA, 8);
             testChain.Add(MessageB, 4);
             testChain.Add(MessageB, 12);
 
-            Assert.AreEqual(0.293, Math.Round(testChain.PartialDependenceCoefficient(MessageA, MessageB), 3));
-            Assert.AreEqual(0.25, testChain.PartialDependenceCoefficient(MessageB, MessageA));
+            Assert.AreEqual(0.293, Math.Round(testChain.K1(MessageA, MessageB), 3));
+            Assert.AreEqual(0.25, testChain.K1(MessageB, MessageA));
 
             Assert.AreEqual(0.293, Math.Round(testChain.K2(MessageA, MessageB), 3));
             Assert.AreEqual(0.25, testChain.K2(MessageB, MessageA));
 
             Assert.AreEqual(0.271, Math.Round(testChain.K3(MessageA, MessageB), 3));
 
+            Assert.AreEqual(0.073, Math.Round(testChain.NormalizedK1(MessageA, MessageB), 3));
+            Assert.AreEqual(0.031, Math.Round(testChain.NormalizedK1(MessageB, MessageA), 3));
 
+            
             testChain = new Chain(30);
             testChain.Add(MessageA, 0);
             testChain.Add(MessageA, 6);
@@ -448,13 +484,16 @@ namespace TestLibiadaCore.Classes.Root
             testChain.Add(MessageB, 13);
             testChain.Add(MessageB, 21);
 
-            Assert.AreEqual(0.535, Math.Round(testChain.PartialDependenceCoefficient(MessageA, MessageB), 3));
-            Assert.AreEqual(0.496, Math.Round(testChain.PartialDependenceCoefficient(MessageB, MessageA), 3));
+            Assert.AreEqual(0.535, Math.Round(testChain.K1(MessageA, MessageB), 3));
+            Assert.AreEqual(0.496, Math.Round(testChain.K1(MessageB, MessageA), 3));
 
             Assert.AreEqual(0.535, Math.Round(testChain.K2(MessageA, MessageB), 3));
             Assert.AreEqual(0.496, Math.Round(testChain.K2(MessageB, MessageA), 3));
 
             Assert.AreEqual(0.515, Math.Round(testChain.K3(MessageA, MessageB), 3));
+
+            Assert.AreEqual(0.143, Math.Round(testChain.NormalizedK1(MessageA, MessageB), 3));
+            Assert.AreEqual(0.099, Math.Round(testChain.NormalizedK1(MessageB, MessageA), 3));
 
 
             testChain = new Chain(23);
@@ -467,13 +506,16 @@ namespace TestLibiadaCore.Classes.Root
             testChain.Add(MessageB, 15);
             testChain.Add(MessageB, 19);
 
-            Assert.AreEqual(0.774, Math.Round(testChain.PartialDependenceCoefficient(MessageA, MessageB), 3));
-            Assert.AreEqual(0.209, Math.Round(testChain.PartialDependenceCoefficient(MessageB, MessageA), 3));
+            Assert.AreEqual(0.774, Math.Round(testChain.K1(MessageA, MessageB), 3));
+            Assert.AreEqual(0.209, Math.Round(testChain.K1(MessageB, MessageA), 3));
 
             Assert.AreEqual(0.774, Math.Round(testChain.K2(MessageA, MessageB), 3));
             Assert.AreEqual(0.209, Math.Round(testChain.K2(MessageB, MessageA), 3));
 
             Assert.AreEqual(0.402, Math.Round(testChain.K3(MessageA, MessageB), 3));
+
+            Assert.AreEqual(0.269, Math.Round(testChain.NormalizedK1(MessageA, MessageB), 3));
+            Assert.AreEqual(0.055, Math.Round(testChain.NormalizedK1(MessageB, MessageA), 3));
 
 
             testChain = new Chain(12);
@@ -483,13 +525,16 @@ namespace TestLibiadaCore.Classes.Root
             testChain.Add(MessageB, 5);
             testChain.Add(MessageB, 8);
 
-            Assert.AreEqual(0.2143, Math.Round(testChain.PartialDependenceCoefficient(MessageA, MessageB), 4));
-            Assert.AreEqual(0.875, Math.Round(testChain.PartialDependenceCoefficient(MessageB, MessageA), 3));
+            Assert.AreEqual(0.2143, Math.Round(testChain.K1(MessageA, MessageB), 4));
+            Assert.AreEqual(0.875, Math.Round(testChain.K1(MessageB, MessageA), 3));
 
             Assert.AreEqual(0.3429, Math.Round(testChain.K2(MessageA, MessageB), 4));
             Assert.AreEqual(0.35, Math.Round(testChain.K2(MessageB, MessageA), 2));
 
             Assert.AreEqual(0.3464, Math.Round(testChain.K3(MessageA, MessageB), 4));
+
+            Assert.AreEqual(0.036, Math.Round(testChain.NormalizedK1(MessageA, MessageB), 3));
+            Assert.AreEqual(0.146, Math.Round(testChain.NormalizedK1(MessageB, MessageA), 3));
 
 
             // -------------- дальше цепочки из монографии
@@ -502,13 +547,16 @@ namespace TestLibiadaCore.Classes.Root
             testChain.Add(MessageB, 8);
             testChain.Add(MessageB, 19);
 
-            Assert.AreEqual(0.607, Math.Round(testChain.PartialDependenceCoefficient(MessageA, MessageB), 3));
-            Assert.AreEqual(0.376, Math.Round(testChain.PartialDependenceCoefficient(MessageB, MessageA), 3));
+            Assert.AreEqual(0.607, Math.Round(testChain.K1(MessageA, MessageB), 3));
+            Assert.AreEqual(0.376, Math.Round(testChain.K1(MessageB, MessageA), 3));
 
             Assert.AreEqual(0.607, Math.Round(testChain.K2(MessageA, MessageB), 3));
             Assert.AreEqual(0.376, Math.Round(testChain.K2(MessageB, MessageA), 3));
 
             Assert.AreEqual(0.478, Math.Round(testChain.K3(MessageA, MessageB), 3));
+
+            Assert.AreEqual(0.14, Math.Round(testChain.NormalizedK1(MessageA, MessageB), 3));
+            Assert.AreEqual(0.058, Math.Round(testChain.NormalizedK1(MessageB, MessageA), 3));
 
 
             testChain = new Chain(23);
