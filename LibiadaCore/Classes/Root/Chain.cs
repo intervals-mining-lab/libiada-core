@@ -366,6 +366,27 @@ namespace LibiadaCore.Classes.Root
             return result;
         }
 
+        public List<List<double>> GetNormalizedK1()
+        {
+            List<List<double>> result = new List<List<double>>();
+            for (int i = 0; i < Alphabet.power; i++)
+            {
+                result.Add(new List<double>());
+                for (int j = 0; j < Alphabet.power; j++)
+                {
+                    if (i != j)
+                    {
+                        result[i].Add(NormalizedK1(Alphabet[i], Alphabet[j]));
+                    }
+                    else
+                    {
+                        result[i].Add(0);
+                    }
+                }
+            }
+            return result;
+        }
+
         public List<List<double>> GetK2()
         {
             List<List<double>> result = new List<List<double>>();

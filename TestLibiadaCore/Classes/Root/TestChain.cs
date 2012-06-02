@@ -617,6 +617,7 @@ namespace TestLibiadaCore.Classes.Root
             Assert.AreEqual(0.402, Math.Round(result[1][0], 3));
             Assert.AreEqual(0, result[1][1]);
 
+            // ABCBABCCBCCC
             testChain = new Chain(12);
             testChain.Add(MessageA, 0);
             testChain.Add(MessageA, 4);
@@ -641,6 +642,73 @@ namespace TestLibiadaCore.Classes.Root
             Assert.AreEqual(0.349, Math.Round(result[1][2], 3));
             Assert.AreEqual(0.375, Math.Round(result[2][0], 3));
             Assert.AreEqual(0.388, Math.Round(result[2][1], 3));
+            Assert.AreEqual(0, result[2][2]);
+
+        }
+
+        [Test]
+        public void TestGetNormalizedK1()
+        {
+            ValueChar MessageA = new ValueChar('a');
+            ValueChar MessageB = new ValueChar('b');
+            ValueChar MessageC = new ValueChar('c');
+
+            List<List<double>> result;
+
+            Chain testChain = new Chain(2);
+            testChain.Add(MessageA, 0);
+            testChain.Add(MessageB, 1);
+
+            result = testChain.GetNormalizedK1();
+
+            Assert.AreEqual(0, result[0][0]);
+            Assert.AreEqual(0, result[0][1]);
+            Assert.AreEqual(0, result[1][0]);
+            Assert.AreEqual(0, result[1][1]);
+
+
+            testChain = new Chain(28);
+            testChain.Add(MessageA, 0);
+            testChain.Add(MessageA, 8);
+            testChain.Add(MessageA, 16);
+            testChain.Add(MessageA, 18);
+            testChain.Add(MessageB, 4);
+            testChain.Add(MessageB, 12);
+            testChain.Add(MessageB, 17);
+            testChain.Add(MessageB, 19);
+
+            result = testChain.GetNormalizedK1();
+
+            Assert.AreEqual(0, result[0][0]);
+            Assert.AreEqual(0.175, Math.Round(result[0][1], 3));
+            Assert.AreEqual(0.086, Math.Round(result[1][0], 3));
+            Assert.AreEqual(0, result[1][1]);
+
+            // ABCBABCCBCCC
+            testChain = new Chain(12);
+            testChain.Add(MessageA, 0);
+            testChain.Add(MessageA, 4);
+            testChain.Add(MessageB, 1);
+            testChain.Add(MessageB, 3);
+            testChain.Add(MessageB, 5);
+            testChain.Add(MessageB, 8);
+            testChain.Add(MessageC, 2);
+            testChain.Add(MessageC, 6);
+            testChain.Add(MessageC, 7);
+            testChain.Add(MessageC, 9);
+            testChain.Add(MessageC, 10);
+            testChain.Add(MessageC, 11);
+
+            result = testChain.GetNormalizedK1();
+
+            Assert.AreEqual(0, result[0][0]);
+            Assert.AreEqual(0.1352, Math.Round(result[0][1], 4));
+            Assert.AreEqual(0.066, Math.Round(result[0][2], 3));
+            Assert.AreEqual(0, result[1][0], 3);
+            Assert.AreEqual(0, result[1][1]);
+            Assert.AreEqual(0.174, Math.Round(result[1][2], 3));
+            Assert.AreEqual(0.062, Math.Round(result[2][0], 3));
+            Assert.AreEqual(0.129, Math.Round(result[2][1], 3));
             Assert.AreEqual(0, result[2][2]);
 
         }
