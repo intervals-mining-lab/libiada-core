@@ -8,9 +8,8 @@ namespace LibiadaCore.Classes.Root.Characteristics
     public class Characteristic: IBaseObject 
     {
         protected Boolean Calculated = false;
-        protected double pStartValue;
-        protected double pEndValue;
-        protected double pBothValue;
+        protected double CharacteristicValue;
+        protected LinkUp Link;
         protected ICharacteristicCalculator Calculator = null;
         protected ChainWithCharacteristic pChain = null;
 
@@ -26,24 +25,22 @@ namespace LibiadaCore.Classes.Root.Characteristics
 
         ///<summary>
         ///</summary>
-        ///<param name="Type"></param>
-        public Characteristic(ICharacteristicCalculator Type)
+        ///<param name="type"></param>
+        public Characteristic(ICharacteristicCalculator type)
         {
-            Calculator = Type;
+            Calculator = type;
         }
 
         ///<summary>
         ///</summary>
-        ///<param name="Bin"></param>
-        public Characteristic(CharacteristicBin Bin)
+        ///<param name="bin"></param>
+        public Characteristic(CharacteristicBin bin)
         {
-            pStartValue = Bin.StartValue;
-            pEndValue = Bin.EndValue;
-            pBothValue = Bin.BothValue;
-            Calculator = Bin.Type;
-            pChain = Bin.Chain;
+            CharacteristicValue = bin.CharacteristicValue;
+            Calculator = bin.Type;
+            pChain = bin.Chain;
+            Link = bin.Link;
         }
-
 
         protected Characteristic()
         {
@@ -51,76 +48,53 @@ namespace LibiadaCore.Classes.Root.Characteristics
 
         ///<summary>
         ///</summary>
-        ///<param name="Chain"></param>
-        ///<param name="Link"></param>
+        ///<param name="chain"></param>
+        ///<param name="linkUp"></param>
         ///<returns></returns>
         ///<exception cref="Exception"></exception>
-        public virtual double Value(UniformChain Chain, LinkUp Link)
+        public virtual double Value(UniformChain chain, LinkUp linkUp)
         {
-            if (!Calculated || !Chain.Equals(pChain))
+            if (!Calculated || !chain.Equals(pChain) || linkUp != Link)
             {
-                pChain = Chain;
-                pStartValue = Calculator.Calculate(Chain, LinkUp.Start);
-                pEndValue = Calculator.Calculate(Chain, LinkUp.End);
-                pBothValue = Calculator.Calculate(Chain, LinkUp.Both);
+                pChain = chain;
+                Link = linkUp;
+                CharacteristicValue = Calculator.Calculate(chain, linkUp);
                 Calculated = true;
             }
-            return GetCurrentValue(Link);
+            return CharacteristicValue;
         }
 
         ///<summary>
         ///</summary>
-        ///<param name="Link"></param>
+        ///<param name="chain"></param>
+        ///<param name="linkUp"></param>
         ///<returns></returns>
-        ///<exception cref="Exception"></exception>
-        public double GetCurrentValue(LinkUp Link)
+        public virtual double Value(Chain chain, LinkUp linkUp)
         {
-            switch (Link)
+            if (!Calculated || !chain.Equals(pChain) || linkUp != Link)
             {
-                case LinkUp.Start:
-                    return pStartValue;
-                case LinkUp.End:
-                    return pEndValue;
-                case LinkUp.Both:
-                    return pBothValue;
-                default:
-                    throw new Exception("Супер странная ошибка :)");
-            }
-        }
-
-        ///<summary>
-        ///</summary>
-        ///<param name="Chain"></param>
-        ///<param name="Link"></param>
-        ///<returns></returns>
-        public double Value(Chain Chain, LinkUp Link)
-        {
-            if (!Calculated || !Chain.Equals(pChain))
-            {
-                pChain = Chain;
-                pStartValue = Calculator.Calculate(Chain, LinkUp.Start);
-                pEndValue = Calculator.Calculate(Chain, LinkUp.End);
-                pBothValue = Calculator.Calculate(Chain, LinkUp.Both);
+                pChain = chain;
+                Link = linkUp;
+                CharacteristicValue = Calculator.Calculate(chain, linkUp);
                 Calculated = true;
             }
-            return GetCurrentValue(Link);
+            return CharacteristicValue;
         }
 
         public IBaseObject Clone()
         {
-            Characteristic Temp = new Characteristic(Calculator);
-            Temp.pStartValue = pStartValue;
-            Temp.pEndValue = pEndValue;
-            Temp.pBothValue = pBothValue;
-            Temp.pChain = pChain;
-            Temp.Calculated = Calculated;
-            return Temp;
+            Characteristic temp = new Characteristic(Calculator);
+            temp.CharacteristicValue = CharacteristicValue;
+            temp.pChain = pChain;
+            temp.Calculated = Calculated;
+            temp.Link = Link;
+            return temp;
 
         }
 
         public IBin GetBin()
         {
-            CharacteristicBin  Temp = new CharacteristicBin();
+            CharacteristicBin Temp = new CharacteristicBin();
             FillBin(Temp);
             return Temp;
 
@@ -128,11 +102,10 @@ namespace LibiadaCore.Classes.Root.Characteristics
 
         private void FillBin(CharacteristicBin temp)
         {
-            temp.StartValue = pStartValue;
-            temp.EndValue = pEndValue;
-            temp.BothValue = pBothValue;
+            temp.CharacteristicValue = CharacteristicValue;
             temp.Type = Calculator;
             temp.Chain = pChain;
+            temp.Link = Link;
         }
     }
 
@@ -140,11 +113,10 @@ namespace LibiadaCore.Classes.Root.Characteristics
     ///</summary>
     public class CharacteristicBin:IBin
     {
-        public double StartValue;
-        public double EndValue;
-        public double BothValue;
+        public double CharacteristicValue;
         public ICharacteristicCalculator Type = null;
         public ChainWithCharacteristic Chain = null;
+        public LinkUp Link;
 
         public IBaseObject GetInstance()
         {

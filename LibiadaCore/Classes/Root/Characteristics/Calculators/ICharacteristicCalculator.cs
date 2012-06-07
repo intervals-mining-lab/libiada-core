@@ -7,17 +7,17 @@ namespace LibiadaCore.Classes.Root.Characteristics.Calculators
     {
         ///<summary>
         ///</summary>
-        ///<param name="pChain"></param>
-        ///<param name="Link"></param>
+        ///<param name="chain"></param>
+        ///<param name="linkUp"></param>
         ///<returns></returns>
-        double Calculate(UniformChain pChain, LinkUp Link);
+        double Calculate(UniformChain chain, LinkUp linkUp);
 
         ///<summary>
         ///</summary>
-        ///<param name="pChain"></param>
-        ///<param name="Link"></param>
+        ///<param name="chain"></param>
+        ///<param name="linkUp"></param>
         ///<returns></returns>
-        double Calculate(Chain pChain, LinkUp Link);
+        double Calculate(Chain chain, LinkUp linkUp);
 
         ///<summary>
         /// Возвращает имя характеристики вычисляемой калькулятором

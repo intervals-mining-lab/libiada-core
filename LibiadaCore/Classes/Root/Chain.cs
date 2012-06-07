@@ -1,11 +1,11 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Threading;
 using LibiadaCore.Classes.EventTheory;
 using LibiadaCore.Classes.Root.Characteristics;
 using LibiadaCore.Classes.Root.Characteristics.AuxiliaryInterfaces;
 using LibiadaCore.Classes.Root.Characteristics.Calculators;
+using LibiadaCore.Classes.Root.Characteristics.Calculators.BinaryCalculators;
 using LibiadaCore.Classes.Root.SimpleTypes;
 
 namespace LibiadaCore.Classes.Root
@@ -230,24 +230,6 @@ namespace LibiadaCore.Classes.Root
             return -1;
         }
 
-        public double SpatialDependence(IBaseObject j, IBaseObject L)
-        {
-            int jElementCount = (int)UniformChain(j).GetCharacteristic(LinkUp.Start, new Count());
-            double intervals = 0;
-            int pairs = 0;
-            for (int i = 1; i <= jElementCount; i++)
-            {
-                int binaryInterval = GetBinaryInterval(j, L, i);
-                if(binaryInterval > 0)
-                {
-                    intervals += Math.Log(binaryInterval, 2);
-                    pairs++;
-                }
-            }
-            
-            return Math.Pow(2, pairs == 0 ? 0 : intervals/pairs);
-        }
-
         public int GetAfter(IBaseObject element, int from)
         {
             for (int i = from; i < Building.Length; i++)
@@ -273,160 +255,6 @@ namespace LibiadaCore.Classes.Root
                 }
             }
             return pairs;
-        }
-
-        public double Redundancy(IBaseObject j, IBaseObject L)
-        {
-            UniformChain jChain = (UniformChain)UniformChain(j);
-            int jElementCount = (int)jChain.GetCharacteristic(LinkUp.Start, new Count());
-            double avG = 0;
-            int currentEntrance = 0;
-            for (int i = 1; i <= jElementCount; i++ )
-            {
-                if(GetBinaryInterval(j, L, i) > 0)
-                {
-                    if(currentEntrance == 0)
-                    {
-                        currentEntrance = GetAfter(L, Get(j, i));
-                    }
-                    else
-                    {
-                        int nextEntrance = GetAfter(L, Get(j, i));
-                        avG += Math.Log(nextEntrance - currentEntrance, 2);
-                        currentEntrance = nextEntrance;
-                    }
-                }
-            }
-            avG += Math.Log(this.Length - currentEntrance, 2);
-            avG = GetPairsCount(j, L) == 0 ? 0 : avG / GetPairsCount(j, L);
-            return 1 -  SpatialDependence(j, L) / Math.Pow(2,avG);
-        }
-
-        public double K1(IBaseObject j, IBaseObject L)
-        {
-            UniformChain LChain = (UniformChain)UniformChain(L);
-            int LElementCount = (int)LChain.GetCharacteristic(LinkUp.Start, new Count());
-            return Redundancy(j, L) * GetPairsCount(j, L) / LElementCount;
-        }
-
-        public double NormalizedK1(IBaseObject j, IBaseObject L)
-        {
-            return K1(j, L) * 2 * GetPairsCount(j, L) / this.Length;
-        }
-
-        public double K2(IBaseObject j, IBaseObject L)
-        {
-            UniformChain jChain = (UniformChain)UniformChain(j);
-            UniformChain LChain = (UniformChain)UniformChain(L);
-            int jElementCount = (int)jChain.GetCharacteristic(LinkUp.Start, new Count());
-            int LElementCount = (int)LChain.GetCharacteristic(LinkUp.Start, new Count());
-            int intervals = 1;
-            int pairs = 0;
-            for (int i = 1; i <= jElementCount; i++)
-            {
-                int binaryInterval = GetBinaryInterval(j, L, i);
-                if (binaryInterval > 0)
-                {
-                    intervals *= binaryInterval;
-                    pairs++;
-                }
-            }
-            return Redundancy(j, L) * (2 * pairs) / (jElementCount + LElementCount);
-        }
-
-        public double K3(IBaseObject j, IBaseObject L)
-        {
-            double firstK2 = K2(j, L);
-            double secondK2 = K2(L, j);
-            if(firstK2 < 0 || secondK2 < 0)
-            {
-                return 0;
-            }
-            return Math.Sqrt(firstK2*secondK2);
-        }
-
-        public List<List<double>> GetK1()
-        {
-            List<List<double>> result = new List<List<double>>();
-            for (int i = 0; i < Alphabet.power; i++)
-            {
-                result.Add(new List<double>());
-                for (int j = 0; j < Alphabet.power; j++)
-                {
-                    if(i != j)
-                    {
-                        result[i].Add(K1(Alphabet[i], Alphabet[j]));
-                    }
-                    else
-                    {
-                        result[i].Add(0);
-                    }
-                }
-            }
-            return result;
-        }
-
-        public List<List<double>> GetNormalizedK1()
-        {
-            List<List<double>> result = new List<List<double>>();
-            for (int i = 0; i < Alphabet.power; i++)
-            {
-                result.Add(new List<double>());
-                for (int j = 0; j < Alphabet.power; j++)
-                {
-                    if (i != j)
-                    {
-                        result[i].Add(NormalizedK1(Alphabet[i], Alphabet[j]));
-                    }
-                    else
-                    {
-                        result[i].Add(0);
-                    }
-                }
-            }
-            return result;
-        }
-
-        public List<List<double>> GetK2()
-        {
-            List<List<double>> result = new List<List<double>>();
-            for (int i = 0; i < Alphabet.power; i++)
-            {
-                result.Add(new List<double>());
-                for (int j = 0; j < Alphabet.power; j++)
-                {
-                    if (i != j)
-                    {
-                        result[i].Add(K2(Alphabet[i], Alphabet[j]));
-                    }
-                    else
-                    {
-                        result[i].Add(0);
-                    }
-                }
-            }
-            return result;
-        }
-
-        public List<List<double>> GetK3()
-        {
-            List<List<double>> result = new List<List<double>>();
-            for (int i = 0; i < Alphabet.power; i++)
-            {
-                result.Add(new List<double>());
-                for (int j = 0; j < Alphabet.power; j++)
-                {
-                    if (i != j)
-                    {
-                        result[i].Add(K3(Alphabet[i], Alphabet[j]));
-                    }
-                    else
-                    {
-                        result[i].Add(0);
-                    }
-                }
-            }
-            return result;
         }
 
         public new IBin GetBin()
