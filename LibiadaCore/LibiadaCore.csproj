@@ -72,7 +72,6 @@
     <Compile Include="Classes\Root\Characteristics\Calculators\AlphabetPower.cs" />
     <Compile Include="Classes\Root\Characteristics\Calculators\ArithmeticMean.cs" />
     <Compile Include="Classes\Root\Characteristics\Calculators\AverageRemoteness.cs" />
-    <Compile Include="Classes\Root\Characteristics\Calculators\BinaryCalculators\BinaryCharacteristicsEnum.cs" />
     <Compile Include="Classes\Root\Characteristics\Calculators\BinaryCalculators\BinaryGeometricMean.cs" />
     <Compile Include="Classes\Root\Characteristics\Calculators\BinaryCalculators\IBinaryCharacteristicCalculator.cs" />
     <Compile Include="Classes\Root\Characteristics\Calculators\BinaryCalculators\InvolvedPartialDependenceCoefficient.cs" />
