@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using MDA.OIP.ScoreModel;
-using ChainAnalises.Classes.Root;
+using LibiadaCore.Classes.Root;
 
 namespace MDA.OIP.BorodaDivider
 {
@@ -57,20 +57,75 @@ namespace MDA.OIP.BorodaDivider
             }
         }
 
-        public Fmotiv WithOutPauses()
-        {
-            //возвращает копию этого объекта Fmotiv, только без пауз
-            Fmotiv Temp = new Fmotiv(this.id, this.type);
-            Temp = (Fmotiv)this.Clone();
-            for (int i = 0; i < Temp.notelist.Count; i++)
+        // TODO: убрать все частные и заменить на общие!!!!!!!!! заменил все withoutpauses() на PauseTreatment с параметорм ignore
+        public Fmotiv PauseTreatment(int paramPause)
+        {           //возвращает копию этого объекта
+
+            switch (paramPause)
             {
-                if (Temp.notelist[i].Pitch == null)
-                {
-                    Temp.notelist.RemoveAt(i);
-                    i = i - 1;
-                }
+                case 0:
+                    {// удаляем все паузы в возвращаемом объекте (0) (паузы игнорируются)
+                        Fmotiv Temp = new Fmotiv(this.id, this.type);
+                        Temp = (Fmotiv)this.Clone();
+                        for (int i = 0; i < Temp.notelist.Count; i++)
+                        {
+                            if (Temp.notelist[i].Pitch == null)
+                            {
+                                Temp.notelist.RemoveAt(i);
+                                i = i - 1;
+                            }
+                        }
+                        return Temp;
+                    }
+                    break;
+                case 1:
+                    {// длительность паузы прибавляется к предыдущей ноте, а она сама удаляется из текста (1) (пауза - звуковой след ноты)
+                        Fmotiv Temp = new Fmotiv(this.id, this.type);
+                        Temp = (Fmotiv)this.Clone();
+
+                        // если пауза стоит вначале текста (и текст не пустой) то она удаляется
+                        while (Temp.notelist.Count > 0)
+                        {   if (Temp.NoteList[0].Pitch!=null)
+                            {
+                                break;
+                            }
+                            else
+                            {
+                                Temp.notelist.RemoveAt(0);
+                            }
+                        }
+
+                        for (int i = 0; i < Temp.notelist.Count; i++)
+                        {
+                            
+                            if (Temp.notelist[i].Pitch == null)
+                            {
+                                // к длительности предыдущего звука добавляем длительность текущей паузы 
+                                Temp.notelist[i - 1].Duration.AddDuration((Duration)Temp.notelist[i].Duration.Clone());
+                                // удаляем паузу
+                                Temp.notelist.RemoveAt(i);
+                                i = i - 1;
+                            }
+                        }
+                        return Temp;
+                    }
+                    break;
+                case 2:
+                    {// Пауза - звук тишины, рассматривается как нота без высоты звучания (2)
+                     // ничего не треуется
+                        Fmotiv Temp = new Fmotiv(this.id, this.type);
+                        Temp = (Fmotiv)this.Clone();
+                        return Temp;
+                    }
+                    break;
+                
+                default:
+                    throw new Exception("Error Fmotiv.PauseTreatment parameter contains wrong value!");
             }
-            return Temp;
+
+
+           
+
         }
         public Fmotiv TieGathered()
         {
@@ -168,29 +223,32 @@ namespace MDA.OIP.BorodaDivider
             return Temp;
         }
 
+
+        //TODO: убрал метод override , соотвественно euals сейчас просто выполняет сравнение ссылок объектов переделать все частные
         public override bool Equals(object obj)
         {
             // для сравнения паузы не нужны, поэтому сравнивае ф-мотивы без пауз (они игнорируются, но входят в состав ф-мотива)
-            Fmotiv Temp1 = this.WithOutPauses().TieGathered();
-            Fmotiv Temp2 = ((Fmotiv)obj).WithOutPauses().TieGathered();
+            Fmotiv Temp1 = this.PauseTreatment(ParamPauseTreatment.Ignore).TieGathered();
+            Fmotiv Temp2 = ((Fmotiv)obj).PauseTreatment(ParamPauseTreatment.Ignore).TieGathered();
             int Modulation = 0;
             bool FirstTime = true;
 
-            if (Temp1.NoteList.Count != Temp2.NoteList.Count) 
+            if (Temp1.NoteList.Count != Temp2.NoteList.Count)
             {
                 //фмотивы - неодинаковы, так как входит разное количество нот
                 return false;
             }
 
-            for(int i = 0; i < Temp1.notelist.Count; i++)
+            for (int i = 0; i < Temp1.notelist.Count; i++)
             {
+
                 // одинаковы ли длительности у нот?
                 if (!Temp1.notelist[i].Duration.Equals(Temp2.notelist[i].Duration))
                 {
                     //если нет - фмотивы - неодинаковы
                     return false;
                 }
-
+                
                 if (FirstTime) 
                 { // при первом сравнении вычисляем на сколько полутонов отличаются первые ноты,
                   //последущие должны отличаться на столько же, чтобы фмотивы были равны
@@ -204,10 +262,86 @@ namespace MDA.OIP.BorodaDivider
                     return false;
                 }
             }
+
+            return true;
+        }
+        
+        public bool FmEquals(object obj, int paramPause, int paramEqual)
+        {
+            // для сравнения паузы не нужны, поэтому сравнивае ф-мотивы без пауз (они игнорируются, но входят в состав ф-мотива)
+            Fmotiv Temp1 = this.PauseTreatment(paramPause).TieGathered();
+            Fmotiv Temp2 = ((Fmotiv)obj).PauseTreatment(paramPause).TieGathered();
+            int Modulation = 0;
+            bool FirstTime = true;
+
+            if (Temp1.NoteList.Count != Temp2.NoteList.Count) 
+            {
+                //фмотивы - неодинаковы, так как входит разное количество нот
+                return false;
+            }
+
+            for(int i = 0; i < Temp1.notelist.Count; i++)
+            {
+
+                // одинаковы ли длительности у нот?
+                if (!Temp1.notelist[i].Duration.Equals(Temp2.notelist[i].Duration))
+                {
+                    //если нет - фмотивы - неодинаковы
+                    return false;
+                }
+
+                if ((Temp1.notelist[i].Pitch == null) || (Temp2.notelist[i].Pitch == null))
+                {
+                    if (!((Temp1.notelist[i].Pitch == null) && (Temp2.notelist[i].Pitch == null)))
+                    {// если одна из нот пауза, а вторая - нет, то ф-мотивы не одинаковы
+                        return false;
+                    }
+                    // если две паузы одно длительности то идем дальше. пропуская их (считаем что это две одинаковые ноты в любом случае)
+                }
+                else
+                { 
+                // если две ноты - не паузы
+                // в зависимости от параметра учета секвентного переноса
+                    switch (paramEqual)
+                    {
+                        case 0: // учитывая секентный перенос (Sequent)
+                        {
+
+                            if (FirstTime)
+                            { // при первом сравнении вычисляем на сколько полутонов отличаются первые ноты,
+                                //последущие должны отличаться на столько же, чтобы фмотивы были равны
+                                Modulation = Temp1.NoteList[i].Pitch.Midinumber - Temp2.NoteList[i].Pitch.Midinumber;
+                                FirstTime = false;
+                            }
+
+                            // одинаковы ли при этом высоты / правильно ли присутствует секвентный перенос (модуляция)
+                            if (Modulation != (Temp1.NoteList[i].Pitch.Midinumber - Temp2.NoteList[i].Pitch.Midinumber))
+                            {
+                                return false;
+                            }
+                        }
+                        break;
+
+                        case 1:
+                        {  //без секвентного переноса (NonSequent)
+                        
+                            if (!(Temp1.NoteList[i].Pitch.Midinumber == Temp2.NoteList[i].Pitch.Midinumber))
+                            {
+                                return false;
+                            }
+                      
+                        }
+                        break;
+                
+                        default:
+                            throw new Exception("Error Fmotiv.ParamEqualFM parameter contains wrong value!");
+                    }
+                }
+            }
                 
             return true;
         }
-
+        
         public IBin GetBin()
         {
             FmotivBin Temp = new FmotivBin();
@@ -229,6 +363,5 @@ namespace MDA.OIP.BorodaDivider
         }
 
         #endregion
-
     }
 }

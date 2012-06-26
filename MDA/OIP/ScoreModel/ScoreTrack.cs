@@ -1,7 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using ChainAnalises.Classes.Root;
+using LibiadaCore.Classes.Root;
+using LibiadaCore.Classes.Root;
 
 
 namespace MDA.OIP.ScoreModel

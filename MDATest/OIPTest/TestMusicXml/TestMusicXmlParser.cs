@@ -16,7 +16,7 @@ namespace TestMusicXml.MDATest.OIPTest
         public void TestXmlParser()
         {
             XmlDocument xmldocument = new XmlDocument();
-            MusicXmlReader xmlreader = new MusicXmlReader("C:\\Users\\Антошка\\Documents\\Visual Studio 2010\\Projects\\MDA\\MDATest\\OIPTest\\MDAexample7Liga.xml");
+            MusicXmlReader xmlreader = new MusicXmlReader("K:\\_Учеба\\MDA 2.0.3\\MDA\\MDATest\\OIPTest\\MDAexample7Liga.xml");
             MusicXmlParser Parser = new MusicXmlParser();
 
             Parser.Execute(xmlreader.MusicXmlDocument, xmlreader.FileName);

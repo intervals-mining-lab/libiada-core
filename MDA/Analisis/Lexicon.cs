@@ -9,8 +9,8 @@ namespace MDA.Analisis
     public class Lexicon
     {
         private int newid=0;
-        private double GreatFrequency;
-        private double GreatOccur;
+        private double GreatFrequency = 0;
+        private double GreatOccur = 0;
         private int Capacity=0;
         private ArrayList FMVariety= new ArrayList();
         private ArrayList RFMVariety = new ArrayList();
@@ -103,6 +103,64 @@ namespace MDA.Analisis
                 ((FMotiv)FMVariety[CurMaxFreqId]).SetRank(j+1);
                 ar.RemoveAt(CurMaxFreqArId);
             }
+        }
+
+        public ArrayList RangeLexDi()
+        {
+            ArrayList ar = new ArrayList();
+
+            for (int i = 0; i < FMVariety.Count; i++)
+            {
+                ar.Add(((FMotiv)FMVariety[i]).GetLogDepth());
+            }
+
+            bool done = false;
+            while (!done)
+            {
+                done = true;
+                for (int j = 0; j < ar.Count - 1; j++)
+                {
+                    if (((double)ar[j]) < ((double)ar[j + 1]))
+                    {
+                        double tempD = (double)ar[j];
+                        ar[j] = (double)ar[j + 1];
+                        ar[j + 1] = tempD;
+                        done = false;
+                    }
+
+                }
+
+            }
+            return ar;
+        }
+
+        public ArrayList RangeLexRi()
+        {
+            ArrayList ar = new ArrayList();
+
+            for (int i = 0; i < FMVariety.Count; i++ )
+            {
+                ar.Add(((FMotiv)FMVariety[i]).GetRemoteness());
+            }
+
+            bool done = false;
+        while(!done)
+        {
+            done = true;
+            for (int j = 0; j < ar.Count-1; j++)
+            {
+                if (((double)ar[j]) < ((double)ar[j + 1]))
+                    {
+                        double tempD = (double)ar[j];
+                        ar[j] = (double)ar[j + 1];
+                        ar[j+1] = tempD;
+                        done = false;
+                    }
+                
+            }
+            
+        }
+            return ar;
         }
 
         public void RangeLexElem()

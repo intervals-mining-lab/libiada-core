@@ -52,12 +52,12 @@ namespace MDATest.OIPTest.TestBorodaDivider
 
         FmotivIdentificator fmid = new FmotivIdentificator();
 //        FmotivChain fmidentedchain = new FmotivChain();
-        Assert.AreEqual(0, fmid.GetIdentification(fmchain1).FmotivList[0].Id);
-        Assert.AreEqual(1, fmid.GetIdentification(fmchain1).FmotivList[1].Id);
-        Assert.AreEqual(1, fmid.GetIdentification(fmchain1).FmotivList[2].Id);
-        Assert.AreEqual(1, fmid.GetIdentification(fmchain1).FmotivList[3].Id);
-        Assert.AreEqual(0, fmid.GetIdentification(fmchain1).FmotivList[4].Id);
-        Assert.AreEqual(0, fmid.GetIdentification(fmchain1).FmotivList[5].Id);
+        Assert.AreEqual(0, fmid.GetIdentification(fmchain1,ParamPauseTreatment.Ignore,ParamEqualFM.Sequent).FmotivList[0].Id);
+        Assert.AreEqual(1, fmid.GetIdentification(fmchain1, ParamPauseTreatment.Ignore, ParamEqualFM.Sequent).FmotivList[1].Id);
+        Assert.AreEqual(1, fmid.GetIdentification(fmchain1, ParamPauseTreatment.Ignore, ParamEqualFM.Sequent).FmotivList[2].Id);
+        Assert.AreEqual(1, fmid.GetIdentification(fmchain1, ParamPauseTreatment.Ignore, ParamEqualFM.Sequent).FmotivList[3].Id);
+        Assert.AreEqual(0, fmid.GetIdentification(fmchain1, ParamPauseTreatment.Ignore, ParamEqualFM.Sequent).FmotivList[4].Id);
+        Assert.AreEqual(0, fmid.GetIdentification(fmchain1, ParamPauseTreatment.Ignore, ParamEqualFM.Sequent).FmotivList[5].Id);
 
     }
     [TestMethod]
@@ -102,12 +102,12 @@ namespace MDATest.OIPTest.TestBorodaDivider
 
         FmotivIdentificator fmid = new FmotivIdentificator();
         //        FmotivChain fmidentedchain = new FmotivChain();
-        Assert.AreEqual(0, fmid.GetIdentification(fmchain1).FmotivList[0].Id);
-        Assert.AreEqual(0, fmid.GetIdentification(fmchain1).FmotivList[1].Id);
-        Assert.AreEqual(0, fmid.GetIdentification(fmchain1).FmotivList[2].Id);
-        Assert.AreEqual(1, fmid.GetIdentification(fmchain1).FmotivList[3].Id);
-        Assert.AreEqual(2, fmid.GetIdentification(fmchain1).FmotivList[4].Id);
-        Assert.AreEqual(3, fmid.GetIdentification(fmchain1).FmotivList[5].Id);
+        Assert.AreEqual(0, fmid.GetIdentification(fmchain1, ParamPauseTreatment.Ignore, ParamEqualFM.Sequent).FmotivList[0].Id);
+        Assert.AreEqual(0, fmid.GetIdentification(fmchain1, ParamPauseTreatment.Ignore, ParamEqualFM.Sequent).FmotivList[1].Id);
+        Assert.AreEqual(0, fmid.GetIdentification(fmchain1, ParamPauseTreatment.Ignore, ParamEqualFM.Sequent).FmotivList[2].Id);
+        Assert.AreEqual(1, fmid.GetIdentification(fmchain1, ParamPauseTreatment.Ignore, ParamEqualFM.Sequent).FmotivList[3].Id);
+        Assert.AreEqual(2, fmid.GetIdentification(fmchain1, ParamPauseTreatment.Ignore, ParamEqualFM.Sequent).FmotivList[4].Id);
+        Assert.AreEqual(3, fmid.GetIdentification(fmchain1, ParamPauseTreatment.Ignore, ParamEqualFM.Sequent ).FmotivList[5].Id);
 
     }
     }

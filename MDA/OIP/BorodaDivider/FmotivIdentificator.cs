@@ -6,7 +6,7 @@ namespace MDA.OIP.BorodaDivider
 {
     public class FmotivIdentificator
     {
-        public FmotivChain GetIdentification(FmotivChain fmotivchain)
+        public FmotivChain GetIdentification(FmotivChain fmotivchain, int paramPause, int paramEqual)
         {
             FmotivChain Temp = (FmotivChain)fmotivchain.Clone();
 
@@ -14,7 +14,8 @@ namespace MDA.OIP.BorodaDivider
             {
                 for (int j = i; j < Temp.FmotivList.Count; j++)
                 {
-                    if (Temp.FmotivList[i].Equals(Temp.FmotivList[j])) 
+                    if (Temp.FmotivList[i].FmEquals(Temp.FmotivList[j], paramPause, paramEqual)) 
+                    //if (Temp.FmotivList[i].Equals(Temp.FmotivList[j])) 
                     {
                         Temp.FmotivList[j].Id = Temp.FmotivList[i].Id;
                     }

@@ -41,7 +41,7 @@ namespace MDATest.OIPTest.TestBorodaDivider
             FmotivChain fmchain;
 
             // вычисление, опрделение, разбиение на  ф-мотивы данного монотрека
-            fmchain = fmdivider.GetDivision(unitrack);
+            fmchain = fmdivider.GetDivision(unitrack , ParamPauseTreatment.Ignore);
             fmchain.Id = 0;
             
             // создание аналогов ф-мотивов, которые должны получиться, после разбиения
@@ -92,7 +92,7 @@ namespace MDATest.OIPTest.TestBorodaDivider
             FmotivChain fmchain;
 
             // вычисление, опрделение, разбиение на  ф-мотивы данного монотрека
-            fmchain = fmdivider.GetDivision(unitrack);
+            fmchain = fmdivider.GetDivision(unitrack, ParamPauseTreatment.Ignore);
             fmchain.Id = 0;
 
             // создание аналогов ф-мотивов, которые должны получиться, после разбиения
@@ -146,7 +146,7 @@ namespace MDATest.OIPTest.TestBorodaDivider
             FmotivChain fmchain;
 
             // вычисление, опрделение, разбиение на  ф-мотивы данного монотрека
-            fmchain = fmdivider.GetDivision(unitrack);
+            fmchain = fmdivider.GetDivision(unitrack , ParamPauseTreatment.Ignore);
             fmchain.Id = 0;
 
             // создание аналогов ф-мотивов, которые должны получиться, после разбиения
@@ -199,7 +199,7 @@ namespace MDATest.OIPTest.TestBorodaDivider
             FmotivChain fmchain;
 
             // вычисление, опрделение, разбиение на  ф-мотивы данного монотрека
-            fmchain = fmdivider.GetDivision(unitrack);
+            fmchain = fmdivider.GetDivision(unitrack, ParamPauseTreatment.Ignore);
             fmchain.Id = 0;
 
             // создание аналогов ф-мотивов, которые должны получиться, после разбиения
@@ -247,7 +247,7 @@ namespace MDATest.OIPTest.TestBorodaDivider
             FmotivChain fmchain;
 
             // вычисление, опрделение, разбиение на  ф-мотивы данного монотрека
-            fmchain = fmdivider.GetDivision(unitrack);
+            fmchain = fmdivider.GetDivision(unitrack, ParamPauseTreatment.Ignore);
             fmchain.Id = 0;
 
             // создание аналогов ф-мотивов, которые должны получиться, после разбиения
@@ -299,7 +299,7 @@ namespace MDATest.OIPTest.TestBorodaDivider
             FmotivChain fmchain;
 
             // вычисление, опрделение, разбиение на  ф-мотивы данного монотрека
-            fmchain = fmdivider.GetDivision(unitrack);
+            fmchain = fmdivider.GetDivision(unitrack, ParamPauseTreatment.Ignore);
             fmchain.Id = 0;
 
             // создание аналогов ф-мотивов, которые должны получиться, после разбиения
@@ -352,7 +352,7 @@ namespace MDATest.OIPTest.TestBorodaDivider
             FmotivChain fmchain;
 
             // вычисление, опрделение, разбиение на  ф-мотивы данного монотрека
-            fmchain = fmdivider.GetDivision(unitrack);
+            fmchain = fmdivider.GetDivision(unitrack, ParamPauseTreatment.Ignore);
             fmchain.Id = 0;
 
             // создание аналогов ф-мотивов, которые должны получиться, после разбиения
@@ -399,7 +399,7 @@ namespace MDATest.OIPTest.TestBorodaDivider
             FmotivChain fmchain;
 
             // вычисление, опрделение, разбиение на  ф-мотивы данного монотрека
-            fmchain = fmdivider.GetDivision(unitrack);
+            fmchain = fmdivider.GetDivision(unitrack, ParamPauseTreatment.Ignore);
             fmchain.Id = 0;
 
             // создание аналогов ф-мотивов, которые должны получиться, после разбиения
@@ -418,6 +418,57 @@ namespace MDATest.OIPTest.TestBorodaDivider
 
             Assert.IsTrue(fmchain1.Equals(fmchain));
         }
+        [TestMethod]
+        public void TestFmotivDivider9PauseSilence()
+        {
+            // создание и заполнения списка(ов) нот для такта(ов) монотрека
+            List<Note> notes = new List<Note>();
 
+            notes.Add(new Note(new Pitch(3, 'A', 0), new Duration(1, 8, false, 256), false, Tie.None, 0));
+            notes.Add(new Note(null, new Duration(1, 8, false, 256), false, Tie.None, 2));
+            notes.Add(new Note(new Pitch(3, 'B', 0), new Duration(1, 8, false, 256), false, Tie.None, 1));
+            notes.Add(new Note(new Pitch(3, 'B', 0), new Duration(1, 8, false, 256), false, Tie.None, 2));
+
+            // создание атрибутов для такта(ов)
+            Attributes attributes = new Attributes(new Size(2, 4, 1024), new Key(0, "major"));
+
+            // создание и заполнение такта(ов) списками нот и атрибутами
+            List<Measure> measures = new List<Measure>();
+            measures.Add(new Measure(notes, (Attributes)attributes.Clone()));
+
+            // создание моно трека
+            UniformScoreTrack unitrack = new UniformScoreTrack("track1", measures);
+
+            // создание объекта для деления монотрека на фмотивы
+            FmotivDivider fmdivider = new FmotivDivider();
+            // создание результирующей цепочки фмотивов
+            FmotivChain fmchain;
+
+            // вычисление, опрделение, разбиение на  ф-мотивы данного монотрека
+            fmchain = fmdivider.GetDivision(unitrack, ParamPauseTreatment.SilenceNote);
+            fmchain.Id = 0;
+
+            // создание аналогов ф-мотивов, которые должны получиться, после разбиения
+            // процедура определения одинаковых на данном этапе не производится
+            Fmotiv fmotiv1 = new Fmotiv(0, "ПМТ");
+            fmotiv1.NoteList.Add(new Note(new Pitch(3, 'A', 0), new Duration(1, 8, false, 256), false, Tie.None));
+            fmotiv1.NoteList.Add(new Note(null, new Duration(1, 8, false, 256), false, Tie.None));
+            Fmotiv fmotiv2 = new Fmotiv(1, "ПМТ");
+            fmotiv2.NoteList.Add(new Note(new Pitch(3, 'B', 0), new Duration(1, 8, false, 256), false, Tie.None));
+            fmotiv2.NoteList.Add(new Note(new Pitch(3, 'B', 0), new Duration(1, 8, false, 256), false, Tie.None));
+
+            // записываем ф-мотивы в цепь ф-мотивов, которая будет сравниваться с получившейся
+            FmotivChain fmchain1 = new FmotivChain();
+            fmchain1.Id = 0;
+            fmchain1.Name = "track1";
+            fmchain1.FmotivList.Add(fmotiv1);
+            fmchain1.FmotivList.Add(fmotiv2);
+
+            Assert.IsTrue(fmotiv1.FmEquals(fmotiv1,ParamPauseTreatment.SilenceNote,ParamEqualFM.Sequent));
+            Assert.IsTrue(fmotiv2.FmEquals(fmotiv2, ParamPauseTreatment.SilenceNote, ParamEqualFM.Sequent));
+            Assert.IsTrue(fmchain.FmotivList[0].FmEquals(fmotiv1, ParamPauseTreatment.SilenceNote, ParamEqualFM.Sequent));
+            Assert.IsTrue(fmchain.FmotivList[1].FmEquals(fmotiv2, ParamPauseTreatment.SilenceNote, ParamEqualFM.Sequent));
+            Assert.IsTrue(fmchain1.Equals(fmchain));
+        }
     }
 }

@@ -13,6 +13,9 @@ using ZedGraph;
 using System.Xml;
 using MDA.OIP.MusicXml;
 using MDA.OIP.BorodaDivider;
+using System.IO;
+using MDA.OIP.ScoreModel;
+using Excel = Microsoft.Office.Interop.Excel; 
 
 namespace MDA.Analisis
 {
@@ -76,8 +79,62 @@ namespace MDA.Analisis
 
             BorodaDivider bd = new BorodaDivider();
 
-            List<FmotivChain> Listfmotivchains = bd.Divide(Parser.ScoreModel);
+            List<FmotivChain> Listfmotivchains = bd.Divide(Parser.ScoreModel, ParamPauseTreatment.NoteTrace,ParamEqualFM.Sequent);
 
+            #region запись разбитых фмотивов в файл
+            // записываем строй в файл с таким же именем только с припиской _Consistence.txt состав по нотам в фмотивах
+            FileStream fs = new FileStream(openFileDialog1.FileName + "_Consistence.txt", FileMode.OpenOrCreate, FileAccess.Write);
+            StreamWriter st = new StreamWriter(fs);
+
+
+            foreach (FmotivChain fmchain in Listfmotivchains)
+            {
+                st.WriteLine("Fmotiv Chain № " + fmchain.Id.ToString() + " Name = " + fmchain.Name);
+                st.WriteLine();
+                st.WriteLine("------------------------");
+
+                foreach (Fmotiv fmotiv in fmchain.FmotivList)
+                {
+                    st.WriteLine("Fmotiv № " + fmotiv.Id.ToString() + " | type " + fmotiv.Type);
+                    st.WriteLine();
+                    foreach (Note note in fmotiv.NoteList)
+                    {
+                        // TODO : добавить вывод триоли и лиги
+                        if (note.Pitch != null)
+                        {
+                            // если есть лига, то определяем ее тип по номеру
+                            string tietype = "";
+                            switch (note.Tie)
+                            {
+                                case 0:
+                                    tietype = " TieStarts";
+                                    break;
+                                case 1:
+                                    tietype = " TieStops";
+                                    break;
+                                case 2:
+                                    tietype = " TieContinues";
+                                    break;
+                                default:
+                                    break;
+                            }
+                            st.WriteLine("Note: duration = " + note.Duration.Numerator.ToString() + "/" + note.Duration.Denominator.ToString() +
+                            " step = " + note.Pitch.Step.ToString() + " priority = " + note.Priority.ToString() + tietype);
+                        }
+                        else
+                        {
+                            st.WriteLine("Pause: duration = " + note.Duration.Numerator.ToString() + "/" + note.Duration.Denominator.ToString() +
+                            " priority = " + note.Priority.ToString());
+                        }
+
+                    }
+                    st.WriteLine("------------------------");
+                }
+            }
+            st.Close();
+            fs.Close();
+            #endregion
+                
                 textBox1.Clear();
                 int i = 0;
                 for (i = 0; i < Listfmotivchains[0].FmotivList.Count; i++) // COUNT -> (string []) LENGTH error
@@ -92,14 +149,45 @@ namespace MDA.Analisis
             {
                 MessageBox.Show(er.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Stop);
             }
-         
+        
         }
 //-----------------------------------------------------------------------
-		
+        // для закрытия элементов среды Excel
+        private void releaseObject(object obj)
+        {
+            try
+            {
+                System.Runtime.InteropServices.Marshal.ReleaseComObject(obj);
+                obj = null;
+            }
+            catch (Exception ex)
+            {
+                obj = null;
+                MessageBox.Show("Unable to release the Object " + ex.ToString());
+            }
+            finally
+            {
+                GC.Collect();
+            }
+        }		
+
 //----------------------Analize button-----------------------------------		
         private void button1_Click(object sender, EventArgs e)
         {
+            // ----------Создание Excel файла-----------------------------------------------------------
 
+            Excel.Application xlApp;
+            Excel.Workbook xlWorkBook;
+
+            Excel.Worksheet xlWorkSheet;
+            
+            object misValue = System.Reflection.Missing.Value;
+
+            xlApp = new Excel.Application();
+            xlWorkBook = xlApp.Workbooks.Add(misValue);
+
+            xlWorkSheet = (Excel.Worksheet)xlWorkBook.Worksheets.get_Item(1);
+            //---------------------------------------------------------------------------------
             try
             {	
 				//TODO: вынести composition (com) в глобальные переменные + после каждой очистки формы, удалять/чистить объект.
@@ -129,6 +217,20 @@ namespace MDA.Analisis
             {
                 MessageBox.Show(err.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Stop);
             }
+
+            // ----------Сохранение Excel файла-----------------------------------------------------------
+            xlWorkBook.SaveAs(folderBrowserDialog1.SelectedPath + "\\Total.xls", Excel.XlFileFormat.xlWorkbookNormal, misValue, misValue, misValue, misValue, Excel.XlSaveAsAccessMode.xlExclusive, misValue, misValue, misValue, misValue, misValue);
+            xlWorkBook.Close(true, misValue, misValue);
+            xlApp.Quit();
+
+
+
+            releaseObject(xlWorkSheet);
+            releaseObject(xlWorkBook);
+            releaseObject(xlApp);
+
+            MessageBox.Show("Excel file created , you can find the file " + folderBrowserDialog1.SelectedPath + "\\Total.xls");
+            //---------------------------------------------------------------------------------------------
 			
 
         }

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using ChainAnalises.Classes.Root;
+using LibiadaCore.Classes.Root;
 
 namespace MDA.OIP.ScoreModel
 {
@@ -9,6 +9,7 @@ namespace MDA.OIP.ScoreModel
     {
         private List<Note> notelist; // список нот, класса Note
         private Attributes attributes; // атрибуты
+        private int id; // уникальный идентификатор такта
 
         public Measure(List<Note> notelist, Attributes attributes)
         {
@@ -42,6 +43,17 @@ namespace MDA.OIP.ScoreModel
                 this.attributes = value;
             }
         }
+        public int Id
+        {
+            get
+            {
+                return id;
+            }
+            set
+            {
+                this.id = value;
+            }
+        }
         
         #region IBaseMethods
 
@@ -62,16 +74,23 @@ namespace MDA.OIP.ScoreModel
         {
             bool equalNoteList = true;
 
-            if (this.NoteList.Count!= ((Measure)obj).NoteList.Count) {equalNoteList = false;}
+            if (this.NoteList.Count!= ((Measure)obj).NoteList.Count) 
+            {
+                return false;
+            }
+            if (!this.Attributes.Equals(((Measure)obj).Attributes))
+            {
+                return false;
+            }
             for(int i=0; i < this.NoteList.Count; i++)
             {
-                if (!this.NoteList[i].Equals(((Measure)obj).NoteList[i])) {equalNoteList = false;}
+                if (!this.NoteList[i].Equals(((Measure)obj).NoteList[i])) 
+                {
+                    return false;
+                }
             }
-            if ( this.Attributes.Equals(((Measure)obj).Attributes) && equalNoteList )
-            {
-                return true;
-            }
-            return false;
+            
+            return true;
             // TODO: сделать сравнение не по всей ноте/объекту, а еще только по месту например, 
             // TODO: из сравнения исключить триплет, так может различать одинаковые по длительности ноты, но записанные по разному(!)
         }

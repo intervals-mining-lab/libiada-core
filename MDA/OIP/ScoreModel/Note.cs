@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using ChainAnalises.Classes.Root;
+using LibiadaCore.Classes.Root;
 
 namespace MDA.OIP.ScoreModel
 {
@@ -12,6 +12,7 @@ namespace MDA.OIP.ScoreModel
         private Pitch pitch; // высота ноты
         private Duration duration; // длительность ноты
         private int priority; // сильная/слабая доля - приоритет доли
+        private int id; // id ноты для составления строя нот
 
         public Note(Pitch pitch, Duration duration, bool triplet, int tie) 
         {
@@ -43,6 +44,17 @@ namespace MDA.OIP.ScoreModel
             this.duration = (Duration)duration.Clone();
             this.triplet = triplet;
             this.priority = priority; // приоритет если указан
+        }
+        public int Id
+        {
+            set
+            {
+                this.id = value;
+            }
+            get
+            {
+                return id;
+            }
         }
         public bool Triplet
         {
@@ -101,12 +113,32 @@ namespace MDA.OIP.ScoreModel
 
         public override bool Equals(object obj)
         {
-            if (this.Pitch == null) 
+            if (this.Pitch == null)
             {
                 if (((Note)obj).Pitch == null)
-                { return true; }
+                {
+                    if (this.Duration.Equals(((Note)obj).Duration))
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                }
                 else
-                { return false; }
+                {
+                    // пауза и нота не одинаковы
+                    return false;
+                }
+            }
+            else 
+            {
+                if (((Note)obj).Pitch == null)
+                {
+                    // нота и пауза не одно и то же
+                    return false;
+                }
             }
 
 

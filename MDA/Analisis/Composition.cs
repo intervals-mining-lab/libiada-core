@@ -3,11 +3,11 @@ using System.Collections;
 using System.Collections.Generic;
 //using System.Linq;
 using System.Text;
-using ChainAnalises;
-using ChainAnalises.Classes.IntervalAnalysis;
-using ChainAnalises.Classes.IntervalAnalysis.Characteristics;
-using ChainAnalises.Classes.IntervalAnalysis.Characteristics.Calculators;
-using ChainAnalises.Classes.Root.SimpleTypes;
+using LibiadaCore;
+using LibiadaCore.Classes.Root;
+using LibiadaCore.Classes.Root.Characteristics;
+using LibiadaCore.Classes.Root.Characteristics.Calculators;
+using LibiadaCore.Classes.Root.SimpleTypes;
 using System.Threading;
 
 
@@ -23,8 +23,8 @@ namespace MDA.Analisis
         private double IInfo;
         private double OIInfo;
         private FMArray Range = new FMArray();
-        private Lexicon PLex = new Lexicon();
-        private Lexicon TLex = new Lexicon();
+        public Lexicon PLex = new Lexicon();
+        public Lexicon TLex = new Lexicon();
         private Chain chain =null;
         private Difference FreqDiff= new Difference();
         private Difference LogNDiff= new Difference();
@@ -172,36 +172,36 @@ namespace MDA.Analisis
 		public void CalcGamut()
         {
 			Characteristic G = new Characteristic(new Gamut());
-			AvgDepth=G.Value(MakeNewChain(), LinkUp.End);
+            AvgDepth = G.Value(MakeNewChain(), LinkUp.End);
 			
 			int i;				
             for(i=0;i<PLex.GetCapacity();i++)
             {
-                ((FMotiv)PLex.GetData()[i]).SetDepth(new Characteristic(new Gamut()).Value(MakeNewChain().GetUniformChain(i),LinkUp.End));
+                ((FMotiv)PLex.GetData()[i]).SetDepth(new Characteristic(new Gamut()).Value(MakeNewChain().GetUniformChain(i), LinkUp.End));
             }
         }
 
         public void CalcRemoteness()
         {
             Characteristic R = new Characteristic(new AverageRemoteness());
-            AvgRemoteness = R.Value(chain, LinkUp.Both);
+            AvgRemoteness = R.Value(chain, LinkUp.End);
 
             for (int i = 0; i < PLex.GetCapacity(); i++)
             {
-                ((FMotiv)PLex.GetData()[i]).SetRemoteness(new Characteristic(new AverageRemoteness()).Value(chain.GetUniformChain(i), LinkUp.Both));
+                ((FMotiv)PLex.GetData()[i]).SetRemoteness(new Characteristic(new AverageRemoteness()).Value(chain.GetUniformChain(i), LinkUp.End));
             }
         }
         
         public void CalcRegularity()
         {
             Characteristic R = new Characteristic(new Regularity());
-            Regularity = R.Value(chain, LinkUp.Start);
+            Regularity = R.Value(chain, LinkUp.End);
         }
 
         public void CalcPeriodicity()
         {
             Characteristic P = new Characteristic(new Periodicity());
-            Periodicity = P.Value(chain, LinkUp.Start);			
+            Periodicity = P.Value(chain, LinkUp.End);			
         }
 
         public void CalcDifference()
@@ -293,18 +293,27 @@ namespace MDA.Analisis
   
             for(int i=0; i<PLex.GetCapacity();i++)
             {
+                // на время эксперимента комментарий
                 disp.Id_N.Add(new double[]
                 {((FMotiv) PLex.GetData()[i]).GetId(), ((FMotiv) PLex.GetData()[i]).GetOccurernce()});
-
+                
+                /*disp.Id_N.Add(new double[] { ((FMotiv)PLex.GetRData()[i]).GetRemoteness(), ((FMotiv)PLex.GetRData()[i]).GetFrequency() });
+                */
                 disp.Rank_FreqP.Add(new double[] { ((FMotiv)PLex.GetRData()[i]).GetRank(), ((FMotiv)PLex.GetRData()[i]).GetFrequency()});
 
                 disp.LogRank_LogNP.Add(new double[] { ((FMotiv)PLex.GetRData()[i]).GetLogRank(), ((FMotiv)PLex.GetRData()[i]).GetLogOccurernce()});
 
+
+                /*disp.LogRank_LogGamut.Add(new double[] { ((FMotiv)PLex.GetRData()[i]).GetLogRank(), ((FMotiv)PLex.GetRData()[i]).GetLogDepth() });
+
+                disp.Rank_Remoteness.Add(new double[] { ((FMotiv)PLex.GetRData()[i]).GetRank(), ((FMotiv)PLex.GetRData()[i]).GetRemoteness() });
+                */
+                
                 disp.LogRank_LogGamut.Add(new double[] 
-                { ((FMotiv)PLex.GetRData()[i]).GetLogRank(), ((FMotiv)PLex.GetRData()[i]).GetLogDepth() });
+                { ((FMotiv)PLex.GetRData()[i]).GetLogRank(), (double)PLex.RangeLexDi()[i] });
 
                 disp.Rank_Remoteness.Add(new double[]
-                { ((FMotiv)PLex.GetRData()[i]).GetRank(), ((FMotiv)PLex.GetRData()[i]).GetRemoteness() });
+                { ((FMotiv)PLex.GetRData()[i]).GetRank(),  (double)PLex.RangeLexRi()[i] });
 
             }
 

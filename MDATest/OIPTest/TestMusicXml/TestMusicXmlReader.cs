@@ -15,7 +15,7 @@ namespace TestMusicXml.TestMDA.OIPTest
 		[TestMethod]
 		public void TestXMLReader1 ()
         {
-            MusicXmlReader xr = new MusicXmlReader("C:\\Users\\Антошка\\Documents\\Visual Studio 2010\\Projects\\MDA\\MDATest\\OIPTest\\MDAexample7Liga.xml");
+            MusicXmlReader xr = new MusicXmlReader("K:\\_Учеба\\MDA 2.0.3\\MDA\\MDATest\\OIPTest\\MDAexample7Liga.xml");
             Assert.IsNotNull(xr.MusicXmlDocument);
             Assert.AreEqual("MDAexample7Liga", xr.FileName);
 		}
@@ -23,7 +23,7 @@ namespace TestMusicXml.TestMDA.OIPTest
         [TestMethod]
         public void TestXMLReader2()
         {
-            string path = "C:\\Users\\Антошка\\Documents\\Visual Studio 2010\\Projects\\MDA\\MDATest\\OIPTest\\MDAexample7Liga.xml";
+            string path = "K:\\_Учеба\\MDA 2.0.3\\MDA\\MDATest\\OIPTest\\MDAexample7Liga.xml";
             MusicXmlReader xr = new MusicXmlReader();
             XmlDocument xdoc = new XmlDocument();
 

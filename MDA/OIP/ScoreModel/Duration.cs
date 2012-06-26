@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using ChainAnalises.Classes.Root;
+using LibiadaCore.Classes.Root;
 
 namespace MDA.OIP.ScoreModel
 {
@@ -102,6 +102,10 @@ namespace MDA.OIP.ScoreModel
             }
             //-------------------------------
             Duration Temp = new Duration(newnum, newdenom, false, (this.Ticks + duration.Ticks));
+
+            // добавляет длительность навсегда к объекту которого метод вызывали
+            this.numerator = newnum; // числитель в дроби доли
+            this.denominator = newdenom; // знаменатель в дроби доли
             return Temp;  
             /*
              this.numerator = newnum;
