@@ -38,13 +38,13 @@ namespace PhantomChains.Classes.PhantomChains
                             case "T":
                                 if((third=="T")||(third=="C"))
                                 {
-                                    OutChain[i / 3] = new ValueString("Phe");
+                                    OutChain[i / 3] = new ValueChar('F');
                                 }
                                 else
                                 {
                                     if((third=="A")||(third=="G"))
                                     {
-                                        OutChain[i / 3] = new ValueString("Leu");
+                                        OutChain[i / 3] = new ValueChar('L');
                                     }
                                     else
                                     {
@@ -53,18 +53,18 @@ namespace PhantomChains.Classes.PhantomChains
                                 }
                                 break;
                             case "C":
-                                OutChain[i / 3] = new ValueString("Ser");
+                                OutChain[i / 3] = new ValueChar('S');
                                 break;
                             case "A":
                                 if ((third == "T") || (third == "C"))
                                 {
-                                    OutChain[i / 3] = new ValueString("Tyr");
+                                    OutChain[i / 3] = new ValueChar('Y');
                                 }
                                 else
                                 {
                                     if ((third == "A") || (third == "G"))
                                     {
-                                        OutChain[i / 3] = new ValueString("St");
+                                        OutChain[i / 3] = new ValueChar('X');
                                     }
                                     else
                                     {
@@ -75,19 +75,19 @@ namespace PhantomChains.Classes.PhantomChains
                             case "G":
                                 if ((third == "T") || (third == "C"))
                                 {
-                                    OutChain[i / 3] = new ValueString("Cys");
+                                    OutChain[i / 3] = new ValueChar('C');
                                 }
                                 else
                                 {
                                     if (third == "A")
                                     {
-                                        OutChain[i / 3] = new ValueString("St");
+                                        OutChain[i / 3] = new ValueChar('X');
                                     }
                                     else
                                     {
                                         if (third == "G")
                                         {
-                                            OutChain[i / 3] = new ValueString("Trp");
+                                            OutChain[i / 3] = new ValueChar('W');
                                         }
                                         else
                                         {
@@ -104,21 +104,21 @@ namespace PhantomChains.Classes.PhantomChains
                         switch (second)
                         {
                             case "T":
-                                OutChain[i / 3] = new ValueString("Leu");
+                                OutChain[i / 3] = new ValueChar('L');
                                 break;
                             case "C":
-                                OutChain[i / 3] = new ValueString("Pro");
+                                OutChain[i / 3] = new ValueChar('P');
                                 break;
                             case "A":
                                 if ((third == "T") || (third == "C"))
                                 {
-                                    OutChain[i / 3] = new ValueString("His");
+                                    OutChain[i / 3] = new ValueChar('H');
                                 }
                                 else
                                 {
                                     if ((third == "A") || (third == "G"))
                                     {
-                                        OutChain[i / 3] = new ValueString("Gln");
+                                        OutChain[i / 3] = new ValueChar('Q');
                                     }
                                     else
                                     {
@@ -127,7 +127,7 @@ namespace PhantomChains.Classes.PhantomChains
                                 }
                                 break;
                             case "G":
-                                OutChain[i / 3] = new ValueString("Arg");
+                                OutChain[i / 3] = new ValueChar('R');
                                 break;
                             default:
                                 throw new Exception();
@@ -139,13 +139,13 @@ namespace PhantomChains.Classes.PhantomChains
                             case "T":
                                 if ((third == "T") || (third == "C") || (third == "A"))
                                 {
-                                    OutChain[i / 3] = new ValueString("Ile");
+                                    OutChain[i / 3] = new ValueChar('I');
                                 }
                                 else
                                 {
                                     if (third == "G")
                                     {
-                                        OutChain[i / 3] = new ValueString("Met");
+                                        OutChain[i / 3] = new ValueChar('M');
                                     }
                                     else
                                     {
@@ -154,18 +154,18 @@ namespace PhantomChains.Classes.PhantomChains
                                 }
                                 break;
                             case "C":
-                                OutChain[i / 3] = new ValueString("Thr");
+                                OutChain[i / 3] = new ValueChar('T');
                                 break;
                             case "A":
                                 if ((third == "T") || (third == "C"))
                                 {
-                                    OutChain[i / 3] = new ValueString("Asn");
+                                    OutChain[i / 3] = new ValueChar('N');
                                 }
                                 else
                                 {
                                     if ((third == "A") || (third == "G"))
                                     {
-                                        OutChain[i / 3] = new ValueString("Lys");
+                                        OutChain[i / 3] = new ValueChar('K');
                                     }
                                     else
                                     {
@@ -176,13 +176,13 @@ namespace PhantomChains.Classes.PhantomChains
                             case "G":
                                 if ((third == "T") || (third == "C"))
                                 {
-                                    OutChain[i / 3] = new ValueString("Ser");
+                                    OutChain[i / 3] = new ValueChar('S');
                                 }
                                 else
                                 {
                                     if ((third == "A") || (third == "G"))
                                     {
-                                        OutChain[i / 3] = new ValueString("Arg");
+                                        OutChain[i / 3] = new ValueChar('R');
                                     }
                                     else
                                     {
@@ -198,21 +198,21 @@ namespace PhantomChains.Classes.PhantomChains
                         switch (second)
                         {
                             case "T":
-                                OutChain[i / 3] = new ValueString("Val");
+                                OutChain[i / 3] = new ValueChar('V');
                                 break;
                             case "C":
-                                OutChain[i / 3] = new ValueString("Ala");
+                                OutChain[i / 3] = new ValueChar('A');
                                 break;
                             case "A":
                                 if ((third == "T") || (third == "C"))
                                 {
-                                    OutChain[i / 3] = new ValueString("Asp");
+                                    OutChain[i / 3] = new ValueChar('D');
                                 }
                                 else
                                 {
                                     if ((third == "A") || (third == "G"))
                                     {
-                                        OutChain[i / 3] = new ValueString("Glu");
+                                        OutChain[i / 3] = new ValueChar('E');
                                     }
                                     else
                                     {
@@ -221,7 +221,7 @@ namespace PhantomChains.Classes.PhantomChains
                                 }
                                 break;
                             case "G":
-                                OutChain[i / 3] = new ValueString("Gly");
+                                OutChain[i / 3] = new ValueChar('G');
                                 break;
                             default:
                                 throw new Exception();
