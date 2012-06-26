@@ -189,7 +189,8 @@ namespace LibiadaCore.Classes.Root.Characteristics
         {
             foreach (ICharacteristicCalculator calculator in List)
             {
-                if (type == calculator.GetType().ToString())
+                if ((type == calculator.GetType().ToString()) ||
+                    ("LibiadaCore.Classes.Root.Characteristics.Calculators." + type == calculator.GetType().ToString()))
                 {
                     return calculator;
                 }

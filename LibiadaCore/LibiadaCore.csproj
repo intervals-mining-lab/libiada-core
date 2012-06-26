@@ -69,6 +69,7 @@
     <Compile Include="Classes\Root\Characteristics\AuxiliaryInterfaces\IChainDataForCalculaton.cs" />
     <Compile Include="Classes\Root\Characteristics\AuxiliaryInterfaces\IDataForCalculator.cs" />
     <Compile Include="Classes\Root\Characteristics\BinaryCharacteristic.cs" />
+    <Compile Include="Classes\Root\Characteristics\BinaryCharacteristicsEnum.cs" />
     <Compile Include="Classes\Root\Characteristics\Calculators\AlphabetPower.cs" />
     <Compile Include="Classes\Root\Characteristics\Calculators\ArithmeticMean.cs" />
     <Compile Include="Classes\Root\Characteristics\Calculators\AverageRemoteness.cs" />

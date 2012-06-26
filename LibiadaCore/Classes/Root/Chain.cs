@@ -7,6 +7,7 @@ using LibiadaCore.Classes.Root.Characteristics.AuxiliaryInterfaces;
 using LibiadaCore.Classes.Root.Characteristics.Calculators;
 using LibiadaCore.Classes.Root.Characteristics.Calculators.BinaryCalculators;
 using LibiadaCore.Classes.Root.SimpleTypes;
+using LibiadaCore.Classes.TheoryOfSet;
 
 namespace LibiadaCore.Classes.Root
 {
@@ -61,6 +62,16 @@ namespace LibiadaCore.Classes.Root
         ///<param name="s"></param>
         public Chain(string s) : base(s)
         {
+        }
+
+        public Chain(String building, Alphabet alphabet)
+        {
+            string[] stringBuilding = building.Split('|');
+            base.ClearAndSetNewLength(stringBuilding.Length);
+            for (int i = 0; i < stringBuilding.Length; i++)
+            {
+                this[i] = alphabet[Convert.ToInt32(stringBuilding[i]) - 1];
+            }
         }
 
         public override IBaseObject Clone()
