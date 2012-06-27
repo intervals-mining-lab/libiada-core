@@ -154,9 +154,9 @@ namespace TestNewClusterization.Classes.DataMining.AlternativeClusterization
         {
             GraphManager connector = new GraphManager(ConnectionsList, ElementsList);
             GraphManager connector2 = connector.Clone();
-            Assert.IsInstanceOfType(typeof (GraphManager), connector2);
-            Assert.IsInstanceOfType(typeof (Connection), connector2.Connections[0]);
-            Assert.IsInstanceOfType(typeof (GraphElement), connector2.Elements[1]);
+            Assert.IsInstanceOf(typeof (GraphManager), connector2);
+            Assert.IsInstanceOf(typeof (Connection), connector2.Connections[0]);
+            Assert.IsInstanceOf(typeof (GraphElement), connector2.Elements[1]);
             Assert.AreNotSame(connector, connector2);
             Assert.AreNotSame(connector.Elements[0], connector2.Elements[0]);
             Assert.AreNotSame(connector.Connections[1], connector2.Connections[1]);

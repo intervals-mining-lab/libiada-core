@@ -57,9 +57,9 @@
     <Compile Include="Classes\DataMining\Clusterization\AlternativeClusterization\Connection.cs" />
     <Compile Include="Classes\DataMining\Clusterization\AlternativeClusterization\GraphElement.cs" />
     <Compile Include="Classes\DataMining\Clusterization\AlternativeClusterization\GraphManager.cs" />
-    <Compile Include="Classes\DataMining\Clusterization\ClustarizationResult.cs" />
     <Compile Include="Classes\DataMining\Clusterization\ClustarizationVariants.cs" />
     <Compile Include="Classes\DataMining\Clusterization\Cluster.cs" />
+    <Compile Include="Classes\DataMining\Clusterization\ClusterizationResult.cs" />
     <Compile Include="Classes\DataMining\Clusterization\DataObject.cs" />
     <Compile Include="Classes\DataMining\Clusterization\DataTable.cs" />
     <Compile Include="Classes\DataMining\Clusterization\IClusterization.cs" />

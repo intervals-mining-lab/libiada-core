@@ -75,7 +75,7 @@ namespace TestNewClusterization.Classes.DataMining.AlternativeClusterization
             Assert.AreEqual(Node.Content,NodeClone.Content);
             Assert.AreEqual(Node.Id,NodeClone.Id);
             Assert.AreNotSame(Node,NodeClone);
-            Assert.IsInstanceOfType(typeof (GraphElement), NodeClone);
+            Assert.IsInstanceOf(typeof (GraphElement), NodeClone);
         }
     }
 }

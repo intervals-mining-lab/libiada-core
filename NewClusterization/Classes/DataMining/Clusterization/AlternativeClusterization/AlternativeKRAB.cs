@@ -55,11 +55,11 @@ namespace NewClusterization.Classes.DataMining.Clusterization.AlternativeCluster
         /// </summary>
         /// <param name="Clusters">Количество кластеров</param>
         /// <returns>Оптимальный вариант разбиения</returns>
-        public ClustarizationResult Clusterizate(int Clusters)
+        public ClusterizationResult Clusterizate(int Clusters)
         {
             GraphManager TempManager = manager.Clone();
             chooseDivizion(Clusters, 0, manager);
-            ClustarizationResult result = new ClustarizationResult();
+            ClusterizationResult result = new ClusterizationResult();
             List<ArrayList> TempRes = new List<ArrayList>();
             for (int i = 0; i < optimalDivide.GetNextTaxonNumber(); i++)
             {

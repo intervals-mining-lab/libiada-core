@@ -6,7 +6,7 @@ namespace NewClusterization.Classes.DataMining.Clusterization
 {
     ///<summary>
     ///</summary>
-    public class ClustarizationResult: IBaseObject
+    public class ClusterizationResult: IBaseObject
     {
         public ArrayList Clusters = new ArrayList();
         public Double Quality = 0;
@@ -15,7 +15,7 @@ namespace NewClusterization.Classes.DataMining.Clusterization
         ///</summary>
         ///<param name="bin"></param>
         ///<exception cref="NotImplementedException"></exception>
-        public ClustarizationResult(ClustarizationResultBin bin)
+        public ClusterizationResult(ClusterizationResultBin bin)
         {
             Quality = bin.Quality;
             foreach (ClusterBin cluster in bin.Clusters)
@@ -26,14 +26,14 @@ namespace NewClusterization.Classes.DataMining.Clusterization
 
         ///<summary>
         ///</summary>
-        public ClustarizationResult()
+        public ClusterizationResult()
         {
             
         }
 
         public IBaseObject Clone()
         {
-            ClustarizationResult Temp = new ClustarizationResult();
+            ClusterizationResult Temp = new ClusterizationResult();
             Temp.Quality = Quality;
             Temp.Clusters = (ArrayList) Clusters.Clone();
             return Temp;
@@ -41,7 +41,7 @@ namespace NewClusterization.Classes.DataMining.Clusterization
 
         public IBin GetBin()
         {
-            ClustarizationResultBin Temp = new ClustarizationResultBin();
+            ClusterizationResultBin Temp = new ClusterizationResultBin();
             Temp.Quality = Quality;
             foreach (Cluster cluster in Clusters)
             {
@@ -53,14 +53,14 @@ namespace NewClusterization.Classes.DataMining.Clusterization
 
     ///<summary>
     ///</summary>
-    public class ClustarizationResultBin:IBin
+    public class ClusterizationResultBin : IBin
     {
         public ArrayList Clusters = new ArrayList();
         public Double Quality = 0;
 
         public IBaseObject GetInstance()
         {
-            return new ClustarizationResult(this);
+            return new ClusterizationResult(this);
         }
     }
 }

@@ -16,7 +16,7 @@ namespace NewClusterization.Classes.DataMining.Clusterization
         ///<exception cref="NotImplementedException"></exception>
         public ClustarizationVariants(ClustarizationVariantsBin bin)
         {
-            foreach (ClustarizationResultBin variant in bin.Variants)
+            foreach (ClusterizationResultBin variant in bin.Variants)
             {
                 Variants.Add(variant.GetInstance());
             }
@@ -39,7 +39,7 @@ namespace NewClusterization.Classes.DataMining.Clusterization
         public IBin GetBin()
         {
             ClustarizationVariantsBin Temp =new ClustarizationVariantsBin();
-            foreach (ClustarizationResult result in Variants)
+            foreach (ClusterizationResult result in Variants)
             {
                 Temp.Variants.Add(result.GetBin());
             }

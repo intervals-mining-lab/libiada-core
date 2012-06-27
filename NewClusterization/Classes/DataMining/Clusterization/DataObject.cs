@@ -9,7 +9,7 @@ namespace NewClusterization.Classes.DataMining.Clusterization
     ///</summary>
     public class DataObject :IBaseObject,  IEnumerable
     {
-        private int id;
+        private long id;
         public readonly HybridDictionary vault = new HybridDictionary();
 
         ///<summary>
@@ -32,7 +32,7 @@ namespace NewClusterization.Classes.DataMining.Clusterization
 
         ///<summary>
         ///</summary>
-        public int Id
+        public long Id
         {
             get { return id; }
             set { id = value; }
@@ -111,7 +111,7 @@ namespace NewClusterization.Classes.DataMining.Clusterization
     ///</summary>
     public class DataObjectBin: IBin
     {
-        public int id;
+        public long id;
         public ArrayList vault = new ArrayList();
 
         public IBaseObject GetInstance()
