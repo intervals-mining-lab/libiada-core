@@ -28,43 +28,44 @@ namespace NewClusterization.Classes.DataMining.Clusterization.AlternativeCluster
         /// т.е. ищет самое короткое ребро среди смежных данным точкам
         /// </summary>
         /// <param name="graph">Массив связей графа</param>
+        /// <param name="elementsPower"> </param>
         /// <param name="firstElement">первая точка</param>
         /// <param name="secondElement">вторая точка</param>
         /// <returns>Bmin - минимальное расстояние</returns>
-        private double GetBmin(List<Connection> graph, int ElementsPower, int firstElement, int secondElement)
+        private double GetBmin(List<Connection> graph, int elementsPower, int firstElement, int secondElement)
         {
-             double min = Math.Min(SearchForMinimum(graph, ElementsPower, firstElement, secondElement),
-                                  SearchForMinimum(graph, ElementsPower, secondElement, firstElement));
+             double min = Math.Min(SearchForMinimum(graph, elementsPower, firstElement, secondElement),
+                                  SearchForMinimum(graph, elementsPower, secondElement, firstElement));
             return min;
         }
 
-        private double SearchForMinimum(List<Connection> graph, int ElementsPower, int Element, int ExceptedElement)
+        private double SearchForMinimum(List<Connection> graph, int elementsPower, int element, int exceptedElement)
         {
             double min = double.MaxValue;//текущее минимальное расстояние
 
-            int BlockBegining = 0;
-            for (int i = 0; i < Element; i++)
+            int blockBegining = 0;
+            for (int i = 0; i < element; i++)
             {
-                BlockBegining += BlockLength(i,ElementsPower);//ищём начало нужного нам блока
+                blockBegining += BlockLength(i,elementsPower);//ищём начало нужного нам блока
             }
 
             int blockSumm = 0;//сумма длин предыдущих блоков
-            int shift = Element - 1; //сдвиг внутри блока
+            int shift = element - 1; //сдвиг внутри блока
 
             //цикл перебора отдельных значений в массиве пар вершин 
-            for (int k=0, j = Element - 1; shift >= 0; j = blockSumm + (--shift), k++)
+            for (int k=0, j = element - 1; shift >= 0; j = blockSumm + (--shift), k++)
             {
-                if ((min > graph[j].distance) && (graph[j].SecondElementIndex != ExceptedElement) && (graph[j].FirstElementIndex != ExceptedElement))
+                if ((min > graph[j].distance) && (graph[j].SecondElementIndex != exceptedElement) && (graph[j].FirstElementIndex != exceptedElement))
                 {
                     min = graph[j].distance;
                 }
-                blockSumm += BlockLength(k,ElementsPower);
+                blockSumm += BlockLength(k,elementsPower);
             }
 
-            int OurBlockLength = BlockLength(Element,ElementsPower);//вычисляем длину блока
-            for (int k = BlockBegining; k < BlockBegining + OurBlockLength; k++)//перебор блока от начала до конца
+            int ourBlockLength = BlockLength(element,elementsPower);//вычисляем длину блока
+            for (int k = blockBegining; k < blockBegining + ourBlockLength; k++)//перебор блока от начала до конца
             {
-                if ((min > graph[k].distance) && (graph[k].SecondElementIndex != ExceptedElement) && (graph[k].FirstElementIndex != ExceptedElement))
+                if ((min > graph[k].distance) && (graph[k].SecondElementIndex != exceptedElement) && (graph[k].FirstElementIndex != exceptedElement))
                 {
                     min = graph[k].distance;
                 }
@@ -72,9 +73,9 @@ namespace NewClusterization.Classes.DataMining.Clusterization.AlternativeCluster
             return min;
         }
 
-        private int BlockLength(int Element, int Power)
+        private int BlockLength(int element, int power)
         {
-            return Power - (Element + 1);
+            return power - (element + 1);
         }
     }
 }

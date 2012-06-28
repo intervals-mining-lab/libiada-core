@@ -10,6 +10,8 @@ namespace NewClusterization.Classes.DataMining.Clusterization.AlternativeCluster
         ///  локальную плотность точек, нормированную локальную плотность точек и лямбда-расстояние
         /// </summary>
         /// <param name="graph"> Массив связей графа</param>
+        /// <param name="normalizedDistanseWeight"> </param>
+        /// <param name="distanseWeight"> </param>
         public static void CalculateCharacteristic(GraphManager graph, double normalizedDistanseWeight, double distanseWeight)
         {
             ICalculator Calc = new LinearCalculator();

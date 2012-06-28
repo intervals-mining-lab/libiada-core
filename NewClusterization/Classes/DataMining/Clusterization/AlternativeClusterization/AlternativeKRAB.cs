@@ -20,32 +20,35 @@ namespace NewClusterization.Classes.DataMining.Clusterization.AlternativeCluster
         /// Конструктор класса
         /// </summary>
         /// <param name="dataTable">Таблица с данными</param>
-        public AlternativeKRAB(DataTable dataTable, double PowerWeight, double NormalizedDistanseWeight, double DistanseWeight)
+        /// <param name="powerWeight"> </param>
+        /// <param name="normalizedDistanseWeight"> </param>
+        /// <param name="distanseWeight"> </param>
+        public AlternativeKRAB(DataTable dataTable, double powerWeight, double normalizedDistanseWeight, double distanseWeight)
         {
-            List<Connection> Connections = new List<Connection>(); //массив связей(пар вершин)
-            List<GraphElement> Elements = new List<GraphElement>();//массив вершин
+            List<Connection> connections = new List<Connection>(); //массив связей(пар вершин)
+            List<GraphElement> elements = new List<GraphElement>();//массив вершин
 
-            powerWeight = PowerWeight;
-            normalizedDistanseWeight = NormalizedDistanseWeight;
-            distanseWeight = DistanseWeight;
+            this.powerWeight = powerWeight;
+            this.normalizedDistanseWeight = normalizedDistanseWeight;
+            this.distanseWeight = distanseWeight;
 
-            IEnumerator Counter = dataTable.GetEnumerator();//итератор
-            Counter.Reset();
-            Counter.MoveNext();//Установка на нулевой элемент
+            IEnumerator counter = dataTable.GetEnumerator();//итератор
+            counter.Reset();
+            counter.MoveNext();//Установка на нулевой элемент
             for (int i = 0; i < dataTable.Count; i++)
             {
-                Elements.Add(new GraphElement(((DataObject)((DictionaryEntry)Counter.Current).Value).vault, ((DictionaryEntry)Counter.Current).Key));
-                Counter.MoveNext();//переход к следующему элементу
+                elements.Add(new GraphElement(((DataObject)((DictionaryEntry)counter.Current).Value).vault, ((DictionaryEntry)counter.Current).Key));
+                counter.MoveNext();//переход к следующему элементу
             }
-            for (int j = 0; j < Elements.Count - 1; j++)
+            for (int j = 0; j < elements.Count - 1; j++)
             {
-                for (int k = j + 1; k < Elements.Count; k++)
+                for (int k = j + 1; k < elements.Count; k++)
                 {
-                    Connections.Add(new Connection(j,k));
+                    connections.Add(new Connection(j,k));
                 }
             }
 
-            manager = new GraphManager(Connections, Elements);
+            manager = new GraphManager(connections, elements);
             CommonCalculator.CalculateCharacteristic(manager, normalizedDistanseWeight, distanseWeight); //вычисление расстояний
             manager.ConnectGraph();
         }
@@ -53,12 +56,12 @@ namespace NewClusterization.Classes.DataMining.Clusterization.AlternativeCluster
         /// <summary>
         /// Метод, осущствляющий кластеризацию на заданное количество классов
         /// </summary>
-        /// <param name="Clusters">Количество кластеров</param>
+        /// <param name="clusters">Количество кластеров</param>
         /// <returns>Оптимальный вариант разбиения</returns>
-        public ClusterizationResult Clusterizate(int Clusters)
+        public ClusterizationResult Clusterizate(int clusters)
         {
-            GraphManager TempManager = manager.Clone();
-            chooseDivizion(Clusters, 0, manager);
+            GraphManager tempManager = manager.Clone();
+            ChooseDivizion(clusters, 0, manager);
             ClusterizationResult result = new ClusterizationResult();
             List<ArrayList> TempRes = new List<ArrayList>();
             for (int i = 0; i < optimalDivide.GetNextTaxonNumber(); i++)
@@ -70,22 +73,22 @@ namespace NewClusterization.Classes.DataMining.Clusterization.AlternativeCluster
             {
                 TempRes[optimalDivide.Elements[j].TaxonNumber].Add(optimalDivide.Elements[j]);
             }
-            List<ArrayList> Res = new List<ArrayList>();
+            List<ArrayList> res = new List<ArrayList>();
             // Сохраняем только непустые кластеры
             for (int k = 0; k < TempRes.Count; k++)
             {
                 if (TempRes[k].Count > 0)
                 {
-                    Res.Add(TempRes[k]);
+                    res.Add(TempRes[k]);
                 }
             }
             // Складываем кластеры в нужный контейнер с результатами
-            for (int l = 0; l < Res.Count; l++)
+            for (int l = 0; l < res.Count; l++)
             {
-                result.Clusters.Add(new Cluster(Res[l]));
+                result.Clusters.Add(new Cluster(res[l]));
                 
             }
-            manager = TempManager;
+            manager = tempManager;
             return result;
         }
 
@@ -95,7 +98,7 @@ namespace NewClusterization.Classes.DataMining.Clusterization.AlternativeCluster
         /// <param name="clusters">Оставшееся количество кластеров для отделения</param>
         /// <param name="position">Начальная позиция для перебора</param>
         /// <param name="currentManager">Граф и его обработчик</param>
-        private void chooseDivizion(int clusters, int position, GraphManager currentManager)
+        private void ChooseDivizion(int clusters, int position, GraphManager currentManager)
         {
             //если ещё требуются рекурсивные вызовы процедуры 
             if (clusters > 1)
@@ -107,7 +110,7 @@ namespace NewClusterization.Classes.DataMining.Clusterization.AlternativeCluster
                     if (tempManager.Connections[i].Connected)
                     {
                         tempManager.Cut(tempManager.Connections[i]);
-                        chooseDivizion(clusters - 1, i + 1, tempManager);
+                        ChooseDivizion(clusters - 1, i + 1, tempManager);
                     }
                 }
             }
@@ -128,12 +131,12 @@ namespace NewClusterization.Classes.DataMining.Clusterization.AlternativeCluster
         /// Метод, осуществляющий кластеризацию с количествок кластеров 
         /// меньше или равное заданому
         /// </summary>
-        /// <param name="Clusters">Количество кластеров</param>
+        /// <param name="clusters">Количество кластеров</param>
         /// <returns>Результат разбиения</returns>
-        public ClustarizationVariants ClusterizateVariantCountClustersBelow (int Clusters)
+        public ClustarizationVariants ClusterizateVariantCountClustersBelow (int clusters)
         {
             ClustarizationVariants temp = new ClustarizationVariants();
-            for (int i = 2; i <= Clusters; i++)
+            for (int i = 2; i <= clusters; i++)
             {
                 temp.Variants.Add(Clusterizate(i));
             }

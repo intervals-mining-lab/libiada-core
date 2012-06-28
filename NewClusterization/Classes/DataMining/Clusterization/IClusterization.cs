@@ -6,7 +6,7 @@ namespace NewClusterization.Classes.DataMining.Clusterization
     public interface IClusterization
     {
         ClusterizationResult Clusterizate(int Clusters);
-        ClustarizationVariants ClusterizateVariantCountClustersBelow(int Clusters);
+        ClustarizationVariants ClusterizateVariantCountClustersBelow(int clusters);
         ClustarizationVariants ClusterizateAllVariants();
     }
 }

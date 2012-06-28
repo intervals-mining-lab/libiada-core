@@ -31,12 +31,12 @@ namespace NewClusterization.Classes.DataMining.Clusterization
         ///<summary>
         ///</summary>
         ///<param name="s"></param>
-        public DataObject this[int s]
+        public DataObject this[long s]
         {
             get { return (DataObject) vault[s]; }
         }
 
-        public int Count
+        public long Count
         {
             get { return vault.Count; }
         }

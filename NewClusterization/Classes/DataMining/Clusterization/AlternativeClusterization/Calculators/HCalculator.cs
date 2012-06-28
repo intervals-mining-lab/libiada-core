@@ -16,34 +16,34 @@ namespace NewClusterization.Classes.DataMining.Clusterization.AlternativeCluster
         public static double Calculate(GraphManager manager)
         {
             //Находим количество элементов в каждом таксоне
-            List<int> TaxonPower = new List<int>();
+            List<int> taxonPower = new List<int>();
             for (int i = 0; i < manager.GetNextTaxonNumber(); i++)
             {
-                TaxonPower.Add(0);
+                taxonPower.Add(0);
             }
             for (int j = 0; j < manager.Elements.Count; j++)
             {
-                int TaxonNumber = manager.Elements[j].TaxonNumber;
-                TaxonPower[TaxonNumber]++;
+                int taxonNumber = manager.Elements[j].TaxonNumber;
+                taxonPower[taxonNumber]++;
             }
             // Находим общее число непустых таксонов
-            int TaxonCount = 0;
-            for (int k = 0; k < TaxonPower.Count; k++)
+            int taxonCount = 0;
+            for (int k = 0; k < taxonPower.Count; k++)
             {
-                if (TaxonPower[k]>0)
+                if (taxonPower[k]>0)
                 {
-                    TaxonCount++;
+                    taxonCount++;
                 }
             }
             // Вычисляем характеристику равномощности таксонов - h
             //количество таксонов в степени количества таксонов
-            double h = Math.Pow(TaxonCount, TaxonCount);
-            for (int m = 0; m < TaxonPower.Count; m++)
+            double h = Math.Pow(taxonCount, taxonCount);
+            for (int m = 0; m < taxonPower.Count; m++)
             {
-                if (TaxonPower[m]!=0)
+                if (taxonPower[m]!=0)
                 {
                     //мощность таксона, делёная на общее количество элементов
-                    h *= (double)TaxonPower[m]/manager.Elements.Count;    
+                    h *= (double)taxonPower[m]/manager.Elements.Count;    
                 } 
             }
             return h;

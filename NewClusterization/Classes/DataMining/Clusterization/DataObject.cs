@@ -71,20 +71,20 @@ namespace NewClusterization.Classes.DataMining.Clusterization
         ///<exception cref="Exception"></exception>
         public double Distance(DataObject o)
         {
-            IEnumerator From = o.GetEnumerator();
-            IEnumerator To = GetEnumerator();
-            From.Reset();
-            To.Reset();
+            IEnumerator from = o.GetEnumerator();
+            IEnumerator to = GetEnumerator();
+            from.Reset();
+            to.Reset();
             double result = 0;
-            while( From.MoveNext() && To.MoveNext())
+            while( from.MoveNext() && to.MoveNext())
             {
-                if (!((DictionaryEntry)From.Current).Key.Equals(((DictionaryEntry)To.Current).Key))
+                if (!((DictionaryEntry)from.Current).Key.Equals(((DictionaryEntry)to.Current).Key))
                 {
-                    throw new Exception("Can not calculate different parameters. First: " + ((DictionaryEntry)From.Current).Key + " Second " + ((DictionaryEntry)To.Current).Key);
+                    throw new Exception("Can not calculate different parameters. First: " + ((DictionaryEntry)from.Current).Key + " Second " + ((DictionaryEntry)to.Current).Key);
                 }
                 result +=
-                    Math.Pow(((double) ((DictionaryEntry) From.Current).Value) -
-                             ((double) ((DictionaryEntry) To.Current).Value), 2);
+                    Math.Pow(((double) ((DictionaryEntry) from.Current).Value) -
+                             ((double) ((DictionaryEntry) to.Current).Value), 2);
             }
 
             return Math.Sqrt(result);

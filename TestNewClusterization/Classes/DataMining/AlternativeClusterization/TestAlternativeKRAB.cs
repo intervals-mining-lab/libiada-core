@@ -63,13 +63,13 @@ namespace TestNewClusterization.Classes.DataMining.AlternativeClusterization
             AlternativeKRAB Krab = new AlternativeKRAB(Dt,4,2,1);
             ArrayList Result = Krab.Clusterizate(2).Clusters;
 
-            Assert.IsTrue(((Cluster)Result[1]).Items.Contains(1));
-            Assert.IsTrue(((Cluster)Result[1]).Items.Contains(3));
-            Assert.IsTrue(((Cluster)Result[1]).Items.Contains(2));
-            Assert.IsTrue(((Cluster)Result[1]).Items.Contains(4));
+            Assert.IsTrue(((Cluster)Result[1]).Items.Contains((long)1));
+            Assert.IsTrue(((Cluster)Result[1]).Items.Contains((long)3));
+            Assert.IsTrue(((Cluster)Result[1]).Items.Contains((long)2));
+            Assert.IsTrue(((Cluster)Result[1]).Items.Contains((long)4));
 
-            Assert.IsTrue(((Cluster)Result[0]).Items.Contains(5));
-            Assert.IsTrue(((Cluster)Result[0]).Items.Contains(6));
+            Assert.IsTrue(((Cluster)Result[0]).Items.Contains((long)5));
+            Assert.IsTrue(((Cluster)Result[0]).Items.Contains((long)6));
         }
 
         [Test]

@@ -20,15 +20,15 @@ namespace NewClusterization.Classes.DataMining.Clusterization.AlternativeCluster
             {
                 double distance = 0;
                 //Получаем энумераторы для перебора всех точек
-                IDictionaryEnumerator FirstCounter = graph.Elements[graph.Connections[i].FirstElementIndex].Content.GetEnumerator(); 
-                FirstCounter.Reset();
+                IDictionaryEnumerator firstCounter = graph.Elements[graph.Connections[i].FirstElementIndex].Content.GetEnumerator(); 
+                firstCounter.Reset();
                 //Переходим к начальным точкам
-                FirstCounter.MoveNext();
+                firstCounter.MoveNext();
                 for (int j = 0; j < graph.Elements[graph.Connections[i].FirstElementIndex].Content.Count; j++)
                 {
-                    double element = Convert.ToDouble(FirstCounter.Value) - Convert.ToDouble(graph.Elements[graph.Connections[i].SecondElementIndex].Content[FirstCounter.Key]);
+                    double element = Convert.ToDouble(firstCounter.Value) - Convert.ToDouble(graph.Elements[graph.Connections[i].SecondElementIndex].Content[firstCounter.Key]);
                     distance += element*element;
-                    FirstCounter.MoveNext();
+                    firstCounter.MoveNext();
                 }
                 distance = Math.Sqrt(distance);
                 graph.Connections[i].distance = distance;
