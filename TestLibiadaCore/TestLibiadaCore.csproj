@@ -54,12 +54,12 @@
     <Compile Include="Classes\Misc\Iterators\TestIteratorWritebleStart.cs" />
     <Compile Include="Classes\Misc\SpaceRebuilders\TestNullRebuilder.cs" />
     <Compile Include="Classes\Misc\SpaceRebuilders\TestPsevdoCycleSpace.cs" />
-    <Compile Include="Classes\Root\Characteristics\Calculators\BinaryCalculators\TestBinaryGeometricMean.cs" />
-    <Compile Include="Classes\Root\Characteristics\Calculators\BinaryCalculators\TestInvolvedPartialDependenceCoefficient.cs" />
-    <Compile Include="Classes\Root\Characteristics\Calculators\BinaryCalculators\TestMutualDependenceCoefficient.cs" />
-    <Compile Include="Classes\Root\Characteristics\Calculators\BinaryCalculators\TestNormalizedPartialDependenceCoefficient.cs" />
-    <Compile Include="Classes\Root\Characteristics\Calculators\BinaryCalculators\TestPartialDependenceCoefficient.cs" />
-    <Compile Include="Classes\Root\Characteristics\Calculators\BinaryCalculators\TestRedundancy.cs" />
+    <Compile Include="Classes\Root\Characteristics\BinaryCalculators\TestBinaryGeometricMean.cs" />
+    <Compile Include="Classes\Root\Characteristics\BinaryCalculators\TestInvolvedPartialDependenceCoefficient.cs" />
+    <Compile Include="Classes\Root\Characteristics\BinaryCalculators\TestMutualDependenceCoefficient.cs" />
+    <Compile Include="Classes\Root\Characteristics\BinaryCalculators\TestNormalizedPartialDependenceCoefficient.cs" />
+    <Compile Include="Classes\Root\Characteristics\BinaryCalculators\TestPartialDependenceCoefficient.cs" />
+    <Compile Include="Classes\Root\Characteristics\BinaryCalculators\TestRedundancy.cs" />
     <Compile Include="Classes\Root\Characteristics\Calculators\ObjectMother.cs" />
     <Compile Include="Classes\Root\Characteristics\Calculators\TestAlphabetPower.cs" />
     <Compile Include="Classes\Root\Characteristics\Calculators\TestArithmeticMean.cs" />
@@ -73,7 +73,7 @@
     <Compile Include="Classes\Root\Characteristics\Calculators\TestIdentificationInformation.cs" />
     <Compile Include="Classes\Root\Characteristics\Calculators\TestIntervalsCount.cs" />
     <Compile Include="Classes\Root\Characteristics\Calculators\TestLength.cs" />
-    <Compile Include="Classes\Root\Characteristics\Calculators\TestNormalizationGamut.cs" />
+    <Compile Include="Classes\Root\Characteristics\Calculators\TestNormalizedGamut.cs" />
     <Compile Include="Classes\Root\Characteristics\Calculators\TestNormalizedAverageRemoteness.cs" />
     <Compile Include="Classes\Root\Characteristics\Calculators\TestPeriodicity.cs" />
     <Compile Include="Classes\Root\Characteristics\Calculators\TestProbability.cs" />

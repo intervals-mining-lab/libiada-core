@@ -3,7 +3,7 @@ namespace LibiadaCore.Classes.Root.Characteristics.Calculators
     ///<summary>
     /// Удалённость приходящаяся на одно сообщение.
     ///</summary>
-    public class NomalizationGamut : ICharacteristicCalculator
+    public class NormalizedGamut : ICharacteristicCalculator
     {
         public double Calculate(UniformChain pChain, LinkUp Link)
         {

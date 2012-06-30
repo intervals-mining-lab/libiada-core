@@ -1,7 +1,7 @@
 namespace LibiadaCore.Classes.Root.Characteristics.Calculators
 {
     ///<summary>
-    /// Интерфейс калькулатора
+    /// Интерфейс калькулятора
     ///</summary>
     public interface ICharacteristicCalculator
     {

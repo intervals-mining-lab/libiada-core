@@ -14,7 +14,8 @@ namespace LibiadaCore.Classes.Root.Characteristics
 
         public double Value(Chain chain, IBaseObject firstElement, IBaseObject secondElement, LinkUp linkUp)
         {
-            if (!Calculated || !chain.Equals(pChain) || !this.reasonElement.Equals(firstElement) || !this.sequenceElement.Equals(secondElement))
+            if (!Calculated || !chain.Equals(pChain) || 
+                !this.reasonElement.Equals(firstElement) || !this.sequenceElement.Equals(secondElement))
             {
                 pChain = chain;
                 reasonElement = firstElement;

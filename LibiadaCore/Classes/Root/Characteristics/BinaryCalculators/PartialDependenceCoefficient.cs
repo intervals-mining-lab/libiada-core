@@ -1,15 +1,18 @@
 ﻿using System.Collections.Generic;
+using LibiadaCore.Classes.Root.Characteristics.Calculators;
 
-namespace LibiadaCore.Classes.Root.Characteristics.Calculators.BinaryCalculators
+namespace LibiadaCore.Classes.Root.Characteristics.BinaryCalculators
 {
-    public class NormalizedPartialDependenceCoefficient : IBinaryCharacteristicCalculator
+    public class PartialDependenceCoefficient:IBinaryCharacteristicCalculator
     {
         public double Calculate(Chain chain, IBaseObject firstElement, IBaseObject secondElement, LinkUp linkUp)
         {
-            var partialDependenceCoefficient = new PartialDependenceCoefficient();
-            double k1 = partialDependenceCoefficient.Calculate(chain, firstElement, secondElement, linkUp);
+            Redundancy redundancyCalculator = new Redundancy();
+            UniformChain secondElementChain = (UniformChain)chain.UniformChain(secondElement);
+            int secondElementCount = (int)secondElementChain.GetCharacteristic(linkUp, new Count());
+            double redundancy = redundancyCalculator.Calculate(chain, firstElement, secondElement, linkUp);
             int pairs = chain.GetPairsCount(firstElement, secondElement);
-            return k1 * 2 * pairs / chain.Length;
+            return redundancy * pairs / secondElementCount;
         }
 
         public List<List<double>> Calculate(Chain chain, LinkUp linkUp)
@@ -33,7 +36,7 @@ namespace LibiadaCore.Classes.Root.Characteristics.Calculators.BinaryCalculators
             return result;
         }
 
-        public BinaryCharacteristicsEnum GetCharacteristicName()
+        public  BinaryCharacteristicsEnum GetCharacteristicName()
         {
             throw new System.NotImplementedException();
         }

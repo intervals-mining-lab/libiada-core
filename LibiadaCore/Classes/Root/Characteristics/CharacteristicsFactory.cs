@@ -130,7 +130,7 @@ namespace LibiadaCore.Classes.Root.Characteristics
         ///</summary>
         public static ICharacteristicCalculator nG
         {
-            get { return new NomalizationGamut(); }
+            get { return new NormalizedGamut(); }
         }
 
 

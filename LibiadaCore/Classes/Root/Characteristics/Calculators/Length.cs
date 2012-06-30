@@ -5,7 +5,7 @@ using LibiadaCore.Classes.Root.SimpleTypes;
 namespace LibiadaCore.Classes.Root.Characteristics.Calculators
 {
     ///<summary>
-    /// Длинна как сумма длин интервалов.
+    /// Длина как сумма длин интервалов.
     ///</summary>
     public class Length : ICharacteristicCalculator
     {

@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace LibiadaCore.Classes.Root.Characteristics.Calculators.BinaryCalculators
+namespace LibiadaCore.Classes.Root.Characteristics.BinaryCalculators
 {
     public interface IBinaryCharacteristicCalculator
     {

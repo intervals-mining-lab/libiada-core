@@ -1,19 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
 using LibiadaCore.Classes.Root;
-using LibiadaCore.Classes.Root.Characteristics.Calculators.BinaryCalculators;
+using LibiadaCore.Classes.Root.Characteristics.BinaryCalculators;
 using LibiadaCore.Classes.Root.SimpleTypes;
 using NUnit.Framework;
 
-namespace TestLibiadaCore.Classes.Root.Characteristics.Calculators.BinaryCalculators
+namespace TestLibiadaCore.Classes.Root.Characteristics.BinaryCalculators
 {
     [TestFixture]
-    public class TestInvolvedPartialDependenceCoefficient
+    public class TestPartialDependenceCoefficient
     {
         [Test]
-        public void TestK2()
+        public void TestK1()
         {
-            InvolvedPartialDependenceCoefficient calculator = new InvolvedPartialDependenceCoefficient();
+            PartialDependenceCoefficient calculator = new PartialDependenceCoefficient();
             ValueChar MessageA = new ValueChar('a');
             ValueChar MessageB = new ValueChar('b');
 
@@ -73,8 +73,8 @@ namespace TestLibiadaCore.Classes.Root.Characteristics.Calculators.BinaryCalcula
             chain.Add(MessageB, 12);
             chain.Add(MessageB, 13);
             chain.Add(MessageB, 28);
-            Assert.AreEqual(-0.2, Math.Round(calculator.Calculate(chain, MessageA, MessageB, LinkUp.End), 3));
-            Assert.AreEqual(0.1697, Math.Round(calculator.Calculate(chain, MessageB, MessageA, LinkUp.End), 4));
+            Assert.AreEqual(-0.22, Math.Round(calculator.Calculate(chain, MessageA, MessageB, LinkUp.End), 2));
+            Assert.AreEqual(0.1556, Math.Round(calculator.Calculate(chain, MessageB, MessageA, LinkUp.End), 4));
 
             chain = new Chain(25);
             chain.Add(MessageA, 0);
@@ -87,8 +87,8 @@ namespace TestLibiadaCore.Classes.Root.Characteristics.Calculators.BinaryCalcula
             chain.Add(MessageB, 6);
             chain.Add(MessageB, 21);
             chain.Add(MessageB, 24);
-            Assert.AreEqual(0.214, Math.Round(calculator.Calculate(chain, MessageA, MessageB, LinkUp.End), 3));
-            Assert.AreEqual(0.105, Math.Round(calculator.Calculate(chain, MessageB, MessageA, LinkUp.End), 3));
+            Assert.AreEqual(0.356, Math.Round(calculator.Calculate(chain, MessageA, MessageB, LinkUp.End), 3));
+            Assert.AreEqual(0.075, Math.Round(calculator.Calculate(chain, MessageB, MessageA, LinkUp.End), 3));
 
             chain = new Chain(29);
             chain.Add(MessageA, 0);
@@ -100,8 +100,8 @@ namespace TestLibiadaCore.Classes.Root.Characteristics.Calculators.BinaryCalcula
             chain.Add(MessageB, 2);
             chain.Add(MessageB, 17);
             chain.Add(MessageB, 28);
-            Assert.AreEqual(0.0152, Math.Round(calculator.Calculate(chain, MessageA, MessageB, LinkUp.End), 4));
-            Assert.AreEqual(0.4098, Math.Round(calculator.Calculate(chain, MessageB, MessageA, LinkUp.End), 4));
+            Assert.AreEqual(0.023, Math.Round(calculator.Calculate(chain, MessageA, MessageB, LinkUp.End), 3));
+            Assert.AreEqual(0.307, Math.Round(calculator.Calculate(chain, MessageB, MessageA, LinkUp.End), 3));
 
             chain = new Chain(28);
             chain.Add(MessageA, 0);
@@ -165,8 +165,8 @@ namespace TestLibiadaCore.Classes.Root.Characteristics.Calculators.BinaryCalcula
             chain.Add(MessageB, 3);
             chain.Add(MessageB, 5);
             chain.Add(MessageB, 8);
-            Assert.AreEqual(0.3429, Math.Round(calculator.Calculate(chain, MessageA, MessageB, LinkUp.End), 4));
-            Assert.AreEqual(0.35, Math.Round(calculator.Calculate(chain, MessageB, MessageA, LinkUp.End), 2));
+            Assert.AreEqual(0.2143, Math.Round(calculator.Calculate(chain, MessageA, MessageB, LinkUp.End), 4));
+            Assert.AreEqual(0.875, Math.Round(calculator.Calculate(chain, MessageB, MessageA, LinkUp.End), 3));
 
             chain = new Chain(29);
             chain.Add(MessageA, 2);
@@ -176,8 +176,8 @@ namespace TestLibiadaCore.Classes.Root.Characteristics.Calculators.BinaryCalcula
             chain.Add(MessageB, 6);
             chain.Add(MessageB, 14);
             chain.Add(MessageB, 22);
-            Assert.AreEqual(0.374, Math.Round(calculator.Calculate(chain, MessageA, MessageB, LinkUp.End), 3));
-            Assert.AreEqual(0.396, Math.Round(calculator.Calculate(chain, MessageB, MessageA, LinkUp.End), 3));
+            Assert.AreEqual(0.437, Math.Round(calculator.Calculate(chain, MessageA, MessageB, LinkUp.End), 3));
+            Assert.AreEqual(0.347, Math.Round(calculator.Calculate(chain, MessageB, MessageA, LinkUp.End), 3));
 
             // -------------- дальше цепочки из монографии
 
@@ -205,9 +205,9 @@ namespace TestLibiadaCore.Classes.Root.Characteristics.Calculators.BinaryCalcula
         }
 
         [Test]
-        public void TestGetK2()
+        public void TestGetK1()
         {
-            InvolvedPartialDependenceCoefficient calculator = new InvolvedPartialDependenceCoefficient();
+            PartialDependenceCoefficient calculator = new PartialDependenceCoefficient();
 
             ValueChar MessageA = new ValueChar('a');
             ValueChar MessageB = new ValueChar('b');
@@ -262,13 +262,13 @@ namespace TestLibiadaCore.Classes.Root.Characteristics.Calculators.BinaryCalcula
             result = calculator.Calculate(chain, LinkUp.End);
 
             Assert.AreEqual(0, result[0][0]);
-            Assert.AreEqual(0.5407, Math.Round(result[0][1], 4));
-            Assert.AreEqual(0.296, Math.Round(result[0][2], 3));
-            Assert.AreEqual(0.292, Math.Round(result[1][0], 3));
+            Assert.AreEqual(0.4055, Math.Round(result[0][1], 4));
+            Assert.AreEqual(0.197, Math.Round(result[0][2], 3));
+            Assert.AreEqual(0.4375, Math.Round(result[1][0], 4));
             Assert.AreEqual(0, result[1][1]);
-            Assert.AreEqual(0.418, Math.Round(result[1][2], 3));
-            Assert.AreEqual(0.1875, Math.Round(result[2][0], 4));
-            Assert.AreEqual(0.311, Math.Round(result[2][1], 3));
+            Assert.AreEqual(0.349, Math.Round(result[1][2], 3));
+            Assert.AreEqual(0.375, Math.Round(result[2][0], 3));
+            Assert.AreEqual(0.388, Math.Round(result[2][1], 3));
             Assert.AreEqual(0, result[2][2]);
 
         }

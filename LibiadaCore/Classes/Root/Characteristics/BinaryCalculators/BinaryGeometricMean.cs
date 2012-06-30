@@ -1,17 +1,25 @@
-﻿using System.Collections.Generic;
+using System;
+using System.Collections.Generic;
+using LibiadaCore.Classes.Root.Characteristics.Calculators;
 
-namespace LibiadaCore.Classes.Root.Characteristics.Calculators.BinaryCalculators
+namespace LibiadaCore.Classes.Root.Characteristics.BinaryCalculators
 {
-    public class PartialDependenceCoefficient:IBinaryCharacteristicCalculator
+    public class BinaryGeometricMean : IBinaryCharacteristicCalculator
     {
         public double Calculate(Chain chain, IBaseObject firstElement, IBaseObject secondElement, LinkUp linkUp)
         {
-            Redundancy redundancyCalculator = new Redundancy();
-            UniformChain secondElementChain = (UniformChain)chain.UniformChain(secondElement);
-            int secondElementCount = (int)secondElementChain.GetCharacteristic(linkUp, new Count());
-            double redundancy = redundancyCalculator.Calculate(chain, firstElement, secondElement, linkUp);
+            int firstElementCount = (int)chain.UniformChain(firstElement).GetCharacteristic(linkUp, new Count());
+            double intervals = 0;
+            for (int i = 1; i <= firstElementCount; i++)
+            {
+                int binaryInterval = chain.GetBinaryInterval(firstElement, secondElement, i);
+                if (binaryInterval > 0)
+                {
+                    intervals += Math.Log(binaryInterval, 2);
+                }
+            }
             int pairs = chain.GetPairsCount(firstElement, secondElement);
-            return redundancy * pairs / secondElementCount;
+            return Math.Pow(2, pairs == 0 ? 0 : intervals / pairs);
         }
 
         public List<List<double>> Calculate(Chain chain, LinkUp linkUp)
@@ -35,7 +43,7 @@ namespace LibiadaCore.Classes.Root.Characteristics.Calculators.BinaryCalculators
             return result;
         }
 
-        public  BinaryCharacteristicsEnum GetCharacteristicName()
+        public BinaryCharacteristicsEnum GetCharacteristicName()
         {
             throw new System.NotImplementedException();
         }

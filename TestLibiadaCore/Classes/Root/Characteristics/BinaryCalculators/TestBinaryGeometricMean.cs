@@ -1,10 +1,10 @@
 ﻿using System;
 using LibiadaCore.Classes.Root;
-using LibiadaCore.Classes.Root.Characteristics.Calculators.BinaryCalculators;
+using LibiadaCore.Classes.Root.Characteristics.BinaryCalculators;
 using LibiadaCore.Classes.Root.SimpleTypes;
 using NUnit.Framework;
 
-namespace TestLibiadaCore.Classes.Root.Characteristics.Calculators.BinaryCalculators
+namespace TestLibiadaCore.Classes.Root.Characteristics.BinaryCalculators
 {
     [TestFixture]
     public class TestBinaryGeometricMean
