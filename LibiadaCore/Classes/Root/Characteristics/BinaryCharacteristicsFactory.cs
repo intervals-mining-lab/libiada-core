@@ -6,7 +6,7 @@ namespace LibiadaCore.Classes.Root.Characteristics
     public class BinaryCharacteristicsFactory
     {
         ///<summary>
-        /// Вероятность (частота).
+        /// Среднегеометрическая удалённость между парой элементов.
         ///</summary>
         public static IBinaryCharacteristicCalculator GeometricMean
         {
@@ -14,7 +14,8 @@ namespace LibiadaCore.Classes.Root.Characteristics
         }
 
         ///<summary>
-        /// Количество интервалов в зависимости от привязки.
+        /// Избыточность кодировки второго элемента относительно себя
+        /// по сравнению с кодированием относително первого элемента.
         ///</summary>
         public static IBinaryCharacteristicCalculator Redundancy
         {
@@ -22,7 +23,7 @@ namespace LibiadaCore.Classes.Root.Characteristics
         }
 
         ///<summary>
-        /// Длина обрезания по Садовскому.
+        /// Коэффициент частичной зависимости.
         ///</summary>
         public static IBinaryCharacteristicCalculator K1
         {
@@ -30,7 +31,8 @@ namespace LibiadaCore.Classes.Root.Characteristics
         }
 
         ///<summary>
-        /// Удалённость.
+        /// Степень зависимости одной цепи от другой, 
+        /// с учетом «полноты её участия» в составе обеих однородных цепей.
         ///</summary>
         public static IBinaryCharacteristicCalculator K2
         {
@@ -38,10 +40,7 @@ namespace LibiadaCore.Classes.Root.Characteristics
         }
 
         ///<summary>
-        /// Количество элементов.
-        /// Для однородной цепи это количество 
-        /// непустых элементов.
-        /// Для неоднородной цепи это её длина.
+        /// Коэффициент взаимной зависимости.
         ///</summary>
         public static IBinaryCharacteristicCalculator K3
         {
@@ -69,9 +68,10 @@ namespace LibiadaCore.Classes.Root.Characteristics
         }
 
         ///<summary>
+        /// Создаёт калькулятор с заданным именем.
         ///</summary>
-        ///<param name="type"></param>
-        ///<returns></returns>
+        ///<param name="type">Имя класса или путь в пространстве имён</param>
+        ///<returns>Калькулатор бинарной характеристики</returns>
         public static IBinaryCharacteristicCalculator Create(string type)
         {
             foreach (IBinaryCharacteristicCalculator calculator in List)
