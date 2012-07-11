@@ -85,7 +85,7 @@
     <Compile Include="Classes\Root\Characteristics\Calculators\CutLength.cs" />
     <Compile Include="Classes\Root\Characteristics\Calculators\CutLengthVocabularyEntropy.cs" />
     <Compile Include="Classes\Root\Characteristics\Calculators\DescriptiveInformation.cs" />
-    <Compile Include="Classes\Root\Characteristics\Calculators\Gamut.cs" />
+    <Compile Include="Classes\Root\Characteristics\Calculators\Depth.cs" />
     <Compile Include="Classes\Root\Characteristics\Calculators\GeometricMiddling.cs" />
     <Compile Include="Classes\Root\Characteristics\Calculators\ICharacteristicCalculator.cs" />
     <Compile Include="Classes\Root\Characteristics\Calculators\IdentificationInformation.cs" />
