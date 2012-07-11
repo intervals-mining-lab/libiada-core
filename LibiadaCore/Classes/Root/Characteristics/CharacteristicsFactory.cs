@@ -38,7 +38,7 @@ namespace LibiadaCore.Classes.Root.Characteristics
         ///</summary>
         public static ICharacteristicCalculator G
         {
-            get { return new Gamut(); }
+            get { return new Depth(); }
         }
 
         ///<summary>

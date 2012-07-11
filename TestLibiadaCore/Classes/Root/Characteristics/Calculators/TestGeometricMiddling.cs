@@ -93,7 +93,7 @@ namespace TestLibiadaCore.Classes.Root.Characteristics.Calculators
         public void TestCalculationForUniformChain()
         {
             Characteristic deltaGeom = new Characteristic(new GeometricMiddling());
-            Characteristic G = new Characteristic(new Gamut());
+            Characteristic G = new Characteristic(new Depth());
             Characteristic N = new Characteristic(new IntervalsCount());
 
             int Interval1 = 4;

@@ -34,17 +34,17 @@ namespace TestLibiadaCore.Classes.Root.Characteristics.Calculators
         {
             Characteristic nG = new Characteristic(new NormalizedGamut());
 
-            double Theory = TestUChain.GetCharacteristic(LinkUp.Start, new Gamut())/
+            double Theory = TestUChain.GetCharacteristic(LinkUp.Start, new Depth())/
                         TestUChain.GetCharacteristic(LinkUp.Both, new Length());
 
             Assert.AreEqual(Theory, nG.Value(TestUChain, LinkUp.Start));
 
-            Theory = TestUChain.GetCharacteristic(LinkUp.End, new Gamut()) /
+            Theory = TestUChain.GetCharacteristic(LinkUp.End, new Depth()) /
                         TestUChain.GetCharacteristic(LinkUp.Both, new Length());
 
             Assert.AreEqual(Theory, nG.Value(TestUChain, LinkUp.End));
 
-            Theory = TestUChain.GetCharacteristic(LinkUp.Both, new Gamut()) /
+            Theory = TestUChain.GetCharacteristic(LinkUp.Both, new Depth()) /
                         TestUChain.GetCharacteristic(LinkUp.Both, new Length());
 
             Assert.AreEqual(Theory, nG.Value(TestUChain, LinkUp.Both));
@@ -57,17 +57,17 @@ namespace TestLibiadaCore.Classes.Root.Characteristics.Calculators
         {
             Characteristic nG = new Characteristic(new NormalizedGamut());
 
-            double Theory = TestChain.GetCharacteristic(LinkUp.Start, new Gamut()) /
+            double Theory = TestChain.GetCharacteristic(LinkUp.Start, new Depth()) /
                         TestChain.GetCharacteristic(LinkUp.Both, new Length());
 
             Assert.AreEqual(Theory, nG.Value(TestChain, LinkUp.Start));
 
-            Theory = TestChain.GetCharacteristic(LinkUp.End, new Gamut()) /
+            Theory = TestChain.GetCharacteristic(LinkUp.End, new Depth()) /
                         TestChain.GetCharacteristic(LinkUp.Both, new Length());
 
             Assert.AreEqual(Theory, nG.Value(TestChain, LinkUp.End));
 
-            Theory = TestChain.GetCharacteristic(LinkUp.Both, new Gamut()) /
+            Theory = TestChain.GetCharacteristic(LinkUp.Both, new Depth()) /
                         TestChain.GetCharacteristic(LinkUp.Both, new Length());
 
             Assert.AreEqual(Theory, nG.Value(TestChain, LinkUp.Both));

@@ -9,7 +9,7 @@ namespace TestLibiadaCore.Classes.Root.Characteristics.Calculators
     ///<summary>
     ///</summary>
     [TestFixture]
-    public class TestGamut
+    public class TestDepth
     {
         private UniformChain TestUChain = null;
         private Chain TestChain = null;
@@ -33,7 +33,7 @@ namespace TestLibiadaCore.Classes.Root.Characteristics.Calculators
         [Test]
         public void TestCalculationForUniformChain()
         {
-            Characteristic G = new Characteristic(new Gamut());
+            Characteristic G = new Characteristic(new Depth());
             int Interval1 = 4;
             int Interval3 = 3;
             int Interval4 = 3;
@@ -57,7 +57,7 @@ namespace TestLibiadaCore.Classes.Root.Characteristics.Calculators
         [Test]
         public void TestCalculationForChain()
         {
-            Characteristic G = new Characteristic(new Gamut());
+            Characteristic G = new Characteristic(new Depth());
 
             double remoutness11 = Math.Log(1, 2);
             double remoutness12 = Math.Log(1, 2);

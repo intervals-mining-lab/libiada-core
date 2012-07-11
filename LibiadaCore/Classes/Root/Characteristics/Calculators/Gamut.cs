@@ -6,9 +6,9 @@ using LibiadaCore.Classes.Statistics;
 namespace LibiadaCore.Classes.Root.Characteristics.Calculators
 {
     ///<summary>
-    /// Удалённость.
+    /// Глубина
     ///</summary>
-    public class Gamut : ICharacteristicCalculator
+    public class Depth : ICharacteristicCalculator
     {
         public double Calculate(UniformChain pChain, LinkUp Link)
         {

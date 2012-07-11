@@ -18,6 +18,12 @@
         /// Коэффициент частичной зависимости
         /// </summary>
         PartialDependenceCoefficient,
+
+        /// <summary>
+        /// Нормализованный коэффициент K1
+        /// Нормализованный коэффициент частичной зависимости
+        /// </summary>
+        NormalizedPartialDependenceCoefficient,
         
         /// <summary>
         /// K2

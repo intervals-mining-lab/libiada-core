@@ -31,6 +31,14 @@ namespace LibiadaCore.Classes.Root.Characteristics
         }
 
         ///<summary>
+        /// Нормализованный коэффициент частичной зависимости.
+        ///</summary>
+        public static IBinaryCharacteristicCalculator NormalizedK1
+        {
+            get { return new NormalizedPartialDependenceCoefficient(); }
+        }
+
+        ///<summary>
         /// Степень зависимости одной цепи от другой, 
         /// с учетом «полноты её участия» в составе обеих однородных цепей.
         ///</summary>
@@ -61,6 +69,7 @@ namespace LibiadaCore.Classes.Root.Characteristics
                 temp.Add(GeometricMean);
                 temp.Add(Redundancy);
                 temp.Add(K1);
+                temp.Add(NormalizedK1);
                 temp.Add(K2);
                 temp.Add(K3);
                 return temp;
