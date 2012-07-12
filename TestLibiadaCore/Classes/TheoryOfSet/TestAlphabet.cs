@@ -2,7 +2,6 @@ using System;
 using System.Collections;
 using System.IO;
 using System.Xml.Serialization;
-using LibiadaCore.Classes.EventTheory;
 using LibiadaCore.Classes.Root.SimpleTypes;
 using LibiadaCore.Classes.TheoryOfSet;
 using NUnit.Framework;
@@ -104,63 +103,6 @@ namespace TestLibiadaCore.Classes.TheoryOfSet
         ///<summary>
         ///</summary>
         [Test]
-        public void TestIndependPlace()
-        {
-            ArrayList ar = new ArrayList(2);
-            ar.Add(new Dimension(0, 10));
-            ar.Add(new Dimension(0, 10));
-            Place P1 = new Place(ar);
-            P1.SetValues(new long[] {0, 1});
-            Place P2 = new Place(ar);
-            P2.SetValues(new long[] {1, 1});
-            AlBase.Add(P1);
-            AlBase.Add(P2);
-
-            ((Place) AlBase[0]).SetValues(new long[] {1, 1});
-            Assert.IsFalse(((Place) AlBase[0]).EqualsAsPlace((Place) AlBase[1]));
-        }
-
-        ///<summary>
-        ///</summary>
-        [Test]
-        public void TestIndependPlace1()
-        {
-            ArrayList ar = new ArrayList(2);
-            ar.Add(new Dimension(0, 10));
-            ar.Add(new Dimension(0, 10));
-            Place P1 = new Place(ar);
-            P1.SetValues(new long[] {0, 1});
-            Place P2 = new Place(ar);
-            P2.SetValues(new long[] {1, 1});
-            AlBase.Add(P1);
-            AlBase.Add(P2);
-            P2.SetValues(new long[] {0, 1});
-            Assert.IsFalse(((Place) AlBase[0]).EqualsAsPlace((Place) (AlBase[1])));
-        }
-
-        ///<summary>
-        ///</summary>
-        [Test]
-        public void TestIndependPlace2()
-        {
-            ArrayList ar = new ArrayList(2);
-            ar.Add(new Dimension(0, 10));
-            ar.Add(new Dimension(0, 10));
-            Place P1 = new Place(ar);
-            P1.SetValues(new long[] {0, 1});
-            Place P2 = new Place(ar);
-            P2.SetValues(new long[] {1, 1});
-            AlBase.Add(P1);
-            AlBase.Add(P2);
-            //P2.SetValues(new long[] { 0, 1 });
-            Place P3 = ((Place) AlBase[0]);
-            P3.SetValues(new long[] {2, 2});
-            Assert.IsFalse(((Place) AlBase[0]).EqualsAsPlace((Place) (AlBase[1])));
-        }
-
-        ///<summary>
-        ///</summary>
-        [Test]
         [ExpectedException(typeof(NullReferenceException))]
         public void TestNull()
         {
@@ -176,7 +118,7 @@ namespace TestLibiadaCore.Classes.TheoryOfSet
             AlBase.Add(new ValueInt(100));
             AlBase.Add(new ValueInt(200));
             AlBase.Add(new ValueInt(300));
-            Assert.AreEqual(AlBase.power, 3);
+            Assert.AreEqual(AlBase.Power, 3);
         }
 
         /// <summary>
@@ -190,7 +132,7 @@ namespace TestLibiadaCore.Classes.TheoryOfSet
             AlBase.Add(new ValueInt(300));
             AlBase.Add(new ValueInt(400));
             AlBase.Remove(2);
-            Assert.AreEqual(AlBase.power, 3);
+            Assert.AreEqual(AlBase.Power, 3);
             Assert.AreEqual(AlBase[2], new ValueInt(400));
         }
 
@@ -198,19 +140,6 @@ namespace TestLibiadaCore.Classes.TheoryOfSet
         ///</summary>
         public void TestClone()
         {
-            ArrayList ar = new ArrayList(2);
-            ar.Add(new Dimension(0, 10));
-            ar.Add(new Dimension(0, 20));
-            Place P1 = new Place(ar);
-            P1.SetValues(new long[] {0, 1});
-            Place P2 = new Place(ar);
-            P2.SetValues(new long[] {2, 2});
-            Place P3 = new Place(ar);
-            P3.SetValues(new long[] {1, 0});
-            AlBase.Add(P1);
-            AlBase.Add(P2);
-            AlBase.Add(P3);
-            AlBase.Clone();
             Assert.AreNotSame(AlBase, AlBase.Clone());
 
             //Assert.IsTrue(AlBase.Equals(AlBase.Clone()));
@@ -222,23 +151,12 @@ namespace TestLibiadaCore.Classes.TheoryOfSet
         [Test]
         public void TestEquals()
         {
-            ArrayList ar = new ArrayList(2);
-            ar.Add(new Dimension(0, 10));
-            ar.Add(new Dimension(0, 20));
-            Place P1 = new Place(ar);
-            P1.SetValues(new long[] {0, 1});
-            Place P2 = new Place(ar);
-            P2.SetValues(new long[] {2, 2});
-            Place P3 = new Place(ar);
-            P3.SetValues(new long[] {1, 0});
-            AlBase.Add(P1);
-            AlBase.Add(P2);
-            AlBase.Add(P3);
-            //AlBase.Clone();
-
-            AlBase2.Add(P1);
-            AlBase2.Add(P2);
-            AlBase2.Add(P3);
+            AlBase.Add(new ValueChar('a'));
+            AlBase.Add(new ValueChar('b'));
+            AlBase.Add(new ValueChar('c'));
+            AlBase2.Add(new ValueChar('a'));
+            AlBase2.Add(new ValueChar('b'));
+            AlBase2.Add(new ValueChar('c'));
             Assert.IsTrue(AlBase.Equals(AlBase.Clone()));
             Assert.IsTrue(AlBase.Equals(AlBase2));
         }
@@ -249,22 +167,12 @@ namespace TestLibiadaCore.Classes.TheoryOfSet
         [Test]
         public void TestEqualsForAlphabetWithEqualsCompositionButNotEqualsOrder()
         {
-            ArrayList ar = new ArrayList(2);
-            ar.Add(new Dimension(0, 10));
-            ar.Add(new Dimension(0, 20));
-            Place P1 = new Place(ar);
-            P1.SetValues(new long[] {0, 1});
-            Place P2 = new Place(ar);
-            P2.SetValues(new long[] {2, 2});
-            Place P3 = new Place(ar);
-            P3.SetValues(new long[] {1, 0});
-            AlBase.Add(P1);
-            AlBase.Add(P2);
-            AlBase.Add(P3);
-
-            AlBase2.Add(P1);
-            AlBase2.Add(P3);
-            AlBase2.Add(P2);
+            AlBase.Add(new ValueChar('a'));
+            AlBase.Add(new ValueChar('b'));
+            AlBase.Add(new ValueChar('c'));
+            AlBase2.Add(new ValueChar('a'));
+            AlBase2.Add(new ValueChar('b'));
+            AlBase2.Add(new ValueChar('c'));
             Assert.IsTrue(AlBase.Equals(AlBase.Clone()));
             Assert.IsTrue(AlBase.Equals(AlBase2));
         }
@@ -275,145 +183,26 @@ namespace TestLibiadaCore.Classes.TheoryOfSet
         [Test]
         public void TestContains()
         {
-            ArrayList ar = new ArrayList(2);
-            ar.Add(new Dimension(0, 10));
-            ar.Add(new Dimension(0, 20));
-            Place P1 = new Place(ar);
-            P1.SetValues(new long[] {0, 1});
-            Place P2 = new Place(ar);
-            P2.SetValues(new long[] {2, 2});
-            Place P3 = new Place(ar);
-            P3.SetValues(new long[] {1, 0});
-            AlBase.Add(P1);
-            AlBase.Add(P2);
-            AlBase.Add(P3);
-            Assert.IsTrue(AlBase.Contains(P2) & AlBase.Contains(P2) & AlBase.Contains(P2));
+            AlBase.Add(new ValueChar('a'));
+            AlBase.Add(new ValueChar('b'));
+            AlBase.Add(new ValueChar('c'));
+            Assert.IsTrue(AlBase.Contains(new ValueChar('a')));
+            Assert.IsTrue(AlBase.Contains(new ValueChar('b')));
+            Assert.IsTrue(AlBase.Contains(new ValueChar('c')));
+            Assert.IsFalse(AlBase.Contains(new ValueChar('d')));
         }
-
-        /// <summary>
-        /// ���� ��
-        /// </summary>
-        [Test]
-        public void TestGetEnumerableInWorkMode()
-        {
-            ArrayList ar = new ArrayList(2);
-            ar.Add(new Dimension(0, 10));
-            ar.Add(new Dimension(0, 20));
-
-            Place P1 = new Place(ar);
-            P1.SetValues(new long[] {0, 1});
-
-            Place P2 = new Place(ar);
-            P2.SetValues(new long[] {2, 2});
-
-            Place P3 = new Place(ar);
-            P3.SetValues(new long[] {1, 0});
-
-            AlBase.Add(P1);
-            AlBase.Add(P2);
-            AlBase.Add(P3);
-
-            IEnumerator IE = AlBase.GetEnumerator();
-
-            IE.MoveNext();
-            Assert.IsTrue((IE.Current).Equals(P1));
-
-            IE.MoveNext();
-            Assert.IsTrue((IE.Current).Equals(P2));
-
-            IE.MoveNext();
-            Assert.IsTrue((IE.Current).Equals(P3));
-
-            Assert.IsFalse(IE.MoveNext());
-        }
-
-
-        /// <summary>
-        /// ���� ��
-        /// </summary>
-        [Test]
-        public void TestGetEnumerableAfterChageMOde()
-        {
-            try
-            {
-                ArrayList ar = new ArrayList(2);
-                ar.Add(new Dimension(0, 10));
-                ar.Add(new Dimension(0, 20));
-
-                Place P1 = new Place(ar);
-                P1.SetValues(new long[] { 0, 1 });
-
-                Place P2 = new Place(ar);
-                P2.SetValues(new long[] { 2, 2 });
-
-                Place P3 = new Place(ar);
-                P3.SetValues(new long[] { 1, 0 });
-
-                AlBase.Add(P1);
-                AlBase.Add(P2);
-                AlBase.Add(P3);
-
-                IEnumerator IE = AlBase.GetEnumerator();
-                IE.MoveNext();
-                Assert.IsTrue((IE.Current).Equals(P1));
-
-                AlBase.Remove(1);
-
-                IE.MoveNext();
-                Assert.IsTrue((IE.Current).Equals(P2));
-
-                IE.MoveNext();
-                Assert.IsTrue((IE.Current).Equals(P3));
-
-                Assert.IsFalse(IE.MoveNext());
-            }
-            catch (Exception)
-            {
-                return;
-            }
-            Assert.Fail();
-        }
-
-/*
-
-        ///<summary>
-        ///</summary>
-        [Test]
-        public void TestSerializeDeserialize()
-        {
-            AlBase.Add(new ValueInt(0));
-            AlBase.Add(new ValueInt(1));
-            AlBase.Add(new ValueInt(2));
-            MemoryStream MS = new MemoryStream();
-            SoapFormatter SF = new SoapFormatter();
-            SF.Serialize(MS, AlBase);
-            MS.Position = 0;
-            SF = new SoapFormatter();
-            Alphabet Des_Alphabet = (Alphabet) SF.Deserialize(MS);
-            Assert.AreEqual(AlBase, Des_Alphabet);
-        }
-*/
 
         ///<summary>
         ///</summary>
         [Test]
         public void TestIndexOf()
         {
-            ArrayList ar = new ArrayList(2);
-            ar.Add(new Dimension(0, 10));
-            ar.Add(new Dimension(0, 20));
-            Place P1 = new Place(ar);
-            P1.SetValues(new long[] {0, 1});
-            Place P2 = new Place(ar);
-            P2.SetValues(new long[] {2, 2});
-            Place P3 = new Place(ar);
-            P3.SetValues(new long[] {1, 0});
-            AlBase.Add(P1);
-            AlBase.Add(P2);
-            AlBase.Add(P3);
-            Assert.IsFalse(AlBase.IndexOf(P2).Equals(-1));
-            Assert.IsTrue(AlBase.IndexOf(P2).Equals(1));
-            Assert.IsFalse(AlBase.IndexOf(P3).Equals(3));
+            AlBase.Add(new ValueChar('a'));
+            AlBase.Add(new ValueChar('b'));
+            AlBase.Add(new ValueChar('c'));
+            Assert.IsTrue(AlBase.IndexOf(new ValueChar('d')).Equals(-1));
+            Assert.IsTrue(AlBase.IndexOf(new ValueChar('a')).Equals(0));
+            Assert.IsTrue(AlBase.IndexOf(new ValueChar('c')).Equals(2));
         }
 
         ///<summary>

@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using LibiadaCore.Classes.Root;
 
 namespace LibiadaCore.Classes.TheoryOfSet
@@ -12,7 +13,7 @@ namespace LibiadaCore.Classes.TheoryOfSet
     [Serializable]
     public class Alphabet : IBaseObject, IEnumerable
     {
-        protected ArrayList vault = new ArrayList();
+        protected List<IBaseObject> vault = new List<IBaseObject>();
 
         ///<summary>
         ///</summary>
@@ -54,7 +55,7 @@ namespace LibiadaCore.Classes.TheoryOfSet
         /// Свойство возвращает мощность алфавита.
         /// Кол-во элементов в алфавите. 
         ///</summary>
-        public int power
+        public int Power
         {
             get
             {
@@ -79,7 +80,8 @@ namespace LibiadaCore.Classes.TheoryOfSet
             {
                 throw new Exception();
             }
-            return vault.Add(o.Clone());
+            vault.Add(o.Clone());
+            return vault.IndexOf(o);
         }
 
         ///<summary>
@@ -93,7 +95,7 @@ namespace LibiadaCore.Classes.TheoryOfSet
         ///<param name="index">Индекс элемента в алфавите</param>
         public IBaseObject this[int index]
         {
-            get { return ((IBaseObject) (vault[index])).Clone(); }
+            get { return vault[index].Clone(); }
             set
             {
                 if (!vault.Contains(value))
@@ -120,7 +122,7 @@ namespace LibiadaCore.Classes.TheoryOfSet
         public IBaseObject Clone()
         {
             Alphabet AlNew = new Alphabet();
-            AlNew.vault = (ArrayList) vault.Clone();
+            AlNew.vault = new List<IBaseObject>((IBaseObject[])vault.ToArray().Clone());
             return AlNew;
         }
 
@@ -152,12 +154,12 @@ namespace LibiadaCore.Classes.TheoryOfSet
         /// <returns>true, если алфавиты равны, иначе false</returns>
         private bool EqualsAsAlphabet(Alphabet a_obj)
         {
-            if (a_obj == null || power != a_obj.power)
+            if (a_obj == null || Power != a_obj.Power)
             {
                 return false;
             }
 
-            for (int i = 0; i < power; i++)
+            for (int i = 0; i < Power; i++)
             {
                 if (!vault.Contains(a_obj.vault[i]))
                 {

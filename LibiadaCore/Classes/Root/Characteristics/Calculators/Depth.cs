@@ -19,7 +19,7 @@ namespace LibiadaCore.Classes.Root.Characteristics.Calculators
             FrequencyList EndInterval = Data.EndInterval;
 
             double result = 0;
-            for (int i = 0; i < CommonIntervaList.power; i++)
+            for (int i = 0; i < CommonIntervaList.Power; i++)
             {
                 result += (ValueInt) CommonIntervaList[i].Value*Math.Log((ValueInt) CommonIntervaList[i].Key, 2);
             }
@@ -48,7 +48,7 @@ namespace LibiadaCore.Classes.Root.Characteristics.Calculators
         {
             IChainDataForCalculaton Data = pChain;
             double temp = 0;
-            for (int i = 0; i < pChain.Alphabet.power; i++)
+            for (int i = 0; i < pChain.Alphabet.Power; i++)
             {
                 temp += Data.IUniformChain(i).GetCharacteristic(Link, CharacteristicsFactory.G);
             }

@@ -28,7 +28,7 @@ namespace LibiadaCore.Classes.Misc
             Chain result = new Chain(source.Length);
             Alphabet sourceAlphabet = source.Alphabet;
             List<int> entries = new List<int>();
-            for (int j = 0; j < sourceAlphabet.power; j++)
+            for (int j = 0; j < sourceAlphabet.Power; j++)
             {
                 entries.Add(0);
             }

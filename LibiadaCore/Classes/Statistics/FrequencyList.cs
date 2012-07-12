@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using LibiadaCore.Classes.Root;
 using LibiadaCore.Classes.Root.SimpleTypes;
 using LibiadaCore.Classes.TheoryOfSet;
@@ -11,19 +12,7 @@ namespace LibiadaCore.Classes.Statistics
     [Serializable]
     public class FrequencyList : Alphabet, IBaseObject
     {
-        private ArrayList pFrequency = new ArrayList();
-
-        ///<summary>
-        ///</summary>
-        ///<param name="bin"></param>
-        public FrequencyList(FrequencyListBin bin)
-        {
-            foreach (FrequencyListItemBin element in bin.Elements)
-            {
-                vault.Add(element.Key.GetInstance());
-                pFrequency.Add((int) (ValueInt) element.Value.GetInstance());
-            }
-        }
+        private List<int> frequency = new List<int>();
 
         ///<summary>
         ///</summary>
@@ -31,29 +20,11 @@ namespace LibiadaCore.Classes.Statistics
         {
         }
 
-        public new IBin GetBin()
-        {
-            FrequencyListBin Temp = new FrequencyListBin();
-            FillBin(Temp);
-            return Temp;
-        }
-
-        protected virtual void FillBin(FrequencyListBin temp)
-        {
-            for (int i = 0; i < vault.Count; i++)
-            {
-                FrequencyListItemBin item = new FrequencyListItemBin();
-                item.Key = ((IBaseObject)vault[i]).GetBin();
-                item.Value = (ValueIntBin) ((ValueInt) (int) pFrequency[i]).GetBin();
-                temp.Elements.Add(item);
-            }
-        }
-
         ///<summary>
         ///</summary>
-        public ArrayList Frequency
+        public List<int> Frequency
         {
-            get { return (ArrayList) pFrequency.Clone(); }
+            get { return new List<int>((int[])frequency.ToArray().Clone()); }
         }
 
         /// <summary>
@@ -64,7 +35,7 @@ namespace LibiadaCore.Classes.Statistics
         public int FrequencyFromObject(IBaseObject obj)
         {
             if (vault.Contains(obj))
-                return (int) Frequency[vault.IndexOf(obj)];
+                return Frequency[vault.IndexOf(obj)];
             throw new Exception("В частотном словаре нет указанного объекта");
         }
 
@@ -80,9 +51,9 @@ namespace LibiadaCore.Classes.Statistics
             if (result == -1)
             {
                 result = base.Add(o);
-                pFrequency.Add(1);
+                frequency.Add(1);
             }
-            else pFrequency[result] = (int) pFrequency[result] + 1;
+            else frequency[result] = frequency[result] + 1;
 
             return result;
         }
@@ -94,7 +65,7 @@ namespace LibiadaCore.Classes.Statistics
         public override void Remove(int index)
         {
             base.Remove(index);
-            pFrequency.RemoveAt(index);
+            frequency.RemoveAt(index);
         }
 
         ///<summary>
@@ -103,8 +74,8 @@ namespace LibiadaCore.Classes.Statistics
         public void Remove(IBaseObject o)
         {
             int pos = IndexOf(o);
-            pFrequency[pos] = (int) pFrequency[pos] - 1;
-            if ((int) pFrequency[pos] == 0)
+            frequency[pos] = frequency[pos] - 1;
+            if (frequency[pos] == 0)
             {
                 Remove(pos);
             }
@@ -116,8 +87,8 @@ namespace LibiadaCore.Classes.Statistics
         public new IBaseObject Clone()
         {
             FrequencyList FLNew = new FrequencyList();
-            FLNew.vault = (ArrayList) vault.Clone();
-            FLNew.pFrequency = (ArrayList) pFrequency.Clone();
+            FLNew.vault = new List<IBaseObject>((IBaseObject[])vault.ToArray().Clone());
+            FLNew.frequency = new List<int>((int[])frequency.ToArray().Clone());
             return FLNew;
         }
 
@@ -129,22 +100,22 @@ namespace LibiadaCore.Classes.Statistics
             get
             {
                 return
-                    new DictionaryEntryBase(((IBaseObject) vault[index]).Clone(), (ValueInt) ((int) pFrequency[index]));
+                    new DictionaryEntryBase(((IBaseObject) vault[index]).Clone(), (ValueInt) ((int) frequency[index]));
             }
         }
 
         ///<summary>
         ///</summary>
-        public ArrayList Keys
+        public List<IBaseObject> Keys
         {
-            get { return (ArrayList) vault.Clone(); }
+            get { return new List<IBaseObject>((IBaseObject[])vault.ToArray().Clone()); }
         }
 
         ///<summary>
         ///</summary>
-        public ArrayList Values
+        public List<int> Values
         {
-            get { return (ArrayList) pFrequency.Clone(); }
+            get { return new List<int>((int[])frequency.ToArray().Clone()); }
         }
 
         ///<summary>
@@ -154,7 +125,7 @@ namespace LibiadaCore.Classes.Statistics
             get
             {
                 int temp = 0;
-                foreach (int value in pFrequency)
+                foreach (int value in frequency)
                 {
                     temp += value;
                 }
@@ -167,7 +138,7 @@ namespace LibiadaCore.Classes.Statistics
         ///<param name="intervals"></param>
         public void Sum(FrequencyList intervals)
         {
-            for (int i = 0; i < intervals.power; i++)
+            for (int i = 0; i < intervals.Power; i++)
             {
                 IBaseObject value = intervals[i].Key;
                 ValueInt valueCount = (ValueInt) intervals[i].Value;
@@ -176,28 +147,8 @@ namespace LibiadaCore.Classes.Statistics
                     Add(value);
                     valueCount = valueCount - 1;
                 }
-                pFrequency[IndexOf(value)] = (int) pFrequency[IndexOf(value)] + valueCount;
+                frequency[IndexOf(value)] = (int) frequency[IndexOf(value)] + valueCount;
             }
         }
-    }
-
-    ///<summary>
-    ///</summary>
-    public class FrequencyListBin:IBin
-    {
-        public ArrayList Elements = new ArrayList();
-
-        public IBaseObject GetInstance()
-        {
-            return new FrequencyList(this);
-        }
-    }
-
-    ///<summary>
-    ///</summary>
-    public class FrequencyListItemBin
-    {
-        public IBin Key;
-        public ValueIntBin Value;
     }
 }

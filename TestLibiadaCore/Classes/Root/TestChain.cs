@@ -38,6 +38,7 @@ namespace TestLibiadaCore.Classes.Root
             ChainBase.Add(MessageC, 1);
 
             ChainBase.Add(MessageA, 2);
+
             UnifromChainA.Add(MessageA, 2);
 
             ChainBase.Add(MessageC, 3);
@@ -51,6 +52,7 @@ namespace TestLibiadaCore.Classes.Root
             ChainBase.Add(MessageT, 7);
 
             ChainBase.Add(MessageA, 8);
+
             UnifromChainA.Add(MessageA, 8);
 
             ChainBase.Add(MessageC, 9);

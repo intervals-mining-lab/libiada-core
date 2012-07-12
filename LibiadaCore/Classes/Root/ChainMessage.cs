@@ -40,7 +40,7 @@ namespace LibiadaCore.Classes.Root
             }
         }
 
-        public override IBaseObject Clone()
+        public IBaseObject Clone()
         {
             ChainMessage temp = new ChainMessage(Length);
             FillClone(temp);
@@ -64,9 +64,9 @@ namespace LibiadaCore.Classes.Root
         ///<param name="Bin"></param>
         public void FillBin(ChainMessageBin Bin)
         {
-            foreach (int position_num in vault)
+            foreach (int position_num in building)
             {
-                Bin.values.Add(pAlphabet[position_num].GetBin());
+                Bin.values.Add(alphabet[position_num].GetBin());
             }
         }
 

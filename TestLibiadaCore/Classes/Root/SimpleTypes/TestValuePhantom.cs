@@ -1,4 +1,3 @@
-using LibiadaCore.Classes.EventTheory;
 using LibiadaCore.Classes.Root;
 using LibiadaCore.Classes.Root.SimpleTypes;
 using NUnit.Framework;
@@ -106,14 +105,14 @@ namespace TestLibiadaCore.Classes.Root.SimpleTypes
         public void TestEqualsPsevdo()
         {
             ValuePhantom M1 = new ValuePhantom();
-            Assert.AreEqual(M1, PsevdoValue.Instance());
+            Assert.AreEqual(M1, NullValue.Instance());
 
             M1 = new ValuePhantom();
             M1.Add(new Chain(10));
-            Assert.AreEqual(M1, PsevdoValue.Instance());
+            Assert.AreEqual(M1, NullValue.Instance());
 
             M1.Add(new ValueChar('1'));
-            Assert.AreNotEqual(M1, PsevdoValue.Instance());
+            Assert.AreNotEqual(M1, NullValue.Instance());
         }
     }
 }

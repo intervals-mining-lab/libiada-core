@@ -1,6 +1,5 @@
 using System;
 using System.Collections;
-using LibiadaCore.Classes.EventTheory;
 using LibiadaCore.Classes.Root.Characteristics;
 using LibiadaCore.Classes.Root.SimpleTypes;
 using LibiadaCore.Classes.Statistics;
@@ -15,11 +14,11 @@ namespace LibiadaCore.Classes.Root
         ///<summary>
         ///</summary>
         ///<param name="length"></param>
-        ///<param name="Message"></param>
+        ///<param name="message"></param>
         ///<exception cref="Exception"></exception>
-        public UniformChain(int length, IBaseObject Message) : base(length)
+        public UniformChain(int length, IBaseObject message) : base(length)
         {
-            pAlphabet.Add(Message);
+            alphabet.Add(message);
         }
 
         ///<summary>
@@ -28,26 +27,15 @@ namespace LibiadaCore.Classes.Root
         {
         }
 
-        ///<summary>
-        ///</summary>
-        ///<param name="uchain"></param>
-        ///<exception cref="NotImplementedException"></exception>
-        public UniformChain(UniformChainBin uchain) : base(uchain)
-        {
-            if (uchain.Alphabet.Items.Count != 1)
-            {
-                throw  new Exception("");
-            }
-        }
 
-        public override IBaseObject Clone()
+        public IBaseObject Clone()
         {
             UniformChain temp = new UniformChain(Length, Message);
             FillClone(temp);
             return temp;
         }
 
-        protected override void FillClone(IBaseObject temp)
+        protected void FillClone(IBaseObject temp)
         {
             UniformChain TempunifromChain = temp as UniformChain;
             base.FillClone(TempunifromChain);
@@ -63,14 +51,14 @@ namespace LibiadaCore.Classes.Root
         ///</summary>
         public IBaseObject Message
         {
-            get { return pAlphabet[1]; }
+            get { return alphabet[1]; }
         }
 
         protected int Left(int current)
         {
             for (int i = current - 1; i > -1; i--)
             {
-                if (vault[i] == 1)
+                if (building[i] == 1)
                 {
                     return i;
                 }
@@ -82,7 +70,7 @@ namespace LibiadaCore.Classes.Root
         {
             for (int i = current + 1; i < Length; i++)
             {
-                if (vault[i] == 1)
+                if (building[i] == 1)
                 {
                     return i;
                 }
@@ -90,12 +78,17 @@ namespace LibiadaCore.Classes.Root
             return Length;
         }
 
-        public override void AddItem(IBaseObject value, Place place)
+        public void AddItem(IBaseObject item, int index)
         {
-            if (Message.Equals(value))
+            if (Message.Equals(item))
             {
-                base.AddItem(value, place);
+                base.AddItem(item, index);
             }
+        }
+
+        public void Add(IBaseObject item, int index)
+        {
+            AddItem(item, index);
         }
 
         private FrequencyList GetFrequancyIntervalList(int number)
@@ -142,35 +135,5 @@ namespace LibiadaCore.Classes.Root
             return ((Characteristic) CharacteristicSnapshot[type]).Value(this, Link);
         }
 
-        ///<summary>
-        ///</summary>
-        ///<returns></returns>
-        public new IBin GetBin()
-        {
-            UniformChainBin Temp = new UniformChainBin();
-            FillBin(Temp);
-            return Temp;
-        }
-
-        ///<summary>
-        ///</summary>
-        ///<param name="Bin"></param>
-        public void FillBin(UniformChainBin Bin)
-        {
-            base.FillBin(Bin);
-            Bin.Message = Message.GetBin();
-        }
-    }
-
-    ///<summary>
-    ///</summary>
-    public class UniformChainBin : ChainWithCharacteristicBin, IBin
-    {
-        public IBin Message = null;
-
-        public new IBaseObject GetInstance()
-        {
-            return new UniformChain(this);
-        }
     }
 }

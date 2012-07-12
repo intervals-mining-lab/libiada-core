@@ -1,7 +1,6 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using LibiadaCore.Classes.EventTheory;
 using LibiadaCore.Classes.Root.Characteristics;
 using LibiadaCore.Classes.Root.Characteristics.AuxiliaryInterfaces;
 using LibiadaCore.Classes.Root.Characteristics.Calculators;
@@ -45,17 +44,6 @@ namespace LibiadaCore.Classes.Root
         }
 
         ///<summary>
-        ///</summary>
-        ///<param name="bin"></param>
-        public Chain(ChainBin bin): base(bin)
-        {
-            foreach (UniformChainBin uchain in bin.uniformChains)
-            {
-                PUniformChains.Add(new UniformChain(uchain));
-            }
-        }
-
-        ///<summary>
         /// Конструктор, создает цепь из строки символов
         ///</summary>
         ///<param name="s"></param>
@@ -73,7 +61,7 @@ namespace LibiadaCore.Classes.Root
             }
         }
 
-        public override IBaseObject Clone()
+        public IBaseObject Clone()
         {
             Chain temp = new Chain(Length);
             FillClone(temp);
@@ -84,7 +72,7 @@ namespace LibiadaCore.Classes.Root
         /// 
         /// </summary>
         /// <param name="temp"></param>
-        protected override void FillClone(IBaseObject temp)
+        protected void FillClone(IBaseObject temp)
         {
             Chain tempChain = temp as Chain;
             base.FillClone(tempChain);
@@ -119,19 +107,24 @@ namespace LibiadaCore.Classes.Root
             return result;
         }
 
-        public override void AddItem(IBaseObject what, Place where)
+        public void AddItem(IBaseObject item, int index)
         {
-            base.AddItem(what, where);
+            base.AddItem(item, index);
 
-            if (PUniformChains.Count != Alphabet.power)
+            if (PUniformChains.Count != Alphabet.Power)
             {
-                PUniformChains.Add(new UniformChain(Length, what));
+                PUniformChains.Add(new UniformChain(Length, item));
             }
 
             foreach (UniformChain chain in PUniformChains)
             {
-                chain.AddItem(what, where);
+                chain.AddItem(item, index);
             }
+        }
+
+        public void Add(IBaseObject item, int index)
+        {
+            AddItem(item, index);
         }
 
         protected override void BuildIntervals()
@@ -179,19 +172,19 @@ namespace LibiadaCore.Classes.Root
             if(PNotUniformChains.Count > 0)
                 return;
             List<int> counters = new List<int>();
-            for (int j = 0; j < Alphabet.power; j++)
+            for (int j = 0; j < Alphabet.Power; j++)
             {
                 counters.Add(0);
             }
 
-            for (int i = 0; i < vault.Length; i++)
+            for (int i = 0; i < building.Length; i++)
             {
-                int element = ++counters[(int)vault[i]];
+                int element = ++counters[building[i]];
                 if(PNotUniformChains.Count < element) 
                 {
                     PNotUniformChains.Add(new Chain());
                 }
-                ((Chain)PNotUniformChains[element]).Add(new ValueInt((int)vault[i]),i);
+                ((Chain)PNotUniformChains[element]).Add(new ValueInt(building[i]), i);
             }
 
         }
@@ -199,7 +192,7 @@ namespace LibiadaCore.Classes.Root
         public int Get(IBaseObject element, int entry)
         {
             int entranceCount = 0;
-            for (int i = 0; i < Building.Length; i++)
+            for (int i = 0; i < building.Length; i++)
             {
                 if (this[i].Equals(element))
                 {
@@ -226,7 +219,7 @@ namespace LibiadaCore.Classes.Root
             {
                 return -1;
             }
-            for (int i = jEntry + 1; i < Building.Length; i++)
+            for (int i = jEntry + 1; i < length; i++)
             {
                 if (j.Equals(this[i]))
                 {
@@ -242,7 +235,7 @@ namespace LibiadaCore.Classes.Root
 
         public int GetAfter(IBaseObject element, int from)
         {
-            for (int i = from; i < Building.Length; i++)
+            for (int i = from; i < length; i++)
             {
                 if (this[i].Equals(element))
                 {
@@ -267,35 +260,17 @@ namespace LibiadaCore.Classes.Root
             return pairs;
         }
 
-        public new IBin GetBin()
-        {
-            ChainBin temp = new ChainBin();
-            FillBin(temp);
-            return temp;
-        }
-
-        ///<summary>
-        ///</summary>
-        ///<param name="Bin"></param>
-        public void FillBin(ChainBin bin)
-        {
-            base.FillBin(bin);
-            foreach (UniformChain chain in PUniformChains)
-            {
-                bin.uniformChains.Add(chain.GetBin());
-            }
-        }
     }
 
     ///<summary>
     ///</summary>
-    public class ChainBin : ChainWithCharacteristicBin, IBin
+    public class ChainBin : IBin
     {
         public ArrayList uniformChains = new ArrayList();
 
         public new IBaseObject GetInstance()
         {
-            return new Chain(this);
+            return new Chain();
         }
     }
 }

@@ -32,11 +32,11 @@ namespace LibiadaCore.Classes.Root.Characteristics.Calculators
         {
             IChainDataForCalculaton Data = pChain;
             double sum = 0;
-            for (int i = 0; i < pChain.Alphabet.power; i++)
+            for (int i = 0; i < pChain.Alphabet.Power; i++)
             {
                 sum += Data.IUniformChain(i).GetCharacteristic(Link, CharacteristicsFactory.deltaA);
             }
-            return sum/pChain.Alphabet.power;
+            return sum/pChain.Alphabet.Power;
         }
 
         public CharacteristicsEnum GetCharacteristicName()

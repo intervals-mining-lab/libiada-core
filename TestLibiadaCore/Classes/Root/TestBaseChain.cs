@@ -1,5 +1,4 @@
 using System;
-using LibiadaCore.Classes.EventTheory;
 using LibiadaCore.Classes.Root;
 using LibiadaCore.Classes.Root.SimpleTypes;
 using NUnit.Framework;
@@ -27,9 +26,8 @@ namespace TestLibiadaCore.Classes.Root
         ///</summary>
         public void TestConstructor()
         {
-            Chain Chain = new Chain(100);
-            Assert.AreEqual(1, Chain.GetPlacePattern().Count);
-            Assert.AreEqual(100 - 1, ((Dimension) Chain.GetPlacePattern().Dimension[0]).max);
+            Chain chain = new Chain(100);
+            Assert.AreEqual(100, chain.Length);
         }
 
         ///<summary>
@@ -73,8 +71,7 @@ namespace TestLibiadaCore.Classes.Root
         [Test]
         public void TestGetbyThis()
         {
-            Place pl = ChainBase.GetPlacePattern();
-            ChainBase.AddItem(new ValueChar('1'), pl.SetValues(new long[] {0}));
+            ChainBase.AddItem(new ValueChar('1'), 0);
             Assert.AreEqual(((ValueChar) ChainBase[0]).value, '1');
         }
 
@@ -84,9 +81,8 @@ namespace TestLibiadaCore.Classes.Root
         [Test]
         public void TestSetByThis()
         {
-            Place pl = ChainBase.GetPlacePattern();
             ChainBase[0] = new ValueChar('1');
-            Assert.AreEqual(((ValueChar) ChainBase.GetItem(pl.SetValues(new long[] {0}))).value, '1');
+            Assert.AreEqual((ValueChar)ChainBase.GetItem(0), '1');
         }
 
 
@@ -96,8 +92,7 @@ namespace TestLibiadaCore.Classes.Root
         [Test]
         public void TestGet()
         {
-            Place pl = ChainBase.GetPlacePattern();
-            ChainBase.AddItem(new ValueChar('1'), pl.SetValues(new long[] {0}));
+            ChainBase.AddItem(new ValueChar('1'), 0);
             Assert.AreEqual(((ValueChar) ChainBase.Get(0)).value, '1');
         }
 
@@ -107,9 +102,8 @@ namespace TestLibiadaCore.Classes.Root
         [Test]
         public void TestSet()
         {
-            Place pl = ChainBase.GetPlacePattern();
             ChainBase.Add(new ValueChar('1'), 0);
-            Assert.AreEqual(((ValueChar) ChainBase.GetItem(pl.SetValues(new long[] {0}))).value, '1');
+            Assert.AreEqual((ValueChar) ChainBase.GetItem(0), '1');
         }
 
         ///<summary>
@@ -121,7 +115,7 @@ namespace TestLibiadaCore.Classes.Root
             Assert.AreEqual(((ValueChar) ChainBase[0]).value, '1');
 
             ChainBase.RemoveAt(0);
-            Assert.AreEqual(ChainBase[0], PsevdoValue.Instance());
+            Assert.AreEqual(ChainBase[0], NullValue.Instance());
         }
 
         ///<summary>
@@ -190,13 +184,13 @@ namespace TestLibiadaCore.Classes.Root
         public void TestEqualsPsevdo()
         {
             Chain Empty = new Chain(10);
-            Assert.AreEqual(Empty, PsevdoValue.Instance());
+            Assert.AreEqual(Empty, NullValue.Instance());
 
             Empty.Add(Empty.Clone(), 2);
-            Assert.AreEqual(Empty, PsevdoValue.Instance());
+            Assert.AreEqual(Empty, NullValue.Instance());
 
             Empty.Add(new ValueChar('1'), 5);
-            Assert.AreNotEqual(Empty, PsevdoValue.Instance());
+            Assert.AreNotEqual(Empty, NullValue.Instance());
         }
     }
 }

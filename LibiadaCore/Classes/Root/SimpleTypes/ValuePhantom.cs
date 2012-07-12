@@ -1,6 +1,6 @@
 using System;
 using System.Collections;
-using LibiadaCore.Classes.EventTheory;
+using System.Collections.Generic;
 using LibiadaCore.Classes.TheoryOfSet;
 
 namespace LibiadaCore.Classes.Root.SimpleTypes
@@ -19,18 +19,6 @@ namespace LibiadaCore.Classes.Root.SimpleTypes
         {
             
         }
-        ///<summary>
-        ///</summary>
-        public ValuePhantom(AlphabetBin Bin) : base(Bin)
-        {
-        }
-
-        public new IBin GetBin()
-        {
-            ValuePhantomBin Temp = new ValuePhantomBin();
-            FillBin(Temp);
-            return Temp;
-        }
 
         /// <summary>
         /// Сравнение фантомного сообщения исходного и заданного в параметре
@@ -45,22 +33,22 @@ namespace LibiadaCore.Classes.Root.SimpleTypes
             }
 
             return
-                EqualsAsPhantom(obj as ValuePhantom) || EqualsAsPsevdo(obj as PsevdoValue) ||
+                EqualsAsPhantom(obj as ValuePhantom) || EqualsAsPsevdo(obj as NullValue) ||
                 EqualsAsElement(obj as IBaseObject);
         }
 
-        private bool EqualsAsPsevdo(PsevdoValue psevdoValue)
+        private bool EqualsAsPsevdo(NullValue psevdoValue)
         {
             if (psevdoValue == null)
             {
                 return false;
             }
-            return power == 0;
+            return Power == 0;
         }
 
         private bool EqualsAsElement(IBaseObject baseObject)
         {
-            for (int i = 0; i < power; i++)
+            for (int i = 0; i < Power; i++)
             {
                 if (IndexOf(baseObject) != -1)
                 {
@@ -86,7 +74,7 @@ namespace LibiadaCore.Classes.Root.SimpleTypes
         {
             if (messagePhantom != null)
             {
-                for (int i = 0; i < messagePhantom.power; i++)
+                for (int i = 0; i < messagePhantom.Power; i++)
                 {
                     if (!Contains(messagePhantom[i]))
                     {
@@ -103,7 +91,7 @@ namespace LibiadaCore.Classes.Root.SimpleTypes
         /// <returns>Индекс нового объекта или -1 если его не удалось добавить</returns>
         public override int Add(IBaseObject BaseObject)
         {
-            if (BaseObject != null && !BaseObject.Equals(PsevdoValue.Instance()))
+            if (BaseObject != null && !BaseObject.Equals(NullValue.Instance()))
             {
                 return base.Add(BaseObject);
             }
@@ -123,18 +111,8 @@ namespace LibiadaCore.Classes.Root.SimpleTypes
         public new IBaseObject Clone()
         {
             ValuePhantom temp = new ValuePhantom();
-            temp.vault = (ArrayList) vault.Clone();
+            temp.vault = new List<IBaseObject>((IBaseObject[])vault.ToArray().Clone());
             return temp;
-        }
-    }
-
-    ///<summary>
-    ///</summary>
-    public class ValuePhantomBin:AlphabetBin, IBin
-    {
-        public new IBaseObject GetInstance()
-        {
-            return new ValuePhantom(this);
         }
     }
 }

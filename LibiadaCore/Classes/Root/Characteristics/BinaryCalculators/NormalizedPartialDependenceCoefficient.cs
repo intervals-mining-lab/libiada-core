@@ -15,10 +15,10 @@ namespace LibiadaCore.Classes.Root.Characteristics.BinaryCalculators
         public List<List<double>> Calculate(Chain chain, LinkUp linkUp)
         {
             List<List<double>> result = new List<List<double>>();
-            for (int i = 0; i < chain.Alphabet.power; i++)
+            for (int i = 0; i < chain.Alphabet.Power; i++)
             {
                 result.Add(new List<double>());
-                for (int j = 0; j < chain.Alphabet.power; j++)
+                for (int j = 0; j < chain.Alphabet.Power; j++)
                 {
                     if (i != j)
                     {

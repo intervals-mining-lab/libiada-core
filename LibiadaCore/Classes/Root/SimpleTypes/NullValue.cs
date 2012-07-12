@@ -1,27 +1,26 @@
 using System;
-using LibiadaCore.Classes.Root;
 
-namespace LibiadaCore.Classes.EventTheory
+namespace LibiadaCore.Classes.Root.SimpleTypes
 {
     ///<summary>
     ///  ласс реализующий объект псевдо-величина
     /// –еализованн на основе паттерна Singletone
     ///</summary>
     [Serializable]
-    public class PsevdoValue : IBaseObject
+    public class NullValue : IBaseObject
     {
-        private static readonly PsevdoValue SingleTone = new PsevdoValue();
+        private static readonly NullValue SingleTone = new NullValue();
 
         ///<summary>
         /// ћетод позвол€ющий получить указатель на объект
         ///</summary>
         ///<returns>”казатель на объект</returns>
-        public static PsevdoValue Instance()
+        public static NullValue Instance()
         {
             return SingleTone;
         }
 
-        protected PsevdoValue()
+        protected NullValue()
         {
         }
 
@@ -37,7 +36,7 @@ namespace LibiadaCore.Classes.EventTheory
 
         public IBin GetBin()
         {
-            PsevdoValueBin Temp = new PsevdoValueBin();
+            NullValueBin Temp = new NullValueBin();
             return Temp;
         }
 
@@ -49,11 +48,11 @@ namespace LibiadaCore.Classes.EventTheory
 
     ///<summary>
     ///</summary>
-    public class PsevdoValueBin:IBin
+    public class NullValueBin : IBin
     {
         public IBaseObject GetInstance()
         {
-            return PsevdoValue.Instance();
+            return NullValue.Instance();
         }
     }
 }

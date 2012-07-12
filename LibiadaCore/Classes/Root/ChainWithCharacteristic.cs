@@ -1,6 +1,5 @@
 using System;
 using System.Collections;
-using LibiadaCore.Classes.EventTheory;
 using LibiadaCore.Classes.Root.Characteristics;
 using LibiadaCore.Classes.Root.Characteristics.AuxiliaryInterfaces;
 using LibiadaCore.Classes.Root.Characteristics.Calculators;
@@ -18,14 +17,16 @@ namespace LibiadaCore.Classes.Root
         protected FrequencyList pIntervals = null;
         protected FrequencyList startinterval = null;
 
-        protected ChainWithCharacteristic(int length) : base(length)
+        protected ChainWithCharacteristic(int length)
+            : base(length)
         {
             pIntervals = new FrequencyList();
             startinterval = new FrequencyList();
             endinterval = new FrequencyList();
         }
 
-        protected ChainWithCharacteristic(string s) : base(s)
+        protected ChainWithCharacteristic(string s)
+            : base(s)
         {
         }
 
@@ -42,27 +43,13 @@ namespace LibiadaCore.Classes.Root
             startinterval = new FrequencyList();
         }
 
-        protected ChainWithCharacteristic(ChainWithCharacteristicBin Bin)
-            : base(Bin)
-        {
-                pIntervals = new FrequencyList(Bin.CommonIntervals);
-                startinterval = new FrequencyList(Bin.StartIntervals);
-                endinterval = new FrequencyList(Bin.EndInterval);
-
-            for (int i = 0; i < Bin.Characteristics.Count; i++)
-            {
-                ICharacteristicCalculator CL = ((CharacteristicBin)Bin.Characteristics[i]).Type;
-                ((CharacteristicBin) Bin.Characteristics[i]).Chain = this;
-                CharacteristicSnapshot.Add(CL.GetType(), new Characteristic((CharacteristicBin)Bin.Characteristics[i]));
-            }
-        }
-
         ///<summary>
         ///</summary>
         public ChainWithCharacteristic()
         {
-            
+
         }
+
         ///<summary>
         ///</summary>
         public ArrayList GetCharacteristicList
@@ -104,7 +91,7 @@ namespace LibiadaCore.Classes.Root
 
         protected abstract void BuildIntervals();
 
-        protected override void FillClone(IBaseObject temp)
+        protected void FillClone(IBaseObject temp)
         {
             ChainWithCharacteristic TempChainWithCharacteristic = temp as ChainWithCharacteristic;
             base.FillClone(TempChainWithCharacteristic);
@@ -198,57 +185,16 @@ namespace LibiadaCore.Classes.Root
             return temp;
         }
 
-        public override void RemoveAt(Place from)
+        public void RemoveAt(int index)
         {
-            base.RemoveAt(from);
+            base.RemoveAt(index);
             MarkChanged();
         }
 
-        public override void AddItem(IBaseObject value, Place place)
+        public void AddItem(IBaseObject item, int index)
         {
-            base.AddItem(value, place);
+            base.AddItem(item, index);
             MarkChanged();
-        }
-
-        ///<summary>
-        ///</summary>
-        ///<returns></returns>
-        public new IBin GetBin()
-        {
-            ChainWithCharacteristicBin Temp = new ChainWithCharacteristicBin();
-            FillBin(Temp);
-            return Temp;
-        }
-
-        ///<summary>
-        ///</summary>
-        ///<param name="Bin"></param>
-        public void FillBin(ChainWithCharacteristicBin Bin)
-        {
-            base.FillBin(Bin);
-            foreach (DictionaryEntry entry in CharacteristicSnapshot)
-            {
-                Bin.Characteristics.Add(((Characteristic) entry.Value).GetBin());
-            }
-
-            Bin.CommonIntervals = (FrequencyListBin) IntervalsBoth().GetBin();
-            Bin.EndInterval = (FrequencyListBin) IntervalsEnd().GetBin();
-            Bin.StartIntervals = (FrequencyListBin) IntervalsStart().GetBin();
-        }
-    }
-
-    ///<summary>
-    ///</summary>
-    public class ChainWithCharacteristicBin : BaseChainBin, IBin
-    {
-        public ArrayList Characteristics = new ArrayList();
-        public FrequencyListBin StartIntervals = null;
-        public FrequencyListBin CommonIntervals = null;
-        public FrequencyListBin EndInterval = null;
-
-        public new IBaseObject GetInstance()
-        {
-            return null;
         }
     }
 }

@@ -52,7 +52,7 @@ namespace TestLibiadaCore.Classes.Root.Characteristics.Calculators
         {
             Characteristic deltaA = new Characteristic(new AlphabetPower());
             int Alphabet_power = 3;
-            Assert.AreEqual(Alphabet_power, TestChain.Alphabet.power);
+            Assert.AreEqual(Alphabet_power, TestChain.Alphabet.Power);
             Assert.AreEqual(Alphabet_power, deltaA.Value(TestChain, LinkUp.Start));
             Assert.AreEqual(Alphabet_power, deltaA.Value(TestChain, LinkUp.End));
             Assert.AreEqual(Alphabet_power, deltaA.Value(TestChain, LinkUp.Both));

@@ -41,13 +41,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Classes\EventTheory\TestDimension.cs" />
-    <Compile Include="Classes\EventTheory\TestEvent.cs" />
-    <Compile Include="Classes\EventTheory\TestPlace.cs" />
-    <Compile Include="Classes\EventTheory\TestPsevdoValue.cs" />
-    <Compile Include="Classes\EventTheory\TestReadPath.cs" />
-    <Compile Include="Classes\EventTheory\TestReadRule.cs" />
-    <Compile Include="Classes\EventTheory\TestSpaceOverEvent.cs" />
     <Compile Include="Classes\Misc\Iterators\TestIteratorEnd.cs" />
     <Compile Include="Classes\Misc\Iterators\TestIteratorStart.cs" />
     <Compile Include="Classes\Misc\Iterators\TestIteratorWritableEnd.cs" />

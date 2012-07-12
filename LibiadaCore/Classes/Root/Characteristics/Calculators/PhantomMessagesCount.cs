@@ -16,7 +16,7 @@ namespace LibiadaCore.Classes.Root.Characteristics.Calculators
                 ValuePhantom j = chain[i] as ValuePhantom;
                 if(j!=null)
                 {
-                    count *= ((ValuePhantom)chain[i]).power;
+                    count *= ((ValuePhantom)chain[i]).Power;
                 }
             }
             return count;
@@ -30,7 +30,7 @@ namespace LibiadaCore.Classes.Root.Characteristics.Calculators
                 ValuePhantom j = pChain[i] as ValuePhantom;
                 if(j!=null)
                 {
-                    count *= ((ValuePhantom)pChain[i]).power;
+                    count *= ((ValuePhantom)pChain[i]).Power;
                 }
             }
             return count;

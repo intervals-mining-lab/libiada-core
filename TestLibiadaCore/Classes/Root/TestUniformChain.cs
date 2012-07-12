@@ -1,4 +1,3 @@
-using LibiadaCore.Classes.EventTheory;
 using LibiadaCore.Classes.Root;
 using LibiadaCore.Classes.Root.SimpleTypes;
 using NUnit.Framework;
@@ -64,7 +63,7 @@ namespace TestLibiadaCore.Classes.Root
         {
             UniformChain.Add(WrongMessage, 4);
             Assert.AreNotEqual(WrongMessage, UniformChain.Get(4));
-            Assert.AreEqual(PsevdoValue.Instance(), UniformChain.Get(4));
+            Assert.AreEqual(NullValue.Instance(), UniformChain.Get(4));
         }
 
         ///<summary>
@@ -74,7 +73,7 @@ namespace TestLibiadaCore.Classes.Root
             UniformChain.Add(message, 3);
             UniformChain.RemoveAt(3);
             Assert.AreNotEqual(message, UniformChain.Get(3));
-            Assert.AreEqual(PsevdoValue.Instance(), UniformChain.Get(3));
+            Assert.AreEqual(NullValue.Instance(), UniformChain.Get(3));
         }
 
         ///<summary>
