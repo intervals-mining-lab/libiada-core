@@ -61,6 +61,13 @@ namespace LibiadaCore.Classes.Root
             }
         }
 
+        public Chain(int[] building, Alphabet alphabet)
+        {
+            base.ClearAndSetNewLength(building.Length);
+            this.building = building;
+            this.alphabet = alphabet;
+        }
+
         public IBaseObject Clone()
         {
             Chain temp = new Chain(Length);
