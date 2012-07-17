@@ -71,6 +71,7 @@
     <Compile Include="Classes\Root\Characteristics\Calculators\TestPeriodicity.cs" />
     <Compile Include="Classes\Root\Characteristics\Calculators\TestProbability.cs" />
     <Compile Include="Classes\Root\Characteristics\Calculators\TestRegularity.cs" />
+    <Compile Include="Classes\Root\SimpleTypes\TestNullValue.cs" />
     <Compile Include="Classes\Root\SimpleTypes\TestValuePhantom.cs" />
     <Compile Include="Classes\Root\SimpleTypes\TestValueInt.cs" />
     <Compile Include="Classes\Root\SimpleTypes\TestValueString.cs" />

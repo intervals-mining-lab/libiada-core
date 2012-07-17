@@ -15,8 +15,8 @@ namespace LibiadaCore.Classes.Root
     [Serializable]
     public class Chain : ChainWithCharacteristic, IChainDataForCalculaton, IBaseObject
     {
-        protected ArrayList PUniformChains = new ArrayList();
-        protected ArrayList PNotUniformChains = new ArrayList();
+        protected UniformChain[] PUniformChains;
+        protected Chain[] PNotUniformChains;
 
         ///<summary>
         /// Конструктор 
@@ -25,6 +25,7 @@ namespace LibiadaCore.Classes.Root
         ///<param name="length">Длинна цепи</param>
         public Chain(int length) : base(length)
         {
+            PUniformChains = new UniformChain[0];
         }
 
         ///<summary>
@@ -39,8 +40,7 @@ namespace LibiadaCore.Classes.Root
         public new void ClearAndSetNewLength(int length)
         {
             base.ClearAndSetNewLength(length);
-            PUniformChains = new ArrayList();
-            PNotUniformChains = new ArrayList();
+            PUniformChains = new UniformChain[alphabet.Power];
         }
 
         ///<summary>
@@ -51,21 +51,22 @@ namespace LibiadaCore.Classes.Root
         {
         }
 
-        public Chain(String building, Alphabet alphabet)
+        public Chain(String building, Alphabet alphabet):base(building, alphabet)
         {
-            string[] stringBuilding = building.Split('|');
-            base.ClearAndSetNewLength(stringBuilding.Length);
-            for (int i = 0; i < stringBuilding.Length; i++)
-            {
-                this[i] = alphabet[Convert.ToInt32(stringBuilding[i]) - 1];
-            }
+            PUniformChains = new UniformChain[alphabet.Power - 1];
         }
 
-        public Chain(int[] building, Alphabet alphabet)
+        public Chain(int[] building, Alphabet alphabet):base(building, alphabet)
         {
-            base.ClearAndSetNewLength(building.Length);
-            this.building = building;
-            this.alphabet = alphabet;
+            PUniformChains = new UniformChain[alphabet.Power - 1];
+            for (int i = 0; i < alphabet.Power - 1; i++ )
+            {
+                this.PUniformChains[i] = new UniformChain(building.Length, alphabet[i + 1]);
+            }
+            for (int j = 0; j < building.Length; j++)
+            {
+                PUniformChains[building[j] - 1][j] = alphabet[building[j]];
+            }
         }
 
         public IBaseObject Clone()
@@ -85,7 +86,7 @@ namespace LibiadaCore.Classes.Root
             base.FillClone(tempChain);
             if (tempChain != null)
             {
-                tempChain.PUniformChains = (ArrayList) PUniformChains.Clone();
+                tempChain.PUniformChains = (UniformChain[]) PUniformChains.Clone();
             }
         }
 
@@ -118,9 +119,15 @@ namespace LibiadaCore.Classes.Root
         {
             base.AddItem(item, index);
 
-            if (PUniformChains.Count != Alphabet.Power)
+            if (PUniformChains.Length != (alphabet.Power - 1))
             {
-                PUniformChains.Add(new UniformChain(Length, item));
+                UniformChain[] temp = new UniformChain[alphabet.Power - 1];
+                for (int i = 0; i < PUniformChains.Length; i++)
+                {
+                    temp[i] = PUniformChains[i];
+                }
+                PUniformChains = temp;
+                PUniformChains[PUniformChains.Length - 1] = new UniformChain(Length, item);
             }
 
             foreach (UniformChain chain in PUniformChains)
@@ -176,7 +183,7 @@ namespace LibiadaCore.Classes.Root
 
         public void FillNotUniformChains()
         {
-            if(PNotUniformChains.Count > 0)
+            if(PNotUniformChains.Length > 0)
                 return;
             List<int> counters = new List<int>();
             for (int j = 0; j < Alphabet.Power; j++)
@@ -187,9 +194,15 @@ namespace LibiadaCore.Classes.Root
             for (int i = 0; i < building.Length; i++)
             {
                 int element = ++counters[building[i]];
-                if(PNotUniformChains.Count < element) 
+                if(PNotUniformChains.Length < element) 
                 {
-                    PNotUniformChains.Add(new Chain());
+                    Chain[] temp = new Chain[element];
+                    for (int j = 0; j < PNotUniformChains.Length; j++)
+                    {
+                        temp[j] = PNotUniformChains[j];
+                    }
+                    PNotUniformChains = temp;
+                    PNotUniformChains[PNotUniformChains.Length - 1] = new Chain();
                 }
                 ((Chain)PNotUniformChains[element]).Add(new ValueInt(building[i]), i);
             }

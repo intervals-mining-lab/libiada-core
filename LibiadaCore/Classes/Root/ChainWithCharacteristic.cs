@@ -4,6 +4,7 @@ using LibiadaCore.Classes.Root.Characteristics;
 using LibiadaCore.Classes.Root.Characteristics.AuxiliaryInterfaces;
 using LibiadaCore.Classes.Root.Characteristics.Calculators;
 using LibiadaCore.Classes.Statistics;
+using LibiadaCore.Classes.TheoryOfSet;
 
 namespace LibiadaCore.Classes.Root
 {
@@ -32,6 +33,28 @@ namespace LibiadaCore.Classes.Root
 
         ///<summary>
         ///</summary>
+        public ChainWithCharacteristic(String building, Alphabet alphabet):base(building, alphabet)
+        {
+            pIntervals = new FrequencyList();
+            startinterval = new FrequencyList();
+            endinterval = new FrequencyList();
+        }
+
+        public ChainWithCharacteristic(int[] building, Alphabet alphabet)
+            : base(building, alphabet)
+        {
+            pIntervals = new FrequencyList();
+            startinterval = new FrequencyList();
+            endinterval = new FrequencyList();
+        }
+
+        public ChainWithCharacteristic()
+        {
+            
+        }
+
+        ///<summary>
+        ///</summary>
         ///<param name="length"></param>
         public new void ClearAndSetNewLength(int length)
         {
@@ -43,12 +66,7 @@ namespace LibiadaCore.Classes.Root
             startinterval = new FrequencyList();
         }
 
-        ///<summary>
-        ///</summary>
-        public ChainWithCharacteristic()
-        {
-
-        }
+        
 
         ///<summary>
         ///</summary>

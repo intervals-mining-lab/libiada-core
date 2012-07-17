@@ -48,6 +48,23 @@ namespace LibiadaCore.Classes.Root
             }
         }
 
+        public BaseChain(String building, Alphabet alphabet)
+        {
+            string[] stringBuilding = building.Split('|');
+            ClearAndSetNewLength(stringBuilding.Length);
+            for (int i = 0; i < stringBuilding.Length; i++)
+            {
+                this[i] = alphabet[Convert.ToInt32(stringBuilding[i]) - 1];
+            }
+        }
+
+        public BaseChain(int[] building, Alphabet alphabet)
+        {
+            ClearAndSetNewLength(building.Length);
+            this.building = (int[])building.Clone();
+            this.alphabet = (Alphabet)alphabet.Clone();
+        }
+
         ///<summary>
         /// Строй.
         ///</summary>
