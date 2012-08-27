@@ -1,6 +1,4 @@
 using System;
-//using Gtk;
-//using Gnome;
 
 
 public class MyProgram

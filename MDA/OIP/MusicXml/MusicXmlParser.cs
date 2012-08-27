@@ -1,40 +1,40 @@
 ﻿using System;
 using System.Xml;
-using System.Data;
-using System.IO;
 using System.Collections.Generic;
-using System.Text;
 using MDA.OIP.ScoreModel;
 
 namespace MDA.OIP.MusicXml
 {
     public class MusicXmlParser
     {
-        private Attributes CurrentAttributes;
-        private ScoreTrack scoremodel; // модель в которую разбирается XML документ
+        private Attributes currentAttributes;
+
+        /// <summary>
+        /// модель в которую разбирается XML документ
+        /// </summary>
+        private ScoreTrack scoremodel;
 
 
         public MusicXmlParser()
         {
 
         }
+
         public ScoreTrack ScoreModel
         {
-            get
-            {
-                return scoremodel;
-            }
+            get { return scoremodel; }
         }
 
         public void Execute(XmlDocument xmldocument, string filename)
         {
             // TODO: проверка схемы Xml на соотвествие схеме MusicXml
-            if (ChordFound((XmlDocument)xmldocument.Clone())) // если в документе найден хоть один аккорд, то сообщение об ошибке
+            if (ChordFound((XmlDocument) xmldocument.Clone()))
+                // если в документе найден хоть один аккорд, то сообщение об ошибке
             {
                 throw new Exception("MDA.PARSER: Chord Detected!");
             }
             // создаем объект модели музыкального текста из Xml документа
-            scoremodel = new ScoreTrack(filename, parseUniformScoreTracks((XmlDocument)xmldocument.Clone()));
+            scoremodel = new ScoreTrack(filename, parseUniformScoreTracks((XmlDocument) xmldocument.Clone()));
 
             // не в каждом такте проставленны аттрибуты, если не проставлены - значит они остаются такие же как и в предыдущем такте
             // заполнение отсутствующих объектов класса атрибут во всем треке
@@ -63,13 +63,14 @@ namespace MDA.OIP.MusicXml
 
         }
 
-        private bool ChordFound(XmlDocument xmldocument) 
+        private bool ChordFound(XmlDocument xmldocument)
         {
             //Проверка на наличие аккорда в Xml документе
-            XmlNodeList chordlist = xmldocument.GetElementsByTagName("chord"); // Ищем две одновременно звучащие ноты (аккорд) на одной моно дорожке
+            XmlNodeList chordlist = xmldocument.GetElementsByTagName("chord");
+                // Ищем две одновременно звучащие ноты (аккорд) на одной моно дорожке
             if (chordlist.Count > 0)
             {
-                return true;   
+                return true;
             }
             return false;
         }
@@ -78,11 +79,13 @@ namespace MDA.OIP.MusicXml
         {
             List<UniformScoreTrack> Temp = new List<UniformScoreTrack>();
 
-            XmlNodeList uniformlist = scoreNode.GetElementsByTagName("part"); // Создаем и заполняем лист по тегу "part"  
+            XmlNodeList uniformlist = scoreNode.GetElementsByTagName("part");
+                // Создаем и заполняем лист по тегу "part"  
             for (int i = 0; i < uniformlist.Count; i++)
             {
                 //TODO: вероятно нужна проверка на то есть ли такой атрибут - имя моно трека, если нет то задать счетчиком i
-                Temp.Add(new UniformScoreTrack(uniformlist[i].Attributes["id"].Value, parseMeasures((XmlNode)uniformlist[i].Clone())));
+                Temp.Add(new UniformScoreTrack(uniformlist[i].Attributes["id"].Value,
+                                               parseMeasures((XmlNode) uniformlist[i].Clone())));
             }
             return Temp;
         }
@@ -91,9 +94,10 @@ namespace MDA.OIP.MusicXml
         {
             XmlNodeList mesaurelist = uniformScoreNode.ChildNodes;
             List<Measure> Temp = new List<Measure>();
-            for (int i = 0; i < mesaurelist.Count; i++) 
+            for (int i = 0; i < mesaurelist.Count; i++)
             {
-                Temp.Add(new Measure(parseNotes((XmlNode)mesaurelist[i].Clone()), parseAttributes((XmlNode)mesaurelist[i].Clone())));
+                Temp.Add(new Measure(parseNotes((XmlNode) mesaurelist[i].Clone()),
+                                     parseAttributes((XmlNode) mesaurelist[i].Clone())));
             }
             return Temp;
         }
@@ -106,24 +110,28 @@ namespace MDA.OIP.MusicXml
                 {
                     //Attributes Temp = new Attributes(parseSize((XmlNode)measureChild.Clone()), parseKey((XmlNode)measureChild.Clone()));
 
-                    Size size = parseSize((XmlNode)measureChild.Clone());;
-                    Key key = parseKey((XmlNode)measureChild.Clone()); ;
+                    Size size = parseSize((XmlNode) measureChild.Clone());
+                    ;
+                    Key key = parseKey((XmlNode) measureChild.Clone());
+                    ;
 
                     if (key == null)
                     {
-                        key = (Key) CurrentAttributes.Key.Clone();
+                        key = (Key) currentAttributes.Key.Clone();
                     }
                     if (size == null)
                     {
-                        size = (Size) CurrentAttributes.Size.Clone();
+                        size = (Size) currentAttributes.Size.Clone();
                     }
 
-                    CurrentAttributes = new Attributes(size, key);
-                    return CurrentAttributes;
+                    currentAttributes = new Attributes(size, key);
+                    return currentAttributes;
                 }
             }
-            return CurrentAttributes;
+            return currentAttributes;
+
             #region old method
+
             /*foreach (XmlNode measureChild in MeasureNode.ChildNodes)
             {
                 if (measureChild.Name == "attributes")
@@ -205,13 +213,15 @@ namespace MDA.OIP.MusicXml
                 break;
             }
             return null;*/
+
             #endregion
         }
+
         private Size parseSize(XmlNode attributeNode)
         {
             int ticks = 0;
             bool needticks = false;
-            foreach (XmlNode attributeChild in attributeNode.ChildNodes) 
+            foreach (XmlNode attributeChild in attributeNode.ChildNodes)
             {
                 //-----TICKS----------------
                 if (attributeChild.Name == "divisions")
@@ -242,13 +252,14 @@ namespace MDA.OIP.MusicXml
                     }
                     else
                     {
-                        return new Size(beats, beatbase, CurrentAttributes.Size.Ticksperbeat);
+                        return new Size(beats, beatbase, currentAttributes.Size.Ticksperbeat);
                     }
 
                 }
             }
             return null;
         }
+
         private Key parseKey(XmlNode attributeNode)
         {
             foreach (XmlNode attributeChild in attributeNode.ChildNodes)
@@ -282,18 +293,21 @@ namespace MDA.OIP.MusicXml
                     }
                 }
             }
-                return null;
+            return null;
         }
 
         private List<Note> parseNotes(XmlNode measureNode)
-        {       
+        {
             List<Note> Temp = new List<Note>();
             bool hasNotes = false;
             foreach (XmlNode measureChild in measureNode.ChildNodes)
             {
                 if (measureChild.Name == "note")
                 {
-                    Temp.Add(new Note(parsePitch((XmlNode)measureChild.Clone()),parseDuration((XmlNode)measureChild.Clone()),parseTriplet((XmlNode)measureChild.Clone()),parseTie((XmlNode)measureChild.Clone())));   
+                    Temp.Add(new Note(parsePitch((XmlNode) measureChild.Clone()),
+                                      parseDuration((XmlNode) measureChild.Clone()),
+                                      parseTriplet((XmlNode) measureChild.Clone()),
+                                      parseTie((XmlNode) measureChild.Clone())));
                     hasNotes = true;
                 }
             }
@@ -303,18 +317,18 @@ namespace MDA.OIP.MusicXml
 
         private Pitch parsePitch(XmlNode noteNode)
         {
-            foreach (XmlNode noteChild in noteNode.ChildNodes) 
+            foreach (XmlNode noteChild in noteNode.ChildNodes)
             {
-                if (noteChild.Name == "pitch") 
+                if (noteChild.Name == "pitch")
                 {
                     char step = '0';
                     int alter = 0;
                     int octave = 0;
                     bool hasStep = false;
                     bool hasOctave = false;
-                    foreach(XmlNode pitchChild in noteChild.ChildNodes)
+                    foreach (XmlNode pitchChild in noteChild.ChildNodes)
                     {
-                        if (pitchChild.Name == "step") 
+                        if (pitchChild.Name == "step")
                         {
                             step = Convert.ToChar(pitchChild.InnerText);
                             hasStep = true;
@@ -329,14 +343,14 @@ namespace MDA.OIP.MusicXml
                             hasOctave = true;
                         }
                     }
-                    if (hasOctave && hasStep) 
+                    if (hasOctave && hasStep)
                     {
                         return new Pitch(octave, step, alter);
                     }
 
                     throw new Exception("MDA.XmlParser: error while Note parsing: pitch structure");
                 }
-                if (noteChild.Name == "rest") 
+                if (noteChild.Name == "rest")
                 {
                     return null;
                 }
@@ -362,31 +376,31 @@ namespace MDA.OIP.MusicXml
                         {
                             stop = true;
                         }
-                        else 
+                        else
                         {
                             throw new Exception("MDA.XmlParser: error while Note parsing: Tie type unknow");
                         }
                     }
                 }
             }
-                if (start && stop) 
-                {
-                    // случай когда лига приходит в эту ноту, и с этой же ноты начинается следущая лига
-                    return Tie.StartStop;
-                }
-                if (start)
-                {
-                    // случай когда лига начинается с этой ноты
-                    return Tie.Start;
-                }
-                if (stop)
-                {
-                    // случай когда лига заканчивается на этой ноте
-                    return Tie.Stop;
-                }
+            if (start && stop)
+            {
+                // случай когда лига приходит в эту ноту, и с этой же ноты начинается следущая лига
+                return (int) Tie.StartStop;
+            }
+            if (start)
+            {
+                // случай когда лига начинается с этой ноты
+                return (int) Tie.Start;
+            }
+            if (stop)
+            {
+                // случай когда лига заканчивается на этой ноте
+                return (int) Tie.Stop;
+            }
 
-                // когда нету лиги
-                return Tie.None;
+            // когда нету лиги
+            return (int) Tie.None;
         }
 
         private bool parseTriplet(XmlNode noteNode)
@@ -423,9 +437,9 @@ namespace MDA.OIP.MusicXml
                 if (noteChild.Name == "time-modification")
                 {
                     hasTimeModification = true;
-                    foreach (XmlNode timeModification in noteChild) 
+                    foreach (XmlNode timeModification in noteChild)
                     {
-                        if (timeModification.Name == "actual-notes") 
+                        if (timeModification.Name == "actual-notes")
                         {
                             actualNotes = Convert.ToInt16(timeModification.InnerText);
                         }
@@ -444,15 +458,13 @@ namespace MDA.OIP.MusicXml
 
             if (hasTimeModification)
             {
-                return new Duration(DurationType.ParseType(type)[0], DurationType.ParseType(type)[1],normalNotes,actualNotes,dot,duration);
+                return new Duration(DurationType.ParseType(type)[0], DurationType.ParseType(type)[1], normalNotes,
+                                    actualNotes, dot, duration);
             }
-            else 
+            else
             {
                 return new Duration(DurationType.ParseType(type)[0], DurationType.ParseType(type)[1], dot, duration);
             }
-            
         }
-
-
     }
 }

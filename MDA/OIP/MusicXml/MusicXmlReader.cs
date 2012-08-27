@@ -1,42 +1,40 @@
 using System;
 using System.Xml;
-using System.Data;
 using System.IO;
-using System.Text;
-using System.Windows.Forms;
 
 namespace MDA.OIP.MusicXml
 {
-	public class MusicXmlReader
-	{
+    public class MusicXmlReader
+    {
         private XmlDocument curDoc; // Текущий прочитанный MusicXML файл
-        private string filename; // путь к прочитанному MusicXML файлу
+        private string fileName; // путь к прочитанному MusicXML файлу
 
-		public MusicXmlReader ()
-		{
-		}
+        public MusicXmlReader()
+        {
+        }
+
         public MusicXmlReader(string xpath)
         {
             LoadNotes(xpath);
         }
+
         public void LoadMusicXmlDocument(string path)
         {
             LoadNotes(path);
         }
+
         public XmlDocument MusicXmlDocument
         {
             get
             {
-                if (curDoc!=null) return ((XmlDocument) curDoc.Clone());
+                if (curDoc != null) return ((XmlDocument) curDoc.Clone());
                 throw new Exception("MDA.XMLReader:you are trying to get empty XmlDocument!");
             }
         }
+
         public string FileName
         {
-            get
-            {
-                return filename;
-            }
+            get { return fileName; }
         }
 
         private void LoadNotes(string path)
@@ -46,10 +44,10 @@ namespace MDA.OIP.MusicXml
             FileStream fs = new FileStream(path, FileMode.Open);
             xd.Load(fs);
             curDoc = null;
-            curDoc = (XmlDocument)xd.Clone();
+            curDoc = (XmlDocument) xd.Clone();
             fs.Close();
-            this.filename = System.IO.Path.GetFileNameWithoutExtension(path); // сохраняем имя прочтенного файла
+            this.fileName = Path.GetFileNameWithoutExtension(path); // сохраняем имя прочтенного файла
         }
-	}
+    }
 }
 

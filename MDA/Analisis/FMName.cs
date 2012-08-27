@@ -1,33 +1,24 @@
-﻿using System;
-using System.Collections.Generic;
-//using System.Linq;
-using System.Text;
-
-namespace MDA.Analisis
+﻿namespace MDA.Analisis
 {
     public class FMName
     {
         private int id = 0;
         private string name;
-        
-        public FMName(string st) 
+
+        public FMName(string st)
         {
             this.name = st;
         }
 
-        public string GetName()
+        public string Name
         {
-            return this.name;
+            get { return name; }
         }
 
-        public void SetId(int ident)
+        public int Id
         {
-            this.id = ident;
-        }
-
-        public int GetId()
-        {
-            return this.id;
+            get { return id; }
+            set { id = value; }
         }
     }
 }

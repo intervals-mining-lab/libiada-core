@@ -1,28 +1,37 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using LibiadaCore.Classes.Root;
+﻿using LibiadaCore.Classes.Root;
 
 namespace MDA.OIP.ScoreModel
 {
-    public class Key : IBaseObject // знаки при ключе в такте (диез, бемоль)
+    /// <summary>
+    /// знаки при ключе в такте (диез, бемоль)
+    /// </summary>
+    public class Key : IBaseObject 
     {
-        private int fifths = 0; // bemoles(-), diez(+) (ex. -6 : 6 bemoles);
-        private string mode = ""; // major/minor
+        /// <summary>
+        /// bemoles(-), diez(+) (ex. -6 : 6 bemoles)
+        /// </summary>
+        private int fifths = 0;
+        /// <summary>
+        /// major/minor
+        /// </summary>
+        private string mode = "";
 
         public Key(int fifths)
         {
             this.fifths = fifths;
         }
+
         public Key(int fifths, string mode)
         {
             this.fifths = fifths;
             this.mode = mode;
         }
+
         public int Fifths
         {
             get { return fifths; }
         }
+
         public string Mode
         {
             get { return mode; }
@@ -43,7 +52,7 @@ namespace MDA.OIP.ScoreModel
             return Temp;
         }
 
-        public override bool Equals(object obj)
+        public bool Equals(object obj)
         {
             if ((this.Fifths==((Key)obj).Fifths)&&(this.Mode==((Key)obj).Mode))
             {

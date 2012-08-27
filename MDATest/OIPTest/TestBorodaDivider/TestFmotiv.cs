@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using MDA.OIP.ScoreModel;
 using MDA.OIP.BorodaDivider;
@@ -50,10 +48,10 @@ namespace MDATest.OIPTest.TestBorodaDivider
             fmotiv.NoteList.Add(new Note(new Pitch(1, 'A', 0), new Duration(1, 2, false, 480), false, Tie.None));
             fmotiv.NoteList.Add(new Note(null, new Duration(1, 4, false, 480), false, Tie.None));
             fmotiv.NoteList.Add(new Note(new Pitch(1, 'A', 0), new Duration(1, 2, false, 480), false, Tie.None));
-            Assert.AreEqual((fmotiv.PauseTreatment(ParamPauseTreatment.Ignore)).NoteList[0].Pitch.Step, 'A');
-            Assert.AreEqual((fmotiv.PauseTreatment(ParamPauseTreatment.Ignore)).NoteList[1].Pitch.Step, 'A');
-            Assert.AreEqual((fmotiv.PauseTreatment(ParamPauseTreatment.Ignore)).NoteList[2].Pitch.Step, 'A');
-            Assert.AreEqual((fmotiv.PauseTreatment(ParamPauseTreatment.Ignore)).NoteList.Count, 3);
+            Assert.AreEqual((fmotiv.Clone(PauseTreatment.Ignore)).NoteList[0].Pitch.Step, 'A');
+            Assert.AreEqual((fmotiv.Clone(PauseTreatment.Ignore)).NoteList[1].Pitch.Step, 'A');
+            Assert.AreEqual((fmotiv.Clone(PauseTreatment.Ignore)).NoteList[2].Pitch.Step, 'A');
+            Assert.AreEqual((fmotiv.Clone(PauseTreatment.Ignore)).NoteList.Count, 3);
         }
 
         [TestMethod]
@@ -67,10 +65,10 @@ namespace MDATest.OIPTest.TestBorodaDivider
             fmotiv.NoteList.Add(new Note(new Pitch(1, 'A', 0), new Duration(1, 2, false, 480), false, Tie.None));
             fmotiv.NoteList.Add(new Note(null, new Duration(1, 4, false, 480), false, Tie.None));
             fmotiv.NoteList.Add(new Note(new Pitch(1, 'A', 0), new Duration(1, 2, false, 480), false, Tie.None));
-            Assert.AreEqual((fmotiv.PauseTreatment(ParamPauseTreatment.Ignore)).NoteList[0].Pitch.Step, 'A');
-            Assert.AreEqual((fmotiv.PauseTreatment(ParamPauseTreatment.Ignore)).NoteList[1].Pitch.Step, 'A');
-            Assert.AreEqual((fmotiv.PauseTreatment(ParamPauseTreatment.Ignore)).NoteList[2].Pitch.Step, 'A');
-            Assert.AreEqual((fmotiv.PauseTreatment(ParamPauseTreatment.Ignore)).NoteList.Count, 3);
+            Assert.AreEqual((fmotiv.Clone(PauseTreatment.Ignore)).NoteList[0].Pitch.Step, 'A');
+            Assert.AreEqual((fmotiv.Clone(PauseTreatment.Ignore)).NoteList[1].Pitch.Step, 'A');
+            Assert.AreEqual((fmotiv.Clone(PauseTreatment.Ignore)).NoteList[2].Pitch.Step, 'A');
+            Assert.AreEqual((fmotiv.Clone(PauseTreatment.Ignore)).NoteList.Count, 3);
 
         }
 
@@ -267,7 +265,7 @@ namespace MDATest.OIPTest.TestBorodaDivider
             fmotiv1.NoteList.Add(new Note(new Pitch(3, 'A', 0), new Duration(1, 8, false, 480), false, Tie.Stop, 2));
             fmotiv1.NoteList.Add(new Note(new Pitch(3, 'B', -2), new Duration(1, 2, false, 480), false, Tie.None, 5));
 
-            Assert.IsTrue(fmotiv.FmEquals(((Fmotiv)fmotiv1),ParamPauseTreatment.Ignore,ParamEqualFM.Sequent));
+            Assert.IsTrue(fmotiv.FmEquals(((Fmotiv)fmotiv1),PauseTreatment.Ignore,FMSequentEquality.Sequent));
         }
     }
 

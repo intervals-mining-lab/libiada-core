@@ -1,50 +1,48 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 using LibiadaCore.Classes.Root;
 
 namespace MDA.OIP.BorodaDivider
 {
-    public class FmotivChain : IBaseObject // класс для хранения последовательности ф-мотив
+    /// <summary>
+    /// класс для хранения последовательности ф-мотив
+    /// </summary>
+    public class FmotivChain : IBaseObject
     {
-        // класс для хранения цепочки ф-мотивов
-        private int id; // порядковый номер - идентификатор цепочки ф-мотивов
-        private string name; // название моно дорожки для которой выделяются ф-мотивы
-        private List<Fmotiv> fmotivlist; // список ф-мотив
+        /// <summary>
+        /// порядковый номер - идентификатор цепочки ф-мотивов
+        /// </summary>
+        private int id;
 
-        public FmotivChain() 
+        /// <summary>
+        /// название моно дорожки для которой выделяются ф-мотивы
+        /// </summary>
+        private string name;
+
+        /// <summary>
+        /// список ф-мотив
+        /// </summary>
+        private List<Fmotiv> fmotivlist;
+
+        public FmotivChain()
         {
             this.fmotivlist = new List<Fmotiv>();
         }
 
         public List<Fmotiv> FmotivList
         {
-            get
-            {
-                return fmotivlist;
-            }
+            get { return fmotivlist; }
         }
+
         public string Name
         {
-            get
-            {
-                return name;
-            }
-            set
-            {
-                this.name = value;
-            }
+            get { return name; }
+            set { this.name = value; }
         }
+
         public int Id
         {
-            get
-            {
-                return id;
-            }
-            set
-            {
-                this.id = value;
-            }
+            get { return id; }
+            set { this.id = value; }
         }
 
         #region IBaseMethods
@@ -59,9 +57,9 @@ namespace MDA.OIP.BorodaDivider
         public IBaseObject Clone()
         {
             FmotivChain Temp = new FmotivChain();
-            foreach (Fmotiv fmotiv in fmotivlist) 
+            foreach (Fmotiv fmotiv in fmotivlist)
             {
-                Temp.fmotivlist.Add((Fmotiv)fmotiv.Clone());
+                Temp.fmotivlist.Add((Fmotiv) fmotiv.Clone());
             }
             Temp.id = this.id;
             Temp.name = this.name;
@@ -69,18 +67,30 @@ namespace MDA.OIP.BorodaDivider
             return Temp;
         }
 
-        public override bool Equals(object obj)
+        public bool Equals(object obj)
         {
-            if (this.name != ((FmotivChain)obj).Name) { return false; }
-            if (this.id != ((FmotivChain)obj).Id) { return false; }
-
-            if (this.FmotivList.Count!= ((FmotivChain)obj).FmotivList.Count) {return false;}
-            for(int i=0; i < this.FmotivList.Count; i++)
+            if (this.name != ((FmotivChain) obj).Name)
             {
-                if (!this.FmotivList[i].Equals(((FmotivChain)obj).FmotivList[i])) {return false;}
+                return false;
+            }
+            if (this.id != ((FmotivChain) obj).Id)
+            {
+                return false;
             }
 
-            return true; 
+            if (this.FmotivList.Count != ((FmotivChain) obj).FmotivList.Count)
+            {
+                return false;
+            }
+            for (int i = 0; i < this.FmotivList.Count; i++)
+            {
+                if (!this.FmotivList[i].Equals(((FmotivChain) obj).FmotivList[i]))
+                {
+                    return false;
+                }
+            }
+
+            return true;
         }
 
         public IBin GetBin()

@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 using MDA.OIP.BorodaDivider;
 using LibiadaCore.Classes.Root;
 using MDA.OIP.ScoreModel;
@@ -12,47 +11,55 @@ namespace MDA.ICL
 {
     public static class NoteCharacteristic
     {
-        static private double valR = 0; // удаленность между буквами в буквах
-        static private double valG = 0; // глубина в буквах
-        
-        static public double CalculateRemoteness(FmotivChain FmChain)
+        /// <summary>
+        /// удаленность между буквами в буквах
+        /// </summary>
+        private static double valR = 0;
+
+        /// <summary>
+        /// глубина в буквах
+        /// </summary>
+        private static double valG = 0;
+
+        public static double CalculateRemoteness(FmotivChain FmChain)
         {
             if (Calculate(FmChain)) return valR;
             throw new Exception("Word Remoteness in words not calculated, ask specialist!");
         }
 
-        static public double CalculateGamut(FmotivChain FmChain)
+        public static double CalculateGamut(FmotivChain FmChain)
         {
             if (Calculate(FmChain)) return valG;
             throw new Exception("TextGamut in words not calculated, ask specialist!");
         }
 
-        static private bool Calculate(FmotivChain FmChain)
+        private static bool Calculate(FmotivChain FmChain)
         {
-            if (FmChain.FmotivList.Count < 1) throw new Exception("Unaible to count note remoteness with no elements in chain!");
+            if (FmChain.FmotivList.Count < 1)
+                throw new Exception("Unaible to count note remoteness with no elements in chain!");
 
             List<Note> notelist = new List<Note>(); // список нот, класса Note, всей цепи фмотивов
 
             foreach (Fmotiv fmotiv in FmChain.FmotivList)
             {
-                foreach(Note note in fmotiv.TieGathered().PauseTreatment(ParamPauseTreatment.Ignore).NoteList)
+                foreach (Note note in fmotiv.TieGathered().Clone(PauseTreatment.Ignore).NoteList)
                 {
-                    notelist.Add((Note)note.Clone());
+                    notelist.Add((Note) note.Clone());
                 }
             }
 
             Chain notechain = new Chain(notelist.Count);
-            for (int i = 0; i < notelist.Count; i++) 
+            for (int i = 0; i < notelist.Count; i++)
             {
-                double ostatok =0 ;
+                double ostatok = 0;
                 double midi = notelist[i].Pitch.Midinumber;
 
-                ostatok = midi - 12* Math.Truncate(midi/12);
+                ostatok = midi - 12*Math.Truncate(midi/12);
 
                 //TODO: переделать нормально чтоб цепочка складывалась из ValueNote, а не как попало
 
                 notechain[i] = new ValueString(Convert.ToString(notelist[i].Pitch.Midinumber) + " " +
-                    Convert.ToString(notelist[i].Duration.Value * 10000000));
+                                               Convert.ToString(notelist[i].Duration.Value*10000000));
 
 
                 /*
@@ -63,10 +70,10 @@ namespace MDA.ICL
                 */
             }
 
-            Characteristic R = new Characteristic(new AverageRemoteness());           
+            Characteristic R = new Characteristic(new AverageRemoteness());
             valR = R.Value(notechain, LinkUp.End);
 
-            Characteristic G = new Characteristic(new Gamut());
+            Characteristic G = new Characteristic(new Depth());
             valG = G.Value(notechain, LinkUp.End);
 
             return true;

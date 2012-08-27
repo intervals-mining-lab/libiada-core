@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using MDA.OIP.ScoreModel;
 
@@ -11,7 +8,7 @@ namespace MDATest.OIPTest.TestScoreModel
     public class TestUniformScoreTrack
     {
         [TestMethod]
-        public void TestNoteOrder1() 
+        public void TestNoteOrder1()
         {
             // создание и заполнения списка(ов) нот для такта(ов) монотрека
             List<Note> notes = new List<Note>();
@@ -41,50 +38,50 @@ namespace MDATest.OIPTest.TestScoreModel
 
             notes2.Add(new Note(null, new Duration(1, 16, false, 128), false, Tie.None, 1));
             notes2.Add(new Note(null, new Duration(1, 16, false, 128), false, Tie.None, 1));
-            
+
 
             Attributes attr = new Attributes(new Size(4, 4), new Key(5));
 
             Measure m1 = new Measure(notes, attr);
             Measure m2 = new Measure(notes2, attr);
 
-            List <Measure> mlist = new List<Measure>();
+            List<Measure> mlist = new List<Measure>();
 
             mlist.Add(m1);
             mlist.Add(m2);
 
             UniformScoreTrack uni = new UniformScoreTrack("a1", mlist);
 
-            Assert.AreNotEqual(((Note)uni.NoteOrder()[0]).Id, 1);
+            Assert.AreNotEqual(((Note) uni.NoteOrder()[0]).Id, 1);
 
-            Assert.AreEqual(((Note)uni.NoteOrder()[0]).Id, 0);
-            Assert.AreEqual(((Note)uni.NoteOrder()[1]).Id, 1);
-            Assert.AreEqual(((Note)uni.NoteOrder()[2]).Id, 1);
+            Assert.AreEqual(((Note) uni.NoteOrder()[0]).Id, 0);
+            Assert.AreEqual(((Note) uni.NoteOrder()[1]).Id, 1);
+            Assert.AreEqual(((Note) uni.NoteOrder()[2]).Id, 1);
 
-            Assert.AreEqual(((Note)uni.NoteOrder()[3]).Id, 2);
-            Assert.AreEqual(((Note)uni.NoteOrder()[4]).Id, 3);
-            Assert.AreEqual(((Note)uni.NoteOrder()[5]).Id, 4);
+            Assert.AreEqual(((Note) uni.NoteOrder()[3]).Id, 2);
+            Assert.AreEqual(((Note) uni.NoteOrder()[4]).Id, 3);
+            Assert.AreEqual(((Note) uni.NoteOrder()[5]).Id, 4);
 
-            Assert.AreEqual(((Note)uni.NoteOrder()[6]).Id, 0);
-            Assert.AreEqual(((Note)uni.NoteOrder()[7]).Id, 2);
-            Assert.AreEqual(((Note)uni.NoteOrder()[8]).Id, 2);
+            Assert.AreEqual(((Note) uni.NoteOrder()[6]).Id, 0);
+            Assert.AreEqual(((Note) uni.NoteOrder()[7]).Id, 2);
+            Assert.AreEqual(((Note) uni.NoteOrder()[8]).Id, 2);
 
-            Assert.AreEqual(((Note)uni.NoteOrder()[9]).Id, 0);
-            Assert.AreEqual(((Note)uni.NoteOrder()[10]).Id, 0);
-            Assert.AreEqual(((Note)uni.NoteOrder()[11]).Id, 1);
+            Assert.AreEqual(((Note) uni.NoteOrder()[9]).Id, 0);
+            Assert.AreEqual(((Note) uni.NoteOrder()[10]).Id, 0);
+            Assert.AreEqual(((Note) uni.NoteOrder()[11]).Id, 1);
 
-            Assert.AreEqual(((Note)uni.NoteOrder()[12]).Id, 1);
-            Assert.AreEqual(((Note)uni.NoteOrder()[13]).Id, 2);
-            Assert.AreEqual(((Note)uni.NoteOrder()[14]).Id, 3);
+            Assert.AreEqual(((Note) uni.NoteOrder()[12]).Id, 1);
+            Assert.AreEqual(((Note) uni.NoteOrder()[13]).Id, 2);
+            Assert.AreEqual(((Note) uni.NoteOrder()[14]).Id, 3);
 
-            Assert.AreEqual(((Note)uni.NoteOrder()[15]).Id, 5);
-            Assert.AreEqual(((Note)uni.NoteOrder()[16]).Id, 0);
-            Assert.AreEqual(((Note)uni.NoteOrder()[17]).Id, 6);
+            Assert.AreEqual(((Note) uni.NoteOrder()[15]).Id, 5);
+            Assert.AreEqual(((Note) uni.NoteOrder()[16]).Id, 0);
+            Assert.AreEqual(((Note) uni.NoteOrder()[17]).Id, 6);
 
-            Assert.AreEqual(((Note)uni.NoteOrder()[18]).Id, 7);
-            Assert.AreEqual(((Note)uni.NoteOrder()[19]).Id, 7);
-            Assert.AreEqual(((Note)uni.NoteOrder()[20]).Id, 8);
-            Assert.AreEqual(((Note)uni.NoteOrder()[21]).Id, 8);
+            Assert.AreEqual(((Note) uni.NoteOrder()[18]).Id, 7);
+            Assert.AreEqual(((Note) uni.NoteOrder()[19]).Id, 7);
+            Assert.AreEqual(((Note) uni.NoteOrder()[20]).Id, 8);
+            Assert.AreEqual(((Note) uni.NoteOrder()[21]).Id, 8);
         }
 
         [TestMethod]
@@ -225,16 +222,16 @@ namespace MDATest.OIPTest.TestScoreModel
 
             UniformScoreTrack uni = new UniformScoreTrack("a1", mlist);
 
-            
-            Assert.AreEqual(((Measure)uni.MeasureOrder()[0]).Id, 0);
-            Assert.AreEqual(((Measure)uni.MeasureOrder()[1]).Id, 1);
-            Assert.AreEqual(((Measure)uni.MeasureOrder()[2]).Id, 0);
-            Assert.AreEqual(((Measure)uni.MeasureOrder()[3]).Id, 2);
-            Assert.AreEqual(((Measure)uni.MeasureOrder()[4]).Id, 3);
-            Assert.AreEqual(((Measure)uni.MeasureOrder()[5]).Id, 3);
-            Assert.AreEqual(((Measure)uni.MeasureOrder()[6]).Id, 1);
-            Assert.AreEqual(((Measure)uni.MeasureOrder()[7]).Id, 0);
-            Assert.AreEqual(((Measure)uni.MeasureOrder()[8]).Id, 4);
+
+            Assert.AreEqual(((Measure) uni.MeasureOrder()[0]).Id, 0);
+            Assert.AreEqual(((Measure) uni.MeasureOrder()[1]).Id, 1);
+            Assert.AreEqual(((Measure) uni.MeasureOrder()[2]).Id, 0);
+            Assert.AreEqual(((Measure) uni.MeasureOrder()[3]).Id, 2);
+            Assert.AreEqual(((Measure) uni.MeasureOrder()[4]).Id, 3);
+            Assert.AreEqual(((Measure) uni.MeasureOrder()[5]).Id, 3);
+            Assert.AreEqual(((Measure) uni.MeasureOrder()[6]).Id, 1);
+            Assert.AreEqual(((Measure) uni.MeasureOrder()[7]).Id, 0);
+            Assert.AreEqual(((Measure) uni.MeasureOrder()[8]).Id, 4);
 
             Assert.AreEqual(uni.MeasureIdOrder()[0], 0);
             Assert.AreEqual(uni.MeasureIdOrder()[1], 1);

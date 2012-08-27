@@ -1,22 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
 using System.Windows.Forms;
 using System.Xml;
+using LibiadaCore.Classes.Root.Characteristics;
 using MDA.OIP.MusicXml;
 using System.IO;
 using MDA.OIP.BorodaDivider;
-using MDA.OIP.ScoreModel;
 using MDA.Analisis;
-using MDA.ICL;
 using Excel = Microsoft.Office.Interop.Excel;
-using System.Threading;
-using System.Globalization;
 using System.Collections;
-using Microsoft.Office.Interop.Excel;
 using LibiadaCore.Classes.Root;
 using LibiadaCore.Classes.Root.SimpleTypes;
 
@@ -86,12 +78,12 @@ namespace MDA.OIP.View
                 xlWorkBook.Worksheets.Add();
 
 
-                xlWorkSheetFmSeqPauseIgnore = (Excel.Worksheet)xlWorkBook.Worksheets.get_Item(1);
-                xlWorkSheetFmSeqSilencePause = (Excel.Worksheet)xlWorkBook.Worksheets.get_Item(2);
-                xlWorkSheetFmSeqDuarPlus = (Excel.Worksheet)xlWorkBook.Worksheets.get_Item(3);
-                xlWorkSheetFmNoSeq = (Excel.Worksheet)xlWorkBook.Worksheets.get_Item(4);
-                xlWorkSheetNote = (Excel.Worksheet)xlWorkBook.Worksheets.get_Item(5);
-                xlWorkSheetTakt = (Excel.Worksheet)xlWorkBook.Worksheets.get_Item(6);
+                xlWorkSheetFmSeqPauseIgnore = (Excel.Worksheet) xlWorkBook.Worksheets.get_Item(1);
+                xlWorkSheetFmSeqSilencePause = (Excel.Worksheet) xlWorkBook.Worksheets.get_Item(2);
+                xlWorkSheetFmSeqDuarPlus = (Excel.Worksheet) xlWorkBook.Worksheets.get_Item(3);
+                xlWorkSheetFmNoSeq = (Excel.Worksheet) xlWorkBook.Worksheets.get_Item(4);
+                xlWorkSheetNote = (Excel.Worksheet) xlWorkBook.Worksheets.get_Item(5);
+                xlWorkSheetTakt = (Excel.Worksheet) xlWorkBook.Worksheets.get_Item(6);
 
                 xlWorkSheetFmSeqPauseIgnore.Name = "FmSeqPauseIgnore";
                 xlWorkSheetFmSeqSilencePause.Name = "FmSeqSilencePause";
@@ -101,6 +93,7 @@ namespace MDA.OIP.View
                 xlWorkSheetTakt.Name = "Takt";
 
                 #region Шапка
+
                 //----------------заполнение шапки-----------------------
                 xlWorkSheetFmSeqPauseIgnore.Cells.ColumnWidth = 10;
                 xlWorkSheetFmSeqPauseIgnore.Cells[1, 1] = "Name";
@@ -189,6 +182,7 @@ namespace MDA.OIP.View
                 xlWorkSheetTakt.Cells[1, 10] = "L*H";
                 xlWorkSheetTakt.Cells[1, 11] = "r";
                 //--------------------------------------------------------
+
                 #endregion
 
                 DirectoryInfo dir = new DirectoryInfo(folderBrowserDialog1.SelectedPath);
@@ -223,10 +217,10 @@ namespace MDA.OIP.View
 
                             xlWorkBook1.Worksheets.Add();
 
-                            xlWorkSheet1 = (Excel.Worksheet)xlWorkBook1.Worksheets.get_Item(1);
-                            xlWorkSheet2 = (Excel.Worksheet)xlWorkBook1.Worksheets.get_Item(2);
-                            xlWorkSheet3 = (Excel.Worksheet)xlWorkBook1.Worksheets.get_Item(3);
-                            xlWorkSheet4 = (Excel.Worksheet)xlWorkBook1.Worksheets.get_Item(4);
+                            xlWorkSheet1 = (Excel.Worksheet) xlWorkBook1.Worksheets.get_Item(1);
+                            xlWorkSheet2 = (Excel.Worksheet) xlWorkBook1.Worksheets.get_Item(2);
+                            xlWorkSheet3 = (Excel.Worksheet) xlWorkBook1.Worksheets.get_Item(3);
+                            xlWorkSheet4 = (Excel.Worksheet) xlWorkBook1.Worksheets.get_Item(4);
 
                             xlWorkSheet1.Name = "Строй";
                             xlWorkSheet2.Name = "Зависимости K1";
@@ -279,14 +273,16 @@ namespace MDA.OIP.View
 
 
                             //--------------------sequent-Pause-ignore--------------------------------------------------------------------------------
-                            List<FmotivChain> Listfmotivchains = bd.Divide(Parser.ScoreModel, ParamPauseTreatment.Ignore, ParamEqualFM.Sequent);
+                            List<FmotivChain> Listfmotivchains = bd.Divide(Parser.ScoreModel, PauseTreatment.Ignore,
+                                                                           FMSequentEquality.Sequent);
                             try
                             {
 
                                 Composition com = new Composition();
                                 int i = 0;
 
-                                for (i = 0; i < Listfmotivchains[0].FmotivList.Count; i++)// previously was .Count , not .Lenght
+                                for (i = 0; i < Listfmotivchains[0].FmotivList.Count; i++)
+                                    // previously was .Count , not .Lenght
                                 {
                                     com.AddFM(Listfmotivchains[0].FmotivList[i].Id.ToString());
                                     xlWorkSheet1.Cells[(i + 2), 1] = Listfmotivchains[0].FmotivList[i].Id;
@@ -304,14 +300,15 @@ namespace MDA.OIP.View
                                 xlWorkSheetFmSeqPauseIgnore.Cells[n, 1] = item.Name;
                                 xlWorkSheetFmSeqPauseIgnore.Cells[n, 2] = Listfmotivchains[0].FmotivList.Count;
                                 xlWorkSheetFmSeqPauseIgnore.Cells[n, 3] = com.PLex.CalcGreatFrequency();
-                                xlWorkSheetFmSeqPauseIgnore.Cells[n, 4] = com.PLex.GetCapacity();
-                                xlWorkSheetFmSeqPauseIgnore.Cells[n, 5] = com.TLex.GetCapacity();
-                                xlWorkSheetFmSeqPauseIgnore.Cells[n, 6] = com.VDiff.GetpdV();
+                                xlWorkSheetFmSeqPauseIgnore.Cells[n, 4] = com.PLex.Capacity;
+                                xlWorkSheetFmSeqPauseIgnore.Cells[n, 5] = com.TLex.Capacity;
+                                xlWorkSheetFmSeqPauseIgnore.Cells[n, 6] = com.VDiff.PdV;
 
                                 xlWorkSheetFmSeqPauseIgnore.Cells[n, 7] = com.AvgRemoteness;
                                 xlWorkSheetFmSeqPauseIgnore.Cells[n, 8] = com.Entropy;
                                 xlWorkSheetFmSeqPauseIgnore.Cells[n, 9] = com.AvgDepth;
-                                xlWorkSheetFmSeqPauseIgnore.Cells[n, 10] = com.Entropy * Listfmotivchains[0].FmotivList.Count;
+                                xlWorkSheetFmSeqPauseIgnore.Cells[n, 10] = com.Entropy*
+                                                                           Listfmotivchains[0].FmotivList.Count;
                                 xlWorkSheetFmSeqPauseIgnore.Cells[n, 11] = com.Regularity;
 
 
@@ -319,11 +316,14 @@ namespace MDA.OIP.View
                             }
                             catch (Exception err)
                             {
-                                MessageBox.Show(err.Message, "Analisis Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                                MessageBox.Show(err.Message, "Analisis Ошибка", MessageBoxButtons.OK,
+                                                MessageBoxIcon.Stop);
                             }
 
                             //--------------------sequent-Pause-Duar--------------------------------------------------------------------------------
-                            List<FmotivChain> Listfmotivchains3 = bd.Divide(Parser.ScoreModel, ParamPauseTreatment.NoteTrace, ParamEqualFM.Sequent);
+                            List<FmotivChain> Listfmotivchains3 = bd.Divide(Parser.ScoreModel,
+                                                                            PauseTreatment.NoteTrace,
+                                                                            FMSequentEquality.Sequent);
                             try
                             {
                                 Composition com = new Composition();
@@ -331,13 +331,14 @@ namespace MDA.OIP.View
                                 Chain mychain = new Chain(Listfmotivchains3[0].FmotivList.Count);
                                 int i = 0;
 
-                                for (i = 0; i < Listfmotivchains3[0].FmotivList.Count; i++)// previously was .Count , not .Lenght
+                                for (i = 0; i < Listfmotivchains3[0].FmotivList.Count; i++)
+                                    // previously was .Count , not .Lenght
                                 {
                                     com.AddFM(Listfmotivchains3[0].FmotivList[i].Id.ToString());
 
-                                    mychain.Add(new ValueInt (Listfmotivchains3[0].FmotivList[i].Id),i);
+                                    mychain.Add(new ValueInt(Listfmotivchains3[0].FmotivList[i].Id), i);
 
-                                    xlWorkSheet1.Cells[(i + 2),3] = Listfmotivchains3[0].FmotivList[i].Id;
+                                    xlWorkSheet1.Cells[(i + 2), 3] = Listfmotivchains3[0].FmotivList[i].Id;
                                 }
                                 com.CreatePLex();
                                 com.CreateTlex();
@@ -358,18 +359,20 @@ namespace MDA.OIP.View
                                 ArrayList Di = new ArrayList();
                                 Di = com.PLex.RangeLexDi();
 
-                                for (i = 0; i < com.PLex.GetCapacity(); i++)// previously was .Count , not .Lenght
+                                for (i = 0; i < com.PLex.Capacity; i++) // previously was .Count , not .Lenght
                                 {
-                                    xlWorkSheet1.Cells[(i + 2), 8] = (double)Ri[i];
-                                    xlWorkSheet1.Cells[(i + 2), 9] = ((FMotiv)com.PLex.GetRData()[i]).GetRemoteness(); 
-                                    xlWorkSheet1.Cells[(i + 2), 10] = ((FMotiv)com.PLex.GetRData()[i]).GetFrequency();
+                                    xlWorkSheet1.Cells[(i + 2), 8] = (double) Ri[i];
+                                    xlWorkSheet1.Cells[(i + 2), 9] = ((FMotiv) com.PLex.RData[i]).Remoteness;
+                                    xlWorkSheet1.Cells[(i + 2), 10] = ((FMotiv) com.PLex.RData[i]).Frequency;
 
-                                    xlWorkSheet1.Cells[(i + 2), 12] = (double)Di[i];
-                                    xlWorkSheet1.Cells[(i + 2), 13] = (double)Di[i]/(double)Di[0];
-                                    xlWorkSheet1.Cells[(i + 2), 14] = ((FMotiv)com.PLex.GetRData()[i]).GetFrequency();
-                                    xlWorkSheet1.Cells[(i + 2), 15] = ((FMotiv)com.PLex.GetRData()[i]).GetFrequency() / ((FMotiv)com.PLex.GetRData()[0]).GetFrequency();
+                                    xlWorkSheet1.Cells[(i + 2), 12] = (double) Di[i];
+                                    xlWorkSheet1.Cells[(i + 2), 13] = (double) Di[i]/(double) Di[0];
+                                    xlWorkSheet1.Cells[(i + 2), 14] = ((FMotiv) com.PLex.RData[i]).Frequency;
+                                    xlWorkSheet1.Cells[(i + 2), 15] = ((FMotiv) com.PLex.RData[i]).Frequency/
+                                                                      ((FMotiv) com.PLex.RData[0]).Frequency;
 
-                                    xlWorkSheet1.Cells[(i + 2), 17] = ((FMotiv)com.PLex.GetRData()[i]).GetFrequency(); ;
+                                    xlWorkSheet1.Cells[(i + 2), 17] = ((FMotiv) com.PLex.RData[i]).Frequency;
+                                    ;
 
                                     //зависимости: заполнение алфавита
                                     xlWorkSheet2.Cells[i + 2, 1] = i;
@@ -381,80 +384,92 @@ namespace MDA.OIP.View
                                 }
 
                                 //таблицы зависимости
-                                List<List<double>> table1 = new List<List<double>>();
-                                table1 = mychain.GetK1();
-                                List<List<double>> table2 = new List<List<double>>();
-                                table2 = mychain.GetK2();
-                                List<List<double>> table3 = new List<List<double>>();
-                                table3 = mychain.GetK3();
+                                List<List<double>> table1 = BinaryCharacteristicsFactory.K1.Calculate(mychain,
+                                                                                                      LinkUp.End);
+                                List<List<double>> table2 = BinaryCharacteristicsFactory.K2.Calculate(mychain,
+                                                                                                      LinkUp.End);
+                                List<List<double>> table3 = BinaryCharacteristicsFactory.K3.Calculate(mychain,
+                                                                                                      LinkUp.End);
 
-                                for (int k = 0; k < com.PLex.GetCapacity(); k++)// previously was .Count , not .Lenght
+                                for (int k = 0; k < com.PLex.Capacity; k++) // previously was .Count , not .Lenght
                                 {
-                                    for (int m = 0; m < com.PLex.GetCapacity(); m++)// previously was .Count , not .Lenght
+                                    for (int m = 0; m < com.PLex.Capacity; m++)
+                                        // previously was .Count , not .Lenght
                                     {
-                                        
-                                        
+
+
                                         xlWorkSheet2.Cells[k + 2, m + 2] = table1[k][m];
-                                        if (table1[k][m] > 0.4) 
+                                        if (table1[k][m] > 0.4)
                                         {
-                                            xlWorkSheet2.Cells[k + 2, m + 2].Font.Color = System.Drawing.ColorTranslator.ToOle(System.Drawing.Color.Yellow);
+                                            xlWorkSheet2.Cells[k + 2, m + 2].Font.Color =
+                                                System.Drawing.ColorTranslator.ToOle(System.Drawing.Color.Yellow);
                                         }
                                         if (table1[k][m] > 0.7)
                                         {
-                                            xlWorkSheet2.Cells[k + 2, m + 2].Font.Color = System.Drawing.ColorTranslator.ToOle(System.Drawing.Color.Red);
+                                            xlWorkSheet2.Cells[k + 2, m + 2].Font.Color =
+                                                System.Drawing.ColorTranslator.ToOle(System.Drawing.Color.Red);
                                         }
 
                                         xlWorkSheet3.Cells[k + 2, m + 2] = table2[k][m];
                                         if (table2[k][m] > 0.4)
                                         {
-                                            xlWorkSheet3.Cells[k + 2, m + 2].Font.Color = System.Drawing.ColorTranslator.ToOle(System.Drawing.Color.Yellow);
+                                            xlWorkSheet3.Cells[k + 2, m + 2].Font.Color =
+                                                System.Drawing.ColorTranslator.ToOle(System.Drawing.Color.Yellow);
                                         }
                                         if (table2[k][m] > 0.7)
                                         {
-                                            xlWorkSheet3.Cells[k + 2, m + 2].Font.Color = System.Drawing.ColorTranslator.ToOle(System.Drawing.Color.Red);
+                                            xlWorkSheet3.Cells[k + 2, m + 2].Font.Color =
+                                                System.Drawing.ColorTranslator.ToOle(System.Drawing.Color.Red);
                                         }
 
 
                                         xlWorkSheet4.Cells[k + 2, m + 2] = table3[k][m];
                                         if (table3[k][m] > 0.4)
                                         {
-                                            xlWorkSheet4.Cells[k + 2, m + 2].Font.Color = System.Drawing.ColorTranslator.ToOle(System.Drawing.Color.Yellow);
+                                            xlWorkSheet4.Cells[k + 2, m + 2].Font.Color =
+                                                System.Drawing.ColorTranslator.ToOle(System.Drawing.Color.Yellow);
                                         }
                                         if (table3[k][m] > 0.7)
                                         {
-                                            xlWorkSheet4.Cells[k + 2, m + 2].Font.Color = System.Drawing.ColorTranslator.ToOle(System.Drawing.Color.Red);
+                                            xlWorkSheet4.Cells[k + 2, m + 2].Font.Color =
+                                                System.Drawing.ColorTranslator.ToOle(System.Drawing.Color.Red);
                                         }
-                                        
+
                                     }
                                 }
 
                                 //------------------------------------------------------------------------------
-                                
+
                                 xlWorkSheetFmSeqDuarPlus.Cells[n, 1] = item.Name;
                                 xlWorkSheetFmSeqDuarPlus.Cells[n, 2] = Listfmotivchains3[0].FmotivList.Count;
                                 xlWorkSheetFmSeqDuarPlus.Cells[n, 3] = com.PLex.CalcGreatFrequency();
-                                xlWorkSheetFmSeqDuarPlus.Cells[n, 4] = com.PLex.GetCapacity();
-                                xlWorkSheetFmSeqDuarPlus.Cells[n, 5] = com.TLex.GetCapacity();
-                                xlWorkSheetFmSeqDuarPlus.Cells[n, 6] = com.VDiff.GetpdV();
+                                xlWorkSheetFmSeqDuarPlus.Cells[n, 4] = com.PLex.Capacity;
+                                xlWorkSheetFmSeqDuarPlus.Cells[n, 5] = com.TLex.Capacity;
+                                xlWorkSheetFmSeqDuarPlus.Cells[n, 6] = com.VDiff.PdV;
 
                                 xlWorkSheetFmSeqDuarPlus.Cells[n, 7] = com.AvgRemoteness;
                                 xlWorkSheetFmSeqDuarPlus.Cells[n, 8] = com.Entropy;
                                 xlWorkSheetFmSeqDuarPlus.Cells[n, 9] = com.AvgDepth;
-                                xlWorkSheetFmSeqDuarPlus.Cells[n, 10] = com.Entropy * Listfmotivchains3[0].FmotivList.Count;
+                                xlWorkSheetFmSeqDuarPlus.Cells[n, 10] = com.Entropy*
+                                                                        Listfmotivchains3[0].FmotivList.Count;
                                 xlWorkSheetFmSeqDuarPlus.Cells[n, 11] = com.Regularity;
                             }
                             catch (Exception err)
                             {
-                                MessageBox.Show(err.Message, "Analisis Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                                MessageBox.Show(err.Message, "Analisis Ошибка", MessageBoxButtons.OK,
+                                                MessageBoxIcon.Stop);
                             }
                             //--------------------sequent Pause silence----------------------------------------------------------------------------------
-                            List<FmotivChain> Listfmotivchains4 = bd.Divide(Parser.ScoreModel, ParamPauseTreatment.SilenceNote, ParamEqualFM.Sequent);
+                            List<FmotivChain> Listfmotivchains4 = bd.Divide(Parser.ScoreModel,
+                                                                            PauseTreatment.SilenceNote,
+                                                                            FMSequentEquality.Sequent);
                             try
                             {
                                 Composition com = new Composition();
                                 int i = 0;
 
-                                for (i = 0; i < Listfmotivchains4[0].FmotivList.Count; i++)// previously was .Count , not .Lenght
+                                for (i = 0; i < Listfmotivchains4[0].FmotivList.Count; i++)
+                                    // previously was .Count , not .Lenght
                                 {
                                     com.AddFM(Listfmotivchains4[0].FmotivList[i].Id.ToString());
                                     xlWorkSheet1.Cells[(i + 2), 2] = Listfmotivchains4[0].FmotivList[i].Id;
@@ -472,34 +487,39 @@ namespace MDA.OIP.View
                                 xlWorkSheetFmSeqSilencePause.Cells[n, 1] = item.Name;
                                 xlWorkSheetFmSeqSilencePause.Cells[n, 2] = Listfmotivchains4[0].FmotivList.Count;
                                 xlWorkSheetFmSeqSilencePause.Cells[n, 3] = com.PLex.CalcGreatFrequency();
-                                xlWorkSheetFmSeqSilencePause.Cells[n, 4] = com.PLex.GetCapacity();
-                                xlWorkSheetFmSeqSilencePause.Cells[n, 5] = com.TLex.GetCapacity();
-                                xlWorkSheetFmSeqSilencePause.Cells[n, 6] = com.VDiff.GetpdV();
+                                xlWorkSheetFmSeqSilencePause.Cells[n, 4] = com.PLex.Capacity;
+                                xlWorkSheetFmSeqSilencePause.Cells[n, 5] = com.TLex.Capacity;
+                                xlWorkSheetFmSeqSilencePause.Cells[n, 6] = com.VDiff.PdV;
 
                                 xlWorkSheetFmSeqSilencePause.Cells[n, 7] = com.AvgRemoteness;
                                 xlWorkSheetFmSeqSilencePause.Cells[n, 8] = com.Entropy;
                                 xlWorkSheetFmSeqSilencePause.Cells[n, 9] = com.AvgDepth;
-                                xlWorkSheetFmSeqSilencePause.Cells[n, 10] = com.Entropy * Listfmotivchains4[0].FmotivList.Count;
+                                xlWorkSheetFmSeqSilencePause.Cells[n, 10] = com.Entropy*
+                                                                            Listfmotivchains4[0].FmotivList.Count;
                                 xlWorkSheetFmSeqSilencePause.Cells[n, 11] = com.Regularity;
                             }
                             catch (Exception err)
                             {
-                                MessageBox.Show(err.Message, "Analisis Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                                MessageBox.Show(err.Message, "Analisis Ошибка", MessageBoxButtons.OK,
+                                                MessageBoxIcon.Stop);
                             }
                             //------------------------------------------------------------------------------------------------------
 
 
                             //--------------------non sequent pause Duar----------------------------------------------------------------------------------
-                            List<FmotivChain> Listfmotivchains2 = bd.Divide(Parser.ScoreModel, ParamPauseTreatment.NoteTrace, ParamEqualFM.NonSequent);
+                            List<FmotivChain> Listfmotivchains2 = bd.Divide(Parser.ScoreModel,
+                                                                            PauseTreatment.NoteTrace,
+                                                                            FMSequentEquality.NonSequent);
                             try
                             {
                                 Composition com = new Composition();
                                 int i = 0;
 
-                                for (i = 0; i < Listfmotivchains2[0].FmotivList.Count; i++)// previously was .Count , not .Lenght
+                                for (i = 0; i < Listfmotivchains2[0].FmotivList.Count; i++)
+                                    // previously was .Count , not .Lenght
                                 {
                                     com.AddFM(Listfmotivchains2[0].FmotivList[i].Id.ToString());
-                                    xlWorkSheet1.Cells[(i+2), 4] = Listfmotivchains2[0].FmotivList[i].Id;
+                                    xlWorkSheet1.Cells[(i + 2), 4] = Listfmotivchains2[0].FmotivList[i].Id;
                                 }
                                 com.CreatePLex();
                                 com.CreateTlex();
@@ -514,14 +534,14 @@ namespace MDA.OIP.View
                                 xlWorkSheetFmNoSeq.Cells[n, 1] = item.Name;
                                 xlWorkSheetFmNoSeq.Cells[n, 2] = Listfmotivchains2[0].FmotivList.Count;
                                 xlWorkSheetFmNoSeq.Cells[n, 3] = com.PLex.CalcGreatFrequency();
-                                xlWorkSheetFmNoSeq.Cells[n, 4] = com.PLex.GetCapacity();
-                                xlWorkSheetFmNoSeq.Cells[n, 5] = com.TLex.GetCapacity();
-                                xlWorkSheetFmNoSeq.Cells[n, 6] = com.VDiff.GetpdV();
+                                xlWorkSheetFmNoSeq.Cells[n, 4] = com.PLex.Capacity;
+                                xlWorkSheetFmNoSeq.Cells[n, 5] = com.TLex.Capacity;
+                                xlWorkSheetFmNoSeq.Cells[n, 6] = com.VDiff.PdV;
 
                                 xlWorkSheetFmNoSeq.Cells[n, 7] = com.AvgRemoteness;
                                 xlWorkSheetFmNoSeq.Cells[n, 8] = com.Entropy;
                                 xlWorkSheetFmNoSeq.Cells[n, 9] = com.AvgDepth;
-                                xlWorkSheetFmNoSeq.Cells[n, 10] = com.Entropy * Listfmotivchains2[0].FmotivList.Count;
+                                xlWorkSheetFmNoSeq.Cells[n, 10] = com.Entropy*Listfmotivchains2[0].FmotivList.Count;
                                 xlWorkSheetFmNoSeq.Cells[n, 11] = com.Regularity;
 
 
@@ -529,7 +549,8 @@ namespace MDA.OIP.View
                             }
                             catch (Exception err)
                             {
-                                MessageBox.Show(err.Message, "Analisis Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                                MessageBox.Show(err.Message, "Analisis Ошибка", MessageBoxButtons.OK,
+                                                MessageBoxIcon.Stop);
                             }
                             //------------------------------------------------------------------------------------------------------
 
@@ -543,11 +564,11 @@ namespace MDA.OIP.View
                                 Composition com = new Composition();
                                 int i = 0;
 
-                                for (i = 0; i < notesOrder.Length; i++)// previously was .Count , not .Lenght
+                                for (i = 0; i < notesOrder.Length; i++) // previously was .Count , not .Lenght
                                 {
                                     com.AddFM(notesOrder[i].ToString());
                                     xlWorkSheet1.Cells[(i + 2), 5] = notesOrder[i];
-                                    
+
                                 }
                                 com.CreatePLex();
                                 com.CreateTlex();
@@ -560,27 +581,28 @@ namespace MDA.OIP.View
                                 com.FillDisplayData();
 
                                 // ззаносим в файл частоты вхождения нот
-                                for (i = 0; i < com.PLex.GetCapacity(); i++)// previously was .Count , not .Lenght
+                                for (i = 0; i < com.PLex.Capacity; i++) // previously was .Count , not .Lenght
                                 {
-                                    xlWorkSheet1.Cells[(i + 2), 18] = ((FMotiv)com.PLex.GetRData()[i]).GetFrequency();
+                                    xlWorkSheet1.Cells[(i + 2), 18] = ((FMotiv) com.PLex.RData[i]).Frequency;
 
                                 }
                                 xlWorkSheetNote.Cells[n, 1] = item.Name;
                                 xlWorkSheetNote.Cells[n, 2] = notesOrder.Length;
                                 xlWorkSheetNote.Cells[n, 3] = com.PLex.CalcGreatFrequency();
-                                xlWorkSheetNote.Cells[n, 4] = com.PLex.GetCapacity();
-                                xlWorkSheetNote.Cells[n, 5] = com.TLex.GetCapacity();
-                                xlWorkSheetNote.Cells[n, 6] = com.VDiff.GetpdV();
+                                xlWorkSheetNote.Cells[n, 4] = com.PLex.Capacity;
+                                xlWorkSheetNote.Cells[n, 5] = com.TLex.Capacity;
+                                xlWorkSheetNote.Cells[n, 6] = com.VDiff.PdV;
 
                                 xlWorkSheetNote.Cells[n, 7] = com.AvgRemoteness;
                                 xlWorkSheetNote.Cells[n, 8] = com.Entropy;
                                 xlWorkSheetNote.Cells[n, 9] = com.AvgDepth;
-                                xlWorkSheetNote.Cells[n, 10] = com.Entropy * notesOrder.Length;
+                                xlWorkSheetNote.Cells[n, 10] = com.Entropy*notesOrder.Length;
                                 xlWorkSheetNote.Cells[n, 11] = com.Regularity;
                             }
                             catch (Exception err)
                             {
-                                MessageBox.Show(err.Message, "Analisis Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                                MessageBox.Show(err.Message, "Analisis Ошибка", MessageBoxButtons.OK,
+                                                MessageBoxIcon.Stop);
                             }
                             //------------------------------------------------------------------------------------------------------
                             //--------------------Takt----------------------------------------------------------------------------------
@@ -590,7 +612,7 @@ namespace MDA.OIP.View
                                 Composition com = new Composition();
                                 int i = 0;
 
-                                for (i = 0; i < measureOrder.Length; i++)// previously was .Count , not .Lenght
+                                for (i = 0; i < measureOrder.Length; i++) // previously was .Count , not .Lenght
                                 {
                                     com.AddFM(measureOrder[i].ToString());
                                     xlWorkSheet1.Cells[(i + 2), 6] = measureOrder[i];
@@ -606,32 +628,36 @@ namespace MDA.OIP.View
                                 com.FillDisplayData();
 
                                 // заносим в файл частоты вхождения тактов
-                                for (i = 0; i < com.PLex.GetCapacity(); i++)// previously was .Count , not .Lenght
+                                for (i = 0; i < com.PLex.Capacity; i++) // previously was .Count , not .Lenght
                                 {
-                                    xlWorkSheet1.Cells[(i + 2), 19] = ((FMotiv)com.PLex.GetRData()[i]).GetFrequency();
+                                    xlWorkSheet1.Cells[(i + 2), 19] = ((FMotiv) com.PLex.RData[i]).Frequency;
 
                                 }
 
                                 xlWorkSheetTakt.Cells[n, 1] = item.Name;
                                 xlWorkSheetTakt.Cells[n, 2] = measureOrder.Length;
                                 xlWorkSheetTakt.Cells[n, 3] = com.PLex.CalcGreatFrequency();
-                                xlWorkSheetTakt.Cells[n, 4] = com.PLex.GetCapacity();
-                                xlWorkSheetTakt.Cells[n, 5] = com.TLex.GetCapacity();
-                                xlWorkSheetTakt.Cells[n, 6] = com.VDiff.GetpdV();
+                                xlWorkSheetTakt.Cells[n, 4] = com.PLex.Capacity;
+                                xlWorkSheetTakt.Cells[n, 5] = com.TLex.Capacity;
+                                xlWorkSheetTakt.Cells[n, 6] = com.VDiff.PdV;
 
                                 xlWorkSheetTakt.Cells[n, 7] = com.AvgRemoteness;
                                 xlWorkSheetTakt.Cells[n, 8] = com.Entropy;
                                 xlWorkSheetTakt.Cells[n, 9] = com.AvgDepth;
-                                xlWorkSheetTakt.Cells[n, 10] = com.Entropy * measureOrder.Length;
+                                xlWorkSheetTakt.Cells[n, 10] = com.Entropy*measureOrder.Length;
                                 xlWorkSheetTakt.Cells[n, 11] = com.Regularity;
                             }
                             catch (Exception err)
                             {
-                                MessageBox.Show(err.Message, "Analisis Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                                MessageBox.Show(err.Message, "Analisis Ошибка", MessageBoxButtons.OK,
+                                                MessageBoxIcon.Stop);
                             }
                             //------------------------------------------------------------------------------------------------------
 
-                            xlWorkBook1.SaveAs(folderBrowserDialog1.SelectedPath + "\\" + item.Name + ".order.xls", Excel.XlFileFormat.xlWorkbookDefault, misValue1, misValue1, misValue1, misValue1, Excel.XlSaveAsAccessMode.xlExclusive, misValue1, misValue1, misValue1, misValue1, misValue1);
+                            xlWorkBook1.SaveAs(folderBrowserDialog1.SelectedPath + "\\" + item.Name + ".order.xls",
+                                               Excel.XlFileFormat.xlWorkbookDefault, misValue1, misValue1, misValue1,
+                                               misValue1, Excel.XlSaveAsAccessMode.xlExclusive, misValue1, misValue1,
+                                               misValue1, misValue1, misValue1);
                             xlWorkBook1.Close(true, misValue1, misValue1);
                             //xlApp1.Quit();
 
@@ -650,7 +676,9 @@ namespace MDA.OIP.View
                 }
 
                 // ----------Сохранение Excel файла-----------------------------------------------------------
-                xlWorkBook.SaveAs(folderBrowserDialog1.SelectedPath + "\\Total.xls", Excel.XlFileFormat.xlWorkbookNormal, misValue, misValue, misValue, misValue, Excel.XlSaveAsAccessMode.xlExclusive, misValue, misValue, misValue, misValue, misValue);
+                xlWorkBook.SaveAs(folderBrowserDialog1.SelectedPath + "\\Total.xls", Excel.XlFileFormat.xlWorkbookNormal,
+                                  misValue, misValue, misValue, misValue, Excel.XlSaveAsAccessMode.xlExclusive, misValue,
+                                  misValue, misValue, misValue, misValue);
                 xlWorkBook.Close(true, misValue, misValue);
                 xlApp.Quit();
 
@@ -666,7 +694,8 @@ namespace MDA.OIP.View
 
                 //System.Threading.Thread.CurrentThread.CurrentCulture = oldCI;
 
-                MessageBox.Show("Excel file created , you can find the file " + folderBrowserDialog1.SelectedPath + "\\Total.xls");
+                MessageBox.Show("Excel file created , you can find the file " + folderBrowserDialog1.SelectedPath +
+                                "\\Total.xls");
                 //---------------------------------------------------------------------------------------------
             }
 

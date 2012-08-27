@@ -1,94 +1,100 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using LibiadaCore.Classes.Root;
+﻿using System.Collections.Generic;
 using LibiadaCore.Classes.Root;
 
 
 namespace MDA.OIP.ScoreModel
 {
-    public class ScoreTrack : IBaseObject // полный музыкальный текст/трек
+    /// <summary>
+    /// полный музыкальный текст/трек
+    /// </summary>
+    public class ScoreTrack : IBaseObject
     {
-    private string name; // имя музыкального текста ( муз. произведения)
-    private List<UniformScoreTrack> uniformscoretracks; // список моно треков
-    //TODO: сделать поля жанра/автора/типа произведения, для дальнейшего анализа, 
-    //PS:либо сделать на уровень структуры выше, где будет разбиение на Ф-мотивы
-    public ScoreTrack(string name, List<UniformScoreTrack> uniformscoretracks) 
-    {
-        this.name = name; // присваиваем имя музыкального трека
-        for (int i = 0; i < uniformscoretracks.Count; i++) // создаем список монотреков, по средствам клонирования каждого монотрека.
-        {
-            this.uniformscoretracks = new List<UniformScoreTrack>();
-            this.uniformscoretracks.Add((UniformScoreTrack)uniformscoretracks[i].Clone());
-        }
-    }
-    public string Name
-    {
-        get
-        {
-            return name;
-        }
-    }
-    public List<UniformScoreTrack> UniformScoreTracks
-    {
-        get
-        {
-            return uniformscoretracks;
-        }
-    }
-    
-    #region IBaseMethods
+        /// <summary>
+        /// имя музыкального текста ( муз. произведения)
+        /// </summary>
+        private string name;
 
-    private ScoreTrack()
-    {
-        ///<summary>
-        /// Stub for GetBin
-        ///</summary>  
-    }
+        /// <summary>
+        /// список моно треков
+        /// </summary>
+        private List<UniformScoreTrack> uniformscoretracks;
 
-    public IBaseObject Clone()
-    {
-        ScoreTrack Temp = new ScoreTrack(this.name, this.uniformscoretracks);
-        return Temp;
-    }
+        //TODO: сделать поля жанра/автора/типа произведения, для дальнейшего анализа, 
+        //PS:либо сделать на уровень структуры выше, где будет разбиение на Ф-мотивы
 
-    public override bool Equals(object obj)
-    {
-        bool equalUniformscoretracks = true;
-
-        if (this.UniformScoreTracks.Count != ((ScoreTrack)obj).UniformScoreTracks.Count) { equalUniformscoretracks = false; }
-        for (int i = 0; i < this.UniformScoreTracks.Count; i++)
+        public ScoreTrack(string name, List<UniformScoreTrack> uniformscoretracks)
         {
-            if (!this.UniformScoreTracks[i].Equals(((ScoreTrack)obj).UniformScoreTracks[i])) { equalUniformscoretracks = false; }
+            this.name = name; // присваиваем имя музыкального трека
+            for (int i = 0; i < uniformscoretracks.Count; i++)
+                // создаем список монотреков, посредством клонирования каждого монотрека.
+            {
+                this.uniformscoretracks = new List<UniformScoreTrack>(); // зачем каждый раз создавать массив???(о_О)
+                this.uniformscoretracks.Add((UniformScoreTrack) uniformscoretracks[i].Clone());
+            }
         }
-        if (equalUniformscoretracks)
-        {
-            return true;
-        }
-        return false;
-    }
 
-    public IBin GetBin()
+        public string Name
         {
-            ScoreTrackBin Temp = new ScoreTrackBin();
-                ///<summary>
-                /// Stub
-                ///</summary>
+            get { return name; }
+        }
+
+        public List<UniformScoreTrack> UniformScoreTracks
+        {
+            get { return uniformscoretracks; }
+        }
+
+        #region IBaseMethods
+
+        private ScoreTrack()
+        {
+            ///<summary>
+            /// Stub for GetBin
+            ///</summary>  
+        }
+
+        public IBaseObject Clone()
+        {
+            ScoreTrack Temp = new ScoreTrack(this.name, this.uniformscoretracks);
             return Temp;
         }
 
-    public class ScoreTrackBin:IBin
-    {
-       public IBaseObject GetInstance()
-            {      
+        public bool Equals(object obj)
+        {
+            bool equalUniformscoretracks = UniformScoreTracks.Count == ((ScoreTrack) obj).UniformScoreTracks.Count;
+
+            for (int i = 0; i < this.UniformScoreTracks.Count; i++)
+            {
+                if (!this.UniformScoreTracks[i].Equals(((ScoreTrack) obj).UniformScoreTracks[i]))
+                {
+                    equalUniformscoretracks = false;
+                }
+            }
+            if (equalUniformscoretracks)
+            {
+                return true;
+            }
+            return false;
+        }
+
+        public IBin GetBin()
+        {
+            ScoreTrackBin Temp = new ScoreTrackBin();
+            ///<summary>
+            /// Stub
+            ///</summary>
+            return Temp;
+        }
+
+        public class ScoreTrackBin : IBin
+        {
+            public IBaseObject GetInstance()
+            {
                 ///<summary>
                 /// Stub
                 ///</summary>
                 return new ScoreTrack();
             }
-    }
-
-    #endregion
-
+        }
+        #endregion
     }
 }

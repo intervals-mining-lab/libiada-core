@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using MDA.OIP.BorodaDivider;
 using MDA.OIP.ScoreModel;
@@ -41,7 +38,7 @@ namespace MDATest.OIPTest.TestBorodaDivider
             FmotivChain fmchain;
 
             // вычисление, опрделение, разбиение на  ф-мотивы данного монотрека
-            fmchain = fmdivider.GetDivision(unitrack , ParamPauseTreatment.Ignore);
+            fmchain = fmdivider.GetDivision(unitrack , PauseTreatment.Ignore);
             fmchain.Id = 0;
             
             // создание аналогов ф-мотивов, которые должны получиться, после разбиения
@@ -92,7 +89,7 @@ namespace MDATest.OIPTest.TestBorodaDivider
             FmotivChain fmchain;
 
             // вычисление, опрделение, разбиение на  ф-мотивы данного монотрека
-            fmchain = fmdivider.GetDivision(unitrack, ParamPauseTreatment.Ignore);
+            fmchain = fmdivider.GetDivision(unitrack, PauseTreatment.Ignore);
             fmchain.Id = 0;
 
             // создание аналогов ф-мотивов, которые должны получиться, после разбиения
@@ -146,7 +143,7 @@ namespace MDATest.OIPTest.TestBorodaDivider
             FmotivChain fmchain;
 
             // вычисление, опрделение, разбиение на  ф-мотивы данного монотрека
-            fmchain = fmdivider.GetDivision(unitrack , ParamPauseTreatment.Ignore);
+            fmchain = fmdivider.GetDivision(unitrack , PauseTreatment.Ignore);
             fmchain.Id = 0;
 
             // создание аналогов ф-мотивов, которые должны получиться, после разбиения
@@ -199,7 +196,7 @@ namespace MDATest.OIPTest.TestBorodaDivider
             FmotivChain fmchain;
 
             // вычисление, опрделение, разбиение на  ф-мотивы данного монотрека
-            fmchain = fmdivider.GetDivision(unitrack, ParamPauseTreatment.Ignore);
+            fmchain = fmdivider.GetDivision(unitrack, PauseTreatment.Ignore);
             fmchain.Id = 0;
 
             // создание аналогов ф-мотивов, которые должны получиться, после разбиения
@@ -247,7 +244,7 @@ namespace MDATest.OIPTest.TestBorodaDivider
             FmotivChain fmchain;
 
             // вычисление, опрделение, разбиение на  ф-мотивы данного монотрека
-            fmchain = fmdivider.GetDivision(unitrack, ParamPauseTreatment.Ignore);
+            fmchain = fmdivider.GetDivision(unitrack, PauseTreatment.Ignore);
             fmchain.Id = 0;
 
             // создание аналогов ф-мотивов, которые должны получиться, после разбиения
@@ -299,7 +296,7 @@ namespace MDATest.OIPTest.TestBorodaDivider
             FmotivChain fmchain;
 
             // вычисление, опрделение, разбиение на  ф-мотивы данного монотрека
-            fmchain = fmdivider.GetDivision(unitrack, ParamPauseTreatment.Ignore);
+            fmchain = fmdivider.GetDivision(unitrack, PauseTreatment.Ignore);
             fmchain.Id = 0;
 
             // создание аналогов ф-мотивов, которые должны получиться, после разбиения
@@ -352,7 +349,7 @@ namespace MDATest.OIPTest.TestBorodaDivider
             FmotivChain fmchain;
 
             // вычисление, опрделение, разбиение на  ф-мотивы данного монотрека
-            fmchain = fmdivider.GetDivision(unitrack, ParamPauseTreatment.Ignore);
+            fmchain = fmdivider.GetDivision(unitrack, PauseTreatment.Ignore);
             fmchain.Id = 0;
 
             // создание аналогов ф-мотивов, которые должны получиться, после разбиения
@@ -399,7 +396,7 @@ namespace MDATest.OIPTest.TestBorodaDivider
             FmotivChain fmchain;
 
             // вычисление, опрделение, разбиение на  ф-мотивы данного монотрека
-            fmchain = fmdivider.GetDivision(unitrack, ParamPauseTreatment.Ignore);
+            fmchain = fmdivider.GetDivision(unitrack, PauseTreatment.Ignore);
             fmchain.Id = 0;
 
             // создание аналогов ф-мотивов, которые должны получиться, после разбиения
@@ -445,7 +442,7 @@ namespace MDATest.OIPTest.TestBorodaDivider
             FmotivChain fmchain;
 
             // вычисление, опрделение, разбиение на  ф-мотивы данного монотрека
-            fmchain = fmdivider.GetDivision(unitrack, ParamPauseTreatment.SilenceNote);
+            fmchain = fmdivider.GetDivision(unitrack, PauseTreatment.SilenceNote);
             fmchain.Id = 0;
 
             // создание аналогов ф-мотивов, которые должны получиться, после разбиения
@@ -464,10 +461,10 @@ namespace MDATest.OIPTest.TestBorodaDivider
             fmchain1.FmotivList.Add(fmotiv1);
             fmchain1.FmotivList.Add(fmotiv2);
 
-            Assert.IsTrue(fmotiv1.FmEquals(fmotiv1,ParamPauseTreatment.SilenceNote,ParamEqualFM.Sequent));
-            Assert.IsTrue(fmotiv2.FmEquals(fmotiv2, ParamPauseTreatment.SilenceNote, ParamEqualFM.Sequent));
-            Assert.IsTrue(fmchain.FmotivList[0].FmEquals(fmotiv1, ParamPauseTreatment.SilenceNote, ParamEqualFM.Sequent));
-            Assert.IsTrue(fmchain.FmotivList[1].FmEquals(fmotiv2, ParamPauseTreatment.SilenceNote, ParamEqualFM.Sequent));
+            Assert.IsTrue(fmotiv1.FmEquals(fmotiv1,PauseTreatment.SilenceNote,FMSequentEquality.Sequent));
+            Assert.IsTrue(fmotiv2.FmEquals(fmotiv2, PauseTreatment.SilenceNote, FMSequentEquality.Sequent));
+            Assert.IsTrue(fmchain.FmotivList[0].FmEquals(fmotiv1, PauseTreatment.SilenceNote, FMSequentEquality.Sequent));
+            Assert.IsTrue(fmchain.FmotivList[1].FmEquals(fmotiv2, PauseTreatment.SilenceNote, FMSequentEquality.Sequent));
             Assert.IsTrue(fmchain1.Equals(fmchain));
         }
     }

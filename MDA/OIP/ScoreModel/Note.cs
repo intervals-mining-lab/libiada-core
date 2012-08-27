@@ -1,99 +1,133 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using LibiadaCore.Classes.Root;
+﻿using LibiadaCore.Classes.Root;
 
 namespace MDA.OIP.ScoreModel
 {
-    public class Note : IBaseObject // нота
+    /// <summary>
+    /// нота
+    /// </summary>
+    public class Note : IBaseObject
     {
-        private bool triplet; // наличие триоли
-        private int tie; // есть ли лига (-1 : нет; 0 - начало; 1 - конец)
-        private Pitch pitch; // высота ноты
-        private Duration duration; // длительность ноты
-        private int priority; // сильная/слабая доля - приоритет доли
-        private int id; // id ноты для составления строя нот
+        /// <summary>
+        /// наличие триоли
+        /// </summary>
+        private bool triplet;
+        /// <summary>
+        /// есть ли лига (-1 : нет; 0 - начало; 1 - конец)
+        /// </summary>
+        private int tie;
+        /// <summary>
+        /// высота ноты
+        /// </summary>
+        private Pitch pitch;
+        /// <summary>
+        /// длительность ноты
+        /// </summary>
+        private Duration duration;
+        /// <summary>
+        /// сильная/слабая доля - приоритет доли
+        /// </summary>
+        private int priority;
+        /// <summary>
+        /// id ноты для составления строя нот
+        /// </summary>
+        private int id;
 
-        public Note(Pitch pitch, Duration duration, bool triplet, int tie) 
+        public Note(Pitch pitch, Duration duration, bool triplet, Tie tie)
         {
             if (pitch != null) // если не пауза то записываем высоту и наличие лиги
-            { 
-                this.pitch = (Pitch)pitch.Clone(); 
-                this.tie = tie; 
+            {
+                this.pitch = (Pitch)pitch.Clone();
+                this.tie = (int)tie;
             }
             else
             {
-                this.tie = -1; // если нота - пауза, то не может быть лиги на паузу
+                this.tie = (int)ScoreModel.Tie.None; // если нота - пауза, то не может быть лиги на паузу
+            }
+            this.duration = (Duration)duration.Clone();
+            this.triplet = triplet;
+            this.priority = -1; // приоритет не определен
+        }
+
+        public Note(Pitch pitch, Duration duration, bool triplet, int tie)
+        {
+            if (pitch != null) // если не пауза то записываем высоту и наличие лиги
+            {
+                this.pitch = (Pitch) pitch.Clone();
+                this.tie = tie;
+            }
+            else
+            {
+                this.tie = (int)ScoreModel.Tie.None; // если нота - пауза, то не может быть лиги на паузу
             }
             this.duration = (Duration) duration.Clone();
             this.triplet = triplet;
             this.priority = -1; // приоритет не определен
         }
-        public Note(Pitch pitch, Duration duration, bool triplet, int tie, int priority)
+
+        public Note(Pitch pitch, Duration duration, bool triplet, Tie tie, int priority)
         {
 
             if (pitch != null) // если не пауза то записываем высоту и наличие лиги
             {
                 this.pitch = (Pitch)pitch.Clone();
-                this.tie = tie;
+                this.tie = (int)tie;
             }
             else
             {
-                this.tie = -1; // если нота - пауза, то не может быть лиги на паузу
+                this.tie = (int)ScoreModel.Tie.None; // если нота - пауза, то не может быть лиги на паузу
             }
             this.duration = (Duration)duration.Clone();
             this.triplet = triplet;
             this.priority = priority; // приоритет если указан
         }
+
+        public Note(Pitch pitch, Duration duration, bool triplet, int tie, int priority)
+        {
+
+            if (pitch != null) // если не пауза то записываем высоту и наличие лиги
+            {
+                this.pitch = (Pitch) pitch.Clone();
+                this.tie = tie;
+            }
+            else
+            {
+                this.tie = (int)ScoreModel.Tie.None; // если нота - пауза, то не может быть лиги на паузу
+            }
+            this.duration = (Duration) duration.Clone();
+            this.triplet = triplet;
+            this.priority = priority; // приоритет если указан
+        }
+
         public int Id
         {
-            set
-            {
-                this.id = value;
-            }
-            get
-            {
-                return id;
-            }
+            set { this.id = value; }
+            get { return id; }
         }
+
         public bool Triplet
         {
-            get
-            {
-                return triplet;
-            }
+            get { return triplet; }
         }
+
         public int Tie
         {
-            get
-            {
-                return tie;
-            }
+            get { return tie; }
         }
+
         public Pitch Pitch
         {
-            get
-            {
-                return pitch;
-            }
+            get { return pitch; }
         }
+
         public Duration Duration
         {
-            get
-            {
-                return duration;
-            }
+            get { return duration; }
         }
+
         public int Priority
         {
-            set
-            {
-                this.priority = value;
-            }
-            get
-            {
-                return priority;
-            }
+            set { this.priority = value; }
+            get { return priority; }
         }
 
         #region IBaseMethods
@@ -115,9 +149,9 @@ namespace MDA.OIP.ScoreModel
         {
             if (this.Pitch == null)
             {
-                if (((Note)obj).Pitch == null)
+                if (((Note) obj).Pitch == null)
                 {
-                    if (this.Duration.Equals(((Note)obj).Duration))
+                    if (this.Duration.Equals(((Note) obj).Duration))
                     {
                         return true;
                     }
@@ -132,9 +166,9 @@ namespace MDA.OIP.ScoreModel
                     return false;
                 }
             }
-            else 
+            else
             {
-                if (((Note)obj).Pitch == null)
+                if (((Note) obj).Pitch == null)
                 {
                     // нота и пауза не одно и то же
                     return false;
@@ -142,7 +176,8 @@ namespace MDA.OIP.ScoreModel
             }
 
 
-            if ((this.Duration.Equals(((Note)obj).Duration)) && (this.Pitch.Equals(((Note)obj).Pitch)) && (this.Tie == ((Note)obj).Tie) && (this.Triplet == ((Note)obj).Triplet))
+            if ((this.Duration.Equals(((Note) obj).Duration)) && (this.Pitch.Equals(((Note) obj).Pitch)) &&
+                (this.Tie == ((Note) obj).Tie) && (this.Triplet == ((Note) obj).Triplet))
             {
                 return true;
             }

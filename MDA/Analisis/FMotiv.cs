@@ -1,132 +1,130 @@
 ﻿using System;
 using System.Collections;
-using System.Collections.Generic;
-//using System.Linq;
-using System.Text;
 
 namespace MDA.Analisis
 {
     public class FMotiv
     {
-        protected int id;//ID
-        protected string name; //Имя
-        private int rank;//Ранг
-        private double logrank;//Log (Ранг)
-        private double occurrence;//Сколько раз встретилось
-        private double logoccurrence;// Log(occurrence)
-        private double frequency;//Частота
-        private double remoteness;// Удаленность
-        private double Logremoteness;//ЛогУдаленности
-        private double depth;//Глубина
-        private double Logdepth;//ЛогГлубины
-        ArrayList probability = new ArrayList();// Условные вероятности
+        /// <summary>
+        /// ID
+        /// </summary>
+        protected int id;
 
-        public FMotiv(int ident,string st, int occur,double freq) 
-        {
-            this.id = ident;
-            this.name = st;
-            this.occurrence = occur;
-            this.logoccurrence = System.Math.Log(occur, 2);
-            this.frequency = freq;
-        }
+        /// <summary>
+        /// Имя
+        /// </summary>
+        protected string name;
 
-        public void SetId(int n)
-        {
-            this.id = n;
-        }
-        public int GetId()
-        {
-            return this.id;
-        }
+        /// <summary>
+        /// Ранг
+        /// </summary>
+        private int rank;
 
-        public void SetName(string n)
-        {
-            this.name = n;
-        }
-        public string GetName()
-        {
-            return this.name;
-        }
+        /// <summary>
+        /// Сколько раз встретилось
+        /// </summary>
+        private double occurrence;
 
-        public void SetRank(int n)
+        /// <summary>
+        /// Частота
+        /// </summary>
+        private double frequency;
+
+        /// <summary>
+        /// Удаленность
+        /// </summary>
+        private double remoteness;
+
+        /// <summary>
+        /// Глубина
+        /// </summary>
+        private double depth;
+
+        /// <summary>
+        /// Условные вероятности
+        /// </summary>
+        private ArrayList probability = new ArrayList();
+
+        public FMotiv(int ident, string st, int occur, double freq)
         {
-            this.rank = n;
-            this.logrank = System.Math.Log(n,2);
-        }
-        public int GetRank()
-        {
-            return this.rank;
+            id = ident;
+            name = st;
+            occurrence = occur;
+            frequency = freq;
         }
 
-        public double GetLogRank()
+        public int Id
         {
-            return this.logrank;
+            set { id = value; }
+            get { return id; }
         }
 
-        public void SetOccurernce(double n)
+        public string Name
         {
-            this.occurrence = n;
-        }
-        public double GetOccurernce()
-        {
-            return this.occurrence;
+            set { name = value; }
+            get { return name; }
         }
 
-        public void SetLogOccurernce(double n)
+        public int Rank
         {
-            this.logoccurrence = n;
-        }
-        public double GetLogOccurernce()
-        {
-            return this.logoccurrence;
+            set { rank = value; }
+            get { return rank; }
+
         }
 
-        public void SetFrequency(double n)
+        public double LogRank
         {
-            this.frequency= n;
-        }
-        public double GetFrequency()
-        {
-            return this.frequency;
+            set { rank = (int) Math.Pow(2, value); }
+            get { return Math.Log(2, rank); }
+
         }
 
-        public void SetRemoteness(double n)
+        public double Occurernce
         {
-            this.remoteness = n;
-            this.Logremoteness = Math.Log(n, 2);
-        }
-        public double GetRemoteness()
-        {
-            return this.remoteness;
-        }
-        public double GetLogRemoteness()
-        {
-            return this.Logremoteness;
+            set { occurrence = value; }
+            get { return occurrence; }
         }
 
-        public void SetDepth(double n)
+        public double LogOccurernce
         {
-            this.depth = n;
-            this.Logdepth = Math.Log(n,2);
-        }
-        public double GetDepth()
-        {
-            return this.depth;
-        }
-        public double GetLogDepth()
-        {
-            return this.Logdepth;
+            set { occurrence = Math.Pow(2, value); }
+            get { return Math.Log(2, occurrence); }
         }
 
-        public void SetProbability(ArrayList n)
+        public double Frequency
         {
-            this.probability = n;
-        }
-        public ArrayList GetProbability()
-        {
-            return this.probability;
+            set { frequency = value; }
+            get { return frequency; }
         }
 
+        public double Remoteness
+        {
+            set { remoteness = value; }
+            get { return remoteness; }
+        }
+
+        public double LogRemoteness
+        {
+            set { remoteness = Math.Pow(2, value); }
+            get { return Math.Log(2, remoteness); }
+        }
+
+        public double Depth
+        {
+            set { depth = value; }
+            get { return depth; }
+        }
+
+        public double LogDepth
+        {
+            set { depth = Math.Pow(2, value); }
+            get { return Math.Log(2, depth); }
+        }
+
+        public ArrayList Probability
+        {
+            set { probability = value; }
+            get { return probability; }
+        }
     }
-    
 }

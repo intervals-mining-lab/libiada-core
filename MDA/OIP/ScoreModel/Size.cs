@@ -1,13 +1,15 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 using LibiadaCore.Classes.Root;
 
 namespace MDA.OIP.ScoreModel
 {
-    public class Size: IBaseObject // размер в такте
+    /// <summary>
+    /// размер в такте
+    /// 
+    /// size is beats/beatbase (ex size = 3/4; beats=3; beatbase=4;)
+    /// </summary>
+    public class Size : IBaseObject
     {
-        // size is beats/beatbase (ex size = 3/4; beats=3; beatbase=4;)
         private int beats;
         private int beatbase;
         private int ticksperbeat; // <divisions> TicksPerBeat (per 1/4)
@@ -18,26 +20,31 @@ namespace MDA.OIP.ScoreModel
             this.beatbase = beatbase;
             this.ticksperbeat = -1; // не определенно
         }
+
         public Size(int beats, int beatbase, int ticksperbeat)
         {
             this.beats = beats;
             this.beatbase = beatbase;
             this.ticksperbeat = ticksperbeat;
         }
+
         public int Beats
         {
             get { return beats; }
         }
+
         public int Beatbase
         {
             get { return beatbase; }
         }
+
         public int Ticksperbeat
         {
-            get {
-                    if (ticksperbeat != -1) return ticksperbeat;
-                    else throw new Exception("MDA: Error getting not defined TicksPerBeat property!");
-                }
+            get
+            {
+                if (ticksperbeat != -1) return ticksperbeat;
+                else throw new Exception("MDA: Error getting not defined TicksPerBeat property!");
+            }
         }
 
         #region IBaseMethods
@@ -55,9 +62,10 @@ namespace MDA.OIP.ScoreModel
             return Temp;
         }
 
-        public override bool Equals(object obj)
+        public bool Equals(object obj)
         {
-            if ((this.Beats == ((Size)obj).Beats) && (this.Beatbase == ((Size)obj).Beatbase) && (this.Ticksperbeat == ((Size)obj).Ticksperbeat))
+            if ((this.Beats == ((Size) obj).Beats) && (this.Beatbase == ((Size) obj).Beatbase) &&
+                (this.Ticksperbeat == ((Size) obj).Ticksperbeat))
             {
                 return true;
             }
