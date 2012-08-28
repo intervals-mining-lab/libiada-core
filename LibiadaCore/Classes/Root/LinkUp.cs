@@ -9,12 +9,12 @@ namespace LibiadaCore.Classes.Root
     {
         ///<summary>
         ///</summary>
-        Start,
+        Start = 1,
         ///<summary>
         ///</summary>
-        End,
+        End = 2,
         ///<summary>
         ///</summary>
-        Both
+        Both = 3
     } ;
 }

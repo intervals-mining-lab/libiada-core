@@ -53,19 +53,19 @@ namespace LibiadaCore.Classes.Root
 
         public Chain(String building, Alphabet alphabet):base(building, alphabet)
         {
-            PUniformChains = new UniformChain[alphabet.Power - 1];
+            PUniformChains = new UniformChain[this.alphabet.Power - 1];
         }
 
         public Chain(int[] building, Alphabet alphabet):base(building, alphabet)
         {
-            PUniformChains = new UniformChain[alphabet.Power - 1];
-            for (int i = 0; i < alphabet.Power - 1; i++ )
+            PUniformChains = new UniformChain[this.alphabet.Power - 1];
+            for (int i = 0; i < this.alphabet.Power - 1; i++ )
             {
-                this.PUniformChains[i] = new UniformChain(building.Length, alphabet[i + 1]);
+                this.PUniformChains[i] = new UniformChain(building.Length, this.alphabet[i + 1]);
             }
             for (int j = 0; j < building.Length; j++)
             {
-                PUniformChains[building[j] - 1][j] = alphabet[building[j]];
+                PUniformChains[building[j] - 1][j] = this.alphabet[building[j]];
             }
         }
 
