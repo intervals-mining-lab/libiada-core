@@ -30,7 +30,7 @@ namespace BuildingsIterator.Classes
 
             Hashtable hTable = new Hashtable();
             //По всем возможным цепочкам (Для оптимизации скорости генерируется цепочки с одинаковой первой буквой)
-            for (int i = 0; i < Math.Pow(alphabet.power, Length-1); i++)
+            for (int i = 0; i < Math.Pow(alphabet.Power, Length-1); i++)
             {
                 Chain chain = GenerateChain(i);
                 List<double> characteristics = CalculateCharacteristics(chain);
@@ -67,9 +67,9 @@ namespace BuildingsIterator.Classes
             //По всем элементам
             for (int j = Length - 1; j >= 0; j--)
             {
-                int element = (int)(temp / Math.Pow(alphabet.power, j));
+                int element = (int)(temp / Math.Pow(alphabet.Power, j));
                 chain.Add(alphabet[element], index);
-                temp = (int)(temp % Math.Pow(alphabet.power, j));
+                temp = (int)(temp % Math.Pow(alphabet.Power, j));
                 index++;
             }
             return chain;
