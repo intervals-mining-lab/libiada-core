@@ -16,8 +16,8 @@ namespace PhantomChains.Classes.Statistics.MarkovChain
         public override void Teach(ChainTeached chain, TeachingMethod Method)
         {
             MatrixBuilder Builder = new MatrixBuilder();
-            IAbsoluteMatrix AbsoluteMatrix = (IAbsoluteMatrix)Builder.Create(chain.Alphabet.power, rang);
-            for (int i = 0; i < chain.Alphabet.power; i++)
+            IAbsoluteMatrix AbsoluteMatrix = (IAbsoluteMatrix)Builder.Create(chain.Alphabet.Power, rang);
+            for (int i = 0; i < chain.Alphabet.Power; i++)
             {
                 int[] Temp =new int[1]; 
                 Temp[0] = chain.Alphabet.IndexOf(chain.Alphabet[i]);

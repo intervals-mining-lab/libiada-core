@@ -70,7 +70,7 @@ namespace TestPhantomChains.Classes.Statistics.MarkovChain
             ch.Add(b, 1);
             ch.Add(b, 2);
 
-            matr = new Matrix(alph.power, 2);
+            matr = new Matrix(alph.Power, 2);
             int[] array_ch = new int[ch.Length];
             array_ch[0] = alph.IndexOf(ch[0]);
             array_ch[1] = alph.IndexOf(ch[1]);
@@ -186,7 +186,7 @@ namespace TestPhantomChains.Classes.Statistics.MarkovChain
             // ������ ������ ���������� (������ �� ����� ) TestGet()
             /*matr = new ChainAnalises.Classes.Statistics.MarkovChain.Matrixes.Absolute.Matrix(alph, 2);*/
             // ������ �������� ���
-            matr = new Matrix(alph.power, 2);
+            matr = new Matrix(alph.Power, 2);
 
             // ��� ������� ���������� ������ �� ���� � ������ int
             // ������ ������ ���������� (������ �� ����� ) TestGet()
@@ -291,7 +291,7 @@ namespace TestPhantomChains.Classes.Statistics.MarkovChain
         [Ignore]
         public void TestGetThirdLevelChain()
         {
-            matr = new Matrix(TestChain.Alphabet.power, 3);
+            matr = new Matrix(TestChain.Alphabet.Power, 3);
 
             PsevdoCycleSpaceRebuilder<Chain, Chain> Rebuilder = new PsevdoCycleSpaceRebuilder<Chain, Chain>(2);
             TestChain = Rebuilder.Rebuild(TestChain);
@@ -525,7 +525,7 @@ namespace TestPhantomChains.Classes.Statistics.MarkovChain
         [Ignore]
         public void TestGetPropabilityMatix()
         {
-            matr = new Matrix(TestChain.Alphabet.power, 3);
+            matr = new Matrix(TestChain.Alphabet.Power, 3);
 
             PsevdoCycleSpaceRebuilder<Chain, Chain> Rebuilder = new PsevdoCycleSpaceRebuilder<Chain, Chain>(2);
             TestChain = Rebuilder.Rebuild(TestChain);
@@ -772,7 +772,7 @@ namespace TestPhantomChains.Classes.Statistics.MarkovChain
             ch.Add(f, 0);
             ch.Add(c, 1);
 
-            matr = new Matrix(alph.power, 2);
+            matr = new Matrix(alph.Power, 2);
             int[] array = new int[ch.Length];
             array[0] = alph.IndexOf(ch[0]);
             array[1] = alph.IndexOf(ch[1]);

@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
-using LibiadaCore.Classes.EventTheory;
 using LibiadaCore.Classes.Root;
+using LibiadaCore.Classes.Root.SimpleTypes;
 using LibiadaCore.Classes.TheoryOfSet;
 using PhantomChains.Classes.Statistics.MarkovChain.Builders;
 using PhantomChains.Classes.Statistics.MarkovChain.Matrixes.Absolute;
@@ -41,11 +41,11 @@ namespace PhantomChains.Classes.Statistics.MarkovChain.Matrixes.Probability
 
         public Dictionary<IBaseObject, double> GetProbabilityVector(Alphabet alphabet, int[] Pred)
         {
-            if (alphabet.power != alphPower)
+            if (alphabet.Power != alphPower)
             {
                 throw new Exception();
             }
-            if (Pred != null && !Pred.Equals(PsevdoValue.Instance()))
+            if (Pred != null && !Pred.Equals(NullValue.Instance()))
             {
                 throw new Exception();
             }

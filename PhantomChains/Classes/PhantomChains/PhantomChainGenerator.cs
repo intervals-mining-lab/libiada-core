@@ -70,7 +70,7 @@ namespace PhantomChains.Classes.PhantomChains
                         TempMessage.Add(new ValueChar('a'));
                         TempChains[i][j] = TempMessage;
                     }
-                    TempVariants *= (uint)TempMessage.power;
+                    TempVariants *= (uint)TempMessage.Power;
                     counter++;
                 }
                 if ((i != TempChains.Count - 1) || (TempChains.Count==1))

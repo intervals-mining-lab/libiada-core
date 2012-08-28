@@ -109,7 +109,7 @@ namespace PhantomChains.Classes.Statistics.MarkovChain
             IAbsoluteMatrix[] absMatrix = new IAbsoluteMatrix[uniformRang + 1];
             alphabet = chain.Alphabet;
             for (int i = 0; i < uniformRang + 1; i++)
-                absMatrix[i] = (IAbsoluteMatrix)builder.Create(alphabet.power, rang);
+                absMatrix[i] = (IAbsoluteMatrix)builder.Create(alphabet.Power, rang);
             SpaceRebuilder<ChainTeached, ChainTeached> Rebuilder = GetRebuilder(Method);
             chain = Rebuilder.Rebuild(chain);
 

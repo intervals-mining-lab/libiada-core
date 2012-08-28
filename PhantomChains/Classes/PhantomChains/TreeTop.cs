@@ -32,7 +32,7 @@ namespace PhantomChains.Classes.PhantomChains
             if ((InputChain != null) && (InputChain.Length != 0))
             {
                 ValuePhantom temp = (ValuePhantom)InputChain[0];
-                for (int i = 0; i < temp.power; i++)
+                for (int i = 0; i < temp.Power; i++)
                 {
                     Children.Add(new TreeNode(this, temp[i], Table));
                 }

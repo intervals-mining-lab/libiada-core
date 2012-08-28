@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using LibiadaCore.Classes.EventTheory;
 using LibiadaCore.Classes.Root;
 using LibiadaCore.Classes.Root.SimpleTypes;
 
@@ -46,11 +45,11 @@ namespace PhantomChains.Classes.PhantomChains
             {
                 ValuePhantom Temp = (ValuePhantom)InternalChain[i-1];
                 table[i] = new Record(Temp, v);
-                v *= (uint)Temp.power;
+                v *= (uint)Temp.Power;
             }
             //корню дерева не ставится в соответствие фантомное сообщение
             ValuePhantom t = new ValuePhantom();
-            t.Add(PsevdoValue.Instance());
+            t.Add(NullValue.Instance());
             table[0] = new Record(t, v);
         }
 

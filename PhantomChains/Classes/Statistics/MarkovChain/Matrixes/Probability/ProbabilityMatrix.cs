@@ -54,7 +54,7 @@ namespace PhantomChains.Classes.Statistics.MarkovChain.Matrixes.Probability
                 return ((IProbabilityMatrix)ValueList[Pred[0]]).GetProbabilityVector(alphabet, newIndexes);
             }
 
-            for (int i = 0; i < alphabet.power; i++)
+            for (int i = 0; i < alphabet.Power; i++)
             {
                 Result.Add(alphabet[i], ((MatrixBase)ValueList[i]).GetValue());
             }

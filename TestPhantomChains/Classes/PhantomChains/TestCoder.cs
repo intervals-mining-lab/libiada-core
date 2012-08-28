@@ -19,7 +19,7 @@ namespace TestPhantomChains.Classes.PhantomChains
                 Input[i] = new ValueChar(str[i]);
             }
             BaseChain Out = Coder.Encode(Input);
-            Assert.AreEqual("Phe", Out[0].ToString());
+            Assert.AreEqual("F", Out[0].ToString());
         }
 
         [Test]

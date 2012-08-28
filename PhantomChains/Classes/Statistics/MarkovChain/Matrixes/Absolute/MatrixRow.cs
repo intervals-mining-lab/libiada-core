@@ -1,6 +1,6 @@
 using System;
 using System.Collections;
-using LibiadaCore.Classes.EventTheory;
+using LibiadaCore.Classes.Root.SimpleTypes;
 using PhantomChains.Classes.Statistics.MarkovChain.Builders;
 using PhantomChains.Classes.Statistics.MarkovChain.Matrixes.Base;
 using PhantomChains.Classes.Statistics.MarkovChain.Matrixes.Probability;
@@ -57,7 +57,7 @@ namespace PhantomChains.Classes.Statistics.MarkovChain.Matrixes.Absolute
 
         public double Sum(int[] arrayOfIndexes)
         {
-            if (arrayOfIndexes != null && !arrayOfIndexes.Equals(PsevdoValue.Instance()))
+            if (arrayOfIndexes != null && !arrayOfIndexes.Equals(NullValue.Instance()))
             {
                 throw  new Exception();
             }

@@ -18,7 +18,7 @@ namespace PhantomChains.Classes.Statistics.MarkovCompare
         public double GetMiddleArith(MarkovChainNotUniformStatic<Chain, Chain> chain)
         {
             IProbabilityMatrix matrix = chain.PropabilityMatrix;
-            for (int i = 0; i < chain.Alphabet.power; i++)
+            for (int i = 0; i < chain.Alphabet.Power; i++)
             {
                 int[] array = {i};
                 Dictionary<IBaseObject, double> dic = matrix.GetProbabilityVector(chain.Alphabet, array);

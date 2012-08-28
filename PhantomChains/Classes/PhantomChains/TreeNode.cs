@@ -77,7 +77,7 @@ namespace PhantomChains.Classes.PhantomChains
             if ((table.Length != (level + 2))&&(Children.Count==0))
             {
                 ValuePhantom temp = table[level + 2].Content;
-                for (int i = 0; i < temp.power; i++)
+                for (int i = 0; i < temp.Power; i++)
                 {
                     Children.Add(new TreeNode(this, temp[i], table));
                 }
