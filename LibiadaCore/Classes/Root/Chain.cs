@@ -115,7 +115,19 @@ namespace LibiadaCore.Classes.Root
             return result;
         }
 
-        public void AddItem(IBaseObject item, int index)
+        ///<summary>
+        /// Свойстово позволяет получить доступ к элементу цепи по индексу
+        /// В случае выхода за границы цепи вызывается исключение
+        ///</summary>
+        ///<param name="index">номер элемента</param>
+        public new IBaseObject this[int index]
+        {
+            get { return Get(index); }
+
+            set { AddItem(value, index); }
+        }
+
+        public new void AddItem(IBaseObject item, int index)
         {
             base.AddItem(item, index);
 

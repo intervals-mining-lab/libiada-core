@@ -48,7 +48,7 @@ namespace LibiadaCore.Classes.Root.SimpleTypes
             {
                 return true;
             }
-            return value == ((ValueString) obj).value;
+            return value.Equals(((ValueString) obj).value);
         }
 
         public IBin GetBin()

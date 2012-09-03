@@ -109,7 +109,7 @@ namespace LibiadaCore.Classes.Root
         {
             get { return Get(index); }
 
-            set { Add(value, index); }
+            set { AddItem(value, index); }
         }
 
         ///<summary>
