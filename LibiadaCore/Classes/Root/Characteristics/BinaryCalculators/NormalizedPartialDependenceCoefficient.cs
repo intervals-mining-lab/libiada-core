@@ -6,6 +6,10 @@ namespace LibiadaCore.Classes.Root.Characteristics.BinaryCalculators
     {
         public double Calculate(Chain chain, IBaseObject firstElement, IBaseObject secondElement, LinkUp linkUp)
         {
+            if (firstElement.Equals(secondElement))
+            {
+                return 0;
+            }
             var partialDependenceCoefficient = new PartialDependenceCoefficient();
             double k1 = partialDependenceCoefficient.Calculate(chain, firstElement, secondElement, linkUp);
             int pairs = chain.GetPairsCount(firstElement, secondElement);
@@ -20,14 +24,7 @@ namespace LibiadaCore.Classes.Root.Characteristics.BinaryCalculators
                 result.Add(new List<double>());
                 for (int j = 0; j < chain.Alphabet.Power; j++)
                 {
-                    if (i != j)
-                    {
-                        result[i].Add(Calculate(chain, chain.Alphabet[i], chain.Alphabet[j], linkUp));
-                    }
-                    else
-                    {
-                        result[i].Add(0);
-                    }
+                    result[i].Add(Calculate(chain, chain.Alphabet[i], chain.Alphabet[j], linkUp));
                 }
             }
             return result;

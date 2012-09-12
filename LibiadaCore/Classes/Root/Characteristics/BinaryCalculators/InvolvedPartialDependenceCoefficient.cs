@@ -7,6 +7,10 @@ namespace LibiadaCore.Classes.Root.Characteristics.BinaryCalculators
     {
         public double Calculate(Chain chain, IBaseObject firstElement, IBaseObject secondElement, LinkUp linkUp)
         {
+            if (firstElement.Equals(secondElement))
+            {
+                return 0;
+            }
             UniformChain firstElementChain = (UniformChain)chain.UniformChain(firstElement);
             UniformChain secondElementChain = (UniformChain)chain.UniformChain(secondElement);
             int firstElementCount = (int)firstElementChain.GetCharacteristic(linkUp, new Count());
@@ -34,14 +38,7 @@ namespace LibiadaCore.Classes.Root.Characteristics.BinaryCalculators
                 result.Add(new List<double>());
                 for (int j = 0; j < chain.Alphabet.Power; j++)
                 {
-                    if (i != j)
-                    {
-                        result[i].Add(Calculate(chain, chain.Alphabet[i], chain.Alphabet[j], linkUp));
-                    }
-                    else
-                    {
-                        result[i].Add(0);
-                    }
+                    result[i].Add(Calculate(chain, chain.Alphabet[i], chain.Alphabet[j], linkUp));
                 }
             }
             return result;
