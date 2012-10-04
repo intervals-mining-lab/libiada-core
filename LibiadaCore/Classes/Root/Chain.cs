@@ -302,18 +302,5 @@ namespace LibiadaCore.Classes.Root
             }
             return pairs;
         }
-
-    }
-
-    ///<summary>
-    ///</summary>
-    public class ChainBin : IBin
-    {
-        public ArrayList uniformChains = new ArrayList();
-
-        public new IBaseObject GetInstance()
-        {
-            return new Chain();
-        }
     }
 }

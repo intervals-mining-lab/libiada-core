@@ -34,25 +34,9 @@ namespace LibiadaCore.Classes.Root.SimpleTypes
             return ReferenceEquals(this, obj);
         }
 
-        public IBin GetBin()
-        {
-            NullValueBin Temp = new NullValueBin();
-            return Temp;
-        }
-
         public override string ToString()
         {
             return "-";
-        }
-    }
-
-    ///<summary>
-    ///</summary>
-    public class NullValueBin : IBin
-    {
-        public IBaseObject GetInstance()
-        {
-            return NullValue.Instance();
         }
     }
 }

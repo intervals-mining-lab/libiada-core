@@ -15,11 +15,6 @@ namespace LibiadaCore.Classes.Root.SimpleTypes
             
         }
 
-        public ValueString(ValueStringBin bin)
-        {
-            value = (string)bin.value.Clone();
-        }
-
         ///<summary>
         ///</summary>
         ///<param name="str"></param>
@@ -51,13 +46,6 @@ namespace LibiadaCore.Classes.Root.SimpleTypes
             return value.Equals(((ValueString) obj).value);
         }
 
-        public IBin GetBin()
-        {
-            ValueStringBin temp = new ValueStringBin();
-            temp.value = value;
-            return temp;
-        }
-
         ///<summary>
         ///</summary>
         ///<param name="From"></param>
@@ -79,16 +67,6 @@ namespace LibiadaCore.Classes.Root.SimpleTypes
         public override string ToString()
         {
             return value;
-        }
-    }
-
-    public class ValueStringBin:IBin
-    {
-        public string value;
-
-        public IBaseObject GetInstance()
-        {
-            return new ValueString(this);
         }
     }
 }

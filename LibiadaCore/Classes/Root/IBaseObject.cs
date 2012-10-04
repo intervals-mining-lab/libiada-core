@@ -19,10 +19,5 @@ namespace LibiadaCore.Classes.Root
         ///<param name="obj">Объект c которым происходит проверка на эквивалентность</param>
         ///<returns>True если объекты эквивалентны, иначе false</returns>
         bool Equals(object obj);
-
-        ///<summary>
-        ///</summary>
-        ///<returns></returns>
-        IBin GetBin();
     }
 }

@@ -24,14 +24,6 @@ namespace LibiadaCore.Classes.Root.SimpleTypes
             this.value = value;
         }
 
-        ///<summary>
-        ///</summary>
-        ///<param name="data"></param>
-        public ValueChar(ValueCharBin data)
-        {
-            value = data.value;
-        }
-
         public IBaseObject Clone()
         {
             return new ValueChar(value);
@@ -44,14 +36,6 @@ namespace LibiadaCore.Classes.Root.SimpleTypes
                 return true;
             }
             return EqualsAsChar(obj as ValueChar);
-        }
-
-
-        public IBin GetBin()
-        {
-            ValueCharBin temp = new ValueCharBin();
-            temp.value = value;
-            return temp;
         }
 
         private bool EqualsAsChar(ValueChar c)
@@ -84,18 +68,6 @@ namespace LibiadaCore.Classes.Root.SimpleTypes
         public static implicit operator ValueChar(char from)
         {
             return new ValueChar(from);
-        }
-    }
-
-    ///<summary>
-    ///</summary>
-    public class ValueCharBin:IBin
-    {
-        public char value = default(char);
-
-        public IBaseObject GetInstance()
-        {
-            return new ValueChar(this);
         }
     }
 }

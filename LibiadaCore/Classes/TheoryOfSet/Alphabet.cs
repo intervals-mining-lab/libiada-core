@@ -22,36 +22,6 @@ namespace LibiadaCore.Classes.TheoryOfSet
         }
 
         ///<summary>
-        ///</summary>
-        ///<param name="Bin"></param>
-        public Alphabet(AlphabetBin Bin)
-        {
-            foreach (IBin item in Bin.Items)
-            {
-                vault.Add(item.GetInstance());
-            }
-        }
-
-        ///<summary>
-        ///</summary>
-        ///<returns></returns>
-        public IBin GetBin()
-        {
-            AlphabetBin Temp = new AlphabetBin();
-            FillBin(Temp);
-            return Temp;
-        }
-
-        protected virtual void FillBin(AlphabetBin temp)
-        {
-            foreach (IBaseObject baseObject in vault)
-            {
-                temp.Items.Add(baseObject.GetBin());
-            }
-
-        }
-
-        ///<summary>
         /// Свойство возвращает мощность алфавита.
         /// Кол-во элементов в алфавите. 
         ///</summary>
@@ -203,18 +173,6 @@ namespace LibiadaCore.Classes.TheoryOfSet
                 temp += 29*o.GetHashCode();
             }
             return temp;
-        }
-    }
-
-    ///<summary>
-    ///</summary>
-    public class AlphabetBin:IBin
-    {
-        public ArrayList Items = new ArrayList();
-
-        public IBaseObject GetInstance()
-        {
-            return new Alphabet(this);
         }
     }
 }

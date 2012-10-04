@@ -16,15 +16,6 @@ namespace LibiadaCore.Classes.Root.SimpleTypes
             value = i;
         }
 
-        ///<summary>
-        ///</summary>
-        ///<param name="i"></param>
-        public ValueInt(ValueIntBin i)
-        {
-            value = i.Value;
-        }
-
-
         public int value = 0;
 
         ///<summary>
@@ -56,11 +47,6 @@ namespace LibiadaCore.Classes.Root.SimpleTypes
             return value.Equals(((ValueInt) obj).value);
         }
 
-        public IBin GetBin()
-        {
-            return new ValueIntBin(value);
-        }
-
         ///<summary>
         ///</summary>
         ///<param name="From"></param>
@@ -82,25 +68,6 @@ namespace LibiadaCore.Classes.Root.SimpleTypes
         public override string ToString()
         {
             return value.ToString();
-        }
-    }
-
-    ///<summary>
-    ///</summary>
-    public class ValueIntBin : IBin
-    {
-        public int Value = 0;
-        ///<summary>
-        ///</summary>
-        ///<param name="value"></param>
-        public ValueIntBin(int value)
-        {
-            Value = value;
-        }
-
-        public IBaseObject GetInstance()
-        {
-            return new ValueInt(this);
         }
     }
 }

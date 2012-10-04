@@ -258,10 +258,5 @@ namespace LibiadaCore.Classes.Root
             }
             return true;
         }
-
-        public IBin GetBin()
-        {
-            throw new NotImplementedException();
-        }
     }
 }

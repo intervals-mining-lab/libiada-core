@@ -95,7 +95,6 @@
     <Compile Include="Classes\Root\Characteristics\CharacteristicsEnum.cs" />
     <Compile Include="Classes\Root\Characteristics\CharacteristicsFactory.cs" />
     <Compile Include="Classes\Root\IBaseObject.cs" />
-    <Compile Include="Classes\Root\IBin.cs" />
     <Compile Include="Classes\Root\LinkUp.cs" />
     <Compile Include="Classes\Root\SimpleTypes\NullValue.cs" />
     <Compile Include="Classes\Root\SimpleTypes\ValuePhantom.cs" />
