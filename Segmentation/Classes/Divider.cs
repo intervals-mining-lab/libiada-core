@@ -48,7 +48,7 @@ namespace Segmentation.Classes
                 AlphabetChain practis_alphabet = simple_divider.DivideToAccords(level);
                 divided_chain = simple_divider.convoluted_chain;
                 double tv = Get_theory_volume(practis_alphabet, simple_divider.convoluted_chain);
-                delta = (tv - practis_alphabet.power);
+                delta = (tv - practis_alphabet.Power);
 
                 if(Math.Abs(delta)<Math.Abs(best_delta))
                 {

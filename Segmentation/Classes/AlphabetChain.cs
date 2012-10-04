@@ -20,7 +20,7 @@ namespace Segmentation.Classes
         public ArrayList GetLengthList()
         {
             SortedList list = new SortedList();
-            for (int i = 0; i < power; i++)
+            for (int i = 0; i < Power; i++)
             {
                 int l = ((Chain)this[i]).Length;
                 if (list.ContainsKey(l)) continue;
