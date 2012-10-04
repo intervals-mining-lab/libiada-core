@@ -36,31 +36,35 @@ namespace LibiadaCore.Classes.Root
         }
 
         ///<summary>
-        ///</summary>
-        ///<param name="length"></param>
-        public new void ClearAndSetNewLength(int length)
-        {
-            base.ClearAndSetNewLength(length);
-            PUniformChains = new UniformChain[alphabet.Power];
-        }
-
-        ///<summary>
         /// Конструктор, создает цепь из строки символов
         ///</summary>
         ///<param name="s"></param>
-        public Chain(string s) : base(s)
+        public Chain(string s)
+            : base(s)
         {
         }
 
-        public Chain(String building, Alphabet alphabet):base(building, alphabet)
+        public Chain(String building, Alphabet alphabet)
+            : base(building, alphabet)
         {
-            PUniformChains = new UniformChain[this.alphabet.Power - 1];
+            CreateUnformChains();
         }
 
-        public Chain(int[] building, Alphabet alphabet):base(building, alphabet)
+        public Chain(int[] building, Alphabet alphabet)
+            : base(building, alphabet)
+        {
+            CreateUnformChains();
+        }
+
+        public Chain(List<IBaseObject> chain):base(chain)
+        {
+            CreateUnformChains();
+        }
+
+        private void CreateUnformChains()
         {
             PUniformChains = new UniformChain[this.alphabet.Power - 1];
-            for (int i = 0; i < this.alphabet.Power - 1; i++ )
+            for (int i = 0; i < this.alphabet.Power - 1; i++)
             {
                 this.PUniformChains[i] = new UniformChain(building.Length, this.alphabet[i + 1]);
             }
@@ -69,6 +73,17 @@ namespace LibiadaCore.Classes.Root
                 PUniformChains[building[j] - 1][j] = this.alphabet[building[j]];
             }
         }
+
+        ///<summary>
+        ///</summary>
+        ///<param name="length"></param>
+        public new void ClearAndSetNewLength(int length)
+        {
+            base.ClearAndSetNewLength(length);
+            PUniformChains = new UniformChain[alphabet.Power];
+        }
+
+        
 
         public IBaseObject Clone()
         {

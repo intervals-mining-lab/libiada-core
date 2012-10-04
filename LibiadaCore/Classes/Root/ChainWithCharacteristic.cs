@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using LibiadaCore.Classes.Root.Characteristics;
 using LibiadaCore.Classes.Root.Characteristics.AuxiliaryInterfaces;
 using LibiadaCore.Classes.Root.Characteristics.Calculators;
@@ -29,18 +30,29 @@ namespace LibiadaCore.Classes.Root
         protected ChainWithCharacteristic(string s)
             : base(s)
         {
+            pIntervals = new FrequencyList();
+            startinterval = new FrequencyList();
+            endinterval = new FrequencyList();
         }
 
-        ///<summary>
-        ///</summary>
-        public ChainWithCharacteristic(String building, Alphabet alphabet):base(building, alphabet)
+        protected ChainWithCharacteristic(List<IBaseObject> chain):base(chain)
         {
             pIntervals = new FrequencyList();
             startinterval = new FrequencyList();
             endinterval = new FrequencyList();
         }
 
-        public ChainWithCharacteristic(int[] building, Alphabet alphabet)
+        ///<summary>
+        ///</summary>
+        protected ChainWithCharacteristic(String building, Alphabet alphabet)
+            : base(building, alphabet)
+        {
+            pIntervals = new FrequencyList();
+            startinterval = new FrequencyList();
+            endinterval = new FrequencyList();
+        }
+
+        protected ChainWithCharacteristic(int[] building, Alphabet alphabet)
             : base(building, alphabet)
         {
             pIntervals = new FrequencyList();

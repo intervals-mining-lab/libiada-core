@@ -21,39 +21,39 @@ namespace TestLibiadaCore.Classes.Misc.SpaceRebuilders
         public void TestFromParentToChild()
         {
 
-            Chain ObjectParentClass = new Chain(12);
-            BaseChain ObjectChildClass = new BaseChain(12);
+            Chain chain = new Chain(12);
+            BaseChain baseChain = new BaseChain(12);
             BaseChain Result = null;
 
-            ObjectParentClass.Add((ValueString)"a", 0);
-            ObjectParentClass.Add((ValueString)"d", 1);
-            ObjectParentClass.Add((ValueString)"b", 2);
-            ObjectParentClass.Add((ValueString)"a", 3);
-            ObjectParentClass.Add((ValueString)"a", 4);
-            ObjectParentClass.Add((ValueString)"c", 5);
-            ObjectParentClass.Add((ValueString)"b", 6);
-            ObjectParentClass.Add((ValueString)"b", 7);
-            ObjectParentClass.Add((ValueString)"a", 8);
-            ObjectParentClass.Add((ValueString)"a", 9);
-            ObjectParentClass.Add((ValueString)"c", 10);
-            ObjectParentClass.Add((ValueString)"a", 11);
+            chain.Add((ValueString)"a", 0);
+            chain.Add((ValueString)"d", 1);
+            chain.Add((ValueString)"b", 2);
+            chain.Add((ValueString)"a", 3);
+            chain.Add((ValueString)"a", 4);
+            chain.Add((ValueString)"c", 5);
+            chain.Add((ValueString)"b", 6);
+            chain.Add((ValueString)"b", 7);
+            chain.Add((ValueString)"a", 8);
+            chain.Add((ValueString)"a", 9);
+            chain.Add((ValueString)"c", 10);
+            chain.Add((ValueString)"a", 11);
 
-            ObjectChildClass.Add((ValueString)"a", 0);
-            ObjectChildClass.Add((ValueString)"d", 1);
-            ObjectChildClass.Add((ValueString)"b", 2);
-            ObjectChildClass.Add((ValueString)"a", 3);
-            ObjectChildClass.Add((ValueString)"a", 4);
-            ObjectChildClass.Add((ValueString)"c", 5);
-            ObjectChildClass.Add((ValueString)"b", 6);
-            ObjectChildClass.Add((ValueString)"b", 7);
-            ObjectChildClass.Add((ValueString)"a", 8);
-            ObjectChildClass.Add((ValueString)"a", 9);
-            ObjectChildClass.Add((ValueString)"c", 10);
-            ObjectChildClass.Add((ValueString)"a", 11);
+            baseChain.Add((ValueString)"a", 0);
+            baseChain.Add((ValueString)"d", 1);
+            baseChain.Add((ValueString)"b", 2);
+            baseChain.Add((ValueString)"a", 3);
+            baseChain.Add((ValueString)"a", 4);
+            baseChain.Add((ValueString)"c", 5);
+            baseChain.Add((ValueString)"b", 6);
+            baseChain.Add((ValueString)"b", 7);
+            baseChain.Add((ValueString)"a", 8);
+            baseChain.Add((ValueString)"a", 9);
+            baseChain.Add((ValueString)"c", 10);
+            baseChain.Add((ValueString)"a", 11);
 
             NullRebuilder<BaseChain, Chain> Rebulder = new NullRebuilder<BaseChain, Chain>();
-            Result = Rebulder.Rebuild(ObjectParentClass);
-            Assert.AreEqual(ObjectChildClass, Result);
+            Result = Rebulder.Rebuild(chain);
+            Assert.AreEqual(baseChain, Result);
         }
 
         ///<summary>
@@ -64,39 +64,39 @@ namespace TestLibiadaCore.Classes.Misc.SpaceRebuilders
         public void TestFromChildToParent()
         {
 
-            Chain ObjectParentClass = new Chain(12);
-            BaseChain ObjectChildClass = new BaseChain(12);
+            Chain chain = new Chain(12);
+            BaseChain baseChain = new BaseChain(12);
             Chain Result = null;
 
-            ObjectParentClass.Add((ValueString)"a", 0);
-            ObjectParentClass.Add((ValueString)"d", 1);
-            ObjectParentClass.Add((ValueString)"b", 2);
-            ObjectParentClass.Add((ValueString)"a", 3);
-            ObjectParentClass.Add((ValueString)"a", 4);
-            ObjectParentClass.Add((ValueString)"c", 5);
-            ObjectParentClass.Add((ValueString)"b", 6);
-            ObjectParentClass.Add((ValueString)"b", 7);
-            ObjectParentClass.Add((ValueString)"a", 8);
-            ObjectParentClass.Add((ValueString)"a", 9);
-            ObjectParentClass.Add((ValueString)"c", 10);
-            ObjectParentClass.Add((ValueString)"a", 11);
+            chain.Add((ValueString)"a", 0);
+            chain.Add((ValueString)"d", 1);
+            chain.Add((ValueString)"b", 2);
+            chain.Add((ValueString)"a", 3);
+            chain.Add((ValueString)"a", 4);
+            chain.Add((ValueString)"c", 5);
+            chain.Add((ValueString)"b", 6);
+            chain.Add((ValueString)"b", 7);
+            chain.Add((ValueString)"a", 8);
+            chain.Add((ValueString)"a", 9);
+            chain.Add((ValueString)"c", 10);
+            chain.Add((ValueString)"a", 11);
 
-            ObjectChildClass.Add((ValueString)"a", 0);
-            ObjectChildClass.Add((ValueString)"d", 1);
-            ObjectChildClass.Add((ValueString)"b", 2);
-            ObjectChildClass.Add((ValueString)"a", 3);
-            ObjectChildClass.Add((ValueString)"a", 4);
-            ObjectChildClass.Add((ValueString)"c", 5);
-            ObjectChildClass.Add((ValueString)"b", 6);
-            ObjectChildClass.Add((ValueString)"b", 7);
-            ObjectChildClass.Add((ValueString)"a", 8);
-            ObjectChildClass.Add((ValueString)"a", 9);
-            ObjectChildClass.Add((ValueString)"c", 10);
-            ObjectChildClass.Add((ValueString)"a", 11);
+            baseChain.Add((ValueString)"a", 0);
+            baseChain.Add((ValueString)"d", 1);
+            baseChain.Add((ValueString)"b", 2);
+            baseChain.Add((ValueString)"a", 3);
+            baseChain.Add((ValueString)"a", 4);
+            baseChain.Add((ValueString)"c", 5);
+            baseChain.Add((ValueString)"b", 6);
+            baseChain.Add((ValueString)"b", 7);
+            baseChain.Add((ValueString)"a", 8);
+            baseChain.Add((ValueString)"a", 9);
+            baseChain.Add((ValueString)"c", 10);
+            baseChain.Add((ValueString)"a", 11);
 
             NullRebuilder<Chain, BaseChain> Rebulder = new NullRebuilder<Chain, BaseChain>();
-            Result = Rebulder.Rebuild(ObjectChildClass);
-            Assert.AreEqual(ObjectParentClass, Result);
+            Result = Rebulder.Rebuild(baseChain);
+            Assert.AreEqual(chain, Result);
         }
     }
 }

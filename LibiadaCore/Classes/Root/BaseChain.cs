@@ -33,6 +33,16 @@ namespace LibiadaCore.Classes.Root
             alphabet.Add(NullValue.Instance());
         }
 
+        public BaseChain(List<IBaseObject> chain)
+        {
+            ClearAndSetNewLength(chain.Count);
+            alphabet.Add(NullValue.Instance());
+            for (int i = 0; i < this.length; i++)
+            {
+                this.Add(chain[i], i);
+            }
+        }
+
         ///<summary>
         /// Создает цепь из строки символов
         ///</summary>
