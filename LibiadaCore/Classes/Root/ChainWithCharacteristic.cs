@@ -208,11 +208,5 @@ namespace LibiadaCore.Classes.Root
             base.RemoveAt(index);
             MarkChanged();
         }
-
-        public void AddItem(IBaseObject item, int index)
-        {
-            base.AddItem(item, index);
-            MarkChanged();
-        }
     }
 }

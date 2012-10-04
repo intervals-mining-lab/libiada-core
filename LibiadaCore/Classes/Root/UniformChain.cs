@@ -78,17 +78,12 @@ namespace LibiadaCore.Classes.Root
             return Length;
         }
 
-        public void AddItem(IBaseObject item, int index)
+        public void Add(IBaseObject item, int index)
         {
             if (Message.Equals(item))
             {
-                base.AddItem(item, index);
+                base.Add(item, index);
             }
-        }
-
-        public void Add(IBaseObject item, int index)
-        {
-            AddItem(item, index);
         }
 
         private FrequencyList GetFrequancyIntervalList(int number)

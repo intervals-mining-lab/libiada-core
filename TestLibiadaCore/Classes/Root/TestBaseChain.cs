@@ -71,7 +71,7 @@ namespace TestLibiadaCore.Classes.Root
         [Test]
         public void TestGetbyThis()
         {
-            ChainBase.AddItem(new ValueChar('1'), 0);
+            ChainBase.Add(new ValueChar('1'), 0);
             Assert.AreEqual(((ValueChar) ChainBase[0]).value, '1');
         }
 
@@ -92,7 +92,7 @@ namespace TestLibiadaCore.Classes.Root
         [Test]
         public void TestGet()
         {
-            ChainBase.AddItem(new ValueChar('1'), 0);
+            ChainBase.Add(new ValueChar('1'), 0);
             Assert.AreEqual(((ValueChar) ChainBase.Get(0)).value, '1');
         }
 

@@ -14,15 +14,15 @@ namespace LibiadaCore.Classes.Misc.Iterators
         ///<summary>
         /// Длинна возвращаемого фрагмента цепи
         ///</summary>
-        protected int pLength;
+        protected readonly int pLength;
         ///<summary>
         /// Шаг итерации
         ///</summary>
-        protected int pStep;
+        protected readonly int pStep;
         ///<summary>
         /// Цепь по которой будет перемещатся итератор
         ///</summary>
-        protected ChainToIterate ptoIterate;
+        protected readonly ChainToIterate ptoIterate;
         ///<summary>
         /// Текушая позиция итератора
         ///</summary>
@@ -30,7 +30,7 @@ namespace LibiadaCore.Classes.Misc.Iterators
         ///<summary>
         /// Максимальное кол-во смещений
         ///</summary>
-        protected int maxcount;
+        protected readonly int maxcount;
 
 
         ///<summary>

@@ -32,6 +32,7 @@ namespace LibiadaCore.Classes.Root
         ///</summary>
         public Chain()
         {
+            PUniformChains = new UniformChain[0];
         }
 
         ///<summary>
@@ -120,16 +121,16 @@ namespace LibiadaCore.Classes.Root
         /// В случае выхода за границы цепи вызывается исключение
         ///</summary>
         ///<param name="index">номер элемента</param>
-        public new IBaseObject this[int index]
+        public IBaseObject this[int index]
         {
             get { return Get(index); }
 
-            set { AddItem(value, index); }
+            set { Add(value, index); }
         }
 
-        public new void AddItem(IBaseObject item, int index)
+        public override void Add(IBaseObject item, int index)
         {
-            base.AddItem(item, index);
+            base.Add(item, index);
 
             if (PUniformChains.Length != (alphabet.Power - 1))
             {
@@ -144,13 +145,8 @@ namespace LibiadaCore.Classes.Root
 
             foreach (UniformChain chain in PUniformChains)
             {
-                chain.AddItem(item, index);
+                chain.Add(item, index);
             }
-        }
-
-        public void Add(IBaseObject item, int index)
-        {
-            AddItem(item, index);
         }
 
         protected override void BuildIntervals()

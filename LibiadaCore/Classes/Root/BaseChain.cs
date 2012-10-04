@@ -105,11 +105,11 @@ namespace LibiadaCore.Classes.Root
         /// В случае выхода за границы цепи вызывается исключение
         ///</summary>
         ///<param name="index">номер элемента</param>
-        public IBaseObject this[int index]
+        public virtual IBaseObject this[int index]
         {
             get { return Get(index); }
 
-            set { AddItem(value, index); }
+            set { Add(value, index); }
         }
 
         ///<summary>
@@ -128,7 +128,7 @@ namespace LibiadaCore.Classes.Root
         ///</summary>
         ///<param name="item">Устанвалеваемый элемент </param>
         ///<param name="index">Номер позиции в цепи куда устанавливается элемент</param>
-        public void Add(IBaseObject item, int index)
+        public virtual void Add(IBaseObject item, int index)
         {
             if (item == null)
             {
@@ -144,17 +144,6 @@ namespace LibiadaCore.Classes.Root
             }
 
             building[index] = pos;
-        }
-
-        ///<summary>
-        /// Помещает величину в место place
-        ///</summary>
-        ///<param name="item">Объект типа I который требуется поместить в указанное меcто</param>
-        ///<param name="index">Место в котрое требуется поместить величину item</param>
-        ///<exception cref="Exception">В случае если место выходит за пределы пространства вызывается исключение</exception>
-        public virtual void AddItem(IBaseObject item, int index)
-        {
-            Add(item, index);
         }
 
         ///<summary>
