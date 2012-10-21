@@ -18,14 +18,6 @@ namespace NewClusterization.Classes.DataMining.Clusterization
             }
         }
 
-        ///<summary>
-        ///</summary>
-        ///<param name="bin"></param>
-        public Cluster(ClusterBin bin)
-        {
-            Items = (ArrayList)bin.Items.Clone();
-        }
-
 
         private Cluster()
         {
@@ -36,25 +28,6 @@ namespace NewClusterization.Classes.DataMining.Clusterization
             Cluster Temp = new Cluster();
             Temp.Items = (ArrayList) Items.Clone();
             return Temp;
-        }
-
-        public IBin GetBin()
-        {
-            ClusterBin Temp = new ClusterBin();
-            Temp.Items = (ArrayList) Items.Clone();
-            return Temp;
-        }
-    }
-
-    ///<summary>
-    ///</summary>
-    public class ClusterBin: IBin
-    {
-        public ArrayList Items = new ArrayList();
-
-        public IBaseObject GetInstance()
-        {
-            return new Cluster(this);
         }
     }
 }

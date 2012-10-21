@@ -14,18 +14,6 @@ namespace NewClusterization.Classes.DataMining.Clusterization
 
         ///<summary>
         ///</summary>
-        ///<param name="bin"></param>
-        public DataObject(DataObjectBin bin)
-        {
-            id = bin.id;
-            foreach (DictionaryEntry entry in bin.vault)
-            {
-                vault.Add(entry.Key, entry.Value);
-            }
-        }
-
-        ///<summary>
-        ///</summary>
         public DataObject()
         {
         }
@@ -93,30 +81,6 @@ namespace NewClusterization.Classes.DataMining.Clusterization
         public IBaseObject Clone()
         {
             throw new NotImplementedException();
-        }
-
-        public IBin GetBin()
-        {
-            DataObjectBin Temp =new DataObjectBin();
-            Temp.id = id;
-            foreach (DictionaryEntry entry in vault)
-            {
-                Temp.vault.Add(entry);
-            }
-            return Temp;
-        }
-    }
-
-    ///<summary>
-    ///</summary>
-    public class DataObjectBin: IBin
-    {
-        public long id;
-        public ArrayList vault = new ArrayList();
-
-        public IBaseObject GetInstance()
-        {
-            return new DataObject(this);
         }
     }
 }

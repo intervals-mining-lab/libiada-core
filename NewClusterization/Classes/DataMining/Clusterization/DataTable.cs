@@ -13,17 +13,6 @@ namespace NewClusterization.Classes.DataMining.Clusterization
 
         ///<summary>
         ///</summary>
-        ///<param name="bin"></param>
-        public DataTable(DataTableBin bin)
-        {
-            foreach (DictionaryEntry entry in bin.Objects)
-            {
-                vault.Add(entry.Key, ((DataObjectBin)entry.Value).GetInstance());
-            }
-        }
-
-        ///<summary>
-        ///</summary>
         public DataTable()
         {
         }
@@ -61,28 +50,6 @@ namespace NewClusterization.Classes.DataMining.Clusterization
         public IBaseObject Clone()
         {
             throw new NotImplementedException();
-        }
-
-        public IBin GetBin()
-        {
-            DataTableBin Temp = new DataTableBin();
-            foreach (DictionaryEntry entry in vault)
-            {
-                Temp.Objects.Add(new DictionaryEntry(entry.Key, ((IBaseObject) entry.Value).GetBin()));
-            }
-            return Temp;
-        }
-    }
-
-    ///<summary>
-    ///</summary>
-    public class DataTableBin:IBin
-    {
-        public ArrayList Objects = new ArrayList();
-
-        public IBaseObject GetInstance()
-        {
-            return new DataTable(this);
         }
     }
 }
