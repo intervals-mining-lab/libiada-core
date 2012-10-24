@@ -296,15 +296,15 @@ namespace MDA.OIP.MusicXml
             return null;
         }
 
-        private List<Note> parseNotes(XmlNode measureNode)
+        private List<ValueNote> parseNotes(XmlNode measureNode)
         {
-            List<Note> Temp = new List<Note>();
+            List<ValueNote> Temp = new List<ValueNote>();
             bool hasNotes = false;
             foreach (XmlNode measureChild in measureNode.ChildNodes)
             {
                 if (measureChild.Name == "note")
                 {
-                    Temp.Add(new Note(parsePitch((XmlNode) measureChild.Clone()),
+                    Temp.Add(new ValueNote(parsePitch((XmlNode) measureChild.Clone()),
                                       parseDuration((XmlNode) measureChild.Clone()),
                                       parseTriplet((XmlNode) measureChild.Clone()),
                                       parseTie((XmlNode) measureChild.Clone())));

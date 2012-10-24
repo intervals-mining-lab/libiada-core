@@ -56,34 +56,33 @@
     </CodeAnalysisDependentAssemblyPaths>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ICLTest\TestAverageLength.cs">
+    <Compile Include="ICL\TestAverageLength.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="ICLTest\TestNoteRemoteness.cs">
+    <Compile Include="ICL\TestNoteRemoteness.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="ICLTest\TestWithinWordRemoteness.cs">
+    <Compile Include="ICL\TestWithinWordRemoteness.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="ICLTest\TestWordRemoteness.cs">
+    <Compile Include="ICL\TestWordRemoteness.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="OIPTest\TestBorodaDivider\TestFmotiv.cs" />
-    <Compile Include="OIPTest\TestBorodaDivider\TestFmotivChain.cs" />
-    <Compile Include="OIPTest\TestBorodaDivider\TestFmotivDivider.cs" />
-    <Compile Include="OIPTest\TestBorodaDivider\TestFmotivIdentificator.cs" />
-    <Compile Include="OIPTest\TestBorodaDivider\TestFMSequentEquality.cs" />
-    <Compile Include="OIPTest\TestBorodaDivider\TestPauseTreatment.cs" />
-    <Compile Include="OIPTest\TestBorodaDivider\TestPriorityDiscover.cs" />
-    <Compile Include="OIPTest\TestMusicXml\TestMusicXmlParser.cs" />
-    <Compile Include="OIPTest\TestMusicXml\TestMusicXmlReader.cs" />
-    <Compile Include="OIPTest\TestScoreModel\TestDuration.cs" />
-    <Compile Include="OIPTest\TestScoreModel\TestMeasure.cs" />
-    <Compile Include="OIPTest\TestScoreModel\TestNote.cs" />
-    <Compile Include="OIPTest\TestScoreModel\TestTie.cs" />
-    <Compile Include="OIPTest\TestScoreModel\TestUniformScoreTrack.cs" />
+    <Compile Include="OIP\BorodaDivider\TestFmotivChain.cs" />
+    <Compile Include="OIP\BorodaDivider\TestFmotivDivider.cs" />
+    <Compile Include="OIP\BorodaDivider\TestFmotivIdentificator.cs" />
+    <Compile Include="OIP\BorodaDivider\TestFMSequentEquality.cs" />
+    <Compile Include="OIP\BorodaDivider\TestPauseTreatment.cs" />
+    <Compile Include="OIP\BorodaDivider\TestPriorityDiscover.cs" />
+    <Compile Include="OIP\MusicXml\TestMusicXmlParser.cs" />
+    <Compile Include="OIP\MusicXml\TestMusicXmlReader.cs" />
+    <Compile Include="OIP\ScoreModel\TestDuration.cs" />
+    <Compile Include="OIP\ScoreModel\TestMeasure.cs" />
+    <Compile Include="OIP\ScoreModel\TestNote.cs" />
+    <Compile Include="OIP\ScoreModel\TestTie.cs" />
+    <Compile Include="OIP\ScoreModel\TestUniformScoreTrack.cs" />
+    <Compile Include="OIP\BorodaDivider\TestFmotiv.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Test.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MDA\MDA.csproj">

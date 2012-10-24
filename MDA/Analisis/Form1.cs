@@ -84,15 +84,15 @@ namespace MDA.Analisis
 
                 foreach (FmotivChain fmchain in Listfmotivchains)
                 {
-                    st.WriteLine("Fmotiv Chain № " + fmchain.Id.ToString() + " Name = " + fmchain.Name);
+                    st.WriteLine("Fmotiv Chain Name = " + fmchain.Name);
                     st.WriteLine();
                     st.WriteLine("------------------------");
 
-                    foreach (Fmotiv fmotiv in fmchain.FmotivList)
+                    for (int j = 0; j < fmchain.Length; j++ )
                     {
-                        st.WriteLine("Fmotiv № " + fmotiv.Id.ToString() + " | type " + fmotiv.Type);
+                        st.WriteLine("Fmotiv № " + fmchain.Building[j].ToString() + " | type " + ((Fmotiv)fmchain[j]).Type);
                         st.WriteLine();
-                        foreach (Note note in fmotiv.NoteList)
+                        foreach (ValueNote note in ((Fmotiv)fmchain[j]).NoteList)
                         {
                             // TODO : добавить вывод триоли и лиги
                             if (note.Pitch != null)
@@ -136,9 +136,9 @@ namespace MDA.Analisis
 
                 textBox1.Clear();
                 int i = 0;
-                for (i = 0; i < Listfmotivchains[0].FmotivList.Count; i++) // COUNT -> (string []) LENGTH error
+                for (i = 0; i < Listfmotivchains[0].Length; i++) // COUNT -> (string []) LENGTH error
                 {
-                    textBox1.Text = textBox1.Text + Listfmotivchains[0].FmotivList[i].Id + '\r' + '\n';
+                    textBox1.Text = textBox1.Text + Listfmotivchains[0].Building[i] + '\r' + '\n';
                 }
                 //textBox1.Text = textBox1.Text + r.GetData()[i];
                 new Drawer().Clean(this);
@@ -348,7 +348,7 @@ namespace MDA.Analisis
         //----------------------------------------------------------------------------
 
         /*-----------------------------------test------------------------------------
-	
+    
                 private void button20_Click(object sender, EventArgs e)
                 {
                     GraphPane pane = zedGraphControl5.GraphPane;     // Получим панель для рисования

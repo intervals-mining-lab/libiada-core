@@ -281,11 +281,11 @@ namespace MDA.OIP.View
                                 Composition com = new Composition();
                                 int i = 0;
 
-                                for (i = 0; i < Listfmotivchains[0].FmotivList.Count; i++)
+                                for (i = 0; i < Listfmotivchains[0].Length; i++)
                                     // previously was .Count , not .Lenght
                                 {
-                                    com.AddFM(Listfmotivchains[0].FmotivList[i].Id.ToString());
-                                    xlWorkSheet1.Cells[(i + 2), 1] = Listfmotivchains[0].FmotivList[i].Id;
+                                    com.AddFM(Listfmotivchains[0].Building[i].ToString());
+                                    xlWorkSheet1.Cells[(i + 2), 1] = Listfmotivchains[0].Building[i];
                                 }
                                 com.CreatePLex();
                                 com.CreateTlex();
@@ -298,7 +298,7 @@ namespace MDA.OIP.View
                                 com.FillDisplayData();
 
                                 xlWorkSheetFmSeqPauseIgnore.Cells[n, 1] = item.Name;
-                                xlWorkSheetFmSeqPauseIgnore.Cells[n, 2] = Listfmotivchains[0].FmotivList.Count;
+                                xlWorkSheetFmSeqPauseIgnore.Cells[n, 2] = Listfmotivchains[0].Length;
                                 xlWorkSheetFmSeqPauseIgnore.Cells[n, 3] = com.PLex.CalcGreatFrequency();
                                 xlWorkSheetFmSeqPauseIgnore.Cells[n, 4] = com.PLex.Capacity;
                                 xlWorkSheetFmSeqPauseIgnore.Cells[n, 5] = com.TLex.Capacity;
@@ -308,7 +308,7 @@ namespace MDA.OIP.View
                                 xlWorkSheetFmSeqPauseIgnore.Cells[n, 8] = com.Entropy;
                                 xlWorkSheetFmSeqPauseIgnore.Cells[n, 9] = com.AvgDepth;
                                 xlWorkSheetFmSeqPauseIgnore.Cells[n, 10] = com.Entropy*
-                                                                           Listfmotivchains[0].FmotivList.Count;
+                                                                           Listfmotivchains[0].Length;
                                 xlWorkSheetFmSeqPauseIgnore.Cells[n, 11] = com.Regularity;
 
 
@@ -328,17 +328,17 @@ namespace MDA.OIP.View
                             {
                                 Composition com = new Composition();
 
-                                Chain mychain = new Chain(Listfmotivchains3[0].FmotivList.Count);
+                                Chain mychain = new Chain(Listfmotivchains3[0].Length);
                                 int i = 0;
 
-                                for (i = 0; i < Listfmotivchains3[0].FmotivList.Count; i++)
+                                for (i = 0; i < Listfmotivchains3[0].Length; i++)
                                     // previously was .Count , not .Lenght
                                 {
-                                    com.AddFM(Listfmotivchains3[0].FmotivList[i].Id.ToString());
+                                    com.AddFM(Listfmotivchains3[0].Building[i].ToString());
 
-                                    mychain.Add(new ValueInt(Listfmotivchains3[0].FmotivList[i].Id), i);
+                                    mychain.Add(new ValueInt(Listfmotivchains3[0].Building[i]), i);
 
-                                    xlWorkSheet1.Cells[(i + 2), 3] = Listfmotivchains3[0].FmotivList[i].Id;
+                                    xlWorkSheet1.Cells[(i + 2), 3] = Listfmotivchains3[0].Building[i];
                                 }
                                 com.CreatePLex();
                                 com.CreateTlex();
@@ -441,7 +441,7 @@ namespace MDA.OIP.View
                                 //------------------------------------------------------------------------------
 
                                 xlWorkSheetFmSeqDuarPlus.Cells[n, 1] = item.Name;
-                                xlWorkSheetFmSeqDuarPlus.Cells[n, 2] = Listfmotivchains3[0].FmotivList.Count;
+                                xlWorkSheetFmSeqDuarPlus.Cells[n, 2] = Listfmotivchains3[0].Length;
                                 xlWorkSheetFmSeqDuarPlus.Cells[n, 3] = com.PLex.CalcGreatFrequency();
                                 xlWorkSheetFmSeqDuarPlus.Cells[n, 4] = com.PLex.Capacity;
                                 xlWorkSheetFmSeqDuarPlus.Cells[n, 5] = com.TLex.Capacity;
@@ -451,7 +451,7 @@ namespace MDA.OIP.View
                                 xlWorkSheetFmSeqDuarPlus.Cells[n, 8] = com.Entropy;
                                 xlWorkSheetFmSeqDuarPlus.Cells[n, 9] = com.AvgDepth;
                                 xlWorkSheetFmSeqDuarPlus.Cells[n, 10] = com.Entropy*
-                                                                        Listfmotivchains3[0].FmotivList.Count;
+                                                                        Listfmotivchains3[0].Length;
                                 xlWorkSheetFmSeqDuarPlus.Cells[n, 11] = com.Regularity;
                             }
                             catch (Exception err)
@@ -468,11 +468,11 @@ namespace MDA.OIP.View
                                 Composition com = new Composition();
                                 int i = 0;
 
-                                for (i = 0; i < Listfmotivchains4[0].FmotivList.Count; i++)
+                                for (i = 0; i < Listfmotivchains4[0].Length; i++)
                                     // previously was .Count , not .Lenght
                                 {
-                                    com.AddFM(Listfmotivchains4[0].FmotivList[i].Id.ToString());
-                                    xlWorkSheet1.Cells[(i + 2), 2] = Listfmotivchains4[0].FmotivList[i].Id;
+                                    com.AddFM(Listfmotivchains4[0].Building[i].ToString());
+                                    xlWorkSheet1.Cells[(i + 2), 2] = Listfmotivchains4[0].Building[i];
                                 }
                                 com.CreatePLex();
                                 com.CreateTlex();
@@ -485,7 +485,7 @@ namespace MDA.OIP.View
                                 com.FillDisplayData();
 
                                 xlWorkSheetFmSeqSilencePause.Cells[n, 1] = item.Name;
-                                xlWorkSheetFmSeqSilencePause.Cells[n, 2] = Listfmotivchains4[0].FmotivList.Count;
+                                xlWorkSheetFmSeqSilencePause.Cells[n, 2] = Listfmotivchains4[0].Length;
                                 xlWorkSheetFmSeqSilencePause.Cells[n, 3] = com.PLex.CalcGreatFrequency();
                                 xlWorkSheetFmSeqSilencePause.Cells[n, 4] = com.PLex.Capacity;
                                 xlWorkSheetFmSeqSilencePause.Cells[n, 5] = com.TLex.Capacity;
@@ -495,7 +495,7 @@ namespace MDA.OIP.View
                                 xlWorkSheetFmSeqSilencePause.Cells[n, 8] = com.Entropy;
                                 xlWorkSheetFmSeqSilencePause.Cells[n, 9] = com.AvgDepth;
                                 xlWorkSheetFmSeqSilencePause.Cells[n, 10] = com.Entropy*
-                                                                            Listfmotivchains4[0].FmotivList.Count;
+                                                                            Listfmotivchains4[0].Length;
                                 xlWorkSheetFmSeqSilencePause.Cells[n, 11] = com.Regularity;
                             }
                             catch (Exception err)
@@ -515,11 +515,11 @@ namespace MDA.OIP.View
                                 Composition com = new Composition();
                                 int i = 0;
 
-                                for (i = 0; i < Listfmotivchains2[0].FmotivList.Count; i++)
+                                for (i = 0; i < Listfmotivchains2[0].Length; i++)
                                     // previously was .Count , not .Lenght
                                 {
-                                    com.AddFM(Listfmotivchains2[0].FmotivList[i].Id.ToString());
-                                    xlWorkSheet1.Cells[(i + 2), 4] = Listfmotivchains2[0].FmotivList[i].Id;
+                                    com.AddFM(Listfmotivchains2[0].Building[i].ToString());
+                                    xlWorkSheet1.Cells[(i + 2), 4] = Listfmotivchains2[0].Building[i];
                                 }
                                 com.CreatePLex();
                                 com.CreateTlex();
@@ -532,7 +532,7 @@ namespace MDA.OIP.View
                                 com.FillDisplayData();
 
                                 xlWorkSheetFmNoSeq.Cells[n, 1] = item.Name;
-                                xlWorkSheetFmNoSeq.Cells[n, 2] = Listfmotivchains2[0].FmotivList.Count;
+                                xlWorkSheetFmNoSeq.Cells[n, 2] = Listfmotivchains2[0].Length;
                                 xlWorkSheetFmNoSeq.Cells[n, 3] = com.PLex.CalcGreatFrequency();
                                 xlWorkSheetFmNoSeq.Cells[n, 4] = com.PLex.Capacity;
                                 xlWorkSheetFmNoSeq.Cells[n, 5] = com.TLex.Capacity;
@@ -541,7 +541,7 @@ namespace MDA.OIP.View
                                 xlWorkSheetFmNoSeq.Cells[n, 7] = com.AvgRemoteness;
                                 xlWorkSheetFmNoSeq.Cells[n, 8] = com.Entropy;
                                 xlWorkSheetFmNoSeq.Cells[n, 9] = com.AvgDepth;
-                                xlWorkSheetFmNoSeq.Cells[n, 10] = com.Entropy*Listfmotivchains2[0].FmotivList.Count;
+                                xlWorkSheetFmNoSeq.Cells[n, 10] = com.Entropy*Listfmotivchains2[0].Length;
                                 xlWorkSheetFmNoSeq.Cells[n, 11] = com.Regularity;
 
 

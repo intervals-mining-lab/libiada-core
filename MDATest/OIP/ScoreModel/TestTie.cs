@@ -1,7 +1,7 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using MDA.OIP.ScoreModel;
 
-namespace MDATest.OIPTest.TestScoreModel
+namespace MDATest.OIPTest.ScoreModel
 {
     [TestClass]
     public class TestTie

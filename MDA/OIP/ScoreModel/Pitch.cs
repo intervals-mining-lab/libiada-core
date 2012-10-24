@@ -107,11 +107,12 @@ namespace MDA.OIP.ScoreModel
 
         #region IBaseMethods
 
+        ///<summary>
+        /// Stub for GetBin
+        ///</summary> 
         private Pitch()
         {
-            ///<summary>
-            /// Stub for GetBin
-            ///</summary>  
+             
         }
 
         public IBaseObject Clone()
@@ -133,22 +134,22 @@ namespace MDA.OIP.ScoreModel
             return false;
         }
 
+        ///<summary>
+        /// Stub
+        ///</summary>
         public IBin GetBin()
         {
             PitchBin Temp = new PitchBin();
-            ///<summary>
-            /// Stub
-            ///</summary>
             return Temp;
         }
 
         public class PitchBin : IBin
         {
+            ///<summary>
+            /// Stub
+            ///</summary>
             public IBaseObject GetInstance()
             {
-                ///<summary>
-                /// Stub
-                ///</summary>
                 return new Pitch();
             }
         }

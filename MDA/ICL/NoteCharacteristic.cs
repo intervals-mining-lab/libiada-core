@@ -21,30 +21,30 @@ namespace MDA.ICL
         /// </summary>
         private static double valG = 0;
 
-        public static double CalculateRemoteness(FmotivChain FmChain)
+        public static double CalculateRemoteness(FmotivChain fmChain)
         {
-            if (Calculate(FmChain)) return valR;
+            if (Calculate(fmChain)) return valR;
             throw new Exception("Word Remoteness in words not calculated, ask specialist!");
         }
 
-        public static double CalculateGamut(FmotivChain FmChain)
+        public static double CalculateGamut(FmotivChain fmChain)
         {
-            if (Calculate(FmChain)) return valG;
+            if (Calculate(fmChain)) return valG;
             throw new Exception("TextGamut in words not calculated, ask specialist!");
         }
 
-        private static bool Calculate(FmotivChain FmChain)
+        private static bool Calculate(FmotivChain fmChain)
         {
-            if (FmChain.FmotivList.Count < 1)
+            if (fmChain.Length < 1)
                 throw new Exception("Unaible to count note remoteness with no elements in chain!");
 
-            List<Note> notelist = new List<Note>(); // список нот, класса Note, всей цепи фмотивов
+            List<ValueNote> notelist = new List<ValueNote>(); // список нот, класса Note, всей цепи фмотивов
 
-            foreach (Fmotiv fmotiv in FmChain.FmotivList)
+            for (int i = 0; i < fmChain.Length; i++ )
             {
-                foreach (Note note in fmotiv.TieGathered().Clone(PauseTreatment.Ignore).NoteList)
+                foreach (ValueNote note in ((Fmotiv)fmChain[i]).TieGathered().Clone(PauseTreatment.Ignore).NoteList)
                 {
-                    notelist.Add((Note) note.Clone());
+                    notelist.Add((ValueNote)note.Clone());
                 }
             }
 

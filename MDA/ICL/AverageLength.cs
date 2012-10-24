@@ -10,21 +10,21 @@ namespace MDA.ICL
     {
         public static double Calculate(FmotivChain fmChain)
         {
-            if (fmChain.FmotivList.Count < 1)
+            if (fmChain.Length < 1)
                 throw new Exception("Unaible to count average length with no elements in chain!");
 
             int NCount = 0; // счетчик нот всей цепочки фмотивов
 
-            foreach (Fmotiv fmotiv in fmChain.FmotivList)
+            for (int i = 0; i < fmChain.Length; i++)
             {
-                NCount = NCount + fmotiv.TieGathered().Clone(PauseTreatment.Ignore).NoteList.Count;
+                NCount = NCount + ((Fmotiv)fmChain[i]).TieGathered().Clone(PauseTreatment.Ignore).NoteList.Count;
                 // заполняем счетчик складывая кол-во поф-мотивно
             }
 
             // два инта делятся, это необходимо чтоб вернуть дабл
             double val;
             val = NCount;
-            val = val/fmChain.FmotivList.Count;
+            val = val/fmChain.Length;
             return val;
         }
     }

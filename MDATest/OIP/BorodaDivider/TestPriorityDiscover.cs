@@ -4,18 +4,18 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using MDA.OIP.ScoreModel;
 using MDA.OIP.BorodaDivider;
 
-namespace MDATest.OIPTest.TestBorodaDivider
+namespace MDATest.OIPTest.BorodaDivider
 {
     [TestClass]
     public class TestPriorityDiscover
     {
-        private Note note = new Note(new Pitch(1, 'E', 0), new Duration(1, 4, false, 480), false, Tie.None);
-        private Note anote = new Note(new Pitch(1, 'B', 0), new Duration(1, 2, false, 960), false, 0);
-        private Note bnote = new Note(null, new Duration(1, 4, false, 480), false, 0);
-        private Note сnote = new Note(new Pitch(1, 'A', 0), new Duration(1,4,2,3,false,200),true,0);
-        private Note ccnote = new Note(new Pitch(1, 'A', 0), new Duration(1, 8, 2, 3, false, 200), true, 0);
-        private Note сccnote = new Note(new Pitch(1, 'A', 0), new Duration(1, 8, 4, 7, false, 200), true, 0);
-        private Note dnote = new Note(new Pitch(1, 'B', 0), new Duration(1, 16, false, 240), false, 0);
+        private ValueNote note = new ValueNote(new Pitch(1, 'E', 0), new Duration(1, 4, false, 480), false, Tie.None);
+        private ValueNote anote = new ValueNote(new Pitch(1, 'B', 0), new Duration(1, 2, false, 960), false, 0);
+        private ValueNote bnote = new ValueNote(null, new Duration(1, 4, false, 480), false, 0);
+        private ValueNote сnote = new ValueNote(new Pitch(1, 'A', 0), new Duration(1,4,2,3,false,200),true,0);
+        private ValueNote ccnote = new ValueNote(new Pitch(1, 'A', 0), new Duration(1, 8, 2, 3, false, 200), true, 0);
+        private ValueNote сccnote = new ValueNote(new Pitch(1, 'A', 0), new Duration(1, 8, 4, 7, false, 200), true, 0);
+        private ValueNote dnote = new ValueNote(new Pitch(1, 'B', 0), new Duration(1, 16, false, 240), false, 0);
         private Attributes attributes = new Attributes(new Size(4, 4, 480), new Key(0, "minor"));
         private Attributes attributes1 = new Attributes(new Size(3, 4, 480), new Key(0, "minor"));
         private Attributes attributes2 = new Attributes(new Size(12, 8, 480), new Key(0, "minor"));
@@ -38,7 +38,7 @@ namespace MDATest.OIPTest.TestBorodaDivider
         {
             PriorityDiscover pd = new PriorityDiscover();
 
-            List<Note> notes = new List<Note>();
+            List<ValueNote> notes = new List<ValueNote>();
             notes.Add(note);
             notes.Add(bnote);
             notes.Add(dnote);
@@ -65,7 +65,7 @@ namespace MDATest.OIPTest.TestBorodaDivider
         {
             PriorityDiscover pd = new PriorityDiscover();
 
-            List<Note> notes = new List<Note>();
+            List<ValueNote> notes = new List<ValueNote>();
             notes.Add(note);
             notes.Add(bnote);
             notes.Add(dnote);
@@ -107,7 +107,7 @@ namespace MDATest.OIPTest.TestBorodaDivider
             Assert.AreEqual(5, pd.PriorityMask.NoteList[31].Priority);
 
             // проверка длительностей
-            foreach (Note lnote in pd.PriorityMask.NoteList)
+            foreach (ValueNote lnote in pd.PriorityMask.NoteList)
             {
                 Assert.AreEqual(1, lnote.Duration.Numerator);
                 Assert.AreEqual(32, lnote.Duration.Denominator);
@@ -119,7 +119,7 @@ namespace MDATest.OIPTest.TestBorodaDivider
         {
             PriorityDiscover pd = new PriorityDiscover();
 
-            List<Note> notes = new List<Note>();
+            List<ValueNote> notes = new List<ValueNote>();
             notes.Add(note);
             notes.Add(bnote);
             notes.Add(dnote);
@@ -177,7 +177,7 @@ namespace MDATest.OIPTest.TestBorodaDivider
             Assert.AreEqual(3, pd.PriorityMask.NoteList[46].Priority);
             Assert.AreEqual(4, pd.PriorityMask.NoteList[47].Priority);
             // проверка длительностей
-            foreach (Note lnote in pd.PriorityMask.NoteList)
+            foreach (ValueNote lnote in pd.PriorityMask.NoteList)
             {
                 Assert.AreEqual(1, lnote.Duration.Numerator);
                 Assert.AreEqual(32, lnote.Duration.Denominator);
@@ -189,7 +189,7 @@ namespace MDATest.OIPTest.TestBorodaDivider
         {
             PriorityDiscover pd = new PriorityDiscover();
 
-            List<Note> notes = new List<Note>();
+            List<ValueNote> notes = new List<ValueNote>();
             notes.Add(note);
             notes.Add(bnote);
             notes.Add(dnote);
@@ -225,7 +225,7 @@ namespace MDATest.OIPTest.TestBorodaDivider
             Assert.AreEqual(2, pd.PriorityMask.NoteList[24].Priority);
             Assert.AreEqual(3, pd.PriorityMask.NoteList[25].Priority);
             // проверка длительностей
-            foreach (Note lnote in pd.PriorityMask.NoteList) 
+            foreach (ValueNote lnote in pd.PriorityMask.NoteList) 
             {
                 Assert.AreEqual(1,lnote.Duration.Numerator);
                 Assert.AreEqual(32,lnote.Duration.Denominator);
@@ -237,7 +237,7 @@ namespace MDATest.OIPTest.TestBorodaDivider
         {
             PriorityDiscover pd = new PriorityDiscover();
 
-            List<Note> notes = new List<Note>();
+            List<ValueNote> notes = new List<ValueNote>();
             notes.Add(note);
             notes.Add(anote);
             Measure measure = new Measure(notes, attributes1);
@@ -251,7 +251,7 @@ namespace MDATest.OIPTest.TestBorodaDivider
             Assert.AreEqual(1, pd.PriorityMask.NoteList[4].Priority);
             Assert.AreEqual(2, pd.PriorityMask.NoteList[5].Priority);
             // проверка длительностей
-            foreach (Note lnote in pd.PriorityMask.NoteList)
+            foreach (ValueNote lnote in pd.PriorityMask.NoteList)
             {
                 Assert.AreEqual(1, lnote.Duration.Numerator);
                 Assert.AreEqual(8, lnote.Duration.Denominator);
@@ -261,30 +261,30 @@ namespace MDATest.OIPTest.TestBorodaDivider
         [TestMethod]
         public void TestPriorityDiscover1()
         {
-            List<Note> notes = new List<Note>();
+            List<ValueNote> notes = new List<ValueNote>();
             notes.Add(note);
             notes.Add(bnote);
             notes.Add(anote);
 
-            List<Note> notes1 = new List<Note>();
+            List<ValueNote> notes1 = new List<ValueNote>();
             notes1.Add(note);
             notes1.Add(note);
             notes1.Add(note);
 
-            List<Note> notes2 = new List<Note>();
+            List<ValueNote> notes2 = new List<ValueNote>();
             notes2.Add(anote);
             notes2.Add(note);
             notes2.Add(bnote);
             notes2.Add(note);
             notes2.Add(bnote);
 
-            List<Note> notes3 = new List<Note>();
+            List<ValueNote> notes3 = new List<ValueNote>();
             notes3.Add(note);
             notes3.Add(dnote);
             notes3.Add(note);
             notes3.Add(note);
 
-            List<Note> notes4 = new List<Note>();
+            List<ValueNote> notes4 = new List<ValueNote>();
             notes4.Add(сnote);
             notes4.Add(сnote);
             notes4.Add(сnote);
@@ -292,7 +292,7 @@ namespace MDATest.OIPTest.TestBorodaDivider
             notes4.Add(ccnote);
             notes4.Add(ccnote);
 
-            List<Note> notes5 = new List<Note>();
+            List<ValueNote> notes5 = new List<ValueNote>();
             notes5.Add(сccnote);
             notes5.Add(сccnote);
             notes5.Add(сccnote);

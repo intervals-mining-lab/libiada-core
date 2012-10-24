@@ -102,7 +102,7 @@
     <Compile Include="OIP\ScoreModel\Measure.cs" />
     <Compile Include="OIP\MusicXml\MusicXmlParser.cs" />
     <Compile Include="OIP\MusicXml\MusicXmlReader.cs" />
-    <Compile Include="OIP\ScoreModel\Note.cs" />
+    <Compile Include="OIP\ScoreModel\ValueNote.cs" />
     <Compile Include="OIP\ScoreModel\Pitch.cs" />
     <Compile Include="OIP\ScoreModel\ScoreTrack.cs" />
     <Compile Include="OIP\ScoreModel\Size.cs" />

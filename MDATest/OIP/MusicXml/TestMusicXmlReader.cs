@@ -3,8 +3,7 @@ using System.Xml;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using MDA.OIP.MusicXml;
 
-
-namespace TestMusicXml.TestMDA.OIPTest
+namespace MDATest.OIPTest.MusicXml
 {
     [TestClass]
     public class TestXmlReader
@@ -13,7 +12,7 @@ namespace TestMusicXml.TestMDA.OIPTest
         public void TestXMLReader1()
         {
             // WTF????!!!!
-            MusicXmlReader xr = new MusicXmlReader("K:\\_Учеба\\MDA 2.0.3\\MDA\\MDATest\\OIPTest\\MDAexample7Liga.xml");
+            MusicXmlReader xr = new MusicXmlReader("../MDAexample7Liga.xml");
             Assert.IsNotNull(xr.MusicXmlDocument);
             Assert.AreEqual("MDAexample7Liga", xr.FileName);
         }
@@ -22,7 +21,7 @@ namespace TestMusicXml.TestMDA.OIPTest
         public void TestXMLReader2()
         {
             // WTF????!!!!
-            string path = "K:\\_Учеба\\MDA 2.0.3\\MDA\\MDATest\\OIPTest\\MDAexample7Liga.xml";
+            string path = "../MDAexample7Liga.xml";
             MusicXmlReader xr = new MusicXmlReader();
             XmlDocument xdoc = new XmlDocument();
 

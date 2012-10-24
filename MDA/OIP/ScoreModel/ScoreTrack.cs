@@ -45,11 +45,12 @@ namespace MDA.OIP.ScoreModel
 
         #region IBaseMethods
 
+        ///<summary>
+        /// Stub for GetBin
+        ///</summary> 
         private ScoreTrack()
         {
-            ///<summary>
-            /// Stub for GetBin
-            ///</summary>  
+             
         }
 
         public IBaseObject Clone()
@@ -58,7 +59,7 @@ namespace MDA.OIP.ScoreModel
             return Temp;
         }
 
-        public bool Equals(object obj)
+        public override bool Equals(object obj)
         {
             bool equalUniformscoretracks = UniformScoreTracks.Count == ((ScoreTrack) obj).UniformScoreTracks.Count;
 
@@ -76,22 +77,22 @@ namespace MDA.OIP.ScoreModel
             return false;
         }
 
+        ///<summary>
+        /// Stub
+        ///</summary>
         public IBin GetBin()
         {
             ScoreTrackBin Temp = new ScoreTrackBin();
-            ///<summary>
-            /// Stub
-            ///</summary>
             return Temp;
         }
 
         public class ScoreTrackBin : IBin
         {
+            ///<summary>
+            /// Stub
+            ///</summary>
             public IBaseObject GetInstance()
             {
-                ///<summary>
-                /// Stub
-                ///</summary>
                 return new ScoreTrack();
             }
         }

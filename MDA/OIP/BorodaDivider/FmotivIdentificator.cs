@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+﻿using System.Linq;
 
 namespace MDA.OIP.BorodaDivider
 {
@@ -8,25 +8,25 @@ namespace MDA.OIP.BorodaDivider
         {
             FmotivChain Temp = (FmotivChain) fmotivchain.Clone();
 
-            for (int i = 0; i < Temp.FmotivList.Count; i++)
+            for (int i = 0; i < Temp.Length; i++)
             {
-                for (int j = i; j < Temp.FmotivList.Count; j++)
+                for (int j = i; j < Temp.Length; j++)
                 {
-                    if (Temp.FmotivList[i].FmEquals(Temp.FmotivList[j], paramPause, paramEqual))
+                    if (((Fmotiv)Temp[i]).FmEquals(Temp[j], paramPause, paramEqual))
                         //if (Temp.FmotivList[i].Equals(Temp.FmotivList[j])) 
                     {
-                        Temp.FmotivList[j].Id = Temp.FmotivList[i].Id;
+                        Temp.Building[j] = Temp.Building[i];
                     }
                 }
             }
-            for (int i = 0; i < MaxId(Temp.FmotivList); i++)
+            for (int i = 1; i <= Temp.Building.Max(); i++)
             {
                 bool HaveId = false; // флаг того что есть такой id в цепочке
-                for (int j = 0; j < Temp.FmotivList.Count; j++)
+                for (int j = 0; j < Temp.Length; j++)
                 {
                     if (!HaveId)
                     {
-                        if (Temp.FmotivList[j].Id == i)
+                        if (Temp.Building[j] == i)
                         {
                             HaveId = true;
                             break;
@@ -35,12 +35,12 @@ namespace MDA.OIP.BorodaDivider
                 }
                 if (!HaveId)
                 {
-                    for (int j = 0; j < Temp.FmotivList.Count; j++)
+                    for (int j = 0; j < Temp.Length; j++)
                     {
-                        if (Temp.FmotivList[j].Id > i)
+                        if (Temp.Building[j] > i)
                         {
                             // уменьшаем на 1 id тех фмотивов которые больше текущей  id - i, которой не нашлось в цепи
-                            Temp.FmotivList[j].Id = Temp.FmotivList[j].Id - 1;
+                            Temp.Building[j] = Temp.Building[j] - 1;
                         }
                     }
                     // уменьшаем i на 1 чтобы еще раз проверить есть ли это i среди цепи после уменьшения id-ек больших i
@@ -50,19 +50,6 @@ namespace MDA.OIP.BorodaDivider
             }
 
             return Temp;
-        }
-
-        private int MaxId(List<Fmotiv> list)
-        {
-            int max = 0;
-            foreach (Fmotiv fmotiv in list)
-            {
-                if (fmotiv.Id > max)
-                {
-                    max = fmotiv.Id;
-                }
-            }
-            return max;
         }
     }
 }

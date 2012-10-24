@@ -1,7 +1,7 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using MDA.OIP.BorodaDivider;
 
-namespace MDATest.OIPTest.TestBorodaDivider
+namespace MDATest.OIPTest.BorodaDivider
 {    
     [TestClass]
     public class TestPauseTreatment

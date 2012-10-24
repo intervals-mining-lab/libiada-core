@@ -5,7 +5,7 @@ namespace MDA.OIP.ScoreModel
     /// <summary>
     /// нота
     /// </summary>
-    public class Note : IBaseObject
+    public class ValueNote : IBaseObject
     {
         /// <summary>
         /// наличие триоли
@@ -32,7 +32,7 @@ namespace MDA.OIP.ScoreModel
         /// </summary>
         private int id;
 
-        public Note(Pitch pitch, Duration duration, bool triplet, Tie tie)
+        public ValueNote(Pitch pitch, Duration duration, bool triplet, Tie tie)
         {
             if (pitch != null) // если не пауза то записываем высоту и наличие лиги
             {
@@ -48,7 +48,7 @@ namespace MDA.OIP.ScoreModel
             this.priority = -1; // приоритет не определен
         }
 
-        public Note(Pitch pitch, Duration duration, bool triplet, int tie)
+        public ValueNote(Pitch pitch, Duration duration, bool triplet, int tie)
         {
             if (pitch != null) // если не пауза то записываем высоту и наличие лиги
             {
@@ -64,7 +64,7 @@ namespace MDA.OIP.ScoreModel
             this.priority = -1; // приоритет не определен
         }
 
-        public Note(Pitch pitch, Duration duration, bool triplet, Tie tie, int priority)
+        public ValueNote(Pitch pitch, Duration duration, bool triplet, Tie tie, int priority)
         {
 
             if (pitch != null) // если не пауза то записываем высоту и наличие лиги
@@ -81,7 +81,7 @@ namespace MDA.OIP.ScoreModel
             this.priority = priority; // приоритет если указан
         }
 
-        public Note(Pitch pitch, Duration duration, bool triplet, int tie, int priority)
+        public ValueNote(Pitch pitch, Duration duration, bool triplet, int tie, int priority)
         {
 
             if (pitch != null) // если не пауза то записываем высоту и наличие лиги
@@ -132,16 +132,17 @@ namespace MDA.OIP.ScoreModel
 
         #region IBaseMethods
 
-        private Note()
+        ///<summary>
+        /// Stub for GetBin
+        ///</summary>
+        private ValueNote()
         {
-            ///<summary>
-            /// Stub for GetBin
-            ///</summary>  
+              
         }
 
         public IBaseObject Clone()
         {
-            Note Temp = new Note(this.pitch, this.duration, this.triplet, this.tie, this.priority);
+            ValueNote Temp = new ValueNote(this.pitch, this.duration, this.triplet, this.tie, this.priority);
             return Temp;
         }
 
@@ -149,9 +150,9 @@ namespace MDA.OIP.ScoreModel
         {
             if (this.Pitch == null)
             {
-                if (((Note) obj).Pitch == null)
+                if (((ValueNote) obj).Pitch == null)
                 {
-                    if (this.Duration.Equals(((Note) obj).Duration))
+                    if (this.Duration.Equals(((ValueNote) obj).Duration))
                     {
                         return true;
                     }
@@ -168,7 +169,7 @@ namespace MDA.OIP.ScoreModel
             }
             else
             {
-                if (((Note) obj).Pitch == null)
+                if (((ValueNote) obj).Pitch == null)
                 {
                     // нота и пауза не одно и то же
                     return false;
@@ -176,8 +177,8 @@ namespace MDA.OIP.ScoreModel
             }
 
 
-            if ((this.Duration.Equals(((Note) obj).Duration)) && (this.Pitch.Equals(((Note) obj).Pitch)) &&
-                (this.Tie == ((Note) obj).Tie) && (this.Triplet == ((Note) obj).Triplet))
+            if ((this.Duration.Equals(((ValueNote) obj).Duration)) && (this.Pitch.Equals(((ValueNote) obj).Pitch)) &&
+                (this.Tie == ((ValueNote) obj).Tie) && (this.Triplet == ((ValueNote) obj).Triplet))
             {
                 return true;
             }
@@ -186,23 +187,24 @@ namespace MDA.OIP.ScoreModel
             // TODO: из сравнения исключить триплет, так может различать одинаковые по длительности ноты, но записанные по разному(!)
         }
 
+        ///<summary>
+        /// Stub
+        ///</summary>
         public IBin GetBin()
         {
             NoteBin Temp = new NoteBin();
-            ///<summary>
-            /// Stub
-            ///</summary>
+            
             return Temp;
         }
 
+        ///<summary>
+        /// Stub
+        ///</summary>
         public class NoteBin : IBin
         {
             public IBaseObject GetInstance()
             {
-                ///<summary>
-                /// Stub
-                ///</summary>
-                return new Note();
+                return new ValueNote();
             }
         }
 

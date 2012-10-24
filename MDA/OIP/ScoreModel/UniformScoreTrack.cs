@@ -43,15 +43,15 @@ namespace MDA.OIP.ScoreModel
         /// возвращает строй объектов Note, проидентифицировав их
         /// </summary>
         /// <returns></returns>
-        public List<Note> NoteOrder()
+        public List<ValueNote> NoteOrder()
         {
-            List<Note> Temp = new List<Note>();
+            List<ValueNote> Temp = new List<ValueNote>();
             //запись в одну цепочку
             foreach (Measure measure in Measurelist)
             {
-                foreach (Note note in measure.NoteList)
+                foreach (ValueNote note in measure.NoteList)
                 {
-                    Temp.Add((Note) note.Clone());
+                    Temp.Add((ValueNote) note.Clone());
                 }
             }
 
@@ -92,7 +92,7 @@ namespace MDA.OIP.ScoreModel
         /// <returns></returns>
         public int[] NoteIdOrder()
         {
-            List<Note> Temp = new List<Note>();
+            List<ValueNote> Temp = new List<ValueNote>();
             Temp = this.NoteOrder();
 
             int[] IdTemp = new int[Temp.Count]; // строй из Id, а не из объектов типа Note
@@ -166,11 +166,12 @@ namespace MDA.OIP.ScoreModel
 
         #region IBaseMethods
 
+        ///<summary>
+        /// Stub for GetBin
+        ///</summary>  
         private UniformScoreTrack()
         {
-            ///<summary>
-            /// Stub for GetBin
-            ///</summary>  
+            
         }
 
         public IBaseObject Clone()
@@ -179,7 +180,7 @@ namespace MDA.OIP.ScoreModel
             return Temp;
         }
 
-        public bool Equals(object obj)
+        public override bool Equals(object obj)
         {
             bool equalMeasureList = true;
 
@@ -201,22 +202,22 @@ namespace MDA.OIP.ScoreModel
             return false;
         }
 
+        ///<summary>
+        /// Stub
+        ///</summary>
         public IBin GetBin()
         {
             UniformScoreTrackBin Temp = new UniformScoreTrackBin();
-            ///<summary>
-            /// Stub
-            ///</summary>
             return Temp;
         }
 
         public class UniformScoreTrackBin : IBin
         {
+            ///<summary>
+            /// Stub
+            ///</summary>
             public IBaseObject GetInstance()
             {
-                ///<summary>
-                /// Stub
-                ///</summary>
                 return new UniformScoreTrack();
             }
         }

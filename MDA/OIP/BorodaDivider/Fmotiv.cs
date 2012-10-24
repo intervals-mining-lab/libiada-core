@@ -11,11 +11,6 @@ namespace MDA.OIP.BorodaDivider
     public class Fmotiv : IBaseObject
     {
         /// <summary>
-        /// (-1 значит не определен) порядковый номер - идентификатор (возможно введения доп id - глобального для словаря ф-мотивов)
-        /// </summary>
-        private int id;
-
-        /// <summary>
         /// тип ф-мотива (ПМТ, МТ, ВП, ПМТВП, МТВП)
         /// </summary>
         private string type = "";
@@ -23,19 +18,7 @@ namespace MDA.OIP.BorodaDivider
         /// <summary>
         /// список нот, входящих в  ф-мотив
         /// </summary>
-        private List<Note> notelist;
-
-        /// <summary>
-        /// конструктор для ф-мотива с уже определенным id
-        /// </summary>
-        /// <param name="id"></param>
-        /// <param name="type"></param>
-        public Fmotiv(int id, string type)
-        {
-            this.id = id;
-            this.type = type;
-            this.notelist = new List<Note>();
-        }
+        private List<ValueNote> notelist;
 
         /// <summary>
         /// конструктор для ф-мотива с неопределенным id
@@ -43,12 +26,11 @@ namespace MDA.OIP.BorodaDivider
         /// <param name="type"></param>
         public Fmotiv(string type)
         {
-            this.id = -1;
             this.type = type;
-            this.notelist = new List<Note>();
+            this.notelist = new List<ValueNote>();
         }
 
-        public List<Note> NoteList
+        public List<ValueNote> NoteList
         {
             get { return notelist; }
         }
@@ -57,12 +39,6 @@ namespace MDA.OIP.BorodaDivider
         {
             get { return type; }
             set { this.type = value; }
-        }
-
-        public int Id
-        {
-            get { return id; }
-            set { this.id = value; }
         }
 
         // TODO: убрать все частные и заменить на общие!!!!!!!!! заменил все withoutpauses() на PauseTreatment с параметорм ignore
@@ -78,7 +54,7 @@ namespace MDA.OIP.BorodaDivider
                 case PauseTreatment.Ignore:
                     {
                         // удаляем все паузы в возвращаемом объекте (0) (паузы игнорируются)
-                        Fmotiv Temp = new Fmotiv(this.id, this.type);
+                        Fmotiv Temp = new Fmotiv(this.type);
                         Temp = (Fmotiv) this.Clone();
                         for (int i = 0; i < Temp.notelist.Count; i++)
                         {
@@ -94,7 +70,7 @@ namespace MDA.OIP.BorodaDivider
                 case PauseTreatment.NoteTrace:
                     {
                         // длительность паузы прибавляется к предыдущей ноте, а она сама удаляется из текста (1) (пауза - звуковой след ноты)
-                        Fmotiv Temp = new Fmotiv(this.id, this.type);
+                        Fmotiv Temp = new Fmotiv(this.type);
                         Temp = (Fmotiv) this.Clone();
 
                         // если пауза стоит вначале текста (и текст не пустой) то она удаляется
@@ -129,7 +105,7 @@ namespace MDA.OIP.BorodaDivider
                     {
                         // Пауза - звук тишины, рассматривается как нота без высоты звучания (2)
                         // ничего не треуется
-                        Fmotiv Temp = new Fmotiv(this.id, this.type);
+                        Fmotiv Temp = new Fmotiv(this.type);
                         Temp = (Fmotiv) this.Clone();
                         return Temp;
                     }
@@ -147,9 +123,9 @@ namespace MDA.OIP.BorodaDivider
         /// <returns></returns>
         public Fmotiv TieGathered()
         {
-            Note BuffNote = null;
+            ValueNote BuffNote = null;
             Fmotiv Temp = (Fmotiv) this.Clone();
-            Fmotiv TempGathered = new Fmotiv(this.id, this.type);
+            Fmotiv TempGathered = new Fmotiv(this.type);
 
             int count = Temp.notelist.Count;
 
@@ -168,7 +144,7 @@ namespace MDA.OIP.BorodaDivider
                     {
                         throw new Exception("MDA: Tie started but (stop)/(startstop) note NOT following!");
                     }
-                    TempGathered.NoteList.Add(((Note) Temp.NoteList[0].Clone()));
+                    TempGathered.NoteList.Add(((ValueNote) Temp.NoteList[0].Clone()));
                     // очистка текущей позиции ноты, для перехода к следущей в очереди
                     Temp.NoteList.RemoveAt(0);
                 }
@@ -188,7 +164,7 @@ namespace MDA.OIP.BorodaDivider
                         {
                             throw new Exception("MDA: Tie note start after existing start note!");
                         }
-                        BuffNote = ((Note) Temp.NoteList[0].Clone());
+                        BuffNote = ((ValueNote) Temp.NoteList[0].Clone());
                         // очистка текущей позиции ноты, для перехода к следущей в очереди
                         Temp.NoteList.RemoveAt(0);
                     }
@@ -210,7 +186,7 @@ namespace MDA.OIP.BorodaDivider
                         if (Temp.NoteList[0].Tie == 2)
                         {
                             // добавляется длительность, и копируется старая высота звучания и приоритет
-                            BuffNote = new Note((Pitch) BuffNote.Pitch.Clone(),
+                            BuffNote = new ValueNote((Pitch) BuffNote.Pitch.Clone(),
                                                 BuffNote.Duration.AddDuration(Temp.NoteList[0].Duration),
                                                 BuffNote.Triplet, -1, BuffNote.Priority);
                             // очистка текущей позиции ноты, для перехода к следущей в очереди
@@ -222,11 +198,11 @@ namespace MDA.OIP.BorodaDivider
                             if (Temp.NoteList[0].Tie == 1)
                             {
                                 // добавляется длительность, и копируется старая высота звучания и приоритет
-                                BuffNote = new Note((Pitch) BuffNote.Pitch.Clone(),
+                                BuffNote = new ValueNote((Pitch) BuffNote.Pitch.Clone(),
                                                     BuffNote.Duration.AddDuration(Temp.NoteList[0].Duration),
                                                     BuffNote.Triplet, -1, BuffNote.Priority);
                                 // завершен сбор лигованных нот, результат кладется в возвращаемый буфер.
-                                TempGathered.NoteList.Add(((Note) BuffNote.Clone()));
+                                TempGathered.NoteList.Add(((ValueNote) BuffNote.Clone()));
                                 // очистка буффера залигованных нот
                                 BuffNote = null;
                                 // очистка текущей позиции ноты, для перехода к следущей в очереди
@@ -250,17 +226,15 @@ namespace MDA.OIP.BorodaDivider
 
         private Fmotiv()
         {
-            ///<summary>
-            /// Stub for GetBin
-            ///</summary>  
+              
         }
 
         public IBaseObject Clone()
         {
-            Fmotiv Temp = new Fmotiv(this.id, this.type);
-            foreach (Note note in notelist)
+            Fmotiv Temp = new Fmotiv(this.type);
+            foreach (ValueNote note in notelist)
             {
-                Temp.notelist.Add((Note) note.Clone());
+                Temp.notelist.Add((ValueNote) note.Clone());
             }
             return Temp;
         }
@@ -389,12 +363,12 @@ namespace MDA.OIP.BorodaDivider
             return true;
         }
 
+        ///<summary>
+        /// Stub for GetBin
+        ///</summary>
         public IBin GetBin()
         {
             FmotivBin Temp = new FmotivBin();
-            ///<summary>
-            /// Stub
-            ///</summary>
             return Temp;
         }
 
@@ -402,9 +376,6 @@ namespace MDA.OIP.BorodaDivider
         {
             public IBaseObject GetInstance()
             {
-                ///<summary>
-                /// Stub
-                ///</summary>
                 return new Fmotiv();
             }
         }

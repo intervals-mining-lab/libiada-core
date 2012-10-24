@@ -11,7 +11,7 @@ namespace MDA.OIP.ScoreModel
         /// <summary>
         /// список нот, класса Note
         /// </summary>
-        private List<Note> notelist;
+        private List<ValueNote> notelist;
 
         /// <summary>
         /// атрибуты
@@ -23,21 +23,21 @@ namespace MDA.OIP.ScoreModel
         /// </summary>
         private int id;
 
-        public Measure(List<Note> notelist, Attributes attributes)
+        public Measure(List<ValueNote> notelist, Attributes attributes)
         {
             if (attributes != null)
             {
                 this.attributes = (Attributes) attributes.Clone();
             }
 
-            this.notelist = new List<Note>();
+            this.notelist = new List<ValueNote>();
             for (int i = 0; i < notelist.Count; i++) // создаем список нот, по средствам клонирования каждой ноты.
             {
-                this.notelist.Add((Note) notelist[i].Clone());
+                this.notelist.Add((ValueNote) notelist[i].Clone());
             }
         }
 
-        public List<Note> NoteList
+        public List<ValueNote> NoteList
         {
             get { return notelist; }
         }
@@ -56,11 +56,12 @@ namespace MDA.OIP.ScoreModel
 
         #region IBaseMethods
 
+        ///<summary>
+        /// Stub for GetBin
+        ///</summary> 
         private Measure()
         {
-            ///<summary>
-            /// Stub for GetBin
-            ///</summary>  
+             
         }
 
         public IBaseObject Clone()
@@ -69,7 +70,7 @@ namespace MDA.OIP.ScoreModel
             return Temp;
         }
 
-        public bool Equals(object obj)
+        public override bool Equals(object obj)
         {
             bool equalNoteList = true;
 
@@ -94,22 +95,22 @@ namespace MDA.OIP.ScoreModel
             // TODO: из сравнения исключить триплет, так может различать одинаковые по длительности ноты, но записанные по разному(!)
         }
 
+        ///<summary>
+        /// Stub
+        ///</summary>
         public IBin GetBin()
         {
             MeasureBin Temp = new MeasureBin();
-            ///<summary>
-            /// Stub
-            ///</summary>
             return Temp;
         }
 
         public class MeasureBin : IBin
         {
+            ///<summary>
+            /// Stub
+            ///</summary>
             public IBaseObject GetInstance()
             {
-                ///<summary>
-                /// Stub
-                ///</summary>
                 return new Measure();
             }
         }

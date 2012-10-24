@@ -116,8 +116,8 @@ namespace MDA.OIP.ScoreModel
             Duration Temp = new Duration(newnum, newdenom, false, (this.Ticks + duration.Ticks));
 
             // добавляет длительность навсегда к объекту которого метод вызывали
-            this.numerator = newnum; // числитель в дроби доли
-            this.denominator = newdenom; // знаменатель в дроби доли
+           // this.numerator = newnum; // числитель в дроби доли
+           // this.denominator = newdenom; // знаменатель в дроби доли
             return Temp;
             /*
              this.numerator = newnum;
@@ -166,11 +166,12 @@ namespace MDA.OIP.ScoreModel
 
         #region IBaseMethods
 
+        ///<summary>
+        /// Stub for GetBin
+        ///</summary>
         private Duration()
         {
-            ///<summary>
-            /// Stub for GetBin
-            ///</summary>  
+              
         }
 
         public IBaseObject Clone()
@@ -191,22 +192,23 @@ namespace MDA.OIP.ScoreModel
             return false;
         }
 
+        ///<summary>
+        /// Stub
+        ///</summary>
         public IBin GetBin()
         {
             DurationBin Temp = new DurationBin();
-            ///<summary>
-            /// Stub
-            ///</summary>
+            
             return Temp;
         }
 
         public class DurationBin : IBin
         {
+            ///<summary>
+            /// Stub
+            ///</summary>
             public IBaseObject GetInstance()
             {
-                ///<summary>
-                /// Stub
-                ///</summary>
                 return new Duration();
             }
         }

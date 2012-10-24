@@ -43,9 +43,7 @@ namespace MDA.OIP.ScoreModel
 
         private Attributes()
         {
-            ///<summary>
-            /// Stub for GetBin
-            ///</summary>  
+            
         }
 
         public IBaseObject Clone()
@@ -54,7 +52,7 @@ namespace MDA.OIP.ScoreModel
             return Temp;
         }
 
-        public bool Equals(object obj)
+        public override bool Equals(object obj)
         {
             if (this.Key.Equals(((Attributes) obj).Key) && this.Size.Equals(((Attributes) obj).Size))
             {
@@ -63,22 +61,22 @@ namespace MDA.OIP.ScoreModel
             return false;
         }
 
+        ///<summary>
+        /// Stub for GetBin
+        ///</summary>  
         public IBin GetBin()
         {
             AttributesBin Temp = new AttributesBin();
-            ///<summary>
-            /// Stub
-            ///</summary>
             return Temp;
         }
 
         public class AttributesBin : IBin
         {
+            ///<summary>
+            /// Stub
+            ///</summary>
             public IBaseObject GetInstance()
             {
-                ///<summary>
-                /// Stub
-                ///</summary>
                 return new Attributes();
             }
         }

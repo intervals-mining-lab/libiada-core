@@ -44,35 +44,32 @@ namespace MDA.ICL
             double Vj = 0; // объем цепи в словах
             double Vg = 0; // глубина цепи в буквах
 
-            if (FmChain.FmotivList.Count < 1)
+            if (FmChain.Length < 1)
                 throw new Exception("Unaible to count word remoteness with no elements in chain!");
 
-            for (int i = 0; i < FmChain.FmotivList.Count; i++)
+            for (int i = 0; i < FmChain.Length; i++)
             {
                 int j = 0; // счетчик для поиска предыдущего такого же элемента, либо начала цепи
                 int deltaV = 0; // счетчик для сложения нот очередного интервала
 
                 do
                 {
-                    deltaV = deltaV +
-                             FmChain.FmotivList[FmChain.FmotivList.Count - 1 - i - j].Clone(
-                                 PauseTreatment.Ignore).TieGathered().NoteList.Count;
+                    Fmotiv current = ((Fmotiv) FmChain[FmChain.Length - 1 - i - j]).Clone(PauseTreatment.Ignore);
+                    deltaV = deltaV + current.TieGathered().NoteList.Count;
                     // умножаем общий объем на буквенное рассояние текущего (уходящего на 1 слово назад, в случаях не нахождения такого слова) слова
                     j = j + 1; // увеличиваем счетчик предыдущего
 
-                } while (((i + j) < FmChain.FmotivList.Count - 1) &&
-                         (!(FmChain.FmotivList[FmChain.FmotivList.Count - 1 - i].Equals(
-                             (Fmotiv) FmChain.FmotivList[FmChain.FmotivList.Count - 1 - i - j]))));
+                } while (((i + j) < FmChain.Length - 1) && (!(FmChain[FmChain.Length - 1 - i].Equals(FmChain[FmChain.Length - 1 - i - j]))));
 
-                Vg = Vg + Math.Log(deltaV, 2)*FmChain.FmotivList[FmChain.FmotivList.Count - 1 - i].NoteList.Count;
+                Vg = Vg + Math.Log(deltaV, 2)*((Fmotiv)FmChain[FmChain.Length - 1 - i]).NoteList.Count;
                 // при сложении логарифмов интервалов,
-                //мы еще умножаем каждый интервал между двумя одинаковыми словами на длину этого слова
+                // мы еще умножаем каждый интервал между двумя одинаковыми словами на длину этого слова
                 V = V + Math.Log(deltaV, 2);
                 Vj = Vj + Math.Log(j, 2); // умножаем объем слов на интервал между одинаковыми словами
             }
 
-            InWordRem = Vj/FmChain.FmotivList.Count;
-            InLettersRem = V/FmChain.FmotivList.Count;
+            InWordRem = Vj/FmChain.Length;
+            InLettersRem = V/FmChain.Length;
             TextGamut = Vg;
 
             return true;

@@ -39,11 +39,12 @@ namespace MDA.OIP.ScoreModel
 
         #region IBaseMethods
 
+        ///<summary>
+        /// Stub for GetBin
+        ///</summary>
         private Key()
         {
-            ///<summary>
-            /// Stub for GetBin
-            ///</summary>  
+              
         }
 
         public IBaseObject Clone()
@@ -61,22 +62,23 @@ namespace MDA.OIP.ScoreModel
             return false;
         }
 
+        ///<summary>
+        /// Stub
+        ///</summary>
         public IBin GetBin()
         {
             KeyBin Temp = new KeyBin();
-            ///<summary>
-            /// Stub
-            ///</summary>
+            
             return Temp;
         }
 
         public class KeyBin : IBin
         {
+            ///<summary>
+            /// Stub
+            ///</summary>
             public IBaseObject GetInstance()
             {
-                ///<summary>
-                /// Stub
-                ///</summary>
                 return new Key();
             }
         }

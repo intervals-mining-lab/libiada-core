@@ -44,17 +44,17 @@ namespace MDA.OIP.BorodaDivider
         public void Calculate(Measure measure)
         {
             // создаем новый такт, куда будут складываться ноты, после определения их приоритета.
-            Measure Temp = new Measure(new List<Note>(), (Attributes) measure.Attributes.Clone());
+            Measure Temp = new Measure(new List<ValueNote>(), (Attributes) measure.Attributes.Clone());
             // считаем маску приоритетов для такта
             CalcPriorityMask(measure);
             // соотнесение маски приоритетов и реального такта
             double bufduration = 0; // буфер длительности
-            List<Note> noteBuf = new List<Note>(); // буфер нот для сбора триоли и передачи в CollectTriplet
-            List<Note> maskBuf = new List<Note>();
+            List<ValueNote> noteBuf = new List<ValueNote>(); // буфер нот для сбора триоли и передачи в CollectTriplet
+            List<ValueNote> maskBuf = new List<ValueNote>();
                 // буфер маски приоритетов для сбора приоритетов маски под триолью и передачи в CollectTriplet 
             double tripletDuration = 0;
             // для каждой ноты подсчет приоритета, либо собирание в триоль и отдельный подсчет приоритетов
-            foreach (Note note in measure.NoteList)
+            foreach (ValueNote note in measure.NoteList)
             {
                 if (note.Triplet)
                 {
@@ -66,15 +66,15 @@ namespace MDA.OIP.BorodaDivider
                         {
                             // собираем буфер маски приоритетов для триоли, 
                             // собираем пока суммарная длительность нот маски не превышает длительность реальных нот триоли
-                            maskBuf.Add((Note) priorityMask.NoteList[0].Clone());
+                            maskBuf.Add((ValueNote) priorityMask.NoteList[0].Clone());
                             bufduration = bufduration - priorityMask.NoteList[0].Duration.Value;
                             priorityMask.NoteList.RemoveAt(0);
                         }
                         //передача методу CountTriplet notebuf + maskbuf и расстановка приоритетов + передача обратно
                         //занесение в выходной буфер результата определения приоритета нот триоли
-                        foreach (Note tnote in CountTripletPriority(noteBuf, maskBuf))
+                        foreach (ValueNote tnote in CountTripletPriority(noteBuf, maskBuf))
                         {
-                            Temp.NoteList.Add((Note) tnote.Clone());
+                            Temp.NoteList.Add((ValueNote) tnote.Clone());
                         }
                         //Temp.Notelist.AddRange(CountTripletPriority(noteBuf,maskBuf));
 
@@ -85,7 +85,7 @@ namespace MDA.OIP.BorodaDivider
                     }
                     // последовательность реальных нот триоли (триплета) заносится в буфер для дальнейшей обработки
                     // считается суммарная длительность триоли
-                    noteBuf.Add((Note) note.Clone());
+                    noteBuf.Add((ValueNote) note.Clone());
                     tripletDuration = note.Duration.Value;
                         // сохраняем размерность триоли/ новой триоли (если две подряд)
                     bufduration = bufduration + note.Duration.Value;
@@ -99,15 +99,15 @@ namespace MDA.OIP.BorodaDivider
                         {
                             // собираем буфер маски приоритетов для триоли, 
                             // собираем пока суммарная длительность нот маски не превышает длительность реальных нот триоли
-                            maskBuf.Add((Note) priorityMask.NoteList[0].Clone());
+                            maskBuf.Add((ValueNote) priorityMask.NoteList[0].Clone());
                             bufduration = bufduration - priorityMask.NoteList[0].Duration.Value;
                             priorityMask.NoteList.RemoveAt(0);
                         }
                         //передача методу CountTriplet notebuf + maskbuf и расстановка приоритетов + передача обратно
                         //занесение в выходной буфер результата определения приоритета нот триоли
-                        foreach (Note tnote in CountTripletPriority(noteBuf, maskBuf))
+                        foreach (ValueNote tnote in CountTripletPriority(noteBuf, maskBuf))
                         {
-                            Temp.NoteList.Add((Note) tnote.Clone());
+                            Temp.NoteList.Add((ValueNote) tnote.Clone());
                         }
                         //Temp.Notelist.AddRange(CountTripletPriority(noteBuf,maskBuf));
 
@@ -138,7 +138,7 @@ namespace MDA.OIP.BorodaDivider
                     }
 
                     //переход к следующей реальной ноте
-                    Temp.NoteList.Add((Note) note.Clone());
+                    Temp.NoteList.Add((ValueNote) note.Clone());
                     bufduration = bufduration - note.Duration.Value;
                     //bufduration = 0;
 
@@ -151,15 +151,15 @@ namespace MDA.OIP.BorodaDivider
                 {
                     // собираем буфер маски приоритетов для триоли, 
                     // собираем пока суммарная длительность нот маски не превышает длительность реальных нот триоли
-                    maskBuf.Add((Note) priorityMask.NoteList[0].Clone());
+                    maskBuf.Add((ValueNote) priorityMask.NoteList[0].Clone());
                     bufduration = bufduration - priorityMask.NoteList[0].Duration.Value;
                     priorityMask.NoteList.RemoveAt(0);
                 }
                 //передача методу CountTriplet notebuf + maskbuf и расстановка приоритетов + передача обратно
                 //занесение в выходной буфер результата определения приоритета нот триоли
-                foreach (Note tnote in CountTripletPriority(noteBuf, maskBuf))
+                foreach (ValueNote tnote in CountTripletPriority(noteBuf, maskBuf))
                 {
-                    Temp.NoteList.Add((Note) tnote.Clone());
+                    Temp.NoteList.Add((ValueNote) tnote.Clone());
                 }
                 //Temp.Notelist.AddRange(CountTripletPriority(noteBuf, maskBuf));
 
@@ -180,10 +180,10 @@ namespace MDA.OIP.BorodaDivider
             }
         }
 
-        public List<Note> CountTripletPriority(List<Note> noteBuf, List<Note> maskBuf)
+        public List<ValueNote> CountTripletPriority(List<ValueNote> noteBuf, List<ValueNote> maskBuf)
         {
             // TODO: расчет приоритетов для триоли с числом нот больше 3 выполняется по четко не определенному правилу, сделать как должно быть
-            List<Note> TTemp = new List<Note>();
+            List<ValueNote> TTemp = new List<ValueNote>();
             double bufduration = 0;
             int count = noteBuf.Count;
                 // записываем в отдельный счетчик т.к. значение noteBuf.Count меняется во время цикла
@@ -194,7 +194,7 @@ namespace MDA.OIP.BorodaDivider
                     // если для разбираемой очереди нот-триолей, в очереди нот маски приоритетов не осталось нот,
                     //то следущей ноте-триоли присваивается приоритеты предыдущей ноты-триоли
                     noteBuf[0].Priority = TTemp[TTemp.Count - 1].Priority;
-                    TTemp.Add((Note) noteBuf[0].Clone());
+                    TTemp.Add((ValueNote) noteBuf[0].Clone());
                     noteBuf.RemoveAt(0);
                 }
                 else
@@ -202,7 +202,7 @@ namespace MDA.OIP.BorodaDivider
                     noteBuf[0].Priority = maskBuf[0].Priority;
                     // отнимаем из маски приоритетов нот на сумму равную номинальному (не реальному) значению длительности триольной ноты
                     bufduration = noteBuf[0].Duration.OriginalValue; // оиргинальная длительность
-                    TTemp.Add((Note) noteBuf[0].Clone()); // добавляем ноту триоль в выходной буфер
+                    TTemp.Add((ValueNote) noteBuf[0].Clone()); // добавляем ноту триоль в выходной буфер
                     noteBuf.RemoveAt(0); // удаляем ноту-триоль из разбираемой очереди
                     while (bufduration > 0.0000001)
                     {
@@ -216,7 +216,7 @@ namespace MDA.OIP.BorodaDivider
 
             }
 
-            return (List<Note>) TTemp; // возвращаем результат
+            return (List<ValueNote>) TTemp; // возвращаем результат
         }
 
         public double minDuration(Measure measure)
@@ -231,7 +231,7 @@ namespace MDA.OIP.BorodaDivider
                 // заносим в буфер первый элемент массива длительностей нот, если такт пустой - ошибка!
             else throw new Exception("MDA.OIP: обнаружен пустой такт при выявлении приоритета!");
 
-            foreach (Note note in measure.NoteList)
+            foreach (ValueNote note in measure.NoteList)
             {
                 if (value > note.Duration.Value)
                 {
@@ -244,11 +244,11 @@ namespace MDA.OIP.BorodaDivider
         public void CalcPriorityMask(Measure measure)
         {
             // создание объекта маски с атрибутами оригинала и пустым списком нот
-            priorityMask = new Measure(new List<Note>(), (Attributes) measure.Attributes.Clone());
+            priorityMask = new Measure(new List<ValueNote>(), (Attributes) measure.Attributes.Clone());
 
             //---------------------------Занесение начальных долей размера такта---------------------------
             //---------------------------------------------------------------------------------------------
-            priorityMask.NoteList.Add(new Note(null, new Duration(1, measure.Attributes.Size.Beatbase,
+            priorityMask.NoteList.Add(new ValueNote(null, new Duration(1, measure.Attributes.Size.Beatbase,
                                                                   false, measure.Attributes.Size.Ticksperbeat), false,
                                                -1, 0));
             // первая доля в такте всегда самая сильная и выделяется НАИВЫСШИМ приоритетом 0
@@ -263,7 +263,7 @@ namespace MDA.OIP.BorodaDivider
                     {
                         //относительно сильная доля с приоритетом 1
                         int priority = 1;
-                        priorityMask.NoteList.Add(new Note(null, new Duration(1, measure.Attributes.Size.Beatbase,
+                        priorityMask.NoteList.Add(new ValueNote(null, new Duration(1, measure.Attributes.Size.Beatbase,
                                                                               false,
                                                                               measure.Attributes.Size.Ticksperbeat),
                                                            false, -1, priority));
@@ -278,7 +278,7 @@ namespace MDA.OIP.BorodaDivider
                             priority = 1;
                         }
 
-                        priorityMask.NoteList.Add(new Note(null, new Duration(1, measure.Attributes.Size.Beatbase,
+                        priorityMask.NoteList.Add(new ValueNote(null, new Duration(1, measure.Attributes.Size.Beatbase,
                                                                               false,
                                                                               measure.Attributes.Size.Ticksperbeat),
                                                            false, -1, priority));
@@ -298,7 +298,7 @@ namespace MDA.OIP.BorodaDivider
                         {
                             //относительно сильная доля с приоритетом 1
                             int priority = 1;
-                            priorityMask.NoteList.Add(new Note(null, new Duration(1, measure.Attributes.Size.Beatbase,
+                            priorityMask.NoteList.Add(new ValueNote(null, new Duration(1, measure.Attributes.Size.Beatbase,
                                                                                   false,
                                                                                   measure.Attributes.Size.Ticksperbeat),
                                                                false, -1, priority));
@@ -313,7 +313,7 @@ namespace MDA.OIP.BorodaDivider
                                 priority = 1;
                             }
 
-                            priorityMask.NoteList.Add(new Note(null, new Duration(1, measure.Attributes.Size.Beatbase,
+                            priorityMask.NoteList.Add(new ValueNote(null, new Duration(1, measure.Attributes.Size.Beatbase,
                                                                                   false,
                                                                                   measure.Attributes.Size.Ticksperbeat),
                                                                false, -1, priority));
@@ -337,7 +337,7 @@ namespace MDA.OIP.BorodaDivider
                                 priority = 2;
                             }
 
-                            priorityMask.NoteList.Add(new Note(null, new Duration(1, measure.Attributes.Size.Beatbase,
+                            priorityMask.NoteList.Add(new ValueNote(null, new Duration(1, measure.Attributes.Size.Beatbase,
                                                                                   false,
                                                                                   measure.Attributes.Size.Ticksperbeat),
                                                                false, -1, priority));
@@ -346,7 +346,7 @@ namespace MDA.OIP.BorodaDivider
                         {
                             //слабая доля с приоритетом 2
                             int priority = 2;
-                            priorityMask.NoteList.Add(new Note(null, new Duration(1, measure.Attributes.Size.Beatbase,
+                            priorityMask.NoteList.Add(new ValueNote(null, new Duration(1, measure.Attributes.Size.Beatbase,
                                                                                   false,
                                                                                   measure.Attributes.Size.Ticksperbeat),
                                                                false, -1, priority));
@@ -362,7 +362,7 @@ namespace MDA.OIP.BorodaDivider
             //длительность которых окажется меньше либо равна минимальной, деленной на 2 (так как может быть точка у ноты, котору. возможно описать только 3 нотами короче в два раза чем сама нота),
             //если они уже просчитаны для всех нот, то процесс заканчивается
             // проверка: останов будет тогда, когда длительности ВСЕХ нот в маске будут меньше либо равны длительности минимально ноты
-            foreach (Note note in priorityMask.NoteList)
+            foreach (ValueNote note in priorityMask.NoteList)
             {
                 if (note.Duration.Value > minDuration(measure)/2)
                 {
@@ -372,13 +372,13 @@ namespace MDA.OIP.BorodaDivider
 
             while (!stop)
             {
-                Measure Temp = new Measure(new List<Note>(), (Attributes) priorityMask.Attributes.Clone());
+                Measure Temp = new Measure(new List<ValueNote>(), (Attributes) priorityMask.Attributes.Clone());
                 // создание объекта буфера для перехода к следущей маске нижнего уровня
 
                 // определение максимального (наименьшего приоритета) для спуска на уровень ниже,
                 //где появятся ноты с приоритетом еще ниже на 1 ( +1)
                 int maxpriority = 0;
-                foreach (Note note in priorityMask.NoteList)
+                foreach (ValueNote note in priorityMask.NoteList)
                 {
                     if (maxpriority < note.Priority)
                     {
@@ -389,10 +389,10 @@ namespace MDA.OIP.BorodaDivider
                 for (int i = 0; i < priorityMask.NoteList.Count; i++)
                 {
 
-                    Temp.NoteList.Add(new Note(null, new Duration(1, (priorityMask.NoteList[i].Duration.Denominator*2),
+                    Temp.NoteList.Add(new ValueNote(null, new Duration(1, (priorityMask.NoteList[i].Duration.Denominator*2),
                                                                   false, (priorityMask.NoteList[i].Duration.Ticks/2)),
                                                false, -1, priorityMask.NoteList[i].Priority));
-                    Temp.NoteList.Add(new Note(null, new Duration(1, (priorityMask.NoteList[i].Duration.Denominator*2),
+                    Temp.NoteList.Add(new ValueNote(null, new Duration(1, (priorityMask.NoteList[i].Duration.Denominator*2),
                                                                   false, (priorityMask.NoteList[i].Duration.Ticks/2)),
                                                false, -1, (maxpriority + 1)));
                 }
@@ -405,7 +405,7 @@ namespace MDA.OIP.BorodaDivider
 
                 // проверка: останов будет тогда, когда длительности ВСЕХ нот в маске будут меньше либо равны длительности минимальной ноты 
                 //деленной на два (смотри выше из-за точки)
-                foreach (Note note in priorityMask.NoteList)
+                foreach (ValueNote note in priorityMask.NoteList)
                 {
                     if (note.Duration.Value > minDuration(measure)/2)
                     {

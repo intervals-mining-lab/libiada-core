@@ -34,7 +34,7 @@ namespace MDA.ICL
 
         private static bool Calculate(FmotivChain fmChain)
         {
-            if (fmChain.FmotivList.Count < 1)
+            if (fmChain.Length < 1)
                 throw new Exception("Unaible to count text word gamut with no elements in chain!");
 
 
@@ -58,12 +58,12 @@ namespace MDA.ICL
 
             // поиск мощности словаря = максимальный индекс + 1
             int MaxId = 0;
-            for (int i = 0; i < fmChain.FmotivList.Count; i++)
+            for (int i = 0; i < fmChain.Length; i++)
             {
 
-                if (MaxId < fmChain.FmotivList[i].Id)
+                if (MaxId < fmChain.Building[i])
                 {
-                    MaxId = fmChain.FmotivList[i].Id;
+                    MaxId = fmChain.Building[i];
                 }
             }
 
@@ -83,13 +83,13 @@ namespace MDA.ICL
 
             // заполнение словаря уникальными фмотивами
 
-            for (int i = 0; i < fmChain.FmotivList.Count; i++)
+            for (int i = 0; i < fmChain.Length; i++)
             {
                 bool uniq = true; // флаг уникальности фмотива, для его дальнейшего занесения в словарь
 
-                for (int j = 0; j < FmLex.FmotivList.Count; j++)
+                for (int j = 0; j < FmLex.Length; j++)
                 {
-                    if (fmChain.FmotivList[i].Equals(FmLex.FmotivList[j]))
+                    if (fmChain[i].Equals(FmLex[j]))
                     {
                         uniq = false;
                     }
@@ -97,7 +97,7 @@ namespace MDA.ICL
 
                 if (uniq)
                 {
-                    FmLex.FmotivList.Add((Fmotiv) fmChain.FmotivList[i].Clone());
+                    FmLex.Add(fmChain[i], FmLex.Length - 1);
                 }
 
                 uniq = true;
@@ -121,20 +121,19 @@ namespace MDA.ICL
 
             // TODO: к чему привязка????????????????????????
 
-            for (int m = 0; m < FmLex.FmotivList.Count; m++)
+            for (int m = 0; m < FmLex.Length; m++)
             {
                 int interval = 0; // интервал в буквах между двумя словами одинаковыми
                 int intervalW = 0; // интервал в словах между двумя словами одинаковыми
-                for (int i = 0; i < fmChain.FmotivList.Count; i++)
+                for (int i = 0; i < fmChain.Length; i++)
                 {
                     //накполение интервала, сложение букв фмотивов
-                    interval = interval +
-                               fmChain.FmotivList[fmChain.FmotivList.Count - 1 - i].Clone(
-                                   PauseTreatment.Ignore).TieGathered().NoteList.Count;
+                    Fmotiv current = ((Fmotiv) fmChain[fmChain.Length - 1 - i]).Clone(PauseTreatment.Ignore);
+                    interval = interval + current.TieGathered().NoteList.Count;
                     // накопление интервала слов
                     intervalW = intervalW + 1;
 
-                    if (fmChain.FmotivList[fmChain.FmotivList.Count - 1 - i].Equals((Fmotiv) FmLex.FmotivList[m]))
+                    if (fmChain[fmChain.Length - 1 - i].Equals(FmLex[m]))
                     {
                         GiVal = GiVal + Math.Log(interval, 2); // при сложении логарифмов интервалов в буквах
                         GiWVal = GiWVal + Math.Log(intervalW, 2); // при сложении логарифмов интервалов в словах;
@@ -146,11 +145,8 @@ namespace MDA.ICL
 
                 }
 
-                GVal = GVal +
-                       GiVal*FmLex.FmotivList[m].Clone(PauseTreatment.Ignore).TieGathered().NoteList.Count;
-                GWVal = GWVal +
-                        GiWVal*
-                        FmLex.FmotivList[m].Clone(PauseTreatment.Ignore).TieGathered().NoteList.Count;
+                GVal = GVal + GiVal * ((Fmotiv)FmLex[m]).Clone(PauseTreatment.Ignore).TieGathered().NoteList.Count;
+                GWVal = GWVal + GiWVal * ((Fmotiv)FmLex[m]).Clone(PauseTreatment.Ignore).TieGathered().NoteList.Count;
 
                 GiVal = 0; // для след однородной цепи - обнуляем что считать заново
                 GiWVal = 0; // для след однородной цепи - обнуляем что считать заново
@@ -195,10 +191,9 @@ namespace MDA.ICL
 
             // длина словаря
             Vlen = 0;
-            for (int i = 0; i < FmLex.FmotivList.Count; i++)
+            for (int i = 0; i < FmLex.Length; i++)
             {
-                Vlen = Vlen +
-                       FmLex.FmotivList[i].Clone(PauseTreatment.Ignore).TieGathered().NoteList.Count;
+                Vlen = Vlen + ((Fmotiv)FmLex[i]).Clone(PauseTreatment.Ignore).TieGathered().NoteList.Count;
             }
 
             return true;

@@ -1,36 +1,39 @@
 ﻿using System.Collections.Generic;
 using LibiadaCore.Classes.Root;
+using LibiadaCore.Classes.TheoryOfSet;
 
 namespace MDA.OIP.BorodaDivider
 {
     /// <summary>
     /// класс для хранения последовательности ф-мотив
     /// </summary>
-    public class FmotivChain : IBaseObject
+    public class FmotivChain : Chain
     {
-        /// <summary>
-        /// порядковый номер - идентификатор цепочки ф-мотивов
-        /// </summary>
-        private int id;
-
         /// <summary>
         /// название моно дорожки для которой выделяются ф-мотивы
         /// </summary>
         private string name;
 
-        /// <summary>
-        /// список ф-мотив
-        /// </summary>
-        private List<Fmotiv> fmotivlist;
 
         public FmotivChain()
         {
-            this.fmotivlist = new List<Fmotiv>();
+           
         }
 
-        public List<Fmotiv> FmotivList
+        public FmotivChain(int length):base(length)
         {
-            get { return fmotivlist; }
+            
+        }
+
+        public FmotivChain(List<IBaseObject> chain):base(chain)
+        {
+            
+        }
+
+        public FmotivChain(int[] building, Alphabet alphabet)
+            : base(building, alphabet)
+        {
+            
         }
 
         public string Name
@@ -39,52 +42,36 @@ namespace MDA.OIP.BorodaDivider
             set { this.name = value; }
         }
 
-        public int Id
-        {
-            get { return id; }
-            set { this.id = value; }
-        }
+
 
         #region IBaseMethods
 
-        /*private FmotivChain()
-        {
-            ///<summary>
-            /// Stub for GetBin
-            ///</summary>  
-        }*/
-
         public IBaseObject Clone()
         {
-            FmotivChain Temp = new FmotivChain();
-            foreach (Fmotiv fmotiv in fmotivlist)
+            FmotivChain Temp = new FmotivChain(this.Length);
+            for (int i = 0; i < this.Length; i++)
             {
-                Temp.fmotivlist.Add((Fmotiv) fmotiv.Clone());
+                Temp.Add(this[i], i);
             }
-            Temp.id = this.id;
             Temp.name = this.name;
 
             return Temp;
         }
 
-        public bool Equals(object obj)
+        public override bool Equals(object obj)
         {
             if (this.name != ((FmotivChain) obj).Name)
             {
                 return false;
             }
-            if (this.id != ((FmotivChain) obj).Id)
-            {
-                return false;
-            }
 
-            if (this.FmotivList.Count != ((FmotivChain) obj).FmotivList.Count)
+            if (this.Length != ((FmotivChain) obj).Length)
             {
                 return false;
             }
-            for (int i = 0; i < this.FmotivList.Count; i++)
+            for (int i = 0; i < this.Length; i++)
             {
-                if (!this.FmotivList[i].Equals(((FmotivChain) obj).FmotivList[i]))
+                if (!((Fmotiv)this[i]).Equals(((FmotivChain) obj)[i]))
                 {
                     return false;
                 }
@@ -93,22 +80,23 @@ namespace MDA.OIP.BorodaDivider
             return true;
         }
 
+        ///<summary>
+        /// Stub
+        ///</summary>
         public IBin GetBin()
         {
             FmotivChainBin Temp = new FmotivChainBin();
-            ///<summary>
-            /// Stub
-            ///</summary>
             return Temp;
         }
 
+
         public class FmotivChainBin : IBin
         {
+            ///<summary>
+            /// Stub
+            ///</summary>
             public IBaseObject GetInstance()
             {
-                ///<summary>
-                /// Stub
-                ///</summary>
                 return new FmotivChain();
             }
         }
