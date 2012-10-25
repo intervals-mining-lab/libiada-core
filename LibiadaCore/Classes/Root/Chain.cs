@@ -15,7 +15,7 @@ namespace LibiadaCore.Classes.Root
     [Serializable]
     public class Chain : ChainWithCharacteristic, IChainDataForCalculaton, IBaseObject
     {
-        protected UniformChain[] PUniformChains;
+        protected UniformChain[] PUniformChains = new UniformChain[0];
         protected Chain[] PNotUniformChains;
 
         ///<summary>
@@ -25,14 +25,12 @@ namespace LibiadaCore.Classes.Root
         ///<param name="length">Длинна цепи</param>
         public Chain(int length) : base(length)
         {
-            PUniformChains = new UniformChain[0];
         }
 
         ///<summary>
         ///</summary>
         public Chain()
         {
-            PUniformChains = new UniformChain[0];
         }
 
         ///<summary>
