@@ -73,26 +73,6 @@ namespace MDA.OIP.ScoreModel
             return false;
         }
 
-        ///<summary>
-        /// Stub
-        ///</summary>
-        public IBin GetBin()
-        {
-            SizeBin Temp = new SizeBin();
-            return Temp;
-        }
-
-        public class SizeBin : IBin
-        {
-            ///<summary>
-            /// Stub
-            ///</summary>
-            public IBaseObject GetInstance()
-            {
-                return new Size();
-            }
-        }
-
         #endregion
 
     }

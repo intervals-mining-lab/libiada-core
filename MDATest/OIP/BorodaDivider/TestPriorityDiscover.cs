@@ -4,7 +4,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using MDA.OIP.ScoreModel;
 using MDA.OIP.BorodaDivider;
 
-namespace MDATest.OIPTest.BorodaDivider
+namespace MDATest.OIP.BorodaDivider
 {
     [TestClass]
     public class TestPriorityDiscover

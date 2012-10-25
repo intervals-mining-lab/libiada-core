@@ -192,27 +192,6 @@ namespace MDA.OIP.ScoreModel
             return false;
         }
 
-        ///<summary>
-        /// Stub
-        ///</summary>
-        public IBin GetBin()
-        {
-            DurationBin Temp = new DurationBin();
-            
-            return Temp;
-        }
-
-        public class DurationBin : IBin
-        {
-            ///<summary>
-            /// Stub
-            ///</summary>
-            public IBaseObject GetInstance()
-            {
-                return new Duration();
-            }
-        }
-
         #endregion
     }
 }

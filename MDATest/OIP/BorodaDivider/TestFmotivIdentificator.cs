@@ -2,7 +2,7 @@
 using MDA.OIP.BorodaDivider;
 using MDA.OIP.ScoreModel;
 
-namespace MDATest.OIPTest.BorodaDivider
+namespace MDATest.OIP.BorodaDivider
 {
     [TestClass]
     public class TestFmotivIdentificator

@@ -61,26 +61,6 @@ namespace MDA.OIP.ScoreModel
             return false;
         }
 
-        ///<summary>
-        /// Stub for GetBin
-        ///</summary>  
-        public IBin GetBin()
-        {
-            AttributesBin Temp = new AttributesBin();
-            return Temp;
-        }
-
-        public class AttributesBin : IBin
-        {
-            ///<summary>
-            /// Stub
-            ///</summary>
-            public IBaseObject GetInstance()
-            {
-                return new Attributes();
-            }
-        }
-
         #endregion
 
     }

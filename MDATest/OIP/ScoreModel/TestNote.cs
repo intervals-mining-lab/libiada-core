@@ -1,7 +1,7 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using MDA.OIP.ScoreModel;
 
-namespace MDATest.OIPTest.ScoreModel
+namespace MDATest.OIP.ScoreModel
 {
     [TestClass]
     public class TestNote

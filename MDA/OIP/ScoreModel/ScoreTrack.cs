@@ -77,25 +77,6 @@ namespace MDA.OIP.ScoreModel
             return false;
         }
 
-        ///<summary>
-        /// Stub
-        ///</summary>
-        public IBin GetBin()
-        {
-            ScoreTrackBin Temp = new ScoreTrackBin();
-            return Temp;
-        }
-
-        public class ScoreTrackBin : IBin
-        {
-            ///<summary>
-            /// Stub
-            ///</summary>
-            public IBaseObject GetInstance()
-            {
-                return new ScoreTrack();
-            }
-        }
         #endregion
     }
 }

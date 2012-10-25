@@ -62,27 +62,6 @@ namespace MDA.OIP.ScoreModel
             return false;
         }
 
-        ///<summary>
-        /// Stub
-        ///</summary>
-        public IBin GetBin()
-        {
-            KeyBin Temp = new KeyBin();
-            
-            return Temp;
-        }
-
-        public class KeyBin : IBin
-        {
-            ///<summary>
-            /// Stub
-            ///</summary>
-            public IBaseObject GetInstance()
-            {
-                return new Key();
-            }
-        }
-
         #endregion
 
 

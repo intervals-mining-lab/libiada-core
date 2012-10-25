@@ -4,7 +4,7 @@ using MDA.OIP.ScoreModel;
 using MDA.OIP.MusicXml;
 using System.Xml;
 
-namespace MDATest.OIPTest.MusicXml
+namespace MDATest.OIP.MusicXml
 {
     [TestClass]
     public class TestMusicXmlParser
@@ -15,7 +15,7 @@ namespace MDATest.OIPTest.MusicXml
             XmlDocument xmldocument = new XmlDocument();
             // WTF????!!!!!!1111
             MusicXmlReader xmlreader =
-                new MusicXmlReader("../MDAexample7Liga.xml");
+                new MusicXmlReader("../../../../MDAexample7Liga.xml");
             MusicXmlParser Parser = new MusicXmlParser();
 
             Parser.Execute(xmlreader.MusicXmlDocument, xmlreader.FileName);

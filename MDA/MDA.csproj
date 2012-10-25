@@ -63,7 +63,7 @@
     <Reference Include="System.Drawing.Design" />
     <Reference Include="System.Design" />
     <Reference Include="ZedGraph">
-      <HintPath>..\..\..\..\Downloads\zedgraph_dll_v515\zedgraph_dll_v515\zedgraph_dll_v5.1.5\ZedGraph.dll</HintPath>
+      <HintPath>..\..\..\..\Dropbox\Учёба\4 курс\Моделирование\Курсовик\RandomGenerator\zedgraph_dll_v5.1.5\ZedGraph.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

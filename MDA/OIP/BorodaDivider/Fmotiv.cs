@@ -187,8 +187,8 @@ namespace MDA.OIP.BorodaDivider
                         {
                             // добавляется длительность, и копируется старая высота звучания и приоритет
                             BuffNote = new ValueNote((Pitch) BuffNote.Pitch.Clone(),
-                                                BuffNote.Duration.AddDuration(Temp.NoteList[0].Duration),
-                                                BuffNote.Triplet, -1, BuffNote.Priority);
+                                                     BuffNote.Duration.AddDuration(Temp.NoteList[0].Duration),
+                                                     BuffNote.Triplet, -1, BuffNote.Priority);
                             // очистка текущей позиции ноты, для перехода к следущей в очереди
                             Temp.NoteList.RemoveAt(0);
                         }
@@ -199,8 +199,8 @@ namespace MDA.OIP.BorodaDivider
                             {
                                 // добавляется длительность, и копируется старая высота звучания и приоритет
                                 BuffNote = new ValueNote((Pitch) BuffNote.Pitch.Clone(),
-                                                    BuffNote.Duration.AddDuration(Temp.NoteList[0].Duration),
-                                                    BuffNote.Triplet, -1, BuffNote.Priority);
+                                                         BuffNote.Duration.AddDuration(Temp.NoteList[0].Duration),
+                                                         BuffNote.Triplet, -1, BuffNote.Priority);
                                 // завершен сбор лигованных нот, результат кладется в возвращаемый буфер.
                                 TempGathered.NoteList.Add(((ValueNote) BuffNote.Clone()));
                                 // очистка буффера залигованных нот
@@ -226,7 +226,7 @@ namespace MDA.OIP.BorodaDivider
 
         private Fmotiv()
         {
-              
+
         }
 
         public IBaseObject Clone()
@@ -361,23 +361,6 @@ namespace MDA.OIP.BorodaDivider
             }
 
             return true;
-        }
-
-        ///<summary>
-        /// Stub for GetBin
-        ///</summary>
-        public IBin GetBin()
-        {
-            FmotivBin Temp = new FmotivBin();
-            return Temp;
-        }
-
-        public class FmotivBin : IBin
-        {
-            public IBaseObject GetInstance()
-            {
-                return new Fmotiv();
-            }
         }
 
         #endregion

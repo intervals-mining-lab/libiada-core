@@ -186,28 +186,6 @@ namespace MDA.OIP.ScoreModel
             // TODO: сделать сравнение не по всей ноте/объекту, а еще только по месту например, 
             // TODO: из сравнения исключить триплет, так может различать одинаковые по длительности ноты, но записанные по разному(!)
         }
-
-        ///<summary>
-        /// Stub
-        ///</summary>
-        public IBin GetBin()
-        {
-            NoteBin Temp = new NoteBin();
-            
-            return Temp;
-        }
-
-        ///<summary>
-        /// Stub
-        ///</summary>
-        public class NoteBin : IBin
-        {
-            public IBaseObject GetInstance()
-            {
-                return new ValueNote();
-            }
-        }
-
         #endregion
     }
 }

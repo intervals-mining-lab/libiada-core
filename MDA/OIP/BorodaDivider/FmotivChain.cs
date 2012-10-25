@@ -80,27 +80,6 @@ namespace MDA.OIP.BorodaDivider
             return true;
         }
 
-        ///<summary>
-        /// Stub
-        ///</summary>
-        public IBin GetBin()
-        {
-            FmotivChainBin Temp = new FmotivChainBin();
-            return Temp;
-        }
-
-
-        public class FmotivChainBin : IBin
-        {
-            ///<summary>
-            /// Stub
-            ///</summary>
-            public IBaseObject GetInstance()
-            {
-                return new FmotivChain();
-            }
-        }
-
         #endregion
     }
 }
