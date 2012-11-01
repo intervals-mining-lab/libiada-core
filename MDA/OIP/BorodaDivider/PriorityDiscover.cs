@@ -248,7 +248,7 @@ namespace MDA.OIP.BorodaDivider
 
             //---------------------------Занесение начальных долей размера такта---------------------------
             //---------------------------------------------------------------------------------------------
-            priorityMask.NoteList.Add(new ValueNote(null, new Duration(1, measure.Attributes.Size.Beatbase,
+            priorityMask.NoteList.Add(new ValueNote(new List<Pitch>(0), new Duration(1, measure.Attributes.Size.Beatbase,
                                                                   false, measure.Attributes.Size.Ticksperbeat), false,
                                                -1, 0));
             // первая доля в такте всегда самая сильная и выделяется НАИВЫСШИМ приоритетом 0
@@ -263,7 +263,7 @@ namespace MDA.OIP.BorodaDivider
                     {
                         //относительно сильная доля с приоритетом 1
                         int priority = 1;
-                        priorityMask.NoteList.Add(new ValueNote(null, new Duration(1, measure.Attributes.Size.Beatbase,
+                        priorityMask.NoteList.Add(new ValueNote(new List<Pitch>(0), new Duration(1, measure.Attributes.Size.Beatbase,
                                                                               false,
                                                                               measure.Attributes.Size.Ticksperbeat),
                                                            false, -1, priority));
@@ -278,7 +278,7 @@ namespace MDA.OIP.BorodaDivider
                             priority = 1;
                         }
 
-                        priorityMask.NoteList.Add(new ValueNote(null, new Duration(1, measure.Attributes.Size.Beatbase,
+                        priorityMask.NoteList.Add(new ValueNote(new List<Pitch>(0), new Duration(1, measure.Attributes.Size.Beatbase,
                                                                               false,
                                                                               measure.Attributes.Size.Ticksperbeat),
                                                            false, -1, priority));
@@ -298,7 +298,7 @@ namespace MDA.OIP.BorodaDivider
                         {
                             //относительно сильная доля с приоритетом 1
                             int priority = 1;
-                            priorityMask.NoteList.Add(new ValueNote(null, new Duration(1, measure.Attributes.Size.Beatbase,
+                            priorityMask.NoteList.Add(new ValueNote(new List<Pitch>(0), new Duration(1, measure.Attributes.Size.Beatbase,
                                                                                   false,
                                                                                   measure.Attributes.Size.Ticksperbeat),
                                                                false, -1, priority));
@@ -313,7 +313,7 @@ namespace MDA.OIP.BorodaDivider
                                 priority = 1;
                             }
 
-                            priorityMask.NoteList.Add(new ValueNote(null, new Duration(1, measure.Attributes.Size.Beatbase,
+                            priorityMask.NoteList.Add(new ValueNote(new List<Pitch>(0), new Duration(1, measure.Attributes.Size.Beatbase,
                                                                                   false,
                                                                                   measure.Attributes.Size.Ticksperbeat),
                                                                false, -1, priority));
@@ -337,7 +337,7 @@ namespace MDA.OIP.BorodaDivider
                                 priority = 2;
                             }
 
-                            priorityMask.NoteList.Add(new ValueNote(null, new Duration(1, measure.Attributes.Size.Beatbase,
+                            priorityMask.NoteList.Add(new ValueNote(new List<Pitch>(0), new Duration(1, measure.Attributes.Size.Beatbase,
                                                                                   false,
                                                                                   measure.Attributes.Size.Ticksperbeat),
                                                                false, -1, priority));
@@ -346,7 +346,7 @@ namespace MDA.OIP.BorodaDivider
                         {
                             //слабая доля с приоритетом 2
                             int priority = 2;
-                            priorityMask.NoteList.Add(new ValueNote(null, new Duration(1, measure.Attributes.Size.Beatbase,
+                            priorityMask.NoteList.Add(new ValueNote(new List<Pitch>(0), new Duration(1, measure.Attributes.Size.Beatbase,
                                                                                   false,
                                                                                   measure.Attributes.Size.Ticksperbeat),
                                                                false, -1, priority));
@@ -389,10 +389,10 @@ namespace MDA.OIP.BorodaDivider
                 for (int i = 0; i < priorityMask.NoteList.Count; i++)
                 {
 
-                    Temp.NoteList.Add(new ValueNote(null, new Duration(1, (priorityMask.NoteList[i].Duration.Denominator*2),
+                    Temp.NoteList.Add(new ValueNote(new List<Pitch>(0), new Duration(1, (priorityMask.NoteList[i].Duration.Denominator * 2),
                                                                   false, (priorityMask.NoteList[i].Duration.Ticks/2)),
                                                false, -1, priorityMask.NoteList[i].Priority));
-                    Temp.NoteList.Add(new ValueNote(null, new Duration(1, (priorityMask.NoteList[i].Duration.Denominator*2),
+                    Temp.NoteList.Add(new ValueNote(new List<Pitch>(0), new Duration(1, (priorityMask.NoteList[i].Duration.Denominator * 2),
                                                                   false, (priorityMask.NoteList[i].Duration.Ticks/2)),
                                                false, -1, (maxpriority + 1)));
                 }

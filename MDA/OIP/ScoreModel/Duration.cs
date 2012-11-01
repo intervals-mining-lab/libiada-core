@@ -125,6 +125,16 @@ namespace MDA.OIP.ScoreModel
              this.ticks = this.Ticks + duration.Ticks;
             */
         }
+        
+        /// <summary>
+        ///  остаток от вычитания длительности из текущей
+        /// </summary>
+        public Duration SubDuration(Duration duration)
+        {
+        	Duration temp = (Duration) duration.Clone();
+        	temp.ticks = -temp.ticks;
+        	return this.AddDuration(temp);
+        }
 
         public int Numerator
         {

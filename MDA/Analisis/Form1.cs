@@ -70,10 +70,10 @@ namespace MDA.Analisis
                 Parser.Execute(xmlreader.MusicXmlDocument, xmlreader.FileName);
 
                 BorodaDivider bd = new BorodaDivider();
-
+                
                 List<FmotivChain> Listfmotivchains = bd.Divide(Parser.ScoreModel, PauseTreatment.NoteTrace,
                                                                FMSequentEquality.Sequent);
-
+                
                 #region запись разбитых фмотивов в файл
 
                 // записываем строй в файл с таким же именем только с припиской _Consistence.txt состав по нотам в фмотивах
@@ -113,10 +113,12 @@ namespace MDA.Analisis
                                     default:
                                         break;
                                 }
-                                st.WriteLine("Note: duration = " + note.Duration.Numerator.ToString() + "/" +
-                                             note.Duration.Denominator.ToString() +
-                                             " step = " + note.Pitch.Step.ToString() + " priority = " +
-                                             note.Priority.ToString() + tietype);
+                                st.Write("Note: duration = " + note.Duration.Numerator.ToString() + "/" +
+                                         note.Duration.Denominator.ToString() +
+                                         " steps = ");
+                                foreach(Pitch pitch in note.Pitch)
+                                    st.Write(pitch.Instrument.ToString() + pitch.Step.ToString());
+                                st.WriteLine(" priority = " + note.Priority.ToString() + tietype);
                             }
                             else
                             {
@@ -133,7 +135,7 @@ namespace MDA.Analisis
                 fs.Close();
 
                 #endregion
-
+                
                 textBox1.Clear();
                 int i = 0;
                 for (i = 0; i < Listfmotivchains[0].Length; i++) // COUNT -> (string []) LENGTH error

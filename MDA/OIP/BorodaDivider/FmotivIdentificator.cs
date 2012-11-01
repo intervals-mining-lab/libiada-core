@@ -12,7 +12,7 @@ namespace MDA.OIP.BorodaDivider
             {
                 for (int j = i; j < Temp.Length; j++)
                 {
-                    if (((Fmotiv)Temp[i]).FmEquals(Temp[j], paramPause, paramEqual))
+                    if (((Fmotiv)Temp[i]).Equals(Temp[j], paramPause, paramEqual))
                         //if (Temp.FmotivList[i].Equals(Temp.FmotivList[j])) 
                     {
                         Temp.Building[j] = Temp.Building[i];

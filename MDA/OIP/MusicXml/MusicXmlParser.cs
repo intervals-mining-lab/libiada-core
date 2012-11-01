@@ -28,11 +28,13 @@ namespace MDA.OIP.MusicXml
         public void Execute(XmlDocument xmldocument, string filename)
         {
             // TODO: проверка схемы Xml на соотвествие схеме MusicXml
+            /* это уже не надо, аккорды добавляются
             if (ChordFound((XmlDocument) xmldocument.Clone()))
                 // если в документе найден хоть один аккорд, то сообщение об ошибке
             {
                 throw new Exception("MDA.PARSER: Chord Detected!");
             }
+            */
             // создаем объект модели музыкального текста из Xml документа
             scoremodel = new ScoreTrack(filename, parseUniformScoreTracks((XmlDocument) xmldocument.Clone()));
 
@@ -310,6 +312,7 @@ namespace MDA.OIP.MusicXml
                                       parseTie((XmlNode) measureChild.Clone())));
                     hasNotes = true;
                 }
+                if (measureChild.Name == "chord") Temp[Temp.Count-1].AddPitch(parsePitch((XmlNode)measureChild.Clone()));
             }
             if (hasNotes) return Temp;
             else return null;

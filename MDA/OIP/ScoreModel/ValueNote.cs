@@ -1,4 +1,5 @@
 ﻿using LibiadaCore.Classes.Root;
+using System.Collections.Generic;
 
 namespace MDA.OIP.ScoreModel
 {
@@ -18,7 +19,7 @@ namespace MDA.OIP.ScoreModel
         /// <summary>
         /// высота ноты
         /// </summary>
-        private Pitch pitch;
+        private List<Pitch> pitch;
         /// <summary>
         /// длительность ноты
         /// </summary>
@@ -32,70 +33,70 @@ namespace MDA.OIP.ScoreModel
         /// </summary>
         private int id;
 
-        public ValueNote(Pitch pitch, Duration duration, bool triplet, Tie tie)
-        {
-            if (pitch != null) // если не пауза то записываем высоту и наличие лиги
-            {
-                this.pitch = (Pitch)pitch.Clone();
-                this.tie = (int)tie;
-            }
-            else
-            {
-                this.tie = (int)ScoreModel.Tie.None; // если нота - пауза, то не может быть лиги на паузу
-            }
-            this.duration = (Duration)duration.Clone();
-            this.triplet = triplet;
-            this.priority = -1; // приоритет не определен
-        }
-
-        public ValueNote(Pitch pitch, Duration duration, bool triplet, int tie)
-        {
-            if (pitch != null) // если не пауза то записываем высоту и наличие лиги
-            {
-                this.pitch = (Pitch) pitch.Clone();
-                this.tie = tie;
-            }
-            else
-            {
-                this.tie = (int)ScoreModel.Tie.None; // если нота - пауза, то не может быть лиги на паузу
-            }
-            this.duration = (Duration) duration.Clone();
-            this.triplet = triplet;
-            this.priority = -1; // приоритет не определен
-        }
-
-        public ValueNote(Pitch pitch, Duration duration, bool triplet, Tie tie, int priority)
-        {
-
-            if (pitch != null) // если не пауза то записываем высоту и наличие лиги
-            {
-                this.pitch = (Pitch)pitch.Clone();
-                this.tie = (int)tie;
-            }
-            else
-            {
-                this.tie = (int)ScoreModel.Tie.None; // если нота - пауза, то не может быть лиги на паузу
-            }
-            this.duration = (Duration)duration.Clone();
-            this.triplet = triplet;
-            this.priority = priority; // приоритет если указан
-        }
 
         public ValueNote(Pitch pitch, Duration duration, bool triplet, int tie, int priority)
         {
-
+            this.pitch = new List<Pitch>(0);
             if (pitch != null) // если не пауза то записываем высоту и наличие лиги
             {
-                this.pitch = (Pitch) pitch.Clone();
+                this.pitch.Add((Pitch)pitch.Clone());
                 this.tie = tie;
             }
             else
             {
                 this.tie = (int)ScoreModel.Tie.None; // если нота - пауза, то не может быть лиги на паузу
             }
-            this.duration = (Duration) duration.Clone();
+            this.duration = (Duration)duration.Clone();
             this.triplet = triplet;
             this.priority = priority; // приоритет если указан
+        }
+
+        public ValueNote(Pitch pitch, Duration duration, bool triplet, int tie)
+            : this(pitch, duration, triplet, tie, -1)
+        {
+        }
+        
+        public ValueNote(Pitch pitch, Duration duration, bool triplet, Tie tie)
+            : this(pitch, duration, triplet, (int)tie, -1)
+        {
+        }
+
+        public ValueNote(Pitch pitch, Duration duration, bool triplet, Tie tie, int priority)
+            : this(pitch, duration, triplet, (int)tie, priority)
+        {
+        }
+
+        public ValueNote(List<Pitch> pitchlist, Duration duration, bool triplet, int tie, int priority)
+            : this(null, duration, triplet, tie)
+        {
+            this.pitch.AddRange(pitchlist);
+            this.priority = priority;
+        }
+
+        public ValueNote(List<Pitch> pitchlist, Duration duration, bool triplet, Tie tie, int priority)
+            : this(pitchlist, duration, triplet, (int)tie, priority)
+        {
+        }
+        
+        
+		public void AddPitch(Pitch pitch)
+		{
+			this.pitch.Add((Pitch) pitch.Clone());
+		}
+		
+		public void AddPitch(List<Pitch> pitchlist)
+		{
+			foreach(Pitch pitch in pitchlist) { this.pitch.Add((Pitch) pitch.Clone()); }
+		}
+		
+		public List<ValueNote> SplitNote(Duration duration)
+        {
+            List<ValueNote> Temp = new List<ValueNote>(2);
+            Temp[0] = (ValueNote)this.Clone();
+            Temp[1] = (ValueNote)this.Clone();
+            Temp[0].Duration = duration;
+            Temp[1].Duration = this.Duration.SubDuration(duration);
+            return Temp;
         }
 
         public int Id
@@ -114,7 +115,7 @@ namespace MDA.OIP.ScoreModel
             get { return tie; }
         }
 
-        public Pitch Pitch
+        public List<Pitch> Pitch
         {
             get { return pitch; }
         }
@@ -122,6 +123,7 @@ namespace MDA.OIP.ScoreModel
         public Duration Duration
         {
             get { return duration; }
+            set { this.duration = value; }
         }
 
         public int Priority
@@ -148,9 +150,9 @@ namespace MDA.OIP.ScoreModel
 
         public override bool Equals(object obj)
         {
-            if (this.Pitch == null)
+            if (this.Pitch.Count == 0)
             {
-                if (((ValueNote) obj).Pitch == null)
+                if (((ValueNote) obj).Pitch.Count == 0)
                 {
                     if (this.Duration.Equals(((ValueNote) obj).Duration))
                     {
@@ -169,20 +171,21 @@ namespace MDA.OIP.ScoreModel
             }
             else
             {
-                if (((ValueNote) obj).Pitch == null)
+                if (((ValueNote) obj).Pitch.Count == 0)
                 {
                     // нота и пауза не одно и то же
                     return false;
                 }
             }
 
-
-            if ((this.Duration.Equals(((ValueNote) obj).Duration)) && (this.Pitch.Equals(((ValueNote) obj).Pitch)) &&
-                (this.Tie == ((ValueNote) obj).Tie) && (this.Triplet == ((ValueNote) obj).Triplet))
-            {
-                return true;
-            }
-            return false;
+			foreach(Pitch pitch1 in ((ValueNote) obj).pitch)
+				foreach(Pitch pitch2 in this.pitch)
+            		if (!((this.Duration.Equals(((ValueNote) obj).Duration)) && (pitch1.Equals(pitch2)) &&
+               			(this.Tie == ((ValueNote) obj).Tie) && (this.Triplet == ((ValueNote) obj).Triplet)))
+            		{
+                		return false;
+            		}
+            return true;
             // TODO: сделать сравнение не по всей ноте/объекту, а еще только по месту например, 
             // TODO: из сравнения исключить триплет, так может различать одинаковые по длительности ноты, но записанные по разному(!)
         }

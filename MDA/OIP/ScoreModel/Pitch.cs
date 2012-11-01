@@ -27,6 +27,11 @@ namespace MDA.OIP.ScoreModel
         /// уникальный номер ноты по миди стандарту
         /// </summary>
         private int midinumber;
+        
+        /// <summary>
+        /// номер инструмента в партитуре
+        /// </summary>
+        private int instrument;
 
         public Pitch(int octave, char step, int alter)
         {
@@ -34,6 +39,13 @@ namespace MDA.OIP.ScoreModel
             this.step = step;
             this.octave = octave;
             this.midinumber = getmidinumberbyparam(this.octave, this.step, this.alter);
+            this.instrument = 0;
+        }
+        
+        public Pitch(int octave, char step, int alter, int instrument)
+            : this(octave, step, alter)
+        {
+            this.instrument = instrument;
         }
 
         public int Midinumber
@@ -54,6 +66,12 @@ namespace MDA.OIP.ScoreModel
         public int Alter
         {
             get { return alter; }
+        }
+        
+        public int Instrument
+        {
+			get { return instrument; }
+			set { this.instrument = value; }
         }
 
         #region privateMethods
@@ -127,7 +145,7 @@ namespace MDA.OIP.ScoreModel
             {
                 return false;
             }
-            if (this.Midinumber == ((Pitch) obj).Midinumber)
+            if ((this.Midinumber == ((Pitch) obj).Midinumber) && (this.Instrument == ((Pitch) obj).Instrument))
             {
                 return true;
             }
