@@ -11,7 +11,7 @@ namespace MDA.OIP.BorodaDivider
 
             foreach (UniformScoreTrack utrack in strack.UniformScoreTracks)
             {
-                FmotivChain fmchain = (FmotivChain) this.Divide(utrack, paramPause, paramEqual).Clone();
+                FmotivChain fmchain = this.Divide(utrack, paramPause, paramEqual).CloneChain();
                 Temp.Add(fmchain);
             }
             return Temp;

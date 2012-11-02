@@ -36,6 +36,22 @@ namespace MDA.OIP.BorodaDivider
             
         }
 
+        public int SetBuildingElement(int index, int elem )
+        {
+            this.building[index] = elem;
+            return 0;
+        }
+
+        public FmotivChain CloneChain()
+        {
+            FmotivChain Temp = new FmotivChain(this.Length);
+            Temp.alphabet = this.Alphabet;
+            Temp.name = this.name;
+            Temp.building = this.Building;
+            Temp.PUniformChains = (UniformChain[])this.PUniformChains.Clone();
+            return Temp;
+        }
+
         public string Name
         {
             get { return name; }

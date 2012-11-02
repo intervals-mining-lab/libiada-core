@@ -7,49 +7,53 @@ namespace MDA.OIP.BorodaDivider
         public FmotivChain GetIdentification(FmotivChain fmotivchain, PauseTreatment paramPause, FMSequentEquality paramEqual)
         {
             FmotivChain Temp = (FmotivChain) fmotivchain.Clone();
-
-            for (int i = 0; i < Temp.Length; i++)
+            /*for (int i = 0; i < Temp.Length; i++ )
             {
-                for (int j = i; j < Temp.Length; j++)
-                {
-                    if (((Fmotiv)Temp[i]).Equals(Temp[j], paramPause, paramEqual))
-                        //if (Temp.FmotivList[i].Equals(Temp.FmotivList[j])) 
-                    {
-                        Temp.Building[j] = Temp.Building[i];
-                    }
-                }
+                Temp.SetBuildingElement(i, 1);
             }
-            for (int i = 1; i <= Temp.Building.Max(); i++)
-            {
-                bool HaveId = false; // флаг того что есть такой id в цепочке
-                for (int j = 0; j < Temp.Length; j++)
+                */
+                for (int i = 0; i < Temp.Length; i++)
                 {
-                    if (!HaveId)
+                    for (int j = i; j < Temp.Length; j++)
                     {
-                        if (Temp.Building[j] == i)
+                        if (((Fmotiv)Temp[i]).Equals(Temp[j], paramPause, paramEqual))
+                            //if (Temp.FmotivList[i].Equals(Temp.FmotivList[j])) 
                         {
-                            HaveId = true;
-                            break;
+                            Temp.SetBuildingElement(j, Temp.Building[i]);
                         }
                     }
                 }
-                if (!HaveId)
+                for (int i = 1; i <= Temp.Building.Max(); i++)
                 {
+                    bool HaveId = false; // флаг того что есть такой id в цепочке
                     for (int j = 0; j < Temp.Length; j++)
                     {
-                        if (Temp.Building[j] > i)
+                        if (!HaveId)
                         {
-                            // уменьшаем на 1 id тех фмотивов которые больше текущей  id - i, которой не нашлось в цепи
-                            Temp.Building[j] = Temp.Building[j] - 1;
+                            if (Temp.Building[j] == i)
+                            {
+                                HaveId = true;
+                                break;
+                            }
                         }
                     }
-                    // уменьшаем i на 1 чтобы еще раз проверить есть ли это i среди цепи после уменьшения id-ек больших i
-                    i = i - 1;
+                    if (!HaveId)
+                    {
+                        for (int j = 0; j < Temp.Length; j++)
+                        {
+                            if (Temp.Building[j] > i)
+                            {
+                                // уменьшаем на 1 id тех фмотивов которые больше текущей  id - i, которой не нашлось в цепи
+                                Temp.SetBuildingElement(j, Temp.Building[j] - 1);
+                            }
+                        }
+                        // уменьшаем i на 1 чтобы еще раз проверить есть ли это i среди цепи после уменьшения id-ек больших i
+                        i = i - 1;
 
+                    }
                 }
-            }
-
-            return Temp;
+                
+                return Temp;
         }
     }
 }
