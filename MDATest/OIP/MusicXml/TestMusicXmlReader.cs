@@ -12,7 +12,7 @@ namespace MDATest.OIP.MusicXml
         public void TestXMLReader1()
         {
             // WTF????!!!!
-            MusicXmlReader xr = new MusicXmlReader("../../../../MDAexample7Liga.xml");
+            MusicXmlReader xr = new MusicXmlReader("../../MDAexample7Liga.xml");
             Assert.IsNotNull(xr.MusicXmlDocument);
             Assert.AreEqual("MDAexample7Liga", xr.FileName);
         }
@@ -21,7 +21,7 @@ namespace MDATest.OIP.MusicXml
         public void TestXMLReader2()
         {
             // WTF????!!!!
-            string path = "../../../../MDAexample7Liga.xml";
+            string path = "../../MDAexample7Liga.xml";
             MusicXmlReader xr = new MusicXmlReader();
             XmlDocument xdoc = new XmlDocument();
 

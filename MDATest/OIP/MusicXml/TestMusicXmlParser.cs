@@ -15,7 +15,7 @@ namespace MDATest.OIP.MusicXml
             XmlDocument xmldocument = new XmlDocument();
             // WTF????!!!!!!1111
             MusicXmlReader xmlreader =
-                new MusicXmlReader("../../../../MDAexample7Liga.xml");
+                new MusicXmlReader("../../MDAexample7Liga.xml");
             MusicXmlParser Parser = new MusicXmlParser();
 
             Parser.Execute(xmlreader.MusicXmlDocument, xmlreader.FileName);
