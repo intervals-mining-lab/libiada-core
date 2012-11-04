@@ -16,8 +16,8 @@ namespace MDATest.OIP.BorodaDivider
 
             FmotivChain fmchain = new FmotivChain(1);
             fmchain.Add(fmotiv1, 0);
-            Assert.AreEqual('A', ((Fmotiv)fmchain[0]).NoteList[0].Pitch.Step);
-            Assert.AreEqual('B', ((Fmotiv)fmchain[0]).NoteList[1].Pitch.Step);
+            Assert.AreEqual('A', ((Fmotiv)fmchain[0]).NoteList[0].Pitch[0].Step);
+            Assert.AreEqual('B', ((Fmotiv)fmchain[0]).NoteList[1].Pitch[0].Step);
         }
 
         [TestMethod]

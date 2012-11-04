@@ -33,11 +33,11 @@ namespace MDATest.OIP.ScoreModel
             notes2.Add(new ValueNote(new Pitch(3, 'A', 2), new Duration(1, 16, false, 128), false, Tie.None, 3));
             notes2.Add(new ValueNote(new Pitch(3, 'C', 1), new Duration(1, 4, false, 128), false, Tie.None, 1));
 
-            notes2.Add(new ValueNote(null, new Duration(1, 4, false, 128), false, Tie.None, 1));
-            notes2.Add(new ValueNote(null, new Duration(1, 4, false, 128), false, Tie.None, 1));
+            notes2.Add(new ValueNote((Pitch)null, new Duration(1, 4, false, 128), false, Tie.None, 1));
+            notes2.Add(new ValueNote((Pitch)null, new Duration(1, 4, false, 128), false, Tie.None, 1));
 
-            notes2.Add(new ValueNote(null, new Duration(1, 16, false, 128), false, Tie.None, 1));
-            notes2.Add(new ValueNote(null, new Duration(1, 16, false, 128), false, Tie.None, 1));
+            notes2.Add(new ValueNote((Pitch)null, new Duration(1, 16, false, 128), false, Tie.None, 1));
+            notes2.Add(new ValueNote((Pitch)null, new Duration(1, 16, false, 128), false, Tie.None, 1));
 
 
             Attributes attr = new Attributes(new Size(4, 4), new Key(5));
@@ -52,36 +52,36 @@ namespace MDATest.OIP.ScoreModel
 
             UniformScoreTrack uni = new UniformScoreTrack("a1", mlist);
 
-            Assert.AreNotEqual(((ValueNote) uni.NoteOrder()[0]).Id, 1);
+            Assert.AreNotEqual((uni.NoteOrder()[0]).Id, 1);
 
-            Assert.AreEqual(((ValueNote) uni.NoteOrder()[0]).Id, 0);
-            Assert.AreEqual(((ValueNote) uni.NoteOrder()[1]).Id, 1);
-            Assert.AreEqual(((ValueNote) uni.NoteOrder()[2]).Id, 1);
+            Assert.AreEqual((uni.NoteOrder()[0]).Id, 0);
+            Assert.AreEqual((uni.NoteOrder()[1]).Id, 1);
+            Assert.AreEqual((uni.NoteOrder()[2]).Id, 1);
 
-            Assert.AreEqual(((ValueNote) uni.NoteOrder()[3]).Id, 2);
-            Assert.AreEqual(((ValueNote) uni.NoteOrder()[4]).Id, 3);
-            Assert.AreEqual(((ValueNote) uni.NoteOrder()[5]).Id, 4);
+            Assert.AreEqual((uni.NoteOrder()[3]).Id, 2);
+            Assert.AreEqual((uni.NoteOrder()[4]).Id, 3);
+            Assert.AreEqual((uni.NoteOrder()[5]).Id, 4);
 
-            Assert.AreEqual(((ValueNote) uni.NoteOrder()[6]).Id, 0);
-            Assert.AreEqual(((ValueNote) uni.NoteOrder()[7]).Id, 2);
-            Assert.AreEqual(((ValueNote) uni.NoteOrder()[8]).Id, 2);
+            Assert.AreEqual((uni.NoteOrder()[6]).Id, 0);
+            Assert.AreEqual((uni.NoteOrder()[7]).Id, 2);
+            Assert.AreEqual((uni.NoteOrder()[8]).Id, 2);
 
-            Assert.AreEqual(((ValueNote) uni.NoteOrder()[9]).Id, 0);
-            Assert.AreEqual(((ValueNote) uni.NoteOrder()[10]).Id, 0);
-            Assert.AreEqual(((ValueNote) uni.NoteOrder()[11]).Id, 1);
+            Assert.AreEqual((uni.NoteOrder()[9]).Id, 0);
+            Assert.AreEqual((uni.NoteOrder()[10]).Id, 0);
+            Assert.AreEqual((uni.NoteOrder()[11]).Id, 1);
 
-            Assert.AreEqual(((ValueNote) uni.NoteOrder()[12]).Id, 1);
-            Assert.AreEqual(((ValueNote) uni.NoteOrder()[13]).Id, 2);
-            Assert.AreEqual(((ValueNote) uni.NoteOrder()[14]).Id, 3);
+            Assert.AreEqual((uni.NoteOrder()[12]).Id, 1);
+            Assert.AreEqual((uni.NoteOrder()[13]).Id, 2);
+            Assert.AreEqual((uni.NoteOrder()[14]).Id, 3);
 
-            Assert.AreEqual(((ValueNote) uni.NoteOrder()[15]).Id, 5);
-            Assert.AreEqual(((ValueNote) uni.NoteOrder()[16]).Id, 0);
-            Assert.AreEqual(((ValueNote) uni.NoteOrder()[17]).Id, 6);
+            Assert.AreEqual((uni.NoteOrder()[15]).Id, 5);
+            Assert.AreEqual((uni.NoteOrder()[16]).Id, 0);
+            Assert.AreEqual((uni.NoteOrder()[17]).Id, 6);
 
-            Assert.AreEqual(((ValueNote) uni.NoteOrder()[18]).Id, 7);
-            Assert.AreEqual(((ValueNote) uni.NoteOrder()[19]).Id, 7);
-            Assert.AreEqual(((ValueNote) uni.NoteOrder()[20]).Id, 8);
-            Assert.AreEqual(((ValueNote) uni.NoteOrder()[21]).Id, 8);
+            Assert.AreEqual((uni.NoteOrder()[18]).Id, 7);
+            Assert.AreEqual((uni.NoteOrder()[19]).Id, 7);
+            Assert.AreEqual((uni.NoteOrder()[20]).Id, 8);
+            Assert.AreEqual((uni.NoteOrder()[21]).Id, 8);
         }
 
         [TestMethod]
@@ -110,11 +110,11 @@ namespace MDATest.OIP.ScoreModel
             notes2.Add(new ValueNote(new Pitch(3, 'A', 2), new Duration(1, 16, false, 128), false, Tie.None, 3));
             notes2.Add(new ValueNote(new Pitch(3, 'C', 1), new Duration(1, 4, false, 128), false, Tie.None, 1));
 
-            notes2.Add(new ValueNote(null, new Duration(1, 4, false, 128), false, Tie.None, 1));
-            notes2.Add(new ValueNote(null, new Duration(1, 4, false, 128), false, Tie.None, 1));
+            notes2.Add(new ValueNote((Pitch)null, new Duration(1, 4, false, 128), false, Tie.None, 1));
+            notes2.Add(new ValueNote((Pitch)null, new Duration(1, 4, false, 128), false, Tie.None, 1));
 
-            notes2.Add(new ValueNote(null, new Duration(1, 16, false, 128), false, Tie.None, 1));
-            notes2.Add(new ValueNote(null, new Duration(1, 16, false, 128), false, Tie.None, 1));
+            notes2.Add(new ValueNote((Pitch)null, new Duration(1, 16, false, 128), false, Tie.None, 1));
+            notes2.Add(new ValueNote((Pitch)null, new Duration(1, 16, false, 128), false, Tie.None, 1));
 
 
             Attributes attr = new Attributes(new Size(4, 4), new Key(5));
@@ -191,12 +191,12 @@ namespace MDATest.OIP.ScoreModel
             notes4.Add(new ValueNote(new Pitch(3, 'C', 1), new Duration(1, 4, false, 128), false, Tie.None, 1));
 
             List<ValueNote> notes5 = new List<ValueNote>();
-            notes5.Add(new ValueNote(null, new Duration(1, 4, false, 128), false, Tie.None, 1));
-            notes5.Add(new ValueNote(null, new Duration(1, 4, false, 128), false, Tie.None, 1));
+            notes5.Add(new ValueNote((Pitch)null, new Duration(1, 4, false, 128), false, Tie.None, 1));
+            notes5.Add(new ValueNote((Pitch)null, new Duration(1, 4, false, 128), false, Tie.None, 1));
 
             List<ValueNote> notes6 = new List<ValueNote>();
-            notes6.Add(new ValueNote(null, new Duration(1, 16, false, 128), false, Tie.None, 1));
-            notes6.Add(new ValueNote(null, new Duration(1, 16, false, 128), false, Tie.None, 1));
+            notes6.Add(new ValueNote((Pitch)null, new Duration(1, 16, false, 128), false, Tie.None, 1));
+            notes6.Add(new ValueNote((Pitch)null, new Duration(1, 16, false, 128), false, Tie.None, 1));
 
 
             Attributes attr = new Attributes(new Size(4, 4, 128), new Key(5));

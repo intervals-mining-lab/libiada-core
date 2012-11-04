@@ -79,17 +79,17 @@ namespace MDA.OIP.ScoreModel
         }
         
         
-		public void AddPitch(Pitch pitch)
-		{
-			this.pitch.Add((Pitch) pitch.Clone());
-		}
-		
-		public void AddPitch(List<Pitch> pitchlist)
-		{
-			foreach(Pitch pitch in pitchlist) { this.pitch.Add((Pitch) pitch.Clone()); }
-		}
-		
-		public List<ValueNote> SplitNote(Duration duration)
+        public void AddPitch(Pitch pitch)
+        {
+            this.pitch.Add((Pitch) pitch.Clone());
+        }
+        
+        public void AddPitch(List<Pitch> pitchlist)
+        {
+            foreach(Pitch pitch in pitchlist) { this.pitch.Add((Pitch) pitch.Clone()); }
+        }
+        
+        public List<ValueNote> SplitNote(Duration duration)
         {
             List<ValueNote> Temp = new List<ValueNote>(2);
             Temp[0] = (ValueNote)this.Clone();
@@ -178,13 +178,13 @@ namespace MDA.OIP.ScoreModel
                 }
             }
 
-			foreach(Pitch pitch1 in ((ValueNote) obj).pitch)
-				foreach(Pitch pitch2 in this.pitch)
-            		if (!((this.Duration.Equals(((ValueNote) obj).Duration)) && (pitch1.Equals(pitch2)) &&
-               			(this.Tie == ((ValueNote) obj).Tie) && (this.Triplet == ((ValueNote) obj).Triplet)))
-            		{
-                		return false;
-            		}
+            foreach(Pitch pitch1 in ((ValueNote) obj).pitch)
+                foreach(Pitch pitch2 in this.pitch)
+                    if (!((this.Duration.Equals(((ValueNote) obj).Duration)) && (pitch1.Equals(pitch2)) &&
+                        (this.Tie == ((ValueNote) obj).Tie) && (this.Triplet == ((ValueNote) obj).Triplet)))
+                    {
+                        return false;
+                    }
             return true;
             // TODO: сделать сравнение не по всей ноте/объекту, а еще только по месту например, 
             // TODO: из сравнения исключить триплет, так может различать одинаковые по длительности ноты, но записанные по разному(!)
