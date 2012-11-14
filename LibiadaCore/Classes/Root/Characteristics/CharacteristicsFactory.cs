@@ -57,7 +57,7 @@ namespace LibiadaCore.Classes.Root.Characteristics
         ///</summary>
         public static ICharacteristicCalculator deltaG
         {
-            get { return new GeometricMiddling(); }
+            get { return new GeometricMean(); }
         }
 
         ///<summary>

@@ -9,7 +9,7 @@ namespace TestLibiadaCore.Classes.Root.Characteristics.Calculators
     ///<summary>
     ///</summary>
     [TestFixture]
-    public class TestGeometricMiddling
+    public class TestGeometricMean
     {
         private UniformChain TestUChain = null;
         private Chain TestChain = null;
@@ -32,7 +32,7 @@ namespace TestLibiadaCore.Classes.Root.Characteristics.Calculators
         [Test]
         public void TestCalculationForChain()
         {
-            Characteristic dG = new Characteristic(new GeometricMiddling());
+            Characteristic dG = new Characteristic(new GeometricMean());
 
             double dGTheoreticalStart;
 
@@ -92,7 +92,7 @@ namespace TestLibiadaCore.Classes.Root.Characteristics.Calculators
         [Test]
         public void TestCalculationForUniformChain()
         {
-            Characteristic deltaGeom = new Characteristic(new GeometricMiddling());
+            Characteristic deltaGeom = new Characteristic(new GeometricMean());
             Characteristic G = new Characteristic(new Depth());
             Characteristic N = new Characteristic(new IntervalsCount());
 

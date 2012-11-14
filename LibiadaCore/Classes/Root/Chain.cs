@@ -247,12 +247,14 @@ namespace LibiadaCore.Classes.Root
             return -1;
         }
         /// <summary>
-        /// 
+        /// Возвращает i-ый интервал 
+        /// между указанными элементами 
+        /// в бинарно-однродной цепи
         /// </summary>
         /// <param name="j">первый элементы пары</param>
         /// <param name="L">второй элемент пары</param>
         /// <param name="entry">номер вхождения начиная с 1</param>
-        /// <returns></returns>
+        /// <returns>Длина интервала</returns>
         public int GetBinaryInterval(IBaseObject j, IBaseObject L, int entry)
         {
             int jEntry = Get(j, entry);

@@ -5,7 +5,7 @@ namespace LibiadaCore.Classes.Root.Characteristics.Calculators
     ///<summary>
     /// Среднегеометрический интервал.
     ///</summary>
-    public class GeometricMiddling : ICharacteristicCalculator
+    public class GeometricMean : ICharacteristicCalculator
     {
         public double Calculate(UniformChain pChain, LinkUp Link)
         {

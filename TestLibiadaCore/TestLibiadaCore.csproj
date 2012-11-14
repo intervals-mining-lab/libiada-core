@@ -62,7 +62,7 @@
     <Compile Include="Classes\Root\Characteristics\Calculators\TestCutLengthVocabularyEntropy.cs" />
     <Compile Include="Classes\Root\Characteristics\Calculators\TestDescriptiveInformation.cs" />
     <Compile Include="Classes\Root\Characteristics\Calculators\TestDepth.cs" />
-    <Compile Include="Classes\Root\Characteristics\Calculators\TestGeometricMiddling.cs" />
+    <Compile Include="Classes\Root\Characteristics\Calculators\TestGeometricMean.cs" />
     <Compile Include="Classes\Root\Characteristics\Calculators\TestIdentificationInformation.cs" />
     <Compile Include="Classes\Root\Characteristics\Calculators\TestIntervalsCount.cs" />
     <Compile Include="Classes\Root\Characteristics\Calculators\TestLength.cs" />

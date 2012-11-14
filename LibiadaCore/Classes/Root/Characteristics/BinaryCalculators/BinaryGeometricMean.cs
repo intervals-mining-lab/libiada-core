@@ -6,13 +6,25 @@ namespace LibiadaCore.Classes.Root.Characteristics.BinaryCalculators
 {
     public class BinaryGeometricMean : IBinaryCharacteristicCalculator
     {
+        /// <summary>
+        /// Среднегеометрический интервал 
+        /// между двумя компонентами бинарно-однородной цепи
+        /// </summary>
+        /// <param name="chain">Цепочка</param>
+        /// <param name="firstElement">Первый элемент</param>
+        /// <param name="secondElement">Второй элемент</param>
+        /// <param name="linkUp">Привязка</param>
+        /// <returns>Среднегеометрический интервал</returns>
         public double Calculate(Chain chain, IBaseObject firstElement, IBaseObject secondElement, LinkUp linkUp)
         {
+            //зависимость компонента от самого себя равна нулю
             if (firstElement.Equals(secondElement))
             {
                 return 0;
             }
+            //число вхождений первого компонента
             int firstElementCount = (int)chain.UniformChain(firstElement).GetCharacteristic(linkUp, new Count());
+            //вычисляем логариф произведения интервалов между элементами
             double intervals = 0;
             for (int i = 1; i <= firstElementCount; i++)
             {
@@ -22,7 +34,9 @@ namespace LibiadaCore.Classes.Root.Characteristics.BinaryCalculators
                     intervals += Math.Log(binaryInterval, 2);
                 }
             }
+            //получаем количество пар
             int pairs = chain.GetPairsCount(firstElement, secondElement);
+            //
             return Math.Pow(2, pairs == 0 ? 0 : intervals / pairs);
         }
 

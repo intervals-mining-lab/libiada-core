@@ -16,6 +16,7 @@ namespace LibiadaCore.Classes.Root.Characteristics.BinaryCalculators
             int firstElementCount = (int)firstElementChain.GetCharacteristic(linkUp, new Count());
             double avG = 0;
             int currentEntrance = 0;
+            
             for (int i = 1; i <= firstElementCount; i++)
             {
                 if (chain.GetBinaryInterval(firstElement, secondElement, i) > 0)
@@ -23,6 +24,10 @@ namespace LibiadaCore.Classes.Root.Characteristics.BinaryCalculators
                     if (currentEntrance == 0)
                     {
                         currentEntrance = chain.GetAfter(secondElement, chain.Get(firstElement, i));
+                        if (linkUp == LinkUp.Start || linkUp == LinkUp.Both)
+                        {
+                            avG += Math.Log(currentEntrance, 2);
+                        }
                     }
                     else
                     {
@@ -32,7 +37,11 @@ namespace LibiadaCore.Classes.Root.Characteristics.BinaryCalculators
                     }
                 }
             }
-            avG += Math.Log(chain.Length - currentEntrance, 2);
+            if (linkUp == LinkUp.End || linkUp == LinkUp.Both)
+            {
+                avG += Math.Log(chain.Length - currentEntrance, 2);
+            }
+            
             int pairs = chain.GetPairsCount(firstElement, secondElement);
             avG = pairs == 0 ? 0 : avG / pairs;
             var geometricMeanCalculator = new BinaryGeometricMean();
