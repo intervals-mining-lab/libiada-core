@@ -249,11 +249,11 @@ namespace PhantomChains.Classes.PhantomChains
                 ValuePhantom m = new ValuePhantom();
                 switch (str)
                 {
-                    case "Phe":
+                    case "F":
                         m.Add(new ValueString("TTT"));
                         m.Add(new ValueString("TTC"));
                         break;
-                    case "Leu":
+                    case "L":
                         m.Add(new ValueString("TTA"));
                         m.Add(new ValueString("TTG"));
                         m.Add(new ValueString("CTT"));
@@ -261,7 +261,7 @@ namespace PhantomChains.Classes.PhantomChains
                         m.Add(new ValueString("CTA"));
                         m.Add(new ValueString("CTG"));
                         break;
-                    case "Ser":
+                    case "S":
                         m.Add(new ValueString("TCT"));
                         m.Add(new ValueString("TCC"));
                         m.Add(new ValueString("TCA"));
@@ -269,37 +269,37 @@ namespace PhantomChains.Classes.PhantomChains
                         m.Add(new ValueString("AGT"));
                         m.Add(new ValueString("AGC"));
                         break;
-                    case "Tyr":
+                    case "Y":
                         m.Add(new ValueString("TAT"));
                         m.Add(new ValueString("TAC"));
                         break;
-                    case "St":
+                    case "X":
                         m.Add(new ValueString("TAA"));
                         m.Add(new ValueString("TAG"));
                         m.Add(new ValueString("TGA"));
                         break;
-                    case "Cys":
+                    case "C":
                         m.Add(new ValueString("TGT"));
                         m.Add(new ValueString("TGC"));
                         break;
-                    case "Trp":
+                    case "W":
                         m.Add(new ValueString("TGG"));
                         break;
-                    case "Pro":
+                    case "P":
                         m.Add(new ValueString("CCT"));
                         m.Add(new ValueString("CCC"));
                         m.Add(new ValueString("CCA"));
                         m.Add(new ValueString("CCG"));
                         break;
-                    case "His":
+                    case "H":
                         m.Add(new ValueString("CAT"));
                         m.Add(new ValueString("CAC"));
                         break;
-                    case "Gln":
+                    case "Q":
                         m.Add(new ValueString("CAA"));
                         m.Add(new ValueString("CAG"));
                         break;
-                    case "Arg":
+                    case "R":
                         m.Add(new ValueString("CGT"));
                         m.Add(new ValueString("CGC"));
                         m.Add(new ValueString("CGA"));
@@ -307,49 +307,49 @@ namespace PhantomChains.Classes.PhantomChains
                         m.Add(new ValueString("AGA"));
                         m.Add(new ValueString("AGG"));
                         break;
-                    case "Ile":
+                    case "I":
                         m.Add(new ValueString("ATT"));
                         m.Add(new ValueString("ATC"));
                         m.Add(new ValueString("ATA"));
                         break;
-                    case "Met":
+                    case "M":
                         m.Add(new ValueString("ATG"));
                         break;
-                    case "Thr":
+                    case "T":
                         m.Add(new ValueString("ACT"));
                         m.Add(new ValueString("ACC"));
                         m.Add(new ValueString("ACA"));
                         m.Add(new ValueString("ACG"));
                         break;
-                    case "Asn":
+                    case "N":
                         m.Add(new ValueString("AAT"));
                         m.Add(new ValueString("AAC"));
                         break;
-                    case "Lys":
+                    case "K":
                         m.Add(new ValueString("AAA"));
                         m.Add(new ValueString("AAG"));
                         break;
-                    case "Val":
+                    case "V":
                         m.Add(new ValueString("GTT"));
                         m.Add(new ValueString("GTC"));
                         m.Add(new ValueString("GTA"));
                         m.Add(new ValueString("GTG"));
                         break;
-                    case "Ala":
+                    case "A":
                         m.Add(new ValueString("GCT"));
                         m.Add(new ValueString("GCC"));
                         m.Add(new ValueString("GCA"));
                         m.Add(new ValueString("GCG"));
                         break;
-                    case "Asp":
+                    case "D":
                         m.Add(new ValueString("GAT"));
                         m.Add(new ValueString("GAC"));
                         break;
-                    case "Glu":
+                    case "E":
                         m.Add(new ValueString("GAA"));
                         m.Add(new ValueString("GAG"));
                         break;
-                    case "Gly":
+                    case "G":
                         m.Add(new ValueString("GGT"));
                         m.Add(new ValueString("GGC"));
                         m.Add(new ValueString("GGA"));

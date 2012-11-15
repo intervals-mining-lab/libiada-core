@@ -142,9 +142,9 @@ namespace TestPhantomChains.Classes.PhantomChains
         public void Test6()
         {
             BaseChain SourceChain = new BaseChain(3);
-            SourceChain.Add(new ValueString("St"),0);
-            SourceChain.Add(new ValueString("Ser"), 1);
-            SourceChain.Add(new ValueString("Cys"), 2);
+            SourceChain.Add(new ValueString("X"),0);
+            SourceChain.Add(new ValueString("S"), 1);
+            SourceChain.Add(new ValueString("C"), 2);
             BaseChain ForBuild = Coder.Decode(SourceChain); 
             PhantomChainGenerator<BaseChain, BaseChain> Gen = new PhantomChainGenerator<BaseChain, BaseChain>(ForBuild, new SimpleGenerator());
             List<BaseChain> res = Gen.Generate(1);
