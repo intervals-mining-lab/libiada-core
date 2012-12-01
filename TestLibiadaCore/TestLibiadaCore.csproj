@@ -46,10 +46,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Classes\Misc\Iterators\TestDifCutter.cs" />
+    <Compile Include="Classes\Misc\Iterators\TestFromFixStartCutRule.cs" />
     <Compile Include="Classes\Misc\Iterators\TestIteratorEnd.cs" />
     <Compile Include="Classes\Misc\Iterators\TestIteratorStart.cs" />
     <Compile Include="Classes\Misc\Iterators\TestIteratorWritableEnd.cs" />
     <Compile Include="Classes\Misc\Iterators\TestIteratorWritebleStart.cs" />
+    <Compile Include="Classes\Misc\Iterators\TestSimpleCutRule.cs" />
     <Compile Include="Classes\Misc\SpaceRebuilders\TestNullRebuilder.cs" />
     <Compile Include="Classes\Misc\SpaceRebuilders\TestPsevdoCycleSpace.cs" />
     <Compile Include="Classes\Root\Characteristics\BinaryCalculators\TestBinaryGeometricMean.cs" />

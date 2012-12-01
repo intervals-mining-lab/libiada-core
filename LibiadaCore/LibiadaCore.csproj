@@ -41,6 +41,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Classes\Misc\DissimilarChainFactory.cs" />
+    <Compile Include="Classes\Misc\Iterators\CutRule.cs" />
+    <Compile Include="Classes\Misc\Iterators\CutRuleIterator.cs" />
+    <Compile Include="Classes\Misc\Iterators\DifCutter.cs" />
+    <Compile Include="Classes\Misc\Iterators\FromFixStartCutRule.cs" />
     <Compile Include="Classes\Misc\Iterators\IIterator.cs" />
     <Compile Include="Classes\Misc\Iterators\IteratorBase.cs" />
     <Compile Include="Classes\Misc\Iterators\IteratorEnd.cs" />
@@ -49,6 +53,7 @@
     <Compile Include="Classes\Misc\Iterators\IteratorWritableEnd.cs" />
     <Compile Include="Classes\Misc\Iterators\IteratorWritableStart.cs" />
     <Compile Include="Classes\Misc\Iterators\IWritableIterator.cs" />
+    <Compile Include="Classes\Misc\Iterators\SimpleCutRule.cs" />
     <Compile Include="Classes\Misc\SpaceRebuilders\NullRebuilder.cs" />
     <Compile Include="Classes\Misc\SpaceRebuilders\PsevdoCycleSpaceRebuilder.cs" />
     <Compile Include="Classes\Misc\SpaceRebuilders\SpaceNotPhantomRebuilder.cs" />
