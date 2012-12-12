@@ -4,10 +4,10 @@
     {
         public FromFixStartCutRule(int length, int step)
         {
-            for (int i = 1; i <= length / step; i++)
+            for (int i = step; i <= length; i+= step)
             {
-                starts.Add(1);
-                stops.Add(i * step);
+                starts.Add(0);
+                stops.Add(i);
             }
         }
 

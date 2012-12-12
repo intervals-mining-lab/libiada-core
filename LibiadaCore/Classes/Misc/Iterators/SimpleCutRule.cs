@@ -2,16 +2,12 @@
 {
     public class SimpleCutRule : CutRule
     {
-        public SimpleCutRule(int length, int step)
+        public SimpleCutRule(int chainLength, int step, int windowLength)
         {
-
-            starts.Add(1);
-            stops.Add(step);
-
-            for (int i = 2; i <= length / step; i++)
+            for (int i = 0; i + windowLength < chainLength; i+= step)
             {
-                starts.Add((i * step) - (step - 1));
-                stops.Add(step * i);
+                starts.Add(i);
+                stops.Add(windowLength + i);
             }
         }
 

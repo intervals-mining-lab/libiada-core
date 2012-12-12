@@ -14,7 +14,7 @@ namespace LibiadaCore.Classes.Misc.Iterators
 
             while (iterator.next())
             {
-                String s = chain.Substring(iterator.getStartPos() - 1, iterator.getStopPos());
+                String s = chain.Substring(iterator.getStartPos(), iterator.getStopPos());
                 result.Add(s);
             }
             return result;

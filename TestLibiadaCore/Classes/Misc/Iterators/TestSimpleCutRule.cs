@@ -9,19 +9,19 @@ namespace TestLibiadaCore.Classes.Misc.Iterators
         [Test]
         public void testCutRule()
         {
-            SimpleCutRule rule = new SimpleCutRule(12, 3);
+            SimpleCutRule rule = new SimpleCutRule(100, 3, 3);
             CutRuleIterator iterator = rule.getIterator(); //объект, который бегает по массиву
             iterator.next();
-            Assert.AreEqual(iterator.getStartPos(), 1);
+            Assert.AreEqual(0, iterator.getStartPos());
             Assert.AreEqual(iterator.getStopPos(), 3);
             iterator.next();
-            Assert.AreEqual(iterator.getStartPos(), 4);
+            Assert.AreEqual(3, iterator.getStartPos());
             Assert.AreEqual(iterator.getStopPos(), 6);
             iterator.next();
-            Assert.AreEqual(iterator.getStartPos(), 7);
+            Assert.AreEqual(6, iterator.getStartPos());
             Assert.AreEqual(iterator.getStopPos(), 9);
             iterator.next();
-            Assert.AreEqual(iterator.getStartPos(), 10);
+            Assert.AreEqual(9, iterator.getStartPos());
             Assert.AreEqual(iterator.getStopPos(), 12);
         }
     }
