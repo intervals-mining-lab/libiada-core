@@ -78,7 +78,7 @@ namespace LibiadaCore.Classes.Root
         public new void ClearAndSetNewLength(int length)
         {
             base.ClearAndSetNewLength(length);
-            PUniformChains = new UniformChain[alphabet.Power];
+            PUniformChains = new UniformChain[0];
         }
 
         

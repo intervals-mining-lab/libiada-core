@@ -7,7 +7,7 @@
             for (int i = step; i <= length; i+= step)
             {
                 starts.Add(0);
-                stops.Add(i);
+                stops.Add(i < length ? i: length);
             }
         }
 
