@@ -44,7 +44,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Classes\PhantomChains\Coder.cs" />
     <Compile Include="Classes\PhantomChains\ITreeNode.cs" />
     <Compile Include="Classes\PhantomChains\PhantomChainGenerator.cs" />
     <Compile Include="Classes\PhantomChains\PhantomTable.cs" />

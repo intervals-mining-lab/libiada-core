@@ -50,7 +50,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Classes\PhantomChains\ObjectMotherPMessageTest.cs" />
-    <Compile Include="Classes\PhantomChains\TestCoder.cs" />
     <Compile Include="Classes\PhantomChains\TestPhantomTable.cs" />
     <Compile Include="Classes\PhantomChains\TestProbabilityPhantomChainGenerator.cs" />
     <Compile Include="Classes\PhantomChains\TestTree.cs" />

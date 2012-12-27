@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using LibiadaCore.Classes.Misc.DataTransformators;
 using LibiadaCore.Classes.Misc.Iterators;
 using LibiadaCore.Classes.Root;
 using LibiadaCore.Classes.Root.SimpleTypes;
@@ -145,7 +146,7 @@ namespace TestPhantomChains.Classes.PhantomChains
             SourceChain.Add(new ValueString("X"),0);
             SourceChain.Add(new ValueString("S"), 1);
             SourceChain.Add(new ValueString("C"), 2);
-            BaseChain ForBuild = Coder.Decode(SourceChain); 
+            BaseChain ForBuild = DnaTransformator.Decode(SourceChain); 
             PhantomChainGenerator<BaseChain, BaseChain> Gen = new PhantomChainGenerator<BaseChain, BaseChain>(ForBuild, new SimpleGenerator());
             List<BaseChain> res = Gen.Generate(1);
             Assert.AreEqual(9, res[0].Length);
