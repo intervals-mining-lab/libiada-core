@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Classes\Misc\DataTransformators\TestDnaTransformator.cs" />
     <Compile Include="Classes\Misc\Iterators\TestDifCutter.cs" />
     <Compile Include="Classes\Misc\Iterators\TestFromFixStartCutRule.cs" />
     <Compile Include="Classes\Misc\Iterators\TestIteratorEnd.cs" />
