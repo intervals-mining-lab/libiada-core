@@ -50,12 +50,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Classes\TestChainConvolutor.cs" />
-    <Compile Include="Classes\TestDezignExpextedFrecuncy.cs" />
-    <Compile Include="Classes\TestDivider.cs" />
-    <Compile Include="Classes\TestFrequencyCalculator.cs" />
-    <Compile Include="Classes\TestSimpleDivider.cs" />
-    <Compile Include="Classes\TestStdCalculator.cs" />
+    <Compile Include="Classes\Base\Collectors\FrequencyDictionaryTest.cs" />
+    <Compile Include="Classes\Base\Iterators\EndIteratorTest.cs" />
+    <Compile Include="Classes\Base\Iterators\StartIteratorTest.cs" />
+    <Compile Include="Classes\Base\Seekers\Converters\FilterSequenceTest.cs" />
+    <Compile Include="Classes\Base\Seekers\Converters\FilterTest.cs" />
+    <Compile Include="Classes\Base\Seekers\SeekerSequenceTest.cs" />
+    <Compile Include="Classes\Base\Seekers\SeekerTest.cs" />
+    <Compile Include="Classes\Base\Sequencies\ComplexChainTest.cs" />
+    <Compile Include="Classes\Base\Sequencies\OrderTest.cs" />
+    <Compile Include="Classes\Model\Threshold\ThresholdLinearTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -67,6 +71,7 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\nuget.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
