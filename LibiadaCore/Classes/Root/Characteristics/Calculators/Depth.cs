@@ -57,7 +57,7 @@ namespace LibiadaCore.Classes.Root.Characteristics.Calculators
 
         public CharacteristicsEnum GetCharacteristicName()
         {
-            return CharacteristicsEnum.Gamut;
+            return CharacteristicsEnum.Depth;
         }
     }
 }

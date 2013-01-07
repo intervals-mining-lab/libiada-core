@@ -29,7 +29,7 @@ namespace LibiadaCore.Classes.Root.Characteristics.Calculators
 
         public CharacteristicsEnum GetCharacteristicName()
         {
-            return CharacteristicsEnum.GeometricMiddling;
+            return CharacteristicsEnum.GeometricMean;
         }
     }
 }

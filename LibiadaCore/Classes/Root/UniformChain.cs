@@ -130,5 +130,12 @@ namespace LibiadaCore.Classes.Root
             return ((Characteristic) CharacteristicSnapshot[type]).Value(this, Link);
         }
 
+        public IBaseObject DeleteAt(int index)
+        {
+            IBaseObject element = alphabet[building[index]];
+            building = RemoveAt(building, index);
+            return element;
+        }
+
     }
 }

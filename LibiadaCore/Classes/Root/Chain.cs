@@ -262,7 +262,7 @@ namespace LibiadaCore.Classes.Root
             {
                 return -1;
             }
-            for (int i = jEntry + 1; i < length; i++)
+            for (int i = jEntry + 1; i < Length; i++)
             {
                 if (j.Equals(this[i]))
                 {
@@ -278,7 +278,7 @@ namespace LibiadaCore.Classes.Root
 
         public int GetAfter(IBaseObject element, int from)
         {
-            for (int i = from; i < length; i++)
+            for (int i = from; i < Length; i++)
             {
                 if (this[i].Equals(element))
                 {
@@ -301,6 +301,41 @@ namespace LibiadaCore.Classes.Root
                 }
             }
             return pairs;
+        }
+
+        public IBaseObject DeleteAt(int index)
+        {
+            IBaseObject element = alphabet[building[index]];
+            ICharacteristicCalculator calc = new Count();
+            UniformChain tempUniformChain = (UniformChain) this.UniformChain(element);
+            if ((int)calc.Calculate(tempUniformChain, LinkUp.End) == 1)
+            {
+                var temp = PUniformChains;
+                PUniformChains = new UniformChain[temp.Length - 1];
+                int j = 0;
+                for (int i = 0; i < temp.Length; i++)
+                {
+                    if (!temp[i].Message.Equals(element))
+                    {
+                        PUniformChains[j] = temp[i];
+                        j++;
+                    }
+                }
+                alphabet.Remove(building[index]);
+                for (int k = 0; k < building.Length; k++)
+                {
+                    if (building[index] < building[k])
+                    {
+                        building[k] = building[k] - 1;
+                    }
+                }
+            }
+            for (int l = 0; l < PUniformChains.Length; l++)
+            {
+                PUniformChains[l].DeleteAt(index);
+            }
+            building = RemoveAt(building, index);
+            return element;
         }
     }
 }

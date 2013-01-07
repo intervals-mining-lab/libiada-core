@@ -14,7 +14,7 @@ namespace LibiadaCore.Classes.Root
     {
         protected int[] building;
         protected Alphabet alphabet = new Alphabet();
-        protected int length;
+        //protected int length;
 
         ///<summary>
         ///</summary>
@@ -37,7 +37,7 @@ namespace LibiadaCore.Classes.Root
         {
             ClearAndSetNewLength(chain.Count);
             alphabet.Add(NullValue.Instance());
-            for (int i = 0; i < this.length; i++)
+            for (int i = 0; i < this.Length; i++)
             {
                 this.Add(chain[i], i);
             }
@@ -107,7 +107,7 @@ namespace LibiadaCore.Classes.Root
         ///</summary>
         public int Length
         {
-            get { return length; }
+            get { return building.Length; }
         }
 
         ///<summary>
@@ -194,11 +194,11 @@ namespace LibiadaCore.Classes.Root
         ///<exception cref="Exception"></exception>
         public void ClearAndSetNewLength(int length)
         {
-            if (length <= 0)
+            if (length < 0)
             {
-                throw new Exception("Длинна цепи <= 0");
+                throw new Exception("Длинна цепи < 0");
             }
-            this.length = length;
+            //this.length = length;
             building = new int[length];
         }
 
@@ -249,7 +249,7 @@ namespace LibiadaCore.Classes.Root
             {
                 return false;
             }
-            for (int i = 0; (i < chainObject.length) && (i < length); i++)
+            for (int i = 0; (i < chainObject.Length) && (i < Length); i++)
             {
                 if (!this[i].Equals(chainObject[i]))
                 {
@@ -257,6 +257,25 @@ namespace LibiadaCore.Classes.Root
                 }
             }
             return true;
+        }
+
+        /// <summary>
+        /// Костыильный метод для удаления элемента массива
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="source"></param>
+        /// <param name="index"></param>
+        /// <returns></returns>
+        public static T[] RemoveAt<T>(T[] source, int index)
+        {
+            T[] dest = new T[source.Length - 1];
+            if (index > 0)
+                Array.Copy(source, 0, dest, 0, index);
+
+            if (index < source.Length - 1)
+                Array.Copy(source, index + 1, dest, index, source.Length - index - 1);
+
+            return dest;
         }
     }
 }

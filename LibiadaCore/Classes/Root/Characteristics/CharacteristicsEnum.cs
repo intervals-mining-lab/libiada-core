@@ -14,7 +14,7 @@ namespace LibiadaCore.Classes.Root.Characteristics
         ///</summary>
         AlphabetPower,
         ///<summary>
-        /// Среднегеометрическая удалённость.
+        /// Удалённость.
         ///</summary>
         AverangeRemoteness,
         ///<summary>
@@ -63,9 +63,9 @@ namespace LibiadaCore.Classes.Root.Characteristics
         ///</summary>
         DescriptiveInformation,
         ///<summary>
-        /// Удалённость.
+        /// Глубина.
         ///</summary>
-        Gamut,
+        Depth,
         ///<summary>
         /// Среднее арифметическое значение длин интервалов.
         ///</summary>
@@ -79,13 +79,17 @@ namespace LibiadaCore.Classes.Root.Characteristics
         ///</summary>
         Periodicity,
         ///<summary>
-        /// Среднегеометрический интервал.
+        /// Среднее геометрическое значение длин интервалов.
         ///</summary>
-        GeometricMiddling,
+        GeometricMean,
         /// <summary>
-        /// Нормализованный среднегеометрический интервал
+        /// Нормализованная удалённость
         /// </summary>
-        NormalizedAverageRemoteness
+        NormalizedAverageRemoteness,
+        /// <summary>
+        /// Средняя длина слова
+        /// </summary>
+        AverageWordLength
 
     }
 }
