@@ -42,16 +42,6 @@ namespace LibiadaCore.Classes.Root
             endinterval = new FrequencyList();
         }
 
-        ///<summary>
-        ///</summary>
-        protected ChainWithCharacteristic(String building, Alphabet alphabet)
-            : base(building, alphabet)
-        {
-            pIntervals = new FrequencyList();
-            startinterval = new FrequencyList();
-            endinterval = new FrequencyList();
-        }
-
         protected ChainWithCharacteristic(int[] building, Alphabet alphabet)
             : base(building, alphabet)
         {

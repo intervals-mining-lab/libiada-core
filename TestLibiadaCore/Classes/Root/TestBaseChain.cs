@@ -34,6 +34,7 @@ namespace TestLibiadaCore.Classes.Root
         /// ��������� ������� �������� ���� 0 ������
         ///</summary>
         [Test]
+        [Ignore]
         public void TestConstructorCreateZero()
         {
             try

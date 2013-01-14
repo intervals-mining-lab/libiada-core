@@ -42,12 +42,6 @@ namespace LibiadaCore.Classes.Root
         {
         }
 
-        public Chain(String building, Alphabet alphabet)
-            : base(building, alphabet)
-        {
-            CreateUnformChains();
-        }
-
         public Chain(int[] building, Alphabet alphabet)
             : base(building, alphabet)
         {

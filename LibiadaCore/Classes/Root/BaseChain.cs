@@ -23,20 +23,17 @@ namespace LibiadaCore.Classes.Root
         public BaseChain(int length)
         {
             ClearAndSetNewLength(length);
-            alphabet.Add(NullValue.Instance());
         }
 
         ///<summary>
         ///</summary>
         public BaseChain()
         {
-            alphabet.Add(NullValue.Instance());
         }
 
         public BaseChain(List<IBaseObject> chain)
         {
             ClearAndSetNewLength(chain.Count);
-            alphabet.Add(NullValue.Instance());
             for (int i = 0; i < this.Length; i++)
             {
                 this.Add(chain[i], i);
@@ -51,20 +48,9 @@ namespace LibiadaCore.Classes.Root
         public BaseChain(string s)
         {
             ClearAndSetNewLength(s.Length);
-            alphabet.Add(NullValue.Instance());
             for (int i = 0; i < s.Length; i++)
             {
                 Add((ValueChar)s[i], i);
-            }
-        }
-
-        public BaseChain(String building, Alphabet alphabet)
-        {
-            string[] stringBuilding = building.Split('|');
-            ClearAndSetNewLength(stringBuilding.Length);
-            for (int i = 0; i < stringBuilding.Length; i++)
-            {
-                this[i] = alphabet[Convert.ToInt32(stringBuilding[i]) - 1];
             }
         }
 
@@ -200,6 +186,8 @@ namespace LibiadaCore.Classes.Root
             }
             //this.length = length;
             building = new int[length];
+            alphabet = new Alphabet();
+            alphabet.Add(NullValue.Instance());
         }
 
         ///<summary>
