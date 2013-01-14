@@ -15,9 +15,6 @@ namespace Segmentation.Classes.Model
     private Order order;
     private Dictionary<String, String> parameters = new Dictionary<String, String>();
 
-    public String getChainName(){
-        return chain.GetName();
-    }
     public Chain getChain() {
         return chain;
     }

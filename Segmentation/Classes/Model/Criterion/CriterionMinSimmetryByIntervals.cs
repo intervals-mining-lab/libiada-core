@@ -26,9 +26,9 @@ namespace Segmentation.Classes.Model.Criterion
         {
             double taxons = 0;
 
-            List<List<int>> positions = alphabet.getWordsPositions();
+            List<List<int>> positions = alphabet.GetWordsPositions();
 
-            for (int index = 0; index < alphabet.power(); index++)
+            for (int index = 0; index < alphabet.Count; index++)
             {
                 int countT = positions[index].Count;
                 taxons += Math.Log(countT)*countT - countT;

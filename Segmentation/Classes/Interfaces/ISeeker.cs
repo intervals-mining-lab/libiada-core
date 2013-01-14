@@ -15,12 +15,6 @@ namespace Segmentation.Classes.Interfaces
         /// </summary>
         /// <param name="required">searchable word</param>
         /// <returns>number of hits</returns>
-        public abstract int seek(List<String> required);
-
-        /// <summary>
-        /// Finds the cursorPosition of the location of the element
-        /// </summary>
-        /// <returns>Numbers places where the word</returns>
-        public abstract List<int> arrangement();
+        public abstract int Seek(List<String> required);
     }
 }

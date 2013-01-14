@@ -22,47 +22,47 @@ namespace Segmentation.Classes.Base.Iterators
         }
 
 
-        public override bool hasNext()
+        public override bool HasNext()
         {
-            if (windowLength + cursorPosition + step > chain.Length) return false;
+            if (WindowLength + CursorPosition + Step > Chain.Length) return false;
             return true;
         }
 
-        public override List<String> next()
+        public override List<String> Next()
         {
             try
             {
-                cursorPosition = cursorPosition + step;
-                currentCut = chain.substring(cursorPosition, cursorPosition + windowLength);
+                cursorPosition = CursorPosition + Step;
+                CurrentCut = Chain.Substring(CursorPosition, CursorPosition + WindowLength);
             }
             catch (Exception e)
             {
             }
 
-            return currentCut;
+            return CurrentCut;
         }
 
-        public override void reset()
+        public override void Reset()
         {
-            cursorPosition = -step;
-        }
-
-
-        public override int position()
-        {
-            return cursorPosition;
+            cursorPosition = -Step;
         }
 
 
-        public override List<String> current()
+        public override int Position()
         {
-            return currentCut;
+            return CursorPosition;
         }
 
 
-        public override bool move(int position)
+        public override List<String> Current()
         {
-            if ((position >= 0) && (chain.Length >= windowLength + position))
+            return CurrentCut;
+        }
+
+
+        public override bool Move(int position)
+        {
+            if ((position >= 0) && (Chain.Length >= WindowLength + position))
             {
                 cursorPosition = position;
                 return true;

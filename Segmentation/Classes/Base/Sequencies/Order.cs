@@ -53,7 +53,7 @@ namespace Segmentation.Classes.Base.Sequencies
         {
             Order order = null;
 
-            order = new Order(sublist(beginIndex, endIndex));
+            order = new Order(Sublist(beginIndex, endIndex));
             return order;
         }
 

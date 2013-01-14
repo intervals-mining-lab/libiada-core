@@ -48,7 +48,7 @@ namespace Segmentation.Classes.Model.Criterion
             double greaterToSmaler = 1;
             double sumToGreater = 1;
             double maxFrequency = this.maxFrequency(alphabet);
-            double power = alphabet.power();
+            double power = alphabet.Count;
 
             greaterToSmaler = power/maxFrequency;
             sumToGreater = (power + maxFrequency)/power;
@@ -59,7 +59,7 @@ namespace Segmentation.Classes.Model.Criterion
         private int maxFrequency(FrequencyDictionary alphabet)
         {
             int max = 0;
-            foreach (List<int> positions in alphabet.getWordsPositions())
+            foreach (List<int> positions in alphabet.GetWordsPositions())
             {
                 if (max < positions.Count) max = positions.Count;
             }

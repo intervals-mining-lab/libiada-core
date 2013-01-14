@@ -23,7 +23,7 @@ namespace TestSegmentation.Classes.Base.Seekers
             list1 = new List<string> {"ABAC", "A", "A", "A", "ABAC", "A", "ABC", "AC", "ABC", "AG", "ABC", "A", "AB", "A", "ABC", "ABAC", "A"};
             list2 = new List<string> {"ABAC", "A"};
             seek = new SeekerSequence(new StartIterator(new ComplexChain(list1), length, step));
-            Assert.True(seek.seek(list2) == 3);
+            Assert.True(seek.Seek(list2) == 3);
 
         } 
     }

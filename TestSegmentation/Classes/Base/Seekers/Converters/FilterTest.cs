@@ -31,18 +31,18 @@ namespace TestSegmentation.Classes.Base.Seekers.Converters
             int hits;
             chain = new ComplexChain(list);
             filter = new Filter(chain);
-            hits = filter.filterout(str1);
+            hits = filter.FilterOut(str1);
 
             StringBuilder sb = new StringBuilder();
             foreach (String s in list) sb.Append(s);
-            result = filter.getChain().ToString();
+            result = filter.GetChain().ToString();
             buf = chain.ToString();
             Assert.True(buf.Length - result.Length == hits);
 
             filter = new Filter(chain);
-            hits = filter.filterout(str2);
+            hits = filter.FilterOut(str2);
 
-            result = filter.getChain().ToString();
+            result = filter.GetChain().ToString();
             buf = chain.ToString();
             Assert.True(3 == hits);
         }
@@ -56,12 +56,12 @@ namespace TestSegmentation.Classes.Base.Seekers.Converters
             int hits;
             chain = new ComplexChain(list);
             filter = new Filter(chain);
-            hits = filter.replace(str2, "-");
+            hits = filter.Replace(str2, "-");
 
             StringBuilder sb = new StringBuilder();
             foreach (String s in list)
             sb.Append(s);
-            result = filter.getChain().ToString();
+            result = filter.GetChain().ToString();
             buf = chain.ToString();
             Assert.True(buf.Length - result.Length == hits);
         }

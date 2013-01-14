@@ -44,7 +44,7 @@ namespace Segmentation.Classes.Model.Criterion
 
         public override double distortion(ComplexChain chain, FrequencyDictionary alphabet)
         {
-            return gamut.Calculate(chain.original(), chain.GetAnchor()); //- gamutDeep.Calculate(chain);
+            return gamut.Calculate(chain.Original(), chain.GetAnchor()); //- gamutDeep.Calculate(chain);
         }
     }
 }

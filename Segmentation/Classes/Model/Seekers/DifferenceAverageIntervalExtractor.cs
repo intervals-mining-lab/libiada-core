@@ -36,10 +36,10 @@ namespace Segmentation.Classes.Model.Seekers
             it = new StartIterator(convoluted, windowLen, scanStep);
             filter = new PositionFilter();
 
-            while (it.hasNext())
+            while (it.HasNext())
             {
-                it.next();
-                fullEntry.add(it, disp);
+                it.Next();
+                fullEntry.Add(it, disp);
             }
             calcStd(convoluted, windowLen, filter);
 
@@ -51,7 +51,7 @@ namespace Segmentation.Classes.Model.Seekers
             GeometricMean gAvgInterval = new GeometricMean();
             ArithmeticMean aAvgInterval = new ArithmeticMean();
 
-            foreach (KeyValuePair<List<String>, List<int>> accord in fullEntry.entry())
+            foreach (KeyValuePair<List<String>, List<int>> accord in fullEntry.Entry())
             {
                 filter.filtrate(accord.Value, windowLen);
                 ComplexChain temp = new ComplexChain(accord.Value);

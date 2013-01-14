@@ -37,10 +37,10 @@ namespace Segmentation.Classes.Model.Seekers
             it = new StartIterator(convoluted, windowLen, scanStep);
             criteriaCalculator = new ConvolutedCriterionMethod();
 
-            while (it.hasNext())
+            while (it.HasNext())
             {
-                it.next();
-                fullEntry.add(it, disp);
+                it.Next();
+                fullEntry.Add(it, disp);
                 findLess(it);
             }
             calcStd(convoluted, pbalance, windowLen, length, criteriaCalculator);
@@ -52,7 +52,7 @@ namespace Segmentation.Classes.Model.Seekers
                             CriterionMethod criteriaCalculator)
         {
             PositionFilter filter = new PositionFilter();
-            foreach (KeyValuePair<List<String>, List<int>> accord in fullEntry.entry())
+            foreach (KeyValuePair<List<String>, List<int>> accord in fullEntry.Entry())
             {
                 filter.filtrate(accord.Value, windowLen);
                 double frequency = criteriaCalculator.frequncy(accord.Value, length, windowLen);

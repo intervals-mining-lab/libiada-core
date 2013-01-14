@@ -26,13 +26,14 @@ namespace Segmentation.Classes.Model
         private int windowLen;
         private int windowDec;
 
-        public AlgorithmBase() 
+        public AlgorithmBase()
         {
             formalismType = Formalism.ALGORITHM_BASE;
         }
 
 
-        public AlgorithmBase(Input parameters) : base(parameters)
+        public AlgorithmBase(Input parameters)
+            : base(parameters)
         {
             threshold = ThresholdFactory.make(parameters.getThresholdMethod(), parameters);
             criterion = CriterionFactory.make(parameters.getStopCriterion(), threshold, parameters);
@@ -45,13 +46,13 @@ namespace Segmentation.Classes.Model
         public void slot()
         {
             SimpleChainSplitter chainConvolutor = null;
-            ContentValues par =new ContentValues();
+            ContentValues par = new ContentValues();
             par.put(Formalism.SEQUENCE, chain = new ComplexChain(inputs[0].getChain(), inputs[0].getChainName()));
             par.put(Formalism.ALPHABET, alphabet = new FrequencyDictionary(chain));
 
             while (criterion.state(chain, alphabet))
             {
-                updateParams(par,threshold.next(criterion));
+                updateParams(par, threshold.next(criterion));
                 chainConvolutor = new SimpleChainSplitter(extractor);
                 chain = chainConvolutor.cut(par);
                 alphabet = chainConvolutor.getFrequencyDictionary();
@@ -61,8 +62,8 @@ namespace Segmentation.Classes.Model
 
         private void updateParams(ContentValues par, double nextThreshold)
         {
-        par.put(Formalism.SEQUENCE, chain = new ComplexChain(inputs[0].getChain(), inputs[0].getChainName()));
-        chain.SetName(inputs[0].getChainName());
+            par.put(Formalism.SEQUENCE, chain = new ComplexChain(inputs[0].getChain(), inputs[0].getChainName()));
+            //chain.SetName(inputs[0].getChainName());
             par.put(Parameter.BALANCE, balance);
             par.put(Parameter.WINDOW, windowLen);
             par.put(Parameter.WINDOW_DECREMENT, windowDec);
@@ -83,7 +84,7 @@ namespace Segmentation.Classes.Model
 
         public String getName()
         {
-            return Formalism.GetName(typeof(Formalism), formalismType);
+            return Formalism.GetName(typeof (Formalism), formalismType);
         }
     }
 }

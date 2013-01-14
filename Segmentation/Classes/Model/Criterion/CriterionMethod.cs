@@ -41,9 +41,9 @@ namespace Segmentation.Classes.Model.Criterion
             List<int> left = null;
             List<int> right = null;
             List<int> middle = null;
-            left = minusOne.positions(accord.GetRange(0, accord.Count - 1));
-            right = minusOne.positions(accord.GetRange(1, accord.Count - 1));
-            if (midlLength != 0) middle = mid.positions(accord.GetRange(1, accord.Count - 2));
+            left = minusOne.Positions(accord.GetRange(0, accord.Count - 1));
+            right = minusOne.Positions(accord.GetRange(1, accord.Count - 1));
+            if (midlLength != 0) middle = mid.Positions(accord.GetRange(1, accord.Count - 2));
             else middle = new List<int>();
 
 

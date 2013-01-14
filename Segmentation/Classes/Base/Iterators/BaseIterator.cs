@@ -18,12 +18,12 @@ namespace Segmentation.Classes.Base.Iterators
         /// <summary>
         /// The number of elements through which the pointer will jump at the next iteration
         /// </summary>
-        protected int step;
+        protected int Step;
 
         /// <summary>
         /// Length of a word (window of cutting)
         /// </summary>
-        protected int windowLength;
+        protected int WindowLength;
 
         /// <summary>
         /// Amount of offsets for current sequence
@@ -33,12 +33,12 @@ namespace Segmentation.Classes.Base.Iterators
         /// <summary>
         /// An iterate sequence
         /// </summary>
-        protected ComplexChain chain;
+        protected ComplexChain Chain;
 
         /// <summary>
         /// The currentCut composed sequence was extracted from a chain
         /// </summary>
-        protected List<String> currentCut = new List<String>();
+        protected List<String> CurrentCut = new List<String>();
 
         /// <summary>
         /// Initializes a main options of an iterator.
@@ -48,10 +48,10 @@ namespace Segmentation.Classes.Base.Iterators
         /// <param name="step">The number of elements through which the pointer will jump at the next iteration</param>
         public BaseIterator(ComplexChain chain, int length, int step)
         {
-            init(chain, length, step);
+            Init(chain, length, step);
         }
 
-        private void init(ComplexChain chain, int windowLength, int step)
+        private void Init(ComplexChain chain, int windowLength, int step)
         {
             try
             {
@@ -66,46 +66,49 @@ namespace Segmentation.Classes.Base.Iterators
             }
 
 
-            this.chain = (ComplexChain)chain.Clone();
-            this.windowLength = windowLength;
-            this.step = step;
+            this.Chain = (ComplexChain)chain.Clone();
+            this.WindowLength = windowLength;
+            this.Step = step;
             this.cursorPosition = -step;
-            CalculteMaxShifts();
+            CalculateMaxShifts();
         }
 
         /// <summary>
         /// Returns maximum number of iterations on this chain
         /// </summary>
         /// <returns>Maximum number of iterations on this chain</returns>
-        public int getMaxShifts()
+        public int MaxShifts
         {
-            return maxShifts;
+            get { return maxShifts; }
+
         }
 
         /// <summary>
         /// Returns current cursor cursorPosition
         /// </summary>
         /// <returns>Current cursor cursorPosition</returns>
-        public int getCursorPosition()
+        public int CursorPosition
         {
-            return cursorPosition;
+            get { return cursorPosition; }
+
         }
 
         /// <summary>
         /// Returns number of shifts at this moment
         /// </summary>
         /// <returns>number of shifts</returns>
-        public int shifts()
+        public int Shifts
         {
-            return (cursorPosition/step) + 1;
+            get{return (CursorPosition/Step) + 1;}
+            
         }
 
         /// <summary>
         /// Calculates count of shifts
         /// </summary>
-        private void CalculteMaxShifts()
+        private void CalculateMaxShifts()
         {
-            maxShifts = (chain.Length - windowLength)/step + 1;
+            maxShifts = (Chain.Length - WindowLength)/Step + 1;
         }
 
         /// <summary>
@@ -113,16 +116,16 @@ namespace Segmentation.Classes.Base.Iterators
         /// </summary>
         /// <param name="position">a cursorPosition in a chain subject to a cutting window</param>
         /// <returns>true if moving is available, false - otherwise</returns>
-        public abstract bool move(int position);
+        public abstract bool Move(int position);
 
-        public abstract bool hasNext();
+        public abstract bool HasNext();
 
-        public abstract List<string> next();
+        public abstract List<string> Next();
 
-        public abstract void reset();
+        public abstract void Reset();
 
-        public abstract int position();
+        public abstract int Position();
 
-        public abstract List<string> current();
+        public abstract List<string> Current();
     }
 }

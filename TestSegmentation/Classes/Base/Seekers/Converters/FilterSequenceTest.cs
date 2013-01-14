@@ -36,13 +36,13 @@ namespace TestSegmentation.Classes.Base.Seekers.Converters
             a2Cleaner = new SequenceCleaner(new ComplexChain(list1));
             a3Cleaner = new SequenceCleaner(new ComplexChain(list1));
 
-            a1Cleaner.filterout(listSequence1);
-            a2Cleaner.filterout(listSequence2);
-            a3Cleaner.filterout(listSequence3);
+            a1Cleaner.FilterOut(listSequence1);
+            a2Cleaner.FilterOut(listSequence2);
+            a3Cleaner.FilterOut(listSequence3);
 
-            Assert.True((new ComplexChain(result1)).Equals(a1Cleaner.getChain()));
-            Assert.True((new ComplexChain(result2)).Equals(a2Cleaner.getChain()));
-            Assert.True((new ComplexChain(result3)).Equals(a3Cleaner.getChain()));
+            Assert.True((new ComplexChain(result1)).Equals(a1Cleaner.GetChain()));
+            Assert.True((new ComplexChain(result2)).Equals(a2Cleaner.GetChain()));
+            Assert.True((new ComplexChain(result3)).Equals(a3Cleaner.GetChain()));
         }
     }
 }

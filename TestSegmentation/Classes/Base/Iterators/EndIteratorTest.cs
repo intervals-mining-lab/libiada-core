@@ -28,22 +28,22 @@ namespace TestSegmentation.Classes.Base.Iterators
             List<String> cut = null;
 
             iterator = new EndIterator(chain, lengthCut, step);
-            while (iterator.hasNext())
+            while (iterator.HasNext())
             {
-                iterator.next();
+                iterator.Next();
                 countSteps = countSteps + 1;
             }
-            Assert.AreEqual(countSteps, iterator.getMaxShifts());
+            Assert.AreEqual(countSteps, iterator.MaxShifts);
 
             //        System.out.println("Count steps " + countSteps);
             countSteps = 0;
             iterator = new EndIterator(chain, lengthCut, step + 1);
-            while (iterator.hasNext())
+            while (iterator.HasNext())
             {
-                iterator.next();
+                iterator.Next();
                 countSteps = countSteps + 1;
             }
-            Assert.True(countSteps == iterator.getMaxShifts());
+            Assert.True(countSteps == iterator.MaxShifts);
             //        System.out.println("Count steps " + countSteps);
         }
 
@@ -65,18 +65,18 @@ namespace TestSegmentation.Classes.Base.Iterators
 
             iterator = new EndIterator(chain, lengthCut, step);
 
-            for (int i = iterator.getMaxShifts() - 1; i >= 0; i--)
+            for (int i = iterator.MaxShifts - 1; i >= 0; i--)
             {
-                cut = iterator.next();
+                cut = iterator.Next();
                 //            System.out.println(triplesForStepOne[i] + " vs " + cut);
                 Assert.True(Helper.ToString(cut).Equals(triplesForStepOne[i]));
             }
 
             iterator = new EndIterator(chain, lengthCut, step + 1);
 
-            for (int i = iterator.getMaxShifts() - 1; i >= 0; i--)
+            for (int i = iterator.MaxShifts - 1; i >= 0; i--)
             {
-                cut = iterator.next();
+                cut = iterator.Next();
                 Assert.True(Helper.ToString(cut).Equals(triplesForStepTwo[i]));
             }
 
@@ -104,14 +104,14 @@ namespace TestSegmentation.Classes.Base.Iterators
                 };
             chain = new ComplexChain(list1);
             iterator = new EndIterator(chain, lengthCut, step);
-            while (iterator.hasNext())
+            while (iterator.HasNext())
             {
-                iterator.next();
+                iterator.Next();
                 index = index + 1;
             }
-            iterator.reset();
+            iterator.Reset();
 
-            Assert.True(iterator.position() == position);
+            Assert.True(iterator.Position() == position);
 
         }
 
@@ -123,7 +123,7 @@ namespace TestSegmentation.Classes.Base.Iterators
             int step = 1;
             int maxShifts = 16;
             iterator = new EndIterator(chain, lengthCut, step);
-            Assert.True(iterator.getMaxShifts() == maxShifts);
+            Assert.True(iterator.MaxShifts == maxShifts);
         }
 
         [Test]
@@ -149,8 +149,13 @@ namespace TestSegmentation.Classes.Base.Iterators
             list = list1.GetRange(from, to - from);
             chain = new ComplexChain(list1);
             iterator = new EndIterator(chain, len, step);
-            iterator.move(2);
-            Assert.True(list.Equals(iterator.next()));
+            iterator.Move(2);
+            List<String> result = iterator.Next();
+            for (int i = 0; i < list.Count; i++)
+            {
+                Assert.True(list[i].Equals(result[i]));
+            }
+            
         }
     }
 }

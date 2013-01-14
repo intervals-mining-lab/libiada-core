@@ -48,7 +48,7 @@ namespace Segmentation.Classes.Model.Criterion
         public override double distortion(ComplexChain chain, FrequencyDictionary alphabet)
         {
             return (remoteness.Calculate(chain, chain.GetAnchor())/
-                    remoteness.Calculate(chain.original(), chain.GetAnchor()));
+                    remoteness.Calculate(chain.Original(), chain.GetAnchor()));
             // - wordAverageLength.Calculate(chain, chain.GetAnchor());
 
         }

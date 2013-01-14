@@ -40,9 +40,9 @@ namespace Segmentation.Classes.Model.Criterion
             double taxons = 0;
             double merons = 0;
             int arrayMaxLength = 0;
-            List<List<int>> positions = alphabet.getWordsPositions();
+            List<List<int>> positions = alphabet.GetWordsPositions();
 
-            for (int index = 0, arraySize; index < alphabet.power(); index++)
+            for (int index = 0, arraySize; index < alphabet.Count; index++)
             {
                 int countT = positions[index].Count;
                 taxons += Math.Log(countT)*countT - countT;
@@ -51,7 +51,7 @@ namespace Segmentation.Classes.Model.Criterion
 
             for (int meronIndex = 0, countM = 0; meronIndex < arrayMaxLength; meronIndex++)
             {
-                for (int index = 0; index < alphabet.power(); index++)
+                for (int index = 0; index < alphabet.Count; index++)
                 {
                     if (positions[index].Count >= meronIndex) countM = countM + 1;
                 }

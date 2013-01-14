@@ -37,7 +37,7 @@ namespace Segmentation.Classes.Model.Criterion
 
         private void update(ComplexChain chain, FrequencyDictionary alphabet)
         {
-            double dist = theoryVolume(chain, alphabet) - alphabet.power();
+            double dist = theoryVolume(chain, alphabet) - alphabet.Count;
             if (Math.Abs(lastDistortion) > Math.Abs(dist))
             {
                 this.alphabet = (FrequencyDictionary) alphabet.Clone();
@@ -54,7 +54,7 @@ namespace Segmentation.Classes.Model.Criterion
 
         public override sealed double distortion(ComplexChain chain, FrequencyDictionary alphabet)
         {
-            return theoryVolume(chain, alphabet) - alphabet.power();
+            return theoryVolume(chain, alphabet) - alphabet.Count;
         }
 
         /// <summary>
@@ -71,7 +71,7 @@ namespace Segmentation.Classes.Model.Criterion
             double v;
             double f = 0;
             double freq;
-            List<String> wordsList = alphabet.getWords();
+            List<String> wordsList = alphabet.GetWords();
             foreach (String word in wordsList)
             {
                 freq = frequency(chain, word);
@@ -102,7 +102,7 @@ namespace Segmentation.Classes.Model.Criterion
 
         public double frequency(ComplexChain chain, String word)
         {
-            List<object> temp = new List<object>(chain.substring(0, chain.Length));
+            List<object> temp = new List<object>(chain.Substring(0, chain.Length));
             return frequency(temp, word) / (double)chain.Length;
         }
 

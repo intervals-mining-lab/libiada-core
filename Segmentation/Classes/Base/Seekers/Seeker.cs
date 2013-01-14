@@ -10,41 +10,39 @@ namespace Segmentation.Classes.Base.Seekers
     public class Seeker : ISeeker
     {
         private int first = 0;
-        protected List<int> result;
-        protected IIterator iterator;
-        protected IIterator current;
+        protected List<int> Result;
+        protected IIterator Iterator;
 
         public Seeker(IIterator where)
         {
-            this.iterator = where;
+            this.Iterator = where;
         }
 
-        public override int seek(List<String> required)
+        public override int Seek(List<String> required)
         {
             int index = 0;
-            List<String> sequence = null;
-            result = new List<int>();
-            while (iterator.hasNext())
+            Result = new List<int>();
+            while (Iterator.HasNext())
             {
-                sequence = iterator.next();
+                List<String> sequence = Iterator.Next();
                 for (List<String>.Enumerator iter = sequence.GetEnumerator(); iter.MoveNext(); index++)
                 {
-                    if ((iter.Current).Equals(required[first])) result.Add(index);
+                    if ((iter.Current).Equals(required[first])) Result.Add(index);
                 }
             }
-            iterator.reset();
-            return result.Count;
+            Iterator.Reset();
+            return Result.Count;
         }
 
 
-        public override List<int> arrangement()
+        public List<int> Arrangement
         {
-            return result;
+            get { return new List<int>(Result); }
         }
 
-        public void customIterator(IIterator iterator)
+        public void CustomIterator(IIterator iterator)
         {
-            this.iterator = iterator;
+            this.Iterator = iterator;
         }
     }
 }

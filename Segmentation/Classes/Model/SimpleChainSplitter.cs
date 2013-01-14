@@ -49,9 +49,9 @@ namespace Segmentation.Classes.Model
                     if (flag)
                     {
                         pair.Value.Value.Reverse();
-                        foreach (int position in pair.Value.Value) convoluted.join(position, winLen);
+                        foreach (int position in pair.Value.Value) convoluted.Join(position, winLen);
                         //convoluted.updateUniforms();
-                        alphabet.add(Helper.ToString(pair.Value.Key), pair.Value.Value);
+                        alphabet.Add(Helper.ToString(pair.Value.Key), pair.Value.Value);
                     }
                 }
             }
@@ -74,8 +74,8 @@ namespace Segmentation.Classes.Model
             {
                 if ((letter = (ValueString)convoluted[index]).value.Length == 1)
                 {
-                    if (!alphabet.contains(letter)) alphabet.add(letter, new List<int>());
-                    this.alphabet.get(letter).Add(index);
+                    if (!alphabet.Contains(letter)) alphabet.Add(letter, new List<int>());
+                    this.alphabet.Put(letter, index);
                 }
             }
         }

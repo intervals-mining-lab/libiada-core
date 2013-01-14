@@ -22,21 +22,21 @@ namespace Segmentation.Classes.Model.Seekers
         {
             int zero = 0;
             int minLength = 2;
-            List<String> accord = it.current();
+            List<String> accord = it.Current();
             int length = accord.Count;
-            int position = it.position();
+            int position = it.Position();
 
             // for less one
             if (position == zero)
             {
                 // first less one
-                minusOneEntry.add(accord.GetRange(0, length - 1), position, 0);
-                minusOneEntry.add(accord.GetRange(1, length - 1), position, 0);
+                minusOneEntry.Add(accord.GetRange(0, length - 1), position, 0);
+                minusOneEntry.Add(accord.GetRange(1, length - 1), position, 0);
             }
             else
             {
                 // common less one
-                minusOneEntry.add(accord.GetRange(1, length - 1), position, 0);
+                minusOneEntry.Add(accord.GetRange(1, length - 1), position, 0);
             }
             // for less two
             if (length == minLength)
@@ -47,18 +47,18 @@ namespace Segmentation.Classes.Model.Seekers
             if (position == zero)
             {
                 // first less two
-                minusTwoEntry.add(accord.GetRange(1, length - 2), position, 0);
+                minusTwoEntry.Add(accord.GetRange(1, length - 2), position, 0);
                 return;
             }
-            if (it.getMaxShifts() == it.shifts())
+            if (it.MaxShifts == it.Shifts)
             {
                 // last less two
-                minusTwoEntry.add(accord.GetRange(0, length - 2), position, 0);
+                minusTwoEntry.Add(accord.GetRange(0, length - 2), position, 0);
             }
             else
             {
                 // common less two
-                minusTwoEntry.add(accord.GetRange(1, length - 2), position, 0);
+                minusTwoEntry.Add(accord.GetRange(1, length - 2), position, 0);
             }
         }
     }

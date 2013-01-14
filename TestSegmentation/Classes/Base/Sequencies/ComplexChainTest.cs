@@ -36,8 +36,8 @@ namespace TestSegmentation.Classes.Base.Sequencies
             ComplexChain foreignComplexChain = chain.Clone();
 
             Assert.True(foreignComplexChain.Equals(chain));
-            foreignComplexChain.clearAt(0);
-            foreignComplexChain.clearAt(0);
+            foreignComplexChain.ClearAt(0);
+            foreignComplexChain.ClearAt(0);
             Assert.True(!foreignComplexChain.Equals(chain));
         }
 
@@ -48,9 +48,9 @@ namespace TestSegmentation.Classes.Base.Sequencies
             String str2 = "G";
             String str3 = "C";
 
-            Assert.True(str1.Equals(chain.elementAt(0)));
-            Assert.True(str2.Equals(chain.elementAt(4)));
-            Assert.True(str3.Equals(chain.elementAt(2)));
+            Assert.True(str1.Equals(chain[0].ToString()));
+            Assert.True(str2.Equals(chain[4].ToString()));
+            Assert.True(str3.Equals(chain[2].ToString()));
         }
 
         [Test]
@@ -58,7 +58,7 @@ namespace TestSegmentation.Classes.Base.Sequencies
         {
             int start = 0, end = 2;
             ComplexChain thirdComplexChain = new ComplexChain("AA");
-            ComplexChain foreignComplexChain = new ComplexChain(chain.substring(start, end));
+            ComplexChain foreignComplexChain = new ComplexChain(chain.Substring(start, end));
 
             Assert.True(thirdComplexChain.Equals(foreignComplexChain));
         }
@@ -68,26 +68,20 @@ namespace TestSegmentation.Classes.Base.Sequencies
         {
             ComplexChain secondComplexChain = new ComplexChain("AGTC");
             ComplexChain firstComplexChain = new ComplexChain("ATC");
-            secondComplexChain.clearAt(1);
+            secondComplexChain.ClearAt(1);
             Assert.True(firstComplexChain.Equals(secondComplexChain));
-        }
-
-        [Test]
-        public void testToUpperCase()
-        {
-            ComplexChain secondComplexChain = new ComplexChain("aacaggtgccccttattt");
-            Assert.True(chain.Equals(secondComplexChain.toUpperCase()));
         }
 
         [Test]
         public void testConcat1()
         {
-            int start = 0, end;
-            end = chain.Length;
+            int start = 0;
+            int end = chain.Length;
 
-            ComplexChain firstComplexChain = new ComplexChain(chain.substring(start, end/2));
-            ComplexChain secondComplexChain = new ComplexChain(chain.substring(end/2, end));
-            Assert.True((firstComplexChain.concat(secondComplexChain)).Equals(chain));
+            ComplexChain firstComplexChain = new ComplexChain(chain.Substring(start, end/2));
+            ComplexChain secondComplexChain = new ComplexChain(chain.Substring(end/2, end));
+            ComplexChain concatChain = firstComplexChain.Concat(secondComplexChain);
+            Assert.True(concatChain.Equals(chain));
         }
 
         [Test]
@@ -96,10 +90,10 @@ namespace TestSegmentation.Classes.Base.Sequencies
             int start = 0, end;
             end = chain.Length;
 
-            ComplexChain firstComplexChain = new ComplexChain(chain.substring(start, end - 1));
-            ComplexChain secondComplexChain = new ComplexChain(chain.substring(end - 1, end));
-
-            Assert.True((firstComplexChain.concat(secondComplexChain.ToString())).Equals(chain));
+            ComplexChain firstComplexChain = new ComplexChain(chain.Substring(start, end - 1));
+            ComplexChain secondComplexChain = new ComplexChain(chain.Substring(end - 1, end));
+            ComplexChain concatChain = firstComplexChain.Concat(secondComplexChain.ToString());
+            Assert.True(concatChain.Equals(chain));
         }
 
         [Test]
@@ -109,7 +103,7 @@ namespace TestSegmentation.Classes.Base.Sequencies
 
             Assert.True(chain.Length != differentComplexChain.Length);
             Assert.True(chain.Length == foreignComplexChain.Length);
-            foreignComplexChain.clearAt(0);
+            foreignComplexChain.ClearAt(0);
             Assert.True(chain.Length != foreignComplexChain.Length);
         }
 
@@ -119,9 +113,9 @@ namespace TestSegmentation.Classes.Base.Sequencies
             String str = "s";
             ComplexChain chain = new ComplexChain("");
             Assert.True(chain.IsEmpty());
-            chain.concat(str);
+            chain.Concat(str);
             Assert.True(!chain.IsEmpty());
-            chain.clearAt(0);
+            chain.ClearAt(0);
             Assert.True(chain.IsEmpty());
         }
 
@@ -133,8 +127,8 @@ namespace TestSegmentation.Classes.Base.Sequencies
             clonedComplexChain = chain.Clone();
 
             alphabet = new FrequencyDictionary(chain);
-            chain.clearAt(0);
-            clonedComplexChain.clearAt(0);
+            chain.ClearAt(0);
+            clonedComplexChain.ClearAt(0);
             Assert.True(chain.Equals(clonedComplexChain));
         }
 
@@ -152,15 +146,15 @@ namespace TestSegmentation.Classes.Base.Sequencies
             List<String> list2 = new List<String>{"AAC","A","G","G","TGC","C","C","C","T","T","A","T","T","T"};
             List<String> list3 = new List<String>{"AACAGGTGC", "C", "C", "C", "T", "T", "A", "T", "T", "T"};
             List<String> list4 = new List<String>{"AACAGGTGC", "C", "C", "C", "T", "T", "A", "T", "TT"};
-            clon.join(0, 3);
+            clon.Join(0, 3);
             Assert.True((new ComplexChain(list1)).Equals(clon));
 
-            clon.join(4, 3);
+            clon.Join(4, 3);
             Assert.True((new ComplexChain(list2)).Equals(clon));
-            clon.join(0, 5);
+            clon.Join(0, 5);
             Assert.True((new ComplexChain(list3)).Equals(clon));
 
-            clon.join(8, 2);
+            clon.Join(8, 2);
             Assert.True((new ComplexChain(list4)).Equals(clon));
         }
 
@@ -189,7 +183,7 @@ namespace TestSegmentation.Classes.Base.Sequencies
                 };
             ComplexChain clon = new ComplexChain(list1);
             List<String> list2 = new List<String> {"A", "A"};
-            clon.joinAll(list2);
+            clon.JoinAll(list2);
         }
     }
 }

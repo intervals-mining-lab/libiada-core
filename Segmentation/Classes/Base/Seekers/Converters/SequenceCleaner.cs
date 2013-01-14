@@ -15,17 +15,26 @@ namespace Segmentation.Classes.Base.Seekers.Converters
         {
         }
 
-        public int filterout(List<String> sequence)
+        public int FilterOut(List<String> sequence)
         {
             int hits = 0;
             EndIterator iterator = null;
-            iterator = new EndIterator(chain, sequence.Count, ISeeker.step);
+            iterator = new EndIterator(Chain, sequence.Count, ISeeker.step);
 
-            while (iterator.hasNext())
+            while (iterator.HasNext())
             {
-                if (iterator.next().Equals(sequence))
+                List<String> temp = iterator.Next();
+                bool chainsEquals = sequence.Count == temp.Count;
+                for (int i = 0; i < sequence.Count; i++)
                 {
-                    chain.Remove(iterator.position(), sequence.Count);
+                    if (temp[i] != sequence[i])
+                    {
+                        chainsEquals = false;
+                    }
+                }
+                if (chainsEquals)
+                {
+                    Chain.Remove(iterator.Position(), sequence.Count);
                     hits = hits + 1;
                 }
             }

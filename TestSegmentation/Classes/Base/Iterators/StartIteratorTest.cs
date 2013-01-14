@@ -28,21 +28,21 @@ namespace TestSegmentation.Classes.Base.Iterators
             List<String> cut = null;
 
             iterator = new StartIterator(chain, lengthCut, step);
-            while (iterator.hasNext())
+            while (iterator.HasNext())
             {
-                iterator.next();
+                iterator.Next();
                 countSteps = countSteps + 1;
             }
-            Assert.True(countSteps == iterator.getMaxShifts());
+            Assert.True(countSteps == iterator.MaxShifts);
 
             countSteps = 0;
             iterator = new StartIterator(chain, lengthCut, step + 1);
-            while (iterator.hasNext())
+            while (iterator.HasNext())
             {
-                iterator.next();
+                iterator.Next();
                 countSteps = countSteps + 1;
             }
-            Assert.True(countSteps == iterator.getMaxShifts());
+            Assert.True(countSteps == iterator.MaxShifts);
         }
 
         [Test]
@@ -63,18 +63,18 @@ namespace TestSegmentation.Classes.Base.Iterators
 
             iterator = new StartIterator(chain, lengthCut, step);
 
-            for (int i = 0; i < iterator.getMaxShifts(); i++)
+            for (int i = 0; i < iterator.MaxShifts; i++)
             {
-                cut = iterator.next();
+                cut = iterator.Next();
                 //            System.out.println(triplesForStepOne[i] + " vs " + cut);
                 Assert.True(Helper.ToString(cut).Equals(triplesForStepOne[i]));
             }
 
             iterator = new StartIterator(chain, lengthCut, step + 1);
 
-            for (int i = 0; i < iterator.getMaxShifts(); i++)
+            for (int i = 0; i < iterator.MaxShifts; i++)
             {
-                cut = iterator.next();
+                cut = iterator.Next();
                 Assert.True(Helper.ToString(cut).Equals(triplesForStepTwo[i]));
             }
         }
@@ -86,11 +86,11 @@ namespace TestSegmentation.Classes.Base.Iterators
             int length = 2;
             int step = 1;
             iterator = new StartIterator(chain, length, step);
-            if (iterator.move(3))
+            if (iterator.Move(3))
             {
-                iterator.reset();
+                iterator.Reset();
             }
-            Assert.True(iterator.getCursorPosition() == -step);
+            Assert.True(iterator.CursorPosition == -step);
         }
 
         [Test]
@@ -101,30 +101,30 @@ namespace TestSegmentation.Classes.Base.Iterators
             int step = 1;
             int position = 3;
             iterator = new StartIterator(chain, length, step);
-            iterator.move(position);
-            Assert.True(iterator.getCursorPosition() == position);
+            iterator.Move(position);
+            Assert.True(iterator.CursorPosition == position);
 
 
             position = 100;
-            iterator.move(position);
-            Assert.True(iterator.getCursorPosition() != position);
+            iterator.Move(position);
+            Assert.True(iterator.CursorPosition != position);
 
             position = chain.Length/2;
-            iterator.move(position);
-            Assert.True(iterator.getCursorPosition() == position);
+            iterator.Move(position);
+            Assert.True(iterator.CursorPosition == position);
 
             position = -1;
-            iterator.move(position);
-            Assert.True(iterator.getCursorPosition() != position);
+            iterator.Move(position);
+            Assert.True(iterator.CursorPosition != position);
 
             length = 3;
             step = 2;
             position = 3;
             String triple = "GTG";
             iterator = new StartIterator(chain, length, step);
-            iterator.move(position);
-            iterator.next();
-            Assert.AreEqual(triple, Helper.ToString(iterator.current()));
+            iterator.Move(position);
+            iterator.Next();
+            Assert.AreEqual(triple, Helper.ToString(iterator.Current()));
             //            System.out.println(triple + " vs " + Helper.ToString(iterator.current()));
         }
 
@@ -136,7 +136,7 @@ namespace TestSegmentation.Classes.Base.Iterators
             int step = 1;
             int maxShifts = 16;
             iterator = new StartIterator(chain, lengthCut, step);
-            Assert.True(iterator.getMaxShifts() == maxShifts);
+            Assert.True(iterator.MaxShifts == maxShifts);
         }
 
         [Test]
@@ -146,13 +146,13 @@ namespace TestSegmentation.Classes.Base.Iterators
             int lengthCut = 2;
             int step = 1;
             iterator = new StartIterator(chain, lengthCut, step);
-            iterator.next();
-            Assert.True(iterator.getCursorPosition() == 0);
-            iterator.next();
-            Assert.True(iterator.getCursorPosition() == 1);
-            for (int index = 2; index < iterator.getMaxShifts(); index++)
-                iterator.next();
-            Assert.True(iterator.getCursorPosition() == 16);
+            iterator.Next();
+            Assert.True(iterator.CursorPosition == 0);
+            iterator.Next();
+            Assert.True(iterator.CursorPosition == 1);
+            for (int index = 2; index < iterator.MaxShifts; index++)
+                iterator.Next();
+            Assert.True(iterator.CursorPosition == 16);
 
         }
     }

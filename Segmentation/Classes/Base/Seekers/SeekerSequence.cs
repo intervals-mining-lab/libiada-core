@@ -4,21 +4,34 @@ using Segmentation.Classes.Interfaces;
 
 namespace Segmentation.Classes.Base.Seekers
 {
-    public class SeekerSequence:Seeker
+    public class SeekerSequence : Seeker
     {
-        public SeekerSequence(IIterator where):base(where)
+        public SeekerSequence(IIterator where)
+            : base(where)
         {
         }
 
-        public int seek(List<String> sequence)
+        public override int Seek(List<String> sequence)
         {
-            result = new List<int>();
-            while (iterator.hasNext())
+            Result = new List<int>();
+            while (Iterator.HasNext())
             {
-                if (iterator.next().Equals(sequence)) result.Add(iterator.position());
+                List<String> chain = Iterator.Next();
+                bool chainsEquals = sequence.Count == chain.Count;
+                for (int i = 0; i < sequence.Count; i++)
+                {
+                    if (chain[i] != sequence[i])
+                    {
+                        chainsEquals = false;
+                    }
+                }
+                if (chainsEquals)
+                {
+                    Result.Add(Iterator.Position());
+                }
             }
-            iterator.reset();
-            return result.Count;
-        } 
+            Iterator.Reset();
+            return Result.Count;
+        }
     }
 }

@@ -19,47 +19,47 @@ namespace Segmentation.Classes.Base.Iterators
         public EndIterator(ComplexChain chain, int length, int step)
             : base(chain, length, step)
         {
-            cursorPosition = chain.Length - windowLength + 1;
+            cursorPosition = chain.Length - WindowLength + 1;
         }
 
 
-        public override bool hasNext()
+        public override bool HasNext()
         {
-            if ((cursorPosition - step) >= 0) return true;
+            if ((CursorPosition - Step) >= 0) return true;
             return false;
         }
 
-        public override List<String> next()
+        public override List<String> Next()
         {
-            cursorPosition = cursorPosition - step;
+            cursorPosition = CursorPosition - Step;
             try
             {
-                currentCut = chain.substring(cursorPosition, cursorPosition + windowLength);
+                CurrentCut = Chain.Substring(CursorPosition, CursorPosition + WindowLength);
             }
             catch (Exception e)
             {
             }
-            return currentCut;
+            return CurrentCut;
         }
 
-        public override void reset()
+        public override void Reset()
         {
-            cursorPosition = maxShifts;
+            cursorPosition = MaxShifts;
         }
 
-        public override int position()
+        public override int Position()
         {
-            return cursorPosition;
+            return CursorPosition;
         }
 
-        public override List<String> current()
+        public override List<String> Current()
         {
-            return currentCut;
+            return CurrentCut;
         }
 
-        public override bool move(int position)
+        public override bool Move(int position)
         {
-            if ((position >= 0) && (chain.Length >= windowLength + position))
+            if ((position >= 0) && (Chain.Length >= WindowLength + position))
             {
                 cursorPosition = position;
                 return true;

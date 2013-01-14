@@ -31,17 +31,17 @@ namespace TestSegmentation.Classes.Base.Seekers
             String required4 = "G";
 
             seek = new Seeker(new StartIterator(chain, length, step));
-            seek.seek(new List<string> {required1});
-            Assert.True(seek.arrangement().Count == 4);
+            seek.Seek(new List<string> {required1});
+            Assert.True(seek.Arrangement.Count == 4);
 
-            seek.seek(new List<string> {required2});
-            Assert.True(seek.arrangement().Count == 5);
+            seek.Seek(new List<string> {required2});
+            Assert.True(seek.Arrangement.Count == 5);
 
-            seek.seek(new List<string> {required3});
-            Assert.True(seek.arrangement().Count == 6);
+            seek.Seek(new List<string> {required3});
+            Assert.True(seek.Arrangement.Count == 6);
 
-            seek.seek(new List<string> {required4});
-            Assert.True(seek.arrangement().Count == 3);
+            seek.Seek(new List<string> {required4});
+            Assert.True(seek.Arrangement.Count == 3);
         }
 
         [Test]
@@ -57,14 +57,14 @@ namespace TestSegmentation.Classes.Base.Seekers
             list = new List<string> {"AA", "AAAT", "AJJTTA"};
 
             seek = new Seeker(new StartIterator(new ComplexChain(list), length, step));
-            seek.seek(new List<string> {required1});
-            Assert.True(seek.arrangement().Count == 1);
+            seek.Seek(new List<string> {required1});
+            Assert.True(seek.Arrangement.Count == 1);
 
-            seek.seek(new List<string> {required2});
-            Assert.True(seek.arrangement().Count == 0);
+            seek.Seek(new List<string> {required2});
+            Assert.True(seek.Arrangement.Count == 0);
 
-            seek.seek(new List<string> {required3});
-            Assert.True(seek.arrangement().Count == 0);
+            seek.Seek(new List<string> {required3});
+            Assert.True(seek.Arrangement.Count == 0);
 
         }
 
@@ -76,8 +76,8 @@ namespace TestSegmentation.Classes.Base.Seekers
             Seeker seek = null;
             String required1 = "A";
             seek = new Seeker(new StartIterator(chain, length, step));
-            seek.seek(new List<string> { required1 });
-            Assert.True(seek.arrangement().Count == 4);
+            seek.Seek(new List<string> { required1 });
+            Assert.True(seek.Arrangement.Count == 4);
         }
     }
 }

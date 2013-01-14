@@ -40,7 +40,7 @@ namespace Segmentation.Classes.Model.Seekers
             {
                 List<String> entry = entries[index].Key;
                 String entryS;
-                if (!alphabet.contains(new ValueString(entryS = Helper.ToString(entry))) && (entry.Count == entryS.Length))
+                if (!alphabet.Contains(new ValueString(entryS = Helper.ToString(entry))) && (entry.Count == entryS.Length))
                 {
                     bestStd = stds[index];
                     if (bestStd > level)

@@ -5,21 +5,21 @@ using Segmentation.Classes.Base.Iterators;
 namespace Segmentation.Classes.Base.Collectors
 {
     /// <summary>
-    /// Contains a pair of objects word and its positions
+    /// Contains a pairs of objects word and its positions
     /// </summary>
     public class DataCollector
     {
         private Dictionary<List<String>, List<int>> dictionary = new Dictionary<List<String>, List<int>>();
 
 
-        public void add(StartIterator iterator, int disp)
+        public void Add(StartIterator iterator, int disp)
         {
-            List<String> str = iterator.current();
-            int position = iterator.position();
-            add(str, position, disp);
+            List<String> str = iterator.Current();
+            int position = iterator.Position();
+            Add(str, position, disp);
         }
 
-        public void add(List<String> accord, int position, int disp)
+        public void Add(List<String> accord, int position, int disp)
         {
             if (!dictionary.ContainsKey(accord))
             {
@@ -28,25 +28,23 @@ namespace Segmentation.Classes.Base.Collectors
             dictionary[accord].Add(position + disp);
         }
 
-        public int size()
+        /// <summary>
+        /// Возвращает список позиций указанной цепочки?
+        /// </summary>
+        /// <param name="chain">Цепочка?</param>
+        /// <returns></returns>
+        public List<int> Positions(List<String> chain)
         {
-            return dictionary.Count;
+            return new List<int>(dictionary[chain]);
         }
 
-        public List<int> positions(List<String> chain)
+        /// <summary>
+        /// Возвращает все вхождения из списка
+        /// </summary>
+        /// <returns></returns>
+        public Dictionary<List<String>, List<int>> Entry()
         {
-            return dictionary[chain];
-        }
-
-
-        public Dictionary<List<String>, List<int>> entrySet()
-        {
-            return dictionary;
-        }
-
-        public Dictionary<List<String>, List<int>> entry()
-        {
-            return dictionary;
+            return new Dictionary<List<string>, List<int>>(dictionary);
         }
     }
 }
