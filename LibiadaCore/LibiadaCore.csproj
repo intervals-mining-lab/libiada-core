@@ -80,6 +80,7 @@
     <Compile Include="Classes\Root\Characteristics\BinaryCalculators\PartialDependenceCoefficient.cs" />
     <Compile Include="Classes\Root\Characteristics\BinaryCalculators\Redundancy.cs" />
     <Compile Include="Classes\Root\Characteristics\BinaryCalculators\BinaryGeometricMean.cs" />
+    <Compile Include="Classes\Root\Characteristics\Calculators\AverageWordLength.cs" />
     <Compile Include="Classes\Root\Characteristics\Calculators\Count.cs" />
     <Compile Include="Classes\Root\Characteristics\Calculators\CutLength.cs" />
     <Compile Include="Classes\Root\Characteristics\Calculators\CutLengthVocabularyEntropy.cs" />
