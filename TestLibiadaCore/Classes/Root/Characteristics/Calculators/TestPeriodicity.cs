@@ -22,9 +22,6 @@ namespace TestLibiadaCore.Classes.Root.Characteristics.Calculators
             ObjectMother Mother = new ObjectMother();
             TestUChain = Mother.TestUniformChain();
             TestChain = Mother.TestChain();
-
-            /*  TextWriterTraceListener Lisen = new TextWriterTraceListener("Characteristic_log" + GetType() + ".txt");
-            Debug.Listeners.Add(Lisen);*/
         }
 
         ///<summary>
@@ -57,12 +54,6 @@ namespace TestLibiadaCore.Classes.Root.Characteristics.Calculators
             GeometricMiddling = Math.Pow(Interval1*Interval2*Interval3*Interval4, 1/IntervalsCount);
 
             Assert.AreEqual(GeometricMiddling/ArithmeticMean, r.Value(TestUChain, LinkUp.Both));
-
-
-            /*  Debug.WriteLine(TestUChain);
-            Debug.WriteLine(LinkUp.Start.ToString() + " : " + r.Value(TestUChain, LinkUp.Start));
-            Debug.WriteLine(LinkUp.Both.ToString() + " : " + r.Value(TestUChain, LinkUp.Both));
-            Debug.WriteLine(LinkUp.End.ToString() + " : " + r.Value(TestUChain, LinkUp.End));*/
         }
 
         ///<summary>
@@ -145,12 +136,6 @@ namespace TestLibiadaCore.Classes.Root.Characteristics.Calculators
             double GeometricMiddlingBoth = Math.Pow(VBoth, 1/IntervalsCountBoth);
 
             Assert.AreEqual(GeometricMiddlingBoth/D, r.Value(TestChain, LinkUp.Both));
-
-
-            /*   Debug.WriteLine(TestChain);
-            Debug.WriteLine(LinkUp.Start.ToString() + " : " + r.Value(TestChain, LinkUp.Start));
-            Debug.WriteLine(LinkUp.Both.ToString() + " : " + r.Value(TestChain, LinkUp.Both));
-            Debug.WriteLine(LinkUp.End.ToString() + " : " + r.Value(TestChain, LinkUp.End));*/
         }
     }
 }

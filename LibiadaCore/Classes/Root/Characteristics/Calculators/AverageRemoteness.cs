@@ -1,17 +1,17 @@
 using System;
-using LibiadaCore.Classes.Root.Characteristics.AuxiliaryInterfaces;
 
 namespace LibiadaCore.Classes.Root.Characteristics.Calculators
 {
     ///<summary>
-    /// —реднегеометрическа€ удалЄнность,
+    /// —редн€€ удалЄнность,
     /// логарифм по основанию 2 от среднегеометрического интервала.
     ///</summary>
     public class AverageRemoteness : ICharacteristicCalculator
     {
         public double Calculate(UniformChain pChain, LinkUp Link)
         {
-            return Math.Log(pChain.GetCharacteristic(Link, CharacteristicsFactory.deltaG), 2);
+            GeometricMean geometricMean = new GeometricMean();
+            return Math.Log(geometricMean.Calculate(pChain, Link), 2);
         }
 
         ///<summary>
@@ -21,18 +21,15 @@ namespace LibiadaCore.Classes.Root.Characteristics.Calculators
         ///<returns></returns>
         public double Calculate(Chain pChain, LinkUp Link)
         {
-            // return CommonCalculate(pChain, Link);
-            IChainDataForCalculaton Data = pChain;
+            IntervalsCount intervalsCount = new IntervalsCount();
+            GeometricMean geometricMean = new GeometricMean();
             double temp = 0;
-            double n = pChain.GetCharacteristic(Link, CharacteristicsFactory.IntervalsCount);
+            double n = intervalsCount.Calculate(pChain, Link);
             for (int i = 0; i < pChain.Alphabet.Power; i++)
             {
-                double Uniformdg =
-                    Data.IUniformChain(i).GetCharacteristic(Link, CharacteristicsFactory.deltaG);
-                double n_j =
-                    Data.IUniformChain(i).GetCharacteristic(Link,
-                                                            CharacteristicsFactory.IntervalsCount);
-                temp += n_j/n*Math.Log(Uniformdg, 2);
+                double uniformDg = geometricMean.Calculate(pChain.GetUniformChain(i), Link);
+                double n_j = intervalsCount.Calculate(pChain.GetUniformChain(i), Link);
+                temp += n_j/n*Math.Log(uniformDg, 2);
             }
             return temp;
         }

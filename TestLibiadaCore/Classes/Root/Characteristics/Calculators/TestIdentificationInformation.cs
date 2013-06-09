@@ -22,10 +22,6 @@ namespace TestLibiadaCore.Classes.Root.Characteristics.Calculators
             ObjectMother Mother = new ObjectMother();
             TestUChain = Mother.TestUniformChain();
             TestChain = Mother.TestChain();
-
-
-            /*  TextWriterTraceListener Lisen = new TextWriterTraceListener("Characteristic_log" + GetType() + ".txt");
-            Debug.Listeners.Add(Lisen);*/
         }
 
         ///<summary>
@@ -43,11 +39,6 @@ namespace TestLibiadaCore.Classes.Root.Characteristics.Calculators
             Assert.AreEqual(IInformation, pIdentificationInformation.Value(TestUChain, LinkUp.Start));
             Assert.AreEqual(IInformation, pIdentificationInformation.Value(TestUChain, LinkUp.End));
             Assert.AreEqual(IInformation, pIdentificationInformation.Value(TestUChain, LinkUp.Both));
-
-            /*  Debug.WriteLine(TestUChain);
-            Debug.WriteLine(LinkUp.Start.ToString() + " : " + pIdentificationInformation.Value(TestUChain, LinkUp.Start));
-            Debug.WriteLine(LinkUp.Both.ToString() + " : " + pIdentificationInformation.Value(TestUChain, LinkUp.Both));
-            Debug.WriteLine(LinkUp.End.ToString() + " : " + pIdentificationInformation.Value(TestUChain, LinkUp.End));*/
         }
 
         ///<summary>
@@ -82,11 +73,6 @@ namespace TestLibiadaCore.Classes.Root.Characteristics.Calculators
             Assert.AreEqual(IInformation, pIdentificationInformation.Value(TestChain, LinkUp.Start));
             Assert.AreEqual(IInformation, pIdentificationInformation.Value(TestChain, LinkUp.End));
             Assert.AreEqual(IInformation, pIdentificationInformation.Value(TestChain, LinkUp.Both));
-
-            /*   Debug.WriteLine(TestChain);
-            Debug.WriteLine(LinkUp.Start.ToString() + " : " + pIdentificationInformation.Value(TestChain, LinkUp.Start));
-            Debug.WriteLine(LinkUp.Both.ToString() + " : " + pIdentificationInformation.Value(TestChain, LinkUp.Both));
-            Debug.WriteLine(LinkUp.End.ToString() + " : " + pIdentificationInformation.Value(TestChain, LinkUp.End));*/
         }
     }
 }

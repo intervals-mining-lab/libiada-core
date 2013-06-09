@@ -22,9 +22,6 @@ namespace TestLibiadaCore.Classes.Root.Characteristics.Calculators
             ObjectMother Mother = new ObjectMother();
             TestUChain = Mother.TestUniformChain();
             TestChain = Mother.TestChain();
-
-            //  TextWriterTraceListener Lisen = new TextWriterTraceListener("Characteristic_log" + GetType() + ".txt");
-            //  Debug.Listeners.Add(Lisen);
         }
 
         ///<summary>
@@ -61,12 +58,6 @@ namespace TestLibiadaCore.Classes.Root.Characteristics.Calculators
             pAverageRemoteness = Math.Log(deltaG, 2);
 
             Assert.AreEqual(pAverageRemoteness, ARemoteness.Value(TestUChain, LinkUp.Both));
-
-
-            /*   Debug.WriteLine(TestUChain);
-            Debug.WriteLine(LinkUp.Start.ToString() + " : " + ARemoteness.Value(TestUChain, LinkUp.Start));
-            Debug.WriteLine(LinkUp.Both.ToString() + " : " + ARemoteness.Value(TestUChain, LinkUp.Both));
-            Debug.WriteLine(LinkUp.End.ToString() + " : " + ARemoteness.Value(TestUChain, LinkUp.End));*/
         }
 
         ///<summary>
@@ -118,12 +109,6 @@ namespace TestLibiadaCore.Classes.Root.Characteristics.Calculators
             double nBoth = 13;
             double SumBoth = SumABoth + SumBBoth + SubCBoth;
             Assert.AreEqual(SumBoth/nBoth, ARemoteness.Value(TestChain, LinkUp.Both));
-
-
-            /*   Debug.WriteLine(TestChain);
-            Debug.WriteLine(LinkUp.Start.ToString() + " : " + ARemoteness.Value(TestChain, LinkUp.Start));
-            Debug.WriteLine(LinkUp.Both.ToString() + " : " + ARemoteness.Value(TestChain, LinkUp.Both));
-            Debug.WriteLine(LinkUp.End.ToString() + " : " + ARemoteness.Value(TestChain, LinkUp.End));*/
         }
     }
 }

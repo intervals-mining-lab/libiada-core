@@ -1,5 +1,5 @@
 using System;
-using LibiadaCore.Classes.Root.Characteristics.AuxiliaryInterfaces;
+using System.Collections.Generic;
 using LibiadaCore.Classes.Root.SimpleTypes;
 
 namespace LibiadaCore.Classes.Root.Characteristics.Calculators
@@ -18,17 +18,21 @@ namespace LibiadaCore.Classes.Root.Characteristics.Calculators
         /// <returns></returns>
         public double Calculate(UniformChain pChain, LinkUp Link)
         {
+            List<int> intervals = pChain.Intervals;
+            int sum = 0;
+            for (int i = 1; i < intervals.Count - 1; i++)
+            {
+                sum += intervals[i];
+            }
             switch(Link)
             {
                 case LinkUp.Start:
-                    IDataForCalculator tempStart = pChain;
-                    return pChain.Length - ((ValueInt)tempStart.EndInterval.Keys[0]) + 1;
+                    return sum + intervals[0];
                 case LinkUp.End:
-                    IDataForCalculator tempEnd = pChain;
-                    return pChain.Length - ((ValueInt)tempEnd.StartInterval.Keys[0]) + 1;
+                    return sum + intervals[intervals.Count - 1];
                 case LinkUp.Both:
                     return pChain.Length;
-                default: throw new Exception();
+                default: throw new Exception("неизвестная привязка");
             }
         }
 

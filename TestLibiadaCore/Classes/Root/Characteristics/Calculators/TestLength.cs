@@ -21,10 +21,6 @@ namespace TestLibiadaCore.Classes.Root.Characteristics.Calculators
             ObjectMother Mother = new ObjectMother();
             TestUChain = Mother.TestUniformChain();
             TestChain = Mother.TestChain();
-
-
-            /* TextWriterTraceListener Lisen = new TextWriterTraceListener("Characteristic_log" + GetType() + ".txt");
-            Debug.Listeners.Add(Lisen);*/
         }
 
         ///<summary>
@@ -38,12 +34,6 @@ namespace TestLibiadaCore.Classes.Root.Characteristics.Calculators
             Assert.AreEqual(8, Length.Value(TestUChain, LinkUp.Start));
             Assert.AreEqual(7, Length.Value(TestUChain, LinkUp.End));
             Assert.AreEqual(LengthUniformChain, Length.Value(TestUChain, LinkUp.Both));
-
-
-            /*  Debug.WriteLine(TestUChain);
-            Debug.WriteLine(LinkUp.Start.ToString() + " : " + Length.Value(TestUChain, LinkUp.Start));
-            Debug.WriteLine(LinkUp.Both.ToString() + " : " + Length.Value(TestUChain, LinkUp.Both));
-            Debug.WriteLine(LinkUp.End.ToString() + " : " + Length.Value(TestUChain, LinkUp.End));*/
         }
 
         ///<summary>
@@ -57,11 +47,6 @@ namespace TestLibiadaCore.Classes.Root.Characteristics.Calculators
             Assert.AreEqual(LengthChain, Length.Value(TestChain, LinkUp.Start));
             Assert.AreEqual(LengthChain, Length.Value(TestChain, LinkUp.End));
             Assert.AreEqual(LengthChain, Length.Value(TestChain, LinkUp.Both));
-
-            /* Debug.WriteLine(TestChain);
-            Debug.WriteLine(LinkUp.Start.ToString() + " : " + Length.Value(TestChain, LinkUp.Start));
-            Debug.WriteLine(LinkUp.Both.ToString() + " : " + Length.Value(TestChain, LinkUp.Both));
-            Debug.WriteLine(LinkUp.End.ToString() + " : " + Length.Value(TestChain, LinkUp.End));*/
         }
     }
 }

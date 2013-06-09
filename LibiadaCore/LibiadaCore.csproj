@@ -10,8 +10,9 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>LibiadaCore</RootNamespace>
     <AssemblyName>LibiadaCore</AssemblyName>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -21,6 +22,8 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -29,6 +32,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -64,9 +68,6 @@
     <Compile Include="Classes\Root\BaseChain.cs" />
     <Compile Include="Classes\Root\Chain.cs" />
     <Compile Include="Classes\Root\ChainMessage.cs" />
-    <Compile Include="Classes\Root\ChainWithCharacteristic.cs" />
-    <Compile Include="Classes\Root\Characteristics\AuxiliaryInterfaces\IChainDataForCalculaton.cs" />
-    <Compile Include="Classes\Root\Characteristics\AuxiliaryInterfaces\IDataForCalculator.cs" />
     <Compile Include="Classes\Root\Characteristics\BinaryCharacteristic.cs" />
     <Compile Include="Classes\Root\Characteristics\BinaryCharacteristicsEnum.cs" />
     <Compile Include="Classes\Root\Characteristics\BinaryCharacteristicsFactory.cs" />

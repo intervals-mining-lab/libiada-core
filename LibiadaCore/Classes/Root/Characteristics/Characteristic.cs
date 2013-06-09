@@ -11,7 +11,7 @@ namespace LibiadaCore.Classes.Root.Characteristics
         protected double CharacteristicValue;
         protected LinkUp Link;
         protected ICharacteristicCalculator Calculator = null;
-        protected ChainWithCharacteristic pChain = null;
+        protected BaseChain pChain = null;
 
         ///<summary>
         ///</summary>

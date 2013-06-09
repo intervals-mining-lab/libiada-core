@@ -32,8 +32,6 @@ namespace TestLibiadaCore.Classes.Root.SimpleTypes
 
             M2.Add(new ValueChar('3'));
 
-            // Assert.AreEqual(M1, M2);
-
             Assert.AreEqual(M1, new ValueChar('3'));
         }
 
@@ -78,27 +76,6 @@ namespace TestLibiadaCore.Classes.Root.SimpleTypes
             ValuePhantom ItsClone = (ValuePhantom)M1.Clone();
             Assert.AreEqual(M1, ItsClone);
         }
-
-        /*      ///<summary>
-        /// ��������� ���������� ������������ � ��������������
-        ///</summary>
-        [Test]
-        public void TestSerializeDeserialize()
-        {
-            ValuePhantom M1 = new ValuePhantom();
-            M1.Add(new ValueChar('1'));
-            M1.Add(new ValueChar('2'));
-            M1.Add(new ValueChar('3'));
-
-            MemoryStream MS = new MemoryStream();
-            SoapFormatter SF = new SoapFormatter();
-            SF.Serialize(MS, M1);
-
-            MS.Position = 0;
-            SF = new SoapFormatter();
-            ValuePhantom Des_Event = (ValuePhantom) SF.Deserialize(MS);
-            Assert.AreEqual(M1, Des_Event);
-        }*/
 
         ///<summary>
         ///</summary>

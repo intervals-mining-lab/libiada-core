@@ -34,7 +34,7 @@ namespace LibiadaCore.Classes.Root.Characteristics
         }
 
         ///<summary>
-        /// Удалённость.
+        /// Глубина.
         ///</summary>
         public static ICharacteristicCalculator G
         {
@@ -43,8 +43,7 @@ namespace LibiadaCore.Classes.Root.Characteristics
 
         ///<summary>
         /// Количество элементов.
-        /// Для однородной цепи это количество 
-        /// непустых элементов.
+        /// Для однородной цепи это количество непустых элементов.
         /// Для неоднородной цепи это её длина.
         ///</summary>
         public static ICharacteristicCalculator n
@@ -126,7 +125,7 @@ namespace LibiadaCore.Classes.Root.Characteristics
         }
 
         ///<summary>
-        /// Удалённость приходящаяся на одно сообщение.
+        /// Глубина приходящаяся на одно сообщение.
         ///</summary>
         public static ICharacteristicCalculator nG
         {

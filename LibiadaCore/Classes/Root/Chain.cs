@@ -1,8 +1,5 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using LibiadaCore.Classes.Root.Characteristics;
-using LibiadaCore.Classes.Root.Characteristics.AuxiliaryInterfaces;
 using LibiadaCore.Classes.Root.Characteristics.Calculators;
 using LibiadaCore.Classes.Root.SimpleTypes;
 using LibiadaCore.Classes.TheoryOfSet;
@@ -13,7 +10,7 @@ namespace LibiadaCore.Classes.Root
     /// Класс цепь
     ///</summary>
     [Serializable]
-    public class Chain : ChainWithCharacteristic, IChainDataForCalculaton, IBaseObject
+    public class Chain : BaseChain, IBaseObject
     {
         protected UniformChain[] PUniformChains = new UniformChain[0];
         protected Chain[] PNotUniformChains;
@@ -98,27 +95,18 @@ namespace LibiadaCore.Classes.Root
             }
         }
 
-        public override void CalculateCharacteristicList(ArrayList list)
-        {
-            base.CalculateCharacteristicList(list);
-            foreach (UniformChain uniformChain in PUniformChains)
-            {
-                uniformChain.CalculateCharacteristicList(list);
-            }
-        }
-
         ///<summary>
         ///</summary>
         ///<param name="baseObject"></param>
         ///<returns></returns>
         ///<exception cref="NotImplementedException"></exception>
-        public ChainWithCharacteristic UniformChain(IBaseObject baseObject)
+        public UniformChain UniformChain(IBaseObject baseObject)
         {
-            ChainWithCharacteristic result = null;
+            UniformChain result = null;
             int pos = Alphabet.IndexOf(baseObject);
             if (pos != -1)
             {
-                result = (UniformChain) ((UniformChain) PUniformChains[pos]).Clone();
+                result = (UniformChain) (PUniformChains[pos]).Clone();
             }
             return result;
         }
@@ -156,18 +144,11 @@ namespace LibiadaCore.Classes.Root
             }
         }
 
-        protected override void BuildIntervals()
+        protected void BuildIntervals()
         {
-            if (!IntervalsChanged) return;
-
-            IntervalsChanged = false;
-
             foreach (UniformChain uniformChain in PUniformChains)
             {
-                IDataForCalculator dataInterface = uniformChain;
-                pIntervals.Sum(dataInterface.CommonIntervals);
-                startinterval.Sum(dataInterface.StartInterval);
-                endinterval.Sum(dataInterface.EndInterval);
+                BuildIntervals();
             }
         }
 
@@ -177,23 +158,7 @@ namespace LibiadaCore.Classes.Root
         ///<returns></returns>
         public UniformChain GetUniformChain(int i)
         {
-            return (UniformChain) ((UniformChain) PUniformChains[i]).Clone();
-        }
-
-        ///<summary>
-        ///</summary>
-        ///<param name="type"></param>
-        ///<param name="Link"></param>
-        ///<returns></returns>
-        public override double InjectIntoCharacteristic(Type type, LinkUp Link)
-        {
-            return ((Characteristic) CharacteristicSnapshot[type]).Value(this, Link);
-        }
-
-
-        public UniformChain IUniformChain(int i)
-        {
-            return (UniformChain) PUniformChains[i];
+            return (UniformChain) (PUniformChains[i]).Clone();
         }
 
         public void FillNotUniformChains()
@@ -330,6 +295,11 @@ namespace LibiadaCore.Classes.Root
             }
             building = RemoveAt(building, index);
             return element;
+        }
+
+        public double GetCharacteristic(LinkUp linkUp, ICharacteristicCalculator calculator)
+        {
+            return calculator.Calculate(this, linkUp);
         }
     }
 }

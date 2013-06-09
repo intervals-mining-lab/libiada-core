@@ -1,16 +1,19 @@
 using System;
-using System.Collections;
-using LibiadaCore.Classes.Root.Characteristics;
+using System.Collections.Generic;
+using LibiadaCore.Classes.Root.Characteristics.Calculators;
 using LibiadaCore.Classes.Root.SimpleTypes;
 using LibiadaCore.Classes.Statistics;
+using LibiadaCore.Classes.TheoryOfSet;
 
 namespace LibiadaCore.Classes.Root
 {
     ///<summary>
     ///</summary>
     [Serializable]
-    public class UniformChain : ChainWithCharacteristic, IBaseObject
+    public class UniformChain : BaseChain, IBaseObject
     {
+        protected List<int> intervals = new List<int>();
+
         ///<summary>
         ///</summary>
         ///<param name="length"></param>
@@ -41,9 +44,7 @@ namespace LibiadaCore.Classes.Root
             base.FillClone(TempunifromChain);
             if (TempunifromChain != null)
             {
-                TempunifromChain.IntervalsChanged = IntervalsChanged;
-
-                TempunifromChain.CharacteristicSnapshot = (Hashtable) CharacteristicSnapshot.Clone();
+                TempunifromChain.BuildIntervals();
             }
         }
 
@@ -66,6 +67,14 @@ namespace LibiadaCore.Classes.Root
             return -1;
         }
 
+        public List<int> Intervals
+        {
+            get
+            {
+                return new List<int>(intervals);
+            }
+        }
+
         protected int Right(int current)
         {
             for (int i = current + 1; i < Length; i++)
@@ -84,58 +93,33 @@ namespace LibiadaCore.Classes.Root
             {
                 base.Add(item, index);
             }
+            BuildIntervals();
         }
 
-        private FrequencyList GetFrequancyIntervalList(int number)
+        protected void BuildIntervals()
         {
-            if (number == -1)
-            {
-                return startinterval;
-            }
-            if (number == Length)
-            {
-                return endinterval;
-            }
-            return pIntervals;
-        }
-
-        protected override void BuildIntervals()
-        {
-            if (!IntervalsChanged) return;
-
-            IntervalsChanged = false;
-
-            pIntervals = new FrequencyList();
+            intervals = new List<int>();
             int next = -1;
-            FrequencyList IntervalList;
             do
             {
                 int current = next;
                 next = Right(current);
-                if (next == Length)
-                {
-                    IntervalList = GetFrequancyIntervalList(Length);
-                }
-                else
-                {
-                    IntervalList = GetFrequancyIntervalList(current);
-                }
 
-                IntervalList.Add((ValueInt) (next - current));
+                intervals.Add(next - current);
             } while (next != Length);
-        }
-
-        public override double InjectIntoCharacteristic(Type type, LinkUp Link)
-        {
-            return ((Characteristic) CharacteristicSnapshot[type]).Value(this, Link);
         }
 
         public IBaseObject DeleteAt(int index)
         {
             IBaseObject element = alphabet[building[index]];
             building = RemoveAt(building, index);
+            BuildIntervals();
             return element;
         }
 
+        public double GetCharacteristic(LinkUp linkUp, ICharacteristicCalculator calculator)
+        {
+            return calculator.Calculate(this, linkUp);
+        }
     }
 }

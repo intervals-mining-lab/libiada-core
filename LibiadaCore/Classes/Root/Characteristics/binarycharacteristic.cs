@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using LibiadaCore.Classes.Root.Characteristics.Calculators;
+﻿using LibiadaCore.Classes.Root.Characteristics.Calculators;
 
 namespace LibiadaCore.Classes.Root.Characteristics
 {

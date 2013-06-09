@@ -22,9 +22,6 @@ namespace TestLibiadaCore.Classes.Root.Characteristics.Calculators
             ObjectMother Mother = new ObjectMother();
             TestUChain = Mother.TestUniformChain();
             TestChain = Mother.TestChain();
-
-            /*  TextWriterTraceListener Lisen = new TextWriterTraceListener("Characteristic_log" + GetType() + ".txt");
-            Debug.Listeners.Add(Lisen);*/
         }
 
         ///<summary>
@@ -42,12 +39,6 @@ namespace TestLibiadaCore.Classes.Root.Characteristics.Calculators
             Assert.AreEqual(Math.Pow(ArithmeticMean, Propability) * Math.Pow(1/(1-Propability), 1-Propability), D.Value(TestUChain, LinkUp.Start));
             Assert.AreEqual(Math.Pow(ArithmeticMean, Propability) * Math.Pow(1 / (1 - Propability), 1 - Propability), D.Value(TestUChain, LinkUp.End));
             Assert.AreEqual(Math.Pow(ArithmeticMean, Propability) * Math.Pow(1 / (1 - Propability), 1 - Propability), D.Value(TestUChain, LinkUp.Both));
-
-
-            /*    Debug.WriteLine(TestUChain);
-            Debug.WriteLine(LinkUp.Start + " : " + D.Value(TestUChain, LinkUp.Start));
-            Debug.WriteLine(LinkUp.Both + " : " + D.Value(TestUChain, LinkUp.Both));
-            Debug.WriteLine(LinkUp.End + " : " + D.Value(TestUChain, LinkUp.End));*/
         }
 
         ///<summary>
@@ -79,12 +70,6 @@ namespace TestLibiadaCore.Classes.Root.Characteristics.Calculators
             Assert.AreEqual(DTheoretical, D.Value(TestChain, LinkUp.Start));
             Assert.AreEqual(DTheoretical, D.Value(TestChain, LinkUp.End));
             Assert.AreEqual(DTheoretical, D.Value(TestChain, LinkUp.Both));
-
-
-            /*   Debug.WriteLine(TestChain);
-            Debug.WriteLine(LinkUp.Start + " : " + D.Value(TestChain, LinkUp.Start));
-            Debug.WriteLine(LinkUp.Both + " : " + D.Value(TestChain, LinkUp.Both));
-            Debug.WriteLine(LinkUp.End + " : " + D.Value(TestChain, LinkUp.End));*/
         }
     }
 }

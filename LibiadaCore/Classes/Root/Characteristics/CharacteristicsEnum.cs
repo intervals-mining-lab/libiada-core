@@ -71,9 +71,9 @@ namespace LibiadaCore.Classes.Root.Characteristics
         ///</summary>
         ArithmeticMean,
         ///<summary>
-        /// Удалённость приходящаяся на одно сообщение.
+        /// Глубина, приходящаяся на одно сообщение.
         ///</summary>
-        NomalizationGamut,
+        NomalizedGamut,
         ///<summary>
         /// Периодичность.
         ///</summary>

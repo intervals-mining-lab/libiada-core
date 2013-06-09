@@ -1,5 +1,3 @@
-using LibiadaCore.Classes.Root.Characteristics.AuxiliaryInterfaces;
-
 namespace LibiadaCore.Classes.Root.Characteristics.Calculators
 {
     ///<summary>
@@ -16,10 +14,8 @@ namespace LibiadaCore.Classes.Root.Characteristics.Calculators
         /// <returns></returns>
         public double Calculate(UniformChain chain, LinkUp Link)
         {
-            double n = chain.GetCharacteristic(LinkUp.Both, CharacteristicsFactory.Length);
-            double n_j = chain.GetCharacteristic(LinkUp.Both, CharacteristicsFactory.n);
-            double result = n/n_j;
-            return result;
+            Probability probability = new Probability();
+            return 1 / probability.Calculate(chain, Link);
         }
 
         ///<summary>
@@ -30,11 +26,10 @@ namespace LibiadaCore.Classes.Root.Characteristics.Calculators
         ///<returns></returns>
         public double Calculate(Chain pChain, LinkUp Link)
         {
-            IChainDataForCalculaton Data = pChain;
             double sum = 0;
             for (int i = 0; i < pChain.Alphabet.Power; i++)
             {
-                sum += Data.IUniformChain(i).GetCharacteristic(Link, CharacteristicsFactory.deltaA);
+                sum += Calculate(pChain.GetUniformChain(i), Link);
             }
             return sum/pChain.Alphabet.Power;
         }

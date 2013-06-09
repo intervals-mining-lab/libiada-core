@@ -1,28 +1,26 @@
 namespace LibiadaCore.Classes.Root.Characteristics.Calculators
 {
     ///<summary>
-    /// Удалённость приходящаяся на одно сообщение.
+    /// Глубина приходящаяся на одно сообщение.
     ///</summary>
     public class NormalizedGamut : ICharacteristicCalculator
     {
+        private Depth depth = new Depth();
+        private Length length = new Length();
+
         public double Calculate(UniformChain pChain, LinkUp Link)
         {
-            return
-                pChain.GetCharacteristic(Link, CharacteristicsFactory.G)/
-                pChain.GetCharacteristic(LinkUp.Both, CharacteristicsFactory.Length);
+            return depth.Calculate(pChain, Link)/length.Calculate(pChain, LinkUp.Both);
         }
 
         public double Calculate(Chain pChain, LinkUp Link)
         {
-            return
-                pChain.GetCharacteristic(Link, CharacteristicsFactory.G) /
-                pChain.GetCharacteristic(LinkUp.Both, CharacteristicsFactory.Length);
-
+            return depth.Calculate(pChain, Link) / length.Calculate(pChain, LinkUp.Both);
         }
 
         public CharacteristicsEnum GetCharacteristicName()
         {
-            return CharacteristicsEnum.NomalizationGamut;
+            return CharacteristicsEnum.NomalizedGamut;
         }
     }
 }

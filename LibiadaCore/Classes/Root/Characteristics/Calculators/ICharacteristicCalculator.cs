@@ -6,6 +6,8 @@ namespace LibiadaCore.Classes.Root.Characteristics.Calculators
     public interface ICharacteristicCalculator
     {
         ///<summary>
+        /// Вычисляет и возвращает значение характеристики 
+        /// для однородной цеочки.
         ///</summary>
         ///<param name="chain"></param>
         ///<param name="linkUp"></param>
@@ -13,6 +15,8 @@ namespace LibiadaCore.Classes.Root.Characteristics.Calculators
         double Calculate(UniformChain chain, LinkUp linkUp);
 
         ///<summary>
+        /// Вычисляет и возвращает значение характеристики 
+        /// для полной неоднородной цеочки.
         ///</summary>
         ///<param name="chain"></param>
         ///<param name="linkUp"></param>

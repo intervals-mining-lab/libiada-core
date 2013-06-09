@@ -1,5 +1,4 @@
 using System;
-using LibiadaCore.Classes.Root.Characteristics.AuxiliaryInterfaces;
 
 namespace LibiadaCore.Classes.Root.Characteristics.Calculators
 {
@@ -9,20 +8,21 @@ namespace LibiadaCore.Classes.Root.Characteristics.Calculators
     ///</summary>
     public class IdentificationInformation : ICharacteristicCalculator
     {
+        private ArithmeticMean arithmeticMean = new ArithmeticMean();
+        private Probability probability = new Probability();
+
         public double Calculate(UniformChain pChain, LinkUp Link)
         {
-            return Math.Log(pChain.GetCharacteristic(Link, CharacteristicsFactory.deltaA), 2);
+            return Math.Log(arithmeticMean.Calculate(pChain, Link), 2);
         }
 
         public double Calculate(Chain pChain, LinkUp Link)
         {
-            IChainDataForCalculaton Data = pChain;
             double temp = 0;
             for (int i = 0; i < pChain.Alphabet.Power; i++)
             {
-                double P = Data.IUniformChain(i).GetCharacteristic(Link, CharacteristicsFactory.P);
-                double da =
-                    Data.IUniformChain(i).GetCharacteristic(Link, CharacteristicsFactory.deltaA);
+                double P = probability.Calculate(pChain.GetUniformChain(i), Link);
+                double da = arithmeticMean.Calculate(pChain.GetUniformChain(i), Link);
                 temp += P*Math.Log(da, 2);
             }
             return temp;

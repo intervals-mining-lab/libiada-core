@@ -1,5 +1,4 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using LibiadaCore.Classes.Root;
 using LibiadaCore.Classes.Root.SimpleTypes;
@@ -100,7 +99,7 @@ namespace LibiadaCore.Classes.Statistics
             get
             {
                 return
-                    new DictionaryEntryBase(((IBaseObject) vault[index]).Clone(), (ValueInt) ((int) frequency[index]));
+                    new DictionaryEntryBase(vault[index].Clone(), (ValueInt)frequency[index]);
             }
         }
 
@@ -147,7 +146,7 @@ namespace LibiadaCore.Classes.Statistics
                     Add(value);
                     valueCount = valueCount - 1;
                 }
-                frequency[IndexOf(value)] = (int) frequency[IndexOf(value)] + valueCount;
+                frequency[IndexOf(value)] = frequency[IndexOf(value)] + valueCount;
             }
         }
     }

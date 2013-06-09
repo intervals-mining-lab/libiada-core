@@ -1,5 +1,3 @@
-using LibiadaCore.Classes.Root.Characteristics.AuxiliaryInterfaces;
-
 namespace LibiadaCore.Classes.Root.Characteristics.Calculators
 {
     ///<summary>
@@ -8,7 +6,7 @@ namespace LibiadaCore.Classes.Root.Characteristics.Calculators
     public class Count : ICharacteristicCalculator
     {
         /// <summary>
-        /// Для однородной цепи это количество 
+        /// Для однородной цепи это количество
         /// непустых элементов.
         /// </summary>
         /// <param name="pChain"></param>
@@ -16,7 +14,7 @@ namespace LibiadaCore.Classes.Root.Characteristics.Calculators
         /// <returns></returns>
         public double Calculate(UniformChain pChain, LinkUp Link)
         {
-            return CommonCalculate(pChain);
+            return pChain.Intervals.Count - 1;
         }
 
         /// <summary>
@@ -27,18 +25,17 @@ namespace LibiadaCore.Classes.Root.Characteristics.Calculators
         /// <returns></returns>
         public double Calculate(Chain pChain, LinkUp Link)
         {
-            return CommonCalculate(pChain);
+            int count = 0;
+            for (int i = 0; i < pChain.Alphabet.Power; i++)
+            {
+                count += (int)Calculate(pChain.GetUniformChain(i), Link);
+            }
+            return count;
         }
 
         public CharacteristicsEnum GetCharacteristicName()
         {
             return CharacteristicsEnum.Count;
-        }
-
-        private double CommonCalculate(ChainWithCharacteristic pChain)
-        {
-            IDataForCalculator data = pChain;
-            return data.CommonIntervals.Count + data.StartInterval.Count;
         }
     }
 }

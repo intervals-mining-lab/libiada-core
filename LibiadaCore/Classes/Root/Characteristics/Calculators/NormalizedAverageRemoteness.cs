@@ -7,15 +7,18 @@ namespace LibiadaCore.Classes.Root.Characteristics.Calculators
     ///</summary>
     public class NormalizedAverageRemoteness : ICharacteristicCalculator
     {
+        private AverageRemoteness averageRemoteness = new AverageRemoteness();
+        private AlphabetPower alphabetPower = new AlphabetPower();
+
         public double Calculate(UniformChain pChain, LinkUp Link)
         {
-            return pChain.GetCharacteristic(Link, CharacteristicsFactory.g);
+            return averageRemoteness.Calculate(pChain, Link);
         }
 
         public double Calculate(Chain pChain, LinkUp Link)
         {
-            double g = pChain.GetCharacteristic(Link, CharacteristicsFactory.g);
-            double Hmax = Math.Log(pChain.GetCharacteristic(Link, CharacteristicsFactory.Power), 2);
+            double g = averageRemoteness.Calculate(pChain, Link);
+            double Hmax = Math.Log(alphabetPower.Calculate(pChain, Link), 2);
             return g - Hmax;
         }
 

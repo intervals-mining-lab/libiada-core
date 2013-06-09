@@ -12,6 +12,7 @@ namespace TestLibiadaCore.Classes.Root.Characteristics.Calculators
         private readonly ValueChar MessageC = new ValueChar('c');
 
         ///<summary>
+        /// BBAACBACCB
         ///</summary>
         ///<returns></returns>
         public Chain TestChain()

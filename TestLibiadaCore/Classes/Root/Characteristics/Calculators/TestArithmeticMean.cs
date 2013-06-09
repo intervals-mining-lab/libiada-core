@@ -21,9 +21,6 @@ namespace TestLibiadaCore.Classes.Root.Characteristics.Calculators
             ObjectMother Mother = new ObjectMother();
             TestUChain = Mother.TestUniformChain();
             TestChain = Mother.TestChain();
-
-            // TextWriterTraceListener Lisen = new TextWriterTraceListener("Characteristic_log" + GetType() + ".txt");
-            //Debug.Listeners.Add(Lisen);
         }
 
 
@@ -39,11 +36,6 @@ namespace TestLibiadaCore.Classes.Root.Characteristics.Calculators
             Assert.AreEqual(n/n_j, deltaA.Value(TestUChain, LinkUp.Start));
             Assert.AreEqual(n/n_j, deltaA.Value(TestUChain, LinkUp.End));
             Assert.AreEqual(n/n_j, deltaA.Value(TestUChain, LinkUp.Both));
-
-            /*Debug.WriteLine(TestUChain);
-            Debug.WriteLine(LinkUp.Start.ToString() + " : " + deltaA.Value(TestUChain, LinkUp.Start));
-            Debug.WriteLine(LinkUp.Both.ToString() + " : " + deltaA.Value(TestUChain, LinkUp.Both));
-            Debug.WriteLine(LinkUp.End.ToString() + " : " + deltaA.Value(TestUChain, LinkUp.End));*/
         }
 
         ///<summary>
@@ -62,11 +54,6 @@ namespace TestLibiadaCore.Classes.Root.Characteristics.Calculators
             Assert.AreEqual(sum_ariphmetical/Alphabet_power, deltaA.Value(TestChain, LinkUp.Start));
             Assert.AreEqual(sum_ariphmetical/Alphabet_power, deltaA.Value(TestChain, LinkUp.End));
             Assert.AreEqual(sum_ariphmetical/Alphabet_power, deltaA.Value(TestChain, LinkUp.Both));
-
-            /* Debug.WriteLine(TestChain);
-            Debug.WriteLine(LinkUp.Start.ToString() + " : " + deltaA.Value(TestChain, LinkUp.Start));
-            Debug.WriteLine(LinkUp.Both.ToString() + " : " + deltaA.Value(TestChain, LinkUp.Both));
-            Debug.WriteLine(LinkUp.End.ToString() + " : " + deltaA.Value(TestChain, LinkUp.End));*/
         }
     }
 }

@@ -22,9 +22,6 @@ namespace TestLibiadaCore.Classes.Root.Characteristics.Calculators
             ObjectMother Mother = new ObjectMother();
             TestUChain = Mother.TestUniformChain();
             TestChain = Mother.TestChain();
-
-            /*  TextWriterTraceListener Lisen = new TextWriterTraceListener("Characteristic_log" + GetType() + ".txt");
-            Debug.Listeners.Add(Lisen);*/
         }
 
         ///<summary>
@@ -79,12 +76,6 @@ namespace TestLibiadaCore.Classes.Root.Characteristics.Calculators
             double dGTheoreticalBoth = Math.Pow(MultiplicatedIntervalsBoth, ((double) 1)/Intervals_CountBoth);
 
             Assert.AreEqual(dGTheoreticalBoth, dG.Value(TestChain, LinkUp.Both));
-
-
-            /*  Debug.WriteLine(TestChain);
-            Debug.WriteLine(LinkUp.Start.ToString() + " : " + dG.Value(TestChain, LinkUp.Start));
-            Debug.WriteLine(LinkUp.Both.ToString() + " : " + dG.Value(TestChain, LinkUp.Both));
-            Debug.WriteLine(LinkUp.End.ToString() + " : " + dG.Value(TestChain, LinkUp.End));*/
         }
 
         ///<summary>
@@ -121,11 +112,6 @@ namespace TestLibiadaCore.Classes.Root.Characteristics.Calculators
 
             Assert.AreEqual(Math.Pow(2, G.Value(TestUChain, LinkUp.End)/N.Value(TestUChain, LinkUp.End)),
                             deltaGeom.Value(TestUChain, LinkUp.End));
-
-            /*   Debug.WriteLine(TestUChain);
-            Debug.WriteLine(LinkUp.Start.ToString() + " : " + deltaGeom.Value(TestUChain, LinkUp.Start));
-            Debug.WriteLine(LinkUp.Both.ToString() + " : " + deltaGeom.Value(TestUChain, LinkUp.Both));
-            Debug.WriteLine(LinkUp.End.ToString() + " : " + deltaGeom.Value(TestUChain, LinkUp.End));*/
         }
     }
 }

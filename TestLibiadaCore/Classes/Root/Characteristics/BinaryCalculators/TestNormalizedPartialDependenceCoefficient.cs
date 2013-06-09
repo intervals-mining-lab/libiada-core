@@ -190,18 +190,6 @@ namespace TestLibiadaCore.Classes.Root.Characteristics.BinaryCalculators
             chain.Add(MessageB, 19);
             Assert.AreEqual(0.14, Math.Round(calculator.Calculate(chain, MessageA, MessageB, LinkUp.End), 3));
             Assert.AreEqual(0.058, Math.Round(calculator.Calculate(chain, MessageB, MessageA, LinkUp.End), 3));
-
-            chain = new Chain(23);
-            chain.Add(MessageA, 0);
-            chain.Add(MessageA, 6);
-            chain.Add(MessageA, 11);
-            chain.Add(MessageA, 21);
-            chain.Add(MessageB, 1);
-            chain.Add(MessageB, 7);
-            chain.Add(MessageB, 12);
-            chain.Add(MessageB, 22);
-            //            Assert.AreEqual(0.798, Math.Round(testChain.PartialDependenceCoefficient(MessageA, MessageB),3));
-            //            Assert.AreEqual(-0.046, Math.Round(testChain.PartialDependenceCoefficient(MessageB, MessageA), 3));
         }
 
         [Test]

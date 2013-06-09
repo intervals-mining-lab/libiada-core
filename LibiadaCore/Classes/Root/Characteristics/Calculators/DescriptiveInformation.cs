@@ -1,5 +1,4 @@
 using System;
-using LibiadaCore.Classes.Root.Characteristics.AuxiliaryInterfaces;
 
 namespace LibiadaCore.Classes.Root.Characteristics.Calculators
 {
@@ -8,13 +7,17 @@ namespace LibiadaCore.Classes.Root.Characteristics.Calculators
     ///</summary>
     public class DescriptiveInformation : ICharacteristicCalculator
     {
+        private Probability probability = new Probability();
+        private ArithmeticMean arithmeticMean = new ArithmeticMean();
+
         public double Calculate(UniformChain pChain, LinkUp Link)
         {
-            double P = pChain.GetCharacteristic(Link, CharacteristicsFactory.P);
-            double Result = Math.Pow(pChain.GetCharacteristic(Link, CharacteristicsFactory.deltaA), P);
+            
+            double P = probability.Calculate(pChain, Link);
+            double Result = Math.Pow(arithmeticMean.Calculate(pChain, Link), P);
             //≈сли вс€ цепь заполнена одинаковыми сообщени€ми
             //то веро€тность равна 1 и считать описательные информации не имеет смысла.
-            if (1!=P)
+            if (P < 1)
             {
                 double P_1 = 1 - P;
                 double A_1 = 1 / P_1;
@@ -30,17 +33,15 @@ namespace LibiadaCore.Classes.Root.Characteristics.Calculators
         ///<returns></returns>
         public double Calculate(Chain pChain, LinkUp Link)
         {
-            IChainDataForCalculaton Data = pChain;
             double temp = 1;
 
             for (int i = 0; i < pChain.Alphabet.Power; i++)
             {
-                double D = Data.IUniformChain(i).GetCharacteristic(Link, CharacteristicsFactory.deltaA);
-                double P = Data.IUniformChain(i).GetCharacteristic(Link, CharacteristicsFactory.P);
-                temp *= Math.Pow(D,P) ;
+                temp *= Math.Pow(arithmeticMean.Calculate(pChain.GetUniformChain(i), Link),
+                    probability.Calculate(pChain.GetUniformChain(i), Link)) ;
             }
-            double P_sum = pChain.GetCharacteristic(Link, CharacteristicsFactory.P);
-            if (1!= P_sum)
+            double P_sum = probability.Calculate(pChain, Link);
+            if (P_sum < 1)
             {
                 temp *= Math.Pow(1 / (1 - P_sum), 1 - P_sum);
             }

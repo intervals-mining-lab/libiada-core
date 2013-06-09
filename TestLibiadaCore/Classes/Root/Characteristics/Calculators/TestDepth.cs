@@ -22,10 +22,6 @@ namespace TestLibiadaCore.Classes.Root.Characteristics.Calculators
             ObjectMother Mother = new ObjectMother();
             TestUChain = Mother.TestUniformChain();
             TestChain = Mother.TestChain();
-
-
-            /*   TextWriterTraceListener Lisen = new TextWriterTraceListener("Characteristic_log" + GetType() + ".txt");
-            Debug.Listeners.Add(Lisen);*/
         }
 
         ///<summary>
@@ -45,11 +41,6 @@ namespace TestLibiadaCore.Classes.Root.Characteristics.Calculators
                             G.Value(TestUChain, LinkUp.End));
             Assert.AreEqual(Math.Log(Interval1, 2) + Math.Log(Interval3, 2) + Math.Log(Interval2, 2),
                             G.Value(TestUChain, LinkUp.Start));
-
-            /*  Debug.WriteLine(TestUChain);
-            Debug.WriteLine(LinkUp.Start.ToString() + " : " + G.Value(TestUChain, LinkUp.Start));
-            Debug.WriteLine(LinkUp.Both.ToString() + " : " + G.Value(TestUChain, LinkUp.Both));
-            Debug.WriteLine(LinkUp.End.ToString() + " : " + G.Value(TestUChain, LinkUp.End));*/
         }
 
         ///<summary>
@@ -95,12 +86,6 @@ namespace TestLibiadaCore.Classes.Root.Characteristics.Calculators
             Assert.AreEqual(SumStart, G.Value(TestChain, LinkUp.Start));
             Assert.AreEqual(SumEnd, G.Value(TestChain, LinkUp.End));
             Assert.AreEqual(SumBoth, G.Value(TestChain, LinkUp.Both));
-
-
-            /*    Debug.WriteLine(TestChain);
-            Debug.WriteLine(LinkUp.Start.ToString() + " : " + G.Value(TestChain, LinkUp.Start));
-            Debug.WriteLine(LinkUp.Both.ToString() + " : " + G.Value(TestChain, LinkUp.Both));
-            Debug.WriteLine(LinkUp.End.ToString() + " : " + G.Value(TestChain, LinkUp.End));*/
         }
     }
 }

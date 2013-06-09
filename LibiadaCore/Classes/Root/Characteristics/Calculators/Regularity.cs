@@ -5,16 +5,12 @@ namespace LibiadaCore.Classes.Root.Characteristics.Calculators
     ///</summary>
     public class Regularity : ICharacteristicCalculator
     {
+        GeometricMean geometricMean = new GeometricMean();
+        DescriptiveInformation descriptiveInformation = new DescriptiveInformation();
+
         public double Calculate(UniformChain pChain, LinkUp Link)
         {
-            return CommonCalculate(pChain, Link);
-        }
-
-        private double CommonCalculate(ChainWithCharacteristic pChain, LinkUp Link)
-        {
-            double dg = pChain.GetCharacteristic(Link, CharacteristicsFactory.deltaG);
-            double D = pChain.GetCharacteristic(Link, CharacteristicsFactory.D);
-            return dg/D;
+            return geometricMean.Calculate(pChain, Link) / descriptiveInformation.Calculate(pChain, Link);
         }
 
         ///<summary>
@@ -24,7 +20,7 @@ namespace LibiadaCore.Classes.Root.Characteristics.Calculators
         ///<returns></returns>
         public double Calculate(Chain pChain, LinkUp Link)
         {
-            return CommonCalculate(pChain, Link);
+            return geometricMean.Calculate(pChain, Link) / descriptiveInformation.Calculate(pChain, Link);
         }
 
         public CharacteristicsEnum GetCharacteristicName()

@@ -149,36 +149,6 @@ namespace TestLibiadaCore.Classes.Root
             BaseChain ItsClone = (BaseChain) ChainBase.Clone();
             Assert.AreEqual(ChainBase, ItsClone);
         }
-/*
-
-        ///<summary>
-        /// ��������� ���������� ������������ � �������������� ����
-        ///</summary>
-        [Test]
-        public void TestSerializeDeserialize()
-        {
-            ChainBase[0] = new ValueChar('1');
-            ChainBase[1] = new ValueChar('2');
-            ChainBase[2] = new ValueChar('3');
-            ChainBase[3] = new ValueChar('4');
-            ChainBase[4] = new ValueChar('5');
-            ChainBase[5] = new ValueChar('6');
-            ChainBase[6] = new ValueChar('7');
-            ChainBase[7] = new ValueChar('8');
-            ChainBase[8] = new ValueChar('9');
-            ChainBase[9] = new ValueChar('A');
-
-
-            MemoryStream MS = new MemoryStream();
-            SoapFormatter SF = new SoapFormatter();
-            SF.Serialize(MS, ChainBase);
-
-            MS.Position = 0;
-            SF = new SoapFormatter();
-            BaseChain Des_Event = (BaseChain) SF.Deserialize(MS);
-            Assert.AreEqual(ChainBase, Des_Event);
-        }
-*/
 
         ///<summary>
         ///</summary>

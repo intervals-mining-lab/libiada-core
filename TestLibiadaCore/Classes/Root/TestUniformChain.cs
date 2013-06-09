@@ -68,6 +68,7 @@ namespace TestLibiadaCore.Classes.Root
 
         ///<summary>
         ///</summary>
+        [Test]
         public void TestRemove()
         {
             UniformChain.Add(message, 3);
@@ -78,6 +79,8 @@ namespace TestLibiadaCore.Classes.Root
 
         ///<summary>
         ///</summary>
+        /*
+        [Test]
         public void TestGetInterval()
         {
             UniformChain.Add(message, 3);
@@ -102,6 +105,6 @@ namespace TestLibiadaCore.Classes.Root
             Assert.AreEqual(1, UniformChain.Intervals(LinkUp.Start).FrequencyFromObject((ValueInt) 4));
             Assert.AreEqual(1, UniformChain.Intervals(LinkUp.Start).FrequencyFromObject((ValueInt) 1));
             Assert.AreEqual(1, UniformChain.Intervals(LinkUp.Start).FrequencyFromObject((ValueInt) 3));
-        }
+        }*/
     }
 }

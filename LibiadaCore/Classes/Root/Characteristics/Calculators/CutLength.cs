@@ -23,7 +23,7 @@ namespace LibiadaCore.Classes.Root.Characteristics.Calculators
             return CharacteristicsEnum.CutLength;
         }
 
-        private double CutCommon(ChainWithCharacteristic pChain)
+        private double CutCommon(BaseChain pChain)
         {
             int i = 1;
             while (i <= pChain.Length)
@@ -38,7 +38,7 @@ namespace LibiadaCore.Classes.Root.Characteristics.Calculators
             return pChain.Length;
         }
 
-        private bool CheckRecoveryAvaliable(ChainWithCharacteristic pChain, int i)
+        private bool CheckRecoveryAvaliable(BaseChain pChain, int i)
         {
             IteratorStart<BaseChain,BaseChain> It = new IteratorStart<BaseChain, BaseChain>(pChain, i, 1);
             Alphabet Temp = new Alphabet();

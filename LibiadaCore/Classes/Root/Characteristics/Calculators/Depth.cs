@@ -1,7 +1,5 @@
 using System;
-using LibiadaCore.Classes.Root.Characteristics.AuxiliaryInterfaces;
-using LibiadaCore.Classes.Root.SimpleTypes;
-using LibiadaCore.Classes.Statistics;
+using System.Collections.Generic;
 
 namespace LibiadaCore.Classes.Root.Characteristics.Calculators
 {
@@ -12,28 +10,22 @@ namespace LibiadaCore.Classes.Root.Characteristics.Calculators
     {
         public double Calculate(UniformChain pChain, LinkUp Link)
         {
-            IDataForCalculator Data = pChain;
-
-            FrequencyList CommonIntervaList = Data.CommonIntervals;
-            FrequencyList StartInterval = Data.StartInterval;
-            FrequencyList EndInterval = Data.EndInterval;
-
+            List<int> intervals = pChain.Intervals;
             double result = 0;
-            for (int i = 0; i < CommonIntervaList.Power; i++)
+            for (int i = 1; i < intervals.Count - 1; i++)
             {
-                result += (ValueInt) CommonIntervaList[i].Value*Math.Log((ValueInt) CommonIntervaList[i].Key, 2);
+                result += Math.Log(intervals[i], 2);
             }
 
             switch (Link)
             {
                 case LinkUp.Start:
-                    return result + Math.Log((ValueInt) StartInterval[0].Key, 2);
+                    return result + Math.Log(intervals[0], 2);
                 case LinkUp.End:
-                    return result + Math.Log((ValueInt) EndInterval[0].Key, 2);
+                    return result + Math.Log(intervals[intervals.Count - 1], 2);
                 case LinkUp.Both:
-                    return
-                        result + Math.Log((ValueInt) StartInterval[0].Key, 2) +
-                        Math.Log((ValueInt) EndInterval[0].Key, 2);
+                    return result + Math.Log(intervals[0], 2) +
+                        Math.Log(intervals[intervals.Count - 1], 2);
                 default:
                     throw new Exception("Неизвестная привязка");
             }
@@ -46,11 +38,10 @@ namespace LibiadaCore.Classes.Root.Characteristics.Calculators
         ///<returns></returns>
         public double Calculate(Chain pChain, LinkUp Link)
         {
-            IChainDataForCalculaton Data = pChain;
             double temp = 0;
             for (int i = 0; i < pChain.Alphabet.Power; i++)
             {
-                temp += Data.IUniformChain(i).GetCharacteristic(Link, CharacteristicsFactory.G);
+                temp += Calculate(pChain.GetUniformChain(i), Link);
             }
             return temp;
         }
