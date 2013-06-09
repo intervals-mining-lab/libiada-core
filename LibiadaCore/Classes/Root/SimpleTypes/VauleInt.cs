@@ -1,11 +1,8 @@
-using System;
-
 namespace LibiadaCore.Classes.Root.SimpleTypes
 {
     ///<summary>
     ///  ласс представл€ющий элемент - целочисленное значение
     ///</summary>
-    [Serializable]
     public class ValueInt : IBaseObject
     {
         ///<summary>

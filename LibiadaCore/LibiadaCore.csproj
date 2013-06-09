@@ -44,6 +44,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Classes\Misc\ArrayManipulator.cs" />
     <Compile Include="Classes\Misc\DataTransformators\DnaTransformator.cs" />
     <Compile Include="Classes\Misc\DissimilarChainFactory.cs" />
     <Compile Include="Classes\Misc\Iterators\CutRule.cs" />
@@ -92,7 +93,7 @@
     <Compile Include="Classes\Root\Characteristics\Calculators\IdentificationInformation.cs" />
     <Compile Include="Classes\Root\Characteristics\Calculators\IntervalsCount.cs" />
     <Compile Include="Classes\Root\Characteristics\Calculators\Length.cs" />
-    <Compile Include="Classes\Root\Characteristics\Calculators\NormalizedGamut.cs" />
+    <Compile Include="Classes\Root\Characteristics\Calculators\NormalizedDepth.cs" />
     <Compile Include="Classes\Root\Characteristics\Calculators\NormalizedAverageRemoteness.cs" />
     <Compile Include="Classes\Root\Characteristics\Calculators\Periodicity.cs" />
     <Compile Include="Classes\Root\Characteristics\Calculators\PhantomMessagesCount.cs" />

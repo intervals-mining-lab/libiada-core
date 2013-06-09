@@ -1,5 +1,5 @@
-using System;
 using System.Collections.Generic;
+using LibiadaCore.Classes.Misc;
 using LibiadaCore.Classes.Root.Characteristics.Calculators;
 using LibiadaCore.Classes.Root.SimpleTypes;
 using LibiadaCore.Classes.TheoryOfSet;
@@ -9,11 +9,10 @@ namespace LibiadaCore.Classes.Root
     ///<summary>
     /// Класс цепь
     ///</summary>
-    [Serializable]
     public class Chain : BaseChain, IBaseObject
     {
-        protected UniformChain[] PUniformChains = new UniformChain[0];
-        protected Chain[] PNotUniformChains;
+        protected UniformChain[] UniformChains = new UniformChain[0];
+        protected Chain[] DissimilarChains;
 
         ///<summary>
         /// Конструктор 
@@ -31,48 +30,52 @@ namespace LibiadaCore.Classes.Root
         }
 
         ///<summary>
-        /// Конструктор, создает цепь из строки символов
+        /// Конструктор, создает цепь из строки символов.
+        /// Каждый символ становится элементом.
         ///</summary>
-        ///<param name="s"></param>
+        ///<param name="s">Строка</param>
         public Chain(string s)
             : base(s)
         {
         }
 
+        /// <summary>
+        /// Создаёт цепочку с заданным строем и алфавитом.
+        /// Проверка корректности не производится!
+        /// </summary>
+        /// <param name="building">Строй</param>
+        /// <param name="alphabet">Алфавит</param>
         public Chain(int[] building, Alphabet alphabet)
             : base(building, alphabet)
         {
             CreateUnformChains();
         }
 
+        /// <summary>
+        /// Cоздаёт цепочку из списка элементов.
+        /// </summary>
+        /// <param name="chain">Коллекция элементов</param>
         public Chain(List<IBaseObject> chain):base(chain)
         {
             CreateUnformChains();
         }
 
+        /// <summary>
+        /// Выделяет из полной неоднородной цепи все однородные цепи
+        /// и сохраняет их локальнов массив <see cref="UniformChains"/>.
+        /// </summary>
         private void CreateUnformChains()
         {
-            PUniformChains = new UniformChain[this.alphabet.Power - 1];
+            UniformChains = new UniformChain[this.alphabet.Power - 1];
             for (int i = 0; i < this.alphabet.Power - 1; i++)
             {
-                this.PUniformChains[i] = new UniformChain(building.Length, this.alphabet[i + 1]);
+                this.UniformChains[i] = new UniformChain(building.Length, this.alphabet[i + 1]);
             }
             for (int j = 0; j < building.Length; j++)
             {
-                PUniformChains[building[j] - 1][j] = this.alphabet[building[j]];
+                UniformChains[building[j] - 1][j] = this.alphabet[building[j]];
             }
         }
-
-        ///<summary>
-        ///</summary>
-        ///<param name="length"></param>
-        public new void ClearAndSetNewLength(int length)
-        {
-            base.ClearAndSetNewLength(length);
-            PUniformChains = new UniformChain[0];
-        }
-
-        
 
         public IBaseObject Clone()
         {
@@ -91,24 +94,36 @@ namespace LibiadaCore.Classes.Root
             base.FillClone(tempChain);
             if (tempChain != null)
             {
-                tempChain.PUniformChains = (UniformChain[]) PUniformChains.Clone();
+                tempChain.UniformChains = (UniformChain[]) UniformChains.Clone();
             }
         }
 
         ///<summary>
+        /// Возвращает копию однородной цепочки с указанным элементом.
+        /// Если такого элемента нет, то возврашщает null.
         ///</summary>
-        ///<param name="baseObject"></param>
+        ///<param name="baseObject">элемент однородной цепочки</param>
         ///<returns></returns>
-        ///<exception cref="NotImplementedException"></exception>
         public UniformChain UniformChain(IBaseObject baseObject)
         {
             UniformChain result = null;
             int pos = Alphabet.IndexOf(baseObject);
             if (pos != -1)
             {
-                result = (UniformChain) (PUniformChains[pos]).Clone();
+                result = (UniformChain) (UniformChains[pos]).Clone();
             }
             return result;
+        }
+
+        ///<summary>
+        /// Возвращает копию однородной цепочки 
+        /// с указанным индексом в алфавите полной цепи.
+        ///</summary>
+        ///<param name="i">Индекс элемента однородной цепочки в алфавите полной цепи</param>
+        ///<returns></returns>
+        public UniformChain UniformChain(int i)
+        {
+            return (UniformChain)UniformChains[i].Clone();
         }
 
         ///<summary>
@@ -127,43 +142,26 @@ namespace LibiadaCore.Classes.Root
         {
             base.Add(item, index);
 
-            if (PUniformChains.Length != (alphabet.Power - 1))
+            if (UniformChains.Length != (alphabet.Power - 1))
             {
                 UniformChain[] temp = new UniformChain[alphabet.Power - 1];
-                for (int i = 0; i < PUniformChains.Length; i++)
+                for (int i = 0; i < UniformChains.Length; i++)
                 {
-                    temp[i] = PUniformChains[i];
+                    temp[i] = UniformChains[i];
                 }
-                PUniformChains = temp;
-                PUniformChains[PUniformChains.Length - 1] = new UniformChain(Length, item);
+                UniformChains = temp;
+                UniformChains[UniformChains.Length - 1] = new UniformChain(Length, item);
             }
 
-            foreach (UniformChain chain in PUniformChains)
+            foreach (UniformChain chain in UniformChains)
             {
                 chain.Add(item, index);
             }
         }
 
-        protected void BuildIntervals()
+        public void FillDissimilarChains()
         {
-            foreach (UniformChain uniformChain in PUniformChains)
-            {
-                BuildIntervals();
-            }
-        }
-
-        ///<summary>
-        ///</summary>
-        ///<param name="i"></param>
-        ///<returns></returns>
-        public UniformChain GetUniformChain(int i)
-        {
-            return (UniformChain) (PUniformChains[i]).Clone();
-        }
-
-        public void FillNotUniformChains()
-        {
-            if(PNotUniformChains.Length > 0)
+            if(DissimilarChains.Length > 0)
                 return;
             List<int> counters = new List<int>();
             for (int j = 0; j < Alphabet.Power; j++)
@@ -174,37 +172,20 @@ namespace LibiadaCore.Classes.Root
             for (int i = 0; i < building.Length; i++)
             {
                 int element = ++counters[building[i]];
-                if(PNotUniformChains.Length < element) 
+                if(DissimilarChains.Length < element) 
                 {
                     Chain[] temp = new Chain[element];
-                    for (int j = 0; j < PNotUniformChains.Length; j++)
+                    for (int j = 0; j < DissimilarChains.Length; j++)
                     {
-                        temp[j] = PNotUniformChains[j];
+                        temp[j] = DissimilarChains[j];
                     }
-                    PNotUniformChains = temp;
-                    PNotUniformChains[PNotUniformChains.Length - 1] = new Chain();
+                    DissimilarChains = temp;
+                    DissimilarChains[DissimilarChains.Length - 1] = new Chain();
                 }
-                ((Chain)PNotUniformChains[element]).Add(new ValueInt(building[i]), i);
+                DissimilarChains[element].Add(new ValueInt(building[i]), i);
             }
-
         }
 
-        public int Get(IBaseObject element, int entry)
-        {
-            int entranceCount = 0;
-            for (int i = 0; i < building.Length; i++)
-            {
-                if (this[i].Equals(element))
-                {
-                    entranceCount++;
-                    if (entranceCount == entry)
-                    {
-                        return i;
-                    }
-                }
-            }
-            return -1;
-        }
         /// <summary>
         /// Возвращает i-ый интервал 
         /// между указанными элементами 
@@ -235,6 +216,36 @@ namespace LibiadaCore.Classes.Root
             return -1;
         }
 
+        /// <summary>
+        /// Возвращает позицию указанного по счёту вхождения указанного элемента.
+        /// </summary>
+        /// <param name="element">Элемнет</param>
+        /// <param name="entry">Номер вхождения элемента в полную цепь</param>
+        /// <returns></returns>
+        public int Get(IBaseObject element, int entry)
+        {
+            int entranceCount = 0;
+            for (int i = 0; i < building.Length; i++)
+            {
+                if (this[i].Equals(element))
+                {
+                    entranceCount++;
+                    if (entranceCount == entry)
+                    {
+                        return i;
+                    }
+                }
+            }
+            return -1;
+        }
+
+        /// <summary>
+        /// Возвращает позицию первого вхождения указанного элемента 
+        /// после указанной позиции.
+        /// </summary>
+        /// <param name="element">Элемнет</param>
+        /// <param name="from">Начальная позиция для отсчёта</param>
+        /// <returns>Номер позиции или -1, если элемент после указанной позиции не встречается</returns>
         public int GetAfter(IBaseObject element, int from)
         {
             for (int i = from; i < Length; i++)
@@ -269,14 +280,14 @@ namespace LibiadaCore.Classes.Root
             UniformChain tempUniformChain = (UniformChain) this.UniformChain(element);
             if ((int)calc.Calculate(tempUniformChain, LinkUp.End) == 1)
             {
-                var temp = PUniformChains;
-                PUniformChains = new UniformChain[temp.Length - 1];
+                var temp = UniformChains;
+                UniformChains = new UniformChain[temp.Length - 1];
                 int j = 0;
                 for (int i = 0; i < temp.Length; i++)
                 {
                     if (!temp[i].Message.Equals(element))
                     {
-                        PUniformChains[j] = temp[i];
+                        UniformChains[j] = temp[i];
                         j++;
                     }
                 }
@@ -289,11 +300,11 @@ namespace LibiadaCore.Classes.Root
                     }
                 }
             }
-            for (int l = 0; l < PUniformChains.Length; l++)
+            for (int l = 0; l < UniformChains.Length; l++)
             {
-                PUniformChains[l].DeleteAt(index);
+                UniformChains[l].DeleteAt(index);
             }
-            building = RemoveAt(building, index);
+            building = ArrayManipulator.DeleteAt(building, index);
             return element;
         }
 

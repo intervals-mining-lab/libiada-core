@@ -79,7 +79,7 @@
     <Compile Include="Classes\Root\Characteristics\Calculators\TestIdentificationInformation.cs" />
     <Compile Include="Classes\Root\Characteristics\Calculators\TestIntervalsCount.cs" />
     <Compile Include="Classes\Root\Characteristics\Calculators\TestLength.cs" />
-    <Compile Include="Classes\Root\Characteristics\Calculators\TestNormalizedGamut.cs" />
+    <Compile Include="Classes\Root\Characteristics\Calculators\TestNormalizedDepth.cs" />
     <Compile Include="Classes\Root\Characteristics\Calculators\TestNormalizedAverageRemoteness.cs" />
     <Compile Include="Classes\Root\Characteristics\Calculators\TestPeriodicity.cs" />
     <Compile Include="Classes\Root\Characteristics\Calculators\TestProbability.cs" />

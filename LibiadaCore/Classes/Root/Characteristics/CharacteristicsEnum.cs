@@ -73,7 +73,7 @@ namespace LibiadaCore.Classes.Root.Characteristics
         ///<summary>
         /// Глубина, приходящаяся на одно сообщение.
         ///</summary>
-        NomalizedGamut,
+        NomalizedDepth,
         ///<summary>
         /// Периодичность.
         ///</summary>

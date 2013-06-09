@@ -57,7 +57,7 @@ namespace TestLibiadaCore.Classes.Root
 
             ChainBase.Add(MessageC, 9);
 
-            BaseChain ChainCreatedUniformChain = ChainBase.UniformChain(MessageA);
+            BaseChain ChainCreatedUniformChain = ChainBase.UniformChain((IBaseObject)MessageA);
 
             Assert.AreEqual(UnifromChainA, ChainCreatedUniformChain);
         }

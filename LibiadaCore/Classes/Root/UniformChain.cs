@@ -1,24 +1,22 @@
 using System;
 using System.Collections.Generic;
+using LibiadaCore.Classes.Misc;
 using LibiadaCore.Classes.Root.Characteristics.Calculators;
 using LibiadaCore.Classes.Root.SimpleTypes;
-using LibiadaCore.Classes.Statistics;
-using LibiadaCore.Classes.TheoryOfSet;
 
 namespace LibiadaCore.Classes.Root
 {
     ///<summary>
     ///</summary>
-    [Serializable]
     public class UniformChain : BaseChain, IBaseObject
     {
         protected List<int> intervals = new List<int>();
 
         ///<summary>
+        /// Создаёт однородную цепочку для заданного элемента и заданной длины.
         ///</summary>
-        ///<param name="length"></param>
-        ///<param name="message"></param>
-        ///<exception cref="Exception"></exception>
+        ///<param name="length">Длина цепочки</param>
+        ///<param name="message">Элемент цепочки</param>
         public UniformChain(int length, IBaseObject message) : base(length)
         {
             alphabet.Add(message);
@@ -49,15 +47,34 @@ namespace LibiadaCore.Classes.Root
         }
 
         ///<summary>
+        /// Элемент цепочки
         ///</summary>
         public IBaseObject Message
         {
             get { return alphabet[1]; }
         }
 
+        /// <summary>
+        /// Возвращает копию массива интервалов, 
+        /// включая привязку к началу и к концу
+        /// </summary>
+        public List<int> Intervals
+        {
+            get
+            {
+                return new List<int>(intervals);
+            }
+        }
+
+        /// <summary>
+        /// Находит позицию ближайшего слева от указанной позиции 
+        /// вхождения элемента в однородную цепочки.
+        /// </summary>
+        /// <param name="current">Позиция для отчёта</param>
+        /// <returns>Позиция бижайшего слева элемента в однородной цепи, или -1 если слева нет элементов</returns>
         protected int Left(int current)
         {
-            for (int i = current - 1; i > -1; i--)
+            for (int i = current - 1; i >= 0; i--)
             {
                 if (building[i] == 1)
                 {
@@ -67,14 +84,13 @@ namespace LibiadaCore.Classes.Root
             return -1;
         }
 
-        public List<int> Intervals
-        {
-            get
-            {
-                return new List<int>(intervals);
-            }
-        }
 
+        /// <summary>
+        /// Находит позицию ближайшего справа от указанной позиции 
+        /// вхождения элемента в однородную цепочки.
+        /// </summary>
+        /// <param name="current">Позиция для отчёта</param>
+        /// <returns>Позиция бижайшего справа элемента в однородной цепи, или -длина цепочки если слева нет элементов</returns>
         protected int Right(int current)
         {
             for (int i = current + 1; i < Length; i++)
@@ -92,8 +108,20 @@ namespace LibiadaCore.Classes.Root
             if (Message.Equals(item))
             {
                 base.Add(item, index);
+                BuildIntervals();
             }
-            BuildIntervals();
+        }
+
+        ///<summary>
+        /// Свойстово позволяет получить доступ к элементу цепи по индексу.
+        /// В случае выхода за границы цепи вызывается исключение.
+        ///</summary>
+        ///<param name="index">номер элемента</param>
+        public override IBaseObject this[int index]
+        {
+            get { return building[index] == 1 ? Message.Clone() : NullValue.Instance(); }
+
+            set { Add(value, index); }
         }
 
         protected void BuildIntervals()
@@ -112,7 +140,7 @@ namespace LibiadaCore.Classes.Root
         public IBaseObject DeleteAt(int index)
         {
             IBaseObject element = alphabet[building[index]];
-            building = RemoveAt(building, index);
+            building = ArrayManipulator.DeleteAt(building, index);
             BuildIntervals();
             return element;
         }

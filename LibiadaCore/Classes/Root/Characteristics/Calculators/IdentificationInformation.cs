@@ -21,8 +21,8 @@ namespace LibiadaCore.Classes.Root.Characteristics.Calculators
             double temp = 0;
             for (int i = 0; i < pChain.Alphabet.Power; i++)
             {
-                double P = probability.Calculate(pChain.GetUniformChain(i), Link);
-                double da = arithmeticMean.Calculate(pChain.GetUniformChain(i), Link);
+                double P = probability.Calculate(pChain.UniformChain(i), Link);
+                double da = arithmeticMean.Calculate(pChain.UniformChain(i), Link);
                 temp += P*Math.Log(da, 2);
             }
             return temp;

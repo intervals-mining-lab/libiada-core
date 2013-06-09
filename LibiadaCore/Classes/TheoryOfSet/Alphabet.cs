@@ -10,7 +10,6 @@ namespace LibiadaCore.Classes.TheoryOfSet
     /// Алфавит это список из уникальных элементов
     /// Алфавит является классом организованным в соотвествии с паттреном "Значение"
     ///</summary>
-    [Serializable]
     public class Alphabet : IBaseObject, IEnumerable
     {
         protected List<IBaseObject> vault = new List<IBaseObject>();

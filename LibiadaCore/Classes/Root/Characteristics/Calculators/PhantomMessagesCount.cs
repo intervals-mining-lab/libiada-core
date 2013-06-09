@@ -6,7 +6,7 @@ namespace LibiadaCore.Classes.Root.Characteristics.Calculators
     /// Число возможных цепочек которые можно сгенерировать 
     /// из данной цепочки, содержащей фантомные сообщения.
     ///</summary>
-    public class PhantomMessagesCount:ICharacteristicCalculator
+    public class PhantomMessagesCount : ICharacteristicCalculator
     {
         public double Calculate(UniformChain chain, LinkUp Link)
         {

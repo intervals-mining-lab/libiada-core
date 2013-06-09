@@ -28,7 +28,7 @@ namespace LibiadaCore.Classes.Root.Characteristics.Calculators
             int count = 0;
             for (int i = 0; i < pChain.Alphabet.Power; i++)
             {
-                count += (int)Calculate(pChain.GetUniformChain(i), Link);
+                count += (int)Calculate(pChain.UniformChain(i), Link);
             }
             return count;
         }

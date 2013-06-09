@@ -1,12 +1,9 @@
-using System;
-
 namespace LibiadaCore.Classes.Root.SimpleTypes
 {
     ///<summary>
     /// Класс реализующий объект псевдо-величина
     /// Реализованн на основе паттерна Singletone
     ///</summary>
-    [Serializable]
     public class NullValue : IBaseObject
     {
         private static readonly NullValue SingleTone = new NullValue();

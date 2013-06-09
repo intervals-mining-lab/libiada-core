@@ -8,7 +8,7 @@ namespace TestLibiadaCore.Classes.Root.Characteristics.Calculators
     ///<summary>
     ///</summary>
     [TestFixture]
-    public class TestNormalizedGamut
+    public class TestNormalizedDepth
     {
         private UniformChain TestUChain = null;
         private Chain TestChain = null;
@@ -29,7 +29,7 @@ namespace TestLibiadaCore.Classes.Root.Characteristics.Calculators
         [Test]
         public void TestCalculation()
         {
-            Characteristic nG = new Characteristic(new NormalizedGamut());
+            Characteristic nG = new Characteristic(new NormalizedDepth());
 
             double Theory = TestUChain.GetCharacteristic(LinkUp.Start, new Depth())/
                         TestUChain.GetCharacteristic(LinkUp.Both, new Length());
@@ -52,7 +52,7 @@ namespace TestLibiadaCore.Classes.Root.Characteristics.Calculators
         [Test]
         public void TestCalculationForChain()
         {
-            Characteristic nG = new Characteristic(new NormalizedGamut());
+            Characteristic nG = new Characteristic(new NormalizedDepth());
 
             double Theory = TestChain.GetCharacteristic(LinkUp.Start, new Depth()) /
                         TestChain.GetCharacteristic(LinkUp.Both, new Length());

@@ -31,25 +31,6 @@ namespace TestLibiadaCore.Classes.Root
         }
 
         ///<summary>
-        /// ��������� ������� �������� ���� 0 ������
-        ///</summary>
-        [Test]
-        [Ignore]
-        public void TestConstructorCreateZero()
-        {
-            try
-            {
-                new Chain(0);
-            }
-            catch (Exception)
-            {
-                return;
-            }
-            Assert.Fail();
-            
-        }
-
-        ///<summary>
         /// ��������� ������� �������� ���� ������������� ������
         ///</summary>
         [Test]

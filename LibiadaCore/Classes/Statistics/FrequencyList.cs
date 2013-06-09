@@ -8,7 +8,6 @@ namespace LibiadaCore.Classes.Statistics
 {
     ///<summary>
     ///</summary>
-    [Serializable]
     public class FrequencyList : Alphabet, IBaseObject
     {
         private List<int> frequency = new List<int>();

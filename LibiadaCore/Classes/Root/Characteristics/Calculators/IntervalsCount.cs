@@ -37,7 +37,7 @@ namespace LibiadaCore.Classes.Root.Characteristics.Calculators
             int sum = 0;
             for (int i = 0; i < pChain.Alphabet.Power; i++)
             {
-                sum += (int)Calculate(pChain.GetUniformChain(i), Link);
+                sum += (int)Calculate(pChain.UniformChain(i), Link);
             }
             return sum;
         }

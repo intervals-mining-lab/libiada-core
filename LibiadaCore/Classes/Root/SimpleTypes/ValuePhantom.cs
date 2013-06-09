@@ -1,5 +1,3 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using LibiadaCore.Classes.TheoryOfSet;
 
@@ -8,7 +6,6 @@ namespace LibiadaCore.Classes.Root.SimpleTypes
     ///<summary>
     /// Фантомное сообщение, хранящее в себе несколько вариантов значений одной позиции.
     ///</summary>
-    [Serializable]
     public class ValuePhantom : Alphabet, IBaseObject
     {
 

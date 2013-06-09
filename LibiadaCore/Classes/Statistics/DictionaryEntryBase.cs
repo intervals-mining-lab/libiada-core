@@ -23,10 +23,14 @@ namespace LibiadaCore.Classes.Statistics
         ///<summary>
         ///</summary>
         ///<param name="data"></param>
-        public DictionaryEntryBase(DictionaryEntryBaseStruct data)
+        public DictionaryEntryBase(DictionaryEntryBase data)
         {
             key = data.Key;
             value = data.Value;
+        }
+
+        private DictionaryEntryBase()
+        {
         }
 
         ///<summary>
@@ -34,7 +38,7 @@ namespace LibiadaCore.Classes.Statistics
         ///<returns></returns>
         public object GetDataStruct()
         {
-            DictionaryEntryBaseStruct temp = new DictionaryEntryBaseStruct();
+            DictionaryEntryBase temp = new DictionaryEntryBase();
             temp.Key = key;
             temp.Value = value;
             return temp;
@@ -57,14 +61,5 @@ namespace LibiadaCore.Classes.Statistics
         }
 
 
-    }
-
-    ///<summary>
-    ///</summary>
-    [Serializable]
-    public class DictionaryEntryBaseStruct
-    {
-        public IBaseObject Key;
-        public IBaseObject Value;
     }
 }

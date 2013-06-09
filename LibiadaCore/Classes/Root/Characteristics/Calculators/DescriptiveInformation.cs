@@ -37,8 +37,8 @@ namespace LibiadaCore.Classes.Root.Characteristics.Calculators
 
             for (int i = 0; i < pChain.Alphabet.Power; i++)
             {
-                temp *= Math.Pow(arithmeticMean.Calculate(pChain.GetUniformChain(i), Link),
-                    probability.Calculate(pChain.GetUniformChain(i), Link)) ;
+                temp *= Math.Pow(arithmeticMean.Calculate(pChain.UniformChain(i), Link),
+                    probability.Calculate(pChain.UniformChain(i), Link)) ;
             }
             double P_sum = probability.Calculate(pChain, Link);
             if (P_sum < 1)

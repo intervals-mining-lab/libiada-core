@@ -1,11 +1,8 @@
-using System;
-
 namespace LibiadaCore.Classes.Root.SimpleTypes
 {
     ///<summary>
     /// Класс элемент символ
     ///</summary>
-    [Serializable]
     public class ValueChar : IBaseObject
     {
         public char value = default(char);

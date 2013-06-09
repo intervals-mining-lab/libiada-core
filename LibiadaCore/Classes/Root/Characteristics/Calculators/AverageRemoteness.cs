@@ -27,8 +27,8 @@ namespace LibiadaCore.Classes.Root.Characteristics.Calculators
             double n = intervalsCount.Calculate(pChain, Link);
             for (int i = 0; i < pChain.Alphabet.Power; i++)
             {
-                double uniformDg = geometricMean.Calculate(pChain.GetUniformChain(i), Link);
-                double n_j = intervalsCount.Calculate(pChain.GetUniformChain(i), Link);
+                double uniformDg = geometricMean.Calculate(pChain.UniformChain(i), Link);
+                double n_j = intervalsCount.Calculate(pChain.UniformChain(i), Link);
                 temp += n_j/n*Math.Log(uniformDg, 2);
             }
             return temp;

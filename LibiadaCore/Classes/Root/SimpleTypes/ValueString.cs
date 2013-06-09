@@ -1,11 +1,8 @@
-using System;
-
 namespace LibiadaCore.Classes.Root.SimpleTypes
 {
     ///<summary>
     ///  ласс представл€ющий элемент-строку
     ///</summary>
-    [Serializable]
     public class ValueString : IBaseObject
     {
         public string value = "";

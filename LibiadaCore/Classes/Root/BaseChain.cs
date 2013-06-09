@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using LibiadaCore.Classes.Root.SimpleTypes;
 using LibiadaCore.Classes.TheoryOfSet;
@@ -8,17 +9,15 @@ namespace LibiadaCore.Classes.Root
     ///<summary>
     /// 
     ///</summary>
-    [Serializable]
     public class BaseChain : IBaseObject
     {
         protected int[] building;
         protected Alphabet alphabet = new Alphabet();
-        //protected int length;
 
         ///<summary>
+        /// Создаёт пустую цепочку заданной длины.
         ///</summary>
         ///<param name="length">Длинна создаваемой цепочки</param>
-        ///<exception cref="Exception"></exception>
         public BaseChain(int length)
         {
             ClearAndSetNewLength(length);
@@ -30,9 +29,12 @@ namespace LibiadaCore.Classes.Root
         {
         }
 
-        public BaseChain(List<IBaseObject> chain)
+        /// <summary>
+        /// Cоздаёт цепочку из списка элементов.
+        /// </summary>
+        /// <param name="chain">Коллекция элементов</param>
+        public BaseChain(List<IBaseObject> chain) : this(chain.Count)
         {
-            ClearAndSetNewLength(chain.Count);
             for (int i = 0; i < this.Length; i++)
             {
                 this.Add(chain[i], i);
@@ -40,41 +42,43 @@ namespace LibiadaCore.Classes.Root
         }
 
         ///<summary>
-        /// Создает цепь из строки символов
+        /// Создает цепь из строки символов.
+        /// Каждый символ становится элементом.
         ///</summary>
-        ///<param name="s"></param>
-        ///<exception cref="NotImplementedException"></exception>
-        public BaseChain(string s)
+        ///<param name="s">Строка</param>
+        public BaseChain(string s) : this(s.Length)
         {
-            ClearAndSetNewLength(s.Length);
             for (int i = 0; i < s.Length; i++)
             {
                 Add((ValueChar)s[i], i);
             }
         }
 
-        public BaseChain(int[] building, Alphabet alphabet)
+        /// <summary>
+        /// Создаёт цепочку с заданным строем и алфавитом.
+        /// Проверка корректности не производится!
+        /// </summary>
+        /// <param name="building">Строй</param>
+        /// <param name="alphabet">Алфавит</param>
+        public BaseChain(int[] building, Alphabet alphabet) : this(building.Length)
         {
-            ClearAndSetNewLength(building.Length);
             this.building = (int[])building.Clone();
             this.alphabet = (Alphabet)alphabet.Clone();
         }
 
         ///<summary>
-        /// Строй.
+        /// Возвращает копию строя.
+        /// Его последующее изменение не как не скажется на состоянии цепочки.
         ///</summary>
         public int[] Building
         {
-            get
-            {
-                return (int[])building.Clone();
-            }
+            get { return (int[]) building.Clone(); }
         }
 
         ///<summary>
-        /// Возвращает алфавит на котром определны все элементы пространства.
-        /// Алфавит является копией и его последующее изменение не как не скажется на состоянии
-        /// пространства. алфавит не содержит псеводовеличины.
+        /// Возвращает алфавит.
+        /// Алфавит является копией и его последующее изменение не как не скажется на состоянии цепочки.
+        /// Алфавит не содержит псеводовеличины (NullValue).
         ///</summary>
         public Alphabet Alphabet
         {
@@ -88,7 +92,7 @@ namespace LibiadaCore.Classes.Root
 
         ///<summary>
         /// Длинна цепи.
-        /// Только для чтения
+        /// Только для чтения.
         ///</summary>
         public int Length
         {
@@ -96,8 +100,8 @@ namespace LibiadaCore.Classes.Root
         }
 
         ///<summary>
-        /// Свойстово позволяет получить доступ к элементу цепи по индексу
-        /// В случае выхода за границы цепи вызывается исключение
+        /// Свойстово позволяет получить доступ к элементу цепи по индексу.
+        /// В случае выхода за границы цепи вызывается исключение.
         ///</summary>
         ///<param name="index">номер элемента</param>
         public virtual IBaseObject this[int index]
@@ -108,8 +112,8 @@ namespace LibiadaCore.Classes.Root
         }
 
         ///<summary>
-        /// Метод позволяющий получить элемент по индексу
-        /// В случае выхода за границы цепи вызывается исключение
+        /// Метод позволяющий получить элемент по индексу.
+        /// В случае выхода за границы цепи вызывается исключение.
         ///</summary>
         ///<param name="index">Индекс элемента</param>
         ///<returns>Возвращает элемент</returns>
@@ -119,7 +123,7 @@ namespace LibiadaCore.Classes.Root
         }
 
         ///<summary>
-        /// Метод похволяющий установить элемент по индексу
+        /// Метод похволяющий установить элемент по индексу.
         ///</summary>
         ///<param name="item">Устанвалеваемый элемент </param>
         ///<param name="index">Номер позиции в цепи куда устанавливается элемент</param>
@@ -142,10 +146,10 @@ namespace LibiadaCore.Classes.Root
         }
 
         ///<summary>
-        /// Возвращает величину из указанного места
+        /// Возвращает элемент из указанной позиции.
         ///</summary>
-        ///<param name="index">Место из которого нужно выбрать величину, принадлежащее протранству</param>
-        ///<returns>Возвращает объект типа I если место имеет ну пусто наполнение, в противном случае null</returns>
+        ///<param name="index">Место из которого нужно выбрать величину</param>
+        ///<returns>Возвращает объект типа <see cref="IBaseObject"/> если место имеет ну пусто наполнение, в противном случае <see cref="NullValue"/> </returns>
         ///<exception cref="Exception">В случае если место выходит за пределы пространства вызывается исключение</exception>
         public IBaseObject GetItem(int index)
         {
@@ -174,16 +178,19 @@ namespace LibiadaCore.Classes.Root
         }
 
         ///<summary>
+        /// По сути пересоздаёт цепочки, очищая строй и алфавит,
+        /// устанавливая новую длину.
+        /// В алфавит добавляется <see cref="NullValue"/>.
         ///</summary>
-        ///<param name="length"></param>
-        ///<exception cref="Exception"></exception>
+        ///<param name="length">Новая длина цепочки</param>
+        ///<exception cref="Exception">Выбрасывается если длина &lt; 0</exception>
         public void ClearAndSetNewLength(int length)
         {
             if (length < 0)
             {
                 throw new Exception("Длинна цепи < 0");
             }
-            //this.length = length;
+
             building = new int[length];
             alphabet = new Alphabet();
             alphabet.Add(NullValue.Instance());
@@ -244,25 +251,6 @@ namespace LibiadaCore.Classes.Root
                 }
             }
             return true;
-        }
-
-        /// <summary>
-        /// Костыильный метод для удаления элемента массива
-        /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <param name="source"></param>
-        /// <param name="index"></param>
-        /// <returns></returns>
-        public static T[] RemoveAt<T>(T[] source, int index)
-        {
-            T[] dest = new T[source.Length - 1];
-            if (index > 0)
-                Array.Copy(source, 0, dest, 0, index);
-
-            if (index < source.Length - 1)
-                Array.Copy(source, index + 1, dest, index, source.Length - index - 1);
-
-            return dest;
         }
     }
 }

@@ -1,7 +1,4 @@
 using System;
-using System.Collections;
-using System.IO;
-using System.Xml.Serialization;
 using LibiadaCore.Classes.Root.SimpleTypes;
 using LibiadaCore.Classes.TheoryOfSet;
 using NUnit.Framework;
@@ -75,7 +72,6 @@ namespace TestLibiadaCore.Classes.TheoryOfSet
             AlBase.Add(new ValueInt(1));
             AlBase.Add(new ValueInt(3));
             AlBase.Add(new ValueInt(4));
-            //AlBase.Add(1);
             AlBase[0] = new ValueInt(3);
             Assert.AreEqual(new ValueInt(2), AlBase[0]);
             Assert.AreEqual(new ValueInt(1), AlBase[1]);
@@ -142,7 +138,7 @@ namespace TestLibiadaCore.Classes.TheoryOfSet
         {
             Assert.AreNotSame(AlBase, AlBase.Clone());
 
-            //Assert.IsTrue(AlBase.Equals(AlBase.Clone()));
+            Assert.IsTrue(AlBase.Equals(AlBase.Clone()));
         }
 
         /// <summary>
@@ -203,25 +199,6 @@ namespace TestLibiadaCore.Classes.TheoryOfSet
             Assert.IsTrue(AlBase.IndexOf(new ValueChar('d')).Equals(-1));
             Assert.IsTrue(AlBase.IndexOf(new ValueChar('a')).Equals(0));
             Assert.IsTrue(AlBase.IndexOf(new ValueChar('c')).Equals(2));
-        }
-
-        ///<summary>
-        ///</summary>
-        [Test]
-        [Ignore]
-        public void TestSerializeDeserializeSimpleXml()
-        {
-            AlBase.Add(new ValueInt(0));
-            AlBase.Add(new ValueInt(1));
-            AlBase.Add(new ValueInt(2));
-            MemoryStream MS = new MemoryStream();
-            XmlSerializer SF = new XmlSerializer(typeof (Alphabet));
-            SF.Serialize(MS, AlBase);
-            MS.Position = 0;
-            MS.Position = 0;
-            SF = new XmlSerializer(typeof (Alphabet));
-            Alphabet Des_Alphabet = (Alphabet) SF.Deserialize(MS);
-            Assert.AreEqual(AlBase, Des_Alphabet);
         }
     }
 }

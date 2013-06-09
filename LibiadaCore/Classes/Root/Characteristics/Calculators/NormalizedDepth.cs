@@ -3,7 +3,7 @@ namespace LibiadaCore.Classes.Root.Characteristics.Calculators
     ///<summary>
     /// Глубина приходящаяся на одно сообщение.
     ///</summary>
-    public class NormalizedGamut : ICharacteristicCalculator
+    public class NormalizedDepth : ICharacteristicCalculator
     {
         private Depth depth = new Depth();
         private Length length = new Length();
@@ -20,7 +20,7 @@ namespace LibiadaCore.Classes.Root.Characteristics.Calculators
 
         public CharacteristicsEnum GetCharacteristicName()
         {
-            return CharacteristicsEnum.NomalizedGamut;
+            return CharacteristicsEnum.NomalizedDepth;
         }
     }
 }
