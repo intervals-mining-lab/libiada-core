@@ -12,10 +12,10 @@ namespace BuildingsIterator.Classes.Filters
         {
             Chain ch = new Chain(building);
 
-            double p = ch.GetUniformChain(0).GetCharacteristic(LinkUp.Start, CharacteristicsFactory.P);
+            double p = ch.UniformChain(0).GetCharacteristic(LinkUp.Start, CharacteristicsFactory.P);
             for (int i = 1; i < ch.GetCharacteristic(LinkUp.Start, CharacteristicsFactory.Power); i++)
             {
-                if (p != ch.GetUniformChain(i).GetCharacteristic(LinkUp.Start, CharacteristicsFactory.P))
+                if (p != ch.UniformChain(i).GetCharacteristic(LinkUp.Start, CharacteristicsFactory.P))
                     return false;
             }
             return true;
