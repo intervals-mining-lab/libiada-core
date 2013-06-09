@@ -40,7 +40,7 @@ namespace LibiadaCore.Classes.Root.Characteristics.Calculators
             double temp = 1;
             for (int i = 0; i < pChain.Alphabet.Power; i++)
             {
-                temp = temp * Calculate(pChain.GetUniformChain(i), Link);
+                temp = temp * Calculate(pChain.UniformChain(i), Link);
             }
             return temp;
         }

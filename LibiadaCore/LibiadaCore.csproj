@@ -68,7 +68,6 @@
     <Compile Include="Classes\Misc\SpaceRebuilders\SpaceRebuilderFromChainToChainByBlock.cs" />
     <Compile Include="Classes\Root\BaseChain.cs" />
     <Compile Include="Classes\Root\Chain.cs" />
-    <Compile Include="Classes\Root\ChainMessage.cs" />
     <Compile Include="Classes\Root\Characteristics\BinaryCharacteristic.cs" />
     <Compile Include="Classes\Root\Characteristics\BinaryCharacteristicsEnum.cs" />
     <Compile Include="Classes\Root\Characteristics\BinaryCharacteristicsFactory.cs" />

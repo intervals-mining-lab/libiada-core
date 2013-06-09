@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using LibiadaCore.Classes.Misc;
 using LibiadaCore.Classes.Root.Characteristics.Calculators;
@@ -75,6 +76,12 @@ namespace LibiadaCore.Classes.Root
             {
                 UniformChains[building[j] - 1][j] = this.alphabet[building[j]];
             }
+        }
+
+        public void ClearAndSetNewLength(int length)
+        {
+            base.ClearAndSetNewLength(length);
+            UniformChains = new UniformChain[0];
         }
 
         public IBaseObject Clone()

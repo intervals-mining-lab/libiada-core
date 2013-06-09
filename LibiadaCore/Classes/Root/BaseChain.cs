@@ -184,7 +184,7 @@ namespace LibiadaCore.Classes.Root
         ///</summary>
         ///<param name="length">Новая длина цепочки</param>
         ///<exception cref="Exception">Выбрасывается если длина &lt; 0</exception>
-        public void ClearAndSetNewLength(int length)
+        public virtual void ClearAndSetNewLength(int length)
         {
             if (length < 0)
             {
