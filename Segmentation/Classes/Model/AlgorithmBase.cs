@@ -1,10 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using LibiadaCore.Classes.Root;
-using LibiadaCore.Classes.TheoryOfSet;
+﻿using System.Collections.Generic;
 using Segmentation.Classes.Base;
 using Segmentation.Classes.Base.Collectors;
 using Segmentation.Classes.Base.Sequencies;
+using Segmentation.Classes.Interfaces;
 using Segmentation.Classes.Model.Criterion;
 using Segmentation.Classes.Model.Seekers;
 using Segmentation.Classes.Model.Threshold;
@@ -35,56 +33,51 @@ namespace Segmentation.Classes.Model
         public AlgorithmBase(Input parameters)
             : base(parameters)
         {
-            threshold = ThresholdFactory.make(parameters.getThresholdMethod(), parameters);
-            criterion = CriterionFactory.make(parameters.getStopCriterion(), threshold, parameters);
-            extractor = WordExtractorFactory.getSeeker(parameters.getSeeker());
-            balance = parameters.getBalance();
-            windowLen = parameters.getWindowlength();
-            windowDec = parameters.getWindowdec();
+            threshold = ThresholdFactory.Make(parameters.GetThresholdMethod(), parameters);
+            criterion = CriterionFactory.make(parameters.GetStopCriterion(), threshold, parameters);
+            extractor = WordExtractorFactory.GetSeeker(parameters.seeker);
+            balance = parameters.GetBalance();
+            windowLen = parameters.GetWindowlength();
+            windowDec = parameters.GetWindowdec();
         }
 
-        public void slot()
+        public void Slot()
         {
             SimpleChainSplitter chainConvolutor = null;
             ContentValues par = new ContentValues();
-            par.put(Formalism.SEQUENCE, chain = new ComplexChain(inputs[0].getChain(), inputs[0].getChainName()));
-            par.put(Formalism.ALPHABET, alphabet = new FrequencyDictionary(chain));
+            par.Put(Formalism.SEQUENCE, chain = new ComplexChain(inputs[0].GetChain()));
+            par.Put(Formalism.ALPHABET, alphabet = new FrequencyDictionary(chain));
 
-            while (criterion.state(chain, alphabet))
+            while (criterion.State(chain, alphabet))
             {
-                updateParams(par, threshold.next(criterion));
+                UpdateParams(par, threshold.Next(criterion));
                 chainConvolutor = new SimpleChainSplitter(extractor);
-                chain = chainConvolutor.cut(par);
-                alphabet = chainConvolutor.getFrequencyDictionary();
+                chain = chainConvolutor.Cut(par);
+                alphabet = chainConvolutor.FrequencyDictionary;
             }
             //chain.updateUniforms();
         }
 
-        private void updateParams(ContentValues par, double nextThreshold)
+        private void UpdateParams(ContentValues par, double nextThreshold)
         {
-            par.put(Formalism.SEQUENCE, chain = new ComplexChain(inputs[0].getChain(), inputs[0].getChainName()));
+            par.Put(Formalism.SEQUENCE, chain = new ComplexChain(inputs[0].GetChain()));
             //chain.SetName(inputs[0].getChainName());
-            par.put(Parameter.BALANCE, balance);
-            par.put(Parameter.WINDOW, windowLen);
-            par.put(Parameter.WINDOW_DECREMENT, windowDec);
-            par.put(Parameter.CURRENT_THRESHOLD, nextThreshold);
+            par.Put(Parameter.BALANCE, balance);
+            par.Put(Parameter.WINDOW, windowLen);
+            par.Put(Parameter.WINDOW_DECREMENT, windowDec);
+            par.Put(Parameter.CURRENT_THRESHOLD, nextThreshold);
         }
 
-        public List<MainOutputData> upload()
+        public List<MainOutputData> Upload()
         {
             //BuilderResultData builderResultData = new BuilderResultData(chain, alphabet);
-            //MainOutputData resultUpdate = builderResultData.create();
-            //resultUpdate.addInfo(criterion, criterion.getValue());
-            //resultUpdate.addInfo(threshold, threshold.getValue());
+            MainOutputData resultUpdate = new MainOutputData();
+            resultUpdate.addInfo((IIdentifiable)criterion, criterion.Value);
+            resultUpdate.addInfo((IIdentifiable)threshold, threshold.Value);
             //ResultDataCreator.saveToFile(resultUpdate);
 
-            //results.add(resultUpdate);
+            results.Add(resultUpdate);
             return results;
-        }
-
-        public String getName()
-        {
-            return Formalism.GetName(typeof (Formalism), formalismType);
         }
     }
 }

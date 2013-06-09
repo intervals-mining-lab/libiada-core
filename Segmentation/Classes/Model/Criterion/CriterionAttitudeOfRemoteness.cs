@@ -1,7 +1,5 @@
 ﻿using System;
-using LibiadaCore.Classes.Root;
 using LibiadaCore.Classes.Root.Characteristics.Calculators;
-using LibiadaCore.Classes.TheoryOfSet;
 using Segmentation.Classes.Base;
 using Segmentation.Classes.Base.Collectors;
 using Segmentation.Classes.Base.Sequencies;
@@ -15,41 +13,42 @@ namespace Segmentation.Classes.Model.Criterion
     /// </summary>
     public class CriterionAttitudeOfRemoteness : Criterion
     {
-        //private AverageWordLength wordAverageLength = new AverageWordLength();
+        private AverageWordLength wordAverageLength = new AverageWordLength();
         private AverageRemoteness remoteness = new AverageRemoteness();
-        
-    /// <summary>
-    /// init
-    /// </summary>
-    /// <param name="threshold">A rule for handle a threshold value</param>
-    /// <param name="precision">additional value to</param>
-        public CriterionAttitudeOfRemoteness(ThresholdVariator threshold, double precision):base(threshold, precision)
+
+        /// <summary>
+        /// init
+        /// </summary>
+        /// <param name="threshold">A rule for handle a threshold value</param>
+        /// <param name="precision">additional value to</param>
+        public CriterionAttitudeOfRemoteness(ThresholdVariator threshold, double precision)
+            : base(threshold, precision)
         {
             lastDistortion = Double.MinValue;
             formalismType = Formalism.CRITERION_ATTITUDE_REMOTENESS;
         }
 
 
-        public override bool state(ComplexChain chain, FrequencyDictionary alphabet)
+        public override bool State(ComplexChain chain, FrequencyDictionary alphabet)
         {
-            double distortion = this.distortion(chain, alphabet);
+            double distortion = this.Distortion(chain, alphabet);
             if (Math.Abs(lastDistortion) < Math.Abs(distortion))
             {
-                this.chain = (ComplexChain)chain.Clone();
-                this.alphabet = (FrequencyDictionary)alphabet.Clone();
+                this.chain = (ComplexChain) chain.Clone();
+                this.alphabet = (FrequencyDictionary) alphabet.Clone();
                 lastDistortion = distortion;
-                thresholdToStop.saveBest();
+                thresholdToStop.SaveBest();
             }
 
 
-            return (thresholdToStop.distance() > ThresholdVariator.PRECISION);
+            return (thresholdToStop.Distance() > ThresholdVariator.PRECISION);
         }
 
-        public override double distortion(ComplexChain chain, FrequencyDictionary alphabet)
+        public override double Distortion(ComplexChain chain, FrequencyDictionary alphabet)
         {
-            return (remoteness.Calculate(chain, chain.GetAnchor())/
-                    remoteness.Calculate(chain.Original(), chain.GetAnchor()));
-            // - wordAverageLength.Calculate(chain, chain.GetAnchor());
+            return (remoteness.Calculate(chain, chain.Anchor)/
+                    remoteness.Calculate(chain.Original(), chain.Anchor)) -
+                   wordAverageLength.Calculate(chain, chain.Anchor);
 
         }
     }

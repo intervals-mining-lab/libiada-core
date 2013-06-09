@@ -24,11 +24,11 @@ namespace Segmentation.Classes.Model.Threshold
             best = current;
         }
 
-        public override double next(Criterion.Criterion criterion)
+        public override double Next(Criterion.Criterion criterion)
         {
             if (rightBound - leftBound > PRECISION)
             {
-                double criterionDistortion = criterion.distortion();
+                double criterionDistortion = criterion.Distortion();
                 if (lastDistortion > criterionDistortion)
                 {
                     best = current;

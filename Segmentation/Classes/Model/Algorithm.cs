@@ -1,11 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Segmentation.Classes.Base;
-using Segmentation.Classes.Interfaces;
 
 namespace Segmentation.Classes.Model
 {
-    public class Algorithm : IIdentifiable
+    public class Algorithm
     {
         protected List<MainOutputData> results = new List<MainOutputData>();
         protected List<Input> inputs = new List<Input>();
@@ -15,9 +13,9 @@ namespace Segmentation.Classes.Model
         /// <summary>
         /// Executes segmentation in a separate thread with notifying all observers
         /// </summary>
-        public void run()
+        public void Run()
         {
-            slot();
+            Slot();
         }
 
         public Algorithm(List<Input> parameters)
@@ -34,7 +32,7 @@ namespace Segmentation.Classes.Model
         {
         }
 
-        public void add(List<Input> input)
+        public void Add(List<Input> input)
         {
             inputs.AddRange(input);
         }
@@ -42,13 +40,13 @@ namespace Segmentation.Classes.Model
         /// <summary>
         /// Execute segmentation
         /// </summary>
-        public void slot()
+        public void Slot()
         {
             foreach (Input input in inputs)
             {
-                Algorithm algorithm = AlgorithmFactory.make(input.getAlgorithm(), input);
-                algorithm.slot();
-                List<MainOutputData> res = algorithm.upload();
+                Algorithm algorithm = AlgorithmFactory.Make(input.GetAlgorithm(), input);
+                algorithm.Slot();
+                List<MainOutputData> res = algorithm.Upload();
                 results.Add(res[0]);
                 res.RemoveAt(0);
             }
@@ -58,14 +56,9 @@ namespace Segmentation.Classes.Model
         /// Returns characteristics of the chains and its
         /// </summary>
         /// <returns>list of characteristics</returns>
-        public List<MainOutputData> upload()
+        public List<MainOutputData> Upload()
         {
             return results;
-        }
-
-        public String GetName()
-        {
-            return formalismType.ToString();
         }
     }
 }

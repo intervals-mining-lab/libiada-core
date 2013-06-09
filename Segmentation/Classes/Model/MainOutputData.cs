@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using LibiadaCore.Classes.Root;
-using LibiadaCore.Classes.TheoryOfSet;
 using Segmentation.Classes.Base.Collectors;
 using Segmentation.Classes.Base.Sequencies;
 using Segmentation.Classes.Interfaces;
@@ -12,7 +11,6 @@ namespace Segmentation.Classes.Model
     {
         private ComplexChain chain;
     private FrequencyDictionary alphabet;
-    private Order order;
     private Dictionary<String, String> parameters = new Dictionary<String, String>();
 
     public Chain getChain() {
@@ -29,14 +27,6 @@ namespace Segmentation.Classes.Model
 
     public void setFrequencyDictionary(FrequencyDictionary alphabet) {
         this.alphabet = alphabet;
-    }
-
-    public Order getOrder() {
-        return order;
-    }
-
-    public void setOrder(Order order) {
-        this.order = order;
     }
 
     public Dictionary<String, String> getParameters() {
@@ -59,7 +49,7 @@ namespace Segmentation.Classes.Model
      * @param value digit value
      */
     public void addInfo(IIdentifiable what, IDefinable value){
-        parameters.Add(what.GetName(), value.getValue().ToString());
+        parameters.Add(what.GetName(), value.GetValue().ToString());
     }
 
     /**

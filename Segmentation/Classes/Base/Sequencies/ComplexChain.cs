@@ -3,31 +3,17 @@ using System.Collections.Generic;
 using System.Text;
 using LibiadaCore.Classes.Root;
 using LibiadaCore.Classes.Root.SimpleTypes;
-using LibiadaCore.Classes.TheoryOfSet;
-using Segmentation.Classes.Interfaces;
 
 namespace Segmentation.Classes.Base.Sequencies
 {
     public class ComplexChain : Chain
     {
-        protected List<String> sequence;
-        protected LinkUp anchor;
-
-        public ComplexChain()
-        {
-            Init();
-        }
-
-        public ComplexChain(String sequence, String chainName)
-            : base(sequence)
-        {
-        }
+        public LinkUp Anchor = LinkUp.Start;
 
         public ComplexChain(List<int> accord)
         {
             for (int i = 0; i < accord.Count; i++)
             {
-                this.sequence.Add(accord[i].ToString());
                 this.Add(new ValueInt(accord[i]), i);
             }
         }
@@ -35,18 +21,11 @@ namespace Segmentation.Classes.Base.Sequencies
         public ComplexChain(String sequence)
             : base(sequence)
         {
-            Init();
-            for (int index = 0; index < sequence.Length; index++)
-            {
-                this.sequence.Add(sequence[index].ToString());
-            }
         }
 
         public ComplexChain(List<String> sequence)
             : base(sequence.Count)
         {
-            Init();
-            this.sequence = new List<String>(sequence);
             for (int i = 0; i < sequence.Count; i++)
             {
                 Add(new ValueString(sequence[i]), i);
@@ -54,28 +33,12 @@ namespace Segmentation.Classes.Base.Sequencies
         }
 
 
-        private void Init()
-        {
-            anchor = LinkUp.Start;
-            sequence = new List<String>();
-        }
-
-        public LinkUp GetAnchor()
-        {
-            return anchor;
-        }
-
-        public void SetAnchor(LinkUp anchor)
-        {
-            this.anchor = anchor;
-        }
-
         public List<String> Substring(int beginIndex, int endIndex)
         {
             List<String> sequence = null;
             try
             {
-                sequence = new List<String>(this.sequence.GetRange(beginIndex, endIndex - beginIndex));
+                sequence = new List<String>(ToList().GetRange(beginIndex, endIndex - beginIndex));
             }
             catch (Exception e)
             {
@@ -84,12 +47,20 @@ namespace Segmentation.Classes.Base.Sequencies
             return sequence;
         }
 
+        public List<String> ToList()
+        {
+            List<String> result = new List<string>();
+            for (int i = 0; i < Length; i++)
+            {
+                result.Add(this[i].ToString());
+            }
+            return result;
+        } 
 
         public void ClearAt(int index)
         {
             try
             {
-                sequence.RemoveAt(index);
                 this.DeleteAt(index);
             }
             catch (Exception e)
@@ -100,8 +71,8 @@ namespace Segmentation.Classes.Base.Sequencies
 
         public ComplexChain Clone()
         {
-            ComplexChain chain = new ComplexChain(sequence);
-            chain.SetAnchor(anchor);
+            ComplexChain chain = new ComplexChain(ToList());
+            chain.Anchor = Anchor;
 
             return chain;
         }
@@ -112,7 +83,7 @@ namespace Segmentation.Classes.Base.Sequencies
                 return false;
             for (int index = 0; index < complexChain.Length; index++)
             {
-                if (!this.sequence[index].Equals(complexChain[index].ToString()))
+                if (!this[index].ToString().Equals(complexChain[index].ToString()))
                     return false;
             }
 
@@ -123,7 +94,6 @@ namespace Segmentation.Classes.Base.Sequencies
         {
             if (String.IsNullOrEmpty(str)) return this;
             ComplexChain temp = this.Clone();
-            sequence.Add(str);
             ClearAndSetNewLength(Length + 1);
             for (int i = 0; i < temp.Length; i++)
             {
@@ -135,12 +105,9 @@ namespace Segmentation.Classes.Base.Sequencies
 
         public ComplexChain Concat(ComplexChain sequence)
         {
-            int startIndex = 0;
-            
             if (sequence.IsEmpty())
                 return this;
             ComplexChain temp = this.Clone();
-            this.sequence.AddRange(sequence.Substring(startIndex, sequence.Length));
             
             ClearAndSetNewLength(Length + sequence.Length);
             for (int i = 0; i < temp.Length; i++)
@@ -160,34 +127,6 @@ namespace Segmentation.Classes.Base.Sequencies
         }
 
         /// <summary>
-        /// Changes an element in index position
-        /// </summary>
-        /// <param name="index">a position in a chain</param>
-        /// <param name="str">a new element</param>
-        public void Replace(int index, String str)
-        {
-            sequence[index] = str;
-            this[index] = new ValueString(str);
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <returns>a string representation of the sequence</returns>
-        public override String ToString()
-        {
-            StringBuilder temporarySplice = new StringBuilder();
-            temporarySplice.Clear();
-
-            foreach (String aSequence in sequence)
-            {
-                temporarySplice.Append(aSequence);
-            }
-
-            return temporarySplice.ToString();
-        }
-
-        /// <summary>
         /// Cuts a range of words from pos to pos + len cursorPosition
         /// </summary>
         /// <param name="pos">start cursorPosition</param>
@@ -197,7 +136,6 @@ namespace Segmentation.Classes.Base.Sequencies
             if ((pos + len) > (this.Length)) return;
             for (int index = pos; index < len + pos; index++)
             {
-                sequence.RemoveAt(pos);
                 this.DeleteAt(pos);
             }
         }
@@ -215,16 +153,13 @@ namespace Segmentation.Classes.Base.Sequencies
             if (wordEnd > this.Length) return;
             for (int index = pos; index < wordEnd; index++)
             {
-                temporarySplice.Append(sequence[index]);
+                temporarySplice.Append(this[index]);
             }
             for (int i = 0; i < len - 1; i++)
             {
-                sequence.RemoveAt(pos);
                 DeleteAt(pos);
             }
-            //sequence.GetRange(pos, wordEnd - 1 - pos).Clear();
             Add(new ValueString(temporarySplice.ToString()), pos);
-            sequence[pos] = temporarySplice.ToString();
         }
 
         public ComplexChain Original()
@@ -245,7 +180,10 @@ namespace Segmentation.Classes.Base.Sequencies
             {
                 try
                 {
-                    if (sequence.GetRange(index, length - index).Equals(word)) Join(index, length);
+                    if (ToList().GetRange(index, length - index).Equals(word))
+                    {
+                        Join(index, length);
+                    }
                     index++;
                 }
                 catch (Exception e)

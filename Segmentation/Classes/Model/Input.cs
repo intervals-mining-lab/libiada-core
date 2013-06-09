@@ -11,12 +11,12 @@ namespace Segmentation.Classes.Model
         {
         }
 
-        public double getPrecision()
+        public double GetPrecision()
         {
             return precision;
         }
 
-        public void setPrecision(double precision)
+        public void SetPrecision(double precision)
         {
             this.precision = precision;
         }
@@ -26,97 +26,97 @@ namespace Segmentation.Classes.Model
             return step;
         }
 
-        public void setStep(double step)
+        public void SetStep(double step)
         {
             this.step = step;
         }
 
-        public double getLeftBound()
+        public double GetLeftBound()
         {
             return leftBound;
         }
 
-        public void setLeftBound(double leftBound)
+        public void SetLeftBound(double leftBound)
         {
             this.leftBound = leftBound;
         }
 
-        public double getRightBound()
+        public double GetRightBound()
         {
             return rightBound;
         }
 
-        public void setRightBound(double rightBound)
+        public void SetRightBound(double rightBound)
         {
             this.rightBound = rightBound;
         }
 
-        public int getBalance()
+        public int GetBalance()
         {
             return balance;
         }
 
-        public void setBalance(int balance)
+        public void SetBalance(int balance)
         {
             this.balance = balance;
         }
 
-        public int getWindowlength()
+        public int GetWindowlength()
         {
             return windowlength;
         }
 
-        public void setWindowlength(int windowlength)
+        public void SetWindowlength(int windowlength)
         {
             this.windowlength = windowlength;
         }
 
-        public int getWindowdec()
+        public int GetWindowdec()
         {
             return windowdec;
         }
 
-        public void setWindowdec(int windowdec)
+        public void SetWindowdec(int windowdec)
         {
             this.windowdec = windowdec;
         }
 
-        public String getChainName()
+        public String GetChainName()
         {
             return chainName;
         }
 
-        public void setChainName(String chainName)
+        public void SetChainName(String chainName)
         {
             this.chainName = chainName;
         }
 
-        public int getAlgorithm()
+        public int GetAlgorithm()
         {
             return algorithm;
         }
 
-        public void setAlgorithm(int algorithm)
+        public void SetAlgorithm(int algorithm)
         {
             this.algorithm = algorithm;
         }
 
-        public int getThresholdMethod()
+        public int GetThresholdMethod()
         {
             return thresholdMethod;
         }
 
-        public void setThresholdMethod(int thresholdMethod)
+        public void SetThresholdMethod(int thresholdMethod)
         {
             this.thresholdMethod = thresholdMethod;
         }
 
-        public int getStopCriterion()
+        public int GetStopCriterion()
         {
             return stopCriterion;
         }
 
-        public void setStopCriterion(int stopCriterion)
+        public void SetStopCriterion(int stopCriterion)
         {
             this.stopCriterion = stopCriterion;
         }
@@ -131,30 +131,19 @@ namespace Segmentation.Classes.Model
         private int algorithm;
         private int stopCriterion;
         private int thresholdMethod;
-        private int seeker;
+        public int seeker;
         private String chainName;
 
-        public String getChain()
+        public String GetChain()
         {
             return chain;
         }
 
-        public void setChain(String chain)
+        public void SetChain(String chain)
         {
             this.chain = chain;
         }
 
         private String chain;
-
-
-        public int getSeeker()
-        {
-            return seeker;
-        }
-
-        public void setSeeker(int seeker)
-        {
-            this.seeker = seeker;
-        } 
     }
 }

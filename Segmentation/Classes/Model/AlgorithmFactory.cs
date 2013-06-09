@@ -1,8 +1,8 @@
 ﻿namespace Segmentation.Classes.Model
 {
-    public class AlgorithmFactory
+    public static class AlgorithmFactory
     {
-        public static Algorithm make(int index, Input input)
+        public static Algorithm Make(int index, Input input)
         {
             switch (index)
             {

@@ -3,9 +3,9 @@
     /// <summary>
     /// Creates a method for extracting a word in the chain based on a concrete rule
     /// </summary>
-    public class WordExtractorFactory
+    public static class WordExtractorFactory
     {
-        public static WordExtractor getSeeker(int index)
+        public static WordExtractor GetSeeker(int index)
         {
             switch (index)
             {
@@ -19,10 +19,10 @@
             return null;
         }
 
-        public static WordExtractor getSeeker(WordExtractor obj)
+        public static WordExtractor GetSeeker(WordExtractor obj)
         {
-            if (obj is ProbabilityExtractor) return getSeeker(0);
-            if (obj is DifferenceAverageIntervalExtractor) return getSeeker(1);
+            if (obj is ProbabilityExtractor) return GetSeeker(0);
+            if (obj is DifferenceAverageIntervalExtractor) return GetSeeker(1);
             return null;
         }
     }

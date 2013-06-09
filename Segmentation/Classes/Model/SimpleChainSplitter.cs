@@ -28,14 +28,14 @@ namespace Segmentation.Classes.Model
         /// </summary>
         /// <param name="?">current parameters for segmentation</param>
         /// <returns>a convoluted chain</returns>
-        public override sealed ComplexChain cut(ContentValues par)
+        public override sealed ComplexChain Cut(ContentValues par)
         {
-            int maxWindowLen = (int)par.get(Enum.GetName(typeof(Parameter), Parameter.WINDOW));
-            int windowDec = (int)par.get(Enum.GetName(typeof(Parameter), Parameter.WINDOW_DECREMENT));
+            int maxWindowLen = (int)par.Get(Enum.GetName(typeof(Parameter), Parameter.WINDOW));
+            int windowDec = (int)par.Get(Enum.GetName(typeof(Parameter), Parameter.WINDOW_DECREMENT));
             bool flag = true;
             KeyValuePair<List<string>, List<int>>? pair = null;
 
-            convoluted = ((ComplexChain)par.get(Formalism.GetName(typeof(Formalism), Formalism.SEQUENCE)));
+            convoluted = ((ComplexChain)par.Get(Formalism.GetName(typeof(Formalism), Formalism.SEQUENCE)));
             alphabet = new FrequencyDictionary();
 
             for (int winLen = maxWindowLen; (winLen >= windowDec) && (winLen > 1); winLen -= windowDec)
@@ -44,7 +44,7 @@ namespace Segmentation.Classes.Model
                 while (flag)
                 {
                     updateParams(par,winLen);
-                    pair = WordExtractorFactory.getSeeker(extractor).find(par);
+                    pair = WordExtractorFactory.GetSeeker(extractor).Find(par);
                     flag = pair != null;
                     if (flag)
                     {
@@ -62,9 +62,9 @@ namespace Segmentation.Classes.Model
 
         private void updateParams(ContentValues par, int winLen)
         {
-            par.put(Formalism.SEQUENCE.ToString(), convoluted.ToString());
-            par.put(Formalism.ALPHABET.ToString(), alphabet.ToString());
-            par.put(Parameter.WINDOW, winLen);
+            par.Put(Formalism.SEQUENCE.ToString(), convoluted.ToString());
+            par.Put(Formalism.ALPHABET.ToString(), alphabet.ToString());
+            par.Put(Parameter.WINDOW, winLen);
         }
 
         private void findLastWords()

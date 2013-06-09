@@ -22,7 +22,7 @@ namespace Segmentation.Classes.Model.Seekers
         /// </summary>
         /// <param name="?">current segmentation parameters</param>
         /// <returns></returns>
-        public abstract KeyValuePair<List<string>, List<int>>? find(ContentValues par);
+        public abstract KeyValuePair<List<string>, List<int>>? Find(ContentValues par);
 
         /// <summary>
         /// Discards all words which enter in the alphabet and contains compound words
@@ -30,7 +30,7 @@ namespace Segmentation.Classes.Model.Seekers
         /// <param name="alphabet"></param>
         /// <param name="level">filtrate level</param>
         /// <returns></returns>
-        protected KeyValuePair<List<string>, List<int>>? discardCompositeWords(FrequencyDictionary alphabet, double level)
+        protected KeyValuePair<List<string>, List<int>>? DiscardCompositeWords(FrequencyDictionary alphabet, double level)
         {
             double bestStd;
             List<Double> stds = new List<Double>(wordPriority.Keys);

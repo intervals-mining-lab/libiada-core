@@ -18,7 +18,7 @@ namespace Segmentation.Classes.Model.Seekers
         /// Please do learn java performance
         /// </summary>
         /// <param name="it">it only iterator from start</param>
-        protected void findLess(StartIterator it)
+        protected void FindLess(StartIterator it)
         {
             int zero = 0;
             int minLength = 2;

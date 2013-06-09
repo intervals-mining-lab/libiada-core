@@ -1,7 +1,5 @@
 ﻿using System;
-using LibiadaCore.Classes.Root;
 using LibiadaCore.Classes.Root.Characteristics.Calculators;
-using LibiadaCore.Classes.TheoryOfSet;
 using Segmentation.Classes.Base;
 using Segmentation.Classes.Base.Collectors;
 using Segmentation.Classes.Base.Sequencies;
@@ -29,22 +27,22 @@ namespace Segmentation.Classes.Model.Criterion
             formalismType = Formalism.CRITERION_EQUALITY_DEPTHS;
         }
 
-        public override bool state(ComplexChain chain, FrequencyDictionary alphabet)
+        public override bool State(ComplexChain chain, FrequencyDictionary alphabet)
         {
-            double currentDistortion = gamut.Calculate(chain, chain.GetAnchor()); //- calculate(gamutDeep, chain);
+            double currentDistortion = gamut.Calculate(chain, chain.Anchor); //- calculate(gamutDeep, chain);
             if (Math.Abs(currentDistortion) > lastDistortion)
             {
                 this.chain = (ComplexChain)chain.Clone();
                 this.alphabet = (FrequencyDictionary)alphabet.Clone();
-                thresholdToStop.saveBest();
+                thresholdToStop.SaveBest();
                 lastDistortion = currentDistortion;
             }
-            return (thresholdToStop.distance() > ThresholdVariator.PRECISION);
+            return (thresholdToStop.Distance() > ThresholdVariator.PRECISION);
         }
 
-        public override double distortion(ComplexChain chain, FrequencyDictionary alphabet)
+        public override double Distortion(ComplexChain chain, FrequencyDictionary alphabet)
         {
-            return gamut.Calculate(chain.Original(), chain.GetAnchor()); //- gamutDeep.Calculate(chain);
+            return gamut.Calculate(chain.Original(), chain.Anchor); //- gamutDeep.Calculate(chain);
         }
     }
 }

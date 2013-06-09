@@ -10,8 +10,9 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Segmentation</RootNamespace>
     <AssemblyName>Segmentation</AssemblyName>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -21,6 +22,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -29,6 +31,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="LibiadaCore">
@@ -55,14 +58,11 @@
     <Compile Include="Classes\Base\Seekers\Converters\SequenceCleaner.cs" />
     <Compile Include="Classes\Base\Seekers\Seeker.cs" />
     <Compile Include="Classes\Base\Seekers\SeekerSequence.cs" />
-    <Compile Include="Classes\Base\Sequencies\Arrangement.cs" />
     <Compile Include="Classes\Base\Sequencies\ComplexChain.cs" />
-    <Compile Include="Classes\Base\Sequencies\Order.cs" />
     <Compile Include="Classes\Extended\Helper.cs" />
     <Compile Include="Classes\Interfaces\IDefinable.cs" />
     <Compile Include="Classes\Interfaces\IIdentifiable.cs" />
     <Compile Include="Classes\Interfaces\IIterator.cs" />
-    <Compile Include="Classes\Interfaces\INumberSequence.cs" />
     <Compile Include="Classes\Interfaces\ISeeker.cs" />
     <Compile Include="Classes\Model\Algorithm.cs" />
     <Compile Include="Classes\Model\AlgorithmBase.cs" />

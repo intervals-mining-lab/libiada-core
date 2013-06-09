@@ -1,7 +1,5 @@
 ﻿using System;
-using LibiadaCore.Classes.Root;
 using LibiadaCore.Classes.Root.Characteristics.Calculators;
-using LibiadaCore.Classes.TheoryOfSet;
 using Segmentation.Classes.Base;
 using Segmentation.Classes.Base.Collectors;
 using Segmentation.Classes.Base.Sequencies;
@@ -29,22 +27,22 @@ namespace Segmentation.Classes.Model.Criterion
             formalismType = Formalism.CRITERION_MIN_REGULARITY;
         }
 
-        public override bool state(ComplexChain chain, FrequencyDictionary alphabet)
+        public override bool State(ComplexChain chain, FrequencyDictionary alphabet)
         {
-            double distortion = this.distortion(chain, alphabet);
+            double distortion = this.Distortion(chain, alphabet);
             if (Math.Abs(lastDistortion) > Math.Abs(distortion))
             {
                 this.chain = (ComplexChain)chain.Clone();
                 this.alphabet = (FrequencyDictionary)alphabet.Clone();
                 lastDistortion = distortion;
-                thresholdToStop.saveBest();
+                thresholdToStop.SaveBest();
             }
-            return (thresholdToStop.distance() > ThresholdVariator.PRECISION);
+            return (thresholdToStop.Distance() > ThresholdVariator.PRECISION);
         }
 
-        public override double distortion(ComplexChain chain, FrequencyDictionary alphabet)
+        public override double Distortion(ComplexChain chain, FrequencyDictionary alphabet)
         {
-            return regularity.Calculate(chain, chain.GetAnchor());
+            return regularity.Calculate(chain, chain.Anchor);
         }
     }
 }

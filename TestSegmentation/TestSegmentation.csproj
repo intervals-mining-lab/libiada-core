@@ -10,10 +10,11 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>TestSegmentation</RootNamespace>
     <AssemblyName>TestSegmentation</AssemblyName>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
     <RestorePackages>true</RestorePackages>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -23,6 +24,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -31,6 +33,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="LibiadaCore, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
@@ -58,7 +61,6 @@
     <Compile Include="Classes\Base\Seekers\SeekerSequenceTest.cs" />
     <Compile Include="Classes\Base\Seekers\SeekerTest.cs" />
     <Compile Include="Classes\Base\Sequencies\ComplexChainTest.cs" />
-    <Compile Include="Classes\Base\Sequencies\OrderTest.cs" />
     <Compile Include="Classes\Model\Threshold\ThresholdLinearTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

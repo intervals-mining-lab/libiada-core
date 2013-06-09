@@ -20,7 +20,7 @@ namespace TestSegmentation.Classes.Model.Threshold
             ThresholdLinear threshold = null;
             threshold = new ThresholdLinear(left, right, step);
 
-            while ((current = threshold.next(criterion)) > 0)
+            while ((current = threshold.Next(criterion)) > 0)
             {
                 Assert.True((current - steps[index++]) < step);
             }

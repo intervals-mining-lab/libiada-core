@@ -5,13 +5,13 @@
     /// </summary>
     public class ThresholdFactory
     {
-        public static ThresholdVariator make(int index, Input input)
+        public static ThresholdVariator Make(int index, Input input)
         {
             switch (index)
             {
-                case 0: return new ThresholdLinear(input.getLeftBound(), input.getRightBound(), input.getStep());
-                case 1: return new ThresholdDichotomic(input.getLeftBound(), input.getRightBound());
-                case 2: return new ThresholdRandom(input.getLeftBound(), input.getRightBound());
+                case 0: return new ThresholdLinear(input.GetLeftBound(), input.GetRightBound(), input.getStep());
+                case 1: return new ThresholdDichotomic(input.GetLeftBound(), input.GetRightBound());
+                case 2: return new ThresholdRandom(input.GetLeftBound(), input.GetRightBound());
                 case 3: return null; // Experemental threshold based on any log function
             }
             return null;

@@ -6,7 +6,7 @@ using Segmentation.Classes.Base.Collectors;
 using Segmentation.Classes.Base.Sequencies;
 using Segmentation.Classes.Extended;
 
-namespace TestSegmentation.Classes
+namespace TestSegmentation.Classes.Base.Collectors
 {
     [TestFixture]
     public class FrequencyDictionaryTest

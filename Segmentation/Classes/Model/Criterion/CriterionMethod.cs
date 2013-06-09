@@ -19,7 +19,7 @@ namespace Segmentation.Classes.Model.Criterion
         /// <param name="chainLength">length of whole sequence</param>
         /// <param name="windowLength">length of the scanning window</param>
         /// <returns>Frequency for convoluted or no convoluted chain</returns>
-        public abstract double frequncy(List<int> std, int chainLength, int windowLength);
+        public abstract double Frequncy(List<int> std, int chainLength, int windowLength);
 
         /// <summary>
         /// An estimated characteristic of occurrence of the subject word in the sequence
@@ -30,10 +30,9 @@ namespace Segmentation.Classes.Model.Criterion
         /// <param name="minusOne">data for "minus one" subword</param>
         /// <param name="mid">data for "minus two" subword</param>
         /// <returns>disign characteristic of occurence of the word</returns>
-        public double designExpected(List<String> accord, int chainLength, int winLen,
+        public double DesignExpected(List<String> accord, int chainLength, int winLen,
                                                      DataCollector minusOne, DataCollector mid)
         {
-            int step = 1;
             int shortWord = 2;
             int midlLength = winLen - 2;
             int minusLength = winLen - 1;
@@ -50,11 +49,11 @@ namespace Segmentation.Classes.Model.Criterion
             double criteria = -1;
             if (winLen == shortWord)
             {
-                criteria = frequncy(left, chainLength, minusLength)*frequncy(right, chainLength, minusLength);
+                criteria = Frequncy(left, chainLength, minusLength)*Frequncy(right, chainLength, minusLength);
             }
             else if (middle != null)
-                criteria = (frequncy(left, chainLength, minusLength)*frequncy(right, chainLength, minusLength))/
-                           frequncy(middle, chainLength, midlLength);
+                criteria = (Frequncy(left, chainLength, minusLength)*Frequncy(right, chainLength, minusLength))/
+                           Frequncy(middle, chainLength, midlLength);
 
             return criteria;
         }
@@ -68,7 +67,7 @@ namespace Segmentation.Classes.Model.Criterion
         /// <param name="winLen">length of the scanning window</param>
         /// <param name="anchor">binding to the chain</param>
         /// <returns>interval characteristic of occurence of the word</returns>
-        public double intervalEstimate(List<int> stdData, int chainLength, int winLen, LinkUp anchor)
+        public double IntervalEstimate(List<int> stdData, int chainLength, int winLen, LinkUp anchor)
         {
             if (stdData.Count == 0) return 0;
             int minusLength = winLen - 1;
@@ -115,7 +114,7 @@ namespace Segmentation.Classes.Model.Criterion
         /// <param name="count">occurances</param>
         /// <param name="chainLen">all events</param>
         /// <returns>probability</returns>
-        public double probability(int count, int chainLen)
+        public double Probability(int count, int chainLen)
         {
             return count/(double) chainLen;
         }

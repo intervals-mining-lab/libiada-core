@@ -9,6 +9,6 @@
         /// Returns the best value for this case
         /// </summary>
         /// <returns>the best value for this case</returns>
-        double getValue(); 
+        double GetValue(); 
     }
 }

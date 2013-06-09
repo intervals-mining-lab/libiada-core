@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using LibiadaCore.Classes.Root;
-using LibiadaCore.Classes.TheoryOfSet;
 using Segmentation.Classes.Base;
 using Segmentation.Classes.Base.Collectors;
 using Segmentation.Classes.Base.Sequencies;
@@ -22,7 +20,7 @@ namespace Segmentation.Classes.Model.Criterion
 
         }
 
-        public double getTaxonsValue(FrequencyDictionary alphabet)
+        public double GetTaxonsValue(FrequencyDictionary alphabet)
         {
             double taxons = 0;
 
@@ -36,19 +34,19 @@ namespace Segmentation.Classes.Model.Criterion
             return taxons;
         }
 
-        public double getMeronsValue(FrequencyDictionary alphabet)
+        public double GetMeronsValue(FrequencyDictionary alphabet)
         {
             double merons = 0;
 
             return merons;
         }
 
-        public override bool state(ComplexChain chain, FrequencyDictionary alphabet)
+        public override bool State(ComplexChain chain, FrequencyDictionary alphabet)
         {
             return false;
         }
 
-        public override double distortion(ComplexChain chain, FrequencyDictionary alphabet)
+        public override double Distortion(ComplexChain chain, FrequencyDictionary alphabet)
         {
             return -1;
         }

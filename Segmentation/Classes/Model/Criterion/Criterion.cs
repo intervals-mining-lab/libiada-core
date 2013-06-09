@@ -1,7 +1,4 @@
-﻿using System;
-using LibiadaCore.Classes.Root;
-using LibiadaCore.Classes.Root.Characteristics;
-using LibiadaCore.Classes.TheoryOfSet;
+﻿using LibiadaCore.Classes.Root.Characteristics;
 using Segmentation.Classes.Base;
 using Segmentation.Classes.Base.Collectors;
 using Segmentation.Classes.Base.Sequencies;
@@ -40,7 +37,7 @@ namespace Segmentation.Classes.Model.Criterion
         /// <param name="chain">chain</param>
         /// <param name="alphabet">its alphabet</param>
         /// <returns>the state of criterion</returns>
-        public abstract bool state(ComplexChain chain, FrequencyDictionary alphabet);
+        public abstract bool State(ComplexChain chain, FrequencyDictionary alphabet);
 
         /// <summary>
         /// Returns distortion between necessary and calculated value
@@ -49,16 +46,16 @@ namespace Segmentation.Classes.Model.Criterion
         /// <param name="chain"></param>
         /// <param name="alphabet"></param>
         /// <returns>distortion</returns>
-        public abstract double distortion(ComplexChain chain, FrequencyDictionary alphabet);
+        public abstract double Distortion(ComplexChain chain, FrequencyDictionary alphabet);
 
         /// <summary>
         /// Returns distortion between necessary and calculated value inside of criterion
         /// For example between theoretical and practical values
         /// </summary>
         /// <returns>distortion</returns>
-        public double distortion()
+        public double Distortion()
         {
-            return distortion(chain, alphabet);
+            return Distortion(chain, alphabet);
         }
 
         /// <summary>
@@ -66,26 +63,20 @@ namespace Segmentation.Classes.Model.Criterion
         /// </summary>
         /// <param name="chain">a new chain</param>
         /// <param name="alphabet">a new alphabet</param>
-        public void renew(ComplexChain chain, FrequencyDictionary alphabet)
+        public void Renew(ComplexChain chain, FrequencyDictionary alphabet)
         {
             this.chain = chain;
             this.alphabet = alphabet;
         }
 
-
-        public Chain getChain()
+        public double Value
         {
-            return chain;
+            get { return lastDistortion; }
         }
 
-        public String getName()
+        public double GetValue()
         {
-            return Formalism.GetName(typeof(Formalism), formalismType);
-        }
-
-        public double getValue()
-        {
-            return lastDistortion;
+            throw new System.NotImplementedException();
         }
     }
 }

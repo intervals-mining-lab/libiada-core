@@ -8,9 +8,9 @@ namespace Segmentation.Classes.Model
     /// </summary>
     public class ConvolutedCriterionMethod : CriterionMethod
     {
-        public override sealed double frequncy(List<int> std, int chainLength, int windowLength)
+        public override sealed double Frequncy(List<int> std, int chainLength, int windowLength)
         {
-            return probability(std.Count, (chainLength - (std.Count*(windowLength - 1))));
+            return Probability(std.Count, (chainLength - (std.Count*(windowLength - 1))));
         }
     }
 }

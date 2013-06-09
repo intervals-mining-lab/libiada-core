@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using LibiadaCore.Classes.Root;
-using LibiadaCore.Classes.TheoryOfSet;
 using Segmentation.Classes.Base;
 using Segmentation.Classes.Base.Collectors;
 using Segmentation.Classes.Base.Sequencies;
@@ -22,20 +20,20 @@ namespace Segmentation.Classes.Model.Criterion
             lastDistortion = Double.MaxValue;
         }
 
-        public override bool state(ComplexChain chain, FrequencyDictionary alphabet)
+        public override bool State(ComplexChain chain, FrequencyDictionary alphabet)
         {
-            double current = symmetry(alphabet);
+            double current = Symmetry(alphabet);
             if (lastDistortion > current)
             {
                 lastDistortion = current;
                 this.chain = (ComplexChain)chain.Clone();
                 this.alphabet = (FrequencyDictionary)alphabet.Clone();
-                thresholdToStop.saveBest();
+                thresholdToStop.SaveBest();
             }
-            return (thresholdToStop.distance() > ThresholdVariator.PRECISION);
+            return (thresholdToStop.Distance() > ThresholdVariator.PRECISION);
         }
 
-        private double symmetry(FrequencyDictionary alphabet)
+        private double Symmetry(FrequencyDictionary alphabet)
         {
             double taxons = 0;
             double merons = 0;
@@ -62,7 +60,7 @@ namespace Segmentation.Classes.Model.Criterion
         }
 
 
-        public override double distortion(ComplexChain chain, FrequencyDictionary alphabet)
+        public override double Distortion(ComplexChain chain, FrequencyDictionary alphabet)
         {
             return -1;
         }

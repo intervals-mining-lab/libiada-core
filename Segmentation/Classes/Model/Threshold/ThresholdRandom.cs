@@ -16,7 +16,7 @@ namespace Segmentation.Classes.Model.Threshold
         }
 
 
-        public override double next(Criterion.Criterion criterion)
+        public override double Next(Criterion.Criterion criterion)
         {
             return 0;
         }

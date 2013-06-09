@@ -1,4 +1,5 @@
 ﻿using System;
+using LibiadaCore.Classes.Root.SimpleTypes;
 using Segmentation.Classes.Base.Sequencies;
 
 namespace Segmentation.Classes.Base.Seekers.Converters
@@ -27,7 +28,7 @@ namespace Segmentation.Classes.Base.Seekers.Converters
             int len = Chain.ToString().Length;
             for (int index = Chain.Length; --index >= 0;)
             {
-                Chain.Replace(index, Chain[index].ToString().Replace(str, replacement));
+                Chain[index] = new ValueString(Chain[index].ToString().Replace(str, replacement));
                 if (Chain[index].ToString().Length == 0) Chain.Remove(index, 1);
             }
             return Hints(len, str);

@@ -21,12 +21,12 @@ namespace Segmentation.Classes.Model.Seekers
             wordPriority = new Dictionary<Double, KeyValuePair<List<String>, List<int>>>();
         }
 
-        public override sealed KeyValuePair<List<string>, List<int>>? find(ContentValues par)
+        public override sealed KeyValuePair<List<string>, List<int>>? Find(ContentValues par)
         {
-            ComplexChain convoluted = (ComplexChain)par.get(Formalism.GetName(typeof(Formalism), Formalism.SEQUENCE));
-            int windowLen = (int) par.get(Enum.GetName(typeof(Parameter),Parameter.WINDOW));
-            FrequencyDictionary alphabet = (FrequencyDictionary)par.get(Formalism.GetName(typeof(Formalism), Formalism.ALPHABET));
-            double level = (Double)par.get(Enum.GetName(typeof(Parameter), Parameter.CURRENT_THRESHOLD));
+            ComplexChain convoluted = (ComplexChain)par.Get(Formalism.GetName(typeof(Formalism), Formalism.SEQUENCE));
+            int windowLen = (int) par.Get(Enum.GetName(typeof(Parameter),Parameter.WINDOW));
+            FrequencyDictionary alphabet = (FrequencyDictionary)par.Get(Formalism.GetName(typeof(Formalism), Formalism.ALPHABET));
+            double level = (Double)par.Get(Enum.GetName(typeof(Parameter), Parameter.CURRENT_THRESHOLD));
 
             int scanStep = 1;
             int disp = 0;
@@ -41,12 +41,12 @@ namespace Segmentation.Classes.Model.Seekers
                 it.Next();
                 fullEntry.Add(it, disp);
             }
-            calcStd(convoluted, windowLen, filter);
+            CalcStd(convoluted, windowLen, filter);
 
-            return discardCompositeWords(alphabet, level);
+            return DiscardCompositeWords(alphabet, level);
         }
 
-        public void calcStd(ComplexChain convoluted, int windowLen, PositionFilter filter)
+        public void CalcStd(ComplexChain convoluted, int windowLen, PositionFilter filter)
         {
             GeometricMean gAvgInterval = new GeometricMean();
             ArithmeticMean aAvgInterval = new ArithmeticMean();
@@ -55,8 +55,8 @@ namespace Segmentation.Classes.Model.Seekers
             {
                 filter.filtrate(accord.Value, windowLen);
                 ComplexChain temp = new ComplexChain(accord.Value);
-                double geometric = gAvgInterval.Calculate(temp, convoluted.GetAnchor());
-                double arithmetic = aAvgInterval.Calculate(temp, convoluted.GetAnchor());
+                double geometric = gAvgInterval.Calculate(temp, convoluted.Anchor);
+                double arithmetic = aAvgInterval.Calculate(temp, convoluted.Anchor);
                 double std = 1 - (1/Math.Abs(arithmetic - geometric));
                 if (!wordPriority.ContainsKey(std)) wordPriority.Add(std, accord);
             }

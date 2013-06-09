@@ -1,5 +1,4 @@
-﻿using System;
-using Segmentation.Classes.Base;
+﻿using Segmentation.Classes.Base;
 using Segmentation.Classes.Interfaces;
 
 namespace Segmentation.Classes.Model.Threshold
@@ -32,33 +31,34 @@ namespace Segmentation.Classes.Model.Threshold
         /// </summary>
         /// <param name="criterion">a rule subject to the threshold changes</param>
         /// <returns>the new value of threshold</returns>
-        public abstract double next(Criterion.Criterion criterion);
+        public abstract double Next(Criterion.Criterion criterion);
 
         /// <summary>
         /// Returns the difference between the right and left bounds
         /// </summary>
         /// <returns>the difference between the right and left bounds</returns>
-        public double distance()
+        public double Distance()
         {
             return (this.rightBound - this.leftBound);
         }
 
-        public double getValue()
+        public double Value
         {
-            return best;
+            get { return best; }
+            
         }
 
         /// <summary>
         /// Fix the best value
         /// </summary>
-        public void saveBest()
+        public void SaveBest()
         {
             best = current;
         }
 
-        public String getName()
+        public double GetValue()
         {
-            return Formalism.GetName(typeof(Formalism), formalismType);
+            throw new System.NotImplementedException();
         }
     }
 }

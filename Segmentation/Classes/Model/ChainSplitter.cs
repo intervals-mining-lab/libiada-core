@@ -1,6 +1,4 @@
-﻿using LibiadaCore.Classes.Root;
-using LibiadaCore.Classes.TheoryOfSet;
-using Segmentation.Classes.Base.Collectors;
+﻿using Segmentation.Classes.Base.Collectors;
 using Segmentation.Classes.Base.Sequencies;
 
 namespace Segmentation.Classes.Model
@@ -13,12 +11,12 @@ namespace Segmentation.Classes.Model
         protected FrequencyDictionary alphabet;
         protected ComplexChain convoluted;
 
-        public abstract ComplexChain cut(ContentValues par);
+        public abstract ComplexChain Cut(ContentValues par);
 
 
-        public FrequencyDictionary getFrequencyDictionary()
+        public FrequencyDictionary FrequencyDictionary
         {
-            return alphabet;
+            get { return alphabet; }
         }
     }
 }

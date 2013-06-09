@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Text;
 using LibiadaCore.Classes.Root;
-using LibiadaCore.Classes.TheoryOfSet;
 using Segmentation.Classes.Base;
 using Segmentation.Classes.Base.Collectors;
 using Segmentation.Classes.Interfaces;
@@ -72,7 +71,7 @@ namespace Segmentation.Classes.Model
         /// </summary>
         /// <param name="key">the name of the value to put</param>
         /// <param name="value">the data for the value to put</param>
-        public void put(String key, String value)
+        public void Put(String key, String value)
         {
             Add(key, value);
         }
@@ -83,7 +82,7 @@ namespace Segmentation.Classes.Model
         /// </summary>
         /// <param name="key">the name of the parameter to put</param>
         /// <param name="value">the data for the value to put</param>
-        public void put(Formalism key, FrequencyDictionary value)
+        public void Put(Formalism key, FrequencyDictionary value)
         {
             Add(key.ToString(), value);
         }
@@ -93,7 +92,7 @@ namespace Segmentation.Classes.Model
         /// </summary>
         /// <param name="key">the name of the parameter to put</param>
         /// <param name="value">the data for the value to put</param>
-        public void put(Formalism key, Chain value)
+        public void Put(Formalism key, Chain value)
         {
             Add(key.ToString(), value);
         }
@@ -103,7 +102,7 @@ namespace Segmentation.Classes.Model
         /// </summary>
         /// <param name="key">the name of the characteristic to put</param>
         /// <param name="value">the data for the value to put</param>
-        public void put(Parameter key, int value)
+        public void Put(Parameter key, int value)
         {
             Add(Enum.GetName(typeof(Parameter), key), value);
         }
@@ -113,7 +112,7 @@ namespace Segmentation.Classes.Model
         /// </summary>
         /// <param name="key">the name of the characteristic to put</param>
         /// <param name="value">the data for the value to put</param>
-        public void put(Parameter key, double value)
+        public void Put(Parameter key, double value)
         {
             Add(Enum.GetName(typeof(Parameter), key), value);
         }
@@ -122,7 +121,7 @@ namespace Segmentation.Classes.Model
         /// Adds all values from the passed in ContentValues.
         /// </summary>
         /// <param name="other"> the ContentValues from which to copy</param>
-        public void putAll(ContentValues other)
+        public void PutAll(ContentValues other)
         {
             foreach (var contentValue in other)
             {
@@ -135,7 +134,7 @@ namespace Segmentation.Classes.Model
         /// </summary>
         /// <param name="key">the name of the value to put</param>
         /// <param name="value">the data for the value to put</param>
-        public void put(String key, Byte value)
+        public void Put(String key, Byte value)
         {
             Add(key, value);
         }
@@ -145,7 +144,7 @@ namespace Segmentation.Classes.Model
         /// </summary>
         /// <param name="key">the name of the value to put</param>
         /// <param name="value">the data for the value to put</param>
-        public void put(String key, short value)
+        public void Put(String key, short value)
         {
             Add(key, value);
         }
@@ -155,7 +154,7 @@ namespace Segmentation.Classes.Model
         /// </summary>
         /// <param name="key">the name of the value to put</param>
         /// <param name="value">the data for the value to put</param>
-        public void put(String key, int value)
+        public void Put(String key, int value)
         {
             Add(key, value);
         }
@@ -165,7 +164,7 @@ namespace Segmentation.Classes.Model
         /// </summary>
         /// <param name="key">the name of the value to put</param>
         /// <param name="value">the data for the value to put</param>
-        public void put(String key, long value)
+        public void Put(String key, long value)
         {
             Add(key, value);
         }
@@ -175,7 +174,7 @@ namespace Segmentation.Classes.Model
         /// </summary>
         /// <param name="key">the name of the value to put</param>
         /// <param name="value">the data for the value to put</param>
-        public void put(String key, float value)
+        public void Put(String key, float value)
         {
             Add(key, value);
         }
@@ -185,7 +184,7 @@ namespace Segmentation.Classes.Model
         /// </summary>
         /// <param name="key">the name of the value to put</param>
         /// <param name="value">the data for the value to put</param>
-        public void put(String key, Double value)
+        public void Put(String key, Double value)
         {
             Add(key, value);
         }
@@ -195,7 +194,7 @@ namespace Segmentation.Classes.Model
         /// </summary>
         /// <param name="key">the name of the value to put</param>
         /// <param name="value">the data for the value to put</param>
-        public void put(String key, Boolean value)
+        public void Put(String key, Boolean value)
         {
             Add(key, value);
         }
@@ -205,7 +204,7 @@ namespace Segmentation.Classes.Model
         /// </summary>
         /// <param name="key">the name of the value to put</param>
         /// <param name="value">the data for the value to put</param>
-        public void put(String key, byte[] value)
+        public void Put(String key, byte[] value)
         {
             Add(key, value);
         }
@@ -214,25 +213,16 @@ namespace Segmentation.Classes.Model
         /// Adds a null value to the set.
         /// </summary>
         /// <param name="key">the name of the value to make null</param>
-        public void putNull(String key)
+        public void PutNull(String key)
         {
             Add(key, null);
-        }
-
-        /// <summary>
-        /// Returns the number of values.
-        /// </summary>
-        /// <returns>the number of values</returns>
-        public int size()
-        {
-            return Count;
         }
 
         /// <summary>
         /// Remove a single value.
         /// </summary>
         /// <param name="key">the name of the value to remove</param>
-        public void remove(String key)
+        public void Remove(String key)
         {
             Remove(key);
         }
@@ -240,7 +230,7 @@ namespace Segmentation.Classes.Model
         /// <summary>
         /// Removes all values.
         /// </summary>
-        public void clear()
+        public void Clear()
         {
             Clear();
         }
@@ -250,7 +240,7 @@ namespace Segmentation.Classes.Model
         /// </summary>
         /// <param name="key">the value to check for</param>
         /// <returns>true if the value is present, false otherwise</returns>
-        public bool containsKey(String key)
+        public bool ContainsKey(String key)
         {
             return ContainsKey(key);
         }
@@ -261,12 +251,12 @@ namespace Segmentation.Classes.Model
         /// </summary>
         /// <param name="key">the value to get</param>
         /// <returns>the data for the value</returns>
-        public Object get(String key)
+        public Object Get(String key)
         {
             return this[key];
         }
 
-        public Object get(IIdentifiable param)
+        public Object Get(IIdentifiable param)
         {
             return this[param.GetName()];
         }
@@ -287,7 +277,7 @@ namespace Segmentation.Classes.Model
         /// </summary>
         /// <param name="key">the value to get</param>
         /// <returns>the Long value, or null if the value is missing or cannot be converted</returns>
-        public long getAsLong(String key)
+        public long GetAsLong(String key)
         {
             Object value = this[key];
             try
@@ -309,7 +299,7 @@ namespace Segmentation.Classes.Model
         /// </summary>
         /// <param name="key">the value to get</param>
         /// <returns>the Integer value, or null if the value is missing or cannot be converted</returns>
-        public int getAsInteger(String key)
+        public int GetAsInteger(String key)
         {
             Object value = this[key];
             try
@@ -334,7 +324,7 @@ namespace Segmentation.Classes.Model
         /// </summary>
         /// <param name="key">the value to get</param>
         /// <returns>the Short value, or null if the value is missing or cannot be converted</returns>
-        public short getAsShort(String key)
+        public short GetAsShort(String key)
         {
             Object value = this[key];
             try
@@ -359,7 +349,7 @@ namespace Segmentation.Classes.Model
         /// </summary>
         /// <param name="key">the value to get</param>
         /// <returns>the Byte value, or null if the value is missing or cannot be converted</returns>
-        public Byte getAsByte(String key)
+        public Byte GetAsByte(String key)
         {
             Object value = this[key];
             try
@@ -384,7 +374,7 @@ namespace Segmentation.Classes.Model
         /// </summary>
         /// <param name="key">the value to get</param>
         /// <returns>the Double value, or null if the value is missing or cannot be converted</returns>
-        public Double getAsDouble(String key)
+        public Double GetAsDouble(String key)
         {
             Object value = this[key];
             try
@@ -409,7 +399,7 @@ namespace Segmentation.Classes.Model
         /// </summary>
         /// <param name="key">the value to get</param>
         /// <returns>the Float value, or null if the value is missing or cannot be converted</returns>
-        public float getAsFloat(String key)
+        public float GetAsFloat(String key)
         {
             Object value = this[key];
             try
@@ -434,7 +424,7 @@ namespace Segmentation.Classes.Model
         /// </summary>
         /// <param name="key">the value to get</param>
         /// <returns>the Boolean value, or null if the value is missing or cannot be converted</returns>
-        public Boolean getAsBoolean(String key)
+        public Boolean GetAsBoolean(String key)
         {
             Object value = this[key];
             try
@@ -460,7 +450,7 @@ namespace Segmentation.Classes.Model
         /// </summary>
         /// <param name="key">the value to get</param>
         /// <returns>the byte[] value, or null is the value is missing or not a byte[]</returns>
-        public byte[] getAsByteArray(String key)
+        public byte[] GetAsByteArray(String key)
         {
             Object value = this[key];
             if (value is byte[])
@@ -477,7 +467,7 @@ namespace Segmentation.Classes.Model
         /// Returns a set of all of the keys and values
         /// </summary>
         /// <returns>a set of all of the keys and values</returns>
-        public Dictionary<String, Object> valueSet()
+        public Dictionary<String, Object> ValueSet()
         {
             Dictionary<String, Object> result = new Dictionary<string, object>();
             foreach (KeyValuePair<string, object> keyValuePair in this)

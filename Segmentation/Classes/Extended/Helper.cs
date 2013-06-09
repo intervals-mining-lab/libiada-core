@@ -7,7 +7,7 @@ namespace Segmentation.Classes.Extended
     /// <summary>
     /// Contains methods that will facilitate your work
     /// </summary>
-    public sealed class Helper
+    public static class Helper
     {  
         /// <summary>
         /// Designed for fast conversion a collection to the String object without delimiters

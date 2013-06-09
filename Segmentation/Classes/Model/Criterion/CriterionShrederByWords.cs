@@ -1,6 +1,4 @@
-﻿using LibiadaCore.Classes.Root;
-using LibiadaCore.Classes.TheoryOfSet;
-using Segmentation.Classes.Base.Collectors;
+﻿using Segmentation.Classes.Base.Collectors;
 using Segmentation.Classes.Base.Sequencies;
 using Segmentation.Classes.Model.Threshold;
 
@@ -18,12 +16,12 @@ namespace Segmentation.Classes.Model.Criterion
         {
         }
 
-        public override bool state(ComplexChain chain, FrequencyDictionary alphabet)
+        public override bool State(ComplexChain chain, FrequencyDictionary alphabet)
         {
             return false;
         }
 
-        public override double distortion(ComplexChain chain, FrequencyDictionary alphabet)
+        public override double Distortion(ComplexChain chain, FrequencyDictionary alphabet)
         {
             return 0;
         }

@@ -33,7 +33,7 @@ namespace Segmentation.Classes.Model.Threshold
             current = this.rightBound;
         }
 
-        public override double next(Criterion.Criterion criterion)
+        public override double Next(Criterion.Criterion criterion)
         {
             if (this.current > this.leftBound)
             {

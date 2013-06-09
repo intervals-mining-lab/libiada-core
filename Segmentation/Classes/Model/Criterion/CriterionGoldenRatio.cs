@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
-using LibiadaCore.Classes.Root;
-using LibiadaCore.Classes.TheoryOfSet;
 using Segmentation.Classes.Base;
 using Segmentation.Classes.Base.Collectors;
 using Segmentation.Classes.Base.Sequencies;
@@ -30,24 +27,24 @@ namespace Segmentation.Classes.Model.Criterion
 
         }
 
-        public override bool state(ComplexChain chain, FrequencyDictionary alphabet)
+        public override bool State(ComplexChain chain, FrequencyDictionary alphabet)
         {
-            double current = distortion(chain, alphabet);
+            double current = Distortion(chain, alphabet);
             if (lastDistortion > current)
             {
                 lastDistortion = current;
                 this.chain = (ComplexChain)chain.Clone();
                 this.alphabet = (FrequencyDictionary)alphabet.Clone();
-                thresholdToStop.saveBest();
+                thresholdToStop.SaveBest();
             }
-            return (thresholdToStop.distance() > ThresholdVariator.PRECISION);
+            return (thresholdToStop.Distance() > ThresholdVariator.PRECISION);
         }
 
-        public override double distortion(ComplexChain chain, FrequencyDictionary alphabet)
+        public override double Distortion(ComplexChain chain, FrequencyDictionary alphabet)
         {
             double greaterToSmaler = 1;
             double sumToGreater = 1;
-            double maxFrequency = this.maxFrequency(alphabet);
+            double maxFrequency = this.MaxFrequency(alphabet);
             double power = alphabet.Count;
 
             greaterToSmaler = power/maxFrequency;
@@ -56,7 +53,7 @@ namespace Segmentation.Classes.Model.Criterion
             return Math.Abs(greaterToSmaler - sumToGreater);
         }
 
-        private int maxFrequency(FrequencyDictionary alphabet)
+        private int MaxFrequency(FrequencyDictionary alphabet)
         {
             int max = 0;
             foreach (List<int> positions in alphabet.GetWordsPositions())
