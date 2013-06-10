@@ -91,8 +91,6 @@
     <Compile Include="Classes\Root\TestBaseChain.cs" />
     <Compile Include="Classes\Root\TestChain.cs" />
     <Compile Include="Classes\Root\TestUniformChain.cs" />
-    <Compile Include="Classes\Statistics\TestFreauncyList.cs" />
-    <Compile Include="Classes\Statistics\TestSortDictionary.cs" />
     <Compile Include="Classes\TheoryOfSet\TestAlphabet.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -46,7 +46,7 @@ namespace LibiadaCore.Classes.Root.Characteristics.BinaryCalculators
 
         public BinaryCharacteristicsEnum GetCharacteristicName()
         {
-            throw new System.NotImplementedException();
+            return BinaryCharacteristicsEnum.InvolvedPartialDependenceCoefficient;
         }
     }
 }

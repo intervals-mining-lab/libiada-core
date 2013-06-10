@@ -68,7 +68,6 @@
     <Compile Include="Classes\Misc\SpaceRebuilders\SpaceRebuilderFromChainToChainByBlock.cs" />
     <Compile Include="Classes\Root\BaseChain.cs" />
     <Compile Include="Classes\Root\Chain.cs" />
-    <Compile Include="Classes\Root\Characteristics\BinaryCharacteristic.cs" />
     <Compile Include="Classes\Root\Characteristics\BinaryCharacteristicsEnum.cs" />
     <Compile Include="Classes\Root\Characteristics\BinaryCharacteristicsFactory.cs" />
     <Compile Include="Classes\Root\Characteristics\Calculators\AlphabetPower.cs" />
@@ -111,9 +110,6 @@
     <Compile Include="Classes\Root\SimpleTypes\ValueString.cs" />
     <Compile Include="Classes\Root\SimpleTypes\VauleInt.cs" />
     <Compile Include="Classes\Root\UniformChain.cs" />
-    <Compile Include="Classes\Statistics\DictionaryEntryBase.cs" />
-    <Compile Include="Classes\Statistics\FrequencyList.cs" />
-    <Compile Include="Classes\Statistics\SortDictionary.cs" />
     <Compile Include="Classes\TheoryOfSet\Alphabet.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

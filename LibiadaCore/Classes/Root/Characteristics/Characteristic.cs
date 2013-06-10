@@ -13,15 +13,7 @@ namespace LibiadaCore.Classes.Root.Characteristics
         protected ICharacteristicCalculator Calculator = null;
         protected BaseChain pChain = null;
 
-        ///<summary>
-        ///</summary>
-        public Type GetCharacteristicType
-        {
-            get
-            {
-                return Calculator.GetType();
-            }
-        }
+ 
 
         ///<summary>
         ///</summary>
@@ -33,7 +25,9 @@ namespace LibiadaCore.Classes.Root.Characteristics
 
         protected Characteristic()
         {
+            
         }
+
 
         ///<summary>
         ///</summary>
