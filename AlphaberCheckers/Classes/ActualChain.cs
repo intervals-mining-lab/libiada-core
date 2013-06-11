@@ -6,53 +6,53 @@ namespace AlphaberCheckers.Classes
 {
     class ActualChain:ICloneable 
     {
-        public BaseChain chain;
-        protected BaseChain result_chain;
-        protected int actual_length;
+        public BaseChain Chain;
+        protected BaseChain ResultChain;
+        protected int ActualLength;
         
 
         public  ActualChain(BaseChain chain)
         {
-            this.chain = (BaseChain) chain.Clone();
-            actual_length = 0;
-            result_chain = new BaseChain(chain.Length);
+            this.Chain = (BaseChain) chain.Clone();
+            ActualLength = 0;
+            ResultChain = new BaseChain(chain.Length);
         }
 
         public void RemoveLitera(int length)
         {
-            if (chain.Length == length)
+            if (Chain.Length == length)
             {
-                result_chain.Add(chain, actual_length);
-                chain = null;
+                ResultChain.Add(Chain, ActualLength);
+                Chain = null;
             }
             else
             {
                 IteratorStart<BaseChain, BaseChain> it1 =
-                    new IteratorStart<BaseChain, BaseChain>(chain, length, 1);
+                    new IteratorStart<BaseChain, BaseChain>(Chain, length, 1);
                 it1.Next();
-                result_chain.Add(it1.Current(), actual_length);
+                ResultChain.Add(it1.Current(), ActualLength);
                 IteratorEnd<BaseChain, BaseChain> it2 =
-                    new IteratorEnd<BaseChain, BaseChain>(chain, chain.Length - length, 1);
+                    new IteratorEnd<BaseChain, BaseChain>(Chain, Chain.Length - length, 1);
                 it2.Next();
-                chain = it2.Current();
+                Chain = it2.Current();
             }
-            actual_length++;
+            ActualLength++;
         }
 
         public BaseChain GetResult()
         {
             IteratorStart<BaseChain, BaseChain> it = 
-                new IteratorStart<BaseChain, BaseChain>(result_chain, actual_length, 1);
+                new IteratorStart<BaseChain, BaseChain>(ResultChain, ActualLength, 1);
             it.Next();
             return it.Current();
         }
 
         public object Clone()
         {
-            ActualChain new_chain = new ActualChain((BaseChain) chain.Clone());
-            new_chain.result_chain = (BaseChain) result_chain.Clone();
-            new_chain.actual_length = actual_length;
-            return new_chain;
+            ActualChain newChain = new ActualChain((BaseChain) Chain.Clone());
+            newChain.ResultChain = (BaseChain) ResultChain.Clone();
+            newChain.ActualLength = ActualLength;
+            return newChain;
         }
     }
 }

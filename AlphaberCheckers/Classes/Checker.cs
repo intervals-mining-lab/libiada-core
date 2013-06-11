@@ -30,22 +30,22 @@ namespace AlphaberCheckers.Classes
 
         public BaseChain Divide(BaseChain chain)
         {
-            ActualChain first_chain = new ActualChain(chain);
+            ActualChain firstChain = new ActualChain(chain);
             Stack stack = new Stack();
-            stack.Push(first_chain);
+            stack.Push(firstChain);
             ArrayList list = alphabet.GetLengthList();
             do
             {
-                ActualChain act_chain = (ActualChain) stack.Pop();
-                BaseChain chain4check = act_chain.chain;
+                ActualChain actChain = (ActualChain) stack.Pop();
+                BaseChain chain4Check = actChain.Chain;
 
                 for (int i = list.Count - 1; i >= 0; i--)
                 {
                     BaseChain word;
-                    if (chain4check.Length >= (int)list[i])
+                    if (chain4Check.Length >= (int)list[i])
                     {
                         IteratorStart<BaseChain, BaseChain> it =
-                            new IteratorStart<BaseChain, BaseChain>(chain4check, (int)list[i], 1);
+                            new IteratorStart<BaseChain, BaseChain>(chain4Check, (int)list[i], 1);
                         it.Next();
                         word = it.Current();
                     }
@@ -53,14 +53,14 @@ namespace AlphaberCheckers.Classes
 
                     if (alphabet.Contains(word))
                     {
-                        if (chain4check.Length == (int) list[i])//положительный вариант конца поиска решения
+                        if (chain4Check.Length == (int) list[i])//положительный вариант конца поиска решения
                         {
-                            act_chain.RemoveLitera((int) list[i]);
-                            return act_chain.GetResult();
+                            actChain.RemoveLitera((int) list[i]);
+                            return actChain.GetResult();
                         }
                         else
                         {
-                            ActualChain new_chain = (ActualChain) act_chain.Clone();
+                            ActualChain new_chain = (ActualChain) actChain.Clone();
                             new_chain.RemoveLitera((int)list[i]);
                             stack.Push(new_chain);
                         }
