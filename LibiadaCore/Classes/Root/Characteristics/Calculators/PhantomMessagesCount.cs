@@ -8,7 +8,7 @@ namespace LibiadaCore.Classes.Root.Characteristics.Calculators
     ///</summary>
     public class PhantomMessagesCount : ICharacteristicCalculator
     {
-        public double Calculate(UniformChain chain, LinkUp Link)
+        public double Calculate(UniformChain chain, LinkUp linkUp)
         {
             int count = 1;
             for(int i=0;i<chain.Length;i++)
@@ -22,15 +22,15 @@ namespace LibiadaCore.Classes.Root.Characteristics.Calculators
             return count;
         }
 
-        public double Calculate(Chain pChain, LinkUp Link)
+        public double Calculate(Chain chain, LinkUp linkUp)
         {
             int count = 1;
-            for (int i = 0; i < pChain.Length; i++)
+            for (int i = 0; i < chain.Length; i++)
             {
-                ValuePhantom j = pChain[i] as ValuePhantom;
+                ValuePhantom j = chain[i] as ValuePhantom;
                 if(j!=null)
                 {
-                    count *= ((ValuePhantom)pChain[i]).Power;
+                    count *= ((ValuePhantom)chain[i]).Power;
                 }
             }
             return count;

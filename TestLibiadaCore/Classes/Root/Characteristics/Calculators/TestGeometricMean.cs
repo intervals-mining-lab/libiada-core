@@ -1,6 +1,5 @@
 using System;
 using LibiadaCore.Classes.Root;
-using LibiadaCore.Classes.Root.Characteristics;
 using LibiadaCore.Classes.Root.Characteristics.Calculators;
 using NUnit.Framework;
 
@@ -17,11 +16,11 @@ namespace TestLibiadaCore.Classes.Root.Characteristics.Calculators
         ///<summary>
         ///</summary>
         [SetUp]
-        public void init()
+        public void Init()
         {
-            ObjectMother Mother = new ObjectMother();
-            TestUChain = Mother.TestUniformChain();
-            TestChain = Mother.TestChain();
+            ChainsForTests mother = new ChainsForTests();
+            TestUChain = mother.TestUniformChain();
+            TestChain = mother.TestChain();
         }
 
         ///<summary>
@@ -29,9 +28,7 @@ namespace TestLibiadaCore.Classes.Root.Characteristics.Calculators
         [Test]
         public void TestCalculationForChain()
         {
-            Characteristic dG = new Characteristic(new GeometricMean());
-
-            double dGTheoreticalStart;
+            GeometricMean geometricMean = new GeometricMean();
 
             double remoutness11 = 1;
             double remoutness12 = 1;
@@ -49,33 +46,33 @@ namespace TestLibiadaCore.Classes.Root.Characteristics.Calculators
             double remoutness33 = 1;
             double remoutness34 = 2;
 
-            double MultiplicatedIntervalsStart = remoutness11*remoutness12*remoutness13*remoutness14*
+            double multiplicatedIntervalsStart = remoutness11*remoutness12*remoutness13*remoutness14*
                                                  remoutness21*remoutness22*remoutness23*remoutness31*remoutness32*
                                                  remoutness33;
 
-            int Intervals_CountStart = 10;
-            dGTheoreticalStart = Math.Pow(MultiplicatedIntervalsStart, ((double) 1)/Intervals_CountStart);
+            int intervalsCountStart = 10;
+            double dGTheoreticalStart = Math.Pow(multiplicatedIntervalsStart, ((double) 1)/intervalsCountStart);
 
-            Assert.AreEqual(dGTheoreticalStart, dG.Value(TestChain, LinkUp.Start));
+            Assert.AreEqual(dGTheoreticalStart, geometricMean.Calculate(TestChain, LinkUp.Start));
 
-            double MultiplicatedIntervalsEnd = remoutness12*remoutness13*remoutness14*remoutness15*
+            double multiplicatedIntervalsEnd = remoutness12*remoutness13*remoutness14*remoutness15*
                                                remoutness22*remoutness23*remoutness24*remoutness32*remoutness33*
                                                remoutness34;
 
-            int Intervals_CountEnd = 10;
-            double dGTheoreticalEnd = Math.Pow(MultiplicatedIntervalsEnd, ((double) 1)/Intervals_CountEnd);
+            int intervalsCountEnd = 10;
+            double dGTheoreticalEnd = Math.Pow(multiplicatedIntervalsEnd, ((double) 1)/intervalsCountEnd);
 
-            Assert.AreEqual(dGTheoreticalEnd, dG.Value(TestChain, LinkUp.End));
+            Assert.AreEqual(dGTheoreticalEnd, geometricMean.Calculate(TestChain, LinkUp.End));
 
 
-            double MultiplicatedIntervalsBoth = remoutness11*remoutness12*remoutness13*remoutness14*remoutness15*
+            double multiplicatedIntervalsBoth = remoutness11*remoutness12*remoutness13*remoutness14*remoutness15*
                                                 remoutness21*remoutness22*remoutness23*remoutness24*remoutness31*
                                                 remoutness32*remoutness33*remoutness34;
 
-            int Intervals_CountBoth = 13;
-            double dGTheoreticalBoth = Math.Pow(MultiplicatedIntervalsBoth, ((double) 1)/Intervals_CountBoth);
+            int intervalsCountBoth = 13;
+            double dGTheoreticalBoth = Math.Pow(multiplicatedIntervalsBoth, ((double) 1)/intervalsCountBoth);
 
-            Assert.AreEqual(dGTheoreticalBoth, dG.Value(TestChain, LinkUp.Both));
+            Assert.AreEqual(dGTheoreticalBoth, geometricMean.Calculate(TestChain, LinkUp.Both));
         }
 
         ///<summary>
@@ -83,35 +80,35 @@ namespace TestLibiadaCore.Classes.Root.Characteristics.Calculators
         [Test]
         public void TestCalculationForUniformChain()
         {
-            Characteristic deltaGeom = new Characteristic(new GeometricMean());
-            Characteristic G = new Characteristic(new Depth());
-            Characteristic N = new Characteristic(new IntervalsCount());
+            GeometricMean geometricMean = new GeometricMean();
+            Depth depth = new Depth();
+            IntervalsCount intervalsCountCalc = new IntervalsCount();
 
-            int Interval1 = 4;
-            int Interval2 = 1;
-            int Interval3 = 3;
-            int Interval4 = 3;
+            const int interval1 = 4;
+            const int interval2 = 1;
+            const int interval3 = 3;
+            const int interval4 = 3;
 
-            double V = Interval1*Interval2*Interval3*Interval4;
-            double IntervalsCount = ((double) 1)/4;
-            Assert.AreEqual(Math.Pow(V, IntervalsCount), deltaGeom.Value(TestUChain, LinkUp.Both));
+            double V = interval1*interval2*interval3*interval4;
+            double intervalsCount = ((double) 1)/4;
+            Assert.AreEqual(Math.Pow(V, intervalsCount), geometricMean.Calculate(TestUChain, LinkUp.Both));
 
-            Assert.AreEqual(Math.Pow(2, G.Value(TestUChain, LinkUp.Both)/N.Value(TestUChain, LinkUp.Both)),
-                            deltaGeom.Value(TestUChain, LinkUp.Both));
+            Assert.AreEqual(Math.Pow(2, depth.Calculate(TestUChain, LinkUp.Both) / intervalsCountCalc.Calculate(TestUChain, LinkUp.Both)),
+                            geometricMean.Calculate(TestUChain, LinkUp.Both));
 
-            V = Interval1*Interval2*Interval3;
-            IntervalsCount = ((double) 1)/3;
-            Assert.AreEqual(Math.Pow(V, IntervalsCount), deltaGeom.Value(TestUChain, LinkUp.Start));
+            V = interval1*interval2*interval3;
+            intervalsCount = ((double) 1)/3;
+            Assert.AreEqual(Math.Pow(V, intervalsCount), geometricMean.Calculate(TestUChain, LinkUp.Start));
 
-            Assert.AreEqual(Math.Pow(2, G.Value(TestUChain, LinkUp.Start)/N.Value(TestUChain, LinkUp.Start)),
-                            deltaGeom.Value(TestUChain, LinkUp.Start));
+            Assert.AreEqual(Math.Pow(2, depth.Calculate(TestUChain, LinkUp.Start) / intervalsCountCalc.Calculate(TestUChain, LinkUp.Start)),
+                            geometricMean.Calculate(TestUChain, LinkUp.Start));
 
-            V = Interval2*Interval3*Interval4;
-            IntervalsCount = ((double) 1)/3;
-            Assert.AreEqual(Math.Pow(V, IntervalsCount), deltaGeom.Value(TestUChain, LinkUp.End));
+            V = interval2*interval3*interval4;
+            intervalsCount = ((double) 1)/3;
+            Assert.AreEqual(Math.Pow(V, intervalsCount), geometricMean.Calculate(TestUChain, LinkUp.End));
 
-            Assert.AreEqual(Math.Pow(2, G.Value(TestUChain, LinkUp.End)/N.Value(TestUChain, LinkUp.End)),
-                            deltaGeom.Value(TestUChain, LinkUp.End));
+            Assert.AreEqual(Math.Pow(2, depth.Calculate(TestUChain, LinkUp.End) / intervalsCountCalc.Calculate(TestUChain, LinkUp.End)),
+                            geometricMean.Calculate(TestUChain, LinkUp.End));
         }
     }
 }

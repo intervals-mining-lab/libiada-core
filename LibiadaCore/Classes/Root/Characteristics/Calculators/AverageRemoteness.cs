@@ -8,28 +8,28 @@ namespace LibiadaCore.Classes.Root.Characteristics.Calculators
     ///</summary>
     public class AverageRemoteness : ICharacteristicCalculator
     {
-        public double Calculate(UniformChain pChain, LinkUp Link)
+        private readonly IntervalsCount intervalsCount = new IntervalsCount();
+        private readonly GeometricMean geometricMean = new GeometricMean();
+
+        public double Calculate(UniformChain chain, LinkUp linkUp)
         {
-            GeometricMean geometricMean = new GeometricMean();
-            return Math.Log(geometricMean.Calculate(pChain, Link), 2);
+            return Math.Log(geometricMean.Calculate(chain, linkUp), 2);
         }
 
         ///<summary>
         ///</summary>
-        ///<param name="pChain"></param>
-        ///<param name="Link"></param>
+        ///<param name="chain"></param>
+        ///<param name="linkUp"></param>
         ///<returns></returns>
-        public double Calculate(Chain pChain, LinkUp Link)
+        public double Calculate(Chain chain, LinkUp linkUp)
         {
-            IntervalsCount intervalsCount = new IntervalsCount();
-            GeometricMean geometricMean = new GeometricMean();
             double temp = 0;
-            double n = intervalsCount.Calculate(pChain, Link);
-            for (int i = 0; i < pChain.Alphabet.Power; i++)
+            double n = intervalsCount.Calculate(chain, linkUp);
+            for (int i = 0; i < chain.Alphabet.Power; i++)
             {
-                double uniformDg = geometricMean.Calculate(pChain.UniformChain(i), Link);
-                double n_j = intervalsCount.Calculate(pChain.UniformChain(i), Link);
-                temp += n_j/n*Math.Log(uniformDg, 2);
+                double uniformDg = geometricMean.Calculate(chain.UniformChain(i), linkUp);
+                double nj = intervalsCount.Calculate(chain.UniformChain(i), linkUp);
+                temp += nj/n*Math.Log(uniformDg, 2);
             }
             return temp;
         }

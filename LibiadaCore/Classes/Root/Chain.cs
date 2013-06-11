@@ -267,7 +267,7 @@ namespace LibiadaCore.Classes.Root
 
         public int GetPairsCount(IBaseObject j, IBaseObject L)
         {
-            int jElementCount = (int)UniformChain(j).GetCharacteristic(LinkUp.Start, new Count());
+            int jElementCount = (int)new Count().Calculate(UniformChain(j), LinkUp.Start);
             int pairs = 0;
             for (int i = 1; i <= jElementCount; i++)
             {
@@ -313,11 +313,6 @@ namespace LibiadaCore.Classes.Root
             }
             building = ArrayManipulator.DeleteAt(building, index);
             return element;
-        }
-
-        public double GetCharacteristic(LinkUp linkUp, ICharacteristicCalculator calculator)
-        {
-            return calculator.Calculate(this, linkUp);
         }
     }
 }

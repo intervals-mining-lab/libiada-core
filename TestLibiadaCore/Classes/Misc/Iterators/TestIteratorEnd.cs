@@ -17,7 +17,7 @@ namespace TestLibiadaCore.Classes.Misc.Iterators
         /// �������������  
         ///</summary>
         [SetUp]
-        public void init()
+        public void Init()
         {
             // ������ ���� ��� ��������� 12
             // ���� = 121331212231

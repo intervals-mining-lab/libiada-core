@@ -5,25 +5,25 @@ namespace LibiadaCore.Classes.Root.Characteristics.Calculators
     ///</summary>
     public class Probability : ICharacteristicCalculator
     {
-        public double Calculate(UniformChain pChain, LinkUp Link)
+        public double Calculate(UniformChain chain, LinkUp linkUp)
         {
             Count count = new Count();
             Length length = new Length();
-            return count.Calculate(pChain, LinkUp.Both)/length.Calculate(pChain, LinkUp.Both);
+            return count.Calculate(chain, LinkUp.Both)/length.Calculate(chain, LinkUp.Both);
         }
 
         /// <summary>
         /// ƒл€ неоднородной, заполненной цепи всегда равна 1.
         /// </summary>
-        /// <param name="pChain"></param>
-        /// <param name="Link"></param>
+        /// <param name="chain"></param>
+        /// <param name="linkUp"></param>
         /// <returns></returns>
-        public double Calculate(Chain pChain, LinkUp Link)
+        public double Calculate(Chain chain, LinkUp linkUp)
         {
             double temp = 0;
-            for (int i = 0; i < pChain.Alphabet.Power; i++)
+            for (int i = 0; i < chain.Alphabet.Power; i++)
             {
-                temp += Calculate(pChain.UniformChain(i), Link);
+                temp += Calculate(chain.UniformChain(i), linkUp);
             }
             if (temp > 1)
             {

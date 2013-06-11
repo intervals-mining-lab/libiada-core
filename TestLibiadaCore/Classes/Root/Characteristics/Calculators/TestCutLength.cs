@@ -1,5 +1,4 @@
 using LibiadaCore.Classes.Root;
-using LibiadaCore.Classes.Root.Characteristics;
 using LibiadaCore.Classes.Root.Characteristics.Calculators;
 using NUnit.Framework;
 
@@ -10,14 +9,14 @@ namespace TestLibiadaCore.Classes.Root.Characteristics.Calculators
     [TestFixture]
     public class TestCutLength
     {
-        private ObjectMother Mother;
+        private ChainsForTests Mother;
 
         ///<summary>
         ///</summary>
         [SetUp]
-        public void init()
+        public void Init()
         {
-            Mother = new ObjectMother();
+            Mother = new ChainsForTests();
         }
 
         ///<summary>
@@ -25,13 +24,13 @@ namespace TestLibiadaCore.Classes.Root.Characteristics.Calculators
         [Test]
         public void TestCutLengthChain()
         {
-            Characteristic Characteristic = new Characteristic(new CutLength());
+            CutLength cutLength = new CutLength();
 
-            Chain TestChain = Mother.TestChain();
+            Chain testChain = Mother.TestChain();
 
-            Assert.AreEqual(3, Characteristic.Value(TestChain, LinkUp.Both));
-            Assert.AreEqual(3, Characteristic.Value(TestChain, LinkUp.Start));
-            Assert.AreEqual(3, Characteristic.Value(TestChain, LinkUp.End));
+            Assert.AreEqual(3, cutLength.Calculate(testChain, LinkUp.Both));
+            Assert.AreEqual(3, cutLength.Calculate(testChain, LinkUp.Start));
+            Assert.AreEqual(3, cutLength.Calculate(testChain, LinkUp.End));
         }
 
         ///<summary>
@@ -39,13 +38,13 @@ namespace TestLibiadaCore.Classes.Root.Characteristics.Calculators
         [Test]
         public void TestCutLengthUChain()
         {
-            Characteristic Characteristic = new Characteristic(new CutLength());
+            CutLength cutLength = new CutLength();
 
-            UniformChain TestChain = Mother.TestUniformChain();
+            UniformChain testChain = Mother.TestUniformChain();
 
-            Assert.AreEqual(4, Characteristic.Value(TestChain, LinkUp.Both));
-            Assert.AreEqual(4, Characteristic.Value(TestChain, LinkUp.Start));
-            Assert.AreEqual(4, Characteristic.Value(TestChain, LinkUp.End));
+            Assert.AreEqual(4, cutLength.Calculate(testChain, LinkUp.Both));
+            Assert.AreEqual(4, cutLength.Calculate(testChain, LinkUp.Start));
+            Assert.AreEqual(4, cutLength.Calculate(testChain, LinkUp.End));
         }
     }
 }

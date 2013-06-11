@@ -7,7 +7,7 @@ namespace TestLibiadaCore.Classes.Misc.Iterators
     public class TestSimpleCutRule
     {
         [Test]
-        public void testCutRule()
+        public void TestCutRule()
         {
             SimpleCutRule rule = new SimpleCutRule(100, 3, 3);
             CutRuleIterator iterator = rule.getIterator(); //объект, который бегает по массиву

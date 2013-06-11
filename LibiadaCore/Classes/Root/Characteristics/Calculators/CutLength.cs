@@ -8,14 +8,14 @@ namespace LibiadaCore.Classes.Root.Characteristics.Calculators
     ///</summary>
     public class CutLength : ICharacteristicCalculator
     {
-        public double Calculate(UniformChain pChain, LinkUp Link)
+        public double Calculate(UniformChain chain, LinkUp linkUp)
         {
-            return CutCommon(pChain);
+            return CutCommon(chain);
         }
 
-        public double Calculate(Chain pChain, LinkUp Link)
+        public double Calculate(Chain chain, LinkUp linkUp)
         {
-            return CutCommon(pChain);
+            return CutCommon(chain);
         }
 
         public CharacteristicsEnum GetCharacteristicName()
@@ -23,32 +23,32 @@ namespace LibiadaCore.Classes.Root.Characteristics.Calculators
             return CharacteristicsEnum.CutLength;
         }
 
-        private double CutCommon(BaseChain pChain)
+        private double CutCommon(BaseChain chain)
         {
             int i = 1;
-            while (i <= pChain.Length)
+            while (i <= chain.Length)
             {
 
-                if (CheckRecoveryAvaliable(pChain, i))
+                if (CheckRecoveryAvaliable(chain, i))
                 {
                     return i;
                 }
                 i++;
             }
-            return pChain.Length;
+            return chain.Length;
         }
 
-        private bool CheckRecoveryAvaliable(BaseChain pChain, int i)
+        private bool CheckRecoveryAvaliable(BaseChain chain, int i)
         {
-            IteratorStart<BaseChain,BaseChain> It = new IteratorStart<BaseChain, BaseChain>(pChain, i, 1);
-            Alphabet Temp = new Alphabet();
-            while (It.Next())
+            IteratorStart<BaseChain,BaseChain> iterator = new IteratorStart<BaseChain, BaseChain>(chain, i, 1);
+            Alphabet alphabet = new Alphabet();
+            while (iterator.Next())
             {
-                if (Temp.Contains(It.Current()))
+                if (alphabet.Contains(iterator.Current()))
                 {
                     return false;
                 }
-                Temp.Add(It.Current());
+                alphabet.Add(iterator.Current());
             }
             return true;
         }

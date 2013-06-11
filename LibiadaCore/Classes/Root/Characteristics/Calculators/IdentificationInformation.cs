@@ -8,22 +8,22 @@ namespace LibiadaCore.Classes.Root.Characteristics.Calculators
     ///</summary>
     public class IdentificationInformation : ICharacteristicCalculator
     {
-        private ArithmeticMean arithmeticMean = new ArithmeticMean();
-        private Probability probability = new Probability();
+        private readonly ArithmeticMean arithmeticMean = new ArithmeticMean();
+        private readonly Probability probability = new Probability();
 
-        public double Calculate(UniformChain pChain, LinkUp Link)
+        public double Calculate(UniformChain chain, LinkUp linkUp)
         {
-            return Math.Log(arithmeticMean.Calculate(pChain, Link), 2);
+            return Math.Log(arithmeticMean.Calculate(chain, linkUp), 2);
         }
 
-        public double Calculate(Chain pChain, LinkUp Link)
+        public double Calculate(Chain chain, LinkUp linkUp)
         {
             double temp = 0;
-            for (int i = 0; i < pChain.Alphabet.Power; i++)
+            for (int i = 0; i < chain.Alphabet.Power; i++)
             {
-                double P = probability.Calculate(pChain.UniformChain(i), Link);
-                double da = arithmeticMean.Calculate(pChain.UniformChain(i), Link);
-                temp += P*Math.Log(da, 2);
+                double p = probability.Calculate(chain.UniformChain(i), linkUp);
+                double da = arithmeticMean.Calculate(chain.UniformChain(i), linkUp);
+                temp += p*Math.Log(da, 2);
             }
             return temp;
         }

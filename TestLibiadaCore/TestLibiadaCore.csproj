@@ -66,7 +66,7 @@
     <Compile Include="Classes\Root\Characteristics\BinaryCalculators\TestNormalizedPartialDependenceCoefficient.cs" />
     <Compile Include="Classes\Root\Characteristics\BinaryCalculators\TestPartialDependenceCoefficient.cs" />
     <Compile Include="Classes\Root\Characteristics\BinaryCalculators\TestRedundancy.cs" />
-    <Compile Include="Classes\Root\Characteristics\Calculators\ObjectMother.cs" />
+    <Compile Include="Classes\Root\Characteristics\Calculators\ChainsForTests.cs" />
     <Compile Include="Classes\Root\Characteristics\Calculators\TestAlphabetPower.cs" />
     <Compile Include="Classes\Root\Characteristics\Calculators\TestArithmeticMean.cs" />
     <Compile Include="Classes\Root\Characteristics\Calculators\TestAverageRemoteness.cs" />

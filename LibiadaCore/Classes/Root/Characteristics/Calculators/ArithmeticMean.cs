@@ -10,28 +10,28 @@ namespace LibiadaCore.Classes.Root.Characteristics.Calculators
         /// вычисляется как 1/вероятность или чеастоту её элемента.
         /// </summary>
         /// <param name="chain"></param>
-        /// <param name="Link"></param>
+        /// <param name="linkUp"></param>
         /// <returns></returns>
-        public double Calculate(UniformChain chain, LinkUp Link)
+        public double Calculate(UniformChain chain, LinkUp linkUp)
         {
             Probability probability = new Probability();
-            return 1 / probability.Calculate(chain, Link);
+            return 1 / probability.Calculate(chain, linkUp);
         }
 
         ///<summary>
         /// Вычисляется как среднее значение от среднего интервала однородных цепей
         ///</summary>
-        ///<param name="pChain"></param>
-        ///<param name="Link"></param>
+        ///<param name="chain"></param>
+        ///<param name="linkUp"></param>
         ///<returns></returns>
-        public double Calculate(Chain pChain, LinkUp Link)
+        public double Calculate(Chain chain, LinkUp linkUp)
         {
             double sum = 0;
-            for (int i = 0; i < pChain.Alphabet.Power; i++)
+            for (int i = 0; i < chain.Alphabet.Power; i++)
             {
-                sum += Calculate(pChain.UniformChain(i), Link);
+                sum += Calculate(chain.UniformChain(i), linkUp);
             }
-            return sum/pChain.Alphabet.Power;
+            return sum/chain.Alphabet.Power;
         }
 
         public CharacteristicsEnum GetCharacteristicName()

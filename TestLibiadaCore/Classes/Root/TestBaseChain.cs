@@ -16,7 +16,7 @@ namespace TestLibiadaCore.Classes.Root
         /// ��������������� �����
         ///</summary>
         [SetUp]
-        public void init()
+        public void Init()
         {
             ChainBase = new BaseChain(10);
         }
@@ -24,6 +24,7 @@ namespace TestLibiadaCore.Classes.Root
         ///<summary>
         /// ��������� ����������� � ������� ������
         ///</summary>
+        [Test]
         public void TestConstructor()
         {
             Chain chain = new Chain(100);
@@ -91,6 +92,7 @@ namespace TestLibiadaCore.Classes.Root
         ///<summary>
         /// ��������� ������� ��������
         ///</summary>
+        [Test]
         public void TestRemove()
         {
             ChainBase.Add(new ValueChar('1'), 0);
@@ -133,6 +135,7 @@ namespace TestLibiadaCore.Classes.Root
 
         ///<summary>
         ///</summary>
+        [Test]
         public void TestEqualsPsevdo()
         {
             Chain Empty = new Chain(10);

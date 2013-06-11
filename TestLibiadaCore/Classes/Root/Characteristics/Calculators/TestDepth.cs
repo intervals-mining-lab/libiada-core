@@ -1,6 +1,5 @@
 using System;
 using LibiadaCore.Classes.Root;
-using LibiadaCore.Classes.Root.Characteristics;
 using LibiadaCore.Classes.Root.Characteristics.Calculators;
 using NUnit.Framework;
 
@@ -17,11 +16,11 @@ namespace TestLibiadaCore.Classes.Root.Characteristics.Calculators
         ///<summary>
         ///</summary>
         [SetUp]
-        public void init()
+        public void Init()
         {
-            ObjectMother Mother = new ObjectMother();
-            TestUChain = Mother.TestUniformChain();
-            TestChain = Mother.TestChain();
+            ChainsForTests mother = new ChainsForTests();
+            TestUChain = mother.TestUniformChain();
+            TestChain = mother.TestChain();
         }
 
         ///<summary>
@@ -29,18 +28,18 @@ namespace TestLibiadaCore.Classes.Root.Characteristics.Calculators
         [Test]
         public void TestCalculationForUniformChain()
         {
-            Characteristic G = new Characteristic(new Depth());
-            int Interval1 = 4;
-            int Interval3 = 3;
-            int Interval4 = 3;
-            int Interval2 = 1;
+            Depth depth = new Depth();
+            const int interval1 = 4;
+            const int interval3 = 3;
+            const int interval4 = 3;
+            const int interval2 = 1;
             Assert.AreEqual(
-                Math.Log(Interval1, 2) + Math.Log(Interval3, 2) + Math.Log(Interval4, 2) + Math.Log(Interval2, 2),
-                G.Value(TestUChain, LinkUp.Both));
-            Assert.AreEqual(Math.Log(Interval2, 2) + Math.Log(Interval3, 2) + Math.Log(Interval4, 2),
-                            G.Value(TestUChain, LinkUp.End));
-            Assert.AreEqual(Math.Log(Interval1, 2) + Math.Log(Interval3, 2) + Math.Log(Interval2, 2),
-                            G.Value(TestUChain, LinkUp.Start));
+                Math.Log(interval1, 2) + Math.Log(interval3, 2) + Math.Log(interval4, 2) + Math.Log(interval2, 2),
+                depth.Calculate(TestUChain, LinkUp.Both));
+            Assert.AreEqual(Math.Log(interval2, 2) + Math.Log(interval3, 2) + Math.Log(interval4, 2),
+                            depth.Calculate(TestUChain, LinkUp.End));
+            Assert.AreEqual(Math.Log(interval1, 2) + Math.Log(interval3, 2) + Math.Log(interval2, 2),
+                            depth.Calculate(TestUChain, LinkUp.Start));
         }
 
         ///<summary>
@@ -48,7 +47,7 @@ namespace TestLibiadaCore.Classes.Root.Characteristics.Calculators
         [Test]
         public void TestCalculationForChain()
         {
-            Characteristic G = new Characteristic(new Depth());
+            Depth depth = new Depth();
 
             double remoutness11 = Math.Log(1, 2);
             double remoutness12 = Math.Log(1, 2);
@@ -56,36 +55,36 @@ namespace TestLibiadaCore.Classes.Root.Characteristics.Calculators
             double remoutness14 = Math.Log(4, 2);
             double remoutness15 = Math.Log(1, 2);
 
-            double SumAStart = remoutness11 + remoutness12 + remoutness13 + remoutness14;
-            double SumAEnd = remoutness12 + remoutness13 + remoutness14 + remoutness15;
-            double SumABoth = remoutness11 + remoutness12 + remoutness13 + remoutness14 + remoutness15;
+            double sumAStart = remoutness11 + remoutness12 + remoutness13 + remoutness14;
+            double sumAEnd = remoutness12 + remoutness13 + remoutness14 + remoutness15;
+            double sumABoth = remoutness11 + remoutness12 + remoutness13 + remoutness14 + remoutness15;
 
             double remoutness21 = Math.Log(3, 2);
             double remoutness22 = Math.Log(1, 2);
             double remoutness23 = Math.Log(3, 2);
             double remoutness24 = Math.Log(4, 2);
 
-            double SumBStart = remoutness21 + remoutness22 + remoutness23;
-            double SumBEnd = remoutness22 + remoutness23 + remoutness24;
-            double SumBBoth = remoutness21 + remoutness22 + remoutness23 + remoutness24;
+            double sumBStart = remoutness21 + remoutness22 + remoutness23;
+            double sumBEnd = remoutness22 + remoutness23 + remoutness24;
+            double sumBBoth = remoutness21 + remoutness22 + remoutness23 + remoutness24;
 
             double remoutness31 = Math.Log(5, 2);
             double remoutness32 = Math.Log(3, 2);
             double remoutness33 = Math.Log(1, 2);
             double remoutness34 = Math.Log(2, 2);
 
-            double SubCStart = remoutness31 + remoutness32 + remoutness33;
-            double SubCEnd = remoutness32 + remoutness33 + remoutness34;
-            double SubCBoth = remoutness31 + remoutness32 + remoutness33 + remoutness34;
+            double subCStart = remoutness31 + remoutness32 + remoutness33;
+            double subCEnd = remoutness32 + remoutness33 + remoutness34;
+            double subCBoth = remoutness31 + remoutness32 + remoutness33 + remoutness34;
 
-            double SumStart = SumAStart + SumBStart + SubCStart;
-            double SumEnd = SumAEnd + SumBEnd + SubCEnd;
-            double SumBoth = SumABoth + SumBBoth + SubCBoth;
+            double sumStart = sumAStart + sumBStart + subCStart;
+            double sumEnd = sumAEnd + sumBEnd + subCEnd;
+            double sumBoth = sumABoth + sumBBoth + subCBoth;
 
 
-            Assert.AreEqual(SumStart, G.Value(TestChain, LinkUp.Start));
-            Assert.AreEqual(SumEnd, G.Value(TestChain, LinkUp.End));
-            Assert.AreEqual(SumBoth, G.Value(TestChain, LinkUp.Both));
+            Assert.AreEqual(sumStart, depth.Calculate(TestChain, LinkUp.Start));
+            Assert.AreEqual(sumEnd, depth.Calculate(TestChain, LinkUp.End));
+            Assert.AreEqual(sumBoth, depth.Calculate(TestChain, LinkUp.Both));
         }
     }
 }

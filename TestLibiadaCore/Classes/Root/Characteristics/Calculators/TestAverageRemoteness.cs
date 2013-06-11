@@ -1,6 +1,5 @@
 using System;
 using LibiadaCore.Classes.Root;
-using LibiadaCore.Classes.Root.Characteristics;
 using LibiadaCore.Classes.Root.Characteristics.Calculators;
 using NUnit.Framework;
 
@@ -17,11 +16,11 @@ namespace TestLibiadaCore.Classes.Root.Characteristics.Calculators
         ///<summary>
         ///</summary>
         [SetUp]
-        public void init()
+        public void Init()
         {
-            ObjectMother Mother = new ObjectMother();
-            TestUChain = Mother.TestUniformChain();
-            TestChain = Mother.TestChain();
+            ChainsForTests mother = new ChainsForTests();
+            TestUChain = mother.TestUniformChain();
+            TestChain = mother.TestChain();
         }
 
         ///<summary>
@@ -29,42 +28,43 @@ namespace TestLibiadaCore.Classes.Root.Characteristics.Calculators
         [Test]
         public void TestCalculation()
         {
-            Characteristic ARemoteness = new Characteristic(new AverageRemoteness());
+            AverageRemoteness averageRemoteness = new AverageRemoteness();
 
-            double Interval1 = 4;
-            double Interval2 = 1;
-            double Interval3 = 3;
-            double Interval4 = 3;
+            double interval1 = 4;
+            double interval2 = 1;
+            double interval3 = 3;
+            double interval4 = 3;
 
             double pIntervalsCount = 3;
 
-            double deltaG = Math.Pow(Interval1*Interval2*Interval3, 1/pIntervalsCount);
+            double deltaG = Math.Pow(interval1*interval2*interval3, 1/pIntervalsCount);
             double pAverageRemoteness = Math.Log(deltaG, 2);
 
-            Assert.AreEqual(pAverageRemoteness, ARemoteness.Value(TestUChain, LinkUp.Start));
+            Assert.AreEqual(pAverageRemoteness, averageRemoteness.Calculate(TestUChain, LinkUp.Start));
 
 
             pIntervalsCount = 3;
 
-            deltaG = Math.Pow(Interval2*Interval3*Interval4, 1/pIntervalsCount);
+            deltaG = Math.Pow(interval2*interval3*interval4, 1/pIntervalsCount);
             pAverageRemoteness = Math.Log(deltaG, 2);
 
-            Assert.AreEqual(pAverageRemoteness, ARemoteness.Value(TestUChain, LinkUp.End));
+            Assert.AreEqual(pAverageRemoteness, averageRemoteness.Calculate(TestUChain, LinkUp.End));
 
 
             pIntervalsCount = 4;
 
-            deltaG = Math.Pow(Interval1*Interval2*Interval3*Interval4, 1/pIntervalsCount);
+            deltaG = Math.Pow(interval1*interval2*interval3*interval4, 1/pIntervalsCount);
             pAverageRemoteness = Math.Log(deltaG, 2);
 
-            Assert.AreEqual(pAverageRemoteness, ARemoteness.Value(TestUChain, LinkUp.Both));
+            Assert.AreEqual(pAverageRemoteness, averageRemoteness.Calculate(TestUChain, LinkUp.Both));
         }
 
         ///<summary>
         ///</summary>
+        [Test]
         public void TestCalculationForChain()
         {
-            Characteristic ARemoteness = new Characteristic(new AverageRemoteness());
+            AverageRemoteness averageRemoteness = new AverageRemoteness();
 
             int Alphabet_power = 3;
             Assert.AreEqual(Alphabet_power, TestChain.Alphabet.Power);
@@ -76,39 +76,39 @@ namespace TestLibiadaCore.Classes.Root.Characteristics.Calculators
             double remoutness14 = Math.Log(4, 2);
             double remoutness15 = Math.Log(1, 2);
 
-            double SumAStart = remoutness11 + remoutness12 + remoutness13 + remoutness14;
-            double SumAEnd = remoutness12 + remoutness13 + remoutness14 + remoutness15;
-            double SumABoth = remoutness11 + remoutness12 + remoutness13 + remoutness14 + remoutness15;
+            double sumAStart = remoutness11 + remoutness12 + remoutness13 + remoutness14;
+            double sumAEnd = remoutness12 + remoutness13 + remoutness14 + remoutness15;
+            double sumABoth = remoutness11 + remoutness12 + remoutness13 + remoutness14 + remoutness15;
 
             double remoutness21 = Math.Log(3, 2);
             double remoutness22 = Math.Log(1, 2);
             double remoutness23 = Math.Log(3, 2);
             double remoutness24 = Math.Log(4, 2);
 
-            double SumBStart = remoutness21 + remoutness22 + remoutness23;
-            double SumBEnd = remoutness22 + remoutness23 + remoutness24;
-            double SumBBoth = remoutness21 + remoutness22 + remoutness23 + remoutness24;
+            double sumBStart = remoutness21 + remoutness22 + remoutness23;
+            double sumBEnd = remoutness22 + remoutness23 + remoutness24;
+            double sumBBoth = remoutness21 + remoutness22 + remoutness23 + remoutness24;
 
             double remoutness31 = Math.Log(5, 2);
             double remoutness32 = Math.Log(3, 2);
             double remoutness33 = Math.Log(1, 2);
             double remoutness34 = Math.Log(2, 2);
 
-            double SubCStart = remoutness31 + remoutness32 + remoutness33;
-            double SubCEnd = remoutness32 + remoutness33 + remoutness34;
-            double SubCBoth = remoutness31 + remoutness32 + remoutness33 + remoutness34;
+            double subCStart = remoutness31 + remoutness32 + remoutness33;
+            double subCEnd = remoutness32 + remoutness33 + remoutness34;
+            double subCBoth = remoutness31 + remoutness32 + remoutness33 + remoutness34;
 
-            double SumStart = SumAStart + SumBStart + SubCStart;
+            double sumStart = sumAStart + sumBStart + subCStart;
             double n = 10;
 
-            Assert.AreEqual(SumStart/n, ARemoteness.Value(TestChain, LinkUp.Start));
+            Assert.AreEqual(sumStart / n, averageRemoteness.Calculate(TestChain, LinkUp.Start));
 
-            double SumEnd = SumAEnd + SumBEnd + SubCEnd;
-            Assert.AreEqual(SumEnd/n, ARemoteness.Value(TestChain, LinkUp.End));
+            double sumEnd = sumAEnd + sumBEnd + subCEnd;
+            Assert.AreEqual(sumEnd / n, averageRemoteness.Calculate(TestChain, LinkUp.End));
 
             double nBoth = 13;
-            double SumBoth = SumABoth + SumBBoth + SubCBoth;
-            Assert.AreEqual(SumBoth/nBoth, ARemoteness.Value(TestChain, LinkUp.Both));
+            double sumBoth = sumABoth + sumBBoth + subCBoth;
+            Assert.AreEqual(sumBoth / nBoth, averageRemoteness.Calculate(TestChain, LinkUp.Both));
         }
     }
 }

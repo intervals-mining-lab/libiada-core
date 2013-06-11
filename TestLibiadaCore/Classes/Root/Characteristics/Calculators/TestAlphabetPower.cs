@@ -1,5 +1,4 @@
 using LibiadaCore.Classes.Root;
-using LibiadaCore.Classes.Root.Characteristics;
 using LibiadaCore.Classes.Root.Characteristics.Calculators;
 using NUnit.Framework;
 
@@ -16,11 +15,11 @@ namespace TestLibiadaCore.Classes.Root.Characteristics.Calculators
         ///<summary>
         ///</summary>
         [SetUp]
-        public void init()
+        public void Init()
         {
-            ObjectMother Mother = new ObjectMother();
-            TestUChain = Mother.TestUniformChain();
-            TestChain = Mother.TestChain();
+            ChainsForTests mother = new ChainsForTests();
+            TestUChain = mother.TestUniformChain();
+            TestChain = mother.TestChain();
         }
 
 
@@ -29,12 +28,11 @@ namespace TestLibiadaCore.Classes.Root.Characteristics.Calculators
         [Test]
         public void TestCalculation()
         {
-            Characteristic deltaA = new Characteristic(new AlphabetPower());
-   
+            AlphabetPower alphabetPower = new AlphabetPower();
 
-            Assert.AreEqual(1, deltaA.Value(TestUChain, LinkUp.Start));
-            Assert.AreEqual(1, deltaA.Value(TestUChain, LinkUp.End));
-            Assert.AreEqual(1, deltaA.Value(TestUChain, LinkUp.Both));
+            Assert.AreEqual(1, alphabetPower.Calculate(TestUChain, LinkUp.Start));
+            Assert.AreEqual(1, alphabetPower.Calculate(TestUChain, LinkUp.End));
+            Assert.AreEqual(1, alphabetPower.Calculate(TestUChain, LinkUp.Both));
         }
 
         ///<summary>
@@ -42,12 +40,12 @@ namespace TestLibiadaCore.Classes.Root.Characteristics.Calculators
         [Test]
         public void TestCalculationForChain()
         {
-            Characteristic deltaA = new Characteristic(new AlphabetPower());
-            int Alphabet_power = 3;
-            Assert.AreEqual(Alphabet_power, TestChain.Alphabet.Power);
-            Assert.AreEqual(Alphabet_power, deltaA.Value(TestChain, LinkUp.Start));
-            Assert.AreEqual(Alphabet_power, deltaA.Value(TestChain, LinkUp.End));
-            Assert.AreEqual(Alphabet_power, deltaA.Value(TestChain, LinkUp.Both));
+            AlphabetPower alphabetPower = new AlphabetPower();
+            const int power = 3;
+            Assert.AreEqual(power, TestChain.Alphabet.Power);
+            Assert.AreEqual(power, alphabetPower.Calculate(TestChain, LinkUp.Start));
+            Assert.AreEqual(power, alphabetPower.Calculate(TestChain, LinkUp.End));
+            Assert.AreEqual(power, alphabetPower.Calculate(TestChain, LinkUp.Both));
         }
     }
 }

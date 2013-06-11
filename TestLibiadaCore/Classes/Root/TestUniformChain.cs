@@ -16,7 +16,7 @@ namespace TestLibiadaCore.Classes.Root
         ///<summary>
         ///</summary>
         [SetUp]
-        public void init()
+        public void Init()
         {
             message = new ValueChar('1');
             UniformChain = new UniformChain(10, message);
@@ -37,14 +37,12 @@ namespace TestLibiadaCore.Classes.Root
         [Test]
         public void TestIndependenseMessage()
         {
-            ValueChar MessageNew;
-
             UniformChain = new UniformChain(10, message);
 
-            MessageNew = (ValueChar) UniformChain.Message;
-            MessageNew.value = '2';
+            ValueChar newMessage = (ValueChar) UniformChain.Message;
+            newMessage.value = '2';
 
-            Assert.IsFalse(MessageNew.Equals(UniformChain.Message));
+            Assert.IsFalse(newMessage.Equals(UniformChain.Message));
         }
 
         ///<summary>
@@ -76,35 +74,5 @@ namespace TestLibiadaCore.Classes.Root
             Assert.AreNotEqual(message, UniformChain.Get(3));
             Assert.AreEqual(NullValue.Instance(), UniformChain.Get(3));
         }
-
-        ///<summary>
-        ///</summary>
-        /*
-        [Test]
-        public void TestGetInterval()
-        {
-            UniformChain.Add(message, 3);
-            Assert.AreEqual(4, (ValueInt) UniformChain.Intervals(LinkUp.Start)[0].Key);
-            Assert.AreEqual(7, (ValueInt) UniformChain.Intervals(LinkUp.End)[0].Key);
-            Assert.AreEqual(4, (ValueInt) UniformChain.Intervals(LinkUp.Both)[0].Key);
-            Assert.AreEqual(7, (ValueInt) UniformChain.Intervals(LinkUp.Both)[1].Key);
-
-            UniformChain.Add(message, 7);
-            Assert.AreEqual(4, (ValueInt) UniformChain.Intervals(LinkUp.Start)[0].Key);
-            Assert.AreEqual(2, UniformChain.Intervals(LinkUp.Start).FrequencyFromObject((ValueInt) 4));
-
-            Assert.AreEqual(4, (ValueInt) UniformChain.Intervals(LinkUp.End)[0].Key);
-            Assert.AreEqual(3, (ValueInt) UniformChain.Intervals(LinkUp.End)[1].Key);
-            Assert.AreEqual(1, UniformChain.Intervals(LinkUp.End).FrequencyFromObject((ValueInt) 4));
-
-            Assert.AreEqual(4, (ValueInt) UniformChain.Intervals(LinkUp.Both)[0].Key);
-            Assert.AreEqual(3, (ValueInt) UniformChain.Intervals(LinkUp.Both)[1].Key);
-            Assert.AreEqual(2, UniformChain.Intervals(LinkUp.Both).FrequencyFromObject((ValueInt) 4));
-
-            UniformChain.Add(message, 4);
-            Assert.AreEqual(1, UniformChain.Intervals(LinkUp.Start).FrequencyFromObject((ValueInt) 4));
-            Assert.AreEqual(1, UniformChain.Intervals(LinkUp.Start).FrequencyFromObject((ValueInt) 1));
-            Assert.AreEqual(1, UniformChain.Intervals(LinkUp.Start).FrequencyFromObject((ValueInt) 3));
-        }*/
     }
 }

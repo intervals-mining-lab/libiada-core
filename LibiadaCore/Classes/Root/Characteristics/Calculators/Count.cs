@@ -9,26 +9,26 @@ namespace LibiadaCore.Classes.Root.Characteristics.Calculators
         /// Для однородной цепи это количество
         /// непустых элементов.
         /// </summary>
-        /// <param name="pChain"></param>
-        /// <param name="Link"></param>
+        /// <param name="chain"></param>
+        /// <param name="linkUp"></param>
         /// <returns></returns>
-        public double Calculate(UniformChain pChain, LinkUp Link)
+        public double Calculate(UniformChain chain, LinkUp linkUp)
         {
-            return pChain.Intervals.Count - 1;
+            return chain.Intervals.Count - 1;
         }
 
         /// <summary>
         /// Для полной неоднородной цепи это её длина.
         /// </summary>
-        /// <param name="pChain"></param>
-        /// <param name="Link"></param>
+        /// <param name="chain"></param>
+        /// <param name="linkUp"></param>
         /// <returns></returns>
-        public double Calculate(Chain pChain, LinkUp Link)
+        public double Calculate(Chain chain, LinkUp linkUp)
         {
             int count = 0;
-            for (int i = 0; i < pChain.Alphabet.Power; i++)
+            for (int i = 0; i < chain.Alphabet.Power; i++)
             {
-                count += (int)Calculate(pChain.UniformChain(i), Link);
+                count += (int)Calculate(chain.UniformChain(i), linkUp);
             }
             return count;
         }

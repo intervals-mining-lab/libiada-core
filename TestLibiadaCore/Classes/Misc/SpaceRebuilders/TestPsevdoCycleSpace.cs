@@ -16,7 +16,7 @@ namespace TestLibiadaCore.Classes.Misc.SpaceRebuilders
         ///<summary>
         ///</summary>
         [SetUp]
-        public void init()
+        public void Init()
         {
             TestChain = new Chain(12);
             TestChain.Add((ValueString)"a", 0);

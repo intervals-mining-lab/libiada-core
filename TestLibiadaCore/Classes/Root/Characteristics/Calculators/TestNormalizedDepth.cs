@@ -1,5 +1,4 @@
 using LibiadaCore.Classes.Root;
-using LibiadaCore.Classes.Root.Characteristics;
 using LibiadaCore.Classes.Root.Characteristics.Calculators;
 using NUnit.Framework;
 
@@ -16,11 +15,11 @@ namespace TestLibiadaCore.Classes.Root.Characteristics.Calculators
         ///<summary>
         ///</summary>
         [SetUp]
-        public void init()
+        public void Init()
         {
-            ObjectMother Mother = new ObjectMother();
-            TestUChain = Mother.TestUniformChain();
-            TestChain = Mother.TestChain();
+            ChainsForTests mother = new ChainsForTests();
+            TestUChain = mother.TestUniformChain();
+            TestChain = mother.TestChain();
         }
 
 
@@ -29,22 +28,23 @@ namespace TestLibiadaCore.Classes.Root.Characteristics.Calculators
         [Test]
         public void TestCalculation()
         {
-            Characteristic nG = new Characteristic(new NormalizedDepth());
+            NormalizedDepth normalizedDepth = new NormalizedDepth();
+            Depth depth = new Depth();
+            Length length = new Length();
+            double theory = depth.Calculate(TestUChain, LinkUp.Start)/
+                        length.Calculate(TestUChain, LinkUp.Both);
 
-            double Theory = TestUChain.GetCharacteristic(LinkUp.Start, new Depth())/
-                        TestUChain.GetCharacteristic(LinkUp.Both, new Length());
+            Assert.AreEqual(theory, normalizedDepth.Calculate(TestUChain, LinkUp.Start));
 
-            Assert.AreEqual(Theory, nG.Value(TestUChain, LinkUp.Start));
+            theory = depth.Calculate(TestUChain, LinkUp.End) /
+                        length.Calculate(TestUChain, LinkUp.Both);
 
-            Theory = TestUChain.GetCharacteristic(LinkUp.End, new Depth()) /
-                        TestUChain.GetCharacteristic(LinkUp.Both, new Length());
+            Assert.AreEqual(theory, normalizedDepth.Calculate(TestUChain, LinkUp.End));
 
-            Assert.AreEqual(Theory, nG.Value(TestUChain, LinkUp.End));
+            theory = depth.Calculate(TestUChain, LinkUp.Both) /
+                        length.Calculate(TestUChain, LinkUp.Both);
 
-            Theory = TestUChain.GetCharacteristic(LinkUp.Both, new Depth()) /
-                        TestUChain.GetCharacteristic(LinkUp.Both, new Length());
-
-            Assert.AreEqual(Theory, nG.Value(TestUChain, LinkUp.Both));
+            Assert.AreEqual(theory, normalizedDepth.Calculate(TestUChain, LinkUp.Both));
         }
 
         ///<summary>
@@ -52,22 +52,24 @@ namespace TestLibiadaCore.Classes.Root.Characteristics.Calculators
         [Test]
         public void TestCalculationForChain()
         {
-            Characteristic nG = new Characteristic(new NormalizedDepth());
+            NormalizedDepth normalizedDepth = new NormalizedDepth();
+            Depth depth = new Depth();
+            Length length = new Length();
 
-            double Theory = TestChain.GetCharacteristic(LinkUp.Start, new Depth()) /
-                        TestChain.GetCharacteristic(LinkUp.Both, new Length());
+            double theory = depth.Calculate(TestChain, LinkUp.Start) /
+                        length.Calculate(TestChain, LinkUp.Both);
 
-            Assert.AreEqual(Theory, nG.Value(TestChain, LinkUp.Start));
+            Assert.AreEqual(theory, normalizedDepth.Calculate(TestChain, LinkUp.Start));
 
-            Theory = TestChain.GetCharacteristic(LinkUp.End, new Depth()) /
-                        TestChain.GetCharacteristic(LinkUp.Both, new Length());
+            theory = depth.Calculate(TestChain, LinkUp.End) /
+                        length.Calculate(TestChain, LinkUp.Both);
 
-            Assert.AreEqual(Theory, nG.Value(TestChain, LinkUp.End));
+            Assert.AreEqual(theory, normalizedDepth.Calculate(TestChain, LinkUp.End));
 
-            Theory = TestChain.GetCharacteristic(LinkUp.Both, new Depth()) /
-                        TestChain.GetCharacteristic(LinkUp.Both, new Length());
+            theory = depth.Calculate(TestChain, LinkUp.Both) /
+                        length.Calculate(TestChain, LinkUp.Both);
 
-            Assert.AreEqual(Theory, nG.Value(TestChain, LinkUp.Both));
+            Assert.AreEqual(theory, normalizedDepth.Calculate(TestChain, LinkUp.Both));
         }
     }
 }

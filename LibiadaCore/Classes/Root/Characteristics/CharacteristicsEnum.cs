@@ -6,9 +6,13 @@ namespace LibiadaCore.Classes.Root.Characteristics
     public enum CharacteristicsEnum
     {
         ///<summary>
-        /// Длинна как сумма длин интервалов.
+        /// Длинна цепи.
         ///</summary>
         Length,
+        ///<summary>
+        /// Сумма длин интервалов.
+        ///</summary>
+        IntervalsSum,
         ///<summary>
         /// Мощность алфавита.
         ///</summary>

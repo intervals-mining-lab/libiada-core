@@ -7,7 +7,7 @@ namespace TestLibiadaCore.Classes.Misc.Iterators
     class TestFromFixStartCutRule
     {
         [Test]
-        public void testCutRule()
+        public void TestCutRule()
         {
             FromFixStartCutRule rule = new FromFixStartCutRule(12, 3);
             CutRuleIterator iterator = rule.getIterator(); //объект, который бегает по массиву

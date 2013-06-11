@@ -5,14 +5,14 @@ namespace LibiadaCore.Classes.Root.Characteristics.Calculators
     ///</summary>
     public class AlphabetPower: ICharacteristicCalculator
     {
-        public double Calculate(UniformChain pChain, LinkUp Link)
+        public double Calculate(UniformChain chain, LinkUp linkUp)
         {
-            return pChain.Alphabet.Power;
+            return chain.Alphabet.Power;
         }
 
-        public double Calculate(Chain pChain, LinkUp Link)
+        public double Calculate(Chain chain, LinkUp linkUp)
         {
-            return pChain.Alphabet.Power;
+            return chain.Alphabet.Power;
         }
 
         public CharacteristicsEnum GetCharacteristicName()

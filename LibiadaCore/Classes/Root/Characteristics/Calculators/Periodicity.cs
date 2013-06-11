@@ -6,17 +6,17 @@ namespace LibiadaCore.Classes.Root.Characteristics.Calculators
     ///</summary>
     public class Periodicity : ICharacteristicCalculator
     {
-        private GeometricMean geometricMean = new GeometricMean();
-        private ArithmeticMean arithmeticMean = new ArithmeticMean();
+        private readonly GeometricMean geometricMean = new GeometricMean();
+        private readonly ArithmeticMean arithmeticMean = new ArithmeticMean();
 
-        public double Calculate(UniformChain pChain, LinkUp Link)
+        public double Calculate(UniformChain chain, LinkUp linkUp)
         {
-            return geometricMean.Calculate(pChain, Link)/arithmeticMean.Calculate(pChain, Link);
+            return geometricMean.Calculate(chain, linkUp)/arithmeticMean.Calculate(chain, linkUp);
         }
 
-        public double Calculate(Chain pChain, LinkUp Link)
+        public double Calculate(Chain chain, LinkUp linkUp)
         {
-            return geometricMean.Calculate(pChain, Link)/arithmeticMean.Calculate(pChain, Link);
+            return geometricMean.Calculate(chain, linkUp)/arithmeticMean.Calculate(chain, linkUp);
         }
 
         public CharacteristicsEnum GetCharacteristicName()

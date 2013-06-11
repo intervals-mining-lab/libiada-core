@@ -7,27 +7,27 @@ namespace LibiadaCore.Classes.Root.Characteristics.Calculators
     ///</summary>
     public class GeometricMean : ICharacteristicCalculator
     {
-        private Depth depth = new Depth();
-        private IntervalsCount intervalsCount = new IntervalsCount();
+        private readonly Depth depthCalc = new Depth();
+        private readonly IntervalsCount intervalsCount = new IntervalsCount();
 
-        public double Calculate(UniformChain pChain, LinkUp Link)
+        public double Calculate(UniformChain chain, LinkUp linkUp)
         {
             
-            double G = depth.Calculate(pChain, Link);
-            double n_j = intervalsCount.Calculate(pChain,Link);
-            return Math.Pow(2, G/n_j);
+            double depth = depthCalc.Calculate(chain, linkUp);
+            double nj = intervalsCount.Calculate(chain,linkUp);
+            return Math.Pow(2, depth/nj);
         }
 
         ///<summary>
         ///</summary>
-        ///<param name="pChain"></param>
-        ///<param name="Link"></param>
+        ///<param name="chain"></param>
+        ///<param name="linkUp"></param>
         ///<returns></returns>
-        public double Calculate(Chain pChain, LinkUp Link)
+        public double Calculate(Chain chain, LinkUp linkUp)
         {
-            double G = depth.Calculate(pChain, Link);
-            double n_j = intervalsCount.Calculate(pChain, Link);
-            return Math.Pow(2, G / n_j);
+            double depth = depthCalc.Calculate(chain, linkUp);
+            double nj = intervalsCount.Calculate(chain, linkUp);
+            return Math.Pow(2, depth / nj);
 
         }
 

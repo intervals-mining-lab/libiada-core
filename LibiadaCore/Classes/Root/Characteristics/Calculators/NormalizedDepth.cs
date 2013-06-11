@@ -5,17 +5,17 @@ namespace LibiadaCore.Classes.Root.Characteristics.Calculators
     ///</summary>
     public class NormalizedDepth : ICharacteristicCalculator
     {
-        private Depth depth = new Depth();
-        private Length length = new Length();
+        private readonly Depth depth = new Depth();
+        private readonly Length length = new Length();
 
-        public double Calculate(UniformChain pChain, LinkUp Link)
+        public double Calculate(UniformChain chain, LinkUp linkUp)
         {
-            return depth.Calculate(pChain, Link)/length.Calculate(pChain, LinkUp.Both);
+            return depth.Calculate(chain, linkUp)/length.Calculate(chain, LinkUp.Both);
         }
 
-        public double Calculate(Chain pChain, LinkUp Link)
+        public double Calculate(Chain chain, LinkUp linkUp)
         {
-            return depth.Calculate(pChain, Link) / length.Calculate(pChain, LinkUp.Both);
+            return depth.Calculate(chain, linkUp) / length.Calculate(chain, LinkUp.Both);
         }
 
         public CharacteristicsEnum GetCharacteristicName()

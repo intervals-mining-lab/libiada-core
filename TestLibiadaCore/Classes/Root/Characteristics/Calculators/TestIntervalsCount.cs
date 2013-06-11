@@ -1,5 +1,4 @@
 using LibiadaCore.Classes.Root;
-using LibiadaCore.Classes.Root.Characteristics;
 using LibiadaCore.Classes.Root.Characteristics.Calculators;
 using NUnit.Framework;
 
@@ -16,11 +15,11 @@ namespace TestLibiadaCore.Classes.Root.Characteristics.Calculators
         ///<summary>
         ///</summary>
         [SetUp]
-        public void init()
+        public void Init()
         {
-            ObjectMother Mother = new ObjectMother();
-            TestUChain = Mother.TestUniformChain();
-            TestChain = Mother.TestChain();
+            ChainsForTests mother = new ChainsForTests();
+            TestUChain = mother.TestUniformChain();
+            TestChain = mother.TestChain();
         }
 
         ///<summary>
@@ -28,13 +27,13 @@ namespace TestLibiadaCore.Classes.Root.Characteristics.Calculators
         [Test]
         public void TestCalculation()
         {
-            Characteristic N = new Characteristic(new IntervalsCount());
-            int ElementCount = 4;
-            Assert.AreEqual(ElementCount, N.Value(TestUChain, LinkUp.Both));
+            IntervalsCount intervalsCount = new IntervalsCount();
+            int elementCount = 4;
+            Assert.AreEqual(elementCount, intervalsCount.Calculate(TestUChain, LinkUp.Both));
 
-            ElementCount = 3;
-            Assert.AreEqual(ElementCount, N.Value(TestUChain, LinkUp.Start));
-            Assert.AreEqual(ElementCount, N.Value(TestUChain, LinkUp.End));
+            elementCount = 3;
+            Assert.AreEqual(elementCount, intervalsCount.Calculate(TestUChain, LinkUp.Start));
+            Assert.AreEqual(elementCount, intervalsCount.Calculate(TestUChain, LinkUp.End));
         }
 
         ///<summary>
@@ -42,13 +41,13 @@ namespace TestLibiadaCore.Classes.Root.Characteristics.Calculators
         [Test]
         public void TestCalculationForChain()
         {
-            Characteristic N = new Characteristic(new IntervalsCount());
-            int ElementCount = 13;
-            Assert.AreEqual(ElementCount, N.Value(TestChain, LinkUp.Both));
+            IntervalsCount intervalsCount = new IntervalsCount();
+            int elementCount = 13;
+            Assert.AreEqual(elementCount, intervalsCount.Calculate(TestChain, LinkUp.Both));
 
-            ElementCount = 10;
-            Assert.AreEqual(ElementCount, N.Value(TestChain, LinkUp.Start));
-            Assert.AreEqual(ElementCount, N.Value(TestChain, LinkUp.End));
+            elementCount = 10;
+            Assert.AreEqual(elementCount, intervalsCount.Calculate(TestChain, LinkUp.Start));
+            Assert.AreEqual(elementCount, intervalsCount.Calculate(TestChain, LinkUp.End));
         }
     }
 }

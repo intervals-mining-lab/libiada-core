@@ -13,13 +13,13 @@ namespace LibiadaCore.Classes.Root.Characteristics.Calculators
         /// К обоим концам = количество элементов + 1
         /// Без привязки = количество элементов - 1
         /// </summary>
-        /// <param name="pChain"></param>
-        /// <param name="Link"></param>
+        /// <param name="chain"></param>
+        /// <param name="linkUp"></param>
         /// <returns></returns>
-        public double Calculate(UniformChain pChain, LinkUp Link)
+        public double Calculate(UniformChain chain, LinkUp linkUp)
         {
-            List<int> intervals = pChain.Intervals;
-            switch (Link)
+            List<int> intervals = chain.Intervals;
+            switch (linkUp)
             {
                 case LinkUp.Start:
                     return intervals.Count - 1;
@@ -32,12 +32,12 @@ namespace LibiadaCore.Classes.Root.Characteristics.Calculators
             }
         }
 
-        public double Calculate(Chain pChain, LinkUp Link)
+        public double Calculate(Chain chain, LinkUp linkUp)
         {
             int sum = 0;
-            for (int i = 0; i < pChain.Alphabet.Power; i++)
+            for (int i = 0; i < chain.Alphabet.Power; i++)
             {
-                sum += (int)Calculate(pChain.UniformChain(i), Link);
+                sum += (int)Calculate(chain.UniformChain(i), linkUp);
             }
             return sum;
         }

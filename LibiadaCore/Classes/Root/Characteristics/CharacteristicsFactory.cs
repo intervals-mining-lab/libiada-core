@@ -60,11 +60,19 @@ namespace LibiadaCore.Classes.Root.Characteristics
         }
 
         ///<summary>
-        /// Длинна как сумма длин интервалов.
+        /// Длинна цепи.
         ///</summary>
         public static ICharacteristicCalculator Length
         {
             get { return new Length(); }
+        }
+
+        ///<summary>
+        /// Длинна как сумма длин интервалов.
+        ///</summary>
+        public static ICharacteristicCalculator IntervalsSum
+        {
+            get { return new IntervalsSum(); }
         }
 
         ///<summary>
@@ -172,10 +180,6 @@ namespace LibiadaCore.Classes.Root.Characteristics
                 temp.Add(Power);
                 temp.Add(nG);
                 temp.Add(t);
-                //temp.Add(PhChainCount);
-                //temp.Add(CutLength);
-                //temp.Add(V);
-                //temp.Add(CutLenVocEntropy);
                 return temp;
             }
         }

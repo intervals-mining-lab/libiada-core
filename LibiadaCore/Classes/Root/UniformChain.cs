@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using LibiadaCore.Classes.Misc;
 using LibiadaCore.Classes.Root.Characteristics.Calculators;
@@ -143,11 +142,6 @@ namespace LibiadaCore.Classes.Root
             building = ArrayManipulator.DeleteAt(building, index);
             BuildIntervals();
             return element;
-        }
-
-        public double GetCharacteristic(LinkUp linkUp, ICharacteristicCalculator calculator)
-        {
-            return calculator.Calculate(this, linkUp);
         }
     }
 }

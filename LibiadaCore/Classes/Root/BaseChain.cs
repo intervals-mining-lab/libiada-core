@@ -238,6 +238,10 @@ namespace LibiadaCore.Classes.Root
             {
                 return true;
             }
+            if (obj as BaseChain == null)
+            {
+                return false;
+            }
             BaseChain chainObject = (BaseChain)obj;
             if (!alphabet.Equals((chainObject).alphabet))
             {

@@ -7,43 +7,43 @@ namespace LibiadaCore.Classes.Root.Characteristics.Calculators
     ///</summary>
     public class DescriptiveInformation : ICharacteristicCalculator
     {
-        private Probability probability = new Probability();
-        private ArithmeticMean arithmeticMean = new ArithmeticMean();
+        private readonly Probability probability = new Probability();
+        private readonly ArithmeticMean arithmeticMean = new ArithmeticMean();
 
-        public double Calculate(UniformChain pChain, LinkUp Link)
+        public double Calculate(UniformChain chain, LinkUp linkUp)
         {
             
-            double P = probability.Calculate(pChain, Link);
-            double Result = Math.Pow(arithmeticMean.Calculate(pChain, Link), P);
+            double p = probability.Calculate(chain, linkUp);
+            double result = Math.Pow(arithmeticMean.Calculate(chain, linkUp), p);
             //≈сли вс€ цепь заполнена одинаковыми сообщени€ми
             //то веро€тность равна 1 и считать описательные информации не имеет смысла.
-            if (P < 1)
+            if (p < 1)
             {
-                double P_1 = 1 - P;
-                double A_1 = 1 / P_1;
-                Result *= Math.Pow(A_1, P_1);
+                double pInverse = 1 - p;
+                double averageInterval = 1 / pInverse;
+                result *= Math.Pow(averageInterval, pInverse);
             }
-            return Result;
+            return result;
         }
 
         ///<summary>
         ///</summary>
-        ///<param name="pChain"></param>
-        ///<param name="Link"></param>
+        ///<param name="chain"></param>
+        ///<param name="linkUp"></param>
         ///<returns></returns>
-        public double Calculate(Chain pChain, LinkUp Link)
+        public double Calculate(Chain chain, LinkUp linkUp)
         {
             double temp = 1;
 
-            for (int i = 0; i < pChain.Alphabet.Power; i++)
+            for (int i = 0; i < chain.Alphabet.Power; i++)
             {
-                temp *= Math.Pow(arithmeticMean.Calculate(pChain.UniformChain(i), Link),
-                    probability.Calculate(pChain.UniformChain(i), Link)) ;
+                temp *= Math.Pow(arithmeticMean.Calculate(chain.UniformChain(i), linkUp),
+                    probability.Calculate(chain.UniformChain(i), linkUp)) ;
             }
-            double P_sum = probability.Calculate(pChain, Link);
-            if (P_sum < 1)
+            double pSum = probability.Calculate(chain, linkUp);
+            if (pSum < 1)
             {
-                temp *= Math.Pow(1 / (1 - P_sum), 1 - P_sum);
+                temp *= Math.Pow(1 / (1 - pSum), 1 - pSum);
             }
             return temp;
         }

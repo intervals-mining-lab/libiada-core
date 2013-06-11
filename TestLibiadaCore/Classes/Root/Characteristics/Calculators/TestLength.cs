@@ -1,5 +1,4 @@
 using LibiadaCore.Classes.Root;
-using LibiadaCore.Classes.Root.Characteristics;
 using LibiadaCore.Classes.Root.Characteristics.Calculators;
 using NUnit.Framework;
 
@@ -18,7 +17,7 @@ namespace TestLibiadaCore.Classes.Root.Characteristics.Calculators
         [SetUp]
         public void init()
         {
-            ObjectMother Mother = new ObjectMother();
+            ChainsForTests Mother = new ChainsForTests();
             TestUChain = Mother.TestUniformChain();
             TestChain = Mother.TestChain();
         }
@@ -28,12 +27,11 @@ namespace TestLibiadaCore.Classes.Root.Characteristics.Calculators
         [Test]
         public void TestCalculation()
         {
-            Characteristic Length = new Characteristic(new Length());
+            Length length = new Length();
 
-            int LengthUniformChain = 10;
-            Assert.AreEqual(8, Length.Value(TestUChain, LinkUp.Start));
-            Assert.AreEqual(7, Length.Value(TestUChain, LinkUp.End));
-            Assert.AreEqual(LengthUniformChain, Length.Value(TestUChain, LinkUp.Both));
+            Assert.AreEqual(10, length.Calculate(TestUChain, LinkUp.Start));
+            Assert.AreEqual(10, length.Calculate(TestUChain, LinkUp.End));
+            Assert.AreEqual(10, length.Calculate(TestUChain, LinkUp.Both));
         }
 
         ///<summary>
@@ -41,12 +39,12 @@ namespace TestLibiadaCore.Classes.Root.Characteristics.Calculators
         [Test]
         public void TestCalculationForChain()
         {
-            Characteristic Length = new Characteristic(new Length());
+            Length length = new Length();
 
-            int LengthChain = 10;
-            Assert.AreEqual(LengthChain, Length.Value(TestChain, LinkUp.Start));
-            Assert.AreEqual(LengthChain, Length.Value(TestChain, LinkUp.End));
-            Assert.AreEqual(LengthChain, Length.Value(TestChain, LinkUp.Both));
+            const int chainLength = 10;
+            Assert.AreEqual(chainLength, length.Calculate(TestChain, LinkUp.Start));
+            Assert.AreEqual(chainLength, length.Calculate(TestChain, LinkUp.End));
+            Assert.AreEqual(chainLength, length.Calculate(TestChain, LinkUp.Both));
         }
     }
 }

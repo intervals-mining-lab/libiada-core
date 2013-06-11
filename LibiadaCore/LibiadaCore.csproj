@@ -68,6 +68,7 @@
     <Compile Include="Classes\Misc\SpaceRebuilders\SpaceRebuilderFromChainToChainByBlock.cs" />
     <Compile Include="Classes\Root\BaseChain.cs" />
     <Compile Include="Classes\Root\Chain.cs" />
+    <Compile Include="Classes\Root\Characteristics\BinaryCalculators\BinaryCharacteristicCalculator.cs" />
     <Compile Include="Classes\Root\Characteristics\BinaryCharacteristicsEnum.cs" />
     <Compile Include="Classes\Root\Characteristics\BinaryCharacteristicsFactory.cs" />
     <Compile Include="Classes\Root\Characteristics\Calculators\AlphabetPower.cs" />
@@ -90,6 +91,7 @@
     <Compile Include="Classes\Root\Characteristics\Calculators\ICharacteristicCalculator.cs" />
     <Compile Include="Classes\Root\Characteristics\Calculators\IdentificationInformation.cs" />
     <Compile Include="Classes\Root\Characteristics\Calculators\IntervalsCount.cs" />
+    <Compile Include="Classes\Root\Characteristics\Calculators\IntervalsSum.cs" />
     <Compile Include="Classes\Root\Characteristics\Calculators\Length.cs" />
     <Compile Include="Classes\Root\Characteristics\Calculators\NormalizedDepth.cs" />
     <Compile Include="Classes\Root\Characteristics\Calculators\NormalizedAverageRemoteness.cs" />

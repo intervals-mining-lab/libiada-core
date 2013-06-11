@@ -15,7 +15,7 @@ namespace TestLibiadaCore.Classes.Misc.Iterators
         ///<summary>
         ///</summary>
         [SetUp]
-        public void init()
+        public void Init()
         {
             ChainToIterate = new Chain(12);
             ChainToIterate.Add(new ValueChar('1'), 0);

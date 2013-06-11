@@ -1,11 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
 
 namespace LibiadaCore.Classes.Root.Characteristics.BinaryCalculators
 {
-    public class MutualDependenceCoefficient:IBinaryCharacteristicCalculator
+    public class MutualDependenceCoefficient:BinaryCharacteristicCalculator
     {
-        public double Calculate(Chain chain, IBaseObject firstElement, IBaseObject secondElement, LinkUp linkUp)
+        public override double Calculate(Chain chain, IBaseObject firstElement, IBaseObject secondElement, LinkUp linkUp)
         {
             if (firstElement.Equals(secondElement))
             {
@@ -21,21 +20,7 @@ namespace LibiadaCore.Classes.Root.Characteristics.BinaryCalculators
             return Math.Sqrt(firstInvolvedCoefficient * secondInvolvedCoefficient);
         }
 
-        public List<List<double>> Calculate(Chain chain, LinkUp linkUp)
-        {
-            List<List<double>> result = new List<List<double>>();
-            for (int i = 0; i < chain.Alphabet.Power; i++)
-            {
-                result.Add(new List<double>());
-                for (int j = 0; j < chain.Alphabet.Power; j++)
-                {
-                    result[i].Add(Calculate(chain, chain.Alphabet[i], chain.Alphabet[j], linkUp));
-                }
-            }
-            return result;
-        }
-
-        public BinaryCharacteristicsEnum GetCharacteristicName()
+        public override BinaryCharacteristicsEnum GetCharacteristicName()
         {
             return BinaryCharacteristicsEnum.MutualDependenceCoefficient;
         }

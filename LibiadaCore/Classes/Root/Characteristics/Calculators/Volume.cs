@@ -8,16 +8,16 @@ namespace LibiadaCore.Classes.Root.Characteristics.Calculators
     ///</summary>
     public class Volume : ICharacteristicCalculator
     {
-        public double Calculate(UniformChain pChain, LinkUp Link)
+        public double Calculate(UniformChain chain, LinkUp linkUp)
         {
-            List<int> intervals = pChain.Intervals;
+            List<int> intervals = chain.Intervals;
             double result = 1;
             for (int i = 1; i < intervals.Count - 1; i++)
             {
                 result =  result * intervals[i];
             }
 
-            switch (Link)
+            switch (linkUp)
             {
                 case LinkUp.Start:
                     return result * intervals[0];
@@ -32,15 +32,15 @@ namespace LibiadaCore.Classes.Root.Characteristics.Calculators
 
         ///<summary>
         ///</summary>
-        ///<param name="pChain"></param>
-        ///<param name="Link"></param>
+        ///<param name="chain"></param>
+        ///<param name="linkUp"></param>
         ///<returns></returns>
-        public double Calculate(Chain pChain, LinkUp Link)
+        public double Calculate(Chain chain, LinkUp linkUp)
         {
             double temp = 1;
-            for (int i = 0; i < pChain.Alphabet.Power; i++)
+            for (int i = 0; i < chain.Alphabet.Power; i++)
             {
-                temp = temp * Calculate(pChain.UniformChain(i), Link);
+                temp = temp * Calculate(chain.UniformChain(i), linkUp);
             }
             return temp;
         }

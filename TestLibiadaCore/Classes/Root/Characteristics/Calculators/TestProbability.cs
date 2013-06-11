@@ -1,5 +1,4 @@
 using LibiadaCore.Classes.Root;
-using LibiadaCore.Classes.Root.Characteristics;
 using LibiadaCore.Classes.Root.Characteristics.Calculators;
 using NUnit.Framework;
 
@@ -16,11 +15,11 @@ namespace TestLibiadaCore.Classes.Root.Characteristics.Calculators
         ///<summary>
         ///</summary>
         [SetUp]
-        public void init()
+        public void Init()
         {
-            ObjectMother Mother = new ObjectMother();
-            TestUChain = Mother.TestUniformChain();
-            TestChain = Mother.TestChain();
+            ChainsForTests mother = new ChainsForTests();
+            TestUChain = mother.TestUniformChain();
+            TestChain = mother.TestChain();
         }
 
         ///<summary>
@@ -28,12 +27,12 @@ namespace TestLibiadaCore.Classes.Root.Characteristics.Calculators
         [Test]
         public void TestCalculationForUniformChain()
         {
-            Characteristic P = new Characteristic(new Probability());
-            int ElementCount = 3;
-            double Length = 10;
-            Assert.AreEqual(ElementCount/Length, P.Value(TestUChain, LinkUp.Both));
-            Assert.AreEqual(ElementCount/Length, P.Value(TestUChain, LinkUp.Start));
-            Assert.AreEqual(ElementCount/Length, P.Value(TestUChain, LinkUp.End));
+            Probability probability = new Probability();
+            int elementCount = 3;
+            double length = 10;
+            Assert.AreEqual(elementCount / length, probability.Calculate(TestUChain, LinkUp.Both));
+            Assert.AreEqual(elementCount / length, probability.Calculate(TestUChain, LinkUp.Start));
+            Assert.AreEqual(elementCount / length, probability.Calculate(TestUChain, LinkUp.End));
         }
 
         ///<summary>
@@ -41,10 +40,10 @@ namespace TestLibiadaCore.Classes.Root.Characteristics.Calculators
         [Test]
         public void TestCalculationForChain()
         {
-            Characteristic P = new Characteristic(new Probability());
-            Assert.AreEqual(1, P.Value(TestChain, LinkUp.Both));
-            Assert.AreEqual(1, P.Value(TestChain, LinkUp.Start));
-            Assert.AreEqual(1, P.Value(TestChain, LinkUp.End));
+            Probability probability = new Probability();
+            Assert.AreEqual(1, probability.Calculate(TestChain, LinkUp.Both));
+            Assert.AreEqual(1, probability.Calculate(TestChain, LinkUp.Start));
+            Assert.AreEqual(1, probability.Calculate(TestChain, LinkUp.End));
         }
     }
 }

@@ -7,16 +7,17 @@ namespace LibiadaCore.Classes.Root.Characteristics.Calculators
     ///</summary>
     public class CutLengthVocabularyEntropy : ICharacteristicCalculator
     {
-        public double Calculate(UniformChain pChain, LinkUp Link)
+        private readonly CutLength cutLength = new CutLength();
+
+        public double Calculate(UniformChain chain, LinkUp linkUp)
         {
-            CutLength cutLength = new CutLength();
-            return Math.Log(pChain.Length - cutLength.Calculate(pChain, Link) + 1, 2);
+            return Math.Log(chain.Length - cutLength.Calculate(chain, linkUp) + 1, 2);
         }
 
-        public double Calculate(Chain pChain, LinkUp Link)
+        public double Calculate(Chain chain, LinkUp linkUp)
         {
-            CutLength cutLength = new CutLength();
-            return Math.Log(pChain.Length - cutLength.Calculate(pChain, Link) + 1, 2);
+            
+            return Math.Log(chain.Length - cutLength.Calculate(chain, linkUp) + 1, 2);
         }
 
         public CharacteristicsEnum GetCharacteristicName()

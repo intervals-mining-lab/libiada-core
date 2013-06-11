@@ -1,6 +1,5 @@
 using System;
 using LibiadaCore.Classes.Root;
-using LibiadaCore.Classes.Root.Characteristics;
 using LibiadaCore.Classes.Root.Characteristics.Calculators;
 using NUnit.Framework;
 
@@ -17,11 +16,11 @@ namespace TestLibiadaCore.Classes.Root.Characteristics.Calculators
         ///<summary>
         ///</summary>
         [SetUp]
-        public void init()
+        public void Init()
         {
-            ObjectMother Mother = new ObjectMother();
-            TestUChain = Mother.TestUniformChain();
-            TestChain = Mother.TestChain();
+            ChainsForTests mother = new ChainsForTests();
+            TestUChain = mother.TestUniformChain();
+            TestChain = mother.TestChain();
         }
 
         ///<summary>
@@ -29,16 +28,16 @@ namespace TestLibiadaCore.Classes.Root.Characteristics.Calculators
         [Test]
         public void TestCalculationForUniformChain()
         {
-            Characteristic pIdentificationInformation = new Characteristic(new IdentificationInformation());
+            IdentificationInformation identificationInformation = new IdentificationInformation();
 
             double pLength = 10;
-            double ElementsCount = 3;
+            double elementsCount = 3;
 
-            double deltaA = pLength/ElementsCount;
-            double IInformation = Math.Log(deltaA, 2);
-            Assert.AreEqual(IInformation, pIdentificationInformation.Value(TestUChain, LinkUp.Start));
-            Assert.AreEqual(IInformation, pIdentificationInformation.Value(TestUChain, LinkUp.End));
-            Assert.AreEqual(IInformation, pIdentificationInformation.Value(TestUChain, LinkUp.Both));
+            double deltaA = pLength/elementsCount;
+            double information = Math.Log(deltaA, 2);
+            Assert.AreEqual(information, identificationInformation.Calculate(TestUChain, LinkUp.Start));
+            Assert.AreEqual(information, identificationInformation.Calculate(TestUChain, LinkUp.End));
+            Assert.AreEqual(information, identificationInformation.Calculate(TestUChain, LinkUp.Both));
         }
 
         ///<summary>
@@ -46,33 +45,33 @@ namespace TestLibiadaCore.Classes.Root.Characteristics.Calculators
         [Test]
         public void TestCalculationForChain()
         {
-            Characteristic pIdentificationInformation = new Characteristic(new IdentificationInformation());
+            IdentificationInformation identificationInformation = new IdentificationInformation();
 
             double pLength = 10;
-            double ElementsACount = 4;
-            double ElementsBCount = 3;
-            double ElementsCCount = 3;
+            const double elementsACount = 4;
+            const double elementsBCount = 3;
+            const double elementsCCount = 3;
 
-            double deltaAA = pLength/ElementsACount;
-            double deltaAB = pLength/ElementsBCount;
-            double deltaAC = pLength/ElementsCCount;
-
-
-            double PA = ElementsACount/pLength;
-            double PB = ElementsBCount/pLength;
-            double PC = ElementsCCount/pLength;
+            double deltaAA = pLength/elementsACount;
+            double deltaAB = pLength/elementsBCount;
+            double deltaAC = pLength/elementsCCount;
 
 
-            double IInformationA = PA*Math.Log(deltaAA, 2);
-            double IInformationB = PB*Math.Log(deltaAB, 2);
-            double IInformationC = PC*Math.Log(deltaAC, 2);
+            double PA = elementsACount/pLength;
+            double PB = elementsBCount/pLength;
+            double PC = elementsCCount/pLength;
 
 
-            double IInformation = (IInformationA + IInformationB + IInformationC);
+            double informationA = PA*Math.Log(deltaAA, 2);
+            double informationB = PB*Math.Log(deltaAB, 2);
+            double informationC = PC*Math.Log(deltaAC, 2);
 
-            Assert.AreEqual(IInformation, pIdentificationInformation.Value(TestChain, LinkUp.Start));
-            Assert.AreEqual(IInformation, pIdentificationInformation.Value(TestChain, LinkUp.End));
-            Assert.AreEqual(IInformation, pIdentificationInformation.Value(TestChain, LinkUp.Both));
+
+            double information = (informationA + informationB + informationC);
+
+            Assert.AreEqual(information, identificationInformation.Calculate(TestChain, LinkUp.Start));
+            Assert.AreEqual(information, identificationInformation.Calculate(TestChain, LinkUp.End));
+            Assert.AreEqual(information, identificationInformation.Calculate(TestChain, LinkUp.Both));
         }
     }
 }

@@ -1,6 +1,5 @@
 using System;
 using LibiadaCore.Classes.Root;
-using LibiadaCore.Classes.Root.Characteristics;
 using LibiadaCore.Classes.Root.Characteristics.Calculators;
 using NUnit.Framework;
 
@@ -11,14 +10,14 @@ namespace TestLibiadaCore.Classes.Root.Characteristics.Calculators
     [TestFixture]
     public class TestCutLengthVocabularyEntropy
     {
-        private ObjectMother Mother;
+        private ChainsForTests Mother;
 
         ///<summary>
         ///</summary>
         [SetUp]
-        public void init()
+        public void Init()
         {
-            Mother = new ObjectMother();
+            Mother = new ChainsForTests();
         }
 
         ///<summary>
@@ -26,14 +25,14 @@ namespace TestLibiadaCore.Classes.Root.Characteristics.Calculators
         [Test]
         public void TestCutLengthVocabularyEntropyChain()
         {
-            Characteristic Characteristic = new Characteristic(new CutLengthVocabularyEntropy());
+            CutLengthVocabularyEntropy cutLengthVocabularyEntropy = new CutLengthVocabularyEntropy();
 
-            Chain TestChain = Mother.TestChain();
-
-            int Count = (int) (TestChain.Length - TestChain.GetCharacteristic(LinkUp.Start,new CutLength())+1);
-            Assert.AreEqual(Math.Log(Count, 2), Characteristic.Value(TestChain, LinkUp.Both));
-            Assert.AreEqual(Math.Log(Count, 2), Characteristic.Value(TestChain, LinkUp.Start));
-            Assert.AreEqual(Math.Log(Count, 2), Characteristic.Value(TestChain, LinkUp.End));
+            Chain testChain = Mother.TestChain();
+            CutLength cutLength = new CutLength();
+            int Count = (int)(testChain.Length - cutLength.Calculate(testChain, LinkUp.Start) + 1);
+            Assert.AreEqual(Math.Log(Count, 2), cutLengthVocabularyEntropy.Calculate(testChain, LinkUp.Both));
+            Assert.AreEqual(Math.Log(Count, 2), cutLengthVocabularyEntropy.Calculate(testChain, LinkUp.Start));
+            Assert.AreEqual(Math.Log(Count, 2), cutLengthVocabularyEntropy.Calculate(testChain, LinkUp.End));
         }
 
         ///<summary>
@@ -41,14 +40,14 @@ namespace TestLibiadaCore.Classes.Root.Characteristics.Calculators
         [Test]
         public void TestCutLengthVocabularyEntropyUChain()
         {
-            Characteristic Characteristic = new Characteristic(new CutLengthVocabularyEntropy());
+            CutLengthVocabularyEntropy cutLengthVocabularyEntropy = new CutLengthVocabularyEntropy();
 
-            UniformChain TestChain = Mother.TestUniformChain();
-
-            int Count = (int)(TestChain.Length - TestChain.GetCharacteristic(LinkUp.Start, new CutLength()) + 1);
-            Assert.AreEqual(Math.Log(Count ,2), Characteristic.Value(TestChain, LinkUp.Both));
-            Assert.AreEqual(Math.Log(Count, 2), Characteristic.Value(TestChain, LinkUp.Start));
-            Assert.AreEqual(Math.Log(Count, 2), Characteristic.Value(TestChain, LinkUp.End));
+            UniformChain testChain = Mother.TestUniformChain();
+            CutLength cutLength = new CutLength();
+            int Count = (int)(testChain.Length - cutLength.Calculate(testChain, LinkUp.Start) + 1);
+            Assert.AreEqual(Math.Log(Count, 2), cutLengthVocabularyEntropy.Calculate(testChain, LinkUp.Both));
+            Assert.AreEqual(Math.Log(Count, 2), cutLengthVocabularyEntropy.Calculate(testChain, LinkUp.Start));
+            Assert.AreEqual(Math.Log(Count, 2), cutLengthVocabularyEntropy.Calculate(testChain, LinkUp.End));
         }
     }
 }

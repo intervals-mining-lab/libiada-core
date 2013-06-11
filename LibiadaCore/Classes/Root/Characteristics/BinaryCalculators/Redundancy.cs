@@ -1,19 +1,19 @@
 ﻿using System;
-using System.Collections.Generic;
 using LibiadaCore.Classes.Root.Characteristics.Calculators;
 
 namespace LibiadaCore.Classes.Root.Characteristics.BinaryCalculators
 {
-    public class Redundancy:IBinaryCharacteristicCalculator
+    public class Redundancy:BinaryCharacteristicCalculator
     {
-        public double Calculate(Chain chain, IBaseObject firstElement, IBaseObject secondElement, LinkUp linkUp)
+        public override double Calculate(Chain chain, IBaseObject firstElement, IBaseObject secondElement, LinkUp linkUp)
         {
             if (firstElement.Equals(secondElement))
             {
                 return 0;
             }
-            UniformChain firstElementChain = (UniformChain)chain.UniformChain(firstElement);
-            int firstElementCount = (int)firstElementChain.GetCharacteristic(linkUp, new Count());
+            Count count = new Count();
+            UniformChain firstElementChain = chain.UniformChain(firstElement);
+            int firstElementCount = (int)count.Calculate(firstElementChain, linkUp);
             double avG = 0;
             int currentEntrance = 0;
             
@@ -49,21 +49,7 @@ namespace LibiadaCore.Classes.Root.Characteristics.BinaryCalculators
             return 1 - binaryGeometricMean / Math.Pow(2, avG);
         }
 
-        public List<List<double>> Calculate(Chain chain, LinkUp linkUp)
-        {
-            List<List<double>> result = new List<List<double>>();
-            for (int i = 0; i < chain.Alphabet.Power; i++)
-            {
-                result.Add(new List<double>());
-                for (int j = 0; j < chain.Alphabet.Power; j++)
-                {
-                    result[i].Add(Calculate(chain, chain.Alphabet[i], chain.Alphabet[j], linkUp));
-                }
-            }
-            return result;
-        }
-
-        public BinaryCharacteristicsEnum GetCharacteristicName()
+        public override BinaryCharacteristicsEnum GetCharacteristicName()
         {
             return BinaryCharacteristicsEnum.Redundancy;
         }

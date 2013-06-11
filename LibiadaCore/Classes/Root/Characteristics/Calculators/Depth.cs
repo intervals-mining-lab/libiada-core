@@ -8,16 +8,16 @@ namespace LibiadaCore.Classes.Root.Characteristics.Calculators
     ///</summary>
     public class Depth : ICharacteristicCalculator
     {
-        public double Calculate(UniformChain pChain, LinkUp Link)
+        public double Calculate(UniformChain chain, LinkUp linkUp)
         {
-            List<int> intervals = pChain.Intervals;
+            List<int> intervals = chain.Intervals;
             double result = 0;
             for (int i = 1; i < intervals.Count - 1; i++)
             {
                 result += Math.Log(intervals[i], 2);
             }
 
-            switch (Link)
+            switch (linkUp)
             {
                 case LinkUp.Start:
                     return result + Math.Log(intervals[0], 2);
@@ -33,15 +33,15 @@ namespace LibiadaCore.Classes.Root.Characteristics.Calculators
 
         ///<summary>
         ///</summary>
-        ///<param name="pChain"></param>
-        ///<param name="Link"></param>
+        ///<param name="chain"></param>
+        ///<param name="linkUp"></param>
         ///<returns></returns>
-        public double Calculate(Chain pChain, LinkUp Link)
+        public double Calculate(Chain chain, LinkUp linkUp)
         {
             double temp = 0;
-            for (int i = 0; i < pChain.Alphabet.Power; i++)
+            for (int i = 0; i < chain.Alphabet.Power; i++)
             {
-                temp += Calculate(pChain.UniformChain(i), Link);
+                temp += Calculate(chain.UniformChain(i), linkUp);
             }
             return temp;
         }
