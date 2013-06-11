@@ -1,5 +1,5 @@
 using LibiadaCore.Classes.Root;
-using LibiadaCore.Classes.Root.Characteristics;
+using LibiadaCore.Classes.Root.Characteristics.Calculators;
 
 namespace BuildingsIterator.Classes.Filters
 {
@@ -11,11 +11,12 @@ namespace BuildingsIterator.Classes.Filters
         public bool IsValid(string building)
         {
             Chain ch = new Chain(building);
-
-            double p = ch.UniformChain(0).GetCharacteristic(LinkUp.Start, CharacteristicsFactory.P);
-            for (int i = 1; i < ch.GetCharacteristic(LinkUp.Start, CharacteristicsFactory.Power); i++)
+            Probability probability = new Probability();
+            AlphabetPower alphabetPower = new AlphabetPower();
+            double p = probability.Calculate(ch.UniformChain(0), LinkUp.Start);
+            for (int i = 1; i < alphabetPower.Calculate(ch, LinkUp.Start); i++)
             {
-                if (p != ch.UniformChain(i).GetCharacteristic(LinkUp.Start, CharacteristicsFactory.P))
+                if (p != probability.Calculate(ch.UniformChain(i), LinkUp.Start))
                     return false;
             }
             return true;

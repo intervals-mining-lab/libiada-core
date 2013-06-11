@@ -51,7 +51,7 @@ namespace BuildingsIterator.Classes
             List<double> characteristics = new List<double>(characteristic.Count);
             foreach (LinkedUpCharacteristic calculator in characteristic)
             {
-                characteristics.Add(chain.GetCharacteristic(calculator.LinkUp, calculator.Calc));
+                characteristics.Add(calculator.Calc.Calculate(chain, calculator.LinkUp));
             }
             return characteristics;
         }
