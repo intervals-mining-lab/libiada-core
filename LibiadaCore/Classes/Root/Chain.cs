@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using LibiadaCore.Classes.Misc;
 using LibiadaCore.Classes.Root.Characteristics.Calculators;

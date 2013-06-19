@@ -244,7 +244,7 @@ namespace TestLibiadaCore.Classes.Root.Characteristics.BinaryCalculators
 
         public static void CalculationTest(BinaryCharacteristicCalculator calc, int index, string firstElement, string secondElement, double value)
         {
-            Assert.That(calc.Calculate(Chains[index], Elements[firstElement], Elements[secondElement], LinkUp.End), Is.EqualTo(value).Within(0.0001));
+            Assert.AreEqual(calc.Calculate(Chains[index], Elements[firstElement], Elements[secondElement], LinkUp.End), value, 0.0001);
         }
     }
 }
