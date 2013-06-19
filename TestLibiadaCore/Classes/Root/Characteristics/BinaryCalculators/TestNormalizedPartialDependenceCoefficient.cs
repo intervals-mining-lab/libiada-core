@@ -10,186 +10,39 @@ namespace TestLibiadaCore.Classes.Root.Characteristics.BinaryCalculators
     [TestFixture]
     public class TestNormalizedPartialDependenceCoefficient
     {
-        [Test]
-        public void TestNormalizedK1()
+        private List<Chain> Chains;
+        private Dictionary<String, IBaseObject> Elements;
+
+        [SetUp]
+        public void Init()
+        {
+            Chains = ChainsForCalculation.Chains;
+            Elements = ChainsForCalculation.Elements;
+        }
+
+        [TestCase(1, 0, 0)]
+        [TestCase(2, 0, 0)]
+        [TestCase(3, 0, 0.1214)]
+        [TestCase(4, 0.3, 0)]
+        [TestCase(5, 0.1515, 0)]
+        [TestCase(6, -1.6923, 0)]
+        [TestCase(7, -0.0303, 0.0107)]
+        [TestCase(8, 0.0855, 0.012)]
+        [TestCase(9, 0.0047, 0.0424)]
+        [TestCase(10, 0.1754, 0.0861)]
+        [TestCase(11, 0.1971, 0.0127)]
+        [TestCase(12, 0.0732, 0.0312)]
+        [TestCase(13, 0.1426, 0.0991)]
+        [TestCase(14, 0.2693, 0.0546)]
+        [TestCase(15, 0.0357, 0.1458)]
+        [TestCase(16, 0.0904, 0.0478)]
+        [TestCase(17, 0.1401, 0.0578)]
+        public void TestNormalizedK1(int index, double firstValue, double secondValue)
         {
             NormalizedPartialDependenceCoefficient calculator = new NormalizedPartialDependenceCoefficient();
-            ValueChar messageA = new ValueChar('a');
-            ValueChar messageB = new ValueChar('b');
 
-            // ----------- цепочки из работы Морозенко
-
-            Chain chain = new Chain(2);
-            chain.Add(messageA, 0);
-            chain.Add(messageB, 1);
-            Assert.AreEqual(0, Math.Round(calculator.Calculate(chain, messageA, messageB, LinkUp.End), 3));
-            Assert.AreEqual(0, Math.Round(calculator.Calculate(chain, messageB, messageA, LinkUp.End), 3));
-
-            chain = new Chain(6);
-            chain.Add(messageA, 0);
-            chain.Add(messageB, 3);
-            Assert.AreEqual(0, Math.Round(calculator.Calculate(chain, messageA, messageB, LinkUp.End), 3));
-            Assert.AreEqual(0, Math.Round(calculator.Calculate(chain, messageB, messageA, LinkUp.End), 3));
-
-            chain = new Chain(27);
-            chain.Add(messageA, 0);
-            chain.Add(messageA, 4);
-            chain.Add(messageA, 12);
-            chain.Add(messageA, 19);
-            chain.Add(messageB, 3);
-            chain.Add(messageB, 9);
-            chain.Add(messageB, 16);
-            chain.Add(messageB, 26);
-            Assert.AreEqual(0, Math.Round(calculator.Calculate(chain, messageA, messageB, LinkUp.End), 3));
-            Assert.AreEqual(0.121, Math.Round(calculator.Calculate(chain, messageB, messageA, LinkUp.End), 3));
-
-            chain = new Chain(5);
-            chain.Add(messageA, 0);
-            chain.Add(messageB, 1);
-            Assert.AreEqual(0.3, Math.Round(calculator.Calculate(chain, messageA, messageB, LinkUp.End), 3));
-            Assert.AreEqual(0, Math.Round(calculator.Calculate(chain, messageB, messageA, LinkUp.End), 3));
-
-            chain = new Chain(12);
-            chain.Add(messageA, 0);
-            chain.Add(messageB, 1);
-            Assert.AreEqual(0.152, Math.Round(calculator.Calculate(chain, messageA, messageB, LinkUp.End), 3));
-            Assert.AreEqual(0, Math.Round(calculator.Calculate(chain, messageB, messageA, LinkUp.End), 3));
-
-            chain = new Chain(13);
-            chain.Add(messageA, 0);
-            chain.Add(messageB, 12);
-            Assert.AreEqual(-1.692, Math.Round(calculator.Calculate(chain, messageA, messageB, LinkUp.End), 3));
-            Assert.AreEqual(0, calculator.Calculate(chain, messageB, messageA, LinkUp.End));
-
-            chain = new Chain(29);
-            chain.Add(messageA, 0);
-            chain.Add(messageA, 14);
-            chain.Add(messageA, 17);
-            chain.Add(messageA, 18);
-            chain.Add(messageA, 19);
-            chain.Add(messageA, 22);
-            chain.Add(messageB, 8);
-            chain.Add(messageB, 10);
-            chain.Add(messageB, 12);
-            chain.Add(messageB, 13);
-            chain.Add(messageB, 28);
-            Assert.AreEqual(-0.03, Math.Round(calculator.Calculate(chain, messageA, messageB, LinkUp.End), 2));
-            Assert.AreEqual(0.011, Math.Round(calculator.Calculate(chain, messageB, messageA, LinkUp.End), 3));
-
-            chain = new Chain(25);
-            chain.Add(messageA, 0);
-            chain.Add(messageA, 3);
-            chain.Add(messageA, 12);
-            chain.Add(messageA, 13);
-            chain.Add(messageA, 15);
-            chain.Add(messageA, 17);
-            chain.Add(messageA, 23);
-            chain.Add(messageB, 6);
-            chain.Add(messageB, 21);
-            chain.Add(messageB, 24);
-            Assert.AreEqual(0.086, Math.Round(calculator.Calculate(chain, messageA, messageB, LinkUp.End), 3));
-            Assert.AreEqual(0.012, Math.Round(calculator.Calculate(chain, messageB, messageA, LinkUp.End), 3));
-
-            chain = new Chain(29);
-            chain.Add(messageA, 0);
-            chain.Add(messageA, 3);
-            chain.Add(messageA, 4);
-            chain.Add(messageA, 6);
-            chain.Add(messageA, 18);
-            chain.Add(messageA, 21);
-            chain.Add(messageB, 2);
-            chain.Add(messageB, 17);
-            chain.Add(messageB, 28);
-            Assert.AreEqual(0.005, Math.Round(calculator.Calculate(chain, messageA, messageB, LinkUp.End), 3));
-            Assert.AreEqual(0.042, Math.Round(calculator.Calculate(chain, messageB, messageA, LinkUp.End), 3));
-
-            chain = new Chain(28);
-            chain.Add(messageA, 0);
-            chain.Add(messageA, 8);
-            chain.Add(messageA, 16);
-            chain.Add(messageA, 18);
-            chain.Add(messageB, 4);
-            chain.Add(messageB, 12);
-            chain.Add(messageB, 17);
-            chain.Add(messageB, 19);
-            Assert.AreEqual(0.175, Math.Round(calculator.Calculate(chain, messageA, messageB, LinkUp.End), 3));
-            Assert.AreEqual(0.086, Math.Round(calculator.Calculate(chain, messageB, messageA, LinkUp.End), 3));
-
-            chain = new Chain(28);
-            chain.Add(messageA, 0);
-            chain.Add(messageA, 9);
-            chain.Add(messageA, 16);
-            chain.Add(messageA, 24);
-            chain.Add(messageB, 2);
-            chain.Add(messageB, 11);
-            chain.Add(messageB, 19);
-            chain.Add(messageB, 25);
-            Assert.AreEqual(0.197, Math.Round(calculator.Calculate(chain, messageA, messageB, LinkUp.End), 3));
-            Assert.AreEqual(0.013, Math.Round(calculator.Calculate(chain, messageB, messageA, LinkUp.End), 3));
-
-            chain = new Chain(16);
-            chain.Add(messageA, 0);
-            chain.Add(messageA, 8);
-            chain.Add(messageB, 4);
-            chain.Add(messageB, 12);
-            Assert.AreEqual(0.073, Math.Round(calculator.Calculate(chain, messageA, messageB, LinkUp.End), 3));
-            Assert.AreEqual(0.031, Math.Round(calculator.Calculate(chain, messageB, messageA, LinkUp.End), 3));
-
-            chain = new Chain(30);
-            chain.Add(messageA, 0);
-            chain.Add(messageA, 6);
-            chain.Add(messageA, 10);
-            chain.Add(messageA, 18);
-            chain.Add(messageB, 3);
-            chain.Add(messageB, 9);
-            chain.Add(messageB, 13);
-            chain.Add(messageB, 21);
-            Assert.AreEqual(0.143, Math.Round(calculator.Calculate(chain, messageA, messageB, LinkUp.End), 3));
-            Assert.AreEqual(0.099, Math.Round(calculator.Calculate(chain, messageB, messageA, LinkUp.End), 3));
-
-            chain = new Chain(23);
-            chain.Add(messageA, 4);
-            chain.Add(messageA, 8);
-            chain.Add(messageA, 14);
-            chain.Add(messageA, 18);
-            chain.Add(messageB, 5);
-            chain.Add(messageB, 9);
-            chain.Add(messageB, 15);
-            chain.Add(messageB, 19);
-            Assert.AreEqual(0.269, Math.Round(calculator.Calculate(chain, messageA, messageB, LinkUp.End), 3));
-            Assert.AreEqual(0.055, Math.Round(calculator.Calculate(chain, messageB, messageA, LinkUp.End), 3));
-
-            chain = new Chain(12);
-            chain.Add(messageA, 4);
-            chain.Add(messageB, 1);
-            chain.Add(messageB, 3);
-            chain.Add(messageB, 5);
-            chain.Add(messageB, 8);
-            Assert.AreEqual(0.036, Math.Round(calculator.Calculate(chain, messageA, messageB, LinkUp.End), 3));
-            Assert.AreEqual(0.146, Math.Round(calculator.Calculate(chain, messageB, messageA, LinkUp.End), 3));
-
-            chain = new Chain(29);
-            chain.Add(messageA, 2);
-            chain.Add(messageA, 9);
-            chain.Add(messageA, 10);
-            chain.Add(messageA, 17);
-            chain.Add(messageB, 6);
-            chain.Add(messageB, 14);
-            chain.Add(messageB, 22);
-            Assert.AreEqual(0.09, Math.Round(calculator.Calculate(chain, messageA, messageB, LinkUp.End), 3));
-            Assert.AreEqual(0.048, Math.Round(calculator.Calculate(chain, messageB, messageA, LinkUp.End), 3));
-
-            // -------------- дальше цепочки из монографии
-
-            chain = new Chain(26);
-            chain.Add(messageA, 0);
-            chain.Add(messageA, 6);
-            chain.Add(messageA, 12);
-            chain.Add(messageB, 2);
-            chain.Add(messageB, 8);
-            chain.Add(messageB, 19);
-            Assert.AreEqual(0.14, Math.Round(calculator.Calculate(chain, messageA, messageB, LinkUp.End), 3));
-            Assert.AreEqual(0.058, Math.Round(calculator.Calculate(chain, messageB, messageA, LinkUp.End), 3));
+            Assert.AreEqual(firstValue, Math.Round(calculator.Calculate(Chains[index], Elements["a"], Elements["b"], LinkUp.End), 4));
+            Assert.AreEqual(secondValue, Math.Round(calculator.Calculate(Chains[index], Elements["b"], Elements["a"], LinkUp.End), 4));
         }
 
         [Test]
@@ -197,57 +50,23 @@ namespace TestLibiadaCore.Classes.Root.Characteristics.BinaryCalculators
         {
             NormalizedPartialDependenceCoefficient calculator = new NormalizedPartialDependenceCoefficient();
 
-            ValueChar messageA = new ValueChar('a');
-            ValueChar messageB = new ValueChar('b');
-            ValueChar messageC = new ValueChar('c');
-
             List<List<double>> result;
 
-            Chain chain = new Chain(2);
-            chain.Add(messageA, 0);
-            chain.Add(messageB, 1);
-
-            result = calculator.Calculate(chain, LinkUp.End);
+            result = calculator.Calculate(Chains[1], LinkUp.End);
 
             Assert.AreEqual(0, result[0][0]);
             Assert.AreEqual(0, result[0][1]);
             Assert.AreEqual(0, result[1][0]);
             Assert.AreEqual(0, result[1][1]);
 
-
-            chain = new Chain(28);
-            chain.Add(messageA, 0);
-            chain.Add(messageA, 8);
-            chain.Add(messageA, 16);
-            chain.Add(messageA, 18);
-            chain.Add(messageB, 4);
-            chain.Add(messageB, 12);
-            chain.Add(messageB, 17);
-            chain.Add(messageB, 19);
-
-            result = calculator.Calculate(chain, LinkUp.End);
+            result = calculator.Calculate(Chains[10], LinkUp.End);
 
             Assert.AreEqual(0, result[0][0]);
             Assert.AreEqual(0.175, Math.Round(result[0][1], 3));
             Assert.AreEqual(0.086, Math.Round(result[1][0], 3));
             Assert.AreEqual(0, result[1][1]);
 
-            // ABCBABCCBCCC
-            chain = new Chain(12);
-            chain.Add(messageA, 0);
-            chain.Add(messageA, 4);
-            chain.Add(messageB, 1);
-            chain.Add(messageB, 3);
-            chain.Add(messageB, 5);
-            chain.Add(messageB, 8);
-            chain.Add(messageC, 2);
-            chain.Add(messageC, 6);
-            chain.Add(messageC, 7);
-            chain.Add(messageC, 9);
-            chain.Add(messageC, 10);
-            chain.Add(messageC, 11);
-
-            result = calculator.Calculate(chain, LinkUp.End);
+            result = calculator.Calculate(Chains[18], LinkUp.End);
 
             Assert.AreEqual(0, result[0][0]);
             Assert.AreEqual(0.1352, Math.Round(result[0][1], 4));

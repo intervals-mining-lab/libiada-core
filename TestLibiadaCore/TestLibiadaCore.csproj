@@ -60,6 +60,7 @@
     <Compile Include="Classes\Misc\Iterators\TestSimpleCutRule.cs" />
     <Compile Include="Classes\Misc\SpaceRebuilders\TestNullRebuilder.cs" />
     <Compile Include="Classes\Misc\SpaceRebuilders\TestPsevdoCycleSpace.cs" />
+    <Compile Include="Classes\Root\Characteristics\BinaryCalculators\ChainsForCalculation.cs" />
     <Compile Include="Classes\Root\Characteristics\BinaryCalculators\TestBinaryGeometricMean.cs" />
     <Compile Include="Classes\Root\Characteristics\BinaryCalculators\TestInvolvedPartialDependenceCoefficient.cs" />
     <Compile Include="Classes\Root\Characteristics\BinaryCalculators\TestMutualDependenceCoefficient.cs" />
