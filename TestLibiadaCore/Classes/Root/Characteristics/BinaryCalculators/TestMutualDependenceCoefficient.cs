@@ -2,23 +2,13 @@
 using System.Collections.Generic;
 using LibiadaCore.Classes.Root;
 using LibiadaCore.Classes.Root.Characteristics.BinaryCalculators;
-using LibiadaCore.Classes.Root.SimpleTypes;
 using NUnit.Framework;
 
 namespace TestLibiadaCore.Classes.Root.Characteristics.BinaryCalculators
 {
     [TestFixture]
-    public class TestMutualDependenceCoefficient
+    public class TestMutualDependenceCoefficient : AbstractBinaryCalculatorTest
     {
-        private List<Chain> Chains;
-        private Dictionary<String, IBaseObject> Elements = BinaryCalculationHelper.Elements;
-
-        [SetUp]
-        public void Init()
-        {
-            Chains = BinaryCalculationHelper.Chains;
-        }
-
         [TestCase(1, 0)]
         [TestCase(2, 0)]
         [TestCase(3, 0)]
@@ -41,7 +31,7 @@ namespace TestLibiadaCore.Classes.Root.Characteristics.BinaryCalculators
         {
             MutualDependenceCoefficient calculator = new MutualDependenceCoefficient();
 
-            BinaryCalculationHelper.CalculationTest(calculator, index, "a", "b", value);
+            CalculationTest(calculator, index, "a", "b", value);
         }
 
         [Test]

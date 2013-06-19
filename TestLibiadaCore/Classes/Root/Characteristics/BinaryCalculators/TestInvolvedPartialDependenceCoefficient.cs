@@ -7,17 +7,8 @@ using NUnit.Framework;
 namespace TestLibiadaCore.Classes.Root.Characteristics.BinaryCalculators
 {
     [TestFixture]
-    public class TestInvolvedPartialDependenceCoefficient
+    public class TestInvolvedPartialDependenceCoefficient : AbstractBinaryCalculatorTest
     {
-        private List<Chain> Chains;
-        private Dictionary<String, IBaseObject> Elements = BinaryCalculationHelper.Elements;
-
-        [SetUp]
-        public void Init()
-        {
-            Chains = BinaryCalculationHelper.Chains;
-        }
-
         [TestCase(1, 0, 0)]
         [TestCase(2, 0, 0)]
         [TestCase(3, 0, 0.5461)]
@@ -39,8 +30,8 @@ namespace TestLibiadaCore.Classes.Root.Characteristics.BinaryCalculators
         {
             InvolvedPartialDependenceCoefficient calculator = new InvolvedPartialDependenceCoefficient();
 
-            BinaryCalculationHelper.CalculationTest(calculator, index, "a", "b", firstValue);
-            BinaryCalculationHelper.CalculationTest(calculator, index, "b", "a", secondValue);
+            CalculationTest(calculator, index, "a", "b", firstValue);
+            CalculationTest(calculator, index, "b", "a", secondValue);
         }
 
         [Test]

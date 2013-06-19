@@ -1,15 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using LibiadaCore.Classes.Root;
-using LibiadaCore.Classes.Root.Characteristics.BinaryCalculators;
 using LibiadaCore.Classes.Root.SimpleTypes;
-using NUnit.Framework;
 
 namespace TestLibiadaCore.Classes.Root.Characteristics.BinaryCalculators
 {
     public static class BinaryCalculationHelper
     {
-        public static Dictionary<string,IBaseObject> Elements = new Dictionary<string, IBaseObject>()
+        public static Dictionary<string, IBaseObject> Elements = new Dictionary<string, IBaseObject>()
             {
                 {"a", new ValueChar('a')},
                 {"b", new ValueChar('b')},
@@ -240,11 +237,6 @@ namespace TestLibiadaCore.Classes.Root.Characteristics.BinaryCalculators
 
                 return chains;
             }
-        }
-
-        public static void CalculationTest(BinaryCharacteristicCalculator calc, int index, string firstElement, string secondElement, double value)
-        {
-            Assert.AreEqual(calc.Calculate(Chains[index], Elements[firstElement], Elements[secondElement], LinkUp.End), value, 0.0001);
         }
     }
 }

@@ -5,26 +5,9 @@ using NUnit.Framework;
 
 namespace TestLibiadaCore.Classes.Root.Characteristics.Calculators
 {
-    ///<summary>
-    ///</summary>
     [TestFixture]
-    public class TestDescriptiveInformation
+    public class TestDescriptiveInformation : AbstractCalculatorTest
     {
-        private UniformChain TestUChain = null;
-        private Chain TestChain = null;
-
-        ///<summary>
-        ///</summary>
-        [SetUp]
-        public void Init()
-        {
-            ChainsForTests mother = new ChainsForTests();
-            TestUChain = mother.TestUniformChain();
-            TestChain = mother.TestChain();
-        }
-
-        ///<summary>
-        ///</summary>
         [Test]
         public void TestCalculationForUniformChain()
         {
@@ -36,15 +19,13 @@ namespace TestLibiadaCore.Classes.Root.Characteristics.Calculators
             const double propability = elementsCount/length;
 
             Assert.AreEqual(Math.Pow(arithmeticMean, propability)*Math.Pow(1/(1 - propability), 1 - propability),
-                            descriptiveInformation.Calculate(TestUChain, LinkUp.Start));
+                            descriptiveInformation.Calculate(uniformChains[0], LinkUp.Start));
             Assert.AreEqual(Math.Pow(arithmeticMean, propability)*Math.Pow(1/(1 - propability), 1 - propability),
-                            descriptiveInformation.Calculate(TestUChain, LinkUp.End));
+                            descriptiveInformation.Calculate(uniformChains[0], LinkUp.End));
             Assert.AreEqual(Math.Pow(arithmeticMean, propability)*Math.Pow(1/(1 - propability), 1 - propability),
-                            descriptiveInformation.Calculate(TestUChain, LinkUp.Both));
+                            descriptiveInformation.Calculate(uniformChains[0], LinkUp.Both));
         }
 
-        ///<summary>
-        ///</summary>
         [Test]
         public void TestCalculationForChain()
         {
@@ -69,9 +50,9 @@ namespace TestLibiadaCore.Classes.Root.Characteristics.Calculators
 
             double DTheoretical = DA*DB*DC;
 
-            Assert.AreEqual(DTheoretical, descriptiveInformation.Calculate(TestChain, LinkUp.Start));
-            Assert.AreEqual(DTheoretical, descriptiveInformation.Calculate(TestChain, LinkUp.End));
-            Assert.AreEqual(DTheoretical, descriptiveInformation.Calculate(TestChain, LinkUp.Both));
+            Assert.AreEqual(DTheoretical, descriptiveInformation.Calculate(Chains[0], LinkUp.Start));
+            Assert.AreEqual(DTheoretical, descriptiveInformation.Calculate(Chains[0], LinkUp.End));
+            Assert.AreEqual(DTheoretical, descriptiveInformation.Calculate(Chains[0], LinkUp.Both));
         }
     }
 }

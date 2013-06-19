@@ -60,6 +60,7 @@
     <Compile Include="Classes\Misc\Iterators\TestSimpleCutRule.cs" />
     <Compile Include="Classes\Misc\SpaceRebuilders\TestNullRebuilder.cs" />
     <Compile Include="Classes\Misc\SpaceRebuilders\TestPsevdoCycleSpace.cs" />
+    <Compile Include="Classes\Root\Characteristics\BinaryCalculators\AbstractBinaryCalculatorTest.cs" />
     <Compile Include="Classes\Root\Characteristics\BinaryCalculators\BinaryCalculationHelper.cs" />
     <Compile Include="Classes\Root\Characteristics\BinaryCalculators\TestBinaryGeometricMean.cs" />
     <Compile Include="Classes\Root\Characteristics\BinaryCalculators\TestInvolvedPartialDependenceCoefficient.cs" />
@@ -67,7 +68,8 @@
     <Compile Include="Classes\Root\Characteristics\BinaryCalculators\TestNormalizedPartialDependenceCoefficient.cs" />
     <Compile Include="Classes\Root\Characteristics\BinaryCalculators\TestPartialDependenceCoefficient.cs" />
     <Compile Include="Classes\Root\Characteristics\BinaryCalculators\TestRedundancy.cs" />
-    <Compile Include="Classes\Root\Characteristics\Calculators\ChainsForTests.cs" />
+    <Compile Include="Classes\Root\Characteristics\Calculators\AbstractCalculatorTest.cs" />
+    <Compile Include="Classes\Root\Characteristics\Calculators\CalculationHelper.cs" />
     <Compile Include="Classes\Root\Characteristics\Calculators\TestAlphabetPower.cs" />
     <Compile Include="Classes\Root\Characteristics\Calculators\TestArithmeticMean.cs" />
     <Compile Include="Classes\Root\Characteristics\Calculators\TestAverageRemoteness.cs" />

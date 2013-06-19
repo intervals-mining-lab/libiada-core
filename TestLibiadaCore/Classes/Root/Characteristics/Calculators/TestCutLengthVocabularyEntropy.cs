@@ -5,49 +5,31 @@ using NUnit.Framework;
 
 namespace TestLibiadaCore.Classes.Root.Characteristics.Calculators
 {
-    ///<summary>
-    ///</summary>
     [TestFixture]
-    public class TestCutLengthVocabularyEntropy
+    public class TestCutLengthVocabularyEntropy : AbstractCalculatorTest
     {
-        private ChainsForTests Mother;
-
-        ///<summary>
-        ///</summary>
-        [SetUp]
-        public void Init()
-        {
-            Mother = new ChainsForTests();
-        }
-
-        ///<summary>
-        ///</summary>
         [Test]
         public void TestCutLengthVocabularyEntropyChain()
         {
             CutLengthVocabularyEntropy cutLengthVocabularyEntropy = new CutLengthVocabularyEntropy();
 
-            Chain testChain = Mother.TestChain();
             CutLength cutLength = new CutLength();
-            int Count = (int)(testChain.Length - cutLength.Calculate(testChain, LinkUp.Start) + 1);
-            Assert.AreEqual(Math.Log(Count, 2), cutLengthVocabularyEntropy.Calculate(testChain, LinkUp.Both));
-            Assert.AreEqual(Math.Log(Count, 2), cutLengthVocabularyEntropy.Calculate(testChain, LinkUp.Start));
-            Assert.AreEqual(Math.Log(Count, 2), cutLengthVocabularyEntropy.Calculate(testChain, LinkUp.End));
+            int Count = (int)(Chains[0].Length - cutLength.Calculate(Chains[0], LinkUp.Start) + 1);
+            Assert.AreEqual(Math.Log(Count, 2), cutLengthVocabularyEntropy.Calculate(Chains[0], LinkUp.Both));
+            Assert.AreEqual(Math.Log(Count, 2), cutLengthVocabularyEntropy.Calculate(Chains[0], LinkUp.Start));
+            Assert.AreEqual(Math.Log(Count, 2), cutLengthVocabularyEntropy.Calculate(Chains[0], LinkUp.End));
         }
 
-        ///<summary>
-        ///</summary>
         [Test]
         public void TestCutLengthVocabularyEntropyUChain()
         {
             CutLengthVocabularyEntropy cutLengthVocabularyEntropy = new CutLengthVocabularyEntropy();
 
-            UniformChain testChain = Mother.TestUniformChain();
             CutLength cutLength = new CutLength();
-            int Count = (int)(testChain.Length - cutLength.Calculate(testChain, LinkUp.Start) + 1);
-            Assert.AreEqual(Math.Log(Count, 2), cutLengthVocabularyEntropy.Calculate(testChain, LinkUp.Both));
-            Assert.AreEqual(Math.Log(Count, 2), cutLengthVocabularyEntropy.Calculate(testChain, LinkUp.Start));
-            Assert.AreEqual(Math.Log(Count, 2), cutLengthVocabularyEntropy.Calculate(testChain, LinkUp.End));
+            int Count = (int)(uniformChains[0].Length - cutLength.Calculate(uniformChains[0], LinkUp.Start) + 1);
+            Assert.AreEqual(Math.Log(Count, 2), cutLengthVocabularyEntropy.Calculate(uniformChains[0], LinkUp.Both));
+            Assert.AreEqual(Math.Log(Count, 2), cutLengthVocabularyEntropy.Calculate(uniformChains[0], LinkUp.Start));
+            Assert.AreEqual(Math.Log(Count, 2), cutLengthVocabularyEntropy.Calculate(uniformChains[0], LinkUp.End));
         }
     }
 }

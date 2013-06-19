@@ -4,27 +4,9 @@ using NUnit.Framework;
 
 namespace TestLibiadaCore.Classes.Root.Characteristics.Calculators
 {
-    ///<summary>
-    ///</summary>
     [TestFixture]
-    public class TestArithmeticMean
+    public class TestArithmeticMean : AbstractCalculatorTest
     {
-        private UniformChain TestUChain = null;
-        private Chain TestChain = null;
-
-        ///<summary>
-        ///</summary>
-        [SetUp]
-        public void Init()
-        {
-            ChainsForTests mother = new ChainsForTests();
-            TestUChain = mother.TestUniformChain();
-            TestChain = mother.TestChain();
-        }
-
-
-        ///<summary>
-        ///</summary>
         [Test]
         public void TestCalculation()
         {
@@ -32,13 +14,11 @@ namespace TestLibiadaCore.Classes.Root.Characteristics.Calculators
             double n = 10;
             double nj = 3;
 
-            Assert.AreEqual(n / nj, arithmeticMean.Calculate(TestUChain, LinkUp.Start));
-            Assert.AreEqual(n / nj, arithmeticMean.Calculate(TestUChain, LinkUp.End));
-            Assert.AreEqual(n / nj, arithmeticMean.Calculate(TestUChain, LinkUp.Both));
+            Assert.AreEqual(n / nj, arithmeticMean.Calculate(uniformChains[0], LinkUp.Start));
+            Assert.AreEqual(n / nj, arithmeticMean.Calculate(uniformChains[0], LinkUp.End));
+            Assert.AreEqual(n / nj, arithmeticMean.Calculate(uniformChains[0], LinkUp.Both));
         }
 
-        ///<summary>
-        ///</summary>
         [Test]
         public void TestCalculationForChain()
         {
@@ -49,10 +29,10 @@ namespace TestLibiadaCore.Classes.Root.Characteristics.Calculators
             double n_C = 3;
             double sum_ariphmetical = (n/n_A) + (n/n_B) + (n/n_C);
             int Alphabet_power = 3;
-            Assert.AreEqual(Alphabet_power, TestChain.Alphabet.Power);
-            Assert.AreEqual(sum_ariphmetical / Alphabet_power, arithmeticMean.Calculate(TestChain, LinkUp.Start));
-            Assert.AreEqual(sum_ariphmetical / Alphabet_power, arithmeticMean.Calculate(TestChain, LinkUp.End));
-            Assert.AreEqual(sum_ariphmetical / Alphabet_power, arithmeticMean.Calculate(TestChain, LinkUp.Both));
+            Assert.AreEqual(Alphabet_power, Chains[0].Alphabet.Power);
+            Assert.AreEqual(sum_ariphmetical / Alphabet_power, arithmeticMean.Calculate(Chains[0], LinkUp.Start));
+            Assert.AreEqual(sum_ariphmetical / Alphabet_power, arithmeticMean.Calculate(Chains[0], LinkUp.End));
+            Assert.AreEqual(sum_ariphmetical / Alphabet_power, arithmeticMean.Calculate(Chains[0], LinkUp.Both));
         }
     }
 }

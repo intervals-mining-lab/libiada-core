@@ -4,48 +4,27 @@ using NUnit.Framework;
 
 namespace TestLibiadaCore.Classes.Root.Characteristics.Calculators
 {
-    ///<summary>
-    ///</summary>
     [TestFixture]
-    public class TestAlphabetPower
+    public class TestAlphabetPower : AbstractCalculatorTest
     {
-        private UniformChain TestUChain = null;
-        private Chain TestChain = null;
-
-        ///<summary>
-        ///</summary>
-        [SetUp]
-        public void Init()
-        {
-            ChainsForTests mother = new ChainsForTests();
-            TestUChain = mother.TestUniformChain();
-            TestChain = mother.TestChain();
-        }
-
-
-        ///<summary>
-        ///</summary>
-        [Test]
-        public void TestCalculation()
+        [TestCase(0, LinkUp.Start, 1)]
+        [TestCase(0, LinkUp.End, 1)]
+        [TestCase(0, LinkUp.Both, 1)]
+        public void TestUniformCalculation(int index, LinkUp linkUp, double value)
         {
             AlphabetPower alphabetPower = new AlphabetPower();
 
-            Assert.AreEqual(1, alphabetPower.Calculate(TestUChain, LinkUp.Start));
-            Assert.AreEqual(1, alphabetPower.Calculate(TestUChain, LinkUp.End));
-            Assert.AreEqual(1, alphabetPower.Calculate(TestUChain, LinkUp.Both));
+            TestUniformChainCharacteristic(index, alphabetPower, linkUp, value);
         }
 
-        ///<summary>
-        ///</summary>
-        [Test]
-        public void TestCalculationForChain()
+        [TestCase(0, LinkUp.Start, 3)]
+        [TestCase(0, LinkUp.End, 3)]
+        [TestCase(0, LinkUp.Both, 3)]
+        public void TestChainCalculation(int index, LinkUp linkUp, double value)
         {
             AlphabetPower alphabetPower = new AlphabetPower();
-            const int power = 3;
-            Assert.AreEqual(power, TestChain.Alphabet.Power);
-            Assert.AreEqual(power, alphabetPower.Calculate(TestChain, LinkUp.Start));
-            Assert.AreEqual(power, alphabetPower.Calculate(TestChain, LinkUp.End));
-            Assert.AreEqual(power, alphabetPower.Calculate(TestChain, LinkUp.Both));
+
+            TestChainCharacteristic(index, alphabetPower, linkUp, value);
         }
     }
 }

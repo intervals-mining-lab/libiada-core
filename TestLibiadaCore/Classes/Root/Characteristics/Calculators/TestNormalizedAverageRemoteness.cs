@@ -6,23 +6,8 @@ using NUnit.Framework;
 namespace TestLibiadaCore.Classes.Root.Characteristics.Calculators
 {
     [TestFixture]
-    public class TestNormalizedAverageRemoteness
+    public class TestNormalizedAverageRemoteness : AbstractCalculatorTest
     {
-        private UniformChain TestUChain = null;
-        private Chain TestChain = null;
-
-        ///<summary>
-        ///</summary>
-        [SetUp]
-        public void Init()
-        {
-            ChainsForTests mother = new ChainsForTests();
-            TestUChain = mother.TestUniformChain();
-            TestChain = mother.TestChain();
-        }
-
-        ///<summary>
-        ///</summary>
         [Test]
         public void TestCalculation()
         {
@@ -38,7 +23,7 @@ namespace TestLibiadaCore.Classes.Root.Characteristics.Calculators
             double deltaG = Math.Pow(interval1 * interval2 * interval3, 1 / pIntervalsCount);
             double pAverageRemoteness = Math.Log(deltaG, 2);
 
-            Assert.AreEqual(pAverageRemoteness, normalizedAverageRemoteness.Calculate(TestUChain, LinkUp.Start));
+            Assert.AreEqual(pAverageRemoteness, normalizedAverageRemoteness.Calculate(uniformChains[0], LinkUp.Start));
 
 
             pIntervalsCount = 3;
@@ -46,7 +31,7 @@ namespace TestLibiadaCore.Classes.Root.Characteristics.Calculators
             deltaG = Math.Pow(interval2 * interval3 * interval4, 1 / pIntervalsCount);
             pAverageRemoteness = Math.Log(deltaG, 2);
 
-            Assert.AreEqual(pAverageRemoteness, normalizedAverageRemoteness.Calculate(TestUChain, LinkUp.End));
+            Assert.AreEqual(pAverageRemoteness, normalizedAverageRemoteness.Calculate(uniformChains[0], LinkUp.End));
 
 
             pIntervalsCount = 4;
@@ -54,7 +39,7 @@ namespace TestLibiadaCore.Classes.Root.Characteristics.Calculators
             deltaG = Math.Pow(interval1 * interval2 * interval3 * interval4, 1 / pIntervalsCount);
             pAverageRemoteness = Math.Log(deltaG, 2);
 
-            Assert.AreEqual(pAverageRemoteness, normalizedAverageRemoteness.Calculate(TestUChain, LinkUp.Both));
+            Assert.AreEqual(pAverageRemoteness, normalizedAverageRemoteness.Calculate(uniformChains[0], LinkUp.Both));
         }
     }
 }

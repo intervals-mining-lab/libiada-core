@@ -5,26 +5,9 @@ using NUnit.Framework;
 
 namespace TestLibiadaCore.Classes.Root.Characteristics.Calculators
 {
-    ///<summary>
-    ///</summary>
     [TestFixture]
-    public class TestPeriodicity
+    public class TestPeriodicity : AbstractCalculatorTest
     {
-        private UniformChain TestUChain = null;
-        private Chain TestChain = null;
-
-        ///<summary>
-        ///</summary>
-        [SetUp]
-        public void Init()
-        {
-            ChainsForTests mother = new ChainsForTests();
-            TestUChain = mother.TestUniformChain();
-            TestChain = mother.TestChain();
-        }
-
-        ///<summary>
-        ///</summary>
         [Test]
         public void TestCalculationForUniformChain()
         {
@@ -42,21 +25,19 @@ namespace TestLibiadaCore.Classes.Root.Characteristics.Calculators
             double intervalsCount = 3;
             double geometricMiddling = Math.Pow(interval1*interval2*interval3, 1/intervalsCount);
 
-            Assert.AreEqual(geometricMiddling / arithmeticMean, periodicity.Calculate(TestUChain, LinkUp.Start));
+            Assert.AreEqual(geometricMiddling / arithmeticMean, periodicity.Calculate(uniformChains[0], LinkUp.Start));
 
             intervalsCount = 3;
             geometricMiddling = Math.Pow(interval2*interval3*interval4, 1/intervalsCount);
 
-            Assert.AreEqual(geometricMiddling / arithmeticMean, periodicity.Calculate(TestUChain, LinkUp.End));
+            Assert.AreEqual(geometricMiddling / arithmeticMean, periodicity.Calculate(uniformChains[0], LinkUp.End));
 
             intervalsCount = 4;
             geometricMiddling = Math.Pow(interval1*interval2*interval3*interval4, 1/intervalsCount);
 
-            Assert.AreEqual(geometricMiddling / arithmeticMean, periodicity.Calculate(TestUChain, LinkUp.Both));
+            Assert.AreEqual(geometricMiddling / arithmeticMean, periodicity.Calculate(uniformChains[0], LinkUp.Both));
         }
 
-        ///<summary>
-        ///</summary>
         [Test]
         public void TestCalculationForChain()
         {
@@ -121,15 +102,15 @@ namespace TestLibiadaCore.Classes.Root.Characteristics.Calculators
 
             double geometricMiddlingStart = Math.Pow(VStart, 1/intervalsCountStart);
 
-            Assert.AreEqual(geometricMiddlingStart / D, periodicity.Calculate(TestChain, LinkUp.Start));
+            Assert.AreEqual(geometricMiddlingStart / D, periodicity.Calculate(Chains[0], LinkUp.Start));
 
             double geometricMiddlingEnd = Math.Pow(VEnd, 1/intervalsCountEnd);
 
-            Assert.AreEqual(geometricMiddlingEnd / D, periodicity.Calculate(TestChain, LinkUp.End));
+            Assert.AreEqual(geometricMiddlingEnd / D, periodicity.Calculate(Chains[0], LinkUp.End));
 
             double geometricMiddlingBoth = Math.Pow(VBoth, 1/intervalsCountBoth);
 
-            Assert.AreEqual(geometricMiddlingBoth / D, periodicity.Calculate(TestChain, LinkUp.Both));
+            Assert.AreEqual(geometricMiddlingBoth / D, periodicity.Calculate(Chains[0], LinkUp.Both));
         }
     }
 }

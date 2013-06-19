@@ -2,23 +2,13 @@
 using System.Collections.Generic;
 using LibiadaCore.Classes.Root;
 using LibiadaCore.Classes.Root.Characteristics.BinaryCalculators;
-using LibiadaCore.Classes.Root.SimpleTypes;
 using NUnit.Framework;
 
 namespace TestLibiadaCore.Classes.Root.Characteristics.BinaryCalculators
 {
     [TestFixture]
-    public class TestNormalizedPartialDependenceCoefficient
+    public class TestNormalizedPartialDependenceCoefficient : AbstractBinaryCalculatorTest
     {
-        private List<Chain> Chains;
-        private Dictionary<String, IBaseObject> Elements = BinaryCalculationHelper.Elements;
-
-        [SetUp]
-        public void Init()
-        {
-            Chains = BinaryCalculationHelper.Chains;
-        }
-
         [TestCase(1, 0, 0)]
         [TestCase(2, 0, 0)]
         [TestCase(3, 0, 0.1214)]
@@ -40,8 +30,8 @@ namespace TestLibiadaCore.Classes.Root.Characteristics.BinaryCalculators
         {
             NormalizedPartialDependenceCoefficient calculator = new NormalizedPartialDependenceCoefficient();
 
-            BinaryCalculationHelper.CalculationTest(calculator, index, "a", "b", firstValue);
-            BinaryCalculationHelper.CalculationTest(calculator, index, "b", "a", secondValue);
+            CalculationTest(calculator, index, "a", "b", firstValue);
+            CalculationTest(calculator, index, "b", "a", secondValue);
         }
 
         [Test]

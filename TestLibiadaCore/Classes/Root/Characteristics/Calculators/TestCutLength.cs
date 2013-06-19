@@ -4,47 +4,28 @@ using NUnit.Framework;
 
 namespace TestLibiadaCore.Classes.Root.Characteristics.Calculators
 {
-    ///<summary>
-    ///</summary>
     [TestFixture]
-    public class TestCutLength
+    public class TestCutLength : AbstractCalculatorTest
     {
-        private ChainsForTests Mother;
-
-        ///<summary>
-        ///</summary>
-        [SetUp]
-        public void Init()
-        {
-            Mother = new ChainsForTests();
-        }
-
-        ///<summary>
-        ///</summary>
         [Test]
         public void TestCutLengthChain()
         {
             CutLength cutLength = new CutLength();
 
-            Chain testChain = Mother.TestChain();
 
-            Assert.AreEqual(3, cutLength.Calculate(testChain, LinkUp.Both));
-            Assert.AreEqual(3, cutLength.Calculate(testChain, LinkUp.Start));
-            Assert.AreEqual(3, cutLength.Calculate(testChain, LinkUp.End));
+            Assert.AreEqual(3, cutLength.Calculate(Chains[0], LinkUp.Both));
+            Assert.AreEqual(3, cutLength.Calculate(Chains[0], LinkUp.Start));
+            Assert.AreEqual(3, cutLength.Calculate(Chains[0], LinkUp.End));
         }
 
-        ///<summary>
-        ///</summary>
         [Test]
         public void TestCutLengthUChain()
         {
             CutLength cutLength = new CutLength();
 
-            UniformChain testChain = Mother.TestUniformChain();
-
-            Assert.AreEqual(4, cutLength.Calculate(testChain, LinkUp.Both));
-            Assert.AreEqual(4, cutLength.Calculate(testChain, LinkUp.Start));
-            Assert.AreEqual(4, cutLength.Calculate(testChain, LinkUp.End));
+            Assert.AreEqual(4, cutLength.Calculate(uniformChains[0], LinkUp.Both));
+            Assert.AreEqual(4, cutLength.Calculate(uniformChains[0], LinkUp.Start));
+            Assert.AreEqual(4, cutLength.Calculate(uniformChains[0], LinkUp.End));
         }
     }
 }

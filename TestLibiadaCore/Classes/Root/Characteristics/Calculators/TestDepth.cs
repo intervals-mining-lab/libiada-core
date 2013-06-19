@@ -5,26 +5,9 @@ using NUnit.Framework;
 
 namespace TestLibiadaCore.Classes.Root.Characteristics.Calculators
 {
-    ///<summary>
-    ///</summary>
     [TestFixture]
-    public class TestDepth
+    public class TestDepth : AbstractCalculatorTest
     {
-        private UniformChain TestUChain = null;
-        private Chain TestChain = null;
-
-        ///<summary>
-        ///</summary>
-        [SetUp]
-        public void Init()
-        {
-            ChainsForTests mother = new ChainsForTests();
-            TestUChain = mother.TestUniformChain();
-            TestChain = mother.TestChain();
-        }
-
-        ///<summary>
-        ///</summary>
         [Test]
         public void TestCalculationForUniformChain()
         {
@@ -35,15 +18,13 @@ namespace TestLibiadaCore.Classes.Root.Characteristics.Calculators
             const int interval2 = 1;
             Assert.AreEqual(
                 Math.Log(interval1, 2) + Math.Log(interval3, 2) + Math.Log(interval4, 2) + Math.Log(interval2, 2),
-                depth.Calculate(TestUChain, LinkUp.Both));
+                depth.Calculate(uniformChains[0], LinkUp.Both));
             Assert.AreEqual(Math.Log(interval2, 2) + Math.Log(interval3, 2) + Math.Log(interval4, 2),
-                            depth.Calculate(TestUChain, LinkUp.End));
+                            depth.Calculate(uniformChains[0], LinkUp.End));
             Assert.AreEqual(Math.Log(interval1, 2) + Math.Log(interval3, 2) + Math.Log(interval2, 2),
-                            depth.Calculate(TestUChain, LinkUp.Start));
+                            depth.Calculate(uniformChains[0], LinkUp.Start));
         }
 
-        ///<summary>
-        ///</summary>
         [Test]
         public void TestCalculationForChain()
         {
@@ -82,9 +63,9 @@ namespace TestLibiadaCore.Classes.Root.Characteristics.Calculators
             double sumBoth = sumABoth + sumBBoth + subCBoth;
 
 
-            Assert.AreEqual(sumStart, depth.Calculate(TestChain, LinkUp.Start));
-            Assert.AreEqual(sumEnd, depth.Calculate(TestChain, LinkUp.End));
-            Assert.AreEqual(sumBoth, depth.Calculate(TestChain, LinkUp.Both));
+            Assert.AreEqual(sumStart, depth.Calculate(Chains[0], LinkUp.Start));
+            Assert.AreEqual(sumEnd, depth.Calculate(Chains[0], LinkUp.End));
+            Assert.AreEqual(sumBoth, depth.Calculate(Chains[0], LinkUp.Both));
         }
     }
 }
