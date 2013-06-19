@@ -11,13 +11,12 @@ namespace TestLibiadaCore.Classes.Root.Characteristics.BinaryCalculators
     public class TestMutualDependenceCoefficient
     {
         private List<Chain> Chains;
-        private Dictionary<String, IBaseObject> Elements;
+        private Dictionary<String, IBaseObject> Elements = BinaryCalculationHelper.Elements;
 
         [SetUp]
         public void Init()
         {
-            Chains = ChainsForCalculation.Chains;
-            Elements = ChainsForCalculation.Elements;
+            Chains = BinaryCalculationHelper.Chains;
         }
 
         [TestCase(1, 0)]
@@ -42,7 +41,7 @@ namespace TestLibiadaCore.Classes.Root.Characteristics.BinaryCalculators
         {
             MutualDependenceCoefficient calculator = new MutualDependenceCoefficient();
 
-            Assert.AreEqual(value, Math.Round(calculator.Calculate(Chains[index], Elements["a"], Elements["b"], LinkUp.End), 4));
+            BinaryCalculationHelper.CalculationTest(calculator, index, "a", "b", value);
         }
 
         [Test]

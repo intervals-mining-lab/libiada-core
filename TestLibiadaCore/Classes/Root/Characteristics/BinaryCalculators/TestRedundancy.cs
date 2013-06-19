@@ -10,13 +10,12 @@ namespace TestLibiadaCore.Classes.Root.Characteristics.BinaryCalculators
     public class TestRedundancy
     {
         private List<Chain> Chains;
-        private Dictionary<String, IBaseObject> Elements;
+        private Dictionary<String, IBaseObject> Elements = BinaryCalculationHelper.Elements;
 
         [SetUp]
         public void Init()
         {
-            Chains = ChainsForCalculation.Chains;
-            Elements = ChainsForCalculation.Elements;
+            Chains = BinaryCalculationHelper.Chains;
         }
 
         [TestCase(1, 0, 0)]
@@ -40,13 +39,8 @@ namespace TestLibiadaCore.Classes.Root.Characteristics.BinaryCalculators
         {
             Redundancy calculator = new Redundancy();
 
-            // ----------- цепочки из работы Морозенко
-
-            Chain chain = new Chain(2);
-            chain.Add(Elements["a"], 0);
-            chain.Add(Elements["b"], 1);
-            Assert.AreEqual(firstValue, Math.Round(calculator.Calculate(Chains[index], Elements["a"], Elements["b"], LinkUp.End), 4));
-            Assert.AreEqual(secondValue, Math.Round(calculator.Calculate(Chains[index], Elements["b"], Elements["a"], LinkUp.End), 4));
+            BinaryCalculationHelper.CalculationTest(calculator, index, "a", "b", firstValue);
+            BinaryCalculationHelper.CalculationTest(calculator, index, "b", "a", secondValue);
         }
     }
 }

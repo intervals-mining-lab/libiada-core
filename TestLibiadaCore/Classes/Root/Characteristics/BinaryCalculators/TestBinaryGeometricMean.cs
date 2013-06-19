@@ -10,23 +10,21 @@ namespace TestLibiadaCore.Classes.Root.Characteristics.BinaryCalculators
     public class TestBinaryGeometricMean
     {
         private List<Chain> Chains;
-        private Dictionary<String, IBaseObject> Elements;
+        private Dictionary<String, IBaseObject> Elements = BinaryCalculationHelper.Elements;
             
         [SetUp]
         public void Init()
         {
-            Chains = ChainsForCalculation.Chains;
-            Elements = ChainsForCalculation.Elements;
+            Chains = BinaryCalculationHelper.Chains;
         }
 
-        [TestCase(0, "c", "a", 1.732, 1)]
-        public void TestSpatialDependence(int index, string firstElement, string secondElement,
-                                          double firstValue, double secondValue)
+        [TestCase(0, 1.7321, 1)]
+        public void TestSpatialDependence(int index, double firstValue, double secondValue)
         {
             BinaryGeometricMean calculator = new BinaryGeometricMean();
 
-            Assert.AreEqual(firstValue, Math.Round(calculator.Calculate(Chains[index], Elements[firstElement], Elements[secondElement], LinkUp.End), 3));
-            Assert.AreEqual(secondValue, calculator.Calculate(Chains[index], Elements[secondElement], Elements[firstElement], LinkUp.End));
+            BinaryCalculationHelper.CalculationTest(calculator, index, "c", "a", firstValue);
+            BinaryCalculationHelper.CalculationTest(calculator, index, "a", "c", secondValue);
         }
     }
 }

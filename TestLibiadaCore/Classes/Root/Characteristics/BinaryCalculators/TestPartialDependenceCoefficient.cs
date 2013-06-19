@@ -11,13 +11,12 @@ namespace TestLibiadaCore.Classes.Root.Characteristics.BinaryCalculators
     public class TestPartialDependenceCoefficient
     {
         private List<Chain> Chains;
-        private Dictionary<String, IBaseObject> Elements;
+        private Dictionary<String, IBaseObject> Elements = BinaryCalculationHelper.Elements;
 
         [SetUp]
         public void Init()
         {
-            Chains = ChainsForCalculation.Chains;
-            Elements = ChainsForCalculation.Elements;
+            Chains = BinaryCalculationHelper.Chains;
         }
 
         [TestCase(1, 0, 0)]
@@ -41,8 +40,8 @@ namespace TestLibiadaCore.Classes.Root.Characteristics.BinaryCalculators
         {
             PartialDependenceCoefficient calculator = new PartialDependenceCoefficient();
 
-            Assert.AreEqual(firstValue, Math.Round(calculator.Calculate(Chains[index], Elements["a"], Elements["b"], LinkUp.End), 4));
-            Assert.AreEqual(secondValue, Math.Round(calculator.Calculate(Chains[index], Elements["b"], Elements["a"], LinkUp.End), 4));
+            BinaryCalculationHelper.CalculationTest(calculator, index, "a", "b", firstValue);
+            BinaryCalculationHelper.CalculationTest(calculator, index, "b", "a", secondValue);
         }
 
         [Test]
