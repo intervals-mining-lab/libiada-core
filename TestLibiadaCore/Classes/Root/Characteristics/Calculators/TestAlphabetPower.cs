@@ -12,9 +12,9 @@ namespace TestLibiadaCore.Classes.Root.Characteristics.Calculators
         [TestCase(0, LinkUp.Both, 1)]
         public void TestUniformCalculation(int index, LinkUp linkUp, double value)
         {
-            AlphabetPower alphabetPower = new AlphabetPower();
+            AlphabetPower calc = new AlphabetPower();
 
-            TestUniformChainCharacteristic(index, alphabetPower, linkUp, value);
+            TestUniformChainCharacteristic(index, calc, linkUp, value);
         }
 
         [TestCase(0, LinkUp.Start, 3)]
@@ -22,9 +22,9 @@ namespace TestLibiadaCore.Classes.Root.Characteristics.Calculators
         [TestCase(0, LinkUp.Both, 3)]
         public void TestChainCalculation(int index, LinkUp linkUp, double value)
         {
-            AlphabetPower alphabetPower = new AlphabetPower();
+            AlphabetPower calc = new AlphabetPower();
 
-            TestChainCharacteristic(index, alphabetPower, linkUp, value);
+            TestChainCharacteristic(index, calc, linkUp, value);
         }
     }
 }

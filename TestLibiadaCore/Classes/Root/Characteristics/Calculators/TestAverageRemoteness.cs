@@ -10,9 +10,9 @@ namespace TestLibiadaCore.Classes.Root.Characteristics.Calculators
     {
 
         [Test]
-        public void TestCalculation()
+        public void TestUniformCalculation()
         {
-            AverageRemoteness averageRemoteness = new AverageRemoteness();
+            AverageRemoteness calc = new AverageRemoteness();
 
             double interval1 = 4;
             double interval2 = 1;
@@ -23,33 +23,27 @@ namespace TestLibiadaCore.Classes.Root.Characteristics.Calculators
 
             double deltaG = Math.Pow(interval1*interval2*interval3, 1/pIntervalsCount);
             double pAverageRemoteness = Math.Log(deltaG, 2);
-
-            Assert.AreEqual(pAverageRemoteness, averageRemoteness.Calculate(uniformChains[0], LinkUp.Start));
-
+            TestUniformChainCharacteristic(0, calc, LinkUp.Start, pAverageRemoteness);
 
             pIntervalsCount = 3;
-
             deltaG = Math.Pow(interval2*interval3*interval4, 1/pIntervalsCount);
             pAverageRemoteness = Math.Log(deltaG, 2);
-
-            Assert.AreEqual(pAverageRemoteness, averageRemoteness.Calculate(uniformChains[0], LinkUp.End));
-
+            TestUniformChainCharacteristic(0, calc, LinkUp.End, pAverageRemoteness);
+            
 
             pIntervalsCount = 4;
-
             deltaG = Math.Pow(interval1*interval2*interval3*interval4, 1/pIntervalsCount);
             pAverageRemoteness = Math.Log(deltaG, 2);
-
-            Assert.AreEqual(pAverageRemoteness, averageRemoteness.Calculate(uniformChains[0], LinkUp.Both));
+            TestUniformChainCharacteristic(0, calc, LinkUp.Both, pAverageRemoteness);
         }
 
         [Test]
-        public void TestCalculationForChain()
+        public void TestChainCalculation()
         {
-            AverageRemoteness averageRemoteness = new AverageRemoteness();
+            AverageRemoteness calc = new AverageRemoteness();
 
-            int Alphabet_power = 3;
-            Assert.AreEqual(Alphabet_power, Chains[0].Alphabet.Power);
+            int alphabetPower = 3;
+            Assert.AreEqual(alphabetPower, Chains[0].Alphabet.Power);
 
 
             double remoutness11 = Math.Log(1, 2);
@@ -82,15 +76,14 @@ namespace TestLibiadaCore.Classes.Root.Characteristics.Calculators
 
             double sumStart = sumAStart + sumBStart + subCStart;
             double n = 10;
-
-            Assert.AreEqual(sumStart / n, averageRemoteness.Calculate(Chains[0], LinkUp.Start));
-
+            TestChainCharacteristic(0, calc, LinkUp.Start, sumStart / n);
+            
             double sumEnd = sumAEnd + sumBEnd + subCEnd;
-            Assert.AreEqual(sumEnd / n, averageRemoteness.Calculate(Chains[0], LinkUp.End));
+            TestChainCharacteristic(0, calc, LinkUp.End, sumEnd / n);
 
             double nBoth = 13;
             double sumBoth = sumABoth + sumBBoth + subCBoth;
-            Assert.AreEqual(sumBoth / nBoth, averageRemoteness.Calculate(Chains[0], LinkUp.Both));
+            TestChainCharacteristic(0, calc, LinkUp.Both, sumBoth / nBoth);
         }
     }
 }

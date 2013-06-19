@@ -23,16 +23,13 @@ namespace TestLibiadaCore.Classes.Root.Characteristics.BinaryCalculators
 
                 //0
                 Chain chain = new Chain(10);
-                chain.Add(Elements["c"], 0);
-                chain.Add(Elements["c"], 1);
-                chain.Add(Elements["a"], 2);
-                chain.Add(Elements["c"], 3);
-                chain.Add(Elements["g"], 4);
-                chain.Add(Elements["c"], 5);
-                chain.Add(Elements["t"], 6);
-                chain.Add(Elements["t"], 7);
-                chain.Add(Elements["a"], 8);
-                chain.Add(Elements["c"], 9);
+                chain.Add(Elements["a"], 0);
+                chain.Add(Elements["a"], 1);
+                chain.Add(Elements["b"], 2);
+                chain.Add(Elements["a"], 3);
+                chain.Add(Elements["a"], 5);
+                chain.Add(Elements["b"], 8);
+                chain.Add(Elements["a"], 9);
                 chains.Add(chain);
 
                 // ----------- цепочки из работы Морозенко

@@ -31,7 +31,7 @@ namespace TestLibiadaCore.Classes.Root.Characteristics.BinaryCalculators
         {
             MutualDependenceCoefficient calculator = new MutualDependenceCoefficient();
 
-            CalculationTest(calculator, index, "a", "b", value);
+            CalculationTest(calculator, index, value, value);
         }
 
         [Test]

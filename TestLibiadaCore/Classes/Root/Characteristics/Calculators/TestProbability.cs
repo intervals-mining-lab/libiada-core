@@ -8,23 +8,23 @@ namespace TestLibiadaCore.Classes.Root.Characteristics.Calculators
     public class TestProbability : AbstractCalculatorTest
     {
         [Test]
-        public void TestCalculationForUniformChain()
+        public void TestUniformCalculation()
         {
-            Probability probability = new Probability();
-            int elementCount = 3;
-            double length = 10;
-            Assert.AreEqual(elementCount / length, probability.Calculate(uniformChains[0], LinkUp.Both));
-            Assert.AreEqual(elementCount / length, probability.Calculate(uniformChains[0], LinkUp.Start));
-            Assert.AreEqual(elementCount / length, probability.Calculate(uniformChains[0], LinkUp.End));
+            Probability calc = new Probability();
+
+            TestUniformChainCharacteristic(0, calc, LinkUp.Start, 0.3);
+            TestUniformChainCharacteristic(0, calc, LinkUp.End, 0.3);
+            TestUniformChainCharacteristic(0, calc, LinkUp.Both, 0.3);
         }
 
         [Test]
-        public void TestCalculationForChain()
+        public void TestChainCalculation()
         {
-            Probability probability = new Probability();
-            Assert.AreEqual(1, probability.Calculate(Chains[0], LinkUp.Both));
-            Assert.AreEqual(1, probability.Calculate(Chains[0], LinkUp.Start));
-            Assert.AreEqual(1, probability.Calculate(Chains[0], LinkUp.End));
+            Probability calc = new Probability();
+
+            TestChainCharacteristic(0, calc, LinkUp.Start, 1);
+            TestChainCharacteristic(0, calc, LinkUp.End, 1);
+            TestChainCharacteristic(0, calc, LinkUp.Both, 1);
         }
     }
 }

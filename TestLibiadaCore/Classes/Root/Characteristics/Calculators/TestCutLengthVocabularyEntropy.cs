@@ -9,27 +9,27 @@ namespace TestLibiadaCore.Classes.Root.Characteristics.Calculators
     public class TestCutLengthVocabularyEntropy : AbstractCalculatorTest
     {
         [Test]
-        public void TestCutLengthVocabularyEntropyChain()
+        public void TestUniformCalculation()
         {
-            CutLengthVocabularyEntropy cutLengthVocabularyEntropy = new CutLengthVocabularyEntropy();
-
-            CutLength cutLength = new CutLength();
-            int Count = (int)(Chains[0].Length - cutLength.Calculate(Chains[0], LinkUp.Start) + 1);
-            Assert.AreEqual(Math.Log(Count, 2), cutLengthVocabularyEntropy.Calculate(Chains[0], LinkUp.Both));
-            Assert.AreEqual(Math.Log(Count, 2), cutLengthVocabularyEntropy.Calculate(Chains[0], LinkUp.Start));
-            Assert.AreEqual(Math.Log(Count, 2), cutLengthVocabularyEntropy.Calculate(Chains[0], LinkUp.End));
-        }
-
-        [Test]
-        public void TestCutLengthVocabularyEntropyUChain()
-        {
-            CutLengthVocabularyEntropy cutLengthVocabularyEntropy = new CutLengthVocabularyEntropy();
+            CutLengthVocabularyEntropy calc = new CutLengthVocabularyEntropy();
 
             CutLength cutLength = new CutLength();
             int Count = (int)(uniformChains[0].Length - cutLength.Calculate(uniformChains[0], LinkUp.Start) + 1);
-            Assert.AreEqual(Math.Log(Count, 2), cutLengthVocabularyEntropy.Calculate(uniformChains[0], LinkUp.Both));
-            Assert.AreEqual(Math.Log(Count, 2), cutLengthVocabularyEntropy.Calculate(uniformChains[0], LinkUp.Start));
-            Assert.AreEqual(Math.Log(Count, 2), cutLengthVocabularyEntropy.Calculate(uniformChains[0], LinkUp.End));
+            TestUniformChainCharacteristic(0, calc, LinkUp.Start, Math.Log(Count, 2));
+            TestUniformChainCharacteristic(0, calc, LinkUp.End, Math.Log(Count, 2));
+            TestUniformChainCharacteristic(0, calc, LinkUp.Both, Math.Log(Count, 2));
+        }
+
+        [Test]
+        public void TestChainCalculation()
+        {
+            CutLengthVocabularyEntropy cutLengthVocabularyEntropy = new CutLengthVocabularyEntropy();
+
+            CutLength calc = new CutLength();
+            int Count = (int)(Chains[0].Length - calc.Calculate(Chains[0], LinkUp.Start) + 1);
+            TestChainCharacteristic(0, calc, LinkUp.Start, Math.Log(Count, 2));
+            TestChainCharacteristic(0, calc, LinkUp.End, Math.Log(Count, 2));
+            TestChainCharacteristic(0, calc, LinkUp.Both, Math.Log(Count, 2));
         }
     }
 }

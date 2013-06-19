@@ -17,9 +17,10 @@ namespace TestLibiadaCore.Classes.Root.Characteristics.BinaryCalculators
             Chains = BinaryCalculationHelper.Chains;
         }
 
-        public void CalculationTest(BinaryCharacteristicCalculator calc, int index, string firstElement, string secondElement, double value)
+        public void CalculationTest(BinaryCharacteristicCalculator calc, int index, double firstValue, double secondValue)
         {
-            Assert.AreEqual(value, calc.Calculate(Chains[index], Elements[firstElement], Elements[secondElement], LinkUp.End), 0.0001);
+            Assert.AreEqual(firstValue, calc.Calculate(Chains[index], Elements["a"], Elements["b"], LinkUp.End), 0.0001);
+            Assert.AreEqual(secondValue, calc.Calculate(Chains[index], Elements["b"], Elements["a"], LinkUp.End), 0.0001);
         }
     }
 }

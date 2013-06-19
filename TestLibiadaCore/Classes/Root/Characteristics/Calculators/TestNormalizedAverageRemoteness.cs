@@ -9,9 +9,9 @@ namespace TestLibiadaCore.Classes.Root.Characteristics.Calculators
     public class TestNormalizedAverageRemoteness : AbstractCalculatorTest
     {
         [Test]
-        public void TestCalculation()
+        public void TestUniformCalculation()
         {
-            NormalizedAverageRemoteness normalizedAverageRemoteness = new NormalizedAverageRemoteness();
+            NormalizedAverageRemoteness calc = new NormalizedAverageRemoteness();
 
             double interval1 = 4;
             double interval2 = 1;
@@ -19,27 +19,19 @@ namespace TestLibiadaCore.Classes.Root.Characteristics.Calculators
             double interval4 = 3;
 
             double pIntervalsCount = 3;
-
             double deltaG = Math.Pow(interval1 * interval2 * interval3, 1 / pIntervalsCount);
             double pAverageRemoteness = Math.Log(deltaG, 2);
-
-            Assert.AreEqual(pAverageRemoteness, normalizedAverageRemoteness.Calculate(uniformChains[0], LinkUp.Start));
-
+            TestUniformChainCharacteristic(0, calc, LinkUp.Start, pAverageRemoteness);
 
             pIntervalsCount = 3;
-
             deltaG = Math.Pow(interval2 * interval3 * interval4, 1 / pIntervalsCount);
             pAverageRemoteness = Math.Log(deltaG, 2);
-
-            Assert.AreEqual(pAverageRemoteness, normalizedAverageRemoteness.Calculate(uniformChains[0], LinkUp.End));
-
+            TestUniformChainCharacteristic(0, calc, LinkUp.End, pAverageRemoteness);
 
             pIntervalsCount = 4;
-
             deltaG = Math.Pow(interval1 * interval2 * interval3 * interval4, 1 / pIntervalsCount);
             pAverageRemoteness = Math.Log(deltaG, 2);
-
-            Assert.AreEqual(pAverageRemoteness, normalizedAverageRemoteness.Calculate(uniformChains[0], LinkUp.Both));
+            TestUniformChainCharacteristic(0, calc, LinkUp.Both, pAverageRemoteness);
         }
     }
 }

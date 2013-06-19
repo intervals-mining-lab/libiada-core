@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using LibiadaCore.Classes.Root;
-using LibiadaCore.Classes.Root.Characteristics.BinaryCalculators;
+﻿using LibiadaCore.Classes.Root.Characteristics.BinaryCalculators;
 using NUnit.Framework;
 
 namespace TestLibiadaCore.Classes.Root.Characteristics.BinaryCalculators
@@ -30,8 +27,7 @@ namespace TestLibiadaCore.Classes.Root.Characteristics.BinaryCalculators
         {
             Redundancy calculator = new Redundancy();
 
-            CalculationTest(calculator, index, "a", "b", firstValue);
-            CalculationTest(calculator, index, "b", "a", secondValue);
+            CalculationTest(calculator, index, firstValue, secondValue);
         }
     }
 }

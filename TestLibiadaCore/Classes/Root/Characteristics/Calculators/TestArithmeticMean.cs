@@ -8,31 +8,31 @@ namespace TestLibiadaCore.Classes.Root.Characteristics.Calculators
     public class TestArithmeticMean : AbstractCalculatorTest
     {
         [Test]
-        public void TestCalculation()
+        public void TestUniformCalculation()
         {
-            ArithmeticMean arithmeticMean = new ArithmeticMean();
+            ArithmeticMean calc = new ArithmeticMean();
             double n = 10;
             double nj = 3;
 
-            Assert.AreEqual(n / nj, arithmeticMean.Calculate(uniformChains[0], LinkUp.Start));
-            Assert.AreEqual(n / nj, arithmeticMean.Calculate(uniformChains[0], LinkUp.End));
-            Assert.AreEqual(n / nj, arithmeticMean.Calculate(uniformChains[0], LinkUp.Both));
+            TestUniformChainCharacteristic(0, calc, LinkUp.Start, n / nj);
+            TestUniformChainCharacteristic(0, calc, LinkUp.End, n / nj);
+            TestUniformChainCharacteristic(0, calc, LinkUp.Both, n / nj);
         }
 
         [Test]
-        public void TestCalculationForChain()
+        public void TestChainCalculation()
         {
-            ArithmeticMean arithmeticMean = new ArithmeticMean();
+            ArithmeticMean calc = new ArithmeticMean();
             double n = 10;
             double n_A = 3;
             double n_B = 4;
             double n_C = 3;
-            double sum_ariphmetical = (n/n_A) + (n/n_B) + (n/n_C);
-            int Alphabet_power = 3;
-            Assert.AreEqual(Alphabet_power, Chains[0].Alphabet.Power);
-            Assert.AreEqual(sum_ariphmetical / Alphabet_power, arithmeticMean.Calculate(Chains[0], LinkUp.Start));
-            Assert.AreEqual(sum_ariphmetical / Alphabet_power, arithmeticMean.Calculate(Chains[0], LinkUp.End));
-            Assert.AreEqual(sum_ariphmetical / Alphabet_power, arithmeticMean.Calculate(Chains[0], LinkUp.Both));
+            double sumAriphmetical = (n/n_A) + (n/n_B) + (n/n_C);
+            int alphabetPower = 3;
+
+            TestChainCharacteristic(0, calc, LinkUp.Start, sumAriphmetical / alphabetPower);
+            TestChainCharacteristic(0, calc, LinkUp.End, sumAriphmetical / alphabetPower);
+            TestChainCharacteristic(0, calc, LinkUp.Both, sumAriphmetical / alphabetPower);
         }
     }
 }

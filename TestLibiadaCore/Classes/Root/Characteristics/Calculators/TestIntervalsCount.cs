@@ -8,27 +8,23 @@ namespace TestLibiadaCore.Classes.Root.Characteristics.Calculators
     public class TestIntervalsCount : AbstractCalculatorTest
     {
         [Test]
-        public void TestCalculation()
+        public void TestUniformCalculation()
         {
-            IntervalsCount intervalsCount = new IntervalsCount();
-            int elementCount = 4;
-            Assert.AreEqual(elementCount, intervalsCount.Calculate(uniformChains[0], LinkUp.Both));
+            IntervalsCount calc = new IntervalsCount();
 
-            elementCount = 3;
-            Assert.AreEqual(elementCount, intervalsCount.Calculate(uniformChains[0], LinkUp.Start));
-            Assert.AreEqual(elementCount, intervalsCount.Calculate(uniformChains[0], LinkUp.End));
+            TestUniformChainCharacteristic(0, calc, LinkUp.Start,3);
+            TestUniformChainCharacteristic(0, calc, LinkUp.End, 3);
+            TestUniformChainCharacteristic(0, calc, LinkUp.Both,4);
         }
 
         [Test]
-        public void TestCalculationForChain()
+        public void TestChainCalculation()
         {
-            IntervalsCount intervalsCount = new IntervalsCount();
-            int elementCount = 13;
-            Assert.AreEqual(elementCount, intervalsCount.Calculate(Chains[0], LinkUp.Both));
+            IntervalsCount calc = new IntervalsCount();
 
-            elementCount = 10;
-            Assert.AreEqual(elementCount, intervalsCount.Calculate(Chains[0], LinkUp.Start));
-            Assert.AreEqual(elementCount, intervalsCount.Calculate(Chains[0], LinkUp.End));
+            TestChainCharacteristic(0, calc, LinkUp.Start, 10);
+            TestChainCharacteristic(0, calc, LinkUp.End, 10);
+            TestChainCharacteristic(0, calc, LinkUp.Both, 13);
         }
     }
 }

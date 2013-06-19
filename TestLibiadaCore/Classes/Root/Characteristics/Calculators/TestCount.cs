@@ -8,23 +8,23 @@ namespace TestLibiadaCore.Classes.Root.Characteristics.Calculators
     public class TestCount : AbstractCalculatorTest
     {
         [Test]
-        public void TestCalculation()
+        public void TestUniformCalculation()
         {
-            Count count = new Count();
-            int elementCount = 3;
-            Assert.AreEqual(elementCount, count.Calculate(uniformChains[0], LinkUp.Both));
-            Assert.AreEqual(elementCount, count.Calculate(uniformChains[0], LinkUp.Start));
-            Assert.AreEqual(elementCount, count.Calculate(uniformChains[0], LinkUp.End));
+            Count calc = new Count();
+
+            TestUniformChainCharacteristic(0, calc, LinkUp.Start, 3);
+            TestUniformChainCharacteristic(0, calc, LinkUp.End, 3);
+            TestUniformChainCharacteristic(0, calc, LinkUp.Both, 3);
         }
 
         [Test]
-        public void TestCalculatorForChain()
+        public void TestChainCalculation()
         {
-            Count count = new Count();
-            int elementCount = 10;
-            Assert.AreEqual(elementCount, count.Calculate(Chains[0], LinkUp.Start));
-            Assert.AreEqual(elementCount, count.Calculate(Chains[0], LinkUp.Both));
-            Assert.AreEqual(elementCount, count.Calculate(Chains[0], LinkUp.End));
+            Count calc = new Count();
+
+            TestChainCharacteristic(0, calc, LinkUp.Start, 10);
+            TestChainCharacteristic(0, calc, LinkUp.End, 10);
+            TestChainCharacteristic(0, calc, LinkUp.Both, 10);
         }
     }
 }

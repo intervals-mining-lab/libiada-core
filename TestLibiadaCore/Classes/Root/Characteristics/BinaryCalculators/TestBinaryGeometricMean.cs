@@ -11,8 +11,7 @@ namespace TestLibiadaCore.Classes.Root.Characteristics.BinaryCalculators
         {
             BinaryGeometricMean calculator = new BinaryGeometricMean();
 
-            CalculationTest(calculator, index, "c", "a", firstValue);
-            CalculationTest(calculator, index, "a", "c", secondValue);
+            CalculationTest(calculator, index, firstValue, secondValue);
         }
     }
 }

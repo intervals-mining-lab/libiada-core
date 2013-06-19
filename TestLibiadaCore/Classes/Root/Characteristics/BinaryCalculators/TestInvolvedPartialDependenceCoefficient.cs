@@ -30,8 +30,7 @@ namespace TestLibiadaCore.Classes.Root.Characteristics.BinaryCalculators
         {
             InvolvedPartialDependenceCoefficient calculator = new InvolvedPartialDependenceCoefficient();
 
-            CalculationTest(calculator, index, "a", "b", firstValue);
-            CalculationTest(calculator, index, "b", "a", secondValue);
+            CalculationTest(calculator, index, firstValue, secondValue);
         }
 
         [Test]

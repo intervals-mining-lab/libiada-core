@@ -9,24 +9,24 @@ namespace TestLibiadaCore.Classes.Root.Characteristics.Calculators
     public class TestIdentificationInformation : AbstractCalculatorTest
     {
         [Test]
-        public void TestCalculationForUniformChain()
+        public void TestUniformCalculation()
         {
-            IdentificationInformation identificationInformation = new IdentificationInformation();
+            IdentificationInformation calc = new IdentificationInformation();
 
             double pLength = 10;
             double elementsCount = 3;
 
             double deltaA = pLength/elementsCount;
             double information = Math.Log(deltaA, 2);
-            Assert.AreEqual(information, identificationInformation.Calculate(uniformChains[0], LinkUp.Start));
-            Assert.AreEqual(information, identificationInformation.Calculate(uniformChains[0], LinkUp.End));
-            Assert.AreEqual(information, identificationInformation.Calculate(uniformChains[0], LinkUp.Both));
+            TestUniformChainCharacteristic(0, calc, LinkUp.Start, information);
+            TestUniformChainCharacteristic(0, calc, LinkUp.End, information);
+            TestUniformChainCharacteristic(0, calc, LinkUp.Both, information);
         }
 
         [Test]
-        public void TestCalculationForChain()
+        public void TestChainCalculation()
         {
-            IdentificationInformation identificationInformation = new IdentificationInformation();
+            IdentificationInformation calc = new IdentificationInformation();
 
             double pLength = 10;
             const double elementsACount = 4;
@@ -37,22 +37,18 @@ namespace TestLibiadaCore.Classes.Root.Characteristics.Calculators
             double deltaAB = pLength/elementsBCount;
             double deltaAC = pLength/elementsCCount;
 
-
             double PA = elementsACount/pLength;
             double PB = elementsBCount/pLength;
             double PC = elementsCCount/pLength;
-
 
             double informationA = PA*Math.Log(deltaAA, 2);
             double informationB = PB*Math.Log(deltaAB, 2);
             double informationC = PC*Math.Log(deltaAC, 2);
 
-
             double information = (informationA + informationB + informationC);
-
-            Assert.AreEqual(information, identificationInformation.Calculate(Chains[0], LinkUp.Start));
-            Assert.AreEqual(information, identificationInformation.Calculate(Chains[0], LinkUp.End));
-            Assert.AreEqual(information, identificationInformation.Calculate(Chains[0], LinkUp.Both));
+            TestChainCharacteristic(0, calc, LinkUp.Start, information);
+            TestChainCharacteristic(0, calc, LinkUp.End, information);
+            TestChainCharacteristic(0, calc, LinkUp.Both, information);
         }
     }
 }

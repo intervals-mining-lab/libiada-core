@@ -9,27 +9,23 @@ namespace TestLibiadaCore.Classes.Root.Characteristics.Calculators
     public class TestDescriptiveInformation : AbstractCalculatorTest
     {
         [Test]
-        public void TestCalculationForUniformChain()
+        public void TestUniformCalculation()
         {
-            DescriptiveInformation descriptiveInformation = new DescriptiveInformation();
+            DescriptiveInformation calc = new DescriptiveInformation();
 
             const double length = 10;
             const double elementsCount = 3;
             const double arithmeticMean = length/elementsCount;
             const double propability = elementsCount/length;
-
-            Assert.AreEqual(Math.Pow(arithmeticMean, propability)*Math.Pow(1/(1 - propability), 1 - propability),
-                            descriptiveInformation.Calculate(uniformChains[0], LinkUp.Start));
-            Assert.AreEqual(Math.Pow(arithmeticMean, propability)*Math.Pow(1/(1 - propability), 1 - propability),
-                            descriptiveInformation.Calculate(uniformChains[0], LinkUp.End));
-            Assert.AreEqual(Math.Pow(arithmeticMean, propability)*Math.Pow(1/(1 - propability), 1 - propability),
-                            descriptiveInformation.Calculate(uniformChains[0], LinkUp.Both));
+            TestUniformChainCharacteristic(0, calc, LinkUp.Start, Math.Pow(arithmeticMean, propability) * Math.Pow(1 / (1 - propability), 1 - propability));
+            TestUniformChainCharacteristic(0, calc, LinkUp.End, Math.Pow(arithmeticMean, propability) * Math.Pow(1 / (1 - propability), 1 - propability));
+            TestUniformChainCharacteristic(0, calc, LinkUp.Both, Math.Pow(arithmeticMean, propability) * Math.Pow(1 / (1 - propability), 1 - propability));
         }
 
         [Test]
-        public void TestCalculationForChain()
+        public void TestChainCalculation()
         {
-            DescriptiveInformation descriptiveInformation = new DescriptiveInformation();
+            DescriptiveInformation calc = new DescriptiveInformation();
 
             const double length = 10;
             const double elementsACount = 4;
@@ -50,9 +46,9 @@ namespace TestLibiadaCore.Classes.Root.Characteristics.Calculators
 
             double DTheoretical = DA*DB*DC;
 
-            Assert.AreEqual(DTheoretical, descriptiveInformation.Calculate(Chains[0], LinkUp.Start));
-            Assert.AreEqual(DTheoretical, descriptiveInformation.Calculate(Chains[0], LinkUp.End));
-            Assert.AreEqual(DTheoretical, descriptiveInformation.Calculate(Chains[0], LinkUp.Both));
+            TestChainCharacteristic(0, calc, LinkUp.Start, DTheoretical);
+            TestChainCharacteristic(0, calc, LinkUp.End, DTheoretical);
+            TestChainCharacteristic(0, calc, LinkUp.Both, DTheoretical);
         }
     }
 }

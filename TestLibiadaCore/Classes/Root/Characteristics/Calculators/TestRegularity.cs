@@ -9,9 +9,9 @@ namespace TestLibiadaCore.Classes.Root.Characteristics.Calculators
     public class TestRegularity : AbstractCalculatorTest
     {
         [Test]
-        public void TestCalculationForUniformChain()
+        public void TestUniformCalculation()
         {
-            Regularity regularity = new Regularity();
+            Regularity calc = new Regularity();
 
             double Length = 10;
             double ElementCount = 3;
@@ -27,24 +27,21 @@ namespace TestLibiadaCore.Classes.Root.Characteristics.Calculators
 
             double intervalsCount = 3;
             double geometricMiddling = Math.Pow(Interval1*Interval2*Interval3, 1/intervalsCount);
-
-            Assert.AreEqual(geometricMiddling / d, regularity.Calculate(uniformChains[0], LinkUp.Start));
+            TestUniformChainCharacteristic(0, calc, LinkUp.Start, geometricMiddling / d);
 
             intervalsCount = 3;
             geometricMiddling = Math.Pow(Interval2*Interval3*Interval4, 1/intervalsCount);
-
-            Assert.AreEqual(geometricMiddling / d, regularity.Calculate(uniformChains[0], LinkUp.End));
+            TestUniformChainCharacteristic(0, calc, LinkUp.End, geometricMiddling / d);
 
             intervalsCount = 4;
             geometricMiddling = Math.Pow(Interval1*Interval2*Interval3*Interval4, 1/intervalsCount);
-
-            Assert.AreEqual(geometricMiddling / d, regularity.Calculate(uniformChains[0], LinkUp.Both));
+            TestUniformChainCharacteristic(0, calc, LinkUp.Both, geometricMiddling / d);
         }
 
         [Test]
-        public void TestCalculationForChain()
+        public void TestChainCalculation()
         {
-            Regularity regularity = new Regularity();
+            Regularity calc = new Regularity();
 
             double Length = 10;
 
@@ -113,16 +110,12 @@ namespace TestLibiadaCore.Classes.Root.Characteristics.Calculators
                            remoutness31*remoutness32*remoutness33*remoutness34;
 
             double geometricMiddlingStart = Math.Pow(VStart, 1/IntervalsCountStart);
-
-            Assert.AreEqual(geometricMiddlingStart / D, regularity.Calculate(Chains[0], LinkUp.Start));
-
             double geometricMiddlingEnd = Math.Pow(VEnd, 1/IntervalsCountEnd);
-
-            Assert.AreEqual(geometricMiddlingEnd / D, regularity.Calculate(Chains[0], LinkUp.End));
-
             double geometricMiddlingBoth = Math.Pow(VBoth, 1/IntervalsCountBoth);
 
-            Assert.AreEqual(geometricMiddlingBoth / D, regularity.Calculate(Chains[0], LinkUp.Both));
+            TestChainCharacteristic(0, calc, LinkUp.Start, geometricMiddlingStart / D);
+            TestChainCharacteristic(0, calc, LinkUp.End, geometricMiddlingEnd / D);
+            TestChainCharacteristic(0, calc, LinkUp.Both, geometricMiddlingBoth / D);
         }
     }
 }

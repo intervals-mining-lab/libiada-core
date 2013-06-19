@@ -8,24 +8,23 @@ namespace TestLibiadaCore.Classes.Root.Characteristics.Calculators
     public class TestCutLength : AbstractCalculatorTest
     {
         [Test]
-        public void TestCutLengthChain()
+        public void TestUniformCalculation()
         {
-            CutLength cutLength = new CutLength();
+            CutLength calc = new CutLength();
 
-
-            Assert.AreEqual(3, cutLength.Calculate(Chains[0], LinkUp.Both));
-            Assert.AreEqual(3, cutLength.Calculate(Chains[0], LinkUp.Start));
-            Assert.AreEqual(3, cutLength.Calculate(Chains[0], LinkUp.End));
+            TestUniformChainCharacteristic(0, calc, LinkUp.Start, 4);
+            TestUniformChainCharacteristic(0, calc, LinkUp.End, 4);
+            TestUniformChainCharacteristic(0, calc, LinkUp.Both, 4);
         }
 
         [Test]
-        public void TestCutLengthUChain()
+        public void TestChainCalculation()
         {
-            CutLength cutLength = new CutLength();
+            CutLength calc = new CutLength();
 
-            Assert.AreEqual(4, cutLength.Calculate(uniformChains[0], LinkUp.Both));
-            Assert.AreEqual(4, cutLength.Calculate(uniformChains[0], LinkUp.Start));
-            Assert.AreEqual(4, cutLength.Calculate(uniformChains[0], LinkUp.End));
+            TestChainCharacteristic(0, calc, LinkUp.Start, 3);
+            TestChainCharacteristic(0, calc, LinkUp.End, 3);
+            TestChainCharacteristic(0, calc, LinkUp.Both, 3);
         }
     }
 }

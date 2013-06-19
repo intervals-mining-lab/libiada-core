@@ -8,24 +8,23 @@ namespace TestLibiadaCore.Classes.Root.Characteristics.Calculators
     public class TestLength : AbstractCalculatorTest
     {
         [Test]
-        public void TestCalculation()
+        public void TestUniformCalculation()
         {
-            Length length = new Length();
-
-            Assert.AreEqual(10, length.Calculate(uniformChains[0], LinkUp.Start));
-            Assert.AreEqual(10, length.Calculate(uniformChains[0], LinkUp.End));
-            Assert.AreEqual(10, length.Calculate(uniformChains[0], LinkUp.Both));
+            Length calc = new Length();
+            TestUniformChainCharacteristic(0, calc, LinkUp.Start, 10);
+            TestUniformChainCharacteristic(0, calc, LinkUp.End, 10);
+            TestUniformChainCharacteristic(0, calc, LinkUp.Both, 10);
         }
 
         [Test]
-        public void TestCalculationForChain()
+        public void TestChainCalculation()
         {
-            Length length = new Length();
+            Length calc = new Length();
 
-            const int chainLength = 10;
-            Assert.AreEqual(chainLength, length.Calculate(Chains[0], LinkUp.Start));
-            Assert.AreEqual(chainLength, length.Calculate(Chains[0], LinkUp.End));
-            Assert.AreEqual(chainLength, length.Calculate(Chains[0], LinkUp.Both));
+            TestChainCharacteristic(0, calc, LinkUp.Start, 10);
+            TestChainCharacteristic(0, calc, LinkUp.End, 10);
+            TestChainCharacteristic(0, calc, LinkUp.Both, 10);
+
         }
     }
 }
