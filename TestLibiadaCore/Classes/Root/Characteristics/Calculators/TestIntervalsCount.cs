@@ -7,24 +7,24 @@ namespace TestLibiadaCore.Classes.Root.Characteristics.Calculators
     [TestFixture]
     public class TestIntervalsCount : AbstractCalculatorTest
     {
-        [Test]
-        public void TestUniformCalculation()
+        [TestCase(0, LinkUp.Start, 3)]
+        [TestCase(0, LinkUp.End, 3)]
+        [TestCase(0, LinkUp.Both, 4)]
+        public void TestUniformCalculation(int index, LinkUp linkUp, double value)
         {
             IntervalsCount calc = new IntervalsCount();
 
-            TestUniformChainCharacteristic(0, calc, LinkUp.Start,3);
-            TestUniformChainCharacteristic(0, calc, LinkUp.End, 3);
-            TestUniformChainCharacteristic(0, calc, LinkUp.Both,4);
+            TestUniformChainCharacteristic(index, calc, linkUp, value);
         }
 
-        [Test]
-        public void TestChainCalculation()
+        [TestCase(0, LinkUp.Start, 10)]
+        [TestCase(0, LinkUp.End, 10)]
+        [TestCase(0, LinkUp.Both, 13)]
+        public void TestChainCalculation(int index, LinkUp linkUp, double value)
         {
             IntervalsCount calc = new IntervalsCount();
 
-            TestChainCharacteristic(0, calc, LinkUp.Start, 10);
-            TestChainCharacteristic(0, calc, LinkUp.End, 10);
-            TestChainCharacteristic(0, calc, LinkUp.Both, 13);
+            TestChainCharacteristic(index, calc, linkUp, value);
         }
     }
 }

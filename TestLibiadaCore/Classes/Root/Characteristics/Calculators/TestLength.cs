@@ -7,23 +7,24 @@ namespace TestLibiadaCore.Classes.Root.Characteristics.Calculators
     [TestFixture]
     public class TestLength : AbstractCalculatorTest
     {
-        [Test]
-        public void TestUniformCalculation()
+        [TestCase(0, LinkUp.Start, 10)]
+        [TestCase(0, LinkUp.End, 10)]
+        [TestCase(0, LinkUp.Both, 10)]
+        public void TestUniformCalculation(int index, LinkUp linkUp, double value)
         {
             Length calc = new Length();
-            TestUniformChainCharacteristic(0, calc, LinkUp.Start, 10);
-            TestUniformChainCharacteristic(0, calc, LinkUp.End, 10);
-            TestUniformChainCharacteristic(0, calc, LinkUp.Both, 10);
+
+            TestUniformChainCharacteristic(index, calc, linkUp, value);
         }
 
-        [Test]
-        public void TestChainCalculation()
+        [TestCase(0, LinkUp.Start, 10)]
+        [TestCase(0, LinkUp.End, 10)]
+        [TestCase(0, LinkUp.Both, 10)]
+        public void TestChainCalculation(int index, LinkUp linkUp, double value)
         {
             Length calc = new Length();
 
-            TestChainCharacteristic(0, calc, LinkUp.Start, 10);
-            TestChainCharacteristic(0, calc, LinkUp.End, 10);
-            TestChainCharacteristic(0, calc, LinkUp.Both, 10);
+            TestChainCharacteristic(index, calc, linkUp, value);
 
         }
     }

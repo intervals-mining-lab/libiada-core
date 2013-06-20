@@ -7,24 +7,24 @@ namespace TestLibiadaCore.Classes.Root.Characteristics.Calculators
     [TestFixture]
     public class TestProbability : AbstractCalculatorTest
     {
-        [Test]
-        public void TestUniformCalculation()
+        [TestCase(0, LinkUp.Start, 0.3)]
+        [TestCase(0, LinkUp.End, 0.3)]
+        [TestCase(0, LinkUp.Both, 0.3)]
+        public void TestUniformCalculation(int index, LinkUp linkUp, double value)
         {
             Probability calc = new Probability();
 
-            TestUniformChainCharacteristic(0, calc, LinkUp.Start, 0.3);
-            TestUniformChainCharacteristic(0, calc, LinkUp.End, 0.3);
-            TestUniformChainCharacteristic(0, calc, LinkUp.Both, 0.3);
+            TestUniformChainCharacteristic(index, calc, linkUp, value);
         }
 
-        [Test]
-        public void TestChainCalculation()
+        [TestCase(0, LinkUp.Start, 1)]
+        [TestCase(0, LinkUp.End, 1)]
+        [TestCase(0, LinkUp.Both, 1)]
+        public void TestChainCalculation(int index, LinkUp linkUp, double value)
         {
             Probability calc = new Probability();
 
-            TestChainCharacteristic(0, calc, LinkUp.Start, 1);
-            TestChainCharacteristic(0, calc, LinkUp.End, 1);
-            TestChainCharacteristic(0, calc, LinkUp.Both, 1);
+            TestChainCharacteristic(index, calc, linkUp, value);
         }
     }
 }

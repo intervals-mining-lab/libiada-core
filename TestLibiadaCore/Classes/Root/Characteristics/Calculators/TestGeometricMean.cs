@@ -23,17 +23,17 @@ namespace TestLibiadaCore.Classes.Root.Characteristics.Calculators
             double V = interval1 * interval2 * interval3;
             double intervalsCount = ((double)1) / 3;
             TestUniformChainCharacteristic(0, calc, LinkUp.Start, Math.Pow(V, intervalsCount));
-            TestUniformChainCharacteristic(0, calc, LinkUp.Start, Math.Pow(2, depth.Calculate(uniformChains[0], LinkUp.Start) / intervalsCountCalc.Calculate(uniformChains[0], LinkUp.Start)));
+            TestUniformChainCharacteristic(0, calc, LinkUp.Start, Math.Pow(2, depth.Calculate(UniformChains[0], LinkUp.Start) / intervalsCountCalc.Calculate(UniformChains[0], LinkUp.Start)));
             
             V = interval2*interval3*interval4;
             intervalsCount = ((double) 1)/3;
             TestUniformChainCharacteristic(0, calc, LinkUp.End, Math.Pow(V, intervalsCount));
-            TestUniformChainCharacteristic(0, calc, LinkUp.End, Math.Pow(2, depth.Calculate(uniformChains[0], LinkUp.End) / intervalsCountCalc.Calculate(uniformChains[0], LinkUp.End)));
+            TestUniformChainCharacteristic(0, calc, LinkUp.End, Math.Pow(2, depth.Calculate(UniformChains[0], LinkUp.End) / intervalsCountCalc.Calculate(UniformChains[0], LinkUp.End)));
 
             V = interval1*interval2*interval3*interval4;
             intervalsCount = ((double) 1)/4;
             TestUniformChainCharacteristic(0, calc, LinkUp.Both, Math.Pow(V, intervalsCount));
-            TestUniformChainCharacteristic(0, calc, LinkUp.Both, Math.Pow(2, depth.Calculate(uniformChains[0], LinkUp.Both) / intervalsCountCalc.Calculate(uniformChains[0], LinkUp.Both)));
+            TestUniformChainCharacteristic(0, calc, LinkUp.Both, Math.Pow(2, depth.Calculate(UniformChains[0], LinkUp.Both) / intervalsCountCalc.Calculate(UniformChains[0], LinkUp.Both)));
         }
 
         [Test]

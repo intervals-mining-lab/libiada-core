@@ -39,7 +39,7 @@ namespace TestLibiadaCore.Classes.Root
         {
             try
             {
-                new Chain(-10);
+                new BaseChain(-10);
             }
             catch (Exception)
             {

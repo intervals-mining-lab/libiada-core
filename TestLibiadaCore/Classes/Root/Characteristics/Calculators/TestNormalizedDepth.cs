@@ -14,18 +14,18 @@ namespace TestLibiadaCore.Classes.Root.Characteristics.Calculators
             NormalizedDepth calc = new NormalizedDepth();
             Depth depth = new Depth();
             Length length = new Length();
-            double theory = depth.Calculate(uniformChains[0], LinkUp.Start) /
-                        length.Calculate(uniformChains[0], LinkUp.Both);
+            double theory = depth.Calculate(UniformChains[0], LinkUp.Start) /
+                        length.Calculate(UniformChains[0], LinkUp.Both);
 
             TestUniformChainCharacteristic(0, calc, LinkUp.Start, theory);
 
-            theory = depth.Calculate(uniformChains[0], LinkUp.End) /
-                        length.Calculate(uniformChains[0], LinkUp.Both);
+            theory = depth.Calculate(UniformChains[0], LinkUp.End) /
+                        length.Calculate(UniformChains[0], LinkUp.Both);
 
             TestUniformChainCharacteristic(0, calc, LinkUp.End, theory);
 
-            theory = depth.Calculate(uniformChains[0], LinkUp.Both) /
-                        length.Calculate(uniformChains[0], LinkUp.Both);
+            theory = depth.Calculate(UniformChains[0], LinkUp.Both) /
+                        length.Calculate(UniformChains[0], LinkUp.Both);
 
             TestUniformChainCharacteristic(0, calc, LinkUp.Both, theory);
         }

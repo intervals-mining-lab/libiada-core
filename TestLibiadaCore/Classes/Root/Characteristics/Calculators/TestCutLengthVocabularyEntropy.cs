@@ -14,7 +14,7 @@ namespace TestLibiadaCore.Classes.Root.Characteristics.Calculators
             CutLengthVocabularyEntropy calc = new CutLengthVocabularyEntropy();
 
             CutLength cutLength = new CutLength();
-            int Count = (int)(uniformChains[0].Length - cutLength.Calculate(uniformChains[0], LinkUp.Start) + 1);
+            int Count = (int)(UniformChains[0].Length - cutLength.Calculate(UniformChains[0], LinkUp.Start) + 1);
             TestUniformChainCharacteristic(0, calc, LinkUp.Start, Math.Log(Count, 2));
             TestUniformChainCharacteristic(0, calc, LinkUp.End, Math.Log(Count, 2));
             TestUniformChainCharacteristic(0, calc, LinkUp.Both, Math.Log(Count, 2));

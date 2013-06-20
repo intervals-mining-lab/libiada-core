@@ -7,14 +7,13 @@ namespace TestLibiadaCore.Classes.Root.Characteristics.Calculators
 {
     public abstract class AbstractCalculatorTest
     {
-        protected List<UniformChain> uniformChains;
+        protected List<UniformChain> UniformChains;
         protected List<Chain> Chains;
-        protected readonly Dictionary<string, IBaseObject> Elements = CalculationHelper.Elements;
-            
+
         [SetUp]
         public void Init()
         {
-            uniformChains = CalculationHelper.UniformChains;
+            UniformChains = CalculationHelper.UniformChains;
             Chains = CalculationHelper.Chains;
         }
 
@@ -22,9 +21,10 @@ namespace TestLibiadaCore.Classes.Root.Characteristics.Calculators
         {
             Assert.AreEqual(value, calc.Calculate(Chains[index], linkUp), 0.0001);
         }
+
         public void TestUniformChainCharacteristic(int index, ICharacteristicCalculator calc, LinkUp linkUp, double value)
         {
-            Assert.AreEqual(value, calc.Calculate(uniformChains[index], linkUp), 0.0001);
+            Assert.AreEqual(value, calc.Calculate(UniformChains[index], linkUp), 0.0001);
         }
     }
 }
