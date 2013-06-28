@@ -7,15 +7,8 @@ namespace TestLibiadaCore.Classes.Root.Characteristics.Calculators
 {
     public abstract class AbstractCalculatorTest
     {
-        protected List<UniformChain> UniformChains;
-        protected List<Chain> Chains;
-
-        [SetUp]
-        public void Init()
-        {
-            UniformChains = CalculationHelper.UniformChains;
-            Chains = CalculationHelper.Chains;
-        }
+        protected List<UniformChain> UniformChains = CalculationHelper.UniformChains;
+        protected List<Chain> Chains = CalculationHelper.Chains;
 
         public void TestChainCharacteristic(int index, ICharacteristicCalculator calc, LinkUp linkUp, double value)
         {

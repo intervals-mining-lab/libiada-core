@@ -17,6 +17,8 @@ namespace TestLibiadaCore.Classes.Root.Characteristics.Calculators
             TestUniformChainCharacteristic(0, calc, LinkUp.Start, n / nj);
             TestUniformChainCharacteristic(0, calc, LinkUp.End, n / nj);
             TestUniformChainCharacteristic(0, calc, LinkUp.Both, n / nj);
+            TestUniformChainCharacteristic(0, calc, LinkUp.Cycle, n / nj);
+            TestUniformChainCharacteristic(0, calc, LinkUp.None, n / nj);
         }
 
         [Test]
@@ -33,6 +35,8 @@ namespace TestLibiadaCore.Classes.Root.Characteristics.Calculators
             TestChainCharacteristic(0, calc, LinkUp.Start, sumAriphmetical / alphabetPower);
             TestChainCharacteristic(0, calc, LinkUp.End, sumAriphmetical / alphabetPower);
             TestChainCharacteristic(0, calc, LinkUp.Both, sumAriphmetical / alphabetPower);
+            TestChainCharacteristic(0, calc, LinkUp.Cycle, sumAriphmetical / alphabetPower);
+            TestChainCharacteristic(0, calc, LinkUp.None, sumAriphmetical / alphabetPower);
         }
     }
 }

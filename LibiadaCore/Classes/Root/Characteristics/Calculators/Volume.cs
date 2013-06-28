@@ -19,12 +19,16 @@ namespace LibiadaCore.Classes.Root.Characteristics.Calculators
 
             switch (linkUp)
             {
+                case LinkUp.None:
+                    return result;
                 case LinkUp.Start:
                     return result * intervals[0];
                 case LinkUp.End:
                     return result * intervals[intervals.Count - 1];
                 case LinkUp.Both:
                     return result * intervals[0] * intervals[intervals.Count - 1];
+                case LinkUp.Cycle:
+                    return result*(intervals[0] + intervals[intervals.Count - 1] - 1);
                 default:
                     throw new Exception("Неизвестная привязка");
             }

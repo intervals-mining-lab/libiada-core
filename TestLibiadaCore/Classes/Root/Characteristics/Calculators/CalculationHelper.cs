@@ -44,11 +44,11 @@ namespace TestLibiadaCore.Classes.Root.Characteristics.Calculators
             get
             {
                 List<UniformChain> uniformChains = new List<UniformChain>();
-
+                // _ _ _ a a _ _ a _ _
                 UniformChain uChain = new UniformChain(10, Elements["a"]);
                 uChain.Add(Elements["a"], 3);
-                uChain.Add(Elements["a"], 7);
                 uChain.Add(Elements["a"], 4);
+                uChain.Add(Elements["a"], 7);
                 uniformChains.Add(uChain);
 
                 return uniformChains;

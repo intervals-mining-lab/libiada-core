@@ -9,7 +9,7 @@ namespace LibiadaCore.Classes.Root.Characteristics.Calculators
         {
             Count count = new Count();
             Length length = new Length();
-            return count.Calculate(chain, LinkUp.Both)/length.Calculate(chain, LinkUp.Both);
+            return count.Calculate(chain, linkUp) / length.Calculate(chain, linkUp);
         }
 
         /// <summary>

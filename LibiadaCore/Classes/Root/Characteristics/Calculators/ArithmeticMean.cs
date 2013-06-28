@@ -7,15 +7,18 @@ namespace LibiadaCore.Classes.Root.Characteristics.Calculators
     {
         /// <summary>
         /// Для однородной цепи данная характеристика 
-        /// вычисляется как 1/вероятность или чеастоту её элемента.
+        /// вычисляется как сумма длин всех интервалов делёное на количество интервалов.
         /// </summary>
         /// <param name="chain"></param>
         /// <param name="linkUp"></param>
         /// <returns></returns>
         public double Calculate(UniformChain chain, LinkUp linkUp)
         {
-            Probability probability = new Probability();
-            return 1 / probability.Calculate(chain, linkUp);
+            IntervalsSum sumator = new IntervalsSum();
+            double sum = sumator.Calculate(chain, linkUp);
+            IntervalsCount counter = new IntervalsCount();
+            double intervalsCount = counter.Calculate(chain,linkUp);
+            return sum/intervalsCount;
         }
 
         ///<summary>
@@ -26,12 +29,11 @@ namespace LibiadaCore.Classes.Root.Characteristics.Calculators
         ///<returns></returns>
         public double Calculate(Chain chain, LinkUp linkUp)
         {
-            double sum = 0;
-            for (int i = 0; i < chain.Alphabet.Power; i++)
-            {
-                sum += Calculate(chain.UniformChain(i), linkUp);
-            }
-            return sum/chain.Alphabet.Power;
+            IntervalsSum sumator = new IntervalsSum();
+            double sum = sumator.Calculate(chain, linkUp);
+            IntervalsCount counter = new IntervalsCount();
+            double intervalsCount = counter.Calculate(chain, linkUp);
+            return sum / intervalsCount;
         }
 
         public CharacteristicsEnum GetCharacteristicName()
