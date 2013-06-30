@@ -3,7 +3,7 @@ using LibiadaCore.Classes.Root.Characteristics.BinaryCalculators;
 
 namespace LibiadaCore.Classes.Root.Characteristics
 {
-    public class BinaryCharacteristicsFactory
+    public class BinaryCalculatorsFactory
     {
         ///<summary>
         /// Среднегеометрическая удалённость между парой элементов.

@@ -6,7 +6,7 @@ namespace LibiadaCore.Classes.Root.Characteristics
     ///<summary>
     /// —татическа€ фабрика различных калькул€торов.
     ///</summary>
-    public static class CharacteristicsFactory
+    public static class CalculatorsFactory
     {
 
         ///<summary>
