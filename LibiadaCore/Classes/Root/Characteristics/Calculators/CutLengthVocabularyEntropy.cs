@@ -9,7 +9,7 @@ namespace LibiadaCore.Classes.Root.Characteristics.Calculators
     {
         private readonly CutLength cutLength = new CutLength();
 
-        public double Calculate(UniformChain chain, LinkUp linkUp)
+        public double Calculate(CongenericChain chain, LinkUp linkUp)
         {
             return Math.Log(chain.Length - cutLength.Calculate(chain, linkUp) + 1, 2);
         }

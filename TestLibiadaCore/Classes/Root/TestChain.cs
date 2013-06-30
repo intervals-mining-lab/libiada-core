@@ -29,7 +29,7 @@ namespace TestLibiadaCore.Classes.Root
             ValueChar messageC = new ValueChar('c');
             ValueChar messageG = new ValueChar('g');
             ValueChar messageT = new ValueChar('t');
-            UniformChain UnifromChainA = new UniformChain(10, messageA);
+            CongenericChain UnifromChainA = new CongenericChain(10, messageA);
 
             ChainBase.Add(messageC, 0);
 
@@ -55,9 +55,9 @@ namespace TestLibiadaCore.Classes.Root
 
             ChainBase.Add(messageC, 9);
 
-            BaseChain chainCreatedUniformChain = ChainBase.UniformChain((IBaseObject)messageA);
+            BaseChain chainCreatedCongenericChain = ChainBase.CongenericChain((IBaseObject)messageA);
 
-            Assert.AreEqual(UnifromChainA, chainCreatedUniformChain);
+            Assert.AreEqual(UnifromChainA, chainCreatedCongenericChain);
         }
 
         [Test]

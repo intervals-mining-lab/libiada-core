@@ -42,19 +42,19 @@ namespace TestLibiadaCore.Classes.Root.Characteristics.Calculators
             }
         }
 
-        public static List<UniformChain> UniformChains
+        public static List<CongenericChain> CongenericChains
         {
             get
             {
-                List<UniformChain> uniformChains = new List<UniformChain>();
+                List<CongenericChain> CongenericChains = new List<CongenericChain>();
                 // _ _ _ a a _ _ a _ _
-                UniformChain uChain = new UniformChain(10, Elements["a"]);
+                CongenericChain uChain = new CongenericChain(10, Elements["a"]);
                 uChain.Add(Elements["a"], 3);
                 uChain.Add(Elements["a"], 4);
                 uChain.Add(Elements["a"], 7);
-                uniformChains.Add(uChain);
+                CongenericChains.Add(uChain);
 
-                return uniformChains;
+                return CongenericChains;
             }
         }
     }

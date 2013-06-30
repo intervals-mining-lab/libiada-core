@@ -12,7 +12,7 @@ namespace LibiadaCore.Classes.Root.Characteristics.BinaryCalculators
                 return 0;
             }
             Count count = new Count();
-            UniformChain firstElementChain = chain.UniformChain(firstElement);
+            CongenericChain firstElementChain = chain.CongenericChain(firstElement);
             int firstElementCount = (int)count.Calculate(firstElementChain, linkUp);
             double avG = 0;
             int currentEntrance = 0;

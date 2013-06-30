@@ -12,7 +12,7 @@ namespace LibiadaCore.Classes.Root.Characteristics.Calculators
         ///<param name="chain"></param>
         ///<param name="linkUp"></param>
         ///<returns></returns>
-        double Calculate(UniformChain chain, LinkUp linkUp);
+        double Calculate(CongenericChain chain, LinkUp linkUp);
 
         ///<summary>
         /// ¬ычисл€ет и возвращает значение характеристики 

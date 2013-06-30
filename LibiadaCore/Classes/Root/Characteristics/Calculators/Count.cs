@@ -12,7 +12,7 @@ namespace LibiadaCore.Classes.Root.Characteristics.Calculators
         /// <param name="chain"></param>
         /// <param name="linkUp"></param>
         /// <returns></returns>
-        public double Calculate(UniformChain chain, LinkUp linkUp)
+        public double Calculate(CongenericChain chain, LinkUp linkUp)
         {
             return chain.Intervals.Count - 1;
         }
@@ -28,7 +28,7 @@ namespace LibiadaCore.Classes.Root.Characteristics.Calculators
             int count = 0;
             for (int i = 0; i < chain.Alphabet.Power; i++)
             {
-                count += (int)Calculate(chain.UniformChain(i), linkUp);
+                count += (int)Calculate(chain.CongenericChain(i), linkUp);
             }
             return count;
         }

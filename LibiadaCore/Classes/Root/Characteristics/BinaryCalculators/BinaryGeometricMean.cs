@@ -23,7 +23,7 @@ namespace LibiadaCore.Classes.Root.Characteristics.BinaryCalculators
             }
             Count count = new Count();
             //число вхождений первого компонента
-            int firstElementCount = (int)count.Calculate(chain.UniformChain(firstElement), linkUp);
+            int firstElementCount = (int)count.Calculate(chain.CongenericChain(firstElement), linkUp);
             //вычисляем логариф произведения интервалов между элементами
             double intervals = 0;
             for (int i = 1; i <= firstElementCount; i++)

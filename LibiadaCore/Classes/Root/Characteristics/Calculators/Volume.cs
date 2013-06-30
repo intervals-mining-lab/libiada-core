@@ -8,7 +8,7 @@ namespace LibiadaCore.Classes.Root.Characteristics.Calculators
     ///</summary>
     public class Volume : ICalculator
     {
-        public double Calculate(UniformChain chain, LinkUp linkUp)
+        public double Calculate(CongenericChain chain, LinkUp linkUp)
         {
             List<int> intervals = chain.Intervals;
             double result = 1;
@@ -44,7 +44,7 @@ namespace LibiadaCore.Classes.Root.Characteristics.Calculators
             double temp = 1;
             for (int i = 0; i < chain.Alphabet.Power; i++)
             {
-                temp = temp * Calculate(chain.UniformChain(i), linkUp);
+                temp = temp * Calculate(chain.CongenericChain(i), linkUp);
             }
             return temp;
         }

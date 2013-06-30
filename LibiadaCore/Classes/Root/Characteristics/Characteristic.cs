@@ -35,7 +35,7 @@ namespace LibiadaCore.Classes.Root.Characteristics
         ///<param name="linkUp"></param>
         ///<returns></returns>
         ///<exception cref="Exception"></exception>
-        public virtual double Value(UniformChain chain, LinkUp linkUp)
+        public virtual double Value(CongenericChain chain, LinkUp linkUp)
         {
             if (!Calculated || !chain.Equals(pChain) || linkUp != Link)
             {

@@ -94,7 +94,7 @@
     <Compile Include="Classes\Root\SimpleTypes\TestValueString.cs" />
     <Compile Include="Classes\Root\TestBaseChain.cs" />
     <Compile Include="Classes\Root\TestChain.cs" />
-    <Compile Include="Classes\Root\TestUniformChain.cs" />
+    <Compile Include="Classes\Root\TestCongenericChain.cs" />
     <Compile Include="Classes\TheoryOfSet\TestAlphabet.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

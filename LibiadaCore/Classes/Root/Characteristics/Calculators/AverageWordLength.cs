@@ -4,7 +4,7 @@ namespace LibiadaCore.Classes.Root.Characteristics.Calculators
 {
     public class AverageWordLength : ICalculator
     {
-        public double Calculate(UniformChain chain, LinkUp linkUp)
+        public double Calculate(CongenericChain chain, LinkUp linkUp)
         {
             throw new System.NotImplementedException();
         }

@@ -17,9 +17,9 @@ namespace TestLibiadaCore.Classes.Root.Characteristics.Calculators
         [TestCase(0, LinkUp.End, 0.3)]
         [TestCase(0, LinkUp.Both, 0.3)]
         [TestCase(0, LinkUp.Cycle, 0.3)]
-        public void TestUniformCalculation(int index, LinkUp linkUp, double value)
+        public void TestCongenericCalculation(int index, LinkUp linkUp, double value)
         {
-            TestUniformChainCharacteristic(index, linkUp, value);
+            TestCongenericChainCharacteristic(index, linkUp, value);
         }
 
         [TestCase(0, LinkUp.None, 1)]

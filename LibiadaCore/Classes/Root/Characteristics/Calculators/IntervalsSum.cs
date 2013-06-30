@@ -14,7 +14,7 @@ namespace LibiadaCore.Classes.Root.Characteristics.Calculators
         /// <param name="chain"></param>
         /// <param name="linkUp"></param>
         /// <returns></returns>
-        public double Calculate(UniformChain chain, LinkUp linkUp)
+        public double Calculate(CongenericChain chain, LinkUp linkUp)
         {
             List<int> intervals = chain.Intervals;
             Int64 sum = 0;
@@ -50,7 +50,7 @@ namespace LibiadaCore.Classes.Root.Characteristics.Calculators
             Int64 sum = 0;
             for (int i = 0; i < chain.Alphabet.Power; i++)
             {
-                sum += (Int64)Calculate(chain.UniformChain(i), linkUp);
+                sum += (Int64)Calculate(chain.CongenericChain(i), linkUp);
             }
             return sum;
         }

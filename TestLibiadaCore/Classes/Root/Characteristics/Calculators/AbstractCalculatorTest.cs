@@ -7,7 +7,7 @@ namespace TestLibiadaCore.Classes.Root.Characteristics.Calculators
 {
     public abstract class AbstractCalculatorTest
     {
-        protected List<UniformChain> UniformChains = CalculationHelper.UniformChains;
+        protected List<CongenericChain> CongenericChains = CalculationHelper.CongenericChains;
         protected List<Chain> Chains = CalculationHelper.Chains;
         protected ICalculator calc;
 
@@ -16,9 +16,9 @@ namespace TestLibiadaCore.Classes.Root.Characteristics.Calculators
             Assert.AreEqual(value, calc.Calculate(Chains[index], linkUp), 0.0001);
         }
 
-        public void TestUniformChainCharacteristic(int index, LinkUp linkUp, double value)
+        public void TestCongenericChainCharacteristic(int index, LinkUp linkUp, double value)
         {
-            Assert.AreEqual(value, calc.Calculate(UniformChains[index], linkUp), 0.0001);
+            Assert.AreEqual(value, calc.Calculate(CongenericChains[index], linkUp), 0.0001);
         }
     }
 }

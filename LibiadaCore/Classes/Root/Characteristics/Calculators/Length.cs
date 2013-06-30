@@ -8,7 +8,7 @@ namespace LibiadaCore.Classes.Root.Characteristics.Calculators
     ///</summary>
     public class Length : ICalculator
     {
-        public double Calculate(UniformChain chain, LinkUp linkUp)
+        public double Calculate(CongenericChain chain, LinkUp linkUp)
         {
             return chain.Length;
         }

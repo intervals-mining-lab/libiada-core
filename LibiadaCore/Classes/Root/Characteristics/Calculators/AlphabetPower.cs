@@ -5,7 +5,7 @@ namespace LibiadaCore.Classes.Root.Characteristics.Calculators
     ///</summary>
     public class AlphabetPower: ICalculator
     {
-        public double Calculate(UniformChain chain, LinkUp linkUp)
+        public double Calculate(CongenericChain chain, LinkUp linkUp)
         {
             return chain.Alphabet.Power;
         }

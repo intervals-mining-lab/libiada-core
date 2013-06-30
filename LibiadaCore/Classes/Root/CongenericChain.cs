@@ -6,7 +6,7 @@ namespace LibiadaCore.Classes.Root
 {
     ///<summary>
     ///</summary>
-    public class UniformChain : BaseChain, IBaseObject
+    public class CongenericChain : BaseChain, IBaseObject
     {
         protected List<int> intervals = new List<int>();
 
@@ -15,28 +15,28 @@ namespace LibiadaCore.Classes.Root
         ///</summary>
         ///<param name="length">ƒлина цепочки</param>
         ///<param name="element">Ёлемент цепочки</param>
-        public UniformChain(int length, IBaseObject element) : base(length)
+        public CongenericChain(int length, IBaseObject element) : base(length)
         {
             alphabet.Add(element);
         }
 
         ///<summary>
         ///</summary>
-        public UniformChain()
+        public CongenericChain()
         {
         }
 
 
         public IBaseObject Clone()
         {
-            UniformChain temp = new UniformChain(Length, Element);
+            CongenericChain temp = new CongenericChain(Length, Element);
             FillClone(temp);
             return temp;
         }
 
         protected void FillClone(IBaseObject temp)
         {
-            UniformChain TempunifromChain = temp as UniformChain;
+            CongenericChain TempunifromChain = temp as CongenericChain;
             base.FillClone(TempunifromChain);
             if (TempunifromChain != null)
             {

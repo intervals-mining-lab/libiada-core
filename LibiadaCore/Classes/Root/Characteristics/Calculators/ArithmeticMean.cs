@@ -12,7 +12,7 @@ namespace LibiadaCore.Classes.Root.Characteristics.Calculators
         /// <param name="chain"></param>
         /// <param name="linkUp"></param>
         /// <returns></returns>
-        public double Calculate(UniformChain chain, LinkUp linkUp)
+        public double Calculate(CongenericChain chain, LinkUp linkUp)
         {
             IntervalsSum sumator = new IntervalsSum();
             double sum = sumator.Calculate(chain, linkUp);

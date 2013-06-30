@@ -11,7 +11,7 @@ namespace LibiadaCore.Classes.Root
     ///</summary>
     public class Chain : BaseChain, IBaseObject
     {
-        protected UniformChain[] UniformChains = new UniformChain[0];
+        protected CongenericChain[] CongenericChains = new CongenericChain[0];
         protected Chain[] DissimilarChains;
 
         ///<summary>
@@ -62,25 +62,25 @@ namespace LibiadaCore.Classes.Root
 
         /// <summary>
         /// Выделяет из полной неоднородной цепи все однородные цепи
-        /// и сохраняет их локальнов массив <see cref="UniformChains"/>.
+        /// и сохраняет их локальнов массив <see cref="CongenericChains"/>.
         /// </summary>
         private void CreateUnformChains()
         {
-            UniformChains = new UniformChain[this.alphabet.Power - 1];
+            CongenericChains = new CongenericChain[this.alphabet.Power - 1];
             for (int i = 0; i < this.alphabet.Power - 1; i++)
             {
-                this.UniformChains[i] = new UniformChain(building.Length, this.alphabet[i + 1]);
+                this.CongenericChains[i] = new CongenericChain(building.Length, this.alphabet[i + 1]);
             }
             for (int j = 0; j < building.Length; j++)
             {
-                UniformChains[building[j] - 1][j] = this.alphabet[building[j]];
+                CongenericChains[building[j] - 1][j] = this.alphabet[building[j]];
             }
         }
 
         public void ClearAndSetNewLength(int length)
         {
             base.ClearAndSetNewLength(length);
-            UniformChains = new UniformChain[0];
+            CongenericChains = new CongenericChain[0];
         }
 
         public IBaseObject Clone()
@@ -100,7 +100,7 @@ namespace LibiadaCore.Classes.Root
             base.FillClone(tempChain);
             if (tempChain != null)
             {
-                tempChain.UniformChains = (UniformChain[]) UniformChains.Clone();
+                tempChain.CongenericChains = (CongenericChain[]) CongenericChains.Clone();
             }
         }
 
@@ -110,13 +110,13 @@ namespace LibiadaCore.Classes.Root
         ///</summary>
         ///<param name="baseObject">элемент однородной цепочки</param>
         ///<returns></returns>
-        public UniformChain UniformChain(IBaseObject baseObject)
+        public CongenericChain CongenericChain(IBaseObject baseObject)
         {
-            UniformChain result = null;
+            CongenericChain result = null;
             int pos = Alphabet.IndexOf(baseObject);
             if (pos != -1)
             {
-                result = (UniformChain) (UniformChains[pos]).Clone();
+                result = (CongenericChain) (CongenericChains[pos]).Clone();
             }
             return result;
         }
@@ -127,9 +127,9 @@ namespace LibiadaCore.Classes.Root
         ///</summary>
         ///<param name="i">Индекс элемента однородной цепочки в алфавите полной цепи</param>
         ///<returns></returns>
-        public UniformChain UniformChain(int i)
+        public CongenericChain CongenericChain(int i)
         {
-            return (UniformChain)UniformChains[i].Clone();
+            return (CongenericChain)CongenericChains[i].Clone();
         }
 
         ///<summary>
@@ -148,18 +148,18 @@ namespace LibiadaCore.Classes.Root
         {
             base.Add(item, index);
 
-            if (UniformChains.Length != (alphabet.Power - 1))
+            if (CongenericChains.Length != (alphabet.Power - 1))
             {
-                UniformChain[] temp = new UniformChain[alphabet.Power - 1];
-                for (int i = 0; i < UniformChains.Length; i++)
+                CongenericChain[] temp = new CongenericChain[alphabet.Power - 1];
+                for (int i = 0; i < CongenericChains.Length; i++)
                 {
-                    temp[i] = UniformChains[i];
+                    temp[i] = CongenericChains[i];
                 }
-                UniformChains = temp;
-                UniformChains[UniformChains.Length - 1] = new UniformChain(Length, item);
+                CongenericChains = temp;
+                CongenericChains[CongenericChains.Length - 1] = new CongenericChain(Length, item);
             }
 
-            foreach (UniformChain chain in UniformChains)
+            foreach (CongenericChain chain in CongenericChains)
             {
                 chain.Add(item, index);
             }
@@ -266,7 +266,7 @@ namespace LibiadaCore.Classes.Root
 
         public int GetPairsCount(IBaseObject j, IBaseObject L)
         {
-            int jElementCount = (int)new Count().Calculate(UniformChain(j), LinkUp.Start);
+            int jElementCount = (int)new Count().Calculate(CongenericChain(j), LinkUp.Start);
             int pairs = 0;
             for (int i = 1; i <= jElementCount; i++)
             {
@@ -283,17 +283,17 @@ namespace LibiadaCore.Classes.Root
         {
             IBaseObject element = alphabet[building[index]];
             ICalculator calc = new Count();
-            UniformChain tempUniformChain = (UniformChain) this.UniformChain(element);
-            if ((int)calc.Calculate(tempUniformChain, LinkUp.End) == 1)
+            CongenericChain tempCongenericChain = (CongenericChain) this.CongenericChain(element);
+            if ((int)calc.Calculate(tempCongenericChain, LinkUp.End) == 1)
             {
-                var temp = UniformChains;
-                UniformChains = new UniformChain[temp.Length - 1];
+                var temp = CongenericChains;
+                CongenericChains = new CongenericChain[temp.Length - 1];
                 int j = 0;
                 for (int i = 0; i < temp.Length; i++)
                 {
                     if (!temp[i].Element.Equals(element))
                     {
-                        UniformChains[j] = temp[i];
+                        CongenericChains[j] = temp[i];
                         j++;
                     }
                 }
@@ -306,9 +306,9 @@ namespace LibiadaCore.Classes.Root
                     }
                 }
             }
-            for (int l = 0; l < UniformChains.Length; l++)
+            for (int l = 0; l < CongenericChains.Length; l++)
             {
-                UniformChains[l].DeleteAt(index);
+                CongenericChains[l].DeleteAt(index);
             }
             building = ArrayManipulator.DeleteAt(building, index);
             return element;

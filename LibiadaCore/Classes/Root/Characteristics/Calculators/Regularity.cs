@@ -8,7 +8,7 @@ namespace LibiadaCore.Classes.Root.Characteristics.Calculators
         private readonly GeometricMean geometricMean = new GeometricMean();
         private readonly DescriptiveInformation descriptiveInformation = new DescriptiveInformation();
 
-        public double Calculate(UniformChain chain, LinkUp linkUp)
+        public double Calculate(CongenericChain chain, LinkUp linkUp)
         {
             return geometricMean.Calculate(chain, linkUp) / descriptiveInformation.Calculate(chain, linkUp);
         }

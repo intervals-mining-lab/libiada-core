@@ -8,7 +8,7 @@ namespace LibiadaCore.Classes.Root.Characteristics.Calculators
         private readonly Depth depth = new Depth();
         private readonly Length length = new Length();
 
-        public double Calculate(UniformChain chain, LinkUp linkUp)
+        public double Calculate(CongenericChain chain, LinkUp linkUp)
         {
             return depth.Calculate(chain, linkUp)/length.Calculate(chain, LinkUp.Both);
         }

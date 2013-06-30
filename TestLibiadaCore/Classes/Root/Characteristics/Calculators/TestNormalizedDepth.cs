@@ -14,24 +14,24 @@ namespace TestLibiadaCore.Classes.Root.Characteristics.Calculators
         }
 
         [Test]
-        public void TestUniformCalculation()
+        public void TestCongenericCalculation()
         {
             Depth depth = new Depth();
             Length length = new Length();
-            double theory = depth.Calculate(UniformChains[0], LinkUp.Start) /
-                        length.Calculate(UniformChains[0], LinkUp.Both);
+            double theory = depth.Calculate(CongenericChains[0], LinkUp.Start) /
+                        length.Calculate(CongenericChains[0], LinkUp.Both);
 
-            TestUniformChainCharacteristic(0, LinkUp.Start, theory);
+            TestCongenericChainCharacteristic(0, LinkUp.Start, theory);
 
-            theory = depth.Calculate(UniformChains[0], LinkUp.End) /
-                        length.Calculate(UniformChains[0], LinkUp.Both);
+            theory = depth.Calculate(CongenericChains[0], LinkUp.End) /
+                        length.Calculate(CongenericChains[0], LinkUp.Both);
 
-            TestUniformChainCharacteristic(0, LinkUp.End, theory);
+            TestCongenericChainCharacteristic(0, LinkUp.End, theory);
 
-            theory = depth.Calculate(UniformChains[0], LinkUp.Both) /
-                        length.Calculate(UniformChains[0], LinkUp.Both);
+            theory = depth.Calculate(CongenericChains[0], LinkUp.Both) /
+                        length.Calculate(CongenericChains[0], LinkUp.Both);
 
-            TestUniformChainCharacteristic(0, LinkUp.Both, theory);
+            TestCongenericChainCharacteristic(0, LinkUp.Both, theory);
         }
 
         [Test]

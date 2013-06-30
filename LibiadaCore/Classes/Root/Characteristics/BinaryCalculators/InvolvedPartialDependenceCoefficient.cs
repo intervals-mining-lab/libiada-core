@@ -11,8 +11,8 @@ namespace LibiadaCore.Classes.Root.Characteristics.BinaryCalculators
                 return 0;
             }
             Count count = new Count();
-            UniformChain firstElementChain = chain.UniformChain(firstElement);
-            UniformChain secondElementChain = chain.UniformChain(secondElement);
+            CongenericChain firstElementChain = chain.CongenericChain(firstElement);
+            CongenericChain secondElementChain = chain.CongenericChain(secondElement);
             int firstElementCount = (int)count.Calculate(firstElementChain,linkUp);
             int secondElementCount = (int)count.Calculate(secondElementChain, linkUp);
             Redundancy redundancyCalculator = new Redundancy();

@@ -111,7 +111,7 @@
     <Compile Include="Classes\Root\SimpleTypes\ValueDouble.cs" />
     <Compile Include="Classes\Root\SimpleTypes\ValueString.cs" />
     <Compile Include="Classes\Root\SimpleTypes\VauleInt.cs" />
-    <Compile Include="Classes\Root\UniformChain.cs" />
+    <Compile Include="Classes\Root\CongenericChain.cs" />
     <Compile Include="Classes\TheoryOfSet\Alphabet.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

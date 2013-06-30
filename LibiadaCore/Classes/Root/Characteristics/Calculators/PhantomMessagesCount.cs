@@ -8,7 +8,7 @@ namespace LibiadaCore.Classes.Root.Characteristics.Calculators
     ///</summary>
     public class PhantomMessagesCount : ICalculator
     {
-        public double Calculate(UniformChain chain, LinkUp linkUp)
+        public double Calculate(CongenericChain chain, LinkUp linkUp)
         {
             int count = 1;
             for(int i=0;i<chain.Length;i++)

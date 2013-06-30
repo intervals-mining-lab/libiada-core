@@ -12,7 +12,7 @@ namespace LibiadaCore.Classes.Root.Characteristics.BinaryCalculators
             }
 
             Redundancy redundancyCalculator = new Redundancy();
-            UniformChain secondElementChain = chain.UniformChain(secondElement);
+            CongenericChain secondElementChain = chain.CongenericChain(secondElement);
             Count count = new Count();
             int secondElementCount = (int)count.Calculate(secondElementChain, linkUp);
             double redundancy = redundancyCalculator.Calculate(chain, firstElement, secondElement, linkUp);

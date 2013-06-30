@@ -14,7 +14,7 @@ namespace TestLibiadaCore.Classes.Root.Characteristics.Calculators
         }
 
         [Test]
-        public void TestUniformCalculation()
+        public void TestCongenericCalculation()
         {
             double interval1 = 4;
             double interval2 = 1;
@@ -24,17 +24,17 @@ namespace TestLibiadaCore.Classes.Root.Characteristics.Calculators
             double pIntervalsCount = 3;
             double deltaG = Math.Pow(interval1 * interval2 * interval3, 1 / pIntervalsCount);
             double pAverageRemoteness = Math.Log(deltaG, 2);
-            TestUniformChainCharacteristic(0, LinkUp.Start, pAverageRemoteness);
+            TestCongenericChainCharacteristic(0, LinkUp.Start, pAverageRemoteness);
 
             pIntervalsCount = 3;
             deltaG = Math.Pow(interval2 * interval3 * interval4, 1 / pIntervalsCount);
             pAverageRemoteness = Math.Log(deltaG, 2);
-            TestUniformChainCharacteristic(0, LinkUp.End, pAverageRemoteness);
+            TestCongenericChainCharacteristic(0, LinkUp.End, pAverageRemoteness);
 
             pIntervalsCount = 4;
             deltaG = Math.Pow(interval1 * interval2 * interval3 * interval4, 1 / pIntervalsCount);
             pAverageRemoteness = Math.Log(deltaG, 2);
-            TestUniformChainCharacteristic(0, LinkUp.Both, pAverageRemoteness);
+            TestCongenericChainCharacteristic(0, LinkUp.Both, pAverageRemoteness);
         }
     }
 }

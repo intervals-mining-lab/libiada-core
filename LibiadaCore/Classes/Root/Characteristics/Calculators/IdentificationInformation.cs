@@ -10,7 +10,7 @@ namespace LibiadaCore.Classes.Root.Characteristics.Calculators
     {
         private readonly Probability probability = new Probability();
 
-        public double Calculate(UniformChain chain, LinkUp linkUp)
+        public double Calculate(CongenericChain chain, LinkUp linkUp)
         {
             double p = probability.Calculate(chain, linkUp);
             return -p*Math.Log(p, 2);
@@ -21,7 +21,7 @@ namespace LibiadaCore.Classes.Root.Characteristics.Calculators
             double result = 0;
             for (int i = 0; i < chain.Alphabet.Power; i++)
             {
-                result += Calculate(chain.UniformChain(i), linkUp);
+                result += Calculate(chain.CongenericChain(i), linkUp);
             }
             return result;
         }

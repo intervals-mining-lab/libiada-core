@@ -10,7 +10,7 @@ namespace LibiadaCore.Classes.Root.Characteristics.Calculators
         private readonly Depth depthCalc = new Depth();
         private readonly IntervalsCount intervalsCount = new IntervalsCount();
 
-        public double Calculate(UniformChain chain, LinkUp linkUp)
+        public double Calculate(CongenericChain chain, LinkUp linkUp)
         {
             //—читаем в логарифмическом масштабе, чтобы избежать переполнени€
             double depth = depthCalc.Calculate(chain, linkUp);

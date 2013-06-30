@@ -5,7 +5,7 @@ namespace LibiadaCore.Classes.Root.Characteristics.Calculators
     ///</summary>
     public class Probability : ICalculator
     {
-        public double Calculate(UniformChain chain, LinkUp linkUp)
+        public double Calculate(CongenericChain chain, LinkUp linkUp)
         {
             Count count = new Count();
             Length length = new Length();
@@ -23,7 +23,7 @@ namespace LibiadaCore.Classes.Root.Characteristics.Calculators
             double temp = 0;
             for (int i = 0; i < chain.Alphabet.Power; i++)
             {
-                temp += Calculate(chain.UniformChain(i), linkUp);
+                temp += Calculate(chain.CongenericChain(i), linkUp);
             }
             if (temp > 1)
             {

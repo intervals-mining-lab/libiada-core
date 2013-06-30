@@ -10,7 +10,7 @@ namespace LibiadaCore.Classes.Root.Characteristics.Calculators
         private readonly Count count = new Count();
         private readonly Length length = new Length();
 
-        public double Calculate(UniformChain chain, LinkUp linkUp)
+        public double Calculate(CongenericChain chain, LinkUp linkUp)
         {
             double occupancy = length.Calculate(chain, linkUp)/count.Calculate(chain, linkUp);
             return Math.Pow(occupancy, 1 / occupancy);
@@ -26,7 +26,7 @@ namespace LibiadaCore.Classes.Root.Characteristics.Calculators
             double result = 1;
             for (int i = 0; i < chain.Alphabet.Power; i++)
             {
-                result *= Calculate(chain.UniformChain(i), linkUp);
+                result *= Calculate(chain.CongenericChain(i), linkUp);
             }
             return result;
         }
