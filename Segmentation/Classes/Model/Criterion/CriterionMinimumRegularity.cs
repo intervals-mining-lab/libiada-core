@@ -13,7 +13,7 @@ namespace Segmentation.Classes.Model.Criterion
     /// </summary>
     public class CriterionMinimumRegularity : Criterion
     {
-        private DescriptiveInformation regularity = new DescriptiveInformation();
+        private readonly DescriptiveInformation regularity = new DescriptiveInformation();
 
         /// <summary>
         /// init
@@ -23,21 +23,20 @@ namespace Segmentation.Classes.Model.Criterion
         public CriterionMinimumRegularity(ThresholdVariator threshold, double precision)
             : base(threshold, precision)
         {
-            lastDistortion = Double.MaxValue;
-            formalismType = Formalism.CRITERION_MIN_REGULARITY;
+            LastDistortion = Double.MaxValue;
         }
 
         public override bool State(ComplexChain chain, FrequencyDictionary alphabet)
         {
             double distortion = this.Distortion(chain, alphabet);
-            if (Math.Abs(lastDistortion) > Math.Abs(distortion))
+            if (Math.Abs(LastDistortion) > Math.Abs(distortion))
             {
-                this.chain = (ComplexChain)chain.Clone();
-                this.alphabet = (FrequencyDictionary)alphabet.Clone();
-                lastDistortion = distortion;
-                thresholdToStop.SaveBest();
+                Chain = chain.Clone();
+                Alphabet = alphabet.Clone();
+                LastDistortion = distortion;
+                ThresholdToStop.SaveBest();
             }
-            return (thresholdToStop.Distance() > ThresholdVariator.PRECISION);
+            return (ThresholdToStop.Distance() > ThresholdVariator.PRECISION);
         }
 
         public override double Distortion(ComplexChain chain, FrequencyDictionary alphabet)

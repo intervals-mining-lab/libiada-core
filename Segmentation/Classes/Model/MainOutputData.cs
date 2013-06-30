@@ -10,56 +10,62 @@ namespace Segmentation.Classes.Model
     public class MainOutputData
     {
         private ComplexChain chain;
-    private FrequencyDictionary alphabet;
-    private Dictionary<String, String> parameters = new Dictionary<String, String>();
+        private FrequencyDictionary alphabet;
+        private Dictionary<String, String> parameters = new Dictionary<String, String>();
 
-    public Chain getChain() {
-        return chain;
-    }
+        public Chain GetChain()
+        {
+            return chain;
+        }
 
-    public void setChain(ComplexChain chain) {
-        this.chain = chain;
-    }
+        public void SetChain(ComplexChain chain)
+        {
+            this.chain = chain;
+        }
 
-    public FrequencyDictionary getFrequencyDictionary() {
-        return alphabet;
-    }
+        public FrequencyDictionary GetFrequencyDictionary()
+        {
+            return alphabet;
+        }
 
-    public void setFrequencyDictionary(FrequencyDictionary alphabet) {
-        this.alphabet = alphabet;
-    }
+        public void SetFrequencyDictionary(FrequencyDictionary alphabet)
+        {
+            this.alphabet = alphabet;
+        }
 
-    public Dictionary<String, String> getParameters() {
-        return parameters;
-    }
+        public Dictionary<String, String> GetParameters()
+        {
+            return parameters;
+        }
 
-    /**
-     * Allows you add an additional information about research
-     *
-     * @param what parameter name
-     * @param value string value
-     */
-    public void addInfo(IIdentifiable what, IIdentifiable value){
-        parameters.Add(what.GetName(), value.GetName());
-    }
-    /**
-     * Allows you add an additional information about research
-     *
-     * @param what parameter name
-     * @param value digit value
-     */
-    public void addInfo(IIdentifiable what, IDefinable value){
-        parameters.Add(what.GetName(), value.GetValue().ToString());
-    }
+        /// <summary>
+        /// Allows you add an additional information about research
+        /// </summary>
+        /// <param name="what">parameter name</param>
+        /// <param name="value">string value</param>
+        public void AddInfo(IIdentifiable what, IIdentifiable value)
+        {
+            parameters.Add(what.GetName(), value.GetName());
+        }
 
-    /**
-     * Allows you add an additional information about research
-     *
-     * @param what parameter name
-     * @param value digit calculated value
-     */
-    public void addInfo(IIdentifiable what, Double value){
-        parameters.Add(what.GetName(), value.ToString());
-    } 
+        /// <summary>
+        /// Allows to add an additional information about research
+        /// </summary>
+        /// <param name="what">parameter name</param>
+        /// <param name="value">digit value</param>
+        public void AddInfo(IIdentifiable what, IDefinable value)
+        {
+            parameters.Add(what.GetName(), value.GetValue().ToString());
+        }
+
+        /// <summary>
+        /// Allows to add an additional information about research
+        /// </summary>
+        /// <param name="what">parameter name</param>
+        /// <param name="value">digit calculated value</param>
+        public void AddInfo(IIdentifiable what, Double value)
+        {
+            parameters.Add(what.GetName(), value.ToString());
+        }
     }
 }

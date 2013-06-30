@@ -11,7 +11,7 @@ namespace TestSegmentation.Classes.Base.Seekers
     public class SeekerSequenceTest
     {
         [Test]
-        public void testSeek()
+        public void TestSeek()
         {
             int length = 2;
             int step = 1;

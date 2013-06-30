@@ -5,14 +5,9 @@
     /// </summary>
     public enum Parameter
     {
-        BALANCE,
-        PRECISION,
-        THRESHOLD_STEP,
-        WINDOW,
-        CURRENT_THRESHOLD,
-        WINDOW_DECREMENT,
-        LEFT,
-        RIGHT,
-        CRITERION
+        Balance,
+        Window,
+        CurrentThreshold,
+        WindowDecrement
     }
 }

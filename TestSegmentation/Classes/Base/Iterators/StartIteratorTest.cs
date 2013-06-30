@@ -19,7 +19,7 @@ namespace TestSegmentation.Classes.Base.Iterators
         }
 
         [Test]
-        public void testHasNext()
+        public void TestHasNext()
         {
             int lengthCut = 3;
             int step = 1;
@@ -46,7 +46,7 @@ namespace TestSegmentation.Classes.Base.Iterators
         }
 
         [Test]
-        public void testNext()
+        public void TestNext()
         {
             StartIterator iterator = null;
             List<String> cut = null;
@@ -80,7 +80,7 @@ namespace TestSegmentation.Classes.Base.Iterators
         }
 
         [Test]
-        public void testReset()
+        public void TestReset()
         {
             StartIterator iterator = null;
             int length = 2;
@@ -94,7 +94,7 @@ namespace TestSegmentation.Classes.Base.Iterators
         }
 
         [Test]
-        public void testMove()
+        public void TestMove()
         {
             StartIterator iterator = null;
             int length = 2;
@@ -129,7 +129,7 @@ namespace TestSegmentation.Classes.Base.Iterators
         }
 
         [Test]
-        public void testGetMaxShifts()
+        public void TestGetMaxShifts()
         {
             StartIterator iterator = null;
             int lengthCut = 3;
@@ -140,7 +140,7 @@ namespace TestSegmentation.Classes.Base.Iterators
         }
 
         [Test]
-        public void testGetPosition()
+        public void TestGetPosition()
         {
             StartIterator iterator = null;
             int lengthCut = 2;

@@ -11,7 +11,7 @@ namespace Segmentation.Classes.Base.Seekers.Converters
     public class Filter
     {
         protected readonly ComplexChain Chain;
-        protected String replacement = "";
+        protected String Replacement = "";
 
         public Filter(ComplexChain chain)
         {
@@ -28,7 +28,7 @@ namespace Segmentation.Classes.Base.Seekers.Converters
             int len = Chain.ToString().Length;
             for (int index = Chain.Length; --index >= 0;)
             {
-                Chain[index] = new ValueString(Chain[index].ToString().Replace(str, replacement));
+                Chain[index] = new ValueString(Chain[index].ToString().Replace(str, Replacement));
                 if (Chain[index].ToString().Length == 0) Chain.Remove(index, 1);
             }
             return Hints(len, str);
@@ -37,7 +37,7 @@ namespace Segmentation.Classes.Base.Seekers.Converters
 
         private int Hints(int len, String str)
         {
-            double per = (len - Chain.ToString().Length) / (double)(str.Length - replacement.Length);
+            double per = (len - Chain.ToString().Length) / (double)(str.Length - Replacement.Length);
             return (int) per;
         }
 
@@ -49,10 +49,9 @@ namespace Segmentation.Classes.Base.Seekers.Converters
         /// <returns>number of hints</returns>
         public int Replace(String str, String replacement)
         {
-            int hits;
-            this.replacement = replacement;
-            hits = FilterOut(str);
-            this.replacement = "";
+            Replacement = replacement;
+            int hits = FilterOut(str);
+            Replacement = "";
 
             return hits;
         }

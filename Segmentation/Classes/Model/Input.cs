@@ -21,7 +21,7 @@ namespace Segmentation.Classes.Model
             this.precision = precision;
         }
 
-        public double getStep()
+        public double GetStep()
         {
             return step;
         }

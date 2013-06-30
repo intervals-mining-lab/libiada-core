@@ -26,7 +26,6 @@ namespace Segmentation.Classes.Model
 
         public AlgorithmBase()
         {
-            formalismType = Formalism.ALGORITHM_BASE;
         }
 
 
@@ -34,7 +33,7 @@ namespace Segmentation.Classes.Model
             : base(parameters)
         {
             threshold = ThresholdFactory.Make(parameters.GetThresholdMethod(), parameters);
-            criterion = CriterionFactory.make(parameters.GetStopCriterion(), threshold, parameters);
+            criterion = CriterionFactory.Make(parameters.GetStopCriterion(), threshold, parameters);
             extractor = WordExtractorFactory.GetSeeker(parameters.seeker);
             balance = parameters.GetBalance();
             windowLen = parameters.GetWindowlength();
@@ -45,8 +44,8 @@ namespace Segmentation.Classes.Model
         {
             SimpleChainSplitter chainConvolutor = null;
             ContentValues par = new ContentValues();
-            par.Put(Formalism.SEQUENCE, chain = new ComplexChain(inputs[0].GetChain()));
-            par.Put(Formalism.ALPHABET, alphabet = new FrequencyDictionary(chain));
+            par.Put(Formalism.Sequence, chain = new ComplexChain(Inputs[0].GetChain()));
+            par.Put(Formalism.Alphabet, alphabet = new FrequencyDictionary(chain));
 
             while (criterion.State(chain, alphabet))
             {
@@ -60,24 +59,24 @@ namespace Segmentation.Classes.Model
 
         private void UpdateParams(ContentValues par, double nextThreshold)
         {
-            par.Put(Formalism.SEQUENCE, chain = new ComplexChain(inputs[0].GetChain()));
+            par.Put(Formalism.Sequence, chain = new ComplexChain(Inputs[0].GetChain()));
             //chain.SetName(inputs[0].getChainName());
-            par.Put(Parameter.BALANCE, balance);
-            par.Put(Parameter.WINDOW, windowLen);
-            par.Put(Parameter.WINDOW_DECREMENT, windowDec);
-            par.Put(Parameter.CURRENT_THRESHOLD, nextThreshold);
+            par.Put(Parameter.Balance, balance);
+            par.Put(Parameter.Window, windowLen);
+            par.Put(Parameter.WindowDecrement, windowDec);
+            par.Put(Parameter.CurrentThreshold, nextThreshold);
         }
 
         public List<MainOutputData> Upload()
         {
             //BuilderResultData builderResultData = new BuilderResultData(chain, alphabet);
             MainOutputData resultUpdate = new MainOutputData();
-            resultUpdate.addInfo((IIdentifiable)criterion, criterion.Value);
-            resultUpdate.addInfo((IIdentifiable)threshold, threshold.Value);
+            resultUpdate.AddInfo((IIdentifiable)criterion, criterion.Value);
+            resultUpdate.AddInfo((IIdentifiable)threshold, threshold.Value);
             //ResultDataCreator.saveToFile(resultUpdate);
 
-            results.Add(resultUpdate);
-            return results;
+            Results.Add(resultUpdate);
+            return Results;
         }
     }
 }

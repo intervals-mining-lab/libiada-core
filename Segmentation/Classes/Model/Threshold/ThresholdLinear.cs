@@ -1,5 +1,4 @@
 ﻿using System;
-using Segmentation.Classes.Base;
 
 namespace Segmentation.Classes.Model.Threshold
 {
@@ -9,7 +8,7 @@ namespace Segmentation.Classes.Model.Threshold
     /// </summary>
     public sealed class ThresholdLinear : ThresholdVariator
     {
-        private double step;
+        private readonly double step;
 
         /// <summary>
         /// 
@@ -20,7 +19,6 @@ namespace Segmentation.Classes.Model.Threshold
         public ThresholdLinear(double leftBound, double rightBound, double step)
             : base(leftBound, rightBound)
         {
-            formalismType = Formalism.THRESHOLD_LINEAR_METHOD;
             try
             {
                 if ((step > (Math.Abs(rightBound - leftBound))) || (leftBound > rightBound)) throw new Exception();
@@ -30,16 +28,16 @@ namespace Segmentation.Classes.Model.Threshold
 
             }
             this.step = step;
-            current = this.rightBound;
+            Current = this.RightBound;
         }
 
         public override double Next(Criterion.Criterion criterion)
         {
-            if (this.current > this.leftBound)
+            if (Current > LeftBound)
             {
-                this.current = this.rightBound;
-                this.rightBound = this.rightBound - this.step;
-                return current;
+                Current = RightBound;
+                RightBound = RightBound - step;
+                return Current;
             }
             return -1;
         }

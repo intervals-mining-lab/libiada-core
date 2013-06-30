@@ -13,7 +13,7 @@ namespace Segmentation.Classes.Model.Criterion
     public class CriterionEqualityOfDepths : Criterion
     {
         //private GamutDeep gamutDeep = new GamutDeep();
-        private Depth gamut = new Depth();
+        private readonly Depth depth = new Depth();
 
         /// <summary>
         /// init
@@ -23,26 +23,25 @@ namespace Segmentation.Classes.Model.Criterion
         public CriterionEqualityOfDepths(ThresholdVariator threshold, double precision)
             : base(threshold, precision)
         {
-            lastDistortion = Double.MinValue;
-            formalismType = Formalism.CRITERION_EQUALITY_DEPTHS;
+            LastDistortion = Double.MinValue;
         }
 
         public override bool State(ComplexChain chain, FrequencyDictionary alphabet)
         {
-            double currentDistortion = gamut.Calculate(chain, chain.Anchor); //- calculate(gamutDeep, chain);
-            if (Math.Abs(currentDistortion) > lastDistortion)
+            double currentDistortion = depth.Calculate(chain, chain.Anchor); //- calculate(gamutDeep, chain);
+            if (Math.Abs(currentDistortion) > LastDistortion)
             {
-                this.chain = (ComplexChain)chain.Clone();
-                this.alphabet = (FrequencyDictionary)alphabet.Clone();
-                thresholdToStop.SaveBest();
-                lastDistortion = currentDistortion;
+                Chain = chain.Clone();
+                Alphabet = alphabet.Clone();
+                ThresholdToStop.SaveBest();
+                LastDistortion = currentDistortion;
             }
-            return (thresholdToStop.Distance() > ThresholdVariator.PRECISION);
+            return (ThresholdToStop.Distance() > ThresholdVariator.PRECISION);
         }
 
         public override double Distortion(ComplexChain chain, FrequencyDictionary alphabet)
         {
-            return gamut.Calculate(chain.Original(), chain.Anchor); //- gamutDeep.Calculate(chain);
+            return depth.Calculate(chain.Original(), chain.Anchor); //- gamutDeep.Calculate(chain);
         }
     }
 }

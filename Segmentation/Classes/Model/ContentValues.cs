@@ -266,7 +266,7 @@ namespace Segmentation.Classes.Model
         /// </summary>
         /// <param name="key">the value to get</param>
         /// <returns>the String for the value</returns>
-        public String getAsString(String key)
+        public String GetAsString(String key)
         {
             Object value = this[key];
             return value != null ? this[key].ToString() : null;
@@ -310,10 +310,7 @@ namespace Segmentation.Classes.Model
             {
                 if (value is String)
                 {
-                    if (value is String)
-                    {
-                        return int.Parse(value.ToString());
-                    }
+                    return int.Parse(value.ToString());
                 }
                 throw e;
             }
@@ -335,10 +332,7 @@ namespace Segmentation.Classes.Model
             {
                 if (value is String)
                 {
-                    if (value is String)
-                    {
-                        return short.Parse(value.ToString());
-                    }
+                    return short.Parse(value.ToString());
                 }
                 throw e;
             }
@@ -360,10 +354,7 @@ namespace Segmentation.Classes.Model
             {
                 if (value is String)
                 {
-                    if (value is String)
-                    {
-                        return byte.Parse(value.ToString());
-                    }
+                    return byte.Parse(value.ToString());
                 }
                 throw e;
             }
@@ -383,13 +374,12 @@ namespace Segmentation.Classes.Model
             }
             catch (Exception e)
             {
+
                 if (value is String)
                 {
-                    if (value is String)
-                    {
-                        return double.Parse(value.ToString());
-                    }
+                    return double.Parse(value.ToString());
                 }
+
                 throw e;
             }
         }
@@ -408,13 +398,12 @@ namespace Segmentation.Classes.Model
             }
             catch (Exception e)
             {
+
                 if (value is String)
                 {
-                    if (value is String)
-                    {
-                        return float.Parse(value.ToString());
-                    }
+                    return float.Parse(value.ToString());
                 }
+
                 throw e;
             }
         }
@@ -433,12 +422,10 @@ namespace Segmentation.Classes.Model
             }
             catch (Exception e)
             {
+
                 if (value is String)
                 {
-                    if (value is String)
-                    {
-                        return bool.Parse(value.ToString());
-                    }
+                    return bool.Parse(value.ToString());
                 }
                 throw e;
             }
@@ -482,7 +469,7 @@ namespace Segmentation.Classes.Model
             StringBuilder sb = new StringBuilder();
             foreach (String name in this.Keys)
             {
-                String value = getAsString(name);
+                String value = GetAsString(name);
                 if (sb.Length > 0) sb.Append(" ");
                 sb.Append(name + "=" + value);
             }

@@ -86,7 +86,7 @@ namespace Segmentation.Classes.Model.Criterion
                     pred = current;
                 }
             }
-            // System.out.println("Multipl = "+ multiplicate);
+            
             switch (anchor)
             {
                 case LinkUp.Start:
@@ -94,15 +94,8 @@ namespace Segmentation.Classes.Model.Criterion
                 case LinkUp.End:
                     return 1/Math.Pow(multiplicate*end, 1/(double) (j));
                 case LinkUp.Both:
-                    return 0; //1/Math.pow(multiplicate*start*end, 1/(double)(j + 1));
+                    return 0;
                 default:
-                    try
-                    {
-                        throw new Exception("WOW");
-                    }
-                    catch (Exception e)
-                    {
-                    }
                     return 0;
             }
 
@@ -114,7 +107,7 @@ namespace Segmentation.Classes.Model.Criterion
         /// <param name="count">occurances</param>
         /// <param name="chainLen">all events</param>
         /// <returns>probability</returns>
-        public double Probability(int count, int chainLen)
+        protected double Probability(int count, int chainLen)
         {
             return count/(double) chainLen;
         }

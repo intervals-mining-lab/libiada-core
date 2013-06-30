@@ -21,27 +21,26 @@ namespace Segmentation.Classes.Model.Criterion
         public CriterionPartialOrlov(ThresholdVariator threshold, double precision)
             : base(threshold, precision)
         {
-            formalismType = Formalism.CRITERION_PARTIAL_ORLOV;
-            lastDistortion = Double.MaxValue;
-            precisionOfDifference = 1;
+            LastDistortion = Double.MaxValue;
+            PrecisionOfDifference = 1;
         }
 
         public override bool State(ComplexChain chain, FrequencyDictionary alphabet)
         {
             Update(chain, alphabet);
-            return (thresholdToStop.Distance() > ThresholdVariator.PRECISION) &&
-                   (Math.Abs(Distortion(chain, alphabet)) > precisionOfDifference);
+            return (ThresholdToStop.Distance() > ThresholdVariator.PRECISION) &&
+                   (Math.Abs(Distortion(chain, alphabet)) > PrecisionOfDifference);
         }
 
         private void Update(ComplexChain chain, FrequencyDictionary alphabet)
         {
             double dist = TheoryVolume(chain, alphabet) - alphabet.Count;
-            if (Math.Abs(lastDistortion) > Math.Abs(dist))
+            if (Math.Abs(LastDistortion) > Math.Abs(dist))
             {
-                this.alphabet = (FrequencyDictionary) alphabet.Clone();
-                this.chain = (ComplexChain)chain.Clone();
-                this.lastDistortion = dist;
-                thresholdToStop.SaveBest();
+                Alphabet = alphabet.Clone();
+                Chain = chain.Clone();
+                LastDistortion = dist;
+                ThresholdToStop.SaveBest();
             }
         }
 

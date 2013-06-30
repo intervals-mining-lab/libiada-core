@@ -5,10 +5,8 @@ namespace Segmentation.Classes.Model
 {
     public class Algorithm
     {
-        protected List<MainOutputData> results = new List<MainOutputData>();
-        protected List<Input> inputs = new List<Input>();
-        protected Formalism formalismType;
-
+        protected List<MainOutputData> Results = new List<MainOutputData>();
+        protected List<Input> Inputs = new List<Input>();
 
         /// <summary>
         /// Executes segmentation in a separate thread with notifying all observers
@@ -18,23 +16,23 @@ namespace Segmentation.Classes.Model
             Slot();
         }
 
-        public Algorithm(List<Input> parameters)
+        public Algorithm(IEnumerable<Input> parameters)
         {
-            inputs = new List<Input>(parameters);
+            Inputs = new List<Input>(parameters);
         }
 
         public Algorithm(Input input)
         {
-            inputs.Add(input);
+            Inputs.Add(input);
         }
 
         public Algorithm()
         {
         }
 
-        public void Add(List<Input> input)
+        public void Add(IEnumerable<Input> input)
         {
-            inputs.AddRange(input);
+            Inputs.AddRange(input);
         }
 
         /// <summary>
@@ -42,12 +40,12 @@ namespace Segmentation.Classes.Model
         /// </summary>
         public void Slot()
         {
-            foreach (Input input in inputs)
+            foreach (Input input in Inputs)
             {
                 Algorithm algorithm = AlgorithmFactory.Make(input.GetAlgorithm(), input);
                 algorithm.Slot();
                 List<MainOutputData> res = algorithm.Upload();
-                results.Add(res[0]);
+                Results.Add(res[0]);
                 res.RemoveAt(0);
             }
         }
@@ -58,7 +56,7 @@ namespace Segmentation.Classes.Model
         /// <returns>list of characteristics</returns>
         public List<MainOutputData> Upload()
         {
-            return results;
+            return Results;
         }
     }
 }

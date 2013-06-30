@@ -14,7 +14,7 @@ namespace Segmentation.Classes.Base.Sequencies
         {
             for (int i = 0; i < accord.Count; i++)
             {
-                this.Add(new ValueInt(accord[i]), i);
+                Add(new ValueInt(accord[i]), i);
             }
         }
 
@@ -176,7 +176,7 @@ namespace Segmentation.Classes.Base.Sequencies
         {
             int length = word.Count;
             int index = 0;
-            while (1 == 1)
+            while (true)
             {
                 try
                 {

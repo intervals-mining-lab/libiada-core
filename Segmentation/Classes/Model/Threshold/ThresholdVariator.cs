@@ -8,12 +8,11 @@ namespace Segmentation.Classes.Model.Threshold
     /// </summary>
     public abstract class ThresholdVariator : IDefinable
     {
-        public static readonly double PRECISION = 0.01;
-        protected double leftBound;
-        protected double rightBound;
-        protected double current;
-        protected double best = 0;
-        protected Formalism formalismType;
+        public const double PRECISION = 0.01;
+        protected double LeftBound;
+        protected double RightBound;
+        protected double Current;
+        protected double Best;
 
         /// <summary>
         /// 
@@ -22,8 +21,8 @@ namespace Segmentation.Classes.Model.Threshold
         /// <param name="rightBound">the right bound of threshold</param>
         public ThresholdVariator(double leftBound, double rightBound)
         {
-            this.leftBound = leftBound;
-            this.rightBound = rightBound;
+            LeftBound = leftBound;
+            RightBound = rightBound;
         }
 
         /// <summary>
@@ -39,12 +38,12 @@ namespace Segmentation.Classes.Model.Threshold
         /// <returns>the difference between the right and left bounds</returns>
         public double Distance()
         {
-            return (this.rightBound - this.leftBound);
+            return (this.RightBound - this.LeftBound);
         }
 
         public double Value
         {
-            get { return best; }
+            get { return Best; }
             
         }
 
@@ -53,7 +52,7 @@ namespace Segmentation.Classes.Model.Threshold
         /// </summary>
         public void SaveBest()
         {
-            best = current;
+            Best = Current;
         }
 
         public double GetValue()

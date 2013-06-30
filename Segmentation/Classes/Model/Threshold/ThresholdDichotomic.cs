@@ -1,5 +1,4 @@
 ﻿using System;
-using Segmentation.Classes.Base;
 
 namespace Segmentation.Classes.Model.Threshold
 {
@@ -19,27 +18,26 @@ namespace Segmentation.Classes.Model.Threshold
         public ThresholdDichotomic(double leftBound, double rightBound)
             : base(leftBound, rightBound)
         {
-            formalismType = Formalism.THRESHOLD_DICHOTOMIC_METHOD;
-            current = (rightBound + leftBound)/2.0;
-            best = current;
+            Current = (rightBound + leftBound)/2.0;
+            Best = Current;
         }
 
         public override double Next(Criterion.Criterion criterion)
         {
-            if (rightBound - leftBound > PRECISION)
+            if (RightBound - LeftBound > PRECISION)
             {
                 double criterionDistortion = criterion.Distortion();
                 if (lastDistortion > criterionDistortion)
                 {
-                    best = current;
+                    Best = Current;
                     lastDistortion = criterionDistortion;
                 }
-                current = (rightBound + leftBound)/2.0;
+                Current = (RightBound + LeftBound)/2.0;
 
-                if (criterionDistortion < 0) leftBound = current;
-                else rightBound = current;
+                if (criterionDistortion < 0) LeftBound = Current;
+                else RightBound = Current;
 
-                return current;
+                return Current;
             }
             return -1;
         }

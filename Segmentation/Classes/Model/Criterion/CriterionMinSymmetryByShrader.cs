@@ -16,21 +16,20 @@ namespace Segmentation.Classes.Model.Criterion
         public CriterionMinSymmetryByShrader(ThresholdVariator threshold, double precision)
             : base(threshold, precision)
         {
-            formalismType = Formalism.CRITERION_MIN_SYMMETRY_SHREDER;
-            lastDistortion = Double.MaxValue;
+            LastDistortion = Double.MaxValue;
         }
 
         public override bool State(ComplexChain chain, FrequencyDictionary alphabet)
         {
             double current = Symmetry(alphabet);
-            if (lastDistortion > current)
+            if (LastDistortion > current)
             {
-                lastDistortion = current;
-                this.chain = (ComplexChain)chain.Clone();
-                this.alphabet = (FrequencyDictionary)alphabet.Clone();
-                thresholdToStop.SaveBest();
+                LastDistortion = current;
+                this.Chain = (ComplexChain)chain.Clone();
+                this.Alphabet = (FrequencyDictionary)alphabet.Clone();
+                ThresholdToStop.SaveBest();
             }
-            return (thresholdToStop.Distance() > ThresholdVariator.PRECISION);
+            return (ThresholdToStop.Distance() > ThresholdVariator.PRECISION);
         }
 
         private double Symmetry(FrequencyDictionary alphabet)
@@ -40,11 +39,12 @@ namespace Segmentation.Classes.Model.Criterion
             int arrayMaxLength = 0;
             List<List<int>> positions = alphabet.GetWordsPositions();
 
-            for (int index = 0, arraySize; index < alphabet.Count; index++)
+            for (int index = 0; index < alphabet.Count; index++)
             {
                 int countT = positions[index].Count;
                 taxons += Math.Log(countT)*countT - countT;
-                if (arrayMaxLength < (arraySize = positions[index].Count)) arrayMaxLength = arraySize;
+                int arraySize = positions[index].Count;
+                if (arrayMaxLength < (arraySize)) arrayMaxLength = arraySize;
             }
 
             for (int meronIndex = 0, countM = 0; meronIndex < arrayMaxLength; meronIndex++)

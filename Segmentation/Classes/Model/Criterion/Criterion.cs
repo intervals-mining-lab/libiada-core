@@ -13,12 +13,11 @@ namespace Segmentation.Classes.Model.Criterion
     /// </summary>
     public abstract class Criterion: Characteristic, IDefinable
     {
-        protected double precisionOfDifference;
-        protected double lastDistortion;
-        protected FrequencyDictionary alphabet;
-        protected ComplexChain chain;
-        protected ThresholdVariator thresholdToStop;
-        protected Formalism formalismType;
+        protected double PrecisionOfDifference;
+        protected double LastDistortion;
+        protected FrequencyDictionary Alphabet;
+        protected ComplexChain Chain;
+        protected readonly ThresholdVariator ThresholdToStop;
 
         /// <summary>
         /// init
@@ -27,8 +26,8 @@ namespace Segmentation.Classes.Model.Criterion
         /// <param name="precision">additional value to</param>
         public Criterion(ThresholdVariator threshold, double precision)
         {
-            this.thresholdToStop = threshold;
-            this.precisionOfDifference = precision;
+            this.ThresholdToStop = threshold;
+            this.PrecisionOfDifference = precision;
         }
 
         /// <summary>
@@ -55,7 +54,7 @@ namespace Segmentation.Classes.Model.Criterion
         /// <returns>distortion</returns>
         public double Distortion()
         {
-            return Distortion(chain, alphabet);
+            return Distortion(Chain, Alphabet);
         }
 
         /// <summary>
@@ -65,13 +64,13 @@ namespace Segmentation.Classes.Model.Criterion
         /// <param name="alphabet">a new alphabet</param>
         public void Renew(ComplexChain chain, FrequencyDictionary alphabet)
         {
-            this.chain = chain;
-            this.alphabet = alphabet;
+            this.Chain = chain;
+            this.Alphabet = alphabet;
         }
 
         public double Value
         {
-            get { return lastDistortion; }
+            get { return LastDistortion; }
         }
 
         public double GetValue()

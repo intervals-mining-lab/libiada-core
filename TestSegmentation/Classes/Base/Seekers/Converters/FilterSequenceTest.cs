@@ -10,7 +10,7 @@ namespace TestSegmentation.Classes.Base.Seekers.Converters
     public class FilterSequenceTest
     {
         [Test]
-        public void testFilterout()
+        public void TestFilterout()
         {
             List<String> list1 = new List<string>
                 {

@@ -5,9 +5,9 @@ namespace Segmentation.Classes.Model.Criterion
     /// <summary>
     /// Creates one of availale criterion
     /// </summary>
-    public class CriterionFactory
+    public static class CriterionFactory
     {
-        public static Criterion make(int index, ThresholdVariator threshold, Input input)
+        public static Criterion Make(int index, ThresholdVariator threshold, Input input)
         {
             switch (index)
             {

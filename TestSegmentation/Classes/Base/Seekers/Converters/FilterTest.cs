@@ -23,7 +23,7 @@ namespace TestSegmentation.Classes.Base.Seekers.Converters
         }
 
         [Test]
-        public void testFilterout()
+        public void TestFilterout()
         {
             Filter filter = null;
             ComplexChain chain = null;
@@ -48,7 +48,7 @@ namespace TestSegmentation.Classes.Base.Seekers.Converters
         }
 
         [Test]
-        public void testReplace()
+        public void TestReplace()
         {
             Filter filter = null;
             ComplexChain chain = null;

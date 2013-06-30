@@ -8,7 +8,7 @@ namespace TestSegmentation.Classes.Model.Threshold
     public class ThresholdLinearTest
     {
         [Test]
-        public void testNext()
+        public void TestNext()
         {
             double left = 0;
             double right = 1;

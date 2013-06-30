@@ -2,20 +2,18 @@
 {
     public enum Formalism
     {
-        SEQUENCE,
-        ALPHABET,
-        CRITERION_PARTIAL_ORLOV,
-        CRITERION_MIN_REGULARITY,
-        CRITERION_MIN_SYMMETRY_SHREDER,
-        CRITERION_MIN_SYMMETRY_INTERVALS,
-        CRITERION_ATTITUDE_REMOTENESS,
-        CRITERION_EQUALITY_DEPTHS,
-        THRESHOLD_DICHOTOMIC_METHOD,
-        THRESHOLD_LINEAR_METHOD,
-        THRESHOLD_RANDOM_METHOD,
-        ALGORITHM_BASE,
-        ORDER,
-        LABLE,
-        CRITERION_GOLDEN_RATIO
+        Sequence,
+        Alphabet,
+        CriterionPartialOrlov,
+        CriterionMinRegularity,
+        CriterionMinSymmetryShreder,
+        CriterionMinSymmetryIntervals,
+        CriterionAttitudeRemoteness,
+        CriterionEqualityDepths,
+        ThresholdDichotomicMethod,
+        ThresholdLinearMethod,
+        ThresholdRandomMethod,
+        AlgorithmBase,
+        CriterionGoldenRatio
     }
 }

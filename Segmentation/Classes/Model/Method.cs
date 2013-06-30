@@ -7,7 +7,7 @@
     /// </summary>
     public enum Method
     {
-        CONVOLUTED,
-        NOT_CONVOLUTED
+        Convoluted,
+        NotConvoluted
     }
 }

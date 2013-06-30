@@ -16,8 +16,6 @@ namespace Segmentation.Classes.Model.Criterion
         public CriterionMinSimmetryByIntervals(ThresholdVariator threshold, double precision)
             : base(threshold, precision)
         {
-            formalismType = Formalism.CRITERION_MIN_SYMMETRY_INTERVALS;
-
         }
 
         public double GetTaxonsValue(FrequencyDictionary alphabet)

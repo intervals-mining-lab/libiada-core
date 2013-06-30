@@ -21,7 +21,7 @@ namespace TestSegmentation.Classes.Base.Sequencies
         }
 
         [Test]
-        public void testClone()
+        public void TestClone()
         {
 
             ComplexChain foreignComplexChain = chain.Clone();
@@ -31,7 +31,7 @@ namespace TestSegmentation.Classes.Base.Sequencies
         }
 
         [Test]
-        public void testEquals()
+        public void TestEquals()
         {
             ComplexChain foreignComplexChain = chain.Clone();
 
@@ -42,7 +42,7 @@ namespace TestSegmentation.Classes.Base.Sequencies
         }
 
         [Test]
-        public void testElementAt()
+        public void TestElementAt()
         {
             String str1 = "A";
             String str2 = "G";
@@ -54,7 +54,7 @@ namespace TestSegmentation.Classes.Base.Sequencies
         }
 
         [Test]
-        public void testSubstring()
+        public void TestSubstring()
         {
             int start = 0, end = 2;
             ComplexChain thirdComplexChain = new ComplexChain("AA");
@@ -64,7 +64,7 @@ namespace TestSegmentation.Classes.Base.Sequencies
         }
 
         [Test]
-        public void testClearAt()
+        public void TestClearAt()
         {
             ComplexChain secondComplexChain = new ComplexChain("AGTC");
             ComplexChain firstComplexChain = new ComplexChain("ATC");
@@ -73,7 +73,7 @@ namespace TestSegmentation.Classes.Base.Sequencies
         }
 
         [Test]
-        public void testConcat1()
+        public void TestConcat1()
         {
             int start = 0;
             int end = chain.Length;
@@ -85,7 +85,7 @@ namespace TestSegmentation.Classes.Base.Sequencies
         }
 
         [Test]
-        public void testConcat2()
+        public void TestConcat2()
         {
             int start = 0, end;
             end = chain.Length;
@@ -97,7 +97,7 @@ namespace TestSegmentation.Classes.Base.Sequencies
         }
 
         [Test]
-        public void testLength()
+        public void TestLength()
         {
             ComplexChain foreignComplexChain = chain.Clone();
 
@@ -108,7 +108,7 @@ namespace TestSegmentation.Classes.Base.Sequencies
         }
 
         [Test]
-        public void testIsEmpty()
+        public void TestIsEmpty()
         {
             String str = "s";
             ComplexChain chain = new ComplexChain("");
@@ -120,7 +120,7 @@ namespace TestSegmentation.Classes.Base.Sequencies
         }
 
         [Test]
-        public void testupdateUniforms()
+        public void TestupdateUniforms()
         {
             FrequencyDictionary alphabet;
             ComplexChain clonedComplexChain;
@@ -133,13 +133,13 @@ namespace TestSegmentation.Classes.Base.Sequencies
         }
 
         [Test]
-        public void testintervals()
+        public void Testintervals()
         {
 
         }
 
         [Test]
-        public void testjoin()
+        public void TestJoin()
         {
             ComplexChain clon = chain.Clone();
             List<String> list1 = new List<String>{"AAC","A","G","G","T","G","C","C","C","C","T","T","A","T","T","T"};
@@ -159,7 +159,7 @@ namespace TestSegmentation.Classes.Base.Sequencies
         }
 
         [Test]
-        public void testjoinAll()
+        public void TestjoinAll()
         {
             List<String> list1 = new List<String>
                 {

@@ -19,7 +19,7 @@ namespace TestSegmentation.Classes.Base.Iterators
         }
 
         [Test]
-        public void testHasNext()
+        public void TestHasNext()
         {
             int lengthCut = 3;
             int step = 1;
@@ -48,7 +48,7 @@ namespace TestSegmentation.Classes.Base.Iterators
         }
 
         [Test]
-        public void testNext()
+        public void TestNext()
         {
             EndIterator iterator = null;
             List<String> cut = null;
@@ -83,7 +83,7 @@ namespace TestSegmentation.Classes.Base.Iterators
         }
 
         [Test]
-        public void testReset()
+        public void TestReset()
         {
             EndIterator iterator = null;
             ComplexChain chain = null;
@@ -116,7 +116,7 @@ namespace TestSegmentation.Classes.Base.Iterators
         }
 
         [Test]
-        public void testGetMaxShifts()
+        public void TestGetMaxShifts()
         {
             EndIterator iterator = null;
             int lengthCut = 3;
@@ -127,7 +127,7 @@ namespace TestSegmentation.Classes.Base.Iterators
         }
 
         [Test]
-        public void testMove()
+        public void TestMove()
         {
             EndIterator iterator = null;
             ComplexChain chain = null;

@@ -8,15 +8,15 @@ namespace Segmentation.Classes.Model
     /// </summary>
     public abstract class ChainSplitter
     {
-        protected FrequencyDictionary alphabet;
-        protected ComplexChain convoluted;
+        protected FrequencyDictionary Alphabet;
+        protected ComplexChain Convoluted;
 
         public abstract ComplexChain Cut(ContentValues par);
 
 
         public FrequencyDictionary FrequencyDictionary
         {
-            get { return alphabet; }
+            get { return Alphabet; }
         }
     }
 }

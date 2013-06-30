@@ -19,7 +19,7 @@ namespace TestSegmentation.Classes.Base.Seekers
         }
 
         [Test]
-        public void testSeek()
+        public void TestSeek()
         {
             int length = 1;
             int step = 1;
@@ -45,7 +45,7 @@ namespace TestSegmentation.Classes.Base.Seekers
         }
 
         [Test]
-        public void testSeek2()
+        public void TestSeek2()
         {
             int length = 1;
             int step = 1;
@@ -69,7 +69,7 @@ namespace TestSegmentation.Classes.Base.Seekers
         }
 
         [Test]
-        public void testGetMatch()
+        public void TestGetMatch()
         {
             int length = 1;
             int step = 1;

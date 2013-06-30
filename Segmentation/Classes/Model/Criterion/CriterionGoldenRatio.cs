@@ -22,33 +22,30 @@ namespace Segmentation.Classes.Model.Criterion
         public CriterionGoldenRatio(ThresholdVariator threshold, double precision)
             : base(threshold, precision)
         {
-            formalismType = Formalism.CRITERION_GOLDEN_RATIO;
-            lastDistortion = Double.MaxValue;
+            LastDistortion = Double.MaxValue;
 
         }
 
         public override bool State(ComplexChain chain, FrequencyDictionary alphabet)
         {
             double current = Distortion(chain, alphabet);
-            if (lastDistortion > current)
+            if (LastDistortion > current)
             {
-                lastDistortion = current;
-                this.chain = (ComplexChain)chain.Clone();
-                this.alphabet = (FrequencyDictionary)alphabet.Clone();
-                thresholdToStop.SaveBest();
+                LastDistortion = current;
+                Chain = chain.Clone();
+                Alphabet = alphabet.Clone();
+                ThresholdToStop.SaveBest();
             }
-            return (thresholdToStop.Distance() > ThresholdVariator.PRECISION);
+            return (ThresholdToStop.Distance() > ThresholdVariator.PRECISION);
         }
 
         public override double Distortion(ComplexChain chain, FrequencyDictionary alphabet)
         {
-            double greaterToSmaler = 1;
-            double sumToGreater = 1;
             double maxFrequency = this.MaxFrequency(alphabet);
             double power = alphabet.Count;
 
-            greaterToSmaler = power/maxFrequency;
-            sumToGreater = (power + maxFrequency)/power;
+            double greaterToSmaler = power/maxFrequency;
+            double sumToGreater = (power + maxFrequency)/power;
 
             return Math.Abs(greaterToSmaler - sumToGreater);
         }

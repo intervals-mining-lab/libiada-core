@@ -1,6 +1,4 @@
-﻿using Segmentation.Classes.Base;
-
-namespace Segmentation.Classes.Model.Threshold
+﻿namespace Segmentation.Classes.Model.Threshold
 {
     public class ThresholdRandom : ThresholdVariator
     {
@@ -12,7 +10,6 @@ namespace Segmentation.Classes.Model.Threshold
         public ThresholdRandom(double leftBound, double rightBound)
             : base(leftBound, rightBound)
         {
-            formalismType = Formalism.THRESHOLD_RANDOM_METHOD;
         }
 
 

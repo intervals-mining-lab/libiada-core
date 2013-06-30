@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using LibiadaCore.Classes.Root;
 using LibiadaCore.Classes.Root.SimpleTypes;
-using LibiadaCore.Classes.TheoryOfSet;
 using Segmentation.Classes.Base;
 using Segmentation.Classes.Base.Collectors;
 using Segmentation.Classes.Base.Sequencies;
@@ -30,52 +28,52 @@ namespace Segmentation.Classes.Model
         /// <returns>a convoluted chain</returns>
         public override sealed ComplexChain Cut(ContentValues par)
         {
-            int maxWindowLen = (int)par.Get(Enum.GetName(typeof(Parameter), Parameter.WINDOW));
-            int windowDec = (int)par.Get(Enum.GetName(typeof(Parameter), Parameter.WINDOW_DECREMENT));
+            int maxWindowLen = (int)par.Get(Enum.GetName(typeof(Parameter), Parameter.Window));
+            int windowDec = (int)par.Get(Enum.GetName(typeof(Parameter), Parameter.WindowDecrement));
             bool flag = true;
             KeyValuePair<List<string>, List<int>>? pair = null;
 
-            convoluted = ((ComplexChain)par.Get(Formalism.GetName(typeof(Formalism), Formalism.SEQUENCE)));
-            alphabet = new FrequencyDictionary();
+            Convoluted = ((ComplexChain)par.Get(Formalism.GetName(typeof(Formalism), Formalism.Sequence)));
+            Alphabet = new FrequencyDictionary();
 
             for (int winLen = maxWindowLen; (winLen >= windowDec) && (winLen > 1); winLen -= windowDec)
             {
                 flag = true;
                 while (flag)
                 {
-                    updateParams(par,winLen);
+                    UpdateParams(par,winLen);
                     pair = WordExtractorFactory.GetSeeker(extractor).Find(par);
                     flag = pair != null;
                     if (flag)
                     {
                         pair.Value.Value.Reverse();
-                        foreach (int position in pair.Value.Value) convoluted.Join(position, winLen);
+                        foreach (int position in pair.Value.Value) Convoluted.Join(position, winLen);
                         //convoluted.updateUniforms();
-                        alphabet.Add(Helper.ToString(pair.Value.Key), pair.Value.Value);
+                        Alphabet.Add(Helper.ToString(pair.Value.Key), pair.Value.Value);
                     }
                 }
             }
-            findLastWords();
+            FindLastWords();
 
-            return convoluted;
+            return Convoluted;
         }
 
-        private void updateParams(ContentValues par, int winLen)
+        private void UpdateParams(ContentValues par, int winLen)
         {
-            par.Put(Formalism.SEQUENCE.ToString(), convoluted.ToString());
-            par.Put(Formalism.ALPHABET.ToString(), alphabet.ToString());
-            par.Put(Parameter.WINDOW, winLen);
+            par.Put(Formalism.Sequence.ToString(), Convoluted.ToString());
+            par.Put(Formalism.Alphabet.ToString(), Alphabet.ToString());
+            par.Put(Parameter.Window, winLen);
         }
 
-        private void findLastWords()
+        private void FindLastWords()
         {
             ValueString letter;
-            for (int index = 0; index < convoluted.Length; index++)
+            for (int index = 0; index < Convoluted.Length; index++)
             {
-                if ((letter = (ValueString)convoluted[index]).value.Length == 1)
+                if ((letter = (ValueString)Convoluted[index]).value.Length == 1)
                 {
-                    if (!alphabet.Contains(letter)) alphabet.Add(letter, new List<int>());
-                    this.alphabet.Put(letter, index);
+                    if (!Alphabet.Contains(letter)) Alphabet.Add(letter, new List<int>());
+                    this.Alphabet.Put(letter, index);
                 }
             }
         }

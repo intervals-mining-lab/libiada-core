@@ -13,8 +13,8 @@ namespace Segmentation.Classes.Model.Criterion
     /// </summary>
     public class CriterionAttitudeOfRemoteness : Criterion
     {
-        private AverageWordLength wordAverageLength = new AverageWordLength();
-        private AverageRemoteness remoteness = new AverageRemoteness();
+        private readonly AverageWordLength wordAverageLength = new AverageWordLength();
+        private readonly AverageRemoteness remoteness = new AverageRemoteness();
 
         /// <summary>
         /// init
@@ -24,24 +24,23 @@ namespace Segmentation.Classes.Model.Criterion
         public CriterionAttitudeOfRemoteness(ThresholdVariator threshold, double precision)
             : base(threshold, precision)
         {
-            lastDistortion = Double.MinValue;
-            formalismType = Formalism.CRITERION_ATTITUDE_REMOTENESS;
+            LastDistortion = Double.MinValue;
         }
 
 
         public override bool State(ComplexChain chain, FrequencyDictionary alphabet)
         {
-            double distortion = this.Distortion(chain, alphabet);
-            if (Math.Abs(lastDistortion) < Math.Abs(distortion))
+            double distortion = Distortion(chain, alphabet);
+            if (Math.Abs(LastDistortion) < Math.Abs(distortion))
             {
-                this.chain = (ComplexChain) chain.Clone();
-                this.alphabet = (FrequencyDictionary) alphabet.Clone();
-                lastDistortion = distortion;
-                thresholdToStop.SaveBest();
+                Chain = chain.Clone();
+                Alphabet = alphabet.Clone();
+                LastDistortion = distortion;
+                ThresholdToStop.SaveBest();
             }
 
 
-            return (thresholdToStop.Distance() > ThresholdVariator.PRECISION);
+            return (ThresholdToStop.Distance() > ThresholdVariator.PRECISION);
         }
 
         public override double Distortion(ComplexChain chain, FrequencyDictionary alphabet)
