@@ -1,0 +1,80 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{A33E97AE-575F-4ED5-B63E-32D8CF200E20}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Clusterizator</RootNamespace>
+    <AssemblyName>Clusterizator</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="LibiadaCore, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\libiada-core\LibiadaCore\bin\Debug\LibiadaCore.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Classes\AlternativeClusterization\AlternativeKRAB.cs" />
+    <Compile Include="Classes\AlternativeClusterization\Calculators\CommonCalculator.cs" />
+    <Compile Include="Classes\AlternativeClusterization\Calculators\FCalculator.cs" />
+    <Compile Include="Classes\AlternativeClusterization\Calculators\HCalculator.cs" />
+    <Compile Include="Classes\AlternativeClusterization\Calculators\ICalculator.cs" />
+    <Compile Include="Classes\AlternativeClusterization\Calculators\LambdaCalculator.cs" />
+    <Compile Include="Classes\AlternativeClusterization\Calculators\LinearCalculator.cs" />
+    <Compile Include="Classes\AlternativeClusterization\Calculators\NormalizedLinearCalculator.cs" />
+    <Compile Include="Classes\AlternativeClusterization\Calculators\TauCalculator.cs" />
+    <Compile Include="Classes\AlternativeClusterization\Calculators\TauStarCalculator.cs" />
+    <Compile Include="Classes\AlternativeClusterization\Connection.cs" />
+    <Compile Include="Classes\AlternativeClusterization\GraphElement.cs" />
+    <Compile Include="Classes\AlternativeClusterization\GraphManager.cs" />
+    <Compile Include="Classes\ClustarizationVariants.cs" />
+    <Compile Include="Classes\Cluster.cs" />
+    <Compile Include="Classes\ClusterizationResult.cs" />
+    <Compile Include="Classes\DataObject.cs" />
+    <Compile Include="Classes\DataTable.cs" />
+    <Compile Include="Classes\IClusterization.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
