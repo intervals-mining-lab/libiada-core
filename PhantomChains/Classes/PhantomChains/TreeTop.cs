@@ -16,12 +16,12 @@ namespace PhantomChains.Classes.PhantomChains
         ///<summary>
         /// Конструктор корневого элемента
         ///</summary>
-        ///<param name="InputChain">Исходная цепь дя построения дерева варинтов</param>
-        ///<param name="Gen">Генератор </param>
-        public TreeTop(BaseChain InputChain, IGenerator Gen)
+        ///<param name="inputChain">Исходная цепь дя построения дерева варинтов</param>
+        ///<param name="gen">Генератор </param>
+        public TreeTop(BaseChain inputChain, IGenerator gen)
         {
-            Table = new PhantomTable(InputChain);
-            Generator = Gen;
+            Table = new PhantomTable(inputChain);
+            Generator = gen;
             StartPosition = 0;
             volume = Table[0].Volume;
             level = -1;
@@ -29,9 +29,9 @@ namespace PhantomChains.Classes.PhantomChains
             {
                 IsString = true;
             }
-            if ((InputChain != null) && (InputChain.Length != 0))
+            if ((inputChain != null) && (inputChain.Length != 0))
             {
-                ValuePhantom temp = (ValuePhantom)InputChain[0];
+                ValuePhantom temp = (ValuePhantom)inputChain[0];
                 for (int i = 0; i < temp.Power; i++)
                 {
                     Children.Add(new TreeNode(this, temp[i], Table));
@@ -70,18 +70,18 @@ namespace PhantomChains.Classes.PhantomChains
         ///<returns>Сгенерированная цепочка</returns>
         public BaseChain Generate()
         {
-            BaseChain Result = null;
+            BaseChain result = null;
             if(IsString)
             {
-                Result = new BaseChain(3 * (Table.Length - 1));
+                result = new BaseChain(3 * (Table.Length - 1));
             }
             else
             {
-                Result = new BaseChain(Table.Length - 1);
+                result = new BaseChain(Table.Length - 1);
             }
             
-            this.Find(Result,Generator,Table);
-            return Result;
+            this.Find(result,Generator,Table);
+            return result;
         }
     }
 }

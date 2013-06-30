@@ -65,14 +65,15 @@ namespace PhantomChains.Classes.PhantomChains
             }
         }
 
-        ///<summary>
-        /// ћетод добавл€ющий в заполн€емую цепочку ещЄ один элемент
-        /// и вызывающий аналогичный метод у одного из потомков 
-        /// если цепочка заполнена не до конца.
-        ///</summary>
-        ///<param name="Result">√енерируема€ цепочка</param>
-        ///<param name="generator">√енератор случайных чисел</param>
-        public void FillChain(BaseChain Result, IGenerator generator,PhantomTable table)
+        /// <summary>
+        ///  ћетод добавл€ющий в заполн€емую цепочку ещЄ один элемент
+        ///  и вызывающий аналогичный метод у одного из потомков 
+        ///  если цепочка заполнена не до конца.
+        /// </summary>
+        /// <param name="result">√енерируема€ цепочка</param>
+        /// <param name="generator">√енератор случайных чисел</param>
+        /// <param name="table"></param>
+        public void FillChain(BaseChain result, IGenerator generator, PhantomTable table)
         {
             if ((table.Length != (level + 2))&&(Children.Count==0))
             {
@@ -87,14 +88,14 @@ namespace PhantomChains.Classes.PhantomChains
                 String amin = id.ToString();
                 for (int k = 0; k < amin.Length;k++)
                 {
-                    Result[StartPosition+k] = new ValueChar(amin[k]);
+                    result[StartPosition+k] = new ValueChar(amin[k]);
                 }
             }
             else
             {
-                Result[StartPosition] = id;
+                result[StartPosition] = id;
             }
-            this.Find(Result,generator,table);
+            Find(result,generator,table);
         }
     }
 }

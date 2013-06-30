@@ -10,19 +10,19 @@ namespace PhantomChains.Classes.Statistics.MarkovChain.Builders
         ///<summary>
         /// Создать матрицу.
         ///</summary>
-        ///<param name="powerOfAlphabet">Мощность алфавита</param>
+        ///<param name="alphabetPower">Мощность алфавита</param>
         ///<param name="i">Размерность матрицы</param>
         ///<returns>Элемент матрицы</returns>
-        public object Create(int powerOfAlphabet, int i)
+        public object Create(int alphabetPower, int i)
         {
             switch (i)
             {
                 case 0:
                     return (double) 0;
                 case 1:
-                    return new MatrixRow(powerOfAlphabet, i);
+                    return new MatrixRow(alphabetPower, i);
                 default:
-                    return new Matrix(powerOfAlphabet, i);
+                    return new Matrix(alphabetPower, i);
             }
         }
     }

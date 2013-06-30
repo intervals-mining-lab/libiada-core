@@ -89,31 +89,31 @@ namespace PhantomChains.Classes.PhantomChains
         ///<returns>Массив цепочек</returns>
         public List<BaseChain> Generate(UInt64 i)
         {
-            if((i<0)||(i>variants))
+            if(i>variants)
             {
                 throw new Exception();
             }
-            List<BaseChain> Res = new List<BaseChain>();
-            List<BaseChain> TempRes = new List<BaseChain>();
+            List<BaseChain> res = new List<BaseChain>();
+            List<BaseChain> tempRes = new List<BaseChain>();
             for (int m = 0; m < Tree.Count;m++)
             {
-                TempRes.Add(null);
+                tempRes.Add(null);
             }
             Gen.Resert();
-            int ChainCounter = 0;
-            while (Res.Count != (uint)i)
+            int chainCounter = 0;
+            while (res.Count != (uint)i)
             {
-                int Counter = 0;
-                Res.Add(new BaseChain(TotalLength));
+                int counter = 0;
+                res.Add(new BaseChain(TotalLength));
                 for (int l = 0; l < Tree.Count;l++)
                 {
-                    TempRes[l] = Tree[l].Generate();
-                    for(int u=0;u<TempRes[l].Length;u++)
+                    tempRes[l] = Tree[l].Generate();
+                    for(int u=0;u<tempRes[l].Length;u++)
                     {
-                        if(Counter<Res[ChainCounter].Length)
+                        if(counter<res[chainCounter].Length)
                         {
-                            Res[ChainCounter][Counter] = TempRes[l][u];
-                            Counter++;
+                            res[chainCounter][counter] = tempRes[l][u];
+                            counter++;
                         }
                         else
                         {
@@ -121,7 +121,7 @@ namespace PhantomChains.Classes.PhantomChains
                         }
                     }
                 }
-                ChainCounter++;
+                chainCounter++;
                 if(Tree.Count!=1)
                 {
                     Tree[Tree.Count-1] = new TreeTop(TempChains[TempChains.Count-1],Gen);
@@ -131,7 +131,7 @@ namespace PhantomChains.Classes.PhantomChains
             {
                 Tree[s] = new TreeTop(TempChains[s], Gen);
             }
-            return Res;
+            return res;
         }
     }
 }

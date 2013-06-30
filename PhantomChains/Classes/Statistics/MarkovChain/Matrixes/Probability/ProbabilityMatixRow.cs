@@ -25,23 +25,23 @@ namespace PhantomChains.Classes.Statistics.MarkovChain.Matrixes.Probability
         }
 
 
-        public void Fill(IOpenMatrix Matrix)
+        public void Fill(IOpenMatrix matrix)
         {
             double temp = 0;
-            for (int i = 0; i < Matrix.ValueList.Count; i++)
+            for (int i = 0; i < matrix.ValueList.Count; i++)
             {
-                temp += (double) Matrix.ValueList[i];
+                temp += (double) matrix.ValueList[i];
             }
 
             for (int i = 0; i < ValueList.Count; i++)
             {
-                ValueList[i] = (temp == 0) ? 0 : ((double) Matrix.ValueList[i])/temp;
+                ValueList[i] = (temp == 0) ? 0 : ((double) matrix.ValueList[i])/temp;
             }
         }
 
         public Dictionary<IBaseObject, double> GetProbabilityVector(Alphabet alphabet, int[] Pred)
         {
-            if (alphabet.Power != alphPower)
+            if (alphabet.Power != AlphabetPower)
             {
                 throw new Exception();
             }
@@ -51,7 +51,7 @@ namespace PhantomChains.Classes.Statistics.MarkovChain.Matrixes.Probability
             }
 
             Dictionary<IBaseObject, double> Result = new Dictionary<IBaseObject, double>();
-            for (int i = 0; i < alphPower; i++)
+            for (int i = 0; i < AlphabetPower; i++)
             {
                 Result.Add(alphabet[i], ((double)ValueList[i]));
             }

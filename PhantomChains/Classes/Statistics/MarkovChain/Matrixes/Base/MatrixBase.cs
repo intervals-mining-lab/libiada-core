@@ -8,9 +8,13 @@ namespace PhantomChains.Classes.Statistics.MarkovChain.Matrixes.Base
     ///</summary>
     public abstract class MatrixBase
     {
-        protected int alphPower;
-        protected ArrayList ValueList;
-        protected int rang;
+        protected readonly int AlphabetPower;
+        protected readonly ArrayList ValueList;
+        ///<summary>
+        /// Размерность матрицы.
+        /// Только чтение.
+        ///</summary>
+        public readonly int Rank;
         protected double Value;
 
 
@@ -22,12 +26,12 @@ namespace PhantomChains.Classes.Statistics.MarkovChain.Matrixes.Base
         /// <param name="Builder">Правило создания матриц</param>
         public MatrixBase(int poweOfAlphabet, int razmernost, IMatrixBuilder Builder)
         {
-            alphPower = poweOfAlphabet;
+            AlphabetPower = poweOfAlphabet;
             ValueList = new ArrayList();
-            rang = razmernost;
-            for (int i = 0; i < alphPower; i++)
+            Rank = razmernost;
+            for (int i = 0; i < AlphabetPower; i++)
             {
-                ValueList.Add(Builder.Create(alphPower, razmernost - 1));
+                ValueList.Add(Builder.Create(AlphabetPower, razmernost - 1));
             }
         }
 
@@ -38,19 +42,7 @@ namespace PhantomChains.Classes.Statistics.MarkovChain.Matrixes.Base
         {
             get
             {
-                return alphPower;
-            }
-        }
-
-        ///<summary>
-        /// Размерность матрицы.
-        /// Только чтение.
-        ///</summary>
-        public int Rang
-        {
-            get
-            {
-                return rang;
+                return AlphabetPower;
             }
         }
 

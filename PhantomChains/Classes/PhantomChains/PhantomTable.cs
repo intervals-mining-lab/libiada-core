@@ -20,10 +20,10 @@ namespace PhantomChains.Classes.PhantomChains
         ///<summary>
         /// Конструктор.
         ///</summary>
-        ///<param name="InputChain">Фантомная цепочка</param>
-        public PhantomTable(BaseChain InputChain)
+        ///<param name="inputChain">Фантомная цепочка</param>
+        public PhantomTable(BaseChain inputChain)
         {
-            InternalChain = InputChain;
+            InternalChain = inputChain;
             UInt64 v=1;
             StartPositions.Add(0);
             for (int j = 0; j < InternalChain.Length; j++)

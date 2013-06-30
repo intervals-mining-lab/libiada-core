@@ -19,10 +19,10 @@ namespace PhantomChains.Classes.Statistics.MarkovChain
         where ChainGenerated: BaseChain,new()
     {
         protected Alphabet alphabet;
-        protected IGenerator pGenerator;
-        protected int rang;
-        protected IProbabilityMatrix[] ProbabilityMatrix;
-        protected int uniformRang;
+        protected readonly IGenerator Generator;
+        protected readonly int Rank;
+        protected readonly IProbabilityMatrix[] ProbabilityMatrix;
+        protected readonly int UniformRank;
 
         ///<summary>
         /// Конструктор
@@ -37,9 +37,9 @@ namespace PhantomChains.Classes.Statistics.MarkovChain
                 throw  new Exception("Ошибка при создании марковской цепи");
             }
 
-            rang = i;
-            pGenerator = generator;
-            this.uniformRang = uniformRang;
+            Rank = i;
+            Generator = generator;
+            UniformRank = uniformRang;
             ProbabilityMatrix = new IProbabilityMatrix[uniformRang + 1];
         }
 
@@ -52,7 +52,7 @@ namespace PhantomChains.Classes.Statistics.MarkovChain
         ///<returns>Реализация Марковской цепи</returns>
         public ChainGenerated Generate(int i)
         {
-            return Generate(i, rang);
+            return Generate(i, Rank);
         }
 
         ///<summary>
@@ -68,21 +68,21 @@ namespace PhantomChains.Classes.Statistics.MarkovChain
         /// </summary>
         /// <returns>Реализация марковской цепи</returns>
 
-        protected IBaseObject GetObject(Dictionary<IBaseObject, double> List)
+        protected IBaseObject GetObject(Dictionary<IBaseObject, double> list)
         {
-            IBaseObject Result = null;
-            double Temp = 0;
-            double Probability = pGenerator.Next();
-            foreach (KeyValuePair<IBaseObject, double> pair in List)
+            IBaseObject result = null;
+            double temp = 0;
+            double probability = Generator.Next();
+            foreach (KeyValuePair<IBaseObject, double> pair in list)
             {
-                Temp += pair.Value;
-                if (Temp >= Probability)
+                temp += pair.Value;
+                if (temp >= probability)
                 {
-                    Result = pair.Key;
+                    result = pair.Key;
                     break;
                 }
             }
-            return Result;
+            return result;
         }
 
         protected virtual SpaceRebuilder<ChainTeached, ChainTeached> GetRebuilder(TeachingMethod method)
@@ -92,7 +92,7 @@ namespace PhantomChains.Classes.Statistics.MarkovChain
                 case TeachingMethod.None:
                     return new NullRebuilder<ChainTeached, ChainTeached>();
                 case TeachingMethod.Cycle:
-                    return new PsevdoCycleSpaceRebuilder<ChainTeached, ChainTeached>(rang - 1);
+                    return new PsevdoCycleSpaceRebuilder<ChainTeached, ChainTeached>(Rank - 1);
                 default:
                     throw new Exception();
             }
@@ -102,39 +102,39 @@ namespace PhantomChains.Classes.Statistics.MarkovChain
         /// Обучить Марковскую цепь на последовательности
         ///</summary>
         ///<param name="chain">Цепь используемая при обучении</param>
-        ///<param name="Method">Метод предобработки цепи</param>
-        public virtual void Teach(ChainTeached chain, TeachingMethod Method)
+        ///<param name="method">Метод предобработки цепи</param>
+        public virtual void Teach(ChainTeached chain, TeachingMethod method)
         {
             MatrixBuilder builder = new MatrixBuilder();
-            IAbsoluteMatrix[] absMatrix = new IAbsoluteMatrix[uniformRang + 1];
+            IAbsoluteMatrix[] absMatrix = new IAbsoluteMatrix[UniformRank + 1];
             alphabet = chain.Alphabet;
-            for (int i = 0; i < uniformRang + 1; i++)
-                absMatrix[i] = (IAbsoluteMatrix)builder.Create(alphabet.Power, rang);
-            SpaceRebuilder<ChainTeached, ChainTeached> Rebuilder = GetRebuilder(Method);
-            chain = Rebuilder.Rebuild(chain);
+            for (int i = 0; i < UniformRank + 1; i++)
+                absMatrix[i] = (IAbsoluteMatrix)builder.Create(alphabet.Power, Rank);
+            SpaceRebuilder<ChainTeached, ChainTeached> rebuilder = GetRebuilder(method);
+            chain = rebuilder.Rebuild(chain);
 
-            IteratorStart<ChainGenerated, ChainTeached> It = new IteratorStart<ChainGenerated, ChainTeached>(chain, rang, 1);
-            It.Reset();
+            IteratorStart<ChainGenerated, ChainTeached> it = new IteratorStart<ChainGenerated, ChainTeached>(chain, Rank, 1);
+            it.Reset();
 
             int k = 0;
             //Сдесь будем заполнять матрицы
-            while (It.Next())
+            while (it.Next())
             {
                 ++k;
-                int m = k % (uniformRang + 1);
+                int m = k % (UniformRank + 1);
                 if (m == 0)
-                    m = uniformRang + 1;
+                    m = UniformRank + 1;
 
-                ChainGenerated chainToTeach = It.Current();
-                int[] indexedChain = new int[rang];
-                for (int i = 0; i < rang; i++)
+                ChainGenerated chainToTeach = it.Current();
+                int[] indexedChain = new int[Rank];
+                for (int i = 0; i < Rank; i++)
                 {
                     indexedChain[i] = chain.Alphabet.IndexOf(chainToTeach[i]);
                 }
                 absMatrix[m - 1].Add(indexedChain);
             }
 
-            for (int i = 0; i < uniformRang + 1; i++)
+            for (int i = 0; i < UniformRank + 1; i++)
                 ProbabilityMatrix[i] = absMatrix[i].ProbabilityMatrix();
         }
 

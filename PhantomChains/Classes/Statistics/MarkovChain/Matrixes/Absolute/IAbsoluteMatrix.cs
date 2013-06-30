@@ -22,11 +22,11 @@ namespace PhantomChains.Classes.Statistics.MarkovChain.Matrixes.Absolute
         ///</summary>
         void IncValue();
 
-        ///<summary>
-        /// Получить сумму элеметов по данному адресу
-        ///</summary>
-        ///<param name="pred">Адрес элементов</param>
-        ///<returns>Сумма элементов матрицы с данным адрессом</returns>
+        /// <summary>
+        ///  Получить сумму элеметов по данному адресу
+        /// </summary>
+        /// <param name="arrayOfIndexes">Адрес элементов</param>
+        /// <returns>Сумма элементов матрицы с данным адрессом</returns>
         double Sum(int[] arrayOfIndexes);
 
         IProbabilityMatrix ProbabilityMatrix();

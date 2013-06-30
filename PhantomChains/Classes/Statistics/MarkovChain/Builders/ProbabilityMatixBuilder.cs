@@ -7,16 +7,16 @@ namespace PhantomChains.Classes.Statistics.MarkovChain.Builders
     ///</summary>
     public class ProbabilityMatixBuilder:IMatrixBuilder
     {
-        public object Create(int powerOfAlphabet, int i)
+        public object Create(int alphabetPower, int i)
         {
             switch (i)
             {
                 case 0:
                     return (double)0;
                 case 1:
-                    return new ProbabilityMatixRow(powerOfAlphabet, i);
+                    return new ProbabilityMatixRow(alphabetPower, i);
                 default:
-                    return new ProbabilityMatrix(powerOfAlphabet, i);
+                    return new ProbabilityMatrix(alphabetPower, i);
             }
         }
     }

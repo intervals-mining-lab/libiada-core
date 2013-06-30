@@ -26,10 +26,6 @@ namespace PhantomChains.Classes.PhantomChains
         ///<exception cref="Exception">Исключение возникает в слчае отирицательного количества вариантов</exception>
         public Record(ValuePhantom message,UInt64 volume)
         {
-            if(volume<0)
-            {
-                throw new Exception("Количество вариантов не может быть отрицательным");
-            }
             if(message==null)
             {
                 throw new Exception();

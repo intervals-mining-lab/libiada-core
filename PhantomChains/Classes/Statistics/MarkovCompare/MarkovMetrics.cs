@@ -21,7 +21,7 @@ namespace PhantomChains.Classes.Statistics.MarkovCompare
             for (int i = 0; i < chain.Alphabet.Power; i++)
             {
                 int[] array = {i};
-                Dictionary<IBaseObject, double> dic = matrix.GetProbabilityVector(chain.Alphabet, array);
+                matrix.GetProbabilityVector(chain.Alphabet, array);
             }
             return 0;
         }

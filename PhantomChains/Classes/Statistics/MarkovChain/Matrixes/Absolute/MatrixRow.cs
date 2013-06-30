@@ -15,10 +15,10 @@ namespace PhantomChains.Classes.Statistics.MarkovChain.Matrixes.Absolute
         ///<summary>
         /// Конструктор
         ///</summary>
-        ///<param name="alphabet">Алфавит для матрицы</param>
+        ///<param name="alphabetPower">Алфавит для матрицы</param>
         ///<param name="razmernost">Размерность матрицы</param>
-        public MatrixRow(int powerOfAlphabet, int razmernost)
-            : base(powerOfAlphabet, razmernost, new MatrixBuilder())
+        public MatrixRow(int alphabetPower, int razmernost)
+            : base(alphabetPower, razmernost, new MatrixBuilder())
         {
         }
 
@@ -40,9 +40,9 @@ namespace PhantomChains.Classes.Statistics.MarkovChain.Matrixes.Absolute
             get { return (ArrayList) ValueList.Clone(); }
         }
 
-        int IOpenMatrix.rang
+        int IOpenMatrix.Rank
         {
-            get { return Rang; }
+            get { return Rank; }
         }
 
         double IOpenMatrix.Value
@@ -67,7 +67,7 @@ namespace PhantomChains.Classes.Statistics.MarkovChain.Matrixes.Absolute
 
         public IProbabilityMatrix ProbabilityMatrix()
         {
-            ProbabilityMatixRow temp = new ProbabilityMatixRow(alphPower, 1);
+            ProbabilityMatixRow temp = new ProbabilityMatixRow(AlphabetPower, 1);
             temp.Fill(this);
             return temp;
 
@@ -75,7 +75,7 @@ namespace PhantomChains.Classes.Statistics.MarkovChain.Matrixes.Absolute
 
         public double Add(int[] arrayToTeach)
         {
-            if (arrayToTeach == null || arrayToTeach.Length > rang)
+            if (arrayToTeach == null || arrayToTeach.Length > Rank)
             {
                 throw new Exception();
             }

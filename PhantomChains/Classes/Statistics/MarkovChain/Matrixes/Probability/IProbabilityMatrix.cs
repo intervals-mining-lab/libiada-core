@@ -13,8 +13,8 @@ namespace PhantomChains.Classes.Statistics.MarkovChain.Matrixes.Probability
         ///<summary>
         /// «апол€нить веро€тностную матрицу из другой матрицы
         ///</summary>
-        ///<param name="Matrix">ћатрица из которой пересчитваем веро€тности</param>
-        void Fill(IOpenMatrix Matrix);
+        ///<param name="matrix">ћатрица из которой пересчитваем веро€тности</param>
+        void Fill(IOpenMatrix matrix);
 
         ///<summary>
         /// ѕолучение вектора веро€тностей лежащего по адресу

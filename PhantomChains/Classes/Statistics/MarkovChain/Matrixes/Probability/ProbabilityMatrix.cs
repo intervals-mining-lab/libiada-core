@@ -43,7 +43,7 @@ namespace PhantomChains.Classes.Statistics.MarkovChain.Matrixes.Probability
         public Dictionary<IBaseObject, double> GetProbabilityVector(Alphabet alphabet, int[] Pred)
         {
             Dictionary<IBaseObject, double> Result = new Dictionary<IBaseObject, double>();
-            if ((Pred.Length > rang - 1) || (Pred.Length == 0))
+            if ((Pred.Length > Rank - 1) || (Pred.Length == 0))
             {
                 throw new Exception();
             }

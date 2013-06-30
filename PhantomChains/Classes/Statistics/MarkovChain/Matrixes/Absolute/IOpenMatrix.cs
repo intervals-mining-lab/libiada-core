@@ -15,7 +15,7 @@ namespace PhantomChains.Classes.Statistics.MarkovChain.Matrixes.Absolute
         ///<summary>
         /// Размерность матрицы
         ///</summary>
-        int rang{ get;}
+        int Rank{ get;}
 
         ///<summary>
         /// Значение матрицы

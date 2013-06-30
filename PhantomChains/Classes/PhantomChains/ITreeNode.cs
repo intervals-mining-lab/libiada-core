@@ -10,7 +10,7 @@ namespace PhantomChains.Classes.PhantomChains
     ///</summary>
     public abstract class ITreeNode
     {
-        protected List<TreeNode> Children = new List<TreeNode>();
+        protected readonly List<TreeNode> Children = new List<TreeNode>();
         protected UInt64 volume;
         protected int level;
         protected int StartPosition;
@@ -44,22 +44,22 @@ namespace PhantomChains.Classes.PhantomChains
         /// <summary>
         /// Метод, выбирающий какой из потомков будет генерировать очередной элемент цепи.
         /// </summary>
-        /// <param name="Result">Генерируемая цепь</param>
-        /// <param name="Generator">Генератор случайных чисел</param>
-        /// <param name="Table">Таблица с параметрами фантомной цепи</param>
-        protected void Find(BaseChain Result, IGenerator Generator,PhantomTable Table)
+        /// <param name="result">Генерируемая цепь</param>
+        /// <param name="generator">Генератор случайных чисел</param>
+        /// <param name="table">Таблица с параметрами фантомной цепи</param>
+        protected void Find(BaseChain result, IGenerator generator, PhantomTable table)
         {
             //если элемент не листовой
             if (Children.Count!=0)
             {
-                double Val = Generator.Next();
-                UInt64 CurVal=0;
+                double val = generator.Next();
+                UInt64 curVal=0;
                 for (int i = 0; i < Children.Count; i++)
                 {
-                    CurVal += Children[i].volume;
-                    if (Val <= ((double)CurVal / volume))
+                    curVal += Children[i].volume;
+                    if (val <= ((double)curVal / volume))
                     {
-                        Children[i].FillChain(Result, Generator,Table);
+                        Children[i].FillChain(result, generator,table);
                         return;
                     }
                 }

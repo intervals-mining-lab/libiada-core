@@ -13,20 +13,20 @@ namespace PhantomChains.Classes.Statistics.MarkovChain
         {
         }
 
-        public override void Teach(ChainTeached chain, TeachingMethod Method)
+        public override void Teach(ChainTeached chain, TeachingMethod method)
         {
-            MatrixBuilder Builder = new MatrixBuilder();
-            IAbsoluteMatrix AbsoluteMatrix = (IAbsoluteMatrix)Builder.Create(chain.Alphabet.Power, rang);
+            MatrixBuilder builder = new MatrixBuilder();
+            IAbsoluteMatrix absoluteMatrix = (IAbsoluteMatrix)builder.Create(chain.Alphabet.Power, Rank);
             for (int i = 0; i < chain.Alphabet.Power; i++)
             {
                 int[] Temp =new int[1]; 
                 Temp[0] = chain.Alphabet.IndexOf(chain.Alphabet[i]);
 
-                AbsoluteMatrix.Add(Temp);
+                absoluteMatrix.Add(Temp);
 
             }
 
-            ProbabilityMatrix[0] = AbsoluteMatrix.ProbabilityMatrix();
+            ProbabilityMatrix[0] = absoluteMatrix.ProbabilityMatrix();
         }
     }
 }
