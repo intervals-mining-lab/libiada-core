@@ -3,7 +3,7 @@ using LibiadaCore.Classes.Root.Characteristics.Calculators;
 
 namespace LibiadaCore.Classes.Root.Characteristics.BinaryCalculators
 {
-    public class Redundancy:BinaryCharacteristicCalculator
+    public class Redundancy:BinaryCalculator
     {
         public override double Calculate(Chain chain, IBaseObject firstElement, IBaseObject secondElement, LinkUp linkUp)
         {

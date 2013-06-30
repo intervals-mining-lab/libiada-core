@@ -3,7 +3,7 @@ namespace LibiadaCore.Classes.Root.Characteristics.Calculators
     ///<summary>
     /// Глубина приходящаяся на одно сообщение.
     ///</summary>
-    public class NormalizedDepth : ICharacteristicCalculator
+    public class NormalizedDepth : ICalculator
     {
         private readonly Depth depth = new Depth();
         private readonly Length length = new Length();

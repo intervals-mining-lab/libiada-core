@@ -282,7 +282,7 @@ namespace LibiadaCore.Classes.Root
         public IBaseObject DeleteAt(int index)
         {
             IBaseObject element = alphabet[building[index]];
-            ICharacteristicCalculator calc = new Count();
+            ICalculator calc = new Count();
             UniformChain tempUniformChain = (UniformChain) this.UniformChain(element);
             if ((int)calc.Calculate(tempUniformChain, LinkUp.End) == 1)
             {
@@ -291,7 +291,7 @@ namespace LibiadaCore.Classes.Root
                 int j = 0;
                 for (int i = 0; i < temp.Length; i++)
                 {
-                    if (!temp[i].Message.Equals(element))
+                    if (!temp[i].Element.Equals(element))
                     {
                         UniformChains[j] = temp[i];
                         j++;

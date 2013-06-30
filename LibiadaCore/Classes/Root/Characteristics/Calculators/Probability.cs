@@ -3,7 +3,7 @@ namespace LibiadaCore.Classes.Root.Characteristics.Calculators
     ///<summary>
     /// Вероятность (частота).
     ///</summary>
-    public class Probability : ICharacteristicCalculator
+    public class Probability : ICalculator
     {
         public double Calculate(UniformChain chain, LinkUp linkUp)
         {

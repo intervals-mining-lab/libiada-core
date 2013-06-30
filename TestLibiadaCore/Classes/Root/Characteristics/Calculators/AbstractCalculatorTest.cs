@@ -9,13 +9,14 @@ namespace TestLibiadaCore.Classes.Root.Characteristics.Calculators
     {
         protected List<UniformChain> UniformChains = CalculationHelper.UniformChains;
         protected List<Chain> Chains = CalculationHelper.Chains;
+        protected ICalculator calc;
 
-        public void TestChainCharacteristic(int index, ICharacteristicCalculator calc, LinkUp linkUp, double value)
+        public void TestChainCharacteristic(int index, LinkUp linkUp, double value)
         {
             Assert.AreEqual(value, calc.Calculate(Chains[index], linkUp), 0.0001);
         }
 
-        public void TestUniformChainCharacteristic(int index, ICharacteristicCalculator calc, LinkUp linkUp, double value)
+        public void TestUniformChainCharacteristic(int index, LinkUp linkUp, double value)
         {
             Assert.AreEqual(value, calc.Calculate(UniformChains[index], linkUp), 0.0001);
         }

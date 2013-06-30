@@ -5,7 +5,7 @@ namespace LibiadaCore.Classes.Root.Characteristics.Calculators
     ///<summary>
     /// Нормализованная средняя удалённость
     ///</summary>
-    public class NormalizedAverageRemoteness : ICharacteristicCalculator
+    public class NormalizedAverageRemoteness : ICalculator
     {
         private readonly AverageRemoteness averageRemoteness = new AverageRemoteness();
         private readonly AlphabetPower alphabetPower = new AlphabetPower();

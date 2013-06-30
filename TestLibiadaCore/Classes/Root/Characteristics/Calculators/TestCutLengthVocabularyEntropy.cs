@@ -1,4 +1,3 @@
-using System;
 using LibiadaCore.Classes.Root;
 using LibiadaCore.Classes.Root.Characteristics.Calculators;
 using NUnit.Framework;
@@ -8,28 +7,29 @@ namespace TestLibiadaCore.Classes.Root.Characteristics.Calculators
     [TestFixture]
     public class TestCutLengthVocabularyEntropy : AbstractCalculatorTest
     {
-        [Test]
-        public void TestUniformCalculation()
+        public TestCutLengthVocabularyEntropy()
         {
-            CutLengthVocabularyEntropy calc = new CutLengthVocabularyEntropy();
-
-            CutLength cutLength = new CutLength();
-            int Count = (int)(UniformChains[0].Length - cutLength.Calculate(UniformChains[0], LinkUp.Start) + 1);
-            TestUniformChainCharacteristic(0, calc, LinkUp.Start, Math.Log(Count, 2));
-            TestUniformChainCharacteristic(0, calc, LinkUp.End, Math.Log(Count, 2));
-            TestUniformChainCharacteristic(0, calc, LinkUp.Both, Math.Log(Count, 2));
+            calc = new CutLengthVocabularyEntropy();
         }
 
-        [Test]
-        public void TestChainCalculation()
+        [TestCase(0, LinkUp.None, 2.8074)]
+        [TestCase(0, LinkUp.Start, 2.8074)]
+        [TestCase(0, LinkUp.End, 2.8074)]
+        [TestCase(0, LinkUp.Both, 2.8074)]
+        [TestCase(0, LinkUp.Cycle, 2.8074)]
+        public void TestUniformCalculation(int index, LinkUp linkUp, double value)
         {
-            CutLengthVocabularyEntropy cutLengthVocabularyEntropy = new CutLengthVocabularyEntropy();
+            TestUniformChainCharacteristic(index, linkUp, value);
+        }
 
-            CutLength calc = new CutLength();
-            int Count = (int)(Chains[0].Length - calc.Calculate(Chains[0], LinkUp.Start) + 1);
-            TestChainCharacteristic(0, calc, LinkUp.Start, Math.Log(Count, 2));
-            TestChainCharacteristic(0, calc, LinkUp.End, Math.Log(Count, 2));
-            TestChainCharacteristic(0, calc, LinkUp.Both, Math.Log(Count, 2));
+        [TestCase(0, LinkUp.None, 3)]
+        [TestCase(0, LinkUp.Start, 3)]
+        [TestCase(0, LinkUp.End, 3)]
+        [TestCase(0, LinkUp.Both, 3)]
+        [TestCase(0, LinkUp.Cycle, 3)]
+        public void TestCalculation(int index, LinkUp linkUp, double value)
+        {
+            TestChainCharacteristic(index, linkUp, value);
         }
     }
 }

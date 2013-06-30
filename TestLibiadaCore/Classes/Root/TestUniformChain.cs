@@ -29,7 +29,7 @@ namespace TestLibiadaCore.Classes.Root
         public void TestConstructor()
         {
             Assert.AreEqual(10, UniformChain.Length);
-            Assert.AreEqual(message, UniformChain.Message);
+            Assert.AreEqual(message, UniformChain.Element);
         }
 
         ///<summary>
@@ -39,10 +39,10 @@ namespace TestLibiadaCore.Classes.Root
         {
             UniformChain = new UniformChain(10, message);
 
-            ValueChar newMessage = (ValueChar) UniformChain.Message;
+            ValueChar newMessage = (ValueChar) UniformChain.Element;
             newMessage.value = '2';
 
-            Assert.IsFalse(newMessage.Equals(UniformChain.Message));
+            Assert.IsFalse(newMessage.Equals(UniformChain.Element));
         }
 
         ///<summary>

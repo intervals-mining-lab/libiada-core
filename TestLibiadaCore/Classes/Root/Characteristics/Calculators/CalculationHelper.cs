@@ -21,7 +21,10 @@ namespace TestLibiadaCore.Classes.Root.Characteristics.Calculators
             {
                 List<Chain> chains = new List<Chain>();
 
-                //0
+                //b b a a c b a c c b
+                //_ _ a a _ _ a _ _ _
+                //b b _ _ _ b _ _ _ b
+                //_ _ _ _ c _ _ c c _
                 Chain chain = new Chain(10);
                 chain.Add(Elements["b"], 0);
                 chain.Add(Elements["b"], 1);

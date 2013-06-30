@@ -5,7 +5,7 @@ namespace LibiadaCore.Classes.Root.Characteristics.Calculators
     ///<summary>
     /// Энтропия словаря по Садовскому.
     ///</summary>
-    public class CutLengthVocabularyEntropy : ICharacteristicCalculator
+    public class CutLengthVocabularyEntropy : ICalculator
     {
         private readonly CutLength cutLength = new CutLength();
 

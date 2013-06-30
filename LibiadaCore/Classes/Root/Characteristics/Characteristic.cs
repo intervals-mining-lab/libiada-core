@@ -10,7 +10,7 @@ namespace LibiadaCore.Classes.Root.Characteristics
         protected Boolean Calculated = false;
         protected double CharacteristicValue;
         protected LinkUp Link;
-        protected ICharacteristicCalculator Calculator = null;
+        protected ICalculator Calculator = null;
         protected BaseChain pChain = null;
 
  
@@ -18,7 +18,7 @@ namespace LibiadaCore.Classes.Root.Characteristics
         ///<summary>
         ///</summary>
         ///<param name="type"></param>
-        public Characteristic(ICharacteristicCalculator type)
+        public Characteristic(ICalculator type)
         {
             Calculator = type;
         }

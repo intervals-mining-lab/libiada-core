@@ -3,7 +3,7 @@ namespace LibiadaCore.Classes.Root.Characteristics.Calculators
     ///<summary>
     /// –егул€рность.
     ///</summary>
-    public class Regularity : ICharacteristicCalculator
+    public class Regularity : ICalculator
     {
         private readonly GeometricMean geometricMean = new GeometricMean();
         private readonly DescriptiveInformation descriptiveInformation = new DescriptiveInformation();

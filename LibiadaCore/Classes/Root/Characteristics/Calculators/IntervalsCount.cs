@@ -6,7 +6,7 @@ namespace LibiadaCore.Classes.Root.Characteristics.Calculators
     ///<summary>
     /// Количество интервалов в зависимости от привязки.
     ///</summary>
-    public class IntervalsCount : ICharacteristicCalculator
+    public class IntervalsCount : ICalculator
     {
         /// <summary>
         /// К началу, к концку и циклическая = столько же сколько элементов
@@ -27,6 +27,10 @@ namespace LibiadaCore.Classes.Root.Characteristics.Calculators
                     return intervals.Count - 1;
                 case LinkUp.Both:
                     return intervals.Count;
+                case LinkUp.Cycle:
+                    return intervals.Count - 1;
+                case LinkUp.None:
+                    return intervals.Count-2;
                 default:
                     throw new Exception("Неизвестная привязка");
             }

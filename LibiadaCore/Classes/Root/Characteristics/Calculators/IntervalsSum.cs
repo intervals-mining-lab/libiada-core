@@ -6,7 +6,7 @@ namespace LibiadaCore.Classes.Root.Characteristics.Calculators
     /// <summary>
     /// Суммарная длина интервалов данной цепи.
     /// </summary>
-    public class IntervalsSum : ICharacteristicCalculator
+    public class IntervalsSum : ICalculator
     {
         /// <summary>
         /// Суммирует интервалы в соотвествии с привязкой
@@ -30,6 +30,10 @@ namespace LibiadaCore.Classes.Root.Characteristics.Calculators
                     return sum + intervals[intervals.Count - 1];
                 case LinkUp.Both:
                     return sum + intervals[0] + intervals[intervals.Count - 1];
+                case LinkUp.Cycle:
+                    return sum + intervals[intervals.Count - 1] + intervals[0] - 1;
+                case LinkUp.None:
+                    return sum;
                 default: 
                     throw new Exception("неизвестная привязка");
             }

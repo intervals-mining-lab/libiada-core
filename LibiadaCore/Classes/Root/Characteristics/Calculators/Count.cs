@@ -3,11 +3,11 @@ namespace LibiadaCore.Classes.Root.Characteristics.Calculators
     ///<summary>
     /// Количество элементов.
     ///</summary>
-    public class Count : ICharacteristicCalculator
+    public class Count : ICalculator
     {
         /// <summary>
-        /// Для однородной цепи это количество
-        /// непустых элементов.
+        /// Количество непустых позиций, 
+        /// иначе говоря количество элементов.
         /// </summary>
         /// <param name="chain"></param>
         /// <param name="linkUp"></param>
@@ -18,7 +18,7 @@ namespace LibiadaCore.Classes.Root.Characteristics.Calculators
         }
 
         /// <summary>
-        /// Для полной неоднородной цепи это её длина.
+        /// Количество непустых позиций.
         /// </summary>
         /// <param name="chain"></param>
         /// <param name="linkUp"></param>

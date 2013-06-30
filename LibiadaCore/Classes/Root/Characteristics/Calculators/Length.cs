@@ -6,7 +6,7 @@ namespace LibiadaCore.Classes.Root.Characteristics.Calculators
     ///<summary>
     /// Длина цепи.
     ///</summary>
-    public class Length : ICharacteristicCalculator
+    public class Length : ICalculator
     {
         public double Calculate(UniformChain chain, LinkUp linkUp)
         {

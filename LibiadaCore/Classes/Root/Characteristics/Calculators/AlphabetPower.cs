@@ -3,7 +3,7 @@ namespace LibiadaCore.Classes.Root.Characteristics.Calculators
     ///<summary>
     /// Мощность алфавита.
     ///</summary>
-    public class AlphabetPower: ICharacteristicCalculator
+    public class AlphabetPower: ICalculator
     {
         public double Calculate(UniformChain chain, LinkUp linkUp)
         {

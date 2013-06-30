@@ -2,7 +2,7 @@
 
 namespace LibiadaCore.Classes.Root.Characteristics.BinaryCalculators
 {
-    public class PartialDependenceCoefficient:BinaryCharacteristicCalculator
+    public class PartialDependenceCoefficient:BinaryCalculator
     {
         public override double Calculate(Chain chain, IBaseObject firstElement, IBaseObject secondElement, LinkUp linkUp)
         {

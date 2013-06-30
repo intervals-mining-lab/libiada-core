@@ -7,7 +7,7 @@ namespace LibiadaCore.Classes.Root.Characteristics.BinaryCalculators
     /// для всех бинарных калькуляторов 
     /// метод вычисления всех зависимостей цепочки
     /// </summary>
-    public abstract class BinaryCharacteristicCalculator:IBinaryCharacteristicCalculator
+    public abstract class BinaryCalculator:IBinaryCalculator
     {
         /// <summary>
         /// Метод вычисления характеристики для пары элементов.

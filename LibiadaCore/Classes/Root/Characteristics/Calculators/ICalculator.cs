@@ -3,7 +3,7 @@ namespace LibiadaCore.Classes.Root.Characteristics.Calculators
     ///<summary>
     /// Интерфейс калькулятора
     ///</summary>
-    public interface ICharacteristicCalculator
+    public interface ICalculator
     {
         ///<summary>
         /// Вычисляет и возвращает значение характеристики 

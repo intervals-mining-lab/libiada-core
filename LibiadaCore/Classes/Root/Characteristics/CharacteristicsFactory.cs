@@ -12,7 +12,7 @@ namespace LibiadaCore.Classes.Root.Characteristics
         ///<summary>
         /// Вероятность (частота).
         ///</summary>
-        public static ICharacteristicCalculator P
+        public static ICalculator P
         {
             get { return new Probability(); }
         }
@@ -20,7 +20,7 @@ namespace LibiadaCore.Classes.Root.Characteristics
         ///<summary>
         /// Количество интервалов в зависимости от привязки.
         ///</summary>
-        public static ICharacteristicCalculator IntervalsCount
+        public static ICalculator IntervalsCount
         {
             get { return new IntervalsCount(); }
         }
@@ -28,7 +28,7 @@ namespace LibiadaCore.Classes.Root.Characteristics
         ///<summary>
         /// Длина обрезания по Садовскому.
         ///</summary>
-        public static ICharacteristicCalculator CutLength
+        public static ICalculator CutLength
         {
             get { return new CutLength(); }
         }
@@ -36,7 +36,7 @@ namespace LibiadaCore.Classes.Root.Characteristics
         ///<summary>
         /// Глубина.
         ///</summary>
-        public static ICharacteristicCalculator G
+        public static ICalculator G
         {
             get { return new Depth(); }
         }
@@ -46,7 +46,7 @@ namespace LibiadaCore.Classes.Root.Characteristics
         /// Для однородной цепи это количество непустых элементов.
         /// Для неоднородной цепи это её длина.
         ///</summary>
-        public static ICharacteristicCalculator n
+        public static ICalculator n
         {
             get { return new Count(); }
         }
@@ -54,7 +54,7 @@ namespace LibiadaCore.Classes.Root.Characteristics
         ///<summary>
         /// Среднегеометрический интервал.
         ///</summary>
-        public static ICharacteristicCalculator deltaG
+        public static ICalculator deltaG
         {
             get { return new GeometricMean(); }
         }
@@ -62,7 +62,7 @@ namespace LibiadaCore.Classes.Root.Characteristics
         ///<summary>
         /// Длинна цепи.
         ///</summary>
-        public static ICharacteristicCalculator Length
+        public static ICalculator Length
         {
             get { return new Length(); }
         }
@@ -70,7 +70,7 @@ namespace LibiadaCore.Classes.Root.Characteristics
         ///<summary>
         /// Длинна как сумма длин интервалов.
         ///</summary>
-        public static ICharacteristicCalculator IntervalsSum
+        public static ICalculator IntervalsSum
         {
             get { return new IntervalsSum(); }
         }
@@ -78,7 +78,7 @@ namespace LibiadaCore.Classes.Root.Characteristics
         ///<summary>
         /// Среднее арифметическое значение длин интервалов.
         ///</summary>
-        public static ICharacteristicCalculator deltaA
+        public static ICalculator deltaA
         {
             get { return new ArithmeticMean(); }
         }
@@ -86,7 +86,7 @@ namespace LibiadaCore.Classes.Root.Characteristics
         ///<summary>
         /// Число описательных информаций.
         ///</summary>
-        public static ICharacteristicCalculator D
+        public static ICalculator D
         {
             get { return new DescriptiveInformation(); }
         }
@@ -94,7 +94,7 @@ namespace LibiadaCore.Classes.Root.Characteristics
         ///<summary>
         /// Регулярность.
         ///</summary>
-        public static ICharacteristicCalculator r
+        public static ICalculator r
         {
             get { return new Regularity(); }
         }
@@ -102,7 +102,7 @@ namespace LibiadaCore.Classes.Root.Characteristics
         ///<summary>
         /// Среднегеометрическая удалённость.
         ///</summary>
-        public static ICharacteristicCalculator g
+        public static ICalculator g
         {
             get { return new AverageRemoteness(); }
         }
@@ -111,7 +111,7 @@ namespace LibiadaCore.Classes.Root.Characteristics
         /// Количество идентифицирующих информаций приходящихся на одно значащее сообщение.
         /// Энтропия, количество информации.
         ///</summary>
-        public static ICharacteristicCalculator H
+        public static ICalculator H
         {
             get { return new IdentificationInformation(); }
         }
@@ -119,7 +119,7 @@ namespace LibiadaCore.Classes.Root.Characteristics
         ///<summary>
         /// Объём цепи. Произведение длин всех её интервалов.
         ///</summary>
-        public static ICharacteristicCalculator V
+        public static ICalculator V
         {
             get { return new Volume(); }
         }
@@ -127,7 +127,7 @@ namespace LibiadaCore.Classes.Root.Characteristics
         ///<summary>
         /// Мощность алфавита.
         ///</summary>
-        public static ICharacteristicCalculator Power
+        public static ICalculator Power
         {
             get { return new AlphabetPower(); }
         }
@@ -135,7 +135,7 @@ namespace LibiadaCore.Classes.Root.Characteristics
         ///<summary>
         /// Глубина приходящаяся на одно сообщение.
         ///</summary>
-        public static ICharacteristicCalculator nG
+        public static ICalculator nG
         {
             get { return new NormalizedDepth(); }
         }
@@ -144,7 +144,7 @@ namespace LibiadaCore.Classes.Root.Characteristics
         ///<summary>
         /// Периодичность.
         ///</summary>
-        public static ICharacteristicCalculator t
+        public static ICalculator t
         {
             get { return new Periodicity(); }
         }
@@ -152,7 +152,7 @@ namespace LibiadaCore.Classes.Root.Characteristics
         ///<summary>
         /// Энтропия словаря по Садовскому.
         ///</summary>
-        public static ICharacteristicCalculator CutLenVocEntropy
+        public static ICalculator CutLenVocEntropy
         {
             get { return new CutLengthVocabularyEntropy(); }
         }
@@ -188,9 +188,9 @@ namespace LibiadaCore.Classes.Root.Characteristics
         ///</summary>
         ///<param name="type"></param>
         ///<returns></returns>
-        public static ICharacteristicCalculator Create(string type)
+        public static ICalculator Create(string type)
         {
-            foreach (ICharacteristicCalculator calculator in List)
+            foreach (ICalculator calculator in List)
             {
                 if ((type == calculator.GetType().ToString()) ||
                     ("LibiadaCore.Classes.Root.Characteristics.Calculators." + type == calculator.GetType().ToString()))

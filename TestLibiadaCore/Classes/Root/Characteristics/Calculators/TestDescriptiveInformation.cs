@@ -8,47 +8,29 @@ namespace TestLibiadaCore.Classes.Root.Characteristics.Calculators
     [TestFixture]
     public class TestDescriptiveInformation : AbstractCalculatorTest
     {
-        [Test]
-        public void TestUniformCalculation()
+        public TestDescriptiveInformation()
         {
-            DescriptiveInformation calc = new DescriptiveInformation();
-
-            const double length = 10;
-            const double elementsCount = 3;
-            const double arithmeticMean = length/elementsCount;
-            const double propability = elementsCount/length;
-            TestUniformChainCharacteristic(0, calc, LinkUp.Start, Math.Pow(arithmeticMean, propability) * Math.Pow(1 / (1 - propability), 1 - propability));
-            TestUniformChainCharacteristic(0, calc, LinkUp.End, Math.Pow(arithmeticMean, propability) * Math.Pow(1 / (1 - propability), 1 - propability));
-            TestUniformChainCharacteristic(0, calc, LinkUp.Both, Math.Pow(arithmeticMean, propability) * Math.Pow(1 / (1 - propability), 1 - propability));
+            calc = new DescriptiveInformation();
         }
 
-        [Test]
-        public void TestChainCalculation()
+        [TestCase(0, LinkUp.None, 1.435)]
+        [TestCase(0, LinkUp.Start, 1.435)]
+        [TestCase(0, LinkUp.End, 1.435)]
+        [TestCase(0, LinkUp.Both, 1.435)]
+        [TestCase(0, LinkUp.Cycle, 1.435)]
+        public void TestUniformCalculation(int index, LinkUp linkUp, double value)
         {
-            DescriptiveInformation calc = new DescriptiveInformation();
+            TestUniformChainCharacteristic(index, linkUp, value);
+        }
 
-            const double length = 10;
-            const double elementsACount = 4;
-            const double elementsBCount = 3;
-            const double elementsCCount = 3;
-
-            const double arithmeticMeanA = length/elementsACount;
-            const double arithmeticMeanB = length/elementsBCount;
-            const double arithmeticMeanC = length/elementsCCount;
-
-            const double propabilityA = elementsACount/length;
-            const double propabilityB = elementsBCount/length;
-            const double propabilityC = elementsCCount/length;
-
-            double DA = Math.Pow(arithmeticMeanA, propabilityA);
-            double DB = Math.Pow(arithmeticMeanB, propabilityB);
-            double DC = Math.Pow(arithmeticMeanC, propabilityC);
-
-            double DTheoretical = DA*DB*DC;
-
-            TestChainCharacteristic(0, calc, LinkUp.Start, DTheoretical);
-            TestChainCharacteristic(0, calc, LinkUp.End, DTheoretical);
-            TestChainCharacteristic(0, calc, LinkUp.Both, DTheoretical);
+        [TestCase(0, LinkUp.None, 2.971)]
+        [TestCase(0, LinkUp.Start, 2.971)]
+        [TestCase(0, LinkUp.End, 2.971)]
+        [TestCase(0, LinkUp.Both, 2.971)]
+        [TestCase(0, LinkUp.Cycle, 2.971)]
+        public void TestChainCalculation(int index, LinkUp linkUp, double value)
+        {
+            TestChainCharacteristic(index, linkUp, value);
         }
     }
 }

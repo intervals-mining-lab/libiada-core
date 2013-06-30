@@ -68,13 +68,13 @@
     <Compile Include="Classes\Misc\SpaceRebuilders\SpaceRebuilderFromChainToChainByBlock.cs" />
     <Compile Include="Classes\Root\BaseChain.cs" />
     <Compile Include="Classes\Root\Chain.cs" />
-    <Compile Include="Classes\Root\Characteristics\BinaryCalculators\BinaryCharacteristicCalculator.cs" />
+    <Compile Include="Classes\Root\Characteristics\BinaryCalculators\BinaryCalculator.cs" />
     <Compile Include="Classes\Root\Characteristics\BinaryCharacteristicsEnum.cs" />
     <Compile Include="Classes\Root\Characteristics\BinaryCharacteristicsFactory.cs" />
     <Compile Include="Classes\Root\Characteristics\Calculators\AlphabetPower.cs" />
     <Compile Include="Classes\Root\Characteristics\Calculators\ArithmeticMean.cs" />
     <Compile Include="Classes\Root\Characteristics\Calculators\AverageRemoteness.cs" />
-    <Compile Include="Classes\Root\Characteristics\BinaryCalculators\IBinaryCharacteristicCalculator.cs" />
+    <Compile Include="Classes\Root\Characteristics\BinaryCalculators\IBinaryCalculator.cs" />
     <Compile Include="Classes\Root\Characteristics\BinaryCalculators\InvolvedPartialDependenceCoefficient.cs" />
     <Compile Include="Classes\Root\Characteristics\BinaryCalculators\MutualDependenceCoefficient.cs" />
     <Compile Include="Classes\Root\Characteristics\BinaryCalculators\NormalizedPartialDependenceCoefficient.cs" />
@@ -88,7 +88,7 @@
     <Compile Include="Classes\Root\Characteristics\Calculators\DescriptiveInformation.cs" />
     <Compile Include="Classes\Root\Characteristics\Calculators\Depth.cs" />
     <Compile Include="Classes\Root\Characteristics\Calculators\GeometricMean.cs" />
-    <Compile Include="Classes\Root\Characteristics\Calculators\ICharacteristicCalculator.cs" />
+    <Compile Include="Classes\Root\Characteristics\Calculators\ICalculator.cs" />
     <Compile Include="Classes\Root\Characteristics\Calculators\IdentificationInformation.cs" />
     <Compile Include="Classes\Root\Characteristics\Calculators\IntervalsCount.cs" />
     <Compile Include="Classes\Root\Characteristics\Calculators\IntervalsSum.cs" />

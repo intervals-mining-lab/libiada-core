@@ -6,7 +6,7 @@ namespace LibiadaCore.Classes.Root.Characteristics.Calculators
     ///<summary>
     /// Длина обрезания по Садовскому.
     ///</summary>
-    public class CutLength : ICharacteristicCalculator
+    public class CutLength : ICalculator
     {
         public double Calculate(UniformChain chain, LinkUp linkUp)
         {

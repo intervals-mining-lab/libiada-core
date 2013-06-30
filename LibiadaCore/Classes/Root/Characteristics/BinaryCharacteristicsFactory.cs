@@ -8,7 +8,7 @@ namespace LibiadaCore.Classes.Root.Characteristics
         ///<summary>
         /// Среднегеометрическая удалённость между парой элементов.
         ///</summary>
-        public static IBinaryCharacteristicCalculator GeometricMean
+        public static IBinaryCalculator GeometricMean
         {
             get { return new BinaryGeometricMean(); }
         }
@@ -17,7 +17,7 @@ namespace LibiadaCore.Classes.Root.Characteristics
         /// Избыточность кодировки второго элемента относительно себя
         /// по сравнению с кодированием относително первого элемента.
         ///</summary>
-        public static IBinaryCharacteristicCalculator Redundancy
+        public static IBinaryCalculator Redundancy
         {
             get { return new Redundancy(); }
         }
@@ -25,7 +25,7 @@ namespace LibiadaCore.Classes.Root.Characteristics
         ///<summary>
         /// Коэффициент частичной зависимости.
         ///</summary>
-        public static IBinaryCharacteristicCalculator K1
+        public static IBinaryCalculator K1
         {
             get { return new PartialDependenceCoefficient(); }
         }
@@ -33,7 +33,7 @@ namespace LibiadaCore.Classes.Root.Characteristics
         ///<summary>
         /// Нормализованный коэффициент частичной зависимости.
         ///</summary>
-        public static IBinaryCharacteristicCalculator NormalizedK1
+        public static IBinaryCalculator NormalizedK1
         {
             get { return new NormalizedPartialDependenceCoefficient(); }
         }
@@ -42,7 +42,7 @@ namespace LibiadaCore.Classes.Root.Characteristics
         /// Степень зависимости одной цепи от другой, 
         /// с учетом «полноты её участия» в составе обеих однородных цепей.
         ///</summary>
-        public static IBinaryCharacteristicCalculator K2
+        public static IBinaryCalculator K2
         {
             get { return new InvolvedPartialDependenceCoefficient(); }
         }
@@ -50,7 +50,7 @@ namespace LibiadaCore.Classes.Root.Characteristics
         ///<summary>
         /// Коэффициент взаимной зависимости.
         ///</summary>
-        public static IBinaryCharacteristicCalculator K3
+        public static IBinaryCalculator K3
         {
             get { return new MutualDependenceCoefficient(); }
         }
@@ -60,11 +60,11 @@ namespace LibiadaCore.Classes.Root.Characteristics
         ///<summary>
         /// Список калькуляторов характеристик.
         ///</summary>
-        public static List<IBinaryCharacteristicCalculator> List
+        public static List<IBinaryCalculator> List
         {
             get
             {
-                var temp = new List<IBinaryCharacteristicCalculator>();
+                var temp = new List<IBinaryCalculator>();
 
                 temp.Add(GeometricMean);
                 temp.Add(Redundancy);
@@ -81,9 +81,9 @@ namespace LibiadaCore.Classes.Root.Characteristics
         ///</summary>
         ///<param name="type">Имя класса или путь в пространстве имён</param>
         ///<returns>Калькулатор бинарной характеристики</returns>
-        public static IBinaryCharacteristicCalculator Create(string type)
+        public static IBinaryCalculator Create(string type)
         {
-            foreach (IBinaryCharacteristicCalculator calculator in List)
+            foreach (IBinaryCalculator calculator in List)
             {
                 if ((type == calculator.GetType().ToString()) ||
                     ("LibiadaCore.Classes.Root.Characteristics.BinaryCalculators." + type == calculator.GetType().ToString()))

@@ -1,6 +1,6 @@
 ﻿namespace LibiadaCore.Classes.Root.Characteristics.BinaryCalculators
 {
-    public class NormalizedPartialDependenceCoefficient:BinaryCharacteristicCalculator
+    public class NormalizedPartialDependenceCoefficient:BinaryCalculator
     {
         public override double Calculate(Chain chain, IBaseObject firstElement, IBaseObject secondElement, LinkUp linkUp)
         {

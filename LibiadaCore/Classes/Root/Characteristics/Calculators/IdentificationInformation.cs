@@ -4,28 +4,26 @@ namespace LibiadaCore.Classes.Root.Characteristics.Calculators
 {
     ///<summary>
     /// Количество идентифицирующих информаций приходящихся на одно значащее сообщение.
-    /// Энтропия, количество информации.
+    /// Энтропия, количество информации по Шеннону.
     ///</summary>
-    public class IdentificationInformation : ICharacteristicCalculator
+    public class IdentificationInformation : ICalculator
     {
-        private readonly ArithmeticMean arithmeticMean = new ArithmeticMean();
         private readonly Probability probability = new Probability();
 
         public double Calculate(UniformChain chain, LinkUp linkUp)
         {
-            return Math.Log(arithmeticMean.Calculate(chain, linkUp), 2);
+            double p = probability.Calculate(chain, linkUp);
+            return -p*Math.Log(p, 2);
         }
 
         public double Calculate(Chain chain, LinkUp linkUp)
         {
-            double temp = 0;
+            double result = 0;
             for (int i = 0; i < chain.Alphabet.Power; i++)
             {
-                double p = probability.Calculate(chain.UniformChain(i), linkUp);
-                double da = arithmeticMean.Calculate(chain.UniformChain(i), linkUp);
-                temp += p*Math.Log(da, 2);
+                result += Calculate(chain.UniformChain(i), linkUp);
             }
-            return temp;
+            return result;
         }
 
         public CharacteristicsEnum GetCharacteristicName()

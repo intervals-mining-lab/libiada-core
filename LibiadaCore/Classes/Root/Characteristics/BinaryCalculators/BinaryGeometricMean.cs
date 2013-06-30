@@ -3,7 +3,7 @@ using LibiadaCore.Classes.Root.Characteristics.Calculators;
 
 namespace LibiadaCore.Classes.Root.Characteristics.BinaryCalculators
 {
-    public class BinaryGeometricMean : BinaryCharacteristicCalculator
+    public class BinaryGeometricMean : BinaryCalculator
     {
         /// <summary>
         /// Среднегеометрический интервал 

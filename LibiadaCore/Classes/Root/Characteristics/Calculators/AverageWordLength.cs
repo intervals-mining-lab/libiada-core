@@ -2,7 +2,7 @@
 
 namespace LibiadaCore.Classes.Root.Characteristics.Calculators
 {
-    public class AverageWordLength : ICharacteristicCalculator
+    public class AverageWordLength : ICalculator
     {
         public double Calculate(UniformChain chain, LinkUp linkUp)
         {

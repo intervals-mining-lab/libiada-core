@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using LibiadaCore.Classes.Misc;
-using LibiadaCore.Classes.Root.Characteristics.Calculators;
 using LibiadaCore.Classes.Root.SimpleTypes;
 
 namespace LibiadaCore.Classes.Root
@@ -15,10 +14,10 @@ namespace LibiadaCore.Classes.Root
         /// Создаёт однородную цепочку для заданного элемента и заданной длины.
         ///</summary>
         ///<param name="length">Длина цепочки</param>
-        ///<param name="message">Элемент цепочки</param>
-        public UniformChain(int length, IBaseObject message) : base(length)
+        ///<param name="element">Элемент цепочки</param>
+        public UniformChain(int length, IBaseObject element) : base(length)
         {
-            alphabet.Add(message);
+            alphabet.Add(element);
         }
 
         ///<summary>
@@ -30,7 +29,7 @@ namespace LibiadaCore.Classes.Root
 
         public IBaseObject Clone()
         {
-            UniformChain temp = new UniformChain(Length, Message);
+            UniformChain temp = new UniformChain(Length, Element);
             FillClone(temp);
             return temp;
         }
@@ -48,7 +47,7 @@ namespace LibiadaCore.Classes.Root
         ///<summary>
         /// Элемент цепочки
         ///</summary>
-        public IBaseObject Message
+        public IBaseObject Element
         {
             get { return alphabet[1]; }
         }
@@ -104,7 +103,7 @@ namespace LibiadaCore.Classes.Root
 
         public void Add(IBaseObject item, int index)
         {
-            if (Message.Equals(item))
+            if (Element.Equals(item))
             {
                 base.Add(item, index);
                 BuildIntervals();
@@ -118,7 +117,7 @@ namespace LibiadaCore.Classes.Root
         ///<param name="index">номер элемента</param>
         public override IBaseObject this[int index]
         {
-            get { return building[index] == 1 ? Message.Clone() : NullValue.Instance(); }
+            get { return building[index] == 1 ? Element.Clone() : NullValue.Instance(); }
 
             set { Add(value, index); }
         }

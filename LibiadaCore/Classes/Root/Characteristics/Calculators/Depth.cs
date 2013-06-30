@@ -6,8 +6,14 @@ namespace LibiadaCore.Classes.Root.Characteristics.Calculators
     ///<summary>
     /// Глубина
     ///</summary>
-    public class Depth : ICharacteristicCalculator
+    public class Depth : ICalculator
     {
+        /// <summary>
+        /// Двоичный логарифм произведения всех интервалов цепочки.
+        /// </summary>
+        /// <param name="chain"></param>
+        /// <param name="linkUp"></param>
+        /// <returns></returns>
         public double Calculate(UniformChain chain, LinkUp linkUp)
         {
             List<int> intervals = chain.Intervals;
@@ -26,24 +32,29 @@ namespace LibiadaCore.Classes.Root.Characteristics.Calculators
                 case LinkUp.Both:
                     return result + Math.Log(intervals[0], 2) +
                         Math.Log(intervals[intervals.Count - 1], 2);
+                case LinkUp.Cycle:
+                    return result + Math.Log(intervals[intervals.Count - 1] + intervals[0] - 1, 2);
+                case LinkUp.None:
+                    return result;
                 default:
                     throw new Exception("Неизвестная привязка");
             }
         }
 
         ///<summary>
+        /// Двоичный логарифм произведения всех интервалов цепочки.
         ///</summary>
         ///<param name="chain"></param>
         ///<param name="linkUp"></param>
         ///<returns></returns>
         public double Calculate(Chain chain, LinkUp linkUp)
         {
-            double temp = 0;
+            double result = 0;
             for (int i = 0; i < chain.Alphabet.Power; i++)
             {
-                temp += Calculate(chain.UniformChain(i), linkUp);
+                result += Calculate(chain.UniformChain(i), linkUp);
             }
-            return temp;
+            return result;
         }
 
         public CharacteristicsEnum GetCharacteristicName()

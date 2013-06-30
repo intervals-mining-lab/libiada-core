@@ -3,7 +3,7 @@ namespace LibiadaCore.Classes.Root.Characteristics.Calculators
     ///<summary>
     /// Среднее арифметическое значение длин интервалов.
     ///</summary>
-    public class ArithmeticMean : ICharacteristicCalculator
+    public class ArithmeticMean : ICalculator
     {
         /// <summary>
         /// Для однородной цепи данная характеристика 

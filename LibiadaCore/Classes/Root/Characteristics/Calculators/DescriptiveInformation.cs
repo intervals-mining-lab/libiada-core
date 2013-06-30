@@ -5,25 +5,15 @@ namespace LibiadaCore.Classes.Root.Characteristics.Calculators
     ///<summary>
     /// Число описательных информаций.
     ///</summary>
-    public class DescriptiveInformation : ICharacteristicCalculator
+    public class DescriptiveInformation : ICalculator
     {
-        private readonly Probability probability = new Probability();
-        private readonly ArithmeticMean arithmeticMean = new ArithmeticMean();
+        private readonly Count count = new Count();
+        private readonly Length length = new Length();
 
         public double Calculate(UniformChain chain, LinkUp linkUp)
         {
-            
-            double p = probability.Calculate(chain, linkUp);
-            double result = Math.Pow(arithmeticMean.Calculate(chain, linkUp), p);
-            //Если вся цепь заполнена одинаковыми сообщениями
-            //то вероятность равна 1 и считать описательные информации не имеет смысла.
-            if (p < 1)
-            {
-                double pInverse = 1 - p;
-                double averageInterval = 1 / pInverse;
-                result *= Math.Pow(averageInterval, pInverse);
-            }
-            return result;
+            double occupancy = length.Calculate(chain, linkUp)/count.Calculate(chain, linkUp);
+            return Math.Pow(occupancy, 1 / occupancy);
         }
 
         ///<summary>
@@ -33,19 +23,12 @@ namespace LibiadaCore.Classes.Root.Characteristics.Calculators
         ///<returns></returns>
         public double Calculate(Chain chain, LinkUp linkUp)
         {
-            double temp = 1;
-
+            double result = 1;
             for (int i = 0; i < chain.Alphabet.Power; i++)
             {
-                temp *= Math.Pow(arithmeticMean.Calculate(chain.UniformChain(i), linkUp),
-                    probability.Calculate(chain.UniformChain(i), linkUp)) ;
+                result *= Calculate(chain.UniformChain(i), linkUp);
             }
-            double pSum = probability.Calculate(chain, linkUp);
-            if (pSum < 1)
-            {
-                temp *= Math.Pow(1 / (1 - pSum), 1 - pSum);
-            }
-            return temp;
+            return result;
         }
 
         public CharacteristicsEnum GetCharacteristicName()

@@ -7,36 +7,29 @@ namespace TestLibiadaCore.Classes.Root.Characteristics.Calculators
     [TestFixture]
     public class TestArithmeticMean : AbstractCalculatorTest
     {
-        [Test]
-        public void TestUniformCalculation()
+        public TestArithmeticMean()
         {
-            ArithmeticMean calc = new ArithmeticMean();
-            double n = 10;
-            double nj = 3;
-
-            TestUniformChainCharacteristic(0, calc, LinkUp.Start, n / nj);
-            TestUniformChainCharacteristic(0, calc, LinkUp.End, n / nj);
-            TestUniformChainCharacteristic(0, calc, LinkUp.Both, n / nj);
-            TestUniformChainCharacteristic(0, calc, LinkUp.Cycle, n / nj);
-            TestUniformChainCharacteristic(0, calc, LinkUp.None, n / nj);
+            calc = new ArithmeticMean();
         }
 
-        [Test]
-        public void TestChainCalculation()
+        [TestCase(0, LinkUp.None, 2)]
+        [TestCase(0, LinkUp.Start, 2.6667)]
+        [TestCase(0, LinkUp.End, 2.3333)]
+        [TestCase(0, LinkUp.Both, 2.75)]
+        [TestCase(0, LinkUp.Cycle, 3.3333)]
+        public void TestUniformCalculation(int index, LinkUp linkUp, double value)
         {
-            ArithmeticMean calc = new ArithmeticMean();
-            double n = 10;
-            double n_A = 3;
-            double n_B = 4;
-            double n_C = 3;
-            double sumAriphmetical = (n/n_A) + (n/n_B) + (n/n_C);
-            int alphabetPower = 3;
+            TestUniformChainCharacteristic(index, linkUp, value);
+        }
 
-            TestChainCharacteristic(0, calc, LinkUp.Start, sumAriphmetical / alphabetPower);
-            TestChainCharacteristic(0, calc, LinkUp.End, sumAriphmetical / alphabetPower);
-            TestChainCharacteristic(0, calc, LinkUp.Both, sumAriphmetical / alphabetPower);
-            TestChainCharacteristic(0, calc, LinkUp.Cycle, sumAriphmetical / alphabetPower);
-            TestChainCharacteristic(0, calc, LinkUp.None, sumAriphmetical / alphabetPower);
+        [TestCase(0, LinkUp.None, 2.4286)]
+        [TestCase(0, LinkUp.Start, 2.6)]
+        [TestCase(0, LinkUp.End, 2.4)]
+        [TestCase(0, LinkUp.Both, 2.5385)]
+        [TestCase(0, LinkUp.Cycle, 3)]
+        public void TestChainCalculation(int index, LinkUp linkUp, double value)
+        {
+            TestChainCharacteristic(0, linkUp, value);
         }
     }
 }

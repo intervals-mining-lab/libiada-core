@@ -6,7 +6,7 @@ namespace LibiadaCore.Classes.Root.Characteristics.Calculators
     ///<summary>
     /// Объём цепи. Произведение длин всех её интервалов.
     ///</summary>
-    public class Volume : ICharacteristicCalculator
+    public class Volume : ICalculator
     {
         public double Calculate(UniformChain chain, LinkUp linkUp)
         {

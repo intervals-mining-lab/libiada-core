@@ -7,6 +7,11 @@ namespace TestLibiadaCore.Classes.Root.Characteristics.Calculators
     [TestFixture]
     public class TestAlphabetPower : AbstractCalculatorTest
     {
+        public TestAlphabetPower()
+        {
+            calc = new AlphabetPower();
+        }
+
         [TestCase(0, LinkUp.None, 1)]
         [TestCase(0, LinkUp.Start, 1)]
         [TestCase(0, LinkUp.End, 1)]
@@ -14,9 +19,7 @@ namespace TestLibiadaCore.Classes.Root.Characteristics.Calculators
         [TestCase(0, LinkUp.Cycle, 1)]
         public void TestUniformCalculation(int index, LinkUp linkUp, double value)
         {
-            AlphabetPower calc = new AlphabetPower();
-
-            TestUniformChainCharacteristic(index, calc, linkUp, value);
+            TestUniformChainCharacteristic(index, linkUp, value);
         }
 
         [TestCase(0, LinkUp.None, 3)]
@@ -26,9 +29,7 @@ namespace TestLibiadaCore.Classes.Root.Characteristics.Calculators
         [TestCase(0, LinkUp.Cycle, 3)]
         public void TestChainCalculation(int index, LinkUp linkUp, double value)
         {
-            AlphabetPower calc = new AlphabetPower();
-
-            TestChainCharacteristic(index, calc, linkUp, value);
+            TestChainCharacteristic(index, linkUp, value);
         }
     }
 }
