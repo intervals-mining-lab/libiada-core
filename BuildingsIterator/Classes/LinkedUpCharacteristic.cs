@@ -8,7 +8,7 @@ namespace BuildingsIterator.Classes
     ///</summary>
     public class LinkedUpCharacteristic
     {
-        private ICharacteristicCalculator calc;
+        private ICalculator calc;
         private LinkUp link;
 
         /// <summary>
@@ -16,7 +16,7 @@ namespace BuildingsIterator.Classes
         /// </summary>
         /// <param name="calc">Калюкулятор характеристики цепи</param>
         /// <param name="link">Привязка</param>
-        public LinkedUpCharacteristic(ICharacteristicCalculator calc, LinkUp link)
+        public LinkedUpCharacteristic(ICalculator calc, LinkUp link)
         {
             this.calc = calc;
             this.link = link;
@@ -26,7 +26,7 @@ namespace BuildingsIterator.Classes
         /// Конструктор
         /// </summary>
         /// <param name="calc">Калюкулятор характеристики цепи</param>
-        public LinkedUpCharacteristic(ICharacteristicCalculator calc)
+        public LinkedUpCharacteristic(ICalculator calc)
         {
             this.calc = calc;
             link = LinkUp.Start;
@@ -35,7 +35,7 @@ namespace BuildingsIterator.Classes
         /// <summary>
         /// Калькулятор характеристики
         /// </summary>
-        public ICharacteristicCalculator Calc
+        public ICalculator Calc
         {
             get
             {
