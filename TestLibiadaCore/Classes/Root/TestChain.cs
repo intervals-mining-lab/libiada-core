@@ -1,6 +1,8 @@
+using System.Collections.Generic;
 using LibiadaCore.Classes.Root;
 using LibiadaCore.Classes.Root.SimpleTypes;
 using NUnit.Framework;
+using TestLibiadaCore.Classes.Root.Characteristics.Calculators;
 
 namespace TestLibiadaCore.Classes.Root
 {
@@ -58,6 +60,24 @@ namespace TestLibiadaCore.Classes.Root
             BaseChain chainCreatedCongenericChain = ChainBase.CongenericChain((IBaseObject)messageA);
 
             Assert.AreEqual(UnifromChainA, chainCreatedCongenericChain);
+        }
+
+        [Test]
+        public void IntervalsTest()
+        {
+            Chain temp = CalculationHelper.Chains[0];
+            List<List<int>> intervals = new List<List<int>>();
+            intervals.Add(new List<int> { 1, 1, 4, 4, 1 });
+            intervals.Add(new List<int> { 3, 1, 3, 4 });
+            intervals.Add(new List<int> { 5, 3, 1, 2 });
+            for (int i = 0; i < temp.Alphabet.Power; i++)
+            {
+                List<int> actualIntervals = temp.CongenericChain(i).Intervals;
+                for (int j = 0; j < actualIntervals.Count; j++)
+                {
+                    Assert.AreEqual(intervals[i][j], actualIntervals[j], "не совпадают {0} интервалы {1} цепочки", j, i);
+                }
+            }
         }
 
         [Test]

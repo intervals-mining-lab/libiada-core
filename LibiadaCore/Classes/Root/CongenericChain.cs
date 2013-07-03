@@ -9,6 +9,7 @@ namespace LibiadaCore.Classes.Root
     public class CongenericChain : BaseChain, IBaseObject
     {
         protected List<int> intervals = new List<int>();
+        protected int MaxFilledPosition = 0;
 
         ///<summary>
         /// Создаёт однородную цепочку для заданного элемента и заданной длины.
@@ -36,11 +37,11 @@ namespace LibiadaCore.Classes.Root
 
         protected void FillClone(IBaseObject temp)
         {
-            CongenericChain TempunifromChain = temp as CongenericChain;
-            base.FillClone(TempunifromChain);
-            if (TempunifromChain != null)
+            CongenericChain tempCongenericChain = temp as CongenericChain;
+            base.FillClone(tempCongenericChain);
+            if (tempCongenericChain != null)
             {
-                TempunifromChain.BuildIntervals();
+                tempCongenericChain.BuildIntervals();
             }
         }
 
@@ -106,7 +107,7 @@ namespace LibiadaCore.Classes.Root
             if (Element.Equals(item))
             {
                 base.Add(item, index);
-                BuildIntervals();
+                BuildIntervals(index);
             }
         }
 
@@ -122,6 +123,30 @@ namespace LibiadaCore.Classes.Root
             set { Add(value, index); }
         }
 
+        /// <summary>
+        /// Перестраивает только последний интервал
+        /// если был добавлен элемент за последним из уже имеющихся
+        /// иначе вызывает метод полной перестройки интервалов.
+        /// </summary>
+        /// <param name="addedPosition">Позиция добавленного элемента</param>
+        private void BuildIntervals(int addedPosition)
+        {
+            if ((intervals.Count > 0) && (addedPosition > MaxFilledPosition))
+            {
+                intervals[intervals.Count - 1] = addedPosition - Left(addedPosition);
+                intervals.Add(Length - addedPosition);
+                MaxFilledPosition = addedPosition;
+            }
+            else
+            {
+                BuildIntervals();
+            }
+            
+        }
+
+        /// <summary>
+        /// Перестраивает массив интервалов.
+        /// </summary>
         protected void BuildIntervals()
         {
             intervals = new List<int>();
