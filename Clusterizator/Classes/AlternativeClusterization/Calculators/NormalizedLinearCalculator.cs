@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 
 namespace Clusterizator.Classes.AlternativeClusterization.Calculators
@@ -14,7 +15,7 @@ namespace Clusterizator.Classes.AlternativeClusterization.Calculators
         public void Calculate(GraphManager graph)
         {
             double D = GetDiameter(graph.Connections);
-            if(D == 0)
+            if(Math.Abs(D - 0) < 0.00001)
             {
                 return;
             }

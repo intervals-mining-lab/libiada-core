@@ -12,19 +12,15 @@ namespace ClusterizatorTest.Classes.AlternativeClusterization.Calculators
         private GraphManager manager;
 
         [SetUp]
-        public void init()
+        public void Init()
         {
             List<GraphElement> elements = new List<GraphElement>();
             List<Connection> connections = new List<Connection>();
 
-            HybridDictionary hd1 = new HybridDictionary();
-            hd1.Add("y", 0);
-            HybridDictionary hd2 = new HybridDictionary();
-            hd2.Add("y", 2);
-            HybridDictionary hd3 = new HybridDictionary();
-            hd3.Add("y", 5);
-            HybridDictionary hd4 = new HybridDictionary();
-            hd4.Add("y", 6);
+            HybridDictionary hd1 = new HybridDictionary {{"y", 0}};
+            HybridDictionary hd2 = new HybridDictionary {{"y", 2}};
+            HybridDictionary hd3 = new HybridDictionary {{"y", 5}};
+            HybridDictionary hd4 = new HybridDictionary {{"y", 6}};
 
             elements.Add(new GraphElement(hd1, "1"));
             elements.Add(new GraphElement(hd2, "2"));

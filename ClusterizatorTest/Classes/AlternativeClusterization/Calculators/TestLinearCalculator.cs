@@ -18,25 +18,23 @@ namespace ClusterizatorTest.Classes.AlternativeClusterization.Calculators
             List<Connection> con = new List<Connection>();
             
 
-            HybridDictionary element = new HybridDictionary();
-            element.Add("characteristic", 15.0);
-            GraphElement Node1 = new GraphElement(element, "node1");
+            HybridDictionary element = new HybridDictionary {{"characteristic", 15.0}};
+            GraphElement node1 = new GraphElement(element, "node1");
 
-            HybridDictionary element2 = new HybridDictionary();
-            element2.Add("characteristic", 15.0);
-            GraphElement Node2 = new GraphElement(element2, "node2");
+            HybridDictionary element2 = new HybridDictionary {{"characteristic", 15.0}};
+            GraphElement node2 = new GraphElement(element2, "node2");
             
-            el.Add(Node1);
-            el.Add(Node2);
+            el.Add(node1);
+            el.Add(node2);
 
-            Connection Conn1 = new Connection(0, 1);
-            con.Add(Conn1);
+            Connection conn1 = new Connection(0, 1);
+            con.Add(conn1);
 
-            GraphManager GM = new GraphManager(con,el);
+            GraphManager gm = new GraphManager(con,el);
 
-            LinearCalculator Calc = new LinearCalculator();
-            Calc.Calculate(GM);
-            Assert.AreEqual(0,GM.Connections[0].Distance);
+            LinearCalculator calc = new LinearCalculator();
+            calc.Calculate(gm);
+            Assert.AreEqual(0,gm.Connections[0].Distance);
         }
 
         [Test]
@@ -45,25 +43,23 @@ namespace ClusterizatorTest.Classes.AlternativeClusterization.Calculators
             List<GraphElement> el = new List<GraphElement>();
             List<Connection> con = new List<Connection>();
 
-            HybridDictionary element = new HybridDictionary();
-            element.Add("characteristic", 15);
-            GraphElement Node1 = new GraphElement(element, "node1");
+            HybridDictionary element = new HybridDictionary {{"characteristic", 15}};
+            GraphElement node1 = new GraphElement(element, "node1");
 
-            HybridDictionary element2 = new HybridDictionary();
-            element2.Add("characteristic", 15);
-            GraphElement Node2 = new GraphElement(element2, "node2");
+            HybridDictionary element2 = new HybridDictionary {{"characteristic", 15}};
+            GraphElement node2 = new GraphElement(element2, "node2");
 
-            el.Add(Node1);
-            el.Add(Node2);
+            el.Add(node1);
+            el.Add(node2);
 
-            Connection Conn1 = new Connection(0, 1);
-            con.Add(Conn1);
+            Connection conn1 = new Connection(0, 1);
+            con.Add(conn1);
 
-            GraphManager GM = new GraphManager(con, el);
+            GraphManager gm = new GraphManager(con, el);
 
-            LinearCalculator Calc = new LinearCalculator();
-            Calc.Calculate(GM);
-            Assert.AreEqual(0, GM.Connections[0].Distance);
+            LinearCalculator calc = new LinearCalculator();
+            calc.Calculate(gm);
+            Assert.AreEqual(0, gm.Connections[0].Distance);
         }
 
         [Test]
@@ -72,37 +68,34 @@ namespace ClusterizatorTest.Classes.AlternativeClusterization.Calculators
             List<GraphElement> el = new List<GraphElement>();
             List<Connection> con = new List<Connection>();
 
-            HybridDictionary element = new HybridDictionary();
-            element.Add("characteristic", 15.0);
-            GraphElement Node1 = new GraphElement(element, "node1");
+            HybridDictionary element = new HybridDictionary {{"characteristic", 15.0}};
+            GraphElement node1 = new GraphElement(element, "node1");
 
-            HybridDictionary element2 = new HybridDictionary();
-            element2.Add("characteristic", 10.0);
-            GraphElement Node2 = new GraphElement(element2, "node2");
+            HybridDictionary element2 = new HybridDictionary {{"characteristic", 10.0}};
+            GraphElement node2 = new GraphElement(element2, "node2");
 
-            HybridDictionary element3 = new HybridDictionary();
-            element3.Add("characteristic", -3.0);
-            GraphElement Node3 = new GraphElement(element3, "node3");
+            HybridDictionary element3 = new HybridDictionary {{"characteristic", -3.0}};
+            GraphElement node3 = new GraphElement(element3, "node3");
 
-            el.Add(Node1);
-            el.Add(Node2);
-            el.Add(Node3);
+            el.Add(node1);
+            el.Add(node2);
+            el.Add(node3);
 
-            Connection Conn1 = new Connection(0, 1);
-            Connection Conn2 = new Connection(1, 2);
-            Connection Conn3 = new Connection(0, 2);
+            Connection conn1 = new Connection(0, 1);
+            Connection conn2 = new Connection(1, 2);
+            Connection conn3 = new Connection(0, 2);
 
-            con.Add(Conn1);
-            con.Add(Conn2);
-            con.Add(Conn3);
+            con.Add(conn1);
+            con.Add(conn2);
+            con.Add(conn3);
 
-            GraphManager GM = new GraphManager(con, el);
+            GraphManager gm = new GraphManager(con, el);
 
-            LinearCalculator Calc = new LinearCalculator();
-            Calc.Calculate(GM);
-            Assert.AreEqual(5, GM.Connections[0].Distance);
-            Assert.AreEqual(13, GM.Connections[1].Distance);
-            Assert.AreEqual(18, GM.Connections[2].Distance);
+            LinearCalculator calc = new LinearCalculator();
+            calc.Calculate(gm);
+            Assert.AreEqual(5, gm.Connections[0].Distance);
+            Assert.AreEqual(13, gm.Connections[1].Distance);
+            Assert.AreEqual(18, gm.Connections[2].Distance);
         }
 
         [Test]
@@ -111,30 +104,34 @@ namespace ClusterizatorTest.Classes.AlternativeClusterization.Calculators
             List<GraphElement> el = new List<GraphElement>();
             List<Connection> con = new List<Connection>();
 
-            HybridDictionary element = new HybridDictionary();
-            element.Add("characteristic", 15.0);
-            element.Add("characteristic2", 1.0);
-            element.Add("characteristic3", -20.0);
-            GraphElement Node1 = new GraphElement(element, "node1");
+            HybridDictionary element = new HybridDictionary
+                {
+                    {"characteristic", 15.0},
+                    {"characteristic2", 1.0},
+                    {"characteristic3", -20.0}
+                };
+            GraphElement node1 = new GraphElement(element, "node1");
 
-            HybridDictionary element2 = new HybridDictionary();
-            element2.Add("characteristic", 0.0);
-            element2.Add("characteristic2", -3.0);
-            element2.Add("characteristic3", -4.0);
-            GraphElement Node2 = new GraphElement(element2, "node2");
+            HybridDictionary element2 = new HybridDictionary
+                {
+                    {"characteristic", 0.0},
+                    {"characteristic2", -3.0},
+                    {"characteristic3", -4.0}
+                };
+            GraphElement node2 = new GraphElement(element2, "node2");
 
-            el.Add(Node1);
-            el.Add(Node2);
+            el.Add(node1);
+            el.Add(node2);
 
-            Connection Conn1 = new Connection(0, 1);
+            Connection conn1 = new Connection(0, 1);
 
-            con.Add(Conn1);
+            con.Add(conn1);
 
-            GraphManager GM = new GraphManager(con, el);
+            GraphManager gm = new GraphManager(con, el);
 
-            LinearCalculator Calc = new LinearCalculator();
-            Calc.Calculate(GM);
-            Assert.AreEqual(22293, Math.Round(GM.Connections[0].Distance * 1000));
+            LinearCalculator calc = new LinearCalculator();
+            calc.Calculate(gm);
+            Assert.AreEqual(22293, Math.Round(gm.Connections[0].Distance * 1000));
         }
 
         [Test]
@@ -143,42 +140,48 @@ namespace ClusterizatorTest.Classes.AlternativeClusterization.Calculators
             List<GraphElement> el = new List<GraphElement>();
             List<Connection> con = new List<Connection>();
 
-            HybridDictionary element = new HybridDictionary();
-            element.Add("characteristic", 15.0);
-            element.Add("characteristic2", 1.0);
-            element.Add("characteristic3", -20.0);
-            GraphElement Node1 = new GraphElement(element, "node1");
+            HybridDictionary element = new HybridDictionary
+                {
+                    {"characteristic", 15.0},
+                    {"characteristic2", 1.0},
+                    {"characteristic3", -20.0}
+                };
+            GraphElement node1 = new GraphElement(element, "node1");
 
-            HybridDictionary element2 = new HybridDictionary();
-            element2.Add("characteristic", 0.0);
-            element2.Add("characteristic2", -3.0);
-            element2.Add("characteristic3", -4.0);
-            GraphElement Node2 = new GraphElement(element2, "node2");
+            HybridDictionary element2 = new HybridDictionary
+                {
+                    {"characteristic", 0.0},
+                    {"characteristic2", -3.0},
+                    {"characteristic3", -4.0}
+                };
+            GraphElement node2 = new GraphElement(element2, "node2");
 
-            HybridDictionary element3 = new HybridDictionary();
-            element3.Add("characteristic", 15.0);
-            element3.Add("characteristic2", 1.0);
-            element3.Add("characteristic3", -20.0);
-            GraphElement Node3 = new GraphElement(element3, "node3");
+            HybridDictionary element3 = new HybridDictionary
+                {
+                    {"characteristic", 15.0},
+                    {"characteristic2", 1.0},
+                    {"characteristic3", -20.0}
+                };
+            GraphElement node3 = new GraphElement(element3, "node3");
 
-            el.Add(Node1);
-            el.Add(Node2);
-            el.Add(Node3);
+            el.Add(node1);
+            el.Add(node2);
+            el.Add(node3);
 
-            Connection Conn1 = new Connection(0, 1);
-            con.Add(Conn1);
-            Connection Conn2 = new Connection(0, 2);
-            con.Add(Conn2);
-            Connection Conn3 = new Connection(1, 2);
-            con.Add(Conn3);
+            Connection conn1 = new Connection(0, 1);
+            con.Add(conn1);
+            Connection conn2 = new Connection(0, 2);
+            con.Add(conn2);
+            Connection conn3 = new Connection(1, 2);
+            con.Add(conn3);
 
-            GraphManager GM = new GraphManager(con, el);
+            GraphManager gm = new GraphManager(con, el);
 
-            LinearCalculator Calc = new LinearCalculator();
-            Calc.Calculate(GM);
-            Assert.AreEqual(22293, Math.Round(GM.Connections[0].Distance * 1000));
-            Assert.AreEqual(0, Math.Round(GM.Connections[1].Distance * 1000));
-            Assert.AreEqual(22293, Math.Round(GM.Connections[2].Distance * 1000));
+            LinearCalculator calc = new LinearCalculator();
+            calc.Calculate(gm);
+            Assert.AreEqual(22293, Math.Round(gm.Connections[0].Distance * 1000));
+            Assert.AreEqual(0, Math.Round(gm.Connections[1].Distance * 1000));
+            Assert.AreEqual(22293, Math.Round(gm.Connections[2].Distance * 1000));
         }
     }
 }

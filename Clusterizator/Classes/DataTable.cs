@@ -13,12 +13,6 @@ namespace Clusterizator.Classes
 
         ///<summary>
         ///</summary>
-        public DataTable()
-        {
-        }
-
-        ///<summary>
-        ///</summary>
         ///<param name="s"></param>
         public DataObject this[long s]
         {

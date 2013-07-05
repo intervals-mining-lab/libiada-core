@@ -11,71 +11,67 @@ namespace ClusterizatorTest.Classes.AlternativeClusterization
         [Test]
         public void TestNode()
         {
-            HybridDictionary element = new HybridDictionary();
-            element.Add("characteristic", 15);
-            GraphElement Node = new GraphElement(element,"node");
-            object TempKey = null;
-            object TempValue = null;
-            foreach (DictionaryEntry entry in Node.Content)
+            HybridDictionary element = new HybridDictionary {{"characteristic", 15}};
+            GraphElement node = new GraphElement(element,"node");
+            object tempKey = null;
+            object tempValue = null;
+            foreach (DictionaryEntry entry in node.Content)
             {
                 if(entry.Key.Equals("characteristic"))
                 {
-                    TempKey = entry.Key;
-                    TempValue = entry.Value;
+                    tempKey = entry.Key;
+                    tempValue = entry.Value;
                 }
             }
-            Assert.AreEqual(15, TempValue);
-            Assert.AreEqual("characteristic", TempKey);
-            Assert.AreEqual(0,Node.TaxonNumber);
+            Assert.AreEqual(15, tempValue);
+            Assert.AreEqual("characteristic", tempKey);
+            Assert.AreEqual(0,node.TaxonNumber);
         }
 
         [Test]
         public void TestNode2()
         {
-            HybridDictionary dictionary =new HybridDictionary();
-            dictionary.Add("characteristic", 15);
-            GraphElement Node = new GraphElement(dictionary,1);
-            HybridDictionary dictionary2 = new HybridDictionary();
-            dictionary2.Add("bla-bla", -8);
-            Node.TaxonNumber = 5;
-            object TempKey = null;
-            object TempValue = null;
-            foreach (DictionaryEntry entry in Node.Content)
+            HybridDictionary dictionary =new HybridDictionary {{"characteristic", 15}};
+            GraphElement node = new GraphElement(dictionary,1);
+            HybridDictionary dictionary2 = new HybridDictionary {{"bla-bla", -8}};
+            node.TaxonNumber = 5;
+            object tempKey = null;
+            object tempValue = null;
+            foreach (DictionaryEntry entry in node.Content)
             {
                 if (entry.Key.Equals("characteristic"))
                 {
-                    TempKey = entry.Key;
-                    TempValue = entry.Value;
+                    tempKey = entry.Key;
+                    tempValue = entry.Value;
                 }
             }
-            Assert.AreEqual(15, TempValue);
-            Assert.AreEqual("characteristic", TempKey);
-            Node.Content = dictionary2;
-            foreach (DictionaryEntry entry in Node.Content)
+            Assert.AreEqual(15, tempValue);
+            Assert.AreEqual("characteristic", tempKey);
+            node.Content = dictionary2;
+            foreach (DictionaryEntry entry in node.Content)
             {
                 if (entry.Key.Equals("bla-bla"))
                 {
-                    TempKey = entry.Key;
-                    TempValue = entry.Value;
+                    tempKey = entry.Key;
+                    tempValue = entry.Value;
                 }
             }
-            Assert.AreEqual(-8, TempValue);
-            Assert.AreEqual("bla-bla", TempKey);
-            Assert.AreEqual(5, Node.TaxonNumber);
-            Node.TaxonNumber = -5;
-            Assert.AreEqual(5, Node.TaxonNumber);
+            Assert.AreEqual(-8, tempValue);
+            Assert.AreEqual("bla-bla", tempKey);
+            Assert.AreEqual(5, node.TaxonNumber);
+            node.TaxonNumber = -5;
+            Assert.AreEqual(5, node.TaxonNumber);
         }
         [Test]
         public void TestClone ()
         {
-            HybridDictionary element = new HybridDictionary();
-            element.Add("characteristic", 15);
-            GraphElement Node = new GraphElement(element, "node");
-            GraphElement NodeClone = Node.Clone();
-            Assert.AreEqual(Node.Content,NodeClone.Content);
-            Assert.AreEqual(Node.Id,NodeClone.Id);
-            Assert.AreNotSame(Node,NodeClone);
-            Assert.IsInstanceOf(typeof (GraphElement), NodeClone);
+            HybridDictionary element = new HybridDictionary {{"characteristic", 15}};
+            GraphElement node = new GraphElement(element, "node");
+            GraphElement nodeClone = node.Clone();
+            Assert.AreEqual(node.Content,nodeClone.Content);
+            Assert.AreEqual(node.Id,nodeClone.Id);
+            Assert.AreNotSame(node,nodeClone);
+            Assert.IsInstanceOf(typeof (GraphElement), nodeClone);
         }
     }
 }

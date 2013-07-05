@@ -25,9 +25,8 @@ namespace Clusterizator.Classes
 
         public IBaseObject Clone()
         {
-            Cluster Temp = new Cluster();
-            Temp.Items = (ArrayList) Items.Clone();
-            return Temp;
+            Cluster result = new Cluster {Items = (ArrayList) Items.Clone()};
+            return result;
         }
     }
 }

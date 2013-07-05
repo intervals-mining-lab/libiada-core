@@ -1,4 +1,72 @@
 using Clusterizator.Classes.AlternativeClusterization;
 using NUnit.Framework;
 
-namespace ClusterizatorTest.Classes.AlternativeClusterization  {     [TestFixture]     public class TestConnection     {          [Test]         public void TestConnection1()         {             Connection Conn1 = new Connection(0, 1);             Assert.IsFalse(Conn1.Connected);         }          [Test]         public void TestClone1()         {             Connection Conn1 = new Connection(2, 5);             Conn1.Connected = false;             Conn1.Distance = 6;             Conn1.NormalizedDistance = 0.5;             Conn1.Tau = 3;             Conn1.TauStar = 7;             Conn1.λ = 13;             Connection Conn2 = Conn1.Clone();             Assert.AreEqual(Conn1.Connected, Conn2.Connected);             Assert.AreEqual(Conn1.FirstElementIndex, Conn2.FirstElementIndex);             Assert.AreEqual(Conn1.SecondElementIndex, Conn2.SecondElementIndex);             Assert.AreEqual(Conn1.Distance, Conn2.Distance);             Assert.AreEqual(Conn1.NormalizedDistance, Conn2.NormalizedDistance);             Assert.AreEqual(Conn1.Tau, Conn2.Tau);             Assert.AreEqual(Conn1.TauStar, Conn2.TauStar);             Assert.AreEqual(Conn1.λ, Conn2.λ);             Assert.IsInstanceOf(typeof (Connection), Conn2);             Assert.AreNotSame(Conn1,Conn2);         }            [Test]         public void TestClone2()         {             Connection Conn1 = new Connection(2, 3);             Conn1.Connected = true;             Conn1.Distance = 1;             Conn1.NormalizedDistance = 0.1;             Conn1.Tau = 44;             Conn1.TauStar = 0;             Conn1.λ = 5;             Connection Conn2 = Conn1.Clone();             Assert.AreEqual(Conn1.Connected, Conn2.Connected);             Assert.AreEqual(Conn1.FirstElementIndex, Conn2.FirstElementIndex);             Assert.AreEqual(Conn1.SecondElementIndex, Conn2.SecondElementIndex);             Assert.AreEqual(Conn1.Distance, Conn2.Distance);             Assert.AreEqual(Conn1.NormalizedDistance, Conn2.NormalizedDistance);             Assert.AreEqual(Conn1.Tau, Conn2.Tau);             Assert.AreEqual(Conn1.TauStar, Conn2.TauStar);             Assert.AreEqual(Conn1.λ, Conn2.λ);             Assert.IsInstanceOf(typeof (Connection), Conn2);             Assert.AreNotSame(Conn1, Conn2);         }     } }   
+namespace ClusterizatorTest.Classes.AlternativeClusterization
+
+{
+    [TestFixture]
+    public class TestConnection
+    {
+
+        [Test]
+        public void TestConnection1()
+        {
+            Connection conn1 = new Connection(0, 1);
+            Assert.IsFalse(conn1.Connected);
+        }
+
+        [Test]
+        public void TestClone1()
+        {
+            Connection conn1 = new Connection(2, 5)
+                {
+                    Connected = false,
+                    Distance = 6,
+                    NormalizedDistance = 0.5,
+                    Tau = 3,
+                    TauStar = 7,
+                    λ = 13
+                };
+            Connection conn2 = conn1.Clone();
+            Assert.AreEqual(conn1.Connected, conn2.Connected);
+            Assert.AreEqual(conn1.FirstElementIndex, conn2.FirstElementIndex);
+            Assert.AreEqual(conn1.SecondElementIndex, conn2.SecondElementIndex);
+            Assert.AreEqual(conn1.Distance, conn2.Distance);
+            Assert.AreEqual(conn1.NormalizedDistance, conn2.NormalizedDistance);
+            Assert.AreEqual(conn1.Tau, conn2.Tau);
+            Assert.AreEqual(conn1.TauStar, conn2.TauStar);
+            Assert.AreEqual(conn1.λ, conn2.λ);
+            Assert.IsInstanceOf(typeof (Connection), conn2);
+            Assert.AreNotSame(conn1,conn2);
+        }
+
+
+
+        [Test]
+        public void TestClone2()
+        {
+            Connection conn1 = new Connection(2, 3)
+                {
+                    Connected = true,
+                    Distance = 1,
+                    NormalizedDistance = 0.1,
+                    Tau = 44,
+                    TauStar = 0,
+                    λ = 5
+                };
+            Connection conn2 = conn1.Clone();
+            Assert.AreEqual(conn1.Connected, conn2.Connected);
+            Assert.AreEqual(conn1.FirstElementIndex, conn2.FirstElementIndex);
+            Assert.AreEqual(conn1.SecondElementIndex, conn2.SecondElementIndex);
+            Assert.AreEqual(conn1.Distance, conn2.Distance);
+            Assert.AreEqual(conn1.NormalizedDistance, conn2.NormalizedDistance);
+            Assert.AreEqual(conn1.Tau, conn2.Tau);
+            Assert.AreEqual(conn1.TauStar, conn2.TauStar);
+            Assert.AreEqual(conn1.λ, conn2.λ);
+            Assert.IsInstanceOf(typeof (Connection), conn2);
+            Assert.AreNotSame(conn1, conn2);
+        }
+    }
+}
+
+

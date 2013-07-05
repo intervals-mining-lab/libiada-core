@@ -9,18 +9,10 @@ namespace Clusterizator.Classes
     {
         public ArrayList Variants = new ArrayList();
 
-        ///<summary>
-        ///</summary>
-        public ClustarizationVariants()
-        {
-        }
-
-
         public IBaseObject Clone()
         {
-            ClustarizationVariants Temp = new ClustarizationVariants();
-            Temp.Variants = (ArrayList) Variants.Clone();
-            return Temp;
+            ClustarizationVariants result = new ClustarizationVariants {Variants = (ArrayList) Variants.Clone()};
+            return result;
         }
     }
 }

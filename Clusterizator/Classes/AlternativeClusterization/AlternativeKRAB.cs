@@ -11,7 +11,7 @@ namespace Clusterizator.Classes.AlternativeClusterization
     {
         private GraphManager manager;
         private GraphManager optimalDivide;
-        private double optimalF = 0;
+        private double optimalF;
         private double powerWeight;
 
         /// <summary>
@@ -33,7 +33,7 @@ namespace Clusterizator.Classes.AlternativeClusterization
             counter.MoveNext();//Установка на нулевой элемент
             for (int i = 0; i < dataTable.Count; i++)
             {
-                elements.Add(new GraphElement(((DataObject)((DictionaryEntry)counter.Current).Value).vault, ((DictionaryEntry)counter.Current).Key));
+                elements.Add(new GraphElement(((DataObject)((DictionaryEntry)counter.Current).Value).Vault, ((DictionaryEntry)counter.Current).Key));
                 counter.MoveNext();//переход к следующему элементу
             }
             for (int j = 0; j < elements.Count - 1; j++)
@@ -59,23 +59,23 @@ namespace Clusterizator.Classes.AlternativeClusterization
             GraphManager tempManager = manager.Clone();
             ChooseDivizion(clusters, 0, manager);
             ClusterizationResult result = new ClusterizationResult();
-            List<ArrayList> TempRes = new List<ArrayList>();
+            List<ArrayList> tempRes = new List<ArrayList>();
             for (int i = 0; i < optimalDivide.GetNextTaxonNumber(); i++)
             {
-                TempRes.Add(new ArrayList());
+                tempRes.Add(new ArrayList());
             }
             //Извлекаем кластеры из графа
             for (int j = 0; j < optimalDivide.Elements.Count; j++)
             {
-                TempRes[optimalDivide.Elements[j].TaxonNumber].Add(optimalDivide.Elements[j]);
+                tempRes[optimalDivide.Elements[j].TaxonNumber].Add(optimalDivide.Elements[j]);
             }
             List<ArrayList> res = new List<ArrayList>();
             // Сохраняем только непустые кластеры
-            for (int k = 0; k < TempRes.Count; k++)
+            for (int k = 0; k < tempRes.Count; k++)
             {
-                if (TempRes[k].Count > 0)
+                if (tempRes[k].Count > 0)
                 {
-                    res.Add(TempRes[k]);
+                    res.Add(tempRes[k]);
                 }
             }
             // Складываем кластеры в нужный контейнер с результатами

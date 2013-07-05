@@ -13,7 +13,7 @@ namespace ClusterizatorTest.Classes
         ///<summary>
         ///</summary>
         [SetUp]
-        public void init()
+        public void Init()
         {
             
         }
@@ -24,19 +24,18 @@ namespace ClusterizatorTest.Classes
         [Test]
         public void TestInputOutput()
         {
-            DataObject Test = new DataObject();
-            Test.Id = 1;
-            Test.Add("x", 2);
-            Test.Add("y", 2);
+            DataObject test = new DataObject {Id = 1};
+            test.Add("x", 2);
+            test.Add("y", 2);
 
-            Assert.AreEqual(1, Test.Id);
-            Assert.AreEqual((double)2, Test.Get("x"));
-            Assert.AreEqual((double)2, Test.Get("y"));
+            Assert.AreEqual(1, test.Id);
+            Assert.AreEqual((double)2, test.Get("x"));
+            Assert.AreEqual((double)2, test.Get("y"));
 
-            foreach (DictionaryEntry Item in Test)
+            foreach (DictionaryEntry item in test)
             {
-                Assert.AreEqual((double)2, Item.Value);
-                Assert.IsTrue((string) Item.Key == "x" || (string) Item.Key == "y");
+                Assert.AreEqual((double)2, item.Value);
+                Assert.IsTrue((string) item.Key == "x" || (string) item.Key == "y");
             }
         }
     }

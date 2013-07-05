@@ -9,22 +9,11 @@ namespace Clusterizator.Classes
     ///</summary>
     public class DataObject :IBaseObject,  IEnumerable
     {
-        private long id;
-        public readonly HybridDictionary vault = new HybridDictionary();
+        public readonly HybridDictionary Vault = new HybridDictionary();
 
         ///<summary>
         ///</summary>
-        public DataObject()
-        {
-        }
-
-        ///<summary>
-        ///</summary>
-        public long Id
-        {
-            get { return id; }
-            set { id = value; }
-        }
+        public long Id { get; set; }
 
         ///<summary>
         ///</summary>
@@ -33,7 +22,7 @@ namespace Clusterizator.Classes
         ///<exception cref="NotImplementedException"></exception>
         public void Add(string s, double d)
         {
-            vault.Add(s, d);
+            Vault.Add(s, d);
         }
 
 
@@ -44,12 +33,12 @@ namespace Clusterizator.Classes
         ///<exception cref="NotImplementedException"></exception>
         public double Get(string s)
         {
-            return (double) vault[s];
+            return (double) Vault[s];
         }
 
         public IEnumerator GetEnumerator()
         {
-            return vault.GetEnumerator();
+            return Vault.GetEnumerator();
         }
 
         ///<summary>

@@ -9,21 +9,16 @@ namespace Clusterizator.Classes
     public class ClusterizationResult: IBaseObject
     {
         public ArrayList Clusters = new ArrayList();
-        public Double Quality = 0;
-
-        ///<summary>
-        ///</summary>
-        public ClusterizationResult()
-        {
-            
-        }
+        public Double Quality;
 
         public IBaseObject Clone()
         {
-            ClusterizationResult Temp = new ClusterizationResult();
-            Temp.Quality = Quality;
-            Temp.Clusters = (ArrayList) Clusters.Clone();
-            return Temp;
+            ClusterizationResult result = new ClusterizationResult
+                {
+                    Quality = Quality,
+                    Clusters = (ArrayList) Clusters.Clone()
+                };
+            return result;
         }
     }
 }
