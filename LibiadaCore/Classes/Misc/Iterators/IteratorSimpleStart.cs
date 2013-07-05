@@ -11,23 +11,23 @@ namespace LibiadaCore.Classes.Misc.Iterators
         ///<summary>
         /// Длинна возвращаемого фрагмента цепи
         ///</summary>
-        protected int pLength;
+        protected int Length;
         ///<summary>
         /// Шаг итерации
         ///</summary>
-        protected int pStep;
+        protected int Step;
         ///<summary>
         /// Цепь по которой будет перемещатся итератор
         ///</summary>
-        protected ChainToIterate ptoIterate;
+        protected ChainToIterate chain;
         ///<summary>
         /// Текушая позиция итератора
         ///</summary>
-        protected int pos;
+        protected int Position;
         ///<summary>
         /// Максимальное кол-во смещений
         ///</summary>
-        protected int maxcount;
+        protected int MaxCount;
 
 
         ///<summary>
@@ -42,10 +42,10 @@ namespace LibiadaCore.Classes.Misc.Iterators
             {
                 throw new Exception();
             }
-            pLength = 1;
-            pStep = step;
-            ptoIterate = toIterate;
-            maxcount = ptoIterate.Length - pLength;
+            Length = 1;
+            Step = step;
+            chain = toIterate;
+            MaxCount = chain.Length - Length;
             Reset();
         }
 
@@ -54,7 +54,7 @@ namespace LibiadaCore.Classes.Misc.Iterators
         ///</summary>
         public int MaxStepCount
         {
-            get { return maxcount; }
+            get { return MaxCount; }
         }
 
 
@@ -64,8 +64,8 @@ namespace LibiadaCore.Classes.Misc.Iterators
         ///<returns>Возвращает False если  при перемещении обнаруживается конец цепи. Иначе True</returns>
         public  bool Next()
         {
-            pos = pos + pStep;
-            return pos <= MaxStepCount;
+            Position = Position + Step;
+            return Position <= MaxStepCount;
         }
 
 
@@ -76,11 +76,11 @@ namespace LibiadaCore.Classes.Misc.Iterators
         ///<exception cref="Exception">В случае если пытаемся считать  значение за пределами цепи</exception>
         public virtual IBaseObject Current()
         {
-            if (pos < 0 || pos > maxcount)
+            if (Position < 0 || Position > MaxCount)
             {
                 return null;
             }
-            return (ptoIterate[pos]).Clone();
+            return (chain[Position]).Clone();
         }
 
         ///<summary>
@@ -88,7 +88,7 @@ namespace LibiadaCore.Classes.Misc.Iterators
         ///<returns></returns>
         public int ActualPosition()
         {
-            return pos;
+            return Position;
         }
 
 
@@ -98,7 +98,7 @@ namespace LibiadaCore.Classes.Misc.Iterators
         ///</summary>
         public void Reset()
         {
-            pos = -pStep;
+            Position = -Step;
         }
 
         ///<summary>
@@ -107,8 +107,8 @@ namespace LibiadaCore.Classes.Misc.Iterators
         ///<returns></returns>
         public bool Move(int i)
         {
-            pos = pos + i * pStep;
-            return pos <= MaxStepCount;
+            Position = Position + i * Step;
+            return Position <= MaxStepCount;
         }
     }
 }

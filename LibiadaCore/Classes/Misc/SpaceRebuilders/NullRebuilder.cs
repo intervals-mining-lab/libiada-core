@@ -9,33 +9,29 @@ namespace LibiadaCore.Classes.Misc.SpaceRebuilders
     ///<typeparam name="ChainFrom"></typeparam>
     public class NullRebuilder<ChainTo, ChainFrom> : SpaceRebuilder<ChainTo, ChainFrom> where ChainTo : BaseChain, new() where ChainFrom : BaseChain, new()
     {
-        public override ChainTo Rebuild(ChainFrom A)
+        public override ChainTo Rebuild(ChainFrom from)
         {
-            ChainTo Result = A.Clone() as ChainTo;
-            if (Result != null)
+            ChainTo result = from.Clone() as ChainTo;
+            if (result != null)
             {
-                return Result;
+                return result;
             }
-            else
+            // TODO: Realize variant when we have Chain Rebuild(BaseChain A)
+            ChainTo tempChainTo = new ChainTo();
+            tempChainTo.ClearAndSetNewLength(from.Length);
+            IteratorSimpleStart<ChainFrom> iteratorRead = new IteratorSimpleStart<ChainFrom>(from, 1);
+            IteratorWritableStart<ChainFrom, ChainTo> iteratorWrite = new IteratorWritableStart<ChainFrom, ChainTo>(tempChainTo);
+            iteratorRead.Reset();
+            iteratorWrite.Reset();
+            iteratorRead.Next();
+            iteratorWrite.Next();
+            for (int i = 0; i < from.Length;i++)
             {
-                // TODO: Realize variant when we have Chain Rebuild(BaseChain A)
-                ChainTo TempChainTo = new ChainTo();
-                TempChainTo.ClearAndSetNewLength(A.Length);
-                IteratorSimpleStart<ChainFrom> IteratorRead = new IteratorSimpleStart<ChainFrom>(A, 1);
-                IteratorWritableStart<ChainFrom, ChainTo> IteratorWrite = new IteratorWritableStart<ChainFrom, ChainTo>(TempChainTo);
-                IteratorRead.Reset();
-                IteratorWrite.Reset();
-                IteratorRead.Next();
-                IteratorWrite.Next();
-                for (int i = 0; i < A.Length;i++)
-                {
-                    IteratorWrite.SetCurrent(IteratorRead.Current());
-                    IteratorRead.Next();
-                    IteratorWrite.Next();
-                }
-                return TempChainTo;
+                iteratorWrite.SetCurrent(iteratorRead.Current());
+                iteratorRead.Next();
+                iteratorWrite.Next();
             }
-    
+            return tempChainTo;
         }
     }
 }

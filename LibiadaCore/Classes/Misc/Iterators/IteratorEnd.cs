@@ -29,8 +29,8 @@ namespace LibiadaCore.Classes.Misc.Iterators
         ///<returns>Возвращает False если  при перемещении обнаруживается начало цепи. Иначе True</returns>
         public override bool Next()
         {
-            pos = pos - pStep;
-            return pos >= 0;
+            Position = Position - Step;
+            return Position >= 0;
         }
 
 
@@ -40,7 +40,7 @@ namespace LibiadaCore.Classes.Misc.Iterators
         ///</summary>
         public override void Reset()
         {
-            pos = ptoIterate.Length - pLength + pStep;
+            Position = chain.Length - Length + Step;
         }
     }
 }

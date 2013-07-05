@@ -10,7 +10,7 @@ namespace LibiadaCore.Classes.Misc.SpaceRebuilders
     ///<typeparam name="ChainFrom"></typeparam>
     public class PsevdoCycleSpaceRebuilder<ChainTo, ChainFrom> : SpaceRebuilder<ChainTo, ChainFrom> where ChainTo : BaseChain, new() where ChainFrom : BaseChain, new()
     {
-        private int Level = 0;
+        private int Level;
         ///<summary>
         ///</summary>
         ///<param name="i"></param>
@@ -19,34 +19,32 @@ namespace LibiadaCore.Classes.Misc.SpaceRebuilders
             Level = i;
         }
 
-        public override ChainTo Rebuild(ChainFrom A)
+        public override ChainTo Rebuild(ChainFrom from)
         {
             if (Level < 0 )
             {
                 throw new Exception("Markov Chain level <= 0");
-            }else
-            {
-                if(Level == 0)
-                {
-                    return (ChainTo)((BaseChain)A);
-                }
             }
-            ChainTo Temp = new ChainTo();
-            Temp.ClearAndSetNewLength(A.Length + Level);
-            for (int i = 0; i < A.Length; i++)
+            if(Level == 0)
             {
-                Temp[i] = A[i];
+                return (ChainTo)((BaseChain)from);
             }
-            IteratorStart<ChainTo, ChainFrom> It = new IteratorStart<ChainTo, ChainFrom>(A, Level, 1);
-            It.Reset();
-            It.Next();
-            ChainTo Addition = It.Current();
-            for (int i = 0; i < Addition.Length; i++)
+            ChainTo chainTo = new ChainTo();
+            chainTo.ClearAndSetNewLength(from.Length + Level);
+            for (int i = 0; i < from.Length; i++)
             {
-                Temp[A.Length + i] = Addition[i];
+                chainTo[i] = from[i];
+            }
+            IteratorStart<ChainTo, ChainFrom> iterator = new IteratorStart<ChainTo, ChainFrom>(from, Level, 1);
+            iterator.Reset();
+            iterator.Next();
+            ChainTo addition = iterator.Current();
+            for (int i = 0; i < addition.Length; i++)
+            {
+                chainTo[from.Length + i] = addition[i];
             }
 
-            return Temp;
+            return chainTo;
         }
     }
 }

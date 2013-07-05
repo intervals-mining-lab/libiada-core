@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using LibiadaCore.Classes.Root.Characteristics.Calculators;
 
 namespace LibiadaCore.Classes.Root.Characteristics
@@ -160,26 +161,28 @@ namespace LibiadaCore.Classes.Root.Characteristics
         ///<summary>
         /// Список калькуляторов характеристик.
         ///</summary>
-        public static ArrayList List
+        public static List<ICalculator> List
         {
             get
             {
-                ArrayList temp = new ArrayList();
+                List<ICalculator> temp = new List<ICalculator>
+                    {
+                        D,
+                        deltaA,
+                        deltaG,
+                        g,
+                        G,
+                        H,
+                        IntervalsCount,
+                        Length,
+                        n,
+                        P,
+                        r,
+                        Power,
+                        nG,
+                        t
+                    };
 
-                temp.Add(D);
-                temp.Add(deltaA);
-                temp.Add(deltaG);
-                temp.Add(g);
-                temp.Add(G);
-                temp.Add(H);
-                temp.Add(IntervalsCount);
-                temp.Add(Length);
-                temp.Add(n);
-                temp.Add(P);
-                temp.Add(r);
-                temp.Add(Power);
-                temp.Add(nG);
-                temp.Add(t);
                 return temp;
             }
         }

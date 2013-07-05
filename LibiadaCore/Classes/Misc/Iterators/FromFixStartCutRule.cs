@@ -6,14 +6,14 @@
         {
             for (int i = step; i <= length; i+= step)
             {
-                starts.Add(0);
-                stops.Add(i < length ? i: length);
+                Starts.Add(0);
+                Stops.Add(i < length ? i: length);
             }
         }
 
-        public override  CutRuleIterator getIterator()
+        public override  CutRuleIterator GetIterator()
         {
-            return new CutRuleIterator(starts, stops);
+            return new CutRuleIterator(Starts, Stops);
         }
     }
 }

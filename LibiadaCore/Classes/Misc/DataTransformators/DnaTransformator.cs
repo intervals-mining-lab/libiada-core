@@ -14,22 +14,22 @@ namespace LibiadaCore.Classes.Misc.DataTransformators
         ///<summary>
         /// Метод преобразующий нуклеотдитные цепи в аминокислотные.
         ///</summary>
-        ///<param name="InputChain">Нуклеотидныя последовательность типа <see cref="BaseChain"/></param>
+        ///<param name="inputChain">Нуклеотидныя последовательность типа <see cref="BaseChain"/></param>
         ///<returns>Аминокислотная цепь типа <see cref="BaseChain"/>, в качестве элемнтов служат <see cref="ValueString"/></returns>
         ///<exception cref="Exception">Исключение возникает в случае наличия в нуклеотидной цепи значений отличных от A,C,T и G</exception>
-        public static BaseChain Encode(BaseChain InputChain)
+        public static BaseChain Encode(BaseChain inputChain)
         {
-            if (InputChain.Alphabet.Power > 4)
+            if (inputChain.Alphabet.Power > 4)
             {
                 throw new Exception();
             }
-            int Count = (int)Math.Floor((double)InputChain.Length / 3);
-            BaseChain OutChain = new BaseChain(Count);
-            for (int i = 0; i < Count * 3; i += 3)
+            int count = (int)Math.Floor((double)inputChain.Length / 3);
+            BaseChain outChain = new BaseChain(count);
+            for (int i = 0; i < count * 3; i += 3)
             {
-                String first = InputChain[i].ToString();
-                String second = InputChain[i + 1].ToString();
-                String third = InputChain[i + 2].ToString();
+                String first = inputChain[i].ToString();
+                String second = inputChain[i + 1].ToString();
+                String third = inputChain[i + 2].ToString();
                 switch (first)
                 {
                     case "T":
@@ -38,13 +38,13 @@ namespace LibiadaCore.Classes.Misc.DataTransformators
                             case "T":
                                 if ((third == "T") || (third == "C"))
                                 {
-                                    OutChain[i / 3] = new ValueChar('F');
+                                    outChain[i / 3] = new ValueChar('F');
                                 }
                                 else
                                 {
                                     if ((third == "A") || (third == "G"))
                                     {
-                                        OutChain[i / 3] = new ValueChar('L');
+                                        outChain[i / 3] = new ValueChar('L');
                                     }
                                     else
                                     {
@@ -53,18 +53,18 @@ namespace LibiadaCore.Classes.Misc.DataTransformators
                                 }
                                 break;
                             case "C":
-                                OutChain[i / 3] = new ValueChar('S');
+                                outChain[i / 3] = new ValueChar('S');
                                 break;
                             case "A":
                                 if ((third == "T") || (third == "C"))
                                 {
-                                    OutChain[i / 3] = new ValueChar('Y');
+                                    outChain[i / 3] = new ValueChar('Y');
                                 }
                                 else
                                 {
                                     if ((third == "A") || (third == "G"))
                                     {
-                                        OutChain[i / 3] = new ValueChar('X');
+                                        outChain[i / 3] = new ValueChar('X');
                                     }
                                     else
                                     {
@@ -75,19 +75,19 @@ namespace LibiadaCore.Classes.Misc.DataTransformators
                             case "G":
                                 if ((third == "T") || (third == "C"))
                                 {
-                                    OutChain[i / 3] = new ValueChar('C');
+                                    outChain[i / 3] = new ValueChar('C');
                                 }
                                 else
                                 {
                                     if (third == "A")
                                     {
-                                        OutChain[i / 3] = new ValueChar('X');
+                                        outChain[i / 3] = new ValueChar('X');
                                     }
                                     else
                                     {
                                         if (third == "G")
                                         {
-                                            OutChain[i / 3] = new ValueChar('W');
+                                            outChain[i / 3] = new ValueChar('W');
                                         }
                                         else
                                         {
@@ -104,21 +104,21 @@ namespace LibiadaCore.Classes.Misc.DataTransformators
                         switch (second)
                         {
                             case "T":
-                                OutChain[i / 3] = new ValueChar('L');
+                                outChain[i / 3] = new ValueChar('L');
                                 break;
                             case "C":
-                                OutChain[i / 3] = new ValueChar('P');
+                                outChain[i / 3] = new ValueChar('P');
                                 break;
                             case "A":
                                 if ((third == "T") || (third == "C"))
                                 {
-                                    OutChain[i / 3] = new ValueChar('H');
+                                    outChain[i / 3] = new ValueChar('H');
                                 }
                                 else
                                 {
                                     if ((third == "A") || (third == "G"))
                                     {
-                                        OutChain[i / 3] = new ValueChar('Q');
+                                        outChain[i / 3] = new ValueChar('Q');
                                     }
                                     else
                                     {
@@ -127,7 +127,7 @@ namespace LibiadaCore.Classes.Misc.DataTransformators
                                 }
                                 break;
                             case "G":
-                                OutChain[i / 3] = new ValueChar('R');
+                                outChain[i / 3] = new ValueChar('R');
                                 break;
                             default:
                                 throw new Exception();
@@ -139,13 +139,13 @@ namespace LibiadaCore.Classes.Misc.DataTransformators
                             case "T":
                                 if ((third == "T") || (third == "C") || (third == "A"))
                                 {
-                                    OutChain[i / 3] = new ValueChar('I');
+                                    outChain[i / 3] = new ValueChar('I');
                                 }
                                 else
                                 {
                                     if (third == "G")
                                     {
-                                        OutChain[i / 3] = new ValueChar('M');
+                                        outChain[i / 3] = new ValueChar('M');
                                     }
                                     else
                                     {
@@ -154,18 +154,18 @@ namespace LibiadaCore.Classes.Misc.DataTransformators
                                 }
                                 break;
                             case "C":
-                                OutChain[i / 3] = new ValueChar('T');
+                                outChain[i / 3] = new ValueChar('T');
                                 break;
                             case "A":
                                 if ((third == "T") || (third == "C"))
                                 {
-                                    OutChain[i / 3] = new ValueChar('N');
+                                    outChain[i / 3] = new ValueChar('N');
                                 }
                                 else
                                 {
                                     if ((third == "A") || (third == "G"))
                                     {
-                                        OutChain[i / 3] = new ValueChar('K');
+                                        outChain[i / 3] = new ValueChar('K');
                                     }
                                     else
                                     {
@@ -176,13 +176,13 @@ namespace LibiadaCore.Classes.Misc.DataTransformators
                             case "G":
                                 if ((third == "T") || (third == "C"))
                                 {
-                                    OutChain[i / 3] = new ValueChar('S');
+                                    outChain[i / 3] = new ValueChar('S');
                                 }
                                 else
                                 {
                                     if ((third == "A") || (third == "G"))
                                     {
-                                        OutChain[i / 3] = new ValueChar('R');
+                                        outChain[i / 3] = new ValueChar('R');
                                     }
                                     else
                                     {
@@ -198,21 +198,21 @@ namespace LibiadaCore.Classes.Misc.DataTransformators
                         switch (second)
                         {
                             case "T":
-                                OutChain[i / 3] = new ValueChar('V');
+                                outChain[i / 3] = new ValueChar('V');
                                 break;
                             case "C":
-                                OutChain[i / 3] = new ValueChar('A');
+                                outChain[i / 3] = new ValueChar('A');
                                 break;
                             case "A":
                                 if ((third == "T") || (third == "C"))
                                 {
-                                    OutChain[i / 3] = new ValueChar('D');
+                                    outChain[i / 3] = new ValueChar('D');
                                 }
                                 else
                                 {
                                     if ((third == "A") || (third == "G"))
                                     {
-                                        OutChain[i / 3] = new ValueChar('E');
+                                        outChain[i / 3] = new ValueChar('E');
                                     }
                                     else
                                     {
@@ -221,7 +221,7 @@ namespace LibiadaCore.Classes.Misc.DataTransformators
                                 }
                                 break;
                             case "G":
-                                OutChain[i / 3] = new ValueChar('G');
+                                outChain[i / 3] = new ValueChar('G');
                                 break;
                             default:
                                 throw new Exception();
@@ -231,21 +231,21 @@ namespace LibiadaCore.Classes.Misc.DataTransformators
                         throw new Exception();
                 }
             }
-            return OutChain;
+            return outChain;
         }
 
         ///<summary>
         /// Метод преобразующий аминокислотные цепи в фантомные.
         ///</summary>
-        ///<param name="InputChain">Аминокислотная цепь типа <see cref="BaseChain"/></param>
+        ///<param name="inputChain">Аминокислотная цепь типа <see cref="BaseChain"/></param>
         ///<returns>Фантомная цепь типа <see cref="BaseChain"/>, в качестве элементов используются <see cref="ValuePhantom"/></returns>
         ///<exception cref="Exception">Исключение возникает в случае наличия в цепи элементов не являющихся аминокислотами</exception>
-        public static BaseChain Decode(BaseChain InputChain)
+        public static BaseChain Decode(BaseChain inputChain)
         {
-            BaseChain OutChain = new BaseChain(InputChain.Length);
-            for (int i = 0; i < InputChain.Length; i++)
+            BaseChain outChain = new BaseChain(inputChain.Length);
+            for (int i = 0; i < inputChain.Length; i++)
             {
-                string str = InputChain[i].ToString();
+                string str = inputChain[i].ToString();
                 ValuePhantom m = new ValuePhantom();
                 switch (str)
                 {
@@ -358,30 +358,30 @@ namespace LibiadaCore.Classes.Misc.DataTransformators
                     default:
                         throw new Exception();
                 }
-                OutChain[i] = m;
+                outChain[i] = m;
             }
-            return OutChain;
+            return outChain;
         }
 
         ///<summary>
         /// Метод преобразующий нуклеотидное представление цепочек в триплетное
         ///</summary>
-        ///<param name="InputChain">Исходная нуклеотидная цепочка</param>
+        ///<param name="inputChain">Исходная нуклеотидная цепочка</param>
         ///<returns>Цепоччка, состоящая из триплетов</returns>
         ///<exception cref="Exception">Допустимая мощность алфавита - 4</exception>
-        public static BaseChain EncodeTriplets(BaseChain InputChain)
+        public static BaseChain EncodeTriplets(BaseChain inputChain)
         {
-            if (InputChain.Alphabet.Power > 4)
+            if (inputChain.Alphabet.Power > 4)
             {
                 throw new Exception();
             }
-            int Count = (int)Math.Floor((double)InputChain.Length / 3);
-            BaseChain OutChain = new BaseChain(Count);
-            for (int i = 0; i < Count * 3; i += 3)
+            int count = (int)Math.Floor((double)inputChain.Length / 3);
+            BaseChain outChain = new BaseChain(count);
+            for (int i = 0; i < count * 3; i += 3)
             {
-                OutChain[i / 3] = new ValueString(InputChain[i].ToString() + InputChain[i + 1].ToString() + InputChain[i + 2].ToString());
+                outChain[i / 3] = new ValueString(inputChain[i] + inputChain[i + 1].ToString() + inputChain[i + 2]);
             }
-            return OutChain;
+            return outChain;
         }
     }
 }

@@ -1,4 +1,3 @@
-using System;
 using LibiadaCore.Classes.Misc.Iterators;
 using LibiadaCore.Classes.Root;
 using LibiadaCore.Classes.Root.SimpleTypes;
@@ -13,32 +12,30 @@ namespace LibiadaCore.Classes.Misc.SpaceRebuilders
         private readonly LinkUp Link;
         private readonly int blocksize;
 
-        public override ChainTo Rebuild(ChainFrom A)
+        public override ChainTo Rebuild(ChainFrom from)
         {
             ChainTo temp = new ChainTo();
-            temp.ClearAndSetNewLength(A.Length / blocksize);
-            IteratorBase<ChainTo, ChainFrom> From;
-            IWritableIterator<ChainTo, ChainTo> To;
+            temp.ClearAndSetNewLength(from.Length / blocksize);
+            IteratorBase<ChainTo, ChainFrom> iteratorFrom;
+            IWritableIterator<ChainTo, ChainTo> iteratorTo;
 
             if (Link != LinkUp.End)
             {
-                From = new IteratorStart<ChainTo, ChainFrom>(A, blocksize, blocksize);
-                To = new IteratorWritableStart<ChainTo, ChainTo>(temp);
+                iteratorFrom = new IteratorStart<ChainTo, ChainFrom>(from, blocksize, blocksize);
+                iteratorTo = new IteratorWritableStart<ChainTo, ChainTo>(temp);
             }
             else
             {
-                From = new IteratorEnd<ChainTo, ChainFrom>(A, blocksize, blocksize);
-                To = new IteratorWritableEnd<ChainTo, ChainTo>(temp);
+                iteratorFrom = new IteratorEnd<ChainTo, ChainFrom>(from, blocksize, blocksize);
+                iteratorTo = new IteratorWritableEnd<ChainTo, ChainTo>(temp);
             }
 
-            NullValue Psevdo = NullValue.Instance();
-            ValuePhantom Message = null;
-            while (To.Next() && From.Next())
+            NullValue psevdo = NullValue.Instance();
+            while (iteratorTo.Next() && iteratorFrom.Next())
             {
-                Message = new ValuePhantom();
+                ValuePhantom message = new ValuePhantom {iteratorFrom.Current()};
 
-                Message.Add(From.Current());
-                To.SetCurrent(Message.Power == 0 ? (IBaseObject) Psevdo : Message);
+                iteratorTo.SetCurrent(message.Power == 0 ? (IBaseObject) psevdo : message);
             }
             return temp;
         }

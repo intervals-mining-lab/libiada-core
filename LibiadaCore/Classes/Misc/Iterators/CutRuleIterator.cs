@@ -16,18 +16,18 @@ namespace LibiadaCore.Classes.Misc.Iterators
 
         }
 
-        public bool next()
+        public bool Next()
         {
             i++;
             return (starts.Count() > i) && (stops.Count() > i);
         }
 
-        public int getStartPos()
+        public int GetStartPos()
         {
             return starts[i];
         }
 
-        public int getStopPos()
+        public int GetStopPos()
         {
             return stops[i];
         }

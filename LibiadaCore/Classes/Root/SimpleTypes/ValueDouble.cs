@@ -10,17 +10,17 @@ namespace LibiadaCore.Classes.Root.SimpleTypes
         ///<param name="i"></param>
         public ValueDouble(double i)
         {
-            value = i;
+            Value = i;
         }
 
-        public double value = 0;
+        public double Value;
 
         ///<summary>
         ///</summary>
         ///<returns></returns>
         public IBaseObject Clone()
         {
-            return new ValueDouble(value);
+            return new ValueDouble(Value);
         }
 
         ///<summary>
@@ -41,16 +41,16 @@ namespace LibiadaCore.Classes.Root.SimpleTypes
             {
                 return true;
             }
-            return value.Equals(((ValueDouble)obj).value);
+            return Value.Equals(((ValueDouble)obj).Value);
         }
 
         ///<summary>
         ///</summary>
-        ///<param name="From"></param>
+        ///<param name="from"></param>
         ///<returns></returns>
-        public static implicit operator double(ValueDouble From)
+        public static implicit operator double(ValueDouble from)
         {
-            return From.value;
+            return from.Value;
         }
 
         ///<summary>
@@ -64,7 +64,7 @@ namespace LibiadaCore.Classes.Root.SimpleTypes
 
         public override string ToString()
         {
-            return value.ToString();
+            return Value.ToString();
         }
     }
 }

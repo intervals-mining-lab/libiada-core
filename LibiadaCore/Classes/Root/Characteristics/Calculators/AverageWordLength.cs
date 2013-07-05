@@ -16,7 +16,7 @@ namespace LibiadaCore.Classes.Root.Characteristics.Calculators
 
             for (int index = chainLength; --index >= 0;)
             {
-                sum = sum + ((ValueString) chain[index]).value.Length;
+                sum = sum + ((ValueString) chain[index]).Value.Length;
             }
 
             return sum/(double) chainLength;

@@ -5,7 +5,7 @@ namespace LibiadaCore.Classes.Root.SimpleTypes
     ///</summary>
     public class ValueChar : IBaseObject
     {
-        public char value = default(char);
+        public char Value = default(char);
 
         ///<summary>
         ///</summary>
@@ -18,12 +18,12 @@ namespace LibiadaCore.Classes.Root.SimpleTypes
         ///<param name="value">Начальное значение элемента</param>
         public ValueChar(char value)
         {
-            this.value = value;
+            this.Value = value;
         }
 
         public IBaseObject Clone()
         {
-            return new ValueChar(value);
+            return new ValueChar(Value);
         }
 
         public override bool Equals(object obj)
@@ -41,21 +41,21 @@ namespace LibiadaCore.Classes.Root.SimpleTypes
             {
                 return false;
             }
-            return c.value == value;
+            return c.Value == Value;
         }
 
         public override string ToString()
         {
-            return value.ToString();
+            return Value.ToString();
         }
 
         ///<summary>
         ///</summary>
-        ///<param name="From"></param>
+        ///<param name="from"></param>
         ///<returns></returns>
-        public static implicit operator char(ValueChar From)
+        public static implicit operator char(ValueChar from)
         {
-            return From.value;
+            return from.Value;
         }
 
         ///<summary>

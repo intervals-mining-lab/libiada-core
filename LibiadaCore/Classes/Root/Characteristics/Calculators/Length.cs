@@ -1,6 +1,3 @@
-using System;
-using System.Collections.Generic;
-
 namespace LibiadaCore.Classes.Root.Characteristics.Calculators
 {
     ///<summary>

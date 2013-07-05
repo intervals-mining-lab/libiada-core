@@ -31,8 +31,8 @@ namespace LibiadaCore.Classes.Misc.Iterators
         ///<returns>Возвращает False если  при перемещении обнаруживается конец цепи. Иначе True</returns>
         public override bool Next()
         {
-            pos = pos + pStep;
-            return pos <= MaxStepCount;
+            Position = Position + Step;
+            return Position <= MaxStepCount;
         }
 
         ///<summary>
@@ -41,7 +41,7 @@ namespace LibiadaCore.Classes.Misc.Iterators
         ///</summary>
         public override void Reset()
         {
-            pos = -pStep;
+            Position = -Step;
         }
 
         ///<summary>
@@ -51,8 +51,8 @@ namespace LibiadaCore.Classes.Misc.Iterators
         ///<returns></returns>
         public bool Move(int i)
         {
-            pos = pos + i*pStep;
-            return pos <= MaxStepCount;
+            Position = Position + i*Step;
+            return Position <= MaxStepCount;
         }
     }
 }

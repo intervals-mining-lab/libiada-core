@@ -64,14 +64,8 @@ namespace LibiadaCore.Classes.Root.Characteristics
         {
             get
             {
-                var temp = new List<IBinaryCalculator>();
+                var temp = new List<IBinaryCalculator> {GeometricMean, Redundancy, K1, NormalizedK1, K2, K3};
 
-                temp.Add(GeometricMean);
-                temp.Add(Redundancy);
-                temp.Add(K1);
-                temp.Add(NormalizedK1);
-                temp.Add(K2);
-                temp.Add(K3);
                 return temp;
             }
         }

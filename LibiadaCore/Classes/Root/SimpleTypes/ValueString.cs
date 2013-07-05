@@ -5,11 +5,10 @@ namespace LibiadaCore.Classes.Root.SimpleTypes
     ///</summary>
     public class ValueString : IBaseObject
     {
-        public string value = "";
+        public string Value = "";
 
         protected  ValueString()
         {
-            
         }
 
         ///<summary>
@@ -17,12 +16,12 @@ namespace LibiadaCore.Classes.Root.SimpleTypes
         ///<param name="str"></param>
         public ValueString(string str)
         {
-            value = (string) str.Clone();
+            Value = (string) str.Clone();
         }
 
         public IBaseObject Clone()
         {
-            return new ValueString(value);
+            return new ValueString(Value);
         }
 
         ///<summary>
@@ -40,16 +39,16 @@ namespace LibiadaCore.Classes.Root.SimpleTypes
             {
                 return true;
             }
-            return value.Equals(((ValueString) obj).value);
+            return Value.Equals(((ValueString) obj).Value);
         }
 
         ///<summary>
         ///</summary>
-        ///<param name="From"></param>
+        ///<param name="from"></param>
         ///<returns></returns>
-        public static implicit operator string(ValueString From)
+        public static implicit operator string(ValueString @from)
         {
-            return From.value;
+            return @from.Value;
         }
 
         ///<summary>
@@ -63,7 +62,7 @@ namespace LibiadaCore.Classes.Root.SimpleTypes
 
         public override string ToString()
         {
-            return value;
+            return Value;
         }
     }
 }

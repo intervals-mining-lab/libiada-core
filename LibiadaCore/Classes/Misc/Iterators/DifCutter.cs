@@ -5,16 +5,16 @@ namespace LibiadaCore.Classes.Misc.Iterators
 {
     public class DifCutter
     {
-        public List<String> cut(String chain, CutRule rule)
+        public static List<String> Cut(String chain, CutRule rule)
         {
             List<String> result = new List<String>();
 
-            rule.getIterator();
-            CutRuleIterator iterator = rule.getIterator();
+            rule.GetIterator();
+            CutRuleIterator iterator = rule.GetIterator();
 
-            while (iterator.next())
+            while (iterator.Next())
             {
-                String s = chain.Substring(iterator.getStartPos(), iterator.getStopPos());
+                String s = chain.Substring(iterator.GetStartPos(), iterator.GetStopPos());
                 result.Add(s);
             }
             return result;

@@ -11,21 +11,21 @@ namespace LibiadaCore.Classes.Misc.SpaceRebuilders
         where ChainTo : BaseChain, new()
         where ChainFrom : BaseChain, new()
     {
-        public override ChainTo Rebuild(ChainFrom A)
+        public override ChainTo Rebuild(ChainFrom from)
         {
-            ChainTo Resent = new ChainTo();
-            Resent.ClearAndSetNewLength(A.Length);
-            for (int i = 0; i < A.Length; i++)
+            ChainTo resent = new ChainTo();
+            resent.ClearAndSetNewLength(from.Length);
+            for (int i = 0; i < from.Length; i++)
             {
-                if (A[i] is ValuePhantom)
+                if (from[i] is ValuePhantom)
                 {
-                    Resent.Add(((ValuePhantom)A[i])[0], i);
+                    resent.Add(((ValuePhantom)from[i])[0], i);
                 }else
                 {
-                    Resent.Add(A[i], i);
+                    resent.Add(from[i], i);
                 }
             }
-            return Resent;
+            return resent;
         }
     }
 }

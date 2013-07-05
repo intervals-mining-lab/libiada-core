@@ -30,7 +30,7 @@ namespace LibiadaCore.Classes.Misc.Iterators
         ///<param name="value">Заначение которое присваеваем ячейке</param>
         public void SetCurrent(IBaseObject value)
         {
-            ptoIterate.Add(value, pos);
+            chain.Add(value, Position);
         }
     }
 }

@@ -1,0 +1,205 @@
+using System;
+using LibiadaCore.Classes.Root.SimpleTypes;
+using LibiadaCore.Classes.TheoryOfSet;
+using NUnit.Framework;
+
+namespace LibiadaCoreTest.Classes.TheoryOfSet
+{
+    ///<summary>
+    ///</summary>
+    [TestFixture]
+    public class TestAlphabet
+    {
+        private Alphabet AlBase;
+        private Alphabet AlBase2;
+
+        ///<summary>
+        ///</summary>
+        [SetUp]
+        public void Init()
+        {
+            AlBase = new Alphabet();
+            AlBase2 = new Alphabet();
+        }
+
+        ///<summary>
+        ///</summary>
+        [Test]
+        public void TestConstrutor()
+        {
+            Alphabet a1 = new Alphabet();
+            Assert.IsNotNull(a1);
+        }
+
+        ///<summary>
+        ///</summary>
+        [Test]
+        public void TestAddSame()
+        {
+            try
+            {
+                AlBase.Add(new ValueInt(2));
+                AlBase.Add(new ValueInt(2));
+            }
+            catch (Exception)
+            {
+                return;
+            }
+            Assert.Fail();
+        }
+
+        ///<summary>
+        ///</summary>
+        [Test]
+        public void TestGet()
+        {
+            AlBase.Add(new ValueInt(2));
+            AlBase.Add(new ValueInt(3));
+            AlBase.Add(new ValueInt(4));
+            AlBase.Add(new ValueInt(5));
+            Assert.AreEqual(new ValueInt(2), AlBase[0]);
+            Assert.AreEqual(new ValueInt(3), AlBase[1]);
+            Assert.AreEqual(new ValueInt(4), AlBase[2]);
+            Assert.AreEqual(new ValueInt(5), AlBase[3]);
+        }
+
+        ///<summary>
+        ///</summary>
+        [Test]
+        public void TestIndependNumber()
+        {
+            AlBase.Add(new ValueInt(2));
+            AlBase.Add(new ValueInt(1));
+            AlBase.Add(new ValueInt(3));
+            AlBase.Add(new ValueInt(4));
+            AlBase[0] = new ValueInt(3);
+            Assert.AreEqual(new ValueInt(2), AlBase[0]);
+            Assert.AreEqual(new ValueInt(1), AlBase[1]);
+            Assert.AreEqual(new ValueInt(3), AlBase[2]);
+            Assert.AreEqual(new ValueInt(4), AlBase[3]);
+        }
+
+        ///<summary>
+        ///</summary>
+        [Test]
+        public void TestIndependString()
+        {
+            AlBase.Add(new ValueString("2"));
+            AlBase.Add(new ValueString("3"));
+            AlBase.Add(new ValueString("5"));
+            AlBase.Add(new ValueString("1"));
+            //AlBase.Add("1");
+            AlBase[0] = new ValueString("3");
+            Assert.AreEqual(new ValueString("2"), AlBase[0]);
+            Assert.AreEqual(new ValueString("3"), AlBase[1]);
+            Assert.AreEqual(new ValueString("5"), AlBase[2]);
+            Assert.AreEqual(new ValueString("1"), AlBase[3]);
+        }
+
+        ///<summary>
+        ///</summary>
+        [Test]
+        [ExpectedException(typeof(NullReferenceException))]
+        public void TestNull()
+        {
+            AlBase.Add(null);
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        [Test]
+        public void TestPower()
+        {
+            AlBase.Add(new ValueInt(100));
+            AlBase.Add(new ValueInt(200));
+            AlBase.Add(new ValueInt(300));
+            Assert.AreEqual(AlBase.Power, 3);
+        }
+
+        /// <summary>
+        /// �������� ��������
+        /// </summary>
+        [Test]
+        public void TestRemove()
+        {
+            AlBase.Add(new ValueInt(100));
+            AlBase.Add(new ValueInt(200));
+            AlBase.Add(new ValueInt(300));
+            AlBase.Add(new ValueInt(400));
+            AlBase.Remove(2);
+            Assert.AreEqual(AlBase.Power, 3);
+            Assert.AreEqual(AlBase[2], new ValueInt(400));
+        }
+
+        ///<summary>
+        ///</summary>
+        [Test]
+        public void TestClone()
+        {
+            Assert.AreNotSame(AlBase, AlBase.Clone());
+
+            Assert.IsTrue(AlBase.Equals(AlBase.Clone()));
+        }
+
+        /// <summary>
+        /// ����������� ��������� ���������
+        /// </summary>
+        [Test]
+        public void TestEquals()
+        {
+            AlBase.Add(new ValueChar('a'));
+            AlBase.Add(new ValueChar('b'));
+            AlBase.Add(new ValueChar('c'));
+            AlBase2.Add(new ValueChar('a'));
+            AlBase2.Add(new ValueChar('b'));
+            AlBase2.Add(new ValueChar('c'));
+            Assert.IsTrue(AlBase.Equals(AlBase.Clone()));
+            Assert.IsTrue(AlBase.Equals(AlBase2));
+        }
+
+        /// <summary>
+        /// ����������� ��������� ���������
+        /// </summary>
+        [Test]
+        public void TestEqualsForAlphabetWithEqualsCompositionButNotEqualsOrder()
+        {
+            AlBase.Add(new ValueChar('a'));
+            AlBase.Add(new ValueChar('b'));
+            AlBase.Add(new ValueChar('c'));
+            AlBase2.Add(new ValueChar('a'));
+            AlBase2.Add(new ValueChar('b'));
+            AlBase2.Add(new ValueChar('c'));
+            Assert.IsTrue(AlBase.Equals(AlBase.Clone()));
+            Assert.IsTrue(AlBase.Equals(AlBase2));
+        }
+
+        /// <summary>
+        /// ���� �� 
+        /// </summary>
+        [Test]
+        public void TestContains()
+        {
+            AlBase.Add(new ValueChar('a'));
+            AlBase.Add(new ValueChar('b'));
+            AlBase.Add(new ValueChar('c'));
+            Assert.IsTrue(AlBase.Contains(new ValueChar('a')));
+            Assert.IsTrue(AlBase.Contains(new ValueChar('b')));
+            Assert.IsTrue(AlBase.Contains(new ValueChar('c')));
+            Assert.IsFalse(AlBase.Contains(new ValueChar('d')));
+        }
+
+        ///<summary>
+        ///</summary>
+        [Test]
+        public void TestIndexOf()
+        {
+            AlBase.Add(new ValueChar('a'));
+            AlBase.Add(new ValueChar('b'));
+            AlBase.Add(new ValueChar('c'));
+            Assert.IsTrue(AlBase.IndexOf(new ValueChar('d')).Equals(-1));
+            Assert.IsTrue(AlBase.IndexOf(new ValueChar('a')).Equals(0));
+            Assert.IsTrue(AlBase.IndexOf(new ValueChar('c')).Equals(2));
+        }
+    }
+}

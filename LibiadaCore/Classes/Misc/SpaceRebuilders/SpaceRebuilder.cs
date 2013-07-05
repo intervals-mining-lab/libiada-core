@@ -9,8 +9,8 @@ namespace LibiadaCore.Classes.Misc.SpaceRebuilders
     {
         ///<summary>
         ///</summary>
-        ///<param name="A"></param>
+        ///<param name="from"></param>
         ///<returns></returns>
-        public abstract ChainTo Rebuild(ChainFrom A);
+        public abstract ChainTo Rebuild(ChainFrom from);
     }
 }

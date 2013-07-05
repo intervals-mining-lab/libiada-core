@@ -48,7 +48,7 @@ namespace LibiadaCore.Classes.Root
         public Chain(int[] building, Alphabet alphabet)
             : base(building, alphabet)
         {
-            CreateUnformChains();
+            CreateCongenericChains();
         }
 
         /// <summary>
@@ -57,23 +57,23 @@ namespace LibiadaCore.Classes.Root
         /// <param name="chain">Коллекция элементов</param>
         public Chain(List<IBaseObject> chain):base(chain)
         {
-            CreateUnformChains();
+            CreateCongenericChains();
         }
 
         /// <summary>
         /// Выделяет из полной неоднородной цепи все однородные цепи
         /// и сохраняет их локальнов массив <see cref="CongenericChains"/>.
         /// </summary>
-        private void CreateUnformChains()
+        private void CreateCongenericChains()
         {
-            CongenericChains = new CongenericChain[this.alphabet.Power - 1];
-            for (int i = 0; i < this.alphabet.Power - 1; i++)
+            CongenericChains = new CongenericChain[alphabet.Power - 1];
+            for (int i = 0; i < alphabet.Power - 1; i++)
             {
-                this.CongenericChains[i] = new CongenericChain(building.Length, this.alphabet[i + 1]);
+                CongenericChains[i] = new CongenericChain(building.Length, alphabet[i + 1]);
             }
             for (int j = 0; j < building.Length; j++)
             {
-                CongenericChains[building[j] - 1][j] = this.alphabet[building[j]];
+                CongenericChains[building[j] - 1][j] = alphabet[building[j]];
             }
         }
 
@@ -283,17 +283,17 @@ namespace LibiadaCore.Classes.Root
         {
             IBaseObject element = alphabet[building[index]];
             ICalculator calc = new Count();
-            CongenericChain tempCongenericChain = (CongenericChain) this.CongenericChain(element);
+            CongenericChain tempCongenericChain = CongenericChain(element);
             if ((int)calc.Calculate(tempCongenericChain, LinkUp.End) == 1)
             {
                 var temp = CongenericChains;
                 CongenericChains = new CongenericChain[temp.Length - 1];
                 int j = 0;
-                for (int i = 0; i < temp.Length; i++)
+                foreach (CongenericChain congenericChain in temp)
                 {
-                    if (!temp[i].Element.Equals(element))
+                    if (!congenericChain.Element.Equals(element))
                     {
-                        CongenericChains[j] = temp[i];
+                        CongenericChains[j] = congenericChain;
                         j++;
                     }
                 }
@@ -306,9 +306,9 @@ namespace LibiadaCore.Classes.Root
                     }
                 }
             }
-            for (int l = 0; l < CongenericChains.Length; l++)
+            foreach (CongenericChain congenericChain in CongenericChains)
             {
-                CongenericChains[l].DeleteAt(index);
+                congenericChain.DeleteAt(index);
             }
             building = ArrayManipulator.DeleteAt(building, index);
             return element;

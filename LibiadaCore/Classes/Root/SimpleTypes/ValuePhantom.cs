@@ -8,15 +8,6 @@ namespace LibiadaCore.Classes.Root.SimpleTypes
     ///</summary>
     public class ValuePhantom : Alphabet, IBaseObject
     {
-
-        ///<summary>
-        /// Конструктор без параметров
-        ///</summary>
-        public ValuePhantom()
-        {
-            
-        }
-
         /// <summary>
         /// Сравнение фантомного сообщения исходного и заданного в параметре
         /// </summary>
@@ -84,20 +75,20 @@ namespace LibiadaCore.Classes.Root.SimpleTypes
         /// <summary>
         /// Добавляет объект в фантомное сообщение.
         /// </summary>
-        /// <param name="BaseObject">Новый объект</param>
+        /// <param name="baseObject">Новый объект</param>
         /// <returns>Индекс нового объекта или -1 если его не удалось добавить</returns>
-        public override int Add(IBaseObject BaseObject)
+        public override int Add(IBaseObject baseObject)
         {
-            if (BaseObject != null && !BaseObject.Equals(NullValue.Instance()))
+            if (baseObject != null && !baseObject.Equals(NullValue.Instance()))
             {
-                return base.Add(BaseObject);
+                return base.Add(baseObject);
             }
             return -1;
         }
 
         public override string ToString()
         {
-            return vault[0].ToString();
+            return Vault[0].ToString();
         }
 
 
@@ -107,8 +98,7 @@ namespace LibiadaCore.Classes.Root.SimpleTypes
         /// <returns>Копия объекта</returns>
         public new IBaseObject Clone()
         {
-            ValuePhantom temp = new ValuePhantom();
-            temp.vault = new List<IBaseObject>((IBaseObject[])vault.ToArray().Clone());
+            ValuePhantom temp = new ValuePhantom {Vault = new List<IBaseObject>(Vault)};
             return temp;
         }
     }

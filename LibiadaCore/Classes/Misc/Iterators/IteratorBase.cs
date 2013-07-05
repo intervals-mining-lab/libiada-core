@@ -14,23 +14,23 @@ namespace LibiadaCore.Classes.Misc.Iterators
         ///<summary>
         /// Длинна возвращаемого фрагмента цепи
         ///</summary>
-        protected readonly int pLength;
+        protected readonly int Length;
         ///<summary>
         /// Шаг итерации
         ///</summary>
-        protected readonly int pStep;
+        protected readonly int Step;
         ///<summary>
         /// Цепь по которой будет перемещатся итератор
         ///</summary>
-        protected readonly ChainToIterate ptoIterate;
+        protected readonly ChainToIterate chain;
         ///<summary>
         /// Текушая позиция итератора
         ///</summary>
-        protected int pos;
+        protected int Position;
         ///<summary>
         /// Максимальное кол-во смещений
         ///</summary>
-        protected readonly int maxcount;
+        protected readonly int MaxCount;
 
 
         ///<summary>
@@ -46,10 +46,10 @@ namespace LibiadaCore.Classes.Misc.Iterators
             {
                 throw new Exception();
             }
-            pLength = length;
-            pStep = step;
-            ptoIterate = toIterate;
-            maxcount = ptoIterate.Length - pLength;
+            Length = length;
+            Step = step;
+            chain = toIterate;
+            MaxCount = chain.Length - Length;
             Reset();
         }
 
@@ -58,7 +58,7 @@ namespace LibiadaCore.Classes.Misc.Iterators
         ///</summary>
         public int MaxStepCount
         {
-            get { return maxcount; }
+            get { return MaxCount; }
         }
 
 
@@ -76,24 +76,24 @@ namespace LibiadaCore.Classes.Misc.Iterators
         ///<exception cref="Exception">В случае если пытаемся считать  значение за пределами цепи</exception>
         public virtual ChainReturn Current()
         {
-            if (pos < 0 || pos > maxcount)
+            if (Position < 0 || Position > MaxCount)
             {
                 return null;
             }
 
             ChainReturn temp = new ChainReturn();
-            temp.ClearAndSetNewLength(pLength);
+            temp.ClearAndSetNewLength(Length);
 
-            for (int i = 0; i < pLength; i++)
+            for (int i = 0; i < Length; i++)
             {
-                temp.Add(ptoIterate[pos + i], i);
+                temp.Add(chain[Position + i], i);
             }
             return temp;
         }
 
         public int ActualPosition()
         {
-            return pos;
+            return Position;
         }
 
 

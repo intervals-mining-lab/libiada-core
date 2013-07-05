@@ -7,11 +7,11 @@ namespace LibiadaCore.Classes.Root.Characteristics
     ///</summary>
     public class Characteristic : IBaseObject
     {
-        protected Boolean Calculated = false;
+        protected Boolean Calculated;
         protected double CharacteristicValue;
         protected LinkUp Link;
-        protected ICalculator Calculator = null;
-        protected BaseChain pChain = null;
+        protected ICalculator Calculator;
+        protected BaseChain Chain;
 
  
 
@@ -37,9 +37,9 @@ namespace LibiadaCore.Classes.Root.Characteristics
         ///<exception cref="Exception"></exception>
         public virtual double Value(CongenericChain chain, LinkUp linkUp)
         {
-            if (!Calculated || !chain.Equals(pChain) || linkUp != Link)
+            if (!Calculated || !chain.Equals(Chain) || linkUp != Link)
             {
-                pChain = chain;
+                Chain = chain;
                 Link = linkUp;
                 CharacteristicValue = Calculator.Calculate(chain, linkUp);
                 Calculated = true;
@@ -54,9 +54,9 @@ namespace LibiadaCore.Classes.Root.Characteristics
         ///<returns></returns>
         public virtual double Value(Chain chain, LinkUp linkUp)
         {
-            if (!Calculated || !chain.Equals(pChain) || linkUp != Link)
+            if (!Calculated || !chain.Equals(Chain) || linkUp != Link)
             {
-                pChain = chain;
+                Chain = chain;
                 Link = linkUp;
                 CharacteristicValue = Calculator.Calculate(chain, linkUp);
                 Calculated = true;
@@ -66,12 +66,14 @@ namespace LibiadaCore.Classes.Root.Characteristics
 
         public IBaseObject Clone()
         {
-            Characteristic temp = new Characteristic(Calculator);
-            temp.CharacteristicValue = CharacteristicValue;
-            temp.pChain = pChain;
-            temp.Calculated = Calculated;
-            temp.Link = Link;
-            return temp;
+            Characteristic result = new Characteristic(Calculator)
+                {
+                    CharacteristicValue = CharacteristicValue,
+                    Chain = Chain,
+                    Calculated = Calculated,
+                    Link = Link
+                };
+            return result;
 
         }
     }

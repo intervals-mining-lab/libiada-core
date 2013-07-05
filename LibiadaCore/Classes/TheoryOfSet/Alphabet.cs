@@ -12,13 +12,7 @@ namespace LibiadaCore.Classes.TheoryOfSet
     ///</summary>
     public class Alphabet : IBaseObject, IEnumerable
     {
-        protected List<IBaseObject> vault = new List<IBaseObject>();
-
-        ///<summary>
-        ///</summary>
-        public Alphabet()
-        {
-        }
+        protected List<IBaseObject> Vault = new List<IBaseObject>();
 
         ///<summary>
         /// Свойство возвращает мощность алфавита.
@@ -28,29 +22,29 @@ namespace LibiadaCore.Classes.TheoryOfSet
         {
             get
             {
-                 return vault.Count;
+                 return Vault.Count;
             }
         }
 
         ///<summary>
         ///  Реализация добавления элемента в алфавит.
         ///</summary>
-        ///<param name="o">Добавляемый элемент</param>
+        ///<param name="baseObject">Добавляемый элемент</param>
         ///<returns>Возвращает его номер в алфавите</returns>
         ///<exception cref="Exception">В случае если такой элемент уже содержится алфавите</exception>
         ///<exception cref="NullReferenceException">В случае если добавляемый элемент null</exception>
-        public virtual int Add(IBaseObject o)
+        public virtual int Add(IBaseObject baseObject)
         {
-            if (o == null)
+            if (baseObject == null)
             {
                 throw new NullReferenceException();
             }
-            if (vault.Contains((o)))
+            if (Vault.Contains((baseObject)))
             {
                 throw new Exception();
             }
-            vault.Add(o.Clone());
-            return vault.IndexOf(o);
+            Vault.Add(baseObject.Clone());
+            return Vault.IndexOf(baseObject);
         }
 
         ///<summary>
@@ -64,12 +58,12 @@ namespace LibiadaCore.Classes.TheoryOfSet
         ///<param name="index">Индекс элемента в алфавите</param>
         public IBaseObject this[int index]
         {
-            get { return vault[index].Clone(); }
+            get { return Vault[index].Clone(); }
             set
             {
-                if (!vault.Contains(value))
+                if (!Vault.Contains(value))
                 {
-                    vault[index] = value.Clone();
+                    Vault[index] = value.Clone();
                 }
             }
         }
@@ -81,7 +75,7 @@ namespace LibiadaCore.Classes.TheoryOfSet
         /// <param name="index">Индекс удаляемого элемента в алфавите</param>
         public virtual void Remove(int index)
         {
-            vault.RemoveAt(index);
+            Vault.RemoveAt(index);
         }
 
         /// <summary>
@@ -90,9 +84,8 @@ namespace LibiadaCore.Classes.TheoryOfSet
         /// <returns>Копию алфавита</returns>
         public IBaseObject Clone()
         {
-            Alphabet AlNew = new Alphabet();
-            AlNew.vault = new List<IBaseObject>((IBaseObject[])vault.ToArray().Clone());
-            return AlNew;
+            Alphabet result = new Alphabet {Vault = new List<IBaseObject>(Vault)};
+            return result;
         }
 
         /// <summary>
@@ -119,18 +112,18 @@ namespace LibiadaCore.Classes.TheoryOfSet
         /// <summary>
         /// Поэлементное сравнение алфавитов
         /// </summary>
-        /// <param name="a_obj">алфавит который сравнивают с исходным</param>
+        /// <param name="aObj">алфавит который сравнивают с исходным</param>
         /// <returns>true, если алфавиты равны, иначе false</returns>
-        private bool EqualsAsAlphabet(Alphabet a_obj)
+        private bool EqualsAsAlphabet(Alphabet aObj)
         {
-            if (a_obj == null || Power != a_obj.Power)
+            if (aObj == null || Power != aObj.Power)
             {
                 return false;
             }
 
             for (int i = 0; i < Power; i++)
             {
-                if (!vault.Contains(a_obj.vault[i]))
+                if (!Vault.Contains(aObj.Vault[i]))
                 {
                     return false;
                 }
@@ -146,7 +139,7 @@ namespace LibiadaCore.Classes.TheoryOfSet
         ///<returns>Индекс объекта в алфавите</returns>
         public int IndexOf(IBaseObject obj)
         {
-            return vault.IndexOf(obj);
+            return Vault.IndexOf(obj);
         }
 
         ///<summary>
@@ -156,18 +149,18 @@ namespace LibiadaCore.Classes.TheoryOfSet
         ///<returns>True если алфавит содержит данный объект, иначе false</returns>
         public bool Contains(IBaseObject obj)
         {
-            return vault.Contains(obj);
+            return Vault.Contains(obj);
         }
 
         public IEnumerator GetEnumerator()
         {
-            return vault.GetEnumerator();
+            return Vault.GetEnumerator();
         }
 
         public override int GetHashCode()
         {
             int temp = 0;
-            foreach (object o in vault)
+            foreach (IBaseObject o in Vault)
             {
                 temp += 29*o.GetHashCode();
             }

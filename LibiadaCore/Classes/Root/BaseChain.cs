@@ -1,5 +1,4 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using LibiadaCore.Classes.Root.SimpleTypes;
 using LibiadaCore.Classes.TheoryOfSet;
@@ -35,9 +34,9 @@ namespace LibiadaCore.Classes.Root
         /// <param name="chain">Коллекция элементов</param>
         public BaseChain(List<IBaseObject> chain) : this(chain.Count)
         {
-            for (int i = 0; i < this.Length; i++)
+            for (int i = 0; i < Length; i++)
             {
-                this.Add(chain[i], i);
+                Add(chain[i], i);
             }
         }
 
@@ -84,9 +83,9 @@ namespace LibiadaCore.Classes.Root
         {
             get
             {
-                Alphabet Temp = (Alphabet)alphabet.Clone();
-                Temp.Remove(0);
-                return Temp;
+                Alphabet result = (Alphabet)alphabet.Clone();
+                result.Remove(0);
+                return result;
             }
         }
 
@@ -192,8 +191,7 @@ namespace LibiadaCore.Classes.Root
             }
 
             building = new int[length];
-            alphabet = new Alphabet();
-            alphabet.Add(NullValue.Instance());
+            alphabet = new Alphabet {NullValue.Instance()};
         }
 
         ///<summary>

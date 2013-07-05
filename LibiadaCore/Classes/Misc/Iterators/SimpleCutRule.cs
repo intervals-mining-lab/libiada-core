@@ -6,14 +6,14 @@
         {
             for (int i = 0; i + windowLength < chainLength; i+= step)
             {
-                starts.Add(i);
-                stops.Add(windowLength + i);
+                Starts.Add(i);
+                Stops.Add(windowLength + i);
             }
         }
 
-        public override CutRuleIterator getIterator()
+        public override CutRuleIterator GetIterator()
         {
-            return new CutRuleIterator(starts, stops);
+            return new CutRuleIterator(Starts, Stops);
         }
     }
 }

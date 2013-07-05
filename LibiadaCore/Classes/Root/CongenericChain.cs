@@ -9,7 +9,7 @@ namespace LibiadaCore.Classes.Root
     public class CongenericChain : BaseChain, IBaseObject
     {
         protected List<int> intervals = new List<int>();
-        protected int MaxFilledPosition = 0;
+        protected int MaxFilledPosition;
 
         ///<summary>
         /// Создаёт однородную цепочку для заданного элемента и заданной длины.

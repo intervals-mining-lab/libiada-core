@@ -5,22 +5,23 @@ namespace LibiadaCore.Classes.Root.SimpleTypes
     ///</summary>
     public class ValueInt : IBaseObject
     {
+
+        public int Value;
+
         ///<summary>
         ///</summary>
         ///<param name="i"></param>
         public ValueInt(int i)
         {
-            value = i;
+            Value = i;
         }
-
-        public int value = 0;
 
         ///<summary>
         ///</summary>
         ///<returns></returns>
         public IBaseObject Clone()
         {
-            return new ValueInt(value);
+            return new ValueInt(Value);
         }
 
         ///<summary>
@@ -41,16 +42,16 @@ namespace LibiadaCore.Classes.Root.SimpleTypes
             {
                 return true;
             }
-            return value.Equals(((ValueInt) obj).value);
+            return Value.Equals(((ValueInt) obj).Value);
         }
 
         ///<summary>
         ///</summary>
-        ///<param name="From"></param>
+        ///<param name="from"></param>
         ///<returns></returns>
-        public static implicit operator int(ValueInt From)
+        public static implicit operator int(ValueInt from)
         {
-            return From.value;
+            return from.Value;
         }
 
         ///<summary>
@@ -64,7 +65,7 @@ namespace LibiadaCore.Classes.Root.SimpleTypes
 
         public override string ToString()
         {
-            return value.ToString();
+            return Value.ToString();
         }
     }
 }
