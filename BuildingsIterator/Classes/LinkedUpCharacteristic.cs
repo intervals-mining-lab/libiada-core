@@ -6,7 +6,7 @@ namespace BuildingsIterator.Classes
     ///<summary>
     /// ѕара, калькул€тор характеристики и прив€зка
     ///</summary>
-    public class LinkedUpCharacteristic
+    public abstract class LinkedUpCharacteristic
     {
         private ICalculator calc;
         private LinkUp link;

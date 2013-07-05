@@ -10,7 +10,7 @@ using System.Collections.Generic;
 
 namespace BuildingsIterator.Classes
 {
-    class ConvertArray
+    static class ConvertArray
     {
         public static string ArrayToString(IList array)
         {

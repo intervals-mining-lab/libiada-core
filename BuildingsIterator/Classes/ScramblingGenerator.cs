@@ -40,7 +40,6 @@ namespace BuildingsIterator.Classes
                 }
                 catch(Exception)
                 {
-                    ;
                 }
             }
             return new ChainPicksWithCharacteristics(hTable, charact);
