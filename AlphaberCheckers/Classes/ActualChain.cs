@@ -13,7 +13,7 @@ namespace AlphaberCheckers.Classes
 
         public  ActualChain(BaseChain chain)
         {
-            this.Chain = (BaseChain) chain.Clone();
+            Chain = (BaseChain) chain.Clone();
             ActualLength = 0;
             ResultChain = new BaseChain(chain.Length);
         }
@@ -49,9 +49,11 @@ namespace AlphaberCheckers.Classes
 
         public object Clone()
         {
-            ActualChain newChain = new ActualChain((BaseChain) Chain.Clone());
-            newChain.ResultChain = (BaseChain) ResultChain.Clone();
-            newChain.ActualLength = ActualLength;
+            ActualChain newChain = new ActualChain((BaseChain) Chain.Clone())
+                {
+                    ResultChain = (BaseChain) ResultChain.Clone(),
+                    ActualLength = ActualLength
+                };
             return newChain;
         }
     }

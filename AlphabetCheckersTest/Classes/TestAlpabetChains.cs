@@ -4,14 +4,14 @@ using LibiadaCore.Classes.Root;
 using LibiadaCore.Classes.Root.SimpleTypes;
 using NUnit.Framework;
 
-namespace TestAlphabetCheckers.Classes
+namespace AlphabetCheckersTest.Classes
 {
     ///<summary>
     ///</summary>
     [TestFixture] 
     public class TestAlpabetChains
     {
-        private BaseChain ChainBase = null;
+        private BaseChain ChainBase;
 
         ///<summary>
         ///</summary>
@@ -36,8 +36,7 @@ namespace TestAlphabetCheckers.Classes
         [Test]
         public void TestAddChain()
         {
-            AlpabetChains temp = new AlpabetChains();
-            temp.Add(ChainBase);
+            AlpabetChains temp = new AlpabetChains {ChainBase};
             BaseChain result = (BaseChain) temp[0];
             Assert.AreEqual(ChainBase, result);
         }

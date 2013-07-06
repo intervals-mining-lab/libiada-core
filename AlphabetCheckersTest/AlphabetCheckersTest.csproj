@@ -8,8 +8,8 @@
     <ProjectGuid>{4DF6AE15-7EB9-4057-A04C-32711FBA7C7C}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>TestAlphabetCheckers</RootNamespace>
-    <AssemblyName>TestAlphabetCheckers</AssemblyName>
+    <RootNamespace>AlphabetCheckersTest</RootNamespace>
+    <AssemblyName>AlphabetCheckersTest</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>

@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AlphaberCheckers", "AlphaberCheckers\AlphaberCheckers.csproj", "{7D33D7CD-019A-474E-9C63-C52BA2DE9B7B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestAlphabetCheckers", "TestAlphabetCheckers\TestAlphabetCheckers.csproj", "{4DF6AE15-7EB9-4057-A04C-32711FBA7C7C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestAlphabetCheckers", "AlphabetCheckersTest\AlphabetCheckersTest.csproj", "{4DF6AE15-7EB9-4057-A04C-32711FBA7C7C}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{AD605D00-C43F-4EC1-9AB1-3D4D968AC271}"
 	ProjectSection(SolutionItems) = preProject

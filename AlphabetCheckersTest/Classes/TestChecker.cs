@@ -4,7 +4,7 @@ using LibiadaCore.Classes.Root.SimpleTypes;
 using LibiadaCore.Classes.TheoryOfSet;
 using NUnit.Framework;
 
-namespace TestAlphabetCheckers.Classes
+namespace AlphabetCheckersTest.Classes
 {
     ///<summary>
     ///</summary>
@@ -29,20 +29,22 @@ namespace TestAlphabetCheckers.Classes
             chainBase[8] = new ValueChar('9');
             chainBase[9] = new ValueChar('A');
 
-            Alphabet alBase = new Alphabet();
-            alBase.Add(new ValueChar('2'));
-            alBase.Add(new ValueChar('3'));
-            alBase.Add(new ValueChar('5'));
-            alBase.Add(new ValueChar('1'));
-            alBase.Add(new ValueChar('4'));
-            alBase.Add(new ValueChar('9'));
-            alBase.Add(new ValueChar('A'));
-            alBase.Add(new ValueChar('8'));
-            alBase.Add(new ValueChar('6'));
-            alBase.Add(new ValueChar('7'));
+            Alphabet alBase = new Alphabet
+                {
+                    new ValueChar('2'),
+                    new ValueChar('3'),
+                    new ValueChar('5'),
+                    new ValueChar('1'),
+                    new ValueChar('4'),
+                    new ValueChar('9'),
+                    new ValueChar('A'),
+                    new ValueChar('8'),
+                    new ValueChar('6'),
+                    new ValueChar('7')
+                };
 
             Checker checker = new Checker(alBase);
-            Assert.AreEqual(true , checker.check(chainBase));
+            Assert.AreEqual(true , checker.Check(chainBase));
         }
         ///<summary>
         ///</summary>
@@ -62,20 +64,22 @@ namespace TestAlphabetCheckers.Classes
             chainBase[8] = new ValueChar('9');
             chainBase[9] = new ValueChar('A');
 
-            Alphabet alBase = new Alphabet();
-            alBase.Add(new ValueChar('2'));
-            alBase.Add(new ValueChar('3'));
-            alBase.Add(new ValueChar('5'));
-            alBase.Add(new ValueChar('1'));
-            alBase.Add(new ValueChar('4'));
-            alBase.Add(new ValueChar('9'));
-            alBase.Add(new ValueChar('A'));
-            alBase.Add(new ValueChar('8'));
-            alBase.Add(new ValueChar('6'));
+            Alphabet alBase = new Alphabet
+                {
+                    new ValueChar('2'),
+                    new ValueChar('3'),
+                    new ValueChar('5'),
+                    new ValueChar('1'),
+                    new ValueChar('4'),
+                    new ValueChar('9'),
+                    new ValueChar('A'),
+                    new ValueChar('8'),
+                    new ValueChar('6')
+                };
             //alBase.Add(new ValueChar('7'));
 
             Checker checker = new Checker(alBase);
-            Assert.AreEqual(false, checker.check(chainBase));
+            Assert.AreEqual(false, checker.Check(chainBase));
         }
 
         ///<summary>
@@ -124,7 +128,7 @@ namespace TestAlphabetCheckers.Classes
             alBase.Add(alph);
 
             Checker checker = new Checker(alBase);
-            Assert.AreEqual(true, checker.check(chainBase));
+            Assert.AreEqual(true, checker.Check(chainBase));
         }
 
         ///<summary>
@@ -174,7 +178,7 @@ namespace TestAlphabetCheckers.Classes
             alBase.Add(alph);
 
             Checker checker = new Checker(alBase);
-            Assert.AreEqual(false, checker.check(chainBase));
+            Assert.AreEqual(false, checker.Check(chainBase));
         }
         ///<summary>
         ///</summary>
@@ -221,7 +225,7 @@ namespace TestAlphabetCheckers.Classes
             alBase.Add(alph);
 
             Checker checker = new Checker(alBase);
-            Assert.AreEqual(true, checker.check(chainBase));
+            Assert.AreEqual(true, checker.Check(chainBase));
         }
 
         ///<summary>

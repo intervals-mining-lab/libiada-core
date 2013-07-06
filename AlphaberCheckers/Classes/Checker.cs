@@ -22,7 +22,7 @@ namespace AlphaberCheckers.Classes
             }
         }
 
-        public bool check(BaseChain chain)
+        public bool Check(BaseChain chain)
         {
             return Divide(chain) != null;
         }
@@ -58,12 +58,9 @@ namespace AlphaberCheckers.Classes
                             actChain.RemoveLitera((int) list[i]);
                             return actChain.GetResult();
                         }
-                        else
-                        {
-                            ActualChain new_chain = (ActualChain) actChain.Clone();
-                            new_chain.RemoveLitera((int)list[i]);
-                            stack.Push(new_chain);
-                        }
+                        ActualChain newChain = (ActualChain) actChain.Clone();
+                        newChain.RemoveLitera((int)list[i]);
+                        stack.Push(newChain);
                     }
                 }
             } while (stack.Count > 0);
