@@ -1,0 +1,111 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{458F7934-4B6F-4ACD-955D-255A7F123886}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Segmentator</RootNamespace>
+    <AssemblyName>Segmentator</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="LibiadaCore">
+      <HintPath>..\..\libiada-core\LibiadaCore\bin\Debug\LibiadaCore.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Classes\Base\Collectors\DataCollector.cs" />
+    <Compile Include="Classes\Base\Collectors\FrequencyDictionary.cs" />
+    <Compile Include="Classes\Base\Formalism.cs" />
+    <Compile Include="Classes\Base\Iterators\BaseIterator.cs" />
+    <Compile Include="Classes\Base\Iterators\EndIterator.cs" />
+    <Compile Include="Classes\Base\Iterators\StartIterator.cs" />
+    <Compile Include="Classes\Base\Parameter.cs" />
+    <Compile Include="Classes\Base\Seekers\Converters\Filter.cs" />
+    <Compile Include="Classes\Base\Seekers\Converters\SequenceCleaner.cs" />
+    <Compile Include="Classes\Base\Seekers\Seeker.cs" />
+    <Compile Include="Classes\Base\Seekers\SeekerSequence.cs" />
+    <Compile Include="Classes\Base\Sequencies\ComplexChain.cs" />
+    <Compile Include="Classes\Extended\Helper.cs" />
+    <Compile Include="Classes\Interfaces\IDefinable.cs" />
+    <Compile Include="Classes\Interfaces\IIdentifiable.cs" />
+    <Compile Include="Classes\Interfaces\IIterator.cs" />
+    <Compile Include="Classes\Interfaces\ISeeker.cs" />
+    <Compile Include="Classes\Model\Algorithm.cs" />
+    <Compile Include="Classes\Model\AlgorithmBase.cs" />
+    <Compile Include="Classes\Model\AlgorithmFactory.cs" />
+    <Compile Include="Classes\Model\ChainSplitter.cs" />
+    <Compile Include="Classes\Model\ContentValues.cs" />
+    <Compile Include="Classes\Model\ConvolutedCriterionMethod.cs" />
+    <Compile Include="Classes\Model\Criterion\Criterion.cs" />
+    <Compile Include="Classes\Model\Criterion\CriterionAttitudeOfRemoteness.cs" />
+    <Compile Include="Classes\Model\Criterion\CriterionEqualityOfDepths.cs" />
+    <Compile Include="Classes\Model\Criterion\CriterionFactory.cs" />
+    <Compile Include="Classes\Model\Criterion\CriterionGoldenRatio.cs" />
+    <Compile Include="Classes\Model\Criterion\CriterionMethod.cs" />
+    <Compile Include="Classes\Model\Criterion\CriterionMinimumRegularity.cs" />
+    <Compile Include="Classes\Model\Criterion\CriterionMinSimmetryByIntervals.cs" />
+    <Compile Include="Classes\Model\Criterion\CriterionMinSymmetryByShrader.cs" />
+    <Compile Include="Classes\Model\Criterion\CriterionPartialOrlov.cs" />
+    <Compile Include="Classes\Model\Criterion\CriterionShrederByWords.cs" />
+    <Compile Include="Classes\Model\Input.cs" />
+    <Compile Include="Classes\Model\MainOutputData.cs" />
+    <Compile Include="Classes\Model\Method.cs" />
+    <Compile Include="Classes\Model\NotConvolutedCriterionMethod.cs" />
+    <Compile Include="Classes\Model\PositionFilter.cs" />
+    <Compile Include="Classes\Model\Seekers\DifferenceAverageIntervalExtractor.cs" />
+    <Compile Include="Classes\Model\Seekers\ProbabilityExtractor.cs" />
+    <Compile Include="Classes\Model\Seekers\SubwordExtractor.cs" />
+    <Compile Include="Classes\Model\Seekers\WordExtractor.cs" />
+    <Compile Include="Classes\Model\Seekers\WordExtractorFactory.cs" />
+    <Compile Include="Classes\Model\SimpleChainSplitter.cs" />
+    <Compile Include="Classes\Model\Threshold\ThresholdDichotomic.cs" />
+    <Compile Include="Classes\Model\Threshold\ThresholdFactory.cs" />
+    <Compile Include="Classes\Model\Threshold\ThresholdLinear.cs" />
+    <Compile Include="Classes\Model\Threshold\ThresholdRandom.cs" />
+    <Compile Include="Classes\Model\Threshold\ThresholdVariator.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
