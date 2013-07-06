@@ -105,10 +105,7 @@ namespace PhantomChains.Classes.Statistics.MarkovChain.Matrixes.Absolute
                 int[] newArray = (arrayOfIndexes.Length == 1) ? null : GetChainLess(arrayOfIndexes);
                 return ((IAbsoluteMatrix)ValueList[index]).Sum(newArray);
             }
-            else
-            {
-                return Count;
-            }
+            return Count;
         }
     }
 }

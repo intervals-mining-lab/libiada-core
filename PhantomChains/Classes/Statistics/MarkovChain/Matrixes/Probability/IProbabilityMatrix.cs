@@ -20,8 +20,8 @@ namespace PhantomChains.Classes.Statistics.MarkovChain.Matrixes.Probability
         /// Получение вектора вероятностей лежащего по адресу
         ///</summary>
         ///<param name="alphabet"></param>
-        ///<param name="Pred">Адрес</param>
+        ///<param name="pred">Адрес</param>
         ///<returns>Список пар "событие - вероятность"</returns>
-        Dictionary<IBaseObject, double> GetProbabilityVector(Alphabet alphabet, int[] Pred);
+        Dictionary<IBaseObject, double> GetProbabilityVector(Alphabet alphabet, int[] pred);
     }
 }

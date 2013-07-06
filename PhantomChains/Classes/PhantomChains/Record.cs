@@ -12,7 +12,7 @@ namespace PhantomChains.Classes.PhantomChains
         /// Фантомное сообщение, находящееся в определенной позиции фантомной цепи 
         /// и представляющее варианты содержимого узлов этого же уровня в дереве вариантов.
         ///</summary>
-        public ValuePhantom Content = null;
+        public ValuePhantom Content;
         ///<summary>
         /// Количество варинтов, накопившееся к данному уровню дерева.
         ///</summary>

@@ -4,11 +4,11 @@ using System.Runtime.InteropServices;
 // Управление общими сведениями о сборке осуществляется с помощью 
 // набора атрибутов. Измените значения этих атрибутов, чтобы изменить сведения,
 // связанные со сборкой.
-[assembly: AssemblyTitle("PhantomChains")]
+[assembly: AssemblyTitle("TestPhantomChains")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("PhantomChains")]
+[assembly: AssemblyProduct("TestPhantomChains")]
 [assembly: AssemblyCopyright("Copyright ©  2012")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -19,7 +19,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // Следующий GUID служит для идентификации библиотеки типов, если этот проект будет видимым для COM
-[assembly: Guid("82535d38-ae3c-4a8d-b2bb-cc84be47687f")]
+[assembly: Guid("13089c72-93a6-47ca-afb5-26f4f30102b8")]
 
 // Сведения о версии сборки состоят из следующих четырех значений:
 //

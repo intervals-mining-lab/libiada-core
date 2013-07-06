@@ -11,7 +11,7 @@ namespace PhantomChains.Classes.PhantomChains
     public class PhantomTable
     {
         private List<Record> table = new List<Record>();
-        private BaseChain InternalChain = null;
+        private BaseChain InternalChain;
         ///<summary>
         /// Массив начальных позиций деревьев в фантомной цепочке.
         ///</summary>
@@ -43,13 +43,12 @@ namespace PhantomChains.Classes.PhantomChains
             table.Add(null);
             for(int i=InternalChain.Length;i>0;i--)
             {
-                ValuePhantom Temp = (ValuePhantom)InternalChain[i-1];
-                table[i] = new Record(Temp, v);
-                v *= (uint)Temp.Power;
+                ValuePhantom temp = (ValuePhantom)InternalChain[i-1];
+                table[i] = new Record(temp, v);
+                v *= (uint)temp.Power;
             }
             //корню дерева не ставится в соответствие фантомное сообщение
-            ValuePhantom t = new ValuePhantom();
-            t.Add(NullValue.Instance());
+            ValuePhantom t = new ValuePhantom {NullValue.Instance()};
             table[0] = new Record(t, v);
         }
 

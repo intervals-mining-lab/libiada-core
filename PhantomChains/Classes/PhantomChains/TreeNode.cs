@@ -8,10 +8,10 @@ namespace PhantomChains.Classes.PhantomChains
     ///<summary>
     /// Класс-узел дерева ваиантов
     ///</summary>
-    public class TreeNode:ITreeNode
+    public class TreeNode:AbstractNode
     {
-        private IBaseObject id = null;
-        private ITreeNode Parent = null;
+        private IBaseObject id;
+        private AbstractNode Parent;
 
 
         ///<summary>
@@ -21,7 +21,7 @@ namespace PhantomChains.Classes.PhantomChains
         ///<param name="content">Вариант содержимого соответствующий данному узлу</param>
         ///<param name="table">Таблица с параметрами</param>
         ///<exception cref="Exception">Если родительский элемент не задан, возникает исключение</exception>
-        public TreeNode(ITreeNode parent, IBaseObject content, PhantomTable table)
+        public TreeNode(AbstractNode parent, IBaseObject content, PhantomTable table)
         {
             if (parent != null)
             {
@@ -59,10 +59,7 @@ namespace PhantomChains.Classes.PhantomChains
                 }
                 return true;
             }
-            else
-            {
-                return false;
-            }
+            return false;
         }
 
         /// <summary>

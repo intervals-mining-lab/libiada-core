@@ -60,8 +60,8 @@ namespace PhantomChains.Classes.Statistics.MarkovChain
         /// Использовать Информацию марковской цепи указанного порядка ( не более порядока указаного при создании объекта)
         ///</summary>
         ///<param name="i">Длина генерируемой цепи</param>
-        ///<param name="rang">Порядок марковской цепи используемый при реализации</param>
-        public abstract ChainGenerated Generate(int i, int rang);
+        ///<param name="rank">Порядок марковской цепи используемый при реализации</param>
+        public abstract ChainGenerated Generate(int i, int rank);
 
         /// <summary>
         /// Возвращает сгенерированную марковскую цепь полученную из индексов

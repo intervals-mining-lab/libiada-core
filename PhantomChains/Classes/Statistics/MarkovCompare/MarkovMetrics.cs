@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using LibiadaCore.Classes.Root;
+﻿using LibiadaCore.Classes.Root;
 using PhantomChains.Classes.Statistics.MarkovChain;
 using PhantomChains.Classes.Statistics.MarkovChain.Matrixes.Probability;
 

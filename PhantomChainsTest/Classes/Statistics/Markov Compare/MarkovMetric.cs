@@ -3,9 +3,9 @@ using LibiadaCore.Classes.Root.SimpleTypes;
 using NUnit.Framework;
 using PhantomChains.Classes.Statistics.MarkovChain;
 using PhantomChains.Classes.Statistics.MarkovCompare;
-using TestPhantomChains.Classes.Statistics.MarkovChain.Generators;
+using PhantomChainsTest.Classes.Statistics.MarkovChain.Generators;
 
-namespace TestPhantomChains.Classes.Statistics.Markov_Compare
+namespace PhantomChainsTest.Classes.Statistics.Markov_Compare
 {
     [TestFixture]
     class MarkovMetric
@@ -29,10 +29,10 @@ namespace TestPhantomChains.Classes.Statistics.Markov_Compare
         [Test]
         public void CompareSameChain()
         {
-            MarkovChainNotUniformStatic<Chain, Chain> Markov = new MarkovChainNotUniformStatic<Chain, Chain>(2, 0, new MockGenerator());
-            Markov.Teach(TestChain1, TeachingMethod.Cycle);
+            MarkovChainNotUniformStatic<Chain, Chain> markov = new MarkovChainNotUniformStatic<Chain, Chain>(2, 0, new MockGenerator());
+            markov.Teach(TestChain1, TeachingMethod.Cycle);
             MarkovMetrics ma = new MarkovMetrics();
-            Assert.AreEqual(ma.GetMiddleArith(Markov), ma.GetMiddleArith(Markov));
+            Assert.AreEqual(ma.GetMiddleArith(markov), ma.GetMiddleArith(markov));
         }
     }
 }

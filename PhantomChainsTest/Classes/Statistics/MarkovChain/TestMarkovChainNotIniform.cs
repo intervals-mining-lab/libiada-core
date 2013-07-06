@@ -3,9 +3,9 @@ using LibiadaCore.Classes.Root.SimpleTypes;
 using NUnit.Framework;
 using PhantomChains.Classes.Statistics.MarkovChain;
 using PhantomChains.Classes.Statistics.MarkovChain.Generators;
-using TestPhantomChains.Classes.Statistics.MarkovChain.Generators;
+using PhantomChainsTest.Classes.Statistics.MarkovChain.Generators;
 
-namespace TestPhantomChains.Classes.Statistics.MarkovChain
+namespace PhantomChainsTest.Classes.Statistics.MarkovChain
 {
     /**
      * Тестируем неоднородную марковскую цепь 
@@ -18,11 +18,11 @@ namespace TestPhantomChains.Classes.Statistics.MarkovChain
     public class TestMarkovChainNotUniform
     {
         // Исходная цепь на которой будет происходить обучение
-        private Chain TestChain = null;
-        private Chain TestChain2 = null;
+        private Chain TestChain;
+        private Chain TestChain2;
 
         [SetUp]
-        public void init()
+        public void Init()
         {
             // Создаем цепь длинной 12
             // |a|d|b|a|a|c|b|b|a|a|c|a|
@@ -59,7 +59,7 @@ namespace TestPhantomChains.Classes.Statistics.MarkovChain
         public void TestMarkovChainNotUniform0Rang2()
         {
             // Используем генератор заглушку
-            IGenerator Generator = new MockGenerator();
+            IGenerator generator = new MockGenerator();
             // Порядок цепи 2 
             // Значит что каждый элемент зависит от одного предудушего
             int MarkovChainRang = 2;
@@ -67,15 +67,15 @@ namespace TestPhantomChains.Classes.Statistics.MarkovChain
             // следовательно допускаем имеется 2 модели для четных и нечетных позиций
             int NoUniformRang = 0;
             // Создаем марковскую модель передавая её ранг, неоднородность и генератор
-            MarkovChainNotUniformStatic<Chain, Chain> MarkovChain = new MarkovChainNotUniformStatic<Chain, Chain>(MarkovChainRang, NoUniformRang, Generator);
+            MarkovChainNotUniformStatic<Chain, Chain> markovChain = new MarkovChainNotUniformStatic<Chain, Chain>(MarkovChainRang, NoUniformRang, generator);
 
             // Длинна генерируемой цепи
             int Length = 30;
             // Обучаем цепь 
             // TeachingMethod.None значнт не какой предворительной обработки цепи не проводится
-            MarkovChain.Teach(TestChain2, TeachingMethod.Cycle);
+            markovChain.Teach(TestChain2, TeachingMethod.Cycle);
 
-            Chain Temp = MarkovChain.Generate(Length);
+            Chain temp = markovChain.Generate(Length);
 
             /* 
              * 1. Цепь a a a a a a b a a a b a
@@ -96,62 +96,62 @@ namespace TestPhantomChains.Classes.Statistics.MarkovChain
 
 
             // Цепь которую хотим получить
-            Chain ResultTheory = new Chain(30);
-            ResultTheory[0] = (ValueString)"a"; // "a" 0.77;
-            ResultTheory[1] = (ValueString)"a"; // "a" 0.15;
-            ResultTheory[2] = (ValueString)"b"; // "b" 0.96;
-            ResultTheory[3] = (ValueString)"a"; // "a" 0.61;
-            ResultTheory[4] = (ValueString)"a"; // "a" 0.15;
-            ResultTheory[5] = (ValueString)"b"; // "b" 0.85;
-            ResultTheory[6] = (ValueString)"a"; // "a" 0.67;
-            ResultTheory[7] = (ValueString)"a"; // "a" 0.51;
-            ResultTheory[8] = (ValueString)"a"; // "a" 0.71;
-            ResultTheory[9] = (ValueString)"a"; // "a" 0.2;
-            ResultTheory[10] = (ValueString)"a"; // "a" 0.77;
-            ResultTheory[11] = (ValueString)"a"; // "a" 0.15;
-            ResultTheory[12] = (ValueString)"b"; // "b" 0.96;
-            ResultTheory[13] = (ValueString)"a"; // "a" 0.61;
-            ResultTheory[14] = (ValueString)"a"; // "a" 0.15;
-            ResultTheory[15] = (ValueString)"b"; // "b" 0.85;
-            ResultTheory[16] = (ValueString)"a"; // "a" 0.67;
-            ResultTheory[17] = (ValueString)"a"; // "a" 0.51;
-            ResultTheory[18] = (ValueString)"a"; // "a" 0.71;
-            ResultTheory[19] = (ValueString)"a"; // "a" 0.2;
-            ResultTheory[20] = (ValueString)"a"; // "a" 0.77;
-            ResultTheory[21] = (ValueString)"a"; // "a" 0.15;
-            ResultTheory[22] = (ValueString)"b"; // "b" 0.96;
-            ResultTheory[23] = (ValueString)"a"; // "a" 0.61;
-            ResultTheory[24] = (ValueString)"a"; // "a" 0.15;
-            ResultTheory[25] = (ValueString)"b"; // "b" 0.85;
-            ResultTheory[26] = (ValueString)"a"; // "a" 0.67;
-            ResultTheory[27] = (ValueString)"a"; // "a" 0.51;
-            ResultTheory[28] = (ValueString)"a"; // "a" 0.71;
-            ResultTheory[29] = (ValueString)"a"; // "a" 0.2; 
+            Chain resultTheory = new Chain(30);
+            resultTheory[0] = (ValueString)"a"; // "a" 0.77;
+            resultTheory[1] = (ValueString)"a"; // "a" 0.15;
+            resultTheory[2] = (ValueString)"b"; // "b" 0.96;
+            resultTheory[3] = (ValueString)"a"; // "a" 0.61;
+            resultTheory[4] = (ValueString)"a"; // "a" 0.15;
+            resultTheory[5] = (ValueString)"b"; // "b" 0.85;
+            resultTheory[6] = (ValueString)"a"; // "a" 0.67;
+            resultTheory[7] = (ValueString)"a"; // "a" 0.51;
+            resultTheory[8] = (ValueString)"a"; // "a" 0.71;
+            resultTheory[9] = (ValueString)"a"; // "a" 0.2;
+            resultTheory[10] = (ValueString)"a"; // "a" 0.77;
+            resultTheory[11] = (ValueString)"a"; // "a" 0.15;
+            resultTheory[12] = (ValueString)"b"; // "b" 0.96;
+            resultTheory[13] = (ValueString)"a"; // "a" 0.61;
+            resultTheory[14] = (ValueString)"a"; // "a" 0.15;
+            resultTheory[15] = (ValueString)"b"; // "b" 0.85;
+            resultTheory[16] = (ValueString)"a"; // "a" 0.67;
+            resultTheory[17] = (ValueString)"a"; // "a" 0.51;
+            resultTheory[18] = (ValueString)"a"; // "a" 0.71;
+            resultTheory[19] = (ValueString)"a"; // "a" 0.2;
+            resultTheory[20] = (ValueString)"a"; // "a" 0.77;
+            resultTheory[21] = (ValueString)"a"; // "a" 0.15;
+            resultTheory[22] = (ValueString)"b"; // "b" 0.96;
+            resultTheory[23] = (ValueString)"a"; // "a" 0.61;
+            resultTheory[24] = (ValueString)"a"; // "a" 0.15;
+            resultTheory[25] = (ValueString)"b"; // "b" 0.85;
+            resultTheory[26] = (ValueString)"a"; // "a" 0.67;
+            resultTheory[27] = (ValueString)"a"; // "a" 0.51;
+            resultTheory[28] = (ValueString)"a"; // "a" 0.71;
+            resultTheory[29] = (ValueString)"a"; // "a" 0.2; 
 
-            Assert.AreEqual(ResultTheory, Temp);
+            Assert.AreEqual(resultTheory, temp);
         }
 
         [Test]
         public void TestMarkovChainNotUniform1Rang2()
         {
             // Используем генератор заглушку
-            IGenerator Generator = new MockGenerator();
+            IGenerator generator = new MockGenerator();
             // Порядок цепи 2 
             // Значит что каждый элемент зависит от одного предудушего
-            int MarkovChainRang = 2;
+            const int markovChainRang = 2;
             // неоднородность 1 
             // следовательно допускаем имеется 2 модели для четных и нечетных позиций
-            int NoUniformRang = 1;
+            const int noUniformRang = 1;
             // Создаем марковскую модель передавая её ранг, неоднородность и генератор
-            MarkovChainNotUniformStatic<Chain, Chain> MarkovChain = new MarkovChainNotUniformStatic<Chain, Chain>(MarkovChainRang, NoUniformRang, Generator);
+            MarkovChainNotUniformStatic<Chain, Chain> markovChain = new MarkovChainNotUniformStatic<Chain, Chain>(markovChainRang, noUniformRang, generator);
 
             // Длинна генерируемой цепи
             int Length = 12;
             // Обучаем цепь 
             // TeachingMethod.None значнт не какой предворительной обработки цепи не проводится
-            MarkovChain.Teach(TestChain, TeachingMethod.None);
+            markovChain.Teach(TestChain, TeachingMethod.None);
 
-            Chain Temp = MarkovChain.Generate(Length);
+            Chain temp = markovChain.Generate(Length);
 
             /**
              * Внутри неоднородной марковской цепи существует n однородных марковских цепей. n - порядок неоднородности цепи
@@ -213,21 +213,21 @@ namespace TestPhantomChains.Classes.Statistics.MarkovChain
 
 
             // Цепь которую хотим получить
-            Chain Result = new Chain(12);
-            Result.Add((ValueString)"b", 0); // 1 цепь вероятность по первому уровню. выпало  0,77 Получаем b
-            Result.Add((ValueString)"a", 1); // 2 цепь вероятность по второму уровню. выпало  0.15 Получаем a
-            Result.Add((ValueString)"c", 2); // 1 цепь вероятность по второму уровню. выпало  0.96 Получаем с
-            Result.Add((ValueString)"b", 3); // 2 цепь вероятность по второму уровню. выпало  0.61 Получаем b
-            Result.Add((ValueString)"a", 4); // 1 цепь вероятность по второму уровню. выпало  0.15 Получаем a
-            Result.Add((ValueString)"c", 5); // 2 цепь вероятность по второму уровню. выпало  0.85 Получаем c
-            Result.Add((ValueString)"a", 6); // 1 цепь вероятность по второму уровню. выпало  0.67 Получаем a
-            Result.Add((ValueString)"c", 7); // 2 цепь вероятность по второму уровню. выпало  0.51 Получаем c
-            Result.Add((ValueString)"a", 8); // 1 цепь вероятность по второму уровню. выпало  0.71 Получаем a
-            Result.Add((ValueString)"a", 9); // 2 цепь вероятность по второму уровню. выпало  0.2 Получаем a
-            Result.Add((ValueString)"c", 10); // 1 цепь вероятность по второму уровню. выпало  0.77 Получаем с
-            Result.Add((ValueString)"b", 11); // 2 цепь вероятность по второму уровню. выпало  0.15 Получаем b
+            Chain result = new Chain(12);
+            result.Add((ValueString)"b", 0); // 1 цепь вероятность по первому уровню. выпало  0,77 Получаем b
+            result.Add((ValueString)"a", 1); // 2 цепь вероятность по второму уровню. выпало  0.15 Получаем a
+            result.Add((ValueString)"c", 2); // 1 цепь вероятность по второму уровню. выпало  0.96 Получаем с
+            result.Add((ValueString)"b", 3); // 2 цепь вероятность по второму уровню. выпало  0.61 Получаем b
+            result.Add((ValueString)"a", 4); // 1 цепь вероятность по второму уровню. выпало  0.15 Получаем a
+            result.Add((ValueString)"c", 5); // 2 цепь вероятность по второму уровню. выпало  0.85 Получаем c
+            result.Add((ValueString)"a", 6); // 1 цепь вероятность по второму уровню. выпало  0.67 Получаем a
+            result.Add((ValueString)"c", 7); // 2 цепь вероятность по второму уровню. выпало  0.51 Получаем c
+            result.Add((ValueString)"a", 8); // 1 цепь вероятность по второму уровню. выпало  0.71 Получаем a
+            result.Add((ValueString)"a", 9); // 2 цепь вероятность по второму уровню. выпало  0.2 Получаем a
+            result.Add((ValueString)"c", 10); // 1 цепь вероятность по второму уровню. выпало  0.77 Получаем с
+            result.Add((ValueString)"b", 11); // 2 цепь вероятность по второму уровню. выпало  0.15 Получаем b
 
-            Assert.AreEqual(Result, Temp);
+            Assert.AreEqual(result, temp);
         }
 
         [Test]
@@ -271,39 +271,38 @@ namespace TestPhantomChains.Classes.Statistics.MarkovChain
 
 
             // Цепь которую хотим получить
-            Chain ResultTheory = new Chain(30);
-            ResultTheory[0] = (ValueString)"a"; // "a" 0.77;
-            ResultTheory[1] = (ValueString)"a"; // "a" 0.15;
-            ResultTheory[2] = (ValueString)"b"; // "b" 0.96;
-            ResultTheory[3] = (ValueString)"a"; // "a" 0.61;
-            ResultTheory[4] = (ValueString)"a"; // "a" 0.15;
-            ResultTheory[5] = (ValueString)"b"; // "b" 0.85;
-            ResultTheory[6] = (ValueString)"a"; // "a" 0.67;
-            ResultTheory[7] = (ValueString)"a"; // "a" 0.51;
-            ResultTheory[8] = (ValueString)"a"; // "a" 0.71;
-            ResultTheory[9] = (ValueString)"a"; // "a" 0.2;
-            ResultTheory[10] = (ValueString)"a"; // "a" 0.77;
-            ResultTheory[11] = (ValueString)"a"; // "a" 0.15;
-            ResultTheory[12] = (ValueString)"b"; // "b" 0.96;
-            ResultTheory[13] = (ValueString)"a"; // "a" 0.61;
-            ResultTheory[14] = (ValueString)"a"; // "a" 0.15;
-            ResultTheory[15] = (ValueString)"b"; // "b" 0.85;
-            ResultTheory[16] = (ValueString)"a"; // "a" 0.67;
-            ResultTheory[17] = (ValueString)"a"; // "a" 0.51;
-            ResultTheory[18] = (ValueString)"a"; // "a" 0.71;
-            ResultTheory[19] = (ValueString)"a"; // "a" 0.2;
-            ResultTheory[20] = (ValueString)"a"; // "a" 0.77;
-            ResultTheory[21] = (ValueString)"a"; // "a" 0.15;
-            ResultTheory[22] = (ValueString)"b"; // "b" 0.96;
-            ResultTheory[23] = (ValueString)"a"; // "a" 0.61;
-            ResultTheory[24] = (ValueString)"a"; // "a" 0.15;
-            ResultTheory[25] = (ValueString)"b"; // "b" 0.85;
-            ResultTheory[26] = (ValueString)"a"; // "a" 0.67;
-            ResultTheory[27] = (ValueString)"a"; // "a" 0.51;
-            ResultTheory[28] = (ValueString)"a"; // "a" 0.71;
-            ResultTheory[29] = (ValueString)"a"; // "a" 0.2; 
+            Chain resultTheory = new Chain(30);
+            resultTheory[0] = (ValueString)"a"; // "a" 0.77;
+            resultTheory[1] = (ValueString)"a"; // "a" 0.15;
+            resultTheory[2] = (ValueString)"b"; // "b" 0.96;
+            resultTheory[3] = (ValueString)"a"; // "a" 0.61;
+            resultTheory[4] = (ValueString)"a"; // "a" 0.15;
+            resultTheory[5] = (ValueString)"b"; // "b" 0.85;
+            resultTheory[6] = (ValueString)"a"; // "a" 0.67;
+            resultTheory[7] = (ValueString)"a"; // "a" 0.51;
+            resultTheory[8] = (ValueString)"a"; // "a" 0.71;
+            resultTheory[9] = (ValueString)"a"; // "a" 0.2;
+            resultTheory[10] = (ValueString)"a"; // "a" 0.77;
+            resultTheory[11] = (ValueString)"a"; // "a" 0.15;
+            resultTheory[12] = (ValueString)"b"; // "b" 0.96;
+            resultTheory[13] = (ValueString)"a"; // "a" 0.61;
+            resultTheory[14] = (ValueString)"a"; // "a" 0.15;
+            resultTheory[15] = (ValueString)"b"; // "b" 0.85;
+            resultTheory[16] = (ValueString)"a"; // "a" 0.67;
+            resultTheory[17] = (ValueString)"a"; // "a" 0.51;
+            resultTheory[18] = (ValueString)"a"; // "a" 0.71;
+            resultTheory[19] = (ValueString)"a"; // "a" 0.2;
+            resultTheory[20] = (ValueString)"a"; // "a" 0.77;
+            resultTheory[21] = (ValueString)"a"; // "a" 0.15;
+            resultTheory[22] = (ValueString)"b"; // "b" 0.96;
+            resultTheory[23] = (ValueString)"a"; // "a" 0.61;
+            resultTheory[24] = (ValueString)"a"; // "a" 0.15;
+            resultTheory[25] = (ValueString)"b"; // "b" 0.85;
+            resultTheory[26] = (ValueString)"a"; // "a" 0.67;
+            resultTheory[27] = (ValueString)"a"; // "a" 0.51;
+            resultTheory[28] = (ValueString)"a"; // "a" 0.71;
+            resultTheory[29] = (ValueString)"a"; // "a" 0.2; 
 
-         //   Assert.AreEqual(ResultTheory, Temp);
         }
 
         [Test]
@@ -388,21 +387,19 @@ namespace TestPhantomChains.Classes.Statistics.MarkovChain
 
 
             // Цепь которую хотим получить
-            Chain Result = new Chain(12);
-            Result.Add((ValueString)"b", 0); // 1 цепь вероятность по первому уровню. выпало  0,77 Получаем b
-            Result.Add((ValueString)"a", 1); // 2 цепь вероятность по второму уровню. выпало  0.15 Получаем a
-            Result.Add((ValueString)"c", 2); // 1 цепь вероятность по второму уровню. выпало  0.96 Получаем с
-            Result.Add((ValueString)"b", 3); // 2 цепь вероятность по второму уровню. выпало  0.61 Получаем b
-            Result.Add((ValueString)"a", 4); // 1 цепь вероятность по второму уровню. выпало  0.15 Получаем a
-            Result.Add((ValueString)"c", 5); // 2 цепь вероятность по второму уровню. выпало  0.85 Получаем c
-            Result.Add((ValueString)"a", 6); // 1 цепь вероятность по второму уровню. выпало  0.67 Получаем a
-            Result.Add((ValueString)"c", 7); // 2 цепь вероятность по второму уровню. выпало  0.51 Получаем c
-            Result.Add((ValueString)"a", 8); // 1 цепь вероятность по второму уровню. выпало  0.71 Получаем a
-            Result.Add((ValueString)"a", 9); // 2 цепь вероятность по второму уровню. выпало  0.2 Получаем a
-            Result.Add((ValueString)"c", 10); // 1 цепь вероятность по второму уровню. выпало  0.77 Получаем с
-            Result.Add((ValueString)"b", 11); // 2 цепь вероятность по второму уровню. выпало  0.15 Получаем b
-
-           // Assert.AreEqual(Result, Temp);
+            Chain result = new Chain(12);
+            result.Add((ValueString)"b", 0); // 1 цепь вероятность по первому уровню. выпало  0,77 Получаем b
+            result.Add((ValueString)"a", 1); // 2 цепь вероятность по второму уровню. выпало  0.15 Получаем a
+            result.Add((ValueString)"c", 2); // 1 цепь вероятность по второму уровню. выпало  0.96 Получаем с
+            result.Add((ValueString)"b", 3); // 2 цепь вероятность по второму уровню. выпало  0.61 Получаем b
+            result.Add((ValueString)"a", 4); // 1 цепь вероятность по второму уровню. выпало  0.15 Получаем a
+            result.Add((ValueString)"c", 5); // 2 цепь вероятность по второму уровню. выпало  0.85 Получаем c
+            result.Add((ValueString)"a", 6); // 1 цепь вероятность по второму уровню. выпало  0.67 Получаем a
+            result.Add((ValueString)"c", 7); // 2 цепь вероятность по второму уровню. выпало  0.51 Получаем c
+            result.Add((ValueString)"a", 8); // 1 цепь вероятность по второму уровню. выпало  0.71 Получаем a
+            result.Add((ValueString)"a", 9); // 2 цепь вероятность по второму уровню. выпало  0.2 Получаем a
+            result.Add((ValueString)"c", 10); // 1 цепь вероятность по второму уровню. выпало  0.77 Получаем с
+            result.Add((ValueString)"b", 11); // 2 цепь вероятность по второму уровню. выпало  0.15 Получаем b
         }
         
     }

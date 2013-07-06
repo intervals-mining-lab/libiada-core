@@ -17,23 +17,23 @@ namespace PhantomChains.Classes.Statistics.MarkovChain
         ///<param name="method">Тип цепи</param>
         ///<param name="rang">Порядок</param>
         ///<param name="uniformRang">Неоднородность цепи</param>
-        ///<param name="Generator">Генератор используемый в цепи</param>
+        ///<param name="generator">Генератор используемый в цепи</param>
         ///<returns>Марковская цепь</returns>
         ///<exception cref="Exception">В случае если тип цепи не зарегистирован в фабрике</exception>
-        public MarkovChainBase<ChainGenerated, ChainTeached> Create(GeneratingMethod method, int rang, int uniformRang, IGenerator Generator)
+        public MarkovChainBase<ChainGenerated, ChainTeached> Create(GeneratingMethod method, int rang, int uniformRang, IGenerator generator)
         {
             switch(method)
             {
                 case GeneratingMethod.DynamicNotUniform:
                     return null;// new MarkovChainNotUniformDynamic<ChainGenerated, ChainTeached>(rang, uniformRang, Generator);
                 case GeneratingMethod.StaticNotUniform:
-                    return new MarkovChainNotUniformStatic<ChainGenerated, ChainTeached>(rang, uniformRang, Generator);
+                    return new MarkovChainNotUniformStatic<ChainGenerated, ChainTeached>(rang, uniformRang, generator);
                 case GeneratingMethod.DynamicUniform:
                     return null; //new MarkovChainUniformDynamic<ChainGenerated, ChainTeached>(rang, Generator);
                 case GeneratingMethod.StaticUniform:
-                    return new MarkovChainUniformStatic<ChainGenerated, ChainTeached>(rang, Generator);
+                    return new MarkovChainUniformStatic<ChainGenerated, ChainTeached>(rang, generator);
                 case GeneratingMethod.Random:
-                    return new MarkovChainRandom<ChainGenerated, ChainTeached>(rang, Generator);
+                    return new MarkovChainRandom<ChainGenerated, ChainTeached>(rang, generator);
                 default: 
                     throw new Exception("This type of markov chain does not registated in system");
             }

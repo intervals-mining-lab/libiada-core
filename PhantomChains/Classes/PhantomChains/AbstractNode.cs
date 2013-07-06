@@ -8,7 +8,7 @@ namespace PhantomChains.Classes.PhantomChains
     ///<summary>
     /// Интерфейс элемента дерева
     ///</summary>
-    public abstract class ITreeNode
+    public abstract class AbstractNode
     {
         protected readonly List<TreeNode> Children = new List<TreeNode>();
         protected UInt64 volume;

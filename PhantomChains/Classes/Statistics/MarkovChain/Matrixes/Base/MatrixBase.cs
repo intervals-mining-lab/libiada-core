@@ -23,15 +23,15 @@ namespace PhantomChains.Classes.Statistics.MarkovChain.Matrixes.Base
         /// </summary>
         /// <param name="poweOfAlphabet">Мощность алфавита</param>
         /// <param name="razmernost">Размерность матрицы</param>
-        /// <param name="Builder">Правило создания матриц</param>
-        public MatrixBase(int poweOfAlphabet, int razmernost, IMatrixBuilder Builder)
+        /// <param name="builder">Правило создания матриц</param>
+        public MatrixBase(int poweOfAlphabet, int razmernost, IMatrixBuilder builder)
         {
             AlphabetPower = poweOfAlphabet;
             ValueList = new ArrayList();
             Rank = razmernost;
             for (int i = 0; i < AlphabetPower; i++)
             {
-                ValueList.Add(Builder.Create(AlphabetPower, razmernost - 1));
+                ValueList.Add(builder.Create(AlphabetPower, razmernost - 1));
             }
         }
 

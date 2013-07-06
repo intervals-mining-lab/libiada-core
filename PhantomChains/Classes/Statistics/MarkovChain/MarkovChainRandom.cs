@@ -19,10 +19,10 @@ namespace PhantomChains.Classes.Statistics.MarkovChain
             IAbsoluteMatrix absoluteMatrix = (IAbsoluteMatrix)builder.Create(chain.Alphabet.Power, Rank);
             for (int i = 0; i < chain.Alphabet.Power; i++)
             {
-                int[] Temp =new int[1]; 
-                Temp[0] = chain.Alphabet.IndexOf(chain.Alphabet[i]);
+                int[] temp =new int[1]; 
+                temp[0] = chain.Alphabet.IndexOf(chain.Alphabet[i]);
 
-                absoluteMatrix.Add(Temp);
+                absoluteMatrix.Add(temp);
 
             }
 

@@ -1,6 +1,6 @@
 using PhantomChains.Classes.Statistics.MarkovChain.Generators;
 
-namespace TestPhantomChains.Classes.Statistics.MarkovChain.Generators
+namespace PhantomChainsTest.Classes.Statistics.MarkovChain.Generators
 {
     ///<summary>
     /// ��������� �������� ������������ � ������ ��� �������� ����������� ������������� �����.

@@ -42,7 +42,7 @@ namespace PhantomChains.Classes.Statistics.MarkovChain
             }
             else
             {
-                read = null; //new NullIteratorStart<ChainGenerated, ChainGenerated>(Temp, 1);
+                read = null;
             }
             IteratorWritableStart<ChainGenerated, ChainGenerated> write =
                 new IteratorWritableStart<ChainGenerated, ChainGenerated>(temp);

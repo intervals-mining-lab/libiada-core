@@ -19,16 +19,16 @@ namespace PhantomChains.Classes.PhantomChains
         ///<summary>
         /// Количество возможных вариантов для данной цепи
         ///</summary>
-        public readonly UInt64 variants = UInt64.MaxValue;
-        private readonly ChainTo InternalChain = null;
+        public readonly UInt64 Variants = UInt64.MaxValue;
+        private readonly ChainTo InternalChain;
         private readonly List<ChainTo> TempChains = new List<ChainTo>();
-        private readonly IGenerator Gen = null;
+        private readonly IGenerator Gen;
         /// <summary>
         /// Древья вариантов построения для отдельных участков фантомной цепи (длиной 30 элементов)
         /// </summary>
         private List<TreeTop> Tree = new List<TreeTop>();
         private readonly int BasicChainLength = 30;
-        private readonly int TotalLength = 0;
+        private readonly int TotalLength;
 
         /// <summary>
         /// Конструктор генератора.
@@ -37,16 +37,15 @@ namespace PhantomChains.Classes.PhantomChains
         /// <param name="gen">Генератор случайных чисел</param>
         public PhantomChainGenerator(ChainFrom chain, IGenerator gen)
         {
-            this.Gen = gen;
+            Gen = gen;
             SpacePhantomRebuilder<ChainTo, ChainFrom> rebuilder = new SpacePhantomRebuilder<ChainTo, ChainFrom>();
             InternalChain = rebuilder.Rebuild(chain);
             for(int w=0;w<InternalChain.Length;w++)
             {
                 TotalLength += ((ValuePhantom) InternalChain[w])[0].ToString().Length;
             }
-            UInt64 TempVariants = 1;
+            UInt64 tempVariants = 1;
             int counter = 0;
-            ValuePhantom TempMessage = null;
             for (int k = 0; k < (int)Math.Ceiling((double)InternalChain.Length / BasicChainLength); k++)
             {
                 TempChains.Add(new ChainTo());
@@ -59,25 +58,25 @@ namespace PhantomChains.Classes.PhantomChains
             {
                 for (int j = 0; j < TempChains[i].Length;j++)
                 {
+                    ValuePhantom tempMessage;
                     if (counter < InternalChain.Length)
                     {
-                        TempMessage = (ValuePhantom)InternalChain[counter];
-                        TempChains[i][j] = TempMessage;
+                        tempMessage = (ValuePhantom)InternalChain[counter];
+                        TempChains[i][j] = tempMessage;
                     }
                     else
                     {
-                        TempMessage = new ValuePhantom();
-                        TempMessage.Add(new ValueChar('a'));
-                        TempChains[i][j] = TempMessage;
+                        tempMessage = new ValuePhantom {new ValueChar('a')};
+                        TempChains[i][j] = tempMessage;
                     }
-                    TempVariants *= (uint)TempMessage.Power;
+                    tempVariants *= (uint)tempMessage.Power;
                     counter++;
                 }
                 if ((i != TempChains.Count - 1) || (TempChains.Count==1))
                 {
-                    variants = Math.Min(variants, TempVariants);
+                    Variants = Math.Min(Variants, tempVariants);
                 }
-                TempVariants = 1;
+                tempVariants = 1;
                 Tree[i] = new TreeTop(TempChains[i], Gen);
             }
         }
@@ -89,7 +88,7 @@ namespace PhantomChains.Classes.PhantomChains
         ///<returns>Массив цепочек</returns>
         public List<BaseChain> Generate(UInt64 i)
         {
-            if(i>variants)
+            if(i>Variants)
             {
                 throw new Exception();
             }

@@ -7,11 +7,11 @@ namespace PhantomChains.Classes.PhantomChains
     ///<summary>
     /// Корневой узел дерева враинтов.
     ///</summary>
-    public class TreeTop:ITreeNode
+    public class TreeTop:AbstractNode
     {
-        private PhantomTable Table = null;
-        private IGenerator Generator = null;
-        private bool IsString = false;
+        private PhantomTable Table;
+        private IGenerator Generator;
+        private bool IsString;
 
         ///<summary>
         /// Конструктор корневого элемента
@@ -70,17 +70,12 @@ namespace PhantomChains.Classes.PhantomChains
         ///<returns>Сгенерированная цепочка</returns>
         public BaseChain Generate()
         {
-            BaseChain result = null;
-            if(IsString)
-            {
-                result = new BaseChain(3 * (Table.Length - 1));
-            }
-            else
-            {
-                result = new BaseChain(Table.Length - 1);
-            }
+            BaseChain result;
+            int len = Table.Length - 1;
+            len *= IsString ? 3 : 1;
+            result =  new BaseChain(len);
             
-            this.Find(result,Generator,Table);
+            Find(result,Generator,Table);
             return result;
         }
     }

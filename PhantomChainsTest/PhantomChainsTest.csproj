@@ -8,8 +8,8 @@
     <ProjectGuid>{258D919F-708B-4238-93A8-AD008661BE78}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>TestPhantomChains</RootNamespace>
-    <AssemblyName>TestPhantomChains</AssemblyName>
+    <RootNamespace>PhantomChainsTest</RootNamespace>
+    <AssemblyName>PhantomChainsTest</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
@@ -56,7 +56,7 @@
     <Compile Include="Classes\PhantomChains\TestPhantomTable.cs" />
     <Compile Include="Classes\PhantomChains\TestProbabilityPhantomChainGenerator.cs" />
     <Compile Include="Classes\PhantomChains\TestTree.cs" />
-    <Compile Include="Classes\Statistics\Markov Compare\MarkovCompare1.cs" />
+    <Compile Include="Classes\Statistics\Markov Compare\MarkovMetric.cs" />
     <Compile Include="Classes\Statistics\MarkovChain\Generators\MockGenerator.cs" />
     <Compile Include="Classes\Statistics\MarkovChain\TestIterationMatrix.cs" />
     <Compile Include="Classes\Statistics\MarkovChain\TestMarkovChainNotIniform.cs" />

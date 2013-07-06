@@ -39,23 +39,28 @@ namespace PhantomChains.Classes.Statistics.MarkovChain.Matrixes.Probability
             }
         }
 
-        public Dictionary<IBaseObject, double> GetProbabilityVector(Alphabet alphabet, int[] Pred)
+        public Dictionary<IBaseObject, double> GetProbabilityVector(Alphabet alphabet)
+        {
+            return GetProbabilityVector(alphabet, new int[] {});
+        }
+
+        public Dictionary<IBaseObject, double> GetProbabilityVector(Alphabet alphabet, int[] pred)
         {
             if (alphabet.Power != AlphabetPower)
             {
                 throw new Exception();
             }
-            if (Pred != null && !Pred.Equals(NullValue.Instance()))
+            if (pred != null && !pred.Equals(NullValue.Instance()))
             {
                 throw new Exception();
             }
 
-            Dictionary<IBaseObject, double> Result = new Dictionary<IBaseObject, double>();
+            Dictionary<IBaseObject, double> result = new Dictionary<IBaseObject, double>();
             for (int i = 0; i < AlphabetPower; i++)
             {
-                Result.Add(alphabet[i], ((double)ValueList[i]));
+                result.Add(alphabet[i], ((double)ValueList[i]));
             }
-            return Result;
+            return result;
         }
 
 
