@@ -5,18 +5,18 @@ namespace ClusterizatorTest.Classes.AlternativeClusterization
 
 {
     [TestFixture]
-    public class TestConnection
+    public class ConnectionTest
     {
 
         [Test]
-        public void TestConnection1()
+        public void ConnectionOneTest()
         {
             Connection conn1 = new Connection(0, 1);
             Assert.IsFalse(conn1.Connected);
         }
 
         [Test]
-        public void TestClone1()
+        public void CloneOneTest()
         {
             Connection conn1 = new Connection(2, 5)
                 {
@@ -43,7 +43,7 @@ namespace ClusterizatorTest.Classes.AlternativeClusterization
 
 
         [Test]
-        public void TestClone2()
+        public void CloneTwoTest()
         {
             Connection conn1 = new Connection(2, 3)
                 {

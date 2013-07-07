@@ -6,10 +6,10 @@ using NUnit.Framework;
 namespace ClusterizatorTest.Classes.AlternativeClusterization
 {
     [TestFixture]
-    public class TestGraphElement
+    public class GraphElementTest
     {
         [Test]
-        public void TestNode()
+        public void NodeTest()
         {
             HybridDictionary element = new HybridDictionary {{"characteristic", 15}};
             GraphElement node = new GraphElement(element,"node");
@@ -29,7 +29,7 @@ namespace ClusterizatorTest.Classes.AlternativeClusterization
         }
 
         [Test]
-        public void TestNode2()
+        public void NodeTwoTest()
         {
             HybridDictionary dictionary =new HybridDictionary {{"characteristic", 15}};
             GraphElement node = new GraphElement(dictionary,1);
@@ -63,7 +63,7 @@ namespace ClusterizatorTest.Classes.AlternativeClusterization
             Assert.AreEqual(5, node.TaxonNumber);
         }
         [Test]
-        public void TestClone ()
+        public void CloneTest()
         {
             HybridDictionary element = new HybridDictionary {{"characteristic", 15}};
             GraphElement node = new GraphElement(element, "node");

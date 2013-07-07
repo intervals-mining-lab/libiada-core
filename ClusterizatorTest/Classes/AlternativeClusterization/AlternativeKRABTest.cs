@@ -6,7 +6,7 @@ using NUnit.Framework;
 namespace ClusterizatorTest.Classes.AlternativeClusterization
 {
     [TestFixture]
-    public class TestAlternativeKRAB
+    public class AlternativeKRABTest
     {
         private DataTable Dt;
 
@@ -45,7 +45,7 @@ namespace ClusterizatorTest.Classes.AlternativeClusterization
         ///<summary>
         ///</summary>
         [Test]
-        public void TestClusterization()
+        public void ClusterizationTest()
         {
             AlternativeKRAB krab = new AlternativeKRAB(Dt,4,2,1);
             ArrayList result = krab.Clusterizate(2).Clusters;
@@ -60,10 +60,8 @@ namespace ClusterizatorTest.Classes.AlternativeClusterization
         }
 
         [Test]
-        public void TestSimpleAllVariantsClusterization()
+        public void SimpleAllVariantsClusterizationTest()
         {
-            DataTable dataTable = new DataTable();
-
             DataObject dObject1 = new DataObject {Id = 1};
             dObject1.Add("x", 2);
             
@@ -75,25 +73,17 @@ namespace ClusterizatorTest.Classes.AlternativeClusterization
 
             DataObject dObject4 = new DataObject {Id = 4};
             dObject4.Add("x", 3);
-            
 
-            dataTable.Add(dObject1);
-            dataTable.Add(dObject2);
-            dataTable.Add(dObject3); 
-            dataTable.Add(dObject4);
-            
+            DataTable dataTable = new DataTable {dObject1, dObject2, dObject3, dObject4};
+
             AlternativeKRAB krab = new AlternativeKRAB(dataTable,4,2,1);
             ArrayList result = krab.ClusterizateAllVariants().Variants;
             Assert.AreEqual(3,result.Count);
-
-           
         }
 
         [Test]
-        public void Test2DAllVariantsClusterization()
+        public void AllVariantsClusterization2DTest()
         {
-            DataTable dataTable = new DataTable();
-
             DataObject dObject1 = new DataObject {Id = 1};
             dObject1.Add("x", 2);
             dObject1.Add("y", 2);
@@ -110,11 +100,7 @@ namespace ClusterizatorTest.Classes.AlternativeClusterization
             dObject4.Add("x", 3);
             dObject4.Add("y", 6);
 
-
-            dataTable.Add(dObject1);
-            dataTable.Add(dObject2);
-            dataTable.Add(dObject3);
-            dataTable.Add(dObject4);
+            DataTable dataTable = new DataTable {dObject1, dObject2, dObject3, dObject4};
 
             AlternativeKRAB krab = new AlternativeKRAB(dataTable,4,2,1);
             ArrayList result = krab.ClusterizateAllVariants().Variants;

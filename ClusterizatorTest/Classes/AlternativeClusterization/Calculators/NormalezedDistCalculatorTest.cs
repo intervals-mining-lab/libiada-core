@@ -8,25 +8,21 @@ using Clusterizator.Classes.AlternativeClusterization.Calculators;
 namespace ClusterizatorTest.Classes.AlternativeClusterization.Calculators
 {
     [TestFixture]
-    public class TestNormalezedDistCalculator
+    public class NormalezedDistCalculatorTest
     {
         [Test]
-        public void Test2Points ()
+        public void TwoPointsTest()
         {
-            List<GraphElement> el = new List<GraphElement>();
-            List<Connection> graph = new List<Connection>();
-
             HybridDictionary element = new HybridDictionary {{"characteristic", 15.0}};
             GraphElement node1 = new GraphElement(element, "node1");
 
             HybridDictionary element2 = new HybridDictionary {{"characteristic", 20.0}};
             GraphElement node2 = new GraphElement(element2, "node2");
 
-            el.Add(node1);
-            el.Add(node2);
+            List<GraphElement> el = new List<GraphElement> {node1, node2};
 
             Connection conn1 = new Connection(0, 1);
-            graph.Add(conn1);
+            List<Connection> graph = new List<Connection> {conn1};
 
             GraphManager gm = new GraphManager(graph, el);
 
@@ -40,22 +36,19 @@ namespace ClusterizatorTest.Classes.AlternativeClusterization.Calculators
         }
 
         [Test]
-        public void Test2IntPoints()
+        public void TwoIntPointsTest()
         {
-            List<GraphElement> el = new List<GraphElement>();
-            List<Connection> graph = new List<Connection>();
-
             HybridDictionary element = new HybridDictionary {{"characteristic", 15}};
             GraphElement node1 = new GraphElement(element, "node1");
 
             HybridDictionary element2 = new HybridDictionary {{"characteristic", 20}};
             GraphElement node2 = new GraphElement(element2, "node2");
 
-            el.Add(node1);
-            el.Add(node2);
+            List<GraphElement> el = new List<GraphElement> {node1, node2};
 
             Connection conn1 = new Connection(0, 1);
-            graph.Add(conn1);
+
+            List<Connection> graph = new List<Connection> {conn1};
 
             GraphManager gm = new GraphManager(graph, el);
 
@@ -67,11 +60,8 @@ namespace ClusterizatorTest.Classes.AlternativeClusterization.Calculators
         }
 
         [Test]
-        public void Test3Points()
+        public void ThreePointsTest()
         {
-            List<GraphElement> el = new List<GraphElement>();
-            List<Connection> graph = new List<Connection>();
-
             HybridDictionary element = new HybridDictionary {{"characteristic", 15.0}};
             GraphElement node1 = new GraphElement(element, "node1");
 
@@ -81,16 +71,13 @@ namespace ClusterizatorTest.Classes.AlternativeClusterization.Calculators
             HybridDictionary element3 = new HybridDictionary {{"characteristic", -3.0}};
             GraphElement node3 = new GraphElement(element3, "node3");
 
-            el.Add(node1);
-            el.Add(node2);
-            el.Add(node3);
+            List<GraphElement> el = new List<GraphElement> {node1, node2, node3};
 
             Connection conn1 = new Connection(0, 1);
             Connection conn2 = new Connection(1, 2);
             Connection conn3 = new Connection(0, 2);
-            graph.Add(conn1);
-            graph.Add(conn2);
-            graph.Add(conn3);
+
+            List<Connection> graph = new List<Connection> {conn1, conn2, conn3};
 
             GraphManager gm = new GraphManager(graph, el);
 
@@ -104,11 +91,8 @@ namespace ClusterizatorTest.Classes.AlternativeClusterization.Calculators
         }
 
         [Test]
-        public void Test2Points3D()
+        public void TwoPoints3DTest()
         {
-            List<GraphElement> el = new List<GraphElement>();
-            List<Connection> graph = new List<Connection>();
-
             HybridDictionary element = new HybridDictionary
                 {
                     {"characteristic", 15.0},
@@ -125,11 +109,11 @@ namespace ClusterizatorTest.Classes.AlternativeClusterization.Calculators
                 };
             GraphElement node2 = new GraphElement(element2, "node2");
 
-            el.Add(node1);
-            el.Add(node2);
+            List<GraphElement> el = new List<GraphElement> {node1, node2};
 
             Connection conn1 = new Connection(0, 1);
-            graph.Add(conn1);
+
+            List<Connection> graph = new List<Connection> {conn1};
 
             GraphManager gm = new GraphManager(graph, el);
 
@@ -141,11 +125,8 @@ namespace ClusterizatorTest.Classes.AlternativeClusterization.Calculators
         }
 
         [Test]
-        public void Test3Points3D()
+        public void ThreePoints3DTest()
         {
-            List<GraphElement> el = new List<GraphElement>();
-            List<Connection> graph = new List<Connection>();
-
             HybridDictionary element = new HybridDictionary
                 {
                     {"characteristic", 15.0},
@@ -170,16 +151,13 @@ namespace ClusterizatorTest.Classes.AlternativeClusterization.Calculators
                 };
             GraphElement node3 = new GraphElement(element3, "node3");
 
-            el.Add(node1);
-            el.Add(node2);
-            el.Add(node3);
+            List<GraphElement> el = new List<GraphElement> {node1, node2, node3};
 
             Connection conn1 = new Connection(0, 1);
-            graph.Add(conn1);
             Connection conn2 = new Connection(0, 2);
-            graph.Add(conn2);
             Connection conn3 = new Connection(1, 2);
-            graph.Add(conn3);
+
+            List<Connection> graph = new List<Connection> {conn1, conn2, conn3};
 
             GraphManager gm = new GraphManager(graph, el);
 

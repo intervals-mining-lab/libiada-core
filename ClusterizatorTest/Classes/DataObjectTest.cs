@@ -7,22 +7,13 @@ namespace ClusterizatorTest.Classes
     ///<summary>
     ///</summary>
     [TestFixture]
-    public class TestDataObject
+    public class DataObjectTest
     {
-
-        ///<summary>
-        ///</summary>
-        [SetUp]
-        public void Init()
-        {
-            
-        }
-
         ///<summary>
         ///</summary>
         ///
         [Test]
-        public void TestInputOutput()
+        public void InputOutputTest()
         {
             DataObject test = new DataObject {Id = 1};
             test.Add("x", 2);

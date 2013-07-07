@@ -5,8 +5,8 @@ namespace ClusterizatorTest.Classes
 {
     ///<summary>
     ///</summary>
-    [TestFixture] 
-    public class TestDataTable
+    [TestFixture]
+    public class DataTableTest
     {
         private DataObject DObject1;
         private DataObject DObject2;
@@ -48,7 +48,7 @@ namespace ClusterizatorTest.Classes
         ///<summary>
         ///</summary>
         [Test]
-        public void TestInputOutput()
+        public void InputOutputTest()
         {
             DataTable dTable = new DataTable {DObject1, DObject2, DObject3, DObject4, DObject5, DObject6};
 
