@@ -8,8 +8,8 @@ namespace AlphabetCheckersTest.Classes
 {
     ///<summary>
     ///</summary>
-    [TestFixture] 
-    public class TestChecker
+    [TestFixture]
+    public class CheckerTest
     {
         ///<summary>
         ///</summary>

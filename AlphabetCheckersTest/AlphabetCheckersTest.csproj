@@ -53,8 +53,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Classes\TestAlpabetChains.cs" />
-    <Compile Include="Classes\TestChecker.cs" />
+    <Compile Include="Classes\AlpabetChainsTest.cs" />
+    <Compile Include="Classes\CheckerTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

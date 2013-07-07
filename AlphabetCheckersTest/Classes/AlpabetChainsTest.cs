@@ -8,8 +8,8 @@ namespace AlphabetCheckersTest.Classes
 {
     ///<summary>
     ///</summary>
-    [TestFixture] 
-    public class TestAlpabetChains
+    [TestFixture]
+    public class AlpabetChainsTest
     {
         private BaseChain ChainBase;
 
@@ -34,7 +34,7 @@ namespace AlphabetCheckersTest.Classes
         ///<summary>
         ///</summary>
         [Test]
-        public void TestAddChain()
+        public void AddChainTest()
         {
             AlpabetChains temp = new AlpabetChains {ChainBase};
             BaseChain result = (BaseChain) temp[0];
@@ -43,7 +43,7 @@ namespace AlphabetCheckersTest.Classes
         ///<summary>
         ///</summary>
         [Test]
-        public void TestAddValue()
+        public void AddValueTest()
         {
             AlpabetChains temp = new AlpabetChains();
             ValueChar a = new ValueChar('A');
@@ -55,7 +55,7 @@ namespace AlphabetCheckersTest.Classes
         ///<summary>
         ///</summary>
         [Test]
-        public void TestSortList()
+        public void SortListTest()
         {
             AlpabetChains temp = new AlpabetChains();
             BaseChain a = new BaseChain(2);
