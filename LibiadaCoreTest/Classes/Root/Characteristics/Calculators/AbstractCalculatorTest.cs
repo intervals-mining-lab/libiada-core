@@ -11,12 +11,12 @@ namespace LibiadaCoreTest.Classes.Root.Characteristics.Calculators
         protected List<Chain> Chains = CalculationHelper.Chains;
         protected ICalculator calc;
 
-        public void TestChainCharacteristic(int index, LinkUp linkUp, double value)
+        public void ChainCharacteristicTest(int index, LinkUp linkUp, double value)
         {
             Assert.AreEqual(value, calc.Calculate(Chains[index], linkUp), 0.0001);
         }
 
-        public void TestCongenericChainCharacteristic(int index, LinkUp linkUp, double value)
+        public void CongenericChainCharacteristicTest(int index, LinkUp linkUp, double value)
         {
             Assert.AreEqual(value, calc.Calculate(CongenericChains[index], linkUp), 0.0001);
         }
