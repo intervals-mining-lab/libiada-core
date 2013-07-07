@@ -13,7 +13,7 @@ namespace PhantomChainsTest.Classes.Statistics.MarkovChain
     ///<summary>
     ///</summary>
     [TestFixture]
-    public class TestIterationMatrix
+    public class IterationMatrixTest
     {
         private Chain TestChain;
         private Alphabet alph;
@@ -56,7 +56,7 @@ namespace PhantomChainsTest.Classes.Statistics.MarkovChain
         ///</summary>
         [Test]
         [ExpectedException(typeof (Exception))]
-        public void TestAddLengthMoreThanChainRang()
+        public void AddLengthMoreThanChainRangTest()
         {
             alph.Add(a);
             alph.Add(b);
@@ -80,7 +80,7 @@ namespace PhantomChainsTest.Classes.Statistics.MarkovChain
         ///<summary>
         ///</summary>
         [Test]
-        public void TestGetWithIndexes()
+        public void GetWithIndexesTest()
         {
             alph.Add(a); // 0 => a
             alph.Add(b); // 1 => b
@@ -191,7 +191,7 @@ namespace PhantomChainsTest.Classes.Statistics.MarkovChain
         ///<summary>
         ///</summary>
         [Test]
-        public void TestGetThirdLevelChain()
+        public void GetThirdLevelChainTest()
         {
             matr = new Matrix(TestChain.Alphabet.Power, 3);
 
@@ -416,7 +416,7 @@ namespace PhantomChainsTest.Classes.Statistics.MarkovChain
         ///<summary>
         ///</summary>
         [Test]
-        public void TestGetPropabilityMatix()
+        public void GetPropabilityMatixTest()
         {
             matr = new Matrix(TestChain.Alphabet.Power, 3);
 
@@ -645,7 +645,7 @@ namespace PhantomChainsTest.Classes.Statistics.MarkovChain
         ///</summary>
         [Test]
         [ExpectedException(typeof (ArgumentOutOfRangeException))]
-        public void TestILargerN()
+        public void ILargerNTest()
         {
             alph.Add(a);
             alph.Add(b);

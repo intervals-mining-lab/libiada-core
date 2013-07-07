@@ -13,7 +13,7 @@ namespace PhantomChainsTest.Classes.PhantomChains
     ///<summary>
     ///</summary>
     [TestFixture]
-    public class TestProbabilityPhantomChainGenerator
+    public class ProbabilityPhantomChainGeneratorTest
     {
         private ObjectMotherPMessageTest Mother;
 
@@ -28,7 +28,7 @@ namespace PhantomChainsTest.Classes.PhantomChains
         ///<summary>
         ///</summary>
         [Test]
-        public void Test()
+        public void FirstTest()
         {
             BaseChain resultChain = new BaseChain(10);
             resultChain.Add(Mother.PhantomMessageBC[1],0);
@@ -50,7 +50,7 @@ namespace PhantomChainsTest.Classes.PhantomChains
         ///<summary>
         ///</summary>
         [Test]
-        public void Test2()
+        public void SecondTest()
         {
             BaseChain resultChain = new BaseChain(5);
             resultChain.Add(Mother.PhantomMessageBC[1], 0);
@@ -67,7 +67,7 @@ namespace PhantomChainsTest.Classes.PhantomChains
         ///<summary>
         ///</summary>
         [Test]
-        public void Test3()
+        public void ThirdTest()
         {
             BaseChain resultChain = new BaseChain(63);
             IteratorWritableStart<BaseChain, BaseChain> iter = new IteratorWritableStart<BaseChain, BaseChain>(resultChain);
@@ -83,7 +83,7 @@ namespace PhantomChainsTest.Classes.PhantomChains
         }
 
         [Test]
-        public void Test5()
+        public void FourthTest()
         {
             BaseChain resultChain = new BaseChain(10);
             IteratorWritableStart<BaseChain, BaseChain> iter = new IteratorWritableStart<BaseChain, BaseChain>(resultChain);
@@ -110,7 +110,7 @@ namespace PhantomChainsTest.Classes.PhantomChains
         }
 
         [Test]
-        public void Test6()
+        public void SixthTest()
         {
             BaseChain sourceChain = new BaseChain(3);
             sourceChain.Add(new ValueString("X"),0);

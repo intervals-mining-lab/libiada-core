@@ -7,21 +7,14 @@ using PhantomChains.Classes.Statistics.MarkovChain.Generators;
 namespace PhantomChainsTest.Classes.PhantomChains
 {
     [TestFixture]
-    public class TestTree
+    public class TreeTest
     {
         [Test]
-        public void TestTreeVolume()
+        public void TreeVolumeTest()
         {
-            ValuePhantom m1 = new ValuePhantom();
-            ValuePhantom m2 = new ValuePhantom();
-            ValuePhantom m3 = new ValuePhantom();
-
-            m1.Add(new ValueChar('1'));
-            m1.Add(new ValueChar('2'));
-            m1.Add(new ValueChar('3'));
-            m2.Add(new ValueChar('4'));
-            m2.Add(new ValueChar('3'));
-            m3.Add(new ValueChar('a'));
+            ValuePhantom m1 = new ValuePhantom {new ValueChar('1'), new ValueChar('2'), new ValueChar('3')};
+            ValuePhantom m2 = new ValuePhantom {new ValueChar('4'), new ValueChar('3')};
+            ValuePhantom m3 = new ValuePhantom {new ValueChar('a')};
 
             BaseChain test = new BaseChain(4);
             test.Add(m1, 0);

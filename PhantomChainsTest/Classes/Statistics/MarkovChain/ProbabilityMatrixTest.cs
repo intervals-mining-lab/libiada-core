@@ -9,7 +9,7 @@ namespace PhantomChainsTest.Classes.Statistics.MarkovChain
     ///<summary>
     ///</summary>
     [TestFixture]
-    public class TestProbabilityMatrix
+    public class ProbabilityMatrixTest
     {
         private Chain TestChain;
         private Chain TestChain2;
@@ -53,7 +53,7 @@ namespace PhantomChainsTest.Classes.Statistics.MarkovChain
         ///<summary>
         ///</summary>
         [Test]
-        public void TestGenerationNotUniformMarkovChainRang0()
+        public void GenerationNotUniformMarkovChainRangZeroTest()
         {
             Chain resultTheory = new Chain(10);
             resultTheory[0] = (ValueString)"b";
@@ -77,7 +77,7 @@ namespace PhantomChainsTest.Classes.Statistics.MarkovChain
         ///<summary>
         ///</summary>
         [Test]
-        public void TestGenerationUniformMarkovChainLevel2()
+        public void GenerationUniformMarkovChainLevelTwoTest()
         {
             Chain resultTheory = new Chain(30);
             resultTheory[0] = (ValueString)"a"; // "a" 0.77;

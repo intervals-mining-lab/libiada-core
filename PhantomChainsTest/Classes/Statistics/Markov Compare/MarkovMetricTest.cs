@@ -8,7 +8,7 @@ using PhantomChainsTest.Classes.Statistics.MarkovChain.Generators;
 namespace PhantomChainsTest.Classes.Statistics.Markov_Compare
 {
     [TestFixture]
-    class MarkovMetric
+    class MarkovMetricTest
     {
         private Chain TestChain1;
 
@@ -27,7 +27,7 @@ namespace PhantomChainsTest.Classes.Statistics.Markov_Compare
         }
 
         [Test]
-        public void CompareSameChain()
+        public void CompareSameChainTest()
         {
             MarkovChainNotUniformStatic<Chain, Chain> markov = new MarkovChainNotUniformStatic<Chain, Chain>(2, 0, new MockGenerator());
             markov.Teach(TestChain1, TeachingMethod.Cycle);

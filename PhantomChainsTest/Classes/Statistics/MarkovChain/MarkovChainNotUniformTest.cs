@@ -15,7 +15,7 @@ namespace PhantomChainsTest.Classes.Statistics.MarkovChain
      * 
      **/
     [TestFixture]
-    public class TestMarkovChainNotUniform
+    public class MarkovChainNotUniformTest
     {
         // Исходная цепь на которой будет происходить обучение
         private Chain TestChain;
@@ -56,7 +56,7 @@ namespace PhantomChainsTest.Classes.Statistics.MarkovChain
         }
 
         [Test]
-        public void TestMarkovChainNotUniform0Rang2()
+        public void MarkovChainNotUniformZeroRangTwoTest()
         {
             // Используем генератор заглушку
             IGenerator generator = new MockGenerator();
@@ -132,7 +132,7 @@ namespace PhantomChainsTest.Classes.Statistics.MarkovChain
         }
 
         [Test]
-        public void TestMarkovChainNotUniform1Rang2()
+        public void MarkovChainNotUniformOneRangTwoTest()
         {
             // Используем генератор заглушку
             IGenerator generator = new MockGenerator();
@@ -231,7 +231,7 @@ namespace PhantomChainsTest.Classes.Statistics.MarkovChain
         }
 
         [Test]
-        public void TestMarkovChainNotUniformDynamic0Rang2()
+        public void MarkovChainNotUniformDynamicZeroRangTwoTest()
         {
           /*  // Используем генератор заглушку
             IGenerator Generator = new MockGenerator();
@@ -306,7 +306,7 @@ namespace PhantomChainsTest.Classes.Statistics.MarkovChain
         }
 
         [Test]
-        public void TestMarkovChainNotUniformDynamic1Rang2()
+        public void MarkovChainNotUniformDynamicOneRangTwoTest()
         {
          /*   // Используем генератор заглушку
             IGenerator Generator = new MockGenerator();

@@ -53,14 +53,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Classes\PhantomChains\ObjectMotherPMessageTest.cs" />
-    <Compile Include="Classes\PhantomChains\TestPhantomTable.cs" />
-    <Compile Include="Classes\PhantomChains\TestProbabilityPhantomChainGenerator.cs" />
-    <Compile Include="Classes\PhantomChains\TestTree.cs" />
-    <Compile Include="Classes\Statistics\Markov Compare\MarkovMetric.cs" />
+    <Compile Include="Classes\PhantomChains\PhantomTableTest.cs" />
+    <Compile Include="Classes\PhantomChains\ProbabilityPhantomChainGeneratorTest.cs" />
+    <Compile Include="Classes\PhantomChains\TreeTest.cs" />
+    <Compile Include="Classes\Statistics\Markov Compare\MarkovMetricTest.cs" />
     <Compile Include="Classes\Statistics\MarkovChain\Generators\MockGenerator.cs" />
-    <Compile Include="Classes\Statistics\MarkovChain\TestIterationMatrix.cs" />
-    <Compile Include="Classes\Statistics\MarkovChain\TestMarkovChainNotIniform.cs" />
-    <Compile Include="Classes\Statistics\MarkovChain\TestProbabilityMatrix.cs" />
+    <Compile Include="Classes\Statistics\MarkovChain\IterationMatrixTest.cs" />
+    <Compile Include="Classes\Statistics\MarkovChain\MarkovChainNotUniformTest.cs" />
+    <Compile Include="Classes\Statistics\MarkovChain\ProbabilityMatrixTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
