@@ -19,7 +19,7 @@ namespace SegmentatorTest.Classes.Base.Sequencies
         }
 
         [Test]
-        public void TestClone()
+        public void CloneTest()
         {
 
             ComplexChain foreignComplexChain = chain.Clone();
@@ -29,7 +29,7 @@ namespace SegmentatorTest.Classes.Base.Sequencies
         }
 
         [Test]
-        public void TestEquals()
+        public void EqualsTest()
         {
             ComplexChain foreignComplexChain = chain.Clone();
 
@@ -40,7 +40,7 @@ namespace SegmentatorTest.Classes.Base.Sequencies
         }
 
         [Test]
-        public void TestElementAt()
+        public void ElementAtTest()
         {
             String str1 = "A";
             String str2 = "G";
@@ -52,7 +52,7 @@ namespace SegmentatorTest.Classes.Base.Sequencies
         }
 
         [Test]
-        public void TestSubstring()
+        public void SubstringTest()
         {
             int start = 0, end = 2;
             ComplexChain thirdComplexChain = new ComplexChain("AA");
@@ -62,7 +62,7 @@ namespace SegmentatorTest.Classes.Base.Sequencies
         }
 
         [Test]
-        public void TestClearAt()
+        public void ClearAtTest()
         {
             ComplexChain secondComplexChain = new ComplexChain("AGTC");
             ComplexChain firstComplexChain = new ComplexChain("ATC");
@@ -71,7 +71,7 @@ namespace SegmentatorTest.Classes.Base.Sequencies
         }
 
         [Test]
-        public void TestConcat1()
+        public void ConcatOneTest()
         {
             int start = 0;
             int end = chain.Length;
@@ -83,7 +83,7 @@ namespace SegmentatorTest.Classes.Base.Sequencies
         }
 
         [Test]
-        public void TestConcat2()
+        public void ConcatTwoTest()
         {
             int start = 0;
             int end = chain.Length;
@@ -95,7 +95,7 @@ namespace SegmentatorTest.Classes.Base.Sequencies
         }
 
         [Test]
-        public void TestLength()
+        public void LengthTest()
         {
             ComplexChain foreignComplexChain = chain.Clone();
 
@@ -106,7 +106,7 @@ namespace SegmentatorTest.Classes.Base.Sequencies
         }
 
         [Test]
-        public void TestIsEmpty()
+        public void IsEmptyTest()
         {
             String str = "s";
             ComplexChain chain = new ComplexChain("");
@@ -118,7 +118,7 @@ namespace SegmentatorTest.Classes.Base.Sequencies
         }
 
         [Test]
-        public void TestupdateUniforms()
+        public void UpdateUniformsTest()
         {
             ComplexChain clonedComplexChain = chain.Clone();
 
@@ -129,13 +129,7 @@ namespace SegmentatorTest.Classes.Base.Sequencies
         }
 
         [Test]
-        public void Testintervals()
-        {
-
-        }
-
-        [Test]
-        public void TestJoin()
+        public void JoinTest()
         {
             ComplexChain clon = chain.Clone();
             List<String> list1 = new List<String>{"AAC","A","G","G","T","G","C","C","C","C","T","T","A","T","T","T"};
@@ -155,7 +149,7 @@ namespace SegmentatorTest.Classes.Base.Sequencies
         }
 
         [Test]
-        public void TestjoinAll()
+        public void JoinAllTest()
         {
             List<String> list1 = new List<String>
                 {

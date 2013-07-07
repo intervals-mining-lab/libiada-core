@@ -14,7 +14,7 @@ namespace SegmentatorTest.Classes.Base.Collectors
         private ComplexChain chain = new ComplexChain("AACAGGTGCCCCTTATTT");
 
         [Test]
-        public void TestPut()
+        public void PutTest()
         {
             FrequencyDictionary alphabet = new FrequencyDictionary(chain);
             String word = "string";
@@ -27,7 +27,7 @@ namespace SegmentatorTest.Classes.Base.Collectors
         }
 
         [Test]
-        public void TestContains()
+        public void ContainsTest()
         {
             FrequencyDictionary alphabet = new FrequencyDictionary(chain);
             String[] words = { "A", "G", "C", "T", "WORD", "AG" };
@@ -40,7 +40,7 @@ namespace SegmentatorTest.Classes.Base.Collectors
         }
 
         [Test]
-        public void TestGet()
+        public void GetTest()
         {                                     //AACAGGTGCCCCTTATTT
             FrequencyDictionary alphabet = new FrequencyDictionary(chain);
             String[] words = { "A", "G", "C", "T", "WORD", "AG" };
@@ -56,7 +56,7 @@ namespace SegmentatorTest.Classes.Base.Collectors
         }
 
         [Test]
-        public void TestRemove()
+        public void RemoveTest()
         {
             FrequencyDictionary alphabet = new FrequencyDictionary(chain);
             String[] words = { "A", "G", "C", "T", "WORD", "AG" };
@@ -72,7 +72,7 @@ namespace SegmentatorTest.Classes.Base.Collectors
         }
 
         [Test]
-        public void TestGetWords()
+        public void GetWordsTest()
         {
             FrequencyDictionary alphabet = new FrequencyDictionary(chain);
             String[] words = { "A", "G", "C", "T" };
@@ -82,24 +82,22 @@ namespace SegmentatorTest.Classes.Base.Collectors
         }
 
         [Test]
-        public void TestFill1()
+        public void FillOneTest()
         {
             String str = chain.ToString();
             FrequencyDictionary alphabet1 = new FrequencyDictionary(str);
             FrequencyDictionary alphabet2 = new FrequencyDictionary(chain);
             Assert.True(alphabet1.Equals(alphabet2));
-
-
         }
 
         [Test]
-        public void TestFill2()
+        public void FillTwoTest()
         {
-            TestFill1();
+            FillOneTest();
         }
 
         [Test]
-        public void TestPower()
+        public void PowerTest()
         {
             FrequencyDictionary alphabetChain = new FrequencyDictionary(chain);
             int power = 4;
@@ -107,7 +105,7 @@ namespace SegmentatorTest.Classes.Base.Collectors
         }
 
         [Test]
-        public void TestClear()
+        public void ClearTest()
         {
             FrequencyDictionary alphabet = new FrequencyDictionary(chain);
             alphabet.Clear();
@@ -115,7 +113,7 @@ namespace SegmentatorTest.Classes.Base.Collectors
         }
 
         [Test]
-        public void TestAdd()
+        public void AddTest()
         {
             FrequencyDictionary alphabet = new FrequencyDictionary();
             FrequencyDictionary alphabetTest = new FrequencyDictionary(chain);
@@ -127,7 +125,7 @@ namespace SegmentatorTest.Classes.Base.Collectors
         }
 
         [Test]
-        public void TestClone()
+        public void CloneTest()
         {
             String str = chain.ToString();
             FrequencyDictionary alphabet1 = new FrequencyDictionary(str);
@@ -137,7 +135,7 @@ namespace SegmentatorTest.Classes.Base.Collectors
         }
 
         [Test]
-        public void TestEquals()
+        public void EqualsTest()
         {
             String str = chain.ToString();
             FrequencyDictionary alphabet1 = new FrequencyDictionary(str);
@@ -149,7 +147,7 @@ namespace SegmentatorTest.Classes.Base.Collectors
         }
 
         [Test]
-        public void TestGetWord()
+        public void GetWordTest()
         {
             FrequencyDictionary alphabet = new FrequencyDictionary(chain);
             for (int index = 0; index < alphabet.Count; index++)

@@ -19,7 +19,7 @@ namespace SegmentatorTest.Classes.Base.Iterators
         }
 
         [Test]
-        public void TestHasNext()
+        public void HasNextTest()
         {
             int lengthCut = 3;
             int step = 1;
@@ -44,7 +44,7 @@ namespace SegmentatorTest.Classes.Base.Iterators
         }
 
         [Test]
-        public void TestNext()
+        public void NextTest()
         {
             List<String> cut;
             String[] triplesForStepOne =
@@ -77,7 +77,7 @@ namespace SegmentatorTest.Classes.Base.Iterators
         }
 
         [Test]
-        public void TestReset()
+        public void ResetTest()
         {
             int length = 2;
             int step = 1;
@@ -90,7 +90,7 @@ namespace SegmentatorTest.Classes.Base.Iterators
         }
 
         [Test]
-        public void TestMove()
+        public void MoveTest()
         {
             int length = 2;
             int step = 1;
@@ -124,7 +124,7 @@ namespace SegmentatorTest.Classes.Base.Iterators
         }
 
         [Test]
-        public void TestGetMaxShifts()
+        public void GetMaxShiftsTest()
         {
             int lengthCut = 3;
             int step = 1;
@@ -134,7 +134,7 @@ namespace SegmentatorTest.Classes.Base.Iterators
         }
 
         [Test]
-        public void TestGetPosition()
+        public void GetPositionTest()
         {
             int lengthCut = 2;
             int step = 1;

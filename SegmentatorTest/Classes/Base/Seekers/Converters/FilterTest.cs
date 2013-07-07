@@ -23,7 +23,7 @@ namespace SegmentatorTest.Classes.Base.Seekers.Converters
         }
 
         [Test]
-        public void TestFilterout()
+        public void FilteroutTest()
         {
             ComplexChain chain = new ComplexChain(list);
             Filter filter = new Filter(chain);
@@ -44,7 +44,7 @@ namespace SegmentatorTest.Classes.Base.Seekers.Converters
         }
 
         [Test]
-        public void TestReplace()
+        public void ReplaceTest()
         {
             ComplexChain chain = new ComplexChain(list);
             Filter filter = new Filter(chain);
