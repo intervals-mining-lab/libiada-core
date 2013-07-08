@@ -8,12 +8,12 @@ namespace LibiadaCore.Classes.Root.Characteristics.Calculators
     ///</summary>
     public class IdentificationInformation : ICalculator
     {
-        private readonly Probability probability = new Probability();
+        private readonly ArithmeticMean arithmeticMean = new ArithmeticMean();
 
         public double Calculate(CongenericChain chain, LinkUp linkUp)
         {
-            double p = probability.Calculate(chain, linkUp);
-            return -p*Math.Log(p, 2);
+            double mean = arithmeticMean.Calculate(chain, linkUp);
+            return -1/mean*Math.Log(1/mean, 2);
         }
 
         public double Calculate(Chain chain, LinkUp linkUp)
