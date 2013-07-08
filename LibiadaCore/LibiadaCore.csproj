@@ -60,6 +60,8 @@
     <Compile Include="Classes\Misc\Iterators\IteratorWritableStart.cs" />
     <Compile Include="Classes\Misc\Iterators\IWritableIterator.cs" />
     <Compile Include="Classes\Misc\Iterators\SimpleCutRule.cs" />
+    <Compile Include="Classes\Misc\Iterators\SimpleCutRuleWithBeginEnd.cs" />
+    <Compile Include="Classes\Misc\Iterators\FromFixStartCutRuleWithBeginEnd.cs" />
     <Compile Include="Classes\Misc\SpaceRebuilders\NullRebuilder.cs" />
     <Compile Include="Classes\Misc\SpaceRebuilders\PsevdoCycleSpaceRebuilder.cs" />
     <Compile Include="Classes\Misc\SpaceRebuilders\SpaceNotPhantomRebuilder.cs" />

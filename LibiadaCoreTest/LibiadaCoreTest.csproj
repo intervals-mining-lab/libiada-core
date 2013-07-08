@@ -58,6 +58,8 @@
     <Compile Include="Classes\Misc\Iterators\IteratorWritableEndTest.cs" />
     <Compile Include="Classes\Misc\Iterators\IteratorWritebleStartTest.cs" />
     <Compile Include="Classes\Misc\Iterators\SimpleCutRuleTest.cs" />
+    <Compile Include="Classes\Misc\Iterators\SimpleCutRuleWithBeginEndTest.cs" />
+    <Compile Include="Classes\Misc\Iterators\FromFixStartCutRuleWithBeginEndTest.cs" />
     <Compile Include="Classes\Misc\SpaceRebuilders\NullRebuilderTest.cs" />
     <Compile Include="Classes\Misc\SpaceRebuilders\PsevdoCycleSpaceTest.cs" />
     <Compile Include="Classes\Root\Characteristics\BinaryCalculators\AbstractBinaryCalculatorTest.cs" />
