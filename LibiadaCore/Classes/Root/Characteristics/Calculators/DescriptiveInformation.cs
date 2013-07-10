@@ -7,13 +7,12 @@ namespace LibiadaCore.Classes.Root.Characteristics.Calculators
     ///</summary>
     public class DescriptiveInformation : ICalculator
     {
-        private readonly Count count = new Count();
-        private readonly Length length = new Length();
+        private readonly ArithmeticMean arithmeticMean = new ArithmeticMean();
 
         public double Calculate(CongenericChain chain, LinkUp linkUp)
         {
-            double occupancy = length.Calculate(chain, linkUp)/count.Calculate(chain, linkUp);
-            return Math.Pow(occupancy, 1 / occupancy);
+            double occupancy = arithmeticMean.Calculate(chain,linkUp);
+            return Math.Pow(occupancy, 1/occupancy);
         }
 
         ///<summary>
