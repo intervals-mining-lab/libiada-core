@@ -157,6 +157,16 @@ namespace LibiadaCore.Classes.TheoryOfSet
             return Vault.GetEnumerator();
         }
 
+        public IBaseObject[] ToArray()
+        {
+            return new List<IBaseObject>(Vault).ToArray();
+        }
+
+        public List<IBaseObject> ToList()
+        {
+            return new List<IBaseObject>(Vault);
+        }
+
         public override int GetHashCode()
         {
             int temp = 0;
