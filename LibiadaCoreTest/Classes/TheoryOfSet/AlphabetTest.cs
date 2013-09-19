@@ -1,7 +1,9 @@
 using System;
+using LibiadaCore.Classes.Root;
 using LibiadaCore.Classes.Root.SimpleTypes;
 using LibiadaCore.Classes.TheoryOfSet;
 using NUnit.Framework;
+using System.Collections.Generic;
 
 namespace LibiadaCoreTest.Classes.TheoryOfSet
 {
@@ -12,7 +14,7 @@ namespace LibiadaCoreTest.Classes.TheoryOfSet
     {
         private Alphabet AlBase;
         private Alphabet AlBase2;
-
+        //TODO: FIX ORDER OF ARGUMENTS IN ALL AreEqual
         ///<summary>
         ///</summary>
         [SetUp]
@@ -200,6 +202,48 @@ namespace LibiadaCoreTest.Classes.TheoryOfSet
             Assert.IsTrue(AlBase.IndexOf(new ValueChar('d')).Equals(-1));
             Assert.IsTrue(AlBase.IndexOf(new ValueChar('a')).Equals(0));
             Assert.IsTrue(AlBase.IndexOf(new ValueChar('c')).Equals(2));
+        }
+
+        /// <summary>
+        /// Тест проверки ненарушения целостности при возвращении значения
+        /// </summary>
+        [Test]
+        public void ToArrayTest()
+        {
+            AlBase.Add(new ValueChar('a'));
+            AlBase.Add(new ValueChar('b'));
+            AlBase.Add(new ValueChar('c'));
+            AlBase.Add(new ValueChar('d'));
+            AlBase.Add(new ValueChar('e'));
+            IBaseObject[] testArray = AlBase.ToArray();
+            ((ValueChar) testArray[4]).Value = 'x';
+            ((ValueChar)testArray[2]).Value = 'y';
+            ((ValueChar)testArray[0]).Value = 'z';
+            Assert.AreEqual('e', AlBase[4]);
+            Assert.AreEqual('c', AlBase[2]);
+            Assert.AreEqual('a', AlBase[0]);
+        }
+
+        /// <summary>
+        /// Тест проверки ненарушения целостности при возвращении значения
+        /// </summary>
+        [Test]
+        public void ToListTest()
+        {
+            AlBase.Add(new ValueChar('a'));
+            AlBase.Add(new ValueChar('b'));
+            AlBase.Add(new ValueChar('c'));
+            AlBase.Add(new ValueChar('d'));
+            AlBase.Add(new ValueChar('e'));
+
+            List<IBaseObject> testList = AlBase.ToList();
+
+            ((ValueChar)testList[4]).Value = 'x';
+            ((ValueChar)testList[2]).Value = 'y';
+            ((ValueChar)testList[0]).Value = 'z';
+            Assert.AreEqual('e', AlBase[4]);
+            Assert.AreEqual('c', AlBase[2]);
+            Assert.AreEqual('a', AlBase[0]);
         }
     }
 }
