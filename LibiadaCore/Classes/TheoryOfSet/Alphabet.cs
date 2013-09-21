@@ -159,12 +159,26 @@ namespace LibiadaCore.Classes.TheoryOfSet
 
         public IBaseObject[] ToArray()
         {
-            return new List<IBaseObject>(Vault).ToArray();
+            List<IBaseObject> result = new List<IBaseObject>();
+
+            foreach (var vault in Vault)
+            {
+                result.Add(vault.Clone());
+            }
+
+            return result.ToArray();
         }
 
         public List<IBaseObject> ToList()
         {
-            return new List<IBaseObject>(Vault);
+            List<IBaseObject> result = new List<IBaseObject>();
+
+            foreach (var vault in Vault)
+            {
+                result.Add(vault.Clone());
+            }
+
+            return result;
         }
 
         public override int GetHashCode()

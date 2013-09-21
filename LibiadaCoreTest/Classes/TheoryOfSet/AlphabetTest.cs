@@ -219,9 +219,9 @@ namespace LibiadaCoreTest.Classes.TheoryOfSet
             ((ValueChar) testArray[4]).Value = 'x';
             ((ValueChar)testArray[2]).Value = 'y';
             ((ValueChar)testArray[0]).Value = 'z';
-            Assert.AreEqual('e', AlBase[4]);
-            Assert.AreEqual('c', AlBase[2]);
-            Assert.AreEqual('a', AlBase[0]);
+            Assert.AreEqual(new ValueChar('e'), AlBase[4]);
+            Assert.AreEqual(new ValueChar('c'), AlBase[2]);
+            Assert.AreEqual(new ValueChar('a'), AlBase[0]);
         }
 
         /// <summary>
@@ -238,12 +238,12 @@ namespace LibiadaCoreTest.Classes.TheoryOfSet
 
             List<IBaseObject> testList = AlBase.ToList();
 
-            ((ValueChar)testList[4]).Value = 'x';
-            ((ValueChar)testList[2]).Value = 'y';
-            ((ValueChar)testList[0]).Value = 'z';
-            Assert.AreEqual('e', AlBase[4]);
-            Assert.AreEqual('c', AlBase[2]);
-            Assert.AreEqual('a', AlBase[0]);
+            ((ValueChar)testList[4]).Value = new ValueChar('x');
+            ((ValueChar)testList[2]).Value = new ValueChar('y');
+            ((ValueChar)testList[0]).Value = new ValueChar('z');
+            Assert.AreEqual(new ValueChar('e'), AlBase[4]);
+            Assert.AreEqual(new ValueChar('c'), AlBase[2]);
+            Assert.AreEqual(new ValueChar('a'), AlBase[0]);
         }
     }
 }
