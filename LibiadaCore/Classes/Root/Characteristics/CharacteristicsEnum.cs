@@ -1,7 +1,7 @@
 namespace LibiadaCore.Classes.Root.Characteristics
 {
     ///<summary>
-    /// 
+    /// —писок всех интегральных характеристик
     ///</summary>
     public enum CharacteristicsEnum
     {
@@ -93,7 +93,10 @@ namespace LibiadaCore.Classes.Root.Characteristics
         /// <summary>
         /// —редн€€ длина слова
         /// </summary>
-        AverageWordLength
-
+        AverageWordLength,
+        /// <summary>
+        /// √лубина в масштабе алфавита
+        /// </summary>
+        AlphabeticDepth
     }
 }
