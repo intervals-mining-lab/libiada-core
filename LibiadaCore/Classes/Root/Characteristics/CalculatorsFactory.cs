@@ -42,6 +42,14 @@ namespace LibiadaCore.Classes.Root.Characteristics
         }
 
         ///<summary>
+        /// Алфавиная Глубина.
+        ///</summary>
+        public static ICalculator AlphabeticDepth
+        {
+            get { return new AlphabeticDepth(); }
+        }
+
+        ///<summary>
         /// Количество элементов.
         /// Для однородной цепи это количество непустых элементов.
         /// Для неоднородной цепи это её длина.
@@ -100,12 +108,20 @@ namespace LibiadaCore.Classes.Root.Characteristics
         }
 
         ///<summary>
-        /// Среднегеометрическая удалённость.
+        /// Средняя удалённость.
         ///</summary>
         public static ICalculator g
         {
             get { return new AverageRemoteness(); }
         }
+
+        ///<summary>
+        /// Алфавитная удалённость.
+        ///</summary>
+        public static ICalculator AlphabeticAverageRemoteness
+        {
+            get { return new AlphabeticAverageRemoteness(); }
+        }                    
 
         ///<summary>
         /// Количество идентифицирующих информаций приходящихся на одно значащее сообщение.
@@ -179,7 +195,9 @@ namespace LibiadaCore.Classes.Root.Characteristics
                         r,
                         Power,
                         nG,
-                        t
+                        t,
+                        AlphabeticAverageRemoteness,
+                        AlphabeticDepth
                     };
 
                 return temp;
