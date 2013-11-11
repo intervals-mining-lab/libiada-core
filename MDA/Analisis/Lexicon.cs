@@ -1,87 +1,80 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
+using System.Collections.Generic;
+//using System.Linq;
+using System.Text;
 
 namespace MDA.Analisis
 {
     public class Lexicon
     {
-        private int newid = 0;
-        private double greatFrequency = 0;
-        private double greatOccur = 0;
-        private int capacity = 0;
-        private ArrayList FMVariety = new ArrayList();
+        private int newid=0;
+        private double GreatFrequency = 0;
+        private double GreatOccur = 0;
+        private int Capacity=0;
+        private ArrayList FMVariety= new ArrayList();
         private ArrayList RFMVariety = new ArrayList();
-        private bool ranged = false;
+        private bool Ranged=false;
 
-        public ArrayList Data
+        public ArrayList GetData()
+        {lock (this)
+			{
+            return FMVariety;
+			}
+        }
+
+        public ArrayList GetRData()
         {
-            get
+            if (!this.Ranged)
             {
-                lock (this)
-                {
-                    return FMVariety;
-                }
+                this.RangeLexElem();
             }
+            return RFMVariety;
         }
 
-        public ArrayList RData
-        {
-            get
-            {
-                if (!ranged)
-                {
-                    RangeLexElem();
-                }
-                return RFMVariety;
-            }
-
+        public int GetCapacity()
+        { lock(this)
+			{
+            return this.Capacity;
+			}
         }
 
-        public int Capacity
+        public double GetGreatOccur()
         {
-            get
-            {
-                lock (this)
-                {
-                    return this.capacity;
-                }
-            }
+            return this.GreatOccur;
         }
 
-        public double GreatOccur
+        public void SetGreatFrequency(double n)
         {
-            get { return greatOccur; }
-
+            this.GreatFrequency = n;
         }
 
-        public double GreatFrequency
+        public double GetGreatFrequency()
         {
-            get { return greatFrequency; }
-            set { greatFrequency = value; }
-
+            return this.GreatFrequency;
         }
 
         public double CalcGreatFrequency()
         {
-            greatFrequency = 0;
-            for (int i = 0; i < capacity; i++)
+            GreatFrequency = 0;
+            for (int i = 0; i < this.Capacity;i++)
             {
-                if (greatFrequency < ((FMotiv) FMVariety[i]).Frequency)
+                if (GreatFrequency < ((FMotiv) FMVariety[i]).GetFrequency())
                 {
-                    greatFrequency = ((FMotiv) FMVariety[i]).Frequency;
+                    GreatFrequency = ((FMotiv) FMVariety[i]).GetFrequency();
                 }
             }
-            return greatFrequency;
+            return this.GreatFrequency;
         }
 
-        public void AddFMotiv(string name, int occur, double freq)
-        {
-            FMVariety.Add(new FMotiv(newid, name, occur, freq));
+        public void AddFMotiv(string name,int occur,double freq)
+        {   this.FMVariety.Add(new FMotiv(newid,name,occur,freq));
             newid += 1;
-            capacity += 1;
-            if (greatFrequency < freq)
+            Capacity += 1;
+            if (GreatFrequency < freq)
             {
-                greatFrequency = freq;
-                greatOccur = occur;
+                GreatFrequency = freq;
+                GreatOccur = occur;
             }
 
         }
@@ -95,19 +88,19 @@ namespace MDA.Analisis
             int CurMaxFreqArId = 0;
             for (int j = 0; j < FMVariety.Count; j++)
             {
-                MaxFreq = ((FMotiv) ar[0]).Frequency;
-                CurMaxFreqId = ((FMotiv) ar[0]).Id;
+                MaxFreq = ((FMotiv)ar[0]).GetFrequency();
+                CurMaxFreqId = ((FMotiv)ar[0]).GetId();
                 CurMaxFreqArId = 0;
                 for (int i = 0; i < ar.Count; i++)
                 {
-                    if (MaxFreq < ((FMotiv) ar[i]).Frequency)
+                    if (MaxFreq<((FMotiv)ar[i]).GetFrequency())
                     {
-                        MaxFreq = ((FMotiv) ar[i]).Frequency;
-                        CurMaxFreqId = ((FMotiv) ar[i]).Id;
+                        MaxFreq = ((FMotiv) ar[i]).GetFrequency();
+                        CurMaxFreqId = ((FMotiv) ar[i]).GetId();
                         CurMaxFreqArId = i;
                     }
                 }
-                ((FMotiv) FMVariety[CurMaxFreqId]).Rank = j + 1;
+                ((FMotiv)FMVariety[CurMaxFreqId]).SetRank(j+1);
                 ar.RemoveAt(CurMaxFreqArId);
             }
         }
@@ -118,7 +111,7 @@ namespace MDA.Analisis
 
             for (int i = 0; i < FMVariety.Count; i++)
             {
-                ar.Add(((FMotiv) FMVariety[i]).LogDepth);
+                ar.Add(((FMotiv)FMVariety[i]).GetLogDepth());
             }
 
             bool done = false;
@@ -127,10 +120,10 @@ namespace MDA.Analisis
                 done = true;
                 for (int j = 0; j < ar.Count - 1; j++)
                 {
-                    if (((double) ar[j]) < ((double) ar[j + 1]))
+                    if (((double)ar[j]) < ((double)ar[j + 1]))
                     {
-                        double tempD = (double) ar[j];
-                        ar[j] = (double) ar[j + 1];
+                        double tempD = (double)ar[j];
+                        ar[j] = (double)ar[j + 1];
                         ar[j + 1] = tempD;
                         done = false;
                     }
@@ -145,45 +138,45 @@ namespace MDA.Analisis
         {
             ArrayList ar = new ArrayList();
 
-            for (int i = 0; i < FMVariety.Count; i++)
+            for (int i = 0; i < FMVariety.Count; i++ )
             {
-                ar.Add(((FMotiv) FMVariety[i]).Remoteness);
+                ar.Add(((FMotiv)FMVariety[i]).GetRemoteness());
             }
 
             bool done = false;
-            while (!done)
+        while(!done)
+        {
+            done = true;
+            for (int j = 0; j < ar.Count-1; j++)
             {
-                done = true;
-                for (int j = 0; j < ar.Count - 1; j++)
-                {
-                    if (((double) ar[j]) < ((double) ar[j + 1]))
+                if (((double)ar[j]) < ((double)ar[j + 1]))
                     {
-                        double tempD = (double) ar[j];
-                        ar[j] = (double) ar[j + 1];
-                        ar[j + 1] = tempD;
+                        double tempD = (double)ar[j];
+                        ar[j] = (double)ar[j + 1];
+                        ar[j+1] = tempD;
                         done = false;
                     }
-
-                }
-
+                
             }
+            
+        }
             return ar;
         }
 
         public void RangeLexElem()
         {
-            for (int i = 1; i < capacity + 1; i++)
+            for (int i =1; i<this.GetCapacity()+1;i++)
             {
-                for (int j = 0; j < capacity; j++)
+                for (int j = 0; j < this.GetCapacity(); j++)
                 {
-                    if (((FMotiv) this.FMVariety[j]).Rank == i)
+                    if (((FMotiv)this.FMVariety[j]).GetRank() == i)
                     {
                         RFMVariety.Add(FMVariety[j]);
                     }
                 }
 
             }
-            ranged = true;
+            Ranged = true;
         }
     }
 }

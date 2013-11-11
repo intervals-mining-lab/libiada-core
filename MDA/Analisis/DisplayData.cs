@@ -1,10 +1,11 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
+using System.Collections.Generic;
+//using System.Linq;
+using System.Text;
 
 namespace MDA.Analisis
 {
-    /// <summary>
-    /// whaaaaaaat?
-    /// </summary>
     public class DisplayData
     {
         public double PLCapacity;
@@ -33,5 +34,5 @@ namespace MDA.Analisis
         public Difference DiffRFreq = new Difference();
         public Difference DiffLRLN = new Difference();
     }
-
+  
 }

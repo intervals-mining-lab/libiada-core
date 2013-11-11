@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Text;
 
 namespace MDA.OIP.ScoreModel
 {
@@ -19,8 +21,9 @@ namespace MDA.OIP.ScoreModel
                     break;
                 case "16th": { numDenom[0] = 1; numDenom[1] = 16; }
                     break;
-                case "32nd":
-                case "1/32":
+                case "32nd": { numDenom[0] = 1; numDenom[1] = 32; }
+                    break;
+                    // в Guiter Pro обозначается 32th - как 1/32.. мде..
                 case "32th": { numDenom[0] = 1; numDenom[1] = 32; }
                     break;
                 case "64th": { numDenom[0] = 1; numDenom[1] = 64; }

@@ -1,67 +1,67 @@
-﻿using System.Collections.Generic;
-using LibiadaCore.Classes.Root;
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
+using ChainAnalises.Classes.Root;
 
 namespace MDA.OIP.ScoreModel
 {
-    /// <summary>
-    /// такт
-    /// </summary>
-    public class Measure : IBaseObject
+    public class Measure : IBaseObject // такт
     {
-        /// <summary>
-        /// список нот, класса Note
-        /// </summary>
-        private List<ValueNote> notelist;
+        private List<Note> notelist; // список нот, класса Note
+        private Attributes attributes; // атрибуты
+        private int id; // уникальный идентификатор такта
 
-        /// <summary>
-        /// атрибуты
-        /// </summary>
-        private Attributes attributes;
-
-        /// <summary>
-        /// уникальный идентификатор такта
-        /// </summary>
-        private int id;
-
-        public Measure(List<ValueNote> notelist, Attributes attributes)
+        public Measure(List<Note> notelist, Attributes attributes)
         {
             if (attributes != null)
             {
-                this.attributes = (Attributes) attributes.Clone();
+                this.attributes = (Attributes)attributes.Clone();
             }
 
-            this.notelist = new List<ValueNote>();
+            this.notelist = new List<Note>();
             for (int i = 0; i < notelist.Count; i++) // создаем список нот, по средствам клонирования каждой ноты.
             {
-                this.notelist.Add((ValueNote) notelist[i].Clone());
+                this.notelist.Add((Note)notelist[i].Clone());
             }
         }
 
-        public List<ValueNote> NoteList
+        public List<Note> NoteList
         {
-            get { return notelist; }
+            get
+            {
+                return notelist;
+            }
         }
-
         public Attributes Attributes
         {
-            get { return attributes; }
-            set { this.attributes = value; }
+            get
+            {
+                return attributes;
+            }
+            set
+            {
+                this.attributes = value;
+            }
         }
-
         public int Id
         {
-            get { return id; }
-            set { this.id = value; }
+            get
+            {
+                return id;
+            }
+            set
+            {
+                this.id = value;
+            }
         }
-
+        
         #region IBaseMethods
 
-        ///<summary>
-        /// Stub for GetBin
-        ///</summary> 
         private Measure()
         {
-             
+            ///<summary>
+            /// Stub for GetBin
+            ///</summary>  
         }
 
         public IBaseObject Clone()
@@ -74,25 +74,45 @@ namespace MDA.OIP.ScoreModel
         {
             bool equalNoteList = true;
 
-            if (this.NoteList.Count != ((Measure) obj).NoteList.Count)
+            if (this.NoteList.Count!= ((Measure)obj).NoteList.Count) 
             {
                 return false;
             }
-            if (!this.Attributes.Equals(((Measure) obj).Attributes))
+            if (!this.Attributes.Equals(((Measure)obj).Attributes))
             {
                 return false;
             }
-            for (int i = 0; i < this.NoteList.Count; i++)
+            for(int i=0; i < this.NoteList.Count; i++)
             {
-                if (!this.NoteList[i].Equals(((Measure) obj).NoteList[i]))
+                if (!this.NoteList[i].Equals(((Measure)obj).NoteList[i])) 
                 {
                     return false;
                 }
             }
-
+            
             return true;
             // TODO: сделать сравнение не по всей ноте/объекту, а еще только по месту например, 
             // TODO: из сравнения исключить триплет, так может различать одинаковые по длительности ноты, но записанные по разному(!)
+        }
+
+        public IBin GetBin()
+        {
+            MeasureBin Temp = new MeasureBin();
+            ///<summary>
+            /// Stub
+            ///</summary>
+            return Temp;
+        }
+
+        public class MeasureBin : IBin
+        {
+            public IBaseObject GetInstance()
+            {
+                ///<summary>
+                /// Stub
+                ///</summary>
+                return new Measure();
+            }
         }
 
         #endregion

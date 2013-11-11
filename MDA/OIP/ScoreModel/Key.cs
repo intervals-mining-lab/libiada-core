@@ -1,37 +1,28 @@
-﻿using LibiadaCore.Classes.Root;
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
+using ChainAnalises.Classes.Root;
 
 namespace MDA.OIP.ScoreModel
 {
-    /// <summary>
-    /// знаки при ключе в такте (диез, бемоль)
-    /// </summary>
-    public class Key : IBaseObject 
+    public class Key : IBaseObject // знаки при ключе в такте (диез, бемоль)
     {
-        /// <summary>
-        /// bemoles(-), diez(+) (ex. -6 : 6 bemoles)
-        /// </summary>
-        private int fifths = 0;
-        /// <summary>
-        /// major/minor
-        /// </summary>
-        private string mode = "";
+        private int fifths = 0; // bemoles(-), diez(+) (ex. -6 : 6 bemoles);
+        private string mode = ""; // major/minor
 
         public Key(int fifths)
         {
             this.fifths = fifths;
         }
-
         public Key(int fifths, string mode)
         {
             this.fifths = fifths;
             this.mode = mode;
         }
-
         public int Fifths
         {
             get { return fifths; }
         }
-
         public string Mode
         {
             get { return mode; }
@@ -39,12 +30,11 @@ namespace MDA.OIP.ScoreModel
 
         #region IBaseMethods
 
-        ///<summary>
-        /// Stub for GetBin
-        ///</summary>
         private Key()
         {
-              
+            ///<summary>
+            /// Stub for GetBin
+            ///</summary>  
         }
 
         public IBaseObject Clone()
@@ -53,13 +43,33 @@ namespace MDA.OIP.ScoreModel
             return Temp;
         }
 
-        public bool Equals(object obj)
+        public override bool Equals(object obj)
         {
             if ((this.Fifths==((Key)obj).Fifths)&&(this.Mode==((Key)obj).Mode))
             {
                 return true;
             }
             return false;
+        }
+
+        public IBin GetBin()
+        {
+            KeyBin Temp = new KeyBin();
+            ///<summary>
+            /// Stub
+            ///</summary>
+            return Temp;
+        }
+
+        public class KeyBin : IBin
+        {
+            public IBaseObject GetInstance()
+            {
+                ///<summary>
+                /// Stub
+                ///</summary>
+                return new Key();
+            }
         }
 
         #endregion

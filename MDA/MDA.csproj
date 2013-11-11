@@ -6,10 +6,10 @@
     <ProductVersion>8.0.50727</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{FB02B0A5-68BB-4786-96A3-B6D4276CF74F}</ProjectGuid>
-    <OutputType>Exe</OutputType>
+    <OutputType>Library</OutputType>
     <AssemblyName>MDA</AssemblyName>
     <RootNamespace>MDA</RootNamespace>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
     <FileUpgradeFlags>
     </FileUpgradeFlags>
     <UpgradeBackupLocation>
@@ -30,9 +30,6 @@
     <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
-    <TargetFrameworkProfile />
-    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
-    <RestorePackages>true</RestorePackages>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -52,11 +49,10 @@
     <WarningLevel>4</WarningLevel>
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
   <ItemGroup>
-    <Reference Include="LibiadaCore">
-      <HintPath>..\..\libiada-core\LibiadaCore\bin\Debug\LibiadaCore.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Windows.Forms" />
@@ -64,29 +60,25 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing.Design" />
     <Reference Include="System.Design" />
-    <Reference Include="ZedGraph">
-      <HintPath>..\packages\ZedGraph.5.1.5\lib\ZedGraph.dll</HintPath>
+    <Reference Include="libiada, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\libiada.dll</HintPath>
+      <Private>False</Private>
     </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ICL\AverageLength.cs" />
     <Compile Include="ICL\NoteCharacteristic.cs" />
-    <Compile Include="ICL\TextWordDepth.cs" />
+    <Compile Include="ICL\TextWordGamut.cs" />
     <Compile Include="ICL\WithinWordRemoteness.cs" />
     <Compile Include="ICL\WordRemoteness.cs" />
-    <Compile Include="Main.cs" />
     <Compile Include="AssemblyInfo.cs" />
     <Compile Include="Analisis\Composition.cs" />
     <Compile Include="Analisis\Difference.cs" />
     <Compile Include="Analisis\DisplayData.cs" />
-    <Compile Include="Analisis\Drawer.cs" />
     <Compile Include="Analisis\FMArray.cs" />
     <Compile Include="Analisis\FMName.cs" />
     <Compile Include="Analisis\FMotiv.cs" />
-    <Compile Include="Analisis\Form1.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Analisis\Form1.Designer.cs" />
     <Compile Include="Analisis\Lexicon.cs" />
     <Compile Include="Analisis\Reader.cs" />
     <Compile Include="OIP\BorodaDivider\BorodaDivider.cs" />
@@ -94,8 +86,8 @@
     <Compile Include="OIP\BorodaDivider\FmotivChain.cs" />
     <Compile Include="OIP\BorodaDivider\FmotivDivider.cs" />
     <Compile Include="OIP\BorodaDivider\FmotivIdentificator.cs" />
-    <Compile Include="OIP\BorodaDivider\FMSequentEquality.cs" />
-    <Compile Include="OIP\BorodaDivider\PauseTreatment.cs" />
+    <Compile Include="OIP\BorodaDivider\ParamEqualFM.cs" />
+    <Compile Include="OIP\BorodaDivider\ParamPauseTreatment.cs" />
     <Compile Include="OIP\BorodaDivider\PriorityDiscover.cs" />
     <Compile Include="OIP\ScoreModel\Attributes.cs" />
     <Compile Include="OIP\ScoreModel\Duration.cs" />
@@ -104,37 +96,14 @@
     <Compile Include="OIP\ScoreModel\Measure.cs" />
     <Compile Include="OIP\MusicXml\MusicXmlParser.cs" />
     <Compile Include="OIP\MusicXml\MusicXmlReader.cs" />
-    <Compile Include="OIP\ScoreModel\ValueNote.cs" />
+    <Compile Include="OIP\ScoreModel\Note.cs" />
     <Compile Include="OIP\ScoreModel\Pitch.cs" />
     <Compile Include="OIP\ScoreModel\ScoreTrack.cs" />
     <Compile Include="OIP\ScoreModel\Size.cs" />
     <Compile Include="OIP\ScoreModel\Tie.cs" />
     <Compile Include="OIP\ScoreModel\UniformScoreTrack.cs" />
-    <Compile Include="OIP\View\Form1.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="OIP\View\Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="app.desktop" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
-  <ItemGroup>
-    <None Include="Analisis\MDA.Form1.resources" />
-    <None Include="Analisis\MyProgram.cs" />
-    <None Include="app.config" />
-    <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Analisis\Form11.resx">
-      <LogicalName>MDA.Analisis.Form1.resources</LogicalName>
-    </EmbeddedResource>
-    <EmbeddedResource Include="OIP\View\Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
-    </EmbeddedResource>
-  </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
       <Visible>False</Visible>
@@ -153,24 +122,6 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <COMReference Include="Microsoft.Office.Core">
-      <Guid>{2DF8D04C-5BFA-101B-BDE5-00AA0044DE52}</Guid>
-      <VersionMajor>2</VersionMajor>
-      <VersionMinor>4</VersionMinor>
-      <Lcid>0</Lcid>
-      <WrapperTool>primary</WrapperTool>
-      <Isolated>False</Isolated>
-      <EmbedInteropTypes>True</EmbedInteropTypes>
-    </COMReference>
-    <COMReference Include="Microsoft.Office.Interop.Excel">
-      <Guid>{00020813-0000-0000-C000-000000000046}</Guid>
-      <VersionMajor>1</VersionMajor>
-      <VersionMinor>6</VersionMinor>
-      <Lcid>0</Lcid>
-      <WrapperTool>primary</WrapperTool>
-      <Isolated>False</Isolated>
-      <EmbedInteropTypes>True</EmbedInteropTypes>
-    </COMReference>
     <COMReference Include="VBIDE">
       <Guid>{0002E157-0000-0000-C000-000000000046}</Guid>
       <VersionMajor>5</VersionMajor>
@@ -181,5 +132,4 @@
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </COMReference>
   </ItemGroup>
-  <Import Project="$(SolutionDir)\.nuget\nuget.targets" />
 </Project>

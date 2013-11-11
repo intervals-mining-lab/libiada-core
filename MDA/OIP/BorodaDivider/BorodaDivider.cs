@@ -1,35 +1,35 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
 using MDA.OIP.ScoreModel;
 
 namespace MDA.OIP.BorodaDivider
 {
     public class BorodaDivider
     {
-        public List<FmotivChain> Divide(ScoreTrack strack, PauseTreatment paramPause, FMSequentEquality paramEqual)
+        public List<FmotivChain> Divide(ScoreTrack strack, int paramPause, int paramEqual) 
         {
             List<FmotivChain> Temp = new List<FmotivChain>();
 
-            foreach (UniformScoreTrack utrack in strack.UniformScoreTracks)
+            foreach(UniformScoreTrack utrack in strack.UniformScoreTracks)
             {
-                FmotivChain fmchain = this.Divide(utrack, paramPause, paramEqual).CloneChain();
+                FmotivChain fmchain = (FmotivChain)this.Divide(utrack, paramPause, paramEqual).Clone();
+                fmchain.Id = Temp.Count;
                 Temp.Add(fmchain);
             }
             return Temp;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="utrack"></param>
-        /// <param name="paramPause">параметр как учитывать паузу : игнорировать, звуковой след предыдущего звука, вырожденныый звук</param>
-        /// <param name="paramEqual">как сравнивать ф-мотивы с секвентым переносом, либо нет</param>
-        /// <returns></returns>
-        public FmotivChain Divide(UniformScoreTrack utrack, PauseTreatment paramPause, FMSequentEquality paramEqual)
+        public FmotivChain Divide(UniformScoreTrack utrack, int paramPause, int paramEqual) 
         {
+            // paramPause - параметр как учитывать паузу : игнорировать, звуковой след предыдущего звука, вырожденныый звук
+            // paramEqual - как сравнивать ф-мотивы с секвентым переносом, либо нет
+
+
             FmotivChain Temp = new FmotivChain();
             // сохраняем имя цепи фмотивов как имя монотрека
             Temp.Name = utrack.Name;
-
+            
             PriorityDiscover prioritydiscover = new PriorityDiscover();
             FmotivDivider fmdivider = new FmotivDivider();
             FmotivIdentificator fmident = new FmotivIdentificator();

@@ -1,57 +1,48 @@
-﻿using System.Collections.Generic;
-using LibiadaCore.Classes.Root;
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
+using ChainAnalises.Classes.Root;
 
 namespace MDA.OIP.ScoreModel
 {
-    /// <summary>
-    /// монофонический (моно) трек
-    /// </summary>
-    public class UniformScoreTrack : IBaseObject
+    public class UniformScoreTrack : IBaseObject // монофонический (моно) трек
     {
-        /// <summary>
-        ///  название моно дорожки (по инструменту или партии)
-        /// </summary>
-        private string name;
-
-        /// <summary>
-        /// список тактов моно дорожки
-        /// </summary>
-        private List<Measure> measurelist;
-
-        public UniformScoreTrack(string name, List<Measure> measurelist)
+        private string name; // название моно дорожки (по инструменту или партии)
+        private  List<Measure> measurelist; // список тактов моно дорожки
+        
+        public UniformScoreTrack(string name, List<Measure> measurelist) 
         {
             this.measurelist = new List<Measure>();
-            for (int i = 0; i < measurelist.Count; i++)
-                // создаем список тактов, по средствам клонирования каждого такта.
+            for (int i = 0; i < measurelist.Count; i++) // создаем список тактов, по средствам клонирования каждого такта.
             {
-                this.measurelist.Add((Measure) measurelist[i].Clone());
+                this.measurelist.Add((Measure)measurelist[i].Clone());
             }
             this.name = name;
         }
-
         public string Name
         {
-            get { return name; }
+            get
+            {
+                return name;
+            }
         }
-
         public List<Measure> Measurelist
         {
-            get { return measurelist; }
-        }
-
-        /// <summary>
-        /// возвращает строй объектов Note, проидентифицировав их
-        /// </summary>
-        /// <returns></returns>
-        public List<ValueNote> NoteOrder()
-        {
-            List<ValueNote> Temp = new List<ValueNote>();
-            //запись в одну цепочку
-            foreach (Measure measure in Measurelist)
+            get
             {
-                foreach (ValueNote note in measure.NoteList)
+                return measurelist;
+            }
+        }
+        // возвращает строй объектов Note, проидентифицировав их
+        public List<Note> NoteOrder() 
+        {
+            List<Note> Temp = new List<Note>();
+            //запись в одну цепочку
+            foreach (Measure measure in Measurelist) 
+            {
+                foreach(Note note in measure.NoteList)
                 {
-                    Temp.Add((ValueNote) note.Clone());
+                    Temp.Add((Note)note.Clone());
                 }
             }
 
@@ -60,14 +51,14 @@ namespace MDA.OIP.ScoreModel
             int n = 1; // счетчик для уникальных
 
             // для остальных процедура цикла
-            for (int i = 1; i < Temp.Count; i++)
+            for (int i = 1; i < Temp.Count; i++) 
             {
                 // флаг если уже идентифицированна нота
                 bool Identifyed = false;
 
-                for (int j = 0; j < i; j++)
+                for (int j = 0; j < i; j++) 
                 {
-                    if (Temp[i].Equals(Temp[j]))
+                    if (Temp[i].Equals(Temp[j])) 
                     {
                         // еси уже такая идентифицировалась
                         Temp[i].Id = Temp[j].Id;
@@ -75,7 +66,7 @@ namespace MDA.OIP.ScoreModel
                     }
                 }
                 //если ранее не встречалась эта нота, то назначим ей новый id
-                if (!Identifyed)
+                if (!Identifyed) 
                 {
                     Temp[i].Id = n; // назанчим еще не использованный по возрастанию id
                     n = n + 1; // увеличиваем счетчик уникальных
@@ -86,16 +77,13 @@ namespace MDA.OIP.ScoreModel
 
         }
 
-        /// <summary>
-        /// возвращает строй нот (в виде цепи натуральных чисел начиная с 0)
-        /// </summary>
-        /// <returns></returns>
-        public int[] NoteIdOrder()
+        // возвращает строй нот (в виде цепи натуральных чисел начиная с 0)
+        public int [] NoteIdOrder()
         {
-            List<ValueNote> Temp = new List<ValueNote>();
+            List<Note> Temp = new List<Note>();
             Temp = this.NoteOrder();
 
-            int[] IdTemp = new int[Temp.Count]; // строй из Id, а не из объектов типа Note
+            int [] IdTemp = new int [Temp.Count]; // строй из Id, а не из объектов типа Note
             for (int i = 0; i < Temp.Count; i++)
             {
                 IdTemp[i] = Temp[i].Id;
@@ -103,17 +91,14 @@ namespace MDA.OIP.ScoreModel
             return IdTemp;
         }
 
-        /// <summary>
-        /// возвращает строй объектов Measure, проидентифицировав их
-        /// </summary>
-        /// <returns></returns>
+        // возвращает строй объектов Measure, проидентифицировав их
         public List<Measure> MeasureOrder()
         {
             List<Measure> Temp = new List<Measure>();
             //запись в одну цепочку
             foreach (Measure measure in Measurelist)
             {
-                Temp.Add((Measure) measure.Clone());
+                Temp.Add((Measure)measure.Clone());
             }
 
             // идентификация
@@ -147,10 +132,7 @@ namespace MDA.OIP.ScoreModel
 
         }
 
-        /// <summary>
-        /// возвращает строй тактов (в виде цепи натуральных чисел начиная с 0)
-        /// </summary>
-        /// <returns></returns>
+        // возвращает строй тактов (в виде цепи натуральных чисел начиная с 0)
         public int[] MeasureIdOrder()
         {
             List<Measure> Temp = new List<Measure>();
@@ -166,12 +148,11 @@ namespace MDA.OIP.ScoreModel
 
         #region IBaseMethods
 
-        ///<summary>
-        /// Stub for GetBin
-        ///</summary>  
         private UniformScoreTrack()
         {
-            
+            ///<summary>
+            /// Stub for GetBin
+            ///</summary>  
         }
 
         public IBaseObject Clone()
@@ -184,22 +165,36 @@ namespace MDA.OIP.ScoreModel
         {
             bool equalMeasureList = true;
 
-            if (this.Measurelist.Count != ((UniformScoreTrack) obj).Measurelist.Count)
-            {
-                equalMeasureList = false;
-            }
+            if (this.Measurelist.Count != ((UniformScoreTrack)obj).Measurelist.Count) { equalMeasureList = false; }
             for (int i = 0; i < this.Measurelist.Count; i++)
             {
-                if (!this.Measurelist[i].Equals(((UniformScoreTrack) obj).Measurelist[i]))
-                {
-                    equalMeasureList = false;
-                }
+                if (!this.Measurelist[i].Equals(((UniformScoreTrack)obj).Measurelist[i])) { equalMeasureList = false; }
             }
             if (equalMeasureList)
             {
                 return true;
             }
             return false;
+        }
+
+        public IBin GetBin()
+        {
+            UniformScoreTrackBin Temp = new UniformScoreTrackBin();
+            ///<summary>
+            /// Stub
+            ///</summary>
+            return Temp;
+        }
+
+        public class UniformScoreTrackBin : IBin
+        {
+            public IBaseObject GetInstance()
+            {
+                ///<summary>
+                /// Stub
+                ///</summary>
+                return new UniformScoreTrack();
+            }
         }
 
         #endregion

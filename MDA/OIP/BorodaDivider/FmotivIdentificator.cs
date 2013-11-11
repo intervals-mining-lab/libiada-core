@@ -1,59 +1,67 @@
-﻿using System.Linq;
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
 
 namespace MDA.OIP.BorodaDivider
 {
     public class FmotivIdentificator
     {
-        public FmotivChain GetIdentification(FmotivChain fmotivchain, PauseTreatment paramPause, FMSequentEquality paramEqual)
+        public FmotivChain GetIdentification(FmotivChain fmotivchain, int paramPause, int paramEqual)
         {
-            FmotivChain Temp = (FmotivChain) fmotivchain.Clone();
-            /*for (int i = 0; i < Temp.Length; i++ )
+            FmotivChain Temp = (FmotivChain)fmotivchain.Clone();
+
+            for (int i = 0; i < Temp.FmotivList.Count; i++)
             {
-                Temp.SetBuildingElement(i, 1);
-            }
-                */
-                for (int i = 0; i < Temp.Length; i++)
+                for (int j = i; j < Temp.FmotivList.Count; j++)
                 {
-                    for (int j = i; j < Temp.Length; j++)
+                    if (Temp.FmotivList[i].FmEquals(Temp.FmotivList[j], paramPause, paramEqual)) 
+                    //if (Temp.FmotivList[i].Equals(Temp.FmotivList[j])) 
                     {
-                        if (((Fmotiv)Temp[i]).Equals(Temp[j], paramPause, paramEqual))
-                            //if (Temp.FmotivList[i].Equals(Temp.FmotivList[j])) 
-                        {
-                            Temp.SetBuildingElement(j, Temp.Building[i]);
-                        }
+                        Temp.FmotivList[j].Id = Temp.FmotivList[i].Id;
                     }
                 }
-                for (int i = 1; i <= Temp.Building.Max(); i++)
+            }
+            for (int i = 0; i < MaxId(Temp.FmotivList); i++) 
+            {
+                bool HaveId = false; // флаг того что есть такой id в цепочке
+                for (int j = 0; j < Temp.FmotivList.Count; j++)
                 {
-                    bool HaveId = false; // флаг того что есть такой id в цепочке
-                    for (int j = 0; j < Temp.Length; j++)
-                    {
-                        if (!HaveId)
-                        {
-                            if (Temp.Building[j] == i)
-                            {
-                                HaveId = true;
-                                break;
-                            }
-                        }
-                    }
                     if (!HaveId)
                     {
-                        for (int j = 0; j < Temp.Length; j++)
+                        if (Temp.FmotivList[j].Id == i)
                         {
-                            if (Temp.Building[j] > i)
-                            {
-                                // уменьшаем на 1 id тех фмотивов которые больше текущей  id - i, которой не нашлось в цепи
-                                Temp.SetBuildingElement(j, Temp.Building[j] - 1);
-                            }
+                            HaveId = true;
+                            break;
                         }
-                        // уменьшаем i на 1 чтобы еще раз проверить есть ли это i среди цепи после уменьшения id-ек больших i
-                        i = i - 1;
-
                     }
                 }
-                
+                if (!HaveId) 
+                {
+                    for (int j = 0; j < Temp.FmotivList.Count; j++)
+                    {
+                        if (Temp.FmotivList[j].Id > i)
+                            {
+                            // уменьшаем на 1 id тех фмотивов которые больше текущей  id - i, которой не нашлось в цепи
+                                Temp.FmotivList[j].Id = Temp.FmotivList[j].Id -1;
+                            }
+                    }
+                    // уменьшаем i на 1 чтобы еще раз проверить есть ли это i среди цепи после уменьшения id-ек больших i
+                    i=i-1;
+
+                }
+            }
+
                 return Temp;
+        }
+
+        private int MaxId(List<Fmotiv> list)
+        {
+            int max = 0;
+            foreach(Fmotiv fmotiv in list)
+            {
+                if (fmotiv.Id > max) { max = fmotiv.Id;}
+            }
+            return max;
         }
     }
 }
