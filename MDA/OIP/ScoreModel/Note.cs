@@ -9,32 +9,34 @@ namespace MDA.OIP.ScoreModel
     {
         private bool triplet; // наличие триоли
         private int tie; // есть ли лига (-1 : нет; 0 - начало; 1 - конец)
-        private Pitch pitch; // высота ноты
+        private List<Pitch> pitch; // высота ноты
         private Duration duration; // длительность ноты
         private int priority; // сильная/слабая доля - приоритет доли
         private int id; // id ноты для составления строя нот
 
-        public Note(Pitch pitch, Duration duration, bool triplet, int tie) 
+        public Note(Pitch pitch, Duration duration, bool triplet, int tie)
         {
+            this.pitch = new List<Pitch>();
             if (pitch != null) // если не пауза то записываем высоту и наличие лиги
-            { 
-                this.pitch = (Pitch)pitch.Clone(); 
-                this.tie = tie; 
+            {
+                this.pitch.Add(pitch);
+                this.tie = tie;
             }
             else
             {
                 this.tie = -1; // если нота - пауза, то не может быть лиги на паузу
             }
-            this.duration = (Duration) duration.Clone();
+            this.duration = (Duration)duration.Clone();
             this.triplet = triplet;
             this.priority = -1; // приоритет не определен
         }
+
         public Note(Pitch pitch, Duration duration, bool triplet, int tie, int priority)
         {
-
+            this.pitch = new List<Pitch>();
             if (pitch != null) // если не пауза то записываем высоту и наличие лиги
             {
-                this.pitch = (Pitch)pitch.Clone();
+                this.pitch.Add(pitch);
                 this.tie = tie;
             }
             else
@@ -45,6 +47,54 @@ namespace MDA.OIP.ScoreModel
             this.triplet = triplet;
             this.priority = priority; // приоритет если указан
         }
+
+        public Note(List<Pitch> pitch, Duration duration, bool triplet, int tie, int priority)
+        {
+            if (pitch != null && pitch.Count != 0) // если не пауза то записываем высоту и наличие лиги
+            {
+                this.pitch = new List<Pitch>(pitch);
+                this.tie = tie;
+            }
+            else
+            {
+                this.tie = -1; // если нота - пауза, то не может быть лиги на паузу
+            }
+            this.duration = (Duration)duration.Clone();
+            this.triplet = triplet;
+            this.priority = priority; // приоритет если указан
+        }
+
+        public void AddPitch(Pitch pitch)
+        {
+            this.pitch.Add(pitch);
+        }
+        public void AddPitch(List<Pitch> pitchlist)
+        {
+            foreach (Pitch pitch in pitchlist) this.pitch.Add(pitch);
+        }
+        public List<Note> SplitNote(int ticks)
+        {
+            List<Note> Temp = new List<Note>();
+            Temp.Add((Note)this.Clone());
+            Temp.Add((Note)this.Clone());
+            /*Temp[0] = (Note)this.Clone();
+            Temp[1] = (Note)this.Clone();*/
+            Temp[0].Duration.Ticks = ticks;
+            Temp[1].Duration.Ticks = this.Duration.Ticks - ticks;
+            return Temp;
+        }
+        public List<Note> SplitNote(Duration duration)
+        {
+            int ticks = duration.Ticks;
+            return SplitNote(ticks);
+            /*List<Note> Temp = new List<Note>(2);
+            Temp[0] = (Note)this.Clone();
+            Temp[1] = (Note)this.Clone();
+            Temp[0].Duration.Ticks = ticks;
+            Temp[1].Duration.Ticks = this.Duration.Ticks - ticks;
+            return Temp;*/
+        }
+
         public int Id
         {
             set
@@ -56,6 +106,7 @@ namespace MDA.OIP.ScoreModel
                 return id;
             }
         }
+
         public bool Triplet
         {
             get
@@ -63,6 +114,7 @@ namespace MDA.OIP.ScoreModel
                 return triplet;
             }
         }
+
         public int Tie
         {
             get
@@ -70,13 +122,15 @@ namespace MDA.OIP.ScoreModel
                 return tie;
             }
         }
-        public Pitch Pitch
+
+        public List<Pitch> Pitch
         {
             get
             {
                 return pitch;
             }
         }
+
         public Duration Duration
         {
             get
@@ -84,6 +138,7 @@ namespace MDA.OIP.ScoreModel
                 return duration;
             }
         }
+
         public int Priority
         {
             set
@@ -141,8 +196,24 @@ namespace MDA.OIP.ScoreModel
                 }
             }
 
+            bool pitchEquals = true;
 
-            if ((this.Duration.Equals(((Note)obj).Duration)) && (this.Pitch.Equals(((Note)obj).Pitch)) && (this.Tie == ((Note)obj).Tie) && (this.Triplet == ((Note)obj).Triplet))
+            if (this.pitch.Count != ((Note)obj).Pitch.Count)
+            {
+                pitchEquals = false;
+            }
+            else
+            {
+                for (int i=0; i<this.pitch.Count;i++)
+                {
+                    if (!this.pitch[i].Equals(((Note)obj).pitch[i]))
+                    {
+                        pitchEquals = false;
+                    }
+                }
+            }
+
+            if ((this.Duration.Equals(((Note)obj).Duration)) && pitchEquals && (this.Tie == ((Note)obj).Tie) && (this.Triplet == ((Note)obj).Triplet))
             {
                 return true;
             }
@@ -174,4 +245,3 @@ namespace MDA.OIP.ScoreModel
         #endregion
     }
 }
-

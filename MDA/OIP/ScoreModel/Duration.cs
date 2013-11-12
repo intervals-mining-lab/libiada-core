@@ -121,6 +121,7 @@ namespace MDA.OIP.ScoreModel
         public int Ticks
         {
             get { return ticks; }
+            set { ticks = value; }
         }
 
         #region privateMethods

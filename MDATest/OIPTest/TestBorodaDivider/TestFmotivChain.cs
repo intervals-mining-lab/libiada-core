@@ -20,8 +20,8 @@ namespace MDATest.OIPTest.TestBorodaDivider
             fmchain.FmotivList[0].NoteList.Add(new Note(new Pitch(0, 'A', 0), new Duration(1, 4, false, 480), false, Tie.None));
             fmchain.FmotivList[0].NoteList.Add(new Note(new Pitch(0, 'B', 0), new Duration(1, 2, false, 480), false, Tie.None));
             Assert.AreEqual(0, fmchain.FmotivList[0].Id);
-            Assert.AreEqual('A', fmchain.FmotivList[0].NoteList[0].Pitch.Step);
-            Assert.AreEqual('B', fmchain.FmotivList[0].NoteList[1].Pitch.Step);
+            Assert.AreEqual('A', fmchain.FmotivList[0].NoteList[0].Pitch[0].Step);
+            Assert.AreEqual('B', fmchain.FmotivList[0].NoteList[1].Pitch[0].Step);
         }
 
         [TestMethod]

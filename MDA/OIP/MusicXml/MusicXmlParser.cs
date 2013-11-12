@@ -29,10 +29,10 @@ namespace MDA.OIP.MusicXml
         public void Execute(XmlDocument xmldocument, string filename)
         {
             // TODO: проверка схемы Xml на соотвествие схеме MusicXml
-            if (ChordFound((XmlDocument)xmldocument.Clone())) // если в документе найден хоть один аккорд, то сообщение об ошибке
+            /*@if (ChordFound((XmlDocument)xmldocument.Clone())) // если в документе найден хоть один аккорд, то сообщение об ошибке
             {
                 throw new Exception("MDA.PARSER: Chord Detected!");
-            }
+            }*/
             // создаем объект модели музыкального текста из Xml документа
             scoremodel = new ScoreTrack(filename, parseUniformScoreTracks((XmlDocument)xmldocument.Clone()));
 
@@ -77,13 +77,67 @@ namespace MDA.OIP.MusicXml
         private List<UniformScoreTrack> parseUniformScoreTracks(XmlDocument scoreNode)
         {
             List<UniformScoreTrack> Temp = new List<UniformScoreTrack>();
+            List<Note> TempNoteList = new List<Note>();
+            int k = 0;
 
             XmlNodeList uniformlist = scoreNode.GetElementsByTagName("part"); // Создаем и заполняем лист по тегу "part"  
             for (int i = 0; i < uniformlist.Count; i++)
             {
                 //TODO: вероятно нужна проверка на то есть ли такой атрибут - имя моно трека, если нет то задать счетчиком i
                 Temp.Add(new UniformScoreTrack(uniformlist[i].Attributes["id"].Value, parseMeasures((XmlNode)uniformlist[i].Clone())));
+                ////////////////////////////////////////////////
+                //ВСЁ ЭТО ЛУЧШЕ ВЫДЕЛИТЬ В ОТДЕЛЬНЫЙ MERGETRACKS
+                ////////////////////////////////////////////////
+                #region mergetracks
+                foreach (Measure mes in Temp[i].Measurelist)
+                    foreach (Note not in mes.NoteList)
+                        if (not.Pitch != null)
+                        {
+                            foreach (Pitch pit in not.Pitch)
+                                pit.Instrument = i;
+                        }
+                if (i > 0) //Далее - мерджим такты в нулевую дорожку, если номер текущей не равен нулю
+                {
+                    for (int j = 0; j < Temp[i].Measurelist.Count; j++)
+                    {//Нужно по очереди смерджить каждый такт текущей дорожки с тактом нулевой, который имеет тот же порядковый номер
+                        
+                        while (k < Temp[0].Measurelist[j].NoteList.Count)
+                        {//Как это делается: берём ноту текущего такта текущей дорожки
+                            //Если количество нот текущего трека не меньше, чем положение курсора в нулевом, то
+                            if (Temp[i].Measurelist[j].NoteList.Count >= k)
+                            {
+                                //Смотрим на её длительность - есть соответствующая по началу нота нулевой дорожки равна по длительности, то просто вставим одну в другую
+                                //for (int l = 0; l < Temp[i].Measurelist[j].NoteList.Count)
+                                //if (Temp[i].Measurelist[j].NoteList[k].Duration.Equals(Temp[0].Measurelist[j].NoteList[k].Duration))
+                                //Нужна процедур SplitNote, которая в качестве параметра имеет количество тиков,
+                                //а на выходе - список из двух нот, количество тиков первой равно заданному
+
+                                if (Temp[0].Measurelist[j].NoteList[k].Duration.Value < Temp[i].Measurelist[j].NoteList[k].Duration.Value)
+                                { 
+                                    //Нулевая нота короче, значит делить надо ненулевую
+                                    TempNoteList = Temp[i].Measurelist[j].NoteList[k].SplitNote(Temp[0].Measurelist[j].NoteList[k].Duration.Ticks);
+                                    Temp[i].Measurelist[j].NoteList.Remove(Temp[i].Measurelist[j].NoteList[k]);
+                                    Temp[i].Measurelist[j].NoteList.InsertRange(k, TempNoteList);
+                                }
+                                if (Temp[0].Measurelist[j].NoteList[k].Duration.Value > Temp[i].Measurelist[j].NoteList[k].Duration.Value)
+                                {
+                                    //Нулевая нота длиннее, значит делить надо её
+                                    TempNoteList = Temp[0].Measurelist[j].NoteList[k].SplitNote(Temp[i].Measurelist[j].NoteList[k].Duration.Ticks);
+                                    Temp[0].Measurelist[j].NoteList.Remove(Temp[i].Measurelist[j].NoteList[k]);
+                                    Temp[0].Measurelist[j].NoteList.InsertRange(k, TempNoteList);
+                                }
+                                //if (Temp[0].Measurelist[j].NoteList[k].Duration.Equals(Temp[i].Measurelist[j].NoteList[k].Duration))
+                                    Temp[0].Measurelist[j].NoteList[k].AddPitch(Temp[i].Measurelist[j].NoteList[k].Pitch);//*/
+                            }
+                            k++;
+                        }                        
+                    }
+                }
+                #endregion
+                ////////////////////////////////////////////////
+                ////////////////////////////////////////////////
             }
+            
             return Temp;
         }
 
@@ -296,6 +350,7 @@ namespace MDA.OIP.MusicXml
                     Temp.Add(new Note(parsePitch((XmlNode)measureChild.Clone()),parseDuration((XmlNode)measureChild.Clone()),parseTriplet((XmlNode)measureChild.Clone()),parseTie((XmlNode)measureChild.Clone())));   
                     hasNotes = true;
                 }
+                if (measureChild.Name == "chord") Temp[Temp.Count-1].AddPitch(parsePitch((XmlNode)measureChild.Clone()));
             }
             if (hasNotes) return Temp;
             else return null;

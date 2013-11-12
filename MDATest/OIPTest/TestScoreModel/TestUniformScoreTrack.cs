@@ -36,11 +36,11 @@ namespace MDATest.OIPTest.TestScoreModel
             notes2.Add(new Note(new Pitch(3, 'A', 2), new Duration(1, 16, false, 128), false, Tie.None, 3));
             notes2.Add(new Note(new Pitch(3, 'C', 1), new Duration(1, 4, false, 128), false, Tie.None, 1));
 
-            notes2.Add(new Note(null, new Duration(1, 4, false, 128), false, Tie.None, 1));
-            notes2.Add(new Note(null, new Duration(1, 4, false, 128), false, Tie.None, 1));
+            notes2.Add(new Note((Pitch)null, new Duration(1, 4, false, 128), false, Tie.None, 1));
+            notes2.Add(new Note((Pitch)null, new Duration(1, 4, false, 128), false, Tie.None, 1));
 
-            notes2.Add(new Note(null, new Duration(1, 16, false, 128), false, Tie.None, 1));
-            notes2.Add(new Note(null, new Duration(1, 16, false, 128), false, Tie.None, 1));
+            notes2.Add(new Note((Pitch)null, new Duration(1, 16, false, 128), false, Tie.None, 1));
+            notes2.Add(new Note((Pitch)null, new Duration(1, 16, false, 128), false, Tie.None, 1));
             
 
             Attributes attr = new Attributes(new Size(4, 4), new Key(5));
@@ -113,11 +113,11 @@ namespace MDATest.OIPTest.TestScoreModel
             notes2.Add(new Note(new Pitch(3, 'A', 2), new Duration(1, 16, false, 128), false, Tie.None, 3));
             notes2.Add(new Note(new Pitch(3, 'C', 1), new Duration(1, 4, false, 128), false, Tie.None, 1));
 
-            notes2.Add(new Note(null, new Duration(1, 4, false, 128), false, Tie.None, 1));
-            notes2.Add(new Note(null, new Duration(1, 4, false, 128), false, Tie.None, 1));
+            notes2.Add(new Note((Pitch)null, new Duration(1, 4, false, 128), false, Tie.None, 1));
+            notes2.Add(new Note((Pitch)null, new Duration(1, 4, false, 128), false, Tie.None, 1));
 
-            notes2.Add(new Note(null, new Duration(1, 16, false, 128), false, Tie.None, 1));
-            notes2.Add(new Note(null, new Duration(1, 16, false, 128), false, Tie.None, 1));
+            notes2.Add(new Note((Pitch)null, new Duration(1, 16, false, 128), false, Tie.None, 1));
+            notes2.Add(new Note((Pitch)null, new Duration(1, 16, false, 128), false, Tie.None, 1));
 
 
             Attributes attr = new Attributes(new Size(4, 4), new Key(5));
@@ -194,12 +194,12 @@ namespace MDATest.OIPTest.TestScoreModel
             notes4.Add(new Note(new Pitch(3, 'C', 1), new Duration(1, 4, false, 128), false, Tie.None, 1));
 
             List<Note> notes5 = new List<Note>();
-            notes5.Add(new Note(null, new Duration(1, 4, false, 128), false, Tie.None, 1));
-            notes5.Add(new Note(null, new Duration(1, 4, false, 128), false, Tie.None, 1));
+            notes5.Add(new Note((Pitch)null, new Duration(1, 4, false, 128), false, Tie.None, 1));
+            notes5.Add(new Note((Pitch)null, new Duration(1, 4, false, 128), false, Tie.None, 1));
 
             List<Note> notes6 = new List<Note>();
-            notes6.Add(new Note(null, new Duration(1, 16, false, 128), false, Tie.None, 1));
-            notes6.Add(new Note(null, new Duration(1, 16, false, 128), false, Tie.None, 1));
+            notes6.Add(new Note((Pitch)null, new Duration(1, 16, false, 128), false, Tie.None, 1));
+            notes6.Add(new Note((Pitch)null, new Duration(1, 16, false, 128), false, Tie.None, 1));
 
 
             Attributes attr = new Attributes(new Size(4, 4, 128), new Key(5));

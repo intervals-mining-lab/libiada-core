@@ -11,6 +11,10 @@ namespace MDA.OIP.ScoreModel
         private char step; // ЗАГЛАВНАЯ (!) буква обозначающая "относительную" высоту ноты "A", "B" и т.д.
         private int octave; // номер октавы 
         private int midinumber; // уникальный номер ноты по миди стандарту
+        private int instrument; //@инструмент
+        private int p;
+        private int p_2;
+        private int p_3;
 
         public Pitch(int octave, char step, int alter)
         {
@@ -34,6 +38,11 @@ namespace MDA.OIP.ScoreModel
         public int Alter
         {
             get { return alter; }
+        }
+        public int Instrument
+        {
+            get { return instrument; }
+            set { this.instrument = value; }
         }
 
         #region privateMethods
@@ -75,6 +84,14 @@ namespace MDA.OIP.ScoreModel
             ///<summary>
             /// Stub for GetBin
             ///</summary>  
+        }
+
+        public Pitch(int p, int p_2, int p_3)
+        {
+            // TODO: Complete member initialization
+            this.p = p;
+            this.p_2 = p_2;
+            this.p_3 = p_3;
         }
 
         public IBaseObject Clone()

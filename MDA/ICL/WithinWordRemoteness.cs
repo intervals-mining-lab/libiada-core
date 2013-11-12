@@ -25,7 +25,7 @@ namespace MDA.ICL
                 for (int i = 0; i < fmotiv.PauseTreatment(ParamPauseTreatment.Ignore).TieGathered().NoteList.Count; i++)
                 {
                     //TODO: переделать нормально чтоб цепочка складывалась из ValueNote, а не как попало
-                    notechain[i] = new ValueString(Convert.ToString(fmotiv.PauseTreatment(ParamPauseTreatment.Ignore).TieGathered().NoteList[i].Pitch.Midinumber) + " " +
+                    notechain[i] = new ValueString(Convert.ToString(fmotiv.PauseTreatment(ParamPauseTreatment.Ignore).TieGathered().NoteList[i].Pitch[0].Midinumber) + " " +
                         Convert.ToString(fmotiv.PauseTreatment(ParamPauseTreatment.Ignore).TieGathered().NoteList[i].Duration.Value * 10000000));
                 }
 

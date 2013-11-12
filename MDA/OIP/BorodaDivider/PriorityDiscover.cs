@@ -228,7 +228,7 @@ namespace MDA.OIP.BorodaDivider
 
 //---------------------------Занесение начальных долей размера такта---------------------------
 //---------------------------------------------------------------------------------------------
-            priorityMask.NoteList.Add(new Note(null, new Duration(1, measure.Attributes.Size.Beatbase,
+            priorityMask.NoteList.Add(new Note((Pitch)null, new Duration(1, measure.Attributes.Size.Beatbase,
                 false, measure.Attributes.Size.Ticksperbeat), false, Tie.None, 0));
                 // первая доля в такте всегда самая сильная и выделяется НАИВЫСШИМ приоритетом 0
 
@@ -240,7 +240,7 @@ namespace MDA.OIP.BorodaDivider
                         if (i % 2 == 0)
                         { //относительно сильная доля с приоритетом 1
                             int priority = 1;
-                            priorityMask.NoteList.Add(new Note(null, new Duration(1, measure.Attributes.Size.Beatbase,
+                            priorityMask.NoteList.Add(new Note((Pitch)null, new Duration(1, measure.Attributes.Size.Beatbase,
                                             false, measure.Attributes.Size.Ticksperbeat), false, Tie.None, priority));
                         }
                         else
@@ -249,7 +249,7 @@ namespace MDA.OIP.BorodaDivider
                             //если всего две доли то более слабая будет иметь приоритет 1, так как больше нет долей
                             if (measure.Attributes.Size.Beats == 2) { priority = 1; }
 
-                            priorityMask.NoteList.Add(new Note(null, new Duration(1, measure.Attributes.Size.Beatbase,
+                            priorityMask.NoteList.Add(new Note((Pitch)null, new Duration(1, measure.Attributes.Size.Beatbase,
                                             false, measure.Attributes.Size.Ticksperbeat), false, Tie.None, priority));
                         }
                     }
@@ -265,7 +265,7 @@ namespace MDA.OIP.BorodaDivider
                             if (i % 3 == 0)
                             { //относительно сильная доля с приоритетом 1
                                 int priority = 1;
-                                priorityMask.NoteList.Add(new Note(null, new Duration(1, measure.Attributes.Size.Beatbase,
+                                priorityMask.NoteList.Add(new Note((Pitch)null, new Duration(1, measure.Attributes.Size.Beatbase,
                                                 false, measure.Attributes.Size.Ticksperbeat), false, Tie.None, priority));
                             }
                             else
@@ -274,7 +274,7 @@ namespace MDA.OIP.BorodaDivider
                                 //если всего три доли то более слабые будут иметь приоритет 1, так как больше нет других долей
                                 if (measure.Attributes.Size.Beats == 3) { priority = 1; }
 
-                                priorityMask.NoteList.Add(new Note(null, new Duration(1, measure.Attributes.Size.Beatbase,
+                                priorityMask.NoteList.Add(new Note((Pitch)null, new Duration(1, measure.Attributes.Size.Beatbase,
                                                 false, measure.Attributes.Size.Ticksperbeat), false, Tie.None, priority));
                             }
                         }                        
@@ -290,14 +290,14 @@ namespace MDA.OIP.BorodaDivider
                                 int priority = 1;
                                 // если сильная доля последняя - записываем ее как слабую в ПМТ-3
                                 if (i == measure.Attributes.Size.Beats - 1) { priority = 2; }
-                                
-                                priorityMask.NoteList.Add(new Note(null, new Duration(1, measure.Attributes.Size.Beatbase,
+
+                                priorityMask.NoteList.Add(new Note((Pitch)null, new Duration(1, measure.Attributes.Size.Beatbase,
                                                 false, measure.Attributes.Size.Ticksperbeat), false, Tie.None, priority));
                             }
                             else
                             { //слабая доля с приоритетом 2
                                 int priority = 2;
-                                priorityMask.NoteList.Add(new Note(null, new Duration(1, measure.Attributes.Size.Beatbase,
+                                priorityMask.NoteList.Add(new Note((Pitch)null, new Duration(1, measure.Attributes.Size.Beatbase,
                                                 false, measure.Attributes.Size.Ticksperbeat), false, Tie.None, priority));
                             }
                         }                        
@@ -338,9 +338,9 @@ namespace MDA.OIP.BorodaDivider
                 for (int i = 0; i < priorityMask.NoteList.Count; i++)
                 {
 
-                    Temp.NoteList.Add(new Note(null, new Duration(1, (priorityMask.NoteList[i].Duration.Denominator*2),
+                    Temp.NoteList.Add(new Note((Pitch)null, new Duration(1, (priorityMask.NoteList[i].Duration.Denominator * 2),
                         false, (priorityMask.NoteList[i].Duration.Ticks / 2)), false, Tie.None, priorityMask.NoteList[i].Priority));
-                    Temp.NoteList.Add(new Note(null, new Duration(1, (priorityMask.NoteList[i].Duration.Denominator*2),
+                    Temp.NoteList.Add(new Note((Pitch)null, new Duration(1, (priorityMask.NoteList[i].Duration.Denominator * 2),
                         false, (priorityMask.NoteList[i].Duration.Ticks / 2)), false, Tie.None, (maxpriority + 1)));
                 }
                 

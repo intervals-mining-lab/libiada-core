@@ -69,7 +69,7 @@ namespace MDA.OIP.BorodaDivider
                         Temp = (Fmotiv)this.Clone();
                         for (int i = 0; i < Temp.notelist.Count; i++)
                         {
-                            if (Temp.notelist[i].Pitch == null)
+                            if (Temp.notelist[i].Pitch != null && Temp.notelist[i].Pitch.Count == 0)
                             {
                                 Temp.notelist.RemoveAt(i);
                                 i = i - 1;
@@ -85,7 +85,7 @@ namespace MDA.OIP.BorodaDivider
 
                         // если пауза стоит вначале текста (и текст не пустой) то она удаляется
                         while (Temp.notelist.Count > 0)
-                        {   if (Temp.NoteList[0].Pitch!=null)
+                        {   if (Temp.notelist[0].Pitch != null && Temp.NoteList[0].Pitch.Count!=0)
                             {
                                 break;
                             }
@@ -98,7 +98,7 @@ namespace MDA.OIP.BorodaDivider
                         for (int i = 0; i < Temp.notelist.Count; i++)
                         {
                             
-                            if (Temp.notelist[i].Pitch == null)
+                            if (Temp.notelist[i].Pitch.Count == 0)
                             {
                                 // к длительности предыдущего звука добавляем длительность текущей паузы 
                                 Temp.notelist[i - 1].Duration.AddDuration((Duration)Temp.notelist[i].Duration.Clone());
@@ -153,7 +153,7 @@ namespace MDA.OIP.BorodaDivider
                 else
                 {
                     // пауза не может быть залигованна, ошибка если лига на паузе! 
-                    if (Temp.NoteList[0].Pitch == null) { throw new Exception("MDA: Pause can't be with Tie! Sorry!"); }
+                if (Temp.NoteList[0].Pitch.Count == 0) { throw new Exception("MDA: Pause can't be with Tie! Sorry!"); }
 
                     // начало лиги стартовая нота
                     if (Temp.NoteList[0].Tie == 0) 
@@ -168,13 +168,34 @@ namespace MDA.OIP.BorodaDivider
                         // должно быть уже собрано что то в буффере так как лига продолжающаяся или завершающаяся
                         if (BuffNote == null) { throw new Exception("MDA: Tie note (stopes and starts)/(stops), without previous note start!"); }
                         // высота залигованных нот должна быть одинакова
-                        if (!BuffNote.Pitch.Equals(Temp.NoteList[0].Pitch)) { throw new Exception("MDA: Pitches of tie notes not equal!"); }
+
+                        bool pitchEquals = true;
+
+                        if (BuffNote.Pitch.Count != Temp.notelist[0].Pitch.Count)
+                        {
+                            pitchEquals = false;
+                        }
+                        else
+                        {
+                            for (int j = 0; j < BuffNote.Pitch.Count; j++)
+                            {
+                                if (!Temp.notelist[0].Pitch[j].Equals(BuffNote.Pitch[j]))
+                                {
+                                    pitchEquals = false;
+                                }
+                            }
+                        }
+
+                        if (!pitchEquals)
+                        {
+                            throw new Exception("MDA: Pitches of tie notes not equal!");
+                        }
 
                         // уже начавшаяся лига продолжается, с условием что будет еще следущая лигованная нота
                         if (Temp.NoteList[0].Tie == 2)
                         {
                             // добавляется длительность, и копируется старая высота звучания и приоритет
-                            BuffNote = new Note((Pitch)BuffNote.Pitch.Clone(), BuffNote.Duration.AddDuration(Temp.NoteList[0].Duration), BuffNote.Triplet, Tie.None, BuffNote.Priority);
+                            BuffNote = new Note(BuffNote.Pitch, BuffNote.Duration.AddDuration(Temp.NoteList[0].Duration), BuffNote.Triplet, Tie.None, BuffNote.Priority);
                             // очистка текущей позиции ноты, для перехода к следущей в очереди
                             Temp.NoteList.RemoveAt(0);
                         }
@@ -184,7 +205,7 @@ namespace MDA.OIP.BorodaDivider
                             if (Temp.NoteList[0].Tie == 1)
                             {
                                 // добавляется длительность, и копируется старая высота звучания и приоритет
-                                BuffNote = new Note((Pitch)BuffNote.Pitch.Clone(), BuffNote.Duration.AddDuration(Temp.NoteList[0].Duration), BuffNote.Triplet, Tie.None, BuffNote.Priority);
+                                BuffNote = new Note(BuffNote.Pitch, BuffNote.Duration.AddDuration(Temp.NoteList[0].Duration), BuffNote.Triplet, Tie.None, BuffNote.Priority);
                                 // завершен сбор лигованных нот, результат кладется в возвращаемый буфер.
                                 TempGathered.NoteList.Add(((Note)BuffNote.Clone()));
                                 // очистка буффера залигованных нот
@@ -227,7 +248,7 @@ namespace MDA.OIP.BorodaDivider
         //TODO: убрал метод override , соотвественно euals сейчас просто выполняет сравнение ссылок объектов переделать все частные
         public override bool Equals(object obj)
         {
-            // для сравнения паузы не нужны, поэтому сравнивае ф-мотивы без пауз (они игнорируются, но входят в состав ф-мотива)
+            // для сравнения паузы не нужны, поэтому сравниваем ф-мотивы без пауз (они игнорируются, но входят в состав ф-мотива)
             Fmotiv Temp1 = this.PauseTreatment(ParamPauseTreatment.Ignore).TieGathered();
             Fmotiv Temp2 = ((Fmotiv)obj).PauseTreatment(ParamPauseTreatment.Ignore).TieGathered();
             int Modulation = 0;
@@ -252,12 +273,12 @@ namespace MDA.OIP.BorodaDivider
                 if (FirstTime) 
                 { // при первом сравнении вычисляем на сколько полутонов отличаются первые ноты,
                   //последущие должны отличаться на столько же, чтобы фмотивы были равны
-                    Modulation = Temp1.NoteList[i].Pitch.Midinumber - Temp2.NoteList[i].Pitch.Midinumber;
+                    Modulation = Temp1.NoteList[i].Pitch[0].Midinumber - Temp2.NoteList[i].Pitch[0].Midinumber;
                     FirstTime = false;
                 }
 
                 // одинаковы ли при этом высоты / правильно ли присутствует секвентный перенос (модуляция)
-                if (Modulation != (Temp1.NoteList[i].Pitch.Midinumber - Temp2.NoteList[i].Pitch.Midinumber))
+                if (Modulation != (Temp1.NoteList[i].Pitch[0].Midinumber - Temp2.NoteList[i].Pitch[0].Midinumber))
                 {
                     return false;
                 }
@@ -271,7 +292,7 @@ namespace MDA.OIP.BorodaDivider
             // для сравнения паузы не нужны, поэтому сравнивае ф-мотивы без пауз (они игнорируются, но входят в состав ф-мотива)
             Fmotiv Temp1 = this.PauseTreatment(paramPause).TieGathered();
             Fmotiv Temp2 = ((Fmotiv)obj).PauseTreatment(paramPause).TieGathered();
-            int Modulation = 0;
+            List<int> Modulation = new List<int>();
             bool FirstTime = true;
 
             if (Temp1.NoteList.Count != Temp2.NoteList.Count) 
@@ -290,9 +311,9 @@ namespace MDA.OIP.BorodaDivider
                     return false;
                 }
 
-                if ((Temp1.notelist[i].Pitch == null) || (Temp2.notelist[i].Pitch == null))
+                if ((Temp1.notelist[i].Pitch.Count == 0) || (Temp2.notelist[i].Pitch.Count == 0))
                 {
-                    if (!((Temp1.notelist[i].Pitch == null) && (Temp2.notelist[i].Pitch == null)))
+                    if (!((Temp1.notelist[i].Pitch.Count == 0) && (Temp2.notelist[i].Pitch.Count == 0)))
                     {// если одна из нот пауза, а вторая - нет, то ф-мотивы не одинаковы
                         return false;
                     }
@@ -310,22 +331,25 @@ namespace MDA.OIP.BorodaDivider
                             if (FirstTime)
                             { // при первом сравнении вычисляем на сколько полутонов отличаются первые ноты,
                                 //последущие должны отличаться на столько же, чтобы фмотивы были равны
-                                Modulation = Temp1.NoteList[i].Pitch.Midinumber - Temp2.NoteList[i].Pitch.Midinumber;
+                                for (int j = 0; j <= Temp1.NoteList[i].Pitch.Count-1; j++)
+                                	Modulation.Add(Temp1.NoteList[i].Pitch[j].Midinumber - Temp2.NoteList[i].Pitch[j].Midinumber);
                                 FirstTime = false;
                             }
 
                             // одинаковы ли при этом высоты / правильно ли присутствует секвентный перенос (модуляция)
-                            if (Modulation != (Temp1.NoteList[i].Pitch.Midinumber - Temp2.NoteList[i].Pitch.Midinumber))
-                            {
-                                return false;
-                            }
+                            for (int j = 0; j <= Temp1.NoteList[i].Pitch.Count-1; j++)
+                            	if (Modulation[j] != (Temp1.NoteList[i].Pitch[j].Midinumber - Temp2.NoteList[i].Pitch[j].Midinumber))
+                            	{
+                                	return false;
+                            	}
                         }
                         break;
 
                         case 1:
                         {  //без секвентного переноса (NonSequent)
-                        
-                            if (!(Temp1.NoteList[i].Pitch.Midinumber == Temp2.NoteList[i].Pitch.Midinumber))
+
+                            for (int j = 0; j <= Temp1.NoteList[i].Pitch.Count-1; j++)
+                            if (!(Temp1.NoteList[i].Pitch[j].Midinumber == Temp2.NoteList[i].Pitch[j].Midinumber))
                             {
                                 return false;
                             }

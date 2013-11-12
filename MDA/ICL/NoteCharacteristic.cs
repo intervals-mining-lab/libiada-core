@@ -42,17 +42,22 @@ namespace MDA.ICL
             }
 
             Chain notechain = new Chain(notelist.Count);
-            for (int i = 0; i < notelist.Count; i++) 
+            for (int i = 0; i < notelist.Count; i++)
             {
-                double ostatok =0 ;
-                double midi = notelist[i].Pitch.Midinumber;
+                double midi = 0;
+                string temp = "0";
+                if (notelist[i].Pitch != null)
+                {
+                    temp = Convert.ToString(notelist[i].Pitch[0].Midinumber);
+                    midi = notelist[i].Pitch[0].Midinumber;
+                }
+                
 
-                ostatok = midi - 12* Math.Truncate(midi/12);
+                double ostatok = midi - 12* Math.Truncate(midi/12);
 
                 //TODO: переделать нормально чтоб цепочка складывалась из ValueNote, а не как попало
-
-                notechain[i] = new ValueString(Convert.ToString(notelist[i].Pitch.Midinumber) + " " +
-                    Convert.ToString(notelist[i].Duration.Value * 10000000));
+                
+                notechain[i] = new ValueString(temp + " " + Convert.ToString(notelist[i].Duration.Value * 10000000));
 
 
                 /*

@@ -332,7 +332,7 @@ namespace MDATest.OIPTest.TestBorodaDivider
         {
             // создание и заполнения списка(ов) нот для такта(ов) монотрека
             List<Note> notes = new List<Note>();
-            notes.Add(new Note(null, new Duration(1, 4, false, 512), false, Tie.None,0));
+            notes.Add(new Note((Pitch)null, new Duration(1, 4, false, 512), false, Tie.None, 0));
             notes.Add(new Note(new Pitch(3, 'A', 0), new Duration(1, 8, false, 256), false, Tie.None,1));
             notes.Add(new Note(new Pitch(3, 'B', 0), new Duration(1, 8, false, 256), false, Tie.None,2));
 
@@ -380,7 +380,7 @@ namespace MDATest.OIPTest.TestBorodaDivider
             
             notes.Add(new Note(new Pitch(3, 'A', 0), new Duration(1, 8, false, 256), false, Tie.None,0));
             notes.Add(new Note(new Pitch(3, 'B', 0), new Duration(1, 8, false, 256), false, Tie.None,2));
-            notes.Add(new Note(null, new Duration(1, 8, false, 256), false, Tie.None,1));
+            notes.Add(new Note((Pitch)null, new Duration(1, 8, false, 256), false, Tie.None, 1));
             notes.Add(new Note(new Pitch(3, 'B', 0), new Duration(1, 8, false, 256), false, Tie.None,2));
 
             // создание атрибутов для такта(ов)
@@ -425,7 +425,7 @@ namespace MDATest.OIPTest.TestBorodaDivider
             List<Note> notes = new List<Note>();
 
             notes.Add(new Note(new Pitch(3, 'A', 0), new Duration(1, 8, false, 256), false, Tie.None, 0));
-            notes.Add(new Note(null, new Duration(1, 8, false, 256), false, Tie.None, 2));
+            notes.Add(new Note((Pitch)null, new Duration(1, 8, false, 256), false, Tie.None, 2));
             notes.Add(new Note(new Pitch(3, 'B', 0), new Duration(1, 8, false, 256), false, Tie.None, 1));
             notes.Add(new Note(new Pitch(3, 'B', 0), new Duration(1, 8, false, 256), false, Tie.None, 2));
 

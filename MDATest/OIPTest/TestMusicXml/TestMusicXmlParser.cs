@@ -79,7 +79,7 @@ namespace TestMusicXml.MDATest.OIPTest
 
             Assert.AreEqual(xmlreader.FileName , Parser.ScoreModel.Name);
             Assert.AreEqual(Scoremodel.UniformScoreTracks[0].Measurelist[0].Attributes, Parser.ScoreModel.UniformScoreTracks[0].Measurelist[0].Attributes);
-            Assert.AreEqual(Scoremodel.UniformScoreTracks[0].Measurelist[0].NoteList[0], Parser.ScoreModel.UniformScoreTracks[0].Measurelist[0].NoteList[0]);
+            Assert.IsTrue(Scoremodel.UniformScoreTracks[0].Measurelist[0].NoteList[0].Equals(Parser.ScoreModel.UniformScoreTracks[0].Measurelist[0].NoteList[0]));
             Assert.AreEqual(Scoremodel.UniformScoreTracks[0].Measurelist[0], Parser.ScoreModel.UniformScoreTracks[0].Measurelist[0]);
             Assert.AreEqual(Scoremodel.UniformScoreTracks[0].Measurelist[1], Parser.ScoreModel.UniformScoreTracks[0].Measurelist[1]);
             Assert.AreEqual(Scoremodel.UniformScoreTracks[0].Measurelist[2], Parser.ScoreModel.UniformScoreTracks[0].Measurelist[2]);
