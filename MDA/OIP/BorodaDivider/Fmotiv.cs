@@ -251,7 +251,7 @@ namespace MDA.OIP.BorodaDivider
             // для сравнения паузы не нужны, поэтому сравниваем ф-мотивы без пауз (они игнорируются, но входят в состав ф-мотива)
             Fmotiv Temp1 = this.PauseTreatment(ParamPauseTreatment.Ignore).TieGathered();
             Fmotiv Temp2 = ((Fmotiv)obj).PauseTreatment(ParamPauseTreatment.Ignore).TieGathered();
-            int Modulation = 0;
+            List<int> Modulation = new List<int>();
             bool FirstTime = true;
 
             if (Temp1.NoteList.Count != Temp2.NoteList.Count)
@@ -273,14 +273,21 @@ namespace MDA.OIP.BorodaDivider
                 if (FirstTime) 
                 { // при первом сравнении вычисляем на сколько полутонов отличаются первые ноты,
                   //последущие должны отличаться на столько же, чтобы фмотивы были равны
-                    Modulation = Temp1.NoteList[i].Pitch[0].Midinumber - Temp2.NoteList[i].Pitch[0].Midinumber;
+                    for (int j = 0; j < Temp1.notelist[i].Pitch.Count; j++)
+                    {
+                        Modulation.Add(Temp1.notelist[i].Pitch[j].Midinumber - Temp2.notelist[i].Pitch[j].Midinumber);
+                    }
+                    //Modulation = Temp1.NoteList[i].Pitch[0].Midinumber - Temp2.NoteList[i].Pitch[0].Midinumber;
                     FirstTime = false;
                 }
 
                 // одинаковы ли при этом высоты / правильно ли присутствует секвентный перенос (модуляция)
-                if (Modulation != (Temp1.NoteList[i].Pitch[0].Midinumber - Temp2.NoteList[i].Pitch[0].Midinumber))
+                for (int j = 0; j < Temp1.notelist[i].Pitch.Count; j++)
                 {
-                    return false;
+                    if (Modulation[j] != (Temp1.NoteList[i].Pitch[j].Midinumber - Temp2.NoteList[i].Pitch[j].Midinumber))
+                    {
+                        return false;
+                    }
                 }
             }
 

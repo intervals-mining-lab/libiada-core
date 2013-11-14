@@ -50,7 +50,7 @@ namespace MDA.OIP.ScoreModel
 
         public Note(List<Pitch> pitch, Duration duration, bool triplet, int tie, int priority)
         {
-            if (pitch != null && pitch.Count != 0) // если не пауза то записываем высоту и наличие лиги
+            if (pitch != null) // если не пауза то записываем высоту и наличие лиги
             {
                 this.pitch = new List<Pitch>(pitch);
                 this.tie = tie;
