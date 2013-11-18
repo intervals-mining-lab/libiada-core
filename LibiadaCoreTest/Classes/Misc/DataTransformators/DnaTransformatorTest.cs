@@ -1,4 +1,5 @@
-﻿using LibiadaCore.Classes.Misc.DataTransformators;
+﻿using System.Collections.Generic;
+using LibiadaCore.Classes.Misc.DataTransformators;
 using LibiadaCore.Classes.Root;
 using LibiadaCore.Classes.Root.SimpleTypes;
 using NUnit.Framework;
@@ -11,13 +12,7 @@ namespace LibiadaCoreTest.Classes.Misc.DataTransformators
         [Test]
         public void SimpleEncodeTest()
         {
-            string str;
-            str = "TTT";
-            BaseChain input = new BaseChain(3);
-            for (int i = 0; i < input.Length; i++)
-            {
-                input[i] = new ValueChar(str[i]);
-            }
+            BaseChain input = new BaseChain("TTT");
             BaseChain Out = DnaTransformator.Encode(input);
             Assert.AreEqual("F", Out[0].ToString());
         }
@@ -25,13 +20,7 @@ namespace LibiadaCoreTest.Classes.Misc.DataTransformators
         [Test]
         public void EncodeTest()
         {
-            string str;
-            str = "TTTTTCTTATTGTCTTCCTCATCGTATTACTAATAGTGTTGCTGATGGCTTCTCCTACTGCCTCCCCCACCGCATCACCAACAGCGTCGCCGACGGATTATCATAATGACTACCACAACGAATAACAAAAAGAGTAGCAGAAGGGTTGTCGTAGTGGCTGCCGCAGCGGATGACGAAGAGGGTGGCGGAGGG";
-            BaseChain input = new BaseChain(64 * 3);
-            for (int i = 0; i < input.Length; i++)
-            {
-                input[i] = new ValueChar(str[i]);
-            }
+            BaseChain input = new BaseChain("TTTTTCTTATTGTCTTCCTCATCGTATTACTAATAGTGTTGCTGATGGCTTCTCCTACTGCCTCCCCCACCGCATCACCAACAGCGTCGCCGACGGATTATCATAATGACTACCACAACGAATAACAAAAAGAGTAGCAGAAGGGTTGTCGTAGTGGCTGCCGCAGCGGATGACGAAGAGGGTGGCGGAGGG");
             BaseChain Out = DnaTransformator.Encode(input);
             string temp = "FFLLSSSSYYXXCCXWLLLLPPPPHHQQRRRRIIIMTTTTNNKKSSRRVVVVAAAADDEEGGGG";
             for (int i = 0; i < temp.Length; i++)
@@ -43,8 +32,7 @@ namespace LibiadaCoreTest.Classes.Misc.DataTransformators
         [Test]
         public void SimpleDecodeTest()
         {
-            BaseChain input = new BaseChain(1);
-            input[0] = new ValueString("F");
+            BaseChain input = new BaseChain("F");
             BaseChain Out = DnaTransformator.Decode(input);
             ValuePhantom mes = new ValuePhantom {new ValueString("TTT"), new ValueString("TTC")};
             Assert.IsTrue(mes.Equals(Out[0]));
@@ -53,14 +41,13 @@ namespace LibiadaCoreTest.Classes.Misc.DataTransformators
         [Test]
         public void DecodeTest()
         {
-            BaseChain input = new BaseChain(21);
-            string temp = "FLSYXCWPHQRIMTNKVADEG";
-            for (int i = 0; i < temp.Length; i++)
-            {
-                input[i] = new ValueString(temp[i].ToString());
-            }
-            ValuePhantom m0 = new ValuePhantom {new ValueString("TTT"), new ValueString("TTC")};
-            ValuePhantom m1 = new ValuePhantom
+            BaseChain input = new BaseChain("FLSYXCWPHQRIMTNKVADEG");
+
+            List<ValuePhantom> message = new List<ValuePhantom>()
+                {
+                    new ValuePhantom {new ValueString("TTT"), new ValueString("TTC")},
+
+                    new ValuePhantom
                 {
                     new ValueString("TTA"),
                     new ValueString("TTG"),
@@ -68,8 +55,9 @@ namespace LibiadaCoreTest.Classes.Misc.DataTransformators
                     new ValueString("CTC"),
                     new ValueString("CTA"),
                     new ValueString("CTG")
-                };
-            ValuePhantom m2 = new ValuePhantom
+                },
+
+                new ValuePhantom
                 {
                     new ValueString("TCT"),
                     new ValueString("TCC"),
@@ -77,21 +65,29 @@ namespace LibiadaCoreTest.Classes.Misc.DataTransformators
                     new ValueString("TCG"),
                     new ValueString("AGT"),
                     new ValueString("AGC")
-                };
-            ValuePhantom m3 = new ValuePhantom {new ValueString("TAT"), new ValueString("TAC")};
-            ValuePhantom m4 = new ValuePhantom {new ValueString("TAA"), new ValueString("TAG"), new ValueString("TGA")};
-            ValuePhantom m5 = new ValuePhantom {new ValueString("TGT"), new ValueString("TGC")};
-            ValuePhantom m6 = new ValuePhantom {new ValueString("TGG")};
-            ValuePhantom m7 = new ValuePhantom
+                },
+
+                new ValuePhantom {new ValueString("TAT"), new ValueString("TAC")},
+
+                new ValuePhantom {new ValueString("TAA"), new ValueString("TAG"), new ValueString("TGA")},
+
+                new ValuePhantom {new ValueString("TGT"), new ValueString("TGC")},
+
+                new ValuePhantom {new ValueString("TGG")},
+
+                new ValuePhantom
                 {
                     new ValueString("CCT"),
                     new ValueString("CCC"),
                     new ValueString("CCA"),
                     new ValueString("CCG")
-                };
-            ValuePhantom m8 = new ValuePhantom {new ValueString("CAT"), new ValueString("CAC")};
-            ValuePhantom m9 = new ValuePhantom {new ValueString("CAA"), new ValueString("CAG")};
-            ValuePhantom m10 = new ValuePhantom
+                },
+
+                new ValuePhantom {new ValueString("CAT"), new ValueString("CAC")},
+
+                new ValuePhantom {new ValueString("CAA"), new ValueString("CAG")},
+
+                new ValuePhantom
                 {
                     new ValueString("CGT"),
                     new ValueString("CGC"),
@@ -99,75 +95,68 @@ namespace LibiadaCoreTest.Classes.Misc.DataTransformators
                     new ValueString("CGG"),
                     new ValueString("AGA"),
                     new ValueString("AGG")
-                };
-            ValuePhantom m11 = new ValuePhantom {new ValueString("ATT"), new ValueString("ATC"), new ValueString("ATA")};
-            ValuePhantom m12 = new ValuePhantom {new ValueString("ATG")};
-            ValuePhantom m13 = new ValuePhantom
+                },
+
+                new ValuePhantom {new ValueString("ATT"), new ValueString("ATC"), new ValueString("ATA")},
+
+                new ValuePhantom {new ValueString("ATG")},
+
+                new ValuePhantom
                 {
                     new ValueString("ACT"),
                     new ValueString("ACC"),
                     new ValueString("ACA"),
                     new ValueString("ACG")
-                };
-            ValuePhantom m14 = new ValuePhantom {new ValueString("AAT"), new ValueString("AAC")};
-            ValuePhantom m15 = new ValuePhantom {new ValueString("AAA"), new ValueString("AAG")};
-            ValuePhantom m16 = new ValuePhantom
+                },
+
+                new ValuePhantom {new ValueString("AAT"), new ValueString("AAC")},
+
+                new ValuePhantom {new ValueString("AAA"), new ValueString("AAG")},
+
+                    new ValuePhantom
                 {
                     new ValueString("GTT"),
                     new ValueString("GTC"),
                     new ValueString("GTA"),
                     new ValueString("GTG")
-                };
-            ValuePhantom m17 = new ValuePhantom
+                },
+
+                new ValuePhantom
                 {
                     new ValueString("GCT"),
                     new ValueString("GCC"),
                     new ValueString("GCA"),
                     new ValueString("GCG")
-                };
-            ValuePhantom m18 = new ValuePhantom {new ValueString("GAT"), new ValueString("GAC")};
-            ValuePhantom m19 = new ValuePhantom {new ValueString("GAA"), new ValueString("GAG")};
-            ValuePhantom m20 = new ValuePhantom
+                },
+
+                new ValuePhantom {new ValueString("GAT"), new ValueString("GAC")},
+
+                new ValuePhantom {new ValueString("GAA"), new ValueString("GAG")},
+
+                new ValuePhantom
                 {
                     new ValueString("GGT"),
                     new ValueString("GGC"),
                     new ValueString("GGA"),
                     new ValueString("GGG")
+                }
+
                 };
+
             BaseChain Out = DnaTransformator.Decode(input);
-            Assert.IsTrue(Out[0].Equals(m0));
-            Assert.IsTrue(Out[1].Equals(m1));
-            Assert.IsTrue(Out[2].Equals(m2));
-            Assert.IsTrue(Out[3].Equals(m3));
-            Assert.IsTrue(Out[4].Equals(m4));
-            Assert.IsTrue(Out[5].Equals(m5));
-            Assert.IsTrue(Out[6].Equals(m6));
-            Assert.IsTrue(Out[7].Equals(m7));
-            Assert.IsTrue(Out[8].Equals(m8));
-            Assert.IsTrue(Out[9].Equals(m9));
-            Assert.IsTrue(Out[10].Equals(m10));
-            Assert.IsTrue(Out[11].Equals(m11));
-            Assert.IsTrue(Out[12].Equals(m12));
-            Assert.IsTrue(Out[13].Equals(m13));
-            Assert.IsTrue(Out[14].Equals(m14));
-            Assert.IsTrue(Out[15].Equals(m15));
-            Assert.IsTrue(Out[16].Equals(m16));
-            Assert.IsTrue(Out[17].Equals(m17));
-            Assert.IsTrue(Out[18].Equals(m18));
-            Assert.IsTrue(Out[19].Equals(m19));
-            Assert.IsTrue(Out[20].Equals(m20));
+            for (int i = 0; i < message.Count; i++)
+            {
+                Assert.IsTrue(Out[i].Equals(message[i]));
+            }
         }
 
         [Test]
         public void EncodeTripletsTest()
         {
-            string str = "TTTTTCTTATTGTCTTCCTCATCGTATTACTAATAGTGTTGCTGATGGCTTCTCCTACTGCCTCCCCCACCGCATCACCAACAGCGTCGCCGACGGATTATCATAATGACTACCACAACGAATAACAAAAAGAGTAGCAGAAGGGTTGTCGTAGTGGCTGCCGCAGCGGATGACGAAGAGGGTGGCGGAGGG";
-            BaseChain input = new BaseChain(64 * 3);
-            for (int i = 0; i < input.Length; i++)
-            {
-                input[i] = new ValueChar(str[i]);
-            }
+            BaseChain input = new BaseChain("TTTTTCTTATTGTCTTCCTCATCGTATTACTAATAGTGTTGCTGATGGCTTCTCCTACTGCCTCCCCCACCGCATCACCAACAGCGTCGCCGACGGATTATCATAATGACTACCACAACGAATAACAAAAAGAGTAGCAGAAGGGTTGTCGTAGTGGCTGCCGCAGCGGATGACGAAGAGGGTGGCGGAGGG");
+            
             BaseChain Out = DnaTransformator.EncodeTriplets(input);
+
             Assert.AreEqual(new ValueString("TTT"), Out[0]);
             Assert.AreEqual(new ValueString("TTC"), Out[1]);
             Assert.AreEqual(new ValueString("TTA"), Out[2]);

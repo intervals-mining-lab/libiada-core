@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Text;
 using LibiadaCore.Classes.Root.SimpleTypes;
 using LibiadaCore.Classes.TheoryOfSet;
 
@@ -167,13 +168,14 @@ namespace LibiadaCore.Classes.Root
 
         public override string ToString()
         {
-            string result = "";
+            StringBuilder builder = new StringBuilder();
 
             for (int i = 0; i < Length; i++)
             {
-                result += this[i].ToString();
+                builder.Append(this[i]);
             }
-            return result;
+
+            return builder.ToString();
         }
 
         ///<summary>
