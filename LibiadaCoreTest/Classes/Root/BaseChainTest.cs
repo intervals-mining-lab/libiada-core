@@ -5,8 +5,7 @@ using NUnit.Framework;
 
 namespace LibiadaCoreTest.Classes.Root
 {
-    ///<summary>
-    ///</summary>
+    //TODO: FIX ORDER OF ARGUMENTS IN ALL AreEqual
     [TestFixture]
     public class BaseChainTest
     {

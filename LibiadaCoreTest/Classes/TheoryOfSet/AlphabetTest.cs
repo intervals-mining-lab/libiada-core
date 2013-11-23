@@ -7,16 +7,12 @@ using System.Collections.Generic;
 
 namespace LibiadaCoreTest.Classes.TheoryOfSet
 {
-    ///<summary>
-    ///</summary>
     [TestFixture]
     public class AlphabetTest
     {
         private Alphabet AlBase;
         private Alphabet AlBase2;
-        //TODO: FIX ORDER OF ARGUMENTS IN ALL AreEqual
-        ///<summary>
-        ///</summary>
+
         [SetUp]
         public void Init()
         {
@@ -24,8 +20,6 @@ namespace LibiadaCoreTest.Classes.TheoryOfSet
             AlBase2 = new Alphabet();
         }
 
-        ///<summary>
-        ///</summary>
         [Test]
         public void ConstrutorTest()
         {
@@ -33,8 +27,6 @@ namespace LibiadaCoreTest.Classes.TheoryOfSet
             Assert.IsNotNull(a1);
         }
 
-        ///<summary>
-        ///</summary>
         [Test]
         public void AddSameTest()
         {
@@ -50,8 +42,6 @@ namespace LibiadaCoreTest.Classes.TheoryOfSet
             Assert.Fail();
         }
 
-        ///<summary>
-        ///</summary>
         [Test]
         public void GetTest()
         {
@@ -65,8 +55,6 @@ namespace LibiadaCoreTest.Classes.TheoryOfSet
             Assert.AreEqual(new ValueInt(5), AlBase[3]);
         }
 
-        ///<summary>
-        ///</summary>
         [Test]
         public void IndependNumberTest()
         {
@@ -81,8 +69,6 @@ namespace LibiadaCoreTest.Classes.TheoryOfSet
             Assert.AreEqual(new ValueInt(4), AlBase[3]);
         }
 
-        ///<summary>
-        ///</summary>
         [Test]
         public void IndependStringTest()
         {
@@ -98,8 +84,6 @@ namespace LibiadaCoreTest.Classes.TheoryOfSet
             Assert.AreEqual(new ValueString("1"), AlBase[3]);
         }
 
-        ///<summary>
-        ///</summary>
         [Test]
         [ExpectedException(typeof(NullReferenceException))]
         public void NullTest()
@@ -107,9 +91,6 @@ namespace LibiadaCoreTest.Classes.TheoryOfSet
             AlBase.Add(null);
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
         [Test]
         public void PowerTest()
         {
@@ -119,9 +100,6 @@ namespace LibiadaCoreTest.Classes.TheoryOfSet
             Assert.AreEqual(AlBase.Power, 3);
         }
 
-        /// <summary>
-        /// �������� ��������
-        /// </summary>
         [Test]
         public void RemoveTest()
         {
@@ -134,8 +112,6 @@ namespace LibiadaCoreTest.Classes.TheoryOfSet
             Assert.AreEqual(AlBase[2], new ValueInt(400));
         }
 
-        ///<summary>
-        ///</summary>
         [Test]
         public void CloneTest()
         {
@@ -144,9 +120,6 @@ namespace LibiadaCoreTest.Classes.TheoryOfSet
             Assert.IsTrue(AlBase.Equals(AlBase.Clone()));
         }
 
-        /// <summary>
-        /// ����������� ��������� ���������
-        /// </summary>
         [Test]
         public void EqualsTest()
         {
@@ -160,9 +133,6 @@ namespace LibiadaCoreTest.Classes.TheoryOfSet
             Assert.IsTrue(AlBase.Equals(AlBase2));
         }
 
-        /// <summary>
-        /// ����������� ��������� ���������
-        /// </summary>
         [Test]
         public void EqualsForAlphabetWithEqualsCompositionButNotEqualsOrderTest()
         {
@@ -176,9 +146,6 @@ namespace LibiadaCoreTest.Classes.TheoryOfSet
             Assert.IsTrue(AlBase.Equals(AlBase2));
         }
 
-        /// <summary>
-        /// ���� �� 
-        /// </summary>
         [Test]
         public void ContainsTest()
         {
@@ -191,8 +158,6 @@ namespace LibiadaCoreTest.Classes.TheoryOfSet
             Assert.IsFalse(AlBase.Contains(new ValueChar('d')));
         }
 
-        ///<summary>
-        ///</summary>
         [Test]
         public void IndexOfTest()
         {

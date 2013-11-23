@@ -15,9 +15,9 @@ namespace LibiadaCoreTest.Classes.Misc.Iterators
             FromFixStartCutRule rule = new FromFixStartCutRule(s.Length, 3);  //правило разбиения
             List<String> cuts = DifCutter.Cut(s, rule);  //метод разрубающий строчку
 
-            Assert.AreEqual(cuts[0], "ree");        //проверяем правильность результата
-            Assert.AreEqual(cuts[1], "reegwv");
-            Assert.AreEqual(cuts[2], "reegwvwvw");
+            Assert.AreEqual("ree", cuts[0]);        //проверяем правильность результата
+            Assert.AreEqual("reegwv", cuts[1]);
+            Assert.AreEqual("reegwvwvw", cuts[2]);
         }
     }
 }

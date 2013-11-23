@@ -5,9 +5,9 @@ namespace LibiadaCore.Classes.Root.SimpleTypes
     ///</summary>
     public class ValueString : IBaseObject
     {
-        public string Value = "";
+        public string Value = string.Empty;
 
-        protected  ValueString()
+        protected ValueString()
         {
         }
 

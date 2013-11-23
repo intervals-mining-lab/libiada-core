@@ -25,7 +25,7 @@ namespace LibiadaCore.Classes.Misc.SpaceRebuilders
             {
                 throw new Exception("Markov Chain level <= 0");
             }
-            if(Level == 0)
+            if (Level == 0)
             {
                 return (ChainTo)((BaseChain)from);
             }

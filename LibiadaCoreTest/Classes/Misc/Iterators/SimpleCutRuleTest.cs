@@ -11,18 +11,13 @@ namespace LibiadaCoreTest.Classes.Misc.Iterators
         {
             SimpleCutRule rule = new SimpleCutRule(100, 3, 3);
             CutRuleIterator iterator = rule.GetIterator(); //объект, который бегает по массиву
-            iterator.Next();
-            Assert.AreEqual(0, iterator.GetStartPos());
-            Assert.AreEqual(iterator.GetStopPos(), 3);
-            iterator.Next();
-            Assert.AreEqual(3, iterator.GetStartPos());
-            Assert.AreEqual(iterator.GetStopPos(), 6);
-            iterator.Next();
-            Assert.AreEqual(6, iterator.GetStartPos());
-            Assert.AreEqual(iterator.GetStopPos(), 9);
-            iterator.Next();
-            Assert.AreEqual(9, iterator.GetStartPos());
-            Assert.AreEqual(iterator.GetStopPos(), 12);
+
+            for (int i = 0; i <= 12; i+=3)
+            {
+                iterator.Next();
+                Assert.AreEqual(i, iterator.GetStartPos());
+                Assert.AreEqual(i+3, iterator.GetStopPos());
+            }
         }
     }
 }
