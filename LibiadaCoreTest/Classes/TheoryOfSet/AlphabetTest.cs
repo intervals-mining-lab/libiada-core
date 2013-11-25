@@ -97,7 +97,7 @@ namespace LibiadaCoreTest.Classes.TheoryOfSet
             AlBase.Add(new ValueInt(100));
             AlBase.Add(new ValueInt(200));
             AlBase.Add(new ValueInt(300));
-            Assert.AreEqual(AlBase.Power, 3);
+            Assert.AreEqual(3, AlBase.Power);
         }
 
         [Test]
@@ -108,8 +108,8 @@ namespace LibiadaCoreTest.Classes.TheoryOfSet
             AlBase.Add(new ValueInt(300));
             AlBase.Add(new ValueInt(400));
             AlBase.Remove(2);
-            Assert.AreEqual(AlBase.Power, 3);
-            Assert.AreEqual(AlBase[2], new ValueInt(400));
+            Assert.AreEqual(3, AlBase.Power);
+            Assert.AreEqual(new ValueInt(400), AlBase[2]);
         }
 
         [Test]

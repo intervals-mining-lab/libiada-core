@@ -6,24 +6,17 @@ using NUnit.Framework;
 
 namespace LibiadaCoreTest.Classes.Root
 {
-    ///<summary>
-    ///</summary>
     [TestFixture]
     public class ChainTest
     {
-        private Chain ChainBase;
+        private Chain chain;
 
-        ///<summary>
-        ///</summary>
         [SetUp]
         public void Init()
         {
-            ChainBase = new Chain(10);
+            chain = new Chain(10);
         }
 
-
-        ///<summary>
-        ///</summary>
         [Test]
         public void SimularChainsGetTest()
         {
@@ -33,31 +26,31 @@ namespace LibiadaCoreTest.Classes.Root
             ValueChar messageT = new ValueChar('t');
             CongenericChain unifromChainA = new CongenericChain(10, messageA);
 
-            ChainBase.Add(messageC, 0);
+            chain.Add(messageC, 0);
 
-            ChainBase.Add(messageC, 1);
+            chain.Add(messageC, 1);
 
-            ChainBase.Add(messageA, 2);
+            chain.Add(messageA, 2);
 
             unifromChainA.Add(messageA, 2);
 
-            ChainBase.Add(messageC, 3);
+            chain.Add(messageC, 3);
 
-            ChainBase.Add(messageG, 4);
+            chain.Add(messageG, 4);
 
-            ChainBase.Add(messageC, 5);
+            chain.Add(messageC, 5);
 
-            ChainBase.Add(messageT, 6);
+            chain.Add(messageT, 6);
 
-            ChainBase.Add(messageT, 7);
+            chain.Add(messageT, 7);
 
-            ChainBase.Add(messageA, 8);
+            chain.Add(messageA, 8);
 
             unifromChainA.Add(messageA, 8);
 
-            ChainBase.Add(messageC, 9);
+            chain.Add(messageC, 9);
 
-            BaseChain chainCreatedCongenericChain = ChainBase.CongenericChain((IBaseObject)messageA);
+            BaseChain chainCreatedCongenericChain = chain.CongenericChain((IBaseObject)messageA);
 
             Assert.AreEqual(unifromChainA, chainCreatedCongenericChain);
         }
@@ -90,35 +83,35 @@ namespace LibiadaCoreTest.Classes.Root
             ValueChar messageG = new ValueChar('g');
             ValueChar messageT = new ValueChar('t');
 
-            ChainBase.Add(messageC, 0);
-            ChainBase.Add(messageC, 1);
-            ChainBase.Add(messageA, 2);
-            ChainBase.Add(messageC, 3);
-            ChainBase.Add(messageG, 4);
-            ChainBase.Add(messageC, 5);
-            ChainBase.Add(messageT, 6);
-            ChainBase.Add(messageT, 7);
-            ChainBase.Add(messageA, 8);
-            ChainBase.Add(messageC, 9);
+            chain.Add(messageC, 0);
+            chain.Add(messageC, 1);
+            chain.Add(messageA, 2);
+            chain.Add(messageC, 3);
+            chain.Add(messageG, 4);
+            chain.Add(messageC, 5);
+            chain.Add(messageT, 6);
+            chain.Add(messageT, 7);
+            chain.Add(messageA, 8);
+            chain.Add(messageC, 9);
 
-            Assert.AreEqual(2,ChainBase.Get(messageA, 1));
-            Assert.AreEqual(8, ChainBase.Get(messageA, 2));
-            Assert.AreEqual(-1, ChainBase.Get(messageA, 3));
+            Assert.AreEqual(2,chain.Get(messageA, 1));
+            Assert.AreEqual(8, chain.Get(messageA, 2));
+            Assert.AreEqual(-1, chain.Get(messageA, 3));
 
-            Assert.AreEqual(0, ChainBase.Get(messageC, 1));
-            Assert.AreEqual(1, ChainBase.Get(messageC, 2));
-            Assert.AreEqual(3, ChainBase.Get(messageC, 3));
-            Assert.AreEqual(5, ChainBase.Get(messageC, 4));
-            Assert.AreEqual(9, ChainBase.Get(messageC, 5));
-            Assert.AreEqual(-1, ChainBase.Get(messageC, 6));
+            Assert.AreEqual(0, chain.Get(messageC, 1));
+            Assert.AreEqual(1, chain.Get(messageC, 2));
+            Assert.AreEqual(3, chain.Get(messageC, 3));
+            Assert.AreEqual(5, chain.Get(messageC, 4));
+            Assert.AreEqual(9, chain.Get(messageC, 5));
+            Assert.AreEqual(-1, chain.Get(messageC, 6));
 
-            Assert.AreEqual(4, ChainBase.Get(messageG, 1));
-            Assert.AreEqual(-1, ChainBase.Get(messageG, 2));
-            Assert.AreEqual(-1, ChainBase.Get(messageG, 3));
+            Assert.AreEqual(4, chain.Get(messageG, 1));
+            Assert.AreEqual(-1, chain.Get(messageG, 2));
+            Assert.AreEqual(-1, chain.Get(messageG, 3));
 
-            Assert.AreEqual(6, ChainBase.Get(messageT, 1));
-            Assert.AreEqual(7, ChainBase.Get(messageT, 2));
-            Assert.AreEqual(-1, ChainBase.Get(messageT, 3));
+            Assert.AreEqual(6, chain.Get(messageT, 1));
+            Assert.AreEqual(7, chain.Get(messageT, 2));
+            Assert.AreEqual(-1, chain.Get(messageT, 3));
         }
 
         [Test]
@@ -129,32 +122,32 @@ namespace LibiadaCoreTest.Classes.Root
             ValueChar messageG = new ValueChar('g');
             ValueChar messageT = new ValueChar('t');
 
-            ChainBase.Add(messageC, 0);
-            ChainBase.Add(messageC, 1);
-            ChainBase.Add(messageA, 2);
-            ChainBase.Add(messageC, 3);
-            ChainBase.Add(messageG, 4);
-            ChainBase.Add(messageC, 5);
-            ChainBase.Add(messageT, 6);
-            ChainBase.Add(messageT, 7);
-            ChainBase.Add(messageA, 8);
-            ChainBase.Add(messageC, 9);
+            chain.Add(messageC, 0);
+            chain.Add(messageC, 1);
+            chain.Add(messageA, 2);
+            chain.Add(messageC, 3);
+            chain.Add(messageG, 4);
+            chain.Add(messageC, 5);
+            chain.Add(messageT, 6);
+            chain.Add(messageT, 7);
+            chain.Add(messageA, 8);
+            chain.Add(messageC, 9);
 
-            Assert.AreEqual(1, ChainBase.GetBinaryInterval(messageA, messageC, 1));
-            Assert.AreEqual(1, ChainBase.GetBinaryInterval(messageA, messageC, 2));
-            Assert.AreEqual(-1, ChainBase.GetBinaryInterval(messageA, messageC, 3));
+            Assert.AreEqual(1, chain.GetBinaryInterval(messageA, messageC, 1));
+            Assert.AreEqual(1, chain.GetBinaryInterval(messageA, messageC, 2));
+            Assert.AreEqual(-1, chain.GetBinaryInterval(messageA, messageC, 3));
 
-            Assert.AreEqual(-1, ChainBase.GetBinaryInterval(messageC, messageA, 1));
-            Assert.AreEqual(1, ChainBase.GetBinaryInterval(messageC, messageA, 2));
-            Assert.AreEqual(-1, ChainBase.GetBinaryInterval(messageC, messageA, 3));
-            Assert.AreEqual(3, ChainBase.GetBinaryInterval(messageC, messageA, 4));
-            Assert.AreEqual(-1, ChainBase.GetBinaryInterval(messageC, messageA, 5));
+            Assert.AreEqual(-1, chain.GetBinaryInterval(messageC, messageA, 1));
+            Assert.AreEqual(1, chain.GetBinaryInterval(messageC, messageA, 2));
+            Assert.AreEqual(-1, chain.GetBinaryInterval(messageC, messageA, 3));
+            Assert.AreEqual(3, chain.GetBinaryInterval(messageC, messageA, 4));
+            Assert.AreEqual(-1, chain.GetBinaryInterval(messageC, messageA, 5));
 
-            Assert.AreEqual(-1, ChainBase.GetBinaryInterval(messageC, messageT, 1));
-            Assert.AreEqual(-1, ChainBase.GetBinaryInterval(messageC, messageT, 2));
-            Assert.AreEqual(-1, ChainBase.GetBinaryInterval(messageC, messageT, 3));
-            Assert.AreEqual(1, ChainBase.GetBinaryInterval(messageC, messageT, 4));
-            Assert.AreEqual(1, ChainBase.GetBinaryInterval(messageC, messageT, 4));
+            Assert.AreEqual(-1, chain.GetBinaryInterval(messageC, messageT, 1));
+            Assert.AreEqual(-1, chain.GetBinaryInterval(messageC, messageT, 2));
+            Assert.AreEqual(-1, chain.GetBinaryInterval(messageC, messageT, 3));
+            Assert.AreEqual(1, chain.GetBinaryInterval(messageC, messageT, 4));
+            Assert.AreEqual(1, chain.GetBinaryInterval(messageC, messageT, 4));
 
             // oxo_xx_oooxxo
             Chain testChain = new Chain(13);

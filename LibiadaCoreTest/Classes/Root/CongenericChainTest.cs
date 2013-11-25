@@ -4,8 +4,6 @@ using NUnit.Framework;
 
 namespace LibiadaCoreTest.Classes.Root
 {
-    ///<summary>
-    ///</summary>
     [TestFixture]
     public class CongenericChainTest
     {
@@ -13,8 +11,6 @@ namespace LibiadaCoreTest.Classes.Root
         private ValueChar WrongMessage;
         private CongenericChain CongenericChain;
 
-        ///<summary>
-        ///</summary>
         [SetUp]
         public void Init()
         {
@@ -23,8 +19,6 @@ namespace LibiadaCoreTest.Classes.Root
             WrongMessage = new ValueChar('2');
         }
 
-        ///<summary>
-        ///</summary>
         [Test]
         public void ConstructorTest()
         {
@@ -32,8 +26,6 @@ namespace LibiadaCoreTest.Classes.Root
             Assert.AreEqual(message, CongenericChain.Element);
         }
 
-        ///<summary>
-        ///</summary>
         [Test]
         public void IndependenseMessageTest()
         {
@@ -45,8 +37,6 @@ namespace LibiadaCoreTest.Classes.Root
             Assert.IsFalse(newMessage.Equals(CongenericChain.Element));
         }
 
-        ///<summary>
-        ///</summary>
         [Test]
         public void AddTest()
         {
@@ -54,8 +44,6 @@ namespace LibiadaCoreTest.Classes.Root
             Assert.AreEqual(message, CongenericChain.Get(3));
         }
 
-        ///<summary>
-        ///</summary>
         [Test]
         public void WrongMessageTest()
         {
@@ -64,8 +52,6 @@ namespace LibiadaCoreTest.Classes.Root
             Assert.AreEqual(NullValue.Instance(), CongenericChain.Get(4));
         }
 
-        ///<summary>
-        ///</summary>
         [Test]
         public void RemoveTest()
         {
