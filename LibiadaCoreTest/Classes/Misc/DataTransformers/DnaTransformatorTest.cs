@@ -1,10 +1,10 @@
 ﻿using System.Collections.Generic;
-using LibiadaCore.Classes.Misc.DataTransformators;
+using LibiadaCore.Classes.Misc.DataTransformers;
 using LibiadaCore.Classes.Root;
 using LibiadaCore.Classes.Root.SimpleTypes;
 using NUnit.Framework;
 
-namespace LibiadaCoreTest.Classes.Misc.DataTransformators
+namespace LibiadaCoreTest.Classes.Misc.DataTransformers
 {
     [TestFixture]
     public class DnaTransformatorTest
@@ -13,7 +13,7 @@ namespace LibiadaCoreTest.Classes.Misc.DataTransformators
         public void SimpleEncodeTest()
         {
             BaseChain input = new BaseChain("TTT");
-            BaseChain Out = DnaTransformator.Encode(input);
+            BaseChain Out = DnaTransformer.Encode(input);
             Assert.AreEqual("F", Out[0].ToString());
         }
 
@@ -21,7 +21,7 @@ namespace LibiadaCoreTest.Classes.Misc.DataTransformators
         public void EncodeTest()
         {
             BaseChain input = new BaseChain("TTTTTCTTATTGTCTTCCTCATCGTATTACTAATAGTGTTGCTGATGGCTTCTCCTACTGCCTCCCCCACCGCATCACCAACAGCGTCGCCGACGGATTATCATAATGACTACCACAACGAATAACAAAAAGAGTAGCAGAAGGGTTGTCGTAGTGGCTGCCGCAGCGGATGACGAAGAGGGTGGCGGAGGG");
-            BaseChain Out = DnaTransformator.Encode(input);
+            BaseChain Out = DnaTransformer.Encode(input);
             string temp = "FFLLSSSSYYXXCCXWLLLLPPPPHHQQRRRRIIIMTTTTNNKKSSRRVVVVAAAADDEEGGGG";
             for (int i = 0; i < temp.Length; i++)
             {
@@ -33,7 +33,7 @@ namespace LibiadaCoreTest.Classes.Misc.DataTransformators
         public void SimpleDecodeTest()
         {
             BaseChain input = new BaseChain("F");
-            BaseChain Out = DnaTransformator.Decode(input);
+            BaseChain Out = DnaTransformer.Decode(input);
             ValuePhantom mes = new ValuePhantom {new ValueString("TTT"), new ValueString("TTC")};
             Assert.IsTrue(mes.Equals(Out[0]));
         }
@@ -143,7 +143,7 @@ namespace LibiadaCoreTest.Classes.Misc.DataTransformators
 
                 };
 
-            BaseChain Out = DnaTransformator.Decode(input);
+            BaseChain Out = DnaTransformer.Decode(input);
             for (int i = 0; i < message.Count; i++)
             {
                 Assert.IsTrue(Out[i].Equals(message[i]));
@@ -155,7 +155,7 @@ namespace LibiadaCoreTest.Classes.Misc.DataTransformators
         {
             BaseChain input = new BaseChain("TTTTTCTTATTGTCTTCCTCATCGTATTACTAATAGTGTTGCTGATGGCTTCTCCTACTGCCTCCCCCACCGCATCACCAACAGCGTCGCCGACGGATTATCATAATGACTACCACAACGAATAACAAAAAGAGTAGCAGAAGGGTTGTCGTAGTGGCTGCCGCAGCGGATGACGAAGAGGGTGGCGGAGGG");
             
-            BaseChain Out = DnaTransformator.EncodeTriplets(input);
+            BaseChain Out = DnaTransformer.EncodeTriplets(input);
 
             Assert.AreEqual(new ValueString("TTT"), Out[0]);
             Assert.AreEqual(new ValueString("TTC"), Out[1]);

@@ -5,12 +5,7 @@ namespace LibiadaCore.Classes.Root.SimpleTypes
     ///</summary>
     public class ValueChar : IBaseObject
     {
-        public char Value = default(char);
-
-        ///<summary>
-        ///</summary>
-        public ValueChar()
-        {}
+        private readonly char value;
 
         ///<summary>
         ///Конструктор
@@ -18,12 +13,12 @@ namespace LibiadaCore.Classes.Root.SimpleTypes
         ///<param name="value">Начальное значение элемента</param>
         public ValueChar(char value)
         {
-            this.Value = value;
+            this.value = value;
         }
 
         public IBaseObject Clone()
         {
-            return new ValueChar(Value);
+            return new ValueChar(value);
         }
 
         public override bool Equals(object obj)
@@ -32,21 +27,12 @@ namespace LibiadaCore.Classes.Root.SimpleTypes
             {
                 return true;
             }
-            return EqualsAsChar(obj as ValueChar);
-        }
-
-        private bool EqualsAsChar(ValueChar c)
-        {
-            if (c == null)
-            {
-                return false;
-            }
-            return c.Value == Value;
+            return Equals(obj as ValueChar);
         }
 
         public override string ToString()
         {
-            return Value.ToString();
+            return value.ToString();
         }
 
         ///<summary>
@@ -55,7 +41,7 @@ namespace LibiadaCore.Classes.Root.SimpleTypes
         ///<returns></returns>
         public static implicit operator char(ValueChar from)
         {
-            return from.Value;
+            return from.value;
         }
 
         ///<summary>
@@ -65,6 +51,20 @@ namespace LibiadaCore.Classes.Root.SimpleTypes
         public static implicit operator ValueChar(char from)
         {
             return new ValueChar(from);
+        }
+
+        public bool Equals(ValueChar other)
+        {
+            if (other == null)
+            {
+                return false;
+            }
+            return value == other.value;
+        }
+
+        public override int GetHashCode()
+        {
+            return value.GetHashCode();
         }
     }
 }

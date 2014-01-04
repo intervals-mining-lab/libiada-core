@@ -50,7 +50,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Classes\Misc\DataTransformators\DnaTransformatorTest.cs" />
+    <Compile Include="Classes\Misc\DataTransformers\DnaTransformatorTest.cs" />
     <Compile Include="Classes\Misc\Iterators\DifCutterTest.cs" />
     <Compile Include="Classes\Misc\Iterators\FromFixStartCutRuleTest.cs" />
     <Compile Include="Classes\Misc\Iterators\IteratorEndTest.cs" />
@@ -61,7 +61,7 @@
     <Compile Include="Classes\Misc\Iterators\SimpleCutRuleWithBeginEndTest.cs" />
     <Compile Include="Classes\Misc\Iterators\FromFixStartCutRuleWithBeginEndTest.cs" />
     <Compile Include="Classes\Misc\SpaceRebuilders\NullRebuilderTest.cs" />
-    <Compile Include="Classes\Misc\SpaceRebuilders\PsevdoCycleSpaceTest.cs" />
+    <Compile Include="Classes\Misc\SpaceRebuilders\NullCycleSpaceTest.cs" />
     <Compile Include="Classes\Root\Characteristics\BinaryCalculators\AbstractBinaryCalculatorTest.cs" />
     <Compile Include="Classes\Root\Characteristics\BinaryCalculators\BinaryCalculationHelper.cs" />
     <Compile Include="Classes\Root\Characteristics\BinaryCalculators\BinaryGeometricMeanTest.cs" />

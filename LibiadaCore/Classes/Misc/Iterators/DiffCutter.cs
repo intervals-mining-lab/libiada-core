@@ -3,11 +3,11 @@ using System.Collections.Generic;
 
 namespace LibiadaCore.Classes.Misc.Iterators
 {
-    public class DifCutter
+    public static class DiffCutter
     {
         public static List<String> Cut(String chain, CutRule rule)
         {
-            List<String> result = new List<String>();
+            var result = new List<String>();
 
             rule.GetIterator();
             CutRuleIterator iterator = rule.GetIterator();

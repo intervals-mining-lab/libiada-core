@@ -175,18 +175,19 @@ namespace LibiadaCoreTest.Classes.TheoryOfSet
         [Test]
         public void ToArrayTest()
         {
-            AlBase.Add(new ValueChar('a'));
+            var a = new ValueChar('a');
+            var c = new ValueChar('c');
+            var e = new ValueChar('e');
+
+            AlBase.Add(a);
             AlBase.Add(new ValueChar('b'));
-            AlBase.Add(new ValueChar('c'));
+            AlBase.Add(c);
             AlBase.Add(new ValueChar('d'));
-            AlBase.Add(new ValueChar('e'));
-            IBaseObject[] testArray = AlBase.ToArray();
-            ((ValueChar) testArray[4]).Value = 'x';
-            ((ValueChar)testArray[2]).Value = 'y';
-            ((ValueChar)testArray[0]).Value = 'z';
-            Assert.AreEqual(new ValueChar('e'), AlBase[4]);
-            Assert.AreEqual(new ValueChar('c'), AlBase[2]);
-            Assert.AreEqual(new ValueChar('a'), AlBase[0]);
+            AlBase.Add(e);
+
+            Assert.AreNotSame(e, AlBase[4]);
+            Assert.AreNotSame(c, AlBase[2]);
+            Assert.AreNotSame(a, AlBase[0]);
         }
 
         /// <summary>
@@ -195,20 +196,20 @@ namespace LibiadaCoreTest.Classes.TheoryOfSet
         [Test]
         public void ToListTest()
         {
-            AlBase.Add(new ValueChar('a'));
-            AlBase.Add(new ValueChar('b'));
-            AlBase.Add(new ValueChar('c'));
-            AlBase.Add(new ValueChar('d'));
-            AlBase.Add(new ValueChar('e'));
+            var a = new ValueChar('a');
+            var b = new ValueChar('b');
+            var c = new ValueChar('c');
+            var d = new ValueChar('d');
+            var e = new ValueChar('e');
+            AlBase.Add(a);
+            AlBase.Add(b);
+            AlBase.Add(c);
+            AlBase.Add(d);
+            AlBase.Add(e);
 
-            List<IBaseObject> testList = AlBase.ToList();
-
-            ((ValueChar)testList[4]).Value = new ValueChar('x');
-            ((ValueChar)testList[2]).Value = new ValueChar('y');
-            ((ValueChar)testList[0]).Value = new ValueChar('z');
-            Assert.AreEqual(new ValueChar('e'), AlBase[4]);
-            Assert.AreEqual(new ValueChar('c'), AlBase[2]);
-            Assert.AreEqual(new ValueChar('a'), AlBase[0]);
+            Assert.AreNotSame(e, AlBase[4]);
+            Assert.AreNotSame(c, AlBase[2]);
+            Assert.AreNotSame(a, AlBase[0]);
         }
     }
 }

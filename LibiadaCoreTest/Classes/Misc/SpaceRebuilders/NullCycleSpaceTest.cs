@@ -6,7 +6,7 @@ using NUnit.Framework;
 namespace LibiadaCoreTest.Classes.Misc.SpaceRebuilders
 {
     [TestFixture]
-    public class PsevdoCycleSpaceTest
+    public class NullCycleSpaceTest
     {
         private Chain testChain;
      
@@ -21,7 +21,7 @@ namespace LibiadaCoreTest.Classes.Misc.SpaceRebuilders
         {
             Chain cycleTestChainLevel1 = new Chain("adbaacbbaacaa");
 
-            PsevdoCycleSpaceRebuilder<Chain, Chain> rebulder = new PsevdoCycleSpaceRebuilder<Chain, Chain>(1);
+            NullCycleSpaceRebuilder<Chain, Chain> rebulder = new NullCycleSpaceRebuilder<Chain, Chain>(1);
             Chain result = rebulder.Rebuild(testChain);
             Assert.AreEqual(cycleTestChainLevel1, result);
         }
@@ -31,7 +31,7 @@ namespace LibiadaCoreTest.Classes.Misc.SpaceRebuilders
         {
             Chain cycleTestChainLevel5 = new Chain("adbaacbbaacaadbaa");
 
-            PsevdoCycleSpaceRebuilder<Chain, Chain> rebulder = new PsevdoCycleSpaceRebuilder<Chain, Chain>(5);
+            NullCycleSpaceRebuilder<Chain, Chain> rebulder = new NullCycleSpaceRebuilder<Chain, Chain>(5);
             Chain result = rebulder.Rebuild(testChain);
             Assert.AreEqual(cycleTestChainLevel5, result);
         }

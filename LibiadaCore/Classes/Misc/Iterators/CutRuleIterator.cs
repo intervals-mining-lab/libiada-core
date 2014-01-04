@@ -5,8 +5,8 @@ namespace LibiadaCore.Classes.Misc.Iterators
 {
     public class CutRuleIterator
     {
-        private List<int> starts;
-        private List<int> stops;
+        private readonly List<int> starts;
+        private readonly List<int> stops;
         private int i = -1;
 
         public CutRuleIterator(List<int> starts, List<int> stops)

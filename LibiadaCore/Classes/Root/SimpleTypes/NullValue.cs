@@ -6,6 +6,16 @@ namespace LibiadaCore.Classes.Root.SimpleTypes
     ///</summary>
     public class NullValue : IBaseObject
     {
+        protected bool Equals(NullValue other)
+        {
+            return ReferenceEquals(this, other);
+        }
+
+        public override int GetHashCode()
+        {
+            return 0;
+        }
+
         private static readonly NullValue SingleTone = new NullValue();
 
         ///<summary>
@@ -17,7 +27,7 @@ namespace LibiadaCore.Classes.Root.SimpleTypes
             return SingleTone;
         }
 
-        protected NullValue()
+        private NullValue()
         {
         }
 

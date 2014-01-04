@@ -77,26 +77,26 @@ namespace LibiadaCore.Classes.Root
             }
         }
 
-        public void ClearAndSetNewLength(int length)
+        public override void ClearAndSetNewLength(int length)
         {
             base.ClearAndSetNewLength(length);
             CongenericChains = new CongenericChain[0];
         }
 
-        public IBaseObject Clone()
+        public new IBaseObject Clone()
         {
-            Chain temp = new Chain(Length);
-            FillClone(temp);
-            return temp;
+            var clone = new Chain(Length);
+            FillClone(clone);
+            return clone;
         }
 
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="temp"></param>
-        protected void FillClone(IBaseObject temp)
+        /// <param name="clone"></param>
+        protected void FillClone(IBaseObject clone)
         {
-            Chain tempChain = temp as Chain;
+            var tempChain = clone as Chain;
             base.FillClone(tempChain);
             if (tempChain != null)
             {
@@ -137,7 +137,7 @@ namespace LibiadaCore.Classes.Root
         /// В случае выхода за границы цепи вызывается исключение
         ///</summary>
         ///<param name="index">номер элемента</param>
-        public IBaseObject this[int index]
+        public override IBaseObject this[int index]
         {
             get { return Get(index); }
 

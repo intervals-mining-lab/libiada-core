@@ -8,13 +8,13 @@ namespace LibiadaCore.Classes.Misc.SpaceRebuilders
     ///</summary>
     ///<typeparam name="ChainTo"></typeparam>
     ///<typeparam name="ChainFrom"></typeparam>
-    public class PsevdoCycleSpaceRebuilder<ChainTo, ChainFrom> : SpaceRebuilder<ChainTo, ChainFrom> where ChainTo : BaseChain, new() where ChainFrom : BaseChain, new()
+    public class NullCycleSpaceRebuilder<ChainTo, ChainFrom> : SpaceRebuilder<ChainTo, ChainFrom> where ChainTo : BaseChain, new() where ChainFrom : BaseChain, new()
     {
         private int Level;
         ///<summary>
         ///</summary>
         ///<param name="i"></param>
-        public PsevdoCycleSpaceRebuilder(int i)
+        public NullCycleSpaceRebuilder(int i)
         {
             Level = i;
         }
@@ -35,7 +35,7 @@ namespace LibiadaCore.Classes.Misc.SpaceRebuilders
             {
                 chainTo[i] = from[i];
             }
-            IteratorStart<ChainTo, ChainFrom> iterator = new IteratorStart<ChainTo, ChainFrom>(from, Level, 1);
+            var iterator = new IteratorStart<ChainTo, ChainFrom>(from, Level, 1);
             iterator.Reset();
             iterator.Next();
             ChainTo addition = iterator.Current();

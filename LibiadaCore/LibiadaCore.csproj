@@ -45,11 +45,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Classes\Misc\ArrayManipulator.cs" />
-    <Compile Include="Classes\Misc\DataTransformators\DnaTransformator.cs" />
+    <Compile Include="Classes\Misc\DataTransformers\DnaTransformer.cs" />
     <Compile Include="Classes\Misc\DissimilarChainFactory.cs" />
     <Compile Include="Classes\Misc\Iterators\CutRule.cs" />
     <Compile Include="Classes\Misc\Iterators\CutRuleIterator.cs" />
-    <Compile Include="Classes\Misc\Iterators\DifCutter.cs" />
+    <Compile Include="Classes\Misc\Iterators\DiffCutter.cs" />
     <Compile Include="Classes\Misc\Iterators\FromFixStartCutRule.cs" />
     <Compile Include="Classes\Misc\Iterators\IIterator.cs" />
     <Compile Include="Classes\Misc\Iterators\IteratorBase.cs" />
@@ -63,7 +63,7 @@
     <Compile Include="Classes\Misc\Iterators\SimpleCutRuleWithBeginEnd.cs" />
     <Compile Include="Classes\Misc\Iterators\FromFixStartCutRuleWithBeginEnd.cs" />
     <Compile Include="Classes\Misc\SpaceRebuilders\NullRebuilder.cs" />
-    <Compile Include="Classes\Misc\SpaceRebuilders\PsevdoCycleSpaceRebuilder.cs" />
+    <Compile Include="Classes\Misc\SpaceRebuilders\NullCycleSpaceRebuilder.cs" />
     <Compile Include="Classes\Misc\SpaceRebuilders\SpaceNotPhantomRebuilder.cs" />
     <Compile Include="Classes\Misc\SpaceRebuilders\SpacePhantomRebuilder.cs" />
     <Compile Include="Classes\Misc\SpaceRebuilders\SpaceRebuilder.cs" />

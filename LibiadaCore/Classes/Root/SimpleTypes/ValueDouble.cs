@@ -5,22 +5,22 @@ namespace LibiadaCore.Classes.Root.SimpleTypes
     ///</summary>
     public class ValueDouble:IBaseObject
     {
+        private readonly double value;
+
          ///<summary>
         ///</summary>
-        ///<param name="i"></param>
-        public ValueDouble(double i)
+        ///<param name="value"></param>
+        public ValueDouble(double value)
         {
-            Value = i;
+            this.value = value;
         }
-
-        public double Value;
 
         ///<summary>
         ///</summary>
         ///<returns></returns>
         public IBaseObject Clone()
         {
-            return new ValueDouble(Value);
+            return new ValueDouble(value);
         }
 
         ///<summary>
@@ -32,16 +32,11 @@ namespace LibiadaCore.Classes.Root.SimpleTypes
         ///<param name="obj">The <see cref="T:System.Object"></see> to compare with the current <see cref="T:System.Object"></see>. </param><filterpriority>2</filterpriority>
         public override bool Equals(object obj)
         {
-            if (obj.GetType() != typeof(ValueDouble))
-            {
-                return false;
-            }
-
             if (ReferenceEquals(this, obj))
             {
                 return true;
             }
-            return Value.Equals(((ValueDouble)obj).Value);
+            return Equals(obj as ValueDouble);
         }
 
         ///<summary>
@@ -50,7 +45,7 @@ namespace LibiadaCore.Classes.Root.SimpleTypes
         ///<returns></returns>
         public static implicit operator double(ValueDouble from)
         {
-            return from.Value;
+            return from.value;
         }
 
         ///<summary>
@@ -64,7 +59,21 @@ namespace LibiadaCore.Classes.Root.SimpleTypes
 
         public override string ToString()
         {
-            return Value.ToString();
+            return value.ToString();
+        }
+
+        public bool Equals(ValueDouble other)
+        {
+            if (other == null)
+            {
+                return false;
+            }
+            return value.Equals(other.value);
+        }
+
+        public override int GetHashCode()
+        {
+            return value.GetHashCode();
         }
     }
 }

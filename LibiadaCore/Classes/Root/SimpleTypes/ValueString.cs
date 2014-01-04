@@ -5,7 +5,7 @@ namespace LibiadaCore.Classes.Root.SimpleTypes
     ///</summary>
     public class ValueString : IBaseObject
     {
-        public string Value = string.Empty;
+        public readonly string Value;
 
         protected ValueString()
         {
@@ -13,10 +13,10 @@ namespace LibiadaCore.Classes.Root.SimpleTypes
 
         ///<summary>
         ///</summary>
-        ///<param name="str"></param>
-        public ValueString(string str)
+        ///<param name="value"></param>
+        public ValueString(string value)
         {
-            Value = (string) str.Clone();
+            this.Value = (string) value.Clone();
         }
 
         public IBaseObject Clone()
@@ -30,16 +30,11 @@ namespace LibiadaCore.Classes.Root.SimpleTypes
         ///<returns></returns>
         public override bool Equals(object obj)
         {
-            if (obj.GetType() != typeof (ValueString))
-            {
-                return false;
-            }
-
             if (ReferenceEquals(this, obj))
             {
                 return true;
             }
-            return Value.Equals(((ValueString) obj).Value);
+            return Equals(obj as ValueString);
         }
 
         ///<summary>
@@ -63,6 +58,20 @@ namespace LibiadaCore.Classes.Root.SimpleTypes
         public override string ToString()
         {
             return Value;
+        }
+
+        public bool Equals(ValueString other)
+        {
+            if (other == null)
+            {
+                return false;
+            }
+            return string.Equals(Value, other.Value);
+        }
+
+        public override int GetHashCode()
+        {
+            return (Value != null ? Value.GetHashCode() : 0);
         }
     }
 }

@@ -5,15 +5,15 @@ namespace LibiadaCore.Classes.Root.SimpleTypes
     ///</summary>
     public class ValueInt : IBaseObject
     {
-
-        public int Value;
+        private readonly int value;
+        
 
         ///<summary>
         ///</summary>
         ///<param name="i"></param>
         public ValueInt(int i)
         {
-            Value = i;
+            value = i;
         }
 
         ///<summary>
@@ -21,7 +21,7 @@ namespace LibiadaCore.Classes.Root.SimpleTypes
         ///<returns></returns>
         public IBaseObject Clone()
         {
-            return new ValueInt(Value);
+            return new ValueInt(value);
         }
 
         ///<summary>
@@ -33,16 +33,11 @@ namespace LibiadaCore.Classes.Root.SimpleTypes
         ///<param name="obj">The <see cref="T:System.Object"></see> to compare with the current <see cref="T:System.Object"></see>.</param><filterpriority>2</filterpriority>
         public override bool Equals(object obj)
         {
-            if (obj.GetType() != typeof (ValueInt))
-            {
-                return false;
-            }
-
             if (ReferenceEquals(this, obj))
             {
                 return true;
             }
-            return Value.Equals(((ValueInt) obj).Value);
+            return Equals((ValueInt) obj);
         }
 
         ///<summary>
@@ -51,7 +46,7 @@ namespace LibiadaCore.Classes.Root.SimpleTypes
         ///<returns></returns>
         public static implicit operator int(ValueInt from)
         {
-            return from.Value;
+            return from.value;
         }
 
         ///<summary>
@@ -63,9 +58,30 @@ namespace LibiadaCore.Classes.Root.SimpleTypes
             return new ValueInt(from);
         }
 
+        /// <summary>
+        /// Returns a string that represents the current object.
+        /// </summary>
+        /// <returns>
+        /// A string that represents the current object.
+        /// </returns>
+        /// <filterpriority>2</filterpriority>
         public override string ToString()
         {
-            return Value.ToString();
+            return value.ToString();
+        }
+
+        public bool Equals(ValueInt other)
+        {
+            if (other == null)
+            {
+                return false;
+            }
+            return value == other.value;
+        }
+
+        public override int GetHashCode()
+        {
+            return value.GetHashCode();
         }
     }
 }

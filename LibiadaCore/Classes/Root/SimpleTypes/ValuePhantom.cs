@@ -20,14 +20,13 @@ namespace LibiadaCore.Classes.Root.SimpleTypes
                 return true;
             }
 
-            return
-                EqualsAsPhantom(obj as ValuePhantom) || EqualsAsPsevdo(obj as NullValue) ||
-                EqualsAsElement(obj as IBaseObject);
+            return EqualsAsPhantom(obj as ValuePhantom) || Equals(obj as NullValue) ||
+                   EqualsAsElement(obj as IBaseObject);
         }
 
-        private bool EqualsAsPsevdo(NullValue psevdoValue)
+        private bool Equals(NullValue nullValue)
         {
-            if (psevdoValue == null)
+            if (nullValue == null)
             {
                 return false;
             }
@@ -98,8 +97,8 @@ namespace LibiadaCore.Classes.Root.SimpleTypes
         /// <returns>Копия объекта</returns>
         public new IBaseObject Clone()
         {
-            ValuePhantom temp = new ValuePhantom {Vault = new List<IBaseObject>(Vault)};
-            return temp;
+            var clone = new ValuePhantom {Vault = new List<IBaseObject>(Vault)};
+            return clone;
         }
     }
 }

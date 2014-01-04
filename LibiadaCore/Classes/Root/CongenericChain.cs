@@ -28,16 +28,16 @@ namespace LibiadaCore.Classes.Root
         }
 
 
-        public IBaseObject Clone()
+        public new IBaseObject Clone()
         {
-            CongenericChain temp = new CongenericChain(Length, Element);
+            var temp = new CongenericChain(Length, Element);
             FillClone(temp);
             return temp;
         }
 
         protected void FillClone(IBaseObject temp)
         {
-            CongenericChain tempCongenericChain = temp as CongenericChain;
+            var tempCongenericChain = temp as CongenericChain;
             base.FillClone(tempCongenericChain);
             if (tempCongenericChain != null)
             {
@@ -102,7 +102,7 @@ namespace LibiadaCore.Classes.Root
             return Length;
         }
 
-        public void Add(IBaseObject item, int index)
+        public override void Add(IBaseObject item, int index)
         {
             if (Element.Equals(item))
             {

@@ -32,9 +32,8 @@ namespace LibiadaCoreTest.Classes.Root
             CongenericChain = new CongenericChain(10, message);
 
             ValueChar newMessage = (ValueChar) CongenericChain.Element;
-            newMessage.Value = '2';
 
-            Assert.IsFalse(newMessage.Equals(CongenericChain.Element));
+            Assert.AreNotSame(CongenericChain.Element, newMessage);
         }
 
         [Test]

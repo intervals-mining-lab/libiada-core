@@ -84,7 +84,8 @@ namespace LibiadaCore.Classes.Root
         {
             get
             {
-                Alphabet result = (Alphabet)alphabet.Clone();
+                var result = (Alphabet)alphabet.Clone();
+                //Удаляем NullValue
                 result.Remove(0);
                 return result;
             }
@@ -135,25 +136,14 @@ namespace LibiadaCore.Classes.Root
             }
 
             RemoveAt(index);
-            int pos = alphabet.IndexOf(item);
-            if (-1 == pos)
+            int position = alphabet.IndexOf(item);
+            if (position == -1)
             {
                 alphabet.Add(item);
-                pos = alphabet.Power - 1;
+                position = alphabet.Power - 1;
             }
 
-            building[index] = pos;
-        }
-
-        ///<summary>
-        /// Возвращает элемент из указанной позиции.
-        ///</summary>
-        ///<param name="index">Место из которого нужно выбрать величину</param>
-        ///<returns>Возвращает объект типа <see cref="IBaseObject"/> если место имеет ну пусто наполнение, в противном случае <see cref="NullValue"/> </returns>
-        ///<exception cref="Exception">В случае если место выходит за пределы пространства вызывается исключение</exception>
-        public IBaseObject GetItem(int index)
-        {
-            return this[index];
+            building[index] = position;
         }
 
         ///<summary>
@@ -201,9 +191,9 @@ namespace LibiadaCore.Classes.Root
         ///<returns></returns>
         public IBaseObject Clone()
         {
-            BaseChain temp = new BaseChain(Length);
-            FillClone(temp);
-            return temp;
+            var clone = new BaseChain(Length);
+            FillClone(clone);
+            return clone;
         }
 
         protected void FillClone(BaseChain temp)

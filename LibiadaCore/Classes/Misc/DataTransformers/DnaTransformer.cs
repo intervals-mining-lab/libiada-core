@@ -2,14 +2,14 @@
 using LibiadaCore.Classes.Root;
 using LibiadaCore.Classes.Root.SimpleTypes;
 
-namespace LibiadaCore.Classes.Misc.DataTransformators
+namespace LibiadaCore.Classes.Misc.DataTransformers
 {
     ///<summary>
     /// Статический класс, осуществляющй преобразование
     /// нуклеотидных последовательностей в аминокислотные
     /// и аминокислотных последовательностей в нуклеотидные.
     ///</summary>
-    public static class DnaTransformator
+    public static class DnaTransformer
     {
         ///<summary>
         /// Метод преобразующий нуклеотдитные цепи в аминокислотные.
@@ -24,7 +24,7 @@ namespace LibiadaCore.Classes.Misc.DataTransformators
                 throw new Exception();
             }
             int count = (int)Math.Floor((double)inputChain.Length / 3);
-            BaseChain outChain = new BaseChain(count);
+            var outChain = new BaseChain(count);
             for (int i = 0; i < count * 3; i += 3)
             {
                 String first = inputChain[i].ToString();
@@ -242,11 +242,11 @@ namespace LibiadaCore.Classes.Misc.DataTransformators
         ///<exception cref="Exception">Исключение возникает в случае наличия в цепи элементов не являющихся аминокислотами</exception>
         public static BaseChain Decode(BaseChain inputChain)
         {
-            BaseChain outChain = new BaseChain(inputChain.Length);
+            var outChain = new BaseChain(inputChain.Length);
             for (int i = 0; i < inputChain.Length; i++)
             {
                 string str = inputChain[i].ToString();
-                ValuePhantom m = new ValuePhantom();
+                var m = new ValuePhantom();
                 switch (str)
                 {
                     case "F":
@@ -376,7 +376,7 @@ namespace LibiadaCore.Classes.Misc.DataTransformators
                 throw new Exception();
             }
             int count = (int)Math.Floor((double)inputChain.Length / 3);
-            BaseChain outChain = new BaseChain(count);
+            var outChain = new BaseChain(count);
             for (int i = 0; i < count * 3; i += 3)
             {
                 outChain[i / 3] = new ValueString(inputChain[i] + inputChain[i + 1].ToString() + inputChain[i + 2]);
