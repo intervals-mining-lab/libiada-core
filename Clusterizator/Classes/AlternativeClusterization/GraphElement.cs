@@ -61,8 +61,8 @@ namespace Clusterizator.Classes.AlternativeClusterization
         ///<returns>копия данной вершины графа</returns>
         public GraphElement Clone()
         {
-            GraphElement temp = new GraphElement(Content,id) {TaxonNumber = taxonNumber};
-            return temp;
+            var clone = new GraphElement(Content,id) {TaxonNumber = taxonNumber};
+            return clone;
         }
     }
 }

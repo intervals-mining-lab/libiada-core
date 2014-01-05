@@ -14,12 +14,12 @@ namespace ClusterizatorTest.Classes.AlternativeClusterization
         [SetUp]
         public void Initialize()
         {
-            HybridDictionary hd1 = new HybridDictionary {{"x", 2}, {"y", 3}};
-            HybridDictionary hd2 = new HybridDictionary {{"x", 3}, {"y", 5}};
-            HybridDictionary hd3 = new HybridDictionary {{"x", 6}, {"y", 2}};
-            HybridDictionary hd4 = new HybridDictionary {{"x", 6}, {"y", 5}};
-            HybridDictionary hd5 = new HybridDictionary {{"x", 7}, {"y", 4}};
-            HybridDictionary hd6 = new HybridDictionary {{"x", 8}, {"y", 3}};
+            var hd1 = new HybridDictionary {{"x", 2}, {"y", 3}};
+            var hd2 = new HybridDictionary {{"x", 3}, {"y", 5}};
+            var hd3 = new HybridDictionary {{"x", 6}, {"y", 2}};
+            var hd4 = new HybridDictionary {{"x", 6}, {"y", 5}};
+            var hd5 = new HybridDictionary {{"x", 7}, {"y", 4}};
+            var hd6 = new HybridDictionary {{"x", 8}, {"y", 3}};
 
             ElementsList = new List<GraphElement>
                 {
@@ -61,7 +61,7 @@ namespace ClusterizatorTest.Classes.AlternativeClusterization
         [Test]
         public void UnConnectedGraphsTest()
         {
-            GraphManager connector = new GraphManager(ConnectionsList, ElementsList);
+            var connector = new GraphManager(ConnectionsList, ElementsList);
             connector.Connect(2, 3);
             Assert.IsTrue(ConnectionsList[9].Connected);
             Assert.AreEqual(3, ElementsList[2].TaxonNumber);
@@ -71,7 +71,7 @@ namespace ClusterizatorTest.Classes.AlternativeClusterization
         [Test]
         public void SearchConnectionTest()
         {
-            GraphManager connector = new GraphManager(ConnectionsList, ElementsList);
+            var connector = new GraphManager(ConnectionsList, ElementsList);
             Assert.AreEqual(-1, connector.SearchConnection(ElementsList[0], ElementsList[0]), "Search fault falue");
             Assert.AreEqual(-1, connector.SearchConnection(ElementsList[4], ElementsList[4]), "Search fault falue");
             Assert.AreEqual(0, connector.SearchConnection(ElementsList[0], ElementsList[1]), "Search fault falue");
@@ -84,7 +84,7 @@ namespace ClusterizatorTest.Classes.AlternativeClusterization
         [Test]
         public void OneConnectedGraphTest()
         {
-            GraphManager connector = new GraphManager(ConnectionsList, ElementsList);
+            var connector = new GraphManager(ConnectionsList, ElementsList);
             connector.Connect(0, 2);
             Assert.IsTrue(ConnectionsList[1].Connected);
             Assert.AreEqual(1, ElementsList[0].TaxonNumber);
@@ -95,7 +95,7 @@ namespace ClusterizatorTest.Classes.AlternativeClusterization
         [Test]
         public void BothConnectionGraphTest()
         {
-            GraphManager connector = new GraphManager(ConnectionsList, ElementsList);
+            var connector = new GraphManager(ConnectionsList, ElementsList);
             connector.Connect(1, 5);
             Assert.IsTrue(ConnectionsList[8].Connected);
             Assert.AreEqual(1, ElementsList[5].TaxonNumber);
@@ -107,7 +107,7 @@ namespace ClusterizatorTest.Classes.AlternativeClusterization
         [Test]
         public void UnBothConnectionGraphTest()
         {
-            GraphManager connector = new GraphManager(ConnectionsList, ElementsList);
+            var connector = new GraphManager(ConnectionsList, ElementsList);
             ConnectionsList[1].Connected = true;
             ElementsList[2].TaxonNumber = 1;
             connector.Connect(1, 2);
@@ -120,7 +120,7 @@ namespace ClusterizatorTest.Classes.AlternativeClusterization
         [Test]
         public void CutGraphTest()
         {
-            GraphManager connector = new GraphManager(ConnectionsList, ElementsList);
+            var connector = new GraphManager(ConnectionsList, ElementsList);
             connector.Cut(ElementsList[0], ElementsList[1]);
             Assert.IsFalse(ConnectionsList[0].Connected);
             Assert.AreEqual(3, ElementsList[0].TaxonNumber);
@@ -132,7 +132,7 @@ namespace ClusterizatorTest.Classes.AlternativeClusterization
         [Test]
         public void CutGraphTrioTest()
         {
-            GraphManager connector = new GraphManager(ConnectionsList, ElementsList);
+            var connector = new GraphManager(ConnectionsList, ElementsList);
             ConnectionsList[1].Connected = true;
             ElementsList[2].TaxonNumber = 1;
             connector.Cut(ElementsList[0], ElementsList[2]);
@@ -146,8 +146,8 @@ namespace ClusterizatorTest.Classes.AlternativeClusterization
         [Test]
         public void CloneTest()
         {
-            GraphManager connector = new GraphManager(ConnectionsList, ElementsList);
-            GraphManager connector2 = connector.Clone();
+            var connector = new GraphManager(ConnectionsList, ElementsList);
+            var connector2 = connector.Clone();
             Assert.IsInstanceOf(typeof (GraphManager), connector2);
             Assert.IsInstanceOf(typeof (Connection), connector2.Connections[0]);
             Assert.IsInstanceOf(typeof (GraphElement), connector2.Elements[1]);
@@ -168,14 +168,14 @@ namespace ClusterizatorTest.Classes.AlternativeClusterization
                 ElementsList[ConnectionsList[i].SecondElementIndex].TaxonNumber = 0;
             }
 
-            int[] lambdas = new[] {10, 20, 15, 21, 6, 11, 12, 27, 16, 9, 25, 26, 13, 21, 22};
+            var lambdas = new[] {10, 20, 15, 21, 6, 11, 12, 27, 16, 9, 25, 26, 13, 21, 22};
 
             for (int i = 0; i < lambdas.Length; i++)
             {
                 ConnectionsList[i].λ = lambdas[i];
             }
 
-            GraphManager connector = new GraphManager(ConnectionsList, ElementsList);
+            var connector = new GraphManager(ConnectionsList, ElementsList);
             connector.ConnectGraph();
             Assert.IsTrue(ConnectionsList[0].Connected);
             Assert.IsTrue(ConnectionsList[4].Connected);
@@ -197,7 +197,7 @@ namespace ClusterizatorTest.Classes.AlternativeClusterization
         [Test]
         public void CutConnectionTest()
         {
-            GraphManager connector = new GraphManager(ConnectionsList, ElementsList);
+            var connector = new GraphManager(ConnectionsList, ElementsList);
             connector.Cut(connector.Connections[0]);
             Assert.IsFalse(ConnectionsList[0].Connected);
             Assert.AreEqual(3, ElementsList[0].TaxonNumber);
@@ -209,7 +209,7 @@ namespace ClusterizatorTest.Classes.AlternativeClusterization
         [Test]
         public void CutConnectionTrioTest()
         {
-            GraphManager connector = new GraphManager(ConnectionsList, ElementsList);
+            var connector = new GraphManager(ConnectionsList, ElementsList);
             ConnectionsList[1].Connected = true;
             ElementsList[2].TaxonNumber = 1;
             connector.Cut(connector.Connections[1]);

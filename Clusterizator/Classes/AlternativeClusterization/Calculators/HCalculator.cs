@@ -16,7 +16,7 @@ namespace Clusterizator.Classes.AlternativeClusterization.Calculators
         public static double Calculate(GraphManager manager)
         {
             //Находим количество элементов в каждом таксоне
-            List<int> taxonPower = new List<int>();
+            var taxonPower = new List<int>();
             for (int i = 0; i < manager.GetNextTaxonNumber(); i++)
             {
                 taxonPower.Add(0);

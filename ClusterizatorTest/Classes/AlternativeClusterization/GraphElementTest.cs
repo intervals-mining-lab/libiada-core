@@ -11,8 +11,8 @@ namespace ClusterizatorTest.Classes.AlternativeClusterization
         [Test]
         public void NodeTest()
         {
-            HybridDictionary element = new HybridDictionary {{"characteristic", 15}};
-            GraphElement node = new GraphElement(element,"node");
+            var element = new HybridDictionary {{"characteristic", 15}};
+            var node = new GraphElement(element,"node");
             object tempKey = null;
             object tempValue = null;
             foreach (DictionaryEntry entry in node.Content)
@@ -31,9 +31,9 @@ namespace ClusterizatorTest.Classes.AlternativeClusterization
         [Test]
         public void NodeTwoTest()
         {
-            HybridDictionary dictionary =new HybridDictionary {{"characteristic", 15}};
-            GraphElement node = new GraphElement(dictionary,1);
-            HybridDictionary dictionary2 = new HybridDictionary {{"bla-bla", -8}};
+            var dictionary =new HybridDictionary {{"characteristic", 15}};
+            var node = new GraphElement(dictionary,1);
+            var dictionary2 = new HybridDictionary {{"bla-bla", -8}};
             node.TaxonNumber = 5;
             object tempKey = null;
             object tempValue = null;
@@ -65,9 +65,9 @@ namespace ClusterizatorTest.Classes.AlternativeClusterization
         [Test]
         public void CloneTest()
         {
-            HybridDictionary element = new HybridDictionary {{"characteristic", 15}};
-            GraphElement node = new GraphElement(element, "node");
-            GraphElement nodeClone = node.Clone();
+            var element = new HybridDictionary {{"characteristic", 15}};
+            var node = new GraphElement(element, "node");
+            var nodeClone = node.Clone();
             Assert.AreEqual(node.Content,nodeClone.Content);
             Assert.AreEqual(node.Id,nodeClone.Id);
             Assert.AreNotSame(node,nodeClone);

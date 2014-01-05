@@ -23,8 +23,8 @@ namespace Clusterizator.Classes.AlternativeClusterization
         /// <param name="distanseWeight"> </param>
         public AlternativeKRAB(DataTable dataTable, double powerWeight, double normalizedDistanseWeight, double distanseWeight)
         {
-            List<Connection> connections = new List<Connection>(); //массив связей(пар вершин)
-            List<GraphElement> elements = new List<GraphElement>();//массив вершин
+            var connections = new List<Connection>(); //массив связей(пар вершин)
+            var elements = new List<GraphElement>();//массив вершин
 
             this.powerWeight = powerWeight;
 
@@ -57,9 +57,9 @@ namespace Clusterizator.Classes.AlternativeClusterization
         public ClusterizationResult Clusterizate(int clusters)
         {
             GraphManager tempManager = manager.Clone();
-            ChooseDivizion(clusters, 0, manager);
-            ClusterizationResult result = new ClusterizationResult();
-            List<ArrayList> tempRes = new List<ArrayList>();
+            ChooseDivision(clusters, 0, manager);
+            var result = new ClusterizationResult();
+            var tempRes = new List<ArrayList>();
             for (int i = 0; i < optimalDivide.GetNextTaxonNumber(); i++)
             {
                 tempRes.Add(new ArrayList());
@@ -69,7 +69,7 @@ namespace Clusterizator.Classes.AlternativeClusterization
             {
                 tempRes[optimalDivide.Elements[j].TaxonNumber].Add(optimalDivide.Elements[j]);
             }
-            List<ArrayList> res = new List<ArrayList>();
+            var res = new List<ArrayList>();
             // Сохраняем только непустые кластеры
             for (int k = 0; k < tempRes.Count; k++)
             {
@@ -94,7 +94,7 @@ namespace Clusterizator.Classes.AlternativeClusterization
         /// <param name="clusters">Оставшееся количество кластеров для отделения</param>
         /// <param name="position">Начальная позиция для перебора</param>
         /// <param name="currentManager">Граф и его обработчик</param>
-        private void ChooseDivizion(int clusters, int position, GraphManager currentManager)
+        private void ChooseDivision(int clusters, int position, GraphManager currentManager)
         {
             //если ещё требуются рекурсивные вызовы процедуры 
             if (clusters > 1)
@@ -106,7 +106,7 @@ namespace Clusterizator.Classes.AlternativeClusterization
                     if (tempManager.Connections[i].Connected)
                     {
                         tempManager.Cut(tempManager.Connections[i]);
-                        ChooseDivizion(clusters - 1, i + 1, tempManager);
+                        ChooseDivision(clusters - 1, i + 1, tempManager);
                     }
                 }
             }
@@ -131,7 +131,7 @@ namespace Clusterizator.Classes.AlternativeClusterization
         /// <returns>Результат разбиения</returns>
         public ClustarizationVariants ClusterizateVariantCountClustersBelow (int clusters)
         {
-            ClustarizationVariants temp = new ClustarizationVariants();
+            var temp = new ClustarizationVariants();
             for (int i = 2; i <= clusters; i++)
             {
                 temp.Variants.Add(Clusterizate(i));

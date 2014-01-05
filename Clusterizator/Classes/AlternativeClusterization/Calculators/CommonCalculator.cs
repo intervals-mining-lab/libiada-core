@@ -10,9 +10,9 @@ namespace Clusterizator.Classes.AlternativeClusterization.Calculators
         ///  локальную плотность точек, нормированную локальную плотность точек и лямбда-расстояние
         /// </summary>
         /// <param name="graph"> Массив связей графа</param>
-        /// <param name="normalizedDistanseWeight"> </param>
-        /// <param name="distanseWeight"> </param>
-        public static void CalculateCharacteristic(GraphManager graph, double normalizedDistanseWeight, double distanseWeight)
+        /// <param name="normalizedDistanceWeight"> </param>
+        /// <param name="distanceWeight"> </param>
+        public static void CalculateCharacteristic(GraphManager graph, double normalizedDistanceWeight, double distanceWeight)
         {
             ICalculator calc = new LinearCalculator();
             calc.Calculate(graph);
@@ -22,8 +22,8 @@ namespace Clusterizator.Classes.AlternativeClusterization.Calculators
             calc.Calculate(graph);
             calc = new TauCalculator();
             calc.Calculate(graph);
-            LambdaCalculator lambdaCalc = new LambdaCalculator();
-            lambdaCalc.Calculate(graph,normalizedDistanseWeight, distanseWeight);
+            var lambdaCalc = new LambdaCalculator();
+            lambdaCalc.Calculate(graph,normalizedDistanceWeight, distanceWeight);
         }
     }
 }

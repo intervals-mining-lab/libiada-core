@@ -15,7 +15,7 @@ namespace ClusterizatorTest.Classes
         [Test]
         public void InputOutputTest()
         {
-            DataObject test = new DataObject {Id = 1};
+            var test = new DataObject {Id = 1};
             test.Add("x", 2);
             test.Add("y", 2);
 

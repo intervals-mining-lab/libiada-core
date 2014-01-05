@@ -15,13 +15,13 @@ namespace ClusterizatorTest.Classes.AlternativeClusterization.Calculators
         [SetUp]
         public void Init()
         {
-            HybridDictionary hd1 = new HybridDictionary {{"y", 0}, {"x", 10}};
-            HybridDictionary hd2 = new HybridDictionary {{"y", 2}, {"x", 15}};
-            HybridDictionary hd3 = new HybridDictionary {{"y", 5}, {"x", 25}};
-            HybridDictionary hd4 = new HybridDictionary {{"y", 6}, {"x", 15}};
-            HybridDictionary hd5 = new HybridDictionary {{"y", 6}, {"x", 18}};
+            var hd1 = new HybridDictionary {{"y", 0}, {"x", 10}};
+            var hd2 = new HybridDictionary {{"y", 2}, {"x", 15}};
+            var hd3 = new HybridDictionary {{"y", 5}, {"x", 25}};
+            var hd4 = new HybridDictionary {{"y", 6}, {"x", 15}};
+            var hd5 = new HybridDictionary {{"y", 6}, {"x", 18}};
 
-            List<GraphElement> elements = new List<GraphElement>
+            var elements = new List<GraphElement>
                 {
                     new GraphElement(hd1, "1"),
                     new GraphElement(hd2, "2"),
@@ -30,7 +30,7 @@ namespace ClusterizatorTest.Classes.AlternativeClusterization.Calculators
                     new GraphElement(hd5, "5")
                 };
 
-            List<Connection> connections = new List<Connection>
+            var connections = new List<Connection>
                 {
                     new Connection(0, 1),
                     new Connection(0, 2),
@@ -51,7 +51,7 @@ namespace ClusterizatorTest.Classes.AlternativeClusterization.Calculators
         [Test]
         public void FourPointsZeroTest()
         {
-            bool[] connected = new[]
+            var connected = new[]
                 {
                     true, false, false, false, true, false,
                     false, true, false, false
@@ -62,14 +62,14 @@ namespace ClusterizatorTest.Classes.AlternativeClusterization.Calculators
                 manager.Connections[i].Connected = connected[i];
             }
 
-            int[] taxonNumbers = new[] {1, 1, 1, 1, 2};
+            var taxonNumbers = new[] {1, 1, 1, 1, 2};
 
             for (int i = 0; i < taxonNumbers.Length; i++)
             {
                 manager.Elements[i].TaxonNumber = taxonNumbers[i];
             }
 
-            double d = HCalculator.Calculate(manager);
+            var d = HCalculator.Calculate(manager);
             d = Math.Round(d*100)/100;
             Assert.AreEqual(0.64, d);
         }
@@ -77,7 +77,7 @@ namespace ClusterizatorTest.Classes.AlternativeClusterization.Calculators
         [Test]
         public void FourPointsOneTest()
         {
-            bool[] connected = new[]
+            var connected = new[]
                 {
                     true, false, false, false,
                     false, false, false, false, false, true
@@ -87,14 +87,14 @@ namespace ClusterizatorTest.Classes.AlternativeClusterization.Calculators
                 manager.Connections[i].Connected = connected[i];
             }
 
-            int[] taxonNumbers = new[] {1, 1, 3, 2, 2};
+            var taxonNumbers = new[] {1, 1, 3, 2, 2};
 
             for (int i = 0; i < taxonNumbers.Length; i++)
             {
                 manager.Elements[i].TaxonNumber = taxonNumbers[i];
             }
 
-            double d = HCalculator.Calculate(manager);
+            var d = HCalculator.Calculate(manager);
             d = Math.Round(d*100)/100;
             Assert.AreEqual(0.86, d);
         }

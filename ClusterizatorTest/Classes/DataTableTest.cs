@@ -50,7 +50,7 @@ namespace ClusterizatorTest.Classes
         [Test]
         public void InputOutputTest()
         {
-            DataTable dTable = new DataTable {DObject1, DObject2, DObject3, DObject4, DObject5, DObject6};
+            var dTable = new DataTable {DObject1, DObject2, DObject3, DObject4, DObject5, DObject6};
 
             Assert.AreEqual(DObject1, dTable[1]);
             Assert.AreEqual(DObject2, dTable[2]);

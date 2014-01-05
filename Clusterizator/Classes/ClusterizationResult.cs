@@ -13,7 +13,7 @@ namespace Clusterizator.Classes
 
         public IBaseObject Clone()
         {
-            ClusterizationResult result = new ClusterizationResult
+            var result = new ClusterizationResult
                 {
                     Quality = Quality,
                     Clusters = (ArrayList) Clusters.Clone()

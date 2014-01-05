@@ -14,12 +14,12 @@ namespace ClusterizatorTest.Classes.AlternativeClusterization.Calculators
         [SetUp]
         public void Init()
         {
-            HybridDictionary hd1 = new HybridDictionary {{"y", 0}};
-            HybridDictionary hd2 = new HybridDictionary {{"y", 2}};
-            HybridDictionary hd3 = new HybridDictionary {{"y", 5}};
-            HybridDictionary hd4 = new HybridDictionary {{"y", 6}};
+            var hd1 = new HybridDictionary {{"y", 0}};
+            var hd2 = new HybridDictionary {{"y", 2}};
+            var hd3 = new HybridDictionary {{"y", 5}};
+            var hd4 = new HybridDictionary {{"y", 6}};
 
-            List<GraphElement> elements = new List<GraphElement>
+            var elements = new List<GraphElement>
                 {
                     new GraphElement(hd1, "1"),
                     new GraphElement(hd2, "2"),
@@ -27,7 +27,7 @@ namespace ClusterizatorTest.Classes.AlternativeClusterization.Calculators
                     new GraphElement(hd4, "4")
                 };
 
-            List<Connection> connections = new List<Connection>
+            var connections = new List<Connection>
                 {
                     new Connection(0, 1),
                     new Connection(0, 2),
@@ -44,14 +44,14 @@ namespace ClusterizatorTest.Classes.AlternativeClusterization.Calculators
         [Test]
         public void FourPointsZeroTest()
         {
-            bool[] connected = new[] {true, false, false, true, false, false};
+            var connected = new[] {true, false, false, true, false, false};
 
             for (int i = 0; i < connected.Length; i++)
             {
                 manager.Connections[i].Connected = connected[i];
             }
 
-            int[] taxonNumbers = new[] { 1, 1, 1, 2 };
+            var taxonNumbers = new[] { 1, 1, 1, 2 };
 
             for (int i = 0; i < taxonNumbers.Length; i++)
             {
@@ -64,14 +64,14 @@ namespace ClusterizatorTest.Classes.AlternativeClusterization.Calculators
         [Test]
         public void FourPointsOneTest()
         {
-            bool[] connected = new[] { true, false, false, false, false, true };
+            var connected = new[] { true, false, false, false, false, true };
 
             for (int i = 0; i < connected.Length; i++)
             {
                 manager.Connections[i].Connected = connected[i];
             }
 
-            int[] taxonNumbers = new[] { 1, 1, 2, 2 };
+            var taxonNumbers = new[] { 1, 1, 2, 2 };
 
             for (int i = 0; i < taxonNumbers.Length; i++)
             {
@@ -84,14 +84,14 @@ namespace ClusterizatorTest.Classes.AlternativeClusterization.Calculators
         [Test]
         public void FourPointsTwoTest()
         {
-            bool[] connected = new[] { false, false, false, true, false, true };
+            var connected = new[] { false, false, false, true, false, true };
 
             for (int i = 0; i < connected.Length; i++)
             {
                 manager.Connections[i].Connected = connected[i];
             }
 
-            int[] taxonNumbers = new[] { 1, 2, 2, 2 };
+            var taxonNumbers = new[] { 1, 2, 2, 2 };
 
             for (int i = 0; i < taxonNumbers.Length; i++)
             {
@@ -104,14 +104,14 @@ namespace ClusterizatorTest.Classes.AlternativeClusterization.Calculators
         [Test]
         public void FourPointsThreeTest()
         {
-            bool[] connected = new[] { true, false, false, false, false, false };
+            var connected = new[] { true, false, false, false, false, false };
 
             for (int i = 0; i < connected.Length; i++)
             {
                 manager.Connections[i].Connected = connected[i];
             }
 
-            int[] taxonNumbers = new[] { 1, 1, 2, 3 };
+            var taxonNumbers = new[] { 1, 1, 2, 3 };
 
             for (int i = 0; i < taxonNumbers.Length; i++)
             {
@@ -124,14 +124,14 @@ namespace ClusterizatorTest.Classes.AlternativeClusterization.Calculators
         [Test]
         public void FourPointsFourTest()
         {
-            bool[] connected = new[] { false, false, false, true, false, false };
+            var connected = new[] { false, false, false, true, false, false };
 
             for (int i = 0; i < connected.Length; i++)
             {
                 manager.Connections[i].Connected = connected[i];
             }
 
-            int[] taxonNumbers = new[] { 1, 2, 2, 3 };
+            var taxonNumbers = new[] { 1, 2, 2, 3 };
 
             for (int i = 0; i < taxonNumbers.Length; i++)
             {
@@ -144,14 +144,14 @@ namespace ClusterizatorTest.Classes.AlternativeClusterization.Calculators
         [Test]
         public void FourPointsFiveTest()
         {
-            bool[] connected = new[] { false, false, false, true, false, true };
+            var connected = new[] { false, false, false, true, false, true };
 
             for (int i = 0; i < connected.Length; i++)
             {
                 manager.Connections[i].Connected = connected[i];
             }
 
-            int[] taxonNumbers = new[] { 1, 2, 3, 3 };
+            var taxonNumbers = new[] { 1, 2, 3, 3 };
 
             for (int i = 0; i < taxonNumbers.Length; i++)
             {
@@ -180,14 +180,14 @@ namespace ClusterizatorTest.Classes.AlternativeClusterization.Calculators
         [Test]
         public void FourPointsSevenTest()
         {
-            bool[] connected = new[] { false, true, false, false, true, false };
+            var connected = new[] { false, true, false, false, true, false };
 
             for (int i = 0; i < connected.Length; i++)
             {
                 manager.Connections[i].Connected = connected[i];
             }
 
-            int[] taxonNumbers = new[] { 1, 2, 1, 2 };
+            var taxonNumbers = new[] { 1, 2, 1, 2 };
 
             for (int i = 0; i < taxonNumbers.Length; i++)
             {
@@ -200,14 +200,14 @@ namespace ClusterizatorTest.Classes.AlternativeClusterization.Calculators
         [Test]
         public void FourPointsElevenTest()
         {
-            bool[] connected = new[] { false, true, false, false, true, false };
+            var connected = new[] { false, true, false, false, true, false };
 
             for (int i = 0; i < connected.Length; i++)
             {
                 manager.Connections[i].Connected = connected[i];
             }
 
-            int[] taxonNumbers = new[] { 1, 2, 1, 2 };
+            var taxonNumbers = new[] { 1, 2, 1, 2 };
 
             for (int i = 0; i < taxonNumbers.Length; i++)
             {

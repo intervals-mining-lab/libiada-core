@@ -11,14 +11,14 @@ namespace ClusterizatorTest.Classes.AlternativeClusterization
         [Test]
         public void ConnectionOneTest()
         {
-            Connection conn1 = new Connection(0, 1);
+            var conn1 = new Connection(0, 1);
             Assert.IsFalse(conn1.Connected);
         }
 
         [Test]
         public void CloneOneTest()
         {
-            Connection conn1 = new Connection(2, 5)
+            var conn1 = new Connection(2, 5)
                 {
                     Connected = false,
                     Distance = 6,
@@ -27,7 +27,7 @@ namespace ClusterizatorTest.Classes.AlternativeClusterization
                     TauStar = 7,
                     λ = 13
                 };
-            Connection conn2 = conn1.Clone();
+            var conn2 = conn1.Clone();
             Assert.AreEqual(conn1.Connected, conn2.Connected);
             Assert.AreEqual(conn1.FirstElementIndex, conn2.FirstElementIndex);
             Assert.AreEqual(conn1.SecondElementIndex, conn2.SecondElementIndex);
@@ -45,7 +45,7 @@ namespace ClusterizatorTest.Classes.AlternativeClusterization
         [Test]
         public void CloneTwoTest()
         {
-            Connection conn1 = new Connection(2, 3)
+            var conn1 = new Connection(2, 3)
                 {
                     Connected = true,
                     Distance = 1,
@@ -54,7 +54,7 @@ namespace ClusterizatorTest.Classes.AlternativeClusterization
                     TauStar = 0,
                     λ = 5
                 };
-            Connection conn2 = conn1.Clone();
+            var conn2 = conn1.Clone();
             Assert.AreEqual(conn1.Connected, conn2.Connected);
             Assert.AreEqual(conn1.FirstElementIndex, conn2.FirstElementIndex);
             Assert.AreEqual(conn1.SecondElementIndex, conn2.SecondElementIndex);

@@ -11,7 +11,7 @@ namespace Clusterizator.Classes
 
         public IBaseObject Clone()
         {
-            ClustarizationVariants result = new ClustarizationVariants {Variants = (ArrayList) Variants.Clone()};
+            var result = new ClustarizationVariants {Variants = (ArrayList) Variants.Clone()};
             return result;
         }
     }
