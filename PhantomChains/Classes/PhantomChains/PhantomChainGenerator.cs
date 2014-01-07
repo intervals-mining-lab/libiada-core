@@ -38,7 +38,7 @@ namespace PhantomChains.Classes.PhantomChains
         public PhantomChainGenerator(ChainFrom chain, IGenerator gen)
         {
             Gen = gen;
-            SpacePhantomRebuilder<ChainTo, ChainFrom> rebuilder = new SpacePhantomRebuilder<ChainTo, ChainFrom>();
+            var rebuilder = new SpacePhantomRebuilder<ChainTo, ChainFrom>();
             InternalChain = rebuilder.Rebuild(chain);
             for(int w=0;w<InternalChain.Length;w++)
             {
@@ -92,13 +92,13 @@ namespace PhantomChains.Classes.PhantomChains
             {
                 throw new Exception();
             }
-            List<BaseChain> res = new List<BaseChain>();
-            List<BaseChain> tempRes = new List<BaseChain>();
+            var res = new List<BaseChain>();
+            var tempRes = new List<BaseChain>();
             for (int m = 0; m < Tree.Count;m++)
             {
                 tempRes.Add(null);
             }
-            Gen.Resert();
+            Gen.Reset();
             int chainCounter = 0;
             while (res.Count != (uint)i)
             {

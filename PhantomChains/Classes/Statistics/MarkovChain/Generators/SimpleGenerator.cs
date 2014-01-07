@@ -7,16 +7,16 @@ namespace PhantomChains.Classes.Statistics.MarkovChain.Generators
     ///</summary>
     public class SimpleGenerator:IGenerator
     {
-        private Random Rnd = new Random();
+        private Random rnd = new Random();
 
-        public void Resert()
+        public void Reset()
         {
-            Rnd = new Random(Rnd.Next());
+            rnd = new Random(rnd.Next());
         }
 
         public double Next()
         {
-            return Rnd.NextDouble();
+            return rnd.NextDouble();
         }
     }
 }

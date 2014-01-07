@@ -11,17 +11,17 @@ namespace PhantomChainsTest.Classes.PhantomChains
         [Test]
         public void VolumeTest()
         {
-            ValuePhantom m3 = new ValuePhantom {new ValueChar('a')};
-            ValuePhantom m1 = new ValuePhantom {new ValueChar('1'), new ValueChar('2'), new ValueChar('3')};
-            ValuePhantom m2 = new ValuePhantom {new ValueChar('4'), new ValueChar('3')};
+            var m3 = new ValuePhantom {new ValueChar('a')};
+            var m1 = new ValuePhantom {new ValueChar('1'), new ValueChar('2'), new ValueChar('3')};
+            var m2 = new ValuePhantom {new ValueChar('4'), new ValueChar('3')};
             
-            BaseChain test = new BaseChain(4);
+            var test = new BaseChain(4);
             test.Add(m1, 0);
             test.Add(m2, 1);
             test.Add(m2, 2);
             test.Add(m3, 3);
 
-            PhantomTable table = new PhantomTable(test);
+            var table = new PhantomTable(test);
             Assert.AreEqual(12, table[0].Volume);
             Assert.AreEqual(4, table[1].Volume);
             Assert.AreEqual(2, table[2].Volume);
@@ -33,15 +33,15 @@ namespace PhantomChainsTest.Classes.PhantomChains
         [Test]
         public void ContentTest()
         {
-            ValuePhantom m1 = new ValuePhantom {new ValueChar('1'), new ValueChar('2'), new ValueChar('3')};
-            ValuePhantom m2 = new ValuePhantom {new ValueChar('4'), new ValueChar('3')};
+            var m1 = new ValuePhantom {new ValueChar('1'), new ValueChar('2'), new ValueChar('3')};
+            var m2 = new ValuePhantom {new ValueChar('4'), new ValueChar('3')};
 
-            BaseChain test = new BaseChain(3);
+            var test = new BaseChain(3);
             test.Add(m1, 0);
             test.Add(m2, 1);
             test.Add(m2, 2);
 
-            PhantomTable table = new PhantomTable(test);
+            var table = new PhantomTable(test);
             Assert.AreEqual(m1, table[1].Content);
             Assert.AreEqual(m2, table[2].Content);
             Assert.AreEqual(m2, table[3].Content);

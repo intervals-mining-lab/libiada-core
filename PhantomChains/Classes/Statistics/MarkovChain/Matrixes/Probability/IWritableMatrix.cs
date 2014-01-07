@@ -3,7 +3,7 @@ namespace PhantomChains.Classes.Statistics.MarkovChain.Matrixes.Probability
     ///<summary>
     /// Интерыей позволяющие переписывать значение матрицы
     ///</summary>
-    public interface IWritebleMatrix
+    public interface IWritableMatrix
     {
         ///<summary>
         /// Занчение матрицы

@@ -8,11 +8,11 @@ namespace PhantomChains.Classes.Statistics.MarkovChain
     /// Класс описывающий статичную неоднородную марковскую цепь
     ///</summary>
     ///<typeparam name="ChainGenerated">Тип генерируемой цепи</typeparam>
-    ///<typeparam name="ChainTeached">Тип обучающей цепи</typeparam>
-    public class MarkovChainNotUniformStatic<ChainGenerated, ChainTeached> :
-        MarkovChainBase<ChainGenerated, ChainTeached>
+    ///<typeparam name="ChainTaught">Тип обучающей цепи</typeparam>
+    public class MarkovChainNotUniformStatic<ChainGenerated, ChainTaught> :
+        MarkovChainBase<ChainGenerated, ChainTaught>
         where ChainGenerated : BaseChain, new()
-        where ChainTeached : BaseChain, new()
+        where ChainTaught : BaseChain, new()
     {
         ///<summary>
         /// Конструктор
@@ -33,26 +33,17 @@ namespace PhantomChains.Classes.Statistics.MarkovChain
         ///<returns>Сгенерированная цепь</returns>
         public override ChainGenerated Generate(int i, int chainRang)
         {
-            ChainGenerated temp = new ChainGenerated();
+            var temp = new ChainGenerated();
             temp.ClearAndSetNewLength(i);
-            IteratorBase<ChainGenerated, ChainGenerated> read;
-            if (Rank - 1 > 0)
-            {
-                read = new IteratorStart<ChainGenerated, ChainGenerated>(temp, Rank - 1, 1);
-            }
-            else
-            {
-                read = null;
-            }
-            IteratorWritableStart<ChainGenerated, ChainGenerated> write =
-                new IteratorWritableStart<ChainGenerated, ChainGenerated>(temp);
+            var read = Rank > 1 ? new IteratorStart<ChainGenerated, ChainGenerated>(temp, Rank - 1, 1) : null;
+            var write = new IteratorWritableStart<ChainGenerated, ChainGenerated>(temp);
             if (read != null)
             {
                 read.Reset();
                 read.Next();
             }
             write.Reset();
-            Generator.Resert();
+            Generator.Reset();
 
             int m = 0;
             for (int j = 0; j < i; j++)

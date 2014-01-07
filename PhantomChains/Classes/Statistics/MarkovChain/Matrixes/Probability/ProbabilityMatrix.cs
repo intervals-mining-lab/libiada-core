@@ -11,15 +11,15 @@ namespace PhantomChains.Classes.Statistics.MarkovChain.Matrixes.Probability
     ///<summary>
     /// Матрица веротяностей. 
     ///</summary>
-    public class ProbabilityMatrix : MatrixCommon, IProbabilityMatrix, IWritebleMatrix
+    public class ProbabilityMatrix : MatrixCommon, IProbabilityMatrix, IWritableMatrix
     {
         ///<summary>
         /// Конструктор
         ///</summary>
-        ///<param name="alphPower">Мощность алфавита</param>
-        ///<param name="razmernost">Размерность матрицы</param>
-        public ProbabilityMatrix(int alphPower, int razmernost)
-            : base(alphPower, razmernost, new ProbabilityMatixBuilder())
+        ///<param name="alphabetPower">Мощность алфавита</param>
+        ///<param name="dimensionality">Размерность матрицы</param>
+        public ProbabilityMatrix(int alphabetPower, int dimensionality)
+            : base(alphabetPower, dimensionality, new ProbabilityMatrixBuilder())
         {
         }
 
@@ -33,7 +33,7 @@ namespace PhantomChains.Classes.Statistics.MarkovChain.Matrixes.Probability
 
             for (int i = 0; i < ValueList.Count; i++)
             {
-                ((IWritebleMatrix) ValueList[i]).Value = (temp == 0)
+                ((IWritableMatrix) ValueList[i]).Value = (temp == 0)
                                                              ? 0
                                                              : ((IOpenMatrix) matrix.ValueList[i]).Value/temp;
                 ((IProbabilityMatrix) ValueList[i]).Fill((IOpenMatrix) matrix.ValueList[i]);
@@ -42,7 +42,7 @@ namespace PhantomChains.Classes.Statistics.MarkovChain.Matrixes.Probability
 
         public Dictionary<IBaseObject, double> GetProbabilityVector(Alphabet alphabet, int[] pred)
         {
-            Dictionary<IBaseObject, double> result = new Dictionary<IBaseObject, double>();
+            var result = new Dictionary<IBaseObject, double>();
             if ((pred.Length > Rank - 1) || (pred.Length == 0))
             {
                 throw new Exception();
@@ -62,7 +62,7 @@ namespace PhantomChains.Classes.Statistics.MarkovChain.Matrixes.Probability
         }
 
 
-        double IWritebleMatrix.Value
+        double IWritableMatrix.Value
         {
             get { return Value; }
             set { Value = value; }

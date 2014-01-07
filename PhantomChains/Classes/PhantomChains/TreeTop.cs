@@ -31,7 +31,7 @@ namespace PhantomChains.Classes.PhantomChains
             }
             if ((inputChain != null) && (inputChain.Length != 0))
             {
-                ValuePhantom temp = (ValuePhantom)inputChain[0];
+                var temp = (ValuePhantom)inputChain[0];
                 for (int i = 0; i < temp.Power; i++)
                 {
                     Children.Add(new TreeNode(this, temp[i], Table));
@@ -70,10 +70,9 @@ namespace PhantomChains.Classes.PhantomChains
         ///<returns>Сгенерированная цепочка</returns>
         public BaseChain Generate()
         {
-            BaseChain result;
             int len = Table.Length - 1;
             len *= IsString ? 3 : 1;
-            result =  new BaseChain(len);
+            var result = new BaseChain(len);
             
             Find(result,Generator,Table);
             return result;

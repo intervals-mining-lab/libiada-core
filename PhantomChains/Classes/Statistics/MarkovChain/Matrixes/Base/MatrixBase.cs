@@ -8,7 +8,7 @@ namespace PhantomChains.Classes.Statistics.MarkovChain.Matrixes.Base
     ///</summary>
     public abstract class MatrixBase
     {
-        protected readonly int AlphabetPower;
+        protected readonly int alphabetPower;
         protected readonly ArrayList ValueList;
         ///<summary>
         /// Размерность матрицы.
@@ -21,28 +21,28 @@ namespace PhantomChains.Classes.Statistics.MarkovChain.Matrixes.Base
         /// <summary>
         /// Конструктор
         /// </summary>
-        /// <param name="poweOfAlphabet">Мощность алфавита</param>
-        /// <param name="razmernost">Размерность матрицы</param>
+        /// <param name="powerOfAlphabet">Мощность алфавита</param>
+        /// <param name="dimensionality">Размерность матрицы</param>
         /// <param name="builder">Правило создания матриц</param>
-        public MatrixBase(int poweOfAlphabet, int razmernost, IMatrixBuilder builder)
+        public MatrixBase(int powerOfAlphabet, int dimensionality, IMatrixBuilder builder)
         {
-            AlphabetPower = poweOfAlphabet;
+            alphabetPower = powerOfAlphabet;
             ValueList = new ArrayList();
-            Rank = razmernost;
-            for (int i = 0; i < AlphabetPower; i++)
+            Rank = dimensionality;
+            for (int i = 0; i < alphabetPower; i++)
             {
-                ValueList.Add(builder.Create(AlphabetPower, razmernost - 1));
+                ValueList.Add(builder.Create(alphabetPower, dimensionality - 1));
             }
         }
 
         ///<summary>
         /// Мощность алфавита
         ///</summary>
-        public int AlpahbetPower
+        public int AlphabetPower
         {
             get
             {
-                return AlphabetPower;
+                return alphabetPower;
             }
         }
 

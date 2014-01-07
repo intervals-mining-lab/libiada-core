@@ -5,7 +5,7 @@ namespace PhantomChains.Classes.Statistics.MarkovChain.Builders
     ///<summary>
     /// ѕравило создани€ матрицы дл€ веро€тностной матрицы
     ///</summary>
-    public class ProbabilityMatixBuilder:IMatrixBuilder
+    public class ProbabilityMatrixBuilder:IMatrixBuilder
     {
         public object Create(int alphabetPower, int i)
         {
@@ -14,7 +14,7 @@ namespace PhantomChains.Classes.Statistics.MarkovChain.Builders
                 case 0:
                     return (double)0;
                 case 1:
-                    return new ProbabilityMatixRow(alphabetPower, i);
+                    return new ProbabilityMatrixRow(alphabetPower, i);
                 default:
                     return new ProbabilityMatrix(alphabetPower, i);
             }

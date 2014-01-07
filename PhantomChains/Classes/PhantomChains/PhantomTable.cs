@@ -43,12 +43,12 @@ namespace PhantomChains.Classes.PhantomChains
             table.Add(null);
             for(int i=InternalChain.Length;i>0;i--)
             {
-                ValuePhantom temp = (ValuePhantom)InternalChain[i-1];
+                var temp = (ValuePhantom)InternalChain[i-1];
                 table[i] = new Record(temp, v);
                 v *= (uint)temp.Power;
             }
             //корню дерева не ставится в соответствие фантомное сообщение
-            ValuePhantom t = new ValuePhantom {NullValue.Instance()};
+            var t = new ValuePhantom {NullValue.Instance()};
             table[0] = new Record(t, v);
         }
 

@@ -55,7 +55,7 @@
     <Compile Include="Classes\PhantomChains\TreeTop.cs" />
     <Compile Include="Classes\Statistics\MarkovChain\Builders\IMatrixBuilder.cs" />
     <Compile Include="Classes\Statistics\MarkovChain\Builders\MatrixBuilder.cs" />
-    <Compile Include="Classes\Statistics\MarkovChain\Builders\ProbabilityMatixBuilder.cs" />
+    <Compile Include="Classes\Statistics\MarkovChain\Builders\ProbabilityMatrixBuilder.cs" />
     <Compile Include="Classes\Statistics\MarkovChain\GeneratingMethod.cs" />
     <Compile Include="Classes\Statistics\MarkovChain\Generators\GeneratorFactory.cs" />
     <Compile Include="Classes\Statistics\MarkovChain\Generators\GeneratorType.cs" />
@@ -74,17 +74,14 @@
     <Compile Include="Classes\Statistics\MarkovChain\Matrixes\Base\MatrixCommon.cs" />
     <Compile Include="Classes\Statistics\MarkovChain\Matrixes\Base\MatrixRowCommon.cs" />
     <Compile Include="Classes\Statistics\MarkovChain\Matrixes\Probability\IProbabilityMatrix.cs" />
-    <Compile Include="Classes\Statistics\MarkovChain\Matrixes\Probability\IWritebleMatrix.cs" />
-    <Compile Include="Classes\Statistics\MarkovChain\Matrixes\Probability\ProbabilityMatixRow.cs" />
+    <Compile Include="Classes\Statistics\MarkovChain\Matrixes\Probability\IWritableMatrix.cs" />
+    <Compile Include="Classes\Statistics\MarkovChain\Matrixes\Probability\ProbabilityMatrixRow.cs" />
     <Compile Include="Classes\Statistics\MarkovChain\Matrixes\Probability\ProbabilityMatrix.cs" />
     <Compile Include="Classes\Statistics\MarkovChain\TeachingMethod.cs" />
     <Compile Include="Classes\Statistics\MarkovCompare\MarkovMetrics.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />
-  <ItemGroup>
-    <Content Include="readme.txt" />
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

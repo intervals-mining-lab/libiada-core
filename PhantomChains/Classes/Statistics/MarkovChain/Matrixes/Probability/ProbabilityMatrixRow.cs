@@ -12,15 +12,15 @@ namespace PhantomChains.Classes.Statistics.MarkovChain.Matrixes.Probability
     ///<summary>
     /// Матрица-строка веротяностей.
     ///</summary>
-    public class ProbabilityMatixRow : MatrixRowCommon, IProbabilityMatrix, IWritebleMatrix
+    public class ProbabilityMatrixRow : MatrixRowCommon, IProbabilityMatrix, IWritableMatrix
     {
         ///<summary>
         /// Конструктор
         ///</summary>
         ///<param name="powerOfAlphabet">Мощность алфавита</param>
-        ///<param name="razmernost">Размерность матрицы</param>
-        public ProbabilityMatixRow(int powerOfAlphabet, int razmernost)
-            : base(powerOfAlphabet, razmernost, new ProbabilityMatixBuilder())
+        ///<param name="dimensionality">Размерность матрицы</param>
+        public ProbabilityMatrixRow(int powerOfAlphabet, int dimensionality)
+            : base(powerOfAlphabet, dimensionality, new ProbabilityMatrixBuilder())
         {
         }
 
@@ -46,7 +46,7 @@ namespace PhantomChains.Classes.Statistics.MarkovChain.Matrixes.Probability
 
         public Dictionary<IBaseObject, double> GetProbabilityVector(Alphabet alphabet, int[] pred)
         {
-            if (alphabet.Power != AlphabetPower)
+            if (alphabet.Power != alphabetPower)
             {
                 throw new Exception();
             }
@@ -55,8 +55,8 @@ namespace PhantomChains.Classes.Statistics.MarkovChain.Matrixes.Probability
                 throw new Exception();
             }
 
-            Dictionary<IBaseObject, double> result = new Dictionary<IBaseObject, double>();
-            for (int i = 0; i < AlphabetPower; i++)
+            var result = new Dictionary<IBaseObject, double>();
+            for (int i = 0; i < alphabetPower; i++)
             {
                 result.Add(alphabet[i], ((double)ValueList[i]));
             }
@@ -64,7 +64,7 @@ namespace PhantomChains.Classes.Statistics.MarkovChain.Matrixes.Probability
         }
 
 
-        double IWritebleMatrix.Value
+        double IWritableMatrix.Value
         {
             get { return Value; }
             set { Value = value; }

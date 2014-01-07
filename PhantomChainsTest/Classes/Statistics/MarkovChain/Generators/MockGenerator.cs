@@ -1,4 +1,4 @@
-using PhantomChains.Classes.Statistics.MarkovChain.Generators;
+﻿using PhantomChains.Classes.Statistics.MarkovChain.Generators;
 
 namespace PhantomChainsTest.Classes.Statistics.MarkovChain.Generators
 {
@@ -50,7 +50,7 @@ namespace PhantomChainsTest.Classes.Statistics.MarkovChain.Generators
         ///<summary>
         /// �������������� ��������� �����.
         ///</summary>
-        public void Resert()
+        public void Reset()
         {
             step = -1;
         }

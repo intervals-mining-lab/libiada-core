@@ -7,10 +7,10 @@ namespace PhantomChains.Classes.Statistics.MarkovChain
     /// Класс описывающий статичную однородную марковскую цепь
     ///</summary>
     ///<typeparam name="ChainGenerated">Тип генерируемой марковской цепи</typeparam>
-    ///<typeparam name="ChainTeached">Тип обучающей цепи</typeparam>
-    public class MarkovChainUniformStatic<ChainGenerated, ChainTeached> : MarkovChainNotUniformStatic<ChainGenerated, ChainTeached>
+    ///<typeparam name="ChainTaught">Тип обучающей цепи</typeparam>
+    public class MarkovChainUniformStatic<ChainGenerated, ChainTaught> : MarkovChainNotUniformStatic<ChainGenerated, ChainTaught>
         where ChainGenerated : BaseChain, new()
-        where ChainTeached : BaseChain, new()
+        where ChainTaught : BaseChain, new()
     {
         ///<summary>
         ///</summary>

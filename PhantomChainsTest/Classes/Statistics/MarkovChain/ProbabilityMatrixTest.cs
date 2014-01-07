@@ -11,42 +11,42 @@ namespace PhantomChainsTest.Classes.Statistics.MarkovChain
     [TestFixture]
     public class ProbabilityMatrixTest
     {
-        private Chain TestChain;
-        private Chain TestChain2;
+        private Chain testChain;
+        private Chain testChain2;
 
         ///<summary>
         ///</summary>
         [SetUp]
         public void Init()
         {
-            TestChain = new Chain(12);
-            TestChain.Add((ValueString)"a", 0);
-            TestChain.Add((ValueString)"d", 1);
-            TestChain.Add((ValueString)"b", 2);
-            TestChain.Add((ValueString)"a", 3);
-            TestChain.Add((ValueString)"a", 4);
-            TestChain.Add((ValueString)"c", 5);
-            TestChain.Add((ValueString)"b", 6);
-            TestChain.Add((ValueString)"b", 7);
-            TestChain.Add((ValueString)"a", 8);
-            TestChain.Add((ValueString)"a", 9);
-            TestChain.Add((ValueString)"c", 10);
-            TestChain.Add((ValueString)"a", 11);
+            testChain = new Chain(12);
+            testChain.Add((ValueString)"a", 0);
+            testChain.Add((ValueString)"d", 1);
+            testChain.Add((ValueString)"b", 2);
+            testChain.Add((ValueString)"a", 3);
+            testChain.Add((ValueString)"a", 4);
+            testChain.Add((ValueString)"c", 5);
+            testChain.Add((ValueString)"b", 6);
+            testChain.Add((ValueString)"b", 7);
+            testChain.Add((ValueString)"a", 8);
+            testChain.Add((ValueString)"a", 9);
+            testChain.Add((ValueString)"c", 10);
+            testChain.Add((ValueString)"a", 11);
 
 
-            TestChain2 = new Chain(12);
-            TestChain2.Add((ValueString)"a", 0);
-            TestChain2.Add((ValueString)"a", 1);
-            TestChain2.Add((ValueString)"a", 2);
-            TestChain2.Add((ValueString)"a", 3);
-            TestChain2.Add((ValueString)"a", 4);
-            TestChain2.Add((ValueString)"a", 5);
-            TestChain2.Add((ValueString)"b", 6);
-            TestChain2.Add((ValueString)"a", 7);
-            TestChain2.Add((ValueString)"a", 8);
-            TestChain2.Add((ValueString)"a", 9);
-            TestChain2.Add((ValueString)"b", 10);
-            TestChain2.Add((ValueString)"a", 11);
+            testChain2 = new Chain(12);
+            testChain2.Add((ValueString)"a", 0);
+            testChain2.Add((ValueString)"a", 1);
+            testChain2.Add((ValueString)"a", 2);
+            testChain2.Add((ValueString)"a", 3);
+            testChain2.Add((ValueString)"a", 4);
+            testChain2.Add((ValueString)"a", 5);
+            testChain2.Add((ValueString)"b", 6);
+            testChain2.Add((ValueString)"a", 7);
+            testChain2.Add((ValueString)"a", 8);
+            testChain2.Add((ValueString)"a", 9);
+            testChain2.Add((ValueString)"b", 10);
+            testChain2.Add((ValueString)"a", 11);
 
         }
 
@@ -55,7 +55,7 @@ namespace PhantomChainsTest.Classes.Statistics.MarkovChain
         [Test]
         public void GenerationNotUniformMarkovChainRangZeroTest()
         {
-            Chain resultTheory = new Chain(10);
+            var resultTheory = new Chain(10);
             resultTheory[0] = (ValueString)"b";
             resultTheory[1] = (ValueString)"a";
             resultTheory[2] = (ValueString)"a";
@@ -67,9 +67,9 @@ namespace PhantomChainsTest.Classes.Statistics.MarkovChain
             resultTheory[8] = (ValueString)"b";
             resultTheory[9] = (ValueString)"a";
 
-            MarkovChainNotUniformStatic<Chain, Chain> markov = new MarkovChainNotUniformStatic<Chain, Chain>(3, 0, new MockGenerator());
-            markov.Teach(TestChain, TeachingMethod.Cycle);
-            Chain resultPractice = markov.Generate(10);
+            var markov = new MarkovChainNotUniformStatic<Chain, Chain>(3, 0, new MockGenerator());
+            markov.Teach(testChain, TeachingMethod.Cycle);
+            var resultPractice = markov.Generate(10);
             Assert.AreEqual(resultTheory, resultPractice);
         }
 
@@ -79,7 +79,7 @@ namespace PhantomChainsTest.Classes.Statistics.MarkovChain
         [Test]
         public void GenerationUniformMarkovChainLevelTwoTest()
         {
-            Chain resultTheory = new Chain(30);
+            var resultTheory = new Chain(30);
             resultTheory[0] = (ValueString)"a"; // "a" 0.77;
             resultTheory[1] = (ValueString)"a"; // "a" 0.15;
             resultTheory[2] = (ValueString)"b"; // "b" 0.96;
@@ -112,9 +112,9 @@ namespace PhantomChainsTest.Classes.Statistics.MarkovChain
             resultTheory[29] = (ValueString)"a"; // "a" 0.2;
 
 
-            MarkovChainNotUniformStatic<Chain, Chain> markov = new MarkovChainNotUniformStatic<Chain, Chain>(2, 0, new MockGenerator());
-            markov.Teach(TestChain2, TeachingMethod.Cycle);
-            Chain resultPractice = markov.Generate(30);
+            var markov = new MarkovChainNotUniformStatic<Chain, Chain>(2, 0, new MockGenerator());
+            markov.Teach(testChain2, TeachingMethod.Cycle);
+            var resultPractice = markov.Generate(30);
             Assert.AreEqual(resultTheory, resultPractice);            
         }
     }

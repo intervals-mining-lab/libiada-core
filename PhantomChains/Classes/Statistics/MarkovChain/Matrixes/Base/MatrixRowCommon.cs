@@ -13,10 +13,10 @@ namespace PhantomChains.Classes.Statistics.MarkovChain.Matrixes.Base
         /// Конструктор
         ///</summary>
         ///<param name="powerOfAlphabet">Мощность алфавита</param>
-        ///<param name="razmernost">размерность матрицы</param>
+        ///<param name="dimensionality">размерность матрицы</param>
         ///<param name="builder">Правило создания матриц</param>
-        public MatrixRowCommon(int powerOfAlphabet, int razmernost, IMatrixBuilder builder)
-            : base(powerOfAlphabet, razmernost, builder)
+        public MatrixRowCommon(int powerOfAlphabet, int dimensionality, IMatrixBuilder builder)
+            : base(powerOfAlphabet, dimensionality, builder)
         {
         }
 

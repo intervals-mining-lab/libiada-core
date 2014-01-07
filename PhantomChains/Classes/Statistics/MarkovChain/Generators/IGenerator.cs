@@ -8,7 +8,7 @@ namespace PhantomChains.Classes.Statistics.MarkovChain.Generators
         ///<summary>
         /// Переустановить стартовое число.
         ///</summary>
-        void Resert();
+        void Reset();
 
         ///<summary>
         /// Получить следующие значение псевдослучаной величины.

@@ -15,41 +15,41 @@ namespace PhantomChainsTest.Classes.Statistics.MarkovChain
     [TestFixture]
     public class IterationMatrixTest
     {
-        private Chain TestChain;
-        private Alphabet alph;
+        private Chain testChain;
+        private Alphabet alphabet;
         private ValueChar a;
         private ValueChar b;
         private ValueChar c;
         private ValueChar d;
         private ValueChar f;
         private BaseChain ch;
-        private Matrix matr;
+        private Matrix matrix;
 
         ///<summary>
         ///</summary>
         [SetUp]
         public void Init()
         {
-            alph = new Alphabet();
+            alphabet = new Alphabet();
             a = new ValueChar('a');
             b = new ValueChar('b');
             c = new ValueChar('c');
             d = new ValueChar('d');
             f = new ValueChar('f');
 
-            TestChain = new Chain(12);
-            TestChain.Add((ValueString)"a", 0);
-            TestChain.Add((ValueString)"d", 1);
-            TestChain.Add((ValueString)"b", 2);
-            TestChain.Add((ValueString)"a", 3);
-            TestChain.Add((ValueString)"a", 4);
-            TestChain.Add((ValueString)"c", 5);
-            TestChain.Add((ValueString)"b", 6);
-            TestChain.Add((ValueString)"b", 7);
-            TestChain.Add((ValueString)"a", 8);
-            TestChain.Add((ValueString)"a", 9);
-            TestChain.Add((ValueString)"c", 10);
-            TestChain.Add((ValueString)"a", 11);
+            testChain = new Chain(12);
+            testChain.Add((ValueString)"a", 0);
+            testChain.Add((ValueString)"d", 1);
+            testChain.Add((ValueString)"b", 2);
+            testChain.Add((ValueString)"a", 3);
+            testChain.Add((ValueString)"a", 4);
+            testChain.Add((ValueString)"c", 5);
+            testChain.Add((ValueString)"b", 6);
+            testChain.Add((ValueString)"b", 7);
+            testChain.Add((ValueString)"a", 8);
+            testChain.Add((ValueString)"a", 9);
+            testChain.Add((ValueString)"c", 10);
+            testChain.Add((ValueString)"a", 11);
         }
 
         ///<summary>
@@ -58,10 +58,10 @@ namespace PhantomChainsTest.Classes.Statistics.MarkovChain
         [ExpectedException(typeof (Exception))]
         public void AddLengthMoreThanChainRangTest()
         {
-            alph.Add(a);
-            alph.Add(b);
-            alph.Add(c);
-            alph.Add(d);
+            alphabet.Add(a);
+            alphabet.Add(b);
+            alphabet.Add(c);
+            alphabet.Add(d);
 
             ch = new BaseChain(3);
 
@@ -69,12 +69,12 @@ namespace PhantomChainsTest.Classes.Statistics.MarkovChain
             ch.Add(b, 1);
             ch.Add(b, 2);
 
-            matr = new Matrix(alph.Power, 2);
-            int[] arrayCh = new int[ch.Length];
-            arrayCh[0] = alph.IndexOf(ch[0]);
-            arrayCh[1] = alph.IndexOf(ch[1]);
-            arrayCh[2] = alph.IndexOf(ch[2]);
-            matr.Add(arrayCh);
+            matrix = new Matrix(alphabet.Power, 2);
+            var arrayCh = new int[ch.Length];
+            arrayCh[0] = alphabet.IndexOf(ch[0]);
+            arrayCh[1] = alphabet.IndexOf(ch[1]);
+            arrayCh[2] = alphabet.IndexOf(ch[2]);
+            matrix.Add(arrayCh);
         }
 
         ///<summary>
@@ -82,21 +82,21 @@ namespace PhantomChainsTest.Classes.Statistics.MarkovChain
         [Test]
         public void GetWithIndexesTest()
         {
-            alph.Add(a); // 0 => a
-            alph.Add(b); // 1 => b
-            alph.Add(c); // 2 => c
-            alph.Add(d); // 3 => d
+            alphabet.Add(a); // 0 => a
+            alphabet.Add(b); // 1 => b
+            alphabet.Add(c); // 2 => c
+            alphabet.Add(d); // 3 => d
 
                       ch = new BaseChain(2);
-            BaseChain ch1 = new BaseChain(2); 
-            BaseChain ch2 = new BaseChain(2); 
-            BaseChain ch3 = new BaseChain(2); 
+            var ch1 = new BaseChain(2); 
+            var ch2 = new BaseChain(2); 
+            var ch3 = new BaseChain(2); 
 
             
-            BaseChain ch4 = new BaseChain(2);
-            BaseChain ch5 = new BaseChain(1); 
-            BaseChain ch6 = new BaseChain(1);
-            BaseChain ch7 = new BaseChain(1); 
+            var ch4 = new BaseChain(2);
+            var ch5 = new BaseChain(1); 
+            var ch6 = new BaseChain(1);
+            var ch7 = new BaseChain(1); 
 
             ch.Add(a, 0);  
             ch.Add(b, 1);  
@@ -114,45 +114,45 @@ namespace PhantomChainsTest.Classes.Statistics.MarkovChain
 
 
 
-            matr = new Matrix(alph.Power, 2);
+            matrix = new Matrix(alphabet.Power, 2);
 
-            int[] arrayToTeach = new int[2];
-            arrayToTeach[0] = alph.IndexOf(ch1[0]);
-            arrayToTeach[1] = alph.IndexOf(ch1[1]);
-            matr.Add(arrayToTeach);  
-
-            arrayToTeach = new int[2];
-            arrayToTeach[0] = alph.IndexOf(ch2[0]);
-            arrayToTeach[1] = alph.IndexOf(ch2[1]);
-            matr.Add(arrayToTeach); 
+            var arrayToTeach = new int[2];
+            arrayToTeach[0] = alphabet.IndexOf(ch1[0]);
+            arrayToTeach[1] = alphabet.IndexOf(ch1[1]);
+            matrix.Add(arrayToTeach);  
 
             arrayToTeach = new int[2];
-            arrayToTeach[0] = alph.IndexOf(ch[0]);
-            arrayToTeach[1] = alph.IndexOf(ch[1]);
-            matr.Add(arrayToTeach); 
-
-
-            arrayToTeach = new int[2];
-            arrayToTeach[0] = alph.IndexOf(ch3[0]);
-            arrayToTeach[1] = alph.IndexOf(ch3[1]);
-            matr.Add(arrayToTeach); 
+            arrayToTeach[0] = alphabet.IndexOf(ch2[0]);
+            arrayToTeach[1] = alphabet.IndexOf(ch2[1]);
+            matrix.Add(arrayToTeach); 
 
             arrayToTeach = new int[2];
-            arrayToTeach[0] = alph.IndexOf(ch1[0]);
-            arrayToTeach[1] = alph.IndexOf(ch1[1]);
-            matr.Add(arrayToTeach); 
-
+            arrayToTeach[0] = alphabet.IndexOf(ch[0]);
+            arrayToTeach[1] = alphabet.IndexOf(ch[1]);
+            matrix.Add(arrayToTeach); 
 
 
             arrayToTeach = new int[2];
-            arrayToTeach[0] = alph.IndexOf(ch3[0]);
-            arrayToTeach[1] = alph.IndexOf(ch3[1]);
-            matr.Add(arrayToTeach); 
+            arrayToTeach[0] = alphabet.IndexOf(ch3[0]);
+            arrayToTeach[1] = alphabet.IndexOf(ch3[1]);
+            matrix.Add(arrayToTeach); 
 
             arrayToTeach = new int[2];
-            arrayToTeach[0] = alph.IndexOf(ch1[0]);
-            arrayToTeach[1] = alph.IndexOf(ch1[1]);
-            Assert.AreEqual(2, matr.FrequencyFromObject(arrayToTeach));
+            arrayToTeach[0] = alphabet.IndexOf(ch1[0]);
+            arrayToTeach[1] = alphabet.IndexOf(ch1[1]);
+            matrix.Add(arrayToTeach); 
+
+
+
+            arrayToTeach = new int[2];
+            arrayToTeach[0] = alphabet.IndexOf(ch3[0]);
+            arrayToTeach[1] = alphabet.IndexOf(ch3[1]);
+            matrix.Add(arrayToTeach); 
+
+            arrayToTeach = new int[2];
+            arrayToTeach[0] = alphabet.IndexOf(ch1[0]);
+            arrayToTeach[1] = alphabet.IndexOf(ch1[1]);
+            Assert.AreEqual(2, matrix.FrequencyFromObject(arrayToTeach));
 
 
             ch4.Add(a, 0); 
@@ -160,30 +160,30 @@ namespace PhantomChainsTest.Classes.Statistics.MarkovChain
 
 
             arrayToTeach = new int[2];
-            arrayToTeach[0] = alph.IndexOf(ch4[0]);
-            arrayToTeach[1] = alph.IndexOf(ch4[1]);
-            Assert.AreEqual(0, matr.FrequencyFromObject(arrayToTeach));
+            arrayToTeach[0] = alphabet.IndexOf(ch4[0]);
+            arrayToTeach[1] = alphabet.IndexOf(ch4[1]);
+            Assert.AreEqual(0, matrix.FrequencyFromObject(arrayToTeach));
 
 
             ch5.Add(b, 0);
 
 
             arrayToTeach = new int[1];
-            arrayToTeach[0] = alph.IndexOf(ch5[0]);
-            Assert.AreEqual(3, matr.FrequencyFromObject(arrayToTeach));
+            arrayToTeach[0] = alphabet.IndexOf(ch5[0]);
+            Assert.AreEqual(3, matrix.FrequencyFromObject(arrayToTeach));
 
             ch6.Add(a, 0); 
 
 
             arrayToTeach = new int[1];
-            arrayToTeach[0] = alph.IndexOf(ch6[0]);
-            Assert.AreEqual(1, matr.FrequencyFromObject(arrayToTeach));
+            arrayToTeach[0] = alphabet.IndexOf(ch6[0]);
+            Assert.AreEqual(1, matrix.FrequencyFromObject(arrayToTeach));
 
             ch7.Add(c, 0); 
 
             arrayToTeach = new int[1];
-            arrayToTeach[0] = alph.IndexOf(ch7[0]);
-            Assert.AreEqual(2, matr.FrequencyFromObject(arrayToTeach));
+            arrayToTeach[0] = alphabet.IndexOf(ch7[0]);
+            Assert.AreEqual(2, matrix.FrequencyFromObject(arrayToTeach));
         }
 
 
@@ -193,450 +193,450 @@ namespace PhantomChainsTest.Classes.Statistics.MarkovChain
         [Test]
         public void GetThirdLevelChainTest()
         {
-            matr = new Matrix(TestChain.Alphabet.Power, 3);
+            matrix = new Matrix(testChain.Alphabet.Power, 3);
 
-            PsevdoCycleSpaceRebuilder<Chain, Chain> rebuilder = new PsevdoCycleSpaceRebuilder<Chain, Chain>(2);
-            TestChain = rebuilder.Rebuild(TestChain);
+            var rebuilder = new NullCycleSpaceRebuilder<Chain, Chain>(2);
+            testChain = rebuilder.Rebuild(testChain);
 
-            IteratorStart<Chain, Chain> it = new IteratorStart<Chain, Chain>(TestChain, 3, 1);
+            var it = new IteratorStart<Chain, Chain>(testChain, 3, 1);
             while(it.Next())
             {
-                Chain chain = it.Current();
-                int[] arrayToTeach = new int[chain.Length];
-                for (int i = 0; i < chain.Length; i++)
+                var chain = it.Current();
+                var arrayToTeach = new int[chain.Length];
+                for (var i = 0; i < chain.Length; i++)
                 {
-                    arrayToTeach[i] = TestChain.Alphabet.IndexOf(chain[i]);
+                    arrayToTeach[i] = testChain.Alphabet.IndexOf(chain[i]);
                 }
-                matr.Add(arrayToTeach);
+                matrix.Add(arrayToTeach);
             }
 
-            int[] toGet = new int[1];
+            var toGet = new int[1];
 
-            toGet[0] = TestChain.Alphabet.IndexOf((ValueString)"a");
-            Assert.AreEqual(6, matr.FrequencyFromObject(toGet));
+            toGet[0] = testChain.Alphabet.IndexOf((ValueString)"a");
+            Assert.AreEqual(6, matrix.FrequencyFromObject(toGet));
 
-            toGet[0] = TestChain.Alphabet.IndexOf((ValueString)"b");
-            Assert.AreEqual(3, matr.FrequencyFromObject(toGet));
+            toGet[0] = testChain.Alphabet.IndexOf((ValueString)"b");
+            Assert.AreEqual(3, matrix.FrequencyFromObject(toGet));
 
-            toGet[0] = TestChain.Alphabet.IndexOf((ValueString)"c");
-            Assert.AreEqual(2, matr.FrequencyFromObject(toGet));
+            toGet[0] = testChain.Alphabet.IndexOf((ValueString)"c");
+            Assert.AreEqual(2, matrix.FrequencyFromObject(toGet));
 
-            toGet[0] = TestChain.Alphabet.IndexOf((ValueString)"d");
-            Assert.AreEqual(1, matr.FrequencyFromObject(toGet));
+            toGet[0] = testChain.Alphabet.IndexOf((ValueString)"d");
+            Assert.AreEqual(1, matrix.FrequencyFromObject(toGet));
 
             toGet = new int[2];
 
-            toGet[0] = TestChain.Alphabet.IndexOf((ValueString)"a");
-            toGet[1] = TestChain.Alphabet.IndexOf((ValueString)"a");
-            Assert.AreEqual(3, matr.FrequencyFromObject(toGet));
+            toGet[0] = testChain.Alphabet.IndexOf((ValueString)"a");
+            toGet[1] = testChain.Alphabet.IndexOf((ValueString)"a");
+            Assert.AreEqual(3, matrix.FrequencyFromObject(toGet));
 
-            toGet[0] = TestChain.Alphabet.IndexOf((ValueString)"a");
-            toGet[1] = TestChain.Alphabet.IndexOf((ValueString)"b");
-            Assert.AreEqual(0, matr.FrequencyFromObject(toGet));
+            toGet[0] = testChain.Alphabet.IndexOf((ValueString)"a");
+            toGet[1] = testChain.Alphabet.IndexOf((ValueString)"b");
+            Assert.AreEqual(0, matrix.FrequencyFromObject(toGet));
 
-            toGet[0] = TestChain.Alphabet.IndexOf((ValueString)"a");
-            toGet[1] = TestChain.Alphabet.IndexOf((ValueString)"c");
-            Assert.AreEqual(2, matr.FrequencyFromObject(toGet));
+            toGet[0] = testChain.Alphabet.IndexOf((ValueString)"a");
+            toGet[1] = testChain.Alphabet.IndexOf((ValueString)"c");
+            Assert.AreEqual(2, matrix.FrequencyFromObject(toGet));
 
-            toGet[0] = TestChain.Alphabet.IndexOf((ValueString)"a");
-            toGet[1] = TestChain.Alphabet.IndexOf((ValueString)"d");
-            Assert.AreEqual(1, matr.FrequencyFromObject(toGet));
+            toGet[0] = testChain.Alphabet.IndexOf((ValueString)"a");
+            toGet[1] = testChain.Alphabet.IndexOf((ValueString)"d");
+            Assert.AreEqual(1, matrix.FrequencyFromObject(toGet));
 
-            toGet[0] = TestChain.Alphabet.IndexOf((ValueString)"b");
-            toGet[1] = TestChain.Alphabet.IndexOf((ValueString)"a");
-            Assert.AreEqual(2, matr.FrequencyFromObject(toGet));
+            toGet[0] = testChain.Alphabet.IndexOf((ValueString)"b");
+            toGet[1] = testChain.Alphabet.IndexOf((ValueString)"a");
+            Assert.AreEqual(2, matrix.FrequencyFromObject(toGet));
 
-            toGet[0] = TestChain.Alphabet.IndexOf((ValueString)"b");
-            toGet[1] = TestChain.Alphabet.IndexOf((ValueString)"b");
-            Assert.AreEqual(1, matr.FrequencyFromObject(toGet));
+            toGet[0] = testChain.Alphabet.IndexOf((ValueString)"b");
+            toGet[1] = testChain.Alphabet.IndexOf((ValueString)"b");
+            Assert.AreEqual(1, matrix.FrequencyFromObject(toGet));
 
-            toGet[0] = TestChain.Alphabet.IndexOf((ValueString)"b");
-            toGet[1] = TestChain.Alphabet.IndexOf((ValueString)"c");
-            Assert.AreEqual(0, matr.FrequencyFromObject(toGet));
+            toGet[0] = testChain.Alphabet.IndexOf((ValueString)"b");
+            toGet[1] = testChain.Alphabet.IndexOf((ValueString)"c");
+            Assert.AreEqual(0, matrix.FrequencyFromObject(toGet));
 
-            toGet[0] = TestChain.Alphabet.IndexOf((ValueString)"b");
-            toGet[1] = TestChain.Alphabet.IndexOf((ValueString)"d");
-            Assert.AreEqual(0, matr.FrequencyFromObject(toGet));
+            toGet[0] = testChain.Alphabet.IndexOf((ValueString)"b");
+            toGet[1] = testChain.Alphabet.IndexOf((ValueString)"d");
+            Assert.AreEqual(0, matrix.FrequencyFromObject(toGet));
 
-            toGet[0] = TestChain.Alphabet.IndexOf((ValueString)"c");
-            toGet[1] = TestChain.Alphabet.IndexOf((ValueString)"a");
-            Assert.AreEqual(1, matr.FrequencyFromObject(toGet));
+            toGet[0] = testChain.Alphabet.IndexOf((ValueString)"c");
+            toGet[1] = testChain.Alphabet.IndexOf((ValueString)"a");
+            Assert.AreEqual(1, matrix.FrequencyFromObject(toGet));
 
-            toGet[0] = TestChain.Alphabet.IndexOf((ValueString)"c");
-            toGet[1] = TestChain.Alphabet.IndexOf((ValueString)"b");
-            Assert.AreEqual(1, matr.FrequencyFromObject(toGet));
+            toGet[0] = testChain.Alphabet.IndexOf((ValueString)"c");
+            toGet[1] = testChain.Alphabet.IndexOf((ValueString)"b");
+            Assert.AreEqual(1, matrix.FrequencyFromObject(toGet));
 
-            toGet[0] = TestChain.Alphabet.IndexOf((ValueString)"c");
-            toGet[1] = TestChain.Alphabet.IndexOf((ValueString)"c");
-            Assert.AreEqual(0, matr.FrequencyFromObject(toGet));
+            toGet[0] = testChain.Alphabet.IndexOf((ValueString)"c");
+            toGet[1] = testChain.Alphabet.IndexOf((ValueString)"c");
+            Assert.AreEqual(0, matrix.FrequencyFromObject(toGet));
 
-            toGet[0] = TestChain.Alphabet.IndexOf((ValueString)"c");
-            toGet[1] = TestChain.Alphabet.IndexOf((ValueString)"d");
-            Assert.AreEqual(0, matr.FrequencyFromObject(toGet));
+            toGet[0] = testChain.Alphabet.IndexOf((ValueString)"c");
+            toGet[1] = testChain.Alphabet.IndexOf((ValueString)"d");
+            Assert.AreEqual(0, matrix.FrequencyFromObject(toGet));
 
-            toGet[0] = TestChain.Alphabet.IndexOf((ValueString)"d");
-            toGet[1] = TestChain.Alphabet.IndexOf((ValueString)"a");
-            Assert.AreEqual(0, matr.FrequencyFromObject(toGet));
+            toGet[0] = testChain.Alphabet.IndexOf((ValueString)"d");
+            toGet[1] = testChain.Alphabet.IndexOf((ValueString)"a");
+            Assert.AreEqual(0, matrix.FrequencyFromObject(toGet));
 
-            toGet[0] = TestChain.Alphabet.IndexOf((ValueString)"d");
-            toGet[1] = TestChain.Alphabet.IndexOf((ValueString)"b");
-            Assert.AreEqual(1, matr.FrequencyFromObject(toGet));
+            toGet[0] = testChain.Alphabet.IndexOf((ValueString)"d");
+            toGet[1] = testChain.Alphabet.IndexOf((ValueString)"b");
+            Assert.AreEqual(1, matrix.FrequencyFromObject(toGet));
 
-            toGet[0] = TestChain.Alphabet.IndexOf((ValueString)"d");
-            toGet[1] = TestChain.Alphabet.IndexOf((ValueString)"c");
-            Assert.AreEqual(0, matr.FrequencyFromObject(toGet));
+            toGet[0] = testChain.Alphabet.IndexOf((ValueString)"d");
+            toGet[1] = testChain.Alphabet.IndexOf((ValueString)"c");
+            Assert.AreEqual(0, matrix.FrequencyFromObject(toGet));
 
-            toGet[0] = TestChain.Alphabet.IndexOf((ValueString)"d");
-            toGet[1] = TestChain.Alphabet.IndexOf((ValueString)"d");
-            Assert.AreEqual(0, matr.FrequencyFromObject(toGet));
+            toGet[0] = testChain.Alphabet.IndexOf((ValueString)"d");
+            toGet[1] = testChain.Alphabet.IndexOf((ValueString)"d");
+            Assert.AreEqual(0, matrix.FrequencyFromObject(toGet));
 
             toGet = new int[3];
 
-            toGet[0] = TestChain.Alphabet.IndexOf((ValueString)"a");
-            toGet[1] = TestChain.Alphabet.IndexOf((ValueString)"a");
-            toGet[2] = TestChain.Alphabet.IndexOf((ValueString)"c");
-            Assert.AreEqual(2, matr.FrequencyFromObject(toGet));
+            toGet[0] = testChain.Alphabet.IndexOf((ValueString)"a");
+            toGet[1] = testChain.Alphabet.IndexOf((ValueString)"a");
+            toGet[2] = testChain.Alphabet.IndexOf((ValueString)"c");
+            Assert.AreEqual(2, matrix.FrequencyFromObject(toGet));
 
-            toGet[0] = TestChain.Alphabet.IndexOf((ValueString)"a");
-            toGet[1] = TestChain.Alphabet.IndexOf((ValueString)"a");
-            toGet[2] = TestChain.Alphabet.IndexOf((ValueString)"d");
-            Assert.AreEqual(1, matr.FrequencyFromObject(toGet));
+            toGet[0] = testChain.Alphabet.IndexOf((ValueString)"a");
+            toGet[1] = testChain.Alphabet.IndexOf((ValueString)"a");
+            toGet[2] = testChain.Alphabet.IndexOf((ValueString)"d");
+            Assert.AreEqual(1, matrix.FrequencyFromObject(toGet));
 
-            toGet[0] = TestChain.Alphabet.IndexOf((ValueString)"a");
-            toGet[1] = TestChain.Alphabet.IndexOf((ValueString)"c");
-            toGet[2] = TestChain.Alphabet.IndexOf((ValueString)"a");
-            Assert.AreEqual(1, matr.FrequencyFromObject(toGet));
+            toGet[0] = testChain.Alphabet.IndexOf((ValueString)"a");
+            toGet[1] = testChain.Alphabet.IndexOf((ValueString)"c");
+            toGet[2] = testChain.Alphabet.IndexOf((ValueString)"a");
+            Assert.AreEqual(1, matrix.FrequencyFromObject(toGet));
 
-            toGet[0] = TestChain.Alphabet.IndexOf((ValueString)"a");
-            toGet[1] = TestChain.Alphabet.IndexOf((ValueString)"c");
-            toGet[2] = TestChain.Alphabet.IndexOf((ValueString)"b");
-            Assert.AreEqual(1, matr.FrequencyFromObject(toGet));
+            toGet[0] = testChain.Alphabet.IndexOf((ValueString)"a");
+            toGet[1] = testChain.Alphabet.IndexOf((ValueString)"c");
+            toGet[2] = testChain.Alphabet.IndexOf((ValueString)"b");
+            Assert.AreEqual(1, matrix.FrequencyFromObject(toGet));
 
-            toGet[0] = TestChain.Alphabet.IndexOf((ValueString)"a");
-            toGet[1] = TestChain.Alphabet.IndexOf((ValueString)"d");
-            toGet[2] = TestChain.Alphabet.IndexOf((ValueString)"b");
-            Assert.AreEqual(1, matr.FrequencyFromObject(toGet));
+            toGet[0] = testChain.Alphabet.IndexOf((ValueString)"a");
+            toGet[1] = testChain.Alphabet.IndexOf((ValueString)"d");
+            toGet[2] = testChain.Alphabet.IndexOf((ValueString)"b");
+            Assert.AreEqual(1, matrix.FrequencyFromObject(toGet));
 
-            toGet[0] = TestChain.Alphabet.IndexOf((ValueString)"a");
-            toGet[1] = TestChain.Alphabet.IndexOf((ValueString)"b");
-            toGet[2] = TestChain.Alphabet.IndexOf((ValueString)"b");
-            Assert.AreEqual(0, matr.FrequencyFromObject(toGet));
+            toGet[0] = testChain.Alphabet.IndexOf((ValueString)"a");
+            toGet[1] = testChain.Alphabet.IndexOf((ValueString)"b");
+            toGet[2] = testChain.Alphabet.IndexOf((ValueString)"b");
+            Assert.AreEqual(0, matrix.FrequencyFromObject(toGet));
 
-            toGet[0] = TestChain.Alphabet.IndexOf((ValueString)"b");
-            toGet[1] = TestChain.Alphabet.IndexOf((ValueString)"a");
-            toGet[2] = TestChain.Alphabet.IndexOf((ValueString)"a");
-            Assert.AreEqual(2, matr.FrequencyFromObject(toGet));
+            toGet[0] = testChain.Alphabet.IndexOf((ValueString)"b");
+            toGet[1] = testChain.Alphabet.IndexOf((ValueString)"a");
+            toGet[2] = testChain.Alphabet.IndexOf((ValueString)"a");
+            Assert.AreEqual(2, matrix.FrequencyFromObject(toGet));
 
-            toGet[0] = TestChain.Alphabet.IndexOf((ValueString)"b");
-            toGet[1] = TestChain.Alphabet.IndexOf((ValueString)"a");
-            toGet[2] = TestChain.Alphabet.IndexOf((ValueString)"c");
-            Assert.AreEqual(0, matr.FrequencyFromObject(toGet));
+            toGet[0] = testChain.Alphabet.IndexOf((ValueString)"b");
+            toGet[1] = testChain.Alphabet.IndexOf((ValueString)"a");
+            toGet[2] = testChain.Alphabet.IndexOf((ValueString)"c");
+            Assert.AreEqual(0, matrix.FrequencyFromObject(toGet));
 
-            toGet[0] = TestChain.Alphabet.IndexOf((ValueString)"b");
-            toGet[1] = TestChain.Alphabet.IndexOf((ValueString)"b");
-            toGet[2] = TestChain.Alphabet.IndexOf((ValueString)"a");
-            Assert.AreEqual(1, matr.FrequencyFromObject(toGet));
+            toGet[0] = testChain.Alphabet.IndexOf((ValueString)"b");
+            toGet[1] = testChain.Alphabet.IndexOf((ValueString)"b");
+            toGet[2] = testChain.Alphabet.IndexOf((ValueString)"a");
+            Assert.AreEqual(1, matrix.FrequencyFromObject(toGet));
 
-            toGet[0] = TestChain.Alphabet.IndexOf((ValueString)"b");
-            toGet[1] = TestChain.Alphabet.IndexOf((ValueString)"c");
-            toGet[2] = TestChain.Alphabet.IndexOf((ValueString)"b");
-            Assert.AreEqual(0, matr.FrequencyFromObject(toGet));
+            toGet[0] = testChain.Alphabet.IndexOf((ValueString)"b");
+            toGet[1] = testChain.Alphabet.IndexOf((ValueString)"c");
+            toGet[2] = testChain.Alphabet.IndexOf((ValueString)"b");
+            Assert.AreEqual(0, matrix.FrequencyFromObject(toGet));
 
-            toGet[0] = TestChain.Alphabet.IndexOf((ValueString)"b");
-            toGet[1] = TestChain.Alphabet.IndexOf((ValueString)"d");
-            toGet[2] = TestChain.Alphabet.IndexOf((ValueString)"b");
-            Assert.AreEqual(0, matr.FrequencyFromObject(toGet));
+            toGet[0] = testChain.Alphabet.IndexOf((ValueString)"b");
+            toGet[1] = testChain.Alphabet.IndexOf((ValueString)"d");
+            toGet[2] = testChain.Alphabet.IndexOf((ValueString)"b");
+            Assert.AreEqual(0, matrix.FrequencyFromObject(toGet));
 
-            toGet[0] = TestChain.Alphabet.IndexOf((ValueString)"b");
-            toGet[1] = TestChain.Alphabet.IndexOf((ValueString)"b");
-            toGet[2] = TestChain.Alphabet.IndexOf((ValueString)"b");
-            Assert.AreEqual(0, matr.FrequencyFromObject(toGet));
+            toGet[0] = testChain.Alphabet.IndexOf((ValueString)"b");
+            toGet[1] = testChain.Alphabet.IndexOf((ValueString)"b");
+            toGet[2] = testChain.Alphabet.IndexOf((ValueString)"b");
+            Assert.AreEqual(0, matrix.FrequencyFromObject(toGet));
 
-            toGet[0] = TestChain.Alphabet.IndexOf((ValueString)"c");
-            toGet[1] = TestChain.Alphabet.IndexOf((ValueString)"a");
-            toGet[2] = TestChain.Alphabet.IndexOf((ValueString)"a");
-            Assert.AreEqual(1, matr.FrequencyFromObject(toGet));
+            toGet[0] = testChain.Alphabet.IndexOf((ValueString)"c");
+            toGet[1] = testChain.Alphabet.IndexOf((ValueString)"a");
+            toGet[2] = testChain.Alphabet.IndexOf((ValueString)"a");
+            Assert.AreEqual(1, matrix.FrequencyFromObject(toGet));
 
-            toGet[0] = TestChain.Alphabet.IndexOf((ValueString)"c");
-            toGet[1] = TestChain.Alphabet.IndexOf((ValueString)"b");
-            toGet[2] = TestChain.Alphabet.IndexOf((ValueString)"b");
-            Assert.AreEqual(1, matr.FrequencyFromObject(toGet));
+            toGet[0] = testChain.Alphabet.IndexOf((ValueString)"c");
+            toGet[1] = testChain.Alphabet.IndexOf((ValueString)"b");
+            toGet[2] = testChain.Alphabet.IndexOf((ValueString)"b");
+            Assert.AreEqual(1, matrix.FrequencyFromObject(toGet));
 
-            toGet[0] = TestChain.Alphabet.IndexOf((ValueString)"c");
-            toGet[1] = TestChain.Alphabet.IndexOf((ValueString)"b");
-            toGet[2] = TestChain.Alphabet.IndexOf((ValueString)"a");
-            Assert.AreEqual(0, matr.FrequencyFromObject(toGet));
+            toGet[0] = testChain.Alphabet.IndexOf((ValueString)"c");
+            toGet[1] = testChain.Alphabet.IndexOf((ValueString)"b");
+            toGet[2] = testChain.Alphabet.IndexOf((ValueString)"a");
+            Assert.AreEqual(0, matrix.FrequencyFromObject(toGet));
 
-            toGet[0] = TestChain.Alphabet.IndexOf((ValueString)"c");
-            toGet[1] = TestChain.Alphabet.IndexOf((ValueString)"c");
-            toGet[2] = TestChain.Alphabet.IndexOf((ValueString)"b");
-            Assert.AreEqual(0, matr.FrequencyFromObject(toGet));
+            toGet[0] = testChain.Alphabet.IndexOf((ValueString)"c");
+            toGet[1] = testChain.Alphabet.IndexOf((ValueString)"c");
+            toGet[2] = testChain.Alphabet.IndexOf((ValueString)"b");
+            Assert.AreEqual(0, matrix.FrequencyFromObject(toGet));
 
-            toGet[0] = TestChain.Alphabet.IndexOf((ValueString)"c");
-            toGet[1] = TestChain.Alphabet.IndexOf((ValueString)"d");
-            toGet[2] = TestChain.Alphabet.IndexOf((ValueString)"b");
-            Assert.AreEqual(0, matr.FrequencyFromObject(toGet));
+            toGet[0] = testChain.Alphabet.IndexOf((ValueString)"c");
+            toGet[1] = testChain.Alphabet.IndexOf((ValueString)"d");
+            toGet[2] = testChain.Alphabet.IndexOf((ValueString)"b");
+            Assert.AreEqual(0, matrix.FrequencyFromObject(toGet));
 
-            toGet[0] = TestChain.Alphabet.IndexOf((ValueString)"c");
-            toGet[1] = TestChain.Alphabet.IndexOf((ValueString)"d");
-            toGet[2] = TestChain.Alphabet.IndexOf((ValueString)"c");
-            Assert.AreEqual(0, matr.FrequencyFromObject(toGet));
+            toGet[0] = testChain.Alphabet.IndexOf((ValueString)"c");
+            toGet[1] = testChain.Alphabet.IndexOf((ValueString)"d");
+            toGet[2] = testChain.Alphabet.IndexOf((ValueString)"c");
+            Assert.AreEqual(0, matrix.FrequencyFromObject(toGet));
 
-            toGet[0] = TestChain.Alphabet.IndexOf((ValueString)"d");
-            toGet[1] = TestChain.Alphabet.IndexOf((ValueString)"b");
-            toGet[2] = TestChain.Alphabet.IndexOf((ValueString)"a");
-            Assert.AreEqual(1, matr.FrequencyFromObject(toGet));
+            toGet[0] = testChain.Alphabet.IndexOf((ValueString)"d");
+            toGet[1] = testChain.Alphabet.IndexOf((ValueString)"b");
+            toGet[2] = testChain.Alphabet.IndexOf((ValueString)"a");
+            Assert.AreEqual(1, matrix.FrequencyFromObject(toGet));
 
-            toGet[0] = TestChain.Alphabet.IndexOf((ValueString)"d");
-            toGet[1] = TestChain.Alphabet.IndexOf((ValueString)"b");
-            toGet[2] = TestChain.Alphabet.IndexOf((ValueString)"b");
-            Assert.AreEqual(0, matr.FrequencyFromObject(toGet));
+            toGet[0] = testChain.Alphabet.IndexOf((ValueString)"d");
+            toGet[1] = testChain.Alphabet.IndexOf((ValueString)"b");
+            toGet[2] = testChain.Alphabet.IndexOf((ValueString)"b");
+            Assert.AreEqual(0, matrix.FrequencyFromObject(toGet));
 
-            toGet[0] = TestChain.Alphabet.IndexOf((ValueString)"d");
-            toGet[1] = TestChain.Alphabet.IndexOf((ValueString)"a");
-            toGet[2] = TestChain.Alphabet.IndexOf((ValueString)"a");
-            Assert.AreEqual(0, matr.FrequencyFromObject(toGet));
+            toGet[0] = testChain.Alphabet.IndexOf((ValueString)"d");
+            toGet[1] = testChain.Alphabet.IndexOf((ValueString)"a");
+            toGet[2] = testChain.Alphabet.IndexOf((ValueString)"a");
+            Assert.AreEqual(0, matrix.FrequencyFromObject(toGet));
 
-            toGet[0] = TestChain.Alphabet.IndexOf((ValueString)"d");
-            toGet[1] = TestChain.Alphabet.IndexOf((ValueString)"c");
-            toGet[2] = TestChain.Alphabet.IndexOf((ValueString)"b");
-            Assert.AreEqual(0, matr.FrequencyFromObject(toGet));
+            toGet[0] = testChain.Alphabet.IndexOf((ValueString)"d");
+            toGet[1] = testChain.Alphabet.IndexOf((ValueString)"c");
+            toGet[2] = testChain.Alphabet.IndexOf((ValueString)"b");
+            Assert.AreEqual(0, matrix.FrequencyFromObject(toGet));
 
-            toGet[0] = TestChain.Alphabet.IndexOf((ValueString)"d");
-            toGet[1] = TestChain.Alphabet.IndexOf((ValueString)"d");
-            toGet[2] = TestChain.Alphabet.IndexOf((ValueString)"b");
-            Assert.AreEqual(0, matr.FrequencyFromObject(toGet));
+            toGet[0] = testChain.Alphabet.IndexOf((ValueString)"d");
+            toGet[1] = testChain.Alphabet.IndexOf((ValueString)"d");
+            toGet[2] = testChain.Alphabet.IndexOf((ValueString)"b");
+            Assert.AreEqual(0, matrix.FrequencyFromObject(toGet));
 
-            toGet[0] = TestChain.Alphabet.IndexOf((ValueString)"d");
-            toGet[1] = TestChain.Alphabet.IndexOf((ValueString)"b");
-            toGet[2] = TestChain.Alphabet.IndexOf((ValueString)"b");
-            Assert.AreEqual(0, matr.FrequencyFromObject(toGet));
+            toGet[0] = testChain.Alphabet.IndexOf((ValueString)"d");
+            toGet[1] = testChain.Alphabet.IndexOf((ValueString)"b");
+            toGet[2] = testChain.Alphabet.IndexOf((ValueString)"b");
+            Assert.AreEqual(0, matrix.FrequencyFromObject(toGet));
         }
 
         ///<summary>
         ///</summary>
         [Test]
-        public void GetPropabilityMatixTest()
+        public void GetProbabilityMatrixTest()
         {
-            matr = new Matrix(TestChain.Alphabet.Power, 3);
+            matrix = new Matrix(testChain.Alphabet.Power, 3);
 
-            PsevdoCycleSpaceRebuilder<Chain, Chain> rebuilder = new PsevdoCycleSpaceRebuilder<Chain, Chain>(2);
-            TestChain = rebuilder.Rebuild(TestChain);
+            var rebuilder = new NullCycleSpaceRebuilder<Chain, Chain>(2);
+            testChain = rebuilder.Rebuild(testChain);
 
-            IteratorStart<Chain, Chain> it = new IteratorStart<Chain, Chain>(TestChain, 3, 1);
+            var it = new IteratorStart<Chain, Chain>(testChain, 3, 1);
             while (it.Next())
             {
-                Chain chain = it.Current();
-                int[] arrayToTeach = new int[chain.Length];
-                for (int i = 0; i < chain.Length; i++)
+                var chain = it.Current();
+                var arrayToTeach = new int[chain.Length];
+                for (var i = 0; i < chain.Length; i++)
                 {
-                    arrayToTeach[i] = TestChain.Alphabet.IndexOf(chain[i]);
+                    arrayToTeach[i] = testChain.Alphabet.IndexOf(chain[i]);
                 }
-                matr.Add(arrayToTeach);
+                matrix.Add(arrayToTeach);
             }
 
-            ProbabilityMatrix pMatrix = (ProbabilityMatrix) matr.ProbabilityMatrix();
+            var pMatrix = (ProbabilityMatrix) matrix.ProbabilityMatrix();
 
-            int[] toGet = new int[1];
+            var toGet = new int[1];
 
-            toGet[0] = TestChain.Alphabet.IndexOf((ValueString)"a");
+            toGet[0] = testChain.Alphabet.IndexOf((ValueString)"a");
             Assert.AreEqual(0.5, pMatrix.FrequencyFromObject(toGet));
 
-            toGet[0] = TestChain.Alphabet.IndexOf((ValueString)"b");
+            toGet[0] = testChain.Alphabet.IndexOf((ValueString)"b");
             Assert.AreEqual(0.25, pMatrix.FrequencyFromObject(toGet));
 
-            toGet[0] = TestChain.Alphabet.IndexOf((ValueString)"c");
+            toGet[0] = testChain.Alphabet.IndexOf((ValueString)"c");
             Assert.AreEqual(1/(double)6, pMatrix.FrequencyFromObject(toGet));
 
-            toGet[0] = TestChain.Alphabet.IndexOf((ValueString)"d");
+            toGet[0] = testChain.Alphabet.IndexOf((ValueString)"d");
             Assert.AreEqual(1 / (double)12, pMatrix.FrequencyFromObject(toGet));
 
             toGet = new int[2];
 
-            toGet[0] = TestChain.Alphabet.IndexOf((ValueString)"a");
-            toGet[1] = TestChain.Alphabet.IndexOf((ValueString)"a");
+            toGet[0] = testChain.Alphabet.IndexOf((ValueString)"a");
+            toGet[1] = testChain.Alphabet.IndexOf((ValueString)"a");
             Assert.AreEqual(0.5, pMatrix.FrequencyFromObject(toGet));
 
-            toGet[0] = TestChain.Alphabet.IndexOf((ValueString)"a");
-            toGet[1] = TestChain.Alphabet.IndexOf((ValueString)"b");
+            toGet[0] = testChain.Alphabet.IndexOf((ValueString)"a");
+            toGet[1] = testChain.Alphabet.IndexOf((ValueString)"b");
             Assert.AreEqual(0, pMatrix.FrequencyFromObject(toGet));
 
-            toGet[0] = TestChain.Alphabet.IndexOf((ValueString)"a");
-            toGet[1] = TestChain.Alphabet.IndexOf((ValueString)"c");
+            toGet[0] = testChain.Alphabet.IndexOf((ValueString)"a");
+            toGet[1] = testChain.Alphabet.IndexOf((ValueString)"c");
             Assert.AreEqual(1 / (double)3, pMatrix.FrequencyFromObject(toGet));
 
-            toGet[0] = TestChain.Alphabet.IndexOf((ValueString)"a");
-            toGet[1] = TestChain.Alphabet.IndexOf((ValueString)"d");
+            toGet[0] = testChain.Alphabet.IndexOf((ValueString)"a");
+            toGet[1] = testChain.Alphabet.IndexOf((ValueString)"d");
             Assert.AreEqual(1 / (double)6, pMatrix.FrequencyFromObject(toGet));
 
-            toGet[0] = TestChain.Alphabet.IndexOf((ValueString)"b");
-            toGet[1] = TestChain.Alphabet.IndexOf((ValueString)"a");
+            toGet[0] = testChain.Alphabet.IndexOf((ValueString)"b");
+            toGet[1] = testChain.Alphabet.IndexOf((ValueString)"a");
             Assert.AreEqual(2 / (double)3, pMatrix.FrequencyFromObject(toGet));
 
-            toGet[0] = TestChain.Alphabet.IndexOf((ValueString)"b");
-            toGet[1] = TestChain.Alphabet.IndexOf((ValueString)"b");
+            toGet[0] = testChain.Alphabet.IndexOf((ValueString)"b");
+            toGet[1] = testChain.Alphabet.IndexOf((ValueString)"b");
             Assert.AreEqual(1 / (double)3, pMatrix.FrequencyFromObject(toGet));
 
-            toGet[0] = TestChain.Alphabet.IndexOf((ValueString)"b");
-            toGet[1] = TestChain.Alphabet.IndexOf((ValueString)"c");
+            toGet[0] = testChain.Alphabet.IndexOf((ValueString)"b");
+            toGet[1] = testChain.Alphabet.IndexOf((ValueString)"c");
             Assert.AreEqual(0, pMatrix.FrequencyFromObject(toGet));
 
-            toGet[0] = TestChain.Alphabet.IndexOf((ValueString)"b");
-            toGet[1] = TestChain.Alphabet.IndexOf((ValueString)"d");
+            toGet[0] = testChain.Alphabet.IndexOf((ValueString)"b");
+            toGet[1] = testChain.Alphabet.IndexOf((ValueString)"d");
             Assert.AreEqual(0, pMatrix.FrequencyFromObject(toGet));
 
-            toGet[0] = TestChain.Alphabet.IndexOf((ValueString)"c");
-            toGet[1] = TestChain.Alphabet.IndexOf((ValueString)"a");
+            toGet[0] = testChain.Alphabet.IndexOf((ValueString)"c");
+            toGet[1] = testChain.Alphabet.IndexOf((ValueString)"a");
             Assert.AreEqual(0.5, pMatrix.FrequencyFromObject(toGet));
 
-            toGet[0] = TestChain.Alphabet.IndexOf((ValueString)"c");
-            toGet[1] = TestChain.Alphabet.IndexOf((ValueString)"b");
+            toGet[0] = testChain.Alphabet.IndexOf((ValueString)"c");
+            toGet[1] = testChain.Alphabet.IndexOf((ValueString)"b");
             Assert.AreEqual(0.5, pMatrix.FrequencyFromObject(toGet));
 
-            toGet[0] = TestChain.Alphabet.IndexOf((ValueString)"c");
-            toGet[1] = TestChain.Alphabet.IndexOf((ValueString)"c");
+            toGet[0] = testChain.Alphabet.IndexOf((ValueString)"c");
+            toGet[1] = testChain.Alphabet.IndexOf((ValueString)"c");
             Assert.AreEqual(0, pMatrix.FrequencyFromObject(toGet));
 
-            toGet[0] = TestChain.Alphabet.IndexOf((ValueString)"c");
-            toGet[1] = TestChain.Alphabet.IndexOf((ValueString)"d");
+            toGet[0] = testChain.Alphabet.IndexOf((ValueString)"c");
+            toGet[1] = testChain.Alphabet.IndexOf((ValueString)"d");
             Assert.AreEqual(0, pMatrix.FrequencyFromObject(toGet));
 
-            toGet[0] = TestChain.Alphabet.IndexOf((ValueString)"d");
-            toGet[1] = TestChain.Alphabet.IndexOf((ValueString)"a");
+            toGet[0] = testChain.Alphabet.IndexOf((ValueString)"d");
+            toGet[1] = testChain.Alphabet.IndexOf((ValueString)"a");
             Assert.AreEqual(0, pMatrix.FrequencyFromObject(toGet));
 
-            toGet[0] = TestChain.Alphabet.IndexOf((ValueString)"d");
-            toGet[1] = TestChain.Alphabet.IndexOf((ValueString)"b");
+            toGet[0] = testChain.Alphabet.IndexOf((ValueString)"d");
+            toGet[1] = testChain.Alphabet.IndexOf((ValueString)"b");
             Assert.AreEqual(1, pMatrix.FrequencyFromObject(toGet));
 
-            toGet[0] = TestChain.Alphabet.IndexOf((ValueString)"d");
-            toGet[1] = TestChain.Alphabet.IndexOf((ValueString)"c");
+            toGet[0] = testChain.Alphabet.IndexOf((ValueString)"d");
+            toGet[1] = testChain.Alphabet.IndexOf((ValueString)"c");
             Assert.AreEqual(0, pMatrix.FrequencyFromObject(toGet));
 
-            toGet[0] = TestChain.Alphabet.IndexOf((ValueString)"d");
-            toGet[1] = TestChain.Alphabet.IndexOf((ValueString)"d");
+            toGet[0] = testChain.Alphabet.IndexOf((ValueString)"d");
+            toGet[1] = testChain.Alphabet.IndexOf((ValueString)"d");
             Assert.AreEqual(0, pMatrix.FrequencyFromObject(toGet));
 
             toGet = new int[3];
 
-            toGet[0] = TestChain.Alphabet.IndexOf((ValueString)"a");
-            toGet[1] = TestChain.Alphabet.IndexOf((ValueString)"a");
-            toGet[2] = TestChain.Alphabet.IndexOf((ValueString)"c");
+            toGet[0] = testChain.Alphabet.IndexOf((ValueString)"a");
+            toGet[1] = testChain.Alphabet.IndexOf((ValueString)"a");
+            toGet[2] = testChain.Alphabet.IndexOf((ValueString)"c");
             Assert.AreEqual(2 / (double)3, pMatrix.FrequencyFromObject(toGet));
 
-            toGet[0] = TestChain.Alphabet.IndexOf((ValueString)"a");
-            toGet[1] = TestChain.Alphabet.IndexOf((ValueString)"a");
-            toGet[2] = TestChain.Alphabet.IndexOf((ValueString)"d");
+            toGet[0] = testChain.Alphabet.IndexOf((ValueString)"a");
+            toGet[1] = testChain.Alphabet.IndexOf((ValueString)"a");
+            toGet[2] = testChain.Alphabet.IndexOf((ValueString)"d");
             Assert.AreEqual(1 / (double)3, pMatrix.FrequencyFromObject(toGet));
 
-            toGet[0] = TestChain.Alphabet.IndexOf((ValueString)"a");
-            toGet[1] = TestChain.Alphabet.IndexOf((ValueString)"c");
-            toGet[2] = TestChain.Alphabet.IndexOf((ValueString)"a");
+            toGet[0] = testChain.Alphabet.IndexOf((ValueString)"a");
+            toGet[1] = testChain.Alphabet.IndexOf((ValueString)"c");
+            toGet[2] = testChain.Alphabet.IndexOf((ValueString)"a");
             Assert.AreEqual(0.5, pMatrix.FrequencyFromObject(toGet));
 
-            toGet[0] = TestChain.Alphabet.IndexOf((ValueString)"a");
-            toGet[1] = TestChain.Alphabet.IndexOf((ValueString)"c");
-            toGet[2] = TestChain.Alphabet.IndexOf((ValueString)"b");
+            toGet[0] = testChain.Alphabet.IndexOf((ValueString)"a");
+            toGet[1] = testChain.Alphabet.IndexOf((ValueString)"c");
+            toGet[2] = testChain.Alphabet.IndexOf((ValueString)"b");
             Assert.AreEqual(0.5, pMatrix.FrequencyFromObject(toGet));
 
-            toGet[0] = TestChain.Alphabet.IndexOf((ValueString)"a");
-            toGet[1] = TestChain.Alphabet.IndexOf((ValueString)"d");
-            toGet[2] = TestChain.Alphabet.IndexOf((ValueString)"b");
+            toGet[0] = testChain.Alphabet.IndexOf((ValueString)"a");
+            toGet[1] = testChain.Alphabet.IndexOf((ValueString)"d");
+            toGet[2] = testChain.Alphabet.IndexOf((ValueString)"b");
             Assert.AreEqual(1, pMatrix.FrequencyFromObject(toGet));
 
-            toGet[0] = TestChain.Alphabet.IndexOf((ValueString)"a");
-            toGet[1] = TestChain.Alphabet.IndexOf((ValueString)"b");
-            toGet[2] = TestChain.Alphabet.IndexOf((ValueString)"b");
+            toGet[0] = testChain.Alphabet.IndexOf((ValueString)"a");
+            toGet[1] = testChain.Alphabet.IndexOf((ValueString)"b");
+            toGet[2] = testChain.Alphabet.IndexOf((ValueString)"b");
             Assert.AreEqual(0, pMatrix.FrequencyFromObject(toGet));
 
-            toGet[0] = TestChain.Alphabet.IndexOf((ValueString)"b");
-            toGet[1] = TestChain.Alphabet.IndexOf((ValueString)"a");
-            toGet[2] = TestChain.Alphabet.IndexOf((ValueString)"a");
+            toGet[0] = testChain.Alphabet.IndexOf((ValueString)"b");
+            toGet[1] = testChain.Alphabet.IndexOf((ValueString)"a");
+            toGet[2] = testChain.Alphabet.IndexOf((ValueString)"a");
             Assert.AreEqual(1, pMatrix.FrequencyFromObject(toGet));
 
-            toGet[0] = TestChain.Alphabet.IndexOf((ValueString)"b");
-            toGet[1] = TestChain.Alphabet.IndexOf((ValueString)"a");
-            toGet[2] = TestChain.Alphabet.IndexOf((ValueString)"c");
+            toGet[0] = testChain.Alphabet.IndexOf((ValueString)"b");
+            toGet[1] = testChain.Alphabet.IndexOf((ValueString)"a");
+            toGet[2] = testChain.Alphabet.IndexOf((ValueString)"c");
             Assert.AreEqual(0, pMatrix.FrequencyFromObject(toGet));
 
-            toGet[0] = TestChain.Alphabet.IndexOf((ValueString)"b");
-            toGet[1] = TestChain.Alphabet.IndexOf((ValueString)"b");
-            toGet[2] = TestChain.Alphabet.IndexOf((ValueString)"a");
+            toGet[0] = testChain.Alphabet.IndexOf((ValueString)"b");
+            toGet[1] = testChain.Alphabet.IndexOf((ValueString)"b");
+            toGet[2] = testChain.Alphabet.IndexOf((ValueString)"a");
             Assert.AreEqual(1, pMatrix.FrequencyFromObject(toGet));
 
-            toGet[0] = TestChain.Alphabet.IndexOf((ValueString)"b");
-            toGet[1] = TestChain.Alphabet.IndexOf((ValueString)"c");
-            toGet[2] = TestChain.Alphabet.IndexOf((ValueString)"b");
+            toGet[0] = testChain.Alphabet.IndexOf((ValueString)"b");
+            toGet[1] = testChain.Alphabet.IndexOf((ValueString)"c");
+            toGet[2] = testChain.Alphabet.IndexOf((ValueString)"b");
             Assert.AreEqual(0, pMatrix.FrequencyFromObject(toGet));
 
-            toGet[0] = TestChain.Alphabet.IndexOf((ValueString)"b");
-            toGet[1] = TestChain.Alphabet.IndexOf((ValueString)"d");
-            toGet[2] = TestChain.Alphabet.IndexOf((ValueString)"b");
+            toGet[0] = testChain.Alphabet.IndexOf((ValueString)"b");
+            toGet[1] = testChain.Alphabet.IndexOf((ValueString)"d");
+            toGet[2] = testChain.Alphabet.IndexOf((ValueString)"b");
             Assert.AreEqual(0, pMatrix.FrequencyFromObject(toGet));
 
-            toGet[0] = TestChain.Alphabet.IndexOf((ValueString)"b");
-            toGet[1] = TestChain.Alphabet.IndexOf((ValueString)"b");
-            toGet[2] = TestChain.Alphabet.IndexOf((ValueString)"b");
+            toGet[0] = testChain.Alphabet.IndexOf((ValueString)"b");
+            toGet[1] = testChain.Alphabet.IndexOf((ValueString)"b");
+            toGet[2] = testChain.Alphabet.IndexOf((ValueString)"b");
             Assert.AreEqual(0, pMatrix.FrequencyFromObject(toGet));
 
-            toGet[0] = TestChain.Alphabet.IndexOf((ValueString)"c");
-            toGet[1] = TestChain.Alphabet.IndexOf((ValueString)"a");
-            toGet[2] = TestChain.Alphabet.IndexOf((ValueString)"a");
+            toGet[0] = testChain.Alphabet.IndexOf((ValueString)"c");
+            toGet[1] = testChain.Alphabet.IndexOf((ValueString)"a");
+            toGet[2] = testChain.Alphabet.IndexOf((ValueString)"a");
             Assert.AreEqual(1, pMatrix.FrequencyFromObject(toGet));
 
-            toGet[0] = TestChain.Alphabet.IndexOf((ValueString)"c");
-            toGet[1] = TestChain.Alphabet.IndexOf((ValueString)"b");
-            toGet[2] = TestChain.Alphabet.IndexOf((ValueString)"b");
+            toGet[0] = testChain.Alphabet.IndexOf((ValueString)"c");
+            toGet[1] = testChain.Alphabet.IndexOf((ValueString)"b");
+            toGet[2] = testChain.Alphabet.IndexOf((ValueString)"b");
             Assert.AreEqual(1, pMatrix.FrequencyFromObject(toGet));
 
-            toGet[0] = TestChain.Alphabet.IndexOf((ValueString)"c");
-            toGet[1] = TestChain.Alphabet.IndexOf((ValueString)"b");
-            toGet[2] = TestChain.Alphabet.IndexOf((ValueString)"a");
+            toGet[0] = testChain.Alphabet.IndexOf((ValueString)"c");
+            toGet[1] = testChain.Alphabet.IndexOf((ValueString)"b");
+            toGet[2] = testChain.Alphabet.IndexOf((ValueString)"a");
             Assert.AreEqual(0, pMatrix.FrequencyFromObject(toGet));
 
-            toGet[0] = TestChain.Alphabet.IndexOf((ValueString)"c");
-            toGet[1] = TestChain.Alphabet.IndexOf((ValueString)"c");
-            toGet[2] = TestChain.Alphabet.IndexOf((ValueString)"b");
+            toGet[0] = testChain.Alphabet.IndexOf((ValueString)"c");
+            toGet[1] = testChain.Alphabet.IndexOf((ValueString)"c");
+            toGet[2] = testChain.Alphabet.IndexOf((ValueString)"b");
             Assert.AreEqual(0, pMatrix.FrequencyFromObject(toGet));
 
-            toGet[0] = TestChain.Alphabet.IndexOf((ValueString)"c");
-            toGet[1] = TestChain.Alphabet.IndexOf((ValueString)"d");
-            toGet[2] = TestChain.Alphabet.IndexOf((ValueString)"b");
+            toGet[0] = testChain.Alphabet.IndexOf((ValueString)"c");
+            toGet[1] = testChain.Alphabet.IndexOf((ValueString)"d");
+            toGet[2] = testChain.Alphabet.IndexOf((ValueString)"b");
             Assert.AreEqual(0, pMatrix.FrequencyFromObject(toGet));
 
-            toGet[0] = TestChain.Alphabet.IndexOf((ValueString)"c");
-            toGet[1] = TestChain.Alphabet.IndexOf((ValueString)"b");
-            toGet[2] = TestChain.Alphabet.IndexOf((ValueString)"c");
+            toGet[0] = testChain.Alphabet.IndexOf((ValueString)"c");
+            toGet[1] = testChain.Alphabet.IndexOf((ValueString)"b");
+            toGet[2] = testChain.Alphabet.IndexOf((ValueString)"c");
             Assert.AreEqual(0, pMatrix.FrequencyFromObject(toGet));
 
-            toGet[0] = TestChain.Alphabet.IndexOf((ValueString)"d");
-            toGet[1] = TestChain.Alphabet.IndexOf((ValueString)"b");
-            toGet[2] = TestChain.Alphabet.IndexOf((ValueString)"a");
+            toGet[0] = testChain.Alphabet.IndexOf((ValueString)"d");
+            toGet[1] = testChain.Alphabet.IndexOf((ValueString)"b");
+            toGet[2] = testChain.Alphabet.IndexOf((ValueString)"a");
             Assert.AreEqual(1, pMatrix.FrequencyFromObject(toGet));
 
-            toGet[0] = TestChain.Alphabet.IndexOf((ValueString)"d");
-            toGet[1] = TestChain.Alphabet.IndexOf((ValueString)"b");
-            toGet[2] = TestChain.Alphabet.IndexOf((ValueString)"b");
+            toGet[0] = testChain.Alphabet.IndexOf((ValueString)"d");
+            toGet[1] = testChain.Alphabet.IndexOf((ValueString)"b");
+            toGet[2] = testChain.Alphabet.IndexOf((ValueString)"b");
             Assert.AreEqual(0, pMatrix.FrequencyFromObject(toGet));
 
-            toGet[0] = TestChain.Alphabet.IndexOf((ValueString)"d");
-            toGet[1] = TestChain.Alphabet.IndexOf((ValueString)"a");
-            toGet[2] = TestChain.Alphabet.IndexOf((ValueString)"a");
+            toGet[0] = testChain.Alphabet.IndexOf((ValueString)"d");
+            toGet[1] = testChain.Alphabet.IndexOf((ValueString)"a");
+            toGet[2] = testChain.Alphabet.IndexOf((ValueString)"a");
             Assert.AreEqual(0, pMatrix.FrequencyFromObject(toGet));
 
-            toGet[0] = TestChain.Alphabet.IndexOf((ValueString)"d");
-            toGet[1] = TestChain.Alphabet.IndexOf((ValueString)"c");
-            toGet[2] = TestChain.Alphabet.IndexOf((ValueString)"b");
+            toGet[0] = testChain.Alphabet.IndexOf((ValueString)"d");
+            toGet[1] = testChain.Alphabet.IndexOf((ValueString)"c");
+            toGet[2] = testChain.Alphabet.IndexOf((ValueString)"b");
             Assert.AreEqual(0, pMatrix.FrequencyFromObject(toGet));
 
-            toGet[0] = TestChain.Alphabet.IndexOf((ValueString)"d");
-            toGet[1] = TestChain.Alphabet.IndexOf((ValueString)"d");
-            toGet[2] = TestChain.Alphabet.IndexOf((ValueString)"b");
+            toGet[0] = testChain.Alphabet.IndexOf((ValueString)"d");
+            toGet[1] = testChain.Alphabet.IndexOf((ValueString)"d");
+            toGet[2] = testChain.Alphabet.IndexOf((ValueString)"b");
             Assert.AreEqual(0, pMatrix.FrequencyFromObject(toGet));
 
-            toGet[0] = TestChain.Alphabet.IndexOf((ValueString)"d");
-            toGet[1] = TestChain.Alphabet.IndexOf((ValueString)"b");
-            toGet[2] = TestChain.Alphabet.IndexOf((ValueString)"b");
+            toGet[0] = testChain.Alphabet.IndexOf((ValueString)"d");
+            toGet[1] = testChain.Alphabet.IndexOf((ValueString)"b");
+            toGet[2] = testChain.Alphabet.IndexOf((ValueString)"b");
             Assert.AreEqual(0, pMatrix.FrequencyFromObject(toGet));
 
         }
@@ -645,22 +645,22 @@ namespace PhantomChainsTest.Classes.Statistics.MarkovChain
         ///</summary>
         [Test]
         [ExpectedException(typeof (ArgumentOutOfRangeException))]
-        public void ILargerNTest()
+        public void LargerNTest()
         {
-            alph.Add(a);
-            alph.Add(b);
-            alph.Add(c);
-            alph.Add(d);
+            alphabet.Add(a);
+            alphabet.Add(b);
+            alphabet.Add(c);
+            alphabet.Add(d);
 
             ch = new BaseChain(2);
             ch.Add(f, 0);
             ch.Add(c, 1);
 
-            matr = new Matrix(alph.Power, 2);
-            int[] array = new int[ch.Length];
-            array[0] = alph.IndexOf(ch[0]);
-            array[1] = alph.IndexOf(ch[1]);
-            matr.FrequencyFromObject(array);
+            matrix = new Matrix(alphabet.Power, 2);
+            var array = new int[ch.Length];
+            array[0] = alphabet.IndexOf(ch[0]);
+            array[1] = alphabet.IndexOf(ch[1]);
+            matrix.FrequencyFromObject(array);
         }
     }
 }

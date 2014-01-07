@@ -62,12 +62,12 @@ namespace PhantomChainsTest.Classes.Statistics.MarkovChain
             IGenerator generator = new MockGenerator();
             // Порядок цепи 2 
             // Значит что каждый элемент зависит от одного предудушего
-            int MarkovChainRang = 2;
+            const int markovChainRang = 2;
             // неоднородность 1 
             // следовательно допускаем имеется 2 модели для четных и нечетных позиций
-            int NoUniformRang = 0;
+            const int noUniformRang = 0;
             // Создаем марковскую модель передавая её ранг, неоднородность и генератор
-            MarkovChainNotUniformStatic<Chain, Chain> markovChain = new MarkovChainNotUniformStatic<Chain, Chain>(MarkovChainRang, NoUniformRang, generator);
+            var markovChain = new MarkovChainNotUniformStatic<Chain, Chain>(markovChainRang, noUniformRang, generator);
 
             // Длинна генерируемой цепи
             int Length = 30;
@@ -143,15 +143,15 @@ namespace PhantomChainsTest.Classes.Statistics.MarkovChain
             // следовательно допускаем имеется 2 модели для четных и нечетных позиций
             const int noUniformRang = 1;
             // Создаем марковскую модель передавая её ранг, неоднородность и генератор
-            MarkovChainNotUniformStatic<Chain, Chain> markovChain = new MarkovChainNotUniformStatic<Chain, Chain>(markovChainRang, noUniformRang, generator);
+            var markovChain = new MarkovChainNotUniformStatic<Chain, Chain>(markovChainRang, noUniformRang, generator);
 
             // Длинна генерируемой цепи
-            int Length = 12;
+            const int length = 12;
             // Обучаем цепь 
             // TeachingMethod.None значнт не какой предворительной обработки цепи не проводится
             markovChain.Teach(TestChain, TeachingMethod.None);
 
-            Chain temp = markovChain.Generate(Length);
+            Chain temp = markovChain.Generate(length);
 
             /**
              * Внутри неоднородной марковской цепи существует n однородных марковских цепей. n - порядок неоднородности цепи
@@ -213,7 +213,7 @@ namespace PhantomChainsTest.Classes.Statistics.MarkovChain
 
 
             // Цепь которую хотим получить
-            Chain result = new Chain(12);
+            var result = new Chain(12);
             result.Add((ValueString)"b", 0); // 1 цепь вероятность по первому уровню. выпало  0,77 Получаем b
             result.Add((ValueString)"a", 1); // 2 цепь вероятность по второму уровню. выпало  0.15 Получаем a
             result.Add((ValueString)"c", 2); // 1 цепь вероятность по второму уровню. выпало  0.96 Получаем с
@@ -271,7 +271,7 @@ namespace PhantomChainsTest.Classes.Statistics.MarkovChain
 
 
             // Цепь которую хотим получить
-            Chain resultTheory = new Chain(30);
+            var resultTheory = new Chain(30);
             resultTheory[0] = (ValueString)"a"; // "a" 0.77;
             resultTheory[1] = (ValueString)"a"; // "a" 0.15;
             resultTheory[2] = (ValueString)"b"; // "b" 0.96;
@@ -387,7 +387,7 @@ namespace PhantomChainsTest.Classes.Statistics.MarkovChain
 
 
             // Цепь которую хотим получить
-            Chain result = new Chain(12);
+            var result = new Chain(12);
             result.Add((ValueString)"b", 0); // 1 цепь вероятность по первому уровню. выпало  0,77 Получаем b
             result.Add((ValueString)"a", 1); // 2 цепь вероятность по второму уровню. выпало  0.15 Получаем a
             result.Add((ValueString)"c", 2); // 1 цепь вероятность по второму уровню. выпало  0.96 Получаем с

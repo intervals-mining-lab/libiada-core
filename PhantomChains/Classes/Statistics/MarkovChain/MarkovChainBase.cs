@@ -14,8 +14,8 @@ namespace PhantomChains.Classes.Statistics.MarkovChain
     ///<summary>
     /// Базовый класс для марковских цепей
     ///</summary>
-    public abstract class MarkovChainBase<ChainGenerated, ChainTeached> 
-        where ChainTeached: BaseChain, new() 
+    public abstract class MarkovChainBase<ChainGenerated, ChainTaught> 
+        where ChainTaught: BaseChain, new() 
         where ChainGenerated: BaseChain,new()
     {
         protected Alphabet alphabet;
@@ -85,14 +85,14 @@ namespace PhantomChains.Classes.Statistics.MarkovChain
             return result;
         }
 
-        protected virtual SpaceRebuilder<ChainTeached, ChainTeached> GetRebuilder(TeachingMethod method)
+        protected virtual SpaceRebuilder<ChainTaught, ChainTaught> GetRebuilder(TeachingMethod method)
         {
             switch(method)
             {
                 case TeachingMethod.None:
-                    return new NullRebuilder<ChainTeached, ChainTeached>();
+                    return new NullRebuilder<ChainTaught, ChainTaught>();
                 case TeachingMethod.Cycle:
-                    return new PsevdoCycleSpaceRebuilder<ChainTeached, ChainTeached>(Rank - 1);
+                    return new NullCycleSpaceRebuilder<ChainTaught, ChainTaught>(Rank - 1);
                 default:
                     throw new Exception();
             }
@@ -103,17 +103,17 @@ namespace PhantomChains.Classes.Statistics.MarkovChain
         ///</summary>
         ///<param name="chain">Цепь используемая при обучении</param>
         ///<param name="method">Метод предобработки цепи</param>
-        public virtual void Teach(ChainTeached chain, TeachingMethod method)
+        public virtual void Teach(ChainTaught chain, TeachingMethod method)
         {
-            MatrixBuilder builder = new MatrixBuilder();
-            IAbsoluteMatrix[] absMatrix = new IAbsoluteMatrix[UniformRank + 1];
+            var builder = new MatrixBuilder();
+            var absMatrix = new IAbsoluteMatrix[UniformRank + 1];
             alphabet = chain.Alphabet;
             for (int i = 0; i < UniformRank + 1; i++)
                 absMatrix[i] = (IAbsoluteMatrix)builder.Create(alphabet.Power, Rank);
-            SpaceRebuilder<ChainTeached, ChainTeached> rebuilder = GetRebuilder(method);
+            SpaceRebuilder<ChainTaught, ChainTaught> rebuilder = GetRebuilder(method);
             chain = rebuilder.Rebuild(chain);
 
-            IteratorStart<ChainGenerated, ChainTeached> it = new IteratorStart<ChainGenerated, ChainTeached>(chain, Rank, 1);
+            var it = new IteratorStart<ChainGenerated, ChainTaught>(chain, Rank, 1);
             it.Reset();
 
             int k = 0;

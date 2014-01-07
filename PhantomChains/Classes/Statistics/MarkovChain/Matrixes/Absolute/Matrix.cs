@@ -17,7 +17,7 @@ namespace PhantomChains.Classes.Statistics.MarkovChain.Matrixes.Absolute
         ///<returns>Веротяностая матрица</returns>
         public IProbabilityMatrix ProbabilityMatrix()
         {
-            ProbabilityMatrix temp = new ProbabilityMatrix(AlphabetPower, Rank);
+            var temp = new ProbabilityMatrix(alphabetPower, Rank);
             temp.Fill(this);
             return temp;
 
@@ -27,9 +27,9 @@ namespace PhantomChains.Classes.Statistics.MarkovChain.Matrixes.Absolute
         /// Конструктор
         ///</summary>
         ///<param name="alphabetPower">Алфавит для матрицы</param>
-        ///<param name="razmernost">Размерность матрицы</param>
-        public Matrix(int alphabetPower, int razmernost)
-            : base(alphabetPower, razmernost, new MatrixBuilder())
+        ///<param name="dimensionality">Размерность матрицы</param>
+        public Matrix(int alphabetPower, int dimensionality)
+            : base(alphabetPower, dimensionality, new MatrixBuilder())
         {
         }
 
