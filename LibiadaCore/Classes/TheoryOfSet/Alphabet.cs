@@ -84,7 +84,7 @@ namespace LibiadaCore.Classes.TheoryOfSet
         /// <returns>Копию алфавита</returns>
         public IBaseObject Clone()
         {
-            Alphabet result = new Alphabet {Vault = new List<IBaseObject>(Vault)};
+            var result = new Alphabet {Vault = new List<IBaseObject>(Vault)};
             return result;
         }
 
@@ -159,7 +159,7 @@ namespace LibiadaCore.Classes.TheoryOfSet
 
         public IBaseObject[] ToArray()
         {
-            List<IBaseObject> result = new List<IBaseObject>();
+            var result = new List<IBaseObject>();
 
             foreach (var vault in Vault)
             {
@@ -171,7 +171,7 @@ namespace LibiadaCore.Classes.TheoryOfSet
 
         public List<IBaseObject> ToList()
         {
-            List<IBaseObject> result = new List<IBaseObject>();
+            var result = new List<IBaseObject>();
 
             foreach (var vault in Vault)
             {

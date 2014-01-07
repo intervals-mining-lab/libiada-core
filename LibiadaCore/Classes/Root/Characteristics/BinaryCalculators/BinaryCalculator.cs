@@ -15,25 +15,25 @@ namespace LibiadaCore.Classes.Root.Characteristics.BinaryCalculators
         /// <param name="chain">Последовательность</param>
         /// <param name="firstElement">Первый элемент</param>
         /// <param name="secondElement">Второй элемент</param>
-        /// <param name="linkUp">Привязка</param>
+        /// <param name="link">Привязка</param>
         /// <returns>Значение характеристики</returns>
-        public abstract double Calculate(Chain chain, IBaseObject firstElement, IBaseObject secondElement, LinkUp linkUp);
+        public abstract double Calculate(Chain chain, IBaseObject firstElement, IBaseObject secondElement, Link link);
 
         /// <summary>
         /// Метод возвращает полную матрицу характеристик для всех пар элементов цепи.
         /// </summary>
         /// <param name="chain">Последовательность</param>
-        /// <param name="linkUp">Привязка</param>
+        /// <param name="link">Привязка</param>
         /// <returns>Квадратная матрица значений характеристики</returns>
-        public List<List<double>> Calculate(Chain chain, LinkUp linkUp)
+        public List<List<double>> Calculate(Chain chain, Link link)
         {
-            List<List<double>> result = new List<List<double>>();
+            var result = new List<List<double>>();
             for (int i = 0; i < chain.Alphabet.Power; i++)
             {
                 result.Add(new List<double>());
                 for (int j = 0; j < chain.Alphabet.Power; j++)
                 {
-                    result[i].Add(Calculate(chain, chain.Alphabet[i], chain.Alphabet[j], linkUp));
+                    result[i].Add(Calculate(chain, chain.Alphabet[i], chain.Alphabet[j], link));
                 }
             }
             return result;

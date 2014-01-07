@@ -28,7 +28,7 @@ namespace LibiadaCoreTest.Classes.Root.Characteristics.BinaryCalculators
         [TestCase(17, 0.1401, 0.0578)]
         public void NormalizedK1Test(int index, double firstValue, double secondValue)
         {
-            NormalizedPartialDependenceCoefficient calculator = new NormalizedPartialDependenceCoefficient();
+            var calculator = new NormalizedPartialDependenceCoefficient();
 
             CalculationTest(calculator, index, firstValue, secondValue);
         }
@@ -36,25 +36,23 @@ namespace LibiadaCoreTest.Classes.Root.Characteristics.BinaryCalculators
         [Test]
         public void GetNormalizedK1Test()
         {
-            NormalizedPartialDependenceCoefficient calculator = new NormalizedPartialDependenceCoefficient();
+            var calculator = new NormalizedPartialDependenceCoefficient();
 
-            List<List<double>> result;
-
-            result = calculator.Calculate(Chains[1], LinkUp.End);
+            List<List<double>> result = calculator.Calculate(Chains[1], Link.End);
 
             Assert.AreEqual(0, result[0][0]);
             Assert.AreEqual(0, result[0][1]);
             Assert.AreEqual(0, result[1][0]);
             Assert.AreEqual(0, result[1][1]);
 
-            result = calculator.Calculate(Chains[10], LinkUp.End);
+            result = calculator.Calculate(Chains[10], Link.End);
 
             Assert.AreEqual(0, result[0][0]);
             Assert.AreEqual(0.175, Math.Round(result[0][1], 3));
             Assert.AreEqual(0.086, Math.Round(result[1][0], 3));
             Assert.AreEqual(0, result[1][1]);
 
-            result = calculator.Calculate(Chains[18], LinkUp.End);
+            result = calculator.Calculate(Chains[18], Link.End);
 
             Assert.AreEqual(0, result[0][0]);
             Assert.AreEqual(0.1352, Math.Round(result[0][1], 4));

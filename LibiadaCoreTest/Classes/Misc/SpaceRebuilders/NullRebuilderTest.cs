@@ -28,11 +28,9 @@ namespace LibiadaCoreTest.Classes.Misc.SpaceRebuilders
         [Test]
         public void FromParentToChildTest()
         {
-            BaseChain Result;
-            
-            NullRebuilder<BaseChain, Chain> rebulder = new NullRebuilder<BaseChain, Chain>();
-            Result = rebulder.Rebuild(chain);
-            Assert.AreEqual(baseChain, Result);
+            var rebulder = new NullRebuilder<BaseChain, Chain>();
+            BaseChain result = rebulder.Rebuild(chain);
+            Assert.AreEqual(baseChain, result);
         }
 
         ///<summary>
@@ -42,11 +40,9 @@ namespace LibiadaCoreTest.Classes.Misc.SpaceRebuilders
         [Test]
         public void FromChildToParentTest()
         {
-            Chain Result;
-
-            NullRebuilder<Chain, BaseChain> rebulder = new NullRebuilder<Chain, BaseChain>();
-            Result = rebulder.Rebuild(baseChain);
-            Assert.AreEqual(chain, Result);
+            var rebulder = new NullRebuilder<Chain, BaseChain>();
+            Chain result = rebulder.Rebuild(baseChain);
+            Assert.AreEqual(chain, result);
         }
     }
 }

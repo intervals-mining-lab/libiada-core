@@ -9,15 +9,16 @@ namespace LibiadaCoreTest.Classes.Misc.Iterators
         [Test]
         public void CutRuleTest()
         {
-            int length = 12, step = 3;
-            FromFixStartCutRule rule = new FromFixStartCutRule(length, step);
+            const int length = 12;
+            const int step = 3;
+            var rule = new FromFixStartCutRule(length, step);
             CutRuleIterator iterator = rule.GetIterator(); //объект, который бегает по массиву
 
             for (int i = step; i <= length; i += step)
             {
                 iterator.Next();
-                Assert.AreEqual(0, iterator.GetStartPos());
-                Assert.AreEqual(i, iterator.GetStopPos());
+                Assert.AreEqual(0, iterator.GetStartPosition());
+                Assert.AreEqual(i, iterator.GetStopPosition());
             }
         }
     }

@@ -220,5 +220,17 @@ namespace LibiadaCore.Classes.Root.Characteristics
             }
             return null;
         }
+
+        public static ICalculator Create(CharacteristicsEnum type)
+        {
+            foreach (ICalculator calculator in List)
+            {
+                if (type == calculator.GetCharacteristicName())
+                {
+                    return calculator;
+                }
+            }
+            return null;
+        }
     }
 }

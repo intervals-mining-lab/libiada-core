@@ -12,24 +12,24 @@ namespace LibiadaCoreTest.Classes.Root.Characteristics.Calculators
             calc = new Depth();
         }
 
-        [TestCase(0, LinkUp.None, 1.585)]
-        [TestCase(0, LinkUp.Start, 3.585)]
-        [TestCase(0, LinkUp.End, 3.1699)]
-        [TestCase(0, LinkUp.Both, 5.1699)]
-        [TestCase(0, LinkUp.Cycle, 4.1699)]
-        public void CongenericCalculationTest(int index, LinkUp linkUp, double value)
+        [TestCase(0, Link.None, 1.585)]
+        [TestCase(0, Link.Start, 3.585)]
+        [TestCase(0, Link.End, 3.1699)]
+        [TestCase(0, Link.Both, 5.1699)]
+        [TestCase(0, Link.Cycle, 4.1699)]
+        public void CongenericCalculationTest(int index, Link link, double value)
         {
-            CongenericChainCharacteristicTest(index, linkUp, value);
+            CongenericChainCharacteristicTest(index, link, value);
         }
 
-        [TestCase(0, LinkUp.None, 7.1699)]
-        [TestCase(0, LinkUp.Start, 11.0768)]
-        [TestCase(0, LinkUp.End, 10.1699)]
-        [TestCase(0, LinkUp.Both, 14.0768)]
-        [TestCase(0, LinkUp.Cycle, 12.3399)]
-        public void CalculationTest(int index, LinkUp linkUp, double value)
+        [TestCase(0, Link.None, 7.1699)]
+        [TestCase(0, Link.Start, 11.0768)]
+        [TestCase(0, Link.End, 10.1699)]
+        [TestCase(0, Link.Both, 14.0768)]
+        [TestCase(0, Link.Cycle, 12.3399)]
+        public void CalculationTest(int index, Link link, double value)
         {
-            ChainCharacteristicTest(index, linkUp, value);
+            ChainCharacteristicTest(index, link, value);
         }
     }
 }

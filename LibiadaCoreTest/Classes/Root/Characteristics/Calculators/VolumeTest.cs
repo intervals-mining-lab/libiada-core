@@ -12,24 +12,24 @@ namespace LibiadaCoreTest.Classes.Root.Characteristics.Calculators
             calc = new Volume();
         }
 
-        [TestCase(0, LinkUp.None, 3)]
-        [TestCase(0, LinkUp.Start, 12)]
-        [TestCase(0, LinkUp.End, 9)]
-        [TestCase(0, LinkUp.Both, 36)]
-        [TestCase(0, LinkUp.Cycle, 18)]
-        public void CongenericCalculationTest(int index, LinkUp linkUp, double value)
+        [TestCase(0, Link.None, 3)]
+        [TestCase(0, Link.Start, 12)]
+        [TestCase(0, Link.End, 9)]
+        [TestCase(0, Link.Both, 36)]
+        [TestCase(0, Link.Cycle, 18)]
+        public void CongenericCalculationTest(int index, Link link, double value)
         {
-            CongenericChainCharacteristicTest(index, linkUp, value);
+            CongenericChainCharacteristicTest(index, link, value);
         }
 
-        [TestCase(0, LinkUp.None, 144)]
-        [TestCase(0, LinkUp.Start, 2160)]
-        [TestCase(0, LinkUp.End, 1152)]
-        [TestCase(0, LinkUp.Both, 17280)]
-        [TestCase(0, LinkUp.Cycle, 5184)]
-        public void CalculationTest(int index, LinkUp linkUp, double value)
+        [TestCase(0, Link.None, 144)]
+        [TestCase(0, Link.Start, 2160)]
+        [TestCase(0, Link.End, 1152)]
+        [TestCase(0, Link.Both, 17280)]
+        [TestCase(0, Link.Cycle, 5184)]
+        public void CalculationTest(int index, Link link, double value)
         {
-            ChainCharacteristicTest(index, linkUp, value);
+            ChainCharacteristicTest(index, link, value);
         }
     }
 }

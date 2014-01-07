@@ -10,15 +10,15 @@ namespace LibiadaCore.Classes.Root.Characteristics.Calculators
         private readonly AverageRemoteness averageRemoteness = new AverageRemoteness();
         private readonly AlphabetPower alphabetPower = new AlphabetPower();
 
-        public double Calculate(CongenericChain chain, LinkUp linkUp)
+        public double Calculate(CongenericChain chain, Link link)
         {
-            return averageRemoteness.Calculate(chain, linkUp);
+            return averageRemoteness.Calculate(chain, link);
         }
 
-        public double Calculate(Chain chain, LinkUp linkUp)
+        public double Calculate(Chain chain, Link link)
         {
-            double g = averageRemoteness.Calculate(chain, linkUp);
-            double hMax = Math.Log(alphabetPower.Calculate(chain, linkUp), 2);
+            double g = averageRemoteness.Calculate(chain, link);
+            double hMax = Math.Log(alphabetPower.Calculate(chain, link), 2);
             return g - hMax;
         }
 

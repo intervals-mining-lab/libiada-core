@@ -6,9 +6,9 @@ namespace LibiadaCore.Classes.Misc.Iterators
     ///<summary>
     /// »нтерфейс итератор по цепочке.
     ///</summary>
-    ///<typeparam name="ChainRetrun">“ип возвращаемой цепи (ѕотомок класса BaseChain и имеет непереметризированный конструктор)</typeparam>
-    ///<typeparam name="ChainToIterate">“ип цепи по которой перемещаетс€ итератор(ѕотомок класса BaseChain и имеет непереметризированный конструктор)</typeparam>
-    public interface IIterator<ChainRetrun, ChainToIterate> where ChainRetrun : BaseChain, new() where ChainToIterate: BaseChain,new ()
+    ///<typeparam name="ChainReturn">“ип возвращаемой цепи (ѕотомок класса BaseChain и имеет непараметризированный конструктор)</typeparam>
+    ///<typeparam name="ChainToIterate">“ип цепи по которой перемещаетс€ итератор(ѕотомок класса BaseChain и имеет непараметризированный конструктор)</typeparam>
+    public interface IIterator<ChainReturn, ChainToIterate> where ChainReturn : BaseChain, new() where ChainToIterate: BaseChain,new ()
     {
 
         ///<summary>
@@ -28,6 +28,6 @@ namespace LibiadaCore.Classes.Misc.Iterators
         /// ¬озвращает текущее значение итератора.
         ///</summary>
         ///<returns>“екущее значение итератора.</returns>
-        ChainRetrun Current();
+        ChainReturn Current();
     }
 }

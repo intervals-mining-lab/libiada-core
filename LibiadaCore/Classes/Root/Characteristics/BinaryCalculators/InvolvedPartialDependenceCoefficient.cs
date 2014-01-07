@@ -4,19 +4,19 @@ namespace LibiadaCore.Classes.Root.Characteristics.BinaryCalculators
 {
     public class InvolvedPartialDependenceCoefficient : BinaryCalculator
     {
-        public override double Calculate(Chain chain, IBaseObject firstElement, IBaseObject secondElement, LinkUp linkUp)
+        public override double Calculate(Chain chain, IBaseObject firstElement, IBaseObject secondElement, Link link)
         {
             if (firstElement.Equals(secondElement))
             {
                 return 0;
             }
-            Count count = new Count();
+            var count = new Count();
             CongenericChain firstElementChain = chain.CongenericChain(firstElement);
             CongenericChain secondElementChain = chain.CongenericChain(secondElement);
-            int firstElementCount = (int)count.Calculate(firstElementChain,linkUp);
-            int secondElementCount = (int)count.Calculate(secondElementChain, linkUp);
-            Redundancy redundancyCalculator = new Redundancy();
-            double redundancy = redundancyCalculator.Calculate(chain, firstElement, secondElement, linkUp);
+            int firstElementCount = (int)count.Calculate(firstElementChain,link);
+            int secondElementCount = (int)count.Calculate(secondElementChain, link);
+            var redundancyCalculator = new Redundancy();
+            double redundancy = redundancyCalculator.Calculate(chain, firstElement, secondElement, link);
             int pairs = chain.GetPairsCount(firstElement, secondElement);
             return redundancy * (2 * pairs) / (firstElementCount + secondElementCount);
         }

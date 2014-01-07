@@ -16,42 +16,42 @@ namespace LibiadaCoreTest.Classes.Root.Characteristics.Calculators
         [Test]
         public void CongenericCalculationTest()
         {
-            Depth depth = new Depth();
-            Length length = new Length();
-            double theory = depth.Calculate(CongenericChains[0], LinkUp.Start) /
-                        length.Calculate(CongenericChains[0], LinkUp.Both);
+            var depth = new Depth();
+            var length = new Length();
+            double theory = depth.Calculate(CongenericChains[0], Link.Start) /
+                        length.Calculate(CongenericChains[0], Link.Both);
 
-            CongenericChainCharacteristicTest(0, LinkUp.Start, theory);
+            CongenericChainCharacteristicTest(0, Link.Start, theory);
 
-            theory = depth.Calculate(CongenericChains[0], LinkUp.End) /
-                        length.Calculate(CongenericChains[0], LinkUp.Both);
+            theory = depth.Calculate(CongenericChains[0], Link.End) /
+                        length.Calculate(CongenericChains[0], Link.Both);
 
-            CongenericChainCharacteristicTest(0, LinkUp.End, theory);
+            CongenericChainCharacteristicTest(0, Link.End, theory);
 
-            theory = depth.Calculate(CongenericChains[0], LinkUp.Both) /
-                        length.Calculate(CongenericChains[0], LinkUp.Both);
+            theory = depth.Calculate(CongenericChains[0], Link.Both) /
+                        length.Calculate(CongenericChains[0], Link.Both);
 
-            CongenericChainCharacteristicTest(0, LinkUp.Both, theory);
+            CongenericChainCharacteristicTest(0, Link.Both, theory);
         }
 
         [Test]
         public void ChainCalculationTest()
         {
-            Depth depth = new Depth();
-            Length length = new Length();
+            var depth = new Depth();
+            var length = new Length();
 
-            double theory = depth.Calculate(Chains[0], LinkUp.Start) /
-                        length.Calculate(Chains[0], LinkUp.Both);
-            ChainCharacteristicTest(0, LinkUp.Start, theory);
+            double theory = depth.Calculate(Chains[0], Link.Start) /
+                        length.Calculate(Chains[0], Link.Both);
+            ChainCharacteristicTest(0, Link.Start, theory);
 
-            theory = depth.Calculate(Chains[0], LinkUp.End) /
-                        length.Calculate(Chains[0], LinkUp.Both);
-            ChainCharacteristicTest(0, LinkUp.End, theory);
+            theory = depth.Calculate(Chains[0], Link.End) /
+                        length.Calculate(Chains[0], Link.Both);
+            ChainCharacteristicTest(0, Link.End, theory);
 
-            theory = depth.Calculate(Chains[0], LinkUp.Both) /
-                        length.Calculate(Chains[0], LinkUp.Both);
+            theory = depth.Calculate(Chains[0], Link.Both) /
+                        length.Calculate(Chains[0], Link.Both);
 
-            ChainCharacteristicTest(0, LinkUp.Both, theory);
+            ChainCharacteristicTest(0, Link.Both, theory);
         }
     }
 }

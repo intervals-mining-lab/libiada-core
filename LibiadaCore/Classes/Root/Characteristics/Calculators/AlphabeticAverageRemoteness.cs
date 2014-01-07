@@ -6,7 +6,7 @@ namespace LibiadaCore.Classes.Root.Characteristics.Calculators
     {
         private readonly GeometricMean geometricMean = new GeometricMean();
 
-        public double Calculate(CongenericChain chain, LinkUp linkUp)
+        public double Calculate(CongenericChain chain, Link link)
         {
             throw new InvalidOperationException("Алфавитная удалённость вычисляется только для полных цепей.");
         }
@@ -14,17 +14,17 @@ namespace LibiadaCore.Classes.Root.Characteristics.Calculators
         ///<summary>
         ///</summary>
         ///<param name="chain"></param>
-        ///<param name="linkUp"></param>
+        ///<param name="link"></param>
         ///<returns></returns>
-        public double Calculate(Chain chain, LinkUp linkUp)
+        public double Calculate(Chain chain, Link link)
         {
             int alphabetPower = chain.Alphabet.Power;
-            return Math.Log(geometricMean.Calculate(chain, linkUp), alphabetPower);
+            return Math.Log(geometricMean.Calculate(chain, link), alphabetPower);
         }
 
         public CharacteristicsEnum GetCharacteristicName()
         {
-            return CharacteristicsEnum.AverangeRemoteness;
+            return CharacteristicsEnum.AlphabeticAverageRemoteness;
         }
     }
 }

@@ -150,7 +150,7 @@ namespace LibiadaCore.Classes.Root
 
             if (CongenericChains.Length != (alphabet.Power - 1))
             {
-                CongenericChain[] temp = new CongenericChain[alphabet.Power - 1];
+                var temp = new CongenericChain[alphabet.Power - 1];
                 for (int i = 0; i < CongenericChains.Length; i++)
                 {
                     temp[i] = CongenericChains[i];
@@ -169,7 +169,7 @@ namespace LibiadaCore.Classes.Root
         {
             if(DissimilarChains.Length > 0)
                 return;
-            List<int> counters = new List<int>();
+            var counters = new List<int>();
             for (int j = 0; j < Alphabet.Power; j++)
             {
                 counters.Add(0);
@@ -180,7 +180,7 @@ namespace LibiadaCore.Classes.Root
                 int element = ++counters[building[i]];
                 if(DissimilarChains.Length < element) 
                 {
-                    Chain[] temp = new Chain[element];
+                    var temp = new Chain[element];
                     for (int j = 0; j < DissimilarChains.Length; j++)
                     {
                         temp[j] = DissimilarChains[j];
@@ -266,7 +266,7 @@ namespace LibiadaCore.Classes.Root
 
         public int GetPairsCount(IBaseObject j, IBaseObject L)
         {
-            int jElementCount = (int)new Count().Calculate(CongenericChain(j), LinkUp.Start);
+            int jElementCount = (int)new Count().Calculate(CongenericChain(j), Link.Start);
             int pairs = 0;
             for (int i = 1; i <= jElementCount; i++)
             {
@@ -284,7 +284,7 @@ namespace LibiadaCore.Classes.Root
             IBaseObject element = alphabet[building[index]];
             ICalculator calc = new Count();
             CongenericChain tempCongenericChain = CongenericChain(element);
-            if ((int)calc.Calculate(tempCongenericChain, LinkUp.End) == 1)
+            if ((int)calc.Calculate(tempCongenericChain, Link.End) == 1)
             {
                 var temp = CongenericChains;
                 CongenericChains = new CongenericChain[temp.Length - 1];

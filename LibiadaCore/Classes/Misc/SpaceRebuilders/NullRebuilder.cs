@@ -11,16 +11,16 @@ namespace LibiadaCore.Classes.Misc.SpaceRebuilders
     {
         public override ChainTo Rebuild(ChainFrom from)
         {
-            ChainTo result = from.Clone() as ChainTo;
+            var result = from.Clone() as ChainTo;
             if (result != null)
             {
                 return result;
             }
             // TODO: Realize variant when we have Chain Rebuild(BaseChain A)
-            ChainTo tempChainTo = new ChainTo();
+            var tempChainTo = new ChainTo();
             tempChainTo.ClearAndSetNewLength(from.Length);
-            IteratorSimpleStart<ChainFrom> iteratorRead = new IteratorSimpleStart<ChainFrom>(from, 1);
-            IteratorWritableStart<ChainFrom, ChainTo> iteratorWrite = new IteratorWritableStart<ChainFrom, ChainTo>(tempChainTo);
+            var iteratorRead = new IteratorSimpleStart<ChainFrom>(from, 1);
+            var iteratorWrite = new IteratorWritableStart<ChainFrom, ChainTo>(tempChainTo);
             iteratorRead.Reset();
             iteratorWrite.Reset();
             iteratorRead.Next();

@@ -9,14 +9,14 @@ namespace LibiadaCore.Classes.Root.Characteristics.Calculators
         private readonly GeometricMean geometricMean = new GeometricMean();
         private readonly ArithmeticMean arithmeticMean = new ArithmeticMean();
 
-        public double Calculate(CongenericChain chain, LinkUp linkUp)
+        public double Calculate(CongenericChain chain, Link link)
         {
-            return geometricMean.Calculate(chain, linkUp)/arithmeticMean.Calculate(chain, linkUp);
+            return geometricMean.Calculate(chain, link)/arithmeticMean.Calculate(chain, link);
         }
 
-        public double Calculate(Chain chain, LinkUp linkUp)
+        public double Calculate(Chain chain, Link link)
         {
-            return geometricMean.Calculate(chain, linkUp)/arithmeticMean.Calculate(chain, linkUp);
+            return geometricMean.Calculate(chain, link)/arithmeticMean.Calculate(chain, link);
         }
 
         public CharacteristicsEnum GetCharacteristicName()

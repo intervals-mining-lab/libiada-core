@@ -19,7 +19,7 @@ namespace LibiadaCoreTest.Classes.Root.Characteristics.BinaryCalculators
         {
             get
             {
-                List<Chain> chains = new List<Chain>();
+                var chains = new List<Chain>();
 
                 //0
                 Chain chain = new Chain(10);

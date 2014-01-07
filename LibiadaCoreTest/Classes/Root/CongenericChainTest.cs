@@ -27,11 +27,11 @@ namespace LibiadaCoreTest.Classes.Root
         }
 
         [Test]
-        public void IndependenseMessageTest()
+        public void IndependenceMessageTest()
         {
             CongenericChain = new CongenericChain(10, message);
 
-            ValueChar newMessage = (ValueChar) CongenericChain.Element;
+            var newMessage = (ValueChar) CongenericChain.Element;
 
             Assert.AreNotSame(CongenericChain.Element, newMessage);
         }

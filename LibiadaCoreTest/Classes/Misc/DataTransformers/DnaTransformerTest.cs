@@ -7,12 +7,12 @@ using NUnit.Framework;
 namespace LibiadaCoreTest.Classes.Misc.DataTransformers
 {
     [TestFixture]
-    public class DnaTransformatorTest
+    public class DnaTransformerTest
     {
         [Test]
         public void SimpleEncodeTest()
         {
-            BaseChain input = new BaseChain("TTT");
+            var input = new BaseChain("TTT");
             BaseChain Out = DnaTransformer.Encode(input);
             Assert.AreEqual("F", Out[0].ToString());
         }
@@ -20,7 +20,7 @@ namespace LibiadaCoreTest.Classes.Misc.DataTransformers
         [Test]
         public void EncodeTest()
         {
-            BaseChain input = new BaseChain("TTTTTCTTATTGTCTTCCTCATCGTATTACTAATAGTGTTGCTGATGGCTTCTCCTACTGCCTCCCCCACCGCATCACCAACAGCGTCGCCGACGGATTATCATAATGACTACCACAACGAATAACAAAAAGAGTAGCAGAAGGGTTGTCGTAGTGGCTGCCGCAGCGGATGACGAAGAGGGTGGCGGAGGG");
+            var input = new BaseChain("TTTTTCTTATTGTCTTCCTCATCGTATTACTAATAGTGTTGCTGATGGCTTCTCCTACTGCCTCCCCCACCGCATCACCAACAGCGTCGCCGACGGATTATCATAATGACTACCACAACGAATAACAAAAAGAGTAGCAGAAGGGTTGTCGTAGTGGCTGCCGCAGCGGATGACGAAGAGGGTGGCGGAGGG");
             BaseChain Out = DnaTransformer.Encode(input);
             string temp = "FFLLSSSSYYXXCCXWLLLLPPPPHHQQRRRRIIIMTTTTNNKKSSRRVVVVAAAADDEEGGGG";
             for (int i = 0; i < temp.Length; i++)
@@ -32,18 +32,18 @@ namespace LibiadaCoreTest.Classes.Misc.DataTransformers
         [Test]
         public void SimpleDecodeTest()
         {
-            BaseChain input = new BaseChain("F");
+            var input = new BaseChain("F");
             BaseChain Out = DnaTransformer.Decode(input);
-            ValuePhantom mes = new ValuePhantom {new ValueString("TTT"), new ValueString("TTC")};
+            var mes = new ValuePhantom {new ValueString("TTT"), new ValueString("TTC")};
             Assert.IsTrue(mes.Equals(Out[0]));
         }
 
         [Test]
         public void DecodeTest()
         {
-            BaseChain input = new BaseChain("FLSYXCWPHQRIMTNKVADEG");
+            var input = new BaseChain("FLSYXCWPHQRIMTNKVADEG");
 
-            List<ValuePhantom> message = new List<ValuePhantom>()
+            var message = new List<ValuePhantom>()
                 {
                     new ValuePhantom {new ValueString("TTT"), new ValueString("TTC")},
 
@@ -153,7 +153,7 @@ namespace LibiadaCoreTest.Classes.Misc.DataTransformers
         [Test]
         public void EncodeTripletsTest()
         {
-            BaseChain input = new BaseChain("TTTTTCTTATTGTCTTCCTCATCGTATTACTAATAGTGTTGCTGATGGCTTCTCCTACTGCCTCCCCCACCGCATCACCAACAGCGTCGCCGACGGATTATCATAATGACTACCACAACGAATAACAAAAAGAGTAGCAGAAGGGTTGTCGTAGTGGCTGCCGCAGCGGATGACGAAGAGGGTGGCGGAGGG");
+            var input = new BaseChain("TTTTTCTTATTGTCTTCCTCATCGTATTACTAATAGTGTTGCTGATGGCTTCTCCTACTGCCTCCCCCACCGCATCACCAACAGCGTCGCCGACGGATTATCATAATGACTACCACAACGAATAACAAAAAGAGTAGCAGAAGGGTTGTCGTAGTGGCTGCCGCAGCGGATGACGAAGAGGGTGGCGGAGGG");
             
             BaseChain Out = DnaTransformer.EncodeTriplets(input);
 

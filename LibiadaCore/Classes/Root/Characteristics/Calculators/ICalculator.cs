@@ -10,18 +10,18 @@ namespace LibiadaCore.Classes.Root.Characteristics.Calculators
         /// для однородной цеочки.
         ///</summary>
         ///<param name="chain"></param>
-        ///<param name="linkUp"></param>
+        ///<param name="link"></param>
         ///<returns></returns>
-        double Calculate(CongenericChain chain, LinkUp linkUp);
+        double Calculate(CongenericChain chain, Link link);
 
         ///<summary>
         /// Вычисляет и возвращает значение характеристики 
         /// для полной неоднородной цеочки.
         ///</summary>
         ///<param name="chain"></param>
-        ///<param name="linkUp"></param>
+        ///<param name="link"></param>
         ///<returns></returns>
-        double Calculate(Chain chain, LinkUp linkUp);
+        double Calculate(Chain chain, Link link);
 
         ///<summary>
         /// Возвращает имя характеристики вычисляемой калькулятором

@@ -158,7 +158,7 @@ namespace LibiadaCore.Classes.Root
 
         public override string ToString()
         {
-            StringBuilder builder = new StringBuilder();
+            var builder = new StringBuilder();
 
             for (int i = 0; i < Length; i++)
             {
@@ -196,12 +196,12 @@ namespace LibiadaCore.Classes.Root
             return clone;
         }
 
-        protected void FillClone(BaseChain temp)
+        protected void FillClone(BaseChain clone)
         {
-            if (temp != null)
+            if (clone != null)
             {
-                temp.building = (int[])building.Clone();
-                temp.alphabet = (Alphabet)alphabet.Clone();
+                clone.building = (int[])building.Clone();
+                clone.alphabet = (Alphabet)alphabet.Clone();
             }
         }
 
@@ -232,7 +232,7 @@ namespace LibiadaCore.Classes.Root
             {
                 return false;
             }
-            BaseChain chainObject = (BaseChain)obj;
+            var chainObject = (BaseChain)obj;
             if (!alphabet.Equals((chainObject).alphabet))
             {
                 return false;

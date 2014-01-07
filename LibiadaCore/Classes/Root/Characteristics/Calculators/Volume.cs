@@ -8,7 +8,7 @@ namespace LibiadaCore.Classes.Root.Characteristics.Calculators
     ///</summary>
     public class Volume : ICalculator
     {
-        public double Calculate(CongenericChain chain, LinkUp linkUp)
+        public double Calculate(CongenericChain chain, Link link)
         {
             List<int> intervals = chain.Intervals;
             double result = 1;
@@ -17,17 +17,17 @@ namespace LibiadaCore.Classes.Root.Characteristics.Calculators
                 result =  result * intervals[i];
             }
 
-            switch (linkUp)
+            switch (link)
             {
-                case LinkUp.None:
+                case Link.None:
                     return result;
-                case LinkUp.Start:
+                case Link.Start:
                     return result * intervals[0];
-                case LinkUp.End:
+                case Link.End:
                     return result * intervals[intervals.Count - 1];
-                case LinkUp.Both:
+                case Link.Both:
                     return result * intervals[0] * intervals[intervals.Count - 1];
-                case LinkUp.Cycle:
+                case Link.Cycle:
                     return result*(intervals[0] + intervals[intervals.Count - 1] - 1);
                 default:
                     throw new Exception("Неизвестная привязка");
@@ -37,14 +37,14 @@ namespace LibiadaCore.Classes.Root.Characteristics.Calculators
         ///<summary>
         ///</summary>
         ///<param name="chain"></param>
-        ///<param name="linkUp"></param>
+        ///<param name="link"></param>
         ///<returns></returns>
-        public double Calculate(Chain chain, LinkUp linkUp)
+        public double Calculate(Chain chain, Link link)
         {
             double temp = 1;
             for (int i = 0; i < chain.Alphabet.Power; i++)
             {
-                temp = temp * Calculate(chain.CongenericChain(i), linkUp);
+                temp = temp * Calculate(chain.CongenericChain(i), link);
             }
             return temp;
         }

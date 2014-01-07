@@ -19,13 +19,13 @@ namespace LibiadaCoreTest.Classes.Root.Characteristics.Calculators
         {
             get
             {
-                List<Chain> chains = new List<Chain>();
+                var chains = new List<Chain>();
 
                 //b b a a c b a c c b
                 //_ _ a a _ _ a _ _ _
                 //b b _ _ _ b _ _ _ b
                 //_ _ _ _ c _ _ c c _
-                Chain chain = new Chain(10);
+                var chain = new Chain(10);
                 chain.Add(Elements["b"], 0);
                 chain.Add(Elements["b"], 1);
                 chain.Add(Elements["a"], 2);
@@ -46,15 +46,15 @@ namespace LibiadaCoreTest.Classes.Root.Characteristics.Calculators
         {
             get
             {
-                List<CongenericChain> CongenericChains = new List<CongenericChain>();
+                var congenericChains = new List<CongenericChain>();
                 // _ _ _ a a _ _ a _ _
-                CongenericChain uChain = new CongenericChain(10, Elements["a"]);
+                var uChain = new CongenericChain(10, Elements["a"]);
                 uChain.Add(Elements["a"], 3);
                 uChain.Add(Elements["a"], 4);
                 uChain.Add(Elements["a"], 7);
-                CongenericChains.Add(uChain);
+                congenericChains.Add(uChain);
 
-                return CongenericChains;
+                return congenericChains;
             }
         }
     }

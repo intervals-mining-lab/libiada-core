@@ -7,7 +7,7 @@ namespace LibiadaCoreTest.Classes.Root.SimpleTypes
     public class NullValueTest
     {
         [Test]
-        public void IncstanceNotNullTest()
+        public void InstanceNotNullTest()
         {
             Assert.IsNotNull(NullValue.Instance());
         }

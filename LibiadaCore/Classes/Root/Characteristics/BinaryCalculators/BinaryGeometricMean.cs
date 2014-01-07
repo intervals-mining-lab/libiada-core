@@ -12,18 +12,18 @@ namespace LibiadaCore.Classes.Root.Characteristics.BinaryCalculators
         /// <param name="chain">Цепочка</param>
         /// <param name="firstElement">Первый элемент</param>
         /// <param name="secondElement">Второй элемент</param>
-        /// <param name="linkUp">Привязка</param>
+        /// <param name="link">Привязка</param>
         /// <returns>Среднегеометрический интервал</returns>
-        public override double Calculate(Chain chain, IBaseObject firstElement, IBaseObject secondElement, LinkUp linkUp)
+        public override double Calculate(Chain chain, IBaseObject firstElement, IBaseObject secondElement, Link link)
         {
             //зависимость компонента от самого себя равна нулю
             if (firstElement.Equals(secondElement))
             {
                 return 0;
             }
-            Count count = new Count();
+            var count = new Count();
             //число вхождений первого компонента
-            int firstElementCount = (int)count.Calculate(chain.CongenericChain(firstElement), linkUp);
+            int firstElementCount = (int)count.Calculate(chain.CongenericChain(firstElement), link);
             //вычисляем логариф произведения интервалов между элементами
             double intervals = 0;
             for (int i = 1; i <= firstElementCount; i++)

@@ -9,15 +9,15 @@ namespace LibiadaCore.Classes.Root.Characteristics.Calculators
     {
         private readonly CutLength cutLength = new CutLength();
 
-        public double Calculate(CongenericChain chain, LinkUp linkUp)
+        public double Calculate(CongenericChain chain, Link link)
         {
-            return Math.Log(chain.Length - cutLength.Calculate(chain, linkUp) + 1, 2);
+            return Math.Log(chain.Length - cutLength.Calculate(chain, link) + 1, 2);
         }
 
-        public double Calculate(Chain chain, LinkUp linkUp)
+        public double Calculate(Chain chain, Link link)
         {
             
-            return Math.Log(chain.Length - cutLength.Calculate(chain, linkUp) + 1, 2);
+            return Math.Log(chain.Length - cutLength.Calculate(chain, link) + 1, 2);
         }
 
         public CharacteristicsEnum GetCharacteristicName()

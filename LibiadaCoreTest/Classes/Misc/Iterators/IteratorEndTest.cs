@@ -9,22 +9,22 @@ namespace LibiadaCoreTest.Classes.Misc.Iterators
     [TestFixture]
     public class IteratorEndTest
     {
-        private Chain ChainToIterate;
+        private Chain chainToIterate;
 
         [SetUp]
         public void Init()
         {
-            ChainToIterate = new Chain("121331212231");
+            chainToIterate = new Chain("121331212231");
         }
 
         [Test]
         public void ReadWindowModeTest()
         {
-            int length = 3;
-            int step = 1;
-            IteratorEnd<Chain, Chain> iterator = new IteratorEnd<Chain, Chain>(ChainToIterate, length, step);
+            const int length = 3;
+            const int step = 1;
+            var iterator = new IteratorEnd<Chain, Chain>(chainToIterate, length, step);
             // 12 - 3 + 1
-            List<Chain> message2 = new List<Chain>()
+            var message2 = new List<Chain>()
                 {
                     // 121331212|231|
                     new Chain("231"),
@@ -61,11 +61,11 @@ namespace LibiadaCoreTest.Classes.Misc.Iterators
         [Test]
         public void ReadBlockModeTest()
         {
-            int length = 3;
-            int step = 3;
-            IteratorEnd<Chain, Chain> iterator = new IteratorEnd<Chain, Chain>(ChainToIterate, length, step);
+            const int length = 3;
+            const int step = 3;
+            var iterator = new IteratorEnd<Chain, Chain>(chainToIterate, length, step);
 
-            List<Chain> message2 = new List<Chain>()
+            var message2 = new List<Chain>()
                 {
                     // 121331212|231|
                     new Chain("231"),

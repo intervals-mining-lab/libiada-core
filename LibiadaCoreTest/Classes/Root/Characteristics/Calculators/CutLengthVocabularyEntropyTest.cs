@@ -12,24 +12,24 @@ namespace LibiadaCoreTest.Classes.Root.Characteristics.Calculators
             calc = new CutLengthVocabularyEntropy();
         }
 
-        [TestCase(0, LinkUp.None, 2.8074)]
-        [TestCase(0, LinkUp.Start, 2.8074)]
-        [TestCase(0, LinkUp.End, 2.8074)]
-        [TestCase(0, LinkUp.Both, 2.8074)]
-        [TestCase(0, LinkUp.Cycle, 2.8074)]
-        public void CongenericCalculationTest(int index, LinkUp linkUp, double value)
+        [TestCase(0, Link.None, 2.8074)]
+        [TestCase(0, Link.Start, 2.8074)]
+        [TestCase(0, Link.End, 2.8074)]
+        [TestCase(0, Link.Both, 2.8074)]
+        [TestCase(0, Link.Cycle, 2.8074)]
+        public void CongenericCalculationTest(int index, Link link, double value)
         {
-            CongenericChainCharacteristicTest(index, linkUp, value);
+            CongenericChainCharacteristicTest(index, link, value);
         }
 
-        [TestCase(0, LinkUp.None, 3)]
-        [TestCase(0, LinkUp.Start, 3)]
-        [TestCase(0, LinkUp.End, 3)]
-        [TestCase(0, LinkUp.Both, 3)]
-        [TestCase(0, LinkUp.Cycle, 3)]
-        public void CalculationTest(int index, LinkUp linkUp, double value)
+        [TestCase(0, Link.None, 3)]
+        [TestCase(0, Link.Start, 3)]
+        [TestCase(0, Link.End, 3)]
+        [TestCase(0, Link.Both, 3)]
+        [TestCase(0, Link.Cycle, 3)]
+        public void CalculationTest(int index, Link link, double value)
         {
-            ChainCharacteristicTest(index, linkUp, value);
+            ChainCharacteristicTest(index, link, value);
         }
     }
 }

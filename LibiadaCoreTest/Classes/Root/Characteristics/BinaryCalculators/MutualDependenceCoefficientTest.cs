@@ -29,7 +29,7 @@ namespace LibiadaCoreTest.Classes.Root.Characteristics.BinaryCalculators
         [TestCase(19, 0)]
         public void K3Test(int index, double value)
         {
-            MutualDependenceCoefficient calculator = new MutualDependenceCoefficient();
+            var calculator = new MutualDependenceCoefficient();
 
             CalculationTest(calculator, index, value, value);
         }
@@ -37,25 +37,23 @@ namespace LibiadaCoreTest.Classes.Root.Characteristics.BinaryCalculators
         [Test]
         public void GetK3Test()
         {
-            MutualDependenceCoefficient calculator = new MutualDependenceCoefficient();
+            var calculator = new MutualDependenceCoefficient();
 
-            List<List<double>> result;
-
-            result = calculator.Calculate(Chains[1], LinkUp.End);
+            List<List<double>> result = calculator.Calculate(Chains[1], Link.End);
 
             Assert.AreEqual(0, result[0][0]);
             Assert.AreEqual(0, result[0][1]);
             Assert.AreEqual(0, result[1][0]);
             Assert.AreEqual(0, result[1][1]);
 
-            result = calculator.Calculate(Chains[10], LinkUp.End);
+            result = calculator.Calculate(Chains[10], Link.End);
 
             Assert.AreEqual(0, result[0][0]);
             Assert.AreEqual(0.497, Math.Round(result[0][1], 3));
             Assert.AreEqual(0.497, Math.Round(result[1][0], 3));
             Assert.AreEqual(0, result[1][1]);
 
-            result = calculator.Calculate(Chains[18], LinkUp.End);
+            result = calculator.Calculate(Chains[18], Link.End);
 
             Assert.AreEqual(0, result[0][0]);
             Assert.AreEqual(0.397, Math.Round(result[0][1], 3));

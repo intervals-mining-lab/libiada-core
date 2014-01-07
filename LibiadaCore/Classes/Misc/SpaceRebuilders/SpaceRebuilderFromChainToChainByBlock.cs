@@ -9,17 +9,17 @@ namespace LibiadaCore.Classes.Misc.SpaceRebuilders
     public class SpaceRebuilderFromChainToChainByBlock<TChainTo ,TChainFrom> : SpaceRebuilder<TChainTo, TChainFrom>
         where TChainTo : BaseChain, new() where TChainFrom : BaseChain, new()
     {
-        private readonly LinkUp Link;
+        private readonly Link Link;
         private readonly int blocksize;
 
         public override TChainTo Rebuild(TChainFrom from)
         {
-            TChainTo temp = new TChainTo();
+            var temp = new TChainTo();
             temp.ClearAndSetNewLength(from.Length / blocksize);
             IteratorBase<TChainTo, TChainFrom> iteratorFrom;
             IWritableIterator<TChainTo, TChainTo> iteratorTo;
 
-            if (Link != LinkUp.End)
+            if (Link != Link.End)
             {
                 iteratorFrom = new IteratorStart<TChainTo, TChainFrom>(from, blocksize, blocksize);
                 iteratorTo = new IteratorWritableStart<TChainTo, TChainTo>(temp);

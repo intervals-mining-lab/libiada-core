@@ -4,9 +4,9 @@ namespace LibiadaCore.Classes.Root.Characteristics.BinaryCalculators
 {
     public interface IBinaryCalculator
     {
-        double Calculate(Chain chain, IBaseObject firstElement, IBaseObject secondElement, LinkUp linkUp);
+        double Calculate(Chain chain, IBaseObject firstElement, IBaseObject secondElement, Link link);
 
-        List<List<double>> Calculate(Chain chain, LinkUp linkUp);
+        List<List<double>> Calculate(Chain chain, Link link);
 
         ///<summary>
         /// Возвращает имя характеристики вычисляемой калькулятором

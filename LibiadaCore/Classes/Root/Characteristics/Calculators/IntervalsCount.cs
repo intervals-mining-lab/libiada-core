@@ -14,34 +14,34 @@ namespace LibiadaCore.Classes.Root.Characteristics.Calculators
         /// Без привязки = количество элементов - 1
         /// </summary>
         /// <param name="chain"></param>
-        /// <param name="linkUp"></param>
+        /// <param name="link"></param>
         /// <returns></returns>
-        public double Calculate(CongenericChain chain, LinkUp linkUp)
+        public double Calculate(CongenericChain chain, Link link)
         {
             List<int> intervals = chain.Intervals;
-            switch (linkUp)
+            switch (link)
             {
-                case LinkUp.Start:
+                case Link.Start:
                     return intervals.Count - 1;
-                case LinkUp.End:
+                case Link.End:
                     return intervals.Count - 1;
-                case LinkUp.Both:
+                case Link.Both:
                     return intervals.Count;
-                case LinkUp.Cycle:
+                case Link.Cycle:
                     return intervals.Count - 1;
-                case LinkUp.None:
+                case Link.None:
                     return intervals.Count-2;
                 default:
                     throw new Exception("Неизвестная привязка");
             }
         }
 
-        public double Calculate(Chain chain, LinkUp linkUp)
+        public double Calculate(Chain chain, Link link)
         {
             int sum = 0;
             for (int i = 0; i < chain.Alphabet.Power; i++)
             {
-                sum += (int)Calculate(chain.CongenericChain(i), linkUp);
+                sum += (int)Calculate(chain.CongenericChain(i), link);
             }
             return sum;
         }

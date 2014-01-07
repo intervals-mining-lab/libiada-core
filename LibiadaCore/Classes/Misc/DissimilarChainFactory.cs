@@ -25,9 +25,9 @@ namespace LibiadaCore.Classes.Misc
         /// <returns>Разнородная цепочка</returns>
         public static Chain Create(BaseChain source)
         {
-            Chain result = new Chain(source.Length);
+            var result = new Chain(source.Length);
             Alphabet sourceAlphabet = source.Alphabet;
-            List<int> entries = new List<int>();
+            var entries = new List<int>();
             for (int j = 0; j < sourceAlphabet.Power; j++)
             {
                 entries.Add(0);

@@ -6,13 +6,13 @@ using NUnit.Framework;
 namespace LibiadaCoreTest.Classes.Misc.Iterators
 {
     [TestFixture]
-    public class DifCutterTest
+    public class DiffCutterTest
     {
         [Test]
-        public void DifTest()
+        public void DiffTest()
         {
             String s = "reegwvwvw";
-            FromFixStartCutRule rule = new FromFixStartCutRule(s.Length, 3);  //правило разбиения
+            var rule = new FromFixStartCutRule(s.Length, 3);  //правило разбиения
             List<String> cuts = DiffCutter.Cut(s, rule);  //метод разрубающий строчку
 
             Assert.AreEqual("ree", cuts[0]);        //проверяем правильность результата

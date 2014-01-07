@@ -25,7 +25,7 @@ namespace LibiadaCoreTest.Classes.Root.Characteristics.BinaryCalculators
         [TestCase(17, 0.6072, 0.5636)]
         public void ChainCalculationTest(int index, double firstValue, double secondValue)
         {
-            Redundancy calculator = new Redundancy();
+            var calculator = new Redundancy();
 
             CalculationTest(calculator, index, firstValue, secondValue);
         }

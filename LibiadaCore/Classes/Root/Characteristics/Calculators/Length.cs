@@ -5,12 +5,12 @@ namespace LibiadaCore.Classes.Root.Characteristics.Calculators
     ///</summary>
     public class Length : ICalculator
     {
-        public double Calculate(CongenericChain chain, LinkUp linkUp)
+        public double Calculate(CongenericChain chain, Link link)
         {
             return chain.Length;
         }
 
-        public double Calculate(Chain chain, LinkUp linkUp)
+        public double Calculate(Chain chain, Link link)
         {
             return chain.Length;
         }

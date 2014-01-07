@@ -24,17 +24,17 @@ namespace LibiadaCoreTest.Classes.Root.Characteristics.Calculators
             double pIntervalsCount = 3;
             double deltaG = Math.Pow(interval1 * interval2 * interval3, 1 / pIntervalsCount);
             double pAverageRemoteness = Math.Log(deltaG, 2);
-            CongenericChainCharacteristicTest(0, LinkUp.Start, pAverageRemoteness);
+            CongenericChainCharacteristicTest(0, Link.Start, pAverageRemoteness);
 
             pIntervalsCount = 3;
             deltaG = Math.Pow(interval2 * interval3 * interval4, 1 / pIntervalsCount);
             pAverageRemoteness = Math.Log(deltaG, 2);
-            CongenericChainCharacteristicTest(0, LinkUp.End, pAverageRemoteness);
+            CongenericChainCharacteristicTest(0, Link.End, pAverageRemoteness);
 
             pIntervalsCount = 4;
             deltaG = Math.Pow(interval1 * interval2 * interval3 * interval4, 1 / pIntervalsCount);
             pAverageRemoteness = Math.Log(deltaG, 2);
-            CongenericChainCharacteristicTest(0, LinkUp.Both, pAverageRemoteness);
+            CongenericChainCharacteristicTest(0, Link.Both, pAverageRemoteness);
         }
     }
 }

@@ -9,7 +9,7 @@ namespace LibiadaCoreTest.Classes.Root.Characteristics.BinaryCalculators
         [TestCase(0, 1.7321, 1)]
         public void SpatialDependenceTest(int index, double firstValue, double secondValue)
         {
-            BinaryGeometricMean calculator = new BinaryGeometricMean();
+            var calculator = new BinaryGeometricMean();
 
             CalculationTest(calculator, index, firstValue, secondValue);
         }

@@ -21,10 +21,10 @@ namespace LibiadaCoreTest.Classes.TheoryOfSet
         }
 
         [Test]
-        public void ConstrutorTest()
+        public void ConstructorTest()
         {
-            Alphabet a1 = new Alphabet();
-            Assert.IsNotNull(a1);
+            var alphabet = new Alphabet();
+            Assert.IsNotNull(alphabet);
         }
 
         [Test]
@@ -70,7 +70,7 @@ namespace LibiadaCoreTest.Classes.TheoryOfSet
         }
 
         [Test]
-        public void IndependStringTest()
+        public void IndependentStringTest()
         {
             AlBase.Add(new ValueString("2"));
             AlBase.Add(new ValueString("3"));

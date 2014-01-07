@@ -29,7 +29,7 @@ namespace LibiadaCore.Classes.Misc.SpaceRebuilders
             {
                 return (ChainTo)((BaseChain)from);
             }
-            ChainTo chainTo = new ChainTo();
+            var chainTo = new ChainTo();
             chainTo.ClearAndSetNewLength(from.Length + Level);
             for (int i = 0; i < from.Length; i++)
             {

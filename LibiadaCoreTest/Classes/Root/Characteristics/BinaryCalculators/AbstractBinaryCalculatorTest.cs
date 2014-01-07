@@ -19,8 +19,8 @@ namespace LibiadaCoreTest.Classes.Root.Characteristics.BinaryCalculators
 
         public void CalculationTest(BinaryCalculator calc, int index, double firstValue, double secondValue)
         {
-            double result1 = calc.Calculate(Chains[index], Elements["a"], Elements["b"], LinkUp.End);
-            double result2 = calc.Calculate(Chains[index], Elements["b"], Elements["a"], LinkUp.End);
+            double result1 = calc.Calculate(Chains[index], Elements["a"], Elements["b"], Link.End);
+            double result2 = calc.Calculate(Chains[index], Elements["b"], Elements["a"], Link.End);
             Assert.AreEqual(firstValue, result1, 0.0001);
             Assert.AreEqual(secondValue, result2, 0.0001);
         }

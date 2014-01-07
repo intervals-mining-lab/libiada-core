@@ -3,7 +3,7 @@ namespace LibiadaCore.Classes.Root
     ///<summary>
     /// Привязка инетрвалов
     ///</summary>
-    public enum LinkUp
+    public enum Link
     {
         ///<summary>
         /// Привязка к началу

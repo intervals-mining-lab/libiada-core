@@ -13,7 +13,7 @@ namespace LibiadaCore.Classes.Misc.SpaceRebuilders
     {
         public override ChainTo Rebuild(ChainFrom from)
         {
-            ChainTo resent = new ChainTo();
+            var resent = new ChainTo();
             resent.ClearAndSetNewLength(from.Length);
             for (int i = 0; i < from.Length; i++)
             {

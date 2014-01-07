@@ -10,9 +10,9 @@ namespace LibiadaCore.Classes.Root.Characteristics.Calculators
         /// иначе говоря количество элементов.
         /// </summary>
         /// <param name="chain"></param>
-        /// <param name="linkUp"></param>
+        /// <param name="link"></param>
         /// <returns></returns>
-        public double Calculate(CongenericChain chain, LinkUp linkUp)
+        public double Calculate(CongenericChain chain, Link link)
         {
             return chain.Intervals.Count - 1;
         }
@@ -21,14 +21,14 @@ namespace LibiadaCore.Classes.Root.Characteristics.Calculators
         /// Количество непустых позиций.
         /// </summary>
         /// <param name="chain"></param>
-        /// <param name="linkUp"></param>
+        /// <param name="link"></param>
         /// <returns></returns>
-        public double Calculate(Chain chain, LinkUp linkUp)
+        public double Calculate(Chain chain, Link link)
         {
             int count = 0;
             for (int i = 0; i < chain.Alphabet.Power; i++)
             {
-                count += (int)Calculate(chain.CongenericChain(i), linkUp);
+                count += (int)Calculate(chain.CongenericChain(i), link);
             }
             return count;
         }

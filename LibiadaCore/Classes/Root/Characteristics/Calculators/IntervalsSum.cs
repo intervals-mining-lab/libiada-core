@@ -12,9 +12,9 @@ namespace LibiadaCore.Classes.Root.Characteristics.Calculators
         /// Суммирует интервалы в соотвествии с привязкой
         /// </summary>
         /// <param name="chain"></param>
-        /// <param name="linkUp"></param>
+        /// <param name="link"></param>
         /// <returns></returns>
-        public double Calculate(CongenericChain chain, LinkUp linkUp)
+        public double Calculate(CongenericChain chain, Link link)
         {
             List<int> intervals = chain.Intervals;
             Int64 sum = 0;
@@ -22,17 +22,17 @@ namespace LibiadaCore.Classes.Root.Characteristics.Calculators
             {
                 sum += intervals[i];
             }
-            switch (linkUp)
+            switch (link)
             {
-                case LinkUp.Start:
+                case Link.Start:
                     return sum + intervals[0];
-                case LinkUp.End:
+                case Link.End:
                     return sum + intervals[intervals.Count - 1];
-                case LinkUp.Both:
+                case Link.Both:
                     return sum + intervals[0] + intervals[intervals.Count - 1];
-                case LinkUp.Cycle:
+                case Link.Cycle:
                     return sum + intervals[intervals.Count - 1] + intervals[0] - 1;
-                case LinkUp.None:
+                case Link.None:
                     return sum;
                 default: 
                     throw new Exception("неизвестная привязка");
@@ -43,14 +43,14 @@ namespace LibiadaCore.Classes.Root.Characteristics.Calculators
         /// Сумма всех интервалов однородных цепочек данной цепи
         /// </summary>
         /// <param name="chain"></param>
-        /// <param name="linkUp"></param>
+        /// <param name="link"></param>
         /// <returns></returns>
-        public double Calculate(Chain chain, LinkUp linkUp)
+        public double Calculate(Chain chain, Link link)
         {
             Int64 sum = 0;
             for (int i = 0; i < chain.Alphabet.Power; i++)
             {
-                sum += (Int64)Calculate(chain.CongenericChain(i), linkUp);
+                sum += (Int64)Calculate(chain.CongenericChain(i), link);
             }
             return sum;
         }

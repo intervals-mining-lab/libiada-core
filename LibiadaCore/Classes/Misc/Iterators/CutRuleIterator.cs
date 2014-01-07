@@ -22,12 +22,12 @@ namespace LibiadaCore.Classes.Misc.Iterators
             return (starts.Count() > i) && (stops.Count() > i);
         }
 
-        public int GetStartPos()
+        public int GetStartPosition()
         {
             return starts[i];
         }
 
-        public int GetStopPos()
+        public int GetStopPosition()
         {
             return stops[i];
         }

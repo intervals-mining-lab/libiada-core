@@ -20,7 +20,7 @@ namespace LibiadaCore.Classes.Root.Characteristics
         ///<summary>
         /// Удалённость.
         ///</summary>
-        AverangeRemoteness,
+        AverageRemoteness,
         ///<summary>
         /// Количество элементов.
         /// Для однородной цепи это количество 
@@ -61,7 +61,7 @@ namespace LibiadaCore.Classes.Root.Characteristics
         /// <summary>
         /// Вероятность (частота).
         /// </summary>
-        Propability,
+        Probability,
         ///<summary>
         /// Число описательных информаций.
         ///</summary>
@@ -77,7 +77,7 @@ namespace LibiadaCore.Classes.Root.Characteristics
         ///<summary>
         /// Глубина, приходящаяся на одно сообщение.
         ///</summary>
-        NomalizedDepth,
+        NormalizedDepth,
         ///<summary>
         /// Периодичность.
         ///</summary>
@@ -87,16 +87,20 @@ namespace LibiadaCore.Classes.Root.Characteristics
         ///</summary>
         GeometricMean,
         /// <summary>
-        /// Нормализованная удалённость
+        /// Нормализованная удалённость.
         /// </summary>
         NormalizedAverageRemoteness,
         /// <summary>
-        /// Средняя длина слова
+        /// Средняя длина слова.
         /// </summary>
         AverageWordLength,
         /// <summary>
-        /// Глубина в масштабе алфавита
+        /// Глубина в масштабе алфавита.
         /// </summary>
-        AlphabeticDepth
+        AlphabeticDepth,
+        /// <summary>
+        /// Удалённость в масштабе алфавита.
+        /// </summary>
+        AlphabeticAverageRemoteness
     }
 }

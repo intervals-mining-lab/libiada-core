@@ -28,7 +28,7 @@ namespace LibiadaCoreTest.Classes.Root.Characteristics.BinaryCalculators
         [TestCase(17, 0.6072, 0.3757)]
         public void K1Test(int index, double firstValue, double secondValue)
         {
-            PartialDependenceCoefficient calculator = new PartialDependenceCoefficient();
+            var calculator = new PartialDependenceCoefficient();
 
             CalculationTest(calculator, index, firstValue, secondValue);
         }
@@ -36,25 +36,23 @@ namespace LibiadaCoreTest.Classes.Root.Characteristics.BinaryCalculators
         [Test]
         public void GetK1Test()
         {
-            PartialDependenceCoefficient calculator = new PartialDependenceCoefficient();
+            var calculator = new PartialDependenceCoefficient();
 
-            List<List<double>> result;
-
-            result = calculator.Calculate(Chains[1], LinkUp.End);
+            List<List<double>> result = calculator.Calculate(Chains[1], Link.End);
 
             Assert.AreEqual(0, result[0][0]);
             Assert.AreEqual(0, result[0][1]);
             Assert.AreEqual(0, result[1][0]);
             Assert.AreEqual(0, result[1][1]);
 
-            result = calculator.Calculate(Chains[10], LinkUp.End);
+            result = calculator.Calculate(Chains[10], Link.End);
 
             Assert.AreEqual(0, result[0][0]);
             Assert.AreEqual(0.614, Math.Round(result[0][1], 3));
             Assert.AreEqual(0.402, Math.Round(result[1][0], 3));
             Assert.AreEqual(0, result[1][1]);
 
-            result = calculator.Calculate(Chains[18], LinkUp.End);
+            result = calculator.Calculate(Chains[18], Link.End);
 
             Assert.AreEqual(0, result[0][0]);
             Assert.AreEqual(0.4055, Math.Round(result[0][1], 4));

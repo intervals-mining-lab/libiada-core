@@ -10,11 +10,11 @@ namespace LibiadaCore.Classes.Root.Characteristics.Calculators
         private readonly Depth depthCalc = new Depth();
         private readonly IntervalsCount intervalsCount = new IntervalsCount();
 
-        public double Calculate(CongenericChain chain, LinkUp linkUp)
+        public double Calculate(CongenericChain chain, Link link)
         {
             //—читаем в логарифмическом масштабе, чтобы избежать переполнени€
-            double depth = depthCalc.Calculate(chain, linkUp);
-            double nj = intervalsCount.Calculate(chain,linkUp);
+            double depth = depthCalc.Calculate(chain, link);
+            double nj = intervalsCount.Calculate(chain,link);
             //возвращаемое значение делогарифмируем
             return Math.Pow(2, depth/nj);
         }
@@ -22,13 +22,13 @@ namespace LibiadaCore.Classes.Root.Characteristics.Calculators
         ///<summary>
         ///</summary>
         ///<param name="chain"></param>
-        ///<param name="linkUp"></param>
+        ///<param name="link"></param>
         ///<returns></returns>
-        public double Calculate(Chain chain, LinkUp linkUp)
+        public double Calculate(Chain chain, Link link)
         {
             //—читаем в логарифмическом масштабе, чтобы избежать переполнени€
-            double depth = depthCalc.Calculate(chain, linkUp);
-            double nj = intervalsCount.Calculate(chain, linkUp);
+            double depth = depthCalc.Calculate(chain, link);
+            double nj = intervalsCount.Calculate(chain, link);
             //возвращаемое значение делогарифмируем
             return Math.Pow(2, depth / nj);
 

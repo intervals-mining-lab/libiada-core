@@ -20,7 +20,7 @@ namespace LibiadaCoreTest.Classes.Root
         [Test]
         public void ConstructorTest()
         {
-            Chain chain = new Chain(100);
+            var chain = new Chain(100);
             Assert.AreEqual(100, chain.Length);
         }
 
@@ -39,7 +39,7 @@ namespace LibiadaCoreTest.Classes.Root
         }
 
         [Test]
-        public void GetbyThisTest()
+        public void GetByThisTest()
         {
             chainBase.Add(new ValueChar('1'), 0);
             Assert.AreEqual(((ValueChar) chainBase[0]), '1');
@@ -87,7 +87,7 @@ namespace LibiadaCoreTest.Classes.Root
         {
             chainBase = new BaseChain("123456789A");
 
-            BaseChain itsClone = (BaseChain) chainBase.Clone();
+            var itsClone = (BaseChain) chainBase.Clone();
             Assert.AreEqual(chainBase, itsClone);
             Assert.AreNotSame(chainBase, itsClone);
         }

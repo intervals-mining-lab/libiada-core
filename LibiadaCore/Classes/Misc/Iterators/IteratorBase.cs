@@ -81,7 +81,7 @@ namespace LibiadaCore.Classes.Misc.Iterators
                 return null;
             }
 
-            ChainReturn temp = new ChainReturn();
+            var temp = new ChainReturn();
             temp.ClearAndSetNewLength(Length);
 
             for (int i = 0; i < Length; i++)

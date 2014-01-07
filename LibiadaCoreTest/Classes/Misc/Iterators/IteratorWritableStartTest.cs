@@ -9,7 +9,7 @@ namespace LibiadaCoreTest.Classes.Misc.Iterators
     ///<summary>
     ///</summary>
     [TestFixture]
-    public class IteratorWritebleStartTest
+    public class IteratorWritableStartTest
     {
         private Chain chainToIterate;
 
@@ -26,7 +26,7 @@ namespace LibiadaCoreTest.Classes.Misc.Iterators
         [Test]
         public void WriteTest()
         {
-            List<ValueChar> messages = new List<ValueChar>(12)
+            var messages = new List<ValueChar>(12)
                 {
                     new ValueChar('1'), new ValueChar('2'), new ValueChar('1'),
                     new ValueChar('3'), new ValueChar('3'), new ValueChar('1'),
@@ -34,8 +34,8 @@ namespace LibiadaCoreTest.Classes.Misc.Iterators
                     new ValueChar('2'), new ValueChar('3'), new ValueChar('1')
                 };
 
-            Chain toWrite = new Chain(12);
-            IteratorWritableStart<Chain, Chain> iteratorWrite = new IteratorWritableStart<Chain, Chain>(toWrite);
+            var toWrite = new Chain(12);
+            var iteratorWrite = new IteratorWritableStart<Chain, Chain>(toWrite);
             int i = 0;
             while (iteratorWrite.Next())
             {

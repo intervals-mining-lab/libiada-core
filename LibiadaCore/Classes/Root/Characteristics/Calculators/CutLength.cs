@@ -8,12 +8,12 @@ namespace LibiadaCore.Classes.Root.Characteristics.Calculators
     ///</summary>
     public class CutLength : ICalculator
     {
-        public double Calculate(CongenericChain chain, LinkUp linkUp)
+        public double Calculate(CongenericChain chain, Link link)
         {
             return CutCommon(chain);
         }
 
-        public double Calculate(Chain chain, LinkUp linkUp)
+        public double Calculate(Chain chain, Link link)
         {
             return CutCommon(chain);
         }
@@ -29,7 +29,7 @@ namespace LibiadaCore.Classes.Root.Characteristics.Calculators
             while (i <= chain.Length)
             {
 
-                if (CheckRecoveryAvaliable(chain, i))
+                if (CheckRecoveryAvailable(chain, i))
                 {
                     return i;
                 }
@@ -38,10 +38,10 @@ namespace LibiadaCore.Classes.Root.Characteristics.Calculators
             return chain.Length;
         }
 
-        private bool CheckRecoveryAvaliable(BaseChain chain, int i)
+        private bool CheckRecoveryAvailable(BaseChain chain, int i)
         {
-            IteratorStart<BaseChain,BaseChain> iterator = new IteratorStart<BaseChain, BaseChain>(chain, i, 1);
-            Alphabet alphabet = new Alphabet();
+            var iterator = new IteratorStart<BaseChain, BaseChain>(chain, i, 1);
+            var alphabet = new Alphabet();
             while (iterator.Next())
             {
                 if (alphabet.Contains(iterator.Current()))

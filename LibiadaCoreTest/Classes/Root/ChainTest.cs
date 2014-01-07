@@ -20,11 +20,11 @@ namespace LibiadaCoreTest.Classes.Root
         [Test]
         public void SimularChainsGetTest()
         {
-            ValueChar messageA = new ValueChar('a');
-            ValueChar messageC = new ValueChar('c');
-            ValueChar messageG = new ValueChar('g');
-            ValueChar messageT = new ValueChar('t');
-            CongenericChain unifromChainA = new CongenericChain(10, messageA);
+            var messageA = new ValueChar('a');
+            var messageC = new ValueChar('c');
+            var messageG = new ValueChar('g');
+            var messageT = new ValueChar('t');
+            var congenericChainA = new CongenericChain(10, messageA);
 
             chain.Add(messageC, 0);
 
@@ -32,7 +32,7 @@ namespace LibiadaCoreTest.Classes.Root
 
             chain.Add(messageA, 2);
 
-            unifromChainA.Add(messageA, 2);
+            congenericChainA.Add(messageA, 2);
 
             chain.Add(messageC, 3);
 
@@ -46,20 +46,20 @@ namespace LibiadaCoreTest.Classes.Root
 
             chain.Add(messageA, 8);
 
-            unifromChainA.Add(messageA, 8);
+            congenericChainA.Add(messageA, 8);
 
             chain.Add(messageC, 9);
 
             BaseChain chainCreatedCongenericChain = chain.CongenericChain((IBaseObject)messageA);
 
-            Assert.AreEqual(unifromChainA, chainCreatedCongenericChain);
+            Assert.AreEqual(congenericChainA, chainCreatedCongenericChain);
         }
 
         [Test]
         public void IntervalsTest()
         {
             Chain temp = CalculationHelper.Chains[0];
-            List<List<int>> intervals = new List<List<int>>
+            var intervals = new List<List<int>>
                 {
                     new List<int> {1, 1, 4, 4, 1},
                     new List<int> {3, 1, 3, 4},
@@ -78,10 +78,10 @@ namespace LibiadaCoreTest.Classes.Root
         [Test]
         public void GetElementPositionTest()
         {
-            ValueChar messageA = new ValueChar('a');
-            ValueChar messageC = new ValueChar('c');
-            ValueChar messageG = new ValueChar('g');
-            ValueChar messageT = new ValueChar('t');
+            var messageA = new ValueChar('a');
+            var messageC = new ValueChar('c');
+            var messageG = new ValueChar('g');
+            var messageT = new ValueChar('t');
 
             chain.Add(messageC, 0);
             chain.Add(messageC, 1);
@@ -117,10 +117,10 @@ namespace LibiadaCoreTest.Classes.Root
         [Test]
         public void GetBinaryIntervalTest()
         {
-            ValueChar messageA = new ValueChar('a');
-            ValueChar messageC = new ValueChar('c');
-            ValueChar messageG = new ValueChar('g');
-            ValueChar messageT = new ValueChar('t');
+            var messageA = new ValueChar('a');
+            var messageC = new ValueChar('c');
+            var messageG = new ValueChar('g');
+            var messageT = new ValueChar('t');
 
             chain.Add(messageC, 0);
             chain.Add(messageC, 1);

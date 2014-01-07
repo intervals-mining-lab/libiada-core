@@ -19,9 +19,9 @@ namespace LibiadaCoreTest.Classes.Misc.SpaceRebuilders
         [Test]
         public void LevelOneTest()
         {
-            Chain cycleTestChainLevel1 = new Chain("adbaacbbaacaa");
+            var cycleTestChainLevel1 = new Chain("adbaacbbaacaa");
 
-            NullCycleSpaceRebuilder<Chain, Chain> rebulder = new NullCycleSpaceRebuilder<Chain, Chain>(1);
+            var rebulder = new NullCycleSpaceRebuilder<Chain, Chain>(1);
             Chain result = rebulder.Rebuild(testChain);
             Assert.AreEqual(cycleTestChainLevel1, result);
         }
@@ -29,9 +29,9 @@ namespace LibiadaCoreTest.Classes.Misc.SpaceRebuilders
         [Test]
         public void LevelFiveTest()
         {
-            Chain cycleTestChainLevel5 = new Chain("adbaacbbaacaadbaa");
+            var cycleTestChainLevel5 = new Chain("adbaacbbaacaadbaa");
 
-            NullCycleSpaceRebuilder<Chain, Chain> rebulder = new NullCycleSpaceRebuilder<Chain, Chain>(5);
+            var rebulder = new NullCycleSpaceRebuilder<Chain, Chain>(5);
             Chain result = rebulder.Rebuild(testChain);
             Assert.AreEqual(cycleTestChainLevel5, result);
         }

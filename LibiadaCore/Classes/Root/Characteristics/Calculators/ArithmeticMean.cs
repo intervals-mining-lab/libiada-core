@@ -10,14 +10,14 @@ namespace LibiadaCore.Classes.Root.Characteristics.Calculators
         /// вычисляется как сумма длин всех интервалов делёное на количество интервалов.
         /// </summary>
         /// <param name="chain"></param>
-        /// <param name="linkUp"></param>
+        /// <param name="link"></param>
         /// <returns></returns>
-        public double Calculate(CongenericChain chain, LinkUp linkUp)
+        public double Calculate(CongenericChain chain, Link link)
         {
-            IntervalsSum sumator = new IntervalsSum();
-            double sum = sumator.Calculate(chain, linkUp);
-            IntervalsCount counter = new IntervalsCount();
-            double intervalsCount = counter.Calculate(chain,linkUp);
+            var adder = new IntervalsSum();
+            double sum = adder.Calculate(chain, link);
+            var counter = new IntervalsCount();
+            double intervalsCount = counter.Calculate(chain,link);
             return sum/intervalsCount;
         }
 
@@ -25,14 +25,14 @@ namespace LibiadaCore.Classes.Root.Characteristics.Calculators
         /// Вычисляется как среднее значение от среднего интервала однородных цепей
         ///</summary>
         ///<param name="chain"></param>
-        ///<param name="linkUp"></param>
+        ///<param name="link"></param>
         ///<returns></returns>
-        public double Calculate(Chain chain, LinkUp linkUp)
+        public double Calculate(Chain chain, Link link)
         {
-            IntervalsSum sumator = new IntervalsSum();
-            double sum = sumator.Calculate(chain, linkUp);
-            IntervalsCount counter = new IntervalsCount();
-            double intervalsCount = counter.Calculate(chain, linkUp);
+            var adder = new IntervalsSum();
+            double sum = adder.Calculate(chain, link);
+            var counter = new IntervalsCount();
+            double intervalsCount = counter.Calculate(chain, link);
             return sum / intervalsCount;
         }
 

@@ -20,7 +20,7 @@ namespace LibiadaCoreTest.Classes.Misc.Iterators
         [Test]
         public void WriteTest()
         {
-            List<ValueChar> messages = new List<ValueChar>()
+            var messages = new List<ValueChar>()
                 {
                     new ValueChar('1'), new ValueChar('3'), new ValueChar('2'),
                     new ValueChar('2'), new ValueChar('1'), new ValueChar('2'),
@@ -28,8 +28,8 @@ namespace LibiadaCoreTest.Classes.Misc.Iterators
                     new ValueChar('1'), new ValueChar('2'), new ValueChar('1')
                 };
             
-            Chain toWrite = new Chain(12);
-            IteratorWritableEnd<Chain, Chain> iteratorWrite = new IteratorWritableEnd<Chain, Chain>(toWrite);
+            var toWrite = new Chain(12);
+            var iteratorWrite = new IteratorWritableEnd<Chain, Chain>(toWrite);
             int i = 0;
             while (iteratorWrite.Next())
             {
