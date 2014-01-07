@@ -47,10 +47,10 @@ namespace Clusterizator.Classes.AlternativeClusterization.Calculators
         {
             double min = double.MaxValue; //текущее минимальное расстояние
 
-            int blockBegining = 0;
+            int blockBeginning = 0;
             for (int i = 0; i < element; i++)
             {
-                blockBegining += BlockLength(i, elementsPower); //ищём начало нужного нам блока
+                blockBeginning += BlockLength(i, elementsPower); //ищём начало нужного нам блока
             }
 
             int blockSum = 0; //сумма длин предыдущих блоков
@@ -68,7 +68,7 @@ namespace Clusterizator.Classes.AlternativeClusterization.Calculators
             }
 
             int ourBlockLength = BlockLength(element, elementsPower); //вычисляем длину блока
-            for (int k = blockBegining; k < blockBegining + ourBlockLength; k++) //перебор блока от начала до конца
+            for (int k = blockBeginning; k < blockBeginning + ourBlockLength; k++) //перебор блока от начала до конца
             {
                 if ((min > graph[k].Distance) && (graph[k].SecondElementIndex != exceptedElement) &&
                     (graph[k].FirstElementIndex != exceptedElement))

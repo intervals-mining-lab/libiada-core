@@ -8,8 +8,8 @@ namespace ClusterizatorTest.Classes.AlternativeClusterization
     [TestFixture]
     public class GraphManagerTest
     {
-        private List<Connection> ConnectionsList;
-        private List<GraphElement> ElementsList;
+        private List<Connection> connectionsList;
+        private List<GraphElement> elementsList;
 
         [SetUp]
         public void Initialize()
@@ -21,7 +21,7 @@ namespace ClusterizatorTest.Classes.AlternativeClusterization
             var hd5 = new HybridDictionary {{"x", 7}, {"y", 4}};
             var hd6 = new HybridDictionary {{"x", 8}, {"y", 3}};
 
-            ElementsList = new List<GraphElement>
+            elementsList = new List<GraphElement>
                 {
                     new GraphElement(hd1, "1"),
                     new GraphElement(hd2, "2"),
@@ -31,7 +31,7 @@ namespace ClusterizatorTest.Classes.AlternativeClusterization
                     new GraphElement(hd6, "6")
                 };
 
-            ConnectionsList = new List<Connection>
+            connectionsList = new List<Connection>
                 {
                     new Connection(0, 1),
                     new Connection(0, 2),
@@ -50,103 +50,103 @@ namespace ClusterizatorTest.Classes.AlternativeClusterization
                     new Connection(4, 5)
                 };
 
-            ConnectionsList[0].Connected = true;
-            ConnectionsList[14].Connected = true;
-            ElementsList[0].TaxonNumber = 1;
-            ElementsList[1].TaxonNumber = 1;
-            ElementsList[4].TaxonNumber = 2;
-            ElementsList[5].TaxonNumber = 2;
+            connectionsList[0].Connected = true;
+            connectionsList[14].Connected = true;
+            elementsList[0].TaxonNumber = 1;
+            elementsList[1].TaxonNumber = 1;
+            elementsList[4].TaxonNumber = 2;
+            elementsList[5].TaxonNumber = 2;
         }
 
         [Test]
         public void UnConnectedGraphsTest()
         {
-            var connector = new GraphManager(ConnectionsList, ElementsList);
+            var connector = new GraphManager(connectionsList, elementsList);
             connector.Connect(2, 3);
-            Assert.IsTrue(ConnectionsList[9].Connected);
-            Assert.AreEqual(3, ElementsList[2].TaxonNumber);
-            Assert.AreEqual(3, ElementsList[3].TaxonNumber);
+            Assert.IsTrue(connectionsList[9].Connected);
+            Assert.AreEqual(3, elementsList[2].TaxonNumber);
+            Assert.AreEqual(3, elementsList[3].TaxonNumber);
         }
 
         [Test]
         public void SearchConnectionTest()
         {
-            var connector = new GraphManager(ConnectionsList, ElementsList);
-            Assert.AreEqual(-1, connector.SearchConnection(ElementsList[0], ElementsList[0]), "Search fault falue");
-            Assert.AreEqual(-1, connector.SearchConnection(ElementsList[4], ElementsList[4]), "Search fault falue");
-            Assert.AreEqual(0, connector.SearchConnection(ElementsList[0], ElementsList[1]), "Search fault falue");
-            Assert.AreEqual(0, connector.SearchConnection(ElementsList[1], ElementsList[0]), "Search fault falue");
-            Assert.AreEqual(14, connector.SearchConnection(ElementsList[4], ElementsList[5]), "Search fault falue");
-            Assert.AreEqual(14, connector.SearchConnection(ElementsList[5], ElementsList[4]), "Search fault falue");
-            Assert.AreEqual(0, connector.SearchConnection(ElementsList[1], ElementsList[0]), "Search fault falue");
+            var connector = new GraphManager(connectionsList, elementsList);
+            Assert.AreEqual(-1, connector.SearchConnection(elementsList[0], elementsList[0]), "Search fault failure");
+            Assert.AreEqual(-1, connector.SearchConnection(elementsList[4], elementsList[4]), "Search fault failure");
+            Assert.AreEqual(0, connector.SearchConnection(elementsList[0], elementsList[1]), "Search fault failure");
+            Assert.AreEqual(0, connector.SearchConnection(elementsList[1], elementsList[0]), "Search fault failure");
+            Assert.AreEqual(14, connector.SearchConnection(elementsList[4], elementsList[5]), "Search fault failure");
+            Assert.AreEqual(14, connector.SearchConnection(elementsList[5], elementsList[4]), "Search fault failure");
+            Assert.AreEqual(0, connector.SearchConnection(elementsList[1], elementsList[0]), "Search fault failure");
         }
 
         [Test]
         public void OneConnectedGraphTest()
         {
-            var connector = new GraphManager(ConnectionsList, ElementsList);
+            var connector = new GraphManager(connectionsList, elementsList);
             connector.Connect(0, 2);
-            Assert.IsTrue(ConnectionsList[1].Connected);
-            Assert.AreEqual(1, ElementsList[0].TaxonNumber);
-            Assert.AreEqual(1, ElementsList[1].TaxonNumber);
-            Assert.AreEqual(1, ElementsList[2].TaxonNumber);
+            Assert.IsTrue(connectionsList[1].Connected);
+            Assert.AreEqual(1, elementsList[0].TaxonNumber);
+            Assert.AreEqual(1, elementsList[1].TaxonNumber);
+            Assert.AreEqual(1, elementsList[2].TaxonNumber);
         }
 
         [Test]
         public void BothConnectionGraphTest()
         {
-            var connector = new GraphManager(ConnectionsList, ElementsList);
+            var connector = new GraphManager(connectionsList, elementsList);
             connector.Connect(1, 5);
-            Assert.IsTrue(ConnectionsList[8].Connected);
-            Assert.AreEqual(1, ElementsList[5].TaxonNumber);
-            Assert.AreEqual(1, ElementsList[1].TaxonNumber);
-            Assert.AreEqual(1, ElementsList[4].TaxonNumber);
-            Assert.AreEqual(1, ElementsList[5].TaxonNumber);
+            Assert.IsTrue(connectionsList[8].Connected);
+            Assert.AreEqual(1, elementsList[5].TaxonNumber);
+            Assert.AreEqual(1, elementsList[1].TaxonNumber);
+            Assert.AreEqual(1, elementsList[4].TaxonNumber);
+            Assert.AreEqual(1, elementsList[5].TaxonNumber);
         }
 
         [Test]
         public void UnBothConnectionGraphTest()
         {
-            var connector = new GraphManager(ConnectionsList, ElementsList);
-            ConnectionsList[1].Connected = true;
-            ElementsList[2].TaxonNumber = 1;
+            var connector = new GraphManager(connectionsList, elementsList);
+            connectionsList[1].Connected = true;
+            elementsList[2].TaxonNumber = 1;
             connector.Connect(1, 2);
-            Assert.IsFalse(ConnectionsList[5].Connected);
-            Assert.AreEqual(1, ElementsList[0].TaxonNumber);
-            Assert.AreEqual(1, ElementsList[1].TaxonNumber);
-            Assert.AreEqual(1, ElementsList[2].TaxonNumber);
+            Assert.IsFalse(connectionsList[5].Connected);
+            Assert.AreEqual(1, elementsList[0].TaxonNumber);
+            Assert.AreEqual(1, elementsList[1].TaxonNumber);
+            Assert.AreEqual(1, elementsList[2].TaxonNumber);
         }
 
         [Test]
         public void CutGraphTest()
         {
-            var connector = new GraphManager(ConnectionsList, ElementsList);
-            connector.Cut(ElementsList[0], ElementsList[1]);
-            Assert.IsFalse(ConnectionsList[0].Connected);
-            Assert.AreEqual(3, ElementsList[0].TaxonNumber);
-            Assert.AreEqual(1, ElementsList[1].TaxonNumber);
-            Assert.AreEqual(2, ElementsList[4].TaxonNumber);
-            Assert.AreEqual(2, ElementsList[5].TaxonNumber);
+            var connector = new GraphManager(connectionsList, elementsList);
+            connector.Cut(elementsList[0], elementsList[1]);
+            Assert.IsFalse(connectionsList[0].Connected);
+            Assert.AreEqual(3, elementsList[0].TaxonNumber);
+            Assert.AreEqual(1, elementsList[1].TaxonNumber);
+            Assert.AreEqual(2, elementsList[4].TaxonNumber);
+            Assert.AreEqual(2, elementsList[5].TaxonNumber);
         }
 
         [Test]
         public void CutGraphTrioTest()
         {
-            var connector = new GraphManager(ConnectionsList, ElementsList);
-            ConnectionsList[1].Connected = true;
-            ElementsList[2].TaxonNumber = 1;
-            connector.Cut(ElementsList[0], ElementsList[2]);
-            Assert.IsFalse(ConnectionsList[1].Connected);
-            Assert.AreEqual(3, ElementsList[0].TaxonNumber);
-            Assert.AreEqual(3, ElementsList[1].TaxonNumber);
-            Assert.AreEqual(1, ElementsList[2].TaxonNumber);
+            var connector = new GraphManager(connectionsList, elementsList);
+            connectionsList[1].Connected = true;
+            elementsList[2].TaxonNumber = 1;
+            connector.Cut(elementsList[0], elementsList[2]);
+            Assert.IsFalse(connectionsList[1].Connected);
+            Assert.AreEqual(3, elementsList[0].TaxonNumber);
+            Assert.AreEqual(3, elementsList[1].TaxonNumber);
+            Assert.AreEqual(1, elementsList[2].TaxonNumber);
 
         }
 
         [Test]
         public void CloneTest()
         {
-            var connector = new GraphManager(ConnectionsList, ElementsList);
+            var connector = new GraphManager(connectionsList, elementsList);
             var connector2 = connector.Clone();
             Assert.IsInstanceOf(typeof (GraphManager), connector2);
             Assert.IsInstanceOf(typeof (Connection), connector2.Connections[0]);
@@ -159,64 +159,64 @@ namespace ClusterizatorTest.Classes.AlternativeClusterization
         [Test]
         public void GraphConnectionTest()
         {
-            ConnectionsList[0].Connected = false;
-            ConnectionsList[14].Connected = false;
+            connectionsList[0].Connected = false;
+            connectionsList[14].Connected = false;
 
-            for (int i = 0; i < ConnectionsList.Count; i++)
+            for (int i = 0; i < connectionsList.Count; i++)
             {
-                ElementsList[ConnectionsList[i].FirstElementIndex].TaxonNumber = 0;
-                ElementsList[ConnectionsList[i].SecondElementIndex].TaxonNumber = 0;
+                elementsList[connectionsList[i].FirstElementIndex].TaxonNumber = 0;
+                elementsList[connectionsList[i].SecondElementIndex].TaxonNumber = 0;
             }
 
             var lambdas = new[] {10, 20, 15, 21, 6, 11, 12, 27, 16, 9, 25, 26, 13, 21, 22};
 
             for (int i = 0; i < lambdas.Length; i++)
             {
-                ConnectionsList[i].λ = lambdas[i];
+                connectionsList[i].λ = lambdas[i];
             }
 
-            var connector = new GraphManager(ConnectionsList, ElementsList);
+            var connector = new GraphManager(connectionsList, elementsList);
             connector.ConnectGraph();
-            Assert.IsTrue(ConnectionsList[0].Connected);
-            Assert.IsTrue(ConnectionsList[4].Connected);
-            Assert.IsTrue(ConnectionsList[5].Connected);
-            Assert.IsTrue(ConnectionsList[9].Connected);
-            Assert.IsTrue(ConnectionsList[12].Connected);
-            Assert.IsFalse(ConnectionsList[1].Connected);
-            Assert.IsFalse(ConnectionsList[2].Connected);
-            Assert.IsFalse(ConnectionsList[3].Connected);
-            Assert.IsFalse(ConnectionsList[6].Connected);
-            Assert.IsFalse(ConnectionsList[7].Connected);
-            Assert.IsFalse(ConnectionsList[8].Connected);
-            Assert.IsFalse(ConnectionsList[10].Connected);
-            Assert.IsFalse(ConnectionsList[11].Connected);
-            Assert.IsFalse(ConnectionsList[13].Connected);
-            Assert.IsFalse(ConnectionsList[14].Connected);
+            Assert.IsTrue(connectionsList[0].Connected);
+            Assert.IsTrue(connectionsList[4].Connected);
+            Assert.IsTrue(connectionsList[5].Connected);
+            Assert.IsTrue(connectionsList[9].Connected);
+            Assert.IsTrue(connectionsList[12].Connected);
+            Assert.IsFalse(connectionsList[1].Connected);
+            Assert.IsFalse(connectionsList[2].Connected);
+            Assert.IsFalse(connectionsList[3].Connected);
+            Assert.IsFalse(connectionsList[6].Connected);
+            Assert.IsFalse(connectionsList[7].Connected);
+            Assert.IsFalse(connectionsList[8].Connected);
+            Assert.IsFalse(connectionsList[10].Connected);
+            Assert.IsFalse(connectionsList[11].Connected);
+            Assert.IsFalse(connectionsList[13].Connected);
+            Assert.IsFalse(connectionsList[14].Connected);
         }
 
         [Test]
         public void CutConnectionTest()
         {
-            var connector = new GraphManager(ConnectionsList, ElementsList);
+            var connector = new GraphManager(connectionsList, elementsList);
             connector.Cut(connector.Connections[0]);
-            Assert.IsFalse(ConnectionsList[0].Connected);
-            Assert.AreEqual(3, ElementsList[0].TaxonNumber);
-            Assert.AreEqual(1, ElementsList[1].TaxonNumber);
-            Assert.AreEqual(2, ElementsList[4].TaxonNumber);
-            Assert.AreEqual(2, ElementsList[5].TaxonNumber);
+            Assert.IsFalse(connectionsList[0].Connected);
+            Assert.AreEqual(3, elementsList[0].TaxonNumber);
+            Assert.AreEqual(1, elementsList[1].TaxonNumber);
+            Assert.AreEqual(2, elementsList[4].TaxonNumber);
+            Assert.AreEqual(2, elementsList[5].TaxonNumber);
         }
 
         [Test]
         public void CutConnectionTrioTest()
         {
-            var connector = new GraphManager(ConnectionsList, ElementsList);
-            ConnectionsList[1].Connected = true;
-            ElementsList[2].TaxonNumber = 1;
+            var connector = new GraphManager(connectionsList, elementsList);
+            connectionsList[1].Connected = true;
+            elementsList[2].TaxonNumber = 1;
             connector.Cut(connector.Connections[1]);
-            Assert.IsFalse(ConnectionsList[1].Connected);
-            Assert.AreEqual(3, ElementsList[0].TaxonNumber);
-            Assert.AreEqual(3, ElementsList[1].TaxonNumber);
-            Assert.AreEqual(1, ElementsList[2].TaxonNumber);
+            Assert.IsFalse(connectionsList[1].Connected);
+            Assert.AreEqual(3, elementsList[0].TaxonNumber);
+            Assert.AreEqual(3, elementsList[1].TaxonNumber);
+            Assert.AreEqual(1, elementsList[2].TaxonNumber);
         }
     }
 

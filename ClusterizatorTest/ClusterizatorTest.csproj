@@ -41,9 +41,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\libiada-core\LibiadaCore\bin\Debug\LibiadaCore.dll</HintPath>
     </Reference>
-    <Reference Include="nunit.framework, Version=2.6.2.12296, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
+    <Reference Include="nunit.framework, Version=2.6.3.13283, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\NUnit.2.6.2\lib\nunit.framework.dll</HintPath>
+      <HintPath>..\packages\NUnit.2.6.3\lib\nunit.framework.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -58,7 +58,7 @@
     <Compile Include="Classes\AlternativeClusterization\Calculators\HCalculatorSecondTest.cs" />
     <Compile Include="Classes\AlternativeClusterization\Calculators\LambdaCalculatorTest.cs" />
     <Compile Include="Classes\AlternativeClusterization\Calculators\LinearCalculatorTest.cs" />
-    <Compile Include="Classes\AlternativeClusterization\Calculators\NormalezedDistCalculatorTest.cs" />
+    <Compile Include="Classes\AlternativeClusterization\Calculators\NormalizedDistCalculatorTest.cs" />
     <Compile Include="Classes\AlternativeClusterization\Calculators\TauCalculatorTest.cs" />
     <Compile Include="Classes\AlternativeClusterization\Calculators\TauStarCalculatorTest.cs" />
     <Compile Include="Classes\AlternativeClusterization\AlternativeKRABTest.cs" />

@@ -8,7 +8,7 @@ using Clusterizator.Classes.AlternativeClusterization.Calculators;
 namespace ClusterizatorTest.Classes.AlternativeClusterization.Calculators
 {
     [TestFixture]
-    public class NormalezedDistCalculatorTest
+    public class NormalizedDistCalculatorTest
     {
         [Test]
         public void TwoPointsTest()

@@ -12,16 +12,16 @@ namespace Clusterizator.Classes.AlternativeClusterization
         private GraphManager manager;
         private GraphManager optimalDivide;
         private double optimalF;
-        private double powerWeight;
+        private readonly double powerWeight;
 
         /// <summary>
         /// Конструктор класса
         /// </summary>
         /// <param name="dataTable">Таблица с данными</param>
         /// <param name="powerWeight"> </param>
-        /// <param name="normalizedDistanseWeight"> </param>
-        /// <param name="distanseWeight"> </param>
-        public AlternativeKRAB(DataTable dataTable, double powerWeight, double normalizedDistanseWeight, double distanseWeight)
+        /// <param name="normalizedDistanceWeight"> </param>
+        /// <param name="distanceWeight"> </param>
+        public AlternativeKRAB(DataTable dataTable, double powerWeight, double normalizedDistanceWeight, double distanceWeight)
         {
             var connections = new List<Connection>(); //массив связей(пар вершин)
             var elements = new List<GraphElement>();//массив вершин
@@ -45,7 +45,7 @@ namespace Clusterizator.Classes.AlternativeClusterization
             }
 
             manager = new GraphManager(connections, elements);
-            CommonCalculator.CalculateCharacteristic(manager, normalizedDistanseWeight, distanseWeight); //вычисление расстояний
+            CommonCalculator.CalculateCharacteristic(manager, normalizedDistanceWeight, distanceWeight); //вычисление расстояний
             manager.ConnectGraph();
         }
 
