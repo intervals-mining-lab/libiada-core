@@ -172,7 +172,7 @@ namespace ClusterizatorTest.Classes.AlternativeClusterization
 
             for (int i = 0; i < lambdas.Length; i++)
             {
-                connectionsList[i].λ = lambdas[i];
+                connectionsList[i].lambda = lambdas[i];
             }
 
             var connector = new GraphManager(connectionsList, elementsList);

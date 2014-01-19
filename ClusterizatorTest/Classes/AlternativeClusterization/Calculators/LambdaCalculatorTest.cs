@@ -41,9 +41,9 @@ namespace ClusterizatorTest.Classes.AlternativeClusterization.Calculators
             calc.Calculate(gm);
             var lambdaCalc = new LambdaCalculator();
             lambdaCalc.Calculate(gm,2,1);
-            Assert.AreEqual(57, Math.Round(gm.Connections[0].λ * 1000));
-            Assert.AreEqual(678, Math.Round(gm.Connections[2].λ * 100));
-            Assert.AreEqual(18, gm.Connections[1].λ);
+            Assert.AreEqual(57, Math.Round(gm.Connections[0].lambda * 1000));
+            Assert.AreEqual(678, Math.Round(gm.Connections[2].lambda * 100));
+            Assert.AreEqual(18, gm.Connections[1].lambda);
         }
 
         [Test]
@@ -95,9 +95,9 @@ namespace ClusterizatorTest.Classes.AlternativeClusterization.Calculators
             calc.Calculate(gm);
             var lambdaCalc = new LambdaCalculator();
             lambdaCalc.Calculate(gm, 2, 1);
-            Assert.AreEqual(1625, Math.Round(gm.Connections[0].λ * 100));
-            Assert.AreEqual(9, Math.Round(gm.Connections[1].λ * 1000));
-            Assert.AreEqual(2612, Math.Round(gm.Connections[2].λ * 100));
+            Assert.AreEqual(1625, Math.Round(gm.Connections[0].lambda * 100));
+            Assert.AreEqual(9, Math.Round(gm.Connections[1].lambda * 1000));
+            Assert.AreEqual(2612, Math.Round(gm.Connections[2].lambda * 100));
         }
     }
 }

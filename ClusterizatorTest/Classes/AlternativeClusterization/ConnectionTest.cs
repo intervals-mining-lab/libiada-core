@@ -25,7 +25,7 @@ namespace ClusterizatorTest.Classes.AlternativeClusterization
                     NormalizedDistance = 0.5,
                     Tau = 3,
                     TauStar = 7,
-                    λ = 13
+                    lambda = 13
                 };
             var conn2 = conn1.Clone();
             Assert.AreEqual(conn1.Connected, conn2.Connected);
@@ -35,7 +35,7 @@ namespace ClusterizatorTest.Classes.AlternativeClusterization
             Assert.AreEqual(conn1.NormalizedDistance, conn2.NormalizedDistance);
             Assert.AreEqual(conn1.Tau, conn2.Tau);
             Assert.AreEqual(conn1.TauStar, conn2.TauStar);
-            Assert.AreEqual(conn1.λ, conn2.λ);
+            Assert.AreEqual(conn1.lambda, conn2.lambda);
             Assert.IsInstanceOf(typeof (Connection), conn2);
             Assert.AreNotSame(conn1,conn2);
         }
@@ -52,7 +52,7 @@ namespace ClusterizatorTest.Classes.AlternativeClusterization
                     NormalizedDistance = 0.1,
                     Tau = 44,
                     TauStar = 0,
-                    λ = 5
+                    lambda = 5
                 };
             var conn2 = conn1.Clone();
             Assert.AreEqual(conn1.Connected, conn2.Connected);
@@ -62,7 +62,7 @@ namespace ClusterizatorTest.Classes.AlternativeClusterization
             Assert.AreEqual(conn1.NormalizedDistance, conn2.NormalizedDistance);
             Assert.AreEqual(conn1.Tau, conn2.Tau);
             Assert.AreEqual(conn1.TauStar, conn2.TauStar);
-            Assert.AreEqual(conn1.λ, conn2.λ);
+            Assert.AreEqual(conn1.lambda, conn2.lambda);
             Assert.IsInstanceOf(typeof (Connection), conn2);
             Assert.AreNotSame(conn1, conn2);
         }
