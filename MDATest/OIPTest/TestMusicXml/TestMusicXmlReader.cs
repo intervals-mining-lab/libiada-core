@@ -16,7 +16,6 @@ namespace TestMusicXml.TestMDA.OIPTest
 		public void TestXMLReader1 ()
         {
             MusicXmlReader xr = new MusicXmlReader("..\\..\\OIPTest\\MDAexample7Liga.xml");
-
             Assert.IsNotNull(xr.MusicXmlDocument);
             Assert.AreEqual("MDAexample7Liga", xr.FileName);
 		}

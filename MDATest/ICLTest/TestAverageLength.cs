@@ -65,7 +65,7 @@ namespace MDATest.ICLTest
             fmotiv1.NoteList.Add(new Note(new Pitch(3, 'A', 0), new Duration(1, 4, false, 512), false, Tie.None));
             fmotiv1.NoteList.Add(new Note(new Pitch(3, 'E', 0), new Duration(1, 8, false, 512), false, Tie.None));
             fmotiv1.NoteList.Add(new Note(new Pitch(3, 'A', 0), new Duration(1, 8, false, 512), false, Tie.None));
-            fmotiv1.NoteList.Add(new Note(null, new Duration(1, 4, false, 512), false, Tie.None));
+            fmotiv1.NoteList.Add(new Note((Pitch)null, new Duration(1, 4, false, 512), false, Tie.None));
 
             fmotiv2.NoteList.Add(new Note(new Pitch(3, 'E', 0), new Duration(1, 4, false, 512), false, Tie.None));
             fmotiv2.NoteList.Add(new Note(new Pitch(3, 'A', 0), new Duration(1, 4, false, 512), false, Tie.None));

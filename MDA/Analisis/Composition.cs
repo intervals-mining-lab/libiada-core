@@ -294,10 +294,11 @@ namespace MDA.Analisis
             for(int i=0; i<PLex.GetCapacity();i++)
             {
                 // на время эксперимента комментарий
-                /*disp.Id_N.Add(new double[]
+                disp.Id_N.Add(new double[]
                 {((FMotiv) PLex.GetData()[i]).GetId(), ((FMotiv) PLex.GetData()[i]).GetOccurernce()});
-                */
-                disp.Id_N.Add(new double[] { ((FMotiv)PLex.GetRData()[i]).GetRemoteness(), ((FMotiv)PLex.GetRData()[i]).GetFrequency() });
+                
+                //disp.Id_N.Add(new double[] { ((FMotiv)PLex.GetRData()[i]).GetRemoteness(), ((FMotiv)PLex.GetRData()[i]).GetFrequency() });
+                //disp.Id_N.Add(new double[] { ((FMotiv)PLex.GetRData()[i]).GetRemoteness(), ((FMotiv)PLex.GetRData()[i]).GetFrequency() });
 
                 disp.Rank_FreqP.Add(new double[] { ((FMotiv)PLex.GetRData()[i]).GetRank(), ((FMotiv)PLex.GetRData()[i]).GetFrequency()});
 

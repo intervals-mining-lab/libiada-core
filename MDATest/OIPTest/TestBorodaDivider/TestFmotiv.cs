@@ -46,9 +46,9 @@ namespace MDATest.OIPTest.TestBorodaDivider
             // проверка работы метода, который возвращает копию объекта (Fmotiv), только без пауз.
             Fmotiv fmotiv = new Fmotiv(0,"ПМТ");
             fmotiv.NoteList.Add(new Note(new Pitch(1, 'A', 0), new Duration(1, 2, false, 480), false, Tie.None));
-            fmotiv.NoteList.Add(new Note(null, new Duration(1, 4, false, 480), false, Tie.None));
+            fmotiv.NoteList.Add(new Note((Pitch)null, new Duration(1, 4, false, 480), false, Tie.None));
             fmotiv.NoteList.Add(new Note(new Pitch(1, 'A', 0), new Duration(1, 2, false, 480), false, Tie.None));
-            fmotiv.NoteList.Add(new Note(null, new Duration(1, 4, false, 480), false, Tie.None));
+            fmotiv.NoteList.Add(new Note((Pitch)null, new Duration(1, 4, false, 480), false, Tie.None));
             fmotiv.NoteList.Add(new Note(new Pitch(1, 'A', 0), new Duration(1, 2, false, 480), false, Tie.None));
             Assert.AreEqual((fmotiv.PauseTreatment(ParamPauseTreatment.Ignore)).NoteList[0].Pitch[0].Step, 'A');
             Assert.AreEqual((fmotiv.PauseTreatment(ParamPauseTreatment.Ignore)).NoteList[1].Pitch[0].Step, 'A');
@@ -61,11 +61,11 @@ namespace MDATest.OIPTest.TestBorodaDivider
         {
             // проверка работы метода, который возвращает копию объекта (Fmotiv), только без пауз.
             Fmotiv fmotiv = new Fmotiv(0, "ПМТ");
-            fmotiv.NoteList.Add(new Note(null, new Duration(1, 4, false, 480), false, Tie.None));
-            fmotiv.NoteList.Add(new Note(null, new Duration(1, 4, false, 480), false, Tie.None));
+            fmotiv.NoteList.Add(new Note((Pitch)null, new Duration(1, 4, false, 480), false, Tie.None));
+            fmotiv.NoteList.Add(new Note((Pitch)null, new Duration(1, 4, false, 480), false, Tie.None));
             fmotiv.NoteList.Add(new Note(new Pitch(1, 'A', 0), new Duration(1, 2, false, 480), false, Tie.None));
             fmotiv.NoteList.Add(new Note(new Pitch(1, 'A', 0), new Duration(1, 2, false, 480), false, Tie.None));
-            fmotiv.NoteList.Add(new Note(null, new Duration(1, 4, false, 480), false, Tie.None));
+            fmotiv.NoteList.Add(new Note((Pitch)null, new Duration(1, 4, false, 480), false, Tie.None));
             fmotiv.NoteList.Add(new Note(new Pitch(1, 'A', 0), new Duration(1, 2, false, 480), false, Tie.None));
             Assert.AreEqual((fmotiv.PauseTreatment(ParamPauseTreatment.Ignore)).NoteList[0].Pitch[0].Step, 'A');
             Assert.AreEqual((fmotiv.PauseTreatment(ParamPauseTreatment.Ignore)).NoteList[1].Pitch[0].Step, 'A');
@@ -220,7 +220,7 @@ namespace MDATest.OIPTest.TestBorodaDivider
             fmotiv3.NoteList.Add(new Note((Pitch)null, new Duration(1, 4, false, 480), false, Tie.None, 3));
             fmotiv3.NoteList.Add(new Note(new Pitch(1, 'A', 2), new Duration(1, 2, false, 480), false, Tie.None, 4));
 
-            Assert.AreEqual(fmotiv1,fmotiv2);
+            Assert.IsTrue(fmotiv1.Equals(((Fmotiv)fmotiv2)));
             Assert.IsTrue(fmotiv1.Equals(((Fmotiv)fmotiv3)));
             Assert.IsTrue(fmotiv2.Equals(((Fmotiv)fmotiv3)));
             Assert.IsTrue(fmotiv3.Equals(((Fmotiv)fmotiv2)));

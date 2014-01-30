@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Text;
 using ChainAnalises.Classes.Root;
 
@@ -15,12 +16,46 @@ namespace MDA.OIP.ScoreModel
     public ScoreTrack(string name, List<UniformScoreTrack> uniformscoretracks) 
     {
         this.name = name; // присваиваем имя музыкального трека
+        this.uniformscoretracks = new List<UniformScoreTrack>();
         for (int i = 0; i < uniformscoretracks.Count; i++) // создаем список монотреков, по средствам клонирования каждого монотрека.
         {
-            this.uniformscoretracks = new List<UniformScoreTrack>();
             this.uniformscoretracks.Add((UniformScoreTrack)uniformscoretracks[i].Clone());
+            /*foreach (Measure measure in this.uniformscoretracks[this.uniformscoretracks.Count - 1].Measurelist)
+                foreach (Note note in measure.NoteList)
+                    note.SetInstrument(i);*/
         }
+
+        //////////////////////////////////////////////
+        /// ПОЛИФОНИЧЕСКАЯ ВСТАВКА
+        //////////////////////////////////////////////
+        UniformScoreTrack temp = (UniformScoreTrack)MergedTracks(this.uniformscoretracks).Clone();
+        this.uniformscoretracks.Clear();
+        this.uniformscoretracks.Add(temp);
     }
+
+    public UniformScoreTrack MergedTracks(List<UniformScoreTrack> tracks )
+    {
+        int j = 0;
+        UniformScoreTrack temp = (UniformScoreTrack)tracks[0].Clone(); // список склеенных дорожек
+        List<Measure> templist = new List<Measure>(temp.Measurelist); //список склеенных тактов
+        Measure tempm; // текущий склеиваемый такт
+        for (int i = 1; i < tracks.Count; i++)
+        {
+            if (templist.Count != tracks[i].Measurelist.Count)
+                throw new Exception("ScoreTrack: invalid measure count");
+            for (j = 0; j < temp.Measurelist.Count; j++ )
+            { // склеивание j-тых тактов
+                tempm = (Measure)tracks[i].Measurelist[j].Clone();
+                tempm.MergeMeasures(templist[j]);
+                templist.RemoveAt(j);
+                templist.Insert(j, tempm);
+            }
+        }
+
+        temp = new UniformScoreTrack(temp.Name, templist);
+        return temp;
+    }
+
     public string Name
     {
         get

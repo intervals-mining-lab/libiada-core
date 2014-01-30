@@ -25,6 +25,43 @@ namespace MDA.OIP.ScoreModel
             }
         }
 
+        public int MergeMeasures(Measure measure)
+        {
+            int k = 0;
+            List<Note> TempNoteList = new List<Note>(0);
+            // проведём цикл до тех пор, пока номер текущей ноты не превышает количество нот в обоих тактах
+            while ((k < this.notelist.Count) && (k < measure.notelist.Count))
+                {
+                    if (this.notelist[k].Duration.Equals(measure.notelist[k].Duration))
+                    {
+                        // ноты одинаковы по длине, можно просто склеить
+                        this.notelist[k].AddPitch(measure.notelist[k].Pitch);
+                    }
+                    else if (this.notelist[k].Duration.Value < measure.notelist[k].Duration.Value)
+                    {
+                        // нота из склеенного массива короче, значит нужно вторую разделить на две и склеить
+                        TempNoteList = new List<Note>(0);
+                        TempNoteList.AddRange(measure.notelist[k].SplitNote(this.notelist[k].Duration));
+                        measure.notelist.RemoveAt(k);
+                        measure.notelist.InsertRange(k, TempNoteList);
+                        this.notelist[k].AddPitch(measure.notelist[k].Pitch);
+                    }
+                    else
+                    {
+                        // нота из склеенного массива длиннее, значит надо её делить и клеить со второй
+                        TempNoteList = new List<Note>(0);
+                        TempNoteList.AddRange(this.notelist[k].SplitNote(measure.notelist[k].Duration));
+                        this.notelist.RemoveAt(k);
+                        this.notelist.InsertRange(k, TempNoteList);
+                        this.notelist[k].AddPitch(measure.notelist[k].Pitch);
+                    }
+                    k++;
+                }
+            // теоретически на этом моменте у нас все ноты должны быть обработаны
+            // хотя могло получиться, что в каком-то из тактов остались несклеенные ноты
+            return 0;
+        }
+
         public List<Note> NoteList
         {
             get

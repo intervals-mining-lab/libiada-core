@@ -14,7 +14,7 @@ namespace MDATest.OIPTest.TestBorodaDivider
     {
         private Note note = new Note(new Pitch(1, 'E', 0), new Duration(1, 4, false, 480), false, Tie.None);
         private Note anote = new Note(new Pitch(1, 'B', 0), new Duration(1, 2, false, 960), false, 0);
-        private Note bnote = new Note(null, new Duration(1, 4, false, 480), false, 0);
+        private Note bnote = new Note((Pitch)null, new Duration(1, 4, false, 480), false, 0);
         private Note сnote = new Note(new Pitch(1, 'A', 0), new Duration(1,4,2,3,false,200),true,0);
         private Note ccnote = new Note(new Pitch(1, 'A', 0), new Duration(1, 8, 2, 3, false, 200), true, 0);
         private Note сccnote = new Note(new Pitch(1, 'A', 0), new Duration(1, 8, 4, 7, false, 200), true, 0);

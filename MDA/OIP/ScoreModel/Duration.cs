@@ -110,6 +110,15 @@ namespace MDA.OIP.ScoreModel
             */
         }
 
+        public Duration SubDuration(Duration duration)
+        {
+            Duration temp = (Duration) duration.Clone();
+            temp.ticks = -temp.ticks;
+            temp.numerator = -temp.numerator;
+            return this.AddDuration(temp);
+        }
+
+
         public int Numerator
         {
             get { return numerator; }
@@ -121,7 +130,6 @@ namespace MDA.OIP.ScoreModel
         public int Ticks
         {
             get { return ticks; }
-            set { ticks = value; }
         }
 
         #region privateMethods

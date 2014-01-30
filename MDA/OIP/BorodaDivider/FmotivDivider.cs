@@ -75,7 +75,7 @@ namespace MDA.OIP.BorodaDivider
                                     {// удаляем все паузы в возвращаемом объекте (0) (паузы игнорируются)
 
                                         // если у очередной ноты нет лиги, то проверяем: если нота - не пауза, то выставляем флаг о следущей рассматриваемой ноте
-                                        if (FmotivBuffer.NoteList[FmotivBuffer.NoteList.Count - 1].Pitch.Count != 0)
+                                        if (FmotivBuffer.NoteList[FmotivBuffer.NoteList.Count - 1].Pitch.Count > 0)
                                         {
                                             Next = true;
                                         }
@@ -86,7 +86,7 @@ namespace MDA.OIP.BorodaDivider
                                                                         
                                         if (NoteChain.Count > 0)
                                         { //если следующая не паузы то переходим к анализу буфера
-                                            if ((NoteChain[0].Pitch.Count != 0)&&(WasNote))
+                                            if ((NoteChain[0].Pitch.Count > 0)&&(WasNote))
                                             {
                                                 Next = true;
                                             }
@@ -134,7 +134,7 @@ namespace MDA.OIP.BorodaDivider
                             {// удаляем все паузы в возвращаемом объекте (0) (паузы игнорируются)
 
                                 // если у очередной ноты нет лиги, то проверяем: если нота - не пауза, то выставляем флаг о следущей рассматриваемой ноте
-                                if (FmotivBuffer.NoteList[FmotivBuffer.NoteList.Count - 1].Pitch.Count != 0)
+                                if (FmotivBuffer.NoteList[FmotivBuffer.NoteList.Count - 1].Pitch.Count > 0)
                                 {
                                     Next = true;
                                 }
@@ -144,14 +144,14 @@ namespace MDA.OIP.BorodaDivider
                             {// длительность паузы прибавляется к предыдущей ноте, а она сама удаляется из текста (1) (пауза - звуковой след ноты)
 
                                 //проверяем: если нота - не пауза, то выставляем флаг о следущей рассматриваемой ноте
-                                if (FmotivBuffer.NoteList[FmotivBuffer.NoteList.Count - 1].Pitch.Count != 0)
+                                if (FmotivBuffer.NoteList[FmotivBuffer.NoteList.Count - 1].Pitch.Count > 0)
                                 {
                                     WasNote = true;
                                 }
 
                                 if (NoteChain.Count > 0)
                                 { //если следующая в н. тексте не пауза то переходим к анализу буфера
-                                    if ((NoteChain[0].Pitch.Count != 0) && (WasNote))
+                                    if ((NoteChain[0].Pitch.Count > 0) && (WasNote))
                                     {
                                         Next = true;
                                     }
@@ -504,7 +504,7 @@ namespace MDA.OIP.BorodaDivider
                                      break;
                                 }
                                 // для Note Trace приходится отслеживать чтобы все ноты и паузы за ними идущие собрались
-                                if((paramPause == ParamPauseTreatment.NoteTrace)&&(FmotivBuffer.NoteList[0].Pitch.Count!=0))
+                                if((paramPause == ParamPauseTreatment.NoteTrace)&&(FmotivBuffer.NoteList[0].Pitch.Count > 0))
                                 {
                                      break;
                                 }
@@ -573,7 +573,7 @@ namespace MDA.OIP.BorodaDivider
                                     break;
                                 }
                                 // для Note Trace приходится отслеживать чтобы все ноты и паузы за ними идущие собрались
-                                if ((paramPause == ParamPauseTreatment.NoteTrace) && (FmotivBuffer.NoteList[0].Pitch.Count != 0))
+                                if ((paramPause == ParamPauseTreatment.NoteTrace) && (FmotivBuffer.NoteList[0].Pitch.Count > 0))
                                 {
                                     break;
                                 }
@@ -689,7 +689,7 @@ namespace MDA.OIP.BorodaDivider
                                             break;
                                         }
                                         // для Note Trace приходится отслеживать чтобы все ноты и паузы за ними идущие собрались
-                                        if ((paramPause == ParamPauseTreatment.NoteTrace) && (FmotivBuffer.NoteList[0].Pitch.Count != 0))
+                                        if ((paramPause == ParamPauseTreatment.NoteTrace) && (FmotivBuffer.NoteList[0].Pitch.Count > 0))
                                         {
                                             break;
                                         }
@@ -762,7 +762,7 @@ namespace MDA.OIP.BorodaDivider
                                             break;
                                         }
                                         // для Note Trace приходится отслеживать чтобы все ноты и паузы за ними идущие собрались
-                                        if ((paramPause == ParamPauseTreatment.NoteTrace) && (FmotivBuffer.NoteList[0].Pitch.Count != 0))
+                                        if ((paramPause == ParamPauseTreatment.NoteTrace) && (FmotivBuffer.NoteList[0].Pitch.Count > 0))
                                         {
                                             break;
                                         }
@@ -857,7 +857,7 @@ namespace MDA.OIP.BorodaDivider
                                         break;
                                     }
                                     // для Note Trace приходится отслеживать чтобы все ноты и паузы за ними идущие собрались
-                                    if ((paramPause == ParamPauseTreatment.NoteTrace) && (FmotivBuffer.NoteList[0].Pitch.Count != 0))
+                                    if ((paramPause == ParamPauseTreatment.NoteTrace) && (FmotivBuffer.NoteList[0].Pitch.Count > 0))
                                     {
                                         break;
                                     }
@@ -965,7 +965,7 @@ namespace MDA.OIP.BorodaDivider
                                         break;
                                     }
                                     // для Note Trace приходится отслеживать чтобы все ноты и паузы за ними идущие собрались
-                                    if ((paramPause == ParamPauseTreatment.NoteTrace) && (FmotivBuffer.NoteList[0].Pitch.Count != 0))
+                                    if ((paramPause == ParamPauseTreatment.NoteTrace) && (FmotivBuffer.NoteList[0].Pitch.Count > 0))
                                     {
                                         break;
                                     }
@@ -1032,7 +1032,7 @@ namespace MDA.OIP.BorodaDivider
                                         break;
                                     }
                                     // для Note Trace приходится отслеживать чтобы все ноты и паузы за ними идущие собрались
-                                    if ((paramPause == ParamPauseTreatment.NoteTrace) && (FmotivBuffer.NoteList[0].Pitch.Count != 0))
+                                    if ((paramPause == ParamPauseTreatment.NoteTrace) && (FmotivBuffer.NoteList[0].Pitch.Count > 0))
                                     {
                                         break;
                                     }
@@ -1119,7 +1119,7 @@ namespace MDA.OIP.BorodaDivider
                                         break;
                                     }
                                     // для Note Trace приходится отслеживать чтобы все ноты и паузы за ними идущие собрались
-                                    if ((paramPause == ParamPauseTreatment.NoteTrace) && (FmotivBuffer.NoteList[0].Pitch.Count != 0))
+                                    if ((paramPause == ParamPauseTreatment.NoteTrace) && (FmotivBuffer.NoteList[0].Pitch.Count > 0))
                                     {
                                         break;
                                     }
@@ -1192,7 +1192,7 @@ namespace MDA.OIP.BorodaDivider
                                         break;
                                     }
                                     // для Note Trace приходится отслеживать чтобы все ноты и паузы за ними идущие собрались
-                                    if ((paramPause == ParamPauseTreatment.NoteTrace) && (FmotivBuffer.NoteList[0].Pitch.Count != 0))
+                                    if ((paramPause == ParamPauseTreatment.NoteTrace) && (FmotivBuffer.NoteList[0].Pitch.Count > 0))
                                     {
                                         break;
                                     }
@@ -1287,7 +1287,7 @@ namespace MDA.OIP.BorodaDivider
                                     break;
                                 }
                                 // для Note Trace приходится отслеживать чтобы все ноты и паузы за ними идущие собрались
-                                if ((paramPause == ParamPauseTreatment.NoteTrace) && (FmotivBuffer.NoteList[0].Pitch.Count != 0))
+                                if ((paramPause == ParamPauseTreatment.NoteTrace) && (FmotivBuffer.NoteList[0].Pitch.Count > 0))
                                 {
                                     break;
                                 }

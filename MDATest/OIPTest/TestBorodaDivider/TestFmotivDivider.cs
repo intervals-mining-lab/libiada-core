@@ -358,7 +358,7 @@ namespace MDATest.OIPTest.TestBorodaDivider
             // создание аналогов ф-мотивов, которые должны получиться, после разбиения
             // процедура определения одинаковых на данном этапе не производится
             Fmotiv fmotiv1 = new Fmotiv(0, "ПМТ");
-            fmotiv1.NoteList.Add(new Note(null, new Duration(1, 4, false, 512), false, Tie.None));
+            fmotiv1.NoteList.Add(new Note((Pitch)null, new Duration(1, 4, false, 512), false, Tie.None));
             fmotiv1.NoteList.Add(new Note(new Pitch(3, 'A', 0), new Duration(1, 8, false, 256), false, Tie.None));
             fmotiv1.NoteList.Add(new Note(new Pitch(3, 'B', 0), new Duration(1, 8, false, 256), false, Tie.None));
 
@@ -406,7 +406,7 @@ namespace MDATest.OIPTest.TestBorodaDivider
             // процедура определения одинаковых на данном этапе не производится
             Fmotiv fmotiv1 = new Fmotiv(0, "ПМТ");
             fmotiv1.NoteList.Add(new Note(new Pitch(3, 'A', 0), new Duration(1, 8, false, 256), false, Tie.None));
-            fmotiv1.NoteList.Add(new Note(null, new Duration(1, 8, false, 256), false, Tie.None));
+            fmotiv1.NoteList.Add(new Note((Pitch)null, new Duration(1, 8, false, 256), false, Tie.None));
             fmotiv1.NoteList.Add(new Note(new Pitch(3, 'B', 0), new Duration(1, 8, false, 256), false, Tie.None));
             fmotiv1.NoteList.Add(new Note(new Pitch(3, 'B', 0), new Duration(1, 8, false, 256), false, Tie.None));
 
@@ -452,7 +452,7 @@ namespace MDATest.OIPTest.TestBorodaDivider
             // процедура определения одинаковых на данном этапе не производится
             Fmotiv fmotiv1 = new Fmotiv(0, "ПМТ");
             fmotiv1.NoteList.Add(new Note(new Pitch(3, 'A', 0), new Duration(1, 8, false, 256), false, Tie.None));
-            fmotiv1.NoteList.Add(new Note(null, new Duration(1, 8, false, 256), false, Tie.None));
+            fmotiv1.NoteList.Add(new Note((Pitch)null, new Duration(1, 8, false, 256), false, Tie.None));
             Fmotiv fmotiv2 = new Fmotiv(1, "ПМТ");
             fmotiv2.NoteList.Add(new Note(new Pitch(3, 'B', 0), new Duration(1, 8, false, 256), false, Tie.None));
             fmotiv2.NoteList.Add(new Note(new Pitch(3, 'B', 0), new Duration(1, 8, false, 256), false, Tie.None));

@@ -47,7 +47,7 @@ namespace TestMusicXml.MDATest.OIPTest
             notes3.Add(new Note(new Pitch(3, 'A', 0), new Duration(1, 16, false, 256), false, Tie.None));
             notes3.Add(new Note(new Pitch(4, 'D', 0), new Duration(1, 8, true, 768), false, Tie.None));
             notes3.Add(new Note(new Pitch(4, 'C', 0), new Duration(1, 8, true, 768), false, Tie.None));
-            notes3.Add(new Note(null, new Duration(1, 8, false, 512), false, Tie.None)); // паузы, поэтому null вместо Pitch
+            notes3.Add(new Note((Pitch)null, new Duration(1, 8, false, 512), false, Tie.None)); // паузы, поэтому null вместо Pitch
             List<Note> notes4 = new List<Note>();
             notes4.Add(new Note(new Pitch(4, 'C', 0), new Duration(1, 16, false, 256), false, Tie.None));
             notes4.Add(new Note(new Pitch(3, 'A', 0), new Duration(1, 16, false, 256), false, Tie.None));
@@ -79,7 +79,7 @@ namespace TestMusicXml.MDATest.OIPTest
 
             Assert.AreEqual(xmlreader.FileName , Parser.ScoreModel.Name);
             Assert.AreEqual(Scoremodel.UniformScoreTracks[0].Measurelist[0].Attributes, Parser.ScoreModel.UniformScoreTracks[0].Measurelist[0].Attributes);
-            Assert.IsTrue(Scoremodel.UniformScoreTracks[0].Measurelist[0].NoteList[0].Equals(Parser.ScoreModel.UniformScoreTracks[0].Measurelist[0].NoteList[0]));
+            Assert.AreEqual(Scoremodel.UniformScoreTracks[0].Measurelist[0].NoteList[0], Parser.ScoreModel.UniformScoreTracks[0].Measurelist[0].NoteList[0]);
             Assert.AreEqual(Scoremodel.UniformScoreTracks[0].Measurelist[0], Parser.ScoreModel.UniformScoreTracks[0].Measurelist[0]);
             Assert.AreEqual(Scoremodel.UniformScoreTracks[0].Measurelist[1], Parser.ScoreModel.UniformScoreTracks[0].Measurelist[1]);
             Assert.AreEqual(Scoremodel.UniformScoreTracks[0].Measurelist[2], Parser.ScoreModel.UniformScoreTracks[0].Measurelist[2]);
@@ -87,6 +87,33 @@ namespace TestMusicXml.MDATest.OIPTest
             Assert.AreEqual(Scoremodel.UniformScoreTracks[0], Parser.ScoreModel.UniformScoreTracks[0]);
             Assert.AreEqual(Scoremodel, Parser.ScoreModel);
         }
+
+        [TestMethod]
+        public void TestPolyXmlParser()
+        {
+            XmlDocument xmldocument = new XmlDocument();
+            MusicXmlReader xmlreader = new MusicXmlReader("..\\..\\OIPTest\\polytest.xml");
+            MusicXmlParser Parser = new MusicXmlParser();
+
+            Parser.Execute(xmlreader.MusicXmlDocument, xmlreader.FileName);
+
+            Assert.AreEqual(xmlreader.FileName, Parser.ScoreModel.Name);
+            Assert.AreEqual(Parser.ScoreModel.UniformScoreTracks.Count, 1);
+            Assert.AreEqual(Parser.ScoreModel.UniformScoreTracks[0].Measurelist.Count, 3);
+            Assert.AreEqual(Parser.ScoreModel.UniformScoreTracks[0].Measurelist[0].NoteList.Count, 5);
+            Assert.AreEqual(Parser.ScoreModel.UniformScoreTracks[0].Measurelist[1].NoteList.Count, 6);
+            Assert.AreEqual(Parser.ScoreModel.UniformScoreTracks[0].Measurelist[2].NoteList.Count, 4);
+            Assert.AreEqual(Parser.ScoreModel.UniformScoreTracks[0].Measurelist[0].NoteList[0].Pitch.Count, 2);
+            Assert.AreEqual(Parser.ScoreModel.UniformScoreTracks[0].Measurelist[2].NoteList[0].Pitch.Count, 3);
+            Assert.AreEqual(Parser.ScoreModel.UniformScoreTracks[0].Measurelist[0].NoteList[0].Duration.Denominator, 4);
+            Assert.AreEqual(Parser.ScoreModel.UniformScoreTracks[0].Measurelist[0].NoteList[0].Pitch[0].Step.ToString(), "A");
+            Assert.AreEqual(Parser.ScoreModel.UniformScoreTracks[0].Measurelist[0].NoteList[0].Pitch[1].Step.ToString(), "C");
+            Assert.AreEqual(Parser.ScoreModel.UniformScoreTracks[0].Measurelist[2].NoteList[0].Duration.Denominator, 8);
+            Assert.AreEqual(Parser.ScoreModel.UniformScoreTracks[0].Measurelist[2].NoteList[0].Pitch[0].Step.ToString(), "G");
+            Assert.AreEqual(Parser.ScoreModel.UniformScoreTracks[0].Measurelist[2].NoteList[0].Pitch[1].Step.ToString(), "G");
+            Assert.AreEqual(Parser.ScoreModel.UniformScoreTracks[0].Measurelist[2].NoteList[0].Pitch[2].Step.ToString(), "C");
+        }
+
         [TestMethod]
         public void TestXmlParserFileName()
         {

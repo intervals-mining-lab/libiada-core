@@ -31,6 +31,18 @@ namespace MDATest.OIPTest.TestScoreModel
         }
 
         [TestMethod]
+        public void TestMultiNoteEquals1()
+        {
+            Note note1 = new Note(new Pitch(1, 'A', 0), new Duration(1, 4, false, 480), false, Tie.None);
+            note1.AddPitch(new Pitch(1, 'B', 0));
+
+            Note note2 = new Note(new Pitch(1, 'A', 0), new Duration(1, 4, false, 480), false, Tie.None);
+            note2.AddPitch(new Pitch(1, 'B', 0));
+
+            Assert.IsTrue(note1.Equals(note2));
+        }
+
+        [TestMethod]
         public void TestNoteClone1()
         {
             Note note1 = new Note(new Pitch(1, 'A', 0), new Duration(1, 4, false, 480), false, Tie.Stop);
