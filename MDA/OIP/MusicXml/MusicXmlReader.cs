@@ -1,9 +1,6 @@
-using System;
+﻿using System;
 using System.Xml;
-using System.Data;
 using System.IO;
-using System.Text;
-using System.Windows.Forms;
 
 namespace MDA.OIP.MusicXml
 {

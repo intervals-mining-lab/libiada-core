@@ -1,14 +1,9 @@
 ﻿using System;
 using System.Collections;
-using System.Collections.Generic;
-//using System.Linq;
-using System.Text;
-using ChainAnalises;
-using ChainAnalises.Classes.IntervalAnalysis;
-using ChainAnalises.Classes.IntervalAnalysis.Characteristics;
-using ChainAnalises.Classes.IntervalAnalysis.Characteristics.Calculators;
-using ChainAnalises.Classes.Root.SimpleTypes;
-using System.Threading;
+using LibiadaCore.Classes.Root;
+using LibiadaCore.Classes.Root.Characteristics;
+using LibiadaCore.Classes.Root.Characteristics.Calculators;
+using LibiadaCore.Classes.Root.SimpleTypes;
 
 
 namespace MDA.Analisis
@@ -171,37 +166,37 @@ namespace MDA.Analisis
 
 		public void CalcGamut()
         {
-			Characteristic G = new Characteristic(new Gamut());
-            AvgDepth = G.Value(MakeNewChain(), LinkUp.End);
+			Characteristic G = new Characteristic(new Depth());
+            AvgDepth = G.Value(MakeNewChain(), Link.End);
 			
 			int i;				
             for(i=0;i<PLex.GetCapacity();i++)
             {
-                ((FMotiv)PLex.GetData()[i]).SetDepth(new Characteristic(new Gamut()).Value(MakeNewChain().GetUniformChain(i), LinkUp.End));
+                ((FMotiv)PLex.GetData()[i]).SetDepth(new Characteristic(new Depth()).Value(MakeNewChain().CongenericChain(i), Link.End));
             }
         }
 
         public void CalcRemoteness()
         {
             Characteristic R = new Characteristic(new AverageRemoteness());
-            AvgRemoteness = R.Value(chain, LinkUp.End);
+            AvgRemoteness = R.Value(chain, Link.End);
 
             for (int i = 0; i < PLex.GetCapacity(); i++)
             {
-                ((FMotiv)PLex.GetData()[i]).SetRemoteness(new Characteristic(new AverageRemoteness()).Value(chain.GetUniformChain(i), LinkUp.End));
+                ((FMotiv)PLex.GetData()[i]).SetRemoteness(new Characteristic(new AverageRemoteness()).Value(chain.CongenericChain(i), Link.End));
             }
         }
         
         public void CalcRegularity()
         {
             Characteristic R = new Characteristic(new Regularity());
-            Regularity = R.Value(chain, LinkUp.End);
+            Regularity = R.Value(chain, Link.End);
         }
 
         public void CalcPeriodicity()
         {
             Characteristic P = new Characteristic(new Periodicity());
-            Periodicity = P.Value(chain, LinkUp.End);			
+            Periodicity = P.Value(chain, Link.End);			
         }
 
         public void CalcDifference()

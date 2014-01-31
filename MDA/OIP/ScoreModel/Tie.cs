@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace MDA.OIP.ScoreModel
+﻿namespace MDA.OIP.ScoreModel
 {
     public static class Tie // класс для заполнения объекта класса Note данными, в зависимости от наличия лиги
     {

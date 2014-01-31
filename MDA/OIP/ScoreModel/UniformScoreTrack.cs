@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using ChainAnalises.Classes.Root;
+﻿using System.Collections.Generic;
+using LibiadaCore.Classes.Root;
 
 namespace MDA.OIP.ScoreModel
 {
@@ -148,13 +146,6 @@ namespace MDA.OIP.ScoreModel
 
         #region IBaseMethods
 
-        private UniformScoreTrack()
-        {
-            ///<summary>
-            /// Stub for GetBin
-            ///</summary>  
-        }
-
         public IBaseObject Clone()
         {
             UniformScoreTrack Temp = new UniformScoreTrack(this.name, this.measurelist);
@@ -175,26 +166,6 @@ namespace MDA.OIP.ScoreModel
                 return true;
             }
             return false;
-        }
-
-        public IBin GetBin()
-        {
-            UniformScoreTrackBin Temp = new UniformScoreTrackBin();
-            ///<summary>
-            /// Stub
-            ///</summary>
-            return Temp;
-        }
-
-        public class UniformScoreTrackBin : IBin
-        {
-            public IBaseObject GetInstance()
-            {
-                ///<summary>
-                /// Stub
-                ///</summary>
-                return new UniformScoreTrack();
-            }
         }
 
         #endregion

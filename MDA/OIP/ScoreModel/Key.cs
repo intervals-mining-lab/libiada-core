@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using ChainAnalises.Classes.Root;
+﻿using LibiadaCore.Classes.Root;
 
 namespace MDA.OIP.ScoreModel
 {
@@ -30,13 +27,6 @@ namespace MDA.OIP.ScoreModel
 
         #region IBaseMethods
 
-        private Key()
-        {
-            ///<summary>
-            /// Stub for GetBin
-            ///</summary>  
-        }
-
         public IBaseObject Clone()
         {
             Key Temp = new Key(this.fifths,this.mode);
@@ -50,26 +40,6 @@ namespace MDA.OIP.ScoreModel
                 return true;
             }
             return false;
-        }
-
-        public IBin GetBin()
-        {
-            KeyBin Temp = new KeyBin();
-            ///<summary>
-            /// Stub
-            ///</summary>
-            return Temp;
-        }
-
-        public class KeyBin : IBin
-        {
-            public IBaseObject GetInstance()
-            {
-                ///<summary>
-                /// Stub
-                ///</summary>
-                return new Key();
-            }
         }
 
         #endregion

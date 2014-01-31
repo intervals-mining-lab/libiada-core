@@ -1,9 +1,6 @@
 ﻿using System;
 using System.Xml;
-using System.Data;
-using System.IO;
 using System.Collections.Generic;
-using System.Text;
 using MDA.OIP.ScoreModel;
 
 namespace MDA.OIP.MusicXml

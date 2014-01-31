@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using ChainAnalises.Classes.Root;
+using LibiadaCore.Classes.Root;
 
 namespace MDA.OIP.ScoreModel
 {
@@ -42,13 +40,6 @@ namespace MDA.OIP.ScoreModel
 
         #region IBaseMethods
 
-        private Size()
-        {
-            ///<summary>
-            /// Stub for GetBin
-            ///</summary>  
-        }
-
         public IBaseObject Clone()
         {
             Size Temp = new Size(this.beats, this.beatbase, ticksperbeat);
@@ -62,26 +53,6 @@ namespace MDA.OIP.ScoreModel
                 return true;
             }
             return false;
-        }
-
-        public IBin GetBin()
-        {
-            SizeBin Temp = new SizeBin();
-            ///<summary>
-            /// Stub
-            ///</summary>
-            return Temp;
-        }
-
-        public class SizeBin : IBin
-        {
-            public IBaseObject GetInstance()
-            {
-                ///<summary>
-                /// Stub
-                ///</summary>
-                return new Size();
-            }
         }
 
         #endregion

@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using ChainAnalises.Classes.Root;
+﻿using System.Collections.Generic;
+using LibiadaCore.Classes.Root;
 
 namespace MDA.OIP.ScoreModel
 {
@@ -155,14 +153,12 @@ namespace MDA.OIP.ScoreModel
             }
         }
 
-        #region IBaseMethods
-
-        private Note()
+        internal void SetTie(int newtie)
         {
-            ///<summary>
-            /// Stub for GetBin
-            ///</summary>  
+            tie = newtie;
         }
+
+        #region IBaseMethods
 
         public IBaseObject Clone()
         {
@@ -210,32 +206,9 @@ namespace MDA.OIP.ScoreModel
             // TODO: из сравнения исключить триплет, так может различать одинаковые по длительности ноты, но записанные по разному(!)
         }
 
-        public IBin GetBin()
-        {
-            NoteBin Temp = new NoteBin();
-            ///<summary>
-            /// Stub
-            ///</summary>
-            return Temp;
-        }
-
-        public class NoteBin : IBin
-        {
-            public IBaseObject GetInstance()
-            {
-                ///<summary>
-                /// Stub
-                ///</summary>
-                return new Note();
-            }
-        }
 
         #endregion
 
-        internal void SetTie(int newtie)
-        {
-            tie = newtie;
-        }
     }
 }
 

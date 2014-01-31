@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace MDA.OIP.BorodaDivider
+﻿namespace MDA.OIP.BorodaDivider
 {
     public static class ParamPauseTreatment // класс для выбора отношения к паузам (игнорировать, длительность добавлять к предыдущему звуку, рассматривать как ноту "тишины")
     {

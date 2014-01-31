@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
+using LibiadaCore.Classes.Root;
 using MDA.OIP.ScoreModel;
-using ChainAnalises.Classes.Root;
 
 namespace MDA.OIP.BorodaDivider
 {
@@ -367,26 +366,6 @@ namespace MDA.OIP.BorodaDivider
             }
                 
             return true;
-        }
-        
-        public IBin GetBin()
-        {
-            FmotivBin Temp = new FmotivBin();
-            ///<summary>
-            /// Stub
-            ///</summary>
-            return Temp;
-        }
-
-        public class FmotivBin : IBin
-        {
-            public IBaseObject GetInstance()
-            {
-                ///<summary>
-                /// Stub
-                ///</summary>
-                return new Fmotiv();
-            }
         }
 
         #endregion

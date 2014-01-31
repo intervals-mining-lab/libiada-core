@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 using MDA.OIP.BorodaDivider;
-using MDA.OIP.ScoreModel;
 
 namespace MDA.ICL
 {

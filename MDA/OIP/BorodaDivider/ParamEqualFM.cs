@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace MDA.OIP.BorodaDivider
+﻿namespace MDA.OIP.BorodaDivider
 {
     public static class ParamEqualFM // класс для выбора метода сравнения ф-мотивов (с секвентным переносом, либо без)
     {

@@ -1,11 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 using MDA.OIP.BorodaDivider;
-using ChainAnalises.Classes.IntervalAnalysis;
-using ChainAnalises.Classes.Root.SimpleTypes;
-using ChainAnalises.Classes.IntervalAnalysis.Characteristics.Calculators;
-using ChainAnalises.Classes.IntervalAnalysis.Characteristics;
 
 namespace MDA.ICL
 {

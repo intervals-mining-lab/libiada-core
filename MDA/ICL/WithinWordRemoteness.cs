@@ -1,11 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
+using LibiadaCore.Classes.Root;
+using LibiadaCore.Classes.Root.Characteristics;
+using LibiadaCore.Classes.Root.Characteristics.Calculators;
+using LibiadaCore.Classes.Root.SimpleTypes;
 using MDA.OIP.BorodaDivider;
-using ChainAnalises.Classes.IntervalAnalysis;
-using ChainAnalises.Classes.Root.SimpleTypes;
-using ChainAnalises.Classes.IntervalAnalysis.Characteristics;
-using ChainAnalises.Classes.IntervalAnalysis.Characteristics.Calculators;
 using MDA.OIP.ScoreModel;
 
 namespace MDA.ICL
@@ -36,8 +34,8 @@ namespace MDA.ICL
                         Convert.ToString(fmotiv.PauseTreatment(ParamPauseTreatment.Ignore).TieGathered().NoteList[i].Duration.Value * 10000000));
                 }
 
-                Characteristic R = new Characteristic(new Gamut());
-                double val = R.Value(notechain, LinkUp.Start);
+                Characteristic R = new Characteristic(new Depth());
+                double val = R.Value(notechain, Link.Start);
 
                 ArRemVal = ArRemVal + val;
             }

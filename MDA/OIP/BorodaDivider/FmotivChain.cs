@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using ChainAnalises.Classes.Root;
+﻿using System.Collections.Generic;
+using LibiadaCore.Classes.Root;
 
 namespace MDA.OIP.BorodaDivider
 {
@@ -49,12 +47,6 @@ namespace MDA.OIP.BorodaDivider
 
         #region IBaseMethods
 
-        /*private FmotivChain()
-        {
-            ///<summary>
-            /// Stub for GetBin
-            ///</summary>  
-        }*/
 
         public IBaseObject Clone()
         {
@@ -81,26 +73,6 @@ namespace MDA.OIP.BorodaDivider
             }
 
             return true; 
-        }
-
-        public IBin GetBin()
-        {
-            FmotivChainBin Temp = new FmotivChainBin();
-            ///<summary>
-            /// Stub
-            ///</summary>
-            return Temp;
-        }
-
-        public class FmotivChainBin : IBin
-        {
-            public IBaseObject GetInstance()
-            {
-                ///<summary>
-                /// Stub
-                ///</summary>
-                return new FmotivChain();
-            }
         }
 
         #endregion

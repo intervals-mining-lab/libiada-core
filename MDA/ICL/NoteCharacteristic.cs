@@ -1,12 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
+using LibiadaCore.Classes.Root;
+using LibiadaCore.Classes.Root.Characteristics;
+using LibiadaCore.Classes.Root.Characteristics.Calculators;
+using LibiadaCore.Classes.Root.SimpleTypes;
 using MDA.OIP.BorodaDivider;
-using ChainAnalises.Classes.IntervalAnalysis;
 using MDA.OIP.ScoreModel;
-using ChainAnalises.Classes.Root.SimpleTypes;
-using ChainAnalises.Classes.IntervalAnalysis.Characteristics;
-using ChainAnalises.Classes.IntervalAnalysis.Characteristics.Calculators;
 
 namespace MDA.ICL
 {
@@ -72,10 +71,10 @@ namespace MDA.ICL
             }
 
             Characteristic R = new Characteristic(new AverageRemoteness());           
-            valR = R.Value(notechain, LinkUp.End);
+            valR = R.Value(notechain, Link.End);
 
-            Characteristic G = new Characteristic(new Gamut());
-            valG = G.Value(notechain, LinkUp.End);
+            Characteristic G = new Characteristic(new Depth());
+            valG = G.Value(notechain, Link.End);
 
             return true;
         }
