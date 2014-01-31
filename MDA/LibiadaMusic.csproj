@@ -69,11 +69,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ICL\AverageLength.cs" />
-    <Compile Include="ICL\NoteCharacteristic.cs" />
-    <Compile Include="ICL\TextWordGamut.cs" />
-    <Compile Include="ICL\WithinWordRemoteness.cs" />
-    <Compile Include="ICL\WordRemoteness.cs" />
+    <Compile Include="Characteristics\AverageLength.cs" />
+    <Compile Include="Characteristics\NoteCharacteristic.cs" />
+    <Compile Include="Characteristics\TextWordGamut.cs" />
+    <Compile Include="Characteristics\WithinWordRemoteness.cs" />
+    <Compile Include="Characteristics\WordRemoteness.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Analysis\Composition.cs" />
     <Compile Include="Analysis\Difference.cs" />
@@ -83,27 +83,27 @@
     <Compile Include="Analysis\FMotiv.cs" />
     <Compile Include="Analysis\Lexicon.cs" />
     <Compile Include="Analysis\Reader.cs" />
-    <Compile Include="OIP\BorodaDivider\BorodaDivider.cs" />
-    <Compile Include="OIP\BorodaDivider\Fmotiv.cs" />
-    <Compile Include="OIP\BorodaDivider\FmotivChain.cs" />
-    <Compile Include="OIP\BorodaDivider\FmotivDivider.cs" />
-    <Compile Include="OIP\BorodaDivider\FmotivIdentificator.cs" />
-    <Compile Include="OIP\BorodaDivider\ParamEqualFM.cs" />
-    <Compile Include="OIP\BorodaDivider\ParamPauseTreatment.cs" />
-    <Compile Include="OIP\BorodaDivider\PriorityDiscover.cs" />
-    <Compile Include="OIP\ScoreModel\Attributes.cs" />
-    <Compile Include="OIP\ScoreModel\Duration.cs" />
-    <Compile Include="OIP\ScoreModel\DurationType.cs" />
-    <Compile Include="OIP\ScoreModel\Key.cs" />
-    <Compile Include="OIP\ScoreModel\Measure.cs" />
-    <Compile Include="OIP\MusicXml\MusicXmlParser.cs" />
-    <Compile Include="OIP\MusicXml\MusicXmlReader.cs" />
-    <Compile Include="OIP\ScoreModel\Note.cs" />
-    <Compile Include="OIP\ScoreModel\Pitch.cs" />
-    <Compile Include="OIP\ScoreModel\ScoreTrack.cs" />
-    <Compile Include="OIP\ScoreModel\Size.cs" />
-    <Compile Include="OIP\ScoreModel\Tie.cs" />
-    <Compile Include="OIP\ScoreModel\UniformScoreTrack.cs" />
+    <Compile Include="BorodaDivider\BorodaDivider.cs" />
+    <Compile Include="BorodaDivider\Fmotiv.cs" />
+    <Compile Include="BorodaDivider\FmotivChain.cs" />
+    <Compile Include="BorodaDivider\FmotivDivider.cs" />
+    <Compile Include="BorodaDivider\FmotivIdentificator.cs" />
+    <Compile Include="BorodaDivider\ParamEqualFM.cs" />
+    <Compile Include="BorodaDivider\ParamPauseTreatment.cs" />
+    <Compile Include="BorodaDivider\PriorityDiscover.cs" />
+    <Compile Include="ScoreModel\Attributes.cs" />
+    <Compile Include="ScoreModel\Duration.cs" />
+    <Compile Include="ScoreModel\DurationType.cs" />
+    <Compile Include="ScoreModel\Key.cs" />
+    <Compile Include="ScoreModel\Measure.cs" />
+    <Compile Include="MusicXml\MusicXmlParser.cs" />
+    <Compile Include="MusicXml\MusicXmlReader.cs" />
+    <Compile Include="ScoreModel\Note.cs" />
+    <Compile Include="ScoreModel\Pitch.cs" />
+    <Compile Include="ScoreModel\ScoreTrack.cs" />
+    <Compile Include="ScoreModel\Size.cs" />
+    <Compile Include="ScoreModel\Tie.cs" />
+    <Compile Include="ScoreModel\UniformScoreTrack.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

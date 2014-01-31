@@ -59,33 +59,33 @@
     </CodeAnalysisDependentAssemblyPaths>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ICLTest\AverageLengthTest.cs">
+    <Compile Include="Characteristics\AverageLengthTest.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="ICLTest\NoteRemotenessTest.cs">
+    <Compile Include="Characteristics\NoteRemotenessTest.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="ICLTest\WithinWordRemotenessTest.cs">
+    <Compile Include="Characteristics\WithinWordRemotenessTest.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="ICLTest\TestWordRemoteness.cs">
+    <Compile Include="Characteristics\TestWordRemoteness.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="OIPTest\TestBorodaDivider\FmotivTest.cs" />
-    <Compile Include="OIPTest\TestBorodaDivider\BorodaDividerTest.cs" />
-    <Compile Include="OIPTest\TestBorodaDivider\FmotivChainTest.cs" />
-    <Compile Include="OIPTest\TestBorodaDivider\FmotivDividerTest.cs" />
-    <Compile Include="OIPTest\TestBorodaDivider\FmotivIdentificatorTest.cs" />
-    <Compile Include="OIPTest\TestBorodaDivider\ParamEqualFMTest.cs" />
-    <Compile Include="OIPTest\TestBorodaDivider\ParamPauseTreatmentTest.cs" />
-    <Compile Include="OIPTest\TestBorodaDivider\PriorityDiscoverTest.cs" />
-    <Compile Include="OIPTest\TestMusicXml\MusicXmlParserTest.cs" />
-    <Compile Include="OIPTest\TestMusicXml\XmlReaderTest.cs" />
-    <Compile Include="OIPTest\TestScoreModel\DurationTest.cs" />
-    <Compile Include="OIPTest\TestScoreModel\MeasureTest.cs" />
-    <Compile Include="OIPTest\TestScoreModel\NoteTest.cs" />
-    <Compile Include="OIPTest\TestScoreModel\TieTest.cs" />
-    <Compile Include="OIPTest\TestScoreModel\TestUniformScoreTrack.cs" />
+    <Compile Include="BorodaDivider\FmotivTest.cs" />
+    <Compile Include="BorodaDivider\BorodaDividerTest.cs" />
+    <Compile Include="BorodaDivider\FmotivChainTest.cs" />
+    <Compile Include="BorodaDivider\FmotivDividerTest.cs" />
+    <Compile Include="BorodaDivider\FmotivIdentificatorTest.cs" />
+    <Compile Include="BorodaDivider\ParamEqualFMTest.cs" />
+    <Compile Include="BorodaDivider\ParamPauseTreatmentTest.cs" />
+    <Compile Include="BorodaDivider\PriorityDiscoverTest.cs" />
+    <Compile Include="MusicXml\MusicXmlParserTest.cs" />
+    <Compile Include="MusicXml\XmlReaderTest.cs" />
+    <Compile Include="ScoreModel\DurationTest.cs" />
+    <Compile Include="ScoreModel\MeasureTest.cs" />
+    <Compile Include="ScoreModel\NoteTest.cs" />
+    <Compile Include="ScoreModel\TieTest.cs" />
+    <Compile Include="ScoreModel\TestUniformScoreTrack.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Test.cs" />
   </ItemGroup>
