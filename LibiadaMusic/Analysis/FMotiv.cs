@@ -8,120 +8,97 @@ namespace LibiadaMusic.Analysis
         protected int id;//ID
         protected string name; //Имя
         private int rank;//Ранг
-        private double logrank;//Log (Ранг)
         private double occurrence;//Сколько раз встретилось
-        private double logoccurrence;// Log(occurrence)
         private double frequency;//Частота
         private double remoteness;// Удаленность
-        private double Logremoteness;//ЛогУдаленности
         private double depth;//Глубина
-        private double Logdepth;//ЛогГлубины
         ArrayList probability = new ArrayList();// Условные вероятности
 
         public FMotiv(int ident,string st, int occur,double freq) 
         {
-            this.id = ident;
-            this.name = st;
-            this.occurrence = occur;
-            this.logoccurrence = System.Math.Log(occur, 2);
-            this.frequency = freq;
+            id = ident;
+            name = st;
+            occurrence = occur;
+            frequency = freq;
         }
 
-        public void SetId(int n)
+        public int Id
         {
-            this.id = n;
-        }
-        public int GetId()
-        {
-            return this.id;
+            get { return id; }
+            set { id = value; }
+            
         }
 
-        public void SetName(string n)
+        public string Name
         {
-            this.name = n;
-        }
-        public string GetName()
-        {
-            return this.name;
+            get { return name; }
+            set { name = value; }
+            
         }
 
-        public void SetRank(int n)
+        public int Rank
         {
-            this.rank = n;
-            this.logrank = System.Math.Log(n,2);
-        }
-        public int GetRank()
-        {
-            return this.rank;
+            get { return rank; }
+            set { rank = value; }
+           
         }
 
-        public double GetLogRank()
+        public double LogRank
         {
-            return this.logrank;
+            get { return Math.Log(rank, 2); }
+            
         }
 
-        public void SetOccurernce(double n)
+        public double Occurernce
         {
-            this.occurrence = n;
-        }
-        public double GetOccurernce()
-        {
-            return this.occurrence;
+            get { return occurrence; }
+            set { occurrence = value; }
+           
         }
 
-        public void SetLogOccurernce(double n)
+        public double LogOccurernce
         {
-            this.logoccurrence = n;
-        }
-        public double GetLogOccurernce()
-        {
-            return this.logoccurrence;
+            get { return Math.Log(occurrence, 2); }
+            
         }
 
-        public void SetFrequency(double n)
+        public double Frequency
         {
-            this.frequency= n;
-        }
-        public double GetFrequency()
-        {
-            return this.frequency;
+            get { return frequency; }
+            set { frequency = value; }
+            
         }
 
-        public void SetRemoteness(double n)
+        public double Remoteness
         {
-            this.remoteness = n;
-            this.Logremoteness = Math.Log(n, 2);
-        }
-        public double GetRemoteness()
-        {
-            return this.remoteness;
-        }
-        public double GetLogRemoteness()
-        {
-            return this.Logremoteness;
+            get{ return remoteness; }
+            set{ remoteness = value; }
         }
 
-        public void SetDepth(double n)
+        public double LogRemoteness
         {
-            this.depth = n;
-            this.Logdepth = Math.Log(n,2);
-        }
-        public double GetDepth()
-        {
-            return this.depth;
-        }
-        public double GetLogDepth()
-        {
-            return this.Logdepth;
+            get{ return Math.Log(remoteness, 2); }
+            
         }
 
-        public void SetProbability(ArrayList n)
+        public double Depth
         {
-            this.probability = n;
+            get { return depth; }
+            set { depth = value; }
+            
         }
-        public ArrayList GetProbability()
+
+        public double LogDepth
         {
-            return this.probability;
+            get { return Math.Log(depth, 2); }
+            
+        }
+
+        public ArrayList SetProbability
+        {
+            get { return probability; }
+            set { probability = value; }
+            
         }
 
     }

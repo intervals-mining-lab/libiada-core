@@ -17,20 +17,20 @@ namespace LibiadaMusic.ScoreModel
         {
             this.numerator = numerator;
             this.denominator = denominator;
-            this.onumerator = numerator;
-            this.odenominator = denominator;
+            onumerator = numerator;
+            odenominator = denominator;
             this.ticks = ticks;
-            if (doted) this.placedot();
+            if (doted) placedot();
         }
         public Duration(int numerator, int denominator, int tripletnum, int tripletdenom, bool doted,int ticks)
         {
             this.numerator = numerator;
             this.denominator = denominator;
-            this.onumerator = numerator;
-            this.odenominator = denominator;
+            onumerator = numerator;
+            odenominator = denominator;
             this.ticks = ticks;
-            this.placetriplet(tripletnum, tripletdenom);
-            if (doted) this.placedot();
+            placetriplet(tripletnum, tripletdenom);
+            if (doted) placedot();
         }
         
         public double Value
@@ -40,8 +40,6 @@ namespace LibiadaMusic.ScoreModel
                     val = numerator;
                     val = val / denominator;
                     return val; 
-                // это жесть, когда делятся два инта, то результат возвращается уже округленный,
-                // и не важно куда он записывается
                 }
         } // значение доли в десятичной дроби
         public double oValue
@@ -52,8 +50,6 @@ namespace LibiadaMusic.ScoreModel
                 val = onumerator;
                 val = val / odenominator;
                 return val;
-                // это жесть, когда делятся два инта, то результат возвращается уже округленный,
-                // и не важно куда он записывается
             }
         } // значение ОРИГИНАЛЬНОЙ доли в десятичной дроби
         public Duration AddDuration(Duration duration) 
@@ -61,8 +57,8 @@ namespace LibiadaMusic.ScoreModel
             int newnum = 0;
             int newdenom = 0;
 
-            newnum = (this.numerator*duration.denominator) + (duration.numerator*this.denominator);
-            newdenom = this.denominator * duration.denominator;
+            newnum = (numerator*duration.denominator) + (duration.numerator*denominator);
+            newdenom = denominator * duration.denominator;
 
             for (int i = 2; i <= newnum; i++)
             {
@@ -99,7 +95,7 @@ namespace LibiadaMusic.ScoreModel
                 }
             }
             //-------------------------------
-            Duration Temp = new Duration(newnum, newdenom, false, (this.Ticks + duration.Ticks));
+            Duration Temp = new Duration(newnum, newdenom, false, (Ticks + duration.Ticks));
             return Temp;  
             /*
              this.numerator = newnum;
@@ -113,7 +109,7 @@ namespace LibiadaMusic.ScoreModel
             Duration temp = (Duration) duration.Clone();
             temp.ticks = -temp.ticks;
             temp.numerator = -temp.numerator;
-            return this.AddDuration(temp);
+            return AddDuration(temp);
         }
 
 
@@ -133,20 +129,20 @@ namespace LibiadaMusic.ScoreModel
         #region privateMethods
         private void placedot() 
         {
-            if ((this.numerator % 2) == 0)
+            if ((numerator % 2) == 0)
             {
-                this.numerator = (int)(this.numerator * 1.5);// если четный числитель, то прибавляем к нему половину
+                numerator = (int)(numerator * 1.5);// если четный числитель, то прибавляем к нему половину
             }
             else 
             {
-                this.numerator = this.numerator * 3;
-                this.denominator = this.denominator * 2;
+                numerator = numerator * 3;
+                denominator = denominator * 2;
             }
         }
         private void placetriplet(int triplnum, int tripldenom)
         {
-            this.numerator = this.numerator * triplnum;
-            this.denominator = this.denominator * tripldenom;
+            numerator = numerator * triplnum;
+            denominator = denominator * tripldenom;
         }
         #endregion
 
@@ -154,15 +150,15 @@ namespace LibiadaMusic.ScoreModel
 
         public IBaseObject Clone()
         {
-            Duration Temp = new Duration(this.numerator, this.denominator, false, this.ticks);
-            Temp.onumerator = this.onumerator;
-            Temp.odenominator = this.odenominator;
+            Duration Temp = new Duration(numerator, denominator, false, ticks);
+            Temp.onumerator = onumerator;
+            Temp.odenominator = odenominator;
             return Temp;
         }
 
         public override bool Equals(object obj)
         {
-            if (Math.Abs(this.Value - ((Duration)obj).Value)<0.000001)
+            if (Math.Abs(Value - ((Duration)obj).Value)<0.000001)
             {
                 // если модул разности двух double меньше заданной точности то можно считать что эти double равны
                 return true;

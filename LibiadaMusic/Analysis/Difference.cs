@@ -1,16 +1,48 @@
 ﻿using System;
 using System.Collections;
+using System.Dynamic;
 
 namespace LibiadaMusic.Analysis
 {
     public class Difference
     {
         private double nonP=0;  // E|(Ft-Fp)|
-        private double OnonP = 0;  // (E|(Ft-Fp)|)/N
-        private double SqHi=0; // N(E(Ft-Fp)/Ft)
-        private double D=0; // Max(F1-F2)
+        private double ononP = 0;  // (E|(Ft-Fp)|)/N
+        private double sqHi=0; // N(E(Ft-Fp)/Ft)
+        private double d=0; // Max(F1-F2)
         private double dV = 0; // |V1-V2|
         private double pdV = 0; // |V1-V2| / V1
+
+        public double NonP
+        {
+            get { return nonP; }
+
+        }
+        public double OnonP
+        {
+            get { return ononP; }
+
+        }
+        public double SqHi
+        {
+            get { return sqHi; }
+            
+        }
+        public double D
+        {
+            get { return d; }
+            
+        }
+        public double DV
+        {
+            get { return dV; }
+            
+        }
+        public double PdV
+        {
+            get { return pdV; }
+            
+        }
 
         public Difference()
         {
@@ -19,17 +51,17 @@ namespace LibiadaMusic.Analysis
 
         private Difference(double p1,double p2,double p3,double p4,double p5,double p6)
         {
-            this.nonP = p1;
-            this.OnonP = p2;
-            this.SqHi = p3;
-            this.D = p4;
-            this.dV = p5;
-            this.pdV = p6;
+            nonP = p1;
+            ononP = p2;
+            sqHi = p3;
+            d = p4;
+            dV = p5;
+            pdV = p6;
         }
 
         public Difference Clone()
         {
-            Difference d = new Difference(this.GetnonP(), this.GetOnonP(), this.GetSqHi(), this.GetD(), this.GetdV(), this.GetpdV());
+            Difference d = new Difference(nonP, ononP, sqHi, this.d, dV, pdV);
             return d;
         }
 
@@ -39,8 +71,8 @@ namespace LibiadaMusic.Analysis
             {
                 double dif = 0;
                 nonP = 0;
-                SqHi = 0;
-                D = 0;
+                sqHi = 0;
+                d = 0;
                 for (int i=0;i<a1.Count;i++)
                 {
                     dif = ((double)a1[i]) - ((double)a2[i]);
@@ -49,20 +81,20 @@ namespace LibiadaMusic.Analysis
                     {
                         if (LCap>=PCap)
                         {
-                            SqHi += Math.Pow(dif, 2)/((double) a1[i]);
+                            sqHi += Math.Pow(dif, 2)/((double) a1[i]);
                         }
                         else
                         {
-                            SqHi += Math.Pow(dif, 2)/((double) a2[i]);
+                            sqHi += Math.Pow(dif, 2)/((double) a2[i]);
                         }
                     }
-                    if (D<Math.Abs(dif))
+                    if (d<Math.Abs(dif))
                     {
-                        D = Math.Abs(dif);
+                        d = Math.Abs(dif);
                     }
                 }
-                SqHi = SqHi*N;
-                OnonP = nonP/PCap;
+                sqHi = sqHi*N;
+                ononP = nonP/PCap;
             }
         }
 
@@ -71,33 +103,5 @@ namespace LibiadaMusic.Analysis
             dV = Math.Abs(V1 - V2);
             pdV = Math.Round((dV/V1)*10000)/100;
         }
-
-
-
-        public double GetnonP()
-        {
-            return nonP;
-        }
-        public double GetOnonP()
-        {
-            return OnonP;
-        }
-        public double GetSqHi()
-        {
-            return SqHi;
-        }
-        public double GetD()
-        {
-            return D;
-        }
-        public double GetdV()
-        {
-            return dV;
-        }
-        public double GetpdV()
-        {
-            return pdV;
-        }
-
     }
 }

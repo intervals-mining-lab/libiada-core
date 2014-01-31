@@ -39,7 +39,7 @@ namespace LibiadaMusic.Characteristics
 
                 do
                 {
-                    deltaV = deltaV + FmChain.FmotivList[ FmChain.FmotivList.Count -1 -i -j].PauseTreatment(ParamPauseTreatment.Ignore).TieGathered().NoteList.Count; 
+                    deltaV = deltaV + FmChain.FmotivList[FmChain.FmotivList.Count - 1 - i - j].PauseTreatment((int)ParamPauseTreatment.Ignore).TieGathered().NoteList.Count; 
                     // умножаем общий объем на буквенное рассояние текущего (уходящего на 1 слово назад, в случаях не нахождения такого слова) слова
                     j = j + 1; // увеличиваем счетчик предыдущего
 

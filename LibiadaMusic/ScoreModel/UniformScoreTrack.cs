@@ -79,7 +79,7 @@ namespace LibiadaMusic.ScoreModel
         public int [] NoteIdOrder()
         {
             List<Note> Temp = new List<Note>();
-            Temp = this.NoteOrder();
+            Temp = NoteOrder();
 
             int [] IdTemp = new int [Temp.Count]; // строй из Id, а не из объектов типа Note
             for (int i = 0; i < Temp.Count; i++)
@@ -134,7 +134,7 @@ namespace LibiadaMusic.ScoreModel
         public int[] MeasureIdOrder()
         {
             List<Measure> Temp = new List<Measure>();
-            Temp = this.MeasureOrder();
+            Temp = MeasureOrder();
 
             int[] IdTemp = new int[Temp.Count]; // строй из Id, а не из объектов типа Measure
             for (int i = 0; i < Temp.Count; i++)
@@ -148,7 +148,7 @@ namespace LibiadaMusic.ScoreModel
 
         public IBaseObject Clone()
         {
-            UniformScoreTrack Temp = new UniformScoreTrack(this.name, this.measurelist);
+            UniformScoreTrack Temp = new UniformScoreTrack(name, measurelist);
             return Temp;
         }
 
@@ -156,10 +156,10 @@ namespace LibiadaMusic.ScoreModel
         {
             bool equalMeasureList = true;
 
-            if (this.Measurelist.Count != ((UniformScoreTrack)obj).Measurelist.Count) { equalMeasureList = false; }
-            for (int i = 0; i < this.Measurelist.Count; i++)
+            if (Measurelist.Count != ((UniformScoreTrack)obj).Measurelist.Count) { equalMeasureList = false; }
+            for (int i = 0; i < Measurelist.Count; i++)
             {
-                if (!this.Measurelist[i].Equals(((UniformScoreTrack)obj).Measurelist[i])) { equalMeasureList = false; }
+                if (!Measurelist[i].Equals(((UniformScoreTrack)obj).Measurelist[i])) { equalMeasureList = false; }
             }
             if (equalMeasureList)
             {

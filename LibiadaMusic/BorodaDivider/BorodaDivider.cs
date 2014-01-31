@@ -11,7 +11,7 @@ namespace LibiadaMusic.BorodaDivider
 
             foreach(UniformScoreTrack utrack in strack.UniformScoreTracks)
             {
-                FmotivChain fmchain = (FmotivChain)this.Divide(utrack, paramPause, paramEqual).Clone();
+                FmotivChain fmchain = (FmotivChain)Divide(utrack, paramPause, paramEqual).Clone();
                 fmchain.Id = Temp.Count;
                 Temp.Add(fmchain);
             }

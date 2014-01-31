@@ -29,13 +29,13 @@ namespace LibiadaMusic.ScoreModel
 
         public IBaseObject Clone()
         {
-            Key Temp = new Key(this.fifths,this.mode);
+            Key Temp = new Key(fifths,mode);
             return Temp;
         }
 
         public override bool Equals(object obj)
         {
-            if ((this.Fifths==((Key)obj).Fifths)&&(this.Mode==((Key)obj).Mode))
+            if ((Fifths==((Key)obj).Fifths)&&(Mode==((Key)obj).Mode))
             {
                 return true;
             }

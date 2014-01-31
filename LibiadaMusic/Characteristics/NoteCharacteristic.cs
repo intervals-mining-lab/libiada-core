@@ -35,7 +35,7 @@ namespace LibiadaMusic.Characteristics
 
             foreach (Fmotiv fmotiv in FmChain.FmotivList)
             {
-                foreach(Note note in fmotiv.TieGathered().PauseTreatment(ParamPauseTreatment.Ignore).NoteList)
+                foreach (Note note in fmotiv.TieGathered().PauseTreatment((int)ParamPauseTreatment.Ignore).NoteList)
                 {
                     notelist.Add((Note)note.Clone());
                 }

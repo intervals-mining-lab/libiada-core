@@ -16,14 +16,14 @@ namespace LibiadaMusic.BorodaDivider
             // конструктор для ф-мотива с уже определенным id
             this.id = id;
             this.type = type;
-            this.notelist = new List<Note>();
+            notelist = new List<Note>();
         }
         public Fmotiv(string type)
         {
             // конструктор для ф-мотива с неопределенным id
-            this.id = -1;
+            id = -1;
             this.type = type;
-            this.notelist = new List<Note>();
+            notelist = new List<Note>();
         }
         
         public List<Note> NoteList
@@ -41,7 +41,7 @@ namespace LibiadaMusic.BorodaDivider
             }
             set 
             {
-                this.type = value;
+                type = value;
             }
         }
         public int Id
@@ -52,7 +52,7 @@ namespace LibiadaMusic.BorodaDivider
             }
             set
             {
-                this.id = value;
+                id = value;
             }
         }
 
@@ -64,8 +64,8 @@ namespace LibiadaMusic.BorodaDivider
             {
                 case 0:
                     {// удаляем все паузы в возвращаемом объекте (0) (паузы игнорируются)
-                        Fmotiv Temp = new Fmotiv(this.id, this.type);
-                        Temp = (Fmotiv)this.Clone();
+                        Fmotiv Temp = new Fmotiv(id, type);
+                        Temp = (Fmotiv)Clone();
                         for (int i = 0; i < Temp.notelist.Count; i++)
                         {
                             if (Temp.notelist[i].Pitch != null && Temp.notelist[i].Pitch.Count == 0)
@@ -79,8 +79,8 @@ namespace LibiadaMusic.BorodaDivider
                     break;
                 case 1:
                     {// длительность паузы прибавляется к предыдущей ноте, а она сама удаляется из текста (1) (пауза - звуковой след ноты)
-                        Fmotiv Temp = new Fmotiv(this.id, this.type);
-                        Temp = (Fmotiv)this.Clone();
+                        Fmotiv Temp = new Fmotiv(id, type);
+                        Temp = (Fmotiv)Clone();
 
                         // если пауза стоит вначале текста (и текст не пустой) то она удаляется
                         while (Temp.notelist.Count > 0)
@@ -113,8 +113,8 @@ namespace LibiadaMusic.BorodaDivider
                 case 2:
                     {// Пауза - звук тишины, рассматривается как нота без высоты звучания (2)
                      // ничего не треуется
-                        Fmotiv Temp = new Fmotiv(this.id, this.type);
-                        Temp = (Fmotiv)this.Clone();
+                        Fmotiv Temp = new Fmotiv(id, type);
+                        Temp = (Fmotiv)Clone();
                         return Temp;
                     }
                     break;
@@ -132,18 +132,18 @@ namespace LibiadaMusic.BorodaDivider
             //возвращает копию этого объекта, соединив все залигованные ноты, если такие имеются
             // (тоесть вместо трех залигованных нот в фмотиве будет отображаться одна, с суммарной длительностью но такой же высотой
             Note BuffNote = null;
-            Fmotiv Temp = (Fmotiv)this.Clone();
-            Fmotiv TempGathered = new Fmotiv(this.id,this.type);
+            Fmotiv Temp = (Fmotiv)Clone();
+            Fmotiv TempGathered = new Fmotiv(id,type);
 
             int count = Temp.notelist.Count;
 
             for (int i = 0; i < count; i++)
             {
                 // неправильный код лиги, лига кодируется {-1,0,1,2}
-                if ((Temp.NoteList[0].Tie > 2) || (Temp.NoteList[0].Tie < -1)) { throw new Exception("LibiadaMusic: Tie is not valid!"); }
+                if (((int)Temp.NoteList[0].Tie > 2) || ((int)Temp.NoteList[0].Tie < -1)) { throw new Exception("LibiadaMusic: Tie is not valid!"); }
 
                 // если лига отсутствует
-                if (Temp.NoteList[0].Tie == -1)
+                if ((int)Temp.NoteList[0].Tie == -1)
                 {
                     if (BuffNote != null) { throw new Exception("LibiadaMusic: Tie started but (stop)/(startstop) note NOT following!"); }
                     TempGathered.NoteList.Add(((Note)Temp.NoteList[0].Clone()));
@@ -174,7 +174,7 @@ namespace LibiadaMusic.BorodaDivider
                         if (!BuffNote.PitchEquals(Temp.NoteList[0].Pitch)) { throw new Exception("LibiadaMusic: Pitches of tie notes not equal!"); }
 
                         // уже начавшаяся лига продолжается, с условием что будет еще следущая лигованная нота
-                        if (Temp.NoteList[0].Tie == 2)
+                        if ((int)Temp.NoteList[0].Tie == 2)
                         {
                             // добавляется длительность, и копируется старая высота звучания и приоритет
                             BuffNote = new Note(BuffNote.Pitch, BuffNote.Duration.AddDuration(Temp.NoteList[0].Duration), BuffNote.Triplet, Tie.None, BuffNote.Priority);
@@ -184,7 +184,7 @@ namespace LibiadaMusic.BorodaDivider
                         else
                         {
                             // конечная нота в последовательности лигованных нот
-                            if (Temp.NoteList[0].Tie == 1)
+                            if ((int)Temp.NoteList[0].Tie == 1)
                             {
                                 // добавляется длительность, и копируется старая высота звучания и приоритет
                                 BuffNote = new Note(BuffNote.Pitch, BuffNote.Duration.AddDuration(Temp.NoteList[0].Duration), BuffNote.Triplet, Tie.None, BuffNote.Priority);
@@ -209,16 +209,9 @@ namespace LibiadaMusic.BorodaDivider
 
         #region IBaseMethods
 
-        private Fmotiv()
-        {
-            ///<summary>
-            /// Stub for GetBin
-            ///</summary>  
-        }
-
         public IBaseObject Clone()
         {
-            Fmotiv Temp = new Fmotiv(this.id,this.type);
+            Fmotiv Temp = new Fmotiv(id,type);
             foreach (Note note in notelist) 
             {
                 Temp.notelist.Add((Note)note.Clone());
@@ -231,8 +224,8 @@ namespace LibiadaMusic.BorodaDivider
         public override bool Equals(object obj)
         {
             // для сравнения паузы не нужны, поэтому сравнивае ф-мотивы без пауз (они игнорируются, но входят в состав ф-мотива)
-            Fmotiv Temp1 = this.PauseTreatment(ParamPauseTreatment.Ignore).TieGathered();
-            Fmotiv Temp2 = ((Fmotiv)obj).PauseTreatment(ParamPauseTreatment.Ignore).TieGathered();
+            Fmotiv Temp1 = PauseTreatment((int)ParamPauseTreatment.Ignore).TieGathered();
+            Fmotiv Temp2 = ((Fmotiv)obj).PauseTreatment((int)ParamPauseTreatment.Ignore).TieGathered();
             int Modulation = 0;
             bool FirstTime = true;
 
@@ -285,7 +278,7 @@ namespace LibiadaMusic.BorodaDivider
         public bool FmEquals(object obj, int paramPause, int paramEqual)
         {
             // для сравнения паузы не нужны, поэтому сравнивае ф-мотивы без пауз (они игнорируются, но входят в состав ф-мотива)
-            Fmotiv Temp1 = this.PauseTreatment(paramPause).TieGathered();
+            Fmotiv Temp1 = PauseTreatment(paramPause).TieGathered();
             Fmotiv Temp2 = ((Fmotiv)obj).PauseTreatment(paramPause).TieGathered();
             int Modulation = 0;
             bool FirstTime = true;

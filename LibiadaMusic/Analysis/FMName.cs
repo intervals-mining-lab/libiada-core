@@ -7,22 +7,19 @@
         
         public FMName(string st) 
         {
-            this.name = st;
+            name = st;
         }
 
-        public string GetName()
+        public string Name
         {
-            return this.name;
+            get { return name; }
+            
         }
 
-        public void SetId(int ident)
+        public int Id
         {
-            this.id = ident;
-        }
-
-        public int GetId()
-        {
-            return this.id;
+            get { return id; }
+            set { id = value; }
         }
     }
 }

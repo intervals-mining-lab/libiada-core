@@ -28,30 +28,30 @@ namespace LibiadaMusic.ScoreModel
             int k = 0;
             List<Note> TempNoteList = new List<Note>(0);
             // проведём цикл до тех пор, пока номер текущей ноты не превышает количество нот в обоих тактах
-            while ((k < this.notelist.Count) && (k < measure.notelist.Count))
+            while ((k < notelist.Count) && (k < measure.notelist.Count))
                 {
-                    if (this.notelist[k].Duration.Equals(measure.notelist[k].Duration))
+                    if (notelist[k].Duration.Equals(measure.notelist[k].Duration))
                     {
                         // ноты одинаковы по длине, можно просто склеить
-                        this.notelist[k].AddPitch(measure.notelist[k].Pitch);
+                        notelist[k].AddPitch(measure.notelist[k].Pitch);
                     }
-                    else if (this.notelist[k].Duration.Value < measure.notelist[k].Duration.Value)
+                    else if (notelist[k].Duration.Value < measure.notelist[k].Duration.Value)
                     {
                         // нота из склеенного массива короче, значит нужно вторую разделить на две и склеить
                         TempNoteList = new List<Note>(0);
-                        TempNoteList.AddRange(measure.notelist[k].SplitNote(this.notelist[k].Duration));
+                        TempNoteList.AddRange(measure.notelist[k].SplitNote(notelist[k].Duration));
                         measure.notelist.RemoveAt(k);
                         measure.notelist.InsertRange(k, TempNoteList);
-                        this.notelist[k].AddPitch(measure.notelist[k].Pitch);
+                        notelist[k].AddPitch(measure.notelist[k].Pitch);
                     }
                     else
                     {
                         // нота из склеенного массива длиннее, значит надо её делить и клеить со второй
                         TempNoteList = new List<Note>(0);
-                        TempNoteList.AddRange(this.notelist[k].SplitNote(measure.notelist[k].Duration));
-                        this.notelist.RemoveAt(k);
-                        this.notelist.InsertRange(k, TempNoteList);
-                        this.notelist[k].AddPitch(measure.notelist[k].Pitch);
+                        TempNoteList.AddRange(notelist[k].SplitNote(measure.notelist[k].Duration));
+                        notelist.RemoveAt(k);
+                        notelist.InsertRange(k, TempNoteList);
+                        notelist[k].AddPitch(measure.notelist[k].Pitch);
                     }
                     k++;
                 }
@@ -62,39 +62,24 @@ namespace LibiadaMusic.ScoreModel
 
         public List<Note> NoteList
         {
-            get
-            {
-                return notelist;
-            }
+            get { return notelist; }
         }
         public Attributes Attributes
         {
-            get
-            {
-                return attributes;
-            }
-            set
-            {
-                this.attributes = value;
-            }
+            get { return attributes; }
+            set { attributes = value; }
         }
         public int Id
         {
-            get
-            {
-                return id;
-            }
-            set
-            {
-                this.id = value;
-            }
+            get { return id; }
+            set { id = value; }
         }
         
         #region IBaseMethods
 
         public IBaseObject Clone()
         {
-            Measure Temp = new Measure(this.notelist, this.attributes);
+            Measure Temp = new Measure(notelist, attributes);
             return Temp;
         }
 
@@ -102,17 +87,17 @@ namespace LibiadaMusic.ScoreModel
         {
             bool equalNoteList = true;
 
-            if (this.NoteList.Count!= ((Measure)obj).NoteList.Count) 
+            if (NoteList.Count!= ((Measure)obj).NoteList.Count) 
             {
                 return false;
             }
-            if (!this.Attributes.Equals(((Measure)obj).Attributes))
+            if (!Attributes.Equals(((Measure)obj).Attributes))
             {
                 return false;
             }
-            for(int i=0; i < this.NoteList.Count; i++)
+            for(int i=0; i < NoteList.Count; i++)
             {
-                if (!this.NoteList[i].Equals(((Measure)obj).NoteList[i])) 
+                if (!NoteList[i].Equals(((Measure)obj).NoteList[i])) 
                 {
                     return false;
                 }

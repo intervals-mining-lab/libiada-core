@@ -48,10 +48,10 @@ namespace LibiadaMusicTest.BorodaDivider
             fmotiv.NoteList.Add(new Note(new Pitch(1, 'A', 0), new Duration(1, 2, false, 480), false, Tie.None));
             fmotiv.NoteList.Add(new Note((Pitch)null, new Duration(1, 4, false, 480), false, Tie.None));
             fmotiv.NoteList.Add(new Note(new Pitch(1, 'A', 0), new Duration(1, 2, false, 480), false, Tie.None));
-            Assert.AreEqual((fmotiv.PauseTreatment(ParamPauseTreatment.Ignore)).NoteList[0].Pitch[0].Step, 'A');
-            Assert.AreEqual((fmotiv.PauseTreatment(ParamPauseTreatment.Ignore)).NoteList[1].Pitch[0].Step, 'A');
-            Assert.AreEqual((fmotiv.PauseTreatment(ParamPauseTreatment.Ignore)).NoteList[2].Pitch[0].Step, 'A');
-            Assert.AreEqual((fmotiv.PauseTreatment(ParamPauseTreatment.Ignore)).NoteList.Count, 3);
+            Assert.AreEqual((fmotiv.PauseTreatment((int)ParamPauseTreatment.Ignore)).NoteList[0].Pitch[0].Step, 'A');
+            Assert.AreEqual((fmotiv.PauseTreatment((int)ParamPauseTreatment.Ignore)).NoteList[1].Pitch[0].Step, 'A');
+            Assert.AreEqual((fmotiv.PauseTreatment((int)ParamPauseTreatment.Ignore)).NoteList[2].Pitch[0].Step, 'A');
+            Assert.AreEqual((fmotiv.PauseTreatment((int)ParamPauseTreatment.Ignore)).NoteList.Count, 3);
         }
 
         [TestMethod]
@@ -65,10 +65,10 @@ namespace LibiadaMusicTest.BorodaDivider
             fmotiv.NoteList.Add(new Note(new Pitch(1, 'A', 0), new Duration(1, 2, false, 480), false, Tie.None));
             fmotiv.NoteList.Add(new Note((Pitch)null, new Duration(1, 4, false, 480), false, Tie.None));
             fmotiv.NoteList.Add(new Note(new Pitch(1, 'A', 0), new Duration(1, 2, false, 480), false, Tie.None));
-            Assert.AreEqual((fmotiv.PauseTreatment(ParamPauseTreatment.Ignore)).NoteList[0].Pitch[0].Step, 'A');
-            Assert.AreEqual((fmotiv.PauseTreatment(ParamPauseTreatment.Ignore)).NoteList[1].Pitch[0].Step, 'A');
-            Assert.AreEqual((fmotiv.PauseTreatment(ParamPauseTreatment.Ignore)).NoteList[2].Pitch[0].Step, 'A');
-            Assert.AreEqual((fmotiv.PauseTreatment(ParamPauseTreatment.Ignore)).NoteList.Count, 3);
+            Assert.AreEqual((fmotiv.PauseTreatment((int)ParamPauseTreatment.Ignore)).NoteList[0].Pitch[0].Step, 'A');
+            Assert.AreEqual((fmotiv.PauseTreatment((int)ParamPauseTreatment.Ignore)).NoteList[1].Pitch[0].Step, 'A');
+            Assert.AreEqual((fmotiv.PauseTreatment((int)ParamPauseTreatment.Ignore)).NoteList[2].Pitch[0].Step, 'A');
+            Assert.AreEqual((fmotiv.PauseTreatment((int)ParamPauseTreatment.Ignore)).NoteList.Count, 3);
 
         }
 
@@ -162,7 +162,7 @@ namespace LibiadaMusicTest.BorodaDivider
 
             // в знаке лиги не {-1,0,1,2}
             Fmotiv fmotiv2 = new Fmotiv(0, "ПМТ");
-            fmotiv2.NoteList.Add(new Note(new Pitch(1, 'A', 0), new Duration(1, 8, false, 480), false, 9, 1));
+            fmotiv2.NoteList.Add(new Note(new Pitch(1, 'A', 0), new Duration(1, 8, false, 480), false, (Tie)9, 1));
             try
             {
                 Fmotiv testfm = fmotiv2.TieGathered();
@@ -265,7 +265,7 @@ namespace LibiadaMusicTest.BorodaDivider
             fmotiv1.NoteList.Add(new Note(new Pitch(3, 'A', 0), new Duration(1, 8, false, 480), false, Tie.Stop, 2));
             fmotiv1.NoteList.Add(new Note(new Pitch(3, 'B', -2), new Duration(1, 2, false, 480), false, Tie.None, 5));
 
-            Assert.IsTrue(fmotiv.FmEquals(((Fmotiv)fmotiv1),ParamPauseTreatment.Ignore,ParamEqualFM.Sequent));
+            Assert.IsTrue(fmotiv.FmEquals(((Fmotiv)fmotiv1), (int)ParamPauseTreatment.Ignore, (int)ParamEqualFM.Sequent));
         }
     }
 

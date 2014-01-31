@@ -13,7 +13,7 @@ namespace LibiadaMusic.Characteristics
 
             foreach(Fmotiv fmotiv in FmChain.FmotivList)
             {
-                NCount = NCount + fmotiv.TieGathered().PauseTreatment(ParamPauseTreatment.Ignore).NoteList.Count; // заполняем счетчик складывая кол-во поф-мотивно
+                NCount = NCount + fmotiv.TieGathered().PauseTreatment((int)ParamPauseTreatment.Ignore).NoteList.Count; // заполняем счетчик складывая кол-во поф-мотивно
             }
 
             // два инта делятся, это необходимо чтоб вернуть дабл

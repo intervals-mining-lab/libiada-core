@@ -9,9 +9,9 @@ namespace LibiadaMusicTest.BorodaDivider
         [TestMethod]
         public void TestParamPause1()
         {
-            Assert.AreEqual(ParamPauseTreatment.Ignore, 0);
-            Assert.AreEqual(ParamPauseTreatment.NoteTrace, 1);
-            Assert.AreEqual(ParamPauseTreatment.SilenceNote, 2);
+            Assert.AreEqual((int)ParamPauseTreatment.Ignore, 0);
+            Assert.AreEqual((int)ParamPauseTreatment.NoteTrace, 1);
+            Assert.AreEqual((int)ParamPauseTreatment.SilenceNote, 2);
         }
     }
 }

@@ -45,7 +45,7 @@ namespace LibiadaMusic.BorodaDivider
 
                 #region Сборка последующих нот, в случае Лиги
                 // проверка на наличие лиги у очередной ноты, если есть то заносим в буффер все ноты, объединенные данной лигой
-                if (FmotivBuffer.NoteList[FmotivBuffer.NoteList.Count - 1].Tie != -1)
+                if ((int)FmotivBuffer.NoteList[FmotivBuffer.NoteList.Count - 1].Tie != -1)
                 {
                     // если есть флаг начала лиги, то записываем в буфер все остальные лигованные ноты, пока не будет флага конца лиги
                     if (FmotivBuffer.NoteList[FmotivBuffer.NoteList.Count - 1].Tie == 0)
@@ -53,13 +53,13 @@ namespace LibiadaMusic.BorodaDivider
                         // TODO: желательно сделать проверку когда собирается очередная лига,
                         // не будет ли пуста цепь нот, до того как лига закончится (будет флаг конца лиги)
 
-                        while (NoteChain[0].Tie == 2)
+                        while ((int)NoteChain[0].Tie == 2)
                         {
                             // пока продолжается лига, заносим ноты в буфер
                             FmotivBuffer.NoteList.Add(((Note)NoteChain[0].Clone()));
                             NoteChain.RemoveAt(0);
                         }
-                        if (NoteChain[0].Tie == 1)
+                        if ((int)NoteChain[0].Tie == 1)
                         {
                             // если есть флаг конца лиги у очередной ноты, то заносим конечную ноту лиги в буфер
                             FmotivBuffer.NoteList.Add(((Note)NoteChain[0].Clone()));
@@ -498,12 +498,12 @@ namespace LibiadaMusic.BorodaDivider
                             if(fmotiv.PauseTreatment(paramPause).TieGathered().NoteList.Count == 2)
                             {
                                 // Silence Note OR Ignore Pause
-                                if (paramPause != ParamPauseTreatment.NoteTrace)
+                                if ((int)paramPause != (int)ParamPauseTreatment.NoteTrace)
                                 {
                                      break;
                                 }
                                 // для Note Trace приходится отслеживать чтобы все ноты и паузы за ними идущие собрались
-                                if((paramPause == ParamPauseTreatment.NoteTrace)&&(FmotivBuffer.NoteList[0].Pitch.Count > 0))
+                                if (((int)paramPause == (int)ParamPauseTreatment.NoteTrace) && (FmotivBuffer.NoteList[0].Pitch.Count > 0))
                                 {
                                      break;
                                 }
@@ -514,7 +514,7 @@ namespace LibiadaMusic.BorodaDivider
 
                             #region Сборка последующих нот, в случае Лиги
                             // проверка на наличие лиги у очередной ноты, если есть то заносим в буффер все ноты, объединенные данной лигой
-                            if (fmotiv.NoteList[fmotiv.NoteList.Count - 1].Tie != -1)
+                            if ((int)fmotiv.NoteList[fmotiv.NoteList.Count - 1].Tie != -1)
                             {
                                     // если есть флаг начала лиги, то записываем в буфер все остальные лигованные ноты, пока не будет флага конца лиги
                                     if (fmotiv.NoteList[fmotiv.NoteList.Count - 1].Tie == 0)
@@ -522,13 +522,13 @@ namespace LibiadaMusic.BorodaDivider
                                         // TODO: желательно сделать проверку когда собирается очередная лига,
                                         // не будет ли пуста цепь нот, до того как лига закончится (будет флаг конца лиги)
 
-                                        while (FmotivBuffer.NoteList[0].Tie == 2)
+                                        while ((int)FmotivBuffer.NoteList[0].Tie == 2)
                                         {
                                             // пока продолжается лига, заносим ноты в буфер
                                             fmotiv.NoteList.Add(((Note)FmotivBuffer.NoteList[0].Clone()));
                                             FmotivBuffer.NoteList.RemoveAt(0);
                                         }
-                                        if (FmotivBuffer.NoteList[0].Tie == 1)
+                                        if ((int)FmotivBuffer.NoteList[0].Tie == 1)
                                         {
                                             // если есть флаг конца лиги у очередной ноты, то заносим конечную ноту лиги в буфер
                                             fmotiv.NoteList.Add(((Note)FmotivBuffer.NoteList[0].Clone()));
@@ -567,12 +567,12 @@ namespace LibiadaMusic.BorodaDivider
                             if (fmotiv.PauseTreatment(paramPause).TieGathered().NoteList.Count == 1)
                             {
                                 // Silence Note OR Ignore Pause
-                                if (paramPause != ParamPauseTreatment.NoteTrace)
+                                if (paramPause != (int)ParamPauseTreatment.NoteTrace)
                                 {
                                     break;
                                 }
                                 // для Note Trace приходится отслеживать чтобы все ноты и паузы за ними идущие собрались
-                                if ((paramPause == ParamPauseTreatment.NoteTrace) && (FmotivBuffer.NoteList[0].Pitch.Count > 0))
+                                if ((paramPause == (int)ParamPauseTreatment.NoteTrace) && (FmotivBuffer.NoteList[0].Pitch.Count > 0))
                                 {
                                     break;
                                 }
@@ -583,7 +583,7 @@ namespace LibiadaMusic.BorodaDivider
 
                             #region Сборка последующих нот, в случае Лиги
                             // проверка на наличие лиги у очередной ноты, если есть то заносим в буффер все ноты, объединенные данной лигой
-                            if (fmotiv.NoteList[fmotiv.NoteList.Count - 1].Tie != -1)
+                            if ((int)fmotiv.NoteList[fmotiv.NoteList.Count - 1].Tie != -1)
                             {
                                 // если есть флаг начала лиги, то записываем в буфер все остальные лигованные ноты, пока не будет флага конца лиги
                                 if (fmotiv.NoteList[fmotiv.NoteList.Count - 1].Tie == 0)
@@ -591,13 +591,13 @@ namespace LibiadaMusic.BorodaDivider
                                     // TODO: желательно сделать проверку когда собирается очередная лига,
                                     // не будет ли пуста цепь нот, до того как лига закончится (будет флаг конца лиги)
 
-                                    while (FmotivBuffer.NoteList[0].Tie == 2)
+                                    while ((int)FmotivBuffer.NoteList[0].Tie == 2)
                                     {
                                         // пока продолжается лига, заносим ноты в буфер
                                         fmotiv.NoteList.Add(((Note)FmotivBuffer.NoteList[0].Clone()));
                                         FmotivBuffer.NoteList.RemoveAt(0);
                                     }
-                                    if (FmotivBuffer.NoteList[0].Tie == 1)
+                                    if ((int)FmotivBuffer.NoteList[0].Tie == 1)
                                     {
                                         // если есть флаг конца лиги у очередной ноты, то заносим конечную ноту лиги в буфер
                                         fmotiv.NoteList.Add(((Note)FmotivBuffer.NoteList[0].Clone()));
@@ -683,12 +683,12 @@ namespace LibiadaMusic.BorodaDivider
                                     if (fmotiv.PauseTreatment(paramPause).TieGathered().NoteList.Count == 3)
                                     {
                                         // Silence Note OR Ignore Pause
-                                        if (paramPause != ParamPauseTreatment.NoteTrace)
+                                        if (paramPause != (int)ParamPauseTreatment.NoteTrace)
                                         {
                                             break;
                                         }
                                         // для Note Trace приходится отслеживать чтобы все ноты и паузы за ними идущие собрались
-                                        if ((paramPause == ParamPauseTreatment.NoteTrace) && (FmotivBuffer.NoteList[0].Pitch.Count > 0))
+                                        if ((paramPause == (int)ParamPauseTreatment.NoteTrace) && (FmotivBuffer.NoteList[0].Pitch.Count > 0))
                                         {
                                             break;
                                         }
@@ -698,7 +698,7 @@ namespace LibiadaMusic.BorodaDivider
 
                                     #region Сборка последующих нот, в случае Лиги
                                     // проверка на наличие лиги у очередной ноты, если есть то заносим в буффер все ноты, объединенные данной лигой
-                                    if (fmotiv.NoteList[fmotiv.NoteList.Count - 1].Tie != -1)
+                                    if ((int)fmotiv.NoteList[fmotiv.NoteList.Count - 1].Tie != -1)
                                     {
                                         // если есть флаг начала лиги, то записываем в буфер все остальные лигованные ноты, пока не будет флага конца лиги
                                         if (fmotiv.NoteList[fmotiv.NoteList.Count - 1].Tie == 0)
@@ -706,13 +706,13 @@ namespace LibiadaMusic.BorodaDivider
                                             // TODO: желательно сделать проверку когда собирается очередная лига,
                                             // не будет ли пуста цепь нот, до того как лига закончится (будет флаг конца лиги)
 
-                                            while (FmotivBuffer.NoteList[0].Tie == 2)
+                                            while ((int)FmotivBuffer.NoteList[0].Tie == 2)
                                             {
                                                 // пока продолжается лига, заносим ноты в буфер
                                                 fmotiv.NoteList.Add(((Note)FmotivBuffer.NoteList[0].Clone()));
                                                 FmotivBuffer.NoteList.RemoveAt(0);
                                             }
-                                            if (FmotivBuffer.NoteList[0].Tie == 1)
+                                            if ((int)FmotivBuffer.NoteList[0].Tie == 1)
                                             {
                                                 // если есть флаг конца лиги у очередной ноты, то заносим конечную ноту лиги в буфер
                                                 fmotiv.NoteList.Add(((Note)FmotivBuffer.NoteList[0].Clone()));
@@ -756,12 +756,12 @@ namespace LibiadaMusic.BorodaDivider
                                     if (fmotiv.PauseTreatment(paramPause).TieGathered().NoteList.Count == 2)
                                     {
                                         // Silence Note OR Ignore Pause
-                                        if (paramPause != ParamPauseTreatment.NoteTrace)
+                                        if (paramPause != (int)ParamPauseTreatment.NoteTrace)
                                         {
                                             break;
                                         }
                                         // для Note Trace приходится отслеживать чтобы все ноты и паузы за ними идущие собрались
-                                        if ((paramPause == ParamPauseTreatment.NoteTrace) && (FmotivBuffer.NoteList[0].Pitch.Count > 0))
+                                        if ((paramPause == (int)ParamPauseTreatment.NoteTrace) && (FmotivBuffer.NoteList[0].Pitch.Count > 0))
                                         {
                                             break;
                                         }
@@ -771,7 +771,7 @@ namespace LibiadaMusic.BorodaDivider
 
                                     #region Сборка последующих нот, в случае Лиги
                                     // проверка на наличие лиги у очередной ноты, если есть то заносим в буффер все ноты, объединенные данной лигой
-                                    if (fmotiv.NoteList[fmotiv.NoteList.Count - 1].Tie != -1)
+                                    if ((int)fmotiv.NoteList[fmotiv.NoteList.Count - 1].Tie != -1)
                                     {
                                         // если есть флаг начала лиги, то записываем в буфер все остальные лигованные ноты, пока не будет флага конца лиги
                                         if (fmotiv.NoteList[fmotiv.NoteList.Count - 1].Tie == 0)
@@ -779,13 +779,13 @@ namespace LibiadaMusic.BorodaDivider
                                             // TODO: желательно сделать проверку когда собирается очередная лига,
                                             // не будет ли пуста цепь нот, до того как лига закончится (будет флаг конца лиги)
 
-                                            while (FmotivBuffer.NoteList[0].Tie == 2)
+                                            while ((int)FmotivBuffer.NoteList[0].Tie == 2)
                                             {
                                                 // пока продолжается лига, заносим ноты в буфер
                                                 fmotiv.NoteList.Add(((Note)FmotivBuffer.NoteList[0].Clone()));
                                                 FmotivBuffer.NoteList.RemoveAt(0);
                                             }
-                                            if (FmotivBuffer.NoteList[0].Tie == 1)
+                                            if ((int)FmotivBuffer.NoteList[0].Tie == 1)
                                             {
                                                 // если есть флаг конца лиги у очередной ноты, то заносим конечную ноту лиги в буфер
                                                 fmotiv.NoteList.Add(((Note)FmotivBuffer.NoteList[0].Clone()));
@@ -851,12 +851,12 @@ namespace LibiadaMusic.BorodaDivider
                                 if (fmotiv.PauseTreatment(paramPause).TieGathered().NoteList.Count == 1)
                                 {
                                     // Silence Note OR Ignore Pause
-                                    if (paramPause != ParamPauseTreatment.NoteTrace)
+                                    if (paramPause != (int)ParamPauseTreatment.NoteTrace)
                                     {
                                         break;
                                     }
                                     // для Note Trace приходится отслеживать чтобы все ноты и паузы за ними идущие собрались
-                                    if ((paramPause == ParamPauseTreatment.NoteTrace) && (FmotivBuffer.NoteList[0].Pitch.Count > 0))
+                                    if ((paramPause == (int)ParamPauseTreatment.NoteTrace) && (FmotivBuffer.NoteList[0].Pitch.Count > 0))
                                     {
                                         break;
                                     }
@@ -866,7 +866,7 @@ namespace LibiadaMusic.BorodaDivider
 
                                 #region Сборка последующих нот, в случае Лиги
                                 // проверка на наличие лиги у очередной ноты, если есть то заносим в буффер все ноты, объединенные данной лигой
-                                if (fmotiv.NoteList[fmotiv.NoteList.Count - 1].Tie != -1)
+                                if ((int)fmotiv.NoteList[fmotiv.NoteList.Count - 1].Tie != -1)
                                 {
                                     // если есть флаг начала лиги, то записываем в буфер все остальные лигованные ноты, пока не будет флага конца лиги
                                     if (fmotiv.NoteList[fmotiv.NoteList.Count - 1].Tie == 0)
@@ -874,13 +874,13 @@ namespace LibiadaMusic.BorodaDivider
                                         // TODO: желательно сделать проверку когда собирается очередная лига,
                                         // не будет ли пуста цепь нот, до того как лига закончится (будет флаг конца лиги)
 
-                                        while (FmotivBuffer.NoteList[0].Tie == 2)
+                                        while ((int)FmotivBuffer.NoteList[0].Tie == 2)
                                         {
                                             // пока продолжается лига, заносим ноты в буфер
                                             fmotiv.NoteList.Add(((Note)FmotivBuffer.NoteList[0].Clone()));
                                             FmotivBuffer.NoteList.RemoveAt(0);
                                         }
-                                        if (FmotivBuffer.NoteList[0].Tie == 1)
+                                        if ((int)FmotivBuffer.NoteList[0].Tie == 1)
                                         {
                                             // если есть флаг конца лиги у очередной ноты, то заносим конечную ноту лиги в буфер
                                             fmotiv.NoteList.Add(((Note)FmotivBuffer.NoteList[0].Clone()));
@@ -959,12 +959,12 @@ namespace LibiadaMusic.BorodaDivider
                                 if (fmotiv.PauseTreatment(paramPause).TieGathered().NoteList.Count == 2)
                                 {
                                     // Silence Note OR Ignore Pause
-                                    if (paramPause != ParamPauseTreatment.NoteTrace)
+                                    if (paramPause != (int)ParamPauseTreatment.NoteTrace)
                                     {
                                         break;
                                     }
                                     // для Note Trace приходится отслеживать чтобы все ноты и паузы за ними идущие собрались
-                                    if ((paramPause == ParamPauseTreatment.NoteTrace) && (FmotivBuffer.NoteList[0].Pitch.Count > 0))
+                                    if ((paramPause == (int)ParamPauseTreatment.NoteTrace) && (FmotivBuffer.NoteList[0].Pitch.Count > 0))
                                     {
                                         break;
                                     }
@@ -974,7 +974,7 @@ namespace LibiadaMusic.BorodaDivider
 
                                 #region Сборка последующих нот, в случае Лиги
                                 // проверка на наличие лиги у очередной ноты, если есть то заносим в буффер все ноты, объединенные данной лигой
-                                if (fmotiv.NoteList[fmotiv.NoteList.Count - 1].Tie != -1)
+                                if ((int)fmotiv.NoteList[fmotiv.NoteList.Count - 1].Tie != -1)
                                 {
                                     // если есть флаг начала лиги, то записываем в буфер все остальные лигованные ноты, пока не будет флага конца лиги
                                     if (fmotiv.NoteList[fmotiv.NoteList.Count - 1].Tie == 0)
@@ -982,13 +982,13 @@ namespace LibiadaMusic.BorodaDivider
                                         // TODO: желательно сделать проверку когда собирается очередная лига,
                                         // не будет ли пуста цепь нот, до того как лига закончится (будет флаг конца лиги)
 
-                                        while (FmotivBuffer.NoteList[0].Tie == 2)
+                                        while ((int)FmotivBuffer.NoteList[0].Tie == 2)
                                         {
                                             // пока продолжается лига, заносим ноты в буфер
                                             fmotiv.NoteList.Add(((Note)FmotivBuffer.NoteList[0].Clone()));
                                             FmotivBuffer.NoteList.RemoveAt(0);
                                         }
-                                        if (FmotivBuffer.NoteList[0].Tie == 1)
+                                        if ((int)FmotivBuffer.NoteList[0].Tie == 1)
                                         {
                                             // если есть флаг конца лиги у очередной ноты, то заносим конечную ноту лиги в буфер
                                             fmotiv.NoteList.Add(((Note)FmotivBuffer.NoteList[0].Clone()));
@@ -1026,12 +1026,12 @@ namespace LibiadaMusic.BorodaDivider
                                 if (fmotiv.PauseTreatment(paramPause).TieGathered().NoteList.Count == 1)
                                 {
                                     // Silence Note OR Ignore Pause
-                                    if (paramPause != ParamPauseTreatment.NoteTrace)
+                                    if (paramPause != (int)ParamPauseTreatment.NoteTrace)
                                     {
                                         break;
                                     }
                                     // для Note Trace приходится отслеживать чтобы все ноты и паузы за ними идущие собрались
-                                    if ((paramPause == ParamPauseTreatment.NoteTrace) && (FmotivBuffer.NoteList[0].Pitch.Count > 0))
+                                    if ((paramPause == (int)ParamPauseTreatment.NoteTrace) && (FmotivBuffer.NoteList[0].Pitch.Count > 0))
                                     {
                                         break;
                                     }
@@ -1041,7 +1041,7 @@ namespace LibiadaMusic.BorodaDivider
 
                                 #region Сборка последующих нот, в случае Лиги
                                 // проверка на наличие лиги у очередной ноты, если есть то заносим в буффер все ноты, объединенные данной лигой
-                                if (fmotiv.NoteList[fmotiv.NoteList.Count - 1].Tie != -1)
+                                if ((int)fmotiv.NoteList[fmotiv.NoteList.Count - 1].Tie != -1)
                                 {
                                     // если есть флаг начала лиги, то записываем в буфер все остальные лигованные ноты, пока не будет флага конца лиги
                                     if (fmotiv.NoteList[fmotiv.NoteList.Count - 1].Tie == 0)
@@ -1049,13 +1049,13 @@ namespace LibiadaMusic.BorodaDivider
                                         // TODO: желательно сделать проверку когда собирается очередная лига,
                                         // не будет ли пуста цепь нот, до того как лига закончится (будет флаг конца лиги)
 
-                                        while (FmotivBuffer.NoteList[0].Tie == 2)
+                                        while ((int)FmotivBuffer.NoteList[0].Tie == 2)
                                         {
                                             // пока продолжается лига, заносим ноты в буфер
                                             fmotiv.NoteList.Add(((Note)FmotivBuffer.NoteList[0].Clone()));
                                             FmotivBuffer.NoteList.RemoveAt(0);
                                         }
-                                        if (FmotivBuffer.NoteList[0].Tie == 1)
+                                        if ((int)FmotivBuffer.NoteList[0].Tie == 1)
                                         {
                                             // если есть флаг конца лиги у очередной ноты, то заносим конечную ноту лиги в буфер
                                             fmotiv.NoteList.Add(((Note)FmotivBuffer.NoteList[0].Clone()));
@@ -1113,12 +1113,12 @@ namespace LibiadaMusic.BorodaDivider
                                 if (fmotiv.PauseTreatment(paramPause).TieGathered().NoteList.Count == 3)
                                 {
                                     // Silence Note OR Ignore Pause
-                                    if (paramPause != ParamPauseTreatment.NoteTrace)
+                                    if (paramPause != (int)ParamPauseTreatment.NoteTrace)
                                     {
                                         break;
                                     }
                                     // для Note Trace приходится отслеживать чтобы все ноты и паузы за ними идущие собрались
-                                    if ((paramPause == ParamPauseTreatment.NoteTrace) && (FmotivBuffer.NoteList[0].Pitch.Count > 0))
+                                    if ((paramPause == (int)ParamPauseTreatment.NoteTrace) && (FmotivBuffer.NoteList[0].Pitch.Count > 0))
                                     {
                                         break;
                                     }
@@ -1128,7 +1128,7 @@ namespace LibiadaMusic.BorodaDivider
 
                                 #region Сборка последующих нот, в случае Лиги
                                 // проверка на наличие лиги у очередной ноты, если есть то заносим в буффер все ноты, объединенные данной лигой
-                                if (fmotiv.NoteList[fmotiv.NoteList.Count - 1].Tie != -1)
+                                if ((int)fmotiv.NoteList[fmotiv.NoteList.Count - 1].Tie != -1)
                                 {
                                     // если есть флаг начала лиги, то записываем в буфер все остальные лигованные ноты, пока не будет флага конца лиги
                                     if (fmotiv.NoteList[fmotiv.NoteList.Count - 1].Tie == 0)
@@ -1136,13 +1136,13 @@ namespace LibiadaMusic.BorodaDivider
                                         // TODO: желательно сделать проверку когда собирается очередная лига,
                                         // не будет ли пуста цепь нот, до того как лига закончится (будет флаг конца лиги)
 
-                                        while (FmotivBuffer.NoteList[0].Tie == 2)
+                                        while ((int)FmotivBuffer.NoteList[0].Tie == 2)
                                         {
                                             // пока продолжается лига, заносим ноты в буфер
                                             fmotiv.NoteList.Add(((Note)FmotivBuffer.NoteList[0].Clone()));
                                             FmotivBuffer.NoteList.RemoveAt(0);
                                         }
-                                        if (FmotivBuffer.NoteList[0].Tie == 1)
+                                        if ((int)FmotivBuffer.NoteList[0].Tie == 1)
                                         {
                                             // если есть флаг конца лиги у очередной ноты, то заносим конечную ноту лиги в буфер
                                             fmotiv.NoteList.Add(((Note)FmotivBuffer.NoteList[0].Clone()));
@@ -1186,12 +1186,12 @@ namespace LibiadaMusic.BorodaDivider
                                 if (fmotiv.PauseTreatment(paramPause).TieGathered().NoteList.Count == 2)
                                 {
                                     // Silence Note OR Ignore Pause
-                                    if (paramPause != ParamPauseTreatment.NoteTrace)
+                                    if (paramPause != (int)ParamPauseTreatment.NoteTrace)
                                     {
                                         break;
                                     }
                                     // для Note Trace приходится отслеживать чтобы все ноты и паузы за ними идущие собрались
-                                    if ((paramPause == ParamPauseTreatment.NoteTrace) && (FmotivBuffer.NoteList[0].Pitch.Count > 0))
+                                    if ((paramPause == (int)ParamPauseTreatment.NoteTrace) && (FmotivBuffer.NoteList[0].Pitch.Count > 0))
                                     {
                                         break;
                                     }
@@ -1201,7 +1201,7 @@ namespace LibiadaMusic.BorodaDivider
 
                                 #region Сборка последующих нот, в случае Лиги
                                 // проверка на наличие лиги у очередной ноты, если есть то заносим в буффер все ноты, объединенные данной лигой
-                                if (fmotiv.NoteList[fmotiv.NoteList.Count - 1].Tie != -1)
+                                if ((int)fmotiv.NoteList[fmotiv.NoteList.Count - 1].Tie != -1)
                                 {
                                     // если есть флаг начала лиги, то записываем в буфер все остальные лигованные ноты, пока не будет флага конца лиги
                                     if (fmotiv.NoteList[fmotiv.NoteList.Count - 1].Tie == 0)
@@ -1209,13 +1209,13 @@ namespace LibiadaMusic.BorodaDivider
                                         // TODO: желательно сделать проверку когда собирается очередная лига,
                                         // не будет ли пуста цепь нот, до того как лига закончится (будет флаг конца лиги)
 
-                                        while (FmotivBuffer.NoteList[0].Tie == 2)
+                                        while ((int)FmotivBuffer.NoteList[0].Tie == 2)
                                         {
                                             // пока продолжается лига, заносим ноты в буфер
                                             fmotiv.NoteList.Add(((Note)FmotivBuffer.NoteList[0].Clone()));
                                             FmotivBuffer.NoteList.RemoveAt(0);
                                         }
-                                        if (FmotivBuffer.NoteList[0].Tie == 1)
+                                        if ((int)FmotivBuffer.NoteList[0].Tie == 1)
                                         {
                                             // если есть флаг конца лиги у очередной ноты, то заносим конечную ноту лиги в буфер
                                             fmotiv.NoteList.Add(((Note)FmotivBuffer.NoteList[0].Clone()));
@@ -1281,12 +1281,12 @@ namespace LibiadaMusic.BorodaDivider
                             if (fmotiv.PauseTreatment(paramPause).TieGathered().NoteList.Count == 1)
                             {
                                 // Silence Note OR Ignore Pause
-                                if (paramPause != ParamPauseTreatment.NoteTrace)
+                                if (paramPause != (int)ParamPauseTreatment.NoteTrace)
                                 {
                                     break;
                                 }
                                 // для Note Trace приходится отслеживать чтобы все ноты и паузы за ними идущие собрались
-                                if ((paramPause == ParamPauseTreatment.NoteTrace) && (FmotivBuffer.NoteList[0].Pitch.Count > 0))
+                                if ((paramPause == (int)ParamPauseTreatment.NoteTrace) && (FmotivBuffer.NoteList[0].Pitch.Count > 0))
                                 {
                                     break;
                                 }
@@ -1296,7 +1296,7 @@ namespace LibiadaMusic.BorodaDivider
 
                             #region Сборка последующих нот, в случае Лиги
                             // проверка на наличие лиги у очередной ноты, если есть то заносим в буффер все ноты, объединенные данной лигой
-                            if (fmotiv.NoteList[fmotiv.NoteList.Count - 1].Tie != -1)
+                            if ((int)fmotiv.NoteList[fmotiv.NoteList.Count - 1].Tie != -1)
                             {
                                 // если есть флаг начала лиги, то записываем в буфер все остальные лигованные ноты, пока не будет флага конца лиги
                                 if (fmotiv.NoteList[fmotiv.NoteList.Count - 1].Tie == 0)
@@ -1304,13 +1304,13 @@ namespace LibiadaMusic.BorodaDivider
                                     // TODO: желательно сделать проверку когда собирается очередная лига,
                                     // не будет ли пуста цепь нот, до того как лига закончится (будет флаг конца лиги)
 
-                                    while (FmotivBuffer.NoteList[0].Tie == 2)
+                                    while ((int)FmotivBuffer.NoteList[0].Tie == 2)
                                     {
                                         // пока продолжается лига, заносим ноты в буфер
                                         fmotiv.NoteList.Add(((Note)FmotivBuffer.NoteList[0].Clone()));
                                         FmotivBuffer.NoteList.RemoveAt(0);
                                     }
-                                    if (FmotivBuffer.NoteList[0].Tie == 1)
+                                    if ((int)FmotivBuffer.NoteList[0].Tie == 1)
                                     {
                                         // если есть флаг конца лиги у очередной ноты, то заносим конечную ноту лиги в буфер
                                         fmotiv.NoteList.Add(((Note)FmotivBuffer.NoteList[0].Clone()));

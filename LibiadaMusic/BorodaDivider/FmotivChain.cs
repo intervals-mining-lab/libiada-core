@@ -12,41 +12,25 @@ namespace LibiadaMusic.BorodaDivider
 
         public FmotivChain() 
         {
-            this.fmotivlist = new List<Fmotiv>();
+            fmotivlist = new List<Fmotiv>();
         }
 
         public List<Fmotiv> FmotivList
         {
-            get
-            {
-                return fmotivlist;
-            }
+            get{ return fmotivlist; }
         }
         public string Name
         {
-            get
-            {
-                return name;
-            }
-            set
-            {
-                this.name = value;
-            }
+            get { return name; }
+            set { name = value; }
         }
         public int Id
         {
-            get
-            {
-                return id;
-            }
-            set
-            {
-                this.id = value;
-            }
+            get{ return id; }
+            set { id = value; }
         }
 
         #region IBaseMethods
-
 
         public IBaseObject Clone()
         {
@@ -55,21 +39,21 @@ namespace LibiadaMusic.BorodaDivider
             {
                 Temp.fmotivlist.Add((Fmotiv)fmotiv.Clone());
             }
-            Temp.id = this.id;
-            Temp.name = this.name;
+            Temp.id = id;
+            Temp.name = name;
 
             return Temp;
         }
 
         public override bool Equals(object obj)
         {
-            if (this.name != ((FmotivChain)obj).Name) { return false; }
-            if (this.id != ((FmotivChain)obj).Id) { return false; }
+            if (name != ((FmotivChain)obj).name) { return false; }
+            if (id != ((FmotivChain)obj).id) { return false; }
 
-            if (this.FmotivList.Count!= ((FmotivChain)obj).FmotivList.Count) {return false;}
-            for(int i=0; i < this.FmotivList.Count; i++)
+            if (FmotivList.Count!= ((FmotivChain)obj).FmotivList.Count) {return false;}
+            for(int i=0; i < FmotivList.Count; i++)
             {
-                if (!this.FmotivList[i].Equals(((FmotivChain)obj).FmotivList[i])) {return false;}
+                if (!FmotivList[i].Equals(((FmotivChain)obj).FmotivList[i])) {return false;}
             }
 
             return true; 

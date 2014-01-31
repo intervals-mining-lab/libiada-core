@@ -14,30 +14,24 @@ namespace LibiadaMusic.ScoreModel
         }
         public Size Size
         {
-            get
-            {
-                return size;
-            }
+            get { return size; }
         }
         public Key Key
         {
-            get
-            {
-                return key;
-            }
+            get { return key; }
         }
 
         #region IBaseMethods
 
         public IBaseObject Clone()
         {
-            Attributes Temp = new Attributes(this.size, this.key);
+            Attributes Temp = new Attributes(size, key);
             return Temp;
         }
 
         public override bool Equals(object obj)
         {
-            if (this.Key.Equals(((Attributes)obj).Key) && this.Size.Equals(((Attributes)obj).Size))
+            if (Key.Equals(((Attributes)obj).Key) && Size.Equals(((Attributes)obj).Size))
             {
                 return true;
             }

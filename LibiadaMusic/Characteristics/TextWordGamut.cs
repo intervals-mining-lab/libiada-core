@@ -123,7 +123,7 @@ namespace LibiadaMusic.Characteristics
                 for (int i = 0; i < FmChain.FmotivList.Count; i++)
                 {
                     //накполение интервала, сложение букв фмотивов
-                    interval = interval + FmChain.FmotivList[FmChain.FmotivList.Count -1 - i].PauseTreatment(ParamPauseTreatment.Ignore).TieGathered().NoteList.Count;
+                    interval = interval + FmChain.FmotivList[FmChain.FmotivList.Count - 1 - i].PauseTreatment((int)ParamPauseTreatment.Ignore).TieGathered().NoteList.Count;
                     // накопление интервала слов
                     intervalW = intervalW + 1;
                     
@@ -137,8 +137,8 @@ namespace LibiadaMusic.Characteristics
                                         
                 }
 
-                GVal = GVal + GiVal * FmLex.FmotivList[m].PauseTreatment(ParamPauseTreatment.Ignore).TieGathered().NoteList.Count;
-                GWVal = GWVal + GiWVal * FmLex.FmotivList[m].PauseTreatment(ParamPauseTreatment.Ignore).TieGathered().NoteList.Count;
+                GVal = GVal + GiVal * FmLex.FmotivList[m].PauseTreatment((int)ParamPauseTreatment.Ignore).TieGathered().NoteList.Count;
+                GWVal = GWVal + GiWVal * FmLex.FmotivList[m].PauseTreatment((int)ParamPauseTreatment.Ignore).TieGathered().NoteList.Count;
 
                 GiVal = 0; // для след однородной цепи - обнуляем что считать заново
                 GiWVal = 0; // для след однородной цепи - обнуляем что считать заново
@@ -185,7 +185,7 @@ namespace LibiadaMusic.Characteristics
             Vlen = 0;
             for(int i=0; i< FmLex.FmotivList.Count; i++)
             {
-                Vlen = Vlen + FmLex.FmotivList[i].PauseTreatment(ParamPauseTreatment.Ignore).TieGathered().NoteList.Count;
+                Vlen = Vlen + FmLex.FmotivList[i].PauseTreatment((int)ParamPauseTreatment.Ignore).TieGathered().NoteList.Count;
             }
             
             return true;

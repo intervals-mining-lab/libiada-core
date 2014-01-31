@@ -7,21 +7,21 @@ namespace LibiadaMusic.Analysis
     {
         private ArrayList Ar=new ArrayList();
         private int length;
-        public ArrayList GetData()
+        public ArrayList Data
         {
-            return Ar;
+            get { return Ar; }
+            set { Ar = (ArrayList)value.Clone(); }
+            
         }
-        public void SetData(ArrayList inpAr)
-        {
-            Ar=(ArrayList) inpAr.Clone();
-        }
+
         public void NewRecord(String str)
-        {   this.Ar.Add(new FMName(str));
+        {   Ar.Add(new FMName(str));
             length += 1;
         }
-        public int Getlength()
+        public int Length
         {
-            return length;
+            get { return length; }
+            
         }
     }
 }

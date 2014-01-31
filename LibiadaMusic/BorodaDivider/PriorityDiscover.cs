@@ -13,10 +13,7 @@ namespace LibiadaMusic.BorodaDivider
 
         public Measure PriorityMask
         {
-            get
-            {
-                return priorityMask;
-            }
+            get { return priorityMask; }
         }
 
         public void Calculate(ScoreTrack scoretrack) 
@@ -30,7 +27,7 @@ namespace LibiadaMusic.BorodaDivider
         {   // метод для подсчета приоритетов нот для каждого такта (Measure) в монофоническом треке (UniformScoretrack)
             foreach (Measure measure in utrack.Measurelist)
             {
-                this.Calculate(measure);
+                Calculate(measure);
             }
         }
         public void Calculate(Measure measure)

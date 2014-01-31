@@ -9,8 +9,8 @@ namespace LibiadaMusicTest.BorodaDivider
         [TestMethod]
         public void TestParamEqual1()
         {
-            Assert.AreEqual(ParamEqualFM.Sequent, 0);
-            Assert.AreEqual(ParamEqualFM.NonSequent, 1);
+            Assert.AreEqual((int)ParamEqualFM.Sequent, 0);
+            Assert.AreEqual((int)ParamEqualFM.NonSequent, 1);
         }
     }
 }

@@ -45,7 +45,7 @@ namespace LibiadaMusic.MusicXml
             curDoc = null;
             curDoc = (XmlDocument)xd.Clone();
             fs.Close();
-            this.filename = System.IO.Path.GetFileNameWithoutExtension(path); // сохраняем имя прочтенного файла
+            filename = Path.GetFileNameWithoutExtension(path); // сохраняем имя прочтенного файла
         }
     }
 }

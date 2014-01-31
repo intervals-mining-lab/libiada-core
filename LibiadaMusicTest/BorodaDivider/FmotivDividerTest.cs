@@ -38,7 +38,7 @@ namespace LibiadaMusicTest.BorodaDivider
             FmotivChain fmchain;
 
             // вычисление, опрделение, разбиение на  ф-мотивы данного монотрека
-            fmchain = fmdivider.GetDivision(unitrack , ParamPauseTreatment.Ignore);
+            fmchain = fmdivider.GetDivision(unitrack, (int)ParamPauseTreatment.Ignore);
             fmchain.Id = 0;
             
             // создание аналогов ф-мотивов, которые должны получиться, после разбиения
@@ -89,7 +89,7 @@ namespace LibiadaMusicTest.BorodaDivider
             FmotivChain fmchain;
 
             // вычисление, опрделение, разбиение на  ф-мотивы данного монотрека
-            fmchain = fmdivider.GetDivision(unitrack, ParamPauseTreatment.Ignore);
+            fmchain = fmdivider.GetDivision(unitrack, (int)ParamPauseTreatment.Ignore);
             fmchain.Id = 0;
 
             // создание аналогов ф-мотивов, которые должны получиться, после разбиения
@@ -143,7 +143,7 @@ namespace LibiadaMusicTest.BorodaDivider
             FmotivChain fmchain;
 
             // вычисление, опрделение, разбиение на  ф-мотивы данного монотрека
-            fmchain = fmdivider.GetDivision(unitrack , ParamPauseTreatment.Ignore);
+            fmchain = fmdivider.GetDivision(unitrack, (int)ParamPauseTreatment.Ignore);
             fmchain.Id = 0;
 
             // создание аналогов ф-мотивов, которые должны получиться, после разбиения
@@ -196,7 +196,7 @@ namespace LibiadaMusicTest.BorodaDivider
             FmotivChain fmchain;
 
             // вычисление, опрделение, разбиение на  ф-мотивы данного монотрека
-            fmchain = fmdivider.GetDivision(unitrack, ParamPauseTreatment.Ignore);
+            fmchain = fmdivider.GetDivision(unitrack, (int)ParamPauseTreatment.Ignore);
             fmchain.Id = 0;
 
             // создание аналогов ф-мотивов, которые должны получиться, после разбиения
@@ -244,7 +244,7 @@ namespace LibiadaMusicTest.BorodaDivider
             FmotivChain fmchain;
 
             // вычисление, опрделение, разбиение на  ф-мотивы данного монотрека
-            fmchain = fmdivider.GetDivision(unitrack, ParamPauseTreatment.Ignore);
+            fmchain = fmdivider.GetDivision(unitrack, (int)ParamPauseTreatment.Ignore);
             fmchain.Id = 0;
 
             // создание аналогов ф-мотивов, которые должны получиться, после разбиения
@@ -296,7 +296,7 @@ namespace LibiadaMusicTest.BorodaDivider
             FmotivChain fmchain;
 
             // вычисление, опрделение, разбиение на  ф-мотивы данного монотрека
-            fmchain = fmdivider.GetDivision(unitrack, ParamPauseTreatment.Ignore);
+            fmchain = fmdivider.GetDivision(unitrack, (int)ParamPauseTreatment.Ignore);
             fmchain.Id = 0;
 
             // создание аналогов ф-мотивов, которые должны получиться, после разбиения
@@ -349,7 +349,7 @@ namespace LibiadaMusicTest.BorodaDivider
             FmotivChain fmchain;
 
             // вычисление, опрделение, разбиение на  ф-мотивы данного монотрека
-            fmchain = fmdivider.GetDivision(unitrack, ParamPauseTreatment.Ignore);
+            fmchain = fmdivider.GetDivision(unitrack, (int)ParamPauseTreatment.Ignore);
             fmchain.Id = 0;
 
             // создание аналогов ф-мотивов, которые должны получиться, после разбиения
@@ -396,7 +396,7 @@ namespace LibiadaMusicTest.BorodaDivider
             FmotivChain fmchain;
 
             // вычисление, опрделение, разбиение на  ф-мотивы данного монотрека
-            fmchain = fmdivider.GetDivision(unitrack, ParamPauseTreatment.Ignore);
+            fmchain = fmdivider.GetDivision(unitrack, (int)ParamPauseTreatment.Ignore);
             fmchain.Id = 0;
 
             // создание аналогов ф-мотивов, которые должны получиться, после разбиения
@@ -442,7 +442,7 @@ namespace LibiadaMusicTest.BorodaDivider
             FmotivChain fmchain;
 
             // вычисление, опрделение, разбиение на  ф-мотивы данного монотрека
-            fmchain = fmdivider.GetDivision(unitrack, ParamPauseTreatment.SilenceNote);
+            fmchain = fmdivider.GetDivision(unitrack, (int)ParamPauseTreatment.SilenceNote);
             fmchain.Id = 0;
 
             // создание аналогов ф-мотивов, которые должны получиться, после разбиения
@@ -461,10 +461,10 @@ namespace LibiadaMusicTest.BorodaDivider
             fmchain1.FmotivList.Add(fmotiv1);
             fmchain1.FmotivList.Add(fmotiv2);
 
-            Assert.IsTrue(fmotiv1.FmEquals(fmotiv1,ParamPauseTreatment.SilenceNote,ParamEqualFM.Sequent));
-            Assert.IsTrue(fmotiv2.FmEquals(fmotiv2, ParamPauseTreatment.SilenceNote, ParamEqualFM.Sequent));
-            Assert.IsTrue(fmchain.FmotivList[0].FmEquals(fmotiv1, ParamPauseTreatment.SilenceNote, ParamEqualFM.Sequent));
-            Assert.IsTrue(fmchain.FmotivList[1].FmEquals(fmotiv2, ParamPauseTreatment.SilenceNote, ParamEqualFM.Sequent));
+            Assert.IsTrue(fmotiv1.FmEquals(fmotiv1, (int)ParamPauseTreatment.SilenceNote, (int)ParamEqualFM.Sequent));
+            Assert.IsTrue(fmotiv2.FmEquals(fmotiv2, (int)ParamPauseTreatment.SilenceNote, (int)ParamEqualFM.Sequent));
+            Assert.IsTrue(fmchain.FmotivList[0].FmEquals(fmotiv1, (int)ParamPauseTreatment.SilenceNote, (int)ParamEqualFM.Sequent));
+            Assert.IsTrue(fmchain.FmotivList[1].FmEquals(fmotiv2, (int)ParamPauseTreatment.SilenceNote, (int)ParamEqualFM.Sequent));
             Assert.IsTrue(fmchain1.Equals(fmchain));
         }
     }

@@ -19,8 +19,7 @@ namespace LibiadaMusic.ScoreModel
                     break;
                 case "16th": { numDenom[0] = 1; numDenom[1] = 16; }
                     break;
-                case "32nd": { numDenom[0] = 1; numDenom[1] = 32; }
-                    break;
+                case "32nd":
                     // в Guiter Pro обозначается 32th - как 1/32.. мде..
                 case "32th": { numDenom[0] = 1; numDenom[1] = 32; }
                     break;

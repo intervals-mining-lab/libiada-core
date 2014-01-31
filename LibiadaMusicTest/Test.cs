@@ -12,9 +12,9 @@ namespace LibiadaMusicTest
 		public void Test1()
 		{
 			Composition com = new Composition();
-			double e = com.GetEntropy();
+			double e = com.entropy;
 			e = 0.3;
-			Assert.AreNotEqual(e,com.GetEntropy());
+			Assert.AreNotEqual(e,com.entropy);
 		}
 		
 		[TestMethod]
@@ -22,7 +22,7 @@ namespace LibiadaMusicTest
 		{
 			Difference dif1 = new Difference();
 			Difference dif2 = new Difference();
-			Assert.AreEqual(dif1.GetD(),dif2.GetD());				
+			Assert.AreEqual(dif1.D,dif2.D);				
 			Assert.IsFalse(false);
 		}
 		
