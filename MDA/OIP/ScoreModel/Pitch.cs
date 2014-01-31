@@ -1,7 +1,7 @@
 ﻿using System;
 using LibiadaCore.Classes.Root;
 
-namespace MDA.OIP.ScoreModel
+namespace LibiadaMusic.OIP.ScoreModel
 {
     public class Pitch : IBaseObject // высота ноты
     {

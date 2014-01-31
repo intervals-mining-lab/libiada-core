@@ -1,9 +1,8 @@
 ﻿using System;
 using System.IO;
-//using System.Linq;
 using System.Xml;
 
-namespace MDA.Analisis
+namespace LibiadaMusic.Analysis
 {
     public class Reader
     {

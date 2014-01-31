@@ -1,7 +1,6 @@
 ﻿using System.Collections;
-//using System.Linq;
 
-namespace MDA.Analisis
+namespace LibiadaMusic.Analysis
 {
     public class Lexicon
     {
@@ -15,9 +14,9 @@ namespace MDA.Analisis
 
         public ArrayList GetData()
         {lock (this)
-			{
+            {
             return FMVariety;
-			}
+            }
         }
 
         public ArrayList GetRData()
@@ -31,9 +30,9 @@ namespace MDA.Analisis
 
         public int GetCapacity()
         { lock(this)
-			{
+            {
             return this.Capacity;
-			}
+            }
         }
 
         public double GetGreatOccur()

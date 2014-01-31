@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using MDA.OIP.ScoreModel;
-using MDA.OIP.BorodaDivider;
+using LibiadaMusic.OIP.ScoreModel;
+using LibiadaMusic.OIP.BorodaDivider;
 
-namespace MDATest.OIPTest.TestBorodaDivider
+namespace LibiadaMusicTest.OIPTest.TestBorodaDivider
 {
     [TestClass]
-    public class TestPriorityDiscover
+    public class PriorityDiscoverTest
     {
         private Note note = new Note(new Pitch(1, 'E', 0), new Duration(1, 4, false, 480), false, Tie.None);
         private Note anote = new Note(new Pitch(1, 'B', 0), new Duration(1, 2, false, 960), false, 0);
@@ -55,7 +55,7 @@ namespace MDATest.OIPTest.TestBorodaDivider
             }
             catch (Exception e)
             {
-                if (e.Message != "MDA.OIP: обнаружен пустой такт при выявлении приоритета!") Assert.Fail(); 
+                if (e.Message != "LibiadaMusic.OIP: обнаружен пустой такт при выявлении приоритета!") Assert.Fail(); 
             }
             
         }

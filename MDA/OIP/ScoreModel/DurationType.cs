@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace MDA.OIP.ScoreModel
+namespace LibiadaMusic.OIP.ScoreModel
 {
     public static class DurationType
     {
@@ -31,7 +31,7 @@ namespace MDA.OIP.ScoreModel
                 case "256th": { numDenom[0] = 1; numDenom[1] = 256; }
                     break;                
             default:
-                    throw new Exception("MDA.ScoreModel: Error unknown duration type!");
+                    throw new Exception("LibiadaMusic.ScoreModel: Error unknown duration type!");
             } 
             return numDenom;
         }

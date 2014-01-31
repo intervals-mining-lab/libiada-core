@@ -4,10 +4,10 @@ using LibiadaCore.Classes.Root;
 using LibiadaCore.Classes.Root.Characteristics;
 using LibiadaCore.Classes.Root.Characteristics.Calculators;
 using LibiadaCore.Classes.Root.SimpleTypes;
-using MDA.OIP.BorodaDivider;
-using MDA.OIP.ScoreModel;
+using LibiadaMusic.OIP.BorodaDivider;
+using LibiadaMusic.OIP.ScoreModel;
 
-namespace MDA.ICL
+namespace LibiadaMusic.ICL
 {
     public static class NoteCharacteristic
     {

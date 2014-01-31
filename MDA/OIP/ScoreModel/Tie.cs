@@ -1,4 +1,4 @@
-﻿namespace MDA.OIP.ScoreModel
+﻿namespace LibiadaMusic.OIP.ScoreModel
 {
     public static class Tie // класс для заполнения объекта класса Note данными, в зависимости от наличия лиги
     {

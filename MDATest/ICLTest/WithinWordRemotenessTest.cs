@@ -1,11 +1,11 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using MDA.OIP.BorodaDivider;
-using MDA.OIP.ScoreModel;
+using LibiadaMusic.OIP.BorodaDivider;
+using LibiadaMusic.OIP.ScoreModel;
 
-namespace MDATest.ICLTest
+namespace LibiadaMusicTest.ICLTest
 {
     [TestClass]
-    public class TestWithinWordRemoteness
+    public class WithinWordRemotenessTest
     {
         [TestMethod]
         public void TestWithinWordRemoteness1()

@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using LibiadaCore.Classes.Root;
 
-namespace MDA.OIP.BorodaDivider
+namespace LibiadaMusic.OIP.BorodaDivider
 {
     public class FmotivChain : IBaseObject // класс для хранения последовательности ф-мотив
     {

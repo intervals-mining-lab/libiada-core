@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
-using MDA.OIP.ScoreModel;
+using LibiadaMusic.OIP.ScoreModel;
 
-namespace MDA.OIP.BorodaDivider
+namespace LibiadaMusic.OIP.BorodaDivider
 {
     public class BorodaDivider
     {

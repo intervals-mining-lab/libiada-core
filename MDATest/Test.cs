@@ -1,8 +1,7 @@
+using LibiadaMusic.Analysis;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using MDA.Analisis;
 
-
-namespace TestMDA
+namespace LibiadaMusicTest
 {
 	
 	[TestClass]

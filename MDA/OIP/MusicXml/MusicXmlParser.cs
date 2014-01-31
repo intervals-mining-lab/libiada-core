@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Xml;
 using System.Collections.Generic;
-using MDA.OIP.ScoreModel;
+using LibiadaMusic.OIP.ScoreModel;
 
-namespace MDA.OIP.MusicXml
+namespace LibiadaMusic.OIP.MusicXml
 {
     public class MusicXmlParser
     {
@@ -29,7 +29,7 @@ namespace MDA.OIP.MusicXml
             /*
             if (ChordFound((XmlDocument)xmldocument.Clone())) // если в документе найден хоть один аккорд, то сообщение об ошибке
             {
-                throw new Exception("MDA.PARSER: Chord Detected!");
+                throw new Exception("LibiadaMusic.PARSER: Chord Detected!");
             } // это уже неактуально */
             // создаем объект модели музыкального текста из Xml документа
             scoremodel = new ScoreTrack(filename, parseUniformScoreTracks((XmlDocument)xmldocument.Clone()));
@@ -47,7 +47,7 @@ namespace MDA.OIP.MusicXml
             {
                 if (utrack.Measurelist[0].Attributes == null) 
                 {
-                    throw new Exception("MDA PARSER: в модели для 1 такта нет аттрибутов");
+                    throw new Exception("LibiadaMusic PARSER: в модели для 1 такта нет аттрибутов");
                 }
                 for (int i = 1; i < utrack.Measurelist.Count; i++) 
                 {
@@ -345,7 +345,7 @@ namespace MDA.OIP.MusicXml
                         return new Pitch(octave, step, alter);
                     }
 
-                    throw new Exception("MDA.XmlParser: error while Note parsing: pitch structure");
+                    throw new Exception("LibiadaMusic.XmlParser: error while Note parsing: pitch structure");
                 }
                 if (noteChild.Name == "rest") 
                 {
@@ -356,7 +356,7 @@ namespace MDA.OIP.MusicXml
                     return null;
                 }
             }
-            throw new Exception("MDA.XmlParser: error while Note parsing: no pitch or rest: "+childname);
+            throw new Exception("LibiadaMusic.XmlParser: error while Note parsing: no pitch or rest: "+childname);
         }
 
         private int parseTie(XmlNode noteNode)
@@ -379,7 +379,7 @@ namespace MDA.OIP.MusicXml
                         }
                         else 
                         {
-                            throw new Exception("MDA.XmlParser: error while Note parsing: Tie type unknow");
+                            throw new Exception("LibiadaMusic.XmlParser: error while Note parsing: Tie type unknow");
                         }
                     }
                 }

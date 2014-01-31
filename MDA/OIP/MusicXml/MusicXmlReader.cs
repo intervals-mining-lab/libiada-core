@@ -2,16 +2,16 @@
 using System.Xml;
 using System.IO;
 
-namespace MDA.OIP.MusicXml
+namespace LibiadaMusic.OIP.MusicXml
 {
-	public class MusicXmlReader
-	{
+    public class MusicXmlReader
+    {
         private XmlDocument curDoc; // Текущий прочитанный MusicXML файл
         private string filename; // путь к прочитанному MusicXML файлу
 
-		public MusicXmlReader ()
-		{
-		}
+        public MusicXmlReader ()
+        {
+        }
         public MusicXmlReader(string xpath)
         {
             LoadNotes(xpath);
@@ -25,7 +25,7 @@ namespace MDA.OIP.MusicXml
             get
             {
                 if (curDoc!=null) return ((XmlDocument) curDoc.Clone());
-                throw new Exception("MDA.XMLReader:you are trying to get empty XmlDocument!");
+                throw new Exception("LibiadaMusic.XMLReader:you are trying to get empty XmlDocument!");
             }
         }
         public string FileName
@@ -47,6 +47,6 @@ namespace MDA.OIP.MusicXml
             fs.Close();
             this.filename = System.IO.Path.GetFileNameWithoutExtension(path); // сохраняем имя прочтенного файла
         }
-	}
+    }
 }
 

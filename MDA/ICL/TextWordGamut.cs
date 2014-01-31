@@ -1,7 +1,7 @@
 ﻿using System;
-using MDA.OIP.BorodaDivider;
+using LibiadaMusic.OIP.BorodaDivider;
 
-namespace MDA.ICL
+namespace LibiadaMusic.ICL
 {
     public static class TextWordGamut
     {

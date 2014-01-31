@@ -1,6 +1,4 @@
-﻿//using System.Linq;
-
-namespace MDA.Analisis
+﻿namespace LibiadaMusic.Analysis
 {
     public class FMName
     {

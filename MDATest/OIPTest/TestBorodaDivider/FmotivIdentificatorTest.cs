@@ -1,10 +1,10 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using MDA.OIP.BorodaDivider;
-using MDA.OIP.ScoreModel;
+using LibiadaMusic.OIP.BorodaDivider;
+using LibiadaMusic.OIP.ScoreModel;
 
-namespace MDATest.OIPTest.TestBorodaDivider
+namespace LibiadaMusicTest.OIPTest.TestBorodaDivider
 {   [TestClass]
-    public class TestFmotivIdentificator
+    public class FmotivIdentificatorTest
     {
     [TestMethod]
     public void TestFmotivIdentification1() 

@@ -1,11 +1,11 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using MDA.OIP.BorodaDivider;
-using MDA.OIP.ScoreModel;
+using LibiadaMusic.OIP.BorodaDivider;
+using LibiadaMusic.OIP.ScoreModel;
 
-namespace MDATest.OIPTest.TestBorodaDivider
+namespace LibiadaMusicTest.OIPTest.TestBorodaDivider
 {
     [TestClass]
-    public class TestFmotivChain
+    public class FmotivChainTest
     {
         [TestMethod]
         public void TestFmotivChain1()

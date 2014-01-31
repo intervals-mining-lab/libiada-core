@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using LibiadaCore.Classes.Root;
 
 
-namespace MDA.OIP.ScoreModel
+namespace LibiadaMusic.OIP.ScoreModel
 {
     public class ScoreTrack : IBaseObject // полный музыкальный текст/трек
     {

@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using LibiadaCore.Classes.Root;
 
-namespace MDA.OIP.ScoreModel
+namespace LibiadaMusic.OIP.ScoreModel
 {
     public class Note : IBaseObject // нота
     {
@@ -89,13 +89,13 @@ namespace MDA.OIP.ScoreModel
         {
             if (this.pitch.Count != pitchlist.Count)
             {
-                //throw new Exception("MDA: Pitches of tie notes not equal because of count!");
+                //throw new Exception("LibiadaMusic: Pitches of tie notes not equal because of count!");
                 return false;
             }
             for (int i = 0; i < pitchlist.Count; i++)
                 if (!this.pitch[i].Equals(pitchlist[i]))
                 {
-                    //throw new Exception("MDA: Pitches of tie notes not equal because of pitches!");
+                    //throw new Exception("LibiadaMusic: Pitches of tie notes not equal because of pitches!");
                     return false;
                 }
             return true;

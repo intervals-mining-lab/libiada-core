@@ -1,11 +1,11 @@
 ﻿using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using MDA.OIP.ScoreModel;
+using LibiadaMusic.OIP.ScoreModel;
 
-namespace MDATest.OIPTest.TestScoreModel
+namespace LibiadaMusicTest.OIPTest.TestScoreModel
 {
     [TestClass]
-    public class TestMeasure
+    public class MeasureTest
     {
         [TestMethod]
         public void MeasureTest1() 

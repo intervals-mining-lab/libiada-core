@@ -1,12 +1,12 @@
 ﻿using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using MDA.OIP.BorodaDivider;
-using MDA.OIP.ScoreModel;
+using LibiadaMusic.OIP.BorodaDivider;
+using LibiadaMusic.OIP.ScoreModel;
 
-namespace MDATest.OIPTest.TestBorodaDivider
+namespace LibiadaMusicTest.OIPTest.TestBorodaDivider
 {
     [TestClass]
-    public class TestFmotivDivider
+    public class FmotivDividerTest
     {
         // Создание атрибутов для такта
         private Attributes attributes = new Attributes(new Size(2, 4, 1024), new Key(0, "major"));

@@ -1,7 +1,6 @@
 ﻿using System.Collections;
-//using System.Linq;
 
-namespace MDA.Analisis
+namespace LibiadaMusic.Analysis
 {
     public class DisplayData
     {

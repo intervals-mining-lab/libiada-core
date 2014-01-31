@@ -9,8 +9,8 @@
     <ProjectGuid>{AB9ED1C2-F46D-4FCB-9BD2-44B44E4CCA42}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>MDATest</RootNamespace>
-    <AssemblyName>MDATest</AssemblyName>
+    <RootNamespace>LibiadaMusicTest</RootNamespace>
+    <AssemblyName>LibiadaMusicTest</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -59,43 +59,43 @@
     </CodeAnalysisDependentAssemblyPaths>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ICLTest\TestAverageLength.cs">
+    <Compile Include="ICLTest\AverageLengthTest.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="ICLTest\TestNoteRemoteness.cs">
+    <Compile Include="ICLTest\NoteRemotenessTest.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="ICLTest\TestWithinWordRemoteness.cs">
+    <Compile Include="ICLTest\WithinWordRemotenessTest.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="ICLTest\TestWordRemoteness.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="OIPTest\TestBorodaDivider\TestFmotiv.cs" />
-    <Compile Include="OIPTest\TestBorodaDivider\TestBorodaDivider.cs" />
-    <Compile Include="OIPTest\TestBorodaDivider\TestFmotivChain.cs" />
-    <Compile Include="OIPTest\TestBorodaDivider\TestFmotivDivider.cs" />
-    <Compile Include="OIPTest\TestBorodaDivider\TestFmotivIdentificator.cs" />
-    <Compile Include="OIPTest\TestBorodaDivider\TestParamEqualFM.cs" />
-    <Compile Include="OIPTest\TestBorodaDivider\TestParamPauseTreatment.cs" />
-    <Compile Include="OIPTest\TestBorodaDivider\TestPriorityDiscover.cs" />
-    <Compile Include="OIPTest\TestMusicXml\TestMusicXmlParser.cs" />
-    <Compile Include="OIPTest\TestMusicXml\TestMusicXmlReader.cs" />
-    <Compile Include="OIPTest\TestScoreModel\TestDuration.cs" />
-    <Compile Include="OIPTest\TestScoreModel\TestMeasure.cs" />
-    <Compile Include="OIPTest\TestScoreModel\TestNote1.cs" />
-    <Compile Include="OIPTest\TestScoreModel\TestTie.cs" />
+    <Compile Include="OIPTest\TestBorodaDivider\FmotivTest.cs" />
+    <Compile Include="OIPTest\TestBorodaDivider\BorodaDividerTest.cs" />
+    <Compile Include="OIPTest\TestBorodaDivider\FmotivChainTest.cs" />
+    <Compile Include="OIPTest\TestBorodaDivider\FmotivDividerTest.cs" />
+    <Compile Include="OIPTest\TestBorodaDivider\FmotivIdentificatorTest.cs" />
+    <Compile Include="OIPTest\TestBorodaDivider\ParamEqualFMTest.cs" />
+    <Compile Include="OIPTest\TestBorodaDivider\ParamPauseTreatmentTest.cs" />
+    <Compile Include="OIPTest\TestBorodaDivider\PriorityDiscoverTest.cs" />
+    <Compile Include="OIPTest\TestMusicXml\MusicXmlParserTest.cs" />
+    <Compile Include="OIPTest\TestMusicXml\XmlReaderTest.cs" />
+    <Compile Include="OIPTest\TestScoreModel\DurationTest.cs" />
+    <Compile Include="OIPTest\TestScoreModel\MeasureTest.cs" />
+    <Compile Include="OIPTest\TestScoreModel\NoteTest.cs" />
+    <Compile Include="OIPTest\TestScoreModel\TieTest.cs" />
     <Compile Include="OIPTest\TestScoreModel\TestUniformScoreTrack.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Test.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\MDA\MDA.csproj">
-      <Project>{FB02B0A5-68BB-4786-96A3-B6D4276CF74F}</Project>
-      <Name>MDA</Name>
+    <ProjectReference Include="..\MDA\LibiadaMusic.csproj">
+      <Project>{fb02b0a5-68bb-4786-96a3-b6d4276cf74f}</Project>
+      <Name>LibiadaMusic</Name>
+      <Private>True</Private>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using MDA.OIP.ScoreModel;
+using LibiadaMusic.OIP.ScoreModel;
 
-namespace MDA.OIP.BorodaDivider
+namespace LibiadaMusic.OIP.BorodaDivider
 {
     public class PriorityDiscover
     {
@@ -117,7 +117,7 @@ namespace MDA.OIP.BorodaDivider
                         {
                             if (priorityMask.NoteList.Count < 1) 
                             {
-                                throw new Exception("MDA Priority Discover: такт построен не по правилам, не хватает ноты");
+                                throw new Exception("LibiadaMusic Priority Discover: такт построен не по правилам, не хватает ноты");
                             }
                             //набор длительностей нот маски, и их удаление из очереди
                             bufduration = bufduration + priorityMask.NoteList[0].Duration.Value;
@@ -161,7 +161,7 @@ namespace MDA.OIP.BorodaDivider
                 measure.NoteList[i].Priority = Temp.NoteList[i].Priority;
                 if (measure.NoteList[i].Priority < 0) 
                 {
-                    throw new Exception("MDA.PriorityDiscover: не выявлен приоритет для одной из нот (равен -1)");
+                    throw new Exception("LibiadaMusic.PriorityDiscover: не выявлен приоритет для одной из нот (равен -1)");
                 }
             }
         }
@@ -208,7 +208,7 @@ namespace MDA.OIP.BorodaDivider
             double value = 0;
             if (measure.NoteList.Count > 0) {value = measure.NoteList[0].Duration.Value;} 
                 // заносим в буфер первый элемент массива длительностей нот, если такт пустой - ошибка!
-            else throw new Exception("MDA.OIP: обнаружен пустой такт при выявлении приоритета!");
+            else throw new Exception("LibiadaMusic.OIP: обнаружен пустой такт при выявлении приоритета!");
             
             foreach (Note note in measure.NoteList) 
             {

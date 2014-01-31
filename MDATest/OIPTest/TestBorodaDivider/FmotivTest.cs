@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using MDA.OIP.ScoreModel;
-using MDA.OIP.BorodaDivider;
+using LibiadaMusic.OIP.ScoreModel;
+using LibiadaMusic.OIP.BorodaDivider;
 
-namespace MDATest.OIPTest.TestBorodaDivider
+namespace LibiadaMusicTest.OIPTest.TestBorodaDivider
 {
     [TestClass]
-    public class TestFmotiv
+    public class FmotivTest
     {
         private Note note = new Note(new Pitch(1, 'E', 0), new Duration(1, 4, false, 480), false, Tie.None);
         private Note anote = new Note(new Pitch(1, 'B', 0), new Duration(1, 2, false, 960), false, 0);
@@ -128,7 +128,7 @@ namespace MDATest.OIPTest.TestBorodaDivider
             }
             catch (Exception e)
             {
-                if (e.Message != "MDA: Tie note start after existing start note!") { Assert.Fail(); }
+                if (e.Message != "LibiadaMusic: Tie note start after existing start note!") { Assert.Fail(); }
             }
 
             // после старта идет обычная нота без лиги
@@ -142,7 +142,7 @@ namespace MDATest.OIPTest.TestBorodaDivider
             }
             catch (Exception e)
             {
-                if (e.Message != "MDA: Tie started but (stop)/(startstop) note NOT following!") { Assert.Fail(); }
+                if (e.Message != "LibiadaMusic: Tie started but (stop)/(startstop) note NOT following!") { Assert.Fail(); }
             }
 
             // лига без старта
@@ -157,7 +157,7 @@ namespace MDATest.OIPTest.TestBorodaDivider
             }
             catch (Exception e)
             {
-                if (e.Message != "MDA: Tie note (stopes and starts)/(stops), without previous note start!") { Assert.Fail(); }
+                if (e.Message != "LibiadaMusic: Tie note (stopes and starts)/(stops), without previous note start!") { Assert.Fail(); }
             }
 
             // в знаке лиги не {-1,0,1,2}
@@ -170,7 +170,7 @@ namespace MDATest.OIPTest.TestBorodaDivider
             }
             catch (Exception e)
             {
-                if (e.Message != "MDA: Tie is not valid!") { Assert.Fail(); }
+                if (e.Message != "LibiadaMusic: Tie is not valid!") { Assert.Fail(); }
             }
 
             // в знаке лиги не {-1,0,1,2}
@@ -184,7 +184,7 @@ namespace MDATest.OIPTest.TestBorodaDivider
             }
             catch (Exception e)
             {
-                if (e.Message != "MDA: Pitches of tie notes not equal!") { Assert.Fail(); }
+                if (e.Message != "LibiadaMusic: Pitches of tie notes not equal!") { Assert.Fail(); }
             }
 
             

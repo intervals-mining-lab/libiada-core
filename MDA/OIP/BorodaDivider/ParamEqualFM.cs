@@ -1,4 +1,4 @@
-﻿namespace MDA.OIP.BorodaDivider
+﻿namespace LibiadaMusic.OIP.BorodaDivider
 {
     public static class ParamEqualFM // класс для выбора метода сравнения ф-мотивов (с секвентным переносом, либо без)
     {

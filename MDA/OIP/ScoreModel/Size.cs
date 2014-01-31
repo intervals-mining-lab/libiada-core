@@ -1,7 +1,7 @@
 ﻿using System;
 using LibiadaCore.Classes.Root;
 
-namespace MDA.OIP.ScoreModel
+namespace LibiadaMusic.OIP.ScoreModel
 {
     public class Size: IBaseObject // размер в такте
     {
@@ -34,7 +34,7 @@ namespace MDA.OIP.ScoreModel
         {
             get {
                     if (ticksperbeat != -1) return ticksperbeat;
-                    else throw new Exception("MDA: Error getting not defined TicksPerBeat property!");
+                    else throw new Exception("LibiadaMusic: Error getting not defined TicksPerBeat property!");
                 }
         }
 

@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using MDA.OIP.ScoreModel;
+using LibiadaMusic.OIP.ScoreModel;
 
-namespace MDA.OIP.BorodaDivider
+namespace LibiadaMusic.OIP.BorodaDivider
 {
     public class FmotivDivider
     {
@@ -113,14 +113,14 @@ namespace MDA.OIP.BorodaDivider
                         else
                         {
                             // когда лига не заканчивается флагом конца, то ошибка
-                            throw new Exception("MDA: FmotivDivider, wrong Tie organization!End!");
+                            throw new Exception("LibiadaMusic: FmotivDivider, wrong Tie organization!End!");
                         }
 
                     }
                     else
                     {
                         // когда начинается лига не с флага начала, а с какого то другого, то ошибка
-                        throw new Exception("MDA: FmotivDivider, wrong Tie organization!Begining!");
+                        throw new Exception("LibiadaMusic: FmotivDivider, wrong Tie organization!Begining!");
                     }
                 }
                 #endregion
@@ -473,7 +473,7 @@ namespace MDA.OIP.BorodaDivider
             // проверка на случай когда в аругменте метода количество собранных нот (из пауз/лиг) меньше двух
             if (FmotivBuffer.PauseTreatment(paramPause).TieGathered().NoteList.Count < 2)
             {
-                throw new Exception("MDA DivideSameDurationNotes: notes < 2");
+                throw new Exception("LibiadaMusic DivideSameDurationNotes: notes < 2");
             }
 
             #region если количество собранных нот делится на 2
@@ -537,13 +537,13 @@ namespace MDA.OIP.BorodaDivider
                                         else
                                         {
                                             // когда лига не заканчивается флагом конца, то ошибка
-                                            throw new Exception("MDA: FmotivDivider, wrong Tie organization!End!");
+                                            throw new Exception("LibiadaMusic: FmotivDivider, wrong Tie organization!End!");
                                         }
                                     }
                                     else
                                     {
                                         // когда начинается лига не с флага начала, а с какого то другого, то ошибка
-                                        throw new Exception("MDA: FmotivDivider, wrong Tie organization!Begining!");
+                                        throw new Exception("LibiadaMusic: FmotivDivider, wrong Tie organization!Begining!");
                                     }
                             }
                             #endregion
@@ -606,13 +606,13 @@ namespace MDA.OIP.BorodaDivider
                                     else
                                     {
                                         // когда лига не заканчивается флагом конца, то ошибка
-                                        throw new Exception("MDA: FmotivDivider, wrong Tie organization!End!");
+                                        throw new Exception("LibiadaMusic: FmotivDivider, wrong Tie organization!End!");
                                     }
                                 }
                                 else
                                 {
                                     // когда начинается лига не с флага начала, а с какого то другого, то ошибка
-                                    throw new Exception("MDA: FmotivDivider, wrong Tie organization!Begining!");
+                                    throw new Exception("LibiadaMusic: FmotivDivider, wrong Tie organization!Begining!");
                                 }
                             }
                             #endregion
@@ -721,13 +721,13 @@ namespace MDA.OIP.BorodaDivider
                                             else
                                             {
                                                 // когда лига не заканчивается флагом конца, то ошибка
-                                                throw new Exception("MDA: FmotivDivider, wrong Tie organization!End!");
+                                                throw new Exception("LibiadaMusic: FmotivDivider, wrong Tie organization!End!");
                                             }
                                         }
                                         else
                                         {
                                             // когда начинается лига не с флага начала, а с какого то другого, то ошибка
-                                            throw new Exception("MDA: FmotivDivider, wrong Tie organization!Begining!");
+                                            throw new Exception("LibiadaMusic: FmotivDivider, wrong Tie organization!Begining!");
                                         }
                                     }
                                     #endregion
@@ -794,13 +794,13 @@ namespace MDA.OIP.BorodaDivider
                                             else
                                             {
                                                 // когда лига не заканчивается флагом конца, то ошибка
-                                                throw new Exception("MDA: FmotivDivider, wrong Tie organization!End!");
+                                                throw new Exception("LibiadaMusic: FmotivDivider, wrong Tie organization!End!");
                                             }
                                         }
                                         else
                                         {
                                             // когда начинается лига не с флага начала, а с какого то другого, то ошибка
-                                            throw new Exception("MDA: FmotivDivider, wrong Tie organization!Begining!");
+                                            throw new Exception("LibiadaMusic: FmotivDivider, wrong Tie organization!Begining!");
                                         }
                                     }
                                     #endregion
@@ -889,13 +889,13 @@ namespace MDA.OIP.BorodaDivider
                                         else
                                         {
                                             // когда лига не заканчивается флагом конца, то ошибка
-                                            throw new Exception("MDA: FmotivDivider, wrong Tie organization!End!");
+                                            throw new Exception("LibiadaMusic: FmotivDivider, wrong Tie organization!End!");
                                         }
                                     }
                                     else
                                     {
                                         // когда начинается лига не с флага начала, а с какого то другого, то ошибка
-                                        throw new Exception("MDA: FmotivDivider, wrong Tie organization!Begining!");
+                                        throw new Exception("LibiadaMusic: FmotivDivider, wrong Tie organization!Begining!");
                                     }
                                 }
                                 #endregion
@@ -997,13 +997,13 @@ namespace MDA.OIP.BorodaDivider
                                         else
                                         {
                                             // когда лига не заканчивается флагом конца, то ошибка
-                                            throw new Exception("MDA: FmotivDivider, wrong Tie organization!End!");
+                                            throw new Exception("LibiadaMusic: FmotivDivider, wrong Tie organization!End!");
                                         }
                                     }
                                     else
                                     {
                                         // когда начинается лига не с флага начала, а с какого то другого, то ошибка
-                                        throw new Exception("MDA: FmotivDivider, wrong Tie organization!Begining!");
+                                        throw new Exception("LibiadaMusic: FmotivDivider, wrong Tie organization!Begining!");
                                     }
                                 }
                                 #endregion
@@ -1064,13 +1064,13 @@ namespace MDA.OIP.BorodaDivider
                                         else
                                         {
                                             // когда лига не заканчивается флагом конца, то ошибка
-                                            throw new Exception("MDA: FmotivDivider, wrong Tie organization!End!");
+                                            throw new Exception("LibiadaMusic: FmotivDivider, wrong Tie organization!End!");
                                         }
                                     }
                                     else
                                     {
                                         // когда начинается лига не с флага начала, а с какого то другого, то ошибка
-                                        throw new Exception("MDA: FmotivDivider, wrong Tie organization!Begining!");
+                                        throw new Exception("LibiadaMusic: FmotivDivider, wrong Tie organization!Begining!");
                                     }
                                 }
                                 #endregion
@@ -1151,13 +1151,13 @@ namespace MDA.OIP.BorodaDivider
                                         else
                                         {
                                             // когда лига не заканчивается флагом конца, то ошибка
-                                            throw new Exception("MDA: FmotivDivider, wrong Tie organization!End!");
+                                            throw new Exception("LibiadaMusic: FmotivDivider, wrong Tie organization!End!");
                                         }
                                     }
                                     else
                                     {
                                         // когда начинается лига не с флага начала, а с какого то другого, то ошибка
-                                        throw new Exception("MDA: FmotivDivider, wrong Tie organization!Begining!");
+                                        throw new Exception("LibiadaMusic: FmotivDivider, wrong Tie organization!Begining!");
                                     }
                                 }
                                 #endregion
@@ -1224,13 +1224,13 @@ namespace MDA.OIP.BorodaDivider
                                         else
                                         {
                                             // когда лига не заканчивается флагом конца, то ошибка
-                                            throw new Exception("MDA: FmotivDivider, wrong Tie organization!End!");
+                                            throw new Exception("LibiadaMusic: FmotivDivider, wrong Tie organization!End!");
                                         }
                                     }
                                     else
                                     {
                                         // когда начинается лига не с флага начала, а с какого то другого, то ошибка
-                                        throw new Exception("MDA: FmotivDivider, wrong Tie organization!Begining!");
+                                        throw new Exception("LibiadaMusic: FmotivDivider, wrong Tie organization!Begining!");
                                     }
                                 }
                                 #endregion
@@ -1319,13 +1319,13 @@ namespace MDA.OIP.BorodaDivider
                                     else
                                     {
                                         // когда лига не заканчивается флагом конца, то ошибка
-                                        throw new Exception("MDA: FmotivDivider, wrong Tie organization!End!");
+                                        throw new Exception("LibiadaMusic: FmotivDivider, wrong Tie organization!End!");
                                     }
                                 }
                                 else
                                 {
                                     // когда начинается лига не с флага начала, а с какого то другого, то ошибка
-                                    throw new Exception("MDA: FmotivDivider, wrong Tie organization!Begining!");
+                                    throw new Exception("LibiadaMusic: FmotivDivider, wrong Tie organization!Begining!");
                                 }
                             }
                             #endregion

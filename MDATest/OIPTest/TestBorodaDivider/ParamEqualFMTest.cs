@@ -1,10 +1,10 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using MDA.OIP.BorodaDivider;
+using LibiadaMusic.OIP.BorodaDivider;
 
-namespace MDATest.OIPTest.TestBorodaDivider
+namespace LibiadaMusicTest.OIPTest.TestBorodaDivider
 {
     [TestClass]
-    public class TestParamEqualFM
+    public class ParamEqualFMTest
     {
         [TestMethod]
         public void TestParamEqual1()

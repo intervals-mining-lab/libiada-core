@@ -1,26 +1,25 @@
 using System;
 using System.Xml;
+using LibiadaMusic.OIP.MusicXml;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using MDA.OIP.MusicXml;
 
-
-namespace TestMusicXml.TestMDA.OIPTest
+namespace LibiadaMusicTest.OIPTest.TestMusicXml
 {
-	[TestClass]
-	public class TestXmlReader
-	{
-		[TestMethod]
-		public void TestXMLReader1 ()
+    [TestClass]
+    public class XmlReaderTest
+    {
+        [TestMethod]
+        public void TestXMLReader1 ()
         {
-            MusicXmlReader xr = new MusicXmlReader("..\\..\\OIPTest\\MDAexample7Liga.xml");
+            MusicXmlReader xr = new MusicXmlReader("..\\..\\OIPTest\\LibiadaMusicexample7Liga.xml");
             Assert.IsNotNull(xr.MusicXmlDocument);
-            Assert.AreEqual("MDAexample7Liga", xr.FileName);
-		}
+            Assert.AreEqual("LibiadaMusicexample7Liga", xr.FileName);
+        }
 
         [TestMethod]
         public void TestXMLReader2()
         {
-            string path = "..\\..\\OIPTest\\MDAexample7Liga.xml";
+            string path = "..\\..\\OIPTest\\LibiadaMusicexample7Liga.xml";
             MusicXmlReader xr = new MusicXmlReader();
             XmlDocument xdoc = new XmlDocument();
 
@@ -32,7 +31,7 @@ namespace TestMusicXml.TestMDA.OIPTest
             }
             catch (Exception e) 
             {
-                if (e.Message != "MDA.XMLReader:you are trying to get empty XmlDocument!")
+                if (e.Message != "LibiadaMusic.XMLReader:you are trying to get empty XmlDocument!")
                 {
                     Assert.Fail();
                 }
@@ -41,8 +40,8 @@ namespace TestMusicXml.TestMDA.OIPTest
             xr.LoadMusicXmlDocument(path);
             xdoc = xr.MusicXmlDocument;
             Assert.IsNotNull(xdoc);
-            Assert.AreEqual("MDAexample7Liga", xr.FileName);
+            Assert.AreEqual("LibiadaMusicexample7Liga", xr.FileName);
         }
-	}
+    }
 }
 

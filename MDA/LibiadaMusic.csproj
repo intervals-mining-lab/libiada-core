@@ -7,8 +7,8 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{FB02B0A5-68BB-4786-96A3-B6D4276CF74F}</ProjectGuid>
     <OutputType>Library</OutputType>
-    <AssemblyName>MDA</AssemblyName>
-    <RootNamespace>MDA</RootNamespace>
+    <AssemblyName>LibiadaMusic</AssemblyName>
+    <RootNamespace>LibiadaMusic</RootNamespace>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileUpgradeFlags>
     </FileUpgradeFlags>
@@ -74,15 +74,15 @@
     <Compile Include="ICL\TextWordGamut.cs" />
     <Compile Include="ICL\WithinWordRemoteness.cs" />
     <Compile Include="ICL\WordRemoteness.cs" />
-    <Compile Include="AssemblyInfo.cs" />
-    <Compile Include="Analisis\Composition.cs" />
-    <Compile Include="Analisis\Difference.cs" />
-    <Compile Include="Analisis\DisplayData.cs" />
-    <Compile Include="Analisis\FMArray.cs" />
-    <Compile Include="Analisis\FMName.cs" />
-    <Compile Include="Analisis\FMotiv.cs" />
-    <Compile Include="Analisis\Lexicon.cs" />
-    <Compile Include="Analisis\Reader.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Analysis\Composition.cs" />
+    <Compile Include="Analysis\Difference.cs" />
+    <Compile Include="Analysis\DisplayData.cs" />
+    <Compile Include="Analysis\FMArray.cs" />
+    <Compile Include="Analysis\FMName.cs" />
+    <Compile Include="Analysis\FMotiv.cs" />
+    <Compile Include="Analysis\Lexicon.cs" />
+    <Compile Include="Analysis\Reader.cs" />
     <Compile Include="OIP\BorodaDivider\BorodaDivider.cs" />
     <Compile Include="OIP\BorodaDivider\Fmotiv.cs" />
     <Compile Include="OIP\BorodaDivider\FmotivChain.cs" />

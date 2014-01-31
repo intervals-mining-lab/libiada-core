@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using LibiadaCore.Classes.Root;
-using MDA.OIP.ScoreModel;
+using LibiadaMusic.OIP.ScoreModel;
 
-namespace MDA.OIP.BorodaDivider
+namespace LibiadaMusic.OIP.BorodaDivider
 {
     public class Fmotiv : IBaseObject // класс для хранения ф-мотива
     {
@@ -140,12 +140,12 @@ namespace MDA.OIP.BorodaDivider
             for (int i = 0; i < count; i++)
             {
                 // неправильный код лиги, лига кодируется {-1,0,1,2}
-                if ((Temp.NoteList[0].Tie > 2) || (Temp.NoteList[0].Tie < -1)) { throw new Exception("MDA: Tie is not valid!"); }
+                if ((Temp.NoteList[0].Tie > 2) || (Temp.NoteList[0].Tie < -1)) { throw new Exception("LibiadaMusic: Tie is not valid!"); }
 
                 // если лига отсутствует
                 if (Temp.NoteList[0].Tie == -1)
                 {
-                    if (BuffNote != null) { throw new Exception("MDA: Tie started but (stop)/(startstop) note NOT following!"); }
+                    if (BuffNote != null) { throw new Exception("LibiadaMusic: Tie started but (stop)/(startstop) note NOT following!"); }
                     TempGathered.NoteList.Add(((Note)Temp.NoteList[0].Clone()));
                     // очистка текущей позиции ноты, для перехода к следущей в очереди
                     Temp.NoteList.RemoveAt(0);
@@ -155,13 +155,13 @@ namespace MDA.OIP.BorodaDivider
                     // пауза не может быть залигованна, ошибка если лига на паузе! 
                     if (Temp.NoteList[0].Pitch.Count == 0)
                     {
-                        throw new Exception("MDA: Pause can't be with Tie! Sorry!");
+                        throw new Exception("LibiadaMusic: Pause can't be with Tie! Sorry!");
                     }
 
                     // начало лиги стартовая нота
                     if (Temp.NoteList[0].Tie == 0) 
                     {   // если уже был старт лиги, и еще раз начинается старт
-                        if (BuffNote != null) { throw new Exception("MDA: Tie note start after existing start note!"); }
+                        if (BuffNote != null) { throw new Exception("LibiadaMusic: Tie note start after existing start note!"); }
                         BuffNote = ((Note)Temp.NoteList[0].Clone());
                         // очистка текущей позиции ноты, для перехода к следущей в очереди
                         Temp.NoteList.RemoveAt(0);
@@ -169,9 +169,9 @@ namespace MDA.OIP.BorodaDivider
                     else
                     {
                         // должно быть уже собрано что то в буффере так как лига продолжающаяся или завершающаяся
-                        if (BuffNote == null) { throw new Exception("MDA: Tie note (stopes and starts)/(stops), without previous note start!"); }
+                        if (BuffNote == null) { throw new Exception("LibiadaMusic: Tie note (stopes and starts)/(stops), without previous note start!"); }
                         // высота залигованных нот должна быть одинакова
-                        if (!BuffNote.PitchEquals(Temp.NoteList[0].Pitch)) { throw new Exception("MDA: Pitches of tie notes not equal!"); }
+                        if (!BuffNote.PitchEquals(Temp.NoteList[0].Pitch)) { throw new Exception("LibiadaMusic: Pitches of tie notes not equal!"); }
 
                         // уже начавшаяся лига продолжается, с условием что будет еще следущая лигованная нота
                         if (Temp.NoteList[0].Tie == 2)
@@ -197,7 +197,7 @@ namespace MDA.OIP.BorodaDivider
                             }
                             else 
                             {
-                                { throw new Exception("MDA: Tie is not valid!"); }
+                                { throw new Exception("LibiadaMusic: Tie is not valid!"); }
                             }
 
                         }

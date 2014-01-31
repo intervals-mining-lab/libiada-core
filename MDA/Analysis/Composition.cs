@@ -5,8 +5,7 @@ using LibiadaCore.Classes.Root.Characteristics;
 using LibiadaCore.Classes.Root.Characteristics.Calculators;
 using LibiadaCore.Classes.Root.SimpleTypes;
 
-
-namespace MDA.Analisis
+namespace LibiadaMusic.Analysis
 {
     public class Composition
     {
@@ -25,8 +24,8 @@ namespace MDA.Analisis
         private Difference LogNDiff= new Difference();
         public Difference VDiff = new Difference();
         private DisplayData disp = new DisplayData();
-		
-		static object lchain = new object();
+        
+        static object lchain = new object();
 
         public Composition() 
         {
@@ -117,31 +116,31 @@ namespace MDA.Analisis
             }
         }
 
-		public Chain MakeNewChain() // сделал из void конструктор
+        public Chain MakeNewChain() // сделал из void конструктор
         {	lock (lchain)
-			{
+            {
             Chain newchain = new Chain(Range.Getlength());
 
             for (int i = 0; i < Range.Getlength(); i++)
             {
                 newchain[i] = new ValueInt(((FMName)Range.GetData()[i]).GetId());
             }
-			
-			chain =(Chain) newchain.Clone();
-			return newchain;
-			}
-						
+            
+            chain =(Chain) newchain.Clone();
+            return newchain;
+            }
+                        
         } 
-		
+        
         public void CalcInfo()
         {
-				IInfo=System.Math.Log(PLex.GetCapacity(),2);
-            	/*if (Info!=System.Math.Truncate(Info))
-            	{
-	                Info = System.Math.Truncate(Info)+1;
-    	        }*/
-        	    OIInfo = IInfo;
-            	IInfo *= Range.Getlength();
+                IInfo=System.Math.Log(PLex.GetCapacity(),2);
+                /*if (Info!=System.Math.Truncate(Info))
+                {
+                    Info = System.Math.Truncate(Info)+1;
+                }*/
+                OIInfo = IInfo;
+                IInfo *= Range.Getlength();
         } // По Шеннону
 
         public int GetInfo()
@@ -151,12 +150,12 @@ namespace MDA.Analisis
 
         public void CalcEntropy()
         {
-				double Ent = 0;
-            	for (int i=0;i<PLex.GetCapacity();i++)
-            	{
-                	Ent += ((FMotiv)PLex.GetData()[i]).GetFrequency() * Math.Log(((FMotiv)PLex.GetData()[i]).GetFrequency(),2);
-            	}
-            	this.Entropy = Ent*(-1);
+                double Ent = 0;
+                for (int i=0;i<PLex.GetCapacity();i++)
+                {
+                    Ent += ((FMotiv)PLex.GetData()[i]).GetFrequency() * Math.Log(((FMotiv)PLex.GetData()[i]).GetFrequency(),2);
+                }
+                this.Entropy = Ent*(-1);
         } 
 
         public double GetEntropy()
@@ -164,12 +163,12 @@ namespace MDA.Analisis
             return this.Entropy;
         }
 
-		public void CalcGamut()
+        public void CalcGamut()
         {
-			Characteristic G = new Characteristic(new Depth());
+            Characteristic G = new Characteristic(new Depth());
             AvgDepth = G.Value(MakeNewChain(), Link.End);
-			
-			int i;				
+            
+            int i;				
             for(i=0;i<PLex.GetCapacity();i++)
             {
                 ((FMotiv)PLex.GetData()[i]).SetDepth(new Characteristic(new Depth()).Value(MakeNewChain().CongenericChain(i), Link.End));

@@ -1,6 +1,6 @@
 ﻿using LibiadaCore.Classes.Root;
 
-namespace MDA.OIP.ScoreModel
+namespace LibiadaMusic.OIP.ScoreModel
 {
     public class Key : IBaseObject // знаки при ключе в такте (диез, бемоль)
     {

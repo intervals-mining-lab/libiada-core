@@ -1,19 +1,19 @@
 ﻿using System.Collections.Generic;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using MDA.OIP.ScoreModel;
-using MDA.OIP.MusicXml;
 using System.Xml;
+using LibiadaMusic.OIP.MusicXml;
+using LibiadaMusic.OIP.ScoreModel;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace TestMusicXml.MDATest.OIPTest
+namespace LibiadaMusicTest.OIPTest.TestMusicXml
 {
     [TestClass]
-    public class TestMusicXmlParser
+    public class MusicXmlParserTest
     {
         [TestMethod]
         public void TestXmlParser()
         {
             XmlDocument xmldocument = new XmlDocument();
-            MusicXmlReader xmlreader = new MusicXmlReader("..\\..\\OIPTest\\MDAexample7Liga.xml");
+            MusicXmlReader xmlreader = new MusicXmlReader("..\\..\\OIPTest\\LibiadaMusicexample7Liga.xml");
             MusicXmlParser Parser = new MusicXmlParser();
 
             Parser.Execute(xmlreader.MusicXmlDocument, xmlreader.FileName);
@@ -70,7 +70,7 @@ namespace TestMusicXml.MDATest.OIPTest
             List <UniformScoreTrack> utracks = new List<UniformScoreTrack>();
             utracks.Add(new UniformScoreTrack("p0", measures1));
             //создание полной модели музыкального трека/текста, с присвоением имени файла
-            ScoreTrack Scoremodel = new ScoreTrack("MDAexample7Liga",utracks);
+            ScoreTrack Scoremodel = new ScoreTrack("LibiadaMusicexample7Liga",utracks);
 
             #endregion
 
