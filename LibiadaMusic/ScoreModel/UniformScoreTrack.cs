@@ -5,161 +5,145 @@ namespace LibiadaMusic.ScoreModel
 {
     public class UniformScoreTrack : IBaseObject // монофонический (моно) трек
     {
-        private string name; // название моно дорожки (по инструменту или партии)
-        private  List<Measure> measurelist; // список тактов моно дорожки
-        
-        public UniformScoreTrack(string name, List<Measure> measurelist) 
+        public string Name { get; private set; }
+
+        public List<Measure> MeasureList { get; private set; }
+
+        public UniformScoreTrack(string name, List<Measure> measureList)
         {
-            this.measurelist = new List<Measure>();
-            for (int i = 0; i < measurelist.Count; i++) // создаем список тактов, по средствам клонирования каждого такта.
+            MeasureList = new List<Measure>();
+            for (int i = 0; i < measureList.Count; i++)
+                // создаем список тактов, по средствам клонирования каждого такта.
             {
-                this.measurelist.Add((Measure)measurelist[i].Clone());
+                MeasureList.Add((Measure) measureList[i].Clone());
             }
-            this.name = name;
+            Name = name;
         }
-        public string Name
-        {
-            get
-            {
-                return name;
-            }
-        }
-        public List<Measure> Measurelist
-        {
-            get
-            {
-                return measurelist;
-            }
-        }
+
         // возвращает строй объектов Note, проидентифицировав их
-        public List<Note> NoteOrder() 
+        public List<Note> NoteOrder()
         {
-            List<Note> Temp = new List<Note>();
+            var temp = new List<Note>();
             //запись в одну цепочку
-            foreach (Measure measure in Measurelist) 
+            foreach (Measure measure in MeasureList)
             {
-                foreach(Note note in measure.NoteList)
+                foreach (Note note in measure.NoteList)
                 {
-                    Temp.Add((Note)note.Clone());
+                    temp.Add((Note) note.Clone());
                 }
             }
 
             // идентификация
-            Temp[0].Id = 0; // первая нота обозначается 0
+            temp[0].Id = 0; // первая нота обозначается 0
             int n = 1; // счетчик для уникальных
 
             // для остальных процедура цикла
-            for (int i = 1; i < Temp.Count; i++) 
+            for (int i = 1; i < temp.Count; i++)
             {
                 // флаг если уже идентифицированна нота
-                bool Identifyed = false;
+                bool identified = false;
 
-                for (int j = 0; j < i; j++) 
+                for (int j = 0; j < i; j++)
                 {
-                    if (Temp[i].Equals(Temp[j])) 
+                    if (temp[i].Equals(temp[j]))
                     {
                         // еси уже такая идентифицировалась
-                        Temp[i].Id = Temp[j].Id;
-                        Identifyed = true;
+                        temp[i].Id = temp[j].Id;
+                        identified = true;
                     }
                 }
                 //если ранее не встречалась эта нота, то назначим ей новый id
-                if (!Identifyed) 
+                if (!identified)
                 {
-                    Temp[i].Id = n; // назанчим еще не использованный по возрастанию id
+                    temp[i].Id = n; // назанчим еще не использованный по возрастанию id
                     n = n + 1; // увеличиваем счетчик уникальных
                 }
             }
 
-            return Temp;
+            return temp;
 
         }
 
         // возвращает строй нот (в виде цепи натуральных чисел начиная с 0)
-        public int [] NoteIdOrder()
+        public int[] NoteIdOrder()
         {
-            List<Note> Temp = new List<Note>();
-            Temp = NoteOrder();
+            List<Note> temp = NoteOrder();
 
-            int [] IdTemp = new int [Temp.Count]; // строй из Id, а не из объектов типа Note
-            for (int i = 0; i < Temp.Count; i++)
+            var idTemp = new int[temp.Count]; // строй из Id, а не из объектов типа Note
+            for (int i = 0; i < temp.Count; i++)
             {
-                IdTemp[i] = Temp[i].Id;
+                idTemp[i] = temp[i].Id;
             }
-            return IdTemp;
+            return idTemp;
         }
 
         // возвращает строй объектов Measure, проидентифицировав их
         public List<Measure> MeasureOrder()
         {
-            List<Measure> Temp = new List<Measure>();
+            var temp = new List<Measure>();
             //запись в одну цепочку
-            foreach (Measure measure in Measurelist)
+            foreach (Measure measure in MeasureList)
             {
-                Temp.Add((Measure)measure.Clone());
+                temp.Add((Measure) measure.Clone());
             }
 
             // идентификация
-            Temp[0].Id = 0; // первый такт обозначается 0
+            temp[0].Id = 0; // первый такт обозначается 0
             int n = 1; // счетчик для уникальных
 
             // для остальных процедура цикла
-            for (int i = 1; i < Temp.Count; i++)
+            for (int i = 1; i < temp.Count; i++)
             {
                 // флаг если уже идентифицирован такт
-                bool Identifyed = false;
+                bool identified = false;
 
                 for (int j = 0; j < i; j++)
                 {
-                    if (Temp[i].Equals(Temp[j]))
+                    if (temp[i].Equals(temp[j]))
                     {
                         // еси уже такой идентифицировался
-                        Temp[i].Id = Temp[j].Id;
-                        Identifyed = true;
+                        temp[i].Id = temp[j].Id;
+                        identified = true;
                     }
                 }
                 //если ранее не встречался этот такт, то назначим ему новый id
-                if (!Identifyed)
+                if (!identified)
                 {
-                    Temp[i].Id = n; // назанчим еще не использованный по возрастанию id
+                    temp[i].Id = n; // назанчим еще не использованный по возрастанию id
                     n = n + 1; // увеличиваем счетчик уникальных
                 }
             }
-
-            return Temp;
-
+            return temp;
         }
 
         // возвращает строй тактов (в виде цепи натуральных чисел начиная с 0)
         public int[] MeasureIdOrder()
         {
-            List<Measure> Temp = new List<Measure>();
-            Temp = MeasureOrder();
+            List<Measure> temp = MeasureOrder();
 
-            int[] IdTemp = new int[Temp.Count]; // строй из Id, а не из объектов типа Measure
-            for (int i = 0; i < Temp.Count; i++)
+            var idTemp = new int[temp.Count]; // строй из Id, а не из объектов типа Measure
+            for (int i = 0; i < temp.Count; i++)
             {
-                IdTemp[i] = Temp[i].Id;
+                idTemp[i] = temp[i].Id;
             }
-            return IdTemp;
+            return idTemp;
         }
-
-        #region IBaseMethods
 
         public IBaseObject Clone()
         {
-            UniformScoreTrack Temp = new UniformScoreTrack(name, measurelist);
-            return Temp;
+            return new UniformScoreTrack(Name, MeasureList);
         }
 
         public override bool Equals(object obj)
         {
-            bool equalMeasureList = true;
+            bool equalMeasureList = MeasureList.Count == ((UniformScoreTrack) obj).MeasureList.Count;
 
-            if (Measurelist.Count != ((UniformScoreTrack)obj).Measurelist.Count) { equalMeasureList = false; }
-            for (int i = 0; i < Measurelist.Count; i++)
+            for (int i = 0; i < MeasureList.Count; i++)
             {
-                if (!Measurelist[i].Equals(((UniformScoreTrack)obj).Measurelist[i])) { equalMeasureList = false; }
+                if (!MeasureList[i].Equals(((UniformScoreTrack) obj).MeasureList[i]))
+                {
+                    equalMeasureList = false;
+                }
             }
             if (equalMeasureList)
             {
@@ -167,7 +151,5 @@ namespace LibiadaMusic.ScoreModel
             }
             return false;
         }
-
-        #endregion
     }
 }

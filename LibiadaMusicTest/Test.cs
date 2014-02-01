@@ -11,17 +11,17 @@ namespace LibiadaMusicTest
 		[TestMethod]
 		public void Test1()
 		{
-			Composition com = new Composition();
-			double e = com.entropy;
+			var com = new Composition();
+			var e = com.Entropy;
 			e = 0.3;
-			Assert.AreNotEqual(e,com.entropy);
+			Assert.AreNotEqual(e,com.Entropy);
 		}
 		
 		[TestMethod]
 		public void Test2()
 		{
-			Difference dif1 = new Difference();
-			Difference dif2 = new Difference();
+			var dif1 = new Difference();
+			var dif2 = new Difference();
 			Assert.AreEqual(dif1.D,dif2.D);				
 			Assert.IsFalse(false);
 		}

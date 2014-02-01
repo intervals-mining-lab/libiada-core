@@ -6,27 +6,26 @@ namespace LibiadaMusic.BorodaDivider
     {
         public FmotivChain GetIdentification(FmotivChain fmotivchain, int paramPause, int paramEqual)
         {
-            FmotivChain Temp = (FmotivChain)fmotivchain.Clone();
+            var temp = (FmotivChain)fmotivchain.Clone();
 
-            for (int i = 0; i < Temp.FmotivList.Count; i++)
+            for (int i = 0; i < temp.FmotivList.Count; i++)
             {
-                for (int j = i; j < Temp.FmotivList.Count; j++)
+                for (int j = i; j < temp.FmotivList.Count; j++)
                 {
-                    if (Temp.FmotivList[i].FmEquals(Temp.FmotivList[j], paramPause, paramEqual)) 
-                    //if (Temp.FmotivList[i].Equals(Temp.FmotivList[j])) 
+                    if (temp.FmotivList[i].FmEquals(temp.FmotivList[j], paramPause, paramEqual)) 
                     {
-                        Temp.FmotivList[j].Id = Temp.FmotivList[i].Id;
+                        temp.FmotivList[j].Id = temp.FmotivList[i].Id;
                     }
                 }
             }
-            for (int i = 0; i < MaxId(Temp.FmotivList); i++) 
+            for (int i = 0; i < MaxId(temp.FmotivList); i++) 
             {
                 bool HaveId = false; // флаг того что есть такой id в цепочке
-                for (int j = 0; j < Temp.FmotivList.Count; j++)
+                for (int j = 0; j < temp.FmotivList.Count; j++)
                 {
                     if (!HaveId)
                     {
-                        if (Temp.FmotivList[j].Id == i)
+                        if (temp.FmotivList[j].Id == i)
                         {
                             HaveId = true;
                             break;
@@ -35,12 +34,12 @@ namespace LibiadaMusic.BorodaDivider
                 }
                 if (!HaveId) 
                 {
-                    for (int j = 0; j < Temp.FmotivList.Count; j++)
+                    for (int j = 0; j < temp.FmotivList.Count; j++)
                     {
-                        if (Temp.FmotivList[j].Id > i)
+                        if (temp.FmotivList[j].Id > i)
                             {
                             // уменьшаем на 1 id тех фмотивов которые больше текущей  id - i, которой не нашлось в цепи
-                                Temp.FmotivList[j].Id = Temp.FmotivList[j].Id -1;
+                                temp.FmotivList[j].Id = temp.FmotivList[j].Id -1;
                             }
                     }
                     // уменьшаем i на 1 чтобы еще раз проверить есть ли это i среди цепи после уменьшения id-ек больших i
@@ -49,7 +48,7 @@ namespace LibiadaMusic.BorodaDivider
                 }
             }
 
-                return Temp;
+                return temp;
         }
 
         private int MaxId(List<Fmotiv> list)

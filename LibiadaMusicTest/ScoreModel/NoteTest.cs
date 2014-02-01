@@ -9,9 +9,9 @@ namespace LibiadaMusicTest.ScoreModel
         [TestMethod]
         public void TestNoteEquals1() 
         {
-            Note note1 = new Note(new Pitch(1,'A',0),new Duration(1,4,false,480),false,Tie.None);
+            var note1 = new Note(new Pitch(1,'A',0),new Duration(1,4,false,480),false,Tie.None);
 
-            Note note2 = new Note(new Pitch(1, 'A', 0), new Duration(1, 4, false, 480), false, Tie.Start);
+            var note2 = new Note(new Pitch(1, 'A', 0), new Duration(1, 4, false, 480), false, Tie.Start);
 
             Assert.IsTrue(!note1.Equals(note2));
         }
@@ -19,9 +19,9 @@ namespace LibiadaMusicTest.ScoreModel
         [TestMethod]
         public void TestNoteEquals2()
         {
-            Note note1 = new Note(new Pitch(1, 'A', 0), new Duration(1, 4, false, 480), false, Tie.None);
+            var note1 = new Note(new Pitch(1, 'A', 0), new Duration(1, 4, false, 480), false, Tie.None);
 
-            Note note2 = new Note(new Pitch(1, 'B', -2), new Duration(1, 4, false, 480), false, Tie.None);
+            var note2 = new Note(new Pitch(1, 'B', -2), new Duration(1, 4, false, 480), false, Tie.None);
 
             Assert.IsTrue(note1.Equals(note2));
         }
@@ -29,10 +29,10 @@ namespace LibiadaMusicTest.ScoreModel
         [TestMethod]
         public void TestMultiNoteEquals1()
         {
-            Note note1 = new Note(new Pitch(1, 'A', 0), new Duration(1, 4, false, 480), false, Tie.None);
+            var note1 = new Note(new Pitch(1, 'A', 0), new Duration(1, 4, false, 480), false, Tie.None);
             note1.AddPitch(new Pitch(1, 'B', 0));
 
-            Note note2 = new Note(new Pitch(1, 'A', 0), new Duration(1, 4, false, 480), false, Tie.None);
+            var note2 = new Note(new Pitch(1, 'A', 0), new Duration(1, 4, false, 480), false, Tie.None);
             note2.AddPitch(new Pitch(1, 'B', 0));
 
             Assert.IsTrue(note1.Equals(note2));
@@ -41,9 +41,9 @@ namespace LibiadaMusicTest.ScoreModel
         [TestMethod]
         public void TestNoteClone1()
         {
-            Note note1 = new Note(new Pitch(1, 'A', 0), new Duration(1, 4, false, 480), false, Tie.Stop);
+            var note1 = new Note(new Pitch(1, 'A', 0), new Duration(1, 4, false, 480), false, Tie.Stop);
 
-            Note note2 =  (Note)note1.Clone();
+            var note2 =  (Note)note1.Clone();
 
             Assert.IsTrue(note1.Equals(note2));
         }

@@ -5,43 +5,39 @@ namespace LibiadaMusic.BorodaDivider
 {
     public class BorodaDivider
     {
-        public List<FmotivChain> Divide(ScoreTrack strack, int paramPause, int paramEqual) 
+        public List<FmotivChain> Divide(ScoreTrack strack, int paramPause, int paramEqual)
         {
-            List<FmotivChain> Temp = new List<FmotivChain>();
+            var temp = new List<FmotivChain>();
 
-            foreach(UniformScoreTrack utrack in strack.UniformScoreTracks)
+            foreach (UniformScoreTrack utrack in strack.UniformScoreTracks)
             {
-                FmotivChain fmchain = (FmotivChain)Divide(utrack, paramPause, paramEqual).Clone();
-                fmchain.Id = Temp.Count;
-                Temp.Add(fmchain);
+                var fmchain = (FmotivChain) Divide(utrack, paramPause, paramEqual).Clone();
+                fmchain.Id = temp.Count;
+                temp.Add(fmchain);
             }
-            return Temp;
+            return temp;
         }
 
-        public FmotivChain Divide(UniformScoreTrack utrack, int paramPause, int paramEqual) 
+        public FmotivChain Divide(UniformScoreTrack utrack, int paramPause, int paramEqual)
         {
             // paramPause - параметр как учитывать паузу : игнорировать, звуковой след предыдущего звука, вырожденныый звук
             // paramEqual - как сравнивать ф-мотивы с секвентым переносом, либо нет
 
 
-            FmotivChain Temp = new FmotivChain();
             // сохраняем имя цепи фмотивов как имя монотрека
-            Temp.Name = utrack.Name;
-            
-            PriorityDiscover prioritydiscover = new PriorityDiscover();
-            FmotivDivider fmdivider = new FmotivDivider();
-            FmotivIdentificator fmident = new FmotivIdentificator();
+
+            var prioritydiscover = new PriorityDiscover();
+            var fmdivider = new FmotivDivider();
+            var fmident = new FmotivIdentificator();
 
             //подсчет приоритетов
             prioritydiscover.Calculate(utrack);
 
             // разбиение
-            Temp = fmdivider.GetDivision(utrack, paramPause);
+            FmotivChain temp = fmdivider.GetDivision(utrack, paramPause);
 
             // нахождение одинаковых
-            Temp = fmident.GetIdentification(Temp, paramPause, paramEqual);
-
-            return Temp;
+            return fmident.GetIdentification(temp, paramPause, paramEqual);
         }
     }
 }

@@ -1,27 +1,28 @@
 ﻿using System;
-using System.Collections;
+using System.Collections.Generic;
 
 namespace LibiadaMusic.Analysis
 {
     public class FMArray
     {
-        private ArrayList Ar=new ArrayList();
+        private List<FMName> Ar = new List<FMName>();
         private int length;
-        public ArrayList Data
+
+        public List<FMName> Data
         {
             get { return Ar; }
-            set { Ar = (ArrayList)value.Clone(); }
-            
+            set { Ar = new List<FMName>(value); }
         }
 
         public void NewRecord(String str)
-        {   Ar.Add(new FMName(str));
+        {
+            Ar.Add(new FMName(str));
             length += 1;
         }
+
         public int Length
         {
             get { return length; }
-            
         }
     }
 }

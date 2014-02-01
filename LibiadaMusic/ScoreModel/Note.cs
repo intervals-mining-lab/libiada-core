@@ -1,33 +1,38 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using LibiadaCore.Classes.Root;
 
 namespace LibiadaMusic.ScoreModel
 {
     public class Note : IBaseObject // нота
     {
-        private bool triplet; // наличие триоли
-        private Tie tie; // есть ли лига (-1 : нет; 0 - начало; 1 - конец)
-        private List<Pitch> pitch; // высота ноты
-        private Duration duration; // длительность ноты
-        private int priority; // сильная/слабая доля - приоритет доли
-        private int id; // id ноты для составления строя нот
+        public int Id { get; set; }
 
+        public bool Triplet { get; private set; }
+
+        public List<Pitch> Pitch { get; private set; }
+
+        public Duration Duration { get; private set; }
+
+        public int Priority { get; set; }
+
+        public Tie Tie { get; set; }
 
         public Note(Pitch pitch, Duration duration, bool triplet, Tie tie, int priority)
         {
-            this.pitch = new List<Pitch>(0);
+            Pitch = new List<Pitch>(0);
             if (pitch != null) // если не пауза то записываем высоту и наличие лиги
             {
-                this.pitch.Add((Pitch) pitch.Clone());
-                this.tie = tie;
+                Pitch.Add((Pitch) pitch.Clone());
+                Tie = tie;
             }
             else
             {
-                this.tie = Tie.None; // если нота - пауза, то не может быть лиги на паузу
+                Tie = Tie.None; // если нота - пауза, то не может быть лиги на паузу
             }
-            this.duration = (Duration) duration.Clone();
-            this.triplet = triplet;
-            this.priority = priority; // приоритет если указан
+            Duration = (Duration) duration.Clone();
+            Triplet = triplet;
+            Priority = priority; // приоритет если указан
         }
 
         public Note(Pitch pitch, Duration duration, bool triplet, Tie tie)
@@ -35,120 +40,68 @@ namespace LibiadaMusic.ScoreModel
         {
         }
 
-        public Note(List<Pitch> pitchlist, Duration duration, bool triplet, Tie tie, int priority)
+        public Note(List<Pitch> pitchList, Duration duration, bool triplet, Tie tie, int priority = -1)
             : this((Pitch) null, duration, triplet, tie, priority)
         {
-            if (pitchlist.Count > 0)
+            if (pitchList.Count > 0)
             {
-                pitch.AddRange(pitchlist);
-                this.tie = tie;
-            }
-        }
-
-        public Note(List<Pitch> pitchlist, Duration duration, bool triplet, Tie tie)
-            : this((Pitch) null, duration, triplet, tie, -1)
-        {
-            if (pitchlist.Count > 0)
-            {
-                pitch.AddRange(pitchlist);
-                this.tie = tie;
+                Pitch.AddRange(pitchList);
+                Tie = tie;
             }
         }
 
         public List<Note> SplitNote(Duration duration)
         {
-            List<Note> Temp = new List<Note>(0);
-            Temp.Add((Note) Clone());
-            Temp.Add((Note) Clone());
-            Temp[0].Duration = duration;
-            Temp[1].Duration = Duration.SubDuration(duration);
-            return Temp;
+            var clone = new List<Note>(0) {(Note) Clone(), (Note) Clone()};
+            clone[0].Duration = duration;
+            clone[1].Duration = Duration.SubDuration(duration);
+            return clone;
         }
 
-        public int AddPitch(Pitch pitch)
+        public void AddPitch(Pitch pitch)
         {
-            this.pitch.Add(pitch);
-            return 0;
-        }
-
-        public int AddPitch(List<Pitch> pitch)
-        {
-            this.pitch.AddRange(pitch);
-            return 0;
-        }
-
-        public int SetInstrument(int instrument)
-        {
-            foreach (Pitch p in pitch)
-                p.Instrument = instrument;
-            return 0;
-        }
-
-        public bool PitchEquals(List<Pitch> pitchlist)
-        {
-            if (pitch.Count != pitchlist.Count)
+            if (pitch == null)
             {
-                //throw new Exception("LibiadaMusic: Pitches of tie notes not equal because of count!");
+                throw new ArgumentNullException("pitch");
+            }
+            Pitch.Add(pitch);
+        }
+
+        public void AddPitch(List<Pitch> pitch)
+        {
+            Pitch.AddRange(pitch);
+        }
+
+        public void SetInstrument(int instrument)
+        {
+            foreach (Pitch p in Pitch)
+            {
+                p.Instrument = instrument;
+            }
+        }
+
+        public bool PitchEquals(List<Pitch> pitchList)
+        {
+            if (Pitch.Count != pitchList.Count)
+            {
                 return false;
             }
-            for (int i = 0; i < pitchlist.Count; i++)
-                if (!pitch[i].Equals(pitchlist[i]))
+            for (int i = 0; i < pitchList.Count; i++)
+                if (!Pitch[i].Equals(pitchList[i]))
                 {
-                    //throw new Exception("LibiadaMusic: Pitches of tie notes not equal because of pitches!");
                     return false;
                 }
             return true;
         }
 
-        public int Id
-        {
-            set { id = value; }
-            get { return id; }
-        }
-
-        public bool Triplet
-        {
-            get { return triplet; }
-        }
-
-        public Tie Tie
-        {
-            get { return tie; }
-        }
-
-        public List<Pitch> Pitch
-        {
-            get { return pitch; }
-        }
-
-        public Duration Duration
-        {
-            get { return duration; }
-            set { duration = value; }
-        }
-
-        public int Priority
-        {
-            set { priority = value; }
-            get { return priority; }
-        }
-
-        internal void SetTie(Tie newtie)
-        {
-            tie = newtie;
-        }
-
-        #region IBaseMethods
-
         public IBaseObject Clone()
         {
-            Note Temp = new Note(pitch, duration, triplet, tie, priority);
-            return Temp;
+            return new Note(Pitch, Duration, Triplet, Tie, Priority);
         }
 
         public override bool Equals(object obj)
         {
-            if (pitch == null || pitch.Count == 0) // одна нота - пауза
+            if (Pitch == null || Pitch.Count == 0) // одна нота - пауза
             {
                 if (((Note) obj).Pitch == null || ((Note) obj).Pitch.Count == 0) // другая нота - пауза
                 {
@@ -169,7 +122,6 @@ namespace LibiadaMusic.ScoreModel
                 return false;
             }
 
-
             if ((Duration.Equals(((Note) obj).Duration)) && (PitchEquals(((Note) obj).Pitch)) &&
                 (Tie == ((Note) obj).Tie) && (Triplet == ((Note) obj).Triplet))
             {
@@ -179,10 +131,5 @@ namespace LibiadaMusic.ScoreModel
             // TODO: сделать сравнение не по всей ноте/объекту, а еще только по месту например, 
             // TODO: из сравнения исключить триплет, так может различать одинаковые по длительности ноты, но записанные по разному(!)
         }
-
-
-        #endregion
-
     }
 }
-

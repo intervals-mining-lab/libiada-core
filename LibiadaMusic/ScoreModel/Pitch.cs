@@ -3,53 +3,33 @@ using LibiadaCore.Classes.Root;
 
 namespace LibiadaMusic.ScoreModel
 {
-    public class Pitch : IBaseObject // высота ноты
+    /// <summary>
+    /// высота ноты
+    /// </summary>
+    public class Pitch : IBaseObject
     {
-        private int alter; // диез/бемоль +1 диез; -1 бемоль
-        private char step; // ЗАГЛАВНАЯ (!) буква обозначающая "относительную" высоту ноты "A", "B" и т.д.
-        private int octave; // номер октавы 
-        private int midinumber; // уникальный номер ноты по миди стандарту
-        private int instrument; // номер инструмента
+        public int MidiNumber { get; private set; }
 
+        public char Step { get; private set; }
+
+        private int Octave { get; set; }
+
+        private int Alter { get; set; }
+
+        public int Instrument { private get; set; }
 
         public Pitch(int octave, char step, int alter, int instrument = 0)
         {
-            this.alter = alter;
-            this.step = step;
-            this.octave = octave;
-            midinumber = getmidinumberbyparam(this.octave, this.step, this.alter);
-            this.instrument = instrument;
+            Alter = alter;
+            Step = step;
+            Octave = octave;
+            MidiNumber = GetMidiNumberByParam(Octave, Step, Alter);
+            Instrument = instrument;
         }
 
-        public int Midinumber
-        {
-            get { return midinumber; }
-        }
 
-        public char Step
-        {
-            get { return step; }
-        }
 
-        public int Octave
-        {
-            get { return octave; }
-        }
-
-        public int Alter
-        {
-            get { return alter; }
-        }
-
-        public int Instrument
-        {
-            get { return instrument; }
-            set { instrument = value; }
-        }
-
-        #region privateMethods
-
-        private int getmidinumberbyparam(int octave, char step, int alter)
+        private int GetMidiNumberByParam(int octave, char step, int alter)
             // вычисление глобального номера ноты через параметры
         {
             int offset; // сдвиг от начала октавы, в зависимости от буквы ноты
@@ -79,23 +59,17 @@ namespace LibiadaMusic.ScoreModel
                 default:
                     throw new Exception("Error Pitch contains non-recognized STEP letters!");
             }
-            int numer = (12*(octave + 1)) + offset + alter;
-            return numer;
+            return (12*(octave + 1)) + offset + alter;
         }
 
-        private void getparamsbymidinumber(int midinumber)
+        private void GetParamsByMidiNumber(int midiNumber)
         {
             // TODO: сделать вычисление параметров по глобальному номеру ноты, обратная операция получению номера из параметров
         }
 
-        #endregion
-
-        #region IBaseMethods
-
         public IBaseObject Clone()
         {
-            Pitch Temp = new Pitch(octave, step, alter, instrument);
-            return Temp;
+            return new Pitch(Octave, Step, Alter, Instrument);
         }
 
         public override bool Equals(object obj)
@@ -104,13 +78,11 @@ namespace LibiadaMusic.ScoreModel
             {
                 return false;
             }
-            if (Midinumber == ((Pitch) obj).Midinumber)
+            if (MidiNumber == ((Pitch) obj).MidiNumber)
             {
                 return true;
             }
             return false;
         }
-
-        #endregion
     }
 }

@@ -6,7 +6,7 @@ namespace LibiadaMusic.ScoreModel
     {
         public static int[] ParseType(string type)
         {
-            int [] numDenom = new int [2]; // формируем массив из 2 элементов Numerator и Denominator по типу длительности
+            var numDenom = new int [2]; // формируем массив из 2 элементов Numerator и Denominator по типу длительности
             switch (type)
             {
                 case "whole": { numDenom[0] = 1; numDenom[1] = 1; }

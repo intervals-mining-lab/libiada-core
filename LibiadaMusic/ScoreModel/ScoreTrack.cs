@@ -4,98 +4,74 @@ using LibiadaCore.Classes.Root;
 
 namespace LibiadaMusic.ScoreModel
 {
-    public class ScoreTrack : IBaseObject // полный музыкальный текст/трек
+    /// <summary>
+    /// полный музыкальный текст/трек
+    /// </summary>
+    public class ScoreTrack : IBaseObject
     {
-        private string name; // имя музыкального текста ( муз. произведения)
-        private List<UniformScoreTrack> uniformscoretracks; // список моно треков
+        public string Name { get; private set; }
+
+        public List<UniformScoreTrack> UniformScoreTracks { get; private set; }
+
         //TODO: сделать поля жанра/автора/типа произведения, для дальнейшего анализа, 
         //PS:либо сделать на уровень структуры выше, где будет разбиение на Ф-мотивы
-        public ScoreTrack(string name, List<UniformScoreTrack> uniformscoretracks)
+        public ScoreTrack(string name, List<UniformScoreTrack> uniformScoreTracks)
         {
-            this.name = name; // присваиваем имя музыкального трека
-            this.uniformscoretracks = new List<UniformScoreTrack>();
-            for (int i = 0; i < uniformscoretracks.Count; i++)
+            Name = name; // присваиваем имя музыкального трека
+            UniformScoreTracks = new List<UniformScoreTrack>();
+            for (int i = 0; i < uniformScoreTracks.Count; i++)
                 // создаем список монотреков, по средствам клонирования каждого монотрека.
             {
-                this.uniformscoretracks.Add((UniformScoreTrack) uniformscoretracks[i].Clone());
-                /*foreach (Measure measure in this.uniformscoretracks[this.uniformscoretracks.Count - 1].Measurelist)
-                foreach (Note note in measure.NoteList)
-                    note.SetInstrument(i);*/
+                UniformScoreTracks.Add((UniformScoreTrack) uniformScoreTracks[i].Clone());
             }
 
-            //////////////////////////////////////////////
-            /// ПОЛИФОНИЧЕСКАЯ ВСТАВКА
-            //////////////////////////////////////////////
-            UniformScoreTrack temp = (UniformScoreTrack) MergedTracks(this.uniformscoretracks).Clone();
-            this.uniformscoretracks.Clear();
-            this.uniformscoretracks.Add(temp);
+            // ПОЛИФОНИЧЕСКАЯ ВСТАВКА
+            var temp = (UniformScoreTrack) MergedTracks(UniformScoreTracks).Clone();
+            UniformScoreTracks.Clear();
+            UniformScoreTracks.Add(temp);
         }
 
-        public UniformScoreTrack MergedTracks(List<UniformScoreTrack> tracks)
+        private UniformScoreTrack MergedTracks(List<UniformScoreTrack> tracks)
         {
-            int j = 0;
-            UniformScoreTrack temp = (UniformScoreTrack) tracks[0].Clone(); // список склеенных дорожек
-            List<Measure> templist = new List<Measure>(temp.Measurelist); //список склеенных тактов
-            Measure tempm; // текущий склеиваемый такт
+            var temp = (UniformScoreTrack) tracks[0].Clone(); // список склеенных дорожек
+            var tempList = new List<Measure>(temp.MeasureList); //список склеенных тактов
             for (int i = 1; i < tracks.Count; i++)
             {
-                if (templist.Count != tracks[i].Measurelist.Count)
+                if (tempList.Count != tracks[i].MeasureList.Count)
                     throw new Exception("ScoreTrack: invalid measure count");
-                for (j = 0; j < temp.Measurelist.Count; j++)
+                for (int j = 0; j < temp.MeasureList.Count; j++)
                 {
                     // склеивание j-тых тактов
-                    tempm = (Measure) tracks[i].Measurelist[j].Clone();
-                    tempm.MergeMeasures(templist[j]);
-                    templist.RemoveAt(j);
-                    templist.Insert(j, tempm);
+                    var tempMeasure = (Measure) tracks[i].MeasureList[j].Clone();
+                    tempMeasure.MergeMeasures(tempList[j]);
+                    tempList.RemoveAt(j);
+                    tempList.Insert(j, tempMeasure);
                 }
             }
-
-            temp = new UniformScoreTrack(temp.Name, templist);
-            return temp;
+            return new UniformScoreTrack(temp.Name, tempList);
         }
-
-        public string Name
-        {
-            get { return name; }
-        }
-
-        public List<UniformScoreTrack> UniformScoreTracks
-        {
-            get { return uniformscoretracks; }
-        }
-
-        #region IBaseMethods
 
         public IBaseObject Clone()
         {
-            ScoreTrack Temp = new ScoreTrack(name, uniformscoretracks);
-            return Temp;
+            return new ScoreTrack(Name, UniformScoreTracks);
         }
 
         public override bool Equals(object obj)
         {
-            bool equalUniformscoretracks = true;
+            bool equalUniformScoreTracks = UniformScoreTracks.Count == ((ScoreTrack) obj).UniformScoreTracks.Count;
 
-            if (UniformScoreTracks.Count != ((ScoreTrack) obj).UniformScoreTracks.Count)
-            {
-                equalUniformscoretracks = false;
-            }
             for (int i = 0; i < UniformScoreTracks.Count; i++)
             {
                 if (!UniformScoreTracks[i].Equals(((ScoreTrack) obj).UniformScoreTracks[i]))
                 {
-                    equalUniformscoretracks = false;
+                    equalUniformScoreTracks = false;
                 }
             }
-            if (equalUniformscoretracks)
+            if (equalUniformScoreTracks)
             {
                 return true;
             }
             return false;
         }
-
-        #endregion
-
     }
 }

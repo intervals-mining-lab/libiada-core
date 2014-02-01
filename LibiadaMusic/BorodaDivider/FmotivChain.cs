@@ -10,23 +10,25 @@ namespace LibiadaMusic.BorodaDivider
         private string name; // название моно дорожки для которой выделяются ф-мотивы
         private List<Fmotiv> fmotivlist; // список ф-мотив
 
-        public FmotivChain() 
+        public FmotivChain()
         {
             fmotivlist = new List<Fmotiv>();
         }
 
         public List<Fmotiv> FmotivList
         {
-            get{ return fmotivlist; }
+            get { return fmotivlist; }
         }
+
         public string Name
         {
             get { return name; }
             set { name = value; }
         }
+
         public int Id
         {
-            get{ return id; }
+            get { return id; }
             set { id = value; }
         }
 
@@ -34,29 +36,40 @@ namespace LibiadaMusic.BorodaDivider
 
         public IBaseObject Clone()
         {
-            FmotivChain Temp = new FmotivChain();
-            foreach (Fmotiv fmotiv in fmotivlist) 
+            var temp = new FmotivChain();
+            foreach (Fmotiv fmotiv in fmotivlist)
             {
-                Temp.fmotivlist.Add((Fmotiv)fmotiv.Clone());
+                temp.fmotivlist.Add((Fmotiv) fmotiv.Clone());
             }
-            Temp.id = id;
-            Temp.name = name;
+            temp.id = id;
+            temp.name = name;
 
-            return Temp;
+            return temp;
         }
 
         public override bool Equals(object obj)
         {
-            if (name != ((FmotivChain)obj).name) { return false; }
-            if (id != ((FmotivChain)obj).id) { return false; }
-
-            if (FmotivList.Count!= ((FmotivChain)obj).FmotivList.Count) {return false;}
-            for(int i=0; i < FmotivList.Count; i++)
+            if (name != ((FmotivChain) obj).name)
             {
-                if (!FmotivList[i].Equals(((FmotivChain)obj).FmotivList[i])) {return false;}
+                return false;
+            }
+            if (id != ((FmotivChain) obj).id)
+            {
+                return false;
             }
 
-            return true; 
+            if (FmotivList.Count != ((FmotivChain) obj).FmotivList.Count)
+            {
+                return false;
+            }
+            for (int i = 0; i < FmotivList.Count; i++)
+            {
+                if (!FmotivList[i].Equals(((FmotivChain) obj).FmotivList[i]))
+                {
+                    return false;
+                }
+            }
+            return true;
         }
 
         #endregion

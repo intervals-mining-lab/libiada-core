@@ -6,47 +6,44 @@ namespace LibiadaMusic.Analysis
 {
     public class Reader
     {
-        private string[] Data1;
+        private string[] data;
 
         public void SetData(string path)
         {
-            FileStream fs = new FileStream(path, FileMode.Open);
-            BinaryReader br = new BinaryReader(fs);
-            /*if (fs.Length == 0)
-            {
-                throw new Exception("Error! Input file is empty");
-            }*/
-            char[] data = br.ReadChars((int)fs.Length);
-            string str = "";
+            var fs = new FileStream(path, FileMode.Open);
+            var br = new BinaryReader(fs);
+
+            char[] chars = br.ReadChars((int) fs.Length);
+            string str = String.Empty;
             for (int i = 0; i < fs.Length; i++)
             {
-                str = str + data[i];
+                str = str + chars[i];
             }
-            char[] sep = new char[] { '\r', '\n' };
-            Data1 = str.Split(sep, (int)fs.Length, StringSplitOptions.RemoveEmptyEntries);
+            char[] sep = {'\r', '\n'};
+            data = str.Split(sep, (int) fs.Length, StringSplitOptions.RemoveEmptyEntries);
             fs.Close();
         }
+
         public void SetXmlData(string path)
         {
             // Объявляем и забиваем файл в документ  
-            XmlDocument xd = new XmlDocument();
-            FileStream fs = new FileStream(path, FileMode.Open);
+            var xd = new XmlDocument();
+            var fs = new FileStream(path, FileMode.Open);
             xd.Load(fs);
             XmlNodeList list = xd.GetElementsByTagName("element"); // Создаем и заполняем лист по тегу "element"  
-            string str = "";            
+            string str = String.Empty;
             for (int i = 0; i < list.Count; i++)
             {
-                str = str + list.Item(i).InnerText + '\r' + '\n'; // вносим в строку следующий ф-мотив + разделитель
+                str += list.Item(i).InnerText + '\r' + '\n'; // вносим в строку следующий ф-мотив + разделитель
             }
-            char[] sep = new char[] { '\r', '\n' };
-            Data1 = str.Split(sep, (int)fs.Length, StringSplitOptions.RemoveEmptyEntries);
-            fs.Close();                          // Закрываем поток
+            char[] sep = {'\r', '\n'};
+            data = str.Split(sep, (int) fs.Length, StringSplitOptions.RemoveEmptyEntries);
+            fs.Close(); // Закрываем поток
         }
 
-        public string[] GetData()
+        public string[] Data
         {
-            return Data1;
+            get { return data; }
         }
-
     }
 }

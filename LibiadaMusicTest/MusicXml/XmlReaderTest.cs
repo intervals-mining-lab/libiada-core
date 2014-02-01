@@ -11,7 +11,7 @@ namespace LibiadaMusicTest.MusicXml
         [TestMethod]
         public void TestXMLReader1 ()
         {
-            MusicXmlReader xr = new MusicXmlReader("../../LibiadaMusicexample7Liga.xml");
+            var xr = new MusicXmlReader("../../LibiadaMusicexample7Liga.xml");
             Assert.IsNotNull(xr.MusicXmlDocument);
             Assert.AreEqual("LibiadaMusicexample7Liga", xr.FileName);
         }
@@ -19,9 +19,9 @@ namespace LibiadaMusicTest.MusicXml
         [TestMethod]
         public void TestXMLReader2()
         {
-            string path = "../../LibiadaMusicexample7Liga.xml";
-            MusicXmlReader xr = new MusicXmlReader();
-            XmlDocument xdoc = new XmlDocument();
+            var path = "../../LibiadaMusicexample7Liga.xml";
+            var xr = new MusicXmlReader();
+            var xdoc = new XmlDocument();
 
             // проверка на null object, при вы€влении XmlDocument
             try

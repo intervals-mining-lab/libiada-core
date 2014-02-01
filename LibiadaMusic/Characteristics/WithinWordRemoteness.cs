@@ -12,38 +12,46 @@ namespace LibiadaMusic.Characteristics
     {
         // удаленность внутри слов
         // среднее арифметическое средней удаленности слова среди всех слов цепи [в буквах]
-        static public double Calculate(FmotivChain FmChain) 
+        public static double Calculate(FmotivChain FmChain)
         {
-            if (FmChain.FmotivList.Count < 1) throw new Exception("Unaible to count within word remoteness with no elements in chain!");
+            if (FmChain.FmotivList.Count < 1)
+                throw new Exception("Unable to count within word remoteness with no elements in chain!");
 
             double ArRemVal = 0; // среднее арифметическое средней удаленности слова
             string temp; // строка для временного хранения набора высот
 
             foreach (Fmotiv fmotiv in FmChain.FmotivList)
             {
-                Chain notechain = new Chain(fmotiv.PauseTreatment((int)ParamPauseTreatment.Ignore).TieGathered().NoteList.Count);
-                for (int i = 0; i < fmotiv.PauseTreatment((int)ParamPauseTreatment.Ignore).TieGathered().NoteList.Count; i++)
+                var noteChain =
+                    new Chain(fmotiv.PauseTreatment((int) ParamPauseTreatment.Ignore).TieGathered().NoteList.Count);
+                for (int i = 0;
+                    i < fmotiv.PauseTreatment((int) ParamPauseTreatment.Ignore).TieGathered().NoteList.Count;
+                    i++)
                 {
                     temp = "";
-                    foreach (Pitch pitch in fmotiv.PauseTreatment((int)ParamPauseTreatment.Ignore).TieGathered().NoteList[i].Pitch)
+                    foreach (
+                        Pitch pitch in
+                            fmotiv.PauseTreatment((int) ParamPauseTreatment.Ignore).TieGathered().NoteList[i].Pitch)
                     {
-                        temp += Convert.ToString(pitch.Midinumber);
+                        temp += Convert.ToString(pitch.MidiNumber);
                     }
                     //TODO: переделать нормально чтоб цепочка складывалась из ValueNote, а не как попало
-                    notechain[i] = new ValueString(temp + " " +
-                        Convert.ToString(fmotiv.PauseTreatment((int)ParamPauseTreatment.Ignore).TieGathered().NoteList[i].Duration.Value * 10000000));
+                    noteChain[i] = new ValueString(temp + " " +
+                                                   Convert.ToString(
+                                                       fmotiv.PauseTreatment((int) ParamPauseTreatment.Ignore)
+                                                           .TieGathered()
+                                                           .NoteList[i].Duration.Value*10000000));
                 }
 
-                Characteristic R = new Characteristic(new Depth());
-                double val = R.Value(notechain, Link.Start);
+                var R = new Characteristic(new Depth());
+                double val = R.Value(noteChain, Link.Start);
 
                 ArRemVal = ArRemVal + val;
             }
 
-            ArRemVal = ArRemVal / FmChain.FmotivList.Count;  // берем среднее от суммы всех удаленностей слов
+            ArRemVal = ArRemVal/FmChain.FmotivList.Count; // берем среднее от суммы всех удаленностей слов
 
             return ArRemVal;
         }
-
     }
 }

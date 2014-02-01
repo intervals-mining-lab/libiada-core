@@ -10,8 +10,8 @@ namespace LibiadaMusicTest.Characteristics
         [TestMethod]
         public void TestWithinWordRemoteness1()
         {
-            Fmotiv fmotiv1 = new Fmotiv(0, "ПМТ");
-            Fmotiv fmotiv2 = new Fmotiv(1, "ПМТ");
+            Fmotiv fmotiv1 = new Fmotiv("ПМТ", 0);
+            Fmotiv fmotiv2 = new Fmotiv("ПМТ", 1);
 
             fmotiv1.NoteList.Add(new Note(new Pitch(3, 'E', 0), new Duration(1, 4, false, 512), false, Tie.None));
             fmotiv1.NoteList.Add(new Note(new Pitch(3, 'A', 0), new Duration(1, 4, false, 512), false, Tie.None));
@@ -29,8 +29,8 @@ namespace LibiadaMusicTest.Characteristics
         [TestMethod]
         public void TestWithinWordRemoteness2()
         {
-            Fmotiv fmotiv1 = new Fmotiv(0, "ПМТ");
-            Fmotiv fmotiv2 = new Fmotiv(1, "ПМТ");
+            Fmotiv fmotiv1 = new Fmotiv("ПМТ", 0);
+            Fmotiv fmotiv2 = new Fmotiv("ПМТ", 1);
 
             fmotiv1.NoteList.Add(new Note(new Pitch(3, 'E', 0), new Duration(1, 4, false, 512), false, Tie.None));
             fmotiv1.NoteList.Add(new Note(new Pitch(3, 'A', 0), new Duration(1, 4, false, 512), false, Tie.None));
@@ -51,8 +51,8 @@ namespace LibiadaMusicTest.Characteristics
         [TestMethod]
         public void TestWithinWordRemoteness3()
         {
-            Fmotiv fmotiv1 = new Fmotiv(0, "ПМТ");
-            Fmotiv fmotiv2 = new Fmotiv(1, "ПМТ");
+            Fmotiv fmotiv1 = new Fmotiv("ПМТ", 0);
+            Fmotiv fmotiv2 = new Fmotiv("ПМТ", 1);
 
             fmotiv1.NoteList.Add(new Note(new Pitch(3, 'E', 0), new Duration(1, 4, false, 512), false, Tie.None));
             fmotiv1.NoteList.Add(new Note(new Pitch(3, 'A', 0), new Duration(1, 4, false, 512), false, Tie.None));

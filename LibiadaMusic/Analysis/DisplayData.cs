@@ -30,5 +30,4 @@ namespace LibiadaMusic.Analysis
         public Difference DiffRFreq = new Difference();
         public Difference DiffLRLN = new Difference();
     }
-  
 }

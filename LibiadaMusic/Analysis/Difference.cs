@@ -1,55 +1,54 @@
 ﻿using System;
-using System.Collections;
-using System.Dynamic;
+using System.Collections.Generic;
 
 namespace LibiadaMusic.Analysis
 {
     public class Difference
     {
-        private double nonP=0;  // E|(Ft-Fp)|
-        private double ononP = 0;  // (E|(Ft-Fp)|)/N
-        private double sqHi=0; // N(E(Ft-Fp)/Ft)
-        private double d=0; // Max(F1-F2)
-        private double dV = 0; // |V1-V2|
-        private double pdV = 0; // |V1-V2| / V1
+        private double nonP; // E|(Ft-Fp)|
+        private double ononP; // (E|(Ft-Fp)|)/N
+        private double sqHi; // N(E(Ft-Fp)/Ft)
+        private double d; // Max(F1-F2)
+        private double dV; // |V1-V2|
+        private double pdV; // |V1-V2| / V1
 
         public double NonP
         {
             get { return nonP; }
-
         }
+
         public double OnonP
         {
             get { return ononP; }
-
         }
+
         public double SqHi
         {
             get { return sqHi; }
-            
         }
+
         public double D
         {
             get { return d; }
-            
         }
+
         public double DV
         {
             get { return dV; }
-            
+
         }
+
         public double PdV
         {
             get { return pdV; }
-            
         }
 
         public Difference()
         {
-            
+
         }
 
-        private Difference(double p1,double p2,double p3,double p4,double p5,double p6)
+        private Difference(double p1, double p2, double p3, double p4, double p5, double p6)
         {
             nonP = p1;
             ononP = p2;
@@ -61,34 +60,25 @@ namespace LibiadaMusic.Analysis
 
         public Difference Clone()
         {
-            Difference d = new Difference(nonP, ononP, sqHi, this.d, dV, pdV);
-            return d;
+            return new Difference(nonP, ononP, sqHi, d, dV, pdV);
         }
 
-        public void CalcDifference(ArrayList a1 ,ArrayList a2, int N, int PCap, int LCap) // N - объем выборки
+        public void CalcDifference(List<double> a1, List<double> a2, int N, int PCap, int LCap) // N - объем выборки
         {
-            if (a1.Count==a2.Count)
+            if (a1.Count == a2.Count)
             {
-                double dif = 0;
                 nonP = 0;
                 sqHi = 0;
                 d = 0;
-                for (int i=0;i<a1.Count;i++)
+                for (int i = 0; i < a1.Count; i++)
                 {
-                    dif = ((double)a1[i]) - ((double)a2[i]);
+                    double dif = a1[i] - a2[i];
                     nonP += Math.Abs(dif);
-                    if (((double)a1[i]) != 0)
+                    if (a1[i] != 0)
                     {
-                        if (LCap>=PCap)
-                        {
-                            sqHi += Math.Pow(dif, 2)/((double) a1[i]);
-                        }
-                        else
-                        {
-                            sqHi += Math.Pow(dif, 2)/((double) a2[i]);
-                        }
+                        sqHi += Math.Pow(dif, 2)/(LCap >= PCap ? a1[i] : a2[i]);
                     }
-                    if (d<Math.Abs(dif))
+                    if (d < Math.Abs(dif))
                     {
                         d = Math.Abs(dif);
                     }

@@ -1,23 +1,26 @@
 ﻿using System.Collections;
+using System.Collections.Generic;
 
 namespace LibiadaMusic.Analysis
 {
     public class Lexicon
     {
-        private int newid=0;
-        private double greatFrequency = 0;
-        private double greatOccur = 0;
-        private int capacity=0;
-        private ArrayList FMVariety= new ArrayList();
-        private ArrayList RFMVariety = new ArrayList();
-        private bool Ranged=false;
+        private int newid;
+        private double greatOccur;
+        private int capacity;
+        private List<FMotiv> RFMVariety = new List<FMotiv>();
+        private bool Ranged;
 
-        public ArrayList Data
+        public double GreatFrequency { get; set; }
+
+        public List<FMotiv> Data { get; private set; }
+
+        public Lexicon()
         {
-            get { return FMVariety; }
+            Data = new List<FMotiv>();
         }
 
-        public ArrayList RData()
+        public List<FMotiv> RData()
         {
             if (!Ranged)
             {
@@ -29,80 +32,70 @@ namespace LibiadaMusic.Analysis
         public int Capacity
         {
             get { return capacity; }
- 
         }
 
         public double GreatOccur
         {
             get { return greatOccur; }
-            
-        }
-
-        public double GreatFrequency
-        {
-            get { return greatFrequency; }
-            set { greatFrequency = value; }
-            
         }
 
         public double CalcGreatFrequency()
         {
-            greatFrequency = 0;
-            for (int i = 0; i < capacity;i++)
+            GreatFrequency = 0;
+            for (int i = 0; i < capacity; i++)
             {
-                if (greatFrequency < ((FMotiv) FMVariety[i]).Frequency)
+                if (GreatFrequency < Data[i].Frequency)
                 {
-                    greatFrequency = ((FMotiv) FMVariety[i]).Frequency;
+                    GreatFrequency = Data[i].Frequency;
                 }
             }
-            return greatFrequency;
+            return GreatFrequency;
         }
 
-        public void AddFMotiv(string name,int occur,double freq)
-        {   FMVariety.Add(new FMotiv(newid,name,occur,freq));
+        public void AddFMotiv(string name, int occur, double freq)
+        {
+            Data.Add(new FMotiv(newid, name, occur, freq));
             newid += 1;
             capacity += 1;
-            if (greatFrequency < freq)
+            if (GreatFrequency < freq)
             {
-                greatFrequency = freq;
+                GreatFrequency = freq;
                 greatOccur = occur;
             }
-
         }
 
         public void RangeLex()
         {
-            ArrayList ar = new ArrayList();
-            ar = (ArrayList) FMVariety.Clone();
+            var ar = new List<FMotiv>(Data);
             double MaxFreq = 0;
             int CurMaxFreqId = 0;
             int CurMaxFreqArId = 0;
-            for (int j = 0; j < FMVariety.Count; j++)
+            for (int j = 0; j < Data.Count; j++)
             {
-                MaxFreq = ((FMotiv)ar[0]).Frequency;
-                CurMaxFreqId = ((FMotiv)ar[0]).Id;
+                MaxFreq = ar[0].Frequency;
+                CurMaxFreqId = ar[0].Id;
                 CurMaxFreqArId = 0;
                 for (int i = 0; i < ar.Count; i++)
                 {
-                    if (MaxFreq<((FMotiv)ar[i]).Frequency)
+                    if (MaxFreq < ar[i].Frequency)
                     {
-                        MaxFreq = ((FMotiv) ar[i]).Frequency;
-                        CurMaxFreqId = ((FMotiv) ar[i]).Id;
+                        MaxFreq = ar[i].Frequency;
+                        CurMaxFreqId = ar[i].Id;
                         CurMaxFreqArId = i;
                     }
                 }
-                ((FMotiv)FMVariety[CurMaxFreqId]).Rank = j+1;
+                Data[CurMaxFreqId].Rank = j + 1;
                 ar.RemoveAt(CurMaxFreqArId);
             }
         }
 
-        public ArrayList RangeLexDi()
+        public List<double> RangeLexDi()
         {
-            ArrayList ar = new ArrayList();
+            var ar = new List<double>();
 
-            for (int i = 0; i < FMVariety.Count; i++)
+            for (int i = 0; i < Data.Count; i++)
             {
-                ar.Add(((FMotiv)FMVariety[i]).LogDepth);
+                ar.Add(Data[i].LogDepth);
             }
 
             bool done = false;
@@ -111,61 +104,56 @@ namespace LibiadaMusic.Analysis
                 done = true;
                 for (int j = 0; j < ar.Count - 1; j++)
                 {
-                    if (((double)ar[j]) < ((double)ar[j + 1]))
+                    if (ar[j] < ar[j + 1])
                     {
-                        double tempD = (double)ar[j];
-                        ar[j] = (double)ar[j + 1];
+                        double tempD = ar[j];
+                        ar[j] = ar[j + 1];
                         ar[j + 1] = tempD;
                         done = false;
                     }
-
                 }
-
             }
             return ar;
         }
 
-        public ArrayList RangeLexRi()
+        public List<double> RangeLexRi()
         {
-            ArrayList ar = new ArrayList();
+            var ar = new List<double>();
 
-            for (int i = 0; i < FMVariety.Count; i++ )
+            for (int i = 0; i < Data.Count; i++)
             {
-                ar.Add(((FMotiv)FMVariety[i]).Remoteness);
+                ar.Add(Data[i].Remoteness);
             }
 
             bool done = false;
-        while(!done)
-        {
-            done = true;
-            for (int j = 0; j < ar.Count-1; j++)
+            while (!done)
             {
-                if (((double)ar[j]) < ((double)ar[j + 1]))
+                done = true;
+                for (int j = 0; j < ar.Count - 1; j++)
+                {
+                    if (ar[j] < ar[j + 1])
                     {
-                        double tempD = (double)ar[j];
-                        ar[j] = (double)ar[j + 1];
-                        ar[j+1] = tempD;
+                        double tempD = ar[j];
+                        ar[j] = ar[j + 1];
+                        ar[j + 1] = tempD;
                         done = false;
                     }
-                
+                }
             }
-            
-        }
             return ar;
         }
 
         public void RangeLexElem()
         {
-            for (int i =1; i<capacity+1;i++)
+            for (int i = 1; i < capacity + 1; i++)
             {
                 for (int j = 0; j < capacity; j++)
                 {
-                    if (((FMotiv)FMVariety[j]).Rank == i)
+                    if (Data[j].Rank == i)
                     {
-                        RFMVariety.Add(FMVariety[j]);
+                        RFMVariety.Add(Data[j]);
                     }
                 }
-
             }
             Ranged = true;
         }

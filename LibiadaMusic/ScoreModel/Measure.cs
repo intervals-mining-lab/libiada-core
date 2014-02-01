@@ -5,109 +5,90 @@ namespace LibiadaMusic.ScoreModel
 {
     public class Measure : IBaseObject // такт
     {
-        private List<Note> notelist; // список нот, класса Note
-        private Attributes attributes; // атрибуты
-        private int id; // уникальный идентификатор такта
-
-        public Measure(List<Note> notelist, Attributes attributes)
+        public Measure(List<Note> noteList, Attributes attributes)
         {
             if (attributes != null)
             {
-                this.attributes = (Attributes)attributes.Clone();
+                Attributes = (Attributes) attributes.Clone();
             }
 
-            this.notelist = new List<Note>();
-            for (int i = 0; i < notelist.Count; i++) // создаем список нот, по средствам клонирования каждой ноты.
+            NoteList = new List<Note>();
+            for (int i = 0; i < noteList.Count; i++) // создаем список нот, по средствам клонирования каждой ноты.
             {
-                this.notelist.Add((Note)notelist[i].Clone());
+                NoteList.Add((Note) noteList[i].Clone());
             }
         }
 
-        public int MergeMeasures(Measure measure)
+        public void MergeMeasures(Measure measure)
         {
             int k = 0;
-            List<Note> TempNoteList = new List<Note>(0);
             // проведём цикл до тех пор, пока номер текущей ноты не превышает количество нот в обоих тактах
-            while ((k < notelist.Count) && (k < measure.notelist.Count))
+            while ((k < NoteList.Count) && (k < measure.NoteList.Count))
+            {
+                if (NoteList[k].Duration.Equals(measure.NoteList[k].Duration))
                 {
-                    if (notelist[k].Duration.Equals(measure.notelist[k].Duration))
-                    {
-                        // ноты одинаковы по длине, можно просто склеить
-                        notelist[k].AddPitch(measure.notelist[k].Pitch);
-                    }
-                    else if (notelist[k].Duration.Value < measure.notelist[k].Duration.Value)
+                    // ноты одинаковы по длине, можно просто склеить
+                    NoteList[k].AddPitch(measure.NoteList[k].Pitch);
+                }
+                else
+                {
+                    var tempNoteList = new List<Note>(0);
+                    if (NoteList[k].Duration.Value < measure.NoteList[k].Duration.Value)
                     {
                         // нота из склеенного массива короче, значит нужно вторую разделить на две и склеить
-                        TempNoteList = new List<Note>(0);
-                        TempNoteList.AddRange(measure.notelist[k].SplitNote(notelist[k].Duration));
-                        measure.notelist.RemoveAt(k);
-                        measure.notelist.InsertRange(k, TempNoteList);
-                        notelist[k].AddPitch(measure.notelist[k].Pitch);
+                        
+                        tempNoteList.AddRange(measure.NoteList[k].SplitNote(NoteList[k].Duration));
+                        measure.NoteList.RemoveAt(k);
+                        measure.NoteList.InsertRange(k, tempNoteList);
+                        NoteList[k].AddPitch(measure.NoteList[k].Pitch);
                     }
                     else
                     {
                         // нота из склеенного массива длиннее, значит надо её делить и клеить со второй
-                        TempNoteList = new List<Note>(0);
-                        TempNoteList.AddRange(notelist[k].SplitNote(measure.notelist[k].Duration));
-                        notelist.RemoveAt(k);
-                        notelist.InsertRange(k, TempNoteList);
-                        notelist[k].AddPitch(measure.notelist[k].Pitch);
+                        tempNoteList.AddRange(NoteList[k].SplitNote(measure.NoteList[k].Duration));
+                        NoteList.RemoveAt(k);
+                        NoteList.InsertRange(k, tempNoteList);
+                        NoteList[k].AddPitch(measure.NoteList[k].Pitch);
                     }
-                    k++;
                 }
+                k++;
+            }
             // теоретически на этом моменте у нас все ноты должны быть обработаны
             // хотя могло получиться, что в каком-то из тактов остались несклеенные ноты
-            return 0;
         }
 
-        public List<Note> NoteList
-        {
-            get { return notelist; }
-        }
-        public Attributes Attributes
-        {
-            get { return attributes; }
-            set { attributes = value; }
-        }
-        public int Id
-        {
-            get { return id; }
-            set { id = value; }
-        }
-        
-        #region IBaseMethods
+        public List<Note> NoteList { get; private set; }
+
+        public Attributes Attributes { get; private set; }
+
+        public int Id { get; set; }
 
         public IBaseObject Clone()
         {
-            Measure Temp = new Measure(notelist, attributes);
-            return Temp;
+            var temp = new Measure(NoteList, Attributes);
+            return temp;
         }
 
         public override bool Equals(object obj)
         {
-            bool equalNoteList = true;
-
-            if (NoteList.Count!= ((Measure)obj).NoteList.Count) 
+            if (NoteList.Count != ((Measure) obj).NoteList.Count)
             {
                 return false;
             }
-            if (!Attributes.Equals(((Measure)obj).Attributes))
+            if (!Attributes.Equals(((Measure) obj).Attributes))
             {
                 return false;
             }
-            for(int i=0; i < NoteList.Count; i++)
+            for (int i = 0; i < NoteList.Count; i++)
             {
-                if (!NoteList[i].Equals(((Measure)obj).NoteList[i])) 
+                if (!NoteList[i].Equals(((Measure) obj).NoteList[i]))
                 {
                     return false;
                 }
             }
-            
             return true;
             // TODO: сделать сравнение не по всей ноте/объекту, а еще только по месту например, 
             // TODO: из сравнения исключить триплет, так может различать одинаковые по длительности ноты, но записанные по разному(!)
         }
-
-        #endregion
     }
 }

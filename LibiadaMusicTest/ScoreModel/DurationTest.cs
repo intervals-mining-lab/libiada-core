@@ -9,9 +9,9 @@ namespace LibiadaMusicTest.ScoreModel
         [TestMethod]
         public void TestAddDuration() 
         {
-            Duration duration1 = new Duration(1, 2,false,480);
-            Duration duration2 = new Duration(1, 4, false, 240);
-            Duration duration3 = duration1.AddDuration(duration2);
+            var duration1 = new Duration(1, 2,false,480);
+            var duration2 = new Duration(1, 4, false, 240);
+            var duration3 = duration1.AddDuration(duration2);
 
             //duration1
             Assert.AreEqual(1,duration1.Numerator);
