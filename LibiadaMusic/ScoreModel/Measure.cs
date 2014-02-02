@@ -3,8 +3,26 @@ using LibiadaCore.Classes.Root;
 
 namespace LibiadaMusic.ScoreModel
 {
-    public class Measure : IBaseObject // такт
+    /// <summary>
+    /// такт
+    /// </summary>
+    public class Measure : IBaseObject
     {
+        /// <summary>
+        /// список нот, класса Note
+        /// </summary>
+        public List<Note> NoteList { get; private set; }
+
+        /// <summary>
+        /// атрибуты
+        /// </summary>
+        public Attributes Attributes { get; private set; }
+
+        /// <summary>
+        /// уникальный идентификатор такта
+        /// </summary>
+        public int Id { get; set; }
+
         public Measure(List<Note> noteList, Attributes attributes)
         {
             if (attributes != null)
@@ -56,12 +74,6 @@ namespace LibiadaMusic.ScoreModel
             // теоретически на этом моменте у нас все ноты должны быть обработаны
             // хотя могло получиться, что в каком-то из тактов остались несклеенные ноты
         }
-
-        public List<Note> NoteList { get; private set; }
-
-        public Attributes Attributes { get; private set; }
-
-        public int Id { get; set; }
 
         public IBaseObject Clone()
         {

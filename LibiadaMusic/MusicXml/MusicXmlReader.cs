@@ -6,8 +6,14 @@ namespace LibiadaMusic.MusicXml
 {
     public class MusicXmlReader
     {
-        private XmlDocument curDoc; // Текущий прочитанный MusicXML файл
-        private string filename; // путь к прочитанному MusicXML файлу
+        /// <summary>
+        /// Текущий прочитанный MusicXML файл
+        /// </summary>
+        private XmlDocument curDoc;
+        /// <summary>
+        /// путь к прочитанному MusicXML файлу
+        /// </summary>
+        public string FileName { get; private set; }
 
         public MusicXmlReader()
         {
@@ -32,11 +38,6 @@ namespace LibiadaMusic.MusicXml
             }
         }
 
-        public string FileName
-        {
-            get { return filename; }
-        }
-
         private void LoadNotes(string path)
         {
             // Объявляем и забиваем файл в XMLдокумент  
@@ -46,7 +47,7 @@ namespace LibiadaMusic.MusicXml
             curDoc = null;
             curDoc = (XmlDocument) xd.Clone();
             fs.Close();
-            filename = Path.GetFileNameWithoutExtension(path); // сохраняем имя прочтенного файла
+            FileName = Path.GetFileNameWithoutExtension(path); // сохраняем имя прочтенного файла
         }
     }
 }

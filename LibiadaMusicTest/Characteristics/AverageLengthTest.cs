@@ -22,10 +22,10 @@ namespace LibiadaMusicTest.Characteristics
             fmotiv2.NoteList.Add(new Note(new Pitch(3, 'A', 0), new Duration(1, 4, false, 512), false, Tie.None));
 
             // записываем ф-мотивы в цепь ф-мотивов, которая будет сравниваться с получившейся
-            var fmchain1 = new FmotivChain {Id = 0};
-            fmchain1.FmotivList.Add(fmotiv1);
-            fmchain1.FmotivList.Add(fmotiv2);
-            Assert.AreEqual(2, AverageLength.Calculate(fmchain1));
+            var chain = new FmotivChain {Id = 0};
+            chain.FmotivList.Add(fmotiv1);
+            chain.FmotivList.Add(fmotiv2);
+            Assert.AreEqual(2, AverageLength.Calculate(chain));
         }
 
         [TestMethod]
@@ -45,14 +45,14 @@ namespace LibiadaMusicTest.Characteristics
             fmotiv2.NoteList.Add(new Note(new Pitch(3, 'A', 0), new Duration(1, 4, false, 512), false, Tie.None));
 
             // записываем ф-мотивы в цепь ф-мотивов, которая будет сравниваться с получившейся
-            var fmchain1 = new FmotivChain {Id = 0};
-            fmchain1.FmotivList.Add(fmotiv1);
-            fmchain1.FmotivList.Add(fmotiv2);
-            Assert.AreEqual(4, AverageLength.Calculate(fmchain1));
+            var chain = new FmotivChain {Id = 0};
+            chain.FmotivList.Add(fmotiv1);
+            chain.FmotivList.Add(fmotiv2);
+            Assert.AreEqual(4, AverageLength.Calculate(chain));
         }
 
         [TestMethod]
-        public void TestAverageLength4pause()
+        public void TestAverageLength4Pause()
         {
             var fmotiv1 = new Fmotiv("ПМТ", 0);
             var fmotiv2 = new Fmotiv("ПМТ", 1);
@@ -69,14 +69,14 @@ namespace LibiadaMusicTest.Characteristics
             fmotiv2.NoteList.Add(new Note(new Pitch(3, 'A', 0), new Duration(1, 4, false, 512), false, Tie.None));
 
             // записываем ф-мотивы в цепь ф-мотивов, которая будет сравниваться с получившейся
-            var fmchain1 = new FmotivChain {Id = 0};
-            fmchain1.FmotivList.Add(fmotiv1);
-            fmchain1.FmotivList.Add(fmotiv2);
-            Assert.AreEqual(4, AverageLength.Calculate(fmchain1));
+            var chain = new FmotivChain {Id = 0};
+            chain.FmotivList.Add(fmotiv1);
+            chain.FmotivList.Add(fmotiv2);
+            Assert.AreEqual(4, AverageLength.Calculate(chain));
         }
 
         [TestMethod]
-        public void TestAverageLength4tie()
+        public void TestAverageLength4Tie()
         {
             var fmotiv1 = new Fmotiv("ПМТ", 0);
             var fmotiv2 = new Fmotiv("ПМТ", 1);
@@ -94,10 +94,10 @@ namespace LibiadaMusicTest.Characteristics
             fmotiv2.NoteList.Add(new Note(new Pitch(3, 'A', 0), new Duration(1, 4, false, 512), false, Tie.None));
 
             // записываем ф-мотивы в цепь ф-мотивов, которая будет сравниваться с получившейся
-            var fmchain1 = new FmotivChain {Id = 0};
-            fmchain1.FmotivList.Add(fmotiv1);
-            fmchain1.FmotivList.Add(fmotiv2);
-            Assert.AreEqual(4, AverageLength.Calculate(fmchain1));
+            var chain = new FmotivChain {Id = 0};
+            chain.FmotivList.Add(fmotiv1);
+            chain.FmotivList.Add(fmotiv2);
+            Assert.AreEqual(4, AverageLength.Calculate(chain));
         }
 
         [TestMethod]
@@ -107,10 +107,10 @@ namespace LibiadaMusicTest.Characteristics
             var fmotiv2 = new Fmotiv("ПМТ", 1);
 
             // записываем ф-мотивы в цепь ф-мотивов, которая будет сравниваться с получившейся
-            var fmchain1 = new FmotivChain {Id = 0};
-            fmchain1.FmotivList.Add(fmotiv1);
-            fmchain1.FmotivList.Add(fmotiv2);
-            Assert.AreEqual(0, AverageLength.Calculate(fmchain1));
+            var chain = new FmotivChain {Id = 0};
+            chain.FmotivList.Add(fmotiv1);
+            chain.FmotivList.Add(fmotiv2);
+            Assert.AreEqual(0, AverageLength.Calculate(chain));
         }
 
         [TestMethod]
@@ -125,18 +125,18 @@ namespace LibiadaMusicTest.Characteristics
             fmotiv2.NoteList.Add(new Note(new Pitch(3, 'E', 0), new Duration(1, 4, false, 512), false, Tie.None));
 
             // записываем ф-мотивы в цепь ф-мотивов, которая будет сравниваться с получившейся
-            var fmchain1 = new FmotivChain {Id = 0};
-            fmchain1.FmotivList.Add(fmotiv1);
-            fmchain1.FmotivList.Add(fmotiv2);
-            Assert.IsTrue(Math.Abs(AverageLength.Calculate(fmchain1) - 1.5) < 0.000001);
+            var chain = new FmotivChain {Id = 0};
+            chain.FmotivList.Add(fmotiv1);
+            chain.FmotivList.Add(fmotiv2);
+            Assert.IsTrue(Math.Abs(AverageLength.Calculate(chain) - 1.5) < 0.000001);
         }
 
         [TestMethod]
-        public void TestAverageLengtherr()
+        public void TestAverageLengthError()
         {
             try
             {
-                var fmchain1 = new FmotivChain {Id = 0};
+                var chain = new FmotivChain {Id = 0};
             }
             catch (Exception e)
             {

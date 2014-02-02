@@ -4,18 +4,39 @@ using LibiadaCore.Classes.Root;
 
 namespace LibiadaMusic.ScoreModel
 {
-    public class Note : IBaseObject // нота
+    /// <summary>
+    /// нота
+    /// </summary>
+    public class Note : IBaseObject 
     {
+        /// <summary>
+        /// id ноты для составления строя нот
+        /// </summary>
         public int Id { get; set; }
 
+        /// <summary>
+        /// наличие триоли
+        /// </summary>
         public bool Triplet { get; private set; }
 
+        /// <summary>
+        /// высота ноты
+        /// </summary>
         public List<Pitch> Pitch { get; private set; }
 
+        /// <summary>
+        /// длительность ноты
+        /// </summary>
         public Duration Duration { get; private set; }
 
+        /// <summary>
+        /// сильная/слабая доля - приоритет доли
+        /// </summary>
         public int Priority { get; set; }
 
+        /// <summary>
+        /// есть ли лига (-1 : нет; 0 - начало; 1 - конец)
+        /// </summary>
         public Tie Tie { get; set; }
 
         public Note(Pitch pitch, Duration duration, bool triplet, Tie tie, int priority)

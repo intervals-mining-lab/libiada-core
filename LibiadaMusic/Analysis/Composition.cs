@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using LibiadaCore.Classes.Root;
-using LibiadaCore.Classes.Root.Characteristics;
 using LibiadaCore.Classes.Root.Characteristics.Calculators;
 using LibiadaCore.Classes.Root.SimpleTypes;
 
@@ -13,19 +12,30 @@ namespace LibiadaMusic.Analysis
         public double Periodicity;
         public double AvgRemoteness;
         public double AvgDepth;
-        private double entropy;
         private double IInfo;
         private double OIInfo;
-        private FMArray Range = new FMArray();
+        private FmotivArray Range = new FmotivArray();
         public Lexicon PLex = new Lexicon();
         public Lexicon TLex = new Lexicon();
         private Chain chain;
         private Difference FreqDiff = new Difference();
         private Difference LogNDiff = new Difference();
         public Difference VDiff = new Difference();
-        private DisplayData disp = new DisplayData();
+        public DisplayData DisplayData { get; private set; }
+        public double Entropy { get; private set; }
 
-        private static object lchain = new object();
+        /// <summary>
+        /// По Шеннону
+        /// </summary>
+        public int Info
+        {
+            get { return (int)IInfo; }
+        }
+
+        public Composition()
+        {
+            DisplayData = new DisplayData();
+        }
 
         public Composition Clone()
         {
@@ -41,8 +51,8 @@ namespace LibiadaMusic.Analysis
         {
             int N = 0;
             string s;
-            var ar = new List<FMName>();
-            ar = new List<FMName>(Range.Data);
+            var ar = new List<FmotivName>();
+            ar = new List<FmotivName>(Range.Data);
             while (ar.Count != 0)
             {
                 for (int i = 0; i < ar.Count; i++)
@@ -110,21 +120,17 @@ namespace LibiadaMusic.Analysis
             }
         }
 
-        public Chain MakeNewChain() // сделал из void конструктор
+        public Chain MakeNewChain()
         {
-            lock (lchain)
+            var newChain = new Chain(Range.Length);
+
+            for (int i = 0; i < Range.Length; i++)
             {
-                var newChain = new Chain(Range.Length);
-
-                for (int i = 0; i < Range.Length; i++)
-                {
-                    newChain[i] = new ValueInt(Range.Data[i].Id);
-                }
-
-                chain = (Chain) newChain.Clone();
-                return newChain;
+                newChain[i] = new ValueInt(Range.Data[i].Id);
             }
 
+            chain = (Chain) newChain.Clone();
+            return newChain;
         }
 
         public void CalcInfo()
@@ -133,11 +139,6 @@ namespace LibiadaMusic.Analysis
 
             OIInfo = IInfo;
             IInfo *= Range.Length;
-        } // По Шеннону
-
-        public int Info()
-        {
-            return (int) IInfo;
         }
 
         public void CalcEntropy()
@@ -147,49 +148,41 @@ namespace LibiadaMusic.Analysis
             {
                 Ent += PLex.Data[i].Frequency*Math.Log(PLex.Data[i].Frequency, 2);
             }
-            entropy = Ent*(-1);
+            Entropy = Ent*(-1);
         }
 
-        public double Entropy
+        public void CalcDepth()
         {
-            get { return entropy; }
-        }
+            var calc = new Depth();
+            AvgDepth = calc.Calculate(MakeNewChain(), Link.End);
 
-        public void CalcGamut()
-        {
-            var G = new Characteristic(new Depth());
-            AvgDepth = G.Value(MakeNewChain(), Link.End);
-
-            int i;
-            for (i = 0; i < PLex.Capacity; i++)
+            for (int i = 0; i < PLex.Capacity; i++)
             {
-                PLex.Data[i].Depth = new Characteristic(new Depth()).Value(
-                    MakeNewChain().CongenericChain(i), Link.End);
+                PLex.Data[i].Depth = calc.Calculate(MakeNewChain().CongenericChain(i), Link.End);
             }
         }
 
         public void CalcRemoteness()
         {
-            var R = new Characteristic(new AverageRemoteness());
-            AvgRemoteness = R.Value(chain, Link.End);
+            var calc = new AverageRemoteness();
+            AvgRemoteness = calc.Calculate(chain, Link.End);
 
             for (int i = 0; i < PLex.Capacity; i++)
             {
-                PLex.Data[i].Remoteness =
-                    new Characteristic(new AverageRemoteness()).Value(chain.CongenericChain(i), Link.End);
+                PLex.Data[i].Remoteness = calc.Calculate(chain.CongenericChain(i), Link.End);
             }
         }
 
         public void CalcRegularity()
         {
-            var R = new Characteristic(new Regularity());
-            Regularity = R.Value(chain, Link.End);
+            var calc = new Regularity();
+            Regularity = calc.Calculate(chain, Link.End);
         }
 
         public void CalcPeriodicity()
         {
-            var P = new Characteristic(new Periodicity());
-            Periodicity = P.Value(chain, Link.End);
+            var calc = new Periodicity();
+            Periodicity = calc.Calculate(chain, Link.End);
         }
 
         public void CalcDifference()
@@ -205,8 +198,8 @@ namespace LibiadaMusic.Analysis
             {
                 ar1.Add(TLex.Data[i].Frequency);
                 ar2.Add(PLex.RData()[i].Frequency);
-                ar3.Add(TLex.Data[i].LogOccurernce);
-                ar4.Add(PLex.RData()[i].LogOccurernce);
+                ar3.Add(TLex.Data[i].LogOccurrence);
+                ar4.Add(PLex.RData()[i].LogOccurrence);
             }
 
             if (PLex.Capacity != TLex.Capacity)
@@ -218,7 +211,7 @@ namespace LibiadaMusic.Analysis
                         ar1.Add(0);
                         ar2.Add(PLex.RData()[i].Frequency);
                         ar3.Add(0);
-                        ar4.Add(PLex.RData()[i].LogOccurernce);
+                        ar4.Add(PLex.RData()[i].LogOccurrence);
                     }
                 }
                 else
@@ -227,7 +220,7 @@ namespace LibiadaMusic.Analysis
                     {
                         ar1.Add(TLex.Data[i].Frequency);
                         ar2.Add(0);
-                        ar3.Add(TLex.Data[i].LogOccurernce);
+                        ar3.Add(TLex.Data[i].LogOccurrence);
                         ar4.Add(0);
                     }
                 }
@@ -240,7 +233,7 @@ namespace LibiadaMusic.Analysis
 
         public void CalcCharacteristics()
         {
-            CalcGamut();
+            CalcDepth();
             CalcRemoteness();
             CalcRegularity();
             CalcPeriodicity();
@@ -250,76 +243,65 @@ namespace LibiadaMusic.Analysis
 
         public void FillDisplayData()
         {
-            disp.GreatOccur = PLex.GreatOccur;
+            DisplayData.GreatOccur = PLex.GreatOccur;
 
-            disp.DiffV = VDiff.Clone();
-            disp.DiffRFreq = FreqDiff.Clone();
-            disp.DiffLRLN = LogNDiff.Clone();
+            DisplayData.DiffV = VDiff.Clone();
+            DisplayData.DiffRFreq = FreqDiff.Clone();
+            DisplayData.DiffLRLN = LogNDiff.Clone();
 
-            disp.len = Range.Length;
-            disp.Regularity = Regularity;
-            disp.Periodicity = Periodicity;
-            disp.AvgRemoteness = AvgRemoteness;
-            disp.AvgDepth = AvgDepth;
-            disp.IInfo = IInfo;
-            disp.Entropy = entropy;
-            disp.PLCapacity = PLex.Capacity;
-            disp.TLCapacity = TLex.Capacity;
-            disp.GreatFrequency = PLex.GreatFrequency;
-            disp.OIInfo = OIInfo;
-            disp.LEntropy = entropy*Range.Length;
+            DisplayData.len = Range.Length;
+            DisplayData.Regularity = Regularity;
+            DisplayData.Periodicity = Periodicity;
+            DisplayData.AvgRemoteness = AvgRemoteness;
+            DisplayData.AvgDepth = AvgDepth;
+            DisplayData.IInfo = IInfo;
+            DisplayData.Entropy = Entropy;
+            DisplayData.PLCapacity = PLex.Capacity;
+            DisplayData.TLCapacity = TLex.Capacity;
+            DisplayData.GreatFrequency = PLex.GreatFrequency;
+            DisplayData.OIInfo = OIInfo;
+            DisplayData.LEntropy = Entropy*Range.Length;
 
             for (int i = 0; i < PLex.Capacity; i++)
             {
                 // на время эксперимента комментарий
-                disp.Id_N.Add(new double[]
-                {PLex.Data[i].Id, PLex.Data[i].Occurernce});
+                DisplayData.Id_N.Add(new[] {PLex.Data[i].Id, PLex.Data[i].Occurrence});
 
-                disp.Rank_FreqP.Add(new double[] {PLex.RData()[i].Rank, PLex.RData()[i].Frequency});
+                DisplayData.Rank_FreqP.Add(new[] {PLex.RData()[i].Rank, PLex.RData()[i].Frequency});
 
-                disp.LogRank_LogNP.Add(new double[]
-                {PLex.RData()[i].LogRank, PLex.RData()[i].LogOccurernce});
+                DisplayData.LogRank_LogNP.Add(new[] {PLex.RData()[i].LogRank, PLex.RData()[i].LogOccurrence});
 
-                disp.LogRank_LogGamut.Add(new double[]
-                {PLex.RData()[i].LogRank, PLex.RangeLexDi()[i]});
+                DisplayData.LogRank_LogDepth.Add(new[] {PLex.RData()[i].LogRank, PLex.RangeLexDi()[i]});
 
-                disp.Rank_Remoteness.Add(new double[]
-                {PLex.RData()[i].Rank, PLex.RangeLexRi()[i]});
+                DisplayData.Rank_Remoteness.Add(new[] {PLex.RData()[i].Rank, PLex.RangeLexRi()[i]});
 
             }
 
             for (int i = 0; i < TLex.Capacity; i++)
             {
-                disp.Rank_FreqT.Add(new double[]
+                DisplayData.Rank_FreqT.Add(new[]
                 {TLex.RData()[i].Rank, TLex.RData()[i].Frequency});
 
-                disp.LogRank_LogNT.Add(new double[]
-                {TLex.RData()[i].LogRank, TLex.RData()[i].LogOccurernce});
+                DisplayData.LogRank_LogNT.Add(new[]
+                {TLex.RData()[i].LogRank, TLex.RData()[i].LogOccurrence});
             }
 
-            double GGamut = 0;
-            double GRemote = 0;
+            double gDepth = 0;
+            double gRemote = 0;
             for (int i = 0; i < PLex.Capacity; i++)
             {
-                if (GGamut < PLex.Data[i].LogDepth)
+                if (gDepth < PLex.Data[i].LogDepth)
                 {
-                    GGamut = PLex.Data[i].LogDepth;
+                    gDepth = PLex.Data[i].LogDepth;
                 }
 
-                if (GRemote < PLex.Data[i].Remoteness)
+                if (gRemote < PLex.Data[i].Remoteness)
                 {
-                    GRemote = PLex.Data[i].Remoteness;
+                    gRemote = PLex.Data[i].Remoteness;
                 }
             }
-            disp.GreatLogGamut = GGamut;
-            disp.GreatRemoteness = GRemote;
-
-
-        }
-
-        public DisplayData DisplayData()
-        {
-            return disp;
+            DisplayData.GreatLogDepth = gDepth;
+            DisplayData.GreatRemoteness = gRemote;
         }
     }
 }

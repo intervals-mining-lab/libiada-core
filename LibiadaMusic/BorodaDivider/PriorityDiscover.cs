@@ -6,29 +6,32 @@ namespace LibiadaMusic.BorodaDivider
 {
     public class PriorityDiscover
     {
-        private Measure priorityMask;
+        /// <summary>
+        /// маска - разметка приоритетов на пустой такт, 
+        /// совмещение которого с оригинальным позволит определить приоритеты реальных нот
+        /// </summary>
+        public Measure PriorityMask { get; private set; }
 
-        //маска - разметка приоритетов на пустой такт, 
-        //совмещение которого с оригинальным позволит определить приоритеты реальных нот
-
-        public Measure PriorityMask
+        /// <summary>
+        /// метод для подсчета приоритетов нот во всем Scoretrack
+        /// </summary>
+        /// <param name="scoreTrack"></param>
+        public void Calculate(ScoreTrack scoreTrack)
         {
-            get { return priorityMask; }
-        }
-
-        public void Calculate(ScoreTrack scoretrack)
-        {
-            // метод для подсчета приоритетов нот во всем Scoretrack
-            foreach (UniformScoreTrack utrack in scoretrack.UniformScoreTracks)
+            foreach (UniformScoreTrack uniformTrack in scoreTrack.UniformScoreTracks)
             {
-                Calculate(utrack);
+                Calculate(uniformTrack);
             }
         }
 
-        public void Calculate(UniformScoreTrack utrack)
+        /// <summary>
+        /// метод для подсчета приоритетов нот для каждого такта (Measure) 
+        /// в монофоническом треке (UniformScoretrack)
+        /// </summary>
+        /// <param name="uniformTrack"></param>
+        public void Calculate(UniformScoreTrack uniformTrack)
         {
-            // метод для подсчета приоритетов нот для каждого такта (Measure) в монофоническом треке (UniformScoretrack)
-            foreach (Measure measure in utrack.MeasureList)
+            foreach (Measure measure in uniformTrack.MeasureList)
             {
                 Calculate(measure);
             }
@@ -41,7 +44,7 @@ namespace LibiadaMusic.BorodaDivider
             // считаем маску приоритетов для такта
             CalcPriorityMask(measure);
             // соотнесение маски приоритетов и реального такта
-            double bufduration = 0; // буфер длительности
+            double bufDuration = 0; // буфер длительности
             var noteBuf = new List<Note>(); // буфер нот для сбора триоли и передачи в CollectTriplet
             var maskBuf = new List<Note>();
             // буфер маски приоритетов для сбора приоритетов маски под триолью и передачи в CollectTriplet 
@@ -55,13 +58,13 @@ namespace LibiadaMusic.BorodaDivider
                     // и как только это произошло, нужно сначала проанализировать первую триоль и потом начать заполнять вторую
                     if ((note.Duration.Value != tripletDuration) && (noteBuf.Count > 0))
                     {
-                        while (bufduration > 0.0000001)
+                        while (bufDuration > 0.0000001)
                         {
                             // собираем буфер маски приоритетов для триоли, 
                             // собираем пока суммарная длительность нот маски не превышает длительность реальных нот триоли
-                            maskBuf.Add((Note) priorityMask.NoteList[0].Clone());
-                            bufduration = bufduration - priorityMask.NoteList[0].Duration.Value;
-                            priorityMask.NoteList.RemoveAt(0);
+                            maskBuf.Add((Note) PriorityMask.NoteList[0].Clone());
+                            bufDuration = bufDuration - PriorityMask.NoteList[0].Duration.Value;
+                            PriorityMask.NoteList.RemoveAt(0);
                         }
                         //передача методу CountTriplet notebuf + maskbuf и расстановка приоритетов + передача обратно
                         //занесение в выходной буфер результата определения приоритета нот триоли
@@ -74,27 +77,27 @@ namespace LibiadaMusic.BorodaDivider
                         // зануление буферов
                         noteBuf.Clear();
                         maskBuf.Clear();
-                        bufduration = 0;
+                        bufDuration = 0;
                     }
                     // последовательность реальных нот триоли (триплета) заносится в буфер для дальнейшей обработки
                     // считается суммарная длительность триоли
                     noteBuf.Add((Note) note.Clone());
                     tripletDuration = note.Duration.Value;
                     // сохраняем размерность триоли/ новой триоли (если две подряд)
-                    bufduration = bufduration + note.Duration.Value;
+                    bufDuration = bufDuration + note.Duration.Value;
                 }
                 else
                 {
                     // если следущая нота не триоль, то проверка, собиралась ли она шагом ранее, если да то вызов метода CollectTriplet,
                     if (noteBuf.Count > 0)
                     {
-                        while (bufduration > 0.0000001)
+                        while (bufDuration > 0.0000001)
                         {
                             // собираем буфер маски приоритетов для триоли, 
                             // собираем пока суммарная длительность нот маски не превышает длительность реальных нот триоли
-                            maskBuf.Add((Note) priorityMask.NoteList[0].Clone());
-                            bufduration = bufduration - priorityMask.NoteList[0].Duration.Value;
-                            priorityMask.NoteList.RemoveAt(0);
+                            maskBuf.Add((Note) PriorityMask.NoteList[0].Clone());
+                            bufDuration = bufDuration - PriorityMask.NoteList[0].Duration.Value;
+                            PriorityMask.NoteList.RemoveAt(0);
                         }
                         //передача методу CountTriplet notebuf + maskbuf и расстановка приоритетов + передача обратно
                         //занесение в выходной буфер результата определения приоритета нот триоли
@@ -110,41 +113,41 @@ namespace LibiadaMusic.BorodaDivider
                     }
                     // так как следущая нота не триплет, то определяем ее приоритет по следущему алгоритму
                     // присвоение приоритета при нахожении начала позиции следущей ноты в маске приоритетов
-                    note.Priority = priorityMask.NoteList[0].Priority;
+                    note.Priority = PriorityMask.NoteList[0].Priority;
                     //занесение в буфер длительности следующей ноты маски приоритетов
-                    bufduration = priorityMask.NoteList[0].Duration.Value;
+                    bufDuration = PriorityMask.NoteList[0].Duration.Value;
                     //удаление этой ноты из общей маски приоритетов
-                    priorityMask.NoteList.RemoveAt(0);
+                    PriorityMask.NoteList.RemoveAt(0);
 
                     // цикл, если набралось в буфер нот общей длительностью равной реальной ноте, то переходим к следующей реальной ноте
-                    while ((note.Duration.Value - bufduration) > 0.0000001)
+                    while ((note.Duration.Value - bufDuration) > 0.0000001)
                     {
-                        if (priorityMask.NoteList.Count < 1)
+                        if (PriorityMask.NoteList.Count < 1)
                         {
                             throw new Exception(
                                 "LibiadaMusic Priority Discover: такт построен не по правилам, не хватает ноты");
                         }
                         //набор длительностей нот маски, и их удаление из очереди
-                        bufduration = bufduration + priorityMask.NoteList[0].Duration.Value;
-                        priorityMask.NoteList.RemoveAt(0);
+                        bufDuration = bufDuration + PriorityMask.NoteList[0].Duration.Value;
+                        PriorityMask.NoteList.RemoveAt(0);
                     }
 
                     //переход к следующей реальной ноте
                     temp.NoteList.Add((Note) note.Clone());
-                    bufduration = bufduration - note.Duration.Value;
+                    bufDuration = bufDuration - note.Duration.Value;
 
                 }
             }
             // проверка буфера триоли, на случай когда триоль стоит вконце, чтобы не было потери нот
             if (noteBuf.Count > 0)
             {
-                while (bufduration > 0.0000001)
+                while (bufDuration > 0.0000001)
                 {
                     // собираем буфер маски приоритетов для триоли, 
                     // собираем пока суммарная длительность нот маски не превышает длительность реальных нот триоли
-                    maskBuf.Add((Note) priorityMask.NoteList[0].Clone());
-                    bufduration = bufduration - priorityMask.NoteList[0].Duration.Value;
-                    priorityMask.NoteList.RemoveAt(0);
+                    maskBuf.Add((Note) PriorityMask.NoteList[0].Clone());
+                    bufDuration = bufDuration - PriorityMask.NoteList[0].Duration.Value;
+                    PriorityMask.NoteList.RemoveAt(0);
                 }
                 //передача методу CountTriplet notebuf + maskbuf и расстановка приоритетов + передача обратно
                 //занесение в выходной буфер результата определения приоритета нот триоли
@@ -163,8 +166,7 @@ namespace LibiadaMusic.BorodaDivider
                 measure.NoteList[i].Priority = temp.NoteList[i].Priority;
                 if (measure.NoteList[i].Priority < 0)
                 {
-                    throw new Exception(
-                        "LibiadaMusic.PriorityDiscover: не выявлен приоритет для одной из нот (равен -1)");
+                    throw new Exception("LibiadaMusic.PriorityDiscover: не выявлен приоритет для одной из нот (равен -1)");
                 }
             }
         }
@@ -189,7 +191,7 @@ namespace LibiadaMusic.BorodaDivider
                 {
                     noteBuf[0].Priority = maskBuf[0].Priority;
                     // отнимаем из маски приоритетов нот на сумму равную номинальному (не реальному) значению длительности триольной ноты
-                    double bufduration = noteBuf[0].Duration.OValue;
+                    double bufduration = noteBuf[0].Duration.OriginalValue;
                     temp.Add((Note) noteBuf[0].Clone()); // добавляем ноту триоль в выходной буфер
                     noteBuf.RemoveAt(0); // удаляем ноту-триоль из разбираемой очереди
                     while (bufduration > 0.0000001)
@@ -230,11 +232,11 @@ namespace LibiadaMusic.BorodaDivider
         public void CalcPriorityMask(Measure measure)
         {
             // создание объекта маски с атрибутами оригинала и пустым списком нот
-            priorityMask = new Measure(new List<Note>(), (Attributes) measure.Attributes.Clone());
+            PriorityMask = new Measure(new List<Note>(), (Attributes) measure.Attributes.Clone());
 
 //---------------------------Занесение начальных долей размера такта---------------------------
 //---------------------------------------------------------------------------------------------
-            priorityMask.NoteList.Add(new Note((Pitch) null, new Duration(1, measure.Attributes.Size.BeatBase,
+            PriorityMask.NoteList.Add(new Note((Pitch) null, new Duration(1, measure.Attributes.Size.BeatBase,
                 false, measure.Attributes.Size.TicksPerBeat), false, Tie.None, 0));
             // первая доля в такте всегда самая сильная и выделяется НАИВЫСШИМ приоритетом 0
 
@@ -248,7 +250,7 @@ namespace LibiadaMusic.BorodaDivider
                     {
                         //относительно сильная доля с приоритетом 1
                         const int priority = 1;
-                        priorityMask.NoteList.Add(new Note((Pitch) null,
+                        PriorityMask.NoteList.Add(new Note((Pitch) null,
                             new Duration(1, measure.Attributes.Size.BeatBase, false,
                                 measure.Attributes.Size.TicksPerBeat), false, Tie.None, priority));
                     }
@@ -262,7 +264,7 @@ namespace LibiadaMusic.BorodaDivider
                             priority = 1;
                         }
 
-                        priorityMask.NoteList.Add(new Note((Pitch) null,
+                        PriorityMask.NoteList.Add(new Note((Pitch) null,
                             new Duration(1, measure.Attributes.Size.BeatBase, false,
                                 measure.Attributes.Size.TicksPerBeat), false, Tie.None, priority));
                     }
@@ -280,7 +282,7 @@ namespace LibiadaMusic.BorodaDivider
                         {
                             //относительно сильная доля с приоритетом 1
                             int priority = 1;
-                            priorityMask.NoteList.Add(new Note((Pitch) null,
+                            PriorityMask.NoteList.Add(new Note((Pitch) null,
                                 new Duration(1, measure.Attributes.Size.BeatBase,
                                     false, measure.Attributes.Size.TicksPerBeat), false, Tie.None, priority));
                         }
@@ -294,7 +296,7 @@ namespace LibiadaMusic.BorodaDivider
                                 priority = 1;
                             }
 
-                            priorityMask.NoteList.Add(new Note((Pitch) null,
+                            PriorityMask.NoteList.Add(new Note((Pitch) null,
                                 new Duration(1, measure.Attributes.Size.BeatBase, false,
                                     measure.Attributes.Size.TicksPerBeat), false, Tie.None, priority));
                         }
@@ -317,7 +319,7 @@ namespace LibiadaMusic.BorodaDivider
                                 priority = 2;
                             }
 
-                            priorityMask.NoteList.Add(new Note((Pitch) null,
+                            PriorityMask.NoteList.Add(new Note((Pitch) null,
                                 new Duration(1, measure.Attributes.Size.BeatBase,
                                     false, measure.Attributes.Size.TicksPerBeat), false, Tie.None, priority));
                         }
@@ -325,7 +327,7 @@ namespace LibiadaMusic.BorodaDivider
                         {
                             //слабая доля с приоритетом 2
                             const int priority = 2;
-                            priorityMask.NoteList.Add(new Note((Pitch) null,
+                            PriorityMask.NoteList.Add(new Note((Pitch) null,
                                 new Duration(1, measure.Attributes.Size.BeatBase, false,
                                     measure.Attributes.Size.TicksPerBeat), false, Tie.None, priority));
                         }
@@ -339,7 +341,7 @@ namespace LibiadaMusic.BorodaDivider
             //длительность которых окажется меньше либо равна минимальной, деленной на 2 (так как может быть точка у ноты, котору. возможно описать только 3 нотами короче в два раза чем сама нота),
             //если они уже просчитаны для всех нот, то процесс заканчивается
             // проверка: останов будет тогда, когда длительности ВСЕХ нот в маске будут меньше либо равны длительности минимально ноты
-            foreach (Note note in priorityMask.NoteList)
+            foreach (Note note in PriorityMask.NoteList)
             {
                 if (note.Duration.Value > minDuration(measure)/2)
                 {
@@ -349,13 +351,13 @@ namespace LibiadaMusic.BorodaDivider
 
             while (!stop)
             {
-                var temp = new Measure(new List<Note>(), (Attributes) priorityMask.Attributes.Clone());
+                var temp = new Measure(new List<Note>(), (Attributes) PriorityMask.Attributes.Clone());
                 // создание объекта буфера для перехода к следущей маске нижнего уровня
 
                 // определение максимального (наименьшего приоритета) для спуска на уровень ниже,
                 //где появятся ноты с приоритетом еще ниже на 1 ( +1)
                 int maxPriority = 0;
-                foreach (Note note in priorityMask.NoteList)
+                foreach (Note note in PriorityMask.NoteList)
                 {
                     if (maxPriority < note.Priority)
                     {
@@ -363,27 +365,27 @@ namespace LibiadaMusic.BorodaDivider
                     }
                 }
 
-                for (int i = 0; i < priorityMask.NoteList.Count; i++)
+                for (int i = 0; i < PriorityMask.NoteList.Count; i++)
                 {
 
                     temp.NoteList.Add(new Note((Pitch) null,
-                        new Duration(1, (priorityMask.NoteList[i].Duration.Denominator*2),
-                            false, (priorityMask.NoteList[i].Duration.Ticks/2)), false, Tie.None,
-                        priorityMask.NoteList[i].Priority));
+                        new Duration(1, (PriorityMask.NoteList[i].Duration.Denominator*2),
+                            false, (PriorityMask.NoteList[i].Duration.Ticks/2)), false, Tie.None,
+                        PriorityMask.NoteList[i].Priority));
                     temp.NoteList.Add(new Note((Pitch) null,
-                        new Duration(1, (priorityMask.NoteList[i].Duration.Denominator*2),
-                            false, (priorityMask.NoteList[i].Duration.Ticks/2)), false, Tie.None, (maxPriority + 1)));
+                        new Duration(1, (PriorityMask.NoteList[i].Duration.Denominator*2),
+                            false, (PriorityMask.NoteList[i].Duration.Ticks/2)), false, Tie.None, (maxPriority + 1)));
                 }
 
                 // присваем объекту маске новый получившейся объект уровня ниже 
-                priorityMask = (Measure) temp.Clone();
+                PriorityMask = (Measure) temp.Clone();
 
                 // высталение флага останова
                 stop = true;
 
                 // проверка: останов будет тогда, когда длительности ВСЕХ нот в маске будут меньше либо равны длительности минимальной ноты 
                 //деленной на два (смотри выше из-за точки)
-                foreach (Note note in priorityMask.NoteList)
+                foreach (Note note in PriorityMask.NoteList)
                 {
                     if (note.Duration.Value > minDuration(measure)/2)
                     {

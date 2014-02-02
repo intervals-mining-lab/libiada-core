@@ -9,12 +9,14 @@ namespace LibiadaMusicTest.Characteristics
     [TestClass]
     public class TestWordRemoteness
     {
-        /* Переделать чтоб проверялось относительно привязки к концу!!! иначе не вполняются
+        //TODO: add SetUp 
+
+        // Переделать чтоб проверялось относительно привязки к концу!!! иначе не вполняются
         [TestMethod]
         public void TestWordRemoteness1() 
         {
-            Fmotiv fmotiv1 = new Fmotiv(0, "ПМТ");
-            Fmotiv fmotiv2 = new Fmotiv(1, "ПМТ");
+            var fmotiv1 = new Fmotiv("ПМТ", 0);
+            var fmotiv2 = new Fmotiv("ПМТ", 1);
 
             fmotiv1.NoteList.Add(new Note(new Pitch(3, 'E', 0), new Duration(1, 4, false, 512), false, Tie.None));
             fmotiv1.NoteList.Add(new Note(new Pitch(3, 'A', 0), new Duration(1, 4, false, 512), false, Tie.None));
@@ -23,18 +25,17 @@ namespace LibiadaMusicTest.Characteristics
             fmotiv2.NoteList.Add(new Note(new Pitch(3, 'A', 0), new Duration(1, 4, false, 512), false, Tie.None));
 
             // записываем ф-мотивы в цепь ф-мотивов, которая будет сравниваться с получившейся
-            FmotivChain fmchain1 = new FmotivChain();
-            fmchain1.Id = 0;
-            fmchain1.FmotivList.Add(fmotiv1);
-            fmchain1.FmotivList.Add(fmotiv2);
-            Assert.IsTrue(Math.Abs(0.5 - WordRemoteness.CalculateInWords(fmchain1)) < 0.000001);
-            Assert.IsTrue(Math.Abs(1.5 - WordRemoteness.CalculateInLetters(fmchain1)) < 0.000001);
+            var chain = new FmotivChain {Id = 0};
+            chain.FmotivList.Add(fmotiv1);
+            chain.FmotivList.Add(fmotiv2);
+            Assert.IsTrue(Math.Abs(0.5 - WordRemoteness.CalculateInWords(chain)) < 0.000001);
+            Assert.IsTrue(Math.Abs(1.5 - WordRemoteness.CalculateInLetters(chain)) < 0.000001);
         }
         [TestMethod]
-        public void TestWordRemoteness2same()
+        public void TestWordRemotenessSame1()
         {
-            Fmotiv fmotiv1 = new Fmotiv(0, "ПМТ");
-            Fmotiv fmotiv2 = new Fmotiv(1, "ПМТ");
+            var fmotiv1 = new Fmotiv("ПМТ", 0);
+            var fmotiv2 = new Fmotiv("ПМТ", 1);
 
             fmotiv1.NoteList.Add(new Note(new Pitch(3, 'E', 0), new Duration(1, 4, false, 512), false, Tie.None));
             fmotiv1.NoteList.Add(new Note(new Pitch(3, 'A', 0), new Duration(1, 4, false, 512), false, Tie.None));
@@ -43,21 +44,20 @@ namespace LibiadaMusicTest.Characteristics
             fmotiv2.NoteList.Add(new Note(new Pitch(4, 'A', 0), new Duration(1, 4, false, 512), false, Tie.None));
 
             // записываем ф-мотивы в цепь ф-мотивов, которая будет сравниваться с получившейся
-            FmotivChain fmchain1 = new FmotivChain();
-            fmchain1.Id = 0;
-            fmchain1.FmotivList.Add(fmotiv1);
-            fmchain1.FmotivList.Add(fmotiv2);
-            Assert.IsTrue(Math.Abs(0 - WordRemoteness.CalculateInWords(fmchain1)) < 0.000001);
-            Assert.IsTrue(Math.Abs(1 - WordRemoteness.CalculateInLetters(fmchain1)) < 0.000001);
+            var chain = new FmotivChain {Id = 0};
+            chain.FmotivList.Add(fmotiv1);
+            chain.FmotivList.Add(fmotiv2);
+            Assert.IsTrue(Math.Abs(0 - WordRemoteness.CalculateInWords(chain)) < 0.000001);
+            Assert.IsTrue(Math.Abs(1 - WordRemoteness.CalculateInLetters(chain)) < 0.000001);
         }
 
         [TestMethod]
         public void TestWordRemoteness3()
         {
-            Fmotiv fmotiv1 = new Fmotiv(0, "ПМТ");
-            Fmotiv fmotiv2 = new Fmotiv(1, "ПМТ");
-            Fmotiv fmotiv3 = new Fmotiv(2, "ПМТ");
-            Fmotiv fmotiv4 = new Fmotiv(3, "ПМТ");
+            var fmotiv1 = new Fmotiv("ПМТ",0);
+            var fmotiv2 = new Fmotiv("ПМТ",1);
+            var fmotiv3 = new Fmotiv("ПМТ",2);
+            var fmotiv4 = new Fmotiv("ПМТ",3);
 
             fmotiv1.NoteList.Add(new Note(new Pitch(3, 'E', 0), new Duration(1, 4, false, 512), false, Tie.None));
             fmotiv1.NoteList.Add(new Note(new Pitch(3, 'A', 0), new Duration(1, 4, false, 512), false, Tie.None));
@@ -74,23 +74,22 @@ namespace LibiadaMusicTest.Characteristics
             fmotiv4.NoteList.Add(new Note(new Pitch(4, 'A', 0), new Duration(1, 4, false, 512), false, Tie.None));
 
             // записываем ф-мотивы в цепь ф-мотивов, которая будет сравниваться с получившейся
-            FmotivChain fmchain1 = new FmotivChain();
-            fmchain1.Id = 0;
-            fmchain1.FmotivList.Add(fmotiv1);
-            fmchain1.FmotivList.Add(fmotiv2);
-            fmchain1.FmotivList.Add(fmotiv3);
-            fmchain1.FmotivList.Add(fmotiv4);
-            Assert.IsTrue(Math.Abs(1.146241 - WordRemoteness.CalculateInWords(fmchain1)) < 0.00001);
-            Assert.IsTrue(Math.Abs(2.226723 - WordRemoteness.CalculateInLetters(fmchain1)) < 0.00001);
+            var chain = new FmotivChain {Id = 0};
+            chain.FmotivList.Add(fmotiv1);
+            chain.FmotivList.Add(fmotiv2);
+            chain.FmotivList.Add(fmotiv3);
+            chain.FmotivList.Add(fmotiv4);
+            Assert.IsTrue(Math.Abs(1.146241 - WordRemoteness.CalculateInWords(chain)) < 0.00001);
+            Assert.IsTrue(Math.Abs(2.226723 - WordRemoteness.CalculateInLetters(chain)) < 0.00001);
         }
 
         [TestMethod]
-        public void TestWordRemoteness3same()
+        public void TestWordRemoteness3Same()
         {
-            Fmotiv fmotiv1 = new Fmotiv(0, "ПМТ");
-            Fmotiv fmotiv2 = new Fmotiv(1, "ПМТ");
-            Fmotiv fmotiv3 = new Fmotiv(0, "ПМТ");
-            Fmotiv fmotiv4 = new Fmotiv(3, "ПМТ");
+            var fmotiv1 = new Fmotiv("ПМТ",0);
+            var fmotiv2 = new Fmotiv("ПМТ",1);
+            var fmotiv3 = new Fmotiv("ПМТ",2);
+            var fmotiv4 = new Fmotiv("ПМТ",3);
 
             fmotiv1.NoteList.Add(new Note(new Pitch(3, 'E', 0), new Duration(1, 4, false, 512), false, Tie.None));
             fmotiv1.NoteList.Add(new Note(new Pitch(3, 'A', 0), new Duration(1, 4, false, 512), false, Tie.None));
@@ -107,18 +106,17 @@ namespace LibiadaMusicTest.Characteristics
             fmotiv4.NoteList.Add(new Note(new Pitch(4, 'A', 0), new Duration(1, 4, false, 512), false, Tie.None));
 
             // записываем ф-мотивы в цепь ф-мотивов, которая будет сравниваться с получившейся
-            FmotivChain fmchain1 = new FmotivChain();
-            fmchain1.Id = 0;
-            fmchain1.FmotivList.Add(fmotiv1);
-            fmchain1.FmotivList.Add(fmotiv2);
-            fmchain1.FmotivList.Add(fmotiv3);
-            fmchain1.FmotivList.Add(fmotiv4);
-            Assert.IsTrue(Math.Abs(1 - WordRemoteness.CalculateInWords(fmchain1)) < 0.00001);
-            Assert.IsTrue(Math.Abs(2.080482 - WordRemoteness.CalculateInLetters(fmchain1)) < 0.00001);
+            var chain = new FmotivChain {Id = 0};
+            chain.FmotivList.Add(fmotiv1);
+            chain.FmotivList.Add(fmotiv2);
+            chain.FmotivList.Add(fmotiv3);
+            chain.FmotivList.Add(fmotiv4);
+            Assert.IsTrue(Math.Abs(1 - WordRemoteness.CalculateInWords(chain)) < 0.00001);
+            Assert.IsTrue(Math.Abs(2.080482 - WordRemoteness.CalculateInLetters(chain)) < 0.00001);
         }
-         */
+         
 
-        public void TestWordGamut()
+        public void TestWordDepth()
         {
             var fmotiv1 = new Fmotiv("ПМТ", 0);
             var fmotiv2 = new Fmotiv("ПМТ", 1);
@@ -130,11 +128,11 @@ namespace LibiadaMusicTest.Characteristics
             fmotiv2.NoteList.Add(new Note(new Pitch(3, 'A', 0), new Duration(1, 4, false, 512), false, Tie.None));
 
             // записываем ф-мотивы в цепь ф-мотивов, которая будет сравниваться с получившейся
-            var fmchain1 = new FmotivChain {Id = 0};
-            fmchain1.FmotivList.Add(fmotiv1);
-            fmchain1.FmotivList.Add(fmotiv2);
-            Assert.IsTrue(Math.Abs(0.5 - WordRemoteness.CalculateInWords(fmchain1)) < 0.000001);
-            Assert.IsTrue(Math.Abs(1.5 - WordRemoteness.CalculateInLetters(fmchain1)) < 0.000001);
+            var chain = new FmotivChain {Id = 0};
+            chain.FmotivList.Add(fmotiv1);
+            chain.FmotivList.Add(fmotiv2);
+            Assert.IsTrue(Math.Abs(0.5 - WordRemoteness.CalculateInWords(chain)) < 0.000001);
+            Assert.IsTrue(Math.Abs(1.5 - WordRemoteness.CalculateInLetters(chain)) < 0.000001);
         }
     }
 }

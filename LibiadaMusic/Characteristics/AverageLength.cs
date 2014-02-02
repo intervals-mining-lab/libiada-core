@@ -3,22 +3,28 @@ using LibiadaMusic.BorodaDivider;
 
 namespace LibiadaMusic.Characteristics
 {
-    public static class AverageLength // средняя длина ф-мотива для моно цепи
+    /// <summary>
+    /// средняя длина ф-мотива для моно цепи
+    /// </summary>
+    public static class AverageLength
     {
-        public static double Calculate(FmotivChain FmChain)
+        public static double Calculate(FmotivChain chain)
         {
-            if (FmChain.FmotivList.Count < 1)
-                throw new Exception("Unaible to count average length with no elements in chain!");
-
-            int NCount = 0; // счетчик нот всей цепочки фмотивов
-
-            foreach (Fmotiv fmotiv in FmChain.FmotivList)
+            if (chain.FmotivList.Count < 1)
             {
-                NCount = NCount + fmotiv.TieGathered().PauseTreatment((int) ParamPauseTreatment.Ignore).NoteList.Count;
+                throw new Exception("Unable to count average length with no elements in chain!");
+            }
+                
+
+            int noteCount = 0; // счетчик нот всей цепочки фмотивов
+
+            foreach (Fmotiv fmotiv in chain.FmotivList)
+            {
+                noteCount = noteCount + fmotiv.TieGathered().PauseTreatment((int) ParamPauseTreatment.Ignore).NoteList.Count;
                     // заполняем счетчик складывая кол-во поф-мотивно
             }
 
-            return (double) NCount/FmChain.FmotivList.Count;
+            return (double) noteCount/chain.FmotivList.Count;
         }
     }
 }

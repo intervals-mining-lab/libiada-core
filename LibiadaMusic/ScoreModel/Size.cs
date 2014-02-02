@@ -5,6 +5,7 @@ namespace LibiadaMusic.ScoreModel
 {
     /// <summary>
     /// размер в такте
+    /// size is beats/beatbase (ex size = 3/4; beats=3; beatbase=4;)
     /// </summary>
     public class Size : IBaseObject // 
     {

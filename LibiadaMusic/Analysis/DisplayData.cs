@@ -8,7 +8,7 @@ namespace LibiadaMusic.Analysis
         public double TLCapacity;
         public double GreatOccur;
         public double GreatFrequency;
-        public double GreatLogGamut;
+        public double GreatLogDepth;
         public double GreatRemoteness;
         public double Regularity;
         public double Periodicity;
@@ -24,7 +24,7 @@ namespace LibiadaMusic.Analysis
         public ArrayList Rank_FreqT = new ArrayList();
         public ArrayList LogRank_LogNP = new ArrayList();
         public ArrayList LogRank_LogNT = new ArrayList();
-        public ArrayList LogRank_LogGamut = new ArrayList();
+        public ArrayList LogRank_LogDepth = new ArrayList();
         public ArrayList Rank_Remoteness = new ArrayList();
         public Difference DiffV = new Difference();
         public Difference DiffRFreq = new Difference();

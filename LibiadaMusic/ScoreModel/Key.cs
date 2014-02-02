@@ -1,19 +1,26 @@
-﻿using System;
-using LibiadaCore.Classes.Root;
+﻿using LibiadaCore.Classes.Root;
 
 namespace LibiadaMusic.ScoreModel
 {
-    public class Key : IBaseObject // знаки при ключе в такте (диез, бемоль)
+    /// <summary>
+    /// знаки при ключе в такте (диез, бемоль)
+    /// </summary>
+    public class Key : IBaseObject 
     {
-        private int fifths; // bemoles(-), diez(+) (ex. -6 : 6 bemoles);
-        private string mode; // major/minor
+        /// <summary>
+        /// bemoles(-), diez(+) (ex. -6 : 6 bemoles);
+        /// </summary>
+        private int fifths;
+        /// <summary>
+        /// major/minor
+        /// </summary>
+        private string mode;
 
         public Key(int fifths, string mode = "")
         {
             this.fifths = fifths;
             this.mode = mode;
         }
-
 
         public IBaseObject Clone()
         {

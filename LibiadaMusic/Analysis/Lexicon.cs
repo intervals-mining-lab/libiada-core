@@ -1,17 +1,16 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace LibiadaMusic.Analysis
 {
     public class Lexicon
     {
-        private int newid;
+        private int newId;
         private double greatOccur;
         private int capacity;
         private List<FMotiv> RFMVariety = new List<FMotiv>();
-        private bool Ranged;
+        private bool ranged;
 
-        public double GreatFrequency { get; set; }
+        public double GreatFrequency { get; private set; }
 
         public List<FMotiv> Data { get; private set; }
 
@@ -22,7 +21,7 @@ namespace LibiadaMusic.Analysis
 
         public List<FMotiv> RData()
         {
-            if (!Ranged)
+            if (!ranged)
             {
                 RangeLexElem();
             }
@@ -54,8 +53,8 @@ namespace LibiadaMusic.Analysis
 
         public void AddFMotiv(string name, int occur, double freq)
         {
-            Data.Add(new FMotiv(newid, name, occur, freq));
-            newid += 1;
+            Data.Add(new FMotiv(newId, name, occur, freq));
+            newId += 1;
             capacity += 1;
             if (GreatFrequency < freq)
             {
@@ -67,25 +66,22 @@ namespace LibiadaMusic.Analysis
         public void RangeLex()
         {
             var ar = new List<FMotiv>(Data);
-            double MaxFreq = 0;
-            int CurMaxFreqId = 0;
-            int CurMaxFreqArId = 0;
             for (int j = 0; j < Data.Count; j++)
             {
-                MaxFreq = ar[0].Frequency;
-                CurMaxFreqId = ar[0].Id;
-                CurMaxFreqArId = 0;
+                double maxFreq = ar[0].Frequency;
+                int curMaxFreqId = ar[0].Id;
+                int curMaxFreqArId = 0;
                 for (int i = 0; i < ar.Count; i++)
                 {
-                    if (MaxFreq < ar[i].Frequency)
+                    if (maxFreq < ar[i].Frequency)
                     {
-                        MaxFreq = ar[i].Frequency;
-                        CurMaxFreqId = ar[i].Id;
-                        CurMaxFreqArId = i;
+                        maxFreq = ar[i].Frequency;
+                        curMaxFreqId = ar[i].Id;
+                        curMaxFreqArId = i;
                     }
                 }
-                Data[CurMaxFreqId].Rank = j + 1;
-                ar.RemoveAt(CurMaxFreqArId);
+                Data[curMaxFreqId].Rank = j + 1;
+                ar.RemoveAt(curMaxFreqArId);
             }
         }
 
@@ -155,7 +151,7 @@ namespace LibiadaMusic.Analysis
                     }
                 }
             }
-            Ranged = true;
+            ranged = true;
         }
     }
 }

@@ -9,8 +9,14 @@ namespace LibiadaMusic.ScoreModel
     /// </summary>
     public class ScoreTrack : IBaseObject
     {
+        /// <summary>
+        /// имя музыкального текста ( муз. произведения)
+        /// </summary>
         public string Name { get; private set; }
 
+        /// <summary>
+        /// список моно треков
+        /// </summary>
         public List<UniformScoreTrack> UniformScoreTracks { get; private set; }
 
         //TODO: сделать поля жанра/автора/типа произведения, для дальнейшего анализа, 

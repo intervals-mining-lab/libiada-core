@@ -2,37 +2,37 @@
 
 namespace LibiadaMusic.ScoreModel
 {
-    public class Attributes : IBaseObject // атрибуты такта
+    /// <summary>
+    /// атрибуты такта
+    /// </summary>
+    public class Attributes : IBaseObject
     {
-        private Size size; // beats,beatbase,ticksperbeat
-        private Key key; // fifths, mode
+        /// <summary>
+        /// beats,beatbase,ticksperbeat
+        /// </summary>
+        public Size Size { get; private set; }
+        /// <summary>
+        /// fifths, mode
+        /// </summary>
+        public Key Key { get; private set; }
 
         public Attributes(Size size, Key key)
         {
             if (size != null)
             {
-                this.size = (Size) size.Clone();
+                Size = (Size) size.Clone();
             }
             if (key != null)
             {
-                this.key = (Key) key.Clone();
+                Key = (Key) key.Clone();
             }
         }
 
-        public Size Size
-        {
-            get { return size; }
-        }
 
-        public Key Key
-        {
-            get { return key; }
-        }
 
         public IBaseObject Clone()
-        {
-            var temp = new Attributes(size, key);
-            return temp;
+        { 
+            return new Attributes(Size, Key);
         }
 
         public override bool Equals(object obj)

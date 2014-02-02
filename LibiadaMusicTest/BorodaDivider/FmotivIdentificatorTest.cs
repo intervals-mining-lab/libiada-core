@@ -45,7 +45,7 @@ namespace LibiadaMusicTest.BorodaDivider
             fmchain1.FmotivList.Add(fmotiv5);
             fmchain1.FmotivList.Add(fmotiv6);
 
-            var fmid = new FmotivIdentificator();
+            var fmid = new FmotivIdentifier();
             Assert.AreEqual(0,
                 fmid.GetIdentification(fmchain1, (int) ParamPauseTreatment.Ignore, (int) ParamEqualFM.Sequent)
                     .FmotivList[0].Id);
@@ -105,7 +105,7 @@ namespace LibiadaMusicTest.BorodaDivider
             fmchain1.FmotivList.Add(fmotiv5);
             fmchain1.FmotivList.Add(fmotiv6);
 
-            var fmid = new FmotivIdentificator();
+            var fmid = new FmotivIdentifier();
             //        FmotivChain fmidentedchain = new FmotivChain();
             Assert.AreEqual(0,
                 fmid.GetIdentification(fmchain1, (int) ParamPauseTreatment.Ignore, (int) ParamEqualFM.Sequent)

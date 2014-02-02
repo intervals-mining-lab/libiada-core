@@ -8,9 +8,9 @@ namespace LibiadaMusic.BorodaDivider
     {
         private int paramPause; // параметр сохраняется для всего экземпляра класса и потом используется
         //----------------------
-        public FmotivChain GetDivision(UniformScoreTrack unitrack, int paramPauseTreat)
+        public FmotivChain GetDivision(UniformScoreTrack uniformTrack, int paramPauseTreat)
         {
-            var temp = new FmotivChain {Name = unitrack.Name}; // выходная, результирующая цепочка разбитых ф-мотивов
+            var chain = new FmotivChain {Name = uniformTrack.Name}; // выходная, результирующая цепочка разбитых ф-мотивов
             paramPause = paramPauseTreat;
 
             var fmotivBuffer = new Fmotiv(String.Empty);
@@ -23,7 +23,7 @@ namespace LibiadaMusic.BorodaDivider
             // для дальнейшего их анализа и распределения по ф-мотивам.
 
             // заполняем NoteChain всеми нотам из данной монофонической цепи unitrack
-            foreach (Measure measure in unitrack.MeasureList)
+            foreach (Measure measure in uniformTrack.MeasureList)
             {
                 foreach (Note note in measure.NoteList)
                 {
@@ -45,7 +45,7 @@ namespace LibiadaMusic.BorodaDivider
             bool combination = false;
             // флаг, говорящий что собирается комбинация - ПМТ/ЧМТ и возрастающая последовательность (4 тип фмотива)
             // пока анализируемая цепь содержит элементы, идет выполнение анализа ее содержимого
-            while (0 < noteChain.Count)
+            while (noteChain.Count > 0)
             {
                 fmotivBuffer.NoteList.Add(((Note) noteChain[0].Clone()));
                 noteChain.RemoveAt(0);
@@ -78,20 +78,15 @@ namespace LibiadaMusic.BorodaDivider
                             switch (paramPause)
                             {
                                 case 0:
-                                {
-// удаляем все паузы в возвращаемом объекте (0) (паузы игнорируются)
-
+                                    // удаляем все паузы в возвращаемом объекте (0) (паузы игнорируются)
                                     // если у очередной ноты нет лиги, то проверяем: если нота - не пауза, то выставляем флаг о следущей рассматриваемой ноте
                                     if (fmotivBuffer.NoteList[fmotivBuffer.NoteList.Count - 1].Pitch.Count > 0)
                                     {
                                         next = true;
                                     }
-                                }
                                     break;
                                 case 1:
-                                {
-// длительность паузы прибавляется к предыдущей ноте, а она сама удаляется из текста (1) (пауза - звуковой след ноты)
-
+                                    // длительность паузы прибавляется к предыдущей ноте, а она сама удаляется из текста (1) (пауза - звуковой след ноты)
                                     if (noteChain.Count > 0)
                                     {
                                         //если следующая не паузы то переходим к анализу буфера
@@ -107,16 +102,12 @@ namespace LibiadaMusic.BorodaDivider
                                             next = true;
                                         }
                                     }
-                                }
                                     break;
                                 case 2:
-                                {
-// Пауза - звук тишины, рассматривается как нота без высоты звучания (2)
+                                    // Пауза - звук тишины, рассматривается как нота без высоты звучания (2)
                                     // ничего не треуется
                                     next = true;
-                                }
                                     break;
-
                                 default:
                                     throw new Exception("Error Fmotiv.PauseTreatment parameter contains wrong value!");
                             }
@@ -142,20 +133,15 @@ namespace LibiadaMusic.BorodaDivider
                     switch (paramPause)
                     {
                         case 0:
-                        {
-// удаляем все паузы в возвращаемом объекте (0) (паузы игнорируются)
-
+                            // удаляем все паузы в возвращаемом объекте (0) (паузы игнорируются)
                             // если у очередной ноты нет лиги, то проверяем: если нота - не пауза, то выставляем флаг о следущей рассматриваемой ноте
                             if (fmotivBuffer.NoteList[fmotivBuffer.NoteList.Count - 1].Pitch.Count > 0)
                             {
                                 next = true;
                             }
-                        }
                             break;
                         case 1:
-                        {
-// длительность паузы прибавляется к предыдущей ноте, а она сама удаляется из текста (1) (пауза - звуковой след ноты)
-
+                            // длительность паузы прибавляется к предыдущей ноте, а она сама удаляется из текста (1) (пауза - звуковой след ноты)
                             //проверяем: если нота - не пауза, то выставляем флаг о следущей рассматриваемой ноте
                             if (fmotivBuffer.NoteList[fmotivBuffer.NoteList.Count - 1].Pitch.Count > 0)
                             {
@@ -177,16 +163,12 @@ namespace LibiadaMusic.BorodaDivider
                                     next = true;
                                 }
                             }
-                        }
                             break;
                         case 2:
-                        {
-// Пауза - звук тишины, рассматривается как нота без высоты звучания (2)
+                            // Пауза - звук тишины, рассматривается как нота без высоты звучания (2)
                             // ничего не треуется
                             next = true;
-                        }
                             break;
-
                         default:
                             throw new Exception("Error Fmotiv.PauseTreatment parameter contains wrong value!");
                     }
@@ -218,7 +200,7 @@ namespace LibiadaMusic.BorodaDivider
                             fmotivBuffer.PauseTreatment(paramPause).TieGathered().NoteList[1].Duration.Value)
                         {
                             // заносим ноты/паузы первой собранной ноты в очередной фмотив с типом ЧМТ, и удаляем из буфера
-                            var fm = new Fmotiv("ЧМТ", (temp.FmotivList.Count));
+                            var fm = new Fmotiv("ЧМТ", (chain.FmotivList.Count));
                             for (int i = 0; i < n; i++)
                             {
                                 //заносим
@@ -227,7 +209,7 @@ namespace LibiadaMusic.BorodaDivider
                                 fmotivBuffer.NoteList.RemoveAt(0);
                             }
                             // добавляем в выходную цепочку получившийся фмотив
-                            temp.FmotivList.Add(((Fmotiv) fm.Clone()));
+                            chain.FmotivList.Add(((Fmotiv) fm.Clone()));
 
                             //сохранили n на случай если за этим фмотивом следует еще один ЧМТ
                             n = fmotivBuffer.NoteList.Count;
@@ -276,12 +258,12 @@ namespace LibiadaMusic.BorodaDivider
                                     fmotivBuffer.PauseTreatment(paramPause).TieGathered().NoteList.Count - 1].Duration
                                     .Value)
                             {
-                                var fmotivbuffer2 = new Fmotiv(String.Empty);
+                                var fmotivBuffer2 = new Fmotiv(String.Empty);
                                 // помещаем в буффер2 последнюю собранную ноту - большей длительности чем все равнодлительные
                                 int count = fmotivBuffer.NoteList.Count; // так как меняется в процессе
                                 for (int i = n; i < count; i++)
                                 {
-                                    fmotivbuffer2.NoteList.Add(((Note) fmotivBuffer.NoteList[n].Clone()));
+                                    fmotivBuffer2.NoteList.Add(((Note) fmotivBuffer.NoteList[n].Clone()));
                                     fmotivBuffer.NoteList.RemoveAt(n);
                                 }
 
@@ -291,17 +273,17 @@ namespace LibiadaMusic.BorodaDivider
                                 for (int i = 0; i < (dividedSameDuration.Count - 1); i++)
                                 {
                                     // заносим очередной фмотив
-                                    temp.FmotivList.Add(((Fmotiv) dividedSameDuration[i].Clone()));
+                                    chain.FmotivList.Add(((Fmotiv) dividedSameDuration[i].Clone()));
                                     // присваиваем очередной id
-                                    temp.FmotivList[temp.FmotivList.Count - 1].Id = (temp.FmotivList.Count - 1);
+                                    chain.FmotivList[chain.FmotivList.Count - 1].Id = (chain.FmotivList.Count - 1);
                                 }
 
                                 // в буфер заносим последний фмотив цепочки фмотивов нот с равнодлительностью
                                 fmotivBuffer = (Fmotiv) dividedSameDuration[dividedSameDuration.Count - 1].Clone();
                                 // добавляем сохраненную ноту с большой длительностью
-                                for (int i = 0; i < fmotivbuffer2.NoteList.Count; i++)
+                                for (int i = 0; i < fmotivBuffer2.NoteList.Count; i++)
                                 {
-                                    fmotivBuffer.NoteList.Add(((Note) fmotivbuffer2.NoteList[i].Clone()));
+                                    fmotivBuffer.NoteList.Add(((Note) fmotivBuffer2.NoteList[i].Clone()));
                                 }
 
                                 combination = true; // флаг комбинации
@@ -343,9 +325,9 @@ namespace LibiadaMusic.BorodaDivider
                                 foreach (Fmotiv fmotiv in DivideSameDurationNotes(fmotivBuffer))
                                 {
                                     // заносим очередной фмотив
-                                    temp.FmotivList.Add(((Fmotiv) fmotiv.Clone()));
+                                    chain.FmotivList.Add(((Fmotiv) fmotiv.Clone()));
                                     // присваиваем очередной id
-                                    temp.FmotivList[temp.FmotivList.Count - 1].Id = (temp.FmotivList.Count - 1);
+                                    chain.FmotivList[chain.FmotivList.Count - 1].Id = (chain.FmotivList.Count - 1);
                                 }
 
                                 // очищаем буффер
@@ -388,7 +370,7 @@ namespace LibiadaMusic.BorodaDivider
                                     //также сохраняем не вошедшую последнюю ноту (не удаляем ее)
                                     if (combination)
                                     {
-                                        var fm = new Fmotiv(fmotivBuffer.Type + "ВП", (temp.FmotivList.Count));
+                                        var fm = new Fmotiv(fmotivBuffer.Type + "ВП", (chain.FmotivList.Count));
                                         // ЧМТВП или ПМТВП
                                         for (int i = 0; i < n; i++)
                                         {
@@ -398,7 +380,7 @@ namespace LibiadaMusic.BorodaDivider
                                             fmotivBuffer.NoteList.RemoveAt(0);
                                         }
                                         // добавляем в выходную цепочку получившийся фмотив
-                                        temp.FmotivList.Add(((Fmotiv) fm.Clone()));
+                                        chain.FmotivList.Add(((Fmotiv) fm.Clone()));
 
                                         n = fmotivBuffer.NoteList.Count;
                                         // сохранили сколько нот/пауз осталось в буфере от последней не вошедшей в фмотив ноты
@@ -409,7 +391,7 @@ namespace LibiadaMusic.BorodaDivider
                                     }
                                     else
                                     {
-                                        var fm = new Fmotiv("ВП", (temp.FmotivList.Count));
+                                        var fm = new Fmotiv("ВП", (chain.FmotivList.Count));
                                         for (int i = 0; i < n; i++)
                                         {
                                             //заносим
@@ -418,7 +400,7 @@ namespace LibiadaMusic.BorodaDivider
                                             fmotivBuffer.NoteList.RemoveAt(0);
                                         }
                                         // добавляем в выходную цепочку получившийся фмотив
-                                        temp.FmotivList.Add(((Fmotiv) fm.Clone()));
+                                        chain.FmotivList.Add(((Fmotiv) fm.Clone()));
 
                                         n = fmotivBuffer.NoteList.Count;
                                         // сохранили сколько нот/пауз осталось в буфере от последней не вошедшей в фмотив ноты
@@ -444,7 +426,7 @@ namespace LibiadaMusic.BorodaDivider
             if (fmotivBuffer.PauseTreatment(paramPause).TieGathered().NoteList.Count == 1)
             {
                 // заносим ноты/паузы 1 собранной ноты в очередной фмотив с типом ЧМТ, и удаляем из буфера
-                var fm = new Fmotiv("ЧМТ", (temp.FmotivList.Count));
+                var fm = new Fmotiv("ЧМТ", (chain.FmotivList.Count));
                 //for (int i = 0; i < FmotivBuffer.NoteList.Count; i++)
                 foreach (Note note in fmotivBuffer.NoteList)
                 {
@@ -452,7 +434,7 @@ namespace LibiadaMusic.BorodaDivider
                     fm.NoteList.Add(((Note) note.Clone()));
                 }
                 // добавляем в выходную цепочку получившийся фмотив
-                temp.FmotivList.Add(((Fmotiv) fm.Clone()));
+                chain.FmotivList.Add(((Fmotiv) fm.Clone()));
 
                 //очищаем буффер
                 fmotivBuffer.NoteList.Clear();
@@ -467,9 +449,9 @@ namespace LibiadaMusic.BorodaDivider
                     foreach (Fmotiv fmotiv in DivideSameDurationNotes(fmotivBuffer))
                     {
                         // заносим очередной фмотив
-                        temp.FmotivList.Add(((Fmotiv) fmotiv.Clone()));
+                        chain.FmotivList.Add(((Fmotiv) fmotiv.Clone()));
                         // присваиваем очередной id
-                        temp.FmotivList[temp.FmotivList.Count - 1].Id = (temp.FmotivList.Count - 1);
+                        chain.FmotivList[chain.FmotivList.Count - 1].Id = (chain.FmotivList.Count - 1);
                     }
                     // очищаем буффер
                     fmotivBuffer.NoteList.Clear();
@@ -482,14 +464,14 @@ namespace LibiadaMusic.BorodaDivider
                         if (combination)
                         {
                             //заносим оставшиеся ноты в комбинированный фмотив ЧМТ/ПМТ + ВП и в выходную цепочку
-                            var fm = new Fmotiv(fmotivBuffer.Type + "ВП", (temp.FmotivList.Count)); // ЧМТВП или ПМТВП
+                            var fm = new Fmotiv(fmotivBuffer.Type + "ВП", (chain.FmotivList.Count)); // ЧМТВП или ПМТВП
                             foreach (Note note in fmotivBuffer.NoteList)
                             {
                                 //заносим
                                 fm.NoteList.Add(((Note) note.Clone()));
                             }
                             // добавляем в выходную цепочку получившийся фмотив
-                            temp.FmotivList.Add(((Fmotiv) fm.Clone()));
+                            chain.FmotivList.Add(((Fmotiv) fm.Clone()));
 
                             // очищаем буффер
                             fmotivBuffer.NoteList.Clear();
@@ -497,14 +479,14 @@ namespace LibiadaMusic.BorodaDivider
                         else
                         {
                             // заносим оставшиеся ноты в фмотив ВП и в выходную цепочку
-                            Fmotiv fm = new Fmotiv("ВП", (temp.FmotivList.Count));
+                            var fm = new Fmotiv("ВП", (chain.FmotivList.Count));
                             foreach (Note note in fmotivBuffer.NoteList)
                             {
                                 //заносим
                                 fm.NoteList.Add(((Note) note.Clone()));
                             }
                             // добавляем в выходную цепочку получившийся фмотив
-                            temp.FmotivList.Add(((Fmotiv) fm.Clone()));
+                            chain.FmotivList.Add(((Fmotiv) fm.Clone()));
                             // очищаем буффер
                             fmotivBuffer.NoteList.Clear();
                         }
@@ -514,12 +496,12 @@ namespace LibiadaMusic.BorodaDivider
 
             #endregion
 
-            return temp;
+            return chain;
         }
 
-        private List<Fmotiv> DivideSameDurationNotes(Fmotiv FmotivBuf)
+        private List<Fmotiv> DivideSameDurationNotes(Fmotiv fmotivBuff)
         {
-            var fmotivBuffer = (Fmotiv) FmotivBuf.Clone(); // создаем копию входного объекта
+            var fmotivBuffer = (Fmotiv) fmotivBuff.Clone(); // создаем копию входного объекта
             var flTemp = new List<Fmotiv>(); // выходной список фмотивов
 
             // проверка на случай когда в аругменте метода количество собранных нот (из пауз/лиг) меньше двух
@@ -782,15 +764,13 @@ namespace LibiadaMusic.BorodaDivider
                                         else
                                         {
                                             // когда лига не заканчивается флагом конца, то ошибка
-                                            throw new Exception(
-                                                "LibiadaMusic: FmotivDivider, wrong Tie organization!End!");
+                                            throw new Exception("LibiadaMusic: FmotivDivider, wrong Tie organization!End!");
                                         }
                                     }
                                     else
                                     {
                                         // когда начинается лига не с флага начала, а с какого то другого, то ошибка
-                                        throw new Exception(
-                                            "LibiadaMusic: FmotivDivider, wrong Tie organization!Begining!");
+                                        throw new Exception("LibiadaMusic: FmotivDivider, wrong Tie organization!Begining!");
                                     }
                                 }
 
@@ -861,15 +841,13 @@ namespace LibiadaMusic.BorodaDivider
                                         else
                                         {
                                             // когда лига не заканчивается флагом конца, то ошибка
-                                            throw new Exception(
-                                                "LibiadaMusic: FmotivDivider, wrong Tie organization!End!");
+                                            throw new Exception("LibiadaMusic: FmotivDivider, wrong Tie organization!End!");
                                         }
                                     }
                                     else
                                     {
                                         // когда начинается лига не с флага начала, а с какого то другого, то ошибка
-                                        throw new Exception(
-                                            "LibiadaMusic: FmotivDivider, wrong Tie organization!Begining!");
+                                        throw new Exception("LibiadaMusic: FmotivDivider, wrong Tie organization!Begining!");
                                     }
                                 }
 
@@ -896,9 +874,7 @@ namespace LibiadaMusic.BorodaDivider
                                 // если больше 1 ноты, то вызываем рекурсию на оставшиеся ноты
                                 // отправляем последовательность равнодлительных звуков на анализ, получаем цепочку фмотивов и заносим их в выходную последовательность
                                 List<Fmotiv> dividedSameDuration = DivideSameDurationNotes(fmotivBuffer);
-                                for (int j = 0;
-                                    j < dividedSameDuration.Count;
-                                    j++)
+                                for (int j = 0; j < dividedSameDuration.Count; j++)
                                 {
                                     // заносим очередной фмотив
                                     flTemp.Add(((Fmotiv) dividedSameDuration[j].Clone()));
@@ -997,9 +973,7 @@ namespace LibiadaMusic.BorodaDivider
                             // если больше 1 ноты, то вызываем рекурсию на оставшиеся ноты
                             // отправляем последовательность равнодлительных звуков на анализ, получаем цепочку фмотивов и заносим их в выходную последовательность
                             List<Fmotiv> dividedSameDuration = DivideSameDurationNotes(fmotivBuffer);
-                            for (int j = 0;
-                                j < dividedSameDuration.Count;
-                                j++)
+                            for (int j = 0;j < dividedSameDuration.Count;j++)
                             {
                                 // заносим очередной фмотив
                                 flTemp.Add(((Fmotiv) dividedSameDuration[j].Clone()));

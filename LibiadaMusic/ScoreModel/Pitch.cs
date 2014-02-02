@@ -8,12 +8,24 @@ namespace LibiadaMusic.ScoreModel
     /// </summary>
     public class Pitch : IBaseObject
     {
+        /// <summary>
+        /// уникальный номер ноты по миди стандарту
+        /// </summary>
         public int MidiNumber { get; private set; }
 
+        /// <summary>
+        /// ЗАГЛАВНАЯ (!) буква обозначающая "относительную" высоту ноты "A", "B" и т.д.
+        /// </summary>
         public char Step { get; private set; }
 
+        /// <summary>
+        /// номер октавы
+        /// </summary>
         private int Octave { get; set; }
 
+        /// <summary>
+        /// диез/бемоль +1 диез; -1 бемоль
+        /// </summary>
         private int Alter { get; set; }
 
         public int Instrument { private get; set; }
@@ -27,10 +39,14 @@ namespace LibiadaMusic.ScoreModel
             Instrument = instrument;
         }
 
-
-
+        /// <summary>
+        /// вычисление глобального номера ноты через параметры
+        /// </summary>
+        /// <param name="octave"></param>
+        /// <param name="step"></param>
+        /// <param name="alter"></param>
+        /// <returns></returns>
         private int GetMidiNumberByParam(int octave, char step, int alter)
-            // вычисление глобального номера ноты через параметры
         {
             int offset; // сдвиг от начала октавы, в зависимости от буквы ноты
             switch (step)

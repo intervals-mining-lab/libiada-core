@@ -8,18 +8,17 @@ namespace LibiadaMusic.MusicXml
     public class MusicXmlParser
     {
         private Attributes currentAttributes;
-        private ScoreTrack scoreModel; // модель в которую разбирается XML документ
 
-        public ScoreTrack ScoreModel
-        {
-            get { return scoreModel; }
-        }
+        /// <summary>
+        /// модель в которую разбирается XML документ
+        /// </summary>
+        public ScoreTrack ScoreModel { get; private set; }
 
         public void Execute(XmlDocument xmlDocument, string filename)
         {
             // TODO: проверка схемы Xml на соотвествие схеме MusicXml
             // создаем объект модели музыкального текста из Xml документа
-            scoreModel = new ScoreTrack(filename, ParseUniformScoreTracks((XmlDocument) xmlDocument.Clone()));
+            ScoreModel = new ScoreTrack(filename, ParseUniformScoreTracks((XmlDocument) xmlDocument.Clone()));
         }
 
         private List<UniformScoreTrack> ParseUniformScoreTracks(XmlDocument scoreNode)
@@ -35,20 +34,18 @@ namespace LibiadaMusic.MusicXml
                 temp.Add(new UniformScoreTrack(uniformList[i].Attributes["id"].Value,
                     ParseMeasures(uniformList[i].Clone())));
             }
-
             return temp;
         }
 
         private List<Measure> ParseMeasures(XmlNode uniformScoreNode)
         {
             XmlNodeList measureList = uniformScoreNode.ChildNodes;
-            var Temp = new List<Measure>();
+            var measures = new List<Measure>();
             for (int i = 0; i < measureList.Count; i++)
             {
-                Temp.Add(new Measure(ParseNotes(measureList[i].Clone()),
-                    ParseAttributes(measureList[i].Clone())));
+                measures.Add(new Measure(ParseNotes(measureList[i].Clone()), ParseAttributes(measureList[i].Clone())));
             }
-            return Temp;
+            return measures;
         }
 
         private Attributes ParseAttributes(XmlNode measureNode)
@@ -57,21 +54,9 @@ namespace LibiadaMusic.MusicXml
             {
                 if (measureChild.Name == "attributes")
                 {
-                    //Attributes Temp = new Attributes(parseSize((XmlNode)measureChild.Clone()), parseKey((XmlNode)measureChild.Clone()));
+                    Key key = parseKey(measureChild.Clone()) ?? (Key) currentAttributes.Key.Clone();
 
-                    Size size = ParseSize(measureChild.Clone());
-                    ;
-                    Key key = parseKey(measureChild.Clone());
-                    ;
-
-                    if (key == null)
-                    {
-                        key = (Key) currentAttributes.Key.Clone();
-                    }
-                    if (size == null)
-                    {
-                        size = (Size) currentAttributes.Size.Clone();
-                    }
+                    Size size = ParseSize(measureChild.Clone()) ?? (Size) currentAttributes.Size.Clone();
 
                     currentAttributes = new Attributes(size, key);
                     return currentAttributes;
@@ -86,34 +71,35 @@ namespace LibiadaMusic.MusicXml
             bool needTicks = false;
             foreach (XmlNode attributeChild in attributeNode.ChildNodes)
             {
-                //-----TICKS----------------
-                if (attributeChild.Name == "divisions")
+                switch (attributeChild.Name)
                 {
-                    ticks = Convert.ToInt16(attributeChild.InnerText);
-                    needTicks = true;
-                }
-                //----SIZE---------
-                if (attributeChild.Name == "time")
-                {
-                    int beats = 0;
-                    int beatBase = 0;
+                    case "divisions":
+                        ticks = Convert.ToInt16(attributeChild.InnerText);
+                        needTicks = true;
+                        break;
+                    case "time":
+                    {
+                        int beats = 0;
+                        int beatBase = 0;
 
-                    foreach (XmlNode timeChild in attributeChild)
-                    {
-                        if (timeChild.Name == "beats")
+                        foreach (XmlNode timeChild in attributeChild)
                         {
-                            beats = Convert.ToInt16(timeChild.InnerText);
+                            switch (timeChild.Name)
+                            {
+                                case "beats":
+                                    beats = Convert.ToInt16(timeChild.InnerText);
+                                    break;
+                                case "beat-type":
+                                    beatBase = Convert.ToInt16(timeChild.InnerText);
+                                    break;
+                            }
                         }
-                        if (timeChild.Name == "beat-type")
+                        if (needTicks)
                         {
-                            beatBase = Convert.ToInt16(timeChild.InnerText);
+                            return new Size(beats, beatBase, ticks);
                         }
+                        return new Size(beats, beatBase, currentAttributes.Size.TicksPerBeat);
                     }
-                    if (needTicks)
-                    {
-                        return new Size(beats, beatBase, ticks);
-                    }
-                    return new Size(beats, beatBase, currentAttributes.Size.TicksPerBeat);
                 }
             }
             return null;
@@ -127,7 +113,7 @@ namespace LibiadaMusic.MusicXml
                 if (attributeChild.Name == "key")
                 {
                     int fifths = 0;
-                    string mode = "";
+                    string mode = String.Empty;
                     bool needMode = false;
 
                     foreach (XmlNode keyChild in attributeChild)
@@ -154,7 +140,7 @@ namespace LibiadaMusic.MusicXml
 
         private List<Note> ParseNotes(XmlNode measureNode)
         {
-            var temp = new List<Note>();
+            var notes = new List<Note>();
             bool hasNotes = false;
             foreach (XmlNode measureChild in measureNode.ChildNodes)
             {
@@ -165,13 +151,13 @@ namespace LibiadaMusic.MusicXml
                         if (chordChild.Name == "chord")
                             //если найден "аккорд", то добавим текущую ноту к предыдущей уже мультиноте
                         {
-                            temp[temp.Count - 1].AddPitch(parsePitch(measureChild.Clone()));
-                            if (temp[temp.Count - 1].Tie != parseTie(measureChild.Clone()))
-                                temp[temp.Count - 1].Tie = Tie.None;
+                            notes[notes.Count - 1].AddPitch(parsePitch(measureChild.Clone()));
+                            if (notes[notes.Count - 1].Tie != parseTie(measureChild.Clone()))
+                                notes[notes.Count - 1].Tie = Tie.None;
 
                             break;
                         }
-                        temp.Add(new Note(parsePitch(measureChild.Clone()),
+                        notes.Add(new Note(parsePitch(measureChild.Clone()),
                             parseDuration(measureChild.Clone()),
                             parseTriplet(measureChild.Clone()), parseTie(measureChild.Clone())));
                         hasNotes = true;
@@ -179,8 +165,14 @@ namespace LibiadaMusic.MusicXml
                     }
                 }
             }
-            if (hasNotes) return temp;
-            return null;
+            if (hasNotes)
+            {
+                return notes;
+            }
+            else
+            {
+                return null;
+            }
         }
 
         private Pitch parsePitch(XmlNode noteNode)
@@ -198,19 +190,19 @@ namespace LibiadaMusic.MusicXml
                     bool hasOctave = false;
                     foreach (XmlNode pitchChild in noteChild.ChildNodes)
                     {
-                        if (pitchChild.Name == "step")
+                        switch (pitchChild.Name)
                         {
-                            step = Convert.ToChar(pitchChild.InnerText);
-                            hasStep = true;
-                        }
-                        if (pitchChild.Name == "alter")
-                        {
-                            alter = Convert.ToInt16(pitchChild.InnerText);
-                        }
-                        if (pitchChild.Name == "octave")
-                        {
-                            octave = Convert.ToInt16(pitchChild.InnerText);
-                            hasOctave = true;
+                            case "step":
+                                step = Convert.ToChar(pitchChild.InnerText);
+                                hasStep = true;
+                                break;
+                            case "alter":
+                                alter = Convert.ToInt16(pitchChild.InnerText);
+                                break;
+                            case "octave":
+                                octave = Convert.ToInt16(pitchChild.InnerText);
+                                hasOctave = true;
+                                break;
                         }
                     }
                     if (hasOctave && hasStep)
@@ -220,11 +212,7 @@ namespace LibiadaMusic.MusicXml
 
                     throw new Exception("LibiadaMusic.XmlParser: error while Note parsing: pitch structure");
                 }
-                if (noteChild.Name == "rest")
-                {
-                    return null;
-                }
-                if (noteChild.Name == "notations")
+                if (noteChild.Name == "rest" || noteChild.Name == "notations")
                 {
                     return null;
                 }
@@ -240,20 +228,16 @@ namespace LibiadaMusic.MusicXml
             {
                 if (noteChild.Name == "tie")
                 {
-                    if (noteChild.Attributes["type"].Value == "start")
+                    switch (noteChild.Attributes["type"].Value)
                     {
-                        start = true;
-                    }
-                    else
-                    {
-                        if (noteChild.Attributes["type"].Value == "stop")
-                        {
+                        case "start":
+                            start = true;
+                            break;
+                        case "stop":
                             stop = true;
-                        }
-                        else
-                        {
-                            throw new Exception("LibiadaMusic.XmlParser: error while Note parsing: Tie type unknow");
-                        }
+                            break;
+                        default:
+                            throw new Exception("LibiadaMusic.XmlParser: error while Note parsing: Tie type unknown");
                     }
                 }
             }
@@ -291,7 +275,7 @@ namespace LibiadaMusic.MusicXml
 
         private Duration parseDuration(XmlNode noteNode)
         {
-            string type = "";
+            string type = String.Empty;
             int duration = 0;
             bool dot = false;
             bool hasTimeModification = false;
@@ -300,32 +284,31 @@ namespace LibiadaMusic.MusicXml
 
             foreach (XmlNode noteChild in noteNode.ChildNodes)
             {
-                if (noteChild.Name == "duration")
+                switch (noteChild.Name)
                 {
-                    duration = Convert.ToInt16(noteChild.InnerText);
-                }
-                if (noteChild.Name == "type")
-                {
-                    type = noteChild.InnerText;
-                }
-                if (noteChild.Name == "time-modification")
-                {
-                    hasTimeModification = true;
-                    foreach (XmlNode timeModification in noteChild)
-                    {
-                        if (timeModification.Name == "actual-notes")
+                    case "duration":
+                        duration = Convert.ToInt16(noteChild.InnerText);
+                        break;
+                    case "type":
+                        type = noteChild.InnerText;
+                        break;
+                    case "time-modification":
+                        hasTimeModification = true;
+                        foreach (XmlNode timeModification in noteChild)
                         {
-                            actualNotes = Convert.ToInt16(timeModification.InnerText);
+                            if (timeModification.Name == "actual-notes")
+                            {
+                                actualNotes = Convert.ToInt16(timeModification.InnerText);
+                            }
+                            if (timeModification.Name == "normal-notes")
+                            {
+                                normalNotes = Convert.ToInt16(timeModification.InnerText);
+                            }
                         }
-                        if (timeModification.Name == "normal-notes")
-                        {
-                            normalNotes = Convert.ToInt16(timeModification.InnerText);
-                        }
-                    }
-                }
-                if (noteChild.Name == "dot")
-                {
-                    dot = true;
+                        break;
+                    case "dot":
+                        dot = true;
+                        break;
                 }
             }
 

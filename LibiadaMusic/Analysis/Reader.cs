@@ -6,8 +6,6 @@ namespace LibiadaMusic.Analysis
 {
     public class Reader
     {
-        private string[] data;
-
         public void SetData(string path)
         {
             var fs = new FileStream(path, FileMode.Open);
@@ -20,7 +18,7 @@ namespace LibiadaMusic.Analysis
                 str = str + chars[i];
             }
             char[] sep = {'\r', '\n'};
-            data = str.Split(sep, (int) fs.Length, StringSplitOptions.RemoveEmptyEntries);
+            Data = str.Split(sep, (int) fs.Length, StringSplitOptions.RemoveEmptyEntries);
             fs.Close();
         }
 
@@ -37,13 +35,10 @@ namespace LibiadaMusic.Analysis
                 str += list.Item(i).InnerText + '\r' + '\n'; // вносим в строку следующий ф-мотив + разделитель
             }
             char[] sep = {'\r', '\n'};
-            data = str.Split(sep, (int) fs.Length, StringSplitOptions.RemoveEmptyEntries);
+            Data = str.Split(sep, (int) fs.Length, StringSplitOptions.RemoveEmptyEntries);
             fs.Close(); // Закрываем поток
         }
 
-        public string[] Data
-        {
-            get { return data; }
-        }
+        public string[] Data { get; private set; }
     }
 }

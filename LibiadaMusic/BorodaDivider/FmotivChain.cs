@@ -1,77 +1,53 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using LibiadaCore.Classes.Root;
 
 namespace LibiadaMusic.BorodaDivider
 {
-    public class FmotivChain : IBaseObject // класс для хранения последовательности ф-мотив
+    /// <summary>
+    /// класс для хранения последовательности ф-мотив
+    /// </summary>
+    public class FmotivChain : IBaseObject
     {
-        // класс для хранения цепочки ф-мотивов
-        private int id; // порядковый номер - идентификатор цепочки ф-мотивов
-        private string name; // название моно дорожки для которой выделяются ф-мотивы
-        private List<Fmotiv> fmotivlist; // список ф-мотив
+        /// <summary>
+        /// список ф-мотив
+        /// </summary>
+        public List<Fmotiv> FmotivList { get; private set; }
+        /// <summary>
+        /// название моно дорожки для которой выделяются ф-мотивы
+        /// </summary>
+        public string Name { get; set; }
+        /// <summary>
+        /// порядковый номер - идентификатор цепочки ф-мотивов
+        /// </summary>
+        public int Id { get; set; }
 
         public FmotivChain()
         {
-            fmotivlist = new List<Fmotiv>();
+            FmotivList = new List<Fmotiv>();
         }
-
-        public List<Fmotiv> FmotivList
-        {
-            get { return fmotivlist; }
-        }
-
-        public string Name
-        {
-            get { return name; }
-            set { name = value; }
-        }
-
-        public int Id
-        {
-            get { return id; }
-            set { id = value; }
-        }
-
-        #region IBaseMethods
 
         public IBaseObject Clone()
         {
-            var temp = new FmotivChain();
-            foreach (Fmotiv fmotiv in fmotivlist)
+            var clone = new FmotivChain();
+            foreach (Fmotiv fmotiv in FmotivList)
             {
-                temp.fmotivlist.Add((Fmotiv) fmotiv.Clone());
+                clone.FmotivList.Add((Fmotiv) fmotiv.Clone());
             }
-            temp.id = id;
-            temp.name = name;
+            clone.Id = Id;
+            clone.Name = Name;
 
-            return temp;
+            return clone;
         }
 
         public override bool Equals(object obj)
         {
-            if (name != ((FmotivChain) obj).name)
+            var other = (FmotivChain) obj;
+            if (Name != other.Name || Id != other.Id)
             {
                 return false;
             }
-            if (id != ((FmotivChain) obj).id)
-            {
-                return false;
-            }
-
-            if (FmotivList.Count != ((FmotivChain) obj).FmotivList.Count)
-            {
-                return false;
-            }
-            for (int i = 0; i < FmotivList.Count; i++)
-            {
-                if (!FmotivList[i].Equals(((FmotivChain) obj).FmotivList[i]))
-                {
-                    return false;
-                }
-            }
-            return true;
+            return FmotivList.SequenceEqual(other.FmotivList);
         }
-
-        #endregion
     }
 }
