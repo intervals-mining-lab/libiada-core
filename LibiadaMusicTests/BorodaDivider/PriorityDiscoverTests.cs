@@ -4,25 +4,25 @@ using LibiadaMusic.BorodaDivider;
 using LibiadaMusic.ScoreModel;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace LibiadaMusicTest.BorodaDivider
+namespace LibiadaMusicTests.BorodaDivider
 {
     [TestClass]
-    public class PriorityDiscoverTest
+    public class PriorityDiscoverTests
     {
-        private Note note = new Note(new Pitch(1, 'E', 0), new Duration(1, 4, false, 480), false, Tie.None);
-        private Note anote = new Note(new Pitch(1, 'B', 0), new Duration(1, 2, false, 960), false, 0);
-        private Note bnote = new Note((Pitch) null, new Duration(1, 4, false, 480), false, 0);
-        private Note сnote = new Note(new Pitch(1, 'A', 0), new Duration(1, 4, 2, 3, false, 200), true, 0);
-        private Note ccnote = new Note(new Pitch(1, 'A', 0), new Duration(1, 8, 2, 3, false, 200), true, 0);
-        private Note сccnote = new Note(new Pitch(1, 'A', 0), new Duration(1, 8, 4, 7, false, 200), true, 0);
-        private Note dnote = new Note(new Pitch(1, 'B', 0), new Duration(1, 16, false, 240), false, 0);
+        private ValueNote note = new ValueNote(new Pitch(1, 'E', 0), new Duration(1, 4, false, 480), false, Tie.None);
+        private ValueNote anote = new ValueNote(new Pitch(1, 'B', 0), new Duration(1, 2, false, 960), false, 0);
+        private ValueNote bnote = new ValueNote((Pitch) null, new Duration(1, 4, false, 480), false, 0);
+        private ValueNote сnote = new ValueNote(new Pitch(1, 'A', 0), new Duration(1, 4, 2, 3, false, 200), true, 0);
+        private ValueNote ccnote = new ValueNote(new Pitch(1, 'A', 0), new Duration(1, 8, 2, 3, false, 200), true, 0);
+        private ValueNote сccnote = new ValueNote(new Pitch(1, 'A', 0), new Duration(1, 8, 4, 7, false, 200), true, 0);
+        private ValueNote dnote = new ValueNote(new Pitch(1, 'B', 0), new Duration(1, 16, false, 240), false, 0);
         private Attributes attributes = new Attributes(new Size(4, 4, 480), new Key(0, "minor"));
         private Attributes attributes1 = new Attributes(new Size(3, 4, 480), new Key(0, "minor"));
         private Attributes attributes2 = new Attributes(new Size(12, 8, 480), new Key(0, "minor"));
         private Attributes attributes3 = new Attributes(new Size(13, 16, 480), new Key(0, "minor"));
 
         [TestMethod]
-        public void TestPriorityGetSet()
+        public void PriorityGetSetTest()
         {
             note.Priority = 0;
             anote.Priority = -1;
@@ -34,11 +34,11 @@ namespace LibiadaMusicTest.BorodaDivider
         }
 
         [TestMethod]
-        public void TestPriorityMinDuration()
+        public void PriorityMinDurationTest()
         {
             var pd = new PriorityDiscover();
 
-            var notes = new List<Note> {note, bnote, dnote, anote};
+            var notes = new List<ValueNote> {note, bnote, dnote, anote};
             var measure = new Measure(notes, attributes);
             //минимальнвя длительность ноты в такте measure 1/16 = 0.0625 у ноты dnote
             Assert.IsTrue(Math.Abs(pd.minDuration(measure) - 0.0625) < 0.00001);
@@ -57,11 +57,11 @@ namespace LibiadaMusicTest.BorodaDivider
         }
 
         [TestMethod]
-        public void TestPriorityMaskCalculation1()
+        public void PriorityMaskCalculationFirstTest()
         {
             var pd = new PriorityDiscover();
 
-            var notes = new List<Note>();
+            var notes = new List<ValueNote>();
             notes.Add(note);
             notes.Add(bnote);
             notes.Add(dnote);
@@ -111,11 +111,11 @@ namespace LibiadaMusicTest.BorodaDivider
         }
 
         [TestMethod]
-        public void TestPriorityMaskCalculation2()
+        public void PriorityMaskCalculationSecondTest()
         {
             var pd = new PriorityDiscover();
 
-            var notes = new List<Note> {note, bnote, dnote, anote};
+            var notes = new List<ValueNote> {note, bnote, dnote, anote};
             var measure = new Measure(notes, attributes2);
             pd.CalcPriorityMask(measure);
             // так как минимальная длительность ноты в такте 1/16 то маска приоритетов должна разложиться (посчитаться) до 1/32
@@ -177,11 +177,11 @@ namespace LibiadaMusicTest.BorodaDivider
         }
 
         [TestMethod]
-        public void TestPriorityMaskCalculation3()
+        public void PriorityMaskCalculationThirdTest()
         {
             var pd = new PriorityDiscover();
 
-            var notes = new List<Note> {note, bnote, dnote, anote};
+            var notes = new List<ValueNote> {note, bnote, dnote, anote};
             var measure = new Measure(notes, attributes3);
             pd.CalcPriorityMask(measure);
             // так как минимальная длительность ноты в такте 1/16 то маска приоритетов должна разложиться (посчитаться) до 1/32
@@ -221,11 +221,11 @@ namespace LibiadaMusicTest.BorodaDivider
         }
 
         [TestMethod]
-        public void TestPriorityMaskCalculation4()
+        public void PriorityMaskCalculationFourthTest()
         {
             var pd = new PriorityDiscover();
 
-            var notes = new List<Note> {note, anote};
+            var notes = new List<ValueNote> {note, anote};
             var measure = new Measure(notes, attributes1);
             pd.CalcPriorityMask(measure);
             // так как минимальная длительность ноты в такте 1/4 то маска приоритетов должна разложиться (посчитаться) до 1/4
@@ -245,19 +245,19 @@ namespace LibiadaMusicTest.BorodaDivider
         }
 
         [TestMethod]
-        public void TestPriorityDiscover1()
+        public void PriorityDiscoverTest()
         {
-            var notes = new List<Note> {note, bnote, anote};
+            var notes = new List<ValueNote> {note, bnote, anote};
 
-            var notes1 = new List<Note> {note, note, note};
+            var notes1 = new List<ValueNote> {note, note, note};
 
-            var notes2 = new List<Note> {anote, note, bnote, note, bnote};
+            var notes2 = new List<ValueNote> {anote, note, bnote, note, bnote};
 
-            var notes3 = new List<Note> {note, dnote, note, note};
+            var notes3 = new List<ValueNote> {note, dnote, note, note};
 
-            var notes4 = new List<Note> {сnote, сnote, сnote, ccnote, ccnote, ccnote};
+            var notes4 = new List<ValueNote> {сnote, сnote, сnote, ccnote, ccnote, ccnote};
 
-            var notes5 = new List<Note> {сccnote, сccnote, сccnote, сccnote, сccnote, сccnote, сccnote, note, note};
+            var notes5 = new List<ValueNote> {сccnote, сccnote, сccnote, сccnote, сccnote, сccnote, сccnote, note, note};
 
 
             var measure = new Measure(notes, attributes);

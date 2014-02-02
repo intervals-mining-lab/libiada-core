@@ -3,13 +3,13 @@ using System.Xml;
 using LibiadaMusic.MusicXml;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace LibiadaMusicTest.MusicXml
+namespace LibiadaMusicTests.MusicXml
 {
     [TestClass]
-    public class XmlReaderTest
+    public class XmlReaderTests
     {
         [TestMethod]
-        public void TestXMLReader1 ()
+        public void XMLReaderFirstTest()
         {
             var xr = new MusicXmlReader("../../LibiadaMusicexample7Liga.xml");
             Assert.IsNotNull(xr.MusicXmlDocument);
@@ -17,7 +17,7 @@ namespace LibiadaMusicTest.MusicXml
         }
 
         [TestMethod]
-        public void TestXMLReader2()
+        public void XMLReaderSecondTest()
         {
             var path = "../../LibiadaMusicexample7Liga.xml";
             var xr = new MusicXmlReader();

@@ -42,13 +42,13 @@ namespace LibiadaMusic.Characteristics
             if (chain.FmotivList.Count < 1)
                 throw new Exception("Unable to count note remoteness with no elements in chain!");
 
-            var noteList = new List<Note>(); // список нот, класса Note, всей цепи фмотивов
+            var noteList = new List<ValueNote>(); // список нот, класса Note, всей цепи фмотивов
 
             foreach (Fmotiv fmotiv in chain.FmotivList)
             {
-                foreach (Note note in fmotiv.TieGathered().PauseTreatment((int) ParamPauseTreatment.Ignore).NoteList)
+                foreach (ValueNote note in fmotiv.TieGathered().PauseTreatment((int) ParamPauseTreatment.Ignore).NoteList)
                 {
-                    noteList.Add((Note) note.Clone());
+                    noteList.Add((ValueNote) note.Clone());
                 }
             }
 

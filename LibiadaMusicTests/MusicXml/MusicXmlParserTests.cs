@@ -3,13 +3,13 @@ using LibiadaMusic.MusicXml;
 using LibiadaMusic.ScoreModel;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace LibiadaMusicTest.MusicXml
+namespace LibiadaMusicTests.MusicXml
 {
     [TestClass]
-    public class MusicXmlParserTest
+    public class MusicXmlParserTests
     {
         [TestMethod]
-        public void TestXmlParser()
+        public void XmlParserTest()
         {
             var xmlreader = new MusicXmlReader("../../LibiadaMusicexample7Liga.xml");
             var Parser = new MusicXmlParser();
@@ -20,51 +20,51 @@ namespace LibiadaMusicTest.MusicXml
             // Создание атрибутов для такта
             var attributes1 = new Attributes(new Size(7, 8, 1024), new Key(0,"major"));
             // Создание списков нот для каждого из 4 тактов
-            var notes1 = new List<Note>
+            var notes1 = new List<ValueNote>
             {
-                new Note(new Pitch(3, 'E', 0), new Duration(1, 2, false, 2048), false, Tie.None),
-                new Note(new Pitch(3, 'A', 0), new Duration(1, 8, false, 512), false, Tie.None),
-                new Note(new Pitch(3, 'A', 0), new Duration(1, 8, false, 512), false, Tie.None),
-                new Note(new Pitch(3, 'F', 0), new Duration(1, 8, false, 512), false, Tie.Start)
+                new ValueNote(new Pitch(3, 'E', 0), new Duration(1, 2, false, 2048), false, Tie.None),
+                new ValueNote(new Pitch(3, 'A', 0), new Duration(1, 8, false, 512), false, Tie.None),
+                new ValueNote(new Pitch(3, 'A', 0), new Duration(1, 8, false, 512), false, Tie.None),
+                new ValueNote(new Pitch(3, 'F', 0), new Duration(1, 8, false, 512), false, Tie.Start)
             };
-            var notes2 = new List<Note>
+            var notes2 = new List<ValueNote>
             {
-                new Note(new Pitch(3, 'F', 0), new Duration(1, 8, false, 512), false, Tie.Stop),
-                new Note(new Pitch(3, 'B', 0), new Duration(1, 8, false, 512), false, Tie.None),
-                new Note(new Pitch(3, 'G', 0), new Duration(1, 8, false, 512), false, Tie.None),
-                new Note(new Pitch(4, 'C', 0), new Duration(1, 8, false, 512), false, Tie.None),
-                new Note(new Pitch(3, 'G', 0), new Duration(1, 8, false, 512), false, Tie.None),
-                new Note(new Pitch(3, 'E', 0), new Duration(1, 8, false, 512), false, Tie.None),
-                new Note(new Pitch(2, 'A', 0), new Duration(1, 8, false, 512), false, Tie.None)
+                new ValueNote(new Pitch(3, 'F', 0), new Duration(1, 8, false, 512), false, Tie.Stop),
+                new ValueNote(new Pitch(3, 'B', 0), new Duration(1, 8, false, 512), false, Tie.None),
+                new ValueNote(new Pitch(3, 'G', 0), new Duration(1, 8, false, 512), false, Tie.None),
+                new ValueNote(new Pitch(4, 'C', 0), new Duration(1, 8, false, 512), false, Tie.None),
+                new ValueNote(new Pitch(3, 'G', 0), new Duration(1, 8, false, 512), false, Tie.None),
+                new ValueNote(new Pitch(3, 'E', 0), new Duration(1, 8, false, 512), false, Tie.None),
+                new ValueNote(new Pitch(2, 'A', 0), new Duration(1, 8, false, 512), false, Tie.None)
             };
-            var notes3 = new List<Note>
+            var notes3 = new List<ValueNote>
             {
-                new Note(new Pitch(3, 'A', 0), new Duration(1, 16, false, 256), false, Tie.None),
-                new Note(new Pitch(3, 'G', 0), new Duration(1, 16, false, 256), false, Tie.None),
-                new Note(new Pitch(4, 'E', 0), new Duration(1, 16, false, 256), false, Tie.None),
-                new Note(new Pitch(3, 'A', 0), new Duration(1, 16, false, 256), false, Tie.None),
-                new Note(new Pitch(3, 'B', 0), new Duration(1, 16, false, 256), false, Tie.None),
-                new Note(new Pitch(3, 'A', 0), new Duration(1, 16, false, 256), false, Tie.None),
-                new Note(new Pitch(4, 'D', 0), new Duration(1, 8, true, 768), false, Tie.None),
-                new Note(new Pitch(4, 'C', 0), new Duration(1, 8, true, 768), false, Tie.None),
-                new Note((Pitch) null, new Duration(1, 8, false, 512), false, Tie.None)
+                new ValueNote(new Pitch(3, 'A', 0), new Duration(1, 16, false, 256), false, Tie.None),
+                new ValueNote(new Pitch(3, 'G', 0), new Duration(1, 16, false, 256), false, Tie.None),
+                new ValueNote(new Pitch(4, 'E', 0), new Duration(1, 16, false, 256), false, Tie.None),
+                new ValueNote(new Pitch(3, 'A', 0), new Duration(1, 16, false, 256), false, Tie.None),
+                new ValueNote(new Pitch(3, 'B', 0), new Duration(1, 16, false, 256), false, Tie.None),
+                new ValueNote(new Pitch(3, 'A', 0), new Duration(1, 16, false, 256), false, Tie.None),
+                new ValueNote(new Pitch(4, 'D', 0), new Duration(1, 8, true, 768), false, Tie.None),
+                new ValueNote(new Pitch(4, 'C', 0), new Duration(1, 8, true, 768), false, Tie.None),
+                new ValueNote((Pitch) null, new Duration(1, 8, false, 512), false, Tie.None)
             };
-            var notes4 = new List<Note>
+            var notes4 = new List<ValueNote>
             {
-                new Note(new Pitch(4, 'C', 0), new Duration(1, 16, false, 256), false, Tie.None),
-                new Note(new Pitch(3, 'A', 0), new Duration(1, 16, false, 256), false, Tie.None),
-                new Note(new Pitch(3, 'E', 0), new Duration(1, 16, false, 256), false, Tie.None),
-                new Note(new Pitch(4, 'C', 0), new Duration(1, 16, false, 256), false, Tie.None),
-                new Note(new Pitch(3, 'E', 0), new Duration(1, 16, false, 256), false, Tie.None),
-                new Note(new Pitch(2, 'A', 0), new Duration(1, 16, false, 256), false, Tie.None),
-                new Note(new Pitch(4, 'D', 0), new Duration(1, 16, false, 256), false, Tie.None),
-                new Note(new Pitch(4, 'C', 0), new Duration(1, 16, false, 256), false, Tie.None),
-                new Note(new Pitch(3, 'A', 0), new Duration(1, 16, false, 256), false, Tie.None),
-                new Note(new Pitch(2, 'E', 0), new Duration(1, 16, false, 256), false, Tie.None),
-                new Note(new Pitch(4, 'C', 0), new Duration(1, 16, false, 256), false, Tie.None),
-                new Note(new Pitch(3, 'G', 0), new Duration(1, 16, false, 256), false, Tie.None),
-                new Note(new Pitch(3, 'A', 0), new Duration(1, 16, false, 256), false, Tie.None),
-                new Note(new Pitch(4, 'C', 0), new Duration(1, 16, false, 256), false, Tie.None)
+                new ValueNote(new Pitch(4, 'C', 0), new Duration(1, 16, false, 256), false, Tie.None),
+                new ValueNote(new Pitch(3, 'A', 0), new Duration(1, 16, false, 256), false, Tie.None),
+                new ValueNote(new Pitch(3, 'E', 0), new Duration(1, 16, false, 256), false, Tie.None),
+                new ValueNote(new Pitch(4, 'C', 0), new Duration(1, 16, false, 256), false, Tie.None),
+                new ValueNote(new Pitch(3, 'E', 0), new Duration(1, 16, false, 256), false, Tie.None),
+                new ValueNote(new Pitch(2, 'A', 0), new Duration(1, 16, false, 256), false, Tie.None),
+                new ValueNote(new Pitch(4, 'D', 0), new Duration(1, 16, false, 256), false, Tie.None),
+                new ValueNote(new Pitch(4, 'C', 0), new Duration(1, 16, false, 256), false, Tie.None),
+                new ValueNote(new Pitch(3, 'A', 0), new Duration(1, 16, false, 256), false, Tie.None),
+                new ValueNote(new Pitch(2, 'E', 0), new Duration(1, 16, false, 256), false, Tie.None),
+                new ValueNote(new Pitch(4, 'C', 0), new Duration(1, 16, false, 256), false, Tie.None),
+                new ValueNote(new Pitch(3, 'G', 0), new Duration(1, 16, false, 256), false, Tie.None),
+                new ValueNote(new Pitch(3, 'A', 0), new Duration(1, 16, false, 256), false, Tie.None),
+                new ValueNote(new Pitch(4, 'C', 0), new Duration(1, 16, false, 256), false, Tie.None)
             };
             //создание списка тактов для монофонического трека p0
             var measures1 = new List<Measure>
@@ -91,7 +91,7 @@ namespace LibiadaMusicTest.MusicXml
         }
 
         [TestMethod]
-        public void TestPolyXmlParser()
+        public void PolyXmlParserTest()
         {
             var xmlreader = new MusicXmlReader("../../polytest.xml");
             var Parser = new MusicXmlParser();
@@ -116,52 +116,52 @@ namespace LibiadaMusicTest.MusicXml
         }
 
         [TestMethod]
-        public void TestXmlParserFileName()
+        public void XmlParserFileNameTest()
         {
         }
 
         [TestMethod]
-        public void TestXmlParserScoretrack()
+        public void XmlParserScoretrackTest()
         {
         }
 
         [TestMethod]
-        public void TestXmlParserUniformScoretrack()
+        public void XmlParserUniformScoretrackTest()
         {
         }
 
         [TestMethod]
-        public void TestXmlParserMeasure()
+        public void XmlParserMeasureTest()
         {
         }
 
         [TestMethod]
-        public void TestXmlParserNote()
+        public void XmlParserNoteTest()
         {
         }
 
         [TestMethod]
-        public void TestXmlParserAttributes()
+        public void XmlParserAttributesTest()
         {
         }
 
         [TestMethod]
-        public void TestXmlParserPitch()
+        public void XmlParserPitchTest()
         {
         }
 
         [TestMethod]
-        public void TestXmlParserDuration()
+        public void XmlParserDurationTest()
         {
         }
 
         [TestMethod]
-        public void TestXmlParserTie()
+        public void XmlParserTieTest()
         {
         }
 
         [TestMethod]
-        public void TestXmlParserTriplet()
+        public void XmlParserTripletTest()
         {
         }
 

@@ -138,9 +138,9 @@ namespace LibiadaMusic.MusicXml
             return null;
         }
 
-        private List<Note> ParseNotes(XmlNode measureNode)
+        private List<ValueNote> ParseNotes(XmlNode measureNode)
         {
-            var notes = new List<Note>();
+            var notes = new List<ValueNote>();
             bool hasNotes = false;
             foreach (XmlNode measureChild in measureNode.ChildNodes)
             {
@@ -157,7 +157,7 @@ namespace LibiadaMusic.MusicXml
 
                             break;
                         }
-                        notes.Add(new Note(parsePitch(measureChild.Clone()),
+                        notes.Add(new ValueNote(parsePitch(measureChild.Clone()),
                             parseDuration(measureChild.Clone()),
                             parseTriplet(measureChild.Clone()), parseTie(measureChild.Clone())));
                         hasNotes = true;

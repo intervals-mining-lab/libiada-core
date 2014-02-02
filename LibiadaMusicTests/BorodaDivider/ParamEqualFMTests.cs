@@ -1,13 +1,13 @@
 ﻿using LibiadaMusic.BorodaDivider;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace LibiadaMusicTest.BorodaDivider
+namespace LibiadaMusicTests.BorodaDivider
 {
     [TestClass]
-    public class ParamEqualFMTest
+    public class ParamEqualFMTests
     {
         [TestMethod]
-        public void TestParamEqual1()
+        public void ParamEqualTest()
         {
             Assert.AreEqual((int) ParamEqualFM.Sequent, 0);
             Assert.AreEqual((int) ParamEqualFM.NonSequent, 1);

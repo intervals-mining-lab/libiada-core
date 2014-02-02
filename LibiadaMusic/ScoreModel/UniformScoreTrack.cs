@@ -21,15 +21,15 @@ namespace LibiadaMusic.ScoreModel
         }
 
         // возвращает строй объектов Note, проидентифицировав их
-        public List<Note> NoteOrder()
+        public List<ValueNote> NoteOrder()
         {
-            var temp = new List<Note>();
+            var temp = new List<ValueNote>();
             //запись в одну цепочку
             foreach (Measure measure in MeasureList)
             {
-                foreach (Note note in measure.NoteList)
+                foreach (ValueNote note in measure.NoteList)
                 {
-                    temp.Add((Note) note.Clone());
+                    temp.Add((ValueNote) note.Clone());
                 }
             }
 
@@ -67,7 +67,7 @@ namespace LibiadaMusic.ScoreModel
         // возвращает строй нот (в виде цепи натуральных чисел начиная с 0)
         public int[] NoteIdOrder()
         {
-            List<Note> temp = NoteOrder();
+            List<ValueNote> temp = NoteOrder();
 
             var idTemp = new int[temp.Count]; // строй из Id, а не из объектов типа Note
             for (int i = 0; i < temp.Count; i++)

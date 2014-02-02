@@ -11,7 +11,7 @@ namespace LibiadaMusic.ScoreModel
         /// <summary>
         /// список нот, класса Note
         /// </summary>
-        public List<Note> NoteList { get; private set; }
+        public List<ValueNote> NoteList { get; private set; }
 
         /// <summary>
         /// атрибуты
@@ -23,17 +23,17 @@ namespace LibiadaMusic.ScoreModel
         /// </summary>
         public int Id { get; set; }
 
-        public Measure(List<Note> noteList, Attributes attributes)
+        public Measure(List<ValueNote> noteList, Attributes attributes)
         {
             if (attributes != null)
             {
                 Attributes = (Attributes) attributes.Clone();
             }
 
-            NoteList = new List<Note>();
+            NoteList = new List<ValueNote>();
             for (int i = 0; i < noteList.Count; i++) // создаем список нот, по средствам клонирования каждой ноты.
             {
-                NoteList.Add((Note) noteList[i].Clone());
+                NoteList.Add((ValueNote) noteList[i].Clone());
             }
         }
 
@@ -50,7 +50,7 @@ namespace LibiadaMusic.ScoreModel
                 }
                 else
                 {
-                    var tempNoteList = new List<Note>(0);
+                    var tempNoteList = new List<ValueNote>(0);
                     if (NoteList[k].Duration.Value < measure.NoteList[k].Duration.Value)
                     {
                         // нота из склеенного массива короче, значит нужно вторую разделить на две и склеить

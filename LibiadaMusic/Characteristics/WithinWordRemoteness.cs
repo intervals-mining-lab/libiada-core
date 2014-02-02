@@ -43,12 +43,11 @@ namespace LibiadaMusic.Characteristics
                 }
                 double val = new Depth().Calculate(noteChain, Link.Start);
 
-                arRemVal = arRemVal + val;
+                arRemVal += val;
             }
 
-            arRemVal = arRemVal/chain.FmotivList.Count; // берем среднее от суммы всех удаленностей слов
-
-            return arRemVal;
+            // берем среднее от суммы всех удаленностей слов
+            return arRemVal/chain.FmotivList.Count;
         }
     }
 }

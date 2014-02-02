@@ -93,7 +93,7 @@
     <Compile Include="ScoreModel\Measure.cs" />
     <Compile Include="MusicXml\MusicXmlParser.cs" />
     <Compile Include="MusicXml\MusicXmlReader.cs" />
-    <Compile Include="ScoreModel\Note.cs" />
+    <Compile Include="ScoreModel\ValueNote.cs" />
     <Compile Include="ScoreModel\Pitch.cs" />
     <Compile Include="ScoreModel\ScoreTrack.cs" />
     <Compile Include="ScoreModel\Size.cs" />

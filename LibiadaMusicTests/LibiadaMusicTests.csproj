@@ -9,8 +9,8 @@
     <ProjectGuid>{AB9ED1C2-F46D-4FCB-9BD2-44B44E4CCA42}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>LibiadaMusicTest</RootNamespace>
-    <AssemblyName>LibiadaMusicTest</AssemblyName>
+    <RootNamespace>LibiadaMusicTests</RootNamespace>
+    <AssemblyName>LibiadaMusicTests</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -49,35 +49,36 @@
     </CodeAnalysisDependentAssemblyPaths>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Characteristics\AverageLengthTest.cs">
+    <Compile Include="Analysis\CompositionTests.cs" />
+    <Compile Include="Analysis\DifferenceTests.cs" />
+    <Compile Include="Characteristics\AverageLengthTests.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Characteristics\NoteRemotenessTest.cs">
+    <Compile Include="Characteristics\NoteRemotenessTests.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Characteristics\WithinWordRemotenessTest.cs">
+    <Compile Include="Characteristics\WithinWordRemotenessTests.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Characteristics\TestWordRemoteness.cs">
+    <Compile Include="Characteristics\WordRemotenessTests.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="BorodaDivider\FmotivTest.cs" />
-    <Compile Include="BorodaDivider\BorodaDividerTest.cs" />
-    <Compile Include="BorodaDivider\FmotivChainTest.cs" />
-    <Compile Include="BorodaDivider\FmotivDividerTest.cs" />
-    <Compile Include="BorodaDivider\FmotivIdentificatorTest.cs" />
-    <Compile Include="BorodaDivider\ParamEqualFMTest.cs" />
-    <Compile Include="BorodaDivider\ParamPauseTreatmentTest.cs" />
-    <Compile Include="BorodaDivider\PriorityDiscoverTest.cs" />
-    <Compile Include="MusicXml\MusicXmlParserTest.cs" />
-    <Compile Include="MusicXml\XmlReaderTest.cs" />
-    <Compile Include="ScoreModel\DurationTest.cs" />
-    <Compile Include="ScoreModel\MeasureTest.cs" />
-    <Compile Include="ScoreModel\NoteTest.cs" />
-    <Compile Include="ScoreModel\TieTest.cs" />
-    <Compile Include="ScoreModel\TestUniformScoreTrack.cs" />
+    <Compile Include="BorodaDivider\FmotivTests.cs" />
+    <Compile Include="BorodaDivider\BorodaDividerTests.cs" />
+    <Compile Include="BorodaDivider\FmotivChainTests.cs" />
+    <Compile Include="BorodaDivider\FmotivDividerTests.cs" />
+    <Compile Include="BorodaDivider\FmotivIdentificatorTests.cs" />
+    <Compile Include="BorodaDivider\ParamEqualFMTests.cs" />
+    <Compile Include="BorodaDivider\ParamPauseTreatmentTests.cs" />
+    <Compile Include="BorodaDivider\PriorityDiscoverTests.cs" />
+    <Compile Include="MusicXml\MusicXmlParserTests.cs" />
+    <Compile Include="MusicXml\XmlReaderTests.cs" />
+    <Compile Include="ScoreModel\DurationTests.cs" />
+    <Compile Include="ScoreModel\MeasureTests.cs" />
+    <Compile Include="ScoreModel\ValueNoteTests.cs" />
+    <Compile Include="ScoreModel\TieTests.cs" />
+    <Compile Include="ScoreModel\UniformScoreTrackTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Test.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\LibiadaMusic\LibiadaMusic.csproj">

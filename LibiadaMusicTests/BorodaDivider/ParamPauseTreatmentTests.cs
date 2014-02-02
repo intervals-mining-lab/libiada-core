@@ -1,13 +1,13 @@
 ﻿using LibiadaMusic.BorodaDivider;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace LibiadaMusicTest.BorodaDivider
+namespace LibiadaMusicTests.BorodaDivider
 {
     [TestClass]
-    public class ParamPauseTreatmentTest
+    public class ParamPauseTreatmentTests
     {
         [TestMethod]
-        public void TestParamPause1()
+        public void ParamPauseTest()
         {
             Assert.AreEqual((int) ParamPauseTreatment.Ignore, 0);
             Assert.AreEqual((int) ParamPauseTreatment.NoteTrace, 1);

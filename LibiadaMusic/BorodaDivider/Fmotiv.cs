@@ -13,7 +13,7 @@ namespace LibiadaMusic.BorodaDivider
         /// <summary>
         /// список нот, входящих в  ф-мотив
         /// </summary>
-        public List<Note> NoteList { get; private set; }
+        public List<ValueNote> NoteList { get; private set; }
 
         public string Type { get; set; }
 
@@ -35,7 +35,7 @@ namespace LibiadaMusic.BorodaDivider
         {
             Id = id;
             Type = type;
-            NoteList = new List<Note>();
+            NoteList = new List<ValueNote>();
         }
 
         // TODO: убрать все частные и заменить на общие!!!!!!!!! заменил все withoutpauses() на PauseTreatment с параметорм ignore
@@ -105,7 +105,7 @@ namespace LibiadaMusic.BorodaDivider
         {
             //возвращает копию этого объекта, соединив все залигованные ноты, если такие имеются
             // (тоесть вместо трех залигованных нот в фмотиве будет отображаться одна, с суммарной длительностью но такой же высотой
-            Note buffNote = null;
+            ValueNote buffNote = null;
             var temp = (Fmotiv) Clone();
             var tempGathered = new Fmotiv(Type, Id);
 
@@ -113,20 +113,18 @@ namespace LibiadaMusic.BorodaDivider
 
             for (int i = 0; i < count; i++)
             {
-                // неправильный код лиги, лига кодируется {-1,0,1,2}
-                if (((int) temp.NoteList[0].Tie > 2) || ((int) temp.NoteList[0].Tie < -1))
+                if (!Enum.IsDefined(typeof(Tie), temp.NoteList[0].Tie))
                 {
                     throw new Exception("LibiadaMusic: Tie is not valid!");
                 }
-
                 // если лига отсутствует
-                if ((int) temp.NoteList[0].Tie == -1)
+                if (temp.NoteList[0].Tie == Tie.None)
                 {
                     if (buffNote != null)
                     {
                         throw new Exception("LibiadaMusic: Tie started but (stop)/(startstop) note NOT following!");
                     }
-                    tempGathered.NoteList.Add(((Note) temp.NoteList[0].Clone()));
+                    tempGathered.NoteList.Add(((ValueNote) temp.NoteList[0].Clone()));
                     // очистка текущей позиции ноты, для перехода к следущей в очереди
                     temp.NoteList.RemoveAt(0);
                 }
@@ -139,14 +137,14 @@ namespace LibiadaMusic.BorodaDivider
                     }
 
                     // начало лиги стартовая нота
-                    if (temp.NoteList[0].Tie == 0)
+                    if (temp.NoteList[0].Tie == Tie.Start)
                     {
                         // если уже был старт лиги, и еще раз начинается старт
                         if (buffNote != null)
                         {
                             throw new Exception("LibiadaMusic: Tie note start after existing start note!");
                         }
-                        buffNote = ((Note) temp.NoteList[0].Clone());
+                        buffNote = ((ValueNote) temp.NoteList[0].Clone());
                         // очистка текущей позиции ноты, для перехода к следущей в очереди
                         temp.NoteList.RemoveAt(0);
                     }
@@ -165,10 +163,10 @@ namespace LibiadaMusic.BorodaDivider
                         }
 
                         // уже начавшаяся лига продолжается, с условием что будет еще следущая лигованная нота
-                        if ((int) temp.NoteList[0].Tie == 2)
+                        if ( temp.NoteList[0].Tie == Tie.StartStop)
                         {
                             // добавляется длительность, и копируется старая высота звучания и приоритет
-                            buffNote = new Note(buffNote.Pitch, buffNote.Duration.AddDuration(temp.NoteList[0].Duration),
+                            buffNote = new ValueNote(buffNote.Pitch, buffNote.Duration.AddDuration(temp.NoteList[0].Duration),
                                 buffNote.Triplet, Tie.None, buffNote.Priority);
                             // очистка текущей позиции ноты, для перехода к следущей в очереди
                             temp.NoteList.RemoveAt(0);
@@ -176,14 +174,14 @@ namespace LibiadaMusic.BorodaDivider
                         else
                         {
                             // конечная нота в последовательности лигованных нот
-                            if ((int) temp.NoteList[0].Tie == 1)
+                            if (temp.NoteList[0].Tie == Tie.Stop)
                             {
                                 // добавляется длительность, и копируется старая высота звучания и приоритет
-                                buffNote = new Note(buffNote.Pitch,
+                                buffNote = new ValueNote(buffNote.Pitch,
                                     buffNote.Duration.AddDuration(temp.NoteList[0].Duration), buffNote.Triplet, Tie.None,
                                     buffNote.Priority);
                                 // завершен сбор лигованных нот, результат кладется в возвращаемый буфер.
-                                tempGathered.NoteList.Add(((Note) buffNote.Clone()));
+                                tempGathered.NoteList.Add(((ValueNote) buffNote.Clone()));
                                 // очистка буффера залигованных нот
                                 buffNote = null;
                                 // очистка текущей позиции ноты, для перехода к следущей в очереди
@@ -206,9 +204,9 @@ namespace LibiadaMusic.BorodaDivider
         public IBaseObject Clone()
         {
             var clone = new Fmotiv(Type, Id);
-            foreach (Note note in NoteList)
+            foreach (ValueNote note in NoteList)
             {
-                clone.NoteList.Add((Note) note.Clone());
+                clone.NoteList.Add((ValueNote) note.Clone());
             }
             return clone;
         }

@@ -4,11 +4,11 @@ using System.Runtime.InteropServices;
 // Общие сведения об этой сборке предоставляются следующим набором 
 // атрибутов. Отредактируйте значения этих атрибутов, чтобы изменить
 // общие сведения об этой сборке.
-[assembly: AssemblyTitle("LibiadaMusicTest")]
+[assembly: AssemblyTitle("LibiadaMusicTests")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("LibiadaMusicTest")]
+[assembly: AssemblyProduct("LibiadaMusicTests")]
 [assembly: AssemblyCopyright("Copyright ©  2011")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]

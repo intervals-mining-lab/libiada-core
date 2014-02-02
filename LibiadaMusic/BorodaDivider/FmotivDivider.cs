@@ -18,16 +18,16 @@ namespace LibiadaMusic.BorodaDivider
 
             #region заполнение цепи нот, со всех тактов монотрека
 
-            var noteChain = new List<Note>();
+            var noteChain = new List<ValueNote>();
             // цепочка нот, куда поочередно складываются ноты из последовательности тактов
             // для дальнейшего их анализа и распределения по ф-мотивам.
 
             // заполняем NoteChain всеми нотам из данной монофонической цепи unitrack
             foreach (Measure measure in uniformTrack.MeasureList)
             {
-                foreach (Note note in measure.NoteList)
+                foreach (ValueNote note in measure.NoteList)
                 {
-                    noteChain.Add(((Note) note.Clone()));
+                    noteChain.Add(((ValueNote) note.Clone()));
                 }
             }
 
@@ -47,30 +47,30 @@ namespace LibiadaMusic.BorodaDivider
             // пока анализируемая цепь содержит элементы, идет выполнение анализа ее содержимого
             while (noteChain.Count > 0)
             {
-                fmotivBuffer.NoteList.Add(((Note) noteChain[0].Clone()));
+                fmotivBuffer.NoteList.Add(((ValueNote) noteChain[0].Clone()));
                 noteChain.RemoveAt(0);
 
                 #region Сборка последующих нот, в случае Лиги
 
                 // проверка на наличие лиги у очередной ноты, если есть то заносим в буффер все ноты, объединенные данной лигой
-                if ((int) fmotivBuffer.NoteList[fmotivBuffer.NoteList.Count - 1].Tie != -1)
+                if (fmotivBuffer.NoteList[fmotivBuffer.NoteList.Count - 1].Tie != Tie.None)
                 {
                     // если есть флаг начала лиги, то записываем в буфер все остальные лигованные ноты, пока не будет флага конца лиги
-                    if (fmotivBuffer.NoteList[fmotivBuffer.NoteList.Count - 1].Tie == 0)
+                    if (fmotivBuffer.NoteList[fmotivBuffer.NoteList.Count - 1].Tie == Tie.Start)
                     {
                         // TODO: желательно сделать проверку когда собирается очередная лига,
                         // не будет ли пуста цепь нот, до того как лига закончится (будет флаг конца лиги)
 
-                        while ((int) noteChain[0].Tie == 2)
+                        while (noteChain[0].Tie == Tie.StartStop)
                         {
                             // пока продолжается лига, заносим ноты в буфер
-                            fmotivBuffer.NoteList.Add(((Note) noteChain[0].Clone()));
+                            fmotivBuffer.NoteList.Add(((ValueNote) noteChain[0].Clone()));
                             noteChain.RemoveAt(0);
                         }
-                        if ((int) noteChain[0].Tie == 1)
+                        if (noteChain[0].Tie == Tie.Stop)
                         {
                             // если есть флаг конца лиги у очередной ноты, то заносим конечную ноту лиги в буфер
-                            fmotivBuffer.NoteList.Add(((Note) noteChain[0].Clone()));
+                            fmotivBuffer.NoteList.Add(((ValueNote) noteChain[0].Clone()));
                             noteChain.RemoveAt(0);
 
                             wasNote = true; // была нота пермещена в буфер
@@ -204,7 +204,7 @@ namespace LibiadaMusic.BorodaDivider
                             for (int i = 0; i < n; i++)
                             {
                                 //заносим
-                                fm.NoteList.Add(((Note) fmotivBuffer.NoteList[0].Clone()));
+                                fm.NoteList.Add(((ValueNote) fmotivBuffer.NoteList[0].Clone()));
                                 //удаляем
                                 fmotivBuffer.NoteList.RemoveAt(0);
                             }
@@ -263,7 +263,7 @@ namespace LibiadaMusic.BorodaDivider
                                 int count = fmotivBuffer.NoteList.Count; // так как меняется в процессе
                                 for (int i = n; i < count; i++)
                                 {
-                                    fmotivBuffer2.NoteList.Add(((Note) fmotivBuffer.NoteList[n].Clone()));
+                                    fmotivBuffer2.NoteList.Add(((ValueNote) fmotivBuffer.NoteList[n].Clone()));
                                     fmotivBuffer.NoteList.RemoveAt(n);
                                 }
 
@@ -283,7 +283,7 @@ namespace LibiadaMusic.BorodaDivider
                                 // добавляем сохраненную ноту с большой длительностью
                                 for (int i = 0; i < fmotivBuffer2.NoteList.Count; i++)
                                 {
-                                    fmotivBuffer.NoteList.Add(((Note) fmotivBuffer2.NoteList[i].Clone()));
+                                    fmotivBuffer.NoteList.Add(((ValueNote) fmotivBuffer2.NoteList[i].Clone()));
                                 }
 
                                 combination = true; // флаг комбинации
@@ -318,7 +318,7 @@ namespace LibiadaMusic.BorodaDivider
                                 int count = fmotivBuffer.NoteList.Count; // так как меняется в процессе
                                 for (int i = n; i < count; i++)
                                 {
-                                    fmotivbuffer2.NoteList.Add(((Note) fmotivBuffer.NoteList[n].Clone()));
+                                    fmotivbuffer2.NoteList.Add(((ValueNote) fmotivBuffer.NoteList[n].Clone()));
                                     fmotivBuffer.NoteList.RemoveAt(n);
                                 }
                                 // отправляем последовательность равнодлительных звуков на анализ, получаем цепочку фмотивов и заносим их в выходную последовательность
@@ -336,7 +336,7 @@ namespace LibiadaMusic.BorodaDivider
                                 // добавляем состав сохраненной ноты (паузы/лиги) с меньшей длительностью в буфер
                                 for (int i = 0; i < fmotivbuffer2.NoteList.Count; i++)
                                 {
-                                    fmotivBuffer.NoteList.Add(((Note) fmotivbuffer2.NoteList[i].Clone()));
+                                    fmotivBuffer.NoteList.Add(((ValueNote) fmotivbuffer2.NoteList[i].Clone()));
                                 }
 
                                 sameDurationChain = false; // убираем флаг для сбора равнодлительных нот
@@ -375,7 +375,7 @@ namespace LibiadaMusic.BorodaDivider
                                         for (int i = 0; i < n; i++)
                                         {
                                             //заносим
-                                            fm.NoteList.Add(((Note) fmotivBuffer.NoteList[0].Clone()));
+                                            fm.NoteList.Add(((ValueNote) fmotivBuffer.NoteList[0].Clone()));
                                             //удаляем
                                             fmotivBuffer.NoteList.RemoveAt(0);
                                         }
@@ -395,7 +395,7 @@ namespace LibiadaMusic.BorodaDivider
                                         for (int i = 0; i < n; i++)
                                         {
                                             //заносим
-                                            fm.NoteList.Add(((Note) fmotivBuffer.NoteList[0].Clone()));
+                                            fm.NoteList.Add(((ValueNote) fmotivBuffer.NoteList[0].Clone()));
                                             //удаляем
                                             fmotivBuffer.NoteList.RemoveAt(0);
                                         }
@@ -428,10 +428,10 @@ namespace LibiadaMusic.BorodaDivider
                 // заносим ноты/паузы 1 собранной ноты в очередной фмотив с типом ЧМТ, и удаляем из буфера
                 var fm = new Fmotiv("ЧМТ", (chain.FmotivList.Count));
                 //for (int i = 0; i < FmotivBuffer.NoteList.Count; i++)
-                foreach (Note note in fmotivBuffer.NoteList)
+                foreach (ValueNote note in fmotivBuffer.NoteList)
                 {
                     //заносим
-                    fm.NoteList.Add(((Note) note.Clone()));
+                    fm.NoteList.Add(((ValueNote) note.Clone()));
                 }
                 // добавляем в выходную цепочку получившийся фмотив
                 chain.FmotivList.Add(((Fmotiv) fm.Clone()));
@@ -465,10 +465,10 @@ namespace LibiadaMusic.BorodaDivider
                         {
                             //заносим оставшиеся ноты в комбинированный фмотив ЧМТ/ПМТ + ВП и в выходную цепочку
                             var fm = new Fmotiv(fmotivBuffer.Type + "ВП", (chain.FmotivList.Count)); // ЧМТВП или ПМТВП
-                            foreach (Note note in fmotivBuffer.NoteList)
+                            foreach (ValueNote note in fmotivBuffer.NoteList)
                             {
                                 //заносим
-                                fm.NoteList.Add(((Note) note.Clone()));
+                                fm.NoteList.Add(((ValueNote) note.Clone()));
                             }
                             // добавляем в выходную цепочку получившийся фмотив
                             chain.FmotivList.Add(((Fmotiv) fm.Clone()));
@@ -480,10 +480,10 @@ namespace LibiadaMusic.BorodaDivider
                         {
                             // заносим оставшиеся ноты в фмотив ВП и в выходную цепочку
                             var fm = new Fmotiv("ВП", (chain.FmotivList.Count));
-                            foreach (Note note in fmotivBuffer.NoteList)
+                            foreach (ValueNote note in fmotivBuffer.NoteList)
                             {
                                 //заносим
-                                fm.NoteList.Add(((Note) note.Clone()));
+                                fm.NoteList.Add(((ValueNote) note.Clone()));
                             }
                             // добавляем в выходную цепочку получившийся фмотив
                             chain.FmotivList.Add(((Fmotiv) fm.Clone()));
@@ -545,30 +545,30 @@ namespace LibiadaMusic.BorodaDivider
                                 }
                             }
 
-                            fmotiv.NoteList.Add(((Note) fmotivBuffer.NoteList[0].Clone()));
+                            fmotiv.NoteList.Add(((ValueNote) fmotivBuffer.NoteList[0].Clone()));
                             fmotivBuffer.NoteList.RemoveAt(0);
 
                             #region Сборка последующих нот, в случае Лиги
 
                             // проверка на наличие лиги у очередной ноты, если есть то заносим в буффер все ноты, объединенные данной лигой
-                            if ((int) fmotiv.NoteList[fmotiv.NoteList.Count - 1].Tie != -1)
+                            if (fmotiv.NoteList[fmotiv.NoteList.Count - 1].Tie != Tie.None)
                             {
                                 // если есть флаг начала лиги, то записываем в буфер все остальные лигованные ноты, пока не будет флага конца лиги
-                                if (fmotiv.NoteList[fmotiv.NoteList.Count - 1].Tie == 0)
+                                if (fmotiv.NoteList[fmotiv.NoteList.Count - 1].Tie == Tie.Start)
                                 {
                                     // TODO: желательно сделать проверку когда собирается очередная лига,
                                     // не будет ли пуста цепь нот, до того как лига закончится (будет флаг конца лиги)
 
-                                    while ((int) fmotivBuffer.NoteList[0].Tie == 2)
+                                    while (fmotivBuffer.NoteList[0].Tie == Tie.StartStop)
                                     {
                                         // пока продолжается лига, заносим ноты в буфер
-                                        fmotiv.NoteList.Add(((Note) fmotivBuffer.NoteList[0].Clone()));
+                                        fmotiv.NoteList.Add(((ValueNote) fmotivBuffer.NoteList[0].Clone()));
                                         fmotivBuffer.NoteList.RemoveAt(0);
                                     }
-                                    if ((int) fmotivBuffer.NoteList[0].Tie == 1)
+                                    if (fmotivBuffer.NoteList[0].Tie == Tie.Stop)
                                     {
                                         // если есть флаг конца лиги у очередной ноты, то заносим конечную ноту лиги в буфер
-                                        fmotiv.NoteList.Add(((Note) fmotivBuffer.NoteList[0].Clone()));
+                                        fmotiv.NoteList.Add(((ValueNote) fmotivBuffer.NoteList[0].Clone()));
                                         fmotivBuffer.NoteList.RemoveAt(0);
                                     }
                                     else
@@ -617,30 +617,30 @@ namespace LibiadaMusic.BorodaDivider
                                 }
                             }
 
-                            fmotiv.NoteList.Add(((Note) fmotivBuffer.NoteList[0].Clone()));
+                            fmotiv.NoteList.Add(((ValueNote) fmotivBuffer.NoteList[0].Clone()));
                             fmotivBuffer.NoteList.RemoveAt(0);
 
                             #region Сборка последующих нот, в случае Лиги
 
                             // проверка на наличие лиги у очередной ноты, если есть то заносим в буффер все ноты, объединенные данной лигой
-                            if ((int) fmotiv.NoteList[fmotiv.NoteList.Count - 1].Tie != -1)
+                            if (fmotiv.NoteList[fmotiv.NoteList.Count - 1].Tie != Tie.None)
                             {
                                 // если есть флаг начала лиги, то записываем в буфер все остальные лигованные ноты, пока не будет флага конца лиги
-                                if (fmotiv.NoteList[fmotiv.NoteList.Count - 1].Tie == 0)
+                                if (fmotiv.NoteList[fmotiv.NoteList.Count - 1].Tie == Tie.Start)
                                 {
                                     // TODO: желательно сделать проверку когда собирается очередная лига,
                                     // не будет ли пуста цепь нот, до того как лига закончится (будет флаг конца лиги)
 
-                                    while ((int) fmotivBuffer.NoteList[0].Tie == 2)
+                                    while (fmotivBuffer.NoteList[0].Tie == Tie.StartStop)
                                     {
                                         // пока продолжается лига, заносим ноты в буфер
-                                        fmotiv.NoteList.Add(((Note) fmotivBuffer.NoteList[0].Clone()));
+                                        fmotiv.NoteList.Add(((ValueNote) fmotivBuffer.NoteList[0].Clone()));
                                         fmotivBuffer.NoteList.RemoveAt(0);
                                     }
-                                    if ((int) fmotivBuffer.NoteList[0].Tie == 1)
+                                    if (fmotivBuffer.NoteList[0].Tie == Tie.Stop)
                                     {
                                         // если есть флаг конца лиги у очередной ноты, то заносим конечную ноту лиги в буфер
-                                        fmotiv.NoteList.Add(((Note) fmotivBuffer.NoteList[0].Clone()));
+                                        fmotiv.NoteList.Add(((ValueNote) fmotivBuffer.NoteList[0].Clone()));
                                         fmotivBuffer.NoteList.RemoveAt(0);
                                     }
                                     else
@@ -669,7 +669,7 @@ namespace LibiadaMusic.BorodaDivider
                             for (int j = 0; j < fmotivBuffer.NoteList.Count; j++)
                             {
                                 //заносим
-                                fm.NoteList.Add(((Note) fmotivBuffer.NoteList[j].Clone()));
+                                fm.NoteList.Add(((ValueNote) fmotivBuffer.NoteList[j].Clone()));
                             }
                             // добавляем в выходную цепочку получившийся фмотив
                             flTemp.Add(((Fmotiv) fm.Clone()));
@@ -735,30 +735,30 @@ namespace LibiadaMusic.BorodaDivider
                                         break;
                                     }
                                 }
-                                fmotiv.NoteList.Add(((Note) fmotivBuffer.NoteList[0].Clone()));
+                                fmotiv.NoteList.Add(((ValueNote) fmotivBuffer.NoteList[0].Clone()));
                                 fmotivBuffer.NoteList.RemoveAt(0);
 
                                 #region Сборка последующих нот, в случае Лиги
 
                                 // проверка на наличие лиги у очередной ноты, если есть то заносим в буффер все ноты, объединенные данной лигой
-                                if ((int) fmotiv.NoteList[fmotiv.NoteList.Count - 1].Tie != -1)
+                                if (fmotiv.NoteList[fmotiv.NoteList.Count - 1].Tie != Tie.None)
                                 {
                                     // если есть флаг начала лиги, то записываем в буфер все остальные лигованные ноты, пока не будет флага конца лиги
-                                    if (fmotiv.NoteList[fmotiv.NoteList.Count - 1].Tie == 0)
+                                    if (fmotiv.NoteList[fmotiv.NoteList.Count - 1].Tie == Tie.Start)
                                     {
                                         // TODO: желательно сделать проверку когда собирается очередная лига,
                                         // не будет ли пуста цепь нот, до того как лига закончится (будет флаг конца лиги)
 
-                                        while ((int) fmotivBuffer.NoteList[0].Tie == 2)
+                                        while (fmotivBuffer.NoteList[0].Tie == Tie.StartStop)
                                         {
                                             // пока продолжается лига, заносим ноты в буфер
-                                            fmotiv.NoteList.Add(((Note) fmotivBuffer.NoteList[0].Clone()));
+                                            fmotiv.NoteList.Add(((ValueNote) fmotivBuffer.NoteList[0].Clone()));
                                             fmotivBuffer.NoteList.RemoveAt(0);
                                         }
-                                        if ((int) fmotivBuffer.NoteList[0].Tie == 1)
+                                        if (fmotivBuffer.NoteList[0].Tie == Tie.Stop)
                                         {
                                             // если есть флаг конца лиги у очередной ноты, то заносим конечную ноту лиги в буфер
-                                            fmotiv.NoteList.Add(((Note) fmotivBuffer.NoteList[0].Clone()));
+                                            fmotiv.NoteList.Add(((ValueNote) fmotivBuffer.NoteList[0].Clone()));
                                             fmotivBuffer.NoteList.RemoveAt(0);
                                         }
                                         else
@@ -812,30 +812,30 @@ namespace LibiadaMusic.BorodaDivider
                                         break;
                                     }
                                 }
-                                fmotiv.NoteList.Add(((Note) fmotivBuffer.NoteList[0].Clone()));
+                                fmotiv.NoteList.Add(((ValueNote) fmotivBuffer.NoteList[0].Clone()));
                                 fmotivBuffer.NoteList.RemoveAt(0);
 
                                 #region Сборка последующих нот, в случае Лиги
 
                                 // проверка на наличие лиги у очередной ноты, если есть то заносим в буффер все ноты, объединенные данной лигой
-                                if ((int) fmotiv.NoteList[fmotiv.NoteList.Count - 1].Tie != -1)
+                                if (fmotiv.NoteList[fmotiv.NoteList.Count - 1].Tie != Tie.None)
                                 {
                                     // если есть флаг начала лиги, то записываем в буфер все остальные лигованные ноты, пока не будет флага конца лиги
-                                    if (fmotiv.NoteList[fmotiv.NoteList.Count - 1].Tie == 0)
+                                    if (fmotiv.NoteList[fmotiv.NoteList.Count - 1].Tie == Tie.Start)
                                     {
                                         // TODO: желательно сделать проверку когда собирается очередная лига,
                                         // не будет ли пуста цепь нот, до того как лига закончится (будет флаг конца лиги)
 
-                                        while ((int) fmotivBuffer.NoteList[0].Tie == 2)
+                                        while (fmotivBuffer.NoteList[0].Tie == Tie.StartStop)
                                         {
                                             // пока продолжается лига, заносим ноты в буфер
-                                            fmotiv.NoteList.Add(((Note) fmotivBuffer.NoteList[0].Clone()));
+                                            fmotiv.NoteList.Add(((ValueNote) fmotivBuffer.NoteList[0].Clone()));
                                             fmotivBuffer.NoteList.RemoveAt(0);
                                         }
-                                        if ((int) fmotivBuffer.NoteList[0].Tie == 1)
+                                        if (fmotivBuffer.NoteList[0].Tie == Tie.Stop)
                                         {
                                             // если есть флаг конца лиги у очередной ноты, то заносим конечную ноту лиги в буфер
-                                            fmotiv.NoteList.Add(((Note) fmotivBuffer.NoteList[0].Clone()));
+                                            fmotiv.NoteList.Add(((ValueNote) fmotivBuffer.NoteList[0].Clone()));
                                             fmotivBuffer.NoteList.RemoveAt(0);
                                         }
                                         else
@@ -863,7 +863,7 @@ namespace LibiadaMusic.BorodaDivider
                                 for (int j = 0; j < fmotivBuffer.NoteList.Count; j++)
                                 {
                                     //заносим
-                                    fm.NoteList.Add(((Note) fmotivBuffer.NoteList[j].Clone()));
+                                    fm.NoteList.Add(((ValueNote) fmotivBuffer.NoteList[j].Clone()));
                                 }
                                 // добавляем в выходную цепочку получившийся фмотив
                                 flTemp.Add(((Fmotiv) fm.Clone()));
@@ -910,30 +910,30 @@ namespace LibiadaMusic.BorodaDivider
                                     break;
                                 }
                             }
-                            fmotiv.NoteList.Add(((Note) fmotivBuffer.NoteList[0].Clone()));
+                            fmotiv.NoteList.Add(((ValueNote) fmotivBuffer.NoteList[0].Clone()));
                             fmotivBuffer.NoteList.RemoveAt(0);
 
                             #region Сборка последующих нот, в случае Лиги
 
                             // проверка на наличие лиги у очередной ноты, если есть то заносим в буффер все ноты, объединенные данной лигой
-                            if ((int) fmotiv.NoteList[fmotiv.NoteList.Count - 1].Tie != -1)
+                            if (fmotiv.NoteList[fmotiv.NoteList.Count - 1].Tie != Tie.None)
                             {
                                 // если есть флаг начала лиги, то записываем в буфер все остальные лигованные ноты, пока не будет флага конца лиги
-                                if (fmotiv.NoteList[fmotiv.NoteList.Count - 1].Tie == 0)
+                                if (fmotiv.NoteList[fmotiv.NoteList.Count - 1].Tie == Tie.Start)
                                 {
                                     // TODO: желательно сделать проверку когда собирается очередная лига,
                                     // не будет ли пуста цепь нот, до того как лига закончится (будет флаг конца лиги)
 
-                                    while ((int) fmotivBuffer.NoteList[0].Tie == 2)
+                                    while (fmotivBuffer.NoteList[0].Tie == Tie.StartStop)
                                     {
                                         // пока продолжается лига, заносим ноты в буфер
-                                        fmotiv.NoteList.Add(((Note) fmotivBuffer.NoteList[0].Clone()));
+                                        fmotiv.NoteList.Add(((ValueNote) fmotivBuffer.NoteList[0].Clone()));
                                         fmotivBuffer.NoteList.RemoveAt(0);
                                     }
-                                    if ((int) fmotivBuffer.NoteList[0].Tie == 1)
+                                    if (fmotivBuffer.NoteList[0].Tie == Tie.Stop)
                                     {
                                         // если есть флаг конца лиги у очередной ноты, то заносим конечную ноту лиги в буфер
-                                        fmotiv.NoteList.Add(((Note) fmotivBuffer.NoteList[0].Clone()));
+                                        fmotiv.NoteList.Add(((ValueNote) fmotivBuffer.NoteList[0].Clone()));
                                         fmotivBuffer.NoteList.RemoveAt(0);
                                     }
                                     else
@@ -962,7 +962,7 @@ namespace LibiadaMusic.BorodaDivider
                             for (int j = 0; j < fmotivBuffer.NoteList.Count; j++)
                             {
                                 //заносим
-                                fm.NoteList.Add(((Note) fmotivBuffer.NoteList[j].Clone()));
+                                fm.NoteList.Add(((ValueNote) fmotivBuffer.NoteList[j].Clone()));
                             }
                             // добавляем в выходную цепочку получившийся фмотив
                             flTemp.Add(((Fmotiv) fm.Clone()));
@@ -1021,30 +1021,30 @@ namespace LibiadaMusic.BorodaDivider
                                     break;
                                 }
                             }
-                            fmotiv.NoteList.Add(((Note) fmotivBuffer.NoteList[0].Clone()));
+                            fmotiv.NoteList.Add(((ValueNote) fmotivBuffer.NoteList[0].Clone()));
                             fmotivBuffer.NoteList.RemoveAt(0);
 
                             #region Сборка последующих нот, в случае Лиги
 
                             // проверка на наличие лиги у очередной ноты, если есть то заносим в буффер все ноты, объединенные данной лигой
-                            if ((int) fmotiv.NoteList[fmotiv.NoteList.Count - 1].Tie != -1)
+                            if (fmotiv.NoteList[fmotiv.NoteList.Count - 1].Tie != Tie.None)
                             {
                                 // если есть флаг начала лиги, то записываем в буфер все остальные лигованные ноты, пока не будет флага конца лиги
-                                if (fmotiv.NoteList[fmotiv.NoteList.Count - 1].Tie == 0)
+                                if (fmotiv.NoteList[fmotiv.NoteList.Count - 1].Tie == Tie.Start)
                                 {
                                     // TODO: желательно сделать проверку когда собирается очередная лига,
                                     // не будет ли пуста цепь нот, до того как лига закончится (будет флаг конца лиги)
 
-                                    while ((int) fmotivBuffer.NoteList[0].Tie == 2)
+                                    while (fmotivBuffer.NoteList[0].Tie == Tie.StartStop)
                                     {
                                         // пока продолжается лига, заносим ноты в буфер
-                                        fmotiv.NoteList.Add(((Note) fmotivBuffer.NoteList[0].Clone()));
+                                        fmotiv.NoteList.Add(((ValueNote) fmotivBuffer.NoteList[0].Clone()));
                                         fmotivBuffer.NoteList.RemoveAt(0);
                                     }
-                                    if ((int) fmotivBuffer.NoteList[0].Tie == 1)
+                                    if (fmotivBuffer.NoteList[0].Tie == Tie.Stop)
                                     {
                                         // если есть флаг конца лиги у очередной ноты, то заносим конечную ноту лиги в буфер
-                                        fmotiv.NoteList.Add(((Note) fmotivBuffer.NoteList[0].Clone()));
+                                        fmotiv.NoteList.Add(((ValueNote) fmotivBuffer.NoteList[0].Clone()));
                                         fmotivBuffer.NoteList.RemoveAt(0);
                                     }
                                     else
@@ -1091,30 +1091,30 @@ namespace LibiadaMusic.BorodaDivider
                                     break;
                                 }
                             }
-                            fmotiv.NoteList.Add(((Note) fmotivBuffer.NoteList[0].Clone()));
+                            fmotiv.NoteList.Add(((ValueNote) fmotivBuffer.NoteList[0].Clone()));
                             fmotivBuffer.NoteList.RemoveAt(0);
 
                             #region Сборка последующих нот, в случае Лиги
 
                             // проверка на наличие лиги у очередной ноты, если есть то заносим в буффер все ноты, объединенные данной лигой
-                            if ((int) fmotiv.NoteList[fmotiv.NoteList.Count - 1].Tie != -1)
+                            if (fmotiv.NoteList[fmotiv.NoteList.Count - 1].Tie != Tie.None)
                             {
                                 // если есть флаг начала лиги, то записываем в буфер все остальные лигованные ноты, пока не будет флага конца лиги
-                                if (fmotiv.NoteList[fmotiv.NoteList.Count - 1].Tie == 0)
+                                if (fmotiv.NoteList[fmotiv.NoteList.Count - 1].Tie == Tie.Start)
                                 {
                                     // TODO: желательно сделать проверку когда собирается очередная лига,
                                     // не будет ли пуста цепь нот, до того как лига закончится (будет флаг конца лиги)
 
-                                    while ((int) fmotivBuffer.NoteList[0].Tie == 2)
+                                    while (fmotivBuffer.NoteList[0].Tie == Tie.StartStop)
                                     {
                                         // пока продолжается лига, заносим ноты в буфер
-                                        fmotiv.NoteList.Add(((Note) fmotivBuffer.NoteList[0].Clone()));
+                                        fmotiv.NoteList.Add(((ValueNote) fmotivBuffer.NoteList[0].Clone()));
                                         fmotivBuffer.NoteList.RemoveAt(0);
                                     }
-                                    if ((int) fmotivBuffer.NoteList[0].Tie == 1)
+                                    if (fmotivBuffer.NoteList[0].Tie == Tie.Stop)
                                     {
                                         // если есть флаг конца лиги у очередной ноты, то заносим конечную ноту лиги в буфер
-                                        fmotiv.NoteList.Add(((Note) fmotivBuffer.NoteList[0].Clone()));
+                                        fmotiv.NoteList.Add(((ValueNote) fmotivBuffer.NoteList[0].Clone()));
                                         fmotivBuffer.NoteList.RemoveAt(0);
                                     }
                                     else
@@ -1180,30 +1180,30 @@ namespace LibiadaMusic.BorodaDivider
                                     break;
                                 }
                             }
-                            fmotiv.NoteList.Add(((Note) fmotivBuffer.NoteList[0].Clone()));
+                            fmotiv.NoteList.Add(((ValueNote) fmotivBuffer.NoteList[0].Clone()));
                             fmotivBuffer.NoteList.RemoveAt(0);
 
                             #region Сборка последующих нот, в случае Лиги
 
                             // проверка на наличие лиги у очередной ноты, если есть то заносим в буффер все ноты, объединенные данной лигой
-                            if ((int) fmotiv.NoteList[fmotiv.NoteList.Count - 1].Tie != -1)
+                            if (fmotiv.NoteList[fmotiv.NoteList.Count - 1].Tie != Tie.None)
                             {
                                 // если есть флаг начала лиги, то записываем в буфер все остальные лигованные ноты, пока не будет флага конца лиги
-                                if (fmotiv.NoteList[fmotiv.NoteList.Count - 1].Tie == 0)
+                                if (fmotiv.NoteList[fmotiv.NoteList.Count - 1].Tie == Tie.Start)
                                 {
                                     // TODO: желательно сделать проверку когда собирается очередная лига,
                                     // не будет ли пуста цепь нот, до того как лига закончится (будет флаг конца лиги)
 
-                                    while ((int) fmotivBuffer.NoteList[0].Tie == 2)
+                                    while (fmotivBuffer.NoteList[0].Tie == Tie.StartStop)
                                     {
                                         // пока продолжается лига, заносим ноты в буфер
-                                        fmotiv.NoteList.Add(((Note) fmotivBuffer.NoteList[0].Clone()));
+                                        fmotiv.NoteList.Add(((ValueNote) fmotivBuffer.NoteList[0].Clone()));
                                         fmotivBuffer.NoteList.RemoveAt(0);
                                     }
-                                    if ((int) fmotivBuffer.NoteList[0].Tie == 1)
+                                    if (fmotivBuffer.NoteList[0].Tie == Tie.Stop)
                                     {
                                         // если есть флаг конца лиги у очередной ноты, то заносим конечную ноту лиги в буфер
-                                        fmotiv.NoteList.Add(((Note) fmotivBuffer.NoteList[0].Clone()));
+                                        fmotiv.NoteList.Add(((ValueNote) fmotivBuffer.NoteList[0].Clone()));
                                         fmotivBuffer.NoteList.RemoveAt(0);
                                     }
                                     else
@@ -1257,30 +1257,30 @@ namespace LibiadaMusic.BorodaDivider
                                     break;
                                 }
                             }
-                            fmotiv.NoteList.Add(((Note) fmotivBuffer.NoteList[0].Clone()));
+                            fmotiv.NoteList.Add(((ValueNote) fmotivBuffer.NoteList[0].Clone()));
                             fmotivBuffer.NoteList.RemoveAt(0);
 
                             #region Сборка последующих нот, в случае Лиги
 
                             // проверка на наличие лиги у очередной ноты, если есть то заносим в буффер все ноты, объединенные данной лигой
-                            if ((int) fmotiv.NoteList[fmotiv.NoteList.Count - 1].Tie != -1)
+                            if (fmotiv.NoteList[fmotiv.NoteList.Count - 1].Tie != Tie.None)
                             {
                                 // если есть флаг начала лиги, то записываем в буфер все остальные лигованные ноты, пока не будет флага конца лиги
-                                if (fmotiv.NoteList[fmotiv.NoteList.Count - 1].Tie == 0)
+                                if (fmotiv.NoteList[fmotiv.NoteList.Count - 1].Tie == Tie.Start)
                                 {
                                     // TODO: желательно сделать проверку когда собирается очередная лига,
                                     // не будет ли пуста цепь нот, до того как лига закончится (будет флаг конца лиги)
 
-                                    while ((int) fmotivBuffer.NoteList[0].Tie == 2)
+                                    while (fmotivBuffer.NoteList[0].Tie == Tie.StartStop)
                                     {
                                         // пока продолжается лига, заносим ноты в буфер
-                                        fmotiv.NoteList.Add(((Note) fmotivBuffer.NoteList[0].Clone()));
+                                        fmotiv.NoteList.Add(((ValueNote) fmotivBuffer.NoteList[0].Clone()));
                                         fmotivBuffer.NoteList.RemoveAt(0);
                                     }
-                                    if ((int) fmotivBuffer.NoteList[0].Tie == 1)
+                                    if (fmotivBuffer.NoteList[0].Tie == Tie.Stop)
                                     {
                                         // если есть флаг конца лиги у очередной ноты, то заносим конечную ноту лиги в буфер
-                                        fmotiv.NoteList.Add(((Note) fmotivBuffer.NoteList[0].Clone()));
+                                        fmotiv.NoteList.Add(((ValueNote) fmotivBuffer.NoteList[0].Clone()));
                                         fmotivBuffer.NoteList.RemoveAt(0);
                                     }
                                     else
@@ -1308,7 +1308,7 @@ namespace LibiadaMusic.BorodaDivider
                             for (int j = 0; j < fmotivBuffer.NoteList.Count; j++)
                             {
                                 //заносим
-                                fm.NoteList.Add(((Note) fmotivBuffer.NoteList[j].Clone()));
+                                fm.NoteList.Add(((ValueNote) fmotivBuffer.NoteList[j].Clone()));
                             }
                             // добавляем в выходную цепочку получившийся фмотив
                             flTemp.Add(((Fmotiv) fm.Clone()));
@@ -1357,30 +1357,30 @@ namespace LibiadaMusic.BorodaDivider
                                 break;
                             }
                         }
-                        fmotiv.NoteList.Add(((Note) fmotivBuffer.NoteList[0].Clone()));
+                        fmotiv.NoteList.Add(((ValueNote) fmotivBuffer.NoteList[0].Clone()));
                         fmotivBuffer.NoteList.RemoveAt(0);
 
                         #region Сборка последующих нот, в случае Лиги
 
                         // проверка на наличие лиги у очередной ноты, если есть то заносим в буффер все ноты, объединенные данной лигой
-                        if ((int) fmotiv.NoteList[fmotiv.NoteList.Count - 1].Tie != -1)
+                        if (fmotiv.NoteList[fmotiv.NoteList.Count - 1].Tie != Tie.None)
                         {
                             // если есть флаг начала лиги, то записываем в буфер все остальные лигованные ноты, пока не будет флага конца лиги
-                            if (fmotiv.NoteList[fmotiv.NoteList.Count - 1].Tie == 0)
+                            if (fmotiv.NoteList[fmotiv.NoteList.Count - 1].Tie == Tie.Start)
                             {
                                 // TODO: желательно сделать проверку когда собирается очередная лига,
                                 // не будет ли пуста цепь нот, до того как лига закончится (будет флаг конца лиги)
 
-                                while ((int) fmotivBuffer.NoteList[0].Tie == 2)
+                                while (fmotivBuffer.NoteList[0].Tie == Tie.StartStop)
                                 {
                                     // пока продолжается лига, заносим ноты в буфер
-                                    fmotiv.NoteList.Add(((Note) fmotivBuffer.NoteList[0].Clone()));
+                                    fmotiv.NoteList.Add(((ValueNote) fmotivBuffer.NoteList[0].Clone()));
                                     fmotivBuffer.NoteList.RemoveAt(0);
                                 }
-                                if ((int) fmotivBuffer.NoteList[0].Tie == 1)
+                                if (fmotivBuffer.NoteList[0].Tie == Tie.Stop)
                                 {
                                     // если есть флаг конца лиги у очередной ноты, то заносим конечную ноту лиги в буфер
-                                    fmotiv.NoteList.Add(((Note) fmotivBuffer.NoteList[0].Clone()));
+                                    fmotiv.NoteList.Add(((ValueNote) fmotivBuffer.NoteList[0].Clone()));
                                     fmotivBuffer.NoteList.RemoveAt(0);
                                 }
                                 else
@@ -1409,7 +1409,7 @@ namespace LibiadaMusic.BorodaDivider
                         for (int j = 0; j < fmotivBuffer.NoteList.Count; j++)
                         {
                             //заносим
-                            fm.NoteList.Add(((Note) fmotivBuffer.NoteList[j].Clone()));
+                            fm.NoteList.Add(((ValueNote) fmotivBuffer.NoteList[j].Clone()));
                         }
                         // добавляем в выходную цепочку получившийся фмотив
                         flTemp.Add(((Fmotiv) fm.Clone()));

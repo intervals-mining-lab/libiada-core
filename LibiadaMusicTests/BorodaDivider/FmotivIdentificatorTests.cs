@@ -2,13 +2,13 @@
 using LibiadaMusic.ScoreModel;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace LibiadaMusicTest.BorodaDivider
+namespace LibiadaMusicTests.BorodaDivider
 {
     [TestClass]
-    public class FmotivIdentificatorTest
+    public class FmotivIdentificatorTests
     {
         [TestMethod]
-        public void TestFmotivIdentification1()
+        public void FmotivIdentificationFirstTest()
         {
             // создание ф-мотивов
             var fmotiv1 = new Fmotiv("ПМТ", 0);
@@ -18,23 +18,23 @@ namespace LibiadaMusicTest.BorodaDivider
             var fmotiv5 = new Fmotiv("ПМТ", 4);
             var fmotiv6 = new Fmotiv("ПМТ", 5);
 
-            fmotiv1.NoteList.Add(new Note(new Pitch(3, 'E', 0), new Duration(1, 4, false, 512), false, Tie.None));
-            fmotiv1.NoteList.Add(new Note(new Pitch(3, 'A', 0), new Duration(1, 4, false, 512), false, Tie.None));
+            fmotiv1.NoteList.Add(new ValueNote(new Pitch(3, 'E', 0), new Duration(1, 4, false, 512), false, Tie.None));
+            fmotiv1.NoteList.Add(new ValueNote(new Pitch(3, 'A', 0), new Duration(1, 4, false, 512), false, Tie.None));
 
-            fmotiv2.NoteList.Add(new Note(new Pitch(3, 'E', 0), new Duration(1, 4, false, 512), false, Tie.None));
-            fmotiv2.NoteList.Add(new Note(new Pitch(3, 'B', 0), new Duration(1, 4, false, 512), false, Tie.None));
+            fmotiv2.NoteList.Add(new ValueNote(new Pitch(3, 'E', 0), new Duration(1, 4, false, 512), false, Tie.None));
+            fmotiv2.NoteList.Add(new ValueNote(new Pitch(3, 'B', 0), new Duration(1, 4, false, 512), false, Tie.None));
 
-            fmotiv3.NoteList.Add(new Note(new Pitch(3, 'E', 0), new Duration(1, 4, false, 512), false, Tie.None));
-            fmotiv3.NoteList.Add(new Note(new Pitch(3, 'B', 0), new Duration(1, 4, false, 512), false, Tie.None));
+            fmotiv3.NoteList.Add(new ValueNote(new Pitch(3, 'E', 0), new Duration(1, 4, false, 512), false, Tie.None));
+            fmotiv3.NoteList.Add(new ValueNote(new Pitch(3, 'B', 0), new Duration(1, 4, false, 512), false, Tie.None));
 
-            fmotiv4.NoteList.Add(new Note(new Pitch(3, 'E', 0), new Duration(1, 4, false, 512), false, Tie.None));
-            fmotiv4.NoteList.Add(new Note(new Pitch(3, 'B', 0), new Duration(1, 4, false, 512), false, Tie.None));
+            fmotiv4.NoteList.Add(new ValueNote(new Pitch(3, 'E', 0), new Duration(1, 4, false, 512), false, Tie.None));
+            fmotiv4.NoteList.Add(new ValueNote(new Pitch(3, 'B', 0), new Duration(1, 4, false, 512), false, Tie.None));
 
-            fmotiv5.NoteList.Add(new Note(new Pitch(3, 'E', 0), new Duration(1, 4, false, 512), false, Tie.None));
-            fmotiv5.NoteList.Add(new Note(new Pitch(3, 'A', 0), new Duration(1, 4, false, 512), false, Tie.None));
+            fmotiv5.NoteList.Add(new ValueNote(new Pitch(3, 'E', 0), new Duration(1, 4, false, 512), false, Tie.None));
+            fmotiv5.NoteList.Add(new ValueNote(new Pitch(3, 'A', 0), new Duration(1, 4, false, 512), false, Tie.None));
 
-            fmotiv6.NoteList.Add(new Note(new Pitch(3, 'E', 0), new Duration(1, 4, false, 512), false, Tie.None));
-            fmotiv6.NoteList.Add(new Note(new Pitch(3, 'A', 0), new Duration(1, 4, false, 512), false, Tie.None));
+            fmotiv6.NoteList.Add(new ValueNote(new Pitch(3, 'E', 0), new Duration(1, 4, false, 512), false, Tie.None));
+            fmotiv6.NoteList.Add(new ValueNote(new Pitch(3, 'A', 0), new Duration(1, 4, false, 512), false, Tie.None));
 
             // записываем ф-мотивы в цепь ф-мотивов, которая будет сравниваться с получившейся
             var fmchain1 = new FmotivChain {Id = 0, Name = "track1"};
@@ -68,7 +68,7 @@ namespace LibiadaMusicTest.BorodaDivider
         }
 
         [TestMethod]
-        public void TestFmotivIdentification2()
+        public void FmotivIdentificationSecondTest()
         {
             // создание ф-мотивов
             var fmotiv1 = new Fmotiv("ПМТ", 0);
@@ -78,23 +78,23 @@ namespace LibiadaMusicTest.BorodaDivider
             var fmotiv5 = new Fmotiv("ПМТ", 4);
             var fmotiv6 = new Fmotiv("ПМТ", 5);
 
-            fmotiv1.NoteList.Add(new Note(new Pitch(3, 'E', 0), new Duration(1, 4, false, 512), false, Tie.None));
-            fmotiv1.NoteList.Add(new Note(new Pitch(3, 'A', 0), new Duration(1, 4, false, 512), false, Tie.None));
+            fmotiv1.NoteList.Add(new ValueNote(new Pitch(3, 'E', 0), new Duration(1, 4, false, 512), false, Tie.None));
+            fmotiv1.NoteList.Add(new ValueNote(new Pitch(3, 'A', 0), new Duration(1, 4, false, 512), false, Tie.None));
 
-            fmotiv2.NoteList.Add(new Note(new Pitch(3, 'E', 0), new Duration(1, 4, false, 512), false, Tie.None));
-            fmotiv2.NoteList.Add(new Note(new Pitch(3, 'A', 0), new Duration(1, 4, false, 512), false, Tie.None));
+            fmotiv2.NoteList.Add(new ValueNote(new Pitch(3, 'E', 0), new Duration(1, 4, false, 512), false, Tie.None));
+            fmotiv2.NoteList.Add(new ValueNote(new Pitch(3, 'A', 0), new Duration(1, 4, false, 512), false, Tie.None));
 
-            fmotiv3.NoteList.Add(new Note(new Pitch(3, 'E', 0), new Duration(1, 4, false, 512), false, Tie.None));
-            fmotiv3.NoteList.Add(new Note(new Pitch(3, 'A', 0), new Duration(1, 4, false, 512), false, Tie.None));
+            fmotiv3.NoteList.Add(new ValueNote(new Pitch(3, 'E', 0), new Duration(1, 4, false, 512), false, Tie.None));
+            fmotiv3.NoteList.Add(new ValueNote(new Pitch(3, 'A', 0), new Duration(1, 4, false, 512), false, Tie.None));
 
-            fmotiv4.NoteList.Add(new Note(new Pitch(3, 'E', 0), new Duration(1, 4, false, 512), false, Tie.None));
-            fmotiv4.NoteList.Add(new Note(new Pitch(3, 'B', 0), new Duration(1, 4, false, 512), false, Tie.None));
+            fmotiv4.NoteList.Add(new ValueNote(new Pitch(3, 'E', 0), new Duration(1, 4, false, 512), false, Tie.None));
+            fmotiv4.NoteList.Add(new ValueNote(new Pitch(3, 'B', 0), new Duration(1, 4, false, 512), false, Tie.None));
 
-            fmotiv5.NoteList.Add(new Note(new Pitch(3, 'E', 0), new Duration(1, 4, false, 512), false, Tie.None));
-            fmotiv5.NoteList.Add(new Note(new Pitch(3, 'C', 0), new Duration(1, 4, false, 512), false, Tie.None));
+            fmotiv5.NoteList.Add(new ValueNote(new Pitch(3, 'E', 0), new Duration(1, 4, false, 512), false, Tie.None));
+            fmotiv5.NoteList.Add(new ValueNote(new Pitch(3, 'C', 0), new Duration(1, 4, false, 512), false, Tie.None));
 
-            fmotiv6.NoteList.Add(new Note(new Pitch(3, 'E', 0), new Duration(1, 4, false, 512), false, Tie.None));
-            fmotiv6.NoteList.Add(new Note(new Pitch(3, 'D', 0), new Duration(1, 4, false, 512), false, Tie.None));
+            fmotiv6.NoteList.Add(new ValueNote(new Pitch(3, 'E', 0), new Duration(1, 4, false, 512), false, Tie.None));
+            fmotiv6.NoteList.Add(new ValueNote(new Pitch(3, 'D', 0), new Duration(1, 4, false, 512), false, Tie.None));
 
             // записываем ф-мотивы в цепь ф-мотивов, которая будет сравниваться с получившейся
             var fmchain1 = new FmotivChain {Id = 0, Name = "track1"};
