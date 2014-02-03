@@ -114,7 +114,6 @@ namespace LibiadaMusicTests.BorodaDivider
         public void FmotivTieGatheredThirdTest()
         {
             // проверка работы метода, который возвращает копию объекта (Fmotiv), c собранными залигованными нотами.
-
             // старт лиги, потом опять старт лиги
             var fmotiv = new Fmotiv("ПМТ", 0);
             fmotiv.NoteList.Add(new ValueNote(new Pitch(1, 'A', 0), new Duration(1, 8, false, 480), false, Tie.Start, 2));
