@@ -4,16 +4,16 @@
     {
         public FromFixStartCutRule(int length, int step)
         {
-            for (int i = step; i <= length; i+= step)
+            for (int i = step; i <= length; i += step)
             {
                 Starts.Add(0);
-                Stops.Add(i < length ? i: length);
+                Ends.Add(i < length ? i: length);
             }
         }
 
         public override  CutRuleIterator GetIterator()
         {
-            return new CutRuleIterator(Starts, Stops);
+            return new CutRuleIterator(Starts, Ends);
         }
     }
 }

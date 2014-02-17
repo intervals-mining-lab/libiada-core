@@ -7,13 +7,13 @@
             for (int i = 0; i + windowLength < chainLength; i+= step)
             {
                 Starts.Add(i);
-                Stops.Add(windowLength + i);
+                Ends.Add(windowLength + i);
             }
         }
 
         public override CutRuleIterator GetIterator()
         {
-            return new CutRuleIterator(Starts, Stops);
+            return new CutRuleIterator(Starts, Ends);
         }
     }
 }

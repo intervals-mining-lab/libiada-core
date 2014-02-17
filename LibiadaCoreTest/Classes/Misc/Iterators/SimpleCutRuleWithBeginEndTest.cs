@@ -16,7 +16,7 @@ namespace LibiadaCoreTest.Classes.Misc.Iterators
             {
                 iterator.Next();
                 Assert.AreEqual(i, iterator.GetStartPosition());
-                Assert.AreEqual(i+5, iterator.GetStopPosition());
+                Assert.AreEqual(i+5, iterator.GetEndPosition());
             }
         }
     }

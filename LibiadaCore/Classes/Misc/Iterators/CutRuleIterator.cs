@@ -1,35 +1,76 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-
-namespace LibiadaCore.Classes.Misc.Iterators
+﻿namespace LibiadaCore.Classes.Misc.Iterators
 {
+    using System.Collections.Generic;
+    using System.Linq;
+
+    /// <summary>
+    /// The cut rule iterator.
+    /// </summary>
     public class CutRuleIterator
     {
+        /// <summary>
+        /// Starts of subsequences.
+        /// </summary>
         private readonly List<int> starts;
-        private readonly List<int> stops;
+
+        /// <summary>
+        /// Ends of subsequences.
+        /// </summary>
+        private readonly List<int> ends;
+
+        /// <summary>
+        /// The counter.
+        /// </summary>
         private int i = -1;
 
-        public CutRuleIterator(List<int> starts, List<int> stops)
+        /// <summary>
+        /// Initializes a new instance of the <see cref="CutRuleIterator"/> class.
+        /// </summary>
+        /// <param name="starts">
+        /// Starts of subsequences.
+        /// </param>
+        /// <param name="ends">
+        /// Ends of subsequences.
+        /// </param>
+        public CutRuleIterator(List<int> starts, List<int> ends)
         {
-            this.starts = starts;   //храним начальные позиции
-            this.stops = stops;     //храним конечные позиции
+            this.starts = starts;
+            this.ends = ends;
 
         }
 
+        /// <summary>
+        /// Moves cursor to the next subsequence.
+        /// </summary>
+        /// <returns>
+        /// true if there is next element.
+        /// </returns>
         public bool Next()
         {
             i++;
-            return (starts.Count() > i) && (stops.Count() > i);
+            return (starts.Count() > i) && (ends.Count() > i);
         }
 
+        /// <summary>
+        /// Returns start position of current element.
+        /// </summary>
+        /// <returns>
+        /// Start position of current subsequence.
+        /// </returns>
         public int GetStartPosition()
         {
             return starts[i];
         }
 
-        public int GetStopPosition()
+        /// <summary>
+        /// Returns end position of current element.
+        /// </summary>
+        /// <returns>
+        /// End position of current subsequence.
+        /// </returns>
+        public int GetEndPosition()
         {
-            return stops[i];
+            return ends[i];
         }
     }
 }

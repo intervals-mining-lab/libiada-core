@@ -7,13 +7,13 @@
             for (int i = begin + step; i <= length; i+= step)
             {
                 Starts.Add(begin);
-                Stops.Add(i < length ? i: length);
+                Ends.Add(i < length ? i: length);
             }
         }
 
         public override  CutRuleIterator GetIterator()
         {
-            return new CutRuleIterator(Starts, Stops);
+            return new CutRuleIterator(Starts, Ends);
         }
     }
 }

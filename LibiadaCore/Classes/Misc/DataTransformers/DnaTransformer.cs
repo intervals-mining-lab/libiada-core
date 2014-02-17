@@ -1,22 +1,23 @@
-﻿using System;
-using LibiadaCore.Classes.Root;
-using LibiadaCore.Classes.Root.SimpleTypes;
-
-namespace LibiadaCore.Classes.Misc.DataTransformers
+﻿namespace LibiadaCore.Classes.Misc.DataTransformers
 {
-    ///<summary>
+    using System;
+
+    using LibiadaCore.Classes.Root;
+    using LibiadaCore.Classes.Root.SimpleTypes;
+
+    /// <summary>
     /// Статический класс, осуществляющй преобразование
     /// нуклеотидных последовательностей в аминокислотные
     /// и аминокислотных последовательностей в нуклеотидные.
-    ///</summary>
+    /// </summary>
     public static class DnaTransformer
     {
-        ///<summary>
+        /// <summary>
         /// Метод преобразующий нуклеотдитные цепи в аминокислотные.
-        ///</summary>
-        ///<param name="inputChain">Нуклеотидныя последовательность типа <see cref="BaseChain"/></param>
-        ///<returns>Аминокислотная цепь типа <see cref="BaseChain"/>, в качестве элемнтов служат <see cref="ValueString"/></returns>
-        ///<exception cref="Exception">Исключение возникает в случае наличия в нуклеотидной цепи значений отличных от A,C,T и G</exception>
+        /// </summary>
+        /// <param name="inputChain">Нуклеотидныя последовательность типа <see cref="BaseChain"/></param>
+        /// <returns>Аминокислотная цепь типа <see cref="BaseChain"/>, в качестве элемнтов служат <see cref="ValueString"/></returns>
+        /// <exception cref="Exception">Исключение возникает в случае наличия в нуклеотидной цепи значений отличных от A,C,T и G</exception>
         public static BaseChain Encode(BaseChain inputChain)
         {
             if (inputChain.Alphabet.Power > 4)
@@ -27,9 +28,9 @@ namespace LibiadaCore.Classes.Misc.DataTransformers
             var outChain = new BaseChain(count);
             for (int i = 0; i < count * 3; i += 3)
             {
-                String first = inputChain[i].ToString();
-                String second = inputChain[i + 1].ToString();
-                String third = inputChain[i + 2].ToString();
+                string first = inputChain[i].ToString();
+                string second = inputChain[i + 1].ToString();
+                string third = inputChain[i + 2].ToString();
                 switch (first)
                 {
                     case "T":
@@ -234,20 +235,20 @@ namespace LibiadaCore.Classes.Misc.DataTransformers
             return outChain;
         }
 
-        ///<summary>
+        /// <summary>
         /// Метод преобразующий аминокислотные цепи в фантомные.
-        ///</summary>
-        ///<param name="inputChain">Аминокислотная цепь типа <see cref="BaseChain"/></param>
-        ///<returns>Фантомная цепь типа <see cref="BaseChain"/>, в качестве элементов используются <see cref="ValuePhantom"/></returns>
-        ///<exception cref="Exception">Исключение возникает в случае наличия в цепи элементов не являющихся аминокислотами</exception>
+        /// </summary>
+        /// <param name="inputChain">Аминокислотная цепь типа <see cref="BaseChain"/></param>
+        /// <returns>Фантомная цепь типа <see cref="BaseChain"/>, в качестве элементов используются <see cref="ValuePhantom"/></returns>
+        /// <exception cref="Exception">Исключение возникает в случае наличия в цепи элементов не являющихся аминокислотами</exception>
         public static BaseChain Decode(BaseChain inputChain)
         {
             var outChain = new BaseChain(inputChain.Length);
             for (int i = 0; i < inputChain.Length; i++)
             {
-                string str = inputChain[i].ToString();
+                string aminoAcid = inputChain[i].ToString();
                 var m = new ValuePhantom();
-                switch (str)
+                switch (aminoAcid)
                 {
                     case "F":
                         m.Add(new ValueString("TTT"));
@@ -363,24 +364,27 @@ namespace LibiadaCore.Classes.Misc.DataTransformers
             return outChain;
         }
 
-        ///<summary>
+        /// <summary>
         /// Метод преобразующий нуклеотидное представление цепочек в триплетное
-        ///</summary>
-        ///<param name="inputChain">Исходная нуклеотидная цепочка</param>
-        ///<returns>Цепоччка, состоящая из триплетов</returns>
-        ///<exception cref="Exception">Допустимая мощность алфавита - 4</exception>
+        /// </summary>
+        /// <param name="inputChain">Исходная нуклеотидная цепочка</param>
+        /// <returns>Цепоччка, состоящая из триплетов</returns>
+        /// <exception cref="Exception">Допустимая мощность алфавита - 4</exception>
         public static BaseChain EncodeTriplets(BaseChain inputChain)
         {
             if (inputChain.Alphabet.Power > 4)
             {
-                throw new Exception();
+                throw new Exception("Alphabet power must be 4 or less elements");
             }
-            int count = (int)Math.Floor((double)inputChain.Length / 3);
-            var outChain = new BaseChain(count);
-            for (int i = 0; i < count * 3; i += 3)
+
+            var resultLength = (int)Math.Floor((double)inputChain.Length / 3);
+            var outChain = new BaseChain(resultLength);
+
+            for (int i = 0; i < inputChain.Length; i += 3)
             {
-                outChain[i / 3] = new ValueString(inputChain[i] + inputChain[i + 1].ToString() + inputChain[i + 2]);
+                outChain[i / 3] = new ValueString(inputChain[i].ToString() + inputChain[i + 1] + inputChain[i + 2]);
             }
+
             return outChain;
         }
     }
