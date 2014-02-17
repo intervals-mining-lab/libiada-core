@@ -90,6 +90,7 @@
     <Compile Include="Classes\Root\Characteristics\Calculators\ProbabilityTest.cs" />
     <Compile Include="Classes\Root\Characteristics\Calculators\RegularityTest.cs" />
     <Compile Include="Classes\Root\Characteristics\Calculators\VolumeTest.cs" />
+    <Compile Include="Classes\Root\IntervalsManagers\CongenericIntervalsManagerTest.cs" />
     <Compile Include="Classes\Root\SimpleTypes\NullValueTest.cs" />
     <Compile Include="Classes\Root\SimpleTypes\ValuePhantomTest.cs" />
     <Compile Include="Classes\Root\SimpleTypes\ValueIntTest.cs" />

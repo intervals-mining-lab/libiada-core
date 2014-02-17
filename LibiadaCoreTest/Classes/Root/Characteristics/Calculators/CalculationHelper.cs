@@ -25,17 +25,7 @@ namespace LibiadaCoreTest.Classes.Root.Characteristics.Calculators
                 //_ _ a a _ _ a _ _ _
                 //b b _ _ _ b _ _ _ b
                 //_ _ _ _ c _ _ c c _
-                var chain = new Chain(10);
-                chain.Add(Elements["b"], 0);
-                chain.Add(Elements["b"], 1);
-                chain.Add(Elements["a"], 2);
-                chain.Add(Elements["a"], 3);
-                chain.Add(Elements["c"], 4);
-                chain.Add(Elements["b"], 5);
-                chain.Add(Elements["a"], 6);
-                chain.Add(Elements["c"], 7);
-                chain.Add(Elements["c"], 8);
-                chain.Add(Elements["b"], 9);
+                var chain = new Chain("bbaacbaccb");
                 chains.Add(chain);
 
                 return chains;

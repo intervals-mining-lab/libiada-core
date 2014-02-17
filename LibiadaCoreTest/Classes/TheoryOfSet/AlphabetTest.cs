@@ -1,9 +1,7 @@
 using System;
-using LibiadaCore.Classes.Root;
 using LibiadaCore.Classes.Root.SimpleTypes;
 using LibiadaCore.Classes.TheoryOfSet;
 using NUnit.Framework;
-using System.Collections.Generic;
 
 namespace LibiadaCoreTest.Classes.TheoryOfSet
 {

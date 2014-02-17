@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 
 namespace LibiadaCore.Classes.Misc
 {
@@ -21,6 +22,13 @@ namespace LibiadaCore.Classes.Misc
                 Array.Copy(source, index + 1, result, index, source.Length - index - 1);
 
             return result;
+        }
+
+        public static int[] AllIndexesOf<T>(T[] source, T element)
+        {
+            var indexMap = source.Select((b, i) => b.Equals(element) ? i : -1);
+            var indexes = indexMap.Where(i => i != -1);
+            return indexes.ToArray();
         }
     }
 }

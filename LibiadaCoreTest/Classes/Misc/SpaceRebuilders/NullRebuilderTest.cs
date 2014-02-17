@@ -1,6 +1,5 @@
 using LibiadaCore.Classes.Misc.SpaceRebuilders;
 using LibiadaCore.Classes.Root;
-using LibiadaCore.Classes.Root.SimpleTypes;
 using NUnit.Framework;
 
 namespace LibiadaCoreTest.Classes.Misc.SpaceRebuilders

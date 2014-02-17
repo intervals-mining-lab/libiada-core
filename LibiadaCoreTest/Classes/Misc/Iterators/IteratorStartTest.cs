@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using LibiadaCore.Classes.Misc.Iterators;
 using LibiadaCore.Classes.Root;
-using LibiadaCore.Classes.Root.SimpleTypes;
 using NUnit.Framework;
 
 namespace LibiadaCoreTest.Classes.Misc.Iterators

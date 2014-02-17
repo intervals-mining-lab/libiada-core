@@ -109,6 +109,8 @@
     <Compile Include="Classes\Root\Characteristics\CharacteristicsEnum.cs" />
     <Compile Include="Classes\Root\Characteristics\CalculatorsFactory.cs" />
     <Compile Include="Classes\Root\IBaseObject.cs" />
+    <Compile Include="Classes\Root\IntervalsManagers\CongenericIntervalsManager.cs" />
+    <Compile Include="Classes\Root\IntervalsManagers\IntervalsManager.cs" />
     <Compile Include="Classes\Root\Link.cs" />
     <Compile Include="Classes\Root\SimpleTypes\NullValue.cs" />
     <Compile Include="Classes\Root\SimpleTypes\ValuePhantom.cs" />
