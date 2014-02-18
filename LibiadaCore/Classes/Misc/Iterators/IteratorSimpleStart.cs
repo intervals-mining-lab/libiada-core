@@ -1,114 +1,108 @@
-using System;
-using LibiadaCore.Classes.Root;
-
 namespace LibiadaCore.Classes.Misc.Iterators
 {
-    ///<summary>
-    ///</summary>
-    ///<typeparam name="ChainToIterate"></typeparam>
-    public class IteratorSimpleStart<ChainToIterate> where ChainToIterate : BaseChain, new() 
+    using System;
+
+    using LibiadaCore.Classes.Root;
+
+    /// <summary>
+    /// Iterator that goes from start of the chain and reading one element at a time.
+    /// </summary>
+    /// <typeparam name="TSource">
+    /// Type of source chain (inherits <see cref="BaseChain"/> and has constructor without parameters).
+    /// </typeparam>
+    public class IteratorSimpleStart<TSource> where TSource : BaseChain, new() 
     {
-        ///<summary>
-        /// Длинна возвращаемого фрагмента цепи
-        ///</summary>
-        protected int Length;
-        ///<summary>
-        /// Шаг итерации
-        ///</summary>
-        protected int Step;
-        ///<summary>
-        /// Цепь по которой будет перемещатся итератор
-        ///</summary>
-        protected ChainToIterate chain;
-        ///<summary>
-        /// Текушая позиция итератора
-        ///</summary>
-        protected int Position;
-        ///<summary>
-        /// Максимальное кол-во смещений
-        ///</summary>
-        protected int MaxCount;
+        /// <summary>
+        /// Length of subsequence.
+        /// </summary>
+        protected readonly int Length;
 
+        /// <summary>
+        /// Shift of iterator.
+        /// </summary>
+        protected readonly int Step;
 
-        ///<summary>
-        /// Конструктор
-        ///</summary>
-        ///<param name="toIterate">Цепь по которой будет перемещатся итератор</param>
-        ///<param name="step">Шаг итерации</param>
-        ///<exception cref="Exception">В случае если toIterate == null или длинна передаваемой цепи меньше или равно 0 или меньше length</exception>
-        public IteratorSimpleStart(ChainToIterate toIterate, int step)
+        /// <summary>
+        /// Source chain.
+        /// </summary>
+        protected readonly TSource Source;
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="IteratorSimpleStart{TSource}"/> class.
+        /// </summary>
+        /// <param name="source">
+        /// Source chain.
+        /// </param>
+        /// <param name="step">
+        /// Shift of iterator.
+        /// </param>
+        /// <exception cref="ArgumentException">
+        /// Thrown if one or more arguments are invalid.
+        /// </exception>
+        public IteratorSimpleStart(TSource source, int step)
         {
-            if (toIterate == null || toIterate.Length < 1)
+            if (source == null || source.Length < 1)
             {
-                throw new Exception();
+                throw new ArgumentException("Недопустимое значение аргумента итератора.", "source");
             }
+
             Length = 1;
             Step = step;
-            chain = toIterate;
-            MaxCount = chain.Length - Length;
+            Source = source;
+            MaxPosition = Source.Length - Length;
             Reset();
         }
 
-        ///<summary>
-        /// Максимальное кол-во смещений
-        ///</summary>
-        public int MaxStepCount
+        /// <summary>
+        /// Gets or sets current position of iterator.
+        /// </summary>
+        public int Position { get; protected set; }
+
+        /// <summary>
+        /// Gets max position of iterator.
+        /// </summary>
+        protected int MaxPosition { get; private set; }
+
+        /// <summary>
+        /// Moves iterator to the next position.
+        /// </summary>
+        /// <returns>
+        /// Returns false if end of the chain is reached. Otherwise returns true.
+        /// </returns>
+        public bool Next()
         {
-            get { return MaxCount; }
+            Position += Step;
+            return Position <= MaxPosition;
         }
 
-
-        ///<summary>
-        /// Перемещает итератор на следующую позицию.
-        ///</summary>
-        ///<returns>Возвращает False если  при перемещении обнаруживается конец цепи. Иначе True</returns>
-        public  bool Next()
-        {
-            Position = Position + Step;
-            return Position <= MaxStepCount;
-        }
-
-
-        ///<summary>
-        /// Возвращает текущее значение итератора.
-        ///</summary>
-        ///<returns>Текущее значение итератора.</returns>
-        ///<exception cref="Exception">В случае если пытаемся считать  значение за пределами цепи</exception>
+        /// <summary>
+        /// Returns current value of iterator.
+        /// </summary>
+        /// <returns>
+        /// Current subsequence.
+        /// </returns>
+        /// <exception cref="InvalidOperationException">
+        /// Thrown if current position is invalid.
+        /// </exception>
         public virtual IBaseObject Current()
         {
-            if (Position < 0 || Position > MaxCount)
+            if (Position < 0 || Position > MaxPosition)
             {
-                return null;
+                throw new InvalidOperationException("Текущая позиция итератора находится за пределами допустимого диапазона");
             }
-            return (chain[Position]).Clone();
+
+            return Source[Position];
         }
 
-        ///<summary>
-        ///</summary>
-        ///<returns></returns>
-        public int ActualPosition()
-        {
-            return Position;
-        }
-
-
-        ///<summary>
-        /// Перемещает итератор в начальную позицию.
-        /// Начальная позиция итератора -шаг. То есть для считывания первого значения требуется предварительно вызвать Next()
-        ///</summary>
+        /// <summary>
+        /// Returns iterator to the starting position.
+        /// Before reading first value 
+        /// <see cref="IteratorBase{TResult, TSource}.Next()"/> 
+        /// method should be called.
+        /// </summary>
         public void Reset()
         {
             Position = -Step;
-        }
-
-        ///<summary>
-        ///</summary>
-        ///<param name="i"></param>
-        ///<returns></returns>
-        public bool Move(int i)
-        {
-            Position = Position + i * Step;
-            return Position <= MaxStepCount;
         }
     }
 }

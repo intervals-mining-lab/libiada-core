@@ -1,106 +1,115 @@
-using System;
-using LibiadaCore.Classes.Root;
-
 namespace LibiadaCore.Classes.Misc.Iterators
 {
+    using System;
 
-    ///<summary>
-    /// Базовый класс итератор по цепочке.
-    ///</summary>
-    ///<typeparam name="ChainReturn">Тип возвращаемой цепи (Потомок класса BaseChain и имеет непереметризированный конструктор)</typeparam>
-    ///<typeparam name="ChainToIterate">Тип цепи по которой перемещается итератор(Потомок класса BaseChain и имеет непереметризированный конструктор)</typeparam>
-    public abstract class IteratorBase<ChainReturn, ChainToIterate> : IIterator<ChainReturn, ChainToIterate> where ChainReturn : BaseChain, new() where ChainToIterate : BaseChain, new()
+    using LibiadaCore.Classes.Root;
+
+    /// <summary>
+    /// Abstract chain iterator.
+    /// </summary>
+    /// <typeparam name="TResult">
+    /// Type of returned chain (inherits <see cref="BaseChain"/> and has constructor without parameters).
+    /// </typeparam>
+    /// <typeparam name="TSource">
+    /// Type of source chain (inherits <see cref="BaseChain"/> and has constructor without parameters).
+    /// </typeparam>
+    public abstract class IteratorBase<TResult, TSource> : IIterator<TResult, TSource> 
+        where TResult : BaseChain, new() where TSource : BaseChain, new()
     {
-        ///<summary>
-        /// Длинна возвращаемого фрагмента цепи
-        ///</summary>
+        /// <summary>
+        /// Length of subsequence.
+        /// </summary>
         protected readonly int Length;
-        ///<summary>
-        /// Шаг итерации
-        ///</summary>
+
+        /// <summary>
+        /// Shift of iterator.
+        /// </summary>
         protected readonly int Step;
-        ///<summary>
-        /// Цепь по которой будет перемещатся итератор
-        ///</summary>
-        protected readonly ChainToIterate chain;
-        ///<summary>
-        /// Текушая позиция итератора
-        ///</summary>
-        protected int Position;
-        ///<summary>
-        /// Максимальное кол-во смещений
-        ///</summary>
-        protected readonly int MaxCount;
 
+        /// <summary>
+        /// Source chain.
+        /// </summary>
+        protected readonly TSource Source;
 
-        ///<summary>
-        /// Конструктор
-        ///</summary>
-        ///<param name="toIterate">Цепь по которой будет перемещатся итератор</param>
-        ///<param name="length">Длинна возвращаемого фрагмента цепи</param>
-        ///<param name="step">Шаг итерации</param>
-        ///<exception cref="Exception">В случае если toIterate == null или длинна передаваемой цепи меньше или равно 0 или меньше length</exception>
-        public IteratorBase(ChainToIterate toIterate, int length, int step)
+        /// <summary>
+        /// Initializes a new instance of the <see cref="IteratorBase{TResult,TSource}"/> class.
+        /// </summary>
+        /// <param name="source">
+        /// Source chain.
+        /// </param>
+        /// <param name="length">
+        /// Length of subsequence.
+        /// </param>
+        /// <param name="step">
+        /// Shift of iterator.
+        /// </param>
+        /// <exception cref="ArgumentException">
+        /// Thrown if one or more arguments are invalid.
+        /// </exception>
+        public IteratorBase(TSource source, int length, int step)
         {
-            if (toIterate == null || length <= 0 || toIterate.Length < length)
+            if (source == null || length <= 0 || source.Length < length)
             {
-                throw new Exception();
+                throw new ArgumentException("Недопустимые значения аргументов итератора.");
             }
+
             Length = length;
             Step = step;
-            chain = toIterate;
-            MaxCount = chain.Length - Length;
+            Source = source;
+            MaxPosition = Source.Length - Length; 
             Reset();
         }
 
-        ///<summary>
-        /// Максимальное кол-во смещений
-        ///</summary>
-        public int MaxStepCount
-        {
-            get { return MaxCount; }
-        }
+        /// <summary>
+        /// Gets or sets current position of iterator.
+        /// </summary>
+        public int Position { get; protected set; }
 
+        /// <summary>
+        /// Gets max position of iterator.
+        /// </summary>
+        protected int MaxPosition { get; private set; }
 
-        ///<summary>
-        /// Перемещает итератор на следующую позицию.
-        ///</summary>
-        ///<returns>Возвращает False если  при перемещении обнаруживается конец цепи. Иначе True</returns>
+        /// <summary>
+        /// Moves iterator to the next position.
+        /// </summary>
+        /// <returns>
+        /// Returns false if end of the chain is reached. Otherwise returns true.
+        /// </returns>
         public abstract bool Next();
 
-
-        ///<summary>
-        /// Возвращает текущее значение итератора.
-        ///</summary>
-        ///<returns>Текущее значение итератора.</returns>
-        ///<exception cref="Exception">В случае если пытаемся считать  значение за пределами цепи</exception>
-        public virtual ChainReturn Current()
+        /// <summary>
+        /// Returns current value of iterator.
+        /// </summary>
+        /// <returns>
+        /// Current subsequence.
+        /// </returns>
+        /// <exception cref="InvalidOperationException">
+        /// Thrown if current position is invalid.
+        /// </exception>
+        public virtual TResult Current()
         {
-            if (Position < 0 || Position > MaxCount)
+            if (Position < 0 || Position > MaxPosition)
             {
-                return null;
+                throw new InvalidOperationException("Текущая позиция итератора находится за пределами допустимого диапазона");
             }
 
-            var temp = new ChainReturn();
-            temp.ClearAndSetNewLength(Length);
+            var result = new TResult();
+            result.ClearAndSetNewLength(Length);
 
             for (int i = 0; i < Length; i++)
             {
-                temp.Add(chain[Position + i], i);
+                result[i] = Source[Position + i];
             }
-            return temp;
+            return result;
         }
 
-        public int ActualPosition()
-        {
-            return Position;
-        }
-
-
-        ///<summary>
-        /// Перемещает итератор в начальную позицию.
-        /// Начальная позиция итератора -1. То есть для считывания первого значения требуется предварительно вызвать Next()
-        ///</summary>
+        /// <summary>
+        /// Returns iterator to the starting position.
+        /// Before reading first value 
+        /// <see cref="IteratorBase{TResult, TSource}.Next()"/> 
+        /// method should be called.
+        /// </summary>
         public abstract void Reset();
     }
 }

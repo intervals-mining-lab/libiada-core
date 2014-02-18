@@ -27,7 +27,7 @@ namespace LibiadaCore.Classes.Misc.SpaceRebuilders
             iteratorWrite.Next();
             for (int i = 0; i < from.Length;i++)
             {
-                iteratorWrite.SetCurrent(iteratorRead.Current());
+                iteratorWrite.WriteValue(iteratorRead.Current());
                 iteratorRead.Next();
                 iteratorWrite.Next();
             }

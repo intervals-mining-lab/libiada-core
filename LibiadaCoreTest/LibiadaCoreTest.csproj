@@ -51,6 +51,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Classes\Misc\DataTransformers\DnaTransformerTest.cs" />
+    <Compile Include="Classes\Misc\Iterators\CutRuleWithShiftedAndFixedStartTest.cs" />
     <Compile Include="Classes\Misc\Iterators\DiffCutterTest.cs" />
     <Compile Include="Classes\Misc\Iterators\FromFixStartCutRuleTest.cs" />
     <Compile Include="Classes\Misc\Iterators\IteratorEndTest.cs" />
@@ -58,8 +59,7 @@
     <Compile Include="Classes\Misc\Iterators\IteratorWritableEndTest.cs" />
     <Compile Include="Classes\Misc\Iterators\IteratorWritableStartTest.cs" />
     <Compile Include="Classes\Misc\Iterators\SimpleCutRuleTest.cs" />
-    <Compile Include="Classes\Misc\Iterators\SimpleCutRuleWithBeginEndTest.cs" />
-    <Compile Include="Classes\Misc\Iterators\FromFixStartCutRuleWithBeginEndTest.cs" />
+    <Compile Include="Classes\Misc\Iterators\SimpleCutRuleWithShiftedStartTest.cs" />
     <Compile Include="Classes\Misc\SpaceRebuilders\NullRebuilderTest.cs" />
     <Compile Include="Classes\Misc\SpaceRebuilders\NullCycleSpaceTest.cs" />
     <Compile Include="Classes\Root\Characteristics\BinaryCalculators\AbstractBinaryCalculatorTest.cs" />

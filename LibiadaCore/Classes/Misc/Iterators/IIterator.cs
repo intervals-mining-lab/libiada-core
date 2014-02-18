@@ -1,33 +1,41 @@
-using LibiadaCore.Classes.Root;
-
 namespace LibiadaCore.Classes.Misc.Iterators
 {
+    using LibiadaCore.Classes.Root;
 
-    ///<summary>
-    /// Интерфейс итератор по цепочке.
-    ///</summary>
-    ///<typeparam name="ChainReturn">Тип возвращаемой цепи (Потомок класса BaseChain и имеет непараметризированный конструктор)</typeparam>
-    ///<typeparam name="ChainToIterate">Тип цепи по которой перемещается итератор(Потомок класса BaseChain и имеет непараметризированный конструктор)</typeparam>
-    public interface IIterator<ChainReturn, ChainToIterate> where ChainReturn : BaseChain, new() where ChainToIterate: BaseChain,new ()
+    /// <summary>
+    /// Interface of chain iterators.
+    /// </summary>
+    /// <typeparam name="TResult">
+    /// Type of returned chain (inherits <see cref="BaseChain"/> and has constructor without parameters).
+    /// </typeparam>
+    /// <typeparam name="TSource">
+    /// Type of source chain (inherits <see cref="BaseChain"/> and has constructor without parameters).
+    /// </typeparam>
+    public interface IIterator<out TResult, TSource>
+        where TResult : BaseChain, new() where TSource : BaseChain, new()
     {
-
-        ///<summary>
-        /// Перемещает итератор на следующую позицию.
-        ///</summary>
-        ///<returns>Возвращает False если  при перемещении обнаруживается конец цепи. Иначе True</returns>
+        /// <summary>
+        /// Moves iterator to the next position.
+        /// </summary>
+        /// <returns>
+        /// Returns false if end of the chain is reached. Otherwise returns true.
+        /// </returns>
         bool Next();
 
+        /// <summary>
+        /// Returns current value of iterator.
+        /// </summary>
+        /// <returns>
+        /// Current subsequence.
+        /// </returns>
+        TResult Current();
 
-        ///<summary>
-        /// Перемещает итератор в начальную позицию.
-        /// Начальная позиция итератора -шаг итерации. То есть для считывания первого значения требуется предварительно вызвать Next()
-        ///</summary>
+        /// <summary>
+        /// Returns iterator to the starting position.
+        /// Before reading first value 
+        /// <see cref="IIterator{TResult, TSource}.Next()"/> 
+        /// method should be called.
+        /// </summary>
         void Reset();
-
-        ///<summary>
-        /// Возвращает текущее значение итератора.
-        ///</summary>
-        ///<returns>Текущее значение итератора.</returns>
-        ChainReturn Current();
     }
 }

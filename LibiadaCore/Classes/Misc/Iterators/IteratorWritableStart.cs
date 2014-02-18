@@ -1,36 +1,45 @@
-using System;
-using LibiadaCore.Classes.Root;
-
 namespace LibiadaCore.Classes.Misc.Iterators
 {
-    ///<summary>
-    /// Итератор перемещающийся с начала цепи к концу.
-    /// Позваляет записывать значения в цепь.
-    ///</summary>
-    ///<typeparam name="ChainReturn">Тип возвращаемой цепи (Потомок класса BaseChain и имеет непереметризированный конструктор)</typeparam>
-    ///<typeparam name="ChainToIterate">Тип цепи по которой перемещается итератор(Потомок класса BaseChain и имеет непереметризированный конструктор)</typeparam>
-    public class IteratorWritableStart<ChainReturn, ChainToIterate> : IteratorStart<ChainReturn, ChainToIterate>, IWritableIterator<ChainReturn, ChainToIterate>
-        where ChainToIterate : BaseChain, new() where ChainReturn : BaseChain, new()
+    using System;
+
+    using LibiadaCore.Classes.Root;
+
+    /// <summary>
+    /// Iterator tat moves from the end of chain to its beginning.
+    /// Is able to write values into chain.
+    /// </summary>
+    /// <typeparam name="TResult">
+    /// Type of returned chain (inherits <see cref="BaseChain"/> and has constructor without parameters).
+    /// </typeparam>
+    /// <typeparam name="TSource">
+    /// Type of source chain (inherits <see cref="BaseChain"/> and has constructor without parameters).
+    /// </typeparam>
+    public class IteratorWritableStart<TResult, TSource> : IteratorStart<TResult, TSource>, IWritableIterator<TResult, TSource>
+        where TSource : BaseChain, new() where TResult : BaseChain, new()
     {
-        ///<summary>
-        /// Конструктор
-        /// Длинна фрагмента возвращаемой цепи = 1.
-        /// Шаг итерации = 1.
-        ///</summary>
-        ///<param name="toIterate">Цепь по которой будет перемещатся итератор</param>
-        ///<exception cref="Exception">В случае если toIterate == null или длинна передаваемой цепи меньше или равно 0 или меньше length</exception>
-        public IteratorWritableStart(ChainToIterate toIterate) : base(toIterate, 1, 1)
+        /// <summary>
+        /// Initializes a new instance of the <see cref="IteratorWritableStart{TResult,TSource}"/> class.
+        /// Iterator returns single element and shifts by one element.
+        /// </summary>
+        /// <param name="source">
+        /// Source chain.
+        /// </param>
+        /// <exception cref="ArgumentException">
+        /// Thrown if one or more arguments are invalid.
+        /// </exception>
+        public IteratorWritableStart(TSource source) : base(source, 1, 1)
         {
         }
 
-
-        ///<summary>
-        /// Устанавливает значение в ячейку на которую указывает итератор
-        ///</summary>
-        ///<param name="value">Заначение которое присваеваем ячейке</param>
-        public void SetCurrent(IBaseObject value)
+        /// <summary>
+        /// Sets a value into current iterator position.
+        /// </summary>
+        /// <param name="value">
+        /// Value to write into current position of iterator.
+        /// </param>
+        public void WriteValue(IBaseObject value)
         {
-            chain.Add(value, Position);
+            Source.Add(value, Position);
         }
     }
 }

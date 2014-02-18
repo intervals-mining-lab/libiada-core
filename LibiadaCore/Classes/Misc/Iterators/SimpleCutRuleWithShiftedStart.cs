@@ -1,12 +1,12 @@
 ﻿namespace LibiadaCore.Classes.Misc.Iterators
 {
     /// <summary>
-    /// A simple cut rule.
+    /// The simple cut rule with shifted start.
     /// </summary>
-    public class SimpleCutRule : CutRule
+    public class SimpleCutRuleWithShiftedStart : CutRule
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="SimpleCutRule"/> class.
+        /// Initializes a new instance of the <see cref="SimpleCutRuleWithShiftedStart"/> class.
         /// </summary>
         /// <param name="chainLength">
         /// Chain length.
@@ -17,9 +17,12 @@
         /// <param name="windowLength">
         /// Length of returned subsequence.
         /// </param>
-        public SimpleCutRule(int chainLength, int step, int windowLength)
+        /// <param name="begin">
+        /// Shift of start.
+        /// </param>
+        public SimpleCutRuleWithShiftedStart(int chainLength, int step, int windowLength, int begin)
         {
-            for (int i = 0; i + windowLength < chainLength; i += step)
+            for (int i = begin; i + windowLength <= chainLength; i += step)
             {
                 Starts.Add(i);
                 Ends.Add(windowLength + i);

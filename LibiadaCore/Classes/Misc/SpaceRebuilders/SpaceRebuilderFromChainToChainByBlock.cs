@@ -34,7 +34,7 @@ namespace LibiadaCore.Classes.Misc.SpaceRebuilders
             {
                 var message = new ValuePhantom {iteratorFrom.Current()};
 
-                iteratorTo.SetCurrent(message.Power == 0 ? (IBaseObject)NullValue.Instance() : message);
+                iteratorTo.WriteValue(message.Power == 0 ? (IBaseObject)NullValue.Instance() : message);
             }
             return temp;
         }

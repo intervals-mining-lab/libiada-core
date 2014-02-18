@@ -39,7 +39,7 @@ namespace LibiadaCoreTest.Classes.Misc.Iterators
             int i = 0;
             while (iteratorWrite.Next())
             {
-                iteratorWrite.SetCurrent(messages[i++]);
+                iteratorWrite.WriteValue(messages[i++]);
             }
 
             Assert.AreEqual(chainToIterate, toWrite);

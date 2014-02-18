@@ -1,21 +1,27 @@
-using LibiadaCore.Classes.Root;
-
 namespace LibiadaCore.Classes.Misc.Iterators
 {
+    using LibiadaCore.Classes.Root;
 
-    ///<summary>
-    /// Интерфейс итератора позволяющего писать занчение в позицию цепи.
-    /// Длинна возварщаемого фрамгмента цепи и шаг должны быть равны 1. 
-    ///</summary>
-    ///<typeparam name="ChainReturn">Тип возвращаемой цепи (Потомок класса BaseChain и имеет непереметризированный конструктор)</typeparam>
-    ///<typeparam name="ChainToIterate">Тип цепи по которой перемещается итератор(Потомок класса BaseChain и имеет непереметризированный конструктор)</typeparam>
-    public interface IWritableIterator<ChainReturn, ChainToIterate> : IIterator<ChainReturn, ChainToIterate> where ChainReturn : BaseChain, new() where ChainToIterate : BaseChain, new()
+    /// <summary>
+    /// Writable iterators interface.
+    /// Length of subsequence and shift of iterator should be equals 1.
+    /// </summary>
+    /// <typeparam name="TResult">
+    /// Type of returned chain (inherits <see cref="BaseChain"/> and has constructor without parameters).
+    /// </typeparam>
+    /// <typeparam name="TSource">
+    /// Type of source chain (inherits <see cref="BaseChain"/> and has constructor without parameters).
+    /// </typeparam>
+    public interface IWritableIterator<out TResult, TSource> : IIterator<TResult, TSource> 
+        where TResult : BaseChain, new() where TSource : BaseChain, new()
     {
 
-        ///<summary>
-        /// Устанавливает значение в ячейку на которую указывает итератор
-        ///</summary>
-        ///<param name="value">Заначение которое присваеваем ячейке</param>
-        void SetCurrent(IBaseObject value);
+        /// <summary>
+        /// Sets a value into current iterator position.
+        /// </summary>
+        /// <param name="value">
+        /// Value to write into current position of iterator.
+        /// </param>
+        void WriteValue(IBaseObject value);
     }
 }

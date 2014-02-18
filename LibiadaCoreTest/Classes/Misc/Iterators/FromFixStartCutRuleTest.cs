@@ -11,7 +11,7 @@ namespace LibiadaCoreTest.Classes.Misc.Iterators
         {
             const int length = 12;
             const int step = 3;
-            var rule = new FromFixStartCutRule(length, step);
+            var rule = new CutRuleWithFixedStart(length, step);
             CutRuleIterator iterator = rule.GetIterator(); //объект, который бегает по массиву
 
             for (int i = step; i <= length; i += step)
