@@ -22,7 +22,7 @@
 
             Start = indexes[0] - 0;
 
-            for (int i = 0; i < Intervals.Length - 1; i++)
+            for (int i = 0; i < Intervals.Length; i++)
             {
                 Intervals[i] = indexes[i + 1] - indexes[i];
             }
