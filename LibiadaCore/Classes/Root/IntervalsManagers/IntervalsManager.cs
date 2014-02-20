@@ -1,8 +1,8 @@
-﻿using System.Collections.Generic;
-using System.ComponentModel;
-
-namespace LibiadaCore.Classes.Root.IntervalsManagers
+﻿namespace LibiadaCore.Classes.Root.IntervalsManagers
 {
+    using System.Collections.Generic;
+    using System.ComponentModel;
+
     public abstract class IntervalsManager
     {
         /// <summary>

@@ -1,10 +1,10 @@
-using System;
-
 namespace LibiadaCore.Classes.Root.Characteristics.Calculators
 {
-    ///<summary>
+    using System;
+
+    /// <summary>
     /// Энтропия словаря по Садовскому.
-    ///</summary>
+    /// </summary>
     public class CutLengthVocabularyEntropy : ICalculator
     {
         private readonly CutLength cutLength = new CutLength();

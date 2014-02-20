@@ -1,7 +1,7 @@
-﻿using LibiadaCore.Classes.Root.Characteristics.Calculators;
-
-namespace LibiadaCore.Classes.Root.Characteristics.BinaryCalculators
+﻿namespace LibiadaCore.Classes.Root.Characteristics.BinaryCalculators
 {
+    using LibiadaCore.Classes.Root.Characteristics.Calculators;
+
     public class InvolvedPartialDependenceCoefficient : BinaryCalculator
     {
         public override double Calculate(Chain chain, IBaseObject firstElement, IBaseObject secondElement, Link link)

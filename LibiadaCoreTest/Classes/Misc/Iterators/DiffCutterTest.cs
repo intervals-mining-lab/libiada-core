@@ -1,10 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using LibiadaCore.Classes.Misc.Iterators;
-using NUnit.Framework;
-
-namespace LibiadaCoreTest.Classes.Misc.Iterators
+﻿namespace LibiadaCoreTest.Classes.Misc.Iterators
 {
+    using System;
+    using System.Collections.Generic;
+
+    using LibiadaCore.Classes.Misc.Iterators;
+
+    using NUnit.Framework;
+
     [TestFixture]
     public class DiffCutterTest
     {

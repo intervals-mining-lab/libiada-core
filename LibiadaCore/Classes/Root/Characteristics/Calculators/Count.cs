@@ -1,8 +1,8 @@
 namespace LibiadaCore.Classes.Root.Characteristics.Calculators
 {
-    ///<summary>
+    /// <summary>
     /// Количество элементов.
-    ///</summary>
+    /// </summary>
     public class Count : ICalculator
     {
         /// <summary>

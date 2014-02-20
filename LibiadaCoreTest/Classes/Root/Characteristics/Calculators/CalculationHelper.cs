@@ -1,11 +1,12 @@
-using System.Collections.Generic;
-using LibiadaCore.Classes.Root;
-using LibiadaCore.Classes.Root.SimpleTypes;
-
 namespace LibiadaCoreTest.Classes.Root.Characteristics.Calculators
 {
-    ///<summary>
-    ///</summary>
+    using System.Collections.Generic;
+
+    using LibiadaCore.Classes.Root;
+    using LibiadaCore.Classes.Root.SimpleTypes;
+
+    /// <summary>
+    /// </summary>
     public static class CalculationHelper
     {
         public static Dictionary<string, IBaseObject> Elements = new Dictionary<string, IBaseObject>

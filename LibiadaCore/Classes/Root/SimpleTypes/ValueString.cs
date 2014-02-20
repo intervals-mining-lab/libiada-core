@@ -1,8 +1,8 @@
 namespace LibiadaCore.Classes.Root.SimpleTypes
 {
-    ///<summary>
+    /// <summary>
     ///  ласс представл€ющий элемент-строку
-    ///</summary>
+    /// </summary>
     public class ValueString : IBaseObject
     {
         public readonly string Value;
@@ -11,8 +11,8 @@ namespace LibiadaCore.Classes.Root.SimpleTypes
         {
         }
 
-        ///<summary>
-        ///</summary>
+        /// <summary>
+        /// </summary>
         ///<param name="value"></param>
         public ValueString(string value)
         {
@@ -24,8 +24,8 @@ namespace LibiadaCore.Classes.Root.SimpleTypes
             return new ValueString(Value);
         }
 
-        ///<summary>
-        ///</summary>
+        /// <summary>
+        /// </summary>
         ///<param name="obj"></param>
         ///<returns></returns>
         public override bool Equals(object obj)
@@ -37,8 +37,8 @@ namespace LibiadaCore.Classes.Root.SimpleTypes
             return Equals(obj as ValueString);
         }
 
-        ///<summary>
-        ///</summary>
+        /// <summary>
+        /// </summary>
         ///<param name="from"></param>
         ///<returns></returns>
         public static implicit operator string(ValueString @from)
@@ -46,8 +46,8 @@ namespace LibiadaCore.Classes.Root.SimpleTypes
             return @from.Value;
         }
 
-        ///<summary>
-        ///</summary>
+        /// <summary>
+        /// </summary>
         ///<param name="from"></param>
         ///<returns></returns>
         public static implicit operator ValueString(string from)

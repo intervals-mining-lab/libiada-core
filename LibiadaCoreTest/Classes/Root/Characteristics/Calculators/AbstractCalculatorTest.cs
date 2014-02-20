@@ -1,10 +1,12 @@
-﻿using System.Collections.Generic;
-using LibiadaCore.Classes.Root;
-using LibiadaCore.Classes.Root.Characteristics.Calculators;
-using NUnit.Framework;
-
-namespace LibiadaCoreTest.Classes.Root.Characteristics.Calculators
+﻿namespace LibiadaCoreTest.Classes.Root.Characteristics.Calculators
 {
+    using System.Collections.Generic;
+
+    using LibiadaCore.Classes.Root;
+    using LibiadaCore.Classes.Root.Characteristics.Calculators;
+
+    using NUnit.Framework;
+
     public abstract class AbstractCalculatorTest
     {
         protected List<CongenericChain> CongenericChains = CalculationHelper.CongenericChains;

@@ -1,7 +1,7 @@
-﻿using System.Collections.Generic;
-
-namespace LibiadaCore.Classes.Root.Characteristics.BinaryCalculators
+﻿namespace LibiadaCore.Classes.Root.Characteristics.BinaryCalculators
 {
+    using System.Collections.Generic;
+
     /// <summary>
     /// Абстрактный класс в который вынесен общий 
     /// для всех бинарных калькуляторов 

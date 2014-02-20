@@ -1,7 +1,7 @@
-﻿using LibiadaCore.Classes.Root.SimpleTypes;
-
-namespace LibiadaCore.Classes.Root.Characteristics.Calculators
+﻿namespace LibiadaCore.Classes.Root.Characteristics.Calculators
 {
+    using LibiadaCore.Classes.Root.SimpleTypes;
+
     public class AverageWordLength : ICalculator
     {
         public double Calculate(CongenericChain chain, Link link)

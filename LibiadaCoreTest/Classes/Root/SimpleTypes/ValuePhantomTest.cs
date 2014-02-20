@@ -1,9 +1,10 @@
-using LibiadaCore.Classes.Root;
-using LibiadaCore.Classes.Root.SimpleTypes;
-using NUnit.Framework;
-
 namespace LibiadaCoreTest.Classes.Root.SimpleTypes
 {
+    using LibiadaCore.Classes.Root;
+    using LibiadaCore.Classes.Root.SimpleTypes;
+
+    using NUnit.Framework;
+
     [TestFixture]
     public class ValuePhantomTest
     {

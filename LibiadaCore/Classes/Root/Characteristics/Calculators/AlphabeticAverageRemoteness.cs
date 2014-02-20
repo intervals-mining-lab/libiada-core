@@ -1,7 +1,7 @@
-﻿using System;
-
-namespace LibiadaCore.Classes.Root.Characteristics.Calculators
+﻿namespace LibiadaCore.Classes.Root.Characteristics.Calculators
 {
+    using System;
+
     public class AlphabeticAverageRemoteness : ICalculator
     {
         private readonly GeometricMean geometricMean = new GeometricMean();
@@ -11,8 +11,8 @@ namespace LibiadaCore.Classes.Root.Characteristics.Calculators
             throw new InvalidOperationException("Алфавитная удалённость вычисляется только для полных цепей.");
         }
 
-        ///<summary>
-        ///</summary>
+        /// <summary>
+        /// </summary>
         ///<param name="chain"></param>
         ///<param name="link"></param>
         ///<returns></returns>

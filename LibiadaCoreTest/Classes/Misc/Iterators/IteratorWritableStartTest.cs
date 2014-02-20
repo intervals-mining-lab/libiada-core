@@ -1,28 +1,30 @@
-using System.Collections.Generic;
-using LibiadaCore.Classes.Misc.Iterators;
-using LibiadaCore.Classes.Root;
-using LibiadaCore.Classes.Root.SimpleTypes;
-using NUnit.Framework;
-
 namespace LibiadaCoreTest.Classes.Misc.Iterators
 {
-    ///<summary>
-    ///</summary>
+    using System.Collections.Generic;
+
+    using LibiadaCore.Classes.Misc.Iterators;
+    using LibiadaCore.Classes.Root;
+    using LibiadaCore.Classes.Root.SimpleTypes;
+
+    using NUnit.Framework;
+
+    /// <summary>
+    /// </summary>
     [TestFixture]
     public class IteratorWritableStartTest
     {
         private Chain chainToIterate;
 
-        ///<summary>
-        ///</summary>
+        /// <summary>
+        /// </summary>
         [SetUp]
         public void Init()
         {
             chainToIterate = new Chain("121331212231");
         }
 
-        ///<summary>
-        ///</summary>
+        /// <summary>
+        /// </summary>
         [Test]
         public void WriteTest()
         {

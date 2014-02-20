@@ -1,8 +1,8 @@
 namespace LibiadaCore.Classes.Root.Characteristics.Calculators
 {
-    ///<summary>
+    /// <summary>
     /// –егул€рность.
-    ///</summary>
+    /// </summary>
     public class Regularity : ICalculator
     {
         private readonly GeometricMean geometricMean = new GeometricMean();
@@ -13,8 +13,8 @@ namespace LibiadaCore.Classes.Root.Characteristics.Calculators
             return geometricMean.Calculate(chain, link) / descriptiveInformation.Calculate(chain, link);
         }
 
-        ///<summary>
-        ///</summary>
+        /// <summary>
+        /// </summary>
         ///<param name="chain"></param>
         ///<param name="link"></param>
         ///<returns></returns>

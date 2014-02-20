@@ -1,11 +1,11 @@
-﻿using LibiadaCore.Classes.Root.SimpleTypes;
-
-namespace LibiadaCore.Classes.Root.Characteristics.Calculators
+﻿namespace LibiadaCore.Classes.Root.Characteristics.Calculators
 {
-    ///<summary>
+    using LibiadaCore.Classes.Root.SimpleTypes;
+
+    /// <summary>
     /// Число возможных цепочек которые можно сгенерировать 
     /// из данной цепочки, содержащей фантомные сообщения.
-    ///</summary>
+    /// </summary>
     public class PhantomMessagesCount : ICalculator
     {
         public double Calculate(CongenericChain chain, Link link)

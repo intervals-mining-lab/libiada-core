@@ -1,21 +1,21 @@
 namespace LibiadaCore.Classes.Root
 {
-    ///<summary>
+    /// <summary>
     ///Интерфейс являющийся базовым для всех (наследуемый всеми) классами библиотеки
     ///Позоляет корректно сравнивать объекты и делать их копии.
     /// Любой элемент данных наследует данный интерфейс.
-    ///</summary>
+    /// </summary>
     public interface IBaseObject
     {
-        ///<summary>
+        /// <summary>
         /// Метод клонирования объекта
-        ///</summary>
+        /// </summary>
         ///<returns>Копию данного объекта</returns>
         IBaseObject Clone();
 
-        ///<summary>
+        /// <summary>
         /// Метод реализующий отношение эквивалентности
-        ///</summary>
+        /// </summary>
         ///<param name="obj">Объект c которым происходит проверка на эквивалентность</param>
         ///<returns>True если объекты эквивалентны, иначе false</returns>
         bool Equals(object obj);

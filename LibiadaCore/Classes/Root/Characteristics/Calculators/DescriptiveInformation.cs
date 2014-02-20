@@ -1,10 +1,10 @@
-using System;
-
 namespace LibiadaCore.Classes.Root.Characteristics.Calculators
 {
-    ///<summary>
+    using System;
+
+    /// <summary>
     /// Число описательных информаций.
-    ///</summary>
+    /// </summary>
     public class DescriptiveInformation : ICalculator
     {
         private readonly ArithmeticMean arithmeticMean = new ArithmeticMean();
@@ -15,8 +15,8 @@ namespace LibiadaCore.Classes.Root.Characteristics.Calculators
             return Math.Pow(occupancy, 1/occupancy);
         }
 
-        ///<summary>
-        ///</summary>
+        /// <summary>
+        /// </summary>
         ///<param name="chain"></param>
         ///<param name="link"></param>
         ///<returns></returns>

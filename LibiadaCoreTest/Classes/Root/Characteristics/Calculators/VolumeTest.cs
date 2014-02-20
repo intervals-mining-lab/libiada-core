@@ -1,9 +1,10 @@
-﻿using LibiadaCore.Classes.Root.Characteristics.Calculators;
-using NUnit.Framework;
-using LibiadaCore.Classes.Root;
-
-namespace LibiadaCoreTest.Classes.Root.Characteristics.Calculators
+﻿namespace LibiadaCoreTest.Classes.Root.Characteristics.Calculators
 {
+    using LibiadaCore.Classes.Root;
+    using LibiadaCore.Classes.Root.Characteristics.Calculators;
+
+    using NUnit.Framework;
+
     [TestFixture]
     public class VolumeTest : AbstractCalculatorTest
     {

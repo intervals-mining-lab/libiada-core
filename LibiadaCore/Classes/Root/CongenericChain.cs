@@ -1,19 +1,20 @@
-using System.Collections.Generic;
-using LibiadaCore.Classes.Misc;
-using LibiadaCore.Classes.Root.SimpleTypes;
-
 namespace LibiadaCore.Classes.Root
 {
-    ///<summary>
-    ///</summary>
+    using System.Collections.Generic;
+
+    using LibiadaCore.Classes.Misc;
+    using LibiadaCore.Classes.Root.SimpleTypes;
+
+    /// <summary>
+    /// </summary>
     public class CongenericChain : BaseChain, IBaseObject
     {
         protected List<int> intervals = new List<int>();
         protected int MaxFilledPosition;
 
-        ///<summary>
+        /// <summary>
         /// —оздаЄт однородную цепочку дл€ заданного элемента и заданной длины.
-        ///</summary>
+        /// </summary>
         ///<param name="length">ƒлина цепочки</param>
         ///<param name="element">Ёлемент цепочки</param>
         public CongenericChain(int length, IBaseObject element) : base(length)
@@ -21,8 +22,8 @@ namespace LibiadaCore.Classes.Root
             alphabet.Add(element);
         }
 
-        ///<summary>
-        ///</summary>
+        /// <summary>
+        /// </summary>
         public CongenericChain()
         {
         }
@@ -45,9 +46,9 @@ namespace LibiadaCore.Classes.Root
             }
         }
 
-        ///<summary>
+        /// <summary>
         /// Ёлемент цепочки
-        ///</summary>
+        /// </summary>
         public IBaseObject Element
         {
             get { return alphabet[1]; }
@@ -111,10 +112,10 @@ namespace LibiadaCore.Classes.Root
             }
         }
 
-        ///<summary>
+        /// <summary>
         /// —войстово позвол€ет получить доступ к элементу цепи по индексу.
         /// ¬ случае выхода за границы цепи вызываетс€ исключение.
-        ///</summary>
+        /// </summary>
         ///<param name="index">номер элемента</param>
         public override IBaseObject this[int index]
         {

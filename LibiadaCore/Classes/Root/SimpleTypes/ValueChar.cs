@@ -1,15 +1,15 @@
 namespace LibiadaCore.Classes.Root.SimpleTypes
 {
-    ///<summary>
+    /// <summary>
     /// Класс элемент символ
-    ///</summary>
+    /// </summary>
     public class ValueChar : IBaseObject
     {
         private readonly char value;
 
-        ///<summary>
+        /// <summary>
         ///Конструктор
-        ///</summary>
+        /// </summary>
         ///<param name="value">Начальное значение элемента</param>
         public ValueChar(char value)
         {
@@ -35,8 +35,8 @@ namespace LibiadaCore.Classes.Root.SimpleTypes
             return value.ToString();
         }
 
-        ///<summary>
-        ///</summary>
+        /// <summary>
+        /// </summary>
         ///<param name="from"></param>
         ///<returns></returns>
         public static implicit operator char(ValueChar from)
@@ -44,8 +44,8 @@ namespace LibiadaCore.Classes.Root.SimpleTypes
             return from.value;
         }
 
-        ///<summary>
-        ///</summary>
+        /// <summary>
+        /// </summary>
         ///<param name="from"></param>
         ///<returns></returns>
         public static implicit operator ValueChar(char from)

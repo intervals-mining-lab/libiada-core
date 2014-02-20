@@ -1,8 +1,8 @@
 namespace LibiadaCore.Classes.Root.Characteristics.Calculators
 {
-    ///<summary>
+    /// <summary>
     /// Вероятность (частота).
-    ///</summary>
+    /// </summary>
     public class Probability : ICalculator
     {
         public double Calculate(CongenericChain chain, Link link)

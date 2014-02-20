@@ -1,8 +1,8 @@
 namespace LibiadaCore.Classes.Root.Characteristics.Calculators
 {
-    ///<summary>
+    /// <summary>
     /// Длина цепи.
-    ///</summary>
+    /// </summary>
     public class Length : ICalculator
     {
         public double Calculate(CongenericChain chain, Link link)

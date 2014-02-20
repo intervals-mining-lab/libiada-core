@@ -1,11 +1,13 @@
-﻿using System.Collections.Generic;
-using LibiadaCore.Classes.Misc.DataTransformers;
-using LibiadaCore.Classes.Root;
-using LibiadaCore.Classes.Root.SimpleTypes;
-using NUnit.Framework;
-
-namespace LibiadaCoreTest.Classes.Misc.DataTransformers
+﻿namespace LibiadaCoreTest.Classes.Misc.DataTransformers
 {
+    using System.Collections.Generic;
+
+    using LibiadaCore.Classes.Misc.DataTransformers;
+    using LibiadaCore.Classes.Root;
+    using LibiadaCore.Classes.Root.SimpleTypes;
+
+    using NUnit.Framework;
+
     [TestFixture]
     public class DnaTransformerTest
     {

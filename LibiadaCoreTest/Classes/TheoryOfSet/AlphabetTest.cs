@@ -1,10 +1,12 @@
-using System;
-using LibiadaCore.Classes.Root.SimpleTypes;
-using LibiadaCore.Classes.TheoryOfSet;
-using NUnit.Framework;
-
 namespace LibiadaCoreTest.Classes.TheoryOfSet
 {
+    using System;
+
+    using LibiadaCore.Classes.Root.SimpleTypes;
+    using LibiadaCore.Classes.TheoryOfSet;
+
+    using NUnit.Framework;
+
     [TestFixture]
     public class AlphabetTest
     {

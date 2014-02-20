@@ -1,31 +1,31 @@
 namespace LibiadaCore.Classes.Root.Characteristics.Calculators
 {
-    ///<summary>
+    /// <summary>
     /// »нтерфейс калькул€тора
-    ///</summary>
+    /// </summary>
     public interface ICalculator
     {
-        ///<summary>
+        /// <summary>
         /// ¬ычисл€ет и возвращает значение характеристики 
         /// дл€ однородной цеочки.
-        ///</summary>
+        /// </summary>
         ///<param name="chain"></param>
         ///<param name="link"></param>
         ///<returns></returns>
         double Calculate(CongenericChain chain, Link link);
 
-        ///<summary>
+        /// <summary>
         /// ¬ычисл€ет и возвращает значение характеристики 
         /// дл€ полной неоднородной цеочки.
-        ///</summary>
+        /// </summary>
         ///<param name="chain"></param>
         ///<param name="link"></param>
         ///<returns></returns>
         double Calculate(Chain chain, Link link);
 
-        ///<summary>
+        /// <summary>
         /// ¬озвращает им€ характеристики вычисл€емой калькул€тором
-        ///</summary>
+        /// </summary>
         ///<returns>»м€ в виде строки, например Entropy</returns>
         CharacteristicsEnum GetCharacteristicName();
     }

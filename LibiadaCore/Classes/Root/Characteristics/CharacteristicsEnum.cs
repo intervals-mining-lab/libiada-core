@@ -1,90 +1,90 @@
 namespace LibiadaCore.Classes.Root.Characteristics
 {
-    ///<summary>
+    /// <summary>
     /// Список всех интегральных характеристик
-    ///</summary>
+    /// </summary>
     public enum CharacteristicsEnum
     {
-        ///<summary>
+        /// <summary>
         /// Длинна цепи.
-        ///</summary>
+        /// </summary>
         Length,
-        ///<summary>
+        /// <summary>
         /// Сумма длин интервалов.
-        ///</summary>
+        /// </summary>
         IntervalsSum,
-        ///<summary>
+        /// <summary>
         /// Мощность алфавита.
-        ///</summary>
+        /// </summary>
         AlphabetPower,
-        ///<summary>
+        /// <summary>
         /// Удалённость.
-        ///</summary>
+        /// </summary>
         AverageRemoteness,
-        ///<summary>
+        /// <summary>
         /// Количество элементов.
         /// Для однородной цепи это количество 
         /// непустых элементов.
         /// Для неоднородной цепи это её длина.
-        ///</summary>
+        /// </summary>
         Count,
-        ///<summary>
+        /// <summary>
         /// Длина обрезания по Садовскому.
-        ///</summary>
+        /// </summary>
         CutLength,
-        ///<summary>
+        /// <summary>
         /// Количество интервалов в зависимости от привязки.
-        ///</summary>
+        /// </summary>
         IntervalsCount,
-        ///<summary>
+        /// <summary>
         /// Количество идентифицирующих информаций приходящихся на одно значащее сообщение.
         /// Энтропия, количество информации.
-        ///</summary>
+        /// </summary>
         Entropy,
-        ///<summary>
+        /// <summary>
         /// Объём цепи. Произведение длин всех её интервалов.
-        ///</summary>
+        /// </summary>
         Volume,
-        ///<summary>
+        /// <summary>
         /// Число возможных цепочек которые можно сгенерировать 
         /// из данной цепочки, содержащей фантомные сообщения.
-        ///</summary>
+        /// </summary>
         PhantomMessageCount,
         /// <summary>
         /// Энтропия словаря по Садовскому. 
         /// </summary>
         CutLengthVocabularyEntropy,
-        ///<summary>
+        /// <summary>
         /// Регулярность.
-        ///</summary>
+        /// </summary>
         Regularity,
         /// <summary>
         /// Вероятность (частота).
         /// </summary>
         Probability,
-        ///<summary>
+        /// <summary>
         /// Число описательных информаций.
-        ///</summary>
+        /// </summary>
         DescriptiveInformation,
-        ///<summary>
+        /// <summary>
         /// Глубина.
-        ///</summary>
+        /// </summary>
         Depth,
-        ///<summary>
+        /// <summary>
         /// Среднее арифметическое значение длин интервалов.
-        ///</summary>
+        /// </summary>
         ArithmeticMean,
-        ///<summary>
+        /// <summary>
         /// Глубина, приходящаяся на одно сообщение.
-        ///</summary>
+        /// </summary>
         NormalizedDepth,
-        ///<summary>
+        /// <summary>
         /// Периодичность.
-        ///</summary>
+        /// </summary>
         Periodicity,
-        ///<summary>
+        /// <summary>
         /// Среднее геометрическое значение длин интервалов.
-        ///</summary>
+        /// </summary>
         GeometricMean,
         /// <summary>
         /// Нормализованная удалённость.

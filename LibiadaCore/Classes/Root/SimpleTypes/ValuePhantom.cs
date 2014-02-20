@@ -1,11 +1,12 @@
-using System.Collections.Generic;
-using LibiadaCore.Classes.TheoryOfSet;
-
 namespace LibiadaCore.Classes.Root.SimpleTypes
 {
-    ///<summary>
+    using System.Collections.Generic;
+
+    using LibiadaCore.Classes.TheoryOfSet;
+
+    /// <summary>
     /// Фантомное сообщение, хранящее в себе несколько вариантов значений одной позиции.
-    ///</summary>
+    /// </summary>
     public class ValuePhantom : Alphabet, IBaseObject
     {
         /// <summary>
@@ -50,12 +51,12 @@ namespace LibiadaCore.Classes.Root.SimpleTypes
             return base.Equals(messagePhantom);
         }
 
-        ///<summary>
+        /// <summary>
         /// Метод добавляет фантомное сообщение к данному, путем объединения.
         /// Все элементы второго объединяемого сообщения, не содержащиеся в первом фантомном сообщении,
         /// добавляются к первому. То есть, происходит пересечение фантомных сообщений, как 
         /// классических множеств результат записывается в первое сообщение.
-        ///</summary>
+        /// </summary>
         ///<param name="messagePhantom">Второе сообщение</param>
         public void Add(ValuePhantom messagePhantom)
         {

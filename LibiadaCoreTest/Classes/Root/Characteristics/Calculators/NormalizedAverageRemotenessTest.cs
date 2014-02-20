@@ -1,10 +1,12 @@
-using System;
-using LibiadaCore.Classes.Root;
-using LibiadaCore.Classes.Root.Characteristics.Calculators;
-using NUnit.Framework;
-
 namespace LibiadaCoreTest.Classes.Root.Characteristics.Calculators
 {
+    using System;
+
+    using LibiadaCore.Classes.Root;
+    using LibiadaCore.Classes.Root.Characteristics.Calculators;
+
+    using NUnit.Framework;
+
     [TestFixture]
     public class NormalizedAverageRemotenessTest : AbstractCalculatorTest
     {

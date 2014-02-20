@@ -1,11 +1,11 @@
-using System;
-using System.Collections.Generic;
-
 namespace LibiadaCore.Classes.Root.Characteristics.Calculators
 {
-    ///<summary>
+    using System;
+    using System.Collections.Generic;
+
+    /// <summary>
     /// Глубина
-    ///</summary>
+    /// </summary>
     public class Depth : ICalculator
     {
         /// <summary>
@@ -41,9 +41,9 @@ namespace LibiadaCore.Classes.Root.Characteristics.Calculators
             }
         }
 
-        ///<summary>
+        /// <summary>
         /// Двоичный логарифм произведения всех интервалов цепочки.
-        ///</summary>
+        /// </summary>
         ///<param name="chain"></param>
         ///<param name="link"></param>
         ///<returns></returns>

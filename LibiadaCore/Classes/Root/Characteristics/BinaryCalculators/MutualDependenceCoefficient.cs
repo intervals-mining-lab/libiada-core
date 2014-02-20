@@ -1,7 +1,7 @@
-﻿using System;
-
-namespace LibiadaCore.Classes.Root.Characteristics.BinaryCalculators
+﻿namespace LibiadaCore.Classes.Root.Characteristics.BinaryCalculators
 {
+    using System;
+
     public class MutualDependenceCoefficient:BinaryCalculator
     {
         public override double Calculate(Chain chain, IBaseObject firstElement, IBaseObject secondElement, Link link)

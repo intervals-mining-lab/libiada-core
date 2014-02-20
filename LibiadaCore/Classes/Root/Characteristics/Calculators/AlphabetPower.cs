@@ -1,8 +1,8 @@
 namespace LibiadaCore.Classes.Root.Characteristics.Calculators
 {
-    ///<summary>
+    /// <summary>
     /// Мощность алфавита.
-    ///</summary>
+    /// </summary>
     public class AlphabetPower: ICalculator
     {
         public double Calculate(CongenericChain chain, Link link)

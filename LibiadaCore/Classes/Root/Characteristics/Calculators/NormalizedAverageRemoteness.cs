@@ -1,10 +1,10 @@
-using System;
-
 namespace LibiadaCore.Classes.Root.Characteristics.Calculators
 {
-    ///<summary>
+    using System;
+
+    /// <summary>
     /// Нормализованная средняя удалённость
-    ///</summary>
+    /// </summary>
     public class NormalizedAverageRemoteness : ICalculator
     {
         private readonly AverageRemoteness averageRemoteness = new AverageRemoteness();

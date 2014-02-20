@@ -1,11 +1,11 @@
-using System;
-
 namespace LibiadaCore.Classes.Root.Characteristics.Calculators
 {
-    ///<summary>
+    using System;
+
+    /// <summary>
     /// —редн€€ удалЄнность,
     /// логарифм по основанию 2 от среднегеометрического интервала.
-    ///</summary>
+    /// </summary>
     public class AverageRemoteness : ICalculator
     {
         private readonly GeometricMean geometricMean = new GeometricMean();
@@ -15,8 +15,8 @@ namespace LibiadaCore.Classes.Root.Characteristics.Calculators
             return Math.Log(geometricMean.Calculate(chain, link), 2);
         }
 
-        ///<summary>
-        ///</summary>
+        /// <summary>
+        /// </summary>
         ///<param name="chain"></param>
         ///<param name="link"></param>
         ///<returns></returns>

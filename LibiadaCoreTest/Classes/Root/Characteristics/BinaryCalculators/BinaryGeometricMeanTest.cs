@@ -1,8 +1,9 @@
-﻿using LibiadaCore.Classes.Root.Characteristics.BinaryCalculators;
-using NUnit.Framework;
-
-namespace LibiadaCoreTest.Classes.Root.Characteristics.BinaryCalculators
+﻿namespace LibiadaCoreTest.Classes.Root.Characteristics.BinaryCalculators
 {
+    using LibiadaCore.Classes.Root.Characteristics.BinaryCalculators;
+
+    using NUnit.Framework;
+
     [TestFixture]
     public class BinaryGeometricMeanTest : AbstractBinaryCalculatorTest
     {

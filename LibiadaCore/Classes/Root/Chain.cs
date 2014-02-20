@@ -1,38 +1,39 @@
-using System.Collections.Generic;
-using LibiadaCore.Classes.Misc;
-using LibiadaCore.Classes.Root.Characteristics.Calculators;
-using LibiadaCore.Classes.Root.SimpleTypes;
-using LibiadaCore.Classes.TheoryOfSet;
-
 namespace LibiadaCore.Classes.Root
 {
-    ///<summary>
+    using System.Collections.Generic;
+
+    using LibiadaCore.Classes.Misc;
+    using LibiadaCore.Classes.Root.Characteristics.Calculators;
+    using LibiadaCore.Classes.Root.SimpleTypes;
+    using LibiadaCore.Classes.TheoryOfSet;
+
+    /// <summary>
     /// Класс цепь
-    ///</summary>
+    /// </summary>
     public class Chain : BaseChain, IBaseObject
     {
         protected CongenericChain[] CongenericChains = new CongenericChain[0];
         protected Chain[] DissimilarChains;
 
-        ///<summary>
+        /// <summary>
         /// Конструктор 
         /// При указании длинны следует понимать что цепь начинается с 0 элемента.
-        ///</summary>
+        /// </summary>
         ///<param name="length">Длинна цепи</param>
         public Chain(int length) : base(length)
         {
         }
 
-        ///<summary>
-        ///</summary>
+        /// <summary>
+        /// </summary>
         public Chain()
         {
         }
 
-        ///<summary>
+        /// <summary>
         /// Конструктор, создает цепь из строки символов.
         /// Каждый символ становится элементом.
-        ///</summary>
+        /// </summary>
         ///<param name="s">Строка</param>
         public Chain(string s)
             : base(s)
@@ -104,10 +105,10 @@ namespace LibiadaCore.Classes.Root
             }
         }
 
-        ///<summary>
+        /// <summary>
         /// Возвращает копию однородной цепочки с указанным элементом.
         /// Если такого элемента нет, то возврашщает null.
-        ///</summary>
+        /// </summary>
         ///<param name="baseObject">элемент однородной цепочки</param>
         ///<returns></returns>
         public CongenericChain CongenericChain(IBaseObject baseObject)
@@ -121,10 +122,10 @@ namespace LibiadaCore.Classes.Root
             return result;
         }
 
-        ///<summary>
+        /// <summary>
         /// Возвращает копию однородной цепочки 
         /// с указанным индексом в алфавите полной цепи.
-        ///</summary>
+        /// </summary>
         ///<param name="i">Индекс элемента однородной цепочки в алфавите полной цепи</param>
         ///<returns></returns>
         public CongenericChain CongenericChain(int i)
@@ -132,10 +133,10 @@ namespace LibiadaCore.Classes.Root
             return (CongenericChain)CongenericChains[i].Clone();
         }
 
-        ///<summary>
+        /// <summary>
         /// Свойстово позволяет получить доступ к элементу цепи по индексу
         /// В случае выхода за границы цепи вызывается исключение
-        ///</summary>
+        /// </summary>
         ///<param name="index">номер элемента</param>
         public override IBaseObject this[int index]
         {

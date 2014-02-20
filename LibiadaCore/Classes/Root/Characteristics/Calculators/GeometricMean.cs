@@ -1,10 +1,10 @@
-using System;
-
 namespace LibiadaCore.Classes.Root.Characteristics.Calculators
 {
-    ///<summary>
+    using System;
+
+    /// <summary>
     /// Среднегеометрический интервал.
-    ///</summary>
+    /// </summary>
     public class GeometricMean : ICalculator
     {
         private readonly Depth depthCalc = new Depth();
@@ -19,8 +19,8 @@ namespace LibiadaCore.Classes.Root.Characteristics.Calculators
             return Math.Pow(2, depth/nj);
         }
 
-        ///<summary>
-        ///</summary>
+        /// <summary>
+        /// </summary>
         ///<param name="chain"></param>
         ///<param name="link"></param>
         ///<returns></returns>

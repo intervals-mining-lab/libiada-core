@@ -1,181 +1,182 @@
-using System.Collections.Generic;
-using LibiadaCore.Classes.Root.Characteristics.Calculators;
-
 namespace LibiadaCore.Classes.Root.Characteristics
 {
-    ///<summary>
+    using System.Collections.Generic;
+
+    using LibiadaCore.Classes.Root.Characteristics.Calculators;
+
+    /// <summary>
     /// Статическая фабрика различных калькуляторов.
-    ///</summary>
+    /// </summary>
     public static class CalculatorsFactory
     {
 
-        ///<summary>
+        /// <summary>
         /// Вероятность (частота).
-        ///</summary>
+        /// </summary>
         public static ICalculator P
         {
             get { return new Probability(); }
         }
 
-        ///<summary>
+        /// <summary>
         /// Количество интервалов в зависимости от привязки.
-        ///</summary>
+        /// </summary>
         public static ICalculator IntervalsCount
         {
             get { return new IntervalsCount(); }
         }
 
-        ///<summary>
+        /// <summary>
         /// Длина обрезания по Садовскому.
-        ///</summary>
+        /// </summary>
         public static ICalculator CutLength
         {
             get { return new CutLength(); }
         }
 
-        ///<summary>
+        /// <summary>
         /// Глубина.
-        ///</summary>
+        /// </summary>
         public static ICalculator G
         {
             get { return new Depth(); }
         }
 
-        ///<summary>
+        /// <summary>
         /// Алфавиная Глубина.
-        ///</summary>
+        /// </summary>
         public static ICalculator AlphabeticDepth
         {
             get { return new AlphabeticDepth(); }
         }
 
-        ///<summary>
+        /// <summary>
         /// Количество элементов.
         /// Для однородной цепи это количество непустых элементов.
         /// Для неоднородной цепи это её длина.
-        ///</summary>
+        /// </summary>
         public static ICalculator n
         {
             get { return new Count(); }
         }
 
-        ///<summary>
+        /// <summary>
         /// Среднегеометрический интервал.
-        ///</summary>
+        /// </summary>
         public static ICalculator deltaG
         {
             get { return new GeometricMean(); }
         }
 
-        ///<summary>
+        /// <summary>
         /// Длинна цепи.
-        ///</summary>
+        /// </summary>
         public static ICalculator Length
         {
             get { return new Length(); }
         }
 
-        ///<summary>
+        /// <summary>
         /// Длинна как сумма длин интервалов.
-        ///</summary>
+        /// </summary>
         public static ICalculator IntervalsSum
         {
             get { return new IntervalsSum(); }
         }
 
-        ///<summary>
+        /// <summary>
         /// Среднее арифметическое значение длин интервалов.
-        ///</summary>
+        /// </summary>
         public static ICalculator deltaA
         {
             get { return new ArithmeticMean(); }
         }
 
-        ///<summary>
+        /// <summary>
         /// Число описательных информаций.
-        ///</summary>
+        /// </summary>
         public static ICalculator D
         {
             get { return new DescriptiveInformation(); }
         }
 
-        ///<summary>
+        /// <summary>
         /// Регулярность.
-        ///</summary>
+        /// </summary>
         public static ICalculator r
         {
             get { return new Regularity(); }
         }
 
-        ///<summary>
+        /// <summary>
         /// Средняя удалённость.
-        ///</summary>
+        /// </summary>
         public static ICalculator g
         {
             get { return new AverageRemoteness(); }
         }
 
-        ///<summary>
+        /// <summary>
         /// Алфавитная удалённость.
-        ///</summary>
+        /// </summary>
         public static ICalculator AlphabeticAverageRemoteness
         {
             get { return new AlphabeticAverageRemoteness(); }
         }                    
 
-        ///<summary>
+        /// <summary>
         /// Количество идентифицирующих информаций приходящихся на одно значащее сообщение.
         /// Энтропия, количество информации.
-        ///</summary>
+        /// </summary>
         public static ICalculator H
         {
             get { return new IdentificationInformation(); }
         }
 
-        ///<summary>
+        /// <summary>
         /// Объём цепи. Произведение длин всех её интервалов.
-        ///</summary>
+        /// </summary>
         public static ICalculator V
         {
             get { return new Volume(); }
         }
 
-        ///<summary>
+        /// <summary>
         /// Мощность алфавита.
-        ///</summary>
+        /// </summary>
         public static ICalculator Power
         {
             get { return new AlphabetPower(); }
         }
 
-        ///<summary>
+        /// <summary>
         /// Глубина приходящаяся на одно сообщение.
-        ///</summary>
+        /// </summary>
         public static ICalculator nG
         {
             get { return new NormalizedDepth(); }
         }
 
 
-        ///<summary>
+        /// <summary>
         /// Периодичность.
-        ///</summary>
+        /// </summary>
         public static ICalculator t
         {
             get { return new Periodicity(); }
         }
 
-        ///<summary>
+        /// <summary>
         /// Энтропия словаря по Садовскому.
-        ///</summary>
+        /// </summary>
         public static ICalculator CutLenVocEntropy
         {
             get { return new CutLengthVocabularyEntropy(); }
         }
 
-        ///<summary>
+        /// <summary>
         /// Список калькуляторов характеристик.
-        ///</summary>
+        /// </summary>
         public static List<ICalculator> List
         {
             get
@@ -204,8 +205,8 @@ namespace LibiadaCore.Classes.Root.Characteristics
             }
         }
 
-        ///<summary>
-        ///</summary>
+        /// <summary>
+        /// </summary>
         ///<param name="type"></param>
         ///<returns></returns>
         public static ICalculator Create(string type)

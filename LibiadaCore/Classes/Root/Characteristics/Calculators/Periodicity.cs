@@ -1,9 +1,9 @@
 namespace LibiadaCore.Classes.Root.Characteristics.Calculators
 {
-    ///<summary>
+    /// <summary>
     /// Периодичность.
     /// Имеет смысл только для однородной цепи.
-    ///</summary>
+    /// </summary>
     public class Periodicity : ICalculator
     {
         private readonly GeometricMean geometricMean = new GeometricMean();

@@ -1,11 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace LibiadaCore.Classes.Root.Characteristics.Calculators
+﻿namespace LibiadaCore.Classes.Root.Characteristics.Calculators
 {
-    ///<summary>
+    using System;
+    using System.Collections.Generic;
+
+    /// <summary>
     /// Объём цепи. Произведение длин всех её интервалов.
-    ///</summary>
+    /// </summary>
     public class Volume : ICalculator
     {
         public double Calculate(CongenericChain chain, Link link)
@@ -34,8 +34,8 @@ namespace LibiadaCore.Classes.Root.Characteristics.Calculators
             }
         }
 
-        ///<summary>
-        ///</summary>
+        /// <summary>
+        /// </summary>
         ///<param name="chain"></param>
         ///<param name="link"></param>
         ///<returns></returns>

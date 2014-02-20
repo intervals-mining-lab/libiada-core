@@ -1,11 +1,11 @@
-using System;
-
 namespace LibiadaCore.Classes.Root.Characteristics.Calculators
 {
-    ///<summary>
+    using System;
+
+    /// <summary>
     /// Количество идентифицирующих информаций приходящихся на одно значащее сообщение.
     /// Энтропия, количество информации по Шеннону.
-    ///</summary>
+    /// </summary>
     public class IdentificationInformation : ICalculator
     {
         private readonly ArithmeticMean arithmeticMean = new ArithmeticMean();

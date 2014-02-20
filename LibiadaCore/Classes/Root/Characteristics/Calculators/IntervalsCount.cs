@@ -1,11 +1,11 @@
-using System;
-using System.Collections.Generic;
-
 namespace LibiadaCore.Classes.Root.Characteristics.Calculators
 {
-    ///<summary>
+    using System;
+    using System.Collections.Generic;
+
+    /// <summary>
     ///  оличество интервалов в зависимости от прив€зки.
-    ///</summary>
+    /// </summary>
     public class IntervalsCount : ICalculator
     {
         /// <summary>

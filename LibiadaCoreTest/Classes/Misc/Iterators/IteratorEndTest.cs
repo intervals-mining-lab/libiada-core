@@ -1,10 +1,12 @@
-using System.Collections.Generic;
-using LibiadaCore.Classes.Misc.Iterators;
-using LibiadaCore.Classes.Root;
-using NUnit.Framework;
-
 namespace LibiadaCoreTest.Classes.Misc.Iterators
 {
+    using System.Collections.Generic;
+
+    using LibiadaCore.Classes.Misc.Iterators;
+    using LibiadaCore.Classes.Root;
+
+    using NUnit.Framework;
+
     [TestFixture]
     public class IteratorEndTest
     {

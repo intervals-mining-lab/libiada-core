@@ -1,8 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace LibiadaCore.Classes.Root.Characteristics.Calculators
+﻿namespace LibiadaCore.Classes.Root.Characteristics.Calculators
 {
+    using System;
+    using System.Collections.Generic;
+
     public class AlphabeticDepth: ICalculator
     {
         private int alphabetPower = 0;
@@ -44,9 +44,9 @@ namespace LibiadaCore.Classes.Root.Characteristics.Calculators
             }
         }
 
-        ///<summary>
+        /// <summary>
         /// Двоичный логарифм произведения всех интервалов цепочки.
-        ///</summary>
+        /// </summary>
         ///<param name="chain"></param>
         ///<param name="link"></param>
         ///<returns></returns>

@@ -1,8 +1,9 @@
-﻿using System.Linq;
-using LibiadaCore.Classes.Misc;
-
-namespace LibiadaCore.Classes.Root.IntervalsManagers
+﻿namespace LibiadaCore.Classes.Root.IntervalsManagers
 {
+    using System.Linq;
+
+    using LibiadaCore.Classes.Misc;
+
     public class CongenericIntervalsManager : IntervalsManager
     {
         private readonly int[] building;

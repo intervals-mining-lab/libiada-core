@@ -1,10 +1,11 @@
-﻿using System;
-using LibiadaCore.Classes.Root.Characteristics.Calculators;
-
-namespace LibiadaCore.Classes.Root.Characteristics
+﻿namespace LibiadaCore.Classes.Root.Characteristics
 {
-    ///<summary>
-    ///</summary>
+    using System;
+
+    using LibiadaCore.Classes.Root.Characteristics.Calculators;
+
+    /// <summary>
+    /// </summary>
     public class Characteristic : IBaseObject
     {
         protected Boolean Calculated;
@@ -15,8 +16,8 @@ namespace LibiadaCore.Classes.Root.Characteristics
 
  
 
-        ///<summary>
-        ///</summary>
+        /// <summary>
+        /// </summary>
         ///<param name="type"></param>
         public Characteristic(ICalculator type)
         {
@@ -29,8 +30,8 @@ namespace LibiadaCore.Classes.Root.Characteristics
         }
 
 
-        ///<summary>
-        ///</summary>
+        /// <summary>
+        /// </summary>
         ///<param name="chain"></param>
         ///<param name="link"></param>
         ///<returns></returns>
@@ -47,8 +48,8 @@ namespace LibiadaCore.Classes.Root.Characteristics
             return CharacteristicValue;
         }
 
-        ///<summary>
-        ///</summary>
+        /// <summary>
+        /// </summary>
         ///<param name="chain"></param>
         ///<param name="link"></param>
         ///<returns></returns>

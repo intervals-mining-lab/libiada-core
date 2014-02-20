@@ -1,9 +1,10 @@
-﻿using System.Collections.Generic;
-using LibiadaCore.Classes.Root;
-using LibiadaCore.Classes.Root.SimpleTypes;
-
-namespace LibiadaCoreTest.Classes.Root.Characteristics.BinaryCalculators
+﻿namespace LibiadaCoreTest.Classes.Root.Characteristics.BinaryCalculators
 {
+    using System.Collections.Generic;
+
+    using LibiadaCore.Classes.Root;
+    using LibiadaCore.Classes.Root.SimpleTypes;
+
     public static class BinaryCalculationHelper
     {
         public static Dictionary<string, IBaseObject> Elements = new Dictionary<string, IBaseObject>

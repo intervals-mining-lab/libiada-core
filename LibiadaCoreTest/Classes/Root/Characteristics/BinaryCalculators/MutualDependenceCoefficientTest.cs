@@ -1,11 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using LibiadaCore.Classes.Root;
-using LibiadaCore.Classes.Root.Characteristics.BinaryCalculators;
-using NUnit.Framework;
-
-namespace LibiadaCoreTest.Classes.Root.Characteristics.BinaryCalculators
+﻿namespace LibiadaCoreTest.Classes.Root.Characteristics.BinaryCalculators
 {
+    using System;
+    using System.Collections.Generic;
+
+    using LibiadaCore.Classes.Root;
+    using LibiadaCore.Classes.Root.Characteristics.BinaryCalculators;
+
+    using NUnit.Framework;
+
     [TestFixture]
     public class MutualDependenceCoefficientTest : AbstractBinaryCalculatorTest
     {

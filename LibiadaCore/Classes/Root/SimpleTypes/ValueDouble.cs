@@ -1,31 +1,31 @@
 namespace LibiadaCore.Classes.Root.SimpleTypes
 {
-    ///<summary>
+    /// <summary>
     /// Класс - вещественное значение
-    ///</summary>
+    /// </summary>
     public class ValueDouble:IBaseObject
     {
         private readonly double value;
 
-         ///<summary>
-        ///</summary>
+         /// <summary>
+        /// </summary>
         ///<param name="value"></param>
         public ValueDouble(double value)
         {
             this.value = value;
         }
 
-        ///<summary>
-        ///</summary>
+        /// <summary>
+        /// </summary>
         ///<returns></returns>
         public IBaseObject Clone()
         {
             return new ValueDouble(value);
         }
 
-        ///<summary>
+        /// <summary>
         ///Determines whether the specified <see cref="T:System.Object"></see> is equal to the current <see cref="T:System.Object"></see>.
-        ///</summary>
+        /// </summary>
         ///<returns>
         ///true if the specified <see cref="T:System.Object"></see> is equal to the current <see cref="T:System.Object"></see>; otherwise, false.
         ///</returns>
@@ -39,8 +39,8 @@ namespace LibiadaCore.Classes.Root.SimpleTypes
             return Equals(obj as ValueDouble);
         }
 
-        ///<summary>
-        ///</summary>
+        /// <summary>
+        /// </summary>
         ///<param name="from"></param>
         ///<returns></returns>
         public static implicit operator double(ValueDouble from)
@@ -48,8 +48,8 @@ namespace LibiadaCore.Classes.Root.SimpleTypes
             return from.value;
         }
 
-        ///<summary>
-        ///</summary>
+        /// <summary>
+        /// </summary>
         ///<param name="from"></param>
         ///<returns></returns>
         public static implicit operator ValueDouble(double from)

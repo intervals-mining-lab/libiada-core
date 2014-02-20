@@ -1,9 +1,9 @@
 namespace LibiadaCore.Classes.Root.SimpleTypes
 {
-    ///<summary>
+    /// <summary>
     ///  ласс реализующий объект псевдо-величина
     /// –еализованн на основе паттерна Singletone
-    ///</summary>
+    /// </summary>
     public class NullValue : IBaseObject
     {
         protected bool Equals(NullValue other)
@@ -18,9 +18,9 @@ namespace LibiadaCore.Classes.Root.SimpleTypes
 
         private static readonly NullValue SingleTone = new NullValue();
 
-        ///<summary>
+        /// <summary>
         /// ћетод позвол€ющий получить указатель на объект
-        ///</summary>
+        /// </summary>
         ///<returns>”казатель на объект</returns>
         public static NullValue Instance()
         {

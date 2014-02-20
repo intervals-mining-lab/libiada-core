@@ -1,8 +1,9 @@
-﻿using LibiadaCore.Classes.Misc.Iterators;
-using NUnit.Framework;
-
-namespace LibiadaCoreTest.Classes.Misc.Iterators
+﻿namespace LibiadaCoreTest.Classes.Misc.Iterators
 {
+    using LibiadaCore.Classes.Misc.Iterators;
+
+    using NUnit.Framework;
+
     [TestFixture]
     class CutRuleWithShiftedAndFixedStartTest
     {

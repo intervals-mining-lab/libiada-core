@@ -1,11 +1,11 @@
-using LibiadaCore.Classes.Misc.Iterators;
-using LibiadaCore.Classes.TheoryOfSet;
-
 namespace LibiadaCore.Classes.Root.Characteristics.Calculators
 {
-    ///<summary>
+    using LibiadaCore.Classes.Misc.Iterators;
+    using LibiadaCore.Classes.TheoryOfSet;
+
+    /// <summary>
     /// Длина обрезания по Садовскому.
-    ///</summary>
+    /// </summary>
     public class CutLength : ICalculator
     {
         public double Calculate(CongenericChain chain, Link link)

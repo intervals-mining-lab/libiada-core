@@ -1,8 +1,8 @@
 namespace LibiadaCore.Classes.Root.Characteristics.Calculators
 {
-    ///<summary>
+    /// <summary>
     /// Среднее арифметическое значение длин интервалов.
-    ///</summary>
+    /// </summary>
     public class ArithmeticMean : ICalculator
     {
         /// <summary>
@@ -21,9 +21,9 @@ namespace LibiadaCore.Classes.Root.Characteristics.Calculators
             return sum/intervalsCount;
         }
 
-        ///<summary>
+        /// <summary>
         /// Вычисляется как среднее значение от среднего интервала однородных цепей
-        ///</summary>
+        /// </summary>
         ///<param name="chain"></param>
         ///<param name="link"></param>
         ///<returns></returns>

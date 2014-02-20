@@ -1,23 +1,24 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using LibiadaCore.Classes.Root;
-
 namespace LibiadaCore.Classes.TheoryOfSet
 {
-    ///<summary>
+    using System;
+    using System.Collections;
+    using System.Collections.Generic;
+
+    using LibiadaCore.Classes.Root;
+
+    /// <summary>
     /// Данный класс реализует алфавит элементов
     /// Алфавит это список из уникальных элементов
     /// Алфавит является классом организованным в соотвествии с паттреном "Значение"
-    ///</summary>
+    /// </summary>
     public class Alphabet : IBaseObject, IEnumerable
     {
         protected List<IBaseObject> Vault = new List<IBaseObject>();
 
-        ///<summary>
+        /// <summary>
         /// Свойство возвращает мощность алфавита.
         /// Кол-во элементов в алфавите. 
-        ///</summary>
+        /// </summary>
         public int Power
         {
             get
@@ -26,9 +27,9 @@ namespace LibiadaCore.Classes.TheoryOfSet
             }
         }
 
-        ///<summary>
+        /// <summary>
         ///  Реализация добавления элемента в алфавит.
-        ///</summary>
+        /// </summary>
         ///<param name="baseObject">Добавляемый элемент</param>
         ///<returns>Возвращает его номер в алфавите</returns>
         ///<exception cref="Exception">В случае если такой элемент уже содержится алфавите</exception>
@@ -47,14 +48,14 @@ namespace LibiadaCore.Classes.TheoryOfSet
             return Vault.IndexOf(baseObject);
         }
 
-        ///<summary>
+        /// <summary>
         /// Позволяет получить доступ к элементу алфавита по индексу.
         /// Позволяет записывать и считывать элемент.
         /// При записи происходит проверка на отсутствие данного объекта в алфавите. 
         /// В случае успешной исхода данной проверки элемент добавляется в алфавит, 
         /// в противном этого не происходит, при том класс не уведомляет об этом вненюю среду. 
         /// Если индекс меньше 0  или >= мощности алфавата вызывается исключение.
-        ///</summary>
+        /// </summary>
         ///<param name="index">Индекс элемента в алфавите</param>
         public IBaseObject this[int index]
         {
@@ -131,10 +132,10 @@ namespace LibiadaCore.Classes.TheoryOfSet
             return true;
         }
 
-        ///<summary>
+        /// <summary>
         /// Возвращает индекс объекта в алфавите.
         /// В случае, если данного объекта нет в алфавите возвращает -1.
-        ///</summary>
+        /// </summary>
         ///<param name="obj">Объект который ищем в алфавите</param>
         ///<returns>Индекс объекта в алфавите</returns>
         public int IndexOf(IBaseObject obj)
@@ -142,9 +143,9 @@ namespace LibiadaCore.Classes.TheoryOfSet
             return Vault.IndexOf(obj);
         }
 
-        ///<summary>
+        /// <summary>
         ///Определяет принадлежность объекта к алфавиту
-        ///</summary>
+        /// </summary>
         ///<param name="obj">Объект</param>
         ///<returns>True если алфавит содержит данный объект, иначе false</returns>
         public bool Contains(IBaseObject obj)

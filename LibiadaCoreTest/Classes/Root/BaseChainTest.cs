@@ -1,10 +1,12 @@
-using System;
-using LibiadaCore.Classes.Root;
-using LibiadaCore.Classes.Root.SimpleTypes;
-using NUnit.Framework;
-
 namespace LibiadaCoreTest.Classes.Root
 {
+    using System;
+
+    using LibiadaCore.Classes.Root;
+    using LibiadaCore.Classes.Root.SimpleTypes;
+
+    using NUnit.Framework;
+
     //TODO: FIX ORDER OF ARGUMENTS IN ALL AreEqual
     [TestFixture]
     public class BaseChainTest

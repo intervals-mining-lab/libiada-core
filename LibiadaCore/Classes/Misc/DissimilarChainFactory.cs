@@ -1,28 +1,37 @@
-﻿using System.Collections.Generic;
-using LibiadaCore.Classes.Root;
-using LibiadaCore.Classes.Root.SimpleTypes;
-using LibiadaCore.Classes.TheoryOfSet;
-
-namespace LibiadaCore.Classes.Misc
+﻿namespace LibiadaCore.Classes.Misc
 {
+    using System.Collections.Generic;
+
+    using LibiadaCore.Classes.Root;
+    using LibiadaCore.Classes.Root.SimpleTypes;
+    using LibiadaCore.Classes.TheoryOfSet;
+
     /// <summary>
-    /// Статический класс, создающий по заданной цепочке
-    /// цепочку с разнородным строем.
-    /// В качестве элементов используются номера вхождений элементов
+    /// Static class that creates dissimilar chain by ordinary chain.
+    /// Numbers of occurrences are used as elements of dissimilar chain.
     /// <example>
-    /// Цепочка                  A|T|T|A|C|G|T|C|A
-    /// Строй                    1|2|2|1|3|4|2|3|1
-    /// Разнородный строй        1|1|2|2|1|1|3|2|3 
+    /// <para>
+    /// Chain                    A|T|T|A|C|G|T|C|A
+    /// Building                 1|2|2|1|3|4|2|3|1
+    /// Dissimilar building      1|1|2|2|1|1|3|2|3 
+    /// </para>
+    /// <para>
+    /// Chain alphabet       A|T|C|G
+    /// Dissimilar alphabet  1|2|3
+    /// </para>
     /// </example>
     /// </summary>
     public static class DissimilarChainFactory
     {
         /// <summary>
-        /// Метод получающий из заданной цепочки
-        /// цепочку "первых встречных разных"
+        /// Method that creates chain of "first occurrences of different elements".
         /// </summary>
-        /// <param name="source">Исходная цепочка</param>
-        /// <returns>Разнородная цепочка</returns>
+        /// <param name="source">
+        /// Source chain.
+        /// </param>
+        /// <returns>
+        /// Dissimilar chain.
+        /// </returns>
         public static Chain Create(BaseChain source)
         {
             var result = new Chain(source.Length);
@@ -38,6 +47,7 @@ namespace LibiadaCore.Classes.Misc
                 int entry = ++entries[sourceAlphabet.IndexOf(source[i])];
                 result.Add(new ValueInt(entry), i);
             }
+
             return result;
         }
     }

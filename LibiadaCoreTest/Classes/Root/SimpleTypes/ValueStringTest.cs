@@ -1,15 +1,16 @@
-using LibiadaCore.Classes.Root.SimpleTypes;
-using NUnit.Framework;
-
 namespace LibiadaCoreTest.Classes.Root.SimpleTypes
 {
-    ///<summary>
-    ///</summary>
+    using LibiadaCore.Classes.Root.SimpleTypes;
+
+    using NUnit.Framework;
+
+    /// <summary>
+    /// </summary>
     [TestFixture]
     public class ValueStringTest
     {
-        ///<summary>
-        ///</summary>
+        /// <summary>
+        /// </summary>
         [Test]
         public void EqualsTest()
         {
