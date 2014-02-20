@@ -4,8 +4,29 @@
 
     using LibiadaCore.Classes.Root.Characteristics.Calculators;
 
-    public class Redundancy:BinaryCalculator
+    /// <summary>
+    /// Redundancy of binary chain.
+    /// </summary>
+    public class Redundancy : BinaryCalculator
     {
+        /// <summary>
+        /// Calculation method.
+        /// </summary>
+        /// <param name="chain">
+        /// Source sequence.
+        /// </param>
+        /// <param name="firstElement">
+        /// Первый элемент
+        /// </param>
+        /// <param name="secondElement">
+        /// Второй элемент
+        /// </param>
+        /// <param name="link">
+        /// Link of intervals in chain.
+        /// </param>
+        /// <returns>
+        /// <see cref="double"/> value of redundancy.
+        /// </returns>
         public override double Calculate(Chain chain, IBaseObject firstElement, IBaseObject secondElement, Link link)
         {
             if (firstElement.Equals(secondElement))
@@ -47,9 +68,15 @@
             avG = pairs == 0 ? 0 : avG / pairs;
             var geometricMeanCalculator = new BinaryGeometricMean();
             double binaryGeometricMean = geometricMeanCalculator.Calculate(chain, firstElement, secondElement, link);
-            return 1 - binaryGeometricMean / Math.Pow(2, avG);
+            return 1 - (binaryGeometricMean / Math.Pow(2, avG));
         }
 
+        /// <summary>
+        /// Returns enum of this characteristic.
+        /// </summary>
+        /// <returns>
+        /// The <see cref="BinaryCharacteristicsEnum"/>.
+        /// </returns>
         public override BinaryCharacteristicsEnum GetCharacteristicName()
         {
             return BinaryCharacteristicsEnum.Redundancy;

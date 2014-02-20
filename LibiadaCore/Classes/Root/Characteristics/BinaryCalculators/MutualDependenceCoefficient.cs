@@ -2,8 +2,29 @@
 {
     using System;
 
-    public class MutualDependenceCoefficient:BinaryCalculator
+    /// <summary>
+    /// Mutual dependence coefficient of binary chain.
+    /// </summary>
+    public class MutualDependenceCoefficient : BinaryCalculator
     {
+        /// <summary>
+        /// Calculation method.
+        /// </summary>
+        /// <param name="chain">
+        /// Source sequence.
+        /// </param>
+        /// <param name="firstElement">
+        /// Первый элемент
+        /// </param>
+        /// <param name="secondElement">
+        /// Второй элемент
+        /// </param>
+        /// <param name="link">
+        /// Link of intervals in chain.
+        /// </param>
+        /// <returns>
+        /// <see cref="double"/> value of mutual dependence coefficient.
+        /// </returns>
         public override double Calculate(Chain chain, IBaseObject firstElement, IBaseObject secondElement, Link link)
         {
             if (firstElement.Equals(secondElement))
@@ -20,6 +41,12 @@
             return Math.Sqrt(firstInvolvedCoefficient * secondInvolvedCoefficient);
         }
 
+        /// <summary>
+        /// Returns enum of this characteristic.
+        /// </summary>
+        /// <returns>
+        /// The <see cref="BinaryCharacteristicsEnum"/>.
+        /// </returns>
         public override BinaryCharacteristicsEnum GetCharacteristicName()
         {
             return BinaryCharacteristicsEnum.MutualDependenceCoefficient;
