@@ -35,6 +35,7 @@ namespace LibiadaCore.Classes.Misc.SpaceReorganizers
 
                 resent.Add(message, i);
             }
+
             return resent;
         }
     }

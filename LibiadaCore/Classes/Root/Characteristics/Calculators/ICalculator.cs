@@ -9,24 +9,40 @@ namespace LibiadaCore.Classes.Root.Characteristics.Calculators
         /// Вычисляет и возвращает значение характеристики 
         /// для однородной цеочки.
         /// </summary>
-        ///<param name="chain"></param>
-        ///<param name="link"></param>
-        ///<returns></returns>
+        /// <param name="chain">
+        /// Source sequence.
+        /// </param>
+        /// <param name="link">
+        /// Link of intervals in chain.
+        /// May be redundant for some characteristics.
+        /// </param>
+        /// <returns>
+        /// Characteristic value as <see cref="double"/>.
+        /// </returns>
         double Calculate(CongenericChain chain, Link link);
 
         /// <summary>
         /// Вычисляет и возвращает значение характеристики 
         /// для полной неоднородной цеочки.
         /// </summary>
-        ///<param name="chain"></param>
-        ///<param name="link"></param>
-        ///<returns></returns>
+        /// <param name="chain">
+        /// Source sequence.
+        /// </param>
+        /// <param name="link">
+        /// Link of intervals in chain.
+        /// May be redundant for some characteristics.
+        /// </param>
+        /// <returns>
+        /// Characteristic value as <see cref="double"/>.
+        /// </returns>
         double Calculate(Chain chain, Link link);
 
         /// <summary>
-        /// Возвращает имя характеристики вычисляемой калькулятором
+        /// Returns enum of this characteristic.
         /// </summary>
-        ///<returns>Имя в виде строки, например Entropy</returns>
+        /// <returns>
+        /// The <see cref="CharacteristicsEnum"/>.
+        /// </returns>
         CharacteristicsEnum GetCharacteristicName();
     }
 }

@@ -70,10 +70,15 @@ namespace LibiadaCore.Classes.Misc.SpaceReorganizers
 
             while (iteratorTo.Next() && iteratorFrom.Next())
             {
-                var message = new ValuePhantom {iteratorFrom.Current()};
+                var message = new ValuePhantom
+                                  {
+                                      // WAT
+                                      iteratorFrom.Current() 
+                                  };
 
-                iteratorTo.WriteValue(message.Power == 0 ? (IBaseObject)NullValue.Instance() : message);
+                iteratorTo.WriteValue(message.Cardinality == 0 ? (IBaseObject)NullValue.Instance() : message);
             }
+
             return result;
         }
     }

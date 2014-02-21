@@ -3,21 +3,27 @@
     using System.Collections.Generic;
     using System.ComponentModel;
 
+    /// <summary>
+    /// The intervals manager.
+    /// </summary>
     public abstract class IntervalsManager
     {
         /// <summary>
-        /// Main intervals block
+        /// Gets or sets main intervals block
         /// without start, end or cycle link.
         /// </summary>
-        protected int[] Intervals;
+        protected int[] Intervals { get; set; }
+
         /// <summary>
-        /// Interval from start of chain to first element.
+        /// Gets or sets interval from start of chain to first element.
         /// </summary>
-        protected int Start;
+        protected int Start { get; set; }
+
         /// <summary>
-        /// Interval from last element to end of chain.
+        /// Gets or sets interval from last element to end of chain.
         /// </summary>
-        protected int End;
+        protected int End { get; set; }
+
         /// <summary>
         /// Method, returning intervals array by link.
         /// </summary>

@@ -1,53 +1,49 @@
 namespace LibiadaCore.Classes.Root.Characteristics.Calculators
 {
     /// <summary>
-    /// Периодичность.
-    /// Имеет смысл только для однородной цепи.
+    /// Количество элементов.
     /// </summary>
-    public class Periodicity : ICalculator
+    public class ElementsCount : ICalculator
     {
         /// <summary>
-        /// Average geometric interval calculator.
-        /// </summary>
-        private readonly ICalculator geometricMean = new GeometricMean();
-
-        /// <summary>
-        /// Average arithmetic interval calculator.
-        /// </summary>
-        private readonly ICalculator arithmeticMean = new ArithmeticMean();
-
-        /// <summary>
-        /// Calculation method.
+        /// Количество непустых позиций, 
+        /// иначе говоря количество элементов.
         /// </summary>
         /// <param name="chain">
         /// Source sequence.
         /// </param>
         /// <param name="link">
-        /// Link of intervals in chain.
+        /// Redundant parameter, not used in calculations.
         /// </param>
         /// <returns>
-        /// Periodicity as <see cref="double"/>.
+        /// Elements count in chain as <see cref="double"/>.
         /// </returns>
         public double Calculate(CongenericChain chain, Link link)
         {
-            return geometricMean.Calculate(chain, link) / arithmeticMean.Calculate(chain, link);
+            return chain.Intervals.Count - 1;
         }
 
         /// <summary>
-        /// Calculation method.
+        /// Количество непустых позиций.
         /// </summary>
         /// <param name="chain">
         /// Source sequence.
         /// </param>
         /// <param name="link">
-        /// Link of intervals in chain.
+        /// Redundant parameter, not used in calculations.
         /// </param>
         /// <returns>
-        /// Periodicity as <see cref="double"/>.
+        /// Elements count in chain as <see cref="double"/>.
         /// </returns>
         public double Calculate(Chain chain, Link link)
         {
-            return geometricMean.Calculate(chain, link) / arithmeticMean.Calculate(chain, link);
+            int count = 0;
+            for (int i = 0; i < chain.Alphabet.Cardinality; i++)
+            {
+                count += (int)Calculate(chain.CongenericChain(i), link);
+            }
+
+            return count;
         }
 
         /// <summary>
@@ -58,7 +54,7 @@ namespace LibiadaCore.Classes.Root.Characteristics.Calculators
         /// </returns>
         public CharacteristicsEnum GetCharacteristicName()
         {
-            return CharacteristicsEnum.Periodicity;
+            return CharacteristicsEnum.Count;
         }
     }
 }

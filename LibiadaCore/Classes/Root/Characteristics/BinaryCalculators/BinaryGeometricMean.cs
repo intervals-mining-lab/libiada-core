@@ -35,7 +35,8 @@ namespace LibiadaCore.Classes.Root.Characteristics.BinaryCalculators
             {
                 return 0;
             }
-            var count = new Count();
+
+            var count = new ElementsCount();
 
             // число вхождений первого компонента
             var firstElementCount = (int)count.Calculate(chain.CongenericChain(firstElement), link);

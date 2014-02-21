@@ -36,7 +36,6 @@
         {
             this.starts = starts;
             this.ends = ends;
-
         }
 
         /// <summary>

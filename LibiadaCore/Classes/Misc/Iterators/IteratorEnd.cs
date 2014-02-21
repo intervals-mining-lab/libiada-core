@@ -16,7 +16,6 @@ namespace LibiadaCore.Classes.Misc.Iterators
     public class IteratorEnd<TResult, TSource> : IteratorBase<TResult, TSource> 
         where TSource : BaseChain, new() where TResult : BaseChain, new()
     {
-
         /// <summary>
         /// Initializes a new instance of the <see cref="IteratorEnd{TResult,TSource}"/> class.
         /// </summary>
@@ -47,7 +46,6 @@ namespace LibiadaCore.Classes.Misc.Iterators
             Position -= Step;
             return Position >= 0;
         }
-
 
         /// <summary>
         /// Returns iterator to the starting position.

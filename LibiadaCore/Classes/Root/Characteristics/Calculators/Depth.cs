@@ -4,16 +4,25 @@ namespace LibiadaCore.Classes.Root.Characteristics.Calculators
     using System.Collections.Generic;
 
     /// <summary>
-    /// Глубина
+    /// Characteristic of chain depth.
     /// </summary>
     public class Depth : ICalculator
     {
         /// <summary>
         /// Двоичный логарифм произведения всех интервалов цепочки.
         /// </summary>
-        /// <param name="chain"></param>
-        /// <param name="link"></param>
-        /// <returns></returns>
+        /// <param name="chain">
+        /// Source sequence.
+        /// </param>
+        /// <param name="link">
+        /// Link of intervals in chain.
+        /// </param>
+        /// <returns>
+        /// <see cref="double"/> value of depth.
+        /// </returns>
+        /// <exception cref="ArgumentException">
+        /// Thrown if link is unknown.
+        /// </exception>
         public double Calculate(CongenericChain chain, Link link)
         {
             List<int> intervals = chain.Intervals;
@@ -37,26 +46,39 @@ namespace LibiadaCore.Classes.Root.Characteristics.Calculators
                 case Link.None:
                     return result;
                 default:
-                    throw new Exception("Неизвестная привязка");
+                    throw new ArgumentException("Unknown link.");
             }
         }
 
         /// <summary>
         /// Двоичный логарифм произведения всех интервалов цепочки.
         /// </summary>
-        ///<param name="chain"></param>
-        ///<param name="link"></param>
-        ///<returns></returns>
+        /// <param name="chain">
+        /// Source sequence.
+        /// </param>
+        /// <param name="link">
+        /// Link of intervals in chain.
+        /// </param>
+        /// <returns>
+        /// Average remoteness <see cref="double"/> value.
+        /// </returns>
         public double Calculate(Chain chain, Link link)
         {
             double result = 0;
-            for (int i = 0; i < chain.Alphabet.Power; i++)
+            for (int i = 0; i < chain.Alphabet.Cardinality; i++)
             {
                 result += Calculate(chain.CongenericChain(i), link);
             }
+
             return result;
         }
 
+        /// <summary>
+        /// Returns enum of this characteristic.
+        /// </summary>
+        /// <returns>
+        /// The <see cref="CharacteristicsEnum"/>.
+        /// </returns>
         public CharacteristicsEnum GetCharacteristicName()
         {
             return CharacteristicsEnum.Depth;

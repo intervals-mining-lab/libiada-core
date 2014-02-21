@@ -56,8 +56,6 @@
             get { return new MutualDependenceCoefficient(); }
         }
 
-        
-
         /// <summary>
         /// Список калькуляторов характеристик.
         /// </summary>
@@ -74,8 +72,8 @@
         /// <summary>
         /// Создаёт калькулятор с заданным именем.
         /// </summary>
-        ///<param name="type">Имя класса или путь в пространстве имён</param>
-        ///<returns>Калькулатор бинарной характеристики</returns>
+        /// <param name="type">Имя класса или путь в пространстве имён</param>
+        /// <returns>Калькулатор бинарной характеристики</returns>
         public static IBinaryCalculator Create(string type)
         {
             foreach (IBinaryCalculator calculator in List)

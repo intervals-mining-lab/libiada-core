@@ -57,7 +57,7 @@ namespace LibiadaCore.Classes.Root.Characteristics
         /// </summary>
         public static ICalculator n
         {
-            get { return new Count(); }
+            get { return new ElementsCount(); }
         }
 
         /// <summary>
@@ -144,9 +144,9 @@ namespace LibiadaCore.Classes.Root.Characteristics
         /// <summary>
         /// Мощность алфавита.
         /// </summary>
-        public static ICalculator Power
+        public static ICalculator Cardinality
         {
-            get { return new AlphabetPower(); }
+            get { return new AlphabetCardinality(); }
         }
 
         /// <summary>
@@ -194,7 +194,7 @@ namespace LibiadaCore.Classes.Root.Characteristics
                         n,
                         P,
                         r,
-                        Power,
+                        Cardinality,
                         nG,
                         t,
                         AlphabeticAverageRemoteness,

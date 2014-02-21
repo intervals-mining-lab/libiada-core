@@ -141,7 +141,7 @@ namespace LibiadaCore.Classes.Root
             if (position == -1)
             {
                 alphabet.Add(item);
-                position = alphabet.Power - 1;
+                position = alphabet.Cardinality - 1;
             }
 
             building[index] = position;

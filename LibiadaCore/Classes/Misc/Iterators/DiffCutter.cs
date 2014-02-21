@@ -31,6 +31,7 @@
                 string s = chain.Substring(iterator.GetStartPosition(), iterator.GetEndPosition());
                 result.Add(s);
             }
+
             return result;
         }
     }

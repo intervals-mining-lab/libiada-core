@@ -15,7 +15,6 @@ namespace LibiadaCore.Classes.Misc.Iterators
     public interface IWritableIterator<out TResult, TSource> : IIterator<TResult, TSource> 
         where TResult : BaseChain, new() where TSource : BaseChain, new()
     {
-
         /// <summary>
         /// Sets a value into current iterator position.
         /// </summary>

@@ -19,7 +19,7 @@ namespace LibiadaCore.Classes.TheoryOfSet
         /// Свойство возвращает мощность алфавита.
         /// Кол-во элементов в алфавите. 
         /// </summary>
-        public int Power
+        public int Cardinality
         {
             get
             {
@@ -117,12 +117,12 @@ namespace LibiadaCore.Classes.TheoryOfSet
         /// <returns>true, если алфавиты равны, иначе false</returns>
         private bool EqualsAsAlphabet(Alphabet aObj)
         {
-            if (aObj == null || Power != aObj.Power)
+            if (aObj == null || this.Cardinality != aObj.Cardinality)
             {
                 return false;
             }
 
-            for (int i = 0; i < Power; i++)
+            for (int i = 0; i < this.Cardinality; i++)
             {
                 if (!Vault.Contains(aObj.Vault[i]))
                 {

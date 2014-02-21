@@ -34,7 +34,7 @@
 
             var redundancyCalculator = new Redundancy();
             CongenericChain secondElementChain = chain.CongenericChain(secondElement);
-            var count = new Count();
+            var count = new ElementsCount();
             int secondElementCount = (int)count.Calculate(secondElementChain, link);
             double redundancy = redundancyCalculator.Calculate(chain, firstElement, secondElement, link);
             int pairs = chain.GetPairsCount(firstElement, secondElement);

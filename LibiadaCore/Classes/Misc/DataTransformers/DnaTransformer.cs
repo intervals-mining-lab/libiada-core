@@ -15,15 +15,16 @@
         /// <summary>
         /// Метод преобразующий нуклеотдитные цепи в аминокислотные.
         /// </summary>
-        /// <param name="inputChain">Нуклеотидныя последовательность типа <see cref="BaseChain"/></param>
+        /// <param name="inputChain">Нуклеотидная последовательность типа <see cref="BaseChain"/></param>
         /// <returns>Аминокислотная цепь типа <see cref="BaseChain"/>, в качестве элемнтов служат <see cref="ValueString"/></returns>
         /// <exception cref="Exception">Исключение возникает в случае наличия в нуклеотидной цепи значений отличных от A,C,T и G</exception>
         public static BaseChain Encode(BaseChain inputChain)
         {
-            if (inputChain.Alphabet.Power > 4)
+            if (inputChain.Alphabet.Cardinality > 4)
             {
                 throw new Exception();
             }
+
             int count = (int)Math.Floor((double)inputChain.Length / 3);
             var outChain = new BaseChain(count);
             for (int i = 0; i < count * 3; i += 3)
@@ -52,6 +53,7 @@
                                         throw new Exception();
                                     }
                                 }
+
                                 break;
                             case "C":
                                 outChain[i / 3] = new ValueChar('S');
@@ -72,6 +74,7 @@
                                         throw new Exception();
                                     }
                                 }
+
                                 break;
                             case "G":
                                 if ((third == "T") || (third == "C"))
@@ -96,10 +99,12 @@
                                         }
                                     }
                                 }
+
                                 break;
                             default:
                                 throw new Exception();
                         }
+
                         break;
                     case "C":
                         switch (second)
@@ -126,6 +131,7 @@
                                         throw new Exception();
                                     }
                                 }
+
                                 break;
                             case "G":
                                 outChain[i / 3] = new ValueChar('R');
@@ -133,6 +139,7 @@
                             default:
                                 throw new Exception();
                         }
+
                         break;
                     case "A":
                         switch (second)
@@ -153,6 +160,7 @@
                                         throw new Exception();
                                     }
                                 }
+
                                 break;
                             case "C":
                                 outChain[i / 3] = new ValueChar('T');
@@ -173,6 +181,7 @@
                                         throw new Exception();
                                     }
                                 }
+
                                 break;
                             case "G":
                                 if ((third == "T") || (third == "C"))
@@ -190,10 +199,12 @@
                                         throw new Exception();
                                     }
                                 }
+
                                 break;
                             default:
                                 throw new Exception();
                         }
+
                         break;
                     case "G":
                         switch (second)
@@ -220,6 +231,7 @@
                                         throw new Exception();
                                     }
                                 }
+
                                 break;
                             case "G":
                                 outChain[i / 3] = new ValueChar('G');
@@ -227,11 +239,13 @@
                             default:
                                 throw new Exception();
                         }
+
                         break;
                     default:
                         throw new Exception();
                 }
             }
+
             return outChain;
         }
 
@@ -359,8 +373,10 @@
                     default:
                         throw new Exception();
                 }
+
                 outChain[i] = m;
             }
+
             return outChain;
         }
 
@@ -372,9 +388,9 @@
         /// <exception cref="Exception">Допустимая мощность алфавита - 4</exception>
         public static BaseChain EncodeTriplets(BaseChain inputChain)
         {
-            if (inputChain.Alphabet.Power > 4)
+            if (inputChain.Alphabet.Cardinality > 4)
             {
-                throw new Exception("Alphabet power must be 4 or less elements");
+                throw new Exception("Alphabet cardinality must be 4 or less elements");
             }
 
             var resultLength = (int)Math.Floor((double)inputChain.Length / 3);

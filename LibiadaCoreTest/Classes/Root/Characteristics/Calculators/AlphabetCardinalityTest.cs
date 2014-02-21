@@ -6,11 +6,11 @@ namespace LibiadaCoreTest.Classes.Root.Characteristics.Calculators
     using NUnit.Framework;
 
     [TestFixture]
-    public class AlphabetPowerTest : AbstractCalculatorTest
+    public class AlphabetCardinalityTest : AbstractCalculatorTest
     {
-        public AlphabetPowerTest()
+        public AlphabetCardinalityTest()
         {
-            calc = new AlphabetPower();
+            calc = new AlphabetCardinality();
         }
 
         [TestCase(0, Link.None, 1)]

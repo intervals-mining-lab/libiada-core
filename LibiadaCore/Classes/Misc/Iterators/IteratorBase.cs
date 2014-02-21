@@ -101,6 +101,7 @@ namespace LibiadaCore.Classes.Misc.Iterators
             {
                 result[i] = Source[Position + i];
             }
+
             return result;
         }
 

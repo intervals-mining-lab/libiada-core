@@ -6,11 +6,11 @@ namespace LibiadaCoreTest.Classes.Root.Characteristics.Calculators
     using NUnit.Framework;
 
     [TestFixture]
-    public class CountTest : AbstractCalculatorTest
+    public class ElementsCountTest : AbstractCalculatorTest
     {
-        public CountTest()
+        public ElementsCountTest()
         {
-            calc = new Count();
+            calc = new ElementsCount();
         }
 
         [TestCase(0, Link.None, 3)]

@@ -68,7 +68,7 @@ namespace LibiadaCoreTest.Classes.Root
                     new List<int> {3, 1, 3, 4},
                     new List<int> {5, 3, 1, 2}
                 };
-            for (int i = 0; i < temp.Alphabet.Power; i++)
+            for (int i = 0; i < temp.Alphabet.Cardinality; i++)
             {
                 List<int> actualIntervals = temp.CongenericChain(i).Intervals;
                 for (int j = 0; j < actualIntervals.Count; j++)

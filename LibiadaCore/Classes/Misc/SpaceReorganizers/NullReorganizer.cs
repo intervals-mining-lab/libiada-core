@@ -49,6 +49,7 @@ namespace LibiadaCore.Classes.Misc.SpaceReorganizers
                 iteratorRead.Next();
                 iteratorWrite.Next();
             }
+
             return result;
         }
     }

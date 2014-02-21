@@ -34,6 +34,7 @@ namespace LibiadaCore.Classes.Misc.SpaceReorganizers
                 var phantom = source[i] as ValuePhantom;
                 resent.Add(phantom != null ? phantom[0] : source[i], i);
             }
+
             return resent;
         }
     }

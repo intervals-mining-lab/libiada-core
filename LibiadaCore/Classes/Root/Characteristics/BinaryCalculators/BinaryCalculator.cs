@@ -44,14 +44,15 @@
         public List<List<double>> Calculate(Chain chain, Link link)
         {
             var result = new List<List<double>>();
-            for (int i = 0; i < chain.Alphabet.Power; i++)
+            for (int i = 0; i < chain.Alphabet.Cardinality; i++)
             {
                 result.Add(new List<double>());
-                for (int j = 0; j < chain.Alphabet.Power; j++)
+                for (int j = 0; j < chain.Alphabet.Cardinality; j++)
                 {
                     result[i].Add(Calculate(chain, chain.Alphabet[i], chain.Alphabet[j], link));
                 }
             }
+
             return result;
         }
 

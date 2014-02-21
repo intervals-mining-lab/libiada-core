@@ -1,4 +1,4 @@
-namespace LibiadaCoreTest.Classes.TheoryOfSet
+﻿namespace LibiadaCoreTest.Classes.TheoryOfSet
 {
     using System;
 
@@ -92,12 +92,12 @@ namespace LibiadaCoreTest.Classes.TheoryOfSet
         }
 
         [Test]
-        public void PowerTest()
+        public void CardinalityTest()
         {
             AlBase.Add(new ValueInt(100));
             AlBase.Add(new ValueInt(200));
             AlBase.Add(new ValueInt(300));
-            Assert.AreEqual(3, AlBase.Power);
+            Assert.AreEqual(3, AlBase.Cardinality);
         }
 
         [Test]
@@ -108,7 +108,7 @@ namespace LibiadaCoreTest.Classes.TheoryOfSet
             AlBase.Add(new ValueInt(300));
             AlBase.Add(new ValueInt(400));
             AlBase.Remove(2);
-            Assert.AreEqual(3, AlBase.Power);
+            Assert.AreEqual(3, AlBase.Cardinality);
             Assert.AreEqual(new ValueInt(400), AlBase[2]);
         }
 

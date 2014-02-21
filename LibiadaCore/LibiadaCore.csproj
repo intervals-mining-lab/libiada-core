@@ -76,7 +76,7 @@
     <Compile Include="Classes\Root\Characteristics\BinaryCalculatorsFactory.cs" />
     <Compile Include="Classes\Root\Characteristics\Calculators\AlphabeticAverageRemoteness.cs" />
     <Compile Include="Classes\Root\Characteristics\Calculators\AlphabeticDepth.cs" />
-    <Compile Include="Classes\Root\Characteristics\Calculators\AlphabetPower.cs" />
+    <Compile Include="Classes\Root\Characteristics\Calculators\AlphabetCardinality.cs" />
     <Compile Include="Classes\Root\Characteristics\Calculators\ArithmeticMean.cs" />
     <Compile Include="Classes\Root\Characteristics\Calculators\AverageRemoteness.cs" />
     <Compile Include="Classes\Root\Characteristics\BinaryCalculators\IBinaryCalculator.cs" />
@@ -87,7 +87,7 @@
     <Compile Include="Classes\Root\Characteristics\BinaryCalculators\Redundancy.cs" />
     <Compile Include="Classes\Root\Characteristics\BinaryCalculators\BinaryGeometricMean.cs" />
     <Compile Include="Classes\Root\Characteristics\Calculators\AverageWordLength.cs" />
-    <Compile Include="Classes\Root\Characteristics\Calculators\Count.cs" />
+    <Compile Include="Classes\Root\Characteristics\Calculators\ElementsCount.cs" />
     <Compile Include="Classes\Root\Characteristics\Calculators\CutLength.cs" />
     <Compile Include="Classes\Root\Characteristics\Calculators\CutLengthVocabularyEntropy.cs" />
     <Compile Include="Classes\Root\Characteristics\Calculators\DescriptiveInformation.cs" />

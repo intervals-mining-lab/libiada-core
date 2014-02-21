@@ -1,28 +1,60 @@
 namespace LibiadaCore.Classes.Root.Characteristics.Calculators
 {
     /// <summary>
-    /// –егул€рность.
+    /// –егул€рность цепочки.
     /// </summary>
     public class Regularity : ICalculator
     {
-        private readonly GeometricMean geometricMean = new GeometricMean();
-        private readonly DescriptiveInformation descriptiveInformation = new DescriptiveInformation();
+        /// <summary>
+        /// Average geometric interval calculator.
+        /// </summary>
+        private readonly ICalculator geometricMean = new GeometricMean();
 
+        /// <summary>
+        /// Descriptive informations calculator.
+        /// </summary>
+        private readonly ICalculator descriptiveInformation = new DescriptiveInformation();
+
+        /// <summary>
+        /// Calculation method.
+        /// </summary>
+        /// <param name="chain">
+        /// Source sequence.
+        /// </param>
+        /// <param name="link">
+        /// Redundant parameter, not used in calculations.
+        /// </param>
+        /// <returns>
+        /// Regularity as <see cref="double"/>.
+        /// </returns>
         public double Calculate(CongenericChain chain, Link link)
         {
             return geometricMean.Calculate(chain, link) / descriptiveInformation.Calculate(chain, link);
         }
 
         /// <summary>
+        /// Calculation method.
         /// </summary>
-        ///<param name="chain"></param>
-        ///<param name="link"></param>
-        ///<returns></returns>
+        /// <param name="chain">
+        /// Source sequence.
+        /// </param>
+        /// <param name="link">
+        /// Redundant parameter, not used in calculations.
+        /// </param>
+        /// <returns>
+        /// Regularity as <see cref="double"/>.
+        /// </returns>
         public double Calculate(Chain chain, Link link)
         {
             return geometricMean.Calculate(chain, link) / descriptiveInformation.Calculate(chain, link);
         }
 
+        /// <summary>
+        /// Returns enum of this characteristic.
+        /// </summary>
+        /// <returns>
+        /// The <see cref="CharacteristicsEnum"/>.
+        /// </returns>
         public CharacteristicsEnum GetCharacteristicName()
         {
             return CharacteristicsEnum.Regularity;

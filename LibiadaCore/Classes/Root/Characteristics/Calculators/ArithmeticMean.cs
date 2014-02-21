@@ -6,36 +6,60 @@ namespace LibiadaCore.Classes.Root.Characteristics.Calculators
     public class ArithmeticMean : ICalculator
     {
         /// <summary>
+        /// Intervals length sum calculator.
+        /// </summary>
+        private readonly ICalculator adder = new IntervalsSum();
+
+        /// <summary>
+        /// Intervals count calculator.
+        /// </summary>
+        private readonly ICalculator counter = new IntervalsCount();
+
+        /// <summary>
         /// ƒл€ однородной цепи данна€ характеристика 
         /// вычисл€етс€ как сумма длин всех интервалов делЄное на количество интервалов.
         /// </summary>
-        /// <param name="chain"></param>
-        /// <param name="link"></param>
-        /// <returns></returns>
+        /// <param name="chain">
+        /// Source sequence.
+        /// </param>
+        /// <param name="link">
+        /// Link of intervals in chain.
+        /// </param>
+        /// <returns>
+        /// <see cref="double"/> value of average arithmetic of intervals lengths.
+        /// </returns>
         public double Calculate(CongenericChain chain, Link link)
         {
-            var adder = new IntervalsSum();
             double sum = adder.Calculate(chain, link);
-            var counter = new IntervalsCount();
-            double intervalsCount = counter.Calculate(chain,link);
-            return sum/intervalsCount;
+            double intervalsCount = counter.Calculate(chain, link);
+            return sum / intervalsCount;
         }
 
         /// <summary>
         /// ¬ычисл€етс€ как среднее значение от среднего интервала однородных цепей
         /// </summary>
-        ///<param name="chain"></param>
-        ///<param name="link"></param>
-        ///<returns></returns>
+        /// <param name="chain">
+        /// Source sequence.
+        /// </param>
+        /// <param name="link">
+        /// Link of intervals in chain.
+        /// </param>
+        /// <returns>
+        /// <see cref="double"/> value of average arithmetic of intervals lengths.
+        /// </returns>
         public double Calculate(Chain chain, Link link)
         {
-            var adder = new IntervalsSum();
             double sum = adder.Calculate(chain, link);
-            var counter = new IntervalsCount();
             double intervalsCount = counter.Calculate(chain, link);
             return sum / intervalsCount;
         }
 
+        /// <summary>
+        /// Returns enum of this characteristic.
+        /// </summary>
+        /// <returns>
+        /// The <see cref="CharacteristicsEnum"/>.
+        /// </returns>
         public CharacteristicsEnum GetCharacteristicName()
         {
             return CharacteristicsEnum.ArithmeticMean;

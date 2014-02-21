@@ -1,5 +1,8 @@
 ﻿namespace LibiadaCore.Classes.Root.Characteristics
 {
+    /// <summary>
+    /// The binary characteristics enum.
+    /// </summary>
     public enum BinaryCharacteristicsEnum
     {
         /// <summary>

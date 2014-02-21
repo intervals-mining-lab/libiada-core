@@ -31,14 +31,12 @@
             {
                 return 0;
             }
+
             var involvedCoefficientCalculator = new InvolvedPartialDependenceCoefficient();
             double firstInvolvedCoefficient = involvedCoefficientCalculator.Calculate(chain, firstElement, secondElement, link);
             double secondInvolvedCoefficient = involvedCoefficientCalculator.Calculate(chain, secondElement, firstElement, link);
-            if (firstInvolvedCoefficient < 0 || secondInvolvedCoefficient < 0)
-            {
-                return 0;
-            }
-            return Math.Sqrt(firstInvolvedCoefficient * secondInvolvedCoefficient);
+            return firstInvolvedCoefficient < 0 || secondInvolvedCoefficient < 0
+                       ? 0 : Math.Sqrt(firstInvolvedCoefficient * secondInvolvedCoefficient);
         }
 
         /// <summary>

@@ -7,21 +7,58 @@ namespace LibiadaCore.Classes.Root.Characteristics.Calculators
     /// </summary>
     public class NormalizedAverageRemoteness : ICalculator
     {
-        private readonly AverageRemoteness averageRemoteness = new AverageRemoteness();
-        private readonly AlphabetPower alphabetPower = new AlphabetPower();
+        /// <summary>
+        /// Average remoteness calculator.
+        /// </summary>
+        private readonly ICalculator averageRemoteness = new AverageRemoteness();
 
+        /// <summary>
+        /// Alphabet cardinality calculator.
+        /// </summary>
+        private readonly ICalculator alphabetCardinality = new AlphabetCardinality();
+
+        /// <summary>
+        /// Calculation method.
+        /// </summary>
+        /// <param name="chain">
+        /// Source sequence.
+        /// </param>
+        /// <param name="link">
+        /// Link of intervals in chain.
+        /// </param>
+        /// <returns>
+        /// Normalized average remoteness as <see cref="double"/>.
+        /// </returns>
         public double Calculate(CongenericChain chain, Link link)
         {
             return averageRemoteness.Calculate(chain, link);
         }
 
+        /// <summary>
+        /// Calculation method.
+        /// </summary>
+        /// <param name="chain">
+        /// Source sequence.
+        /// </param>
+        /// <param name="link">
+        /// Link of intervals in chain.
+        /// </param>
+        /// <returns>
+        /// Normalized average remoteness as <see cref="double"/>.
+        /// </returns>
         public double Calculate(Chain chain, Link link)
         {
             double g = averageRemoteness.Calculate(chain, link);
-            double hMax = Math.Log(alphabetPower.Calculate(chain, link), 2);
-            return g - hMax;
+            double max = Math.Log(this.alphabetCardinality.Calculate(chain, link), 2);
+            return g - max;
         }
 
+        /// <summary>
+        /// Returns enum of this characteristic.
+        /// </summary>
+        /// <returns>
+        /// The <see cref="CharacteristicsEnum"/>.
+        /// </returns>
         public CharacteristicsEnum GetCharacteristicName()
         {
             return CharacteristicsEnum.NormalizedAverageRemoteness;

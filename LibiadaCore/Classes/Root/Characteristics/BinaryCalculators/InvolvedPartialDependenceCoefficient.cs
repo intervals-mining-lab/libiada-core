@@ -31,7 +31,8 @@
             {
                 return 0;
             }
-            var count = new Count();
+
+            var count = new ElementsCount();
             CongenericChain firstElementChain = chain.CongenericChain(firstElement);
             CongenericChain secondElementChain = chain.CongenericChain(secondElement);
             int firstElementCount = (int)count.Calculate(firstElementChain, link);

@@ -5,9 +5,21 @@ namespace LibiadaCore.Classes.Root.Characteristics.Calculators
     /// </summary>
     public class Probability : ICalculator
     {
+        /// <summary>
+        /// Calculation method.
+        /// </summary>
+        /// <param name="chain">
+        /// Source sequence.
+        /// </param>
+        /// <param name="link">
+        /// Redundant parameter, not used in calculations.
+        /// </param>
+        /// <returns>
+        /// Frequency of element in congeneric chain as <see cref="double"/>.
+        /// </returns>
         public double Calculate(CongenericChain chain, Link link)
         {
-            var count = new Count();
+            var count = new ElementsCount();
             var length = new Length();
             return count.Calculate(chain, link) / length.Calculate(chain, link);
         }
@@ -15,23 +27,32 @@ namespace LibiadaCore.Classes.Root.Characteristics.Calculators
         /// <summary>
         /// ƒл€ неоднородной, заполненной цепи всегда равна 1.
         /// </summary>
-        /// <param name="chain"></param>
-        /// <param name="link"></param>
-        /// <returns></returns>
+        /// <param name="chain">
+        /// Source sequence.
+        /// </param>
+        /// <param name="link">
+        /// Redundant parameter, not used in calculations.
+        /// </param>
+        /// <returns>
+        /// if chain is full then 1, otherwise percent of filled positions as <see cref="double"/>.
+        /// </returns>
         public double Calculate(Chain chain, Link link)
         {
             double temp = 0;
-            for (int i = 0; i < chain.Alphabet.Power; i++)
+            for (int i = 0; i < chain.Alphabet.Cardinality; i++)
             {
                 temp += Calculate(chain.CongenericChain(i), link);
             }
-            if (temp > 1)
-            {
-                temp = 1;
-            }
-            return temp;
+
+            return temp > 1 ? 1 : temp;
         }
 
+        /// <summary>
+        /// Returns enum of this characteristic.
+        /// </summary>
+        /// <returns>
+        /// The <see cref="CharacteristicsEnum"/>.
+        /// </returns>
         public CharacteristicsEnum GetCharacteristicName()
         {
             return CharacteristicsEnum.Probability;

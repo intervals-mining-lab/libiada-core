@@ -33,7 +33,8 @@
             {
                 return 0;
             }
-            var count = new Count();
+
+            var count = new ElementsCount();
             CongenericChain firstElementChain = chain.CongenericChain(firstElement);
             int firstElementCount = (int)count.Calculate(firstElementChain, link);
             double avG = 0;
@@ -59,6 +60,7 @@
                     }
                 }
             }
+
             if (link == Link.End || link == Link.Both)
             {
                 avG += Math.Log(chain.Length - currentEntrance, 2);

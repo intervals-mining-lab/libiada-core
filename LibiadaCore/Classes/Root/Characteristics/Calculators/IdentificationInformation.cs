@@ -8,24 +8,58 @@ namespace LibiadaCore.Classes.Root.Characteristics.Calculators
     /// </summary>
     public class IdentificationInformation : ICalculator
     {
-        private readonly ArithmeticMean arithmeticMean = new ArithmeticMean();
+        /// <summary>
+        /// Average arithmetic interval length calculator.
+        /// </summary>
+        private readonly ICalculator arithmeticMean = new ArithmeticMean();
 
+        /// <summary>
+        /// Calculation method.
+        /// </summary>
+        /// <param name="chain">
+        /// Source sequence.
+        /// </param>
+        /// <param name="link">
+        /// Link of intervals in chain.
+        /// </param>
+        /// <returns>
+        /// Identification informations count as <see cref="double"/>.
+        /// </returns>
         public double Calculate(CongenericChain chain, Link link)
         {
             double mean = arithmeticMean.Calculate(chain, link);
-            return -1/mean*Math.Log(1/mean, 2);
+            return (-1 / mean) * Math.Log(1 / mean, 2);
         }
 
+        /// <summary>
+        /// Calculation method.
+        /// </summary>
+        /// <param name="chain">
+        /// Source sequence.
+        /// </param>
+        /// <param name="link">
+        /// Link of intervals in chain.
+        /// </param>
+        /// <returns>
+        /// Identification informations count as <see cref="double"/>.
+        /// </returns>
         public double Calculate(Chain chain, Link link)
         {
             double result = 0;
-            for (int i = 0; i < chain.Alphabet.Power; i++)
+            for (int i = 0; i < chain.Alphabet.Cardinality; i++)
             {
                 result += Calculate(chain.CongenericChain(i), link);
             }
+
             return result;
         }
 
+        /// <summary>
+        /// Returns enum of this characteristic.
+        /// </summary>
+        /// <returns>
+        /// The <see cref="CharacteristicsEnum"/>.
+        /// </returns>
         public CharacteristicsEnum GetCharacteristicName()
         {
             return CharacteristicsEnum.Entropy;

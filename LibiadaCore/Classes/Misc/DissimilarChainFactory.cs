@@ -37,7 +37,7 @@
             var result = new Chain(source.Length);
             Alphabet sourceAlphabet = source.Alphabet;
             var entries = new List<int>();
-            for (int j = 0; j < sourceAlphabet.Power; j++)
+            for (int j = 0; j < sourceAlphabet.Cardinality; j++)
             {
                 entries.Add(0);
             }

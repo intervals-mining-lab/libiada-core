@@ -1,21 +1,10 @@
 namespace LibiadaCore.Classes.Root.Characteristics.Calculators
 {
     /// <summary>
-    /// Периодичность.
-    /// Имеет смысл только для однородной цепи.
+    /// Count of alphabet elements.
     /// </summary>
-    public class Periodicity : ICalculator
+    public class AlphabetCardinality : ICalculator
     {
-        /// <summary>
-        /// Average geometric interval calculator.
-        /// </summary>
-        private readonly ICalculator geometricMean = new GeometricMean();
-
-        /// <summary>
-        /// Average arithmetic interval calculator.
-        /// </summary>
-        private readonly ICalculator arithmeticMean = new ArithmeticMean();
-
         /// <summary>
         /// Calculation method.
         /// </summary>
@@ -23,14 +12,14 @@ namespace LibiadaCore.Classes.Root.Characteristics.Calculators
         /// Source sequence.
         /// </param>
         /// <param name="link">
-        /// Link of intervals in chain.
+        /// Redundant parameter, not used in calculations.
         /// </param>
         /// <returns>
-        /// Periodicity as <see cref="double"/>.
+        /// Alphabet cardinality as <see cref="double"/>.
         /// </returns>
         public double Calculate(CongenericChain chain, Link link)
         {
-            return geometricMean.Calculate(chain, link) / arithmeticMean.Calculate(chain, link);
+            return chain.Alphabet.Cardinality;
         }
 
         /// <summary>
@@ -40,14 +29,14 @@ namespace LibiadaCore.Classes.Root.Characteristics.Calculators
         /// Source sequence.
         /// </param>
         /// <param name="link">
-        /// Link of intervals in chain.
+        /// Redundant parameter, not used in calculations.
         /// </param>
         /// <returns>
-        /// Periodicity as <see cref="double"/>.
+        /// Alphabet cardinality as <see cref="double"/>.
         /// </returns>
         public double Calculate(Chain chain, Link link)
         {
-            return geometricMean.Calculate(chain, link) / arithmeticMean.Calculate(chain, link);
+            return chain.Alphabet.Cardinality;
         }
 
         /// <summary>
@@ -58,7 +47,7 @@ namespace LibiadaCore.Classes.Root.Characteristics.Calculators
         /// </returns>
         public CharacteristicsEnum GetCharacteristicName()
         {
-            return CharacteristicsEnum.Periodicity;
+            return CharacteristicsEnum.AlphabetCardinality;
         }
     }
 }
