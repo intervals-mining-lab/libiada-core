@@ -22,7 +22,7 @@
 
             for (int i = 0; i < intervals.Count; i++)
             {
-                Assert.AreEqual(IntervalsManager.GetIntervals(link)[i], intervals[i]);
+                Assert.AreEqual(intervals[i], IntervalsManager.GetIntervals(link)[i]);
             }
         }
     }

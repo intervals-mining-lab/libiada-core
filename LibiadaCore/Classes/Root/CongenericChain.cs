@@ -28,6 +28,16 @@ namespace LibiadaCore.Classes.Root
         {
         }
 
+        /// <summary>
+        /// </summary>
+        public CongenericChain(bool[] map, IBaseObject element)
+        {
+            alphabet.Add(element);
+            for (int i = 0; i < map.Length; i++)
+            {
+                building[i] = map[i] ? 1 : 0;
+            }
+        }
 
         public new IBaseObject Clone()
         {
