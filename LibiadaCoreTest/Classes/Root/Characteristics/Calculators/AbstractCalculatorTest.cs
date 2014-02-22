@@ -9,8 +9,8 @@
 
     public abstract class AbstractCalculatorTest
     {
-        protected List<CongenericChain> CongenericChains = CalculationHelper.CongenericChains;
-        protected List<Chain> Chains = CalculationHelper.Chains;
+        protected List<CongenericChain> CongenericChains = ChainsStorage.CongenericChains;
+        protected List<Chain> Chains = ChainsStorage.Chains;
         protected ICalculator calc;
 
         public void ChainCharacteristicTest(int index, Link link, double value)

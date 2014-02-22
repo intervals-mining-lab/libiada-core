@@ -36,7 +36,7 @@
             // Geting all occurrences of element in building.
             int[] indexes = ArrayManipulator.AllIndexesOf(building, 1);
 
-            Start = indexes[0] - 0;
+            Start = indexes[0] - (-1);
 
             for (int i = 0; i < Intervals.Length; i++)
             {

@@ -71,7 +71,7 @@
     <Compile Include="Classes\Root\Characteristics\BinaryCalculators\PartialDependenceCoefficientTest.cs" />
     <Compile Include="Classes\Root\Characteristics\BinaryCalculators\RedundancyTest.cs" />
     <Compile Include="Classes\Root\Characteristics\Calculators\AbstractCalculatorTest.cs" />
-    <Compile Include="Classes\Root\Characteristics\Calculators\CalculationHelper.cs" />
+    <Compile Include="Classes\Root\ChainsStorage.cs" />
     <Compile Include="Classes\Root\Characteristics\Calculators\AlphabetCardinalityTest.cs" />
     <Compile Include="Classes\Root\Characteristics\Calculators\ArithmeticMeanTest.cs" />
     <Compile Include="Classes\Root\Characteristics\Calculators\AverageRemotenessTest.cs" />
@@ -90,6 +90,7 @@
     <Compile Include="Classes\Root\Characteristics\Calculators\ProbabilityTest.cs" />
     <Compile Include="Classes\Root\Characteristics\Calculators\RegularityTest.cs" />
     <Compile Include="Classes\Root\Characteristics\Calculators\VolumeTest.cs" />
+    <Compile Include="Classes\Root\IntervalsManagers\AbstractIntervalsManagerTest.cs" />
     <Compile Include="Classes\Root\IntervalsManagers\CongenericIntervalsManagerTest.cs" />
     <Compile Include="Classes\Root\SimpleTypes\NullValueTest.cs" />
     <Compile Include="Classes\Root\SimpleTypes\ValuePhantomTest.cs" />

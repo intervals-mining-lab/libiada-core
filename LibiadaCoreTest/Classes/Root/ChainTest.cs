@@ -61,7 +61,7 @@ namespace LibiadaCoreTest.Classes.Root
         [Test]
         public void IntervalsTest()
         {
-            Chain temp = CalculationHelper.Chains[0];
+            Chain temp = ChainsStorage.Chains[0];
             var intervals = new List<List<int>>
                 {
                     new List<int> {1, 1, 4, 4, 1},

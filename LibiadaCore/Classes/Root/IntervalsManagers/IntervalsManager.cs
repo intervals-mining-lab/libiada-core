@@ -47,7 +47,7 @@
                     result.Add(End);
                     return result;
                 case Link.Cycle:
-                    result.Add(Start + End);
+                    result.Add(Start + End - 1);
                     return result;
                 default:
                     throw new InvalidEnumArgumentException("link", (int)link, typeof(Link));
