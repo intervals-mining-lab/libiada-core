@@ -53,14 +53,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Classes\AlpabetChainsTest.cs" />
+    <Compile Include="Classes\AlphabetChainsTest.cs" />
     <Compile Include="Classes\CheckerTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\AlphaberCheckers\AlphaberCheckers.csproj">
+    <ProjectReference Include="..\AlphabetCheckers\AlphabetCheckers.csproj">
       <Project>{7D33D7CD-019A-474E-9C63-C52BA2DE9B7B}</Project>
-      <Name>AlphaberCheckers</Name>
+      <Name>AlphabetCheckers</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

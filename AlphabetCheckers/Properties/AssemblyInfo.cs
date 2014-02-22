@@ -4,11 +4,11 @@ using System.Runtime.InteropServices;
 // Управление общими сведениями о сборке осуществляется с помощью 
 // набора атрибутов. Измените значения этих атрибутов, чтобы изменить сведения,
 // связанные со сборкой.
-[assembly: AssemblyTitle("TestAlphabetCheckers")]
+[assembly: AssemblyTitle("AlphaberCheckers")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("TestAlphabetCheckers")]
+[assembly: AssemblyProduct("AlphaberCheckers")]
 [assembly: AssemblyCopyright("Copyright ©  2011")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -19,7 +19,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // Следующий GUID служит для идентификации библиотеки типов, если этот проект будет видимым для COM
-[assembly: Guid("d256a22a-b22c-430e-ab36-9993eab1a49e")]
+[assembly: Guid("f15e72bc-7a2b-4220-b73e-ded658b93250")]
 
 // Сведения о версии сборки состоят из следующих четырех значений:
 //

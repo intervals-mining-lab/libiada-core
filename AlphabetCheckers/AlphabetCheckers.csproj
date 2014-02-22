@@ -8,7 +8,7 @@
     <ProjectGuid>{7D33D7CD-019A-474E-9C63-C52BA2DE9B7B}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>AlphaberCheckers</RootNamespace>
+    <RootNamespace>AlphabetCheckers</RootNamespace>
     <AssemblyName>AlphaberCheckers</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -48,7 +48,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Classes\ActualChain.cs" />
-    <Compile Include="Classes\AlpabetChains.cs" />
+    <Compile Include="Classes\ChainsAlphabet.cs" />
     <Compile Include="Classes\Checker.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
