@@ -1,8 +1,8 @@
-using System;
-using System.Collections.Generic;
-
 namespace BuildingsIterator.Classes.Statistics.Calculators
 {
+    using System;
+    using System.Collections.Generic;
+
     /// <summary>
     /// Вычисляет начальный i-й момент выбоки
     /// </summary>
@@ -11,7 +11,7 @@ namespace BuildingsIterator.Classes.Statistics.Calculators
         /// <summary>
         /// Порядок момента
         /// </summary>
-        private int s = 1;
+        private readonly int s = 1;
 
         /// <summary>
         /// Конструктор калькулятора вычисляющего начальный момент выборки
@@ -22,11 +22,11 @@ namespace BuildingsIterator.Classes.Statistics.Calculators
             s = i;
         }
 
-        ///<summary>
+        /// <summary>
         /// Метод вычисления начального момента выборки
-        ///</summary>
-        ///<param name="values">Выборка</param>
-        ///<returns>Начальный момент</returns>
+        /// </summary>
+        /// <param name="values">Выборка</param>
+        /// <returns>Начальный момент</returns>
         public double Calculate(List<double> values)
         {
             double sum = 0;
@@ -34,6 +34,7 @@ namespace BuildingsIterator.Classes.Statistics.Calculators
             {
                 sum += Math.Pow(values[i], s);
             }
+
             sum /= values.Count;
             return sum;
         }

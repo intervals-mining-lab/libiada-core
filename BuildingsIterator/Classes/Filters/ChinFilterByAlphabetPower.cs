@@ -1,45 +1,72 @@
-using System.Collections.Generic;
-
 namespace BuildingsIterator.Classes.Filters
 {
-    ///<summary>
+    using System.Collections.Generic;
+
+    /// <summary>
     /// Фильтр цепочек по мощности алфавита
-    ///</summary>
+    /// </summary>
     public class ChinFilterByAlphabetPower : IChainFilter
     {
-        private int min;
-        private int max;
+        /// <summary>
+        /// The min.
+        /// </summary>
+        private readonly int min;
+
+        /// <summary>
+        /// The max.
+        /// </summary>
+        private readonly int max;
 
         /// <summary>
         /// Конструктор фильтра цепочек по мщности алфавита
         /// </summary>
-        /// <param name="minAlphPower">Минимальное значение мощности</param>
-        /// <param name="maxAlphPower">Максимальное значение мощности</param>
+        /// <param name="minAlphPower">
+        /// Минимальное значение мощности
+        /// </param>
+        /// <param name="maxAlphPower">
+        /// Максимальное значение мощности
+        /// </param>
         public ChinFilterByAlphabetPower(int minAlphPower, int maxAlphPower)
         {
             min = minAlphPower;
             max = maxAlphPower;
         }
 
-        ///<summary>
+        /// <summary>
         /// Возвращает булевое значение валидности результата фильтрации
-        ///</summary>
-        ///<param name="building">Строй</param>
-        ///<returns></returns>
+        /// </summary>
+        /// <param name="building">
+        /// Строй
+        /// </param>
+        /// <returns>
+        /// true if alphabet power between min and max.
+        /// </returns>
         public bool IsValid(string building)
         {
-            int power = GetAlphPowerFromBuilding(building);
-            return (power <= max) && (power >= min);
+            int power = GetAlphabetPowerFromBuilding(building);
+            return (power >= min) && (power <= max);
         }
 
-        private int GetAlphPowerFromBuilding(string building)
+        /// <summary>
+        /// The get alphabet power from building.
+        /// </summary>
+        /// <param name="building">
+        /// The building.
+        /// </param>
+        /// <returns>
+        /// The <see cref="int"/>.
+        /// </returns>
+        private int GetAlphabetPowerFromBuilding(string building)
         {
-            List<char> chars = new List<char>();
-            for (int i = 0; i < building.Length; i++)
+            var chars = new List<char>();
+            foreach (char t in building)
             {
-                if (!chars.Contains(building[i]))
-                    chars.Add(building[i]);
+                if (!chars.Contains(t))
+                {
+                    chars.Add(t);
+                }
             }
+
             return chars.Count;
         }
     }

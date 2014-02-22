@@ -1,66 +1,52 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using BuildingsIterator.Classes.Filters;
-using BuildingsIterator.Classes.Statistics;
-using LibiadaCore.Classes.Root.Characteristics;
-
 namespace BuildingsIterator.Classes
 {
-    ///<summary>
+    using System;
+    using System.Collections;
+    using System.Collections.Generic;
+
+    using BuildingsIterator.Classes.Filters;
+    using BuildingsIterator.Classes.Statistics;
+
+    using LibiadaCore.Classes.Root.Characteristics;
+
+    /// <summary>
     /// Класс выборки цепочек с характеристиками
-    ///</summary>
+    /// </summary>
     public class ChainPicksWithCharacteristics
     {
-        private Hashtable chains;
-        private List<CharacteristicsEnum> characteristicsNames;
-        private List<LinkedUpCharacteristic> charact;
+        /// <summary>
+        /// The chains.
+        /// </summary>
+        private readonly Hashtable chains;
 
-        ///<summary>
-        /// Конструктор
-        ///</summary>
-        ///<param name="chains">Хеш таблица с цепочками и вычисленными характеристиками</param>
-        ///<param name="charact">Массив характеристик и привязок</param>
-        public ChainPicksWithCharacteristics(Hashtable chains, List<LinkedUpCharacteristic> charact)
+        /// <summary>
+        /// The characteristics names.
+        /// </summary>
+        private readonly List<CharacteristicsEnum> characteristicsNames;
+
+        /// <summary>
+        /// The characters.
+        /// </summary>
+        private readonly List<LinkedUpCharacteristic> characteristics;
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ChainPicksWithCharacteristics"/> class.
+        /// </summary>
+        /// <param name="chains">
+        /// Хеш таблица с цепочками и вычисленными характеристиками
+        /// </param>
+        /// <param name="characters">
+        /// Массив характеристик и привязок
+        /// </param>
+        public ChainPicksWithCharacteristics(Hashtable chains, List<LinkedUpCharacteristic> characters)
         {
             this.chains = chains;
-            this.charact = charact;
+            this.characteristics = characters;
             characteristicsNames = new List<CharacteristicsEnum>();
-            for (int i = 0; i < charact.Count; i++)
+            for (int i = 0; i < characters.Count; i++)
             {
-                characteristicsNames.Add(charact[i].Calc.GetCharacteristicName());
+                characteristicsNames.Add(characters[i].Calc.GetCharacteristicName());
             }
-        }
-
-        /// <summary>
-        /// Возвращает выборку значений конкретной характеристики
-        /// </summary>
-        /// <param name="charact">Характеристика</param>
-        /// <returns>Выборка</returns>
-        public Picks GetPicks(CharacteristicsEnum charact)
-        {
-            Picks picks = new Picks(GetCharacteristicName(characteristicsNames.IndexOf(charact)));
-            IDictionaryEnumerator iter = chains.GetEnumerator();
-            while (iter.MoveNext())
-            {
-                picks.Add(((List<double>)iter.Value)[characteristicsNames.IndexOf(charact)]);
-            }
-            return picks;
-        }
-
-        /// <summary>
-        /// Возвращает выборку значений конкретной характеристики
-        /// </summary>
-        /// <returns>Выборка</returns>
-        public Picks GetPicks(int i)
-        {
-            Picks picks = new Picks(GetCharacteristicName(i));
-            IDictionaryEnumerator iter = chains.GetEnumerator();
-            while (iter.MoveNext())
-            {
-                picks.Add(((List<double>)iter.Value)[i]);
-            }
-            return picks;
         }
 
         /// <summary>
@@ -74,21 +60,63 @@ namespace BuildingsIterator.Classes
             }
         }
 
-        ///<summary>
-        /// Возвращает вектор характеристик для конкретной цепи
-        ///</summary>
-        ///<param name="i">Номер цепи в массиве</param>
-        ///<returns>Массив характеристик</returns>
-        ///<exception cref="Exception">Элемент не найден</exception>
-        public List<double> GetCharactVector(int i)
+        /// <summary>
+        /// Возвращает выборку значений конкретной характеристики
+        /// </summary>
+        /// <param name="characteristics">Характеристика</param>
+        /// <returns>Выборка</returns>
+        public Picks GetPicks(CharacteristicsEnum characteristics)
         {
-            IDictionaryEnumerator iter = chains.GetEnumerator();
-            while (iter.MoveNext())
+            var picks = new Picks(GetCharacteristicName(characteristicsNames.IndexOf(characteristics)));
+            IDictionaryEnumerator iterator = chains.GetEnumerator();
+            while (iterator.MoveNext())
+            {
+                picks.Add(((List<double>)iterator.Value)[characteristicsNames.IndexOf(characteristics)]);
+            }
+
+            return picks;
+        }
+
+        /// <summary>
+        /// Возвращает выборку значений конкретной характеристики
+        /// </summary>
+        /// <param name="i">
+        /// The i.
+        /// </param>
+        /// <returns>
+        /// Выборка.
+        /// </returns>
+        public Picks GetPicks(int i)
+        {
+            var picks = new Picks(GetCharacteristicName(i));
+            IDictionaryEnumerator iterator = chains.GetEnumerator();
+            while (iterator.MoveNext())
+            {
+                picks.Add(((List<double>)iterator.Value)[i]);
+            }
+
+            return picks;
+        }
+
+        /// <summary>
+        /// Возвращает вектор характеристик для конкретной цепи
+        /// </summary>
+        /// <param name="i">Номер цепи в массиве</param>
+        /// <returns>Массив характеристик</returns>
+        /// <exception cref="Exception">Элемент не найден</exception>
+        public List<double> GetCharacteristicsVector(int i)
+        {
+            IDictionaryEnumerator iterator = chains.GetEnumerator();
+            while (iterator.MoveNext())
             {
                 if (i == 0)
-                    return (List<double>) iter.Value;
+                {
+                    return (List<double>)iterator.Value;
+                }
+
                 i--;
             }
+
             throw new Exception("Элемент не найден");
         }
 
@@ -99,67 +127,88 @@ namespace BuildingsIterator.Classes
         /// <returns>Цепочка в виде строки</returns>
         public string GetChain(int i)
         {
-            IDictionaryEnumerator iter = chains.GetEnumerator();
-            while (iter.MoveNext())
+            IDictionaryEnumerator iterator = chains.GetEnumerator();
+            while (iterator.MoveNext())
             {
                 if (i == 0)
-                    return (string) iter.Key;
+                {
+                    return (string)iterator.Key;
+                }
+
                 i--;
             }
+
             throw new Exception("Цепочка не найдена");
         }
 
-        ///<summary>
+        /// <summary>
         /// Возвращает число расчитанных характеристик для каждой цепочки
-        ///</summary>
-        ///<returns></returns>
+        /// </summary>
+        /// <returns></returns>
         public int GetCharacteristicsCount()
         {
             return characteristicsNames.Count;
         }
 
-        ///<summary>
+        /// <summary>
         /// Возвращает имя характеристики
-        ///</summary>
-        ///<param name="i">Номер в массиве имен</param>
-        ///<returns>Строковое имя</returns>
+        /// </summary>
+        /// <param name="i">Номер в массиве имен</param>
+        /// <returns>Строковое имя</returns>
         public string GetCharacteristicName(int i)
         {
             return characteristicsNames[i].ToString();
         }
 
-        ///<summary>
+        /// <summary>
         /// Возвращает массив всех цепочек
-        ///</summary>
-        ///<returns></returns>
+        /// </summary>
+        /// <returns></returns>
         public List<string> GetAllChains()
         {
-            List<string> result = new List<string>();
-            IDictionaryEnumerator iter = chains.GetEnumerator();
-            while (iter.MoveNext())
+            var result = new List<string>();
+            IDictionaryEnumerator iterator = chains.GetEnumerator();
+            while (iterator.MoveNext())
             {
-                result.Add((string) iter.Key);
+                result.Add((string) iterator.Key);
             }
+
             return result;
         }
 
-        ///<summary>
-        ///</summary>
-        ///<param name="power"></param>
-        ///<returns></returns>
-        ///<exception cref="NotImplementedException"></exception>
-        public ChainPicksWithCharacteristics GetFilteredChainPicks(IChainFilter power)
+        /// <summary>
+        /// The get filtered chain picks.
+        /// </summary>
+        /// <param name="cardinality">
+        /// The cardinality.
+        /// </param>
+        /// <returns>
+        /// The <see cref="ChainPicksWithCharacteristics"/>.
+        /// </returns>
+        public ChainPicksWithCharacteristics GetFilteredChainPicks(IChainFilter cardinality)
         {
-            Hashtable newChains = new Hashtable();
-            IDictionaryEnumerator iter = chains.GetEnumerator();
-            while (iter.MoveNext())
+            var newChains = new Hashtable();
+            IDictionaryEnumerator iterator = chains.GetEnumerator();
+            while (iterator.MoveNext())
             {
-                if (power.IsValid((string) iter.Key))
-                    newChains.Add(iter.Key, iter.Value);
+                if (cardinality.IsValid((string)iterator.Key))
+                {
+                    newChains.Add(iterator.Key, iterator.Value);
+                }
             }
-            return new ChainPicksWithCharacteristics(newChains, charact);
+
+            return new ChainPicksWithCharacteristics(newChains, this.characteristics);
         }
 
+        /// <summary>
+        /// The fill chain list.
+        /// </summary>
+        /// <param name="values">
+        /// The values.
+        /// </param>
+        /// <exception cref="NotImplementedException">
+        /// Not implemented.
+        /// </exception>
         public void FillChainList(List<string> values)
         {
             throw new NotImplementedException();

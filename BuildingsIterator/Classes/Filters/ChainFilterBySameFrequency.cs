@@ -1,24 +1,36 @@
-using LibiadaCore.Classes.Root;
-using LibiadaCore.Classes.Root.Characteristics.Calculators;
-
 namespace BuildingsIterator.Classes.Filters
 {
-    ///<summary>
+    using LibiadaCore.Classes.Root;
+    using LibiadaCore.Classes.Root.Characteristics.Calculators;
+
+    /// <summary>
     /// Фильтр отфильтровывающий цепи по равенству частот вхождения элементов
-    ///</summary>
+    /// </summary>
     public class ChainFilterBySameFrequency : IChainFilter
     {
+        /// <summary>
+        /// The is valid.
+        /// </summary>
+        /// <param name="building">
+        /// The building.
+        /// </param>
+        /// <returns>
+        /// true if 
+        /// </returns>
         public bool IsValid(string building)
         {
-            Chain ch = new Chain(building);
-            Probability probability = new Probability();
-            AlphabetPower alphabetPower = new AlphabetPower();
-            double p = probability.Calculate(ch.CongenericChain(0), LinkUp.Start);
-            for (int i = 1; i < alphabetPower.Calculate(ch, LinkUp.Start); i++)
+            var chain = new Chain(building);
+            var countCalculator = new ElementsCount();
+            
+            var firstCount = (int)countCalculator.Calculate(chain.CongenericChain(0), Link.Start);
+            for (int i = 1; i < chain.Alphabet.Cardinality; i++)
             {
-                if (p != probability.Calculate(ch.CongenericChain(i), LinkUp.Start))
+                if (firstCount != (int)countCalculator.Calculate(chain.CongenericChain(i), Link.Start))
+                {
                     return false;
+                }
             }
+
             return true;
         }
     }

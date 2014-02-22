@@ -1,15 +1,19 @@
 namespace BuildingsIterator.Classes.Filters
 {
-    ///<summary>
+    /// <summary>
     /// Интерфес фильтра цепей
-    ///</summary>
+    /// </summary>
     public interface IChainFilter
     {
-        ///<summary>
+        /// <summary>
         /// Возвращает булевое значение валидности результата фильтрации
-        ///</summary>
-        ///<param name="building">Строй</param>
-        ///<returns></returns>
+        /// </summary>
+        /// <param name="building">
+        /// Строй
+        /// </param>
+        /// <returns>
+        /// true if chain is valid.
+        /// </returns>
         bool IsValid(string building);
     }
 }

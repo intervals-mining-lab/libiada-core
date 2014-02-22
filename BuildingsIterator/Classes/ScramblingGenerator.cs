@@ -1,76 +1,114 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using LibiadaCore.Classes.Root;
-using LibiadaCore.Classes.TheoryOfSet;
-
-namespace BuildingsIterator.Classes
+﻿namespace BuildingsIterator.Classes
 {
-    ///<summary>
+    using System;
+    using System.Collections;
+    using System.Collections.Generic;
+
+    using LibiadaCore.Classes.Root;
+    using LibiadaCore.Classes.TheoryOfSet;
+
+    /// <summary>
     /// Генерирует все возможные сочетания
-    ///</summary>
+    /// </summary>
     public class ScramblingGenerator
     {
+        /// <summary>
+        /// The alphabet.
+        /// </summary>
         private Alphabet alphabet;
-        private int Length;
+
+        /// <summary>
+        /// The length.
+        /// </summary>
+        private int length;
+
+        /// <summary>
+        /// The characteristic.
+        /// </summary>
         private List<LinkedUpCharacteristic> characteristic;
-        ///<summary>
+
+        /// <summary>
         /// Генерирует хештаблицу со всеми возможными строями в качестве ключа, 
         /// и списком характеристик в качестве значения
-        ///</summary>
-        ///<param name="alph">Алфавит на основе которого генерируем цепочки</param>
-        ///<param name="len">Длинна генерируемых цепочек</param>
-        ///<param name="charact">Массив интерфейсов вычисляемых характеристик</param>
-        ///<returns></returns>
-        public ChainPicksWithCharacteristics Generate(Alphabet alph, int len, List<LinkedUpCharacteristic> charact)
+        /// </summary>
+        /// <param name="alphabet">Алфавит на основе которого генерируем цепочки</param>
+        /// <param name="len">Длинна генерируемых цепочек</param>
+        /// <param name="charact">Массив интерфейсов вычисляемых характеристик</param>
+        /// <returns></returns>
+        public ChainPicksWithCharacteristics Generate(Alphabet alphabet, int len, List<LinkedUpCharacteristic> charact)
         {
-            alphabet = alph;
-            Length = len;
+            this.alphabet = alphabet;
+            this.length = len;
             characteristic = charact;
 
-            Hashtable hTable = new Hashtable();
-            //По всем возможным цепочкам (Для оптимизации скорости генерируется цепочки с одинаковой первой буквой)
-            for (int i = 0; i < Math.Pow(alphabet.Power, Length-1); i++)
+            var hashTable = new Hashtable();
+
+            // По всем возможным цепочкам (Для оптимизации скорости генерируется цепочки с одинаковой первой буквой)
+            for (int i = 0; i < Math.Pow(alphabet.Cardinality, this.length - 1); i++)
             {
                 Chain chain = GenerateChain(i);
                 List<double> characteristics = CalculateCharacteristics(chain);
                 try
                 {
-                    hTable.Add(ConvertArray.ArrayToString(chain.Building), characteristics);
+                    hashTable.Add(ConvertArray.ArrayToString(chain.Building), characteristics);
                 }
-                catch(Exception)
+                catch (Exception e)
                 {
                 }
             }
-            return new ChainPicksWithCharacteristics(hTable, charact);
+
+            return new ChainPicksWithCharacteristics(hashTable, charact);
         }
 
+        /// <summary>
+        /// The calculate characteristics.
+        /// </summary>
+        /// <param name="chain">
+        /// The chain.
+        /// </param>
+        /// <returns>
+        /// The <see cref="List"/>.
+        /// </returns>
         private List<double> CalculateCharacteristics(Chain chain)
         {
-            List<double> characteristics = new List<double>(characteristic.Count);
+            var characteristics = new List<double>(characteristic.Count);
             foreach (LinkedUpCharacteristic calculator in characteristic)
             {
-                characteristics.Add(calculator.Calc.Calculate(chain, calculator.LinkUp));
+                characteristics.Add(calculator.Calc.Calculate(chain, calculator.Link));
             }
+
             return characteristics;
         }
 
+        /// <summary>
+        /// The generate chain.
+        /// </summary>
+        /// <param name="i">
+        /// The i.
+        /// </param>
+        /// <returns>
+        /// The <see cref="Chain"/>.
+        /// </returns>
         private Chain GenerateChain(int i)
         {
-            //Очередная цепочка
-            Chain chain = new Chain(Length);
-            //Переменная для хранения остатка от деления на основание системы счисления (Мощность алфавита)
+            // Очередная цепочка
+            var chain = new Chain(this.length);
+
+            // Переменная для хранения остатка от деления на основание системы счисления (Мощность алфавита)
             int temp = i;
-            //Индекс в очередной генерируемой цепи
+
+            // Индекс в очередной генерируемой цепи
             int index = 0;
-            //По всем элементам
-            for (int j = Length - 1; j >= 0; j--)
+
+            // По всем элементам
+            for (int j = this.length - 1; j >= 0; j--)
             {
-                int element = (int)(temp / Math.Pow(alphabet.Power, j));
+                var element = (int)(temp / Math.Pow(alphabet.Cardinality, j));
                 chain.Add(alphabet[element], index);
-                temp = (int)(temp % Math.Pow(alphabet.Power, j));
+                temp = (int)(temp % Math.Pow(alphabet.Cardinality, j));
                 index++;
             }
+
             return chain;
         }
     }

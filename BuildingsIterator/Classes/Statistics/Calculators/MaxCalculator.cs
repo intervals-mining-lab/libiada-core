@@ -1,7 +1,7 @@
-using System.Collections.Generic;
-
 namespace BuildingsIterator.Classes.Statistics.Calculators
 {
+    using System.Collections.Generic;
+
     /// <summary>
     /// Вычисляет максимум выборки
     /// </summary>
@@ -14,13 +14,16 @@ namespace BuildingsIterator.Classes.Statistics.Calculators
         /// <returns>Максимум</returns>
         public double Calculate(List<double> values)
         {
-            List<double>.Enumerator iter = values.GetEnumerator();
+            List<double>.Enumerator iterator = values.GetEnumerator();
             double max = double.MinValue;
-            while (iter.MoveNext())
+            while (iterator.MoveNext())
             {
-                if (iter.Current > max)
-                    max = iter.Current;
+                if (iterator.Current > max)
+                {
+                    max = iterator.Current;
+                }
             }
+
             return max;
         }
     }
