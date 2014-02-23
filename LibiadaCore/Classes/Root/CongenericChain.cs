@@ -5,11 +5,14 @@ namespace LibiadaCore.Classes.Root
     using LibiadaCore.Classes.Misc;
     using LibiadaCore.Classes.Root.SimpleTypes;
 
+    using LibiadaCore.Classes.Root.IntervalsManagers;
+
     /// <summary>
     /// </summary>
     public class CongenericChain : BaseChain, IBaseObject
     {
-        protected List<int> intervals = new List<int>();
+        //protected List<int> intervals = new List<int>();
+        protected CongenericIntervalsManager intervalsManager = null;
         protected int MaxFilledPosition;
 
         /// <summary>
@@ -50,10 +53,6 @@ namespace LibiadaCore.Classes.Root
         {
             var tempCongenericChain = temp as CongenericChain;
             base.FillClone(tempCongenericChain);
-            if (tempCongenericChain != null)
-            {
-                tempCongenericChain.BuildIntervals();
-            }
         }
 
         /// <summary>
@@ -68,57 +67,21 @@ namespace LibiadaCore.Classes.Root
         /// Возвращает копию массива интервалов, 
         /// включая привязку к началу и к концу
         /// </summary>
-        public List<int> Intervals
+        public List<int> GetIntervals (Link link)
         {
-            get
+            if (intervalsManager == null)
             {
-                return new List<int>(intervals);
+                intervalsManager = new CongenericIntervalsManager(this);
             }
+            return intervalsManager.GetIntervals(link);
         }
-
-        /// <summary>
-        /// Находит позицию ближайшего слева от указанной позиции 
-        /// вхождения элемента в однородную цепочки.
-        /// </summary>
-        /// <param name="current">Позиция для отчёта</param>
-        /// <returns>Позиция бижайшего слева элемента в однородной цепи, или -1 если слева нет элементов</returns>
-        protected int Left(int current)
-        {
-            for (int i = current - 1; i >= 0; i--)
-            {
-                if (building[i] == 1)
-                {
-                    return i;
-                }
-            }
-            return -1;
-        }
-
-
-        /// <summary>
-        /// Находит позицию ближайшего справа от указанной позиции 
-        /// вхождения элемента в однородную цепочки.
-        /// </summary>
-        /// <param name="current">Позиция для отчёта</param>
-        /// <returns>Позиция бижайшего справа элемента в однородной цепи, или -длина цепочки если слева нет элементов</returns>
-        protected int Right(int current)
-        {
-            for (int i = current + 1; i < Length; i++)
-            {
-                if (building[i] == 1)
-                {
-                    return i;
-                }
-            }
-            return Length;
-        }
-
+        
         public override void Add(IBaseObject item, int index)
         {
+            intervalsManager = null;
             if (Element.Equals(item))
             {
                 base.Add(item, index);
-                BuildIntervals(index);
             }
         }
 
@@ -133,49 +96,12 @@ namespace LibiadaCore.Classes.Root
 
             set { Add(value, index); }
         }
-
-        /// <summary>
-        /// Перестраивает только последний интервал
-        /// если был добавлен элемент за последним из уже имеющихся
-        /// иначе вызывает метод полной перестройки интервалов.
-        /// </summary>
-        /// <param name="addedPosition">Позиция добавленного элемента</param>
-        private void BuildIntervals(int addedPosition)
-        {
-            if ((intervals.Count > 0) && (addedPosition > MaxFilledPosition))
-            {
-                intervals[intervals.Count - 1] = addedPosition - Left(addedPosition);
-                intervals.Add(Length - addedPosition);
-                MaxFilledPosition = addedPosition;
-            }
-            else
-            {
-                BuildIntervals();
-            }
-            
-        }
-
-        /// <summary>
-        /// Перестраивает массив интервалов.
-        /// </summary>
-        protected void BuildIntervals()
-        {
-            intervals = new List<int>();
-            int next = -1;
-            do
-            {
-                int current = next;
-                next = Right(current);
-
-                intervals.Add(next - current);
-            } while (next != Length);
-        }
-
+        
         public IBaseObject DeleteAt(int index)
         {
+            intervalsManager = null;
             IBaseObject element = alphabet[building[index]];
             building = ArrayManipulator.DeleteAt(building, index);
-            BuildIntervals();
             return element;
         }
     }

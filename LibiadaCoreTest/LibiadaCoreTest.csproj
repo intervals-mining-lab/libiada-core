@@ -83,6 +83,7 @@
     <Compile Include="Classes\Root\Characteristics\Calculators\GeometricMeanTest.cs" />
     <Compile Include="Classes\Root\Characteristics\Calculators\IdentificationInformationTest.cs" />
     <Compile Include="Classes\Root\Characteristics\Calculators\IntervalsCountTest.cs" />
+    <Compile Include="Classes\Root\Characteristics\Calculators\IntervalsSumTest.cs" />
     <Compile Include="Classes\Root\Characteristics\Calculators\LengthTest.cs" />
     <Compile Include="Classes\Root\Characteristics\Calculators\NormalizedDepthTest.cs" />
     <Compile Include="Classes\Root\Characteristics\Calculators\NormalizedAverageRemotenessTest.cs" />

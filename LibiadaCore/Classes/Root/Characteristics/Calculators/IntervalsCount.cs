@@ -27,22 +27,7 @@ namespace LibiadaCore.Classes.Root.Characteristics.Calculators
         /// </exception>
         public double Calculate(CongenericChain chain, Link link)
         {
-            List<int> intervals = chain.Intervals;
-            switch (link)
-            {
-                case Link.Start:
-                    return intervals.Count - 1;
-                case Link.End:
-                    return intervals.Count - 1;
-                case Link.Both:
-                    return intervals.Count;
-                case Link.Cycle:
-                    return intervals.Count - 1;
-                case Link.None:
-                    return intervals.Count - 2;
-                default:
-                    throw new ArgumentException("Unknown link.");
-            }
+            return chain.GetIntervals(link).Count;
         }
 
         /// <summary>

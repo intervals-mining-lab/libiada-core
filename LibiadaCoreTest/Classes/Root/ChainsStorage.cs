@@ -63,10 +63,10 @@ namespace LibiadaCoreTest.Classes.Root
                 fourthChain.Add(Elements["a"], 7);
                 congenericChains.Add(fourthChain);
 
-                var fifthChain = new CongenericChain(10000000, Elements["a"]);
+                var fifthChain = new CongenericChain(1000000, Elements["a"]);
                 fifthChain.Add(Elements["a"], 100);
-                fifthChain.Add(Elements["a"], 1000000);
-                fifthChain.Add(Elements["a"], 5000000);
+                fifthChain.Add(Elements["a"], 100000);
+                fifthChain.Add(Elements["a"], 500000);
                 congenericChains.Add(fifthChain);
 
                 // a a a a a
@@ -125,11 +125,11 @@ namespace LibiadaCoreTest.Classes.Root
 
                     new Dictionary<Link, List<int>>
                     {
-                        {Link.Start, new List<int> {101, 999900, 4000000}},
-                        {Link.End, new List<int> {999900, 4000000, 5000000}},
-                        {Link.Both, new List<int> {101,999900, 4000000, 5000000}},
-                        {Link.Cycle, new List<int> {999900, 4000000, 5000100}},
-                        {Link.None, new List<int>{999900, 4000000}}
+                        {Link.Start, new List<int> {101, 99900, 400000}},
+                        {Link.End, new List<int> {99900, 400000, 500000}},
+                        {Link.Both, new List<int> {101,99900, 400000, 500000}},
+                        {Link.Cycle, new List<int> {99900, 400000, 500100}},
+                        {Link.None, new List<int>{99900, 400000}}
                     },
                     
                     new Dictionary<Link, List<int>>

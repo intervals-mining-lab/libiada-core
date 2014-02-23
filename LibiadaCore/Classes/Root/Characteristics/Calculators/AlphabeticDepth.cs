@@ -38,29 +38,14 @@
                 throw new InvalidOperationException("Глубина в масштабе алфавита может вычисляться только для полной цепи.");
             }
 
-            List<int> intervals = chain.Intervals;
+            List<int> intervals = chain.GetIntervals(link);
             double result = 0;
-            for (int i = 1; i < intervals.Count - 1; i++)
+            for (int i = 0; i < intervals.Count; i++)
             {
                 result += Math.Log(intervals[i], alphabetCardinality);
             }
 
-            switch (link)
-            {
-                case Link.Start:
-                    return result + Math.Log(intervals[0], alphabetCardinality);
-                case Link.End:
-                    return result + Math.Log(intervals[intervals.Count - 1], alphabetCardinality);
-                case Link.Both:
-                    return result + Math.Log(intervals[0], alphabetCardinality) +
-                        Math.Log(intervals[intervals.Count - 1], alphabetCardinality);
-                case Link.Cycle:
-                    return result + Math.Log(intervals[intervals.Count - 1] + intervals[0] - 1, alphabetCardinality);
-                case Link.None:
-                    return result;
-                default:
-                    throw new ArgumentException("Unknown link.");
-            }
+            return result;
         }
 
         /// <summary>

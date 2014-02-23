@@ -70,7 +70,7 @@ namespace LibiadaCoreTest.Classes.Root
                 };
             for (int i = 0; i < temp.Alphabet.Cardinality; i++)
             {
-                List<int> actualIntervals = temp.CongenericChain(i).Intervals;
+                List<int> actualIntervals = temp.CongenericChain(i).GetIntervals(Link.Both);
                 for (int j = 0; j < actualIntervals.Count; j++)
                 {
                     Assert.AreEqual(intervals[i][j], actualIntervals[j], "не совпадают {0} интервалы {1} цепочки", j, i);

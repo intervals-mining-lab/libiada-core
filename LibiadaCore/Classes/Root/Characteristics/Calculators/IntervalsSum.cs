@@ -25,28 +25,13 @@
         /// </exception>
         public double Calculate(CongenericChain chain, Link link)
         {
-            List<int> intervals = chain.Intervals;
+            List<int> intervals = chain.GetIntervals(link);
             long sum = 0;
-            for (int i = 1; i < intervals.Count - 1; i++)
+            for (int i = 0; i < intervals.Count; i++)
             {
                 sum += intervals[i];
             }
-
-            switch (link)
-            {
-                case Link.Start:
-                    return sum + intervals[0];
-                case Link.End:
-                    return sum + intervals[intervals.Count - 1];
-                case Link.Both:
-                    return sum + intervals[0] + intervals[intervals.Count - 1];
-                case Link.Cycle:
-                    return sum + intervals[intervals.Count - 1] + intervals[0] - 1;
-                case Link.None:
-                    return sum;
-                default:
-                    throw new ArgumentException("Unknown link.");
-            }
+            return sum;
         }
 
         /// <summary>
