@@ -1,25 +1,36 @@
-﻿using System;
-using System.Collections.Specialized;
-using Clusterizator.Classes.AlternativeClusterization;
-using NUnit.Framework;
-using System.Collections.Generic;
-using Clusterizator.Classes.AlternativeClusterization.Calculators;
-
-namespace ClusterizatorTest.Classes.AlternativeClusterization.Calculators
+﻿namespace ClusterizatorTest.Classes.AlternativeClusterization.Calculators
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Collections.Specialized;
+
+    using Clusterizator.Classes.AlternativeClusterization;
+    using Clusterizator.Classes.AlternativeClusterization.Calculators;
+
+    using NUnit.Framework;
+
+    /// <summary>
+    /// The equipotency calculator second test.
+    /// </summary>
     [TestFixture]
-    public class HCalculatorSecondTest
+    public class EquipotencyCalculatorSecondTest
     {
+        /// <summary>
+        /// The manager.
+        /// </summary>
         private GraphManager manager;
 
+        /// <summary>
+        /// The init.
+        /// </summary>
         [SetUp]
         public void Init()
         {
-            var hd1 = new HybridDictionary {{"y", 0}, {"x", 10}};
-            var hd2 = new HybridDictionary {{"y", 2}, {"x", 15}};
-            var hd3 = new HybridDictionary {{"y", 5}, {"x", 25}};
-            var hd4 = new HybridDictionary {{"y", 6}, {"x", 15}};
-            var hd5 = new HybridDictionary {{"y", 6}, {"x", 18}};
+            var hd1 = new HybridDictionary { { "y", 0 }, { "x", 10 } };
+            var hd2 = new HybridDictionary { { "y", 2 }, { "x", 15 } };
+            var hd3 = new HybridDictionary { { "y", 5 }, { "x", 25 } };
+            var hd4 = new HybridDictionary { { "y", 6 }, { "x", 15 } };
+            var hd5 = new HybridDictionary { { "y", 6 }, { "x", 18 } };
 
             var elements = new List<GraphElement>
                 {
@@ -44,10 +55,12 @@ namespace ClusterizatorTest.Classes.AlternativeClusterization.Calculators
                     new Connection(3, 4)
                 };
 
-
             manager = new GraphManager(connections, elements);
         }
 
+        /// <summary>
+        /// The four points zero test.
+        /// </summary>
         [Test]
         public void FourPointsZeroTest()
         {
@@ -62,18 +75,21 @@ namespace ClusterizatorTest.Classes.AlternativeClusterization.Calculators
                 manager.Connections[i].Connected = connected[i];
             }
 
-            var taxonNumbers = new[] {1, 1, 1, 1, 2};
+            var taxonNumbers = new[] { 1, 1, 1, 1, 2 };
 
             for (int i = 0; i < taxonNumbers.Length; i++)
             {
                 manager.Elements[i].TaxonNumber = taxonNumbers[i];
             }
 
-            var d = HCalculator.Calculate(manager);
-            d = Math.Round(d*100)/100;
+            var d = EquipotencyCalculator.Calculate(manager);
+            d = Math.Round(d * 100) / 100;
             Assert.AreEqual(0.64, d);
         }
 
+        /// <summary>
+        /// The four points one test.
+        /// </summary>
         [Test]
         public void FourPointsOneTest()
         {
@@ -87,18 +103,21 @@ namespace ClusterizatorTest.Classes.AlternativeClusterization.Calculators
                 manager.Connections[i].Connected = connected[i];
             }
 
-            var taxonNumbers = new[] {1, 1, 3, 2, 2};
+            var taxonNumbers = new[] { 1, 1, 3, 2, 2 };
 
             for (int i = 0; i < taxonNumbers.Length; i++)
             {
                 manager.Elements[i].TaxonNumber = taxonNumbers[i];
             }
 
-            var d = HCalculator.Calculate(manager);
-            d = Math.Round(d*100)/100;
+            var d = EquipotencyCalculator.Calculate(manager);
+            d = Math.Round(d * 100) / 100;
             Assert.AreEqual(0.86, d);
         }
 
+        /// <summary>
+        /// The four points six test.
+        /// </summary>
         [Test]
         public void FourPointsSixTest()
         {
@@ -112,7 +131,7 @@ namespace ClusterizatorTest.Classes.AlternativeClusterization.Calculators
                 manager.Elements[i].TaxonNumber = i + 1;
             }
 
-            Assert.AreEqual(1, HCalculator.Calculate(manager));
+            Assert.AreEqual(1, EquipotencyCalculator.Calculate(manager));
         }
     }
 }

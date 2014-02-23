@@ -1,13 +1,18 @@
-using Clusterizator.Classes.AlternativeClusterization;
-using NUnit.Framework;
-
 namespace ClusterizatorTest.Classes.AlternativeClusterization
-
 {
+    using Clusterizator.Classes.AlternativeClusterization;
+
+    using NUnit.Framework;
+
+    /// <summary>
+    /// The connection test.
+    /// </summary>
     [TestFixture]
     public class ConnectionTest
     {
-
+        /// <summary>
+        /// The connection one test.
+        /// </summary>
         [Test]
         public void ConnectionOneTest()
         {
@@ -15,18 +20,21 @@ namespace ClusterizatorTest.Classes.AlternativeClusterization
             Assert.IsFalse(conn1.Connected);
         }
 
+        /// <summary>
+        /// The clone one test.
+        /// </summary>
         [Test]
         public void CloneOneTest()
         {
             var conn1 = new Connection(2, 5)
-                {
-                    Connected = false,
-                    Distance = 6,
-                    NormalizedDistance = 0.5,
-                    Tau = 3,
-                    TauStar = 7,
-                    lambda = 13
-                };
+                            {
+                                Connected = false,
+                                Distance = 6,
+                                NormalizedDistance = 0.5,
+                                Tau = 3,
+                                TauStar = 7,
+                                Lambda = 13
+                            };
             var conn2 = conn1.Clone();
             Assert.AreEqual(conn1.Connected, conn2.Connected);
             Assert.AreEqual(conn1.FirstElementIndex, conn2.FirstElementIndex);
@@ -35,25 +43,26 @@ namespace ClusterizatorTest.Classes.AlternativeClusterization
             Assert.AreEqual(conn1.NormalizedDistance, conn2.NormalizedDistance);
             Assert.AreEqual(conn1.Tau, conn2.Tau);
             Assert.AreEqual(conn1.TauStar, conn2.TauStar);
-            Assert.AreEqual(conn1.lambda, conn2.lambda);
-            Assert.IsInstanceOf(typeof (Connection), conn2);
-            Assert.AreNotSame(conn1,conn2);
+            Assert.AreEqual(conn1.Lambda, conn2.Lambda);
+            Assert.IsInstanceOf(typeof(Connection), conn2);
+            Assert.AreNotSame(conn1, conn2);
         }
 
-
-
+        /// <summary>
+        /// The clone two test.
+        /// </summary>
         [Test]
         public void CloneTwoTest()
         {
             var conn1 = new Connection(2, 3)
-                {
-                    Connected = true,
-                    Distance = 1,
-                    NormalizedDistance = 0.1,
-                    Tau = 44,
-                    TauStar = 0,
-                    lambda = 5
-                };
+                            {
+                                Connected = true,
+                                Distance = 1,
+                                NormalizedDistance = 0.1,
+                                Tau = 44,
+                                TauStar = 0,
+                                Lambda = 5
+                            };
             var conn2 = conn1.Clone();
             Assert.AreEqual(conn1.Connected, conn2.Connected);
             Assert.AreEqual(conn1.FirstElementIndex, conn2.FirstElementIndex);
@@ -62,11 +71,9 @@ namespace ClusterizatorTest.Classes.AlternativeClusterization
             Assert.AreEqual(conn1.NormalizedDistance, conn2.NormalizedDistance);
             Assert.AreEqual(conn1.Tau, conn2.Tau);
             Assert.AreEqual(conn1.TauStar, conn2.TauStar);
-            Assert.AreEqual(conn1.lambda, conn2.lambda);
-            Assert.IsInstanceOf(typeof (Connection), conn2);
+            Assert.AreEqual(conn1.Lambda, conn2.Lambda);
+            Assert.IsInstanceOf(typeof(Connection), conn2);
             Assert.AreNotSame(conn1, conn2);
         }
     }
 }
-
-

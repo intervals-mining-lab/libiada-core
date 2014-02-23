@@ -1,48 +1,48 @@
-using System;
-using System.Collections.Generic;
-
 namespace Clusterizator.Classes.AlternativeClusterization.Calculators
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+
     /// <summary>
     /// Класс для вычисления нормированного эвклидового расстояния 
     /// </summary>
-    public class NormalizedLinearCalculator:ICalculator
+    public class NormalizedLinearCalculator : ICalculator
     {
         /// <summary>
         /// Метод вычисляющий нормированное расстояние 
         /// </summary>
-        /// <param name="graph">Массив связей графа</param>
+        /// <param name="graph">
+        /// Массив связей графа.
+        /// </param>
         public void Calculate(GraphManager graph)
         {
-            double D = GetDiameter(graph.Connections);
-            if(Math.Abs(D - 0) < 0.00001)
+            double diameter = GetDiameter(graph.Connections);
+            if (Math.Abs(diameter - 0) < 0.00001)
             {
                 return;
             }
-            //Ограничиваем диапазон расстояний в интервале (0;1]
-            for (int i = 0; i < graph.Connections.Count; i++)
+
+            // Ограничиваем диапазон расстояний в интервале (0;1]
+            foreach (Connection connection in graph.Connections)
             {
-                graph.Connections[i].NormalizedDistance = graph.Connections[i].Distance / D;  
-            } 
+                connection.NormalizedDistance = connection.Distance / diameter;
+            }
         }
 
         /// <summary>
         /// Метод для нахождения диаметра графа
         /// (наибольшей дуги графа)
         /// </summary>
-        /// <param name="graph">Массив связей графа</param>
-        /// <returns>d - максимальное расстояние</returns>
-        private double GetDiameter(List<Connection> graph)
+        /// <param name="graph">
+        /// Массив связей графа
+        /// </param>
+        /// <returns>
+        /// d - максимальное расстояние
+        /// </returns>
+        private double GetDiameter(IEnumerable<Connection> graph)
         {
-            double max = 0;
-            for (int i = 0; i < graph.Count; i++)
-            {
-                if (max < graph[i].Distance)
-                {
-                    max = graph[i].Distance;
-                }
-            }
-            return max;
+            return graph.Max(i => i.Distance);
         }
     }
 }

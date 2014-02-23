@@ -47,15 +47,10 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Classes\AlternativeClusterization\Calculators\HCalculatorTest.cs" />
-    <Compile Include="Classes\AlternativeClusterization\Calculators\HCalculatorSecondTest.cs" />
+    <Compile Include="Classes\AlternativeClusterization\Calculators\EquipotencyCalculatorTest.cs" />
+    <Compile Include="Classes\AlternativeClusterization\Calculators\EquipotencyCalculatorSecondTest.cs" />
     <Compile Include="Classes\AlternativeClusterization\Calculators\LambdaCalculatorTest.cs" />
     <Compile Include="Classes\AlternativeClusterization\Calculators\LinearCalculatorTest.cs" />
     <Compile Include="Classes\AlternativeClusterization\Calculators\NormalizedDistCalculatorTest.cs" />

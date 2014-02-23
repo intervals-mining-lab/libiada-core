@@ -6,10 +6,12 @@ namespace Clusterizator.Classes.AlternativeClusterization.Calculators
     /// </summary>
     public interface ICalculator
     {
-        ///<summary>
+        /// <summary>
         /// Метод реализует какое-либо вычисление для графа.
-        ///</summary>
-        ///<param name="graph">Граф</param>
+        /// </summary>
+        /// <param name="graph">
+        /// Connections graph.
+        /// </param>
         void Calculate(GraphManager graph);
 
     }

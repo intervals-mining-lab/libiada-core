@@ -1,50 +1,63 @@
-using System.Collections.Specialized;
-using Clusterizator.Classes.AlternativeClusterization;
-using NUnit.Framework;
-using System.Collections.Generic;
-using Clusterizator.Classes.AlternativeClusterization.Calculators;
-
 namespace ClusterizatorTest.Classes.AlternativeClusterization.Calculators
 {
+    using System.Collections.Generic;
+    using System.Collections.Specialized;
+
+    using Clusterizator.Classes.AlternativeClusterization;
+    using Clusterizator.Classes.AlternativeClusterization.Calculators;
+
+    using NUnit.Framework;
+
+    /// <summary>
+    /// The equipotency calculator test.
+    /// </summary>
     [TestFixture]
-    public class HCalculatorTest
+    public class EquipotencyCalculatorTest
     {
+        /// <summary>
+        /// The manager.
+        /// </summary>
         private GraphManager manager;
 
+        /// <summary>
+        /// The init.
+        /// </summary>
         [SetUp]
         public void Init()
         {
-            var hd1 = new HybridDictionary {{"y", 0}};
-            var hd2 = new HybridDictionary {{"y", 2}};
-            var hd3 = new HybridDictionary {{"y", 5}};
-            var hd4 = new HybridDictionary {{"y", 6}};
+            var hd1 = new HybridDictionary { { "y", 0 } };
+            var hd2 = new HybridDictionary { { "y", 2 } };
+            var hd3 = new HybridDictionary { { "y", 5 } };
+            var hd4 = new HybridDictionary { { "y", 6 } };
 
             var elements = new List<GraphElement>
-                {
-                    new GraphElement(hd1, "1"),
-                    new GraphElement(hd2, "2"),
-                    new GraphElement(hd3, "3"),
-                    new GraphElement(hd4, "4")
-                };
+                               {
+                                   new GraphElement(hd1, "1"),
+                                   new GraphElement(hd2, "2"),
+                                   new GraphElement(hd3, "3"),
+                                   new GraphElement(hd4, "4")
+                               };
 
             var connections = new List<Connection>
-                {
-                    new Connection(0, 1),
-                    new Connection(0, 2),
-                    new Connection(0, 3),
-                    new Connection(1, 2),
-                    new Connection(1, 3),
-                    new Connection(2, 3)
-                };
+                                  {
+                                      new Connection(0, 1),
+                                      new Connection(0, 2),
+                                      new Connection(0, 3),
+                                      new Connection(1, 2),
+                                      new Connection(1, 3),
+                                      new Connection(2, 3)
+                                  };
 
-
-            manager = new GraphManager(connections,elements);
+            manager = new GraphManager(connections, elements);
         }
 
+        /// <summary>
+        /// The four points zero test.
+        /// </summary>
         [Test]
         public void FourPointsZeroTest()
         {
-            var connected = new[] {true, false, false, true, false, false};
+            var connected = new[] { true, false, false, true, false, false };
 
             for (int i = 0; i < connected.Length; i++)
             {
@@ -58,9 +71,12 @@ namespace ClusterizatorTest.Classes.AlternativeClusterization.Calculators
                 manager.Elements[i].TaxonNumber = taxonNumbers[i];
             }
 
-            Assert.AreEqual(0.75, HCalculator.Calculate(manager));
+            Assert.AreEqual(0.75, EquipotencyCalculator.Calculate(manager));
         }
 
+        /// <summary>
+        /// The four points one test.
+        /// </summary>
         [Test]
         public void FourPointsOneTest()
         {
@@ -78,9 +94,12 @@ namespace ClusterizatorTest.Classes.AlternativeClusterization.Calculators
                 manager.Elements[i].TaxonNumber = taxonNumbers[i];
             }
 
-            Assert.AreEqual(1, HCalculator.Calculate(manager));
+            Assert.AreEqual(1, EquipotencyCalculator.Calculate(manager));
         }
 
+        /// <summary>
+        /// The four points two test.
+        /// </summary>
         [Test]
         public void FourPointsTwoTest()
         {
@@ -98,9 +117,12 @@ namespace ClusterizatorTest.Classes.AlternativeClusterization.Calculators
                 manager.Elements[i].TaxonNumber = taxonNumbers[i];
             }
 
-            Assert.AreEqual(0.75, HCalculator.Calculate(manager));
+            Assert.AreEqual(0.75, EquipotencyCalculator.Calculate(manager));
         }
 
+        /// <summary>
+        /// The four points three test.
+        /// </summary>
         [Test]
         public void FourPointsThreeTest()
         {
@@ -118,9 +140,12 @@ namespace ClusterizatorTest.Classes.AlternativeClusterization.Calculators
                 manager.Elements[i].TaxonNumber = taxonNumbers[i];
             }
 
-            Assert.AreEqual(0.84375, HCalculator.Calculate(manager));
+            Assert.AreEqual(0.84375, EquipotencyCalculator.Calculate(manager));
         }
 
+        /// <summary>
+        /// The four points four test.
+        /// </summary>
         [Test]
         public void FourPointsFourTest()
         {
@@ -138,9 +163,12 @@ namespace ClusterizatorTest.Classes.AlternativeClusterization.Calculators
                 manager.Elements[i].TaxonNumber = taxonNumbers[i];
             }
 
-            Assert.AreEqual(0.84375, HCalculator.Calculate(manager));
+            Assert.AreEqual(0.84375, EquipotencyCalculator.Calculate(manager));
         }
 
+        /// <summary>
+        /// The four points five test.
+        /// </summary>
         [Test]
         public void FourPointsFiveTest()
         {
@@ -158,9 +186,12 @@ namespace ClusterizatorTest.Classes.AlternativeClusterization.Calculators
                 manager.Elements[i].TaxonNumber = taxonNumbers[i];
             }
 
-            Assert.AreEqual(0.84375, HCalculator.Calculate(manager));
+            Assert.AreEqual(0.84375, EquipotencyCalculator.Calculate(manager));
         }
 
+        /// <summary>
+        /// The four points six test.
+        /// </summary>
         [Test]
         public void FourPointsSixTest()
         {
@@ -171,12 +202,15 @@ namespace ClusterizatorTest.Classes.AlternativeClusterization.Calculators
 
             for (int i = 0; i < 4; i++)
             {
-                manager.Elements[i].TaxonNumber = i+1;
+                manager.Elements[i].TaxonNumber = i + 1;
             }
 
-            Assert.AreEqual(1, HCalculator.Calculate(manager));
+            Assert.AreEqual(1, EquipotencyCalculator.Calculate(manager));
         }
 
+        /// <summary>
+        /// The four points seven test.
+        /// </summary>
         [Test]
         public void FourPointsSevenTest()
         {
@@ -194,9 +228,12 @@ namespace ClusterizatorTest.Classes.AlternativeClusterization.Calculators
                 manager.Elements[i].TaxonNumber = taxonNumbers[i];
             }
 
-            Assert.AreEqual(1, HCalculator.Calculate(manager));
+            Assert.AreEqual(1, EquipotencyCalculator.Calculate(manager));
         }
 
+        /// <summary>
+        /// The four points eleven test.
+        /// </summary>
         [Test]
         public void FourPointsElevenTest()
         {
@@ -214,7 +251,7 @@ namespace ClusterizatorTest.Classes.AlternativeClusterization.Calculators
                 manager.Elements[i].TaxonNumber = taxonNumbers[i];
             }
 
-            Assert.AreEqual(1, HCalculator.Calculate(manager));
+            Assert.AreEqual(1, EquipotencyCalculator.Calculate(manager));
         }
     }
 }

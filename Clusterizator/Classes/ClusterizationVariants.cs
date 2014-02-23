@@ -5,19 +5,14 @@ namespace Clusterizator.Classes
     using LibiadaCore.Classes.Root;
 
     /// <summary>
-    /// The clusterization result.
+    /// The clusterization variants.
     /// </summary>
-    public class ClusterizationResult : IBaseObject
+    public class ClusterizationVariants : IBaseObject
     {
         /// <summary>
-        /// The clusters.
+        /// The variants.
         /// </summary>
-        public ArrayList Clusters = new ArrayList();
-
-        /// <summary>
-        /// Gets or sets the quality.
-        /// </summary>
-        public double Quality { get; set; }
+        public ArrayList Variants = new ArrayList();
 
         /// <summary>
         /// The clone.
@@ -27,8 +22,7 @@ namespace Clusterizator.Classes
         /// </returns>
         public IBaseObject Clone()
         {
-            var result = new ClusterizationResult
-                { Quality = Quality, Clusters = (ArrayList)Clusters.Clone() };
+            var result = new ClusterizationVariants { Variants = (ArrayList)Variants.Clone() };
             return result;
         }
     }

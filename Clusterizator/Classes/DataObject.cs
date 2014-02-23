@@ -1,72 +1,73 @@
-using System;
-using System.Collections;
-using System.Collections.Specialized;
-using LibiadaCore.Classes.Root;
-
 namespace Clusterizator.Classes
 {
-    ///<summary>
-    ///</summary>
-    public class DataObject :IBaseObject,  IEnumerable
+    using System;
+    using System.Collections;
+    using System.Collections.Specialized;
+
+    using LibiadaCore.Classes.Root;
+
+    /// <summary>
+    /// The data object.
+    /// </summary>
+    public class DataObject : IBaseObject, IEnumerable
     {
+        /// <summary>
+        /// The vault.
+        /// </summary>
         public readonly HybridDictionary Vault = new HybridDictionary();
 
-        ///<summary>
-        ///</summary>
+        /// <summary>
+        /// Gets or sets the id.
+        /// </summary>
         public long Id { get; set; }
 
-        ///<summary>
-        ///</summary>
-        ///<param name="s"></param>
-        ///<param name="d"></param>
-        ///<exception cref="NotImplementedException"></exception>
+        /// <summary>
+        /// The add.
+        /// </summary>
+        /// <param name="s">
+        /// The s.
+        /// </param>
+        /// <param name="d">
+        /// The d.
+        /// </param>
         public void Add(string s, double d)
         {
             Vault.Add(s, d);
         }
 
-
-        ///<summary>
-        ///</summary>
-        ///<param name="s"></param>
-        ///<returns></returns>
-        ///<exception cref="NotImplementedException"></exception>
+        /// <summary>
+        /// The get.
+        /// </summary>
+        /// <param name="s">
+        /// The s.
+        /// </param>
+        /// <returns>
+        /// The <see cref="double"/>.
+        /// </returns>
         public double Get(string s)
         {
-            return (double) Vault[s];
+            return (double)Vault[s];
         }
 
+        /// <summary>
+        /// The get enumerator.
+        /// </summary>
+        /// <returns>
+        /// The <see cref="IEnumerator"/>.
+        /// </returns>
         public IEnumerator GetEnumerator()
         {
             return Vault.GetEnumerator();
         }
 
-        ///<summary>
-        ///</summary>
-        ///<param name="o"></param>
-        ///<returns></returns>
-        ///<exception cref="Exception"></exception>
-        public double Distance(DataObject o)
-        {
-            IEnumerator from = o.GetEnumerator();
-            IEnumerator to = GetEnumerator();
-            from.Reset();
-            to.Reset();
-            double result = 0;
-            while( from.MoveNext() && to.MoveNext())
-            {
-                if (!((DictionaryEntry)from.Current).Key.Equals(((DictionaryEntry)to.Current).Key))
-                {
-                    throw new Exception("Can not calculate different parameters. First: " + ((DictionaryEntry)from.Current).Key + " Second " + ((DictionaryEntry)to.Current).Key);
-                }
-                result +=
-                    Math.Pow(((double) ((DictionaryEntry) from.Current).Value) -
-                             ((double) ((DictionaryEntry) to.Current).Value), 2);
-            }
-
-            return Math.Sqrt(result);
-        }
-
+        /// <summary>
+        /// The clone.
+        /// </summary>
+        /// <returns>
+        /// The <see cref="IBaseObject"/>.
+        /// </returns>
+        /// <exception cref="NotImplementedException">
+        /// </exception>
         public IBaseObject Clone()
         {
             throw new NotImplementedException();

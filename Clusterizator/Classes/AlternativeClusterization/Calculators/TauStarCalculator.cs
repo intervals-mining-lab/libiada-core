@@ -1,8 +1,8 @@
-using System;
-using System.Collections.Generic;
-
 namespace Clusterizator.Classes.AlternativeClusterization.Calculators
 {
+    using System;
+    using System.Collections.Generic;
+
     /// <summary>
     ///  ласс дл€ вычислени€ локальной плотности точек
     /// в окрестности данной пары точек
@@ -13,72 +13,128 @@ namespace Clusterizator.Classes.AlternativeClusterization.Calculators
         /// ћетод вычисл€ющий локальную плотность точек 
         /// в окрестности данной пары точек
         /// </summary>
-        /// <param name="graph">ћассив св€зей графа</param>
+        /// <param name="graph">
+        /// ћассив св€зей графа.
+        /// </param>
         public void Calculate(GraphManager graph)
         {
             for (int i = 0; i < graph.Connections.Count; i++)
             {
                 Connection connection = graph.Connections[i];
-                double bMin = GetBmin(graph.Connections, graph.Elements.Count,
+                double bMin = GetBmin(
+                    graph.Connections,
+                    graph.Elements.Count,
                     connection.FirstElementIndex,
                     connection.SecondElementIndex);
                 connection.TauStar = connection.Distance / bMin;
             }
-
         }
 
         /// <summary>
         /// ¬ычисл€ет минимальное рассто€ние до пары точек,
         /// т.е. ищет самое короткое ребро среди смежных данным точкам
         /// </summary>
-        /// <param name="graph">ћассив св€зей графа</param>
-        /// <param name="elementsPower"> </param>
-        /// <param name="firstElement">перва€ точка</param>
-        /// <param name="secondElement">втора€ точка</param>
-        /// <returns>Bmin - минимальное рассто€ние</returns>
+        /// <param name="graph">
+        /// ћассив св€зей графа
+        /// </param>
+        /// <param name="elementsPower">
+        /// Count of elements.
+        /// </param>
+        /// <param name="firstElement">
+        /// перва€ точка
+        /// </param>
+        /// <param name="secondElement">
+        /// втора€ точка
+        /// </param>
+        /// <returns>
+        /// Bmin - минимальное рассто€ние
+        /// </returns>
         private double GetBmin(List<Connection> graph, int elementsPower, int firstElement, int secondElement)
         {
-            double min = Math.Min(SearchForMinimum(graph, elementsPower, firstElement, secondElement),
+            double min = Math.Min(
+                SearchForMinimum(graph, elementsPower, firstElement, secondElement),
                 SearchForMinimum(graph, elementsPower, secondElement, firstElement));
             return min;
         }
 
+        /// <summary>
+        /// The search for minimum.
+        /// </summary>
+        /// <param name="graph">
+        /// The graph.
+        /// </param>
+        /// <param name="elementsPower">
+        /// The elements power.
+        /// </param>
+        /// <param name="element">
+        /// The element.
+        /// </param>
+        /// <param name="exceptedElement">
+        /// The excepted element.
+        /// </param>
+        /// <returns>
+        /// The <see cref="double"/>.
+        /// </returns>
         private double SearchForMinimum(List<Connection> graph, int elementsPower, int element, int exceptedElement)
         {
-            double min = double.MaxValue; //текущее минимальное рассто€ние
+            // текущее минимальное рассто€ние
+            double min = double.MaxValue; 
 
             int blockBeginning = 0;
             for (int i = 0; i < element; i++)
             {
-                blockBeginning += BlockLength(i, elementsPower); //ищЄм начало нужного нам блока
+                // ищЄм начало нужного нам блока
+                blockBeginning += BlockLength(i, elementsPower); 
             }
 
-            int blockSum = 0; //сумма длин предыдущих блоков
-            int shift = element - 1; //сдвиг внутри блока
+            // сумма длин предыдущих блоков
+            int blockSum = 0;
 
-            //цикл перебора отдельных значений в массиве пар вершин 
+            // сдвиг внутри блока
+            int shift = element - 1; 
+
+            // цикл перебора отдельных значений в массиве пар вершин 
             for (int k = 0, j = element - 1; shift >= 0; j = blockSum + (--shift), k++)
             {
-                if ((min > graph[j].Distance) && (graph[j].SecondElementIndex != exceptedElement) &&
+                if ((min > graph[j].Distance) && 
+                    (graph[j].SecondElementIndex != exceptedElement) &&
                     (graph[j].FirstElementIndex != exceptedElement))
                 {
                     min = graph[j].Distance;
                 }
+
                 blockSum += BlockLength(k, elementsPower);
             }
+            
+            // вычисл€ем длину блока
+            int ourBlockLength = BlockLength(element, elementsPower);
 
-            int ourBlockLength = BlockLength(element, elementsPower); //вычисл€ем длину блока
-            for (int k = blockBeginning; k < blockBeginning + ourBlockLength; k++) //перебор блока от начала до конца
+            // перебор блока от начала до конца
+            for (int k = blockBeginning; k < blockBeginning + ourBlockLength; k++) 
             {
-                if ((min > graph[k].Distance) && (graph[k].SecondElementIndex != exceptedElement) &&
+                if ((min > graph[k].Distance) && 
+                    (graph[k].SecondElementIndex != exceptedElement) &&
                     (graph[k].FirstElementIndex != exceptedElement))
                 {
                     min = graph[k].Distance;
                 }
             }
+
             return min;
         }
 
+        /// <summary>
+        /// The block length.
+        /// </summary>
+        /// <param name="element">
+        /// The element.
+        /// </param>
+        /// <param name="power">
+        /// The power.
+        /// </param>
+        /// <returns>
+        /// The <see cref="int"/>.
+        /// </returns>
         private int BlockLength(int element, int power)
         {
             return power - (element + 1);

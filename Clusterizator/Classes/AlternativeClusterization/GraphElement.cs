@@ -1,30 +1,43 @@
-using System;
-using System.Collections.Specialized;
-
 namespace Clusterizator.Classes.AlternativeClusterization
 {
+    using System.Collections.Specialized;
+
     /// <summary>
     /// Вершина графа
     /// </summary>
     public class GraphElement
     {
         /// <summary>
-        /// Координаты точки в виде хеш-таблицы
+        /// The taxon number.
         /// </summary>
-        public HybridDictionary Content;
-        private Object id;
         private int taxonNumber;
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="GraphElement"/> class.
+        /// </summary>
+        /// <param name="element"> 
+        /// Координаты
+        /// </param>
+        /// <param name="name"> 
+        /// Имя объекта
+        /// </param>
+        public GraphElement(HybridDictionary element, object name)
+        {
+            Content = element;
+            this.Id = name;
+            taxonNumber = 0;
+        }
 
         /// <summary>
         /// Имя вершины
         /// </summary>
-        public Object Id
-        {
-            get
-            {
-                return id;
-            }
-        }
+        public object Id { get; private set; }
+
+        /// <summary>
+        /// Координаты точки в виде хеш-таблицы
+        /// </summary>
+        public HybridDictionary Content { get; set; }
+
         /// <summary>
         /// Номер таксона, которому принадлежит вершина
         /// </summary>
@@ -34,9 +47,10 @@ namespace Clusterizator.Classes.AlternativeClusterization
             {
                 return taxonNumber;
             }
+
             set
             {
-                if (value>=0)
+                if (value >= 0)
                 {
                     taxonNumber = value;
                 }
@@ -44,24 +58,14 @@ namespace Clusterizator.Classes.AlternativeClusterization
         }
 
         /// <summary>
-        /// Конструктор инициализирует внутренние значения принятыми параметрами
-        /// </summary>
-        /// <param name="element"> Координаты</param>
-        /// <param name="name"> Имя объекта</param>
-        public GraphElement(HybridDictionary element,Object name)
-        {
-            Content = element;
-            id = name;
-            taxonNumber = 0;
-        }
-
-        ///<summary>
         /// Метод возвращает копию объекта
-        ///</summary>
-        ///<returns>копия данной вершины графа</returns>
+        /// </summary>
+        /// <returns>
+        /// копия данной вершины графа
+        /// </returns>
         public GraphElement Clone()
         {
-            var clone = new GraphElement(Content,id) {TaxonNumber = taxonNumber};
+            var clone = new GraphElement(Content, this.Id) { TaxonNumber = taxonNumber };
             return clone;
         }
     }

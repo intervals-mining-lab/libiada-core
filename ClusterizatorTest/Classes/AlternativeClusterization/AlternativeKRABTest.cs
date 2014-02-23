@@ -1,53 +1,61 @@
-using System.Collections;
-using Clusterizator.Classes;
-using Clusterizator.Classes.AlternativeClusterization;
-using NUnit.Framework;
-
 namespace ClusterizatorTest.Classes.AlternativeClusterization
 {
+    using Clusterizator.Classes;
+    using Clusterizator.Classes.AlternativeClusterization;
+
+    using NUnit.Framework;
+
+    /// <summary>
+    /// The alternative krab test.
+    /// </summary>
     [TestFixture]
     public class AlternativeKRABTest
     {
-        private DataTable Dt;
+        /// <summary>
+        /// The dt.
+        /// </summary>
+        private DataTable dt;
 
-        ///<summary>
-        ///</summary>
+        /// <summary>
+        /// The init.
+        /// </summary>
         [SetUp]
         public void Init()
         {
-            var dObject1 = new DataObject {Id = 1};
-            dObject1.Add("x", 2);
-            dObject1.Add("y", 2);
+            var object1 = new DataObject { Id = 1 };
+            object1.Add("x", 2);
+            object1.Add("y", 2);
 
-            var dObject2 = new DataObject {Id = 2};
-            dObject2.Add("x", 5);
-            dObject2.Add("y", 2);
+            var object2 = new DataObject { Id = 2 };
+            object2.Add("x", 5);
+            object2.Add("y", 2);
 
-            var dObject3 = new DataObject {Id = 3};
-            dObject3.Add("x", 4);
-            dObject3.Add("y", 3);
+            var object3 = new DataObject { Id = 3 };
+            object3.Add("x", 4);
+            object3.Add("y", 3);
 
-            var dObject4 = new DataObject {Id = 4};
-            dObject4.Add("x", 3);
-            dObject4.Add("y", 6);
+            var object4 = new DataObject { Id = 4 };
+            object4.Add("x", 3);
+            object4.Add("y", 6);
 
-            var dObject5 = new DataObject {Id = 5};
-            dObject5.Add("x", 8);
-            dObject5.Add("y", 8);
+            var object5 = new DataObject { Id = 5 };
+            object5.Add("x", 8);
+            object5.Add("y", 8);
 
-            var dObject6 = new DataObject {Id = 6};
-            dObject6.Add("x", 9);
-            dObject6.Add("y", 7);
+            var object6 = new DataObject { Id = 6 };
+            object6.Add("x", 9);
+            object6.Add("y", 7);
 
-            Dt = new DataTable {dObject1, dObject2, dObject3, dObject4, dObject5, dObject6};
+            this.dt = new DataTable { object1, object2, object3, object4, object5, object6 };
         }
 
-        ///<summary>
-        ///</summary>
+        /// <summary>
+        /// The clusterization test.
+        /// </summary>
         [Test]
         public void ClusterizationTest()
         {
-            var krab = new AlternativeKRAB(Dt,4,2,1);
+            var krab = new AlternativeKRAB(this.dt, 4, 2, 1);
             var result = krab.Clusterizate(2).Clusters;
 
             Assert.IsTrue(((Cluster)result[1]).Items.Contains((long)1));
@@ -59,53 +67,58 @@ namespace ClusterizatorTest.Classes.AlternativeClusterization
             Assert.IsTrue(((Cluster)result[0]).Items.Contains((long)6));
         }
 
+        /// <summary>
+        /// The simple all variants clusterization test.
+        /// </summary>
         [Test]
         public void SimpleAllVariantsClusterizationTest()
         {
-            var dObject1 = new DataObject {Id = 1};
-            dObject1.Add("x", 2);
-            
-            var dObject2 = new DataObject {Id = 2};
-            dObject2.Add("x", 5);
-           
-            var dObject3 = new DataObject {Id = 3};
-            dObject3.Add("x", 4);
+            var object1 = new DataObject { Id = 1 };
+            object1.Add("x", 2);
 
-            var dObject4 = new DataObject {Id = 4};
-            dObject4.Add("x", 3);
+            var object2 = new DataObject { Id = 2 };
+            object2.Add("x", 5);
 
-            var dataTable = new DataTable {dObject1, dObject2, dObject3, dObject4};
+            var object3 = new DataObject { Id = 3 };
+            object3.Add("x", 4);
 
-            var krab = new AlternativeKRAB(dataTable,4,2,1);
-            var result = krab.ClusterizateAllVariants().Variants;
-            Assert.AreEqual(3,result.Count);
-        }
+            var object4 = new DataObject { Id = 4 };
+            object4.Add("x", 3);
 
-        [Test]
-        public void AllVariantsClusterization2DTest()
-        {
-            var dObject1 = new DataObject {Id = 1};
-            dObject1.Add("x", 2);
-            dObject1.Add("y", 2);
+            var dataTable = new DataTable { object1, object2, object3, object4 };
 
-            var dObject2 = new DataObject {Id = 2};
-            dObject2.Add("x", 5);
-            dObject2.Add("y", 2);
-
-            var dObject3 = new DataObject {Id = 3};
-            dObject3.Add("x", 4);
-            dObject3.Add("y", 3);
-
-            var dObject4 = new DataObject {Id = 4};
-            dObject4.Add("x", 3);
-            dObject4.Add("y", 6);
-
-            var dataTable = new DataTable {dObject1, dObject2, dObject3, dObject4};
-
-            var krab = new AlternativeKRAB(dataTable,4,2,1);
+            var krab = new AlternativeKRAB(dataTable, 4, 2, 1);
             var result = krab.ClusterizateAllVariants().Variants;
             Assert.AreEqual(3, result.Count);
         }
 
+        /// <summary>
+        /// The all variants clusterization 2 d test.
+        /// </summary>
+        [Test]
+        public void AllVariantsClusterization2DTest()
+        {
+            var object1 = new DataObject { Id = 1 };
+            object1.Add("x", 2);
+            object1.Add("y", 2);
+
+            var object2 = new DataObject { Id = 2 };
+            object2.Add("x", 5);
+            object2.Add("y", 2);
+
+            var object3 = new DataObject { Id = 3 };
+            object3.Add("x", 4);
+            object3.Add("y", 3);
+
+            var object4 = new DataObject { Id = 4 };
+            object4.Add("x", 3);
+            object4.Add("y", 6);
+
+            var dataTable = new DataTable { object1, object2, object3, object4 };
+
+            var krab = new AlternativeKRAB(dataTable, 4, 2, 1);
+            var result = krab.ClusterizateAllVariants().Variants;
+            Assert.AreEqual(3, result.Count);
+        }
     }
 }

@@ -40,17 +40,12 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Classes\AlternativeClusterization\AlternativeKRAB.cs" />
     <Compile Include="Classes\AlternativeClusterization\Calculators\CommonCalculator.cs" />
-    <Compile Include="Classes\AlternativeClusterization\Calculators\FCalculator.cs" />
-    <Compile Include="Classes\AlternativeClusterization\Calculators\HCalculator.cs" />
+    <Compile Include="Classes\AlternativeClusterization\Calculators\QualityCalculator.cs" />
+    <Compile Include="Classes\AlternativeClusterization\Calculators\EquipotencyCalculator.cs" />
     <Compile Include="Classes\AlternativeClusterization\Calculators\ICalculator.cs" />
     <Compile Include="Classes\AlternativeClusterization\Calculators\LambdaCalculator.cs" />
     <Compile Include="Classes\AlternativeClusterization\Calculators\LinearCalculator.cs" />
@@ -60,7 +55,7 @@
     <Compile Include="Classes\AlternativeClusterization\Connection.cs" />
     <Compile Include="Classes\AlternativeClusterization\GraphElement.cs" />
     <Compile Include="Classes\AlternativeClusterization\GraphManager.cs" />
-    <Compile Include="Classes\ClustarizationVariants.cs" />
+    <Compile Include="Classes\ClusterizationVariants.cs" />
     <Compile Include="Classes\Cluster.cs" />
     <Compile Include="Classes\ClusterizationResult.cs" />
     <Compile Include="Classes\DataObject.cs" />
