@@ -1,5 +1,7 @@
 namespace LibiadaCore.Classes.Root.SimpleTypes
 {
+    using System.Globalization;
+
     /// <summary>
     /// Класс - вещественное значение
     /// </summary>
@@ -59,19 +61,20 @@ namespace LibiadaCore.Classes.Root.SimpleTypes
         }
 
         /// <summary>
-        /// Determines whether the specified <see cref="T:System.Object"></see> is equal to the current <see cref="T:System.Object"></see>.
+        /// Determines whether the specified <see cref="T:System.Object"/> is equal to the current <see cref="T:System.Object"/>.
         /// </summary>
         /// <returns>
-        /// true if the specified <see cref="T:System.Object"></see> is equal to the current <see cref="T:System.Object"></see>; otherwise, false.
+        /// true if the specified <see cref="T:System.Object"/> is equal to the current <see cref="T:System.Object"/>; otherwise, false.
         /// </returns>
-        /// <param name="obj">The <see cref="T:System.Object"></see> to compare with the current <see cref="T:System.Object"></see>. </param><filterpriority>2</filterpriority>
-        public override bool Equals(object obj)
+        /// <param name="other">The <see cref="T:System.Object"/> to compare with the current <see cref="T:System.Object"/>. </param><filterpriority>2</filterpriority>
+        public override bool Equals(object other)
         {
-            if (ReferenceEquals(this, obj))
+            if (ReferenceEquals(this, other))
             {
                 return true;
             }
-            return Equals(obj as ValueDouble);
+
+            return Equals(other as ValueDouble);
         }
 
         /// <summary>
@@ -82,7 +85,7 @@ namespace LibiadaCore.Classes.Root.SimpleTypes
         /// </returns>
         public override string ToString()
         {
-            return value.ToString();
+            return value.ToString(CultureInfo.InvariantCulture);
         }
 
         /// <summary>
@@ -100,6 +103,7 @@ namespace LibiadaCore.Classes.Root.SimpleTypes
             {
                 return false;
             }
+
             return value.Equals(other.value);
         }
 

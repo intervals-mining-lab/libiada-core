@@ -119,6 +119,7 @@ namespace LibiadaCore.Classes.Root.Characteristics
         /// Глубина в масштабе алфавита.
         /// </summary>
         AlphabeticDepth,
+
         /// <summary>
         /// Удалённость в масштабе алфавита.
         /// </summary>

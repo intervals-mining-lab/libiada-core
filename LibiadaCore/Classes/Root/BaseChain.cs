@@ -2,67 +2,91 @@ namespace LibiadaCore.Classes.Root
 {
     using System;
     using System.Collections.Generic;
+    using System.Linq;
     using System.Text;
 
     using LibiadaCore.Classes.Root.SimpleTypes;
-    using LibiadaCore.Classes.TheoryOfSet;
 
     /// <summary>
-    /// 
+    /// The base chain.
     /// </summary>
     public class BaseChain : IBaseObject
     {
+        /// <summary>
+        /// The building of chain.
+        /// </summary>
         protected int[] building;
+
+        /// <summary>
+        /// The alphabet of chain.
+        /// </summary>
         protected Alphabet alphabet = new Alphabet();
 
         /// <summary>
-        /// Создаёт пустую цепочку заданной длины.
+        /// Initializes a new instance of the <see cref="BaseChain"/> class.
         /// </summary>
-        ///<param name="length">Длинна создаваемой цепочки</param>
+        /// <param name="length">
+        /// The length of chain.
+        /// </param>
         public BaseChain(int length)
         {
             ClearAndSetNewLength(length);
         }
 
         /// <summary>
+        /// Initializes a new instance of the <see cref="BaseChain"/> class with 0 length.
         /// </summary>
         public BaseChain()
         {
         }
 
         /// <summary>
-        /// Cоздаёт цепочку из списка элементов.
+        /// Initializes a new instance of the <see cref="BaseChain"/> class from list of elements.
         /// </summary>
-        /// <param name="chain">Коллекция элементов</param>
-        public BaseChain(List<IBaseObject> chain) : this(chain.Count)
+        /// <param name="elements">
+        /// The elements.
+        /// </param>
+        public BaseChain(List<IBaseObject> elements) : this(elements.Count)
         {
             for (int i = 0; i < Length; i++)
             {
-                Add(chain[i], i);
+                Add(elements[i], i);
             }
         }
 
         /// <summary>
-        /// Создает цепь из строки символов.
-        /// Каждый символ становится элементом.
+        /// Initializes a new instance of the <see cref="BaseChain"/> class from string.
+        /// Each character becoms element.
         /// </summary>
-        ///<param name="s">Строка</param>
-        public BaseChain(string s) : this(s.Length)
+        /// <param name="source">
+        /// The source string.
+        /// </param>
+        public BaseChain(string source) : this(source.Length)
         {
-            for (int i = 0; i < s.Length; i++)
+            for (int i = 0; i < source.Length; i++)
             {
-                Add((ValueChar)s[i], i);
+                Add(new ValueChar(source[i]), i);
             }
         }
 
         /// <summary>
-        /// Создаёт цепочку с заданным строем и алфавитом.
-        /// Проверка корректности не производится!
+        /// Initializes a new instance of the <see cref="BaseChain"/> class 
+        /// with provided building and alphabet.
+        /// Only simple validation is made.
         /// </summary>
-        /// <param name="building">Строй</param>
-        /// <param name="alphabet">Алфавит</param>
+        /// <param name="building">
+        /// The building of chain.
+        /// </param>
+        /// <param name="alphabet">
+        /// The alphabet of chain.
+        /// </param>
         public BaseChain(int[] building, Alphabet alphabet) : this(building.Length)
         {
+            if (building.Max() + 1 != alphabet.Cardinality)
+            {
+                throw new ArgumentException("Building max value does not corresponds with alphabet length.");
+            }
+
             this.building = (int[])building.Clone();
             this.alphabet = (Alphabet)alphabet.Clone();
         }
@@ -73,7 +97,10 @@ namespace LibiadaCore.Classes.Root
         /// </summary>
         public int[] Building
         {
-            get { return (int[]) building.Clone(); }
+            get
+            {
+                return (int[])building.Clone();
+            }
         }
 
         /// <summary>
@@ -86,7 +113,8 @@ namespace LibiadaCore.Classes.Root
             get
             {
                 var result = (Alphabet)alphabet.Clone();
-                //Удаляем NullValue
+
+                // Удаляем NullValue
                 result.Remove(0);
                 return result;
             }
@@ -98,27 +126,45 @@ namespace LibiadaCore.Classes.Root
         /// </summary>
         public int Length
         {
-            get { return building.Length; }
+            get
+            {
+                return building.Length;
+            }
         }
 
         /// <summary>
         /// Свойстово позволяет получить доступ к элементу цепи по индексу.
         /// В случае выхода за границы цепи вызывается исключение.
         /// </summary>
-        ///<param name="index">номер элемента</param>
+        /// <param name="index">
+        /// номер элемента
+        /// </param>
+        /// <returns>
+        /// The <see cref="IBaseObject"/>.
+        /// </returns>
         public virtual IBaseObject this[int index]
         {
-            get { return Get(index); }
+            get
+            {
+                return Get(index);
+            }
 
-            set { Add(value, index); }
+            set
+            {
+                Add(value, index);
+            }
         }
 
         /// <summary>
         /// Метод позволяющий получить элемент по индексу.
         /// В случае выхода за границы цепи вызывается исключение.
         /// </summary>
-        ///<param name="index">Индекс элемента</param>
-        ///<returns>Возвращает элемент</returns>
+        /// <param name="index">
+        /// Индекс элемента
+        /// </param>
+        /// <returns>
+        /// Возвращает элемент
+        /// </returns>
         public virtual IBaseObject Get(int index)
         {
             return alphabet[building[index]];
@@ -127,8 +173,12 @@ namespace LibiadaCore.Classes.Root
         /// <summary>
         /// Метод похволяющий установить элемент по индексу.
         /// </summary>
-        ///<param name="item">Устанвалеваемый элемент </param>
-        ///<param name="index">Номер позиции в цепи куда устанавливается элемент</param>
+        /// <param name="item">
+        /// Устанвалеваемый элемент 
+        /// </param>
+        /// <param name="index">
+        /// Номер позиции в цепи куда устанавливается элемент
+        /// </param>
         public virtual void Add(IBaseObject item, int index)
         {
             if (item == null)
@@ -151,12 +201,20 @@ namespace LibiadaCore.Classes.Root
         /// Метод удаляющий элемент с позиции цепи 
         /// В случае выхода за границы цепи вызывается исключение
         /// </summary>
-        ///<param name="index">Номер позиции</param>
+        /// <param name="index">
+        /// Номер позиции
+        /// </param>
         public void RemoveAt(int index)
         {
             building[index] = 0;
         }
 
+        /// <summary>
+        /// The to string.
+        /// </summary>
+        /// <returns>
+        /// The <see cref="string"/>.
+        /// </returns>
         public override string ToString()
         {
             var builder = new StringBuilder();
@@ -174,22 +232,29 @@ namespace LibiadaCore.Classes.Root
         /// устанавливая новую длину.
         /// В алфавит добавляется <see cref="NullValue"/>.
         /// </summary>
-        ///<param name="length">Новая длина цепочки</param>
-        ///<exception cref="Exception">Выбрасывается если длина &lt; 0</exception>
+        /// <param name="length">
+        /// Новая длина цепочки
+        /// </param>
+        /// <exception cref="ArgumentException">
+        /// Выбрасывается если длина &lt; 0
+        /// </exception>
         public virtual void ClearAndSetNewLength(int length)
         {
             if (length < 0)
             {
-                throw new Exception("Длинна цепи < 0");
+                throw new ArgumentException("Chain length shouldn't be less than 0.");
             }
 
             building = new int[length];
-            alphabet = new Alphabet {NullValue.Instance()};
+            alphabet = new Alphabet { NullValue.Instance() };
         }
 
         /// <summary>
+        /// The clone.
         /// </summary>
-        ///<returns></returns>
+        /// <returns>
+        /// The <see cref="IBaseObject"/>.
+        /// </returns>
         public IBaseObject Clone()
         {
             var clone = new BaseChain(Length);
@@ -197,23 +262,23 @@ namespace LibiadaCore.Classes.Root
             return clone;
         }
 
-        protected void FillClone(BaseChain clone)
+        /// <summary>
+        /// The equals.
+        /// </summary>
+        /// <param name="other">
+        /// The other.
+        /// </param>
+        /// <returns>
+        /// The <see cref="bool"/>.
+        /// </returns>
+        public override bool Equals(object other)
         {
-            if (clone != null)
-            {
-                clone.building = (int[])building.Clone();
-                clone.alphabet = (Alphabet)alphabet.Clone();
-            }
-        }
-
-        public override bool Equals(object obj)
-        {
-            if (obj == null)
+            if (other == null)
             {
                 return false;
             }
 
-            if (obj.Equals(NullValue.Instance()))
+            if (other.Equals(NullValue.Instance()))
             {
                 for (int i = 0; i < Length; i++)
                 {
@@ -222,22 +287,26 @@ namespace LibiadaCore.Classes.Root
                         return false;
                     }
                 }
+
                 return true;
             }
 
-            if (ReferenceEquals(this, obj))
+            if (ReferenceEquals(this, other))
             {
                 return true;
             }
-            if (obj as BaseChain == null)
+
+            if (other as BaseChain == null)
             {
                 return false;
             }
-            var chainObject = (BaseChain)obj;
-            if (!alphabet.Equals((chainObject).alphabet))
+
+            var chainObject = (BaseChain)other;
+            if (!alphabet.Equals(chainObject.alphabet))
             {
                 return false;
             }
+
             for (int i = 0; (i < chainObject.Length) && (i < Length); i++)
             {
                 if (!this[i].Equals(chainObject[i]))
@@ -245,7 +314,23 @@ namespace LibiadaCore.Classes.Root
                     return false;
                 }
             }
+
             return true;
+        }
+
+        /// <summary>
+        /// The fill clone.
+        /// </summary>
+        /// <param name="clone">
+        /// The clone.
+        /// </param>
+        protected void FillClone(BaseChain clone)
+        {
+            if (clone != null)
+            {
+                clone.building = (int[])building.Clone();
+                clone.alphabet = (Alphabet)alphabet.Clone();
+            }
         }
     }
 }

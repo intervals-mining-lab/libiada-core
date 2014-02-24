@@ -31,6 +31,7 @@
             {
                 result = result * intervals[i];
             }
+
             return result;
         }
 

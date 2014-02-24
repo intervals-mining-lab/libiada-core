@@ -100,7 +100,7 @@
     <Compile Include="Classes\Root\BaseChainTest.cs" />
     <Compile Include="Classes\Root\ChainTest.cs" />
     <Compile Include="Classes\Root\CongenericChainTest.cs" />
-    <Compile Include="Classes\TheoryOfSet\AlphabetTest.cs" />
+    <Compile Include="Classes\Root\AlphabetTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

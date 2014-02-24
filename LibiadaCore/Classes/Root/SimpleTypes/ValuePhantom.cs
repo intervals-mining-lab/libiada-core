@@ -1,28 +1,28 @@
 namespace LibiadaCore.Classes.Root.SimpleTypes
 {
-    using System.Collections.Generic;
-
-    using LibiadaCore.Classes.TheoryOfSet;
-
     /// <summary>
     /// ‘антомное сообщение, хран€щее в себе несколько вариантов значений одной позиции.
     /// </summary>
     public class ValuePhantom : Alphabet, IBaseObject
     {
         /// <summary>
-        /// —равнение фантомного сообщени€ исходного и заданного в параметре
+        /// The equals.
         /// </summary>
-        /// <param name="obj"> фантомное сообщение сравниваемое с исходным</param>
-        /// <returns></returns>
-        public override bool Equals(object obj)
+        /// <param name="other">
+        /// The other element.
+        /// </param>
+        /// <returns>
+        /// The <see cref="bool"/>.
+        /// </returns>
+        public override bool Equals(object other)
         {
-            if (ReferenceEquals(this, obj))
+            if (ReferenceEquals(this, other))
             {
                 return true;
             }
 
-            return EqualsAsPhantom(obj as ValuePhantom) || Equals(obj as NullValue) ||
-                   EqualsAsElement(obj as IBaseObject);
+            return EqualsAsPhantom(other as ValuePhantom) || Equals(other as NullValue) ||
+                   EqualsAsElement(other as IBaseObject);
         }
 
         /// <summary>
@@ -57,6 +57,7 @@ namespace LibiadaCore.Classes.Root.SimpleTypes
             {
                 return base.Add(baseObject);
             }
+
             return -1;
         }
 
@@ -68,7 +69,7 @@ namespace LibiadaCore.Classes.Root.SimpleTypes
         /// </returns>
         public override string ToString()
         {
-            return Vault[0].ToString();
+            return this.Elements[0].ToString();
         }
 
         /// <summary>
@@ -77,7 +78,11 @@ namespace LibiadaCore.Classes.Root.SimpleTypes
         /// <returns> опи€ объекта</returns>
         public new IBaseObject Clone()
         {
-            var clone = new ValuePhantom { Vault = new List<IBaseObject>(Vault) };
+            var clone = new ValuePhantom();
+            for (int i = 0; i < this.Elements.Count; i++)
+            {
+                clone.Add(this.Elements[i]);
+            }
             return clone;
         }
 
@@ -96,6 +101,7 @@ namespace LibiadaCore.Classes.Root.SimpleTypes
             {
                 return false;
             }
+
             return this.Cardinality == 0;
         }
 
@@ -117,6 +123,7 @@ namespace LibiadaCore.Classes.Root.SimpleTypes
                     return true;
                 }
             }
+
             return false;
         }
 

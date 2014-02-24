@@ -3,36 +3,42 @@ namespace LibiadaCore.Classes.Root
     using System.Collections.Generic;
 
     using LibiadaCore.Classes.Misc;
+    using LibiadaCore.Classes.Root.IntervalsManagers;
     using LibiadaCore.Classes.Root.SimpleTypes;
 
-    using LibiadaCore.Classes.Root.IntervalsManagers;
-
     /// <summary>
+    /// The congeneric chain.
     /// </summary>
     public class CongenericChain : BaseChain, IBaseObject
     {
-        //protected List<int> intervals = new List<int>();
-        protected CongenericIntervalsManager intervalsManager = null;
-        protected int MaxFilledPosition;
+        /// <summary>
+        /// The intervals manager.
+        /// </summary>
+        protected CongenericIntervalsManager intervalsManager;
 
         /// <summary>
         /// Создаёт однородную цепочку для заданного элемента и заданной длины.
         /// </summary>
-        ///<param name="length">Длина цепочки</param>
-        ///<param name="element">Элемент цепочки</param>
+        /// <param name="length">
+        /// Длина цепочки
+        /// </param>
+        /// <param name="element">
+        /// Элемент цепочки
+        /// </param>
         public CongenericChain(int length, IBaseObject element) : base(length)
         {
             alphabet.Add(element);
         }
 
         /// <summary>
+        /// Initializes a new instance of the <see cref="CongenericChain"/> class.
         /// </summary>
-        public CongenericChain()
-        {
-        }
-
-        /// <summary>
-        /// </summary>
+        /// <param name="map">
+        /// The map.
+        /// </param>
+        /// <param name="element">
+        /// The element.
+        /// </param>
         public CongenericChain(bool[] map, IBaseObject element)
         {
             alphabet.Add(element);
@@ -40,19 +46,6 @@ namespace LibiadaCore.Classes.Root
             {
                 building[i] = map[i] ? 1 : 0;
             }
-        }
-
-        public new IBaseObject Clone()
-        {
-            var temp = new CongenericChain(Length, Element);
-            FillClone(temp);
-            return temp;
-        }
-
-        protected void FillClone(IBaseObject temp)
-        {
-            var tempCongenericChain = temp as CongenericChain;
-            base.FillClone(tempCongenericChain);
         }
 
         /// <summary>
@@ -64,18 +57,64 @@ namespace LibiadaCore.Classes.Root
         }
 
         /// <summary>
+        /// Свойстово позволяет получить доступ к элементу цепи по индексу.
+        /// В случае выхода за границы цепи вызывается исключение.
+        /// </summary>
+        /// <param name="index">
+        /// Номер элементаю.
+        /// </param>
+        /// <returns>
+        /// The <see cref="IBaseObject"/>.
+        /// </returns>
+        public override IBaseObject this[int index]
+        {
+            get { return building[index] == 1 ? Element.Clone() : NullValue.Instance(); }
+
+            set { Add(value, index); }
+        }
+
+        /// <summary>
+        /// The clone.
+        /// </summary>
+        /// <returns>
+        /// The <see cref="IBaseObject"/>.
+        /// </returns>
+        public new IBaseObject Clone()
+        {
+            var temp = new CongenericChain(Length, Element);
+            FillClone(temp);
+            return temp;
+        }
+
+        /// <summary>
         /// Возвращает копию массива интервалов, 
         /// включая привязку к началу и к концу
         /// </summary>
-        public List<int> GetIntervals (Link link)
+        /// <param name="link">
+        /// The link.
+        /// </param>
+        /// <returns>
+        /// The <see cref="T:List{int}"/>.
+        /// </returns>
+        public List<int> GetIntervals(Link link)
         {
             if (intervalsManager == null)
             {
                 intervalsManager = new CongenericIntervalsManager(this);
             }
+
             return intervalsManager.GetIntervals(link);
         }
-        
+
+        /// <summary>
+        /// Sets item in provided position.
+        /// </summary>
+        /// <param name="item">
+        /// The item.
+        /// </param>
+        /// <param name="index">
+        /// The index.
+        /// </param>
         public override void Add(IBaseObject item, int index)
         {
             intervalsManager = null;
@@ -86,23 +125,32 @@ namespace LibiadaCore.Classes.Root
         }
 
         /// <summary>
-        /// Свойстово позволяет получить доступ к элементу цепи по индексу.
-        /// В случае выхода за границы цепи вызывается исключение.
+        /// The delete at.
         /// </summary>
-        ///<param name="index">номер элемента</param>
-        public override IBaseObject this[int index]
-        {
-            get { return building[index] == 1 ? Element.Clone() : NullValue.Instance(); }
-
-            set { Add(value, index); }
-        }
-        
+        /// <param name="index">
+        /// The index.
+        /// </param>
+        /// <returns>
+        /// The <see cref="IBaseObject"/>.
+        /// </returns>
         public IBaseObject DeleteAt(int index)
         {
             intervalsManager = null;
             IBaseObject element = alphabet[building[index]];
             building = ArrayManipulator.DeleteAt(building, index);
             return element;
+        }
+
+        /// <summary>
+        /// The fill clone.
+        /// </summary>
+        /// <param name="temp">
+        /// The temp.
+        /// </param>
+        protected void FillClone(IBaseObject temp)
+        {
+            var tempCongenericChain = temp as CongenericChain;
+            base.FillClone(tempCongenericChain);
         }
     }
 }

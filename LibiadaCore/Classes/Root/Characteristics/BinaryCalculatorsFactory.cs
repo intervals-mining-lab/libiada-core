@@ -4,6 +4,9 @@
 
     using LibiadaCore.Classes.Root.Characteristics.BinaryCalculators;
 
+    /// <summary>
+    /// The binary calculators factory.
+    /// </summary>
     public class BinaryCalculatorsFactory
     {
         /// <summary>

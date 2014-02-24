@@ -1,7 +1,6 @@
 namespace LibiadaCore.Classes.Root.Characteristics.Calculators
 {
     using System;
-    using System.Collections.Generic;
 
     /// <summary>
     ///  оличество интервалов в зависимости от прив€зки.

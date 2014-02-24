@@ -1,7 +1,9 @@
 namespace LibiadaCore.Classes.Root.SimpleTypes
 {
+    using System.Globalization;
+
     /// <summary>
-    /// Класс элемент символ
+    /// Class that stores single char value.
     /// </summary>
     public class ValueChar : IBaseObject
     {
@@ -11,10 +13,10 @@ namespace LibiadaCore.Classes.Root.SimpleTypes
         private readonly char value;
 
         /// <summary>
-        /// Конструктор
+        /// Initializes a new instance of the <see cref="ValueChar"/> class.
         /// </summary>
         /// <param name="value">
-        /// Начальное значение элемента
+        /// The <see cref="char"/> value of element.
         /// </param>
         public ValueChar(char value)
         {
@@ -22,18 +24,26 @@ namespace LibiadaCore.Classes.Root.SimpleTypes
         }
 
         /// <summary>
+        /// The op_ implicit.
         /// </summary>
-        /// <param name="from"></param>
-        /// <returns></returns>
+        /// <param name="from">
+        /// The from.
+        /// </param>
+        /// <returns>
+        /// </returns>
         public static implicit operator char(ValueChar from)
         {
             return from.value;
         }
 
         /// <summary>
+        /// The op_ implicit.
         /// </summary>
-        /// <param name="from"></param>
-        /// <returns></returns>
+        /// <param name="from">
+        /// The from.
+        /// </param>
+        /// <returns>
+        /// </returns>
         public static implicit operator ValueChar(char from)
         {
             return new ValueChar(from);
@@ -53,19 +63,20 @@ namespace LibiadaCore.Classes.Root.SimpleTypes
         /// <summary>
         /// The equals.
         /// </summary>
-        /// <param name="obj">
-        /// The obj.
+        /// <param name="other">
+        /// The other element.
         /// </param>
         /// <returns>
         /// The <see cref="bool"/>.
         /// </returns>
-        public override bool Equals(object obj)
+        public override bool Equals(object other)
         {
-            if (ReferenceEquals(this, obj))
+            if (ReferenceEquals(this, other))
             {
                 return true;
             }
-            return Equals(obj as ValueChar);
+
+            return Equals(other as ValueChar);
         }
 
         /// <summary>
@@ -76,7 +87,7 @@ namespace LibiadaCore.Classes.Root.SimpleTypes
         /// </returns>
         public override string ToString()
         {
-            return value.ToString();
+            return value.ToString(CultureInfo.InvariantCulture);
         }
 
         /// <summary>
@@ -94,6 +105,7 @@ namespace LibiadaCore.Classes.Root.SimpleTypes
             {
                 return false;
             }
+
             return value == other.value;
         }
 

@@ -31,6 +31,7 @@
             {
                 sum += intervals[i];
             }
+
             return sum;
         }
 

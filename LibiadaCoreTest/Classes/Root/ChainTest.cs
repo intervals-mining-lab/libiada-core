@@ -5,8 +5,6 @@ namespace LibiadaCoreTest.Classes.Root
     using LibiadaCore.Classes.Root;
     using LibiadaCore.Classes.Root.SimpleTypes;
 
-    using LibiadaCoreTest.Classes.Root.Characteristics.Calculators;
-
     using NUnit.Framework;
 
     [TestFixture]

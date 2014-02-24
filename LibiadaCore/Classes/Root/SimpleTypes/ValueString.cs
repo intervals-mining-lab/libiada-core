@@ -68,19 +68,20 @@ namespace LibiadaCore.Classes.Root.SimpleTypes
         /// <summary>
         /// The equals.
         /// </summary>
-        /// <param name="obj">
-        /// The obj.
+        /// <param name="other">
+        /// The other element.
         /// </param>
         /// <returns>
         /// The <see cref="bool"/>.
         /// </returns>
-        public override bool Equals(object obj)
+        public override bool Equals(object other)
         {
-            if (ReferenceEquals(this, obj))
+            if (ReferenceEquals(this, other))
             {
                 return true;
             }
-            return Equals(obj as ValueString);
+
+            return Equals(other as ValueString);
         }
 
         /// <summary>
@@ -109,6 +110,7 @@ namespace LibiadaCore.Classes.Root.SimpleTypes
             {
                 return false;
             }
+
             return string.Equals(Value, other.Value);
         }
 
