@@ -5,14 +5,32 @@ namespace LibiadaCoreTest.Classes.Root.Characteristics.Calculators
 
     using NUnit.Framework;
 
+    /// <summary>
+    /// The descriptive information test.
+    /// </summary>
     [TestFixture]
     public class DescriptiveInformationTest : AbstractCalculatorTest
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="DescriptiveInformationTest"/> class.
+        /// </summary>
         public DescriptiveInformationTest()
         {
-            calc = new DescriptiveInformation();
+            this.Calculator = new DescriptiveInformation();
         }
 
+        /// <summary>
+        /// The congeneric calculation test.
+        /// </summary>
+        /// <param name="index">
+        /// The index.
+        /// </param>
+        /// <param name="link">
+        /// The link.
+        /// </param>
+        /// <param name="value">
+        /// The value.
+        /// </param>
         [TestCase(0, Link.None, 1.4142)]
         [TestCase(0, Link.Start, 1.4445)]
         [TestCase(0, Link.End, 1.4378)]
@@ -23,6 +41,18 @@ namespace LibiadaCoreTest.Classes.Root.Characteristics.Calculators
             CongenericChainCharacteristicTest(index, link, value);
         }
 
+        /// <summary>
+        /// The chain calculation test.
+        /// </summary>
+        /// <param name="index">
+        /// The index.
+        /// </param>
+        /// <param name="link">
+        /// The link.
+        /// </param>
+        /// <param name="value">
+        /// The value.
+        /// </param>
         [TestCase(0, Link.None, 2.8845)]
         [TestCase(0, Link.Start, 2.9917)]
         [TestCase(0, Link.End, 2.9473)]

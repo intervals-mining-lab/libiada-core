@@ -7,17 +7,29 @@ namespace LibiadaCoreTest.Classes.Root
 
     using NUnit.Framework;
 
+    /// <summary>
+    /// The chain test.
+    /// </summary>
     [TestFixture]
     public class ChainTest
     {
+        /// <summary>
+        /// The chain.
+        /// </summary>
         private Chain chain;
 
+        /// <summary>
+        /// The init.
+        /// </summary>
         [SetUp]
         public void Init()
         {
             chain = new Chain(10);
         }
 
+        /// <summary>
+        /// The simular chains get test.
+        /// </summary>
         [Test]
         public void SimularChainsGetTest()
         {
@@ -56,15 +68,18 @@ namespace LibiadaCoreTest.Classes.Root
             Assert.AreEqual(congenericChainA, chainCreatedCongenericChain);
         }
 
+        /// <summary>
+        /// The intervals test.
+        /// </summary>
         [Test]
         public void IntervalsTest()
         {
             Chain temp = ChainsStorage.Chains[0];
             var intervals = new List<List<int>>
                 {
-                    new List<int> {1, 1, 4, 4, 1},
-                    new List<int> {3, 1, 3, 4},
-                    new List<int> {5, 3, 1, 2}
+                    new List<int> { 1, 1, 4, 4, 1 },
+                    new List<int> { 3, 1, 3, 4 },
+                    new List<int> { 5, 3, 1, 2 }
                 };
             for (int i = 0; i < temp.Alphabet.Cardinality; i++)
             {
@@ -76,6 +91,9 @@ namespace LibiadaCoreTest.Classes.Root
             }
         }
 
+        /// <summary>
+        /// The get element position test.
+        /// </summary>
         [Test]
         public void GetElementPositionTest()
         {
@@ -95,7 +113,7 @@ namespace LibiadaCoreTest.Classes.Root
             chain.Add(messageA, 8);
             chain.Add(messageC, 9);
 
-            Assert.AreEqual(2,chain.Get(messageA, 1));
+            Assert.AreEqual(2, chain.Get(messageA, 1));
             Assert.AreEqual(8, chain.Get(messageA, 2));
             Assert.AreEqual(-1, chain.Get(messageA, 3));
 
@@ -115,6 +133,9 @@ namespace LibiadaCoreTest.Classes.Root
             Assert.AreEqual(-1, chain.Get(messageT, 3));
         }
 
+        /// <summary>
+        /// The get binary interval test.
+        /// </summary>
         [Test]
         public void GetBinaryIntervalTest()
         {
@@ -151,7 +172,7 @@ namespace LibiadaCoreTest.Classes.Root
             Assert.AreEqual(1, chain.GetBinaryInterval(messageC, messageT, 4));
 
             // oxo_xx_oooxxo
-            Chain testChain = new Chain(13);
+            var testChain = new Chain(13);
             testChain.Add(messageA, 0);
             testChain.Add(messageC, 1);
             testChain.Add(messageA, 2);

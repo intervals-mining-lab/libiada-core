@@ -8,21 +8,33 @@ namespace LibiadaCoreTest.Classes.Misc.Iterators
 
     using NUnit.Framework;
 
+    /// <summary>
+    /// The iterator writable end test.
+    /// </summary>
     [TestFixture]
     public class IteratorWritableEndTest
     {
+        /// <summary>
+        /// The chain to iterate.
+        /// </summary>
         private Chain chainToIterate;
 
+        /// <summary>
+        /// The init.
+        /// </summary>
         [SetUp]
         public void Init()
         {
             chainToIterate = new Chain("121331212231");
         }
 
+        /// <summary>
+        /// The write test.
+        /// </summary>
         [Test]
         public void WriteTest()
         {
-            var messages = new List<ValueChar>()
+            var messages = new List<ValueChar> 
                 {
                     new ValueChar('1'), new ValueChar('3'), new ValueChar('2'),
                     new ValueChar('2'), new ValueChar('1'), new ValueChar('2'),

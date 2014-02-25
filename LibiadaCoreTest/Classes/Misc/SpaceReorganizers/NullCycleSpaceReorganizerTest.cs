@@ -5,17 +5,29 @@ namespace LibiadaCoreTest.Classes.Misc.SpaceReorganizers
 
     using NUnit.Framework;
 
+    /// <summary>
+    /// The null cycle space reorganizer test.
+    /// </summary>
     [TestFixture]
     public class NullCycleSpaceReorganizerTest
     {
+        /// <summary>
+        /// The test chain.
+        /// </summary>
         private Chain testChain;
-     
+
+        /// <summary>
+        /// The init.
+        /// </summary>
         [SetUp]
         public void Init()
         {
             this.testChain = new Chain("adbaacbbaaca");
         }
 
+        /// <summary>
+        /// The level one test.
+        /// </summary>
         [Test]
         public void LevelOneTest()
         {
@@ -26,6 +38,9 @@ namespace LibiadaCoreTest.Classes.Misc.SpaceReorganizers
             Assert.AreEqual(cycleTestChainLevel1, result);
         }
 
+        /// <summary>
+        /// The level five test.
+        /// </summary>
         [Test]
         public void LevelFiveTest()
         {

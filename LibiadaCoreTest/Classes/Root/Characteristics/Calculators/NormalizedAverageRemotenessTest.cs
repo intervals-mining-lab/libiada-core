@@ -7,14 +7,23 @@ namespace LibiadaCoreTest.Classes.Root.Characteristics.Calculators
 
     using NUnit.Framework;
 
+    /// <summary>
+    /// The normalized average remoteness test.
+    /// </summary>
     [TestFixture]
     public class NormalizedAverageRemotenessTest : AbstractCalculatorTest
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="NormalizedAverageRemotenessTest"/> class.
+        /// </summary>
         public NormalizedAverageRemotenessTest()
         {
-            calc = new NormalizedAverageRemoteness();
+            this.Calculator = new NormalizedAverageRemoteness();
         }
 
+        /// <summary>
+        /// The congeneric calculation test.
+        /// </summary>
         [Test]
         public void CongenericCalculationTest()
         {

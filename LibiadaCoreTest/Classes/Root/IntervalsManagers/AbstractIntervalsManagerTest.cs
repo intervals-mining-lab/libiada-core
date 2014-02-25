@@ -7,22 +7,45 @@
 
     using NUnit.Framework;
 
-    public abstract  class AbstractIntervalsManagerTest
+    /// <summary>
+    /// The abstract intervals manager test.
+    /// </summary>
+    public abstract class AbstractIntervalsManagerTest
     {
-        protected List<CongenericChain> CongenericChains = ChainsStorage.CongenericChains;
-        protected IntervalsManager IntervalsManager;
-        protected List<Dictionary<Link, List<int>>> Intervals = ChainsStorage.Intervals;
+        /// <summary>
+        /// The congeneric chains.
+        /// </summary>
+        private readonly List<CongenericChain> congenericChains = ChainsStorage.CongenericChains;
 
-        public void IntervalsManagerTest(int index, Link link)
+        /// <summary>
+        /// The intervals.
+        /// </summary>
+        private readonly List<Dictionary<Link, List<int>>> allIntervals = ChainsStorage.Intervals;
+
+        /// <summary>
+        /// The intervals manager.
+        /// </summary>
+        private IntervalsManager intervalsManager;
+
+        /// <summary>
+        /// The intervals manager test.
+        /// </summary>
+        /// <param name="index">
+        /// The index.
+        /// </param>
+        /// <param name="link">
+        /// The link.
+        /// </param>
+        protected void IntervalsManagerTest(int index, Link link)
         {
-            IntervalsManager = new CongenericIntervalsManager(CongenericChains[index]);
-            var intervals = Intervals[index][link];
+            this.intervalsManager = new CongenericIntervalsManager(this.congenericChains[index]);
+            var intervals = this.allIntervals[index][link];
             
-            Assert.AreEqual(IntervalsManager.GetIntervals(link).Count, intervals.Count);
+            Assert.AreEqual(this.intervalsManager.GetIntervals(link).Count, intervals.Count);
 
             for (int i = 0; i < intervals.Count; i++)
             {
-                Assert.AreEqual(intervals[i], IntervalsManager.GetIntervals(link)[i]);
+                Assert.AreEqual(intervals[i], this.intervalsManager.GetIntervals(link)[i]);
             }
         }
     }

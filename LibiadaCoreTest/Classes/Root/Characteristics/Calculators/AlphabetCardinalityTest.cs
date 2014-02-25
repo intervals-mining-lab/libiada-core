@@ -5,14 +5,32 @@ namespace LibiadaCoreTest.Classes.Root.Characteristics.Calculators
 
     using NUnit.Framework;
 
+    /// <summary>
+    /// The alphabet cardinality test.
+    /// </summary>
     [TestFixture]
     public class AlphabetCardinalityTest : AbstractCalculatorTest
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="AlphabetCardinalityTest"/> class.
+        /// </summary>
         public AlphabetCardinalityTest()
         {
-            calc = new AlphabetCardinality();
+            this.Calculator = new AlphabetCardinality();
         }
 
+        /// <summary>
+        /// The congeneric calculation test.
+        /// </summary>
+        /// <param name="index">
+        /// The index.
+        /// </param>
+        /// <param name="link">
+        /// The link.
+        /// </param>
+        /// <param name="value">
+        /// The value.
+        /// </param>
         [TestCase(0, Link.None, 1)]
         [TestCase(0, Link.Start, 1)]
         [TestCase(0, Link.End, 1)]
@@ -23,6 +41,18 @@ namespace LibiadaCoreTest.Classes.Root.Characteristics.Calculators
             CongenericChainCharacteristicTest(index, link, value);
         }
 
+        /// <summary>
+        /// The chain calculation test.
+        /// </summary>
+        /// <param name="index">
+        /// The index.
+        /// </param>
+        /// <param name="link">
+        /// The link.
+        /// </param>
+        /// <param name="value">
+        /// The value.
+        /// </param>
         [TestCase(0, Link.None, 3)]
         [TestCase(0, Link.Start, 3)]
         [TestCase(0, Link.End, 3)]

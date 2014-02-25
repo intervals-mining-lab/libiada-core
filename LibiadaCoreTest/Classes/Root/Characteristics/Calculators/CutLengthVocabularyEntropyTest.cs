@@ -5,14 +5,32 @@ namespace LibiadaCoreTest.Classes.Root.Characteristics.Calculators
 
     using NUnit.Framework;
 
+    /// <summary>
+    /// The cut length vocabulary entropy test.
+    /// </summary>
     [TestFixture]
     public class CutLengthVocabularyEntropyTest : AbstractCalculatorTest
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="CutLengthVocabularyEntropyTest"/> class.
+        /// </summary>
         public CutLengthVocabularyEntropyTest()
         {
-            calc = new CutLengthVocabularyEntropy();
+            this.Calculator = new CutLengthVocabularyEntropy();
         }
 
+        /// <summary>
+        /// The congeneric calculation test.
+        /// </summary>
+        /// <param name="index">
+        /// The index.
+        /// </param>
+        /// <param name="link">
+        /// The link.
+        /// </param>
+        /// <param name="value">
+        /// The value.
+        /// </param>
         [TestCase(0, Link.None, 2.8074)]
         [TestCase(0, Link.Start, 2.8074)]
         [TestCase(0, Link.End, 2.8074)]
@@ -23,6 +41,18 @@ namespace LibiadaCoreTest.Classes.Root.Characteristics.Calculators
             CongenericChainCharacteristicTest(index, link, value);
         }
 
+        /// <summary>
+        /// The calculation test.
+        /// </summary>
+        /// <param name="index">
+        /// The index.
+        /// </param>
+        /// <param name="link">
+        /// The link.
+        /// </param>
+        /// <param name="value">
+        /// The value.
+        /// </param>
         [TestCase(0, Link.None, 3)]
         [TestCase(0, Link.Start, 3)]
         [TestCase(0, Link.End, 3)]

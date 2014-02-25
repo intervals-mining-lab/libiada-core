@@ -8,9 +8,33 @@
 
     using NUnit.Framework;
 
+    /// <summary>
+    /// The partial dependence coefficient test.
+    /// </summary>
     [TestFixture]
     public class PartialDependenceCoefficientTest : AbstractBinaryCalculatorTest
     {
+        /// <summary>
+        /// The init.
+        /// </summary>
+        [SetUp]
+        public void Init()
+        {
+            this.Calculator = new PartialDependenceCoefficient();
+        }
+
+        /// <summary>
+        /// The k 1 test.
+        /// </summary>
+        /// <param name="index">
+        /// The index.
+        /// </param>
+        /// <param name="firstValue">
+        /// The first value.
+        /// </param>
+        /// <param name="secondValue">
+        /// The second value.
+        /// </param>
         [TestCase(1, 0, 0)]
         [TestCase(2, 0, 0)]
         [TestCase(3, 0, 0.5461)]
@@ -30,31 +54,30 @@
         [TestCase(17, 0.6072, 0.3757)]
         public void K1Test(int index, double firstValue, double secondValue)
         {
-            var calculator = new PartialDependenceCoefficient();
-
-            CalculationTest(calculator, index, firstValue, secondValue);
+            CalculationTest(index, firstValue, secondValue);
         }
 
+        /// <summary>
+        /// The get k 1 test.
+        /// </summary>
         [Test]
         public void GetK1Test()
         {
-            var calculator = new PartialDependenceCoefficient();
-
-            List<List<double>> result = calculator.Calculate(Chains[1], Link.End);
+            List<List<double>> result = Calculator.Calculate(Chains[1], Link.End);
 
             Assert.AreEqual(0, result[0][0]);
             Assert.AreEqual(0, result[0][1]);
             Assert.AreEqual(0, result[1][0]);
             Assert.AreEqual(0, result[1][1]);
 
-            result = calculator.Calculate(Chains[10], Link.End);
+            result = Calculator.Calculate(Chains[10], Link.End);
 
             Assert.AreEqual(0, result[0][0]);
             Assert.AreEqual(0.614, Math.Round(result[0][1], 3));
             Assert.AreEqual(0.402, Math.Round(result[1][0], 3));
             Assert.AreEqual(0, result[1][1]);
 
-            result = calculator.Calculate(Chains[18], Link.End);
+            result = Calculator.Calculate(Chains[18], Link.End);
 
             Assert.AreEqual(0, result[0][0]);
             Assert.AreEqual(0.4055, Math.Round(result[0][1], 4));
@@ -65,7 +88,6 @@
             Assert.AreEqual(0.375, Math.Round(result[2][0], 3));
             Assert.AreEqual(0.388, Math.Round(result[2][1], 3));
             Assert.AreEqual(0, result[2][2]);
-
         }
     }
 }

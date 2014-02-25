@@ -5,14 +5,32 @@ namespace LibiadaCoreTest.Classes.Root.Characteristics.Calculators
 
     using NUnit.Framework;
 
+    /// <summary>
+    /// The probability test.
+    /// </summary>
     [TestFixture]
     public class ProbabilityTest : AbstractCalculatorTest
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ProbabilityTest"/> class.
+        /// </summary>
         public ProbabilityTest()
         {
-            calc = new Probability();
+            this.Calculator = new Probability();
         }
 
+        /// <summary>
+        /// The congeneric calculation test.
+        /// </summary>
+        /// <param name="index">
+        /// The index.
+        /// </param>
+        /// <param name="link">
+        /// The link.
+        /// </param>
+        /// <param name="value">
+        /// The value.
+        /// </param>
         [TestCase(0, Link.None, 0.3)]
         [TestCase(0, Link.Start, 0.3)]
         [TestCase(0, Link.End, 0.3)]
@@ -23,6 +41,18 @@ namespace LibiadaCoreTest.Classes.Root.Characteristics.Calculators
             CongenericChainCharacteristicTest(index, link, value);
         }
 
+        /// <summary>
+        /// The chain calculation test.
+        /// </summary>
+        /// <param name="index">
+        /// The index.
+        /// </param>
+        /// <param name="link">
+        /// The link.
+        /// </param>
+        /// <param name="value">
+        /// The value.
+        /// </param>
         [TestCase(0, Link.None, 1)]
         [TestCase(0, Link.Start, 1)]
         [TestCase(0, Link.End, 1)]

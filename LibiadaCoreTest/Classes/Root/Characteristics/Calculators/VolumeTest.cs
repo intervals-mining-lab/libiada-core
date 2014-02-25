@@ -5,14 +5,32 @@
 
     using NUnit.Framework;
 
+    /// <summary>
+    /// The volume test.
+    /// </summary>
     [TestFixture]
     public class VolumeTest : AbstractCalculatorTest
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="VolumeTest"/> class.
+        /// </summary>
         public VolumeTest()
         {
-            calc = new Volume();
+            this.Calculator = new Volume();
         }
 
+        /// <summary>
+        /// The congeneric calculation test.
+        /// </summary>
+        /// <param name="index">
+        /// The index.
+        /// </param>
+        /// <param name="link">
+        /// The link.
+        /// </param>
+        /// <param name="value">
+        /// The value.
+        /// </param>
         [TestCase(0, Link.None, 3)]
         [TestCase(0, Link.Start, 12)]
         [TestCase(0, Link.End, 9)]
@@ -23,6 +41,18 @@
             CongenericChainCharacteristicTest(index, link, value);
         }
 
+        /// <summary>
+        /// The calculation test.
+        /// </summary>
+        /// <param name="index">
+        /// The index.
+        /// </param>
+        /// <param name="link">
+        /// The link.
+        /// </param>
+        /// <param name="value">
+        /// The value.
+        /// </param>
         [TestCase(0, Link.None, 144)]
         [TestCase(0, Link.Start, 2160)]
         [TestCase(0, Link.End, 1152)]

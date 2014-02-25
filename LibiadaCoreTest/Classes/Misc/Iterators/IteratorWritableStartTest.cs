@@ -9,13 +9,18 @@ namespace LibiadaCoreTest.Classes.Misc.Iterators
     using NUnit.Framework;
 
     /// <summary>
+    /// The iterator writable start test.
     /// </summary>
     [TestFixture]
     public class IteratorWritableStartTest
     {
+        /// <summary>
+        /// The chain to iterate.
+        /// </summary>
         private Chain chainToIterate;
 
         /// <summary>
+        /// The init.
         /// </summary>
         [SetUp]
         public void Init()
@@ -24,17 +29,26 @@ namespace LibiadaCoreTest.Classes.Misc.Iterators
         }
 
         /// <summary>
+        /// The write test.
         /// </summary>
         [Test]
         public void WriteTest()
         {
             var messages = new List<ValueChar>(12)
-                {
-                    new ValueChar('1'), new ValueChar('2'), new ValueChar('1'),
-                    new ValueChar('3'), new ValueChar('3'), new ValueChar('1'),
-                    new ValueChar('2'), new ValueChar('1'), new ValueChar('2'),
-                    new ValueChar('2'), new ValueChar('3'), new ValueChar('1')
-                };
+                               {
+                                   new ValueChar('1'),
+                                   new ValueChar('2'),
+                                   new ValueChar('1'),
+                                   new ValueChar('3'),
+                                   new ValueChar('3'),
+                                   new ValueChar('1'),
+                                   new ValueChar('2'),
+                                   new ValueChar('1'),
+                                   new ValueChar('2'),
+                                   new ValueChar('2'),
+                                   new ValueChar('3'),
+                                   new ValueChar('1')
+                               };
 
             var toWrite = new Chain(12);
             var iteratorWrite = new IteratorWritableStart<Chain, Chain>(toWrite);

@@ -6,26 +6,33 @@ namespace LibiadaCoreTest.Classes.Root
     using LibiadaCore.Classes.Root.SimpleTypes;
 
     /// <summary>
+    /// The chains storage.
     /// </summary>
     public static class ChainsStorage
     {
-        public static Dictionary<string, IBaseObject> Elements = new Dictionary<string, IBaseObject>
+        /// <summary>
+        /// The elements.
+        /// </summary>
+        private static readonly Dictionary<string, IBaseObject> Elements = new Dictionary<string, IBaseObject>
             {
-                {"a", new ValueChar('a')},
-                {"b", new ValueChar('b')},
-                {"c", new ValueChar('c')}
+                { "a", new ValueChar('a') },
+                { "b", new ValueChar('b') },
+                { "c", new ValueChar('c') }
             };
 
+        /// <summary>
+        /// Gets the chains.
+        /// </summary>
         public static List<Chain> Chains
         {
             get
             {
                 var chains = new List<Chain>();
 
-                //b b a a c b a c c b
-                //_ _ a a _ _ a _ _ _
-                //b b _ _ _ b _ _ _ b
-                //_ _ _ _ c _ _ c c _
+                // b b a a c b a c c b
+                // _ _ a a _ _ a _ _ _
+                // b b _ _ _ b _ _ _ b
+                // _ _ _ _ c _ _ c c _
                 var chain = new Chain("bbaacbaccb");
                 chains.Add(chain);
 
@@ -33,11 +40,15 @@ namespace LibiadaCoreTest.Classes.Root
             }
         }
 
+        /// <summary>
+        /// Gets the congeneric chains.
+        /// </summary>
         public static List<CongenericChain> CongenericChains
         {
             get
             {
                 var congenericChains = new List<CongenericChain>();
+
                 // _ _ _ a a _ _ a _ _
                 var firstChain = new CongenericChain(10, Elements["a"]);
                 firstChain.Add(Elements["a"], 3);
@@ -75,12 +86,16 @@ namespace LibiadaCoreTest.Classes.Root
                 {
                     sixthChain.Add(Elements["a"], i);
                 }
+
                 congenericChains.Add(sixthChain);
 
                 return congenericChains;
             }
         }
 
+        /// <summary>
+        /// Gets the intervals.
+        /// </summary>
         public static List<Dictionary<Link, List<int>>> Intervals
         {
             get
@@ -89,58 +104,57 @@ namespace LibiadaCoreTest.Classes.Root
                 {
                     new Dictionary<Link, List<int>>
                     {
-                        {Link.Start, new List<int> {4, 1, 3}},
-                        {Link.End, new List<int> {1, 3, 3}},
-                        {Link.Both, new List<int> {4, 1, 3, 3}},
-                        {Link.Cycle, new List<int> {1, 3, 6}},
-                        {Link.None, new List<int> {1, 3}}
+                        { Link.Start, new List<int> { 4, 1, 3 } },
+                        { Link.End, new List<int> { 1, 3, 3 } },
+                        { Link.Both, new List<int> { 4, 1, 3, 3 } },
+                        { Link.Cycle, new List<int> { 1, 3, 6 } },
+                        { Link.None, new List<int> { 1, 3 } }
                     },
 
                     new Dictionary<Link, List<int>>
                     {
-                        {Link.Start, new List<int> {4, 2, 1, 5}},
-                        {Link.End, new List<int> {2, 1, 5, 4}},
-                        {Link.Both, new List<int> {4, 2, 1, 5, 4}},
-                        {Link.Cycle, new List<int> {2, 1, 5, 7}},
-                        {Link.None, new List<int> {2, 1, 5}}
+                        { Link.Start, new List<int> { 4, 2, 1, 5 } },
+                        { Link.End, new List<int> { 2, 1, 5, 4 } },
+                        { Link.Both, new List<int> { 4, 2, 1, 5, 4 } },
+                        { Link.Cycle, new List<int> { 2, 1, 5, 7 } },
+                        { Link.None, new List<int> { 2, 1, 5 } }
                     },
 
                     new Dictionary<Link, List<int>>
                     {
-                        {Link.Start, new List<int> {1}},
-                        {Link.End, new List<int> {1}},
-                        {Link.Both, new List<int> {1, 1}},
-                        {Link.Cycle, new List<int> {1}},
-                        {Link.None, new List<int>{}}
+                        { Link.Start, new List<int> { 1 } },
+                        { Link.End, new List<int> { 1 } },
+                        { Link.Both, new List<int> { 1, 1 } },
+                        { Link.Cycle, new List<int> { 1 } },
+                        { Link.None, new List<int>() }
                     },
 
                     new Dictionary<Link, List<int>>
                     {
-                        {Link.Start, new List<int> {8}},
-                        {Link.End, new List<int> {1}},
-                        {Link.Both, new List<int> {8, 1}},
-                        {Link.Cycle, new List<int> {8}},
-                        {Link.None, new List<int>{}}
+                        { Link.Start, new List<int> { 8 } },
+                        { Link.End, new List<int> { 1 } },
+                        { Link.Both, new List<int> { 8, 1 } },
+                        { Link.Cycle, new List<int> { 8 } },
+                        { Link.None, new List<int>() }
                     },
 
                     new Dictionary<Link, List<int>>
                     {
-                        {Link.Start, new List<int> {101, 99900, 400000}},
-                        {Link.End, new List<int> {99900, 400000, 500000}},
-                        {Link.Both, new List<int> {101,99900, 400000, 500000}},
-                        {Link.Cycle, new List<int> {99900, 400000, 500100}},
-                        {Link.None, new List<int>{99900, 400000}}
+                        { Link.Start, new List<int> { 101, 99900, 400000 } },
+                        { Link.End, new List<int> { 99900, 400000, 500000 } },
+                        { Link.Both, new List<int> { 101, 99900, 400000, 500000 } },
+                        { Link.Cycle, new List<int> { 99900, 400000, 500100 } },
+                        { Link.None, new List<int> { 99900, 400000 } }
                     },
                     
                     new Dictionary<Link, List<int>>
                     {
-                        {Link.Start, new List<int> {1,1,1,1,1}},
-                        {Link.End, new List<int> {1,1,1,1,1}},
-                        {Link.Both, new List<int> {1,1,1,1,1,1}},
-                        {Link.Cycle, new List<int> {1,1,1,1,1}},
-                        {Link.None, new List<int>{1,1,1,1}}
+                        { Link.Start, new List<int> { 1, 1, 1, 1, 1 } },
+                        { Link.End, new List<int> { 1, 1, 1, 1, 1 } },
+                        { Link.Both, new List<int> { 1, 1, 1, 1, 1, 1 } },
+                        { Link.Cycle, new List<int> { 1, 1, 1, 1, 1 } },
+                        { Link.None, new List<int> { 1, 1, 1, 1 } }
                     }
-
                 };
             }
         }

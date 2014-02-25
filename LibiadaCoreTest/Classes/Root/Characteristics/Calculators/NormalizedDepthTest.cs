@@ -5,14 +5,23 @@ namespace LibiadaCoreTest.Classes.Root.Characteristics.Calculators
 
     using NUnit.Framework;
 
+    /// <summary>
+    /// The normalized depth test.
+    /// </summary>
     [TestFixture]
     public class NormalizedDepthTest : AbstractCalculatorTest
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="NormalizedDepthTest"/> class.
+        /// </summary>
         public NormalizedDepthTest()
         {
-            calc = new NormalizedDepth();
+            this.Calculator = new NormalizedDepth();
         }
 
+        /// <summary>
+        /// The congeneric calculation test.
+        /// </summary>
         [Test]
         public void CongenericCalculationTest()
         {
@@ -34,6 +43,9 @@ namespace LibiadaCoreTest.Classes.Root.Characteristics.Calculators
             CongenericChainCharacteristicTest(0, Link.Both, theory);
         }
 
+        /// <summary>
+        /// The chain calculation test.
+        /// </summary>
         [Test]
         public void ChainCalculationTest()
         {

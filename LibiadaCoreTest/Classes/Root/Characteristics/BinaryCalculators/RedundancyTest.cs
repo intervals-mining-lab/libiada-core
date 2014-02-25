@@ -4,9 +4,33 @@
 
     using NUnit.Framework;
 
+    /// <summary>
+    /// The redundancy test.
+    /// </summary>
     [TestFixture]
     public class RedundancyTest : AbstractBinaryCalculatorTest
     {
+        /// <summary>
+        /// The init.
+        /// </summary>
+        [SetUp]
+        public void Init()
+        {
+            this.Calculator = new Redundancy();
+        }
+
+        /// <summary>
+        /// The chain calculation test.
+        /// </summary>
+        /// <param name="index">
+        /// The index.
+        /// </param>
+        /// <param name="firstValue">
+        /// The first value.
+        /// </param>
+        /// <param name="secondValue">
+        /// The second value.
+        /// </param>
         [TestCase(1, 0, 0)]
         [TestCase(2, 0, 0)]
         [TestCase(3, 0, 0.7282)]
@@ -26,9 +50,7 @@
         [TestCase(17, 0.6072, 0.5636)]
         public void ChainCalculationTest(int index, double firstValue, double secondValue)
         {
-            var calculator = new Redundancy();
-
-            CalculationTest(calculator, index, firstValue, secondValue);
+            CalculationTest(index, firstValue, secondValue);
         }
     }
 }

@@ -4,9 +4,21 @@
 
     using NUnit.Framework;
 
+    /// <summary>
+    /// The congeneric intervals manager test.
+    /// </summary>
     [TestFixture]
-    class CongenericIntervalsManagerTest : AbstractIntervalsManagerTest
+    public class CongenericIntervalsManagerTest : AbstractIntervalsManagerTest
     {
+        /// <summary>
+        /// The congeneric intervals manager creation none link test.
+        /// </summary>
+        /// <param name="index">
+        /// The index.
+        /// </param>
+        /// <param name="link">
+        /// The link.
+        /// </param>
         [TestCase(0, Link.Start)]
         [TestCase(0, Link.End)]
         [TestCase(0, Link.Both)]

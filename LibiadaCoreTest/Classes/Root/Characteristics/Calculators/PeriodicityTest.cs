@@ -5,14 +5,32 @@ namespace LibiadaCoreTest.Classes.Root.Characteristics.Calculators
 
     using NUnit.Framework;
 
+    /// <summary>
+    /// The periodicity test.
+    /// </summary>
     [TestFixture]
     public class PeriodicityTest : AbstractCalculatorTest
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="PeriodicityTest"/> class.
+        /// </summary>
         public PeriodicityTest()
         {
-            calc = new Periodicity();
+            this.Calculator = new Periodicity();
         }
 
+        /// <summary>
+        /// The congeneric calculation test.
+        /// </summary>
+        /// <param name="index">
+        /// The index.
+        /// </param>
+        /// <param name="link">
+        /// The link.
+        /// </param>
+        /// <param name="value">
+        /// The value.
+        /// </param>
         [TestCase(0, Link.None, 0.8661)]
         [TestCase(0, Link.Start, 0.8585)]
         [TestCase(0, Link.End, 0.8915)]
@@ -23,6 +41,18 @@ namespace LibiadaCoreTest.Classes.Root.Characteristics.Calculators
             CongenericChainCharacteristicTest(index, link, value);
         }
 
+        /// <summary>
+        /// The chain calculation test.
+        /// </summary>
+        /// <param name="index">
+        /// The index.
+        /// </param>
+        /// <param name="link">
+        /// The link.
+        /// </param>
+        /// <param name="value">
+        /// The value.
+        /// </param>
         [TestCase(0, Link.None, 0.8375)]
         [TestCase(0, Link.Start, 0.8288)]
         [TestCase(0, Link.End, 0.8432)]

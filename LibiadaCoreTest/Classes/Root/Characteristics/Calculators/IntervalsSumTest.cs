@@ -5,15 +5,33 @@
 
     using NUnit.Framework;
 
+    /// <summary>
+    /// The intervals sum test.
+    /// </summary>
     [TestFixture]
     public class IntervalsSumTest : AbstractCalculatorTest
     {
+        /// <summary>
+        /// The set up.
+        /// </summary>
         [TestFixtureSetUp]
         public void SetUp()
         {
-            calc = new IntervalsSum();
+            this.Calculator = new IntervalsSum();
         }
 
+        /// <summary>
+        /// The congeneric calculation test.
+        /// </summary>
+        /// <param name="index">
+        /// The index.
+        /// </param>
+        /// <param name="link">
+        /// The link.
+        /// </param>
+        /// <param name="value">
+        /// The value.
+        /// </param>
         [TestCase(0, Link.None, 4)]
         [TestCase(0, Link.Start, 8)]
         [TestCase(0, Link.End, 7)]
@@ -23,7 +41,19 @@
         {
             CongenericChainCharacteristicTest(index, link, value);
         }
-        
+
+        /// <summary>
+        /// The chain calculation test.
+        /// </summary>
+        /// <param name="index">
+        /// The index.
+        /// </param>
+        /// <param name="link">
+        /// The link.
+        /// </param>
+        /// <param name="value">
+        /// The value.
+        /// </param>
         [TestCase(0, Link.None, 17)]
         [TestCase(0, Link.Start, 26)]
         [TestCase(0, Link.End, 24)]

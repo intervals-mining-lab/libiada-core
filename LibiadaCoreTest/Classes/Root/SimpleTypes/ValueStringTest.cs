@@ -5,11 +5,13 @@ namespace LibiadaCoreTest.Classes.Root.SimpleTypes
     using NUnit.Framework;
 
     /// <summary>
+    /// The value string test.
     /// </summary>
     [TestFixture]
     public class ValueStringTest
     {
         /// <summary>
+        /// The equals test.
         /// </summary>
         [Test]
         public void EqualsTest()
@@ -17,6 +19,4 @@ namespace LibiadaCoreTest.Classes.Root.SimpleTypes
             Assert.AreEqual(new ValueString("1"), new ValueString("1"));
         }
     }
-
-
 }

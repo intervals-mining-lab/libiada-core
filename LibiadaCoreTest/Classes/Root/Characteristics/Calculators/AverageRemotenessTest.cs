@@ -5,14 +5,32 @@ namespace LibiadaCoreTest.Classes.Root.Characteristics.Calculators
 
     using NUnit.Framework;
 
+    /// <summary>
+    /// The average remoteness test.
+    /// </summary>
     [TestFixture]
     public class AverageRemotenessTest : AbstractCalculatorTest
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="AverageRemotenessTest"/> class.
+        /// </summary>
         public AverageRemotenessTest()
         {
-            calc = new AverageRemoteness();
+            this.Calculator = new AverageRemoteness();
         }
 
+        /// <summary>
+        /// The congeneric calculation test.
+        /// </summary>
+        /// <param name="index">
+        /// The index.
+        /// </param>
+        /// <param name="link">
+        /// The link.
+        /// </param>
+        /// <param name="value">
+        /// The value.
+        /// </param>
         [TestCase(0, Link.None, 0.7925)]
         [TestCase(0, Link.Start, 1.195)]
         [TestCase(0, Link.End, 1.0567)]
@@ -23,6 +41,18 @@ namespace LibiadaCoreTest.Classes.Root.Characteristics.Calculators
             CongenericChainCharacteristicTest(index, link, value);
         }
 
+        /// <summary>
+        /// The chain calculation test.
+        /// </summary>
+        /// <param name="index">
+        /// The index.
+        /// </param>
+        /// <param name="link">
+        /// The link.
+        /// </param>
+        /// <param name="value">
+        /// The value.
+        /// </param>
         [TestCase(0, Link.None, 1.0242)]
         [TestCase(0, Link.Start, 1.1077)]
         [TestCase(0, Link.End, 1.017)]

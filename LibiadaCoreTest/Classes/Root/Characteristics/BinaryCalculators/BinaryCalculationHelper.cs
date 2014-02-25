@@ -5,25 +5,34 @@
     using LibiadaCore.Classes.Root;
     using LibiadaCore.Classes.Root.SimpleTypes;
 
+    /// <summary>
+    /// The binary calculation helper.
+    /// </summary>
     public static class BinaryCalculationHelper
     {
-        public static Dictionary<string, IBaseObject> Elements = new Dictionary<string, IBaseObject>
+        /// <summary>
+        /// The elements.
+        /// </summary>
+        public static readonly Dictionary<string, IBaseObject> Elements = new Dictionary<string, IBaseObject>
             {
-                {"a", new ValueChar('a')},
-                {"b", new ValueChar('b')},
-                {"c", new ValueChar('c')},
-                {"g", new ValueChar('g')},
-                {"t", new ValueChar('t')}
+                { "a", new ValueChar('a') },
+                { "b", new ValueChar('b') },
+                { "c", new ValueChar('c') },
+                { "g", new ValueChar('g') },
+                { "t", new ValueChar('t') }
             };
 
+        /// <summary>
+        /// Gets the chains.
+        /// </summary>
         public static List<Chain> Chains
         {
             get
             {
                 var chains = new List<Chain>();
 
-                //0
-                Chain chain = new Chain(10);
+                // 0
+                var chain = new Chain(10);
                 chain.Add(Elements["a"], 0);
                 chain.Add(Elements["a"], 1);
                 chain.Add(Elements["b"], 2);
@@ -34,19 +43,19 @@
                 chains.Add(chain);
 
                 // ----------- цепочки из работы Морозенко
-                //1
+                // 1
                 chain = new Chain(2);
                 chain.Add(Elements["a"], 0);
                 chain.Add(Elements["b"], 1);
                 chains.Add(chain);
 
-                //2
+                // 2
                 chain = new Chain(6);
                 chain.Add(Elements["a"], 0);
                 chain.Add(Elements["b"], 3);
                 chains.Add(chain);
 
-                //3
+                // 3
                 chain = new Chain(27);
                 chain.Add(Elements["a"], 0);
                 chain.Add(Elements["a"], 4);
@@ -58,25 +67,25 @@
                 chain.Add(Elements["b"], 26);
                 chains.Add(chain);
 
-                //4
+                // 4
                 chain = new Chain(5);
                 chain.Add(Elements["a"], 0);
                 chain.Add(Elements["b"], 1);
                 chains.Add(chain);
 
-                //5
+                // 5
                 chain = new Chain(12);
                 chain.Add(Elements["a"], 0);
                 chain.Add(Elements["b"], 1);
                 chains.Add(chain);
 
-                //6
+                // 6
                 chain = new Chain(13);
                 chain.Add(Elements["a"], 0);
                 chain.Add(Elements["b"], 12);
                 chains.Add(chain);
 
-                //7
+                // 7
                 chain = new Chain(29);
                 chain.Add(Elements["a"], 0);
                 chain.Add(Elements["a"], 14);
@@ -91,7 +100,7 @@
                 chain.Add(Elements["b"], 28);
                 chains.Add(chain);
 
-                //8
+                // 8
                 chain = new Chain(25);
                 chain.Add(Elements["a"], 0);
                 chain.Add(Elements["a"], 3);
@@ -105,7 +114,7 @@
                 chain.Add(Elements["b"], 24);
                 chains.Add(chain);
 
-                //9
+                // 9
                 chain = new Chain(29);
                 chain.Add(Elements["a"], 0);
                 chain.Add(Elements["a"], 3);
@@ -118,7 +127,7 @@
                 chain.Add(Elements["b"], 28);
                 chains.Add(chain);
 
-                //10
+                // 10
                 chain = new Chain(28);
                 chain.Add(Elements["a"], 0);
                 chain.Add(Elements["a"], 8);
@@ -130,7 +139,7 @@
                 chain.Add(Elements["b"], 19);
                 chains.Add(chain);
 
-                //11
+                // 11
                 chain = new Chain(28);
                 chain.Add(Elements["a"], 0);
                 chain.Add(Elements["a"], 9);
@@ -142,7 +151,7 @@
                 chain.Add(Elements["b"], 25);
                 chains.Add(chain);
 
-                //12
+                // 12
                 chain = new Chain(16);
                 chain.Add(Elements["a"], 0);
                 chain.Add(Elements["a"], 8);
@@ -150,7 +159,7 @@
                 chain.Add(Elements["b"], 12);
                 chains.Add(chain);
 
-                //13
+                // 13
                 chain = new Chain(30);
                 chain.Add(Elements["a"], 0);
                 chain.Add(Elements["a"], 6);
@@ -162,7 +171,7 @@
                 chain.Add(Elements["b"], 21);
                 chains.Add(chain);
 
-                //14
+                // 14
                 chain = new Chain(23);
                 chain.Add(Elements["a"], 4);
                 chain.Add(Elements["a"], 8);
@@ -174,7 +183,7 @@
                 chain.Add(Elements["b"], 19);
                 chains.Add(chain);
 
-                //15
+                // 15
                 chain = new Chain(12);
                 chain.Add(Elements["a"], 4);
                 chain.Add(Elements["b"], 1);
@@ -183,7 +192,7 @@
                 chain.Add(Elements["b"], 8);
                 chains.Add(chain);
 
-                //16
+                // 16
                 chain = new Chain(29);
                 chain.Add(Elements["a"], 2);
                 chain.Add(Elements["a"], 9);
@@ -195,7 +204,7 @@
                 chains.Add(chain);
 
                 // -------------- дальше цепочки из монографии
-                //17
+                // 17
                 chain = new Chain(26);
                 chain.Add(Elements["a"], 0);
                 chain.Add(Elements["a"], 6);
@@ -221,7 +230,7 @@
                 chain.Add(Elements["c"], 11);
                 chains.Add(chain);
 
-                //19
+                // 19
                 chain = new Chain(23);
                 chain.Add(Elements["a"], 0);
                 chain.Add(Elements["a"], 6);

@@ -5,14 +5,32 @@ namespace LibiadaCoreTest.Classes.Root.Characteristics.Calculators
 
     using NUnit.Framework;
 
+    /// <summary>
+    /// The geometric mean test.
+    /// </summary>
     [TestFixture]
     public class GeometricMeanTest : AbstractCalculatorTest
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="GeometricMeanTest"/> class.
+        /// </summary>
         public GeometricMeanTest()
         {
-            calc = new GeometricMean();
+            this.Calculator = new GeometricMean();
         }
 
+        /// <summary>
+        /// The congeneric calculation test.
+        /// </summary>
+        /// <param name="index">
+        /// The index.
+        /// </param>
+        /// <param name="link">
+        /// The link.
+        /// </param>
+        /// <param name="value">
+        /// The value.
+        /// </param>
         [TestCase(0, Link.None, 1.7321)]
         [TestCase(0, Link.Start, 2.2894)]
         [TestCase(0, Link.End, 2.0801)]
@@ -23,6 +41,18 @@ namespace LibiadaCoreTest.Classes.Root.Characteristics.Calculators
             CongenericChainCharacteristicTest(0, link, value);
         }
 
+        /// <summary>
+        /// The calculation test.
+        /// </summary>
+        /// <param name="index">
+        /// The index.
+        /// </param>
+        /// <param name="link">
+        /// The link.
+        /// </param>
+        /// <param name="value">
+        /// The value.
+        /// </param>
         [TestCase(0, Link.None, 2.0339)]
         [TestCase(0, Link.Start, 2.155)]
         [TestCase(0, Link.End, 2.0237)]
