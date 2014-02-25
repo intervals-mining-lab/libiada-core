@@ -1,35 +1,44 @@
-﻿using System;
-using LibiadaCore.Classes.Root.SimpleTypes;
-
-namespace PhantomChains.Classes.PhantomChains
+﻿namespace PhantomChains.Classes.PhantomChains
 {
-    ///<summary>
+    using System;
+
+    using LibiadaCore.Classes.Root.SimpleTypes;
+
+    /// <summary>
     /// Запись соответствующая одному уровню дерева варинтов.
-    ///</summary>
+    /// </summary>
     public class Record
     {
-        ///<summary>
+        /// <summary>
         /// Фантомное сообщение, находящееся в определенной позиции фантомной цепи 
         /// и представляющее варианты содержимого узлов этого же уровня в дереве вариантов.
-        ///</summary>
-        public ValuePhantom Content;
-        ///<summary>
-        /// Количество варинтов, накопившееся к данному уровню дерева.
-        ///</summary>
-        public UInt64 Volume;
+        /// </summary>
+        public readonly ValuePhantom Content;
 
-        ///<summary>
-        /// Конструктор.
-        ///</summary>
-        ///<param name="message">Фантомное сообщение в данной позиции фантомной цепи</param>
-        ///<param name="volume">Суммарное количество варинтов построения до данной позиции</param>
-        ///<exception cref="Exception">Исключение возникает в слчае отирицательного количества вариантов</exception>
-        public Record(ValuePhantom message,UInt64 volume)
+        /// <summary>
+        /// Количество варинтов, накопившееся к данному уровню дерева.
+        /// </summary>
+        public readonly ulong Volume;
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Record"/> class.
+        /// </summary>
+        /// <param name="message">
+        /// Фантомное сообщение в данной позиции фантомной цепи
+        /// </param>
+        /// <param name="volume">
+        /// Суммарное количество варинтов построения до данной позиции
+        /// </param>
+        /// <exception cref="ArgumentNullException">
+        /// Исключение возникает в слчае отирицательного количества вариантов
+        /// </exception>
+        public Record(ValuePhantom message, ulong volume)
         {
-            if(message==null)
+            if (message == null)
             {
-                throw new Exception();
+                throw new ArgumentNullException();
             }
+
             Content = message;
             Volume = volume;
         }

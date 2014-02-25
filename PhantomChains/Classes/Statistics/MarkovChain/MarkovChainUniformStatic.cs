@@ -1,22 +1,33 @@
-using LibiadaCore.Classes.Root;
-using PhantomChains.Classes.Statistics.MarkovChain.Generators;
-
 namespace PhantomChains.Classes.Statistics.MarkovChain
 {
-    ///<summary>
+    using LibiadaCore.Classes.Root;
+
+    using global::PhantomChains.Classes.Statistics.MarkovChain.Generators;
+
+    /// <summary>
     /// Класс описывающий статичную однородную марковскую цепь
-    ///</summary>
-    ///<typeparam name="ChainGenerated">Тип генерируемой марковской цепи</typeparam>
-    ///<typeparam name="ChainTaught">Тип обучающей цепи</typeparam>
-    public class MarkovChainUniformStatic<ChainGenerated, ChainTaught> : MarkovChainNotUniformStatic<ChainGenerated, ChainTaught>
-        where ChainGenerated : BaseChain, new()
-        where ChainTaught : BaseChain, new()
+    /// </summary>
+    /// <typeparam name="TChainGenerated">
+    /// Тип генерируемой марковской цепи
+    /// </typeparam>
+    /// <typeparam name="TChainTaught">
+    /// Тип обучающей цепи
+    /// </typeparam>
+    public class MarkovChainUniformStatic<TChainGenerated, TChainTaught> :
+        MarkovChainNotUniformStatic<TChainGenerated, TChainTaught>
+        where TChainGenerated : BaseChain, new() where TChainTaught : BaseChain, new()
     {
-        ///<summary>
-        ///</summary>
-        ///<param name="rang">Порядок марковской цепи</param>
-        ///<param name="generator">Генератор</param>
-        public MarkovChainUniformStatic(int rang, IGenerator generator) : base(rang, 0, generator)
+        /// <summary>
+        /// Initializes a new instance of the <see cref="MarkovChainUniformStatic{TChainGenerated,TChainTaught}"/> class.
+        /// </summary>
+        /// <param name="rang">
+        /// Порядок марковской цепи
+        /// </param>
+        /// <param name="generator">
+        /// Random generator.
+        /// </param>
+        public MarkovChainUniformStatic(int rang, IGenerator generator)
+            : base(rang, 0, generator)
         {
         }
     }

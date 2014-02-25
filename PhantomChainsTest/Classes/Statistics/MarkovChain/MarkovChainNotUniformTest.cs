@@ -1,79 +1,98 @@
-using LibiadaCore.Classes.Root;
-using LibiadaCore.Classes.Root.SimpleTypes;
-using NUnit.Framework;
-using PhantomChains.Classes.Statistics.MarkovChain;
-using PhantomChains.Classes.Statistics.MarkovChain.Generators;
-using PhantomChainsTest.Classes.Statistics.MarkovChain.Generators;
-
 namespace PhantomChainsTest.Classes.Statistics.MarkovChain
 {
-    /**
-     * Тестируем неоднородную марковскую цепь 
-     * неоднородная марковская цепь представляет собой 
-     * несколько однородных марковских цепей каждая из которых 
-     * ипользуется на определенном шаге
-     * 
-     **/
+    using LibiadaCore.Classes.Root;
+    using LibiadaCore.Classes.Root.SimpleTypes;
+
+    using NUnit.Framework;
+
+    using global::PhantomChains.Classes.Statistics.MarkovChain;
+
+    using global::PhantomChains.Classes.Statistics.MarkovChain.Generators;
+
+    using PhantomChainsTest.Classes.Statistics.MarkovChain.Generators;
+
+    /// <summary>
+    /// Тестируем неоднородную марковскую цепь 
+    /// неоднородная марковская цепь представляет собой 
+    /// несколько однородных марковских цепей каждая из которых 
+    /// ипользуется на определенном шаге
+    /// </summary>
     [TestFixture]
     public class MarkovChainNotUniformTest
     {
-        // Исходная цепь на которой будет происходить обучение
-        private Chain TestChain;
-        private Chain TestChain2;
+        /// <summary>
+        /// Исходная цепь на которой будет происходить обучение
+        /// </summary>
+        private Chain testChain;
 
+        /// <summary>
+        /// The test chain 2.
+        /// </summary>
+        private Chain testChain2;
+
+        /// <summary>
+        /// The init.
+        /// </summary>
         [SetUp]
         public void Init()
         {
             // Создаем цепь длинной 12
             // |a|d|b|a|a|c|b|b|a|a|c|a|
-            TestChain = new Chain(12);
-            TestChain.Add((ValueString)"a", 0);
-            TestChain.Add((ValueString)"d", 1);
-            TestChain.Add((ValueString)"b", 2);
-            TestChain.Add((ValueString)"a", 3);
-            TestChain.Add((ValueString)"a", 4);
-            TestChain.Add((ValueString)"c", 5);
-            TestChain.Add((ValueString)"b", 6);
-            TestChain.Add((ValueString)"b", 7);
-            TestChain.Add((ValueString)"a", 8);
-            TestChain.Add((ValueString)"a", 9);
-            TestChain.Add((ValueString)"c", 10);
-            TestChain.Add((ValueString)"a", 11);
+            this.testChain = new Chain(12);
+            this.testChain.Add((ValueString)"a", 0);
+            this.testChain.Add((ValueString)"d", 1);
+            this.testChain.Add((ValueString)"b", 2);
+            this.testChain.Add((ValueString)"a", 3);
+            this.testChain.Add((ValueString)"a", 4);
+            this.testChain.Add((ValueString)"c", 5);
+            this.testChain.Add((ValueString)"b", 6);
+            this.testChain.Add((ValueString)"b", 7);
+            this.testChain.Add((ValueString)"a", 8);
+            this.testChain.Add((ValueString)"a", 9);
+            this.testChain.Add((ValueString)"c", 10);
+            this.testChain.Add((ValueString)"a", 11);
 
-            TestChain2 = new Chain(12);
-            TestChain2.Add((ValueString)"a", 0);
-            TestChain2.Add((ValueString)"a", 1);
-            TestChain2.Add((ValueString)"a", 2);
-            TestChain2.Add((ValueString)"a", 3);
-            TestChain2.Add((ValueString)"a", 4);
-            TestChain2.Add((ValueString)"a", 5);
-            TestChain2.Add((ValueString)"b", 6);
-            TestChain2.Add((ValueString)"a", 7);
-            TestChain2.Add((ValueString)"a", 8);
-            TestChain2.Add((ValueString)"a", 9);
-            TestChain2.Add((ValueString)"b", 10);
-            TestChain2.Add((ValueString)"a", 11);
+            this.testChain2 = new Chain(12);
+            this.testChain2.Add((ValueString)"a", 0);
+            this.testChain2.Add((ValueString)"a", 1);
+            this.testChain2.Add((ValueString)"a", 2);
+            this.testChain2.Add((ValueString)"a", 3);
+            this.testChain2.Add((ValueString)"a", 4);
+            this.testChain2.Add((ValueString)"a", 5);
+            this.testChain2.Add((ValueString)"b", 6);
+            this.testChain2.Add((ValueString)"a", 7);
+            this.testChain2.Add((ValueString)"a", 8);
+            this.testChain2.Add((ValueString)"a", 9);
+            this.testChain2.Add((ValueString)"b", 10);
+            this.testChain2.Add((ValueString)"a", 11);
         }
 
+        /// <summary>
+        /// The markov chain not uniform zero rang two test.
+        /// </summary>
         [Test]
         public void MarkovChainNotUniformZeroRangTwoTest()
         {
             // Используем генератор заглушку
             IGenerator generator = new MockGenerator();
+
             // Порядок цепи 2 
             // Значит что каждый элемент зависит от одного предудушего
-            const int markovChainRang = 2;
+            const int MarkovChainRang = 2;
+
             // неоднородность 1 
             // следовательно допускаем имеется 2 модели для четных и нечетных позиций
-            const int noUniformRang = 0;
+            const int NoUniformRang = 0;
+
             // Создаем марковскую модель передавая её ранг, неоднородность и генератор
-            var markovChain = new MarkovChainNotUniformStatic<Chain, Chain>(markovChainRang, noUniformRang, generator);
+            var markovChain = new MarkovChainNotUniformStatic<Chain, Chain>(MarkovChainRang, NoUniformRang, generator);
 
             // Длинна генерируемой цепи
-            int Length = 30;
+            const int Length = 30;
+
             // Обучаем цепь 
             // TeachingMethod.None значнт не какой предворительной обработки цепи не проводится
-            markovChain.Teach(TestChain2, TeachingMethod.Cycle);
+            markovChain.Teach(this.testChain2, TeachingMethod.Cycle);
 
             Chain temp = markovChain.Generate(Length);
 
@@ -94,9 +113,8 @@ namespace PhantomChainsTest.Classes.Statistics.MarkovChain
              * ---|------|------|
              */
 
-
             // Цепь которую хотим получить
-            Chain resultTheory = new Chain(30);
+            var resultTheory = new Chain(30);
             resultTheory[0] = (ValueString)"a"; // "a" 0.77;
             resultTheory[1] = (ValueString)"a"; // "a" 0.15;
             resultTheory[2] = (ValueString)"b"; // "b" 0.96;
@@ -131,27 +149,34 @@ namespace PhantomChainsTest.Classes.Statistics.MarkovChain
             Assert.AreEqual(resultTheory, temp);
         }
 
+        /// <summary>
+        /// The markov chain not uniform one rang two test.
+        /// </summary>
         [Test]
         public void MarkovChainNotUniformOneRangTwoTest()
         {
             // Используем генератор заглушку
             IGenerator generator = new MockGenerator();
+
             // Порядок цепи 2 
             // Значит что каждый элемент зависит от одного предудушего
-            const int markovChainRang = 2;
+            const int MarkovChainRang = 2;
+
             // неоднородность 1 
             // следовательно допускаем имеется 2 модели для четных и нечетных позиций
-            const int noUniformRang = 1;
+            const int NoUniformRang = 1;
+
             // Создаем марковскую модель передавая её ранг, неоднородность и генератор
-            var markovChain = new MarkovChainNotUniformStatic<Chain, Chain>(markovChainRang, noUniformRang, generator);
+            var markovChain = new MarkovChainNotUniformStatic<Chain, Chain>(MarkovChainRang, NoUniformRang, generator);
 
             // Длинна генерируемой цепи
-            const int length = 12;
+            const int Length = 12;
+
             // Обучаем цепь 
             // TeachingMethod.None значнт не какой предворительной обработки цепи не проводится
-            markovChain.Teach(TestChain, TeachingMethod.None);
+            markovChain.Teach(this.testChain, TeachingMethod.None);
 
-            Chain temp = markovChain.Generate(length);
+            Chain temp = markovChain.Generate(Length);
 
             /**
              * Внутри неоднородной марковской цепи существует n однородных марковских цепей. n - порядок неоднородности цепи
@@ -211,7 +236,6 @@ namespace PhantomChainsTest.Classes.Statistics.MarkovChain
              * 
              */
 
-
             // Цепь которую хотим получить
             var result = new Chain(12);
             result.Add((ValueString)"b", 0); // 1 цепь вероятность по первому уровню. выпало  0,77 Получаем b
@@ -230,10 +254,13 @@ namespace PhantomChainsTest.Classes.Statistics.MarkovChain
             Assert.AreEqual(result, temp);
         }
 
+        /// <summary>
+        /// The markov chain not uniform dynamic zero rang two test.
+        /// </summary>
         [Test]
         public void MarkovChainNotUniformDynamicZeroRangTwoTest()
         {
-          /*  // Используем генератор заглушку
+            /*  // Используем генератор заглушку
             IGenerator Generator = new MockGenerator();
             // Порядок цепи 2 
             // Значит что каждый элемент зависит от одного предудушего
@@ -269,7 +296,6 @@ namespace PhantomChainsTest.Classes.Statistics.MarkovChain
              * ---|------|------|
              */
 
-
             // Цепь которую хотим получить
             var resultTheory = new Chain(30);
             resultTheory[0] = (ValueString)"a"; // "a" 0.77;
@@ -302,13 +328,15 @@ namespace PhantomChainsTest.Classes.Statistics.MarkovChain
             resultTheory[27] = (ValueString)"a"; // "a" 0.51;
             resultTheory[28] = (ValueString)"a"; // "a" 0.71;
             resultTheory[29] = (ValueString)"a"; // "a" 0.2; 
-
         }
 
+        /// <summary>
+        /// The markov chain not uniform dynamic one rang two test.
+        /// </summary>
         [Test]
         public void MarkovChainNotUniformDynamicOneRangTwoTest()
         {
-         /*   // Используем генератор заглушку
+            /*   // Используем генератор заглушку
             IGenerator Generator = new MockGenerator();
             // Порядок цепи 2 
             // Значит что каждый элемент зависит от одного предудушего
@@ -385,7 +413,6 @@ namespace PhantomChainsTest.Classes.Statistics.MarkovChain
              * 
              */
 
-
             // Цепь которую хотим получить
             var result = new Chain(12);
             result.Add((ValueString)"b", 0); // 1 цепь вероятность по первому уровню. выпало  0,77 Получаем b
@@ -401,6 +428,5 @@ namespace PhantomChainsTest.Classes.Statistics.MarkovChain
             result.Add((ValueString)"c", 10); // 1 цепь вероятность по второму уровню. выпало  0.77 Получаем с
             result.Add((ValueString)"b", 11); // 2 цепь вероятность по второму уровню. выпало  0.15 Получаем b
         }
-        
     }
 }

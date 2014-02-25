@@ -1,20 +1,28 @@
-using LibiadaCore.Classes.Root;
-using LibiadaCore.Classes.Root.SimpleTypes;
-using NUnit.Framework;
-using PhantomChains.Classes.PhantomChains;
-
 namespace PhantomChainsTest.Classes.PhantomChains
 {
+    using LibiadaCore.Classes.Root;
+    using LibiadaCore.Classes.Root.SimpleTypes;
+
+    using NUnit.Framework;
+
+    using global::PhantomChains.Classes.PhantomChains;
+
+    /// <summary>
+    /// The phantom table test.
+    /// </summary>
     [TestFixture]
     public class PhantomTableTest
     {
+        /// <summary>
+        /// The volume test.
+        /// </summary>
         [Test]
         public void VolumeTest()
         {
-            var m3 = new ValuePhantom {new ValueChar('a')};
-            var m1 = new ValuePhantom {new ValueChar('1'), new ValueChar('2'), new ValueChar('3')};
-            var m2 = new ValuePhantom {new ValueChar('4'), new ValueChar('3')};
-            
+            var m3 = new ValuePhantom { new ValueChar('a') };
+            var m1 = new ValuePhantom { new ValueChar('1'), new ValueChar('2'), new ValueChar('3') };
+            var m2 = new ValuePhantom { new ValueChar('4'), new ValueChar('3') };
+
             var test = new BaseChain(4);
             test.Add(m1, 0);
             test.Add(m2, 1);
@@ -27,14 +35,16 @@ namespace PhantomChainsTest.Classes.PhantomChains
             Assert.AreEqual(2, table[2].Volume);
             Assert.AreEqual(1, table[3].Volume);
             Assert.AreEqual(1, table[4].Volume);
-
         }
 
+        /// <summary>
+        /// The content test.
+        /// </summary>
         [Test]
         public void ContentTest()
         {
-            var m1 = new ValuePhantom {new ValueChar('1'), new ValueChar('2'), new ValueChar('3')};
-            var m2 = new ValuePhantom {new ValueChar('4'), new ValueChar('3')};
+            var m1 = new ValuePhantom { new ValueChar('1'), new ValueChar('2'), new ValueChar('3') };
+            var m2 = new ValuePhantom { new ValueChar('4'), new ValueChar('3') };
 
             var test = new BaseChain(3);
             test.Add(m1, 0);
@@ -45,7 +55,6 @@ namespace PhantomChainsTest.Classes.PhantomChains
             Assert.AreEqual(m1, table[1].Content);
             Assert.AreEqual(m2, table[2].Content);
             Assert.AreEqual(m2, table[3].Content);
-
         }
     }
 }

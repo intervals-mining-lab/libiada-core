@@ -1,115 +1,144 @@
-using System;
-using System.Collections.Generic;
-using LibiadaCore.Classes.Misc.SpaceRebuilders;
-using LibiadaCore.Classes.Root;
-using LibiadaCore.Classes.Root.SimpleTypes;
-using PhantomChains.Classes.Statistics.MarkovChain.Generators;
-
 namespace PhantomChains.Classes.PhantomChains
 {
+    using System;
+    using System.Collections.Generic;
+
+    using LibiadaCore.Classes.Misc.SpaceReorganizers;
+    using LibiadaCore.Classes.Root;
+    using LibiadaCore.Classes.Root.SimpleTypes;
+
+    using Statistics.MarkovChain.Generators;
+
     /// <summary>
     /// Генератор фаонтомных цепей.
     /// </summary>
-    /// <typeparam name="ChainTo">Тип хранимой в генераторе цепи</typeparam>
-    /// <typeparam name="ChainFrom">Исходный тип цепи</typeparam>
-    public class PhantomChainGenerator<ChainTo, ChainFrom>
-        where ChainTo : BaseChain, new()
-        where ChainFrom : BaseChain, new()
+    /// <typeparam name="TResult">Тип хранимой в генераторе цепи</typeparam>
+    /// <typeparam name="TSource">Исходный тип цепи</typeparam>
+    public class PhantomChainGenerator<TResult, TSource>
+        where TResult : BaseChain, new()
+        where TSource : BaseChain, new()
     {
-        ///<summary>
+        /// <summary>
         /// Количество возможных вариантов для данной цепи
-        ///</summary>
-        public readonly UInt64 Variants = UInt64.MaxValue;
-        private readonly ChainTo InternalChain;
-        private readonly List<ChainTo> TempChains = new List<ChainTo>();
-        private readonly IGenerator Gen;
+        /// </summary>
+        public readonly ulong Variants = ulong.MaxValue;
+
+        /// <summary>
+        /// The basic chain length.
+        /// </summary>
+        private const int BasicChainLength = 30;
+
+        /// <summary>
+        /// The temp chains.
+        /// </summary>
+        private readonly List<TResult> tempChains = new List<TResult>();
+
+        /// <summary>
+        /// The gen.
+        /// </summary>
+        private readonly IGenerator generator;
+
         /// <summary>
         /// Древья вариантов построения для отдельных участков фантомной цепи (длиной 30 элементов)
         /// </summary>
-        private List<TreeTop> Tree = new List<TreeTop>();
-        private readonly int BasicChainLength = 30;
-        private readonly int TotalLength;
+        private readonly List<TreeTop> tree = new List<TreeTop>();
 
         /// <summary>
-        /// Конструктор генератора.
+        /// The total length.
         /// </summary>
-        /// <param name="chain">Аминокислотная цепь</param>
-        /// <param name="gen">Генератор случайных чисел</param>
-        public PhantomChainGenerator(ChainFrom chain, IGenerator gen)
+        private readonly int totalLength;
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="PhantomChainGenerator{TResult,TSource}"/> class.
+        /// </summary>
+        /// <param name="chain">
+        /// The chain.
+        /// </param>
+        /// <param name="gen">
+        /// The gen.
+        /// </param>
+        public PhantomChainGenerator(TSource chain, IGenerator gen)
         {
-            Gen = gen;
-            var rebuilder = new SpacePhantomRebuilder<ChainTo, ChainFrom>();
-            InternalChain = rebuilder.Rebuild(chain);
-            for(int w=0;w<InternalChain.Length;w++)
+            this.generator = gen;
+            var reorganizer = new SpacePhantomReorganizer<TResult, TSource>();
+            TResult internalChain = reorganizer.Reorganize(chain);
+            for (int w = 0; w < internalChain.Length; w++)
             {
-                TotalLength += ((ValuePhantom) InternalChain[w])[0].ToString().Length;
+                this.totalLength += ((ValuePhantom)internalChain[w])[0].ToString().Length;
             }
-            UInt64 tempVariants = 1;
+
+            ulong tempVariants = 1;
             int counter = 0;
-            for (int k = 0; k < (int)Math.Ceiling((double)InternalChain.Length / BasicChainLength); k++)
+            for (int k = 0; k < (int)Math.Ceiling((double)internalChain.Length / BasicChainLength); k++)
             {
-                TempChains.Add(new ChainTo());
-                TempChains[k].ClearAndSetNewLength(BasicChainLength);
-                Tree.Add(null);
+                this.tempChains.Add(new TResult());
+                this.tempChains[k].ClearAndSetNewLength(BasicChainLength);
+                this.tree.Add(null);
             }
-            //цикл подсчёта вариантов в каждом дереве 
-            //и создания деревьев
-            for (int i = 0; i < TempChains.Count; i++)
+
+            // цикл подсчёта вариантов в каждом дереве 
+            // и создания деревьев
+            for (int i = 0; i < this.tempChains.Count; i++)
             {
-                for (int j = 0; j < TempChains[i].Length;j++)
+                for (int j = 0; j < this.tempChains[i].Length; j++)
                 {
                     ValuePhantom tempMessage;
-                    if (counter < InternalChain.Length)
+                    if (counter < internalChain.Length)
                     {
-                        tempMessage = (ValuePhantom)InternalChain[counter];
-                        TempChains[i][j] = tempMessage;
+                        tempMessage = (ValuePhantom)internalChain[counter];
+                        this.tempChains[i][j] = tempMessage;
                     }
                     else
                     {
-                        tempMessage = new ValuePhantom {new ValueChar('a')};
-                        TempChains[i][j] = tempMessage;
+                        tempMessage = new ValuePhantom { new ValueChar('a') };
+                        this.tempChains[i][j] = tempMessage;
                     }
-                    tempVariants *= (uint)tempMessage.Power;
+
+                    tempVariants *= (uint)tempMessage.Cardinality;
                     counter++;
                 }
-                if ((i != TempChains.Count - 1) || (TempChains.Count==1))
+
+                if ((i != this.tempChains.Count - 1) || (this.tempChains.Count == 1))
                 {
                     Variants = Math.Min(Variants, tempVariants);
                 }
+
                 tempVariants = 1;
-                Tree[i] = new TreeTop(TempChains[i], Gen);
+                this.tree[i] = new TreeTop(this.tempChains[i], this.generator);
             }
         }
 
-        ///<summary>
+        /// <summary>
         /// Метод осуществляет генерацию заданного количества цепей
-        ///</summary>
-        ///<param name="i">Требуемое количество генетических последовательностей</param>
-        ///<returns>Массив цепочек</returns>
-        public List<BaseChain> Generate(UInt64 i)
+        /// </summary>
+        /// <param name="i">Требуемое количество генетических последовательностей</param>
+        /// <returns>Массив цепочек</returns>
+        public List<BaseChain> Generate(ulong i)
         {
-            if(i>Variants)
+            if (i > Variants)
             {
                 throw new Exception();
             }
+
             var res = new List<BaseChain>();
             var tempRes = new List<BaseChain>();
-            for (int m = 0; m < Tree.Count;m++)
+            for (int m = 0; m < this.tree.Count; m++)
             {
                 tempRes.Add(null);
             }
-            Gen.Reset();
+
+            this.generator.Reset();
             int chainCounter = 0;
             while (res.Count != (uint)i)
             {
                 int counter = 0;
-                res.Add(new BaseChain(TotalLength));
-                for (int l = 0; l < Tree.Count;l++)
+                res.Add(new BaseChain(this.totalLength));
+                for (int l = 0; l < this.tree.Count; l++)
                 {
-                    tempRes[l] = Tree[l].Generate();
-                    for(int u=0;u<tempRes[l].Length;u++)
+                    tempRes[l] = this.tree[l].Generate();
+                    for (int u = 0; u < tempRes[l].Length; u++)
                     {
-                        if(counter<res[chainCounter].Length)
+                        if (counter < res[chainCounter].Length)
                         {
                             res[chainCounter][counter] = tempRes[l][u];
                             counter++;
@@ -120,16 +149,19 @@ namespace PhantomChains.Classes.PhantomChains
                         }
                     }
                 }
+
                 chainCounter++;
-                if(Tree.Count!=1)
+                if (this.tree.Count != 1)
                 {
-                    Tree[Tree.Count-1] = new TreeTop(TempChains[TempChains.Count-1],Gen);
+                    this.tree[this.tree.Count - 1] = new TreeTop(this.tempChains[this.tempChains.Count - 1], this.generator);
                 }
             }
-            for (int s = 0; s < Tree.Count;s++ )
+
+            for (int s = 0; s < this.tree.Count; s++)
             {
-                Tree[s] = new TreeTop(TempChains[s], Gen);
+                this.tree[s] = new TreeTop(this.tempChains[s], this.generator);
             }
+
             return res;
         }
     }

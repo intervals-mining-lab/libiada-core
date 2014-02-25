@@ -1,38 +1,41 @@
-using System;
-
 namespace PhantomChains.Classes.Statistics.MarkovChain
 {
-    ///<summary>
+    using System;
+
+    /// <summary>
     /// Перечисление типов марковских цепей.
-    ///</summary>
+    /// </summary>
     [Serializable]
     public enum GeneratingMethod
     {
-        ///<summary>
+        /// <summary>
         /// Однородная марковская цепь.
         /// Вероятности не зависят от шага
-        ///</summary>
+        /// </summary>
         StaticUniform,
 
-        ///<summary>
+        /// <summary>
         /// Неоднородная марковская цепь.
         /// Вероятности не зависят от шага
-        ///</summary>
+        /// </summary>
         StaticNotUniform,
 
-        ///<summary>
+        /// <summary>
         /// Однородная марковская цепь.
         /// Вероятности зависят от шага
-        ///</summary>
+        /// </summary>
         DynamicUniform,
 
 
-        ///<summary>
+        /// <summary>
         /// Неоднородная марковская цепь.
         /// Вероятности зависят от шага
-        ///</summary>
+        /// </summary>
         DynamicNotUniform,
 
+        /// <summary>
+        /// The random.
+        /// </summary>
         Random
-    } ;
+    }
 }

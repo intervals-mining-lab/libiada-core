@@ -1,21 +1,33 @@
-using LibiadaCore.Classes.Root;
-using LibiadaCore.Classes.Root.SimpleTypes;
-using NUnit.Framework;
-using PhantomChains.Classes.Statistics.MarkovChain;
-using PhantomChainsTest.Classes.Statistics.MarkovChain.Generators;
-
 namespace PhantomChainsTest.Classes.Statistics.MarkovChain
 {
-    ///<summary>
-    ///</summary>
+    using LibiadaCore.Classes.Root;
+    using LibiadaCore.Classes.Root.SimpleTypes;
+
+    using NUnit.Framework;
+
+    using global::PhantomChains.Classes.Statistics.MarkovChain;
+
+    using PhantomChainsTest.Classes.Statistics.MarkovChain.Generators;
+
+    /// <summary>
+    /// The probability matrix test.
+    /// </summary>
     [TestFixture]
     public class ProbabilityMatrixTest
     {
+        /// <summary>
+        /// The test chain.
+        /// </summary>
         private Chain testChain;
+
+        /// <summary>
+        /// The test chain 2.
+        /// </summary>
         private Chain testChain2;
 
-        ///<summary>
-        ///</summary>
+        /// <summary>
+        /// The init.
+        /// </summary>
         [SetUp]
         public void Init()
         {
@@ -33,7 +45,6 @@ namespace PhantomChainsTest.Classes.Statistics.MarkovChain
             testChain.Add((ValueString)"c", 10);
             testChain.Add((ValueString)"a", 11);
 
-
             testChain2 = new Chain(12);
             testChain2.Add((ValueString)"a", 0);
             testChain2.Add((ValueString)"a", 1);
@@ -47,11 +58,11 @@ namespace PhantomChainsTest.Classes.Statistics.MarkovChain
             testChain2.Add((ValueString)"a", 9);
             testChain2.Add((ValueString)"b", 10);
             testChain2.Add((ValueString)"a", 11);
-
         }
 
-        ///<summary>
-        ///</summary>
+        /// <summary>
+        /// The generation not uniform markov chain rang zero test.
+        /// </summary>
         [Test]
         public void GenerationNotUniformMarkovChainRangZeroTest()
         {
@@ -73,9 +84,9 @@ namespace PhantomChainsTest.Classes.Statistics.MarkovChain
             Assert.AreEqual(resultTheory, resultPractice);
         }
 
-
-        ///<summary>
-        ///</summary>
+        /// <summary>
+        /// The generation uniform markov chain level two test.
+        /// </summary>
         [Test]
         public void GenerationUniformMarkovChainLevelTwoTest()
         {
@@ -111,11 +122,10 @@ namespace PhantomChainsTest.Classes.Statistics.MarkovChain
             resultTheory[28] = (ValueString)"a"; // "a" 0.71;
             resultTheory[29] = (ValueString)"a"; // "a" 0.2;
 
-
             var markov = new MarkovChainNotUniformStatic<Chain, Chain>(2, 0, new MockGenerator());
             markov.Teach(testChain2, TeachingMethod.Cycle);
             var resultPractice = markov.Generate(30);
-            Assert.AreEqual(resultTheory, resultPractice);            
+            Assert.AreEqual(resultTheory, resultPractice);
         }
     }
 }

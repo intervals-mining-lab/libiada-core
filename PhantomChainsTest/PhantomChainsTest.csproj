@@ -55,7 +55,7 @@
     <Compile Include="Classes\PhantomChains\PhantomTableTest.cs" />
     <Compile Include="Classes\PhantomChains\ProbabilityPhantomChainGeneratorTest.cs" />
     <Compile Include="Classes\PhantomChains\TreeTest.cs" />
-    <Compile Include="Classes\Statistics\Markov Compare\MarkovMetricTest.cs" />
+    <Compile Include="Classes\Statistics\MarkovCompare\MarkovMetricTest.cs" />
     <Compile Include="Classes\Statistics\MarkovChain\Generators\MockGenerator.cs" />
     <Compile Include="Classes\Statistics\MarkovChain\IterationMatrixTest.cs" />
     <Compile Include="Classes\Statistics\MarkovChain\MarkovChainNotUniformTest.cs" />

@@ -1,22 +1,34 @@
-using System;
-
 namespace PhantomChains.Classes.Statistics.MarkovChain.Generators
 {
-    ///<summary>
-    /// Генератор основанный на стандарном Random class
-    ///</summary>
-    public class SimpleGenerator:IGenerator
-    {
-        private Random rnd = new Random();
+    using System;
 
+    /// <summary>
+    /// Генератор основанный на стандарном Random class
+    /// </summary>
+    public class SimpleGenerator : IGenerator
+    {
+        /// <summary>
+        /// The random.
+        /// </summary>
+        private Random random = new Random();
+
+        /// <summary>
+        /// The reset.
+        /// </summary>
         public void Reset()
         {
-            rnd = new Random(rnd.Next());
+            random = new Random(random.Next());
         }
 
+        /// <summary>
+        /// The next.
+        /// </summary>
+        /// <returns>
+        /// The <see cref="double"/>.
+        /// </returns>
         public double Next()
         {
-            return rnd.NextDouble();
+            return random.NextDouble();
         }
     }
 }

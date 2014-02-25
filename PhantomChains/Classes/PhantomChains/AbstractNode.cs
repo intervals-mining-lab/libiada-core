@@ -1,46 +1,58 @@
-﻿using System;
-using System.Collections.Generic;
-using LibiadaCore.Classes.Root;
-using PhantomChains.Classes.Statistics.MarkovChain.Generators;
-
-namespace PhantomChains.Classes.PhantomChains
+﻿namespace PhantomChains.Classes.PhantomChains
 {
-    ///<summary>
+    using System.Collections.Generic;
+
+    using LibiadaCore.Classes.Root;
+
+    using Statistics.MarkovChain.Generators;
+
+    /// <summary>
     /// Интерфейс элемента дерева
-    ///</summary>
+    /// </summary>
     public abstract class AbstractNode
     {
+        /// <summary>
+        /// The children.
+        /// </summary>
         protected readonly List<TreeNode> Children = new List<TreeNode>();
-        protected UInt64 volume;
-        protected int level;
-        protected int StartPosition;
 
-        ///<summary>
+        /// <summary>
+        /// Поле хранящее количество дочерних элементов
+        /// </summary>
+        public ulong Volume { get; protected set; }
+
+        /// <summary>
+        /// Уровень элемента в дереве
+        /// </summary>
+        public int Level { get; protected set; }
+
+        /// <summary>
+        /// The start position.
+        /// </summary>
+        protected int StartPosition { get; set; }
+
+        /// <summary>
         /// Интерфейс рекурсивного метода осуществляющего декременту вариантов построения в данной ветви.
         /// Также уменьшает количество вариантов данного узла на 1. Вызывается после генерации очередного занчения.
-        ///</summary>
-        ///<returns>Булевый флаг, показывающий нужно ли производить проверку детей
+        /// </summary>
+        /// <returns>
+        /// Булевый флаг, показывающий нужно ли производить проверку детей
         /// на отсутствие дальнейших вариантов. Если флаг имеет значение false,
         /// то действие не требуется. Если же true, то требуется проверить дочерние элементы 
-        /// на наличие возможных вариантов, и удалить детей в которых больше нет вариантов. </returns>
+        /// на наличие возможных вариантов, и удалить детей в которых больше нет вариантов. 
+        /// </returns>
         public abstract bool Decrement();
 
-        ///<summary>
-        /// Поле хранящее количество дочерних элементов
-        ///</summary>
-        public UInt64 Volume
+        /// <summary>
+        /// Метод, возвращающий дочерний для данного элемент дерева по его индексу.
+        /// </summary>
+        /// <param name="index">Индекс дочернего элемента</param>
+        /// <returns>Дочерний элемент</returns>
+        public TreeNode GetChild(int index)
         {
-            get { return volume; }
+            return Children[index];
         }
 
-        ///<summary>
-        /// Уровень элемента в дереве
-        ///</summary>
-        public int Level
-        {
-            get { return level; }
-        }
-        
         /// <summary>
         /// Метод, выбирающий какой из потомков будет генерировать очередной элемент цепи.
         /// </summary>
@@ -49,37 +61,27 @@ namespace PhantomChains.Classes.PhantomChains
         /// <param name="table">Таблица с параметрами фантомной цепи</param>
         protected void Find(BaseChain result, IGenerator generator, PhantomTable table)
         {
-            //если элемент не листовой
-            if (Children.Count!=0)
+            // если элемент не листовой
+            if (Children.Count != 0)
             {
                 double val = generator.Next();
-                UInt64 curVal=0;
+                ulong curVal = 0;
                 for (int i = 0; i < Children.Count; i++)
                 {
-                    curVal += Children[i].volume;
-                    if (val <= ((double)curVal / volume))
+                    curVal += Children[i].Volume;
+                    if (val <= ((double)curVal / this.Volume))
                     {
-                        Children[i].FillChain(result, generator,table);
+                        Children[i].FillChain(result, generator, table);
                         return;
                     }
                 }
             }
-            //если дочерних элементов нет, то генерация закончена
-            //и запускаем процедуру декременты варинтов в данной ветви
             else
             {
+                // если дочерних элементов нет, то генерация закончена
+                // и запускаем процедуру декременты варинтов в данной ветви
                 Decrement();
             }
-        }
-
-        ///<summary>
-        /// Метод, возвращающий дочерний для данного элемент дерева по его индексу.
-        ///</summary>
-        ///<param name="index">Индекс дочернего элемента</param>
-        ///<returns>Дочерний элемент</returns>
-        public TreeNode GetChild(int index)
-        {
-            return Children[index];
         }
     }
 }

@@ -1,24 +1,23 @@
-using System;
-
 namespace PhantomChains.Classes.Statistics.MarkovChain
 {
-    ///<summary>
+    /// <summary>
     /// Метод предобработки цепи
-    ///</summary>
-    [Serializable]
+    /// </summary>
     public enum TeachingMethod
     {
-        ///<summary>
+        /// <summary>
         /// Отсутсвие предобработки
-        ///</summary>
+        /// </summary>
         None,
-        ///<summary>
+
+        /// <summary>
         /// Замыкание в кольцо (используя статистические данные)
-        ///</summary>
+        /// </summary>
         Cycle,
-        ///<summary>
+
+        /// <summary>
         /// Замыкание в кольцо (используя информацию о строе цепи)
-        ///</summary>
+        /// </summary>
         CycleBuilding
-    } ;
+    }
 }

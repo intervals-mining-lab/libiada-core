@@ -1,19 +1,21 @@
 namespace PhantomChains.Classes.Statistics.MarkovChain.Generators
 {
-    ///<summary>
+    /// <summary>
     /// Интерфейс для генероторов псевдосулайно величины
-    ///</summary>
+    /// </summary>
     public interface IGenerator
     {
-        ///<summary>
+        /// <summary>
         /// Переустановить стартовое число.
-        ///</summary>
+        /// </summary>
         void Reset();
 
-        ///<summary>
+        /// <summary>
         /// Получить следующие значение псевдослучаной величины.
-        ///</summary>
-        ///<returns>[0..1] значение</returns>
+        /// </summary>
+        /// <returns>
+        /// [0..1] значение
+        /// </returns>
         double Next();
     }
 }

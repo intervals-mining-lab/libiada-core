@@ -1,28 +1,34 @@
-using PhantomChains.Classes.Statistics.MarkovChain.Matrixes.Absolute;
-
 namespace PhantomChains.Classes.Statistics.MarkovChain.Builders
 {
-    ///<summary>
+    using global::PhantomChains.Classes.Statistics.MarkovChain.Matrices.Absolute;
+
+    /// <summary>
     /// Правило создания матрицы для матрицы абсолютных заначений
-    ///</summary>
+    /// </summary>
     public class MatrixBuilder : IMatrixBuilder
     {
-        ///<summary>
+        /// <summary>
         /// Создать матрицу.
-        ///</summary>
-        ///<param name="alphabetPower">Мощность алфавита</param>
-        ///<param name="i">Размерность матрицы</param>
-        ///<returns>Элемент матрицы</returns>
-        public object Create(int alphabetPower, int i)
+        /// </summary>
+        /// <param name="alphabetCardinality">
+        /// Мощность алфавита
+        /// </param>
+        /// <param name="i">
+        /// Размерность матрицы
+        /// </param>
+        /// <returns>
+        /// Элемент матрицы
+        /// </returns>
+        public object Create(int alphabetCardinality, int i)
         {
             switch (i)
             {
                 case 0:
-                    return (double) 0;
+                    return (double)0;
                 case 1:
-                    return new MatrixRow(alphabetPower, i);
+                    return new MatrixRow(alphabetCardinality, i);
                 default:
-                    return new Matrix(alphabetPower, i);
+                    return new Matrix(alphabetCardinality, i);
             }
         }
     }

@@ -1,40 +1,69 @@
-using System;
-using System.Collections.Generic;
-using LibiadaCore.Classes.Misc.Iterators;
-using LibiadaCore.Classes.Misc.SpaceRebuilders;
-using LibiadaCore.Classes.Root;
-using LibiadaCore.Classes.TheoryOfSet;
-using PhantomChains.Classes.Statistics.MarkovChain.Builders;
-using PhantomChains.Classes.Statistics.MarkovChain.Generators;
-using PhantomChains.Classes.Statistics.MarkovChain.Matrixes.Absolute;
-using PhantomChains.Classes.Statistics.MarkovChain.Matrixes.Probability;
-
 namespace PhantomChains.Classes.Statistics.MarkovChain
 {
-    ///<summary>
+    using System;
+    using System.Collections.Generic;
+
+    using LibiadaCore.Classes.Misc.Iterators;
+    using LibiadaCore.Classes.Misc.SpaceReorganizers;
+    using LibiadaCore.Classes.Root;
+
+    using global::PhantomChains.Classes.Statistics.MarkovChain.Builders;
+
+    using global::PhantomChains.Classes.Statistics.MarkovChain.Generators;
+
+    using global::PhantomChains.Classes.Statistics.MarkovChain.Matrices.Absolute;
+
+    using global::PhantomChains.Classes.Statistics.MarkovChain.Matrices.Probability;
+
+    /// <summary>
     /// Базовый класс для марковских цепей
-    ///</summary>
-    public abstract class MarkovChainBase<ChainGenerated, ChainTaught> 
-        where ChainTaught: BaseChain, new() 
-        where ChainGenerated: BaseChain,new()
+    /// </summary>
+    /// <typeparam name="TChainGenerated">
+    /// </typeparam>
+    /// <typeparam name="TChainTaught">
+    /// </typeparam>
+    public abstract class MarkovChainBase<TChainGenerated, TChainTaught>
+        where TChainTaught : BaseChain, new() where TChainGenerated : BaseChain, new()
     {
-        protected Alphabet alphabet;
+        /// <summary>
+        /// The generator.
+        /// </summary>
         protected readonly IGenerator Generator;
+
+        /// <summary>
+        /// The rank.
+        /// </summary>
         protected readonly int Rank;
+
+        /// <summary>
+        /// The probability matrix.
+        /// </summary>
         protected readonly IProbabilityMatrix[] ProbabilityMatrix;
+
+        /// <summary>
+        /// The uniform rank.
+        /// </summary>
         protected readonly int UniformRank;
 
-        ///<summary>
-        /// Конструктор
-        ///</summary>
-        ///<param name="i">Порядок марковской цепи</param>
-        ///<param name="uniformRang">Порядок неоднородности</param>
-        ///<param name="generator">Генератор используемый при генерировании последовательнсти</param>
+        /// <summary>
+        /// Initializes a new instance of the <see cref="MarkovChainBase{ChainGenerated,ChainTaught}"/> class.
+        /// </summary>
+        /// <param name="i">
+        /// Порядок марковской цепи
+        /// </param>
+        /// <param name="uniformRang">
+        /// Порядок неоднородности
+        /// </param>
+        /// <param name="generator">
+        /// Генератор используемый при генерировании последовательнсти
+        /// </param>
+        /// <exception cref="ArgumentException">
+        /// </exception>
         public MarkovChainBase(int i, int uniformRang, IGenerator generator)
         {
-            if ((i<1) || (null == generator))
+            if ((i < 1) || (null == generator))
             {
-                throw  new Exception("Ошибка при создании марковской цепи");
+                throw new ArgumentException("Ошибка при создании марковской цепи");
             }
 
             Rank = i;
@@ -43,31 +72,108 @@ namespace PhantomChains.Classes.Statistics.MarkovChain
             ProbabilityMatrix = new IProbabilityMatrix[uniformRang + 1];
         }
 
+        /// <summary>
+        /// Возвращает матрицу вероятностей марковской цепи
+        /// </summary>
+        public IProbabilityMatrix PropabilityMatrix
+        {
+            get
+            {
+                return ProbabilityMatrix[0];
+            }
+        }
 
-        ///<summary>
+        /// <summary>
+        /// Gets the alphabet.
+        /// </summary>
+        public Alphabet Alphabet { get; private set; }
+
+        /// <summary>
         /// Генерировать цепь заданно длинной.
         /// Использовать Информацию марковской цепи максимального порядка (порядок указаный при создании объекта)
-        ///</summary>
-        ///<param name="i">Длинна генерируемой цепи</param>
-        ///<returns>Реализация Марковской цепи</returns>
-        public ChainGenerated Generate(int i)
+        /// </summary>
+        /// <param name="i">Длинна генерируемой цепи</param>
+        /// <returns>
+        /// Реализация Марковской цепи
+        /// </returns>
+        public TChainGenerated Generate(int i)
         {
             return Generate(i, Rank);
         }
 
-        ///<summary>
+        /// <summary>
         /// Генерировать цепь заданно длинной.
         /// Использовать Информацию марковской цепи указанного порядка ( не более порядока указаного при создании объекта)
-        ///</summary>
-        ///<param name="i">Длина генерируемой цепи</param>
-        ///<param name="rank">Порядок марковской цепи используемый при реализации</param>
-        public abstract ChainGenerated Generate(int i, int rank);
+        /// </summary>
+        /// <param name="i">
+        /// Длина генерируемой цепи
+        /// </param>
+        /// <param name="rank">
+        /// Порядок марковской цепи используемый при реализации
+        /// </param>
+        /// <returns>
+        /// The <see cref="TChainGenerated"/>.
+        /// </returns>
+        public abstract TChainGenerated Generate(int i, int rank);
+
+        /// <summary>
+        /// Обучить Марковскую цепь на последовательности
+        /// </summary>
+        /// <param name="chain">Цепь используемая при обучении</param>
+        /// <param name="method">Метод предобработки цепи</param>
+        public virtual void Teach(TChainTaught chain, TeachingMethod method)
+        {
+            var builder = new MatrixBuilder();
+            var absMatrix = new IAbsoluteMatrix[UniformRank + 1];
+            this.Alphabet = chain.Alphabet;
+            for (int i = 0; i < UniformRank + 1; i++)
+            {
+                absMatrix[i] = (IAbsoluteMatrix)builder.Create(this.Alphabet.Cardinality, Rank);
+            }
+
+            SpaceReorganizer<TChainTaught, TChainTaught> reorganizer = GetRebuilder(method);
+            chain = reorganizer.Reorganize(chain);
+
+            var it = new IteratorStart<TChainGenerated, TChainTaught>(chain, Rank, 1);
+            it.Reset();
+
+            int k = 0;
+
+            // Здесь будем заполнять матрицы
+            while (it.Next())
+            {
+                ++k;
+                int m = k % (UniformRank + 1);
+                if (m == 0)
+                {
+                    m = UniformRank + 1;
+                }
+
+                TChainGenerated chainToTeach = it.Current();
+                var indexedChain = new int[Rank];
+                for (int i = 0; i < Rank; i++)
+                {
+                    indexedChain[i] = chain.Alphabet.IndexOf(chainToTeach[i]);
+                }
+
+                absMatrix[m - 1].Add(indexedChain);
+            }
+
+            for (int i = 0; i < UniformRank + 1; i++)
+            {
+                ProbabilityMatrix[i] = absMatrix[i].ProbabilityMatrix();
+            }
+        }
 
         /// <summary>
         /// Возвращает сгенерированную марковскую цепь полученную из индексов
         /// </summary>
-        /// <returns>Реализация марковской цепи</returns>
-
+        /// <param name="list">
+        /// The list.
+        /// </param>
+        /// <returns>
+        /// Реализация марковской цепи
+        /// </returns>
         protected IBaseObject GetObject(Dictionary<IBaseObject, double> list)
         {
             IBaseObject result = null;
@@ -82,81 +188,32 @@ namespace PhantomChains.Classes.Statistics.MarkovChain
                     break;
                 }
             }
+
             return result;
         }
 
-        protected virtual SpaceRebuilder<ChainTaught, ChainTaught> GetRebuilder(TeachingMethod method)
+        /// <summary>
+        /// The get rebuilder.
+        /// </summary>
+        /// <param name="method">
+        /// The method.
+        /// </param>
+        /// <returns>
+        /// The <see cref="T:SpaceReorganizer{ChainTaught, ChainTaught}"/>.
+        /// </returns>
+        /// <exception cref="ArgumentException">
+        /// Thrown if unknown <see cref="TeachingMethod"/> is provided.
+        /// </exception>
+        protected virtual SpaceReorganizer<TChainTaught, TChainTaught> GetRebuilder(TeachingMethod method)
         {
-            switch(method)
+            switch (method)
             {
                 case TeachingMethod.None:
-                    return new NullRebuilder<ChainTaught, ChainTaught>();
+                    return new NullReorganizer<TChainTaught, TChainTaught>();
                 case TeachingMethod.Cycle:
-                    return new NullCycleSpaceRebuilder<ChainTaught, ChainTaught>(Rank - 1);
+                    return new NullCycleSpaceReorganizer<TChainTaught, TChainTaught>(Rank - 1);
                 default:
-                    throw new Exception();
-            }
-        }
-
-        ///<summary>
-        /// Обучить Марковскую цепь на последовательности
-        ///</summary>
-        ///<param name="chain">Цепь используемая при обучении</param>
-        ///<param name="method">Метод предобработки цепи</param>
-        public virtual void Teach(ChainTaught chain, TeachingMethod method)
-        {
-            var builder = new MatrixBuilder();
-            var absMatrix = new IAbsoluteMatrix[UniformRank + 1];
-            alphabet = chain.Alphabet;
-            for (int i = 0; i < UniformRank + 1; i++)
-                absMatrix[i] = (IAbsoluteMatrix)builder.Create(alphabet.Power, Rank);
-            SpaceRebuilder<ChainTaught, ChainTaught> rebuilder = GetRebuilder(method);
-            chain = rebuilder.Rebuild(chain);
-
-            var it = new IteratorStart<ChainGenerated, ChainTaught>(chain, Rank, 1);
-            it.Reset();
-
-            int k = 0;
-            //Сдесь будем заполнять матрицы
-            while (it.Next())
-            {
-                ++k;
-                int m = k % (UniformRank + 1);
-                if (m == 0)
-                    m = UniformRank + 1;
-
-                ChainGenerated chainToTeach = it.Current();
-                int[] indexedChain = new int[Rank];
-                for (int i = 0; i < Rank; i++)
-                {
-                    indexedChain[i] = chain.Alphabet.IndexOf(chainToTeach[i]);
-                }
-                absMatrix[m - 1].Add(indexedChain);
-            }
-
-            for (int i = 0; i < UniformRank + 1; i++)
-                ProbabilityMatrix[i] = absMatrix[i].ProbabilityMatrix();
-        }
-
-        /// <summary>
-        /// Возвращает матрицу вероятностей марковской цепи
-        /// </summary>
-        public IProbabilityMatrix PropabilityMatrix
-        {
-            get
-            {
-                return ProbabilityMatrix[0];
-            }
-        }
-
-        ///<summary>
-        /// Возвращает алфавит цепи
-        ///</summary>
-        public Alphabet Alphabet
-        {
-            get
-            {
-                return alphabet;
+                    throw new ArgumentException();
             }
         }
     }

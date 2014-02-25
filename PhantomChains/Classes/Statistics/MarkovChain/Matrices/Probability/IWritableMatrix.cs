@@ -1,13 +1,13 @@
-namespace PhantomChains.Classes.Statistics.MarkovChain.Matrixes.Probability
+namespace PhantomChains.Classes.Statistics.MarkovChain.Matrices.Probability
 {
-    ///<summary>
+    /// <summary>
     /// Интерыей позволяющие переписывать значение матрицы
-    ///</summary>
+    /// </summary>
     public interface IWritableMatrix
     {
-        ///<summary>
+        /// <summary>
         /// Занчение матрицы
-        ///</summary>
+        /// </summary>
         double Value { get; set;}
     }
 }

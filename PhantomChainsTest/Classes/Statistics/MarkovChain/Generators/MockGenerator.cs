@@ -1,18 +1,25 @@
-﻿using PhantomChains.Classes.Statistics.MarkovChain.Generators;
-
-namespace PhantomChainsTest.Classes.Statistics.MarkovChain.Generators
+﻿namespace PhantomChainsTest.Classes.Statistics.MarkovChain.Generators
 {
-    ///<summary>
-    /// ��������� �������� ������������ � ������ ��� �������� ����������� ������������� �����.
-    ///</summary>
+    using global::PhantomChains.Classes.Statistics.MarkovChain.Generators;
+
+    /// <summary>
+    /// The mock generator.
+    /// </summary>
     public class MockGenerator : IGenerator
     {
+        /// <summary>
+        /// The vault.
+        /// </summary>
         private readonly double[] vault = new double[30];
+
+        /// <summary>
+        /// The step.
+        /// </summary>
         private int step = -1;
 
-
-        ///<summary>
-        ///</summary>
+        /// <summary>
+        /// Initializes a new instance of the <see cref="MockGenerator"/> class.
+        /// </summary>
         public MockGenerator()
         {
             vault[0] = 0.77;
@@ -47,27 +54,29 @@ namespace PhantomChainsTest.Classes.Statistics.MarkovChain.Generators
             vault[29] = 0.2;
         }
 
-        ///<summary>
-        /// �������������� ��������� �����.
-        ///</summary>
+        /// <summary>
+        /// The reset.
+        /// </summary>
         public void Reset()
         {
             step = -1;
         }
 
-        ///<summary>
-        /// �������� ��������� �������� �������������� ��������.
-        ///</summary>
-        ///<returns>[0..1] ��������</returns>
+        /// <summary>
+        /// The next.
+        /// </summary>
+        /// <returns>
+        /// The <see cref="double"/>.
+        /// </returns>
         public double Next()
         {
             step++;
-            if(step < vault.Length)
+            if (step < vault.Length)
             {
                 return vault[step];
             }
+
             return 0;
         }
-
     }
 }

@@ -1,13 +1,13 @@
 namespace PhantomChains.Classes.Statistics.MarkovChain.Generators
 {
-    ///<summary>
+    /// <summary>
     /// Типы генераторов случайных величин
-    ///</summary>
+    /// </summary>
     public enum GeneratorType
     {
-        ///<summary>
+        /// <summary>
         /// Генератор основанный на стандарном Random class
-        ///</summary>
+        /// </summary>
         SimpleGenerator
     }
 }

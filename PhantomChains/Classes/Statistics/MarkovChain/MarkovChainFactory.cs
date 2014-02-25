@@ -1,41 +1,58 @@
-using System;
-using LibiadaCore.Classes.Root;
-using PhantomChains.Classes.Statistics.MarkovChain.Generators;
-
 namespace PhantomChains.Classes.Statistics.MarkovChain
 {
-    ///<summary>
+    using System;
+
+    using LibiadaCore.Classes.Root;
+
+    using global::PhantomChains.Classes.Statistics.MarkovChain.Generators;
+
+    /// <summary>
     /// Фабрика создающая марковскую цепь
-    ///</summary>
-    public class MarkovChainFactory<ChainGenerated, ChainTaught>
-        where ChainTaught : BaseChain, new()
-        where ChainGenerated : BaseChain, new()
+    /// </summary>
+    /// <typeparam name="TChainGenerated">
+    /// </typeparam>
+    /// <typeparam name="TChainTaught">
+    /// </typeparam>
+    public class MarkovChainFactory<TChainGenerated, TChainTaught>
+        where TChainTaught : BaseChain, new() where TChainGenerated : BaseChain, new()
     {
-        ///<summary>
+        /// <summary>
         /// Создать марковскую цепь
-        ///</summary>
-        ///<param name="method">Тип цепи</param>
-        ///<param name="rang">Порядок</param>
-        ///<param name="uniformRang">Неоднородность цепи</param>
-        ///<param name="generator">Генератор используемый в цепи</param>
-        ///<returns>Марковская цепь</returns>
-        ///<exception cref="Exception">В случае если тип цепи не зарегистирован в фабрике</exception>
-        public MarkovChainBase<ChainGenerated, ChainTaught> Create(GeneratingMethod method, int rang, int uniformRang, IGenerator generator)
+        /// </summary>
+        /// <param name="method">
+        /// Тип цепи
+        /// </param>
+        /// <param name="rang">
+        /// Порядок
+        /// </param>
+        /// <param name="uniformRang">
+        /// Неоднородность цепи
+        /// </param>
+        /// <param name="generator">
+        /// Генератор используемый в цепи
+        /// </param>
+        /// <returns>
+        /// Марковская цепь
+        /// </returns>
+        /// <exception cref="Exception">
+        /// В случае если тип цепи не зарегистирован в фабрике
+        /// </exception>
+        public MarkovChainBase<TChainGenerated, TChainTaught> Create(GeneratingMethod method, int rang, int uniformRang, IGenerator generator)
         {
-            switch(method)
+            switch (method)
             {
                 case GeneratingMethod.DynamicNotUniform:
-                    return null;// new MarkovChainNotUniformDynamic<ChainGenerated, ChainTeached>(rang, uniformRang, Generator);
+                    return null;
                 case GeneratingMethod.StaticNotUniform:
-                    return new MarkovChainNotUniformStatic<ChainGenerated, ChainTaught>(rang, uniformRang, generator);
+                    return new MarkovChainNotUniformStatic<TChainGenerated, TChainTaught>(rang, uniformRang, generator);
                 case GeneratingMethod.DynamicUniform:
-                    return null; //new MarkovChainUniformDynamic<ChainGenerated, ChainTeached>(rang, Generator);
+                    return null; 
                 case GeneratingMethod.StaticUniform:
-                    return new MarkovChainUniformStatic<ChainGenerated, ChainTaught>(rang, generator);
+                    return new MarkovChainUniformStatic<TChainGenerated, TChainTaught>(rang, generator);
                 case GeneratingMethod.Random:
-                    return new MarkovChainRandom<ChainGenerated, ChainTaught>(rang, generator);
-                default: 
-                    throw new Exception("This type of markov chain does not registered in system");
+                    return new MarkovChainRandom<TChainGenerated, TChainTaught>(rang, generator);
+                default:
+                    throw new ArgumentException("This type of markov chain does not registered in system", "method");
             }
         }
     }

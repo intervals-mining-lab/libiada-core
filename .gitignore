@@ -47,6 +47,7 @@ _ReSharper*/
 [Pp]ackages
 packages/
 *.dgml
+*[Ss]tyle[Cc]op.[Cc]ache
 
 # Visual Studio profiler
 *.psess
