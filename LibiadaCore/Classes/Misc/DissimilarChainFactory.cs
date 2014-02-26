@@ -2,8 +2,8 @@
 {
     using System.Collections.Generic;
 
-    using LibiadaCore.Classes.Root;
-    using LibiadaCore.Classes.Root.SimpleTypes;
+    using Root;
+    using Root.SimpleTypes;
 
     /// <summary>
     /// Static class that creates dissimilar chain by ordinary chain.

@@ -2,7 +2,7 @@
 {
     using System;
 
-    using LibiadaCore.Classes.Root.Characteristics.Calculators;
+    using Calculators;
 
     /// <summary>
     /// Redundancy of binary chain.

@@ -2,7 +2,7 @@ namespace LibiadaCore.Classes.Misc.Iterators
 {
     using System;
 
-    using LibiadaCore.Classes.Root;
+    using Root;
 
     /// <summary>
     /// Iterator that goes from start of the chain and reading one element at a time.

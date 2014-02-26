@@ -1,7 +1,7 @@
 namespace LibiadaCore.Classes.Misc.SpaceReorganizers
 {
-    using LibiadaCore.Classes.Root;
-    using LibiadaCore.Classes.Root.SimpleTypes;
+    using Root;
+    using Root.SimpleTypes;
 
     /// <summary>
     /// Not phantom reorganizer.

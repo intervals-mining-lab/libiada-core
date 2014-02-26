@@ -1,7 +1,7 @@
 namespace LibiadaCore.Classes.Misc.SpaceReorganizers
 {
-    using LibiadaCore.Classes.Misc.Iterators;
-    using LibiadaCore.Classes.Root;
+    using Iterators;
+    using Root;
 
     /// <summary>
     /// Reorganizer that does nothing.

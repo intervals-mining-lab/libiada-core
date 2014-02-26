@@ -2,7 +2,7 @@
 {
     using System.Linq;
 
-    using LibiadaCore.Classes.Misc;
+    using Misc;
 
     /// <summary>
     /// The congeneric intervals manager.

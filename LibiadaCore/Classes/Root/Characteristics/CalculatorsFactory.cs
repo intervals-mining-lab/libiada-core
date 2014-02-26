@@ -2,7 +2,7 @@ namespace LibiadaCore.Classes.Root.Characteristics
 {
     using System.Collections.Generic;
 
-    using LibiadaCore.Classes.Root.Characteristics.Calculators;
+    using Calculators;
 
     /// <summary>
     /// —татическа€ фабрика различных калькул€торов.

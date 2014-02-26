@@ -2,7 +2,7 @@ namespace LibiadaCore.Classes.Misc.Iterators
 {
     using System;
 
-    using LibiadaCore.Classes.Root;
+    using Root;
 
     /// <summary>
     /// Iterator tat moves from the end of chain to its beginning.

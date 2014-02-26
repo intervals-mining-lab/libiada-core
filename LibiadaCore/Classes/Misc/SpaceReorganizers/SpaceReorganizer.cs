@@ -1,6 +1,6 @@
 namespace LibiadaCore.Classes.Misc.SpaceReorganizers
 {
-    using LibiadaCore.Classes.Root;
+    using Root;
 
     /// <summary>
     /// The space reorganizer.

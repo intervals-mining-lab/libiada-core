@@ -2,8 +2,8 @@
 {
     using System;
 
-    using LibiadaCore.Classes.Root;
-    using LibiadaCore.Classes.Root.SimpleTypes;
+    using Root;
+    using Root.SimpleTypes;
 
     /// <summary>
     /// Статический класс, осуществляющй преобразование

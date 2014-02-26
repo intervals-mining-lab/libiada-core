@@ -1,6 +1,6 @@
 namespace LibiadaCore.Classes.Misc.Iterators
 {
-    using LibiadaCore.Classes.Root;
+    using Root;
 
     /// <summary>
     /// Writable iterators interface.

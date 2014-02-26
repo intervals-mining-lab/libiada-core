@@ -24,7 +24,7 @@ namespace LibiadaCore.Classes.Root
         {
             get
             {
-                 return this.Elements.Count;
+                 return Elements.Count;
             }
         }
 
@@ -46,14 +46,14 @@ namespace LibiadaCore.Classes.Root
         {
             get
             {
-                return this.Elements[index].Clone();
+                return Elements[index].Clone();
             }
 
             set
             {
-                if (!this.Elements.Contains(value))
+                if (!Elements.Contains(value))
                 {
-                    this.Elements[index] = value.Clone();
+                    Elements[index] = value.Clone();
                 }
             }
         }
@@ -80,13 +80,13 @@ namespace LibiadaCore.Classes.Root
                 throw new NullReferenceException();
             }
 
-            if (this.Elements.Contains(baseObject))
+            if (Elements.Contains(baseObject))
             {
                 throw new Exception();
             }
 
-            this.Elements.Add(baseObject.Clone());
-            return this.Elements.IndexOf(baseObject);
+            Elements.Add(baseObject.Clone());
+            return Elements.IndexOf(baseObject);
         }
 
         /// <summary>
@@ -96,7 +96,7 @@ namespace LibiadaCore.Classes.Root
         /// <param name="index">Индекс удаляемого элемента в алфавите</param>
         public virtual void Remove(int index)
         {
-            this.Elements.RemoveAt(index);
+            Elements.RemoveAt(index);
         }
 
         /// <summary>
@@ -106,9 +106,9 @@ namespace LibiadaCore.Classes.Root
         public IBaseObject Clone()
         {
             var clone = new Alphabet();
-            for (int i = 0; i < this.Elements.Count; i++)
+            for (int i = 0; i < Elements.Count; i++)
             {
-                clone.Add(this.Elements[i]);
+                clone.Add(Elements[i]);
             }
 
             return clone;
@@ -138,7 +138,7 @@ namespace LibiadaCore.Classes.Root
                 return true;
             }
 
-            return this.EqualsAsAlphabet(other as Alphabet);
+            return EqualsAsAlphabet(other as Alphabet);
         }
 
         /// <summary>
@@ -153,7 +153,7 @@ namespace LibiadaCore.Classes.Root
         /// </returns>
         public int IndexOf(IBaseObject obj)
         {
-            return this.Elements.IndexOf(obj);
+            return Elements.IndexOf(obj);
         }
 
         /// <summary>
@@ -167,7 +167,7 @@ namespace LibiadaCore.Classes.Root
         /// </returns>
         public bool Contains(IBaseObject element)
         {
-            return this.Elements.Contains(element);
+            return Elements.Contains(element);
         }
 
         /// <summary>
@@ -178,7 +178,7 @@ namespace LibiadaCore.Classes.Root
         /// </returns>
         public IEnumerator GetEnumerator()
         {
-            return this.Elements.GetEnumerator();
+            return Elements.GetEnumerator();
         }
 
         /// <summary>
@@ -191,7 +191,7 @@ namespace LibiadaCore.Classes.Root
         {
             var result = new List<IBaseObject>();
 
-            foreach (var vault in this.Elements)
+            foreach (var vault in Elements)
             {
                 result.Add(vault.Clone());
             }
@@ -209,7 +209,7 @@ namespace LibiadaCore.Classes.Root
         {
             var result = new List<IBaseObject>();
 
-            foreach (var vault in this.Elements)
+            foreach (var vault in Elements)
             {
                 result.Add(vault.Clone());
             }
@@ -226,7 +226,7 @@ namespace LibiadaCore.Classes.Root
         public override int GetHashCode()
         {
             int temp = 0;
-            foreach (IBaseObject o in this.Elements)
+            foreach (IBaseObject o in Elements)
             {
                 temp += 29 * o.GetHashCode();
             }
@@ -243,14 +243,14 @@ namespace LibiadaCore.Classes.Root
         /// </returns>
         private bool EqualsAsAlphabet(Alphabet other)
         {
-            if (other == null || this.Cardinality != other.Cardinality)
+            if (other == null || Cardinality != other.Cardinality)
             {
                 return false;
             }
 
-            for (int i = 0; i < this.Cardinality; i++)
+            for (int i = 0; i < Cardinality; i++)
             {
-                if (!this.Elements.Contains(other.Elements[i]))
+                if (!Elements.Contains(other.Elements[i]))
                 {
                     return false;
                 }

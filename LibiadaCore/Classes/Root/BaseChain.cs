@@ -5,7 +5,7 @@ namespace LibiadaCore.Classes.Root
     using System.Linq;
     using System.Text;
 
-    using LibiadaCore.Classes.Root.SimpleTypes;
+    using SimpleTypes;
 
     /// <summary>
     /// The base chain.

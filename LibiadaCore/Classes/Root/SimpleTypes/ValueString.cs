@@ -18,7 +18,7 @@ namespace LibiadaCore.Classes.Root.SimpleTypes
         /// </param>
         public ValueString(string value)
         {
-            this.Value = (string)value.Clone();
+            Value = (string)value.Clone();
         }
 
         /// <summary>

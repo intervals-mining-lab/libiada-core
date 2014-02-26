@@ -2,7 +2,7 @@ namespace LibiadaCore.Classes.Root.Characteristics.BinaryCalculators
 {
     using System;
 
-    using LibiadaCore.Classes.Root.Characteristics.Calculators;
+    using Calculators;
 
     /// <summary>
     /// Geometric mean of one element relative to another.

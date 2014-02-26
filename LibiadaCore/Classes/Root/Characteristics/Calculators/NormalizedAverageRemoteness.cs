@@ -49,7 +49,7 @@ namespace LibiadaCore.Classes.Root.Characteristics.Calculators
         public double Calculate(Chain chain, Link link)
         {
             double g = averageRemoteness.Calculate(chain, link);
-            double max = Math.Log(this.alphabetCardinality.Calculate(chain, link), 2);
+            double max = Math.Log(alphabetCardinality.Calculate(chain, link), 2);
             return g - max;
         }
 

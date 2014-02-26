@@ -1,6 +1,6 @@
 namespace LibiadaCore.Classes.Root.Characteristics.Calculators
 {
-    using LibiadaCore.Classes.Misc.Iterators;
+    using Misc.Iterators;
 
     /// <summary>
     /// Длина обрезания по Садовскому.

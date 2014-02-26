@@ -1,8 +1,8 @@
 namespace LibiadaCore.Classes.Misc.SpaceReorganizers
 {
-    using LibiadaCore.Classes.Misc.Iterators;
-    using LibiadaCore.Classes.Root;
-    using LibiadaCore.Classes.Root.SimpleTypes;
+    using Iterators;
+    using Root;
+    using Root.SimpleTypes;
 
     /// <summary>
     /// The space reorganizer from chain to chain by block.
@@ -53,18 +53,18 @@ namespace LibiadaCore.Classes.Misc.SpaceReorganizers
         public override TResult Reorganize(TSource source)
         {
             var result = new TResult();
-            result.ClearAndSetNewLength(source.Length / this.blockSize);
+            result.ClearAndSetNewLength(source.Length / blockSize);
             IteratorBase<TResult, TSource> iteratorFrom;
             IWritableIterator<TResult, TResult> iteratorTo;
 
-            if (this.link != Link.End)
+            if (link != Link.End)
             {
-                iteratorFrom = new IteratorStart<TResult, TSource>(source, this.blockSize, this.blockSize);
+                iteratorFrom = new IteratorStart<TResult, TSource>(source, blockSize, blockSize);
                 iteratorTo = new IteratorWritableStart<TResult, TResult>(result);
             }
             else
             {
-                iteratorFrom = new IteratorEnd<TResult, TSource>(source, this.blockSize, this.blockSize);
+                iteratorFrom = new IteratorEnd<TResult, TSource>(source, blockSize, blockSize);
                 iteratorTo = new IteratorWritableEnd<TResult, TResult>(result);
             }
 

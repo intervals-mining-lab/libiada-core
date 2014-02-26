@@ -1,6 +1,6 @@
 ﻿namespace LibiadaCore.Classes.Root.Characteristics.BinaryCalculators
 {
-    using LibiadaCore.Classes.Root.Characteristics.Calculators;
+    using Calculators;
 
     /// <summary>
     /// The partial dependence coefficient of binary chain.

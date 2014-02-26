@@ -2,9 +2,9 @@ namespace LibiadaCore.Classes.Root
 {
     using System.Collections.Generic;
 
-    using LibiadaCore.Classes.Misc;
-    using LibiadaCore.Classes.Root.Characteristics.Calculators;
-    using LibiadaCore.Classes.Root.SimpleTypes;
+    using Misc;
+    using Characteristics.Calculators;
+    using SimpleTypes;
 
     /// <summary>
     /// Класс цепь
@@ -192,7 +192,7 @@ namespace LibiadaCore.Classes.Root
         /// </summary>
         public void FillDissimilarChains()
         {
-            if (this.dissimilarChains.Length > 0)
+            if (dissimilarChains.Length > 0)
             {
                 return;
             }
@@ -206,19 +206,19 @@ namespace LibiadaCore.Classes.Root
             for (int i = 0; i < building.Length; i++)
             {
                 int element = ++counters[building[i]];
-                if (this.dissimilarChains.Length < element)
+                if (dissimilarChains.Length < element)
                 {
                     var temp = new Chain[element];
-                    for (int j = 0; j < this.dissimilarChains.Length; j++)
+                    for (int j = 0; j < dissimilarChains.Length; j++)
                     {
-                        temp[j] = this.dissimilarChains[j];
+                        temp[j] = dissimilarChains[j];
                     }
 
-                    this.dissimilarChains = temp;
-                    this.dissimilarChains[this.dissimilarChains.Length - 1] = new Chain();
+                    dissimilarChains = temp;
+                    dissimilarChains[dissimilarChains.Length - 1] = new Chain();
                 }
 
-                this.dissimilarChains[element].Add(new ValueInt(building[i]), i);
+                dissimilarChains[element].Add(new ValueInt(building[i]), i);
             }
         }
 

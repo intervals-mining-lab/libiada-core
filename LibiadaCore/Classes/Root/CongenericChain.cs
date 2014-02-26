@@ -2,9 +2,9 @@ namespace LibiadaCore.Classes.Root
 {
     using System.Collections.Generic;
 
-    using LibiadaCore.Classes.Misc;
-    using LibiadaCore.Classes.Root.IntervalsManagers;
-    using LibiadaCore.Classes.Root.SimpleTypes;
+    using Misc;
+    using IntervalsManagers;
+    using SimpleTypes;
 
     /// <summary>
     /// The congeneric chain.

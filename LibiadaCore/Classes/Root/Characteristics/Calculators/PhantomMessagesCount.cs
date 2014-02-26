@@ -1,6 +1,6 @@
 ﻿namespace LibiadaCore.Classes.Root.Characteristics.Calculators
 {
-    using LibiadaCore.Classes.Root.SimpleTypes;
+    using SimpleTypes;
 
     /// <summary>
     /// Число возможных цепочек которые можно сгенерировать 

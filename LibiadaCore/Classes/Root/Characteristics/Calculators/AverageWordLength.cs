@@ -2,7 +2,7 @@
 {
     using System;
 
-    using LibiadaCore.Classes.Root.SimpleTypes;
+    using SimpleTypes;
 
     /// <summary>
     /// The average length of word (element) in sequence.

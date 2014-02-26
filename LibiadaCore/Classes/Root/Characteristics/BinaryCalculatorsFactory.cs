@@ -2,7 +2,7 @@
 {
     using System.Collections.Generic;
 
-    using LibiadaCore.Classes.Root.Characteristics.BinaryCalculators;
+    using BinaryCalculators;
 
     /// <summary>
     /// The binary calculators factory.

@@ -2,8 +2,8 @@ namespace LibiadaCore.Classes.Misc.SpaceReorganizers
 {
     using System;
 
-    using LibiadaCore.Classes.Misc.Iterators;
-    using LibiadaCore.Classes.Root;
+    using Iterators;
+    using Root;
 
     /// <summary>
     /// The null cycle space reorganizer.
@@ -48,24 +48,24 @@ namespace LibiadaCore.Classes.Misc.SpaceReorganizers
         /// </exception>
         public override TResult Reorganize(TSource source)
         {
-            if (this.level < 0)
+            if (level < 0)
             {
                 throw new InvalidOperationException("Markov chain level can't be less than 0");
             }
 
-            if (this.level == 0)
+            if (level == 0)
             {
                 return (TResult)((BaseChain)source);
             }
 
             var result = new TResult();
-            result.ClearAndSetNewLength(source.Length + this.level);
+            result.ClearAndSetNewLength(source.Length + level);
             for (int i = 0; i < source.Length; i++)
             {
                 result[i] = source[i];
             }
 
-            var iterator = new IteratorStart<TResult, TSource>(source, this.level, 1);
+            var iterator = new IteratorStart<TResult, TSource>(source, level, 1);
             iterator.Reset();
             iterator.Next();
             TResult addition = iterator.Current();
