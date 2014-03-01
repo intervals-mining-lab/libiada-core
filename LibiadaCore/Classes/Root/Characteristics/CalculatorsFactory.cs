@@ -122,7 +122,7 @@ namespace LibiadaCore.Classes.Root.Characteristics
         public static ICalculator AlphabeticAverageRemoteness
         {
             get { return new AlphabeticAverageRemoteness(); }
-        }                    
+        }
 
         /// <summary>
         /// Количество идентифицирующих информаций приходящихся на одно значащее сообщение.
@@ -205,10 +205,7 @@ namespace LibiadaCore.Classes.Root.Characteristics
             }
         }
 
-        /// <summary>
-        /// </summary>
-        ///<param name="type"></param>
-        ///<returns></returns>
+
         public static ICalculator Create(string type)
         {
             foreach (ICalculator calculator in List)

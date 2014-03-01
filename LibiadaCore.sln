@@ -1,9 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2012
+# Visual Studio 2013
+VisualStudioVersion = 12.0.30110.0
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LibiadaCore", "LibiadaCore\LibiadaCore.csproj", "{AF8DF9BB-B796-457E-91AB-E41674BEB92B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LibiadaCoreTest", "LibiadaCoreTest\LibiadaCoreTest.csproj", "{934D10F1-0F12-4046-B9D6-4ECE76EB8672}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LibiadaCore.Tests", "LibiadaCore.Tests\LibiadaCore.Tests.csproj", "{934D10F1-0F12-4046-B9D6-4ECE76EB8672}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{E249E75F-771F-4D19-B6F3-6818A23F67E4}"
 	ProjectSection(SolutionItems) = preProject

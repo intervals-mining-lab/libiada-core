@@ -66,7 +66,7 @@
         {
             get
             {
-                var temp = new List<IBinaryCalculator> {GeometricMean, Redundancy, K1, NormalizedK1, K2, K3};
+                var temp = new List<IBinaryCalculator> { GeometricMean, Redundancy, K1, NormalizedK1, K2, K3 };
 
                 return temp;
             }
