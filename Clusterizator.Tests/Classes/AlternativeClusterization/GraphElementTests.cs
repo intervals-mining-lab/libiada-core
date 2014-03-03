@@ -11,7 +11,7 @@ namespace ClusterizatorTest.Classes.AlternativeClusterization
     /// The graph element test.
     /// </summary>
     [TestFixture]
-    public class GraphElementTest
+    public class GraphElementTests
     {
         /// <summary>
         /// The node test.

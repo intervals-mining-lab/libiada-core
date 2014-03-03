@@ -13,7 +13,7 @@
     /// The equipotency calculator second test.
     /// </summary>
     [TestFixture]
-    public class EquipotencyCalculatorSecondTest
+    public class EquipotencyCalculatorSecondTests
     {
         /// <summary>
         /// The manager.
@@ -21,10 +21,10 @@
         private GraphManager manager;
 
         /// <summary>
-        /// The init.
+        /// Test initialization method.
         /// </summary>
         [SetUp]
-        public void Init()
+        public void Initialization()
         {
             var hd1 = new HybridDictionary { { "y", 0 }, { "x", 10 } };
             var hd2 = new HybridDictionary { { "y", 2 }, { "x", 15 } };

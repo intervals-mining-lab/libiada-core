@@ -11,7 +11,7 @@ namespace ClusterizatorTest.Classes.AlternativeClusterization
     /// The graph manager test.
     /// </summary>
     [TestFixture]
-    public class GraphManagerTest
+    public class GraphManagerTests
     {
         /// <summary>
         /// The connections list.
@@ -24,10 +24,10 @@ namespace ClusterizatorTest.Classes.AlternativeClusterization
         private List<GraphElement> elementsList;
 
         /// <summary>
-        /// The initialize.
+        /// Test initialization method.
         /// </summary>
         [SetUp]
-        public void Initialize()
+        public void Initialization()
         {
             var hd1 = new HybridDictionary { { "x", 2 }, { "y", 3 } };
             var hd2 = new HybridDictionary { { "x", 3 }, { "y", 5 } };

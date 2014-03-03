@@ -13,7 +13,7 @@ namespace ClusterizatorTest.Classes.AlternativeClusterization.Calculators
     /// The linear calculator test.
     /// </summary>
     [TestFixture]
-    public class LinearCalculatorTest
+    public class LinearCalculatorTests
     {
         /// <summary>
         /// The two points test.
@@ -40,7 +40,7 @@ namespace ClusterizatorTest.Classes.AlternativeClusterization.Calculators
         }
 
         /// <summary>
-        /// The two int points test.
+        /// The two integer points test.
         /// </summary>
         [Test]
         public void TwoIntPointsTest()

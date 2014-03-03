@@ -8,7 +8,7 @@ namespace ClusterizatorTest.Classes
     /// The data table test.
     /// </summary>
     [TestFixture]
-    public class DataTableTest
+    public class DataTableTests
     {
         /// <summary>
         /// The object 1.
@@ -41,10 +41,10 @@ namespace ClusterizatorTest.Classes
         private DataObject object6;
 
         /// <summary>
-        /// The init.
+        /// Test initialization method.
         /// </summary>
         [SetUp]
-        public void Init()
+        public void Initialization()
         {
             object1 = new DataObject { Id = 1 };
             object1.Add("x", 2);

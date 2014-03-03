@@ -8,7 +8,7 @@ namespace ClusterizatorTest.Classes.AlternativeClusterization
     /// The connection test.
     /// </summary>
     [TestFixture]
-    public class ConnectionTest
+    public class ConnectionTests
     {
         /// <summary>
         /// The connection one test.

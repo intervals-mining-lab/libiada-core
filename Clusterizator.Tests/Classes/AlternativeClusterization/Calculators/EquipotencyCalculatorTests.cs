@@ -12,7 +12,7 @@ namespace ClusterizatorTest.Classes.AlternativeClusterization.Calculators
     /// The equipotency calculator test.
     /// </summary>
     [TestFixture]
-    public class EquipotencyCalculatorTest
+    public class EquipotencyCalculatorTests
     {
         /// <summary>
         /// The manager.
@@ -20,10 +20,10 @@ namespace ClusterizatorTest.Classes.AlternativeClusterization.Calculators
         private GraphManager manager;
 
         /// <summary>
-        /// The init.
+        /// Test initialization method.
         /// </summary>
         [SetUp]
-        public void Init()
+        public void Initialization()
         {
             var hd1 = new HybridDictionary { { "y", 0 } };
             var hd2 = new HybridDictionary { { "y", 2 } };

@@ -49,19 +49,19 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Classes\AlternativeClusterization\Calculators\EquipotencyCalculatorTest.cs" />
-    <Compile Include="Classes\AlternativeClusterization\Calculators\EquipotencyCalculatorSecondTest.cs" />
-    <Compile Include="Classes\AlternativeClusterization\Calculators\LambdaCalculatorTest.cs" />
-    <Compile Include="Classes\AlternativeClusterization\Calculators\LinearCalculatorTest.cs" />
-    <Compile Include="Classes\AlternativeClusterization\Calculators\NormalizedDistCalculatorTest.cs" />
-    <Compile Include="Classes\AlternativeClusterization\Calculators\TauCalculatorTest.cs" />
-    <Compile Include="Classes\AlternativeClusterization\Calculators\TauStarCalculatorTest.cs" />
-    <Compile Include="Classes\AlternativeClusterization\AlternativeKRABTest.cs" />
-    <Compile Include="Classes\AlternativeClusterization\ConnectionTest.cs" />
-    <Compile Include="Classes\AlternativeClusterization\GraphElementTest.cs" />
-    <Compile Include="Classes\AlternativeClusterization\GraphManagerTest.cs" />
-    <Compile Include="Classes\DataObjectTest.cs" />
-    <Compile Include="Classes\DataTableTest.cs" />
+    <Compile Include="Classes\AlternativeClusterization\Calculators\EquipotencyCalculatorTests.cs" />
+    <Compile Include="Classes\AlternativeClusterization\Calculators\EquipotencyCalculatorSecondTests.cs" />
+    <Compile Include="Classes\AlternativeClusterization\Calculators\LambdaCalculatorTests.cs" />
+    <Compile Include="Classes\AlternativeClusterization\Calculators\LinearCalculatorTests.cs" />
+    <Compile Include="Classes\AlternativeClusterization\Calculators\NormalizedDistanceCalculatorTests.cs" />
+    <Compile Include="Classes\AlternativeClusterization\Calculators\TauCalculatorTests.cs" />
+    <Compile Include="Classes\AlternativeClusterization\Calculators\TauStarCalculatorTests.cs" />
+    <Compile Include="Classes\AlternativeClusterization\AlternativeKRABTests.cs" />
+    <Compile Include="Classes\AlternativeClusterization\ConnectionTests.cs" />
+    <Compile Include="Classes\AlternativeClusterization\GraphElementTests.cs" />
+    <Compile Include="Classes\AlternativeClusterization\GraphManagerTests.cs" />
+    <Compile Include="Classes\DataObjectTests.cs" />
+    <Compile Include="Classes\DataTableTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

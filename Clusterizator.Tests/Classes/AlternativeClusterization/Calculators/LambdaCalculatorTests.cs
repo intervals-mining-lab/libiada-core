@@ -13,7 +13,7 @@ namespace ClusterizatorTest.Classes.AlternativeClusterization.Calculators
     /// The lambda calculator test.
     /// </summary>
     [TestFixture]
-    public class LambdaCalculatorTest
+    public class LambdaCalculatorTests
     {
         /// <summary>
         /// The three points test.

@@ -1,6 +1,8 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2012
+# Visual Studio 2013
+VisualStudioVersion = 12.0.30110.0
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{ED26014C-E6C8-4C73-BA60-3A28BB871733}"
 	ProjectSection(SolutionItems) = preProject
 		.nuget\NuGet.Config = .nuget\NuGet.Config
@@ -10,7 +12,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{ED2601
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Clusterizator", "Clusterizator\Clusterizator.csproj", "{A33E97AE-575F-4ED5-B63E-32D8CF200E20}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClusterizatorTest", "ClusterizatorTest\ClusterizatorTest.csproj", "{260B03D7-580C-45F4-BBF3-2F345F8B81EA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Clusterizator.Tests", "Clusterizator.Tests\Clusterizator.Tests.csproj", "{260B03D7-580C-45F4-BBF3-2F345F8B81EA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

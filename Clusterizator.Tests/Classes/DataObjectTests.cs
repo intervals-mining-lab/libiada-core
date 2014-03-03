@@ -10,7 +10,7 @@ namespace ClusterizatorTest.Classes
     /// The data object test.
     /// </summary>
     [TestFixture]
-    public class DataObjectTest
+    public class DataObjectTests
     {
         /// <summary>
         /// The input output test.

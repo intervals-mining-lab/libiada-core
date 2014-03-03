@@ -9,7 +9,7 @@ namespace ClusterizatorTest.Classes.AlternativeClusterization
     /// The alternative krab test.
     /// </summary>
     [TestFixture]
-    public class AlternativeKRABTest
+    public class AlternativeKRABTests
     {
         /// <summary>
         /// The dt.
@@ -17,10 +17,10 @@ namespace ClusterizatorTest.Classes.AlternativeClusterization
         private DataTable dt;
 
         /// <summary>
-        /// The init.
+        /// Test initialization method.
         /// </summary>
         [SetUp]
-        public void Init()
+        public void Initialization()
         {
             var object1 = new DataObject { Id = 1 };
             object1.Add("x", 2);

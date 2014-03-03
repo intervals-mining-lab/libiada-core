@@ -10,10 +10,10 @@ namespace ClusterizatorTest.Classes.AlternativeClusterization.Calculators
     using NUnit.Framework;
 
     /// <summary>
-    /// The normalized dist calculator test.
+    /// The normalized distance calculator test.
     /// </summary>
     [TestFixture]
-    public class NormalizedDistCalculatorTest
+    public class NormalizedDistanceCalculatorTests
     {
         /// <summary>
         /// The two points test.
@@ -43,7 +43,7 @@ namespace ClusterizatorTest.Classes.AlternativeClusterization.Calculators
         }
 
         /// <summary>
-        /// The two int points test.
+        /// The two integer points test.
         /// </summary>
         [Test]
         public void TwoIntPointsTest()
