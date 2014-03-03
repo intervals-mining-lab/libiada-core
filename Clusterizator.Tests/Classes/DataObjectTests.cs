@@ -1,4 +1,4 @@
-namespace ClusterizatorTest.Classes
+namespace Clusterizator.Tests.Classes
 {
     using System.Collections;
 

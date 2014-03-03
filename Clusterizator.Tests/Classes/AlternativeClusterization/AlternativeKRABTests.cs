@@ -1,4 +1,4 @@
-namespace ClusterizatorTest.Classes.AlternativeClusterization
+namespace Clusterizator.Tests.Classes.AlternativeClusterization
 {
     using Clusterizator.Classes;
     using Clusterizator.Classes.AlternativeClusterization;

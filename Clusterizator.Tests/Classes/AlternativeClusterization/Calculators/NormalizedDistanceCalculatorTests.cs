@@ -1,4 +1,4 @@
-namespace ClusterizatorTest.Classes.AlternativeClusterization.Calculators
+namespace Clusterizator.Tests.Classes.AlternativeClusterization.Calculators
 {
     using System;
     using System.Collections.Generic;

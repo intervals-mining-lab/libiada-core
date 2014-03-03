@@ -1,4 +1,4 @@
-namespace ClusterizatorTest.Classes
+namespace Clusterizator.Tests.Classes
 {
     using Clusterizator.Classes;
 
@@ -46,29 +46,29 @@ namespace ClusterizatorTest.Classes
         [SetUp]
         public void Initialization()
         {
-            object1 = new DataObject { Id = 1 };
-            object1.Add("x", 2);
-            object1.Add("y", 2);
+            this.object1 = new DataObject { Id = 1 };
+            this.object1.Add("x", 2);
+            this.object1.Add("y", 2);
 
-            object2 = new DataObject { Id = 2 };
-            object2.Add("x", 5);
-            object2.Add("y", 2);
+            this.object2 = new DataObject { Id = 2 };
+            this.object2.Add("x", 5);
+            this.object2.Add("y", 2);
 
-            object3 = new DataObject { Id = 3 };
-            object3.Add("x", 4);
-            object3.Add("y", 3);
+            this.object3 = new DataObject { Id = 3 };
+            this.object3.Add("x", 4);
+            this.object3.Add("y", 3);
 
-            object4 = new DataObject { Id = 4 };
-            object4.Add("x", 3);
-            object4.Add("y", 6);
+            this.object4 = new DataObject { Id = 4 };
+            this.object4.Add("x", 3);
+            this.object4.Add("y", 6);
 
-            object5 = new DataObject { Id = 5 };
-            object5.Add("x", 8);
-            object5.Add("y", 8);
+            this.object5 = new DataObject { Id = 5 };
+            this.object5.Add("x", 8);
+            this.object5.Add("y", 8);
 
-            object6 = new DataObject { Id = 6 };
-            object6.Add("x", 9);
-            object6.Add("y", 7);
+            this.object6 = new DataObject { Id = 6 };
+            this.object6.Add("x", 9);
+            this.object6.Add("y", 7);
         }
 
         /// <summary>
@@ -77,14 +77,14 @@ namespace ClusterizatorTest.Classes
         [Test]
         public void InputOutputTest()
         {
-            var table = new DataTable { object1, object2, object3, object4, object5, object6 };
+            var table = new DataTable { this.object1, this.object2, this.object3, this.object4, this.object5, this.object6 };
 
-            Assert.AreEqual(object1, table[1]);
-            Assert.AreEqual(object2, table[2]);
-            Assert.AreEqual(object3, table[3]);
-            Assert.AreEqual(object4, table[4]);
-            Assert.AreEqual(object5, table[5]);
-            Assert.AreEqual(object6, table[6]);
+            Assert.AreEqual(this.object1, table[1]);
+            Assert.AreEqual(this.object2, table[2]);
+            Assert.AreEqual(this.object3, table[3]);
+            Assert.AreEqual(this.object4, table[4]);
+            Assert.AreEqual(this.object5, table[5]);
+            Assert.AreEqual(this.object6, table[6]);
         }
     }
 }

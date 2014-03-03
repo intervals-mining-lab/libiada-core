@@ -8,8 +8,8 @@
     <ProjectGuid>{260B03D7-580C-45F4-BBF3-2F345F8B81EA}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ClusterizatorTest</RootNamespace>
-    <AssemblyName>ClusterizatorTest</AssemblyName>
+    <RootNamespace>Clusterizator.Tests</RootNamespace>
+    <AssemblyName>Clusterizator.Tests</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>

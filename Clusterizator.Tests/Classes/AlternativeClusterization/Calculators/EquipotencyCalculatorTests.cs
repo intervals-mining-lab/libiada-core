@@ -1,4 +1,4 @@
-namespace ClusterizatorTest.Classes.AlternativeClusterization.Calculators
+namespace Clusterizator.Tests.Classes.AlternativeClusterization.Calculators
 {
     using System.Collections.Generic;
     using System.Collections.Specialized;
@@ -48,7 +48,7 @@ namespace ClusterizatorTest.Classes.AlternativeClusterization.Calculators
                                       new Connection(2, 3)
                                   };
 
-            manager = new GraphManager(connections, elements);
+            this.manager = new GraphManager(connections, elements);
         }
 
         /// <summary>
@@ -61,17 +61,17 @@ namespace ClusterizatorTest.Classes.AlternativeClusterization.Calculators
 
             for (int i = 0; i < connected.Length; i++)
             {
-                manager.Connections[i].Connected = connected[i];
+                this.manager.Connections[i].Connected = connected[i];
             }
 
             var taxonNumbers = new[] { 1, 1, 1, 2 };
 
             for (int i = 0; i < taxonNumbers.Length; i++)
             {
-                manager.Elements[i].TaxonNumber = taxonNumbers[i];
+                this.manager.Elements[i].TaxonNumber = taxonNumbers[i];
             }
 
-            Assert.AreEqual(0.75, EquipotencyCalculator.Calculate(manager));
+            Assert.AreEqual(0.75, EquipotencyCalculator.Calculate(this.manager));
         }
 
         /// <summary>
@@ -84,17 +84,17 @@ namespace ClusterizatorTest.Classes.AlternativeClusterization.Calculators
 
             for (int i = 0; i < connected.Length; i++)
             {
-                manager.Connections[i].Connected = connected[i];
+                this.manager.Connections[i].Connected = connected[i];
             }
 
             var taxonNumbers = new[] { 1, 1, 2, 2 };
 
             for (int i = 0; i < taxonNumbers.Length; i++)
             {
-                manager.Elements[i].TaxonNumber = taxonNumbers[i];
+                this.manager.Elements[i].TaxonNumber = taxonNumbers[i];
             }
 
-            Assert.AreEqual(1, EquipotencyCalculator.Calculate(manager));
+            Assert.AreEqual(1, EquipotencyCalculator.Calculate(this.manager));
         }
 
         /// <summary>
@@ -107,17 +107,17 @@ namespace ClusterizatorTest.Classes.AlternativeClusterization.Calculators
 
             for (int i = 0; i < connected.Length; i++)
             {
-                manager.Connections[i].Connected = connected[i];
+                this.manager.Connections[i].Connected = connected[i];
             }
 
             var taxonNumbers = new[] { 1, 2, 2, 2 };
 
             for (int i = 0; i < taxonNumbers.Length; i++)
             {
-                manager.Elements[i].TaxonNumber = taxonNumbers[i];
+                this.manager.Elements[i].TaxonNumber = taxonNumbers[i];
             }
 
-            Assert.AreEqual(0.75, EquipotencyCalculator.Calculate(manager));
+            Assert.AreEqual(0.75, EquipotencyCalculator.Calculate(this.manager));
         }
 
         /// <summary>
@@ -130,17 +130,17 @@ namespace ClusterizatorTest.Classes.AlternativeClusterization.Calculators
 
             for (int i = 0; i < connected.Length; i++)
             {
-                manager.Connections[i].Connected = connected[i];
+                this.manager.Connections[i].Connected = connected[i];
             }
 
             var taxonNumbers = new[] { 1, 1, 2, 3 };
 
             for (int i = 0; i < taxonNumbers.Length; i++)
             {
-                manager.Elements[i].TaxonNumber = taxonNumbers[i];
+                this.manager.Elements[i].TaxonNumber = taxonNumbers[i];
             }
 
-            Assert.AreEqual(0.84375, EquipotencyCalculator.Calculate(manager));
+            Assert.AreEqual(0.84375, EquipotencyCalculator.Calculate(this.manager));
         }
 
         /// <summary>
@@ -153,17 +153,17 @@ namespace ClusterizatorTest.Classes.AlternativeClusterization.Calculators
 
             for (int i = 0; i < connected.Length; i++)
             {
-                manager.Connections[i].Connected = connected[i];
+                this.manager.Connections[i].Connected = connected[i];
             }
 
             var taxonNumbers = new[] { 1, 2, 2, 3 };
 
             for (int i = 0; i < taxonNumbers.Length; i++)
             {
-                manager.Elements[i].TaxonNumber = taxonNumbers[i];
+                this.manager.Elements[i].TaxonNumber = taxonNumbers[i];
             }
 
-            Assert.AreEqual(0.84375, EquipotencyCalculator.Calculate(manager));
+            Assert.AreEqual(0.84375, EquipotencyCalculator.Calculate(this.manager));
         }
 
         /// <summary>
@@ -176,17 +176,17 @@ namespace ClusterizatorTest.Classes.AlternativeClusterization.Calculators
 
             for (int i = 0; i < connected.Length; i++)
             {
-                manager.Connections[i].Connected = connected[i];
+                this.manager.Connections[i].Connected = connected[i];
             }
 
             var taxonNumbers = new[] { 1, 2, 3, 3 };
 
             for (int i = 0; i < taxonNumbers.Length; i++)
             {
-                manager.Elements[i].TaxonNumber = taxonNumbers[i];
+                this.manager.Elements[i].TaxonNumber = taxonNumbers[i];
             }
 
-            Assert.AreEqual(0.84375, EquipotencyCalculator.Calculate(manager));
+            Assert.AreEqual(0.84375, EquipotencyCalculator.Calculate(this.manager));
         }
 
         /// <summary>
@@ -197,15 +197,15 @@ namespace ClusterizatorTest.Classes.AlternativeClusterization.Calculators
         {
             for (int i = 0; i < 6; i++)
             {
-                manager.Connections[i].Connected = false;
+                this.manager.Connections[i].Connected = false;
             }
 
             for (int i = 0; i < 4; i++)
             {
-                manager.Elements[i].TaxonNumber = i + 1;
+                this.manager.Elements[i].TaxonNumber = i + 1;
             }
 
-            Assert.AreEqual(1, EquipotencyCalculator.Calculate(manager));
+            Assert.AreEqual(1, EquipotencyCalculator.Calculate(this.manager));
         }
 
         /// <summary>
@@ -218,17 +218,17 @@ namespace ClusterizatorTest.Classes.AlternativeClusterization.Calculators
 
             for (int i = 0; i < connected.Length; i++)
             {
-                manager.Connections[i].Connected = connected[i];
+                this.manager.Connections[i].Connected = connected[i];
             }
 
             var taxonNumbers = new[] { 1, 2, 1, 2 };
 
             for (int i = 0; i < taxonNumbers.Length; i++)
             {
-                manager.Elements[i].TaxonNumber = taxonNumbers[i];
+                this.manager.Elements[i].TaxonNumber = taxonNumbers[i];
             }
 
-            Assert.AreEqual(1, EquipotencyCalculator.Calculate(manager));
+            Assert.AreEqual(1, EquipotencyCalculator.Calculate(this.manager));
         }
 
         /// <summary>
@@ -241,17 +241,17 @@ namespace ClusterizatorTest.Classes.AlternativeClusterization.Calculators
 
             for (int i = 0; i < connected.Length; i++)
             {
-                manager.Connections[i].Connected = connected[i];
+                this.manager.Connections[i].Connected = connected[i];
             }
 
             var taxonNumbers = new[] { 1, 2, 1, 2 };
 
             for (int i = 0; i < taxonNumbers.Length; i++)
             {
-                manager.Elements[i].TaxonNumber = taxonNumbers[i];
+                this.manager.Elements[i].TaxonNumber = taxonNumbers[i];
             }
 
-            Assert.AreEqual(1, EquipotencyCalculator.Calculate(manager));
+            Assert.AreEqual(1, EquipotencyCalculator.Calculate(this.manager));
         }
     }
 }
