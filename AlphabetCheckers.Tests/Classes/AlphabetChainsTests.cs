@@ -1,4 +1,4 @@
-namespace AlphabetCheckersTest.Classes
+namespace AlphabetCheckers.Tests.Classes
 {
     using System.Collections;
 
@@ -13,7 +13,7 @@ namespace AlphabetCheckersTest.Classes
     /// The alphabet chains test.
     /// </summary>
     [TestFixture]
-    public class AlphabetChainsTest
+    public class AlphabetChainsTests
     {
         /// <summary>
         /// The chain base.
@@ -26,17 +26,17 @@ namespace AlphabetCheckersTest.Classes
         [SetUp]
         public void Init()
         {
-            chainBase = new BaseChain(10);
-            chainBase[0] = new ValueChar('1');
-            chainBase[1] = new ValueChar('2');
-            chainBase[2] = new ValueChar('3');
-            chainBase[3] = new ValueChar('4');
-            chainBase[4] = new ValueChar('5');
-            chainBase[5] = new ValueChar('6');
-            chainBase[6] = new ValueChar('7');
-            chainBase[7] = new ValueChar('8');
-            chainBase[8] = new ValueChar('9');
-            chainBase[9] = new ValueChar('A');
+            this.chainBase = new BaseChain(10);
+            this.chainBase[0] = new ValueChar('1');
+            this.chainBase[1] = new ValueChar('2');
+            this.chainBase[2] = new ValueChar('3');
+            this.chainBase[3] = new ValueChar('4');
+            this.chainBase[4] = new ValueChar('5');
+            this.chainBase[5] = new ValueChar('6');
+            this.chainBase[6] = new ValueChar('7');
+            this.chainBase[7] = new ValueChar('8');
+            this.chainBase[8] = new ValueChar('9');
+            this.chainBase[9] = new ValueChar('A');
         }
 
         /// <summary>
@@ -45,9 +45,9 @@ namespace AlphabetCheckersTest.Classes
         [Test]
         public void AddChainTest()
         {
-            var temp = new ChainsAlphabet { chainBase };
+            var temp = new ChainsAlphabet { this.chainBase };
             var result = (BaseChain)temp[0];
-            Assert.AreEqual(chainBase, result);
+            Assert.AreEqual(this.chainBase, result);
         }
 
         /// <summary>

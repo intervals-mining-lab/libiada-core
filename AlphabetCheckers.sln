@@ -5,7 +5,7 @@ VisualStudioVersion = 12.0.30110.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AlphabetCheckers", "AlphabetCheckers\AlphabetCheckers.csproj", "{7D33D7CD-019A-474E-9C63-C52BA2DE9B7B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AlphabetCheckersTest", "AlphabetCheckersTest\AlphabetCheckersTest.csproj", "{4DF6AE15-7EB9-4057-A04C-32711FBA7C7C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AlphabetCheckers.Tests", "AlphabetCheckers.Tests\AlphabetCheckers.Tests.csproj", "{4DF6AE15-7EB9-4057-A04C-32711FBA7C7C}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{AD605D00-C43F-4EC1-9AB1-3D4D968AC271}"
 	ProjectSection(SolutionItems) = preProject

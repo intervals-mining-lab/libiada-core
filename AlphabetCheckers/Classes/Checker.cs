@@ -4,7 +4,6 @@ namespace AlphabetCheckers.Classes
 
     using LibiadaCore.Classes.Misc.Iterators;
     using LibiadaCore.Classes.Root;
-    using LibiadaCore.Classes.TheoryOfSet;
 
     /// <summary>
     /// Класс реализующий проверку соответствия заданного

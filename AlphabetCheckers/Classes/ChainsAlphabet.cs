@@ -3,7 +3,6 @@ namespace AlphabetCheckers.Classes
     using System.Collections;
 
     using LibiadaCore.Classes.Root;
-    using LibiadaCore.Classes.TheoryOfSet;
 
     /// <summary>
     /// The alpabet chains.

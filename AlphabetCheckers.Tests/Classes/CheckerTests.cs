@@ -1,10 +1,9 @@
-namespace AlphabetCheckersTest.Classes
+namespace AlphabetCheckers.Tests.Classes
 {
     using AlphabetCheckers.Classes;
 
     using LibiadaCore.Classes.Root;
     using LibiadaCore.Classes.Root.SimpleTypes;
-    using LibiadaCore.Classes.TheoryOfSet;
 
     using NUnit.Framework;
 
@@ -12,7 +11,7 @@ namespace AlphabetCheckersTest.Classes
     /// The checker test.
     /// </summary>
     [TestFixture]
-    public class CheckerTest
+    public class CheckerTests
     {
         /// <summary>
         /// The check true.
