@@ -99,6 +99,21 @@ namespace LibiadaCore.Classes.Root.IntervalsManagers
                     building[counter++] = binaryInterval;
                 }
             }
+            Start = GetAfter(secondElement, Get(firstElement, 1));
+            //End = GetAfter()
+        }
+
+        private int GetAfter(int element, int from)
+        {
+            for (int i = from; i < sourceChain.Length; i++)
+            {
+                if (sourceChain[i].Equals(element))
+                {
+                    return i;
+                }
+            }
+
+            return -1;
         }
 
     }
