@@ -4,7 +4,7 @@ namespace Clusterizator.Classes
 
     using Clusterizator.Classes.AlternativeClusterization;
 
-    using LibiadaCore.Classes.Root;
+    using LibiadaCore.Core;
 
     /// <summary>
     /// The cluster.

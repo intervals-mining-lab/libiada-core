@@ -4,7 +4,7 @@ namespace Clusterizator.Classes
     using System.Collections;
     using System.Collections.Specialized;
 
-    using LibiadaCore.Classes.Root;
+    using LibiadaCore.Core;
 
     /// <summary>
     /// The data object.

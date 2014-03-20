@@ -4,7 +4,7 @@ namespace Clusterizator.Classes
     using System.Collections;
     using System.Collections.Specialized;
 
-    using LibiadaCore.Classes.Root;
+    using LibiadaCore.Core;
 
     /// <summary>
     /// The data table.
@@ -38,8 +38,6 @@ namespace Clusterizator.Classes
             get { return (DataObject)vault[s]; }
         }
 
-        #region IEnumerable Members
-
         /// <summary>
         /// The get enumerator.
         /// </summary>
@@ -50,8 +48,6 @@ namespace Clusterizator.Classes
         {
             return vault.GetEnumerator();
         }
-
-        #endregion
 
         /// <summary>
         /// The add.
