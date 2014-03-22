@@ -9,12 +9,12 @@ namespace LibiadaMusic.BorodaDivider
         /// <summary>
         ///  параметр сохраняется для всего экземпляра класса и потом используется
         /// </summary>
-        private int paramPause;
+        private ParamPauseTreatment paramPauseTreatment;
         //----------------------
-        public FmotivChain GetDivision(UniformScoreTrack uniformTrack, int paramPauseTreat)
+        public FmotivChain GetDivision(UniformScoreTrack uniformTrack, ParamPauseTreatment paramPauseTreatment)
         {
             var chain = new FmotivChain {Name = uniformTrack.Name}; // выходная, результирующая цепочка разбитых ф-мотивов
-            paramPause = paramPauseTreat;
+            this.paramPauseTreatment = paramPauseTreatment;
 
             var fmotivBuffer = new Fmotiv(String.Empty);
             // буффер для накопления нот, для последующего анализа его содержимого
@@ -72,9 +72,9 @@ namespace LibiadaMusic.BorodaDivider
 
                             wasNote = true; // была нота пермещена в буфер
 
-                            switch (paramPause)
+                            switch (paramPauseTreatment)
                             {
-                                case 0:
+                                case ParamPauseTreatment.Ignore:
                                     // удаляем все паузы в возвращаемом объекте (0) (паузы игнорируются)
                                     // если у очередной ноты нет лиги, то проверяем: если нота - не пауза, то выставляем флаг о следущей рассматриваемой ноте
                                     if (fmotivBuffer.NoteList[fmotivBuffer.NoteList.Count - 1].Pitch.Count > 0)
@@ -82,7 +82,7 @@ namespace LibiadaMusic.BorodaDivider
                                         next = true;
                                     }
                                     break;
-                                case 1:
+                                case ParamPauseTreatment.NoteTrace:
                                     // длительность паузы прибавляется к предыдущей ноте, а она сама удаляется из текста (1) (пауза - звуковой след ноты)
                                     if (noteChain.Count > 0)
                                     {
@@ -97,7 +97,7 @@ namespace LibiadaMusic.BorodaDivider
                                         next = true;
                                     }
                                     break;
-                                case 2:
+                                case ParamPauseTreatment.SilenceNote:
                                     // Пауза - звук тишины, рассматривается как нота без высоты звучания (2)
                                     // ничего не треуется
                                     next = true;
@@ -122,9 +122,9 @@ namespace LibiadaMusic.BorodaDivider
                 else
                 {
                     // если у очередной ноты нет лиги
-                    switch (paramPause)
+                    switch (paramPauseTreatment)
                     {
-                        case 0:
+                        case ParamPauseTreatment.Ignore:
                             // удаляем все паузы в возвращаемом объекте (0) (паузы игнорируются)
                             // если у очередной ноты нет лиги, то проверяем: если нота - не пауза, то выставляем флаг о следущей рассматриваемой ноте
                             if (fmotivBuffer.NoteList[fmotivBuffer.NoteList.Count - 1].Pitch.Count > 0)
@@ -132,7 +132,7 @@ namespace LibiadaMusic.BorodaDivider
                                 next = true;
                             }
                             break;
-                        case 1:
+                        case ParamPauseTreatment.NoteTrace:
                             // длительность паузы прибавляется к предыдущей ноте, а она сама удаляется из текста (1) (пауза - звуковой след ноты)
                             //проверяем: если нота - не пауза, то выставляем флаг о следущей рассматриваемой ноте
                             if (fmotivBuffer.NoteList[fmotivBuffer.NoteList.Count - 1].Pitch.Count > 0)
@@ -156,7 +156,7 @@ namespace LibiadaMusic.BorodaDivider
                                 }
                             }
                             break;
-                        case 2:
+                        case ParamPauseTreatment.SilenceNote:
                             // Пауза - звук тишины, рассматривается как нота без высоты звучания (2)
                             // ничего не треуется
                             next = true;
@@ -655,7 +655,7 @@ namespace LibiadaMusic.BorodaDivider
 
         private List<ValueNote> ExtractNoteList(Fmotiv fmotivBuffer)
         {
-            return fmotivBuffer.PauseTreatment(paramPause).TieGathered().NoteList;
+            return fmotivBuffer.PauseTreatment(paramPauseTreatment).TieGathered().NoteList;
         }
 
         private bool AnotherTempComparator(Fmotiv fmotivBuffer)
@@ -697,12 +697,12 @@ namespace LibiadaMusic.BorodaDivider
             {
                 if (ExtractNoteList(fmotiv).Count == noteCount)
                 {
-                    if (paramPause != (int) ParamPauseTreatment.NoteTrace)
+                    if (paramPauseTreatment != ParamPauseTreatment.NoteTrace)
                     {
                         break;
                     }
 
-                    if ((paramPause == (int) ParamPauseTreatment.NoteTrace) &&
+                    if ((paramPauseTreatment == ParamPauseTreatment.NoteTrace) &&
                         (fmotivBuffer.NoteList[0].Pitch.Count > 0))
                     {
                         break;

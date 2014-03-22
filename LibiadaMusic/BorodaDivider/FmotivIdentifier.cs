@@ -5,7 +5,7 @@ namespace LibiadaMusic.BorodaDivider
 {
     public class FmotivIdentifier
     {
-        public FmotivChain GetIdentification(FmotivChain fmotivChain, int paramPause, int paramEqual)
+        public FmotivChain GetIdentification(FmotivChain fmotivChain, ParamPauseTreatment paramPauseTreatment, int paramEqual)
         {
             var chain = (FmotivChain) fmotivChain.Clone();
 
@@ -13,7 +13,7 @@ namespace LibiadaMusic.BorodaDivider
             {
                 for (int j = i; j < chain.FmotivList.Count; j++)
                 {
-                    if (chain.FmotivList[i].FmEquals(chain.FmotivList[j], paramPause, paramEqual))
+                    if (chain.FmotivList[i].FmEquals(chain.FmotivList[j], paramPauseTreatment, paramEqual))
                     {
                         chain.FmotivList[j].Id = chain.FmotivList[i].Id;
                     }

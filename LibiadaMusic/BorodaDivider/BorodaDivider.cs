@@ -5,13 +5,13 @@ namespace LibiadaMusic.BorodaDivider
 {
     public class BorodaDivider
     {
-        public List<FmotivChain> Divide(ScoreTrack scoreTrack, int paramPause, int paramEqual)
+        public List<FmotivChain> Divide(ScoreTrack scoreTrack, ParamPauseTreatment paramPauseTreatment, int paramEqual)
         {
             var chains = new List<FmotivChain>();
             
             foreach (UniformScoreTrack uniformTrack in scoreTrack.UniformScoreTracks)
             {
-                var fmotivChain = (FmotivChain) Divide(uniformTrack, paramPause, paramEqual).Clone();
+                var fmotivChain = (FmotivChain) Divide(uniformTrack, paramPauseTreatment, paramEqual).Clone();
                 fmotivChain.Id = chains.Count;
                 chains.Add(fmotivChain);
             }
@@ -22,13 +22,13 @@ namespace LibiadaMusic.BorodaDivider
         /// 
         /// </summary>
         /// <param name="uniformTrack"></param>
-        /// <param name="paramPause">
+        /// <param name="paramPauseTreatment">
         /// параметр как учитывать паузу : 
         /// игнорировать, звуковой след предыдущего звука, вырожденныый звук
         /// </param>
         /// <param name="paramEqual">как сравнивать ф-мотивы с секвентым переносом, либо нет</param>
         /// <returns></returns>
-        public FmotivChain Divide(UniformScoreTrack uniformTrack, int paramPause, int paramEqual)
+        public FmotivChain Divide(UniformScoreTrack uniformTrack, ParamPauseTreatment paramPauseTreatment, int paramEqual)
         {
             // сохраняем имя цепи фмотивов как имя монотрека
 
@@ -40,10 +40,10 @@ namespace LibiadaMusic.BorodaDivider
             priorityDiscover.Calculate(uniformTrack);
 
             // разбиение
-            FmotivChain chain = fmotivDivider.GetDivision(uniformTrack, paramPause);
+            FmotivChain chain = fmotivDivider.GetDivision(uniformTrack, paramPauseTreatment);
 
             // нахождение одинаковых
-            return fmotivIdentifier.GetIdentification(chain, paramPause, paramEqual);
+            return fmotivIdentifier.GetIdentification(chain, paramPauseTreatment, paramEqual);
         }
     }
 }

@@ -39,13 +39,13 @@ namespace LibiadaMusic.BorodaDivider
         }
 
         // TODO: убрать все частные и заменить на общие!!!!!!!!! заменил все withoutpauses() на PauseTreatment с параметорм ignore
-        public Fmotiv PauseTreatment(int paramPause)
+        public Fmotiv PauseTreatment(ParamPauseTreatment paramPauseTreatment)
         {
             //возвращает копию этого объекта
 
-            switch (paramPause)
+            switch (paramPauseTreatment)
             {
-                case 0:
+                case ParamPauseTreatment.Ignore:
                 {
                     // удаляем все паузы в возвращаемом объекте (0) (паузы игнорируются)
                     var temp = (Fmotiv) Clone();
@@ -54,12 +54,12 @@ namespace LibiadaMusic.BorodaDivider
                         if (temp.NoteList[i].Pitch != null && temp.NoteList[i].Pitch.Count == 0)
                         {
                             temp.NoteList.RemoveAt(i);
-                            i = i - 1;
+                            i--;
                         }
                     }
                     return temp;
                 }
-                case 1:
+                case ParamPauseTreatment.NoteTrace:
                 {
                     // длительность паузы прибавляется к предыдущей ноте, 
                     //а она сама удаляется из текста (1) (пауза - звуковой след ноты)
@@ -89,7 +89,7 @@ namespace LibiadaMusic.BorodaDivider
                     }
                     return temp;
                 }
-                case 2:
+                case ParamPauseTreatment.SilenceNote:
                 {
                     // Пауза - звук тишины, рассматривается как нота без высоты звучания (2)
                     // ничего не треуется
@@ -266,11 +266,11 @@ namespace LibiadaMusic.BorodaDivider
             return true;
         }
 
-        public bool FmEquals(object obj, int paramPause, int paramEqual)
+        public bool FmEquals(object obj, ParamPauseTreatment paramPauseTreatment, int paramEqual)
         {
             // для сравнения паузы не нужны, поэтому сравнивае ф-мотивы без пауз (они игнорируются, но входят в состав ф-мотива)
-            Fmotiv self = PauseTreatment(paramPause).TieGathered();
-            Fmotiv other = ((Fmotiv) obj).PauseTreatment(paramPause).TieGathered();
+            Fmotiv self = PauseTreatment(paramPauseTreatment).TieGathered();
+            Fmotiv other = ((Fmotiv) obj).PauseTreatment(paramPauseTreatment).TieGathered();
             int modulation = 0;
             bool firstTime = true;
 

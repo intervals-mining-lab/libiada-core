@@ -35,7 +35,7 @@ namespace LibiadaMusicTests.BorodaDivider
             // создание результирующей цепочки фмотивов
 
             // вычисление, опрделение, разбиение на  ф-мотивы данного монотрека
-            var chain = fmdivider.GetDivision(unitrack, (int) ParamPauseTreatment.Ignore);
+            var chain = fmdivider.GetDivision(unitrack, ParamPauseTreatment.Ignore);
             chain.Id = 0;
 
             // создание аналогов ф-мотивов, которые должны получиться, после разбиения
@@ -427,7 +427,7 @@ namespace LibiadaMusicTests.BorodaDivider
             // создание результирующей цепочки фмотивов
 
             // вычисление, опрделение, разбиение на  ф-мотивы данного монотрека
-            FmotivChain fmchain = fmdivider.GetDivision(unitrack, (int) ParamPauseTreatment.SilenceNote);
+            FmotivChain fmchain = fmdivider.GetDivision(unitrack, ParamPauseTreatment.SilenceNote);
             fmchain.Id = 0;
 
             // создание аналогов ф-мотивов, которые должны получиться, после разбиения
@@ -444,11 +444,11 @@ namespace LibiadaMusicTests.BorodaDivider
             fmchain1.FmotivList.Add(fmotiv1);
             fmchain1.FmotivList.Add(fmotiv2);
 
-            Assert.IsTrue(fmotiv1.FmEquals(fmotiv1, (int) ParamPauseTreatment.SilenceNote, (int) ParamEqualFM.Sequent));
-            Assert.IsTrue(fmotiv2.FmEquals(fmotiv2, (int) ParamPauseTreatment.SilenceNote, (int) ParamEqualFM.Sequent));
-            Assert.IsTrue(fmchain.FmotivList[0].FmEquals(fmotiv1, (int) ParamPauseTreatment.SilenceNote,
+            Assert.IsTrue(fmotiv1.FmEquals(fmotiv1, ParamPauseTreatment.SilenceNote, (int) ParamEqualFM.Sequent));
+            Assert.IsTrue(fmotiv2.FmEquals(fmotiv2, ParamPauseTreatment.SilenceNote, (int) ParamEqualFM.Sequent));
+            Assert.IsTrue(fmchain.FmotivList[0].FmEquals(fmotiv1, ParamPauseTreatment.SilenceNote,
                 (int) ParamEqualFM.Sequent));
-            Assert.IsTrue(fmchain.FmotivList[1].FmEquals(fmotiv2, (int) ParamPauseTreatment.SilenceNote,
+            Assert.IsTrue(fmchain.FmotivList[1].FmEquals(fmotiv2, ParamPauseTreatment.SilenceNote,
                 (int) ParamEqualFM.Sequent));
             Assert.IsTrue(fmchain1.Equals(fmchain));
         }
