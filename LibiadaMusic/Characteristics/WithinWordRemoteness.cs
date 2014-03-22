@@ -28,18 +28,18 @@ namespace LibiadaMusic.Characteristics
             foreach (Fmotiv fmotiv in chain.FmotivList)
             {
                 var noteChain =
-                    new Chain(fmotiv.PauseTreatment((int) ParamPauseTreatment.Ignore).TieGathered().NoteList.Count);
+                    new Chain(fmotiv.PauseTreatment(ParamPauseTreatment.Ignore).TieGathered().NoteList.Count);
                 for (int i = 0;
-                    i < fmotiv.PauseTreatment((int) ParamPauseTreatment.Ignore).TieGathered().NoteList.Count;
+                    i < fmotiv.PauseTreatment(ParamPauseTreatment.Ignore).TieGathered().NoteList.Count;
                     i++)
                 {
                     temp = String.Empty;
-                    foreach (Pitch pitch in fmotiv.PauseTreatment((int) ParamPauseTreatment.Ignore).TieGathered().NoteList[i].Pitch)
+                    foreach (Pitch pitch in fmotiv.PauseTreatment(ParamPauseTreatment.Ignore).TieGathered().NoteList[i].Pitch)
                     {
                         temp += Convert.ToString(pitch.MidiNumber);
                     }
                     //TODO: переделать нормально чтоб цепочка складывалась из ValueNote, а не как попало
-                    noteChain[i] = new ValueString(temp + " " + Convert.ToString(fmotiv.PauseTreatment((int) ParamPauseTreatment.Ignore).TieGathered().NoteList[i].Duration.Value*10000000));
+                    noteChain[i] = new ValueString(temp + " " + Convert.ToString(fmotiv.PauseTreatment(ParamPauseTreatment.Ignore).TieGathered().NoteList[i].Duration.Value*10000000));
                 }
                 double val = new Depth().Calculate(noteChain, Link.Start);
 

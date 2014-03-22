@@ -40,9 +40,9 @@ namespace LibiadaMusicTests.BorodaDivider
             // проверка работы метода, который возвращает копию объекта (Fmotiv), только без пауз.
             var fmotiv = new Fmotiv("ПМТ", 0);
             fmotiv.NoteList.Add(new ValueNote(new Pitch(1, 'A', 0), new Duration(1, 2, false, 480), false, Tie.None));
-            fmotiv.NoteList.Add(new ValueNote(null, new Duration(1, 4, false, 480), false, Tie.None));
+            fmotiv.NoteList.Add(new ValueNote((Pitch)null, new Duration(1, 4, false, 480), false, Tie.None));
             fmotiv.NoteList.Add(new ValueNote(new Pitch(1, 'A', 0), new Duration(1, 2, false, 480), false, Tie.None));
-            fmotiv.NoteList.Add(new ValueNote(null, new Duration(1, 4, false, 480), false, Tie.None));
+            fmotiv.NoteList.Add(new ValueNote((Pitch)null, new Duration(1, 4, false, 480), false, Tie.None));
             fmotiv.NoteList.Add(new ValueNote(new Pitch(1, 'A', 0), new Duration(1, 2, false, 480), false, Tie.None));
             Assert.AreEqual((fmotiv.PauseTreatment((int) ParamPauseTreatment.Ignore)).NoteList[0].Pitch[0].Step, 'A');
             Assert.AreEqual((fmotiv.PauseTreatment((int) ParamPauseTreatment.Ignore)).NoteList[1].Pitch[0].Step, 'A');
@@ -55,11 +55,11 @@ namespace LibiadaMusicTests.BorodaDivider
         {
             // проверка работы метода, который возвращает копию объекта (Fmotiv), только без пауз.
             var fmotiv = new Fmotiv("ПМТ", 0);
-            fmotiv.NoteList.Add(new ValueNote(null, new Duration(1, 4, false, 480), false, Tie.None));
-            fmotiv.NoteList.Add(new ValueNote(null, new Duration(1, 4, false, 480), false, Tie.None));
+            fmotiv.NoteList.Add(new ValueNote((Pitch)null, new Duration(1, 4, false, 480), false, Tie.None));
+            fmotiv.NoteList.Add(new ValueNote((Pitch)null, new Duration(1, 4, false, 480), false, Tie.None));
             fmotiv.NoteList.Add(new ValueNote(new Pitch(1, 'A', 0), new Duration(1, 2, false, 480), false, Tie.None));
             fmotiv.NoteList.Add(new ValueNote(new Pitch(1, 'A', 0), new Duration(1, 2, false, 480), false, Tie.None));
-            fmotiv.NoteList.Add(new ValueNote(null, new Duration(1, 4, false, 480), false, Tie.None));
+            fmotiv.NoteList.Add(new ValueNote((Pitch)null, new Duration(1, 4, false, 480), false, Tie.None));
             fmotiv.NoteList.Add(new ValueNote(new Pitch(1, 'A', 0), new Duration(1, 2, false, 480), false, Tie.None));
             Assert.AreEqual((fmotiv.PauseTreatment((int) ParamPauseTreatment.Ignore)).NoteList[0].Pitch[0].Step, 'A');
             Assert.AreEqual((fmotiv.PauseTreatment((int) ParamPauseTreatment.Ignore)).NoteList[1].Pitch[0].Step, 'A');

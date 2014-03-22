@@ -39,7 +39,7 @@ namespace LibiadaMusic.ScoreModel
         /// </summary>
         public Tie Tie { get; set; }
 
-        public ValueNote(Pitch pitch, Duration duration, bool triplet, Tie tie, int priority)
+        public ValueNote(Pitch pitch, Duration duration, bool triplet, Tie tie, int priority = -1)
         {
             Pitch = new List<Pitch>(0);
             if (pitch != null) // если не пауза то записываем высоту и наличие лиги
@@ -55,12 +55,7 @@ namespace LibiadaMusic.ScoreModel
             Triplet = triplet;
             Priority = priority; // приоритет если указан
         }
-
-        public ValueNote(Pitch pitch, Duration duration, bool triplet, Tie tie)
-            : this(pitch, duration, triplet, tie, -1)
-        {
-        }
-
+        
         public ValueNote(List<Pitch> pitchList, Duration duration, bool triplet, Tie tie, int priority = -1)
             : this((Pitch) null, duration, triplet, tie, priority)
         {
