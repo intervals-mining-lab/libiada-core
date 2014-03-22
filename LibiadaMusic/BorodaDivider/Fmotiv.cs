@@ -84,7 +84,7 @@ namespace LibiadaMusic.BorodaDivider
                             temp.NoteList[i - 1].Duration.AddDuration((Duration) temp.NoteList[i].Duration.Clone());
                             // удаляем паузу
                             temp.NoteList.RemoveAt(i);
-                            i = i - 1;
+                            i--;
                         }
                     }
                     return temp;
@@ -216,8 +216,8 @@ namespace LibiadaMusic.BorodaDivider
         public override bool Equals(object obj)
         {
             // для сравнения паузы не нужны, поэтому сравнивае ф-мотивы без пауз (они игнорируются, но входят в состав ф-мотива)
-            Fmotiv self = PauseTreatment((int) ParamPauseTreatment.Ignore).TieGathered();
-            Fmotiv other = ((Fmotiv) obj).PauseTreatment((int) ParamPauseTreatment.Ignore).TieGathered();
+            Fmotiv self = PauseTreatment(ParamPauseTreatment.Ignore).TieGathered();
+            Fmotiv other = ((Fmotiv) obj).PauseTreatment(ParamPauseTreatment.Ignore).TieGathered();
             int modulation = 0;
             bool firstTime = true;
 
@@ -266,7 +266,7 @@ namespace LibiadaMusic.BorodaDivider
             return true;
         }
 
-        public bool FmEquals(object obj, ParamPauseTreatment paramPauseTreatment, int paramEqual)
+        public bool FmEquals(object obj, ParamPauseTreatment paramPauseTreatment, ParamEqualFM paramEqualFM)
         {
             // для сравнения паузы не нужны, поэтому сравнивае ф-мотивы без пауз (они игнорируются, но входят в состав ф-мотива)
             Fmotiv self = PauseTreatment(paramPauseTreatment).TieGathered();
@@ -309,9 +309,9 @@ namespace LibiadaMusic.BorodaDivider
                 {
                     // если две ноты - не паузы
                     // в зависимости от параметра учета секвентного переноса
-                    switch (paramEqual)
+                    switch (paramEqualFM)
                     {
-                        case 0: // учитывая секентный перенос (Sequent)
+                        case ParamEqualFM.Sequent: // учитывая секентный перенос (Sequent)
                             for (int j = 0; j < self.NoteList[i].Pitch.Count; j++)
                             {
                                 if (firstTime)
@@ -332,7 +332,7 @@ namespace LibiadaMusic.BorodaDivider
                             }
                             break;
 
-                        case 1:
+                        case ParamEqualFM.NonSequent:
                             //без секвентного переноса (NonSequent)
                             for (int j = 0; j < self.NoteList[i].Pitch.Count; j++)
                                 if (self.NoteList[i].Pitch[j].MidiNumber != other.NoteList[i].Pitch[j].MidiNumber)

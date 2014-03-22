@@ -5,13 +5,13 @@ namespace LibiadaMusic.BorodaDivider
 {
     public class BorodaDivider
     {
-        public List<FmotivChain> Divide(ScoreTrack scoreTrack, ParamPauseTreatment paramPauseTreatment, int paramEqual)
+        public List<FmotivChain> Divide(ScoreTrack scoreTrack, ParamPauseTreatment paramPauseTreatment, ParamEqualFM paramEqualFM)
         {
             var chains = new List<FmotivChain>();
             
             foreach (UniformScoreTrack uniformTrack in scoreTrack.UniformScoreTracks)
             {
-                var fmotivChain = (FmotivChain) Divide(uniformTrack, paramPauseTreatment, paramEqual).Clone();
+                var fmotivChain = (FmotivChain) Divide(uniformTrack, paramPauseTreatment, paramEqualFM).Clone();
                 fmotivChain.Id = chains.Count;
                 chains.Add(fmotivChain);
             }
@@ -26,9 +26,9 @@ namespace LibiadaMusic.BorodaDivider
         /// параметр как учитывать паузу : 
         /// игнорировать, звуковой след предыдущего звука, вырожденныый звук
         /// </param>
-        /// <param name="paramEqual">как сравнивать ф-мотивы с секвентым переносом, либо нет</param>
+        /// <param name="paramEqualFM">как сравнивать ф-мотивы с секвентым переносом, либо нет</param>
         /// <returns></returns>
-        public FmotivChain Divide(UniformScoreTrack uniformTrack, ParamPauseTreatment paramPauseTreatment, int paramEqual)
+        public FmotivChain Divide(UniformScoreTrack uniformTrack, ParamPauseTreatment paramPauseTreatment, ParamEqualFM paramEqualFM)
         {
             // сохраняем имя цепи фмотивов как имя монотрека
 
@@ -43,7 +43,7 @@ namespace LibiadaMusic.BorodaDivider
             FmotivChain chain = fmotivDivider.GetDivision(uniformTrack, paramPauseTreatment);
 
             // нахождение одинаковых
-            return fmotivIdentifier.GetIdentification(chain, paramPauseTreatment, paramEqual);
+            return fmotivIdentifier.GetIdentification(chain, paramPauseTreatment, paramEqualFM);
         }
     }
 }

@@ -280,7 +280,7 @@ namespace LibiadaMusicTests.BorodaDivider
             fmotiv1.NoteList.Add(new ValueNote(new Pitch(3, 'A', 0), new Duration(1, 8, false, 480), false, Tie.Stop, 2));
             fmotiv1.NoteList.Add(new ValueNote(new Pitch(3, 'B', -2), new Duration(1, 2, false, 480), false, Tie.None, 5));
 
-            Assert.IsTrue(fmotiv.FmEquals(fmotiv1, (int) ParamPauseTreatment.Ignore, (int) ParamEqualFM.Sequent));
+            Assert.IsTrue(fmotiv.FmEquals(fmotiv1, ParamPauseTreatment.Ignore, ParamEqualFM.Sequent));
         }
     }
 }

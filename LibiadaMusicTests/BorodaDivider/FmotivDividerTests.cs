@@ -444,12 +444,12 @@ namespace LibiadaMusicTests.BorodaDivider
             fmchain1.FmotivList.Add(fmotiv1);
             fmchain1.FmotivList.Add(fmotiv2);
 
-            Assert.IsTrue(fmotiv1.FmEquals(fmotiv1, ParamPauseTreatment.SilenceNote, (int) ParamEqualFM.Sequent));
-            Assert.IsTrue(fmotiv2.FmEquals(fmotiv2, ParamPauseTreatment.SilenceNote, (int) ParamEqualFM.Sequent));
+            Assert.IsTrue(fmotiv1.FmEquals(fmotiv1, ParamPauseTreatment.SilenceNote, ParamEqualFM.Sequent));
+            Assert.IsTrue(fmotiv2.FmEquals(fmotiv2, ParamPauseTreatment.SilenceNote, ParamEqualFM.Sequent));
             Assert.IsTrue(fmchain.FmotivList[0].FmEquals(fmotiv1, ParamPauseTreatment.SilenceNote,
-                (int) ParamEqualFM.Sequent));
+                ParamEqualFM.Sequent));
             Assert.IsTrue(fmchain.FmotivList[1].FmEquals(fmotiv2, ParamPauseTreatment.SilenceNote,
-                (int) ParamEqualFM.Sequent));
+                ParamEqualFM.Sequent));
             Assert.IsTrue(fmchain1.Equals(fmchain));
         }
     }

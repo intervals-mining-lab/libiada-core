@@ -81,11 +81,8 @@ namespace LibiadaMusic.ScoreModel
 
         public Duration AddDuration(Duration duration)
         {
-            int newnum = 0;
-            int newdenom = 0;
-
-            newnum = (Numerator*duration.Denominator) + (duration.Numerator*Denominator);
-            newdenom = Denominator*duration.Denominator;
+            int newnum = (Numerator*duration.Denominator) + (duration.Numerator*Denominator);
+            int newdenom = Denominator*duration.Denominator;
 
             for (int i = 2; i <= newnum; i++)
             {
@@ -93,9 +90,9 @@ namespace LibiadaMusic.ScoreModel
                 {
                     if ((newdenom%i == 0)) // и знаменатель делится на i (на случай триоли например)
                     {
-                        newnum = newnum/i;
-                        newdenom = newdenom/i;
-                        i = i - 1; // находим оставшиешся множители (могут входить в множимое по несколько раз)
+                        newnum /= i;
+                        newdenom /= i;
+                        i--; // находим оставшиешся множители (могут входить в множимое по несколько раз)
                     }
                 }
             }
@@ -108,8 +105,8 @@ namespace LibiadaMusic.ScoreModel
                     if ((newdenom%2 == 0)) // и знаменатель делится на 2 (на случай триоли например)
                     {
                         // сокращаем на 2 дробь
-                        newnum = newnum/2;
-                        newdenom = newdenom/2;
+                        newnum /= 2;
+                        newdenom /= 2;
                     }
                     else
                     {
