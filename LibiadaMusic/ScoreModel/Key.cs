@@ -1,7 +1,7 @@
-﻿using LibiadaCore.Classes.Root;
-
-namespace LibiadaMusic.ScoreModel
+﻿namespace LibiadaMusic.ScoreModel
 {
+    using LibiadaCore.Core;
+
     /// <summary>
     /// знаки при ключе в такте (диез, бемоль)
     /// </summary>

@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using LibiadaCore.Classes.Root;
+
 using LibiadaMusic.ScoreModel;
 
 namespace LibiadaMusic.BorodaDivider
 {
+    using LibiadaCore.Core;
+
     /// <summary>
     /// класс для хранения ф-мотива
     /// </summary>

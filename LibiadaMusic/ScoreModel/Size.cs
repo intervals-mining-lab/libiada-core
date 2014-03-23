@@ -1,8 +1,9 @@
 ﻿using System;
-using LibiadaCore.Classes.Root;
 
 namespace LibiadaMusic.ScoreModel
 {
+    using LibiadaCore.Core;
+
     /// <summary>
     /// размер в такте
     /// size is beats/beatbase (ex size = 3/4; beats=3; beatbase=4;)

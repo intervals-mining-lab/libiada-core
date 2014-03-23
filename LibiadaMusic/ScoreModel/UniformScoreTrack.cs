@@ -1,8 +1,9 @@
 ﻿using System.Collections.Generic;
-using LibiadaCore.Classes.Root;
 
 namespace LibiadaMusic.ScoreModel
 {
+    using LibiadaCore.Core;
+
     public class UniformScoreTrack : IBaseObject // монофонический (моно) трек
     {
         public string Name { get; private set; }

@@ -1,9 +1,10 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using LibiadaCore.Classes.Root;
 
 namespace LibiadaMusic.BorodaDivider
 {
+    using LibiadaCore.Core;
+
     /// <summary>
     /// класс для хранения последовательности ф-мотив
     /// </summary>

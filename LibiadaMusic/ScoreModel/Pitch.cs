@@ -1,8 +1,9 @@
 ﻿using System;
-using LibiadaCore.Classes.Root;
 
 namespace LibiadaMusic.ScoreModel
 {
+    using LibiadaCore.Core;
+
     /// <summary>
     /// высота ноты
     /// </summary>

@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using LibiadaCore.Classes.Root;
-using LibiadaCore.Classes.Root.Characteristics.Calculators;
-using LibiadaCore.Classes.Root.SimpleTypes;
 
 namespace LibiadaMusic.Analysis
 {
+    using LibiadaCore.Core;
+    using LibiadaCore.Core.Characteristics.Calculators;
+    using LibiadaCore.Core.SimpleTypes;
+
     public class Composition
     {
         public double Regularity;

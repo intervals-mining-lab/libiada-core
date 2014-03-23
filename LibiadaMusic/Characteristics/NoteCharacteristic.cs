@@ -1,13 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
-using LibiadaCore.Classes.Root;
-using LibiadaCore.Classes.Root.Characteristics.Calculators;
-using LibiadaCore.Classes.Root.SimpleTypes;
+
 using LibiadaMusic.BorodaDivider;
 using LibiadaMusic.ScoreModel;
 
 namespace LibiadaMusic.Characteristics
 {
+    using LibiadaCore.Core;
+    using LibiadaCore.Core.Characteristics.Calculators;
+    using LibiadaCore.Core.SimpleTypes;
+
     public static class NoteCharacteristic
     {
         /// <summary>

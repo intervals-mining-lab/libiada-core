@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using LibiadaCore.Classes.Root;
 
 namespace LibiadaMusic.ScoreModel
 {
+    using LibiadaCore.Core;
+
     /// <summary>
     /// полный музыкальный текст/трек
     /// </summary>

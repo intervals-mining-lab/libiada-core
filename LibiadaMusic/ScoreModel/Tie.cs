@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace LibiadaMusic.ScoreModel
+﻿namespace LibiadaMusic.ScoreModel
 {
     /// <summary>
     ///  класс для заполнения объекта класса Note данными, в зависимости от наличия лиги
