@@ -1,11 +1,13 @@
 ﻿using System;
-using LibiadaCore.Classes.Root.Characteristics.Calculators;
+
 using Segmentator.Classes.Base.Collectors;
 using Segmentator.Classes.Base.Sequencies;
 using Segmentator.Classes.Model.Threshold;
 
 namespace Segmentator.Classes.Model.Criterion
 {
+    using LibiadaCore.Core.Characteristics.Calculators;
+
     /// <summary>
     /// The criterion of minimum regularity.
     /// Allows you to identify the most irregular chain.

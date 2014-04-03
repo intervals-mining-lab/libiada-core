@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using LibiadaCore.Classes.Root.SimpleTypes;
+
 using Segmentator.Classes.Base;
 using Segmentator.Classes.Base.Collectors;
 using Segmentator.Classes.Base.Sequencies;
@@ -9,6 +9,8 @@ using Segmentator.Classes.Model.Seekers;
 
 namespace Segmentator.Classes.Model
 {
+    using LibiadaCore.Core.SimpleTypes;
+
     /// <summary>
     /// This class cuts and convoluts all occurrences of the found word
     /// </summary>

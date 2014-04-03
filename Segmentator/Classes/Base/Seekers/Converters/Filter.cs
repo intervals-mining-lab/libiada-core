@@ -1,9 +1,11 @@
 ﻿using System;
-using LibiadaCore.Classes.Root.SimpleTypes;
+
 using Segmentator.Classes.Base.Sequencies;
 
 namespace Segmentator.Classes.Base.Seekers.Converters
 {
+    using LibiadaCore.Core.SimpleTypes;
+
     /// <summary>
     /// Filters a sequence of signs in compliance with set rules.
     /// The filter handles only words

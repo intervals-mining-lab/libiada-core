@@ -1,12 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
-using LibiadaCore.Classes.Root;
+
 using Segmentator.Classes.Base.Collectors;
 using Segmentator.Classes.Base.Sequencies;
 using Segmentator.Classes.Interfaces;
 
 namespace Segmentator.Classes.Model
 {
+    using LibiadaCore.Core;
+
     public class MainOutputData
     {
         private ComplexChain chain;

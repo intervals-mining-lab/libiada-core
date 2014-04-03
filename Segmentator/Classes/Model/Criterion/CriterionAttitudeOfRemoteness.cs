@@ -1,11 +1,13 @@
 ﻿using System;
-using LibiadaCore.Classes.Root.Characteristics.Calculators;
+
 using Segmentator.Classes.Base.Collectors;
 using Segmentator.Classes.Base.Sequencies;
 using Segmentator.Classes.Model.Threshold;
 
 namespace Segmentator.Classes.Model.Criterion
 {
+    using LibiadaCore.Core.Characteristics.Calculators;
+
     /// <summary>
     /// Provides search for a criterion of integrity the following rule
     /// Average word length is no more than the ratio of log2(Interval(M))/log2(Interval(m))

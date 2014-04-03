@@ -1,14 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using LibiadaCore.Classes.Root;
-using LibiadaCore.Classes.Root.SimpleTypes;
 
 namespace Segmentator.Classes.Base.Sequencies
 {
+    using LibiadaCore.Core;
+    using LibiadaCore.Core.SimpleTypes;
+
     public class ComplexChain : Chain
     {
-        public LinkUp Anchor = LinkUp.Start;
+        public Link Anchor = Link.Start;
 
         public ComplexChain(List<int> accord)
         {

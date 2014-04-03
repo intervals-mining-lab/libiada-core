@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-using LibiadaCore.Classes.Root.SimpleTypes;
+
 using Segmentator.Classes.Base.Collectors;
 using Segmentator.Classes.Extended;
 
 namespace Segmentator.Classes.Model.Seekers
 {
+    using LibiadaCore.Core.SimpleTypes;
+
     /// <summary>
     /// Used as a base for all kinds of word seekers for a chain
     /// </summary>

@@ -1,11 +1,13 @@
 ﻿using System;
-using LibiadaCore.Classes.Root.Characteristics.Calculators;
+
 using Segmentator.Classes.Base.Collectors;
 using Segmentator.Classes.Base.Sequencies;
 using Segmentator.Classes.Model.Threshold;
 
 namespace Segmentator.Classes.Model.Criterion
 {
+    using LibiadaCore.Core.Characteristics.Calculators;
+
     /// <summary>
     /// Criterion "Equaty of depths". Goal to find a chain with the same amount of information
     /// </summary>

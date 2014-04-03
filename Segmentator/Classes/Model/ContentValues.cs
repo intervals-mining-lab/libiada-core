@@ -1,13 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using LibiadaCore.Classes.Root;
+
 using Segmentator.Classes.Base;
 using Segmentator.Classes.Base.Collectors;
 using Segmentator.Classes.Interfaces;
 
 namespace Segmentator.Classes.Model
 {
+    using LibiadaCore.Core;
+
     /// <summary>
     /// Contains any params for segmentation
     /// </summary>

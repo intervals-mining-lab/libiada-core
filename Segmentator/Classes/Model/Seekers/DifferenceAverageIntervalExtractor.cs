@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using LibiadaCore.Classes.Root.Characteristics.Calculators;
+
 using Segmentator.Classes.Base;
 using Segmentator.Classes.Base.Collectors;
 using Segmentator.Classes.Base.Iterators;
@@ -8,6 +8,8 @@ using Segmentator.Classes.Base.Sequencies;
 
 namespace Segmentator.Classes.Model.Seekers
 {
+    using LibiadaCore.Core.Characteristics.Calculators;
+
     /// <summary>
     /// That's the seeker for allocate words with characteristic differences of the arithmetic mean
     /// and geometric mean of the interval

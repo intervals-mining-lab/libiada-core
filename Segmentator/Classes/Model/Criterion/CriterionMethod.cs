@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using LibiadaCore.Classes.Root;
+
 using Segmentator.Classes.Base.Collectors;
 
 namespace Segmentator.Classes.Model.Criterion
 {
+    using LibiadaCore.Core;
+
     /// <summary>
     /// Calculates actual and estimated characteristics of the subject word in the sequence
     /// </summary>
@@ -63,7 +65,7 @@ namespace Segmentator.Classes.Model.Criterion
         /// <param name="winLen">length of the scanning window</param>
         /// <param name="anchor">binding to the chain</param>
         /// <returns>interval characteristic of occurence of the word</returns>
-        public double IntervalEstimate(List<int> stdData, int chainLength, int winLen, LinkUp anchor)
+        public double IntervalEstimate(List<int> stdData, int chainLength, int winLen, Link anchor)
         {
             if (stdData.Count == 0) return 0;
             int minusLength = winLen - 1;
@@ -85,11 +87,11 @@ namespace Segmentator.Classes.Model.Criterion
             
             switch (anchor)
             {
-                case LinkUp.Start:
+                case Link.Start:
                     return (1/Math.Pow(multiplicate*start, 1/(double) j));
-                case LinkUp.End:
+                case Link.End:
                     return 1/Math.Pow(multiplicate*end, 1/(double) (j));
-                case LinkUp.Both:
+                case Link.Both:
                     return 0;
                 default:
                     return 0;

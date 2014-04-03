@@ -1,11 +1,12 @@
-﻿using LibiadaCore.Classes.Root.Characteristics;
-using Segmentator.Classes.Base.Collectors;
+﻿using Segmentator.Classes.Base.Collectors;
 using Segmentator.Classes.Base.Sequencies;
 using Segmentator.Classes.Interfaces;
 using Segmentator.Classes.Model.Threshold;
 
 namespace Segmentator.Classes.Model.Criterion
 {
+    using LibiadaCore.Core.Characteristics;
+
     /// <summary>
     /// The criterion of break. Defines the best mode of segmentation.
     /// Allows you to handle how long will the process do something.
