@@ -1,0 +1,478 @@
+﻿namespace Segmentator.Model
+{
+    using System;
+    using System.Collections.Generic;
+    using System.Text;
+
+    using LibiadaCore.Core;
+
+    using Segmentator.Base;
+    using Segmentator.Base.Collectors;
+    using Segmentator.Interfaces;
+
+    /// <summary>
+    /// Contains any params for segmentation
+    /// </summary>
+    public class ContentValues : Dictionary<String, Object>
+    {
+
+
+        /// <summary>
+        /// Creates an empty set of values using the default initial size
+        /// </summary>
+        public ContentValues()
+            : base(8)
+        {
+        }
+
+        /// <summary>
+        /// Creates an empty set of values using the given initial size
+        /// </summary>
+        /// <param name="size">the initial size of the set of values</param>
+        public ContentValues(int size)
+            : base(size)
+        {
+        }
+
+        /// <summary>
+        /// Creates a set of values copied from the given set
+        /// </summary>
+        /// <param name="from">the values to copy</param>
+        public ContentValues(ContentValues from)
+            : base(from)
+        {
+        }
+
+        /// <summary>
+        /// Creates a set of values copied from the given HashMap. This is used
+        /// by the Parcel unmarshalling code.
+        /// </summary>
+        /// <param name="values">the values to start with</param>
+        private ContentValues(Dictionary<String, Object> values)
+            : base(values)
+        {
+        }
+
+
+        public override bool Equals(Object obj)
+        {
+            if (!(obj is ContentValues))
+            {
+                return false;
+            }
+            return this.Values.Equals(((ContentValues) obj).Values);
+        }
+
+        public override int GetHashCode()
+        {
+            return this.Values.GetHashCode();
+        }
+
+        /// <summary>
+        /// Adds a value to the set.
+        /// </summary>
+        /// <param name="key">the name of the value to put</param>
+        /// <param name="value">the data for the value to put</param>
+        public void Put(String key, String value)
+        {
+            this.Add(key, value);
+        }
+
+
+        /// <summary>
+        /// Adds a value to the set.
+        /// </summary>
+        /// <param name="key">the name of the parameter to put</param>
+        /// <param name="value">the data for the value to put</param>
+        public void Put(Formalism key, FrequencyDictionary value)
+        {
+            this.Add(key.ToString(), value);
+        }
+
+        /// <summary>
+        /// Adds a value to the set.
+        /// </summary>
+        /// <param name="key">the name of the parameter to put</param>
+        /// <param name="value">the data for the value to put</param>
+        public void Put(Formalism key, Chain value)
+        {
+            this.Add(key.ToString(), value);
+        }
+
+        /// <summary>
+        /// Adds a value to the set.
+        /// </summary>
+        /// <param name="key">the name of the characteristic to put</param>
+        /// <param name="value">the data for the value to put</param>
+        public void Put(Parameter key, int value)
+        {
+            this.Add(Enum.GetName(typeof(Parameter), key), value);
+        }
+
+        /// <summary>
+        /// Adds a value to the set.
+        /// </summary>
+        /// <param name="key">the name of the characteristic to put</param>
+        /// <param name="value">the data for the value to put</param>
+        public void Put(Parameter key, double value)
+        {
+            this.Add(Enum.GetName(typeof(Parameter), key), value);
+        }
+
+        /// <summary>
+        /// Adds all values from the passed in ContentValues.
+        /// </summary>
+        /// <param name="other"> the ContentValues from which to copy</param>
+        public void PutAll(ContentValues other)
+        {
+            foreach (var contentValue in other)
+            {
+                this.Add(contentValue.Key, contentValue.Value);
+            }
+        }
+
+        /// <summary>
+        /// Adds a value to the set.
+        /// </summary>
+        /// <param name="key">the name of the value to put</param>
+        /// <param name="value">the data for the value to put</param>
+        public void Put(String key, Byte value)
+        {
+            this.Add(key, value);
+        }
+
+        /// <summary>
+        /// Adds a value to the set.
+        /// </summary>
+        /// <param name="key">the name of the value to put</param>
+        /// <param name="value">the data for the value to put</param>
+        public void Put(String key, short value)
+        {
+            this.Add(key, value);
+        }
+
+        /// <summary>
+        /// Adds a value to the set.
+        /// </summary>
+        /// <param name="key">the name of the value to put</param>
+        /// <param name="value">the data for the value to put</param>
+        public void Put(String key, int value)
+        {
+            this.Add(key, value);
+        }
+
+        /// <summary>
+        /// Adds a value to the set.
+        /// </summary>
+        /// <param name="key">the name of the value to put</param>
+        /// <param name="value">the data for the value to put</param>
+        public void Put(String key, long value)
+        {
+            this.Add(key, value);
+        }
+
+        /// <summary>
+        /// Adds a value to the set.
+        /// </summary>
+        /// <param name="key">the name of the value to put</param>
+        /// <param name="value">the data for the value to put</param>
+        public void Put(String key, float value)
+        {
+            this.Add(key, value);
+        }
+
+        /// <summary>
+        /// Adds a value to the set.
+        /// </summary>
+        /// <param name="key">the name of the value to put</param>
+        /// <param name="value">the data for the value to put</param>
+        public void Put(String key, Double value)
+        {
+            this.Add(key, value);
+        }
+
+        /// <summary>
+        /// Adds a value to the set.
+        /// </summary>
+        /// <param name="key">the name of the value to put</param>
+        /// <param name="value">the data for the value to put</param>
+        public void Put(String key, Boolean value)
+        {
+            this.Add(key, value);
+        }
+
+        /// <summary>
+        /// Adds a value to the set.
+        /// </summary>
+        /// <param name="key">the name of the value to put</param>
+        /// <param name="value">the data for the value to put</param>
+        public void Put(String key, byte[] value)
+        {
+            this.Add(key, value);
+        }
+
+        /// <summary>
+        /// Adds a null value to the set.
+        /// </summary>
+        /// <param name="key">the name of the value to make null</param>
+        public void PutNull(String key)
+        {
+            this.Add(key, null);
+        }
+
+        /// <summary>
+        /// Remove a single value.
+        /// </summary>
+        /// <param name="key">the name of the value to remove</param>
+        public new void Remove(String key)
+        {
+            this.Remove(key);
+        }
+
+        /// <summary>
+        /// Removes all values.
+        /// </summary>
+        public new void Clear()
+        {
+            this.Clear();
+        }
+
+        /// <summary>
+        /// Returns true if this object has the named value.
+        /// </summary>
+        /// <param name="key">the value to check for</param>
+        /// <returns>true if the value is present, false otherwise</returns>
+        public new bool ContainsKey(String key)
+        {
+            return this.ContainsKey(key);
+        }
+
+        /// <summary>
+        /// Gets a value. Valid value types are String, Boolean, and
+        /// int implementations.
+        /// </summary>
+        /// <param name="key">the value to get</param>
+        /// <returns>the data for the value</returns>
+        public Object Get(String key)
+        {
+            return this[key];
+        }
+
+        public Object Get(IIdentifiable param)
+        {
+            return this[param.GetName()];
+        }
+
+        /// <summary>
+        /// Gets a value and converts it to a String.
+        /// </summary>
+        /// <param name="key">the value to get</param>
+        /// <returns>the String for the value</returns>
+        public String GetAsString(String key)
+        {
+            Object value = this[key];
+            return value != null ? this[key].ToString() : null;
+        }
+
+        /// <summary>
+        /// Gets a value and converts it to a Long.
+        /// </summary>
+        /// <param name="key">the value to get</param>
+        /// <returns>the Long value, or null if the value is missing or cannot be converted</returns>
+        public long GetAsLong(String key)
+        {
+            Object value = this[key];
+            try
+            {
+                return (long) value;
+            }
+            catch (Exception)
+            {
+                if (value is String)
+                {
+                    return long.Parse(value.ToString());
+                }
+                throw;
+            }
+        }
+
+        /// <summary>
+        /// Gets a value and converts it to an Integer.
+        /// </summary>
+        /// <param name="key">the value to get</param>
+        /// <returns>the Integer value, or null if the value is missing or cannot be converted</returns>
+        public int GetAsInteger(String key)
+        {
+            Object value = this[key];
+            try
+            {
+                return (int) value;
+            }
+            catch (Exception)
+            {
+                if (value is String)
+                {
+                    return int.Parse(value.ToString());
+                }
+                throw;
+            }
+        }
+
+        /// <summary>
+        /// Gets a value and converts it to a Short.
+        /// </summary>
+        /// <param name="key">the value to get</param>
+        /// <returns>the Short value, or null if the value is missing or cannot be converted</returns>
+        public short GetAsShort(String key)
+        {
+            Object value = this[key];
+            try
+            {
+                return (short) value;
+            }
+            catch (Exception)
+            {
+                if (value is String)
+                {
+                    return short.Parse(value.ToString());
+                }
+                throw;
+            }
+        }
+
+        /// <summary>
+        ///  Gets a value and converts it to a Byte.
+        /// </summary>
+        /// <param name="key">the value to get</param>
+        /// <returns>the Byte value, or null if the value is missing or cannot be converted</returns>
+        public Byte GetAsByte(String key)
+        {
+            Object value = this[key];
+            try
+            {
+                return (byte) value;
+            }
+            catch (Exception)
+            {
+                if (value is String)
+                {
+                    return byte.Parse(value.ToString());
+                }
+                throw;
+            }
+        }
+
+        /// <summary>
+        /// Gets a value and converts it to a Double.
+        /// </summary>
+        /// <param name="key">the value to get</param>
+        /// <returns>the Double value, or null if the value is missing or cannot be converted</returns>
+        public Double GetAsDouble(String key)
+        {
+            Object value = this[key];
+            try
+            {
+                return (double) value;
+            }
+            catch (Exception)
+            {
+
+                if (value is String)
+                {
+                    return double.Parse(value.ToString());
+                }
+
+                throw;
+            }
+        }
+
+        /// <summary>
+        /// Gets a value and converts it to a Float.
+        /// </summary>
+        /// <param name="key">the value to get</param>
+        /// <returns>the Float value, or null if the value is missing or cannot be converted</returns>
+        public float GetAsFloat(String key)
+        {
+            Object value = this[key];
+            try
+            {
+                return (float) value;
+            }
+            catch (Exception)
+            {
+
+                if (value is String)
+                {
+                    return float.Parse(value.ToString());
+                }
+
+                throw;
+            }
+        }
+
+        /// <summary>
+        /// Gets a value and converts it to a Boolean.
+        /// </summary>
+        /// <param name="key">the value to get</param>
+        /// <returns>the Boolean value, or null if the value is missing or cannot be converted</returns>
+        public Boolean GetAsBoolean(String key)
+        {
+            Object value = this[key];
+            try
+            {
+                return (bool) value;
+            }
+            catch (Exception)
+            {
+
+                if (value is String)
+                {
+                    return bool.Parse(value.ToString());
+                }
+                throw;
+            }
+        }
+
+        /// <summary>
+        /// Gets a value that is a byte array. Note that this method will not convert
+        ///  any other types to byte arrays.
+        /// </summary>
+        /// <param name="key">the value to get</param>
+        /// <returns>the byte[] value, or null is the value is missing or not a byte[]</returns>
+        public byte[] GetAsByteArray(String key)
+        {
+            Object value = this[key];
+            if (value is byte[])
+            {
+                return (byte[]) value;
+            }
+            return null;
+        }
+
+        /// <summary>
+        /// Returns a set of all of the keys and values
+        /// </summary>
+        /// <returns>a set of all of the keys and values</returns>
+        public Dictionary<String, Object> ValueSet()
+        {
+            Dictionary<String, Object> result = new Dictionary<string, object>();
+            foreach (KeyValuePair<string, object> keyValuePair in this)
+            {
+                result.Add(keyValuePair.Key, keyValuePair.Value);
+            }
+            return result;
+        }
+
+        public override String ToString()
+        {
+            StringBuilder sb = new StringBuilder();
+            foreach (String name in this.Keys)
+            {
+                String value = this.GetAsString(name);
+                if (sb.Length > 0) sb.Append(" ");
+                sb.Append(name + "=" + value);
+            }
+            return sb.ToString();
+        }
+    }
+}

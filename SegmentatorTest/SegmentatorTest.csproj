@@ -53,15 +53,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Classes\Base\Collectors\FrequencyDictionaryTest.cs" />
-    <Compile Include="Classes\Base\Iterators\EndIteratorTest.cs" />
-    <Compile Include="Classes\Base\Iterators\StartIteratorTest.cs" />
-    <Compile Include="Classes\Base\Seekers\Converters\FilterSequenceTest.cs" />
-    <Compile Include="Classes\Base\Seekers\Converters\FilterTest.cs" />
-    <Compile Include="Classes\Base\Seekers\SeekerSequenceTest.cs" />
-    <Compile Include="Classes\Base\Seekers\SeekerTest.cs" />
-    <Compile Include="Classes\Base\Sequencies\ComplexChainTest.cs" />
-    <Compile Include="Classes\Model\Threshold\ThresholdLinearTest.cs" />
+    <Compile Include="Base\Collectors\FrequencyDictionaryTest.cs" />
+    <Compile Include="Base\Iterators\EndIteratorTest.cs" />
+    <Compile Include="Base\Iterators\StartIteratorTest.cs" />
+    <Compile Include="Base\Seekers\Converters\FilterSequenceTest.cs" />
+    <Compile Include="Base\Seekers\Converters\FilterTest.cs" />
+    <Compile Include="Base\Seekers\SeekerSequenceTest.cs" />
+    <Compile Include="Base\Seekers\SeekerTest.cs" />
+    <Compile Include="Base\Sequencies\ComplexChainTest.cs" />
+    <Compile Include="Model\Threshold\ThresholdLinearTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
