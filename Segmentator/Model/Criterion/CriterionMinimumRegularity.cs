@@ -24,20 +24,21 @@
         public CriterionMinimumRegularity(ThresholdVariator threshold, double precision)
             : base(threshold, precision)
         {
-            this.LastDistortion = Double.MaxValue;
+            this.lastDistortion = double.MaxValue;
         }
 
         public override bool State(ComplexChain chain, FrequencyDictionary alphabet)
         {
             double distortion = this.Distortion(chain, alphabet);
-            if (Math.Abs(this.LastDistortion) > Math.Abs(distortion))
+            if (Math.Abs(this.lastDistortion) > Math.Abs(distortion))
             {
-                this.Chain = chain.Clone();
-                this.Alphabet = alphabet.Clone();
-                this.LastDistortion = distortion;
+                this.chain = chain.Clone();
+                this.alphabet = alphabet.Clone();
+                this.lastDistortion = distortion;
                 this.ThresholdToStop.SaveBest();
             }
-            return (this.ThresholdToStop.Distance() > ThresholdVariator.Precision);
+
+            return this.ThresholdToStop.Distance > ThresholdVariator.Precision;
         }
 
         public override double Distortion(ComplexChain chain, FrequencyDictionary alphabet)

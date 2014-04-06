@@ -1,6 +1,5 @@
 ﻿namespace Segmentator.Base.Seekers
 {
-    using System;
     using System.Collections.Generic;
 
     using Segmentator.Interfaces;
@@ -12,12 +11,12 @@
         {
         }
 
-        public override int Seek(List<String> sequence)
+        public override int Seek(List<string> sequence)
         {
-            this.Result = new List<int>();
-            while (this.Iterator.HasNext())
+            this.result = new List<int>();
+            while (this.iterator.HasNext())
             {
-                List<String> chain = this.Iterator.Next();
+                List<string> chain = this.iterator.Next();
                 bool chainsEquals = sequence.Count == chain.Count;
                 for (int i = 0; i < sequence.Count; i++)
                 {
@@ -26,13 +25,15 @@
                         chainsEquals = false;
                     }
                 }
+
                 if (chainsEquals)
                 {
-                    this.Result.Add(this.Iterator.Position());
+                    this.result.Add(this.iterator.Position());
                 }
             }
-            this.Iterator.Reset();
-            return this.Result.Count;
+
+            this.iterator.Reset();
+            return this.result.Count;
         }
     }
 }

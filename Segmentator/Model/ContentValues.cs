@@ -13,10 +13,8 @@
     /// <summary>
     /// Contains any params for segmentation
     /// </summary>
-    public class ContentValues : Dictionary<String, Object>
+    public class ContentValues : Dictionary<string, object>
     {
-
-
         /// <summary>
         /// Creates an empty set of values using the default initial size
         /// </summary>
@@ -48,19 +46,19 @@
         /// by the Parcel unmarshalling code.
         /// </summary>
         /// <param name="values">the values to start with</param>
-        private ContentValues(Dictionary<String, Object> values)
+        private ContentValues(Dictionary<string, object> values)
             : base(values)
         {
         }
 
-
-        public override bool Equals(Object obj)
+        public override bool Equals(object obj)
         {
             if (!(obj is ContentValues))
             {
                 return false;
             }
-            return this.Values.Equals(((ContentValues) obj).Values);
+
+            return this.Values.Equals(((ContentValues)obj).Values);
         }
 
         public override int GetHashCode()
@@ -73,11 +71,10 @@
         /// </summary>
         /// <param name="key">the name of the value to put</param>
         /// <param name="value">the data for the value to put</param>
-        public void Put(String key, String value)
+        public void Put(string key, string value)
         {
             this.Add(key, value);
         }
-
 
         /// <summary>
         /// Adds a value to the set.
@@ -136,7 +133,7 @@
         /// </summary>
         /// <param name="key">the name of the value to put</param>
         /// <param name="value">the data for the value to put</param>
-        public void Put(String key, Byte value)
+        public void Put(string key, byte value)
         {
             this.Add(key, value);
         }
@@ -146,7 +143,7 @@
         /// </summary>
         /// <param name="key">the name of the value to put</param>
         /// <param name="value">the data for the value to put</param>
-        public void Put(String key, short value)
+        public void Put(string key, short value)
         {
             this.Add(key, value);
         }
@@ -156,7 +153,7 @@
         /// </summary>
         /// <param name="key">the name of the value to put</param>
         /// <param name="value">the data for the value to put</param>
-        public void Put(String key, int value)
+        public void Put(string key, int value)
         {
             this.Add(key, value);
         }
@@ -166,7 +163,7 @@
         /// </summary>
         /// <param name="key">the name of the value to put</param>
         /// <param name="value">the data for the value to put</param>
-        public void Put(String key, long value)
+        public void Put(string key, long value)
         {
             this.Add(key, value);
         }
@@ -176,7 +173,7 @@
         /// </summary>
         /// <param name="key">the name of the value to put</param>
         /// <param name="value">the data for the value to put</param>
-        public void Put(String key, float value)
+        public void Put(string key, float value)
         {
             this.Add(key, value);
         }
@@ -186,7 +183,7 @@
         /// </summary>
         /// <param name="key">the name of the value to put</param>
         /// <param name="value">the data for the value to put</param>
-        public void Put(String key, Double value)
+        public void Put(string key, double value)
         {
             this.Add(key, value);
         }
@@ -196,7 +193,7 @@
         /// </summary>
         /// <param name="key">the name of the value to put</param>
         /// <param name="value">the data for the value to put</param>
-        public void Put(String key, Boolean value)
+        public void Put(string key, bool value)
         {
             this.Add(key, value);
         }
@@ -206,7 +203,7 @@
         /// </summary>
         /// <param name="key">the name of the value to put</param>
         /// <param name="value">the data for the value to put</param>
-        public void Put(String key, byte[] value)
+        public void Put(string key, byte[] value)
         {
             this.Add(key, value);
         }
@@ -215,7 +212,7 @@
         /// Adds a null value to the set.
         /// </summary>
         /// <param name="key">the name of the value to make null</param>
-        public void PutNull(String key)
+        public void PutNull(string key)
         {
             this.Add(key, null);
         }
@@ -224,7 +221,7 @@
         /// Remove a single value.
         /// </summary>
         /// <param name="key">the name of the value to remove</param>
-        public new void Remove(String key)
+        public new void Remove(string key)
         {
             this.Remove(key);
         }
@@ -242,35 +239,35 @@
         /// </summary>
         /// <param name="key">the value to check for</param>
         /// <returns>true if the value is present, false otherwise</returns>
-        public new bool ContainsKey(String key)
+        public new bool ContainsKey(string key)
         {
             return this.ContainsKey(key);
         }
 
         /// <summary>
-        /// Gets a value. Valid value types are String, Boolean, and
+        /// Gets a value. Valid value types are string, Boolean, and
         /// int implementations.
         /// </summary>
         /// <param name="key">the value to get</param>
         /// <returns>the data for the value</returns>
-        public Object Get(String key)
+        public object Get(string key)
         {
             return this[key];
         }
 
-        public Object Get(IIdentifiable param)
+        public object Get(IIdentifiable param)
         {
             return this[param.GetName()];
         }
 
         /// <summary>
-        /// Gets a value and converts it to a String.
+        /// Gets a value and converts it to a string.
         /// </summary>
         /// <param name="key">the value to get</param>
-        /// <returns>the String for the value</returns>
-        public String GetAsString(String key)
+        /// <returns>the string for the value</returns>
+        public string GetAsstring(string key)
         {
-            Object value = this[key];
+            object value = this[key];
             return value != null ? this[key].ToString() : null;
         }
 
@@ -279,19 +276,20 @@
         /// </summary>
         /// <param name="key">the value to get</param>
         /// <returns>the Long value, or null if the value is missing or cannot be converted</returns>
-        public long GetAsLong(String key)
+        public long GetAsLong(string key)
         {
-            Object value = this[key];
+            object value = this[key];
             try
             {
-                return (long) value;
+                return (long)value;
             }
             catch (Exception)
             {
-                if (value is String)
+                if (value is string)
                 {
                     return long.Parse(value.ToString());
                 }
+
                 throw;
             }
         }
@@ -301,19 +299,20 @@
         /// </summary>
         /// <param name="key">the value to get</param>
         /// <returns>the Integer value, or null if the value is missing or cannot be converted</returns>
-        public int GetAsInteger(String key)
+        public int GetAsInteger(string key)
         {
-            Object value = this[key];
+            object value = this[key];
             try
             {
-                return (int) value;
+                return (int)value;
             }
             catch (Exception)
             {
-                if (value is String)
+                if (value is string)
                 {
                     return int.Parse(value.ToString());
                 }
+
                 throw;
             }
         }
@@ -323,19 +322,20 @@
         /// </summary>
         /// <param name="key">the value to get</param>
         /// <returns>the Short value, or null if the value is missing or cannot be converted</returns>
-        public short GetAsShort(String key)
+        public short GetAsShort(string key)
         {
-            Object value = this[key];
+            object value = this[key];
             try
             {
-                return (short) value;
+                return (short)value;
             }
             catch (Exception)
             {
-                if (value is String)
+                if (value is string)
                 {
                     return short.Parse(value.ToString());
                 }
+
                 throw;
             }
         }
@@ -345,39 +345,39 @@
         /// </summary>
         /// <param name="key">the value to get</param>
         /// <returns>the Byte value, or null if the value is missing or cannot be converted</returns>
-        public Byte GetAsByte(String key)
+        public byte GetAsByte(string key)
         {
-            Object value = this[key];
+            object value = this[key];
             try
             {
-                return (byte) value;
+                return (byte)value;
             }
             catch (Exception)
             {
-                if (value is String)
+                if (value is string)
                 {
                     return byte.Parse(value.ToString());
                 }
+
                 throw;
             }
         }
 
         /// <summary>
-        /// Gets a value and converts it to a Double.
+        /// Gets a value and converts it to a double.
         /// </summary>
         /// <param name="key">the value to get</param>
-        /// <returns>the Double value, or null if the value is missing or cannot be converted</returns>
-        public Double GetAsDouble(String key)
+        /// <returns>the double value, or null if the value is missing or cannot be converted</returns>
+        public double GetAsdouble(string key)
         {
-            Object value = this[key];
+            object value = this[key];
             try
             {
-                return (double) value;
+                return (double)value;
             }
             catch (Exception)
             {
-
-                if (value is String)
+                if (value is string)
                 {
                     return double.Parse(value.ToString());
                 }
@@ -391,17 +391,16 @@
         /// </summary>
         /// <param name="key">the value to get</param>
         /// <returns>the Float value, or null if the value is missing or cannot be converted</returns>
-        public float GetAsFloat(String key)
+        public float GetAsFloat(string key)
         {
-            Object value = this[key];
+            object value = this[key];
             try
             {
-                return (float) value;
+                return (float)value;
             }
             catch (Exception)
             {
-
-                if (value is String)
+                if (value is string)
                 {
                     return float.Parse(value.ToString());
                 }
@@ -415,20 +414,20 @@
         /// </summary>
         /// <param name="key">the value to get</param>
         /// <returns>the Boolean value, or null if the value is missing or cannot be converted</returns>
-        public Boolean GetAsBoolean(String key)
+        public bool GetAsBoolean(string key)
         {
-            Object value = this[key];
+            object value = this[key];
             try
             {
-                return (bool) value;
+                return (bool)value;
             }
             catch (Exception)
             {
-
-                if (value is String)
+                if (value is string)
                 {
                     return bool.Parse(value.ToString());
                 }
+
                 throw;
             }
         }
@@ -439,13 +438,14 @@
         /// </summary>
         /// <param name="key">the value to get</param>
         /// <returns>the byte[] value, or null is the value is missing or not a byte[]</returns>
-        public byte[] GetAsByteArray(String key)
+        public byte[] GetAsByteArray(string key)
         {
-            Object value = this[key];
+            object value = this[key];
             if (value is byte[])
             {
-                return (byte[]) value;
+                return (byte[])value;
             }
+
             return null;
         }
 
@@ -453,9 +453,9 @@
         /// Returns a set of all of the keys and values
         /// </summary>
         /// <returns>a set of all of the keys and values</returns>
-        public Dictionary<String, Object> ValueSet()
+        public Dictionary<string, object> ValueSet()
         {
-            Dictionary<String, Object> result = new Dictionary<string, object>();
+            Dictionary<string, object> result = new Dictionary<string, object>();
             foreach (KeyValuePair<string, object> keyValuePair in this)
             {
                 result.Add(keyValuePair.Key, keyValuePair.Value);
@@ -463,15 +463,20 @@
             return result;
         }
 
-        public override String ToString()
+        public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            foreach (String name in this.Keys)
+            foreach (string name in this.Keys)
             {
-                String value = this.GetAsString(name);
-                if (sb.Length > 0) sb.Append(" ");
+                string value = this.GetAsstring(name);
+                if (sb.Length > 0)
+                {
+                    sb.Append(" ");
+                }
+
                 sb.Append(name + "=" + value);
             }
+
             return sb.ToString();
         }
     }

@@ -12,7 +12,6 @@
     /// </summary>
     public abstract class CriterionMethod
     {
-
         /// <summary>
         /// Calculates frequency for convoluted or no convoluted chain
         /// An actual characteristic of occurrence of the subject word in the sequence
@@ -32,8 +31,12 @@
         /// <param name="minusOne">data for "minus one" subword</param>
         /// <param name="mid">data for "minus two" subword</param>
         /// <returns>disign characteristic of occurence of the word</returns>
-        public double DesignExpected(List<String> accord, int chainLength, int winLen,
-                                                     DataCollector minusOne, DataCollector mid)
+        public double DesignExpected(
+            List<string> accord,
+            int chainLength,
+            int winLen,
+            DataCollector minusOne,
+            DataCollector mid)
         {
             int shortWord = 2;
             int midlLength = winLen - 2;
@@ -43,15 +46,18 @@
             List<int> right = minusOne.Positions(accord.GetRange(1, accord.Count - 1));
             List<int> middle = midlLength != 0 ? mid.Positions(accord.GetRange(1, accord.Count - 2)) : new List<int>();
 
-
             double criteria = -1;
             if (winLen == shortWord)
             {
-                criteria = this.Frequncy(left, chainLength, minusLength)*this.Frequncy(right, chainLength, minusLength);
+                criteria = this.Frequncy(left, chainLength, minusLength)
+                           * this.Frequncy(right, chainLength, minusLength);
             }
             else if (middle != null)
-                criteria = (this.Frequncy(left, chainLength, minusLength)*this.Frequncy(right, chainLength, minusLength))/
-                           this.Frequncy(middle, chainLength, midlLength);
+            {
+                criteria = (this.Frequncy(left, chainLength, minusLength)
+                            * this.Frequncy(right, chainLength, minusLength))
+                           / this.Frequncy(middle, chainLength, midlLength);
+            }   
 
             return criteria;
         }
@@ -67,7 +73,11 @@
         /// <returns>interval characteristic of occurence of the word</returns>
         public double IntervalEstimate(List<int> stdData, int chainLength, int winLen, Link anchor)
         {
-            if (stdData.Count == 0) return 0;
+            if (stdData.Count == 0)
+            {
+                return 0;
+            }
+
             int minusLength = winLen - 1;
             int start = stdData[0] + 1;
             int end = chainLength - stdData[stdData.Count - 1] - minusLength;
@@ -80,23 +90,22 @@
                 for (j = 1; j < stdData.Count; j++)
                 {
                     int current = stdData[j];
-                    multiplicate *= (current - pred - minusLength);
+                    multiplicate *= current - pred - minusLength;
                     pred = current;
                 }
             }
-            
+
             switch (anchor)
             {
                 case Link.Start:
-                    return (1/Math.Pow(multiplicate*start, 1/(double) j));
+                    return 1 / Math.Pow(multiplicate * start, 1 / (double)j);
                 case Link.End:
-                    return 1/Math.Pow(multiplicate*end, 1/(double) (j));
+                    return 1 / Math.Pow(multiplicate * end, 1 / (double)j);
                 case Link.Both:
                     return 0;
                 default:
                     return 0;
             }
-
         }
 
         /// <summary>
@@ -107,7 +116,7 @@
         /// <returns>probability</returns>
         protected double Probability(int count, int chainLen)
         {
-            return count/(double) chainLen;
+            return count / (double)chainLen;
         }
     }
 }

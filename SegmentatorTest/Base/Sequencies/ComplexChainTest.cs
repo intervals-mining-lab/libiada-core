@@ -1,6 +1,5 @@
 ﻿namespace SegmentatorTest.Base.Sequencies
 {
-    using System;
     using System.Collections.Generic;
 
     using NUnit.Framework;
@@ -11,6 +10,7 @@
     public class ComplexComplexChainTest
     {
         private ComplexChain chain;
+
         private ComplexChain differentComplexChain;
 
         [SetUp]
@@ -23,7 +23,6 @@
         [Test]
         public void CloneTest()
         {
-
             ComplexChain foreignComplexChain = this.chain.Clone();
 
             Assert.AreNotSame(this.chain, foreignComplexChain);
@@ -44,9 +43,9 @@
         [Test]
         public void ElementAtTest()
         {
-            String str1 = "A";
-            String str2 = "G";
-            String str3 = "C";
+            string str1 = "A";
+            string str2 = "G";
+            string str3 = "C";
 
             Assert.True(str1.Equals(this.chain[0].ToString()));
             Assert.True(str2.Equals(this.chain[4].ToString()));
@@ -78,8 +77,8 @@
             int start = 0;
             int end = this.chain.Length;
 
-            ComplexChain firstComplexChain = new ComplexChain(this.chain.Substring(start, end/2));
-            ComplexChain secondComplexChain = new ComplexChain(this.chain.Substring(end/2, end));
+            ComplexChain firstComplexChain = new ComplexChain(this.chain.Substring(start, end / 2));
+            ComplexChain secondComplexChain = new ComplexChain(this.chain.Substring(end / 2, end));
             ComplexChain concatChain = firstComplexChain.Concat(secondComplexChain);
             Assert.True(concatChain.Equals(this.chain));
         }
@@ -110,8 +109,8 @@
         [Test]
         public void IsEmptyTest()
         {
-            String str = "s";
-            ComplexChain chain = new ComplexChain("");
+            string str = "s";
+            ComplexChain chain = new ComplexChain(string.Empty);
             Assert.True(chain.IsEmpty());
             chain.Concat(str);
             Assert.True(!chain.IsEmpty());
@@ -124,7 +123,7 @@
         {
             ComplexChain clonedComplexChain = this.chain.Clone();
 
-           // new FrequencyDictionary(chain);
+            // new FrequencyDictionary(chain);
             this.chain.ClearAt(0);
             clonedComplexChain.ClearAt(0);
             Assert.True(this.chain.Equals(clonedComplexChain));
@@ -134,10 +133,44 @@
         public void JoinTest()
         {
             ComplexChain clon = this.chain.Clone();
-            List<String> list1 = new List<String>{"AAC","A","G","G","T","G","C","C","C","C","T","T","A","T","T","T"};
-            List<String> list2 = new List<String>{"AAC","A","G","G","TGC","C","C","C","T","T","A","T","T","T"};
-            List<String> list3 = new List<String>{"AACAGGTGC", "C", "C", "C", "T", "T", "A", "T", "T", "T"};
-            List<String> list4 = new List<String>{"AACAGGTGC", "C", "C", "C", "T", "T", "A", "T", "TT"};
+            List<string> list1 = new List<string>
+                                     {
+                                         "AAC",
+                                         "A",
+                                         "G",
+                                         "G",
+                                         "T",
+                                         "G",
+                                         "C",
+                                         "C",
+                                         "C",
+                                         "C",
+                                         "T",
+                                         "T",
+                                         "A",
+                                         "T",
+                                         "T",
+                                         "T"
+                                     };
+            List<string> list2 = new List<string>
+                                     {
+                                         "AAC",
+                                         "A",
+                                         "G",
+                                         "G",
+                                         "TGC",
+                                         "C",
+                                         "C",
+                                         "C",
+                                         "T",
+                                         "T",
+                                         "A",
+                                         "T",
+                                         "T",
+                                         "T"
+                                     };
+            List<string> list3 = new List<string> { "AACAGGTGC", "C", "C", "C", "T", "T", "A", "T", "T", "T" };
+            List<string> list4 = new List<string> { "AACAGGTGC", "C", "C", "C", "T", "T", "A", "T", "TT" };
             clon.Join(0, 3);
             Assert.True((new ComplexChain(list1)).Equals(clon));
 
@@ -153,28 +186,28 @@
         [Test]
         public void JoinAllTest()
         {
-            List<String> list1 = new List<String>
-                {
-                    "A",
-                    "A",
-                    "G",
-                    "G",
-                    "T",
-                    "G",
-                    "C",
-                    "A",
-                    "A",
-                    "A",
-                    "A",
-                    "T",
-                    "A",
-                    "T",
-                    "A",
-                    "A",
-                    "A"
-                };
+            List<string> list1 = new List<string>
+                                     {
+                                         "A",
+                                         "A",
+                                         "G",
+                                         "G",
+                                         "T",
+                                         "G",
+                                         "C",
+                                         "A",
+                                         "A",
+                                         "A",
+                                         "A",
+                                         "T",
+                                         "A",
+                                         "T",
+                                         "A",
+                                         "A",
+                                         "A"
+                                     };
             ComplexChain clon = new ComplexChain(list1);
-            List<String> list2 = new List<String> {"A", "A"};
+            List<string> list2 = new List<string> { "A", "A" };
             clon.JoinAll(list2);
         }
     }

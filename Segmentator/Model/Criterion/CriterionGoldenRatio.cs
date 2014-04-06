@@ -13,7 +13,6 @@
     /// </summary>
     public class CriterionGoldenRatio : Criterion
     {
-
         /// <summary>
         /// init
         /// </summary>
@@ -22,21 +21,21 @@
         public CriterionGoldenRatio(ThresholdVariator threshold, double precision)
             : base(threshold, precision)
         {
-            this.LastDistortion = Double.MaxValue;
-
+            this.lastDistortion = double.MaxValue;
         }
 
         public override bool State(ComplexChain chain, FrequencyDictionary alphabet)
         {
             double current = this.Distortion(chain, alphabet);
-            if (this.LastDistortion > current)
+            if (this.lastDistortion > current)
             {
-                this.LastDistortion = current;
-                this.Chain = chain.Clone();
-                this.Alphabet = alphabet.Clone();
+                this.lastDistortion = current;
+                this.chain = chain.Clone();
+                this.alphabet = alphabet.Clone();
                 this.ThresholdToStop.SaveBest();
             }
-            return (this.ThresholdToStop.Distance() > ThresholdVariator.Precision);
+
+            return this.ThresholdToStop.Distance > ThresholdVariator.Precision;
         }
 
         public override double Distortion(ComplexChain chain, FrequencyDictionary alphabet)
@@ -44,8 +43,8 @@
             double maxFrequency = this.MaxFrequency(alphabet);
             double power = alphabet.Count;
 
-            double greaterToSmaler = power/maxFrequency;
-            double sumToGreater = (power + maxFrequency)/power;
+            double greaterToSmaler = power / maxFrequency;
+            double sumToGreater = (power + maxFrequency) / power;
 
             return Math.Abs(greaterToSmaler - sumToGreater);
         }
@@ -55,8 +54,12 @@
             int max = 0;
             foreach (List<int> positions in alphabet.GetWordsPositions())
             {
-                if (max < positions.Count) max = positions.Count;
+                if (max < positions.Count)
+                {
+                    max = positions.Count;
+                }
             }
+
             return max;
         }
     }

@@ -4,8 +4,22 @@
 
     public class Algorithm
     {
-        protected List<MainOutputData> Results = new List<MainOutputData>();
-        protected List<Input> Inputs = new List<Input>();
+        protected List<MainOutputData> results = new List<MainOutputData>();
+        protected List<Input> inputs = new List<Input>();
+
+        public Algorithm(IEnumerable<Input> parameters)
+        {
+            this.inputs = new List<Input>(parameters);
+        }
+
+        public Algorithm(Input input)
+        {
+            this.inputs.Add(input);
+        }
+
+        public Algorithm()
+        {
+        }
 
         /// <summary>
         /// Executes segmentation in a separate thread with notifying all observers
@@ -13,25 +27,11 @@
         public void Run()
         {
             this.Slot();
-        }
-
-        public Algorithm(IEnumerable<Input> parameters)
-        {
-            this.Inputs = new List<Input>(parameters);
-        }
-
-        public Algorithm(Input input)
-        {
-            this.Inputs.Add(input);
-        }
-
-        public Algorithm()
-        {
-        }
+        } 
 
         public void Add(IEnumerable<Input> input)
         {
-            this.Inputs.AddRange(input);
+            this.inputs.AddRange(input);
         }
 
         /// <summary>
@@ -39,12 +39,12 @@
         /// </summary>
         public void Slot()
         {
-            foreach (Input input in this.Inputs)
+            foreach (Input input in this.inputs)
             {
-                Algorithm algorithm = AlgorithmFactory.Make(input.GetAlgorithm(), input);
+                Algorithm algorithm = AlgorithmFactory.Make(input.Algorithm, input);
                 algorithm.Slot();
                 List<MainOutputData> res = algorithm.Upload();
-                this.Results.Add(res[0]);
+                this.results.Add(res[0]);
                 res.RemoveAt(0);
             }
         }
@@ -55,7 +55,7 @@
         /// <returns>list of characteristics</returns>
         public List<MainOutputData> Upload()
         {
-            return this.Results;
+            return this.results;
         }
     }
 }

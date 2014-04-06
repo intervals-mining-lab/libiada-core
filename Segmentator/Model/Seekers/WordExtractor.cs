@@ -1,6 +1,5 @@
 ﻿namespace Segmentator.Model.Seekers
 {
-    using System;
     using System.Collections.Generic;
 
     using LibiadaCore.Core.SimpleTypes;
@@ -13,10 +12,10 @@
     /// </summary>
     public abstract class WordExtractor
     {
-        protected Dictionary<Double, KeyValuePair<List<String>, List<int>>> WordPriority =
-            new Dictionary<Double, KeyValuePair<List<String>, List<int>>>();
+        protected Dictionary<double, KeyValuePair<List<string>, List<int>>> wordPriority =
+            new Dictionary<double, KeyValuePair<List<string>, List<int>>>();
 
-        protected DataCollector FullEntry = new DataCollector();
+        protected DataCollector fullEntry = new DataCollector();
 
         /// <summary>
         /// Finds a word based on current parameters
@@ -33,22 +32,23 @@
         /// <returns></returns>
         protected KeyValuePair<List<string>, List<int>>? DiscardCompositeWords(FrequencyDictionary alphabet, double level)
         {
-            List<Double> stds = new List<Double>(this.WordPriority.Keys);
-            List<KeyValuePair<List<String>, List<int>>> entries =
-                new List<KeyValuePair<List<String>, List<int>>>(this.WordPriority.Values);
+            List<double> stds = new List<double>(this.wordPriority.Keys);
+            List<KeyValuePair<List<string>, List<int>>> entries =
+                new List<KeyValuePair<List<string>, List<int>>>(this.wordPriority.Values);
             for (int index = entries.Count; --index >= 0;)
             {
-                List<String> entry = entries[index].Key;
-                String entryS;
+                List<string> entry = entries[index].Key;
+                string entryS;
                 if (!alphabet.Contains(new ValueString(entryS = Helper.ToString(entry))) && (entry.Count == entryS.Length))
                 {
                     double bestStd = stds[index];
                     if (bestStd > level)
                     {
-                        return new KeyValuePair<List<string>, List<int>>(this.WordPriority[bestStd].Key, this.WordPriority[bestStd].Value);
+                        return new KeyValuePair<List<string>, List<int>>(this.wordPriority[bestStd].Key, this.wordPriority[bestStd].Value);
                     }
                 }
             }
+
             return null;
         }
     }

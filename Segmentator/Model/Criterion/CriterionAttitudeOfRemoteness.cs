@@ -15,6 +15,7 @@
     public class CriterionAttitudeOfRemoteness : Criterion
     {
         private readonly AverageWordLength wordAverageLength = new AverageWordLength();
+
         private readonly AverageRemoteness remoteness = new AverageRemoteness();
 
         /// <summary>
@@ -25,31 +26,28 @@
         public CriterionAttitudeOfRemoteness(ThresholdVariator threshold, double precision)
             : base(threshold, precision)
         {
-            this.LastDistortion = Double.MinValue;
+            this.lastDistortion = double.MinValue;
         }
-
 
         public override bool State(ComplexChain chain, FrequencyDictionary alphabet)
         {
             double distortion = this.Distortion(chain, alphabet);
-            if (Math.Abs(this.LastDistortion) < Math.Abs(distortion))
+            if (Math.Abs(this.lastDistortion) < Math.Abs(distortion))
             {
-                this.Chain = chain.Clone();
-                this.Alphabet = alphabet.Clone();
-                this.LastDistortion = distortion;
+                this.chain = chain.Clone();
+                this.alphabet = alphabet.Clone();
+                this.lastDistortion = distortion;
                 this.ThresholdToStop.SaveBest();
             }
 
-
-            return (this.ThresholdToStop.Distance() > ThresholdVariator.Precision);
+            return this.ThresholdToStop.Distance > ThresholdVariator.Precision;
         }
 
         public override double Distortion(ComplexChain chain, FrequencyDictionary alphabet)
         {
-            return (this.remoteness.Calculate(chain, chain.Anchor)/
-                    this.remoteness.Calculate(chain.Original(), chain.Anchor)) -
-                   this.wordAverageLength.Calculate(chain, chain.Anchor);
-
+            return (this.remoteness.Calculate(chain, chain.Anchor)
+                    / this.remoteness.Calculate(chain.Original(), chain.Anchor))
+                   - this.wordAverageLength.Calculate(chain, chain.Anchor);
         }
     }
 }

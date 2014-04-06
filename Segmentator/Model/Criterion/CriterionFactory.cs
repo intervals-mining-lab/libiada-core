@@ -11,14 +11,15 @@
         {
             switch (index)
             {
-                case 0: return new CriterionPartialOrlov(threshold, input.GetPrecision());
-                case 1: return new CriterionMinSymmetryByShrader(threshold, input.GetPrecision());
-                case 2: return new CriterionMinSimmetryByIntervals(threshold, input.GetPrecision());
-                case 3: return new CriterionEqualityOfDepths(threshold, input.GetPrecision());
-                case 4: return new CriterionAttitudeOfRemoteness(threshold, input.GetPrecision());
-                case 5: return new CriterionMinimumRegularity(threshold, input.GetPrecision());
-                case 6: return new CriterionGoldenRatio(threshold, input.GetPrecision());
+                case 0: return new CriterionPartialOrlov(threshold, input.Precision);
+                case 1: return new CriterionMinSymmetryByShrader(threshold, input.Precision);
+                case 2: return new CriterionMinSimmetryByIntervals(threshold, input.Precision);
+                case 3: return new CriterionEqualityOfDepths(threshold, input.Precision);
+                case 4: return new CriterionAttitudeOfRemoteness(threshold, input.Precision);
+                case 5: return new CriterionMinimumRegularity(threshold, input.Precision);
+                case 6: return new CriterionGoldenRatio(threshold, input.Precision);
             }
+
             return null;
         } 
     }

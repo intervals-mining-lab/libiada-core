@@ -1,9 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using NUnit.Framework;
-
-namespace SegmentatorTest.Classes.Base.Seekers.Converters
+﻿namespace SegmentatorTest.Base.Seekers.Converters
 {
+    using System.Collections.Generic;
+
+    using NUnit.Framework;
+
     using Segmentator.Base.Seekers.Converters;
     using Segmentator.Base.Sequencies;
 
@@ -13,7 +13,7 @@ namespace SegmentatorTest.Classes.Base.Seekers.Converters
         [Test]
         public void FilteroutTest()
         {
-            List<String> list1 = new List<string>
+            List<string> list1 = new List<string>
                 {
                     "ABABAB",
                     "ABATAT",
@@ -23,12 +23,12 @@ namespace SegmentatorTest.Classes.Base.Seekers.Converters
                     "ABABAB",
                     "ABABAB"
                 };
-            List<String> listSequence1 = new List<string> {"ABATAT", "TABABAB"};
-            List<String> listSequence2 = new List<string> {"ABABAB", "ABABAB"};
-            List<String> listSequence3 = new List<string> {"ABABAB"};
-            List<String> result1 = new List<string> {"ABABAB", "ABTABAB", "ABABAB", "ABABAB", "ABABAB"};
-            List<String> result2 = new List<string> {"ABABAB", "ABATAT", "TABABAB", "ABTABAB", "ABABAB"};
-            List<String> result3 = new List<string> {"ABATAT", "TABABAB", "ABTABAB"};
+            List<string> listSequence1 = new List<string> { "ABATAT", "TABABAB" };
+            List<string> listSequence2 = new List<string> { "ABABAB", "ABABAB" };
+            List<string> listSequence3 = new List<string> { "ABABAB" };
+            List<string> result1 = new List<string> { "ABABAB", "ABTABAB", "ABABAB", "ABABAB", "ABABAB" };
+            List<string> result2 = new List<string> { "ABABAB", "ABATAT", "TABABAB", "ABTABAB", "ABABAB" };
+            List<string> result3 = new List<string> { "ABATAT", "TABABAB", "ABTABAB" };
 
             SequenceCleaner a1Cleaner = new SequenceCleaner(new ComplexChain(list1));
             SequenceCleaner a2Cleaner = new SequenceCleaner(new ComplexChain(list1));

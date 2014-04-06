@@ -1,6 +1,5 @@
 ﻿namespace SegmentatorTest.Base.Iterators
 {
-    using System;
     using System.Collections.Generic;
 
     using NUnit.Framework;
@@ -33,6 +32,7 @@
                 iterator.Next();
                 countSteps = countSteps + 1;
             }
+
             Assert.True(countSteps == iterator.MaxShifts);
 
             countSteps = 0;
@@ -42,21 +42,20 @@
                 iterator.Next();
                 countSteps = countSteps + 1;
             }
+
             Assert.True(countSteps == iterator.MaxShifts);
         }
 
         [Test]
         public void NextTest()
         {
-            List<String> cut;
-            String[] triplesForStepOne =
+            List<string> cut;
+            string[] triplesForStepOne =
                 {
-                    "AAC", "ACA", "CAG", "AGG",
-                    "GGT", "GTG", "TGC", "GCC",
-                    "CCC", "CCC", "CCT", "CTT",
-                    "TTA", "TAT", "ATT", "TTT"
+                    "AAC", "ACA", "CAG", "AGG", "GGT", "GTG", "TGC", "GCC", "CCC", "CCC", "CCT",
+                    "CTT", "TTA", "TAT", "ATT", "TTT"
                 };
-            String[] triplesForStepTwo = {"AAC", "CAG", "GGT", "TGC", "CCC", "CCT", "TTA", "ATT"};
+            string[] triplesForStepTwo = { "AAC", "CAG", "GGT", "TGC", "CCC", "CCT", "TTA", "ATT" };
             int lengthCut = 3;
             int step = 1;
 
@@ -65,7 +64,6 @@
             for (int i = 0; i < iterator.MaxShifts; i++)
             {
                 cut = iterator.Next();
-                //            System.out.println(triplesForStepOne[i] + " vs " + cut);
                 Assert.True(Helper.ToString(cut).Equals(triplesForStepOne[i]));
             }
 
@@ -88,6 +86,7 @@
             {
                 iterator.Reset();
             }
+
             Assert.True(iterator.CursorPosition == -step);
         }
 
@@ -101,12 +100,11 @@
             iterator.Move(position);
             Assert.True(iterator.CursorPosition == position);
 
-
             position = 100;
             iterator.Move(position);
             Assert.True(iterator.CursorPosition != position);
 
-            position = this.chain.Length/2;
+            position = this.chain.Length / 2;
             iterator.Move(position);
             Assert.True(iterator.CursorPosition == position);
 
@@ -117,12 +115,11 @@
             length = 3;
             step = 2;
             position = 3;
-            String triple = "GTG";
+            string triple = "GTG";
             iterator = new StartIterator(this.chain, length, step);
             iterator.Move(position);
             iterator.Next();
             Assert.AreEqual(triple, Helper.ToString(iterator.Current()));
-            //            System.out.println(triple + " vs " + Helper.ToString(iterator.current()));
         }
 
         [Test]
@@ -146,9 +143,11 @@
             iterator.Next();
             Assert.True(iterator.CursorPosition == 1);
             for (int index = 2; index < iterator.MaxShifts; index++)
+            {
                 iterator.Next();
-            Assert.True(iterator.CursorPosition == 16);
+            }
 
+            Assert.True(iterator.CursorPosition == 16);
         }
     }
 }

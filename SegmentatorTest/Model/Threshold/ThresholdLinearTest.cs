@@ -1,7 +1,7 @@
-﻿using NUnit.Framework;
-
-namespace SegmentatorTest.Classes.Model.Threshold
+﻿namespace SegmentatorTest.Model.Threshold
 {
+    using NUnit.Framework;
+
     using Segmentator.Model.Criterion;
     using Segmentator.Model.Threshold;
 
@@ -15,7 +15,7 @@ namespace SegmentatorTest.Classes.Model.Threshold
             double right = 1;
             double step = 0.10;
             double current;
-            double[] steps = {1.0, 0.9, 0.8, 0.7, 0.6, 0.5, 0.4, 0.3, 0.2, 0.1, 0.0};
+            double[] steps = { 1.0, 0.9, 0.8, 0.7, 0.6, 0.5, 0.4, 0.3, 0.2, 0.1, 0.0 };
             int index = 0;
             Criterion criterion = null;
             ThresholdLinear threshold = new ThresholdLinear(left, right, step);

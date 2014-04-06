@@ -29,23 +29,22 @@
         {
         }
 
-
         public AlgorithmBase(Input parameters)
             : base(parameters)
         {
-            this.threshold = ThresholdFactory.Make(parameters.GetThresholdMethod(), parameters);
-            this.criterion = CriterionFactory.Make(parameters.GetStopCriterion(), this.threshold, parameters);
-            this.extractor = WordExtractorFactory.GetSeeker(parameters.seeker);
-            this.balance = parameters.GetBalance();
-            this.windowLen = parameters.GetWindowlength();
-            this.windowDec = parameters.GetWindowdec();
+            this.threshold = ThresholdFactory.Make(parameters.ThresholdMethod, parameters);
+            this.criterion = CriterionFactory.Make(parameters.StopCriterion, this.threshold, parameters);
+            this.extractor = WordExtractorFactory.GetSeeker(parameters.Seeker);
+            this.balance = parameters.Balance;
+            this.windowLen = parameters.Windowlength;
+            this.windowDec = parameters.WindowDecrement;
         }
 
         public new void Slot()
         {
             SimpleChainSplitter chainConvolutor;
             ContentValues par = new ContentValues();
-            par.Put(Formalism.Sequence, this.chain = new ComplexChain(this.Inputs[0].GetChain()));
+            par.Put(Formalism.Sequence, this.chain = new ComplexChain(this.inputs[0].Chain));
             par.Put(Formalism.Alphabet, this.alphabet = new FrequencyDictionary(this.chain));
 
             while (this.criterion.State(this.chain, this.alphabet))
@@ -55,29 +54,25 @@
                 this.chain = chainConvolutor.Cut(par);
                 this.alphabet = chainConvolutor.FrequencyDictionary;
             }
-            //chain.updateUniforms();
-        }
-
-        private void UpdateParams(ContentValues par, double nextThreshold)
-        {
-            par.Put(Formalism.Sequence, this.chain = new ComplexChain(this.Inputs[0].GetChain()));
-            //chain.SetName(inputs[0].getChainName());
-            par.Put(Parameter.Balance, this.balance);
-            par.Put(Parameter.Window, this.windowLen);
-            par.Put(Parameter.WindowDecrement, this.windowDec);
-            par.Put(Parameter.CurrentThreshold, nextThreshold);
         }
 
         public new List<MainOutputData> Upload()
         {
-            //BuilderResultData builderResultData = new BuilderResultData(chain, alphabet);
             MainOutputData resultUpdate = new MainOutputData();
             resultUpdate.AddInfo((IIdentifiable)this.criterion, this.criterion.Value);
             resultUpdate.AddInfo((IIdentifiable)this.threshold, this.threshold.Value);
-            //ResultDataCreator.saveToFile(resultUpdate);
 
-            this.Results.Add(resultUpdate);
-            return this.Results;
+            this.results.Add(resultUpdate);
+            return this.results;
+        }
+
+        private void UpdateParams(ContentValues par, double nextThreshold)
+        {
+            par.Put(Formalism.Sequence, this.chain = new ComplexChain(this.inputs[0].Chain));
+            par.Put(Parameter.Balance, this.balance);
+            par.Put(Parameter.Window, this.windowLen);
+            par.Put(Parameter.WindowDecrement, this.windowDec);
+            par.Put(Parameter.CurrentThreshold, nextThreshold);
         }
     }
 }

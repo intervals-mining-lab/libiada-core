@@ -11,13 +11,13 @@
     /// The criterion of break. Defines the best mode of segmentation.
     /// Allows you to handle how long will the process do something.
     /// </summary>
-    public abstract class Criterion: Characteristic, IDefinable
+    public abstract class Criterion : Characteristic, IDefinable
     {
-        protected double PrecisionOfDifference;
-        protected double LastDistortion;
-        protected FrequencyDictionary Alphabet;
-        protected new ComplexChain Chain;
         protected readonly ThresholdVariator ThresholdToStop;
+        protected double precisionOfDifference;
+        protected double lastDistortion;
+        protected FrequencyDictionary alphabet;
+        protected new ComplexChain chain;
 
         /// <summary>
         /// init
@@ -27,7 +27,12 @@
         public Criterion(ThresholdVariator threshold, double precision)
         {
             this.ThresholdToStop = threshold;
-            this.PrecisionOfDifference = precision;
+            this.precisionOfDifference = precision;
+        }
+
+        public double Value
+        {
+            get { return this.lastDistortion; }
         }
 
         /// <summary>
@@ -54,7 +59,7 @@
         /// <returns>distortion</returns>
         public double Distortion()
         {
-            return this.Distortion(this.Chain, this.Alphabet);
+            return this.Distortion(this.chain, this.alphabet);
         }
 
         /// <summary>
@@ -64,13 +69,8 @@
         /// <param name="alphabet">a new alphabet</param>
         public void Renew(ComplexChain chain, FrequencyDictionary alphabet)
         {
-            this.Chain = chain;
-            this.Alphabet = alphabet;
-        }
-
-        public new double Value
-        {
-            get { return this.LastDistortion; }
+            this.chain = chain;
+            this.alphabet = alphabet;
         }
 
         public double GetValue()

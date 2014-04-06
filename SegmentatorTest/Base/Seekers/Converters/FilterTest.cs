@@ -1,43 +1,47 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using NUnit.Framework;
-
-namespace SegmentatorTest.Classes.Base.Seekers.Converters
+﻿namespace SegmentatorTest.Base.Seekers.Converters
 {
+    using System.Collections.Generic;
+    using System.Text;
+
+    using NUnit.Framework;
+
     using Segmentator.Base.Seekers.Converters;
     using Segmentator.Base.Sequencies;
 
     [TestFixture]
     public class FilterTest
     {
-        private String str1;
-        private String str2;
-        private List<String> list;
+        private string str1;
+        private string str2;
+        private List<string> list;
         
         [SetUp]
         public void SetUp()
         {
-            str1 = "A";
-            str2 = "TA";
-            list = new List<string> { "ABABAB", "ABATAT", "TABABAB", "ABTABAB", "ABABAB", "ABABAB", "ABABAB" };
+            this.str1 = "A";
+            this.str2 = "TA";
+            this.list = new List<string> { "ABABAB", "ABATAT", "TABABAB", "ABTABAB", "ABABAB", "ABABAB", "ABABAB" };
         }
 
         [Test]
         public void FilteroutTest()
         {
-            ComplexChain chain = new ComplexChain(list);
+            ComplexChain chain = new ComplexChain(this.list);
             Filter filter = new Filter(chain);
-            int hits = filter.FilterOut(str1);
+            int hits = filter.FilterOut(this.str1);
 
             StringBuilder sb = new StringBuilder();
-            foreach (String s in list) sb.Append(s);
+            foreach (string s in this.list)
+            {
+                sb.Append(s);
+            }
+
             string result = filter.GetChain().ToString();
             string buf = chain.ToString();
             Assert.True(buf.Length - result.Length == hits);
 
             filter = new Filter(chain);
-            hits = filter.FilterOut(str2);
+            hits = filter.FilterOut(this.str2);
 
             filter.GetChain().ToString();
             chain.ToString();
@@ -47,13 +51,16 @@ namespace SegmentatorTest.Classes.Base.Seekers.Converters
         [Test]
         public void ReplaceTest()
         {
-            ComplexChain chain = new ComplexChain(list);
+            ComplexChain chain = new ComplexChain(this.list);
             Filter filter = new Filter(chain);
-            int hits = filter.Replace(str2, "-");
+            int hits = filter.Replace(this.str2, "-");
 
             StringBuilder sb = new StringBuilder();
-            foreach (String s in list)
-            sb.Append(s);
+            foreach (string s in this.list)
+            {
+                sb.Append(s);
+            }
+            
             string result = filter.GetChain().ToString();
             string buf = chain.ToString();
             Assert.True(buf.Length - result.Length == hits);

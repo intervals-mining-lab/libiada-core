@@ -1,6 +1,5 @@
 ﻿namespace Segmentator.Model
 {
-    using System;
     using System.Collections.Generic;
 
     using LibiadaCore.Core;
@@ -13,7 +12,7 @@
     {
         private ComplexChain chain;
         private FrequencyDictionary alphabet;
-        private Dictionary<String, String> parameters = new Dictionary<String, String>();
+        private Dictionary<string, string> parameters = new Dictionary<string, string>();
 
         public Chain GetChain()
         {
@@ -35,7 +34,7 @@
             this.alphabet = alphabet;
         }
 
-        public Dictionary<String, String> GetParameters()
+        public Dictionary<string, string> GetParameters()
         {
             return this.parameters;
         }
@@ -65,7 +64,7 @@
         /// </summary>
         /// <param name="what">parameter name</param>
         /// <param name="value">digit calculated value</param>
-        public void AddInfo(IIdentifiable what, Double value)
+        public void AddInfo(IIdentifiable what, double value)
         {
             this.parameters.Add(what.GetName(), value.ToString());
         }

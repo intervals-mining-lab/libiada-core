@@ -21,24 +21,28 @@
         {
             try
             {
-                if ((step > (Math.Abs(rightBound - leftBound))) || (leftBound > rightBound)) throw new Exception();
+                if ((step > Math.Abs(rightBound - leftBound)) || (leftBound > rightBound))
+                {
+                    throw new Exception();
+                }
             }
             catch (Exception)
             {
-
             }
+
             this.step = step;
-            this.Current = this.RightBound;
+            this.current = this.rightBound;
         }
 
         public override double Next(Criterion.Criterion criterion)
         {
-            if (this.Current > this.LeftBound)
+            if (this.current > this.leftBound)
             {
-                this.Current = this.RightBound;
-                this.RightBound = this.RightBound - this.step;
-                return this.Current;
+                this.current = this.rightBound;
+                this.rightBound = this.rightBound - this.step;
+                return this.current;
             }
+
             return -1;
         }
     }

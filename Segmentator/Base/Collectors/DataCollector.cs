@@ -1,6 +1,5 @@
 ﻿namespace Segmentator.Base.Collectors
 {
-    using System;
     using System.Collections.Generic;
 
     using Segmentator.Base.Iterators;
@@ -10,22 +9,22 @@
     /// </summary>
     public class DataCollector
     {
-        private Dictionary<List<String>, List<int>> dictionary = new Dictionary<List<String>, List<int>>();
-
+        private Dictionary<List<string>, List<int>> dictionary = new Dictionary<List<string>, List<int>>();
 
         public void Add(StartIterator iterator, int disp)
         {
-            List<String> str = iterator.Current();
+            List<string> str = iterator.Current();
             int position = iterator.Position();
             this.Add(str, position, disp);
         }
 
-        public void Add(List<String> accord, int position, int disp)
+        public void Add(List<string> accord, int position, int disp)
         {
             if (!this.dictionary.ContainsKey(accord))
             {
                 this.dictionary.Add(accord, new List<int>());
             }
+
             this.dictionary[accord].Add(position + disp);
         }
 
@@ -34,7 +33,7 @@
         /// </summary>
         /// <param name="chain">Цепочка?</param>
         /// <returns></returns>
-        public List<int> Positions(List<String> chain)
+        public List<int> Positions(List<string> chain)
         {
             return new List<int>(this.dictionary[chain]);
         }
@@ -43,7 +42,7 @@
         /// Возвращает все вхождения из списка
         /// </summary>
         /// <returns></returns>
-        public Dictionary<List<String>, List<int>> Entry()
+        public Dictionary<List<string>, List<int>> Entry()
         {
             return new Dictionary<List<string>, List<int>>(this.dictionary);
         }

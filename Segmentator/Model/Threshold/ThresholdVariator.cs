@@ -8,10 +8,10 @@
     public abstract class ThresholdVariator : IDefinable
     {
         public const double Precision = 0.01;
-        protected double LeftBound;
-        protected double RightBound;
-        protected double Current;
-        protected double Best;
+        protected double leftBound;
+        protected double rightBound;
+        protected double current;
+        protected double best;
 
         /// <summary>
         /// 
@@ -20,8 +20,22 @@
         /// <param name="rightBound">the right bound of threshold</param>
         public ThresholdVariator(double leftBound, double rightBound)
         {
-            this.LeftBound = leftBound;
-            this.RightBound = rightBound;
+            this.leftBound = leftBound;
+            this.rightBound = rightBound;
+        }
+
+        public double Value
+        {
+            get { return this.best; }
+        }
+
+        /// <summary>
+        /// Returns the difference between the right and left bounds
+        /// </summary>
+        /// <returns>the difference between the right and left bounds</returns>
+        public double Distance
+        {
+            get { return this.rightBound - this.leftBound; }
         }
 
         /// <summary>
@@ -32,26 +46,11 @@
         public abstract double Next(Criterion.Criterion criterion);
 
         /// <summary>
-        /// Returns the difference between the right and left bounds
-        /// </summary>
-        /// <returns>the difference between the right and left bounds</returns>
-        public double Distance()
-        {
-            return (this.RightBound - this.LeftBound);
-        }
-
-        public double Value
-        {
-            get { return this.Best; }
-            
-        }
-
-        /// <summary>
         /// Fix the best value
         /// </summary>
         public void SaveBest()
         {
-            this.Best = this.Current;
+            this.best = this.current;
         }
 
         public double GetValue()

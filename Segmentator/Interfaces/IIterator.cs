@@ -1,6 +1,5 @@
 ﻿namespace Segmentator.Interfaces
 {
-    using System;
     using System.Collections.Generic;
 
     public interface IIterator
@@ -15,7 +14,7 @@
         /// Returns the next element in the iteration.
         /// </summary>
         /// <returns>the next element in the iteration.</returns>
-        List<String> Next();
+        List<string> Next();
 
         /// <summary>
         /// Moves a cursor before the beginning of sequence.
@@ -32,6 +31,6 @@
         /// Returns current element
         /// </summary>
         /// <returns>current element</returns>
-        List<String> Current();
+        List<string> Current();
     }
 }

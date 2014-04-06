@@ -11,14 +11,13 @@
     /// </summary>
     public class FrequencyDictionary
     {
-        protected Dictionary<String, List<int>> Words = new Dictionary<String, List<int>>();
-
+        private Dictionary<string, List<int>> words = new Dictionary<string, List<int>>();
 
         public FrequencyDictionary()
         {
         }
 
-        public FrequencyDictionary(String str)
+        public FrequencyDictionary(string str)
         {
             this.Fill(str);
         }
@@ -29,10 +28,33 @@
         }
 
         /// <summary>
+        /// Returns the number of words in this FrequencyDictionary.
+        /// </summary>
+        /// <returns>the number of words in this FrequencyDictionary.</returns>
+        public int Count
+        {
+            get { return this.words.Count; }
+        }
+
+        /// <summary>
+        /// Returns the list of positions to which the specified word is mapped, or null
+        /// if this FrequencyDictionary contains no mapping for the word.
+        /// </summary>
+        /// <param name="str">the word whose associated the list of positions is to be returned</param>
+        /// <returns>
+        /// the list of positions to which the specified word is mapped, or null
+        /// if this FrequencyDictionary contains no mapping for the word
+        /// </returns>
+        public List<int> this[string str]
+        {
+            get { return new List<int>(this.words[str]); }
+        }
+
+        /// <summary>
         /// Extracts new chars and their places of occurrence from a current char sequence
         /// </summary>
         /// <param name="str">the current char sequence</param>
-        public void Fill(String str)
+        public void Fill(string str)
         {
             this.Clear();
             for (int index = 0; index < str.Length; index++)
@@ -60,12 +82,12 @@
         /// <returns>a list of all words positions</returns>
         public List<List<int>> GetWordsPositions()
         {
-            return new List<List<int>>(this.Words.Values);
+            return new List<List<int>>(this.words.Values);
         }
 
-        public List<KeyValuePair<String, List<int>>> SortByPower()
+        public List<KeyValuePair<string, List<int>>> SortByPower()
         {
-            List<KeyValuePair<String, List<int>>> list = new List<KeyValuePair<String, List<int>>>(this.Words);
+            List<KeyValuePair<string, List<int>>> list = new List<KeyValuePair<string, List<int>>>(this.words);
             list.Sort(
                 delegate(KeyValuePair<string, List<int>> firstPair,
                          KeyValuePair<string, List<int>> nextPair)
@@ -82,11 +104,14 @@
         /// Be careful! The new word can not be added to the end of the list as the data are hashed
         /// </summary>
         /// <returns>a list of words of this FrequencyDictionary.</returns>
-        public List<String> GetWords()
+        public List<string> GetWords()
         {
-            if (this.Words.Count == 0) return new List<String>();
-            return new List<String>(this.Words.Keys);
+            if (this.words.Count == 0)
+            {
+                return new List<string>();
+            }
 
+            return new List<string>(this.words.Keys);
         }
 
         /// <summary>
@@ -94,9 +119,9 @@
         /// </summary>
         /// <param name="index">a specified cursorPosition of word</param>
         /// <returns>the word to the index at a given</returns>
-        public String GetWord(int index)
+        public string GetWord(int index)
         {
-            String str = "";
+            string str = string.Empty;
             try
             {
                 str = this.GetWords()[index];
@@ -113,22 +138,23 @@
         /// </summary>
         /// <param name="str">a new word</param>
         /// <param name="pos">a cursorPosition of the word in the sequence</param>
-        public void Put(String str, int pos)
+        public void Put(string str, int pos)
         {
             try
             {
-                if (String.IsNullOrEmpty(str))
+                if (string.IsNullOrEmpty(str))
                 {
                     return;
                 }
-                if (!this.Words.ContainsKey(str))
+
+                if (!this.words.ContainsKey(str))
                 {
-                    List<int> wordPositions = new List<int> {pos};
-                    this.Words.Add(str, wordPositions);
+                    List<int> wordPositions = new List<int> { pos };
+                    this.words.Add(str, wordPositions);
                 }
                 else
                 {
-                    List<int> modified = this.Words[str];
+                    List<int> modified = this.words[str];
                     if (!modified.Contains(pos))
                     {
                         modified.Add(pos);
@@ -146,9 +172,9 @@
         /// </summary>
         /// <param name="str">word whose presence in this FrequencyDictionary is to be tested</param>
         /// <returns>true if this FrequencyDictionary contains the specified word</returns>
-        public bool Contains(String str)
+        public bool Contains(string str)
         {
-            return this.Words.ContainsKey(str);
+            return this.words.ContainsKey(str);
         }
 
         /// <summary>
@@ -160,23 +186,9 @@
         /// whose presence in this FrequencyDictionary is to be tested
         /// </param>
         /// <returns>true if this FrequencyDictionary contains the specified word</returns>
-        public bool Contains(List<String> str)
+        public bool Contains(List<string> str)
         {
-            return this.Words.ContainsKey(Helper.ToString(str));
-        }
-
-        /// <summary>
-        /// Returns the list of positions to which the specified word is mapped, or null
-        /// if this FrequencyDictionary contains no mapping for the word.
-        /// </summary>
-        /// <param name="str">the word whose associated the list of positions is to be returned</param>
-        /// <returns>
-        /// the list of positions to which the specified word is mapped, or null
-        /// if this FrequencyDictionary contains no mapping for the word
-        /// </returns>
-        public List<int> this[String str]
-        {
-            get { return new List<int>(this.Words[str]); }
+            return this.words.ContainsKey(Helper.ToString(str));
         }
 
         /// <summary>
@@ -184,11 +196,11 @@
         /// This method does nothing if the key is not in the FrequencyDictionary.
         /// </summary>
         /// <param name="str">the word that needs to be removed</param>
-        public void Remove(String str)
+        public void Remove(string str)
         {
             try
             {
-                this.Words.Remove(str);
+                this.words.Remove(str);
             }
             catch (Exception)
             {
@@ -196,20 +208,11 @@
         }
 
         /// <summary>
-        /// Returns the number of words in this FrequencyDictionary.
-        /// </summary>
-        /// <returns>the number of words in this FrequencyDictionary.</returns>
-        public int Count
-        {
-            get { return this.Words.Count; }
-        }
-
-        /// <summary>
         /// Clears this FrequencyDictionary so that it contains no words.
         /// </summary>
         public void Clear()
         {
-            this.Words.Clear();
+            this.words.Clear();
         }
 
         /// <summary>
@@ -217,11 +220,11 @@
         /// </summary>
         /// <param name="str">the new word</param>
         /// <param name="pos">word's positions in the sequence</param>
-        public void Add(String str, List<int> pos)
+        public void Add(string str, List<int> pos)
         {
             try
             {
-                this.Words.Add(str, new List<int>(pos));
+                this.words.Add(str, new List<int>(pos));
             }
             catch (Exception)
             {
@@ -231,9 +234,9 @@
         public FrequencyDictionary Clone()
         {
             FrequencyDictionary alphabet = new FrequencyDictionary();
-            for (IEnumerator<String> e = this.Words.Keys.GetEnumerator(); e.MoveNext();)
+            for (IEnumerator<string> e = this.words.Keys.GetEnumerator(); e.MoveNext();)
             {
-                String word = e.Current;
+                string word = e.Current;
                 List<int> wordPositions = this[word];
                 alphabet.Add(word, new List<int>(wordPositions));
             }
@@ -243,10 +246,17 @@
 
         public bool Equals(FrequencyDictionary obj)
         {
-            if (obj.Count != this.Words.Count) return false;
+            if (obj.Count != this.words.Count)
+            {
+                return false;
+            }
+
             for (int index = 0; index < this.Count; index++)
             {
-                if (!(obj.Contains(this.GetWord(index)))) return false;
+                if (!obj.Contains(this.GetWord(index)))
+                {
+                    return false;
+                }
             }
 
             return true;

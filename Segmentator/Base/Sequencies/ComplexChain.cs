@@ -19,12 +19,12 @@
             }
         }
 
-        public ComplexChain(String sequence)
+        public ComplexChain(string sequence)
             : base(sequence)
         {
         }
 
-        public ComplexChain(List<String> sequence)
+        public ComplexChain(List<string> sequence)
             : base(sequence.Count)
         {
             for (int i = 0; i < sequence.Count; i++)
@@ -33,13 +33,12 @@
             }
         }
 
-
-        public List<String> Substring(int beginIndex, int endIndex)
+        public List<string> Substring(int beginIndex, int endIndex)
         {
-            List<String> sequence = null;
+            List<string> sequence = null;
             try
             {
-                sequence = new List<String>(this.ToList().GetRange(beginIndex, endIndex - beginIndex));
+                sequence = new List<string>(this.ToList().GetRange(beginIndex, endIndex - beginIndex));
             }
             catch (Exception)
             {
@@ -48,13 +47,14 @@
             return sequence;
         }
 
-        public List<String> ToList()
+        public List<string> ToList()
         {
-            List<String> result = new List<string>();
+            List<string> result = new List<string>();
             for (int i = 0; i < this.Length; i++)
             {
                 result.Add(this[i].ToString());
             }
+
             return result;
         } 
 
@@ -67,12 +67,11 @@
             catch (Exception)
             {
             }
-
         }
 
         public new ComplexChain Clone()
         {
-            ComplexChain chain = new ComplexChain(this.ToList()) {Anchor = this.Anchor};
+            ComplexChain chain = new ComplexChain(this.ToList()) { Anchor = this.Anchor };
 
             return chain;
         }
@@ -80,25 +79,35 @@
         public bool Equals(ComplexChain complexChain)
         {
             if (complexChain.Length != this.Length)
+            {
                 return false;
+            }
+
             for (int index = 0; index < complexChain.Length; index++)
             {
                 if (!this[index].ToString().Equals(complexChain[index].ToString()))
+                {
                     return false;
+                }
             }
 
             return true;
         }
 
-        public ComplexChain Concat(String str)
+        public ComplexChain Concat(string str)
         {
-            if (String.IsNullOrEmpty(str)) return this;
+            if (string.IsNullOrEmpty(str))
+            {
+                return this;
+            }
+
             ComplexChain temp = this.Clone();
             this.ClearAndSetNewLength(this.Length + 1);
             for (int i = 0; i < temp.Length; i++)
             {
                 this[i] = temp[i];
             }
+
             this[this.Length - 1] = new ValueString(str);
             return this;
         }
@@ -106,7 +115,10 @@
         public ComplexChain Concat(ComplexChain sequence)
         {
             if (sequence.IsEmpty())
+            {
                 return this;
+            }
+
             ComplexChain temp = this.Clone();
             
             this.ClearAndSetNewLength(this.Length + sequence.Length);
@@ -114,10 +126,12 @@
             {
                 this[i] = temp[i];
             }
+
             for (int j = 0; j < sequence.Length; j++)
             {
                 this[j + temp.Length] = sequence[j];
             }
+
             return this;
         }
 
@@ -133,7 +147,11 @@
         /// <param name="len">count of words cut out</param>
         public void Remove(int pos, int len)
         {
-            if ((pos + len) > (this.Length)) return;
+            if ((pos + len) > this.Length)
+            {
+                return;
+            }
+
             for (int index = pos; index < len + pos; index++)
             {
                 this.DeleteAt(pos);
@@ -150,15 +168,21 @@
             int wordEnd = pos + len;
             StringBuilder temporarySplice = new StringBuilder();
             temporarySplice.Clear();
-            if (wordEnd > this.Length) return;
+            if (wordEnd > this.Length)
+            {
+                return;
+            }
+
             for (int index = pos; index < wordEnd; index++)
             {
                 temporarySplice.Append(this[index]);
             }
+
             for (int i = 0; i < len - 1; i++)
             {
                 this.DeleteAt(pos);
             }
+
             this.Add(new ValueString(temporarySplice.ToString()), pos);
         }
 
@@ -172,7 +196,7 @@
         /// Very fast for long sequence, because there is no index check!
         /// </summary>
         /// <param name="word">list of letters to compose</param>
-        public void JoinAll(List<String> word)
+        public void JoinAll(List<string> word)
         {
             int length = word.Count;
             int index = 0;
@@ -184,6 +208,7 @@
                     {
                         this.Join(index, length);
                     }
+
                     index++;
                 }
                 catch (Exception)

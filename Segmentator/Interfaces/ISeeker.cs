@@ -1,6 +1,5 @@
 ﻿namespace Segmentator.Interfaces
 {
-    using System;
     using System.Collections.Generic;
 
     /// <summary>
@@ -15,6 +14,6 @@
         /// </summary>
         /// <param name="required">searchable word</param>
         /// <returns>number of hits</returns>
-        public abstract int Seek(List<String> required);
+        public abstract int Seek(List<string> required);
     }
 }

@@ -1,7 +1,5 @@
 ﻿namespace Segmentator.Interfaces
 {
-    using System;
-
     /// <summary>
     /// Defines an object name
     /// </summary>
@@ -11,6 +9,6 @@
         /// Returns an object name
         /// </summary>
         /// <returns>an object name</returns>
-        String GetName();
+        string GetName();
     }
 }

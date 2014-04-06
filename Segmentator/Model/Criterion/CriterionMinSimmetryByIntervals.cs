@@ -27,8 +27,9 @@
             for (int index = 0; index < alphabet.Count; index++)
             {
                 int countT = positions[index].Count;
-                taxons += Math.Log(countT)*countT - countT;
+                taxons += (Math.Log(countT) * countT) - countT;
             }
+
             return taxons;
         }
 

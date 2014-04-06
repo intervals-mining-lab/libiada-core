@@ -1,6 +1,5 @@
 ﻿namespace Segmentator.Base.Seekers.Converters
 {
-    using System;
     using System.Collections.Generic;
 
     using Segmentator.Base.Iterators;
@@ -11,11 +10,12 @@
     /// </summary>
     public class SequenceCleaner : Filter
     {
-        public SequenceCleaner(ComplexChain chain):base(chain)
+        public SequenceCleaner(ComplexChain chain)
+            : base(chain)
         {
         }
 
-        public int FilterOut(List<String> sequence)
+        public int FilterOut(List<string> sequence)
         {
             int hits = 0;
             EndIterator iterator;
@@ -23,7 +23,7 @@
 
             while (iterator.HasNext())
             {
-                List<String> temp = iterator.Next();
+                List<string> temp = iterator.Next();
                 bool chainsEquals = sequence.Count == temp.Count;
                 for (int i = 0; i < sequence.Count; i++)
                 {
@@ -32,13 +32,15 @@
                         chainsEquals = false;
                     }
                 }
+
                 if (chainsEquals)
                 {
                     this.Chain.Remove(iterator.Position(), sequence.Count);
                     hits = hits + 1;
                 }
             }
+
             return hits;
-        } 
+        }
     }
 }

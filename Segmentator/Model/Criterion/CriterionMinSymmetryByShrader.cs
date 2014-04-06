@@ -16,20 +16,26 @@
         public CriterionMinSymmetryByShrader(ThresholdVariator threshold, double precision)
             : base(threshold, precision)
         {
-            this.LastDistortion = Double.MaxValue;
+            this.lastDistortion = double.MaxValue;
         }
 
         public override bool State(ComplexChain chain, FrequencyDictionary alphabet)
         {
             double current = this.Symmetry(alphabet);
-            if (this.LastDistortion > current)
+            if (this.lastDistortion > current)
             {
-                this.LastDistortion = current;
-                this.Chain = chain.Clone();
-                this.Alphabet = alphabet.Clone();
+                this.lastDistortion = current;
+                this.chain = chain.Clone();
+                this.alphabet = alphabet.Clone();
                 this.ThresholdToStop.SaveBest();
             }
-            return (this.ThresholdToStop.Distance() > ThresholdVariator.Precision);
+
+            return this.ThresholdToStop.Distance > ThresholdVariator.Precision;
+        }
+
+        public override double Distortion(ComplexChain chain, FrequencyDictionary alphabet)
+        {
+            return -1;
         }
 
         private double Symmetry(FrequencyDictionary alphabet)
@@ -42,27 +48,29 @@
             for (int index = 0; index < alphabet.Count; index++)
             {
                 int countT = positions[index].Count;
-                taxons += Math.Log(countT)*countT - countT;
+                taxons += (Math.Log(countT) * countT) - countT;
                 int arraySize = positions[index].Count;
-                if (arrayMaxLength < (arraySize)) arrayMaxLength = arraySize;
+                if (arrayMaxLength < arraySize)
+                {
+                    arrayMaxLength = arraySize;
+                }
             }
 
             for (int meronIndex = 0, countM = 0; meronIndex < arrayMaxLength; meronIndex++)
             {
                 for (int index = 0; index < alphabet.Count; index++)
                 {
-                    if (positions[index].Count >= meronIndex) countM = countM + 1;
+                    if (positions[index].Count >= meronIndex)
+                    {
+                        countM = countM + 1;
+                    }
                 }
-                merons += Math.Log(countM)*countM - countM;
+
+                merons += (Math.Log(countM) * countM) - countM;
                 countM = 0;
             }
-            return (taxons + merons);
-        }
 
-
-        public override double Distortion(ComplexChain chain, FrequencyDictionary alphabet)
-        {
-            return -1;
+            return taxons + merons;
         }
     }
 }

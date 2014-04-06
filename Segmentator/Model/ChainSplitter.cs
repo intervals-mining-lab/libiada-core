@@ -8,15 +8,14 @@
     /// </summary>
     public abstract class ChainSplitter
     {
-        protected FrequencyDictionary Alphabet;
-        protected ComplexChain Convoluted;
-
-        public abstract ComplexChain Cut(ContentValues par);
-
+        protected FrequencyDictionary alphabet;
+        protected ComplexChain convoluted;
 
         public FrequencyDictionary FrequencyDictionary
         {
-            get { return this.Alphabet; }
+            get { return this.alphabet; }
         }
+
+        public abstract ComplexChain Cut(ContentValues par);
     }
 }

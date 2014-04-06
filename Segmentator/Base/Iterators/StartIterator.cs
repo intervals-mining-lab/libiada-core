@@ -9,7 +9,7 @@
     /// An iterator shifts its pointer through a chain left to right
     /// until it reach the end of the chain.
     /// </summary>
-    public class StartIterator :BaseIterator
+    public class StartIterator : BaseIterator
     {
         /// <summary>
         /// Initializes a main options of an iterator.
@@ -22,53 +22,49 @@
         {
         }
 
-
         public override bool HasNext()
         {
-            if (this.WindowLength + this.CursorPosition + this.Step > this.Chain.Length) return false;
-            return true;
+            return this.windowLength + this.CursorPosition + this.step <= this.chain.Length;
         }
 
-        public override List<String> Next()
+        public override List<string> Next()
         {
             try
             {
-                this.cursorPosition = this.CursorPosition + this.Step;
-                this.CurrentCut = this.Chain.Substring(this.CursorPosition, this.CursorPosition + this.WindowLength);
+                this.cursorPosition = this.CursorPosition + this.step;
+                this.currentCut = this.chain.Substring(this.CursorPosition, this.CursorPosition + this.windowLength);
             }
             catch (Exception)
             {
             }
 
-            return this.CurrentCut;
+            return this.currentCut;
         }
 
         public override void Reset()
         {
-            this.cursorPosition = -this.Step;
+            this.cursorPosition = -this.step;
         }
-
 
         public override int Position()
         {
             return this.CursorPosition;
         }
 
-
-        public override List<String> Current()
+        public override List<string> Current()
         {
-            return this.CurrentCut;
+            return this.currentCut;
         }
-
 
         public override bool Move(int position)
         {
-            if ((position >= 0) && (this.Chain.Length >= this.WindowLength + position))
+            if ((position >= 0) && (this.chain.Length >= this.windowLength + position))
             {
                 this.cursorPosition = position;
                 return true;
             }
+
             return false;
-        } 
+        }
     }
 }

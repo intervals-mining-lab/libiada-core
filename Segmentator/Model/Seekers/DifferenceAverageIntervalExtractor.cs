@@ -14,19 +14,20 @@
     /// That's the seeker for allocate words with characteristic differences of the arithmetic mean
     /// and geometric mean of the interval
     /// </summary>
-    public class DifferenceAverageIntervalExtractor:WordExtractor
+    public class DifferenceAverageIntervalExtractor : WordExtractor
     {
         public DifferenceAverageIntervalExtractor()
         {
-            this.WordPriority = new Dictionary<Double, KeyValuePair<List<String>, List<int>>>();
+            this.wordPriority = new Dictionary<double, KeyValuePair<List<string>, List<int>>>();
         }
 
         public override sealed KeyValuePair<List<string>, List<int>>? Find(ContentValues par)
         {
             ComplexChain convoluted = (ComplexChain)par.Get(Formalism.GetName(typeof(Formalism), Formalism.Sequence));
-            int windowLen = (int) par.Get(Enum.GetName(typeof(Parameter),Parameter.Window));
-            FrequencyDictionary alphabet = (FrequencyDictionary)par.Get(Formalism.GetName(typeof(Formalism), Formalism.Alphabet));
-            double level = (Double)par.Get(Enum.GetName(typeof(Parameter), Parameter.CurrentThreshold));
+            int windowLen = (int)par.Get(Enum.GetName(typeof(Parameter), Parameter.Window));
+            FrequencyDictionary alphabet =
+                (FrequencyDictionary)par.Get(Formalism.GetName(typeof(Formalism), Formalism.Alphabet));
+            double level = (double)par.Get(Enum.GetName(typeof(Parameter), Parameter.CurrentThreshold));
 
             int scanStep = 1;
             int disp = 0;
@@ -37,8 +38,9 @@
             while (it.HasNext())
             {
                 it.Next();
-                this.FullEntry.Add(it, disp);
+                this.fullEntry.Add(it, disp);
             }
+
             this.CalcStd(convoluted, windowLen);
 
             return this.DiscardCompositeWords(alphabet, level);
@@ -46,17 +48,20 @@
 
         public void CalcStd(ComplexChain convoluted, int windowLen)
         {
-            GeometricMean gAvgInterval = new GeometricMean();
-            ArithmeticMean aAvgInterval = new ArithmeticMean();
+            var geometricMean = new GeometricMean();
+            var arithmeticMean = new ArithmeticMean();
 
-            foreach (KeyValuePair<List<String>, List<int>> accord in this.FullEntry.Entry())
+            foreach (KeyValuePair<List<string>, List<int>> accord in this.fullEntry.Entry())
             {
                 PositionFilter.Filtrate(accord.Value, windowLen);
                 ComplexChain temp = new ComplexChain(accord.Value);
-                double geometric = gAvgInterval.Calculate(temp, convoluted.Anchor);
-                double arithmetic = aAvgInterval.Calculate(temp, convoluted.Anchor);
-                double std = 1 - (1/Math.Abs(arithmetic - geometric));
-                if (!this.WordPriority.ContainsKey(std)) this.WordPriority.Add(std, accord);
+                double geometric = geometricMean.Calculate(temp, convoluted.Anchor);
+                double arithmetic = arithmeticMean.Calculate(temp, convoluted.Anchor);
+                double std = 1 - (1 / Math.Abs(arithmetic - geometric));
+                if (!this.wordPriority.ContainsKey(std))
+                {
+                    this.wordPriority.Add(std, accord);
+                }
             }
         }
     }
