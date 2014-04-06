@@ -2,6 +2,9 @@
 {
     using System.Collections.Generic;
 
+    /// <summary>
+    /// The Iterator interface.
+    /// </summary>
     public interface IIterator
     {
         /// <summary>

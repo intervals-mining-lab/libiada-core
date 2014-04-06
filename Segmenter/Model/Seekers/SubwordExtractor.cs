@@ -10,11 +10,18 @@
     /// </summary>
     public abstract class SubwordExtractor : WordExtractor
     {
+        /// <summary>
+        /// The minus one entry.
+        /// </summary>
         protected DataCollector minusOneEntry = new DataCollector();
+
+        /// <summary>
+        /// The minus two entry.
+        /// </summary>
         protected DataCollector minusTwoEntry = new DataCollector();
 
         /// <summary>
-        /// Do not ask any questions, because it realy very fast and redundant is also to the point
+        /// Do not ask any questions, because it really very fast and redundant is also to the point
         /// Please do learn java performance
         /// </summary>
         /// <param name="it">it only iterator from start</param>

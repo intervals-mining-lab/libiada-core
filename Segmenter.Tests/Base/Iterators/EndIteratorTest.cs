@@ -5,20 +5,32 @@
     using NUnit.Framework;
 
     using Segmenter.Base.Iterators;
-    using Segmenter.Base.Sequencies;
+    using Segmenter.Base.Sequences;
     using Segmenter.Extended;
 
+    /// <summary>
+    /// The end iterator test.
+    /// </summary>
     [TestFixture]
     public class EndIteratorTest
     {
+        /// <summary>
+        /// The complex chain.
+        /// </summary>
         private ComplexChain complexChain;
 
+        /// <summary>
+        /// The set up.
+        /// </summary>
         [SetUp]
         public void SetUp()
         {
             this.complexChain = new ComplexChain("AACAGGTGCCCCTTATTT");
         }
 
+        /// <summary>
+        /// The has next test.
+        /// </summary>
         [Test]
         public void HasNextTest()
         {
@@ -26,7 +38,7 @@
             int step = 1;
             int countSteps = 0;
 
-            EndIterator iterator = new EndIterator(this.complexChain, lengthCut, step);
+            var iterator = new EndIterator(this.complexChain, lengthCut, step);
             while (iterator.HasNext())
             {
                 iterator.Next();
@@ -46,6 +58,9 @@
             Assert.True(countSteps == iterator.MaxShifts);
         }
 
+        /// <summary>
+        /// The next test.
+        /// </summary>
         [Test]
         public void NextTest()
         {
@@ -61,7 +76,7 @@
             int lengthCut = 3;
             int step = 1;
 
-            EndIterator iterator = new EndIterator(this.complexChain, lengthCut, step);
+            var iterator = new EndIterator(this.complexChain, lengthCut, step);
 
             for (int i = iterator.MaxShifts - 1; i >= 0; i--)
             {
@@ -78,6 +93,9 @@
             }
         }
 
+        /// <summary>
+        /// The reset test.
+        /// </summary>
         [Test]
         public void ResetTest()
         {
@@ -85,7 +103,7 @@
             int step = 1;
             int index = 0;
             int position = 6;
-            List<string> list1 = new List<string>
+            var list1 = new List<string>
                 {
                     "ABABAB",
                     "ABATAT",
@@ -95,8 +113,8 @@
                     "ABABAB",
                     "ABABAB"
                 };
-            ComplexChain chain = new ComplexChain(list1);
-            EndIterator iterator = new EndIterator(chain, lengthCut, step);
+            var chain = new ComplexChain(list1);
+            var iterator = new EndIterator(chain, lengthCut, step);
             while (iterator.HasNext())
             {
                 iterator.Next();
@@ -108,6 +126,9 @@
             Assert.True(iterator.Position() == position);
         }
 
+        /// <summary>
+        /// The get max shifts test.
+        /// </summary>
         [Test]
         public void GetMaxShiftsTest()
         {
@@ -118,13 +139,16 @@
             Assert.True(iterator.MaxShifts == maxShifts);
         }
 
+        /// <summary>
+        /// The move test.
+        /// </summary>
         [Test]
         public void MoveTest()
         {
             int len = 2;
             int step = 1;
             int from = 1, to = 3;
-            List<string> list1 = new List<string>
+            var list1 = new List<string>
                 {
                     "ABABAB",
                     "ABATAT",
@@ -135,8 +159,8 @@
                     "ABABAB"
                 };
             List<string> list = list1.GetRange(@from, to - @from);
-            ComplexChain chain = new ComplexChain(list1);
-            EndIterator iterator = new EndIterator(chain, len, step);
+            var chain = new ComplexChain(list1);
+            var iterator = new EndIterator(chain, len, step);
             iterator.Move(2);
             List<string> result = iterator.Next();
             for (int i = 0; i < list.Count; i++)

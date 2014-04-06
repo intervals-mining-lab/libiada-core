@@ -6,19 +6,31 @@
 
     using Segmenter.Base.Iterators;
     using Segmenter.Base.Seekers;
-    using Segmenter.Base.Sequencies;
+    using Segmenter.Base.Sequences;
 
+    /// <summary>
+    /// The seeker test.
+    /// </summary>
     [TestFixture]
     public class SeekerTest
     {
+        /// <summary>
+        /// The chain.
+        /// </summary>
         private ComplexChain chain;
 
+        /// <summary>
+        /// The set up.
+        /// </summary>
         [SetUp]
         public void SetUp()
         {
             this.chain = new ComplexChain("AACAGGTGCCCCTTATTT");
         }
 
+        /// <summary>
+        /// The seek test.
+        /// </summary>
         [Test]
         public void SeekTest()
         {
@@ -29,7 +41,7 @@
             string required3 = "T";
             string required4 = "G";
 
-            Seeker seek = new Seeker(new StartIterator(this.chain, length, step));
+            var seek = new Seeker(new StartIterator(this.chain, length, step));
             seek.Seek(new List<string> { required1 });
             Assert.True(seek.Arrangement.Count == 4);
 
@@ -43,6 +55,9 @@
             Assert.True(seek.Arrangement.Count == 3);
         }
 
+        /// <summary>
+        /// The seek two test.
+        /// </summary>
         [Test]
         public void SeekTwoTest()
         {
@@ -51,9 +66,9 @@
             string required1 = "AA";
             string required2 = "C";
             string required3 = "TTA";
-            List<string> list = new List<string> { "AA", "AAAT", "AJJTTA" };
+            var list = new List<string> { "AA", "AAAT", "AJJTTA" };
 
-            Seeker seek = new Seeker(new StartIterator(new ComplexChain(list), length, step));
+            var seek = new Seeker(new StartIterator(new ComplexChain(list), length, step));
             seek.Seek(new List<string> { required1 });
             Assert.True(seek.Arrangement.Count == 1);
 
@@ -64,13 +79,16 @@
             Assert.True(seek.Arrangement.Count == 0);
         }
 
+        /// <summary>
+        /// The get match test.
+        /// </summary>
         [Test]
         public void GetMatchTest()
         {
             int length = 1;
             int step = 1;
             string required1 = "A";
-            Seeker seek = new Seeker(new StartIterator(this.chain, length, step));
+            var seek = new Seeker(new StartIterator(this.chain, length, step));
             seek.Seek(new List<string> { required1 });
             Assert.True(seek.Arrangement.Count == 4);
         }

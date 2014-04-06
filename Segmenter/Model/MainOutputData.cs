@@ -5,35 +5,79 @@
     using LibiadaCore.Core;
 
     using Segmenter.Base.Collectors;
-    using Segmenter.Base.Sequencies;
+    using Segmenter.Base.Sequences;
     using Segmenter.Interfaces;
 
+    /// <summary>
+    /// The main output data.
+    /// </summary>
     public class MainOutputData
     {
+        /// <summary>
+        /// The chain.
+        /// </summary>
         private ComplexChain chain;
+
+        /// <summary>
+        /// The alphabet.
+        /// </summary>
         private FrequencyDictionary alphabet;
+
+        /// <summary>
+        /// The parameters.
+        /// </summary>
         private Dictionary<string, string> parameters = new Dictionary<string, string>();
 
+        /// <summary>
+        /// The get chain.
+        /// </summary>
+        /// <returns>
+        /// The <see cref="Chain"/>.
+        /// </returns>
         public Chain GetChain()
         {
             return this.chain;
         }
 
+        /// <summary>
+        /// The set chain.
+        /// </summary>
+        /// <param name="chain">
+        /// The chain.
+        /// </param>
         public void SetChain(ComplexChain chain)
         {
             this.chain = chain;
         }
 
+        /// <summary>
+        /// The get frequency dictionary.
+        /// </summary>
+        /// <returns>
+        /// The <see cref="FrequencyDictionary"/>.
+        /// </returns>
         public FrequencyDictionary GetFrequencyDictionary()
         {
             return this.alphabet;
         }
 
+        /// <summary>
+        /// The set frequency dictionary.
+        /// </summary>
+        /// <param name="alphabet">
+        /// The alphabet.
+        /// </param>
         public void SetFrequencyDictionary(FrequencyDictionary alphabet)
         {
             this.alphabet = alphabet;
         }
 
+        /// <summary>
+        /// The get parameters.
+        /// </summary>
+        /// <returns>
+        /// The <see cref="Dictionary"/>.
+        /// </returns>
         public Dictionary<string, string> GetParameters()
         {
             return this.parameters;

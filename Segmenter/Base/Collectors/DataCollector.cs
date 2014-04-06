@@ -9,23 +9,47 @@
     /// </summary>
     public class DataCollector
     {
+        /// <summary>
+        /// The dictionary.
+        /// </summary>
         private Dictionary<List<string>, List<int>> dictionary = new Dictionary<List<string>, List<int>>();
 
-        public void Add(StartIterator iterator, int disp)
+        /// <summary>
+        /// The add.
+        /// </summary>
+        /// <param name="iterator">
+        /// The iterator.
+        /// </param>
+        /// <param name="step">
+        /// The step.
+        /// </param>
+        public void Add(StartIterator iterator, int step)
         {
             List<string> str = iterator.Current();
             int position = iterator.Position();
-            this.Add(str, position, disp);
+            this.Add(str, position, step);
         }
 
-        public void Add(List<string> accord, int position, int disp)
+        /// <summary>
+        /// The add.
+        /// </summary>
+        /// <param name="accord">
+        /// The accord.
+        /// </param>
+        /// <param name="position">
+        /// The position.
+        /// </param>
+        /// <param name="step">
+        /// The step.
+        /// </param>
+        public void Add(List<string> accord, int position, int step)
         {
             if (!this.dictionary.ContainsKey(accord))
             {
                 this.dictionary.Add(accord, new List<int>());
             }
 
-            this.dictionary[accord].Add(position + disp);
+            this.dictionary[accord].Add(position + step);
         }
 
         /// <summary>
@@ -39,9 +63,11 @@
         }
 
         /// <summary>
-        /// Возвращает все вхождения из списка
+        /// Возвращает все вхождения из списка.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>
+        /// The <see cref="Dictionary"/>.
+        /// </returns>
         public Dictionary<List<string>, List<int>> Entry()
         {
             return new Dictionary<List<string>, List<int>>(this.dictionary);

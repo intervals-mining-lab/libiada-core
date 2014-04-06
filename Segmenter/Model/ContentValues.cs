@@ -11,7 +11,7 @@
     using Segmenter.Interfaces;
 
     /// <summary>
-    /// Contains any params for segmentation
+    /// Contains any parameters for segmentation.
     /// </summary>
     public class ContentValues : Dictionary<string, object>
     {
@@ -51,16 +51,31 @@
         {
         }
 
-        public override bool Equals(object obj)
+        /// <summary>
+        /// The equals.
+        /// </summary>
+        /// <param name="other">
+        /// The othet object.
+        /// </param>
+        /// <returns>
+        /// The <see cref="bool"/>.
+        /// </returns>
+        public override bool Equals(object other)
         {
-            if (!(obj is ContentValues))
+            if (!(other is ContentValues))
             {
                 return false;
             }
 
-            return this.Values.Equals(((ContentValues)obj).Values);
+            return this.Values.Equals(((ContentValues)other).Values);
         }
 
+        /// <summary>
+        /// The get hash code.
+        /// </summary>
+        /// <returns>
+        /// The <see cref="int"/>.
+        /// </returns>
         public override int GetHashCode()
         {
             return this.Values.GetHashCode();
@@ -235,16 +250,6 @@
         }
 
         /// <summary>
-        /// Returns true if this object has the named value.
-        /// </summary>
-        /// <param name="key">the value to check for</param>
-        /// <returns>true if the value is present, false otherwise</returns>
-        public new bool ContainsKey(string key)
-        {
-            return this.ContainsKey(key);
-        }
-
-        /// <summary>
         /// Gets a value. Valid value types are string, Boolean, and
         /// int implementations.
         /// </summary>
@@ -255,9 +260,18 @@
             return this[key];
         }
 
-        public object Get(IIdentifiable param)
+        /// <summary>
+        /// The get.
+        /// </summary>
+        /// <param name="parameters">
+        /// The parameters.
+        /// </param>
+        /// <returns>
+        /// The <see cref="object"/>.
+        /// </returns>
+        public object Get(IIdentifiable parameters)
         {
-            return this[param.GetName()];
+            return this[parameters.GetName()];
         }
 
         /// <summary>
@@ -455,17 +469,24 @@
         /// <returns>a set of all of the keys and values</returns>
         public Dictionary<string, object> ValueSet()
         {
-            Dictionary<string, object> result = new Dictionary<string, object>();
+            var result = new Dictionary<string, object>();
             foreach (KeyValuePair<string, object> keyValuePair in this)
             {
                 result.Add(keyValuePair.Key, keyValuePair.Value);
             }
+
             return result;
         }
 
+        /// <summary>
+        /// The to string.
+        /// </summary>
+        /// <returns>
+        /// The <see cref="string"/>.
+        /// </returns>
         public override string ToString()
         {
-            StringBuilder sb = new StringBuilder();
+            var sb = new StringBuilder();
             foreach (string name in this.Keys)
             {
                 string value = this.GetAsstring(name);

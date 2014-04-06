@@ -6,20 +6,36 @@
     /// </summary>
     public class ThresholdDichotomous : ThresholdVariator
     {
+        /// <summary>
+        /// The last distortion.
+        /// </summary>
         private double lastDistortion = double.MaxValue;
 
         /// <summary>
-        /// 
+        /// Initializes a new instance of the <see cref="ThresholdDichotomous"/> class.
         /// </summary>
-        /// <param name="leftBound">the left bound of threshold</param>
-        /// <param name="rightBound">the right bound of threshold</param>
+        /// <param name="leftBound">
+        /// The left bound of threshold.
+        /// </param>
+        /// <param name="rightBound">
+        /// The right bound of threshold.
+        /// </param>
         public ThresholdDichotomous(double leftBound, double rightBound)
             : base(leftBound, rightBound)
         {
             this.current = (rightBound + leftBound) / 2.0;
-            this.best = this.current;
+            this.Value = this.current;
         }
 
+        /// <summary>
+        /// The next.
+        /// </summary>
+        /// <param name="criterion">
+        /// The criterion.
+        /// </param>
+        /// <returns>
+        /// The <see cref="double"/>.
+        /// </returns>
         public override double Next(Criterion.Criterion criterion)
         {
             if (this.rightBound - this.leftBound > Precision)
@@ -27,7 +43,7 @@
                 double criterionDistortion = criterion.Distortion();
                 if (this.lastDistortion > criterionDistortion)
                 {
-                    this.best = this.current;
+                    this.Value = this.current;
                     this.lastDistortion = criterionDistortion;
                 }
 

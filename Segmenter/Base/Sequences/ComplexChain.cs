@@ -1,4 +1,4 @@
-﻿namespace Segmenter.Base.Sequencies
+﻿namespace Segmenter.Base.Sequences
 {
     using System;
     using System.Collections.Generic;
@@ -7,10 +7,22 @@
     using LibiadaCore.Core;
     using LibiadaCore.Core.SimpleTypes;
 
+    /// <summary>
+    /// The complex chain.
+    /// </summary>
     public class ComplexChain : Chain
     {
+        /// <summary>
+        /// The anchor.
+        /// </summary>
         public Link Anchor = Link.Start;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ComplexChain"/> class.
+        /// </summary>
+        /// <param name="accord">
+        /// The accord.
+        /// </param>
         public ComplexChain(List<int> accord)
         {
             for (int i = 0; i < accord.Count; i++)
@@ -19,11 +31,23 @@
             }
         }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ComplexChain"/> class.
+        /// </summary>
+        /// <param name="sequence">
+        /// The sequence.
+        /// </param>
         public ComplexChain(string sequence)
             : base(sequence)
         {
         }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ComplexChain"/> class.
+        /// </summary>
+        /// <param name="sequence">
+        /// The sequence.
+        /// </param>
         public ComplexChain(List<string> sequence)
             : base(sequence.Count)
         {
@@ -33,6 +57,18 @@
             }
         }
 
+        /// <summary>
+        /// The substring.
+        /// </summary>
+        /// <param name="beginIndex">
+        /// The begin index.
+        /// </param>
+        /// <param name="endIndex">
+        /// The end index.
+        /// </param>
+        /// <returns>
+        /// The <see cref="List"/>.
+        /// </returns>
         public List<string> Substring(int beginIndex, int endIndex)
         {
             List<string> sequence = null;
@@ -47,17 +83,29 @@
             return sequence;
         }
 
+        /// <summary>
+        /// The to list.
+        /// </summary>
+        /// <returns>
+        /// The <see cref="List"/>.
+        /// </returns>
         public List<string> ToList()
         {
-            List<string> result = new List<string>();
+            var result = new List<string>();
             for (int i = 0; i < this.Length; i++)
             {
                 result.Add(this[i].ToString());
             }
 
             return result;
-        } 
+        }
 
+        /// <summary>
+        /// The clear at.
+        /// </summary>
+        /// <param name="index">
+        /// The index.
+        /// </param>
         public void ClearAt(int index)
         {
             try
@@ -69,13 +117,28 @@
             }
         }
 
+        /// <summary>
+        /// The clone.
+        /// </summary>
+        /// <returns>
+        /// The <see cref="ComplexChain"/>.
+        /// </returns>
         public new ComplexChain Clone()
         {
-            ComplexChain chain = new ComplexChain(this.ToList()) { Anchor = this.Anchor };
+            var chain = new ComplexChain(this.ToList()) { Anchor = this.Anchor };
 
             return chain;
         }
 
+        /// <summary>
+        /// The equals.
+        /// </summary>
+        /// <param name="complexChain">
+        /// The complex chain.
+        /// </param>
+        /// <returns>
+        /// The <see cref="bool"/>.
+        /// </returns>
         public bool Equals(ComplexChain complexChain)
         {
             if (complexChain.Length != this.Length)
@@ -94,6 +157,15 @@
             return true;
         }
 
+        /// <summary>
+        /// The concat.
+        /// </summary>
+        /// <param name="str">
+        /// The string.
+        /// </param>
+        /// <returns>
+        /// The <see cref="ComplexChain"/>.
+        /// </returns>
         public ComplexChain Concat(string str)
         {
             if (string.IsNullOrEmpty(str))
@@ -112,6 +184,15 @@
             return this;
         }
 
+        /// <summary>
+        /// The concat.
+        /// </summary>
+        /// <param name="sequence">
+        /// The sequence.
+        /// </param>
+        /// <returns>
+        /// The <see cref="ComplexChain"/>.
+        /// </returns>
         public ComplexChain Concat(ComplexChain sequence)
         {
             if (sequence.IsEmpty())
@@ -135,15 +216,21 @@
             return this;
         }
 
+        /// <summary>
+        /// The is empty.
+        /// </summary>
+        /// <returns>
+        /// The <see cref="bool"/>.
+        /// </returns>
         public bool IsEmpty()
         {
             return this.Length == 0;
         }
 
         /// <summary>
-        /// Cuts a range of words from pos to pos + len cursorPosition
+        /// Cuts a range of words from position to position + len cursorPosition
         /// </summary>
-        /// <param name="pos">start cursorPosition</param>
+        /// <param name="pos">start cursor position</param>
         /// <param name="len">count of words cut out</param>
         public void Remove(int pos, int len)
         {
@@ -166,7 +253,7 @@
         public void Join(int pos, int len)
         {
             int wordEnd = pos + len;
-            StringBuilder temporarySplice = new StringBuilder();
+            var temporarySplice = new StringBuilder();
             temporarySplice.Clear();
             if (wordEnd > this.Length)
             {
@@ -186,6 +273,12 @@
             this.Add(new ValueString(temporarySplice.ToString()), pos);
         }
 
+        /// <summary>
+        /// The original.
+        /// </summary>
+        /// <returns>
+        /// The <see cref="ComplexChain"/>.
+        /// </returns>
         public ComplexChain Original()
         {
             return new ComplexChain(this.ToString());

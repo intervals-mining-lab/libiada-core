@@ -12,29 +12,44 @@
     /// </summary>
     public abstract class WordExtractor
     {
+        /// <summary>
+        /// The word priority.
+        /// </summary>
         protected Dictionary<double, KeyValuePair<List<string>, List<int>>> wordPriority =
             new Dictionary<double, KeyValuePair<List<string>, List<int>>>();
 
+        /// <summary>
+        /// The full entry.
+        /// </summary>
         protected DataCollector fullEntry = new DataCollector();
 
         /// <summary>
-        /// Finds a word based on current parameters
+        /// Finds a word based on current parameters.
         /// </summary>
-        /// <param name="par">current segmentation parameters</param>
-        /// <returns></returns>
-        public abstract KeyValuePair<List<string>, List<int>>? Find(ContentValues par);
+        /// <param name="parameters">
+        /// The current segmentation parameters.
+        /// </param>
+        /// <returns>
+        /// The <see cref="KeyValuePair"/>.
+        /// </returns>
+        public abstract KeyValuePair<List<string>, List<int>>? Find(ContentValues parameters);
 
         /// <summary>
         /// Discards all words which enter in the alphabet and contains compound words
         /// </summary>
-        /// <param name="alphabet"></param>
-        /// <param name="level">filtrate level</param>
-        /// <returns></returns>
+        /// <param name="alphabet">
+        /// The alphabet.
+        /// </param>
+        /// <param name="level">
+        /// The filter level.
+        /// </param>
+        /// <returns>
+        /// The <see cref="KeyValuePair"/>.
+        /// </returns>
         protected KeyValuePair<List<string>, List<int>>? DiscardCompositeWords(FrequencyDictionary alphabet, double level)
         {
-            List<double> stds = new List<double>(this.wordPriority.Keys);
-            List<KeyValuePair<List<string>, List<int>>> entries =
-                new List<KeyValuePair<List<string>, List<int>>>(this.wordPriority.Values);
+            var stds = new List<double>(this.wordPriority.Keys);
+            var entries = new List<KeyValuePair<List<string>, List<int>>>(this.wordPriority.Values);
             for (int index = entries.Count; --index >= 0;)
             {
                 List<string> entry = entries[index].Key;

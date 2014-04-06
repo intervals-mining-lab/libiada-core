@@ -2,7 +2,7 @@
 {
     using LibiadaCore.Core.SimpleTypes;
 
-    using Segmenter.Base.Sequencies;
+    using Segmenter.Base.Sequences;
 
     /// <summary>
     /// Filters a sequence of signs in compliance with set rules.
@@ -10,10 +10,22 @@
     /// </summary>
     public class Filter
     {
+        /// <summary>
+        /// The chain.
+        /// </summary>
         protected readonly ComplexChain Chain;
 
+        /// <summary>
+        /// The replacement.
+        /// </summary>
         protected string replacement = string.Empty;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Filter"/> class.
+        /// </summary>
+        /// <param name="chain">
+        /// The chain.
+        /// </param>
         public Filter(ComplexChain chain)
         {
             this.Chain = chain.Clone();
@@ -22,7 +34,7 @@
         /// <summary>
         /// Removes all specified entry letters in any word
         /// </summary>
-        /// <param name="str">str specified substring</param>
+        /// <param name="str">specified substring</param>
         /// <returns>number of hints</returns>
         public int FilterOut(string str)
         {
@@ -54,11 +66,29 @@
             return hits;
         }
 
+        /// <summary>
+        /// The get chain.
+        /// </summary>
+        /// <returns>
+        /// The <see cref="ComplexChain"/>.
+        /// </returns>
         public ComplexChain GetChain()
         {
             return this.Chain.Clone();
         }
 
+        /// <summary>
+        /// The hints.
+        /// </summary>
+        /// <param name="len">
+        /// The len.
+        /// </param>
+        /// <param name="str">
+        /// The string.
+        /// </param>
+        /// <returns>
+        /// The <see cref="int"/>.
+        /// </returns>
         private int Hints(int len, string str)
         {
             double per = (len - this.Chain.ToString().Length) / (double)(str.Length - this.replacement.Length);

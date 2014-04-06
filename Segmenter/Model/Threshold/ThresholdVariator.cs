@@ -1,5 +1,7 @@
 ﻿namespace Segmenter.Model.Threshold
 {
+    using System;
+
     using Segmenter.Interfaces;
 
     /// <summary>
@@ -7,30 +9,48 @@
     /// </summary>
     public abstract class ThresholdVariator : IDefinable
     {
+        /// <summary>
+        /// The precision.
+        /// </summary>
         public const double Precision = 0.01;
-        protected double leftBound;
-        protected double rightBound;
-        protected double current;
-        protected double best;
 
         /// <summary>
-        /// 
+        /// The left bound.
         /// </summary>
-        /// <param name="leftBound">the left bound of threshold</param>
-        /// <param name="rightBound">the right bound of threshold</param>
+        protected double leftBound;
+
+        /// <summary>
+        /// The right bound.
+        /// </summary>
+        protected double rightBound;
+
+        /// <summary>
+        /// The current.
+        /// </summary>
+        protected double current;
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ThresholdVariator"/> class.
+        /// </summary>
+        /// <param name="leftBound">
+        /// The left bound of threshold.
+        /// </param>
+        /// <param name="rightBound">
+        /// The right bound of threshold.
+        /// </param>
         public ThresholdVariator(double leftBound, double rightBound)
         {
             this.leftBound = leftBound;
             this.rightBound = rightBound;
         }
 
-        public double Value
-        {
-            get { return this.best; }
-        }
+        /// <summary>
+        /// Gets or sets the value.
+        /// </summary>
+        public double Value { get; protected set; }
 
         /// <summary>
-        /// Returns the difference between the right and left bounds
+        /// Gets the difference between the right and left bounds
         /// </summary>
         /// <returns>the difference between the right and left bounds</returns>
         public double Distance
@@ -50,12 +70,20 @@
         /// </summary>
         public void SaveBest()
         {
-            this.best = this.current;
+            this.Value = this.current;
         }
 
+        /// <summary>
+        /// The get value.
+        /// </summary>
+        /// <returns>
+        /// The <see cref="double"/>.
+        /// </returns>
+        /// <exception cref="NotImplementedException">
+        /// </exception>
         public double GetValue()
         {
-            throw new System.NotImplementedException();
+            throw new NotImplementedException();
         }
     }
 }

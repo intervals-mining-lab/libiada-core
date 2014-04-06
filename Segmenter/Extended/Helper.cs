@@ -24,6 +24,20 @@
             return result.ToString();
         }
 
+        /// <summary>
+        /// The arrays equal.
+        /// </summary>
+        /// <param name="a1">
+        /// The a 1.
+        /// </param>
+        /// <param name="a2">
+        /// The a 2.
+        /// </param>
+        /// <typeparam name="T">
+        /// </typeparam>
+        /// <returns>
+        /// The <see cref="bool"/>.
+        /// </returns>
         public static bool ArraysEqual<T>(T[] a1, T[] a2)
         {
             if (ReferenceEquals(a1, a2))

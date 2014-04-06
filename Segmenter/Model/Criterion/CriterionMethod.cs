@@ -20,7 +20,7 @@
         /// <param name="chainLength">length of whole sequence</param>
         /// <param name="windowLength">length of the scanning window</param>
         /// <returns>Frequency for convoluted or no convoluted chain</returns>
-        public abstract double Frequncy(List<int> std, int chainLength, int windowLength);
+        public abstract double Frequency(List<int> std, int chainLength, int windowLength);
 
         /// <summary>
         /// An estimated characteristic of occurrence of the subject word in the sequence
@@ -30,7 +30,7 @@
         /// <param name="winLen">length of the scanning window</param>
         /// <param name="minusOne">data for "minus one" subword</param>
         /// <param name="mid">data for "minus two" subword</param>
-        /// <returns>disign characteristic of occurence of the word</returns>
+        /// <returns>disign characteristic of occurrence of the word</returns>
         public double DesignExpected(
             List<string> accord,
             int chainLength,
@@ -49,14 +49,14 @@
             double criteria = -1;
             if (winLen == shortWord)
             {
-                criteria = this.Frequncy(left, chainLength, minusLength)
-                           * this.Frequncy(right, chainLength, minusLength);
+                criteria = this.Frequency(left, chainLength, minusLength)
+                           * this.Frequency(right, chainLength, minusLength);
             }
             else if (middle != null)
             {
-                criteria = (this.Frequncy(left, chainLength, minusLength)
-                            * this.Frequncy(right, chainLength, minusLength))
-                           / this.Frequncy(middle, chainLength, midlLength);
+                criteria = (this.Frequency(left, chainLength, minusLength)
+                            * this.Frequency(right, chainLength, minusLength))
+                           / this.Frequency(middle, chainLength, midlLength);
             }   
 
             return criteria;
@@ -70,7 +70,7 @@
         /// <param name="chainLength">length of whole sequence</param>
         /// <param name="winLen">length of the scanning window</param>
         /// <param name="anchor">binding to the chain</param>
-        /// <returns>interval characteristic of occurence of the word</returns>
+        /// <returns>interval characteristic of occurrence of the word</returns>
         public double IntervalEstimate(List<int> stdData, int chainLength, int winLen, Link anchor)
         {
             if (stdData.Count == 0)
@@ -111,7 +111,7 @@
         /// <summary>
         /// Calculates a probability
         /// </summary>
-        /// <param name="count">occurances</param>
+        /// <param name="count">occurences</param>
         /// <param name="chainLen">all events</param>
         /// <returns>probability</returns>
         protected double Probability(int count, int chainLen)

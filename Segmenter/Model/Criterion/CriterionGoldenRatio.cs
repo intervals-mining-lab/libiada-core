@@ -2,9 +2,10 @@
 {
     using System;
     using System.Collections.Generic;
+    using System.Linq;
 
     using Segmenter.Base.Collectors;
-    using Segmenter.Base.Sequencies;
+    using Segmenter.Base.Sequences;
     using Segmenter.Model.Threshold;
 
     /// <summary>
@@ -21,15 +22,27 @@
         public CriterionGoldenRatio(ThresholdVariator threshold, double precision)
             : base(threshold, precision)
         {
-            this.lastDistortion = double.MaxValue;
+            this.Value = double.MaxValue;
         }
 
+        /// <summary>
+        /// The state.
+        /// </summary>
+        /// <param name="chain">
+        /// The chain.
+        /// </param>
+        /// <param name="alphabet">
+        /// The alphabet.
+        /// </param>
+        /// <returns>
+        /// The <see cref="bool"/>.
+        /// </returns>
         public override bool State(ComplexChain chain, FrequencyDictionary alphabet)
         {
             double current = this.Distortion(chain, alphabet);
-            if (this.lastDistortion > current)
+            if (this.Value > current)
             {
-                this.lastDistortion = current;
+                this.Value = current;
                 this.chain = chain.Clone();
                 this.alphabet = alphabet.Clone();
                 this.ThresholdToStop.SaveBest();
@@ -38,6 +51,18 @@
             return this.ThresholdToStop.Distance > ThresholdVariator.Precision;
         }
 
+        /// <summary>
+        /// The distortion.
+        /// </summary>
+        /// <param name="chain">
+        /// The chain.
+        /// </param>
+        /// <param name="alphabet">
+        /// The alphabet.
+        /// </param>
+        /// <returns>
+        /// The <see cref="double"/>.
+        /// </returns>
         public override double Distortion(ComplexChain chain, FrequencyDictionary alphabet)
         {
             double maxFrequency = this.MaxFrequency(alphabet);
@@ -49,6 +74,15 @@
             return Math.Abs(greaterToSmaler - sumToGreater);
         }
 
+        /// <summary>
+        /// The max frequency.
+        /// </summary>
+        /// <param name="alphabet">
+        /// The alphabet.
+        /// </param>
+        /// <returns>
+        /// The <see cref="int"/>.
+        /// </returns>
         private int MaxFrequency(FrequencyDictionary alphabet)
         {
             int max = 0;

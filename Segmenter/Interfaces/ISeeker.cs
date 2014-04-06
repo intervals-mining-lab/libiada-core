@@ -7,6 +7,9 @@
     /// </summary>
     public abstract class Seeker
     {
+        /// <summary>
+        /// The step.
+        /// </summary>
         public static readonly int Step = 1;
 
         /// <summary>

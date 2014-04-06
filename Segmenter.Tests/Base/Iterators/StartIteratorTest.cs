@@ -5,20 +5,32 @@
     using NUnit.Framework;
 
     using Segmenter.Base.Iterators;
-    using Segmenter.Base.Sequencies;
+    using Segmenter.Base.Sequences;
     using Segmenter.Extended;
 
+    /// <summary>
+    /// The start iterator test.
+    /// </summary>
     [TestFixture]
     public class StartIteratorTest
     {
+        /// <summary>
+        /// The chain.
+        /// </summary>
         private ComplexChain chain;
 
+        /// <summary>
+        /// The set up.
+        /// </summary>
         [SetUp]
         public void SetUp()
         {
             this.chain = new ComplexChain("AACAGGTGCCCCTTATTT");
         }
 
+        /// <summary>
+        /// The has next test.
+        /// </summary>
         [Test]
         public void HasNextTest()
         {
@@ -26,7 +38,7 @@
             int step = 1;
             int countSteps = 0;
 
-            StartIterator iterator = new StartIterator(this.chain, lengthCut, step);
+            var iterator = new StartIterator(this.chain, lengthCut, step);
             while (iterator.HasNext())
             {
                 iterator.Next();
@@ -46,6 +58,9 @@
             Assert.True(countSteps == iterator.MaxShifts);
         }
 
+        /// <summary>
+        /// The next test.
+        /// </summary>
         [Test]
         public void NextTest()
         {
@@ -59,7 +74,7 @@
             int lengthCut = 3;
             int step = 1;
 
-            StartIterator iterator = new StartIterator(this.chain, lengthCut, step);
+            var iterator = new StartIterator(this.chain, lengthCut, step);
 
             for (int i = 0; i < iterator.MaxShifts; i++)
             {
@@ -76,12 +91,15 @@
             }
         }
 
+        /// <summary>
+        /// The reset test.
+        /// </summary>
         [Test]
         public void ResetTest()
         {
             int length = 2;
             int step = 1;
-            StartIterator iterator = new StartIterator(this.chain, length, step);
+            var iterator = new StartIterator(this.chain, length, step);
             if (iterator.Move(3))
             {
                 iterator.Reset();
@@ -90,13 +108,16 @@
             Assert.True(iterator.CursorPosition == -step);
         }
 
+        /// <summary>
+        /// The move test.
+        /// </summary>
         [Test]
         public void MoveTest()
         {
             int length = 2;
             int step = 1;
             int position = 3;
-            StartIterator iterator = new StartIterator(this.chain, length, step);
+            var iterator = new StartIterator(this.chain, length, step);
             iterator.Move(position);
             Assert.True(iterator.CursorPosition == position);
 
@@ -122,22 +143,28 @@
             Assert.AreEqual(triple, Helper.ToString(iterator.Current()));
         }
 
+        /// <summary>
+        /// The get max shifts test.
+        /// </summary>
         [Test]
         public void GetMaxShiftsTest()
         {
             int lengthCut = 3;
             int step = 1;
             int maxShifts = 16;
-            StartIterator iterator = new StartIterator(this.chain, lengthCut, step);
+            var iterator = new StartIterator(this.chain, lengthCut, step);
             Assert.True(iterator.MaxShifts == maxShifts);
         }
 
+        /// <summary>
+        /// The get position test.
+        /// </summary>
         [Test]
         public void GetPositionTest()
         {
             int lengthCut = 2;
             int step = 1;
-            StartIterator iterator = new StartIterator(this.chain, lengthCut, step);
+            var iterator = new StartIterator(this.chain, lengthCut, step);
             iterator.Next();
             Assert.True(iterator.CursorPosition == 0);
             iterator.Next();

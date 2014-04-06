@@ -60,7 +60,7 @@
     <Compile Include="Base\Seekers\Converters\FilterTest.cs" />
     <Compile Include="Base\Seekers\SeekerSequenceTest.cs" />
     <Compile Include="Base\Seekers\SeekerTest.cs" />
-    <Compile Include="Base\Sequencies\ComplexChainTest.cs" />
+    <Compile Include="Base\Sequences\ComplexChainTest.cs" />
     <Compile Include="Model\Threshold\ThresholdLinearTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

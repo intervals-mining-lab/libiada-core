@@ -58,7 +58,7 @@
     <Compile Include="Base\Seekers\Converters\SequenceCleaner.cs" />
     <Compile Include="Base\Seekers\Seeker.cs" />
     <Compile Include="Base\Seekers\SeekerSequence.cs" />
-    <Compile Include="Base\Sequencies\ComplexChain.cs" />
+    <Compile Include="Base\Sequences\ComplexChain.cs" />
     <Compile Include="Extended\Helper.cs" />
     <Compile Include="Interfaces\IDefinable.cs" />
     <Compile Include="Interfaces\IIdentifiable.cs" />
@@ -77,7 +77,7 @@
     <Compile Include="Model\Criterion\CriterionGoldenRatio.cs" />
     <Compile Include="Model\Criterion\CriterionMethod.cs" />
     <Compile Include="Model\Criterion\CriterionMinimumRegularity.cs" />
-    <Compile Include="Model\Criterion\CriterionMinSimmetryByIntervals.cs" />
+    <Compile Include="Model\Criterion\CriterionMinSymmetryByIntervals.cs" />
     <Compile Include="Model\Criterion\CriterionMinSymmetryByShrader.cs" />
     <Compile Include="Model\Criterion\CriterionPartialOrlov.cs" />
     <Compile Include="Model\Criterion\CriterionShrederByWords.cs" />

@@ -3,18 +3,33 @@
     using System.Collections.Generic;
 
     using Segmenter.Base.Iterators;
-    using Segmenter.Base.Sequencies;
+    using Segmenter.Base.Sequences;
 
     /// <summary>
     /// Removes all occupancies of sequence
     /// </summary>
     public class SequenceCleaner : Filter
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="SequenceCleaner"/> class.
+        /// </summary>
+        /// <param name="chain">
+        /// The chain.
+        /// </param>
         public SequenceCleaner(ComplexChain chain)
             : base(chain)
         {
         }
 
+        /// <summary>
+        /// The filter out.
+        /// </summary>
+        /// <param name="sequence">
+        /// The sequence.
+        /// </param>
+        /// <returns>
+        /// The <see cref="int"/>.
+        /// </returns>
         public int FilterOut(List<string> sequence)
         {
             int hits = 0;

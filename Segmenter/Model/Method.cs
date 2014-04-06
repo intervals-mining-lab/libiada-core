@@ -7,7 +7,14 @@
     /// </summary>
     public enum Method
     {
+        /// <summary>
+        /// The convoluted.
+        /// </summary>
         Convoluted,
+
+        /// <summary>
+        /// The not convoluted.
+        /// </summary>
         NotConvoluted
     }
 }

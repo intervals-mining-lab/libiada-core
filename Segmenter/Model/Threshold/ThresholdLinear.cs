@@ -8,14 +8,25 @@
     /// </summary>
     public sealed class ThresholdLinear : ThresholdVariator
     {
+        /// <summary>
+        /// The step.
+        /// </summary>
         private readonly double step;
 
         /// <summary>
-        /// 
+        /// Initializes a new instance of the <see cref="ThresholdLinear"/> class.
         /// </summary>
-        /// <param name="leftBound">the left bound of threshold</param>
-        /// <param name="rightBound">the right bound of threshold</param>
-        /// <param name="step">a value which threshold will be changed</param>
+        /// <param name="leftBound">
+        /// The left bound of threshold.
+        /// </param>
+        /// <param name="rightBound">
+        /// The right bound of threshold.
+        /// </param>
+        /// <param name="step">
+        /// The step.
+        /// </param>
+        /// <exception cref="Exception">
+        /// </exception>
         public ThresholdLinear(double leftBound, double rightBound, double step)
             : base(leftBound, rightBound)
         {
@@ -34,6 +45,15 @@
             this.current = this.rightBound;
         }
 
+        /// <summary>
+        /// The next.
+        /// </summary>
+        /// <param name="criterion">
+        /// The criterion.
+        /// </param>
+        /// <returns>
+        /// The <see cref="double"/>.
+        /// </returns>
         public override double Next(Criterion.Criterion criterion)
         {
             if (this.current > this.leftBound)

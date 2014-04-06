@@ -1,9 +1,11 @@
 ﻿namespace Segmenter.Model.Criterion
 {
+    using System;
+
     using LibiadaCore.Core.Characteristics;
 
     using Segmenter.Base.Collectors;
-    using Segmenter.Base.Sequencies;
+    using Segmenter.Base.Sequences;
     using Segmenter.Interfaces;
     using Segmenter.Model.Threshold;
 
@@ -13,10 +15,24 @@
     /// </summary>
     public abstract class Criterion : Characteristic, IDefinable
     {
+        /// <summary>
+        /// The threshold to stop.
+        /// </summary>
         protected readonly ThresholdVariator ThresholdToStop;
+
+        /// <summary>
+        /// The precision of difference.
+        /// </summary>
         protected double precisionOfDifference;
-        protected double lastDistortion;
+
+        /// <summary>
+        /// The alphabet.
+        /// </summary>
         protected FrequencyDictionary alphabet;
+
+        /// <summary>
+        /// The chain.
+        /// </summary>
         protected new ComplexChain chain;
 
         /// <summary>
@@ -30,13 +46,13 @@
             this.precisionOfDifference = precision;
         }
 
-        public double Value
-        {
-            get { return this.lastDistortion; }
-        }
+        /// <summary>
+        /// Gets or sets the value.
+        /// </summary>
+        public double Value { get; protected set; }
 
         /// <summary>
-        /// Returns the state of criterion. True, if everithing is done, false - otherwise
+        /// Returns the state of criterion. True, if everything is done, false - otherwise
         /// </summary>
         /// <param name="chain">chain</param>
         /// <param name="alphabet">its alphabet</param>
@@ -44,12 +60,18 @@
         public abstract bool State(ComplexChain chain, FrequencyDictionary alphabet);
 
         /// <summary>
-        /// Returns distortion between necessary and calculated value
-        /// For example between theoretical and practical values
+        /// Returns distortion between necessary and calculated value.
+        /// For example between theoretical and practical values.
         /// </summary>
-        /// <param name="chain"></param>
-        /// <param name="alphabet"></param>
-        /// <returns>distortion</returns>
+        /// <param name="chain">
+        /// The chain.
+        /// </param>
+        /// <param name="alphabet">
+        /// The alphabet.
+        /// </param>
+        /// <returns>
+        /// The <see cref="double"/>.
+        /// </returns>
         public abstract double Distortion(ComplexChain chain, FrequencyDictionary alphabet);
 
         /// <summary>
@@ -73,9 +95,17 @@
             this.alphabet = alphabet;
         }
 
+        /// <summary>
+        /// The get value.
+        /// </summary>
+        /// <returns>
+        /// The <see cref="double"/>.
+        /// </returns>
+        /// <exception cref="NotImplementedException">
+        /// </exception>
         public double GetValue()
         {
-            throw new System.NotImplementedException();
+            throw new NotImplementedException();
         }
     }
 }

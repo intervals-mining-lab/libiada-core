@@ -3,7 +3,7 @@
     using System;
     using System.Collections.Generic;
 
-    using Segmenter.Base.Sequencies;
+    using Segmenter.Base.Sequences;
     using Segmenter.Extended;
 
     /// <summary>
@@ -11,24 +11,42 @@
     /// </summary>
     public class FrequencyDictionary
     {
+        /// <summary>
+        /// The words.
+        /// </summary>
         private Dictionary<string, List<int>> words = new Dictionary<string, List<int>>();
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="FrequencyDictionary"/> class.
+        /// </summary>
         public FrequencyDictionary()
         {
         }
 
-        public FrequencyDictionary(string str)
+        /// <summary>
+        /// Initializes a new instance of the <see cref="FrequencyDictionary"/> class.
+        /// </summary>
+        /// <param name="source">
+        /// The source string.
+        /// </param>
+        public FrequencyDictionary(string source)
         {
-            this.Fill(str);
+            this.Fill(source);
         }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="FrequencyDictionary"/> class.
+        /// </summary>
+        /// <param name="sequence">
+        /// The sequence.
+        /// </param>
         public FrequencyDictionary(ComplexChain sequence)
         {
             this.Fill(sequence);
         }
 
         /// <summary>
-        /// Returns the number of words in this FrequencyDictionary.
+        /// Gets the number of words in this FrequencyDictionary.
         /// </summary>
         /// <returns>the number of words in this FrequencyDictionary.</returns>
         public int Count
@@ -85,15 +103,16 @@
             return new List<List<int>>(this.words.Values);
         }
 
+        /// <summary>
+        /// The sort by power.
+        /// </summary>
+        /// <returns>
+        /// The <see cref="List"/>.
+        /// </returns>
         public List<KeyValuePair<string, List<int>>> SortByPower()
         {
-            List<KeyValuePair<string, List<int>>> list = new List<KeyValuePair<string, List<int>>>(this.words);
-            list.Sort(
-                delegate(KeyValuePair<string, List<int>> firstPair,
-                         KeyValuePair<string, List<int>> nextPair)
-                    {
-                        return firstPair.Value.Count.CompareTo(nextPair.Value.Count);
-                    });
+            var list = new List<KeyValuePair<string, List<int>>>(this.words);
+            list.Sort((firstPair, nextPair) => firstPair.Value.Count.CompareTo(nextPair.Value.Count));
             
             list.Reverse();
             return list;
@@ -149,7 +168,7 @@
 
                 if (!this.words.ContainsKey(str))
                 {
-                    List<int> wordPositions = new List<int> { pos };
+                    var wordPositions = new List<int> { pos };
                     this.words.Add(str, wordPositions);
                 }
                 else
@@ -231,9 +250,15 @@
             }
         }
 
+        /// <summary>
+        /// The clone.
+        /// </summary>
+        /// <returns>
+        /// The <see cref="FrequencyDictionary"/>.
+        /// </returns>
         public FrequencyDictionary Clone()
         {
-            FrequencyDictionary alphabet = new FrequencyDictionary();
+            var alphabet = new FrequencyDictionary();
             for (IEnumerator<string> e = this.words.Keys.GetEnumerator(); e.MoveNext();)
             {
                 string word = e.Current;
@@ -244,16 +269,25 @@
             return alphabet;
         }
 
-        public bool Equals(FrequencyDictionary obj)
+        /// <summary>
+        /// The equals.
+        /// </summary>
+        /// <param name="other">
+        /// The other frequency dictionary.
+        /// </param>
+        /// <returns>
+        /// The <see cref="bool"/>.
+        /// </returns>
+        public bool Equals(FrequencyDictionary other)
         {
-            if (obj.Count != this.words.Count)
+            if (other.Count != this.words.Count)
             {
                 return false;
             }
 
             for (int index = 0; index < this.Count; index++)
             {
-                if (!obj.Contains(this.GetWord(index)))
+                if (!other.Contains(this.GetWord(index)))
                 {
                     return false;
                 }

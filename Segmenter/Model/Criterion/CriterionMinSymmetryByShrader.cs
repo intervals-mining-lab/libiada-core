@@ -4,7 +4,7 @@
     using System.Collections.Generic;
 
     using Segmenter.Base.Collectors;
-    using Segmenter.Base.Sequencies;
+    using Segmenter.Base.Sequences;
     using Segmenter.Model.Threshold;
 
     /// <summary>
@@ -13,18 +13,39 @@
     /// </summary>
     public class CriterionMinSymmetryByShrader : Criterion
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="CriterionMinSymmetryByShrader"/> class.
+        /// </summary>
+        /// <param name="threshold">
+        /// The threshold.
+        /// </param>
+        /// <param name="precision">
+        /// The precision.
+        /// </param>
         public CriterionMinSymmetryByShrader(ThresholdVariator threshold, double precision)
             : base(threshold, precision)
         {
-            this.lastDistortion = double.MaxValue;
+            this.Value = double.MaxValue;
         }
 
+        /// <summary>
+        /// The state.
+        /// </summary>
+        /// <param name="chain">
+        /// The chain.
+        /// </param>
+        /// <param name="alphabet">
+        /// The alphabet.
+        /// </param>
+        /// <returns>
+        /// The <see cref="bool"/>.
+        /// </returns>
         public override bool State(ComplexChain chain, FrequencyDictionary alphabet)
         {
             double current = this.Symmetry(alphabet);
-            if (this.lastDistortion > current)
+            if (this.Value > current)
             {
-                this.lastDistortion = current;
+                this.Value = current;
                 this.chain = chain.Clone();
                 this.alphabet = alphabet.Clone();
                 this.ThresholdToStop.SaveBest();
@@ -33,11 +54,32 @@
             return this.ThresholdToStop.Distance > ThresholdVariator.Precision;
         }
 
+        /// <summary>
+        /// The distortion.
+        /// </summary>
+        /// <param name="chain">
+        /// The chain.
+        /// </param>
+        /// <param name="alphabet">
+        /// The alphabet.
+        /// </param>
+        /// <returns>
+        /// The <see cref="double"/>.
+        /// </returns>
         public override double Distortion(ComplexChain chain, FrequencyDictionary alphabet)
         {
             return -1;
         }
 
+        /// <summary>
+        /// The symmetry.
+        /// </summary>
+        /// <param name="alphabet">
+        /// The alphabet.
+        /// </param>
+        /// <returns>
+        /// The <see cref="double"/>.
+        /// </returns>
         private double Symmetry(FrequencyDictionary alphabet)
         {
             double taxons = 0;
