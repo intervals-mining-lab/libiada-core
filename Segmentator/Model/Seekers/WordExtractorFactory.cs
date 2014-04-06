@@ -16,13 +16,22 @@
                 case 2:
                     return null;
             }
+
             return null;
         }
 
         public static WordExtractor GetSeeker(WordExtractor obj)
         {
-            if (obj is ProbabilityExtractor) return GetSeeker(0);
-            if (obj is DifferenceAverageIntervalExtractor) return GetSeeker(1);
+            if (obj is ProbabilityExtractor)
+            {
+                return GetSeeker(0);
+            }
+
+            if (obj is DifferenceAverageIntervalExtractor)
+            {
+                return GetSeeker(1);
+            }
+
             return null;
         }
     }

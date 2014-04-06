@@ -19,15 +19,24 @@
             {
                 return new List<int>();
             }
+
             int pos = 1;
             int pred = std[0];
 
             while (std.Count > pos)
             {
-                if ((std[pos] - pred) < winLen) std.Remove(pos);
-                else pred = std[pos];
+                if ((std[pos] - pred) < winLen)
+                {
+                    std.Remove(pos);
+                }
+                else
+                {
+                    pred = std[pos];
+                }
+
                 pos++;
             }
+
             return std;
         } 
     }

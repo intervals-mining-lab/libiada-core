@@ -12,7 +12,6 @@
         {
         }
 
-
         public override double Next(Criterion.Criterion criterion)
         {
             return 0;
