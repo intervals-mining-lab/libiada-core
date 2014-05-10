@@ -1,5 +1,6 @@
 ﻿namespace LibiadaCore.Core.Characteristics
 {
+    using System;
     using System.Collections.Generic;
 
     using LibiadaCore.Core.Characteristics.BinaryCalculators;
@@ -81,13 +82,13 @@
         {
             foreach (IBinaryCalculator calculator in List)
             {
-                if ((type == calculator.GetType().ToString()) ||
-                    ("LibiadaCore.Classes.Root.Characteristics.BinaryCalculators." + type == calculator.GetType().ToString()))
+                if (type == calculator.GetType().Name)
                 {
                     return calculator;
                 }
             }
-            return null;
+
+            throw new ArgumentException("Unknown calculator", "type");
         } 
     }
 }

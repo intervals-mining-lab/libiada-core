@@ -1,5 +1,6 @@
 namespace LibiadaCore.Core.Characteristics
 {
+    using System;
     using System.Collections.Generic;
 
     using LibiadaCore.Core.Characteristics.Calculators;
@@ -210,13 +211,13 @@ namespace LibiadaCore.Core.Characteristics
         {
             foreach (ICalculator calculator in List)
             {
-                if ((type == calculator.GetType().ToString()) ||
-                    ("LibiadaCore.Classes.Root.Characteristics.Calculators." + type == calculator.GetType().ToString()))
+                if (type == calculator.GetType().Name)
                 {
                     return calculator;
                 }
             }
-            return null;
+
+            throw new ArgumentException("Unknown calculator", "type");
         }
 
         public static ICalculator Create(CharacteristicsEnum type)
@@ -228,7 +229,8 @@ namespace LibiadaCore.Core.Characteristics
                     return calculator;
                 }
             }
-            return null;
+
+            throw new ArgumentException("Unknown calculator", "type");
         }
     }
 }
