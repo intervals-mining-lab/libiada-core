@@ -152,5 +152,10 @@ namespace LibiadaCore.Core
             var tempCongenericChain = temp as CongenericChain;
             base.FillClone(tempCongenericChain);
         }
+
+        public void SetIntervalManager(CongenericIntervalsManager manager)
+        {
+            intervalsManager = manager;
+        }
     }
 }

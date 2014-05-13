@@ -1,4 +1,6 @@
-﻿namespace LibiadaCore.Core.IntervalsManagers
+﻿using System.Collections.Generic;
+
+namespace LibiadaCore.Core.IntervalsManagers
 {
     using System.Linq;
 
@@ -26,6 +28,14 @@
             int count = this.building.Count(b => b.Equals(1));
             this.intervals = new int[count - 1];
             this.FillIntervals();
+        }
+
+        public CongenericIntervalsManager(Chain chain, int[] intervals, int start, int end)
+        {
+            this.building = chain.Building;
+            this.intervals = intervals;
+            Start = start;
+            End = end;
         }
 
         /// <summary>

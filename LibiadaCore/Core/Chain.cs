@@ -1,3 +1,7 @@
+using System;
+using System.Linq;
+using LibiadaCore.Core.IntervalsManagers;
+
 namespace LibiadaCore.Core
 {
     using System.Collections.Generic;
@@ -27,7 +31,8 @@ namespace LibiadaCore.Core
         /// <param name="length">
         /// The length of chain.
         /// </param>
-        public Chain(int length) : base(length)
+        public Chain(int length)
+            : base(length)
         {
         }
 
@@ -45,7 +50,8 @@ namespace LibiadaCore.Core
         /// <param name="source">
         /// The source string.
         /// </param>
-        public Chain(string source) : base(source)
+        public Chain(string source)
+            : base(source)
         {
         }
 
@@ -60,7 +66,8 @@ namespace LibiadaCore.Core
         /// <param name="alphabet">
         /// The alphabet of chain.
         /// </param>
-        public Chain(int[] building, Alphabet alphabet) : base(building, alphabet)
+        public Chain(int[] building, Alphabet alphabet)
+            : base(building, alphabet)
         {
             this.CreateCongenericChains();
         }
@@ -72,7 +79,8 @@ namespace LibiadaCore.Core
         /// <param name="source">
         /// The source string.
         /// </param>
-        public Chain(List<IBaseObject> source) : base(source)
+        public Chain(List<IBaseObject> source)
+            : base(source)
         {
             this.CreateCongenericChains();
         }
@@ -426,5 +434,38 @@ namespace LibiadaCore.Core
                 this.CongenericChains[this.building[j] - 1][j] = this.alphabet[this.building[j]];
             }
         }
+
+        public void FillIntervalManagers()
+        {
+            int[] occurences = new int[alphabet.Cardinality - 1];
+            for (int i = 0; i < occurences.Length; i++)
+            {
+                occurences[i] = -1;
+            }
+
+            List<int>[] intervals = new List<int>[alphabet.Cardinality - 1];
+
+            for (int i = 0; i < intervals.Length; i++)
+            {
+                intervals[i] = new List<int>();
+            }
+
+            for (int j = 0; j < building.Length; j++)
+            {
+                int value = building[j] - 1;
+                intervals[value].Add(j - occurences[value]);
+                occurences[value] = j;
+            }
+
+            for (int k = 0; k < intervals.Length; k++)
+            {
+                int start = intervals[k][0];
+                intervals[k].RemoveAt(0);
+                int end = building.Length - intervals[k].Last();
+                CongenericChains[k].SetIntervalManager(new CongenericIntervalsManager(this, intervals[k].ToArray(), start, end));
+            }
+
+        }
+
     }
 }
