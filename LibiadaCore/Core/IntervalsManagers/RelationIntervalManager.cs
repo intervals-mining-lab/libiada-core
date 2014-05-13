@@ -21,7 +21,7 @@
                 throw new ArgumentException("Elements indexes are out of range.");
             }
             int count = this.GetPairsCount(firstElement, secondElement);
-            this.Intervals = new int[count - 1];
+            this.intervals = new int[count - 1];
             this.FillIntervals();
         }
 

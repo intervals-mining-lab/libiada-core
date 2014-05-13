@@ -25,9 +25,9 @@
         /// </exception>
         public double Calculate(CongenericChain chain, Link link)
         {
-            List<int> intervals = chain.GetIntervals(link);
+            var intervals = chain.GetIntervals(link);
             double result = 1;
-            for (int i = 0; i < intervals.Count; i++)
+            for (int i = 0; i < intervals.Length; i++)
             {
                 result = result * intervals[i];
             }

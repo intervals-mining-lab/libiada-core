@@ -1,6 +1,7 @@
 ﻿namespace LibiadaCore.Misc
 {
     using System;
+    using System.Collections.Generic;
     using System.Linq;
 
     /// <summary>
@@ -56,9 +57,50 @@
         /// </returns>
         public static int[] AllIndexesOf<T>(T[] source, T element)
         {
-            var indexMap = source.Select((b, i) => b.Equals(element) ? i : -1);
-            var indexes = indexMap.Where(i => i != -1);
-            return indexes.ToArray();
+            var result = new List<int>();
+            for (int i = 0; i < source.Length; i++)
+            {
+                if (source[i].Equals(element))
+                {
+                    result.Add(i);
+                }
+            }
+
+            return result.ToArray();
+
+            // var indexMap = source.Select((b, i) => b.Equals(element) ? i : -1);
+            //var indexes = indexMap.Where(i => i != -1);
+            // return indexes.ToArray();
+        }
+
+        /// <summary>
+        /// Method that finds all occurrences of provided element in array.
+        /// </summary>
+        /// <param name="source">
+        /// Array for search.
+        /// </param>
+        /// <param name="element">
+        /// Element to be located.
+        /// </param>
+        /// <returns>
+        /// The <see cref="Array.int"/>.
+        /// </returns>
+        public static int[] AllIndexesOf(int[] source, int element)
+        {
+            var result = new List<int>();
+            for (int i = 0; i < source.Length; i++)
+            {
+                if (source[i] == element)
+                {
+                    result.Add(i);
+                }
+            }
+
+            return result.ToArray();
+
+            // var indexMap = source.Select((b, i) => b.Equals(element) ? i : -1);
+            //var indexes = indexMap.Where(i => i != -1);
+            // return indexes.ToArray();
         }
     }
 }

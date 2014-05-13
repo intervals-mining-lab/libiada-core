@@ -12,7 +12,7 @@
         /// Gets or sets main intervals block
         /// without start, end or cycle link.
         /// </summary>
-        protected int[] Intervals { get; set; }
+        protected int[] intervals;
 
         /// <summary>
         /// Gets or sets interval from start of chain to first element.
@@ -29,25 +29,55 @@
         /// </summary>
         /// <param name="link">Link of intervals in chain.</param>
         /// <returns>List of intervals.</returns>
-        public List<int> GetIntervals(Link link)
+        public int[] GetIntervals(Link link)
         {
-            var result = new List<int>(this.Intervals);
+            int[] result;// = new List<int>(this.Intervals);
             switch (link)
             {
                 case Link.None:
+                    result = new int[intervals.Length];
+                    for (int i = 0; i < intervals.Length; i++)
+                    {
+                        result[i] = intervals[i];
+                    }
+
                     return result;
                 case Link.Start:
-                    result.Insert(0, this.Start);
+                    result = new int[intervals.Length + 1];
+                    result[0] = Start;
+                    for (int i = 0; i < intervals.Length; i++)
+                    {
+                        result[i + 1] = intervals[i];
+                    }
+
                     return result;
                 case Link.End:
-                    result.Add(this.End);
+                    result = new int[intervals.Length + 1];
+                    for (int i = 0; i < intervals.Length; i++)
+                    {
+                        result[i] = intervals[i];
+                    }
+
+                    result[result.Length - 1] = End;
                     return result;
                 case Link.Both:
-                    result.Insert(0, this.Start);
-                    result.Add(this.End);
+                    result = new int[intervals.Length + 2];
+                    result[0] = Start;
+                    for (int i = 0; i < intervals.Length; i++)
+                    {
+                        result[i + 1] = intervals[i];
+                    }
+
+                    result[result.Length - 1] = End;
                     return result;
                 case Link.Cycle:
-                    result.Add(this.Start + this.End - 1);
+                    result = new int[intervals.Length + 1];
+                    for (int i = 0; i < intervals.Length; i++)
+                    {
+                        result[i] = intervals[i];
+                    }
+
+                    result[result.Length - 1] = Start + End - 1;
                     return result;
                 default:
                     throw new InvalidEnumArgumentException("link", (int)link, typeof(Link));

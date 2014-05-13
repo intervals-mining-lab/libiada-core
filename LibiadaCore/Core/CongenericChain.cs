@@ -96,7 +96,7 @@ namespace LibiadaCore.Core
         /// <returns>
         /// The <see cref="T:List{int}"/>.
         /// </returns>
-        public List<int> GetIntervals(Link link)
+        public int[] GetIntervals(Link link)
         {
             if (this.intervalsManager == null)
             {

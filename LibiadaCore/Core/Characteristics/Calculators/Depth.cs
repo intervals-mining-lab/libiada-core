@@ -25,9 +25,9 @@ namespace LibiadaCore.Core.Characteristics.Calculators
         /// </exception>
         public double Calculate(CongenericChain chain, Link link)
         {
-            List<int> intervals = chain.GetIntervals(link);
+            var intervals = chain.GetIntervals(link);
             double result = 0;
-            for (int i = 0; i < intervals.Count; i++)
+            for (int i = 0; i < intervals.Length; i++)
             {
                 result += Math.Log(intervals[i], 2);
             }

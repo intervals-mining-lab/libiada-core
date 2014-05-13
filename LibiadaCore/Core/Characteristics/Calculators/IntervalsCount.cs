@@ -26,7 +26,7 @@ namespace LibiadaCore.Core.Characteristics.Calculators
         /// </exception>
         public double Calculate(CongenericChain chain, Link link)
         {
-            return chain.GetIntervals(link).Count;
+            return chain.GetIntervals(link).Length;
         }
 
         /// <summary>

@@ -41,7 +41,7 @@
             this.intervalsManager = new CongenericIntervalsManager(this.congenericChains[index]);
             var intervals = this.allIntervals[index][link];
             
-            Assert.AreEqual(this.intervalsManager.GetIntervals(link).Count, intervals.Count);
+            Assert.AreEqual(this.intervalsManager.GetIntervals(link).Length, intervals.Count);
 
             for (int i = 0; i < intervals.Count; i++)
             {

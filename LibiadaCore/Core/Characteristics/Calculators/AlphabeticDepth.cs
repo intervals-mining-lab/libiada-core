@@ -38,9 +38,9 @@
                 throw new InvalidOperationException("Глубина в масштабе алфавита может вычисляться только для полной цепи.");
             }
 
-            List<int> intervals = chain.GetIntervals(link);
+            int[] intervals = chain.GetIntervals(link);
             double result = 0;
-            for (int i = 0; i < intervals.Count; i++)
+            for (int i = 0; i < intervals.Length; i++)
             {
                 result += Math.Log(intervals[i], this.alphabetCardinality);
             }
