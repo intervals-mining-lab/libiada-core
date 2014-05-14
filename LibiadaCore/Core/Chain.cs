@@ -460,8 +460,9 @@ namespace LibiadaCore.Core
             for (int k = 0; k < intervals.Length; k++)
             {
                 int start = intervals[k][0];
-                intervals[k].RemoveAt(0);
                 int end = building.Length - intervals[k].Last();
+                intervals[k].RemoveAt(0);
+                
                 CongenericChains[k].SetIntervalManager(new CongenericIntervalsManager(this, intervals[k].ToArray(), start, end));
             }
 
