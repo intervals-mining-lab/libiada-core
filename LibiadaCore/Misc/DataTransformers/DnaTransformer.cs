@@ -385,7 +385,7 @@
         /// </summary>
         /// <param name="inputChain">Исходная нуклеотидная цепочка</param>
         /// <returns>Цепоччка, состоящая из триплетов</returns>
-        /// <exception cref="Exception">Допустимая мощность алфавита - 4</exception>
+        /// <exception cref="Exception">Допустимая мощность алфавита - не больше 4</exception>
         public static BaseChain EncodeTriplets(BaseChain inputChain)
         {
             if (inputChain.Alphabet.Cardinality > 4)
@@ -396,7 +396,7 @@
             var resultLength = (int)Math.Floor((double)inputChain.Length / 3);
             var outChain = new BaseChain(resultLength);
 
-            for (int i = 0; i < inputChain.Length; i += 3)
+            for (int i = 0; i < resultLength * 3; i += 3)
             {
                 outChain[i / 3] = new ValueString(inputChain[i].ToString() + inputChain[i + 1] + inputChain[i + 2]);
             }
