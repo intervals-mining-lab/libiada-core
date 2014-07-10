@@ -8,7 +8,7 @@
     /// <summary>
     /// The binary calculators factory.
     /// </summary>
-    public class BinaryCalculatorsFactory
+    public static class BinaryCalculatorsFactory
     {
         /// <summary>
         /// Среднегеометрическая удалённость между парой элементов.

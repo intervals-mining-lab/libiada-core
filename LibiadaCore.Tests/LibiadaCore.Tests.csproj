@@ -52,7 +52,6 @@
   <ItemGroup>
     <Compile Include="Core\Characteristics\Calculators\AlphabeticAverageRemotenessTests.cs" />
     <Compile Include="Core\Characteristics\Calculators\AlphabeticDepthTests.cs" />
-    <Compile Include="Core\Characteristics\Calculators\AverageWordLengthTests.cs" />
     <Compile Include="Misc\DataTransformers\DnaTransformerTests.cs" />
     <Compile Include="Misc\Iterators\CutRuleWithShiftedAndFixedStartTests.cs" />
     <Compile Include="Misc\Iterators\DiffCutterTests.cs" />
