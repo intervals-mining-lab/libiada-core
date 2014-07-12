@@ -123,6 +123,11 @@ namespace LibiadaCore.Core.Characteristics
         /// <summary>
         /// Удалённость в масштабе алфавита.
         /// </summary>
-        AlphabeticAverageRemoteness
+        AlphabeticAverageRemoteness,
+
+        /// <summary>
+        /// Дисперсия средней удаленности.
+        /// </summary>
+        AverageRemotenessDispersion
     }
 }

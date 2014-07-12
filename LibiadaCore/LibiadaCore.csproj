@@ -44,6 +44,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Core\Characteristics\Calculators\AverageRemotenessDispersion.cs" />
     <Compile Include="Misc\ArrayManipulator.cs" />
     <Compile Include="Misc\DataTransformers\DnaTransformer.cs" />
     <Compile Include="Misc\DissimilarChainFactory.cs" />
