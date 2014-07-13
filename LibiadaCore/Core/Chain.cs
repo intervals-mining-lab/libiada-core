@@ -335,53 +335,6 @@ namespace LibiadaCore.Core
         }
 
         /// <summary>
-        /// Deletes element in provided position.
-        /// </summary>
-        /// <param name="index">
-        /// The index.
-        /// </param>
-        /// <returns>
-        /// Deleted element.
-        /// </returns>
-        public IBaseObject DeleteAt(int index)
-        {
-            IBaseObject element = this.alphabet[this.building[index]];
-            ICalculator calc = new ElementsCount();
-            CongenericChain tempCongenericChain = this.CongenericChain(element);
-            if ((int)calc.Calculate(tempCongenericChain, Link.None) == 1)
-            {
-                var temp = this.CongenericChains;
-                this.CongenericChains = new CongenericChain[temp.Length - 1];
-                int j = 0;
-                foreach (CongenericChain congenericChain in temp)
-                {
-                    if (!congenericChain.Element.Equals(element))
-                    {
-                        this.CongenericChains[j] = congenericChain;
-                        j++;
-                    }
-                }
-
-                this.alphabet.Remove(this.building[index]);
-                for (int k = 0; k < this.building.Length; k++)
-                {
-                    if (this.building[index] < this.building[k])
-                    {
-                        this.building[k] = this.building[k] - 1;
-                    }
-                }
-            }
-
-            foreach (CongenericChain congenericChain in this.CongenericChains)
-            {
-                congenericChain.DeleteAt(index);
-            }
-
-            this.building = ArrayManipulator.DeleteAt(this.building, index);
-            return element;
-        }
-
-        /// <summary>
         /// The fill interval managers.
         /// </summary>
         public void FillIntervalManagers()
