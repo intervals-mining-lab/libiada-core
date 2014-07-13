@@ -1,33 +1,69 @@
 namespace LibiadaCore.Core
 {
+    using System;
     using System.Collections.Generic;
+    using System.Linq;
 
     using LibiadaCore.Core.IntervalsManagers;
     using LibiadaCore.Core.SimpleTypes;
-    using LibiadaCore.Misc;
 
     /// <summary>
     /// The congeneric chain.
     /// </summary>
-    public class CongenericChain : BaseChain, IBaseObject
+    public class CongenericChain : AbstractChain
     {
+        /// <summary>
+        /// The element.
+        /// </summary>
+        private readonly IBaseObject element;
+
+        /// <summary>
+        /// The building.
+        /// </summary>
+        private List<int> building = new List<int>();
+
+        /// <summary>
+        /// The chain length.
+        /// </summary>
+        private int length;
+
         /// <summary>
         /// The intervals manager.
         /// </summary>
-        protected CongenericIntervalsManager intervalsManager;
+        private CongenericIntervalsManager intervalsManager;
 
         /// <summary>
         /// Создаёт однородную цепочку для заданного элемента и заданной длины.
         /// </summary>
         /// <param name="length">
-        /// Длина цепочки
+        /// Длина цепочки.
         /// </param>
         /// <param name="element">
-        /// Элемент цепочки
+        /// Элемент цепочки.
         /// </param>
-        public CongenericChain(int length, IBaseObject element) : base(length)
+        public CongenericChain(int length, IBaseObject element)
         {
-            this.alphabet.Add(element);
+            this.element = element;
+            this.length = length;
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="CongenericChain"/> class.
+        /// </summary>
+        /// <param name="building">
+        /// The building.
+        /// </param>
+        /// <param name="element">
+        /// The element.
+        /// </param>
+        /// <param name="length">
+        /// The length.
+        /// </param>
+        public CongenericChain(IEnumerable<int> building, IBaseObject element, int length)
+        {
+            this.length = length;
+            this.element = element.Clone();
+            this.building = building.OrderBy(b => b).ToList();
         }
 
         /// <summary>
@@ -39,51 +75,67 @@ namespace LibiadaCore.Core
         /// <param name="element">
         /// The element.
         /// </param>
-        public CongenericChain(bool[] map, IBaseObject element)
+        /// <param name="length">
+        /// The length.
+        /// </param>
+        public CongenericChain(bool[] map, IBaseObject element, int length)
         {
-            this.alphabet.Add(element);
+            this.length = length;
+            this.element = element;
             for (int i = 0; i < map.Length; i++)
             {
-                this.building[i] = map[i] ? 1 : 0;
+                if (map[i])
+                {
+                    Add(i);
+                }
             }
         }
 
         /// <summary>
-        /// Элемент цепочки
+        /// Gets element chain filled with.
         /// </summary>
         public IBaseObject Element
         {
-            get { return this.alphabet[1]; }
+            get { return this.element.Clone(); }
         }
 
         /// <summary>
-        /// Свойстово позволяет получить доступ к элементу цепи по индексу.
-        /// В случае выхода за границы цепи вызывается исключение.
+        /// Gets the building.
         /// </summary>
-        /// <param name="index">
-        /// Номер элементаю.
+        public int[] Building
+        {
+            get
+            {
+                var result = new int[this.length];
+                for (int i = 0; i < result.Length; i++)
+                {
+                    result[i] = building.Contains(i) ? 1 : 0;
+                }
+
+                return result;
+            }
+        }
+
+        /// <summary>
+        /// По сути пересоздаёт цепочки, очищая строй и
+        /// устанавливая новую длину.
+        /// </summary>
+        /// <param name="length">
+        /// Новая длина цепочки.
         /// </param>
-        /// <returns>
-        /// The <see cref="IBaseObject"/>.
-        /// </returns>
-        public override IBaseObject this[int index]
+        /// <exception cref="ArgumentException">
+        /// Thrown if new length is less than 0.
+        /// </exception>
+        public override void ClearAndSetNewLength(int length)
         {
-            get { return this.building[index] == 1 ? this.Element.Clone() : NullValue.Instance(); }
+            if (length < 0)
+            {
+                throw new ArgumentException("Chain length shouldn't be less than 0.");
+            }
 
-            set { this.Add(value, index); }
-        }
-
-        /// <summary>
-        /// The clone.
-        /// </summary>
-        /// <returns>
-        /// The <see cref="IBaseObject"/>.
-        /// </returns>
-        public new IBaseObject Clone()
-        {
-            var temp = new CongenericChain(this.Length, this.Element);
-            this.FillClone(temp);
-            return temp;
+            this.intervalsManager = null;
+            this.length = length;
+            this.building = new List<int>();
         }
 
         /// <summary>
@@ -107,6 +159,19 @@ namespace LibiadaCore.Core
         }
 
         /// <summary>
+        /// The get length.
+        /// </summary>
+        /// <returns>
+        /// The <see cref="int"/>.
+        /// </returns>
+        public override int GetLength()
+        {
+            return length;
+        }
+
+        // TODO: переименовать метод в Set или что-то подобное.
+
+        /// <summary>
         /// Sets item in provided position.
         /// </summary>
         /// <param name="item">
@@ -117,11 +182,49 @@ namespace LibiadaCore.Core
         /// </param>
         public override void Add(IBaseObject item, int index)
         {
-            this.intervalsManager = null;
-            if (this.Element.Equals(item))
+            if (this.element.Equals(item))
             {
-                base.Add(item, index);
+                Add(index);
             }
+        }
+
+        // TODO: переименовать метод в Set или что-то подобное.
+
+        /// <summary>
+        /// Sets item in provided position.
+        /// </summary>
+        /// <param name="index">
+        /// The index.
+        /// </param>
+        public void Add(int index)
+        {
+            if (index >= length || index < 0)
+            {
+                throw new ArgumentOutOfRangeException("Index of added element is out of bounds (index = " + index + ", chain length = " + length + ").");
+            }
+
+            this.intervalsManager = null;
+
+            if (!building.Contains(index))
+            {
+                building.Add(index);
+                building = building.OrderBy(b => b).ToList();
+            }
+        }
+
+        /// <summary>
+        /// Метод позволяющий получить элемент по индексу.
+        /// В случае выхода за границы цепи вызывается исключение.
+        /// </summary>
+        /// <param name="index">
+        /// Индекс элемента
+        /// </param>
+        /// <returns>
+        /// Возвращает элемент
+        /// </returns>
+        public override IBaseObject Get(int index)
+        {
+            return building.Contains(index) ? element.Clone() : NullValue.Instance();
         }
 
         /// <summary>
@@ -130,32 +233,105 @@ namespace LibiadaCore.Core
         /// <param name="index">
         /// The index.
         /// </param>
-        /// <returns>
-        /// The <see cref="IBaseObject"/>.
-        /// </returns>
-        public IBaseObject DeleteAt(int index)
+        public void DeleteAt(int index)
         {
             this.intervalsManager = null;
-            IBaseObject element = this.alphabet[this.building[index]];
-            this.building = ArrayManipulator.DeleteAt(this.building, index);
-            return element;
+            this.length--;
+            if (building.Contains(index))
+            {
+                this.building.Remove(index);
+            }
         }
 
         /// <summary>
-        /// The fill clone.
+        /// Метод удаляющий элемент с позиции цепи 
+        /// В случае выхода за границы цепи вызывается исключение
         /// </summary>
-        /// <param name="temp">
-        /// The temp.
+        /// <param name="index">
+        /// Номер позиции
         /// </param>
-        protected void FillClone(IBaseObject temp)
+        public override void RemoveAt(int index)
         {
-            var tempCongenericChain = temp as CongenericChain;
-            base.FillClone(tempCongenericChain);
+            this.intervalsManager = null;
+            this.building.Remove(index);
         }
 
+        /// <summary>
+        /// The set interval manager.
+        /// </summary>
+        /// <param name="manager">
+        /// The manager.
+        /// </param>
         public void SetIntervalManager(CongenericIntervalsManager manager)
         {
             intervalsManager = manager;
+        }
+
+        /// <summary>
+        /// The equals.
+        /// </summary>
+        /// <param name="other">
+        /// The other.
+        /// </param>
+        /// <returns>
+        /// The <see cref="bool"/>.
+        /// </returns>
+        public override bool Equals(object other)
+        {
+            if (other == null)
+            {
+                return false;
+            }
+
+            if (other.Equals(NullValue.Instance()))
+            {
+                for (int i = 0; i < this.length; i++)
+                {
+                    if (!this.Get(i).Equals(NullValue.Instance()))
+                    {
+                        return false;
+                    }
+                }
+
+                return true;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            if (other as CongenericChain == null)
+            {
+                return false;
+            }
+
+            var chainObject = (CongenericChain)other;
+            if (!this.element.Equals(chainObject.Element))
+            {
+                return false;
+            }
+
+            for (int i = 0; (i < chainObject.length) && (i < this.length); i++)
+            {
+                if (!this[i].Equals(chainObject[i]))
+                {
+                    return false;
+                }
+            }
+
+            return true;
+        }
+
+        /// <summary>
+        /// The clone.
+        /// </summary>
+        /// <returns>
+        /// The <see cref="IBaseObject"/>.
+        /// </returns>
+        public override IBaseObject Clone()
+        {
+            return new CongenericChain(this.building, this.Element, this.length);
         }
     }
 }

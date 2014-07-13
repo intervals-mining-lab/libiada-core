@@ -43,7 +43,7 @@ namespace LibiadaCore.Tests.Core
         [Test]
         public void ConstructorTest()
         {
-            Assert.AreEqual(10, this.congenericChain.Length);
+            Assert.AreEqual(10, this.congenericChain.GetLength());
             Assert.AreEqual(this.message, this.congenericChain.Element);
         }
 

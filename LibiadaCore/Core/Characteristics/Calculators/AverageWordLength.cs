@@ -43,7 +43,7 @@
         /// </returns>
         public double Calculate(Chain chain, Link link)
         {
-            int chainLength = chain.Length;
+            int chainLength = chain.GetLength();
             int sum = 0;
 
             for (int index = chainLength; --index >= 0;)

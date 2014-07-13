@@ -35,7 +35,7 @@ namespace LibiadaCore.Tests.Misc.Iterators
         {
             int length = 3;
             int step = 1;
-            var iterator = new IteratorEnd<Chain, Chain>(this.chainToIterate, length, step);
+            var iterator = new IteratorEnd(this.chainToIterate, length, step);
 
             // 12 - 3 + 1
             var message2 = new List<Chain>
@@ -74,7 +74,7 @@ namespace LibiadaCore.Tests.Misc.Iterators
             int i = 0;
             while (iterator.Next())
             {
-                BaseChain message1 = iterator.Current();
+                var message1 = iterator.Current();
                 Assert.AreEqual(message1, message2[i++]);
             }
 
@@ -89,7 +89,7 @@ namespace LibiadaCore.Tests.Misc.Iterators
         {
             int length = 3;
             int step = 3;
-            var iterator = new IteratorEnd<Chain, Chain>(this.chainToIterate, length, step);
+            var iterator = new IteratorEnd(this.chainToIterate, length, step);
 
             var message2 = new List<Chain> 
                             { 
@@ -109,7 +109,7 @@ namespace LibiadaCore.Tests.Misc.Iterators
             int i = 0;
             while (iterator.Next())
             {
-                BaseChain message1 = iterator.Current();
+                var message1 = iterator.Current();
                 Assert.AreEqual(message1, message2[i++]);
             }
 

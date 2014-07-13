@@ -5,14 +5,7 @@ namespace LibiadaCore.Misc.Iterators
     /// <summary>
     /// Interface of chain iterators.
     /// </summary>
-    /// <typeparam name="TResult">
-    /// Type of returned chain (inherits <see cref="BaseChain"/> and has constructor without parameters).
-    /// </typeparam>
-    /// <typeparam name="TSource">
-    /// Type of source chain (inherits <see cref="BaseChain"/> and has constructor without parameters).
-    /// </typeparam>
-    public interface IIterator<out TResult, TSource>
-        where TResult : BaseChain, new() where TSource : BaseChain, new()
+    public interface IIterator
     {
         /// <summary>
         /// Moves iterator to the next position.
@@ -28,12 +21,12 @@ namespace LibiadaCore.Misc.Iterators
         /// <returns>
         /// Current subsequence.
         /// </returns>
-        TResult Current();
+        AbstractChain Current();
 
         /// <summary>
         /// Returns iterator to the starting position.
         /// Before reading first value 
-        /// <see cref="IIterator{TResult, TSource}.Next()"/> 
+        /// <see cref="IIterator.Next()"/> 
         /// method should be called.
         /// </summary>
         void Reset();

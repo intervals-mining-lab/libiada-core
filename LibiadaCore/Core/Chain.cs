@@ -1,12 +1,10 @@
-using System;
-using System.Linq;
-using LibiadaCore.Core.IntervalsManagers;
-
 namespace LibiadaCore.Core
 {
     using System.Collections.Generic;
+    using System.Linq;
 
     using LibiadaCore.Core.Characteristics.Calculators;
+    using LibiadaCore.Core.IntervalsManagers;
     using LibiadaCore.Core.SimpleTypes;
     using LibiadaCore.Misc;
 
@@ -31,8 +29,7 @@ namespace LibiadaCore.Core
         /// <param name="length">
         /// The length of chain.
         /// </param>
-        public Chain(int length)
-            : base(length)
+        public Chain(int length) : base(length)
         {
         }
 
@@ -86,23 +83,6 @@ namespace LibiadaCore.Core
         }
 
         /// <summary>
-        /// Свойстово позволяет получить доступ к элементу цепи по индексу
-        /// В случае выхода за границы цепи вызывается исключение
-        /// </summary>
-        /// <param name="index">
-        /// Номер элемента.
-        /// </param>
-        /// <returns>
-        /// The <see cref="IBaseObject"/>.
-        /// </returns>
-        public override IBaseObject this[int index]
-        {
-            get { return this.Get(index); }
-
-            set { this.Add(value, index); }
-        }
-
-        /// <summary>
         /// The clear and set new length.
         /// </summary>
         /// <param name="length">
@@ -122,7 +102,7 @@ namespace LibiadaCore.Core
         /// </returns>
         public new IBaseObject Clone()
         {
-            var clone = new Chain(this.Length);
+            var clone = new Chain(building.Length);
             this.FillClone(clone);
             return clone;
         }
@@ -186,7 +166,7 @@ namespace LibiadaCore.Core
                 }
 
                 this.CongenericChains = temp;
-                this.CongenericChains[this.CongenericChains.Length - 1] = new CongenericChain(this.Length, item);
+                this.CongenericChains[this.CongenericChains.Length - 1] = new CongenericChain(building.Length, item);
             }
 
             foreach (CongenericChain chain in this.CongenericChains)
@@ -253,7 +233,7 @@ namespace LibiadaCore.Core
                 return -1;
             }
 
-            for (int i = firstEntry + 1; i < this.Length; i++)
+            for (int i = firstEntry + 1; i < building.Length; i++)
             {
                 if (first.Equals(this[i]))
                 {
@@ -273,10 +253,10 @@ namespace LibiadaCore.Core
         /// Возвращает позицию указанного по счёту вхождения указанного элемента.
         /// </summary>
         /// <param name="element">
-        /// Элемнет
+        /// Элемент.
         /// </param>
         /// <param name="entry">
-        /// Номер вхождения элемента в полную цепь
+        /// Номер вхождения элемента в полную цепь.
         /// </param>
         /// <returns>
         /// The <see cref="int"/>.
@@ -304,17 +284,17 @@ namespace LibiadaCore.Core
         /// после указанной позиции.
         /// </summary>
         /// <param name="element">
-        /// Элемнет
+        /// Элемнет.
         /// </param>
         /// <param name="from">
-        /// Начальная позиция для отсчёта
+        /// Начальная позиция для отсчёта.
         /// </param>
         /// <returns>
-        /// Номер позиции или -1, если элемент после указанной позиции не встречается
+        /// Номер позиции или -1, если элемент после указанной позиции не встречается.
         /// </returns>
         public int GetAfter(IBaseObject element, int from)
         {
-            for (int i = from; i < this.Length; i++)
+            for (int i = from; i < building.Length; i++)
             {
                 if (this[i].Equals(element))
                 {
@@ -402,6 +382,42 @@ namespace LibiadaCore.Core
         }
 
         /// <summary>
+        /// The fill interval managers.
+        /// </summary>
+        public void FillIntervalManagers()
+        {
+            var occurrences = new int[alphabet.Cardinality - 1];
+            for (int i = 0; i < occurrences.Length; i++)
+            {
+                occurrences[i] = -1;
+            }
+
+            var intervals = new List<int>[alphabet.Cardinality - 1];
+
+            for (int i = 0; i < intervals.Length; i++)
+            {
+                intervals[i] = new List<int>();
+            }
+
+            for (int j = 0; j < building.Length; j++)
+            {
+                int value = building[j] - 1;
+                intervals[value].Add(j - occurrences[value]);
+                occurrences[value] = j;
+            }
+
+            for (int k = 0; k < intervals.Length; k++)
+            {
+                int start = intervals[k][0];
+                int end = building.Length - intervals[k].Last();
+                intervals[k].RemoveAt(0);
+
+                CongenericChains[k].SetIntervalManager(new CongenericIntervalsManager(this, intervals[k].ToArray(), start, end));
+            }
+
+        }
+
+        /// <summary>
         /// The fill clone.
         /// </summary>
         /// <param name="clone">
@@ -434,39 +450,5 @@ namespace LibiadaCore.Core
                 this.CongenericChains[this.building[j] - 1][j] = this.alphabet[this.building[j]];
             }
         }
-
-        public void FillIntervalManagers()
-        {
-            int[] occurences = new int[alphabet.Cardinality - 1];
-            for (int i = 0; i < occurences.Length; i++)
-            {
-                occurences[i] = -1;
-            }
-
-            List<int>[] intervals = new List<int>[alphabet.Cardinality - 1];
-
-            for (int i = 0; i < intervals.Length; i++)
-            {
-                intervals[i] = new List<int>();
-            }
-
-            for (int j = 0; j < building.Length; j++)
-            {
-                int value = building[j] - 1;
-                intervals[value].Add(j - occurences[value]);
-                occurences[value] = j;
-            }
-
-            for (int k = 0; k < intervals.Length; k++)
-            {
-                int start = intervals[k][0];
-                int end = building.Length - intervals[k].Last();
-                intervals[k].RemoveAt(0);
-                
-                CongenericChains[k].SetIntervalManager(new CongenericIntervalsManager(this, intervals[k].ToArray(), start, end));
-            }
-
-        }
-
     }
 }

@@ -25,7 +25,7 @@
                 throw new Exception();
             }
 
-            int count = (int)Math.Floor((double)inputChain.Length / 3);
+            int count = (int)Math.Floor((double)inputChain.GetLength() / 3);
             var outChain = new BaseChain(count);
             for (int i = 0; i < count * 3; i += 3)
             {
@@ -257,8 +257,8 @@
         /// <exception cref="Exception">Исключение возникает в случае наличия в цепи элементов не являющихся аминокислотами</exception>
         public static BaseChain Decode(BaseChain inputChain)
         {
-            var outChain = new BaseChain(inputChain.Length);
-            for (int i = 0; i < inputChain.Length; i++)
+            var outChain = new BaseChain(inputChain.GetLength());
+            for (int i = 0; i < inputChain.GetLength(); i++)
             {
                 string aminoAcid = inputChain[i].ToString();
                 var m = new ValuePhantom();
@@ -393,7 +393,7 @@
                 throw new Exception("Alphabet cardinality must be 4 or less elements");
             }
 
-            var resultLength = (int)Math.Floor((double)inputChain.Length / 3);
+            var resultLength = (int)Math.Floor((double)inputChain.GetLength() / 3);
             var outChain = new BaseChain(resultLength);
 
             for (int i = 0; i < resultLength * 3; i += 3)

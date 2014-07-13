@@ -7,10 +7,7 @@ namespace LibiadaCore.Misc.Iterators
     /// <summary>
     /// Iterator that goes from start of the chain and reading one element at a time.
     /// </summary>
-    /// <typeparam name="TSource">
-    /// Type of source chain (inherits <see cref="BaseChain"/> and has constructor without parameters).
-    /// </typeparam>
-    public class IteratorSimpleStart<TSource> where TSource : BaseChain, new() 
+    public class IteratorSimpleStart 
     {
         /// <summary>
         /// Length of subsequence.
@@ -25,10 +22,10 @@ namespace LibiadaCore.Misc.Iterators
         /// <summary>
         /// Source chain.
         /// </summary>
-        protected readonly TSource Source;
+        protected readonly AbstractChain Source;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="IteratorSimpleStart{TSource}"/> class.
+        /// Initializes a new instance of the <see cref="IteratorSimpleStart"/> class.
         /// </summary>
         /// <param name="source">
         /// Source chain.
@@ -39,9 +36,9 @@ namespace LibiadaCore.Misc.Iterators
         /// <exception cref="ArgumentException">
         /// Thrown if one or more arguments are invalid.
         /// </exception>
-        public IteratorSimpleStart(TSource source, int step)
+        public IteratorSimpleStart(AbstractChain source, int step)
         {
-            if (source == null || source.Length < 1)
+            if (source == null || source.GetLength() < 1)
             {
                 throw new ArgumentException("Ќедопустимое значение аргумента итератора.", "source");
             }
@@ -49,7 +46,7 @@ namespace LibiadaCore.Misc.Iterators
             this.Length = 1;
             this.Step = step;
             this.Source = source;
-            this.MaxPosition = this.Source.Length - this.Length;
+            this.MaxPosition = this.Source.GetLength() - this.Length;
             this.Reset();
         }
 
@@ -97,7 +94,7 @@ namespace LibiadaCore.Misc.Iterators
         /// <summary>
         /// Returns iterator to the starting position.
         /// Before reading first value 
-        /// <see cref="IteratorBase{TResult, TSource}.Next()"/> 
+        /// <see cref="IteratorBase.Next()"/> 
         /// method should be called.
         /// </summary>
         public void Reset()

@@ -50,7 +50,7 @@
                 return -1;
             }
 
-            for (int i = firstEntry + 1; i < this.sourceChain.Length; i++)
+            for (int i = firstEntry + 1; i < this.sourceChain.GetLength(); i++)
             {
                 if (first.Equals(this.building[i]))
                 {
@@ -101,7 +101,7 @@
 
         private int GetAfter(int element, int from)
         {
-            for (int i = from; i < this.sourceChain.Length; i++)
+            for (int i = from; i < this.sourceChain.GetLength(); i++)
             {
                 if (this.sourceChain[i].Equals(element))
                 {

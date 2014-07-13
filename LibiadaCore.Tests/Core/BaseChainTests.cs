@@ -36,7 +36,7 @@ namespace LibiadaCore.Tests.Core
         public void ConstructorTest()
         {
             var chain = new Chain(100);
-            Assert.AreEqual(100, chain.Length);
+            Assert.AreEqual(100, chain.GetLength());
         }
 
         /// <summary>
@@ -108,7 +108,7 @@ namespace LibiadaCore.Tests.Core
         [Test]
         public void GetLengthTest()
         {
-            Assert.AreEqual(10, this.chainBase.Length);
+            Assert.AreEqual(10, this.chainBase.GetLength());
         }
 
         /// <summary>

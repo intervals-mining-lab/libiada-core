@@ -63,7 +63,7 @@
 
             if (link == Link.End || link == Link.Both)
             {
-                avG += Math.Log(chain.Length - currentEntrance, 2);
+                avG += Math.Log(chain.GetLength() - currentEntrance, 2);
             }
             
             int pairs = chain.GetPairsCount(firstElement, secondElement);

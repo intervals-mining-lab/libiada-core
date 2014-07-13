@@ -5,14 +5,8 @@ namespace LibiadaCore.Misc.SpaceReorganizers
     /// <summary>
     /// The space reorganizer.
     /// </summary>
-    /// <typeparam name="TResult">
-    /// Type of result chain.
-    /// </typeparam>
-    /// <typeparam name="TSource">
-    /// Type of source chain.
-    /// </typeparam>
-    public abstract class SpaceReorganizer<TResult, TSource> 
-        where TResult : BaseChain, new() where TSource : BaseChain, new()
+    public abstract class SpaceReorganizer
+        
     {
         /// <summary>
         /// Reorganizes <see cref="TSource"/> into <see cref="TResult"/>.
@@ -23,6 +17,6 @@ namespace LibiadaCore.Misc.SpaceReorganizers
         /// <returns>
         /// The <see cref="TResult"/>.
         /// </returns>
-        public abstract TResult Reorganize(TSource source);
+        public abstract AbstractChain Reorganize(AbstractChain source);
     }
 }

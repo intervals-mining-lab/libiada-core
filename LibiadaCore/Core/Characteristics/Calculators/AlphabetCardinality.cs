@@ -19,7 +19,7 @@ namespace LibiadaCore.Core.Characteristics.Calculators
         /// </returns>
         public double Calculate(CongenericChain chain, Link link)
         {
-            return chain.Alphabet.Cardinality;
+            return 1;
         }
 
         /// <summary>

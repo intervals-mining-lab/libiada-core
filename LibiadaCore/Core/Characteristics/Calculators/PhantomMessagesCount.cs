@@ -23,7 +23,7 @@
         public double Calculate(CongenericChain chain, Link link)
         {
             int count = 1;
-            for (int i = 0; i < chain.Length; i++)
+            for (int i = 0; i < chain.GetLength(); i++)
             {
                 var j = chain[i] as ValuePhantom;
                 if (j != null)
@@ -50,7 +50,7 @@
         public double Calculate(Chain chain, Link link)
         {
             int count = 1;
-            for (int i = 0; i < chain.Length; i++)
+            for (int i = 0; i < chain.GetLength(); i++)
             {
                 var j = chain[i] as ValuePhantom;
                 if (j != null)

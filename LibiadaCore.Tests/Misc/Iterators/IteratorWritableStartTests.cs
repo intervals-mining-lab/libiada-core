@@ -51,7 +51,7 @@ namespace LibiadaCore.Tests.Misc.Iterators
                                };
 
             var toWrite = new Chain(12);
-            var iteratorWrite = new IteratorWritableStart<Chain, Chain>(toWrite);
+            var iteratorWrite = new IteratorWritableStart(toWrite);
             int i = 0;
             while (iteratorWrite.Next())
             {

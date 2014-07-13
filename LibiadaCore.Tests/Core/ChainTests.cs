@@ -63,7 +63,7 @@ namespace LibiadaCore.Tests.Core
 
             this.chain.Add(messageC, 9);
 
-            BaseChain chainCreatedCongenericChain = this.chain.CongenericChain((IBaseObject)messageA);
+            var chainCreatedCongenericChain = this.chain.CongenericChain((IBaseObject)messageA);
 
             Assert.AreEqual(congenericChainA, chainCreatedCongenericChain);
         }

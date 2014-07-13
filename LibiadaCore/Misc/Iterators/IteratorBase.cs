@@ -7,14 +7,7 @@ namespace LibiadaCore.Misc.Iterators
     /// <summary>
     /// Abstract chain iterator.
     /// </summary>
-    /// <typeparam name="TResult">
-    /// Type of returned chain (inherits <see cref="BaseChain"/> and has constructor without parameters).
-    /// </typeparam>
-    /// <typeparam name="TSource">
-    /// Type of source chain (inherits <see cref="BaseChain"/> and has constructor without parameters).
-    /// </typeparam>
-    public abstract class IteratorBase<TResult, TSource> : IIterator<TResult, TSource> 
-        where TResult : BaseChain, new() where TSource : BaseChain, new()
+    public abstract class IteratorBase: IIterator
     {
         /// <summary>
         /// Length of subsequence.
@@ -29,10 +22,10 @@ namespace LibiadaCore.Misc.Iterators
         /// <summary>
         /// Source chain.
         /// </summary>
-        protected readonly TSource Source;
+        protected readonly AbstractChain Source;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="IteratorBase{TResult,TSource}"/> class.
+        /// Initializes a new instance of the <see cref="IteratorBase"/> class.
         /// </summary>
         /// <param name="source">
         /// Source chain.
@@ -46,9 +39,9 @@ namespace LibiadaCore.Misc.Iterators
         /// <exception cref="ArgumentException">
         /// Thrown if one or more arguments are invalid.
         /// </exception>
-        public IteratorBase(TSource source, int length, int step)
+        public IteratorBase(AbstractChain source, int length, int step)
         {
-            if (source == null || length <= 0 || source.Length < length)
+            if (source == null || length <= 0 || source.GetLength() < length)
             {
                 throw new ArgumentException("Недопустимые значения аргументов итератора.");
             }
@@ -56,7 +49,7 @@ namespace LibiadaCore.Misc.Iterators
             this.Length = length;
             this.Step = step;
             this.Source = source;
-            this.MaxPosition = this.Source.Length - this.Length; 
+            this.MaxPosition = this.Source.GetLength() - this.Length; 
             this.Reset();
         }
 
@@ -87,14 +80,14 @@ namespace LibiadaCore.Misc.Iterators
         /// <exception cref="InvalidOperationException">
         /// Thrown if current position is invalid.
         /// </exception>
-        public virtual TResult Current()
+        public virtual AbstractChain Current()
         {
             if (this.Position < 0 || this.Position > this.MaxPosition)
             {
                 throw new InvalidOperationException("Текущая позиция итератора находится за пределами допустимого диапазона");
             }
 
-            var result = new TResult();
+            var result = new BaseChain();
             result.ClearAndSetNewLength(this.Length);
 
             for (int i = 0; i < this.Length; i++)

@@ -33,8 +33,8 @@ namespace LibiadaCore.Tests.Misc.SpaceReorganizers
         {
             var cycleTestChainLevel1 = new Chain("adbaacbbaacaa");
 
-            var rebulder = new NullCycleSpaceReorganizer<Chain, Chain>(1);
-            Chain result = rebulder.Reorganize(this.testChain);
+            var rebulder = new NullCycleSpaceReorganizer(1);
+            var result = rebulder.Reorganize(this.testChain);
             Assert.AreEqual(cycleTestChainLevel1, result);
         }
 
@@ -46,8 +46,8 @@ namespace LibiadaCore.Tests.Misc.SpaceReorganizers
         {
             var cycleTestChainLevel5 = new Chain("adbaacbbaacaadbaa");
 
-            var reorganizer = new NullCycleSpaceReorganizer<Chain, Chain>(5);
-            Chain result = reorganizer.Reorganize(this.testChain);
+            var reorganizer = new NullCycleSpaceReorganizer(5);
+            var result = reorganizer.Reorganize(this.testChain);
             Assert.AreEqual(cycleTestChainLevel5, result);
         }
     }

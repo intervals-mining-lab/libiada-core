@@ -82,7 +82,7 @@ namespace LibiadaCore.Tests.Core
 
                 // a a a a a
                 var sixthChain = new CongenericChain(5, Elements["a"]);
-                for (int i = 0; i < sixthChain.Length; i++)
+                for (int i = 0; i < sixthChain.GetLength(); i++)
                 {
                     sixthChain.Add(Elements["a"], i);
                 }

@@ -6,14 +6,7 @@ namespace LibiadaCore.Misc.SpaceReorganizers
     /// <summary>
     /// Reorganizer that does nothing.
     /// </summary>
-    /// <typeparam name="TResult">
-    /// Type of result chain.
-    /// </typeparam>
-    /// <typeparam name="TSource">
-    /// Type of source chain.
-    /// </typeparam>
-    public class NullReorganizer<TResult, TSource> : SpaceReorganizer<TResult, TSource> 
-        where TResult : BaseChain, new() where TSource : BaseChain, new()
+    public class NullReorganizer : SpaceReorganizer
     {
         /// <summary>
         /// Reorganizes <see cref="TSource"/> into <see cref="TResult"/>.
@@ -24,26 +17,26 @@ namespace LibiadaCore.Misc.SpaceReorganizers
         /// <returns>
         /// The <see cref="TResult"/>.
         /// </returns>
-        public override TResult Reorganize(TSource source)
+        public override AbstractChain Reorganize(AbstractChain source)
         {
-            var result = source.Clone() as TResult;
+            var result = source.Clone() as AbstractChain;
             if (result != null)
             {
                 return result;
             }
 
             // TODO: Implement variant when we have Chain Reorganize(BaseChain A)
-            result = new TResult();
-            result.ClearAndSetNewLength(source.Length);
+            result = new BaseChain();
+            result.ClearAndSetNewLength(source.GetLength());
 
-            var iteratorRead = new IteratorSimpleStart<TSource>(source, 1);
-            var iteratorWrite = new IteratorWritableStart<TSource, TResult>(result);
+            var iteratorRead = new IteratorSimpleStart(source, 1);
+            var iteratorWrite = new IteratorWritableStart(result);
             iteratorRead.Reset();
             iteratorWrite.Reset();
             iteratorRead.Next();
             iteratorWrite.Next();
 
-            for (int i = 0; i < source.Length; i++)
+            for (int i = 0; i < source.GetLength(); i++)
             {
                 iteratorWrite.WriteValue(iteratorRead.Current());
                 iteratorRead.Next();

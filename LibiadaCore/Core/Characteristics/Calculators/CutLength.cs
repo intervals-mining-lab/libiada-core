@@ -61,9 +61,9 @@ namespace LibiadaCore.Core.Characteristics.Calculators
         /// <returns>
         /// <see cref="double"/>.
         /// </returns>
-        private double CutCommon(BaseChain chain)
+        private double CutCommon(AbstractChain chain)
         {
-            for (int length = 1; length <= chain.Length; length++)
+            for (int length = 1; length <= chain.GetLength(); length++)
             {
                 if (this.CheckRecoveryAvailable(chain, length))
                 {
@@ -71,7 +71,7 @@ namespace LibiadaCore.Core.Characteristics.Calculators
                 }
             }
 
-            return chain.Length;
+            return chain.GetLength();
         }
 
         /// <summary>
@@ -86,9 +86,9 @@ namespace LibiadaCore.Core.Characteristics.Calculators
         /// <returns>
         /// true if chain is recoverable form L-gramms.
         /// </returns>
-        private bool CheckRecoveryAvailable(BaseChain chain, int length)
+        private bool CheckRecoveryAvailable(AbstractChain chain, int length)
         {
-            var iterator = new IteratorStart<BaseChain, BaseChain>(chain, length, 1);
+            var iterator = new IteratorStart(chain, length, 1);
             var alphabet = new Alphabet();
             while (iterator.Next())
             {

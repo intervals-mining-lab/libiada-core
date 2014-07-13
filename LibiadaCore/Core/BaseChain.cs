@@ -10,7 +10,7 @@ namespace LibiadaCore.Core
     /// <summary>
     /// The base chain.
     /// </summary>
-    public class BaseChain : IBaseObject
+    public class BaseChain : AbstractChain
     {
         /// <summary>
         /// The building of chain.
@@ -48,7 +48,7 @@ namespace LibiadaCore.Core
         /// </param>
         public BaseChain(List<IBaseObject> elements) : this(elements.Count)
         {
-            for (int i = 0; i < this.Length; i++)
+            for (int i = 0; i < this.GetLength(); i++)
             {
                 this.Add(elements[i], i);
             }
@@ -121,41 +121,6 @@ namespace LibiadaCore.Core
         }
 
         /// <summary>
-        /// Длинна цепи.
-        /// Только для чтения.
-        /// </summary>
-        public int Length
-        {
-            get
-            {
-                return this.building.Length;
-            }
-        }
-
-        /// <summary>
-        /// Свойстово позволяет получить доступ к элементу цепи по индексу.
-        /// В случае выхода за границы цепи вызывается исключение.
-        /// </summary>
-        /// <param name="index">
-        /// номер элемента
-        /// </param>
-        /// <returns>
-        /// The <see cref="IBaseObject"/>.
-        /// </returns>
-        public virtual IBaseObject this[int index]
-        {
-            get
-            {
-                return this.Get(index);
-            }
-
-            set
-            {
-                this.Add(value, index);
-            }
-        }
-
-        /// <summary>
         /// Метод позволяющий получить элемент по индексу.
         /// В случае выхода за границы цепи вызывается исключение.
         /// </summary>
@@ -165,9 +130,20 @@ namespace LibiadaCore.Core
         /// <returns>
         /// Возвращает элемент
         /// </returns>
-        public virtual IBaseObject Get(int index)
+        public override IBaseObject Get(int index)
         {
             return this.alphabet[this.building[index]];
+        }
+
+        /// <summary>
+        /// The length of chain.
+        /// </summary>
+        /// <returns>
+        /// The <see cref="int"/>.
+        /// </returns>
+        public override int GetLength()
+        {
+            return this.building.Length;
         }
 
         /// <summary>
@@ -179,7 +155,7 @@ namespace LibiadaCore.Core
         /// <param name="index">
         /// Номер позиции в цепи куда устанавливается элемент
         /// </param>
-        public virtual void Add(IBaseObject item, int index)
+        public override void Add(IBaseObject item, int index)
         {
             if (item == null)
             {
@@ -204,7 +180,7 @@ namespace LibiadaCore.Core
         /// <param name="index">
         /// Номер позиции
         /// </param>
-        public void RemoveAt(int index)
+        public override void RemoveAt(int index)
         {
             this.building[index] = 0;
         }
@@ -219,7 +195,7 @@ namespace LibiadaCore.Core
         {
             var builder = new StringBuilder();
 
-            for (int i = 0; i < this.Length; i++)
+            for (int i = 0; i < building.Length; i++)
             {
                 builder.Append(this[i]);
             }
@@ -233,12 +209,12 @@ namespace LibiadaCore.Core
         /// В алфавит добавляется <see cref="NullValue"/>.
         /// </summary>
         /// <param name="length">
-        /// Новая длина цепочки
+        /// Новая длина цепочки.
         /// </param>
         /// <exception cref="ArgumentException">
         /// Выбрасывается если длина &lt; 0
         /// </exception>
-        public virtual void ClearAndSetNewLength(int length)
+        public override void ClearAndSetNewLength(int length)
         {
             if (length < 0)
             {
@@ -255,9 +231,9 @@ namespace LibiadaCore.Core
         /// <returns>
         /// The <see cref="IBaseObject"/>.
         /// </returns>
-        public IBaseObject Clone()
+        public override IBaseObject Clone()
         {
-            var clone = new BaseChain(this.Length);
+            var clone = new BaseChain(building.Length);
             this.FillClone(clone);
             return clone;
         }
@@ -280,7 +256,7 @@ namespace LibiadaCore.Core
 
             if (other.Equals(NullValue.Instance()))
             {
-                for (int i = 0; i < this.Length; i++)
+                for (int i = 0; i < building.Length; i++)
                 {
                     if (!this.Get(i).Equals(NullValue.Instance()))
                     {
@@ -307,7 +283,7 @@ namespace LibiadaCore.Core
                 return false;
             }
 
-            for (int i = 0; (i < chainObject.Length) && (i < this.Length); i++)
+            for (int i = 0; (i < chainObject.GetLength()) && (i < building.Length); i++)
             {
                 if (!this[i].Equals(chainObject[i]))
                 {

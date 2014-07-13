@@ -33,7 +33,7 @@
         /// </returns>
         public static Chain Create(BaseChain source)
         {
-            var result = new Chain(source.Length);
+            var result = new Chain(source.GetLength());
             Alphabet sourceAlphabet = source.Alphabet;
             var entries = new List<int>();
             for (int j = 0; j < sourceAlphabet.Cardinality; j++)
@@ -41,7 +41,7 @@
                 entries.Add(0);
             }
 
-            for (int i = 0; i < source.Length; i++)
+            for (int i = 0; i < source.GetLength(); i++)
             {
                 int entry = ++entries[sourceAlphabet.IndexOf(source[i])];
                 result.Add(new ValueInt(entry), i);

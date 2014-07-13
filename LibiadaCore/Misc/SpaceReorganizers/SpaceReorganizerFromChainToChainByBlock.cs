@@ -7,14 +7,7 @@ namespace LibiadaCore.Misc.SpaceReorganizers
     /// <summary>
     /// The space reorganizer from chain to chain by block.
     /// </summary>
-    /// <typeparam name="TResult">
-    /// Type of result chain.
-    /// </typeparam>
-    /// <typeparam name="TSource">
-    /// Type of source chain.
-    /// </typeparam>
-    public class SpaceReorganizerFromChainToChainByBlock<TResult, TSource> : SpaceReorganizer<TResult, TSource>
-        where TResult : BaseChain, new() where TSource : BaseChain, new()
+    public class SpaceReorganizerFromChainToChainByBlock : SpaceReorganizer
     {
         /// <summary>
         /// The link.
@@ -27,7 +20,7 @@ namespace LibiadaCore.Misc.SpaceReorganizers
         private readonly int blockSize;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="SpaceReorganizerFromChainToChainByBlock{TResult,TSource}"/> class.
+        /// Initializes a new instance of the <see cref="SpaceReorganizerFromChainToChainByBlock"/> class.
         /// </summary>
         /// <param name="link">
         /// The link.
@@ -50,22 +43,22 @@ namespace LibiadaCore.Misc.SpaceReorganizers
         /// <returns>
         /// The <see cref="TResult"/>.
         /// </returns>
-        public override TResult Reorganize(TSource source)
+        public override AbstractChain Reorganize(AbstractChain source)
         {
-            var result = new TResult();
-            result.ClearAndSetNewLength(source.Length / this.blockSize);
-            IteratorBase<TResult, TSource> iteratorFrom;
-            IWritableIterator<TResult, TResult> iteratorTo;
+            var result = new BaseChain();
+            result.ClearAndSetNewLength(source.GetLength() / this.blockSize);
+            IteratorBase iteratorFrom;
+            IWritableIterator iteratorTo;
 
             if (this.link != Link.End)
             {
-                iteratorFrom = new IteratorStart<TResult, TSource>(source, this.blockSize, this.blockSize);
-                iteratorTo = new IteratorWritableStart<TResult, TResult>(result);
+                iteratorFrom = new IteratorStart(source, this.blockSize, this.blockSize);
+                iteratorTo = new IteratorWritableStart(result);
             }
             else
             {
-                iteratorFrom = new IteratorEnd<TResult, TSource>(source, this.blockSize, this.blockSize);
-                iteratorTo = new IteratorWritableEnd<TResult, TResult>(result);
+                iteratorFrom = new IteratorEnd(source, this.blockSize, this.blockSize);
+                iteratorTo = new IteratorWritableEnd(result);
             }
 
             while (iteratorTo.Next() && iteratorFrom.Next())

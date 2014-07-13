@@ -7,14 +7,7 @@ namespace LibiadaCore.Misc.Iterators
     /// <summary>
     /// Iterator that goes from start of the chain.
     /// </summary>
-    /// <typeparam name="TResult">
-    /// Type of returned chain (inherits <see cref="BaseChain"/> and has constructor without parameters).
-    /// </typeparam>
-    /// <typeparam name="TSource">
-    /// Type of source chain (inherits <see cref="BaseChain"/> and has constructor without parameters).
-    /// </typeparam>
-    public class IteratorStart<TResult, TSource> : IteratorBase<TResult, TSource>
-        where TSource : BaseChain, new() where TResult : BaseChain, new()
+    public class IteratorStart : IteratorBase
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="IteratorStart{TResult,TSource}"/> class.
@@ -31,7 +24,7 @@ namespace LibiadaCore.Misc.Iterators
         /// <exception cref="ArgumentException">
         /// Thrown if one or more arguments are invalid.
         /// </exception>
-        public IteratorStart(TSource source, int length, int step) : base(source, length, step)
+        public IteratorStart(AbstractChain source, int length, int step) : base(source, length, step)
         {
         }
 
@@ -50,7 +43,7 @@ namespace LibiadaCore.Misc.Iterators
         /// <summary>
         /// Returns iterator to the starting position.
         /// Before reading first value 
-        /// <see cref="IteratorBase{TResult, TSource}.Next()"/> 
+        /// <see cref="IteratorBase.Next()"/> 
         /// method should be called.
         /// </summary>
         public override void Reset()

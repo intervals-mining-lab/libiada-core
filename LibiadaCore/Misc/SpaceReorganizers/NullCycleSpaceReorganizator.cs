@@ -8,13 +8,7 @@ namespace LibiadaCore.Misc.SpaceReorganizers
     /// <summary>
     /// The null cycle space reorganizer.
     /// </summary>
-    /// <typeparam name="TResult">
-    /// Type of result chain.
-    /// </typeparam>
-    /// <typeparam name="TSource">
-    /// Type of source chain.
-    /// </typeparam>
-    public class NullCycleSpaceReorganizer<TResult, TSource> : SpaceReorganizer<TResult, TSource> where TResult : BaseChain, new() where TSource : BaseChain, new()
+    public class NullCycleSpaceReorganizer : SpaceReorganizer
     {
         // TODO: проверить, нужен ли вообще этот класс и делает ли он то что заявлено.
 
@@ -24,7 +18,7 @@ namespace LibiadaCore.Misc.SpaceReorganizers
         private readonly int level;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="NullCycleSpaceReorganizer{TResult,TSource}"/> class.
+        /// Initializes a new instance of the <see cref="NullCycleSpaceReorganizer"/> class.
         /// </summary>
         /// <param name="level">
         /// Level of markov chain.
@@ -46,7 +40,7 @@ namespace LibiadaCore.Misc.SpaceReorganizers
         /// <exception cref="InvalidOperationException">
         /// Thrown if level is less than 0. 
         /// </exception>
-        public override TResult Reorganize(TSource source)
+        public override AbstractChain Reorganize(AbstractChain source)
         {
             if (this.level < 0)
             {
@@ -55,23 +49,23 @@ namespace LibiadaCore.Misc.SpaceReorganizers
 
             if (this.level == 0)
             {
-                return (TResult)((BaseChain)source);
+                return source;
             }
 
-            var result = new TResult();
-            result.ClearAndSetNewLength(source.Length + this.level);
-            for (int i = 0; i < source.Length; i++)
+            var result = new BaseChain();
+            result.ClearAndSetNewLength(source.GetLength() + this.level);
+            for (int i = 0; i < source.GetLength(); i++)
             {
                 result[i] = source[i];
             }
 
-            var iterator = new IteratorStart<TResult, TSource>(source, this.level, 1);
+            var iterator = new IteratorStart(source, this.level, 1);
             iterator.Reset();
             iterator.Next();
-            TResult addition = iterator.Current();
-            for (int i = 0; i < addition.Length; i++)
+            AbstractChain addition = iterator.Current();
+            for (int i = 0; i < addition.GetLength(); i++)
             {
-                result[source.Length + i] = addition[i];
+                result[source.GetLength() + i] = addition[i];
             }
 
             return result;

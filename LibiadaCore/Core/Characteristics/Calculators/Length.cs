@@ -19,7 +19,7 @@ namespace LibiadaCore.Core.Characteristics.Calculators
         /// </returns>
         public double Calculate(CongenericChain chain, Link link)
         {
-            return chain.Length;
+            return chain.GetLength();
         }
 
         /// <summary>
@@ -36,7 +36,7 @@ namespace LibiadaCore.Core.Characteristics.Calculators
         /// </returns>
         public double Calculate(Chain chain, Link link)
         {
-            return chain.Length;
+            return chain.GetLength();
         }
 
         /// <summary>
