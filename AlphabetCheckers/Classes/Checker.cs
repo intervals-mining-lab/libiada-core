@@ -2,8 +2,8 @@ namespace AlphabetCheckers.Classes
 {
     using System.Collections;
 
-    using LibiadaCore.Classes.Misc.Iterators;
-    using LibiadaCore.Classes.Root;
+    using LibiadaCore.Core;
+    using LibiadaCore.Misc.Iterators;
 
     /// <summary>
     /// Класс реализующий проверку соответствия заданного
@@ -70,9 +70,9 @@ namespace AlphabetCheckers.Classes
                     BaseChain word;
                     if (chain4Check.Length >= (int)list[i])
                     {
-                        var it = new IteratorStart<BaseChain, BaseChain>(chain4Check, (int)list[i], 1);
+                        var it = new IteratorStart(chain4Check, (int)list[i], 1);
                         it.Next();
-                        word = it.Current();
+                        word = (BaseChain)it.Current();
                     }
                     else
                     {

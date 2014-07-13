@@ -2,8 +2,8 @@ namespace AlphabetCheckers.Classes
 {
     using System;
 
-    using LibiadaCore.Classes.Misc.Iterators;
-    using LibiadaCore.Classes.Root;
+    using LibiadaCore.Core;
+    using LibiadaCore.Misc.Iterators;
 
     /// <summary>
     /// Class representing actual chain.
@@ -53,12 +53,12 @@ namespace AlphabetCheckers.Classes
             }
             else
             {
-                var it1 = new IteratorStart<BaseChain, BaseChain>(Source, length, 1);
+                var it1 = new IteratorStart(Source, length, 1);
                 it1.Next();
                 this.resultChain.Add(it1.Current(), this.actualLength);
-                var it2 = new IteratorEnd<BaseChain, BaseChain>(Source, Source.Length - length, 1);
+                var it2 = new IteratorEnd(Source, Source.Length - length, 1);
                 it2.Next();
-                Source = it2.Current();
+                Source = (BaseChain)it2.Current();
             }
 
             this.actualLength++;
@@ -72,9 +72,9 @@ namespace AlphabetCheckers.Classes
         /// </returns>
         public BaseChain GetResult()
         {
-            var it = new IteratorStart<BaseChain, BaseChain>(this.resultChain, this.actualLength, 1);
+            var it = new IteratorStart(this.resultChain, this.actualLength, 1);
             it.Next();
-            return it.Current();
+            return (BaseChain)it.Current();
         }
 
         /// <summary>

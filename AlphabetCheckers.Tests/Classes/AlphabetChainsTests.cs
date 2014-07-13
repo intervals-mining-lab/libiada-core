@@ -4,8 +4,8 @@ namespace AlphabetCheckers.Tests.Classes
 
     using AlphabetCheckers.Classes;
 
-    using LibiadaCore.Classes.Root;
-    using LibiadaCore.Classes.Root.SimpleTypes;
+    using LibiadaCore.Core;
+    using LibiadaCore.Core.SimpleTypes;
 
     using NUnit.Framework;
 
