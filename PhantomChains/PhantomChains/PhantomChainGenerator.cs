@@ -3,20 +3,16 @@ namespace PhantomChains.PhantomChains
     using System;
     using System.Collections.Generic;
 
-    using LibiadaCore.Classes.Misc.SpaceReorganizers;
-    using LibiadaCore.Classes.Root;
-    using LibiadaCore.Classes.Root.SimpleTypes;
+    using LibiadaCore.Core;
+    using LibiadaCore.Core.SimpleTypes;
+    using LibiadaCore.Misc.SpaceReorganizers;
 
     using global::PhantomChains.Statistics.MarkovChain.Generators;
 
     /// <summary>
     /// Генератор фаонтомных цепей.
     /// </summary>
-    /// <typeparam name="TResult">Тип хранимой в генераторе цепи</typeparam>
-    /// <typeparam name="TSource">Исходный тип цепи</typeparam>
-    public class PhantomChainGenerator<TResult, TSource>
-        where TResult : BaseChain, new()
-        where TSource : BaseChain, new()
+    public class PhantomChainGenerator
     {
         /// <summary>
         /// Количество возможных вариантов для данной цепи
@@ -31,7 +27,7 @@ namespace PhantomChains.PhantomChains
         /// <summary>
         /// The temp chains.
         /// </summary>
-        private readonly List<TResult> tempChains = new List<TResult>();
+        private readonly List<BaseChain> tempChains = new List<BaseChain>();
 
         /// <summary>
         /// The gen.
@@ -57,21 +53,21 @@ namespace PhantomChains.PhantomChains
         /// <param name="gen">
         /// The gen.
         /// </param>
-        public PhantomChainGenerator(TSource chain, IGenerator gen)
+        public PhantomChainGenerator(BaseChain chain, IGenerator gen)
         {
             this.generator = gen;
-            var reorganizer = new SpacePhantomReorganizer<TResult, TSource>();
-            TResult internalChain = reorganizer.Reorganize(chain);
-            for (int w = 0; w < internalChain.Length; w++)
+            var reorganizer = new SpacePhantomReorganizer();
+            BaseChain internalChain = (BaseChain)reorganizer.Reorganize(chain);
+            for (int w = 0; w < internalChain.GetLength(); w++)
             {
                 this.totalLength += ((ValuePhantom)internalChain[w])[0].ToString().Length;
             }
 
             ulong tempVariants = 1;
             int counter = 0;
-            for (int k = 0; k < (int)Math.Ceiling((double)internalChain.Length / BasicChainLength); k++)
+            for (int k = 0; k < (int)Math.Ceiling((double)internalChain.GetLength() / BasicChainLength); k++)
             {
-                this.tempChains.Add(new TResult());
+                this.tempChains.Add(new BaseChain());
                 this.tempChains[k].ClearAndSetNewLength(BasicChainLength);
                 this.tree.Add(null);
             }
@@ -80,10 +76,10 @@ namespace PhantomChains.PhantomChains
             // и создания деревьев
             for (int i = 0; i < this.tempChains.Count; i++)
             {
-                for (int j = 0; j < this.tempChains[i].Length; j++)
+                for (int j = 0; j < this.tempChains[i].GetLength(); j++)
                 {
                     ValuePhantom tempMessage;
-                    if (counter < internalChain.Length)
+                    if (counter < internalChain.GetLength())
                     {
                         tempMessage = (ValuePhantom)internalChain[counter];
                         this.tempChains[i][j] = tempMessage;
@@ -136,9 +132,9 @@ namespace PhantomChains.PhantomChains
                 for (int l = 0; l < this.tree.Count; l++)
                 {
                     tempRes[l] = this.tree[l].Generate();
-                    for (int u = 0; u < tempRes[l].Length; u++)
+                    for (int u = 0; u < tempRes[l].GetLength(); u++)
                     {
-                        if (counter < res[chainCounter].Length)
+                        if (counter < res[chainCounter].GetLength())
                         {
                             res[chainCounter][counter] = tempRes[l][u];
                             counter++;

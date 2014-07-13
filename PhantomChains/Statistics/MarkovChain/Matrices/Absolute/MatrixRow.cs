@@ -3,13 +3,13 @@ namespace PhantomChains.Statistics.MarkovChain.Matrices.Absolute
     using System;
     using System.Collections;
 
-    using LibiadaCore.Classes.Root.SimpleTypes;
-
     using global::PhantomChains.Statistics.MarkovChain.Builders;
 
     using global::PhantomChains.Statistics.MarkovChain.Matrices.Base;
 
     using global::PhantomChains.Statistics.MarkovChain.Matrices.Probability;
+
+    using LibiadaCore.Core.SimpleTypes;
 
     /// <summary>
     /// ћатрица-строка абсолютных значений.

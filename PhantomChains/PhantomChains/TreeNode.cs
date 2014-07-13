@@ -2,10 +2,11 @@ namespace PhantomChains.PhantomChains
 {
     using System;
 
-    using LibiadaCore.Classes.Root;
-    using LibiadaCore.Classes.Root.SimpleTypes;
+    using LibiadaCore.Core;
 
     using global::PhantomChains.Statistics.MarkovChain.Generators;
+
+    using LibiadaCore.Core.SimpleTypes;
 
     /// <summary>
     /// Класс-узел дерева ваиантов

@@ -3,8 +3,8 @@ namespace PhantomChains.Statistics.MarkovChain.Matrices.Probability
     using System;
     using System.Collections.Generic;
 
-    using LibiadaCore.Classes.Root;
-    using LibiadaCore.Classes.Root.SimpleTypes;
+    using LibiadaCore.Core;
+    using LibiadaCore.Core.SimpleTypes;
 
     using global::PhantomChains.Statistics.MarkovChain.Builders;
 

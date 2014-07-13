@@ -1,7 +1,7 @@
 namespace PhantomChains.Tests.Statistics.MarkovChain
 {
-    using LibiadaCore.Classes.Root;
-    using LibiadaCore.Classes.Root.SimpleTypes;
+    using LibiadaCore.Core;
+    using LibiadaCore.Core.SimpleTypes;
 
     using NUnit.Framework;
 
@@ -85,7 +85,7 @@ namespace PhantomChains.Tests.Statistics.MarkovChain
             const int NoUniformRang = 0;
 
             // —оздаем марковскую модель передава€ еЄ ранг, неоднородность и генератор
-            var markovChain = new MarkovChainNotUniformStatic<Chain, Chain>(MarkovChainRang, NoUniformRang, generator);
+            var markovChain = new MarkovChainNotUniformStatic(MarkovChainRang, NoUniformRang, generator);
 
             // ƒлинна генерируемой цепи
             const int Length = 30;
@@ -94,7 +94,7 @@ namespace PhantomChains.Tests.Statistics.MarkovChain
             // TeachingMethod.None значнт не какой предворительной обработки цепи не проводитс€
             markovChain.Teach(this.testChain2, TeachingMethod.Cycle);
 
-            Chain temp = markovChain.Generate(Length);
+            var temp = markovChain.Generate(Length);
 
             /* 
              * 1. ÷епь a a a a a a b a a a b a
@@ -167,7 +167,7 @@ namespace PhantomChains.Tests.Statistics.MarkovChain
             const int NoUniformRang = 1;
 
             // —оздаем марковскую модель передава€ еЄ ранг, неоднородность и генератор
-            var markovChain = new MarkovChainNotUniformStatic<Chain, Chain>(MarkovChainRang, NoUniformRang, generator);
+            var markovChain = new MarkovChainNotUniformStatic(MarkovChainRang, NoUniformRang, generator);
 
             // ƒлинна генерируемой цепи
             const int Length = 12;
@@ -176,7 +176,7 @@ namespace PhantomChains.Tests.Statistics.MarkovChain
             // TeachingMethod.None значнт не какой предворительной обработки цепи не проводитс€
             markovChain.Teach(this.testChain, TeachingMethod.None);
 
-            Chain temp = markovChain.Generate(Length);
+            var temp = markovChain.Generate(Length);
 
             /**
              * ¬нутри неоднородной марковской цепи существует n однородных марковских цепей. n - пор€док неоднородности цепи

@@ -1,7 +1,7 @@
 namespace PhantomChains.Tests.Statistics.MarkovCompare
 {
-    using LibiadaCore.Classes.Root;
-    using LibiadaCore.Classes.Root.SimpleTypes;
+    using LibiadaCore.Core;
+    using LibiadaCore.Core.SimpleTypes;
 
     using NUnit.Framework;
 
@@ -45,7 +45,7 @@ namespace PhantomChains.Tests.Statistics.MarkovCompare
         [Test]
         public void CompareSameChainTest()
         {
-            var markov = new MarkovChainNotUniformStatic<Chain, Chain>(2, 0, new MockGenerator());
+            var markov = new MarkovChainNotUniformStatic(2, 0, new MockGenerator());
             markov.Teach(this.testChain, TeachingMethod.Cycle);
             var ma = new MarkovMetrics();
             Assert.AreEqual(ma.GetMiddleArith(markov), ma.GetMiddleArith(markov));

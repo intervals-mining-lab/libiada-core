@@ -2,10 +2,10 @@ namespace PhantomChains.Tests.Statistics.MarkovChain
 {
     using System;
 
-    using LibiadaCore.Classes.Misc.Iterators;
-    using LibiadaCore.Classes.Misc.SpaceReorganizers;
-    using LibiadaCore.Classes.Root;
-    using LibiadaCore.Classes.Root.SimpleTypes;
+    using LibiadaCore.Core;
+    using LibiadaCore.Core.SimpleTypes;
+    using LibiadaCore.Misc.Iterators;
+    using LibiadaCore.Misc.SpaceReorganizers;
 
     using NUnit.Framework;
 
@@ -22,7 +22,7 @@ namespace PhantomChains.Tests.Statistics.MarkovChain
         /// <summary>
         /// The test chain.
         /// </summary>
-        private Chain testChain;
+        private BaseChain testChain;
 
         /// <summary>
         /// The alphabet.
@@ -111,7 +111,7 @@ namespace PhantomChains.Tests.Statistics.MarkovChain
             this.ch.Add(this.b, 2);
 
             this.matrix = new Matrix(this.alphabet.Cardinality, 2);
-            var arrayCh = new int[this.ch.Length];
+            var arrayCh = new int[this.ch.GetLength()];
             arrayCh[0] = this.alphabet.IndexOf(this.ch[0]);
             arrayCh[1] = this.alphabet.IndexOf(this.ch[1]);
             arrayCh[2] = this.alphabet.IndexOf(this.ch[2]);
@@ -223,15 +223,15 @@ namespace PhantomChains.Tests.Statistics.MarkovChain
         {
             this.matrix = new Matrix(this.testChain.Alphabet.Cardinality, 3);
 
-            var reorganizer = new NullCycleSpaceReorganizer<Chain, Chain>(2);
-            this.testChain = reorganizer.Reorganize(this.testChain);
+            var reorganizer = new NullCycleSpaceReorganizer(2);
+            this.testChain = (BaseChain)reorganizer.Reorganize(this.testChain);
 
-            var it = new IteratorStart<Chain, Chain>(this.testChain, 3, 1);
+            var it = new IteratorStart(this.testChain, 3, 1);
             while (it.Next())
             {
                 var chain = it.Current();
-                var arrayToTeach = new int[chain.Length];
-                for (var i = 0; i < chain.Length; i++)
+                var arrayToTeach = new int[chain.GetLength()];
+                for (var i = 0; i < chain.GetLength(); i++)
                 {
                     arrayToTeach[i] = this.testChain.Alphabet.IndexOf(chain[i]);
                 }
@@ -450,15 +450,15 @@ namespace PhantomChains.Tests.Statistics.MarkovChain
         {
             this.matrix = new Matrix(this.testChain.Alphabet.Cardinality, 3);
 
-            var reorganizer = new NullCycleSpaceReorganizer<Chain, Chain>(2);
-            this.testChain = reorganizer.Reorganize(this.testChain);
+            var reorganizer = new NullCycleSpaceReorganizer(2);
+            this.testChain = (BaseChain)reorganizer.Reorganize(this.testChain);
 
-            var it = new IteratorStart<Chain, Chain>(this.testChain, 3, 1);
+            var it = new IteratorStart(this.testChain, 3, 1);
             while (it.Next())
             {
                 var chain = it.Current();
-                var arrayToTeach = new int[chain.Length];
-                for (var i = 0; i < chain.Length; i++)
+                var arrayToTeach = new int[chain.GetLength()];
+                for (var i = 0; i < chain.GetLength(); i++)
                 {
                     arrayToTeach[i] = this.testChain.Alphabet.IndexOf(chain[i]);
                 }
@@ -688,7 +688,7 @@ namespace PhantomChains.Tests.Statistics.MarkovChain
             this.ch.Add(this.c, 1);
 
             this.matrix = new Matrix(this.alphabet.Cardinality, 2);
-            var array = new int[this.ch.Length];
+            var array = new int[this.ch.GetLength()];
             array[0] = this.alphabet.IndexOf(this.ch[0]);
             array[1] = this.alphabet.IndexOf(this.ch[1]);
             this.matrix.FrequencyFromObject(array);

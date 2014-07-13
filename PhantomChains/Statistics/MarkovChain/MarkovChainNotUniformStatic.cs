@@ -1,7 +1,7 @@
 namespace PhantomChains.Statistics.MarkovChain
 {
-    using LibiadaCore.Classes.Misc.Iterators;
-    using LibiadaCore.Classes.Root;
+    using LibiadaCore.Core;
+    using LibiadaCore.Misc.Iterators;
 
     using global::PhantomChains.Statistics.MarkovChain.Generators;
 
@@ -14,8 +14,7 @@ namespace PhantomChains.Statistics.MarkovChain
     /// <typeparam name="TChainTaught">
     /// Тип обучающей цепи
     /// </typeparam>
-    public class MarkovChainNotUniformStatic<TChainGenerated, TChainTaught> : MarkovChainBase<TChainGenerated, TChainTaught>
-        where TChainGenerated : BaseChain, new() where TChainTaught : BaseChain, new()
+    public class MarkovChainNotUniformStatic : MarkovChainBase
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="MarkovChainNotUniformStatic{ChainGenerated,ChainTaught}"/> class.
@@ -46,12 +45,12 @@ namespace PhantomChains.Statistics.MarkovChain
         /// <returns>
         /// Сгенерированная цепь
         /// </returns>
-        public override TChainGenerated Generate(int i, int chainRang)
+        public override BaseChain Generate(int i, int chainRang)
         {
-            var temp = new TChainGenerated();
+            var temp = new BaseChain();
             temp.ClearAndSetNewLength(i);
-            var read = this.Rank > 1 ? new IteratorStart<TChainGenerated, TChainGenerated>(temp, this.Rank - 1, 1) : null;
-            var write = new IteratorWritableStart<TChainGenerated, TChainGenerated>(temp);
+            var read = this.Rank > 1 ? new IteratorStart(temp, this.Rank - 1, 1) : null;
+            var write = new IteratorWritableStart(temp);
             if (read != null)
             {
                 read.Reset();
@@ -83,9 +82,9 @@ namespace PhantomChains.Statistics.MarkovChain
 
                 if (read != null)
                 {
-                    TChainGenerated chain = read.Current();
-                    var indexedChain = new int[chain.Length];
-                    for (int k = 0; k < chain.Length; k++)
+                    BaseChain chain = (BaseChain)read.Current();
+                    var indexedChain = new int[chain.GetLength()];
+                    for (int k = 0; k < chain.GetLength(); k++)
                     {
                         indexedChain[k] = this.Alphabet.IndexOf(chain[k]);
                     }

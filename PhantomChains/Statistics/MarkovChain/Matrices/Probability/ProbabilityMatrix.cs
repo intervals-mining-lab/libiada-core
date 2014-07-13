@@ -3,13 +3,13 @@ namespace PhantomChains.Statistics.MarkovChain.Matrices.Probability
     using System;
     using System.Collections.Generic;
 
-    using LibiadaCore.Classes.Root;
-
     using global::PhantomChains.Statistics.MarkovChain.Builders;
 
     using global::PhantomChains.Statistics.MarkovChain.Matrices.Absolute;
 
     using global::PhantomChains.Statistics.MarkovChain.Matrices.Base;
+
+    using LibiadaCore.Core;
 
     /// <summary>
     /// Матрица веротяностей. 

@@ -2,7 +2,7 @@
 {
     using System;
 
-    using LibiadaCore.Classes.Root.SimpleTypes;
+    using LibiadaCore.Core.SimpleTypes;
 
     /// <summary>
     /// Запись соответствующая одному уровню дерева варинтов.

@@ -2,7 +2,7 @@ namespace PhantomChains.Statistics.MarkovChain
 {
     using System;
 
-    using LibiadaCore.Classes.Root;
+    using LibiadaCore.Core;
 
     using global::PhantomChains.Statistics.MarkovChain.Generators;
 
@@ -13,8 +13,7 @@ namespace PhantomChains.Statistics.MarkovChain
     /// </typeparam>
     /// <typeparam name="TChainTaught">
     /// </typeparam>
-    public class MarkovChainFactory<TChainGenerated, TChainTaught>
-        where TChainTaught : BaseChain, new() where TChainGenerated : BaseChain, new()
+    public class MarkovChainFactory
     {
         /// <summary>
         /// Создать марковскую цепь
@@ -37,20 +36,20 @@ namespace PhantomChains.Statistics.MarkovChain
         /// <exception cref="Exception">
         /// В случае если тип цепи не зарегистирован в фабрике
         /// </exception>
-        public MarkovChainBase<TChainGenerated, TChainTaught> Create(GeneratingMethod method, int rang, int uniformRang, IGenerator generator)
+        public MarkovChainBase Create(GeneratingMethod method, int rang, int uniformRang, IGenerator generator)
         {
             switch (method)
             {
                 case GeneratingMethod.DynamicNotUniform:
                     return null;
                 case GeneratingMethod.StaticNotUniform:
-                    return new MarkovChainNotUniformStatic<TChainGenerated, TChainTaught>(rang, uniformRang, generator);
+                    return new MarkovChainNotUniformStatic(rang, uniformRang, generator);
                 case GeneratingMethod.DynamicUniform:
                     return null; 
                 case GeneratingMethod.StaticUniform:
-                    return new MarkovChainUniformStatic<TChainGenerated, TChainTaught>(rang, generator);
+                    return new MarkovChainUniformStatic(rang, generator);
                 case GeneratingMethod.Random:
-                    return new MarkovChainRandom<TChainGenerated, TChainTaught>(rang, generator);
+                    return new MarkovChainRandom(rang, generator);
                 default:
                     throw new ArgumentException("This type of markov chain does not registered in system", "method");
             }

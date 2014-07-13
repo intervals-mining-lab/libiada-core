@@ -3,9 +3,9 @@ namespace PhantomChains.Statistics.MarkovChain
     using System;
     using System.Collections.Generic;
 
-    using LibiadaCore.Classes.Misc.Iterators;
-    using LibiadaCore.Classes.Misc.SpaceReorganizers;
-    using LibiadaCore.Classes.Root;
+    using LibiadaCore.Core;
+    using LibiadaCore.Misc.Iterators;
+    using LibiadaCore.Misc.SpaceReorganizers;
 
     using global::PhantomChains.Statistics.MarkovChain.Builders;
 
@@ -22,8 +22,7 @@ namespace PhantomChains.Statistics.MarkovChain
     /// </typeparam>
     /// <typeparam name="TChainTaught">
     /// </typeparam>
-    public abstract class MarkovChainBase<TChainGenerated, TChainTaught>
-        where TChainTaught : BaseChain, new() where TChainGenerated : BaseChain, new()
+    public abstract class MarkovChainBase
     {
         /// <summary>
         /// The generator.
@@ -96,7 +95,7 @@ namespace PhantomChains.Statistics.MarkovChain
         /// <returns>
         /// Реализация Марковской цепи
         /// </returns>
-        public TChainGenerated Generate(int i)
+        public BaseChain Generate(int i)
         {
             return this.Generate(i, this.Rank);
         }
@@ -114,14 +113,14 @@ namespace PhantomChains.Statistics.MarkovChain
         /// <returns>
         /// The <see cref="TChainGenerated"/>.
         /// </returns>
-        public abstract TChainGenerated Generate(int i, int rank);
+        public abstract BaseChain Generate(int i, int rank);
 
         /// <summary>
         /// Обучить Марковскую цепь на последовательности
         /// </summary>
         /// <param name="chain">Цепь используемая при обучении</param>
         /// <param name="method">Метод предобработки цепи</param>
-        public virtual void Teach(TChainTaught chain, TeachingMethod method)
+        public virtual void Teach(BaseChain chain, TeachingMethod method)
         {
             var builder = new MatrixBuilder();
             var absMatrix = new IAbsoluteMatrix[this.UniformRank + 1];
@@ -131,10 +130,10 @@ namespace PhantomChains.Statistics.MarkovChain
                 absMatrix[i] = (IAbsoluteMatrix)builder.Create(this.Alphabet.Cardinality, this.Rank);
             }
 
-            SpaceReorganizer<TChainTaught, TChainTaught> reorganizer = this.GetRebuilder(method);
-            chain = reorganizer.Reorganize(chain);
+            SpaceReorganizer reorganizer = this.GetRebuilder(method);
+            chain = (BaseChain)reorganizer.Reorganize(chain);
 
-            var it = new IteratorStart<TChainGenerated, TChainTaught>(chain, this.Rank, 1);
+            var it = new IteratorStart(chain, this.Rank, 1);
             it.Reset();
 
             int k = 0;
@@ -149,7 +148,7 @@ namespace PhantomChains.Statistics.MarkovChain
                     m = this.UniformRank + 1;
                 }
 
-                TChainGenerated chainToTeach = it.Current();
+                BaseChain chainToTeach = (BaseChain)it.Current();
                 var indexedChain = new int[this.Rank];
                 for (int i = 0; i < this.Rank; i++)
                 {
@@ -204,14 +203,14 @@ namespace PhantomChains.Statistics.MarkovChain
         /// <exception cref="ArgumentException">
         /// Thrown if unknown <see cref="TeachingMethod"/> is provided.
         /// </exception>
-        protected virtual SpaceReorganizer<TChainTaught, TChainTaught> GetRebuilder(TeachingMethod method)
+        protected virtual SpaceReorganizer GetRebuilder(TeachingMethod method)
         {
             switch (method)
             {
                 case TeachingMethod.None:
-                    return new NullReorganizer<TChainTaught, TChainTaught>();
+                    return new NullReorganizer();
                 case TeachingMethod.Cycle:
-                    return new NullCycleSpaceReorganizer<TChainTaught, TChainTaught>(this.Rank - 1);
+                    return new NullCycleSpaceReorganizer(this.Rank - 1);
                 default:
                     throw new ArgumentException();
             }

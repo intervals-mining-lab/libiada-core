@@ -2,9 +2,9 @@
 {
     using System.Collections.Generic;
 
-    using LibiadaCore.Classes.Root;
-
     using global::PhantomChains.Statistics.MarkovChain.Generators;
+
+    using LibiadaCore.Core;
 
     /// <summary>
     /// Интерфейс элемента дерева

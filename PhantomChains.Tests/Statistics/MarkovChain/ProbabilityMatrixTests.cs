@@ -1,7 +1,7 @@
 namespace PhantomChains.Tests.Statistics.MarkovChain
 {
-    using LibiadaCore.Classes.Root;
-    using LibiadaCore.Classes.Root.SimpleTypes;
+    using LibiadaCore.Core;
+    using LibiadaCore.Core.SimpleTypes;
 
     using NUnit.Framework;
 
@@ -78,7 +78,7 @@ namespace PhantomChains.Tests.Statistics.MarkovChain
             resultTheory[8] = (ValueString)"b";
             resultTheory[9] = (ValueString)"a";
 
-            var markov = new MarkovChainNotUniformStatic<Chain, Chain>(3, 0, new MockGenerator());
+            var markov = new MarkovChainNotUniformStatic(3, 0, new MockGenerator());
             markov.Teach(this.testChain, TeachingMethod.Cycle);
             var resultPractice = markov.Generate(10);
             Assert.AreEqual(resultTheory, resultPractice);
@@ -122,7 +122,7 @@ namespace PhantomChains.Tests.Statistics.MarkovChain
             resultTheory[28] = (ValueString)"a"; // "a" 0.71;
             resultTheory[29] = (ValueString)"a"; // "a" 0.2;
 
-            var markov = new MarkovChainNotUniformStatic<Chain, Chain>(2, 0, new MockGenerator());
+            var markov = new MarkovChainNotUniformStatic(2, 0, new MockGenerator());
             markov.Teach(this.testChain2, TeachingMethod.Cycle);
             var resultPractice = markov.Generate(30);
             Assert.AreEqual(resultTheory, resultPractice);

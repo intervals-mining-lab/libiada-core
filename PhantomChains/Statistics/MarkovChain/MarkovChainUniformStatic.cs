@@ -1,7 +1,5 @@
 namespace PhantomChains.Statistics.MarkovChain
 {
-    using LibiadaCore.Classes.Root;
-
     using global::PhantomChains.Statistics.MarkovChain.Generators;
 
     /// <summary>
@@ -13,9 +11,8 @@ namespace PhantomChains.Statistics.MarkovChain
     /// <typeparam name="TChainTaught">
     /// Тип обучающей цепи
     /// </typeparam>
-    public class MarkovChainUniformStatic<TChainGenerated, TChainTaught> :
-        MarkovChainNotUniformStatic<TChainGenerated, TChainTaught>
-        where TChainGenerated : BaseChain, new() where TChainTaught : BaseChain, new()
+    public class MarkovChainUniformStatic :
+        MarkovChainNotUniformStatic
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="MarkovChainUniformStatic{TChainGenerated,TChainTaught}"/> class.
@@ -26,8 +23,7 @@ namespace PhantomChains.Statistics.MarkovChain
         /// <param name="generator">
         /// Random generator.
         /// </param>
-        public MarkovChainUniformStatic(int rang, IGenerator generator)
-            : base(rang, 0, generator)
+        public MarkovChainUniformStatic(int rang, IGenerator generator) : base(rang, 0, generator)
         {
         }
     }

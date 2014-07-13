@@ -2,10 +2,10 @@ namespace PhantomChains.Tests.PhantomChains
 {
     using System.Collections.Generic;
 
-    using LibiadaCore.Classes.Misc.DataTransformers;
-    using LibiadaCore.Classes.Misc.Iterators;
-    using LibiadaCore.Classes.Root;
-    using LibiadaCore.Classes.Root.SimpleTypes;
+    using LibiadaCore.Core;
+    using LibiadaCore.Core.SimpleTypes;
+    using LibiadaCore.Misc.DataTransformers;
+    using LibiadaCore.Misc.Iterators;
 
     using NUnit.Framework;
 
@@ -53,7 +53,7 @@ namespace PhantomChains.Tests.PhantomChains
             resultChain.Add(this.mother.PhantomMessageA[0], 8);
             resultChain.Add(this.mother.PhantomMessageA[0], 9);
 
-            var gen = new PhantomChainGenerator<BaseChain, BaseChain>(this.mother.SourceChain, new MockGenerator());
+            var gen = new PhantomChainGenerator(this.mother.SourceChain, new MockGenerator());
             List<BaseChain> res = gen.Generate(1);
             Assert.AreEqual(res.Count, 1);
             Assert.AreEqual(resultChain, res[0]);
@@ -71,7 +71,7 @@ namespace PhantomChains.Tests.PhantomChains
             resultChain.Add(this.mother.PhantomMessageBc[1], 2);
             resultChain.Add(this.mother.PhantomMessageA[0], 3);
             resultChain.Add(this.mother.PhantomMessageBc[0], 4);
-            var gen = new PhantomChainGenerator<BaseChain, BaseChain>(this.mother.UnnormalChain, new MockGenerator());
+            var gen = new PhantomChainGenerator(this.mother.UnnormalChain, new MockGenerator());
             List<BaseChain> res = gen.Generate(1);
             Assert.AreEqual(1, res.Count);
             Assert.AreEqual(resultChain, res[0]);
@@ -84,14 +84,14 @@ namespace PhantomChains.Tests.PhantomChains
         public void ThirdTest()
         {
             var resultChain = new BaseChain(63);
-            var iter = new IteratorWritableStart<BaseChain, BaseChain>(resultChain);
+            var iter = new IteratorWritableStart(resultChain);
             iter.Reset();
             while (iter.Next())
             {
                 iter.WriteValue(this.mother.PhantomMessageBc);
             }
 
-            var gen = new PhantomChainGenerator<BaseChain, BaseChain>(resultChain, new SimpleGenerator());
+            var gen = new PhantomChainGenerator(resultChain, new SimpleGenerator());
             List<BaseChain> res = gen.Generate(3000);
             Assert.AreEqual(res.Count, 3000);
         }
@@ -103,14 +103,14 @@ namespace PhantomChains.Tests.PhantomChains
         public void FourthTest()
         {
             var resultChain = new BaseChain(10);
-            var iterator = new IteratorWritableStart<BaseChain, BaseChain>(resultChain);
+            var iterator = new IteratorWritableStart(resultChain);
             iterator.Reset();
             while (iterator.Next())
             {
                 iterator.WriteValue(this.mother.PhantomMessageBc);
             }
 
-            var gen = new PhantomChainGenerator<BaseChain, BaseChain>(resultChain, new SimpleGenerator());
+            var gen = new PhantomChainGenerator(resultChain, new SimpleGenerator());
             List<BaseChain> res = gen.Generate(1000);
             int counter = 0;
             for (int i = 0; i < 999; i++)
@@ -138,9 +138,9 @@ namespace PhantomChains.Tests.PhantomChains
             sourceChain.Add(new ValueString("S"), 1);
             sourceChain.Add(new ValueString("C"), 2);
             BaseChain forBuild = DnaTransformer.Decode(sourceChain);
-            var gen = new PhantomChainGenerator<BaseChain, BaseChain>(forBuild, new SimpleGenerator());
+            var gen = new PhantomChainGenerator(forBuild, new SimpleGenerator());
             List<BaseChain> res = gen.Generate(1);
-            Assert.AreEqual(9, res[0].Length);
+            Assert.AreEqual(9, res[0].GetLength());
         }
     }
 }

@@ -1,10 +1,10 @@
 ﻿namespace PhantomChains.Statistics.MarkovCompare
 {
-    using LibiadaCore.Classes.Root;
-
     using global::PhantomChains.Statistics.MarkovChain;
 
     using global::PhantomChains.Statistics.MarkovChain.Matrices.Probability;
+
+    using LibiadaCore.Core;
 
     /// <summary>
     /// Класс предназначеный для получения метрик марковских цепей
@@ -20,7 +20,7 @@
         /// <returns>
         /// Среднее арифметическое вероятностей
         /// </returns>
-        public double GetMiddleArith(MarkovChainNotUniformStatic<Chain, Chain> chain)
+        public double GetMiddleArith(MarkovChainNotUniformStatic chain)
         {
             IProbabilityMatrix matrix = chain.PropabilityMatrix;
             for (int i = 0; i < chain.Alphabet.Cardinality; i++)

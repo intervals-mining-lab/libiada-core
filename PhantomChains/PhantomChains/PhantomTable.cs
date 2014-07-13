@@ -2,8 +2,8 @@
 {
     using System.Collections.Generic;
 
-    using LibiadaCore.Classes.Root;
-    using LibiadaCore.Classes.Root.SimpleTypes;
+    using LibiadaCore.Core;
+    using LibiadaCore.Core.SimpleTypes;
 
     /// <summary>
     /// Класс с данными для построения верева вараинтов.
@@ -31,7 +31,7 @@
             BaseChain internalChain = source;
             ulong v = 1;
             this.StartPositions.Add(0);
-            for (int j = 0; j < internalChain.Length; j++)
+            for (int j = 0; j < internalChain.GetLength(); j++)
             {
                 if ((((ValuePhantom)internalChain[j])[0] is ValueString)
                     || (((ValuePhantom)internalChain[j])[0] is BaseChain))
@@ -47,7 +47,7 @@
             }
 
             this.table.Add(null);
-            for (int i = internalChain.Length; i > 0; i--)
+            for (int i = internalChain.GetLength(); i > 0; i--)
             {
                 var temp = (ValuePhantom)internalChain[i - 1];
                 this.table[i] = new Record(temp, v);

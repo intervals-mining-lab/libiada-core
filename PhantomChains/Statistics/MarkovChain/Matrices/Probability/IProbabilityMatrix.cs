@@ -2,9 +2,9 @@ namespace PhantomChains.Statistics.MarkovChain.Matrices.Probability
 {
     using System.Collections.Generic;
 
-    using LibiadaCore.Classes.Root;
-
     using global::PhantomChains.Statistics.MarkovChain.Matrices.Absolute;
+
+    using LibiadaCore.Core;
 
     /// <summary>
     /// Вероятностная матрица

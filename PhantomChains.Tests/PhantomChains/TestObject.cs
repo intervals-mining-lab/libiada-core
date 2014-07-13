@@ -1,7 +1,7 @@
 namespace PhantomChains.Tests.PhantomChains
 {
-    using LibiadaCore.Classes.Root;
-    using LibiadaCore.Classes.Root.SimpleTypes;
+    using LibiadaCore.Core;
+    using LibiadaCore.Core.SimpleTypes;
 
     /// <summary>
     /// The object mother p message test.

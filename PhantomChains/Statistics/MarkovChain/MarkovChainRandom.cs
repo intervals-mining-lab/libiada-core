@@ -1,12 +1,12 @@
 namespace PhantomChains.Statistics.MarkovChain
 {
-    using LibiadaCore.Classes.Root;
-
     using global::PhantomChains.Statistics.MarkovChain.Builders;
 
     using global::PhantomChains.Statistics.MarkovChain.Generators;
 
     using global::PhantomChains.Statistics.MarkovChain.Matrices.Absolute;
+
+    using LibiadaCore.Core;
 
     /// <summary>
     /// The markov chain random.
@@ -15,12 +15,11 @@ namespace PhantomChains.Statistics.MarkovChain
     /// </typeparam>
     /// <typeparam name="TChainTaught">
     /// </typeparam>
-    public class MarkovChainRandom<TChainGenerated, TChainTaught> :
-        MarkovChainNotUniformStatic<TChainGenerated, TChainTaught>
-        where TChainGenerated : BaseChain, new() where TChainTaught : BaseChain, new()
+    public class MarkovChainRandom :
+        MarkovChainNotUniformStatic
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="MarkovChainRandom{ChainGenerated,ChainTaught}"/> class.
+        /// Initializes a new instance of the <see cref="MarkovChainRandom"/> class.
         /// </summary>
         /// <param name="i">
         /// The i.
@@ -42,7 +41,7 @@ namespace PhantomChains.Statistics.MarkovChain
         /// <param name="method">
         /// The method.
         /// </param>
-        public override void Teach(TChainTaught chain, TeachingMethod method)
+        public override void Teach(BaseChain chain, TeachingMethod method)
         {
             var builder = new MatrixBuilder();
             var absoluteMatrix = (IAbsoluteMatrix)builder.Create(chain.Alphabet.Cardinality, this.Rank);

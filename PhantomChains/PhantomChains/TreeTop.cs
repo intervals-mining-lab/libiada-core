@@ -1,9 +1,9 @@
 ﻿namespace PhantomChains.PhantomChains
 {
-    using LibiadaCore.Classes.Root;
-    using LibiadaCore.Classes.Root.SimpleTypes;
-
     using global::PhantomChains.Statistics.MarkovChain.Generators;
+
+    using LibiadaCore.Core;
+    using LibiadaCore.Core.SimpleTypes;
 
     /// <summary>
     /// Корневой узел дерева враинтов.
@@ -47,7 +47,7 @@
                 this.isString = true;
             }
 
-            if ((source != null) && (source.Length != 0))
+            if ((source != null) && (source.GetLength() != 0))
             {
                 var temp = (ValuePhantom)source[0];
                 for (int i = 0; i < temp.Cardinality; i++)
