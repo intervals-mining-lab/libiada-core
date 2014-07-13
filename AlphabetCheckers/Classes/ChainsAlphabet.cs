@@ -41,7 +41,7 @@ namespace AlphabetCheckers.Classes
             var list = new SortedList();
             for (int i = 0; i < Cardinality; i++)
             {
-                int l = ((BaseChain)this[i]).Length;
+                int l = ((BaseChain)this[i]).GetLength();
                 if (list.ContainsKey(l))
                 {
                     continue;

@@ -30,7 +30,7 @@ namespace AlphabetCheckers.Classes
         {
             Source = (BaseChain)source.Clone();
             this.actualLength = 0;
-            this.resultChain = new BaseChain(source.Length);
+            this.resultChain = new BaseChain(source.GetLength());
         }
 
         /// <summary>
@@ -46,7 +46,7 @@ namespace AlphabetCheckers.Classes
         /// </param>
         public void RemoveCharacter(int length)
         {
-            if (Source.Length == length)
+            if (Source.GetLength() == length)
             {
                 this.resultChain.Add(Source, this.actualLength);
                 Source = null;
@@ -56,7 +56,7 @@ namespace AlphabetCheckers.Classes
                 var it1 = new IteratorStart(Source, length, 1);
                 it1.Next();
                 this.resultChain.Add(it1.Current(), this.actualLength);
-                var it2 = new IteratorEnd(Source, Source.Length - length, 1);
+                var it2 = new IteratorEnd(Source, Source.GetLength() - length, 1);
                 it2.Next();
                 Source = (BaseChain)it2.Current();
             }

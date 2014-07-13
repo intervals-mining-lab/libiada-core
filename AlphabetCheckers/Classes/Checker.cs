@@ -68,7 +68,7 @@ namespace AlphabetCheckers.Classes
                 for (int i = list.Count - 1; i >= 0; i--)
                 {
                     BaseChain word;
-                    if (chain4Check.Length >= (int)list[i])
+                    if (chain4Check.GetLength() >= (int)list[i])
                     {
                         var it = new IteratorStart(chain4Check, (int)list[i], 1);
                         it.Next();
@@ -82,7 +82,7 @@ namespace AlphabetCheckers.Classes
                     if (alphabet.Contains(word))
                     {
                         // положительный вариант конца поиска решения
-                        if (chain4Check.Length == (int)list[i])
+                        if (chain4Check.GetLength() == (int)list[i])
                         {
                             actChain.RemoveCharacter((int)list[i]);
                             return actChain.GetResult();
