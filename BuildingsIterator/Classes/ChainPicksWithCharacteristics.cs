@@ -7,7 +7,7 @@ namespace BuildingsIterator.Classes
     using BuildingsIterator.Classes.Filters;
     using BuildingsIterator.Classes.Statistics;
 
-    using LibiadaCore.Classes.Root.Characteristics;
+    using LibiadaCore.Core.Characteristics;
 
     /// <summary>
     ///  ласс выборки цепочек с характеристиками
@@ -27,7 +27,7 @@ namespace BuildingsIterator.Classes
         /// <summary>
         /// The characters.
         /// </summary>
-        private readonly List<LinkedUpCharacteristic> characteristics;
+        private readonly List<LinkedCharacteristic> characteristics;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ChainPicksWithCharacteristics"/> class.
@@ -38,7 +38,7 @@ namespace BuildingsIterator.Classes
         /// <param name="characters">
         /// ћассив характеристик и прив€зок
         /// </param>
-        public ChainPicksWithCharacteristics(Hashtable chains, List<LinkedUpCharacteristic> characters)
+        public ChainPicksWithCharacteristics(Hashtable chains, List<LinkedCharacteristic> characters)
         {
             this.chains = chains;
             this.characteristics = characters;

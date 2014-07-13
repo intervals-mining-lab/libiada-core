@@ -39,11 +39,6 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Classes\ArrayToString.cs" />
@@ -51,7 +46,7 @@
     <Compile Include="Classes\Filters\ChainFilterBySameFrequency.cs" />
     <Compile Include="Classes\Filters\ChinFilterByAlphabetPower.cs" />
     <Compile Include="Classes\Filters\IChainFilter.cs" />
-    <Compile Include="Classes\LinkedUpCharacteristic.cs" />
+    <Compile Include="Classes\LinkedCharacteristic.cs" />
     <Compile Include="Classes\ScramblingGenerator.cs" />
     <Compile Include="Classes\Statistics\Calculators\ExpectationCalculator.cs" />
     <Compile Include="Classes\Statistics\Calculators\IOnePicksCalculator.cs" />

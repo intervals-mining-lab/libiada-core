@@ -1,12 +1,12 @@
 namespace BuildingsIterator.Classes
 {
-    using LibiadaCore.Classes.Root;
-    using LibiadaCore.Classes.Root.Characteristics.Calculators;
+    using LibiadaCore.Core;
+    using LibiadaCore.Core.Characteristics.Calculators;
 
     /// <summary>
     /// Пара, калькулятор характеристики и привязка
     /// </summary>
-    public abstract class LinkedUpCharacteristic
+    public abstract class LinkedCharacteristic
     {
         /// <summary>
         /// The calc.
@@ -23,7 +23,7 @@ namespace BuildingsIterator.Classes
         /// </summary>
         /// <param name="calc">Калюкулятор характеристики цепи</param>
         /// <param name="link">Привязка</param>
-        public LinkedUpCharacteristic(ICalculator calc, Link link)
+        public LinkedCharacteristic(ICalculator calc, Link link)
         {
             this.calc = calc;
             this.link = link;
@@ -33,7 +33,7 @@ namespace BuildingsIterator.Classes
         /// Конструктор
         /// </summary>
         /// <param name="calc">Калюкулятор характеристики цепи</param>
-        public LinkedUpCharacteristic(ICalculator calc)
+        public LinkedCharacteristic(ICalculator calc)
         {
             this.calc = calc;
             link = Link.Start;

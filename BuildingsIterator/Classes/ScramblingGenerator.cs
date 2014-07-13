@@ -4,8 +4,7 @@
     using System.Collections;
     using System.Collections.Generic;
 
-    using LibiadaCore.Classes.Root;
-    using LibiadaCore.Classes.TheoryOfSet;
+    using LibiadaCore.Core;
 
     /// <summary>
     /// Генерирует все возможные сочетания
@@ -25,7 +24,7 @@
         /// <summary>
         /// The characteristic.
         /// </summary>
-        private List<LinkedUpCharacteristic> characteristic;
+        private List<LinkedCharacteristic> characteristic;
 
         /// <summary>
         /// Генерирует хештаблицу со всеми возможными строями в качестве ключа, 
@@ -35,7 +34,7 @@
         /// <param name="len">Длинна генерируемых цепочек</param>
         /// <param name="charact">Массив интерфейсов вычисляемых характеристик</param>
         /// <returns></returns>
-        public ChainPicksWithCharacteristics Generate(Alphabet alphabet, int len, List<LinkedUpCharacteristic> charact)
+        public ChainPicksWithCharacteristics Generate(Alphabet alphabet, int len, List<LinkedCharacteristic> charact)
         {
             this.alphabet = alphabet;
             this.length = len;
@@ -72,7 +71,7 @@
         private List<double> CalculateCharacteristics(Chain chain)
         {
             var characteristics = new List<double>(characteristic.Count);
-            foreach (LinkedUpCharacteristic calculator in characteristic)
+            foreach (LinkedCharacteristic calculator in characteristic)
             {
                 characteristics.Add(calculator.Calc.Calculate(chain, calculator.Link));
             }

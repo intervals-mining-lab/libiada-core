@@ -1,7 +1,7 @@
 namespace BuildingsIterator.Classes.Filters
 {
-    using LibiadaCore.Classes.Root;
-    using LibiadaCore.Classes.Root.Characteristics.Calculators;
+    using LibiadaCore.Core;
+    using LibiadaCore.Core.Characteristics.Calculators;
 
     /// <summary>
     /// Фильтр отфильтровывающий цепи по равенству частот вхождения элементов
