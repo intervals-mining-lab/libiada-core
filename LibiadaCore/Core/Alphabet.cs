@@ -82,7 +82,7 @@ namespace LibiadaCore.Core
 
             if (this.Elements.Contains(baseObject))
             {
-                throw new Exception();
+                throw new Exception("Element '" + baseObject + "' is already in alphabet.");
             }
 
             this.Elements.Add(baseObject.Clone());
