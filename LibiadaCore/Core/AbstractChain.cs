@@ -1,5 +1,9 @@
 ﻿namespace LibiadaCore.Core
 {
+    using System.Text;
+
+    using LibiadaCore.Core.SimpleTypes;
+
     /// <summary>
     /// The abstract chain.
     /// </summary>
@@ -84,5 +88,24 @@
         /// The <see cref="IBaseObject"/>.
         /// </returns>
         public abstract IBaseObject Clone();
+
+        /// <summary>
+        /// Converts chain to string.
+        /// Empty positions are filled with <see cref="NullValue"/> ('-' symbol).
+        /// </summary>
+        /// <returns>
+        /// The <see cref="string"/>.
+        /// </returns>
+        public new string ToString()
+        {
+            var builder = new StringBuilder();
+
+            for (int i = 0; i < this.GetLength(); i++)
+            {
+                builder.Append(this[i]);
+            }
+
+            return builder.ToString();
+        }
     }
 }

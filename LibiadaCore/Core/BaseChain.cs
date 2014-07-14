@@ -186,24 +186,6 @@ namespace LibiadaCore.Core
         }
 
         /// <summary>
-        /// The to string.
-        /// </summary>
-        /// <returns>
-        /// The <see cref="string"/>.
-        /// </returns>
-        public override string ToString()
-        {
-            var builder = new StringBuilder();
-
-            for (int i = 0; i < building.Length; i++)
-            {
-                builder.Append(this[i]);
-            }
-
-            return builder.ToString();
-        }
-
-        /// <summary>
         /// По сути пересоздаёт цепочки, очищая строй и алфавит,
         /// устанавливая новую длину.
         /// В алфавит добавляется <see cref="NullValue"/>.
