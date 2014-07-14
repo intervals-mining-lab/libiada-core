@@ -241,6 +241,14 @@ namespace LibiadaCore.Core
             {
                 this.building.Remove(index);
             }
+
+            for (int i = 0; i < building.Count; i++)
+            {
+                if (index < building[i])
+                {
+                    building[i]--;
+                }
+            }
         }
 
         /// <summary>
