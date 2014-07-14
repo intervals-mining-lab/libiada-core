@@ -21,8 +21,7 @@ namespace LibiadaCore.Core.SimpleTypes
                 return true;
             }
 
-            return this.EqualsAsPhantom(other as ValuePhantom) || this.Equals(other as NullValue) ||
-                   this.EqualsAsElement(other as IBaseObject);
+            return EqualsAsPhantom(other as ValuePhantom) || Equals(other as NullValue) || EqualsAsElement(other as IBaseObject);
         }
 
         /// <summary>
@@ -38,9 +37,9 @@ namespace LibiadaCore.Core.SimpleTypes
             {
                 for (int i = 0; i < messagePhantom.Cardinality; i++)
                 {
-                    if (!this.Contains(messagePhantom[i]))
+                    if (!Contains(messagePhantom[i]))
                     {
-                        this.Add(messagePhantom[i]);
+                        Add(messagePhantom[i]);
                     }
                 }
             }
@@ -69,7 +68,7 @@ namespace LibiadaCore.Core.SimpleTypes
         /// </returns>
         public override string ToString()
         {
-            return this.Elements[0].ToString();
+            return Elements[0].ToString();
         }
 
         /// <summary>
@@ -79,9 +78,9 @@ namespace LibiadaCore.Core.SimpleTypes
         public new IBaseObject Clone()
         {
             var clone = new ValuePhantom();
-            for (int i = 0; i < this.Elements.Count; i++)
+            for (int i = 0; i < Elements.Count; i++)
             {
-                clone.Add(this.Elements[i]);
+                clone.Add(Elements[i]);
             }
             return clone;
         }
@@ -102,7 +101,7 @@ namespace LibiadaCore.Core.SimpleTypes
                 return false;
             }
 
-            return this.Cardinality == 0;
+            return Cardinality == 0;
         }
 
         /// <summary>
@@ -116,9 +115,9 @@ namespace LibiadaCore.Core.SimpleTypes
         /// </returns>
         private bool EqualsAsElement(IBaseObject baseObject)
         {
-            for (int i = 0; i < this.Cardinality; i++)
+            for (int i = 0; i < Cardinality; i++)
             {
-                if (this.IndexOf(baseObject) != -1)
+                if (IndexOf(baseObject) != -1)
                 {
                     return true;
                 }

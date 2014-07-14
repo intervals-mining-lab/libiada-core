@@ -46,8 +46,8 @@
         /// </returns>
         public bool Next()
         {
-            this.i++;
-            return (this.starts.Count() > this.i) && (this.ends.Count() > this.i);
+            i++;
+            return (starts.Count() > i) && (ends.Count() > i);
         }
 
         /// <summary>
@@ -58,7 +58,7 @@
         /// </returns>
         public int GetStartPosition()
         {
-            return this.starts[this.i];
+            return starts[i];
         }
 
         /// <summary>
@@ -69,7 +69,7 @@
         /// </returns>
         public int GetEndPosition()
         {
-            return this.ends[this.i];
+            return ends[i];
         }
     }
 }

@@ -27,8 +27,8 @@ namespace LibiadaCore.Tests.Misc.SpaceReorganizers
         [SetUp]
         public void Initialization()
         {
-            this.chain = new Chain("adbaacbbaaca");
-            this.baseChain = new BaseChain("adbaacbbaaca");
+            chain = new Chain("adbaacbbaaca");
+            baseChain = new BaseChain("adbaacbbaaca");
         }
 
         /// <summary>
@@ -39,8 +39,8 @@ namespace LibiadaCore.Tests.Misc.SpaceReorganizers
         public void FromParentToChildTest()
         {
             var reorganizer = new NullReorganizer();
-            var result = reorganizer.Reorganize(this.chain);
-            Assert.AreEqual(this.baseChain, result);
+            var result = reorganizer.Reorganize(chain);
+            Assert.AreEqual(baseChain, result);
         }
 
         /// <summary>
@@ -51,8 +51,8 @@ namespace LibiadaCore.Tests.Misc.SpaceReorganizers
         public void FromChildToParentTest()
         {
             var reorganizer = new NullReorganizer();
-            var result = reorganizer.Reorganize(this.baseChain);
-            Assert.AreEqual(this.chain, result);
+            var result = reorganizer.Reorganize(baseChain);
+            Assert.AreEqual(chain, result);
         }
     }
 }

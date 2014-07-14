@@ -19,7 +19,7 @@ namespace LibiadaCore.Tests.Core.Characteristics.Calculators
         [TestFixtureSetUp]
         public void Initialization()
         {
-            this.Calculator = new AverageRemotenessDispersion();
+            Calculator = new AverageRemotenessDispersion();
         }
 
         /// <summary>
@@ -39,7 +39,7 @@ namespace LibiadaCore.Tests.Core.Characteristics.Calculators
         [TestCase(0, Link.Both, 0)]
         public void CongenericCalculationTest(int index, Link link, double value)
         {
-            this.CongenericChainCharacteristicTest(index, link, value);
+            CongenericChainCharacteristicTest(index, link, value);
         }
 
         [TestCase(0, Link.None, 0.06088)]/*
@@ -50,7 +50,7 @@ namespace LibiadaCore.Tests.Core.Characteristics.Calculators
         */
         public void ChainCalculationTest(int index, Link link, double value)
         {
-            this.ChainCharacteristicTest(0, link, value);
+            ChainCharacteristicTest(0, link, value);
         }
     }
 }

@@ -27,7 +27,7 @@ namespace LibiadaCore.Core.Characteristics.Calculators
         /// </returns>
         public double Calculate(CongenericChain chain, Link link)
         {
-            return Math.Log(this.geometricMean.Calculate(chain, link), 2);
+            return Math.Log(geometricMean.Calculate(chain, link), 2);
         }
 
         /// <summary>
@@ -44,7 +44,7 @@ namespace LibiadaCore.Core.Characteristics.Calculators
         /// </returns>
         public double Calculate(Chain chain, Link link)
         {
-            return Math.Log(this.geometricMean.Calculate(chain, link), 2);
+            return Math.Log(geometricMean.Calculate(chain, link), 2);
         }
 
         /// <summary>

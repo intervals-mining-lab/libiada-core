@@ -49,7 +49,7 @@
                 result.Add(new List<double>());
                 for (int j = 0; j < chain.Alphabet.Cardinality; j++)
                 {
-                    result[i].Add(this.Calculate(chain, chain.Alphabet[i], chain.Alphabet[j], link));
+                    result[i].Add(Calculate(chain, chain.Alphabet[i], chain.Alphabet[j], link));
                 }
             }
 

@@ -31,7 +31,7 @@ namespace LibiadaCore.Core.Characteristics.Calculators
         /// </returns>
         public double Calculate(CongenericChain chain, Link link)
         {
-            return this.averageRemoteness.Calculate(chain, link);
+            return averageRemoteness.Calculate(chain, link);
         }
 
         /// <summary>
@@ -48,8 +48,8 @@ namespace LibiadaCore.Core.Characteristics.Calculators
         /// </returns>
         public double Calculate(Chain chain, Link link)
         {
-            double g = this.averageRemoteness.Calculate(chain, link);
-            double max = Math.Log(this.alphabetCardinality.Calculate(chain, link), 2);
+            double g = averageRemoteness.Calculate(chain, link);
+            double max = Math.Log(alphabetCardinality.Calculate(chain, link), 2);
             return g - max;
         }
 

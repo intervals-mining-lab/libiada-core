@@ -40,7 +40,7 @@ namespace LibiadaCore.Core.Characteristics.Calculators
             int count = 0;
             for (int i = 0; i < chain.Alphabet.Cardinality; i++)
             {
-                count += (int)this.Calculate(chain.CongenericChain(i), link);
+                count += (int)Calculate(chain.CongenericChain(i), link);
             }
 
             return count;

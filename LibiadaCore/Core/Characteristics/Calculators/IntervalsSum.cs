@@ -1,7 +1,7 @@
 ﻿namespace LibiadaCore.Core.Characteristics.Calculators
 {
     using System;
-    using System.Collections.Generic;
+    using System.Linq;
 
     /// <summary>
     /// Суммарная длина интервалов данной цепи.
@@ -26,13 +26,8 @@
         public double Calculate(CongenericChain chain, Link link)
         {
             var intervals = chain.GetIntervals(link);
-            long sum = 0;
-            for (int i = 0; i < intervals.Length; i++)
-            {
-                sum += intervals[i];
-            }
 
-            return sum;
+            return intervals.Sum(interval => interval);
         }
 
         /// <summary>
@@ -50,9 +45,10 @@
         public double Calculate(Chain chain, Link link)
         {
             long sum = 0;
+
             for (int i = 0; i < chain.Alphabet.Cardinality; i++)
             {
-                sum += (long)this.Calculate(chain.CongenericChain(i), link);
+                sum += (long)Calculate(chain.CongenericChain(i), link);
             }
 
             return sum;

@@ -19,12 +19,12 @@
         {
             get
             {
-                return this.Get(index);
+                return Get(index);
             }
 
             set
             {
-                this.Add(value, index);
+                Add(value, index);
             }
         }
 

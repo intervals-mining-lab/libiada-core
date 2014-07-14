@@ -1,6 +1,5 @@
 ﻿namespace LibiadaCore.Core.IntervalsManagers
 {
-    using System.Collections.Generic;
     using System.ComponentModel;
 
     /// <summary>
@@ -31,7 +30,7 @@
         /// <returns>List of intervals.</returns>
         public int[] GetIntervals(Link link)
         {
-            int[] result;// = new List<int>(this.Intervals);
+            int[] result;// = new List<int>(Intervals);
             switch (link)
             {
                 case Link.None:

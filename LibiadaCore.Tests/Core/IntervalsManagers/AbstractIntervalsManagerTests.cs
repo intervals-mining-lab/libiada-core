@@ -38,14 +38,14 @@
         /// </param>
         protected void IntervalsManagerTest(int index, Link link)
         {
-            this.intervalsManager = new CongenericIntervalsManager(this.congenericChains[index]);
-            var intervals = this.allIntervals[index][link];
+            intervalsManager = new CongenericIntervalsManager(congenericChains[index]);
+            var intervals = allIntervals[index][link];
             
-            Assert.AreEqual(this.intervalsManager.GetIntervals(link).Length, intervals.Count);
+            Assert.AreEqual(intervalsManager.GetIntervals(link).Length, intervals.Count);
 
             for (int i = 0; i < intervals.Count; i++)
             {
-                Assert.AreEqual(intervals[i], this.intervalsManager.GetIntervals(link)[i]);
+                Assert.AreEqual(intervals[i], intervalsManager.GetIntervals(link)[i]);
             }
         }
     }

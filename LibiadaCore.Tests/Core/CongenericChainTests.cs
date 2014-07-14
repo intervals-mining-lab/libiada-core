@@ -32,9 +32,9 @@ namespace LibiadaCore.Tests.Core
         [SetUp]
         public void Initialization()
         {
-            this.message = new ValueChar('1');
-            this.congenericChain = new CongenericChain(10, this.message);
-            this.wrongMessage = new ValueChar('2');
+            message = new ValueChar('1');
+            congenericChain = new CongenericChain(10, message);
+            wrongMessage = new ValueChar('2');
         }
 
         /// <summary>
@@ -43,8 +43,8 @@ namespace LibiadaCore.Tests.Core
         [Test]
         public void ConstructorTest()
         {
-            Assert.AreEqual(10, this.congenericChain.GetLength());
-            Assert.AreEqual(this.message, this.congenericChain.Element);
+            Assert.AreEqual(10, congenericChain.GetLength());
+            Assert.AreEqual(message, congenericChain.Element);
         }
 
         /// <summary>
@@ -53,11 +53,11 @@ namespace LibiadaCore.Tests.Core
         [Test]
         public void IndependenceMessageTest()
         {
-            this.congenericChain = new CongenericChain(10, this.message);
+            congenericChain = new CongenericChain(10, message);
 
-            var newMessage = (ValueChar)this.congenericChain.Element;
+            var newMessage = (ValueChar)congenericChain.Element;
 
-            Assert.AreNotSame(this.congenericChain.Element, newMessage);
+            Assert.AreNotSame(congenericChain.Element, newMessage);
         }
 
         /// <summary>
@@ -66,8 +66,8 @@ namespace LibiadaCore.Tests.Core
         [Test]
         public void AddTest()
         {
-            this.congenericChain.Add(this.message, 3);
-            Assert.AreEqual(this.message, this.congenericChain.Get(3));
+            congenericChain.Add(message, 3);
+            Assert.AreEqual(message, congenericChain.Get(3));
         }
 
         /// <summary>
@@ -76,9 +76,9 @@ namespace LibiadaCore.Tests.Core
         [Test]
         public void WrongMessageTest()
         {
-            this.congenericChain.Add(this.wrongMessage, 4);
-            Assert.AreNotEqual(this.wrongMessage, this.congenericChain.Get(4));
-            Assert.AreEqual(NullValue.Instance(), this.congenericChain.Get(4));
+            congenericChain.Add(wrongMessage, 4);
+            Assert.AreNotEqual(wrongMessage, congenericChain.Get(4));
+            Assert.AreEqual(NullValue.Instance(), congenericChain.Get(4));
         }
 
         /// <summary>
@@ -87,10 +87,10 @@ namespace LibiadaCore.Tests.Core
         [Test]
         public void RemoveTest()
         {
-            this.congenericChain.Add(this.message, 3);
-            this.congenericChain.RemoveAt(3);
-            Assert.AreNotEqual(this.message, this.congenericChain.Get(3));
-            Assert.AreEqual(NullValue.Instance(), this.congenericChain.Get(3));
+            congenericChain.Add(message, 3);
+            congenericChain.RemoveAt(3);
+            Assert.AreNotEqual(message, congenericChain.Get(3));
+            Assert.AreEqual(NullValue.Instance(), congenericChain.Get(3));
         }
     }
 }

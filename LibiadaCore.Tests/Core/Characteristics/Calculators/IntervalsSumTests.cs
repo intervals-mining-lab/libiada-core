@@ -17,7 +17,7 @@
         [TestFixtureSetUp]
         public void Initialization()
         {
-            this.Calculator = new IntervalsSum();
+            Calculator = new IntervalsSum();
         }
 
         /// <summary>
@@ -69,7 +69,7 @@
         [TestCase(5, Link.Cycle, 5)]
         public void CongenericCalculationTest(int index, Link link, double value)
         {
-            this.CongenericChainCharacteristicTest(index, link, value);
+            CongenericChainCharacteristicTest(index, link, value);
         }
 
         /// <summary>
@@ -91,7 +91,7 @@
         [TestCase(0, Link.Cycle, 30)]
         public void ChainCalculationTest(int index, Link link, double value)
         {
-            this.ChainCharacteristicTest(index, link, value);
+            ChainCharacteristicTest(index, link, value);
         }
     }
 }

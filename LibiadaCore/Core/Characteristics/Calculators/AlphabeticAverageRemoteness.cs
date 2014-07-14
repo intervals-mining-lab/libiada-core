@@ -47,7 +47,7 @@
         public double Calculate(Chain chain, Link link)
         {
             int alphabetCardinality = chain.Alphabet.Cardinality;
-            return Math.Log(this.geometricMean.Calculate(chain, link), alphabetCardinality);
+            return Math.Log(geometricMean.Calculate(chain, link), alphabetCardinality);
         }
 
         /// <summary>

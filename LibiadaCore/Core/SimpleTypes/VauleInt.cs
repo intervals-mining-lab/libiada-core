@@ -20,7 +20,7 @@ namespace LibiadaCore.Core.SimpleTypes
         /// </param>
         public ValueInt(int i)
         {
-            this.value = i;
+            value = i;
         }
 
         /// <summary>
@@ -57,7 +57,7 @@ namespace LibiadaCore.Core.SimpleTypes
         /// </returns>
         public IBaseObject Clone()
         {
-            return new ValueInt(this.value);
+            return new ValueInt(value);
         }
 
         /// <summary>
@@ -79,7 +79,7 @@ namespace LibiadaCore.Core.SimpleTypes
                 return true;
             }
 
-            return this.Equals((ValueInt)other);
+            return Equals((ValueInt)other);
         }
 
         /// <summary>
@@ -91,7 +91,7 @@ namespace LibiadaCore.Core.SimpleTypes
         /// <filterpriority>2</filterpriority>
         public override string ToString()
         {
-            return this.value.ToString(CultureInfo.InvariantCulture);
+            return value.ToString(CultureInfo.InvariantCulture);
         }
 
         /// <summary>
@@ -110,7 +110,7 @@ namespace LibiadaCore.Core.SimpleTypes
                 return false;
             }
 
-            return this.value == other.value;
+            return value == other.value;
         }
 
         /// <summary>
@@ -121,7 +121,7 @@ namespace LibiadaCore.Core.SimpleTypes
         /// </returns>
         public override int GetHashCode()
         {
-            return this.value.GetHashCode();
+            return value.GetHashCode();
         }
     }
 }

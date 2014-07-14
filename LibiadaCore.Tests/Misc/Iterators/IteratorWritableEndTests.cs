@@ -25,7 +25,7 @@ namespace LibiadaCore.Tests.Misc.Iterators
         [SetUp]
         public void Initialization()
         {
-            this.chainToIterate = new Chain("121331212231");
+            chainToIterate = new Chain("121331212231");
         }
 
         /// <summary>
@@ -50,7 +50,7 @@ namespace LibiadaCore.Tests.Misc.Iterators
                 iteratorWrite.WriteValue(messages[i++]);
             }
 
-            Assert.AreEqual(this.chainToIterate, toWrite);
+            Assert.AreEqual(chainToIterate, toWrite);
         }
     }
 }

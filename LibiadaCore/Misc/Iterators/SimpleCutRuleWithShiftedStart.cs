@@ -24,8 +24,8 @@
         {
             for (int i = begin; i + windowLength <= chainLength; i += step)
             {
-                this.Starts.Add(i);
-                this.Ends.Add(windowLength + i);
+                Starts.Add(i);
+                Ends.Add(windowLength + i);
             }
         }
 
@@ -37,7 +37,7 @@
         /// </returns>
         public override CutRuleIterator GetIterator()
         {
-            return new CutRuleIterator(this.Starts, this.Ends);
+            return new CutRuleIterator(Starts, Ends);
         }
     }
 }

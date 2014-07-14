@@ -7,9 +7,19 @@
     /// </summary>
     public class AverageRemotenessDispersion : ICalculator
     {
-
+        /// <summary>
+        /// The average remoteness.
+        /// </summary>
         private readonly ICalculator averageRemoteness = new AverageRemoteness();
+
+        /// <summary>
+        /// The elements count.
+        /// </summary>
         private readonly ICalculator elementsCount = new ElementsCount();
+
+        /// <summary>
+        /// The length.
+        /// </summary>
         private readonly ICalculator length = new Length();
 
         /// <summary>
@@ -24,7 +34,6 @@
         /// <returns>
         /// Average remoteness <see cref="double"/> value.
         /// </returns>
-        /// 
         public double Calculate(CongenericChain chain, Link link)
         {
             throw new InvalidOperationException("Дисперсия средней удаленности вычисляется только для полных цепей.");
@@ -45,16 +54,16 @@
         public double Calculate(Chain chain, Link link)
         {
             double result = 0;
-            double g = this.averageRemoteness.Calculate(chain, link);
-            double n = this.length.Calculate(chain, link);
-            
+            double g = averageRemoteness.Calculate(chain, link);
+            double n = length.Calculate(chain, link);
             
             for (int i = 0; i < chain.Alphabet.Cardinality; i++)
             {
-                double nj = this.elementsCount.Calculate(chain.CongenericChain(chain.Alphabet[i]), link);
+                double nj = elementsCount.Calculate(chain.CongenericChain(chain.Alphabet[i]), link);
                 double gj = averageRemoteness.Calculate(chain.CongenericChain(chain.Alphabet[i]), link);
                 result += nj / n * (gj - g) * (gj - g);
             }
+
             return result;
         }
 

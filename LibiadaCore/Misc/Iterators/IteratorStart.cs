@@ -10,7 +10,7 @@ namespace LibiadaCore.Misc.Iterators
     public class IteratorStart : IteratorBase
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="IteratorStart{TResult,TSource}"/> class.
+        /// Initializes a new instance of the <see cref="IteratorStart"/> class.
         /// </summary>
         /// <param name="source">
         /// Source chain.
@@ -36,8 +36,8 @@ namespace LibiadaCore.Misc.Iterators
         /// </returns>
         public override bool Next()
         {
-            this.Position += this.Step;
-            return this.Position <= this.MaxPosition;
+            Position += Step;
+            return Position <= MaxPosition;
         }
 
         /// <summary>
@@ -48,7 +48,7 @@ namespace LibiadaCore.Misc.Iterators
         /// </summary>
         public override void Reset()
         {
-            this.Position = -this.Step;
+            Position = -Step;
         }
     }
 }

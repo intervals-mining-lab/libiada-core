@@ -1,7 +1,7 @@
 namespace LibiadaCore.Core.Characteristics.Calculators
 {
     using System;
-    using System.Collections.Generic;
+    using System.Linq;
 
     /// <summary>
     /// Characteristic of chain depth.
@@ -26,13 +26,8 @@ namespace LibiadaCore.Core.Characteristics.Calculators
         public double Calculate(CongenericChain chain, Link link)
         {
             var intervals = chain.GetIntervals(link);
-            double result = 0;
-            for (int i = 0; i < intervals.Length; i++)
-            {
-                result += Math.Log(intervals[i], 2);
-            }
 
-            return result;
+            return intervals.Sum(interval => Math.Log(interval, 2));
         }
 
         /// <summary>
@@ -52,7 +47,7 @@ namespace LibiadaCore.Core.Characteristics.Calculators
             double result = 0;
             for (int i = 0; i < chain.Alphabet.Cardinality; i++)
             {
-                result += this.Calculate(chain.CongenericChain(i), link);
+                result += Calculate(chain.CongenericChain(i), link);
             }
 
             return result;

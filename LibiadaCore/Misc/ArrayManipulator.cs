@@ -2,7 +2,6 @@
 {
     using System;
     using System.Collections.Generic;
-    using System.Linq;
 
     /// <summary>
     /// Static class with methods for array manipulation.
@@ -58,6 +57,7 @@
         public static int[] AllIndexesOf<T>(T[] source, T element)
         {
             var result = new List<int>();
+
             for (int i = 0; i < source.Length; i++)
             {
                 if (source[i].Equals(element))
@@ -67,10 +67,6 @@
             }
 
             return result.ToArray();
-
-            // var indexMap = source.Select((b, i) => b.Equals(element) ? i : -1);
-            //var indexes = indexMap.Where(i => i != -1);
-            // return indexes.ToArray();
         }
 
         /// <summary>
@@ -97,10 +93,6 @@
             }
 
             return result.ToArray();
-
-            // var indexMap = source.Select((b, i) => b.Equals(element) ? i : -1);
-            //var indexes = indexMap.Where(i => i != -1);
-            // return indexes.ToArray();
         }
     }
 }

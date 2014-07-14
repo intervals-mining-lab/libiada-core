@@ -20,7 +20,7 @@
         [SetUp]
         public void Initialization()
         {
-            this.Calculator = new NormalizedPartialDependenceCoefficient();
+            Calculator = new NormalizedPartialDependenceCoefficient();
         }
 
         /// <summary>
@@ -54,7 +54,7 @@
         [TestCase(17, 0.1401, 0.0578)]
         public void NormalizedK1Test(int index, double firstValue, double secondValue)
         {
-            this.CalculationTest(index, firstValue, secondValue);
+            CalculationTest(index, firstValue, secondValue);
         }
 
         /// <summary>
@@ -63,21 +63,21 @@
         [Test]
         public void GetNormalizedK1Test()
         {
-            List<List<double>> result = this.Calculator.Calculate(this.Chains[1], Link.End);
+            List<List<double>> result = Calculator.Calculate(Chains[1], Link.End);
 
             Assert.AreEqual(0, result[0][0]);
             Assert.AreEqual(0, result[0][1]);
             Assert.AreEqual(0, result[1][0]);
             Assert.AreEqual(0, result[1][1]);
 
-            result = this.Calculator.Calculate(this.Chains[10], Link.End);
+            result = Calculator.Calculate(Chains[10], Link.End);
 
             Assert.AreEqual(0, result[0][0]);
             Assert.AreEqual(0.175, Math.Round(result[0][1], 3));
             Assert.AreEqual(0.086, Math.Round(result[1][0], 3));
             Assert.AreEqual(0, result[1][1]);
 
-            result = this.Calculator.Calculate(this.Chains[18], Link.End);
+            result = Calculator.Calculate(Chains[18], Link.End);
 
             Assert.AreEqual(0, result[0][0]);
             Assert.AreEqual(0.1352, Math.Round(result[0][1], 4));

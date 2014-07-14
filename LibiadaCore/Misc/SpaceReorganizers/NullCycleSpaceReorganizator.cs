@@ -35,31 +35,31 @@ namespace LibiadaCore.Misc.SpaceReorganizers
         /// Source chain.
         /// </param>
         /// <returns>
-        /// <see cref="TResult"/>.
+        /// <see cref="AbstractChain"/>.
         /// </returns>
         /// <exception cref="InvalidOperationException">
         /// Thrown if level is less than 0. 
         /// </exception>
         public override AbstractChain Reorganize(AbstractChain source)
         {
-            if (this.level < 0)
+            if (level < 0)
             {
                 throw new InvalidOperationException("Markov chain level can't be less than 0");
             }
 
-            if (this.level == 0)
+            if (level == 0)
             {
                 return source;
             }
 
             var result = new BaseChain();
-            result.ClearAndSetNewLength(source.GetLength() + this.level);
+            result.ClearAndSetNewLength(source.GetLength() + level);
             for (int i = 0; i < source.GetLength(); i++)
             {
                 result[i] = source[i];
             }
 
-            var iterator = new IteratorStart(source, this.level, 1);
+            var iterator = new IteratorStart(source, level, 1);
             iterator.Reset();
             iterator.Next();
             AbstractChain addition = iterator.Current();

@@ -29,8 +29,8 @@
         [SetUp]
         public void Initialization()
         {
-            this.alphabet1 = new Alphabet();
-            this.alphabet2 = new Alphabet();
+            alphabet1 = new Alphabet();
+            alphabet2 = new Alphabet();
         }
 
         /// <summary>
@@ -50,8 +50,8 @@
         [ExpectedException(typeof(Exception))]
         public void AddSameTest()
         {
-            this.alphabet1.Add(new ValueInt(2));
-            this.alphabet1.Add(new ValueInt(2));
+            alphabet1.Add(new ValueInt(2));
+            alphabet1.Add(new ValueInt(2));
         }
 
         /// <summary>
@@ -60,14 +60,14 @@
         [Test]
         public void GetTest()
         {
-            this.alphabet1.Add(new ValueInt(2));
-            this.alphabet1.Add(new ValueInt(3));
-            this.alphabet1.Add(new ValueInt(4));
-            this.alphabet1.Add(new ValueInt(5));
-            Assert.AreEqual(new ValueInt(2), this.alphabet1[0]);
-            Assert.AreEqual(new ValueInt(3), this.alphabet1[1]);
-            Assert.AreEqual(new ValueInt(4), this.alphabet1[2]);
-            Assert.AreEqual(new ValueInt(5), this.alphabet1[3]);
+            alphabet1.Add(new ValueInt(2));
+            alphabet1.Add(new ValueInt(3));
+            alphabet1.Add(new ValueInt(4));
+            alphabet1.Add(new ValueInt(5));
+            Assert.AreEqual(new ValueInt(2), alphabet1[0]);
+            Assert.AreEqual(new ValueInt(3), alphabet1[1]);
+            Assert.AreEqual(new ValueInt(4), alphabet1[2]);
+            Assert.AreEqual(new ValueInt(5), alphabet1[3]);
         }
 
         /// <summary>
@@ -76,15 +76,15 @@
         [Test]
         public void IndependentNumberTest()
         {
-            this.alphabet1.Add(new ValueInt(2));
-            this.alphabet1.Add(new ValueInt(1));
-            this.alphabet1.Add(new ValueInt(3));
-            this.alphabet1.Add(new ValueInt(4));
-            this.alphabet1[0] = new ValueInt(3);
-            Assert.AreEqual(new ValueInt(2), this.alphabet1[0]);
-            Assert.AreEqual(new ValueInt(1), this.alphabet1[1]);
-            Assert.AreEqual(new ValueInt(3), this.alphabet1[2]);
-            Assert.AreEqual(new ValueInt(4), this.alphabet1[3]);
+            alphabet1.Add(new ValueInt(2));
+            alphabet1.Add(new ValueInt(1));
+            alphabet1.Add(new ValueInt(3));
+            alphabet1.Add(new ValueInt(4));
+            alphabet1[0] = new ValueInt(3);
+            Assert.AreEqual(new ValueInt(2), alphabet1[0]);
+            Assert.AreEqual(new ValueInt(1), alphabet1[1]);
+            Assert.AreEqual(new ValueInt(3), alphabet1[2]);
+            Assert.AreEqual(new ValueInt(4), alphabet1[3]);
         }
 
         /// <summary>
@@ -93,15 +93,15 @@
         [Test]
         public void IndependentStringTest()
         {
-            this.alphabet1.Add(new ValueString("2"));
-            this.alphabet1.Add(new ValueString("3"));
-            this.alphabet1.Add(new ValueString("5"));
-            this.alphabet1.Add(new ValueString("1"));
-            this.alphabet1[0] = new ValueString("3");
-            Assert.AreEqual(new ValueString("2"), this.alphabet1[0]);
-            Assert.AreEqual(new ValueString("3"), this.alphabet1[1]);
-            Assert.AreEqual(new ValueString("5"), this.alphabet1[2]);
-            Assert.AreEqual(new ValueString("1"), this.alphabet1[3]);
+            alphabet1.Add(new ValueString("2"));
+            alphabet1.Add(new ValueString("3"));
+            alphabet1.Add(new ValueString("5"));
+            alphabet1.Add(new ValueString("1"));
+            alphabet1[0] = new ValueString("3");
+            Assert.AreEqual(new ValueString("2"), alphabet1[0]);
+            Assert.AreEqual(new ValueString("3"), alphabet1[1]);
+            Assert.AreEqual(new ValueString("5"), alphabet1[2]);
+            Assert.AreEqual(new ValueString("1"), alphabet1[3]);
         }
 
         /// <summary>
@@ -111,7 +111,7 @@
         [ExpectedException(typeof(NullReferenceException))]
         public void NullTest()
         {
-            this.alphabet1.Add(null);
+            alphabet1.Add(null);
         }
 
         /// <summary>
@@ -120,10 +120,10 @@
         [Test]
         public void CardinalityTest()
         {
-            this.alphabet1.Add(new ValueInt(100));
-            this.alphabet1.Add(new ValueInt(200));
-            this.alphabet1.Add(new ValueInt(300));
-            Assert.AreEqual(3, this.alphabet1.Cardinality);
+            alphabet1.Add(new ValueInt(100));
+            alphabet1.Add(new ValueInt(200));
+            alphabet1.Add(new ValueInt(300));
+            Assert.AreEqual(3, alphabet1.Cardinality);
         }
 
         /// <summary>
@@ -132,13 +132,13 @@
         [Test]
         public void RemoveTest()
         {
-            this.alphabet1.Add(new ValueInt(100));
-            this.alphabet1.Add(new ValueInt(200));
-            this.alphabet1.Add(new ValueInt(300));
-            this.alphabet1.Add(new ValueInt(400));
-            this.alphabet1.Remove(2);
-            Assert.AreEqual(3, this.alphabet1.Cardinality);
-            Assert.AreEqual(new ValueInt(400), this.alphabet1[2]);
+            alphabet1.Add(new ValueInt(100));
+            alphabet1.Add(new ValueInt(200));
+            alphabet1.Add(new ValueInt(300));
+            alphabet1.Add(new ValueInt(400));
+            alphabet1.Remove(2);
+            Assert.AreEqual(3, alphabet1.Cardinality);
+            Assert.AreEqual(new ValueInt(400), alphabet1[2]);
         }
 
         /// <summary>
@@ -147,9 +147,9 @@
         [Test]
         public void CloneTest()
         {
-            Assert.AreNotSame(this.alphabet1, this.alphabet1.Clone());
+            Assert.AreNotSame(alphabet1, alphabet1.Clone());
 
-            Assert.IsTrue(this.alphabet1.Equals(this.alphabet1.Clone()));
+            Assert.IsTrue(alphabet1.Equals(alphabet1.Clone()));
         }
 
         /// <summary>
@@ -158,14 +158,14 @@
         [Test]
         public void EqualsTest()
         {
-            this.alphabet1.Add(new ValueChar('a'));
-            this.alphabet1.Add(new ValueChar('b'));
-            this.alphabet1.Add(new ValueChar('c'));
-            this.alphabet2.Add(new ValueChar('a'));
-            this.alphabet2.Add(new ValueChar('b'));
-            this.alphabet2.Add(new ValueChar('c'));
-            Assert.IsTrue(this.alphabet1.Equals(this.alphabet1.Clone()));
-            Assert.IsTrue(this.alphabet1.Equals(this.alphabet2));
+            alphabet1.Add(new ValueChar('a'));
+            alphabet1.Add(new ValueChar('b'));
+            alphabet1.Add(new ValueChar('c'));
+            alphabet2.Add(new ValueChar('a'));
+            alphabet2.Add(new ValueChar('b'));
+            alphabet2.Add(new ValueChar('c'));
+            Assert.IsTrue(alphabet1.Equals(alphabet1.Clone()));
+            Assert.IsTrue(alphabet1.Equals(alphabet2));
         }
 
         /// <summary>
@@ -174,14 +174,14 @@
         [Test]
         public void EqualsForAlphabetWithEqualsCompositionButNotEqualsOrderTest()
         {
-            this.alphabet1.Add(new ValueChar('a'));
-            this.alphabet1.Add(new ValueChar('b'));
-            this.alphabet1.Add(new ValueChar('c'));
-            this.alphabet2.Add(new ValueChar('a'));
-            this.alphabet2.Add(new ValueChar('b'));
-            this.alphabet2.Add(new ValueChar('c'));
-            Assert.IsTrue(this.alphabet1.Equals(this.alphabet1.Clone()));
-            Assert.IsTrue(this.alphabet1.Equals(this.alphabet2));
+            alphabet1.Add(new ValueChar('a'));
+            alphabet1.Add(new ValueChar('b'));
+            alphabet1.Add(new ValueChar('c'));
+            alphabet2.Add(new ValueChar('a'));
+            alphabet2.Add(new ValueChar('b'));
+            alphabet2.Add(new ValueChar('c'));
+            Assert.IsTrue(alphabet1.Equals(alphabet1.Clone()));
+            Assert.IsTrue(alphabet1.Equals(alphabet2));
         }
 
         /// <summary>
@@ -190,13 +190,13 @@
         [Test]
         public void ContainsTest()
         {
-            this.alphabet1.Add(new ValueChar('a'));
-            this.alphabet1.Add(new ValueChar('b'));
-            this.alphabet1.Add(new ValueChar('c'));
-            Assert.IsTrue(this.alphabet1.Contains(new ValueChar('a')));
-            Assert.IsTrue(this.alphabet1.Contains(new ValueChar('b')));
-            Assert.IsTrue(this.alphabet1.Contains(new ValueChar('c')));
-            Assert.IsFalse(this.alphabet1.Contains(new ValueChar('d')));
+            alphabet1.Add(new ValueChar('a'));
+            alphabet1.Add(new ValueChar('b'));
+            alphabet1.Add(new ValueChar('c'));
+            Assert.IsTrue(alphabet1.Contains(new ValueChar('a')));
+            Assert.IsTrue(alphabet1.Contains(new ValueChar('b')));
+            Assert.IsTrue(alphabet1.Contains(new ValueChar('c')));
+            Assert.IsFalse(alphabet1.Contains(new ValueChar('d')));
         }
 
         /// <summary>
@@ -205,12 +205,12 @@
         [Test]
         public void IndexOfTest()
         {
-            this.alphabet1.Add(new ValueChar('a'));
-            this.alphabet1.Add(new ValueChar('b'));
-            this.alphabet1.Add(new ValueChar('c'));
-            Assert.IsTrue(this.alphabet1.IndexOf(new ValueChar('d')).Equals(-1));
-            Assert.IsTrue(this.alphabet1.IndexOf(new ValueChar('a')).Equals(0));
-            Assert.IsTrue(this.alphabet1.IndexOf(new ValueChar('c')).Equals(2));
+            alphabet1.Add(new ValueChar('a'));
+            alphabet1.Add(new ValueChar('b'));
+            alphabet1.Add(new ValueChar('c'));
+            Assert.IsTrue(alphabet1.IndexOf(new ValueChar('d')).Equals(-1));
+            Assert.IsTrue(alphabet1.IndexOf(new ValueChar('a')).Equals(0));
+            Assert.IsTrue(alphabet1.IndexOf(new ValueChar('c')).Equals(2));
         }
 
         /// <summary>
@@ -223,15 +223,15 @@
             var c = new ValueChar('c');
             var e = new ValueChar('e');
 
-            this.alphabet1.Add(a);
-            this.alphabet1.Add(new ValueChar('b'));
-            this.alphabet1.Add(c);
-            this.alphabet1.Add(new ValueChar('d'));
-            this.alphabet1.Add(e);
+            alphabet1.Add(a);
+            alphabet1.Add(new ValueChar('b'));
+            alphabet1.Add(c);
+            alphabet1.Add(new ValueChar('d'));
+            alphabet1.Add(e);
 
-            Assert.AreNotSame(e, this.alphabet1[4]);
-            Assert.AreNotSame(c, this.alphabet1[2]);
-            Assert.AreNotSame(a, this.alphabet1[0]);
+            Assert.AreNotSame(e, alphabet1[4]);
+            Assert.AreNotSame(c, alphabet1[2]);
+            Assert.AreNotSame(a, alphabet1[0]);
         }
 
         /// <summary>
@@ -245,15 +245,15 @@
             var c = new ValueChar('c');
             var d = new ValueChar('d');
             var e = new ValueChar('e');
-            this.alphabet1.Add(a);
-            this.alphabet1.Add(b);
-            this.alphabet1.Add(c);
-            this.alphabet1.Add(d);
-            this.alphabet1.Add(e);
+            alphabet1.Add(a);
+            alphabet1.Add(b);
+            alphabet1.Add(c);
+            alphabet1.Add(d);
+            alphabet1.Add(e);
 
-            Assert.AreNotSame(e, this.alphabet1[4]);
-            Assert.AreNotSame(c, this.alphabet1[2]);
-            Assert.AreNotSame(a, this.alphabet1[0]);
+            Assert.AreNotSame(e, alphabet1[4]);
+            Assert.AreNotSame(c, alphabet1[2]);
+            Assert.AreNotSame(a, alphabet1[0]);
         }
     }
 }

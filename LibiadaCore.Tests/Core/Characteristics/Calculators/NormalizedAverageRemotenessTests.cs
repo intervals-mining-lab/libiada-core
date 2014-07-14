@@ -19,7 +19,7 @@ namespace LibiadaCore.Tests.Core.Characteristics.Calculators
         [TestFixtureSetUp]
         public void Initialization()
         {
-            this.Calculator = new NormalizedAverageRemoteness();
+            Calculator = new NormalizedAverageRemoteness();
         }
 
         /// <summary>
@@ -36,17 +36,17 @@ namespace LibiadaCore.Tests.Core.Characteristics.Calculators
             double pIntervalsCount = 3;
             double deltaG = Math.Pow(interval1 * interval2 * interval3, 1 / pIntervalsCount);
             double pAverageRemoteness = Math.Log(deltaG, 2);
-            this.CongenericChainCharacteristicTest(0, Link.Start, pAverageRemoteness);
+            CongenericChainCharacteristicTest(0, Link.Start, pAverageRemoteness);
 
             pIntervalsCount = 3;
             deltaG = Math.Pow(interval2 * interval3 * interval4, 1 / pIntervalsCount);
             pAverageRemoteness = Math.Log(deltaG, 2);
-            this.CongenericChainCharacteristicTest(0, Link.End, pAverageRemoteness);
+            CongenericChainCharacteristicTest(0, Link.End, pAverageRemoteness);
 
             pIntervalsCount = 4;
             deltaG = Math.Pow(interval1 * interval2 * interval3 * interval4, 1 / pIntervalsCount);
             pAverageRemoteness = Math.Log(deltaG, 2);
-            this.CongenericChainCharacteristicTest(0, Link.Both, pAverageRemoteness);
+            CongenericChainCharacteristicTest(0, Link.Both, pAverageRemoteness);
         }
     }
 }

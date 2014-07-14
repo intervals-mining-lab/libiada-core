@@ -6,22 +6,16 @@ namespace LibiadaCore.Misc.SpaceReorganizers
     /// <summary>
     /// Space phantom reorganizer.
     /// </summary>
-    /// <typeparam name="TResult">
-    /// Type of result chain.
-    /// </typeparam>
-    /// <typeparam name="TSource">
-    /// Type of source chain.
-    /// </typeparam>
     public class SpacePhantomReorganizer : SpaceReorganizer
     {
         /// <summary>
-        /// Reorganizes <see cref="TSource"/> into <see cref="TResult"/>.
+        /// Reorganizes <see cref="AbstractChain"/> into <see cref="AbstractChain"/>.
         /// </summary>
         /// <param name="source">
         /// Source chain.
         /// </param>
         /// <returns>
-        /// The <see cref="TResult"/>.
+        /// The <see cref="AbstractChain"/>.
         /// </returns>
         public override AbstractChain Reorganize(AbstractChain source)
         {

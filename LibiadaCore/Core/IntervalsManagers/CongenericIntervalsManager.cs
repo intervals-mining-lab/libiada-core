@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-
-namespace LibiadaCore.Core.IntervalsManagers
+﻿namespace LibiadaCore.Core.IntervalsManagers
 {
     using System.Linq;
 
@@ -24,15 +22,30 @@ namespace LibiadaCore.Core.IntervalsManagers
         /// </param>
         public CongenericIntervalsManager(CongenericChain chain)
         {
-            this.building = chain.Building;
-            int count = this.building.Count(b => b.Equals(1));
-            this.intervals = new int[count - 1];
-            this.FillIntervals();
+            building = chain.Building;
+            int count = building.Count(b => b.Equals(1));
+            intervals = new int[count - 1];
+            FillIntervals();
         }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="CongenericIntervalsManager"/> class.
+        /// </summary>
+        /// <param name="chain">
+        /// The chain.
+        /// </param>
+        /// <param name="intervals">
+        /// The intervals.
+        /// </param>
+        /// <param name="start">
+        /// The start.
+        /// </param>
+        /// <param name="end">
+        /// The end.
+        /// </param>
         public CongenericIntervalsManager(Chain chain, int[] intervals, int start, int end)
         {
-            this.building = chain.Building;
+            building = chain.Building;
             this.intervals = intervals;
             Start = start;
             End = end;
@@ -44,16 +57,16 @@ namespace LibiadaCore.Core.IntervalsManagers
         private void FillIntervals()
         {
             // Geting all occurrences of element in building.
-            int[] indexes = ArrayManipulator.AllIndexesOf(this.building, 1);
+            int[] indexes = ArrayManipulator.AllIndexesOf(building, 1);
 
-            this.Start = indexes[0] - (-1);
+            Start = indexes[0] - (-1);
 
-            for (int i = 0; i < this.intervals.Length; i++)
+            for (int i = 0; i < intervals.Length; i++)
             {
-                this.intervals[i] = indexes[i + 1] - indexes[i];
+                intervals[i] = indexes[i + 1] - indexes[i];
             }
 
-            this.End = this.building.Length - indexes[indexes.Length - 1];
+            End = building.Length - indexes[indexes.Length - 1];
         }
     }
 }

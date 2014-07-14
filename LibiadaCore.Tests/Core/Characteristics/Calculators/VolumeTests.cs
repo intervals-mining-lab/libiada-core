@@ -17,7 +17,7 @@
         [TestFixtureSetUp]
         public void Initialization()
         {
-            this.Calculator = new Volume();
+            Calculator = new Volume();
         }
 
         /// <summary>
@@ -63,7 +63,7 @@
         [TestCase(5, Link.Cycle, 1)]
         public void CongenericCalculationTest(int index, Link link, double value)
         {
-            this.CongenericChainCharacteristicTest(index, link, value);
+            CongenericChainCharacteristicTest(index, link, value);
         }
 
         /// <summary>
@@ -85,7 +85,7 @@
         [TestCase(0, Link.Cycle, 5184)]
         public void CalculationTest(int index, Link link, double value)
         {
-            this.ChainCharacteristicTest(index, link, value);
+            ChainCharacteristicTest(index, link, value);
         }
     }
 }

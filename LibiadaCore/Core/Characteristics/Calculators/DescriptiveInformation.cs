@@ -26,7 +26,7 @@ namespace LibiadaCore.Core.Characteristics.Calculators
         /// </returns>
         public double Calculate(CongenericChain chain, Link link)
         {
-            double occupancy = this.arithmeticMean.Calculate(chain, link);
+            double occupancy = arithmeticMean.Calculate(chain, link);
             return Math.Pow(occupancy, 1 / occupancy);
         }
 
@@ -47,7 +47,7 @@ namespace LibiadaCore.Core.Characteristics.Calculators
             double result = 1;
             for (int i = 0; i < chain.Alphabet.Cardinality; i++)
             {
-                result *= this.Calculate(chain.CongenericChain(i), link);
+                result *= Calculate(chain.CongenericChain(i), link);
             }
 
             return result;

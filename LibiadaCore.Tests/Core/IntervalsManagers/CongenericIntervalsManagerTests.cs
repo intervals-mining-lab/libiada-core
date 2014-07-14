@@ -56,7 +56,7 @@
         [TestCase(5, Link.None)]
         public void CongenericIntervalsManagerCreationNoneLinkTest(int index, Link link)
         {
-            this.IntervalsManagerTest(index, link);
+            IntervalsManagerTest(index, link);
         }
     }
 }

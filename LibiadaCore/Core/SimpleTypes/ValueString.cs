@@ -18,7 +18,7 @@ namespace LibiadaCore.Core.SimpleTypes
         /// </param>
         public ValueString(string value)
         {
-            this.Value = (string)value.Clone();
+            Value = (string)value.Clone();
         }
 
         /// <summary>
@@ -36,9 +36,9 @@ namespace LibiadaCore.Core.SimpleTypes
         /// </param>
         /// <returns>
         /// </returns>
-        public static implicit operator string(ValueString @from)
+        public static implicit operator string(ValueString from)
         {
-            return @from.Value;
+            return from.Value;
         }
 
         /// <summary>
@@ -62,7 +62,7 @@ namespace LibiadaCore.Core.SimpleTypes
         /// </returns>
         public IBaseObject Clone()
         {
-            return new ValueString(this.Value);
+            return new ValueString(Value);
         }
 
         /// <summary>
@@ -81,7 +81,7 @@ namespace LibiadaCore.Core.SimpleTypes
                 return true;
             }
 
-            return this.Equals(other as ValueString);
+            return Equals(other as ValueString);
         }
 
         /// <summary>
@@ -92,7 +92,7 @@ namespace LibiadaCore.Core.SimpleTypes
         /// </returns>
         public override string ToString()
         {
-            return this.Value;
+            return Value;
         }
 
         /// <summary>
@@ -111,7 +111,7 @@ namespace LibiadaCore.Core.SimpleTypes
                 return false;
             }
 
-            return string.Equals(this.Value, other.Value);
+            return string.Equals(Value, other.Value);
         }
 
         /// <summary>
@@ -122,7 +122,7 @@ namespace LibiadaCore.Core.SimpleTypes
         /// </returns>
         public override int GetHashCode()
         {
-            return this.Value != null ? this.Value.GetHashCode() : 0;
+            return Value != null ? Value.GetHashCode() : 0;
         }
     }
 }

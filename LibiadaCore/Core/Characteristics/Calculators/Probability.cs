@@ -21,6 +21,7 @@ namespace LibiadaCore.Core.Characteristics.Calculators
         {
             var count = new ElementsCount();
             var length = new Length();
+
             return count.Calculate(chain, link) / length.Calculate(chain, link);
         }
 
@@ -38,13 +39,14 @@ namespace LibiadaCore.Core.Characteristics.Calculators
         /// </returns>
         public double Calculate(Chain chain, Link link)
         {
-            double temp = 0;
+            double result = 0;
+
             for (int i = 0; i < chain.Alphabet.Cardinality; i++)
             {
-                temp += this.Calculate(chain.CongenericChain(i), link);
+                result += Calculate(chain.CongenericChain(i), link);
             }
 
-            return temp > 1 ? 1 : temp;
+            return result > 1 ? 1 : result;
         }
 
         /// <summary>

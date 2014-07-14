@@ -21,7 +21,7 @@ namespace LibiadaCore.Core.Characteristics.Calculators
         /// </returns>
         public double Calculate(CongenericChain chain, Link link)
         {
-            return this.CutCommon(chain);
+            return CutCommon(chain);
         }
 
         /// <summary>
@@ -38,7 +38,7 @@ namespace LibiadaCore.Core.Characteristics.Calculators
         /// </returns>
         public double Calculate(Chain chain, Link link)
         {
-            return this.CutCommon(chain);
+            return CutCommon(chain);
         }
 
         /// <summary>
@@ -65,7 +65,7 @@ namespace LibiadaCore.Core.Characteristics.Calculators
         {
             for (int length = 1; length <= chain.GetLength(); length++)
             {
-                if (this.CheckRecoveryAvailable(chain, length))
+                if (CheckRecoveryAvailable(chain, length))
                 {
                     return length;
                 }
@@ -90,6 +90,7 @@ namespace LibiadaCore.Core.Characteristics.Calculators
         {
             var iterator = new IteratorStart(chain, length, 1);
             var alphabet = new Alphabet();
+
             while (iterator.Next())
             {
                 if (alphabet.Contains(iterator.Current()))

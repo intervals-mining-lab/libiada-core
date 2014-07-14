@@ -25,7 +25,7 @@
                 throw new Exception();
             }
 
-            int count = (int)Math.Floor((double)inputChain.GetLength() / 3);
+            var count = (int)Math.Floor((double)inputChain.GetLength() / 3);
             var outChain = new BaseChain(count);
             for (int i = 0; i < count * 3; i += 3)
             {

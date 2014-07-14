@@ -18,8 +18,8 @@
         /// </param>
         public DefaultCutRule(List<int> starts, List<int> ends)
         {
-            this.Starts.AddRange(starts);
-            this.Ends.AddRange(ends);
+            Starts.AddRange(starts);
+            Ends.AddRange(ends);
         }
 
         /// <summary>
@@ -33,8 +33,8 @@
         /// </param>
         public DefaultCutRule(int start, int end)
         {
-            this.Starts.Add(start);
-            this.Ends.Add(end);
+            Starts.Add(start);
+            Ends.Add(end);
         }
 
         /// <summary>
@@ -45,7 +45,7 @@
         /// </returns>
         public override CutRuleIterator GetIterator()
         {
-            return new CutRuleIterator(this.Starts, this.Ends);
+            return new CutRuleIterator(Starts, Ends);
         }
     }
 }

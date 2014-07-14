@@ -41,8 +41,8 @@
         /// </param>
         protected void CalculationTest(int index, double firstValue, double secondValue)
         {
-            double result1 = this.Calculator.Calculate(this.Chains[index], this.elements["a"], this.elements["b"], Link.End);
-            double result2 = this.Calculator.Calculate(this.Chains[index], this.elements["b"], this.elements["a"], Link.End);
+            double result1 = Calculator.Calculate(Chains[index], elements["a"], elements["b"], Link.End);
+            double result2 = Calculator.Calculate(Chains[index], elements["b"], elements["a"], Link.End);
             Assert.AreEqual(firstValue, result1, 0.0001);
             Assert.AreEqual(secondValue, result2, 0.0001);
         }

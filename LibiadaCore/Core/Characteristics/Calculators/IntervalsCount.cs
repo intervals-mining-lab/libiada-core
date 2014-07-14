@@ -44,9 +44,10 @@ namespace LibiadaCore.Core.Characteristics.Calculators
         public double Calculate(Chain chain, Link link)
         {
             int sum = 0;
+
             for (int i = 0; i < chain.Alphabet.Cardinality; i++)
             {
-                sum += (int)this.Calculate(chain.CongenericChain(i), link);
+                sum += (int)Calculate(chain.CongenericChain(i), link);
             }
 
             return sum;

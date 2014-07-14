@@ -10,7 +10,7 @@ namespace LibiadaCore.Misc.Iterators
     public class IteratorEnd : IteratorBase
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="IteratorEnd{TResult,TSource}"/> class.
+        /// Initializes a new instance of the <see cref="IteratorEnd"/> class.
         /// </summary>
         /// <param name="source">
         /// Source chain.
@@ -36,19 +36,19 @@ namespace LibiadaCore.Misc.Iterators
         /// </returns>
         public override bool Next()
         {
-            this.Position -= this.Step;
-            return this.Position >= 0;
+            Position -= Step;
+            return Position >= 0;
         }
 
         /// <summary>
         /// Returns iterator to the starting position.
         /// Before reading first value 
-        /// <see cref="IteratorEnd{TResult, TSource}.Next()"/> 
+        /// <see cref="IteratorEnd.Next()"/> 
         /// method should be called.
         /// </summary>
         public override void Reset()
         {
-            this.Position = this.Source.GetLength() - this.Length + this.Step;
+            Position = Source.GetLength() - Length + Step;
         }
     }
 }

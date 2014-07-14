@@ -11,7 +11,7 @@ namespace LibiadaCore.Misc.Iterators
     public class IteratorWritableStart : IteratorStart, IWritableIterator
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="IteratorWritableStart{TResult,TSource}"/> class.
+        /// Initializes a new instance of the <see cref="IteratorWritableStart"/> class.
         /// Iterator returns single element and shifts by one element.
         /// </summary>
         /// <param name="source">
@@ -32,7 +32,7 @@ namespace LibiadaCore.Misc.Iterators
         /// </param>
         public void WriteValue(IBaseObject value)
         {
-            this.Source.Add(value, this.Position);
+            Source.Add(value, Position);
         }
     }
 }

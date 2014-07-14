@@ -17,7 +17,7 @@ namespace LibiadaCore.Tests.Core.Characteristics.Calculators
         [TestFixtureSetUp]
         public void Initialization()
         {
-            this.Calculator = new Regularity();
+            Calculator = new Regularity();
         }
 
         /// <summary>
@@ -39,7 +39,7 @@ namespace LibiadaCore.Tests.Core.Characteristics.Calculators
         [TestCase(0, Link.Cycle, 1.8263)]
         public void CongenericCalculationTest(int index, Link link, double value)
         {
-            this.CongenericChainCharacteristicTest(index, link, value);
+            CongenericChainCharacteristicTest(index, link, value);
         }
 
         /// <summary>
@@ -61,7 +61,7 @@ namespace LibiadaCore.Tests.Core.Characteristics.Calculators
         [TestCase(0, Link.Cycle, 0.7917)]
         public void ChainCalculationTest(int index, Link link, double value)
         {
-            this.ChainCharacteristicTest(index, link, value);
+            ChainCharacteristicTest(index, link, value);
         }
     }
 }

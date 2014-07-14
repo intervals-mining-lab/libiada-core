@@ -21,8 +21,8 @@
         {
             for (int i = startShift + step; i <= length; i += step)
             {
-                this.Starts.Add(startShift);
-                this.Ends.Add(i < length ? i : length);
+                Starts.Add(startShift);
+                Ends.Add(i < length ? i : length);
             }
         }
 
@@ -34,7 +34,7 @@
         /// </returns>
         public override CutRuleIterator GetIterator()
         {
-            return new CutRuleIterator(this.Starts, this.Ends);
+            return new CutRuleIterator(Starts, Ends);
         }
     }
 }

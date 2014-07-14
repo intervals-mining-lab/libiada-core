@@ -26,7 +26,7 @@ namespace LibiadaCore.Core.Characteristics.Calculators
         /// </returns>
         public double Calculate(CongenericChain chain, Link link)
         {
-            return Math.Log(chain.GetLength() - this.cutLength.Calculate(chain, link) + 1, 2);
+            return Math.Log(chain.GetLength() - cutLength.Calculate(chain, link) + 1, 2);
         }
 
         /// <summary>
@@ -43,7 +43,7 @@ namespace LibiadaCore.Core.Characteristics.Calculators
         /// </returns>
         public double Calculate(Chain chain, Link link)
         {
-            return Math.Log(chain.GetLength() - this.cutLength.Calculate(chain, link) + 1, 2);
+            return Math.Log(chain.GetLength() - cutLength.Calculate(chain, link) + 1, 2);
         }
 
         /// <summary>

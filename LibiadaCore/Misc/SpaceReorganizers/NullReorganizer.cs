@@ -9,13 +9,13 @@ namespace LibiadaCore.Misc.SpaceReorganizers
     public class NullReorganizer : SpaceReorganizer
     {
         /// <summary>
-        /// Reorganizes <see cref="TSource"/> into <see cref="TResult"/>.
+        /// Reorganizes <see cref="AbstractChain"/> into <see cref="AbstractChain"/>.
         /// </summary>
         /// <param name="source">
         /// Source chain.
         /// </param>
         /// <returns>
-        /// The <see cref="TResult"/>.
+        /// The <see cref="AbstractChain"/>.
         /// </returns>
         public override AbstractChain Reorganize(AbstractChain source)
         {

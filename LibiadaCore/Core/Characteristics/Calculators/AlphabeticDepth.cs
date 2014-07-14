@@ -1,7 +1,7 @@
 ﻿namespace LibiadaCore.Core.Characteristics.Calculators
 {
     using System;
-    using System.Collections.Generic;
+    using System.Linq;
 
     /// <summary>
     /// Depth with logarithm base equals cardinality of alphabet.
@@ -33,19 +33,14 @@
         /// </exception>
         public double Calculate(CongenericChain chain, Link link)
         {
-            if (this.alphabetCardinality == default(int))
+            if (alphabetCardinality == default(int))
             {
                 throw new InvalidOperationException("Глубина в масштабе алфавита может вычисляться только для полной цепи.");
             }
 
             int[] intervals = chain.GetIntervals(link);
-            double result = 0;
-            for (int i = 0; i < intervals.Length; i++)
-            {
-                result += Math.Log(intervals[i], this.alphabetCardinality);
-            }
 
-            return result;
+            return intervals.Sum(interval => Math.Log(interval, alphabetCardinality));
         }
 
         /// <summary>
@@ -62,11 +57,11 @@
         /// </returns>
         public double Calculate(Chain chain, Link link)
         {
-            this.alphabetCardinality = chain.Alphabet.Cardinality;
+            alphabetCardinality = chain.Alphabet.Cardinality;
             double result = 0;
             for (int i = 0; i < chain.Alphabet.Cardinality; i++)
             {
-                result += this.Calculate(chain.CongenericChain(i), link);
+                result += Calculate(chain.CongenericChain(i), link);
             }
 
             return result;

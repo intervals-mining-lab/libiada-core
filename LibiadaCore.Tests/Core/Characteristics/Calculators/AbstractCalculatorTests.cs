@@ -42,7 +42,7 @@
         protected void ChainCharacteristicTest(int index, Link link, double value)
         {
             Chains[index].FillIntervalManagers();
-            Assert.AreEqual(value, this.Calculator.Calculate(this.Chains[index], link), 0.0001);
+            Assert.AreEqual(value, Calculator.Calculate(Chains[index], link), 0.0001);
         }
 
         /// <summary>
@@ -59,7 +59,7 @@
         /// </param>
         protected void CongenericChainCharacteristicTest(int index, Link link, double value)
         {
-            Assert.AreEqual(value, this.Calculator.Calculate(this.CongenericChains[index], link), 0.0001);
+            Assert.AreEqual(value, Calculator.Calculate(CongenericChains[index], link), 0.0001);
         }
     }
 }

@@ -43,11 +43,11 @@ namespace LibiadaCore.Misc.Iterators
                 throw new ArgumentException("Недопустимое значение аргумента итератора.", "source");
             }
 
-            this.Length = 1;
-            this.Step = step;
-            this.Source = source;
-            this.MaxPosition = this.Source.GetLength() - this.Length;
-            this.Reset();
+            Length = 1;
+            Step = step;
+            Source = source;
+            MaxPosition = Source.GetLength() - Length;
+            Reset();
         }
 
         /// <summary>
@@ -68,8 +68,8 @@ namespace LibiadaCore.Misc.Iterators
         /// </returns>
         public bool Next()
         {
-            this.Position += this.Step;
-            return this.Position <= this.MaxPosition;
+            Position += Step;
+            return Position <= MaxPosition;
         }
 
         /// <summary>
@@ -83,12 +83,12 @@ namespace LibiadaCore.Misc.Iterators
         /// </exception>
         public virtual IBaseObject Current()
         {
-            if (this.Position < 0 || this.Position > this.MaxPosition)
+            if (Position < 0 || Position > MaxPosition)
             {
                 throw new InvalidOperationException("Текущая позиция итератора находится за пределами допустимого диапазона");
             }
 
-            return this.Source[this.Position];
+            return Source[Position];
         }
 
         /// <summary>
@@ -99,7 +99,7 @@ namespace LibiadaCore.Misc.Iterators
         /// </summary>
         public void Reset()
         {
-            this.Position = -this.Step;
+            Position = -Step;
         }
     }
 }

@@ -7,7 +7,7 @@ namespace LibiadaCore.Misc.Iterators
     /// <summary>
     /// Abstract chain iterator.
     /// </summary>
-    public abstract class IteratorBase: IIterator
+    public abstract class IteratorBase : IIterator
     {
         /// <summary>
         /// Length of subsequence.
@@ -46,11 +46,11 @@ namespace LibiadaCore.Misc.Iterators
                 throw new ArgumentException("Недопустимые значения аргументов итератора.");
             }
 
-            this.Length = length;
-            this.Step = step;
-            this.Source = source;
-            this.MaxPosition = this.Source.GetLength() - this.Length; 
-            this.Reset();
+            Length = length;
+            Step = step;
+            Source = source;
+            MaxPosition = Source.GetLength() - Length; 
+            Reset();
         }
 
         /// <summary>
@@ -82,17 +82,17 @@ namespace LibiadaCore.Misc.Iterators
         /// </exception>
         public virtual AbstractChain Current()
         {
-            if (this.Position < 0 || this.Position > this.MaxPosition)
+            if (Position < 0 || Position > MaxPosition)
             {
                 throw new InvalidOperationException("Текущая позиция итератора находится за пределами допустимого диапазона");
             }
 
             var result = new BaseChain();
-            result.ClearAndSetNewLength(this.Length);
+            result.ClearAndSetNewLength(Length);
 
-            for (int i = 0; i < this.Length; i++)
+            for (int i = 0; i < Length; i++)
             {
-                result[i] = this.Source[this.Position + i];
+                result[i] = Source[Position + i];
             }
 
             return result;
@@ -101,7 +101,7 @@ namespace LibiadaCore.Misc.Iterators
         /// <summary>
         /// Returns iterator to the starting position.
         /// Before reading first value 
-        /// <see cref="IteratorBase{TResult, TSource}.Next()"/> 
+        /// <see cref="IteratorBase.Next()"/> 
         /// method should be called.
         /// </summary>
         public abstract void Reset();

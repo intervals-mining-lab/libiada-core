@@ -35,29 +35,29 @@ namespace LibiadaCore.Misc.SpaceReorganizers
         }
 
         /// <summary>
-        /// Reorganizes <see cref="TSource"/> into <see cref="TResult"/>.
+        /// Reorganizes <see cref="AbstractChain"/> into <see cref="AbstractChain"/>.
         /// </summary>
         /// <param name="source">
         /// Source chain.
         /// </param>
         /// <returns>
-        /// The <see cref="TResult"/>.
+        /// The <see cref="AbstractChain"/>.
         /// </returns>
         public override AbstractChain Reorganize(AbstractChain source)
         {
             var result = new BaseChain();
-            result.ClearAndSetNewLength(source.GetLength() / this.blockSize);
+            result.ClearAndSetNewLength(source.GetLength() / blockSize);
             IteratorBase iteratorFrom;
             IWritableIterator iteratorTo;
 
-            if (this.link != Link.End)
+            if (link != Link.End)
             {
-                iteratorFrom = new IteratorStart(source, this.blockSize, this.blockSize);
+                iteratorFrom = new IteratorStart(source, blockSize, blockSize);
                 iteratorTo = new IteratorWritableStart(result);
             }
             else
             {
-                iteratorFrom = new IteratorEnd(source, this.blockSize, this.blockSize);
+                iteratorFrom = new IteratorEnd(source, blockSize, blockSize);
                 iteratorTo = new IteratorWritableEnd(result);
             }
 

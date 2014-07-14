@@ -24,7 +24,7 @@ namespace LibiadaCore.Tests.Misc.Iterators
         [SetUp]
         public void Initialization()
         {
-            this.chainToIterate = new Chain("121331212231");
+            chainToIterate = new Chain("121331212231");
         }
 
         /// <summary>
@@ -35,7 +35,7 @@ namespace LibiadaCore.Tests.Misc.Iterators
         {
             int length = 3;
             int step = 1;
-            var iterator = new IteratorStart(this.chainToIterate, length, step);
+            var iterator = new IteratorStart(chainToIterate, length, step);
             var message2 = new List<Chain>
                                {
                                    new Chain("121"),
@@ -68,7 +68,7 @@ namespace LibiadaCore.Tests.Misc.Iterators
         {
             int length = 3;
             int step = 3;
-            var iterator = new IteratorStart(this.chainToIterate, length, step);
+            var iterator = new IteratorStart(chainToIterate, length, step);
             var message2 = new List<Chain> { new Chain("121"), new Chain("331"), new Chain("212"), new Chain("231") };
 
             int i = 0;

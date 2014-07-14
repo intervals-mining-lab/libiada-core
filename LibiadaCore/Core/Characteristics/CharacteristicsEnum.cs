@@ -21,7 +21,7 @@ namespace LibiadaCore.Core.Characteristics
         AlphabetCardinality,
 
         /// <summary>
-        /// ”далЄнность.
+        /// —редн€€ удалЄнность.
         /// </summary>
         AverageRemoteness,
 

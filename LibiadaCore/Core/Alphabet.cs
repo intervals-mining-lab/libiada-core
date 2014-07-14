@@ -5,9 +5,9 @@ namespace LibiadaCore.Core
     using System.Collections.Generic;
 
     /// <summary>
-    /// Данный класс реализует алфавит элементов
-    /// Алфавит это список из уникальных элементов
-    /// Алфавит является классом организованным в соотвествии с паттреном "Значение"
+    /// Данный класс реализует алфавит элементов.
+    /// Алфавит это список из уникальных элементов.
+    /// Алфавит является классом организованным в соотвествии с паттреном "Значение".
     /// </summary>
     public class Alphabet : IBaseObject, IEnumerable
     {
@@ -24,7 +24,7 @@ namespace LibiadaCore.Core
         {
             get
             {
-                 return this.Elements.Count;
+                 return Elements.Count;
             }
         }
 
@@ -37,7 +37,7 @@ namespace LibiadaCore.Core
         /// Если индекс меньше 0  или >= мощности алфавата вызывается исключение.
         /// </summary>
         /// <param name="index">
-        /// Индекс элемента в алфавите
+        /// Индекс элемента в алфавите.
         /// </param>
         /// <returns>
         /// The <see cref="IBaseObject"/>.
@@ -46,14 +46,14 @@ namespace LibiadaCore.Core
         {
             get
             {
-                return this.Elements[index].Clone();
+                return Elements[index].Clone();
             }
 
             set
             {
-                if (!this.Elements.Contains(value))
+                if (!Elements.Contains(value))
                 {
-                    this.Elements[index] = value.Clone();
+                    Elements[index] = value.Clone();
                 }
             }
         }
@@ -62,16 +62,16 @@ namespace LibiadaCore.Core
         ///  Реализация добавления элемента в алфавит.
         /// </summary>
         /// <param name="baseObject">
-        /// Добавляемый элемент
+        /// Добавляемый элемент.
         /// </param>
         /// <returns>
-        /// Возвращает его номер в алфавите
+        /// Возвращает его номер в алфавите.
         /// </returns>
         /// <exception cref="Exception">
-        /// В случае если такой элемент уже содержится алфавите
+        /// В случае если такой элемент уже содержится алфавите.
         /// </exception>
         /// <exception cref="NullReferenceException">
-        /// В случае если добавляемый элемент null
+        /// В случае если добавляемый элемент null.
         /// </exception>
         public virtual int Add(IBaseObject baseObject)
         {
@@ -80,51 +80,55 @@ namespace LibiadaCore.Core
                 throw new NullReferenceException();
             }
 
-            if (this.Elements.Contains(baseObject))
+            if (Elements.Contains(baseObject))
             {
                 throw new Exception("Element '" + baseObject + "' is already in alphabet.");
             }
 
-            this.Elements.Add(baseObject.Clone());
-            return this.Elements.IndexOf(baseObject);
+            Elements.Add(baseObject.Clone());
+            return Elements.IndexOf(baseObject);
         }
 
         /// <summary>
         /// Удаление элемента из алфавита по указанному индексу.
-        /// Если индекс меньше 0  или >= мощности алфавата вызывается исключение
+        /// Если индекс меньше 0  или >= мощности алфавата вызывается исключение.
         /// </summary>
-        /// <param name="index">Индекс удаляемого элемента в алфавите</param>
+        /// <param name="index">
+        /// Индекс удаляемого элемента в алфавите.
+        /// </param>
         public virtual void Remove(int index)
         {
-            this.Elements.RemoveAt(index);
+            Elements.RemoveAt(index);
         }
 
         /// <summary>
-        /// Клонирование алфавита
+        /// Клонирование алфавита.
         /// </summary>
-        /// <returns>Копию алфавита</returns>
+        /// <returns>
+        /// Копию алфавита.
+        /// </returns>
         public IBaseObject Clone()
         {
             var clone = new Alphabet();
-            for (int i = 0; i < this.Elements.Count; i++)
+            for (int i = 0; i < Elements.Count; i++)
             {
-                clone.Add(this.Elements[i]);
+                clone.Add(Elements[i]);
             }
 
             return clone;
         }
 
         /// <summary>
-        /// Сравнение алфавита исходного и заданного в параметре
+        /// Сравнение алфавита исходного и заданного в параметре.
         /// Два алфавита считаются эквивалентными при условии равномощности алфавитов и эквивалентности их составов
         /// если в качестве второго объекта передается экземпляр класса отличного от алфавита возвращается 
-        /// объекты считаются не эквивалентными
+        /// объекты считаются не эквивалентными.
         /// </summary>
         /// <param name="other"> 
-        /// алфавит сравниваемый с исходным
+        /// алфавит сравниваемый с исходным.
         /// </param>
         /// <returns>
-        /// true если алфавиты эквиваленты, иначе false 
+        /// true если алфавиты эквиваленты, иначе false.
         /// </returns>
         public override bool Equals(object other)
         {
@@ -138,7 +142,7 @@ namespace LibiadaCore.Core
                 return true;
             }
 
-            return this.EqualsAsAlphabet(other as Alphabet);
+            return EqualsAsAlphabet(other as Alphabet);
         }
 
         /// <summary>
@@ -146,28 +150,28 @@ namespace LibiadaCore.Core
         /// В случае, если данного объекта нет в алфавите возвращает -1.
         /// </summary>
         /// <param name="obj">
-        /// Объект который ищем в алфавите
+        /// Объект который ищем в алфавите.
         /// </param>
         /// <returns>
-        /// Индекс объекта в алфавите
+        /// Индекс объекта в алфавите.
         /// </returns>
         public int IndexOf(IBaseObject obj)
         {
-            return this.Elements.IndexOf(obj);
+            return Elements.IndexOf(obj);
         }
 
         /// <summary>
-        /// Определяет принадлежность объекта к алфавиту
+        /// Определяет принадлежность объекта к алфавиту.
         /// </summary>
         /// <param name="element">
-        /// Объект
+        /// Объект.
         /// </param>
         /// <returns>
-        /// True если алфавит содержит данный объект, иначе false
+        /// True если алфавит содержит данный объект, иначе false.
         /// </returns>
         public bool Contains(IBaseObject element)
         {
-            return this.Elements.Contains(element);
+            return Elements.Contains(element);
         }
 
         /// <summary>
@@ -178,7 +182,7 @@ namespace LibiadaCore.Core
         /// </returns>
         public IEnumerator GetEnumerator()
         {
-            return this.Elements.GetEnumerator();
+            return Elements.GetEnumerator();
         }
 
         /// <summary>
@@ -191,7 +195,7 @@ namespace LibiadaCore.Core
         {
             var result = new List<IBaseObject>();
 
-            foreach (var vault in this.Elements)
+            foreach (var vault in Elements)
             {
                 result.Add(vault.Clone());
             }
@@ -209,7 +213,7 @@ namespace LibiadaCore.Core
         {
             var result = new List<IBaseObject>();
 
-            foreach (var vault in this.Elements)
+            foreach (var vault in Elements)
             {
                 result.Add(vault.Clone());
             }
@@ -226,7 +230,7 @@ namespace LibiadaCore.Core
         public override int GetHashCode()
         {
             int temp = 0;
-            foreach (IBaseObject o in this.Elements)
+            foreach (IBaseObject o in Elements)
             {
                 temp += 29 * o.GetHashCode();
             }
@@ -243,14 +247,14 @@ namespace LibiadaCore.Core
         /// </returns>
         private bool EqualsAsAlphabet(Alphabet other)
         {
-            if (other == null || this.Cardinality != other.Cardinality)
+            if (other == null || Cardinality != other.Cardinality)
             {
                 return false;
             }
 
-            for (int i = 0; i < this.Cardinality; i++)
+            for (int i = 0; i < Cardinality; i++)
             {
-                if (!this.Elements.Contains(other.Elements[i]))
+                if (!Elements.Contains(other.Elements[i]))
                 {
                     return false;
                 }

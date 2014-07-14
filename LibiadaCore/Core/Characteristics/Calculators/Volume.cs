@@ -1,7 +1,7 @@
 ﻿namespace LibiadaCore.Core.Characteristics.Calculators
 {
     using System;
-    using System.Collections.Generic;
+    using System.Linq;
 
     /// <summary>
     /// Объём цепи. Произведение длин всех её интервалов.
@@ -26,13 +26,8 @@
         public double Calculate(CongenericChain chain, Link link)
         {
             var intervals = chain.GetIntervals(link);
-            double result = 1;
-            for (int i = 0; i < intervals.Length; i++)
-            {
-                result = result * intervals[i];
-            }
 
-            return result;
+            return intervals.Length == 0 ? 1 : intervals.Aggregate((result, interval) => result * interval);
         }
 
         /// <summary>
@@ -52,13 +47,14 @@
         /// </exception>
         public double Calculate(Chain chain, Link link)
         {
-            double temp = 1;
+            double result = 1;
+
             for (int i = 0; i < chain.Alphabet.Cardinality; i++)
             {
-                temp = temp * this.Calculate(chain.CongenericChain(i), link);
+                result = result * Calculate(chain.CongenericChain(i), link);
             }
 
-            return temp;
+            return result;
         }
 
         /// <summary>

@@ -30,7 +30,7 @@ namespace LibiadaCore.Core
         /// </param>
         public BaseChain(int length)
         {
-            this.ClearAndSetNewLength(length);
+            ClearAndSetNewLength(length);
         }
 
         /// <summary>
@@ -48,9 +48,9 @@ namespace LibiadaCore.Core
         /// </param>
         public BaseChain(List<IBaseObject> elements) : this(elements.Count)
         {
-            for (int i = 0; i < this.GetLength(); i++)
+            for (int i = 0; i < building.Length; i++)
             {
-                this.Add(elements[i], i);
+                Add(elements[i], i);
             }
         }
 
@@ -65,7 +65,7 @@ namespace LibiadaCore.Core
         {
             for (int i = 0; i < source.Length; i++)
             {
-                this.Add(new ValueChar(source[i]), i);
+                Add(new ValueChar(source[i]), i);
             }
         }
 
@@ -99,7 +99,7 @@ namespace LibiadaCore.Core
         {
             get
             {
-                return (int[])this.building.Clone();
+                return (int[])building.Clone();
             }
         }
 
@@ -112,7 +112,7 @@ namespace LibiadaCore.Core
         {
             get
             {
-                var result = (Alphabet)this.alphabet.Clone();
+                var result = (Alphabet)alphabet.Clone();
 
                 // Удаляем NullValue
                 result.Remove(0);
@@ -132,7 +132,7 @@ namespace LibiadaCore.Core
         /// </returns>
         public override IBaseObject Get(int index)
         {
-            return this.alphabet[this.building[index]];
+            return alphabet[building[index]];
         }
 
         /// <summary>
@@ -143,7 +143,7 @@ namespace LibiadaCore.Core
         /// </returns>
         public override int GetLength()
         {
-            return this.building.Length;
+            return building.Length;
         }
 
         /// <summary>
@@ -162,15 +162,15 @@ namespace LibiadaCore.Core
                 throw new NullReferenceException();
             }
 
-            this.RemoveAt(index);
-            int position = this.alphabet.IndexOf(item);
+            RemoveAt(index);
+            int position = alphabet.IndexOf(item);
             if (position == -1)
             {
-                this.alphabet.Add(item);
-                position = this.alphabet.Cardinality - 1;
+                alphabet.Add(item);
+                position = alphabet.Cardinality - 1;
             }
 
-            this.building[index] = position;
+            building[index] = position;
         }
 
         /// <summary>
@@ -182,7 +182,7 @@ namespace LibiadaCore.Core
         /// </param>
         public override void RemoveAt(int index)
         {
-            this.building[index] = 0;
+            building[index] = 0;
         }
 
         /// <summary>
@@ -221,8 +221,8 @@ namespace LibiadaCore.Core
                 throw new ArgumentException("Chain length shouldn't be less than 0.");
             }
 
-            this.building = new int[length];
-            this.alphabet = new Alphabet { NullValue.Instance() };
+            building = new int[length];
+            alphabet = new Alphabet { NullValue.Instance() };
         }
 
         /// <summary>
@@ -234,7 +234,7 @@ namespace LibiadaCore.Core
         public override IBaseObject Clone()
         {
             var clone = new BaseChain(building.Length);
-            this.FillClone(clone);
+            FillClone(clone);
             return clone;
         }
 
@@ -258,7 +258,7 @@ namespace LibiadaCore.Core
             {
                 for (int i = 0; i < building.Length; i++)
                 {
-                    if (!this.Get(i).Equals(NullValue.Instance()))
+                    if (!Get(i).Equals(NullValue.Instance()))
                     {
                         return false;
                     }
@@ -278,7 +278,7 @@ namespace LibiadaCore.Core
             }
 
             var chainObject = (BaseChain)other;
-            if (!this.alphabet.Equals(chainObject.alphabet))
+            if (!alphabet.Equals(chainObject.alphabet))
             {
                 return false;
             }
@@ -304,8 +304,8 @@ namespace LibiadaCore.Core
         {
             if (clone != null)
             {
-                clone.building = (int[])this.building.Clone();
-                clone.alphabet = (Alphabet)this.alphabet.Clone();
+                clone.building = (int[])building.Clone();
+                clone.alphabet = (Alphabet)alphabet.Clone();
             }
         }
     }

@@ -32,12 +32,15 @@
                 return 0;
             }
 
-            var count = new ElementsCount();
+            var counter = new ElementsCount();
+            var redundancyCalculator = new Redundancy();
+
             CongenericChain firstElementChain = chain.CongenericChain(firstElement);
             CongenericChain secondElementChain = chain.CongenericChain(secondElement);
-            int firstElementCount = (int)count.Calculate(firstElementChain, link);
-            int secondElementCount = (int)count.Calculate(secondElementChain, link);
-            var redundancyCalculator = new Redundancy();
+
+            var firstElementCount = (int)counter.Calculate(firstElementChain, link);
+            var secondElementCount = (int)counter.Calculate(secondElementChain, link);
+
             double redundancy = redundancyCalculator.Calculate(chain, firstElement, secondElement, link);
             int pairs = chain.GetPairsCount(firstElement, secondElement);
             return redundancy * (2 * pairs) / (firstElementCount + secondElementCount);

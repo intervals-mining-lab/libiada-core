@@ -27,7 +27,7 @@ namespace LibiadaCore.Core.Characteristics.Calculators
         /// </returns>
         public double Calculate(CongenericChain chain, Link link)
         {
-            double mean = this.arithmeticMean.Calculate(chain, link);
+            double mean = arithmeticMean.Calculate(chain, link);
             return (-1 / mean) * Math.Log(1 / mean, 2);
         }
 
@@ -46,9 +46,10 @@ namespace LibiadaCore.Core.Characteristics.Calculators
         public double Calculate(Chain chain, Link link)
         {
             double result = 0;
+
             for (int i = 0; i < chain.Alphabet.Cardinality; i++)
             {
-                result += this.Calculate(chain.CongenericChain(i), link);
+                result += Calculate(chain.CongenericChain(i), link);
             }
 
             return result;

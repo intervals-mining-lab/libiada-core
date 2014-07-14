@@ -22,7 +22,7 @@ namespace LibiadaCore.Tests.Misc.SpaceReorganizers
         [SetUp]
         public void Initialization()
         {
-            this.testChain = new Chain("adbaacbbaaca");
+            testChain = new Chain("adbaacbbaaca");
         }
 
         /// <summary>
@@ -34,7 +34,7 @@ namespace LibiadaCore.Tests.Misc.SpaceReorganizers
             var cycleTestChainLevel1 = new Chain("adbaacbbaacaa");
 
             var rebulder = new NullCycleSpaceReorganizer(1);
-            var result = rebulder.Reorganize(this.testChain);
+            var result = rebulder.Reorganize(testChain);
             Assert.AreEqual(cycleTestChainLevel1, result);
         }
 
@@ -47,7 +47,7 @@ namespace LibiadaCore.Tests.Misc.SpaceReorganizers
             var cycleTestChainLevel5 = new Chain("adbaacbbaacaadbaa");
 
             var reorganizer = new NullCycleSpaceReorganizer(5);
-            var result = reorganizer.Reorganize(this.testChain);
+            var result = reorganizer.Reorganize(testChain);
             Assert.AreEqual(cycleTestChainLevel5, result);
         }
     }

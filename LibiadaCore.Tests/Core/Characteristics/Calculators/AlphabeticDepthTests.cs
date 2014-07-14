@@ -17,7 +17,7 @@
         [TestFixtureSetUp]
         public void Initialization()
         {
-            this.Calculator = new AlphabeticDepth();
+            Calculator = new AlphabeticDepth();
         }
 
         /// <summary>
@@ -35,7 +35,7 @@
 
         public void CongenericCalculationTest(int index, Link link, double value)
         {
-            this.CongenericChainCharacteristicTest(index, link, value);
+            CongenericChainCharacteristicTest(index, link, value);
         }
 
         [TestCase(0, Link.None, 4.5237)]
@@ -46,7 +46,7 @@
 
         public void ChainCalculationTest(int index, Link link, double value)
         {
-            this.ChainCharacteristicTest(0, link, value);
+            ChainCharacteristicTest(0, link, value);
         }
     }
 }

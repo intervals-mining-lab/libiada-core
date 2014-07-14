@@ -36,7 +36,7 @@
 
             var count = new ElementsCount();
             CongenericChain firstElementChain = chain.CongenericChain(firstElement);
-            int firstElementCount = (int)count.Calculate(firstElementChain, link);
+            var firstElementCount = (int)count.Calculate(firstElementChain, link);
             double avG = 0;
             int currentEntrance = 0;
             

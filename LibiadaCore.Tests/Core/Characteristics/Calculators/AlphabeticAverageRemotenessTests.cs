@@ -17,7 +17,7 @@
         [TestFixtureSetUp]
         public void Initialization()
         {
-            this.Calculator = new AlphabeticAverageRemoteness();
+            Calculator = new AlphabeticAverageRemoteness();
         }
 
         /// <summary>
@@ -36,7 +36,7 @@
 
         public void CongenericCalculationTest(int index, Link link, double value)
         {
-            this.CongenericChainCharacteristicTest(index, link, value);
+            CongenericChainCharacteristicTest(index, link, value);
         }
 
         [TestCase(0, Link.None, 0.6462)]
@@ -46,7 +46,7 @@
         [TestCase(0, Link.Cycle, 0.7786)]
         public void ChainCalculationTest(int index, Link link, double value)
         {
-            this.ChainCharacteristicTest(0, link, value);
+            ChainCharacteristicTest(0, link, value);
         }
     }
 }

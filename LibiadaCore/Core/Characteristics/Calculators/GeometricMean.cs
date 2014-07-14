@@ -10,7 +10,7 @@ namespace LibiadaCore.Core.Characteristics.Calculators
         /// <summary>
         /// Depth characteristic calculator.
         /// </summary>
-        private readonly ICalculator depthCalc = new Depth();
+        private readonly ICalculator depthCalculator = new Depth();
 
         /// <summary>
         /// Intervals count calculator.
@@ -32,8 +32,8 @@ namespace LibiadaCore.Core.Characteristics.Calculators
         public double Calculate(CongenericChain chain, Link link)
         {
             // —читаем в логарифмическом масштабе, чтобы избежать переполнени€
-            double depth = this.depthCalc.Calculate(chain, link);
-            double nj = this.intervalsCount.Calculate(chain, link);
+            double depth = depthCalculator.Calculate(chain, link);
+            double nj = intervalsCount.Calculate(chain, link);
 
             // возвращаемое значение делогарифмируем
             return Math.Pow(2, depth / nj);
@@ -54,8 +54,8 @@ namespace LibiadaCore.Core.Characteristics.Calculators
         public double Calculate(Chain chain, Link link)
         {
             // —читаем в логарифмическом масштабе, чтобы избежать переполнени€
-            double depth = this.depthCalc.Calculate(chain, link);
-            double nj = this.intervalsCount.Calculate(chain, link);
+            double depth = depthCalculator.Calculate(chain, link);
+            double nj = intervalsCount.Calculate(chain, link);
 
             // возвращаемое значение делогарифмируем
             return Math.Pow(2, depth / nj);

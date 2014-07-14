@@ -16,7 +16,7 @@
         [SetUp]
         public void Initialization()
         {
-            this.Calculator = new BinaryGeometricMean();
+            Calculator = new BinaryGeometricMean();
         }
 
         /// <summary>
@@ -34,7 +34,7 @@
         [TestCase(0, 1.7321, 1)]
         public void SpatialDependenceTest(int index, double firstValue, double secondValue)
         {
-            this.CalculationTest(index, firstValue, secondValue);
+            CalculationTest(index, firstValue, secondValue);
         }
     }
 }

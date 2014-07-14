@@ -20,7 +20,7 @@
         [SetUp]
         public void Initialization()
         {
-            this.Calculator = new MutualDependenceCoefficient();
+            Calculator = new MutualDependenceCoefficient();
         }
 
         /// <summary>
@@ -52,7 +52,7 @@
         [TestCase(19, 0)]
         public void K3Test(int index, double value)
         {
-            this.CalculationTest(index, value, value);
+            CalculationTest(index, value, value);
         }
 
         /// <summary>
@@ -61,21 +61,21 @@
         [Test]
         public void GetK3Test()
         {
-            List<List<double>> result = this.Calculator.Calculate(this.Chains[1], Link.End);
+            List<List<double>> result = Calculator.Calculate(Chains[1], Link.End);
 
             Assert.AreEqual(0, result[0][0]);
             Assert.AreEqual(0, result[0][1]);
             Assert.AreEqual(0, result[1][0]);
             Assert.AreEqual(0, result[1][1]);
 
-            result = this.Calculator.Calculate(this.Chains[10], Link.End);
+            result = Calculator.Calculate(Chains[10], Link.End);
 
             Assert.AreEqual(0, result[0][0]);
             Assert.AreEqual(0.497, Math.Round(result[0][1], 3));
             Assert.AreEqual(0.497, Math.Round(result[1][0], 3));
             Assert.AreEqual(0, result[1][1]);
 
-            result = this.Calculator.Calculate(this.Chains[18], Link.End);
+            result = Calculator.Calculate(Chains[18], Link.End);
 
             Assert.AreEqual(0, result[0][0]);
             Assert.AreEqual(0.397, Math.Round(result[0][1], 3));

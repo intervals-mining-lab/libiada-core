@@ -6,7 +6,6 @@ namespace LibiadaCore.Core
     using LibiadaCore.Core.Characteristics.Calculators;
     using LibiadaCore.Core.IntervalsManagers;
     using LibiadaCore.Core.SimpleTypes;
-    using LibiadaCore.Misc;
 
     /// <summary>
     /// Класс цепь
@@ -66,7 +65,7 @@ namespace LibiadaCore.Core
         public Chain(int[] building, Alphabet alphabet)
             : base(building, alphabet)
         {
-            this.CreateCongenericChains();
+            CreateCongenericChains();
         }
 
         /// <summary>
@@ -79,7 +78,7 @@ namespace LibiadaCore.Core
         public Chain(List<IBaseObject> source)
             : base(source)
         {
-            this.CreateCongenericChains();
+            CreateCongenericChains();
         }
 
         /// <summary>
@@ -91,7 +90,7 @@ namespace LibiadaCore.Core
         public override void ClearAndSetNewLength(int length)
         {
             base.ClearAndSetNewLength(length);
-            this.CongenericChains = new CongenericChain[0];
+            CongenericChains = new CongenericChain[0];
         }
 
         /// <summary>
@@ -103,7 +102,7 @@ namespace LibiadaCore.Core
         public new IBaseObject Clone()
         {
             var clone = new Chain(building.Length);
-            this.FillClone(clone);
+            FillClone(clone);
             return clone;
         }
 
@@ -120,10 +119,10 @@ namespace LibiadaCore.Core
         public CongenericChain CongenericChain(IBaseObject baseObject)
         {
             CongenericChain result = null;
-            int pos = this.Alphabet.IndexOf(baseObject);
+            int pos = Alphabet.IndexOf(baseObject);
             if (pos != -1)
             {
-                result = (CongenericChain)this.CongenericChains[pos].Clone();
+                result = (CongenericChain)CongenericChains[pos].Clone();
             }
 
             return result;
@@ -141,7 +140,7 @@ namespace LibiadaCore.Core
         /// </returns>
         public CongenericChain CongenericChain(int i)
         {
-            return (CongenericChain)this.CongenericChains[i].Clone();
+            return (CongenericChain)CongenericChains[i].Clone();
         }
 
         /// <summary>
@@ -157,19 +156,19 @@ namespace LibiadaCore.Core
         {
             base.Add(item, index);
 
-            if (this.CongenericChains.Length != (this.alphabet.Cardinality - 1))
+            if (CongenericChains.Length != (alphabet.Cardinality - 1))
             {
-                var temp = new CongenericChain[this.alphabet.Cardinality - 1];
-                for (int i = 0; i < this.CongenericChains.Length; i++)
+                var temp = new CongenericChain[alphabet.Cardinality - 1];
+                for (int i = 0; i < CongenericChains.Length; i++)
                 {
-                    temp[i] = this.CongenericChains[i];
+                    temp[i] = CongenericChains[i];
                 }
 
-                this.CongenericChains = temp;
-                this.CongenericChains[this.CongenericChains.Length - 1] = new CongenericChain(building.Length, item);
+                CongenericChains = temp;
+                CongenericChains[CongenericChains.Length - 1] = new CongenericChain(building.Length, item);
             }
 
-            foreach (CongenericChain chain in this.CongenericChains)
+            foreach (CongenericChain chain in CongenericChains)
             {
                 chain.Add(item, index);
             }
@@ -180,33 +179,33 @@ namespace LibiadaCore.Core
         /// </summary>
         public void FillDissimilarChains()
         {
-            if (this.dissimilarChains.Length > 0)
+            if (dissimilarChains.Length > 0)
             {
                 return;
             }
 
             var counters = new List<int>();
-            for (int j = 0; j < this.Alphabet.Cardinality; j++)
+            for (int j = 0; j < Alphabet.Cardinality; j++)
             {
                 counters.Add(0);
             }
 
-            for (int i = 0; i < this.building.Length; i++)
+            for (int i = 0; i < building.Length; i++)
             {
-                int element = ++counters[this.building[i]];
-                if (this.dissimilarChains.Length < element)
+                int element = ++counters[building[i]];
+                if (dissimilarChains.Length < element)
                 {
                     var temp = new Chain[element];
-                    for (int j = 0; j < this.dissimilarChains.Length; j++)
+                    for (int j = 0; j < dissimilarChains.Length; j++)
                     {
-                        temp[j] = this.dissimilarChains[j];
+                        temp[j] = dissimilarChains[j];
                     }
 
-                    this.dissimilarChains = temp;
-                    this.dissimilarChains[this.dissimilarChains.Length - 1] = new Chain();
+                    dissimilarChains = temp;
+                    dissimilarChains[dissimilarChains.Length - 1] = new Chain();
                 }
 
-                this.dissimilarChains[element].Add(new ValueInt(this.building[i]), i);
+                dissimilarChains[element].Add(new ValueInt(building[i]), i);
             }
         }
 
@@ -227,7 +226,7 @@ namespace LibiadaCore.Core
         /// <returns>Длина интервала</returns>
         public int GetBinaryInterval(IBaseObject first, IBaseObject second, int entry)
         {
-            int firstEntry = this.Get(first, entry);
+            int firstEntry = Get(first, entry);
             if (firstEntry == -1)
             {
                 return -1;
@@ -264,7 +263,7 @@ namespace LibiadaCore.Core
         public int Get(IBaseObject element, int entry)
         {
             int entranceCount = 0;
-            for (int i = 0; i < this.building.Length; i++)
+            for (int i = 0; i < building.Length; i++)
             {
                 if (this[i].Equals(element))
                 {
@@ -320,11 +319,11 @@ namespace LibiadaCore.Core
         public int GetPairsCount(IBaseObject first, IBaseObject second)
         {
             var elementCounter = new ElementsCount();
-            var firstElementCount = (int)elementCounter.Calculate(this.CongenericChain(first), Link.None);
+            var firstElementCount = (int)elementCounter.Calculate(CongenericChain(first), Link.None);
             int pairs = 0;
             for (int i = 1; i <= firstElementCount; i++)
             {
-                int binaryInterval = this.GetBinaryInterval(first, second, i);
+                int binaryInterval = GetBinaryInterval(first, second, i);
                 if (binaryInterval > 0)
                 {
                     pairs++;
@@ -382,7 +381,7 @@ namespace LibiadaCore.Core
             base.FillClone(tempChain);
             if (tempChain != null)
             {
-                tempChain.CongenericChains = (CongenericChain[])this.CongenericChains.Clone();
+                tempChain.CongenericChains = (CongenericChain[])CongenericChains.Clone();
             }
         }
 
@@ -392,15 +391,15 @@ namespace LibiadaCore.Core
         /// </summary>
         private void CreateCongenericChains()
         {
-            this.CongenericChains = new CongenericChain[this.alphabet.Cardinality - 1];
-            for (int i = 0; i < this.alphabet.Cardinality - 1; i++)
+            CongenericChains = new CongenericChain[alphabet.Cardinality - 1];
+            for (int i = 0; i < alphabet.Cardinality - 1; i++)
             {
-                this.CongenericChains[i] = new CongenericChain(this.building.Length, this.alphabet[i + 1]);
+                CongenericChains[i] = new CongenericChain(building.Length, alphabet[i + 1]);
             }
 
-            for (int j = 0; j < this.building.Length; j++)
+            for (int j = 0; j < building.Length; j++)
             {
-                this.CongenericChains[this.building[j] - 1][j] = this.alphabet[this.building[j]];
+                CongenericChains[building[j] - 1][j] = alphabet[building[j]];
             }
         }
     }

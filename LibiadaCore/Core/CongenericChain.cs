@@ -96,7 +96,7 @@ namespace LibiadaCore.Core
         /// </summary>
         public IBaseObject Element
         {
-            get { return this.element.Clone(); }
+            get { return element.Clone(); }
         }
 
         /// <summary>
@@ -106,7 +106,7 @@ namespace LibiadaCore.Core
         {
             get
             {
-                var result = new int[this.length];
+                var result = new int[length];
                 for (int i = 0; i < result.Length; i++)
                 {
                     result[i] = building.Contains(i) ? 1 : 0;
@@ -120,22 +120,22 @@ namespace LibiadaCore.Core
         /// По сути пересоздаёт цепочки, очищая строй и
         /// устанавливая новую длину.
         /// </summary>
-        /// <param name="length">
+        /// <param name="newLength">
         /// Новая длина цепочки.
         /// </param>
         /// <exception cref="ArgumentException">
         /// Thrown if new length is less than 0.
         /// </exception>
-        public override void ClearAndSetNewLength(int length)
+        public override void ClearAndSetNewLength(int newLength)
         {
-            if (length < 0)
+            if (newLength < 0)
             {
                 throw new ArgumentException("Chain length shouldn't be less than 0.");
             }
 
-            this.intervalsManager = null;
-            this.length = length;
-            this.building = new List<int>();
+            intervalsManager = null;
+            length = newLength;
+            building = new List<int>();
         }
 
         /// <summary>
@@ -150,12 +150,12 @@ namespace LibiadaCore.Core
         /// </returns>
         public int[] GetIntervals(Link link)
         {
-            if (this.intervalsManager == null)
+            if (intervalsManager == null)
             {
-                this.intervalsManager = new CongenericIntervalsManager(this);
+                intervalsManager = new CongenericIntervalsManager(this);
             }
 
-            return this.intervalsManager.GetIntervals(link);
+            return intervalsManager.GetIntervals(link);
         }
 
         /// <summary>
@@ -182,7 +182,7 @@ namespace LibiadaCore.Core
         /// </param>
         public override void Add(IBaseObject item, int index)
         {
-            if (this.element.Equals(item))
+            if (element.Equals(item))
             {
                 Add(index);
             }
@@ -203,7 +203,7 @@ namespace LibiadaCore.Core
                 throw new ArgumentOutOfRangeException("Index of added element is out of bounds (index = " + index + ", chain length = " + length + ").");
             }
 
-            this.intervalsManager = null;
+            intervalsManager = null;
 
             if (!building.Contains(index))
             {
@@ -235,11 +235,11 @@ namespace LibiadaCore.Core
         /// </param>
         public void DeleteAt(int index)
         {
-            this.intervalsManager = null;
-            this.length--;
+            intervalsManager = null;
+            length--;
             if (building.Contains(index))
             {
-                this.building.Remove(index);
+                building.Remove(index);
             }
 
             for (int i = 0; i < building.Count; i++)
@@ -260,8 +260,8 @@ namespace LibiadaCore.Core
         /// </param>
         public override void RemoveAt(int index)
         {
-            this.intervalsManager = null;
-            this.building.Remove(index);
+            intervalsManager = null;
+            building.Remove(index);
         }
 
         /// <summary>
@@ -293,9 +293,9 @@ namespace LibiadaCore.Core
 
             if (other.Equals(NullValue.Instance()))
             {
-                for (int i = 0; i < this.length; i++)
+                for (int i = 0; i < length; i++)
                 {
-                    if (!this.Get(i).Equals(NullValue.Instance()))
+                    if (!Get(i).Equals(NullValue.Instance()))
                     {
                         return false;
                     }
@@ -315,12 +315,12 @@ namespace LibiadaCore.Core
             }
 
             var chainObject = (CongenericChain)other;
-            if (!this.element.Equals(chainObject.Element))
+            if (!element.Equals(chainObject.Element))
             {
                 return false;
             }
 
-            for (int i = 0; (i < chainObject.length) && (i < this.length); i++)
+            for (int i = 0; (i < chainObject.length) && (i < length); i++)
             {
                 if (!this[i].Equals(chainObject[i]))
                 {
@@ -339,7 +339,7 @@ namespace LibiadaCore.Core
         /// </returns>
         public override IBaseObject Clone()
         {
-            return new CongenericChain(this.building, this.Element, this.length);
+            return new CongenericChain(building, Element, length);
         }
     }
 }
