@@ -20,7 +20,7 @@
         public EndIterator(ComplexChain chain, int length, int step)
             : base(chain, length, step)
         {
-            this.cursorPosition = chain.Length - this.windowLength + 1;
+            this.cursorPosition = chain.GetLength() - this.windowLength + 1;
         }
 
         /// <summary>
@@ -95,7 +95,7 @@
         /// </returns>
         public override bool Move(int position)
         {
-            if ((position >= 0) && (this.chain.Length >= this.windowLength + position))
+            if ((position >= 0) && (this.chain.GetLength() >= this.windowLength + position))
             {
                 this.cursorPosition = position;
                 return true;

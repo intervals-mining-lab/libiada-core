@@ -2,8 +2,6 @@
 {
     using System;
 
-    using LibiadaCore.Core.Characteristics;
-
     using Segmenter.Base.Collectors;
     using Segmenter.Base.Sequences;
     using Segmenter.Interfaces;
@@ -13,7 +11,7 @@
     /// The criterion of break. Defines the best mode of segmentation.
     /// Allows you to handle how long will the process do something.
     /// </summary>
-    public abstract class Criterion : Characteristic, IDefinable
+    public abstract class Criterion : IDefinable
     {
         /// <summary>
         /// The threshold to stop.
@@ -33,7 +31,7 @@
         /// <summary>
         /// The chain.
         /// </summary>
-        protected new ComplexChain chain;
+        protected ComplexChain chain;
 
         /// <summary>
         /// init

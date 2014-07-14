@@ -125,7 +125,7 @@
             iterator.Move(position);
             Assert.True(iterator.CursorPosition != position);
 
-            position = this.chain.Length / 2;
+            position = this.chain.GetLength() / 2;
             iterator.Move(position);
             Assert.True(iterator.CursorPosition == position);
 

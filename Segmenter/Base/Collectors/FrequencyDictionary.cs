@@ -88,7 +88,7 @@
         public void Fill(ComplexChain sequence)
         {
             this.Clear();
-            for (int index = 0; index < sequence.Length; index++)
+            for (int index = 0; index < sequence.GetLength(); index++)
             {
                 this.Put(sequence[index].ToString(), index);
             }

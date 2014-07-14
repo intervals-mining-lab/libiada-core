@@ -105,7 +105,7 @@
         public void ConcatOneTest()
         {
             int start = 0;
-            int end = this.chain.Length;
+            int end = this.chain.GetLength();
 
             var firstComplexChain = new ComplexChain(this.chain.Substring(start, end / 2));
             var secondComplexChain = new ComplexChain(this.chain.Substring(end / 2, end));
@@ -120,7 +120,7 @@
         public void ConcatTwoTest()
         {
             int start = 0;
-            int end = this.chain.Length;
+            int end = this.chain.GetLength();
 
             var firstComplexChain = new ComplexChain(this.chain.Substring(start, end - 1));
             var secondComplexChain = new ComplexChain(this.chain.Substring(end - 1, end));
@@ -136,10 +136,10 @@
         {
             ComplexChain foreignComplexChain = this.chain.Clone();
 
-            Assert.True(this.chain.Length != this.differentComplexChain.Length);
-            Assert.True(this.chain.Length == foreignComplexChain.Length);
+            Assert.True(this.chain.GetLength() != this.differentComplexChain.GetLength());
+            Assert.True(this.chain.GetLength() == foreignComplexChain.GetLength());
             foreignComplexChain.ClearAt(0);
-            Assert.True(this.chain.Length != foreignComplexChain.Length);
+            Assert.True(this.chain.GetLength() != foreignComplexChain.GetLength());
         }
 
         /// <summary>
@@ -149,12 +149,12 @@
         public void IsEmptyTest()
         {
             string str = "s";
-            var chain = new ComplexChain(string.Empty);
-            Assert.True(chain.IsEmpty());
-            chain.Concat(str);
-            Assert.True(!chain.IsEmpty());
-            chain.ClearAt(0);
-            Assert.True(chain.IsEmpty());
+            var emptyChain = new ComplexChain(string.Empty);
+            Assert.True(emptyChain.IsEmpty());
+            emptyChain.Concat(str);
+            Assert.True(!emptyChain.IsEmpty());
+            emptyChain.ClearAt(0);
+            Assert.True(emptyChain.IsEmpty());
         }
 
         /// <summary>
@@ -177,54 +177,22 @@
         public void JoinTest()
         {
             ComplexChain clon = this.chain.Clone();
-            var list1 = new List<string>
-                                     {
-                                         "AAC",
-                                         "A",
-                                         "G",
-                                         "G",
-                                         "T",
-                                         "G",
-                                         "C",
-                                         "C",
-                                         "C",
-                                         "C",
-                                         "T",
-                                         "T",
-                                         "A",
-                                         "T",
-                                         "T",
-                                         "T"
-                                     };
-            var list2 = new List<string>
-                                     {
-                                         "AAC",
-                                         "A",
-                                         "G",
-                                         "G",
-                                         "TGC",
-                                         "C",
-                                         "C",
-                                         "C",
-                                         "T",
-                                         "T",
-                                         "A",
-                                         "T",
-                                         "T",
-                                         "T"
-                                     };
-            var list3 = new List<string> { "AACAGGTGC", "C", "C", "C", "T", "T", "A", "T", "T", "T" };
-            var list4 = new List<string> { "AACAGGTGC", "C", "C", "C", "T", "T", "A", "T", "TT" };
+            var expected1 = new List<string> { "AAC", "A", "G", "G", "T", "G", "C", "C", "C", "C", "T", "T", "A", "T", "T", "T" };
+            var expected2 = new List<string> { "AAC", "A", "G", "G", "TGC", "C", "C", "C", "T", "T", "A", "T", "T", "T" };
+            var expected3 = new List<string> { "AACAGGTGC", "C", "C", "C", "T", "T", "A", "T", "T", "T" };
+            var expected4 = new List<string> { "AACAGGTGC", "C", "C", "C", "T", "T", "A", "T", "TT" };
+
             clon.Join(0, 3);
-            Assert.True((new ComplexChain(list1)).Equals(clon));
+            Assert.True((new ComplexChain(expected1)).Equals(clon));
 
             clon.Join(4, 3);
-            Assert.True((new ComplexChain(list2)).Equals(clon));
+            Assert.True((new ComplexChain(expected2)).Equals(clon));
+
             clon.Join(0, 5);
-            Assert.True((new ComplexChain(list3)).Equals(clon));
+            Assert.True((new ComplexChain(expected3)).Equals(clon));
 
             clon.Join(8, 2);
-            Assert.True((new ComplexChain(list4)).Equals(clon));
+            Assert.True((new ComplexChain(expected4)).Equals(clon));
         }
 
         /// <summary>
@@ -233,26 +201,7 @@
         [Test]
         public void JoinAllTest()
         {
-            var list1 = new List<string>
-                                     {
-                                         "A",
-                                         "A",
-                                         "G",
-                                         "G",
-                                         "T",
-                                         "G",
-                                         "C",
-                                         "A",
-                                         "A",
-                                         "A",
-                                         "A",
-                                         "T",
-                                         "A",
-                                         "T",
-                                         "A",
-                                         "A",
-                                         "A"
-                                     };
+            var list1 = new List<string> { "A", "A", "G", "G", "T", "G", "C", "A", "A", "A", "A", "T", "A", "T", "A", "A", "A" };
             var clon = new ComplexChain(list1);
             var list2 = new List<string> { "A", "A" };
             clon.JoinAll(list2);

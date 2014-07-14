@@ -30,7 +30,7 @@
         /// </returns>
         public override bool HasNext()
         {
-            return this.windowLength + this.CursorPosition + this.step <= this.chain.Length;
+            return this.windowLength + this.CursorPosition + this.step <= this.chain.GetLength();
         }
 
         /// <summary>
@@ -94,7 +94,7 @@
         /// </returns>
         public override bool Move(int position)
         {
-            if ((position >= 0) && (this.chain.Length >= this.windowLength + position))
+            if ((position >= 0) && (this.chain.GetLength() >= this.windowLength + position))
             {
                 this.cursorPosition = position;
                 return true;

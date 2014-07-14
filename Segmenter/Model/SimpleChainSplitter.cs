@@ -97,7 +97,7 @@
         /// </summary>
         private void FindLastWords()
         {
-            for (int index = 0; index < this.convoluted.Length; index++)
+            for (int index = 0; index < this.convoluted.GetLength(); index++)
             {
                 ValueString letter;
                 if ((letter = (ValueString)this.convoluted[index]).Value.Length == 1)

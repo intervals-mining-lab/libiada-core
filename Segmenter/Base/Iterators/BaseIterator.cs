@@ -137,7 +137,7 @@
         /// </summary>
         private void CalculateMaxShifts()
         {
-            this.maxShifts = ((this.chain.Length - this.windowLength) / this.step) + 1;
+            this.maxShifts = ((this.chain.GetLength() - this.windowLength) / this.step) + 1;
         }
 
         /// <summary>
@@ -158,7 +158,7 @@
         {
             try
             {
-                int chainLength = chain.Length;
+                int chainLength = chain.GetLength();
 
                 if ((chainLength < windowLength) || (windowLength == 0) || ((step < 1) || (step > chainLength)))
                 {

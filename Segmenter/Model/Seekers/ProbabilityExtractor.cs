@@ -32,7 +32,7 @@
             var level = (double)par.Get(Enum.GetName(typeof(Parameter), Parameter.CurrentThreshold));
             int scanStep = 1;
             int disp = 0;
-            int length = convoluted.Length;
+            int length = convoluted.GetLength();
 
             this.fullEntry = new DataCollector();
             this.minusOneEntry = new DataCollector();

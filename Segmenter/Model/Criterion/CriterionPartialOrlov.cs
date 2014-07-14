@@ -85,7 +85,7 @@
                 }
             }
 
-            double z = chain.Length;
+            double z = chain.GetLength();
             double k = 1 / Math.Log(f * z);
             double b = (k / f) - 1;
             double v = (k * z) - b;
@@ -160,8 +160,8 @@
         /// </returns>
         public double Frequency(ComplexChain chain, string word)
         {
-            var temp = new List<object>(chain.Substring(0, chain.Length));
-            return this.Frequency(temp, word) / (double)chain.Length;
+            var temp = new List<object>(chain.Substring(0, chain.GetLength()));
+            return this.Frequency(temp, word) / (double)chain.GetLength();
         }
 
         /// <summary>

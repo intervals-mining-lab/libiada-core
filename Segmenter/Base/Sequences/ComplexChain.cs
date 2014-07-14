@@ -5,7 +5,9 @@
     using System.Text;
 
     using LibiadaCore.Core;
+    using LibiadaCore.Core.Characteristics.Calculators;
     using LibiadaCore.Core.SimpleTypes;
+    using LibiadaCore.Misc;
 
     /// <summary>
     /// The complex chain.
@@ -92,7 +94,7 @@
         public List<string> ToList()
         {
             var result = new List<string>();
-            for (int i = 0; i < this.Length; i++)
+            for (int i = 0; i < this.GetLength(); i++)
             {
                 result.Add(this[i].ToString());
             }
@@ -115,6 +117,53 @@
             catch (Exception)
             {
             }
+        }
+
+        /// <summary>
+        /// Deletes element in provided position.
+        /// </summary>
+        /// <param name="index">
+        /// The index.
+        /// </param>
+        /// <returns>
+        /// Deleted element.
+        /// </returns>
+        public IBaseObject DeleteAt(int index)
+        {
+            IBaseObject element = this.alphabet[this.building[index]];
+            ICalculator calc = new ElementsCount();
+            CongenericChain tempCongenericChain = this.CongenericChain(element);
+            if ((int)calc.Calculate(tempCongenericChain, Link.None) == 1)
+            {
+                var temp = this.CongenericChains;
+                this.CongenericChains = new CongenericChain[temp.Length - 1];
+                int j = 0;
+                foreach (CongenericChain congenericChain in temp)
+                {
+                    if (!congenericChain.Element.Equals(element))
+                    {
+                        this.CongenericChains[j] = congenericChain;
+                        j++;
+                    }
+                }
+
+                this.alphabet.Remove(this.building[index]);
+                for (int k = 0; k < this.building.Length; k++)
+                {
+                    if (this.building[index] < this.building[k])
+                    {
+                        this.building[k] = this.building[k] - 1;
+                    }
+                }
+            }
+
+            foreach (CongenericChain congenericChain in this.CongenericChains)
+            {
+                congenericChain.DeleteAt(index);
+            }
+
+            this.building = ArrayManipulator.DeleteAt(this.building, index);
+            return element;
         }
 
         /// <summary>
@@ -141,12 +190,12 @@
         /// </returns>
         public bool Equals(ComplexChain complexChain)
         {
-            if (complexChain.Length != this.Length)
+            if (complexChain.GetLength() != this.GetLength())
             {
                 return false;
             }
 
-            for (int index = 0; index < complexChain.Length; index++)
+            for (int index = 0; index < complexChain.GetLength(); index++)
             {
                 if (!this[index].ToString().Equals(complexChain[index].ToString()))
                 {
@@ -174,13 +223,13 @@
             }
 
             ComplexChain temp = this.Clone();
-            this.ClearAndSetNewLength(this.Length + 1);
-            for (int i = 0; i < temp.Length; i++)
+            this.ClearAndSetNewLength(this.GetLength() + 1);
+            for (int i = 0; i < temp.GetLength(); i++)
             {
                 this[i] = temp[i];
             }
 
-            this[this.Length - 1] = new ValueString(str);
+            this[this.GetLength() - 1] = new ValueString(str);
             return this;
         }
 
@@ -201,16 +250,16 @@
             }
 
             ComplexChain temp = this.Clone();
-            
-            this.ClearAndSetNewLength(this.Length + sequence.Length);
-            for (int i = 0; i < temp.Length; i++)
+
+            this.ClearAndSetNewLength(this.GetLength() + sequence.GetLength());
+            for (int i = 0; i < temp.GetLength(); i++)
             {
                 this[i] = temp[i];
             }
 
-            for (int j = 0; j < sequence.Length; j++)
+            for (int j = 0; j < sequence.GetLength(); j++)
             {
-                this[j + temp.Length] = sequence[j];
+                this[j + temp.GetLength()] = sequence[j];
             }
 
             return this;
@@ -224,7 +273,7 @@
         /// </returns>
         public bool IsEmpty()
         {
-            return this.Length == 0;
+            return this.GetLength() == 0;
         }
 
         /// <summary>
@@ -234,7 +283,7 @@
         /// <param name="len">count of words cut out</param>
         public void Remove(int pos, int len)
         {
-            if ((pos + len) > this.Length)
+            if ((pos + len) > this.GetLength())
             {
                 return;
             }
@@ -255,7 +304,7 @@
             int wordEnd = pos + len;
             var temporarySplice = new StringBuilder();
             temporarySplice.Clear();
-            if (wordEnd > this.Length)
+            if (wordEnd > this.GetLength())
             {
                 return;
             }

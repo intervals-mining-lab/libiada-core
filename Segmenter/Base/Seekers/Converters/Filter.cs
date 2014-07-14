@@ -39,7 +39,7 @@
         public int FilterOut(string str)
         {
             int len = this.Chain.ToString().Length;
-            for (int index = this.Chain.Length; --index >= 0;)
+            for (int index = this.Chain.GetLength(); --index >= 0; )
             {
                 this.Chain[index] = new ValueString(this.Chain[index].ToString().Replace(str, this.replacement));
                 if (this.Chain[index].ToString().Length == 0)
