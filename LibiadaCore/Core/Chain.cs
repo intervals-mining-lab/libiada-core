@@ -391,15 +391,22 @@ namespace LibiadaCore.Core
         /// </summary>
         private void CreateCongenericChains()
         {
-            CongenericChains = new CongenericChain[alphabet.Cardinality - 1];
+            var occerrences = new List<int>[alphabet.Cardinality - 1];
+
             for (int i = 0; i < alphabet.Cardinality - 1; i++)
             {
-                CongenericChains[i] = new CongenericChain(building.Length, alphabet[i + 1]);
+                occerrences[i] = new List<int>();
             }
 
             for (int j = 0; j < building.Length; j++)
             {
-                CongenericChains[building[j] - 1][j] = alphabet[building[j]];
+                occerrences[building[j] - 1].Add(j);
+            }
+
+            CongenericChains = new CongenericChain[alphabet.Cardinality - 1];
+            for (int k = 0; k < alphabet.Cardinality - 1; k++)
+            {
+                CongenericChains[k] = new CongenericChain(occerrences[k], alphabet[k + 1], building.Length);
             }
         }
     }

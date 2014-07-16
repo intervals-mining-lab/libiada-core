@@ -108,9 +108,9 @@ namespace LibiadaCore.Core
             get
             {
                 var result = new int[length];
-                for (int i = 0; i < result.Length; i++)
+                for (int i = 0; i < building.Count; i++)
                 {
-                    result[i] = building.Contains(i) ? 1 : 0;
+                    result[building[i]] = 1;
                 }
 
                 return result;
