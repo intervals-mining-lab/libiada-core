@@ -1,7 +1,7 @@
 ﻿using LibiadaMusic.BorodaDivider;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace LibiadaMusicTests.BorodaDivider
+namespace LibiadaMusic.Tests.BorodaDivider
 {
     [TestClass]
     public class ParamEqualFMTests

@@ -4,7 +4,7 @@ using LibiadaMusic.Characteristics;
 using LibiadaMusic.ScoreModel;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace LibiadaMusicTests.Characteristics
+namespace LibiadaMusic.Tests.Characteristics
 {
     [TestClass]
     public class AverageLengthTests

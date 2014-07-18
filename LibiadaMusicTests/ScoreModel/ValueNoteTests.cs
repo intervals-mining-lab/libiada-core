@@ -1,7 +1,7 @@
 ﻿using LibiadaMusic.ScoreModel;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace LibiadaMusicTests.ScoreModel
+namespace LibiadaMusic.Tests.ScoreModel
 {
     [TestClass]
     public class ValueNoteTests

@@ -1,7 +1,7 @@
 ﻿using LibiadaMusic.Analysis;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace LibiadaMusicTests.Analysis
+namespace LibiadaMusic.Tests.Analysis
 {
 	[TestClass]
     public class DifferenceTests

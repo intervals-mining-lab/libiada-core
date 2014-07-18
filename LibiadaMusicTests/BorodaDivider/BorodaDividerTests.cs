@@ -1,4 +1,4 @@
-﻿namespace LibiadaMusicTests.BorodaDivider
+﻿namespace LibiadaMusic.Tests.BorodaDivider
 {
     class BorodaDividerTests
     {

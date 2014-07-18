@@ -3,7 +3,7 @@ using LibiadaMusic.MusicXml;
 using LibiadaMusic.ScoreModel;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace LibiadaMusicTests.MusicXml
+namespace LibiadaMusic.Tests.MusicXml
 {
     [TestClass]
     public class MusicXmlParserTests
