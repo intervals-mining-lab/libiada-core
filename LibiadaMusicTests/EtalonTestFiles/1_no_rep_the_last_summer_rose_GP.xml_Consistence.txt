@@ -1,0 +1,2299 @@
+Fmotiv Chain № 0 Name = P1
+
+------------------------
+Fmotiv № 0 | type ПМТ
+
+Pause: duration = 1/2 priority = 0
+Note: duration = 1/32 step = G priority = 1
+Note: duration = 1/32 step = B priority = 4
+------------------------
+Fmotiv № 1 | type ПМТ
+
+Note: duration = 1/32 step = D priority = 3
+Note: duration = 1/32 step = B priority = 4
+------------------------
+Fmotiv № 2 | type ПМТ
+
+Note: duration = 1/32 step = A priority = 2
+Note: duration = 1/32 step = B priority = 4
+------------------------
+Fmotiv № 1 | type ПМТ
+
+Note: duration = 1/32 step = D priority = 3
+Note: duration = 1/32 step = B priority = 4
+------------------------
+Fmotiv № 3 | type ПМТ
+
+Note: duration = 1/32 step = B priority = 0
+Note: duration = 1/32 step = B priority = 4
+------------------------
+Fmotiv № 4 | type ПМТ
+
+Note: duration = 1/32 step = D priority = 3
+Note: duration = 1/32 step = G priority = 4
+------------------------
+Fmotiv № 5 | type ПМТ
+
+Note: duration = 1/32 step = G priority = 2
+Note: duration = 1/32 step = D priority = 4
+------------------------
+Fmotiv № 6 | type ПМТ
+
+Note: duration = 1/32 step = B priority = 3
+Note: duration = 1/32 step = B priority = 4
+------------------------
+Fmotiv № 3 | type ПМТ
+
+Note: duration = 1/32 step = G priority = 1
+Note: duration = 1/32 step = G priority = 4
+------------------------
+Fmotiv № 7 | type ПМТ
+
+Note: duration = 1/32 step = B priority = 3
+Note: duration = 1/32 step = G priority = 4
+------------------------
+Fmotiv № 8 | type ПМТ
+
+Note: duration = 1/32 step = G priority = 2
+Note: duration = 1/32 step = B priority = 4
+------------------------
+Fmotiv № 6 | type ПМТ
+
+Note: duration = 1/32 step = G priority = 3
+Note: duration = 1/32 step = G priority = 4
+------------------------
+Fmotiv № 2 | type ПМТ
+
+Note: duration = 1/32 step = F priority = 1
+Note: duration = 1/32 step = G priority = 4
+------------------------
+Fmotiv № 9 | type ПМТ
+
+Note: duration = 1/32 step = B priority = 3
+Note: duration = 1/32 step = G priority = 4
+------------------------
+Fmotiv № 10 | type ПМТ
+
+Note: duration = 1/32 step = E priority = 2
+Note: duration = 1/32 step = G priority = 4
+------------------------
+Fmotiv № 9 | type ПМТ
+
+Note: duration = 1/32 step = B priority = 3
+Note: duration = 1/32 step = G priority = 4
+------------------------
+Fmotiv № 4 | type ПМТ
+
+Note: duration = 1/32 step = D priority = 0
+Note: duration = 1/32 step = G priority = 4
+------------------------
+Fmotiv № 7 | type ПМТ
+
+Note: duration = 1/32 step = B priority = 3
+Note: duration = 1/32 step = G priority = 4
+------------------------
+Fmotiv № 8 | type ПМТ
+
+Note: duration = 1/32 step = G priority = 2
+Note: duration = 1/32 step = B priority = 4
+------------------------
+Fmotiv № 5 | type ПМТ
+
+Note: duration = 1/32 step = G priority = 3
+Note: duration = 1/32 step = D priority = 4
+------------------------
+Fmotiv № 10 | type ПМТ
+
+Note: duration = 1/32 step = B priority = 1
+Note: duration = 1/32 step = D priority = 4
+------------------------
+Fmotiv № 3 | type ПМТ
+
+Note: duration = 1/32 step = G priority = 3
+Note: duration = 1/32 step = G priority = 4
+------------------------
+Fmotiv № 6 | type ПМТ
+
+Note: duration = 1/32 step = G priority = 2
+Note: duration = 1/32 step = G priority = 4
+------------------------
+Fmotiv № 1 | type ПМТ
+
+Note: duration = 1/32 step = D priority = 3
+Note: duration = 1/32 step = B priority = 4
+------------------------
+Fmotiv № 4 | type ПМТ
+
+Note: duration = 1/32 step = G priority = 1
+Note: duration = 1/32 step = C priority = 4
+------------------------
+Fmotiv № 9 | type ПМТ
+
+Note: duration = 1/32 step = E priority = 3
+Note: duration = 1/32 step = C priority = 4
+------------------------
+Fmotiv № 0 | type ПМТ
+
+Note: duration = 1/32 step = A priority = 2
+Note: duration = 1/32 step = C priority = 4
+------------------------
+Fmotiv № 11 | type ПМТ
+
+Note: duration = 1/32 step = D priority = 3
+Note: duration = 1/32 step = C priority = 4
+------------------------
+Fmotiv № 10 | type ПМТ
+
+Note: duration = 1/32 step = B priority = 0
+Note: duration = 1/32 step = D priority = 4
+------------------------
+Fmotiv № 12 | type ПМТ
+
+Note: duration = 1/32 step = D priority = 3
+Note: duration = 1/32 step = D priority = 4
+------------------------
+Fmotiv № 1 | type ПМТ
+
+Note: duration = 1/32 step = D priority = 2
+Note: duration = 1/32 step = B priority = 4
+------------------------
+Fmotiv № 1 | type ПМТ
+
+Note: duration = 1/32 step = D priority = 3
+Note: duration = 1/32 step = B priority = 4
+------------------------
+Fmotiv № 3 | type ПМТ
+
+Note: duration = 1/32 step = D priority = 1
+Note: duration = 1/32 step = D priority = 4
+------------------------
+Fmotiv № 10 | type ПМТ
+
+Note: duration = 1/32 step = B priority = 3
+Note: duration = 1/32 step = D priority = 4
+------------------------
+Fmotiv № 1 | type ПМТ
+
+Note: duration = 1/32 step = D priority = 2
+Note: duration = 1/32 step = B priority = 4
+------------------------
+Fmotiv № 6 | type ПМТ
+
+Note: duration = 1/32 step = D priority = 3
+Note: duration = 1/32 step = D priority = 4
+------------------------
+Fmotiv № 2 | type ПМТ
+
+Note: duration = 1/32 step = C priority = 1
+Note: duration = 1/32 step = D priority = 4
+------------------------
+Fmotiv № 5 | type ПМТ
+
+Note: duration = 1/32 step = D priority = 3
+Note: duration = 1/32 step = A priority = 4
+------------------------
+Fmotiv № 10 | type ПМТ
+
+Note: duration = 1/32 step = A priority = 2
+Note: duration = 1/32 step = C priority = 4
+------------------------
+Fmotiv № 5 | type ПМТ
+
+Note: duration = 1/32 step = D priority = 3
+Note: duration = 1/32 step = A priority = 4
+------------------------
+Fmotiv № 0 | type ПМТ
+
+Note: duration = 1/32 step = G priority = 0
+Note: duration = 1/32 step = B priority = 4
+------------------------
+Fmotiv № 4 | type ПМТ
+
+Note: duration = 1/32 step = D priority = 3
+Note: duration = 1/32 step = G priority = 4
+------------------------
+Fmotiv № 5 | type ПМТ
+
+Note: duration = 1/32 step = G priority = 2
+Note: duration = 1/32 step = D priority = 4
+------------------------
+Fmotiv № 9 | type ПМТ
+
+Note: duration = 1/32 step = B priority = 3
+Note: duration = 1/32 step = G priority = 4
+------------------------
+Fmotiv № 0 | type ПМТ
+
+Note: duration = 1/32 step = G priority = 1
+Note: duration = 1/32 step = B priority = 4
+------------------------
+Fmotiv № 4 | type ПМТ
+
+Note: duration = 1/32 step = D priority = 3
+Note: duration = 1/32 step = G priority = 4
+------------------------
+Fmotiv № 9 | type ПМТ
+
+Note: duration = 1/32 step = G priority = 2
+Note: duration = 1/32 step = D priority = 4
+------------------------
+Fmotiv № 13 | type ПМТ
+
+Note: duration = 1/32 step = C priority = 3
+Note: duration = 1/32 step = F priority = 4
+------------------------
+Fmotiv № 0 | type ПМТ
+
+Note: duration = 1/32 step = G priority = 1
+Note: duration = 1/32 step = B priority = 4
+------------------------
+Fmotiv № 1 | type ПМТ
+
+Note: duration = 1/32 step = D priority = 3
+Note: duration = 1/32 step = B priority = 4
+------------------------
+Fmotiv № 2 | type ПМТ
+
+Note: duration = 1/32 step = A priority = 2
+Note: duration = 1/32 step = B priority = 4
+------------------------
+Fmotiv № 1 | type ПМТ
+
+Note: duration = 1/32 step = D priority = 3
+Note: duration = 1/32 step = B priority = 4
+------------------------
+Fmotiv № 2 | type ПМТ
+
+Note: duration = 1/32 step = A priority = 0
+Note: duration = 1/32 step = B priority = 4
+------------------------
+Fmotiv № 4 | type ПМТ
+
+Note: duration = 1/32 step = D priority = 3
+Note: duration = 1/32 step = G priority = 4
+------------------------
+Fmotiv № 5 | type ПМТ
+
+Note: duration = 1/32 step = G priority = 2
+Note: duration = 1/32 step = D priority = 4
+------------------------
+Fmotiv № 11 | type ПМТ
+
+Note: duration = 1/32 step = B priority = 3
+Note: duration = 1/32 step = A priority = 4
+------------------------
+Fmotiv № 2 | type ПМТ
+
+Note: duration = 1/32 step = F priority = 1
+Note: duration = 1/32 step = G priority = 4
+------------------------
+Fmotiv № 7 | type ПМТ
+
+Note: duration = 1/32 step = B priority = 3
+Note: duration = 1/32 step = G priority = 4
+------------------------
+Fmotiv № 8 | type ПМТ
+
+Note: duration = 1/32 step = G priority = 2
+Note: duration = 1/32 step = B priority = 4
+------------------------
+Fmotiv № 11 | type ПМТ
+
+Note: duration = 1/32 step = G priority = 3
+Note: duration = 1/32 step = F priority = 4
+------------------------
+Fmotiv № 10 | type ПМТ
+
+Note: duration = 1/32 step = E priority = 1
+Note: duration = 1/32 step = G priority = 4
+------------------------
+Fmotiv № 5 | type ПМТ
+
+Note: duration = 1/32 step = C priority = 3
+Note: duration = 1/32 step = G priority = 4
+------------------------
+Fmotiv № 10 | type ПМТ
+
+Note: duration = 1/32 step = E priority = 2
+Note: duration = 1/32 step = G priority = 4
+------------------------
+Fmotiv № 5 | type ПМТ
+
+Note: duration = 1/32 step = C priority = 3
+Note: duration = 1/32 step = G priority = 4
+------------------------
+Fmotiv № 4 | type ПМТ
+
+Note: duration = 1/32 step = D priority = 0
+Note: duration = 1/32 step = G priority = 4
+------------------------
+Fmotiv № 7 | type ПМТ
+
+Note: duration = 1/32 step = B priority = 3
+Note: duration = 1/32 step = G priority = 4
+------------------------
+Fmotiv № 8 | type ПМТ
+
+Note: duration = 1/32 step = G priority = 2
+Note: duration = 1/32 step = B priority = 4
+------------------------
+Fmotiv № 5 | type ПМТ
+
+Note: duration = 1/32 step = G priority = 3
+Note: duration = 1/32 step = D priority = 4
+------------------------
+Fmotiv № 10 | type ПМТ
+
+Note: duration = 1/32 step = B priority = 1
+Note: duration = 1/32 step = D priority = 4
+------------------------
+Fmotiv № 3 | type ПМТ
+
+Note: duration = 1/32 step = G priority = 3
+Note: duration = 1/32 step = G priority = 4
+------------------------
+Fmotiv № 6 | type ПМТ
+
+Note: duration = 1/32 step = G priority = 2
+Note: duration = 1/32 step = G priority = 4
+------------------------
+Fmotiv № 1 | type ПМТ
+
+Note: duration = 1/32 step = D priority = 3
+Note: duration = 1/32 step = B priority = 4
+------------------------
+Fmotiv № 14 | type ПМТ
+
+Note: duration = 1/32 step = E priority = 1
+Note: duration = 1/32 step = G priority = 4
+------------------------
+Fmotiv № 4 | type ПМТ
+
+Note: duration = 1/32 step = B priority = 3
+Note: duration = 1/32 step = E priority = 4
+------------------------
+Fmotiv № 11 | type ПМТ
+
+Note: duration = 1/32 step = D priority = 2
+Note: duration = 1/32 step = C priority = 4
+------------------------
+Fmotiv № 15 | type ПМТ
+
+Note: duration = 1/32 step = G priority = 3
+Note: duration = 1/32 step = A priority = 4
+------------------------
+Fmotiv № 16 | type ПМТ
+
+Note: duration = 1/32 step = B priority = 0
+Note: duration = 1/32 step = G priority = 4
+------------------------
+Fmotiv № 10 | type ПМТ
+
+Note: duration = 1/32 step = B priority = 3
+Note: duration = 1/32 step = D priority = 4
+------------------------
+Fmotiv № 1 | type ПМТ
+
+Note: duration = 1/32 step = D priority = 2
+Note: duration = 1/32 step = B priority = 4
+------------------------
+Fmotiv № 6 | type ПМТ
+
+Note: duration = 1/32 step = D priority = 3
+Note: duration = 1/32 step = D priority = 4
+------------------------
+Fmotiv № 2 | type ПМТ
+
+Note: duration = 1/32 step = E priority = 1
+Note: duration = 1/32 step = F priority = 4
+------------------------
+Fmotiv № 4 | type ПМТ
+
+Note: duration = 1/32 step = A priority = 3
+Note: duration = 1/32 step = D priority = 4
+------------------------
+Fmotiv № 5 | type ПМТ
+
+Note: duration = 1/32 step = D priority = 2
+Note: duration = 1/32 step = A priority = 4
+------------------------
+Fmotiv № 9 | type ПМТ
+
+Note: duration = 1/32 step = F priority = 3
+Note: duration = 1/32 step = D priority = 4
+------------------------
+Fmotiv № 17 | type ПМТ
+
+Note: duration = 1/32 step = C priority = 1
+Note: duration = 1/32 step = F priority = 4
+------------------------
+Fmotiv № 4 | type ПМТ
+
+Note: duration = 1/32 step = A priority = 3
+Note: duration = 1/32 step = D priority = 4
+------------------------
+Fmotiv № 11 | type ПМТ
+
+Note: duration = 1/32 step = D priority = 2
+Note: duration = 1/32 step = C priority = 4
+------------------------
+Fmotiv № 14 | type ПМТ
+
+Note: duration = 1/32 step = F priority = 3
+Note: duration = 1/32 step = A priority = 4
+------------------------
+Fmotiv № 18 | type ПМТ
+
+Note: duration = 1/32 step = G priority = 0
+Note: duration = 1/32 step = D priority = 4
+------------------------
+Fmotiv № 7 | type ПМТ
+
+Note: duration = 1/32 step = B priority = 3
+Note: duration = 1/32 step = G priority = 4
+------------------------
+Fmotiv № 8 | type ПМТ
+
+Note: duration = 1/32 step = G priority = 2
+Note: duration = 1/32 step = B priority = 4
+------------------------
+Fmotiv № 19 | type ПМТВП
+
+Note: duration = 1/32 step = D priority = 3
+Note: duration = 1/32 step = G priority = 4
+Note: duration = 1/8 step = G priority = 1
+------------------------
+Fmotiv № 0 | type ПМТ
+
+Pause: duration = 1/8 priority = 2
+Note: duration = 1/32 step = G priority = 1
+Note: duration = 1/32 step = B priority = 4
+------------------------
+Fmotiv № 1 | type ПМТ
+
+Note: duration = 1/32 step = D priority = 3
+Note: duration = 1/32 step = B priority = 4
+------------------------
+Fmotiv № 2 | type ПМТ
+
+Note: duration = 1/32 step = A priority = 2
+Note: duration = 1/32 step = B priority = 4
+------------------------
+Fmotiv № 1 | type ПМТ
+
+Note: duration = 1/32 step = D priority = 3
+Note: duration = 1/32 step = B priority = 4
+------------------------
+Fmotiv № 3 | type ПМТ
+
+Note: duration = 1/32 step = B priority = 0
+Note: duration = 1/32 step = B priority = 4
+------------------------
+Fmotiv № 4 | type ПМТ
+
+Note: duration = 1/32 step = D priority = 3
+Note: duration = 1/32 step = G priority = 4
+------------------------
+Fmotiv № 6 | type ПМТ
+
+Note: duration = 1/32 step = G priority = 2
+Note: duration = 1/32 step = G priority = 4
+------------------------
+Fmotiv № 1 | type ПМТ
+
+Note: duration = 1/32 step = D priority = 3
+Note: duration = 1/32 step = B priority = 4
+------------------------
+Fmotiv № 3 | type ПМТ
+
+Note: duration = 1/32 step = G priority = 1
+Note: duration = 1/32 step = G priority = 4
+------------------------
+Fmotiv № 20 | type ПМТ
+
+Note: duration = 1/32 step = D priority = 3
+Note: duration = 1/32 step = G priority = 4
+------------------------
+Fmotiv № 21 | type ПМТ
+
+Note: duration = 1/32 step = G priority = 2
+Note: duration = 1/32 step = D priority = 4
+------------------------
+Fmotiv № 6 | type ПМТ
+
+Note: duration = 1/32 step = G priority = 3
+Note: duration = 1/32 step = G priority = 4
+------------------------
+Fmotiv № 22 | type ПМТ
+
+Note: duration = 1/32 step = F priority = 1
+Note: duration = 1/32 step = G priority = 4
+------------------------
+Fmotiv № 5 | type ПМТ
+
+Note: duration = 1/32 step = C priority = 3
+Note: duration = 1/32 step = G priority = 4
+------------------------
+Fmotiv № 10 | type ПМТ
+
+Note: duration = 1/32 step = E priority = 2
+Note: duration = 1/32 step = G priority = 4
+------------------------
+Fmotiv № 5 | type ПМТ
+
+Note: duration = 1/32 step = C priority = 3
+Note: duration = 1/32 step = G priority = 4
+------------------------
+Fmotiv № 4 | type ПМТ
+
+Note: duration = 1/32 step = D priority = 0
+Note: duration = 1/32 step = G priority = 4
+------------------------
+Fmotiv № 7 | type ПМТ
+
+Note: duration = 1/32 step = B priority = 3
+Note: duration = 1/32 step = G priority = 4
+------------------------
+Fmotiv № 8 | type ПМТ
+
+Note: duration = 1/32 step = G priority = 2
+Note: duration = 1/32 step = B priority = 4
+------------------------
+Fmotiv № 5 | type ПМТ
+
+Note: duration = 1/32 step = G priority = 3
+Note: duration = 1/32 step = D priority = 4
+------------------------
+Fmotiv № 10 | type ПМТ
+
+Note: duration = 1/32 step = B priority = 1
+Note: duration = 1/32 step = D priority = 4
+------------------------
+Fmotiv № 3 | type ПМТ
+
+Note: duration = 1/32 step = G priority = 3
+Note: duration = 1/32 step = G priority = 4
+------------------------
+Fmotiv № 6 | type ПМТ
+
+Note: duration = 1/32 step = G priority = 2
+Note: duration = 1/32 step = G priority = 4
+------------------------
+Fmotiv № 1 | type ПМТ
+
+Note: duration = 1/32 step = D priority = 3
+Note: duration = 1/32 step = B priority = 4
+------------------------
+Fmotiv № 10 | type ПМТ
+
+Note: duration = 1/32 step = C priority = 1
+Note: duration = 1/32 step = D priority = 4
+------------------------
+Fmotiv № 1 | type ПМТ
+
+Note: duration = 1/32 step = F priority = 3
+Note: duration = 1/32 step = D priority = 4
+------------------------
+Fmotiv № 0 | type ПМТ
+
+Note: duration = 1/32 step = B priority = 2
+Note: duration = 1/32 step = D priority = 4
+------------------------
+Fmotiv № 1 | type ПМТ
+
+Note: duration = 1/32 step = F priority = 3
+Note: duration = 1/32 step = D priority = 4
+------------------------
+Fmotiv № 3 | type ПМТ
+
+Note: duration = 1/32 step = G priority = 0
+Note: duration = 1/32 step = G priority = 4
+------------------------
+Fmotiv № 10 | type ПМТ
+
+Note: duration = 1/32 step = B priority = 3
+Note: duration = 1/32 step = D priority = 4
+------------------------
+Fmotiv № 1 | type ПМТ
+
+Note: duration = 1/32 step = D priority = 2
+Note: duration = 1/32 step = B priority = 4
+------------------------
+Fmotiv № 6 | type ПМТ
+
+Note: duration = 1/32 step = G priority = 3
+Note: duration = 1/32 step = G priority = 4
+------------------------
+Fmotiv № 0 | type ПМТ
+
+Note: duration = 1/32 step = G priority = 1
+Note: duration = 1/32 step = B priority = 4
+------------------------
+Fmotiv № 5 | type ПМТ
+
+Note: duration = 1/32 step = E priority = 3
+Note: duration = 1/32 step = B priority = 4
+------------------------
+Fmotiv № 23 | type ПМТ
+
+Note: duration = 1/32 step = F priority = 2
+Note: duration = 1/32 step = G priority = 4
+------------------------
+Fmotiv № 18 | type ПМТ
+
+Note: duration = 1/32 step = C priority = 3
+Note: duration = 1/32 step = G priority = 4
+------------------------
+Fmotiv № 10 | type ПМТ
+
+Note: duration = 1/32 step = E priority = 1
+Note: duration = 1/32 step = G priority = 4
+------------------------
+Fmotiv № 9 | type ПМТ
+
+Note: duration = 1/32 step = B priority = 3
+Note: duration = 1/32 step = G priority = 4
+------------------------
+Fmotiv № 10 | type ПМТ
+
+Note: duration = 1/32 step = D priority = 2
+Note: duration = 1/32 step = F priority = 4
+------------------------
+Fmotiv № 5 | type ПМТ
+
+Note: duration = 1/32 step = B priority = 3
+Note: duration = 1/32 step = F priority = 4
+------------------------
+Fmotiv № 10 | type ПМТ
+
+Note: duration = 1/32 step = E priority = 0
+Note: duration = 1/32 step = G priority = 4
+------------------------
+Fmotiv № 4 | type ПМТ
+
+Note: duration = 1/32 step = B priority = 3
+Note: duration = 1/32 step = E priority = 4
+------------------------
+Fmotiv № 5 | type ПМТ
+
+Note: duration = 1/32 step = E priority = 2
+Note: duration = 1/32 step = B priority = 4
+------------------------
+Fmotiv № 24 | type ПМТВП
+
+Note: duration = 1/32 step = G priority = 3
+Note: duration = 1/32 step = E priority = 4
+Note: duration = 1/4 step = E priority = 1
+------------------------
+Fmotiv № 3 | type ПМТ
+
+Note: duration = 1/32 step = B priority = 1
+Note: duration = 1/32 step = B priority = 4
+------------------------
+Fmotiv № 3 | type ПМТ
+
+Note: duration = 1/32 step = G priority = 3
+Note: duration = 1/32 step = G priority = 4
+------------------------
+Fmotiv № 25 | type ПМТ
+
+Note: duration = 1/32 step = G priority = 2
+Note: duration = 1/32 step = A priority = 4
+------------------------
+Fmotiv № 6 | type ПМТ
+
+Note: duration = 1/32 step = C priority = 3
+Note: duration = 1/32 step = C priority = 4
+------------------------
+Fmotiv № 3 | type ПМТ
+
+Note: duration = 1/32 step = D priority = 0
+Note: duration = 1/32 step = D priority = 4
+------------------------
+Fmotiv № 7 | type ПМТ
+
+Note: duration = 1/32 step = B priority = 3
+Note: duration = 1/32 step = G priority = 4
+------------------------
+Fmotiv № 8 | type ПМТ
+
+Note: duration = 1/32 step = G priority = 2
+Note: duration = 1/32 step = B priority = 4
+------------------------
+Fmotiv № 6 | type ПМТ
+
+Note: duration = 1/32 step = D priority = 3
+Note: duration = 1/32 step = D priority = 4
+------------------------
+Fmotiv № 3 | type ПМТ
+
+Note: duration = 1/32 step = G priority = 1
+Note: duration = 1/32 step = G priority = 4
+------------------------
+Fmotiv № 4 | type ПМТ
+
+Note: duration = 1/32 step = B priority = 3
+Note: duration = 1/32 step = E priority = 4
+------------------------
+Fmotiv № 5 | type ПМТ
+
+Note: duration = 1/32 step = E priority = 2
+Note: duration = 1/32 step = B priority = 4
+------------------------
+Fmotiv № 6 | type ПМТ
+
+Note: duration = 1/32 step = G priority = 3
+Note: duration = 1/32 step = G priority = 4
+------------------------
+Fmotiv № 22 | type ПМТ
+
+Note: duration = 1/32 step = F priority = 1
+Note: duration = 1/32 step = G priority = 4
+------------------------
+Fmotiv № 5 | type ПМТ
+
+Note: duration = 1/32 step = C priority = 3
+Note: duration = 1/32 step = G priority = 4
+------------------------
+Fmotiv № 10 | type ПМТ
+
+Note: duration = 1/32 step = E priority = 2
+Note: duration = 1/32 step = G priority = 4
+------------------------
+Fmotiv № 5 | type ПМТ
+
+Note: duration = 1/32 step = C priority = 3
+Note: duration = 1/32 step = G priority = 4
+------------------------
+Fmotiv № 4 | type ПМТ
+
+Note: duration = 1/32 step = D priority = 0
+Note: duration = 1/32 step = G priority = 4
+------------------------
+Fmotiv № 7 | type ПМТ
+
+Note: duration = 1/32 step = B priority = 3
+Note: duration = 1/32 step = G priority = 4
+------------------------
+Fmotiv № 8 | type ПМТ
+
+Note: duration = 1/32 step = G priority = 2
+Note: duration = 1/32 step = B priority = 4
+------------------------
+Fmotiv № 5 | type ПМТ
+
+Note: duration = 1/32 step = G priority = 3
+Note: duration = 1/32 step = D priority = 4
+------------------------
+Fmotiv № 10 | type ПМТ
+
+Note: duration = 1/32 step = B priority = 1
+Note: duration = 1/32 step = D priority = 4
+------------------------
+Fmotiv № 3 | type ПМТ
+
+Note: duration = 1/32 step = G priority = 3
+Note: duration = 1/32 step = G priority = 4
+------------------------
+Fmotiv № 6 | type ПМТ
+
+Note: duration = 1/32 step = G priority = 2
+Note: duration = 1/32 step = G priority = 4
+------------------------
+Fmotiv № 1 | type ПМТ
+
+Note: duration = 1/32 step = D priority = 3
+Note: duration = 1/32 step = B priority = 4
+------------------------
+Fmotiv № 4 | type ПМТ
+
+Note: duration = 1/32 step = G priority = 1
+Note: duration = 1/32 step = C priority = 4
+------------------------
+Fmotiv № 9 | type ПМТ
+
+Note: duration = 1/32 step = E priority = 3
+Note: duration = 1/32 step = C priority = 4
+------------------------
+Fmotiv № 0 | type ПМТ
+
+Note: duration = 1/32 step = A priority = 2
+Note: duration = 1/32 step = C priority = 4
+------------------------
+Fmotiv № 11 | type ПМТ
+
+Note: duration = 1/32 step = D priority = 3
+Note: duration = 1/32 step = C priority = 4
+------------------------
+Fmotiv № 10 | type ПМТ
+
+Note: duration = 1/32 step = B priority = 0
+Note: duration = 1/32 step = D priority = 4
+------------------------
+Fmotiv № 12 | type ПМТ
+
+Note: duration = 1/32 step = D priority = 3
+Note: duration = 1/32 step = D priority = 4
+------------------------
+Fmotiv № 1 | type ПМТ
+
+Note: duration = 1/32 step = D priority = 2
+Note: duration = 1/32 step = B priority = 4
+------------------------
+Fmotiv № 1 | type ПМТ
+
+Note: duration = 1/32 step = D priority = 3
+Note: duration = 1/32 step = B priority = 4
+------------------------
+Fmotiv № 2 | type ПМТ
+
+Note: duration = 1/32 step = E priority = 1
+Note: duration = 1/32 step = F priority = 4
+------------------------
+Fmotiv № 8 | type ПМТ
+
+Note: duration = 1/32 step = D priority = 3
+Note: duration = 1/32 step = F priority = 4
+------------------------
+Fmotiv № 0 | type ПМТ
+
+Note: duration = 1/32 step = D priority = 2
+Note: duration = 1/32 step = F priority = 4
+------------------------
+Fmotiv № 8 | type ПМТ
+
+Note: duration = 1/32 step = D priority = 3
+Note: duration = 1/32 step = F priority = 4
+------------------------
+Fmotiv № 2 | type ПМТ
+
+Note: duration = 1/32 step = C priority = 1
+Note: duration = 1/32 step = D priority = 4
+------------------------
+Fmotiv № 5 | type ПМТ
+
+Note: duration = 1/32 step = D priority = 3
+Note: duration = 1/32 step = A priority = 4
+------------------------
+Fmotiv № 4 | type ПМТ
+
+Note: duration = 1/32 step = A priority = 2
+Note: duration = 1/32 step = D priority = 4
+------------------------
+Fmotiv № 5 | type ПМТ
+
+Note: duration = 1/32 step = D priority = 3
+Note: duration = 1/32 step = A priority = 4
+------------------------
+Fmotiv № 0 | type ПМТ
+
+Note: duration = 1/32 step = G priority = 0
+Note: duration = 1/32 step = B priority = 4
+------------------------
+Fmotiv № 4 | type ПМТ
+
+Note: duration = 1/32 step = D priority = 3
+Note: duration = 1/32 step = G priority = 4
+------------------------
+Fmotiv № 5 | type ПМТ
+
+Note: duration = 1/32 step = G priority = 2
+Note: duration = 1/32 step = D priority = 4
+------------------------
+Fmotiv № 9 | type ПМТ
+
+Note: duration = 1/32 step = B priority = 3
+Note: duration = 1/32 step = G priority = 4
+------------------------
+Fmotiv № 0 | type ПМТ
+
+Note: duration = 1/32 step = G priority = 1
+Note: duration = 1/32 step = B priority = 4
+------------------------
+Fmotiv № 4 | type ПМТ
+
+Note: duration = 1/32 step = D priority = 3
+Note: duration = 1/32 step = G priority = 4
+------------------------
+Fmotiv № 26 | type ПМТ
+
+Note: duration = 1/32 step = G priority = 2
+Note: duration = 1/32 step = F priority = 4
+------------------------
+Fmotiv № 6 | type ПМТ
+
+Note: duration = 1/32 step = A priority = 3
+Note: duration = 1/32 step = A priority = 4
+------------------------
+Fmotiv № 3 | type ПМТ
+
+Note: duration = 1/32 step = B priority = 1
+Note: duration = 1/32 step = B priority = 4
+------------------------
+Fmotiv № 3 | type ПМТ
+
+Note: duration = 1/32 step = G priority = 3
+Note: duration = 1/32 step = G priority = 4
+------------------------
+Fmotiv № 25 | type ПМТ
+
+Note: duration = 1/32 step = G priority = 2
+Note: duration = 1/32 step = A priority = 4
+------------------------
+Fmotiv № 6 | type ПМТ
+
+Note: duration = 1/32 step = C priority = 3
+Note: duration = 1/32 step = C priority = 4
+------------------------
+Fmotiv № 3 | type ПМТ
+
+Note: duration = 1/32 step = D priority = 0
+Note: duration = 1/32 step = D priority = 4
+------------------------
+Fmotiv № 7 | type ПМТ
+
+Note: duration = 1/32 step = B priority = 3
+Note: duration = 1/32 step = G priority = 4
+------------------------
+Fmotiv № 8 | type ПМТ
+
+Note: duration = 1/32 step = G priority = 2
+Note: duration = 1/32 step = B priority = 4
+------------------------
+Fmotiv № 6 | type ПМТ
+
+Note: duration = 1/32 step = D priority = 3
+Note: duration = 1/32 step = D priority = 4
+------------------------
+Fmotiv № 3 | type ПМТ
+
+Note: duration = 1/32 step = G priority = 1
+Note: duration = 1/32 step = G priority = 4
+------------------------
+Fmotiv № 27 | type ПМТ
+
+Note: duration = 1/32 step = E priority = 3
+Note: duration = 1/32 step = G priority = 4
+------------------------
+Fmotiv № 28 | type ПМТ
+
+Note: duration = 1/32 step = G priority = 2
+Note: duration = 1/32 step = E priority = 4
+------------------------
+Fmotiv № 6 | type ПМТ
+
+Note: duration = 1/32 step = G priority = 3
+Note: duration = 1/32 step = G priority = 4
+------------------------
+Fmotiv № 3 | type ПМТ
+
+Note: duration = 1/32 step = F priority = 1
+Note: duration = 1/32 step = F priority = 4
+------------------------
+Fmotiv № 20 | type ПМТ
+
+Note: duration = 1/32 step = D priority = 3
+Note: duration = 1/32 step = G priority = 4
+------------------------
+Fmotiv № 29 | type ПМТ
+
+Note: duration = 1/32 step = G priority = 2
+Note: duration = 1/32 step = C priority = 4
+------------------------
+Fmotiv № 6 | type ПМТ
+
+Note: duration = 1/32 step = E priority = 3
+Note: duration = 1/32 step = E priority = 4
+------------------------
+Fmotiv № 3 | type ПМТ
+
+Note: duration = 1/32 step = D priority = 0
+Note: duration = 1/32 step = D priority = 4
+------------------------
+Fmotiv № 7 | type ПМТ
+
+Note: duration = 1/32 step = B priority = 3
+Note: duration = 1/32 step = G priority = 4
+------------------------
+Fmotiv № 8 | type ПМТ
+
+Note: duration = 1/32 step = G priority = 2
+Note: duration = 1/32 step = B priority = 4
+------------------------
+Fmotiv № 6 | type ПМТ
+
+Note: duration = 1/32 step = D priority = 3
+Note: duration = 1/32 step = D priority = 4
+------------------------
+Fmotiv № 30 | type ПМТ
+
+Note: duration = 1/32 step = D priority = 1
+Note: duration = 1/32 step = A priority = 4
+------------------------
+Fmotiv № 4 | type ПМТ
+
+Note: duration = 1/32 step = F priority = 3
+Note: duration = 1/32 step = B priority = 4
+------------------------
+Fmotiv № 5 | type ПМТ
+
+Note: duration = 1/32 step = B priority = 2
+Note: duration = 1/32 step = F priority = 4
+------------------------
+Fmotiv № 31 | type ПМТ
+
+Note: duration = 1/32 step = A priority = 3
+Note: duration = 1/32 step = D priority = 4
+------------------------
+Fmotiv № 10 | type ПМТ
+
+Note: duration = 1/32 step = E priority = 1
+Note: duration = 1/32 step = G priority = 4
+------------------------
+Fmotiv № 4 | type ПМТ
+
+Note: duration = 1/32 step = B priority = 3
+Note: duration = 1/32 step = E priority = 4
+------------------------
+Fmotiv № 5 | type ПМТ
+
+Note: duration = 1/32 step = E priority = 2
+Note: duration = 1/32 step = B priority = 4
+------------------------
+Fmotiv № 1 | type ПМТ
+
+Note: duration = 1/32 step = G priority = 3
+Note: duration = 1/32 step = E priority = 4
+------------------------
+Fmotiv № 2 | type ПМТ
+
+Note: duration = 1/32 step = G priority = 0
+Note: duration = 1/32 step = A priority = 4
+------------------------
+Fmotiv № 10 | type ПМТ
+
+Note: duration = 1/32 step = C priority = 3
+Note: duration = 1/32 step = E priority = 4
+------------------------
+Fmotiv № 11 | type ПМТ
+
+Note: duration = 1/32 step = D priority = 2
+Note: duration = 1/32 step = C priority = 4
+------------------------
+Fmotiv № 9 | type ПМТ
+
+Note: duration = 1/32 step = B priority = 3
+Note: duration = 1/32 step = G priority = 4
+------------------------
+Fmotiv № 7 | type ПМТ
+
+Note: duration = 1/32 step = B priority = 1
+Note: duration = 1/32 step = G priority = 4
+------------------------
+Fmotiv № 0 | type ПМТ
+
+Note: duration = 1/32 step = B priority = 3
+Note: duration = 1/32 step = D priority = 4
+------------------------
+Fmotiv № 9 | type ПМТ
+
+Note: duration = 1/32 step = D priority = 2
+Note: duration = 1/32 step = B priority = 4
+------------------------
+Fmotiv № 8 | type ПМТ
+
+Note: duration = 1/32 step = G priority = 3
+Note: duration = 1/32 step = B priority = 4
+------------------------
+Fmotiv № 32 | type ПМТ
+
+Note: duration = 1/32 step = A priority = 1
+Note: duration = 1/32 step = F priority = 4
+------------------------
+Fmotiv № 10 | type ПМТ
+
+Note: duration = 1/32 step = C priority = 3
+Note: duration = 1/32 step = D priority = 4
+------------------------
+Fmotiv № 1 | type ПМТ
+
+Note: duration = 1/32 step = D priority = 2
+Note: duration = 1/32 step = C priority = 4
+------------------------
+Fmotiv № 28 | type ПМТ
+
+Note: duration = 1/32 step = A priority = 3
+Note: duration = 1/32 step = F priority = 4
+------------------------
+Fmotiv № 3 | type ПМТ
+
+Note: duration = 1/32 step = G priority = 0
+Note: duration = 1/32 step = G priority = 4
+------------------------
+Fmotiv № 7 | type ПМТ
+
+Note: duration = 1/32 step = B priority = 3
+Note: duration = 1/32 step = G priority = 4
+------------------------
+Fmotiv № 8 | type ПМТ
+
+Note: duration = 1/32 step = G priority = 2
+Note: duration = 1/32 step = B priority = 4
+------------------------
+Fmotiv № 33 | type ПМТВП
+
+Note: duration = 1/32 step = G priority = 3
+Note: duration = 1/32 step = G priority = 4
+Note: duration = 1/4 step = G priority = 1
+------------------------
+Fmotiv № 3 | type ПМТ
+
+Pause: duration = 1/4 priority = 1
+Note: duration = 1/32 step = G priority = 0
+Note: duration = 1/32 step = G priority = 4
+------------------------
+Fmotiv № 7 | type ПМТ
+
+Note: duration = 1/32 step = B priority = 3
+Note: duration = 1/32 step = G priority = 4
+------------------------
+Fmotiv № 8 | type ПМТ
+
+Note: duration = 1/32 step = G priority = 2
+Note: duration = 1/32 step = B priority = 4
+------------------------
+Fmotiv № 8 | type ПМТ
+
+Note: duration = 1/32 step = G priority = 3
+Note: duration = 1/32 step = B priority = 4
+------------------------
+Fmotiv № 3 | type ПМТ
+
+Note: duration = 1/32 step = G priority = 1
+Note: duration = 1/32 step = G priority = 4
+------------------------
+Fmotiv № 7 | type ПМТ
+
+Note: duration = 1/32 step = B priority = 3
+Note: duration = 1/32 step = G priority = 4
+------------------------
+Fmotiv № 8 | type ПМТ
+
+Note: duration = 1/32 step = G priority = 2
+Note: duration = 1/32 step = B priority = 4
+------------------------
+Fmotiv № 5 | type ПМТ
+
+Note: duration = 1/32 step = G priority = 3
+Note: duration = 1/32 step = D priority = 4
+------------------------
+Fmotiv № 10 | type ПМТ
+
+Note: duration = 1/32 step = B priority = 1
+Note: duration = 1/32 step = D priority = 4
+------------------------
+Fmotiv № 3 | type ПМТ
+
+Note: duration = 1/32 step = G priority = 3
+Note: duration = 1/32 step = G priority = 4
+------------------------
+Fmotiv № 6 | type ПМТ
+
+Note: duration = 1/32 step = G priority = 2
+Note: duration = 1/32 step = G priority = 4
+------------------------
+Fmotiv № 11 | type ПМТ
+
+Note: duration = 1/32 step = D priority = 3
+Note: duration = 1/32 step = C priority = 4
+------------------------
+Fmotiv № 10 | type ПМТ
+
+Note: duration = 1/32 step = D priority = 0
+Note: duration = 1/32 step = F priority = 4
+------------------------
+Fmotiv № 3 | type ПМТ
+
+Note: duration = 1/32 step = G priority = 3
+Note: duration = 1/32 step = G priority = 4
+------------------------
+Fmotiv № 6 | type ПМТ
+
+Note: duration = 1/32 step = G priority = 2
+Note: duration = 1/32 step = G priority = 4
+------------------------
+Fmotiv № 1 | type ПМТ
+
+Note: duration = 1/32 step = F priority = 3
+Note: duration = 1/32 step = D priority = 4
+------------------------
+Fmotiv № 32 | type ПМТ
+
+Note: duration = 1/32 step = F priority = 1
+Note: duration = 1/32 step = D priority = 4
+------------------------
+Fmotiv № 3 | type ПМТ
+
+Note: duration = 1/32 step = G priority = 3
+Note: duration = 1/32 step = G priority = 4
+------------------------
+Fmotiv № 6 | type ПМТ
+
+Note: duration = 1/32 step = G priority = 2
+Note: duration = 1/32 step = G priority = 4
+------------------------
+Fmotiv № 34 | type ПМТ
+
+Note: duration = 1/32 step = D priority = 3
+Note: duration = 1/32 step = F priority = 4
+------------------------
+Fmotiv № 16 | type ПМТ
+
+Note: duration = 1/32 step = A priority = 1
+Note: duration = 1/32 step = F priority = 4
+------------------------
+Fmotiv № 4 | type ПМТ
+
+Note: duration = 1/32 step = D priority = 3
+Note: duration = 1/32 step = G priority = 4
+------------------------
+Fmotiv № 1 | type ПМТ
+
+Note: duration = 1/32 step = G priority = 2
+Note: duration = 1/32 step = E priority = 4
+------------------------
+Fmotiv № 13 | type ПМТ
+
+Note: duration = 1/32 step = F priority = 3
+Note: duration = 1/32 step = B priority = 4
+------------------------
+Fmotiv № 0 | type ПМТ
+
+Note: duration = 1/32 step = C priority = 0
+Note: duration = 1/32 step = E priority = 4
+------------------------
+Fmotiv № 3 | type ПМТ
+
+Note: duration = 1/32 step = G priority = 3
+Note: duration = 1/32 step = G priority = 4
+------------------------
+Fmotiv № 6 | type ПМТ
+
+Note: duration = 1/32 step = G priority = 2
+Note: duration = 1/32 step = G priority = 4
+------------------------
+Fmotiv № 9 | type ПМТ
+
+Note: duration = 1/32 step = E priority = 3
+Note: duration = 1/32 step = C priority = 4
+------------------------
+Fmotiv № 3 | type ПМТ
+
+Note: duration = 1/32 step = E priority = 1
+Note: duration = 1/32 step = E priority = 4
+------------------------
+Fmotiv № 3 | type ПМТ
+
+Note: duration = 1/32 step = G priority = 3
+Note: duration = 1/32 step = G priority = 4
+------------------------
+Fmotiv № 6 | type ПМТ
+
+Note: duration = 1/32 step = G priority = 2
+Note: duration = 1/32 step = G priority = 4
+------------------------
+Fmotiv № 11 | type ПМТ
+
+Note: duration = 1/32 step = E priority = 3
+Note: duration = 1/32 step = D priority = 4
+------------------------
+Fmotiv № 0 | type ПМТ
+
+Note: duration = 1/32 step = C priority = 1
+Note: duration = 1/32 step = E priority = 4
+------------------------
+Fmotiv № 3 | type ПМТ
+
+Note: duration = 1/32 step = G priority = 3
+Note: duration = 1/32 step = G priority = 4
+------------------------
+Fmotiv № 6 | type ПМТ
+
+Note: duration = 1/32 step = G priority = 2
+Note: duration = 1/32 step = G priority = 4
+------------------------
+Fmotiv № 1 | type ПМТ
+
+Note: duration = 1/32 step = D priority = 3
+Note: duration = 1/32 step = B priority = 4
+------------------------
+Fmotiv № 4 | type ПМТ
+
+Note: duration = 1/32 step = B priority = 0
+Note: duration = 1/32 step = E priority = 4
+------------------------
+Fmotiv № 30 | type ПМТ
+
+Note: duration = 1/32 step = C priority = 3
+Note: duration = 1/32 step = G priority = 4
+------------------------
+Fmotiv № 31 | type ПМТ
+
+Note: duration = 1/32 step = G priority = 2
+Note: duration = 1/32 step = C priority = 4
+------------------------
+Fmotiv № 35 | type ПМТ
+
+Note: duration = 1/32 step = E priority = 3
+Note: duration = 1/32 step = A priority = 4
+------------------------
+Fmotiv № 4 | type ПМТ
+
+Note: duration = 1/32 step = B priority = 1
+Note: duration = 1/32 step = E priority = 4
+------------------------
+Fmotiv № 30 | type ПМТ
+
+Note: duration = 1/32 step = C priority = 3
+Note: duration = 1/32 step = G priority = 4
+------------------------
+Fmotiv № 31 | type ПМТ
+
+Note: duration = 1/32 step = G priority = 2
+Note: duration = 1/32 step = C priority = 4
+------------------------
+Fmotiv № 35 | type ПМТ
+
+Note: duration = 1/32 step = E priority = 3
+Note: duration = 1/32 step = A priority = 4
+------------------------
+Fmotiv № 4 | type ПМТ
+
+Note: duration = 1/32 step = B priority = 1
+Note: duration = 1/32 step = E priority = 4
+------------------------
+Fmotiv № 36 | type ПМТ
+
+Note: duration = 1/32 step = C priority = 3
+Note: duration = 1/32 step = G priority = 4
+------------------------
+Fmotiv № 29 | type ПМТ
+
+Note: duration = 1/32 step = G priority = 2
+Note: duration = 1/32 step = C priority = 4
+------------------------
+Fmotiv № 5 | type ПМТ
+
+Note: duration = 1/32 step = D priority = 3
+Note: duration = 1/32 step = A priority = 4
+------------------------
+Fmotiv № 18 | type ПМТ
+
+Note: duration = 1/32 step = G priority = 0
+Note: duration = 1/32 step = D priority = 4
+------------------------
+Fmotiv № 7 | type ПМТ
+
+Note: duration = 1/32 step = B priority = 3
+Note: duration = 1/32 step = G priority = 4
+------------------------
+Fmotiv № 8 | type ПМТ
+
+Note: duration = 1/32 step = G priority = 2
+Note: duration = 1/32 step = B priority = 4
+------------------------
+Fmotiv № 35 | type ПМТ
+
+Note: duration = 1/32 step = D priority = 3
+Note: duration = 1/32 step = G priority = 4
+------------------------
+Fmotiv № 18 | type ПМТ
+
+Note: duration = 1/32 step = G priority = 1
+Note: duration = 1/32 step = D priority = 4
+------------------------
+Fmotiv № 7 | type ПМТ
+
+Note: duration = 1/32 step = B priority = 3
+Note: duration = 1/32 step = G priority = 4
+------------------------
+Fmotiv № 26 | type ПМТ
+
+Note: duration = 1/32 step = G priority = 2
+Note: duration = 1/32 step = F priority = 4
+------------------------
+Fmotiv № 5 | type ПМТ
+
+Note: duration = 1/32 step = D priority = 3
+Note: duration = 1/32 step = A priority = 4
+------------------------
+Fmotiv № 10 | type ПМТ
+
+Note: duration = 1/32 step = B priority = 1
+Note: duration = 1/32 step = D priority = 4
+------------------------
+Fmotiv № 7 | type ПМТ
+
+Note: duration = 1/32 step = B priority = 3
+Note: duration = 1/32 step = G priority = 4
+------------------------
+Fmotiv № 25 | type ПМТ
+
+Note: duration = 1/32 step = G priority = 2
+Note: duration = 1/32 step = A priority = 4
+------------------------
+Fmotiv № 11 | type ПМТ
+
+Note: duration = 1/32 step = D priority = 3
+Note: duration = 1/32 step = C priority = 4
+------------------------
+Fmotiv № 2 | type ПМТ
+
+Note: duration = 1/32 step = C priority = 0
+Note: duration = 1/32 step = D priority = 4
+------------------------
+Fmotiv № 7 | type ПМТ
+
+Note: duration = 1/32 step = B priority = 3
+Note: duration = 1/32 step = G priority = 4
+------------------------
+Fmotiv № 6 | type ПМТ
+
+Note: duration = 1/32 step = G priority = 2
+Note: duration = 1/32 step = G priority = 4
+------------------------
+Fmotiv № 34 | type ПМТ
+
+Note: duration = 1/32 step = D priority = 3
+Note: duration = 1/32 step = F priority = 4
+------------------------
+Fmotiv № 7 | type ПМТ
+
+Note: duration = 1/32 step = A priority = 1
+Note: duration = 1/32 step = F priority = 4
+------------------------
+Fmotiv № 4 | type ПМТ
+
+Note: duration = 1/32 step = D priority = 3
+Note: duration = 1/32 step = G priority = 4
+------------------------
+Fmotiv № 6 | type ПМТ
+
+Note: duration = 1/32 step = G priority = 2
+Note: duration = 1/32 step = G priority = 4
+------------------------
+Fmotiv № 34 | type ПМТ
+
+Note: duration = 1/32 step = D priority = 3
+Note: duration = 1/32 step = F priority = 4
+------------------------
+Fmotiv № 10 | type ПМТ
+
+Note: duration = 1/32 step = D priority = 1
+Note: duration = 1/32 step = F priority = 4
+------------------------
+Fmotiv № 3 | type ПМТ
+
+Note: duration = 1/32 step = G priority = 3
+Note: duration = 1/32 step = G priority = 4
+------------------------
+Fmotiv № 6 | type ПМТ
+
+Note: duration = 1/32 step = G priority = 2
+Note: duration = 1/32 step = G priority = 4
+------------------------
+Fmotiv № 13 | type ПМТ
+
+Note: duration = 1/32 step = F priority = 3
+Note: duration = 1/32 step = B priority = 4
+------------------------
+Fmotiv № 2 | type ПМТ
+
+Note: duration = 1/32 step = D priority = 0
+Note: duration = 1/32 step = E priority = 4
+------------------------
+Fmotiv № 3 | type ПМТ
+
+Note: duration = 1/32 step = G priority = 3
+Note: duration = 1/32 step = G priority = 4
+------------------------
+Fmotiv № 6 | type ПМТ
+
+Note: duration = 1/32 step = G priority = 2
+Note: duration = 1/32 step = G priority = 4
+------------------------
+Fmotiv № 1 | type ПМТ
+
+Note: duration = 1/32 step = D priority = 3
+Note: duration = 1/32 step = C priority = 4
+------------------------
+Fmotiv № 3 | type ПМТ
+
+Note: duration = 1/32 step = D priority = 1
+Note: duration = 1/32 step = D priority = 4
+------------------------
+Fmotiv № 3 | type ПМТ
+
+Note: duration = 1/32 step = G priority = 3
+Note: duration = 1/32 step = G priority = 4
+------------------------
+Fmotiv № 37 | type ПМТ
+
+Note: duration = 1/32 step = G priority = 2
+Note: duration = 1/32 step = G priority = 4
+------------------------
+Fmotiv № 1 | type ПМТ
+
+Note: duration = 1/32 step = D priority = 3
+Note: duration = 1/32 step = C priority = 4
+------------------------
+Fmotiv № 0 | type ПМТ
+
+Note: duration = 1/32 step = G priority = 1
+Note: duration = 1/32 step = C priority = 4
+------------------------
+Fmotiv № 0 | type ПМТ
+
+Note: duration = 1/32 step = D priority = 3
+Note: duration = 1/32 step = G priority = 4
+------------------------
+Fmotiv № 9 | type ПМТ
+
+Note: duration = 1/32 step = G priority = 2
+Note: duration = 1/32 step = D priority = 4
+------------------------
+Fmotiv № 5 | type ПМТ
+
+Note: duration = 1/32 step = C priority = 3
+Note: duration = 1/32 step = G priority = 4
+------------------------
+Fmotiv № 4 | type ПМТ
+
+Note: duration = 1/32 step = G priority = 0
+Note: duration = 1/32 step = C priority = 4
+------------------------
+Fmotiv № 0 | type ПМТ
+
+Note: duration = 1/32 step = D priority = 3
+Note: duration = 1/32 step = G priority = 4
+------------------------
+Fmotiv № 6 | type ПМТ
+
+Note: duration = 1/32 step = G priority = 2
+Note: duration = 1/32 step = G priority = 4
+------------------------
+Fmotiv № 13 | type ПМТ
+
+Note: duration = 1/32 step = C priority = 3
+Note: duration = 1/32 step = F priority = 4
+------------------------
+Fmotiv № 2 | type ПМТ
+
+Note: duration = 1/32 step = E priority = 1
+Note: duration = 1/32 step = F priority = 4
+------------------------
+Fmotiv № 38 | type ПМТ
+
+Note: duration = 1/32 step = A priority = 3
+Note: duration = 1/32 step = G priority = 4
+------------------------
+Fmotiv № 9 | type ПМТ
+
+Note: duration = 1/32 step = G priority = 2
+Note: duration = 1/32 step = D priority = 4
+------------------------
+Fmotiv № 34 | type ПМТ
+
+Note: duration = 1/32 step = A priority = 3
+Note: duration = 1/32 step = C priority = 4
+------------------------
+Fmotiv № 10 | type ПМТ
+
+Note: duration = 1/32 step = A priority = 1
+Note: duration = 1/32 step = C priority = 4
+------------------------
+Fmotiv № 0 | type ПМТ
+
+Note: duration = 1/32 step = D priority = 3
+Note: duration = 1/32 step = G priority = 4
+------------------------
+Fmotiv № 6 | type ПМТ
+
+Note: duration = 1/32 step = G priority = 2
+Note: duration = 1/32 step = G priority = 4
+------------------------
+Fmotiv № 13 | type ПМТ
+
+Note: duration = 1/32 step = C priority = 3
+Note: duration = 1/32 step = F priority = 4
+------------------------
+Fmotiv № 0 | type ПМТ
+
+Note: duration = 1/32 step = G priority = 0
+Note: duration = 1/32 step = B priority = 4
+------------------------
+Fmotiv № 4 | type ПМТ
+
+Note: duration = 1/32 step = D priority = 3
+Note: duration = 1/32 step = G priority = 4
+------------------------
+Fmotiv № 5 | type ПМТ
+
+Note: duration = 1/32 step = G priority = 2
+Note: duration = 1/32 step = D priority = 4
+------------------------
+Fmotiv № 9 | type ПМТ
+
+Note: duration = 1/32 step = B priority = 3
+Note: duration = 1/32 step = G priority = 4
+------------------------
+Fmotiv № 0 | type ПМТ
+
+Note: duration = 1/32 step = G priority = 1
+Note: duration = 1/32 step = B priority = 4
+------------------------
+Fmotiv № 4 | type ПМТ
+
+Note: duration = 1/32 step = D priority = 3
+Note: duration = 1/32 step = G priority = 4
+------------------------
+Fmotiv № 9 | type ПМТ
+
+Note: duration = 1/32 step = G priority = 2
+Note: duration = 1/32 step = D priority = 4
+------------------------
+Fmotiv № 13 | type ПМТ
+
+Note: duration = 1/32 step = C priority = 3
+Note: duration = 1/32 step = F priority = 4
+------------------------
+Fmotiv № 0 | type ПМТ
+
+Note: duration = 1/32 step = G priority = 1
+Note: duration = 1/32 step = B priority = 4
+------------------------
+Fmotiv № 1 | type ПМТ
+
+Note: duration = 1/32 step = D priority = 3
+Note: duration = 1/32 step = B priority = 4
+------------------------
+Fmotiv № 2 | type ПМТ
+
+Note: duration = 1/32 step = A priority = 2
+Note: duration = 1/32 step = B priority = 4
+------------------------
+Fmotiv № 1 | type ПМТ
+
+Note: duration = 1/32 step = D priority = 3
+Note: duration = 1/32 step = B priority = 4
+------------------------
+Fmotiv № 3 | type ПМТ
+
+Note: duration = 1/32 step = B priority = 0
+Note: duration = 1/32 step = B priority = 4
+------------------------
+Fmotiv № 4 | type ПМТ
+
+Note: duration = 1/32 step = D priority = 3
+Note: duration = 1/32 step = G priority = 4
+------------------------
+Fmotiv № 5 | type ПМТ
+
+Note: duration = 1/32 step = G priority = 2
+Note: duration = 1/32 step = D priority = 4
+------------------------
+Fmotiv № 6 | type ПМТ
+
+Note: duration = 1/32 step = B priority = 3
+Note: duration = 1/32 step = B priority = 4
+------------------------
+Fmotiv № 3 | type ПМТ
+
+Note: duration = 1/32 step = G priority = 1
+Note: duration = 1/32 step = G priority = 4
+------------------------
+Fmotiv № 7 | type ПМТ
+
+Note: duration = 1/32 step = B priority = 3
+Note: duration = 1/32 step = G priority = 4
+------------------------
+Fmotiv № 5 | type ПМТ
+
+Note: duration = 1/32 step = G priority = 2
+Note: duration = 1/32 step = D priority = 4
+------------------------
+Fmotiv № 6 | type ПМТ
+
+Note: duration = 1/32 step = B priority = 3
+Note: duration = 1/32 step = B priority = 4
+------------------------
+Fmotiv № 0 | type ПМТ
+
+Note: duration = 1/32 step = G priority = 1
+Note: duration = 1/32 step = B priority = 4
+------------------------
+Fmotiv № 1 | type ПМТ
+
+Note: duration = 1/32 step = D priority = 3
+Note: duration = 1/32 step = B priority = 4
+------------------------
+Fmotiv № 2 | type ПМТ
+
+Note: duration = 1/32 step = A priority = 2
+Note: duration = 1/32 step = B priority = 4
+------------------------
+Fmotiv № 9 | type ПМТ
+
+Note: duration = 1/32 step = D priority = 3
+Note: duration = 1/32 step = B priority = 4
+------------------------
+Fmotiv № 3 | type ПМТ
+
+Note: duration = 1/32 step = B priority = 0
+Note: duration = 1/32 step = B priority = 4
+------------------------
+Fmotiv № 4 | type ПМТ
+
+Note: duration = 1/32 step = D priority = 3
+Note: duration = 1/32 step = G priority = 4
+------------------------
+Fmotiv № 5 | type ПМТ
+
+Note: duration = 1/32 step = G priority = 2
+Note: duration = 1/32 step = D priority = 4
+------------------------
+Fmotiv № 6 | type ПМТ
+
+Note: duration = 1/32 step = B priority = 3
+Note: duration = 1/32 step = B priority = 4
+------------------------
+Fmotiv № 3 | type ПМТ
+
+Note: duration = 1/32 step = B priority = 1
+Note: duration = 1/32 step = B priority = 4
+------------------------
+Fmotiv № 4 | type ПМТ
+
+Note: duration = 1/32 step = D priority = 3
+Note: duration = 1/32 step = G priority = 4
+------------------------
+Fmotiv № 5 | type ПМТ
+
+Note: duration = 1/32 step = G priority = 2
+Note: duration = 1/32 step = D priority = 4
+------------------------
+Fmotiv № 6 | type ПМТ
+
+Note: duration = 1/32 step = B priority = 3
+Note: duration = 1/32 step = B priority = 4
+------------------------
+Fmotiv № 0 | type ПМТ
+
+Note: duration = 1/32 step = G priority = 1
+Note: duration = 1/32 step = B priority = 4
+------------------------
+Fmotiv № 1 | type ПМТ
+
+Note: duration = 1/32 step = D priority = 3
+Note: duration = 1/32 step = B priority = 4
+------------------------
+Fmotiv № 10 | type ПМТ
+
+Note: duration = 1/32 step = A priority = 2
+Note: duration = 1/32 step = C priority = 4
+------------------------
+Fmotiv № 13 | type ПМТ
+
+Note: duration = 1/32 step = D priority = 3
+Note: duration = 1/32 step = A priority = 4
+------------------------
+Fmotiv № 3 | type ПМТ
+
+Note: duration = 1/32 step = B priority = 0
+Note: duration = 1/32 step = B priority = 4
+------------------------
+Fmotiv № 4 | type ПМТ
+
+Note: duration = 1/32 step = D priority = 3
+Note: duration = 1/32 step = G priority = 4
+------------------------
+Fmotiv № 5 | type ПМТ
+
+Note: duration = 1/32 step = G priority = 2
+Note: duration = 1/32 step = D priority = 4
+------------------------
+Fmotiv № 6 | type ПМТ
+
+Note: duration = 1/32 step = B priority = 3
+Note: duration = 1/32 step = B priority = 4
+------------------------
+Fmotiv № 3 | type ПМТ
+
+Note: duration = 1/32 step = D priority = 1
+Note: duration = 1/32 step = D priority = 4
+------------------------
+Fmotiv № 4 | type ПМТ
+
+Note: duration = 1/32 step = D priority = 3
+Note: duration = 1/32 step = G priority = 4
+------------------------
+Fmotiv № 5 | type ПМТ
+
+Note: duration = 1/32 step = G priority = 2
+Note: duration = 1/32 step = D priority = 4
+------------------------
+Fmotiv № 34 | type ПМТ
+
+Note: duration = 1/32 step = B priority = 3
+Note: duration = 1/32 step = D priority = 4
+------------------------
+Fmotiv № 7 | type ПМТ
+
+Note: duration = 1/32 step = B priority = 1
+Note: duration = 1/32 step = G priority = 4
+------------------------
+Fmotiv № 4 | type ПМТ
+
+Note: duration = 1/32 step = D priority = 3
+Note: duration = 1/32 step = G priority = 4
+------------------------
+Fmotiv № 5 | type ПМТ
+
+Note: duration = 1/32 step = G priority = 2
+Note: duration = 1/32 step = D priority = 4
+------------------------
+Fmotiv № 8 | type ПМТ
+
+Note: duration = 1/32 step = G priority = 3
+Note: duration = 1/32 step = B priority = 4
+------------------------
+Fmotiv № 3 | type ПМТ
+
+Note: duration = 1/32 step = G priority = 0
+Note: duration = 1/32 step = G priority = 4
+------------------------
+Fmotiv № 7 | type ПМТ
+
+Note: duration = 1/32 step = B priority = 3
+Note: duration = 1/32 step = G priority = 4
+------------------------
+Fmotiv № 8 | type ПМТ
+
+Note: duration = 1/32 step = G priority = 2
+Note: duration = 1/32 step = B priority = 4
+------------------------
+Fmotiv № 6 | type ПМТ
+
+Note: duration = 1/32 step = G priority = 3
+Note: duration = 1/32 step = G priority = 4
+------------------------
+Fmotiv № 4 | type ПМТ
+
+Note: duration = 1/32 step = D priority = 1
+Note: duration = 1/32 step = G priority = 4
+------------------------
+Fmotiv № 7 | type ПМТ
+
+Note: duration = 1/32 step = B priority = 3
+Note: duration = 1/32 step = G priority = 4
+------------------------
+Fmotiv № 8 | type ПМТ
+
+Note: duration = 1/32 step = G priority = 2
+Note: duration = 1/32 step = B priority = 4
+------------------------
+Fmotiv № 5 | type ПМТ
+
+Note: duration = 1/32 step = G priority = 3
+Note: duration = 1/32 step = D priority = 4
+------------------------
+Fmotiv № 10 | type ПМТ
+
+Note: duration = 1/32 step = B priority = 1
+Note: duration = 1/32 step = D priority = 4
+------------------------
+Fmotiv № 3 | type ПМТ
+
+Note: duration = 1/32 step = G priority = 3
+Note: duration = 1/32 step = G priority = 4
+------------------------
+Fmotiv № 6 | type ПМТ
+
+Note: duration = 1/32 step = G priority = 2
+Note: duration = 1/32 step = G priority = 4
+------------------------
+Fmotiv № 1 | type ПМТ
+
+Note: duration = 1/32 step = D priority = 3
+Note: duration = 1/32 step = B priority = 4
+------------------------
+Fmotiv № 0 | type ПМТ
+
+Note: duration = 1/32 step = G priority = 0
+Note: duration = 1/32 step = B priority = 4
+------------------------
+Fmotiv № 4 | type ПМТ
+
+Note: duration = 1/32 step = D priority = 3
+Note: duration = 1/32 step = G priority = 4
+------------------------
+Fmotiv № 5 | type ПМТ
+
+Note: duration = 1/32 step = G priority = 2
+Note: duration = 1/32 step = D priority = 4
+------------------------
+Fmotiv № 1 | type ПМТ
+
+Note: duration = 1/32 step = B priority = 3
+Note: duration = 1/32 step = G priority = 4
+------------------------
+Fmotiv № 2 | type ПМТ
+
+Note: duration = 1/32 step = A priority = 1
+Note: duration = 1/32 step = B priority = 4
+------------------------
+Fmotiv № 4 | type ПМТ
+
+Note: duration = 1/32 step = D priority = 3
+Note: duration = 1/32 step = G priority = 4
+------------------------
+Fmotiv № 6 | type ПМТ
+
+Note: duration = 1/32 step = G priority = 2
+Note: duration = 1/32 step = G priority = 4
+------------------------
+Fmotiv № 9 | type ПМТ
+
+Note: duration = 1/32 step = D priority = 3
+Note: duration = 1/32 step = A priority = 4
+------------------------
+Fmotiv № 10 | type ПМТ
+
+Note: duration = 1/32 step = B priority = 1
+Note: duration = 1/32 step = D priority = 4
+------------------------
+Fmotiv № 3 | type ПМТ
+
+Note: duration = 1/32 step = G priority = 3
+Note: duration = 1/32 step = G priority = 4
+------------------------
+Fmotiv № 6 | type ПМТ
+
+Note: duration = 1/32 step = G priority = 2
+Note: duration = 1/32 step = G priority = 4
+------------------------
+Fmotiv № 11 | type ПМТ
+
+Note: duration = 1/32 step = D priority = 3
+Note: duration = 1/32 step = C priority = 4
+------------------------
+Fmotiv № 22 | type ПМТ
+
+Note: duration = 1/32 step = C priority = 0
+Note: duration = 1/32 step = D priority = 4
+------------------------
+Fmotiv № 3 | type ПМТ
+
+Note: duration = 1/32 step = G priority = 3
+Note: duration = 1/32 step = G priority = 4
+------------------------
+Fmotiv № 8 | type ПМТ
+
+Note: duration = 1/32 step = G priority = 2
+Note: duration = 1/32 step = B priority = 4
+------------------------
+Fmotiv № 5 | type ПМТ
+
+Note: duration = 1/32 step = G priority = 3
+Note: duration = 1/32 step = D priority = 4
+------------------------
+Fmotiv № 0 | type ПМТ
+
+Note: duration = 1/32 step = D priority = 1
+Note: duration = 1/32 step = G priority = 4
+------------------------
+Fmotiv № 7 | type ПМТ
+
+Note: duration = 1/32 step = B priority = 3
+Note: duration = 1/32 step = G priority = 4
+------------------------
+Fmotiv № 8 | type ПМТ
+
+Note: duration = 1/32 step = G priority = 2
+Note: duration = 1/32 step = B priority = 4
+------------------------
+Fmotiv № 1 | type ПМТ
+
+Note: duration = 1/32 step = G priority = 3
+Note: duration = 1/32 step = E priority = 4
+------------------------
+Fmotiv № 2 | type ПМТ
+
+Note: duration = 1/32 step = F priority = 1
+Note: duration = 1/32 step = G priority = 4
+------------------------
+Fmotiv № 7 | type ПМТ
+
+Note: duration = 1/32 step = B priority = 3
+Note: duration = 1/32 step = G priority = 4
+------------------------
+Fmotiv № 8 | type ПМТ
+
+Note: duration = 1/32 step = G priority = 2
+Note: duration = 1/32 step = B priority = 4
+------------------------
+Fmotiv № 6 | type ПМТ
+
+Note: duration = 1/32 step = F priority = 3
+Note: duration = 1/32 step = F priority = 4
+------------------------
+Fmotiv № 3 | type ПМТ
+
+Note: duration = 1/32 step = G priority = 0
+Note: duration = 1/32 step = G priority = 4
+------------------------
+Fmotiv № 7 | type ПМТ
+
+Note: duration = 1/32 step = B priority = 3
+Note: duration = 1/32 step = G priority = 4
+------------------------
+Fmotiv № 8 | type ПМТ
+
+Note: duration = 1/32 step = G priority = 2
+Note: duration = 1/32 step = B priority = 4
+------------------------
+Fmotiv № 26 | type ПМТ
+
+Note: duration = 1/32 step = G priority = 3
+Note: duration = 1/32 step = F priority = 4
+------------------------
+Fmotiv № 2 | type ПМТ
+
+Note: duration = 1/32 step = F priority = 1
+Note: duration = 1/32 step = G priority = 4
+------------------------
+Fmotiv № 7 | type ПМТ
+
+Note: duration = 1/32 step = B priority = 3
+Note: duration = 1/32 step = G priority = 4
+------------------------
+Fmotiv № 8 | type ПМТ
+
+Note: duration = 1/32 step = G priority = 2
+Note: duration = 1/32 step = B priority = 4
+------------------------
+Fmotiv № 1 | type ПМТ
+
+Note: duration = 1/32 step = G priority = 3
+Note: duration = 1/32 step = E priority = 4
+------------------------
+Fmotiv № 0 | type ПМТ
+
+Note: duration = 1/32 step = D priority = 1
+Note: duration = 1/32 step = G priority = 4
+------------------------
+Fmotiv № 7 | type ПМТ
+
+Note: duration = 1/32 step = B priority = 3
+Note: duration = 1/32 step = G priority = 4
+------------------------
+Fmotiv № 8 | type ПМТ
+
+Note: duration = 1/32 step = G priority = 2
+Note: duration = 1/32 step = B priority = 4
+------------------------
+Fmotiv № 5 | type ПМТ
+
+Note: duration = 1/32 step = G priority = 3
+Note: duration = 1/32 step = D priority = 4
+------------------------
+Fmotiv № 22 | type ПМТ
+
+Note: duration = 1/32 step = C priority = 0
+Note: duration = 1/32 step = D priority = 4
+------------------------
+Fmotiv № 3 | type ПМТ
+
+Note: duration = 1/32 step = G priority = 3
+Note: duration = 1/32 step = G priority = 4
+------------------------
+Fmotiv № 6 | type ПМТ
+
+Note: duration = 1/32 step = G priority = 2
+Note: duration = 1/32 step = G priority = 4
+------------------------
+Fmotiv № 11 | type ПМТ
+
+Note: duration = 1/32 step = D priority = 3
+Note: duration = 1/32 step = C priority = 4
+------------------------
+Fmotiv № 3 | type ПМТ
+
+Note: duration = 1/32 step = B priority = 1
+Note: duration = 1/32 step = B priority = 4
+------------------------
+Fmotiv № 4 | type ПМТ
+
+Note: duration = 1/32 step = D priority = 3
+Note: duration = 1/32 step = G priority = 4
+------------------------
+Fmotiv № 5 | type ПМТ
+
+Note: duration = 1/32 step = G priority = 2
+Note: duration = 1/32 step = D priority = 4
+------------------------
+Fmotiv № 26 | type ПМТ
+
+Note: duration = 1/32 step = B priority = 3
+Note: duration = 1/32 step = A priority = 4
+------------------------
+Fmotiv № 2 | type ПМТ
+
+Note: duration = 1/32 step = A priority = 1
+Note: duration = 1/32 step = B priority = 4
+------------------------
+Fmotiv № 4 | type ПМТ
+
+Note: duration = 1/32 step = D priority = 3
+Note: duration = 1/32 step = G priority = 4
+------------------------
+Fmotiv № 5 | type ПМТ
+
+Note: duration = 1/32 step = G priority = 2
+Note: duration = 1/32 step = D priority = 4
+------------------------
+Fmotiv № 1 | type ПМТ
+
+Note: duration = 1/32 step = B priority = 3
+Note: duration = 1/32 step = G priority = 4
+------------------------
+Fmotiv № 0 | type ПМТ
+
+Note: duration = 1/32 step = G priority = 0
+Note: duration = 1/32 step = B priority = 4
+------------------------
+Fmotiv № 4 | type ПМТ
+
+Note: duration = 1/32 step = D priority = 3
+Note: duration = 1/32 step = G priority = 4
+------------------------
+Fmotiv № 5 | type ПМТ
+
+Note: duration = 1/32 step = G priority = 2
+Note: duration = 1/32 step = D priority = 4
+------------------------
+Fmotiv № 9 | type ПМТ
+
+Note: duration = 1/32 step = B priority = 3
+Note: duration = 1/32 step = G priority = 4
+------------------------
+Fmotiv № 0 | type ПМТ
+
+Note: duration = 1/32 step = G priority = 1
+Note: duration = 1/32 step = B priority = 4
+------------------------
+Fmotiv № 4 | type ПМТ
+
+Note: duration = 1/32 step = D priority = 3
+Note: duration = 1/32 step = G priority = 4
+------------------------
+Fmotiv № 5 | type ПМТ
+
+Note: duration = 1/32 step = G priority = 2
+Note: duration = 1/32 step = D priority = 4
+------------------------
+Fmotiv № 9 | type ПМТ
+
+Note: duration = 1/32 step = B priority = 3
+Note: duration = 1/32 step = G priority = 4
+------------------------
+Fmotiv № 0 | type ПМТ
+
+Note: duration = 1/32 step = G priority = 1
+Note: duration = 1/32 step = B priority = 4
+------------------------
+Fmotiv № 4 | type ПМТ
+
+Note: duration = 1/32 step = D priority = 3
+Note: duration = 1/32 step = G priority = 4
+------------------------
+Fmotiv № 5 | type ПМТ
+
+Note: duration = 1/32 step = G priority = 2
+Note: duration = 1/32 step = D priority = 4
+------------------------
+Fmotiv № 9 | type ПМТ
+
+Note: duration = 1/32 step = B priority = 3
+Note: duration = 1/32 step = G priority = 4
+------------------------
+Fmotiv № 0 | type ПМТ
+
+Note: duration = 1/32 step = G priority = 0
+Note: duration = 1/32 step = B priority = 4
+------------------------
+Fmotiv № 4 | type ПМТ
+
+Note: duration = 1/32 step = D priority = 3
+Note: duration = 1/32 step = G priority = 4
+------------------------
+Fmotiv № 5 | type ПМТ
+
+Note: duration = 1/32 step = G priority = 2
+Note: duration = 1/32 step = D priority = 4
+------------------------
+Fmotiv № 9 | type ПМТ
+
+Note: duration = 1/32 step = B priority = 3
+Note: duration = 1/32 step = G priority = 4
+------------------------
+Fmotiv № 0 | type ПМТ
+
+Note: duration = 1/32 step = G priority = 1
+Note: duration = 1/32 step = B priority = 4
+------------------------
+Fmotiv № 4 | type ПМТ
+
+Note: duration = 1/32 step = D priority = 3
+Note: duration = 1/32 step = G priority = 4
+------------------------
+Fmotiv № 5 | type ПМТ
+
+Note: duration = 1/32 step = G priority = 2
+Note: duration = 1/32 step = D priority = 4
+------------------------
+Fmotiv № 9 | type ПМТ
+
+Note: duration = 1/32 step = B priority = 3
+Note: duration = 1/32 step = G priority = 4
+------------------------
+Fmotiv № 0 | type ПМТ
+
+Note: duration = 1/32 step = G priority = 1
+Note: duration = 1/32 step = B priority = 4
+------------------------
+Fmotiv № 4 | type ПМТ
+
+Note: duration = 1/32 step = D priority = 3
+Note: duration = 1/32 step = G priority = 4
+------------------------
+Fmotiv № 5 | type ПМТ
+
+Note: duration = 1/32 step = G priority = 2
+Note: duration = 1/32 step = D priority = 4
+------------------------
+Fmotiv № 39 | type ПМТВП
+
+Note: duration = 1/32 step = B priority = 3
+Note: duration = 1/32 step = G priority = 4
+Note: duration = 1/4 step = G priority = 0
+------------------------
+Fmotiv № 40 | type ЧМТ
+
+Note: duration = 1/4 step = G priority = 1
+------------------------
+Fmotiv № 41 | type ЧМТВП
+
+Note: duration = 1/4 step = G priority = 1
+Note: duration = 3/4 step = G priority = 0
+------------------------

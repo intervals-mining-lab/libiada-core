@@ -1,0 +1,830 @@
+Fmotiv Chain № 0 Name = P1
+
+------------------------
+Fmotiv № 0 | type ЧМТ
+
+Note: duration = 1/8 step = D priority = 0
+------------------------
+Fmotiv № 1 | type ПМТ
+
+Note: duration = 1/16 step = E priority = 3
+Note: duration = 1/16 step = F priority = 4
+------------------------
+Fmotiv № 1 | type ПМТ
+
+Note: duration = 1/16 step = G priority = 2
+Note: duration = 1/16 step = A priority = 4
+------------------------
+Fmotiv № 1 | type ПМТ
+
+Note: duration = 1/16 step = B priority = 3
+Note: duration = 1/16 step = C priority = 4
+------------------------
+Fmotiv № 1 | type ПМТ
+
+Note: duration = 1/16 step = D priority = 1
+Note: duration = 1/16 step = E priority = 4
+------------------------
+Fmotiv № 2 | type ПМТВП
+
+Note: duration = 1/16 step = F priority = 3
+Note: duration = 1/16 step = G priority = 4
+Note: duration = 1/8 step = A priority = 2
+------------------------
+Fmotiv № 0 | type ЧМТ
+
+Note: duration = 1/8 step = F priority = 3
+------------------------
+Fmotiv № 0 | type ЧМТ
+
+Note: duration = 1/8 step = E priority = 0
+------------------------
+Fmotiv № 3 | type ПМТ
+
+Note: duration = 1/16 step = F priority = 3
+Note: duration = 1/16 step = G priority = 4
+------------------------
+Fmotiv № 1 | type ПМТ
+
+Note: duration = 1/16 step = A priority = 2
+Note: duration = 1/16 step = B priority = 4
+------------------------
+Fmotiv № 1 | type ПМТ
+
+Note: duration = 1/16 step = C priority = 3
+Note: duration = 1/16 step = D priority = 4
+------------------------
+Fmotiv № 1 | type ПМТ
+
+Note: duration = 1/16 step = E priority = 1
+Note: duration = 1/16 step = F priority = 4
+------------------------
+Fmotiv № 4 | type ПМТВП
+
+Note: duration = 1/16 step = G priority = 3
+Note: duration = 1/16 step = A priority = 4
+Note: duration = 1/8 step = B priority = 2
+------------------------
+Fmotiv № 0 | type ЧМТ
+
+Note: duration = 1/8 step = A priority = 3
+------------------------
+Fmotiv № 0 | type ЧМТ
+
+Note: duration = 1/8 step = A priority = 0
+------------------------
+Fmotiv № 1 | type ПМТ
+
+Note: duration = 1/16 step = B priority = 3
+Note: duration = 1/16 step = C priority = 4
+------------------------
+Fmotiv № 1 | type ПМТ
+
+Note: duration = 1/16 step = D priority = 2
+Note: duration = 1/16 step = E priority = 4
+------------------------
+Fmotiv № 1 | type ПМТ
+
+Note: duration = 1/16 step = F priority = 3
+Note: duration = 1/16 step = G priority = 4
+------------------------
+Fmotiv № 1 | type ПМТ
+
+Note: duration = 1/16 step = A priority = 1
+Note: duration = 1/16 step = B priority = 4
+------------------------
+Fmotiv № 2 | type ПМТВП
+
+Note: duration = 1/16 step = C priority = 3
+Note: duration = 1/16 step = D priority = 4
+Note: duration = 1/8 step = E priority = 2
+------------------------
+Fmotiv № 0 | type ЧМТ
+
+Note: duration = 1/8 step = G priority = 3
+------------------------
+Fmotiv № 3 | type ПМТ
+
+Note: duration = 1/16 step = F priority = 0
+Note: duration = 1/16 step = G priority = 4
+------------------------
+Fmotiv № 1 | type ПМТ
+
+Note: duration = 1/16 step = A priority = 3
+Note: duration = 1/16 step = B priority = 4
+------------------------
+Fmotiv № 3 | type ПМТ
+
+Note: duration = 1/16 step = C priority = 2
+Note: duration = 1/16 step = D priority = 4
+------------------------
+Fmotiv № 1 | type ПМТ
+
+Note: duration = 1/16 step = E priority = 3
+Note: duration = 1/16 step = F priority = 4
+------------------------
+Fmotiv № 5 | type ПМТ
+
+Note: duration = 1/16 step = G priority = 1
+Note: duration = 1/16 step = E priority = 4
+------------------------
+Fmotiv № 6 | type ПМТ
+
+Note: duration = 1/16 step = C priority = 3
+Note: duration = 1/16 step = A priority = 4
+------------------------
+Fmotiv № 5 | type ПМТ
+
+Note: duration = 1/16 step = G priority = 2
+Note: duration = 1/16 step = E priority = 4
+------------------------
+Fmotiv № 7 | type ПМТВП
+
+Note: duration = 1/16 step = C priority = 3
+Note: duration = 1/16 step = A priority = 4
+Note: duration = 1/8 step = D priority = 0
+------------------------
+Fmotiv № 1 | type ПМТ
+
+Note: duration = 1/16 step = E priority = 3
+Note: duration = 1/16 step = F priority = 4
+------------------------
+Fmotiv № 1 | type ПМТ
+
+Note: duration = 1/16 step = G priority = 2
+Note: duration = 1/16 step = A priority = 4
+------------------------
+Fmotiv № 1 | type ПМТ
+
+Note: duration = 1/16 step = B priority = 3
+Note: duration = 1/16 step = C priority = 4
+------------------------
+Fmotiv № 1 | type ПМТ
+
+Note: duration = 1/16 step = D priority = 1
+Note: duration = 1/16 step = E priority = 4
+------------------------
+Fmotiv № 2 | type ПМТВП
+
+Note: duration = 1/16 step = F priority = 3
+Note: duration = 1/16 step = G priority = 4
+Note: duration = 1/8 step = A priority = 2
+------------------------
+Fmotiv № 0 | type ЧМТ
+
+Note: duration = 1/8 step = F priority = 3
+------------------------
+Fmotiv № 0 | type ЧМТ
+
+Note: duration = 1/8 step = E priority = 0
+------------------------
+Fmotiv № 3 | type ПМТ
+
+Note: duration = 1/16 step = F priority = 3
+Note: duration = 1/16 step = G priority = 4
+------------------------
+Fmotiv № 1 | type ПМТ
+
+Note: duration = 1/16 step = A priority = 2
+Note: duration = 1/16 step = B priority = 4
+------------------------
+Fmotiv № 1 | type ПМТ
+
+Note: duration = 1/16 step = C priority = 3
+Note: duration = 1/16 step = D priority = 4
+------------------------
+Fmotiv № 1 | type ПМТ
+
+Note: duration = 1/16 step = E priority = 1
+Note: duration = 1/16 step = F priority = 4
+------------------------
+Fmotiv № 4 | type ПМТВП
+
+Note: duration = 1/16 step = G priority = 3
+Note: duration = 1/16 step = A priority = 4
+Note: duration = 1/8 step = B priority = 2
+------------------------
+Fmotiv № 0 | type ЧМТ
+
+Note: duration = 1/8 step = A priority = 3
+------------------------
+Fmotiv № 0 | type ЧМТ
+
+Note: duration = 1/8 step = A priority = 0
+------------------------
+Fmotiv № 1 | type ПМТ
+
+Note: duration = 1/16 step = B priority = 3
+Note: duration = 1/16 step = C priority = 4
+------------------------
+Fmotiv № 1 | type ПМТ
+
+Note: duration = 1/16 step = D priority = 2
+Note: duration = 1/16 step = E priority = 4
+------------------------
+Fmotiv № 3 | type ПМТ
+
+Note: duration = 1/16 step = F priority = 3
+Note: duration = 1/16 step = G priority = 4
+------------------------
+Fmotiv № 1 | type ПМТ
+
+Note: duration = 1/16 step = A priority = 1
+Note: duration = 1/16 step = B priority = 4
+------------------------
+Fmotiv № 3 | type ПМТ
+
+Note: duration = 1/16 step = C priority = 3
+Note: duration = 1/16 step = D priority = 4
+------------------------
+Fmotiv № 1 | type ПМТ
+
+Note: duration = 1/16 step = E priority = 2
+Note: duration = 1/16 step = F priority = 4
+------------------------
+Fmotiv № 1 | type ПМТ
+
+Note: duration = 1/16 step = G priority = 3
+Note: duration = 1/16 step = A priority = 4
+------------------------
+Fmotiv № 8 | type ПМТ
+
+Note: duration = 1/16 step = F priority = 0
+Note: duration = 1/16 step = A priority = 4
+------------------------
+Fmotiv № 6 | type ПМТ
+
+Note: duration = 1/16 step = F priority = 3
+Note: duration = 1/16 step = D priority = 4
+------------------------
+Fmotiv № 9 | type ПМТ
+
+Note: duration = 1/16 step = A priority = 2
+Note: duration = 1/16 step = D priority = 4
+------------------------
+Fmotiv № 10 | type ПМТВП
+
+Note: duration = 1/16 step = A priority = 3
+Note: duration = 1/16 step = F priority = 4
+Note: duration = 3/8 step = D priority = 1 TieStarts
+Note: duration = 1/16 step = D priority = 3 TieStops
+------------------------
+Fmotiv № 0 | type ЧМТ
+
+Pause: duration = 1/16 priority = 4
+Note: duration = 1/8 step = A priority = 0
+------------------------
+Fmotiv № 1 | type ПМТ
+
+Note: duration = 1/16 step = B priority = 3
+Note: duration = 1/16 step = C priority = 4
+------------------------
+Fmotiv № 1 | type ПМТ
+
+Note: duration = 1/16 step = D priority = 2
+Note: duration = 1/16 step = E priority = 4
+------------------------
+Fmotiv № 1 | type ПМТ
+
+Note: duration = 1/16 step = F priority = 3
+Note: duration = 1/16 step = G priority = 4
+------------------------
+Fmotiv № 1 | type ПМТ
+
+Note: duration = 1/16 step = A priority = 1
+Note: duration = 1/16 step = B priority = 4
+------------------------
+Fmotiv № 2 | type ПМТВП
+
+Note: duration = 1/16 step = C priority = 3
+Note: duration = 1/16 step = D priority = 4
+Note: duration = 1/8 step = E priority = 2
+------------------------
+Fmotiv № 0 | type ЧМТ
+
+Note: duration = 1/8 step = C priority = 3
+------------------------
+Fmotiv № 0 | type ЧМТ
+
+Note: duration = 1/8 step = B priority = 0
+------------------------
+Fmotiv № 3 | type ПМТ
+
+Note: duration = 1/16 step = C priority = 3
+Note: duration = 1/16 step = D priority = 4
+------------------------
+Fmotiv № 1 | type ПМТ
+
+Note: duration = 1/16 step = E priority = 2
+Note: duration = 1/16 step = F priority = 4
+------------------------
+Fmotiv № 1 | type ПМТ
+
+Note: duration = 1/16 step = G priority = 3
+Note: duration = 1/16 step = A priority = 4
+------------------------
+Fmotiv № 1 | type ПМТ
+
+Note: duration = 1/16 step = B priority = 1
+Note: duration = 1/16 step = C priority = 4
+------------------------
+Fmotiv № 4 | type ПМТВП
+
+Note: duration = 1/16 step = D priority = 3
+Note: duration = 1/16 step = E priority = 4
+Note: duration = 1/8 step = F priority = 2
+------------------------
+Fmotiv № 0 | type ЧМТ
+
+Note: duration = 1/8 step = F priority = 3
+------------------------
+Fmotiv № 0 | type ЧМТ
+
+Note: duration = 1/8 step = E priority = 0
+------------------------
+Fmotiv № 1 | type ПМТ
+
+Note: duration = 1/16 step = F priority = 3
+Note: duration = 1/16 step = G priority = 4
+------------------------
+Fmotiv № 1 | type ПМТ
+
+Note: duration = 1/16 step = A priority = 2
+Note: duration = 1/16 step = B priority = 4
+------------------------
+Fmotiv № 1 | type ПМТ
+
+Note: duration = 1/16 step = C priority = 3
+Note: duration = 1/16 step = D priority = 4
+------------------------
+Fmotiv № 1 | type ПМТ
+
+Note: duration = 1/16 step = E priority = 1
+Note: duration = 1/16 step = F priority = 4
+------------------------
+Fmotiv № 4 | type ПМТВП
+
+Note: duration = 1/16 step = G priority = 3
+Note: duration = 1/16 step = A priority = 4
+Note: duration = 1/8 step = B priority = 2
+------------------------
+Fmotiv № 0 | type ЧМТ
+
+Note: duration = 1/8 step = D priority = 3
+------------------------
+Fmotiv № 3 | type ПМТ
+
+Note: duration = 1/16 step = C priority = 0
+Note: duration = 1/16 step = D priority = 4
+------------------------
+Fmotiv № 1 | type ПМТ
+
+Note: duration = 1/16 step = E priority = 3
+Note: duration = 1/16 step = F priority = 4
+------------------------
+Fmotiv № 1 | type ПМТ
+
+Note: duration = 1/16 step = E priority = 2
+Note: duration = 1/16 step = F priority = 4
+------------------------
+Fmotiv № 3 | type ПМТ
+
+Note: duration = 1/16 step = G priority = 3
+Note: duration = 1/16 step = A priority = 4
+------------------------
+Fmotiv № 3 | type ПМТ
+
+Note: duration = 1/16 step = G priority = 1
+Note: duration = 1/16 step = A priority = 4
+------------------------
+Fmotiv № 11 | type ПМТ
+
+Note: duration = 1/16 step = B priority = 3
+Note: duration = 1/16 step = A priority = 4
+------------------------
+Fmotiv № 6 | type ПМТ
+
+Note: duration = 1/16 step = G priority = 2
+Note: duration = 1/16 step = E priority = 4
+------------------------
+Fmotiv № 12 | type ПМТВП
+
+Note: duration = 1/16 step = F priority = 3
+Note: duration = 1/16 step = G priority = 4
+Note: duration = 1/8 step = A priority = 0
+------------------------
+Fmotiv № 11 | type ПМТ
+
+Note: duration = 1/16 step = G priority = 3
+Note: duration = 1/16 step = F priority = 4
+------------------------
+Fmotiv № 11 | type ПМТ
+
+Note: duration = 1/16 step = E priority = 2
+Note: duration = 1/16 step = D priority = 4
+------------------------
+Fmotiv № 11 | type ПМТ
+
+Note: duration = 1/16 step = C priority = 3
+Note: duration = 1/16 step = B priority = 4
+------------------------
+Fmotiv № 13 | type ПМТ
+
+Note: duration = 1/16 step = A priority = 1
+Note: duration = 1/16 step = G priority = 4
+------------------------
+Fmotiv № 11 | type ПМТ
+
+Note: duration = 1/16 step = F priority = 3
+Note: duration = 1/16 step = E priority = 4
+------------------------
+Fmotiv № 13 | type ПМТ
+
+Note: duration = 1/16 step = D priority = 2
+Note: duration = 1/16 step = C priority = 4
+------------------------
+Fmotiv № 14 | type ПМТВП
+
+Note: duration = 1/16 step = B priority = 3
+Note: duration = 1/16 step = A priority = 4
+Note: duration = 1/8 step = B priority = 0
+------------------------
+Fmotiv № 3 | type ПМТ
+
+Note: duration = 1/16 step = C priority = 3
+Note: duration = 1/16 step = D priority = 4
+------------------------
+Fmotiv № 1 | type ПМТ
+
+Note: duration = 1/16 step = E priority = 2
+Note: duration = 1/16 step = F priority = 4
+------------------------
+Fmotiv № 1 | type ПМТ
+
+Note: duration = 1/16 step = G priority = 3
+Note: duration = 1/16 step = A priority = 4
+------------------------
+Fmotiv № 1 | type ПМТ
+
+Note: duration = 1/16 step = B priority = 1
+Note: duration = 1/16 step = C priority = 4
+------------------------
+Fmotiv № 1 | type ПМТ
+
+Note: duration = 1/16 step = D priority = 3
+Note: duration = 1/16 step = E priority = 4
+------------------------
+Fmotiv № 1 | type ПМТ
+
+Note: duration = 1/16 step = F priority = 2
+Note: duration = 1/16 step = G priority = 4
+------------------------
+Fmotiv № 3 | type ПМТ
+
+Note: duration = 1/16 step = A priority = 3
+Note: duration = 1/16 step = B priority = 4
+------------------------
+Fmotiv № 5 | type ПМТ
+
+Note: duration = 1/16 step = E priority = 0
+Note: duration = 1/16 step = C priority = 4
+------------------------
+Fmotiv № 6 | type ПМТ
+
+Note: duration = 1/16 step = F priority = 3
+Note: duration = 1/16 step = D priority = 4
+------------------------
+Fmotiv № 5 | type ПМТ
+
+Note: duration = 1/16 step = E priority = 2
+Note: duration = 1/16 step = C priority = 4
+------------------------
+Fmotiv № 5 | type ПМТ
+
+Note: duration = 1/16 step = D priority = 3
+Note: duration = 1/16 step = B priority = 4
+------------------------
+Fmotiv № 6 | type ПМТ
+
+Note: duration = 1/16 step = C priority = 1
+Note: duration = 1/16 step = A priority = 4
+------------------------
+Fmotiv № 5 | type ПМТ
+
+Note: duration = 1/16 step = D priority = 3
+Note: duration = 1/16 step = B priority = 4
+------------------------
+Fmotiv № 6 | type ПМТ
+
+Note: duration = 1/16 step = C priority = 2
+Note: duration = 1/16 step = A priority = 4
+------------------------
+Fmotiv № 5 | type ПМТ
+
+Note: duration = 1/16 step = B priority = 3
+Note: duration = 1/16 step = G priority = 4
+------------------------
+Fmotiv № 15 | type ПМТ
+
+Note: duration = 1/16 step = A priority = 0
+Note: duration = 1/16 step = A priority = 4
+------------------------
+Fmotiv № 11 | type ПМТ
+
+Note: duration = 1/16 step = B priority = 3
+Note: duration = 1/16 step = A priority = 4
+------------------------
+Fmotiv № 1 | type ПМТ
+
+Note: duration = 1/16 step = G priority = 2
+Note: duration = 1/16 step = A priority = 4
+------------------------
+Fmotiv № 11 | type ПМТ
+
+Note: duration = 1/16 step = B priority = 3
+Note: duration = 1/16 step = A priority = 4
+------------------------
+Fmotiv № 8 | type ПМТ
+
+Note: duration = 1/16 step = F priority = 1
+Note: duration = 1/16 step = A priority = 4
+------------------------
+Fmotiv № 11 | type ПМТ
+
+Note: duration = 1/16 step = B priority = 3
+Note: duration = 1/16 step = A priority = 4
+------------------------
+Fmotiv № 9 | type ПМТ
+
+Note: duration = 1/16 step = E priority = 2
+Note: duration = 1/16 step = A priority = 4
+------------------------
+Fmotiv № 16 | type ПМТВП
+
+Note: duration = 1/16 step = B priority = 3
+Note: duration = 1/16 step = A priority = 4
+Note: duration = 1/8 step = D priority = 0
+------------------------
+Fmotiv № 3 | type ПМТ
+
+Note: duration = 1/16 step = E priority = 3
+Note: duration = 1/16 step = F priority = 4
+------------------------
+Fmotiv № 1 | type ПМТ
+
+Note: duration = 1/16 step = G priority = 2
+Note: duration = 1/16 step = A priority = 4
+------------------------
+Fmotiv № 3 | type ПМТ
+
+Note: duration = 1/16 step = B priority = 3
+Note: duration = 1/16 step = C priority = 4
+------------------------
+Fmotiv № 1 | type ПМТ
+
+Note: duration = 1/16 step = D priority = 1
+Note: duration = 1/16 step = E priority = 4
+------------------------
+Fmotiv № 4 | type ПМТВП
+
+Note: duration = 1/16 step = F priority = 3
+Note: duration = 1/16 step = G priority = 4
+Note: duration = 1/8 step = A priority = 2
+------------------------
+Fmotiv № 0 | type ЧМТ
+
+Note: duration = 1/8 step = F priority = 3
+------------------------
+Fmotiv № 0 | type ЧМТ
+
+Note: duration = 1/8 step = E priority = 0
+------------------------
+Fmotiv № 1 | type ПМТ
+
+Note: duration = 1/16 step = F priority = 3
+Note: duration = 1/16 step = G priority = 4
+------------------------
+Fmotiv № 1 | type ПМТ
+
+Note: duration = 1/16 step = A priority = 2
+Note: duration = 1/16 step = B priority = 4
+------------------------
+Fmotiv № 8 | type ПМТ
+
+Note: duration = 1/16 step = C priority = 3
+Note: duration = 1/16 step = D priority = 4
+------------------------
+Fmotiv № 3 | type ПМТ
+
+Note: duration = 1/16 step = E priority = 1
+Note: duration = 1/16 step = F priority = 4
+------------------------
+Fmotiv № 4 | type ПМТВП
+
+Note: duration = 1/16 step = G priority = 3
+Note: duration = 1/16 step = A priority = 4
+Note: duration = 1/8 step = B priority = 2
+------------------------
+Fmotiv № 0 | type ЧМТ
+
+Note: duration = 1/8 step = A priority = 3
+------------------------
+Fmotiv № 0 | type ЧМТ
+
+Note: duration = 1/8 step = A priority = 0
+------------------------
+Fmotiv № 3 | type ПМТ
+
+Note: duration = 1/16 step = B priority = 3
+Note: duration = 1/16 step = C priority = 4
+------------------------
+Fmotiv № 1 | type ПМТ
+
+Note: duration = 1/16 step = D priority = 2
+Note: duration = 1/16 step = E priority = 4
+------------------------
+Fmotiv № 8 | type ПМТ
+
+Note: duration = 1/16 step = F priority = 3
+Note: duration = 1/16 step = G priority = 4
+------------------------
+Fmotiv № 1 | type ПМТ
+
+Note: duration = 1/16 step = A priority = 1
+Note: duration = 1/16 step = B priority = 4
+------------------------
+Fmotiv № 4 | type ПМТВП
+
+Note: duration = 1/16 step = C priority = 3
+Note: duration = 1/16 step = D priority = 4
+Note: duration = 1/8 step = E priority = 2
+------------------------
+Fmotiv № 0 | type ЧМТ
+
+Note: duration = 1/8 step = G priority = 3
+------------------------
+Fmotiv № 1 | type ПМТ
+
+Note: duration = 1/16 step = F priority = 0
+Note: duration = 1/16 step = G priority = 4
+------------------------
+Fmotiv № 1 | type ПМТ
+
+Note: duration = 1/16 step = A priority = 3
+Note: duration = 1/16 step = B priority = 4
+------------------------
+Fmotiv № 1 | type ПМТ
+
+Note: duration = 1/16 step = C priority = 2
+Note: duration = 1/16 step = D priority = 4
+------------------------
+Fmotiv № 3 | type ПМТ
+
+Note: duration = 1/16 step = E priority = 3
+Note: duration = 1/16 step = F priority = 4
+------------------------
+Fmotiv № 5 | type ПМТ
+
+Note: duration = 1/16 step = G priority = 1
+Note: duration = 1/16 step = E priority = 4
+------------------------
+Fmotiv № 5 | type ПМТ
+
+Note: duration = 1/16 step = C priority = 3
+Note: duration = 1/16 step = A priority = 4
+------------------------
+Fmotiv № 5 | type ПМТ
+
+Note: duration = 1/16 step = G priority = 2
+Note: duration = 1/16 step = E priority = 4
+------------------------
+Fmotiv № 17 | type ПМТВП
+
+Note: duration = 1/16 step = C priority = 3
+Note: duration = 1/16 step = A priority = 4
+Note: duration = 1/8 step = D priority = 0
+------------------------
+Fmotiv № 3 | type ПМТ
+
+Note: duration = 1/16 step = E priority = 3
+Note: duration = 1/16 step = F priority = 4
+------------------------
+Fmotiv № 1 | type ПМТ
+
+Note: duration = 1/16 step = G priority = 2
+Note: duration = 1/16 step = A priority = 4
+------------------------
+Fmotiv № 3 | type ПМТ
+
+Note: duration = 1/16 step = B priority = 3
+Note: duration = 1/16 step = C priority = 4
+------------------------
+Fmotiv № 1 | type ПМТ
+
+Note: duration = 1/16 step = D priority = 1
+Note: duration = 1/16 step = E priority = 4
+------------------------
+Fmotiv № 4 | type ПМТВП
+
+Note: duration = 1/16 step = F priority = 3
+Note: duration = 1/16 step = G priority = 4
+Note: duration = 1/8 step = A priority = 2
+------------------------
+Fmotiv № 0 | type ЧМТ
+
+Note: duration = 1/8 step = F priority = 3
+------------------------
+Fmotiv № 0 | type ЧМТ
+
+Note: duration = 1/8 step = E priority = 0
+------------------------
+Fmotiv № 1 | type ПМТ
+
+Note: duration = 1/16 step = F priority = 3
+Note: duration = 1/16 step = G priority = 4
+------------------------
+Fmotiv № 1 | type ПМТ
+
+Note: duration = 1/16 step = A priority = 2
+Note: duration = 1/16 step = B priority = 4
+------------------------
+Fmotiv № 8 | type ПМТ
+
+Note: duration = 1/16 step = C priority = 3
+Note: duration = 1/16 step = D priority = 4
+------------------------
+Fmotiv № 3 | type ПМТ
+
+Note: duration = 1/16 step = E priority = 1
+Note: duration = 1/16 step = F priority = 4
+------------------------
+Fmotiv № 4 | type ПМТВП
+
+Note: duration = 1/16 step = G priority = 3
+Note: duration = 1/16 step = A priority = 4
+Note: duration = 1/8 step = B priority = 2
+------------------------
+Fmotiv № 0 | type ЧМТ
+
+Note: duration = 1/8 step = A priority = 3
+------------------------
+Fmotiv № 0 | type ЧМТ
+
+Note: duration = 1/8 step = A priority = 0
+------------------------
+Fmotiv № 3 | type ПМТ
+
+Note: duration = 1/16 step = B priority = 3
+Note: duration = 1/16 step = C priority = 4
+------------------------
+Fmotiv № 1 | type ПМТ
+
+Note: duration = 1/16 step = D priority = 2
+Note: duration = 1/16 step = E priority = 4
+------------------------
+Fmotiv № 1 | type ПМТ
+
+Note: duration = 1/16 step = F priority = 3
+Note: duration = 1/16 step = G priority = 4
+------------------------
+Fmotiv № 1 | type ПМТ
+
+Note: duration = 1/16 step = A priority = 1
+Note: duration = 1/16 step = B priority = 4
+------------------------
+Fmotiv № 1 | type ПМТ
+
+Note: duration = 1/16 step = C priority = 3
+Note: duration = 1/16 step = D priority = 4
+------------------------
+Fmotiv № 3 | type ПМТ
+
+Note: duration = 1/16 step = E priority = 2
+Note: duration = 1/16 step = F priority = 4
+------------------------
+Fmotiv № 18 | type ПМТВП
+
+Note: duration = 1/16 step = G priority = 3
+Note: duration = 1/16 step = G priority = 4
+Note: duration = 1/8 step = D priority = 0
+------------------------
+Fmotiv № 13 | type ПМТ
+
+Note: duration = 1/16 step = C priority = 3
+Note: duration = 1/16 step = B priority = 4
+------------------------
+Fmotiv № 11 | type ПМТ
+
+Note: duration = 1/16 step = A priority = 2
+Note: duration = 1/16 step = G priority = 4
+------------------------
+Fmotiv № 19 | type ПМТВП
+
+Note: duration = 1/16 step = F priority = 3
+Note: duration = 1/16 step = E priority = 4
+Note: duration = 3/16 step = D priority = 1 TieStarts
+Note: duration = 1/64 step = D priority = 4 TieStops
+Pause: duration = 1/4 priority = 6
+Pause: duration = 1/32 priority = 6
+Pause: duration = 1/64 priority = 6
+------------------------
