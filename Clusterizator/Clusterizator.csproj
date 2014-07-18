@@ -35,36 +35,37 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="LibiadaCore, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\libiada-core\LibiadaCore\bin\Debug\LibiadaCore.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Classes\AlternativeClusterization\AlternativeKRAB.cs" />
-    <Compile Include="Classes\AlternativeClusterization\Calculators\CommonCalculator.cs" />
-    <Compile Include="Classes\AlternativeClusterization\Calculators\QualityCalculator.cs" />
-    <Compile Include="Classes\AlternativeClusterization\Calculators\EquipotencyCalculator.cs" />
-    <Compile Include="Classes\AlternativeClusterization\Calculators\ICalculator.cs" />
-    <Compile Include="Classes\AlternativeClusterization\Calculators\LambdaCalculator.cs" />
-    <Compile Include="Classes\AlternativeClusterization\Calculators\LinearCalculator.cs" />
-    <Compile Include="Classes\AlternativeClusterization\Calculators\NormalizedLinearCalculator.cs" />
-    <Compile Include="Classes\AlternativeClusterization\Calculators\TauCalculator.cs" />
-    <Compile Include="Classes\AlternativeClusterization\Calculators\TauStarCalculator.cs" />
-    <Compile Include="Classes\AlternativeClusterization\Connection.cs" />
-    <Compile Include="Classes\AlternativeClusterization\GraphElement.cs" />
-    <Compile Include="Classes\AlternativeClusterization\GraphManager.cs" />
-    <Compile Include="Classes\ClusterizationVariants.cs" />
-    <Compile Include="Classes\Cluster.cs" />
-    <Compile Include="Classes\ClusterizationResult.cs" />
-    <Compile Include="Classes\DataObject.cs" />
-    <Compile Include="Classes\DataTable.cs" />
-    <Compile Include="Classes\IClusterization.cs" />
+    <Compile Include="Krab\KrabClusterization.cs" />
+    <Compile Include="Krab\Calculators\CommonCalculator.cs" />
+    <Compile Include="Krab\Calculators\QualityCalculator.cs" />
+    <Compile Include="Krab\Calculators\EquipotencyCalculator.cs" />
+    <Compile Include="Krab\Calculators\ICalculator.cs" />
+    <Compile Include="Krab\Calculators\LambdaCalculator.cs" />
+    <Compile Include="Krab\Calculators\LinearCalculator.cs" />
+    <Compile Include="Krab\Calculators\NormalizedLinearCalculator.cs" />
+    <Compile Include="Krab\Calculators\TauCalculator.cs" />
+    <Compile Include="Krab\Calculators\TauStarCalculator.cs" />
+    <Compile Include="Krab\Connection.cs" />
+    <Compile Include="Krab\GraphElement.cs" />
+    <Compile Include="Krab\GraphManager.cs" />
+    <Compile Include="ClusterizationVariants.cs" />
+    <Compile Include="Cluster.cs" />
+    <Compile Include="ClusterizationResult.cs" />
+    <Compile Include="DataObject.cs" />
+    <Compile Include="DataTable.cs" />
+    <Compile Include="IClusterization.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\LibiadaCore\LibiadaCore.csproj">
+      <Project>{af8df9bb-b796-457e-91ab-e41674beb92b}</Project>
+      <Name>LibiadaCore</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

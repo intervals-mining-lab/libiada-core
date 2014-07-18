@@ -14,6 +14,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{E249E7
 		.nuget\NuGet.targets = .nuget\NuGet.targets
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Clusterizator", "Clusterizator\Clusterizator.csproj", "{A33E97AE-575F-4ED5-B63E-32D8CF200E20}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Clusterizator.Tests", "Clusterizator.Tests\Clusterizator.Tests.csproj", "{260B03D7-580C-45F4-BBF3-2F345F8B81EA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -28,6 +32,14 @@ Global
 		{934D10F1-0F12-4046-B9D6-4ECE76EB8672}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{934D10F1-0F12-4046-B9D6-4ECE76EB8672}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{934D10F1-0F12-4046-B9D6-4ECE76EB8672}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A33E97AE-575F-4ED5-B63E-32D8CF200E20}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A33E97AE-575F-4ED5-B63E-32D8CF200E20}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A33E97AE-575F-4ED5-B63E-32D8CF200E20}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A33E97AE-575F-4ED5-B63E-32D8CF200E20}.Release|Any CPU.Build.0 = Release|Any CPU
+		{260B03D7-580C-45F4-BBF3-2F345F8B81EA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{260B03D7-580C-45F4-BBF3-2F345F8B81EA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{260B03D7-580C-45F4-BBF3-2F345F8B81EA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{260B03D7-580C-45F4-BBF3-2F345F8B81EA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

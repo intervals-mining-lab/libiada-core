@@ -37,9 +37,6 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="LibiadaCore">
-      <HintPath>..\..\libiada-core\LibiadaCore\bin\Debug\LibiadaCore.dll</HintPath>
-    </Reference>
     <Reference Include="nunit.framework, Version=2.6.3.13283, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\NUnit.2.6.3\lib\nunit.framework.dll</HintPath>
@@ -48,25 +45,29 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Classes\AlternativeClusterization\Calculators\EquipotencyCalculatorTests.cs" />
-    <Compile Include="Classes\AlternativeClusterization\Calculators\EquipotencyCalculatorSecondTests.cs" />
-    <Compile Include="Classes\AlternativeClusterization\Calculators\LambdaCalculatorTests.cs" />
-    <Compile Include="Classes\AlternativeClusterization\Calculators\LinearCalculatorTests.cs" />
-    <Compile Include="Classes\AlternativeClusterization\Calculators\NormalizedDistanceCalculatorTests.cs" />
-    <Compile Include="Classes\AlternativeClusterization\Calculators\TauCalculatorTests.cs" />
-    <Compile Include="Classes\AlternativeClusterization\Calculators\TauStarCalculatorTests.cs" />
-    <Compile Include="Classes\AlternativeClusterization\AlternativeKRABTests.cs" />
-    <Compile Include="Classes\AlternativeClusterization\ConnectionTests.cs" />
-    <Compile Include="Classes\AlternativeClusterization\GraphElementTests.cs" />
-    <Compile Include="Classes\AlternativeClusterization\GraphManagerTests.cs" />
-    <Compile Include="Classes\DataObjectTests.cs" />
-    <Compile Include="Classes\DataTableTests.cs" />
+    <Compile Include="Krab\Calculators\EquipotencyCalculatorTests.cs" />
+    <Compile Include="Krab\Calculators\EquipotencyCalculatorSecondTests.cs" />
+    <Compile Include="Krab\Calculators\LambdaCalculatorTests.cs" />
+    <Compile Include="Krab\Calculators\LinearCalculatorTests.cs" />
+    <Compile Include="Krab\Calculators\NormalizedDistanceCalculatorTests.cs" />
+    <Compile Include="Krab\Calculators\TauCalculatorTests.cs" />
+    <Compile Include="Krab\Calculators\TauStarCalculatorTests.cs" />
+    <Compile Include="Krab\KrabClusterizationTests.cs" />
+    <Compile Include="Krab\ConnectionTests.cs" />
+    <Compile Include="Krab\GraphElementTests.cs" />
+    <Compile Include="Krab\GraphManagerTests.cs" />
+    <Compile Include="DataObjectTests.cs" />
+    <Compile Include="DataTableTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Clusterizator\Clusterizator.csproj">
       <Project>{A33E97AE-575F-4ED5-B63E-32D8CF200E20}</Project>
       <Name>Clusterizator</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LibiadaCore\LibiadaCore.csproj">
+      <Project>{af8df9bb-b796-457e-91ab-e41674beb92b}</Project>
+      <Name>LibiadaCore</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
