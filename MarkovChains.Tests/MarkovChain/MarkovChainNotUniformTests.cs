@@ -16,7 +16,7 @@ namespace MarkovChains.Tests.MarkovChain
     /// ипользуется на определенном шаге
     /// </summary>
     [TestFixture]
-    public class MarkovChainNotUniformTests
+    public class MarkovChainNotCongenericTests
     {
         /// <summary>
         /// Исходная цепь на которой будет происходить обучение
@@ -66,10 +66,10 @@ namespace MarkovChains.Tests.MarkovChain
         }
 
         /// <summary>
-        /// The markov chain not uniform zero rang two test.
+        /// The markov chain not congeneric zero rang two test.
         /// </summary>
         [Test]
-        public void MarkovChainNotUniformZeroRangTwoTest()
+        public void MarkovChainNotCongenericZeroRangTwoTest()
         {
             // Используем генератор заглушку
             IGenerator generator = new MockGenerator();
@@ -80,10 +80,10 @@ namespace MarkovChains.Tests.MarkovChain
 
             // неоднородность 1 
             // следовательно допускаем имеется 2 модели для четных и нечетных позиций
-            const int NoUniformRang = 0;
+            const int NoCongenericRang = 0;
 
             // Создаем марковскую модель передавая её ранг, неоднородность и генератор
-            var markovChain = new MarkovChainNotUniformStatic(MarkovChainRang, NoUniformRang, generator);
+            var markovChain = new MarkovChainNotCongenericStatic(MarkovChainRang, NoCongenericRang, generator);
 
             // Длинна генерируемой цепи
             const int Length = 30;
@@ -148,10 +148,10 @@ namespace MarkovChains.Tests.MarkovChain
         }
 
         /// <summary>
-        /// The markov chain not uniform one rang two test.
+        /// The markov chain not congeneric one rang two test.
         /// </summary>
         [Test]
-        public void MarkovChainNotUniformOneRangTwoTest()
+        public void MarkovChainNotCongenericOneRangTwoTest()
         {
             // Используем генератор заглушку
             IGenerator generator = new MockGenerator();
@@ -162,10 +162,10 @@ namespace MarkovChains.Tests.MarkovChain
 
             // неоднородность 1 
             // следовательно допускаем имеется 2 модели для четных и нечетных позиций
-            const int NoUniformRang = 1;
+            const int NoCongenericRang = 1;
 
             // Создаем марковскую модель передавая её ранг, неоднородность и генератор
-            var markovChain = new MarkovChainNotUniformStatic(MarkovChainRang, NoUniformRang, generator);
+            var markovChain = new MarkovChainNotCongenericStatic(MarkovChainRang, NoCongenericRang, generator);
 
             // Длинна генерируемой цепи
             const int Length = 12;
@@ -253,10 +253,10 @@ namespace MarkovChains.Tests.MarkovChain
         }
 
         /// <summary>
-        /// The markov chain not uniform dynamic zero rang two test.
+        /// The markov chain not congeneric dynamic zero rang two test.
         /// </summary>
         [Test]
-        public void MarkovChainNotUniformDynamicZeroRangTwoTest()
+        public void MarkovChainNotCongenericDynamicZeroRangTwoTest()
         {
             /*  // Используем генератор заглушку
             IGenerator Generator = new MockGenerator();
@@ -265,9 +265,9 @@ namespace MarkovChains.Tests.MarkovChain
             int MarkovChainRang = 2;
             // неоднородность 1 
             // следовательно допускаем имеется 2 модели для четных и нечетных позиций
-            int NoUniformRang = 0;
+            int NoCongenericRang = 0;
             // Создаем марковскую модель передавая её ранг, неоднородность и генератор
-            MarkovChainNotUniformDynamic<Chain, Chain> MarkovChain = new MarkovChainNotUniformDynamic<Chain, Chain>(MarkovChainRang, NoUniformRang, Generator);
+            MarkovChainNotCongenericDynamic<Chain, Chain> MarkovChain = new MarkovChainNotCongenericDynamic<Chain, Chain>(MarkovChainRang, NoCongenericRang, Generator);
 
             // Длинна генерируемой цепи
             int Length = 30;
@@ -329,10 +329,10 @@ namespace MarkovChains.Tests.MarkovChain
         }
 
         /// <summary>
-        /// The markov chain not uniform dynamic one rang two test.
+        /// The markov chain not congeneric dynamic one rang two test.
         /// </summary>
         [Test]
-        public void MarkovChainNotUniformDynamicOneRangTwoTest()
+        public void MarkovChainNotCongenericDynamicOneRangTwoTest()
         {
             /*   // Используем генератор заглушку
             IGenerator Generator = new MockGenerator();
@@ -341,9 +341,9 @@ namespace MarkovChains.Tests.MarkovChain
             int MarkovChainRang = 2;
             // неоднородность 1 
             // следовательно допускаем имеется 2 модели для четных и нечетных позиций
-            int NoUniformRang = 1;
+            int NoCongenericRang = 1;
             // Создаем марковскую модель передавая её ранг, неоднородность и генератор
-            MarkovChainNotUniformDynamic<Chain, Chain> MarkovChain = new MarkovChainNotUniformDynamic<Chain, Chain>(MarkovChainRang, NoUniformRang, Generator);
+            MarkovChainNotCongenericDynamic<Chain, Chain> MarkovChain = new MarkovChainNotCongenericDynamic<Chain, Chain>(MarkovChainRang, NoCongenericRang, Generator);
 
             // Длинна генерируемой цепи
             int Length = 12;

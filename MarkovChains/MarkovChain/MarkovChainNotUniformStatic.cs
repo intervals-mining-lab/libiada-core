@@ -14,22 +14,22 @@ namespace MarkovChains.MarkovChain
     /// <typeparam name="TChainTaught">
     /// Тип обучающей цепи
     /// </typeparam>
-    public class MarkovChainNotUniformStatic : MarkovChainBase
+    public class MarkovChainNotCongenericStatic : MarkovChainBase
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="MarkovChainNotUniformStatic{ChainGenerated,ChainTaught}"/> class.
+        /// Initializes a new instance of the <see cref="MarkovChainNotCongenericStatic{ChainGenerated,ChainTaught}"/> class.
         /// </summary>
         /// <param name="rang">
         /// Порядок марковской цепи
         /// </param>
-        /// <param name="uniformRang">
+        /// <param name="congenericRang">
         /// Неоднородность цепи
         /// </param>
         /// <param name="generator">
         /// Генератор
         /// </param>
-        public MarkovChainNotUniformStatic(int rang, int uniformRang, IGenerator generator)
-            : base(rang, uniformRang, generator)
+        public MarkovChainNotCongenericStatic(int rang, int congenericRang, IGenerator generator)
+            : base(rang, congenericRang, generator)
         {
         }
 
@@ -63,7 +63,7 @@ namespace MarkovChains.MarkovChain
             int m = 0;
             for (int j = 0; j < i; j++)
             {
-                if (m == this.UniformRank + 1)
+                if (m == this.CongenericRank + 1)
                 {
                     m = 0;
                 }

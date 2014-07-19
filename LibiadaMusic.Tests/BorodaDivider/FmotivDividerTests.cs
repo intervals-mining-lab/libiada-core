@@ -28,7 +28,7 @@ namespace LibiadaMusic.Tests.BorodaDivider
             var measures = new List<Measure> {new Measure(notes, (Attributes) attributes.Clone())};
 
             // создание моно трека
-            var unitrack = new UniformScoreTrack("track1", measures);
+            var unitrack = new CongenericScoreTrack("track1", measures);
 
             // создание объекта для деления монотрека на фмотивы
             var fmdivider = new FmotivDivider();
@@ -77,7 +77,7 @@ namespace LibiadaMusic.Tests.BorodaDivider
             var measures = new List<Measure> {new Measure(notes, (Attributes) attributes.Clone())};
 
             // создание моно трека
-            var unitrack = new UniformScoreTrack("track1", measures);
+            var unitrack = new CongenericScoreTrack("track1", measures);
 
             // создание объекта для деления монотрека на фмотивы
             var fmdivider = new FmotivDivider();
@@ -134,7 +134,7 @@ namespace LibiadaMusic.Tests.BorodaDivider
             };
 
             // создание моно трека
-            var unitrack = new UniformScoreTrack("track1", measures);
+            var unitrack = new CongenericScoreTrack("track1", measures);
 
             // создание объекта для деления монотрека на фмотивы
             var fmdivider = new FmotivDivider();
@@ -185,7 +185,7 @@ namespace LibiadaMusic.Tests.BorodaDivider
             var measures = new List<Measure> {new Measure(notes, (Attributes) attributes.Clone())};
 
             // создание моно трека
-            var unitrack = new UniformScoreTrack("track1", measures);
+            var unitrack = new CongenericScoreTrack("track1", measures);
 
             // создание объекта для деления монотрека на фмотивы
             var fmdivider = new FmotivDivider();
@@ -231,7 +231,7 @@ namespace LibiadaMusic.Tests.BorodaDivider
             measures.Add(new Measure(notes, (Attributes) attributes.Clone()));
 
             // создание моно трека
-            var unitrack = new UniformScoreTrack("track1", measures);
+            var unitrack = new CongenericScoreTrack("track1", measures);
 
             // создание объекта для деления монотрека на фмотивы
             var fmdivider = new FmotivDivider();
@@ -281,7 +281,7 @@ namespace LibiadaMusic.Tests.BorodaDivider
             var measures = new List<Measure> {new Measure(notes, (Attributes) attributes.Clone())};
 
             // создание моно трека
-            var unitrack = new UniformScoreTrack("track1", measures);
+            var unitrack = new CongenericScoreTrack("track1", measures);
 
             // создание объекта для деления монотрека на фмотивы
             var fmdivider = new FmotivDivider();
@@ -332,7 +332,7 @@ namespace LibiadaMusic.Tests.BorodaDivider
             var measures = new List<Measure> {new Measure(notes, (Attributes) attributes.Clone())};
 
             // создание моно трека
-            var unitrack = new UniformScoreTrack("track1", measures);
+            var unitrack = new CongenericScoreTrack("track1", measures);
 
             // создание объекта для деления монотрека на фмотивы
             var fmdivider = new FmotivDivider();
@@ -376,7 +376,7 @@ namespace LibiadaMusic.Tests.BorodaDivider
             var measures = new List<Measure> {new Measure(notes, (Attributes) attributes.Clone())};
 
             // создание моно трека
-            var unitrack = new UniformScoreTrack("track1", measures);
+            var unitrack = new CongenericScoreTrack("track1", measures);
 
             // создание объекта для деления монотрека на фмотивы
             var fmdivider = new FmotivDivider();
@@ -420,7 +420,7 @@ namespace LibiadaMusic.Tests.BorodaDivider
             var measures = new List<Measure> {new Measure(notes, (Attributes) attributes.Clone())};
 
             // создание моно трека
-            var unitrack = new UniformScoreTrack("track1", measures);
+            var unitrack = new CongenericScoreTrack("track1", measures);
 
             // создание объекта для деления монотрека на фмотивы
             var fmdivider = new FmotivDivider();

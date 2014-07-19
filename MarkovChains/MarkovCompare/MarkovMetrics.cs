@@ -17,7 +17,7 @@
         /// <returns>
         /// Среднее арифметическое вероятностей
         /// </returns>
-        public double GetMiddleArith(MarkovChainNotUniformStatic chain)
+        public double GetMiddleArith(MarkovChainNotCongenericStatic chain)
         {
             IProbabilityMatrix matrix = chain.PropabilityMatrix;
             for (int i = 0; i < chain.Alphabet.Cardinality; i++)

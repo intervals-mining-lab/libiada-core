@@ -65,7 +65,7 @@
                             this.convoluted.Join(position, winLen);
                         }
 
-                        // convoluted.updateUniforms();
+                        // convoluted.updateCongenerics();
                         this.alphabet.Add(Helper.ToString(pair.Value.Key), pair.Value.Value);
                     }
                 }

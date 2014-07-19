@@ -18,28 +18,28 @@ namespace LibiadaMusic.MusicXml
         {
             // TODO: проверка схемы Xml на соотвествие схеме MusicXml
             // создаем объект модели музыкального текста из Xml документа
-            ScoreModel = new ScoreTrack(filename, ParseUniformScoreTracks((XmlDocument) xmlDocument.Clone()));
+            ScoreModel = new ScoreTrack(filename, ParseCongenericScoreTracks((XmlDocument) xmlDocument.Clone()));
         }
 
-        private List<UniformScoreTrack> ParseUniformScoreTracks(XmlDocument scoreNode)
+        private List<CongenericScoreTrack> ParseCongenericScoreTracks(XmlDocument scoreNode)
         {
-            var temp = new List<UniformScoreTrack>();
+            var temp = new List<CongenericScoreTrack>();
 
-            XmlNodeList uniformList = scoreNode.GetElementsByTagName("part");
+            XmlNodeList congenericList = scoreNode.GetElementsByTagName("part");
             // Создаем и заполняем лист по тегу "part"  
 
-            for (int i = 0; i < uniformList.Count; i++)
+            for (int i = 0; i < congenericList.Count; i++)
             {
                 //TODO: вероятно нужна проверка на то есть ли такой атрибут - имя моно трека, если нет то задать счетчиком i
-                temp.Add(new UniformScoreTrack(uniformList[i].Attributes["id"].Value,
-                    ParseMeasures(uniformList[i].Clone())));
+                temp.Add(new CongenericScoreTrack(congenericList[i].Attributes["id"].Value,
+                    ParseMeasures(congenericList[i].Clone())));
             }
             return temp;
         }
 
-        private List<Measure> ParseMeasures(XmlNode uniformScoreNode)
+        private List<Measure> ParseMeasures(XmlNode congenericScoreNode)
         {
-            XmlNodeList measureList = uniformScoreNode.ChildNodes;
+            XmlNodeList measureList = congenericScoreNode.ChildNodes;
             var measures = new List<Measure>();
             for (int i = 0; i < measureList.Count; i++)
             {

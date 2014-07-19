@@ -43,7 +43,7 @@ namespace MarkovChains.Tests.MarkovCompare
         [Test]
         public void CompareSameChainTest()
         {
-            var markov = new MarkovChainNotUniformStatic(2, 0, new MockGenerator());
+            var markov = new MarkovChainNotCongenericStatic(2, 0, new MockGenerator());
             markov.Teach(this.testChain, TeachingMethod.Cycle);
             var ma = new MarkovMetrics();
             Assert.AreEqual(ma.GetMiddleArith(markov), ma.GetMiddleArith(markov));

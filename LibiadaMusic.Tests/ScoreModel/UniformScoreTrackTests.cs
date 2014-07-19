@@ -5,7 +5,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace LibiadaMusic.Tests.ScoreModel
 {
     [TestClass]
-    public class UniformScoreTrackTests
+    public class CongenericScoreTrackTests
     {
         [TestMethod]
         public void ValueNoteOrderFirstTest() 
@@ -49,7 +49,7 @@ namespace LibiadaMusic.Tests.ScoreModel
 
             var mlist = new List<Measure> {m1, m2};
 
-            var uni = new UniformScoreTrack("a1", mlist);
+            var uni = new CongenericScoreTrack("a1", mlist);
 
             Assert.AreNotEqual(uni.NoteOrder()[0].Id, 1);
 
@@ -125,7 +125,7 @@ namespace LibiadaMusic.Tests.ScoreModel
 
             var mlist = new List<Measure> {m1, m2};
 
-            var uni = new UniformScoreTrack("a1", mlist);
+            var uni = new CongenericScoreTrack("a1", mlist);
 
             Assert.AreNotEqual(uni.NoteIdOrder()[0], 1);
 
@@ -220,7 +220,7 @@ namespace LibiadaMusic.Tests.ScoreModel
 
             var mlist = new List<Measure> {m1, m2, m3, m4, m5, m5, m2, m3, m6};
 
-            var uni = new UniformScoreTrack("a1", mlist);
+            var uni = new CongenericScoreTrack("a1", mlist);
 
             
             Assert.AreEqual(uni.MeasureOrder()[0].Id, 0);

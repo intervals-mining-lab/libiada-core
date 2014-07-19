@@ -37,9 +37,9 @@ namespace MarkovChains.MarkovChain
         protected readonly IProbabilityMatrix[] ProbabilityMatrix;
 
         /// <summary>
-        /// The uniform rank.
+        /// The congeneric rank.
         /// </summary>
-        protected readonly int UniformRank;
+        protected readonly int CongenericRank;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="MarkovChainBase{ChainGenerated,ChainTaught}"/> class.
@@ -47,7 +47,7 @@ namespace MarkovChains.MarkovChain
         /// <param name="i">
         /// Порядок марковской цепи
         /// </param>
-        /// <param name="uniformRang">
+        /// <param name="congenericRang">
         /// Порядок неоднородности
         /// </param>
         /// <param name="generator">
@@ -55,7 +55,7 @@ namespace MarkovChains.MarkovChain
         /// </param>
         /// <exception cref="ArgumentException">
         /// </exception>
-        public MarkovChainBase(int i, int uniformRang, IGenerator generator)
+        public MarkovChainBase(int i, int congenericRang, IGenerator generator)
         {
             if ((i < 1) || (null == generator))
             {
@@ -64,8 +64,8 @@ namespace MarkovChains.MarkovChain
 
             this.Rank = i;
             this.Generator = generator;
-            this.UniformRank = uniformRang;
-            this.ProbabilityMatrix = new IProbabilityMatrix[uniformRang + 1];
+            this.CongenericRank = congenericRang;
+            this.ProbabilityMatrix = new IProbabilityMatrix[congenericRang + 1];
         }
 
         /// <summary>
@@ -120,9 +120,9 @@ namespace MarkovChains.MarkovChain
         public virtual void Teach(BaseChain chain, TeachingMethod method)
         {
             var builder = new MatrixBuilder();
-            var absMatrix = new IAbsoluteMatrix[this.UniformRank + 1];
+            var absMatrix = new IAbsoluteMatrix[this.CongenericRank + 1];
             this.Alphabet = chain.Alphabet;
-            for (int i = 0; i < this.UniformRank + 1; i++)
+            for (int i = 0; i < this.CongenericRank + 1; i++)
             {
                 absMatrix[i] = (IAbsoluteMatrix)builder.Create(this.Alphabet.Cardinality, this.Rank);
             }
@@ -139,10 +139,10 @@ namespace MarkovChains.MarkovChain
             while (it.Next())
             {
                 ++k;
-                int m = k % (this.UniformRank + 1);
+                int m = k % (this.CongenericRank + 1);
                 if (m == 0)
                 {
-                    m = this.UniformRank + 1;
+                    m = this.CongenericRank + 1;
                 }
 
                 BaseChain chainToTeach = (BaseChain)it.Current();
@@ -155,7 +155,7 @@ namespace MarkovChains.MarkovChain
                 absMatrix[m - 1].Add(indexedChain);
             }
 
-            for (int i = 0; i < this.UniformRank + 1; i++)
+            for (int i = 0; i < this.CongenericRank + 1; i++)
             {
                 this.ProbabilityMatrix[i] = absMatrix[i].ProbabilityMatrix();
             }

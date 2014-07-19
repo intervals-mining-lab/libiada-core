@@ -9,9 +9,9 @@ namespace LibiadaMusic.BorodaDivider
         {
             var chains = new List<FmotivChain>();
             
-            foreach (UniformScoreTrack uniformTrack in scoreTrack.UniformScoreTracks)
+            foreach (CongenericScoreTrack congenericTrack in scoreTrack.CongenericScoreTracks)
             {
-                var fmotivChain = (FmotivChain) Divide(uniformTrack, paramPauseTreatment, paramEqualFM).Clone();
+                var fmotivChain = (FmotivChain) Divide(congenericTrack, paramPauseTreatment, paramEqualFM).Clone();
                 fmotivChain.Id = chains.Count;
                 chains.Add(fmotivChain);
             }
@@ -21,14 +21,14 @@ namespace LibiadaMusic.BorodaDivider
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="uniformTrack"></param>
+        /// <param name="congenericTrack"></param>
         /// <param name="paramPauseTreatment">
         /// параметр как учитывать паузу : 
         /// игнорировать, звуковой след предыдущего звука, вырожденныый звук
         /// </param>
         /// <param name="paramEqualFM">как сравнивать ф-мотивы с секвентым переносом, либо нет</param>
         /// <returns></returns>
-        public FmotivChain Divide(UniformScoreTrack uniformTrack, ParamPauseTreatment paramPauseTreatment, ParamEqualFM paramEqualFM)
+        public FmotivChain Divide(CongenericScoreTrack congenericTrack, ParamPauseTreatment paramPauseTreatment, ParamEqualFM paramEqualFM)
         {
             // сохраняем имя цепи фмотивов как имя монотрека
 
@@ -37,10 +37,10 @@ namespace LibiadaMusic.BorodaDivider
             var fmotivIdentifier = new FmotivIdentifier();
 
             //подсчет приоритетов
-            priorityDiscover.Calculate(uniformTrack);
+            priorityDiscover.Calculate(congenericTrack);
 
             // разбиение
-            FmotivChain chain = fmotivDivider.GetDivision(uniformTrack, paramPauseTreatment);
+            FmotivChain chain = fmotivDivider.GetDivision(congenericTrack, paramPauseTreatment);
 
             // нахождение одинаковых
             return fmotivIdentifier.GetIdentification(chain, paramPauseTreatment, paramEqualFM);

@@ -11,11 +11,11 @@ namespace MarkovChains.MarkovChain
     /// <typeparam name="TChainTaught">
     /// Тип обучающей цепи
     /// </typeparam>
-    public class MarkovChainUniformStatic :
-        MarkovChainNotUniformStatic
+    public class MarkovChainCongenericStatic :
+        MarkovChainNotCongenericStatic
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="MarkovChainUniformStatic{TChainGenerated,TChainTaught}"/> class.
+        /// Initializes a new instance of the <see cref="MarkovChainCongenericStatic{TChainGenerated,TChainTaught}"/> class.
         /// </summary>
         /// <param name="rang">
         /// Порядок марковской цепи
@@ -23,7 +23,7 @@ namespace MarkovChains.MarkovChain
         /// <param name="generator">
         /// Random generator.
         /// </param>
-        public MarkovChainUniformStatic(int rang, IGenerator generator) : base(rang, 0, generator)
+        public MarkovChainCongenericStatic(int rang, IGenerator generator) : base(rang, 0, generator)
         {
         }
     }

@@ -22,7 +22,7 @@ namespace MarkovChains.MarkovChain
         /// <param name="rang">
         /// Порядок
         /// </param>
-        /// <param name="uniformRang">
+        /// <param name="congenericRang">
         /// Неоднородность цепи
         /// </param>
         /// <param name="generator">
@@ -34,18 +34,18 @@ namespace MarkovChains.MarkovChain
         /// <exception cref="Exception">
         /// В случае если тип цепи не зарегистирован в фабрике
         /// </exception>
-        public MarkovChainBase Create(GeneratingMethod method, int rang, int uniformRang, IGenerator generator)
+        public MarkovChainBase Create(GeneratingMethod method, int rang, int congenericRang, IGenerator generator)
         {
             switch (method)
             {
-                case GeneratingMethod.DynamicNotUniform:
+                case GeneratingMethod.DynamicNotCongeneric:
                     return null;
-                case GeneratingMethod.StaticNotUniform:
-                    return new MarkovChainNotUniformStatic(rang, uniformRang, generator);
-                case GeneratingMethod.DynamicUniform:
+                case GeneratingMethod.StaticNotCongeneric:
+                    return new MarkovChainNotCongenericStatic(rang, congenericRang, generator);
+                case GeneratingMethod.DynamicCongeneric:
                     return null; 
-                case GeneratingMethod.StaticUniform:
-                    return new MarkovChainUniformStatic(rang, generator);
+                case GeneratingMethod.StaticCongeneric:
+                    return new MarkovChainCongenericStatic(rang, generator);
                 case GeneratingMethod.Random:
                     return new MarkovChainRandom(rang, generator);
                 default:

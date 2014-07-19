@@ -12,25 +12,25 @@ namespace MarkovChains.MarkovChain
         /// Однородная марковская цепь.
         /// Вероятности не зависят от шага
         /// </summary>
-        StaticUniform,
+        StaticCongeneric,
 
         /// <summary>
         /// Неоднородная марковская цепь.
         /// Вероятности не зависят от шага
         /// </summary>
-        StaticNotUniform,
+        StaticNotCongeneric,
 
         /// <summary>
         /// Однородная марковская цепь.
         /// Вероятности зависят от шага
         /// </summary>
-        DynamicUniform,
+        DynamicCongeneric,
 
         /// <summary>
         /// Неоднородная марковская цепь.
         /// Вероятности зависят от шага
         /// </summary>
-        DynamicNotUniform,
+        DynamicNotCongeneric,
 
         /// <summary>
         /// The random.

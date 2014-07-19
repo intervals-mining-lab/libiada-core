@@ -158,10 +158,10 @@
         }
 
         /// <summary>
-        /// The update uniforms test.
+        /// The update congenerics test.
         /// </summary>
         [Test]
-        public void UpdateUniformsTest()
+        public void UpdateCongenericsTest()
         {
             ComplexChain clonedComplexChain = this.chain.Clone();
 

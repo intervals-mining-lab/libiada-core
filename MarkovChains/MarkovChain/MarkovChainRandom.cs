@@ -14,7 +14,7 @@ namespace MarkovChains.MarkovChain
     /// <typeparam name="TChainTaught">
     /// </typeparam>
     public class MarkovChainRandom :
-        MarkovChainNotUniformStatic
+        MarkovChainNotCongenericStatic
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="MarkovChainRandom"/> class.

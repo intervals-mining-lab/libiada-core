@@ -18,29 +18,29 @@ namespace LibiadaMusic.ScoreModel
         /// <summary>
         /// список моно треков
         /// </summary>
-        public List<UniformScoreTrack> UniformScoreTracks { get; private set; }
+        public List<CongenericScoreTrack> CongenericScoreTracks { get; private set; }
 
         //TODO: сделать поля жанра/автора/типа произведения, для дальнейшего анализа, 
         //PS:либо сделать на уровень структуры выше, где будет разбиение на Ф-мотивы
-        public ScoreTrack(string name, List<UniformScoreTrack> uniformScoreTracks)
+        public ScoreTrack(string name, List<CongenericScoreTrack> congenericScoreTracks)
         {
             Name = name; // присваиваем имя музыкального трека
-            UniformScoreTracks = new List<UniformScoreTrack>();
-            for (int i = 0; i < uniformScoreTracks.Count; i++)
+            CongenericScoreTracks = new List<CongenericScoreTrack>();
+            for (int i = 0; i < congenericScoreTracks.Count; i++)
                 // создаем список монотреков, по средствам клонирования каждого монотрека.
             {
-                UniformScoreTracks.Add((UniformScoreTrack) uniformScoreTracks[i].Clone());
+                CongenericScoreTracks.Add((CongenericScoreTrack) congenericScoreTracks[i].Clone());
             }
 
             // ПОЛИФОНИЧЕСКАЯ ВСТАВКА
-            var temp = (UniformScoreTrack) MergedTracks(UniformScoreTracks).Clone();
-            UniformScoreTracks.Clear();
-            UniformScoreTracks.Add(temp);
+            var temp = (CongenericScoreTrack) MergedTracks(CongenericScoreTracks).Clone();
+            CongenericScoreTracks.Clear();
+            CongenericScoreTracks.Add(temp);
         }
 
-        private UniformScoreTrack MergedTracks(List<UniformScoreTrack> tracks)
+        private CongenericScoreTrack MergedTracks(List<CongenericScoreTrack> tracks)
         {
-            var temp = (UniformScoreTrack) tracks[0].Clone(); // список склеенных дорожек
+            var temp = (CongenericScoreTrack) tracks[0].Clone(); // список склеенных дорожек
             var tempList = new List<Measure>(temp.MeasureList); //список склеенных тактов
             for (int i = 1; i < tracks.Count; i++)
             {
@@ -55,26 +55,26 @@ namespace LibiadaMusic.ScoreModel
                     tempList.Insert(j, tempMeasure);
                 }
             }
-            return new UniformScoreTrack(temp.Name, tempList);
+            return new CongenericScoreTrack(temp.Name, tempList);
         }
 
         public IBaseObject Clone()
         {
-            return new ScoreTrack(Name, UniformScoreTracks);
+            return new ScoreTrack(Name, CongenericScoreTracks);
         }
 
         public override bool Equals(object obj)
         {
-            bool equalUniformScoreTracks = UniformScoreTracks.Count == ((ScoreTrack) obj).UniformScoreTracks.Count;
+            bool equalCongenericScoreTracks = CongenericScoreTracks.Count == ((ScoreTrack) obj).CongenericScoreTracks.Count;
 
-            for (int i = 0; i < UniformScoreTracks.Count; i++)
+            for (int i = 0; i < CongenericScoreTracks.Count; i++)
             {
-                if (!UniformScoreTracks[i].Equals(((ScoreTrack) obj).UniformScoreTracks[i]))
+                if (!CongenericScoreTracks[i].Equals(((ScoreTrack) obj).CongenericScoreTracks[i]))
                 {
-                    equalUniformScoreTracks = false;
+                    equalCongenericScoreTracks = false;
                 }
             }
-            if (equalUniformScoreTracks)
+            if (equalCongenericScoreTracks)
             {
                 return true;
             }

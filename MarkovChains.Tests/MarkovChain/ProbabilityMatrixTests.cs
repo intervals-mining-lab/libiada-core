@@ -60,10 +60,10 @@ namespace MarkovChains.Tests.MarkovChain
         }
 
         /// <summary>
-        /// The generation not uniform markov chain rang zero test.
+        /// The generation not congeneric markov chain rang zero test.
         /// </summary>
         [Test]
-        public void GenerationNotUniformMarkovChainRangZeroTest()
+        public void GenerationNotCongenericMarkovChainRangZeroTest()
         {
             var resultTheory = new Chain(10);
             resultTheory[0] = (ValueString)"b";
@@ -77,17 +77,17 @@ namespace MarkovChains.Tests.MarkovChain
             resultTheory[8] = (ValueString)"b";
             resultTheory[9] = (ValueString)"a";
 
-            var markov = new MarkovChainNotUniformStatic(3, 0, new MockGenerator());
+            var markov = new MarkovChainNotCongenericStatic(3, 0, new MockGenerator());
             markov.Teach(this.testChain, TeachingMethod.Cycle);
             var resultPractice = markov.Generate(10);
             Assert.AreEqual(resultTheory, resultPractice);
         }
 
         /// <summary>
-        /// The generation uniform markov chain level two test.
+        /// The generation congeneric markov chain level two test.
         /// </summary>
         [Test]
-        public void GenerationUniformMarkovChainLevelTwoTest()
+        public void GenerationCongenericMarkovChainLevelTwoTest()
         {
             var resultTheory = new Chain(30);
             resultTheory[0] = (ValueString)"a"; // "a" 0.77;
@@ -121,7 +121,7 @@ namespace MarkovChains.Tests.MarkovChain
             resultTheory[28] = (ValueString)"a"; // "a" 0.71;
             resultTheory[29] = (ValueString)"a"; // "a" 0.2;
 
-            var markov = new MarkovChainNotUniformStatic(2, 0, new MockGenerator());
+            var markov = new MarkovChainNotCongenericStatic(2, 0, new MockGenerator());
             markov.Teach(this.testChain2, TeachingMethod.Cycle);
             var resultPractice = markov.Generate(30);
             Assert.AreEqual(resultTheory, resultPractice);

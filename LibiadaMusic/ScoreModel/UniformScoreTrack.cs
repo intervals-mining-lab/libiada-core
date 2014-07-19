@@ -4,13 +4,13 @@ namespace LibiadaMusic.ScoreModel
 {
     using LibiadaCore.Core;
 
-    public class UniformScoreTrack : IBaseObject // монофонический (моно) трек
+    public class CongenericScoreTrack : IBaseObject // монофонический (моно) трек
     {
         public string Name { get; private set; }
 
         public List<Measure> MeasureList { get; private set; }
 
-        public UniformScoreTrack(string name, List<Measure> measureList)
+        public CongenericScoreTrack(string name, List<Measure> measureList)
         {
             MeasureList = new List<Measure>();
             for (int i = 0; i < measureList.Count; i++)
@@ -132,16 +132,16 @@ namespace LibiadaMusic.ScoreModel
 
         public IBaseObject Clone()
         {
-            return new UniformScoreTrack(Name, MeasureList);
+            return new CongenericScoreTrack(Name, MeasureList);
         }
 
         public override bool Equals(object obj)
         {
-            bool equalMeasureList = MeasureList.Count == ((UniformScoreTrack) obj).MeasureList.Count;
+            bool equalMeasureList = MeasureList.Count == ((CongenericScoreTrack) obj).MeasureList.Count;
 
             for (int i = 0; i < MeasureList.Count; i++)
             {
-                if (!MeasureList[i].Equals(((UniformScoreTrack) obj).MeasureList[i]))
+                if (!MeasureList[i].Equals(((CongenericScoreTrack) obj).MeasureList[i]))
                 {
                     equalMeasureList = false;
                 }

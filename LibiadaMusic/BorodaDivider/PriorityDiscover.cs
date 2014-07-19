@@ -18,20 +18,20 @@ namespace LibiadaMusic.BorodaDivider
         /// <param name="scoreTrack"></param>
         public void Calculate(ScoreTrack scoreTrack)
         {
-            foreach (UniformScoreTrack uniformTrack in scoreTrack.UniformScoreTracks)
+            foreach (CongenericScoreTrack congenericTrack in scoreTrack.CongenericScoreTracks)
             {
-                Calculate(uniformTrack);
+                Calculate(congenericTrack);
             }
         }
 
         /// <summary>
         /// метод для подсчета приоритетов нот для каждого такта (Measure) 
-        /// в монофоническом треке (UniformScoretrack)
+        /// в монофоническом треке (CongenericScoretrack)
         /// </summary>
-        /// <param name="uniformTrack"></param>
-        public void Calculate(UniformScoreTrack uniformTrack)
+        /// <param name="congenericTrack"></param>
+        public void Calculate(CongenericScoreTrack congenericTrack)
         {
-            foreach (Measure measure in uniformTrack.MeasureList)
+            foreach (Measure measure in congenericTrack.MeasureList)
             {
                 Calculate(measure);
             }

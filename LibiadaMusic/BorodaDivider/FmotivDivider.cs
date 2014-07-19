@@ -11,9 +11,9 @@ namespace LibiadaMusic.BorodaDivider
         /// </summary>
         private ParamPauseTreatment paramPauseTreatment;
         //----------------------
-        public FmotivChain GetDivision(UniformScoreTrack uniformTrack, ParamPauseTreatment paramPauseTreatment)
+        public FmotivChain GetDivision(CongenericScoreTrack congenericTrack, ParamPauseTreatment paramPauseTreatment)
         {
-            var chain = new FmotivChain {Name = uniformTrack.Name}; // выходная, результирующая цепочка разбитых ф-мотивов
+            var chain = new FmotivChain {Name = congenericTrack.Name}; // выходная, результирующая цепочка разбитых ф-мотивов
             this.paramPauseTreatment = paramPauseTreatment;
 
             var fmotivBuffer = new Fmotiv(String.Empty);
@@ -24,7 +24,7 @@ namespace LibiadaMusic.BorodaDivider
             // для дальнейшего их анализа и распределения по ф-мотивам.
 
             // заполняем NoteChain всеми нотам из данной монофонической цепи unitrack
-            foreach (Measure measure in uniformTrack.MeasureList)
+            foreach (Measure measure in congenericTrack.MeasureList)
             {
                 foreach (ValueNote note in measure.NoteList)
                 {

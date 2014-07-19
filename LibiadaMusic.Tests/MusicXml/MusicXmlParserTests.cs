@@ -75,18 +75,18 @@ namespace LibiadaMusic.Tests.MusicXml
                 new Measure(notes4, (Attributes) attributes1.Clone())
             };
             //создание списка монофонических треков для полного музыкального трека
-            var utracks = new List<UniformScoreTrack> {new UniformScoreTrack("p0", measures1)};
+            var utracks = new List<CongenericScoreTrack> {new CongenericScoreTrack("p0", measures1)};
             //создание полной модели музыкального трека/текста, с присвоением имени файла
             var Scoremodel = new ScoreTrack("LibiadaMusicexample7Liga",utracks);
 
             Assert.AreEqual(xmlreader.FileName , Parser.ScoreModel.Name);
-            Assert.AreEqual(Scoremodel.UniformScoreTracks[0].MeasureList[0].Attributes, Parser.ScoreModel.UniformScoreTracks[0].MeasureList[0].Attributes);
-            Assert.AreEqual(Scoremodel.UniformScoreTracks[0].MeasureList[0].NoteList[0], Parser.ScoreModel.UniformScoreTracks[0].MeasureList[0].NoteList[0]);
-            Assert.AreEqual(Scoremodel.UniformScoreTracks[0].MeasureList[0], Parser.ScoreModel.UniformScoreTracks[0].MeasureList[0]);
-            Assert.AreEqual(Scoremodel.UniformScoreTracks[0].MeasureList[1], Parser.ScoreModel.UniformScoreTracks[0].MeasureList[1]);
-            Assert.AreEqual(Scoremodel.UniformScoreTracks[0].MeasureList[2], Parser.ScoreModel.UniformScoreTracks[0].MeasureList[2]);
-            Assert.AreEqual(Scoremodel.UniformScoreTracks[0].MeasureList[3], Parser.ScoreModel.UniformScoreTracks[0].MeasureList[3]);
-            Assert.AreEqual(Scoremodel.UniformScoreTracks[0], Parser.ScoreModel.UniformScoreTracks[0]);
+            Assert.AreEqual(Scoremodel.CongenericScoreTracks[0].MeasureList[0].Attributes, Parser.ScoreModel.CongenericScoreTracks[0].MeasureList[0].Attributes);
+            Assert.AreEqual(Scoremodel.CongenericScoreTracks[0].MeasureList[0].NoteList[0], Parser.ScoreModel.CongenericScoreTracks[0].MeasureList[0].NoteList[0]);
+            Assert.AreEqual(Scoremodel.CongenericScoreTracks[0].MeasureList[0], Parser.ScoreModel.CongenericScoreTracks[0].MeasureList[0]);
+            Assert.AreEqual(Scoremodel.CongenericScoreTracks[0].MeasureList[1], Parser.ScoreModel.CongenericScoreTracks[0].MeasureList[1]);
+            Assert.AreEqual(Scoremodel.CongenericScoreTracks[0].MeasureList[2], Parser.ScoreModel.CongenericScoreTracks[0].MeasureList[2]);
+            Assert.AreEqual(Scoremodel.CongenericScoreTracks[0].MeasureList[3], Parser.ScoreModel.CongenericScoreTracks[0].MeasureList[3]);
+            Assert.AreEqual(Scoremodel.CongenericScoreTracks[0], Parser.ScoreModel.CongenericScoreTracks[0]);
             Assert.AreEqual(Scoremodel, Parser.ScoreModel);
         }
 
@@ -99,20 +99,20 @@ namespace LibiadaMusic.Tests.MusicXml
             Parser.Execute(xmlreader.MusicXmlDocument, xmlreader.FileName);
 
             Assert.AreEqual(xmlreader.FileName, Parser.ScoreModel.Name);
-            Assert.AreEqual(Parser.ScoreModel.UniformScoreTracks.Count, 1);
-            Assert.AreEqual(Parser.ScoreModel.UniformScoreTracks[0].MeasureList.Count, 3);
-            Assert.AreEqual(Parser.ScoreModel.UniformScoreTracks[0].MeasureList[0].NoteList.Count, 5);
-            Assert.AreEqual(Parser.ScoreModel.UniformScoreTracks[0].MeasureList[1].NoteList.Count, 6);
-            Assert.AreEqual(Parser.ScoreModel.UniformScoreTracks[0].MeasureList[2].NoteList.Count, 4);
-            Assert.AreEqual(Parser.ScoreModel.UniformScoreTracks[0].MeasureList[0].NoteList[0].Pitch.Count, 2);
-            Assert.AreEqual(Parser.ScoreModel.UniformScoreTracks[0].MeasureList[2].NoteList[0].Pitch.Count, 3);
-            Assert.AreEqual(Parser.ScoreModel.UniformScoreTracks[0].MeasureList[0].NoteList[0].Duration.Denominator, 4);
-            Assert.AreEqual(Parser.ScoreModel.UniformScoreTracks[0].MeasureList[0].NoteList[0].Pitch[0].Step.ToString(), "A");
-            Assert.AreEqual(Parser.ScoreModel.UniformScoreTracks[0].MeasureList[0].NoteList[0].Pitch[1].Step.ToString(), "C");
-            Assert.AreEqual(Parser.ScoreModel.UniformScoreTracks[0].MeasureList[2].NoteList[0].Duration.Denominator, 8);
-            Assert.AreEqual(Parser.ScoreModel.UniformScoreTracks[0].MeasureList[2].NoteList[0].Pitch[0].Step.ToString(), "G");
-            Assert.AreEqual(Parser.ScoreModel.UniformScoreTracks[0].MeasureList[2].NoteList[0].Pitch[1].Step.ToString(), "G");
-            Assert.AreEqual(Parser.ScoreModel.UniformScoreTracks[0].MeasureList[2].NoteList[0].Pitch[2].Step.ToString(), "C");
+            Assert.AreEqual(Parser.ScoreModel.CongenericScoreTracks.Count, 1);
+            Assert.AreEqual(Parser.ScoreModel.CongenericScoreTracks[0].MeasureList.Count, 3);
+            Assert.AreEqual(Parser.ScoreModel.CongenericScoreTracks[0].MeasureList[0].NoteList.Count, 5);
+            Assert.AreEqual(Parser.ScoreModel.CongenericScoreTracks[0].MeasureList[1].NoteList.Count, 6);
+            Assert.AreEqual(Parser.ScoreModel.CongenericScoreTracks[0].MeasureList[2].NoteList.Count, 4);
+            Assert.AreEqual(Parser.ScoreModel.CongenericScoreTracks[0].MeasureList[0].NoteList[0].Pitch.Count, 2);
+            Assert.AreEqual(Parser.ScoreModel.CongenericScoreTracks[0].MeasureList[2].NoteList[0].Pitch.Count, 3);
+            Assert.AreEqual(Parser.ScoreModel.CongenericScoreTracks[0].MeasureList[0].NoteList[0].Duration.Denominator, 4);
+            Assert.AreEqual(Parser.ScoreModel.CongenericScoreTracks[0].MeasureList[0].NoteList[0].Pitch[0].Step.ToString(), "A");
+            Assert.AreEqual(Parser.ScoreModel.CongenericScoreTracks[0].MeasureList[0].NoteList[0].Pitch[1].Step.ToString(), "C");
+            Assert.AreEqual(Parser.ScoreModel.CongenericScoreTracks[0].MeasureList[2].NoteList[0].Duration.Denominator, 8);
+            Assert.AreEqual(Parser.ScoreModel.CongenericScoreTracks[0].MeasureList[2].NoteList[0].Pitch[0].Step.ToString(), "G");
+            Assert.AreEqual(Parser.ScoreModel.CongenericScoreTracks[0].MeasureList[2].NoteList[0].Pitch[1].Step.ToString(), "G");
+            Assert.AreEqual(Parser.ScoreModel.CongenericScoreTracks[0].MeasureList[2].NoteList[0].Pitch[2].Step.ToString(), "C");
         }
 
         [TestMethod]
@@ -126,7 +126,7 @@ namespace LibiadaMusic.Tests.MusicXml
         }
 
         [TestMethod]
-        public void XmlParserUniformScoretrackTest()
+        public void XmlParserCongenericScoretrackTest()
         {
         }
 
