@@ -10,7 +10,6 @@ namespace LibiadaCore.Core.Characteristics
     /// </summary>
     public static class CalculatorsFactory
     {
-
         /// <summary>
         /// Вероятность (частота).
         /// </summary>
@@ -158,7 +157,6 @@ namespace LibiadaCore.Core.Characteristics
             get { return new NormalizedDepth(); }
         }
 
-
         /// <summary>
         /// Периодичность.
         /// </summary>
@@ -206,7 +204,17 @@ namespace LibiadaCore.Core.Characteristics
             }
         }
 
-
+        /// <summary>
+        /// The create.
+        /// </summary>
+        /// <param name="type">
+        /// The type.
+        /// </param>
+        /// <returns>
+        /// The <see cref="ICalculator"/>.
+        /// </returns>
+        /// <exception cref="ArgumentException">
+        /// </exception>
         public static ICalculator Create(string type)
         {
             foreach (ICalculator calculator in List)
@@ -220,6 +228,17 @@ namespace LibiadaCore.Core.Characteristics
             throw new ArgumentException("Unknown calculator", "type");
         }
 
+        /// <summary>
+        /// The create.
+        /// </summary>
+        /// <param name="type">
+        /// The type.
+        /// </param>
+        /// <returns>
+        /// The <see cref="ICalculator"/>.
+        /// </returns>
+        /// <exception cref="ArgumentException">
+        /// </exception>
         public static ICalculator Create(CharacteristicsEnum type)
         {
             foreach (ICalculator calculator in List)

@@ -82,6 +82,7 @@ namespace LibiadaCore.Core.SimpleTypes
             {
                 clone.Add(Elements[i]);
             }
+
             return clone;
         }
 

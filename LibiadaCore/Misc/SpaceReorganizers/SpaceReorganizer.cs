@@ -6,7 +6,6 @@ namespace LibiadaCore.Misc.SpaceReorganizers
     /// The space reorganizer.
     /// </summary>
     public abstract class SpaceReorganizer
-        
     {
         /// <summary>
         /// Reorganizes <see cref="AbstractChain"/> into <see cref="AbstractChain"/>.

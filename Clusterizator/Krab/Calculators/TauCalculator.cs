@@ -1,7 +1,7 @@
-using System.Collections.Generic;
-
 namespace Clusterizator.Krab.Calculators
 {
+    using System.Collections.Generic;
+
     /// <summary>
     /// Класс для вычисления нормированной локальной плотности точек
     /// в окрестности данной пары точек
@@ -43,6 +43,7 @@ namespace Clusterizator.Krab.Calculators
                     result = graph[i].TauStar;
                 }
             }
+
             return result;
         }
     }

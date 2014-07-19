@@ -1,8 +1,9 @@
-using Clusterizator.Krab;
-using NUnit.Framework;
-
 namespace Clusterizator.Tests.Krab
 {
+    using Clusterizator.Krab;
+
+    using NUnit.Framework;
+
     /// <summary>
     /// The connection test.
     /// </summary>

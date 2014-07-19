@@ -1,9 +1,11 @@
-using System.Collections;
-using Clusterizator.Krab;
-using LibiadaCore.Core;
-
 namespace Clusterizator
 {
+    using System.Collections;
+
+    using Clusterizator.Krab;
+
+    using LibiadaCore.Core;
+
     /// <summary>
     /// The cluster.
     /// </summary>

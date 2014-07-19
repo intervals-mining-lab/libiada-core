@@ -15,7 +15,7 @@ namespace LibiadaCore.Core
         /// <summary>
         /// The congeneric chains.
         /// </summary>
-        protected CongenericChain[] CongenericChains = new CongenericChain[0];
+        protected CongenericChain[] congenericChains = new CongenericChain[0];
 
         /// <summary>
         /// The dissimilar chains.
@@ -90,7 +90,7 @@ namespace LibiadaCore.Core
         public override void ClearAndSetNewLength(int length)
         {
             base.ClearAndSetNewLength(length);
-            CongenericChains = new CongenericChain[0];
+            this.congenericChains = new CongenericChain[0];
         }
 
         /// <summary>
@@ -122,7 +122,7 @@ namespace LibiadaCore.Core
             int pos = Alphabet.IndexOf(baseObject);
             if (pos != -1)
             {
-                result = (CongenericChain)CongenericChains[pos].Clone();
+                result = (CongenericChain)this.congenericChains[pos].Clone();
             }
 
             return result;
@@ -140,7 +140,7 @@ namespace LibiadaCore.Core
         /// </returns>
         public CongenericChain CongenericChain(int i)
         {
-            return (CongenericChain)CongenericChains[i].Clone();
+            return (CongenericChain)this.congenericChains[i].Clone();
         }
 
         /// <summary>
@@ -156,19 +156,19 @@ namespace LibiadaCore.Core
         {
             base.Add(item, index);
 
-            if (CongenericChains.Length != (alphabet.Cardinality - 1))
+            if (this.congenericChains.Length != (alphabet.Cardinality - 1))
             {
                 var temp = new CongenericChain[alphabet.Cardinality - 1];
-                for (int i = 0; i < CongenericChains.Length; i++)
+                for (int i = 0; i < this.congenericChains.Length; i++)
                 {
-                    temp[i] = CongenericChains[i];
+                    temp[i] = this.congenericChains[i];
                 }
 
-                CongenericChains = temp;
-                CongenericChains[CongenericChains.Length - 1] = new CongenericChain(building.Length, item);
+                this.congenericChains = temp;
+                this.congenericChains[this.congenericChains.Length - 1] = new CongenericChain(item, building.Length);
             }
 
-            foreach (CongenericChain chain in CongenericChains)
+            foreach (CongenericChain chain in this.congenericChains)
             {
                 chain.Add(item, index);
             }
@@ -252,7 +252,7 @@ namespace LibiadaCore.Core
         /// Возвращает позицию указанного по счёту вхождения указанного элемента.
         /// </summary>
         /// <param name="element">
-        /// Элемент.
+        /// Искомый элемент.
         /// </param>
         /// <param name="entry">
         /// Номер вхождения элемента в полную цепь.
@@ -283,7 +283,7 @@ namespace LibiadaCore.Core
         /// после указанной позиции.
         /// </summary>
         /// <param name="element">
-        /// Элемнет.
+        /// Искомый элемент.
         /// </param>
         /// <param name="from">
         /// Начальная позиция для отсчёта.
@@ -364,9 +364,8 @@ namespace LibiadaCore.Core
                 int end = building.Length - intervals[k].Last();
                 intervals[k].RemoveAt(0);
 
-                CongenericChains[k].SetIntervalManager(new CongenericIntervalsManager(this, intervals[k].ToArray(), start, end));
+                this.congenericChains[k].SetIntervalManager(new CongenericIntervalsManager(this, intervals[k].ToArray(), start, end));
             }
-
         }
 
         /// <summary>
@@ -381,13 +380,13 @@ namespace LibiadaCore.Core
             base.FillClone(tempChain);
             if (tempChain != null)
             {
-                tempChain.CongenericChains = (CongenericChain[])CongenericChains.Clone();
+                tempChain.congenericChains = (CongenericChain[])this.congenericChains.Clone();
             }
         }
 
         /// <summary>
         /// Выделяет из полной неоднородной цепи все однородные цепи
-        /// и сохраняет их локальнов массив <see cref="CongenericChains"/>.
+        /// и сохраняет их локальнов массив <see cref="congenericChains"/>.
         /// </summary>
         private void CreateCongenericChains()
         {
@@ -403,10 +402,10 @@ namespace LibiadaCore.Core
                 occerrences[building[j] - 1].Add(j);
             }
 
-            CongenericChains = new CongenericChain[alphabet.Cardinality - 1];
+            this.congenericChains = new CongenericChain[alphabet.Cardinality - 1];
             for (int k = 0; k < alphabet.Cardinality - 1; k++)
             {
-                CongenericChains[k] = new CongenericChain(occerrences[k], alphabet[k + 1], building.Length);
+                this.congenericChains[k] = new CongenericChain(occerrences[k], alphabet[k + 1], building.Length);
             }
         }
     }

@@ -1,7 +1,7 @@
-using NUnit.Framework;
-
 namespace Clusterizator.Tests
 {
+    using NUnit.Framework;
+
     /// <summary>
     /// The data table test.
     /// </summary>

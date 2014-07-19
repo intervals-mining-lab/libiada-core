@@ -20,7 +20,7 @@ namespace LibiadaCore.Core.SimpleTypes
         /// </param>
         public ValueDouble(double value)
         {
-            value = value;
+            this.value = value;
         }
 
         /// <summary>

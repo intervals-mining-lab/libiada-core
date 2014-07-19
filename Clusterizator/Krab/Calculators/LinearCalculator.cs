@@ -1,8 +1,8 @@
-﻿using System;
-using System.Collections;
-
-namespace Clusterizator.Krab.Calculators
+﻿namespace Clusterizator.Krab.Calculators
 {
+    using System;
+    using System.Collections;
+
     /// <summary>
     /// Класс для вычисления эвклидова расстояния
     /// </summary>
@@ -36,6 +36,7 @@ namespace Clusterizator.Krab.Calculators
                     distance += element * element;
                     firstCounter.MoveNext();
                 }
+
                 distance = Math.Sqrt(distance);
                 graph.Connections[i].Distance = distance;
             }

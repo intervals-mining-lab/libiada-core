@@ -18,12 +18,13 @@
         {
             building = chain.Building;
             sourceChain = chain;
-            firstElement = firstElement;
-            secondElement = secondElement;
+            this.firstElement = firstElement;
+            this.secondElement = secondElement;
             if (sourceChain.Alphabet.Cardinality <= firstElement || sourceChain.Alphabet.Cardinality <= secondElement)
             {
                 throw new ArgumentException("Elements indexes are out of range.");
             }
+
             int count = GetPairsCount(firstElement, secondElement);
             intervals = new int[count - 1];
             FillIntervals();
@@ -101,7 +102,8 @@
             }
 
             Start = GetAfter(secondElement, Get(firstElement, 1));
-            //End = GetAfter()
+
+            // End = GetAfter()
         }
 
         private int GetAfter(int element, int from)
@@ -116,6 +118,5 @@
 
             return -1;
         }
-
     }
 }

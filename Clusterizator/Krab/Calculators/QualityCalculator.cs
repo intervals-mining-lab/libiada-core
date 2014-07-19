@@ -1,7 +1,7 @@
-using System;
-
 namespace Clusterizator.Krab.Calculators
 {
+    using System;
+
     /// <summary>
     /// Калькулятор, вычисляющий характеристику качества разбиения
     /// </summary>

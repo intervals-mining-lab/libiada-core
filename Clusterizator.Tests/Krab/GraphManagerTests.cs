@@ -1,10 +1,12 @@
-using System.Collections.Generic;
-using System.Collections.Specialized;
-using Clusterizator.Krab;
-using NUnit.Framework;
-
 namespace Clusterizator.Tests.Krab
 {
+    using System.Collections.Generic;
+    using System.Collections.Specialized;
+
+    using Clusterizator.Krab;
+
+    using NUnit.Framework;
+
     /// <summary>
     /// The graph manager test.
     /// </summary>

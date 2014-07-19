@@ -1,9 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
-using Clusterizator.Krab.Calculators;
-
 namespace Clusterizator.Krab
 {
+    using System.Collections;
+    using System.Collections.Generic;
+
+    using Clusterizator.Krab.Calculators;
+
     /// <summary>
     /// Класс реализующий кластеризацию методом KRAB
     /// </summary>
@@ -30,7 +31,7 @@ namespace Clusterizator.Krab
         private double optimalF;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="AlternativeKRAB"/> class.
+        /// Initializes a new instance of the <see cref="KrabClusterization"/> class.
         /// </summary>
         /// <param name="dataTable">
         /// The data table.

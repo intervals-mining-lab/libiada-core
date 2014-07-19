@@ -30,7 +30,7 @@
         /// <returns>List of intervals.</returns>
         public int[] GetIntervals(Link link)
         {
-            int[] result;// = new List<int>(Intervals);
+            int[] result;
             switch (link)
             {
                 case Link.None:

@@ -3,7 +3,6 @@ namespace LibiadaCore.Core
     using System;
     using System.Collections.Generic;
     using System.Linq;
-    using System.Text;
 
     using LibiadaCore.Core.IntervalsManagers;
     using LibiadaCore.Core.SimpleTypes;
@@ -34,15 +33,15 @@ namespace LibiadaCore.Core
         private CongenericIntervalsManager intervalsManager;
 
         /// <summary>
-        /// —оздаЄт однородную цепочку дл€ заданного элемента и заданной длины.
+        /// Initializes a new instance of the <see cref="CongenericChain"/> class.
         /// </summary>
-        /// <param name="length">
-        /// ƒлина цепочки.
-        /// </param>
         /// <param name="element">
         /// Ёлемент цепочки.
         /// </param>
-        public CongenericChain(int length, IBaseObject element)
+        /// <param name="length">
+        /// ƒлина цепочки.
+        /// </param>
+        public CongenericChain(IBaseObject element, int length)
         {
             this.element = element;
             this.length = length;

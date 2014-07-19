@@ -50,14 +50,14 @@ namespace LibiadaCore.Tests.Core
                 var congenericChains = new List<CongenericChain>();
 
                 // _ _ _ a a _ _ a _ _
-                var firstChain = new CongenericChain(10, Elements["a"]);
+                var firstChain = new CongenericChain(Elements["a"], 10);
                 firstChain.Add(Elements["a"], 3);
                 firstChain.Add(Elements["a"], 4);
                 firstChain.Add(Elements["a"], 7);
                 congenericChains.Add(firstChain);
 
                 // _ _ _ b _ b b _ _ _ _ b _ _ _
-                var secondChain = new CongenericChain(15, Elements["b"]);
+                var secondChain = new CongenericChain(Elements["b"], 15);
                 secondChain.Add(Elements["b"], 3);
                 secondChain.Add(Elements["b"], 5);
                 secondChain.Add(Elements["b"], 6);
@@ -65,23 +65,23 @@ namespace LibiadaCore.Tests.Core
                 congenericChains.Add(secondChain);
 
                 // a
-                var thirdChain = new CongenericChain(1, Elements["a"]);
+                var thirdChain = new CongenericChain(Elements["a"], 1);
                 thirdChain.Add(Elements["a"], 0);
                 congenericChains.Add(thirdChain);
 
                 // _ _ _ _ _ _ _ a
-                var fourthChain = new CongenericChain(8, Elements["a"]);
+                var fourthChain = new CongenericChain(Elements["a"], 8);
                 fourthChain.Add(Elements["a"], 7);
                 congenericChains.Add(fourthChain);
 
-                var fifthChain = new CongenericChain(1000000, Elements["a"]);
+                var fifthChain = new CongenericChain(Elements["a"], 1000000);
                 fifthChain.Add(Elements["a"], 100);
                 fifthChain.Add(Elements["a"], 100000);
                 fifthChain.Add(Elements["a"], 500000);
                 congenericChains.Add(fifthChain);
 
                 // a a a a a
-                var sixthChain = new CongenericChain(5, Elements["a"]);
+                var sixthChain = new CongenericChain(Elements["a"], 5);
                 for (int i = 0; i < sixthChain.GetLength(); i++)
                 {
                     sixthChain.Add(Elements["a"], i);

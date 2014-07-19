@@ -1,8 +1,8 @@
-using System;
-using System.Collections.Generic;
-
 namespace Clusterizator.Krab.Calculators
 {
+    using System;
+    using System.Collections.Generic;
+
     /// <summary>
     ///  ласс вычисл€ющий степень равномощности множеств
     /// </summary>

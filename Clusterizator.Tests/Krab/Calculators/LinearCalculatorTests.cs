@@ -1,12 +1,14 @@
-using System;
-using System.Collections.Generic;
-using System.Collections.Specialized;
-using Clusterizator.Krab;
-using Clusterizator.Krab.Calculators;
-using NUnit.Framework;
-
 namespace Clusterizator.Tests.Krab.Calculators
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Collections.Specialized;
+
+    using Clusterizator.Krab;
+    using Clusterizator.Krab.Calculators;
+
+    using NUnit.Framework;
+
     /// <summary>
     /// The linear calculator test.
     /// </summary>

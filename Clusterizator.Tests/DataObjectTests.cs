@@ -1,8 +1,9 @@
-using System.Collections;
-using NUnit.Framework;
-
 namespace Clusterizator.Tests
 {
+    using System.Collections;
+
+    using NUnit.Framework;
+
     /// <summary>
     /// The data object test.
     /// </summary>

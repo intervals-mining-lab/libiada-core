@@ -33,7 +33,7 @@ namespace LibiadaCore.Tests.Core
         public void Initialization()
         {
             message = new ValueChar('1');
-            congenericChain = new CongenericChain(10, message);
+            congenericChain = new CongenericChain(message, 10);
             wrongMessage = new ValueChar('2');
         }
 
@@ -53,7 +53,7 @@ namespace LibiadaCore.Tests.Core
         [Test]
         public void IndependenceMessageTest()
         {
-            congenericChain = new CongenericChain(10, message);
+            congenericChain = new CongenericChain(message, 10);
 
             var newMessage = (ValueChar)congenericChain.Element;
 

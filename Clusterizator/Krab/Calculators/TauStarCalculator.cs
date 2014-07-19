@@ -1,8 +1,8 @@
-using System;
-using System.Collections.Generic;
-
 namespace Clusterizator.Krab.Calculators
 {
+    using System;
+    using System.Collections.Generic;
+
     /// <summary>
     /// Класс для вычисления локальной плотности точек
     /// в окрестности данной пары точек

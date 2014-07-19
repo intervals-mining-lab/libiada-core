@@ -1,10 +1,11 @@
-using System;
-using System.Collections;
-using System.Collections.Specialized;
-using LibiadaCore.Core;
-
 namespace Clusterizator
 {
+    using System;
+    using System.Collections;
+    using System.Collections.Specialized;
+
+    using LibiadaCore.Core;
+
     /// <summary>
     /// The data object.
     /// </summary>
@@ -65,11 +66,18 @@ namespace Clusterizator
         /// <returns>
         /// The <see cref="IBaseObject"/>.
         /// </returns>
-        /// <exception cref="NotImplementedException">
-        /// </exception>
         public IBaseObject Clone()
         {
-            throw new NotImplementedException();
+            var clone = new DataObject();
+            
+            foreach (var key in Vault.Keys)
+            {
+                clone.Add(key.ToString(), this.Get(key.ToString()));
+            }
+
+            clone.Id = this.Id;
+
+            return clone;
         }
     }
 }

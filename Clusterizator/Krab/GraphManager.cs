@@ -1,8 +1,8 @@
-using System.Collections.Generic;
-using System.Linq;
-
 namespace Clusterizator.Krab
 {
+    using System.Collections.Generic;
+    using System.Linq;
+
     /// <summary>
     /// Класс хранящий граф и список его вершин,
     /// а также оперирующий с этими вершинами
@@ -10,12 +10,12 @@ namespace Clusterizator.Krab
     public class GraphManager
     {
         /// <summary>
-        /// Граф
+        /// Массив связей графа.
         /// </summary>
         public readonly List<Connection> Connections;
 
         /// <summary>
-        /// Список вершин
+        /// Массив вершин.
         /// </summary>
         public readonly List<GraphElement> Elements;
 
@@ -255,7 +255,9 @@ namespace Clusterizator.Krab
         /// <param name="index2">
         /// индекс второго элемента
         /// </param>
-        /// <returns></returns>
+        /// <returns>
+        /// The <see cref="int"/>.
+        /// </returns>
         private int SearchConnection(int index1, int index2)
         {
             return SearchConnection(Elements[index1], Elements[index2]);

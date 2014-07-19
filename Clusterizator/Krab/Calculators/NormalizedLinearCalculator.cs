@@ -1,9 +1,9 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-
 namespace Clusterizator.Krab.Calculators
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+
     /// <summary>
     /// Класс для вычисления нормированного эвклидового расстояния 
     /// </summary>

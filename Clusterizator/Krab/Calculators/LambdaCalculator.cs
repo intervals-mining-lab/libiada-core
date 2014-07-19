@@ -1,7 +1,7 @@
-using System;
-
 namespace Clusterizator.Krab.Calculators
 {
+    using System;
+
     /// <summary>
     ///  ласс вычисл€ющий л€мбда-рассто€ние дл€ всех точек графа
     /// </summary>

@@ -1,7 +1,7 @@
-using System.Collections.Specialized;
-
 namespace Clusterizator.Krab
 {
+    using System.Collections.Specialized;
+
     /// <summary>
     /// Вершина графа
     /// </summary>
@@ -16,10 +16,10 @@ namespace Clusterizator.Krab
         /// Initializes a new instance of the <see cref="GraphElement"/> class.
         /// </summary>
         /// <param name="element"> 
-        /// Координаты
+        /// Координаты.
         /// </param>
         /// <param name="name"> 
-        /// Имя объекта
+        /// Имя объекта.
         /// </param>
         public GraphElement(HybridDictionary element, object name)
         {

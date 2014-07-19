@@ -1,8 +1,9 @@
-using System.Collections;
-using LibiadaCore.Core;
-
 namespace Clusterizator
 {
+    using System.Collections;
+
+    using LibiadaCore.Core;
+
     /// <summary>
     /// The clusterization result.
     /// </summary>

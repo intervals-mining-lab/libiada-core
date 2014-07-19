@@ -13,6 +13,5 @@ namespace Clusterizator.Krab.Calculators
         /// Connections graph.
         /// </param>
         void Calculate(GraphManager graph);
-
     }
 }

@@ -37,7 +37,7 @@ namespace LibiadaCore.Tests.Core
             var messageC = new ValueChar('c');
             var messageG = new ValueChar('g');
             var messageT = new ValueChar('t');
-            var congenericChainA = new CongenericChain(10, messageA);
+            var congenericChainA = new CongenericChain(messageA, 10);
 
             chain.Add(messageC, 0);
 
