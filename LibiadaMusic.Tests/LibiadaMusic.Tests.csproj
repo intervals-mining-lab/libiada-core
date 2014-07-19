@@ -1,0 +1,98 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{AB9ED1C2-F46D-4FCB-9BD2-44B44E4CCA42}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>LibiadaMusic.Tests</RootNamespace>
+    <AssemblyName>LibiadaMusic.Tests</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="System" />
+    <Reference Include="System.XML" />
+    <Reference Include="LibiadaCore">
+      <HintPath>..\..\libiada-core\LibiadaCore\bin\Debug\LibiadaCore.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <CodeAnalysisDependentAssemblyPaths Condition=" '$(VS100COMNTOOLS)' != '' " Include="$(VS100COMNTOOLS)..\IDE\PrivateAssemblies">
+      <Visible>False</Visible>
+    </CodeAnalysisDependentAssemblyPaths>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Analysis\CompositionTests.cs" />
+    <Compile Include="Analysis\DifferenceTests.cs" />
+    <Compile Include="Characteristics\AverageLengthTests.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Characteristics\NoteRemotenessTests.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Characteristics\WithinWordRemotenessTests.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Characteristics\WordRemotenessTests.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BorodaDivider\FmotivTests.cs" />
+    <Compile Include="BorodaDivider\BorodaDividerTests.cs" />
+    <Compile Include="BorodaDivider\FmotivChainTests.cs" />
+    <Compile Include="BorodaDivider\FmotivDividerTests.cs" />
+    <Compile Include="BorodaDivider\FmotivIdentificatorTests.cs" />
+    <Compile Include="BorodaDivider\ParamEqualFMTests.cs" />
+    <Compile Include="BorodaDivider\ParamPauseTreatmentTests.cs" />
+    <Compile Include="BorodaDivider\PriorityDiscoverTests.cs" />
+    <Compile Include="MusicXml\MusicXmlParserTests.cs" />
+    <Compile Include="MusicXml\XmlReaderTests.cs" />
+    <Compile Include="ScoreModel\DurationTests.cs" />
+    <Compile Include="ScoreModel\MeasureTests.cs" />
+    <Compile Include="ScoreModel\ValueNoteTests.cs" />
+    <Compile Include="ScoreModel\TieTests.cs" />
+    <Compile Include="ScoreModel\UniformScoreTrackTests.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\LibiadaMusic\LibiadaMusic.csproj">
+      <Project>{fb02b0a5-68bb-4786-96a3-b6d4276cf74f}</Project>
+      <Name>LibiadaMusic</Name>
+      <Private>True</Private>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
