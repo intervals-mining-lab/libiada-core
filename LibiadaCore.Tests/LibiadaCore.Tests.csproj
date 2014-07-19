@@ -102,16 +102,16 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\LibiadaCore\LibiadaCore.csproj">
-      <Project>{AF8DF9BB-B796-457E-91AB-E41674BEB92B}</Project>
-      <Name>LibiadaCore</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\LibiadaCore\LibiadaCore.csproj">
+      <Project>{af8df9bb-b796-457e-91ab-e41674beb92b}</Project>
+      <Name>LibiadaCore</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\nuget.targets" />

@@ -135,14 +135,14 @@
             CongenericChain tempCongenericChain = this.CongenericChain(element);
             if ((int)calc.Calculate(tempCongenericChain, Link.None) == 1)
             {
-                var temp = this.CongenericChains;
-                this.CongenericChains = new CongenericChain[temp.Length - 1];
+                var temp = this.congenericChains;
+                this.congenericChains = new CongenericChain[temp.Length - 1];
                 int j = 0;
                 foreach (CongenericChain congenericChain in temp)
                 {
                     if (!congenericChain.Element.Equals(element))
                     {
-                        this.CongenericChains[j] = congenericChain;
+                        this.congenericChains[j] = congenericChain;
                         j++;
                     }
                 }
@@ -157,7 +157,7 @@
                 }
             }
 
-            foreach (CongenericChain congenericChain in this.CongenericChains)
+            foreach (CongenericChain congenericChain in this.congenericChains)
             {
                 congenericChain.DeleteAt(index);
             }
