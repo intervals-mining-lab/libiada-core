@@ -38,9 +38,9 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Classes\ActualChain.cs" />
-    <Compile Include="Classes\ChainsAlphabet.cs" />
-    <Compile Include="Classes\Checker.cs" />
+    <Compile Include="ActualChain.cs" />
+    <Compile Include="ChainsAlphabet.cs" />
+    <Compile Include="Checker.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

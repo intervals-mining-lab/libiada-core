@@ -1,0 +1,84 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{1F9CA863-266C-4C3C-9812-BA1FBFEABF5F}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>MarkovChains</RootNamespace>
+    <AssemblyName>MarkovChains</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="MarkovChain\Builders\IMatrixBuilder.cs" />
+    <Compile Include="MarkovChain\Builders\MatrixBuilder.cs" />
+    <Compile Include="MarkovChain\Builders\ProbabilityMatrixBuilder.cs" />
+    <Compile Include="MarkovChain\GeneratingMethod.cs" />
+    <Compile Include="MarkovChain\Generators\GeneratorFactory.cs" />
+    <Compile Include="MarkovChain\Generators\GeneratorType.cs" />
+    <Compile Include="MarkovChain\Generators\IGenerator.cs" />
+    <Compile Include="MarkovChain\Generators\SimpleGenerator.cs" />
+    <Compile Include="MarkovChain\MarkovChainBase.cs" />
+    <Compile Include="MarkovChain\MarkovChainFactory.cs" />
+    <Compile Include="MarkovChain\MarkovChainNotUniformStatic.cs" />
+    <Compile Include="MarkovChain\MarkovChainRandom.cs" />
+    <Compile Include="MarkovChain\MarkovChainUniformStatic.cs" />
+    <Compile Include="MarkovChain\Matrices\Absolute\IAbsoluteMatrix.cs" />
+    <Compile Include="MarkovChain\Matrices\Absolute\IOpenMatrix.cs" />
+    <Compile Include="MarkovChain\Matrices\Absolute\Matrix.cs" />
+    <Compile Include="MarkovChain\Matrices\Absolute\MatrixRow.cs" />
+    <Compile Include="MarkovChain\Matrices\Base\MatrixBase.cs" />
+    <Compile Include="MarkovChain\Matrices\Base\MatrixCommon.cs" />
+    <Compile Include="MarkovChain\Matrices\Base\MatrixRowCommon.cs" />
+    <Compile Include="MarkovChain\Matrices\Probability\IProbabilityMatrix.cs" />
+    <Compile Include="MarkovChain\Matrices\Probability\IWritableMatrix.cs" />
+    <Compile Include="MarkovChain\Matrices\Probability\ProbabilityMatrix.cs" />
+    <Compile Include="MarkovChain\Matrices\Probability\ProbabilityMatrixRow.cs" />
+    <Compile Include="MarkovChain\TeachingMethod.cs" />
+    <Compile Include="MarkovCompare\MarkovMetrics.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\LibiadaCore\LibiadaCore.csproj">
+      <Project>{af8df9bb-b796-457e-91ab-e41674beb92b}</Project>
+      <Name>LibiadaCore</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

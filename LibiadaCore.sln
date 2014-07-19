@@ -36,6 +36,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Segmenter", "Segmenter\Segm
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Segmenter.Tests", "Segmenter.Tests\Segmenter.Tests.csproj", "{B8910171-7604-49BF-B288-F87BDC9BA508}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MarkovChains", "MarkovChains\MarkovChains.csproj", "{1F9CA863-266C-4C3C-9812-BA1FBFEABF5F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MarkovChains.Tests", "MarkovChains.Tests\MarkovChains.Tests.csproj", "{BB1343C7-4E8F-4AAF-9A09-B2CA5BCC3EAA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -94,6 +98,14 @@ Global
 		{B8910171-7604-49BF-B288-F87BDC9BA508}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B8910171-7604-49BF-B288-F87BDC9BA508}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B8910171-7604-49BF-B288-F87BDC9BA508}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1F9CA863-266C-4C3C-9812-BA1FBFEABF5F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1F9CA863-266C-4C3C-9812-BA1FBFEABF5F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1F9CA863-266C-4C3C-9812-BA1FBFEABF5F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1F9CA863-266C-4C3C-9812-BA1FBFEABF5F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BB1343C7-4E8F-4AAF-9A09-B2CA5BCC3EAA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BB1343C7-4E8F-4AAF-9A09-B2CA5BCC3EAA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BB1343C7-4E8F-4AAF-9A09-B2CA5BCC3EAA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BB1343C7-4E8F-4AAF-9A09-B2CA5BCC3EAA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

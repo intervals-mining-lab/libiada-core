@@ -38,19 +38,19 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Classes\ArrayToString.cs" />
-    <Compile Include="Classes\ChainPicksWithCharacteristics.cs" />
-    <Compile Include="Classes\Filters\ChainFilterBySameFrequency.cs" />
-    <Compile Include="Classes\Filters\ChinFilterByAlphabetPower.cs" />
-    <Compile Include="Classes\Filters\IChainFilter.cs" />
-    <Compile Include="Classes\LinkedCharacteristic.cs" />
-    <Compile Include="Classes\ScramblingGenerator.cs" />
-    <Compile Include="Classes\Statistics\Calculators\ExpectationCalculator.cs" />
-    <Compile Include="Classes\Statistics\Calculators\IOnePicksCalculator.cs" />
-    <Compile Include="Classes\Statistics\Calculators\MaxCalculator.cs" />
-    <Compile Include="Classes\Statistics\Calculators\MinCalculator.cs" />
-    <Compile Include="Classes\Statistics\Calculators\StartingPointCalculator.cs" />
-    <Compile Include="Classes\Statistics\Picks.cs" />
+    <Compile Include="ArrayToString.cs" />
+    <Compile Include="ChainPicksWithCharacteristics.cs" />
+    <Compile Include="Filters\ChainFilterBySameFrequency.cs" />
+    <Compile Include="Filters\ChinFilterByAlphabetPower.cs" />
+    <Compile Include="Filters\IChainFilter.cs" />
+    <Compile Include="LinkedCharacteristic.cs" />
+    <Compile Include="ScramblingGenerator.cs" />
+    <Compile Include="Statistics\Calculators\ExpectationCalculator.cs" />
+    <Compile Include="Statistics\Calculators\IOnePicksCalculator.cs" />
+    <Compile Include="Statistics\Calculators\MaxCalculator.cs" />
+    <Compile Include="Statistics\Calculators\MinCalculator.cs" />
+    <Compile Include="Statistics\Calculators\StartingPointCalculator.cs" />
+    <Compile Include="Statistics\Picks.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -59,6 +59,7 @@
       <Name>LibiadaCore</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -38,44 +38,22 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="PhantomChains\AbstractNode.cs" />
-    <Compile Include="PhantomChains\PhantomChainGenerator.cs" />
-    <Compile Include="PhantomChains\PhantomTable.cs" />
-    <Compile Include="PhantomChains\Record.cs" />
-    <Compile Include="PhantomChains\TreeNode.cs" />
-    <Compile Include="PhantomChains\TreeTop.cs" />
-    <Compile Include="Statistics\MarkovChain\Builders\IMatrixBuilder.cs" />
-    <Compile Include="Statistics\MarkovChain\Builders\MatrixBuilder.cs" />
-    <Compile Include="Statistics\MarkovChain\Builders\ProbabilityMatrixBuilder.cs" />
-    <Compile Include="Statistics\MarkovChain\GeneratingMethod.cs" />
-    <Compile Include="Statistics\MarkovChain\Generators\GeneratorFactory.cs" />
-    <Compile Include="Statistics\MarkovChain\Generators\GeneratorType.cs" />
-    <Compile Include="Statistics\MarkovChain\Generators\IGenerator.cs" />
-    <Compile Include="Statistics\MarkovChain\Generators\SimpleGenerator.cs" />
-    <Compile Include="Statistics\MarkovChain\MarkovChainBase.cs" />
-    <Compile Include="Statistics\MarkovChain\MarkovChainFactory.cs" />
-    <Compile Include="Statistics\MarkovChain\MarkovChainNotUniformStatic.cs" />
-    <Compile Include="Statistics\MarkovChain\MarkovChainRandom.cs" />
-    <Compile Include="Statistics\MarkovChain\MarkovChainUniformStatic.cs" />
-    <Compile Include="Statistics\MarkovChain\Matrices\Absolute\IAbsoluteMatrix.cs" />
-    <Compile Include="Statistics\MarkovChain\Matrices\Absolute\IOpenMatrix.cs" />
-    <Compile Include="Statistics\MarkovChain\Matrices\Absolute\Matrix.cs" />
-    <Compile Include="Statistics\MarkovChain\Matrices\Absolute\MatrixRow.cs" />
-    <Compile Include="Statistics\MarkovChain\Matrices\Base\MatrixBase.cs" />
-    <Compile Include="Statistics\MarkovChain\Matrices\Base\MatrixCommon.cs" />
-    <Compile Include="Statistics\MarkovChain\Matrices\Base\MatrixRowCommon.cs" />
-    <Compile Include="Statistics\MarkovChain\Matrices\Probability\IProbabilityMatrix.cs" />
-    <Compile Include="Statistics\MarkovChain\Matrices\Probability\IWritableMatrix.cs" />
-    <Compile Include="Statistics\MarkovChain\Matrices\Probability\ProbabilityMatrixRow.cs" />
-    <Compile Include="Statistics\MarkovChain\Matrices\Probability\ProbabilityMatrix.cs" />
-    <Compile Include="Statistics\MarkovChain\TeachingMethod.cs" />
-    <Compile Include="Statistics\MarkovCompare\MarkovMetrics.cs" />
+    <Compile Include="AbstractNode.cs" />
+    <Compile Include="PhantomChainGenerator.cs" />
+    <Compile Include="PhantomTable.cs" />
+    <Compile Include="Record.cs" />
+    <Compile Include="TreeNode.cs" />
+    <Compile Include="TreeTop.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\LibiadaCore\LibiadaCore.csproj">
       <Project>{af8df9bb-b796-457e-91ab-e41674beb92b}</Project>
       <Name>LibiadaCore</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MarkovChains\MarkovChains.csproj">
+      <Project>{1f9ca863-266c-4c3c-9812-ba1fbfeabf5f}</Project>
+      <Name>MarkovChains</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
