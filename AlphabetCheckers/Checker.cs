@@ -27,7 +27,7 @@ namespace AlphabetCheckers
             this.alphabet = new ChainsAlphabet();
             foreach (IBaseObject baseObject in alphabet)
             {
-                alphabet.Add(baseObject);
+                this.alphabet.Add(baseObject);
             }
         }
 

@@ -42,12 +42,11 @@ namespace LibiadaCore.Tests.Core.Characteristics.Calculators
             CongenericChainCharacteristicTest(index, link, value);
         }
 
-        [TestCase(0, Link.None, 0.06088)]/*
-        [TestCase(0, Link.Start, 6.9887)]
-        [TestCase(0, Link.End, 6.4165)]
-        [TestCase(0, Link.Both, 8.8815)]
-        [TestCase(0, Link.Cycle, 7.7856)]
-        */
+        [TestCase(0, Link.None, 0.0704)]
+        [TestCase(0, Link.Start, 0.1168)]
+        [TestCase(0, Link.End, 0.0169)]
+        [TestCase(0, Link.Both, 0.0515)]
+        [TestCase(0, Link.Cycle, 0.1872)]
         public void ChainCalculationTest(int index, Link link, double value)
         {
             ChainCharacteristicTest(0, link, value);

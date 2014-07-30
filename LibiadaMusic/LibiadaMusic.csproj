@@ -62,9 +62,6 @@
   <ItemGroup>
     <Compile Include="Characteristics\AverageLength.cs" />
     <Compile Include="Characteristics\NoteCharacteristic.cs" />
-    <Compile Include="Characteristics\TextWordDepth.cs" />
-    <Compile Include="Characteristics\WithinWordRemoteness.cs" />
-    <Compile Include="Characteristics\WordRemoteness.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Analysis\Composition.cs" />
     <Compile Include="Analysis\Difference.cs" />

@@ -54,12 +54,6 @@
     <Compile Include="Characteristics\NoteRemotenessTests.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Characteristics\WithinWordRemotenessTests.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Characteristics\WordRemotenessTests.cs">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="BorodaDivider\FmotivTests.cs" />
     <Compile Include="BorodaDivider\BorodaDividerTests.cs" />
     <Compile Include="BorodaDivider\FmotivChainTests.cs" />

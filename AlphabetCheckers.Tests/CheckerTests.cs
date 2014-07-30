@@ -54,18 +54,18 @@ namespace AlphabetCheckers.Tests
         [Test]
         public void CheckFalse()
         {
-            var chainBase = new BaseChain(10);
+            var chain = new BaseChain(10);
 
-            chainBase[0] = new ValueChar('1');
-            chainBase[1] = new ValueChar('2');
-            chainBase[2] = new ValueChar('3');
-            chainBase[3] = new ValueChar('4');
-            chainBase[4] = new ValueChar('5');
-            chainBase[5] = new ValueChar('6');
-            chainBase[6] = new ValueChar('7');
-            chainBase[7] = new ValueChar('8');
-            chainBase[8] = new ValueChar('9');
-            chainBase[9] = new ValueChar('A');
+            chain[0] = new ValueChar('1');
+            chain[1] = new ValueChar('2');
+            chain[2] = new ValueChar('3');
+            chain[3] = new ValueChar('4');
+            chain[4] = new ValueChar('5');
+            chain[5] = new ValueChar('6');
+            chain[6] = new ValueChar('7');
+            chain[7] = new ValueChar('8');
+            chain[8] = new ValueChar('9');
+            chain[9] = new ValueChar('A');
 
             var alphabet = new Alphabet
                 {
@@ -79,8 +79,9 @@ namespace AlphabetCheckers.Tests
                     new ValueChar('8'),
                     new ValueChar('6')
                 };
+
             var checker = new Checker(alphabet);
-            Assert.AreEqual(false, checker.Check(chainBase));
+            Assert.AreEqual(false, checker.Check(chain));
         }
 
         /// <summary>

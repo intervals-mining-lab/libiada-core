@@ -79,7 +79,12 @@ namespace LibiadaCore.Core.SimpleTypes
                 return true;
             }
 
-            return Equals((ValueInt)other);
+            if (other is ValueInt)
+            {
+                return Equals((ValueInt)other);
+            }
+
+            return false;
         }
 
         /// <summary>
