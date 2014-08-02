@@ -49,6 +49,7 @@ namespace LibiadaCore.Core
         public Chain(string source)
             : base(source)
         {
+            CreateCongenericChains();
         }
 
         /// <summary>

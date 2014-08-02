@@ -182,6 +182,7 @@ namespace LibiadaCore.Core
         public override void RemoveAt(int index)
         {
             building[index] = 0;
+            //TODO: Удалять элемент из алфавита если он последний
         }
 
         /// <summary>
