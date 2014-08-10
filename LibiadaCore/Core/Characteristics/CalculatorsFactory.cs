@@ -173,6 +173,30 @@ namespace LibiadaCore.Core.Characteristics
             get { return new CutLengthVocabularyEntropy(); }
         }
 
+        public static RemotenessDispersion remotenessDispersion
+        {
+            get
+            {
+                return new RemotenessDispersion();
+            }
+        }
+
+        public static RemotenessStandardDeviation remotenessStandardDeviation
+        {
+            get
+            {
+                return new RemotenessStandardDeviation();
+            }
+        }
+        public static RemotenessAsymmetry remotenessAsymmetry
+        {
+            get
+            {
+                return new RemotenessAsymmetry();
+            }
+        }
+
+
         /// <summary>
         /// Список калькуляторов характеристик.
         /// </summary>
@@ -197,7 +221,10 @@ namespace LibiadaCore.Core.Characteristics
                         nG,
                         t,
                         AlphabeticAverageRemoteness,
-                        AlphabeticDepth
+                        AlphabeticDepth,
+                        remotenessDispersion,
+                        remotenessStandardDeviation,
+                        remotenessAsymmetry
                     };
 
                 return temp;
