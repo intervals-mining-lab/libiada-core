@@ -32,7 +32,7 @@
         /// Link of intervals in chain.
         /// </param>
         /// <returns>
-        /// Average remoteness <see cref="double"/> value.
+        /// Average remoteness dispersion <see cref="double"/> value.
         /// </returns>
         public double Calculate(CongenericChain chain, Link link)
         {
@@ -49,7 +49,7 @@
         /// Link of intervals in chain.
         /// </param>
         /// <returns>
-        /// Average remoteness <see cref="double"/> value.
+        /// Average remoteness dispersion <see cref="double"/> value.
         /// </returns>
         public double Calculate(Chain chain, Link link)
         {

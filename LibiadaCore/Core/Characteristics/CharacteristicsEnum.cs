@@ -128,6 +128,11 @@ namespace LibiadaCore.Core.Characteristics
         /// <summary>
         /// Дисперсия средней удаленности.
         /// </summary>
-        AverageRemotenessDispersion
+        AverageRemotenessDispersion,
+
+        /// <summary>
+        /// СКО средней удаленности.
+        /// </summary>
+        StandardDeviation
     }
 }
