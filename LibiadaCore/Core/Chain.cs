@@ -23,6 +23,11 @@ namespace LibiadaCore.Core
         protected Chain[] dissimilarChains;
 
         /// <summary>
+        /// The relation intervals managers.
+        /// </summary>
+        private RelationIntervalManager[,] relationIntervalsManagers;
+
+        /// <summary>
         /// Initializes a new instance of the <see cref="Chain"/> class.
         /// </summary>
         /// <param name="length">
@@ -92,6 +97,7 @@ namespace LibiadaCore.Core
         {
             base.ClearAndSetNewLength(length);
             this.congenericChains = new CongenericChain[0];
+            this.relationIntervalsManagers = null;
         }
 
         /// <summary>
@@ -142,6 +148,40 @@ namespace LibiadaCore.Core
         public CongenericChain CongenericChain(int i)
         {
             return (CongenericChain)this.congenericChains[i].Clone();
+        }
+
+        /// <summary>
+        /// The get relation interval manager.
+        /// </summary>
+        /// <param name="first">
+        /// The first.
+        /// </param>
+        /// <param name="second">
+        /// The second.
+        /// </param>
+        /// <returns>
+        /// The <see cref="RelationIntervalManager"/>.
+        /// </returns>
+        public RelationIntervalManager GetRelationIntervalsManager(int first, int second)
+        {
+            if (this.relationIntervalsManagers == null)
+            {
+                this.relationIntervalsManagers = new RelationIntervalManager[alphabet.Cardinality - 1, alphabet.Cardinality - 1];
+            }
+            var intervalsManager = relationIntervalsManagers[first - 1, second - 1];
+
+            if (intervalsManager == null)
+            {
+                intervalsManager = new RelationIntervalManager(this, alphabet[first], alphabet[second]);
+                this.relationIntervalsManagers[first - 1, second - 1] = intervalsManager;
+            }
+
+            return intervalsManager;
+        }
+
+        public RelationIntervalManager GetRelationIntervalsManager(IBaseObject first, IBaseObject second)
+        {
+            return GetRelationIntervalsManager(alphabet.IndexOf(first), alphabet.IndexOf(second));
         }
 
         /// <summary>
@@ -208,46 +248,7 @@ namespace LibiadaCore.Core
 
                 dissimilarChains[element].Add(new ValueInt(building[i]), i);
             }
-        }
-
-        /// <summary>
-        /// Возвращает i-ый интервал 
-        /// между указанными элементами 
-        /// в бинарно-однродной цепи
-        /// </summary>
-        /// <param name="first">
-        /// первый элементы пары
-        /// </param>
-        /// <param name="second">
-        /// второй элемент пары
-        /// </param>
-        /// <param name="entry">
-        /// номер вхождения начиная с 1
-        /// </param>
-        /// <returns>Длина интервала</returns>
-        public int GetBinaryInterval(IBaseObject first, IBaseObject second, int entry)
-        {
-            int firstEntry = Get(first, entry);
-            if (firstEntry == -1)
-            {
-                return -1;
-            }
-
-            for (int i = firstEntry + 1; i < building.Length; i++)
-            {
-                if (first.Equals(this[i]))
-                {
-                    return -1;
-                }
-
-                if (second.Equals(this[i]))
-                {
-                    return i - firstEntry;
-                }
-            }
-
-            return -1;
-        }
+        } 
 
         /// <summary>
         /// Возвращает позицию указанного по счёту вхождения указанного элемента.
@@ -263,75 +264,7 @@ namespace LibiadaCore.Core
         /// </returns>
         public int Get(IBaseObject element, int entry)
         {
-            int entranceCount = 0;
-            for (int i = 0; i < building.Length; i++)
-            {
-                if (this[i].Equals(element))
-                {
-                    entranceCount++;
-                    if (entranceCount == entry)
-                    {
-                        return i;
-                    }
-                }
-            }
-
-            return -1;
-        }
-
-        /// <summary>
-        /// Возвращает позицию первого вхождения указанного элемента 
-        /// после указанной позиции.
-        /// </summary>
-        /// <param name="element">
-        /// Искомый элемент.
-        /// </param>
-        /// <param name="from">
-        /// Начальная позиция для отсчёта.
-        /// </param>
-        /// <returns>
-        /// Номер позиции или -1, если элемент после указанной позиции не встречается.
-        /// </returns>
-        public int GetAfter(IBaseObject element, int from)
-        {
-            for (int i = from; i < building.Length; i++)
-            {
-                if (this[i].Equals(element))
-                {
-                    return i;
-                }
-            }
-
-            return -1;
-        }
-
-        /// <summary>
-        /// The get pairs count.
-        /// </summary>
-        /// <param name="first">
-        /// The j.
-        /// </param>
-        /// <param name="second">
-        /// The l.
-        /// </param>
-        /// <returns>
-        /// The <see cref="int"/>.
-        /// </returns>
-        public int GetPairsCount(IBaseObject first, IBaseObject second)
-        {
-            var elementCounter = new ElementsCount();
-            var firstElementCount = (int)elementCounter.Calculate(CongenericChain(first), Link.None);
-            int pairs = 0;
-            for (int i = 1; i <= firstElementCount; i++)
-            {
-                int binaryInterval = GetBinaryInterval(first, second, i);
-                if (binaryInterval > 0)
-                {
-                    pairs++;
-                }
-            }
-
-            return pairs;
+            return congenericChains[alphabet.IndexOf(element) - 1].GetOccurrence(entry);
         }
 
         /// <summary>
@@ -403,10 +336,10 @@ namespace LibiadaCore.Core
                 occerrences[building[j] - 1].Add(j);
             }
 
-            this.congenericChains = new CongenericChain[alphabet.Cardinality - 1];
+            congenericChains = new CongenericChain[alphabet.Cardinality - 1];
             for (int k = 0; k < alphabet.Cardinality - 1; k++)
             {
-                this.congenericChains[k] = new CongenericChain(occerrences[k], alphabet[k + 1], building.Length);
+                congenericChains[k] = new CongenericChain(occerrences[k], alphabet[k + 1], building.Length);
             }
         }
     }

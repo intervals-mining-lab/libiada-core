@@ -39,14 +39,16 @@
             var firstElementCount = (int)count.Calculate(firstElementChain, link);
             double avG = 0;
             int currentEntrance = 0;
-            
+
+            var manager = chain.GetRelationIntervalsManager(firstElement, secondElement);
+
             for (int i = 1; i <= firstElementCount; i++)
             {
-                if (chain.GetBinaryInterval(firstElement, secondElement, i) > 0)
+                if (manager.GetBinaryInterval(i) > 0)
                 {
                     if (currentEntrance == 0)
                     {
-                        currentEntrance = chain.GetAfter(secondElement, chain.Get(firstElement, i));
+                        currentEntrance = manager.GetAfter(manager.Get(firstElement, i));
                         if (link == Link.Start || link == Link.Both)
                         {
                             avG += Math.Log(currentEntrance, 2);
@@ -54,7 +56,7 @@
                     }
                     else
                     {
-                        int nextEntrance = chain.GetAfter(secondElement, chain.Get(firstElement, i));
+                        int nextEntrance = manager.GetAfter(manager.Get(firstElement, i));
                         avG += Math.Log(nextEntrance - currentEntrance, 2);
                         currentEntrance = nextEntrance;
                     }
@@ -65,8 +67,8 @@
             {
                 avG += Math.Log(chain.GetLength() - currentEntrance, 2);
             }
-            
-            int pairs = chain.GetPairsCount(firstElement, secondElement);
+
+            int pairs = manager.GetPairsCount();
             avG = pairs == 0 ? 0 : avG / pairs;
             var geometricMeanCalculator = new BinaryGeometricMean();
             double binaryGeometricMean = geometricMeanCalculator.Calculate(chain, firstElement, secondElement, link);

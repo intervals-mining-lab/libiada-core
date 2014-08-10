@@ -42,7 +42,7 @@
             var secondElementCount = (int)counter.Calculate(secondElementChain, link);
 
             double redundancy = redundancyCalculator.Calculate(chain, firstElement, secondElement, link);
-            int pairs = chain.GetPairsCount(firstElement, secondElement);
+            int pairs = chain.GetRelationIntervalsManager(firstElement, secondElement).GetPairsCount();
             return redundancy * (2 * pairs) / (firstElementCount + secondElementCount);
         }
 

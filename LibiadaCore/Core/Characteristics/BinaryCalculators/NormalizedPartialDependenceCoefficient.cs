@@ -32,7 +32,7 @@
 
             var partialDependenceCoefficient = new PartialDependenceCoefficient();
             double k1 = partialDependenceCoefficient.Calculate(chain, firstElement, secondElement, link);
-            int pairs = chain.GetPairsCount(firstElement, secondElement);
+            int pairs = chain.GetRelationIntervalsManager(firstElement, secondElement).GetPairsCount();
             return k1 * 2 * pairs / chain.GetLength();
         }
 

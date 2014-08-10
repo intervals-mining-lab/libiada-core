@@ -139,10 +139,10 @@ namespace LibiadaCore.Tests.Core
         [Test]
         public void GetBinaryIntervalTest()
         {
-            var messageA = new ValueChar('a');
-            var messageC = new ValueChar('c');
-            var messageG = new ValueChar('g');
-            var messageT = new ValueChar('t');
+            IBaseObject messageA = new ValueChar('a');
+            IBaseObject messageC = new ValueChar('c');
+            IBaseObject messageG = new ValueChar('g');
+            IBaseObject messageT = new ValueChar('t');
 
             chain.Add(messageC, 0);
             chain.Add(messageC, 1);
@@ -155,21 +155,22 @@ namespace LibiadaCore.Tests.Core
             chain.Add(messageA, 8);
             chain.Add(messageC, 9);
 
-            Assert.AreEqual(1, chain.GetBinaryInterval(messageA, messageC, 1));
-            Assert.AreEqual(1, chain.GetBinaryInterval(messageA, messageC, 2));
-            Assert.AreEqual(-1, chain.GetBinaryInterval(messageA, messageC, 3));
 
-            Assert.AreEqual(-1, chain.GetBinaryInterval(messageC, messageA, 1));
-            Assert.AreEqual(1, chain.GetBinaryInterval(messageC, messageA, 2));
-            Assert.AreEqual(-1, chain.GetBinaryInterval(messageC, messageA, 3));
-            Assert.AreEqual(3, chain.GetBinaryInterval(messageC, messageA, 4));
-            Assert.AreEqual(-1, chain.GetBinaryInterval(messageC, messageA, 5));
+            Assert.AreEqual(1, chain.GetRelationIntervalsManager(messageA, messageC).GetBinaryInterval(1));
+            Assert.AreEqual(1, chain.GetRelationIntervalsManager(messageA, messageC).GetBinaryInterval(2));
+            Assert.AreEqual(-1, chain.GetRelationIntervalsManager(messageA, messageC).GetBinaryInterval(3));
 
-            Assert.AreEqual(-1, chain.GetBinaryInterval(messageC, messageT, 1));
-            Assert.AreEqual(-1, chain.GetBinaryInterval(messageC, messageT, 2));
-            Assert.AreEqual(-1, chain.GetBinaryInterval(messageC, messageT, 3));
-            Assert.AreEqual(1, chain.GetBinaryInterval(messageC, messageT, 4));
-            Assert.AreEqual(1, chain.GetBinaryInterval(messageC, messageT, 4));
+            Assert.AreEqual(-1, chain.GetRelationIntervalsManager(messageC, messageA).GetBinaryInterval(1));
+            Assert.AreEqual(1, chain.GetRelationIntervalsManager(messageC, messageA).GetBinaryInterval(2));
+            Assert.AreEqual(-1, chain.GetRelationIntervalsManager(messageC, messageA).GetBinaryInterval(3));
+            Assert.AreEqual(3, chain.GetRelationIntervalsManager(messageC, messageA).GetBinaryInterval(4));
+            Assert.AreEqual(-1, chain.GetRelationIntervalsManager(messageC, messageA).GetBinaryInterval(5));
+
+            Assert.AreEqual(-1, chain.GetRelationIntervalsManager(messageC, messageT).GetBinaryInterval(1));
+            Assert.AreEqual(-1, chain.GetRelationIntervalsManager(messageC, messageT).GetBinaryInterval(2));
+            Assert.AreEqual(-1, chain.GetRelationIntervalsManager(messageC, messageT).GetBinaryInterval(3));
+            Assert.AreEqual(1, chain.GetRelationIntervalsManager(messageC, messageT).GetBinaryInterval(4));
+            Assert.AreEqual(1, chain.GetRelationIntervalsManager(messageC, messageT).GetBinaryInterval(4));
 
             // oxo_xx_oooxxo
             var testChain = new Chain(13);
@@ -187,20 +188,20 @@ namespace LibiadaCore.Tests.Core
             testChain.Add(messageC, 11);
             testChain.Add(messageA, 12);
 
-            Assert.AreEqual(1, testChain.GetBinaryInterval(messageA, messageC, 1));
-            Assert.AreEqual(2, testChain.GetBinaryInterval(messageA, messageC, 2));
-            Assert.AreEqual(-1, testChain.GetBinaryInterval(messageA, messageC, 3));
-            Assert.AreEqual(-1, testChain.GetBinaryInterval(messageA, messageC, 4));
-            Assert.AreEqual(1, testChain.GetBinaryInterval(messageA, messageC, 5));
-            Assert.AreEqual(-1, testChain.GetBinaryInterval(messageA, messageC, 6));
-            Assert.AreEqual(-1, testChain.GetBinaryInterval(messageA, messageC, 7));
+            Assert.AreEqual(1, testChain.GetRelationIntervalsManager(messageA, messageC).GetBinaryInterval(1));
+            Assert.AreEqual(2, testChain.GetRelationIntervalsManager(messageA, messageC).GetBinaryInterval(2));
+            Assert.AreEqual(-1, testChain.GetRelationIntervalsManager(messageA, messageC).GetBinaryInterval(3));
+            Assert.AreEqual(-1, testChain.GetRelationIntervalsManager(messageA, messageC).GetBinaryInterval(4));
+            Assert.AreEqual(1, testChain.GetRelationIntervalsManager(messageA, messageC).GetBinaryInterval(5));
+            Assert.AreEqual(-1, testChain.GetRelationIntervalsManager(messageA, messageC).GetBinaryInterval(6));
+            Assert.AreEqual(-1, testChain.GetRelationIntervalsManager(messageA, messageC).GetBinaryInterval(7));
 
-            Assert.AreEqual(1, testChain.GetBinaryInterval(messageC, messageA, 1));
-            Assert.AreEqual(-1, testChain.GetBinaryInterval(messageC, messageA, 2));
-            Assert.AreEqual(2, testChain.GetBinaryInterval(messageC, messageA, 3));
-            Assert.AreEqual(-1, testChain.GetBinaryInterval(messageC, messageA, 4));
-            Assert.AreEqual(1, testChain.GetBinaryInterval(messageC, messageA, 5));
-            Assert.AreEqual(-1, testChain.GetBinaryInterval(messageC, messageA, 6));
+            Assert.AreEqual(1, testChain.GetRelationIntervalsManager(messageC, messageA).GetBinaryInterval(1));
+            Assert.AreEqual(-1, testChain.GetRelationIntervalsManager(messageC, messageA).GetBinaryInterval(2));
+            Assert.AreEqual(2, testChain.GetRelationIntervalsManager(messageC, messageA).GetBinaryInterval(3));
+            Assert.AreEqual(-1, testChain.GetRelationIntervalsManager(messageC, messageA).GetBinaryInterval(4));
+            Assert.AreEqual(1, testChain.GetRelationIntervalsManager(messageC, messageA).GetBinaryInterval(5));
+            Assert.AreEqual(-1, testChain.GetRelationIntervalsManager(messageC, messageA).GetBinaryInterval(6));
         }
     }
 }

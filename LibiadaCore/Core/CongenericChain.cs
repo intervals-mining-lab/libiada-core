@@ -33,6 +33,14 @@ namespace LibiadaCore.Core
         private CongenericIntervalsManager intervalsManager;
 
         /// <summary>
+        /// Gets the occurrences count.
+        /// </summary>
+        public int OccurrencesCount
+        {
+            get { return building.Count; }
+        }
+
+        /// <summary>
         /// Initializes a new instance of the <see cref="CongenericChain"/> class.
         /// </summary>
         /// <param name="element">
@@ -156,6 +164,48 @@ namespace LibiadaCore.Core
             }
 
             return intervalsManager.GetIntervals(link);
+        }
+
+        /// <summary>
+        /// Возвращает позицию указанного по счёту вхождения указанного элемента.
+        /// </summary>
+        /// <param name="occurrence">
+        /// Номер вхождения элемента в полную цепь.
+        /// </param>
+        /// <returns>
+        /// The <see cref="int"/>.
+        /// </returns>
+        public int GetOccurrence(int occurrence)
+        {
+            if (occurrence - 1 >= building.Count)
+            {
+                return -1;
+            }
+
+            return building[occurrence - 1];
+        }
+
+        /// <summary>
+        /// Возвращает позицию первого вхождения указанного элемента 
+        /// после указанной позиции.
+        /// </summary>
+        /// <param name="from">
+        /// Начальная позиция для отсчёта.
+        /// </param>
+        /// <returns>
+        /// Номер позиции или -1, если элемент после указанной позиции не встречается.
+        /// </returns>
+        public int GetAfter(int from)
+        {
+            for (int i = 0; i < building.Count; i++)
+            {
+                if (building[i] > from)
+                {
+                    return building[i];
+                }
+            }
+
+            return -1;
         }
 
         /// <summary>

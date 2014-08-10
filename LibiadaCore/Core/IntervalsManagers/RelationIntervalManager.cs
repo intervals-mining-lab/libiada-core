@@ -1,6 +1,8 @@
 ﻿namespace LibiadaCore.Core.IntervalsManagers
 {
     using System;
+    using System.Runtime.InteropServices;
+    using System.Runtime.Remoting.Channels;
 
     using LibiadaCore.Core.Characteristics.Calculators;
 
@@ -11,33 +13,39 @@
     {
         private int[] building;
         private Chain sourceChain;
-        private int firstElement;
-        private int secondElement;
+        //private int firstElement;
+        //private int secondElement;
 
-        public RelationIntervalManager(Chain chain, int firstElement, int secondElement)
+        private CongenericChain firstChain;
+
+        private CongenericChain secondChain;
+
+        public RelationIntervalManager(Chain chain, IBaseObject firstElement, IBaseObject secondElement)
         {
             building = chain.Building;
             sourceChain = chain;
-            this.firstElement = firstElement;
-            this.secondElement = secondElement;
-            if (sourceChain.Alphabet.Cardinality <= firstElement || sourceChain.Alphabet.Cardinality <= secondElement)
+           // this.firstElement = sourceChain.Alphabet.IndexOf(firstElement);
+           // this.secondElement = sourceChain.Alphabet.IndexOf(secondElement);
+            firstChain = sourceChain.CongenericChain(firstElement);
+            secondChain = sourceChain.CongenericChain(secondElement);
+           /* if (sourceChain.Alphabet.Cardinality < firstElement || sourceChain.Alphabet.Cardinality < secondElement)
             {
                 throw new ArgumentException("Elements indexes are out of range.");
-            }
+            }*/
 
-            int count = GetPairsCount(firstElement, secondElement);
-            intervals = new int[count - 1];
-            FillIntervals();
+            int count = GetPairsCount();
+          //  intervals = new int[count - 1];
+          //  FillIntervals();
         }
 
-        private int GetPairsCount(int first, int second)
+        public int GetPairsCount()
         {
             var elementCounter = new ElementsCount();
-            var firstElementCount = (int)elementCounter.Calculate(sourceChain.CongenericChain(first), Link.None);
+            var firstElementCount = (int)elementCounter.Calculate(firstChain, Link.None);
             int pairs = 0;
             for (int i = 1; i <= firstElementCount; i++)
             {
-                int binaryInterval = GetBinaryInterval(first, second, i);
+                int binaryInterval = GetBinaryInterval(i);
                 if (binaryInterval > 0)
                 {
                     pairs++;
@@ -47,42 +55,67 @@
             return pairs;
         }
 
-        private int GetBinaryInterval(int first, int second, int entry)
+        /// <summary>
+        /// Возвращает i-ый интервал 
+        /// между указанными элементами 
+        /// в бинарно-однродной цепи
+        /// </summary>
+        /// <param name="occurrence">
+        /// номер вхождения начиная с 1
+        /// </param>
+        /// <returns>Длина интервала</returns>
+        public int GetBinaryInterval(int occurrence)
         {
-            int firstEntry = Get(first, entry);
-            if (firstEntry == -1)
+            int firstElementFirstOccurrence = firstChain.GetOccurrence(occurrence);
+            if (firstElementFirstOccurrence == -1)
             {
                 return -1;
             }
 
-            for (int i = firstEntry + 1; i < sourceChain.GetLength(); i++)
-            {
-                if (first.Equals(building[i]))
-                {
-                    return -1;
-                }
+            int secondElementOccurrence = secondChain.GetAfter(firstElementFirstOccurrence);
 
-                if (second.Equals(building[i]))
-                {
-                    return i - firstEntry;
-                }
+            if (secondElementOccurrence == -1)
+            {
+                return -1;
+            }
+
+            int firstElementSecondOccurrence = firstChain.GetOccurrence(occurrence + 1);
+
+            if (firstElementSecondOccurrence == -1)
+            {
+                firstElementSecondOccurrence = int.MaxValue;
+            }
+
+            if (secondElementOccurrence < firstElementSecondOccurrence)
+            {
+                return secondElementOccurrence - firstElementFirstOccurrence;
             }
 
             return -1;
         }
 
-        private int Get(int element, int entry)
+        public int Get(IBaseObject element, int entry)
         {
-            int entranceCount = 0;
-            for (int i = 0; i < building.Length; i++)
+            return sourceChain.Get(element, entry);
+        }
+
+        /// <summary>
+        /// Возвращает позицию первого вхождения указанного элемента 
+        /// после указанной позиции.
+        /// </summary>
+        /// <param name="from">
+        /// Начальная позиция для отсчёта.
+        /// </param>
+        /// <returns>
+        /// Номер позиции или -1, если элемент после указанной позиции не встречается.
+        /// </returns>
+        public int GetAfter(int from)
+        {
+            for (int i = from; i < sourceChain.GetLength(); i++)
             {
-                if (building[i].Equals(element))
+                if (sourceChain[i].Equals(secondChain.Element))
                 {
-                    entranceCount++;
-                    if (entranceCount == entry)
-                    {
-                        return i;
-                    }
+                    return i;
                 }
             }
 
@@ -92,31 +125,18 @@
         private void FillIntervals()
         {
             int counter = 0;
-            for (int i = 1; i <= firstElement; i++)
+            for (int i = 1; i <= firstChain.OccurrencesCount; i++)
             {
-                int binaryInterval = GetBinaryInterval(firstElement, secondElement, i);
+                int binaryInterval = GetBinaryInterval(i);
                 if (binaryInterval > 0)
                 {
                     building[counter++] = binaryInterval;
                 }
             }
 
-            Start = GetAfter(secondElement, Get(firstElement, 1));
-
+            // Start = GetAfter(1);
+            
             // End = GetAfter()
-        }
-
-        private int GetAfter(int element, int from)
-        {
-            for (int i = from; i < sourceChain.GetLength(); i++)
-            {
-                if (sourceChain[i].Equals(element))
-                {
-                    return i;
-                }
-            }
-
-            return -1;
         }
     }
 }

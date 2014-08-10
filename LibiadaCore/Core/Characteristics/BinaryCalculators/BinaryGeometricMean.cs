@@ -45,7 +45,7 @@ namespace LibiadaCore.Core.Characteristics.BinaryCalculators
             double intervals = 0;
             for (int i = 1; i <= firstElementCount; i++)
             {
-                int binaryInterval = chain.GetBinaryInterval(firstElement, secondElement, i);
+                int binaryInterval = chain.GetRelationIntervalsManager(firstElement, secondElement).GetBinaryInterval(i);
                 if (binaryInterval > 0)
                 {
                     intervals += Math.Log(binaryInterval, 2);
@@ -53,7 +53,7 @@ namespace LibiadaCore.Core.Characteristics.BinaryCalculators
             }
 
             // получаем количество пар
-            int pairs = chain.GetPairsCount(firstElement, secondElement);
+            int pairs = chain.GetRelationIntervalsManager(firstElement, secondElement).GetPairsCount();
             
             return Math.Pow(2, pairs == 0 ? 0 : intervals / pairs);
         }
