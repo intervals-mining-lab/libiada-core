@@ -11,7 +11,7 @@ namespace LibiadaCore.Tests.Core.Characteristics.Calculators
     /// The average remoteness dispersion test.
     /// </summary>
     [TestFixture]
-    public class AverageRemotenessDispersionTests : AbstractCalculatorTests
+    public class RemotenessDispersionTests : AbstractCalculatorTests
     {
         /// <summary>
         /// Tests initialization method.
@@ -19,7 +19,7 @@ namespace LibiadaCore.Tests.Core.Characteristics.Calculators
         [TestFixtureSetUp]
         public void Initialization()
         {
-            Calculator = new AverageRemotenessDispersion();
+            Calculator = new RemotenessDispersion();
         }
 
         /// <summary>

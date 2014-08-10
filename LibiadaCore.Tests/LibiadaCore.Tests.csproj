@@ -47,9 +47,9 @@
   <ItemGroup>
     <Compile Include="Core\Characteristics\Calculators\AlphabeticAverageRemotenessTests.cs" />
     <Compile Include="Core\Characteristics\Calculators\AlphabeticDepthTests.cs" />
-    <Compile Include="Core\Characteristics\Calculators\AverageRemotenessAsymmetryTests.cs" />
-    <Compile Include="Core\Characteristics\Calculators\AverageRemotenessDispersionTests.cs" />
-    <Compile Include="Core\Characteristics\Calculators\StandardDeviationTests.cs" />
+    <Compile Include="Core\Characteristics\Calculators\RemotenessAsymmetryTests.cs" />
+    <Compile Include="Core\Characteristics\Calculators\RemotenessDispersionTests.cs" />
+    <Compile Include="Core\Characteristics\Calculators\RemotenessStandardDeviationTests.cs" />
     <Compile Include="Misc\DataTransformers\DnaTransformerTests.cs" />
     <Compile Include="Misc\Iterators\CutRuleWithShiftedAndFixedStartTests.cs" />
     <Compile Include="Misc\Iterators\DiffCutterTests.cs" />

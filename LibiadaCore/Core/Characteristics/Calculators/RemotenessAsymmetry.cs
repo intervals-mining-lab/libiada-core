@@ -3,9 +3,9 @@
     using System;
 
     /// <summary>
-    /// Дисперсия средней удаленности.
+    /// Третий центральный момент или ассиметрия средних удаленностей.
     /// </summary>
-    public class AverageRemotenessDispersion : ICalculator
+    public class RemotenessAsymmetry : ICalculator
     {
         /// <summary>
         /// The average remoteness.
@@ -36,7 +36,7 @@
         /// </returns>
         public double Calculate(CongenericChain chain, Link link)
         {
-            throw new InvalidOperationException("Дисперсия средней удаленности вычисляется только для полных цепей.");
+            throw new InvalidOperationException("Ассиметрия средней удаленности вычисляется только для полных цепей.");
         }
 
         /// <summary>
@@ -56,12 +56,12 @@
             double result = 0;
             double g = averageRemoteness.Calculate(chain, link);
             double n = length.Calculate(chain, link);
-            
+
             for (int i = 0; i < chain.Alphabet.Cardinality; i++)
             {
                 double nj = elementsCount.Calculate(chain.CongenericChain(chain.Alphabet[i]), link);
                 double gj = averageRemoteness.Calculate(chain.CongenericChain(chain.Alphabet[i]), link);
-                result += nj / n * (gj - g) * (gj - g);
+                result += nj / n * (gj - g) * (gj - g) * (gj - g);
             }
 
             return result;
@@ -75,7 +75,7 @@
         /// </returns>
         public CharacteristicsEnum GetCharacteristicName()
         {
-            return CharacteristicsEnum.AverageRemotenessDispersion;
+            return CharacteristicsEnum.AverageRemotenessAsymmetry;
         }
     }
 }
