@@ -40,6 +40,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Core\AbstractChain.cs" />
+    <Compile Include="Core\Characteristics\Calculators\AverageRemotenessAsymmetry.cs" />
     <Compile Include="Core\Characteristics\Calculators\AverageRemotenessDispersion.cs" />
     <Compile Include="Core\Characteristics\Calculators\StandardDeviation.cs" />
     <Compile Include="Misc\ArrayManipulator.cs" />

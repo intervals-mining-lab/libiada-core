@@ -133,6 +133,11 @@ namespace LibiadaCore.Core.Characteristics
         /// <summary>
         /// СКО средней удаленности.
         /// </summary>
-        StandardDeviation
+        StandardDeviation,
+
+        /// <summary>
+        /// Третий центральный момент или ассиметрия средних удаленностей.
+        /// </summary>
+        AverageRemotenessAsymmetry
     }
 }
