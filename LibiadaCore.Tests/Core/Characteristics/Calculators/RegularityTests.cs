@@ -9,7 +9,7 @@ namespace LibiadaCore.Tests.Core.Characteristics.Calculators
     /// The regularity test.
     /// </summary>
     [TestFixture]
-    public class RegularityTests : AbstractCalculatorTests
+    public class RegularityTests : CalculatorsTests
     {
         /// <summary>
         /// Tests initialization method.

@@ -9,7 +9,7 @@ namespace LibiadaCore.Tests.Core.Characteristics.Calculators
     /// The arithmetic mean test.
     /// </summary>
     [TestFixture]
-    public class ArithmeticMeanTests : AbstractCalculatorTests
+    public class ArithmeticMeanTests : CalculatorsTests
     {
         /// <summary>
         /// Tests initialization method.

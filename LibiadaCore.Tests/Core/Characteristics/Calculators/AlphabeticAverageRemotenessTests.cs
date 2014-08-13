@@ -9,7 +9,7 @@
     /// The alphabetic average remoteness test.
     /// </summary>
     [TestFixture]
-    public class AlphabeticAverageRemotenessTests : AbstractCalculatorTests
+    public class AlphabeticAverageRemotenessTests : FullCalculatorsTests
     {
         /// <summary>
         /// Tests initialization method.
@@ -18,23 +18,6 @@
         public void Initialization()
         {
             Calculator = new AlphabeticAverageRemoteness();
-        }
-
-        /// <summary>
-        /// The alphabetic average remoteness test.
-        /// </summary>
-        /// <param name="index">
-        /// The index.
-        /// </param>
-        /// <param name="link">
-        /// The link.
-        /// </param>
-        /// <param name="value">
-        /// The value.
-        /// </param>
-        public void CongenericCalculationTest(int index, Link link, double value)
-        {
-            CongenericChainCharacteristicTest(index, link, value);
         }
 
         /// <summary>

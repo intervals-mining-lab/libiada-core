@@ -49,16 +49,5 @@ namespace LibiadaCore.Core.Characteristics.Calculators
         {
             return geometricMean.Calculate(chain, link) / arithmeticMean.Calculate(chain, link);
         }
-
-        /// <summary>
-        /// Returns enum of this characteristic.
-        /// </summary>
-        /// <returns>
-        /// The <see cref="CharacteristicsEnum"/>.
-        /// </returns>
-        public CharacteristicsEnum GetCharacteristicName()
-        {
-            return CharacteristicsEnum.Periodicity;
-        }
     }
 }

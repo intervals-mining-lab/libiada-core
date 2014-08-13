@@ -9,7 +9,7 @@
     /// The alphabetic depth test.
     /// </summary>
     [TestFixture]
-    public class AlphabeticDepthTests : AbstractCalculatorTests
+    public class AlphabeticDepthTests : FullCalculatorsTests
     {
         /// <summary>
         /// Tests initialization method.
@@ -18,23 +18,6 @@
         public void Initialization()
         {
             Calculator = new AlphabeticDepth();
-        }
-
-        /// <summary>
-        /// The alphabetic depth test.
-        /// </summary>
-        /// <param name="index">
-        /// The index.
-        /// </param>
-        /// <param name="link">
-        /// Redundant parameter, not used in calculations.
-        /// </param>
-        /// <param name="value">
-        /// The value.
-        /// </param>
-        public void CongenericCalculationTest(int index, Link link, double value)
-        {
-            CongenericChainCharacteristicTest(index, link, value);
         }
 
         /// <summary>

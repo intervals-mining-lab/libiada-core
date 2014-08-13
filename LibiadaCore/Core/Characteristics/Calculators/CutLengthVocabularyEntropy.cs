@@ -10,7 +10,7 @@ namespace LibiadaCore.Core.Characteristics.Calculators
         /// <summary>
         /// Cut length calculator.
         /// </summary>
-        private readonly CutLength cutLength = new CutLength();
+        private readonly ICalculator cutLength = new CutLength();
 
         /// <summary>
         /// Calculation method.
@@ -44,17 +44,6 @@ namespace LibiadaCore.Core.Characteristics.Calculators
         public double Calculate(Chain chain, Link link)
         {
             return Math.Log(chain.GetLength() - cutLength.Calculate(chain, link) + 1, 2);
-        }
-
-        /// <summary>
-        /// Returns enum of this characteristic.
-        /// </summary>
-        /// <returns>
-        /// The <see cref="CharacteristicsEnum"/>.
-        /// </returns>
-        public CharacteristicsEnum GetCharacteristicName()
-        {
-            return CharacteristicsEnum.CutLengthVocabularyEntropy;
         }
     }
 }

@@ -9,7 +9,7 @@ namespace LibiadaCore.Tests.Core.Characteristics.Calculators
     /// The identification information test.
     /// </summary>
     [TestFixture]
-    public class IdentificationInformationTests : AbstractCalculatorTests
+    public class IdentificationInformationTests : CalculatorsTests
     {
         /// <summary>
         /// Tests initialization method.

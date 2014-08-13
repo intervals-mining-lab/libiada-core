@@ -9,7 +9,7 @@ namespace LibiadaCore.Tests.Core.Characteristics.Calculators
     /// The cut length test.
     /// </summary>
     [TestFixture]
-    public class CutLengthTests : AbstractCalculatorTests
+    public class CutLengthTests : CalculatorsTests
     {
         /// <summary>
         /// Tests initialization method.

@@ -9,7 +9,7 @@ namespace LibiadaCore.Tests.Core.Characteristics.Calculators
     /// The cut length vocabulary entropy test.
     /// </summary>
     [TestFixture]
-    public class CutLengthVocabularyEntropyTests : AbstractCalculatorTests
+    public class CutLengthVocabularyEntropyTests : CalculatorsTests
     {
         /// <summary>
         /// Tests initialization method.

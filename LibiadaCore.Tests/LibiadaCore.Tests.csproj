@@ -47,6 +47,7 @@
   <ItemGroup>
     <Compile Include="Core\Characteristics\Calculators\AlphabeticAverageRemotenessTests.cs" />
     <Compile Include="Core\Characteristics\Calculators\AlphabeticDepthTests.cs" />
+    <Compile Include="Core\Characteristics\Calculators\CalculatorsTests.cs" />
     <Compile Include="Core\Characteristics\Calculators\RemotenessAsymmetryTests.cs" />
     <Compile Include="Core\Characteristics\Calculators\RemotenessDispersionTests.cs" />
     <Compile Include="Core\Characteristics\Calculators\RemotenessStandardDeviationTests.cs" />
@@ -70,7 +71,7 @@
     <Compile Include="Core\Characteristics\BinaryCalculators\NormalizedPartialDependenceCoefficientTests.cs" />
     <Compile Include="Core\Characteristics\BinaryCalculators\PartialDependenceCoefficientTests.cs" />
     <Compile Include="Core\Characteristics\BinaryCalculators\RedundancyTests.cs" />
-    <Compile Include="Core\Characteristics\Calculators\AbstractCalculatorTests.cs" />
+    <Compile Include="Core\Characteristics\Calculators\FullCalculatorsTests.cs" />
     <Compile Include="Core\ChainsStorage.cs" />
     <Compile Include="Core\Characteristics\Calculators\AlphabetCardinalityTests.cs" />
     <Compile Include="Core\Characteristics\Calculators\ArithmeticMeanTests.cs" />

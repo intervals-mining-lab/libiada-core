@@ -9,7 +9,7 @@ namespace LibiadaCore.Tests.Core.Characteristics.Calculators
     /// The periodicity test.
     /// </summary>
     [TestFixture]
-    public class PeriodicityTests : AbstractCalculatorTests
+    public class PeriodicityTests : CalculatorsTests
     {
         /// <summary>
         /// Tests initialization method.

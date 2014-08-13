@@ -37,24 +37,13 @@ namespace LibiadaCore.Core.Characteristics.Calculators
         /// </returns>
         public double Calculate(Chain chain, Link link)
         {
-            int count = 0;
+            double count = 0;
             for (int i = 0; i < chain.Alphabet.Cardinality; i++)
             {
-                count += (int)Calculate(chain.CongenericChain(i), link);
+                count += Calculate(chain.CongenericChain(i), link);
             }
 
-            return count;
-        }
-
-        /// <summary>
-        /// Returns enum of this characteristic.
-        /// </summary>
-        /// <returns>
-        /// The <see cref="CharacteristicsEnum"/>.
-        /// </returns>
-        public CharacteristicsEnum GetCharacteristicName()
-        {
-            return CharacteristicsEnum.Count;
+            return (int)count;
         }
     }
 }

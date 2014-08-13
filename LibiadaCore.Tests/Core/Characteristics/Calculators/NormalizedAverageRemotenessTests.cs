@@ -11,7 +11,7 @@ namespace LibiadaCore.Tests.Core.Characteristics.Calculators
     /// The normalized average remoteness test.
     /// </summary>
     [TestFixture]
-    public class NormalizedAverageRemotenessTests : AbstractCalculatorTests
+    public class NormalizedAverageRemotenessTests : CalculatorsTests
     {
         /// <summary>
         /// Tests initialization method.

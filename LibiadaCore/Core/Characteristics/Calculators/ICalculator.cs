@@ -1,48 +1,9 @@
-namespace LibiadaCore.Core.Characteristics.Calculators
+п»їnamespace LibiadaCore.Core.Characteristics.Calculators
 {
     /// <summary>
-    /// Интерфейс калькулятора
+    /// The Universal Calculator interface.
     /// </summary>
-    public interface ICalculator
+    public interface ICalculator : IFullCalculator, ICongenericCalculator
     {
-        /// <summary>
-        /// Вычисляет и возвращает значение характеристики 
-        /// для однородной цеочки.
-        /// </summary>
-        /// <param name="chain">
-        /// Source sequence.
-        /// </param>
-        /// <param name="link">
-        /// Link of intervals in chain.
-        /// May be redundant for some characteristics.
-        /// </param>
-        /// <returns>
-        /// Characteristic value as <see cref="double"/>.
-        /// </returns>
-        double Calculate(CongenericChain chain, Link link);
-
-        /// <summary>
-        /// Вычисляет и возвращает значение характеристики 
-        /// для полной неоднородной цеочки.
-        /// </summary>
-        /// <param name="chain">
-        /// Source sequence.
-        /// </param>
-        /// <param name="link">
-        /// Link of intervals in chain.
-        /// May be redundant for some characteristics.
-        /// </param>
-        /// <returns>
-        /// Characteristic value as <see cref="double"/>.
-        /// </returns>
-        double Calculate(Chain chain, Link link);
-
-        /// <summary>
-        /// Returns enum of this characteristic.
-        /// </summary>
-        /// <returns>
-        /// The <see cref="CharacteristicsEnum"/>.
-        /// </returns>
-        CharacteristicsEnum GetCharacteristicName();
     }
 }

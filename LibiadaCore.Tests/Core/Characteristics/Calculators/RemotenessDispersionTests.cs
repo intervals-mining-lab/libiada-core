@@ -11,7 +11,7 @@ namespace LibiadaCore.Tests.Core.Characteristics.Calculators
     /// The average remoteness dispersion test.
     /// </summary>
     [TestFixture]
-    public class RemotenessDispersionTests : AbstractCalculatorTests
+    public class RemotenessDispersionTests : FullCalculatorsTests
     {
         /// <summary>
         /// Tests initialization method.
@@ -34,14 +34,6 @@ namespace LibiadaCore.Tests.Core.Characteristics.Calculators
         /// <param name="value">
         /// The value.
         /// </param>
-
-        [ExpectedException(typeof(InvalidOperationException))]
-        [TestCase(0, Link.Both, 0)]
-        public void CongenericCalculationTest(int index, Link link, double value)
-        {
-            CongenericChainCharacteristicTest(index, link, value);
-        }
-
         [TestCase(0, Link.None, 0.0704)]
         [TestCase(0, Link.Start, 0.0168)]
         [TestCase(0, Link.End, 0.0169)]

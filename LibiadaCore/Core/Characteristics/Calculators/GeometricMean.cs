@@ -60,16 +60,5 @@ namespace LibiadaCore.Core.Characteristics.Calculators
             // возвращаемое значение делогарифмируем
             return Math.Pow(2, depth / nj);
         }
-
-        /// <summary>
-        /// Returns enum of this characteristic.
-        /// </summary>
-        /// <returns>
-        /// The <see cref="CharacteristicsEnum"/>.
-        /// </returns>
-        public CharacteristicsEnum GetCharacteristicName()
-        {
-            return CharacteristicsEnum.GeometricMean;
-        }
     }
 }

@@ -9,7 +9,7 @@
     /// The intervals sum test.
     /// </summary>
     [TestFixture]
-    public class IntervalsSumTests : AbstractCalculatorTests
+    public class IntervalsSumTests : CalculatorsTests
     {
         /// <summary>
         /// The set up.

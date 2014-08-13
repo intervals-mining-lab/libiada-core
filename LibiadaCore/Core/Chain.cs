@@ -3,7 +3,6 @@ namespace LibiadaCore.Core
     using System.Collections.Generic;
     using System.Linq;
 
-    using LibiadaCore.Core.Characteristics.Calculators;
     using LibiadaCore.Core.IntervalsManagers;
     using LibiadaCore.Core.SimpleTypes;
 

@@ -15,7 +15,7 @@ namespace LibiadaCore.Core.Characteristics.Calculators
         /// <summary>
         /// Alphabet cardinality calculator.
         /// </summary>
-        private readonly ICalculator alphabetCardinality = new AlphabetCardinality();
+        private readonly IFullCalculator alphabetCardinality = new AlphabetCardinality();
 
         /// <summary>
         /// Calculation method.
@@ -51,17 +51,6 @@ namespace LibiadaCore.Core.Characteristics.Calculators
             double g = averageRemoteness.Calculate(chain, link);
             double max = Math.Log(alphabetCardinality.Calculate(chain, link), 2);
             return g - max;
-        }
-
-        /// <summary>
-        /// Returns enum of this characteristic.
-        /// </summary>
-        /// <returns>
-        /// The <see cref="CharacteristicsEnum"/>.
-        /// </returns>
-        public CharacteristicsEnum GetCharacteristicName()
-        {
-            return CharacteristicsEnum.NormalizedAverageRemoteness;
         }
     }
 }

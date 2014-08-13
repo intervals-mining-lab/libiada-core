@@ -48,16 +48,5 @@ namespace LibiadaCore.Core.Characteristics.Calculators
 
             return result > 1 ? 1 : result;
         }
-
-        /// <summary>
-        /// Returns enum of this characteristic.
-        /// </summary>
-        /// <returns>
-        /// The <see cref="CharacteristicsEnum"/>.
-        /// </returns>
-        public CharacteristicsEnum GetCharacteristicName()
-        {
-            return CharacteristicsEnum.Probability;
-        }
     }
 }

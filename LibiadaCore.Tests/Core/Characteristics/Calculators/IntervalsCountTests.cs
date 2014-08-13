@@ -9,7 +9,7 @@ namespace LibiadaCore.Tests.Core.Characteristics.Calculators
     /// The intervals count test.
     /// </summary>
     [TestFixture]
-    public class IntervalsCountTests : AbstractCalculatorTests
+    public class IntervalsCountTests : CalculatorsTests
     {
         /// <summary>
         /// Tests initialization method.

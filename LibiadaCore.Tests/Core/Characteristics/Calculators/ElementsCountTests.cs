@@ -9,7 +9,7 @@ namespace LibiadaCore.Tests.Core.Characteristics.Calculators
     /// The elements count test.
     /// </summary>
     [TestFixture]
-    public class ElementsCountTests : AbstractCalculatorTests
+    public class ElementsCountTests : CalculatorsTests
     {
         /// <summary>
         /// Tests initialization method.

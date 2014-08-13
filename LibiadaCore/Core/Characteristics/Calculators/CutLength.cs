@@ -42,17 +42,6 @@ namespace LibiadaCore.Core.Characteristics.Calculators
         }
 
         /// <summary>
-        /// Returns enum of this characteristic.
-        /// </summary>
-        /// <returns>
-        /// The <see cref="CharacteristicsEnum"/>.
-        /// </returns>
-        public CharacteristicsEnum GetCharacteristicName()
-        {
-            return CharacteristicsEnum.CutLength;
-        }
-
-        /// <summary>
         /// The cut common.
         /// </summary>
         /// <param name="chain">

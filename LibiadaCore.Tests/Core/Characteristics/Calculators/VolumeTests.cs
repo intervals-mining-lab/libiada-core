@@ -9,7 +9,7 @@
     /// The volume test.
     /// </summary>
     [TestFixture]
-    public class VolumeTests : AbstractCalculatorTests
+    public class VolumeTests : CalculatorsTests
     {
         /// <summary>
         /// Tests initialization method.

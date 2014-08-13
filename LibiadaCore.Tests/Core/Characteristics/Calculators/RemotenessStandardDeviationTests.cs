@@ -11,7 +11,7 @@ namespace LibiadaCore.Tests.Core.Characteristics.Calculators
     /// Standard Deviation test.
     /// </summary>
     [TestFixture]
-    public class RemotenessStandardDeviationTests : AbstractCalculatorTests
+    public class RemotenessStandardDeviationTests : FullCalculatorsTests
     {
         /// <summary>
         /// Tests initialization method.
@@ -34,14 +34,6 @@ namespace LibiadaCore.Tests.Core.Characteristics.Calculators
         /// <param name="value">
         /// The value.
         /// </param>
-
-        [ExpectedException(typeof(InvalidOperationException))]
-        [TestCase(0, Link.Both, 0)]
-        public void CongenericCalculationTest(int index, Link link, double value)
-        {
-            CongenericChainCharacteristicTest(index, link, value);
-        }
-
         [TestCase(0, Link.None, 0.2654)]
         [TestCase(0, Link.Start, 0.1296)]
         [TestCase(0, Link.End, 0.1298)]

@@ -1,11 +1,9 @@
 ﻿namespace LibiadaCore.Core.Characteristics.Calculators
 {
-    using System;
-
     /// <summary>
     /// Третий центральный момент или ассиметрия средних удаленностей.
     /// </summary>
-    public class RemotenessAsymmetry : ICalculator
+    public class RemotenessAsymmetry : IFullCalculator
     {
         /// <summary>
         /// The average remoteness.
@@ -34,23 +32,6 @@
         /// <returns>
         /// Average remoteness dispersion <see cref="double"/> value.
         /// </returns>
-        public double Calculate(CongenericChain chain, Link link)
-        {
-            throw new InvalidOperationException("Ассиметрия средней удаленности вычисляется только для полных цепей.");
-        }
-
-        /// <summary>
-        /// Calculation method.
-        /// </summary>
-        /// <param name="chain">
-        /// Source sequence.
-        /// </param>
-        /// <param name="link">
-        /// Link of intervals in chain.
-        /// </param>
-        /// <returns>
-        /// Average remoteness dispersion <see cref="double"/> value.
-        /// </returns>
         public double Calculate(Chain chain, Link link)
         {
             double result = 0;
@@ -65,17 +46,6 @@
             }
 
             return result;
-        }
-
-        /// <summary>
-        /// Returns enum of this characteristic.
-        /// </summary>
-        /// <returns>
-        /// The <see cref="CharacteristicsEnum"/>.
-        /// </returns>
-        public CharacteristicsEnum GetCharacteristicName()
-        {
-            return CharacteristicsEnum.AverageRemotenessAsymmetry;
         }
     }
 }

@@ -9,7 +9,7 @@ namespace LibiadaCore.Tests.Core.Characteristics.Calculators
     /// The geometric mean test.
     /// </summary>
     [TestFixture]
-    public class GeometricMeanTests : AbstractCalculatorTests
+    public class GeometricMeanTests : CalculatorsTests
     {
         /// <summary>
         /// Tests initialization method.

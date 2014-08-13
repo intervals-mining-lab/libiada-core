@@ -22,7 +22,7 @@ namespace BuildingsIterator
         /// <summary>
         /// The characteristics names.
         /// </summary>
-        private readonly List<CharacteristicsEnum> characteristicsNames;
+        private readonly List<string> characteristicsNames;
 
         /// <summary>
         /// The characters.
@@ -42,10 +42,10 @@ namespace BuildingsIterator
         {
             this.chains = chains;
             this.characteristics = characters;
-            this.characteristicsNames = new List<CharacteristicsEnum>();
+            this.characteristicsNames = new List<string>();
             for (int i = 0; i < characters.Count; i++)
             {
-                this.characteristicsNames.Add(characters[i].Calc.GetCharacteristicName());
+                this.characteristicsNames.Add(characters[i].Calc.GetType().ToString());
             }
         }
 
@@ -65,7 +65,7 @@ namespace BuildingsIterator
         /// </summary>
         /// <param name="characteristics">Характеристика</param>
         /// <returns>Выборка</returns>
-        public Picks GetPicks(CharacteristicsEnum characteristics)
+        public Picks GetPicks(string characteristics)
         {
             var picks = new Picks(this.GetCharacteristicName(this.characteristicsNames.IndexOf(characteristics)));
             IDictionaryEnumerator iterator = this.chains.GetEnumerator();

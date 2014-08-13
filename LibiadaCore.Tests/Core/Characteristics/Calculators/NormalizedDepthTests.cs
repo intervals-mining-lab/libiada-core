@@ -9,7 +9,7 @@ namespace LibiadaCore.Tests.Core.Characteristics.Calculators
     /// The normalized depth test.
     /// </summary>
     [TestFixture]
-    public class NormalizedDepthTests : AbstractCalculatorTests
+    public class NormalizedDepthTests : CalculatorsTests
     {
         /// <summary>
         /// Tests initialization method.

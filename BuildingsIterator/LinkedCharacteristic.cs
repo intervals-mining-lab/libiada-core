@@ -11,7 +11,7 @@ namespace BuildingsIterator
         /// <summary>
         /// The calc.
         /// </summary>
-        private readonly ICalculator calc;
+        private readonly IFullCalculator calc;
 
         /// <summary>
         /// The link.
@@ -23,7 +23,7 @@ namespace BuildingsIterator
         /// </summary>
         /// <param name="calc">Калюкулятор характеристики цепи</param>
         /// <param name="link">Привязка</param>
-        public LinkedCharacteristic(ICalculator calc, Link link)
+        public LinkedCharacteristic(IFullCalculator calc, Link link)
         {
             this.calc = calc;
             this.link = link;
@@ -33,7 +33,7 @@ namespace BuildingsIterator
         /// Конструктор
         /// </summary>
         /// <param name="calc">Калюкулятор характеристики цепи</param>
-        public LinkedCharacteristic(ICalculator calc)
+        public LinkedCharacteristic(IFullCalculator calc)
         {
             this.calc = calc;
             this.link = Link.Start;
@@ -42,7 +42,7 @@ namespace BuildingsIterator
         /// <summary>
         /// Калькулятор характеристики
         /// </summary>
-        public ICalculator Calc
+        public IFullCalculator Calc
         {
             get
             {

@@ -40,6 +40,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Core\AbstractChain.cs" />
+    <Compile Include="Core\Characteristics\Calculators\ICalculator.cs" />
+    <Compile Include="Core\Characteristics\Calculators\ICongenericCalculator.cs" />
     <Compile Include="Core\Characteristics\Calculators\RemotenessAsymmetry.cs" />
     <Compile Include="Core\Characteristics\Calculators\RemotenessDispersion.cs" />
     <Compile Include="Core\Characteristics\Calculators\RemotenessStandardDeviation.cs" />
@@ -92,7 +94,7 @@
     <Compile Include="Core\Characteristics\Calculators\DescriptiveInformation.cs" />
     <Compile Include="Core\Characteristics\Calculators\Depth.cs" />
     <Compile Include="Core\Characteristics\Calculators\GeometricMean.cs" />
-    <Compile Include="Core\Characteristics\Calculators\ICalculator.cs" />
+    <Compile Include="Core\Characteristics\Calculators\IFullCalculator.cs" />
     <Compile Include="Core\Characteristics\Calculators\IdentificationInformation.cs" />
     <Compile Include="Core\Characteristics\Calculators\IntervalsCount.cs" />
     <Compile Include="Core\Characteristics\Calculators\IntervalsSum.cs" />
@@ -104,7 +106,6 @@
     <Compile Include="Core\Characteristics\Calculators\Probability.cs" />
     <Compile Include="Core\Characteristics\Calculators\Regularity.cs" />
     <Compile Include="Core\Characteristics\Calculators\Volume.cs" />
-    <Compile Include="Core\Characteristics\CharacteristicsEnum.cs" />
     <Compile Include="Core\Characteristics\CalculatorsFactory.cs" />
     <Compile Include="Core\IBaseObject.cs" />
     <Compile Include="Core\IntervalsManagers\CongenericIntervalsManager.cs" />

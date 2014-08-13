@@ -1,9 +1,5 @@
 ﻿namespace LibiadaCore.Core.IntervalsManagers
 {
-    using System;
-    using System.Runtime.InteropServices;
-    using System.Runtime.Remoting.Channels;
-
     using LibiadaCore.Core.Characteristics.Calculators;
 
     /// <summary>

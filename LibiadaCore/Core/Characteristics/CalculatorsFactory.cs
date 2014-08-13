@@ -10,226 +10,47 @@ namespace LibiadaCore.Core.Characteristics
     /// </summary>
     public static class CalculatorsFactory
     {
-        /// <summary>
-        /// Вероятность (частота).
-        /// </summary>
-        public static ICalculator P
-        {
-            get { return new Probability(); }
-        }
-
-        /// <summary>
-        /// Количество интервалов в зависимости от привязки.
-        /// </summary>
-        public static ICalculator IntervalsCount
-        {
-            get { return new IntervalsCount(); }
-        }
-
-        /// <summary>
-        /// Длина обрезания по Садовскому.
-        /// </summary>
-        public static ICalculator CutLength
-        {
-            get { return new CutLength(); }
-        }
-
-        /// <summary>
-        /// Глубина.
-        /// </summary>
-        public static ICalculator G
-        {
-            get { return new Depth(); }
-        }
-
-        /// <summary>
-        /// Алфавиная Глубина.
-        /// </summary>
-        public static ICalculator AlphabeticDepth
-        {
-            get { return new AlphabeticDepth(); }
-        }
-
-        /// <summary>
-        /// Количество элементов.
-        /// Для однородной цепи это количество непустых элементов.
-        /// Для неоднородной цепи это её длина.
-        /// </summary>
-        public static ICalculator n
-        {
-            get { return new ElementsCount(); }
-        }
-
-        /// <summary>
-        /// Среднегеометрический интервал.
-        /// </summary>
-        public static ICalculator deltaG
-        {
-            get { return new GeometricMean(); }
-        }
-
-        /// <summary>
-        /// Длинна цепи.
-        /// </summary>
-        public static ICalculator Length
-        {
-            get { return new Length(); }
-        }
-
-        /// <summary>
-        /// Длинна как сумма длин интервалов.
-        /// </summary>
-        public static ICalculator IntervalsSum
-        {
-            get { return new IntervalsSum(); }
-        }
-
-        /// <summary>
-        /// Среднее арифметическое значение длин интервалов.
-        /// </summary>
-        public static ICalculator deltaA
-        {
-            get { return new ArithmeticMean(); }
-        }
-
-        /// <summary>
-        /// Число описательных информаций.
-        /// </summary>
-        public static ICalculator D
-        {
-            get { return new DescriptiveInformation(); }
-        }
-
-        /// <summary>
-        /// Регулярность.
-        /// </summary>
-        public static ICalculator r
-        {
-            get { return new Regularity(); }
-        }
-
-        /// <summary>
-        /// Средняя удалённость.
-        /// </summary>
-        public static ICalculator g
-        {
-            get { return new AverageRemoteness(); }
-        }
-
-        /// <summary>
-        /// Алфавитная удалённость.
-        /// </summary>
-        public static ICalculator AlphabeticAverageRemoteness
-        {
-            get { return new AlphabeticAverageRemoteness(); }
-        }
-
-        /// <summary>
-        /// Количество идентифицирующих информаций приходящихся на одно значащее сообщение.
-        /// Энтропия, количество информации.
-        /// </summary>
-        public static ICalculator H
-        {
-            get { return new IdentificationInformation(); }
-        }
-
-        /// <summary>
-        /// Объём цепи. Произведение длин всех её интервалов.
-        /// </summary>
-        public static ICalculator V
-        {
-            get { return new Volume(); }
-        }
-
-        /// <summary>
-        /// Мощность алфавита.
-        /// </summary>
-        public static ICalculator Cardinality
-        {
-            get { return new AlphabetCardinality(); }
-        }
-
-        /// <summary>
-        /// Глубина приходящаяся на одно сообщение.
-        /// </summary>
-        public static ICalculator nG
-        {
-            get { return new NormalizedDepth(); }
-        }
-
-        /// <summary>
-        /// Периодичность.
-        /// </summary>
-        public static ICalculator t
-        {
-            get { return new Periodicity(); }
-        }
-
-        /// <summary>
-        /// Энтропия словаря по Садовскому.
-        /// </summary>
-        public static ICalculator CutLenVocEntropy
-        {
-            get { return new CutLengthVocabularyEntropy(); }
-        }
-
-        public static RemotenessDispersion remotenessDispersion
-        {
-            get
-            {
-                return new RemotenessDispersion();
-            }
-        }
-
-        public static RemotenessStandardDeviation remotenessStandardDeviation
-        {
-            get
-            {
-                return new RemotenessStandardDeviation();
-            }
-        }
-        public static RemotenessAsymmetry remotenessAsymmetry
-        {
-            get
-            {
-                return new RemotenessAsymmetry();
-            }
-        }
 
 
         /// <summary>
         /// Список калькуляторов характеристик.
         /// </summary>
-        public static List<ICalculator> List
-        {
-            get
-            {
-                List<ICalculator> temp = new List<ICalculator>
-                    {
-                        D,
-                        deltaA,
-                        deltaG,
-                        g,
-                        G,
-                        H,
-                        IntervalsCount,
-                        Length,
-                        n,
-                        P,
-                        r,
-                        Cardinality,
-                        nG,
-                        t,
-                        AlphabeticAverageRemoteness,
-                        AlphabeticDepth,
-                        remotenessDispersion,
-                        remotenessStandardDeviation,
-                        remotenessAsymmetry
-                    };
+        private static readonly List<Type> Calculators = new List<Type>
+                                                            {
+                                                                typeof(ArithmeticMean),
+                                                                typeof(AverageRemoteness),
+                                                                typeof(CutLength),
+                                                                typeof(CutLengthVocabularyEntropy),
+                                                                typeof(Depth),
+                                                                typeof(DescriptiveInformation),
+                                                                typeof(ElementsCount),
+                                                                typeof(GeometricMean),
+                                                                typeof(IdentificationInformation),
+                                                                typeof(IntervalsCount),
+                                                                typeof(IntervalsSum),
+                                                                typeof(Length),
+                                                                typeof(NormalizedAverageRemoteness),
+                                                                typeof(NormalizedDepth),
+                                                                typeof(Periodicity),
+                                                                typeof(PhantomMessagesCount),
+                                                                typeof(Probability),
+                                                                typeof(Regularity),
+                                                                typeof(Volume)
+                                                            };
 
-                return temp;
-            }
-        }
+        /// <summary>
+        /// The full calculators.
+        /// </summary>
+        private static readonly List<Type> FullCalculators = new List<Type>
+                                                            {
+                                                                typeof(AlphabetCardinality),
+                                                                typeof(AlphabeticAverageRemoteness),
+                                                                typeof(AlphabeticDepth),
+                                                                typeof(AverageWordLength),
+                                                                typeof(RemotenessAsymmetry),
+                                                                typeof(RemotenessDispersion),
+                                                                typeof(RemotenessStandardDeviation)
+                                                            };
 
         /// <summary>
         /// The create.
@@ -238,17 +59,25 @@ namespace LibiadaCore.Core.Characteristics
         /// The type.
         /// </param>
         /// <returns>
-        /// The <see cref="ICalculator"/>.
+        /// The <see cref="IFullCalculator"/>.
         /// </returns>
         /// <exception cref="ArgumentException">
         /// </exception>
-        public static ICalculator Create(string type)
+        public static IFullCalculator CreateFullCalculator(string type)
         {
-            foreach (ICalculator calculator in List)
+            foreach (var calculator in Calculators)
             {
-                if (type == calculator.GetType().Name)
+                if (type == calculator.Name)
                 {
-                    return calculator;
+                    return (IFullCalculator)Activator.CreateInstance(calculator);
+                }
+            }
+
+            foreach (var calculator in FullCalculators)
+            {
+                if (type == calculator.Name)
+                {
+                    return (IFullCalculator)Activator.CreateInstance(calculator);
                 }
             }
 
@@ -262,17 +91,17 @@ namespace LibiadaCore.Core.Characteristics
         /// The type.
         /// </param>
         /// <returns>
-        /// The <see cref="ICalculator"/>.
+        /// The <see cref="IFullCalculator"/>.
         /// </returns>
         /// <exception cref="ArgumentException">
         /// </exception>
-        public static ICalculator Create(CharacteristicsEnum type)
+        public static ICongenericCalculator CreateCongenericCalculator(string type)
         {
-            foreach (ICalculator calculator in List)
+            foreach (var calculator in Calculators)
             {
-                if (type == calculator.GetCharacteristicName())
+                if (type == calculator.Name)
                 {
-                    return calculator;
+                    return (ICongenericCalculator)Activator.CreateInstance(calculator);
                 }
             }
 

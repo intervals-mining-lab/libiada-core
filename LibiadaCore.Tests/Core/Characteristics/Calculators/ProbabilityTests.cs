@@ -9,7 +9,7 @@ namespace LibiadaCore.Tests.Core.Characteristics.Calculators
     /// The probability test.
     /// </summary>
     [TestFixture]
-    public class ProbabilityTests : AbstractCalculatorTests
+    public class ProbabilityTests : CalculatorsTests
     {
         /// <summary>
         /// Tests initialization method.

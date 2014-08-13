@@ -8,9 +8,9 @@
     using NUnit.Framework;
 
     /// <summary>
-    /// The abstract calculator test.
+    /// The calculators tests.
     /// </summary>
-    public abstract class AbstractCalculatorTests
+    public abstract class CalculatorsTests
     {
         /// <summary>
         /// The congeneric chains.
@@ -28,6 +28,23 @@
         protected ICalculator Calculator { private get; set; }
 
         /// <summary>
+        /// The congeneric chain characteristic test.
+        /// </summary>
+        /// <param name="index">
+        /// The index.
+        /// </param>
+        /// <param name="link">
+        /// The link.
+        /// </param>
+        /// <param name="value">
+        /// The value.
+        /// </param>
+        protected void CongenericChainCharacteristicTest(int index, Link link, double value)
+        {
+            Assert.AreEqual(value, Calculator.Calculate(CongenericChains[index], link), 0.0001);
+        }
+
+        /// <summary>
         /// The chain characteristic test.
         /// </summary>
         /// <param name="index">
@@ -43,23 +60,6 @@
         {
             Chains[index].FillIntervalManagers();
             Assert.AreEqual(value, Calculator.Calculate(Chains[index], link), 0.0001);
-        }
-
-        /// <summary>
-        /// The congeneric chain characteristic test.
-        /// </summary>
-        /// <param name="index">
-        /// The index.
-        /// </param>
-        /// <param name="link">
-        /// The link.
-        /// </param>
-        /// <param name="value">
-        /// The value.
-        /// </param>
-        protected void CongenericChainCharacteristicTest(int index, Link link, double value)
-        {
-            Assert.AreEqual(value, Calculator.Calculate(CongenericChains[index], link), 0.0001);
         }
     }
 }

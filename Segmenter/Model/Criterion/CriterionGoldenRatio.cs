@@ -2,7 +2,6 @@
 {
     using System;
     using System.Collections.Generic;
-    using System.Linq;
 
     using Segmenter.Base.Collectors;
     using Segmenter.Base.Sequences;

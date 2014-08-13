@@ -53,16 +53,5 @@ namespace LibiadaCore.Core.Characteristics.Calculators
             double intervalsCount = counter.Calculate(chain, link);
             return sum / intervalsCount;
         }
-
-        /// <summary>
-        /// Returns enum of this characteristic.
-        /// </summary>
-        /// <returns>
-        /// The <see cref="CharacteristicsEnum"/>.
-        /// </returns>
-        public CharacteristicsEnum GetCharacteristicName()
-        {
-            return CharacteristicsEnum.ArithmeticMean;
-        }
     }
 }
