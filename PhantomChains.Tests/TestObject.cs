@@ -38,32 +38,31 @@ namespace PhantomChains.Tests
         /// </summary>
         public TestObject()
         {
-            this.chain = new BaseChain(10);
-            this.chain2 = new BaseChain(5);
+            chain = new BaseChain(10);
+            chain2 = new BaseChain(5);
 
-            // M1 = new ValueChar('a');
-            this.alpha.Add((ValueChar)'a');
-            this.alpha.Add((ValueChar)'b');
-            this.alpha.Add((ValueChar)'c');
-            this.pm1 = new ValuePhantom { this.alpha[2], this.alpha[1] };
-            this.pm2 = new ValuePhantom { this.alpha[0] };
+            alpha.Add((ValueChar)'a');
+            alpha.Add((ValueChar)'b');
+            alpha.Add((ValueChar)'c');
+            pm1 = new ValuePhantom { alpha[2], alpha[1] };
+            pm2 = new ValuePhantom { alpha[0] };
+            
+            chain.Add(PhantomMessageBc, 0);
+            chain.Add(PhantomMessageA, 1);
+            chain.Add(PhantomMessageA, 2);
+            chain.Add(PhantomMessageBc, 3);
+            chain.Add(PhantomMessageA, 4);
+            chain.Add(PhantomMessageBc, 5);
+            chain.Add(PhantomMessageA, 6);
+            chain.Add(PhantomMessageBc, 7);
+            chain.Add(PhantomMessageA, 8);
+            chain.Add(PhantomMessageA, 9);
 
-            this.chain.Add(this.PhantomMessageBc, 0);
-            this.chain.Add(this.PhantomMessageA, 1);
-            this.chain.Add(this.PhantomMessageA, 2);
-            this.chain.Add(this.PhantomMessageBc, 3);
-            this.chain.Add(this.PhantomMessageA, 4);
-            this.chain.Add(this.PhantomMessageBc, 5);
-            this.chain.Add(this.PhantomMessageA, 6);
-            this.chain.Add(this.PhantomMessageBc, 7);
-            this.chain.Add(this.PhantomMessageA, 8);
-            this.chain.Add(this.PhantomMessageA, 9);
-
-            this.chain2.Add(this.alpha[1], 0);
-            this.chain2.Add(this.PhantomMessageA, 1);
-            this.chain2.Add(this.PhantomMessageBc, 2);
-            this.chain2.Add(this.alpha[0], 3);
-            this.chain2.Add(this.PhantomMessageBc, 4);
+            chain2.Add(alpha[1], 0);
+            chain2.Add(PhantomMessageA, 1);
+            chain2.Add(PhantomMessageBc, 2);
+            chain2.Add(alpha[0], 3);
+            chain2.Add(PhantomMessageBc, 4);
         }
 
         /// <summary>
@@ -73,7 +72,7 @@ namespace PhantomChains.Tests
         {
             get
             {
-                return (ValuePhantom)this.pm1.Clone();
+                return (ValuePhantom)pm1.Clone();
             }
         }
 
@@ -84,7 +83,7 @@ namespace PhantomChains.Tests
         {
             get
             {
-                return (ValuePhantom)this.pm2.Clone();
+                return (ValuePhantom)pm2.Clone();
             }
         }
 
@@ -95,7 +94,7 @@ namespace PhantomChains.Tests
         {
             get
             {
-                return (BaseChain)this.chain.Clone();
+                return (BaseChain)chain.Clone();
             }
         }
 
@@ -106,7 +105,7 @@ namespace PhantomChains.Tests
         {
             get
             {
-                return this.chain2;
+                return chain2;
             }
         }
     }

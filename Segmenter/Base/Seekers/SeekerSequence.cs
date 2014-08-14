@@ -31,10 +31,10 @@
         /// </returns>
         public override int Seek(List<string> sequence)
         {
-            this.result = new List<int>();
-            while (this.iterator.HasNext())
+            result = new List<int>();
+            while (iterator.HasNext())
             {
-                List<string> chain = this.iterator.Next();
+                List<string> chain = iterator.Next();
                 bool chainsEquals = sequence.Count == chain.Count;
                 for (int i = 0; i < sequence.Count; i++)
                 {
@@ -46,12 +46,12 @@
 
                 if (chainsEquals)
                 {
-                    this.result.Add(this.iterator.Position());
+                    result.Add(iterator.Position());
                 }
             }
 
-            this.iterator.Reset();
-            return this.result.Count;
+            iterator.Reset();
+            return result.Count;
         }
     }
 }

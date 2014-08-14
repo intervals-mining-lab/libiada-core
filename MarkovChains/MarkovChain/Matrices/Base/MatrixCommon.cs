@@ -38,11 +38,11 @@ namespace MarkovChains.MarkovChain.Matrices.Base
         {
             if (indexes.Length > 1)
             {
-                int[] newIndexes = this.GetChainLess(indexes);
-                return ((MatrixBase)this.ValueList[indexes[0]]).FrequencyFromObject(newIndexes);
+                int[] newIndexes = GetChainLess(indexes);
+                return ((MatrixBase)ValueList[indexes[0]]).FrequencyFromObject(newIndexes);
             }
 
-            return ((MatrixBase)this.ValueList[indexes[0]]).Value;
+            return ((MatrixBase)ValueList[indexes[0]]).Value;
         }
 
         /// <summary>

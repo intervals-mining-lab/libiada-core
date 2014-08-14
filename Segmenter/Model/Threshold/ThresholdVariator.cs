@@ -55,7 +55,7 @@
         /// <returns>the difference between the right and left bounds</returns>
         public double Distance
         {
-            get { return this.rightBound - this.leftBound; }
+            get { return rightBound - leftBound; }
         }
 
         /// <summary>
@@ -70,7 +70,7 @@
         /// </summary>
         public void SaveBest()
         {
-            this.Value = this.current;
+            Value = current;
         }
 
         /// <summary>

@@ -36,7 +36,7 @@ namespace Clusterizator.Tests.Krab
             var hd5 = new HybridDictionary { { "x", 7 }, { "y", 4 } };
             var hd6 = new HybridDictionary { { "x", 8 }, { "y", 3 } };
 
-            this.elementsList = new List<GraphElement>
+            elementsList = new List<GraphElement>
                                {
                                    new GraphElement(hd1, "1"),
                                    new GraphElement(hd2, "2"),
@@ -46,7 +46,7 @@ namespace Clusterizator.Tests.Krab
                                    new GraphElement(hd6, "6")
                                };
 
-            this.connectionsList = new List<Connection>
+            connectionsList = new List<Connection>
                                   {
                                       new Connection(0, 1),
                                       new Connection(0, 2),
@@ -65,12 +65,12 @@ namespace Clusterizator.Tests.Krab
                                       new Connection(4, 5)
                                   };
 
-            this.connectionsList[0].Connected = true;
-            this.connectionsList[14].Connected = true;
-            this.elementsList[0].TaxonNumber = 1;
-            this.elementsList[1].TaxonNumber = 1;
-            this.elementsList[4].TaxonNumber = 2;
-            this.elementsList[5].TaxonNumber = 2;
+            connectionsList[0].Connected = true;
+            connectionsList[14].Connected = true;
+            elementsList[0].TaxonNumber = 1;
+            elementsList[1].TaxonNumber = 1;
+            elementsList[4].TaxonNumber = 2;
+            elementsList[5].TaxonNumber = 2;
         }
 
         /// <summary>
@@ -79,11 +79,11 @@ namespace Clusterizator.Tests.Krab
         [Test]
         public void UnConnectedGraphsTest()
         {
-            var connector = new GraphManager(this.connectionsList, this.elementsList);
+            var connector = new GraphManager(connectionsList, elementsList);
             connector.Connect(2, 3);
-            Assert.IsTrue(this.connectionsList[9].Connected);
-            Assert.AreEqual(3, this.elementsList[2].TaxonNumber);
-            Assert.AreEqual(3, this.elementsList[3].TaxonNumber);
+            Assert.IsTrue(connectionsList[9].Connected);
+            Assert.AreEqual(3, elementsList[2].TaxonNumber);
+            Assert.AreEqual(3, elementsList[3].TaxonNumber);
         }
 
         /// <summary>
@@ -92,14 +92,14 @@ namespace Clusterizator.Tests.Krab
         [Test]
         public void SearchConnectionTest()
         {
-            var connector = new GraphManager(this.connectionsList, this.elementsList);
-            Assert.AreEqual(-1, connector.SearchConnection(this.elementsList[0], this.elementsList[0]), "Search fault failure");
-            Assert.AreEqual(-1, connector.SearchConnection(this.elementsList[4], this.elementsList[4]), "Search fault failure");
-            Assert.AreEqual(0, connector.SearchConnection(this.elementsList[0], this.elementsList[1]), "Search fault failure");
-            Assert.AreEqual(0, connector.SearchConnection(this.elementsList[1], this.elementsList[0]), "Search fault failure");
-            Assert.AreEqual(14, connector.SearchConnection(this.elementsList[4], this.elementsList[5]), "Search fault failure");
-            Assert.AreEqual(14, connector.SearchConnection(this.elementsList[5], this.elementsList[4]), "Search fault failure");
-            Assert.AreEqual(0, connector.SearchConnection(this.elementsList[1], this.elementsList[0]), "Search fault failure");
+            var connector = new GraphManager(connectionsList, elementsList);
+            Assert.AreEqual(-1, connector.SearchConnection(elementsList[0], elementsList[0]), "Search fault failure");
+            Assert.AreEqual(-1, connector.SearchConnection(elementsList[4], elementsList[4]), "Search fault failure");
+            Assert.AreEqual(0, connector.SearchConnection(elementsList[0], elementsList[1]), "Search fault failure");
+            Assert.AreEqual(0, connector.SearchConnection(elementsList[1], elementsList[0]), "Search fault failure");
+            Assert.AreEqual(14, connector.SearchConnection(elementsList[4], elementsList[5]), "Search fault failure");
+            Assert.AreEqual(14, connector.SearchConnection(elementsList[5], elementsList[4]), "Search fault failure");
+            Assert.AreEqual(0, connector.SearchConnection(elementsList[1], elementsList[0]), "Search fault failure");
         }
 
         /// <summary>
@@ -108,12 +108,12 @@ namespace Clusterizator.Tests.Krab
         [Test]
         public void OneConnectedGraphTest()
         {
-            var connector = new GraphManager(this.connectionsList, this.elementsList);
+            var connector = new GraphManager(connectionsList, elementsList);
             connector.Connect(0, 2);
-            Assert.IsTrue(this.connectionsList[1].Connected);
-            Assert.AreEqual(1, this.elementsList[0].TaxonNumber);
-            Assert.AreEqual(1, this.elementsList[1].TaxonNumber);
-            Assert.AreEqual(1, this.elementsList[2].TaxonNumber);
+            Assert.IsTrue(connectionsList[1].Connected);
+            Assert.AreEqual(1, elementsList[0].TaxonNumber);
+            Assert.AreEqual(1, elementsList[1].TaxonNumber);
+            Assert.AreEqual(1, elementsList[2].TaxonNumber);
         }
 
         /// <summary>
@@ -122,13 +122,13 @@ namespace Clusterizator.Tests.Krab
         [Test]
         public void BothConnectionGraphTest()
         {
-            var connector = new GraphManager(this.connectionsList, this.elementsList);
+            var connector = new GraphManager(connectionsList, elementsList);
             connector.Connect(1, 5);
-            Assert.IsTrue(this.connectionsList[8].Connected);
-            Assert.AreEqual(1, this.elementsList[5].TaxonNumber);
-            Assert.AreEqual(1, this.elementsList[1].TaxonNumber);
-            Assert.AreEqual(1, this.elementsList[4].TaxonNumber);
-            Assert.AreEqual(1, this.elementsList[5].TaxonNumber);
+            Assert.IsTrue(connectionsList[8].Connected);
+            Assert.AreEqual(1, elementsList[5].TaxonNumber);
+            Assert.AreEqual(1, elementsList[1].TaxonNumber);
+            Assert.AreEqual(1, elementsList[4].TaxonNumber);
+            Assert.AreEqual(1, elementsList[5].TaxonNumber);
         }
 
         /// <summary>
@@ -137,14 +137,14 @@ namespace Clusterizator.Tests.Krab
         [Test]
         public void UnBothConnectionGraphTest()
         {
-            var connector = new GraphManager(this.connectionsList, this.elementsList);
-            this.connectionsList[1].Connected = true;
-            this.elementsList[2].TaxonNumber = 1;
+            var connector = new GraphManager(connectionsList, elementsList);
+            connectionsList[1].Connected = true;
+            elementsList[2].TaxonNumber = 1;
             connector.Connect(1, 2);
-            Assert.IsFalse(this.connectionsList[5].Connected);
-            Assert.AreEqual(1, this.elementsList[0].TaxonNumber);
-            Assert.AreEqual(1, this.elementsList[1].TaxonNumber);
-            Assert.AreEqual(1, this.elementsList[2].TaxonNumber);
+            Assert.IsFalse(connectionsList[5].Connected);
+            Assert.AreEqual(1, elementsList[0].TaxonNumber);
+            Assert.AreEqual(1, elementsList[1].TaxonNumber);
+            Assert.AreEqual(1, elementsList[2].TaxonNumber);
         }
 
         /// <summary>
@@ -153,13 +153,13 @@ namespace Clusterizator.Tests.Krab
         [Test]
         public void CutGraphTest()
         {
-            var connector = new GraphManager(this.connectionsList, this.elementsList);
-            connector.Cut(this.elementsList[0], this.elementsList[1]);
-            Assert.IsFalse(this.connectionsList[0].Connected);
-            Assert.AreEqual(3, this.elementsList[0].TaxonNumber);
-            Assert.AreEqual(1, this.elementsList[1].TaxonNumber);
-            Assert.AreEqual(2, this.elementsList[4].TaxonNumber);
-            Assert.AreEqual(2, this.elementsList[5].TaxonNumber);
+            var connector = new GraphManager(connectionsList, elementsList);
+            connector.Cut(elementsList[0], elementsList[1]);
+            Assert.IsFalse(connectionsList[0].Connected);
+            Assert.AreEqual(3, elementsList[0].TaxonNumber);
+            Assert.AreEqual(1, elementsList[1].TaxonNumber);
+            Assert.AreEqual(2, elementsList[4].TaxonNumber);
+            Assert.AreEqual(2, elementsList[5].TaxonNumber);
         }
 
         /// <summary>
@@ -168,14 +168,14 @@ namespace Clusterizator.Tests.Krab
         [Test]
         public void CutGraphTrioTest()
         {
-            var connector = new GraphManager(this.connectionsList, this.elementsList);
-            this.connectionsList[1].Connected = true;
-            this.elementsList[2].TaxonNumber = 1;
-            connector.Cut(this.elementsList[0], this.elementsList[2]);
-            Assert.IsFalse(this.connectionsList[1].Connected);
-            Assert.AreEqual(3, this.elementsList[0].TaxonNumber);
-            Assert.AreEqual(3, this.elementsList[1].TaxonNumber);
-            Assert.AreEqual(1, this.elementsList[2].TaxonNumber);
+            var connector = new GraphManager(connectionsList, elementsList);
+            connectionsList[1].Connected = true;
+            elementsList[2].TaxonNumber = 1;
+            connector.Cut(elementsList[0], elementsList[2]);
+            Assert.IsFalse(connectionsList[1].Connected);
+            Assert.AreEqual(3, elementsList[0].TaxonNumber);
+            Assert.AreEqual(3, elementsList[1].TaxonNumber);
+            Assert.AreEqual(1, elementsList[2].TaxonNumber);
         }
 
         /// <summary>
@@ -184,7 +184,7 @@ namespace Clusterizator.Tests.Krab
         [Test]
         public void CloneTest()
         {
-            var connector = new GraphManager(this.connectionsList, this.elementsList);
+            var connector = new GraphManager(connectionsList, elementsList);
             var connector2 = connector.Clone();
             Assert.IsInstanceOf(typeof(GraphManager), connector2);
             Assert.IsInstanceOf(typeof(Connection), connector2.Connections[0]);
@@ -200,39 +200,39 @@ namespace Clusterizator.Tests.Krab
         [Test]
         public void GraphConnectionTest()
         {
-            this.connectionsList[0].Connected = false;
-            this.connectionsList[14].Connected = false;
+            connectionsList[0].Connected = false;
+            connectionsList[14].Connected = false;
 
-            for (int i = 0; i < this.connectionsList.Count; i++)
+            for (int i = 0; i < connectionsList.Count; i++)
             {
-                this.elementsList[this.connectionsList[i].FirstElementIndex].TaxonNumber = 0;
-                this.elementsList[this.connectionsList[i].SecondElementIndex].TaxonNumber = 0;
+                elementsList[connectionsList[i].FirstElementIndex].TaxonNumber = 0;
+                elementsList[connectionsList[i].SecondElementIndex].TaxonNumber = 0;
             }
 
             var lambdas = new[] { 10, 20, 15, 21, 6, 11, 12, 27, 16, 9, 25, 26, 13, 21, 22 };
 
             for (int i = 0; i < lambdas.Length; i++)
             {
-                this.connectionsList[i].Lambda = lambdas[i];
+                connectionsList[i].Lambda = lambdas[i];
             }
 
-            var connector = new GraphManager(this.connectionsList, this.elementsList);
+            var connector = new GraphManager(connectionsList, elementsList);
             connector.ConnectGraph();
-            Assert.IsTrue(this.connectionsList[0].Connected);
-            Assert.IsTrue(this.connectionsList[4].Connected);
-            Assert.IsTrue(this.connectionsList[5].Connected);
-            Assert.IsTrue(this.connectionsList[9].Connected);
-            Assert.IsTrue(this.connectionsList[12].Connected);
-            Assert.IsFalse(this.connectionsList[1].Connected);
-            Assert.IsFalse(this.connectionsList[2].Connected);
-            Assert.IsFalse(this.connectionsList[3].Connected);
-            Assert.IsFalse(this.connectionsList[6].Connected);
-            Assert.IsFalse(this.connectionsList[7].Connected);
-            Assert.IsFalse(this.connectionsList[8].Connected);
-            Assert.IsFalse(this.connectionsList[10].Connected);
-            Assert.IsFalse(this.connectionsList[11].Connected);
-            Assert.IsFalse(this.connectionsList[13].Connected);
-            Assert.IsFalse(this.connectionsList[14].Connected);
+            Assert.IsTrue(connectionsList[0].Connected);
+            Assert.IsTrue(connectionsList[4].Connected);
+            Assert.IsTrue(connectionsList[5].Connected);
+            Assert.IsTrue(connectionsList[9].Connected);
+            Assert.IsTrue(connectionsList[12].Connected);
+            Assert.IsFalse(connectionsList[1].Connected);
+            Assert.IsFalse(connectionsList[2].Connected);
+            Assert.IsFalse(connectionsList[3].Connected);
+            Assert.IsFalse(connectionsList[6].Connected);
+            Assert.IsFalse(connectionsList[7].Connected);
+            Assert.IsFalse(connectionsList[8].Connected);
+            Assert.IsFalse(connectionsList[10].Connected);
+            Assert.IsFalse(connectionsList[11].Connected);
+            Assert.IsFalse(connectionsList[13].Connected);
+            Assert.IsFalse(connectionsList[14].Connected);
         }
 
         /// <summary>
@@ -241,13 +241,13 @@ namespace Clusterizator.Tests.Krab
         [Test]
         public void CutConnectionTest()
         {
-            var connector = new GraphManager(this.connectionsList, this.elementsList);
+            var connector = new GraphManager(connectionsList, elementsList);
             connector.Cut(connector.Connections[0]);
-            Assert.IsFalse(this.connectionsList[0].Connected);
-            Assert.AreEqual(3, this.elementsList[0].TaxonNumber);
-            Assert.AreEqual(1, this.elementsList[1].TaxonNumber);
-            Assert.AreEqual(2, this.elementsList[4].TaxonNumber);
-            Assert.AreEqual(2, this.elementsList[5].TaxonNumber);
+            Assert.IsFalse(connectionsList[0].Connected);
+            Assert.AreEqual(3, elementsList[0].TaxonNumber);
+            Assert.AreEqual(1, elementsList[1].TaxonNumber);
+            Assert.AreEqual(2, elementsList[4].TaxonNumber);
+            Assert.AreEqual(2, elementsList[5].TaxonNumber);
         }
 
         /// <summary>
@@ -256,14 +256,14 @@ namespace Clusterizator.Tests.Krab
         [Test]
         public void CutConnectionTrioTest()
         {
-            var connector = new GraphManager(this.connectionsList, this.elementsList);
-            this.connectionsList[1].Connected = true;
-            this.elementsList[2].TaxonNumber = 1;
+            var connector = new GraphManager(connectionsList, elementsList);
+            connectionsList[1].Connected = true;
+            elementsList[2].TaxonNumber = 1;
             connector.Cut(connector.Connections[1]);
-            Assert.IsFalse(this.connectionsList[1].Connected);
-            Assert.AreEqual(3, this.elementsList[0].TaxonNumber);
-            Assert.AreEqual(3, this.elementsList[1].TaxonNumber);
-            Assert.AreEqual(1, this.elementsList[2].TaxonNumber);
+            Assert.IsFalse(connectionsList[1].Connected);
+            Assert.AreEqual(3, elementsList[0].TaxonNumber);
+            Assert.AreEqual(3, elementsList[1].TaxonNumber);
+            Assert.AreEqual(1, elementsList[2].TaxonNumber);
         }
     }
 }

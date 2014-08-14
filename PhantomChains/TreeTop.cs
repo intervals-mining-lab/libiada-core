@@ -37,14 +37,14 @@
         /// </param>
         public TreeTop(BaseChain source, IGenerator generator)
         {
-            this.table = new PhantomTable(source);
+            table = new PhantomTable(source);
             this.generator = generator;
-            this.StartPosition = 0;
-            this.Volume = this.table[0].Volume;
-            this.Level = -1;
-            if ((this.table[1].Content[0] is ValueString) || (this.table[1].Content[0] is BaseChain))
+            StartPosition = 0;
+            Volume = table[0].Volume;
+            Level = -1;
+            if ((table[1].Content[0] is ValueString) || (table[1].Content[0] is BaseChain))
             {
-                this.isString = true;
+                isString = true;
             }
 
             if ((source != null) && (source.GetLength() != 0))
@@ -52,7 +52,7 @@
                 var temp = (ValuePhantom)source[0];
                 for (int i = 0; i < temp.Cardinality; i++)
                 {
-                    this.Children.Add(new TreeNode(this, temp[i], this.table));
+                    Children.Add(new TreeNode(this, temp[i], table));
                 }
             }
         }
@@ -70,12 +70,12 @@
         /// </returns>
         public override bool Decrement()
         {
-            this.Volume--;
-            for (int i = 0; i < this.Children.Count; i++)
+            Volume--;
+            for (int i = 0; i < Children.Count; i++)
             {
-                if (this.Children[i].Volume == 0)
+                if (Children[i].Volume == 0)
                 {
-                    this.Children.RemoveAt(i);
+                    Children.RemoveAt(i);
                     return false;
                 }
             }
@@ -92,11 +92,11 @@
         /// </returns>
         public BaseChain Generate()
         {
-            int len = this.table.Length - 1;
-            len *= this.isString ? 3 : 1;
+            int len = table.Length - 1;
+            len *= isString ? 3 : 1;
             var result = new BaseChain(len);
 
-            this.Find(result, this.generator, this.table);
+            Find(result, generator, table);
             return result;
         }
     }

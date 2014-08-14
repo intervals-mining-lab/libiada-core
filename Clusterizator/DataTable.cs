@@ -24,7 +24,7 @@ namespace Clusterizator
         }
 
         /// <summary>
-        /// The this.
+        /// The indexer.
         /// </summary>
         /// <param name="s">
         /// The s.

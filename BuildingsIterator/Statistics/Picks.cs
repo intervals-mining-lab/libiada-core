@@ -28,7 +28,7 @@ namespace BuildingsIterator.Statistics
         public Picks(string name)
         {
             this.name = name;
-            this.values = new List<double>();
+            values = new List<double>();
         }
 
         /// <summary>
@@ -37,7 +37,7 @@ namespace BuildingsIterator.Statistics
         /// <param name="value">Значение добавляемого элемента</param>
         public void Add(double value)
         {
-            this.values.Add(value);
+            values.Add(value);
         }
 
         /// <summary>
@@ -46,7 +46,7 @@ namespace BuildingsIterator.Statistics
         /// <param name="mass">Заполняемый массив</param>
         public void FillList(List<string> mass)
         {
-            List<double>.Enumerator iterator = this.values.GetEnumerator();
+            List<double>.Enumerator iterator = values.GetEnumerator();
             while (iterator.MoveNext())
             {
                 mass.Add(iterator.Current.ToString());
@@ -60,7 +60,7 @@ namespace BuildingsIterator.Statistics
         /// <returns>Значение характеристики</returns>
         public double GetPicksCharacteristic(IOnePicksCalculator calculator)
         {
-            return calculator.Calculate(this.values);
+            return calculator.Calculate(values);
         }
     }
 }

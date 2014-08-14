@@ -25,7 +25,7 @@
         [SetUp]
         public void SetUp()
         {
-            this.chain = new ComplexChain("AACAGGTGCCCCTTATTT");
+            chain = new ComplexChain("AACAGGTGCCCCTTATTT");
         }
 
         /// <summary>
@@ -41,7 +41,7 @@
             string required3 = "T";
             string required4 = "G";
 
-            var seek = new Seeker(new StartIterator(this.chain, length, step));
+            var seek = new Seeker(new StartIterator(chain, length, step));
             seek.Seek(new List<string> { required1 });
             Assert.True(seek.Arrangement.Count == 4);
 
@@ -88,7 +88,7 @@
             int length = 1;
             int step = 1;
             string required1 = "A";
-            var seek = new Seeker(new StartIterator(this.chain, length, step));
+            var seek = new Seeker(new StartIterator(chain, length, step));
             seek.Seek(new List<string> { required1 });
             Assert.True(seek.Arrangement.Count == 4);
         }

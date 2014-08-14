@@ -1,10 +1,12 @@
-﻿using System.Collections.Generic;
-using LibiadaMusic.BorodaDivider;
-using LibiadaMusic.ScoreModel;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-
-namespace LibiadaMusic.Tests.BorodaDivider
+﻿namespace LibiadaMusic.Tests.BorodaDivider
 {
+    using System.Collections.Generic;
+
+    using LibiadaMusic.BorodaDivider;
+    using LibiadaMusic.ScoreModel;
+
+    using Microsoft.VisualStudio.TestTools.UnitTesting;
+
     [TestClass]
     public class FmotivDividerTests
     {

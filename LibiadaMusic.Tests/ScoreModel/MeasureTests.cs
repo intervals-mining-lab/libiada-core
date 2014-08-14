@@ -1,9 +1,11 @@
-﻿using System.Collections.Generic;
-using LibiadaMusic.ScoreModel;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-
-namespace LibiadaMusic.Tests.ScoreModel
+﻿namespace LibiadaMusic.Tests.ScoreModel
 {
+    using System.Collections.Generic;
+
+    using LibiadaMusic.ScoreModel;
+
+    using Microsoft.VisualStudio.TestTools.UnitTesting;
+
     [TestClass]
     public class MeasureTests
     {

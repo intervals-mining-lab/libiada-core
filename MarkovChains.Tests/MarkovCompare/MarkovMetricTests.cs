@@ -26,15 +26,15 @@ namespace MarkovChains.Tests.MarkovCompare
         [SetUp]
         public void Init()
         {
-            this.testChain = new Chain(8);
-            this.testChain.Add((ValueString)"A", 0);
-            this.testChain.Add((ValueString)"G", 1);
-            this.testChain.Add((ValueString)"T", 2);
-            this.testChain.Add((ValueString)"A", 3);
-            this.testChain.Add((ValueString)"A", 4);
-            this.testChain.Add((ValueString)"G", 5);
-            this.testChain.Add((ValueString)"T", 6);
-            this.testChain.Add((ValueString)"C", 7);
+            testChain = new Chain(8);
+            testChain.Add((ValueString)"A", 0);
+            testChain.Add((ValueString)"G", 1);
+            testChain.Add((ValueString)"T", 2);
+            testChain.Add((ValueString)"A", 3);
+            testChain.Add((ValueString)"A", 4);
+            testChain.Add((ValueString)"G", 5);
+            testChain.Add((ValueString)"T", 6);
+            testChain.Add((ValueString)"C", 7);
         }
 
         /// <summary>
@@ -44,7 +44,7 @@ namespace MarkovChains.Tests.MarkovCompare
         public void CompareSameChainTest()
         {
             var markov = new MarkovChainNotCongenericStatic(2, 0, new MockGenerator());
-            markov.Teach(this.testChain, TeachingMethod.Cycle);
+            markov.Teach(testChain, TeachingMethod.Cycle);
             var ma = new MarkovMetrics();
             Assert.AreEqual(ma.GetMiddleArith(markov), ma.GetMiddleArith(markov));
         }

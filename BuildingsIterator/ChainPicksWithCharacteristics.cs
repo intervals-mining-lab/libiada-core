@@ -42,10 +42,10 @@ namespace BuildingsIterator
         {
             this.chains = chains;
             this.characteristics = characters;
-            this.characteristicsNames = new List<string>();
+            characteristicsNames = new List<string>();
             for (int i = 0; i < characters.Count; i++)
             {
-                this.characteristicsNames.Add(characters[i].Calc.GetType().ToString());
+                characteristicsNames.Add(characters[i].Calc.GetType().ToString());
             }
         }
 
@@ -56,7 +56,7 @@ namespace BuildingsIterator
         {
             get
             {
-                return this.chains.Count;
+                return chains.Count;
             }
         }
 
@@ -67,11 +67,11 @@ namespace BuildingsIterator
         /// <returns>Выборка</returns>
         public Picks GetPicks(string characteristics)
         {
-            var picks = new Picks(this.GetCharacteristicName(this.characteristicsNames.IndexOf(characteristics)));
-            IDictionaryEnumerator iterator = this.chains.GetEnumerator();
+            var picks = new Picks(GetCharacteristicName(characteristicsNames.IndexOf(characteristics)));
+            IDictionaryEnumerator iterator = chains.GetEnumerator();
             while (iterator.MoveNext())
             {
-                picks.Add(((List<double>)iterator.Value)[this.characteristicsNames.IndexOf(characteristics)]);
+                picks.Add(((List<double>)iterator.Value)[characteristicsNames.IndexOf(characteristics)]);
             }
 
             return picks;
@@ -88,8 +88,8 @@ namespace BuildingsIterator
         /// </returns>
         public Picks GetPicks(int i)
         {
-            var picks = new Picks(this.GetCharacteristicName(i));
-            IDictionaryEnumerator iterator = this.chains.GetEnumerator();
+            var picks = new Picks(GetCharacteristicName(i));
+            IDictionaryEnumerator iterator = chains.GetEnumerator();
             while (iterator.MoveNext())
             {
                 picks.Add(((List<double>)iterator.Value)[i]);
@@ -106,7 +106,7 @@ namespace BuildingsIterator
         /// <exception cref="Exception">Элемент не найден</exception>
         public List<double> GetCharacteristicsVector(int i)
         {
-            IDictionaryEnumerator iterator = this.chains.GetEnumerator();
+            IDictionaryEnumerator iterator = chains.GetEnumerator();
             while (iterator.MoveNext())
             {
                 if (i == 0)
@@ -127,7 +127,7 @@ namespace BuildingsIterator
         /// <returns>Цепочка в виде строки</returns>
         public string GetChain(int i)
         {
-            IDictionaryEnumerator iterator = this.chains.GetEnumerator();
+            IDictionaryEnumerator iterator = chains.GetEnumerator();
             while (iterator.MoveNext())
             {
                 if (i == 0)
@@ -147,7 +147,7 @@ namespace BuildingsIterator
         /// <returns></returns>
         public int GetCharacteristicsCount()
         {
-            return this.characteristicsNames.Count;
+            return characteristicsNames.Count;
         }
 
         /// <summary>
@@ -157,7 +157,7 @@ namespace BuildingsIterator
         /// <returns>Строковое имя</returns>
         public string GetCharacteristicName(int i)
         {
-            return this.characteristicsNames[i].ToString();
+            return characteristicsNames[i].ToString();
         }
 
         /// <summary>
@@ -167,7 +167,7 @@ namespace BuildingsIterator
         public List<string> GetAllChains()
         {
             var result = new List<string>();
-            IDictionaryEnumerator iterator = this.chains.GetEnumerator();
+            IDictionaryEnumerator iterator = chains.GetEnumerator();
             while (iterator.MoveNext())
             {
                 result.Add((string) iterator.Key);
@@ -188,7 +188,7 @@ namespace BuildingsIterator
         public ChainPicksWithCharacteristics GetFilteredChainPicks(IChainFilter cardinality)
         {
             var newChains = new Hashtable();
-            IDictionaryEnumerator iterator = this.chains.GetEnumerator();
+            IDictionaryEnumerator iterator = chains.GetEnumerator();
             while (iterator.MoveNext())
             {
                 if (cardinality.IsValid((string)iterator.Key))
@@ -197,7 +197,7 @@ namespace BuildingsIterator
                 }
             }
 
-            return new ChainPicksWithCharacteristics(newChains, this.characteristics);
+            return new ChainPicksWithCharacteristics(newChains, characteristics);
         }
 
         /// <summary>

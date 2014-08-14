@@ -42,7 +42,7 @@ namespace AlphabetCheckers
         /// </returns>
         public bool Check(BaseChain chain)
         {
-            return this.Divide(chain) != null;
+            return Divide(chain) != null;
         }
 
         /// <summary>
@@ -59,7 +59,7 @@ namespace AlphabetCheckers
             var firstChain = new ActualChain(chain);
             var stack = new Stack();
             stack.Push(firstChain);
-            ArrayList list = this.alphabet.GetLengthList();
+            ArrayList list = alphabet.GetLengthList();
             do
             {
                 var actChain = (ActualChain)stack.Pop();
@@ -79,7 +79,7 @@ namespace AlphabetCheckers
                         continue;
                     }
 
-                    if (this.alphabet.Contains(word))
+                    if (alphabet.Contains(word))
                     {
                         // положительный вариант конца поиска решения
                         if (chain4Check.GetLength() == (int)list[i])

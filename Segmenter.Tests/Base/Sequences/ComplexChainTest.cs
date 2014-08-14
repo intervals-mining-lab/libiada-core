@@ -28,8 +28,8 @@
         [SetUp]
         public void SetUp()
         {
-            this.chain = new ComplexChain("AACAGGTGCCCCTTATTT");
-            this.differentComplexChain = new ComplexChain("AACAGGTGCTTATTT");
+            chain = new ComplexChain("AACAGGTGCCCCTTATTT");
+            differentComplexChain = new ComplexChain("AACAGGTGCTTATTT");
         }
 
         /// <summary>
@@ -38,10 +38,10 @@
         [Test]
         public void CloneTest()
         {
-            ComplexChain foreignComplexChain = this.chain.Clone();
+            ComplexChain foreignComplexChain = chain.Clone();
 
-            Assert.AreNotSame(this.chain, foreignComplexChain);
-            Assert.True(this.chain.Equals(foreignComplexChain));
+            Assert.AreNotSame(chain, foreignComplexChain);
+            Assert.True(chain.Equals(foreignComplexChain));
         }
 
         /// <summary>
@@ -50,12 +50,12 @@
         [Test]
         public void EqualsTest()
         {
-            ComplexChain foreignComplexChain = this.chain.Clone();
+            ComplexChain foreignComplexChain = chain.Clone();
 
-            Assert.True(foreignComplexChain.Equals(this.chain));
+            Assert.True(foreignComplexChain.Equals(chain));
             foreignComplexChain.ClearAt(0);
             foreignComplexChain.ClearAt(0);
-            Assert.True(!foreignComplexChain.Equals(this.chain));
+            Assert.True(!foreignComplexChain.Equals(chain));
         }
 
         /// <summary>
@@ -68,9 +68,9 @@
             string str2 = "G";
             string str3 = "C";
 
-            Assert.True(str1.Equals(this.chain[0].ToString()));
-            Assert.True(str2.Equals(this.chain[4].ToString()));
-            Assert.True(str3.Equals(this.chain[2].ToString()));
+            Assert.True(str1.Equals(chain[0].ToString()));
+            Assert.True(str2.Equals(chain[4].ToString()));
+            Assert.True(str3.Equals(chain[2].ToString()));
         }
 
         /// <summary>
@@ -81,7 +81,7 @@
         {
             int start = 0, end = 2;
             var thirdComplexChain = new ComplexChain("AA");
-            var foreignComplexChain = new ComplexChain(this.chain.Substring(start, end));
+            var foreignComplexChain = new ComplexChain(chain.Substring(start, end));
 
             Assert.True(thirdComplexChain.Equals(foreignComplexChain));
         }
@@ -105,12 +105,12 @@
         public void ConcatOneTest()
         {
             int start = 0;
-            int end = this.chain.GetLength();
+            int end = chain.GetLength();
 
-            var firstComplexChain = new ComplexChain(this.chain.Substring(start, end / 2));
-            var secondComplexChain = new ComplexChain(this.chain.Substring(end / 2, end));
+            var firstComplexChain = new ComplexChain(chain.Substring(start, end / 2));
+            var secondComplexChain = new ComplexChain(chain.Substring(end / 2, end));
             ComplexChain concatChain = firstComplexChain.Concat(secondComplexChain);
-            Assert.True(concatChain.Equals(this.chain));
+            Assert.True(concatChain.Equals(chain));
         }
 
         /// <summary>
@@ -120,12 +120,12 @@
         public void ConcatTwoTest()
         {
             int start = 0;
-            int end = this.chain.GetLength();
+            int end = chain.GetLength();
 
-            var firstComplexChain = new ComplexChain(this.chain.Substring(start, end - 1));
-            var secondComplexChain = new ComplexChain(this.chain.Substring(end - 1, end));
+            var firstComplexChain = new ComplexChain(chain.Substring(start, end - 1));
+            var secondComplexChain = new ComplexChain(chain.Substring(end - 1, end));
             ComplexChain concatChain = firstComplexChain.Concat(secondComplexChain.ToString());
-            Assert.True(concatChain.Equals(this.chain));
+            Assert.True(concatChain.Equals(chain));
         }
 
         /// <summary>
@@ -134,12 +134,12 @@
         [Test]
         public void LengthTest()
         {
-            ComplexChain foreignComplexChain = this.chain.Clone();
+            ComplexChain foreignComplexChain = chain.Clone();
 
-            Assert.True(this.chain.GetLength() != this.differentComplexChain.GetLength());
-            Assert.True(this.chain.GetLength() == foreignComplexChain.GetLength());
+            Assert.True(chain.GetLength() != differentComplexChain.GetLength());
+            Assert.True(chain.GetLength() == foreignComplexChain.GetLength());
             foreignComplexChain.ClearAt(0);
-            Assert.True(this.chain.GetLength() != foreignComplexChain.GetLength());
+            Assert.True(chain.GetLength() != foreignComplexChain.GetLength());
         }
 
         /// <summary>
@@ -163,11 +163,11 @@
         [Test]
         public void UpdateCongenericsTest()
         {
-            ComplexChain clonedComplexChain = this.chain.Clone();
+            ComplexChain clonedComplexChain = chain.Clone();
 
-            this.chain.ClearAt(0);
+            chain.ClearAt(0);
             clonedComplexChain.ClearAt(0);
-            Assert.True(this.chain.Equals(clonedComplexChain));
+            Assert.True(chain.Equals(clonedComplexChain));
         }
 
         /// <summary>
@@ -176,7 +176,7 @@
         [Test]
         public void JoinTest()
         {
-            ComplexChain clon = this.chain.Clone();
+            ComplexChain clon = chain.Clone();
             var expected1 = new List<string> { "AAC", "A", "G", "G", "T", "G", "C", "C", "C", "C", "T", "T", "A", "T", "T", "T" };
             var expected2 = new List<string> { "AAC", "A", "G", "G", "TGC", "C", "C", "C", "T", "T", "A", "T", "T", "T" };
             var expected3 = new List<string> { "AACAGGTGC", "C", "C", "C", "T", "T", "A", "T", "T", "T" };

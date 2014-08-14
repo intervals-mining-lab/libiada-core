@@ -20,7 +20,7 @@
         public EndIterator(ComplexChain chain, int length, int step)
             : base(chain, length, step)
         {
-            this.cursorPosition = chain.GetLength() - this.windowLength + 1;
+            cursorPosition = chain.GetLength() - windowLength + 1;
         }
 
         /// <summary>
@@ -31,7 +31,7 @@
         /// </returns>
         public override bool HasNext()
         {
-            return (this.CursorPosition - this.step) >= 0;
+            return (CursorPosition - step) >= 0;
         }
 
         /// <summary>
@@ -42,16 +42,16 @@
         /// </returns>
         public override List<string> Next()
         {
-            this.cursorPosition = this.CursorPosition - this.step;
+            cursorPosition = CursorPosition - step;
             try
             {
-                this.currentCut = this.chain.Substring(this.CursorPosition, this.CursorPosition + this.windowLength);
+                currentCut = chain.Substring(CursorPosition, CursorPosition + windowLength);
             }
             catch (Exception)
             {
             }
 
-            return this.currentCut;
+            return currentCut;
         }
 
         /// <summary>
@@ -59,7 +59,7 @@
         /// </summary>
         public override void Reset()
         {
-            this.cursorPosition = this.MaxShifts;
+            cursorPosition = MaxShifts;
         }
 
         /// <summary>
@@ -70,7 +70,7 @@
         /// </returns>
         public override int Position()
         {
-            return this.CursorPosition;
+            return CursorPosition;
         }
 
         /// <summary>
@@ -81,7 +81,7 @@
         /// </returns>
         public override List<string> Current()
         {
-            return this.currentCut;
+            return currentCut;
         }
 
         /// <summary>
@@ -95,9 +95,9 @@
         /// </returns>
         public override bool Move(int position)
         {
-            if ((position >= 0) && (this.chain.GetLength() >= this.windowLength + position))
+            if ((position >= 0) && (chain.GetLength() >= windowLength + position))
             {
-                this.cursorPosition = position;
+                cursorPosition = position;
                 return true;
             }
 

@@ -27,7 +27,7 @@
         {
             List<string> str = iterator.Current();
             int position = iterator.Position();
-            this.Add(str, position, step);
+            Add(str, position, step);
         }
 
         /// <summary>
@@ -44,12 +44,12 @@
         /// </param>
         public void Add(List<string> accord, int position, int step)
         {
-            if (!this.dictionary.ContainsKey(accord))
+            if (!dictionary.ContainsKey(accord))
             {
-                this.dictionary.Add(accord, new List<int>());
+                dictionary.Add(accord, new List<int>());
             }
 
-            this.dictionary[accord].Add(position + step);
+            dictionary[accord].Add(position + step);
         }
 
         /// <summary>
@@ -59,7 +59,7 @@
         /// <returns></returns>
         public List<int> Positions(List<string> chain)
         {
-            return new List<int>(this.dictionary[chain]);
+            return new List<int>(dictionary[chain]);
         }
 
         /// <summary>
@@ -70,7 +70,7 @@
         /// </returns>
         public Dictionary<List<string>, List<int>> Entry()
         {
-            return new Dictionary<List<string>, List<int>>(this.dictionary);
+            return new Dictionary<List<string>, List<int>>(dictionary);
         }
     }
 }

@@ -49,7 +49,7 @@
         /// <param name="step">The number of elements through which the pointer will jump at the next iteration</param>
         public BaseIterator(ComplexChain chain, int length, int step)
         {
-            this.Initialize(chain, length, step);
+            Initialize(chain, length, step);
         }
 
         /// <summary>
@@ -60,7 +60,7 @@
         {
             get
             {
-                return this.maxShifts;
+                return maxShifts;
             }
         }
 
@@ -72,7 +72,7 @@
         {
             get
             {
-                return this.cursorPosition;
+                return cursorPosition;
             }
         }
 
@@ -84,7 +84,7 @@
         {
             get
             {
-                return (this.CursorPosition / this.step) + 1;
+                return (CursorPosition / step) + 1;
             }
         }
 
@@ -137,7 +137,7 @@
         /// </summary>
         private void CalculateMaxShifts()
         {
-            this.maxShifts = ((this.chain.GetLength() - this.windowLength) / this.step) + 1;
+            maxShifts = ((chain.GetLength() - windowLength) / step) + 1;
         }
 
         /// <summary>
@@ -172,8 +172,8 @@
             this.chain = chain.Clone();
             this.windowLength = windowLength;
             this.step = step;
-            this.cursorPosition = -step;
-            this.CalculateMaxShifts();
+            cursorPosition = -step;
+            CalculateMaxShifts();
         }
     }
 }

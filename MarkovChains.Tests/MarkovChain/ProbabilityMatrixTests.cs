@@ -30,33 +30,33 @@ namespace MarkovChains.Tests.MarkovChain
         [SetUp]
         public void Init()
         {
-            this.testChain = new Chain(12);
-            this.testChain.Add((ValueString)"a", 0);
-            this.testChain.Add((ValueString)"d", 1);
-            this.testChain.Add((ValueString)"b", 2);
-            this.testChain.Add((ValueString)"a", 3);
-            this.testChain.Add((ValueString)"a", 4);
-            this.testChain.Add((ValueString)"c", 5);
-            this.testChain.Add((ValueString)"b", 6);
-            this.testChain.Add((ValueString)"b", 7);
-            this.testChain.Add((ValueString)"a", 8);
-            this.testChain.Add((ValueString)"a", 9);
-            this.testChain.Add((ValueString)"c", 10);
-            this.testChain.Add((ValueString)"a", 11);
+            testChain = new Chain(12);
+            testChain.Add((ValueString)"a", 0);
+            testChain.Add((ValueString)"d", 1);
+            testChain.Add((ValueString)"b", 2);
+            testChain.Add((ValueString)"a", 3);
+            testChain.Add((ValueString)"a", 4);
+            testChain.Add((ValueString)"c", 5);
+            testChain.Add((ValueString)"b", 6);
+            testChain.Add((ValueString)"b", 7);
+            testChain.Add((ValueString)"a", 8);
+            testChain.Add((ValueString)"a", 9);
+            testChain.Add((ValueString)"c", 10);
+            testChain.Add((ValueString)"a", 11);
 
-            this.testChain2 = new Chain(12);
-            this.testChain2.Add((ValueString)"a", 0);
-            this.testChain2.Add((ValueString)"a", 1);
-            this.testChain2.Add((ValueString)"a", 2);
-            this.testChain2.Add((ValueString)"a", 3);
-            this.testChain2.Add((ValueString)"a", 4);
-            this.testChain2.Add((ValueString)"a", 5);
-            this.testChain2.Add((ValueString)"b", 6);
-            this.testChain2.Add((ValueString)"a", 7);
-            this.testChain2.Add((ValueString)"a", 8);
-            this.testChain2.Add((ValueString)"a", 9);
-            this.testChain2.Add((ValueString)"b", 10);
-            this.testChain2.Add((ValueString)"a", 11);
+            testChain2 = new Chain(12);
+            testChain2.Add((ValueString)"a", 0);
+            testChain2.Add((ValueString)"a", 1);
+            testChain2.Add((ValueString)"a", 2);
+            testChain2.Add((ValueString)"a", 3);
+            testChain2.Add((ValueString)"a", 4);
+            testChain2.Add((ValueString)"a", 5);
+            testChain2.Add((ValueString)"b", 6);
+            testChain2.Add((ValueString)"a", 7);
+            testChain2.Add((ValueString)"a", 8);
+            testChain2.Add((ValueString)"a", 9);
+            testChain2.Add((ValueString)"b", 10);
+            testChain2.Add((ValueString)"a", 11);
         }
 
         /// <summary>
@@ -78,7 +78,7 @@ namespace MarkovChains.Tests.MarkovChain
             resultTheory[9] = (ValueString)"a";
 
             var markov = new MarkovChainNotCongenericStatic(3, 0, new MockGenerator());
-            markov.Teach(this.testChain, TeachingMethod.Cycle);
+            markov.Teach(testChain, TeachingMethod.Cycle);
             var resultPractice = markov.Generate(10);
             Assert.AreEqual(resultTheory, resultPractice);
         }
@@ -122,7 +122,7 @@ namespace MarkovChains.Tests.MarkovChain
             resultTheory[29] = (ValueString)"a"; // "a" 0.2;
 
             var markov = new MarkovChainNotCongenericStatic(2, 0, new MockGenerator());
-            markov.Teach(this.testChain2, TeachingMethod.Cycle);
+            markov.Teach(testChain2, TeachingMethod.Cycle);
             var resultPractice = markov.Generate(30);
             Assert.AreEqual(resultTheory, resultPractice);
         }

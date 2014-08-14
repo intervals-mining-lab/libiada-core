@@ -45,10 +45,10 @@ namespace PhantomChains
             }
 
             this.parent = parent;
-            this.Level = this.parent.Level + 1;
-            this.Volume = table[this.Level + 1].Volume;
-            this.id = content;
-            this.StartPosition = table.StartPositions[this.Level];
+            Level = this.parent.Level + 1;
+            Volume = table[Level + 1].Volume;
+            id = content;
+            StartPosition = table.StartPositions[Level];
         }
 
         /// <summary>
@@ -59,15 +59,15 @@ namespace PhantomChains
         /// <returns>Флаг говорящий что нужно продолжать поиски пустой ветви</returns>
         public override bool Decrement()
         {
-            this.Volume--;
-            bool flag = this.parent.Decrement();
+            Volume--;
+            bool flag = parent.Decrement();
             if (flag)
             {
-                for (int i = 0; i < this.Children.Count; i++)
+                for (int i = 0; i < Children.Count; i++)
                 {
-                    if (this.Children[i].Volume == 0)
+                    if (Children[i].Volume == 0)
                     {
-                        this.Children.RemoveAt(i);
+                        Children.RemoveAt(i);
                         return false;
                     }
                 }
@@ -94,29 +94,29 @@ namespace PhantomChains
         /// </param>
         public void FillChain(BaseChain result, IGenerator generator, PhantomTable table)
         {
-            if ((table.Length != (this.Level + 2)) && (this.Children.Count == 0))
+            if ((table.Length != (Level + 2)) && (Children.Count == 0))
             {
-                ValuePhantom temp = table[this.Level + 2].Content;
+                ValuePhantom temp = table[Level + 2].Content;
                 for (int i = 0; i < temp.Cardinality; i++)
                 {
-                    this.Children.Add(new TreeNode(this, temp[i], table));
+                    Children.Add(new TreeNode(this, temp[i], table));
                 }
             }
 
-            if ((this.id is BaseChain) || (this.id is ValueString))
+            if ((id is BaseChain) || (id is ValueString))
             {
-                string amino = this.id.ToString();
+                string amino = id.ToString();
                 for (int k = 0; k < amino.Length; k++)
                 {
-                    result[this.StartPosition + k] = new ValueChar(amino[k]);
+                    result[StartPosition + k] = new ValueChar(amino[k]);
                 }
             }
             else
             {
-                result[this.StartPosition] = this.id;
+                result[StartPosition] = id;
             }
 
-            this.Find(result, generator, table);
+            Find(result, generator, table);
         }
     }
 }

@@ -1,8 +1,9 @@
-using Clusterizator.Krab;
-using NUnit.Framework;
-
 namespace Clusterizator.Tests.Krab
 {
+    using Clusterizator.Krab;
+
+    using NUnit.Framework;
+
     /// <summary>
     /// The alternative krab test.
     /// </summary>
@@ -44,7 +45,7 @@ namespace Clusterizator.Tests.Krab
             object6.Add("x", 9);
             object6.Add("y", 7);
 
-            this.dt = new DataTable { object1, object2, object3, object4, object5, object6 };
+            dt = new DataTable { object1, object2, object3, object4, object5, object6 };
         }
 
         /// <summary>
@@ -53,7 +54,7 @@ namespace Clusterizator.Tests.Krab
         [Test]
         public void ClusterizationTest()
         {
-            var krab = new KrabClusterization(this.dt, 4, 2, 1);
+            var krab = new KrabClusterization(dt, 4, 2, 1);
             var result = krab.Clusterizate(2).Clusters;
 
             Assert.IsTrue(((Cluster)result[1]).Items.Contains((long)1));

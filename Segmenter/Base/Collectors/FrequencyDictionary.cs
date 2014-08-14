@@ -31,7 +31,7 @@
         /// </param>
         public FrequencyDictionary(string source)
         {
-            this.Fill(source);
+            Fill(source);
         }
 
         /// <summary>
@@ -42,7 +42,7 @@
         /// </param>
         public FrequencyDictionary(ComplexChain sequence)
         {
-            this.Fill(sequence);
+            Fill(sequence);
         }
 
         /// <summary>
@@ -51,7 +51,7 @@
         /// <returns>the number of words in this FrequencyDictionary.</returns>
         public int Count
         {
-            get { return this.words.Count; }
+            get { return words.Count; }
         }
 
         /// <summary>
@@ -65,7 +65,7 @@
         /// </returns>
         public List<int> this[string str]
         {
-            get { return new List<int>(this.words[str]); }
+            get { return new List<int>(words[str]); }
         }
 
         /// <summary>
@@ -74,10 +74,10 @@
         /// <param name="str">the current char sequence</param>
         public void Fill(string str)
         {
-            this.Clear();
+            Clear();
             for (int index = 0; index < str.Length; index++)
             {
-                this.Put(str[index].ToString(), index);
+                Put(str[index].ToString(), index);
             }
         }
 
@@ -87,10 +87,10 @@
         /// <param name="sequence">the current word sequence</param>
         public void Fill(ComplexChain sequence)
         {
-            this.Clear();
+            Clear();
             for (int index = 0; index < sequence.GetLength(); index++)
             {
-                this.Put(sequence[index].ToString(), index);
+                Put(sequence[index].ToString(), index);
             }
         }
 
@@ -100,7 +100,7 @@
         /// <returns>a list of all words positions</returns>
         public List<List<int>> GetWordsPositions()
         {
-            return new List<List<int>>(this.words.Values);
+            return new List<List<int>>(words.Values);
         }
 
         /// <summary>
@@ -111,7 +111,7 @@
         /// </returns>
         public List<KeyValuePair<string, List<int>>> SortByPower()
         {
-            var list = new List<KeyValuePair<string, List<int>>>(this.words);
+            var list = new List<KeyValuePair<string, List<int>>>(words);
             list.Sort((firstPair, nextPair) => firstPair.Value.Count.CompareTo(nextPair.Value.Count));
             
             list.Reverse();
@@ -125,12 +125,12 @@
         /// <returns>a list of words of this FrequencyDictionary.</returns>
         public List<string> GetWords()
         {
-            if (this.words.Count == 0)
+            if (words.Count == 0)
             {
                 return new List<string>();
             }
 
-            return new List<string>(this.words.Keys);
+            return new List<string>(words.Keys);
         }
 
         /// <summary>
@@ -143,7 +143,7 @@
             string str = string.Empty;
             try
             {
-                str = this.GetWords()[index];
+                str = GetWords()[index];
             }
             catch (Exception)
             {
@@ -166,14 +166,14 @@
                     return;
                 }
 
-                if (!this.words.ContainsKey(str))
+                if (!words.ContainsKey(str))
                 {
                     var wordPositions = new List<int> { pos };
-                    this.words.Add(str, wordPositions);
+                    words.Add(str, wordPositions);
                 }
                 else
                 {
-                    List<int> modified = this.words[str];
+                    List<int> modified = words[str];
                     if (!modified.Contains(pos))
                     {
                         modified.Add(pos);
@@ -193,7 +193,7 @@
         /// <returns>true if this FrequencyDictionary contains the specified word</returns>
         public bool Contains(string str)
         {
-            return this.words.ContainsKey(str);
+            return words.ContainsKey(str);
         }
 
         /// <summary>
@@ -207,7 +207,7 @@
         /// <returns>true if this FrequencyDictionary contains the specified word</returns>
         public bool Contains(List<string> str)
         {
-            return this.words.ContainsKey(Helper.ToString(str));
+            return words.ContainsKey(Helper.ToString(str));
         }
 
         /// <summary>
@@ -219,7 +219,7 @@
         {
             try
             {
-                this.words.Remove(str);
+                words.Remove(str);
             }
             catch (Exception)
             {
@@ -231,7 +231,7 @@
         /// </summary>
         public void Clear()
         {
-            this.words.Clear();
+            words.Clear();
         }
 
         /// <summary>
@@ -243,7 +243,7 @@
         {
             try
             {
-                this.words.Add(str, new List<int>(pos));
+                words.Add(str, new List<int>(pos));
             }
             catch (Exception)
             {
@@ -259,7 +259,7 @@
         public FrequencyDictionary Clone()
         {
             var alphabet = new FrequencyDictionary();
-            for (IEnumerator<string> e = this.words.Keys.GetEnumerator(); e.MoveNext();)
+            for (IEnumerator<string> e = words.Keys.GetEnumerator(); e.MoveNext();)
             {
                 string word = e.Current;
                 List<int> wordPositions = this[word];
@@ -280,14 +280,14 @@
         /// </returns>
         public bool Equals(FrequencyDictionary other)
         {
-            if (other.Count != this.words.Count)
+            if (other.Count != words.Count)
             {
                 return false;
             }
 
-            for (int index = 0; index < this.Count; index++)
+            for (int index = 0; index < Count; index++)
             {
-                if (!other.Contains(this.GetWord(index)))
+                if (!other.Contains(GetWord(index)))
                 {
                     return false;
                 }

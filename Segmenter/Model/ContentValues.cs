@@ -67,7 +67,7 @@
                 return false;
             }
 
-            return this.Values.Equals(((ContentValues)other).Values);
+            return Values.Equals(((ContentValues)other).Values);
         }
 
         /// <summary>
@@ -78,7 +78,7 @@
         /// </returns>
         public override int GetHashCode()
         {
-            return this.Values.GetHashCode();
+            return Values.GetHashCode();
         }
 
         /// <summary>
@@ -88,7 +88,7 @@
         /// <param name="value">the data for the value to put</param>
         public void Put(string key, string value)
         {
-            this.Add(key, value);
+            Add(key, value);
         }
 
         /// <summary>
@@ -98,7 +98,7 @@
         /// <param name="value">the data for the value to put</param>
         public void Put(Formalism key, FrequencyDictionary value)
         {
-            this.Add(key.ToString(), value);
+            Add(key.ToString(), value);
         }
 
         /// <summary>
@@ -108,7 +108,7 @@
         /// <param name="value">the data for the value to put</param>
         public void Put(Formalism key, Chain value)
         {
-            this.Add(key.ToString(), value);
+            Add(key.ToString(), value);
         }
 
         /// <summary>
@@ -118,7 +118,7 @@
         /// <param name="value">the data for the value to put</param>
         public void Put(Parameter key, int value)
         {
-            this.Add(Enum.GetName(typeof(Parameter), key), value);
+            Add(Enum.GetName(typeof(Parameter), key), value);
         }
 
         /// <summary>
@@ -128,7 +128,7 @@
         /// <param name="value">the data for the value to put</param>
         public void Put(Parameter key, double value)
         {
-            this.Add(Enum.GetName(typeof(Parameter), key), value);
+            Add(Enum.GetName(typeof(Parameter), key), value);
         }
 
         /// <summary>
@@ -139,7 +139,7 @@
         {
             foreach (var contentValue in other)
             {
-                this.Add(contentValue.Key, contentValue.Value);
+                Add(contentValue.Key, contentValue.Value);
             }
         }
 
@@ -150,7 +150,7 @@
         /// <param name="value">the data for the value to put</param>
         public void Put(string key, byte value)
         {
-            this.Add(key, value);
+            Add(key, value);
         }
 
         /// <summary>
@@ -160,7 +160,7 @@
         /// <param name="value">the data for the value to put</param>
         public void Put(string key, short value)
         {
-            this.Add(key, value);
+            Add(key, value);
         }
 
         /// <summary>
@@ -170,7 +170,7 @@
         /// <param name="value">the data for the value to put</param>
         public void Put(string key, int value)
         {
-            this.Add(key, value);
+            Add(key, value);
         }
 
         /// <summary>
@@ -180,7 +180,7 @@
         /// <param name="value">the data for the value to put</param>
         public void Put(string key, long value)
         {
-            this.Add(key, value);
+            Add(key, value);
         }
 
         /// <summary>
@@ -190,7 +190,7 @@
         /// <param name="value">the data for the value to put</param>
         public void Put(string key, float value)
         {
-            this.Add(key, value);
+            Add(key, value);
         }
 
         /// <summary>
@@ -200,7 +200,7 @@
         /// <param name="value">the data for the value to put</param>
         public void Put(string key, double value)
         {
-            this.Add(key, value);
+            Add(key, value);
         }
 
         /// <summary>
@@ -210,7 +210,7 @@
         /// <param name="value">the data for the value to put</param>
         public void Put(string key, bool value)
         {
-            this.Add(key, value);
+            Add(key, value);
         }
 
         /// <summary>
@@ -220,7 +220,7 @@
         /// <param name="value">the data for the value to put</param>
         public void Put(string key, byte[] value)
         {
-            this.Add(key, value);
+            Add(key, value);
         }
 
         /// <summary>
@@ -229,7 +229,7 @@
         /// <param name="key">the name of the value to make null</param>
         public void PutNull(string key)
         {
-            this.Add(key, null);
+            Add(key, null);
         }
 
         /// <summary>
@@ -238,7 +238,7 @@
         /// <param name="key">the name of the value to remove</param>
         public new void Remove(string key)
         {
-            this.Remove(key);
+            Remove(key);
         }
 
         /// <summary>
@@ -246,7 +246,7 @@
         /// </summary>
         public new void Clear()
         {
-            this.Clear();
+            Clear();
         }
 
         /// <summary>
@@ -487,9 +487,9 @@
         public override string ToString()
         {
             var sb = new StringBuilder();
-            foreach (string name in this.Keys)
+            foreach (string name in Keys)
             {
-                string value = this.GetAsstring(name);
+                string value = GetAsstring(name);
                 if (sb.Length > 0)
                 {
                     sb.Append(" ");

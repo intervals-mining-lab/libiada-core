@@ -79,7 +79,7 @@
         /// <returns>distortion</returns>
         public double Distortion()
         {
-            return this.Distortion(this.chain, this.alphabet);
+            return Distortion(chain, alphabet);
         }
 
         /// <summary>

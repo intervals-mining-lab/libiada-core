@@ -59,9 +59,9 @@ namespace MarkovChains.MarkovChain.Matrices.Probability
                 temp += (double)matrix.ValueList[i];
             }
 
-            for (int i = 0; i < this.ValueList.Count; i++)
+            for (int i = 0; i < ValueList.Count; i++)
             {
-                this.ValueList[i] = (temp == 0) ? 0 : ((double)matrix.ValueList[i]) / temp;
+                ValueList[i] = (temp == 0) ? 0 : ((double)matrix.ValueList[i]) / temp;
             }
         }
 
@@ -76,7 +76,7 @@ namespace MarkovChains.MarkovChain.Matrices.Probability
         /// </returns>
         public Dictionary<IBaseObject, double> GetProbabilityVector(Alphabet alphabet)
         {
-            return this.GetProbabilityVector(alphabet, new int[] { });
+            return GetProbabilityVector(alphabet, new int[] { });
         }
 
         /// <summary>
@@ -96,7 +96,7 @@ namespace MarkovChains.MarkovChain.Matrices.Probability
         /// </exception>
         public Dictionary<IBaseObject, double> GetProbabilityVector(Alphabet alphabet, int[] pred)
         {
-            if (alphabet.Cardinality != this.AlphabetCardinality)
+            if (alphabet.Cardinality != AlphabetCardinality)
             {
                 throw new ArgumentException();
             }
@@ -107,9 +107,9 @@ namespace MarkovChains.MarkovChain.Matrices.Probability
             }
 
             var result = new Dictionary<IBaseObject, double>();
-            for (int i = 0; i < this.AlphabetCardinality; i++)
+            for (int i = 0; i < AlphabetCardinality; i++)
             {
-                result.Add(alphabet[i], (double)this.ValueList[i]);
+                result.Add(alphabet[i], (double)ValueList[i]);
             }
 
             return result;

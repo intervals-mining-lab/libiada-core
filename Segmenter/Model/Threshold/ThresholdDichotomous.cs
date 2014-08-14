@@ -23,8 +23,8 @@
         public ThresholdDichotomous(double leftBound, double rightBound)
             : base(leftBound, rightBound)
         {
-            this.current = (rightBound + leftBound) / 2.0;
-            this.Value = this.current;
+            current = (rightBound + leftBound) / 2.0;
+            Value = current;
         }
 
         /// <summary>
@@ -38,27 +38,27 @@
         /// </returns>
         public override double Next(Criterion.Criterion criterion)
         {
-            if (this.rightBound - this.leftBound > Precision)
+            if (rightBound - leftBound > Precision)
             {
                 double criterionDistortion = criterion.Distortion();
-                if (this.lastDistortion > criterionDistortion)
+                if (lastDistortion > criterionDistortion)
                 {
-                    this.Value = this.current;
-                    this.lastDistortion = criterionDistortion;
+                    Value = current;
+                    lastDistortion = criterionDistortion;
                 }
 
-                this.current = (this.rightBound + this.leftBound) / 2.0;
+                current = (rightBound + leftBound) / 2.0;
 
                 if (criterionDistortion < 0)
                 {
-                    this.leftBound = this.current;
+                    leftBound = current;
                 }
                 else
                 {
-                    this.rightBound = this.current;
+                    rightBound = current;
                 }
 
-                return this.current;
+                return current;
             }
 
             return -1;

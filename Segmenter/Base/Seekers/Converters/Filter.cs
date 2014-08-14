@@ -38,17 +38,17 @@
         /// <returns>number of hints</returns>
         public int FilterOut(string str)
         {
-            int len = this.Chain.ToString().Length;
-            for (int index = this.Chain.GetLength(); --index >= 0; )
+            int len = Chain.ToString().Length;
+            for (int index = Chain.GetLength(); --index >= 0; )
             {
-                this.Chain[index] = new ValueString(this.Chain[index].ToString().Replace(str, this.replacement));
-                if (this.Chain[index].ToString().Length == 0)
+                Chain[index] = new ValueString(Chain[index].ToString().Replace(str, replacement));
+                if (Chain[index].ToString().Length == 0)
                 {
-                    this.Chain.Remove(index, 1);
+                    Chain.Remove(index, 1);
                 }
             }
 
-            return this.Hints(len, str);
+            return Hints(len, str);
         }
 
         /// <summary>
@@ -60,7 +60,7 @@
         public int Replace(string str, string replacement)
         {
             this.replacement = replacement;
-            int hits = this.FilterOut(str);
+            int hits = FilterOut(str);
             this.replacement = string.Empty;
 
             return hits;
@@ -74,7 +74,7 @@
         /// </returns>
         public ComplexChain GetChain()
         {
-            return this.Chain.Clone();
+            return Chain.Clone();
         }
 
         /// <summary>
@@ -91,7 +91,7 @@
         /// </returns>
         private int Hints(int len, string str)
         {
-            double per = (len - this.Chain.ToString().Length) / (double)(str.Length - this.replacement.Length);
+            double per = (len - Chain.ToString().Length) / (double)(str.Length - replacement.Length);
             return (int)per;
         }
     }

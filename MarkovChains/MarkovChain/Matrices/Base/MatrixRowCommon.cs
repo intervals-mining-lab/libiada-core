@@ -46,7 +46,7 @@ namespace MarkovChains.MarkovChain.Matrices.Base
                 throw new ArgumentNullException("indexes", "Ошибка адресации");
             }
 
-            return (double)this.ValueList[indexes[0]];
+            return (double)ValueList[indexes[0]];
         }
     }
 }

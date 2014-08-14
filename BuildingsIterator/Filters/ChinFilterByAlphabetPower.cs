@@ -20,16 +20,16 @@ namespace BuildingsIterator.Filters
         /// <summary>
         /// Конструктор фильтра цепочек по мщности алфавита
         /// </summary>
-        /// <param name="minAlphPower">
+        /// <param name="minAlphabetCardinality">
         /// Минимальное значение мощности
         /// </param>
-        /// <param name="maxAlphPower">
+        /// <param name="maxAlphabetCardinality">
         /// Максимальное значение мощности
         /// </param>
-        public ChinFilterByAlphabetPower(int minAlphPower, int maxAlphPower)
+        public ChinFilterByAlphabetPower(int minAlphabetCardinality, int maxAlphabetCardinality)
         {
-            this.min = minAlphPower;
-            this.max = maxAlphPower;
+            min = minAlphabetCardinality;
+            max = maxAlphabetCardinality;
         }
 
         /// <summary>
@@ -39,12 +39,12 @@ namespace BuildingsIterator.Filters
         /// Строй
         /// </param>
         /// <returns>
-        /// true if alphabet power between min and max.
+        /// true if alphabet cardinality between min and max.
         /// </returns>
         public bool IsValid(string building)
         {
-            int power = this.GetAlphabetPowerFromBuilding(building);
-            return (power >= this.min) && (power <= this.max);
+            int cardinality = GetAlphabetPowerFromBuilding(building);
+            return (cardinality >= min) && (cardinality <= max);
         }
 
         /// <summary>

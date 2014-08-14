@@ -40,7 +40,7 @@
         /// </summary>
         public List<int> Arrangement
         {
-            get { return new List<int>(this.result); }
+            get { return new List<int>(result); }
         }
 
         /// <summary>
@@ -55,21 +55,21 @@
         public override int Seek(List<string> required)
         {
             int index = 0;
-            this.result = new List<int>();
-            while (this.iterator.HasNext())
+            result = new List<int>();
+            while (iterator.HasNext())
             {
-                List<string> sequence = this.iterator.Next();
+                List<string> sequence = iterator.Next();
                 for (List<string>.Enumerator iter = sequence.GetEnumerator(); iter.MoveNext(); index++)
                 {
-                    if (iter.Current.Equals(required[this.first]))
+                    if (iter.Current.Equals(required[first]))
                     {
-                        this.result.Add(index);
+                        result.Add(index);
                     }
                 }
             }
 
-            this.iterator.Reset();
-            return this.result.Count;
+            iterator.Reset();
+            return result.Count;
         }
 
         /// <summary>

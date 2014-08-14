@@ -25,7 +25,7 @@
         [SetUp]
         public void SetUp()
         {
-            this.chain = new ComplexChain("AACAGGTGCCCCTTATTT");
+            chain = new ComplexChain("AACAGGTGCCCCTTATTT");
         }
 
         /// <summary>
@@ -38,7 +38,7 @@
             int step = 1;
             int countSteps = 0;
 
-            var iterator = new StartIterator(this.chain, lengthCut, step);
+            var iterator = new StartIterator(chain, lengthCut, step);
             while (iterator.HasNext())
             {
                 iterator.Next();
@@ -48,7 +48,7 @@
             Assert.True(countSteps == iterator.MaxShifts);
 
             countSteps = 0;
-            iterator = new StartIterator(this.chain, lengthCut, step + 1);
+            iterator = new StartIterator(chain, lengthCut, step + 1);
             while (iterator.HasNext())
             {
                 iterator.Next();
@@ -74,7 +74,7 @@
             int lengthCut = 3;
             int step = 1;
 
-            var iterator = new StartIterator(this.chain, lengthCut, step);
+            var iterator = new StartIterator(chain, lengthCut, step);
 
             for (int i = 0; i < iterator.MaxShifts; i++)
             {
@@ -82,7 +82,7 @@
                 Assert.True(Helper.ToString(cut).Equals(triplesForStepOne[i]));
             }
 
-            iterator = new StartIterator(this.chain, lengthCut, step + 1);
+            iterator = new StartIterator(chain, lengthCut, step + 1);
 
             for (int i = 0; i < iterator.MaxShifts; i++)
             {
@@ -99,7 +99,7 @@
         {
             int length = 2;
             int step = 1;
-            var iterator = new StartIterator(this.chain, length, step);
+            var iterator = new StartIterator(chain, length, step);
             if (iterator.Move(3))
             {
                 iterator.Reset();
@@ -117,7 +117,7 @@
             int length = 2;
             int step = 1;
             int position = 3;
-            var iterator = new StartIterator(this.chain, length, step);
+            var iterator = new StartIterator(chain, length, step);
             iterator.Move(position);
             Assert.True(iterator.CursorPosition == position);
 
@@ -125,7 +125,7 @@
             iterator.Move(position);
             Assert.True(iterator.CursorPosition != position);
 
-            position = this.chain.GetLength() / 2;
+            position = chain.GetLength() / 2;
             iterator.Move(position);
             Assert.True(iterator.CursorPosition == position);
 
@@ -137,7 +137,7 @@
             step = 2;
             position = 3;
             string triple = "GTG";
-            iterator = new StartIterator(this.chain, length, step);
+            iterator = new StartIterator(chain, length, step);
             iterator.Move(position);
             iterator.Next();
             Assert.AreEqual(triple, Helper.ToString(iterator.Current()));
@@ -152,7 +152,7 @@
             int lengthCut = 3;
             int step = 1;
             int maxShifts = 16;
-            var iterator = new StartIterator(this.chain, lengthCut, step);
+            var iterator = new StartIterator(chain, lengthCut, step);
             Assert.True(iterator.MaxShifts == maxShifts);
         }
 
@@ -164,7 +164,7 @@
         {
             int lengthCut = 2;
             int step = 1;
-            var iterator = new StartIterator(this.chain, lengthCut, step);
+            var iterator = new StartIterator(chain, lengthCut, step);
             iterator.Next();
             Assert.True(iterator.CursorPosition == 0);
             iterator.Next();

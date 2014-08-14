@@ -1,10 +1,12 @@
-using System;
-using System.Xml;
-using LibiadaMusic.MusicXml;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-
 namespace LibiadaMusic.Tests.MusicXml
 {
+    using System;
+    using System.Xml;
+
+    using LibiadaMusic.MusicXml;
+
+    using Microsoft.VisualStudio.TestTools.UnitTesting;
+
     [TestClass]
     public class XmlReaderTests
     {

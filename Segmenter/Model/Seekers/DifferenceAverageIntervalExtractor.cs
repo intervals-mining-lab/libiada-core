@@ -21,7 +21,7 @@
         /// </summary>
         public DifferenceAverageIntervalExtractor()
         {
-            this.wordPriority = new Dictionary<double, KeyValuePair<List<string>, List<int>>>();
+            wordPriority = new Dictionary<double, KeyValuePair<List<string>, List<int>>>();
         }
 
         /// <summary>
@@ -48,12 +48,12 @@
             while (it.HasNext())
             {
                 it.Next();
-                this.fullEntry.Add(it, disp);
+                fullEntry.Add(it, disp);
             }
 
-            this.CalculateStd(convoluted, windowLen);
+            CalculateStd(convoluted, windowLen);
 
-            return this.DiscardCompositeWords(alphabet, level);
+            return DiscardCompositeWords(alphabet, level);
         }
 
         /// <summary>
@@ -70,16 +70,16 @@
             var geometricMean = new GeometricMean();
             var arithmeticMean = new ArithmeticMean();
 
-            foreach (KeyValuePair<List<string>, List<int>> accord in this.fullEntry.Entry())
+            foreach (KeyValuePair<List<string>, List<int>> accord in fullEntry.Entry())
             {
                 PositionFilter.Filtrate(accord.Value, windowLen);
                 var temp = new ComplexChain(accord.Value);
                 double geometric = geometricMean.Calculate(temp, convoluted.Anchor);
                 double arithmetic = arithmeticMean.Calculate(temp, convoluted.Anchor);
                 double std = 1 - (1 / Math.Abs(arithmetic - geometric));
-                if (!this.wordPriority.ContainsKey(std))
+                if (!wordPriority.ContainsKey(std))
                 {
-                    this.wordPriority.Add(std, accord);
+                    wordPriority.Add(std, accord);
                 }
             }
         }

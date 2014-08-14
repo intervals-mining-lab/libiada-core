@@ -76,7 +76,7 @@
             List<string> sequence = null;
             try
             {
-                sequence = new List<string>(this.ToList().GetRange(beginIndex, endIndex - beginIndex));
+                sequence = new List<string>(ToList().GetRange(beginIndex, endIndex - beginIndex));
             }
             catch (Exception)
             {
@@ -94,7 +94,7 @@
         public List<string> ToList()
         {
             var result = new List<string>();
-            for (int i = 0; i < this.GetLength(); i++)
+            for (int i = 0; i < GetLength(); i++)
             {
                 result.Add(this[i].ToString());
             }
@@ -112,7 +112,7 @@
         {
             try
             {
-                this.DeleteAt(index);
+                DeleteAt(index);
             }
             catch (Exception)
             {
@@ -130,39 +130,39 @@
         /// </returns>
         public IBaseObject DeleteAt(int index)
         {
-            IBaseObject element = this.alphabet[this.building[index]];
+            IBaseObject element = alphabet[building[index]];
             ICalculator calc = new ElementsCount();
-            CongenericChain tempCongenericChain = this.CongenericChain(element);
+            CongenericChain tempCongenericChain = CongenericChain(element);
             if ((int)calc.Calculate(tempCongenericChain, Link.None) == 1)
             {
-                var temp = this.congenericChains;
-                this.congenericChains = new CongenericChain[temp.Length - 1];
+                var temp = congenericChains;
+                congenericChains = new CongenericChain[temp.Length - 1];
                 int j = 0;
                 foreach (CongenericChain congenericChain in temp)
                 {
                     if (!congenericChain.Element.Equals(element))
                     {
-                        this.congenericChains[j] = congenericChain;
+                        congenericChains[j] = congenericChain;
                         j++;
                     }
                 }
 
-                this.alphabet.Remove(this.building[index]);
-                for (int k = 0; k < this.building.Length; k++)
+                alphabet.Remove(building[index]);
+                for (int k = 0; k < building.Length; k++)
                 {
-                    if (this.building[index] < this.building[k])
+                    if (building[index] < building[k])
                     {
-                        this.building[k] = this.building[k] - 1;
+                        building[k] = building[k] - 1;
                     }
                 }
             }
 
-            foreach (CongenericChain congenericChain in this.congenericChains)
+            foreach (CongenericChain congenericChain in congenericChains)
             {
                 congenericChain.DeleteAt(index);
             }
 
-            this.building = ArrayManipulator.DeleteAt(this.building, index);
+            building = ArrayManipulator.DeleteAt(building, index);
             return element;
         }
 
@@ -174,7 +174,7 @@
         /// </returns>
         public new ComplexChain Clone()
         {
-            var chain = new ComplexChain(this.ToList()) { Anchor = this.Anchor };
+            var chain = new ComplexChain(ToList()) { Anchor = Anchor };
 
             return chain;
         }
@@ -190,7 +190,7 @@
         /// </returns>
         public bool Equals(ComplexChain complexChain)
         {
-            if (complexChain.GetLength() != this.GetLength())
+            if (complexChain.GetLength() != GetLength())
             {
                 return false;
             }
@@ -222,14 +222,14 @@
                 return this;
             }
 
-            ComplexChain temp = this.Clone();
-            this.ClearAndSetNewLength(this.GetLength() + 1);
+            ComplexChain temp = Clone();
+            ClearAndSetNewLength(GetLength() + 1);
             for (int i = 0; i < temp.GetLength(); i++)
             {
                 this[i] = temp[i];
             }
 
-            this[this.GetLength() - 1] = new ValueString(str);
+            this[GetLength() - 1] = new ValueString(str);
             return this;
         }
 
@@ -249,9 +249,9 @@
                 return this;
             }
 
-            ComplexChain temp = this.Clone();
+            ComplexChain temp = Clone();
 
-            this.ClearAndSetNewLength(this.GetLength() + sequence.GetLength());
+            ClearAndSetNewLength(GetLength() + sequence.GetLength());
             for (int i = 0; i < temp.GetLength(); i++)
             {
                 this[i] = temp[i];
@@ -273,7 +273,7 @@
         /// </returns>
         public bool IsEmpty()
         {
-            return this.GetLength() == 0;
+            return GetLength() == 0;
         }
 
         /// <summary>
@@ -283,14 +283,14 @@
         /// <param name="len">count of words cut out</param>
         public void Remove(int pos, int len)
         {
-            if ((pos + len) > this.GetLength())
+            if ((pos + len) > GetLength())
             {
                 return;
             }
 
             for (int index = pos; index < len + pos; index++)
             {
-                this.DeleteAt(pos);
+                DeleteAt(pos);
             }
         }
 
@@ -304,7 +304,7 @@
             int wordEnd = pos + len;
             var temporarySplice = new StringBuilder();
             temporarySplice.Clear();
-            if (wordEnd > this.GetLength())
+            if (wordEnd > GetLength())
             {
                 return;
             }
@@ -316,10 +316,10 @@
 
             for (int i = 0; i < len - 1; i++)
             {
-                this.DeleteAt(pos);
+                DeleteAt(pos);
             }
 
-            this.Add(new ValueString(temporarySplice.ToString()), pos);
+            Add(new ValueString(temporarySplice.ToString()), pos);
         }
 
         /// <summary>
@@ -346,9 +346,9 @@
             {
                 try
                 {
-                    if (this.ToList().GetRange(index, length - index).Equals(word))
+                    if (ToList().GetRange(index, length - index).Equals(word))
                     {
-                        this.Join(index, length);
+                        Join(index, length);
                     }
 
                     index++;

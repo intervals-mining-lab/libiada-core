@@ -36,7 +36,7 @@ namespace MarkovChains.MarkovChain.Matrices.Absolute
             get
             {
                 double sum = 0;
-                foreach (double i in this.ValueList)
+                foreach (double i in ValueList)
                 {
                     sum += i;
                 }
@@ -105,7 +105,7 @@ namespace MarkovChains.MarkovChain.Matrices.Absolute
                 throw new ArgumentException();
             }
 
-            return this.Count;
+            return Count;
         }
 
         /// <summary>
@@ -116,7 +116,7 @@ namespace MarkovChains.MarkovChain.Matrices.Absolute
         /// </returns>
         public IProbabilityMatrix ProbabilityMatrix()
         {
-            var temp = new ProbabilityMatrixRow(this.AlphabetCardinality, 1);
+            var temp = new ProbabilityMatrixRow(AlphabetCardinality, 1);
             temp.Fill(this);
             return temp;
         }
@@ -135,18 +135,18 @@ namespace MarkovChains.MarkovChain.Matrices.Absolute
         /// </exception>
         public double Add(int[] arrayToTeach)
         {
-            if (arrayToTeach == null || arrayToTeach.Length > this.Rank)
+            if (arrayToTeach == null || arrayToTeach.Length > Rank)
             {
                 throw new ArgumentException();
             }
 
             if (arrayToTeach[0] == -1)
             {
-                return this.Value;
+                return Value;
             }
 
-            double result = ((double)this.ValueList[arrayToTeach[0]]) + 1;
-            this.ValueList[arrayToTeach[0]] = result;
+            double result = ((double)ValueList[arrayToTeach[0]]) + 1;
+            ValueList[arrayToTeach[0]] = result;
             return result;
         }
     }

@@ -32,7 +32,7 @@
         public CriterionAttitudeOfRemoteness(ThresholdVariator threshold, double precision)
             : base(threshold, precision)
         {
-            this.Value = double.MinValue;
+            Value = double.MinValue;
         }
 
         /// <summary>
@@ -49,16 +49,16 @@
         /// </returns>
         public override bool State(ComplexChain chain, FrequencyDictionary alphabet)
         {
-            double distortion = this.Distortion(chain, alphabet);
-            if (Math.Abs(this.Value) < Math.Abs(distortion))
+            double distortion = Distortion(chain, alphabet);
+            if (Math.Abs(Value) < Math.Abs(distortion))
             {
                 this.chain = chain.Clone();
                 this.alphabet = alphabet.Clone();
-                this.Value = distortion;
-                this.ThresholdToStop.SaveBest();
+                Value = distortion;
+                ThresholdToStop.SaveBest();
             }
 
-            return this.ThresholdToStop.Distance > ThresholdVariator.Precision;
+            return ThresholdToStop.Distance > ThresholdVariator.Precision;
         }
 
         /// <summary>
@@ -75,9 +75,9 @@
         /// </returns>
         public override double Distortion(ComplexChain chain, FrequencyDictionary alphabet)
         {
-            return (this.remoteness.Calculate(chain, chain.Anchor)
-                    / this.remoteness.Calculate(chain.Original(), chain.Anchor))
-                   - this.wordAverageLength.Calculate(chain, chain.Anchor);
+            return (remoteness.Calculate(chain, chain.Anchor)
+                    / remoteness.Calculate(chain.Original(), chain.Anchor))
+                   - wordAverageLength.Calculate(chain, chain.Anchor);
         }
     }
 }

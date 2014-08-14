@@ -23,7 +23,7 @@
         /// </summary>
         public FrequencyDictionary FrequencyDictionary
         {
-            get { return this.alphabet; }
+            get { return alphabet; }
         }
 
         /// <summary>

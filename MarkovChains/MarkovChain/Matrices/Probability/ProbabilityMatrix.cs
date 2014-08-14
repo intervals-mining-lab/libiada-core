@@ -58,12 +58,10 @@ namespace MarkovChains.MarkovChain.Matrices.Probability
                 temp += ((IOpenMatrix)matrix.ValueList[i]).Value;
             }
 
-            for (int i = 0; i < this.ValueList.Count; i++)
+            for (int i = 0; i < ValueList.Count; i++)
             {
-                ((IWritableMatrix)this.ValueList[i]).Value = (temp == 0)
-                                                            ? 0
-                                                            : ((IOpenMatrix)matrix.ValueList[i]).Value / temp;
-                ((IProbabilityMatrix)this.ValueList[i]).Fill((IOpenMatrix)matrix.ValueList[i]);
+                ((IWritableMatrix)ValueList[i]).Value = (temp == 0) ? 0 : ((IOpenMatrix)matrix.ValueList[i]).Value / temp;
+                ((IProbabilityMatrix)ValueList[i]).Fill((IOpenMatrix)matrix.ValueList[i]);
             }
         }
 
@@ -84,20 +82,20 @@ namespace MarkovChains.MarkovChain.Matrices.Probability
         public Dictionary<IBaseObject, double> GetProbabilityVector(Alphabet alphabet, int[] pred)
         {
             var result = new Dictionary<IBaseObject, double>();
-            if ((pred.Length > this.Rank - 1) || (pred.Length == 0))
+            if ((pred.Length > Rank - 1) || (pred.Length == 0))
             {
                 throw new ArgumentException();
             }
 
             if (pred[0] != -1)
             {
-                int[] newIndexes = (pred.Length == 1) ? null : this.GetChainLess(pred);
-                return ((IProbabilityMatrix)this.ValueList[pred[0]]).GetProbabilityVector(alphabet, newIndexes);
+                int[] newIndexes = (pred.Length == 1) ? null : GetChainLess(pred);
+                return ((IProbabilityMatrix)ValueList[pred[0]]).GetProbabilityVector(alphabet, newIndexes);
             }
 
             for (int i = 0; i < alphabet.Cardinality; i++)
             {
-                result.Add(alphabet[i], ((MatrixBase)this.ValueList[i]).Value);
+                result.Add(alphabet[i], ((MatrixBase)ValueList[i]).Value);
             }
 
             return result;

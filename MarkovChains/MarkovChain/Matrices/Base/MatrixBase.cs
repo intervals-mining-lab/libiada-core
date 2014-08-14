@@ -39,12 +39,12 @@ namespace MarkovChains.MarkovChain.Matrices.Base
         /// </param>
         public MatrixBase(int alphabetCardinality, int dimensionality, IMatrixBuilder builder)
         {
-            this.AlphabetCardinality = alphabetCardinality;
-            this.ValueList = new ArrayList();
-            this.Rank = dimensionality;
-            for (int i = 0; i < this.AlphabetCardinality; i++)
+            AlphabetCardinality = alphabetCardinality;
+            ValueList = new ArrayList();
+            Rank = dimensionality;
+            for (int i = 0; i < AlphabetCardinality; i++)
             {
-                this.ValueList.Add(builder.Create(this.AlphabetCardinality, dimensionality - 1));
+                ValueList.Add(builder.Create(AlphabetCardinality, dimensionality - 1));
             }
         }
 

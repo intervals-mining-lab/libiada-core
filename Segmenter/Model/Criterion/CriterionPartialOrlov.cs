@@ -26,8 +26,8 @@
         public CriterionPartialOrlov(ThresholdVariator threshold, double precision)
             : base(threshold, precision)
         {
-            this.Value = double.MaxValue;
-            this.precisionOfDifference = 1;
+            Value = double.MaxValue;
+            precisionOfDifference = 1;
         }
 
         /// <summary>
@@ -44,9 +44,9 @@
         /// </returns>
         public override bool State(ComplexChain chain, FrequencyDictionary alphabet)
         {
-            this.Update(chain, alphabet);
-            return (this.ThresholdToStop.Distance > ThresholdVariator.Precision)
-                   && (Math.Abs(this.Distortion(chain, alphabet)) > this.precisionOfDifference);
+            Update(chain, alphabet);
+            return (ThresholdToStop.Distance > ThresholdVariator.Precision)
+                   && (Math.Abs(Distortion(chain, alphabet)) > precisionOfDifference);
         }
 
         /// <summary>
@@ -63,7 +63,7 @@
         /// </returns>
         public override sealed double Distortion(ComplexChain chain, FrequencyDictionary alphabet)
         {
-            return this.TheoryVolume(chain, alphabet) - alphabet.Count;
+            return TheoryVolume(chain, alphabet) - alphabet.Count;
         }
 
         /// <summary>
@@ -78,7 +78,7 @@
             List<string> wordsList = alphabet.GetWords();
             foreach (string word in wordsList)
             {
-                double freq = this.Frequency(chain, word);
+                double freq = Frequency(chain, word);
                 if (freq > f)
                 {
                     f = freq;
@@ -161,7 +161,7 @@
         public double Frequency(ComplexChain chain, string word)
         {
             var temp = new List<object>(chain.Substring(0, chain.GetLength()));
-            return this.Frequency(temp, word) / (double)chain.GetLength();
+            return Frequency(temp, word) / (double)chain.GetLength();
         }
 
         /// <summary>
@@ -202,13 +202,13 @@
         /// </param>
         private void Update(ComplexChain chain, FrequencyDictionary alphabet)
         {
-            double dist = this.TheoryVolume(chain, alphabet) - alphabet.Count;
-            if (Math.Abs(this.Value) > Math.Abs(dist))
+            double dist = TheoryVolume(chain, alphabet) - alphabet.Count;
+            if (Math.Abs(Value) > Math.Abs(dist))
             {
                 this.alphabet = alphabet.Clone();
                 this.chain = chain.Clone();
-                this.Value = dist;
-                this.ThresholdToStop.SaveBest();
+                Value = dist;
+                ThresholdToStop.SaveBest();
             }
         }
     }

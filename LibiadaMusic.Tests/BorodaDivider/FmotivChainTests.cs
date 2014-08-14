@@ -1,9 +1,10 @@
-﻿using LibiadaMusic.BorodaDivider;
-using LibiadaMusic.ScoreModel;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-
-namespace LibiadaMusic.Tests.BorodaDivider
+﻿namespace LibiadaMusic.Tests.BorodaDivider
 {
+    using LibiadaMusic.BorodaDivider;
+    using LibiadaMusic.ScoreModel;
+
+    using Microsoft.VisualStudio.TestTools.UnitTesting;
+
     [TestClass]
     public class FmotivChainTests
     {

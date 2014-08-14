@@ -60,47 +60,47 @@ namespace PhantomChains
             BaseChain internalChain = (BaseChain)reorganizer.Reorganize(chain);
             for (int w = 0; w < internalChain.GetLength(); w++)
             {
-                this.totalLength += ((ValuePhantom)internalChain[w])[0].ToString().Length;
+                totalLength += ((ValuePhantom)internalChain[w])[0].ToString().Length;
             }
 
             ulong tempVariants = 1;
             int counter = 0;
             for (int k = 0; k < (int)Math.Ceiling((double)internalChain.GetLength() / BasicChainLength); k++)
             {
-                this.tempChains.Add(new BaseChain());
-                this.tempChains[k].ClearAndSetNewLength(BasicChainLength);
-                this.tree.Add(null);
+                tempChains.Add(new BaseChain());
+                tempChains[k].ClearAndSetNewLength(BasicChainLength);
+                tree.Add(null);
             }
 
             // цикл подсчЄта вариантов в каждом дереве 
             // и создани€ деревьев
-            for (int i = 0; i < this.tempChains.Count; i++)
+            for (int i = 0; i < tempChains.Count; i++)
             {
-                for (int j = 0; j < this.tempChains[i].GetLength(); j++)
+                for (int j = 0; j < tempChains[i].GetLength(); j++)
                 {
                     ValuePhantom tempMessage;
                     if (counter < internalChain.GetLength())
                     {
                         tempMessage = (ValuePhantom)internalChain[counter];
-                        this.tempChains[i][j] = tempMessage;
+                        tempChains[i][j] = tempMessage;
                     }
                     else
                     {
                         tempMessage = new ValuePhantom { new ValueChar('a') };
-                        this.tempChains[i][j] = tempMessage;
+                        tempChains[i][j] = tempMessage;
                     }
 
                     tempVariants *= (uint)tempMessage.Cardinality;
                     counter++;
                 }
 
-                if ((i != this.tempChains.Count - 1) || (this.tempChains.Count == 1))
+                if ((i != tempChains.Count - 1) || (tempChains.Count == 1))
                 {
-                    this.Variants = Math.Min(this.Variants, tempVariants);
+                    Variants = Math.Min(Variants, tempVariants);
                 }
 
                 tempVariants = 1;
-                this.tree[i] = new TreeTop(this.tempChains[i], this.generator);
+                tree[i] = new TreeTop(tempChains[i], generator);
             }
         }
 
@@ -111,27 +111,27 @@ namespace PhantomChains
         /// <returns>ћассив цепочек</returns>
         public List<BaseChain> Generate(ulong i)
         {
-            if (i > this.Variants)
+            if (i > Variants)
             {
                 throw new Exception();
             }
 
             var res = new List<BaseChain>();
             var tempRes = new List<BaseChain>();
-            for (int m = 0; m < this.tree.Count; m++)
+            for (int m = 0; m < tree.Count; m++)
             {
                 tempRes.Add(null);
             }
 
-            this.generator.Reset();
+            generator.Reset();
             int chainCounter = 0;
             while (res.Count != (uint)i)
             {
                 int counter = 0;
-                res.Add(new BaseChain(this.totalLength));
-                for (int l = 0; l < this.tree.Count; l++)
+                res.Add(new BaseChain(totalLength));
+                for (int l = 0; l < tree.Count; l++)
                 {
-                    tempRes[l] = this.tree[l].Generate();
+                    tempRes[l] = tree[l].Generate();
                     for (int u = 0; u < tempRes[l].GetLength(); u++)
                     {
                         if (counter < res[chainCounter].GetLength())
@@ -147,15 +147,15 @@ namespace PhantomChains
                 }
 
                 chainCounter++;
-                if (this.tree.Count != 1)
+                if (tree.Count != 1)
                 {
-                    this.tree[this.tree.Count - 1] = new TreeTop(this.tempChains[this.tempChains.Count - 1], this.generator);
+                    tree[tree.Count - 1] = new TreeTop(tempChains[tempChains.Count - 1], generator);
                 }
             }
 
-            for (int s = 0; s < this.tree.Count; s++)
+            for (int s = 0; s < tree.Count; s++)
             {
-                this.tree[s] = new TreeTop(this.tempChains[s], this.generator);
+                tree[s] = new TreeTop(tempChains[s], generator);
             }
 
             return res;

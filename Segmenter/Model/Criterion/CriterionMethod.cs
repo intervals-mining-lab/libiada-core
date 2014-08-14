@@ -49,14 +49,14 @@
             double criteria = -1;
             if (winLen == shortWord)
             {
-                criteria = this.Frequency(left, chainLength, minusLength)
-                           * this.Frequency(right, chainLength, minusLength);
+                criteria = Frequency(left, chainLength, minusLength)
+                           * Frequency(right, chainLength, minusLength);
             }
             else if (middle != null)
             {
-                criteria = (this.Frequency(left, chainLength, minusLength)
-                            * this.Frequency(right, chainLength, minusLength))
-                           / this.Frequency(middle, chainLength, midlLength);
+                criteria = (Frequency(left, chainLength, minusLength)
+                            * Frequency(right, chainLength, minusLength))
+                           / Frequency(middle, chainLength, midlLength);
             }   
 
             return criteria;

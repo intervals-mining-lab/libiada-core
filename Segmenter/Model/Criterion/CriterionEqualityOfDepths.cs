@@ -26,7 +26,7 @@
         public CriterionEqualityOfDepths(ThresholdVariator threshold, double precision)
             : base(threshold, precision)
         {
-            this.Value = double.MinValue;
+            Value = double.MinValue;
         }
 
         /// <summary>
@@ -43,16 +43,16 @@
         /// </returns>
         public override bool State(ComplexChain chain, FrequencyDictionary alphabet)
         {
-            double currentDistortion = this.depth.Calculate(chain, chain.Anchor); // - calculate(gamutDeep, chain);
-            if (Math.Abs(currentDistortion) > this.Value)
+            double currentDistortion = depth.Calculate(chain, chain.Anchor); // - calculate(gamutDeep, chain);
+            if (Math.Abs(currentDistortion) > Value)
             {
                 this.chain = chain.Clone();
                 this.alphabet = alphabet.Clone();
-                this.ThresholdToStop.SaveBest();
-                this.Value = currentDistortion;
+                ThresholdToStop.SaveBest();
+                Value = currentDistortion;
             }
 
-            return this.ThresholdToStop.Distance > ThresholdVariator.Precision;
+            return ThresholdToStop.Distance > ThresholdVariator.Precision;
         }
 
         /// <summary>
@@ -69,7 +69,7 @@
         /// </returns>
         public override double Distortion(ComplexChain chain, FrequencyDictionary alphabet)
         {
-            return this.depth.Calculate(chain.Original(), chain.Anchor); // - gamutDeep.Calculate(chain);
+            return depth.Calculate(chain.Original(), chain.Anchor); // - gamutDeep.Calculate(chain);
         }
     }
 }

@@ -46,34 +46,33 @@
             int maxWindowLen = (int)parameters.Get(Enum.GetName(typeof(Parameter), Parameter.Window));
             int windowDec = (int)parameters.Get(Enum.GetName(typeof(Parameter), Parameter.WindowDecrement));
 
-            this.convoluted = (ComplexChain)parameters.Get(Formalism.GetName(typeof(Formalism), Formalism.Sequence));
-            this.alphabet = new FrequencyDictionary();
+            convoluted = (ComplexChain)parameters.Get(Formalism.GetName(typeof(Formalism), Formalism.Sequence));
+            alphabet = new FrequencyDictionary();
 
             for (int winLen = maxWindowLen; (winLen >= windowDec) && (winLen > 1); winLen -= windowDec)
             {
                 bool flag = true;
                 while (flag)
                 {
-                    this.UpdateParams(parameters, winLen);
-                    KeyValuePair<List<string>, List<int>>? pair = WordExtractorFactory.GetSeeker(this.extractor).Find(parameters);
+                    UpdateParams(parameters, winLen);
+                    KeyValuePair<List<string>, List<int>>? pair = WordExtractorFactory.GetSeeker(extractor).Find(parameters);
                     flag = pair != null;
                     if (flag)
                     {
                         pair.Value.Value.Reverse();
                         foreach (int position in pair.Value.Value)
                         {
-                            this.convoluted.Join(position, winLen);
+                            convoluted.Join(position, winLen);
                         }
 
-                        // convoluted.updateCongenerics();
-                        this.alphabet.Add(Helper.ToString(pair.Value.Key), pair.Value.Value);
+                        alphabet.Add(Helper.ToString(pair.Value.Key), pair.Value.Value);
                     }
                 }
             }
 
-            this.FindLastWords();
+            FindLastWords();
 
-            return this.convoluted;
+            return convoluted;
         }
 
         /// <summary>
@@ -87,8 +86,8 @@
         /// </param>
         private void UpdateParams(ContentValues par, int winLen)
         {
-            par.Put(Formalism.Sequence.ToString(), this.convoluted.ToString());
-            par.Put(Formalism.Alphabet.ToString(), this.alphabet.ToString());
+            par.Put(Formalism.Sequence.ToString(), convoluted.ToString());
+            par.Put(Formalism.Alphabet.ToString(), alphabet.ToString());
             par.Put(Parameter.Window, winLen);
         }
 
@@ -97,17 +96,17 @@
         /// </summary>
         private void FindLastWords()
         {
-            for (int index = 0; index < this.convoluted.GetLength(); index++)
+            for (int index = 0; index < convoluted.GetLength(); index++)
             {
                 ValueString letter;
-                if ((letter = (ValueString)this.convoluted[index]).Value.Length == 1)
+                if ((letter = (ValueString)convoluted[index]).Value.Length == 1)
                 {
-                    if (!this.alphabet.Contains(letter))
+                    if (!alphabet.Contains(letter))
                     {
-                        this.alphabet.Add(letter, new List<int>());
+                        alphabet.Add(letter, new List<int>());
                     }
 
-                    this.alphabet.Put(letter, index);
+                    alphabet.Put(letter, index);
                 }
             }
         }

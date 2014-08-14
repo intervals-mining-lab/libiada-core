@@ -55,7 +55,7 @@
                     new Connection(3, 4)
                 };
 
-            this.manager = new GraphManager(connections, elements);
+            manager = new GraphManager(connections, elements);
         }
 
         /// <summary>
@@ -72,17 +72,17 @@
 
             for (int i = 0; i < connected.Length; i++)
             {
-                this.manager.Connections[i].Connected = connected[i];
+                manager.Connections[i].Connected = connected[i];
             }
 
             var taxonNumbers = new[] { 1, 1, 1, 1, 2 };
 
             for (int i = 0; i < taxonNumbers.Length; i++)
             {
-                this.manager.Elements[i].TaxonNumber = taxonNumbers[i];
+                manager.Elements[i].TaxonNumber = taxonNumbers[i];
             }
 
-            var d = EquipotencyCalculator.Calculate(this.manager);
+            var d = EquipotencyCalculator.Calculate(manager);
             d = Math.Round(d * 100) / 100;
             Assert.AreEqual(0.64, d);
         }
@@ -100,17 +100,17 @@
                 };
             for (int i = 0; i < connected.Length; i++)
             {
-                this.manager.Connections[i].Connected = connected[i];
+                manager.Connections[i].Connected = connected[i];
             }
 
             var taxonNumbers = new[] { 1, 1, 3, 2, 2 };
 
             for (int i = 0; i < taxonNumbers.Length; i++)
             {
-                this.manager.Elements[i].TaxonNumber = taxonNumbers[i];
+                manager.Elements[i].TaxonNumber = taxonNumbers[i];
             }
 
-            var d = EquipotencyCalculator.Calculate(this.manager);
+            var d = EquipotencyCalculator.Calculate(manager);
             d = Math.Round(d * 100) / 100;
             Assert.AreEqual(0.86, d);
         }
@@ -123,15 +123,15 @@
         {
             for (int i = 0; i < 6; i++)
             {
-                this.manager.Connections[i].Connected = false;
+                manager.Connections[i].Connected = false;
             }
 
             for (int i = 0; i < 4; i++)
             {
-                this.manager.Elements[i].TaxonNumber = i + 1;
+                manager.Elements[i].TaxonNumber = i + 1;
             }
 
-            Assert.AreEqual(1, EquipotencyCalculator.Calculate(this.manager));
+            Assert.AreEqual(1, EquipotencyCalculator.Calculate(manager));
         }
     }
 }

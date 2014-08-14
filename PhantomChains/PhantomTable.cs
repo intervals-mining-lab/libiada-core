@@ -30,33 +30,33 @@
         {
             BaseChain internalChain = source;
             ulong v = 1;
-            this.StartPositions.Add(0);
+            StartPositions.Add(0);
             for (int j = 0; j < internalChain.GetLength(); j++)
             {
                 if ((((ValuePhantom)internalChain[j])[0] is ValueString)
                     || (((ValuePhantom)internalChain[j])[0] is BaseChain))
                 {
-                    this.StartPositions.Add(this.StartPositions[j] + ((ValuePhantom)internalChain[j])[0].ToString().Length);
+                    StartPositions.Add(StartPositions[j] + ((ValuePhantom)internalChain[j])[0].ToString().Length);
                 }
                 else
                 {
-                    this.StartPositions.Add(this.StartPositions[j] + 1);
+                    StartPositions.Add(StartPositions[j] + 1);
                 }
 
-                this.table.Add(null);
+                table.Add(null);
             }
 
-            this.table.Add(null);
+            table.Add(null);
             for (int i = internalChain.GetLength(); i > 0; i--)
             {
                 var temp = (ValuePhantom)internalChain[i - 1];
-                this.table[i] = new Record(temp, v);
+                table[i] = new Record(temp, v);
                 v *= (uint)temp.Cardinality;
             }
 
             // корню дерева не ставится в соответствие фантомное сообщение
             var t = new ValuePhantom { NullValue.Instance() };
-            this.table[0] = new Record(t, v);
+            table[0] = new Record(t, v);
         }
 
         /// <summary>
@@ -65,7 +65,7 @@
         /// </summary>
         public int Length
         {
-            get { return this.table.Count; }
+            get { return table.Count; }
         }
 
         /// <summary>
@@ -79,9 +79,9 @@
         /// </returns>
         public Record this[int index]
         {
-            get { return this.table[index]; }
+            get { return table[index]; }
 
-            set { this.table[index] = value; }
+            set { table[index] = value; }
         }
     }
 }

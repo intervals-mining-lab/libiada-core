@@ -1,11 +1,13 @@
-﻿using System;
-using LibiadaMusic.BorodaDivider;
-using LibiadaMusic.Characteristics;
-using LibiadaMusic.ScoreModel;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-
-namespace LibiadaMusic.Tests.Characteristics
+﻿namespace LibiadaMusic.Tests.Characteristics
 {
+    using System;
+
+    using LibiadaMusic.BorodaDivider;
+    using LibiadaMusic.Characteristics;
+    using LibiadaMusic.ScoreModel;
+
+    using Microsoft.VisualStudio.TestTools.UnitTesting;
+
     [TestClass]
     public class AverageLengthTests
     {

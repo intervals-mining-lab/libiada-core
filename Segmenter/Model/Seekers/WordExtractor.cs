@@ -48,8 +48,8 @@
         /// </returns>
         protected KeyValuePair<List<string>, List<int>>? DiscardCompositeWords(FrequencyDictionary alphabet, double level)
         {
-            var stds = new List<double>(this.wordPriority.Keys);
-            var entries = new List<KeyValuePair<List<string>, List<int>>>(this.wordPriority.Values);
+            var stds = new List<double>(wordPriority.Keys);
+            var entries = new List<KeyValuePair<List<string>, List<int>>>(wordPriority.Values);
             for (int index = entries.Count; --index >= 0;)
             {
                 List<string> entry = entries[index].Key;
@@ -59,7 +59,7 @@
                     double bestStd = stds[index];
                     if (bestStd > level)
                     {
-                        return new KeyValuePair<List<string>, List<int>>(this.wordPriority[bestStd].Key, this.wordPriority[bestStd].Value);
+                        return new KeyValuePair<List<string>, List<int>>(wordPriority[bestStd].Key, wordPriority[bestStd].Value);
                     }
                 }
             }

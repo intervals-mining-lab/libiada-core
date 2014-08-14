@@ -46,7 +46,7 @@ namespace BuildingsIterator
         {
             get
             {
-                return this.calc;
+                return calc;
             }
         }
 
@@ -57,7 +57,7 @@ namespace BuildingsIterator
         {
             get
             {
-                return this.link;
+                return link;
             }
         }
     }

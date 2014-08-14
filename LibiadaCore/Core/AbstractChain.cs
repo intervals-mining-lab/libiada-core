@@ -100,7 +100,7 @@
         {
             var builder = new StringBuilder();
 
-            for (int i = 0; i < this.GetLength(); i++)
+            for (int i = 0; i < GetLength(); i++)
             {
                 builder.Append(this[i]);
             }

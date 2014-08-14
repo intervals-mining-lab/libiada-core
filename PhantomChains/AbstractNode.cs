@@ -50,7 +50,7 @@
         /// <returns>Дочерний элемент</returns>
         public TreeNode GetChild(int index)
         {
-            return this.Children[index];
+            return Children[index];
         }
 
         /// <summary>
@@ -62,16 +62,16 @@
         protected void Find(BaseChain result, IGenerator generator, PhantomTable table)
         {
             // если элемент не листовой
-            if (this.Children.Count != 0)
+            if (Children.Count != 0)
             {
                 double val = generator.Next();
                 ulong curVal = 0;
-                for (int i = 0; i < this.Children.Count; i++)
+                for (int i = 0; i < Children.Count; i++)
                 {
-                    curVal += this.Children[i].Volume;
-                    if (val <= ((double)curVal / this.Volume))
+                    curVal += Children[i].Volume;
+                    if (val <= ((double)curVal / Volume))
                     {
-                        this.Children[i].FillChain(result, generator, table);
+                        Children[i].FillChain(result, generator, table);
                         return;
                     }
                 }
@@ -80,7 +80,7 @@
             {
                 // если дочерних элементов нет, то генерация закончена
                 // и запускаем процедуру декременты варинтов в данной ветви
-                this.Decrement();
+                Decrement();
             }
         }
     }

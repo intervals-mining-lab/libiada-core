@@ -34,9 +34,9 @@
             int disp = 0;
             int length = convoluted.GetLength();
 
-            this.fullEntry = new DataCollector();
-            this.minusOneEntry = new DataCollector();
-            this.minusTwoEntry = new DataCollector();
+            fullEntry = new DataCollector();
+            minusOneEntry = new DataCollector();
+            minusTwoEntry = new DataCollector();
 
             var it = new StartIterator(convoluted, windowLen, scanStep);
             CriterionMethod criteriaCalculator = new ConvolutedCriterionMethod();
@@ -44,13 +44,13 @@
             while (it.HasNext())
             {
                 it.Next();
-                this.fullEntry.Add(it, disp);
-                this.FindLess(it);
+                fullEntry.Add(it, disp);
+                FindLess(it);
             }
 
-            this.CalculateStd(convoluted, pbalance, windowLen, length, criteriaCalculator);
+            CalculateStd(convoluted, pbalance, windowLen, length, criteriaCalculator);
 
-            return this.DiscardCompositeWords(alphabet, level);
+            return DiscardCompositeWords(alphabet, level);
         }
 
         /// <summary>
@@ -78,7 +78,7 @@
             int length,
             CriterionMethod criteriaCalculator)
         {
-            foreach (KeyValuePair<List<string>, List<int>> accord in this.fullEntry.Entry())
+            foreach (KeyValuePair<List<string>, List<int>> accord in fullEntry.Entry())
             {
                 PositionFilter.Filtrate(accord.Value, windowLen);
                 double frequency = criteriaCalculator.Frequency(accord.Value, length, windowLen);
@@ -86,17 +86,17 @@
                     accord.Key,
                     length,
                     windowLen,
-                    this.minusOneEntry,
-                    this.minusTwoEntry);
+                    minusOneEntry,
+                    minusTwoEntry);
                 double interval = criteriaCalculator.IntervalEstimate(
                     accord.Value,
                     length,
                     windowLen,
                     convoluted.Anchor);
                 double std = Math.Abs(pbalance * interval + (1 - pbalance) * frequency - design) / Math.Sqrt(design);
-                if (!this.wordPriority.ContainsKey(std))
+                if (!wordPriority.ContainsKey(std))
                 {
-                    this.wordPriority.Add(std, accord);
+                    wordPriority.Add(std, accord);
                 }
             }
         }

@@ -71,10 +71,10 @@ namespace Clusterizator
             
             foreach (var key in Vault.Keys)
             {
-                clone.Add(key.ToString(), this.Get(key.ToString()));
+                clone.Add(key.ToString(), Get(key.ToString()));
             }
 
-            clone.Id = this.Id;
+            clone.Id = Id;
 
             return clone;
         }

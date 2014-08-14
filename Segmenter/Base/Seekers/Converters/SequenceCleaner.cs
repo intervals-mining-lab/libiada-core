@@ -34,7 +34,7 @@
         {
             int hits = 0;
             EndIterator iterator;
-            iterator = new EndIterator(this.Chain, sequence.Count, Interfaces.Seeker.Step);
+            iterator = new EndIterator(Chain, sequence.Count, Interfaces.Seeker.Step);
 
             while (iterator.HasNext())
             {
@@ -50,7 +50,7 @@
 
                 if (chainsEquals)
                 {
-                    this.Chain.Remove(iterator.Position(), sequence.Count);
+                    Chain.Remove(iterator.Position(), sequence.Count);
                     hits = hits + 1;
                 }
             }

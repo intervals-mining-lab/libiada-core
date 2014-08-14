@@ -37,13 +37,13 @@
             if (position == zero)
             {
                 // first less one
-                this.minusOneEntry.Add(accord.GetRange(0, length - 1), position, 0);
-                this.minusOneEntry.Add(accord.GetRange(1, length - 1), position, 0);
+                minusOneEntry.Add(accord.GetRange(0, length - 1), position, 0);
+                minusOneEntry.Add(accord.GetRange(1, length - 1), position, 0);
             }
             else
             {
                 // common less one
-                this.minusOneEntry.Add(accord.GetRange(1, length - 1), position, 0);
+                minusOneEntry.Add(accord.GetRange(1, length - 1), position, 0);
             }
 
             // for less two
@@ -56,13 +56,13 @@
             if (position == zero)
             {
                 // first less two
-                this.minusTwoEntry.Add(accord.GetRange(1, length - 2), position, 0);
+                minusTwoEntry.Add(accord.GetRange(1, length - 2), position, 0);
                 return;
             }
 
             int param = it.MaxShifts == it.Shifts ? 0 : 1;
 
-            this.minusTwoEntry.Add(accord.GetRange(param, length - 2), position, 0);
+            minusTwoEntry.Add(accord.GetRange(param, length - 2), position, 0);
         }
     }
 }

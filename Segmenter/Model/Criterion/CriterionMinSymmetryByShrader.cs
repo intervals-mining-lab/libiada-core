@@ -25,7 +25,7 @@
         public CriterionMinSymmetryByShrader(ThresholdVariator threshold, double precision)
             : base(threshold, precision)
         {
-            this.Value = double.MaxValue;
+            Value = double.MaxValue;
         }
 
         /// <summary>
@@ -42,16 +42,16 @@
         /// </returns>
         public override bool State(ComplexChain chain, FrequencyDictionary alphabet)
         {
-            double current = this.Symmetry(alphabet);
-            if (this.Value > current)
+            double current = Symmetry(alphabet);
+            if (Value > current)
             {
-                this.Value = current;
+                Value = current;
                 this.chain = chain.Clone();
                 this.alphabet = alphabet.Clone();
-                this.ThresholdToStop.SaveBest();
+                ThresholdToStop.SaveBest();
             }
 
-            return this.ThresholdToStop.Distance > ThresholdVariator.Precision;
+            return ThresholdToStop.Distance > ThresholdVariator.Precision;
         }
 
         /// <summary>

@@ -32,7 +32,7 @@ namespace BuildingsIterator.Statistics.Calculators
             double sum = 0;
             for (int i = 0; i < values.Count; i++)
             {
-                sum += Math.Pow(values[i], this.s);
+                sum += Math.Pow(values[i], s);
             }
 
             sum /= values.Count;

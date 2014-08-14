@@ -1,8 +1,9 @@
-﻿using LibiadaMusic.BorodaDivider;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-
-namespace LibiadaMusic.Tests.BorodaDivider
+﻿namespace LibiadaMusic.Tests.BorodaDivider
 {
+    using LibiadaMusic.BorodaDivider;
+
+    using Microsoft.VisualStudio.TestTools.UnitTesting;
+
     [TestClass]
     public class ParamPauseTreatmentTests
     {

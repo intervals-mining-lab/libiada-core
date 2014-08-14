@@ -1,10 +1,12 @@
-﻿using System.Collections.Generic;
-using LibiadaMusic.MusicXml;
-using LibiadaMusic.ScoreModel;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-
-namespace LibiadaMusic.Tests.MusicXml
+﻿namespace LibiadaMusic.Tests.MusicXml
 {
+    using System.Collections.Generic;
+
+    using LibiadaMusic.MusicXml;
+    using LibiadaMusic.ScoreModel;
+
+    using Microsoft.VisualStudio.TestTools.UnitTesting;
+
     [TestClass]
     public class MusicXmlParserTests
     {

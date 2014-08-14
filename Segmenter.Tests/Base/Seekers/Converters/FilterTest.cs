@@ -35,9 +35,9 @@
         [SetUp]
         public void SetUp()
         {
-            this.str1 = "A";
-            this.str2 = "TA";
-            this.list = new List<string> { "ABABAB", "ABATAT", "TABABAB", "ABTABAB", "ABABAB", "ABABAB", "ABABAB" };
+            str1 = "A";
+            str2 = "TA";
+            list = new List<string> { "ABABAB", "ABATAT", "TABABAB", "ABTABAB", "ABABAB", "ABABAB", "ABABAB" };
         }
 
         /// <summary>
@@ -46,12 +46,12 @@
         [Test]
         public void FilteroutTest()
         {
-            var chain = new ComplexChain(this.list);
+            var chain = new ComplexChain(list);
             var filter = new Filter(chain);
-            int hits = filter.FilterOut(this.str1);
+            int hits = filter.FilterOut(str1);
 
             var sb = new StringBuilder();
-            foreach (string s in this.list)
+            foreach (string s in list)
             {
                 sb.Append(s);
             }
@@ -61,7 +61,7 @@
             Assert.True(buf.Length - result.Length == hits);
 
             filter = new Filter(chain);
-            hits = filter.FilterOut(this.str2);
+            hits = filter.FilterOut(str2);
 
             filter.GetChain().ToString();
             chain.ToString();
@@ -74,12 +74,12 @@
         [Test]
         public void ReplaceTest()
         {
-            var chain = new ComplexChain(this.list);
+            var chain = new ComplexChain(list);
             var filter = new Filter(chain);
-            int hits = filter.Replace(this.str2, "-");
+            int hits = filter.Replace(str2, "-");
 
             var sb = new StringBuilder();
-            foreach (string s in this.list)
+            foreach (string s in list)
             {
                 sb.Append(s);
             }

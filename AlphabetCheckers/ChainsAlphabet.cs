@@ -39,7 +39,7 @@ namespace AlphabetCheckers
         public ArrayList GetLengthList()
         {
             var list = new SortedList();
-            for (int i = 0; i < this.Cardinality; i++)
+            for (int i = 0; i < Cardinality; i++)
             {
                 int l = ((BaseChain)this[i]).GetLength();
                 if (list.ContainsKey(l))

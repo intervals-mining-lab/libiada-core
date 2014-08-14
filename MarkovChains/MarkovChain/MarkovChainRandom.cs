@@ -9,12 +9,7 @@ namespace MarkovChains.MarkovChain
     /// <summary>
     /// The markov chain random.
     /// </summary>
-    /// <typeparam name="TChainGenerated">
-    /// </typeparam>
-    /// <typeparam name="TChainTaught">
-    /// </typeparam>
-    public class MarkovChainRandom :
-        MarkovChainNotCongenericStatic
+    public class MarkovChainRandom : MarkovChainNotCongenericStatic
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="MarkovChainRandom"/> class.
@@ -42,7 +37,7 @@ namespace MarkovChains.MarkovChain
         public override void Teach(BaseChain chain, TeachingMethod method)
         {
             var builder = new MatrixBuilder();
-            var absoluteMatrix = (IAbsoluteMatrix)builder.Create(chain.Alphabet.Cardinality, this.Rank);
+            var absoluteMatrix = (IAbsoluteMatrix)builder.Create(chain.Alphabet.Cardinality, Rank);
             for (int i = 0; i < chain.Alphabet.Cardinality; i++)
             {
                 int[] temp = new int[1];
@@ -51,7 +46,7 @@ namespace MarkovChains.MarkovChain
                 absoluteMatrix.Add(temp);
             }
 
-            this.ProbabilityMatrix[0] = absoluteMatrix.ProbabilityMatrix();
+            ProbabilityMatrixes[0] = absoluteMatrix.ProbabilityMatrix();
         }
     }
 }

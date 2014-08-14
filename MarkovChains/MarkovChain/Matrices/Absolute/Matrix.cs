@@ -34,7 +34,7 @@ namespace MarkovChains.MarkovChain.Matrices.Absolute
             get
             {
                 double sum = 0;
-                foreach (MatrixBase row in this.ValueList)
+                foreach (MatrixBase row in ValueList)
                 {
                     sum += row.Value;
                 }
@@ -84,7 +84,7 @@ namespace MarkovChains.MarkovChain.Matrices.Absolute
         /// </returns>
         public IProbabilityMatrix ProbabilityMatrix()
         {
-            var temp = new ProbabilityMatrix(this.AlphabetCardinality, this.Rank);
+            var temp = new ProbabilityMatrix(AlphabetCardinality, Rank);
             temp.Fill(this);
             return temp;
         }
@@ -94,7 +94,7 @@ namespace MarkovChains.MarkovChain.Matrices.Absolute
         /// </summary>
         public void IncValue()
         {
-            this.Value += 1;
+            Value += 1;
         }
 
         /// <summary>
@@ -111,26 +111,26 @@ namespace MarkovChains.MarkovChain.Matrices.Absolute
         /// </exception>
         public double Add(int[] arrayToTeach)
         {
-            if (arrayToTeach == null || arrayToTeach.Length > this.Rank)
+            if (arrayToTeach == null || arrayToTeach.Length > Rank)
             {
                 throw new ArgumentException();
             }
 
             int index = arrayToTeach[0];
-            ((IAbsoluteMatrix)this.ValueList[index]).IncValue();
+            ((IAbsoluteMatrix)ValueList[index]).IncValue();
 
             if (arrayToTeach.Length <= 1)
             {
-                return this.Value;
+                return Value;
             }
 
-            int[] newIndexes = this.GetChainLess(arrayToTeach);
+            int[] newIndexes = GetChainLess(arrayToTeach);
             if (newIndexes[0] == -1)
             {
-                return this.Value;
+                return Value;
             }
 
-            return ((IAbsoluteMatrix)this.ValueList[index]).Add(newIndexes);
+            return ((IAbsoluteMatrix)ValueList[index]).Add(newIndexes);
         }
 
         /// <summary>
@@ -147,11 +147,11 @@ namespace MarkovChains.MarkovChain.Matrices.Absolute
             if (null != arrayOfIndexes && (arrayOfIndexes[0] != -1))
             {
                 int index = arrayOfIndexes[0];
-                int[] newArray = (arrayOfIndexes.Length == 1) ? null : this.GetChainLess(arrayOfIndexes);
-                return ((IAbsoluteMatrix)this.ValueList[index]).Sum(newArray);
+                int[] newArray = (arrayOfIndexes.Length == 1) ? null : GetChainLess(arrayOfIndexes);
+                return ((IAbsoluteMatrix)ValueList[index]).Sum(newArray);
             }
 
-            return this.Count;
+            return Count;
         }
     }
 }

@@ -26,7 +26,7 @@
         /// </returns>
         public override sealed double Frequency(List<int> std, int chainLength, int windowLength)
         {
-            return this.Probability(std.Count, chainLength - (std.Count * (windowLength - 1)));
+            return Probability(std.Count, chainLength - (std.Count * (windowLength - 1)));
         }
     }
 }

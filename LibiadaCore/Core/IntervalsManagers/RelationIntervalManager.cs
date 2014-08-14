@@ -9,8 +9,6 @@
     {
         private int[] building;
         private Chain sourceChain;
-        //private int firstElement;
-        //private int secondElement;
 
         private CongenericChain firstChain;
 
@@ -20,14 +18,8 @@
         {
             building = chain.Building;
             sourceChain = chain;
-           // this.firstElement = sourceChain.Alphabet.IndexOf(firstElement);
-           // this.secondElement = sourceChain.Alphabet.IndexOf(secondElement);
             firstChain = sourceChain.CongenericChain(firstElement);
             secondChain = sourceChain.CongenericChain(secondElement);
-           /* if (sourceChain.Alphabet.Cardinality < firstElement || sourceChain.Alphabet.Cardinality < secondElement)
-            {
-                throw new ArgumentException("Elements indexes are out of range.");
-            }*/
 
             int count = GetPairsCount();
           //  intervals = new int[count - 1];

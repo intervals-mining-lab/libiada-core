@@ -24,7 +24,7 @@ namespace Clusterizator.Krab
         public GraphElement(HybridDictionary element, object name)
         {
             Content = element;
-            this.Id = name;
+            Id = name;
             taxonNumber = 0;
         }
 
@@ -65,7 +65,7 @@ namespace Clusterizator.Krab
         /// </returns>
         public GraphElement Clone()
         {
-            var clone = new GraphElement(Content, this.Id) { TaxonNumber = taxonNumber };
+            var clone = new GraphElement(Content, Id) { TaxonNumber = taxonNumber };
             return clone;
         }
     }

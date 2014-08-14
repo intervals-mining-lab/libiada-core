@@ -17,7 +17,7 @@ namespace MarkovChains.MarkovChain.Generators
         /// </summary>
         public void Reset()
         {
-            this.random = new Random(this.random.Next());
+            random = new Random(random.Next());
         }
 
         /// <summary>
@@ -28,7 +28,7 @@ namespace MarkovChains.MarkovChain.Generators
         /// </returns>
         public double Next()
         {
-            return this.random.NextDouble();
+            return random.NextDouble();
         }
     }
 }

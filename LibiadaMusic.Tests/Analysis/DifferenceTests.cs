@@ -1,18 +1,19 @@
-﻿using LibiadaMusic.Analysis;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-
-namespace LibiadaMusic.Tests.Analysis
+﻿namespace LibiadaMusic.Tests.Analysis
 {
-	[TestClass]
+    using LibiadaMusic.Analysis;
+
+    using Microsoft.VisualStudio.TestTools.UnitTesting;
+
+    [TestClass]
     public class DifferenceTests
-	{
-		[TestMethod]
+    {
+        [TestMethod]
         public void DifferenceTest()
-		{
-			var dif1 = new Difference();
-			var dif2 = new Difference();
-			Assert.AreEqual(dif1.D,dif2.D);				
-			Assert.IsFalse(false);
-		}
-	}
+        {
+            var dif1 = new Difference();
+            var dif2 = new Difference();
+            Assert.AreEqual(dif1.D, dif2.D);
+            Assert.IsFalse(false);
+        }
+    }
 }

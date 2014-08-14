@@ -29,7 +29,7 @@ namespace PhantomChains.Tests
         [SetUp]
         public void Init()
         {
-            this.mother = new TestObject();
+            mother = new TestObject();
         }
 
         /// <summary>
@@ -39,18 +39,18 @@ namespace PhantomChains.Tests
         public void FirstTest()
         {
             var resultChain = new BaseChain(10);
-            resultChain.Add(this.mother.PhantomMessageBc[1], 0);
-            resultChain.Add(this.mother.PhantomMessageA[0], 1);
-            resultChain.Add(this.mother.PhantomMessageA[0], 2);
-            resultChain.Add(this.mother.PhantomMessageBc[1], 3);
-            resultChain.Add(this.mother.PhantomMessageA[0], 4);
-            resultChain.Add(this.mother.PhantomMessageBc[1], 5);
-            resultChain.Add(this.mother.PhantomMessageA[0], 6);
-            resultChain.Add(this.mother.PhantomMessageBc[1], 7);
-            resultChain.Add(this.mother.PhantomMessageA[0], 8);
-            resultChain.Add(this.mother.PhantomMessageA[0], 9);
+            resultChain.Add(mother.PhantomMessageBc[1], 0);
+            resultChain.Add(mother.PhantomMessageA[0], 1);
+            resultChain.Add(mother.PhantomMessageA[0], 2);
+            resultChain.Add(mother.PhantomMessageBc[1], 3);
+            resultChain.Add(mother.PhantomMessageA[0], 4);
+            resultChain.Add(mother.PhantomMessageBc[1], 5);
+            resultChain.Add(mother.PhantomMessageA[0], 6);
+            resultChain.Add(mother.PhantomMessageBc[1], 7);
+            resultChain.Add(mother.PhantomMessageA[0], 8);
+            resultChain.Add(mother.PhantomMessageA[0], 9);
 
-            var gen = new PhantomChainGenerator(this.mother.SourceChain, new MockGenerator());
+            var gen = new PhantomChainGenerator(mother.SourceChain, new MockGenerator());
             List<BaseChain> res = gen.Generate(1);
             Assert.AreEqual(res.Count, 1);
             Assert.AreEqual(resultChain, res[0]);
@@ -63,12 +63,12 @@ namespace PhantomChains.Tests
         public void SecondTest()
         {
             var resultChain = new BaseChain(5);
-            resultChain.Add(this.mother.PhantomMessageBc[1], 0);
-            resultChain.Add(this.mother.PhantomMessageA[0], 1);
-            resultChain.Add(this.mother.PhantomMessageBc[1], 2);
-            resultChain.Add(this.mother.PhantomMessageA[0], 3);
-            resultChain.Add(this.mother.PhantomMessageBc[0], 4);
-            var gen = new PhantomChainGenerator(this.mother.UnnormalChain, new MockGenerator());
+            resultChain.Add(mother.PhantomMessageBc[1], 0);
+            resultChain.Add(mother.PhantomMessageA[0], 1);
+            resultChain.Add(mother.PhantomMessageBc[1], 2);
+            resultChain.Add(mother.PhantomMessageA[0], 3);
+            resultChain.Add(mother.PhantomMessageBc[0], 4);
+            var gen = new PhantomChainGenerator(mother.UnnormalChain, new MockGenerator());
             List<BaseChain> res = gen.Generate(1);
             Assert.AreEqual(1, res.Count);
             Assert.AreEqual(resultChain, res[0]);
@@ -85,7 +85,7 @@ namespace PhantomChains.Tests
             iter.Reset();
             while (iter.Next())
             {
-                iter.WriteValue(this.mother.PhantomMessageBc);
+                iter.WriteValue(mother.PhantomMessageBc);
             }
 
             var gen = new PhantomChainGenerator(resultChain, new SimpleGenerator());
@@ -104,7 +104,7 @@ namespace PhantomChains.Tests
             iterator.Reset();
             while (iterator.Next())
             {
-                iterator.WriteValue(this.mother.PhantomMessageBc);
+                iterator.WriteValue(mother.PhantomMessageBc);
             }
 
             var gen = new PhantomChainGenerator(resultChain, new SimpleGenerator());

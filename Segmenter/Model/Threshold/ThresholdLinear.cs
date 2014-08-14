@@ -42,7 +42,7 @@
             }
 
             this.step = step;
-            this.current = this.rightBound;
+            current = this.rightBound;
         }
 
         /// <summary>
@@ -56,11 +56,11 @@
         /// </returns>
         public override double Next(Criterion.Criterion criterion)
         {
-            if (this.current > this.leftBound)
+            if (current > leftBound)
             {
-                this.current = this.rightBound;
-                this.rightBound = this.rightBound - this.step;
-                return this.current;
+                current = rightBound;
+                rightBound = rightBound - step;
+                return current;
             }
 
             return -1;

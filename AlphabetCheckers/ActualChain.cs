@@ -28,9 +28,9 @@ namespace AlphabetCheckers
         /// </param>
         public ActualChain(BaseChain source)
         {
-            this.Source = (BaseChain)source.Clone();
-            this.actualLength = 0;
-            this.resultChain = new BaseChain(source.GetLength());
+            Source = (BaseChain)source.Clone();
+            actualLength = 0;
+            resultChain = new BaseChain(source.GetLength());
         }
 
         /// <summary>
@@ -46,22 +46,22 @@ namespace AlphabetCheckers
         /// </param>
         public void RemoveCharacter(int length)
         {
-            if (this.Source.GetLength() == length)
+            if (Source.GetLength() == length)
             {
-                this.resultChain.Add(this.Source, this.actualLength);
-                this.Source = null;
+                resultChain.Add(Source, actualLength);
+                Source = null;
             }
             else
             {
-                var it1 = new IteratorStart(this.Source, length, 1);
+                var it1 = new IteratorStart(Source, length, 1);
                 it1.Next();
-                this.resultChain.Add(it1.Current(), this.actualLength);
-                var it2 = new IteratorEnd(this.Source, this.Source.GetLength() - length, 1);
+                resultChain.Add(it1.Current(), actualLength);
+                var it2 = new IteratorEnd(Source, Source.GetLength() - length, 1);
                 it2.Next();
-                this.Source = (BaseChain)it2.Current();
+                Source = (BaseChain)it2.Current();
             }
 
-            this.actualLength++;
+            actualLength++;
         }
 
         /// <summary>
@@ -72,7 +72,7 @@ namespace AlphabetCheckers
         /// </returns>
         public BaseChain GetResult()
         {
-            var it = new IteratorStart(this.resultChain, this.actualLength, 1);
+            var it = new IteratorStart(resultChain, actualLength, 1);
             it.Next();
             return (BaseChain)it.Current();
         }
@@ -85,10 +85,10 @@ namespace AlphabetCheckers
         /// </returns>
         public object Clone()
         {
-            var clone = new ActualChain((BaseChain)this.Source.Clone())
+            var clone = new ActualChain((BaseChain)Source.Clone())
                 {
-                    resultChain = (BaseChain)this.resultChain.Clone(),
-                    actualLength = this.actualLength
+                    resultChain = (BaseChain)resultChain.Clone(),
+                    actualLength = actualLength
                 };
             return clone;
         }

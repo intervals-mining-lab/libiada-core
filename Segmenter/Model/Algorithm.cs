@@ -25,7 +25,7 @@
         /// </param>
         public Algorithm(IEnumerable<Input> parameters)
         {
-            this.inputs = new List<Input>(parameters);
+            inputs = new List<Input>(parameters);
         }
 
         /// <summary>
@@ -36,7 +36,7 @@
         /// </param>
         public Algorithm(Input input)
         {
-            this.inputs.Add(input);
+            inputs.Add(input);
         }
 
         /// <summary>
@@ -51,7 +51,7 @@
         /// </summary>
         public void Run()
         {
-            this.Slot();
+            Slot();
         }
 
         /// <summary>
@@ -62,7 +62,7 @@
         /// </param>
         public void Add(IEnumerable<Input> input)
         {
-            this.inputs.AddRange(input);
+            inputs.AddRange(input);
         }
 
         /// <summary>
@@ -70,12 +70,12 @@
         /// </summary>
         public void Slot()
         {
-            foreach (Input input in this.inputs)
+            foreach (Input input in inputs)
             {
                 Algorithm algorithm = AlgorithmFactory.Make(input.Algorithm, input);
                 algorithm.Slot();
                 List<MainOutputData> res = algorithm.Upload();
-                this.results.Add(res[0]);
+                results.Add(res[0]);
                 res.RemoveAt(0);
             }
         }
@@ -86,7 +86,7 @@
         /// <returns>list of characteristics</returns>
         public List<MainOutputData> Upload()
         {
-            return this.results;
+            return results;
         }
     }
 }

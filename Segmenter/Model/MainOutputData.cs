@@ -36,7 +36,7 @@
         /// </returns>
         public Chain GetChain()
         {
-            return this.chain;
+            return chain;
         }
 
         /// <summary>
@@ -58,7 +58,7 @@
         /// </returns>
         public FrequencyDictionary GetFrequencyDictionary()
         {
-            return this.alphabet;
+            return alphabet;
         }
 
         /// <summary>
@@ -80,7 +80,7 @@
         /// </returns>
         public Dictionary<string, string> GetParameters()
         {
-            return this.parameters;
+            return parameters;
         }
 
         /// <summary>
@@ -90,7 +90,7 @@
         /// <param name="value">string value</param>
         public void AddInfo(IIdentifiable what, IIdentifiable value)
         {
-            this.parameters.Add(what.GetName(), value.GetName());
+            parameters.Add(what.GetName(), value.GetName());
         }
 
         /// <summary>
@@ -100,7 +100,7 @@
         /// <param name="value">digit value</param>
         public void AddInfo(IIdentifiable what, IDefinable value)
         {
-            this.parameters.Add(what.GetName(), value.GetValue().ToString());
+            parameters.Add(what.GetName(), value.GetValue().ToString());
         }
 
         /// <summary>
@@ -110,7 +110,7 @@
         /// <param name="value">digit calculated value</param>
         public void AddInfo(IIdentifiable what, double value)
         {
-            this.parameters.Add(what.GetName(), value.ToString());
+            parameters.Add(what.GetName(), value.ToString());
         }
     }
 }

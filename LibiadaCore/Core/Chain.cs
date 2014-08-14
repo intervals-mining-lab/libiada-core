@@ -95,8 +95,8 @@ namespace LibiadaCore.Core
         public override void ClearAndSetNewLength(int length)
         {
             base.ClearAndSetNewLength(length);
-            this.congenericChains = new CongenericChain[0];
-            this.relationIntervalsManagers = null;
+            congenericChains = new CongenericChain[0];
+            relationIntervalsManagers = null;
         }
 
         /// <summary>
@@ -128,7 +128,7 @@ namespace LibiadaCore.Core
             int pos = Alphabet.IndexOf(baseObject);
             if (pos != -1)
             {
-                result = (CongenericChain)this.congenericChains[pos].Clone();
+                result = (CongenericChain)congenericChains[pos].Clone();
             }
 
             return result;
@@ -146,7 +146,7 @@ namespace LibiadaCore.Core
         /// </returns>
         public CongenericChain CongenericChain(int i)
         {
-            return (CongenericChain)this.congenericChains[i].Clone();
+            return (CongenericChain)congenericChains[i].Clone();
         }
 
         /// <summary>
@@ -163,16 +163,16 @@ namespace LibiadaCore.Core
         /// </returns>
         public RelationIntervalManager GetRelationIntervalsManager(int first, int second)
         {
-            if (this.relationIntervalsManagers == null)
+            if (relationIntervalsManagers == null)
             {
-                this.relationIntervalsManagers = new RelationIntervalManager[alphabet.Cardinality - 1, alphabet.Cardinality - 1];
+                relationIntervalsManagers = new RelationIntervalManager[alphabet.Cardinality - 1, alphabet.Cardinality - 1];
             }
             var intervalsManager = relationIntervalsManagers[first - 1, second - 1];
 
             if (intervalsManager == null)
             {
                 intervalsManager = new RelationIntervalManager(this, alphabet[first], alphabet[second]);
-                this.relationIntervalsManagers[first - 1, second - 1] = intervalsManager;
+                relationIntervalsManagers[first - 1, second - 1] = intervalsManager;
             }
 
             return intervalsManager;
@@ -196,19 +196,19 @@ namespace LibiadaCore.Core
         {
             base.Add(item, index);
 
-            if (this.congenericChains.Length != (alphabet.Cardinality - 1))
+            if (congenericChains.Length != (alphabet.Cardinality - 1))
             {
                 var temp = new CongenericChain[alphabet.Cardinality - 1];
-                for (int i = 0; i < this.congenericChains.Length; i++)
+                for (int i = 0; i < congenericChains.Length; i++)
                 {
-                    temp[i] = this.congenericChains[i];
+                    temp[i] = congenericChains[i];
                 }
 
-                this.congenericChains = temp;
-                this.congenericChains[this.congenericChains.Length - 1] = new CongenericChain(item, building.Length);
+                congenericChains = temp;
+                congenericChains[congenericChains.Length - 1] = new CongenericChain(item, building.Length);
             }
 
-            foreach (CongenericChain chain in this.congenericChains)
+            foreach (CongenericChain chain in congenericChains)
             {
                 chain.Add(item, index);
             }
@@ -297,7 +297,7 @@ namespace LibiadaCore.Core
                 int end = building.Length - intervals[k].Last();
                 intervals[k].RemoveAt(0);
 
-                this.congenericChains[k].SetIntervalManager(new CongenericIntervalsManager(this, intervals[k].ToArray(), start, end));
+                congenericChains[k].SetIntervalManager(new CongenericIntervalsManager(this, intervals[k].ToArray(), start, end));
             }
         }
 
@@ -313,7 +313,7 @@ namespace LibiadaCore.Core
             base.FillClone(tempChain);
             if (tempChain != null)
             {
-                tempChain.congenericChains = (CongenericChain[])this.congenericChains.Clone();
+                tempChain.congenericChains = (CongenericChain[])congenericChains.Clone();
             }
         }
 

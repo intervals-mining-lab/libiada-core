@@ -49,7 +49,7 @@ namespace MarkovChains.MarkovChain
         {
             var temp = new BaseChain();
             temp.ClearAndSetNewLength(i);
-            var read = this.Rank > 1 ? new IteratorStart(temp, this.Rank - 1, 1) : null;
+            var read = Rank > 1 ? new IteratorStart(temp, Rank - 1, 1) : null;
             var write = new IteratorWritableStart(temp);
             if (read != null)
             {
@@ -58,12 +58,12 @@ namespace MarkovChains.MarkovChain
             }
 
             write.Reset();
-            this.Generator.Reset();
+            Generator.Reset();
 
             int m = 0;
             for (int j = 0; j < i; j++)
             {
-                if (m == this.CongenericRank + 1)
+                if (m == CongenericRank + 1)
                 {
                     m = 0;
                 }
@@ -72,7 +72,7 @@ namespace MarkovChains.MarkovChain
 
                 write.Next();
 
-                if (j >= this.Rank)
+                if (j >= Rank)
                 {
                     if (read != null)
                     {
@@ -86,11 +86,10 @@ namespace MarkovChains.MarkovChain
                     var indexedChain = new int[chain.GetLength()];
                     for (int k = 0; k < chain.GetLength(); k++)
                     {
-                        indexedChain[k] = this.Alphabet.IndexOf(chain[k]);
+                        indexedChain[k] = Alphabet.IndexOf(chain[k]);
                     }
 
-                    write.WriteValue(
-                        this.GetObject(this.ProbabilityMatrix[m - 1].GetProbabilityVector(this.Alphabet, indexedChain)));
+                    write.WriteValue(GetObject(ProbabilityMatrixes[m - 1].GetProbabilityVector(Alphabet, indexedChain)));
                 }
             }
 

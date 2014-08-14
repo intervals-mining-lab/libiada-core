@@ -25,7 +25,7 @@
         [SetUp]
         public void SetUp()
         {
-            this.complexChain = new ComplexChain("AACAGGTGCCCCTTATTT");
+            complexChain = new ComplexChain("AACAGGTGCCCCTTATTT");
         }
 
         /// <summary>
@@ -38,7 +38,7 @@
             int step = 1;
             int countSteps = 0;
 
-            var iterator = new EndIterator(this.complexChain, lengthCut, step);
+            var iterator = new EndIterator(complexChain, lengthCut, step);
             while (iterator.HasNext())
             {
                 iterator.Next();
@@ -48,7 +48,7 @@
             Assert.AreEqual(countSteps, iterator.MaxShifts);
 
             countSteps = 0;
-            iterator = new EndIterator(this.complexChain, lengthCut, step + 1);
+            iterator = new EndIterator(complexChain, lengthCut, step + 1);
             while (iterator.HasNext())
             {
                 iterator.Next();
@@ -76,7 +76,7 @@
             int lengthCut = 3;
             int step = 1;
 
-            var iterator = new EndIterator(this.complexChain, lengthCut, step);
+            var iterator = new EndIterator(complexChain, lengthCut, step);
 
             for (int i = iterator.MaxShifts - 1; i >= 0; i--)
             {
@@ -84,7 +84,7 @@
                 Assert.True(Helper.ToString(cut).Equals(triplesForStepOne[i]));
             }
 
-            iterator = new EndIterator(this.complexChain, lengthCut, step + 1);
+            iterator = new EndIterator(complexChain, lengthCut, step + 1);
 
             for (int i = iterator.MaxShifts - 1; i >= 0; i--)
             {
@@ -135,7 +135,7 @@
             int lengthCut = 3;
             int step = 1;
             int maxShifts = 16;
-            EndIterator iterator = new EndIterator(this.complexChain, lengthCut, step);
+            EndIterator iterator = new EndIterator(complexChain, lengthCut, step);
             Assert.True(iterator.MaxShifts == maxShifts);
         }
 

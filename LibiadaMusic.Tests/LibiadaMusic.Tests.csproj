@@ -55,7 +55,6 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="BorodaDivider\FmotivTests.cs" />
-    <Compile Include="BorodaDivider\BorodaDividerTests.cs" />
     <Compile Include="BorodaDivider\FmotivChainTests.cs" />
     <Compile Include="BorodaDivider\FmotivDividerTests.cs" />
     <Compile Include="BorodaDivider\FmotivIdentificatorTests.cs" />
