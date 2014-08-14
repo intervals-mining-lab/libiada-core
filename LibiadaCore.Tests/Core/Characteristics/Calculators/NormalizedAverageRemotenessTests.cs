@@ -19,7 +19,7 @@ namespace LibiadaCore.Tests.Core.Characteristics.Calculators
         [TestFixtureSetUp]
         public void Initialization()
         {
-            Calculator = new NormalizedAverageRemoteness();
+            Initialization("NormalizedAverageRemoteness");
         }
 
         /// <summary>

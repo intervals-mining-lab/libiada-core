@@ -3,6 +3,7 @@
     using System.Collections.Generic;
 
     using LibiadaCore.Core;
+    using LibiadaCore.Core.Characteristics;
     using LibiadaCore.Core.Characteristics.Calculators;
 
     using NUnit.Framework;
@@ -20,7 +21,18 @@
         /// <summary>
         /// Gets or sets the calculator.
         /// </summary>
-        protected IFullCalculator Calculator { private get; set; }
+        private IFullCalculator Calculator { get; set; }
+
+        /// <summary>
+        /// The initialization.
+        /// </summary>
+        /// <param name="calculator">
+        /// The calculator.
+        /// </param>
+        protected void Initialization(string calculator)
+        {
+            Calculator = CalculatorsFactory.CreateFullCalculator(calculator);
+        }
 
         /// <summary>
         /// The chain characteristic test.

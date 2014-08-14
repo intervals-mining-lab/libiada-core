@@ -93,6 +93,20 @@ namespace LibiadaCore.Core.Characteristics
         /// <returns>
         /// The <see cref="IFullCalculator"/>.
         /// </returns>
+        public static IFullCalculator CreateFullCalculator(Type type)
+        {
+            return CreateFullCalculator(type.Name);
+        }
+
+        /// <summary>
+        /// The create.
+        /// </summary>
+        /// <param name="type">
+        /// The type.
+        /// </param>
+        /// <returns>
+        /// The <see cref="ICongenericCalculator"/>.
+        /// </returns>
         /// <exception cref="ArgumentException">
         /// </exception>
         public static ICongenericCalculator CreateCongenericCalculator(string type)
@@ -106,6 +120,58 @@ namespace LibiadaCore.Core.Characteristics
             }
 
             throw new ArgumentException("Unknown calculator", "type");
+        }
+
+        /// <summary>
+        /// The create.
+        /// </summary>
+        /// <param name="type">
+        /// The type.
+        /// </param>
+        /// <returns>
+        /// The <see cref="ICongenericCalculator"/>.
+        /// </returns>
+        public static ICongenericCalculator CreateCongenericCalculator(Type type)
+        {
+            return CreateCongenericCalculator(type.Name);
+        }
+
+        /// <summary>
+        /// The create.
+        /// </summary>
+        /// <param name="type">
+        /// The type.
+        /// </param>
+        /// <returns>
+        /// The <see cref="ICalculator"/>.
+        /// </returns>
+        /// <exception cref="ArgumentException">
+        /// </exception>
+        public static ICalculator CreateCalculator(string type)
+        {
+            foreach (var calculator in Calculators)
+            {
+                if (type == calculator.Name)
+                {
+                    return (ICalculator)Activator.CreateInstance(calculator);
+                }
+            }
+
+            throw new ArgumentException("Unknown calculator", "type");
+        }
+
+        /// <summary>
+        /// The create.
+        /// </summary>
+        /// <param name="type">
+        /// The type.
+        /// </param>
+        /// <returns>
+        /// The <see cref="ICalculator"/>.
+        /// </returns>
+        public static ICalculator CreateCalculator(Type type)
+        {
+            return CreateCalculator(type.Name);
         }
     }
 }

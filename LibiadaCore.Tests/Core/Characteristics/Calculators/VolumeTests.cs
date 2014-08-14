@@ -17,7 +17,7 @@
         [TestFixtureSetUp]
         public void Initialization()
         {
-            Calculator = new Volume();
+            Initialization("Volume");
         }
 
         /// <summary>
