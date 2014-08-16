@@ -7,7 +7,8 @@
     /// </summary>
     public class RelationIntervalManager : IntervalsManager
     {
-        private int[] building;
+        private int[] intervals;
+
         private Chain sourceChain;
 
         private CongenericChain firstChain;
@@ -16,14 +17,14 @@
 
         public RelationIntervalManager(Chain chain, IBaseObject firstElement, IBaseObject secondElement)
         {
-            building = chain.Building;
+           // building = chain.Building;
             sourceChain = chain;
             firstChain = sourceChain.CongenericChain(firstElement);
             secondChain = sourceChain.CongenericChain(secondElement);
 
             int count = GetPairsCount();
-          //  intervals = new int[count - 1];
-          //  FillIntervals();
+            intervals = new int[count];
+            FillIntervals();
         }
 
         public int GetPairsCount()
@@ -110,6 +111,11 @@
             return -1;
         }
 
+        public int[] GetIntervals()
+        {
+            return (int[])intervals.Clone();
+        }
+
         private void FillIntervals()
         {
             int counter = 0;
@@ -118,7 +124,7 @@
                 int binaryInterval = GetBinaryInterval(i);
                 if (binaryInterval > 0)
                 {
-                    building[counter++] = binaryInterval;
+                    intervals[counter++] = binaryInterval;
                 }
             }
 
