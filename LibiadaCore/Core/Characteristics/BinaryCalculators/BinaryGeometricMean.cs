@@ -36,26 +36,19 @@ namespace LibiadaCore.Core.Characteristics.BinaryCalculators
                 return 0;
             }
 
-            var count = new ElementsCount();
-
-            // число вхождений первого компонента
-            var firstElementCount = (int)count.Calculate(chain.CongenericChain(firstElement), link);
+             int[] intervals = chain.GetRelationIntervalsManager(firstElement, secondElement).GetIntervals();
 
             // вычисляем логариф произведения интервалов между элементами
-            double intervals = 0;
-            for (int i = 1; i <= firstElementCount; i++)
+            double result = 0;
+            for (int i = 0; i < intervals.Length; i++)
             {
-                int binaryInterval = chain.GetRelationIntervalsManager(firstElement, secondElement).GetBinaryInterval(i);
-                if (binaryInterval > 0)
+                if (intervals[i] > 0)
                 {
-                    intervals += Math.Log(binaryInterval, 2);
+                    result += Math.Log(intervals[i], 2);
                 }
             }
 
-            // получаем количество пар
-            int pairs = chain.GetRelationIntervalsManager(firstElement, secondElement).GetPairsCount();
-            
-            return Math.Pow(2, pairs == 0 ? 0 : intervals / pairs);
+            return Math.Pow(2, intervals.Length == 0 ? 0 : result / intervals.Length);
         }
 
         /// <summary>
