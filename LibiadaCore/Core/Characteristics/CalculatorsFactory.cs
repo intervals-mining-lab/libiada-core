@@ -49,7 +49,8 @@ namespace LibiadaCore.Core.Characteristics
                                                                 typeof(AverageWordLength),
                                                                 typeof(RemotenessAsymmetry),
                                                                 typeof(RemotenessDispersion),
-                                                                typeof(RemotenessStandardDeviation)
+                                                                typeof(RemotenessStandardDeviation),
+                                                                typeof(NormalizedRemotenessStandardDeviation)
                                                             };
 
         /// <summary>

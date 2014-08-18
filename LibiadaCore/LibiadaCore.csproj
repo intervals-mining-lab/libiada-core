@@ -42,6 +42,7 @@
     <Compile Include="Core\AbstractChain.cs" />
     <Compile Include="Core\Characteristics\Calculators\ICalculator.cs" />
     <Compile Include="Core\Characteristics\Calculators\ICongenericCalculator.cs" />
+    <Compile Include="Core\Characteristics\Calculators\NormalizedRemotenessStandardDeviation.cs" />
     <Compile Include="Core\Characteristics\Calculators\RemotenessAsymmetry.cs" />
     <Compile Include="Core\Characteristics\Calculators\RemotenessDispersion.cs" />
     <Compile Include="Core\Characteristics\Calculators\RemotenessStandardDeviation.cs" />
