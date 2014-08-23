@@ -49,8 +49,8 @@
     <Compile Include="Core\Characteristics\Calculators\AlphabeticDepthTests.cs" />
     <Compile Include="Core\Characteristics\Calculators\CalculatorsTests.cs" />
     <Compile Include="Core\Characteristics\Calculators\NormalizedRemotenessStandardDeviationTests.cs" />
-    <Compile Include="Core\Characteristics\Calculators\RemotenessAsymmetryTests.cs" />
     <Compile Include="Core\Characteristics\Calculators\RemotenessDispersionTests.cs" />
+    <Compile Include="Core\Characteristics\Calculators\RemotenessSkewnessTests.cs" />
     <Compile Include="Core\Characteristics\Calculators\RemotenessStandardDeviationTests.cs" />
     <Compile Include="Misc\DataTransformers\DnaTransformerTests.cs" />
     <Compile Include="Misc\Iterators\CutRuleWithShiftedAndFixedStartTests.cs" />

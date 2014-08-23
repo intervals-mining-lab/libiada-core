@@ -40,12 +40,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Core\AbstractChain.cs" />
+    <Compile Include="Core\Characteristics\BinaryCalculators\ComplianceDegree.cs" />
     <Compile Include="Core\Characteristics\Calculators\ICalculator.cs" />
     <Compile Include="Core\Characteristics\Calculators\ICongenericCalculator.cs" />
     <Compile Include="Core\Characteristics\Calculators\NormalizedRemotenessStandardDeviation.cs" />
-    <Compile Include="Core\Characteristics\Calculators\RemotenessAsymmetry.cs" />
     <Compile Include="Core\Characteristics\Calculators\RemotenessDispersion.cs" />
+    <Compile Include="Core\Characteristics\Calculators\RemotenessSkewness.cs" />
     <Compile Include="Core\Characteristics\Calculators\RemotenessStandardDeviation.cs" />
+    <Compile Include="Core\IntervalsManagers\AccordanceIntervalsManager.cs" />
     <Compile Include="Misc\ArrayManipulator.cs" />
     <Compile Include="Misc\DataTransformers\DnaTransformer.cs" />
     <Compile Include="Misc\DissimilarChainFactory.cs" />
