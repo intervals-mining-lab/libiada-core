@@ -45,6 +45,7 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Core\Characteristics\BinaryCalculators\ComplianceDegreeTests.cs" />
     <Compile Include="Core\Characteristics\Calculators\AlphabeticAverageRemotenessTests.cs" />
     <Compile Include="Core\Characteristics\Calculators\AlphabeticDepthTests.cs" />
     <Compile Include="Core\Characteristics\Calculators\CalculatorsTests.cs" />

@@ -21,14 +21,13 @@
         /// <returns>
         /// The <see cref="double"/>.
         /// </returns>
-        public double Calculate(CongenericChain firstChain, CongenericChain secondChain)
+        public double Calculate(AccordanceIntervalsManager manager, Link link)
         {
-            var manager = new AccordanceIntervalsManager(firstChain, secondChain);
-
             if (manager.filteredFirstIntervals.Count == 0)
             {
                 return 0;
             }
+
             double result = 1;
 
             for (int i = 0; i < manager.filteredFirstIntervals.Count; i++)
@@ -36,9 +35,9 @@
                 result *= this.LocalCompliance(manager.filteredFirstIntervals[i], manager.filteredSecondIntervals[i]);
             }
 
-            double occurencesCoefficient = 2.0 * manager.filteredFirstIntervals.Count / (firstChain.OccurrencesCount + secondChain.OccurrencesCount);
+            double occurrencesCoefficient = 2.0 * manager.filteredFirstIntervals.Count / (manager.firstOccurrencesCount + manager.secondOccurrencesCount);
 
-            result = occurencesCoefficient * Math.Pow(result, 1.0 / manager.filteredFirstIntervals.Count);
+            result = occurrencesCoefficient * Math.Pow(result, 1.0 / manager.filteredFirstIntervals.Count);
             return result;
         }
 

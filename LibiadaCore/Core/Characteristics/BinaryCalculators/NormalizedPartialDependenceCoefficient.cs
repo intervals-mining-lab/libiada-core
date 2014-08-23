@@ -1,5 +1,7 @@
 ﻿namespace LibiadaCore.Core.Characteristics.BinaryCalculators
 {
+    using LibiadaCore.Core.IntervalsManagers;
+
     /// <summary>
     /// The normalized partial dependence coefficient of binary chain.
     /// </summary>
@@ -8,43 +10,26 @@
         /// <summary>
         /// Calculation method.
         /// </summary>
-        /// <param name="chain">
-        /// Source sequence.
-        /// </param>
-        /// <param name="firstElement">
-        /// Первый элемент
-        /// </param>
-        /// <param name="secondElement">
-        /// Второй элемент
+        /// <param name="manager">
+        /// Intervals manager.
         /// </param>
         /// <param name="link">
         /// Link of intervals in chain.
         /// </param>
         /// <returns>
-        /// <see cref="double"/> value of normalized partial dependence coefficient.
+        /// Среднегеометрический интервал
         /// </returns>
-        public override double Calculate(Chain chain, IBaseObject firstElement, IBaseObject secondElement, Link link)
+        public override double Calculate(RelationIntervalsManager manager, Link link)
         {
-            if (firstElement.Equals(secondElement))
+            if (manager.firstElement.Equals(manager.secondElement))
             {
                 return 0;
             }
 
             var partialDependenceCoefficient = new PartialDependenceCoefficient();
-            double k1 = partialDependenceCoefficient.Calculate(chain, firstElement, secondElement, link);
-            int pairs = chain.GetRelationIntervalsManager(firstElement, secondElement).GetPairsCount();
-            return k1 * 2 * pairs / chain.GetLength();
-        }
-
-        /// <summary>
-        /// Returns enum of this characteristic.
-        /// </summary>
-        /// <returns>
-        /// The <see cref="BinaryCharacteristicsEnum"/>.
-        /// </returns>
-        public override BinaryCharacteristicsEnum GetCharacteristicName()
-        {
-            return BinaryCharacteristicsEnum.NormalizedPartialDependenceCoefficient;
+            double k1 = partialDependenceCoefficient.Calculate(manager, link);
+            int pairs = manager.pairsCount;
+            return k1 * 2 * pairs / manager.firstChain.GetLength();
         }
     }
 }

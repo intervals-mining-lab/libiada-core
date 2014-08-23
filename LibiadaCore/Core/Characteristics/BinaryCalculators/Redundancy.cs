@@ -3,6 +3,7 @@
     using System;
 
     using LibiadaCore.Core.Characteristics.Calculators;
+    using LibiadaCore.Core.IntervalsManagers;
 
     /// <summary>
     /// Redundancy of binary chain.
@@ -12,35 +13,26 @@
         /// <summary>
         /// Calculation method.
         /// </summary>
-        /// <param name="chain">
-        /// Source sequence.
-        /// </param>
-        /// <param name="firstElement">
-        /// Первый элемент
-        /// </param>
-        /// <param name="secondElement">
-        /// Второй элемент
+        /// <param name="manager">
+        /// Intervals manager.
         /// </param>
         /// <param name="link">
         /// Link of intervals in chain.
         /// </param>
         /// <returns>
-        /// <see cref="double"/> value of redundancy.
+        /// Среднегеометрический интервал
         /// </returns>
-        public override double Calculate(Chain chain, IBaseObject firstElement, IBaseObject secondElement, Link link)
+        public override double Calculate(RelationIntervalsManager manager, Link link)
         {
-            if (firstElement.Equals(secondElement))
+            if (manager.firstElement.Equals(manager.secondElement))
             {
                 return 0;
             }
 
             var count = new ElementsCount();
-            CongenericChain firstElementChain = chain.CongenericChain(firstElement);
-            var firstElementCount = (int)count.Calculate(firstElementChain, link);
+            var firstElementCount = (int)count.Calculate(manager.firstChain, link);
             double avG = 0;
             int currentEntrance = 0;
-
-            var manager = chain.GetRelationIntervalsManager(firstElement, secondElement);
 
             for (int i = 1; i <= firstElementCount; i++)
             {
@@ -48,7 +40,7 @@
                 {
                     if (currentEntrance == 0)
                     {
-                        currentEntrance = manager.GetAfter(manager.Get(firstElement, i));
+                        currentEntrance = manager.GetAfter(manager.GetFirst(i));
                         if (link == Link.Start || link == Link.Both)
                         {
                             avG += Math.Log(currentEntrance, 2);
@@ -56,7 +48,7 @@
                     }
                     else
                     {
-                        int nextEntrance = manager.GetAfter(manager.Get(firstElement, i));
+                        int nextEntrance = manager.GetAfter(manager.GetFirst(i));
                         avG += Math.Log(nextEntrance - currentEntrance, 2);
                         currentEntrance = nextEntrance;
                     }
@@ -65,25 +57,14 @@
 
             if (link == Link.End || link == Link.Both)
             {
-                avG += Math.Log(chain.GetLength() - currentEntrance, 2);
+                avG += Math.Log(manager.firstChain.GetLength() - currentEntrance, 2);
             }
 
-            int pairs = manager.GetPairsCount();
+            int pairs = manager.pairsCount;
             avG = pairs == 0 ? 0 : avG / pairs;
             var geometricMeanCalculator = new BinaryGeometricMean();
-            double binaryGeometricMean = geometricMeanCalculator.Calculate(chain, firstElement, secondElement, link);
+            double binaryGeometricMean = geometricMeanCalculator.Calculate(manager, link);
             return 1 - (binaryGeometricMean / Math.Pow(2, avG));
-        }
-
-        /// <summary>
-        /// Returns enum of this characteristic.
-        /// </summary>
-        /// <returns>
-        /// The <see cref="BinaryCharacteristicsEnum"/>.
-        /// </returns>
-        public override BinaryCharacteristicsEnum GetCharacteristicName()
-        {
-            return BinaryCharacteristicsEnum.Redundancy;
         }
     }
 }

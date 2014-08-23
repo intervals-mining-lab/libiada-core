@@ -113,7 +113,7 @@
     <Compile Include="Core\IBaseObject.cs" />
     <Compile Include="Core\IntervalsManagers\CongenericIntervalsManager.cs" />
     <Compile Include="Core\IntervalsManagers\IntervalsManager.cs" />
-    <Compile Include="Core\IntervalsManagers\RelationIntervalManager.cs" />
+    <Compile Include="Core\IntervalsManagers\RelationIntervalsManager.cs" />
     <Compile Include="Core\Link.cs" />
     <Compile Include="Core\SimpleTypes\NullValue.cs" />
     <Compile Include="Core\SimpleTypes\ValuePhantom.cs" />

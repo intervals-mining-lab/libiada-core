@@ -113,24 +113,24 @@ namespace LibiadaCore.Tests.Core
             chain.Add(messageA, 8);
             chain.Add(messageC, 9);
 
-            Assert.AreEqual(2, chain.Get(messageA, 1));
-            Assert.AreEqual(8, chain.Get(messageA, 2));
-            Assert.AreEqual(-1, chain.Get(messageA, 3));
+            Assert.AreEqual(2, chain.GetOccurrence(messageA, 1));
+            Assert.AreEqual(8, chain.GetOccurrence(messageA, 2));
+            Assert.AreEqual(-1, chain.GetOccurrence(messageA, 3));
 
-            Assert.AreEqual(0, chain.Get(messageC, 1));
-            Assert.AreEqual(1, chain.Get(messageC, 2));
-            Assert.AreEqual(3, chain.Get(messageC, 3));
-            Assert.AreEqual(5, chain.Get(messageC, 4));
-            Assert.AreEqual(9, chain.Get(messageC, 5));
-            Assert.AreEqual(-1, chain.Get(messageC, 6));
+            Assert.AreEqual(0, chain.GetOccurrence(messageC, 1));
+            Assert.AreEqual(1, chain.GetOccurrence(messageC, 2));
+            Assert.AreEqual(3, chain.GetOccurrence(messageC, 3));
+            Assert.AreEqual(5, chain.GetOccurrence(messageC, 4));
+            Assert.AreEqual(9, chain.GetOccurrence(messageC, 5));
+            Assert.AreEqual(-1, chain.GetOccurrence(messageC, 6));
 
-            Assert.AreEqual(4, chain.Get(messageG, 1));
-            Assert.AreEqual(-1, chain.Get(messageG, 2));
-            Assert.AreEqual(-1, chain.Get(messageG, 3));
+            Assert.AreEqual(4, chain.GetOccurrence(messageG, 1));
+            Assert.AreEqual(-1, chain.GetOccurrence(messageG, 2));
+            Assert.AreEqual(-1, chain.GetOccurrence(messageG, 3));
 
-            Assert.AreEqual(6, chain.Get(messageT, 1));
-            Assert.AreEqual(7, chain.Get(messageT, 2));
-            Assert.AreEqual(-1, chain.Get(messageT, 3));
+            Assert.AreEqual(6, chain.GetOccurrence(messageT, 1));
+            Assert.AreEqual(7, chain.GetOccurrence(messageT, 2));
+            Assert.AreEqual(-1, chain.GetOccurrence(messageT, 3));
         }
 
         /// <summary>

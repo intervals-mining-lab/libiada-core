@@ -2,6 +2,8 @@
 {
     using System;
 
+    using LibiadaCore.Core.IntervalsManagers;
+
     /// <summary>
     /// Mutual dependence coefficient of binary chain.
     /// </summary>
@@ -10,43 +12,26 @@
         /// <summary>
         /// Calculation method.
         /// </summary>
-        /// <param name="chain">
-        /// Source sequence.
-        /// </param>
-        /// <param name="firstElement">
-        /// Первый элемент
-        /// </param>
-        /// <param name="secondElement">
-        /// Второй элемент
+        /// <param name="manager">
+        /// Intervals manager.
         /// </param>
         /// <param name="link">
         /// Link of intervals in chain.
         /// </param>
         /// <returns>
-        /// <see cref="double"/> value of mutual dependence coefficient.
+        /// Среднегеометрический интервал
         /// </returns>
-        public override double Calculate(Chain chain, IBaseObject firstElement, IBaseObject secondElement, Link link)
+        public override double Calculate(RelationIntervalsManager manager, Link link)
         {
-            if (firstElement.Equals(secondElement))
+            if (manager.firstElement.Equals(manager.secondElement))
             {
                 return 0;
             }
 
             var involvedCoefficientCalculator = new InvolvedPartialDependenceCoefficient();
-            double firstInvolvedCoefficient = involvedCoefficientCalculator.Calculate(chain, firstElement, secondElement, link);
-            double secondInvolvedCoefficient = involvedCoefficientCalculator.Calculate(chain, secondElement, firstElement, link);
+            double firstInvolvedCoefficient = involvedCoefficientCalculator.Calculate(manager, link);
+            double secondInvolvedCoefficient = involvedCoefficientCalculator.Calculate(new RelationIntervalsManager(manager.secondChain, manager.firstChain), link);
             return firstInvolvedCoefficient < 0 || secondInvolvedCoefficient < 0 ? 0 : Math.Sqrt(firstInvolvedCoefficient * secondInvolvedCoefficient);
-        }
-
-        /// <summary>
-        /// Returns enum of this characteristic.
-        /// </summary>
-        /// <returns>
-        /// The <see cref="BinaryCharacteristicsEnum"/>.
-        /// </returns>
-        public override BinaryCharacteristicsEnum GetCharacteristicName()
-        {
-            return BinaryCharacteristicsEnum.MutualDependenceCoefficient;
         }
     }
 }

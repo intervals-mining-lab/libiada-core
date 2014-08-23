@@ -24,7 +24,7 @@ namespace LibiadaCore.Core
         /// <summary>
         /// The relation intervals managers.
         /// </summary>
-        private RelationIntervalManager[,] relationIntervalsManagers;
+        private RelationIntervalsManager[,] relationIntervalsManagers;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Chain"/> class.
@@ -159,26 +159,26 @@ namespace LibiadaCore.Core
         /// The second.
         /// </param>
         /// <returns>
-        /// The <see cref="RelationIntervalManager"/>.
+        /// The <see cref="RelationIntervalsManager"/>.
         /// </returns>
-        public RelationIntervalManager GetRelationIntervalsManager(int first, int second)
+        public RelationIntervalsManager GetRelationIntervalsManager(int first, int second)
         {
             if (relationIntervalsManagers == null)
             {
-                relationIntervalsManagers = new RelationIntervalManager[alphabet.Cardinality - 1, alphabet.Cardinality - 1];
+                relationIntervalsManagers = new RelationIntervalsManager[alphabet.Cardinality - 1, alphabet.Cardinality - 1];
             }
             var intervalsManager = relationIntervalsManagers[first - 1, second - 1];
 
             if (intervalsManager == null)
             {
-                intervalsManager = new RelationIntervalManager(this, alphabet[first], alphabet[second]);
+                intervalsManager = new RelationIntervalsManager(this.CongenericChain(first - 1), this.CongenericChain(second - 1));
                 relationIntervalsManagers[first - 1, second - 1] = intervalsManager;
             }
 
             return intervalsManager;
         }
 
-        public RelationIntervalManager GetRelationIntervalsManager(IBaseObject first, IBaseObject second)
+        public RelationIntervalsManager GetRelationIntervalsManager(IBaseObject first, IBaseObject second)
         {
             return GetRelationIntervalsManager(alphabet.IndexOf(first), alphabet.IndexOf(second));
         }
@@ -261,7 +261,7 @@ namespace LibiadaCore.Core
         /// <returns>
         /// The <see cref="int"/>.
         /// </returns>
-        public int Get(IBaseObject element, int entry)
+        public int GetOccurrence(IBaseObject element, int entry)
         {
             return congenericChains[alphabet.IndexOf(element) - 1].GetOccurrence(entry);
         }

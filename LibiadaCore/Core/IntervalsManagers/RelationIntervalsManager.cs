@@ -5,43 +5,47 @@
     /// <summary>
     /// The relation interval manager.
     /// </summary>
-    public class RelationIntervalManager : IntervalsManager
+    public class RelationIntervalsManager
     {
         private int[] intervals;
 
-        private Chain sourceChain;
+        public readonly IBaseObject firstElement;
 
-        private CongenericChain firstChain;
+        public readonly IBaseObject secondElement;
 
-        private CongenericChain secondChain;
+        public CongenericChain firstChain;
 
-        public RelationIntervalManager(Chain chain, IBaseObject firstElement, IBaseObject secondElement)
+        public CongenericChain secondChain;
+
+        public int pairsCount;
+
+        public RelationIntervalsManager(CongenericChain firstChain, CongenericChain secondChain)
         {
-           // building = chain.Building;
-            sourceChain = chain;
-            firstChain = sourceChain.CongenericChain(firstElement);
-            secondChain = sourceChain.CongenericChain(secondElement);
+            this.firstElement = firstChain.Element;
+            this.secondElement = secondChain.Element;
+            this.firstChain = firstChain;
+            this.secondChain = secondChain;
 
-            int count = GetPairsCount();
-            intervals = new int[count];
+            FillPairsCount();
+            intervals = new int[pairsCount];
             FillIntervals();
         }
 
-        public int GetPairsCount()
+        public void FillPairsCount()
         {
+            pairsCount = 0;
+
             var elementCounter = new ElementsCount();
             var firstElementCount = (int)elementCounter.Calculate(firstChain, Link.None);
-            int pairs = 0;
+
             for (int i = 1; i <= firstElementCount; i++)
             {
                 int binaryInterval = GetBinaryInterval(i);
                 if (binaryInterval > 0)
                 {
-                    pairs++;
+                    pairsCount++;
                 }
             }
-
-            return pairs;
         }
 
         /// <summary>
@@ -83,9 +87,14 @@
             return -1;
         }
 
-        public int Get(IBaseObject element, int entry)
+        public int GetFirst(int entry)
         {
-            return sourceChain.Get(element, entry);
+            return firstChain.GetOccurrence(entry);
+        }
+
+        public int GetSecond(int entry)
+        {
+            return secondChain.GetOccurrence(entry);
         }
 
         /// <summary>
@@ -100,9 +109,9 @@
         /// </returns>
         public int GetAfter(int from)
         {
-            for (int i = from; i < sourceChain.GetLength(); i++)
+            for (int i = from; i < secondChain.GetLength(); i++)
             {
-                if (sourceChain[i].Equals(secondChain.Element))
+                if (secondChain[i].Equals(secondChain.Element))
                 {
                     return i;
                 }

@@ -2,6 +2,8 @@
 {
     using System.Collections.Generic;
 
+    using LibiadaCore.Core.IntervalsManagers;
+
     /// <summary>
     /// Абстрактный класс в который вынесен общий 
     /// для всех бинарных калькуляторов 
@@ -12,14 +14,8 @@
         /// <summary>
         /// Метод вычисления характеристики для пары элементов.
         /// </summary>
-        /// <param name="chain">
-        /// Source sequence.
-        /// </param>
-        /// <param name="firstElement">
-        /// Первый элемент
-        /// </param>
-        /// <param name="secondElement">
-        /// Второй элемент
+        /// <param name="manager">
+        /// Intervals manager.
         /// </param>
         /// <param name="link">
         /// Link of intervals in chain.
@@ -27,7 +23,7 @@
         /// <returns>
         /// Значение характеристики
         /// </returns>
-        public abstract double Calculate(Chain chain, IBaseObject firstElement, IBaseObject secondElement, Link link);
+        public abstract double Calculate(RelationIntervalsManager manager, Link link);
 
         /// <summary>
         /// Метод возвращает полную матрицу характеристик для всех пар элементов цепи.
@@ -49,19 +45,11 @@
                 result.Add(new List<double>());
                 for (int j = 0; j < chain.Alphabet.Cardinality; j++)
                 {
-                    result[i].Add(Calculate(chain, chain.Alphabet[i], chain.Alphabet[j], link));
+                    result[i].Add(Calculate(chain.GetRelationIntervalsManager(i + 1, j + 1), link));
                 }
             }
 
             return result;
         }
-
-        /// <summary>
-        /// Returns enum of this characteristic.
-        /// </summary>
-        /// <returns>
-        /// The <see cref="BinaryCharacteristicsEnum"/>.
-        /// </returns>
-        public abstract BinaryCharacteristicsEnum GetCharacteristicName();
     }
 }

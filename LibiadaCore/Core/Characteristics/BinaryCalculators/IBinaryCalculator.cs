@@ -2,6 +2,8 @@
 {
     using System.Collections.Generic;
 
+    using LibiadaCore.Core.IntervalsManagers;
+
     /// <summary>
     /// Interface of binary calculators.
     /// </summary>
@@ -10,14 +12,8 @@
         /// <summary>
         /// Calculation method.
         /// </summary>
-        /// <param name="chain">
-        /// Source sequence.
-        /// </param>
-        /// <param name="firstElement">
-        /// Первый элемент
-        /// </param>
-        /// <param name="secondElement">
-        /// Второй элемент
+        /// <param name="manager">
+        /// Intervals manager.
         /// </param>
         /// <param name="link">
         /// Link of intervals in chain.
@@ -25,7 +21,7 @@
         /// <returns>
         /// <see cref="double"/> value of characteristic.
         /// </returns>
-        double Calculate(Chain chain, IBaseObject firstElement, IBaseObject secondElement, Link link);
+        double Calculate(RelationIntervalsManager manager, Link link);
 
         /// <summary>
         /// Calculates relative characteristics of all pairs of elements.
@@ -40,13 +36,5 @@
         /// <see cref="List{List{double}}"/>.
         /// </returns>
         List<List<double>> Calculate(Chain chain, Link link);
-
-        /// <summary>
-        /// Returns enum of this characteristic.
-        /// </summary>
-        /// <returns>
-        /// The <see cref="BinaryCharacteristicsEnum"/>.
-        /// </returns>
-        BinaryCharacteristicsEnum GetCharacteristicName();
     }
 }
