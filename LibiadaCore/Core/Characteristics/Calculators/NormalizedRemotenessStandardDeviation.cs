@@ -11,7 +11,8 @@
         /// <summary>
         /// Normalized Remoteness Standard Deviation.
         /// </summary>
-        private readonly IFullCalculator remotenessAsymmetry = new RemotenessAsymmetry();
+        private readonly IFullCalculator remotenessAsymmetry = new RemotenessSkewness();
+        private readonly IFullCalculator remotenessStandartDeviation = new RemotenessStandardDeviation();
 
         /// <summary>
         /// Calculation method.
@@ -28,7 +29,7 @@
         public double Calculate(Chain chain, Link link)
         {
             return remotenessAsymmetry.Calculate(chain, link) /
-                   Math.Pow(remotenessAsymmetry.Calculate(chain, link), 1 / 3.0);   
+                   Math.Pow(remotenessStandartDeviation.Calculate(chain, link), 3.0);   
         }
     }
 }

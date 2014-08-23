@@ -11,7 +11,7 @@ namespace LibiadaCore.Tests.Core.Characteristics.Calculators
     /// The average remoteness asymmetry test.
     /// </summary>
     [TestFixture]
-    public class RemotenessAsymmetryTests : FullCalculatorsTests
+    public class RemotenessSkewnessTests : FullCalculatorsTests
     {
         /// <summary>
         /// Tests initialization method.
