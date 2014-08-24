@@ -3,7 +3,6 @@ namespace LibiadaCore.Tests.Core.Characteristics.Calculators
     using System;
 
     using LibiadaCore.Core;
-    using LibiadaCore.Core.Characteristics.Calculators;
 
     using NUnit.Framework;
 

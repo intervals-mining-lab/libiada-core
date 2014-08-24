@@ -17,7 +17,9 @@
 
         public CongenericChain secondChain;
 
-        public int pairsCount;
+        public readonly int pairsCount;
+
+        public readonly int Length;
 
         public RelationIntervalsManager(CongenericChain firstChain, CongenericChain secondChain)
         {
@@ -25,15 +27,16 @@
             this.secondElement = secondChain.Element;
             this.firstChain = firstChain;
             this.secondChain = secondChain;
+            this.Length = firstChain.GetLength();
 
-            FillPairsCount();
+            pairsCount = FillPairsCount();
             intervals = new int[pairsCount];
             FillIntervals();
         }
 
-        public void FillPairsCount()
+        private int FillPairsCount()
         {
-            pairsCount = 0;
+            var counter = 0;
 
             var elementCounter = new ElementsCount();
             var firstElementCount = (int)elementCounter.Calculate(firstChain, Link.None);
@@ -43,9 +46,11 @@
                 int binaryInterval = GetBinaryInterval(i);
                 if (binaryInterval > 0)
                 {
-                    pairsCount++;
+                    counter++;
                 }
             }
+
+            return counter;
         }
 
         /// <summary>

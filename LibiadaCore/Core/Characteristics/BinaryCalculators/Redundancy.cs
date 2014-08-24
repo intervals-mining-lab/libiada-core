@@ -57,7 +57,7 @@
 
             if (link == Link.End || link == Link.Both)
             {
-                avG += Math.Log(manager.firstChain.GetLength() - currentEntrance, 2);
+                avG += Math.Log(manager.Length - currentEntrance, 2);
             }
 
             int pairs = manager.pairsCount;

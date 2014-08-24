@@ -7,8 +7,6 @@ namespace BuildingsIterator
     using BuildingsIterator.Filters;
     using BuildingsIterator.Statistics;
 
-    using LibiadaCore.Core.Characteristics;
-
     /// <summary>
     /// Класс выборки цепочек с характеристиками
     /// </summary>
