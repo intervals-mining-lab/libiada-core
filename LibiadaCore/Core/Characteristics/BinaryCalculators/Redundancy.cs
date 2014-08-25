@@ -29,8 +29,7 @@
                 return 0;
             }
 
-            var count = new ElementsCount();
-            var firstElementCount = (int)count.Calculate(manager.firstChain, link);
+            var firstElementCount = manager.firstChain.OccurrencesCount;
             double avG = 0;
             int currentEntrance = 0;
 
@@ -60,10 +59,11 @@
                 avG += Math.Log(manager.Length - currentEntrance, 2);
             }
 
-            int pairs = manager.pairsCount;
-            avG = pairs == 0 ? 0 : avG / pairs;
+            avG = manager.pairsCount == 0 ? 0 : avG / manager.pairsCount;
+
             var geometricMeanCalculator = new BinaryGeometricMean();
             double binaryGeometricMean = geometricMeanCalculator.Calculate(manager, link);
+
             return 1 - (binaryGeometricMean / Math.Pow(2, avG));
         }
     }

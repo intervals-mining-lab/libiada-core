@@ -1,6 +1,5 @@
 ﻿namespace LibiadaCore.Core.Characteristics.BinaryCalculators
 {
-    using LibiadaCore.Core.Characteristics.Calculators;
     using LibiadaCore.Core.IntervalsManagers;
 
     /// <summary>
@@ -27,15 +26,11 @@
                 return 0;
             }
 
-            var counter = new ElementsCount();
             var redundancyCalculator = new Redundancy();
-
-            var firstElementCount = (int)counter.Calculate(manager.firstChain, link);
-            var secondElementCount = (int)counter.Calculate(manager.secondChain, link);
 
             double redundancy = redundancyCalculator.Calculate(manager, link);
             int pairs = manager.pairsCount;
-            return redundancy * (2 * pairs) / (firstElementCount + secondElementCount);
+            return redundancy * (2 * pairs) / (manager.firstChain.OccurrencesCount + manager.secondChain.OccurrencesCount);
         }
     }
 }

@@ -27,9 +27,10 @@
             }
 
             var partialDependenceCoefficient = new PartialDependenceCoefficient();
+
             double k1 = partialDependenceCoefficient.Calculate(manager, link);
-            int pairs = manager.pairsCount;
-            return k1 * 2 * pairs / manager.firstChain.GetLength();
+
+            return k1 * 2 * manager.pairsCount / manager.firstChain.GetLength();
         }
     }
 }
