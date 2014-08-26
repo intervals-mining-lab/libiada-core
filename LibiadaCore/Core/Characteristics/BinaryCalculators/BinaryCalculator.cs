@@ -23,7 +23,7 @@
         /// <returns>
         /// Значение характеристики
         /// </returns>
-        public abstract double Calculate(RelationIntervalsManager manager, Link link);
+        public abstract double Calculate(BinaryIntervalsManager manager, Link link);
 
         /// <summary>
         /// Метод возвращает полную матрицу характеристик для всех пар элементов цепи.

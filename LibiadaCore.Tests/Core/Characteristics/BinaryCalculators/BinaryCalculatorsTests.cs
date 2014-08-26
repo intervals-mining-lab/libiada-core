@@ -3,6 +3,7 @@
     using System.Collections.Generic;
 
     using LibiadaCore.Core;
+    using LibiadaCore.Core.Characteristics;
     using LibiadaCore.Core.Characteristics.BinaryCalculators;
 
     using NUnit.Framework;
@@ -15,17 +16,28 @@
         /// <summary>
         /// The chains.
         /// </summary>
-        protected readonly List<Chain> Chains = BinaryCalculationHelper.Chains;
+        protected readonly List<Chain> Chains = ChainsStorage.BinaryChains;
 
         /// <summary>
         /// The elements.
         /// </summary>
-        private readonly Dictionary<string, IBaseObject> elements = BinaryCalculationHelper.Elements;
+        private readonly Dictionary<string, IBaseObject> elements = ChainsStorage.Elements;
 
         /// <summary>
-        /// Gets or sets the calculator.
+        /// Gets the calculator.
         /// </summary>
-        protected IBinaryCalculator Calculator { get; set; }
+        protected IBinaryCalculator Calculator { get; private set; }
+
+        /// <summary>
+        /// The initialization.
+        /// </summary>
+        /// <param name="calculator">
+        /// The calculator.
+        /// </param>
+        protected void Initialization(string calculator)
+        {
+            Calculator = BinaryCalculatorsFactory.CreateCalculator(calculator);
+        }
 
         /// <summary>
         /// The calculation test.

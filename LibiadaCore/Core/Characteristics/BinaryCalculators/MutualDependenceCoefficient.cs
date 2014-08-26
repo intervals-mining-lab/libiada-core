@@ -21,7 +21,7 @@
         /// <returns>
         /// Среднегеометрический интервал
         /// </returns>
-        public override double Calculate(RelationIntervalsManager manager, Link link)
+        public override double Calculate(BinaryIntervalsManager manager, Link link)
         {
             if (manager.firstElement.Equals(manager.secondElement))
             {
@@ -30,7 +30,7 @@
 
             var involvedCoefficientCalculator = new InvolvedPartialDependenceCoefficient();
             double firstInvolvedCoefficient = involvedCoefficientCalculator.Calculate(manager, link);
-            double secondInvolvedCoefficient = involvedCoefficientCalculator.Calculate(new RelationIntervalsManager(manager.secondChain, manager.firstChain), link);
+            double secondInvolvedCoefficient = involvedCoefficientCalculator.Calculate(new BinaryIntervalsManager(manager.secondChain, manager.firstChain), link);
             return firstInvolvedCoefficient < 0 || secondInvolvedCoefficient < 0 ? 0 : Math.Sqrt(firstInvolvedCoefficient * secondInvolvedCoefficient);
         }
     }

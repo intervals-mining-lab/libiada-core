@@ -21,7 +21,7 @@
         /// <returns>
         /// <see cref="double"/> value of characteristic.
         /// </returns>
-        double Calculate(RelationIntervalsManager manager, Link link);
+        double Calculate(BinaryIntervalsManager manager, Link link);
 
         /// <summary>
         /// Calculates relative characteristics of all pairs of elements.

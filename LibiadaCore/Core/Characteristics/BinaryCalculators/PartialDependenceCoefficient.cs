@@ -19,7 +19,7 @@
         /// <returns>
         /// Среднегеометрический интервал
         /// </returns>
-        public override double Calculate(RelationIntervalsManager manager, Link link)
+        public override double Calculate(BinaryIntervalsManager manager, Link link)
         {
             if (manager.firstElement.Equals(manager.secondElement))
             {

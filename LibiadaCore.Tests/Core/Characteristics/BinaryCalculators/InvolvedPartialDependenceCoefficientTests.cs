@@ -4,7 +4,6 @@
     using System.Collections.Generic;
 
     using LibiadaCore.Core;
-    using LibiadaCore.Core.Characteristics.BinaryCalculators;
 
     using NUnit.Framework;
 
@@ -17,10 +16,10 @@
         /// <summary>
         /// Tests initialization method.
         /// </summary>
-        [SetUp]
+        [TestFixtureSetUp]
         public void Initialization()
         {
-            Calculator = new InvolvedPartialDependenceCoefficient();
+            Initialization("InvolvedPartialDependenceCoefficient");
         }
 
         /// <summary>

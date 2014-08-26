@@ -7,21 +7,21 @@
     /// <summary>
     /// The compliance degree.
     /// </summary>
-    public class ComplianceDegree
+    public class ComplianceDegree : BinaryCalculator
     {
         /// <summary>
         /// The calculate.
         /// </summary>
-        /// <param name="firstChain">
-        /// The first chain.
+        /// <param name="manager">
+        /// The manager.
         /// </param>
-        /// <param name="secondChain">
-        /// The second chain.
+        /// <param name="link">
+        /// The link.
         /// </param>
         /// <returns>
         /// The <see cref="double"/>.
         /// </returns>
-        public double Calculate(AccordanceIntervalsManager manager, Link link)
+        public override double Calculate(BinaryIntervalsManager manager, Link link)
         {
             if (manager.filteredFirstIntervals.Count == 0)
             {
@@ -32,7 +32,7 @@
 
             for (int i = 0; i < manager.filteredFirstIntervals.Count; i++)
             {
-                result *= this.LocalCompliance(manager.filteredFirstIntervals[i], manager.filteredSecondIntervals[i]);
+                result *= LocalCompliance(manager.filteredFirstIntervals[i], manager.filteredSecondIntervals[i]);
             }
 
             double occurrencesCoefficient = 2.0 * manager.filteredFirstIntervals.Count / (manager.firstOccurrencesCount + manager.secondOccurrencesCount);

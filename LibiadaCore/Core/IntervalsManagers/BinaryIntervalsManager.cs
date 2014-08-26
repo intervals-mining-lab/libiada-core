@@ -1,11 +1,13 @@
 ﻿namespace LibiadaCore.Core.IntervalsManagers
 {
+    using System.Collections.Generic;
+
     using LibiadaCore.Core.Characteristics.Calculators;
 
     /// <summary>
     /// The relation interval manager.
     /// </summary>
-    public class RelationIntervalsManager
+    public class BinaryIntervalsManager
     {
         private int[] intervals;
 
@@ -21,13 +23,44 @@
 
         public readonly int Length;
 
-        public RelationIntervalsManager(CongenericChain firstChain, CongenericChain secondChain)
+        public List<int> filteredFirstIntervals = new List<int>();
+        public List<int> filteredSecondIntervals = new List<int>();
+
+        public readonly int firstOccurrencesCount;
+
+        public readonly int secondOccurrencesCount;
+
+        public BinaryIntervalsManager(CongenericChain firstChain, CongenericChain secondChain)
         {
             this.firstElement = firstChain.Element;
             this.secondElement = secondChain.Element;
             this.firstChain = firstChain;
             this.secondChain = secondChain;
             this.Length = firstChain.GetLength();
+
+            this.firstOccurrencesCount = firstChain.OccurrencesCount;
+            this.secondOccurrencesCount = secondChain.OccurrencesCount;
+
+            int[] firstIntervals = firstChain.GetIntervals(Link.End);
+            int[] secondIntervals = secondChain.GetIntervals(Link.End);
+
+            int j = 1;
+
+            for (int i = 1; i < firstChain.OccurrencesCount - 1; i++)
+            {
+                int firstPosition = firstChain.GetOccurrence(i);
+                int nextFirstPosition = firstChain.GetOccurrence(i + 1) == -1 ? firstChain.GetLength() : firstChain.GetOccurrence(i + 1);
+                for (; j < secondChain.OccurrencesCount - 1; j++)
+                {
+                    int secondOccurrence = secondChain.GetOccurrence(j);
+                    if (secondOccurrence >= firstPosition && secondOccurrence < nextFirstPosition)
+                    {
+                        filteredFirstIntervals.Add(firstIntervals[i - 1]);
+                        filteredSecondIntervals.Add(secondIntervals[j - 1]);
+                        break;
+                    }
+                }
+            }
 
             pairsCount = FillPairsCount();
             intervals = new int[pairsCount];

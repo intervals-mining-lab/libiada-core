@@ -22,7 +22,7 @@ namespace LibiadaCore.Core.Characteristics.BinaryCalculators
         /// <returns>
         /// Среднегеометрический интервал
         /// </returns>
-        public override double Calculate(RelationIntervalsManager manager, Link link)
+        public override double Calculate(BinaryIntervalsManager manager, Link link)
         {
             // зависимость компонента от самого себя равна нулю
             if (manager.firstElement.Equals(manager.secondElement))

@@ -1,7 +1,5 @@
 ﻿namespace LibiadaCore.Tests.Core.Characteristics.BinaryCalculators
 {
-    using LibiadaCore.Core.Characteristics.BinaryCalculators;
-
     using NUnit.Framework;
 
     /// <summary>
@@ -13,10 +11,10 @@
         /// <summary>
         /// Tests initialization method.
         /// </summary>
-        [SetUp]
+        [TestFixtureSetUp]
         public void Initialization()
         {
-            Calculator = new Redundancy();
+            Initialization("Redundancy");
         }
 
         /// <summary>

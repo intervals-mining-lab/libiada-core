@@ -24,7 +24,7 @@ namespace LibiadaCore.Core
         /// <summary>
         /// The relation intervals managers.
         /// </summary>
-        private RelationIntervalsManager[,] relationIntervalsManagers;
+        private BinaryIntervalsManager[,] relationIntervalsManagers;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Chain"/> class.
@@ -159,26 +159,26 @@ namespace LibiadaCore.Core
         /// The second.
         /// </param>
         /// <returns>
-        /// The <see cref="RelationIntervalsManager"/>.
+        /// The <see cref="BinaryIntervalsManager"/>.
         /// </returns>
-        public RelationIntervalsManager GetRelationIntervalsManager(int first, int second)
+        public BinaryIntervalsManager GetRelationIntervalsManager(int first, int second)
         {
             if (relationIntervalsManagers == null)
             {
-                relationIntervalsManagers = new RelationIntervalsManager[alphabet.Cardinality - 1, alphabet.Cardinality - 1];
+                relationIntervalsManagers = new BinaryIntervalsManager[alphabet.Cardinality - 1, alphabet.Cardinality - 1];
             }
             var intervalsManager = relationIntervalsManagers[first - 1, second - 1];
 
             if (intervalsManager == null)
             {
-                intervalsManager = new RelationIntervalsManager(this.CongenericChain(first - 1), this.CongenericChain(second - 1));
+                intervalsManager = new BinaryIntervalsManager(this.CongenericChain(first - 1), this.CongenericChain(second - 1));
                 relationIntervalsManagers[first - 1, second - 1] = intervalsManager;
             }
 
             return intervalsManager;
         }
 
-        public RelationIntervalsManager GetRelationIntervalsManager(IBaseObject first, IBaseObject second)
+        public BinaryIntervalsManager GetRelationIntervalsManager(IBaseObject first, IBaseObject second)
         {
             return GetRelationIntervalsManager(alphabet.IndexOf(first), alphabet.IndexOf(second));
         }

@@ -21,7 +21,8 @@
                                                                 typeof(NormalizedPartialDependenceCoefficient),
                                                                 typeof(PartialDependenceCoefficient),
                                                                 typeof(Redundancy),
-                                                                typeof(BinaryGeometricMean)
+                                                                typeof(BinaryGeometricMean),
+                                                                typeof(ComplianceDegree)
                                                             };
 
         /// <summary>
