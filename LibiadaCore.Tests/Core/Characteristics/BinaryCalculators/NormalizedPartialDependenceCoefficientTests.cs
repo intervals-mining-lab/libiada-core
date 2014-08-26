@@ -12,7 +12,7 @@
     /// The normalized partial dependence coefficient test.
     /// </summary>
     [TestFixture]
-    public class NormalizedPartialDependenceCoefficientTests : AbstractBinaryCalculatorTests
+    public class NormalizedPartialDependenceCoefficientTests : BinaryCalculatorsTests
     {
         /// <summary>
         /// Tests initialization method.

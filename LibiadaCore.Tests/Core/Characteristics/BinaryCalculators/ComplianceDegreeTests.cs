@@ -3,7 +3,7 @@
     using NUnit.Framework;
 
     [TestFixture]
-    public class ComplianceDegreeTests : AbstractBinaryCalculatorTests
+    public class ComplianceDegreeTests : BinaryCalculatorsTests
     {
 
          

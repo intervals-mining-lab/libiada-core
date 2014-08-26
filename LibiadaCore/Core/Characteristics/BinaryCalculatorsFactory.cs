@@ -4,6 +4,7 @@
     using System.Collections.Generic;
 
     using LibiadaCore.Core.Characteristics.BinaryCalculators;
+    using LibiadaCore.Core.Characteristics.Calculators;
 
     /// <summary>
     /// The binary calculators factory.
@@ -11,84 +12,55 @@
     public static class BinaryCalculatorsFactory
     {
         /// <summary>
-        /// Среднегеометрическая удалённость между парой элементов.
+        /// The calculators.
         /// </summary>
-        public static IBinaryCalculator GeometricMean
-        {
-            get { return new BinaryGeometricMean(); }
-        }
+        private static readonly List<Type> Calculators = new List<Type>
+                                                            {
+                                                                typeof(InvolvedPartialDependenceCoefficient),
+                                                                typeof(MutualDependenceCoefficient),
+                                                                typeof(NormalizedPartialDependenceCoefficient),
+                                                                typeof(PartialDependenceCoefficient),
+                                                                typeof(Redundancy),
+                                                                typeof(BinaryGeometricMean)
+                                                            };
 
         /// <summary>
-        /// Избыточность кодировки второго элемента относительно себя
-        /// по сравнению с кодированием относително первого элемента.
+        ///  Create calcualtor method.
         /// </summary>
-        public static IBinaryCalculator Redundancy
+        /// <param name="type">
+        /// The type.
+        /// </param>
+        /// <returns>
+        /// The <see cref="ICalculator"/>.
+        /// </returns>
+        /// <exception cref="ArgumentException">
+        /// Thrown if calculator is not found by name.
+        /// </exception>
+        public static IBinaryCalculator CreateCalculator(string type)
         {
-            get { return new Redundancy(); }
-        }
-
-        /// <summary>
-        /// Коэффициент частичной зависимости.
-        /// </summary>
-        public static IBinaryCalculator K1
-        {
-            get { return new PartialDependenceCoefficient(); }
-        }
-
-        /// <summary>
-        /// Нормализованный коэффициент частичной зависимости.
-        /// </summary>
-        public static IBinaryCalculator NormalizedK1
-        {
-            get { return new NormalizedPartialDependenceCoefficient(); }
-        }
-
-        /// <summary>
-        /// Степень зависимости одной цепи от другой, 
-        /// с учетом «полноты её участия» в составе обеих однородных цепей.
-        /// </summary>
-        public static IBinaryCalculator K2
-        {
-            get { return new InvolvedPartialDependenceCoefficient(); }
-        }
-
-        /// <summary>
-        /// Коэффициент взаимной зависимости.
-        /// </summary>
-        public static IBinaryCalculator K3
-        {
-            get { return new MutualDependenceCoefficient(); }
-        }
-
-        /// <summary>
-        /// Список калькуляторов характеристик.
-        /// </summary>
-        public static List<IBinaryCalculator> List
-        {
-            get
+            foreach (var calculator in Calculators)
             {
-                var temp = new List<IBinaryCalculator> { GeometricMean, Redundancy, K1, NormalizedK1, K2, K3 };
-
-                return temp;
-            }
-        }
-
-        /// <summary>
-        /// Создаёт калькулятор с заданным именем.
-        /// </summary>
-        /// <param name="type">Имя класса или путь в пространстве имён</param>
-        /// <returns>Калькулатор бинарной характеристики</returns>
-        public static IBinaryCalculator Create(string type)
-        {
-            foreach (IBinaryCalculator calculator in List)
-            {
-                if (type == calculator.GetType().Name)
+                if (type == calculator.Name)
                 {
-                    return calculator;
+                    return (IBinaryCalculator)Activator.CreateInstance(calculator);
                 }
             }
 
             throw new ArgumentException("Unknown calculator", "type");
-        } 
+        }
+
+        /// <summary>
+        /// Create calcualtor method.
+        /// </summary>
+        /// <param name="type">
+        /// The type.
+        /// </param>
+        /// <returns>
+        /// The <see cref="ICalculator"/>.
+        /// </returns>
+        public static IBinaryCalculator CreateCalculator(Type type)
+        {
+            return CreateCalculator(type.Name);
+        }
     }
 }

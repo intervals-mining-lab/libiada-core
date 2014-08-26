@@ -65,7 +65,7 @@
     <Compile Include="Misc\Iterators\SimpleCutRuleWithShiftedStartTests.cs" />
     <Compile Include="Misc\SpaceReorganizers\NullReorganizerTests.cs" />
     <Compile Include="Misc\SpaceReorganizers\NullCycleSpaceReorganizerTests.cs" />
-    <Compile Include="Core\Characteristics\BinaryCalculators\AbstractBinaryCalculatorTests.cs" />
+    <Compile Include="Core\Characteristics\BinaryCalculators\BinaryCalculatorsTests.cs" />
     <Compile Include="Core\Characteristics\BinaryCalculators\BinaryCalculationHelper.cs" />
     <Compile Include="Core\Characteristics\BinaryCalculators\BinaryGeometricMeanTests.cs" />
     <Compile Include="Core\Characteristics\BinaryCalculators\InvolvedPartialDependenceCoefficientTests.cs" />

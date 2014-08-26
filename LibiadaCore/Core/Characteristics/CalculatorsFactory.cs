@@ -10,8 +10,6 @@ namespace LibiadaCore.Core.Characteristics
     /// </summary>
     public static class CalculatorsFactory
     {
-
-
         /// <summary>
         /// Список калькуляторов характеристик.
         /// </summary>
@@ -54,7 +52,7 @@ namespace LibiadaCore.Core.Characteristics
                                                             };
 
         /// <summary>
-        /// The create.
+        /// Create full calcualtor method.
         /// </summary>
         /// <param name="type">
         /// The type.
@@ -63,6 +61,7 @@ namespace LibiadaCore.Core.Characteristics
         /// The <see cref="IFullCalculator"/>.
         /// </returns>
         /// <exception cref="ArgumentException">
+        /// Thrown if calculator is not found by name.
         /// </exception>
         public static IFullCalculator CreateFullCalculator(string type)
         {
@@ -86,7 +85,7 @@ namespace LibiadaCore.Core.Characteristics
         }
 
         /// <summary>
-        /// The create.
+        /// Create full calcualtor method.
         /// </summary>
         /// <param name="type">
         /// The type.
@@ -100,7 +99,7 @@ namespace LibiadaCore.Core.Characteristics
         }
 
         /// <summary>
-        /// The create.
+        /// Create congeneric calcualtor method.
         /// </summary>
         /// <param name="type">
         /// The type.
@@ -109,6 +108,7 @@ namespace LibiadaCore.Core.Characteristics
         /// The <see cref="ICongenericCalculator"/>.
         /// </returns>
         /// <exception cref="ArgumentException">
+        /// Thrown if calculator is not found by name.
         /// </exception>
         public static ICongenericCalculator CreateCongenericCalculator(string type)
         {
@@ -124,7 +124,7 @@ namespace LibiadaCore.Core.Characteristics
         }
 
         /// <summary>
-        /// The create.
+        /// Create congeneric calcualtor method.
         /// </summary>
         /// <param name="type">
         /// The type.
@@ -138,7 +138,7 @@ namespace LibiadaCore.Core.Characteristics
         }
 
         /// <summary>
-        /// The create.
+        ///  Create calcualtor method.
         /// </summary>
         /// <param name="type">
         /// The type.
@@ -147,6 +147,7 @@ namespace LibiadaCore.Core.Characteristics
         /// The <see cref="ICalculator"/>.
         /// </returns>
         /// <exception cref="ArgumentException">
+        /// Thrown if calculator is not found by name.
         /// </exception>
         public static ICalculator CreateCalculator(string type)
         {
@@ -162,7 +163,7 @@ namespace LibiadaCore.Core.Characteristics
         }
 
         /// <summary>
-        /// The create.
+        /// Create calcualtor method.
         /// </summary>
         /// <param name="type">
         /// The type.

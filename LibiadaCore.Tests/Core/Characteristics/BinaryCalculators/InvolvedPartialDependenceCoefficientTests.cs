@@ -12,7 +12,7 @@
     /// The involved partial dependence coefficient test.
     /// </summary>
     [TestFixture]
-    public class InvolvedPartialDependenceCoefficientTests : AbstractBinaryCalculatorTests
+    public class InvolvedPartialDependenceCoefficientTests : BinaryCalculatorsTests
     {
         /// <summary>
         /// Tests initialization method.

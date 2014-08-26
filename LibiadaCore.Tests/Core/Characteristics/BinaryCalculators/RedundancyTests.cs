@@ -8,7 +8,7 @@
     /// The redundancy test.
     /// </summary>
     [TestFixture]
-    public class RedundancyTests : AbstractBinaryCalculatorTests
+    public class RedundancyTests : BinaryCalculatorsTests
     {
         /// <summary>
         /// Tests initialization method.

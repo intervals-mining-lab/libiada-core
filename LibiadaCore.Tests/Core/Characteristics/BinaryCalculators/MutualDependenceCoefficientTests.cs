@@ -12,7 +12,7 @@
     /// The mutual dependence coefficient test.
     /// </summary>
     [TestFixture]
-    public class MutualDependenceCoefficientTests : AbstractBinaryCalculatorTests
+    public class MutualDependenceCoefficientTests : BinaryCalculatorsTests
     {
         /// <summary>
         /// Tests initialization method.

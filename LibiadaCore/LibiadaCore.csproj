@@ -76,7 +76,6 @@
     <Compile Include="Core\BaseChain.cs" />
     <Compile Include="Core\Chain.cs" />
     <Compile Include="Core\Characteristics\BinaryCalculators\BinaryCalculator.cs" />
-    <Compile Include="Core\Characteristics\BinaryCharacteristicsEnum.cs" />
     <Compile Include="Core\Characteristics\BinaryCalculatorsFactory.cs" />
     <Compile Include="Core\Characteristics\Calculators\AlphabeticAverageRemoteness.cs" />
     <Compile Include="Core\Characteristics\Calculators\AlphabeticDepth.cs" />

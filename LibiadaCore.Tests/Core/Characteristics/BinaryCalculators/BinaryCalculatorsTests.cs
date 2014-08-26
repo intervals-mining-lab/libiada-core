@@ -10,7 +10,7 @@
     /// <summary>
     /// The abstract binary calculator test.
     /// </summary>
-    public abstract class AbstractBinaryCalculatorTests
+    public abstract class BinaryCalculatorsTests
     {
         /// <summary>
         /// The chains.

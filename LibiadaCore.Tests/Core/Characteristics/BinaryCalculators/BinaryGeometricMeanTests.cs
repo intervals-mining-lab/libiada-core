@@ -8,7 +8,7 @@
     /// The binary geometric mean test.
     /// </summary>
     [TestFixture]
-    public class BinaryGeometricMeanTests : AbstractBinaryCalculatorTests
+    public class BinaryGeometricMeanTests : BinaryCalculatorsTests
     {
         /// <summary>
         /// Tests initialization method.
