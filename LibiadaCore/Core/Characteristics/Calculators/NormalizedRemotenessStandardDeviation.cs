@@ -11,8 +11,8 @@
         /// <summary>
         /// Normalized Remoteness Standard Deviation.
         /// </summary>
-        private readonly IFullCalculator remotenessSkewness = new RemotenessSkewness();
-        private readonly IFullCalculator remotenessStandartDeviation = new RemotenessStandardDeviation();
+        private readonly IFullCalculator remotenessSkewness = new AverageRemotenessSkewness();
+        private readonly IFullCalculator remotenessStandartDeviation = new AverageRemotenessStandardDeviation();
 
         /// <summary>
         /// Calculation method.

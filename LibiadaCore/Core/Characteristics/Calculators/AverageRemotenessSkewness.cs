@@ -3,7 +3,7 @@
     /// <summary>
     /// Третий центральный момент или ассиметрия средних удаленностей.
     /// </summary>
-    public class RemotenessSkewness : IFullCalculator
+    public class AverageRemotenessSkewness : IFullCalculator
     {
         /// <summary>
         /// The average remoteness.

@@ -5,12 +5,12 @@
     /// <summary>
     /// СКО средних удаленностей (квадратный корень дисперсии средней удаленности)
     /// </summary>
-    public class RemotenessStandardDeviation : IFullCalculator
+    public class AverageRemotenessStandardDeviation : IFullCalculator
     {
         /// <summary>
         /// The average remoteness dispersion.
         /// </summary>
-        private readonly IFullCalculator averageRemotenessDispersion = new RemotenessDispersion();
+        private readonly IFullCalculator averageRemotenessDispersion = new AverageRemotenessDispersion();
 
         /// <summary>
         /// Calculation method.

@@ -45,9 +45,9 @@ namespace LibiadaCore.Core.Characteristics
                                                                 typeof(AlphabeticAverageRemoteness),
                                                                 typeof(AlphabeticDepth),
                                                                 typeof(AverageWordLength),
-                                                                typeof(RemotenessSkewness),
-                                                                typeof(RemotenessDispersion),
-                                                                typeof(RemotenessStandardDeviation),
+                                                                typeof(AverageRemotenessSkewness),
+                                                                typeof(AverageRemotenessDispersion),
+                                                                typeof(AverageRemotenessStandardDeviation),
                                                                 typeof(NormalizedRemotenessStandardDeviation)
                                                             };
 

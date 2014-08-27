@@ -5,10 +5,10 @@
     using NUnit.Framework;
 
     /// <summary>
-    /// Standard Deviation test.
+    /// The average remoteness dispersion test.
     /// </summary>
     [TestFixture]
-    public class RemotenessStandardDeviationTests : FullCalculatorsTests
+    public class AverageRemotenessDispersionTests : FullCalculatorsTests
     {
         /// <summary>
         /// Tests initialization method.
@@ -16,11 +16,11 @@
         [TestFixtureSetUp]
         public void Initialization()
         {
-            Initialization("RemotenessStandardDeviation");
+            Initialization("RemotenessDispersion");
         }
 
         /// <summary>
-        /// Standard Deviation test.
+        /// The average remoteness dispersion test.
         /// </summary>
         /// <param name="index">
         /// The index.
@@ -31,11 +31,11 @@
         /// <param name="value">
         /// The value.
         /// </param>
-        [TestCase(0, Link.None, 0.2654)]
-        [TestCase(0, Link.Start, 0.1296)]
-        [TestCase(0, Link.End, 0.1298)]
-        [TestCase(0, Link.Both, 0.2267)]
-        [TestCase(0, Link.Cycle, 0.191)]
+        [TestCase(0, Link.None, 0.0704)]
+        [TestCase(0, Link.Start, 0.0168)]
+        [TestCase(0, Link.End, 0.0169)]
+        [TestCase(0, Link.Both, 0.0514)]
+        [TestCase(0, Link.Cycle, 0.0365)]
         public void ChainCalculationTest(int index, Link link, double value)
         {
             ChainCharacteristicTest(0, link, value);

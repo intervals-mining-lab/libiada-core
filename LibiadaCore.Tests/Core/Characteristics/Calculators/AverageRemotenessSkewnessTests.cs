@@ -8,7 +8,7 @@
     /// The average remoteness asymmetry test.
     /// </summary>
     [TestFixture]
-    public class RemotenessSkewnessTests : FullCalculatorsTests
+    public class AverageRemotenessSkewnessTests : FullCalculatorsTests
     {
         /// <summary>
         /// Tests initialization method.

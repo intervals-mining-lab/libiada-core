@@ -3,7 +3,7 @@
     /// <summary>
     /// Дисперсия средней удаленности.
     /// </summary>
-    public class RemotenessDispersion : IFullCalculator
+    public class AverageRemotenessDispersion : IFullCalculator
     {
         /// <summary>
         /// The average remoteness.
