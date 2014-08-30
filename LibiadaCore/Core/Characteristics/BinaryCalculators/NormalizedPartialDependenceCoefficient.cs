@@ -21,7 +21,7 @@
         /// </returns>
         public override double Calculate(BinaryIntervalsManager manager, Link link)
         {
-            if (manager.firstElement.Equals(manager.secondElement))
+            if (manager.FirstElement.Equals(manager.SecondElement))
             {
                 return 0;
             }
@@ -30,7 +30,7 @@
 
             double k1 = partialDependenceCoefficient.Calculate(manager, link);
 
-            return k1 * 2 * manager.pairsCount / manager.firstChain.GetLength();
+            return k1 * 2 * manager.PairsCount / manager.FirstChain.GetLength();
         }
     }
 }

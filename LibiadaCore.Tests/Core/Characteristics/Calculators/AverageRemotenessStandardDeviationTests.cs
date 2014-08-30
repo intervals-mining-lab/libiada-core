@@ -16,7 +16,7 @@
         [TestFixtureSetUp]
         public void Initialization()
         {
-            Initialization("RemotenessStandardDeviation");
+            Initialization("AverageRemotenessStandardDeviation");
         }
 
         /// <summary>

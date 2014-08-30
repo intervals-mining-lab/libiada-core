@@ -16,7 +16,7 @@
         [TestFixtureSetUp]
         public void Initialization()
         {
-            Initialization("RemotenessSkewness");
+            Initialization("AverageRemotenessSkewness");
         }
 
         /// <summary>

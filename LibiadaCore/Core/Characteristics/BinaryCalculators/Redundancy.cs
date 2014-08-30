@@ -23,12 +23,12 @@
         /// </returns>
         public override double Calculate(BinaryIntervalsManager manager, Link link)
         {
-            if (manager.firstElement.Equals(manager.secondElement))
+            if (manager.FirstElement.Equals(manager.SecondElement))
             {
                 return 0;
             }
 
-            var firstElementCount = manager.firstChain.OccurrencesCount;
+            var firstElementCount = manager.FirstChain.OccurrencesCount;
             double avG = 0;
             int currentEntrance = 0;
 
@@ -58,7 +58,7 @@
                 avG += Math.Log(manager.Length - currentEntrance, 2);
             }
 
-            avG = manager.pairsCount == 0 ? 0 : avG / manager.pairsCount;
+            avG = manager.PairsCount == 0 ? 0 : avG / manager.PairsCount;
 
             var geometricMeanCalculator = new BinaryGeometricMean();
             double binaryGeometricMean = geometricMeanCalculator.Calculate(manager, link);

@@ -21,7 +21,7 @@
         /// </returns>
         public override double Calculate(BinaryIntervalsManager manager, Link link)
         {
-            if (manager.firstElement.Equals(manager.secondElement))
+            if (manager.FirstElement.Equals(manager.SecondElement))
             {
                 return 0;
             }
@@ -30,7 +30,7 @@
 
             double redundancy = redundancyCalculator.Calculate(manager, link);
 
-            return redundancy * manager.pairsCount / manager.secondChain.OccurrencesCount;
+            return redundancy * manager.PairsCount / manager.SecondChain.OccurrencesCount;
         }
     }
 }
