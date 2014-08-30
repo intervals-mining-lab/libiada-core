@@ -246,11 +246,11 @@
 
             int j = 1;
 
-            for (int i = 1; i < this.FirstOccurrencesCount - 1; i++)
+            for (int i = 1; i <= this.FirstOccurrencesCount; i++)
             {
                 int firstPosition = FirstChain.GetOccurrence(i);
                 int nextFirstPosition = FirstChain.GetOccurrence(i + 1) == -1 ? this.Length : FirstChain.GetOccurrence(i + 1);
-                for (; j < SecondChain.OccurrencesCount - 1; j++)
+                for (; j <= SecondChain.OccurrencesCount; j++)
                 {
                     int secondOccurrence = SecondChain.GetOccurrence(j);
                     if (secondOccurrence >= firstPosition && secondOccurrence < nextFirstPosition)

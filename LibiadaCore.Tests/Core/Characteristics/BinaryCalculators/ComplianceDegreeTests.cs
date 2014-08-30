@@ -29,7 +29,13 @@
         /// <param name="secondValue">
         /// The second value.
         /// </param>
-        [TestCase(0, 1.7321, 1)]
+        [TestCase(1, 0.9428, 0)]
+        [TestCase(2, 0.9428, 0)]
+        [TestCase(4, 0.9938, 0)]
+        [TestCase(5, 0.9991, 0)]
+        [TestCase(6, 0.5151, 0)]
+        [TestCase(12, 0.9710, 0.5)]
+        [TestCase(15, 0.3563, 0)]
         public void ComplianceDegreeTest(int index, double firstValue, double secondValue)
         {
             CalculationTest(index, firstValue, secondValue);
