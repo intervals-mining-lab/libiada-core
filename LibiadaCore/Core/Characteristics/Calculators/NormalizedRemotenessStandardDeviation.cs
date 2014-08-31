@@ -6,12 +6,16 @@
     /// нормированная ассиметрия средних удаленностей или коэффициент ассиметрии
     /// (скошенность) распределения средних удаленностей однородных цепей.
     /// </summary>
-    public class NormalizedRemotenessStandardDeviation : IFullCalculator
+    public class NormalizedAverageRemotenessSkewness : IFullCalculator
     {
         /// <summary>
         /// Normalized Remoteness Standard Deviation.
         /// </summary>
         private readonly IFullCalculator remotenessSkewness = new AverageRemotenessSkewness();
+
+        /// <summary>
+        /// The remoteness standart deviation.
+        /// </summary>
         private readonly IFullCalculator remotenessStandartDeviation = new AverageRemotenessStandardDeviation();
 
         /// <summary>

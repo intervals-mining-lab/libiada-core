@@ -8,7 +8,7 @@
     /// The average remoteness asymmetry test.
     /// </summary>
     [TestFixture]
-    public class NormalizedRemotenessStandardDeviationTests : FullCalculatorsTests
+    public class NormalizedAverageRemotenessSkewnessTests : FullCalculatorsTests
     {
         /// <summary>
         /// Tests initialization method.
@@ -16,7 +16,7 @@
         [TestFixtureSetUp]
         public void Initialization()
         {
-            Initialization("NormalizedRemotenessStandardDeviation");
+            Initialization("NormalizedAverageRemotenessSkewness");
         }
 
         /// <summary>
