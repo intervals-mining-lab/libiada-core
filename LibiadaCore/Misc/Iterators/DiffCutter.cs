@@ -28,7 +28,7 @@
 
             while (iterator.Next())
             {
-                string s = chain.Substring(iterator.GetStartPosition(), iterator.GetEndPosition());
+                string s = chain.Substring(iterator.GetStartPosition(), iterator.GetEndPosition() - iterator.GetStartPosition());
                 result.Add(s);
             }
 
