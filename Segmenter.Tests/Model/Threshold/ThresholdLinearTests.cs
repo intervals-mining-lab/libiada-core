@@ -9,7 +9,7 @@
     /// The threshold linear test.
     /// </summary>
     [TestFixture]
-    public class ThresholdLinearTest
+    public class ThresholdLinearTests
     {
         /// <summary>
         /// The next test.

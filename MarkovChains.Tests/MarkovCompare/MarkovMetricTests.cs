@@ -13,7 +13,7 @@ namespace MarkovChains.Tests.MarkovCompare
     /// The markov metric tests.
     /// </summary>
     [TestFixture]
-    internal class MarkovMetricTests
+    public class MarkovMetricTests
     {
         /// <summary>
         /// The test chain.

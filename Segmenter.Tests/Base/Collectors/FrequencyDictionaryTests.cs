@@ -13,7 +13,7 @@
     /// The frequency dictionary test.
     /// </summary>
     [TestFixture]
-    public class FrequencyDictionaryTest
+    public class FrequencyDictionaryTests
     {
         /// <summary>
         /// The chain.

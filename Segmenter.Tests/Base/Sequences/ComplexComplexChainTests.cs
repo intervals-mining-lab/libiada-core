@@ -10,7 +10,7 @@
     /// The complex complex chain test.
     /// </summary>
     [TestFixture]
-    public class ComplexComplexChainTest
+    public class ComplexComplexChainTests
     {
         /// <summary>
         /// The chain.

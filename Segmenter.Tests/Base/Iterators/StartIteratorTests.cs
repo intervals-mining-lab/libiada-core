@@ -12,7 +12,7 @@
     /// The start iterator test.
     /// </summary>
     [TestFixture]
-    public class StartIteratorTest
+    public class StartIteratorTests
     {
         /// <summary>
         /// The chain.

@@ -12,7 +12,7 @@
     /// The end iterator test.
     /// </summary>
     [TestFixture]
-    public class EndIteratorTest
+    public class EndIteratorTests
     {
         /// <summary>
         /// The complex chain.

@@ -11,7 +11,7 @@
     /// The filter sequence test.
     /// </summary>
     [TestFixture]
-    public class FilterSequenceTest
+    public class FilterSequenceTests
     {
         /// <summary>
         /// The filterout test.

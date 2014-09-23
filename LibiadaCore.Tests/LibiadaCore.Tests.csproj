@@ -49,7 +49,7 @@
     <Compile Include="Core\Characteristics\Calculators\AlphabeticAverageRemotenessTests.cs" />
     <Compile Include="Core\Characteristics\Calculators\AlphabeticDepthTests.cs" />
     <Compile Include="Core\Characteristics\Calculators\CalculatorsTests.cs" />
-    <Compile Include="Core\Characteristics\Calculators\NormalizedRemotenessStandardDeviationTests.cs" />
+    <Compile Include="Core\Characteristics\Calculators\NormalizedAverageRemotenessSkewnessTests.cs" />
     <Compile Include="Core\Characteristics\Calculators\AverageRemotenessDispersionTests.cs" />
     <Compile Include="Core\Characteristics\Calculators\AverageRemotenessSkewnessTests.cs" />
     <Compile Include="Core\Characteristics\Calculators\AverageRemotenessStandardDeviationTests.cs" />

@@ -67,7 +67,7 @@
     <Compile Include="ScoreModel\MeasureTests.cs" />
     <Compile Include="ScoreModel\ValueNoteTests.cs" />
     <Compile Include="ScoreModel\TieTests.cs" />
-    <Compile Include="ScoreModel\UniformScoreTrackTests.cs" />
+    <Compile Include="ScoreModel\CongenericScoreTrackTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

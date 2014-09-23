@@ -12,7 +12,7 @@
     /// The seeker test.
     /// </summary>
     [TestFixture]
-    public class SeekerTest
+    public class SeekerTests
     {
         /// <summary>
         /// The chain.

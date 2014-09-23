@@ -12,7 +12,7 @@
     /// The filter test.
     /// </summary>
     [TestFixture]
-    public class FilterTest
+    public class FilterTests
     {
         /// <summary>
         /// The str 1.

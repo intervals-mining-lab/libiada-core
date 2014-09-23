@@ -12,7 +12,7 @@
     /// The seeker sequence test.
     /// </summary>
     [TestFixture]
-    public class SeekerSequenceTest
+    public class SeekerSequenceTests
     {
         /// <summary>
         /// The seek test.

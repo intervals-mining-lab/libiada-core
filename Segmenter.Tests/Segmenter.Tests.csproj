@@ -44,15 +44,15 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Base\Collectors\FrequencyDictionaryTest.cs" />
-    <Compile Include="Base\Iterators\EndIteratorTest.cs" />
-    <Compile Include="Base\Iterators\StartIteratorTest.cs" />
-    <Compile Include="Base\Seekers\Converters\FilterSequenceTest.cs" />
-    <Compile Include="Base\Seekers\Converters\FilterTest.cs" />
-    <Compile Include="Base\Seekers\SeekerSequenceTest.cs" />
-    <Compile Include="Base\Seekers\SeekerTest.cs" />
-    <Compile Include="Base\Sequences\ComplexChainTest.cs" />
-    <Compile Include="Model\Threshold\ThresholdLinearTest.cs" />
+    <Compile Include="Base\Collectors\FrequencyDictionaryTests.cs" />
+    <Compile Include="Base\Iterators\EndIteratorTests.cs" />
+    <Compile Include="Base\Iterators\StartIteratorTests.cs" />
+    <Compile Include="Base\Seekers\Converters\FilterSequenceTests.cs" />
+    <Compile Include="Base\Seekers\Converters\FilterTests.cs" />
+    <Compile Include="Base\Seekers\SeekerSequenceTests.cs" />
+    <Compile Include="Base\Seekers\SeekerTests.cs" />
+    <Compile Include="Base\Sequences\ComplexComplexChainTests.cs" />
+    <Compile Include="Model\Threshold\ThresholdLinearTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
