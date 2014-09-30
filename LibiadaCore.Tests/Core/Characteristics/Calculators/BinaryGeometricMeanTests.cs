@@ -1,4 +1,4 @@
-﻿namespace LibiadaCore.Tests.Core.Characteristics.BinaryCalculators
+﻿namespace LibiadaCore.Tests.Core.Characteristics.Calculators
 {
     using NUnit.Framework;
 
@@ -14,7 +14,7 @@
         [TestFixtureSetUp]
         public void Initialization()
         {
-            Initialization("BinaryGeometricMean");
+            this.Initialization("GeometricMean");
         }
 
         /// <summary>
@@ -32,7 +32,7 @@
         [TestCase(0, 1.7321, 1)]
         public void SpatialDependenceTest(int index, double firstValue, double secondValue)
         {
-            CalculationTest(index, firstValue, secondValue);
+            this.CalculationTest(index, firstValue, secondValue);
         }
     }
 }

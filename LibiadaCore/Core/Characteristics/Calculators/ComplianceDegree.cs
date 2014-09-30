@@ -2,6 +2,7 @@
 {
     using System;
 
+    using LibiadaCore.Core.Characteristics.Calculators;
     using LibiadaCore.Core.IntervalsManagers;
 
     /// <summary>

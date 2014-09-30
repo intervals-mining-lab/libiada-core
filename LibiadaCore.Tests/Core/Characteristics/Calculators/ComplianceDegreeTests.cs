@@ -1,4 +1,4 @@
-﻿namespace LibiadaCore.Tests.Core.Characteristics.BinaryCalculators
+﻿namespace LibiadaCore.Tests.Core.Characteristics.Calculators
 {
     using NUnit.Framework;
 
@@ -14,7 +14,7 @@
         [TestFixtureSetUp]
         public void Initialization()
         {
-            Initialization("ComplianceDegree");
+            this.Initialization("ComplianceDegree");
         }
 
         /// <summary>
@@ -38,7 +38,7 @@
         [TestCase(15, 0.3563, 0)]
         public void ComplianceDegreeTest(int index, double firstValue, double secondValue)
         {
-            CalculationTest(index, firstValue, secondValue);
+            this.CalculationTest(index, firstValue, secondValue);
         }
     }
 }

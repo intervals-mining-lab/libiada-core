@@ -1,4 +1,4 @@
-﻿namespace LibiadaCore.Core.Characteristics.BinaryCalculators
+﻿namespace LibiadaCore.Core.Characteristics.Calculators
 {
     using System.Collections.Generic;
 
@@ -35,6 +35,6 @@
         /// <returns>
         /// <see cref="List{List{double}}"/>.
         /// </returns>
-        List<List<double>> Calculate(Chain chain, Link link);
+        List<List<double>> CalculateAll(Chain chain, Link link);
     }
 }

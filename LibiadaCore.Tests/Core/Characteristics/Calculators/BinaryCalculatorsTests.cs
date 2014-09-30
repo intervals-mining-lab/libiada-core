@@ -1,10 +1,10 @@
-﻿namespace LibiadaCore.Tests.Core.Characteristics.BinaryCalculators
+﻿namespace LibiadaCore.Tests.Core.Characteristics.Calculators
 {
     using System.Collections.Generic;
 
     using LibiadaCore.Core;
     using LibiadaCore.Core.Characteristics;
-    using LibiadaCore.Core.Characteristics.BinaryCalculators;
+    using LibiadaCore.Core.Characteristics.Calculators;
 
     using NUnit.Framework;
 
@@ -36,7 +36,7 @@
         /// </param>
         protected void Initialization(string calculator)
         {
-            Calculator = BinaryCalculatorsFactory.CreateCalculator(calculator);
+            this.Calculator = CalculatorsFactory.CreateBinaryCalculator(calculator);
         }
 
         /// <summary>
@@ -53,8 +53,8 @@
         /// </param>
         protected void CalculationTest(int index, double firstValue, double secondValue)
         {
-            double result1 = Calculator.Calculate(Chains[index].GetRelationIntervalsManager(elements["a"], elements["b"]), Link.End);
-            double result2 = Calculator.Calculate(Chains[index].GetRelationIntervalsManager(elements["b"], elements["a"]), Link.End);
+            double result1 = this.Calculator.Calculate(this.Chains[index].GetRelationIntervalsManager(this.elements["a"], this.elements["b"]), Link.End);
+            double result2 = this.Calculator.Calculate(this.Chains[index].GetRelationIntervalsManager(this.elements["b"], this.elements["a"]), Link.End);
             Assert.AreEqual(firstValue, result1, 0.0001);
             Assert.AreEqual(secondValue, result2, 0.0001);
         }

@@ -1,4 +1,4 @@
-﻿namespace LibiadaCore.Core.Characteristics.BinaryCalculators
+﻿namespace LibiadaCore.Core.Characteristics.Calculators
 {
     using System.Collections.Generic;
 
@@ -37,7 +37,7 @@
         /// <returns>
         /// Квадратная матрица значений характеристики
         /// </returns>
-        public List<List<double>> Calculate(Chain chain, Link link)
+        public List<List<double>> CalculateAll(Chain chain, Link link)
         {
             var result = new List<List<double>>();
             for (int i = 0; i < chain.Alphabet.Cardinality; i++)
@@ -45,7 +45,7 @@
                 result.Add(new List<double>());
                 for (int j = 0; j < chain.Alphabet.Cardinality; j++)
                 {
-                    result[i].Add(Calculate(chain.GetRelationIntervalsManager(i + 1, j + 1), link));
+                    result[i].Add(this.Calculate(chain.GetRelationIntervalsManager(i + 1, j + 1), link));
                 }
             }
 

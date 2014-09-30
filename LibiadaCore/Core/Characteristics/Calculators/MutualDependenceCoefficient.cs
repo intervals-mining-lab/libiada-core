@@ -1,4 +1,4 @@
-﻿namespace LibiadaCore.Core.Characteristics.BinaryCalculators
+﻿namespace LibiadaCore.Core.Characteristics.Calculators
 {
     using System;
 

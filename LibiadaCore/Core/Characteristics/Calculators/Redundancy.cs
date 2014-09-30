@@ -1,4 +1,4 @@
-﻿namespace LibiadaCore.Core.Characteristics.BinaryCalculators
+﻿namespace LibiadaCore.Core.Characteristics.Calculators
 {
     using System;
 
@@ -60,7 +60,7 @@
 
             avG = manager.PairsCount == 0 ? 0 : avG / manager.PairsCount;
 
-            var geometricMeanCalculator = new BinaryGeometricMean();
+            var geometricMeanCalculator = new GeometricMean();
             double binaryGeometricMean = geometricMeanCalculator.Calculate(manager, link);
 
             return 1 - (binaryGeometricMean / Math.Pow(2, avG));

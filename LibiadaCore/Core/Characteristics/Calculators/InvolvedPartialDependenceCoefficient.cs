@@ -1,14 +1,14 @@
-﻿namespace LibiadaCore.Core.Characteristics.BinaryCalculators
+﻿namespace LibiadaCore.Core.Characteristics.Calculators
 {
     using LibiadaCore.Core.IntervalsManagers;
 
     /// <summary>
-    /// The normalized partial dependence coefficient of binary chain.
+    /// Involved partial dependence coefficient of binary chain.
     /// </summary>
-    public class NormalizedPartialDependenceCoefficient : BinaryCalculator
+    public class InvolvedPartialDependenceCoefficient : BinaryCalculator
     {
         /// <summary>
-        /// Calculation method.
+        /// Коэффициент частичной зависимоти.
         /// </summary>
         /// <param name="manager">
         /// Intervals manager.
@@ -26,11 +26,11 @@
                 return 0;
             }
 
-            var partialDependenceCoefficient = new PartialDependenceCoefficient();
+            var redundancyCalculator = new Redundancy();
 
-            double k1 = partialDependenceCoefficient.Calculate(manager, link);
-
-            return k1 * 2 * manager.PairsCount / manager.FirstChain.GetLength();
+            double redundancy = redundancyCalculator.Calculate(manager, link);
+            int pairs = manager.PairsCount;
+            return redundancy * (2 * pairs) / (manager.FirstChain.OccurrencesCount + manager.SecondChain.OccurrencesCount);
         }
     }
 }

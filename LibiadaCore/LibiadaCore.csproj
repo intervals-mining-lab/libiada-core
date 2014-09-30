@@ -40,7 +40,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Core\AbstractChain.cs" />
-    <Compile Include="Core\Characteristics\BinaryCalculators\ComplianceDegree.cs" />
+    <Compile Include="Core\Characteristics\Calculators\ComplianceDegree.cs" />
     <Compile Include="Core\Characteristics\Calculators\ICalculator.cs" />
     <Compile Include="Core\Characteristics\Calculators\ICongenericCalculator.cs" />
     <Compile Include="Core\Characteristics\Calculators\NormalizedRemotenessStandardDeviation.cs" />
@@ -74,20 +74,18 @@
     <Compile Include="Misc\SpaceReorganizers\SpaceReorganizerFromChainToChainByBlock.cs" />
     <Compile Include="Core\BaseChain.cs" />
     <Compile Include="Core\Chain.cs" />
-    <Compile Include="Core\Characteristics\BinaryCalculators\BinaryCalculator.cs" />
-    <Compile Include="Core\Characteristics\BinaryCalculatorsFactory.cs" />
+    <Compile Include="Core\Characteristics\Calculators\BinaryCalculator.cs" />
     <Compile Include="Core\Characteristics\Calculators\AlphabeticAverageRemoteness.cs" />
     <Compile Include="Core\Characteristics\Calculators\AlphabeticDepth.cs" />
     <Compile Include="Core\Characteristics\Calculators\AlphabetCardinality.cs" />
     <Compile Include="Core\Characteristics\Calculators\ArithmeticMean.cs" />
     <Compile Include="Core\Characteristics\Calculators\AverageRemoteness.cs" />
-    <Compile Include="Core\Characteristics\BinaryCalculators\IBinaryCalculator.cs" />
-    <Compile Include="Core\Characteristics\BinaryCalculators\InvolvedPartialDependenceCoefficient.cs" />
-    <Compile Include="Core\Characteristics\BinaryCalculators\MutualDependenceCoefficient.cs" />
-    <Compile Include="Core\Characteristics\BinaryCalculators\NormalizedPartialDependenceCoefficient.cs" />
-    <Compile Include="Core\Characteristics\BinaryCalculators\PartialDependenceCoefficient.cs" />
-    <Compile Include="Core\Characteristics\BinaryCalculators\Redundancy.cs" />
-    <Compile Include="Core\Characteristics\BinaryCalculators\BinaryGeometricMean.cs" />
+    <Compile Include="Core\Characteristics\Calculators\IBinaryCalculator.cs" />
+    <Compile Include="Core\Characteristics\Calculators\InvolvedPartialDependenceCoefficient.cs" />
+    <Compile Include="Core\Characteristics\Calculators\MutualDependenceCoefficient.cs" />
+    <Compile Include="Core\Characteristics\Calculators\NormalizedPartialDependenceCoefficient.cs" />
+    <Compile Include="Core\Characteristics\Calculators\PartialDependenceCoefficient.cs" />
+    <Compile Include="Core\Characteristics\Calculators\Redundancy.cs" />
     <Compile Include="Core\Characteristics\Calculators\AverageWordLength.cs" />
     <Compile Include="Core\Characteristics\Calculators\ElementsCount.cs" />
     <Compile Include="Core\Characteristics\Calculators\CutLength.cs" />
