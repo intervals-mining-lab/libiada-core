@@ -32,8 +32,9 @@
         /// </returns>
         public double Calculate(Chain chain, Link link)
         {
-            return remotenessSkewness.Calculate(chain, link) /
-                   Math.Pow(remotenessStandartDeviation.Calculate(chain, link), 3.0);   
+            double standartDeviation = remotenessStandartDeviation.Calculate(chain, link);
+
+            return remotenessSkewness.Calculate(chain, link)/(standartDeviation*standartDeviation*standartDeviation);   
         }
     }
 }
