@@ -11,14 +11,9 @@
         private readonly ICalculator averageRemoteness = new AverageRemoteness();
 
         /// <summary>
-        /// The elements count.
+        /// The intervals count.
         /// </summary>
-        private readonly ICalculator elementsCount = new ElementsCount();
-
-        /// <summary>
-        /// The length.
-        /// </summary>
-        private readonly ICalculator length = new Length();
+        private readonly ICalculator intervalsCount = new IntervalsCount();
 
         /// <summary>
         /// Calculation method.
@@ -36,11 +31,11 @@
         {
             double result = 0;
             double g = averageRemoteness.Calculate(chain, link);
-            double n = length.Calculate(chain, link);
+            double n = intervalsCount.Calculate(chain, link);
             
             for (int i = 0; i < chain.Alphabet.Cardinality; i++)
             {
-                double nj = elementsCount.Calculate(chain.CongenericChain(chain.Alphabet[i]), link);
+                double nj = intervalsCount.Calculate(chain.CongenericChain(chain.Alphabet[i]), link);
                 double gj = averageRemoteness.Calculate(chain.CongenericChain(chain.Alphabet[i]), link);
                 result += nj / n * (gj - g) * (gj - g);
             }
