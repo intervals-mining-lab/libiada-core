@@ -22,7 +22,7 @@ namespace LibiadaCore.Core.Characteristics.Calculators
         /// Source sequence.
         /// </param>
         /// <param name="link">
-        /// Redundant parameter, not used in calculations.
+        /// Link of intervals in chain.
         /// </param>
         /// <returns>
         /// Regularity as <see cref="double"/>.
@@ -39,7 +39,7 @@ namespace LibiadaCore.Core.Characteristics.Calculators
         /// Source sequence.
         /// </param>
         /// <param name="link">
-        /// Redundant parameter, not used in calculations.
+        /// Link of intervals in chain.
         /// </param>
         /// <returns>
         /// Regularity as <see cref="double"/>.
