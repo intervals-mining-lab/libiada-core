@@ -8,7 +8,7 @@
     public class InvolvedPartialDependenceCoefficient : BinaryCalculator
     {
         /// <summary>
-        /// Коэффициент частичной зависимоти.
+        /// Calculates involved partial dependence coefficient of binary chain.
         /// </summary>
         /// <param name="manager">
         /// Intervals manager.
@@ -17,7 +17,7 @@
         /// Link of intervals in chain.
         /// </param>
         /// <returns>
-        /// Среднегеометрический интервал
+        /// Involved partial dependence coefficient.
         /// </returns>
         public override double Calculate(BinaryIntervalsManager manager, Link link)
         {

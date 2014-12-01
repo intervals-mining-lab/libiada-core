@@ -9,6 +9,8 @@
     /// </summary>
     public class Redundancy : BinaryCalculator
     {
+        //TODO: refactor to using of intervals manager
+
         /// <summary>
         /// Calculation method.
         /// </summary>
@@ -19,7 +21,7 @@
         /// Link of intervals in chain.
         /// </param>
         /// <returns>
-        /// Среднегеометрический интервал
+        /// Redundancy.
         /// </returns>
         public override double Calculate(BinaryIntervalsManager manager, Link link)
         {

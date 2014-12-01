@@ -1,13 +1,12 @@
 ﻿namespace LibiadaCore.Core.Characteristics.Calculators
 {
     /// <summary>
-    /// The Congeneric Calculator interface.
+    /// The congeneric chain calculator interface.
     /// </summary>
     public interface ICongenericCalculator
     {
         /// <summary>
-        /// Вычисляет и возвращает значение характеристики 
-        /// для однородной цеочки.
+        /// Calculates value of characteristic of congeneric sequence.
         /// </summary>
         /// <param name="chain">
         /// Source sequence.

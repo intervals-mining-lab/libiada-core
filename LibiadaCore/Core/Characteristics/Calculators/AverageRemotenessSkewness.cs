@@ -1,7 +1,7 @@
 ﻿namespace LibiadaCore.Core.Characteristics.Calculators
 {
     /// <summary>
-    /// Третий центральный момент или ассиметрия средних удаленностей.
+    /// Asymmetry of average remoteness. Third central moment. Третий центральный момент.
     /// </summary>
     public class AverageRemotenessSkewness : IFullCalculator
     {
@@ -37,7 +37,7 @@
             {
                 double nj = intervalsCount.Calculate(chain.CongenericChain(chain.Alphabet[i]), link);
                 double gj = averageRemoteness.Calculate(chain.CongenericChain(chain.Alphabet[i]), link);
-                result += nj / n * (gj - g) * (gj - g) * (gj - g);
+                result += n == 0 ? 0 : nj / n * (gj - g) * (gj - g) * (gj - g);
             }
 
             return result;

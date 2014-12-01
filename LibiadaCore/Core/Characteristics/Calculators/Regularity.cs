@@ -1,7 +1,7 @@
 namespace LibiadaCore.Core.Characteristics.Calculators
 {
     /// <summary>
-    /// –егул€рность цепочки.
+    /// Regularity of sequence.
     /// </summary>
     public class Regularity : ICalculator
     {

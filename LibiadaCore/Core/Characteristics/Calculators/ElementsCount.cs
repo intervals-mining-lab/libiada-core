@@ -1,13 +1,13 @@
 namespace LibiadaCore.Core.Characteristics.Calculators
 {
     /// <summary>
-    /// Количество элементов.
+    /// Elements count.
     /// </summary>
     public class ElementsCount : ICalculator
     {
         /// <summary>
-        /// Количество непустых позиций, 
-        /// иначе говоря количество элементов.
+        /// Amount of not empty positions, 
+        /// in other words elements count.
         /// </summary>
         /// <param name="chain">
         /// Source sequence.
@@ -20,11 +20,12 @@ namespace LibiadaCore.Core.Characteristics.Calculators
         /// </returns>
         public double Calculate(CongenericChain chain, Link link)
         {
-            return chain.GetIntervals(Link.Start).Length;
+            return chain.OccurrencesCount;
         }
 
         /// <summary>
-        /// Количество непустых позиций.
+        /// Amount of not empty positions, 
+        /// in other words elements count.
         /// </summary>
         /// <param name="chain">
         /// Source sequence.

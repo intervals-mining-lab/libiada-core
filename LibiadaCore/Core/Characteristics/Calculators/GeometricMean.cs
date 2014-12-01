@@ -5,19 +5,14 @@ namespace LibiadaCore.Core.Characteristics.Calculators
     using LibiadaCore.Core.IntervalsManagers;
 
     /// <summary>
-    /// Среднегеометрический интервал.
+    /// Average geometric value of interval length.
     /// </summary>
     public class GeometricMean : BinaryCalculator, ICalculator
     {
         /// <summary>
         /// Depth characteristic calculator.
         /// </summary>
-        private readonly ICalculator depthCalculator = new Depth();
-
-        /// <summary>
-        /// Intervals count calculator.
-        /// </summary>
-        private readonly ICalculator intervalsCount = new IntervalsCount();
+        private readonly ICalculator averageRemoteness = new AverageRemoteness();
 
         /// <summary>
         /// Calculation method.
@@ -33,12 +28,9 @@ namespace LibiadaCore.Core.Characteristics.Calculators
         /// </returns>
         public double Calculate(CongenericChain chain, Link link)
         {
-            // Считаем в логарифмическом масштабе, чтобы избежать переполнения
-            double depth = depthCalculator.Calculate(chain, link);
-            double nj = intervalsCount.Calculate(chain, link);
-
-            // возвращаемое значение делогарифмируем
-            return Math.Pow(2, depth / nj);
+            double remoteness = averageRemoteness.Calculate(chain, link);
+            
+            return Math.Pow(2, remoteness);
         }
 
         /// <summary>
@@ -55,17 +47,13 @@ namespace LibiadaCore.Core.Characteristics.Calculators
         /// </returns>
         public double Calculate(Chain chain, Link link)
         {
-            // Считаем в логарифмическом масштабе, чтобы избежать переполнения
-            double depth = depthCalculator.Calculate(chain, link);
-            double nj = intervalsCount.Calculate(chain, link);
-
-            // возвращаемое значение делогарифмируем
-            return Math.Pow(2, depth / nj);
+            double remoteness = averageRemoteness.Calculate(chain, link);
+            
+            return Math.Pow(2, remoteness);
         }
 
         /// <summary>
-        /// Среднегеометрический интервал 
-        /// между двумя компонентами бинарно-однородной цепи
+        /// Calculated as geometric mean between two congeneric sequences.
         /// </summary>
         /// <param name="manager">
         /// Intervals manager.
@@ -74,11 +62,11 @@ namespace LibiadaCore.Core.Characteristics.Calculators
         /// Link of intervals in chain.
         /// </param>
         /// <returns>
-        /// Среднегеометрический интервал
+        /// Average geometric value.
         /// </returns>
         public override double Calculate(BinaryIntervalsManager manager, Link link)
         {
-            // зависимость компонента от самого себя равна нулю
+            // dependence component on it self is 0.
             if (manager.FirstElement.Equals(manager.SecondElement))
             {
                 return 0;
@@ -86,7 +74,6 @@ namespace LibiadaCore.Core.Characteristics.Calculators
 
             int[] intervals = manager.GetIntervals();
 
-            // вычисляем логариф произведения интервалов между элементами
             double result = 0;
             for (int i = 0; i < intervals.Length; i++)
             {

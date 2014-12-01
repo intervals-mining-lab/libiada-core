@@ -14,7 +14,7 @@
         private int alphabetCardinality;
 
         /// <summary>
-        /// Двоичный логарифм произведения всех интервалов цепочки.
+        /// Logarithm of all intervals multiplied.
         /// </summary>
         /// <param name="chain">
         /// Source sequence.
@@ -29,7 +29,7 @@
         {
             alphabetCardinality = chain.Alphabet.Cardinality;
             double result = 0;
-            for (int i = 0; i < chain.Alphabet.Cardinality; i++)
+            for (int i = 0; i < alphabetCardinality; i++)
             {
                 result += Calculate(chain.CongenericChain(i), link);
             }
@@ -38,7 +38,7 @@
         }
 
         /// <summary>
-        /// Двоичный логарифм произведения всех интервалов цепочки.
+        /// Logarithm of all intervals multiplied.
         /// </summary>
         /// <param name="chain">
         /// Source sequence.
@@ -59,7 +59,7 @@
         {
             int[] intervals = chain.GetIntervals(link);
 
-            return intervals.Sum(interval => Math.Log(interval, alphabetCardinality));
+            return intervals.Length == 0 ? 0 : intervals.Sum(interval => Math.Log(interval, alphabetCardinality));
         }
     }
 }

@@ -1,7 +1,7 @@
 namespace LibiadaCore.Core.Characteristics.Calculators
 {
     /// <summary>
-    /// Среднее арифметическое значение длин интервалов.
+    /// Average arithmetic value of lengths of congeneric intervals in sequence.
     /// </summary>
     public class ArithmeticMean : ICalculator
     {
@@ -16,8 +16,9 @@ namespace LibiadaCore.Core.Characteristics.Calculators
         private readonly ICalculator counter = new IntervalsCount();
 
         /// <summary>
-        /// Для однородной цепи данная характеристика 
-        /// вычисляется как сумма длин всех интервалов делёное на количество интервалов.
+        /// Calculates multiplication of all intervals 
+        /// between nearest elements in congeneric sequence
+        /// divided by number of intervals.
         /// </summary>
         /// <param name="chain">
         /// Source sequence.
@@ -32,11 +33,13 @@ namespace LibiadaCore.Core.Characteristics.Calculators
         {
             double sum = adder.Calculate(chain, link);
             double intervalsCount = counter.Calculate(chain, link);
-            return sum / intervalsCount;
+            return intervalsCount == 0 ? 0: sum / intervalsCount;
         }
 
         /// <summary>
-        /// Вычисляется как среднее значение от среднего интервала однородных цепей
+        /// Calculates multiplication of all intervals 
+        /// between nearest similar elements in sequence
+        /// divided by number of intervals. 
         /// </summary>
         /// <param name="chain">
         /// Source sequence.
@@ -51,7 +54,7 @@ namespace LibiadaCore.Core.Characteristics.Calculators
         {
             double sum = adder.Calculate(chain, link);
             double intervalsCount = counter.Calculate(chain, link);
-            return sum / intervalsCount;
+            return intervalsCount == 0 ? 0 : sum / intervalsCount;
         }
     }
 }

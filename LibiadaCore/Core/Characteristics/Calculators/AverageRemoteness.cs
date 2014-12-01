@@ -3,15 +3,20 @@ namespace LibiadaCore.Core.Characteristics.Calculators
     using System;
 
     /// <summary>
-    /// —редн€€ удалЄнность,
-    /// логарифм по основанию 2 от среднегеометрического интервала.
+    /// Average remoteness.
+    /// Calculated as logarithm with base 2 from geometric mean.
     /// </summary>
     public class AverageRemoteness : ICalculator
     {
         /// <summary>
-        ///  Calculator of average geometric of intervals lengths.
+        /// Depth characteristic calculator.
         /// </summary>
-        private readonly ICalculator geometricMean = new GeometricMean();
+        private readonly ICalculator depthCalculator = new Depth();
+
+        /// <summary>
+        /// Intervals count calculator.
+        /// </summary>
+        private readonly ICalculator intervalsCount = new IntervalsCount();
 
         /// <summary>
         /// Calculation method.
@@ -27,7 +32,10 @@ namespace LibiadaCore.Core.Characteristics.Calculators
         /// </returns>
         public double Calculate(CongenericChain chain, Link link)
         {
-            return Math.Log(geometricMean.Calculate(chain, link), 2);
+            double depth = depthCalculator.Calculate(chain, link);
+            double nj = intervalsCount.Calculate(chain, link);
+
+            return nj == 0 ? 0 : depth / nj;
         }
 
         /// <summary>
@@ -44,7 +52,10 @@ namespace LibiadaCore.Core.Characteristics.Calculators
         /// </returns>
         public double Calculate(Chain chain, Link link)
         {
-            return Math.Log(geometricMean.Calculate(chain, link), 2);
+            double depth = depthCalculator.Calculate(chain, link);
+            double nj = intervalsCount.Calculate(chain, link);
+
+            return nj == 0 ? 0 : depth / nj;
         }
     }
 }

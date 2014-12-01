@@ -3,14 +3,14 @@ namespace LibiadaCore.Core.Characteristics.Calculators
     using System;
 
     /// <summary>
-    /// Количество интервалов в зависимости от привязки.
+    /// Intervals count depending on link.
     /// </summary>
     public class IntervalsCount : ICalculator
     {
         /// <summary>
-        /// К началу, к концку и циклическая = столько же сколько элементов
-        /// К обоим концам = количество элементов + 1
-        /// Без привязки = количество элементов - 1
+        /// If link is to start, to end or cycle then intervals count equals elements count.
+        /// If link is to start and end then intervals count equals elements count + 1.
+        /// If link is none then intervals count equals elements count - 1.
         /// </summary>
         /// <param name="chain">
         /// Source sequence.
@@ -21,9 +21,6 @@ namespace LibiadaCore.Core.Characteristics.Calculators
         /// <returns>
         /// Intervals count in chain as <see cref="double"/>.
         /// </returns>
-        /// <exception cref="ArgumentException">
-        /// Thrown if link is unknown.
-        /// </exception>
         public double Calculate(CongenericChain chain, Link link)
         {
             return chain.GetIntervals(link).Length;

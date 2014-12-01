@@ -3,8 +3,9 @@ namespace LibiadaCore.Core.Characteristics.Calculators
     using System;
 
     /// <summary>
-    /// Количество идентифицирующих информаций приходящихся на одно значащее сообщение.
-    /// Энтропия, количество информации по Шеннону.
+    /// Entropy. Amount of information. 
+    /// Amount of identifying information (average for one element).
+    /// Shannon information. Shannon entropy.
     /// </summary>
     public class IdentificationInformation : ICalculator
     {
@@ -28,7 +29,8 @@ namespace LibiadaCore.Core.Characteristics.Calculators
         public double Calculate(CongenericChain chain, Link link)
         {
             double mean = arithmeticMean.Calculate(chain, link);
-            return (-1 / mean) * Math.Log(1 / mean, 2);
+
+            return mean == 0 ? 0 : (-1 / mean) * Math.Log(1 / mean, 2);
         }
 
         /// <summary>

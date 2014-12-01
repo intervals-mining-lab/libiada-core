@@ -22,7 +22,8 @@
         /// Link of intervals in chain.
         /// </param>
         /// <returns>
-        /// <see cref="double"/> value of alphabetic average remoteness.
+        /// <see cref="double"/> 
+        /// Value of alphabetic average remoteness.
         /// </returns>
         public double Calculate(Chain chain, Link link)
         {

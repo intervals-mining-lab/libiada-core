@@ -1,8 +1,8 @@
 namespace LibiadaCore.Core.Characteristics.Calculators
 {
     /// <summary>
-    /// Периодичность.
-    /// Имеет смысл только для однородной цепи.
+    /// Periodicity.
+    /// Makes sense only for congeneric sequences.
     /// </summary>
     public class Periodicity : ICalculator
     {

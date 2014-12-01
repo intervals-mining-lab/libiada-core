@@ -3,8 +3,8 @@
     using LibiadaCore.Core.SimpleTypes;
 
     /// <summary>
-    /// Число возможных цепочек которые можно сгенерировать 
-    /// из данной цепочки, содержащей фантомные сообщения.
+    /// Count of probable sequences that can be generated 
+    /// from given phantom chain (sequence containing phantom messages).
     /// </summary>
     public class PhantomMessagesCount : ICalculator
     {

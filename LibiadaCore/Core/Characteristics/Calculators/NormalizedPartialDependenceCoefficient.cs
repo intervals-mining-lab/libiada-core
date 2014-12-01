@@ -18,7 +18,7 @@
         /// Link of intervals in chain.
         /// </param>
         /// <returns>
-        /// Среднегеометрический интервал
+        /// Normalized partial dependence coefficient.
         /// </returns>
         public override double Calculate(BinaryIntervalsManager manager, Link link)
         {

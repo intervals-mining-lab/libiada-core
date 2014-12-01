@@ -3,7 +3,7 @@ namespace LibiadaCore.Core.Characteristics.Calculators
     using System;
 
     /// <summary>
-    /// Число описательных информаций.
+    /// Mazurs descriptive information.
     /// </summary>
     public class DescriptiveInformation : ICalculator
     {
@@ -27,7 +27,7 @@ namespace LibiadaCore.Core.Characteristics.Calculators
         public double Calculate(CongenericChain chain, Link link)
         {
             double occupancy = arithmeticMean.Calculate(chain, link);
-            return Math.Pow(occupancy, 1 / occupancy);
+            return occupancy == 0 ? 1 : Math.Pow(occupancy, 1 / occupancy);
         }
 
         /// <summary>

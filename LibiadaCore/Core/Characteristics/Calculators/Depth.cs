@@ -9,10 +9,12 @@ namespace LibiadaCore.Core.Characteristics.Calculators
     public class Depth : ICalculator
     {
         /// <summary>
-        /// Двоичный логарифм произведения всех интервалов цепочки.
+        /// Calculated as base 2 logarithm of multiplication 
+        /// of intervals between nearest elements 
+        /// in congeneric sequence.
         /// </summary>
         /// <param name="chain">
-        /// Source sequence.
+        /// Congeneric sequence.
         /// </param>
         /// <param name="link">
         /// Link of intervals in chain.
@@ -27,11 +29,13 @@ namespace LibiadaCore.Core.Characteristics.Calculators
         {
             var intervals = chain.GetIntervals(link);
 
-            return intervals.Sum(interval => Math.Log(interval, 2));
+            return intervals.Length == 0 ? 0 : intervals.Sum(interval => Math.Log(interval, 2));
         }
 
         /// <summary>
-        /// Двоичный логарифм произведения всех интервалов цепочки.
+        /// Calculated as base 2 logarithm of multiplication 
+        /// of intervals between nearest elements 
+        /// in congeneric sequence.
         /// </summary>
         /// <param name="chain">
         /// Source sequence.

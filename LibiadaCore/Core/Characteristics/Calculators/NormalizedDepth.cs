@@ -1,7 +1,7 @@
 namespace LibiadaCore.Core.Characteristics.Calculators
 {
     /// <summary>
-    /// Глубина приходящаяся на одно сообщение.
+    /// Depth per one element.
     /// </summary>
     public class NormalizedDepth : ICalculator
     {

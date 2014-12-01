@@ -3,20 +3,20 @@
     using System;
 
     /// <summary>
-    /// нормированная ассиметрия средних удаленностей или коэффициент ассиметрии
-    /// (скошенность) распределения средних удаленностей однородных цепей.
+    /// Normalized asymmetry of average remoteness 
+    /// in other words asymmetry coefficient (skewness) of average remoteness.
     /// </summary>
     public class NormalizedAverageRemotenessSkewness : IFullCalculator
     {
         /// <summary>
-        /// Normalized Remoteness Standard Deviation.
+        /// Average remoteness skewness.
         /// </summary>
-        private readonly IFullCalculator remotenessSkewness = new AverageRemotenessSkewness();
+        private readonly IFullCalculator averageRemotenessSkewness = new AverageRemotenessSkewness();
 
         /// <summary>
-        /// The remoteness standart deviation.
+        /// Average remoteness standard deviation.
         /// </summary>
-        private readonly IFullCalculator remotenessStandartDeviation = new AverageRemotenessStandardDeviation();
+        private readonly IFullCalculator averageRemotenessStandardDeviation = new AverageRemotenessStandardDeviation();
 
         /// <summary>
         /// Calculation method.
@@ -32,9 +32,9 @@
         /// </returns>
         public double Calculate(Chain chain, Link link)
         {
-            double standartDeviation = remotenessStandartDeviation.Calculate(chain, link);
+            double standardDeviation = averageRemotenessStandardDeviation.Calculate(chain, link);
 
-            return remotenessSkewness.Calculate(chain, link)/(standartDeviation*standartDeviation*standartDeviation);   
+            return averageRemotenessSkewness.Calculate(chain, link) / (standardDeviation*standardDeviation*standardDeviation);   
         }
     }
 }

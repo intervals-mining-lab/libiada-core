@@ -1,7 +1,7 @@
 namespace LibiadaCore.Core.Characteristics.Calculators
 {
     /// <summary>
-    /// Вероятность (частота).
+    /// Probability (frequency).
     /// </summary>
     public class Probability : ICalculator
     {
@@ -26,7 +26,7 @@ namespace LibiadaCore.Core.Characteristics.Calculators
         }
 
         /// <summary>
-        /// Для неоднородной, заполненной цепи всегда равна 1.
+        /// For complete (full) sequence always equals 1.
         /// </summary>
         /// <param name="chain">
         /// Source sequence.

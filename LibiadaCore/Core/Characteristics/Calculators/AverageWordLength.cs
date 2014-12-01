@@ -22,11 +22,12 @@
         public double Calculate(Chain chain, Link link)
         {
             int chainLength = chain.GetLength();
+
             int sum = 0;
 
-            for (int index = chainLength; --index >= 0;)
+            for (int i = 0; i < chainLength; i++)
             {
-                sum = sum + ((ValueString)chain[index]).Value.Length;
+                sum += ((ValueString)chain[i]).Value.Length;
             }
 
             return sum / (double)chainLength;

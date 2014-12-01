@@ -1,13 +1,12 @@
 namespace LibiadaCore.Core.Characteristics.Calculators
 {
     /// <summary>
-    /// »нтерфейс калькул€тора полных цепочек
+    /// The Full chain calculator interface.
     /// </summary>
     public interface IFullCalculator
     {
         /// <summary>
-        /// ¬ычисл€ет и возвращает значение характеристики 
-        /// дл€ полной неоднородной цеочки.
+        /// Calculate integral value of characteristic (for complete sequence).
         /// </summary>
         /// <param name="chain">
         /// Source sequence.

@@ -4,12 +4,12 @@
     using System.Linq;
 
     /// <summary>
-    /// Объём цепи. Произведение длин всех её интервалов.
+    /// Volume of sequence.
     /// </summary>
     public class Volume : ICalculator
     {
         /// <summary>
-        /// Calculation method.
+        /// Calculated as multiplication of all intervals.
         /// </summary>
         /// <param name="chain">
         /// Source sequence.
@@ -51,7 +51,7 @@
 
             for (int i = 0; i < chain.Alphabet.Cardinality; i++)
             {
-                result = result * Calculate(chain.CongenericChain(i), link);
+                result *= Calculate(chain.CongenericChain(i), link);
             }
 
             return result;

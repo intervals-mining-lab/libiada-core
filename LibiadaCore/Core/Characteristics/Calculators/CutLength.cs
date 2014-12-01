@@ -3,7 +3,7 @@ namespace LibiadaCore.Core.Characteristics.Calculators
     using LibiadaCore.Misc.Iterators;
 
     /// <summary>
-    /// Длина обрезания по Садовскому.
+    /// Sadovsky cut length.
     /// </summary>
     public class CutLength : ICalculator
     {
@@ -70,10 +70,10 @@ namespace LibiadaCore.Core.Characteristics.Calculators
         /// Source sequence.
         /// </param>
         /// <param name="length">
-        /// Length of L-gramm.
+        /// Length of L-gram.
         /// </param>
         /// <returns>
-        /// true if chain is recoverable form L-gramms.
+        /// true if chain is recoverable form L-grams.
         /// </returns>
         private bool CheckRecoveryAvailable(AbstractChain chain, int length)
         {

@@ -19,7 +19,7 @@
         /// Link of intervals in chain.
         /// </param>
         /// <returns>
-        /// Среднегеометрический интервал
+        /// Mutual dependence coefficient
         /// </returns>
         public override double Calculate(BinaryIntervalsManager manager, Link link)
         {

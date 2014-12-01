@@ -1,7 +1,8 @@
 namespace LibiadaCore.Core.Characteristics.Calculators
 {
     /// <summary>
-    /// Длина цепи.
+    /// Sequence length. 
+    /// Link is not used in calculation.
     /// </summary>
     public class Length : ICalculator
     {

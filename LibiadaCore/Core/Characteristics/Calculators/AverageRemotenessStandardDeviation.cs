@@ -3,7 +3,7 @@
     using System;
 
     /// <summary>
-    /// СКО средних удаленностей (квадратный корень дисперсии средней удаленности)
+    /// Standard deviation of average remoteness (square root of dispersion of average remoteness).
     /// </summary>
     public class AverageRemotenessStandardDeviation : IFullCalculator
     {

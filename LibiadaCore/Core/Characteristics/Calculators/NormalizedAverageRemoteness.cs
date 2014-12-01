@@ -3,7 +3,7 @@ namespace LibiadaCore.Core.Characteristics.Calculators
     using System;
 
     /// <summary>
-    /// Нормализованная средняя удалённость
+    /// Normalized average remoteness.
     /// </summary>
     public class NormalizedAverageRemoteness : ICalculator
     {

@@ -4,12 +4,12 @@
     using System.Linq;
 
     /// <summary>
-    /// Суммарная длина интервалов данной цепи.
+    /// Sum of intervals lengths depending on link.
     /// </summary>
     public class IntervalsSum : ICalculator
     {
         /// <summary>
-        /// Суммирует интервалы в соотвествии с привязкой
+        /// Sum of intervals lengths in congeneric sequence.
         /// </summary>
         /// <param name="chain">
         /// Source sequence.
@@ -27,11 +27,11 @@
         {
             var intervals = chain.GetIntervals(link);
 
-            return intervals.Sum(interval => interval);
+            return intervals.Length == 0 ? 0 : intervals.Sum(interval => interval);
         }
 
         /// <summary>
-        /// Сумма всех интервалов однородных цепочек данной цепи
+        /// Sum of intervals lengths in all congeneric sequences of complete sequence.
         /// </summary>
         /// <param name="chain">
         /// Source sequence.
@@ -51,7 +51,7 @@
                 sum += Calculate(chain.CongenericChain(i), link);
             }
 
-            return (long)sum;
+            return sum;
         }
     }
 }
