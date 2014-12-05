@@ -49,6 +49,7 @@
     <Compile Include="Core\Characteristics\Calculators\AlphabeticAverageRemotenessTests.cs" />
     <Compile Include="Core\Characteristics\Calculators\AlphabeticDepthTests.cs" />
     <Compile Include="Core\Characteristics\Calculators\CalculatorsTests.cs" />
+    <Compile Include="Core\Characteristics\Calculators\GCRatioTests.cs" />
     <Compile Include="Core\Characteristics\Calculators\NormalizedAverageRemotenessSkewnessTests.cs" />
     <Compile Include="Core\Characteristics\Calculators\AverageRemotenessDispersionTests.cs" />
     <Compile Include="Core\Characteristics\Calculators\AverageRemotenessSkewnessTests.cs" />
@@ -117,9 +118,7 @@
       <Name>LibiadaCore</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Core\Characteristics\BinaryCalculators\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\nuget.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

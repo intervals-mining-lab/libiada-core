@@ -19,11 +19,11 @@ namespace LibiadaCore.Tests.Core
             {
                 return new Dictionary<string, IBaseObject>
                            {
-                               { "a", new ValueChar('a') },
-                               { "b", new ValueChar('b') },
-                               { "c", new ValueChar('c') },
-                               { "g", new ValueChar('g') },
-                               { "t", new ValueChar('t') }
+                               { "a", new ValueString("A") },
+                               { "b", new ValueString("B") },
+                               { "c", new ValueString("C") },
+                               { "g", new ValueString("G") },
+                               { "t", new ValueString("T") }
                            };
             }
         }
@@ -42,6 +42,21 @@ namespace LibiadaCore.Tests.Core
                 // b b _ _ _ b _ _ _ b
                 // _ _ _ _ c _ _ c c _
                 var chain = new Chain("bbaacbaccb");
+                chains.Add(chain);
+
+                // 20 
+                chain = new Chain(10);
+                chain.Add(Elements["a"], 0);
+                chain.Add(Elements["c"], 1);
+                chain.Add(Elements["t"], 2);
+                chain.Add(Elements["t"], 3);
+                chain.Add(Elements["g"], 4);
+                chain.Add(Elements["a"], 5);
+                chain.Add(Elements["t"], 6);
+                chain.Add(Elements["a"], 7);
+                chain.Add(Elements["c"], 8);
+                chain.Add(Elements["g"], 9);
+
                 chains.Add(chain);
 
                 return chains;
