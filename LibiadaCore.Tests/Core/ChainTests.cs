@@ -33,10 +33,10 @@ namespace LibiadaCore.Tests.Core
         [Test]
         public void SimilarChainsGetTest()
         {
-            var messageA = new ValueChar('a');
-            var messageC = new ValueChar('c');
-            var messageG = new ValueChar('g');
-            var messageT = new ValueChar('t');
+            var messageA = new ValueString('a');
+            var messageC = new ValueString('c');
+            var messageG = new ValueString('g');
+            var messageT = new ValueString('t');
             var congenericChainA = new CongenericChain(messageA, 10);
 
             chain.Add(messageC, 0);
@@ -97,10 +97,10 @@ namespace LibiadaCore.Tests.Core
         [Test]
         public void GetElementPositionTest()
         {
-            var messageA = new ValueChar('a');
-            var messageC = new ValueChar('c');
-            var messageG = new ValueChar('g');
-            var messageT = new ValueChar('t');
+            var messageA = new ValueString('a');
+            var messageC = new ValueString('c');
+            var messageG = new ValueString('g');
+            var messageT = new ValueString('t');
 
             chain.Add(messageC, 0);
             chain.Add(messageC, 1);
@@ -139,10 +139,10 @@ namespace LibiadaCore.Tests.Core
         [Test]
         public void GetBinaryIntervalTest()
         {
-            IBaseObject messageA = new ValueChar('a');
-            IBaseObject messageC = new ValueChar('c');
-            IBaseObject messageG = new ValueChar('g');
-            IBaseObject messageT = new ValueChar('t');
+            IBaseObject messageA = new ValueString('a');
+            IBaseObject messageC = new ValueString('c');
+            IBaseObject messageG = new ValueString('g');
+            IBaseObject messageT = new ValueString('t');
 
             chain.Add(messageC, 0);
             chain.Add(messageC, 1);

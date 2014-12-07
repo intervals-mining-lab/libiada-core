@@ -108,7 +108,7 @@ namespace PhantomChains
                 string amino = id.ToString();
                 for (int k = 0; k < amino.Length; k++)
                 {
-                    result[StartPosition + k] = new ValueChar(amino[k]);
+                    result[StartPosition + k] = new ValueString(amino[k]);
                 }
             }
             else

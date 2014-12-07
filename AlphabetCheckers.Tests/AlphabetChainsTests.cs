@@ -25,16 +25,16 @@ namespace AlphabetCheckers.Tests
         public void Init()
         {
             chainBase = new BaseChain(10);
-            chainBase[0] = new ValueChar('1');
-            chainBase[1] = new ValueChar('2');
-            chainBase[2] = new ValueChar('3');
-            chainBase[3] = new ValueChar('4');
-            chainBase[4] = new ValueChar('5');
-            chainBase[5] = new ValueChar('6');
-            chainBase[6] = new ValueChar('7');
-            chainBase[7] = new ValueChar('8');
-            chainBase[8] = new ValueChar('9');
-            chainBase[9] = new ValueChar('A');
+            chainBase[0] = new ValueString('1');
+            chainBase[1] = new ValueString('2');
+            chainBase[2] = new ValueString('3');
+            chainBase[3] = new ValueString('4');
+            chainBase[4] = new ValueString('5');
+            chainBase[5] = new ValueString('6');
+            chainBase[6] = new ValueString('7');
+            chainBase[7] = new ValueString('8');
+            chainBase[8] = new ValueString('9');
+            chainBase[9] = new ValueString('A');
         }
 
         /// <summary>
@@ -55,7 +55,7 @@ namespace AlphabetCheckers.Tests
         public void AddValueTest()
         {
             var temp = new ChainsAlphabet();
-            var a = new ValueChar('A');
+            var a = new ValueString('A');
             temp.Add(a);
             var b = (BaseChain)temp[0];
             Assert.AreEqual(1, b.GetLength());

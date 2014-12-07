@@ -86,7 +86,7 @@ namespace PhantomChains
                     }
                     else
                     {
-                        tempMessage = new ValuePhantom { new ValueChar('a') };
+                        tempMessage = new ValuePhantom { new ValueString('a') };
                         tempChains[i][j] = tempMessage;
                     }
 

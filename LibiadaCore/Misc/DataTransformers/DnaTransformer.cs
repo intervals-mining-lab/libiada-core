@@ -40,13 +40,13 @@
                             case "T":
                                 if ((third == "T") || (third == "C"))
                                 {
-                                    outChain[i / 3] = new ValueChar('F');
+                                    outChain[i / 3] = new ValueString('F');
                                 }
                                 else
                                 {
                                     if ((third == "A") || (third == "G"))
                                     {
-                                        outChain[i / 3] = new ValueChar('L');
+                                        outChain[i / 3] = new ValueString('L');
                                     }
                                     else
                                     {
@@ -56,18 +56,18 @@
 
                                 break;
                             case "C":
-                                outChain[i / 3] = new ValueChar('S');
+                                outChain[i / 3] = new ValueString('S');
                                 break;
                             case "A":
                                 if ((third == "T") || (third == "C"))
                                 {
-                                    outChain[i / 3] = new ValueChar('Y');
+                                    outChain[i / 3] = new ValueString('Y');
                                 }
                                 else
                                 {
                                     if ((third == "A") || (third == "G"))
                                     {
-                                        outChain[i / 3] = new ValueChar('X');
+                                        outChain[i / 3] = new ValueString('X');
                                     }
                                     else
                                     {
@@ -79,19 +79,19 @@
                             case "G":
                                 if ((third == "T") || (third == "C"))
                                 {
-                                    outChain[i / 3] = new ValueChar('C');
+                                    outChain[i / 3] = new ValueString('C');
                                 }
                                 else
                                 {
                                     if (third == "A")
                                     {
-                                        outChain[i / 3] = new ValueChar('X');
+                                        outChain[i / 3] = new ValueString('X');
                                     }
                                     else
                                     {
                                         if (third == "G")
                                         {
-                                            outChain[i / 3] = new ValueChar('W');
+                                            outChain[i / 3] = new ValueString('W');
                                         }
                                         else
                                         {
@@ -110,21 +110,21 @@
                         switch (second)
                         {
                             case "T":
-                                outChain[i / 3] = new ValueChar('L');
+                                outChain[i / 3] = new ValueString('L');
                                 break;
                             case "C":
-                                outChain[i / 3] = new ValueChar('P');
+                                outChain[i / 3] = new ValueString('P');
                                 break;
                             case "A":
                                 if ((third == "T") || (third == "C"))
                                 {
-                                    outChain[i / 3] = new ValueChar('H');
+                                    outChain[i / 3] = new ValueString('H');
                                 }
                                 else
                                 {
                                     if ((third == "A") || (third == "G"))
                                     {
-                                        outChain[i / 3] = new ValueChar('Q');
+                                        outChain[i / 3] = new ValueString('Q');
                                     }
                                     else
                                     {
@@ -134,7 +134,7 @@
 
                                 break;
                             case "G":
-                                outChain[i / 3] = new ValueChar('R');
+                                outChain[i / 3] = new ValueString('R');
                                 break;
                             default:
                                 throw new Exception();
@@ -147,13 +147,13 @@
                             case "T":
                                 if ((third == "T") || (third == "C") || (third == "A"))
                                 {
-                                    outChain[i / 3] = new ValueChar('I');
+                                    outChain[i / 3] = new ValueString('I');
                                 }
                                 else
                                 {
                                     if (third == "G")
                                     {
-                                        outChain[i / 3] = new ValueChar('M');
+                                        outChain[i / 3] = new ValueString('M');
                                     }
                                     else
                                     {
@@ -163,18 +163,18 @@
 
                                 break;
                             case "C":
-                                outChain[i / 3] = new ValueChar('T');
+                                outChain[i / 3] = new ValueString('T');
                                 break;
                             case "A":
                                 if ((third == "T") || (third == "C"))
                                 {
-                                    outChain[i / 3] = new ValueChar('N');
+                                    outChain[i / 3] = new ValueString('N');
                                 }
                                 else
                                 {
                                     if ((third == "A") || (third == "G"))
                                     {
-                                        outChain[i / 3] = new ValueChar('K');
+                                        outChain[i / 3] = new ValueString('K');
                                     }
                                     else
                                     {
@@ -186,13 +186,13 @@
                             case "G":
                                 if ((third == "T") || (third == "C"))
                                 {
-                                    outChain[i / 3] = new ValueChar('S');
+                                    outChain[i / 3] = new ValueString('S');
                                 }
                                 else
                                 {
                                     if ((third == "A") || (third == "G"))
                                     {
-                                        outChain[i / 3] = new ValueChar('R');
+                                        outChain[i / 3] = new ValueString('R');
                                     }
                                     else
                                     {
@@ -210,21 +210,21 @@
                         switch (second)
                         {
                             case "T":
-                                outChain[i / 3] = new ValueChar('V');
+                                outChain[i / 3] = new ValueString('V');
                                 break;
                             case "C":
-                                outChain[i / 3] = new ValueChar('A');
+                                outChain[i / 3] = new ValueString('A');
                                 break;
                             case "A":
                                 if ((third == "T") || (third == "C"))
                                 {
-                                    outChain[i / 3] = new ValueChar('D');
+                                    outChain[i / 3] = new ValueString('D');
                                 }
                                 else
                                 {
                                     if ((third == "A") || (third == "G"))
                                     {
-                                        outChain[i / 3] = new ValueChar('E');
+                                        outChain[i / 3] = new ValueString('E');
                                     }
                                     else
                                     {
@@ -234,7 +234,7 @@
 
                                 break;
                             case "G":
-                                outChain[i / 3] = new ValueChar('G');
+                                outChain[i / 3] = new ValueString('G');
                                 break;
                             default:
                                 throw new Exception();

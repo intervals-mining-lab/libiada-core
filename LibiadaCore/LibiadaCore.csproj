@@ -114,7 +114,6 @@
     <Compile Include="Core\Link.cs" />
     <Compile Include="Core\SimpleTypes\NullValue.cs" />
     <Compile Include="Core\SimpleTypes\ValuePhantom.cs" />
-    <Compile Include="Core\SimpleTypes\ValueChar.cs" />
     <Compile Include="Core\SimpleTypes\ValueDouble.cs" />
     <Compile Include="Core\SimpleTypes\ValueString.cs" />
     <Compile Include="Core\SimpleTypes\VauleInt.cs" />

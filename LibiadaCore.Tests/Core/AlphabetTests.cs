@@ -158,12 +158,12 @@
         [Test]
         public void EqualsTest()
         {
-            alphabet1.Add(new ValueChar('a'));
-            alphabet1.Add(new ValueChar('b'));
-            alphabet1.Add(new ValueChar('c'));
-            alphabet2.Add(new ValueChar('a'));
-            alphabet2.Add(new ValueChar('b'));
-            alphabet2.Add(new ValueChar('c'));
+            alphabet1.Add(new ValueString('a'));
+            alphabet1.Add(new ValueString('b'));
+            alphabet1.Add(new ValueString('c'));
+            alphabet2.Add(new ValueString('a'));
+            alphabet2.Add(new ValueString('b'));
+            alphabet2.Add(new ValueString('c'));
             Assert.IsTrue(alphabet1.Equals(alphabet1.Clone()));
             Assert.IsTrue(alphabet1.Equals(alphabet2));
         }
@@ -174,12 +174,12 @@
         [Test]
         public void EqualsForAlphabetWithEqualsCompositionButNotEqualsOrderTest()
         {
-            alphabet1.Add(new ValueChar('a'));
-            alphabet1.Add(new ValueChar('b'));
-            alphabet1.Add(new ValueChar('c'));
-            alphabet2.Add(new ValueChar('a'));
-            alphabet2.Add(new ValueChar('b'));
-            alphabet2.Add(new ValueChar('c'));
+            alphabet1.Add(new ValueString('a'));
+            alphabet1.Add(new ValueString('b'));
+            alphabet1.Add(new ValueString('c'));
+            alphabet2.Add(new ValueString('a'));
+            alphabet2.Add(new ValueString('b'));
+            alphabet2.Add(new ValueString('c'));
             Assert.IsTrue(alphabet1.Equals(alphabet1.Clone()));
             Assert.IsTrue(alphabet1.Equals(alphabet2));
         }
@@ -190,13 +190,13 @@
         [Test]
         public void ContainsTest()
         {
-            alphabet1.Add(new ValueChar('a'));
-            alphabet1.Add(new ValueChar('b'));
-            alphabet1.Add(new ValueChar('c'));
-            Assert.IsTrue(alphabet1.Contains(new ValueChar('a')));
-            Assert.IsTrue(alphabet1.Contains(new ValueChar('b')));
-            Assert.IsTrue(alphabet1.Contains(new ValueChar('c')));
-            Assert.IsFalse(alphabet1.Contains(new ValueChar('d')));
+            alphabet1.Add(new ValueString('a'));
+            alphabet1.Add(new ValueString('b'));
+            alphabet1.Add(new ValueString('c'));
+            Assert.IsTrue(alphabet1.Contains(new ValueString('a')));
+            Assert.IsTrue(alphabet1.Contains(new ValueString('b')));
+            Assert.IsTrue(alphabet1.Contains(new ValueString('c')));
+            Assert.IsFalse(alphabet1.Contains(new ValueString('d')));
         }
 
         /// <summary>
@@ -205,12 +205,12 @@
         [Test]
         public void IndexOfTest()
         {
-            alphabet1.Add(new ValueChar('a'));
-            alphabet1.Add(new ValueChar('b'));
-            alphabet1.Add(new ValueChar('c'));
-            Assert.IsTrue(alphabet1.IndexOf(new ValueChar('d')).Equals(-1));
-            Assert.IsTrue(alphabet1.IndexOf(new ValueChar('a')).Equals(0));
-            Assert.IsTrue(alphabet1.IndexOf(new ValueChar('c')).Equals(2));
+            alphabet1.Add(new ValueString('a'));
+            alphabet1.Add(new ValueString('b'));
+            alphabet1.Add(new ValueString('c'));
+            Assert.IsTrue(alphabet1.IndexOf(new ValueString('d')).Equals(-1));
+            Assert.IsTrue(alphabet1.IndexOf(new ValueString('a')).Equals(0));
+            Assert.IsTrue(alphabet1.IndexOf(new ValueString('c')).Equals(2));
         }
 
         /// <summary>
@@ -219,14 +219,14 @@
         [Test]
         public void ToArrayTest()
         {
-            var a = new ValueChar('a');
-            var c = new ValueChar('c');
-            var e = new ValueChar('e');
+            var a = new ValueString('a');
+            var c = new ValueString('c');
+            var e = new ValueString('e');
 
             alphabet1.Add(a);
-            alphabet1.Add(new ValueChar('b'));
+            alphabet1.Add(new ValueString('b'));
             alphabet1.Add(c);
-            alphabet1.Add(new ValueChar('d'));
+            alphabet1.Add(new ValueString('d'));
             alphabet1.Add(e);
 
             Assert.AreNotSame(e, alphabet1[4]);
@@ -240,11 +240,11 @@
         [Test]
         public void ToListTest()
         {
-            var a = new ValueChar('a');
-            var b = new ValueChar('b');
-            var c = new ValueChar('c');
-            var d = new ValueChar('d');
-            var e = new ValueChar('e');
+            var a = new ValueString('a');
+            var b = new ValueString('b');
+            var c = new ValueString('c');
+            var d = new ValueString('d');
+            var e = new ValueString('e');
             alphabet1.Add(a);
             alphabet1.Add(b);
             alphabet1.Add(c);

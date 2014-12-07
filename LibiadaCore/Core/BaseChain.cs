@@ -64,7 +64,7 @@ namespace LibiadaCore.Core
         {
             for (int i = 0; i < source.Length; i++)
             {
-                Add(new ValueChar(source[i]), i);
+                Add(new ValueString(source[i]), i);
             }
         }
 

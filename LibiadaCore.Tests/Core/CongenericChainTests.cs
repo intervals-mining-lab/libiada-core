@@ -14,12 +14,12 @@ namespace LibiadaCore.Tests.Core
         /// <summary>
         /// The message.
         /// </summary>
-        private ValueChar message;
+        private ValueString message;
 
         /// <summary>
         /// The wrong message.
         /// </summary>
-        private ValueChar wrongMessage;
+        private ValueString wrongMessage;
 
         /// <summary>
         /// The congeneric chain.
@@ -32,9 +32,9 @@ namespace LibiadaCore.Tests.Core
         [SetUp]
         public void Initialization()
         {
-            message = new ValueChar('1');
+            message = new ValueString('1');
             congenericChain = new CongenericChain(message, 10);
-            wrongMessage = new ValueChar('2');
+            wrongMessage = new ValueString('2');
         }
 
         /// <summary>
@@ -55,7 +55,7 @@ namespace LibiadaCore.Tests.Core
         {
             congenericChain = new CongenericChain(message, 10);
 
-            var newMessage = (ValueChar)congenericChain.Element;
+            var newMessage = (ValueString)congenericChain.Element;
 
             Assert.AreNotSame(congenericChain.Element, newMessage);
         }

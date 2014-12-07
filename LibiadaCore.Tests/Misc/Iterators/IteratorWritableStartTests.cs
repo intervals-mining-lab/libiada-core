@@ -34,20 +34,20 @@ namespace LibiadaCore.Tests.Misc.Iterators
         [Test]
         public void WriteTest()
         {
-            var messages = new List<ValueChar>(12)
+            var messages = new List<ValueString>(12)
                                {
-                                   new ValueChar('1'),
-                                   new ValueChar('2'),
-                                   new ValueChar('1'),
-                                   new ValueChar('3'),
-                                   new ValueChar('3'),
-                                   new ValueChar('1'),
-                                   new ValueChar('2'),
-                                   new ValueChar('1'),
-                                   new ValueChar('2'),
-                                   new ValueChar('2'),
-                                   new ValueChar('3'),
-                                   new ValueChar('1')
+                                   new ValueString('1'),
+                                   new ValueString('2'),
+                                   new ValueString('1'),
+                                   new ValueString('3'),
+                                   new ValueString('3'),
+                                   new ValueString('1'),
+                                   new ValueString('2'),
+                                   new ValueString('1'),
+                                   new ValueString('2'),
+                                   new ValueString('2'),
+                                   new ValueString('3'),
+                                   new ValueString('1')
                                };
 
             var toWrite = new Chain(12);

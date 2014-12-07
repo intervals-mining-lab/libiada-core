@@ -31,27 +31,27 @@ namespace MarkovChains.Tests.MarkovChain
         /// <summary>
         /// The a.
         /// </summary>
-        private ValueChar a;
+        private ValueString a;
 
         /// <summary>
         /// The b.
         /// </summary>
-        private ValueChar b;
+        private ValueString b;
 
         /// <summary>
         /// The c.
         /// </summary>
-        private ValueChar c;
+        private ValueString c;
 
         /// <summary>
         /// The d.
         /// </summary>
-        private ValueChar d;
+        private ValueString d;
 
         /// <summary>
         /// The f.
         /// </summary>
-        private ValueChar f;
+        private ValueString f;
 
         /// <summary>
         /// The ch.
@@ -70,11 +70,11 @@ namespace MarkovChains.Tests.MarkovChain
         public void Init()
         {
             alphabet = new Alphabet();
-            a = new ValueChar('a');
-            b = new ValueChar('b');
-            c = new ValueChar('c');
-            d = new ValueChar('d');
-            f = new ValueChar('f');
+            a = new ValueString('a');
+            b = new ValueString('b');
+            c = new ValueString('c');
+            d = new ValueString('d');
+            f = new ValueString('f');
 
             testChain = new Chain(12);
             testChain.Add((ValueString)"a", 0);

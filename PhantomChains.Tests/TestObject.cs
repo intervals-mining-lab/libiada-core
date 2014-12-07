@@ -41,9 +41,9 @@ namespace PhantomChains.Tests
             chain = new BaseChain(10);
             chain2 = new BaseChain(5);
 
-            alpha.Add((ValueChar)'a');
-            alpha.Add((ValueChar)'b');
-            alpha.Add((ValueChar)'c');
+            alpha.Add((ValueString)'a');
+            alpha.Add((ValueString)'b');
+            alpha.Add((ValueString)'c');
             pm1 = new ValuePhantom { alpha[2], alpha[1] };
             pm2 = new ValuePhantom { alpha[0] };
             

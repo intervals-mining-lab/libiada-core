@@ -1,7 +1,7 @@
 namespace LibiadaCore.Core.SimpleTypes
 {
     /// <summary>
-    ///  ласс представл€ющий элемент-строку
+    /// String-element class.
     /// </summary>
     public class ValueString : IBaseObject
     {
@@ -24,17 +24,29 @@ namespace LibiadaCore.Core.SimpleTypes
         /// <summary>
         /// Initializes a new instance of the <see cref="ValueString"/> class.
         /// </summary>
+        /// <param name="value">
+        /// The <see cref="char"/> value of element.
+        /// </param>
+        public ValueString(char value)
+        {
+            Value = value.ToString();
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ValueString"/> class.
+        /// </summary>
         protected ValueString()
         {
         }
 
         /// <summary>
-        /// The op_ implicit.
+        /// The implicit operator casting from ValueString to string.
         /// </summary>
         /// <param name="from">
         /// The from.
         /// </param>
         /// <returns>
+        /// New <see cref="string"/>.
         /// </returns>
         public static implicit operator string(ValueString from)
         {
@@ -42,14 +54,29 @@ namespace LibiadaCore.Core.SimpleTypes
         }
 
         /// <summary>
-        /// The op_ implicit.
+        /// The implicit operator casting from string to ValueString.
         /// </summary>
         /// <param name="from">
         /// The from.
         /// </param>
         /// <returns>
+        /// New <see cref="ValueString"/>.
         /// </returns>
         public static implicit operator ValueString(string from)
+        {
+            return new ValueString(from);
+        }
+
+        /// <summary>
+        /// The implicit operator casting from char to ValueString.
+        /// </summary>
+        /// <param name="from">
+        /// The from.
+        /// </param>
+        /// <returns>
+        /// New <see cref="ValueString"/>.
+        /// </returns>
+        public static implicit operator ValueString(char from)
         {
             return new ValueString(from);
         }

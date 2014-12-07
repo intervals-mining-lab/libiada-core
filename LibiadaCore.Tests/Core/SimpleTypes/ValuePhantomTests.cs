@@ -17,9 +17,9 @@ namespace LibiadaCore.Tests.Core.SimpleTypes
         [Test]
         public void EqualsTest()
         {
-            var m1 = new ValuePhantom { new ValueChar('1'), new ValueChar('2'), new ValueChar('3') };
+            var m1 = new ValuePhantom { new ValueString('1'), new ValueString('2'), new ValueString('3') };
 
-            Assert.IsTrue(m1.Equals(new ValueChar('3')));
+            Assert.IsTrue(m1.Equals(new ValueString('3')));
         }
 
         /// <summary>
@@ -28,14 +28,14 @@ namespace LibiadaCore.Tests.Core.SimpleTypes
         [Test]
         public void AddMessagePhantomTest()
         {
-            var m2 = new ValuePhantom { new ValueChar('4'), new ValueChar('2'), new ValueChar('5') };
-            var m1 = new ValuePhantom { new ValueChar('1'), new ValueChar('2'), new ValueChar('3'), m2 };
+            var m2 = new ValuePhantom { new ValueString('4'), new ValueString('2'), new ValueString('5') };
+            var m1 = new ValuePhantom { new ValueString('1'), new ValueString('2'), new ValueString('3'), m2 };
 
-            Assert.IsTrue(m1.Equals(new ValueChar('1')));
-            Assert.IsTrue(m1.Equals(new ValueChar('2')));
-            Assert.IsTrue(m1.Equals(new ValueChar('3')));
-            Assert.IsTrue(m1.Equals(new ValueChar('4')));
-            Assert.IsTrue(m1.Equals(new ValueChar('5')));
+            Assert.IsTrue(m1.Equals(new ValueString('1')));
+            Assert.IsTrue(m1.Equals(new ValueString('2')));
+            Assert.IsTrue(m1.Equals(new ValueString('3')));
+            Assert.IsTrue(m1.Equals(new ValueString('4')));
+            Assert.IsTrue(m1.Equals(new ValueString('5')));
         }
 
         /// <summary>
@@ -44,7 +44,7 @@ namespace LibiadaCore.Tests.Core.SimpleTypes
         [Test]
         public void CloneTest()
         {
-            var m1 = new ValuePhantom { new ValueChar('1'), new ValueChar('2'), new ValueChar('3') };
+            var m1 = new ValuePhantom { new ValueString('1'), new ValueString('2'), new ValueString('3') };
 
             var itsClone = (ValuePhantom)m1.Clone();
             Assert.AreEqual(m1, itsClone);
@@ -62,7 +62,7 @@ namespace LibiadaCore.Tests.Core.SimpleTypes
             m1 = new ValuePhantom { new Chain(10) };
             Assert.AreEqual(m1, NullValue.Instance());
 
-            m1.Add(new ValueChar('1'));
+            m1.Add(new ValueString('1'));
             Assert.AreNotEqual(m1, NullValue.Instance());
         }
     }

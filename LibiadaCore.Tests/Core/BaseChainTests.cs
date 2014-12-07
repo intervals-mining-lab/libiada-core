@@ -55,8 +55,8 @@ namespace LibiadaCore.Tests.Core
         [Test]
         public void GetByThisTest()
         {
-            chainBase.Add(new ValueChar('1'), 0);
-            Assert.AreEqual((ValueChar)chainBase[0], '1');
+            chainBase.Add(new ValueString('1'), 0);
+            Assert.IsTrue(((ValueString)chainBase[0]).Equals("1"));
         }
 
         /// <summary>
@@ -65,8 +65,8 @@ namespace LibiadaCore.Tests.Core
         [Test]
         public void SetByThisTest()
         {
-            chainBase[0] = new ValueChar('1');
-            Assert.AreEqual((ValueChar)chainBase.Get(0), '1');
+            chainBase[0] = new ValueString('1');
+            Assert.IsTrue(((ValueString)chainBase.Get(0)).Equals("1"));
         }
 
         /// <summary>
@@ -75,8 +75,8 @@ namespace LibiadaCore.Tests.Core
         [Test]
         public void GetTest()
         {
-            chainBase.Add(new ValueChar('1'), 0);
-            Assert.AreEqual((ValueChar)chainBase.Get(0), '1');
+            chainBase.Add(new ValueString('1'), 0);
+            Assert.IsTrue(((ValueString)chainBase.Get(0)).Equals("1"));
         }
 
         /// <summary>
@@ -85,8 +85,8 @@ namespace LibiadaCore.Tests.Core
         [Test]
         public void SetTest()
         {
-            chainBase.Add(new ValueChar('1'), 0);
-            Assert.AreEqual((ValueChar)chainBase.Get(0), '1');
+            chainBase.Add(new ValueString('1'), 0);
+            Assert.IsTrue(((ValueString)chainBase.Get(0)).Equals("1"));
         }
 
         /// <summary>
@@ -95,8 +95,8 @@ namespace LibiadaCore.Tests.Core
         [Test]
         public void RemoveTest()
         {
-            chainBase.Add(new ValueChar('1'), 0);
-            Assert.AreEqual((ValueChar)chainBase[0], '1');
+            chainBase.Add(new ValueString('1'), 0);
+            Assert.IsTrue(((ValueString)chainBase[0]).Equals("1"));
 
             chainBase.RemoveAt(0);
             Assert.AreEqual(chainBase[0], NullValue.Instance());

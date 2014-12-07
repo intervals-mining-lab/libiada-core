@@ -17,9 +17,9 @@ namespace PhantomChains.Tests
         [Test]
         public void VolumeTest()
         {
-            var m3 = new ValuePhantom { new ValueChar('a') };
-            var m1 = new ValuePhantom { new ValueChar('1'), new ValueChar('2'), new ValueChar('3') };
-            var m2 = new ValuePhantom { new ValueChar('4'), new ValueChar('3') };
+            var m3 = new ValuePhantom { new ValueString('a') };
+            var m1 = new ValuePhantom { new ValueString('1'), new ValueString('2'), new ValueString('3') };
+            var m2 = new ValuePhantom { new ValueString('4'), new ValueString('3') };
 
             var test = new BaseChain(4);
             test.Add(m1, 0);
@@ -41,8 +41,8 @@ namespace PhantomChains.Tests
         [Test]
         public void ContentTest()
         {
-            var m1 = new ValuePhantom { new ValueChar('1'), new ValueChar('2'), new ValueChar('3') };
-            var m2 = new ValuePhantom { new ValueChar('4'), new ValueChar('3') };
+            var m1 = new ValuePhantom { new ValueString('1'), new ValueString('2'), new ValueString('3') };
+            var m2 = new ValuePhantom { new ValueString('4'), new ValueString('3') };
 
             var test = new BaseChain(3);
             test.Add(m1, 0);
