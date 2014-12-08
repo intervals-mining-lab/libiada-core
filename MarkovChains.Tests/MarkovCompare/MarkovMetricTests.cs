@@ -27,14 +27,14 @@ namespace MarkovChains.Tests.MarkovCompare
         public void Init()
         {
             testChain = new Chain(8);
-            testChain.Add((ValueString)"A", 0);
-            testChain.Add((ValueString)"G", 1);
-            testChain.Add((ValueString)"T", 2);
-            testChain.Add((ValueString)"A", 3);
-            testChain.Add((ValueString)"A", 4);
-            testChain.Add((ValueString)"G", 5);
-            testChain.Add((ValueString)"T", 6);
-            testChain.Add((ValueString)"C", 7);
+            testChain.Set((ValueString)"A", 0);
+            testChain.Set((ValueString)"G", 1);
+            testChain.Set((ValueString)"T", 2);
+            testChain.Set((ValueString)"A", 3);
+            testChain.Set((ValueString)"A", 4);
+            testChain.Set((ValueString)"G", 5);
+            testChain.Set((ValueString)"T", 6);
+            testChain.Set((ValueString)"C", 7);
         }
 
         /// <summary>

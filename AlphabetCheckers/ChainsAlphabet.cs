@@ -24,7 +24,7 @@ namespace AlphabetCheckers
             if (temp == null)
             {
                 temp = new BaseChain(1);
-                temp.Add(item, 0);
+                temp.Set(item, 0);
             }
 
             return base.Add(temp);

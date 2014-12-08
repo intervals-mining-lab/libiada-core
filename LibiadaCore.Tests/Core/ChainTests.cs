@@ -39,29 +39,29 @@ namespace LibiadaCore.Tests.Core
             var messageT = new ValueString('t');
             var congenericChainA = new CongenericChain(messageA, 10);
 
-            chain.Add(messageC, 0);
+            chain.Set(messageC, 0);
 
-            chain.Add(messageC, 1);
+            chain.Set(messageC, 1);
 
-            chain.Add(messageA, 2);
+            chain.Set(messageA, 2);
 
-            congenericChainA.Add(messageA, 2);
+            congenericChainA.Set(messageA, 2);
 
-            chain.Add(messageC, 3);
+            chain.Set(messageC, 3);
 
-            chain.Add(messageG, 4);
+            chain.Set(messageG, 4);
 
-            chain.Add(messageC, 5);
+            chain.Set(messageC, 5);
 
-            chain.Add(messageT, 6);
+            chain.Set(messageT, 6);
 
-            chain.Add(messageT, 7);
+            chain.Set(messageT, 7);
 
-            chain.Add(messageA, 8);
+            chain.Set(messageA, 8);
 
-            congenericChainA.Add(messageA, 8);
+            congenericChainA.Set(messageA, 8);
 
-            chain.Add(messageC, 9);
+            chain.Set(messageC, 9);
 
             var chainCreatedCongenericChain = chain.CongenericChain((IBaseObject)messageA);
 
@@ -102,16 +102,16 @@ namespace LibiadaCore.Tests.Core
             var messageG = new ValueString('g');
             var messageT = new ValueString('t');
 
-            chain.Add(messageC, 0);
-            chain.Add(messageC, 1);
-            chain.Add(messageA, 2);
-            chain.Add(messageC, 3);
-            chain.Add(messageG, 4);
-            chain.Add(messageC, 5);
-            chain.Add(messageT, 6);
-            chain.Add(messageT, 7);
-            chain.Add(messageA, 8);
-            chain.Add(messageC, 9);
+            chain.Set(messageC, 0);
+            chain.Set(messageC, 1);
+            chain.Set(messageA, 2);
+            chain.Set(messageC, 3);
+            chain.Set(messageG, 4);
+            chain.Set(messageC, 5);
+            chain.Set(messageT, 6);
+            chain.Set(messageT, 7);
+            chain.Set(messageA, 8);
+            chain.Set(messageC, 9);
 
             Assert.AreEqual(2, chain.GetOccurrence(messageA, 1));
             Assert.AreEqual(8, chain.GetOccurrence(messageA, 2));
@@ -144,16 +144,16 @@ namespace LibiadaCore.Tests.Core
             IBaseObject messageG = new ValueString('g');
             IBaseObject messageT = new ValueString('t');
 
-            chain.Add(messageC, 0);
-            chain.Add(messageC, 1);
-            chain.Add(messageA, 2);
-            chain.Add(messageC, 3);
-            chain.Add(messageG, 4);
-            chain.Add(messageC, 5);
-            chain.Add(messageT, 6);
-            chain.Add(messageT, 7);
-            chain.Add(messageA, 8);
-            chain.Add(messageC, 9);
+            chain.Set(messageC, 0);
+            chain.Set(messageC, 1);
+            chain.Set(messageA, 2);
+            chain.Set(messageC, 3);
+            chain.Set(messageG, 4);
+            chain.Set(messageC, 5);
+            chain.Set(messageT, 6);
+            chain.Set(messageT, 7);
+            chain.Set(messageA, 8);
+            chain.Set(messageC, 9);
 
 
             Assert.AreEqual(1, chain.GetRelationIntervalsManager(messageA, messageC).GetBinaryInterval(1));
@@ -174,19 +174,19 @@ namespace LibiadaCore.Tests.Core
 
             // oxo_xx_oooxxo
             var testChain = new Chain(13);
-            testChain.Add(messageA, 0);
-            testChain.Add(messageC, 1);
-            testChain.Add(messageA, 2);
+            testChain.Set(messageA, 0);
+            testChain.Set(messageC, 1);
+            testChain.Set(messageA, 2);
 
-            testChain.Add(messageC, 4);
-            testChain.Add(messageC, 5);
+            testChain.Set(messageC, 4);
+            testChain.Set(messageC, 5);
 
-            testChain.Add(messageA, 7);
-            testChain.Add(messageA, 8);
-            testChain.Add(messageA, 9);
-            testChain.Add(messageC, 10);
-            testChain.Add(messageC, 11);
-            testChain.Add(messageA, 12);
+            testChain.Set(messageA, 7);
+            testChain.Set(messageA, 8);
+            testChain.Set(messageA, 9);
+            testChain.Set(messageC, 10);
+            testChain.Set(messageC, 11);
+            testChain.Set(messageA, 12);
 
             Assert.AreEqual(1, testChain.GetRelationIntervalsManager(messageA, messageC).GetBinaryInterval(1));
             Assert.AreEqual(2, testChain.GetRelationIntervalsManager(messageA, messageC).GetBinaryInterval(2));

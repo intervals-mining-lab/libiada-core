@@ -37,32 +37,32 @@ namespace MarkovChains.Tests.MarkovChain
             // Создаем цепь длинной 12
             // |a|d|b|a|a|c|b|b|a|a|c|a|
             testChain = new Chain(12);
-            testChain.Add((ValueString)"a", 0);
-            testChain.Add((ValueString)"d", 1);
-            testChain.Add((ValueString)"b", 2);
-            testChain.Add((ValueString)"a", 3);
-            testChain.Add((ValueString)"a", 4);
-            testChain.Add((ValueString)"c", 5);
-            testChain.Add((ValueString)"b", 6);
-            testChain.Add((ValueString)"b", 7);
-            testChain.Add((ValueString)"a", 8);
-            testChain.Add((ValueString)"a", 9);
-            testChain.Add((ValueString)"c", 10);
-            testChain.Add((ValueString)"a", 11);
+            testChain.Set((ValueString)"a", 0);
+            testChain.Set((ValueString)"d", 1);
+            testChain.Set((ValueString)"b", 2);
+            testChain.Set((ValueString)"a", 3);
+            testChain.Set((ValueString)"a", 4);
+            testChain.Set((ValueString)"c", 5);
+            testChain.Set((ValueString)"b", 6);
+            testChain.Set((ValueString)"b", 7);
+            testChain.Set((ValueString)"a", 8);
+            testChain.Set((ValueString)"a", 9);
+            testChain.Set((ValueString)"c", 10);
+            testChain.Set((ValueString)"a", 11);
 
             testChain2 = new Chain(12);
-            testChain2.Add((ValueString)"a", 0);
-            testChain2.Add((ValueString)"a", 1);
-            testChain2.Add((ValueString)"a", 2);
-            testChain2.Add((ValueString)"a", 3);
-            testChain2.Add((ValueString)"a", 4);
-            testChain2.Add((ValueString)"a", 5);
-            testChain2.Add((ValueString)"b", 6);
-            testChain2.Add((ValueString)"a", 7);
-            testChain2.Add((ValueString)"a", 8);
-            testChain2.Add((ValueString)"a", 9);
-            testChain2.Add((ValueString)"b", 10);
-            testChain2.Add((ValueString)"a", 11);
+            testChain2.Set((ValueString)"a", 0);
+            testChain2.Set((ValueString)"a", 1);
+            testChain2.Set((ValueString)"a", 2);
+            testChain2.Set((ValueString)"a", 3);
+            testChain2.Set((ValueString)"a", 4);
+            testChain2.Set((ValueString)"a", 5);
+            testChain2.Set((ValueString)"b", 6);
+            testChain2.Set((ValueString)"a", 7);
+            testChain2.Set((ValueString)"a", 8);
+            testChain2.Set((ValueString)"a", 9);
+            testChain2.Set((ValueString)"b", 10);
+            testChain2.Set((ValueString)"a", 11);
         }
 
         /// <summary>
@@ -236,18 +236,18 @@ namespace MarkovChains.Tests.MarkovChain
 
             // Цепь которую хотим получить
             var result = new Chain(12);
-            result.Add((ValueString)"b", 0); // 1 цепь вероятность по первому уровню. выпало  0,77 Получаем b
-            result.Add((ValueString)"a", 1); // 2 цепь вероятность по второму уровню. выпало  0.15 Получаем a
-            result.Add((ValueString)"c", 2); // 1 цепь вероятность по второму уровню. выпало  0.96 Получаем с
-            result.Add((ValueString)"b", 3); // 2 цепь вероятность по второму уровню. выпало  0.61 Получаем b
-            result.Add((ValueString)"a", 4); // 1 цепь вероятность по второму уровню. выпало  0.15 Получаем a
-            result.Add((ValueString)"c", 5); // 2 цепь вероятность по второму уровню. выпало  0.85 Получаем c
-            result.Add((ValueString)"a", 6); // 1 цепь вероятность по второму уровню. выпало  0.67 Получаем a
-            result.Add((ValueString)"c", 7); // 2 цепь вероятность по второму уровню. выпало  0.51 Получаем c
-            result.Add((ValueString)"a", 8); // 1 цепь вероятность по второму уровню. выпало  0.71 Получаем a
-            result.Add((ValueString)"a", 9); // 2 цепь вероятность по второму уровню. выпало  0.2 Получаем a
-            result.Add((ValueString)"c", 10); // 1 цепь вероятность по второму уровню. выпало  0.77 Получаем с
-            result.Add((ValueString)"b", 11); // 2 цепь вероятность по второму уровню. выпало  0.15 Получаем b
+            result.Set((ValueString)"b", 0); // 1 цепь вероятность по первому уровню. выпало  0,77 Получаем b
+            result.Set((ValueString)"a", 1); // 2 цепь вероятность по второму уровню. выпало  0.15 Получаем a
+            result.Set((ValueString)"c", 2); // 1 цепь вероятность по второму уровню. выпало  0.96 Получаем с
+            result.Set((ValueString)"b", 3); // 2 цепь вероятность по второму уровню. выпало  0.61 Получаем b
+            result.Set((ValueString)"a", 4); // 1 цепь вероятность по второму уровню. выпало  0.15 Получаем a
+            result.Set((ValueString)"c", 5); // 2 цепь вероятность по второму уровню. выпало  0.85 Получаем c
+            result.Set((ValueString)"a", 6); // 1 цепь вероятность по второму уровню. выпало  0.67 Получаем a
+            result.Set((ValueString)"c", 7); // 2 цепь вероятность по второму уровню. выпало  0.51 Получаем c
+            result.Set((ValueString)"a", 8); // 1 цепь вероятность по второму уровню. выпало  0.71 Получаем a
+            result.Set((ValueString)"a", 9); // 2 цепь вероятность по второму уровню. выпало  0.2 Получаем a
+            result.Set((ValueString)"c", 10); // 1 цепь вероятность по второму уровню. выпало  0.77 Получаем с
+            result.Set((ValueString)"b", 11); // 2 цепь вероятность по второму уровню. выпало  0.15 Получаем b
 
             Assert.AreEqual(result, temp);
         }
@@ -413,18 +413,18 @@ namespace MarkovChains.Tests.MarkovChain
 
             // Цепь которую хотим получить
             var result = new Chain(12);
-            result.Add((ValueString)"b", 0); // 1 цепь вероятность по первому уровню. выпало  0,77 Получаем b
-            result.Add((ValueString)"a", 1); // 2 цепь вероятность по второму уровню. выпало  0.15 Получаем a
-            result.Add((ValueString)"c", 2); // 1 цепь вероятность по второму уровню. выпало  0.96 Получаем с
-            result.Add((ValueString)"b", 3); // 2 цепь вероятность по второму уровню. выпало  0.61 Получаем b
-            result.Add((ValueString)"a", 4); // 1 цепь вероятность по второму уровню. выпало  0.15 Получаем a
-            result.Add((ValueString)"c", 5); // 2 цепь вероятность по второму уровню. выпало  0.85 Получаем c
-            result.Add((ValueString)"a", 6); // 1 цепь вероятность по второму уровню. выпало  0.67 Получаем a
-            result.Add((ValueString)"c", 7); // 2 цепь вероятность по второму уровню. выпало  0.51 Получаем c
-            result.Add((ValueString)"a", 8); // 1 цепь вероятность по второму уровню. выпало  0.71 Получаем a
-            result.Add((ValueString)"a", 9); // 2 цепь вероятность по второму уровню. выпало  0.2 Получаем a
-            result.Add((ValueString)"c", 10); // 1 цепь вероятность по второму уровню. выпало  0.77 Получаем с
-            result.Add((ValueString)"b", 11); // 2 цепь вероятность по второму уровню. выпало  0.15 Получаем b
+            result.Set((ValueString)"b", 0); // 1 цепь вероятность по первому уровню. выпало  0,77 Получаем b
+            result.Set((ValueString)"a", 1); // 2 цепь вероятность по второму уровню. выпало  0.15 Получаем a
+            result.Set((ValueString)"c", 2); // 1 цепь вероятность по второму уровню. выпало  0.96 Получаем с
+            result.Set((ValueString)"b", 3); // 2 цепь вероятность по второму уровню. выпало  0.61 Получаем b
+            result.Set((ValueString)"a", 4); // 1 цепь вероятность по второму уровню. выпало  0.15 Получаем a
+            result.Set((ValueString)"c", 5); // 2 цепь вероятность по второму уровню. выпало  0.85 Получаем c
+            result.Set((ValueString)"a", 6); // 1 цепь вероятность по второму уровню. выпало  0.67 Получаем a
+            result.Set((ValueString)"c", 7); // 2 цепь вероятность по второму уровню. выпало  0.51 Получаем c
+            result.Set((ValueString)"a", 8); // 1 цепь вероятность по второму уровню. выпало  0.71 Получаем a
+            result.Set((ValueString)"a", 9); // 2 цепь вероятность по второму уровню. выпало  0.2 Получаем a
+            result.Set((ValueString)"c", 10); // 1 цепь вероятность по второму уровню. выпало  0.77 Получаем с
+            result.Set((ValueString)"b", 11); // 2 цепь вероятность по второму уровню. выпало  0.15 Получаем b
         }
     }
 }

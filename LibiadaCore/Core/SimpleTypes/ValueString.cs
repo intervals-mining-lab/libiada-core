@@ -40,7 +40,7 @@ namespace LibiadaCore.Core.SimpleTypes
         }
 
         /// <summary>
-        /// The implicit operator casting from ValueString to string.
+        /// Operator of implicit casting from ValueString to string.
         /// </summary>
         /// <param name="from">
         /// The from.
@@ -54,7 +54,7 @@ namespace LibiadaCore.Core.SimpleTypes
         }
 
         /// <summary>
-        /// The implicit operator casting from string to ValueString.
+        /// Operator of implicit casting from string to ValueString.
         /// </summary>
         /// <param name="from">
         /// The from.
@@ -68,7 +68,7 @@ namespace LibiadaCore.Core.SimpleTypes
         }
 
         /// <summary>
-        /// The implicit operator casting from char to ValueString.
+        /// Operator of implicit casting from char to ValueString.
         /// </summary>
         /// <param name="from">
         /// The from.

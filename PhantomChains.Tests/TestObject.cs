@@ -47,22 +47,22 @@ namespace PhantomChains.Tests
             pm1 = new ValuePhantom { alpha[2], alpha[1] };
             pm2 = new ValuePhantom { alpha[0] };
             
-            chain.Add(PhantomMessageBc, 0);
-            chain.Add(PhantomMessageA, 1);
-            chain.Add(PhantomMessageA, 2);
-            chain.Add(PhantomMessageBc, 3);
-            chain.Add(PhantomMessageA, 4);
-            chain.Add(PhantomMessageBc, 5);
-            chain.Add(PhantomMessageA, 6);
-            chain.Add(PhantomMessageBc, 7);
-            chain.Add(PhantomMessageA, 8);
-            chain.Add(PhantomMessageA, 9);
+            chain.Set(PhantomMessageBc, 0);
+            chain.Set(PhantomMessageA, 1);
+            chain.Set(PhantomMessageA, 2);
+            chain.Set(PhantomMessageBc, 3);
+            chain.Set(PhantomMessageA, 4);
+            chain.Set(PhantomMessageBc, 5);
+            chain.Set(PhantomMessageA, 6);
+            chain.Set(PhantomMessageBc, 7);
+            chain.Set(PhantomMessageA, 8);
+            chain.Set(PhantomMessageA, 9);
 
-            chain2.Add(alpha[1], 0);
-            chain2.Add(PhantomMessageA, 1);
-            chain2.Add(PhantomMessageBc, 2);
-            chain2.Add(alpha[0], 3);
-            chain2.Add(PhantomMessageBc, 4);
+            chain2.Set(alpha[1], 0);
+            chain2.Set(PhantomMessageA, 1);
+            chain2.Set(PhantomMessageBc, 2);
+            chain2.Set(alpha[0], 3);
+            chain2.Set(PhantomMessageBc, 4);
         }
 
         /// <summary>

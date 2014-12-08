@@ -3,7 +3,7 @@ namespace LibiadaCore.Core.SimpleTypes
     using System.Globalization;
 
     /// <summary>
-    /// Класс - вещественное значение
+    /// Double value element class.
     /// </summary>
     public class ValueDouble : IBaseObject
     {
@@ -24,12 +24,13 @@ namespace LibiadaCore.Core.SimpleTypes
         }
 
         /// <summary>
-        /// The op_ implicit.
+        /// Operator of implicit casting from ValueDouble to double.
         /// </summary>
         /// <param name="from">
         /// The from.
         /// </param>
         /// <returns>
+        /// New <see cref="double"/>.
         /// </returns>
         public static implicit operator double(ValueDouble from)
         {
@@ -37,12 +38,13 @@ namespace LibiadaCore.Core.SimpleTypes
         }
 
         /// <summary>
-        /// The op_ implicit.
+        /// Operator of implicit casting from double to ValueDouble.
         /// </summary>
         /// <param name="from">
         /// The from.
         /// </param>
         /// <returns>
+        /// New <see cref="ValueDouble"/>.
         /// </returns>
         public static implicit operator ValueDouble(double from)
         {

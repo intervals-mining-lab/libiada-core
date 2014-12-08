@@ -48,14 +48,14 @@ namespace AlphabetCheckers
         {
             if (Source.GetLength() == length)
             {
-                resultChain.Add(Source, actualLength);
+                resultChain.Set(Source, actualLength);
                 Source = null;
             }
             else
             {
                 var it1 = new IteratorStart(Source, length, 1);
                 it1.Next();
-                resultChain.Add(it1.Current(), actualLength);
+                resultChain.Set(it1.Current(), actualLength);
                 var it2 = new IteratorEnd(Source, Source.GetLength() - length, 1);
                 it2.Next();
                 Source = (BaseChain)it2.Current();

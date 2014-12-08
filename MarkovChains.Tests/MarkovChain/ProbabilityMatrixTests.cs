@@ -31,32 +31,32 @@ namespace MarkovChains.Tests.MarkovChain
         public void Init()
         {
             testChain = new Chain(12);
-            testChain.Add((ValueString)"a", 0);
-            testChain.Add((ValueString)"d", 1);
-            testChain.Add((ValueString)"b", 2);
-            testChain.Add((ValueString)"a", 3);
-            testChain.Add((ValueString)"a", 4);
-            testChain.Add((ValueString)"c", 5);
-            testChain.Add((ValueString)"b", 6);
-            testChain.Add((ValueString)"b", 7);
-            testChain.Add((ValueString)"a", 8);
-            testChain.Add((ValueString)"a", 9);
-            testChain.Add((ValueString)"c", 10);
-            testChain.Add((ValueString)"a", 11);
+            testChain.Set((ValueString)"a", 0);
+            testChain.Set((ValueString)"d", 1);
+            testChain.Set((ValueString)"b", 2);
+            testChain.Set((ValueString)"a", 3);
+            testChain.Set((ValueString)"a", 4);
+            testChain.Set((ValueString)"c", 5);
+            testChain.Set((ValueString)"b", 6);
+            testChain.Set((ValueString)"b", 7);
+            testChain.Set((ValueString)"a", 8);
+            testChain.Set((ValueString)"a", 9);
+            testChain.Set((ValueString)"c", 10);
+            testChain.Set((ValueString)"a", 11);
 
             testChain2 = new Chain(12);
-            testChain2.Add((ValueString)"a", 0);
-            testChain2.Add((ValueString)"a", 1);
-            testChain2.Add((ValueString)"a", 2);
-            testChain2.Add((ValueString)"a", 3);
-            testChain2.Add((ValueString)"a", 4);
-            testChain2.Add((ValueString)"a", 5);
-            testChain2.Add((ValueString)"b", 6);
-            testChain2.Add((ValueString)"a", 7);
-            testChain2.Add((ValueString)"a", 8);
-            testChain2.Add((ValueString)"a", 9);
-            testChain2.Add((ValueString)"b", 10);
-            testChain2.Add((ValueString)"a", 11);
+            testChain2.Set((ValueString)"a", 0);
+            testChain2.Set((ValueString)"a", 1);
+            testChain2.Set((ValueString)"a", 2);
+            testChain2.Set((ValueString)"a", 3);
+            testChain2.Set((ValueString)"a", 4);
+            testChain2.Set((ValueString)"a", 5);
+            testChain2.Set((ValueString)"b", 6);
+            testChain2.Set((ValueString)"a", 7);
+            testChain2.Set((ValueString)"a", 8);
+            testChain2.Set((ValueString)"a", 9);
+            testChain2.Set((ValueString)"b", 10);
+            testChain2.Set((ValueString)"a", 11);
         }
 
         /// <summary>

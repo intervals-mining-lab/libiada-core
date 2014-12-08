@@ -1,8 +1,9 @@
 namespace LibiadaCore.Core.SimpleTypes
 {
     /// <summary>
-    ///  ласс реализующий объект псевдо-величина
-    /// –еализованн на основе паттерна Singletone
+    /// Null value class.
+    /// Used to fill empty space in chains.
+    /// Implements singleton pattern.
     /// </summary>
     public class NullValue : IBaseObject
     {
@@ -19,10 +20,10 @@ namespace LibiadaCore.Core.SimpleTypes
         }
 
         /// <summary>
-        /// ћетод позвол€ющий получить указатель на объект
+        /// Replacement for constructor.
         /// </summary>
         /// <returns>
-        /// ”казатель на объект
+        /// Reference on this object.
         /// </returns>
         public static NullValue Instance()
         {

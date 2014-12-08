@@ -192,9 +192,9 @@ namespace LibiadaCore.Core
         /// <param name="index">
         /// The index.
         /// </param>
-        public override void Add(IBaseObject item, int index)
+        public override void Set(IBaseObject item, int index)
         {
-            base.Add(item, index);
+            base.Set(item, index);
 
             if (congenericChains.Length != (alphabet.Cardinality - 1))
             {
@@ -210,7 +210,7 @@ namespace LibiadaCore.Core
 
             foreach (CongenericChain chain in congenericChains)
             {
-                chain.Add(item, index);
+                chain.Set(item, index);
             }
         }
 
@@ -245,7 +245,7 @@ namespace LibiadaCore.Core
                     dissimilarChains[dissimilarChains.Length - 1] = new Chain();
                 }
 
-                dissimilarChains[element].Add(new ValueInt(building[i]), i);
+                dissimilarChains[element].Set(new ValueInt(building[i]), i);
             }
         } 
 

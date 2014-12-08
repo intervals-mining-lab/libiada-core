@@ -24,10 +24,10 @@ namespace PhantomChains.Tests
             var m3 = new ValuePhantom { new ValueString('a') };
 
             var test = new BaseChain(4);
-            test.Add(m1, 0);
-            test.Add(m2, 1);
-            test.Add(m2, 2);
-            test.Add(m3, 3);
+            test.Set(m1, 0);
+            test.Set(m2, 1);
+            test.Set(m2, 2);
+            test.Set(m3, 3);
 
             IGenerator gen = new SimpleGenerator();
             var tree = new TreeTop(test, gen);

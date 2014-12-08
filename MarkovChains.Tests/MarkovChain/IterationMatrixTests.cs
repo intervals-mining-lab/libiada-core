@@ -77,18 +77,18 @@ namespace MarkovChains.Tests.MarkovChain
             f = new ValueString('f');
 
             testChain = new Chain(12);
-            testChain.Add((ValueString)"a", 0);
-            testChain.Add((ValueString)"d", 1);
-            testChain.Add((ValueString)"b", 2);
-            testChain.Add((ValueString)"a", 3);
-            testChain.Add((ValueString)"a", 4);
-            testChain.Add((ValueString)"c", 5);
-            testChain.Add((ValueString)"b", 6);
-            testChain.Add((ValueString)"b", 7);
-            testChain.Add((ValueString)"a", 8);
-            testChain.Add((ValueString)"a", 9);
-            testChain.Add((ValueString)"c", 10);
-            testChain.Add((ValueString)"a", 11);
+            testChain.Set((ValueString)"a", 0);
+            testChain.Set((ValueString)"d", 1);
+            testChain.Set((ValueString)"b", 2);
+            testChain.Set((ValueString)"a", 3);
+            testChain.Set((ValueString)"a", 4);
+            testChain.Set((ValueString)"c", 5);
+            testChain.Set((ValueString)"b", 6);
+            testChain.Set((ValueString)"b", 7);
+            testChain.Set((ValueString)"a", 8);
+            testChain.Set((ValueString)"a", 9);
+            testChain.Set((ValueString)"c", 10);
+            testChain.Set((ValueString)"a", 11);
         }
 
         /// <summary>
@@ -105,9 +105,9 @@ namespace MarkovChains.Tests.MarkovChain
 
             ch = new BaseChain(3);
 
-            ch.Add(a, 0);
-            ch.Add(b, 1);
-            ch.Add(b, 2);
+            ch.Set(a, 0);
+            ch.Set(b, 1);
+            ch.Set(b, 2);
 
             matrix = new Matrix(alphabet.Cardinality, 2);
             var arrayCh = new int[ch.GetLength()];
@@ -138,17 +138,17 @@ namespace MarkovChains.Tests.MarkovChain
             var ch6 = new BaseChain(1);
             var ch7 = new BaseChain(1);
 
-            ch.Add(a, 0);
-            ch.Add(b, 1);
+            ch.Set(a, 0);
+            ch.Set(b, 1);
 
-            ch1.Add(c, 0);
-            ch1.Add(b, 1);
+            ch1.Set(c, 0);
+            ch1.Set(b, 1);
 
-            ch2.Add(b, 0);
-            ch2.Add(a, 1);
+            ch2.Set(b, 0);
+            ch2.Set(a, 1);
 
-            ch3.Add(b, 0);
-            ch3.Add(c, 1);
+            ch3.Set(b, 0);
+            ch3.Set(c, 1);
 
             matrix = new Matrix(alphabet.Cardinality, 2);
 
@@ -187,27 +187,27 @@ namespace MarkovChains.Tests.MarkovChain
             arrayToTeach[1] = alphabet.IndexOf(ch1[1]);
             Assert.AreEqual(2, matrix.FrequencyFromObject(arrayToTeach));
 
-            ch4.Add(a, 0);
-            ch4.Add(c, 1);
+            ch4.Set(a, 0);
+            ch4.Set(c, 1);
 
             arrayToTeach = new int[2];
             arrayToTeach[0] = alphabet.IndexOf(ch4[0]);
             arrayToTeach[1] = alphabet.IndexOf(ch4[1]);
             Assert.AreEqual(0, matrix.FrequencyFromObject(arrayToTeach));
 
-            ch5.Add(b, 0);
+            ch5.Set(b, 0);
 
             arrayToTeach = new int[1];
             arrayToTeach[0] = alphabet.IndexOf(ch5[0]);
             Assert.AreEqual(3, matrix.FrequencyFromObject(arrayToTeach));
 
-            ch6.Add(a, 0);
+            ch6.Set(a, 0);
 
             arrayToTeach = new int[1];
             arrayToTeach[0] = alphabet.IndexOf(ch6[0]);
             Assert.AreEqual(1, matrix.FrequencyFromObject(arrayToTeach));
 
-            ch7.Add(c, 0);
+            ch7.Set(c, 0);
 
             arrayToTeach = new int[1];
             arrayToTeach[0] = alphabet.IndexOf(ch7[0]);
@@ -683,8 +683,8 @@ namespace MarkovChains.Tests.MarkovChain
             alphabet.Add(d);
 
             ch = new BaseChain(2);
-            ch.Add(f, 0);
-            ch.Add(c, 1);
+            ch.Set(f, 0);
+            ch.Set(c, 1);
 
             matrix = new Matrix(alphabet.Cardinality, 2);
             var array = new int[ch.GetLength()];

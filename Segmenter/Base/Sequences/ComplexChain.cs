@@ -29,7 +29,7 @@
         {
             for (int i = 0; i < accord.Count; i++)
             {
-                this.Add(new ValueInt(accord[i]), i);
+                this.Set(new ValueInt(accord[i]), i);
             }
         }
 
@@ -55,7 +55,7 @@
         {
             for (int i = 0; i < sequence.Count; i++)
             {
-                this.Add(new ValueString(sequence[i]), i);
+                this.Set(new ValueString(sequence[i]), i);
             }
         }
 
@@ -319,7 +319,7 @@
                 DeleteAt(pos);
             }
 
-            Add(new ValueString(temporarySplice.ToString()), pos);
+            Set(new ValueString(temporarySplice.ToString()), pos);
         }
 
         /// <summary>

@@ -32,7 +32,7 @@ namespace LibiadaCore.Misc.Iterators
         /// </param>
         public void WriteValue(IBaseObject value)
         {
-            Source.Add(value, Position);
+            Source.Set(value, Position);
         }
     }
 }

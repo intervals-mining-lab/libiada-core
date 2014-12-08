@@ -5,14 +5,12 @@
     using LibiadaCore.Core.IntervalsManagers;
 
     /// <summary>
-    /// Абстрактный класс в который вынесен общий 
-    /// для всех бинарных калькуляторов 
-    /// метод вычисления всех зависимостей цепочки
+    /// Abstract class common for all binary calculators.
     /// </summary>
     public abstract class BinaryCalculator : IBinaryCalculator
     {
         /// <summary>
-        /// Метод вычисления характеристики для пары элементов.
+        /// Calculation method for two congeneric chains.
         /// </summary>
         /// <param name="manager">
         /// Intervals manager.
@@ -21,12 +19,12 @@
         /// Link of intervals in chain.
         /// </param>
         /// <returns>
-        /// Значение характеристики
+        /// Characteristic value.
         /// </returns>
         public abstract double Calculate(BinaryIntervalsManager manager, Link link);
 
         /// <summary>
-        /// Метод возвращает полную матрицу характеристик для всех пар элементов цепи.
+        /// Calculation method for complete matrix of all pairs of elements.
         /// </summary>
         /// <param name="chain">
         /// Source sequence.
@@ -35,7 +33,7 @@
         /// Link of intervals in chain.
         /// </param>
         /// <returns>
-        /// Квадратная матрица значений характеристики
+        /// Square matrix of characteristics of all pairs of elements.
         /// </returns>
         public List<List<double>> CalculateAll(Chain chain, Link link)
         {

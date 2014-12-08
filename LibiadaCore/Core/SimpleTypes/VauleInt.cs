@@ -3,7 +3,7 @@ namespace LibiadaCore.Core.SimpleTypes
     using System.Globalization;
 
     /// <summary>
-    ///  ласс представл€ющий элемент - целочисленное значение
+    /// Integer value element class.
     /// </summary>
     public class ValueInt : IBaseObject
     {
@@ -24,12 +24,13 @@ namespace LibiadaCore.Core.SimpleTypes
         }
 
         /// <summary>
-        /// The op_ implicit.
+        /// Operator of implicit casting from ValueInt to int.
         /// </summary>
         /// <param name="from">
         /// The from.
         /// </param>
         /// <returns>
+        /// New <see cref="int"/>.
         /// </returns>
         public static implicit operator int(ValueInt from)
         {
@@ -37,12 +38,13 @@ namespace LibiadaCore.Core.SimpleTypes
         }
 
         /// <summary>
-        /// The op_ implicit.
+        /// Operator of implicit casting from int to ValueInt.
         /// </summary>
         /// <param name="from">
         /// The from.
         /// </param>
         /// <returns>
+        /// New <see cref="ValueInt"/>.
         /// </returns>
         public static implicit operator ValueInt(int from)
         {

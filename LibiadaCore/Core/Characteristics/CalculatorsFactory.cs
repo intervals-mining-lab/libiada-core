@@ -7,14 +7,14 @@ namespace LibiadaCore.Core.Characteristics
     using LibiadaCore.Core.Characteristics.Calculators;
 
     /// <summary>
-    /// —татическа€ фабрика различных калькул€торов.
+    /// Static factory of different calculators.
     /// </summary>
     public static class CalculatorsFactory
     {
         /// <summary>
-        /// The calculators.
+        /// The list of universal calculators.
         /// </summary>
-        private static readonly List<Type> Calculators = new List<Type>
+        private static readonly List<Type> UniversalCalculators = new List<Type>
                                                             {
                                                                 typeof(ArithmeticMean),
                                                                 typeof(AverageRemoteness),
@@ -69,7 +69,7 @@ namespace LibiadaCore.Core.Characteristics
 
 
         /// <summary>
-        /// Create full calcualtor method.
+        /// Create full calculator method.
         /// </summary>
         /// <param name="type">
         /// The type.
@@ -82,7 +82,7 @@ namespace LibiadaCore.Core.Characteristics
         /// </exception>
         public static IFullCalculator CreateFullCalculator(string type)
         {
-            foreach (var calculator in Calculators)
+            foreach (var calculator in UniversalCalculators)
             {
                 if (type == calculator.Name)
                 {
@@ -102,7 +102,7 @@ namespace LibiadaCore.Core.Characteristics
         }
 
         /// <summary>
-        /// Create full calcualtor method.
+        /// Create full calculator method.
         /// </summary>
         /// <param name="type">
         /// The type.
@@ -116,7 +116,7 @@ namespace LibiadaCore.Core.Characteristics
         }
 
         /// <summary>
-        /// Create congeneric calcualtor method.
+        /// Create congeneric calculator method.
         /// </summary>
         /// <param name="type">
         /// The type.
@@ -129,7 +129,7 @@ namespace LibiadaCore.Core.Characteristics
         /// </exception>
         public static ICongenericCalculator CreateCongenericCalculator(string type)
         {
-            foreach (var calculator in Calculators)
+            foreach (var calculator in UniversalCalculators)
             {
                 if (type == calculator.Name)
                 {
@@ -141,7 +141,7 @@ namespace LibiadaCore.Core.Characteristics
         }
 
         /// <summary>
-        /// Create congeneric calcualtor method.
+        /// Create congeneric calculator method.
         /// </summary>
         /// <param name="type">
         /// The type.
@@ -155,7 +155,7 @@ namespace LibiadaCore.Core.Characteristics
         }
 
         /// <summary>
-        ///  Create calcualtor method.
+        ///  Create calculator method.
         /// </summary>
         /// <param name="type">
         /// The type.
@@ -168,7 +168,7 @@ namespace LibiadaCore.Core.Characteristics
         /// </exception>
         public static ICalculator CreateCalculator(string type)
         {
-            foreach (var calculator in Calculators)
+            foreach (var calculator in UniversalCalculators)
             {
                 if (type == calculator.Name)
                 {
@@ -180,7 +180,7 @@ namespace LibiadaCore.Core.Characteristics
         }
 
         /// <summary>
-        /// Create calcualtor method.
+        /// Create calculator method.
         /// </summary>
         /// <param name="type">
         /// The type.
@@ -194,7 +194,7 @@ namespace LibiadaCore.Core.Characteristics
         }
 
         /// <summary>
-        ///  Create binary calcualtor method.
+        ///  Create binary calculator method.
         /// </summary>
         /// <param name="type">
         /// The type.
@@ -219,7 +219,7 @@ namespace LibiadaCore.Core.Characteristics
         }
 
         /// <summary>
-        /// Create binary calcualtor method.
+        /// Create binary calculator method.
         /// </summary>
         /// <param name="type">
         /// The type.

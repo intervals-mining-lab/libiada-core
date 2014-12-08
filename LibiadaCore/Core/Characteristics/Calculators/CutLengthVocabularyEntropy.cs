@@ -3,7 +3,7 @@ namespace LibiadaCore.Core.Characteristics.Calculators
     using System;
 
     /// <summary>
-    /// Энтропия словаря по Садовскому.
+    /// Sadovsky entropy of dictionary.
     /// </summary>
     public class CutLengthVocabularyEntropy : ICalculator
     {

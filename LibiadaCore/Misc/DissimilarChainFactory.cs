@@ -44,7 +44,7 @@
             for (int i = 0; i < source.GetLength(); i++)
             {
                 int entry = ++entries[sourceAlphabet.IndexOf(source[i])];
-                result.Add(new ValueInt(entry), i);
+                result.Set(new ValueInt(entry), i);
             }
 
             return result;

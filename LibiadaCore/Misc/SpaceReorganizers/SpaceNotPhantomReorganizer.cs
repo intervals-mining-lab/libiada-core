@@ -24,7 +24,7 @@ namespace LibiadaCore.Misc.SpaceReorganizers
             for (int i = 0; i < source.GetLength(); i++)
             {
                 var phantom = source[i] as ValuePhantom;
-                resent.Add(phantom != null ? phantom[0] : source[i], i);
+                resent.Set(phantom != null ? phantom[0] : source[i], i);
             }
 
             return resent;

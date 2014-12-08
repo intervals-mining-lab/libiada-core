@@ -5,9 +5,8 @@ namespace LibiadaCore.Core
     using System.Collections.Generic;
 
     /// <summary>
-    /// Данный класс реализует алфавит элементов.
-    /// Алфавит это список из уникальных элементов.
-    /// Алфавит является классом организованным в соотвествии с паттреном "Значение".
+    /// Implementation of ordered set - alphabet of elements.
+    /// Alphabet is list of all unique elements in particular sequence.
     /// </summary>
     public class Alphabet : IBaseObject, IEnumerable
     {
@@ -17,8 +16,7 @@ namespace LibiadaCore.Core
         protected readonly List<IBaseObject> Elements = new List<IBaseObject>();
 
         /// <summary>
-        /// Свойство возвращает мощность алфавита.
-        /// Кол-во элементов в алфавите. 
+        /// Returns count of elements in alphabet.
         /// </summary>
         public int Cardinality
         {
@@ -29,15 +27,11 @@ namespace LibiadaCore.Core
         }
 
         /// <summary>
-        /// Позволяет получить доступ к элементу алфавита по индексу.
-        /// Позволяет записывать и считывать элемент.
-        /// При записи происходит проверка на отсутствие данного объекта в алфавите. 
-        /// В случае успешной исхода данной проверки элемент добавляется в алфавит, 
-        /// в противном этого не происходит, при том класс не уведомляет об этом вненюю среду. 
-        /// Если индекс меньше 0  или >= мощности алфавата вызывается исключение.
+        /// Indexer. Allows to get or set element by index.
+        /// Only element not presented in alphabet can be added.
         /// </summary>
         /// <param name="index">
-        /// Индекс элемента в алфавите.
+        /// Index of element in alphabet.
         /// </param>
         /// <returns>
         /// The <see cref="IBaseObject"/>.
@@ -59,19 +53,19 @@ namespace LibiadaCore.Core
         }
 
         /// <summary>
-        ///  Реализация добавления элемента в алфавит.
+        /// Adds element to the end of alphabet.
         /// </summary>
         /// <param name="baseObject">
-        /// Добавляемый элемент.
+        /// Added element.
         /// </param>
         /// <returns>
-        /// Возвращает его номер в алфавите.
+        /// Index of new element in alphabet.
         /// </returns>
         /// <exception cref="Exception">
-        /// В случае если такой элемент уже содержится алфавите.
+        /// Thrown if alphabet already contains given element.
         /// </exception>
         /// <exception cref="NullReferenceException">
-        /// В случае если добавляемый элемент null.
+        /// Thrown if added element is null.
         /// </exception>
         public virtual int Add(IBaseObject baseObject)
         {
@@ -90,11 +84,10 @@ namespace LibiadaCore.Core
         }
 
         /// <summary>
-        /// Удаление элемента из алфавита по указанному индексу.
-        /// Если индекс меньше 0  или >= мощности алфавата вызывается исключение.
+        /// Deletes element from alphabet by index.
         /// </summary>
         /// <param name="index">
-        /// Индекс удаляемого элемента в алфавите.
+        /// Index of deleted element.
         /// </param>
         public virtual void Remove(int index)
         {
@@ -102,10 +95,10 @@ namespace LibiadaCore.Core
         }
 
         /// <summary>
-        /// Клонирование алфавита.
+        /// Creates clone of this alphabet
         /// </summary>
         /// <returns>
-        /// Копию алфавита.
+        /// Clone of alphabet containing clones of all elements.
         /// </returns>
         public IBaseObject Clone()
         {
@@ -119,16 +112,15 @@ namespace LibiadaCore.Core
         }
 
         /// <summary>
-        /// Сравнение алфавита исходного и заданного в параметре.
-        /// Два алфавита считаются эквивалентными при условии равномощности алфавитов и эквивалентности их составов
-        /// если в качестве второго объекта передается экземпляр класса отличного от алфавита возвращается 
-        /// объекты считаются не эквивалентными.
+        /// Compares alphabet with another alphabet.
+        /// If another object is not alphabet returns false.
+        /// In comparison order is not taken into account.
         /// </summary>
         /// <param name="other"> 
-        /// алфавит сравниваемый с исходным.
+        /// Some object.
         /// </param>
         /// <returns>
-        /// true если алфавиты эквиваленты, иначе false.
+        /// true if alphabets are equal and false otherwise.
         /// </returns>
         public override bool Equals(object other)
         {
@@ -146,14 +138,14 @@ namespace LibiadaCore.Core
         }
 
         /// <summary>
-        /// Возвращает индекс объекта в алфавите.
-        /// В случае, если данного объекта нет в алфавите возвращает -1.
+        /// Searches position of element in alphabet.
         /// </summary>
         /// <param name="obj">
-        /// Объект который ищем в алфавите.
+        /// Searched element.
         /// </param>
         /// <returns>
-        /// Индекс объекта в алфавите.
+        /// Index of element in alphabet.
+        /// Or -1 if element not found in alphabet.
         /// </returns>
         public int IndexOf(IBaseObject obj)
         {
@@ -161,13 +153,13 @@ namespace LibiadaCore.Core
         }
 
         /// <summary>
-        /// Определяет принадлежность объекта к алфавиту.
+        /// Checks if alphabet contains given element.
         /// </summary>
         /// <param name="element">
-        /// Проверяемый объект.
+        /// Element to check.
         /// </param>
         /// <returns>
-        /// True если алфавит содержит данный объект, иначе false.
+        /// true if element found in alphabet and false otherwise.
         /// </returns>
         public bool Contains(IBaseObject element)
         {
@@ -175,7 +167,7 @@ namespace LibiadaCore.Core
         }
 
         /// <summary>
-        /// The get enumerator.
+        /// Returns enumerator of this alphabet..
         /// </summary>
         /// <returns>
         /// The <see cref="IEnumerator"/>.
@@ -186,7 +178,7 @@ namespace LibiadaCore.Core
         }
 
         /// <summary>
-        /// The to array.
+        /// Casts alphabet to array containing clones of all elements.
         /// </summary>
         /// <returns>
         /// The <see cref="T:IBaseObject[]"/>.
@@ -204,7 +196,7 @@ namespace LibiadaCore.Core
         }
 
         /// <summary>
-        /// The to list.
+        /// Casts alphabet to list containing clones of all elements.
         /// </summary>
         /// <returns>
         /// The <see cref="List{IBaseObject}"/>.
@@ -222,7 +214,7 @@ namespace LibiadaCore.Core
         }
 
         /// <summary>
-        /// The get hash code.
+        /// Gets hash code.
         /// </summary>
         /// <returns>
         /// The <see cref="int"/>.
@@ -239,11 +231,13 @@ namespace LibiadaCore.Core
         }
 
         /// <summary>
-        /// Поэлементное сравнение алфавитов
+        /// Compares two alphabets.
         /// </summary>
-        /// <param name="other">алфавит который сравнивают с исходным</param>
+        /// <param name="other">
+        /// Second alphabet for comparison.
+        /// </param>
         /// <returns>
-        /// true, если алфавиты равны, иначе false
+        /// true if both alphabet contains equal elements and false otherwise.
         /// </returns>
         private bool EqualsAsAlphabet(Alphabet other)
         {

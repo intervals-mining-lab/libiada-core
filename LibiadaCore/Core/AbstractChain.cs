@@ -10,11 +10,10 @@
     public abstract class AbstractChain : IBaseObject
     {
         /// <summary>
-        /// Свойстово позволяет получить доступ к элементу цепи по индексу.
-        /// В случае выхода за границы цепи вызывается исключение.
+        /// Indexer. Returns element by index.
         /// </summary>
         /// <param name="index">
-        /// Номер элементаю.
+        /// Index of element.
         /// </param>
         /// <returns>
         /// The <see cref="IBaseObject"/>.
@@ -28,7 +27,7 @@
 
             set
             {
-                Add(value, index);
+                Set(value, index);
             }
         }
 
@@ -41,48 +40,46 @@
         public abstract int GetLength();
 
         /// <summary>
-        /// The add.
+        /// Sets or replaces element in specified position.
         /// </summary>
         /// <param name="item">
-        /// The item.
+        /// Element to set. 
         /// </param>
         /// <param name="index">
-        /// The index.
+        /// Position in sequence.
         /// </param>
-        public abstract void Add(IBaseObject item, int index);
+        public abstract void Set(IBaseObject item, int index);
 
         /// <summary>
-        /// Метод позволяющий получить элемент по индексу.
-        /// В случае выхода за границы цепи вызывается исключение.
+        /// Gets element by index.
+        /// Inner implementation of indexer.
         /// </summary>
         /// <param name="index">
-        /// Индекс элемента
+        /// Index of element.
         /// </param>
         /// <returns>
-        /// Возвращает элемент
+        /// The <see cref="IBaseObject"/>.
         /// </returns>
         public abstract IBaseObject Get(int index);
 
         /// <summary>
-        /// Метод удаляющий элемент с позиции цепи.
-        /// В случае выхода за границы цепи вызывается исключение.
+        /// Removes element from given position.
         /// </summary>
         /// <param name="index">
-        /// Номер позиции.
+        /// Index of deleted element.
         /// </param>
         public abstract void RemoveAt(int index);
 
         /// <summary>
-        /// По сути пересоздаёт цепочки, очищая строй и алфавит,
-        /// устанавливая новую длину.
+        /// Deletes chain (building and alphabet) and creates new empty chain with given length.
         /// </summary>
         /// <param name="length">
-        /// Новая длина цепочки.
+        /// New chain length.
         /// </param>
         public abstract void ClearAndSetNewLength(int length);
 
         /// <summary>
-        /// The clone.
+        /// Creates clone of this chain.
         /// </summary>
         /// <returns>
         /// The <see cref="IBaseObject"/>.

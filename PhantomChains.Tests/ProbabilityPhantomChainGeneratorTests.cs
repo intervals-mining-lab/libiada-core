@@ -39,16 +39,16 @@ namespace PhantomChains.Tests
         public void FirstTest()
         {
             var resultChain = new BaseChain(10);
-            resultChain.Add(mother.PhantomMessageBc[1], 0);
-            resultChain.Add(mother.PhantomMessageA[0], 1);
-            resultChain.Add(mother.PhantomMessageA[0], 2);
-            resultChain.Add(mother.PhantomMessageBc[1], 3);
-            resultChain.Add(mother.PhantomMessageA[0], 4);
-            resultChain.Add(mother.PhantomMessageBc[1], 5);
-            resultChain.Add(mother.PhantomMessageA[0], 6);
-            resultChain.Add(mother.PhantomMessageBc[1], 7);
-            resultChain.Add(mother.PhantomMessageA[0], 8);
-            resultChain.Add(mother.PhantomMessageA[0], 9);
+            resultChain.Set(mother.PhantomMessageBc[1], 0);
+            resultChain.Set(mother.PhantomMessageA[0], 1);
+            resultChain.Set(mother.PhantomMessageA[0], 2);
+            resultChain.Set(mother.PhantomMessageBc[1], 3);
+            resultChain.Set(mother.PhantomMessageA[0], 4);
+            resultChain.Set(mother.PhantomMessageBc[1], 5);
+            resultChain.Set(mother.PhantomMessageA[0], 6);
+            resultChain.Set(mother.PhantomMessageBc[1], 7);
+            resultChain.Set(mother.PhantomMessageA[0], 8);
+            resultChain.Set(mother.PhantomMessageA[0], 9);
 
             var gen = new PhantomChainGenerator(mother.SourceChain, new MockGenerator());
             List<BaseChain> res = gen.Generate(1);
@@ -63,11 +63,11 @@ namespace PhantomChains.Tests
         public void SecondTest()
         {
             var resultChain = new BaseChain(5);
-            resultChain.Add(mother.PhantomMessageBc[1], 0);
-            resultChain.Add(mother.PhantomMessageA[0], 1);
-            resultChain.Add(mother.PhantomMessageBc[1], 2);
-            resultChain.Add(mother.PhantomMessageA[0], 3);
-            resultChain.Add(mother.PhantomMessageBc[0], 4);
+            resultChain.Set(mother.PhantomMessageBc[1], 0);
+            resultChain.Set(mother.PhantomMessageA[0], 1);
+            resultChain.Set(mother.PhantomMessageBc[1], 2);
+            resultChain.Set(mother.PhantomMessageA[0], 3);
+            resultChain.Set(mother.PhantomMessageBc[0], 4);
             var gen = new PhantomChainGenerator(mother.UnnormalChain, new MockGenerator());
             List<BaseChain> res = gen.Generate(1);
             Assert.AreEqual(1, res.Count);
@@ -131,9 +131,9 @@ namespace PhantomChains.Tests
         public void SixthTest()
         {
             var sourceChain = new BaseChain(3);
-            sourceChain.Add(new ValueString("X"), 0);
-            sourceChain.Add(new ValueString("S"), 1);
-            sourceChain.Add(new ValueString("C"), 2);
+            sourceChain.Set(new ValueString("X"), 0);
+            sourceChain.Set(new ValueString("S"), 1);
+            sourceChain.Set(new ValueString("C"), 2);
             BaseChain forBuild = DnaTransformer.Decode(sourceChain);
             var gen = new PhantomChainGenerator(forBuild, new SimpleGenerator());
             List<BaseChain> res = gen.Generate(1);

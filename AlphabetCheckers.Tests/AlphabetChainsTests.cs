@@ -72,28 +72,28 @@ namespace AlphabetCheckers.Tests
             var a = new BaseChain(2);
             for (int i = 0; i < a.GetLength(); i++)
             {
-                a.Add((ValueInt)i, i);
+                a.Set((ValueInt)i, i);
             }
 
             temp.Add(a);
             var b = new BaseChain(1);
             for (int i = 0; i < b.GetLength(); i++)
             {
-                b.Add((ValueInt)i, i);
+                b.Set((ValueInt)i, i);
             }
 
             temp.Add(b);
             var c = new BaseChain(5);
             for (int i = 0; i < c.GetLength(); i++)
             {
-                c.Add((ValueInt)i, i);
+                c.Set((ValueInt)i, i);
             }
 
             temp.Add(c);
             var d = new BaseChain(2);
             for (int i = 0; i < d.GetLength(); i++)
             {
-                d.Add((ValueInt)(i + 1), i);
+                d.Set((ValueInt)(i + 1), i);
             }
 
             temp.Add(d);

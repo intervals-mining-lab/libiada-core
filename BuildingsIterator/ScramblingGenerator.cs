@@ -103,7 +103,7 @@
             for (int j = length - 1; j >= 0; j--)
             {
                 var element = (int)(temp / Math.Pow(alphabet.Cardinality, j));
-                chain.Add(alphabet[element], index);
+                chain.Set(alphabet[element], index);
                 temp = (int)(temp % Math.Pow(alphabet.Cardinality, j));
                 index++;
             }

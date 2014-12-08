@@ -25,7 +25,7 @@ namespace LibiadaCore.Misc.SpaceReorganizers
             {
                 var message = source[i] as ValuePhantom ?? new ValuePhantom { source[i] };
 
-                resent.Add(message, i);
+                resent.Set(message, i);
             }
 
             return resent;

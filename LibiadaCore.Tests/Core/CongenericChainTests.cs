@@ -66,7 +66,7 @@ namespace LibiadaCore.Tests.Core
         [Test]
         public void AddTest()
         {
-            congenericChain.Add(message, 3);
+            congenericChain.Set(message, 3);
             Assert.AreEqual(message, congenericChain.Get(3));
         }
 
@@ -76,7 +76,7 @@ namespace LibiadaCore.Tests.Core
         [Test]
         public void WrongMessageTest()
         {
-            congenericChain.Add(wrongMessage, 4);
+            congenericChain.Set(wrongMessage, 4);
             Assert.AreNotEqual(wrongMessage, congenericChain.Get(4));
             Assert.AreEqual(NullValue.Instance(), congenericChain.Get(4));
         }
@@ -87,7 +87,7 @@ namespace LibiadaCore.Tests.Core
         [Test]
         public void RemoveTest()
         {
-            congenericChain.Add(message, 3);
+            congenericChain.Set(message, 3);
             congenericChain.RemoveAt(3);
             Assert.AreNotEqual(message, congenericChain.Get(3));
             Assert.AreEqual(NullValue.Instance(), congenericChain.Get(3));

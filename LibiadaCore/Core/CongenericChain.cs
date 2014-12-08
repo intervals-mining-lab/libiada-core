@@ -230,7 +230,7 @@ namespace LibiadaCore.Core
         /// <param name="index">
         /// The index.
         /// </param>
-        public override void Add(IBaseObject item, int index)
+        public override void Set(IBaseObject item, int index)
         {
             if (element.Equals(item))
             {

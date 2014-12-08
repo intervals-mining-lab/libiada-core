@@ -7,7 +7,8 @@ namespace LibiadaCore.Core
     using LibiadaCore.Core.SimpleTypes;
 
     /// <summary>
-    /// The base chain.
+    /// Basic sequence class. 
+    /// Stores alphabet and building.
     /// </summary>
     public class BaseChain : AbstractChain
     {
@@ -49,7 +50,7 @@ namespace LibiadaCore.Core
         {
             for (int i = 0; i < building.Length; i++)
             {
-                Add(elements[i], i);
+                Set(elements[i], i);
             }
         }
 
@@ -64,7 +65,7 @@ namespace LibiadaCore.Core
         {
             for (int i = 0; i < source.Length; i++)
             {
-                Add(new ValueString(source[i]), i);
+                Set(new ValueString(source[i]), i);
             }
         }
 
@@ -91,8 +92,7 @@ namespace LibiadaCore.Core
         }
 
         /// <summary>
-        /// Возвращает копию строя.
-        /// Его последующее изменение не как не скажется на состоянии цепочки.
+        /// Returns clone of building.
         /// </summary>
         public int[] Building
         {
@@ -103,9 +103,8 @@ namespace LibiadaCore.Core
         }
 
         /// <summary>
-        /// Возвращает алфавит.
-        /// Алфавит является копией и его последующее изменение не как не скажется на состоянии цепочки.
-        /// Алфавит не содержит псеводовеличины (NullValue).
+        /// Returns clone of alphabet.
+        /// Removes NullValue (Element with 0 index) from clone.
         /// </summary>
         public Alphabet Alphabet
         {
@@ -113,21 +112,22 @@ namespace LibiadaCore.Core
             {
                 var result = (Alphabet)alphabet.Clone();
 
-                // Удаляем NullValue
+                // Removing NullValue.
                 result.Remove(0);
+
                 return result;
             }
         }
 
         /// <summary>
-        /// Метод позволяющий получить элемент по индексу.
-        /// В случае выхода за границы цепи вызывается исключение.
+        /// Returns element by index.
+
         /// </summary>
         /// <param name="index">
-        /// Индекс элемента
+        /// Index of element.
         /// </param>
         /// <returns>
-        /// Возвращает элемент
+        /// Element from given position.
         /// </returns>
         public override IBaseObject Get(int index)
         {
@@ -146,15 +146,15 @@ namespace LibiadaCore.Core
         }
 
         /// <summary>
-        /// Метод похволяющий установить элемент по индексу.
+        /// Sets or replaces element in specified position.
         /// </summary>
         /// <param name="item">
-        /// Устанвалеваемый элемент 
+        /// Element to set. 
         /// </param>
         /// <param name="index">
-        /// Номер позиции в цепи куда устанавливается элемент
+        /// Position in sequence.
         /// </param>
-        public override void Add(IBaseObject item, int index)
+        public override void Set(IBaseObject item, int index)
         {
             if (item == null)
             {
@@ -173,11 +173,10 @@ namespace LibiadaCore.Core
         }
 
         /// <summary>
-        /// Метод удаляющий элемент с позиции цепи 
-        /// В случае выхода за границы цепи вызывается исключение
+        /// Removes element from given position.
         /// </summary>
         /// <param name="index">
-        /// Номер позиции
+        /// Index of deleted element.
         /// </param>
         public override void RemoveAt(int index)
         {
@@ -186,15 +185,13 @@ namespace LibiadaCore.Core
         }
 
         /// <summary>
-        /// По сути пересоздаёт цепочки, очищая строй и алфавит,
-        /// устанавливая новую длину.
-        /// В алфавит добавляется <see cref="NullValue"/>.
+        /// Deletes chain (building and alphabet) and creates new empty chain with given length.
         /// </summary>
         /// <param name="length">
-        /// Новая длина цепочки.
+        /// New chain length.
         /// </param>
         /// <exception cref="ArgumentException">
-        /// Выбрасывается если длина &lt; 0
+        /// Thrown if length of new sequence is less then zero.
         /// </exception>
         public override void ClearAndSetNewLength(int length)
         {
@@ -208,7 +205,7 @@ namespace LibiadaCore.Core
         }
 
         /// <summary>
-        /// The clone.
+        /// Creates clone of this chain.
         /// </summary>
         /// <returns>
         /// The <see cref="IBaseObject"/>.
@@ -277,7 +274,7 @@ namespace LibiadaCore.Core
         }
 
         /// <summary>
-        /// The fill clone.
+        /// Fills the clone of chain with clones of alphabet and building.
         /// </summary>
         /// <param name="clone">
         /// The clone.
