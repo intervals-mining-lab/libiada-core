@@ -1,13 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using LibiadaCore.Core.SimpleTypes;
-
-namespace LibiadaCore.Core.Characteristics.Calculators
+﻿namespace LibiadaCore.Core.Characteristics.Calculators
 {
-    class GCRatio : IFullCalculator
+    using System;
+    using SimpleTypes;
+
+    public class GCRatio : IFullCalculator
     {
         private ICalculator counter = new ElementsCount();
         
@@ -44,11 +40,13 @@ namespace LibiadaCore.Core.Characteristics.Calculators
                 throw new Exception("Alphabet cardinality must be 4 or less");
             }
 
-            var completeAlphabet = new Alphabet();
-            completeAlphabet.Add(new ValueString("A"));
-            completeAlphabet.Add(new ValueString("C"));
-            completeAlphabet.Add(new ValueString("T"));
-            completeAlphabet.Add(new ValueString("G"));
+            var completeAlphabet = new Alphabet
+            {
+                new ValueString("A"),
+                new ValueString("C"),
+                new ValueString("T"),
+                new ValueString("G")
+            };
 
             for (int i = 0; i < alphabet.Cardinality; i++)
             {
