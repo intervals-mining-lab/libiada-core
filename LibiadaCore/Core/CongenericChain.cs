@@ -44,10 +44,10 @@ namespace LibiadaCore.Core
         /// Initializes a new instance of the <see cref="CongenericChain"/> class.
         /// </summary>
         /// <param name="element">
-        /// Элемент цепочки.
+        /// Element of this congeneric sequence.
         /// </param>
         /// <param name="length">
-        /// Длина цепочки.
+        /// Length of this chain.
         /// </param>
         public CongenericChain(IBaseObject element, int length)
         {
@@ -62,10 +62,10 @@ namespace LibiadaCore.Core
         /// The building.
         /// </param>
         /// <param name="element">
-        /// The element.
+        /// Element of this congeneric sequence.
         /// </param>
         /// <param name="length">
-        /// The length.
+        /// Length of this chain.
         /// </param>
         public CongenericChain(IEnumerable<int> building, IBaseObject element, int length)
         {
@@ -81,10 +81,10 @@ namespace LibiadaCore.Core
         /// The map.
         /// </param>
         /// <param name="element">
-        /// The element.
+        /// Element of this congeneric sequence.
         /// </param>
         /// <param name="length">
-        /// The length.
+        /// Length of this chain.
         /// </param>
         public CongenericChain(bool[] map, IBaseObject element, int length)
         {
@@ -125,11 +125,11 @@ namespace LibiadaCore.Core
         }
 
         /// <summary>
-        /// По сути пересоздаёт цепочки, очищая строй и
-        /// устанавливая новую длину.
+        /// Deletes chain (building and alphabet) and creates new empty chain with given length.
+        /// Saves old element (alphabet) of chain.
         /// </summary>
-        /// <param name="newLength">
-        /// Новая длина цепочки.
+        /// <param name="length">
+        /// New chain length.
         /// </param>
         /// <exception cref="ArgumentException">
         /// Thrown if new length is less than 0.
@@ -147,8 +147,7 @@ namespace LibiadaCore.Core
         }
 
         /// <summary>
-        /// Возвращает копию массива интервалов, 
-        /// включая привязку к началу и к концу
+        /// Returns clone of intervals array including interval of given link.
         /// </summary>
         /// <param name="link">
         /// The link.
@@ -167,10 +166,11 @@ namespace LibiadaCore.Core
         }
 
         /// <summary>
-        /// Возвращает позицию указанного по счёту вхождения указанного элемента.
+        /// Returns position of given occurrence of element of this chain.
+        /// If occurrence not found returns -1.
         /// </summary>
         /// <param name="occurrence">
-        /// Номер вхождения элемента в полную цепь.
+        /// Occurrence to find.
         /// </param>
         /// <returns>
         /// The <see cref="int"/>.
@@ -186,14 +186,13 @@ namespace LibiadaCore.Core
         }
 
         /// <summary>
-        /// Возвращает позицию первого вхождения указанного элемента 
-        /// после указанной позиции.
+        /// Returns position of first occurrence of element after given position. 
         /// </summary>
         /// <param name="from">
-        /// Начальная позиция для отсчёта.
+        /// Starting position for search.
         /// </param>
         /// <returns>
-        /// Номер позиции или -1, если элемент после указанной позиции не встречается.
+        /// Position of occurrence or -1 if occurrence after given not found.
         /// </returns>
         public int GetAfter(int from)
         {
@@ -219,16 +218,16 @@ namespace LibiadaCore.Core
             return length;
         }
 
-        // TODO: переименовать метод в Set или что-то подобное.
-
         /// <summary>
         /// Sets item in provided position.
+        /// Clears position if element not from this chain.
+        /// Does nothing if position is empty and element not from this chain.
         /// </summary>
         /// <param name="item">
         /// The item.
         /// </param>
         /// <param name="index">
-        /// The index.
+        /// The index of position.
         /// </param>
         public override void Set(IBaseObject item, int index)
         {
@@ -263,14 +262,14 @@ namespace LibiadaCore.Core
         }
 
         /// <summary>
-        /// Метод позволяющий получить элемент по индексу.
-        /// В случае выхода за границы цепи вызывается исключение.
+        /// Gets element by position index.
+        /// If position is empty returns <see cref="NullValue"/>.
         /// </summary>
         /// <param name="index">
-        /// Индекс элемента
+        /// Index of position.
         /// </param>
         /// <returns>
-        /// Возвращает элемент
+        /// Element or <see cref="NullValue"/>.
         /// </returns>
         public override IBaseObject Get(int index)
         {
@@ -278,10 +277,13 @@ namespace LibiadaCore.Core
         }
 
         /// <summary>
+        /// Deletes given position.
+        /// Clears element from position if any.
+        /// Reduces chain length by 1.
         /// The delete at.
         /// </summary>
         /// <param name="index">
-        /// The index.
+        /// The index of position.
         /// </param>
         public void DeleteAt(int index)
         {
@@ -302,11 +304,11 @@ namespace LibiadaCore.Core
         }
 
         /// <summary>
-        /// Метод удаляющий элемент с позиции цепи 
-        /// В случае выхода за границы цепи вызывается исключение
+        /// Removes element from given position.
+        /// Also clears interval manager of chain.
         /// </summary>
         /// <param name="index">
-        /// Номер позиции
+        /// Index of position.
         /// </param>
         public override void RemoveAt(int index)
         {
@@ -315,7 +317,7 @@ namespace LibiadaCore.Core
         }
 
         /// <summary>
-        /// The set interval manager.
+        /// Sets interval manager of chain.
         /// </summary>
         /// <param name="manager">
         /// The manager.

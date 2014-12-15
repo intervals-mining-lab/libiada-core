@@ -7,7 +7,7 @@ namespace LibiadaCore.Core
     using LibiadaCore.Core.SimpleTypes;
 
     /// <summary>
-    /// Класс цепь
+    /// Sequence class.
     /// </summary>
     public class Chain : BaseChain, IBaseObject
     {
@@ -45,7 +45,7 @@ namespace LibiadaCore.Core
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Chain"/> class from string.
-        /// Each character becoms element.
+        /// Each character becomes element.
         /// </summary>
         /// <param name="source">
         /// The source string.
@@ -75,7 +75,7 @@ namespace LibiadaCore.Core
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Chain"/> class from string.
-        /// Each character becoms element.
+        /// Each character becomes element.
         /// </summary>
         /// <param name="source">
         /// The source string.
@@ -87,10 +87,10 @@ namespace LibiadaCore.Core
         }
 
         /// <summary>
-        /// The clear and set new length.
+        /// Deletes chain (building and alphabet) and creates new empty chain with given length.
         /// </summary>
         /// <param name="length">
-        /// The length.
+        /// New chain length.
         /// </param>
         public override void ClearAndSetNewLength(int length)
         {
@@ -113,11 +113,11 @@ namespace LibiadaCore.Core
         }
 
         /// <summary>
-        /// Возвращает копию однородной цепочки с указанным элементом.
-        /// Если такого элемента нет, то возврашщает null.
+        /// Returns clone of congeneric sequence of given element.
+        /// If there is no such element in chain returns null. 
         /// </summary>
         /// <param name="baseObject">
-        /// элемент однородной цепочки
+        /// Element of congeneric chain.
         /// </param>
         /// <returns>
         /// The <see cref="CongenericChain"/>.
@@ -135,18 +135,17 @@ namespace LibiadaCore.Core
         }
 
         /// <summary>
-        /// Возвращает копию однородной цепочки 
-        /// с указанным индексом в алфавите полной цепи.
+        /// Returns clone of congeneric sequence by index of its element in alphabet.
         /// </summary>
-        /// <param name="i">
-        /// Индекс элемента однородной цепочки в алфавите полной цепи
+        /// <param name="index">
+        /// Index of element of congeneric chain in alphabet.
         /// </param>
         /// <returns>
         /// The <see cref="CongenericChain"/>.
         /// </returns>
-        public CongenericChain CongenericChain(int i)
+        public CongenericChain CongenericChain(int index)
         {
-            return (CongenericChain)congenericChains[i].Clone();
+            return (CongenericChain)congenericChains[index].Clone();
         }
 
         /// <summary>
@@ -215,7 +214,7 @@ namespace LibiadaCore.Core
         }
 
         /// <summary>
-        /// The fill dissimilar chains.
+        /// Fills all dissimilar chains of this chain.
         /// </summary>
         public void FillDissimilarChains()
         {
@@ -250,13 +249,13 @@ namespace LibiadaCore.Core
         } 
 
         /// <summary>
-        /// Возвращает позицию указанного по счёту вхождения указанного элемента.
+        /// Returns position of given occurrence of given element.
         /// </summary>
         /// <param name="element">
-        /// Искомый элемент.
+        /// Element to find.
         /// </param>
         /// <param name="entry">
-        /// Номер вхождения элемента в полную цепь.
+        /// occurrence of given element.
         /// </param>
         /// <returns>
         /// The <see cref="int"/>.
@@ -267,7 +266,7 @@ namespace LibiadaCore.Core
         }
 
         /// <summary>
-        /// The fill interval managers.
+        /// Fills all interval managers.
         /// </summary>
         public void FillIntervalManagers()
         {
@@ -302,10 +301,10 @@ namespace LibiadaCore.Core
         }
 
         /// <summary>
-        /// The fill clone.
+        /// Fills clone of this chain.
         /// </summary>
         /// <param name="clone">
-        /// The clone.
+        /// The clone of chain.
         /// </param>
         protected void FillClone(IBaseObject clone)
         {
@@ -318,8 +317,8 @@ namespace LibiadaCore.Core
         }
 
         /// <summary>
-        /// Выделяет из полной неоднородной цепи все однородные цепи
-        /// и сохраняет их локальнов массив <see cref="congenericChains"/>.
+        /// Fills all congeneric chains of this chain.
+        /// All congeneric sequences stored in <see cref="congenericChains"/> field.
         /// </summary>
         private void CreateCongenericChains()
         {
