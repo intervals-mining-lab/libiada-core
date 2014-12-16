@@ -14,7 +14,7 @@
         [TestFixtureSetUp]
         public void Initialization()
         {
-            this.Initialization("GeometricMean");
+            Initialization("GeometricMean");
         }
 
         /// <summary>
@@ -32,7 +32,7 @@
         [TestCase(0, 1.7321, 1)]
         public void SpatialDependenceTest(int index, double firstValue, double secondValue)
         {
-            this.CalculationTest(index, firstValue, secondValue);
+            CalculationTest(index, firstValue, secondValue);
         }
     }
 }

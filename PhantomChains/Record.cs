@@ -39,8 +39,8 @@
                 throw new ArgumentNullException();
             }
 
-            this.Content = message;
-            this.Volume = volume;
+            Content = message;
+            Volume = volume;
         }
     }
 }

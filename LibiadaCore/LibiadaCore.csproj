@@ -41,6 +41,7 @@
   <ItemGroup>
     <Compile Include="Core\AbstractChain.cs" />
     <Compile Include="Core\Characteristics\Calculators\ComplianceDegree.cs" />
+    <Compile Include="Misc\DataTransformers\DnaProcessing.cs" />
     <Compile Include="Core\Characteristics\Calculators\GCRatio.cs" />
     <Compile Include="Core\Characteristics\Calculators\ICalculator.cs" />
     <Compile Include="Core\Characteristics\Calculators\ICongenericCalculator.cs" />

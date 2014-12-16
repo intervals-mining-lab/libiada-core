@@ -4,8 +4,8 @@ namespace BuildingsIterator
     using System.Collections;
     using System.Collections.Generic;
 
-    using BuildingsIterator.Filters;
-    using BuildingsIterator.Statistics;
+    using Filters;
+    using Statistics;
 
     /// <summary>
     /// Класс выборки цепочек с характеристиками
@@ -39,7 +39,7 @@ namespace BuildingsIterator
         public ChainPicksWithCharacteristics(Hashtable chains, List<LinkedCharacteristic> characters)
         {
             this.chains = chains;
-            this.characteristics = characters;
+            characteristics = characters;
             characteristicsNames = new List<string>();
             for (int i = 0; i < characters.Count; i++)
             {

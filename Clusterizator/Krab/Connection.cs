@@ -27,8 +27,8 @@ namespace Clusterizator.Krab
             }
 
             Connected = false;
-            this.FirstElementIndex = firstElement;
-            this.SecondElementIndex = secondElement;
+            FirstElementIndex = firstElement;
+            SecondElementIndex = secondElement;
         }
 
         /// <summary>

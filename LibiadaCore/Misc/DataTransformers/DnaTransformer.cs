@@ -2,28 +2,28 @@
 {
     using System;
 
-    using LibiadaCore.Core;
-    using LibiadaCore.Core.SimpleTypes;
+    using Core;
+    using Core.SimpleTypes;
 
     /// <summary>
-    /// Статический класс, осуществляющй преобразование
-    /// нуклеотидных последовательностей в аминокислотные
-    /// и аминокислотных последовательностей в нуклеотидные.
+    /// Static class for transformation of DNA sequences
+    /// into amino acid and triplet sequences and vice versa.
     /// </summary>
     public static class DnaTransformer
     {
         /// <summary>
-        /// Метод преобразующий нуклеотдитные цепи в аминокислотные.
+        /// Translates DNA sequence into amino acids.
         /// </summary>
-        /// <param name="inputChain">Нуклеотидная последовательность типа <see cref="BaseChain"/></param>
-        /// <returns>Аминокислотная цепь типа <see cref="BaseChain"/>, в качестве элемнтов служат <see cref="ValueString"/></returns>
-        /// <exception cref="Exception">Исключение возникает в случае наличия в нуклеотидной цепи значений отличных от A,C,T и G</exception>
+        /// <param name="inputChain">
+        /// DNA sequence.
+        /// </param>
+        /// <returns>
+        /// Amino acid sequence of type <see cref="BaseChain"/>.
+        /// Elements are of <see cref="ValueString"/> type.
+        /// </returns>
         public static BaseChain Encode(BaseChain inputChain)
         {
-            if (inputChain.Alphabet.Cardinality > 4)
-            {
-                throw new Exception();
-            }
+            DnaProcessing.CheckDnaAlphabet(inputChain.Alphabet);
 
             var count = (int)Math.Floor((double)inputChain.GetLength() / 3);
             var outChain = new BaseChain(count);
@@ -250,158 +250,163 @@
         }
 
         /// <summary>
-        /// Метод преобразующий аминокислотные цепи в фантомные.
+        /// Translates amino acid sequences into phantom sequences.
         /// </summary>
-        /// <param name="inputChain">Аминокислотная цепь типа <see cref="BaseChain"/></param>
-        /// <returns>Фантомная цепь типа <see cref="BaseChain"/>, в качестве элементов используются <see cref="ValuePhantom"/></returns>
-        /// <exception cref="Exception">Исключение возникает в случае наличия в цепи элементов не являющихся аминокислотами</exception>
+        /// <param name="inputChain">
+        /// Amino acid sequence.
+        /// </param>
+        /// <returns>
+        /// Phantom sequence of <see cref="BaseChain"/> type.
+        /// Elements are <see cref="ValuePhantom"/>.
+        /// </returns>
         public static BaseChain Decode(BaseChain inputChain)
         {
-            var outChain = new BaseChain(inputChain.GetLength());
+            var resultChain = new BaseChain(inputChain.GetLength());
             for (int i = 0; i < inputChain.GetLength(); i++)
             {
                 string aminoAcid = inputChain[i].ToString();
-                var m = new ValuePhantom();
+                var element = new ValuePhantom();
                 switch (aminoAcid)
                 {
                     case "F":
-                        m.Add(new ValueString("TTT"));
-                        m.Add(new ValueString("TTC"));
+                        element.Add(new ValueString("TTT"));
+                        element.Add(new ValueString("TTC"));
                         break;
                     case "L":
-                        m.Add(new ValueString("TTA"));
-                        m.Add(new ValueString("TTG"));
-                        m.Add(new ValueString("CTT"));
-                        m.Add(new ValueString("CTC"));
-                        m.Add(new ValueString("CTA"));
-                        m.Add(new ValueString("CTG"));
+                        element.Add(new ValueString("TTA"));
+                        element.Add(new ValueString("TTG"));
+                        element.Add(new ValueString("CTT"));
+                        element.Add(new ValueString("CTC"));
+                        element.Add(new ValueString("CTA"));
+                        element.Add(new ValueString("CTG"));
                         break;
                     case "S":
-                        m.Add(new ValueString("TCT"));
-                        m.Add(new ValueString("TCC"));
-                        m.Add(new ValueString("TCA"));
-                        m.Add(new ValueString("TCG"));
-                        m.Add(new ValueString("AGT"));
-                        m.Add(new ValueString("AGC"));
+                        element.Add(new ValueString("TCT"));
+                        element.Add(new ValueString("TCC"));
+                        element.Add(new ValueString("TCA"));
+                        element.Add(new ValueString("TCG"));
+                        element.Add(new ValueString("AGT"));
+                        element.Add(new ValueString("AGC"));
                         break;
                     case "Y":
-                        m.Add(new ValueString("TAT"));
-                        m.Add(new ValueString("TAC"));
+                        element.Add(new ValueString("TAT"));
+                        element.Add(new ValueString("TAC"));
                         break;
                     case "X":
-                        m.Add(new ValueString("TAA"));
-                        m.Add(new ValueString("TAG"));
-                        m.Add(new ValueString("TGA"));
+                        element.Add(new ValueString("TAA"));
+                        element.Add(new ValueString("TAG"));
+                        element.Add(new ValueString("TGA"));
                         break;
                     case "C":
-                        m.Add(new ValueString("TGT"));
-                        m.Add(new ValueString("TGC"));
+                        element.Add(new ValueString("TGT"));
+                        element.Add(new ValueString("TGC"));
                         break;
                     case "W":
-                        m.Add(new ValueString("TGG"));
+                        element.Add(new ValueString("TGG"));
                         break;
                     case "P":
-                        m.Add(new ValueString("CCT"));
-                        m.Add(new ValueString("CCC"));
-                        m.Add(new ValueString("CCA"));
-                        m.Add(new ValueString("CCG"));
+                        element.Add(new ValueString("CCT"));
+                        element.Add(new ValueString("CCC"));
+                        element.Add(new ValueString("CCA"));
+                        element.Add(new ValueString("CCG"));
                         break;
                     case "H":
-                        m.Add(new ValueString("CAT"));
-                        m.Add(new ValueString("CAC"));
+                        element.Add(new ValueString("CAT"));
+                        element.Add(new ValueString("CAC"));
                         break;
                     case "Q":
-                        m.Add(new ValueString("CAA"));
-                        m.Add(new ValueString("CAG"));
+                        element.Add(new ValueString("CAA"));
+                        element.Add(new ValueString("CAG"));
                         break;
                     case "R":
-                        m.Add(new ValueString("CGT"));
-                        m.Add(new ValueString("CGC"));
-                        m.Add(new ValueString("CGA"));
-                        m.Add(new ValueString("CGG"));
-                        m.Add(new ValueString("AGA"));
-                        m.Add(new ValueString("AGG"));
+                        element.Add(new ValueString("CGT"));
+                        element.Add(new ValueString("CGC"));
+                        element.Add(new ValueString("CGA"));
+                        element.Add(new ValueString("CGG"));
+                        element.Add(new ValueString("AGA"));
+                        element.Add(new ValueString("AGG"));
                         break;
                     case "I":
-                        m.Add(new ValueString("ATT"));
-                        m.Add(new ValueString("ATC"));
-                        m.Add(new ValueString("ATA"));
+                        element.Add(new ValueString("ATT"));
+                        element.Add(new ValueString("ATC"));
+                        element.Add(new ValueString("ATA"));
                         break;
                     case "M":
-                        m.Add(new ValueString("ATG"));
+                        element.Add(new ValueString("ATG"));
                         break;
                     case "T":
-                        m.Add(new ValueString("ACT"));
-                        m.Add(new ValueString("ACC"));
-                        m.Add(new ValueString("ACA"));
-                        m.Add(new ValueString("ACG"));
+                        element.Add(new ValueString("ACT"));
+                        element.Add(new ValueString("ACC"));
+                        element.Add(new ValueString("ACA"));
+                        element.Add(new ValueString("ACG"));
                         break;
                     case "N":
-                        m.Add(new ValueString("AAT"));
-                        m.Add(new ValueString("AAC"));
+                        element.Add(new ValueString("AAT"));
+                        element.Add(new ValueString("AAC"));
                         break;
                     case "K":
-                        m.Add(new ValueString("AAA"));
-                        m.Add(new ValueString("AAG"));
+                        element.Add(new ValueString("AAA"));
+                        element.Add(new ValueString("AAG"));
                         break;
                     case "V":
-                        m.Add(new ValueString("GTT"));
-                        m.Add(new ValueString("GTC"));
-                        m.Add(new ValueString("GTA"));
-                        m.Add(new ValueString("GTG"));
+                        element.Add(new ValueString("GTT"));
+                        element.Add(new ValueString("GTC"));
+                        element.Add(new ValueString("GTA"));
+                        element.Add(new ValueString("GTG"));
                         break;
                     case "A":
-                        m.Add(new ValueString("GCT"));
-                        m.Add(new ValueString("GCC"));
-                        m.Add(new ValueString("GCA"));
-                        m.Add(new ValueString("GCG"));
+                        element.Add(new ValueString("GCT"));
+                        element.Add(new ValueString("GCC"));
+                        element.Add(new ValueString("GCA"));
+                        element.Add(new ValueString("GCG"));
                         break;
                     case "D":
-                        m.Add(new ValueString("GAT"));
-                        m.Add(new ValueString("GAC"));
+                        element.Add(new ValueString("GAT"));
+                        element.Add(new ValueString("GAC"));
                         break;
                     case "E":
-                        m.Add(new ValueString("GAA"));
-                        m.Add(new ValueString("GAG"));
+                        element.Add(new ValueString("GAA"));
+                        element.Add(new ValueString("GAG"));
                         break;
                     case "G":
-                        m.Add(new ValueString("GGT"));
-                        m.Add(new ValueString("GGC"));
-                        m.Add(new ValueString("GGA"));
-                        m.Add(new ValueString("GGG"));
+                        element.Add(new ValueString("GGT"));
+                        element.Add(new ValueString("GGC"));
+                        element.Add(new ValueString("GGA"));
+                        element.Add(new ValueString("GGG"));
                         break;
                     default:
-                        throw new Exception();
+                        throw new ArgumentException("Unknown amino acid");
                 }
 
-                outChain[i] = m;
+                resultChain[i] = element;
             }
 
-            return outChain;
+            return resultChain;
         }
 
         /// <summary>
-        /// Метод преобразующий нуклеотидное представление цепочек в триплетное
+        /// Translates dna sequence into triplet sequence.
         /// </summary>
-        /// <param name="inputChain">Исходная нуклеотидная цепочка</param>
-        /// <returns>Цепоччка, состоящая из триплетов</returns>
-        /// <exception cref="Exception">Допустимая мощность алфавита - не больше 4</exception>
+        /// <param name="inputChain">
+        /// Nucleotide sequence.
+        /// </param>
+        /// <returns>
+        /// Triplet sequence of <see cref="BaseChain"/> type.
+        /// Elements are of <see cref="ValueString"/> type.
+        /// </returns>
         public static BaseChain EncodeTriplets(BaseChain inputChain)
         {
-            if (inputChain.Alphabet.Cardinality > 4)
-            {
-                throw new Exception("Alphabet cardinality must be 4 or less elements");
-            }
+            DnaProcessing.CheckDnaAlphabet(inputChain.Alphabet);
 
             var resultLength = (int)Math.Floor((double)inputChain.GetLength() / 3);
-            var outChain = new BaseChain(resultLength);
+            var resultChain = new BaseChain(resultLength);
 
             for (int i = 0; i < resultLength * 3; i += 3)
             {
-                outChain[i / 3] = new ValueString(inputChain[i].ToString() + inputChain[i + 1] + inputChain[i + 2]);
+                resultChain[i / 3] = new ValueString(inputChain[i].ToString() + inputChain[i + 1] + inputChain[i + 2]);
             }
 
-            return outChain;
+            return resultChain;
         }
     }
 }

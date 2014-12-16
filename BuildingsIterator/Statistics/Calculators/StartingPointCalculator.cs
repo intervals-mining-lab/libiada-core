@@ -19,7 +19,7 @@ namespace BuildingsIterator.Statistics.Calculators
         /// <param name="i">Порядок момента</param>
         public StartingPointCalculator(int i)
         {
-            this.s = i;
+            s = i;
         }
 
         /// <summary>

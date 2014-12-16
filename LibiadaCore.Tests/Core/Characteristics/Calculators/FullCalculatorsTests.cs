@@ -16,7 +16,7 @@
         /// <summary>
         /// The chains.
         /// </summary>
-        protected readonly List<Chain> Chains = ChainsStorage.Chains;
+        private readonly List<Chain> Chains = ChainsStorage.Chains;
 
         /// <summary>
         /// Gets or sets the calculator.

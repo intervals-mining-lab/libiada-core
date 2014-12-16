@@ -3,8 +3,8 @@ namespace LibiadaCore.Core
     using System.Collections.Generic;
     using System.Linq;
 
-    using LibiadaCore.Core.IntervalsManagers;
-    using LibiadaCore.Core.SimpleTypes;
+    using IntervalsManagers;
+    using SimpleTypes;
 
     /// <summary>
     /// Sequence class.
@@ -100,7 +100,7 @@ namespace LibiadaCore.Core
         }
 
         /// <summary>
-        /// The clone.
+        /// Creates clone of this chain.
         /// </summary>
         /// <returns>
         /// The <see cref="IBaseObject"/>.
@@ -170,7 +170,7 @@ namespace LibiadaCore.Core
 
             if (intervalsManager == null)
             {
-                intervalsManager = new BinaryIntervalsManager(this.CongenericChain(first - 1), this.CongenericChain(second - 1));
+                intervalsManager = new BinaryIntervalsManager(CongenericChain(first - 1), CongenericChain(second - 1));
                 relationIntervalsManagers[first - 1, second - 1] = intervalsManager;
             }
 

@@ -2,7 +2,7 @@
 {
     using System.Collections.Generic;
 
-    using LibiadaCore.Core.IntervalsManagers;
+    using IntervalsManagers;
 
     /// <summary>
     /// Abstract class common for all binary calculators.
@@ -43,7 +43,7 @@
                 result.Add(new List<double>());
                 for (int j = 0; j < chain.Alphabet.Cardinality; j++)
                 {
-                    result[i].Add(this.Calculate(chain.GetRelationIntervalsManager(i + 1, j + 1), link));
+                    result[i].Add(Calculate(chain.GetRelationIntervalsManager(i + 1, j + 1), link));
                 }
             }
 

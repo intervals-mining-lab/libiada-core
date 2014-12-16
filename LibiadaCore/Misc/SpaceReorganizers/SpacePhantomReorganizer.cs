@@ -1,7 +1,7 @@
 namespace LibiadaCore.Misc.SpaceReorganizers
 {
-    using LibiadaCore.Core;
-    using LibiadaCore.Core.SimpleTypes;
+    using Core;
+    using Core.SimpleTypes;
 
     /// <summary>
     /// Space phantom reorganizer.
@@ -19,8 +19,7 @@ namespace LibiadaCore.Misc.SpaceReorganizers
         /// </returns>
         public override AbstractChain Reorganize(AbstractChain source)
         {
-            var resent = new BaseChain();
-            resent.ClearAndSetNewLength(source.GetLength());
+            var resent = new BaseChain(source.GetLength());
             for (int i = 0; i < source.GetLength(); i++)
             {
                 var message = source[i] as ValuePhantom ?? new ValuePhantom { source[i] };

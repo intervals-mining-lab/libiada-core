@@ -36,7 +36,7 @@ namespace BuildingsIterator
         public LinkedCharacteristic(IFullCalculator calc)
         {
             this.calc = calc;
-            this.link = Link.Start;
+            link = Link.Start;
         }
 
         /// <summary>

@@ -2,7 +2,7 @@
 {
     using LibiadaCore.Core.SimpleTypes;
 
-    using Segmenter.Base.Sequences;
+    using Sequences;
 
     /// <summary>
     /// Filters a sequence of signs in compliance with set rules.
@@ -28,7 +28,7 @@
         /// </param>
         public Filter(ComplexChain chain)
         {
-            this.Chain = chain.Clone();
+            Chain = chain.Clone();
         }
 
         /// <summary>

@@ -1,8 +1,8 @@
 namespace LibiadaCore.Misc.SpaceReorganizers
 {
-    using LibiadaCore.Core;
-    using LibiadaCore.Core.SimpleTypes;
-    using LibiadaCore.Misc.Iterators;
+    using Core;
+    using Core.SimpleTypes;
+    using Iterators;
 
     /// <summary>
     /// The space reorganizer from chain to chain by block.
@@ -65,7 +65,7 @@ namespace LibiadaCore.Misc.SpaceReorganizers
             {
                 var message = new ValuePhantom
                                   {
-                                      // WAT
+                                      // TODO: WAT
                                       iteratorFrom.Current() 
                                   };
 

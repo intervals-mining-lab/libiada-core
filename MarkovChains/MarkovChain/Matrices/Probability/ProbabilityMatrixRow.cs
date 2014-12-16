@@ -6,9 +6,9 @@ namespace MarkovChains.MarkovChain.Matrices.Probability
     using LibiadaCore.Core;
     using LibiadaCore.Core.SimpleTypes;
 
-    using MarkovChains.MarkovChain.Builders;
-    using MarkovChains.MarkovChain.Matrices.Absolute;
-    using MarkovChains.MarkovChain.Matrices.Base;
+    using Builders;
+    using Absolute;
+    using Base;
 
     /// <summary>
     /// Матрица-строка веротяностей.
@@ -36,12 +36,12 @@ namespace MarkovChains.MarkovChain.Matrices.Probability
         {
             get
             {
-                return this.Value;
+                return Value;
             }
 
             set
             {
-                this.Value = value;
+                Value = value;
             }
         }
 

@@ -2,9 +2,7 @@ namespace LibiadaCore.Core.Characteristics
 {
     using System;
     using System.Collections.Generic;
-
-    using LibiadaCore.Core.Characteristics.BinaryCalculators;
-    using LibiadaCore.Core.Characteristics.Calculators;
+    using Calculators;
 
     /// <summary>
     /// Static factory of different calculators.

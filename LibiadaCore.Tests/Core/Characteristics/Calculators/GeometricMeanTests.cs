@@ -43,19 +43,19 @@ namespace LibiadaCore.Tests.Core.Characteristics.Calculators
         [TestCase(1, Link.Both, 2.7595)]
         [TestCase(1, Link.Cycle, 2.8925)]
 
-        //[TestCase(2, Link.None, 0)]
+        [TestCase(2, Link.None, 1)]
         [TestCase(2, Link.Start, 1)]
         [TestCase(2, Link.End, 1)]
         [TestCase(2, Link.Both, 1)]
         [TestCase(2, Link.Cycle, 1)]
 
-        //[TestCase(3, Link.None, 0)]
+        [TestCase(3, Link.None, 1)]
         [TestCase(3, Link.Start, 8)]
         [TestCase(3, Link.End, 1)]
         [TestCase(3, Link.Both, 2.8284)]
         [TestCase(3, Link.Cycle, 8)]
 
-        //[TestCase(5, Link.None, 0)]
+        [TestCase(5, Link.None, 1)]
         [TestCase(5, Link.Start, 1)]
         [TestCase(5, Link.End, 1)]
         [TestCase(5, Link.Both, 1)]

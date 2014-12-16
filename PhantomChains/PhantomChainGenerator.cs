@@ -50,14 +50,14 @@ namespace PhantomChains
         /// <param name="chain">
         /// The chain.
         /// </param>
-        /// <param name="gen">
+        /// <param name="generator">
         /// The gen.
         /// </param>
-        public PhantomChainGenerator(BaseChain chain, IGenerator gen)
+        public PhantomChainGenerator(BaseChain chain, IGenerator generator)
         {
-            this.generator = gen;
+            this.generator = generator;
             var reorganizer = new SpacePhantomReorganizer();
-            BaseChain internalChain = (BaseChain)reorganizer.Reorganize(chain);
+            var internalChain = (BaseChain)reorganizer.Reorganize(chain);
             for (int w = 0; w < internalChain.GetLength(); w++)
             {
                 totalLength += ((ValuePhantom)internalChain[w])[0].ToString().Length;

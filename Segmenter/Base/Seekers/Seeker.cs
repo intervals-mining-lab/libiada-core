@@ -2,7 +2,7 @@
 {
     using System.Collections.Generic;
 
-    using Segmenter.Interfaces;
+    using Interfaces;
 
     /// <summary>
     /// Searching for occurrences of a sequence
@@ -32,7 +32,7 @@
         /// </param>
         public Seeker(IIterator where)
         {
-            this.iterator = where;
+            iterator = where;
         }
 
         /// <summary>

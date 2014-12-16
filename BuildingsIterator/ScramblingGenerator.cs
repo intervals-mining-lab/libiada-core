@@ -37,13 +37,13 @@
         public ChainPicksWithCharacteristics Generate(Alphabet alphabet, int len, List<LinkedCharacteristic> charact)
         {
             this.alphabet = alphabet;
-            this.length = len;
-            this.characteristic = charact;
+            length = len;
+            characteristic = charact;
 
             var hashTable = new Hashtable();
 
             // По всем возможным цепочкам (Для оптимизации скорости генерируется цепочки с одинаковой первой буквой)
-            for (int i = 0; i < Math.Pow(alphabet.Cardinality, this.length - 1); i++)
+            for (int i = 0; i < Math.Pow(alphabet.Cardinality, length - 1); i++)
             {
                 Chain chain = GenerateChain(i);
                 List<double> characteristics = CalculateCharacteristics(chain);

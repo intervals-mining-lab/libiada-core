@@ -1,10 +1,8 @@
-﻿namespace LibiadaCore.Core.Characteristics.BinaryCalculators
+﻿using System;
+using LibiadaCore.Core.IntervalsManagers;
+
+namespace LibiadaCore.Core.Characteristics.Calculators
 {
-    using System;
-
-    using LibiadaCore.Core.Characteristics.Calculators;
-    using LibiadaCore.Core.IntervalsManagers;
-
     /// <summary>
     /// The compliance degree.
     /// </summary>

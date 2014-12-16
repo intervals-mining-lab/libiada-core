@@ -2,10 +2,10 @@
 {
     using System;
 
-    using Segmenter.Base.Collectors;
-    using Segmenter.Base.Sequences;
-    using Segmenter.Interfaces;
-    using Segmenter.Model.Threshold;
+    using Base.Collectors;
+    using Base.Sequences;
+    using Interfaces;
+    using Threshold;
 
     /// <summary>
     /// The criterion of break. Defines the best mode of segmentation.
@@ -40,8 +40,8 @@
         /// <param name="precision">additional value to</param>
         public Criterion(ThresholdVariator threshold, double precision)
         {
-            this.ThresholdToStop = threshold;
-            this.precisionOfDifference = precision;
+            ThresholdToStop = threshold;
+            precisionOfDifference = precision;
         }
 
         /// <summary>

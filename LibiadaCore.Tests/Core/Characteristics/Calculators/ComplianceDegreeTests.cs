@@ -14,7 +14,7 @@
         [TestFixtureSetUp]
         public void Initialization()
         {
-            this.Initialization("ComplianceDegree");
+            Initialization("ComplianceDegree");
         }
 
         /// <summary>
@@ -38,7 +38,7 @@
         [TestCase(15, 0.3563, 0)]
         public void ComplianceDegreeTest(int index, double firstValue, double secondValue)
         {
-            this.CalculationTest(index, firstValue, secondValue);
+            CalculationTest(index, firstValue, secondValue);
         }
     }
 }

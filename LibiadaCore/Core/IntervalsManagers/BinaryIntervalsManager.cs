@@ -2,7 +2,7 @@
 {
     using System.Collections.Generic;
 
-    using LibiadaCore.Core.Characteristics.Calculators;
+    using Characteristics.Calculators;
 
     /// <summary>
     /// The relation interval manager.
@@ -75,18 +75,18 @@
         /// </param>
         public BinaryIntervalsManager(CongenericChain firstChain, CongenericChain secondChain)
         {
-            this.FirstElement = firstChain.Element;
-            this.SecondElement = secondChain.Element;
-            this.FirstChain = firstChain;
-            this.SecondChain = secondChain;
-            this.Length = firstChain.GetLength();
-            this.FirstOccurrencesCount = firstChain.OccurrencesCount;
-            this.SecondOccurrencesCount = secondChain.OccurrencesCount;
+            FirstElement = firstChain.Element;
+            SecondElement = secondChain.Element;
+            FirstChain = firstChain;
+            SecondChain = secondChain;
+            Length = firstChain.GetLength();
+            FirstOccurrencesCount = firstChain.OccurrencesCount;
+            SecondOccurrencesCount = secondChain.OccurrencesCount;
 
-            this.FillAccordanceIntervals();
+            FillAccordanceIntervals();
 
-            this.PairsCount = FillPairsCount();
-            this.relationIntervals = new int[this.PairsCount];
+            PairsCount = FillPairsCount();
+            relationIntervals = new int[PairsCount];
             FillIntervals();
         }
 
@@ -101,20 +101,20 @@
         /// <returns>Длина интервала</returns>
         public int GetBinaryInterval(int occurrence)
         {
-            int firstElementFirstOccurrence = this.FirstChain.GetOccurrence(occurrence);
+            int firstElementFirstOccurrence = FirstChain.GetOccurrence(occurrence);
             if (firstElementFirstOccurrence == -1)
             {
                 return -1;
             }
 
-            int secondElementOccurrence = this.SecondChain.GetAfter(firstElementFirstOccurrence);
+            int secondElementOccurrence = SecondChain.GetAfter(firstElementFirstOccurrence);
 
             if (secondElementOccurrence == -1)
             {
                 return -1;
             }
 
-            int firstElementSecondOccurrence = this.FirstChain.GetOccurrence(occurrence + 1);
+            int firstElementSecondOccurrence = FirstChain.GetOccurrence(occurrence + 1);
 
             if (firstElementSecondOccurrence == -1)
             {
@@ -140,7 +140,7 @@
         /// </returns>
         public int GetFirst(int entry)
         {
-            return this.FirstChain.GetOccurrence(entry);
+            return FirstChain.GetOccurrence(entry);
         }
 
         /// <summary>
@@ -154,7 +154,7 @@
         /// </returns>
         public int GetSecond(int entry)
         {
-            return this.SecondChain.GetOccurrence(entry);
+            return SecondChain.GetOccurrence(entry);
         }
 
         /// <summary>
@@ -169,9 +169,9 @@
         /// </returns>
         public int GetAfter(int from)
         {
-            for (int i = from; i < this.SecondChain.GetLength(); i++)
+            for (int i = from; i < SecondChain.GetLength(); i++)
             {
-                if (this.SecondChain[i].Equals(this.SecondChain.Element))
+                if (SecondChain[i].Equals(SecondChain.Element))
                 {
                     return i;
                 }
@@ -188,7 +188,7 @@
         /// </returns>
         public int[] GetIntervals()
         {
-            return (int[])this.relationIntervals.Clone();
+            return (int[])relationIntervals.Clone();
         }
 
         /// <summary>
@@ -202,7 +202,7 @@
             var counter = 0;
 
             var elementCounter = new ElementsCount();
-            var firstElementCount = (int)elementCounter.Calculate(this.FirstChain, Link.None);
+            var firstElementCount = (int)elementCounter.Calculate(FirstChain, Link.None);
 
             for (int i = 1; i <= firstElementCount; i++)
             {
@@ -222,12 +222,12 @@
         private void FillIntervals()
         {
             int counter = 0;
-            for (int i = 1; i <= this.FirstChain.OccurrencesCount; i++)
+            for (int i = 1; i <= FirstChain.OccurrencesCount; i++)
             {
                 int binaryInterval = GetBinaryInterval(i);
                 if (binaryInterval > 0)
                 {
-                    this.relationIntervals[counter++] = binaryInterval;
+                    relationIntervals[counter++] = binaryInterval;
                 }
             }
 
@@ -246,17 +246,17 @@
 
             int j = 1;
 
-            for (int i = 1; i <= this.FirstOccurrencesCount; i++)
+            for (int i = 1; i <= FirstOccurrencesCount; i++)
             {
                 int firstPosition = FirstChain.GetOccurrence(i);
-                int nextFirstPosition = FirstChain.GetOccurrence(i + 1) == -1 ? this.Length : FirstChain.GetOccurrence(i + 1);
+                int nextFirstPosition = FirstChain.GetOccurrence(i + 1) == -1 ? Length : FirstChain.GetOccurrence(i + 1);
                 for (; j <= SecondChain.OccurrencesCount; j++)
                 {
                     int secondOccurrence = SecondChain.GetOccurrence(j);
                     if (secondOccurrence >= firstPosition && secondOccurrence < nextFirstPosition)
                     {
-                        this.FilteredFirstIntervals.Add(firstIntervals[i - 1]);
-                        this.FilteredSecondIntervals.Add(secondIntervals[j - 1]);
+                        FilteredFirstIntervals.Add(firstIntervals[i - 1]);
+                        FilteredSecondIntervals.Add(secondIntervals[j - 1]);
                         break;
                     }
                 }

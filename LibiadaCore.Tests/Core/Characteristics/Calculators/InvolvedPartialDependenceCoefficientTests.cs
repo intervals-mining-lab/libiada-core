@@ -19,7 +19,7 @@
         [TestFixtureSetUp]
         public void Initialization()
         {
-            this.Initialization("InvolvedPartialDependenceCoefficient");
+            Initialization("InvolvedPartialDependenceCoefficient");
         }
 
         /// <summary>
@@ -53,7 +53,7 @@
         [TestCase(17, 0.6072, 0.3757)]
         public void K2Test(int index, double firstValue, double secondValue)
         {
-            this.CalculationTest(index, firstValue, secondValue);
+            CalculationTest(index, firstValue, secondValue);
         }
 
         /// <summary>
@@ -62,21 +62,21 @@
         [Test]
         public void GetK2Test()
         {
-            List<List<double>> result = this.Calculator.CalculateAll(this.Chains[1], Link.End);
+            List<List<double>> result = Calculator.CalculateAll(Chains[1], Link.End);
 
             Assert.AreEqual(0, result[0][0]);
             Assert.AreEqual(0, result[0][1]);
             Assert.AreEqual(0, result[1][0]);
             Assert.AreEqual(0, result[1][1]);
 
-            result = this.Calculator.CalculateAll(this.Chains[10], Link.End);
+            result = Calculator.CalculateAll(Chains[10], Link.End);
 
             Assert.AreEqual(0, result[0][0]);
             Assert.AreEqual(0.614, Math.Round(result[0][1], 3));
             Assert.AreEqual(0.402, Math.Round(result[1][0], 3));
             Assert.AreEqual(0, result[1][1]);
 
-            result = this.Calculator.CalculateAll(this.Chains[18], Link.End);
+            result = Calculator.CalculateAll(Chains[18], Link.End);
 
             Assert.AreEqual(0, result[0][0]);
             Assert.AreEqual(0.5407, Math.Round(result[0][1], 4));

@@ -4,8 +4,8 @@ namespace LibiadaCore.Core
     using System.Collections.Generic;
     using System.Linq;
 
-    using LibiadaCore.Core.IntervalsManagers;
-    using LibiadaCore.Core.SimpleTypes;
+    using IntervalsManagers;
+    using SimpleTypes;
 
     /// <summary>
     /// The congeneric chain.
@@ -384,7 +384,7 @@ namespace LibiadaCore.Core
         }
 
         /// <summary>
-        /// The clone.
+        /// Creates clone of this chain.
         /// </summary>
         /// <returns>
         /// The <see cref="IBaseObject"/>.

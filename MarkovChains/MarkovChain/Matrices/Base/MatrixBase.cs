@@ -2,7 +2,7 @@ namespace MarkovChains.MarkovChain.Matrices.Base
 {
     using System.Collections;
 
-    using MarkovChains.MarkovChain.Builders;
+    using Builders;
 
     /// <summary>
     /// Базовые класс для матриц

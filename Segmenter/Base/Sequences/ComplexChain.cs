@@ -29,7 +29,7 @@
         {
             for (int i = 0; i < accord.Count; i++)
             {
-                this.Set(new ValueInt(accord[i]), i);
+                Set(new ValueInt(accord[i]), i);
             }
         }
 
@@ -55,7 +55,7 @@
         {
             for (int i = 0; i < sequence.Count; i++)
             {
-                this.Set(new ValueString(sequence[i]), i);
+                Set(new ValueString(sequence[i]), i);
             }
         }
 
@@ -330,7 +330,7 @@
         /// </returns>
         public ComplexChain Original()
         {
-            return new ComplexChain(this.ToString());
+            return new ComplexChain(ToString());
         }
 
         /// <summary>

@@ -1,41 +1,45 @@
 namespace LibiadaCore.Core
 {
     /// <summary>
-    /// Привязка инетрвалов
+    /// Link of intervals.
     /// </summary>
     public enum Link
     {
         /// <summary>
-        /// Привязка к началу
-        /// Не учитывается интервал 
-        /// от последнего элемента до конца цепочки
+        /// Link to start.
+        /// Interval from last element to end of chain 
+        /// is not taken into account.
         /// </summary>
         Start = 1,
 
         /// <summary>
-        /// Привязка к концу
-        /// Не учитывается от начала до первого элемента цепочки
+        /// Link to end.
+        /// Interval from start of chain to first element 
+        /// is not taken into account.
         /// </summary>
         End = 2,
 
         /// <summary>
-        /// Привязка к началу и к концу
-        /// Учитываются все интервалы
+        /// Link to start and end.
+        /// Both interval from start of chain to first element
+        /// and interval from last element to end of chain 
+        /// are taken into account.
         /// </summary>
         Both = 3,
 
         /// <summary>
-        /// Циклическая привязка
-        /// Интервал от начала до первого элемента 
-        /// и от последнего элемента до конца
-        /// суммируются в один
+        /// Cyclic link.
+        /// Interval from start of chain to first element
+        /// and interval from last element to end of chain 
+        /// are summed into one interval.
         /// </summary>
         Cycle = 4,
 
         /// <summary>
-        /// Нет привязки
-        /// Не учитываются ни интервал от начала до первого элемента
-        /// ни от последнего элемента до конца
+        /// No link.
+        /// Both interval from start of chain to first element
+        /// and interval from last element to end of chain 
+        /// are taken into account.
         /// </summary>
         None = 5
     }

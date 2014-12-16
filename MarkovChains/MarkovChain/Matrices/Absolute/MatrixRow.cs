@@ -5,9 +5,9 @@ namespace MarkovChains.MarkovChain.Matrices.Absolute
 
     using LibiadaCore.Core.SimpleTypes;
 
-    using MarkovChains.MarkovChain.Builders;
-    using MarkovChains.MarkovChain.Matrices.Base;
-    using MarkovChains.MarkovChain.Matrices.Probability;
+    using Builders;
+    using Base;
+    using Probability;
 
     /// <summary>
     /// ћатрица-строка абсолютных значений.
@@ -52,7 +52,7 @@ namespace MarkovChains.MarkovChain.Matrices.Absolute
         {
             get
             {
-                return (ArrayList)this.ValueList.Clone();
+                return (ArrayList)ValueList.Clone();
             }
         }
 
@@ -63,7 +63,7 @@ namespace MarkovChains.MarkovChain.Matrices.Absolute
         {
             get
             {
-                return this.Rank;
+                return Rank;
             }
         }
 
@@ -74,7 +74,7 @@ namespace MarkovChains.MarkovChain.Matrices.Absolute
         {
             get
             {
-                return this.Value;
+                return Value;
             }
         }
 
@@ -83,7 +83,7 @@ namespace MarkovChains.MarkovChain.Matrices.Absolute
         /// </summary>
         public void IncValue()
         {
-            this.Value += 1;
+            Value += 1;
         }
 
         /// <summary>

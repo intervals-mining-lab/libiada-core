@@ -14,7 +14,7 @@
         [TestFixtureSetUp]
         public void Initialization()
         {
-            this.Initialization("Redundancy");
+            Initialization("Redundancy");
         }
 
         /// <summary>
@@ -48,7 +48,7 @@
         [TestCase(17, 0.6072, 0.5636)]
         public void ChainCalculationTest(int index, double firstValue, double secondValue)
         {
-            this.CalculationTest(index, firstValue, secondValue);
+            CalculationTest(index, firstValue, secondValue);
         }
     }
 }
