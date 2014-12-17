@@ -44,7 +44,7 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AlphabetChainsTests.cs" />
+    <Compile Include="ChainsAlphabetTests.cs" />
     <Compile Include="CheckerTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

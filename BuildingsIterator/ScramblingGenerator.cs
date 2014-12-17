@@ -1,4 +1,6 @@
-﻿namespace BuildingsIterator
+﻿using LibiadaCore.Misc;
+
+namespace BuildingsIterator
 {
     using System;
     using System.Collections;
@@ -49,7 +51,7 @@
                 List<double> characteristics = CalculateCharacteristics(chain);
                 try
                 {
-                    hashTable.Add(ConvertArray.ArrayToString(chain.Building), characteristics);
+                    hashTable.Add(ArrayManipulator.ArrayToString(chain.Building), characteristics);
                 }
                 catch (Exception e)
                 {

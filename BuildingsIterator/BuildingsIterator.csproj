@@ -38,7 +38,6 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ArrayToString.cs" />
     <Compile Include="ChainPicksWithCharacteristics.cs" />
     <Compile Include="Filters\ChainFilterBySameFrequency.cs" />
     <Compile Include="Filters\ChinFilterByAlphabetPower.cs" />

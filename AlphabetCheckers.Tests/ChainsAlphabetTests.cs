@@ -11,7 +11,7 @@ namespace AlphabetCheckers.Tests
     /// The alphabet chains test.
     /// </summary>
     [TestFixture]
-    public class AlphabetChainsTests
+    public class ChainsAlphabetTests
     {
         /// <summary>
         /// The chain base.

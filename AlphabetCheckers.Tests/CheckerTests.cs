@@ -90,43 +90,23 @@ namespace AlphabetCheckers.Tests
         [Test]
         public void CheckTrueLongAlphabet()
         {
-            var chainBase = new BaseChain(10);
-
-            chainBase[0] = new ValueString('1');
-            chainBase[1] = new ValueString('2');
-            chainBase[2] = new ValueString('3');
-            chainBase[3] = new ValueString('4');
-            chainBase[4] = new ValueString('5');
-            chainBase[5] = new ValueString('6');
-            chainBase[6] = new ValueString('7');
-            chainBase[7] = new ValueString('8');
-            chainBase[8] = new ValueString('9');
-            chainBase[9] = new ValueString('A');
+            var chainBase = new BaseChain("123456789A");
 
             var alphabet = new Alphabet();
 
-            var chain = new BaseChain(2);
-            chain[0] = new ValueString('9');
-            chain[1] = new ValueString('A');
-            alphabet.Add(chain);
-                        
-            chain[0] = new ValueString('6');
-            chain[1] = new ValueString('7');
+            var chain = new BaseChain("9A");
             alphabet.Add(chain);
 
-            chain = new BaseChain(1);
-            chain[0] = new ValueString('8');
+            chain = new BaseChain("67");
             alphabet.Add(chain);
 
-            chain = new BaseChain(3);
-            chain[0] = new ValueString('1');
-            chain[1] = new ValueString('2');
-            chain[2] = new ValueString('3');
+            chain = new BaseChain("8");
             alphabet.Add(chain);
 
-            chain = new BaseChain(2);
-            chain[0] = new ValueString('4');
-            chain[1] = new ValueString('5');
+            chain = new BaseChain("123");
+            alphabet.Add(chain);
+
+            chain = new BaseChain("45");
             alphabet.Add(chain);
 
             var checker = new Checker(alphabet);
@@ -139,43 +119,23 @@ namespace AlphabetCheckers.Tests
         [Test]
         public void CheckFalseLongAlphabet()
         {
-            var chainBase = new BaseChain(10);
-
-            chainBase[0] = new ValueString('1');
-            chainBase[1] = new ValueString('2');
-            chainBase[2] = new ValueString('3');
-            chainBase[3] = new ValueString('4');
-            chainBase[4] = new ValueString('5');
-            chainBase[5] = new ValueString('6');
-            chainBase[6] = new ValueString('7');
-            chainBase[7] = new ValueString('8');
-            chainBase[8] = new ValueString('9');
-            chainBase[9] = new ValueString('A');
+            var chainBase = new BaseChain("123456789A");
 
             var alphabet = new Alphabet();
 
-            var chain = new BaseChain(1);
-            chain[0] = new ValueString('9');
+            var chain = new BaseChain("9");
             alphabet.Add(chain);
 
-            chain = new BaseChain(2);
-            chain[0] = new ValueString('6');
-            chain[1] = new ValueString('7');
+            chain = new BaseChain("67");
             alphabet.Add(chain);
 
-            chain = new BaseChain(1);
-            chain[0] = new ValueString('8');
+            chain = new BaseChain("8");
             alphabet.Add(chain);
 
-            chain = new BaseChain(3);
-            chain[0] = new ValueString('1');
-            chain[1] = new ValueString('2');
-            chain[2] = new ValueString('3');
+            chain = new BaseChain("123");
             alphabet.Add(chain);
 
-            chain = new BaseChain(2);
-            chain[0] = new ValueString('4');
-            chain[1] = new ValueString('5');
+            chain = new BaseChain("45");
             alphabet.Add(chain);
 
             var checker = new Checker(alphabet);
@@ -188,42 +148,20 @@ namespace AlphabetCheckers.Tests
         [Test]
         public void CheckSuperLongAlphabet()
         {
-            var chainBase = new BaseChain(10);
-
-            chainBase[0] = new ValueString('1');
-            chainBase[1] = new ValueString('2');
-            chainBase[2] = new ValueString('3');
-
-            chainBase[3] = new ValueString('4');
-
-            chainBase[4] = new ValueString('1');
-            chainBase[5] = new ValueString('2');
-            chainBase[6] = new ValueString('3');
-
-            chainBase[7] = new ValueString('2');
-
-            chainBase[8] = new ValueString('1');
-            chainBase[9] = new ValueString('2');
+            var chainBase = new BaseChain("1234123212");
 
             var alphabet = new Alphabet();
             
-            var chain = new BaseChain(3);
-            chain[0] = new ValueString('1');
-            chain[1] = new ValueString('2');
-            chain[2] = new ValueString('3');
+            var chain = new BaseChain("123");
             alphabet.Add(chain);
 
-            chain = new BaseChain(1);
-            chain[0] = new ValueString('4');
+            chain = new BaseChain("4");
             alphabet.Add(chain);
             
-            chain = new BaseChain(2);
-            chain[0] = new ValueString('1');
-            chain[1] = new ValueString('2');
+            chain = new BaseChain("12");
             alphabet.Add(chain);
 
-            chain = new BaseChain(1);
-            chain[0] = new ValueString('2');
+            chain = new BaseChain("2");
             alphabet.Add(chain);
 
             var checker = new Checker(alphabet);
@@ -236,42 +174,20 @@ namespace AlphabetCheckers.Tests
         [Test]
         public void DivisionSuperLongAlphabet()
         {
-            var chainBase = new BaseChain(10);
-
-            chainBase[0] = new ValueString('1');
-            chainBase[1] = new ValueString('2');
-            chainBase[2] = new ValueString('3');
-
-            chainBase[3] = new ValueString('4');
-
-            chainBase[4] = new ValueString('1');
-            chainBase[5] = new ValueString('2');
-            chainBase[6] = new ValueString('3');
-
-            chainBase[7] = new ValueString('2');
-
-            chainBase[8] = new ValueString('1');
-            chainBase[9] = new ValueString('2');
+            var chainBase = new BaseChain("1234123212");
 
             var alphabet = new Alphabet();
 
-            var chain = new BaseChain(3);
-            chain[0] = new ValueString('1');
-            chain[1] = new ValueString('2');
-            chain[2] = new ValueString('3');
+            var chain = new BaseChain("123");
             alphabet.Add(chain);
 
-            var chain2 = new BaseChain(1);
-            chain2[0] = new ValueString('4');
+            var chain2 = new BaseChain("4");
             alphabet.Add(chain2);
 
-            var chain3 = new BaseChain(2);
-            chain3[0] = new ValueString('1');
-            chain3[1] = new ValueString('2');
+            var chain3 = new BaseChain("12");
             alphabet.Add(chain3);
 
-            var chain4 = new BaseChain(1);
-            chain4[0] = new ValueString('2');
+            var chain4 = new BaseChain("2");
             alphabet.Add(chain4);
 
             var checker = new Checker(alphabet);
