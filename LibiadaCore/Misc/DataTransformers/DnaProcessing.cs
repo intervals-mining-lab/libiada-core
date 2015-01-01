@@ -1,15 +1,14 @@
-using System;
-using LibiadaCore.Core;
-using LibiadaCore.Core.SimpleTypes;
-
 namespace LibiadaCore.Misc.DataTransformers
 {
+    using System;
+    using LibiadaCore.Core;
+    using LibiadaCore.Core.SimpleTypes;
+
     /// <summary>
     /// Class for various actions with dna sequences.
     /// </summary>
     public static class DnaProcessing
     {
-
         /// <summary>
         /// Checks if alphabet is appropriate for dna sequence,
         /// e.g. contains only nucleotide elements.

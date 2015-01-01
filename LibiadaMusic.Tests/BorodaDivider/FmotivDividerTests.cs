@@ -10,7 +10,7 @@
     [TestClass]
     public class FmotivDividerTests
     {
-        //ТЕСТЫ ПМТ
+        // ТЕСТЫ ПМТ
         [TestMethod]
         public void FmotivDividerFirstTest()
         {
@@ -27,7 +27,7 @@
             var attributes = new Attributes(new Size(2, 4, 1024), new Key(0, "major"));
 
             // создание и заполнение такта(ов) списками нот и атрибутами
-            var measures = new List<Measure> {new Measure(notes, (Attributes) attributes.Clone())};
+            var measures = new List<Measure> { new Measure(notes, (Attributes)attributes.Clone()) };
 
             // создание моно трека
             var unitrack = new CongenericScoreTrack("track1", measures);
@@ -52,12 +52,11 @@
             fmotiv2.NoteList.Add(new ValueNote(new Pitch(3, 'A', 0), new Duration(1, 4, false, 512), false, Tie.None));
 
             // записываем ф-мотивы в цепь ф-мотивов, которая будет сравниваться с получившейся
-            var secondChain = new FmotivChain {Id = 0, Name = "track1"};
+            var secondChain = new FmotivChain { Id = 0, Name = "track1" };
             secondChain.FmotivList.Add(fmotiv1);
             secondChain.FmotivList.Add(fmotiv2);
 
             Assert.IsTrue(secondChain.Equals(chain));
-
         }
 
         [TestMethod]
@@ -76,7 +75,7 @@
             var attributes = new Attributes(new Size(2, 4, 1024), new Key(0, "major"));
 
             // создание и заполнение такта(ов) списками нот и атрибутами
-            var measures = new List<Measure> {new Measure(notes, (Attributes) attributes.Clone())};
+            var measures = new List<Measure> { new Measure(notes, (Attributes)attributes.Clone()) };
 
             // создание моно трека
             var unitrack = new CongenericScoreTrack("track1", measures);
@@ -86,7 +85,7 @@
             // создание результирующей цепочки фмотивов
 
             // вычисление, опрделение, разбиение на  ф-мотивы данного монотрека
-            FmotivChain fmchain = fmdivider.GetDivision(unitrack, (int) ParamPauseTreatment.Ignore);
+            FmotivChain fmchain = fmdivider.GetDivision(unitrack, (int)ParamPauseTreatment.Ignore);
             fmchain.Id = 0;
 
             // создание аналогов ф-мотивов, которые должны получиться, после разбиения
@@ -101,7 +100,7 @@
             fmotiv2.NoteList.Add(new ValueNote(new Pitch(3, 'A', 0), new Duration(1, 8, false, 512), false, Tie.None));
 
             // записываем ф-мотивы в цепь ф-мотивов, которая будет сравниваться с получившейся
-            var fmchain1 = new FmotivChain {Id = 0, Name = "track1"};
+            var fmchain1 = new FmotivChain { Id = 0, Name = "track1" };
             fmchain1.FmotivList.Add(fmotiv1);
             fmchain1.FmotivList.Add(fmotiv2);
 
@@ -131,8 +130,8 @@
             // создание и заполнение такта(ов) списками нот и атрибутами
             var measures = new List<Measure>
             {
-                new Measure(notes, (Attributes) attributes.Clone()),
-                new Measure(notes1, (Attributes) attributes.Clone())
+                new Measure(notes, (Attributes)attributes.Clone()),
+                new Measure(notes1, (Attributes)attributes.Clone())
             };
 
             // создание моно трека
@@ -143,7 +142,7 @@
             // создание результирующей цепочки фмотивов
 
             // вычисление, опрделение, разбиение на  ф-мотивы данного монотрека
-            var fmchain = fmdivider.GetDivision(unitrack, (int) ParamPauseTreatment.Ignore);
+            var fmchain = fmdivider.GetDivision(unitrack, (int)ParamPauseTreatment.Ignore);
             fmchain.Id = 0;
 
             // создание аналогов ф-мотивов, которые должны получиться, после разбиения
@@ -161,7 +160,7 @@
             fmotiv3.NoteList.Add(new ValueNote(new Pitch(3, 'E', 0), new Duration(1, 4, false, 512), false, Tie.None));
 
             // записываем ф-мотивы в цепь ф-мотивов, которая будет сравниваться с получившейся
-            var fmchain1 = new FmotivChain {Id = 0, Name = "track1"};
+            var fmchain1 = new FmotivChain { Id = 0, Name = "track1" };
             fmchain1.FmotivList.Add(fmotiv1);
             fmchain1.FmotivList.Add(fmotiv2);
             fmchain1.FmotivList.Add(fmotiv3);
@@ -184,7 +183,7 @@
             var attributes = new Attributes(new Size(2, 4, 1024), new Key(0, "major"));
 
             // создание и заполнение такта(ов) списками нот и атрибутами
-            var measures = new List<Measure> {new Measure(notes, (Attributes) attributes.Clone())};
+            var measures = new List<Measure> { new Measure(notes, (Attributes)attributes.Clone()) };
 
             // создание моно трека
             var unitrack = new CongenericScoreTrack("track1", measures);
@@ -194,7 +193,7 @@
             // создание результирующей цепочки фмотивов
 
             // вычисление, опрделение, разбиение на  ф-мотивы данного монотрека
-            var fmchain = fmdivider.GetDivision(unitrack, (int) ParamPauseTreatment.Ignore);
+            var fmchain = fmdivider.GetDivision(unitrack, (int)ParamPauseTreatment.Ignore);
             fmchain.Id = 0;
 
             // создание аналогов ф-мотивов, которые должны получиться, после разбиения
@@ -206,7 +205,7 @@
             fmotiv1.NoteList.Add(new ValueNote(new Pitch(3, 'A', 0), new Duration(1, 4, false, 512), false, Tie.None));
 
             // записываем ф-мотивы в цепь ф-мотивов, которая будет сравниваться с получившейся
-            var fmchain1 = new FmotivChain {Id = 0, Name = "track1"};
+            var fmchain1 = new FmotivChain { Id = 0, Name = "track1" };
             fmchain1.FmotivList.Add(fmotiv1);
 
             Assert.IsTrue(fmchain1.Equals(fmchain));
@@ -230,7 +229,7 @@
 
             // создание и заполнение такта(ов) списками нот и атрибутами
             var measures = new List<Measure>();
-            measures.Add(new Measure(notes, (Attributes) attributes.Clone()));
+            measures.Add(new Measure(notes, (Attributes)attributes.Clone()));
 
             // создание моно трека
             var unitrack = new CongenericScoreTrack("track1", measures);
@@ -240,7 +239,7 @@
             // создание результирующей цепочки фмотивов
 
             // вычисление, опрделение, разбиение на  ф-мотивы данного монотрека
-            var fmchain = fmdivider.GetDivision(unitrack, (int) ParamPauseTreatment.Ignore);
+            var fmchain = fmdivider.GetDivision(unitrack, (int)ParamPauseTreatment.Ignore);
             fmchain.Id = 0;
 
             // создание аналогов ф-мотивов, которые должны получиться, после разбиения
@@ -256,7 +255,7 @@
             fmotiv2.NoteList.Add(new ValueNote(new Pitch(3, 'B', 0), new Duration(1, 8, false, 360), false, Tie.None));
 
             // записываем ф-мотивы в цепь ф-мотивов, которая будет сравниваться с получившейся
-            var fmchain1 = new FmotivChain {Id = 0, Name = "track1"};
+            var fmchain1 = new FmotivChain { Id = 0, Name = "track1" };
             fmchain1.FmotivList.Add(fmotiv1);
             fmchain1.FmotivList.Add(fmotiv2);
 
@@ -280,7 +279,7 @@
             var attributes = new Attributes(new Size(2, 4, 1024), new Key(0, "major"));
 
             // создание и заполнение такта(ов) списками нот и атрибутами
-            var measures = new List<Measure> {new Measure(notes, (Attributes) attributes.Clone())};
+            var measures = new List<Measure> { new Measure(notes, (Attributes)attributes.Clone()) };
 
             // создание моно трека
             var unitrack = new CongenericScoreTrack("track1", measures);
@@ -290,7 +289,7 @@
             // создание результирующей цепочки фмотивов
 
             // вычисление, опрделение, разбиение на  ф-мотивы данного монотрека
-            var fmchain = fmdivider.GetDivision(unitrack, (int) ParamPauseTreatment.Ignore);
+            var fmchain = fmdivider.GetDivision(unitrack, (int)ParamPauseTreatment.Ignore);
             fmchain.Id = 0;
 
             // создание аналогов ф-мотивов, которые должны получиться, после разбиения
@@ -308,7 +307,7 @@
             fmotiv3.NoteList.Add(new ValueNote(new Pitch(3, 'A', 2), new Duration(1, 16, false, 128), false, Tie.None));
 
             // записываем ф-мотивы в цепь ф-мотивов, которая будет сравниваться с получившейся
-            var fmchain1 = new FmotivChain {Id = 0, Name = "track1"};
+            var fmchain1 = new FmotivChain { Id = 0, Name = "track1" };
             fmchain1.FmotivList.Add(fmotiv1);
             fmchain1.FmotivList.Add(fmotiv2);
             fmchain1.FmotivList.Add(fmotiv3);
@@ -322,7 +321,7 @@
             // создание и заполнения списка(ов) нот для такта(ов) монотрека
             var notes = new List<ValueNote>
             {
-                new ValueNote((Pitch) null, new Duration(1, 4, false, 512), false, Tie.None, 0),
+                new ValueNote((Pitch)null, new Duration(1, 4, false, 512), false, Tie.None, 0),
                 new ValueNote(new Pitch(3, 'A', 0), new Duration(1, 8, false, 256), false, Tie.None, 1),
                 new ValueNote(new Pitch(3, 'B', 0), new Duration(1, 8, false, 256), false, Tie.None, 2)
             };
@@ -331,7 +330,7 @@
             var attributes = new Attributes(new Size(2, 4, 1024), new Key(0, "major"));
 
             // создание и заполнение такта(ов) списками нот и атрибутами
-            var measures = new List<Measure> {new Measure(notes, (Attributes) attributes.Clone())};
+            var measures = new List<Measure> { new Measure(notes, (Attributes)attributes.Clone()) };
 
             // создание моно трека
             var unitrack = new CongenericScoreTrack("track1", measures);
@@ -341,22 +340,21 @@
             // создание результирующей цепочки фмотивов
 
             // вычисление, опрделение, разбиение на  ф-мотивы данного монотрека
-            FmotivChain fmchain = fmdivider.GetDivision(unitrack, (int) ParamPauseTreatment.Ignore);
+            FmotivChain fmchain = fmdivider.GetDivision(unitrack, (int)ParamPauseTreatment.Ignore);
             fmchain.Id = 0;
 
             // создание аналогов ф-мотивов, которые должны получиться, после разбиения
             // процедура определения одинаковых на данном этапе не производится
             var fmotiv1 = new Fmotiv("ПМТ", 0);
-            fmotiv1.NoteList.Add(new ValueNote((Pitch) null, new Duration(1, 4, false, 512), false, Tie.None));
+            fmotiv1.NoteList.Add(new ValueNote((Pitch)null, new Duration(1, 4, false, 512), false, Tie.None));
             fmotiv1.NoteList.Add(new ValueNote(new Pitch(3, 'A', 0), new Duration(1, 8, false, 256), false, Tie.None));
             fmotiv1.NoteList.Add(new ValueNote(new Pitch(3, 'B', 0), new Duration(1, 8, false, 256), false, Tie.None));
 
             // записываем ф-мотивы в цепь ф-мотивов, которая будет сравниваться с получившейся
-            var fmchain1 = new FmotivChain {Id = 0, Name = "track1"};
+            var fmchain1 = new FmotivChain { Id = 0, Name = "track1" };
             fmchain1.FmotivList.Add(fmotiv1);
 
             Assert.IsTrue(fmchain1.Equals(fmchain));
-
         }
 
         [TestMethod]
@@ -367,7 +365,7 @@
             {
                 new ValueNote(new Pitch(3, 'A', 0), new Duration(1, 8, false, 256), false, Tie.None, 0),
                 new ValueNote(new Pitch(3, 'B', 0), new Duration(1, 8, false, 256), false, Tie.None, 2),
-                new ValueNote((Pitch) null, new Duration(1, 8, false, 256), false, Tie.None, 1),
+                new ValueNote((Pitch)null, new Duration(1, 8, false, 256), false, Tie.None, 1),
                 new ValueNote(new Pitch(3, 'B', 0), new Duration(1, 8, false, 256), false, Tie.None, 2)
             };
 
@@ -375,7 +373,7 @@
             var attributes = new Attributes(new Size(2, 4, 1024), new Key(0, "major"));
 
             // создание и заполнение такта(ов) списками нот и атрибутами
-            var measures = new List<Measure> {new Measure(notes, (Attributes) attributes.Clone())};
+            var measures = new List<Measure> { new Measure(notes, (Attributes)attributes.Clone()) };
 
             // создание моно трека
             var unitrack = new CongenericScoreTrack("track1", measures);
@@ -385,19 +383,19 @@
             // создание результирующей цепочки фмотивов
 
             // вычисление, опрделение, разбиение на  ф-мотивы данного монотрека
-            FmotivChain fmchain = fmdivider.GetDivision(unitrack, (int) ParamPauseTreatment.Ignore);
+            FmotivChain fmchain = fmdivider.GetDivision(unitrack, (int)ParamPauseTreatment.Ignore);
             fmchain.Id = 0;
 
             // создание аналогов ф-мотивов, которые должны получиться, после разбиения
             // процедура определения одинаковых на данном этапе не производится
             var fmotiv1 = new Fmotiv("ПМТ", 0);
             fmotiv1.NoteList.Add(new ValueNote(new Pitch(3, 'A', 0), new Duration(1, 8, false, 256), false, Tie.None));
-            fmotiv1.NoteList.Add(new ValueNote((Pitch) null, new Duration(1, 8, false, 256), false, Tie.None));
+            fmotiv1.NoteList.Add(new ValueNote((Pitch)null, new Duration(1, 8, false, 256), false, Tie.None));
             fmotiv1.NoteList.Add(new ValueNote(new Pitch(3, 'B', 0), new Duration(1, 8, false, 256), false, Tie.None));
             fmotiv1.NoteList.Add(new ValueNote(new Pitch(3, 'B', 0), new Duration(1, 8, false, 256), false, Tie.None));
 
             // записываем ф-мотивы в цепь ф-мотивов, которая будет сравниваться с получившейся
-            var fmchain1 = new FmotivChain {Id = 0, Name = "track1"};
+            var fmchain1 = new FmotivChain { Id = 0, Name = "track1" };
             fmchain1.FmotivList.Add(fmotiv1);
 
             Assert.IsTrue(fmchain1.Equals(fmchain));
@@ -410,7 +408,7 @@
             var notes = new List<ValueNote>
             {
                 new ValueNote(new Pitch(3, 'A', 0), new Duration(1, 8, false, 256), false, Tie.None, 0),
-                new ValueNote((Pitch) null, new Duration(1, 8, false, 256), false, Tie.None, 2),
+                new ValueNote((Pitch)null, new Duration(1, 8, false, 256), false, Tie.None, 2),
                 new ValueNote(new Pitch(3, 'B', 0), new Duration(1, 8, false, 256), false, Tie.None, 1),
                 new ValueNote(new Pitch(3, 'B', 0), new Duration(1, 8, false, 256), false, Tie.None, 2)
             };
@@ -419,7 +417,7 @@
             var attributes = new Attributes(new Size(2, 4, 1024), new Key(0, "major"));
 
             // создание и заполнение такта(ов) списками нот и атрибутами
-            var measures = new List<Measure> {new Measure(notes, (Attributes) attributes.Clone())};
+            var measures = new List<Measure> { new Measure(notes, (Attributes)attributes.Clone()) };
 
             // создание моно трека
             var unitrack = new CongenericScoreTrack("track1", measures);
@@ -436,22 +434,20 @@
             // процедура определения одинаковых на данном этапе не производится
             var fmotiv1 = new Fmotiv("ПМТ", 0);
             fmotiv1.NoteList.Add(new ValueNote(new Pitch(3, 'A', 0), new Duration(1, 8, false, 256), false, Tie.None));
-            fmotiv1.NoteList.Add(new ValueNote((Pitch) null, new Duration(1, 8, false, 256), false, Tie.None));
+            fmotiv1.NoteList.Add(new ValueNote((Pitch)null, new Duration(1, 8, false, 256), false, Tie.None));
             var fmotiv2 = new Fmotiv("ПМТ", 1);
             fmotiv2.NoteList.Add(new ValueNote(new Pitch(3, 'B', 0), new Duration(1, 8, false, 256), false, Tie.None));
             fmotiv2.NoteList.Add(new ValueNote(new Pitch(3, 'B', 0), new Duration(1, 8, false, 256), false, Tie.None));
 
             // записываем ф-мотивы в цепь ф-мотивов, которая будет сравниваться с получившейся
-            var fmchain1 = new FmotivChain {Id = 0, Name = "track1"};
+            var fmchain1 = new FmotivChain { Id = 0, Name = "track1" };
             fmchain1.FmotivList.Add(fmotiv1);
             fmchain1.FmotivList.Add(fmotiv2);
 
             Assert.IsTrue(fmotiv1.FmEquals(fmotiv1, ParamPauseTreatment.SilenceNote, ParamEqualFM.Sequent));
             Assert.IsTrue(fmotiv2.FmEquals(fmotiv2, ParamPauseTreatment.SilenceNote, ParamEqualFM.Sequent));
-            Assert.IsTrue(fmchain.FmotivList[0].FmEquals(fmotiv1, ParamPauseTreatment.SilenceNote,
-                ParamEqualFM.Sequent));
-            Assert.IsTrue(fmchain.FmotivList[1].FmEquals(fmotiv2, ParamPauseTreatment.SilenceNote,
-                ParamEqualFM.Sequent));
+            Assert.IsTrue(fmchain.FmotivList[0].FmEquals(fmotiv1, ParamPauseTreatment.SilenceNote, ParamEqualFM.Sequent));
+            Assert.IsTrue(fmchain.FmotivList[1].FmEquals(fmotiv2, ParamPauseTreatment.SilenceNote, ParamEqualFM.Sequent));
             Assert.IsTrue(fmchain1.Equals(fmchain));
         }
     }

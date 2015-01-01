@@ -1,10 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-
-using LibiadaMusic.ScoreModel;
-
-namespace LibiadaMusic.BorodaDivider
+﻿namespace LibiadaMusic.BorodaDivider
 {
+    using System;
+    using System.Collections.Generic;
+
+    using LibiadaMusic.ScoreModel;
+
     using LibiadaCore.Core;
 
     /// <summary>
@@ -20,17 +20,16 @@ namespace LibiadaMusic.BorodaDivider
         public string Type { get; set; }
 
         /// <summary>
-        /// порядковый номер - идентификатор 
-        /// (-1 значит не определен) 
+        /// Gets or sets id (-1 means not defined).
         /// </summary>
         public int Id { get; set; }
 
         /// <summary>
-        /// 
+        /// Fmotiv constructor.
         /// </summary>
         /// <param name="type"></param>
         /// <param name="id">
-        /// порядковый номер - идентификатор 
+        /// порядковый номер - идентификатор
         /// (возможно введения доп id - глобального для словаря ф-мотивов)
         /// </param>
         public Fmotiv(string type, int id = -1)
@@ -43,72 +42,69 @@ namespace LibiadaMusic.BorodaDivider
         // TODO: убрать все частные и заменить на общие!!!!!!!!! заменил все withoutpauses() на PauseTreatment с параметорм ignore
         public Fmotiv PauseTreatment(ParamPauseTreatment paramPauseTreatment)
         {
-            //возвращает копию этого объекта
-
+            // возвращает копию этого объекта
             switch (paramPauseTreatment)
             {
                 case ParamPauseTreatment.Ignore:
-                {
-                    // удаляем все паузы в возвращаемом объекте (0) (паузы игнорируются)
-                    var temp = (Fmotiv) Clone();
-                    for (int i = 0; i < temp.NoteList.Count; i++)
-                    {
-                        if (temp.NoteList[i].Pitch != null && temp.NoteList[i].Pitch.Count == 0)
+                        // удаляем все паузы в возвращаемом объекте (0) (паузы игнорируются)
+                        var temp = (Fmotiv)Clone();
+                        for (int i = 0; i < temp.NoteList.Count; i++)
                         {
-                            temp.NoteList.RemoveAt(i);
-                            i--;
+                            if (temp.NoteList[i].Pitch != null && temp.NoteList[i].Pitch.Count == 0)
+                            {
+                                temp.NoteList.RemoveAt(i);
+                                i--;
+                            }
                         }
-                    }
-                    return temp;
-                }
+
+                        return temp;
+                    
                 case ParamPauseTreatment.NoteTrace:
-                {
-                    // длительность паузы прибавляется к предыдущей ноте, 
-                    //а она сама удаляется из текста (1) (пауза - звуковой след ноты)
-                    var temp = (Fmotiv) Clone();
+                        // длительность паузы прибавляется к предыдущей ноте,
+                        // а она сама удаляется из текста (1) (пауза - звуковой след ноты)
+                        var temp2 = (Fmotiv)Clone();
 
-                    // если пауза стоит вначале текста (и текст не пустой) то она удаляется
-                    while (temp.NoteList.Count > 0)
-                    {
-                        if (temp.NoteList[0].Pitch != null && temp.NoteList[0].Pitch.Count > 0)
+                        // если пауза стоит вначале текста (и текст не пустой) то она удаляется
+                        while (temp2.NoteList.Count > 0)
                         {
-                            break;
+                            if (temp2.NoteList[0].Pitch != null && temp2.NoteList[0].Pitch.Count > 0)
+                            {
+                                break;
+                            }
+
+                            temp2.NoteList.RemoveAt(0);
                         }
-                        temp.NoteList.RemoveAt(0);
-                    }
 
-                    for (int i = 0; i < temp.NoteList.Count; i++)
-                    {
-
-                        if (temp.NoteList[i].Pitch.Count == 0)
+                        for (int i = 0; i < temp2.NoteList.Count; i++)
                         {
-                            // к длительности предыдущего звука добавляем длительность текущей паузы 
-                            temp.NoteList[i - 1].Duration.AddDuration((Duration) temp.NoteList[i].Duration.Clone());
-                            // удаляем паузу
-                            temp.NoteList.RemoveAt(i);
-                            i--;
+                            if (temp2.NoteList[i].Pitch.Count == 0)
+                            {
+                                // к длительности предыдущего звука добавляем длительность текущей паузы
+                                temp2.NoteList[i - 1].Duration.AddDuration((Duration)temp2.NoteList[i].Duration.Clone());
+                                // удаляем паузу
+                                temp2.NoteList.RemoveAt(i);
+                                i--;
+                            }
                         }
-                    }
-                    return temp;
-                }
+
+                        return temp2;
+
                 case ParamPauseTreatment.SilenceNote:
-                {
-                    // Пауза - звук тишины, рассматривается как нота без высоты звучания (2)
-                    // ничего не треуется
-                    return (Fmotiv) Clone();
-                }
+                        // Пауза - звук тишины, рассматривается как нота без высоты звучания (2)
+                        // ничего не треуется
+                        return (Fmotiv)Clone();
+
                 default:
                     throw new Exception("Error Fmotiv.PauseTreatment parameter contains wrong value!");
             }
-
         }
 
         public Fmotiv TieGathered()
         {
-            //возвращает копию этого объекта, соединив все залигованные ноты, если такие имеются
+            // возвращает копию этого объекта, соединив все залигованные ноты, если такие имеются
             // (тоесть вместо трех залигованных нот в фмотиве будет отображаться одна, с суммарной длительностью но такой же высотой
             ValueNote buffNote = null;
-            var temp = (Fmotiv) Clone();
+            var temp = (Fmotiv)Clone();
             var tempGathered = new Fmotiv(Type, Id);
 
             int count = temp.NoteList.Count;
@@ -126,13 +122,14 @@ namespace LibiadaMusic.BorodaDivider
                     {
                         throw new Exception("LibiadaMusic: Tie started but (stop)/(startstop) note NOT following!");
                     }
-                    tempGathered.NoteList.Add(((ValueNote) temp.NoteList[0].Clone()));
+
+                    tempGathered.NoteList.Add((ValueNote)temp.NoteList[0].Clone());
                     // очистка текущей позиции ноты, для перехода к следущей в очереди
                     temp.NoteList.RemoveAt(0);
                 }
                 else
                 {
-                    // пауза не может быть залигованна, ошибка если лига на паузе! 
+                    // пауза не может быть залигованна, ошибка если лига на паузе!
                     if (temp.NoteList[0].Pitch.Count == 0)
                     {
                         throw new Exception("LibiadaMusic: Pause can't be with Tie! Sorry!");
@@ -146,7 +143,8 @@ namespace LibiadaMusic.BorodaDivider
                         {
                             throw new Exception("LibiadaMusic: Tie note start after existing start note!");
                         }
-                        buffNote = ((ValueNote) temp.NoteList[0].Clone());
+
+                        buffNote = (ValueNote)temp.NoteList[0].Clone();
                         // очистка текущей позиции ноты, для перехода к следущей в очереди
                         temp.NoteList.RemoveAt(0);
                     }
@@ -165,11 +163,10 @@ namespace LibiadaMusic.BorodaDivider
                         }
 
                         // уже начавшаяся лига продолжается, с условием что будет еще следущая лигованная нота
-                        if ( temp.NoteList[0].Tie == Tie.StartStop)
+                        if (temp.NoteList[0].Tie == Tie.StartStop)
                         {
                             // добавляется длительность, и копируется старая высота звучания и приоритет
-                            buffNote = new ValueNote(buffNote.Pitch, buffNote.Duration.AddDuration(temp.NoteList[0].Duration),
-                                buffNote.Triplet, Tie.None, buffNote.Priority);
+                            buffNote = new ValueNote(buffNote.Pitch, buffNote.Duration.AddDuration(temp.NoteList[0].Duration), buffNote.Triplet, Tie.None, buffNote.Priority);
                             // очистка текущей позиции ноты, для перехода к следущей в очереди
                             temp.NoteList.RemoveAt(0);
                         }
@@ -179,11 +176,9 @@ namespace LibiadaMusic.BorodaDivider
                             if (temp.NoteList[0].Tie == Tie.Stop)
                             {
                                 // добавляется длительность, и копируется старая высота звучания и приоритет
-                                buffNote = new ValueNote(buffNote.Pitch,
-                                    buffNote.Duration.AddDuration(temp.NoteList[0].Duration), buffNote.Triplet, Tie.None,
-                                    buffNote.Priority);
+                                buffNote = new ValueNote(buffNote.Pitch, buffNote.Duration.AddDuration(temp.NoteList[0].Duration), buffNote.Triplet, Tie.None, buffNote.Priority);
                                 // завершен сбор лигованных нот, результат кладется в возвращаемый буфер.
-                                tempGathered.NoteList.Add(((ValueNote) buffNote.Clone()));
+                                tempGathered.NoteList.Add((ValueNote)buffNote.Clone());
                                 // очистка буффера залигованных нот
                                 buffNote = null;
                                 // очистка текущей позиции ноты, для перехода к следущей в очереди
@@ -195,11 +190,11 @@ namespace LibiadaMusic.BorodaDivider
                                     throw new Exception("LibiadaMusic: Tie is not valid!");
                                 }
                             }
-
                         }
                     }
                 }
             }
+
             return tempGathered;
         }
 
@@ -208,24 +203,24 @@ namespace LibiadaMusic.BorodaDivider
             var clone = new Fmotiv(Type, Id);
             foreach (ValueNote note in NoteList)
             {
-                clone.NoteList.Add((ValueNote) note.Clone());
+                clone.NoteList.Add((ValueNote)note.Clone());
             }
+
             return clone;
         }
 
-
-        //TODO: убрал метод override , соотвественно euals сейчас просто выполняет сравнение ссылок объектов переделать все частные
+        // TODO: убрал метод override , соотвественно euals сейчас просто выполняет сравнение ссылок объектов переделать все частные
         public override bool Equals(object obj)
         {
             // для сравнения паузы не нужны, поэтому сравнивае ф-мотивы без пауз (они игнорируются, но входят в состав ф-мотива)
             Fmotiv self = PauseTreatment(ParamPauseTreatment.Ignore).TieGathered();
-            Fmotiv other = ((Fmotiv) obj).PauseTreatment(ParamPauseTreatment.Ignore).TieGathered();
+            Fmotiv other = ((Fmotiv)obj).PauseTreatment(ParamPauseTreatment.Ignore).TieGathered();
             int modulation = 0;
             bool firstTime = true;
 
             if (self.NoteList.Count != other.NoteList.Count)
             {
-                //фмотивы - неодинаковы, так как входит разное количество нот
+                // фмотивы - неодинаковы, так как входит разное количество нот
                 return false;
             }
 
@@ -236,15 +231,17 @@ namespace LibiadaMusic.BorodaDivider
                 {
                     return false;
                 }
+
                 if (self.NoteList[i].Pitch == null || self.NoteList[i].Pitch.Count != other.NoteList[i].Pitch.Count)
                 {
-                    //если нет - фмотивы - неодинаковы
+                    // если нет - фмотивы - неодинаковы
                     return false;
                 }
+
                 // одинаковы ли длительности у нот?
                 if (!self.NoteList[i].Duration.Equals(other.NoteList[i].Duration))
                 {
-                    //если нет - фмотивы - неодинаковы
+                    // если нет - фмотивы - неодинаковы
                     return false;
                 }
 
@@ -253,7 +250,7 @@ namespace LibiadaMusic.BorodaDivider
                     if (firstTime)
                     {
                         // при первом сравнении вычисляем на сколько полутонов отличаются первые ноты,
-                        //последущие должны отличаться на столько же, чтобы фмотивы были равны
+                        // последущие должны отличаться на столько же, чтобы фмотивы были равны
                         modulation = self.NoteList[i].Pitch[j].MidiNumber - other.NoteList[i].Pitch[j].MidiNumber;
                         firstTime = false;
                     }
@@ -265,6 +262,7 @@ namespace LibiadaMusic.BorodaDivider
                     }
                 }
             }
+
             return true;
         }
 
@@ -272,29 +270,29 @@ namespace LibiadaMusic.BorodaDivider
         {
             // для сравнения паузы не нужны, поэтому сравнивае ф-мотивы без пауз (они игнорируются, но входят в состав ф-мотива)
             Fmotiv self = PauseTreatment(paramPauseTreatment).TieGathered();
-            Fmotiv other = ((Fmotiv) obj).PauseTreatment(paramPauseTreatment).TieGathered();
+            Fmotiv other = ((Fmotiv)obj).PauseTreatment(paramPauseTreatment).TieGathered();
             int modulation = 0;
             bool firstTime = true;
 
             if (self.NoteList.Count != other.NoteList.Count)
             {
-                //фмотивы - неодинаковы, так как входит разное количество нот
+                // фмотивы - неодинаковы, так как входит разное количество нот
                 return false;
             }
 
             for (int i = 0; i < self.NoteList.Count; i++)
             {
                 // одинаково ли количество высот у нот?
-                if (self.NoteList[i].Pitch.Count != (other.NoteList[i].Pitch.Count))
+                if (self.NoteList[i].Pitch.Count != other.NoteList[i].Pitch.Count)
                 {
-                    //если нет - фмотивы - неодинаковы
+                    // если нет - фмотивы - неодинаковы
                     return false;
                 }
 
                 // одинаковы ли длительности у нот?
                 if (!self.NoteList[i].Duration.Equals(other.NoteList[i].Duration))
                 {
-                    //если нет - фмотивы - неодинаковы
+                    // если нет - фмотивы - неодинаковы
                     return false;
                 }
 
@@ -319,7 +317,7 @@ namespace LibiadaMusic.BorodaDivider
                                 if (firstTime)
                                 {
                                     // при первом сравнении вычисляем на сколько полутонов отличаются первые ноты,
-                                    //последущие должны отличаться на столько же, чтобы фмотивы были равны
+                                    // последущие должны отличаться на столько же, чтобы фмотивы были равны
                                     modulation = self.NoteList[i].Pitch[j].MidiNumber -
                                                  other.NoteList[i].Pitch[j].MidiNumber;
                                     firstTime = false;
@@ -332,15 +330,19 @@ namespace LibiadaMusic.BorodaDivider
                                     return false;
                                 }
                             }
+
                             break;
 
                         case ParamEqualFM.NonSequent:
-                            //без секвентного переноса (NonSequent)
+                            // без секвентного переноса (NonSequent)
                             for (int j = 0; j < self.NoteList[i].Pitch.Count; j++)
+                            {
                                 if (self.NoteList[i].Pitch[j].MidiNumber != other.NoteList[i].Pitch[j].MidiNumber)
                                 {
                                     return false;
                                 }
+                            }
+
                             break;
 
                         default:

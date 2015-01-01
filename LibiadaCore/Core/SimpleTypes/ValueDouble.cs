@@ -68,7 +68,9 @@ namespace LibiadaCore.Core.SimpleTypes
         /// <returns>
         /// true if the specified <see cref="T:System.Object"/> is equal to the current <see cref="T:System.Object"/>; otherwise, false.
         /// </returns>
-        /// <param name="other">The <see cref="T:System.Object"/> to compare with the current <see cref="T:System.Object"/>. </param><filterpriority>2</filterpriority>
+        /// <param name="other">
+        /// The <see cref="T:System.Object"/> to compare with the current <see cref="T:System.Object"/>. 
+        /// </param>
         public override bool Equals(object other)
         {
             if (ReferenceEquals(this, other))

@@ -1,15 +1,16 @@
-﻿using System;
-using System.Xml;
-using System.IO;
-
-namespace LibiadaMusic.MusicXml
+﻿namespace LibiadaMusic.MusicXml
 {
+    using System;
+    using System.Xml;
+    using System.IO;
+
     public class MusicXmlReader
     {
         /// <summary>
         /// Текущий прочитанный MusicXML файл
         /// </summary>
         private XmlDocument curDoc;
+
         /// <summary>
         /// путь к прочитанному MusicXML файлу
         /// </summary>
@@ -33,7 +34,11 @@ namespace LibiadaMusic.MusicXml
         {
             get
             {
-                if (curDoc != null) return ((XmlDocument) curDoc.Clone());
+                if (curDoc != null)
+                {
+                    return (XmlDocument)curDoc.Clone();
+                }
+
                 throw new Exception("LibiadaMusic.XMLReader:you are trying to get empty XmlDocument!");
             }
         }
@@ -45,7 +50,7 @@ namespace LibiadaMusic.MusicXml
             var fs = new FileStream(path, FileMode.Open);
             xd.Load(fs);
             curDoc = null;
-            curDoc = (XmlDocument) xd.Clone();
+            curDoc = (XmlDocument)xd.Clone();
             fs.Close();
             FileName = Path.GetFileNameWithoutExtension(path); // сохраняем имя прочтенного файла
         }

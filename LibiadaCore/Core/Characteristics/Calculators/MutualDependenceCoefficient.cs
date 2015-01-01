@@ -31,7 +31,8 @@
             var involvedCoefficientCalculator = new InvolvedPartialDependenceCoefficient();
             double firstInvolvedCoefficient = involvedCoefficientCalculator.Calculate(manager, link);
             double secondInvolvedCoefficient = involvedCoefficientCalculator.Calculate(new BinaryIntervalsManager(manager.SecondChain, manager.FirstChain), link);
-            return firstInvolvedCoefficient < 0 || secondInvolvedCoefficient < 0 ? 0 : Math.Sqrt(firstInvolvedCoefficient * secondInvolvedCoefficient);
+            double multipliedInvolvedCoefficient = firstInvolvedCoefficient * secondInvolvedCoefficient;
+            return (firstInvolvedCoefficient < 0 || secondInvolvedCoefficient < 0) ? 0 : Math.Sqrt(multipliedInvolvedCoefficient);
         }
     }
 }

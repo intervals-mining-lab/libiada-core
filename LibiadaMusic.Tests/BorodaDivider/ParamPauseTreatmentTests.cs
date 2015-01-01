@@ -10,9 +10,9 @@
         [TestMethod]
         public void ParamPauseTest()
         {
-            Assert.AreEqual((int) ParamPauseTreatment.Ignore, 0);
-            Assert.AreEqual((int) ParamPauseTreatment.NoteTrace, 1);
-            Assert.AreEqual((int) ParamPauseTreatment.SilenceNote, 2);
+            Assert.AreEqual((int)ParamPauseTreatment.Ignore, 0);
+            Assert.AreEqual((int)ParamPauseTreatment.NoteTrace, 1);
+            Assert.AreEqual((int)ParamPauseTreatment.SilenceNote, 2);
         }
     }
 }

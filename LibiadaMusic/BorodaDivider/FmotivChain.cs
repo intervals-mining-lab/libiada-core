@@ -1,8 +1,8 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-
-namespace LibiadaMusic.BorodaDivider
+﻿namespace LibiadaMusic.BorodaDivider
 {
+    using System.Collections.Generic;
+    using System.Linq;
+
     using LibiadaCore.Core;
 
     /// <summary>
@@ -14,12 +14,14 @@ namespace LibiadaMusic.BorodaDivider
         /// список ф-мотив
         /// </summary>
         public List<Fmotiv> FmotivList { get; private set; }
+
         /// <summary>
-        /// название моно дорожки для которой выделяются ф-мотивы
+        /// Gets or sets name of mono track.
         /// </summary>
         public string Name { get; set; }
+
         /// <summary>
-        /// порядковый номер - идентификатор цепочки ф-мотивов
+        ///  Gets or sets fmotiv id.
         /// </summary>
         public int Id { get; set; }
 
@@ -33,8 +35,9 @@ namespace LibiadaMusic.BorodaDivider
             var clone = new FmotivChain();
             foreach (Fmotiv fmotiv in FmotivList)
             {
-                clone.FmotivList.Add((Fmotiv) fmotiv.Clone());
+                clone.FmotivList.Add((Fmotiv)fmotiv.Clone());
             }
+
             clone.Id = Id;
             clone.Name = Name;
 
@@ -43,11 +46,12 @@ namespace LibiadaMusic.BorodaDivider
 
         public override bool Equals(object obj)
         {
-            var other = (FmotivChain) obj;
+            var other = (FmotivChain)obj;
             if (Name != other.Name || Id != other.Id)
             {
                 return false;
             }
+
             return FmotivList.SequenceEqual(other.FmotivList);
         }
     }

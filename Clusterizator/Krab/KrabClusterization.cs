@@ -62,7 +62,9 @@ namespace Clusterizator.Krab
             counter.MoveNext();
             for (int i = 0; i < dataTable.Count; i++)
             {
-                elements.Add(new GraphElement(((DataObject)((DictionaryEntry)counter.Current).Value).Vault, ((DictionaryEntry)counter.Current).Key));
+                var current = (DictionaryEntry)counter.Current;
+
+                elements.Add(new GraphElement(((DataObject)current.Value).Vault, current.Key));
                 
                 // переход к следующему элементу
                 counter.MoveNext();

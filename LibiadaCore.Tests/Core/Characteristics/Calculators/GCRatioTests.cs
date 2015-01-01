@@ -19,7 +19,6 @@
             Initialization("GCRatio");
         }
 
-
         /// <summary>
         /// The calculation test.
         /// </summary>

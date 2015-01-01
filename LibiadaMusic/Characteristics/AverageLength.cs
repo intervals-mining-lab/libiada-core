@@ -1,8 +1,8 @@
-﻿using System;
-using LibiadaMusic.BorodaDivider;
-
-namespace LibiadaMusic.Characteristics
+﻿namespace LibiadaMusic.Characteristics
 {
+    using System;
+    using LibiadaMusic.BorodaDivider;
+
     /// <summary>
     /// средняя длина ф-мотива для моно цепи
     /// </summary>
@@ -15,16 +15,15 @@ namespace LibiadaMusic.Characteristics
                 throw new Exception("Unable to count average length with no elements in chain!");
             }
                 
-
             int noteCount = 0; // счетчик нот всей цепочки фмотивов
 
             foreach (Fmotiv fmotiv in chain.FmotivList)
             {
-                noteCount = noteCount + fmotiv.TieGathered().PauseTreatment((int) ParamPauseTreatment.Ignore).NoteList.Count;
+                noteCount = noteCount + fmotiv.TieGathered().PauseTreatment((int)ParamPauseTreatment.Ignore).NoteList.Count;
                     // заполняем счетчик складывая кол-во поф-мотивно
             }
 
-            return (double) noteCount/chain.FmotivList.Count;
+            return (double)noteCount / chain.FmotivList.Count;
         }
     }
 }

@@ -168,7 +168,7 @@ namespace BuildingsIterator
             IDictionaryEnumerator iterator = chains.GetEnumerator();
             while (iterator.MoveNext())
             {
-                result.Add((string) iterator.Key);
+                result.Add((string)iterator.Key);
             }
 
             return result;

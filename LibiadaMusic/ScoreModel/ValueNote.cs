@@ -1,14 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace LibiadaMusic.ScoreModel
+﻿namespace LibiadaMusic.ScoreModel
 {
+    using System;
+    using System.Collections.Generic;
+
     using LibiadaCore.Core;
 
     /// <summary>
     /// нота
     /// </summary>
-    public class ValueNote : IBaseObject 
+    public class ValueNote : IBaseObject
     {
         /// <summary>
         /// id ноты для составления строя нот
@@ -45,20 +45,21 @@ namespace LibiadaMusic.ScoreModel
             Pitch = new List<Pitch>(0);
             if (pitch != null) // если не пауза то записываем высоту и наличие лиги
             {
-                Pitch.Add((Pitch) pitch.Clone());
+                Pitch.Add((Pitch)pitch.Clone());
                 Tie = tie;
             }
             else
             {
                 Tie = Tie.None; // если нота - пауза, то не может быть лиги на паузу
             }
-            Duration = (Duration) duration.Clone();
+
+            Duration = (Duration)duration.Clone();
             Triplet = triplet;
             Priority = priority; // приоритет если указан
         }
-        
+
         public ValueNote(List<Pitch> pitchList, Duration duration, bool triplet, Tie tie, int priority = -1)
-            : this((Pitch) null, duration, triplet, tie, priority)
+            : this((Pitch)null, duration, triplet, tie, priority)
         {
             if (pitchList.Count > 0)
             {
@@ -69,7 +70,7 @@ namespace LibiadaMusic.ScoreModel
 
         public List<ValueNote> SplitNote(Duration duration)
         {
-            var clone = new List<ValueNote>(0) {(ValueNote) Clone(), (ValueNote) Clone()};
+            var clone = new List<ValueNote>(0) { (ValueNote)Clone(), (ValueNote)Clone() };
             clone[0].Duration = duration;
             clone[1].Duration = Duration.SubDuration(duration);
             return clone;
@@ -81,6 +82,7 @@ namespace LibiadaMusic.ScoreModel
             {
                 throw new ArgumentNullException("pitch");
             }
+
             Pitch.Add(pitch);
         }
 
@@ -103,11 +105,15 @@ namespace LibiadaMusic.ScoreModel
             {
                 return false;
             }
+
             for (int i = 0; i < pitchList.Count; i++)
+            {
                 if (!Pitch[i].Equals(pitchList[i]))
                 {
                     return false;
                 }
+            }
+
             return true;
         }
 
@@ -120,9 +126,9 @@ namespace LibiadaMusic.ScoreModel
         {
             if (Pitch == null || Pitch.Count == 0) // одна нота - пауза
             {
-                if (((ValueNote) obj).Pitch == null || ((ValueNote) obj).Pitch.Count == 0) // другая нота - пауза
+                if (((ValueNote)obj).Pitch == null || ((ValueNote)obj).Pitch.Count == 0) // другая нота - пауза
                 {
-                    if (Duration.Equals(((ValueNote) obj).Duration))
+                    if (Duration.Equals(((ValueNote)obj).Duration))
                     {
                         // одинаковые по длине паузы
                         return true;
@@ -133,17 +139,18 @@ namespace LibiadaMusic.ScoreModel
                 // пауза и нота не одинаковы
                 return false;
             }
-            if (((ValueNote) obj).Pitch == null || ((ValueNote) obj).Pitch.Count == 0)
+
+            if (((ValueNote)obj).Pitch == null || ((ValueNote)obj).Pitch.Count == 0)
             {
                 // нота и пауза не одно и то же
                 return false;
             }
 
-            if ((Duration.Equals(((ValueNote) obj).Duration)) && (PitchEquals(((ValueNote) obj).Pitch)) &&
-                (Tie == ((ValueNote) obj).Tie) && (Triplet == ((ValueNote) obj).Triplet))
+            if (Duration.Equals(((ValueNote)obj).Duration) && (PitchEquals(((ValueNote)obj).Pitch)) && (Tie == ((ValueNote)obj).Tie) && (Triplet == ((ValueNote)obj).Triplet))
             {
                 return true;
             }
+
             return false;
             // TODO: сделать сравнение не по всей ноте/объекту, а еще только по месту например, 
             // TODO: из сравнения исключить триплет, так может различать одинаковые по длительности ноты, но записанные по разному(!)

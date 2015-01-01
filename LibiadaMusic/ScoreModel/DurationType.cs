@@ -1,7 +1,7 @@
-﻿using System;
-
-namespace LibiadaMusic.ScoreModel
+﻿namespace LibiadaMusic.ScoreModel
 {
+    using System;
+
     public static class DurationType
     {
         public static int[] ParseType(string type)
@@ -49,6 +49,7 @@ namespace LibiadaMusic.ScoreModel
                 default:
                     throw new Exception("LibiadaMusic.ScoreModel: Error unknown duration type!");
             }
+
             return numDenom;
         }
     }

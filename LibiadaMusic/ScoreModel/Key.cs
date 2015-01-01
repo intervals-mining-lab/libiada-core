@@ -5,14 +5,15 @@
     /// <summary>
     /// знаки при ключе в такте (диез, бемоль)
     /// </summary>
-    public class Key : IBaseObject 
+    public class Key : IBaseObject
     {
         /// <summary>
         /// bemoles(-), diez(+) (ex. -6 : 6 bemoles);
         /// </summary>
         private int fifths;
+
         /// <summary>
-        /// major/minor
+        /// Major or minor.
         /// </summary>
         private string mode;
 
@@ -30,10 +31,11 @@
 
         public override bool Equals(object obj)
         {
-            if ((fifths == ((Key) obj).fifths) && (mode == ((Key) obj).mode))
+            if ((fifths == ((Key)obj).fifths) && (mode == ((Key)obj).mode))
             {
                 return true;
             }
+
             return false;
         }
     }

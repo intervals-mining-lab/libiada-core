@@ -15,7 +15,7 @@ namespace BuildingsIterator.Filters
         /// The building.
         /// </param>
         /// <returns>
-        /// true if 
+        /// true if
         /// </returns>
         public bool IsValid(string building)
         {

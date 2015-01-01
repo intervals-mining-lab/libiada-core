@@ -1,7 +1,7 @@
-﻿using System;
-
-namespace LibiadaMusic.ScoreModel
+﻿namespace LibiadaMusic.ScoreModel
 {
+    using System;
+
     using LibiadaCore.Core;
 
     /// <summary>
@@ -76,7 +76,8 @@ namespace LibiadaMusic.ScoreModel
                 default:
                     throw new Exception("Error Pitch contains non-recognized STEP letters!");
             }
-            return (12*(octave + 1)) + offset + alter;
+
+            return (12 * (octave + 1)) + offset + alter;
         }
 
         private void GetParamsByMidiNumber(int midiNumber)
@@ -95,10 +96,12 @@ namespace LibiadaMusic.ScoreModel
             {
                 return false;
             }
-            if (MidiNumber == ((Pitch) obj).MidiNumber)
+
+            if (MidiNumber == ((Pitch)obj).MidiNumber)
             {
                 return true;
             }
+
             return false;
         }
     }

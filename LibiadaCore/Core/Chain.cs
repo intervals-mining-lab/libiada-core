@@ -166,6 +166,7 @@ namespace LibiadaCore.Core
             {
                 relationIntervalsManagers = new BinaryIntervalsManager[alphabet.Cardinality - 1, alphabet.Cardinality - 1];
             }
+
             var intervalsManager = relationIntervalsManagers[first - 1, second - 1];
 
             if (intervalsManager == null)

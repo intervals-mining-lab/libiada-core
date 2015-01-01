@@ -56,7 +56,7 @@ namespace LibiadaCore.Core
 
         /// <summary>
         /// Initializes a new instance of the <see cref="BaseChain"/> class from string.
-        /// Each character becoms element.
+        /// Each character becomes element.
         /// </summary>
         /// <param name="source">
         /// The source string.
@@ -121,7 +121,6 @@ namespace LibiadaCore.Core
 
         /// <summary>
         /// Returns element by index.
-
         /// </summary>
         /// <param name="index">
         /// Index of element.
@@ -181,7 +180,8 @@ namespace LibiadaCore.Core
         public override void RemoveAt(int index)
         {
             building[index] = 0;
-            //TODO: Удалять элемент из алфавита если он последний
+
+            // TODO: Удалять элемент из алфавита если он последний
         }
 
         /// <summary>

@@ -1,8 +1,8 @@
-﻿using System;
-using LibiadaCore.Core.IntervalsManagers;
-
-namespace LibiadaCore.Core.Characteristics.Calculators
+﻿namespace LibiadaCore.Core.Characteristics.Calculators
 {
+    using System;
+    using LibiadaCore.Core.IntervalsManagers;
+
     /// <summary>
     /// The compliance degree.
     /// </summary>
@@ -34,7 +34,9 @@ namespace LibiadaCore.Core.Characteristics.Calculators
                 result *= LocalCompliance(manager.FilteredFirstIntervals[i], manager.FilteredSecondIntervals[i]);
             }
 
-            double occurrencesCoefficient = 2.0 * manager.FilteredFirstIntervals.Count / (manager.FirstOccurrencesCount + manager.SecondOccurrencesCount);
+            double firstAndSecondOccurrences = manager.FirstOccurrencesCount + manager.SecondOccurrencesCount;
+
+            double occurrencesCoefficient = 2.0 * manager.FilteredFirstIntervals.Count / firstAndSecondOccurrences;
 
             result = occurrencesCoefficient * Math.Pow(result, 1.0 / manager.FilteredFirstIntervals.Count);
             return result;

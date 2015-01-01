@@ -32,20 +32,20 @@ namespace LibiadaCore.Tests.Core.Characteristics.Calculators
             double interval3 = 3;
             double interval4 = 3;
 
-            double pIntervalsCount = 3;
-            double deltaG = Math.Pow(interval1 * interval2 * interval3, 1 / pIntervalsCount);
-            double pAverageRemoteness = Math.Log(deltaG, 2);
-            CongenericChainCharacteristicTest(0, Link.Start, pAverageRemoteness);
+            double intervalsCount = 3;
+            double deltaG = Math.Pow(interval1 * interval2 * interval3, 1 / intervalsCount);
+            double averageRemoteness = Math.Log(deltaG, 2);
+            CongenericChainCharacteristicTest(0, Link.Start, averageRemoteness);
 
-            pIntervalsCount = 3;
-            deltaG = Math.Pow(interval2 * interval3 * interval4, 1 / pIntervalsCount);
-            pAverageRemoteness = Math.Log(deltaG, 2);
-            CongenericChainCharacteristicTest(0, Link.End, pAverageRemoteness);
+            intervalsCount = 3;
+            deltaG = Math.Pow(interval2 * interval3 * interval4, 1 / intervalsCount);
+            averageRemoteness = Math.Log(deltaG, 2);
+            CongenericChainCharacteristicTest(0, Link.End, averageRemoteness);
 
-            pIntervalsCount = 4;
-            deltaG = Math.Pow(interval1 * interval2 * interval3 * interval4, 1 / pIntervalsCount);
-            pAverageRemoteness = Math.Log(deltaG, 2);
-            CongenericChainCharacteristicTest(0, Link.Both, pAverageRemoteness);
+            intervalsCount = 4;
+            deltaG = Math.Pow(interval1 * interval2 * interval3 * interval4, 1 / intervalsCount);
+            averageRemoteness = Math.Log(deltaG, 2);
+            CongenericChainCharacteristicTest(0, Link.Both, averageRemoteness);
         }
     }
 }

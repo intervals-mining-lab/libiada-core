@@ -10,7 +10,7 @@
     public class CongenericScoreTrackTests
     {
         [TestMethod]
-        public void ValueNoteOrderFirstTest() 
+        public void ValueNoteOrderFirstTest()
         {
             // создание и заполнения списка(ов) нот для такта(ов) монотрека
             var notes = new List<ValueNote>
@@ -37,19 +37,18 @@
                 new ValueNote(new Pitch(3, 'D', 0), new Duration(1, 4, false, 128), false, Tie.None, 2),
                 new ValueNote(new Pitch(3, 'A', 2), new Duration(1, 16, false, 128), false, Tie.None, 3),
                 new ValueNote(new Pitch(3, 'C', 1), new Duration(1, 4, false, 128), false, Tie.None, 1),
-                new ValueNote((Pitch) null, new Duration(1, 4, false, 128), false, Tie.None, 1),
-                new ValueNote((Pitch) null, new Duration(1, 4, false, 128), false, Tie.None, 1),
-                new ValueNote((Pitch) null, new Duration(1, 16, false, 128), false, Tie.None, 1),
-                new ValueNote((Pitch) null, new Duration(1, 16, false, 128), false, Tie.None, 1)
+                new ValueNote((Pitch)null, new Duration(1, 4, false, 128), false, Tie.None, 1),
+                new ValueNote((Pitch)null, new Duration(1, 4, false, 128), false, Tie.None, 1),
+                new ValueNote((Pitch)null, new Duration(1, 16, false, 128), false, Tie.None, 1),
+                new ValueNote((Pitch)null, new Duration(1, 16, false, 128), false, Tie.None, 1)
             };
-
 
             var attr = new Attributes(new Size(4, 4), new Key(5));
 
             var m1 = new Measure(notes, attr);
             var m2 = new Measure(notes2, attr);
 
-            var mlist = new List<Measure> {m1, m2};
+            var mlist = new List<Measure> { m1, m2 };
 
             var uni = new CongenericScoreTrack("a1", mlist);
 
@@ -113,19 +112,18 @@
                 new ValueNote(new Pitch(3, 'D', 0), new Duration(1, 4, false, 128), false, Tie.None, 2),
                 new ValueNote(new Pitch(3, 'A', 2), new Duration(1, 16, false, 128), false, Tie.None, 3),
                 new ValueNote(new Pitch(3, 'C', 1), new Duration(1, 4, false, 128), false, Tie.None, 1),
-                new ValueNote((Pitch) null, new Duration(1, 4, false, 128), false, Tie.None, 1),
-                new ValueNote((Pitch) null, new Duration(1, 4, false, 128), false, Tie.None, 1),
-                new ValueNote((Pitch) null, new Duration(1, 16, false, 128), false, Tie.None, 1),
-                new ValueNote((Pitch) null, new Duration(1, 16, false, 128), false, Tie.None, 1)
+                new ValueNote((Pitch)null, new Duration(1, 4, false, 128), false, Tie.None, 1),
+                new ValueNote((Pitch)null, new Duration(1, 4, false, 128), false, Tie.None, 1),
+                new ValueNote((Pitch)null, new Duration(1, 16, false, 128), false, Tie.None, 1),
+                new ValueNote((Pitch)null, new Duration(1, 16, false, 128), false, Tie.None, 1)
             };
-
 
             var attr = new Attributes(new Size(4, 4), new Key(5));
 
             var m1 = new Measure(notes, attr);
             var m2 = new Measure(notes2, attr);
 
-            var mlist = new List<Measure> {m1, m2};
+            var mlist = new List<Measure> { m1, m2 };
 
             var uni = new CongenericScoreTrack("a1", mlist);
 
@@ -200,14 +198,14 @@
 
             var notes5 = new List<ValueNote>
             {
-                new ValueNote((Pitch) null, new Duration(1, 4, false, 128), false, Tie.None, 1),
-                new ValueNote((Pitch) null, new Duration(1, 4, false, 128), false, Tie.None, 1)
+                new ValueNote((Pitch)null, new Duration(1, 4, false, 128), false, Tie.None, 1),
+                new ValueNote((Pitch)null, new Duration(1, 4, false, 128), false, Tie.None, 1)
             };
 
             var notes6 = new List<ValueNote>
             {
-                new ValueNote((Pitch) null, new Duration(1, 16, false, 128), false, Tie.None, 1),
-                new ValueNote((Pitch) null, new Duration(1, 16, false, 128), false, Tie.None, 1)
+                new ValueNote((Pitch)null, new Duration(1, 16, false, 128), false, Tie.None, 1),
+                new ValueNote((Pitch)null, new Duration(1, 16, false, 128), false, Tie.None, 1)
             };
 
 
@@ -220,11 +218,10 @@
             var m5 = new Measure(notes5, attr);
             var m6 = new Measure(notes6, attr);
 
-            var mlist = new List<Measure> {m1, m2, m3, m4, m5, m5, m2, m3, m6};
+            var mlist = new List<Measure> { m1, m2, m3, m4, m5, m5, m2, m3, m6 };
 
             var uni = new CongenericScoreTrack("a1", mlist);
 
-            
             Assert.AreEqual(uni.MeasureOrder()[0].Id, 0);
             Assert.AreEqual(uni.MeasureOrder()[1].Id, 1);
             Assert.AreEqual(uni.MeasureOrder()[2].Id, 0);

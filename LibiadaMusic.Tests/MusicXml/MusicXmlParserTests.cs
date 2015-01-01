@@ -18,9 +18,8 @@
 
             Parser.Execute(xmlreader.MusicXmlDocument, xmlreader.FileName);
 
-
             // Создание атрибутов для такта
-            var attributes1 = new Attributes(new Size(7, 8, 1024), new Key(0,"major"));
+            var attributes1 = new Attributes(new Size(7, 8, 1024), new Key(0, "major"));
             // Создание списков нот для каждого из 4 тактов
             var notes1 = new List<ValueNote>
             {
@@ -49,7 +48,7 @@
                 new ValueNote(new Pitch(3, 'A', 0), new Duration(1, 16, false, 256), false, Tie.None),
                 new ValueNote(new Pitch(4, 'D', 0), new Duration(1, 8, true, 768), false, Tie.None),
                 new ValueNote(new Pitch(4, 'C', 0), new Duration(1, 8, true, 768), false, Tie.None),
-                new ValueNote((Pitch) null, new Duration(1, 8, false, 512), false, Tie.None)
+                new ValueNote((Pitch)null, new Duration(1, 8, false, 512), false, Tie.None)
             };
             var notes4 = new List<ValueNote>
             {
@@ -68,20 +67,20 @@
                 new ValueNote(new Pitch(3, 'A', 0), new Duration(1, 16, false, 256), false, Tie.None),
                 new ValueNote(new Pitch(4, 'C', 0), new Duration(1, 16, false, 256), false, Tie.None)
             };
-            //создание списка тактов для монофонического трека p0
+            // создание списка тактов для монофонического трека p0
             var measures1 = new List<Measure>
             {
-                new Measure(notes1, (Attributes) attributes1.Clone()),
-                new Measure(notes2, (Attributes) attributes1.Clone()),
-                new Measure(notes3, (Attributes) attributes1.Clone()),
-                new Measure(notes4, (Attributes) attributes1.Clone())
+                new Measure(notes1, (Attributes)attributes1.Clone()),
+                new Measure(notes2, (Attributes)attributes1.Clone()),
+                new Measure(notes3, (Attributes)attributes1.Clone()),
+                new Measure(notes4, (Attributes)attributes1.Clone())
             };
-            //создание списка монофонических треков для полного музыкального трека
-            var utracks = new List<CongenericScoreTrack> {new CongenericScoreTrack("p0", measures1)};
-            //создание полной модели музыкального трека/текста, с присвоением имени файла
-            var Scoremodel = new ScoreTrack("LibiadaMusicexample7Liga",utracks);
+            // создание списка монофонических треков для полного музыкального трека
+            var utracks = new List<CongenericScoreTrack> { new CongenericScoreTrack("p0", measures1) };
+            // создание полной модели музыкального трека/текста, с присвоением имени файла
+            var Scoremodel = new ScoreTrack("LibiadaMusicexample7Liga", utracks);
 
-            Assert.AreEqual(xmlreader.FileName , Parser.ScoreModel.Name);
+            Assert.AreEqual(xmlreader.FileName, Parser.ScoreModel.Name);
             Assert.AreEqual(Scoremodel.CongenericScoreTracks[0].MeasureList[0].Attributes, Parser.ScoreModel.CongenericScoreTracks[0].MeasureList[0].Attributes);
             Assert.AreEqual(Scoremodel.CongenericScoreTracks[0].MeasureList[0].NoteList[0], Parser.ScoreModel.CongenericScoreTracks[0].MeasureList[0].NoteList[0]);
             Assert.AreEqual(Scoremodel.CongenericScoreTracks[0].MeasureList[0], Parser.ScoreModel.CongenericScoreTracks[0].MeasureList[0]);
@@ -166,6 +165,5 @@
         public void XmlParserTripletTest()
         {
         }
-
     }
 }

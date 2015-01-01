@@ -12,11 +12,17 @@
     public class StartIterator : BaseIterator
     {
         /// <summary>
-        /// Initializes a main options of an iterator.
+        /// Initializes a new instance of the <see cref="StartIterator" /> class.
         /// </summary>
-        /// <param name="chain">An iterable sequence</param>
-        /// <param name="windowLength">Length of a word (window of cutting)</param>
-        /// <param name="step">The number of elements through which the pointer will jump at the next iteration</param>
+        /// <param name="chain">
+        /// An iterable sequence
+        /// </param>
+        /// <param name="windowLength">
+        /// Length of a word (window of cutting)
+        /// </param>
+        /// <param name="step">
+        /// The number of elements through which the pointer will jump at the next iteration
+        /// </param>
         public StartIterator(ComplexChain chain, int windowLength, int step)
             : base(chain, windowLength, step)
         {

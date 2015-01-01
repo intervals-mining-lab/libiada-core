@@ -32,7 +32,9 @@ namespace BuildingsIterator
         /// <summary>
         /// Конструктор
         /// </summary>
-        /// <param name="calc">Калюкулятор характеристики цепи</param>
+        /// <param name="calc">
+        /// Калькулятор характеристики цепи
+        /// </param>
         public LinkedCharacteristic(IFullCalculator calc)
         {
             this.calc = calc;

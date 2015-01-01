@@ -10,8 +10,8 @@
         [TestMethod]
         public void ParamEqualTest()
         {
-            Assert.AreEqual((int) ParamEqualFM.Sequent, 0);
-            Assert.AreEqual((int) ParamEqualFM.NonSequent, 1);
+            Assert.AreEqual((int)ParamEqualFM.Sequent, 0);
+            Assert.AreEqual((int)ParamEqualFM.NonSequent, 1);
         }
     }
 }

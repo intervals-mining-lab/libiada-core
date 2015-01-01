@@ -155,7 +155,6 @@ namespace LibiadaCore.Tests.Core
             chain.Set(messageA, 8);
             chain.Set(messageC, 9);
 
-
             Assert.AreEqual(1, chain.GetRelationIntervalsManager(messageA, messageC).GetBinaryInterval(1));
             Assert.AreEqual(1, chain.GetRelationIntervalsManager(messageA, messageC).GetBinaryInterval(2));
             Assert.AreEqual(-1, chain.GetRelationIntervalsManager(messageA, messageC).GetBinaryInterval(3));

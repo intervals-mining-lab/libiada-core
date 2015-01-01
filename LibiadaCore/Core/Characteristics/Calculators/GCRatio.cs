@@ -1,14 +1,13 @@
-﻿using LibiadaCore.Misc.DataTransformers;
-
-namespace LibiadaCore.Core.Characteristics.Calculators
+﻿namespace LibiadaCore.Core.Characteristics.Calculators
 {
+    using LibiadaCore.Misc.DataTransformers;
+
     using SimpleTypes;
 
     public class GCRatio : IFullCalculator
     {
         private readonly ICalculator counter = new ElementsCount();
         
-
         /// <summary>
         /// Calculation method.
         /// </summary>
@@ -29,7 +28,7 @@ namespace LibiadaCore.Core.Characteristics.Calculators
             var c = counter.Calculate(chain.CongenericChain(new ValueString("C")), link);
             var l = counter.Calculate(chain, link);
 
-            var result = (g+c)/l * 100;
+            var result = 100 * (g + c) / l;
 
             return result;
         }

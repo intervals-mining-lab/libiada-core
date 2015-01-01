@@ -17,7 +17,7 @@ namespace MarkovChains.MarkovChain
     public class MarkovChainNotCongenericStatic : MarkovChainBase
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="MarkovChainNotCongenericStatic{ChainGenerated,ChainTaught}"/> class.
+        /// Initializes a new instance of the <see cref="MarkovChainNotCongenericStatic"/> class.
         /// </summary>
         /// <param name="rang">
         /// Порядок марковской цепи

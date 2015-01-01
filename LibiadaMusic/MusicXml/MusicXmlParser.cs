@@ -1,10 +1,10 @@
-﻿using System;
-using System.Xml;
-using System.Collections.Generic;
-using LibiadaMusic.ScoreModel;
-
-namespace LibiadaMusic.MusicXml
+﻿namespace LibiadaMusic.MusicXml
 {
+    using System;
+    using System.Xml;
+    using System.Collections.Generic;
+    using LibiadaMusic.ScoreModel;
+
     public class MusicXmlParser
     {
         private Attributes currentAttributes;
@@ -18,7 +18,7 @@ namespace LibiadaMusic.MusicXml
         {
             // TODO: проверка схемы Xml на соотвествие схеме MusicXml
             // создаем объект модели музыкального текста из Xml документа
-            ScoreModel = new ScoreTrack(filename, ParseCongenericScoreTracks((XmlDocument) xmlDocument.Clone()));
+            ScoreModel = new ScoreTrack(filename, ParseCongenericScoreTracks((XmlDocument)xmlDocument.Clone()));
         }
 
         private List<CongenericScoreTrack> ParseCongenericScoreTracks(XmlDocument scoreNode)
@@ -27,13 +27,12 @@ namespace LibiadaMusic.MusicXml
 
             XmlNodeList congenericList = scoreNode.GetElementsByTagName("part");
             // Создаем и заполняем лист по тегу "part"  
-
             for (int i = 0; i < congenericList.Count; i++)
             {
-                //TODO: вероятно нужна проверка на то есть ли такой атрибут - имя моно трека, если нет то задать счетчиком i
-                temp.Add(new CongenericScoreTrack(congenericList[i].Attributes["id"].Value,
-                    ParseMeasures(congenericList[i].Clone())));
+                // TODO: вероятно нужна проверка на то есть ли такой атрибут - имя моно трека, если нет то задать счетчиком i
+                temp.Add(new CongenericScoreTrack(congenericList[i].Attributes["id"].Value, ParseMeasures(congenericList[i].Clone())));
             }
+
             return temp;
         }
 
@@ -45,6 +44,7 @@ namespace LibiadaMusic.MusicXml
             {
                 measures.Add(new Measure(ParseNotes(measureList[i].Clone()), ParseAttributes(measureList[i].Clone())));
             }
+
             return measures;
         }
 
@@ -54,14 +54,15 @@ namespace LibiadaMusic.MusicXml
             {
                 if (measureChild.Name == "attributes")
                 {
-                    Key key = parseKey(measureChild.Clone()) ?? (Key) currentAttributes.Key.Clone();
+                    Key key = ParseKey(measureChild.Clone()) ?? (Key)currentAttributes.Key.Clone();
 
-                    Size size = ParseSize(measureChild.Clone()) ?? (Size) currentAttributes.Size.Clone();
+                    Size size = ParseSize(measureChild.Clone()) ?? (Size)currentAttributes.Size.Clone();
 
                     currentAttributes = new Attributes(size, key);
                     return currentAttributes;
                 }
             }
+
             return currentAttributes;
         }
 
@@ -94,18 +95,21 @@ namespace LibiadaMusic.MusicXml
                                     break;
                             }
                         }
+
                         if (needTicks)
                         {
                             return new Size(beats, beatBase, ticks);
                         }
+
                         return new Size(beats, beatBase, currentAttributes.Size.TicksPerBeat);
                     }
                 }
             }
+
             return null;
         }
 
-        private Key parseKey(XmlNode attributeNode)
+        private Key ParseKey(XmlNode attributeNode)
         {
             foreach (XmlNode attributeChild in attributeNode.ChildNodes)
             {
@@ -113,7 +117,7 @@ namespace LibiadaMusic.MusicXml
                 if (attributeChild.Name == "key")
                 {
                     int fifths = 0;
-                    string mode = String.Empty;
+                    string mode = string.Empty;
                     bool needMode = false;
 
                     foreach (XmlNode keyChild in attributeChild)
@@ -122,19 +126,23 @@ namespace LibiadaMusic.MusicXml
                         {
                             fifths = Convert.ToInt16(keyChild.InnerText);
                         }
+
                         if (keyChild.Name == "mode")
                         {
                             mode = keyChild.InnerText;
                             needMode = true;
                         }
                     }
+
                     if (needMode)
                     {
                         return new Key(fifths, mode);
                     }
+
                     return new Key(fifths);
                 }
             }
+
             return null;
         }
 
@@ -149,22 +157,24 @@ namespace LibiadaMusic.MusicXml
                     foreach (XmlNode chordChild in measureChild.Clone().ChildNodes)
                     {
                         if (chordChild.Name == "chord")
-                            //если найден "аккорд", то добавим текущую ноту к предыдущей уже мультиноте
                         {
-                            notes[notes.Count - 1].AddPitch(parsePitch(measureChild.Clone()));
-                            if (notes[notes.Count - 1].Tie != parseTie(measureChild.Clone()))
+                            // если найден "аккорд", то добавим текущую ноту к предыдущей уже мультиноте
+                            notes[notes.Count - 1].AddPitch(ParsePitch(measureChild.Clone()));
+                            if (notes[notes.Count - 1].Tie != ParseTie(measureChild.Clone()))
+                            {
                                 notes[notes.Count - 1].Tie = Tie.None;
+                            }
 
                             break;
                         }
-                        notes.Add(new ValueNote(parsePitch(measureChild.Clone()),
-                            parseDuration(measureChild.Clone()),
-                            parseTriplet(measureChild.Clone()), parseTie(measureChild.Clone())));
+
+                        notes.Add(new ValueNote(ParsePitch(measureChild.Clone()), ParseDuration(measureChild.Clone()), ParseTriplet(measureChild.Clone()), ParseTie(measureChild.Clone())));
                         hasNotes = true;
                         break;
                     }
                 }
             }
+
             if (hasNotes)
             {
                 return notes;
@@ -175,9 +185,9 @@ namespace LibiadaMusic.MusicXml
             }
         }
 
-        private Pitch parsePitch(XmlNode noteNode)
+        private Pitch ParsePitch(XmlNode noteNode)
         {
-            string childName = String.Empty;
+            string childName = string.Empty;
             foreach (XmlNode noteChild in noteNode.ChildNodes)
             {
                 childName = noteChild.Name;
@@ -205,6 +215,7 @@ namespace LibiadaMusic.MusicXml
                                 break;
                         }
                     }
+
                     if (hasOctave && hasStep)
                     {
                         return new Pitch(octave, step, alter);
@@ -212,15 +223,17 @@ namespace LibiadaMusic.MusicXml
 
                     throw new Exception("LibiadaMusic.XmlParser: error while Note parsing: pitch structure");
                 }
+
                 if (noteChild.Name == "rest" || noteChild.Name == "notations")
                 {
                     return null;
                 }
             }
+
             throw new Exception("LibiadaMusic.XmlParser: error while Note parsing: no pitch or rest: " + childName);
         }
 
-        private Tie parseTie(XmlNode noteNode)
+        private Tie ParseTie(XmlNode noteNode)
         {
             bool start = false; // флаг наличия начала лиги
             bool stop = false; // флаг наличия конца лиги
@@ -241,16 +254,19 @@ namespace LibiadaMusic.MusicXml
                     }
                 }
             }
+
             if (start && stop)
             {
                 // случай когда лига приходит в эту ноту, и с этой же ноты начинается следущая лига
                 return Tie.StartStop;
             }
+
             if (start)
             {
                 // случай когда лига начинается с этой ноты
                 return Tie.Start;
             }
+
             if (stop)
             {
                 // случай когда лига заканчивается на этой ноте
@@ -261,7 +277,7 @@ namespace LibiadaMusic.MusicXml
             return Tie.None;
         }
 
-        private bool parseTriplet(XmlNode noteNode)
+        private bool ParseTriplet(XmlNode noteNode)
         {
             foreach (XmlNode noteChild in noteNode.ChildNodes)
             {
@@ -273,9 +289,9 @@ namespace LibiadaMusic.MusicXml
             return false;
         }
 
-        private Duration parseDuration(XmlNode noteNode)
+        private Duration ParseDuration(XmlNode noteNode)
         {
-            string type = String.Empty;
+            string type = string.Empty;
             int duration = 0;
             bool dot = false;
             bool hasTimeModification = false;
@@ -300,11 +316,13 @@ namespace LibiadaMusic.MusicXml
                             {
                                 actualNotes = Convert.ToInt16(timeModification.InnerText);
                             }
+
                             if (timeModification.Name == "normal-notes")
                             {
                                 normalNotes = Convert.ToInt16(timeModification.InnerText);
                             }
                         }
+
                         break;
                     case "dot":
                         dot = true;
@@ -314,9 +332,10 @@ namespace LibiadaMusic.MusicXml
 
             if (hasTimeModification)
             {
-                return new Duration(DurationType.ParseType(type)[0], DurationType.ParseType(type)[1], normalNotes,
-                    actualNotes, dot, duration);
+                var parsedType = DurationType.ParseType(type);
+                return new Duration(parsedType[0], parsedType[1], normalNotes, actualNotes, dot, duration);
             }
+
             return new Duration(DurationType.ParseType(type)[0], DurationType.ParseType(type)[1], dot, duration);
         }
     }

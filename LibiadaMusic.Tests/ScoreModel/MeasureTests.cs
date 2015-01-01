@@ -10,13 +10,13 @@
     public class MeasureTests
     {
         [TestMethod]
-        public void MeasureFirstTest() 
+        public void MeasureFirstTest()
         {
             var notes = new List<ValueNote>();
             var notes2 = new List<ValueNote>();
             var attrs = new Attributes(new Size(4, 4, 512), new Key(5));
 
-            notes.Add(new ValueNote(new Pitch(3, 'A', 0), new Duration(1, 4, false,128),false,Tie.None));
+            notes.Add(new ValueNote(new Pitch(3, 'A', 0), new Duration(1, 4, false, 128), false, Tie.None));
             notes.Add(new ValueNote(new Pitch(3, 'B', 0), new Duration(1, 4, false, 128), false, Tie.None));
             notes.Add(new ValueNote(new Pitch(3, 'C', 0), new Duration(1, 16, false, 32), false, Tie.None));
 
@@ -52,6 +52,6 @@
 
             Assert.IsFalse(m1.Equals(m2));
             Assert.IsFalse(m2.Equals(m3));
-        } 
+        }
     }
 }

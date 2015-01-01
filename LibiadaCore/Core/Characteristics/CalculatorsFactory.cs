@@ -65,7 +65,6 @@ namespace LibiadaCore.Core.Characteristics
                                                                 typeof(ComplianceDegree)
                                                             };
 
-
         /// <summary>
         /// Create full calculator method.
         /// </summary>

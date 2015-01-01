@@ -1,7 +1,7 @@
-﻿using System.Collections.Generic;
-
-namespace LibiadaMusic.ScoreModel
+﻿namespace LibiadaMusic.ScoreModel
 {
+    using System.Collections.Generic;
+
     using LibiadaCore.Core;
 
     /// <summary>
@@ -28,13 +28,13 @@ namespace LibiadaMusic.ScoreModel
         {
             if (attributes != null)
             {
-                Attributes = (Attributes) attributes.Clone();
+                Attributes = (Attributes)attributes.Clone();
             }
 
             NoteList = new List<ValueNote>();
             for (int i = 0; i < noteList.Count; i++) // создаем список нот, по средствам клонирования каждой ноты.
             {
-                NoteList.Add((ValueNote) noteList[i].Clone());
+                NoteList.Add((ValueNote)noteList[i].Clone());
             }
         }
 
@@ -55,7 +55,6 @@ namespace LibiadaMusic.ScoreModel
                     if (NoteList[k].Duration.Value < measure.NoteList[k].Duration.Value)
                     {
                         // нота из склеенного массива короче, значит нужно вторую разделить на две и склеить
-                        
                         tempNoteList.AddRange(measure.NoteList[k].SplitNote(NoteList[k].Duration));
                         measure.NoteList.RemoveAt(k);
                         measure.NoteList.InsertRange(k, tempNoteList);
@@ -70,6 +69,7 @@ namespace LibiadaMusic.ScoreModel
                         NoteList[k].AddPitch(measure.NoteList[k].Pitch);
                     }
                 }
+
                 k++;
             }
             // теоретически на этом моменте у нас все ноты должны быть обработаны
@@ -84,21 +84,24 @@ namespace LibiadaMusic.ScoreModel
 
         public override bool Equals(object obj)
         {
-            if (NoteList.Count != ((Measure) obj).NoteList.Count)
+            if (NoteList.Count != ((Measure)obj).NoteList.Count)
             {
                 return false;
             }
-            if (!Attributes.Equals(((Measure) obj).Attributes))
+
+            if (!Attributes.Equals(((Measure)obj).Attributes))
             {
                 return false;
             }
+
             for (int i = 0; i < NoteList.Count; i++)
             {
-                if (!NoteList[i].Equals(((Measure) obj).NoteList[i]))
+                if (!NoteList[i].Equals(((Measure)obj).NoteList[i]))
                 {
                     return false;
                 }
             }
+
             return true;
             // TODO: сделать сравнение не по всей ноте/объекту, а еще только по месту например, 
             // TODO: из сравнения исключить триплет, так может различать одинаковые по длительности ноты, но записанные по разному(!)

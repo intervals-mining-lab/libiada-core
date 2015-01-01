@@ -1,8 +1,8 @@
-﻿using System;
-using System.Collections;
-
-namespace LibiadaMusic.Analysis
+﻿namespace LibiadaMusic.Analysis
 {
+    using System;
+    using System.Collections;
+
     public class FMotiv
     {
         public FMotiv(int id, string st, int occur, double freq)
@@ -18,30 +18,37 @@ namespace LibiadaMusic.Analysis
         /// ID
         /// </summary>
         public int Id { get; private set; }
+
         /// <summary>
         /// Имя
         /// </summary>
         public string Name { get; private set; }
+
         /// <summary>
         /// Ранг
         /// </summary>
         public int Rank { get; set; }
+
         /// <summary>
         /// Сколько раз встретилось
         /// </summary>
         public double Occurrence { get; private set; }
+
         /// <summary>
         /// Частота
         /// </summary>
         public double Frequency { get; private set; }
+
         /// <summary>
         /// Удаленность
         /// </summary>
         public double Remoteness { get; set; }
+
         /// <summary>
         /// Глубина
         /// </summary>
         public double Depth { private get; set; }
+
         /// <summary>
         /// Условные вероятности
         /// </summary>

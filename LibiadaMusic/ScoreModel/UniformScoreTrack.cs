@@ -1,7 +1,7 @@
-﻿using System.Collections.Generic;
-
-namespace LibiadaMusic.ScoreModel
+﻿namespace LibiadaMusic.ScoreModel
 {
+    using System.Collections.Generic;
+
     using LibiadaCore.Core;
 
     public class CongenericScoreTrack : IBaseObject // монофонический (моно) трек
@@ -14,10 +14,11 @@ namespace LibiadaMusic.ScoreModel
         {
             MeasureList = new List<Measure>();
             for (int i = 0; i < measureList.Count; i++)
-                // создаем список тактов, по средствам клонирования каждого такта.
             {
-                MeasureList.Add((Measure) measureList[i].Clone());
+                // создаем список тактов, по средствам клонирования каждого такта.
+                MeasureList.Add((Measure)measureList[i].Clone());
             }
+
             Name = name;
         }
 
@@ -25,12 +26,12 @@ namespace LibiadaMusic.ScoreModel
         public List<ValueNote> NoteOrder()
         {
             var temp = new List<ValueNote>();
-            //запись в одну цепочку
+            // запись в одну цепочку
             foreach (Measure measure in MeasureList)
             {
                 foreach (ValueNote note in measure.NoteList)
                 {
-                    temp.Add((ValueNote) note.Clone());
+                    temp.Add((ValueNote)note.Clone());
                 }
             }
 
@@ -53,7 +54,7 @@ namespace LibiadaMusic.ScoreModel
                         identified = true;
                     }
                 }
-                //если ранее не встречалась эта нота, то назначим ей новый id
+                // если ранее не встречалась эта нота, то назначим ей новый id
                 if (!identified)
                 {
                     temp[i].Id = n; // назанчим еще не использованный по возрастанию id
@@ -62,7 +63,6 @@ namespace LibiadaMusic.ScoreModel
             }
 
             return temp;
-
         }
 
         // возвращает строй нот (в виде цепи натуральных чисел начиная с 0)
@@ -75,6 +75,7 @@ namespace LibiadaMusic.ScoreModel
             {
                 idTemp[i] = temp[i].Id;
             }
+
             return idTemp;
         }
 
@@ -82,10 +83,10 @@ namespace LibiadaMusic.ScoreModel
         public List<Measure> MeasureOrder()
         {
             var temp = new List<Measure>();
-            //запись в одну цепочку
+            // запись в одну цепочку
             foreach (Measure measure in MeasureList)
             {
-                temp.Add((Measure) measure.Clone());
+                temp.Add((Measure)measure.Clone());
             }
 
             // идентификация
@@ -107,13 +108,14 @@ namespace LibiadaMusic.ScoreModel
                         identified = true;
                     }
                 }
-                //если ранее не встречался этот такт, то назначим ему новый id
+                // если ранее не встречался этот такт, то назначим ему новый id
                 if (!identified)
                 {
                     temp[i].Id = n; // назанчим еще не использованный по возрастанию id
                     n = n + 1; // увеличиваем счетчик уникальных
                 }
             }
+
             return temp;
         }
 
@@ -127,6 +129,7 @@ namespace LibiadaMusic.ScoreModel
             {
                 idTemp[i] = temp[i].Id;
             }
+
             return idTemp;
         }
 
@@ -137,19 +140,21 @@ namespace LibiadaMusic.ScoreModel
 
         public override bool Equals(object obj)
         {
-            bool equalMeasureList = MeasureList.Count == ((CongenericScoreTrack) obj).MeasureList.Count;
+            bool equalMeasureList = MeasureList.Count == ((CongenericScoreTrack)obj).MeasureList.Count;
 
             for (int i = 0; i < MeasureList.Count; i++)
             {
-                if (!MeasureList[i].Equals(((CongenericScoreTrack) obj).MeasureList[i]))
+                if (!MeasureList[i].Equals(((CongenericScoreTrack)obj).MeasureList[i]))
                 {
                     equalMeasureList = false;
                 }
             }
+
             if (equalMeasureList)
             {
                 return true;
             }
+
             return false;
         }
     }

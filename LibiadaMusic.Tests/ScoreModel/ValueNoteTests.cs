@@ -8,9 +8,9 @@
     public class ValueNoteTests
     {
         [TestMethod]
-        public void ValueNoteEqualsFirstTest() 
+        public void ValueNoteEqualsFirstTest()
         {
-            var note1 = new ValueNote(new Pitch(1,'A',0),new Duration(1,4,false,480),false,Tie.None);
+            var note1 = new ValueNote(new Pitch(1, 'A', 0), new Duration(1, 4, false, 480), false, Tie.None);
 
             var note2 = new ValueNote(new Pitch(1, 'A', 0), new Duration(1, 4, false, 480), false, Tie.Start);
 
@@ -44,7 +44,7 @@
         {
             var note1 = new ValueNote(new Pitch(1, 'A', 0), new Duration(1, 4, false, 480), false, Tie.Stop);
 
-            var note2 =  (ValueNote)note1.Clone();
+            var note2 = (ValueNote)note1.Clone();
 
             Assert.IsTrue(note1.Equals(note2));
 

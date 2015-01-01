@@ -1,12 +1,12 @@
-﻿using System.Linq;
-
-namespace LibiadaMusic.BorodaDivider
+﻿namespace LibiadaMusic.BorodaDivider
 {
+    using System.Linq;
+
     public class FmotivIdentifier
     {
         public FmotivChain GetIdentification(FmotivChain fmotivChain, ParamPauseTreatment paramPauseTreatment, ParamEqualFM paramEqualFM)
         {
-            var chain = (FmotivChain) fmotivChain.Clone();
+            var chain = (FmotivChain)fmotivChain.Clone();
 
             for (int i = 0; i < chain.FmotivList.Count; i++)
             {
@@ -36,8 +36,8 @@ namespace LibiadaMusic.BorodaDivider
                     i--;
                 }
             }
+
             return chain;
         }
-
     }
 }

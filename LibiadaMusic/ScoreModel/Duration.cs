@@ -1,8 +1,8 @@
-﻿using System;
-
-namespace LibiadaMusic.ScoreModel
+﻿namespace LibiadaMusic.ScoreModel
 {
     using LibiadaCore.Core;
+
+    using System;
 
     /// <summary>
     /// длительности ноты
@@ -14,6 +14,7 @@ namespace LibiadaMusic.ScoreModel
         /// (для сохранения после наложения триоли на длительность)
         /// </summary>
         private int onumerator;
+
         /// <summary>
         /// оригинальный знаменатель в дроби доли
         /// (для сохранения после наложения триоли на длительность)
@@ -61,7 +62,7 @@ namespace LibiadaMusic.ScoreModel
             if (doted)
             {
                 Placedot();
-            }  
+            }
         }
 
         public Duration(int numerator, int denominator, int tripletnum, int tripletdenom, bool doted, int ticks)
@@ -78,18 +79,16 @@ namespace LibiadaMusic.ScoreModel
             }
         }
 
-
-
         public Duration AddDuration(Duration duration)
         {
-            int newnum = (Numerator*duration.Denominator) + (duration.Numerator*Denominator);
-            int newdenom = Denominator*duration.Denominator;
+            int newnum = (Numerator * duration.Denominator) + (duration.Numerator * Denominator);
+            int newdenom = Denominator * duration.Denominator;
 
             for (int i = 2; i <= newnum; i++)
             {
-                if (newnum%i == 0) // если числитель делится на i
+                if (newnum % i == 0) // если числитель делится на i
                 {
-                    if ((newdenom%i == 0)) // и знаменатель делится на i (на случай триоли например)
+                    if (newdenom % i == 0) // и знаменатель делится на i (на случай триоли например)
                     {
                         newnum /= i;
                         newdenom /= i;
@@ -101,9 +100,9 @@ namespace LibiadaMusic.ScoreModel
             //--cокращение получившейся дроби--
             while (newdenom > 2) // пока знаменатель больше 2
             {
-                if (newnum%2 == 0) // если числитель делится на 2
+                if (newnum % 2 == 0) // если числитель делится на 2
                 {
-                    if ((newdenom%2 == 0)) // и знаменатель делится на 2 (на случай триоли например)
+                    if (newdenom % 2 == 0) // и знаменатель делится на 2 (на случай триоли например)
                     {
                         // сокращаем на 2 дробь
                         newnum /= 2;
@@ -119,12 +118,13 @@ namespace LibiadaMusic.ScoreModel
                     break;
                 }
             }
+
             return new Duration(newnum, newdenom, false, (Ticks + duration.Ticks));
         }
 
         public Duration SubDuration(Duration duration)
         {
-            var temp = (Duration) duration.Clone();
+            var temp = (Duration)duration.Clone();
             temp.Ticks = -temp.Ticks;
             temp.Numerator = -temp.Numerator;
             return AddDuration(temp);
@@ -132,21 +132,21 @@ namespace LibiadaMusic.ScoreModel
 
         private void Placedot()
         {
-            if ((Numerator%2) == 0)
+            if ((Numerator % 2) == 0)
             {
-                Numerator = (int) (Numerator*1.5); // если четный числитель, то прибавляем к нему половину
+                Numerator = (int)(Numerator * 1.5); // если четный числитель, то прибавляем к нему половину
             }
             else
             {
-                Numerator = Numerator*3;
-                Denominator = Denominator*2;
+                Numerator = Numerator * 3;
+                Denominator = Denominator * 2;
             }
         }
 
         private void PlaceTriplet(int triplnum, int tripldenom)
         {
-            Numerator = Numerator*triplnum;
-            Denominator = Denominator*tripldenom;
+            Numerator = Numerator * triplnum;
+            Denominator = Denominator * tripldenom;
         }
 
         public IBaseObject Clone()
@@ -161,12 +161,13 @@ namespace LibiadaMusic.ScoreModel
 
         public override bool Equals(object obj)
         {
-            if (Math.Abs(Value - ((Duration) obj).Value) < 0.000001)
+            if (Math.Abs(Value - ((Duration)obj).Value) < 0.000001)
             {
                 // если модул разности двух double меньше заданной точности,
-                //то можно считать что эти double равны
+                // то можно считать что эти double равны
                 return true;
             }
+
             return false;
         }
     }

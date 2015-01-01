@@ -1,8 +1,8 @@
-﻿using System.Collections.Generic;
-using LibiadaMusic.ScoreModel;
-
-namespace LibiadaMusic.BorodaDivider
+﻿namespace LibiadaMusic.BorodaDivider
 {
+    using System.Collections.Generic;
+    using LibiadaMusic.ScoreModel;
+
     public class BorodaDivider
     {
         public List<FmotivChain> Divide(ScoreTrack scoreTrack, ParamPauseTreatment paramPauseTreatment, ParamEqualFM paramEqualFM)
@@ -11,10 +11,11 @@ namespace LibiadaMusic.BorodaDivider
             
             foreach (CongenericScoreTrack congenericTrack in scoreTrack.CongenericScoreTracks)
             {
-                var fmotivChain = (FmotivChain) Divide(congenericTrack, paramPauseTreatment, paramEqualFM).Clone();
+                var fmotivChain = (FmotivChain)Divide(congenericTrack, paramPauseTreatment, paramEqualFM).Clone();
                 fmotivChain.Id = chains.Count;
                 chains.Add(fmotivChain);
             }
+
             return chains;
         }
 
@@ -23,7 +24,7 @@ namespace LibiadaMusic.BorodaDivider
         /// </summary>
         /// <param name="congenericTrack"></param>
         /// <param name="paramPauseTreatment">
-        /// параметр как учитывать паузу : 
+        /// параметр как учитывать паузу :
         /// игнорировать, звуковой след предыдущего звука, вырожденныый звук
         /// </param>
         /// <param name="paramEqualFM">как сравнивать ф-мотивы с секвентым переносом, либо нет</param>
@@ -31,12 +32,11 @@ namespace LibiadaMusic.BorodaDivider
         public FmotivChain Divide(CongenericScoreTrack congenericTrack, ParamPauseTreatment paramPauseTreatment, ParamEqualFM paramEqualFM)
         {
             // сохраняем имя цепи фмотивов как имя монотрека
-
             var priorityDiscover = new PriorityDiscover();
             var fmotivDivider = new FmotivDivider();
             var fmotivIdentifier = new FmotivIdentifier();
 
-            //подсчет приоритетов
+            // подсчет приоритетов
             priorityDiscover.Calculate(congenericTrack);
 
             // разбиение

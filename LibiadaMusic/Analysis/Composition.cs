@@ -1,8 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace LibiadaMusic.Analysis
+﻿namespace LibiadaMusic.Analysis
 {
+    using System;
+    using System.Collections.Generic;
+
     using LibiadaCore.Core;
     using LibiadaCore.Core.Characteristics.Calculators;
     using LibiadaCore.Core.SimpleTypes;
@@ -40,7 +40,7 @@ namespace LibiadaMusic.Analysis
 
         public Composition Clone()
         {
-            return (Composition) MemberwiseClone();
+            return (Composition)MemberwiseClone();
         }
 
         public void AddFM(string st)
@@ -63,8 +63,9 @@ namespace LibiadaMusic.Analysis
                         N += 1;
                     }
                 }
+
                 double f = Range.Length;
-                PLex.AddFMotiv(ar[0].Name, N, N/f);
+                PLex.AddFMotiv(ar[0].Name, N, N / f);
                 N = 0;
                 s = ar[0].Name;
                 for (int i = 0; i < ar.Count; i++)
@@ -75,7 +76,6 @@ namespace LibiadaMusic.Analysis
                         i--;
                     }
                 }
-
             }
         }
 
@@ -84,16 +84,16 @@ namespace LibiadaMusic.Analysis
             double K;
             double B;
             double P;
-            K = 1/Math.Log(PLex.GreatOccur);
-            B = (K/PLex.GreatFrequency) - 1;
+            K = 1 / Math.Log(PLex.GreatOccur);
+            B = (K / PLex.GreatFrequency) - 1;
             int i = 1;
             double Plow = Range.Length;
-            P = K/(B + i);
-            while (P >= (1/Plow))
+            P = K / (B + i);
+            while (P >= (1 / Plow))
             {
-                TLex.AddFMotiv((i - 1).ToString(), (int) Math.Round(P*Range.Length), P);
+                TLex.AddFMotiv((i - 1).ToString(), (int)Math.Round(P * Range.Length), P);
                 i++;
-                P = K/(B + i);
+                P = K / (B + i);
             }
         }
 
@@ -130,7 +130,7 @@ namespace LibiadaMusic.Analysis
                 newChain[i] = new ValueInt(Range.Data[i].Id);
             }
 
-            chain = (Chain) newChain.Clone();
+            chain = (Chain)newChain.Clone();
             return newChain;
         }
 
@@ -147,9 +147,10 @@ namespace LibiadaMusic.Analysis
             double Ent = 0;
             for (int i = 0; i < PLex.Capacity; i++)
             {
-                Ent += PLex.Data[i].Frequency*Math.Log(PLex.Data[i].Frequency, 2);
+                Ent += PLex.Data[i].Frequency * Math.Log(PLex.Data[i].Frequency, 2);
             }
-            Entropy = Ent*(-1);
+
+            Entropy = Ent * (-1);
         }
 
         public void CalcDepth()
@@ -261,30 +262,27 @@ namespace LibiadaMusic.Analysis
             DisplayData.TLCapacity = TLex.Capacity;
             DisplayData.GreatFrequency = PLex.GreatFrequency;
             DisplayData.OIInfo = OIInfo;
-            DisplayData.LEntropy = Entropy*Range.Length;
+            DisplayData.LEntropy = Entropy * Range.Length;
 
             for (int i = 0; i < PLex.Capacity; i++)
             {
                 // на время эксперимента комментарий
-                DisplayData.Id_N.Add(new[] {PLex.Data[i].Id, PLex.Data[i].Occurrence});
+                DisplayData.Id_N.Add(new[] { PLex.Data[i].Id, PLex.Data[i].Occurrence });
 
-                DisplayData.Rank_FreqP.Add(new[] {PLex.RData()[i].Rank, PLex.RData()[i].Frequency});
+                DisplayData.Rank_FreqP.Add(new[] { PLex.RData()[i].Rank, PLex.RData()[i].Frequency });
 
-                DisplayData.LogRank_LogNP.Add(new[] {PLex.RData()[i].LogRank, PLex.RData()[i].LogOccurrence});
+                DisplayData.LogRank_LogNP.Add(new[] { PLex.RData()[i].LogRank, PLex.RData()[i].LogOccurrence });
 
-                DisplayData.LogRank_LogDepth.Add(new[] {PLex.RData()[i].LogRank, PLex.RangeLexDi()[i]});
+                DisplayData.LogRank_LogDepth.Add(new[] { PLex.RData()[i].LogRank, PLex.RangeLexDi()[i] });
 
-                DisplayData.Rank_Remoteness.Add(new[] {PLex.RData()[i].Rank, PLex.RangeLexRi()[i]});
-
+                DisplayData.Rank_Remoteness.Add(new[] { PLex.RData()[i].Rank, PLex.RangeLexRi()[i] });
             }
 
             for (int i = 0; i < TLex.Capacity; i++)
             {
-                DisplayData.Rank_FreqT.Add(new[]
-                {TLex.RData()[i].Rank, TLex.RData()[i].Frequency});
+                DisplayData.Rank_FreqT.Add(new[] { TLex.RData()[i].Rank, TLex.RData()[i].Frequency });
 
-                DisplayData.LogRank_LogNT.Add(new[]
-                {TLex.RData()[i].LogRank, TLex.RData()[i].LogOccurrence});
+                DisplayData.LogRank_LogNT.Add(new[] { TLex.RData()[i].LogRank, TLex.RData()[i].LogOccurrence });
             }
 
             double gDepth = 0;
@@ -301,6 +299,7 @@ namespace LibiadaMusic.Analysis
                     gRemote = PLex.Data[i].Remoteness;
                 }
             }
+
             DisplayData.GreatLogDepth = gDepth;
             DisplayData.GreatRemoteness = gRemote;
         }

@@ -11,6 +11,7 @@
         /// beats,beatbase,ticksperbeat
         /// </summary>
         public Size Size { get; private set; }
+
         /// <summary>
         /// fifths, mode
         /// </summary>
@@ -20,27 +21,27 @@
         {
             if (size != null)
             {
-                Size = (Size) size.Clone();
+                Size = (Size)size.Clone();
             }
+
             if (key != null)
             {
-                Key = (Key) key.Clone();
+                Key = (Key)key.Clone();
             }
         }
 
-
-
         public IBaseObject Clone()
-        { 
+        {
             return new Attributes(Size, Key);
         }
 
         public override bool Equals(object obj)
         {
-            if (Key.Equals(((Attributes) obj).Key) && Size.Equals(((Attributes) obj).Size))
+            if (Key.Equals(((Attributes)obj).Key) && Size.Equals(((Attributes)obj).Size))
             {
                 return true;
             }
+
             return false;
         }
     }

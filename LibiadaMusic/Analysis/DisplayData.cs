@@ -1,7 +1,7 @@
-﻿using System.Collections;
-
-namespace LibiadaMusic.Analysis
+﻿namespace LibiadaMusic.Analysis
 {
+    using System.Collections;
+
     public class DisplayData
     {
         public double PLCapacity;

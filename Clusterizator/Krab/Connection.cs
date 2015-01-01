@@ -32,7 +32,7 @@ namespace Clusterizator.Krab
         }
 
         /// <summary>
-        /// ’арактеризует соединена ли данна€ пара точек.
+        ///  Gets or sets value indicating whether pair of points connected or not.
         /// </summary>
         public bool Connected { get; set; }
 

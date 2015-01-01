@@ -14,7 +14,7 @@ namespace BuildingsIterator.Statistics.Calculators
         private readonly int s = 1;
 
         /// <summary>
-        ///  онструктор калькул€тора вычисл€ющего начальный момент выборки
+        /// Initializes a new instance of the <see cref="StartingPointCalculator" /> class.
         /// </summary>
         /// <param name="i">ѕор€док момента</param>
         public StartingPointCalculator(int i)

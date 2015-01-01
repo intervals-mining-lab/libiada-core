@@ -45,7 +45,7 @@ namespace PhantomChains
         private readonly int totalLength;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="PhantomChainGenerator{TResult,TSource}"/> class.
+        /// Initializes a new instance of the <see cref="PhantomChainGenerator"/> class.
         /// </summary>
         /// <param name="chain">
         /// The chain.

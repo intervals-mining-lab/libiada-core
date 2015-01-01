@@ -13,7 +13,7 @@
     {
         private ValueNote note = new ValueNote(new Pitch(1, 'E', 0), new Duration(1, 4, false, 480), false, Tie.None);
         private ValueNote anote = new ValueNote(new Pitch(1, 'B', 0), new Duration(1, 2, false, 960), false, 0);
-        private ValueNote bnote = new ValueNote((Pitch) null, new Duration(1, 4, false, 480), false, 0);
+        private ValueNote bnote = new ValueNote((Pitch)null, new Duration(1, 4, false, 480), false, 0);
         private ValueNote сnote = new ValueNote(new Pitch(1, 'A', 0), new Duration(1, 4, 2, 3, false, 200), true, 0);
         private ValueNote ccnote = new ValueNote(new Pitch(1, 'A', 0), new Duration(1, 8, 2, 3, false, 200), true, 0);
         private ValueNote сccnote = new ValueNote(new Pitch(1, 'A', 0), new Duration(1, 8, 4, 7, false, 200), true, 0);
@@ -40,22 +40,24 @@
         {
             var pd = new PriorityDiscover();
 
-            var notes = new List<ValueNote> {note, bnote, dnote, anote};
+            var notes = new List<ValueNote> { note, bnote, dnote, anote };
             var measure = new Measure(notes, attributes);
-            //минимальнвя длительность ноты в такте measure 1/16 = 0.0625 у ноты dnote
-            Assert.IsTrue(Math.Abs(pd.minDuration(measure) - 0.0625) < 0.00001);
+            // минимальнвя длительность ноты в такте measure 1/16 = 0.0625 у ноты dnote
+            Assert.IsTrue(Math.Abs(pd.MinDuration(measure) - 0.0625) < 0.00001);
             // когда такт передается пустой, должен выкинуться эксепшн
             measure.NoteList.Clear();
             try
             {
-                Assert.IsTrue(Math.Abs(pd.minDuration(measure) - 0.0625) < 0.00001);
+                Assert.IsTrue(Math.Abs(pd.MinDuration(measure) - 0.0625) < 0.00001);
                 Assert.Fail("нет эксепшна при пустом такте");
             }
             catch (Exception e)
             {
-                if (e.Message != "LibiadaMusic.OIP: обнаружен пустой такт при выявлении приоритета!") Assert.Fail();
+                if (e.Message != "LibiadaMusic.OIP: обнаружен пустой такт при выявлении приоритета!")
+                {
+                    Assert.Fail();
+                }
             }
-
         }
 
         [TestMethod]
@@ -117,7 +119,7 @@
         {
             var pd = new PriorityDiscover();
 
-            var notes = new List<ValueNote> {note, bnote, dnote, anote};
+            var notes = new List<ValueNote> { note, bnote, dnote, anote };
             var measure = new Measure(notes, attributes2);
             pd.CalcPriorityMask(measure);
             // так как минимальная длительность ноты в такте 1/16 то маска приоритетов должна разложиться (посчитаться) до 1/32
@@ -183,7 +185,7 @@
         {
             var pd = new PriorityDiscover();
 
-            var notes = new List<ValueNote> {note, bnote, dnote, anote};
+            var notes = new List<ValueNote> { note, bnote, dnote, anote };
             var measure = new Measure(notes, attributes3);
             pd.CalcPriorityMask(measure);
             // так как минимальная длительность ноты в такте 1/16 то маска приоритетов должна разложиться (посчитаться) до 1/32
@@ -227,7 +229,7 @@
         {
             var pd = new PriorityDiscover();
 
-            var notes = new List<ValueNote> {note, anote};
+            var notes = new List<ValueNote> { note, anote };
             var measure = new Measure(notes, attributes1);
             pd.CalcPriorityMask(measure);
             // так как минимальная длительность ноты в такте 1/4 то маска приоритетов должна разложиться (посчитаться) до 1/4
@@ -249,18 +251,17 @@
         [TestMethod]
         public void PriorityDiscoverTest()
         {
-            var notes = new List<ValueNote> {note, bnote, anote};
+            var notes = new List<ValueNote> { note, bnote, anote };
 
-            var notes1 = new List<ValueNote> {note, note, note};
+            var notes1 = new List<ValueNote> { note, note, note };
 
-            var notes2 = new List<ValueNote> {anote, note, bnote, note, bnote};
+            var notes2 = new List<ValueNote> { anote, note, bnote, note, bnote };
 
-            var notes3 = new List<ValueNote> {note, dnote, note, note};
+            var notes3 = new List<ValueNote> { note, dnote, note, note };
 
-            var notes4 = new List<ValueNote> {сnote, сnote, сnote, ccnote, ccnote, ccnote};
+            var notes4 = new List<ValueNote> { сnote, сnote, сnote, ccnote, ccnote, ccnote };
 
-            var notes5 = new List<ValueNote> {сccnote, сccnote, сccnote, сccnote, сccnote, сccnote, сccnote, note, note};
-
+            var notes5 = new List<ValueNote> { сccnote, сccnote, сccnote, сccnote, сccnote, сccnote, сccnote, note, note };
 
             var measure = new Measure(notes, attributes);
             var measure1 = new Measure(notes1, attributes1);

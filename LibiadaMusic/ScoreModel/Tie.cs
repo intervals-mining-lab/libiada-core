@@ -9,14 +9,17 @@
         /// Нет Лиги (-1)
         /// </summary>
         None = 0,
+
         /// <summary>
         ///  Начало Лиги (0)
         /// </summary>
         Start = 1,
+
         /// <summary>
         /// Конец Лиги (1)
         /// </summary>
         Stop = 2,
+
         /// <summary>
         /// Конец и Начало следущей Лиги (2)
         /// </summary>

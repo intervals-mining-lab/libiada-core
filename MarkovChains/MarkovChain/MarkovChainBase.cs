@@ -38,7 +38,7 @@ namespace MarkovChains.MarkovChain
         protected readonly int CongenericRank;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="MarkovChainBase{ChainGenerated,ChainTaught}"/> class.
+        /// Initializes a new instance of the <see cref="MarkovChainBase"/> class.
         /// </summary>
         /// <param name="i">
         /// Порядок марковской цепи

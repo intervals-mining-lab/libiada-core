@@ -1,4 +1,4 @@
-﻿using LibiadaCore.Misc;
+﻿
 
 namespace BuildingsIterator
 {
@@ -7,6 +7,8 @@ namespace BuildingsIterator
     using System.Collections.Generic;
 
     using LibiadaCore.Core;
+
+    using LibiadaCore.Misc;
 
     /// <summary>
     /// Генерирует все возможные сочетания
@@ -29,7 +31,7 @@ namespace BuildingsIterator
         private List<LinkedCharacteristic> characteristic;
 
         /// <summary>
-        /// Генерирует хештаблицу со всеми возможными строями в качестве ключа, 
+        /// Генерирует хештаблицу со всеми возможными строями в качестве ключа,
         /// и списком характеристик в качестве значения
         /// </summary>
         /// <param name="alphabet">Алфавит на основе которого генерируем цепочки</param>
@@ -53,7 +55,7 @@ namespace BuildingsIterator
                 {
                     hashTable.Add(ArrayManipulator.ArrayToString(chain.Building), characteristics);
                 }
-                catch (Exception e)
+                catch (Exception)
                 {
                 }
             }

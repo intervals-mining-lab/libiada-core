@@ -43,7 +43,7 @@
         /// Sets or replaces element in specified position.
         /// </summary>
         /// <param name="item">
-        /// Element to set. 
+        /// Element to set.
         /// </param>
         /// <param name="index">
         /// Position in sequence.

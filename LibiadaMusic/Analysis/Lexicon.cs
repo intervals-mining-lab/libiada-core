@@ -1,7 +1,7 @@
-﻿using System.Collections.Generic;
-
-namespace LibiadaMusic.Analysis
+﻿namespace LibiadaMusic.Analysis
 {
+    using System.Collections.Generic;
+
     public class Lexicon
     {
         private int newId;
@@ -25,6 +25,7 @@ namespace LibiadaMusic.Analysis
             {
                 RangeLexElem();
             }
+
             return RFMVariety;
         }
 
@@ -48,6 +49,7 @@ namespace LibiadaMusic.Analysis
                     GreatFrequency = Data[i].Frequency;
                 }
             }
+
             return GreatFrequency;
         }
 
@@ -80,6 +82,7 @@ namespace LibiadaMusic.Analysis
                         curMaxFreqArId = i;
                     }
                 }
+
                 Data[curMaxFreqId].Rank = j + 1;
                 ar.RemoveAt(curMaxFreqArId);
             }
@@ -109,6 +112,7 @@ namespace LibiadaMusic.Analysis
                     }
                 }
             }
+
             return ar;
         }
 
@@ -136,6 +140,7 @@ namespace LibiadaMusic.Analysis
                     }
                 }
             }
+
             return ar;
         }
 
@@ -151,6 +156,7 @@ namespace LibiadaMusic.Analysis
                     }
                 }
             }
+
             ranged = true;
         }
     }

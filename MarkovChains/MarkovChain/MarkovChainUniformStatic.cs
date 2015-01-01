@@ -15,7 +15,7 @@ namespace MarkovChains.MarkovChain
         MarkovChainNotCongenericStatic
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="MarkovChainCongenericStatic{TChainGenerated,TChainTaught}"/> class.
+        /// Initializes a new instance of the <see cref="MarkovChainCongenericStatic"/> class.
         /// </summary>
         /// <param name="rang">
         /// Порядок марковской цепи
