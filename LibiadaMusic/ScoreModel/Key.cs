@@ -17,18 +17,42 @@
         /// </summary>
         private string mode;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Key"/> class.
+        /// </summary>
+        /// <param name="fifths">
+        /// The fifths.
+        /// </param>
+        /// <param name="mode">
+        /// The mode.
+        /// </param>
         public Key(int fifths, string mode = "")
         {
             this.fifths = fifths;
             this.mode = mode;
         }
 
+        /// <summary>
+        /// The clone.
+        /// </summary>
+        /// <returns>
+        /// The <see cref="IBaseObject"/>.
+        /// </returns>
         public IBaseObject Clone()
         {
             var temp = new Key(fifths, mode);
             return temp;
         }
 
+        /// <summary>
+        /// The equals.
+        /// </summary>
+        /// <param name="obj">
+        /// The obj.
+        /// </param>
+        /// <returns>
+        /// The <see cref="bool"/>.
+        /// </returns>
         public override bool Equals(object obj)
         {
             if ((fifths == ((Key)obj).fifths) && (mode == ((Key)obj).mode))

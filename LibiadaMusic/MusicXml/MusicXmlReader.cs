@@ -1,9 +1,12 @@
 ﻿namespace LibiadaMusic.MusicXml
 {
     using System;
-    using System.Xml;
     using System.IO;
+    using System.Xml;
 
+    /// <summary>
+    /// The music xml reader.
+    /// </summary>
     public class MusicXmlReader
     {
         /// <summary>
@@ -12,24 +15,33 @@
         private XmlDocument curDoc;
 
         /// <summary>
-        /// путь к прочитанному MusicXML файлу
+        /// Initializes a new instance of the <see cref="MusicXmlReader"/> class.
         /// </summary>
-        public string FileName { get; private set; }
-
         public MusicXmlReader()
         {
         }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="MusicXmlReader"/> class.
+        /// </summary>
+        /// <param name="xpath">
+        /// The xpath.
+        /// </param>
         public MusicXmlReader(string xpath)
         {
             LoadNotes(xpath);
         }
 
-        public void LoadMusicXmlDocument(string path)
-        {
-            LoadNotes(path);
-        }
+        /// <summary>
+        /// путь к прочитанному MusicXML файлу
+        /// </summary>
+        public string FileName { get; private set; }
 
+        /// <summary>
+        /// Gets the music xml document.
+        /// </summary>
+        /// <exception cref="Exception">
+        /// </exception>
         public XmlDocument MusicXmlDocument
         {
             get
@@ -43,6 +55,23 @@
             }
         }
 
+        /// <summary>
+        /// The load music xml document.
+        /// </summary>
+        /// <param name="path">
+        /// The path.
+        /// </param>
+        public void LoadMusicXmlDocument(string path)
+        {
+            LoadNotes(path);
+        }
+
+        /// <summary>
+        /// The load notes.
+        /// </summary>
+        /// <param name="path">
+        /// The path.
+        /// </param>
         private void LoadNotes(string path)
         {
             // Объявляем и забиваем файл в XMLдокумент  

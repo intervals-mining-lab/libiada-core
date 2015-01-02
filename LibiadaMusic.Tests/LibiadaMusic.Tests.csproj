@@ -57,7 +57,7 @@
     <Compile Include="BorodaDivider\FmotivTests.cs" />
     <Compile Include="BorodaDivider\FmotivChainTests.cs" />
     <Compile Include="BorodaDivider\FmotivDividerTests.cs" />
-    <Compile Include="BorodaDivider\FmotivIdentificatorTests.cs" />
+    <Compile Include="BorodaDivider\FmotivIdentificationTests.cs" />
     <Compile Include="BorodaDivider\ParamEqualFMTests.cs" />
     <Compile Include="BorodaDivider\ParamPauseTreatmentTests.cs" />
     <Compile Include="BorodaDivider\PriorityDiscoverTests.cs" />

@@ -8,6 +8,17 @@
     /// </summary>
     public static class AverageLength
     {
+        /// <summary>
+        /// The calculate.
+        /// </summary>
+        /// <param name="chain">
+        /// The chain.
+        /// </param>
+        /// <returns>
+        /// The <see cref="double"/>.
+        /// </returns>
+        /// <exception cref="Exception">
+        /// </exception>
         public static double Calculate(FmotivChain chain)
         {
             if (chain.FmotivList.Count < 1)
@@ -19,8 +30,8 @@
 
             foreach (Fmotiv fmotiv in chain.FmotivList)
             {
+                // заполняем счетчик складывая кол-во поф-мотивно
                 noteCount = noteCount + fmotiv.TieGathered().PauseTreatment((int)ParamPauseTreatment.Ignore).NoteList.Count;
-                    // заполняем счетчик складывая кол-во поф-мотивно
             }
 
             return (double)noteCount / chain.FmotivList.Count;

@@ -4,6 +4,9 @@
     using System.Collections.Generic;
     using LibiadaMusic.ScoreModel;
 
+    /// <summary>
+    /// The priority discover.
+    /// </summary>
     public class PriorityDiscover
     {
         /// <summary>
@@ -13,10 +16,13 @@
         public Measure PriorityMask { get; private set; }
 
         /// <summary>
+        /// The calculate.
         /// метод для подсчета приоритетов нот во всем Scoretrack
         /// </summary>
-        /// <param name="scoreTrack"></param>
-        public void Calculate(ScoreTrack scoreTrack)
+        /// <param name="scoreTrack">
+        /// The score track.
+        /// </param>
+        public void Calculate(ScoreTrack scoreTrack) 
         {
             foreach (CongenericScoreTrack congenericTrack in scoreTrack.CongenericScoreTracks)
             {
@@ -25,10 +31,13 @@
         }
 
         /// <summary>
+        /// The calculate.
         /// метод для подсчета приоритетов нот для каждого такта (Measure) 
         /// в монофоническом треке (CongenericScoretrack)
         /// </summary>
-        /// <param name="congenericTrack"></param>
+        /// <param name="congenericTrack">
+        /// The congeneric track.
+        /// </param>
         public void Calculate(CongenericScoreTrack congenericTrack)
         {
             foreach (Measure measure in congenericTrack.MeasureList)
@@ -37,18 +46,34 @@
             }
         }
 
+        /// <summary>
+        /// The calculate.
+        /// </summary>
+        /// <param name="measure">
+        /// The measure.
+        /// </param>
+        /// <exception cref="Exception">
+        /// </exception>
         public void Calculate(Measure measure)
         {
             // создаем новый такт, куда будут складываться ноты, после определения их приоритета.
             var temp = new Measure(new List<ValueNote>(), (Attributes)measure.Attributes.Clone());
+
             // считаем маску приоритетов для такта
-            CalcPriorityMask(measure);
+            CalculatePriorityMask(measure);
+
             // соотнесение маски приоритетов и реального такта
-            double bufDuration = 0; // буфер длительности
-            var noteBuf = new List<ValueNote>(); // буфер нот для сбора триоли и передачи в CollectTriplet
+            double bufDuration = 0;
+
+            // буфер длительности
+            var noteBuf = new List<ValueNote>();
+
+            // буфер нот для сбора триоли и передачи в CollectTriplet
             var maskBuf = new List<ValueNote>();
+
             // буфер маски приоритетов для сбора приоритетов маски под триолью и передачи в CollectTriplet 
             double tripletDuration = 0;
+
             // для каждой ноты подсчет приоритета, либо собирание в триоль и отдельный подсчет приоритетов
             foreach (ValueNote note in measure.NoteList)
             {
@@ -66,12 +91,14 @@
                             bufDuration = bufDuration - PriorityMask.NoteList[0].Duration.Value;
                             PriorityMask.NoteList.RemoveAt(0);
                         }
+
                         // передача методу CountTriplet notebuf + maskbuf и расстановка приоритетов + передача обратно
                         // занесение в выходной буфер результата определения приоритета нот триоли
                         foreach (ValueNote tnote in CountTripletPriority(noteBuf, maskBuf))
                         {
                             temp.NoteList.Add((ValueNote)tnote.Clone());
                         }
+
                         // Temp.Notelist.AddRange(CountTripletPriority(noteBuf,maskBuf));
 
                         // зануление буферов
@@ -79,10 +106,12 @@
                         maskBuf.Clear();
                         bufDuration = 0;
                     }
+
                     // последовательность реальных нот триоли (триплета) заносится в буфер для дальнейшей обработки
                     // считается суммарная длительность триоли
                     noteBuf.Add((ValueNote)note.Clone());
                     tripletDuration = note.Duration.Value;
+
                     // сохраняем размерность триоли/ новой триоли (если две подряд)
                     bufDuration = bufDuration + note.Duration.Value;
                 }
@@ -99,23 +128,28 @@
                             bufDuration = bufDuration - PriorityMask.NoteList[0].Duration.Value;
                             PriorityMask.NoteList.RemoveAt(0);
                         }
+
                         // передача методу CountTriplet notebuf + maskbuf и расстановка приоритетов + передача обратно
                         // занесение в выходной буфер результата определения приоритета нот триоли
                         foreach (ValueNote tnote in CountTripletPriority(noteBuf, maskBuf))
                         {
                             temp.NoteList.Add((ValueNote)tnote.Clone());
                         }
+
                         // Temp.Notelist.AddRange(CountTripletPriority(noteBuf,maskBuf));
 
                         // зануление буферов
                         noteBuf.Clear();
                         maskBuf.Clear();
                     }
+
                     // так как следущая нота не триплет, то определяем ее приоритет по следущему алгоритму
                     // присвоение приоритета при нахожении начала позиции следущей ноты в маске приоритетов
                     note.Priority = PriorityMask.NoteList[0].Priority;
+
                     // занесение в буфер длительности следующей ноты маски приоритетов
                     bufDuration = PriorityMask.NoteList[0].Duration.Value;
+
                     // удаление этой ноты из общей маски приоритетов
                     PriorityMask.NoteList.RemoveAt(0);
 
@@ -127,6 +161,7 @@
                             throw new Exception(
                                 "LibiadaMusic Priority Discover: такт построен не по правилам, не хватает ноты");
                         }
+
                         // набор длительностей нот маски, и их удаление из очереди
                         bufDuration = bufDuration + PriorityMask.NoteList[0].Duration.Value;
                         PriorityMask.NoteList.RemoveAt(0);
@@ -137,6 +172,7 @@
                     bufDuration = bufDuration - note.Duration.Value;
                 }
             }
+
             // проверка буфера триоли, на случай когда триоль стоит вконце, чтобы не было потери нот
             if (noteBuf.Count > 0)
             {
@@ -148,6 +184,7 @@
                     bufDuration = bufDuration - PriorityMask.NoteList[0].Duration.Value;
                     PriorityMask.NoteList.RemoveAt(0);
                 }
+
                 // передача методу CountTriplet notebuf + maskbuf и расстановка приоритетов + передача обратно
                 // занесение в выходной буфер результата определения приоритета нот триоли
                 foreach (ValueNote tnote in CountTripletPriority(noteBuf, maskBuf))
@@ -159,6 +196,7 @@
                 noteBuf.Clear();
                 maskBuf.Clear();
             }
+
             // присваиваем полю приоритет входного объекта, вычисленный приоритет в Temp соответственно
             for (int i = 0; i < measure.NoteList.Count; i++)
             {
@@ -170,11 +208,24 @@
             }
         }
 
+        /// <summary>
+        /// The count triplet priority.
+        /// </summary>
+        /// <param name="noteBuf">
+        /// The note buf.
+        /// </param>
+        /// <param name="maskBuf">
+        /// The mask buf.
+        /// </param>
+        /// <returns>
+        /// The <see cref="List"/>.
+        /// </returns>
         public List<ValueNote> CountTripletPriority(List<ValueNote> noteBuf, List<ValueNote> maskBuf)
         {
             // TODO: расчет приоритетов для триоли с числом нот больше 3 выполняется по четко не определенному правилу, сделать как должно быть
             var temp = new List<ValueNote>();
             int count = noteBuf.Count;
+
             // записываем в отдельный счетчик т.к. значение noteBuf.Count меняется во время цикла
             for (int i = 0; i < count; i++)
             {
@@ -189,23 +240,29 @@
                 else
                 {
                     noteBuf[0].Priority = maskBuf[0].Priority;
+
                     // отнимаем из маски приоритетов нот на сумму равную номинальному (не реальному) значению длительности триольной ноты
                     double bufduration = noteBuf[0].Duration.OriginalValue;
-                    temp.Add((ValueNote)noteBuf[0].Clone()); // добавляем ноту триоль в выходной буфер
-                    noteBuf.RemoveAt(0); // удаляем ноту-триоль из разбираемой очереди
+
+                    // добавляем ноту триоль в выходной буфер
+                    temp.Add((ValueNote)noteBuf[0].Clone());
+
+                    // удаляем ноту-триоль из разбираемой очереди
+                    noteBuf.RemoveAt(0); 
                     while (bufduration > 0.0000001)
                     {
                         // по одной удаляем из маски приоритетов ноты, сумма длительностей которых равна номинальной длительности текущей разбираемой ноты
                         if (maskBuf.Count < 1)
                         {
                             // если ноты в маске закончились то выходим из цикла
-
                             break;
                         }
 
-                        bufduration = bufduration - maskBuf[0].Duration.Value;
                         // отнимаем из значения длительности ноты-триоли длительность очередной ноты маски
-                        maskBuf.RemoveAt(0); // удаляем ноту маски из очереди (маски приоритетов)
+                        bufduration = bufduration - maskBuf[0].Duration.Value;
+
+                        // удаляем ноту маски из очереди (маски приоритетов)
+                        maskBuf.RemoveAt(0); 
                     }
                 }
             }
@@ -213,6 +270,17 @@
             return temp; // возвращаем результат
         }
 
+        /// <summary>
+        /// The min duration.
+        /// </summary>
+        /// <param name="measure">
+        /// The measure.
+        /// </param>
+        /// <returns>
+        /// The <see cref="double"/>.
+        /// </returns>
+        /// <exception cref="Exception">
+        /// </exception>
         public double MinDuration(Measure measure)
         {
             // Метод находит минимальную длительность ноты/паузы в такте
@@ -238,7 +306,13 @@
             return value;
         }
 
-        public void CalcPriorityMask(Measure measure)
+        /// <summary>
+        /// The calc priority mask.
+        /// </summary>
+        /// <param name="measure">
+        /// The measure.
+        /// </param>
+        public void CalculatePriorityMask(Measure measure)
         {
             // создание объекта маски с атрибутами оригинала и пустым списком нот
             PriorityMask = new Measure(new List<ValueNote>(), (Attributes)measure.Attributes.Clone());
@@ -248,8 +322,8 @@
             var newDuration = new Duration(1, measure.Attributes.Size.BeatBase, false, measure.Attributes.Size.TicksPerBeat);
 
             PriorityMask.NoteList.Add(new ValueNote((Pitch)null, newDuration, false, Tie.None, 0));
-            // первая доля в такте всегда самая сильная и выделяется НАИВЫСШИМ приоритетом 0
 
+            // первая доля в такте всегда самая сильная и выделяется НАИВЫСШИМ приоритетом 0
             if (measure.Attributes.Size.Beats % 2 == 0)
             {
                 // ПМТ-2 - двудольный метр/размер такта
@@ -259,13 +333,14 @@
                     if (i % 2 == 0)
                     {
                         // относительно сильная доля с приоритетом 1
-                        const int priority = 1;
-                        PriorityMask.NoteList.Add(new ValueNote((Pitch)null, new Duration(1, measure.Attributes.Size.BeatBase, false, measure.Attributes.Size.TicksPerBeat), false, Tie.None, priority));
+                        const int Priority = 1;
+                        PriorityMask.NoteList.Add(new ValueNote((Pitch)null, new Duration(1, measure.Attributes.Size.BeatBase, false, measure.Attributes.Size.TicksPerBeat), false, Tie.None, Priority));
                     }
                     else
                     {
                         // слабая доля с приоритетом 2
                         int priority = 2;
+
                         // если всего две доли то более слабая будет иметь приоритет 1, так как больше нет долей
                         if (measure.Attributes.Size.Beats == 2)
                         {
@@ -294,6 +369,7 @@
                         {
                             // слабая доля с приоритетом 2
                             int priority = 2;
+
                             // если всего три доли то более слабые будут иметь приоритет 1, так как больше нет других долей
                             if (measure.Attributes.Size.Beats == 3)
                             {
@@ -308,13 +384,14 @@
                 {
                     // ПМТ-К сложный метр/размер такта      
                     for (int i = 1; i < measure.Attributes.Size.Beats; i++)
-                    // начиная со второй доли заполняем чередуя приоритет через 
-                    // одну долю и последнюю долю записываем как слабую
                     {
+                        // начиная со второй доли заполняем чередуя приоритет через 
+                        // одну долю и последнюю долю записываем как слабую
                         if (i % 2 == 0)
                         {
                             // относительно сильная доля с приоритетом 1
                             int priority = 1;
+
                             // если сильная доля последняя - записываем ее как слабую в ПМТ-3
                             if (i == measure.Attributes.Size.Beats - 1)
                             {
@@ -332,12 +409,16 @@
                     }
                 }
             }
+
             //---------------------------Разложение долей такта на более низкий уровень, ---------------------------
             //---------------------------пока не будут известны приоритеты для нот с минимальной длительностью------
             //------------------------------------------------------------------------------------------------------                
-            bool stop = true; // флаг останова, когда просчитаются приоритеты для всех нот,
+
+            // флаг останова, когда просчитаются приоритеты для всех нот,
             // длительность которых окажется меньше либо равна минимальной, деленной на 2 (так как может быть точка у ноты, котору. возможно описать только 3 нотами короче в два раза чем сама нота),
             // если они уже просчитаны для всех нот, то процесс заканчивается
+            bool stop = true; 
+
             // проверка: останов будет тогда, когда длительности ВСЕХ нот в маске будут меньше либо равны длительности минимально ноты
             foreach (ValueNote note in PriorityMask.NoteList)
             {
@@ -350,6 +431,7 @@
             while (!stop)
             {
                 var temp = new Measure(new List<ValueNote>(), (Attributes)PriorityMask.Attributes.Clone());
+
                 // создание объекта буфера для перехода к следущей маске нижнего уровня
 
                 // определение максимального (наименьшего приоритета) для спуска на уровень ниже,
@@ -365,13 +447,13 @@
 
                 for (int i = 0; i < PriorityMask.NoteList.Count; i++)
                 {
-                    var duration = new Duration(1, (PriorityMask.NoteList[i].Duration.Denominator * 2), false, (PriorityMask.NoteList[i].Duration.Ticks / 2));
+                    var duration = new Duration(1, PriorityMask.NoteList[i].Duration.Denominator * 2, false, PriorityMask.NoteList[i].Duration.Ticks / 2);
 
                     temp.NoteList.Add(new ValueNote((Pitch)null, duration, false, Tie.None, PriorityMask.NoteList[i].Priority));
 
-                    duration = new Duration(1, (PriorityMask.NoteList[i].Duration.Denominator * 2), false, (PriorityMask.NoteList[i].Duration.Ticks / 2));
+                    duration = new Duration(1, PriorityMask.NoteList[i].Duration.Denominator * 2, false, PriorityMask.NoteList[i].Duration.Ticks / 2);
 
-                    temp.NoteList.Add(new ValueNote((Pitch)null, duration, false, Tie.None, (maxPriority + 1)));
+                    temp.NoteList.Add(new ValueNote((Pitch)null, duration, false, Tie.None, maxPriority + 1));
                 }
 
                 // присваем объекту маске новый получившейся объект уровня ниже 

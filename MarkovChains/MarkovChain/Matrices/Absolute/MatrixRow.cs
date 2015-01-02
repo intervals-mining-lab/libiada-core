@@ -3,10 +3,12 @@ namespace MarkovChains.MarkovChain.Matrices.Absolute
     using System;
     using System.Collections;
 
-    using LibiadaCore.Core.SimpleTypes;
+    using Base;
 
     using Builders;
-    using Base;
+
+    using LibiadaCore.Core.SimpleTypes;
+
     using Probability;
 
     /// <summary>

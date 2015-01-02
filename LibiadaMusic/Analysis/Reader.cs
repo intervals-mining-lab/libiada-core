@@ -4,8 +4,22 @@
     using System.IO;
     using System.Xml;
 
+    /// <summary>
+    /// The reader.
+    /// </summary>
     public class Reader
     {
+        /// <summary>
+        /// Gets the data.
+        /// </summary>
+        public string[] Data { get; private set; }
+
+        /// <summary>
+        /// The set data.
+        /// </summary>
+        /// <param name="path">
+        /// The path.
+        /// </param>
         public void SetData(string path)
         {
             var fs = new FileStream(path, FileMode.Open);
@@ -23,24 +37,33 @@
             fs.Close();
         }
 
+        /// <summary>
+        /// The set xml data.
+        /// </summary>
+        /// <param name="path">
+        /// The path.
+        /// </param>
         public void SetXmlData(string path)
         {
             // Объявляем и забиваем файл в документ 
             var xd = new XmlDocument();
             var fs = new FileStream(path, FileMode.Open);
             xd.Load(fs);
-            XmlNodeList list = xd.GetElementsByTagName("element"); // Создаем и заполняем лист по тегу "element" 
+
+            // Создаем и заполняем лист по тегу "element" 
+            XmlNodeList list = xd.GetElementsByTagName("element"); 
             string str = string.Empty;
             for (int i = 0; i < list.Count; i++)
             {
-                str += list.Item(i).InnerText + '\r' + '\n'; // вносим в строку следующий ф-мотив + разделитель
+                // вносим в строку следующий ф-мотив + разделитель
+                str += list.Item(i).InnerText + '\r' + '\n'; 
             }
 
             char[] sep = { '\r', '\n' };
             Data = str.Split(sep, (int)fs.Length, StringSplitOptions.RemoveEmptyEntries);
-            fs.Close(); // Закрываем поток
-        }
 
-        public string[] Data { get; private set; }
+            // Закрываем поток
+            fs.Close(); 
+        }
     }
 }

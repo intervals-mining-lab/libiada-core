@@ -1,6 +1,4 @@
-﻿
-
-namespace BuildingsIterator
+﻿namespace BuildingsIterator
 {
     using System;
     using System.Collections;

@@ -7,22 +7,92 @@
     using LibiadaCore.Core.Characteristics.Calculators;
     using LibiadaCore.Core.SimpleTypes;
 
+    /// <summary>
+    /// The composition.
+    /// </summary>
     public class Composition
     {
+        /// <summary>
+        /// The regularity.
+        /// </summary>
         public double Regularity;
+
+        /// <summary>
+        /// The periodicity.
+        /// </summary>
         public double Periodicity;
+
+        /// <summary>
+        /// The avg remoteness.
+        /// </summary>
         public double AvgRemoteness;
+
+        /// <summary>
+        /// The avg depth.
+        /// </summary>
         public double AvgDepth;
-        private double IInfo;
-        private double OIInfo;
-        private FmotivArray Range = new FmotivArray();
+
+        /// <summary>
+        /// The p lex.
+        /// </summary>
         public Lexicon PLex = new Lexicon();
+
+        /// <summary>
+        /// The t lex.
+        /// </summary>
         public Lexicon TLex = new Lexicon();
-        private Chain chain;
-        private Difference FreqDiff = new Difference();
-        private Difference LogNDiff = new Difference();
+
+        /// <summary>
+        /// The v diff.
+        /// </summary>
         public Difference VDiff = new Difference();
+
+        /// <summary>
+        /// The i info.
+        /// </summary>
+        private double IInfo;
+
+        /// <summary>
+        /// The oi info.
+        /// </summary>
+        private double OIInfo;
+
+        /// <summary>
+        /// The range.
+        /// </summary>
+        private FmotivArray Range = new FmotivArray();
+
+        /// <summary>
+        /// The chain.
+        /// </summary>
+        private Chain chain;
+
+        /// <summary>
+        /// The freq diff.
+        /// </summary>
+        private Difference FreqDiff = new Difference();
+
+        /// <summary>
+        /// The log n diff.
+        /// </summary>
+        private Difference LogNDiff = new Difference();
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Composition"/> class.
+        /// </summary>
+        public Composition()
+        {
+            DisplayData = new DisplayData();
+        }
+
+        /// <summary>
+        /// Gets the display data.
+        /// </summary>
         public DisplayData DisplayData { get; private set; }
+
+        /// <summary>
+        /// Gets the entropy.
+        /// </summary>
         public double Entropy { get; private set; }
 
         /// <summary>
@@ -33,21 +103,31 @@
             get { return (int)IInfo; }
         }
 
-        public Composition()
-        {
-            DisplayData = new DisplayData();
-        }
-
+        /// <summary>
+        /// The clone.
+        /// </summary>
+        /// <returns>
+        /// The <see cref="Composition"/>.
+        /// </returns>
         public Composition Clone()
         {
             return (Composition)MemberwiseClone();
         }
 
+        /// <summary>
+        /// The add fm.
+        /// </summary>
+        /// <param name="st">
+        /// The st.
+        /// </param>
         public void AddFM(string st)
         {
             Range.NewRecord(st);
         }
 
+        /// <summary>
+        /// The create p lex.
+        /// </summary>
         public void CreatePLex()
         {
             int N = 0;
@@ -79,6 +159,9 @@
             }
         }
 
+        /// <summary>
+        /// The create tlex.
+        /// </summary>
         public void CreateTlex()
         {
             double K;
@@ -97,16 +180,25 @@
             }
         }
 
+        /// <summary>
+        /// The range plex.
+        /// </summary>
         public void RangePlex()
         {
             PLex.RangeLex();
         }
 
+        /// <summary>
+        /// The range tlex.
+        /// </summary>
         public void RangeTlex()
         {
             TLex.RangeLex();
         }
 
+        /// <summary>
+        /// The identify range.
+        /// </summary>
         public void IdentifyRange()
         {
             for (int i = 0; i < Range.Length; i++)
@@ -121,6 +213,12 @@
             }
         }
 
+        /// <summary>
+        /// The make new chain.
+        /// </summary>
+        /// <returns>
+        /// The <see cref="Chain"/>.
+        /// </returns>
         public Chain MakeNewChain()
         {
             var newChain = new Chain(Range.Length);
@@ -134,7 +232,10 @@
             return newChain;
         }
 
-        public void CalcInfo()
+        /// <summary>
+        /// The calculate info.
+        /// </summary>
+        public void CalculateInfo()
         {
             IInfo = Math.Log(PLex.Capacity, 2);
 
@@ -142,7 +243,10 @@
             IInfo *= Range.Length;
         }
 
-        public void CalcEntropy()
+        /// <summary>
+        /// The calculate entropy.
+        /// </summary>
+        public void CalculateEntropy()
         {
             double Ent = 0;
             for (int i = 0; i < PLex.Capacity; i++)
@@ -153,7 +257,10 @@
             Entropy = Ent * (-1);
         }
 
-        public void CalcDepth()
+        /// <summary>
+        /// The calculate depth.
+        /// </summary>
+        public void CalculateDepth()
         {
             var calc = new Depth();
             AvgDepth = calc.Calculate(MakeNewChain(), Link.End);
@@ -164,7 +271,10 @@
             }
         }
 
-        public void CalcRemoteness()
+        /// <summary>
+        /// The calculate remoteness.
+        /// </summary>
+        public void CalculateRemoteness()
         {
             var calc = new AverageRemoteness();
             AvgRemoteness = calc.Calculate(chain, Link.End);
@@ -175,19 +285,28 @@
             }
         }
 
-        public void CalcRegularity()
+        /// <summary>
+        /// The calculate regularity.
+        /// </summary>
+        public void CalculateRegularity()
         {
             var calc = new Regularity();
             Regularity = calc.Calculate(chain, Link.End);
         }
 
-        public void CalcPeriodicity()
+        /// <summary>
+        /// The calculate periodicity.
+        /// </summary>
+        public void CalculatePeriodicity()
         {
             var calc = new Periodicity();
             Periodicity = calc.Calculate(chain, Link.End);
         }
 
-        public void CalcDifference()
+        /// <summary>
+        /// The calculate difference.
+        /// </summary>
+        public void CalculateDifference()
         {
             var ar1 = new List<double>();
             var ar2 = new List<double>();
@@ -228,21 +347,27 @@
                 }
             }
 
-            FreqDiff.CalcDifference(ar1, ar2, Range.Length, PLex.Capacity, TLex.Capacity);
-            LogNDiff.CalcDifference(ar3, ar4, Range.Length, PLex.Capacity, TLex.Capacity);
-            VDiff.CalcDifferenceV(TLex.Capacity, PLex.Capacity);
+            FreqDiff.CalculateDifference(ar1, ar2, Range.Length, PLex.Capacity, TLex.Capacity);
+            LogNDiff.CalculateDifference(ar3, ar4, Range.Length, PLex.Capacity, TLex.Capacity);
+            VDiff.CalculateDifferenceV(TLex.Capacity, PLex.Capacity);
         }
 
-        public void CalcCharacteristics()
+        /// <summary>
+        /// The calculate characteristics.
+        /// </summary>
+        public void CalculateCharacteristics()
         {
-            CalcDepth();
-            CalcRemoteness();
-            CalcRegularity();
-            CalcPeriodicity();
-            CalcEntropy();
-            CalcInfo();
+            CalculateDepth();
+            CalculateRemoteness();
+            CalculateRegularity();
+            CalculatePeriodicity();
+            CalculateEntropy();
+            CalculateInfo();
         }
 
+        /// <summary>
+        /// The fill display data.
+        /// </summary>
         public void FillDisplayData()
         {
             DisplayData.GreatOccur = PLex.GreatOccur;

@@ -178,6 +178,18 @@ namespace LibiadaCore.Core
             return intervalsManager;
         }
 
+        /// <summary>
+        /// The get relation intervals manager.
+        /// </summary>
+        /// <param name="first">
+        /// The first.
+        /// </param>
+        /// <param name="second">
+        /// The second.
+        /// </param>
+        /// <returns>
+        /// The <see cref="BinaryIntervalsManager"/>.
+        /// </returns>
         public BinaryIntervalsManager GetRelationIntervalsManager(IBaseObject first, IBaseObject second)
         {
             return GetRelationIntervalsManager(alphabet.IndexOf(first), alphabet.IndexOf(second));

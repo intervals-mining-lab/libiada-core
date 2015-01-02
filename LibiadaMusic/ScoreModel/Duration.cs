@@ -1,8 +1,8 @@
 ﻿namespace LibiadaMusic.ScoreModel
 {
-    using LibiadaCore.Core;
-
     using System;
+
+    using LibiadaCore.Core;
 
     /// <summary>
     /// длительности ноты
@@ -20,6 +20,69 @@
         /// (для сохранения после наложения триоли на длительность)
         /// </summary>
         private int odenominator;
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Duration"/> class.
+        /// </summary>
+        /// <param name="numerator">
+        /// The numerator.
+        /// </param>
+        /// <param name="denominator">
+        /// The denominator.
+        /// </param>
+        /// <param name="doted">
+        /// The doted.
+        /// </param>
+        /// <param name="ticks">
+        /// The ticks.
+        /// </param>
+        public Duration(int numerator, int denominator, bool doted, int ticks)
+        {
+            Numerator = numerator;
+            Denominator = denominator;
+            onumerator = numerator;
+            odenominator = denominator;
+            Ticks = ticks;
+            if (doted)
+            {
+                Placedot();
+            }
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Duration"/> class.
+        /// </summary>
+        /// <param name="numerator">
+        /// The numerator.
+        /// </param>
+        /// <param name="denominator">
+        /// The denominator.
+        /// </param>
+        /// <param name="tripletnum">
+        /// The tripletnum.
+        /// </param>
+        /// <param name="tripletdenom">
+        /// The tripletdenom.
+        /// </param>
+        /// <param name="doted">
+        /// The doted.
+        /// </param>
+        /// <param name="ticks">
+        /// The ticks.
+        /// </param>
+        public Duration(int numerator, int denominator, int tripletnum, int tripletdenom, bool doted, int ticks)
+        {
+            Numerator = numerator;
+            Denominator = denominator;
+            onumerator = numerator;
+            odenominator = denominator;
+            Ticks = ticks;
+            PlaceTriplet(tripletnum, tripletdenom);
+            if (doted)
+            {
+                Placedot();
+            }
+        }
 
         /// <summary>
         /// числитель в дроби доли
@@ -52,33 +115,15 @@
             get { return (double)onumerator / odenominator; }
         }
 
-        public Duration(int numerator, int denominator, bool doted, int ticks)
-        {
-            Numerator = numerator;
-            Denominator = denominator;
-            onumerator = numerator;
-            odenominator = denominator;
-            Ticks = ticks;
-            if (doted)
-            {
-                Placedot();
-            }
-        }
-
-        public Duration(int numerator, int denominator, int tripletnum, int tripletdenom, bool doted, int ticks)
-        {
-            Numerator = numerator;
-            Denominator = denominator;
-            onumerator = numerator;
-            odenominator = denominator;
-            Ticks = ticks;
-            PlaceTriplet(tripletnum, tripletdenom);
-            if (doted)
-            {
-                Placedot();
-            }
-        }
-
+        /// <summary>
+        /// The add duration.
+        /// </summary>
+        /// <param name="duration">
+        /// The duration.
+        /// </param>
+        /// <returns>
+        /// The <see cref="Duration"/>.
+        /// </returns>
         public Duration AddDuration(Duration duration)
         {
             int newnum = (Numerator * duration.Denominator) + (duration.Numerator * Denominator);
@@ -86,23 +131,29 @@
 
             for (int i = 2; i <= newnum; i++)
             {
-                if (newnum % i == 0) // если числитель делится на i
+                // если числитель делится на i
+                if (newnum % i == 0) 
                 {
-                    if (newdenom % i == 0) // и знаменатель делится на i (на случай триоли например)
+                    // и знаменатель делится на i (на случай триоли например)
+                    if (newdenom % i == 0) 
                     {
+                        // находим оставшиешся множители (могут входить в множимое по несколько раз)
                         newnum /= i;
                         newdenom /= i;
-                        i--; // находим оставшиешся множители (могут входить в множимое по несколько раз)
+                        i--;
                     }
                 }
             }
 
             //--cокращение получившейся дроби--
-            while (newdenom > 2) // пока знаменатель больше 2
+            // пока знаменатель больше 2
+            while (newdenom > 2)
             {
-                if (newnum % 2 == 0) // если числитель делится на 2
+                // если числитель делится на 2
+                if (newnum % 2 == 0) 
                 {
-                    if (newdenom % 2 == 0) // и знаменатель делится на 2 (на случай триоли например)
+                    // и знаменатель делится на 2 (на случай триоли например)
+                    if (newdenom % 2 == 0) 
                     {
                         // сокращаем на 2 дробь
                         newnum /= 2;
@@ -119,9 +170,18 @@
                 }
             }
 
-            return new Duration(newnum, newdenom, false, (Ticks + duration.Ticks));
+            return new Duration(newnum, newdenom, false, Ticks + duration.Ticks);
         }
 
+        /// <summary>
+        /// The sub duration.
+        /// </summary>
+        /// <param name="duration">
+        /// The duration.
+        /// </param>
+        /// <returns>
+        /// The <see cref="Duration"/>.
+        /// </returns>
         public Duration SubDuration(Duration duration)
         {
             var temp = (Duration)duration.Clone();
@@ -130,6 +190,46 @@
             return AddDuration(temp);
         }
 
+        /// <summary>
+        /// The clone.
+        /// </summary>
+        /// <returns>
+        /// The <see cref="IBaseObject"/>.
+        /// </returns>
+        public IBaseObject Clone()
+        {
+            var temp = new Duration(Numerator, Denominator, false, Ticks)
+            {
+                onumerator = onumerator,
+                odenominator = odenominator
+            };
+            return temp;
+        }
+
+        /// <summary>
+        /// The equals.
+        /// </summary>
+        /// <param name="obj">
+        /// The obj.
+        /// </param>
+        /// <returns>
+        /// The <see cref="bool"/>.
+        /// </returns>
+        public override bool Equals(object obj)
+        {
+            if (Math.Abs(Value - ((Duration)obj).Value) < 0.000001)
+            {
+                // если модул разности двух double меньше заданной точности,
+                // то можно считать что эти double равны
+                return true;
+            }
+
+            return false;
+        }
+
+        /// <summary>
+        /// The placedot.
+        /// </summary>
         private void Placedot()
         {
             if ((Numerator % 2) == 0)
@@ -143,32 +243,19 @@
             }
         }
 
+        /// <summary>
+        /// The place triplet.
+        /// </summary>
+        /// <param name="triplnum">
+        /// The triplnum.
+        /// </param>
+        /// <param name="tripldenom">
+        /// The tripldenom.
+        /// </param>
         private void PlaceTriplet(int triplnum, int tripldenom)
         {
             Numerator = Numerator * triplnum;
             Denominator = Denominator * tripldenom;
-        }
-
-        public IBaseObject Clone()
-        {
-            var temp = new Duration(Numerator, Denominator, false, Ticks)
-            {
-                onumerator = onumerator,
-                odenominator = odenominator
-            };
-            return temp;
-        }
-
-        public override bool Equals(object obj)
-        {
-            if (Math.Abs(Value - ((Duration)obj).Value) < 0.000001)
-            {
-                // если модул разности двух double меньше заданной точности,
-                // то можно считать что эти double равны
-                return true;
-            }
-
-            return false;
         }
     }
 }

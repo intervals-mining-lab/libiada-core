@@ -10,6 +10,31 @@
     public class Measure : IBaseObject
     {
         /// <summary>
+        /// Initializes a new instance of the <see cref="Measure"/> class.
+        /// </summary>
+        /// <param name="noteList">
+        /// The note list.
+        /// </param>
+        /// <param name="attributes">
+        /// The attributes.
+        /// </param>
+        public Measure(List<ValueNote> noteList, Attributes attributes)
+        {
+            if (attributes != null)
+            {
+                Attributes = (Attributes)attributes.Clone();
+            }
+
+            NoteList = new List<ValueNote>();
+
+            // создаем список нот, по средствам клонирования каждой ноты.
+            for (int i = 0; i < noteList.Count; i++) 
+            {
+                NoteList.Add((ValueNote)noteList[i].Clone());
+            }
+        }
+
+        /// <summary>
         /// список нот, класса Note
         /// </summary>
         public List<ValueNote> NoteList { get; private set; }
@@ -24,23 +49,16 @@
         /// </summary>
         public int Id { get; set; }
 
-        public Measure(List<ValueNote> noteList, Attributes attributes)
-        {
-            if (attributes != null)
-            {
-                Attributes = (Attributes)attributes.Clone();
-            }
-
-            NoteList = new List<ValueNote>();
-            for (int i = 0; i < noteList.Count; i++) // создаем список нот, по средствам клонирования каждой ноты.
-            {
-                NoteList.Add((ValueNote)noteList[i].Clone());
-            }
-        }
-
+        /// <summary>
+        /// The merge measures.
+        /// </summary>
+        /// <param name="measure">
+        /// The measure.
+        /// </param>
         public void MergeMeasures(Measure measure)
         {
             int k = 0;
+
             // проведём цикл до тех пор, пока номер текущей ноты не превышает количество нот в обоих тактах
             while ((k < NoteList.Count) && (k < measure.NoteList.Count))
             {
@@ -72,16 +90,32 @@
 
                 k++;
             }
+
             // теоретически на этом моменте у нас все ноты должны быть обработаны
             // хотя могло получиться, что в каком-то из тактов остались несклеенные ноты
         }
 
+        /// <summary>
+        /// The clone.
+        /// </summary>
+        /// <returns>
+        /// The <see cref="IBaseObject"/>.
+        /// </returns>
         public IBaseObject Clone()
         {
             var temp = new Measure(NoteList, Attributes);
             return temp;
         }
 
+        /// <summary>
+        /// The equals.
+        /// </summary>
+        /// <param name="obj">
+        /// The obj.
+        /// </param>
+        /// <returns>
+        /// The <see cref="bool"/>.
+        /// </returns>
         public override bool Equals(object obj)
         {
             if (NoteList.Count != ((Measure)obj).NoteList.Count)
@@ -103,6 +137,7 @@
             }
 
             return true;
+
             // TODO: сделать сравнение не по всей ноте/объекту, а еще только по месту например, 
             // TODO: из сравнения исключить триплет, так может различать одинаковые по длительности ноты, но записанные по разному(!)
         }

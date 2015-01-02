@@ -4,9 +4,15 @@
 
     using Microsoft.VisualStudio.TestTools.UnitTesting;
 
+    /// <summary>
+    /// The param equal fm tests.
+    /// </summary>
     [TestClass]
     public class ParamEqualFMTests
     {
+        /// <summary>
+        /// The param equal test.
+        /// </summary>
         [TestMethod]
         public void ParamEqualTest()
         {

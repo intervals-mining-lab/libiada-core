@@ -8,21 +8,70 @@
 
     using Microsoft.VisualStudio.TestTools.UnitTesting;
 
+    /// <summary>
+    /// The priority discover tests.
+    /// </summary>
     [TestClass]
     public class PriorityDiscoverTests
     {
+        /// <summary>
+        /// The note.
+        /// </summary>
         private ValueNote note = new ValueNote(new Pitch(1, 'E', 0), new Duration(1, 4, false, 480), false, Tie.None);
+
+        /// <summary>
+        /// The anote.
+        /// </summary>
         private ValueNote anote = new ValueNote(new Pitch(1, 'B', 0), new Duration(1, 2, false, 960), false, 0);
+
+        /// <summary>
+        /// The bnote.
+        /// </summary>
         private ValueNote bnote = new ValueNote((Pitch)null, new Duration(1, 4, false, 480), false, 0);
+
+        /// <summary>
+        /// The сnote.
+        /// </summary>
         private ValueNote сnote = new ValueNote(new Pitch(1, 'A', 0), new Duration(1, 4, 2, 3, false, 200), true, 0);
+
+        /// <summary>
+        /// The ccnote.
+        /// </summary>
         private ValueNote ccnote = new ValueNote(new Pitch(1, 'A', 0), new Duration(1, 8, 2, 3, false, 200), true, 0);
+
+        /// <summary>
+        /// The сccnote.
+        /// </summary>
         private ValueNote сccnote = new ValueNote(new Pitch(1, 'A', 0), new Duration(1, 8, 4, 7, false, 200), true, 0);
+
+        /// <summary>
+        /// The dnote.
+        /// </summary>
         private ValueNote dnote = new ValueNote(new Pitch(1, 'B', 0), new Duration(1, 16, false, 240), false, 0);
+
+        /// <summary>
+        /// The attributes.
+        /// </summary>
         private Attributes attributes = new Attributes(new Size(4, 4, 480), new Key(0, "minor"));
+
+        /// <summary>
+        /// The attributes 1.
+        /// </summary>
         private Attributes attributes1 = new Attributes(new Size(3, 4, 480), new Key(0, "minor"));
+
+        /// <summary>
+        /// The attributes 2.
+        /// </summary>
         private Attributes attributes2 = new Attributes(new Size(12, 8, 480), new Key(0, "minor"));
+
+        /// <summary>
+        /// The attributes 3.
+        /// </summary>
         private Attributes attributes3 = new Attributes(new Size(13, 16, 480), new Key(0, "minor"));
 
+        /// <summary>
+        /// The priority get set test.
+        /// </summary>
         [TestMethod]
         public void PriorityGetSetTest()
         {
@@ -35,6 +84,9 @@
             Assert.AreEqual(-1, anote.Priority);
         }
 
+        /// <summary>
+        /// The priority min duration test.
+        /// </summary>
         [TestMethod]
         public void PriorityMinDurationTest()
         {
@@ -42,8 +94,10 @@
 
             var notes = new List<ValueNote> { note, bnote, dnote, anote };
             var measure = new Measure(notes, attributes);
+
             // минимальнвя длительность ноты в такте measure 1/16 = 0.0625 у ноты dnote
             Assert.IsTrue(Math.Abs(pd.MinDuration(measure) - 0.0625) < 0.00001);
+
             // когда такт передается пустой, должен выкинуться эксепшн
             measure.NoteList.Clear();
             try
@@ -60,6 +114,9 @@
             }
         }
 
+        /// <summary>
+        /// The priority mask calculation first test.
+        /// </summary>
         [TestMethod]
         public void PriorityMaskCalculationFirstTest()
         {
@@ -71,7 +128,8 @@
             notes.Add(dnote);
             notes.Add(anote);
             var measure = new Measure(notes, attributes);
-            pd.CalcPriorityMask(measure);
+            pd.CalculatePriorityMask(measure);
+
             // так как минимальная длительность ноты в такте 1/16 то маска приоритетов должна разложиться (посчитаться) до 1/32
             Assert.AreEqual(0, pd.PriorityMask.NoteList[0].Priority);
             Assert.AreEqual(5, pd.PriorityMask.NoteList[1].Priority);
@@ -114,6 +172,9 @@
             }
         }
 
+        /// <summary>
+        /// The priority mask calculation second test.
+        /// </summary>
         [TestMethod]
         public void PriorityMaskCalculationSecondTest()
         {
@@ -121,7 +182,8 @@
 
             var notes = new List<ValueNote> { note, bnote, dnote, anote };
             var measure = new Measure(notes, attributes2);
-            pd.CalcPriorityMask(measure);
+            pd.CalculatePriorityMask(measure);
+
             // так как минимальная длительность ноты в такте 1/16 то маска приоритетов должна разложиться (посчитаться) до 1/32
             // размер 12/8, поэтому будет считаться приоритет для 48/32 нот
             Assert.AreEqual(0, pd.PriorityMask.NoteList[0].Priority);
@@ -172,6 +234,7 @@
             Assert.AreEqual(4, pd.PriorityMask.NoteList[45].Priority);
             Assert.AreEqual(3, pd.PriorityMask.NoteList[46].Priority);
             Assert.AreEqual(4, pd.PriorityMask.NoteList[47].Priority);
+
             // проверка длительностей
             foreach (var lnote in pd.PriorityMask.NoteList)
             {
@@ -180,6 +243,9 @@
             }
         }
 
+        /// <summary>
+        /// The priority mask calculation third test.
+        /// </summary>
         [TestMethod]
         public void PriorityMaskCalculationThirdTest()
         {
@@ -187,7 +253,8 @@
 
             var notes = new List<ValueNote> { note, bnote, dnote, anote };
             var measure = new Measure(notes, attributes3);
-            pd.CalcPriorityMask(measure);
+            pd.CalculatePriorityMask(measure);
+
             // так как минимальная длительность ноты в такте 1/16 то маска приоритетов должна разложиться (посчитаться) до 1/32
             // размер 13/16, поэтому будет считаться приоритет для 26/32 нот
             Assert.AreEqual(0, pd.PriorityMask.NoteList[0].Priority);
@@ -216,6 +283,7 @@
             Assert.AreEqual(3, pd.PriorityMask.NoteList[23].Priority);
             Assert.AreEqual(2, pd.PriorityMask.NoteList[24].Priority);
             Assert.AreEqual(3, pd.PriorityMask.NoteList[25].Priority);
+
             // проверка длительностей
             foreach (var lnote in pd.PriorityMask.NoteList)
             {
@@ -224,6 +292,9 @@
             }
         }
 
+        /// <summary>
+        /// The priority mask calculation fourth test.
+        /// </summary>
         [TestMethod]
         public void PriorityMaskCalculationFourthTest()
         {
@@ -231,7 +302,8 @@
 
             var notes = new List<ValueNote> { note, anote };
             var measure = new Measure(notes, attributes1);
-            pd.CalcPriorityMask(measure);
+            pd.CalculatePriorityMask(measure);
+
             // так как минимальная длительность ноты в такте 1/4 то маска приоритетов должна разложиться (посчитаться) до 1/4
             // размер 3/4, поэтому будет считаться приоритет для 3/4 нот
             Assert.AreEqual(0, pd.PriorityMask.NoteList[0].Priority);
@@ -240,6 +312,7 @@
             Assert.AreEqual(2, pd.PriorityMask.NoteList[3].Priority);
             Assert.AreEqual(1, pd.PriorityMask.NoteList[4].Priority);
             Assert.AreEqual(2, pd.PriorityMask.NoteList[5].Priority);
+
             // проверка длительностей
             foreach (var lnote in pd.PriorityMask.NoteList)
             {
@@ -248,6 +321,9 @@
             }
         }
 
+        /// <summary>
+        /// The priority discover test.
+        /// </summary>
         [TestMethod]
         public void PriorityDiscoverTest()
         {

@@ -40,7 +40,7 @@ namespace MarkovChains.MarkovChain
         /// <summary>
         /// Initializes a new instance of the <see cref="MarkovChainBase"/> class.
         /// </summary>
-        /// <param name="i">
+        /// <param name="rank">
         /// Порядок марковской цепи
         /// </param>
         /// <param name="congenericRang">

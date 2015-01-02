@@ -7,10 +7,6 @@ namespace MarkovChains.MarkovChain
     /// <summary>
     /// Фабрика создающая марковскую цепь
     /// </summary>
-    /// <typeparam name="TChainGenerated">
-    /// </typeparam>
-    /// <typeparam name="TChainTaught">
-    /// </typeparam>
     public class MarkovChainFactory
     {
         /// <summary>

@@ -7,10 +7,17 @@
 
     using Microsoft.VisualStudio.TestTools.UnitTesting;
 
+    /// <summary>
+    /// The fmotiv divider tests.
+    /// </summary>
     [TestClass]
     public class FmotivDividerTests
     {
         // ТЕСТЫ ПМТ
+
+        /// <summary>
+        /// The fmotiv divider first test.
+        /// </summary>
         [TestMethod]
         public void FmotivDividerFirstTest()
         {
@@ -34,8 +41,8 @@
 
             // создание объекта для деления монотрека на фмотивы
             var fmdivider = new FmotivDivider();
-            // создание результирующей цепочки фмотивов
 
+            // создание результирующей цепочки фмотивов
             // вычисление, опрделение, разбиение на  ф-мотивы данного монотрека
             var chain = fmdivider.GetDivision(unitrack, ParamPauseTreatment.Ignore);
             chain.Id = 0;
@@ -59,6 +66,9 @@
             Assert.IsTrue(secondChain.Equals(chain));
         }
 
+        /// <summary>
+        /// The fmotiv divider second test.
+        /// </summary>
         [TestMethod]
         public void FmotivDividerSecondTest()
         {
@@ -82,8 +92,8 @@
 
             // создание объекта для деления монотрека на фмотивы
             var fmdivider = new FmotivDivider();
-            // создание результирующей цепочки фмотивов
 
+            // создание результирующей цепочки фмотивов
             // вычисление, опрделение, разбиение на  ф-мотивы данного монотрека
             FmotivChain fmchain = fmdivider.GetDivision(unitrack, (int)ParamPauseTreatment.Ignore);
             fmchain.Id = 0;
@@ -107,6 +117,9 @@
             Assert.IsTrue(fmchain1.Equals(fmchain));
         }
 
+        /// <summary>
+        /// The test fmotiv third divider.
+        /// </summary>
         [TestMethod]
         public void TestFmotivThirdDivider()
         {
@@ -139,8 +152,8 @@
 
             // создание объекта для деления монотрека на фмотивы
             var fmdivider = new FmotivDivider();
-            // создание результирующей цепочки фмотивов
 
+            // создание результирующей цепочки фмотивов
             // вычисление, опрделение, разбиение на  ф-мотивы данного монотрека
             var fmchain = fmdivider.GetDivision(unitrack, (int)ParamPauseTreatment.Ignore);
             fmchain.Id = 0;
@@ -168,6 +181,9 @@
             Assert.IsTrue(fmchain1.Equals(fmchain));
         }
 
+        /// <summary>
+        /// The fmotiv divider fourth test.
+        /// </summary>
         [TestMethod]
         public void FmotivDividerFourthTest()
         {
@@ -190,8 +206,8 @@
 
             // создание объекта для деления монотрека на фмотивы
             var fmdivider = new FmotivDivider();
-            // создание результирующей цепочки фмотивов
 
+            // создание результирующей цепочки фмотивов
             // вычисление, опрделение, разбиение на  ф-мотивы данного монотрека
             var fmchain = fmdivider.GetDivision(unitrack, (int)ParamPauseTreatment.Ignore);
             fmchain.Id = 0;
@@ -211,6 +227,9 @@
             Assert.IsTrue(fmchain1.Equals(fmchain));
         }
 
+        /// <summary>
+        /// The fmotiv divider fivth test.
+        /// </summary>
         [TestMethod]
         public void FmotivDividerFivthTest()
         {
@@ -236,8 +255,8 @@
 
             // создание объекта для деления монотрека на фмотивы
             var fmdivider = new FmotivDivider();
-            // создание результирующей цепочки фмотивов
 
+            // создание результирующей цепочки фмотивов
             // вычисление, опрделение, разбиение на  ф-мотивы данного монотрека
             var fmchain = fmdivider.GetDivision(unitrack, (int)ParamPauseTreatment.Ignore);
             fmchain.Id = 0;
@@ -262,6 +281,9 @@
             Assert.IsTrue(fmchain1.Equals(fmchain));
         }
 
+        /// <summary>
+        /// The fmotiv divider sixth test.
+        /// </summary>
         [TestMethod]
         public void FmotivDividerSixthTest()
         {
@@ -286,8 +308,8 @@
 
             // создание объекта для деления монотрека на фмотивы
             var fmdivider = new FmotivDivider();
-            // создание результирующей цепочки фмотивов
 
+            // создание результирующей цепочки фмотивов
             // вычисление, опрделение, разбиение на  ф-мотивы данного монотрека
             var fmchain = fmdivider.GetDivision(unitrack, (int)ParamPauseTreatment.Ignore);
             fmchain.Id = 0;
@@ -315,6 +337,9 @@
             Assert.IsTrue(fmchain1.Equals(fmchain));
         }
 
+        /// <summary>
+        /// The fmotiv divider seventh test.
+        /// </summary>
         [TestMethod]
         public void FmotivDividerSeventhTest()
         {
@@ -337,8 +362,8 @@
 
             // создание объекта для деления монотрека на фмотивы
             var fmdivider = new FmotivDivider();
-            // создание результирующей цепочки фмотивов
 
+            // создание результирующей цепочки фмотивов
             // вычисление, опрделение, разбиение на  ф-мотивы данного монотрека
             FmotivChain fmchain = fmdivider.GetDivision(unitrack, (int)ParamPauseTreatment.Ignore);
             fmchain.Id = 0;
@@ -357,6 +382,9 @@
             Assert.IsTrue(fmchain1.Equals(fmchain));
         }
 
+        /// <summary>
+        /// The fmotiv divider eighth test.
+        /// </summary>
         [TestMethod]
         public void FmotivDividerEighthTest()
         {
@@ -380,8 +408,8 @@
 
             // создание объекта для деления монотрека на фмотивы
             var fmdivider = new FmotivDivider();
-            // создание результирующей цепочки фмотивов
 
+            // создание результирующей цепочки фмотивов
             // вычисление, опрделение, разбиение на  ф-мотивы данного монотрека
             FmotivChain fmchain = fmdivider.GetDivision(unitrack, (int)ParamPauseTreatment.Ignore);
             fmchain.Id = 0;
@@ -401,6 +429,9 @@
             Assert.IsTrue(fmchain1.Equals(fmchain));
         }
 
+        /// <summary>
+        /// The fmotiv divider pause silence test.
+        /// </summary>
         [TestMethod]
         public void FmotivDividerPauseSilenceTest()
         {
@@ -424,8 +455,8 @@
 
             // создание объекта для деления монотрека на фмотивы
             var fmdivider = new FmotivDivider();
-            // создание результирующей цепочки фмотивов
 
+            // создание результирующей цепочки фмотивов
             // вычисление, опрделение, разбиение на  ф-мотивы данного монотрека
             FmotivChain fmchain = fmdivider.GetDivision(unitrack, ParamPauseTreatment.SilenceNote);
             fmchain.Id = 0;

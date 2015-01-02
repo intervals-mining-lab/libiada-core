@@ -5,12 +5,6 @@ namespace MarkovChains.MarkovChain
     /// <summary>
     /// Класс описывающий статичную однородную марковскую цепь
     /// </summary>
-    /// <typeparam name="TChainGenerated">
-    /// Тип генерируемой марковской цепи
-    /// </typeparam>
-    /// <typeparam name="TChainTaught">
-    /// Тип обучающей цепи
-    /// </typeparam>
     public class MarkovChainCongenericStatic :
         MarkovChainNotCongenericStatic
     {

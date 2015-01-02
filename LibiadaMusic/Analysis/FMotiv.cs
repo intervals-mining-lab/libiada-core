@@ -3,8 +3,26 @@
     using System;
     using System.Collections;
 
+    /// <summary>
+    /// The f motiv.
+    /// </summary>
     public class FMotiv
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="FMotiv"/> class.
+        /// </summary>
+        /// <param name="id">
+        /// The id.
+        /// </param>
+        /// <param name="st">
+        /// The st.
+        /// </param>
+        /// <param name="occur">
+        /// The occur.
+        /// </param>
+        /// <param name="freq">
+        /// The freq.
+        /// </param>
         public FMotiv(int id, string st, int occur, double freq)
         {
             Id = id;
@@ -50,28 +68,40 @@
         public double Depth { private get; set; }
 
         /// <summary>
-        /// Условные вероятности
+        /// Gets the log depth.
         /// </summary>
-        private ArrayList Probability { get; set; }
-
         public double LogDepth
         {
             get { return Math.Log(Depth, 2); }
         }
 
+        /// <summary>
+        /// Gets the log rank.
+        /// </summary>
         public double LogRank
         {
             get { return Math.Log(Rank, 2); }
         }
 
+        /// <summary>
+        /// Gets the log occurrence.
+        /// </summary>
         public double LogOccurrence
         {
             get { return Math.Log(Occurrence, 2); }
         }
 
+        /// <summary>
+        /// Gets the log remoteness.
+        /// </summary>
         public double LogRemoteness
         {
             get { return Math.Log(Remoteness, 2); }
         }
+
+        /// <summary>
+        /// Условные вероятности
+        /// </summary>
+        private ArrayList Probability { get; set; }
     }
 }

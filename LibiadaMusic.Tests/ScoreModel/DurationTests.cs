@@ -4,9 +4,15 @@
 
     using Microsoft.VisualStudio.TestTools.UnitTesting;
 
+    /// <summary>
+    /// The duration tests.
+    /// </summary>
     [TestClass]
     public class DurationTests
     {
+        /// <summary>
+        /// The add duration test.
+        /// </summary>
         [TestMethod]
         public void AddDurationTest()
         {
@@ -17,9 +23,11 @@
             // duration1
             Assert.AreEqual(1, duration1.Numerator);
             Assert.AreEqual(2, duration1.Denominator);
+
             // duration2
             Assert.AreEqual(1, duration2.Numerator);
             Assert.AreEqual(4, duration2.Denominator);
+
             // duration3
             Assert.AreEqual(3, duration3.Numerator);
             Assert.AreEqual(4, duration3.Denominator);

@@ -1,12 +1,19 @@
 ﻿namespace LibiadaMusic.MusicXml
 {
     using System;
-    using System.Xml;
     using System.Collections.Generic;
+    using System.Xml;
+
     using LibiadaMusic.ScoreModel;
 
+    /// <summary>
+    /// The music xml parser.
+    /// </summary>
     public class MusicXmlParser
     {
+        /// <summary>
+        /// The current attributes.
+        /// </summary>
         private Attributes currentAttributes;
 
         /// <summary>
@@ -14,6 +21,15 @@
         /// </summary>
         public ScoreTrack ScoreModel { get; private set; }
 
+        /// <summary>
+        /// The execute.
+        /// </summary>
+        /// <param name="xmlDocument">
+        /// The xml document.
+        /// </param>
+        /// <param name="filename">
+        /// The filename.
+        /// </param>
         public void Execute(XmlDocument xmlDocument, string filename)
         {
             // TODO: проверка схемы Xml на соотвествие схеме MusicXml
@@ -21,11 +37,21 @@
             ScoreModel = new ScoreTrack(filename, ParseCongenericScoreTracks((XmlDocument)xmlDocument.Clone()));
         }
 
+        /// <summary>
+        /// The parse congeneric score tracks.
+        /// </summary>
+        /// <param name="scoreNode">
+        /// The score node.
+        /// </param>
+        /// <returns>
+        /// The <see cref="List"/>.
+        /// </returns>
         private List<CongenericScoreTrack> ParseCongenericScoreTracks(XmlDocument scoreNode)
         {
             var temp = new List<CongenericScoreTrack>();
 
             XmlNodeList congenericList = scoreNode.GetElementsByTagName("part");
+
             // Создаем и заполняем лист по тегу "part"  
             for (int i = 0; i < congenericList.Count; i++)
             {
@@ -36,6 +62,15 @@
             return temp;
         }
 
+        /// <summary>
+        /// The parse measures.
+        /// </summary>
+        /// <param name="congenericScoreNode">
+        /// The congeneric score node.
+        /// </param>
+        /// <returns>
+        /// The <see cref="List"/>.
+        /// </returns>
         private List<Measure> ParseMeasures(XmlNode congenericScoreNode)
         {
             XmlNodeList measureList = congenericScoreNode.ChildNodes;
@@ -48,6 +83,15 @@
             return measures;
         }
 
+        /// <summary>
+        /// The parse attributes.
+        /// </summary>
+        /// <param name="measureNode">
+        /// The measure node.
+        /// </param>
+        /// <returns>
+        /// The <see cref="Attributes"/>.
+        /// </returns>
         private Attributes ParseAttributes(XmlNode measureNode)
         {
             foreach (XmlNode measureChild in measureNode.ChildNodes)
@@ -66,6 +110,15 @@
             return currentAttributes;
         }
 
+        /// <summary>
+        /// The parse size.
+        /// </summary>
+        /// <param name="attributeNode">
+        /// The attribute node.
+        /// </param>
+        /// <returns>
+        /// The <see cref="Size"/>.
+        /// </returns>
         private Size ParseSize(XmlNode attributeNode)
         {
             int ticks = 0;
@@ -109,6 +162,15 @@
             return null;
         }
 
+        /// <summary>
+        /// The parse key.
+        /// </summary>
+        /// <param name="attributeNode">
+        /// The attribute node.
+        /// </param>
+        /// <returns>
+        /// The <see cref="Key"/>.
+        /// </returns>
         private Key ParseKey(XmlNode attributeNode)
         {
             foreach (XmlNode attributeChild in attributeNode.ChildNodes)
@@ -146,6 +208,15 @@
             return null;
         }
 
+        /// <summary>
+        /// The parse notes.
+        /// </summary>
+        /// <param name="measureNode">
+        /// The measure node.
+        /// </param>
+        /// <returns>
+        /// The <see cref="List"/>.
+        /// </returns>
         private List<ValueNote> ParseNotes(XmlNode measureNode)
         {
             var notes = new List<ValueNote>();
@@ -185,6 +256,17 @@
             }
         }
 
+        /// <summary>
+        /// The parse pitch.
+        /// </summary>
+        /// <param name="noteNode">
+        /// The note node.
+        /// </param>
+        /// <returns>
+        /// The <see cref="Pitch"/>.
+        /// </returns>
+        /// <exception cref="Exception">
+        /// </exception>
         private Pitch ParsePitch(XmlNode noteNode)
         {
             string childName = string.Empty;
@@ -233,10 +315,24 @@
             throw new Exception("LibiadaMusic.XmlParser: error while Note parsing: no pitch or rest: " + childName);
         }
 
+        /// <summary>
+        /// The parse tie.
+        /// </summary>
+        /// <param name="noteNode">
+        /// The note node.
+        /// </param>
+        /// <returns>
+        /// The <see cref="Tie"/>.
+        /// </returns>
+        /// <exception cref="Exception">
+        /// </exception>
         private Tie ParseTie(XmlNode noteNode)
         {
-            bool start = false; // флаг наличия начала лиги
-            bool stop = false; // флаг наличия конца лиги
+            // флаг наличия начала лиги
+            bool start = false;
+
+            // флаг наличия конца лиги
+            bool stop = false; 
             foreach (XmlNode noteChild in noteNode.ChildNodes)
             {
                 if (noteChild.Name == "tie")
@@ -277,6 +373,15 @@
             return Tie.None;
         }
 
+        /// <summary>
+        /// The parse triplet.
+        /// </summary>
+        /// <param name="noteNode">
+        /// The note node.
+        /// </param>
+        /// <returns>
+        /// The <see cref="bool"/>.
+        /// </returns>
         private bool ParseTriplet(XmlNode noteNode)
         {
             foreach (XmlNode noteChild in noteNode.ChildNodes)
@@ -286,9 +391,19 @@
                     return true;
                 }
             }
+
             return false;
         }
 
+        /// <summary>
+        /// The parse duration.
+        /// </summary>
+        /// <param name="noteNode">
+        /// The note node.
+        /// </param>
+        /// <returns>
+        /// The <see cref="Duration"/>.
+        /// </returns>
         private Duration ParseDuration(XmlNode noteNode)
         {
             string type = string.Empty;

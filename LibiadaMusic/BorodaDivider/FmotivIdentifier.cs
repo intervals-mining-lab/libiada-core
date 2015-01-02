@@ -2,8 +2,26 @@
 {
     using System.Linq;
 
+    /// <summary>
+    /// The fmotiv identifier.
+    /// </summary>
     public class FmotivIdentifier
     {
+        /// <summary>
+        /// The get identification.
+        /// </summary>
+        /// <param name="fmotivChain">
+        /// The fmotiv chain.
+        /// </param>
+        /// <param name="paramPauseTreatment">
+        /// The param pause treatment.
+        /// </param>
+        /// <param name="paramEqualFM">
+        /// The param equal fm.
+        /// </param>
+        /// <returns>
+        /// The <see cref="FmotivChain"/>.
+        /// </returns>
         public FmotivChain GetIdentification(FmotivChain fmotivChain, ParamPauseTreatment paramPauseTreatment, ParamEqualFM paramEqualFM)
         {
             var chain = (FmotivChain)fmotivChain.Clone();
@@ -32,6 +50,7 @@
                             chain.FmotivList[j].Id--;
                         }
                     }
+
                     // уменьшаем i на 1 чтобы еще раз проверить есть ли это i среди цепи после уменьшения id-ек больших i
                     i--;
                 }

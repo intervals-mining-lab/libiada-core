@@ -6,9 +6,15 @@
 
     using Microsoft.VisualStudio.TestTools.UnitTesting;
 
+    /// <summary>
+    /// The congeneric score track tests.
+    /// </summary>
     [TestClass]
     public class CongenericScoreTrackTests
     {
+        /// <summary>
+        /// The value note order first test.
+        /// </summary>
         [TestMethod]
         public void ValueNoteOrderFirstTest()
         {
@@ -84,6 +90,9 @@
             Assert.AreEqual(uni.NoteOrder()[21].Id, 8);
         }
 
+        /// <summary>
+        /// The value note order second test.
+        /// </summary>
         [TestMethod]
         public void ValueNoteOrderSecondTest()
         {
@@ -159,6 +168,9 @@
             Assert.AreEqual(uni.NoteIdOrder()[21], 8);
         }
 
+        /// <summary>
+        /// The measure order test.
+        /// </summary>
         [TestMethod]
         public void MeasureOrderTest()
         {
@@ -207,7 +219,6 @@
                 new ValueNote((Pitch)null, new Duration(1, 16, false, 128), false, Tie.None, 1),
                 new ValueNote((Pitch)null, new Duration(1, 16, false, 128), false, Tie.None, 1)
             };
-
 
             var attr = new Attributes(new Size(4, 4, 128), new Key(5));
 

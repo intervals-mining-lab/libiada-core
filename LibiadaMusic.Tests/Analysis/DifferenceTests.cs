@@ -4,9 +4,15 @@
 
     using Microsoft.VisualStudio.TestTools.UnitTesting;
 
+    /// <summary>
+    /// The difference tests.
+    /// </summary>
     [TestClass]
     public class DifferenceTests
     {
+        /// <summary>
+        /// The difference test.
+        /// </summary>
         [TestMethod]
         public void DifferenceTest()
         {

@@ -3,12 +3,14 @@ namespace MarkovChains.MarkovChain.Matrices.Probability
     using System;
     using System.Collections.Generic;
 
-    using LibiadaCore.Core;
-    using LibiadaCore.Core.SimpleTypes;
+    using Absolute;
+
+    using Base;
 
     using Builders;
-    using Absolute;
-    using Base;
+
+    using LibiadaCore.Core;
+    using LibiadaCore.Core.SimpleTypes;
 
     /// <summary>
     /// Матрица-строка веротяностей.

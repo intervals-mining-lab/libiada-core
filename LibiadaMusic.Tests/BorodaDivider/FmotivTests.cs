@@ -8,12 +8,25 @@
 
     using Microsoft.VisualStudio.TestTools.UnitTesting;
 
+    /// <summary>
+    /// The fmotiv tests.
+    /// </summary>
     [TestClass]
     public class FmotivTests
     {
+        /// <summary>
+        /// The note.
+        /// </summary>
         private ValueNote note = new ValueNote(new Pitch(1, 'E', 0), new Duration(1, 4, false, 480), false, Tie.None);
+
+        /// <summary>
+        /// The anote.
+        /// </summary>
         private ValueNote anote = new ValueNote(new Pitch(1, 'B', 0), new Duration(1, 2, false, 960), false, 0);
 
+        /// <summary>
+        /// The fmotiv test.
+        /// </summary>
         [TestMethod]
         public void FmotivTest()
         {
@@ -33,9 +46,13 @@
             Assert.AreEqual(0, fmotiv.Id);
             fmotiv.Id = 1;
             Assert.AreEqual(1, fmotiv.Id);
+
             // проверка на идентичность нот проверяется только высота звучания и реальная длительность, не сравнивая приоритеты, лиги, триоли
         }
 
+        /// <summary>
+        /// The fmotiv without pauses first test.
+        /// </summary>
         [TestMethod]
         public void FmotivWithoutPausesFirstTest()
         {
@@ -52,6 +69,9 @@
             Assert.AreEqual(fmotiv.PauseTreatment((int)ParamPauseTreatment.Ignore).NoteList.Count, 3);
         }
 
+        /// <summary>
+        /// The fmotiv without pauses second test.
+        /// </summary>
         [TestMethod]
         public void FmotivWithoutPausesSecondTest()
         {
@@ -69,6 +89,9 @@
             Assert.AreEqual(fmotiv.PauseTreatment((int)ParamPauseTreatment.Ignore).NoteList.Count, 3);
         }
 
+        /// <summary>
+        /// The fmotiv tie gathered first test.
+        /// </summary>
         [TestMethod]
         public void FmotivTieGatheredFirstTest()
         {
@@ -89,6 +112,9 @@
             Assert.AreEqual(2, fmotiv.TieGathered().NoteList[1].Priority);
         }
 
+        /// <summary>
+        /// The fmotiv tie gathered second test.
+        /// </summary>
         [TestMethod]
         public void FmotivTieGatheredSecondTest()
         {
@@ -109,6 +135,9 @@
             Assert.AreEqual(2, fmotiv.TieGathered().NoteList[1].Priority);
         }
 
+        /// <summary>
+        /// The fmotiv tie gathered third test.
+        /// </summary>
         [TestMethod]
         public void FmotivTieGatheredThirdTest()
         {
@@ -199,6 +228,9 @@
             }
         }
 
+        /// <summary>
+        /// The fmotiv equals first test.
+        /// </summary>
         [TestMethod]
         public void FmotivEqualsFirstTest()
         {
@@ -237,6 +269,9 @@
             Assert.IsTrue(!fmotiv1.Equals(fmotiv2));
         }
 
+        /// <summary>
+        /// The fmotiv equals second test.
+        /// </summary>
         [TestMethod]
         public void FmotivEqualsSecondTest()
         {
@@ -252,6 +287,9 @@
             Assert.IsTrue(fmotiv.Equals(fmotiv));
         }
 
+        /// <summary>
+        /// The fmotiv equals third test.
+        /// </summary>
         [TestMethod]
         public void FmotivEqualsThirdTest()
         {

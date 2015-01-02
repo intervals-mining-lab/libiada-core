@@ -3,8 +3,49 @@
     using System;
     using System.Collections.Generic;
 
+    /// <summary>
+    /// The difference.
+    /// </summary>
     public class Difference
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Difference"/> class.
+        /// </summary>
+        public Difference()
+        {
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Difference"/> class.
+        /// </summary>
+        /// <param name="p1">
+        /// The p 1.
+        /// </param>
+        /// <param name="p2">
+        /// The p 2.
+        /// </param>
+        /// <param name="p3">
+        /// The p 3.
+        /// </param>
+        /// <param name="p4">
+        /// The p 4.
+        /// </param>
+        /// <param name="p5">
+        /// The p 5.
+        /// </param>
+        /// <param name="p6">
+        /// The p 6.
+        /// </param>
+        private Difference(double p1, double p2, double p3, double p4, double p5, double p6)
+        {
+            NonP = p1;
+            OnonP = p2;
+            SqHi = p3;
+            D = p4;
+            DV = p5;
+            PdV = p6;
+        }
+
         /// <summary>
         /// E|(Ft-Fp)|
         /// </summary>
@@ -35,34 +76,37 @@
         /// </summary>
         public double PdV { get; private set; }
 
-        public Difference()
-        {
-        }
-
-        private Difference(double p1, double p2, double p3, double p4, double p5, double p6)
-        {
-            NonP = p1;
-            OnonP = p2;
-            SqHi = p3;
-            D = p4;
-            DV = p5;
-            PdV = p6;
-        }
-
+        /// <summary>
+        /// The clone.
+        /// </summary>
+        /// <returns>
+        /// The <see cref="Difference"/>.
+        /// </returns>
         public Difference Clone()
         {
             return new Difference(NonP, OnonP, SqHi, D, DV, PdV);
         }
 
         /// <summary>
-        /// 
+        /// The calculate difference.
         /// </summary>
-        /// <param name="a1"></param>
-        /// <param name="a2"></param>
-        /// <param name="n">объем выборки</param>
-        /// <param name="pCap"></param>
-        /// <param name="lCap"></param>
-        public void CalcDifference(List<double> a1, List<double> a2, int n, int pCap, int lCap)
+        /// <param name="a1">
+        /// The a 1.
+        /// </param>
+        /// <param name="a2">
+        /// The a 2.
+        /// </param>
+        /// <param name="n">
+        /// The n.
+        /// объем выборки
+        /// </param>
+        /// <param name="pCap">
+        /// The p cap.
+        /// </param>
+        /// <param name="lCap">
+        /// The l cap.
+        /// </param>
+        public void CalculateDifference(List<double> a1, List<double> a2, int n, int pCap, int lCap)
         {
             if (a1.Count == a2.Count)
             {
@@ -89,7 +133,16 @@
             }
         }
 
-        public void CalcDifferenceV(int v1, int v2)
+        /// <summary>
+        /// The calculate difference v.
+        /// </summary>
+        /// <param name="v1">
+        /// The v 1.
+        /// </param>
+        /// <param name="v2">
+        /// The v 2.
+        /// </param>
+        public void CalculateDifferenceV(int v1, int v2)
         {
             DV = Math.Abs(v1 - v2);
             PdV = Math.Round((DV / v1) * 10000) / 100;

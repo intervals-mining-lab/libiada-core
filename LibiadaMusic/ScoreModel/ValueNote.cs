@@ -11,6 +11,75 @@
     public class ValueNote : IBaseObject
     {
         /// <summary>
+        /// Initializes a new instance of the <see cref="ValueNote"/> class.
+        /// </summary>
+        /// <param name="pitch">
+        /// The pitch.
+        /// </param>
+        /// <param name="duration">
+        /// The duration.
+        /// </param>
+        /// <param name="triplet">
+        /// The triplet.
+        /// </param>
+        /// <param name="tie">
+        /// The tie.
+        /// </param>
+        /// <param name="priority">
+        /// The priority.
+        /// </param>
+        public ValueNote(Pitch pitch, Duration duration, bool triplet, Tie tie, int priority = -1)
+        {
+            Pitch = new List<Pitch>(0);
+
+            // если не пауза то записываем высоту и наличие лиги
+            if (pitch != null)
+            {
+                Pitch.Add((Pitch)pitch.Clone());
+                Tie = tie;
+            }
+            else
+            {
+                // если нота - пауза, то не может быть лиги на паузу
+                Tie = Tie.None; 
+            }
+
+            Duration = (Duration)duration.Clone();
+            Triplet = triplet;
+
+            // приоритет если указан
+            Priority = priority; 
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ValueNote"/> class.
+        /// </summary>
+        /// <param name="pitchList">
+        /// The pitch list.
+        /// </param>
+        /// <param name="duration">
+        /// The duration.
+        /// </param>
+        /// <param name="triplet">
+        /// The triplet.
+        /// </param>
+        /// <param name="tie">
+        /// The tie.
+        /// </param>
+        /// <param name="priority">
+        /// The priority.
+        /// </param>
+        public ValueNote(List<Pitch> pitchList, Duration duration, bool triplet, Tie tie, int priority = -1)
+            : this((Pitch)null, duration, triplet, tie, priority)
+        {
+            if (pitchList.Count > 0)
+            {
+                Pitch.AddRange(pitchList);
+                Tie = tie;
+            }
+        }
+
+        /// <summary>
         /// id ноты для составления строя нот
         /// </summary>
         public int Id { get; set; }
@@ -40,34 +109,15 @@
         /// </summary>
         public Tie Tie { get; set; }
 
-        public ValueNote(Pitch pitch, Duration duration, bool triplet, Tie tie, int priority = -1)
-        {
-            Pitch = new List<Pitch>(0);
-            if (pitch != null) // если не пауза то записываем высоту и наличие лиги
-            {
-                Pitch.Add((Pitch)pitch.Clone());
-                Tie = tie;
-            }
-            else
-            {
-                Tie = Tie.None; // если нота - пауза, то не может быть лиги на паузу
-            }
-
-            Duration = (Duration)duration.Clone();
-            Triplet = triplet;
-            Priority = priority; // приоритет если указан
-        }
-
-        public ValueNote(List<Pitch> pitchList, Duration duration, bool triplet, Tie tie, int priority = -1)
-            : this((Pitch)null, duration, triplet, tie, priority)
-        {
-            if (pitchList.Count > 0)
-            {
-                Pitch.AddRange(pitchList);
-                Tie = tie;
-            }
-        }
-
+        /// <summary>
+        /// The split note.
+        /// </summary>
+        /// <param name="duration">
+        /// The duration.
+        /// </param>
+        /// <returns>
+        /// The <see cref="List"/>.
+        /// </returns>
         public List<ValueNote> SplitNote(Duration duration)
         {
             var clone = new List<ValueNote>(0) { (ValueNote)Clone(), (ValueNote)Clone() };
@@ -76,6 +126,14 @@
             return clone;
         }
 
+        /// <summary>
+        /// The add pitch.
+        /// </summary>
+        /// <param name="pitch">
+        /// The pitch.
+        /// </param>
+        /// <exception cref="ArgumentNullException">
+        /// </exception>
         public void AddPitch(Pitch pitch)
         {
             if (pitch == null)
@@ -86,11 +144,23 @@
             Pitch.Add(pitch);
         }
 
+        /// <summary>
+        /// The add pitch.
+        /// </summary>
+        /// <param name="pitch">
+        /// The pitch.
+        /// </param>
         public void AddPitch(List<Pitch> pitch)
         {
             Pitch.AddRange(pitch);
         }
 
+        /// <summary>
+        /// The set instrument.
+        /// </summary>
+        /// <param name="instrument">
+        /// The instrument.
+        /// </param>
         public void SetInstrument(int instrument)
         {
             foreach (Pitch p in Pitch)
@@ -99,6 +169,15 @@
             }
         }
 
+        /// <summary>
+        /// The pitch equals.
+        /// </summary>
+        /// <param name="pitchList">
+        /// The pitch list.
+        /// </param>
+        /// <returns>
+        /// The <see cref="bool"/>.
+        /// </returns>
         public bool PitchEquals(List<Pitch> pitchList)
         {
             if (Pitch.Count != pitchList.Count)
@@ -117,25 +196,44 @@
             return true;
         }
 
+        /// <summary>
+        /// The clone.
+        /// </summary>
+        /// <returns>
+        /// The <see cref="IBaseObject"/>.
+        /// </returns>
         public IBaseObject Clone()
         {
             return new ValueNote(Pitch, Duration, Triplet, Tie, Priority);
         }
 
+        /// <summary>
+        /// The equals.
+        /// </summary>
+        /// <param name="obj">
+        /// The obj.
+        /// </param>
+        /// <returns>
+        /// The <see cref="bool"/>.
+        /// </returns>
         public override bool Equals(object obj)
         {
-            if (Pitch == null || Pitch.Count == 0) // одна нота - пауза
+            // одна нота - пауза
+            if (Pitch == null || Pitch.Count == 0) 
             {
-                if (((ValueNote)obj).Pitch == null || ((ValueNote)obj).Pitch.Count == 0) // другая нота - пауза
+                // другая нота - пауза
+                if (((ValueNote)obj).Pitch == null || ((ValueNote)obj).Pitch.Count == 0) 
                 {
                     if (Duration.Equals(((ValueNote)obj).Duration))
                     {
                         // одинаковые по длине паузы
                         return true;
                     }
+
                     // разные по длине паузы
                     return false;
                 }
+
                 // пауза и нота не одинаковы
                 return false;
             }
@@ -152,6 +250,7 @@
             }
 
             return false;
+
             // TODO: сделать сравнение не по всей ноте/объекту, а еще только по месту например, 
             // TODO: из сравнения исключить триплет, так может различать одинаковые по длительности ноты, но записанные по разному(!)
         }

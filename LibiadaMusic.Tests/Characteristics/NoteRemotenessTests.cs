@@ -8,9 +8,15 @@
 
     using Microsoft.VisualStudio.TestTools.UnitTesting;
 
+    /// <summary>
+    /// The note remoteness tests.
+    /// </summary>
     [TestClass]
     public class NoteRemotenessTests
     {
+        /// <summary>
+        /// The value note remoteness test.
+        /// </summary>
         [TestMethod]
         public void ValueNoteRemotenessTest()
         {
@@ -30,6 +36,9 @@
             Assert.IsTrue(Math.Abs(0.75 - NoteCharacteristic.CalculateRemoteness(chain)) < 0.000001);
         }
 
+        /// <summary>
+        /// The value note remoteness pause test.
+        /// </summary>
         [TestMethod]
         public void ValueNoteRemotenessPauseTest()
         {
@@ -50,6 +59,9 @@
             Assert.IsTrue(Math.Abs(0.75 - NoteCharacteristic.CalculateRemoteness(chain)) < 0.000001);
         }
 
+        /// <summary>
+        /// The value note remoteness tie test.
+        /// </summary>
         [TestMethod]
         public void ValueNoteRemotenessTieTest()
         {
@@ -70,6 +82,9 @@
             Assert.IsTrue(Math.Abs(0.75 - NoteCharacteristic.CalculateRemoteness(chain)) < 0.000001);
         }
 
+        /// <summary>
+        /// The value note remoteness oct test.
+        /// </summary>
         [TestMethod]
         public void ValueNoteRemotenessOctTest()
         {

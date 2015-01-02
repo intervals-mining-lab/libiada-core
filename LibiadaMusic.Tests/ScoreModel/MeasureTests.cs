@@ -6,9 +6,15 @@
 
     using Microsoft.VisualStudio.TestTools.UnitTesting;
 
+    /// <summary>
+    /// The measure tests.
+    /// </summary>
     [TestClass]
     public class MeasureTests
     {
+        /// <summary>
+        /// The measure first test.
+        /// </summary>
         [TestMethod]
         public void MeasureFirstTest()
         {
@@ -30,6 +36,9 @@
             Assert.IsTrue(m1.Equals(m2));
         }
 
+        /// <summary>
+        /// The measure second test.
+        /// </summary>
         [TestMethod]
         public void MeasureSecondTest()
         {

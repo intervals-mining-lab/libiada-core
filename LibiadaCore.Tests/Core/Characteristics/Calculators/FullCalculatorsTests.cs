@@ -16,7 +16,7 @@
         /// <summary>
         /// The chains.
         /// </summary>
-        private readonly List<Chain> Chains = ChainsStorage.Chains;
+        private readonly List<Chain> chains = ChainsStorage.Chains;
 
         /// <summary>
         /// Gets or sets the calculator.
@@ -48,8 +48,8 @@
         /// </param>
         protected void ChainCharacteristicTest(int index, Link link, double value)
         {
-            Chains[index].FillIntervalManagers();
-            Assert.AreEqual(value, Calculator.Calculate(Chains[index], link), 0.0001);
+            this.chains[index].FillIntervalManagers();
+            Assert.AreEqual(value, Calculator.Calculate(this.chains[index], link), 0.0001);
         }
     }
 }

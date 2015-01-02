@@ -4,9 +4,15 @@
 
     using Microsoft.VisualStudio.TestTools.UnitTesting;
 
+    /// <summary>
+    /// The composition tests.
+    /// </summary>
     [TestClass]
     public class CompositionTests
     {
+        /// <summary>
+        /// The composition test.
+        /// </summary>
         [TestMethod]
         public void CompositionTest()
         {

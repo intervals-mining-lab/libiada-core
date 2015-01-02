@@ -4,8 +4,14 @@
 
     using SimpleTypes;
 
+    /// <summary>
+    /// The gc ratio.
+    /// </summary>
     public class GCRatio : IFullCalculator
     {
+        /// <summary>
+        /// The elements counter.
+        /// </summary>
         private readonly ICalculator counter = new ElementsCount();
         
         /// <summary>

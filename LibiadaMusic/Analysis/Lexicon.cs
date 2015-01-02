@@ -2,23 +2,76 @@
 {
     using System.Collections.Generic;
 
+    /// <summary>
+    /// The lexicon.
+    /// </summary>
     public class Lexicon
     {
+        /// <summary>
+        /// The new id.
+        /// </summary>
         private int newId;
+
+        /// <summary>
+        /// The great occur.
+        /// </summary>
         private double greatOccur;
+
+        /// <summary>
+        /// The capacity.
+        /// </summary>
         private int capacity;
+
+        /// <summary>
+        /// The rfm variety.
+        /// </summary>
         private List<FMotiv> RFMVariety = new List<FMotiv>();
+
+        /// <summary>
+        /// The ranged.
+        /// </summary>
         private bool ranged;
 
-        public double GreatFrequency { get; private set; }
-
-        public List<FMotiv> Data { get; private set; }
-
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Lexicon"/> class.
+        /// </summary>
         public Lexicon()
         {
             Data = new List<FMotiv>();
         }
 
+        /// <summary>
+        /// Gets the great frequency.
+        /// </summary>
+        public double GreatFrequency { get; private set; }
+
+        /// <summary>
+        /// Gets the data.
+        /// </summary>
+        public List<FMotiv> Data { get; private set; }
+
+        /// <summary>
+        /// Gets the capacity.
+        /// </summary>
+        public int Capacity
+        {
+            get { return capacity; }
+        }
+
+        /// <summary>
+        /// Gets the great occur.
+        /// </summary>
+        public double GreatOccur
+        {
+            get { return greatOccur; }
+        }
+
+        /// <summary>
+        /// The r data.
+        /// </summary>
+        /// <returns>
+        /// The <see cref="List"/>.
+        /// </returns>
         public List<FMotiv> RData()
         {
             if (!ranged)
@@ -29,17 +82,13 @@
             return RFMVariety;
         }
 
-        public int Capacity
-        {
-            get { return capacity; }
-        }
-
-        public double GreatOccur
-        {
-            get { return greatOccur; }
-        }
-
-        public double CalcGreatFrequency()
+        /// <summary>
+        /// The calculate great frequency.
+        /// </summary>
+        /// <returns>
+        /// The <see cref="double"/>.
+        /// </returns>
+        public double CalculateGreatFrequency()
         {
             GreatFrequency = 0;
             for (int i = 0; i < capacity; i++)
@@ -53,6 +102,18 @@
             return GreatFrequency;
         }
 
+        /// <summary>
+        /// The add f motiv.
+        /// </summary>
+        /// <param name="name">
+        /// The name.
+        /// </param>
+        /// <param name="occur">
+        /// The occur.
+        /// </param>
+        /// <param name="freq">
+        /// The freq.
+        /// </param>
         public void AddFMotiv(string name, int occur, double freq)
         {
             Data.Add(new FMotiv(newId, name, occur, freq));
@@ -65,6 +126,9 @@
             }
         }
 
+        /// <summary>
+        /// The range lex.
+        /// </summary>
         public void RangeLex()
         {
             var ar = new List<FMotiv>(Data);
@@ -88,6 +152,12 @@
             }
         }
 
+        /// <summary>
+        /// The range lex di.
+        /// </summary>
+        /// <returns>
+        /// The <see cref="List"/>.
+        /// </returns>
         public List<double> RangeLexDi()
         {
             var ar = new List<double>();
@@ -116,6 +186,12 @@
             return ar;
         }
 
+        /// <summary>
+        /// The range lex ri.
+        /// </summary>
+        /// <returns>
+        /// The <see cref="List"/>.
+        /// </returns>
         public List<double> RangeLexRi()
         {
             var ar = new List<double>();
@@ -144,6 +220,9 @@
             return ar;
         }
 
+        /// <summary>
+        /// The range lex elem.
+        /// </summary>
         public void RangeLexElem()
         {
             for (int i = 1; i < capacity + 1; i++)

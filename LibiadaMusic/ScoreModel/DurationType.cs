@@ -2,11 +2,26 @@
 {
     using System;
 
+    /// <summary>
+    /// The duration type.
+    /// </summary>
     public static class DurationType
     {
+        /// <summary>
+        /// The parse type.
+        /// </summary>
+        /// <param name="type">
+        /// The type.
+        /// </param>
+        /// <returns>
+        /// The <see cref="int[]"/>.
+        /// </returns>
+        /// <exception cref="Exception">
+        /// </exception>
         public static int[] ParseType(string type)
         {
-            var numDenom = new int[2]; // формируем массив из 2 элементов Numerator и Denominator по типу длительности
+            // формируем массив из 2 элементов Numerator и Denominator по типу длительности
+            var numDenom = new int[2]; 
             switch (type)
             {
                 case "whole":

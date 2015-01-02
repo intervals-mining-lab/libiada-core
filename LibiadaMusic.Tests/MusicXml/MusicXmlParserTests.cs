@@ -7,19 +7,26 @@
 
     using Microsoft.VisualStudio.TestTools.UnitTesting;
 
+    /// <summary>
+    /// The music xml parser tests.
+    /// </summary>
     [TestClass]
     public class MusicXmlParserTests
     {
+        /// <summary>
+        /// The xml parser test.
+        /// </summary>
         [TestMethod]
         public void XmlParserTest()
         {
-            var xmlreader = new MusicXmlReader("../../LibiadaMusicexample7Liga.xml");
-            var Parser = new MusicXmlParser();
+            var xmlReader = new MusicXmlReader("../../LibiadaMusicexample7Liga.xml");
+            var parser = new MusicXmlParser();
 
-            Parser.Execute(xmlreader.MusicXmlDocument, xmlreader.FileName);
+            parser.Execute(xmlReader.MusicXmlDocument, xmlReader.FileName);
 
             // Создание атрибутов для такта
             var attributes1 = new Attributes(new Size(7, 8, 1024), new Key(0, "major"));
+
             // Создание списков нот для каждого из 4 тактов
             var notes1 = new List<ValueNote>
             {
@@ -67,6 +74,7 @@
                 new ValueNote(new Pitch(3, 'A', 0), new Duration(1, 16, false, 256), false, Tie.None),
                 new ValueNote(new Pitch(4, 'C', 0), new Duration(1, 16, false, 256), false, Tie.None)
             };
+
             // создание списка тактов для монофонического трека p0
             var measures1 = new List<Measure>
             {
@@ -75,92 +83,127 @@
                 new Measure(notes3, (Attributes)attributes1.Clone()),
                 new Measure(notes4, (Attributes)attributes1.Clone())
             };
+
             // создание списка монофонических треков для полного музыкального трека
             var utracks = new List<CongenericScoreTrack> { new CongenericScoreTrack("p0", measures1) };
-            // создание полной модели музыкального трека/текста, с присвоением имени файла
-            var Scoremodel = new ScoreTrack("LibiadaMusicexample7Liga", utracks);
 
-            Assert.AreEqual(xmlreader.FileName, Parser.ScoreModel.Name);
-            Assert.AreEqual(Scoremodel.CongenericScoreTracks[0].MeasureList[0].Attributes, Parser.ScoreModel.CongenericScoreTracks[0].MeasureList[0].Attributes);
-            Assert.AreEqual(Scoremodel.CongenericScoreTracks[0].MeasureList[0].NoteList[0], Parser.ScoreModel.CongenericScoreTracks[0].MeasureList[0].NoteList[0]);
-            Assert.AreEqual(Scoremodel.CongenericScoreTracks[0].MeasureList[0], Parser.ScoreModel.CongenericScoreTracks[0].MeasureList[0]);
-            Assert.AreEqual(Scoremodel.CongenericScoreTracks[0].MeasureList[1], Parser.ScoreModel.CongenericScoreTracks[0].MeasureList[1]);
-            Assert.AreEqual(Scoremodel.CongenericScoreTracks[0].MeasureList[2], Parser.ScoreModel.CongenericScoreTracks[0].MeasureList[2]);
-            Assert.AreEqual(Scoremodel.CongenericScoreTracks[0].MeasureList[3], Parser.ScoreModel.CongenericScoreTracks[0].MeasureList[3]);
-            Assert.AreEqual(Scoremodel.CongenericScoreTracks[0], Parser.ScoreModel.CongenericScoreTracks[0]);
-            Assert.AreEqual(Scoremodel, Parser.ScoreModel);
+            // создание полной модели музыкального трека/текста, с присвоением имени файла
+            var scoreModel = new ScoreTrack("LibiadaMusicexample7Liga", utracks);
+
+            Assert.AreEqual(xmlReader.FileName, parser.ScoreModel.Name);
+            Assert.AreEqual(scoreModel.CongenericScoreTracks[0].MeasureList[0].Attributes, parser.ScoreModel.CongenericScoreTracks[0].MeasureList[0].Attributes);
+            Assert.AreEqual(scoreModel.CongenericScoreTracks[0].MeasureList[0].NoteList[0], parser.ScoreModel.CongenericScoreTracks[0].MeasureList[0].NoteList[0]);
+            Assert.AreEqual(scoreModel.CongenericScoreTracks[0].MeasureList[0], parser.ScoreModel.CongenericScoreTracks[0].MeasureList[0]);
+            Assert.AreEqual(scoreModel.CongenericScoreTracks[0].MeasureList[1], parser.ScoreModel.CongenericScoreTracks[0].MeasureList[1]);
+            Assert.AreEqual(scoreModel.CongenericScoreTracks[0].MeasureList[2], parser.ScoreModel.CongenericScoreTracks[0].MeasureList[2]);
+            Assert.AreEqual(scoreModel.CongenericScoreTracks[0].MeasureList[3], parser.ScoreModel.CongenericScoreTracks[0].MeasureList[3]);
+            Assert.AreEqual(scoreModel.CongenericScoreTracks[0], parser.ScoreModel.CongenericScoreTracks[0]);
+            Assert.AreEqual(scoreModel, parser.ScoreModel);
         }
 
+        /// <summary>
+        /// The poly xml parser test.
+        /// </summary>
         [TestMethod]
         public void PolyXmlParserTest()
         {
-            var xmlreader = new MusicXmlReader("../../polytest.xml");
-            var Parser = new MusicXmlParser();
+            var xmlReader = new MusicXmlReader("../../polytest.xml");
+            var parser = new MusicXmlParser();
 
-            Parser.Execute(xmlreader.MusicXmlDocument, xmlreader.FileName);
+            parser.Execute(xmlReader.MusicXmlDocument, xmlReader.FileName);
 
-            Assert.AreEqual(xmlreader.FileName, Parser.ScoreModel.Name);
-            Assert.AreEqual(Parser.ScoreModel.CongenericScoreTracks.Count, 1);
-            Assert.AreEqual(Parser.ScoreModel.CongenericScoreTracks[0].MeasureList.Count, 3);
-            Assert.AreEqual(Parser.ScoreModel.CongenericScoreTracks[0].MeasureList[0].NoteList.Count, 5);
-            Assert.AreEqual(Parser.ScoreModel.CongenericScoreTracks[0].MeasureList[1].NoteList.Count, 6);
-            Assert.AreEqual(Parser.ScoreModel.CongenericScoreTracks[0].MeasureList[2].NoteList.Count, 4);
-            Assert.AreEqual(Parser.ScoreModel.CongenericScoreTracks[0].MeasureList[0].NoteList[0].Pitch.Count, 2);
-            Assert.AreEqual(Parser.ScoreModel.CongenericScoreTracks[0].MeasureList[2].NoteList[0].Pitch.Count, 3);
-            Assert.AreEqual(Parser.ScoreModel.CongenericScoreTracks[0].MeasureList[0].NoteList[0].Duration.Denominator, 4);
-            Assert.AreEqual(Parser.ScoreModel.CongenericScoreTracks[0].MeasureList[0].NoteList[0].Pitch[0].Step.ToString(), "A");
-            Assert.AreEqual(Parser.ScoreModel.CongenericScoreTracks[0].MeasureList[0].NoteList[0].Pitch[1].Step.ToString(), "C");
-            Assert.AreEqual(Parser.ScoreModel.CongenericScoreTracks[0].MeasureList[2].NoteList[0].Duration.Denominator, 8);
-            Assert.AreEqual(Parser.ScoreModel.CongenericScoreTracks[0].MeasureList[2].NoteList[0].Pitch[0].Step.ToString(), "G");
-            Assert.AreEqual(Parser.ScoreModel.CongenericScoreTracks[0].MeasureList[2].NoteList[0].Pitch[1].Step.ToString(), "G");
-            Assert.AreEqual(Parser.ScoreModel.CongenericScoreTracks[0].MeasureList[2].NoteList[0].Pitch[2].Step.ToString(), "C");
+            Assert.AreEqual(xmlReader.FileName, parser.ScoreModel.Name);
+            Assert.AreEqual(parser.ScoreModel.CongenericScoreTracks.Count, 1);
+            Assert.AreEqual(parser.ScoreModel.CongenericScoreTracks[0].MeasureList.Count, 3);
+            Assert.AreEqual(parser.ScoreModel.CongenericScoreTracks[0].MeasureList[0].NoteList.Count, 5);
+            Assert.AreEqual(parser.ScoreModel.CongenericScoreTracks[0].MeasureList[1].NoteList.Count, 6);
+            Assert.AreEqual(parser.ScoreModel.CongenericScoreTracks[0].MeasureList[2].NoteList.Count, 4);
+            Assert.AreEqual(parser.ScoreModel.CongenericScoreTracks[0].MeasureList[0].NoteList[0].Pitch.Count, 2);
+            Assert.AreEqual(parser.ScoreModel.CongenericScoreTracks[0].MeasureList[2].NoteList[0].Pitch.Count, 3);
+            Assert.AreEqual(parser.ScoreModel.CongenericScoreTracks[0].MeasureList[0].NoteList[0].Duration.Denominator, 4);
+            Assert.AreEqual(parser.ScoreModel.CongenericScoreTracks[0].MeasureList[0].NoteList[0].Pitch[0].Step.ToString(), "A");
+            Assert.AreEqual(parser.ScoreModel.CongenericScoreTracks[0].MeasureList[0].NoteList[0].Pitch[1].Step.ToString(), "C");
+            Assert.AreEqual(parser.ScoreModel.CongenericScoreTracks[0].MeasureList[2].NoteList[0].Duration.Denominator, 8);
+            Assert.AreEqual(parser.ScoreModel.CongenericScoreTracks[0].MeasureList[2].NoteList[0].Pitch[0].Step.ToString(), "G");
+            Assert.AreEqual(parser.ScoreModel.CongenericScoreTracks[0].MeasureList[2].NoteList[0].Pitch[1].Step.ToString(), "G");
+            Assert.AreEqual(parser.ScoreModel.CongenericScoreTracks[0].MeasureList[2].NoteList[0].Pitch[2].Step.ToString(), "C");
         }
 
+        /// <summary>
+        /// The xml parser file name test.
+        /// </summary>
         [TestMethod]
         public void XmlParserFileNameTest()
         {
         }
 
+        /// <summary>
+        /// The xml parser scoretrack test.
+        /// </summary>
         [TestMethod]
         public void XmlParserScoretrackTest()
         {
         }
 
+        /// <summary>
+        /// The xml parser congeneric scoretrack test.
+        /// </summary>
         [TestMethod]
         public void XmlParserCongenericScoretrackTest()
         {
         }
 
+        /// <summary>
+        /// The xml parser measure test.
+        /// </summary>
         [TestMethod]
         public void XmlParserMeasureTest()
         {
         }
 
+        /// <summary>
+        /// The xml parser note test.
+        /// </summary>
         [TestMethod]
         public void XmlParserNoteTest()
         {
         }
 
+        /// <summary>
+        /// The xml parser attributes test.
+        /// </summary>
         [TestMethod]
         public void XmlParserAttributesTest()
         {
         }
 
+        /// <summary>
+        /// The xml parser pitch test.
+        /// </summary>
         [TestMethod]
         public void XmlParserPitchTest()
         {
         }
 
+        /// <summary>
+        /// The xml parser duration test.
+        /// </summary>
         [TestMethod]
         public void XmlParserDurationTest()
         {
         }
 
+        /// <summary>
+        /// The xml parser tie test.
+        /// </summary>
         [TestMethod]
         public void XmlParserTieTest()
         {
         }
 
+        /// <summary>
+        /// The xml parser triplet test.
+        /// </summary>
         [TestMethod]
         public void XmlParserTripletTest()
         {

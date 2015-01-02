@@ -3,9 +3,9 @@
     using System;
     using System.Collections.Generic;
 
-    using LibiadaMusic.ScoreModel;
-
     using LibiadaCore.Core;
+
+    using LibiadaMusic.ScoreModel;
 
     /// <summary>
     /// класс для хранения ф-мотива
@@ -13,22 +13,13 @@
     public class Fmotiv : IBaseObject
     {
         /// <summary>
-        /// список нот, входящих в  ф-мотив
+        /// Initializes a new instance of the <see cref="Fmotiv"/> class.
         /// </summary>
-        public List<ValueNote> NoteList { get; private set; }
-
-        public string Type { get; set; }
-
-        /// <summary>
-        /// Gets or sets id (-1 means not defined).
-        /// </summary>
-        public int Id { get; set; }
-
-        /// <summary>
-        /// Fmotiv constructor.
-        /// </summary>
-        /// <param name="type"></param>
+        /// <param name="type">
+        /// The type.
+        /// </param>
         /// <param name="id">
+        /// The id.
         /// порядковый номер - идентификатор
         /// (возможно введения доп id - глобального для словаря ф-мотивов)
         /// </param>
@@ -39,7 +30,34 @@
             NoteList = new List<ValueNote>();
         }
 
+        /// <summary>
+        /// список нот, входящих в  ф-мотив
+        /// </summary>
+        public List<ValueNote> NoteList { get; private set; }
+
+        /// <summary>
+        /// Gets or sets the type.
+        /// </summary>
+        public string Type { get; set; }
+
+        /// <summary>
+        /// Gets or sets id (-1 means not defined).
+        /// </summary>
+        public int Id { get; set; }
+
         // TODO: убрать все частные и заменить на общие!!!!!!!!! заменил все withoutpauses() на PauseTreatment с параметорм ignore
+
+        /// <summary>
+        /// The pause treatment.
+        /// </summary>
+        /// <param name="paramPauseTreatment">
+        /// The param pause treatment.
+        /// </param>
+        /// <returns>
+        /// The <see cref="Fmotiv"/>.
+        /// </returns>
+        /// <exception cref="Exception">
+        /// </exception>
         public Fmotiv PauseTreatment(ParamPauseTreatment paramPauseTreatment)
         {
             // возвращает копию этого объекта
@@ -81,6 +99,7 @@
                             {
                                 // к длительности предыдущего звука добавляем длительность текущей паузы
                                 temp2.NoteList[i - 1].Duration.AddDuration((Duration)temp2.NoteList[i].Duration.Clone());
+
                                 // удаляем паузу
                                 temp2.NoteList.RemoveAt(i);
                                 i--;
@@ -99,6 +118,14 @@
             }
         }
 
+        /// <summary>
+        /// The tie gathered.
+        /// </summary>
+        /// <returns>
+        /// The <see cref="Fmotiv"/>.
+        /// </returns>
+        /// <exception cref="Exception">
+        /// </exception>
         public Fmotiv TieGathered()
         {
             // возвращает копию этого объекта, соединив все залигованные ноты, если такие имеются
@@ -115,6 +142,7 @@
                 {
                     throw new Exception("LibiadaMusic: Tie is not valid!");
                 }
+
                 // если лига отсутствует
                 if (temp.NoteList[0].Tie == Tie.None)
                 {
@@ -124,6 +152,7 @@
                     }
 
                     tempGathered.NoteList.Add((ValueNote)temp.NoteList[0].Clone());
+
                     // очистка текущей позиции ноты, для перехода к следущей в очереди
                     temp.NoteList.RemoveAt(0);
                 }
@@ -145,6 +174,7 @@
                         }
 
                         buffNote = (ValueNote)temp.NoteList[0].Clone();
+
                         // очистка текущей позиции ноты, для перехода к следущей в очереди
                         temp.NoteList.RemoveAt(0);
                     }
@@ -153,9 +183,9 @@
                         // должно быть уже собрано что то в буффере так как лига продолжающаяся или завершающаяся
                         if (buffNote == null)
                         {
-                            throw new Exception(
-                                "LibiadaMusic: Tie note (stopes and starts)/(stops), without previous note start!");
+                            throw new Exception("LibiadaMusic: Tie note (stopes and starts)/(stops), without previous note start!");
                         }
+
                         // высота залигованных нот должна быть одинакова
                         if (!buffNote.PitchEquals(temp.NoteList[0].Pitch))
                         {
@@ -167,6 +197,7 @@
                         {
                             // добавляется длительность, и копируется старая высота звучания и приоритет
                             buffNote = new ValueNote(buffNote.Pitch, buffNote.Duration.AddDuration(temp.NoteList[0].Duration), buffNote.Triplet, Tie.None, buffNote.Priority);
+
                             // очистка текущей позиции ноты, для перехода к следущей в очереди
                             temp.NoteList.RemoveAt(0);
                         }
@@ -177,10 +208,13 @@
                             {
                                 // добавляется длительность, и копируется старая высота звучания и приоритет
                                 buffNote = new ValueNote(buffNote.Pitch, buffNote.Duration.AddDuration(temp.NoteList[0].Duration), buffNote.Triplet, Tie.None, buffNote.Priority);
+
                                 // завершен сбор лигованных нот, результат кладется в возвращаемый буфер.
                                 tempGathered.NoteList.Add((ValueNote)buffNote.Clone());
+
                                 // очистка буффера залигованных нот
                                 buffNote = null;
+
                                 // очистка текущей позиции ноты, для перехода к следущей в очереди
                                 temp.NoteList.RemoveAt(0);
                             }
@@ -198,6 +232,12 @@
             return tempGathered;
         }
 
+        /// <summary>
+        /// The clone.
+        /// </summary>
+        /// <returns>
+        /// The <see cref="IBaseObject"/>.
+        /// </returns>
         public IBaseObject Clone()
         {
             var clone = new Fmotiv(Type, Id);
@@ -210,6 +250,16 @@
         }
 
         // TODO: убрал метод override , соотвественно euals сейчас просто выполняет сравнение ссылок объектов переделать все частные
+
+        /// <summary>
+        /// The equals.
+        /// </summary>
+        /// <param name="obj">
+        /// The obj.
+        /// </param>
+        /// <returns>
+        /// The <see cref="bool"/>.
+        /// </returns>
         public override bool Equals(object obj)
         {
             // для сравнения паузы не нужны, поэтому сравнивае ф-мотивы без пауз (они игнорируются, но входят в состав ф-мотива)
@@ -266,6 +316,23 @@
             return true;
         }
 
+        /// <summary>
+        /// The fm equals.
+        /// </summary>
+        /// <param name="obj">
+        /// The obj.
+        /// </param>
+        /// <param name="paramPauseTreatment">
+        /// The param pause treatment.
+        /// </param>
+        /// <param name="paramEqualFM">
+        /// The param equal fm.
+        /// </param>
+        /// <returns>
+        /// The <see cref="bool"/>.
+        /// </returns>
+        /// <exception cref="Exception">
+        /// </exception>
         public bool FmEquals(object obj, ParamPauseTreatment paramPauseTreatment, ParamEqualFM paramEqualFM)
         {
             // для сравнения паузы не нужны, поэтому сравнивае ф-мотивы без пауз (они игнорируются, но входят в состав ф-мотива)
@@ -303,6 +370,7 @@
                         // если одна из нот пауза, а вторая - нет, то ф-мотивы не одинаковы
                         return false;
                     }
+
                     // если две паузы одно длительности то идем дальше. пропуская их (считаем что это две одинаковые ноты в любом случае)
                 }
                 else
@@ -350,6 +418,7 @@
                     }
                 }
             }
+
             return true;
         }
     }

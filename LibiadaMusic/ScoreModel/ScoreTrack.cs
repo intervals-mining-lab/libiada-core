@@ -10,18 +10,18 @@
     /// </summary>
     public class ScoreTrack : IBaseObject
     {
-        /// <summary>
-        /// имя музыкального текста ( муз. произведения)
-        /// </summary>
-        public string Name { get; private set; }
-
-        /// <summary>
-        /// список моно треков
-        /// </summary>
-        public List<CongenericScoreTrack> CongenericScoreTracks { get; private set; }
-
         // TODO: сделать поля жанра/автора/типа произведения, для дальнейшего анализа, 
         // PS:либо сделать на уровень структуры выше, где будет разбиение на Ф-мотивы
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ScoreTrack"/> class.
+        /// </summary>
+        /// <param name="name">
+        /// The name.
+        /// </param>
+        /// <param name="congenericScoreTracks">
+        /// The congeneric score tracks.
+        /// </param>
         public ScoreTrack(string name, List<CongenericScoreTrack> congenericScoreTracks)
         {
             Name = name; // присваиваем имя музыкального трека
@@ -38,6 +38,67 @@
             CongenericScoreTracks.Add(temp);
         }
 
+        /// <summary>
+        /// имя музыкального текста ( муз. произведения)
+        /// </summary>
+        public string Name { get; private set; }
+
+        /// <summary>
+        /// список моно треков
+        /// </summary>
+        public List<CongenericScoreTrack> CongenericScoreTracks { get; private set; }
+
+        /// <summary>
+        /// The clone.
+        /// </summary>
+        /// <returns>
+        /// The <see cref="IBaseObject"/>.
+        /// </returns>
+        public IBaseObject Clone()
+        {
+            return new ScoreTrack(Name, CongenericScoreTracks);
+        }
+
+        /// <summary>
+        /// The equals.
+        /// </summary>
+        /// <param name="obj">
+        /// The obj.
+        /// </param>
+        /// <returns>
+        /// The <see cref="bool"/>.
+        /// </returns>
+        public override bool Equals(object obj)
+        {
+            bool equalCongenericScoreTracks = CongenericScoreTracks.Count == ((ScoreTrack)obj).CongenericScoreTracks.Count;
+
+            for (int i = 0; i < CongenericScoreTracks.Count; i++)
+            {
+                if (!CongenericScoreTracks[i].Equals(((ScoreTrack)obj).CongenericScoreTracks[i]))
+                {
+                    equalCongenericScoreTracks = false;
+                }
+            }
+
+            if (equalCongenericScoreTracks)
+            {
+                return true;
+            }
+
+            return false;
+        }
+
+        /// <summary>
+        /// The merged tracks.
+        /// </summary>
+        /// <param name="tracks">
+        /// The tracks.
+        /// </param>
+        /// <returns>
+        /// The <see cref="CongenericScoreTrack"/>.
+        /// </returns>
+        /// <exception cref="Exception">
+        /// </exception>
         private CongenericScoreTrack MergedTracks(List<CongenericScoreTrack> tracks)
         {
             var temp = (CongenericScoreTrack)tracks[0].Clone(); // список склеенных дорожек
@@ -60,31 +121,6 @@
             }
 
             return new CongenericScoreTrack(temp.Name, tempList);
-        }
-
-        public IBaseObject Clone()
-        {
-            return new ScoreTrack(Name, CongenericScoreTracks);
-        }
-
-        public override bool Equals(object obj)
-        {
-            bool equalCongenericScoreTracks = CongenericScoreTracks.Count == ((ScoreTrack)obj).CongenericScoreTracks.Count;
-
-            for (int i = 0; i < CongenericScoreTracks.Count; i++)
-            {
-                if (!CongenericScoreTracks[i].Equals(((ScoreTrack)obj).CongenericScoreTracks[i]))
-                {
-                    equalCongenericScoreTracks = false;
-                }
-            }
-
-            if (equalCongenericScoreTracks)
-            {
-                return true;
-            }
-
-            return false;
         }
     }
 }

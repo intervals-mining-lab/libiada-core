@@ -11,6 +11,14 @@
     public class FmotivChain : IBaseObject
     {
         /// <summary>
+        /// Initializes a new instance of the <see cref="FmotivChain"/> class.
+        /// </summary>
+        public FmotivChain()
+        {
+            FmotivList = new List<Fmotiv>();
+        }
+
+        /// <summary>
         /// список ф-мотив
         /// </summary>
         public List<Fmotiv> FmotivList { get; private set; }
@@ -25,11 +33,12 @@
         /// </summary>
         public int Id { get; set; }
 
-        public FmotivChain()
-        {
-            FmotivList = new List<Fmotiv>();
-        }
-
+        /// <summary>
+        /// The clone.
+        /// </summary>
+        /// <returns>
+        /// The <see cref="IBaseObject"/>.
+        /// </returns>
         public IBaseObject Clone()
         {
             var clone = new FmotivChain();
@@ -44,6 +53,15 @@
             return clone;
         }
 
+        /// <summary>
+        /// The equals.
+        /// </summary>
+        /// <param name="obj">
+        /// The obj.
+        /// </param>
+        /// <returns>
+        /// The <see cref="bool"/>.
+        /// </returns>
         public override bool Equals(object obj)
         {
             var other = (FmotivChain)obj;

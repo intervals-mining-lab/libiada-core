@@ -8,12 +8,6 @@ namespace MarkovChains.MarkovChain
     /// <summary>
     /// Класс описывающий статичную неоднородную марковскую цепь
     /// </summary>
-    /// <typeparam name="TChainGenerated">
-    /// Тип генерируемой цепи
-    /// </typeparam>
-    /// <typeparam name="TChainTaught">
-    /// Тип обучающей цепи
-    /// </typeparam>
     public class MarkovChainNotCongenericStatic : MarkovChainBase
     {
         /// <summary>

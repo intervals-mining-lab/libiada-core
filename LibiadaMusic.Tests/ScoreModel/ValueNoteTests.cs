@@ -4,9 +4,15 @@
 
     using Microsoft.VisualStudio.TestTools.UnitTesting;
 
+    /// <summary>
+    /// The value note tests.
+    /// </summary>
     [TestClass]
     public class ValueNoteTests
     {
+        /// <summary>
+        /// The value note equals first test.
+        /// </summary>
         [TestMethod]
         public void ValueNoteEqualsFirstTest()
         {
@@ -17,6 +23,9 @@
             Assert.IsTrue(!note1.Equals(note2));
         }
 
+        /// <summary>
+        /// The value note equals second test.
+        /// </summary>
         [TestMethod]
         public void ValueNoteEqualsSecondTest()
         {
@@ -27,6 +36,9 @@
             Assert.IsTrue(note1.Equals(note2));
         }
 
+        /// <summary>
+        /// The multi note equals test.
+        /// </summary>
         [TestMethod]
         public void MultiNoteEqualsTest()
         {
@@ -39,6 +51,9 @@
             Assert.IsTrue(note1.Equals(note2));
         }
 
+        /// <summary>
+        /// The value note clone test.
+        /// </summary>
         [TestMethod]
         public void ValueNoteCloneTest()
         {

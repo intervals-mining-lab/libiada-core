@@ -8,9 +8,15 @@
 
     using Microsoft.VisualStudio.TestTools.UnitTesting;
 
+    /// <summary>
+    /// The average length tests.
+    /// </summary>
     [TestClass]
     public class AverageLengthTests
     {
+        /// <summary>
+        /// The average length first test.
+        /// </summary>
         [TestMethod]
         public void AverageLengthFirstTest()
         {
@@ -30,6 +36,9 @@
             Assert.AreEqual(2, AverageLength.Calculate(chain));
         }
 
+        /// <summary>
+        /// The average length second test.
+        /// </summary>
         [TestMethod]
         public void AverageLengthSecondTest()
         {
@@ -53,6 +62,9 @@
             Assert.AreEqual(4, AverageLength.Calculate(chain));
         }
 
+        /// <summary>
+        /// The average length pause test.
+        /// </summary>
         [TestMethod]
         public void AverageLengthPauseTest()
         {
@@ -77,6 +89,9 @@
             Assert.AreEqual(4, AverageLength.Calculate(chain));
         }
 
+        /// <summary>
+        /// The average length tie test.
+        /// </summary>
         [TestMethod]
         public void AverageLengthTieTest()
         {
@@ -102,6 +117,9 @@
             Assert.AreEqual(4, AverageLength.Calculate(chain));
         }
 
+        /// <summary>
+        /// The average length third test.
+        /// </summary>
         [TestMethod]
         public void AverageLengthThirdTest()
         {
@@ -115,6 +133,9 @@
             Assert.AreEqual(0, AverageLength.Calculate(chain));
         }
 
+        /// <summary>
+        /// The average length half test.
+        /// </summary>
         [TestMethod]
         public void AverageLengthHalfTest()
         {
@@ -133,6 +154,9 @@
             Assert.IsTrue(Math.Abs(AverageLength.Calculate(chain) - 1.5) < 0.000001);
         }
 
+        /// <summary>
+        /// The average length error test.
+        /// </summary>
         [TestMethod]
         public void AverageLengthErrorTest()
         {

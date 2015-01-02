@@ -4,9 +4,15 @@
 
     using Microsoft.VisualStudio.TestTools.UnitTesting;
 
+    /// <summary>
+    /// The param pause treatment tests.
+    /// </summary>
     [TestClass]
     public class ParamPauseTreatmentTests
     {
+        /// <summary>
+        /// The param pause test.
+        /// </summary>
         [TestMethod]
         public void ParamPauseTest()
         {

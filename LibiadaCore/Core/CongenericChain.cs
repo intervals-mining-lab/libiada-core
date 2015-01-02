@@ -33,14 +33,6 @@ namespace LibiadaCore.Core
         private CongenericIntervalsManager intervalsManager;
 
         /// <summary>
-        /// Gets the occurrences count.
-        /// </summary>
-        public int OccurrencesCount
-        {
-            get { return building.Count; }
-        }
-
-        /// <summary>
         /// Initializes a new instance of the <see cref="CongenericChain"/> class.
         /// </summary>
         /// <param name="element">
@@ -100,6 +92,14 @@ namespace LibiadaCore.Core
         }
 
         /// <summary>
+        /// Gets the occurrences count.
+        /// </summary>
+        public int OccurrencesCount
+        {
+            get { return building.Count; }
+        }
+
+        /// <summary>
         /// Gets element chain filled with.
         /// </summary>
         public IBaseObject Element
@@ -128,7 +128,7 @@ namespace LibiadaCore.Core
         /// Deletes chain (building and alphabet) and creates new empty chain with given length.
         /// Saves old element (alphabet) of chain.
         /// </summary>
-        /// <param name="length">
+        /// <param name="newLength">
         /// New chain length.
         /// </param>
         /// <exception cref="ArgumentException">

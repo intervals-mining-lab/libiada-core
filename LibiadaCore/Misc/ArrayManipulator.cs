@@ -1,8 +1,8 @@
 ﻿namespace LibiadaCore.Misc
 {
     using System;
-    using System.Collections.Generic;
     using System.Collections;
+    using System.Collections.Generic;
 
     /// <summary>
     /// Static class with methods for array manipulation.

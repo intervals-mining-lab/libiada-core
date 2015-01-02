@@ -5,9 +5,15 @@
 
     using Microsoft.VisualStudio.TestTools.UnitTesting;
 
+    /// <summary>
+    /// The fmotiv identification tests.
+    /// </summary>
     [TestClass]
-    public class FmotivIdentificatorTests
+    public class FmotivIdentificationTests
     {
+        /// <summary>
+        /// The fmotiv identification first test.
+        /// </summary>
         [TestMethod]
         public void FmotivIdentificationFirstTest()
         {
@@ -55,6 +61,9 @@
             Assert.AreEqual(0, fmid.GetIdentification(fmchain1, ParamPauseTreatment.Ignore, ParamEqualFM.Sequent).FmotivList[5].Id);
         }
 
+        /// <summary>
+        /// The fmotiv identification second test.
+        /// </summary>
         [TestMethod]
         public void FmotivIdentificationSecondTest()
         {
@@ -94,6 +103,7 @@
             fmchain1.FmotivList.Add(fmotiv6);
 
             var fmid = new FmotivIdentifier();
+
             // FmotivChain fmidentedchain = new FmotivChain();
             Assert.AreEqual(0, fmid.GetIdentification(fmchain1, ParamPauseTreatment.Ignore, ParamEqualFM.Sequent).FmotivList[0].Id);
             Assert.AreEqual(0, fmid.GetIdentification(fmchain1, ParamPauseTreatment.Ignore, ParamEqualFM.Sequent).FmotivList[1].Id);

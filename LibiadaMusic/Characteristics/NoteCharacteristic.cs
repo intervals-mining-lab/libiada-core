@@ -1,15 +1,18 @@
 ﻿namespace LibiadaMusic.Characteristics
 {
+    using System;
+    using System.Collections.Generic;
+
     using LibiadaCore.Core;
     using LibiadaCore.Core.Characteristics.Calculators;
     using LibiadaCore.Core.SimpleTypes;
 
-    using System;
-    using System.Collections.Generic;
-
     using LibiadaMusic.BorodaDivider;
     using LibiadaMusic.ScoreModel;
 
+    /// <summary>
+    /// The note characteristic.
+    /// </summary>
     public static class NoteCharacteristic
     {
         /// <summary>
@@ -22,6 +25,17 @@
         /// </summary>
         private static double valG;
 
+        /// <summary>
+        /// The calculate remoteness.
+        /// </summary>
+        /// <param name="chain">
+        /// The chain.
+        /// </param>
+        /// <returns>
+        /// The <see cref="double"/>.
+        /// </returns>
+        /// <exception cref="Exception">
+        /// </exception>
         public static double CalculateRemoteness(FmotivChain chain)
         {
             if (Calculate(chain))
@@ -32,6 +46,17 @@
             throw new Exception("Word Remoteness in words not calculated, ask specialist!");
         }
 
+        /// <summary>
+        /// The calculate depth.
+        /// </summary>
+        /// <param name="chain">
+        /// The chain.
+        /// </param>
+        /// <returns>
+        /// The <see cref="double"/>.
+        /// </returns>
+        /// <exception cref="Exception">
+        /// </exception>
         public static double CalculateDepth(FmotivChain chain)
         {
             if (Calculate(chain))
@@ -42,6 +67,17 @@
             throw new Exception("TextDepth in words not calculated, ask specialist!");
         }
 
+        /// <summary>
+        /// The calculate.
+        /// </summary>
+        /// <param name="chain">
+        /// The chain.
+        /// </param>
+        /// <returns>
+        /// The <see cref="bool"/>.
+        /// </returns>
+        /// <exception cref="Exception">
+        /// </exception>
         private static bool Calculate(FmotivChain chain)
         {
             if (chain.FmotivList.Count < 1)

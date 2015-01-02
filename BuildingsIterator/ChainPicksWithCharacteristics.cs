@@ -140,9 +140,12 @@ namespace BuildingsIterator
         }
 
         /// <summary>
+        /// The get characteristics count.
         /// ¬озвращает число расчитанных характеристик дл€ каждой цепочки
         /// </summary>
-        /// <returns></returns>
+        /// <returns>
+        /// The <see cref="int"/>.
+        /// </returns>
         public int GetCharacteristicsCount()
         {
             return characteristicsNames.Count;
@@ -159,9 +162,12 @@ namespace BuildingsIterator
         }
 
         /// <summary>
+        /// The get all chains.
         /// ¬озвращает массив всех цепочек
         /// </summary>
-        /// <returns></returns>
+        /// <returns>
+        /// The <see cref="List"/>.
+        /// </returns>
         public List<string> GetAllChains()
         {
             var result = new List<string>();

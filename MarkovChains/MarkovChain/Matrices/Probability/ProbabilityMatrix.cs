@@ -3,11 +3,13 @@ namespace MarkovChains.MarkovChain.Matrices.Probability
     using System;
     using System.Collections.Generic;
 
-    using LibiadaCore.Core;
+    using Absolute;
+
+    using Base;
 
     using Builders;
-    using Absolute;
-    using Base;
+
+    using LibiadaCore.Core;
 
     /// <summary>
     /// Матрица веротяностей. 

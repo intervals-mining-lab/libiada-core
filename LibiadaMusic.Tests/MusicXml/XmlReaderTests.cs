@@ -7,9 +7,15 @@ namespace LibiadaMusic.Tests.MusicXml
 
     using Microsoft.VisualStudio.TestTools.UnitTesting;
 
+    /// <summary>
+    /// The xml reader tests.
+    /// </summary>
     [TestClass]
     public class XmlReaderTests
     {
+        /// <summary>
+        /// The xml reader first test.
+        /// </summary>
         [TestMethod]
         public void XMLReaderFirstTest()
         {
@@ -18,6 +24,9 @@ namespace LibiadaMusic.Tests.MusicXml
             Assert.AreEqual("LibiadaMusicexample7Liga", xr.FileName);
         }
 
+        /// <summary>
+        /// The xml reader second test.
+        /// </summary>
         [TestMethod]
         public void XMLReaderSecondTest()
         {
@@ -46,4 +55,3 @@ namespace LibiadaMusic.Tests.MusicXml
         }
     }
 }
-

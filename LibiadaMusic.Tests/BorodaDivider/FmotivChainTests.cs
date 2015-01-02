@@ -5,9 +5,15 @@
 
     using Microsoft.VisualStudio.TestTools.UnitTesting;
 
+    /// <summary>
+    /// The fmotiv chain tests.
+    /// </summary>
     [TestClass]
     public class FmotivChainTests
     {
+        /// <summary>
+        /// The fmotiv chain test.
+        /// </summary>
         [TestMethod]
         public void FmotivChainTest()
         {
@@ -20,6 +26,9 @@
             Assert.AreEqual('B', chain.FmotivList[0].NoteList[1].Pitch[0].Step);
         }
 
+        /// <summary>
+        /// The fmotiv chain equals test.
+        /// </summary>
         [TestMethod]
         public void FmotivChainEqualsTest()
         {
