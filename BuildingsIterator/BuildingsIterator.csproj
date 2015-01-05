@@ -46,8 +46,6 @@
     <Compile Include="ScramblingGenerator.cs" />
     <Compile Include="Statistics\Calculators\ExpectationCalculator.cs" />
     <Compile Include="Statistics\Calculators\IOnePicksCalculator.cs" />
-    <Compile Include="Statistics\Calculators\MaxCalculator.cs" />
-    <Compile Include="Statistics\Calculators\MinCalculator.cs" />
     <Compile Include="Statistics\Calculators\StartingPointCalculator.cs" />
     <Compile Include="Statistics\Picks.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

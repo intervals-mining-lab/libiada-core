@@ -65,6 +65,7 @@
         /// Gets the ticks per beat.
         /// </summary>
         /// <exception cref="Exception">
+        /// Thrown if ticksPerBeat is -1.
         /// </exception>
         public int TicksPerBeat
         {

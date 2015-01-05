@@ -39,12 +39,12 @@
         }
 
         /// <summary>
-        /// имя музыкального текста ( муз. произведения)
+        /// Gets name of music track.
         /// </summary>
         public string Name { get; private set; }
 
         /// <summary>
-        /// список моно треков
+        /// Gets congeneric tracks list.
         /// </summary>
         public List<CongenericScoreTrack> CongenericScoreTracks { get; private set; }
 

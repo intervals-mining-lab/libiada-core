@@ -36,17 +36,17 @@
             var result2 = new List<string> { "ABABAB", "ABATAT", "TABABAB", "ABTABAB", "ABABAB" };
             var result3 = new List<string> { "ABATAT", "TABABAB", "ABTABAB" };
 
-            var a1Cleaner = new SequenceCleaner(new ComplexChain(list1));
-            var a2Cleaner = new SequenceCleaner(new ComplexChain(list1));
-            var a3Cleaner = new SequenceCleaner(new ComplexChain(list1));
+            var firstCleaner = new SequenceCleaner(new ComplexChain(list1));
+            var secondCleaner = new SequenceCleaner(new ComplexChain(list1));
+            var thirdCleaner = new SequenceCleaner(new ComplexChain(list1));
 
-            a1Cleaner.FilterOut(listSequence1);
-            a2Cleaner.FilterOut(listSequence2);
-            a3Cleaner.FilterOut(listSequence3);
+            firstCleaner.FilterOut(listSequence1);
+            secondCleaner.FilterOut(listSequence2);
+            thirdCleaner.FilterOut(listSequence3);
 
-            Assert.True((new ComplexChain(result1)).Equals(a1Cleaner.GetChain()));
-            Assert.True((new ComplexChain(result2)).Equals(a2Cleaner.GetChain()));
-            Assert.True((new ComplexChain(result3)).Equals(a3Cleaner.GetChain()));
+            Assert.True((new ComplexChain(result1)).Equals(firstCleaner.GetChain()));
+            Assert.True((new ComplexChain(result2)).Equals(secondCleaner.GetChain()));
+            Assert.True((new ComplexChain(result3)).Equals(thirdCleaner.GetChain()));
         }
     }
 }

@@ -13,7 +13,7 @@ namespace MarkovChains.MarkovChain
     using MarkovChains.MarkovChain.Matrices.Probability;
 
     /// <summary>
-    /// Базовый класс для марковских цепей
+    /// Базовый класс для марковских цепей.
     /// </summary>
     public abstract class MarkovChainBase
     {
@@ -41,15 +41,16 @@ namespace MarkovChains.MarkovChain
         /// Initializes a new instance of the <see cref="MarkovChainBase"/> class.
         /// </summary>
         /// <param name="rank">
-        /// Порядок марковской цепи
+        /// Порядок марковской цепи.
         /// </param>
         /// <param name="congenericRang">
-        /// Порядок неоднородности
+        /// Порядок неоднородности.
         /// </param>
         /// <param name="generator">
-        /// Генератор используемый при генерировании последовательнсти
+        /// Генератор используемый при генерировании последовательнсти.
         /// </param>
         /// <exception cref="ArgumentException">
+        /// Thrown if rank is less than 1 or generator is null.
         /// </exception>
         public MarkovChainBase(int rank, int congenericRang, IGenerator generator)
         {
@@ -65,7 +66,7 @@ namespace MarkovChains.MarkovChain
         }
 
         /// <summary>
-        /// Возвращает матрицу вероятностей марковской цепи
+        /// Возвращает матрицу вероятностей марковской цепи.
         /// </summary>
         public IProbabilityMatrix PropabilityMatrix
         {
@@ -82,11 +83,13 @@ namespace MarkovChains.MarkovChain
 
         /// <summary>
         /// Генерировать цепь заданно длинной.
-        /// Использовать Информацию марковской цепи максимального порядка (порядок указаный при создании объекта)
+        /// Использовать Информацию марковской цепи максимального порядка (порядок указаный при создании объекта).
         /// </summary>
-        /// <param name="i">Длинна генерируемой цепи</param>
+        /// <param name="i">
+        /// Длинна генерируемой цепи.
+        /// </param>
         /// <returns>
-        /// Реализация Марковской цепи
+        /// Реализация Марковской цепи.
         /// </returns>
         public BaseChain Generate(int i)
         {
@@ -95,13 +98,13 @@ namespace MarkovChains.MarkovChain
 
         /// <summary>
         /// Генерировать цепь заданно длинной.
-        /// Использовать Информацию марковской цепи указанного порядка ( не более порядока указаного при создании объекта)
+        /// Использовать Информацию марковской цепи указанного порядка ( не более порядока указаного при создании объекта).
         /// </summary>
         /// <param name="i">
-        /// Длина генерируемой цепи
+        /// Длина генерируемой цепи.
         /// </param>
         /// <param name="rank">
-        /// Порядок марковской цепи используемый при реализации
+        /// Порядок марковской цепи используемый при реализации.
         /// </param>
         /// <returns>
         /// The <see cref="TChainGenerated"/>.
@@ -109,10 +112,14 @@ namespace MarkovChains.MarkovChain
         public abstract BaseChain Generate(int i, int rank);
 
         /// <summary>
-        /// Обучить Марковскую цепь на последовательности
+        /// Обучить Марковскую цепь на последовательности.
         /// </summary>
-        /// <param name="chain">Цепь используемая при обучении</param>
-        /// <param name="method">Метод предобработки цепи</param>
+        /// <param name="chain">
+        /// Цепь используемая при обучении.
+        /// </param>
+        /// <param name="method">
+        /// Метод предобработки цепи.
+        /// </param>
         public virtual void Teach(BaseChain chain, TeachingMethod method)
         {
             var builder = new MatrixBuilder();
@@ -158,13 +165,13 @@ namespace MarkovChains.MarkovChain
         }
 
         /// <summary>
-        /// Возвращает сгенерированную марковскую цепь полученную из индексов
+        /// Возвращает сгенерированную марковскую цепь полученную из индексов.
         /// </summary>
         /// <param name="list">
         /// The list.
         /// </param>
         /// <returns>
-        /// Реализация марковской цепи
+        /// Реализация марковской цепи.
         /// </returns>
         protected IBaseObject GetObject(Dictionary<IBaseObject, double> list)
         {

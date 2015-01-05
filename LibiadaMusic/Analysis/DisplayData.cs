@@ -80,42 +80,42 @@
         /// <summary>
         /// The len.
         /// </summary>
-        public double len;
+        public double Length;
 
         /// <summary>
         /// The id_ n.
         /// </summary>
-        public ArrayList Id_N = new ArrayList();
+        public ArrayList IdN = new ArrayList();
 
         /// <summary>
         /// The rank_ freq p.
         /// </summary>
-        public ArrayList Rank_FreqP = new ArrayList();
+        public ArrayList RankFreqP = new ArrayList();
 
         /// <summary>
         /// The rank_ freq t.
         /// </summary>
-        public ArrayList Rank_FreqT = new ArrayList();
+        public ArrayList RankFreqT = new ArrayList();
 
         /// <summary>
         /// The log rank_ log np.
         /// </summary>
-        public ArrayList LogRank_LogNP = new ArrayList();
+        public ArrayList LogRankLogNP = new ArrayList();
 
         /// <summary>
         /// The log rank_ log nt.
         /// </summary>
-        public ArrayList LogRank_LogNT = new ArrayList();
+        public ArrayList LogRankLogNT = new ArrayList();
 
         /// <summary>
         /// The log rank_ log depth.
         /// </summary>
-        public ArrayList LogRank_LogDepth = new ArrayList();
+        public ArrayList LogRankLogDepth = new ArrayList();
 
         /// <summary>
         /// The rank_ remoteness.
         /// </summary>
-        public ArrayList Rank_Remoteness = new ArrayList();
+        public ArrayList RankRemoteness = new ArrayList();
 
         /// <summary>
         /// The diff v.

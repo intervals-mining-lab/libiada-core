@@ -5,7 +5,7 @@
     using LibiadaCore.Core;
 
     /// <summary>
-    /// такт
+    /// The measure.
     /// </summary>
     public class Measure : IBaseObject
     {
@@ -40,12 +40,12 @@
         public List<ValueNote> NoteList { get; private set; }
 
         /// <summary>
-        /// атрибуты
+        /// Gets the attributes.
         /// </summary>
         public Attributes Attributes { get; private set; }
 
         /// <summary>
-        /// уникальный идентификатор такта
+        /// Gets or sets the id of measure.
         /// </summary>
         public int Id { get; set; }
 

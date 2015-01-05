@@ -44,7 +44,7 @@
         /// The score node.
         /// </param>
         /// <returns>
-        /// The <see cref="List"/>.
+        /// The <see cref="List{CongenericScoreTrack}"/>.
         /// </returns>
         private List<CongenericScoreTrack> ParseCongenericScoreTracks(XmlDocument scoreNode)
         {
@@ -69,7 +69,7 @@
         /// The congeneric score node.
         /// </param>
         /// <returns>
-        /// The <see cref="List"/>.
+        /// The <see cref="List{Measure}"/>.
         /// </returns>
         private List<Measure> ParseMeasures(XmlNode congenericScoreNode)
         {
@@ -215,7 +215,7 @@
         /// The measure node.
         /// </param>
         /// <returns>
-        /// The <see cref="List"/>.
+        /// The <see cref="List{ValueNote}"/>.
         /// </returns>
         private List<ValueNote> ParseNotes(XmlNode measureNode)
         {
@@ -266,6 +266,7 @@
         /// The <see cref="Pitch"/>.
         /// </returns>
         /// <exception cref="Exception">
+        /// Thrown if pitch doesn't have Octave or step.
         /// </exception>
         private Pitch ParsePitch(XmlNode noteNode)
         {
@@ -325,6 +326,7 @@
         /// The <see cref="Tie"/>.
         /// </returns>
         /// <exception cref="Exception">
+        /// Thrown if Tie type of note is unknown.
         /// </exception>
         private Tie ParseTie(XmlNode noteNode)
         {

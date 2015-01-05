@@ -34,10 +34,14 @@
         protected ComplexChain chain;
 
         /// <summary>
-        /// init
+        /// Initializes a new instance of the <see cref="Criterion"/> class.
         /// </summary>
-        /// <param name="threshold">A rule for handle a threshold value</param>
-        /// <param name="precision">additional value to</param>
+        /// <param name="threshold">
+        /// A rule for handling a threshold value.
+        /// </param>
+        /// <param name="precision">
+        /// Additional value to.
+        /// </param>
         public Criterion(ThresholdVariator threshold, double precision)
         {
             ThresholdToStop = threshold;
@@ -50,11 +54,17 @@
         public double Value { get; protected set; }
 
         /// <summary>
-        /// Returns the state of criterion. True, if everything is done, false - otherwise
+        /// Returns the state of criterion. True, if everything is done, false - otherwise.
         /// </summary>
-        /// <param name="chain">chain</param>
-        /// <param name="alphabet">its alphabet</param>
-        /// <returns>the state of criterion</returns>
+        /// <param name="chain">
+        /// The chain.
+        /// </param>
+        /// <param name="alphabet">
+        /// Chains alphabet.
+        /// </param>
+        /// <returns>
+        /// The state of criterion.
+        /// </returns>
         public abstract bool State(ComplexChain chain, FrequencyDictionary alphabet);
 
         /// <summary>
@@ -73,20 +83,26 @@
         public abstract double Distortion(ComplexChain chain, FrequencyDictionary alphabet);
 
         /// <summary>
-        /// Returns distortion between necessary and calculated value inside of criterion
-        /// For example between theoretical and practical values
+        /// Returns distortion between necessary and calculated value inside of criterion.
+        /// For example between theoretical and practical values.
         /// </summary>
-        /// <returns>distortion</returns>
+        /// <returns>
+        /// Distortion as <see cref="double"/>.
+        /// </returns>
         public double Distortion()
         {
             return Distortion(chain, alphabet);
         }
 
         /// <summary>
-        ///  Updates data for computing a new value of the criterion
+        ///  Updates data for computing a new value of the criterion.
         /// </summary>
-        /// <param name="chain">a new chain</param>
-        /// <param name="alphabet">a new alphabet</param>
+        /// <param name="chain">
+        /// A new chain.
+        /// </param>
+        /// <param name="alphabet">
+        /// A new alphabet.
+        /// </param>
         public void Renew(ComplexChain chain, FrequencyDictionary alphabet)
         {
             this.chain = chain;
@@ -99,8 +115,6 @@
         /// <returns>
         /// The <see cref="double"/>.
         /// </returns>
-        /// <exception cref="NotImplementedException">
-        /// </exception>
         public double GetValue()
         {
             throw new NotImplementedException();

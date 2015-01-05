@@ -25,18 +25,25 @@
         /// <summary>
         /// An estimated characteristic of occurrence of the subject word in the sequence
         /// </summary>
-        /// <param name="accord">checking word</param>
-        /// <param name="chainLength">length of whole sequence</param>
-        /// <param name="winLen">length of the scanning window</param>
-        /// <param name="minusOne">data for "minus one" subword</param>
-        /// <param name="mid">data for "minus two" subword</param>
-        /// <returns>disign characteristic of occurrence of the word</returns>
-        public double DesignExpected(
-            List<string> accord,
-            int chainLength,
-            int winLen,
-            DataCollector minusOne,
-            DataCollector mid)
+        /// <param name="accord">
+        /// Checking word.
+        /// </param>
+        /// <param name="chainLength">
+        /// Length of whole sequence.
+        /// </param>
+        /// <param name="winLen">
+        /// Length of the scanning window.
+        /// </param>
+        /// <param name="minusOne">
+        /// Data for "minus one" subword.
+        /// </param>
+        /// <param name="mid">
+        /// Data for "minus two" subword.
+        /// </param>
+        /// <returns>
+        /// Design characteristic of occurrence of the word.
+        /// </returns>
+        public double DesignExpected(List<string> accord, int chainLength, int winLen, DataCollector minusOne, DataCollector mid)
         {
             int shortWord = 2;
             int midlLength = winLen - 2;
@@ -63,14 +70,24 @@
         }
 
         /// <summary>
-        /// Calculates frequency for convoluted or no convoluted chain by an interval estimation
-        /// An actual characteristic of occurrence of the subject word in the sequence
+        /// Calculates frequency for convoluted or no convoluted chain by an interval estimation.
+        /// An actual characteristic of occurrence of the subject word in the sequence.
         /// </summary>
-        /// <param name="stdData">positions of word</param>
-        /// <param name="chainLength">length of whole sequence</param>
-        /// <param name="winLen">length of the scanning window</param>
-        /// <param name="anchor">binding to the chain</param>
-        /// <returns>interval characteristic of occurrence of the word</returns>
+        /// <param name="stdData">
+        /// Positions of word.
+        /// </param>
+        /// <param name="chainLength">
+        /// Length of whole sequence.
+        /// </param>
+        /// <param name="winLen">
+        /// Length of the scanning window.
+        /// </param>
+        /// <param name="anchor">
+        /// Binding to the chain.
+        /// </param>
+        /// <returns>
+        /// Interval characteristic of occurrence of the word.
+        /// </returns>
         public double IntervalEstimate(List<int> stdData, int chainLength, int winLen, Link anchor)
         {
             if (stdData.Count == 0)
@@ -109,11 +126,18 @@
         }
 
         /// <summary>
-        /// Calculates a probability
+        /// Calculates probability.
         /// </summary>
-        /// <param name="count">occurences</param>
-        /// <param name="chainLen">all events</param>
-        /// <returns>probability</returns>
+        /// <param name="count">
+        /// The occurrences count.
+        /// </param>
+        /// <param name="chainLen">
+        /// The chain len.
+        /// All events.
+        /// </param>
+        /// <returns>
+        /// Probability as <see cref="double"/>.
+        /// </returns>
         protected double Probability(int count, int chainLen)
         {
             return count / (double)chainLen;

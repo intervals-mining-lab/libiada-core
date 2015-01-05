@@ -19,12 +19,15 @@
         private readonly Depth depth = new Depth();
 
         /// <summary>
-        /// init
+        /// Initializes a new instance of the <see cref="CriterionEqualityOfDepths"/> class.
         /// </summary>
-        /// <param name="threshold">A rule for handle a threshold value</param>
-        /// <param name="precision">additional value to</param>
-        public CriterionEqualityOfDepths(ThresholdVariator threshold, double precision)
-            : base(threshold, precision)
+        /// <param name="threshold">
+        /// A rule for handling a threshold value.
+        /// </param>
+        /// <param name="precision">
+        /// Additional value to.
+        /// </param>
+        public CriterionEqualityOfDepths(ThresholdVariator threshold, double precision) : base(threshold, precision)
         {
             Value = double.MinValue;
         }

@@ -79,8 +79,6 @@
         /// <returns>
         /// The <see cref="double"/>.
         /// </returns>
-        /// <exception cref="NotImplementedException">
-        /// </exception>
         public double GetValue()
         {
             throw new NotImplementedException();

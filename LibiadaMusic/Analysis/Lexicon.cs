@@ -70,7 +70,7 @@
         /// The r data.
         /// </summary>
         /// <returns>
-        /// The <see cref="List"/>.
+        /// The <see cref="List{FMotiv}"/>.
         /// </returns>
         public List<FMotiv> RData()
         {
@@ -156,7 +156,7 @@
         /// The range lex di.
         /// </summary>
         /// <returns>
-        /// The <see cref="List"/>.
+        /// The <see cref="List{Double}"/>.
         /// </returns>
         public List<double> RangeLexDi()
         {
@@ -190,7 +190,7 @@
         /// The range lex ri.
         /// </summary>
         /// <returns>
-        /// The <see cref="List"/>.
+        /// The <see cref="List{Double}"/>.
         /// </returns>
         public List<double> RangeLexRi()
         {

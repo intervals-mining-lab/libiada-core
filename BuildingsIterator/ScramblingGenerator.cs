@@ -9,7 +9,7 @@
     using LibiadaCore.Misc;
 
     /// <summary>
-    /// Генерирует все возможные сочетания
+    /// Генерирует все возможные сочетания.
     /// </summary>
     public class ScramblingGenerator
     {
@@ -30,13 +30,21 @@
 
         /// <summary>
         /// Генерирует хештаблицу со всеми возможными строями в качестве ключа,
-        /// и списком характеристик в качестве значения
+        /// и списком характеристик в качестве значения.
         /// </summary>
-        /// <param name="alphabet">Алфавит на основе которого генерируем цепочки</param>
-        /// <param name="len">Длинна генерируемых цепочек</param>
-        /// <param name="charact">Массив интерфейсов вычисляемых характеристик</param>
-        /// <returns></returns>
-        public ChainPicksWithCharacteristics Generate(Alphabet alphabet, int len, List<LinkedCharacteristic> charact)
+        /// <param name="alphabet">
+        /// Алфавит на основе которого генерируем цепочки.
+        /// </param>
+        /// <param name="len">
+        /// Длинна генерируемых цепочек.
+        /// </param>
+        /// <param name="charact">
+        /// Массив интерфейсов вычисляемых характеристик.
+        /// </param>
+        /// <returns>
+        /// The <see cref="ChainPicksWithCharacteristics"/>.
+        /// </returns>
+        public ChainPicksWithCharacteristics Generate(Alphabet alphabet, int len, List<LinkedCharacteristic> charact) 
         {
             this.alphabet = alphabet;
             length = len;
@@ -68,14 +76,14 @@
         /// The chain.
         /// </param>
         /// <returns>
-        /// The <see cref="List"/>.
+        /// The <see cref="List{Double}"/>.
         /// </returns>
         private List<double> CalculateCharacteristics(Chain chain)
         {
             var characteristics = new List<double>(characteristic.Count);
             foreach (LinkedCharacteristic calculator in characteristic)
             {
-                characteristics.Add(calculator.Calc.Calculate(chain, calculator.Link));
+                characteristics.Add(calculator.Calculator.Calculate(chain, calculator.Link));
             }
 
             return characteristics;

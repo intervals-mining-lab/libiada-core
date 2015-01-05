@@ -17,6 +17,7 @@
         /// The <see cref="int[]"/>.
         /// </returns>
         /// <exception cref="Exception">
+        /// Thrown if type is unknown.
         /// </exception>
         public static int[] ParseType(string type)
         {

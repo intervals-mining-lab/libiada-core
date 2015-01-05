@@ -17,17 +17,17 @@
         protected readonly List<TreeNode> Children = new List<TreeNode>();
 
         /// <summary>
-        /// Поле хранящее количество дочерних элементов
+        /// Gets or sets count of children elements.
         /// </summary>
         public ulong Volume { get; protected set; }
 
         /// <summary>
-        /// Уровень элемента в дереве
+        /// Gets or sets the level of element in tree.
         /// </summary>
         public int Level { get; protected set; }
 
         /// <summary>
-        /// The start position.
+        /// Gets or sets the start position.
         /// </summary>
         protected int StartPosition { get; set; }
 

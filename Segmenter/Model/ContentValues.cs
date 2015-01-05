@@ -16,38 +16,44 @@
     public class ContentValues : Dictionary<string, object>
     {
         /// <summary>
-        /// Creates an empty set of values using the default initial size
+        /// Initializes a new instance of the <see cref="ContentValues"/> class.
+        /// Creates an empty set of values using the default initial size.
         /// </summary>
-        public ContentValues()
-            : base(8)
+        public ContentValues() : base(8)
         {
         }
 
         /// <summary>
+        /// Initializes a new instance of the <see cref="ContentValues"/> class.
         /// Creates an empty set of values using the given initial size
         /// </summary>
-        /// <param name="size">the initial size of the set of values</param>
-        public ContentValues(int size)
-            : base(size)
+        /// <param name="size">
+        /// The initial size of the set of values.
+        /// </param>
+        public ContentValues(int size) : base(size)
         {
         }
 
         /// <summary>
-        /// Creates a set of values copied from the given set
+        /// Initializes a new instance of the <see cref="ContentValues"/> class.
+        /// Creates a set of values copied from the given set.
         /// </summary>
-        /// <param name="from">the values to copy</param>
-        public ContentValues(ContentValues from)
-            : base(from)
+        /// <param name="from">
+        /// The values to copy.
+        /// </param>
+        public ContentValues(ContentValues from) : base(from)
         {
         }
 
         /// <summary>
+        /// Initializes a new instance of the <see cref="ContentValues"/> class.
         /// Creates a set of values copied from the given HashMap. This is used
         /// by the Parcel unmarshalling code.
         /// </summary>
-        /// <param name="values">the values to start with</param>
-        private ContentValues(Dictionary<string, object> values)
-            : base(values)
+        /// <param name="values">
+        /// The values to start with.
+        /// </param>
+        private ContentValues(Dictionary<string, object> values) : base(values)
         {
         }
 
@@ -233,23 +239,6 @@
         }
 
         /// <summary>
-        /// Remove a single value.
-        /// </summary>
-        /// <param name="key">the name of the value to remove</param>
-        public new void Remove(string key)
-        {
-            Remove(key);
-        }
-
-        /// <summary>
-        /// Removes all values.
-        /// </summary>
-        public new void Clear()
-        {
-            Clear();
-        }
-
-        /// <summary>
         /// Gets a value. Valid value types are string, Boolean, and
         /// int implementations.
         /// </summary>
@@ -279,7 +268,7 @@
         /// </summary>
         /// <param name="key">the value to get</param>
         /// <returns>the string for the value</returns>
-        public string GetAsstring(string key)
+        public string GetAsString(string key)
         {
             object value = this[key];
             return value != null ? this[key].ToString() : null;
@@ -467,7 +456,7 @@
         /// Returns a set of all of the keys and values
         /// </summary>
         /// <returns>a set of all of the keys and values</returns>
-        public Dictionary<string, object> ValueSet()
+        public Dictionary<string, object> GetValueSet()
         {
             var result = new Dictionary<string, object>();
             foreach (KeyValuePair<string, object> keyValuePair in this)
@@ -489,7 +478,7 @@
             var sb = new StringBuilder();
             foreach (string name in Keys)
             {
-                string value = GetAsstring(name);
+                string value = GetAsString(name);
                 if (sb.Length > 0)
                 {
                     sb.Append(" ");

@@ -20,12 +20,15 @@
         private readonly DescriptiveInformation regularity = new DescriptiveInformation();
 
         /// <summary>
-        /// init
+        /// Initializes a new instance of the <see cref="CriterionMinimumRegularity"/> class.
         /// </summary>
-        /// <param name="threshold">A rule for handle a threshold value</param>
-        /// <param name="precision">additional value to</param>
-        public CriterionMinimumRegularity(ThresholdVariator threshold, double precision)
-            : base(threshold, precision)
+        /// <param name="threshold">
+        /// A rule for handling a threshold value.
+        /// </param>
+        /// <param name="precision">
+        /// Additional value to.
+        /// </param>
+        public CriterionMinimumRegularity(ThresholdVariator threshold, double precision) : base(threshold, precision)
         {
             Value = double.MaxValue;
         }

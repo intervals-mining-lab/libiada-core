@@ -4,38 +4,44 @@ namespace BuildingsIterator.Statistics.Calculators
     using System.Collections.Generic;
 
     /// <summary>
-    /// Вычисляет начальный i-й момент выбоки
+    /// Вычисляет начальный i-й момент выбоки.
     /// </summary>
     public class StartingPointCalculator : IOnePicksCalculator
     {
         /// <summary>
-        /// Порядок момента
+        /// Порядок момента.
         /// </summary>
         private readonly int s = 1;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="StartingPointCalculator" /> class.
         /// </summary>
-        /// <param name="i">Порядок момента</param>
+        /// <param name="i">
+        /// Порядок момента.
+        /// </param>
         public StartingPointCalculator(int i)
         {
             s = i;
         }
 
         /// <summary>
-        /// Метод вычисления начального момента выборки
+        /// Метод вычисления начального момента выборки.
         /// </summary>
-        /// <param name="values">Выборка</param>
-        /// <returns>Начальный момент</returns>
-        public double Calculate(List<double> values)
+        /// <param name="sample">
+        /// Выборка.
+        /// </param>
+        /// <returns>
+        /// Начальный момент.
+        /// </returns>
+        public double Calculate(List<double> sample)
         {
             double sum = 0;
-            for (int i = 0; i < values.Count; i++)
+            for (int i = 0; i < sample.Count; i++)
             {
-                sum += Math.Pow(values[i], s);
+                sum += Math.Pow(sample[i], s);
             }
 
-            sum /= values.Count;
+            sum /= sample.Count;
             return sum;
         }
     }

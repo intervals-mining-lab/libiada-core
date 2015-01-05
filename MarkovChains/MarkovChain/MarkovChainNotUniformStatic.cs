@@ -6,7 +6,7 @@ namespace MarkovChains.MarkovChain
     using MarkovChains.MarkovChain.Generators;
 
     /// <summary>
-    /// Класс описывающий статичную неоднородную марковскую цепь
+    /// Класс описывающий статичную неоднородную марковскую цепь.
     /// </summary>
     public class MarkovChainNotCongenericStatic : MarkovChainBase
     {
@@ -14,30 +14,29 @@ namespace MarkovChains.MarkovChain
         /// Initializes a new instance of the <see cref="MarkovChainNotCongenericStatic"/> class.
         /// </summary>
         /// <param name="rang">
-        /// Порядок марковской цепи
+        /// Порядок марковской цепи.
         /// </param>
         /// <param name="congenericRang">
-        /// Неоднородность цепи
+        /// Неоднородность цепи.
         /// </param>
         /// <param name="generator">
-        /// Генератор
+        /// Random numbers generator.
         /// </param>
-        public MarkovChainNotCongenericStatic(int rang, int congenericRang, IGenerator generator)
-            : base(rang, congenericRang, generator)
+        public MarkovChainNotCongenericStatic(int rang, int congenericRang, IGenerator generator) : base(rang, congenericRang, generator)
         {
         }
 
         /// <summary>
-        /// Генерация марковской цепочки
+        /// Генерация марковской цепочки.
         /// </summary>
         /// <param name="i">
-        /// Длинна генерируемой цепи
+        /// Длинна генерируемой цепи.
         /// </param>
         /// <param name="chainRang">
-        /// Ранг генерируемой цепи
+        /// Ранг генерируемой цепи.
         /// </param>
         /// <returns>
-        /// Сгенерированная цепь
+        /// Сгенерированная цепь.
         /// </returns>
         public override BaseChain Generate(int i, int chainRang)
         {

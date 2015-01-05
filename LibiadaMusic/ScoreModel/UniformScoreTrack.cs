@@ -46,7 +46,7 @@
         /// возвращает строй объектов Note, проидентифицировав их
         /// </summary>
         /// <returns>
-        /// The <see cref="List"/>.
+        /// The <see cref="List{ValueNote}"/>.
         /// </returns>
         public List<ValueNote> NoteOrder()
         {
@@ -124,7 +124,7 @@
         /// возвращает строй объектов Measure, проидентифицировав их
         /// </summary>
         /// <returns>
-        /// The <see cref="List"/>.
+        /// The <see cref="List{Measure}"/>.
         /// </returns>
         public List<Measure> MeasureOrder()
         {

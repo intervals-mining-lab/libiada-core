@@ -1,12 +1,12 @@
 namespace MarkovChains.MarkovChain.Matrices.Probability
 {
     /// <summary>
-    /// Интерыей позволяющие переписывать значение матрицы
+    /// Interface of writable matrix value.
     /// </summary>
     public interface IWritableMatrix
     {
         /// <summary>
-        /// Занчение матрицы
+        /// Gets or sets value of the matrix.
         /// </summary>
         double Value { get; set; }
     }

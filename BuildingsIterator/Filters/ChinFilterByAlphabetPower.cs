@@ -3,7 +3,7 @@ namespace BuildingsIterator.Filters
     using System.Collections.Generic;
 
     /// <summary>
-    /// Фильтр цепочек по мощности алфавита
+    /// Фильтр цепочек по мощности алфавита.
     /// </summary>
     public class ChinFilterByAlphabetPower : IChainFilter
     {
@@ -18,13 +18,13 @@ namespace BuildingsIterator.Filters
         private readonly int max;
 
         /// <summary>
-        /// Конструктор фильтра цепочек по мщности алфавита
+        /// Initializes a new instance of the <see cref="ChinFilterByAlphabetPower"/> class.
         /// </summary>
         /// <param name="minAlphabetCardinality">
-        /// Минимальное значение мощности
+        /// Minimum alphabet cardinality.
         /// </param>
         /// <param name="maxAlphabetCardinality">
-        /// Максимальное значение мощности
+        /// Maximum alphabet cardinality.
         /// </param>
         public ChinFilterByAlphabetPower(int minAlphabetCardinality, int maxAlphabetCardinality)
         {
@@ -36,10 +36,10 @@ namespace BuildingsIterator.Filters
         /// Возвращает булевое значение валидности результата фильтрации
         /// </summary>
         /// <param name="building">
-        /// Строй
+        /// Building to check.
         /// </param>
         /// <returns>
-        /// true if alphabet cardinality between min and max.
+        /// True if alphabet cardinality between min and max.
         /// </returns>
         public bool IsValid(string building)
         {

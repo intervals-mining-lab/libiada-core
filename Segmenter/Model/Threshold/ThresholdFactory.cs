@@ -20,6 +20,7 @@
         /// The <see cref="ThresholdVariator"/>.
         /// </returns>
         /// <exception cref="ArgumentException">
+        /// Thrown if index is unknown.
         /// </exception>
         public static ThresholdVariator Make(int index, Input input)
         {

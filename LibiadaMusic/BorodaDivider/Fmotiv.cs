@@ -57,6 +57,7 @@
         /// The <see cref="Fmotiv"/>.
         /// </returns>
         /// <exception cref="Exception">
+        /// Thrown if paramPauseTreatment is unknown.
         /// </exception>
         public Fmotiv PauseTreatment(ParamPauseTreatment paramPauseTreatment)
         {
@@ -125,6 +126,7 @@
         /// The <see cref="Fmotiv"/>.
         /// </returns>
         /// <exception cref="Exception">
+        /// Thrown in many cases.
         /// </exception>
         public Fmotiv TieGathered()
         {
@@ -332,6 +334,7 @@
         /// The <see cref="bool"/>.
         /// </returns>
         /// <exception cref="Exception">
+        /// Thrown if paramEqualFM is unknown.
         /// </exception>
         public bool FmEquals(object obj, ParamPauseTreatment paramPauseTreatment, ParamEqualFM paramEqualFM)
         {

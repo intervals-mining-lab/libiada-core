@@ -32,7 +32,7 @@ namespace Clusterizator.Krab
         }
 
         /// <summary>
-        ///  Gets or sets value indicating whether pair of points connected or not.
+        /// Gets or sets a value indicating whether pair of points connected or not..
         /// </summary>
         public bool Connected { get; set; }
 
@@ -57,17 +57,17 @@ namespace Clusterizator.Krab
         public double Tau { get; set; }
 
         /// <summary>
-        /// Лямбда-расстояние.
+        /// Gets or sets the lambda distance.
         /// </summary>
         public double Lambda { get; set; }
 
         /// <summary>
-        /// Индекс первой точки.
+        /// Gets index of first point.
         /// </summary>
         public int FirstElementIndex { get; private set; }
 
         /// <summary>
-        /// Индекс второй точки.
+        /// Gets index of second point.
         /// </summary>
         public int SecondElementIndex { get; private set; }
 

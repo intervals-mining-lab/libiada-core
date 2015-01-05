@@ -107,7 +107,7 @@
         /// The sort by power.
         /// </summary>
         /// <returns>
-        /// The <see cref="List"/>.
+        /// The <see cref="List{KeyValuePair{String, List{Int32}}}"/>.
         /// </returns>
         public List<KeyValuePair<string, List<int>>> SortByPower()
         {

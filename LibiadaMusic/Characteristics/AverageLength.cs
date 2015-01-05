@@ -4,7 +4,7 @@
     using LibiadaMusic.BorodaDivider;
 
     /// <summary>
-    /// средняя длина ф-мотива для моно цепи
+    /// средняя длина ф-мотива для моно цепи.
     /// </summary>
     public static class AverageLength
     {
@@ -18,6 +18,7 @@
         /// The <see cref="double"/>.
         /// </returns>
         /// <exception cref="Exception">
+        /// Thrown if chain doesn't contain fmotives.
         /// </exception>
         public static double Calculate(FmotivChain chain)
         {

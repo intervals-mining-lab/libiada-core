@@ -77,6 +77,7 @@
         /// The <see cref="bool"/>.
         /// </returns>
         /// <exception cref="Exception">
+        /// Thrown if chain doesn't contain fmotives.
         /// </exception>
         private static bool Calculate(FmotivChain chain)
         {

@@ -25,12 +25,15 @@
         private readonly AverageRemoteness remoteness = new AverageRemoteness();
 
         /// <summary>
-        /// init
+        /// Initializes a new instance of the <see cref="CriterionAttitudeOfRemoteness"/> class.
         /// </summary>
-        /// <param name="threshold">A rule for handle a threshold value</param>
-        /// <param name="precision">additional value to</param>
-        public CriterionAttitudeOfRemoteness(ThresholdVariator threshold, double precision)
-            : base(threshold, precision)
+        /// <param name="threshold">
+        /// A rule for handling a threshold value.
+        /// </param>
+        /// <param name="precision">
+        /// Additional value to.
+        /// </param>
+        public CriterionAttitudeOfRemoteness(ThresholdVariator threshold, double precision) : base(threshold, precision)
         {
             Value = double.MinValue;
         }
@@ -75,9 +78,7 @@
         /// </returns>
         public override double Distortion(ComplexChain chain, FrequencyDictionary alphabet)
         {
-            return (remoteness.Calculate(chain, chain.Anchor)
-                    / remoteness.Calculate(chain.Original(), chain.Anchor))
-                   - wordAverageLength.Calculate(chain, chain.Anchor);
+            return (remoteness.Calculate(chain, chain.Anchor) / remoteness.Calculate(chain.Original(), chain.Anchor)) - wordAverageLength.Calculate(chain, chain.Anchor);
         }
     }
 }

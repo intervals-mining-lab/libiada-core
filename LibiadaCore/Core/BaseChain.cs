@@ -92,6 +92,7 @@ namespace LibiadaCore.Core
         }
 
         /// <summary>
+        /// Gets building of chain.
         /// Returns clone of building.
         /// </summary>
         public int[] Building
@@ -103,6 +104,7 @@ namespace LibiadaCore.Core
         }
 
         /// <summary>
+        /// Gets alphabet of chain.
         /// Returns clone of alphabet.
         /// Removes NullValue (Element with 0 index) from clone.
         /// </summary>

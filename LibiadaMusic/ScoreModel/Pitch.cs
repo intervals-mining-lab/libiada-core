@@ -49,7 +49,7 @@
         public int Instrument { private get; set; }
 
         /// <summary>
-        /// номер октавы
+        /// Gets or sets the octave number.
         /// </summary>
         private int Octave { get; set; }
 
@@ -110,6 +110,7 @@
         /// The <see cref="int"/>.
         /// </returns>
         /// <exception cref="Exception">
+        /// Thrown if step is unknown.
         /// </exception>
         private int GetMidiNumberByParam(int octave, char step, int alter)
         {

@@ -69,7 +69,7 @@
         /// The end index.
         /// </param>
         /// <returns>
-        /// The <see cref="List"/>.
+        /// The <see cref="List{String}"/>.
         /// </returns>
         public List<string> Substring(int beginIndex, int endIndex)
         {
@@ -89,7 +89,7 @@
         /// The to list.
         /// </summary>
         /// <returns>
-        /// The <see cref="List"/>.
+        /// The <see cref="List{String}"/>.
         /// </returns>
         public List<string> ToList()
         {

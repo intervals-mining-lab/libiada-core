@@ -6,6 +6,14 @@ namespace LibiadaCore.Core
     public enum Link
     {
         /// <summary>
+        /// No link.
+        /// Both interval from start of chain to first element
+        /// and interval from last element to end of chain 
+        /// are taken into account.
+        /// </summary>
+        None = 0,
+
+        /// <summary>
         /// Link to start.
         /// Interval from last element to end of chain 
         /// is not taken into account.
@@ -33,14 +41,6 @@ namespace LibiadaCore.Core
         /// and interval from last element to end of chain 
         /// are summed into one interval.
         /// </summary>
-        Cycle = 4,
-
-        /// <summary>
-        /// No link.
-        /// Both interval from start of chain to first element
-        /// and interval from last element to end of chain 
-        /// are taken into account.
-        /// </summary>
-        None = 5
+        Cycle = 4
     }
 }

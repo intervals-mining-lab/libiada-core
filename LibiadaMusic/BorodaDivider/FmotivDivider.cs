@@ -10,7 +10,7 @@
     public class FmotivDivider
     {
         /// <summary>
-        ///  параметр сохраняется для всего экземпляра класса и потом используется
+        ///  Параметр сохраняется для всего экземпляра класса и потом используется.
         /// </summary>
         private ParamPauseTreatment paramPauseTreatment;
 
@@ -27,6 +27,7 @@
         /// The <see cref="FmotivChain"/>.
         /// </returns>
         /// <exception cref="Exception">
+        /// Thrown in many cases.
         /// </exception>
         public FmotivChain GetDivision(CongenericScoreTrack congenericTrack, ParamPauseTreatment paramPauseTreatment)
         {
@@ -309,7 +310,8 @@
                             // если длительность предпоследнего равна длительности последнего
                             if (TempExtractor(fmotivBuffer, ExtractNoteList(fmotivBuffer).Count - 2).Duration.Equals(TempExtractor(fmotivBuffer, ExtractNoteList(fmotivBuffer).Count - 1).Duration))
                             {
-                                // записываем очередную ноты в фмотив с типом последовательность равнодлительных звуков (она уже записана, поэтому просто сохраняем число входящих в фмотив на данный момент нот/пауз)
+                                // записываем очередную ноты в фмотив с типом последовательность равнодлительных звуков 
+                                // (она уже записана, поэтому просто сохраняем число входящих в фмотив на данный момент нот/пауз)
                                 // сохранили сколько нот/пауз входит в буфер
                                 n = fmotivBuffer.NoteList.Count;
                             }
@@ -557,7 +559,7 @@
         /// The fmotiv buff.
         /// </param>
         /// <returns>
-        /// The <see cref="List"/>.
+        /// The <see cref="List{FMotiv}"/>.
         /// </returns>
         /// <exception cref="Exception">
         /// </exception>
@@ -567,7 +569,7 @@
             var fmotivBuffer = (Fmotiv)fmotivBuff.Clone();
 
             // выходной список фмотивов
-            var flTemp = new List<Fmotiv>();
+            var result = new List<Fmotiv>();
 
             // проверка на случай когда в аругменте метода количество собранных нот (из пауз/лиг) меньше двух
             if (ExtractNoteList(fmotivBuffer).Count < 2)
@@ -589,7 +591,7 @@
 
                         // собираем в цикле, пока не кончатся ноты в буфере 2 полноценные ноты в зависимостиот того, чем мы считаем паузу 
                         // (когда звуковой след, надо добавить в след идущие паузы за последним звуком)
-                        flTemp.Add(ThirdTempMethod(fmotivBuffer, "ПМТ", 2));
+                        result.Add(ThirdTempMethod(fmotivBuffer, "ПМТ", 2));
                     }
                     else
                     {
@@ -600,17 +602,17 @@
 
                         // собираем в цикле, пока не кончатся ноты в буфере 1 полноценную ноту в зависимостиот того, чем мы считаем паузу 
                         // (когда звуковой след, надо добавить в след идущие паузы за последним звуком)
-                        flTemp.Add(ThirdTempMethod(fmotivBuffer, "ЧМТ", 1));
+                        result.Add(ThirdTempMethod(fmotivBuffer, "ЧМТ", 1));
 
                         // если осталась одна нота то заносим ее в фмотив ЧМТ
-                        SecondTempMethod(fmotivBuffer, flTemp);
+                        SecondTempMethod(fmotivBuffer, result);
 
-                        return flTemp;
+                        return result;
                     }
                 }
 
                 // прошли все ПМТ без ЧМТ, то вернуть результат
-                return flTemp;
+                return result;
             }
 
             if (ExtractNoteList(fmotivBuffer).Count % 3 == 0)
@@ -630,7 +632,7 @@
 
                             // собираем в цикле, пока не кончатся ноты в буфере 3 полноценные ноты в зависимости от того, чем мы считаем паузу
                             // (когда звуковой след, надо добавить в след идущие паузы за последним звуком)
-                            flTemp.Add(ThirdTempMethod(fmotivBuffer, "ПМТ", 3));
+                            result.Add(ThirdTempMethod(fmotivBuffer, "ПМТ", 3));
                         }
                         else
                         {
@@ -645,11 +647,11 @@
 
                             // собираем в цикле, пока не кончатся ноты в буфере 2 полноценные ноты в зависимости от того, чем мы считаем паузу
                             // (когда звуковой след, надо добавить в след идущие паузы за последним звуком)
-                            flTemp.Add(ThirdTempMethod(fmotivBuffer, typeF, 2));
+                            result.Add(ThirdTempMethod(fmotivBuffer, typeF, 2));
 
                             // если осталась одна нота то заносим ее в фмотив ЧМТ
-                            SecondTempMethod(fmotivBuffer, flTemp);
-                            return flTemp;
+                            SecondTempMethod(fmotivBuffer, result);
+                            return result;
                         }
                     }
                     else
@@ -661,16 +663,16 @@
 
                         // собираем в цикле, пока не кончатся ноты в буфере 1 полноценная нота в зависимости от того, чем мы считаем паузу 
                         // (когда звуковой след, надо добавить в след идущие паузы за последним звуком)
-                        flTemp.Add(ThirdTempMethod(fmotivBuffer, "ЧМТ", 1));
+                        result.Add(ThirdTempMethod(fmotivBuffer, "ЧМТ", 1));
 
                         // если осталась одна нота то заносим ее в фмотив ЧМТ
-                        SecondTempMethod(fmotivBuffer, flTemp);
-                        return flTemp;
+                        SecondTempMethod(fmotivBuffer, result);
+                        return result;
                     }
                 }
 
                 // прошли все ПМТ без ЧМТ, то вернуть результат
-                return flTemp;
+                return result;
             }
             else
             {
@@ -686,7 +688,7 @@
 
                         // собираем в цикле, пока не кончатся ноты в буфере 2 полноценные ноты в зависимости от того, чем мы считаем паузу 
                         // (когда звуковой след, надо добавить в след идущие паузы за последним звуком)
-                        flTemp.Add(ThirdTempMethod(fmotivBuffer, "ПМТ", 2));
+                        result.Add(ThirdTempMethod(fmotivBuffer, "ПМТ", 2));
                     }
                     else
                     {
@@ -697,7 +699,7 @@
 
                         // собираем в цикле, пока не кончатся ноты в буфере 1 полноценную ноту в зависимости от того, чем мы считаем паузу 
                         // (когда звуковой след, надо добавить в след идущие паузы за последним звуком)
-                        flTemp.Add(ThirdTempMethod(fmotivBuffer, "ЧМТ", 1));
+                        result.Add(ThirdTempMethod(fmotivBuffer, "ЧМТ", 1));
 
                         // вызываем рекурсию на оставшиеся ноты
                         // отправляем последовательность равнодлительных звуков на анализ, получаем цепочку фмотивов и заносим их в выходную последовательность
@@ -705,10 +707,10 @@
                         for (int j = 0; j < dividedSameDuration.Count; j++)
                         {
                             // заносим очередной фмотив
-                            flTemp.Add((Fmotiv)dividedSameDuration[j].Clone());
+                            result.Add((Fmotiv)dividedSameDuration[j].Clone());
                         }
 
-                        return flTemp;
+                        return result;
                     }
                 }
 
@@ -723,7 +725,7 @@
 
                         // собираем в цикле, пока не кончатся ноты в буфере 3 полноценные ноты в зависимости от того, чем мы считаем паузу 
                         // (когда звуковой след, надо добавить в след идущие паузы за последним звуком)
-                        flTemp.Add(ThirdTempMethod(fmotivBuffer, "ПМТ", 3));
+                        result.Add(ThirdTempMethod(fmotivBuffer, "ПМТ", 3));
                     }
                     else
                     {
@@ -738,11 +740,11 @@
 
                         // собираем в цикле, пока не кончатся ноты в буфере 3 полноценные ноты в зависимости от того, чем мы считаем паузу 
                         // (когда звуковой след, надо добавить в след идущие паузы за последним звуком)
-                        flTemp.Add(ThirdTempMethod(fmotivBuffer, typeF, 2));
+                        result.Add(ThirdTempMethod(fmotivBuffer, typeF, 2));
 
                         // если осталась одна нота то заносим ее в фмотив ЧМТ
-                        SecondTempMethod(fmotivBuffer, flTemp);
-                        return flTemp;
+                        SecondTempMethod(fmotivBuffer, result);
+                        return result;
                     }
                 }
                 else
@@ -754,15 +756,15 @@
 
                     // собираем в цикле, пока не кончатся ноты в буфере 3 полноценные ноты в зависимости от того, чем мы считаем паузу 
                     // (когда звуковой след, надо добавить в след идущие паузы за последним звуком)
-                    flTemp.Add(ThirdTempMethod(fmotivBuffer, "ЧМТ", 1));
+                    result.Add(ThirdTempMethod(fmotivBuffer, "ЧМТ", 1));
 
                     // если осталась одна нота то заносим ее в фмотив ЧМТ
-                    SecondTempMethod(fmotivBuffer, flTemp);
-                    return flTemp;
+                    SecondTempMethod(fmotivBuffer, result);
+                    return result;
                 }
 
                 // если все собрали, то возвращаем выходную цепочку
-                return flTemp;
+                return result;
             }
         }
 
@@ -804,7 +806,7 @@
         /// The fmotiv buffer.
         /// </param>
         /// <returns>
-        /// The <see cref="List"/>.
+        /// The <see cref="List{ValueNote}"/>.
         /// </returns>
         private List<ValueNote> ExtractNoteList(Fmotiv fmotivBuffer)
         {
@@ -946,10 +948,10 @@
         /// <param name="fmotivBuffer">
         /// The fmotiv buffer.
         /// </param>
-        /// <param name="flTemp">
+        /// <param name="fmotivList">
         /// The fl temp.
         /// </param>
-        private void SecondTempMethod(Fmotiv fmotivBuffer, List<Fmotiv> flTemp)
+        private void SecondTempMethod(Fmotiv fmotivBuffer, List<Fmotiv> fmotivList)
         {
             if (ExtractNoteList(fmotivBuffer).Count == 1)
             {
@@ -961,7 +963,7 @@
                 }
 
                 // добавляем в выходную цепочку получившийся фмотив
-                flTemp.Add((Fmotiv)fm.Clone());
+                fmotivList.Add((Fmotiv)fm.Clone());
                 fmotivBuffer.NoteList.Clear();
             }
             else
@@ -972,7 +974,7 @@
                 for (int j = 0; j < dividedSameDuration.Count; j++)
                 {
                     // заносим очередной фмотив
-                    flTemp.Add((Fmotiv)dividedSameDuration[j].Clone());
+                    fmotivList.Add((Fmotiv)dividedSameDuration[j].Clone());
                 }
             }
         }

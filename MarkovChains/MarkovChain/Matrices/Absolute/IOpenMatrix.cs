@@ -3,22 +3,22 @@ namespace MarkovChains.MarkovChain.Matrices.Absolute
     using System.Collections;
 
     /// <summary>
-    /// Интерфейс позволяющий получить доступ к внутренным данным матрицыю
+    /// Interface for accessing inner data of matrix.
     /// </summary>
     public interface IOpenMatrix
     {
         /// <summary>
-        /// Список элементов матрицы
+        /// Gets elements list of matrix.
         /// </summary>
         ArrayList ValueList { get; }
 
         /// <summary>
-        /// Размерность матрицы
+        /// Gets rank of matrix.
         /// </summary>
         int Rank { get; }
 
         /// <summary>
-        /// Значение матрицы
+        /// Gets value of the matrix.
         /// </summary>
         double Value { get; }
     }

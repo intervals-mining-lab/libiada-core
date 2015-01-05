@@ -8,7 +8,7 @@ namespace MarkovChains.MarkovChain.Matrices.Absolute
     public interface IAbsoluteMatrix
     {
         /// <summary>
-        /// Сумма значений элементов данной матрицы
+        /// Gets matrix elements sum.
         /// </summary>
         double Count { get; }
 

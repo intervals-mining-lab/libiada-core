@@ -1,7 +1,7 @@
 ﻿namespace Segmenter.Model.Criterion
 {
     using System;
-    using System.Collections.Generic;
+    using System.Linq;
 
     using Segmenter.Base.Collectors;
     using Segmenter.Base.Sequences;
@@ -14,14 +14,18 @@
     public class CriterionGoldenRatio : Criterion
     {
         /// <summary>
-        /// init
+        /// Initializes a new instance of the <see cref="CriterionGoldenRatio"/> class.
         /// </summary>
-        /// <param name="threshold">A rule for handle a threshold value</param>
-        /// <param name="precision">additional value to</param>
+        /// <param name="threshold">
+        /// A rule for handling a threshold value.
+        /// </param>
+        /// <param name="precision">
+        /// Additional value to.
+        /// </param>
         public CriterionGoldenRatio(ThresholdVariator threshold, double precision)
             : base(threshold, precision)
         {
-            Value = double.MaxValue;
+            this.Value = double.MaxValue;
         }
 
         /// <summary>
@@ -38,16 +42,16 @@
         /// </returns>
         public override bool State(ComplexChain chain, FrequencyDictionary alphabet)
         {
-            double current = Distortion(chain, alphabet);
-            if (Value > current)
+            double current = this.Distortion(chain, alphabet);
+            if (this.Value > current)
             {
-                Value = current;
+                this.Value = current;
                 this.chain = chain.Clone();
                 this.alphabet = alphabet.Clone();
-                ThresholdToStop.SaveBest();
+                this.ThresholdToStop.SaveBest();
             }
 
-            return ThresholdToStop.Distance > ThresholdVariator.Precision;
+            return this.ThresholdToStop.Distance > ThresholdVariator.Precision;
         }
 
         /// <summary>
@@ -64,13 +68,13 @@
         /// </returns>
         public override double Distortion(ComplexChain chain, FrequencyDictionary alphabet)
         {
-            double maxFrequency = MaxFrequency(alphabet);
+            double maxFrequency = this.MaxFrequency(alphabet);
             double power = alphabet.Count;
 
-            double greaterToSmaler = power / maxFrequency;
+            double greaterToSmaller = power / maxFrequency;
             double sumToGreater = (power + maxFrequency) / power;
 
-            return Math.Abs(greaterToSmaler - sumToGreater);
+            return Math.Abs(greaterToSmaller - sumToGreater);
         }
 
         /// <summary>
@@ -84,16 +88,7 @@
         /// </returns>
         private int MaxFrequency(FrequencyDictionary alphabet)
         {
-            int max = 0;
-            foreach (List<int> positions in alphabet.GetWordsPositions())
-            {
-                if (max < positions.Count)
-                {
-                    max = positions.Count;
-                }
-            }
-
-            return max;
+            return alphabet.GetWordsPositions().Max(p => p.Count);
         }
     }
 }

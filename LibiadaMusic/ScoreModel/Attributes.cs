@@ -30,7 +30,7 @@
         }
 
         /// <summary>
-        /// beats,beatbase,ticksperbeat
+        /// Beats, beatbase, ticksperbeat.
         /// </summary>
         public Size Size { get; private set; }
 

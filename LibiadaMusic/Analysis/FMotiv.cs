@@ -33,37 +33,37 @@
         }
 
         /// <summary>
-        /// ID
+        /// Gets the id of fmotiv.
         /// </summary>
         public int Id { get; private set; }
 
         /// <summary>
-        /// Имя
+        /// Gets the name.
         /// </summary>
         public string Name { get; private set; }
 
         /// <summary>
-        /// Ранг
+        /// Gets or sets the rank.
         /// </summary>
         public int Rank { get; set; }
 
         /// <summary>
-        /// Сколько раз встретилось
+        /// Gets the occurrences count.
         /// </summary>
         public double Occurrence { get; private set; }
 
         /// <summary>
-        /// Частота
+        /// Gets the frequency.
         /// </summary>
         public double Frequency { get; private set; }
 
         /// <summary>
-        /// Удаленность
+        /// Gets or sets the remoteness.
         /// </summary>
         public double Remoteness { get; set; }
 
         /// <summary>
-        /// Глубина
+        /// Gets or sets the depth.
         /// </summary>
         public double Depth { private get; set; }
 

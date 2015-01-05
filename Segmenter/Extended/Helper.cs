@@ -34,6 +34,7 @@
         /// The a 2.
         /// </param>
         /// <typeparam name="T">
+        /// Type of array's elements.
         /// </typeparam>
         /// <returns>
         /// The <see cref="bool"/>.

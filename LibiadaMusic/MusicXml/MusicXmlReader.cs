@@ -33,7 +33,7 @@
         }
 
         /// <summary>
-        /// путь к прочитанному MusicXML файлу
+        /// Gets path to MusicXML file.
         /// </summary>
         public string FileName { get; private set; }
 
@@ -41,6 +41,7 @@
         /// Gets the music xml document.
         /// </summary>
         /// <exception cref="Exception">
+        /// Thrown if curDoc is null.
         /// </exception>
         public XmlDocument MusicXmlDocument
         {

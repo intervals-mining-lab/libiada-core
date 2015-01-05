@@ -93,7 +93,7 @@
                     length,
                     windowLen,
                     convoluted.Anchor);
-                double std = Math.Abs(pbalance * interval + (1 - pbalance) * frequency - design) / Math.Sqrt(design);
+                double std = Math.Abs((pbalance * interval) + ((1 - pbalance) * frequency) - design) / Math.Sqrt(design);
                 if (!wordPriority.ContainsKey(std))
                 {
                     wordPriority.Add(std, accord);

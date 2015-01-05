@@ -21,7 +21,7 @@
         /// The param equal fm.
         /// </param>
         /// <returns>
-        /// The <see cref="List"/>.
+        /// The <see cref="List{FmotivChain}"/>.
         /// </returns>
         public List<FmotivChain> Divide(ScoreTrack scoreTrack, ParamPauseTreatment paramPauseTreatment, ParamEqualFM paramEqualFM)
         {

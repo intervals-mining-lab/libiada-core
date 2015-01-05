@@ -60,7 +60,7 @@
         /// <summary>
         /// The range.
         /// </summary>
-        private FmotivArray Range = new FmotivArray();
+        private FmotivArray range = new FmotivArray();
 
         /// <summary>
         /// The chain.
@@ -122,7 +122,7 @@
         /// </param>
         public void AddFM(string st)
         {
-            Range.NewRecord(st);
+            range.NewRecord(st);
         }
 
         /// <summary>
@@ -133,7 +133,7 @@
             int N = 0;
             string s;
             var ar = new List<FmotivName>();
-            ar = new List<FmotivName>(Range.Data);
+            ar = new List<FmotivName>(range.Data);
             while (ar.Count != 0)
             {
                 for (int i = 0; i < ar.Count; i++)
@@ -144,7 +144,7 @@
                     }
                 }
 
-                double f = Range.Length;
+                double f = range.Length;
                 PLex.AddFMotiv(ar[0].Name, N, N / f);
                 N = 0;
                 s = ar[0].Name;
@@ -170,11 +170,11 @@
             K = 1 / Math.Log(PLex.GreatOccur);
             B = (K / PLex.GreatFrequency) - 1;
             int i = 1;
-            double Plow = Range.Length;
+            double Plow = range.Length;
             P = K / (B + i);
             while (P >= (1 / Plow))
             {
-                TLex.AddFMotiv((i - 1).ToString(), (int)Math.Round(P * Range.Length), P);
+                TLex.AddFMotiv((i - 1).ToString(), (int)Math.Round(P * range.Length), P);
                 i++;
                 P = K / (B + i);
             }
@@ -201,13 +201,13 @@
         /// </summary>
         public void IdentifyRange()
         {
-            for (int i = 0; i < Range.Length; i++)
+            for (int i = 0; i < range.Length; i++)
             {
                 for (int j = 0; j < PLex.Capacity; j++)
                 {
-                    if (Range.Data[i].Name == PLex.Data[j].Name)
+                    if (range.Data[i].Name == PLex.Data[j].Name)
                     {
-                        Range.Data[i].Id = PLex.Data[j].Id;
+                        range.Data[i].Id = PLex.Data[j].Id;
                     }
                 }
             }
@@ -221,11 +221,11 @@
         /// </returns>
         public Chain MakeNewChain()
         {
-            var newChain = new Chain(Range.Length);
+            var newChain = new Chain(range.Length);
 
-            for (int i = 0; i < Range.Length; i++)
+            for (int i = 0; i < range.Length; i++)
             {
-                newChain[i] = new ValueInt(Range.Data[i].Id);
+                newChain[i] = new ValueInt(range.Data[i].Id);
             }
 
             chain = (Chain)newChain.Clone();
@@ -240,7 +240,7 @@
             IInfo = Math.Log(PLex.Capacity, 2);
 
             OIInfo = IInfo;
-            IInfo *= Range.Length;
+            IInfo *= range.Length;
         }
 
         /// <summary>
@@ -248,13 +248,13 @@
         /// </summary>
         public void CalculateEntropy()
         {
-            double Ent = 0;
+            double entropy = 0;
             for (int i = 0; i < PLex.Capacity; i++)
             {
-                Ent += PLex.Data[i].Frequency * Math.Log(PLex.Data[i].Frequency, 2);
+                entropy += PLex.Data[i].Frequency * Math.Log(PLex.Data[i].Frequency, 2);
             }
 
-            Entropy = Ent * (-1);
+            Entropy = entropy * (-1);
         }
 
         /// <summary>
@@ -262,12 +262,12 @@
         /// </summary>
         public void CalculateDepth()
         {
-            var calc = new Depth();
-            AvgDepth = calc.Calculate(MakeNewChain(), Link.End);
+            var calculator = new Depth();
+            AvgDepth = calculator.Calculate(MakeNewChain(), Link.End);
 
             for (int i = 0; i < PLex.Capacity; i++)
             {
-                PLex.Data[i].Depth = calc.Calculate(MakeNewChain().CongenericChain(i), Link.End);
+                PLex.Data[i].Depth = calculator.Calculate(MakeNewChain().CongenericChain(i), Link.End);
             }
         }
 
@@ -276,12 +276,12 @@
         /// </summary>
         public void CalculateRemoteness()
         {
-            var calc = new AverageRemoteness();
-            AvgRemoteness = calc.Calculate(chain, Link.End);
+            var calculator = new AverageRemoteness();
+            AvgRemoteness = calculator.Calculate(chain, Link.End);
 
             for (int i = 0; i < PLex.Capacity; i++)
             {
-                PLex.Data[i].Remoteness = calc.Calculate(chain.CongenericChain(i), Link.End);
+                PLex.Data[i].Remoteness = calculator.Calculate(chain.CongenericChain(i), Link.End);
             }
         }
 
@@ -290,8 +290,8 @@
         /// </summary>
         public void CalculateRegularity()
         {
-            var calc = new Regularity();
-            Regularity = calc.Calculate(chain, Link.End);
+            var calculator = new Regularity();
+            Regularity = calculator.Calculate(chain, Link.End);
         }
 
         /// <summary>
@@ -299,8 +299,8 @@
         /// </summary>
         public void CalculatePeriodicity()
         {
-            var calc = new Periodicity();
-            Periodicity = calc.Calculate(chain, Link.End);
+            var calculator = new Periodicity();
+            Periodicity = calculator.Calculate(chain, Link.End);
         }
 
         /// <summary>
@@ -347,8 +347,8 @@
                 }
             }
 
-            FreqDiff.CalculateDifference(ar1, ar2, Range.Length, PLex.Capacity, TLex.Capacity);
-            LogNDiff.CalculateDifference(ar3, ar4, Range.Length, PLex.Capacity, TLex.Capacity);
+            FreqDiff.CalculateDifference(ar1, ar2, range.Length, PLex.Capacity, TLex.Capacity);
+            LogNDiff.CalculateDifference(ar3, ar4, range.Length, PLex.Capacity, TLex.Capacity);
             VDiff.CalculateDifferenceV(TLex.Capacity, PLex.Capacity);
         }
 
@@ -376,7 +376,7 @@
             DisplayData.DiffRFreq = FreqDiff.Clone();
             DisplayData.DiffLRLN = LogNDiff.Clone();
 
-            DisplayData.len = Range.Length;
+            DisplayData.Length = range.Length;
             DisplayData.Regularity = Regularity;
             DisplayData.Periodicity = Periodicity;
             DisplayData.AvgRemoteness = AvgRemoteness;
@@ -387,27 +387,27 @@
             DisplayData.TLCapacity = TLex.Capacity;
             DisplayData.GreatFrequency = PLex.GreatFrequency;
             DisplayData.OIInfo = OIInfo;
-            DisplayData.LEntropy = Entropy * Range.Length;
+            DisplayData.LEntropy = Entropy * range.Length;
 
             for (int i = 0; i < PLex.Capacity; i++)
             {
                 // на время эксперимента комментарий
-                DisplayData.Id_N.Add(new[] { PLex.Data[i].Id, PLex.Data[i].Occurrence });
+                DisplayData.IdN.Add(new[] { PLex.Data[i].Id, PLex.Data[i].Occurrence });
 
-                DisplayData.Rank_FreqP.Add(new[] { PLex.RData()[i].Rank, PLex.RData()[i].Frequency });
+                DisplayData.RankFreqP.Add(new[] { PLex.RData()[i].Rank, PLex.RData()[i].Frequency });
 
-                DisplayData.LogRank_LogNP.Add(new[] { PLex.RData()[i].LogRank, PLex.RData()[i].LogOccurrence });
+                DisplayData.LogRankLogNP.Add(new[] { PLex.RData()[i].LogRank, PLex.RData()[i].LogOccurrence });
 
-                DisplayData.LogRank_LogDepth.Add(new[] { PLex.RData()[i].LogRank, PLex.RangeLexDi()[i] });
+                DisplayData.LogRankLogDepth.Add(new[] { PLex.RData()[i].LogRank, PLex.RangeLexDi()[i] });
 
-                DisplayData.Rank_Remoteness.Add(new[] { PLex.RData()[i].Rank, PLex.RangeLexRi()[i] });
+                DisplayData.RankRemoteness.Add(new[] { PLex.RData()[i].Rank, PLex.RangeLexRi()[i] });
             }
 
             for (int i = 0; i < TLex.Capacity; i++)
             {
-                DisplayData.Rank_FreqT.Add(new[] { TLex.RData()[i].Rank, TLex.RData()[i].Frequency });
+                DisplayData.RankFreqT.Add(new[] { TLex.RData()[i].Rank, TLex.RData()[i].Frequency });
 
-                DisplayData.LogRank_LogNT.Add(new[] { TLex.RData()[i].LogRank, TLex.RData()[i].LogOccurrence });
+                DisplayData.LogRankLogNT.Add(new[] { TLex.RData()[i].LogRank, TLex.RData()[i].LogOccurrence });
             }
 
             double gDepth = 0;

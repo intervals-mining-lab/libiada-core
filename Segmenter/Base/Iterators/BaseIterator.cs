@@ -12,11 +12,6 @@
     public abstract class BaseIterator : IIterator
     {
         /// <summary>
-        /// Current cursor cursorPosition
-        /// </summary>
-        protected int cursorPosition = -1;
-
-        /// <summary>
         /// The number of elements through which the pointer will jump at the next iteration
         /// </summary>
         protected int step;
@@ -25,11 +20,6 @@
         /// Length of a word (window of cutting)
         /// </summary>
         protected int windowLength;
-
-        /// <summary>
-        /// Amount of offsets for current sequence
-        /// </summary>
-        protected int maxShifts;
 
         /// <summary>
         /// An iterate sequence
@@ -42,39 +32,35 @@
         protected List<string> currentCut = new List<string>();
 
         /// <summary>
-        /// Initializes a main options of an iterator.
+        /// Initializes a new instance of the <see cref="BaseIterator"/> class.
         /// </summary>
-        /// <param name="chain">An iterate sequence</param>
-        /// <param name="length">Length of a word (window of cutting)</param>
-        /// <param name="step">The number of elements through which the pointer will jump at the next iteration</param>
+        /// <param name="chain">
+        /// An iterated sequence.
+        /// </param>
+        /// <param name="length">
+        /// Length of a word (window of cutting).
+        /// </param>
+        /// <param name="step">
+        /// The number of elements through which the pointer will jump at the next iteration.
+        /// </param>
         public BaseIterator(ComplexChain chain, int length, int step)
         {
+            CursorPosition = -1;
             Initialize(chain, length, step);
         }
 
         /// <summary>
-        /// Gets maximum number of iterations on this chain
+        /// Gets or sets maximum number of iterations on this chain.
+        /// Amount of offsets for current sequence.
         /// </summary>
         /// <returns>Maximum number of iterations on this chain</returns>
-        public int MaxShifts
-        {
-            get
-            {
-                return maxShifts;
-            }
-        }
+        public int MaxShifts { get; protected set; }
 
         /// <summary>
-        /// Gets current cursor cursorPosition
+        /// Gets or sets current cursor position.
         /// </summary>
         /// <returns>Current cursor cursorPosition</returns>
-        public int CursorPosition
-        {
-            get
-            {
-                return cursorPosition;
-            }
-        }
+        public int CursorPosition { get; protected set; }
 
         /// <summary>
         /// Gets number of shifts at this moment
@@ -91,8 +77,12 @@
         /// <summary>
         /// Moves a pointer to specified cursorPosition
         /// </summary>
-        /// <param name="position">a cursorPosition in a chain subject to a cutting window</param>
-        /// <returns>true if moving is available, false - otherwise</returns>
+        /// <param name="position">
+        /// a cursorPosition in a chain subject to a cutting window
+        /// </param>
+        /// <returns>
+        /// true if moving is available, false - otherwise
+        /// </returns>
         public abstract bool Move(int position);
 
         /// <summary>
@@ -107,7 +97,7 @@
         /// The next.
         /// </summary>
         /// <returns>
-        /// The <see cref="List"/>.
+        /// The <see cref="List{String}"/>.
         /// </returns>
         public abstract List<string> Next();
 
@@ -128,7 +118,7 @@
         /// The current.
         /// </summary>
         /// <returns>
-        /// The <see cref="List"/>.
+        /// The <see cref="List{String}"/>.
         /// </returns>
         public abstract List<string> Current();
 
@@ -137,7 +127,7 @@
         /// </summary>
         private void CalculateMaxShifts()
         {
-            maxShifts = ((chain.GetLength() - windowLength) / step) + 1;
+            MaxShifts = ((chain.GetLength() - windowLength) / step) + 1;
         }
 
         /// <summary>
@@ -172,7 +162,7 @@
             this.chain = chain.Clone();
             this.windowLength = windowLength;
             this.step = step;
-            cursorPosition = -step;
+            CursorPosition = -step;
             CalculateMaxShifts();
         }
     }

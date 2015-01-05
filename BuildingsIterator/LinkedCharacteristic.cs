@@ -9,9 +9,9 @@ namespace BuildingsIterator
     public abstract class LinkedCharacteristic
     {
         /// <summary>
-        /// The calc.
+        /// The calculator.
         /// </summary>
-        private readonly IFullCalculator calc;
+        private readonly IFullCalculator calculator;
 
         /// <summary>
         /// The link.
@@ -19,41 +19,45 @@ namespace BuildingsIterator
         private readonly Link link;
 
         /// <summary>
-        /// Конструктор
+        /// Initializes a new instance of the <see cref="LinkedCharacteristic"/> class.
         /// </summary>
-        /// <param name="calc">Калюкулятор характеристики цепи</param>
-        /// <param name="link">Привязка</param>
-        public LinkedCharacteristic(IFullCalculator calc, Link link)
+        /// <param name="calculator">
+        /// The calculator of characteristic.
+        /// </param>
+        /// <param name="link">
+        /// The link of characteristic.
+        /// </param>
+        public LinkedCharacteristic(IFullCalculator calculator, Link link)
         {
-            this.calc = calc;
+            this.calculator = calculator;
             this.link = link;
         }
 
         /// <summary>
-        /// Конструктор
+        /// Initializes a new instance of the <see cref="LinkedCharacteristic"/> class.
         /// </summary>
-        /// <param name="calc">
-        /// Калькулятор характеристики цепи
+        /// <param name="calculator">
+        /// The calculator of characteristic.
         /// </param>
-        public LinkedCharacteristic(IFullCalculator calc)
+        public LinkedCharacteristic(IFullCalculator calculator)
         {
-            this.calc = calc;
+            this.calculator = calculator;
             link = Link.Start;
         }
 
         /// <summary>
-        /// Калькулятор характеристики
+        ///  Gets calculator of characteristic.
         /// </summary>
-        public IFullCalculator Calc
+        public IFullCalculator Calculator
         {
             get
             {
-                return calc;
+                return calculator;
             }
         }
 
         /// <summary>
-        /// Привязка
+        /// Gets link of characteristic.
         /// </summary>
         public Link Link
         {

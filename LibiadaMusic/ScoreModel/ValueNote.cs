@@ -6,7 +6,7 @@
     using LibiadaCore.Core;
 
     /// <summary>
-    /// нота
+    /// Class presenting a note value.
     /// </summary>
     public class ValueNote : IBaseObject
     {
@@ -80,7 +80,7 @@
         }
 
         /// <summary>
-        /// id ноты для составления строя нот
+        /// Gets or sets the id of note.
         /// </summary>
         public int Id { get; set; }
 
@@ -95,7 +95,7 @@
         public List<Pitch> Pitch { get; private set; }
 
         /// <summary>
-        /// длительность ноты
+        /// Gets note duration.
         /// </summary>
         public Duration Duration { get; private set; }
 
@@ -105,7 +105,7 @@
         public int Priority { get; set; }
 
         /// <summary>
-        /// есть ли лига (-1 : нет; 0 - начало; 1 - конец)
+        /// есть ли лига
         /// </summary>
         public Tie Tie { get; set; }
 
@@ -116,7 +116,7 @@
         /// The duration.
         /// </param>
         /// <returns>
-        /// The <see cref="List"/>.
+        /// The <see cref="List{ValueNote}"/>.
         /// </returns>
         public List<ValueNote> SplitNote(Duration duration)
         {
@@ -133,6 +133,7 @@
         /// The pitch.
         /// </param>
         /// <exception cref="ArgumentNullException">
+        /// Thrown if pitch is null.
         /// </exception>
         public void AddPitch(Pitch pitch)
         {
@@ -244,7 +245,7 @@
                 return false;
             }
 
-            if (Duration.Equals(((ValueNote)obj).Duration) && (PitchEquals(((ValueNote)obj).Pitch)) && (Tie == ((ValueNote)obj).Tie) && (Triplet == ((ValueNote)obj).Triplet))
+            if (Duration.Equals(((ValueNote)obj).Duration) && PitchEquals(((ValueNote)obj).Pitch) && (Tie == ((ValueNote)obj).Tie) && (Triplet == ((ValueNote)obj).Triplet))
             {
                 return true;
             }

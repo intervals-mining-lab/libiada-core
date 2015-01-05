@@ -16,10 +16,10 @@ namespace Clusterizator.Krab
         /// Initializes a new instance of the <see cref="GraphElement"/> class.
         /// </summary>
         /// <param name="element"> 
-        /// Координаты.
+        /// Coordinates of point.
         /// </param>
         /// <param name="name"> 
-        /// Имя объекта.
+        /// Object name.
         /// </param>
         public GraphElement(HybridDictionary element, object name)
         {
@@ -29,12 +29,12 @@ namespace Clusterizator.Krab
         }
 
         /// <summary>
-        /// Имя вершины
+        /// Gets the point name.
         /// </summary>
         public object Id { get; private set; }
 
         /// <summary>
-        /// Координаты точки в виде хеш-таблицы
+        /// Gets or sets the point coordinates as HybridDictionary.
         /// </summary>
         public HybridDictionary Content { get; set; }
 

@@ -16,14 +16,11 @@ namespace LibiadaCore.Core
         protected readonly List<IBaseObject> Elements = new List<IBaseObject>();
 
         /// <summary>
-        /// Returns count of elements in alphabet.
+        /// Gets count of elements in alphabet.
         /// </summary>
         public int Cardinality
         {
-            get
-            {
-                 return Elements.Count;
-            }
+            get { return Elements.Count; }
         }
 
         /// <summary>

@@ -19,7 +19,7 @@
         }
 
         /// <summary>
-        /// список ф-мотив
+        /// Gets fmotives list.
         /// </summary>
         public List<Fmotiv> FmotivList { get; private set; }
 

@@ -11,7 +11,7 @@ namespace LibiadaCore.Tests.Core
     public static class ChainsStorage
     {
         /// <summary>
-        /// The elements.
+        /// Gets dictionary of elements.
         /// </summary>
         public static Dictionary<string, IBaseObject> Elements
         {

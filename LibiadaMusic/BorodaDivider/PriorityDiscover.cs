@@ -158,8 +158,7 @@
                     {
                         if (PriorityMask.NoteList.Count < 1)
                         {
-                            throw new Exception(
-                                "LibiadaMusic Priority Discover: такт построен не по правилам, не хватает ноты");
+                            throw new Exception("LibiadaMusic Priority Discover: такт построен не по правилам, не хватает ноты");
                         }
 
                         // набор длительностей нот маски, и их удаление из очереди
@@ -218,7 +217,7 @@
         /// The mask buf.
         /// </param>
         /// <returns>
-        /// The <see cref="List"/>.
+        /// The <see cref="List{ValueNote}"/>.
         /// </returns>
         public List<ValueNote> CountTripletPriority(List<ValueNote> noteBuf, List<ValueNote> maskBuf)
         {
@@ -280,6 +279,7 @@
         /// The <see cref="double"/>.
         /// </returns>
         /// <exception cref="Exception">
+        /// Thrown if measure contains no notes.
         /// </exception>
         public double MinDuration(Measure measure)
         {
@@ -334,7 +334,8 @@
                     {
                         // относительно сильная доля с приоритетом 1
                         const int Priority = 1;
-                        PriorityMask.NoteList.Add(new ValueNote((Pitch)null, new Duration(1, measure.Attributes.Size.BeatBase, false, measure.Attributes.Size.TicksPerBeat), false, Tie.None, Priority));
+                        var duration = new Duration(1, measure.Attributes.Size.BeatBase, false, measure.Attributes.Size.TicksPerBeat);
+                        PriorityMask.NoteList.Add(new ValueNote((Pitch)null, duration, false, Tie.None, Priority));
                     }
                     else
                     {
@@ -347,7 +348,8 @@
                             priority = 1;
                         }
 
-                        PriorityMask.NoteList.Add(new ValueNote((Pitch)null, new Duration(1, measure.Attributes.Size.BeatBase, false, measure.Attributes.Size.TicksPerBeat), false, Tie.None, priority));
+                        var duration = new Duration(1, measure.Attributes.Size.BeatBase, false, measure.Attributes.Size.TicksPerBeat);
+                        PriorityMask.NoteList.Add(new ValueNote((Pitch)null, duration, false, Tie.None, priority));
                     }
                 }
             }
@@ -363,7 +365,8 @@
                         {
                             // относительно сильная доля с приоритетом 1
                             int priority = 1;
-                            PriorityMask.NoteList.Add(new ValueNote((Pitch)null, new Duration(1, measure.Attributes.Size.BeatBase, false, measure.Attributes.Size.TicksPerBeat), false, Tie.None, priority));
+                            var duration = new Duration(1, measure.Attributes.Size.BeatBase, false, measure.Attributes.Size.TicksPerBeat);
+                            PriorityMask.NoteList.Add(new ValueNote((Pitch)null, duration, false, Tie.None, priority));
                         }
                         else
                         {
@@ -376,7 +379,8 @@
                                 priority = 1;
                             }
 
-                            PriorityMask.NoteList.Add(new ValueNote((Pitch)null, new Duration(1, measure.Attributes.Size.BeatBase, false, measure.Attributes.Size.TicksPerBeat), false, Tie.None, priority));
+                            var duration = new Duration(1, measure.Attributes.Size.BeatBase, false, measure.Attributes.Size.TicksPerBeat);
+                            PriorityMask.NoteList.Add(new ValueNote((Pitch)null, duration, false, Tie.None, priority));
                         }
                     }
                 }
@@ -398,13 +402,15 @@
                                 priority = 2;
                             }
 
-                            PriorityMask.NoteList.Add(new ValueNote((Pitch)null, new Duration(1, measure.Attributes.Size.BeatBase, false, measure.Attributes.Size.TicksPerBeat), false, Tie.None, priority));
+                            var duration = new Duration(1, measure.Attributes.Size.BeatBase, false, measure.Attributes.Size.TicksPerBeat);
+                            PriorityMask.NoteList.Add(new ValueNote((Pitch)null, duration, false, Tie.None, priority));
                         }
                         else
                         {
                             // слабая доля с приоритетом 2
-                            const int priority = 2;
-                            PriorityMask.NoteList.Add(new ValueNote((Pitch)null, new Duration(1, measure.Attributes.Size.BeatBase, false, measure.Attributes.Size.TicksPerBeat), false, Tie.None, priority));
+                            const int Priority = 2;
+                            var duration = new Duration(1, measure.Attributes.Size.BeatBase, false, measure.Attributes.Size.TicksPerBeat);
+                            PriorityMask.NoteList.Add(new ValueNote((Pitch)null, duration, false, Tie.None, Priority));
                         }
                     }
                 }

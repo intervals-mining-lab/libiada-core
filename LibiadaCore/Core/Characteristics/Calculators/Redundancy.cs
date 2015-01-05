@@ -21,7 +21,7 @@
         /// Link of intervals in chain.
         /// </param>
         /// <returns>
-        /// Redundancy.
+        /// Redundancy as <see cref="double"/>.
         /// </returns>
         public override double Calculate(BinaryIntervalsManager manager, Link link)
         {

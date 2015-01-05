@@ -5,7 +5,7 @@
     using Segmenter.Base.Iterators;
 
     /// <summary>
-    /// Contains a pairs of objects word and its positions
+    /// Contains a pairs of objects word and its positions.
     /// </summary>
     public class DataCollector
     {
@@ -55,8 +55,12 @@
         /// <summary>
         /// Возвращает список позиций указанной цепочки?
         /// </summary>
-        /// <param name="chain">Цепочка?</param>
-        /// <returns></returns>
+        /// <param name="chain">
+        /// Цепочка?
+        /// </param>
+        /// <returns>
+        /// The <see cref="List{Int32}"/>.
+        /// </returns>
         public List<int> Positions(List<string> chain)
         {
             return new List<int>(dictionary[chain]);

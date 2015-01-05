@@ -102,7 +102,7 @@
         /// The upload.
         /// </summary>
         /// <returns>
-        /// The <see cref="List"/>.
+        /// The <see cref="List{MainOutputData}"/>.
         /// </returns>
         public new List<MainOutputData> Upload()
         {

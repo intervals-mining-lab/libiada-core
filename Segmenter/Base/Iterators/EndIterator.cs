@@ -12,15 +12,20 @@
     public sealed class EndIterator : BaseIterator
     {
         /// <summary>
-        /// Initializes a main options of an iterator.
+        /// Initializes a new instance of the <see cref="EndIterator"/> class.
         /// </summary>
-        /// <param name="chain">An iterable sequence</param>
-        /// <param name="length">Length of a word (window of cutting)</param>
-        /// <param name="step">The number of elements through which the pointer will jump at the next iteration</param>
-        public EndIterator(ComplexChain chain, int length, int step)
-            : base(chain, length, step)
+        /// <param name="chain">
+        /// The chain.
+        /// </param>
+        /// <param name="length">
+        /// Length of a word (window of cutting)
+        /// </param>
+        /// <param name="step">
+        /// The number of elements through which the pointer will jump at the next iteration
+        /// </param>
+        public EndIterator(ComplexChain chain, int length, int step) : base(chain, length, step)
         {
-            cursorPosition = chain.GetLength() - windowLength + 1;
+            this.CursorPosition = chain.GetLength() - this.windowLength + 1;
         }
 
         /// <summary>
@@ -31,21 +36,21 @@
         /// </returns>
         public override bool HasNext()
         {
-            return (CursorPosition - step) >= 0;
+            return (CursorPosition - this.step) >= 0;
         }
 
         /// <summary>
         /// The next.
         /// </summary>
         /// <returns>
-        /// The <see cref="List"/>.
+        /// The <see cref="List{String}"/>.
         /// </returns>
         public override List<string> Next()
         {
-            cursorPosition = CursorPosition - step;
+            this.CursorPosition = CursorPosition - this.step;
             try
             {
-                currentCut = chain.Substring(CursorPosition, CursorPosition + windowLength);
+                currentCut = chain.Substring(CursorPosition, CursorPosition + this.windowLength);
             }
             catch (Exception)
             {
@@ -59,7 +64,7 @@
         /// </summary>
         public override void Reset()
         {
-            cursorPosition = MaxShifts;
+            this.CursorPosition = MaxShifts;
         }
 
         /// <summary>
@@ -77,7 +82,7 @@
         /// The current.
         /// </summary>
         /// <returns>
-        /// The <see cref="List"/>.
+        /// The <see cref="List{String}"/>.
         /// </returns>
         public override List<string> Current()
         {
@@ -95,9 +100,9 @@
         /// </returns>
         public override bool Move(int position)
         {
-            if ((position >= 0) && (chain.GetLength() >= windowLength + position))
+            if ((position >= 0) && (chain.GetLength() >= this.windowLength + position))
             {
-                cursorPosition = position;
+                this.CursorPosition = position;
                 return true;
             }
 

@@ -8,7 +8,7 @@ namespace BuildingsIterator
     using Statistics;
 
     /// <summary>
-    /// Класс выборки цепочек с характеристиками
+    /// Класс выборки цепочек с характеристиками.
     /// </summary>
     public class ChainPicksWithCharacteristics
     {
@@ -31,10 +31,10 @@ namespace BuildingsIterator
         /// Initializes a new instance of the <see cref="ChainPicksWithCharacteristics"/> class.
         /// </summary>
         /// <param name="chains">
-        /// Хеш таблица с цепочками и вычисленными характеристиками
+        /// Хеш таблица с цепочками и вычисленными характеристиками.
         /// </param>
         /// <param name="characters">
-        /// Массив характеристик и привязок
+        /// Массив характеристик и привязок.
         /// </param>
         public ChainPicksWithCharacteristics(Hashtable chains, List<LinkedCharacteristic> characters)
         {
@@ -43,46 +43,47 @@ namespace BuildingsIterator
             characteristicsNames = new List<string>();
             for (int i = 0; i < characters.Count; i++)
             {
-                characteristicsNames.Add(characters[i].Calc.GetType().ToString());
+                characteristicsNames.Add(characters[i].Calculator.GetType().ToString());
             }
         }
 
         /// <summary>
-        /// Число цепочек в выборке
+        /// Gets count of chains in sample.
         /// </summary>
         public int Count
         {
-            get
-            {
-                return chains.Count;
-            }
+            get { return chains.Count; }
         }
 
         /// <summary>
-        /// Возвращает выборку значений конкретной характеристики
+        /// Возвращает выборку значений конкретной характеристики.
         /// </summary>
-        /// <param name="characteristics">Характеристика</param>
-        /// <returns>Выборка</returns>
-        public Picks GetPicks(string characteristics)
+        /// <param name="characteristic">
+        /// Characteristic name.
+        /// </param>
+        /// <returns>
+        /// The sample.
+        /// </returns>
+        public Picks GetPicks(string characteristic)
         {
-            var picks = new Picks(GetCharacteristicName(characteristicsNames.IndexOf(characteristics)));
+            var picks = new Picks(GetCharacteristicName(characteristicsNames.IndexOf(characteristic)));
             IDictionaryEnumerator iterator = chains.GetEnumerator();
             while (iterator.MoveNext())
             {
-                picks.Add(((List<double>)iterator.Value)[characteristicsNames.IndexOf(characteristics)]);
+                picks.Add(((List<double>)iterator.Value)[characteristicsNames.IndexOf(characteristic)]);
             }
 
             return picks;
         }
 
         /// <summary>
-        /// Возвращает выборку значений конкретной характеристики
+        /// Возвращает выборку значений конкретной характеристики.
         /// </summary>
         /// <param name="i">
         /// The i.
         /// </param>
         /// <returns>
-        /// Выборка.
+        /// The sample.
         /// </returns>
         public Picks GetPicks(int i)
         {
@@ -97,11 +98,17 @@ namespace BuildingsIterator
         }
 
         /// <summary>
-        /// Возвращает вектор характеристик для конкретной цепи
+        /// Возвращает вектор характеристик для конкретной цепи.
         /// </summary>
-        /// <param name="i">Номер цепи в массиве</param>
-        /// <returns>Массив характеристик</returns>
-        /// <exception cref="Exception">Элемент не найден</exception>
+        /// <param name="i">
+        /// Номер цепи в массиве.
+        /// </param>
+        /// <returns>
+        /// Массив характеристик.
+        /// </returns>
+        /// <exception cref="Exception">
+        /// Thrown if element is not found.
+        /// </exception>
         public List<double> GetCharacteristicsVector(int i)
         {
             IDictionaryEnumerator iterator = chains.GetEnumerator();
@@ -119,10 +126,14 @@ namespace BuildingsIterator
         }
 
         /// <summary>
-        /// Возвращает конкретную цепочку
+        /// Возвращает конкретную цепочку.
         /// </summary>
-        /// <param name="i">Номер в массиве</param>
-        /// <returns>Цепочка в виде строки</returns>
+        /// <param name="i">
+        /// Номер в массиве.
+        /// </param>
+        /// <returns>
+        /// Цепочка в виде строки.
+        /// </returns>
         public string GetChain(int i)
         {
             IDictionaryEnumerator iterator = chains.GetEnumerator();
@@ -141,7 +152,7 @@ namespace BuildingsIterator
 
         /// <summary>
         /// The get characteristics count.
-        /// Возвращает число расчитанных характеристик для каждой цепочки
+        /// Возвращает число расчитанных характеристик для каждой цепочки.
         /// </summary>
         /// <returns>
         /// The <see cref="int"/>.
@@ -152,10 +163,14 @@ namespace BuildingsIterator
         }
 
         /// <summary>
-        /// Возвращает имя характеристики
+        /// Возвращает имя характеристики.
         /// </summary>
-        /// <param name="i">Номер в массиве имен</param>
-        /// <returns>Строковое имя</returns>
+        /// <param name="i">
+        /// Номер в массиве имен.
+        /// </param>
+        /// <returns>
+        /// Строковое имя.
+        /// </returns>
         public string GetCharacteristicName(int i)
         {
             return characteristicsNames[i].ToString();
@@ -163,10 +178,10 @@ namespace BuildingsIterator
 
         /// <summary>
         /// The get all chains.
-        /// Возвращает массив всех цепочек
+        /// Возвращает массив всех цепочек.
         /// </summary>
         /// <returns>
-        /// The <see cref="List"/>.
+        /// The <see cref="List{String}"/>.
         /// </returns>
         public List<string> GetAllChains()
         {
