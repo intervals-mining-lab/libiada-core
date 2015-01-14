@@ -41,6 +41,11 @@ namespace LibiadaCore.Core.Characteristics
         private static readonly List<Type> FullCalculators = new List<Type>
                                                             {
                                                                 typeof(GCRatio),
+                                                                typeof(GCSkew),
+                                                                typeof(GCToATRatio),
+                                                                typeof(MKSkew),
+                                                                typeof(RYSkew),
+                                                                typeof(SWSkew),
                                                                 typeof(AlphabetCardinality),
                                                                 typeof(AlphabeticAverageRemoteness),
                                                                 typeof(AlphabeticDepth),
