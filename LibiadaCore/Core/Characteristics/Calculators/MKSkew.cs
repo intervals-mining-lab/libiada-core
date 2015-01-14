@@ -24,7 +24,7 @@
         /// Link of intervals in chain.
         /// </param>
         /// <returns>
-        /// MK Skew <see cref="double"/> value.
+        /// MK skew value as <see cref="double"/>.
         /// </returns>
         public double Calculate(Chain chain, Link link)
         {
@@ -36,7 +36,7 @@
             var t = counter.Calculate(chain.CongenericChain(new ValueString("T")), link);
             var l = counter.Calculate(chain, link);
 
-            var result = (c + a) - (g + t) / l;
+            var result = ((c + a) - (g + t)) / l;
 
             return result;
         }

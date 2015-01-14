@@ -24,7 +24,7 @@
         /// Link of intervals in chain.
         /// </param>
         /// <returns>
-        /// G+C Ratio <see cref="double"/> value.
+        /// G+C Ratio value as <see cref="double"/> .
         /// </returns>
         public double Calculate(Chain chain, Link link)
         {

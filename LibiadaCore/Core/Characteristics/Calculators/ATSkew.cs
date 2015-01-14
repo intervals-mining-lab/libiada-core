@@ -24,7 +24,7 @@
         /// Link of intervals in chain.
         /// </param>
         /// <returns>
-        /// AT Skew <see cref="double"/> value.
+        /// AT skew value as <see cref="double"/>.
         /// </returns>
         public double Calculate(Chain chain, Link link)
         {

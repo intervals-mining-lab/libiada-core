@@ -5,18 +5,18 @@ namespace MarkovChains.MarkovChain
     using MarkovChains.MarkovChain.Generators;
 
     /// <summary>
-    /// Фабрика создающая марковскую цепь
+    /// Factory of markov chains.
     /// </summary>
     public class MarkovChainFactory
     {
         /// <summary>
-        /// Создать марковскую цепь
+        /// Creates markov chain.
         /// </summary>
         /// <param name="method">
-        /// Тип цепи
+        /// Chain type.
         /// </param>
         /// <param name="rang">
-        /// Порядок
+        /// Chain's rank.
         /// </param>
         /// <param name="congenericRang">
         /// Неоднородность цепи
@@ -28,7 +28,7 @@ namespace MarkovChains.MarkovChain
         /// Марковская цепь
         /// </returns>
         /// <exception cref="Exception">
-        /// В случае если тип цепи не зарегистирован в фабрике
+        /// Thrown if chain type is unknown.
         /// </exception>
         public MarkovChainBase Create(GeneratingMethod method, int rang, int congenericRang, IGenerator generator)
         {

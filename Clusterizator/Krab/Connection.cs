@@ -3,32 +3,32 @@ namespace Clusterizator.Krab
     using System;
 
     /// <summary>
-    /// Класс-контейнер хранящий пару точек и различные расстояния между ними 
+    /// Class-container for pair of points and their distances.
     /// </summary>
     public class Connection
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="Connection"/> class.
         /// </summary>
-        /// <param name="firstElement">
-        /// Индекс первого объекта.
+        /// <param name="firstIndex">
+        /// Index of first point.
         /// </param>
-        /// <param name="secondElement">
-        /// Индекс второго объекта.
+        /// <param name="secondIndex">
+        /// Index of second point.
         /// </param>
         /// <exception cref="ArgumentException">
-        /// Thrown if element or elements are negative.
+        /// Thrown if index or indexes are negative.
         /// </exception>
-        public Connection(int firstElement, int secondElement)
+        public Connection(int firstIndex, int secondIndex)
         {
-            if ((firstElement < 0) || (secondElement < 0))
+            if ((firstIndex < 0) || (secondIndex < 0))
             {
-                throw new ArgumentException("Индекс не может быть отрицательным");
+                throw new ArgumentException("Point index can't be less than 0.");
             }
 
             Connected = false;
-            FirstElementIndex = firstElement;
-            SecondElementIndex = secondElement;
+            FirstElementIndex = firstIndex;
+            SecondElementIndex = secondIndex;
         }
 
         /// <summary>
@@ -37,22 +37,22 @@ namespace Clusterizator.Krab
         public bool Connected { get; set; }
 
         /// <summary>
-        /// Евклидово расстояние.
+        /// Gets or sets euclidean distance.
         /// </summary>
         public double Distance { get; set; }
 
         /// <summary>
-        /// Нормированное Эвклидово расстояние.
+        /// Gets or sets normalized euclidean distance.
         /// </summary>
         public double NormalizedDistance { get; set; }
 
         /// <summary>
-        /// Локальная плотность точек.
+        /// Gets or sets local density of points.
         /// </summary>
         public double TauStar { get; set; }
 
         /// <summary>
-        /// Нормированная локальная плотность точек.
+        /// Gets or sets normalized local density of points.
         /// </summary>
         public double Tau { get; set; }
 
@@ -72,10 +72,10 @@ namespace Clusterizator.Krab
         public int SecondElementIndex { get; private set; }
 
         /// <summary>
-        /// Метод возвращает копию объекта
+        /// Creates copy of Connection.
         /// </summary>
         /// <returns>
-        /// копия соединения
+        /// Clone of current object.
         /// </returns>
         public Connection Clone()
         {

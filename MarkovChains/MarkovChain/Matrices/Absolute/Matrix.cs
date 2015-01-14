@@ -2,44 +2,38 @@ namespace MarkovChains.MarkovChain.Matrices.Absolute
 {
     using System;
     using System.Collections;
+    using System.Linq;
 
     using MarkovChains.MarkovChain.Builders;
     using MarkovChains.MarkovChain.Matrices.Base;
     using MarkovChains.MarkovChain.Matrices.Probability;
 
     /// <summary>
-    /// Матрица целых значений. 
+    /// Matrix of integer values.
     /// </summary>
     public class Matrix : MatrixCommon, IAbsoluteMatrix, IOpenMatrix
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="Matrix"/> class.
         /// </summary>
-        /// <param name="alphabetPower">
-        /// Алфавит для матрицы
+        /// <param name="alphabetCardinality">
+        /// Count of elements in matrix dimension.
         /// </param>
         /// <param name="dimensionality">
-        /// Размерность матрицы
+        /// Count of dimensions in matrix.
         /// </param>
-        public Matrix(int alphabetPower, int dimensionality)
-            : base(alphabetPower, dimensionality, new MatrixBuilder())
+        public Matrix(int alphabetCardinality, int dimensionality) : base(alphabetCardinality, dimensionality, new MatrixBuilder())
         {
         }
 
         /// <summary>
-        /// Возвращает сумму элементов матрицы
+        /// Gets sum of matrix elements.
         /// </summary>
         public double Count
         {
             get
             {
-                double sum = 0;
-                foreach (MatrixBase row in ValueList)
-                {
-                    sum += row.Value;
-                }
-
-                return sum;
+                return this.ValueList.Cast<MatrixBase>().Sum(row => row.Value);
             }
         }
 
@@ -90,7 +84,7 @@ namespace MarkovChains.MarkovChain.Matrices.Absolute
         }
 
         /// <summary>
-        /// Увеличивает заначение матрицы на 1
+        /// Increments matrix value by 1.
         /// </summary>
         public void IncValue()
         {

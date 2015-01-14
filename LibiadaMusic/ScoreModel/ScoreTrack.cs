@@ -101,8 +101,11 @@
         /// </exception>
         private CongenericScoreTrack MergedTracks(List<CongenericScoreTrack> tracks)
         {
-            var temp = (CongenericScoreTrack)tracks[0].Clone(); // список склеенных дорожек
-            var tempList = new List<Measure>(temp.MeasureList); // список склеенных тактов
+            // список склеенных дорожек
+            var temp = (CongenericScoreTrack)tracks[0].Clone();
+
+            // список склеенных тактов
+            var tempList = new List<Measure>(temp.MeasureList); 
             for (int i = 1; i < tracks.Count; i++)
             {
                 if (tempList.Count != tracks[i].MeasureList.Count)

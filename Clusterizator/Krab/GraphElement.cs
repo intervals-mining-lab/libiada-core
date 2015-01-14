@@ -3,7 +3,7 @@ namespace Clusterizator.Krab
     using System.Collections.Specialized;
 
     /// <summary>
-    /// Вершина графа
+    /// Point in graph.
     /// </summary>
     public class GraphElement
     {
@@ -39,7 +39,7 @@ namespace Clusterizator.Krab
         public HybridDictionary Content { get; set; }
 
         /// <summary>
-        /// Номер таксона, которому принадлежит вершина
+        /// Gets or sets this point taxon number.
         /// </summary>
         public int TaxonNumber
         {
@@ -58,10 +58,10 @@ namespace Clusterizator.Krab
         }
 
         /// <summary>
-        /// Метод возвращает копию объекта
+        /// Creates copy of graph element.
         /// </summary>
         /// <returns>
-        /// копия данной вершины графа
+        /// Clone of current object.
         /// </returns>
         public GraphElement Clone()
         {

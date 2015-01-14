@@ -1,20 +1,20 @@
 namespace MarkovChains.MarkovChain.Generators
 {
     /// <summary>
-    /// Интерфейс для генероторов псевдосулайно величины
+    /// Interface of random numbers generator.
     /// </summary>
     public interface IGenerator
     {
         /// <summary>
-        /// Переустановить стартовое число.
+        /// Reset to initial state.
         /// </summary>
         void Reset();
 
         /// <summary>
-        /// Получить следующие значение псевдослучаной величины.
+        /// Gets next value of pseudorandom generator.
         /// </summary>
         /// <returns>
-        /// [0..1] значение
+        /// Value in [0..1] interval.
         /// </returns>
         double Next();
     }

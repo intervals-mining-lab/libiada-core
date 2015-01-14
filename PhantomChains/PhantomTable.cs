@@ -6,12 +6,12 @@
     using LibiadaCore.Core.SimpleTypes;
 
     /// <summary>
-    /// Класс с данными для построения верева вараинтов.
+    /// Class, containing data for building tree of variants. 
     /// </summary>
     public class PhantomTable
     {
         /// <summary>
-        /// Массив начальных позиций деревьев в фантомной цепочке.
+        /// List of starts positions of trees in phantom chain.
         /// </summary>
         public readonly List<int> StartPositions = new List<int>();
 
@@ -24,7 +24,7 @@
         /// Initializes a new instance of the <see cref="PhantomTable"/> class.
         /// </summary>
         /// <param name="source">
-        /// Фантомная цепочка.
+        /// Phantom chain.
         /// </param>
         public PhantomTable(BaseChain source)
         {
@@ -60,8 +60,8 @@
         }
 
         /// <summary>
-        /// Позволяет получить количество записей в таблице, 
-        /// которое соответствует числу уровней в дереве вариантов
+        /// Gets records count in table.
+        /// The value equals number of levels in tree of variants.
         /// </summary>
         public int Length
         {
@@ -69,7 +69,7 @@
         }
 
         /// <summary>
-        /// Позволяет получать и устанавиливать значение записи по индексу.
+        /// Indexer of record value.
         /// </summary>
         /// <param name="index">
         /// Record index.

@@ -7,14 +7,16 @@ namespace MarkovChains.MarkovChain.Matrices.Probability
     using MarkovChains.MarkovChain.Matrices.Absolute;
 
     /// <summary>
-    /// Вероятностная матрица
+    /// Interface of probability matrix.
     /// </summary>
     public interface IProbabilityMatrix
     {
         /// <summary>
-        /// Заполянить вероятностную матрицу из другой матрицы
+        /// Fills probability matrix from another matrix.
         /// </summary>
-        /// <param name="matrix">Матрица из которой пересчитваем вероятности</param>
+        /// <param name="matrix">
+        /// Source matrix for probability recalculation.
+        /// </param>
         void Fill(IOpenMatrix matrix);
 
         /// <summary>
@@ -23,12 +25,12 @@ namespace MarkovChains.MarkovChain.Matrices.Probability
         /// <param name="alphabet">
         /// The alphabet.
         /// </param>
-        /// <param name="pred">
-        /// Адрес
+        /// <param name="previous">
+        /// The Address.
         /// </param>
         /// <returns>
-        /// Список пар "событие - вероятность"
+        /// List of pairs "element - probability".
         /// </returns>
-        Dictionary<IBaseObject, double> GetProbabilityVector(Alphabet alphabet, int[] pred);
+        Dictionary<IBaseObject, double> GetProbabilityVector(Alphabet alphabet, int[] previous);
     }
 }

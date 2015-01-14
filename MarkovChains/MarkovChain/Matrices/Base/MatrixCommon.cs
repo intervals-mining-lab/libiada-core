@@ -20,8 +20,7 @@ namespace MarkovChains.MarkovChain.Matrices.Base
         /// <param name="builder">
         /// Правило создания матриц
         /// </param>
-        public MatrixCommon(int alphabetCardinality, int dimensionality, IMatrixBuilder builder)
-            : base(alphabetCardinality, dimensionality, builder)
+        public MatrixCommon(int alphabetCardinality, int dimensionality, IMatrixBuilder builder) : base(alphabetCardinality, dimensionality, builder)
         {
         }
 

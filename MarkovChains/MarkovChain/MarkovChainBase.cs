@@ -13,7 +13,7 @@ namespace MarkovChains.MarkovChain
     using MarkovChains.MarkovChain.Matrices.Probability;
 
     /// <summary>
-    /// Базовый класс для марковских цепей.
+    /// Base class of all markov chains.
     /// </summary>
     public abstract class MarkovChainBase
     {
@@ -41,7 +41,7 @@ namespace MarkovChains.MarkovChain
         /// Initializes a new instance of the <see cref="MarkovChainBase"/> class.
         /// </summary>
         /// <param name="rank">
-        /// Порядок марковской цепи.
+        /// Markov chain rank.
         /// </param>
         /// <param name="congenericRang">
         /// Порядок неоднородности.
@@ -66,7 +66,7 @@ namespace MarkovChains.MarkovChain
         }
 
         /// <summary>
-        /// Возвращает матрицу вероятностей марковской цепи.
+        /// Gets matrix of probabilities of markov chain.
         /// </summary>
         public IProbabilityMatrix PropabilityMatrix
         {
@@ -107,18 +107,18 @@ namespace MarkovChains.MarkovChain
         /// Порядок марковской цепи используемый при реализации.
         /// </param>
         /// <returns>
-        /// The <see cref="TChainGenerated"/>.
+        /// The <see cref="BaseChain"/>.
         /// </returns>
         public abstract BaseChain Generate(int i, int rank);
 
         /// <summary>
-        /// Обучить Марковскую цепь на последовательности.
+        /// Teaches markov chain using provided sequence.
         /// </summary>
         /// <param name="chain">
-        /// Цепь используемая при обучении.
+        /// Sequence used for teaching.
         /// </param>
         /// <param name="method">
-        /// Метод предобработки цепи.
+        /// Chain preprocessing method.
         /// </param>
         public virtual void Teach(BaseChain chain, TeachingMethod method)
         {
@@ -198,7 +198,7 @@ namespace MarkovChains.MarkovChain
         /// The method.
         /// </param>
         /// <returns>
-        /// The <see cref="T:SpaceReorganizer{ChainTaught, ChainTaught}"/>.
+        /// The <see cref="SpaceReorganizer"/>.
         /// </returns>
         /// <exception cref="ArgumentException">
         /// Thrown if unknown <see cref="TeachingMethod"/> is provided.
