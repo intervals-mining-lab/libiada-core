@@ -40,6 +40,7 @@ namespace LibiadaCore.Core.Characteristics
         /// </summary>
         private static readonly List<Type> FullCalculators = new List<Type>
                                                             {
+                                                                typeof(ATSkew),
                                                                 typeof(GCRatio),
                                                                 typeof(GCSkew),
                                                                 typeof(GCToATRatio),
