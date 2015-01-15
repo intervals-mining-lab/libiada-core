@@ -5,6 +5,8 @@ namespace LibiadaCore.Tests.Core
     using LibiadaCore.Core;
     using LibiadaCore.Core.SimpleTypes;
 
+    using NUnit.Framework;
+
     /// <summary>
     /// The chains storage.
     /// </summary>
@@ -19,11 +21,11 @@ namespace LibiadaCore.Tests.Core
             {
                 return new Dictionary<string, IBaseObject>
                            {
-                               { "a", new ValueString("A") },
-                               { "b", new ValueString("B") },
-                               { "c", new ValueString("C") },
-                               { "g", new ValueString("G") },
-                               { "t", new ValueString("T") }
+                               { "A", new ValueString("A") },
+                               { "B", new ValueString("B") },
+                               { "C", new ValueString("C") },
+                               { "G", new ValueString("G") },
+                               { "T", new ValueString("T") }
                            };
             }
         }
@@ -35,31 +37,28 @@ namespace LibiadaCore.Tests.Core
         {
             get
             {
-                var chains = new List<Chain>();
+                return new List<Chain>
+                           {
+                               // B B A A C B A C C B
+                               // _ _ A A _ _ A _ _ _
+                               // B B _ _ _ B _ _ _ B
+                               // _ _ _ _ C _ _ C C _
+                               new Chain("BBAACBACCB"),
 
-                // b b a a c b a c c b
-                // _ _ a a _ _ a _ _ _
-                // b b _ _ _ b _ _ _ b
-                // _ _ _ _ c _ _ c c _
-                var chain = new Chain("bbaacbaccb");
-                chains.Add(chain);
+                               // A C T T G A T A C G
+                               // A _ _ _ _ A _ A _ _
+                               // _ C _ _ _ _ _ _ C _ 
+                               // _ _ T T _ _ T _ _ _
+                               // _ _ _ _ G _ _ _ _ G
+                               new Chain("ACTTGATACG"),
 
-                // 20 
-                chain = new Chain(10);
-                chain.Set(Elements["a"], 0);
-                chain.Set(Elements["c"], 1);
-                chain.Set(Elements["t"], 2);
-                chain.Set(Elements["t"], 3);
-                chain.Set(Elements["g"], 4);
-                chain.Set(Elements["a"], 5);
-                chain.Set(Elements["t"], 6);
-                chain.Set(Elements["a"], 7);
-                chain.Set(Elements["c"], 8);
-                chain.Set(Elements["g"], 9);
-
-                chains.Add(chain);
-
-                return chains;
+                               // C C A C G C T T A C
+                               // C C _ C _ C _ _ _ C
+                               // _ _ A _ _ _ _ _ A _ 
+                               // _ _ _ _ G _ _ _ _ _ 
+                               // _ _ _ _ _ _ T T _ _  
+                               new Chain("CCACGCTTAC")
+                           };
             }
         }
 
@@ -70,49 +69,25 @@ namespace LibiadaCore.Tests.Core
         {
             get
             {
-                var congenericChains = new List<CongenericChain>();
+                return new List<CongenericChain>
+                           {
+                               // _ _ _ a a _ _ a _ _
+                               new CongenericChain(new[] { 3, 4, 7 }, Elements["A"], 10),
 
-                // _ _ _ a a _ _ a _ _
-                var firstChain = new CongenericChain(Elements["a"], 10);
-                firstChain.Set(Elements["a"], 3);
-                firstChain.Set(Elements["a"], 4);
-                firstChain.Set(Elements["a"], 7);
-                congenericChains.Add(firstChain);
+                               // _ _ _ b _ b b _ _ _ _ b _ _ _
+                               new CongenericChain(new[] { 3, 5, 6, 11 }, Elements["B"], 15),
 
-                // _ _ _ b _ b b _ _ _ _ b _ _ _
-                var secondChain = new CongenericChain(Elements["b"], 15);
-                secondChain.Set(Elements["b"], 3);
-                secondChain.Set(Elements["b"], 5);
-                secondChain.Set(Elements["b"], 6);
-                secondChain.Set(Elements["b"], 11);
-                congenericChains.Add(secondChain);
+                               // a
+                               new CongenericChain(new[] { 0 }, Elements["A"], 1),
 
-                // a
-                var thirdChain = new CongenericChain(Elements["a"], 1);
-                thirdChain.Set(Elements["a"], 0);
-                congenericChains.Add(thirdChain);
+                               // _ _ _ _ _ _ _ a
+                               new CongenericChain(new[] { 7 }, Elements["A"], 8),
 
-                // _ _ _ _ _ _ _ a
-                var fourthChain = new CongenericChain(Elements["a"], 8);
-                fourthChain.Set(Elements["a"], 7);
-                congenericChains.Add(fourthChain);
+                               new CongenericChain(new[] { 100, 100000, 500000 }, Elements["A"], 1000000),
 
-                var fifthChain = new CongenericChain(Elements["a"], 1000000);
-                fifthChain.Set(Elements["a"], 100);
-                fifthChain.Set(Elements["a"], 100000);
-                fifthChain.Set(Elements["a"], 500000);
-                congenericChains.Add(fifthChain);
-
-                // a a a a a
-                var sixthChain = new CongenericChain(Elements["a"], 5);
-                for (int i = 0; i < sixthChain.GetLength(); i++)
-                {
-                    sixthChain.Set(Elements["a"], i);
-                }
-
-                congenericChains.Add(sixthChain);
-
-                return congenericChains;
+                               // a a a a a
+                               new CongenericChain(new[] { 0, 1, 2, 3, 4 }, Elements["A"], 5)
+                        };
             }
         }
 
@@ -127,213 +102,213 @@ namespace LibiadaCore.Tests.Core
 
                 // 0
                 var chain = new Chain(10);
-                chain.Set(Elements["a"], 0);
-                chain.Set(Elements["a"], 1);
-                chain.Set(Elements["b"], 2);
-                chain.Set(Elements["a"], 3);
-                chain.Set(Elements["a"], 5);
-                chain.Set(Elements["b"], 8);
-                chain.Set(Elements["a"], 9);
+                chain.Set(Elements["A"], 0);
+                chain.Set(Elements["A"], 1);
+                chain.Set(Elements["B"], 2);
+                chain.Set(Elements["A"], 3);
+                chain.Set(Elements["A"], 5);
+                chain.Set(Elements["B"], 8);
+                chain.Set(Elements["A"], 9);
                 chains.Add(chain);
 
                 // ----------- цепочки из работы Морозенко
                 // 1
                 chain = new Chain(2);
-                chain.Set(Elements["a"], 0);
-                chain.Set(Elements["b"], 1);
+                chain.Set(Elements["A"], 0);
+                chain.Set(Elements["B"], 1);
                 chains.Add(chain);
 
                 // 2
                 chain = new Chain(6);
-                chain.Set(Elements["a"], 0);
-                chain.Set(Elements["b"], 3);
+                chain.Set(Elements["A"], 0);
+                chain.Set(Elements["B"], 3);
                 chains.Add(chain);
 
                 // 3
                 chain = new Chain(27);
-                chain.Set(Elements["a"], 0);
-                chain.Set(Elements["a"], 4);
-                chain.Set(Elements["a"], 12);
-                chain.Set(Elements["a"], 19);
-                chain.Set(Elements["b"], 3);
-                chain.Set(Elements["b"], 9);
-                chain.Set(Elements["b"], 16);
-                chain.Set(Elements["b"], 26);
+                chain.Set(Elements["A"], 0);
+                chain.Set(Elements["A"], 4);
+                chain.Set(Elements["A"], 12);
+                chain.Set(Elements["A"], 19);
+                chain.Set(Elements["B"], 3);
+                chain.Set(Elements["B"], 9);
+                chain.Set(Elements["B"], 16);
+                chain.Set(Elements["B"], 26);
                 chains.Add(chain);
 
                 // 4
                 chain = new Chain(5);
-                chain.Set(Elements["a"], 0);
-                chain.Set(Elements["b"], 1);
+                chain.Set(Elements["A"], 0);
+                chain.Set(Elements["B"], 1);
                 chains.Add(chain);
 
                 // 5
                 chain = new Chain(12);
-                chain.Set(Elements["a"], 0);
-                chain.Set(Elements["b"], 1);
+                chain.Set(Elements["A"], 0);
+                chain.Set(Elements["B"], 1);
                 chains.Add(chain);
 
                 // 6
                 chain = new Chain(13);
-                chain.Set(Elements["a"], 0);
-                chain.Set(Elements["b"], 12);
+                chain.Set(Elements["A"], 0);
+                chain.Set(Elements["B"], 12);
                 chains.Add(chain);
 
                 // 7
                 chain = new Chain(29);
-                chain.Set(Elements["a"], 0);
-                chain.Set(Elements["a"], 14);
-                chain.Set(Elements["a"], 17);
-                chain.Set(Elements["a"], 18);
-                chain.Set(Elements["a"], 19);
-                chain.Set(Elements["a"], 22);
-                chain.Set(Elements["b"], 8);
-                chain.Set(Elements["b"], 10);
-                chain.Set(Elements["b"], 12);
-                chain.Set(Elements["b"], 13);
-                chain.Set(Elements["b"], 28);
+                chain.Set(Elements["A"], 0);
+                chain.Set(Elements["A"], 14);
+                chain.Set(Elements["A"], 17);
+                chain.Set(Elements["A"], 18);
+                chain.Set(Elements["A"], 19);
+                chain.Set(Elements["A"], 22);
+                chain.Set(Elements["B"], 8);
+                chain.Set(Elements["B"], 10);
+                chain.Set(Elements["B"], 12);
+                chain.Set(Elements["B"], 13);
+                chain.Set(Elements["B"], 28);
                 chains.Add(chain);
 
                 // 8
                 chain = new Chain(25);
-                chain.Set(Elements["a"], 0);
-                chain.Set(Elements["a"], 3);
-                chain.Set(Elements["a"], 12);
-                chain.Set(Elements["a"], 13);
-                chain.Set(Elements["a"], 15);
-                chain.Set(Elements["a"], 17);
-                chain.Set(Elements["a"], 23);
-                chain.Set(Elements["b"], 6);
-                chain.Set(Elements["b"], 21);
-                chain.Set(Elements["b"], 24);
+                chain.Set(Elements["A"], 0);
+                chain.Set(Elements["A"], 3);
+                chain.Set(Elements["A"], 12);
+                chain.Set(Elements["A"], 13);
+                chain.Set(Elements["A"], 15);
+                chain.Set(Elements["A"], 17);
+                chain.Set(Elements["A"], 23);
+                chain.Set(Elements["B"], 6);
+                chain.Set(Elements["B"], 21);
+                chain.Set(Elements["B"], 24);
                 chains.Add(chain);
 
                 // 9
                 chain = new Chain(29);
-                chain.Set(Elements["a"], 0);
-                chain.Set(Elements["a"], 3);
-                chain.Set(Elements["a"], 4);
-                chain.Set(Elements["a"], 6);
-                chain.Set(Elements["a"], 18);
-                chain.Set(Elements["a"], 21);
-                chain.Set(Elements["b"], 2);
-                chain.Set(Elements["b"], 17);
-                chain.Set(Elements["b"], 28);
+                chain.Set(Elements["A"], 0);
+                chain.Set(Elements["A"], 3);
+                chain.Set(Elements["A"], 4);
+                chain.Set(Elements["A"], 6);
+                chain.Set(Elements["A"], 18);
+                chain.Set(Elements["A"], 21);
+                chain.Set(Elements["B"], 2);
+                chain.Set(Elements["B"], 17);
+                chain.Set(Elements["B"], 28);
                 chains.Add(chain);
 
                 // 10
                 chain = new Chain(28);
-                chain.Set(Elements["a"], 0);
-                chain.Set(Elements["a"], 8);
-                chain.Set(Elements["a"], 16);
-                chain.Set(Elements["a"], 18);
-                chain.Set(Elements["b"], 4);
-                chain.Set(Elements["b"], 12);
-                chain.Set(Elements["b"], 17);
-                chain.Set(Elements["b"], 19);
+                chain.Set(Elements["A"], 0);
+                chain.Set(Elements["A"], 8);
+                chain.Set(Elements["A"], 16);
+                chain.Set(Elements["A"], 18);
+                chain.Set(Elements["B"], 4);
+                chain.Set(Elements["B"], 12);
+                chain.Set(Elements["B"], 17);
+                chain.Set(Elements["B"], 19);
                 chains.Add(chain);
 
                 // 11
                 chain = new Chain(28);
-                chain.Set(Elements["a"], 0);
-                chain.Set(Elements["a"], 9);
-                chain.Set(Elements["a"], 16);
-                chain.Set(Elements["a"], 24);
-                chain.Set(Elements["b"], 2);
-                chain.Set(Elements["b"], 11);
-                chain.Set(Elements["b"], 19);
-                chain.Set(Elements["b"], 25);
+                chain.Set(Elements["A"], 0);
+                chain.Set(Elements["A"], 9);
+                chain.Set(Elements["A"], 16);
+                chain.Set(Elements["A"], 24);
+                chain.Set(Elements["B"], 2);
+                chain.Set(Elements["B"], 11);
+                chain.Set(Elements["B"], 19);
+                chain.Set(Elements["B"], 25);
                 chains.Add(chain);
 
                 // 12
                 chain = new Chain(16);
-                chain.Set(Elements["a"], 0);
-                chain.Set(Elements["a"], 8);
-                chain.Set(Elements["b"], 4);
-                chain.Set(Elements["b"], 12);
+                chain.Set(Elements["A"], 0);
+                chain.Set(Elements["A"], 8);
+                chain.Set(Elements["B"], 4);
+                chain.Set(Elements["B"], 12);
                 chains.Add(chain);
 
                 // 13
                 chain = new Chain(30);
-                chain.Set(Elements["a"], 0);
-                chain.Set(Elements["a"], 6);
-                chain.Set(Elements["a"], 10);
-                chain.Set(Elements["a"], 18);
-                chain.Set(Elements["b"], 3);
-                chain.Set(Elements["b"], 9);
-                chain.Set(Elements["b"], 13);
-                chain.Set(Elements["b"], 21);
+                chain.Set(Elements["A"], 0);
+                chain.Set(Elements["A"], 6);
+                chain.Set(Elements["A"], 10);
+                chain.Set(Elements["A"], 18);
+                chain.Set(Elements["B"], 3);
+                chain.Set(Elements["B"], 9);
+                chain.Set(Elements["B"], 13);
+                chain.Set(Elements["B"], 21);
                 chains.Add(chain);
 
                 // 14
                 chain = new Chain(23);
-                chain.Set(Elements["a"], 4);
-                chain.Set(Elements["a"], 8);
-                chain.Set(Elements["a"], 14);
-                chain.Set(Elements["a"], 18);
-                chain.Set(Elements["b"], 5);
-                chain.Set(Elements["b"], 9);
-                chain.Set(Elements["b"], 15);
-                chain.Set(Elements["b"], 19);
+                chain.Set(Elements["A"], 4);
+                chain.Set(Elements["A"], 8);
+                chain.Set(Elements["A"], 14);
+                chain.Set(Elements["A"], 18);
+                chain.Set(Elements["B"], 5);
+                chain.Set(Elements["B"], 9);
+                chain.Set(Elements["B"], 15);
+                chain.Set(Elements["B"], 19);
                 chains.Add(chain);
 
                 // 15
                 chain = new Chain(12);
-                chain.Set(Elements["a"], 4);
-                chain.Set(Elements["b"], 1);
-                chain.Set(Elements["b"], 3);
-                chain.Set(Elements["b"], 5);
-                chain.Set(Elements["b"], 8);
+                chain.Set(Elements["A"], 4);
+                chain.Set(Elements["B"], 1);
+                chain.Set(Elements["B"], 3);
+                chain.Set(Elements["B"], 5);
+                chain.Set(Elements["B"], 8);
                 chains.Add(chain);
 
                 // 16
                 chain = new Chain(29);
-                chain.Set(Elements["a"], 2);
-                chain.Set(Elements["a"], 9);
-                chain.Set(Elements["a"], 10);
-                chain.Set(Elements["a"], 17);
-                chain.Set(Elements["b"], 6);
-                chain.Set(Elements["b"], 14);
-                chain.Set(Elements["b"], 22);
+                chain.Set(Elements["A"], 2);
+                chain.Set(Elements["A"], 9);
+                chain.Set(Elements["A"], 10);
+                chain.Set(Elements["A"], 17);
+                chain.Set(Elements["B"], 6);
+                chain.Set(Elements["B"], 14);
+                chain.Set(Elements["B"], 22);
                 chains.Add(chain);
 
                 // -------------- дальше цепочки из монографии
                 // 17
                 chain = new Chain(26);
-                chain.Set(Elements["a"], 0);
-                chain.Set(Elements["a"], 6);
-                chain.Set(Elements["a"], 12);
-                chain.Set(Elements["b"], 2);
-                chain.Set(Elements["b"], 8);
-                chain.Set(Elements["b"], 19);
+                chain.Set(Elements["A"], 0);
+                chain.Set(Elements["A"], 6);
+                chain.Set(Elements["A"], 12);
+                chain.Set(Elements["B"], 2);
+                chain.Set(Elements["B"], 8);
+                chain.Set(Elements["B"], 19);
                 chains.Add(chain);
 
                 // 18
                 chain = new Chain(12);
-                chain.Set(Elements["a"], 0);
-                chain.Set(Elements["a"], 4);
-                chain.Set(Elements["b"], 1);
-                chain.Set(Elements["b"], 3);
-                chain.Set(Elements["b"], 5);
-                chain.Set(Elements["b"], 8);
-                chain.Set(Elements["c"], 2);
-                chain.Set(Elements["c"], 6);
-                chain.Set(Elements["c"], 7);
-                chain.Set(Elements["c"], 9);
-                chain.Set(Elements["c"], 10);
-                chain.Set(Elements["c"], 11);
+                chain.Set(Elements["A"], 0);
+                chain.Set(Elements["A"], 4);
+                chain.Set(Elements["B"], 1);
+                chain.Set(Elements["B"], 3);
+                chain.Set(Elements["B"], 5);
+                chain.Set(Elements["B"], 8);
+                chain.Set(Elements["C"], 2);
+                chain.Set(Elements["C"], 6);
+                chain.Set(Elements["C"], 7);
+                chain.Set(Elements["C"], 9);
+                chain.Set(Elements["C"], 10);
+                chain.Set(Elements["C"], 11);
                 chains.Add(chain);
 
                 // 19
                 chain = new Chain(23);
-                chain.Set(Elements["a"], 0);
-                chain.Set(Elements["a"], 6);
-                chain.Set(Elements["a"], 11);
-                chain.Set(Elements["a"], 21);
-                chain.Set(Elements["b"], 1);
-                chain.Set(Elements["b"], 7);
-                chain.Set(Elements["b"], 12);
-                chain.Set(Elements["b"], 22);
+                chain.Set(Elements["A"], 0);
+                chain.Set(Elements["A"], 6);
+                chain.Set(Elements["A"], 11);
+                chain.Set(Elements["A"], 21);
+                chain.Set(Elements["B"], 1);
+                chain.Set(Elements["B"], 7);
+                chain.Set(Elements["B"], 12);
+                chain.Set(Elements["B"], 22);
                 chains.Add(chain);
 
                 return chains;

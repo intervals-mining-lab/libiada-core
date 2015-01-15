@@ -10,6 +10,7 @@
     public class PriorityDiscover
     {
         /// <summary>
+        /// Gets priority mask.
         /// маска - разметка приоритетов на пустой такт, 
         /// совмещение которого с оригинальным позволит определить приоритеты реальных нот
         /// </summary>
@@ -53,6 +54,7 @@
         /// The measure.
         /// </param>
         /// <exception cref="Exception">
+        /// Thrown in different cases.
         /// </exception>
         public void Calculate(Measure measure)
         {

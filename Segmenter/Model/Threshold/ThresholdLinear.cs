@@ -25,8 +25,6 @@
         /// <param name="step">
         /// The step.
         /// </param>
-        /// <exception cref="Exception">
-        /// </exception>
         public ThresholdLinear(double leftBound, double rightBound, double step)
             : base(leftBound, rightBound)
         {

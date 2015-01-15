@@ -47,32 +47,32 @@
         }
 
         /// <summary>
-        /// E|(Ft-Fp)|
+        /// E|(Ft - Fp)|
         /// </summary>
         public double NonP { get; private set; }
 
         /// <summary>
-        /// (E|(Ft-Fp)|)/N
+        /// (E|(Ft - Fp)|)/N
         /// </summary>
         public double OnonP { get; private set; }
 
         /// <summary>
-        /// N(E(Ft-Fp)/Ft)
+        /// N(E(Ft - Fp)/Ft)
         /// </summary>
         public double SqHi { get; private set; }
 
         /// <summary>
-        /// Max(F1-F2)
+        /// Max(F1 - F2)
         /// </summary>
         public double D { get; private set; }
 
         /// <summary>
-        /// |V1-V2|
+        /// |V1 - V2|
         /// </summary>
         public double DV { get; private set; }
 
         /// <summary>
-        /// |V1-V2| / V1
+        /// |V1 - V2| / V1
         /// </summary>
         public double PdV { get; private set; }
 

@@ -34,6 +34,8 @@
         }
 
         /// <summary>
+        /// Gets note number.
+        /// Unique note number in midi standart.
         /// уникальный номер ноты по миди стандарту
         /// </summary>
         public int MidiNumber { get; private set; }
@@ -54,6 +56,7 @@
         private int Octave { get; set; }
 
         /// <summary>
+        /// Gets or sets alteration.
         /// диез/бемоль +1 диез; -1 бемоль
         /// </summary>
         private int Alter { get; set; }

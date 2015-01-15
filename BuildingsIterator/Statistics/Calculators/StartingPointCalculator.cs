@@ -28,7 +28,7 @@ namespace BuildingsIterator.Statistics.Calculators
         /// Метод вычисления начального момента выборки.
         /// </summary>
         /// <param name="sample">
-        /// Выборка.
+        /// The sample.
         /// </param>
         /// <returns>
         /// Начальный момент.

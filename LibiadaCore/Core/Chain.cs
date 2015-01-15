@@ -50,8 +50,7 @@ namespace LibiadaCore.Core
         /// <param name="source">
         /// The source string.
         /// </param>
-        public Chain(string source)
-            : base(source)
+        public Chain(string source) : base(source)
         {
             CreateCongenericChains();
         }
@@ -67,8 +66,7 @@ namespace LibiadaCore.Core
         /// <param name="alphabet">
         /// The alphabet of chain.
         /// </param>
-        public Chain(int[] building, Alphabet alphabet)
-            : base(building, alphabet)
+        public Chain(int[] building, Alphabet alphabet) : base(building, alphabet)
         {
             CreateCongenericChains();
         }
@@ -80,8 +78,7 @@ namespace LibiadaCore.Core
         /// <param name="source">
         /// The source string.
         /// </param>
-        public Chain(List<IBaseObject> source)
-            : base(source)
+        public Chain(List<IBaseObject> source) : base(source)
         {
             CreateCongenericChains();
         }
@@ -335,22 +332,22 @@ namespace LibiadaCore.Core
         /// </summary>
         private void CreateCongenericChains()
         {
-            var occerrences = new List<int>[alphabet.Cardinality - 1];
+            var concurrences = new List<int>[alphabet.Cardinality - 1];
 
             for (int i = 0; i < alphabet.Cardinality - 1; i++)
             {
-                occerrences[i] = new List<int>();
+                concurrences[i] = new List<int>();
             }
 
             for (int j = 0; j < building.Length; j++)
             {
-                occerrences[building[j] - 1].Add(j);
+                concurrences[building[j] - 1].Add(j);
             }
 
             congenericChains = new CongenericChain[alphabet.Cardinality - 1];
             for (int k = 0; k < alphabet.Cardinality - 1; k++)
             {
-                congenericChains[k] = new CongenericChain(occerrences[k], alphabet[k + 1], building.Length);
+                congenericChains[k] = new CongenericChain(concurrences[k], alphabet[k + 1], building.Length);
             }
         }
     }

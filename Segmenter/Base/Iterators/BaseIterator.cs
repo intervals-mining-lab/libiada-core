@@ -142,8 +142,6 @@
         /// <param name="step">
         /// The step.
         /// </param>
-        /// <exception cref="Exception">
-        /// </exception>
         private void Initialize(ComplexChain chain, int windowLength, int step)
         {
             try

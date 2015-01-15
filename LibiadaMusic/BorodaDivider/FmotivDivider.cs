@@ -515,6 +515,7 @@
         /// The fmotiv buffer.
         /// </param>
         /// <exception cref="Exception">
+        /// Thrown in different cases.
         /// </exception>
         private static void TempMethod(Fmotiv fmotiv, Fmotiv fmotivBuffer)
         {
@@ -562,6 +563,7 @@
         /// The <see cref="List{FMotiv}"/>.
         /// </returns>
         /// <exception cref="Exception">
+        /// Thrown if amount of collected notes in buffer is less than 2.
         /// </exception>
         private List<Fmotiv> DivideSameDurationNotes(Fmotiv fmotivBuff)
         {

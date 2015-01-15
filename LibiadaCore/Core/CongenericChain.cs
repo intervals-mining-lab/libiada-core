@@ -70,17 +70,14 @@ namespace LibiadaCore.Core
         /// Initializes a new instance of the <see cref="CongenericChain"/> class.
         /// </summary>
         /// <param name="map">
-        /// The map.
+        /// The map of elements.
         /// </param>
         /// <param name="element">
         /// Element of this congeneric sequence.
         /// </param>
-        /// <param name="length">
-        /// Length of this chain.
-        /// </param>
-        public CongenericChain(bool[] map, IBaseObject element, int length)
+        public CongenericChain(bool[] map, IBaseObject element)
         {
-            this.length = length;
+            this.length = map.Length;
             this.element = element;
             for (int i = 0; i < map.Length; i++)
             {

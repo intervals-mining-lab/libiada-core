@@ -17,6 +17,7 @@
         private Attributes currentAttributes;
 
         /// <summary>
+        /// Gets score model.
         /// модель в которую разбирается XML документ
         /// </summary>
         public ScoreTrack ScoreModel { get; private set; }

@@ -21,7 +21,7 @@
         /// Amino acid sequence of type <see cref="BaseChain"/>.
         /// Elements are of <see cref="ValueString"/> type.
         /// </returns>
-        public static BaseChain Encode(BaseChain inputChain)
+        public static BaseChain EncodeAmino(BaseChain inputChain)
         {
             DnaProcessing.CheckDnaAlphabet(inputChain.Alphabet);
 

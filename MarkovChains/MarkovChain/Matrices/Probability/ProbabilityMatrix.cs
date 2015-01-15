@@ -77,9 +77,10 @@ namespace MarkovChains.MarkovChain.Matrices.Probability
         /// The pred.
         /// </param>
         /// <returns>
-        /// The <see cref="T:Dictionary{IBaseObject, double}"/>.
+        /// The <see cref="Dictionary{IBaseObject, double}"/>.
         /// </returns>
         /// <exception cref="ArgumentException">
+        /// Thrown if pred length is 0 or pred length is more than Rank - 1.
         /// </exception>
         public Dictionary<IBaseObject, double> GetProbabilityVector(Alphabet alphabet, int[] pred)
         {

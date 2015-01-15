@@ -22,23 +22,96 @@
         public void SimpleEncodeTest()
         {
             var input = new BaseChain("TTT");
-            BaseChain result = DnaTransformer.Encode(input);
+            BaseChain result = DnaTransformer.EncodeAmino(input);
             Assert.AreEqual("F", result[0].ToString());
         }
 
         /// <summary>
         /// The encode test.
         /// </summary>
-        [Test]
-        public void EncodeTest()
+        /// <param name="triplet">
+        /// The triplet.
+        /// </param>
+        /// <param name="amino">
+        /// The amino acid.
+        /// </param>
+        [TestCase("TTT", "F")]
+        [TestCase("TTC", "F")]
+        [TestCase("TTA", "L")]
+        [TestCase("TTG", "L")]
+        [TestCase("TCT", "S")]
+        [TestCase("TCC", "S")]
+        [TestCase("TCA", "S")]
+        [TestCase("TCG", "S")]
+        [TestCase("TAT", "Y")]
+        [TestCase("TAC", "Y")]
+        [TestCase("TAA", "X")]
+        [TestCase("TAG", "X")]
+        [TestCase("TGT", "C")]
+        [TestCase("TGC", "C")]
+        [TestCase("TGA", "X")]
+        [TestCase("TGG", "W")]
+        [TestCase("CTT", "L")]
+        [TestCase("CTC", "L")]
+        [TestCase("CTA", "L")]
+        [TestCase("CTG", "L")]
+        [TestCase("CCT", "P")]
+        [TestCase("CCC", "P")]
+        [TestCase("CCA", "P")]
+        [TestCase("CCG", "P")]
+        [TestCase("CAT", "H")]
+        [TestCase("CAC", "H")]
+        [TestCase("CAA", "Q")]
+        [TestCase("CAG", "Q")]
+        [TestCase("CGT", "R")]
+        [TestCase("CGC", "R")]
+        [TestCase("CGA", "R")]
+        [TestCase("CGG", "R")]
+        [TestCase("ATT", "I")]
+        [TestCase("ATC", "I")]
+        [TestCase("ATA", "I")]
+        [TestCase("ATG", "M")]
+        [TestCase("ACT", "T")]
+        [TestCase("ACC", "T")]
+        [TestCase("ACA", "T")]
+        [TestCase("ACG", "T")]
+        [TestCase("AAT", "N")]
+        [TestCase("AAC", "N")]
+        [TestCase("AAA", "K")]
+        [TestCase("AAG", "K")]
+        [TestCase("AGT", "S")]
+        [TestCase("AGC", "S")]
+        [TestCase("AGA", "R")]
+        [TestCase("AGG", "R")]
+        [TestCase("GTT", "V")]
+        [TestCase("GTC", "V")]
+        [TestCase("GTA", "V")]
+        [TestCase("GTG", "V")]
+        [TestCase("GCT", "A")]
+        [TestCase("GCC", "A")]
+        [TestCase("GCA", "A")]
+        [TestCase("GCG", "A")]
+        [TestCase("GAT", "D")]
+        [TestCase("GAC", "D")]
+        [TestCase("GAA", "E")]
+        [TestCase("GAG", "E")]
+        [TestCase("GGT", "G")]
+        [TestCase("GGC", "G")]
+        [TestCase("GGA", "G")]
+        [TestCase("GGG", "G")]
+        public void EncodeAminoTest(string triplet, string amino)
         {
-            var input =
-                new BaseChain("TTTTTCTTATTGTCTTCCTCATCGTATTACTAATAGTGTTGCTGATGGCTTCTCCTACTGCCTCCCCCACCGCATCACCAACAGCGTCGCCGACGGATTATCATAATGACTACCACAACGAATAACAAAAAGAGTAGCAGAAGGGTTGTCGTAGTGGCTGCCGCAGCGGATGACGAAGAGGGTGGCGGAGGG");
-            BaseChain result = DnaTransformer.Encode(input);
-            string expected = "FFLLSSSSYYXXCCXWLLLLPPPPHHQQRRRRIIIMTTTTNNKKSSRRVVVVAAAADDEEGGGG";
-            for (int i = 0; i < expected.Length; i++)
+            var input = new BaseChain(triplet.Length);
+            for (int i = 0; i < triplet.Length; i++)
             {
-                Assert.AreEqual(expected[i].ToString(CultureInfo.InvariantCulture), result[i].ToString());
+                input[i] = new ValueString(triplet[i]);
+            }
+
+            BaseChain result = DnaTransformer.EncodeAmino(input);
+
+            for (int i = 0; i < result.GetLength(); i++)
+            {
+                Assert.AreEqual(new ValueString(amino[i]), result[i]);
             }
         }
 
@@ -161,78 +234,87 @@
         /// <summary>
         /// The encode triplets test.
         /// </summary>
-        [Test]
-        public void EncodeTripletsTest()
+        /// <param name="triplet">
+        /// The triplet.
+        /// </param>
+        [TestCase("TTT")]
+        [TestCase("TTC")]
+        [TestCase("TTA")]
+        [TestCase("TTG")]
+        [TestCase("TCT")]
+        [TestCase("TCC")]
+        [TestCase("TCA")]
+        [TestCase("TCG")]
+        [TestCase("TAT")]
+        [TestCase("TAC")]
+        [TestCase("TAA")]
+        [TestCase("TAG")]
+        [TestCase("TGT")]
+        [TestCase("TGC")]
+        [TestCase("TGA")]
+        [TestCase("TGG")]
+        [TestCase("CTT")]
+        [TestCase("CTC")]
+        [TestCase("CTA")]
+        [TestCase("CTG")]
+        [TestCase("CCT")]
+        [TestCase("CCC")]
+        [TestCase("CCA")]
+        [TestCase("CCG")]
+        [TestCase("CAT")]
+        [TestCase("CAC")]
+        [TestCase("CAA")]
+        [TestCase("CAG")]
+        [TestCase("CGT")]
+        [TestCase("CGC")]
+        [TestCase("CGA")]
+        [TestCase("CGG")]
+        [TestCase("ATT")]
+        [TestCase("ATC")]
+        [TestCase("ATA")]
+        [TestCase("ATG")]
+        [TestCase("ACT")]
+        [TestCase("ACC")]
+        [TestCase("ACA")]
+        [TestCase("ACG")]
+        [TestCase("AAT")]
+        [TestCase("AAC")]
+        [TestCase("AAA")]
+        [TestCase("AAG")]
+        [TestCase("AGT")]
+        [TestCase("AGC")]
+        [TestCase("AGA")]
+        [TestCase("AGG")]
+        [TestCase("GTT")]
+        [TestCase("GTC")]
+        [TestCase("GTA")]
+        [TestCase("GTG")]
+        [TestCase("GCT")]
+        [TestCase("GCC")]
+        [TestCase("GCA")]
+        [TestCase("GCG")]
+        [TestCase("GAT")]
+        [TestCase("GAC")]
+        [TestCase("GAA")]
+        [TestCase("GAG")]
+        [TestCase("GGT")]
+        [TestCase("GGC")]
+        [TestCase("GGA")]
+        [TestCase("GGG")]
+        public void EncodeTripletsTest(string triplet)
         {
-            var input =
-                new BaseChain("TTTTTCTTATTGTCTTCCTCATCGTATTACTAATAGTGTTGCTGATGGCTTCTCCTACTGCCTCCCCCACCGCATCACCAACAGCGTCGCCGACGGATTATCATAATGACTACCACAACGAATAACAAAAAGAGTAGCAGAAGGGTTGTCGTAGTGGCTGCCGCAGCGGATGACGAAGAGGGTGGCGGAGGG");
+            var input = new BaseChain(triplet.Length);
+            for (int i = 0; i < triplet.Length; i++)
+            {
+                input[i] = new ValueString(triplet[i]);
+            }
 
             BaseChain result = DnaTransformer.EncodeTriplets(input);
 
-            Assert.AreEqual(new ValueString("TTT"), result[0]);
-            Assert.AreEqual(new ValueString("TTC"), result[1]);
-            Assert.AreEqual(new ValueString("TTA"), result[2]);
-            Assert.AreEqual(new ValueString("TTG"), result[3]);
-            Assert.AreEqual(new ValueString("TCT"), result[4]);
-            Assert.AreEqual(new ValueString("TCC"), result[5]);
-            Assert.AreEqual(new ValueString("TCA"), result[6]);
-            Assert.AreEqual(new ValueString("TCG"), result[7]);
-            Assert.AreEqual(new ValueString("TAT"), result[8]);
-            Assert.AreEqual(new ValueString("TAC"), result[9]);
-            Assert.AreEqual(new ValueString("TAA"), result[10]);
-            Assert.AreEqual(new ValueString("TAG"), result[11]);
-            Assert.AreEqual(new ValueString("TGT"), result[12]);
-            Assert.AreEqual(new ValueString("TGC"), result[13]);
-            Assert.AreEqual(new ValueString("TGA"), result[14]);
-            Assert.AreEqual(new ValueString("TGG"), result[15]);
-            Assert.AreEqual(new ValueString("CTT"), result[16]);
-            Assert.AreEqual(new ValueString("CTC"), result[17]);
-            Assert.AreEqual(new ValueString("CTA"), result[18]);
-            Assert.AreEqual(new ValueString("CTG"), result[19]);
-            Assert.AreEqual(new ValueString("CCT"), result[20]);
-            Assert.AreEqual(new ValueString("CCC"), result[21]);
-            Assert.AreEqual(new ValueString("CCA"), result[22]);
-            Assert.AreEqual(new ValueString("CCG"), result[23]);
-            Assert.AreEqual(new ValueString("CAT"), result[24]);
-            Assert.AreEqual(new ValueString("CAC"), result[25]);
-            Assert.AreEqual(new ValueString("CAA"), result[26]);
-            Assert.AreEqual(new ValueString("CAG"), result[27]);
-            Assert.AreEqual(new ValueString("CGT"), result[28]);
-            Assert.AreEqual(new ValueString("CGC"), result[29]);
-            Assert.AreEqual(new ValueString("CGA"), result[30]);
-            Assert.AreEqual(new ValueString("CGG"), result[31]);
-            Assert.AreEqual(new ValueString("ATT"), result[32]);
-            Assert.AreEqual(new ValueString("ATC"), result[33]);
-            Assert.AreEqual(new ValueString("ATA"), result[34]);
-            Assert.AreEqual(new ValueString("ATG"), result[35]);
-            Assert.AreEqual(new ValueString("ACT"), result[36]);
-            Assert.AreEqual(new ValueString("ACC"), result[37]);
-            Assert.AreEqual(new ValueString("ACA"), result[38]);
-            Assert.AreEqual(new ValueString("ACG"), result[39]);
-            Assert.AreEqual(new ValueString("AAT"), result[40]);
-            Assert.AreEqual(new ValueString("AAC"), result[41]);
-            Assert.AreEqual(new ValueString("AAA"), result[42]);
-            Assert.AreEqual(new ValueString("AAG"), result[43]);
-            Assert.AreEqual(new ValueString("AGT"), result[44]);
-            Assert.AreEqual(new ValueString("AGC"), result[45]);
-            Assert.AreEqual(new ValueString("AGA"), result[46]);
-            Assert.AreEqual(new ValueString("AGG"), result[47]);
-            Assert.AreEqual(new ValueString("GTT"), result[48]);
-            Assert.AreEqual(new ValueString("GTC"), result[49]);
-            Assert.AreEqual(new ValueString("GTA"), result[50]);
-            Assert.AreEqual(new ValueString("GTG"), result[51]);
-            Assert.AreEqual(new ValueString("GCT"), result[52]);
-            Assert.AreEqual(new ValueString("GCC"), result[53]);
-            Assert.AreEqual(new ValueString("GCA"), result[54]);
-            Assert.AreEqual(new ValueString("GCG"), result[55]);
-            Assert.AreEqual(new ValueString("GAT"), result[56]);
-            Assert.AreEqual(new ValueString("GAC"), result[57]);
-            Assert.AreEqual(new ValueString("GAA"), result[58]);
-            Assert.AreEqual(new ValueString("GAG"), result[59]);
-            Assert.AreEqual(new ValueString("GGT"), result[60]);
-            Assert.AreEqual(new ValueString("GGC"), result[61]);
-            Assert.AreEqual(new ValueString("GGA"), result[62]);
-            Assert.AreEqual(new ValueString("GGG"), result[63]);
+            for (int i = 0; i < result.GetLength(); i++)
+            {
+                Assert.AreEqual(new ValueString(triplet.Substring(i * 3, 3)), result[i]);
+            }
         }
     }
 }

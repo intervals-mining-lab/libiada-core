@@ -3,7 +3,8 @@
     using LibiadaCore.Core;
 
     /// <summary>
-    /// атрибуты такта
+    /// Measure attributes.
+    /// атрибуты такта.
     /// </summary>
     public class Attributes : IBaseObject
     {
@@ -30,12 +31,12 @@
         }
 
         /// <summary>
-        /// Beats, beatbase, ticksperbeat.
+        /// Gets size that contains Beats, beatbase, ticksperbeat.
         /// </summary>
         public Size Size { get; private set; }
 
         /// <summary>
-        /// fifths, mode
+        /// Gets Key that contains fifths, mode.
         /// </summary>
         public Key Key { get; private set; }
 

@@ -21,11 +21,7 @@ namespace Clusterizator.Krab.Calculators
             for (int i = 0; i < graph.Connections.Count; i++)
             {
                 Connection connection = graph.Connections[i];
-                double bMin = GetBmin(
-                    graph.Connections,
-                    graph.Elements.Count,
-                    connection.FirstElementIndex,
-                    connection.SecondElementIndex);
+                double bMin = GetBmin(graph.Connections, graph.Elements.Count, connection.FirstElementIndex, connection.SecondElementIndex);
                 connection.TauStar = connection.Distance / bMin;
             }
         }

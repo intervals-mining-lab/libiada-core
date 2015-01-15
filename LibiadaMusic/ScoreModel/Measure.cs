@@ -35,6 +35,7 @@
         }
 
         /// <summary>
+        /// Gets notes list.
         /// список нот, класса Note
         /// </summary>
         public List<ValueNote> NoteList { get; private set; }

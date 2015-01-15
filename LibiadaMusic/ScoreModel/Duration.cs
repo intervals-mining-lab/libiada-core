@@ -85,16 +85,19 @@
         }
 
         /// <summary>
+        /// Gets numerator.
         /// числитель в дроби доли
         /// </summary>
         public int Numerator { get; private set; }
 
         /// <summary>
+        /// Gets denominator.
         /// знаменатель в дроби доли
         /// </summary>
         public int Denominator { get; private set; }
 
         /// <summary>
+        /// Gets number of midi tiks.
         /// сколько МИДИ тиков в доле
         /// </summary>
         public int Ticks { get; private set; }
@@ -234,7 +237,8 @@
         {
             if ((Numerator % 2) == 0)
             {
-                Numerator = (int)(Numerator * 1.5); // если четный числитель, то прибавляем к нему половину
+                // если четный числитель, то прибавляем к нему половину
+                Numerator = (int)(Numerator * 1.5); 
             }
             else
             {

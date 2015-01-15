@@ -31,7 +31,7 @@
         }
 
         /// <summary>
-        /// список нот, входящих в  ф-мотив
+        /// Gets list of notes in fmotiv.
         /// </summary>
         public List<ValueNote> NoteList { get; private set; }
 
