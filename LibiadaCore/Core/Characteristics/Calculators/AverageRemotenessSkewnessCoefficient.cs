@@ -6,7 +6,7 @@
     /// Normalized asymmetry of average remoteness 
     /// in other words asymmetry coefficient (skewness) of average remoteness.
     /// </summary>
-    public class NormalizedAverageRemotenessSkewness : IFullCalculator
+    public class AverageRemotenessSkewnessCoefficient : IFullCalculator
     {
         /// <summary>
         /// Average remoteness skewness.
