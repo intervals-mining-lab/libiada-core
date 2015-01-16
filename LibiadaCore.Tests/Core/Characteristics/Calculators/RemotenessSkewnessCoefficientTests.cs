@@ -4,11 +4,8 @@
 
     using NUnit.Framework;
 
-    /// <summary>
-    /// The average remoteness asymmetry test.
-    /// </summary>
     [TestFixture]
-    public class AverageRemotenessSkewnessCoefficientTests : FullCalculatorsTests
+    public class RemotenessSkewnessCoefficientTests : FullCalculatorsTests
     {
         /// <summary>
         /// Tests initialization method.
@@ -16,7 +13,7 @@
         [TestFixtureSetUp]
         public void Initialization()
         {
-            Initialization("AverageRemotenessSkewnessCoefficient");
+            Initialization("RemotenessSkewnessCoefficient");
         }
 
         /// <summary>
@@ -39,6 +36,6 @@
         public void ChainCalculationTest(int index, Link link, double value)
         {
             ChainCharacteristicTest(0, link, value);
-        }
+        } 
     }
 }

@@ -56,7 +56,13 @@ namespace LibiadaCore.Core.Characteristics
                                                                 typeof(AverageRemotenessSkewness),
                                                                 typeof(AverageRemotenessSkewnessCoefficient),
                                                                 typeof(AverageRemotenessKurtosis),
-                                                                typeof(AverageRemotenessKurtosisCoefficient)
+                                                                typeof(AverageRemotenessKurtosisCoefficient),
+                                                                typeof(RemotenessDispersion),
+                                                                typeof(RemotenessKurtosis),
+                                                                typeof(RemotenessKurtosisCoefficient),
+                                                                typeof(RemotenessSkewness),
+                                                                typeof(RemotenessSkewnessCoefficient),
+                                                                typeof(RemotenessStandardDeviation)
                                                                 
                                                             };
 
