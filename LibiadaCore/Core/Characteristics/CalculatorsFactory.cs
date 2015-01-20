@@ -62,7 +62,13 @@ namespace LibiadaCore.Core.Characteristics
                                                                 typeof(RemotenessKurtosisCoefficient),
                                                                 typeof(RemotenessSkewness),
                                                                 typeof(RemotenessSkewnessCoefficient),
-                                                                typeof(RemotenessStandardDeviation)
+                                                                typeof(RemotenessStandardDeviation),
+                                                                typeof(EntropyDispersion),
+                                                                typeof(EntropyStandardDeviation),
+                                                                typeof(EntropySkewness),
+                                                                typeof(EntropySkewnessCoefficient),
+                                                                typeof(EntropyKurtosis),
+                                                                typeof(EntropyKurtosisCoefficient)
                                                                 
                                                             };
 
