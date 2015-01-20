@@ -30,14 +30,14 @@
         public double Calculate(Chain chain, Link link)
         {
             double result = 0;
-            double g = identificationInformation.Calculate(chain, link);
+            double h = identificationInformation.Calculate(chain, link);
             int n = (int)intervalsCount.Calculate(chain, link);
 
             for (int i = 0; i < chain.Alphabet.Cardinality; i++)
             {
                 double nj = intervalsCount.Calculate(chain.CongenericChain(chain.Alphabet[i]), link);
-                double gj = identificationInformation.Calculate(chain.CongenericChain(chain.Alphabet[i]), link);
-                double delta = gj - g;
+                double hj = identificationInformation.Calculate(chain.CongenericChain(chain.Alphabet[i]), link);
+                double delta = hj - h;
                 result += n == 0 ? 0 : delta * delta * delta * delta * nj / n;
             }
 
