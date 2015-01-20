@@ -1,5 +1,8 @@
 ﻿namespace LibiadaCore.Core.Characteristics.Calculators
 {
+    /// <summary>
+    /// The average remoteness kurtosis.
+    /// </summary>
     public class AverageRemotenessKurtosis : IFullCalculator
     {
         /// <summary>
@@ -34,7 +37,7 @@
             {
                 double nj = intervalsCount.Calculate(chain.CongenericChain(chain.Alphabet[i]), link);
                 double gj = averageRemoteness.Calculate(chain.CongenericChain(chain.Alphabet[i]), link);
-                double delta = (gj - g);
+                double delta = gj - g;
                 result += n == 0 ? 0 : delta * delta * delta * delta * nj / n;
             }
 

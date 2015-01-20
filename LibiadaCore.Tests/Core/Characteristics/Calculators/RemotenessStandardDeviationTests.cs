@@ -4,6 +4,9 @@
 
     using NUnit.Framework;
 
+    /// <summary>
+    /// The remoteness standard deviation tests.
+    /// </summary>
     [TestFixture]
     public class RemotenessStandardDeviationTests : FullCalculatorsTests
     {

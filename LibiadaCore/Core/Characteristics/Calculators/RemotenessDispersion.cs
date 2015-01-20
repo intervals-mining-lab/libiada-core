@@ -4,13 +4,19 @@
     using System.Collections.Generic;
     using System.Linq;
 
+    /// <summary>
+    /// The remoteness dispersion.
+    /// </summary>
     public class RemotenessDispersion : IFullCalculator
     {
         /// <summary>
         /// The intervals count.
         /// </summary>
         private readonly ICalculator intervalsCount = new IntervalsCount();
-        
+
+        /// <summary>
+        /// The geometric mean.
+        /// </summary>
         private readonly ICalculator geometricMean = new GeometricMean();
 
         /// <summary>

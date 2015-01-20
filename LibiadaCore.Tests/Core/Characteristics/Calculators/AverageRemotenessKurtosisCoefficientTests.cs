@@ -4,6 +4,9 @@
 
     using NUnit.Framework;
 
+    /// <summary>
+    /// The average remoteness kurtosis coefficient tests.
+    /// </summary>
     [TestFixture]
     public class AverageRemotenessKurtosisCoefficientTests : FullCalculatorsTests
     {

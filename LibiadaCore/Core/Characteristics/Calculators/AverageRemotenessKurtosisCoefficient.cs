@@ -1,5 +1,8 @@
 ﻿namespace LibiadaCore.Core.Characteristics.Calculators
 {
+    /// <summary>
+    /// The average remoteness kurtosis coefficient.
+    /// </summary>
     public class AverageRemotenessKurtosisCoefficient
     {
         /// <summary>

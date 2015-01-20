@@ -2,6 +2,9 @@
 {
     using System;
 
+    /// <summary>
+    /// The remoteness standard deviation.
+    /// </summary>
     public class RemotenessStandardDeviation : IFullCalculator
     {
         /// <summary>

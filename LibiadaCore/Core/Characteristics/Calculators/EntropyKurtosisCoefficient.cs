@@ -1,5 +1,8 @@
 ﻿namespace LibiadaCore.Core.Characteristics.Calculators
 {
+    /// <summary>
+    /// The entropy kurtosis coefficient.
+    /// </summary>
     public class EntropyKurtosisCoefficient
     {
         /// <summary>

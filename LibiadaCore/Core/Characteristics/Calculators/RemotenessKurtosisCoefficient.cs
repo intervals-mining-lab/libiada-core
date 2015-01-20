@@ -1,5 +1,8 @@
 ﻿namespace LibiadaCore.Core.Characteristics.Calculators
 {
+    /// <summary>
+    /// The remoteness kurtosis coefficient.
+    /// </summary>
     public class RemotenessKurtosisCoefficient : IFullCalculator
     {
         /// <summary>

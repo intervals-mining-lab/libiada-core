@@ -4,6 +4,9 @@
     using System.Collections.Generic;
     using System.Linq;
 
+    /// <summary>
+    /// The remoteness skewness.
+    /// </summary>
     public class RemotenessSkewness : IFullCalculator
     {
         /// <summary>
@@ -11,6 +14,9 @@
         /// </summary>
         private readonly ICalculator intervalsCount = new IntervalsCount();
 
+        /// <summary>
+        /// The geometric mean.
+        /// </summary>
         private readonly ICalculator geometricMean = new GeometricMean();
 
         /// <summary>

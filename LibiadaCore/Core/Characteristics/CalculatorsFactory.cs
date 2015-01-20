@@ -69,7 +69,6 @@ namespace LibiadaCore.Core.Characteristics
                                                                 typeof(EntropySkewnessCoefficient),
                                                                 typeof(EntropyKurtosis),
                                                                 typeof(EntropyKurtosisCoefficient)
-                                                                
                                                             };
 
         /// <summary>

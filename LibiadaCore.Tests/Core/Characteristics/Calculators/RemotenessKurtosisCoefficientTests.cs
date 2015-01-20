@@ -4,6 +4,9 @@
 
     using NUnit.Framework;
 
+    /// <summary>
+    /// The remoteness kurtosis coefficient tests.
+    /// </summary>
     [TestFixture]
     public class RemotenessKurtosisCoefficientTests : FullCalculatorsTests
     {

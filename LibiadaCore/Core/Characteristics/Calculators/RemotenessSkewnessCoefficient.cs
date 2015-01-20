@@ -1,5 +1,8 @@
 ﻿namespace LibiadaCore.Core.Characteristics.Calculators
 {
+    /// <summary>
+    /// The remoteness skewness coefficient.
+    /// </summary>
     public class RemotenessSkewnessCoefficient : IFullCalculator
     {
         /// <summary>

@@ -4,6 +4,9 @@
 
     using NUnit.Framework;
 
+    /// <summary>
+    /// The remoteness skewness coefficient tests.
+    /// </summary>
     [TestFixture]
     public class RemotenessSkewnessCoefficientTests : FullCalculatorsTests
     {

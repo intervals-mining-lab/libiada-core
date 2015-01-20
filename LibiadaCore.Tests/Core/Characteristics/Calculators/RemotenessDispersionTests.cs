@@ -4,6 +4,9 @@
 
     using NUnit.Framework;
 
+    /// <summary>
+    /// The remoteness dispersion tests.
+    /// </summary>
     [TestFixture]
     public class RemotenessDispersionTests : FullCalculatorsTests
     {
