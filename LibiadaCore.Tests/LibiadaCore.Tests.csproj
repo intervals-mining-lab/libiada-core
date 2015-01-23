@@ -45,6 +45,7 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Core\Characteristics\Calculators\ATSkewTests.cs" />
     <Compile Include="Core\Characteristics\Calculators\AverageRemotenessKurtosisCoefficientTests.cs" />
     <Compile Include="Core\Characteristics\Calculators\AverageRemotenessKurtosisTests.cs" />
     <Compile Include="Core\Characteristics\Calculators\ComplianceDegreeTests.cs" />
@@ -56,12 +57,17 @@
     <Compile Include="Core\Characteristics\Calculators\AverageRemotenessDispersionTests.cs" />
     <Compile Include="Core\Characteristics\Calculators\AverageRemotenessSkewnessTests.cs" />
     <Compile Include="Core\Characteristics\Calculators\AverageRemotenessStandardDeviationTests.cs" />
+    <Compile Include="Core\Characteristics\Calculators\GCSkewTests.cs" />
+    <Compile Include="Core\Characteristics\Calculators\GCToATRatioTests.cs" />
+    <Compile Include="Core\Characteristics\Calculators\MKSkewTests.cs" />
     <Compile Include="Core\Characteristics\Calculators\RemotenessDispersionTests.cs" />
     <Compile Include="Core\Characteristics\Calculators\RemotenessKurtosisCoefficientTests.cs" />
     <Compile Include="Core\Characteristics\Calculators\RemotenessKurtosisTests.cs" />
     <Compile Include="Core\Characteristics\Calculators\RemotenessSkewnessCoefficientTests.cs" />
     <Compile Include="Core\Characteristics\Calculators\RemotenessSkewnessTests.cs" />
     <Compile Include="Core\Characteristics\Calculators\RemotenessStandardDeviationTests.cs" />
+    <Compile Include="Core\Characteristics\Calculators\RYSkewTests.cs" />
+    <Compile Include="Core\Characteristics\Calculators\SWSkewTests.cs" />
     <Compile Include="Core\IntervalsManagers\BinaryIntervalsManagerTests.cs" />
     <Compile Include="Misc\DataTransformers\DnaTransformerTests.cs" />
     <Compile Include="Misc\Iterators\CutRuleWithShiftedAndFixedStartTests.cs" />
