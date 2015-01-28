@@ -91,7 +91,7 @@
     <Compile Include="ScoreModel\ScoreTrack.cs" />
     <Compile Include="ScoreModel\Size.cs" />
     <Compile Include="ScoreModel\Tie.cs" />
-    <Compile Include="ScoreModel\UniformScoreTrack.cs" />
+    <Compile Include="ScoreModel\CongenericScoreTrack.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

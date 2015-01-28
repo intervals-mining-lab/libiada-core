@@ -83,7 +83,7 @@ namespace LibiadaCore.Core
             {
                 if (map[i])
                 {
-                    Add(i);
+                    Set(i);
                 }
             }
         }
@@ -230,11 +230,9 @@ namespace LibiadaCore.Core
         {
             if (element.Equals(item))
             {
-                Add(index);
+                Set(index);
             }
         }
-
-        // TODO: переименовать метод в Set или что-то подобное.
 
         /// <summary>
         /// Sets item in provided position.
@@ -242,7 +240,7 @@ namespace LibiadaCore.Core
         /// <param name="index">
         /// The index.
         /// </param>
-        public void Add(int index)
+        public void Set(int index)
         {
             if (index >= length || index < 0)
             {
@@ -358,7 +356,7 @@ namespace LibiadaCore.Core
                 return true;
             }
 
-            if (other as CongenericChain == null)
+            if (!(other is CongenericChain))
             {
                 return false;
             }

@@ -33,7 +33,7 @@ namespace LibiadaCore.Core.Characteristics.Calculators
         public double Calculate(CongenericChain chain, Link link)
         {
             double depth = depthCalculator.Calculate(chain, link);
-            double nj = intervalsCount.Calculate(chain, link);
+            int nj = (int)intervalsCount.Calculate(chain, link);
 
             return nj == 0 ? 0 : depth / nj;
         }
@@ -53,7 +53,7 @@ namespace LibiadaCore.Core.Characteristics.Calculators
         public double Calculate(Chain chain, Link link)
         {
             double depth = depthCalculator.Calculate(chain, link);
-            double nj = intervalsCount.Calculate(chain, link);
+            int nj = (int)intervalsCount.Calculate(chain, link);
 
             return nj == 0 ? 0 : depth / nj;
         }
