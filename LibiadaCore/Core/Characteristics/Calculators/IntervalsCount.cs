@@ -1,7 +1,5 @@
 namespace LibiadaCore.Core.Characteristics.Calculators
 {
-    using System;
-
     /// <summary>
     /// Intervals count depending on link.
     /// </summary>

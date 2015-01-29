@@ -53,7 +53,7 @@ namespace LibiadaCore.Core.Characteristics.Calculators
         public double Calculate(Chain chain, Link link)
         {
             double sum = adder.Calculate(chain, link);
-            double intervalsCount = counter.Calculate(chain, link);
+            int intervalsCount = (int)counter.Calculate(chain, link);
             return intervalsCount == 0 ? 0 : sum / intervalsCount;
         }
     }

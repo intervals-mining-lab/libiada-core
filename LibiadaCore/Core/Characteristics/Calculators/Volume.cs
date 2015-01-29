@@ -1,6 +1,5 @@
 ﻿namespace LibiadaCore.Core.Characteristics.Calculators
 {
-    using System;
     using System.Linq;
 
     /// <summary>
@@ -20,9 +19,6 @@
         /// <returns>
         /// Volume characteristic of chain as <see cref="double"/>.
         /// </returns>
-        /// <exception cref="ArgumentException">
-        /// Thrown if link is unknown.
-        /// </exception>
         public double Calculate(CongenericChain chain, Link link)
         {
             var intervals = chain.GetIntervals(link);
@@ -42,9 +38,6 @@
         /// <returns>
         /// Volume characteristic of chain as <see cref="double"/>.
         /// </returns>
-        /// <exception cref="ArgumentException">
-        /// Thrown if link is unknown.
-        /// </exception>
         public double Calculate(Chain chain, Link link)
         {
             double result = 1;

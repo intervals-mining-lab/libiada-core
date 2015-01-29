@@ -3,7 +3,7 @@
     /// <summary>
     /// The entropy kurtosis coefficient.
     /// </summary>
-    public class EntropyKurtosisCoefficient
+    public class EntropyKurtosisCoefficient : IFullCalculator
     {
         /// <summary>
         /// Entropy skewness.

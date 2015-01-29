@@ -22,9 +22,6 @@ namespace LibiadaCore.Core.Characteristics.Calculators
         /// <returns>
         /// <see cref="double"/> value of depth.
         /// </returns>
-        /// <exception cref="ArgumentException">
-        /// Thrown if link is unknown.
-        /// </exception>
         public double Calculate(CongenericChain chain, Link link)
         {
             var intervals = chain.GetIntervals(link);

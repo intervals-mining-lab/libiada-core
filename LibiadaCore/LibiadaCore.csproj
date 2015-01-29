@@ -110,8 +110,8 @@
     <Compile Include="Core\Characteristics\Calculators\Redundancy.cs" />
     <Compile Include="Core\Characteristics\Calculators\AverageWordLength.cs" />
     <Compile Include="Core\Characteristics\Calculators\ElementsCount.cs" />
-    <Compile Include="Core\Characteristics\Calculators\CutLength.cs" />
-    <Compile Include="Core\Characteristics\Calculators\CutLengthVocabularyEntropy.cs" />
+    <Compile Include="Core\Characteristics\Calculators\CuttingLength.cs" />
+    <Compile Include="Core\Characteristics\Calculators\CuttingLengthVocabularyEntropy.cs" />
     <Compile Include="Core\Characteristics\Calculators\DescriptiveInformation.cs" />
     <Compile Include="Core\Characteristics\Calculators\Depth.cs" />
     <Compile Include="Core\Characteristics\Calculators\GeometricMean.cs" />
@@ -120,8 +120,6 @@
     <Compile Include="Core\Characteristics\Calculators\IntervalsCount.cs" />
     <Compile Include="Core\Characteristics\Calculators\IntervalsSum.cs" />
     <Compile Include="Core\Characteristics\Calculators\Length.cs" />
-    <Compile Include="Core\Characteristics\Calculators\NormalizedDepth.cs" />
-    <Compile Include="Core\Characteristics\Calculators\NormalizedAverageRemoteness.cs" />
     <Compile Include="Core\Characteristics\Calculators\Periodicity.cs" />
     <Compile Include="Core\Characteristics\Calculators\PhantomMessagesCount.cs" />
     <Compile Include="Core\Characteristics\Calculators\Probability.cs" />

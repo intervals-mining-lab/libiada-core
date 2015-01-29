@@ -5,7 +5,7 @@ namespace LibiadaCore.Core.Characteristics.Calculators
     /// <summary>
     /// Sadovsky cut length.
     /// </summary>
-    public class CutLength : ICalculator
+    public class CuttingLength : ICalculator
     {
         /// <summary>
         /// Calculation method.

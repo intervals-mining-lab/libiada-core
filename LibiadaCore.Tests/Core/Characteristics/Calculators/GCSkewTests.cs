@@ -8,7 +8,7 @@
     /// The depth test.
     /// </summary>
     [TestFixture]
-    public class GCSKewTests : FullCalculatorsTests
+    public class GCSkewTests : FullCalculatorsTests
     {
         /// <summary>
         /// Tests initialization method.

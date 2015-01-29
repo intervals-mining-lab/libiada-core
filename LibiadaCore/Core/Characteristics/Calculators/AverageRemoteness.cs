@@ -1,7 +1,5 @@
 namespace LibiadaCore.Core.Characteristics.Calculators
 {
-    using System;
-
     /// <summary>
     /// Average remoteness.
     /// Calculated as logarithm with base 2 from geometric mean.

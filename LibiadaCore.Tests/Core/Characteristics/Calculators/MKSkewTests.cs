@@ -8,7 +8,7 @@
     /// The depth test.
     /// </summary>
     [TestFixture]
-    public class MKSKewTests : FullCalculatorsTests
+    public class MKSkewTests : FullCalculatorsTests
     {
         /// <summary>
         /// Tests initialization method.

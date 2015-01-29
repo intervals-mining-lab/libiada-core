@@ -94,8 +94,8 @@
     <Compile Include="Core\Characteristics\Calculators\ArithmeticMeanTests.cs" />
     <Compile Include="Core\Characteristics\Calculators\AverageRemotenessTests.cs" />
     <Compile Include="Core\Characteristics\Calculators\ElementsCountTests.cs" />
-    <Compile Include="Core\Characteristics\Calculators\CutLengthTests.cs" />
-    <Compile Include="Core\Characteristics\Calculators\CutLengthVocabularyEntropyTests.cs" />
+    <Compile Include="Core\Characteristics\Calculators\CuttingLengthTests.cs" />
+    <Compile Include="Core\Characteristics\Calculators\CuttingLengthVocabularyEntropyTests.cs" />
     <Compile Include="Core\Characteristics\Calculators\DescriptiveInformationTests.cs" />
     <Compile Include="Core\Characteristics\Calculators\DepthTests.cs" />
     <Compile Include="Core\Characteristics\Calculators\GeometricMeanTests.cs" />
@@ -103,8 +103,6 @@
     <Compile Include="Core\Characteristics\Calculators\IntervalsCountTests.cs" />
     <Compile Include="Core\Characteristics\Calculators\IntervalsSumTests.cs" />
     <Compile Include="Core\Characteristics\Calculators\LengthTests.cs" />
-    <Compile Include="Core\Characteristics\Calculators\NormalizedDepthTests.cs" />
-    <Compile Include="Core\Characteristics\Calculators\NormalizedAverageRemotenessTests.cs" />
     <Compile Include="Core\Characteristics\Calculators\PeriodicityTests.cs" />
     <Compile Include="Core\Characteristics\Calculators\ProbabilityTests.cs" />
     <Compile Include="Core\Characteristics\Calculators\RegularityTests.cs" />

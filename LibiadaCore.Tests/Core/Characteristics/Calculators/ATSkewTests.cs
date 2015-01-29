@@ -8,7 +8,7 @@
     /// The depth test.
     /// </summary>
     [TestFixture]
-    public class ATSKewTests : FullCalculatorsTests
+    public class ATSkewTests : FullCalculatorsTests 
     {
         /// <summary>
         /// Tests initialization method.

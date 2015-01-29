@@ -5,10 +5,10 @@ namespace LibiadaCore.Tests.Core.Characteristics.Calculators
     using NUnit.Framework;
 
     /// <summary>
-    /// The cut length vocabulary entropy test.
+    /// The cut length test.
     /// </summary>
     [TestFixture]
-    public class CutLengthVocabularyEntropyTests : CalculatorsTests
+    public class CuttingLengthTests : CalculatorsTests
     {
         /// <summary>
         /// Tests initialization method.
@@ -16,7 +16,7 @@ namespace LibiadaCore.Tests.Core.Characteristics.Calculators
         [TestFixtureSetUp]
         public void Initialization()
         {
-            Initialization("CutLengthVocabularyEntropy");
+            Initialization("CuttingLength");
         }
 
         /// <summary>
@@ -31,18 +31,18 @@ namespace LibiadaCore.Tests.Core.Characteristics.Calculators
         /// <param name="value">
         /// The value.
         /// </param>
-        [TestCase(0, Link.None, 2.8074)]
-        [TestCase(0, Link.Start, 2.8074)]
-        [TestCase(0, Link.End, 2.8074)]
-        [TestCase(0, Link.Both, 2.8074)]
-        [TestCase(0, Link.Cycle, 2.8074)]
+        [TestCase(0, Link.None, 4)]
+        [TestCase(0, Link.Start, 4)]
+        [TestCase(0, Link.End, 4)]
+        [TestCase(0, Link.Both, 4)]
+        [TestCase(0, Link.Cycle, 4)]
         public void CongenericCalculationTest(int index, Link link, double value)
         {
             CongenericChainCharacteristicTest(index, link, value);
         }
 
         /// <summary>
-        /// The calculation test.
+        /// The chain calculation test.
         /// </summary>
         /// <param name="index">
         /// The index.
@@ -58,7 +58,7 @@ namespace LibiadaCore.Tests.Core.Characteristics.Calculators
         [TestCase(0, Link.End, 3)]
         [TestCase(0, Link.Both, 3)]
         [TestCase(0, Link.Cycle, 3)]
-        public void CalculationTest(int index, Link link, double value)
+        public void ChainCalculationTest(int index, Link link, double value)
         {
             ChainCharacteristicTest(index, link, value);
         }

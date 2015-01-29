@@ -3,7 +3,7 @@
     /// <summary>
     /// The average remoteness kurtosis coefficient.
     /// </summary>
-    public class AverageRemotenessKurtosisCoefficient
+    public class AverageRemotenessKurtosisCoefficient : IFullCalculator
     {
         /// <summary>
         /// Average remoteness skewness.

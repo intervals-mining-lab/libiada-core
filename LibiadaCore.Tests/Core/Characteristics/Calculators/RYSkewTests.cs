@@ -8,7 +8,7 @@
     /// The depth test.
     /// </summary>
     [TestFixture]
-    public class RYSKewTests : FullCalculatorsTests
+    public class RYSkewTests : FullCalculatorsTests
     {
         /// <summary>
         /// Tests initialization method.

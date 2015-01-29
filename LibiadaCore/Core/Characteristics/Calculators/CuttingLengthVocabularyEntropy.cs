@@ -5,12 +5,12 @@ namespace LibiadaCore.Core.Characteristics.Calculators
     /// <summary>
     /// Sadovsky entropy of dictionary.
     /// </summary>
-    public class CutLengthVocabularyEntropy : ICalculator
+    public class CuttingLengthVocabularyEntropy : ICalculator
     {
         /// <summary>
         /// Cut length calculator.
         /// </summary>
-        private readonly ICalculator cutLength = new CutLength();
+        private readonly ICalculator cutLength = new CuttingLength();
 
         /// <summary>
         /// Calculation method.

@@ -37,8 +37,8 @@
             {
                 double nj = intervalsCount.Calculate(chain.CongenericChain(chain.Alphabet[i]), link);
                 double hj = identificationInformation.Calculate(chain.CongenericChain(chain.Alphabet[i]), link);
-                double delta = hj - h;
-                result += n == 0 ? 0 : delta * delta * delta * delta * nj / n;
+                double deltaH = hj - h;
+                result += n == 0 ? 0 : deltaH * deltaH * deltaH * deltaH * nj / n;
             }
 
             return result;

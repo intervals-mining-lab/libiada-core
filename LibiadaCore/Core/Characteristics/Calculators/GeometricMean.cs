@@ -1,6 +1,7 @@
 namespace LibiadaCore.Core.Characteristics.Calculators
 {
     using System;
+    using System.Linq;
 
     using LibiadaCore.Core.IntervalsManagers;
 
@@ -74,14 +75,7 @@ namespace LibiadaCore.Core.Characteristics.Calculators
 
             int[] intervals = manager.GetIntervals();
 
-            double result = 0;
-            for (int i = 0; i < intervals.Length; i++)
-            {
-                if (intervals[i] > 0)
-                {
-                    result += Math.Log(intervals[i], 2);
-                }
-            }
+            double result = intervals.Where(t => t > 0).Sum(t => Math.Log(t, 2));
 
             return Math.Pow(2, intervals.Length == 0 ? 0 : result / intervals.Length);
         }
