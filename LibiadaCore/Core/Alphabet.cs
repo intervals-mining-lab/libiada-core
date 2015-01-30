@@ -8,7 +8,7 @@ namespace LibiadaCore.Core
     /// Implementation of ordered set - alphabet of elements.
     /// Alphabet is list of all unique elements in particular sequence.
     /// </summary>
-    public class Alphabet : IBaseObject, IEnumerable
+    public class Alphabet : IBaseObject, IEnumerable<IBaseObject>
     {
         /// <summary>
         /// The elements within alphabet.
@@ -164,12 +164,23 @@ namespace LibiadaCore.Core
         }
 
         /// <summary>
-        /// Returns enumerator of this alphabet..
+        /// Returns enumerator of this alphabet.
         /// </summary>
         /// <returns>
         /// The <see cref="IEnumerator"/>.
         /// </returns>
         public IEnumerator GetEnumerator()
+        {
+            return Elements.GetEnumerator();
+        }
+
+        /// <summary>
+        /// The get enumerator.
+        /// </summary>
+        /// <returns>
+        /// The <see cref="IEnumerator"/>.
+        /// </returns>
+        IEnumerator<IBaseObject> IEnumerable<IBaseObject>.GetEnumerator()
         {
             return Elements.GetEnumerator();
         }
