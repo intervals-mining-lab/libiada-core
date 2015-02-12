@@ -52,6 +52,12 @@
     <Compile Include="Core\Characteristics\Calculators\AlphabeticAverageRemotenessTests.cs" />
     <Compile Include="Core\Characteristics\Calculators\AlphabeticDepthTests.cs" />
     <Compile Include="Core\Characteristics\Calculators\CalculatorsTests.cs" />
+    <Compile Include="Core\Characteristics\Calculators\EntropyDispersionTests.cs" />
+    <Compile Include="Core\Characteristics\Calculators\EntropyKurtosisCoefficientTests.cs" />
+    <Compile Include="Core\Characteristics\Calculators\EntropyKurtosisTests.cs" />
+    <Compile Include="Core\Characteristics\Calculators\EntropySkewnessCoefficient.cs" />
+    <Compile Include="Core\Characteristics\Calculators\EntropySkewnessTests.cs" />
+    <Compile Include="Core\Characteristics\Calculators\EntropyStandardDeviationTests.cs" />
     <Compile Include="Core\Characteristics\Calculators\GCRatioTests.cs" />
     <Compile Include="Core\Characteristics\Calculators\AverageRemotenessSkewnessCoefficientTests.cs" />
     <Compile Include="Core\Characteristics\Calculators\AverageRemotenessDispersionTests.cs" />
