@@ -79,7 +79,14 @@ namespace LibiadaCore.Core.Characteristics
                                                                 typeof(NormalizedPartialDependenceCoefficient),
                                                                 typeof(PartialDependenceCoefficient),
                                                                 typeof(Redundancy),
-                                                                typeof(GeometricMean),
+                                                                typeof(GeometricMean)
+                                                            };
+
+        /// <summary>
+        /// The binary calculators.
+        /// </summary>
+        private static readonly List<Type> AccordanceCalculators = new List<Type>
+                                                            {
                                                                 typeof(ComplianceDegree)
                                                             };
 
@@ -245,6 +252,45 @@ namespace LibiadaCore.Core.Characteristics
         public static IBinaryCalculator CreateBinaryCalculator(Type type)
         {
             return CreateBinaryCalculator(type.Name);
+        }
+
+        /// <summary>
+        ///  Create binary calculator method.
+        /// </summary>
+        /// <param name="type">
+        /// The type.
+        /// </param>
+        /// <returns>
+        /// The <see cref="ICalculator"/>.
+        /// </returns>
+        /// <exception cref="ArgumentException">
+        /// Thrown if calculator is not found by name.
+        /// </exception>
+        public static IAccordanceCalculator CreateIAccordanceCalculator(string type)
+        {
+            foreach (var calculator in AccordanceCalculators)
+            {
+                if (type == calculator.Name)
+                {
+                    return (IAccordanceCalculator)Activator.CreateInstance(calculator);
+                }
+            }
+
+            throw new ArgumentException("Unknown calculator", "type");
+        }
+
+        /// <summary>
+        /// Create binary calculator method.
+        /// </summary>
+        /// <param name="type">
+        /// The type.
+        /// </param>
+        /// <returns>
+        /// The <see cref="ICalculator"/>.
+        /// </returns>
+        public static IAccordanceCalculator CreateIAccordanceCalculator(Type type)
+        {
+            return CreateIAccordanceCalculator(type.Name);
         }
     }
 }

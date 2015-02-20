@@ -6,7 +6,7 @@
     /// <summary>
     /// The compliance degree.
     /// </summary>
-    public class ComplianceDegree : BinaryCalculator
+    public class ComplianceDegree : IAccordanceCalculator
     {
         /// <summary>
         /// The calculate.
@@ -20,7 +20,7 @@
         /// <returns>
         /// The <see cref="double"/>.
         /// </returns>
-        public override double Calculate(BinaryIntervalsManager manager, Link link)
+        public double Calculate(AccordanceIntervalsManager manager, Link link)
         {
             if (manager.FilteredFirstIntervals.Count == 0)
             {

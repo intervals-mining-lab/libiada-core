@@ -49,6 +49,7 @@
     <Compile Include="Core\Characteristics\Calculators\EntropySkewness.cs" />
     <Compile Include="Core\Characteristics\Calculators\EntropySkewnessCoefficient.cs" />
     <Compile Include="Core\Characteristics\Calculators\EntropyStandardDeviation.cs" />
+    <Compile Include="Core\Characteristics\Calculators\IAccordanceCalculator.cs" />
     <Compile Include="Core\Characteristics\Calculators\RemotenessDispersion.cs" />
     <Compile Include="Core\Characteristics\Calculators\ComplianceDegree.cs" />
     <Compile Include="Core\Characteristics\Calculators\GCSkew.cs" />
@@ -61,6 +62,7 @@
     <Compile Include="Core\Characteristics\Calculators\RemotenessStandardDeviation.cs" />
     <Compile Include="Core\Characteristics\Calculators\RYSkew.cs" />
     <Compile Include="Core\Characteristics\Calculators\SWSkew.cs" />
+    <Compile Include="Core\IntervalsManagers\AccordanceIntervalsManager.cs" />
     <Compile Include="Misc\DataTransformers\DnaProcessing.cs" />
     <Compile Include="Core\Characteristics\Calculators\GCRatio.cs" />
     <Compile Include="Core\Characteristics\Calculators\ICalculator.cs" />
