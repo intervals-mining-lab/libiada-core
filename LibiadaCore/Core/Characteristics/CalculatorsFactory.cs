@@ -266,7 +266,7 @@ namespace LibiadaCore.Core.Characteristics
         /// <exception cref="ArgumentException">
         /// Thrown if calculator is not found by name.
         /// </exception>
-        public static IAccordanceCalculator CreateIAccordanceCalculator(string type)
+        public static IAccordanceCalculator CreateAccordanceCalculator(string type)
         {
             foreach (var calculator in AccordanceCalculators)
             {
@@ -288,9 +288,9 @@ namespace LibiadaCore.Core.Characteristics
         /// <returns>
         /// The <see cref="ICalculator"/>.
         /// </returns>
-        public static IAccordanceCalculator CreateIAccordanceCalculator(Type type)
+        public static IAccordanceCalculator CreateAccordanceCalculator(Type type)
         {
-            return CreateIAccordanceCalculator(type.Name);
+            return CreateAccordanceCalculator(type.Name);
         }
     }
 }
