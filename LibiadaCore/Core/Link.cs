@@ -6,26 +6,32 @@ namespace LibiadaCore.Core
     public enum Link
     {
         /// <summary>
+        /// Link not applied in characteristic calculation.
+        /// If passed to intervals manager exception will be thrown.
+        /// </summary>
+        NotApplied = 0,
+
+        /// <summary>
         /// No link.
         /// Both interval from start of chain to first element
         /// and interval from last element to end of chain 
         /// are taken into account.
         /// </summary>
-        None = 0,
+        None = 1,
 
         /// <summary>
         /// Link to start.
         /// Interval from last element to end of chain 
         /// is not taken into account.
         /// </summary>
-        Start = 1,
+        Start = 2,
 
         /// <summary>
         /// Link to end.
         /// Interval from start of chain to first element 
         /// is not taken into account.
         /// </summary>
-        End = 2,
+        End = 3,
 
         /// <summary>
         /// Link to start and end.
@@ -33,7 +39,7 @@ namespace LibiadaCore.Core
         /// and interval from last element to end of chain 
         /// are taken into account.
         /// </summary>
-        Both = 3,
+        Both = 4,
 
         /// <summary>
         /// Cyclic link.
@@ -41,6 +47,6 @@ namespace LibiadaCore.Core
         /// and interval from last element to end of chain 
         /// are summed into one interval.
         /// </summary>
-        Cycle = 4
+        Cycle = 5
     }
 }

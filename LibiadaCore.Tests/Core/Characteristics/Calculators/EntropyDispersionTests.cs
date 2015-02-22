@@ -8,7 +8,7 @@
     /// The average remoteness dispersion test.
     /// </summary>
     [TestFixture]
-    public class EntropyDispersion : FullCalculatorsTests
+    public class EntropyDispersionTests : FullCalculatorsTests
     {
         /// <summary>
         /// Tests initialization method.

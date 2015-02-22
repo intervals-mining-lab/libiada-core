@@ -55,7 +55,7 @@
     <Compile Include="Core\Characteristics\Calculators\EntropyDispersionTests.cs" />
     <Compile Include="Core\Characteristics\Calculators\EntropyKurtosisCoefficientTests.cs" />
     <Compile Include="Core\Characteristics\Calculators\EntropyKurtosisTests.cs" />
-    <Compile Include="Core\Characteristics\Calculators\EntropySkewnessCoefficient.cs" />
+    <Compile Include="Core\Characteristics\Calculators\EntropySkewnessCoefficientTests.cs" />
     <Compile Include="Core\Characteristics\Calculators\EntropySkewnessTests.cs" />
     <Compile Include="Core\Characteristics\Calculators\EntropyStandardDeviationTests.cs" />
     <Compile Include="Core\Characteristics\Calculators\GCRatioTests.cs" />
