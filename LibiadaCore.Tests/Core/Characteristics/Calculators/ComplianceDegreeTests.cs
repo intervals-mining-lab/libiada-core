@@ -6,7 +6,7 @@
     /// The compliance degree tests.
     /// </summary>
     [TestFixture]
-    public class ComplianceDegreeTests : BinaryCalculatorsTests
+    public class ComplianceDegreeTests : AccordanceCalculatorsTests
     {
         /// <summary>
         /// Tests initialization method.

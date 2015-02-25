@@ -45,6 +45,7 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Core\Characteristics\Calculators\AccordanceCalculatorsTests.cs" />
     <Compile Include="Core\Characteristics\Calculators\ATSkewTests.cs" />
     <Compile Include="Core\Characteristics\Calculators\AverageRemotenessKurtosisCoefficientTests.cs" />
     <Compile Include="Core\Characteristics\Calculators\AverageRemotenessKurtosisTests.cs" />
