@@ -47,6 +47,7 @@
   <ItemGroup>
     <Compile Include="Core\Characteristics\Calculators\AccordanceCalculatorsTests.cs" />
     <Compile Include="Core\Characteristics\Calculators\ATSkewTests.cs" />
+    <Compile Include="Core\Characteristics\Calculators\AverageRemotenessATSkewTests.cs" />
     <Compile Include="Core\Characteristics\Calculators\AverageRemotenessKurtosisCoefficientTests.cs" />
     <Compile Include="Core\Characteristics\Calculators\AverageRemotenessKurtosisTests.cs" />
     <Compile Include="Core\Characteristics\Calculators\ComplianceDegreeTests.cs" />

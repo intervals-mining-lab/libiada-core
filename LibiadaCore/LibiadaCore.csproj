@@ -41,8 +41,15 @@
   <ItemGroup>
     <Compile Include="Core\AbstractChain.cs" />
     <Compile Include="Core\Characteristics\Calculators\ATSkew.cs" />
+    <Compile Include="Core\Characteristics\Calculators\AverageRemotenessATSkew.cs" />
+    <Compile Include="Core\Characteristics\Calculators\AverageRemotenessGCRatio.cs" />
+    <Compile Include="Core\Characteristics\Calculators\AverageRemotenessGCSkew.cs" />
+    <Compile Include="Core\Characteristics\Calculators\AverageRemotenessGCToATRatio.cs" />
     <Compile Include="Core\Characteristics\Calculators\AverageRemotenessKurtosis.cs" />
     <Compile Include="Core\Characteristics\Calculators\AverageRemotenessKurtosisCoefficient.cs" />
+    <Compile Include="Core\Characteristics\Calculators\AverageRemotenessMKSkew.cs" />
+    <Compile Include="Core\Characteristics\Calculators\AverageRemotenessRYSkew.cs" />
+    <Compile Include="Core\Characteristics\Calculators\AverageRemotenessSWSkew.cs" />
     <Compile Include="Core\Characteristics\Calculators\EntropyDispersion.cs" />
     <Compile Include="Core\Characteristics\Calculators\EntropyKurtosis.cs" />
     <Compile Include="Core\Characteristics\Calculators\EntropyKurtosisCoefficient.cs" />
