@@ -31,11 +31,11 @@
         /// <param name="value">
         /// The value.
         /// </param>
-        [TestCase(1, Link.None, 0.66666666666)]
-        [TestCase(1, Link.Start, 0.66666666666)]
-        [TestCase(1, Link.End, 0.66666666666)]
-        [TestCase(1, Link.Both, 0.66666666666)]
-        [TestCase(1, Link.Cycle, 0.66666666666)]
+        [TestCase(1, Link.None, 0.6666)]
+        [TestCase(1, Link.Start, 0.6666)]
+        [TestCase(1, Link.End, 0.6666)]
+        [TestCase(1, Link.Both, 0.6666)]
+        [TestCase(1, Link.Cycle, 0.6666)]
 
         public void CalculationTest(int index, Link link, double value)
         {

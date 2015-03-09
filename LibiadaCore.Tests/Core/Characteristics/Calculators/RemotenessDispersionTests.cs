@@ -31,11 +31,11 @@
         /// <param name="value">
         /// The value.
         /// </param>
-        [TestCase(0, Link.None, 0.0704)]
-        [TestCase(0, Link.Start, 0.0168)]
-        [TestCase(0, Link.End, 0.0169)]
-        [TestCase(0, Link.Both, 0.0514)]
-        [TestCase(0, Link.Cycle, 0.0365)]
+        [TestCase(0, Link.None, 0.8114)]
+        [TestCase(0, Link.Start, 0.8658)]
+        [TestCase(0, Link.End, 0.7681)]
+        [TestCase(0, Link.Both, 0.8219)]
+        [TestCase(0, Link.Cycle, 1.1161)]
         public void ChainCalculationTest(int index, Link link, double value)
         {
             ChainCharacteristicTest(0, link, value);

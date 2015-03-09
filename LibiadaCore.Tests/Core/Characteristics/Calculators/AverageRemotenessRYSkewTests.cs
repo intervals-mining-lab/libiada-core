@@ -8,7 +8,7 @@
     /// The depth test.
     /// </summary>
     [TestFixture]
-    public class AverageRemotenessATSkewTests : FullCalculatorsTests
+    public class AverageRemotenessRYSkewTests : FullCalculatorsTests
     {
         /// <summary>
         /// Tests initialization method.
@@ -16,7 +16,7 @@
         [TestFixtureSetUp]
         public void Initialization()
         {
-            Initialization("AverageRemotenessATSkew");
+            Initialization("AverageRemotenessRYSkew");
         }
 
         /// <summary>
@@ -31,11 +31,11 @@
         /// <param name="value">
         /// The value.
         /// </param>
-        [TestCase(1, Link.None, 0.3539)]
-        [TestCase(1, Link.Start, 0.0234)]
-        [TestCase(1, Link.End, 0.1556)]
-        [TestCase(1, Link.Both, -0.0261)]
-        [TestCase(1, Link.Cycle, 0.0811)]
+        [TestCase(1, Link.None, 0.2290)]
+        [TestCase(1, Link.Start, 0.3138)]
+        [TestCase(1, Link.End, -0.2065)]
+        [TestCase(1, Link.Both, -0.0862)]
+        [TestCase(1, Link.Cycle, 0.2050)]
 
         public void CalculationTest(int index, Link link, double value)
         {

@@ -48,8 +48,14 @@
     <Compile Include="Core\Characteristics\Calculators\AccordanceCalculatorsTests.cs" />
     <Compile Include="Core\Characteristics\Calculators\ATSkewTests.cs" />
     <Compile Include="Core\Characteristics\Calculators\AverageRemotenessATSkewTests.cs" />
+    <Compile Include="Core\Characteristics\Calculators\AverageRemotenessGCRatioTests.cs" />
+    <Compile Include="Core\Characteristics\Calculators\AverageRemotenessGCSkewTests.cs" />
+    <Compile Include="Core\Characteristics\Calculators\AverageRemotenessGCToATRatioTests.cs" />
     <Compile Include="Core\Characteristics\Calculators\AverageRemotenessKurtosisCoefficientTests.cs" />
     <Compile Include="Core\Characteristics\Calculators\AverageRemotenessKurtosisTests.cs" />
+    <Compile Include="Core\Characteristics\Calculators\AverageRemotenessMKSkewTests.cs" />
+    <Compile Include="Core\Characteristics\Calculators\AverageRemotenessRYSkewTests.cs" />
+    <Compile Include="Core\Characteristics\Calculators\AverageRemotenessSWSkewTests.cs" />
     <Compile Include="Core\Characteristics\Calculators\ComplianceDegreeTests.cs" />
     <Compile Include="Core\Characteristics\Calculators\AlphabeticAverageRemotenessTests.cs" />
     <Compile Include="Core\Characteristics\Calculators\AlphabeticDepthTests.cs" />
