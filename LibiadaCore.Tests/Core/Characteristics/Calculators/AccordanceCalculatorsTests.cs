@@ -9,6 +9,9 @@
 
     using NUnit.Framework;
 
+    /// <summary>
+    /// The accordance calculators tests.
+    /// </summary>
     public abstract class AccordanceCalculatorsTests
     {
         /// <summary>

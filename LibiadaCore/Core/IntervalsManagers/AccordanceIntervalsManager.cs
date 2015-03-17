@@ -2,19 +2,12 @@
 
 namespace LibiadaCore.Core.IntervalsManagers
 {
+    /// <summary>
+    /// The accordance intervals manager.
+    /// </summary>
     public class AccordanceIntervalsManager
     {
-        /// <summary>
-        /// The first chain.
-        /// </summary>
-        private readonly CongenericChain FirstChain;
-
-        /// <summary>
-        /// The second chain.
-        /// </summary>
-        private readonly CongenericChain SecondChain;
-
-        /// <summary>
+       /// <summary>
         /// The chains length.
         /// </summary>
         public readonly int Length;
@@ -40,7 +33,17 @@ namespace LibiadaCore.Core.IntervalsManagers
         public readonly int SecondOccurrencesCount;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="BinaryIntervalsManager"/> class.
+        /// The first chain.
+        /// </summary>
+        private readonly CongenericChain firstChain;
+
+        /// <summary>
+        /// The second chain.
+        /// </summary>
+        private readonly CongenericChain secondChain;
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="AccordanceIntervalsManager"/> class.
         /// </summary>
         /// <param name="firstChain">
         /// The first chain.
@@ -50,8 +53,8 @@ namespace LibiadaCore.Core.IntervalsManagers
         /// </param>
         public AccordanceIntervalsManager(CongenericChain firstChain, CongenericChain secondChain)
         {
-            FirstChain = firstChain;
-            SecondChain = secondChain;
+            this.firstChain = firstChain;
+            this.secondChain = secondChain;
             Length = firstChain.GetLength();
             FirstOccurrencesCount = firstChain.OccurrencesCount;
             SecondOccurrencesCount = secondChain.OccurrencesCount;
@@ -64,18 +67,18 @@ namespace LibiadaCore.Core.IntervalsManagers
         /// </summary>
         private void FillAccordanceIntervals()
         {
-            int[] firstIntervals = FirstChain.GetIntervals(Link.End);
-            int[] secondIntervals = SecondChain.GetIntervals(Link.End);
+            int[] firstIntervals = this.firstChain.GetIntervals(Link.End);
+            int[] secondIntervals = this.secondChain.GetIntervals(Link.End);
 
             int j = 1;
 
             for (int i = 1; i <= FirstOccurrencesCount; i++)
             {
-                int firstPosition = FirstChain.GetOccurrence(i);
-                int nextFirstPosition = FirstChain.GetOccurrence(i + 1) == -1 ? Length : FirstChain.GetOccurrence(i + 1);
-                for (; j <= SecondChain.OccurrencesCount; j++)
+                int firstPosition = this.firstChain.GetOccurrence(i);
+                int nextFirstPosition = this.firstChain.GetOccurrence(i + 1) == -1 ? Length : this.firstChain.GetOccurrence(i + 1);
+                for (; j <= this.secondChain.OccurrencesCount; j++)
                 {
-                    int secondOccurrence = SecondChain.GetOccurrence(j);
+                    int secondOccurrence = this.secondChain.GetOccurrence(j);
                     if (secondOccurrence >= firstPosition && secondOccurrence < nextFirstPosition)
                     {
                         FilteredFirstIntervals.Add(firstIntervals[i - 1]);
