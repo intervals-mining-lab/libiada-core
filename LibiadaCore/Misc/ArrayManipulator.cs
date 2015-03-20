@@ -196,5 +196,26 @@
 
             return outputString;
         }
+
+        /// <summary>
+        /// Array rotation method.
+        /// </summary>
+        /// <param name="array">
+        /// The source array.
+        /// </param>
+        /// <param name="rotations">
+        /// The number rotations.
+        /// </param>
+        /// <returns>
+        /// The <see cref="int[]"/>.
+        /// </returns>
+        public static int[] RotateArray(int[] array, uint rotations)
+        {
+            var result = new int[array.Length];
+            Array.Copy(array, rotations, result, 0, array.Length - rotations); 
+            Array.Copy(array, 0, result, result.Length - rotations, rotations);
+            
+            return result;
+        }
     }
 }
