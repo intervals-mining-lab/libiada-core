@@ -78,8 +78,13 @@ namespace LibiadaCore.Core
         /// <param name="source">
         /// The source string.
         /// </param>
-        public Chain(List<IBaseObject> source) : base(source)
+        public Chain(List<IBaseObject> source) : base(source.Count)
         {
+            for (int i = 0; i < source.Count; i++)
+            {
+                base.Set(source[i], i);
+            }
+
             CreateCongenericChains();
         }
 
