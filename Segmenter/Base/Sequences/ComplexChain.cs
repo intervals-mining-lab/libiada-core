@@ -5,9 +5,7 @@
     using System.Text;
 
     using LibiadaCore.Core;
-    using LibiadaCore.Core.Characteristics.Calculators;
     using LibiadaCore.Core.SimpleTypes;
-    using LibiadaCore.Misc;
 
     /// <summary>
     /// The complex chain.
@@ -117,53 +115,6 @@
             catch (Exception)
             {
             }
-        }
-
-        /// <summary>
-        /// Deletes element in provided position.
-        /// </summary>
-        /// <param name="index">
-        /// The index.
-        /// </param>
-        /// <returns>
-        /// Deleted element.
-        /// </returns>
-        public IBaseObject DeleteAt(int index)
-        {
-            IBaseObject element = alphabet[building[index]];
-            ICalculator calc = new ElementsCount();
-            CongenericChain tempCongenericChain = CongenericChain(element);
-            if ((int)calc.Calculate(tempCongenericChain, Link.None) == 1)
-            {
-                var temp = congenericChains;
-                congenericChains = new CongenericChain[temp.Length - 1];
-                int j = 0;
-                foreach (CongenericChain congenericChain in temp)
-                {
-                    if (!congenericChain.Element.Equals(element))
-                    {
-                        congenericChains[j] = congenericChain;
-                        j++;
-                    }
-                }
-
-                alphabet.Remove(building[index]);
-                for (int k = 0; k < building.Length; k++)
-                {
-                    if (building[index] < building[k])
-                    {
-                        building[k] = building[k] - 1;
-                    }
-                }
-            }
-
-            foreach (CongenericChain congenericChain in congenericChains)
-            {
-                congenericChain.DeleteAt(index);
-            }
-
-            building = ArrayManipulator.DeleteAt(building, index);
-            return element;
         }
 
         /// <summary>

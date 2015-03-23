@@ -41,6 +41,34 @@
         }
 
         /// <summary>
+        /// Method for deleting one element with its cell from array.
+        /// </summary>
+        /// <param name="source">
+        /// Source array.
+        /// </param>
+        /// <param name="index">
+        /// Index of element to be deleted.
+        /// </param>
+        /// <returns>
+        /// Array that shorter than source by one element.
+        /// </returns>
+        public static int[] DeleteAt(int[] source, int index)
+        {
+            var result = new int[source.Length - 1];
+            if (index > 0)
+            {
+                Array.Copy(source, 0, result, 0, index);
+            }
+
+            if (index < source.Length - 1)
+            {
+                Array.Copy(source, index + 1, result, index, source.Length - index - 1);
+            }
+
+            return result;
+        }
+
+        /// <summary>
         /// Method that finds all occurrences of provided element in array.
         /// </summary>
         /// <param name="source">

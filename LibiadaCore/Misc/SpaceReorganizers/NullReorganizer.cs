@@ -25,7 +25,6 @@ namespace LibiadaCore.Misc.SpaceReorganizers
                 return result;
             }
 
-            // TODO: Implement variant when we have Chain Reorganize(BaseChain A)
             result = new BaseChain();
             result.ClearAndSetNewLength(source.GetLength());
 

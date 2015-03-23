@@ -1,7 +1,7 @@
-﻿using System.Collections.Generic;
-
-namespace LibiadaCore.Core.IntervalsManagers
+﻿namespace LibiadaCore.Core.IntervalsManagers
 {
+    using System.Collections.Generic;
+
     /// <summary>
     /// The accordance intervals manager.
     /// </summary>

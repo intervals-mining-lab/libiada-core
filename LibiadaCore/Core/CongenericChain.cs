@@ -280,7 +280,7 @@ namespace LibiadaCore.Core
         /// <param name="index">
         /// The index of position.
         /// </param>
-        public void DeleteAt(int index)
+        public override void DeleteAt(int index)
         {
             intervalsManager = null;
             length--;

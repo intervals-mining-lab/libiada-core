@@ -5,6 +5,7 @@ namespace LibiadaCore.Core
     using System.Linq;
 
     using LibiadaCore.Core.SimpleTypes;
+    using LibiadaCore.Misc;
 
     /// <summary>
     /// Basic sequence class. 
@@ -182,6 +183,19 @@ namespace LibiadaCore.Core
         public override void RemoveAt(int index)
         {
             building[index] = 0;
+
+            // TODO: Удалять элемент из алфавита если он последний
+        }
+
+        /// <summary>
+        /// Removes given position.
+        /// </summary>
+        /// <param name="index">
+        /// Index of deleted position.
+        /// </param>
+        public override void DeleteAt(int index)
+        {
+            building = ArrayManipulator.DeleteAt(building, index);
 
             // TODO: Удалять элемент из алфавита если он последний
         }

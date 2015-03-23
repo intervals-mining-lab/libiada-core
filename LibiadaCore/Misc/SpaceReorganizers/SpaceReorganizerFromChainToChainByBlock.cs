@@ -1,7 +1,6 @@
 namespace LibiadaCore.Misc.SpaceReorganizers
 {
     using Core;
-    using Core.SimpleTypes;
     using Iterators;
 
     /// <summary>
@@ -63,13 +62,7 @@ namespace LibiadaCore.Misc.SpaceReorganizers
 
             while (iteratorTo.Next() && iteratorFrom.Next())
             {
-                var message = new ValuePhantom
-                                  {
-                                      // TODO: WAT
-                                      iteratorFrom.Current() 
-                                  };
-
-                iteratorTo.WriteValue(message.Cardinality == 0 ? (IBaseObject)NullValue.Instance() : message);
+                iteratorTo.WriteValue(iteratorFrom.Current());
             }
 
             return result;

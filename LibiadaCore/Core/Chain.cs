@@ -12,14 +12,14 @@ namespace LibiadaCore.Core
     public class Chain : BaseChain, IBaseObject
     {
         /// <summary>
-        /// The congeneric chains.
-        /// </summary>
-        protected CongenericChain[] congenericChains = new CongenericChain[0];
-
-        /// <summary>
         /// The dissimilar chains.
         /// </summary>
         protected Chain[] dissimilarChains;
+
+        /// <summary>
+        /// The congeneric chains.
+        /// </summary>
+        private CongenericChain[] congenericChains;
 
         /// <summary>
         /// The relation intervals managers.
@@ -52,7 +52,7 @@ namespace LibiadaCore.Core
         /// </param>
         public Chain(string source) : base(source)
         {
-            CreateCongenericChains();
+            FillCongenericChains();
         }
 
         /// <summary>
@@ -68,7 +68,7 @@ namespace LibiadaCore.Core
         /// </param>
         public Chain(int[] building, Alphabet alphabet) : base(building, alphabet)
         {
-            CreateCongenericChains();
+            FillCongenericChains();
         }
 
         /// <summary>
@@ -78,14 +78,8 @@ namespace LibiadaCore.Core
         /// <param name="source">
         /// The source string.
         /// </param>
-        public Chain(List<IBaseObject> source) : base(source.Count)
+        public Chain(List<IBaseObject> source) : base(source)
         {
-            for (int i = 0; i < source.Count; i++)
-            {
-                base.Set(source[i], i);
-            }
-
-            CreateCongenericChains();
         }
 
         /// <summary>
@@ -97,7 +91,7 @@ namespace LibiadaCore.Core
         public override void ClearAndSetNewLength(int length)
         {
             base.ClearAndSetNewLength(length);
-            congenericChains = new CongenericChain[0];
+            congenericChains = null;
             relationIntervalsManagers = null;
         }
 
@@ -126,7 +120,13 @@ namespace LibiadaCore.Core
         /// </returns>
         public CongenericChain CongenericChain(IBaseObject baseObject)
         {
+            if (congenericChains == null)
+            {
+                FillCongenericChains();
+            }
+
             CongenericChain result = null;
+
             int pos = Alphabet.IndexOf(baseObject);
             if (pos != -1)
             {
@@ -147,6 +147,11 @@ namespace LibiadaCore.Core
         /// </returns>
         public CongenericChain CongenericChain(int index)
         {
+            if (congenericChains == null)
+            {
+                FillCongenericChains();
+            }
+
             return (CongenericChain)congenericChains[index].Clone();
         }
 
@@ -210,22 +215,33 @@ namespace LibiadaCore.Core
         {
             base.Set(item, index);
 
-            if (congenericChains.Length != (alphabet.Cardinality - 1))
-            {
-                var temp = new CongenericChain[alphabet.Cardinality - 1];
-                for (int i = 0; i < congenericChains.Length; i++)
-                {
-                    temp[i] = congenericChains[i];
-                }
+            congenericChains = null;
+        }
 
-                congenericChains = temp;
-                congenericChains[congenericChains.Length - 1] = new CongenericChain(item, building.Length);
-            }
+        /// <summary>
+        /// The remove at.
+        /// </summary>
+        /// <param name="index">
+        /// Index of deleted element.
+        /// </param>
+        public override void RemoveAt(int index)
+        {
+            base.RemoveAt(index);
 
-            foreach (CongenericChain chain in congenericChains)
-            {
-                chain.Set(item, index);
-            }
+            congenericChains = null;
+        }
+
+        /// <summary>
+        /// Removes element from given position.
+        /// </summary>
+        /// <param name="index">
+        /// Index of deleted position.
+        /// </param>
+        public override void DeleteAt(int index)
+        {
+            base.DeleteAt(index);
+
+            congenericChains = null;
         }
 
         /// <summary>
@@ -277,6 +293,11 @@ namespace LibiadaCore.Core
         /// </returns>
         public int GetOccurrence(IBaseObject element, int entry)
         {
+            if (congenericChains == null)
+            {
+                FillCongenericChains();
+            }
+
             return congenericChains[alphabet.IndexOf(element) - 1].GetOccurrence(entry);
         }
 
@@ -305,6 +326,11 @@ namespace LibiadaCore.Core
                 occurrences[value] = j;
             }
 
+            if (congenericChains == null)
+            {
+                FillCongenericChains();
+            }
+
             for (int k = 0; k < intervals.Length; k++)
             {
                 int start = intervals[k][0];
@@ -327,7 +353,10 @@ namespace LibiadaCore.Core
             base.FillClone(tempChain);
             if (tempChain != null)
             {
-                tempChain.congenericChains = (CongenericChain[])congenericChains.Clone();
+                if (congenericChains != null)
+                {
+                    tempChain.congenericChains = (CongenericChain[])congenericChains.Clone();
+                }
             }
         }
 
@@ -335,24 +364,27 @@ namespace LibiadaCore.Core
         /// Fills all congeneric chains of this chain.
         /// All congeneric sequences stored in <see cref="congenericChains"/> field.
         /// </summary>
-        private void CreateCongenericChains()
+        private void FillCongenericChains()
         {
-            var concurrences = new List<int>[alphabet.Cardinality - 1];
+            var occurrences = new List<int>[alphabet.Cardinality - 1];
 
             for (int i = 0; i < alphabet.Cardinality - 1; i++)
             {
-                concurrences[i] = new List<int>();
+                occurrences[i] = new List<int>();
             }
 
             for (int j = 0; j < building.Length; j++)
             {
-                concurrences[building[j] - 1].Add(j);
+                if (building[j] != 0)
+                {
+                    occurrences[building[j] - 1].Add(j);
+                }
             }
 
             congenericChains = new CongenericChain[alphabet.Cardinality - 1];
             for (int k = 0; k < alphabet.Cardinality - 1; k++)
             {
-                congenericChains[k] = new CongenericChain(concurrences[k], alphabet[k + 1], building.Length);
+                congenericChains[k] = new CongenericChain(occurrences[k], alphabet[k + 1], building.Length);
             }
         }
     }

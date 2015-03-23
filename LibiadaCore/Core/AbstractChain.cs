@@ -71,6 +71,14 @@
         public abstract void RemoveAt(int index);
 
         /// <summary>
+        /// Removes element from given position.
+        /// </summary>
+        /// <param name="index">
+        /// Index of deleted element.
+        /// </param>
+        public abstract void DeleteAt(int index);
+
+        /// <summary>
         /// Deletes chain (building and alphabet) and creates new empty chain with given length.
         /// </summary>
         /// <param name="length">
