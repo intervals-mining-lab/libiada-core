@@ -14,7 +14,7 @@ namespace LibiadaCore.Core
         /// <summary>
         /// The dissimilar chains.
         /// </summary>
-        protected Chain[] dissimilarChains;
+        private Chain[] dissimilarChains;
 
         /// <summary>
         /// The congeneric chains.

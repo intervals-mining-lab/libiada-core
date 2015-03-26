@@ -85,6 +85,7 @@
     <Compile Include="Core\IntervalsManagers\BinaryIntervalsManagerTests.cs" />
     <Compile Include="Misc\ArrayManipulatorTests.cs" />
     <Compile Include="Misc\DataTransformers\DnaTransformerTests.cs" />
+    <Compile Include="Misc\Iterators\CustomIteratorTests.cs" />
     <Compile Include="Misc\Iterators\CutRuleWithShiftedAndFixedStartTests.cs" />
     <Compile Include="Misc\Iterators\DiffCutterTests.cs" />
     <Compile Include="Misc\Iterators\FromFixStartCutRuleTests.cs" />
