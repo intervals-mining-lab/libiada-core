@@ -235,7 +235,7 @@
         /// The number rotations.
         /// </param>
         /// <returns>
-        /// The <see cref="int[]"/>.
+        /// The <see cref="T:int[]"/>.
         /// </returns>
         public static int[] RotateArray(int[] array, uint rotations)
         {
@@ -244,6 +244,50 @@
             Array.Copy(array, 0, result, result.Length - rotations, rotations);
             
             return result;
+        }
+
+        /// <summary>
+        /// Checks if array is sorted.
+        /// </summary>
+        /// <param name="array">
+        /// The array.
+        /// </param>
+        /// <returns>
+        /// The <see cref="bool"/>.
+        /// </returns>
+        public static bool IsSorted(int[] array)
+        {
+            for (int i = 1; i < array.Length; i++)
+            {
+                if (array[i - 1] > array[i])
+                {
+                    return false;
+                }
+            }
+
+            return true;
+        }
+
+        /// <summary>
+        /// Checks if List is sorted.
+        /// </summary>
+        /// <param name="array">
+        /// The array.
+        /// </param>
+        /// <returns>
+        /// The <see cref="bool"/>.
+        /// </returns>
+        public static bool IsSorted(List<int> array)
+        {
+            for (int i = 1; i < array.Count; i++)
+            {
+                if (array[i - 1] > array[i])
+                {
+                    return false;
+                }
+            }
+
+            return true;
         }
     }
 }
