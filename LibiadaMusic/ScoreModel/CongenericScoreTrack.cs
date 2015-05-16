@@ -78,7 +78,7 @@
                 {
                     if (temp[i].Equals(temp[j]))
                     {
-                        // еси уже такая идентифицировалась
+                        // если уже такая идентифицировалась
                         temp[i].Id = temp[j].Id;
                         identified = true;
                     }

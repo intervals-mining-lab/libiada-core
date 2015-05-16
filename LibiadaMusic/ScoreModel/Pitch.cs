@@ -53,13 +53,13 @@
         /// <summary>
         /// Gets or sets the octave number.
         /// </summary>
-        private int Octave { get; set; }
+        public int Octave { get; private set; }
 
         /// <summary>
         /// Gets or sets alteration.
         /// диез/бемоль +1 диез; -1 бемоль
         /// </summary>
-        private int Alter { get; set; }
+        public int Alter { get; private set; }
 
         /// <summary>
         /// The clone.
