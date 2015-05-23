@@ -10,18 +10,6 @@
     public class Duration : IBaseObject
     {
         /// <summary>
-        /// оригинальный числитель в дроби доли 
-        /// (для сохранения после наложения триоли на длительность)
-        /// </summary>
-        private int onumerator;
-
-        /// <summary>
-        /// оригинальный знаменатель в дроби доли
-        /// (для сохранения после наложения триоли на длительность)
-        /// </summary>
-        private int odenominator;
-
-        /// <summary>
         /// Initializes a new instance of the <see cref="Duration"/> class.
         /// </summary>
         /// <param name="numerator">
@@ -40,8 +28,8 @@
         {
             Numerator = numerator;
             Denominator = denominator;
-            onumerator = numerator;
-            odenominator = denominator;
+            Onumerator = numerator;
+            Odenominator = denominator;
             Ticks = ticks;
             if (doted)
             {
@@ -74,8 +62,8 @@
         {
             Numerator = numerator;
             Denominator = denominator;
-            onumerator = numerator;
-            odenominator = denominator;
+            Onumerator = numerator;
+            Odenominator = denominator;
             Ticks = ticks;
             PlaceTriplet(tripletnum, tripletdenom);
             if (doted)
@@ -83,6 +71,18 @@
                 Placedot();
             }
         }
+
+        /// <summary>
+        /// оригинальный числитель в дроби доли 
+        /// (для сохранения после наложения триоли на длительность)
+        /// </summary>
+        public int Onumerator { get; private set; }
+       
+        /// <summary>
+        /// оригинальный знаменатель в дроби доли
+        /// (для сохранения после наложения триоли на длительность)
+        /// </summary>
+        public int Odenominator { get; private set; }
 
         /// <summary>
         /// Gets numerator.
@@ -115,7 +115,7 @@
         /// </summary>
         public double OriginalValue
         {
-            get { return (double)onumerator / odenominator; }
+            get { return (double)Onumerator / Odenominator; }
         }
 
         /// <summary>
@@ -203,8 +203,8 @@
         {
             var temp = new Duration(Numerator, Denominator, false, Ticks)
             {
-                onumerator = onumerator,
-                odenominator = odenominator
+                Onumerator = Onumerator,
+                Odenominator = Odenominator
             };
             return temp;
         }
