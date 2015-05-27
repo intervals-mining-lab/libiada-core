@@ -48,8 +48,8 @@
         /// </param>
         protected void ChainCharacteristicTest(int index, Link link, double value)
         {
-            this.chains[index].FillIntervalManagers();
-            Assert.AreEqual(value, Calculator.Calculate(this.chains[index], link), 0.0001);
+            chains[index].FillIntervalManagers();
+            Assert.AreEqual(value, Calculator.Calculate(chains[index], link), 0.0001);
         }
     }
 }

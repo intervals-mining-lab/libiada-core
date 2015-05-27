@@ -33,7 +33,7 @@ namespace MarkovChains.MarkovChain.Matrices.Absolute
         {
             get
             {
-                return this.ValueList.Cast<MatrixBase>().Sum(row => row.Value);
+                return ValueList.Cast<MatrixBase>().Sum(row => row.Value);
             }
         }
 

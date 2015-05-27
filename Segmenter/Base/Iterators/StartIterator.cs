@@ -36,7 +36,7 @@
         /// </returns>
         public override bool HasNext()
         {
-            return this.windowLength + CursorPosition + this.step <= chain.GetLength();
+            return windowLength + CursorPosition + step <= chain.GetLength();
         }
 
         /// <summary>
@@ -49,8 +49,8 @@
         {
             try
             {
-                this.CursorPosition = CursorPosition + this.step;
-                currentCut = chain.Substring(CursorPosition, CursorPosition + this.windowLength);
+                CursorPosition = CursorPosition + step;
+                currentCut = chain.Substring(CursorPosition, CursorPosition + windowLength);
             }
             catch (Exception)
             {
@@ -64,7 +64,7 @@
         /// </summary>
         public override void Reset()
         {
-            this.CursorPosition = -this.step;
+            CursorPosition = -step;
         }
 
         /// <summary>
@@ -100,9 +100,9 @@
         /// </returns>
         public override bool Move(int position)
         {
-            if ((position >= 0) && (chain.GetLength() >= this.windowLength + position))
+            if ((position >= 0) && (chain.GetLength() >= windowLength + position))
             {
-                this.CursorPosition = position;
+                CursorPosition = position;
                 return true;
             }
 

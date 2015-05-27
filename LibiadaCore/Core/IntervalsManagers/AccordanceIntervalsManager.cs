@@ -67,18 +67,18 @@
         /// </summary>
         private void FillAccordanceIntervals()
         {
-            int[] firstIntervals = this.firstChain.GetIntervals(Link.End);
-            int[] secondIntervals = this.secondChain.GetIntervals(Link.End);
+            int[] firstIntervals = firstChain.GetIntervals(Link.End);
+            int[] secondIntervals = secondChain.GetIntervals(Link.End);
 
             int j = 1;
 
             for (int i = 1; i <= FirstOccurrencesCount; i++)
             {
-                int firstPosition = this.firstChain.GetOccurrence(i);
-                int nextFirstPosition = this.firstChain.GetOccurrence(i + 1) == -1 ? Length : this.firstChain.GetOccurrence(i + 1);
-                for (; j <= this.secondChain.OccurrencesCount; j++)
+                int firstPosition = firstChain.GetOccurrence(i);
+                int nextFirstPosition = firstChain.GetOccurrence(i + 1) == -1 ? Length : firstChain.GetOccurrence(i + 1);
+                for (; j <= secondChain.OccurrencesCount; j++)
                 {
-                    int secondOccurrence = this.secondChain.GetOccurrence(j);
+                    int secondOccurrence = secondChain.GetOccurrence(j);
                     if (secondOccurrence >= firstPosition && secondOccurrence < nextFirstPosition)
                     {
                         FilteredFirstIntervals.Add(firstIntervals[i - 1]);

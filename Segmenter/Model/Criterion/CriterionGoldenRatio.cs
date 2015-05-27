@@ -22,10 +22,9 @@
         /// <param name="precision">
         /// Additional value to.
         /// </param>
-        public CriterionGoldenRatio(ThresholdVariator threshold, double precision)
-            : base(threshold, precision)
+        public CriterionGoldenRatio(ThresholdVariator threshold, double precision) : base(threshold, precision)
         {
-            this.Value = double.MaxValue;
+            Value = double.MaxValue;
         }
 
         /// <summary>
@@ -42,16 +41,16 @@
         /// </returns>
         public override bool State(ComplexChain chain, FrequencyDictionary alphabet)
         {
-            double current = this.Distortion(chain, alphabet);
-            if (this.Value > current)
+            double current = Distortion(chain, alphabet);
+            if (Value > current)
             {
-                this.Value = current;
+                Value = current;
                 this.chain = chain.Clone();
                 this.alphabet = alphabet.Clone();
-                this.ThresholdToStop.SaveBest();
+                ThresholdToStop.SaveBest();
             }
 
-            return this.ThresholdToStop.Distance > ThresholdVariator.Precision;
+            return ThresholdToStop.Distance > ThresholdVariator.Precision;
         }
 
         /// <summary>
@@ -68,7 +67,7 @@
         /// </returns>
         public override double Distortion(ComplexChain chain, FrequencyDictionary alphabet)
         {
-            double maxFrequency = this.MaxFrequency(alphabet);
+            double maxFrequency = MaxFrequency(alphabet);
             double power = alphabet.Count;
 
             double greaterToSmaller = power / maxFrequency;

@@ -25,7 +25,7 @@
         /// </param>
         public EndIterator(ComplexChain chain, int length, int step) : base(chain, length, step)
         {
-            this.CursorPosition = chain.GetLength() - this.windowLength + 1;
+            CursorPosition = chain.GetLength() - windowLength + 1;
         }
 
         /// <summary>
@@ -36,7 +36,7 @@
         /// </returns>
         public override bool HasNext()
         {
-            return (CursorPosition - this.step) >= 0;
+            return (CursorPosition - step) >= 0;
         }
 
         /// <summary>
@@ -47,10 +47,10 @@
         /// </returns>
         public override List<string> Next()
         {
-            this.CursorPosition = CursorPosition - this.step;
+            CursorPosition = CursorPosition - step;
             try
             {
-                currentCut = chain.Substring(CursorPosition, CursorPosition + this.windowLength);
+                currentCut = chain.Substring(CursorPosition, CursorPosition + windowLength);
             }
             catch (Exception)
             {
@@ -64,7 +64,7 @@
         /// </summary>
         public override void Reset()
         {
-            this.CursorPosition = MaxShifts;
+            CursorPosition = MaxShifts;
         }
 
         /// <summary>
@@ -100,9 +100,9 @@
         /// </returns>
         public override bool Move(int position)
         {
-            if ((position >= 0) && (chain.GetLength() >= this.windowLength + position))
+            if ((position >= 0) && (chain.GetLength() >= windowLength + position))
             {
-                this.CursorPosition = position;
+                CursorPosition = position;
                 return true;
             }
 
