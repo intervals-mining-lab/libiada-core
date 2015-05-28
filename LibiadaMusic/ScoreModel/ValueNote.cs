@@ -1,4 +1,6 @@
-﻿namespace LibiadaMusic.ScoreModel
+﻿using System.Security.Cryptography;
+
+namespace LibiadaMusic.ScoreModel
 {
     using System;
     using System.Collections.Generic;
@@ -219,41 +221,50 @@
         /// </returns>
         public override bool Equals(object obj)
         {
+            var other = obj as ValueNote;
+            if (other == null)
+            {
+                return false;
+            }
             // одна нота - пауза
-            if (Pitch == null || Pitch.Count == 0) 
+            if (Pitch == null || Pitch.Count == 0)
             {
                 // другая нота - пауза
-                if (((ValueNote)obj).Pitch == null || ((ValueNote)obj).Pitch.Count == 0) 
+                if (other.Pitch == null || other.Pitch.Count == 0)
                 {
-                    if (Duration.Equals(((ValueNote)obj).Duration))
-                    {
-                        // одинаковые по длине паузы
-                        return true;
-                    }
-
-                    // разные по длине паузы
-                    return false;
+                    // у пауз сравниваем только их длительности
+                    return Duration.Equals(other.Duration);
                 }
 
                 // пауза и нота не одинаковы
                 return false;
             }
 
-            if (((ValueNote)obj).Pitch == null || ((ValueNote)obj).Pitch.Count == 0)
+            if (other.Pitch == null || other.Pitch.Count == 0)
             {
                 // нота и пауза не одно и то же
                 return false;
             }
 
-            if (Duration.Equals(((ValueNote)obj).Duration) && PitchEquals(((ValueNote)obj).Pitch) && (Tie == ((ValueNote)obj).Tie) && (Triplet == ((ValueNote)obj).Triplet))
-            {
-                return true;
-            }
-
-            return false;
+            return Duration.Equals(other.Duration) && PitchEquals(other.Pitch) && (Tie == other.Tie) && (Triplet == other.Triplet);
 
             // TODO: сделать сравнение не по всей ноте/объекту, а еще только по месту например, 
             // TODO: из сравнения исключить триплет, так может различать одинаковые по длительности ноты, но записанные по разному(!)
+        }
+
+        public new byte[] GetHashCode()
+        {
+            var hash = new List<byte>();
+            foreach (var pitch in Pitch)
+            {
+                hash.AddRange(pitch.GetHashCode());
+            }
+
+            hash.AddRange(Duration.GetHashCode());
+            hash.Add((byte)Tie);
+            hash.Add(Convert.ToByte(Triplet));
+            var md5 = MD5.Create();
+            return md5.ComputeHash(hash.ToArray());
         }
     }
 }

@@ -1,4 +1,6 @@
-﻿namespace LibiadaMusic.ScoreModel
+﻿using System.Security.Cryptography;
+
+namespace LibiadaMusic.ScoreModel
 {
     using System;
 
@@ -33,7 +35,7 @@
             Ticks = ticks;
             if (doted)
             {
-                Placedot();
+                PlaceDot();
             }
         }
 
@@ -68,7 +70,7 @@
             PlaceTriplet(tripletnum, tripletdenom);
             if (doted)
             {
-                Placedot();
+                PlaceDot();
             }
         }
 
@@ -230,10 +232,16 @@
             return false;
         }
 
+        public new byte[] GetHashCode()
+        {
+            var md5 = MD5.Create();
+            return md5.ComputeHash(BitConverter.GetBytes(Value));
+        }
+
         /// <summary>
         /// The placedot.
         /// </summary>
-        private void Placedot()
+        private void PlaceDot()
         {
             if ((Numerator % 2) == 0)
             {

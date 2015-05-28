@@ -1,4 +1,6 @@
-﻿namespace LibiadaMusic.ScoreModel
+﻿using System.Security.Cryptography;
+
+namespace LibiadaMusic.ScoreModel
 {
     using System;
 
@@ -29,7 +31,7 @@
             Alter = alter;
             Step = step;
             Octave = octave;
-            MidiNumber = GetMidiNumberByParam(Octave, Step, Alter);
+            MidiNumber = GetMidiNumberByParam();
             Instrument = instrument;
         }
 
@@ -115,10 +117,10 @@
         /// <exception cref="Exception">
         /// Thrown if step is unknown.
         /// </exception>
-        private int GetMidiNumberByParam(int octave, char step, int alter)
+        private int GetMidiNumberByParam()
         {
             int offset; // сдвиг от начала октавы, в зависимости от буквы ноты
-            switch (step)
+            switch (Step)
             {
                 case 'C':
                     offset = 0;
@@ -145,7 +147,13 @@
                     throw new Exception("Error Pitch contains non-recognized STEP letters!");
             }
 
-            return (12 * (octave + 1)) + offset + alter;
+            return (12 * (Octave + 1)) + offset + Alter;
+        }
+
+        public new byte[] GetHashCode()
+        {
+            var md5 = MD5.Create();
+            return md5.ComputeHash(BitConverter.GetBytes(MidiNumber));
         }
 
         /// <summary>
