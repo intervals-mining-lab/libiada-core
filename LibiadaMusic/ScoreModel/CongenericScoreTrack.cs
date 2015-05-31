@@ -41,6 +41,23 @@
         /// </summary>
         public List<Measure> MeasureList { get; private set; }
 
+        public List<ValueNote> GetNotes()
+        {
+            var result = new List<ValueNote>();
+
+            foreach (Measure measure in MeasureList)
+            {
+                foreach (ValueNote note in measure.NoteList)
+                {
+                    var resultNote = (ValueNote)note.Clone();
+                    resultNote = measure.ModifyNoteWithAttributes(resultNote);
+                    result.Add(resultNote);
+                }
+            }
+
+            return result;
+        }
+
         /// <summary>
         /// The note order.
         /// возвращает строй объектов Note, проидентифицировав их

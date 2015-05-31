@@ -1,4 +1,6 @@
-﻿namespace LibiadaMusic.ScoreModel
+﻿using System;
+
+namespace LibiadaMusic.ScoreModel
 {
     using System.Collections.Generic;
 
@@ -49,6 +51,11 @@
         /// Gets or sets the id of measure.
         /// </summary>
         public int Id { get; set; }
+
+        public ValueNote ModifyNoteWithAttributes(ValueNote note)
+        {
+            throw new NotImplementedException();
+        }
 
         /// <summary>
         /// The merge measures.
