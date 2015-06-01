@@ -114,15 +114,6 @@
         /// The get midi number by param.
         /// вычисление глобального номера ноты через параметры
         /// </summary>
-        /// <param name="octave">
-        /// The octave.
-        /// </param>
-        /// <param name="step">
-        /// The step.
-        /// </param>
-        /// <param name="alter">
-        /// The alter.
-        /// </param>
         /// <returns>
         /// The <see cref="int"/>.
         /// </returns>

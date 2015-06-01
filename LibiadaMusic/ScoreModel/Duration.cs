@@ -231,6 +231,12 @@
             return false;
         }
 
+        /// <summary>
+        /// The get hash code.
+        /// </summary>
+        /// <returns>
+        /// The <see cref="byte[]"/>.
+        /// </returns>
         public new byte[] GetHashCode()
         {
             var md5 = MD5.Create();

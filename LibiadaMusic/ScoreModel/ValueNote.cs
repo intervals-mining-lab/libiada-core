@@ -251,6 +251,12 @@
             // TODO: из сравнения исключить триплет, так может различать одинаковые по длительности ноты, но записанные по разному(!)
         }
 
+        /// <summary>
+        /// The get hash code.
+        /// </summary>
+        /// <returns>
+        /// The <see cref="byte[]"/>.
+        /// </returns>
         public new byte[] GetHashCode()
         {
             var hash = new List<byte>();
