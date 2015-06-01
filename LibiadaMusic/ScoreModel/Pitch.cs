@@ -1,8 +1,7 @@
-﻿using System.Security.Cryptography;
-
-namespace LibiadaMusic.ScoreModel
+﻿namespace LibiadaMusic.ScoreModel
 {
     using System;
+    using System.Security.Cryptography;
 
     using LibiadaCore.Core;
 
@@ -43,6 +42,7 @@ namespace LibiadaMusic.ScoreModel
         public int MidiNumber { get; private set; }
 
         /// <summary>
+        /// Gets step.
         /// ЗАГЛАВНАЯ (!) буква обозначающая "относительную" высоту ноты "A", "B" и т.д.
         /// </summary>
         public char Step { get; private set; }
@@ -53,12 +53,12 @@ namespace LibiadaMusic.ScoreModel
         public int Instrument { private get; set; }
 
         /// <summary>
-        /// Gets or sets the octave number.
+        /// Gets the octave number.
         /// </summary>
         public int Octave { get; private set; }
 
         /// <summary>
-        /// Gets or sets alteration.
+        /// Gets alteration.
         /// диез/бемоль +1 диез; -1 бемоль
         /// </summary>
         public int Alter { get; private set; }
@@ -78,7 +78,7 @@ namespace LibiadaMusic.ScoreModel
         /// The equals.
         /// </summary>
         /// <param name="obj">
-        /// The obj.
+        /// The object.
         /// </param>
         /// <returns>
         /// The <see cref="bool"/>.
@@ -96,6 +96,18 @@ namespace LibiadaMusic.ScoreModel
             }
 
             return false;
+        }
+
+        /// <summary>
+        /// The get hash code.
+        /// </summary>
+        /// <returns>
+        /// The <see cref="byte[]"/>.
+        /// </returns>
+        public new byte[] GetHashCode()
+        {
+            var md5 = MD5.Create();
+            return md5.ComputeHash(BitConverter.GetBytes(MidiNumber));
         }
 
         /// <summary>
@@ -148,12 +160,6 @@ namespace LibiadaMusic.ScoreModel
             }
 
             return (12 * (Octave + 1)) + offset + Alter;
-        }
-
-        public new byte[] GetHashCode()
-        {
-            var md5 = MD5.Create();
-            return md5.ComputeHash(BitConverter.GetBytes(MidiNumber));
         }
 
         /// <summary>

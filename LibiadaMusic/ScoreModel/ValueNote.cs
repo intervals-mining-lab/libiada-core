@@ -1,9 +1,8 @@
-﻿using System.Security.Cryptography;
-
-namespace LibiadaMusic.ScoreModel
+﻿namespace LibiadaMusic.ScoreModel
 {
     using System;
     using System.Collections.Generic;
+    using System.Security.Cryptography;
 
     using LibiadaCore.Core;
 

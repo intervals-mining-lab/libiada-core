@@ -1,7 +1,6 @@
-﻿using System;
-
-namespace LibiadaMusic.ScoreModel
+﻿namespace LibiadaMusic.ScoreModel
 {
+    using System;
     using System.Collections.Generic;
 
     using LibiadaCore.Core;

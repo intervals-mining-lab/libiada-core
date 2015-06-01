@@ -216,7 +216,7 @@
         /// The note buf.
         /// </param>
         /// <param name="maskBuf">
-        /// The mask buf.
+        /// The mask buffer.
         /// </param>
         /// <returns>
         /// The <see cref="List{ValueNote}"/>.
