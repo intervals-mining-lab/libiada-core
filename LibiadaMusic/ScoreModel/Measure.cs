@@ -51,6 +51,15 @@
         /// </summary>
         public int Id { get; set; }
 
+        /// <summary>
+        /// The modify note with attributes.
+        /// </summary>
+        /// <param name="note">
+        /// The note.
+        /// </param>
+        /// <returns>
+        /// The <see cref="ValueNote"/>.
+        /// </returns>
         public ValueNote ModifyNoteWithAttributes(ValueNote note)
         {
             foreach (var pitch in note.Pitch)

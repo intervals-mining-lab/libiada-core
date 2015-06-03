@@ -1,8 +1,7 @@
-﻿using System.Linq;
-
-namespace LibiadaMusic.ScoreModel
+﻿namespace LibiadaMusic.ScoreModel
 {
     using System;
+    using System.Linq;
     using System.Security.Cryptography;
 
     using LibiadaCore.Core;
@@ -36,6 +35,18 @@ namespace LibiadaMusic.ScoreModel
             Instrument = instrument;
         }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Pitch"/> class.
+        /// </summary>
+        /// <param name="midiNumber">
+        /// The midi number.
+        /// </param>
+        /// <param name="instrument">
+        /// The instrument.
+        /// </param>
+        /// <exception cref="Exception">
+        /// Thrown if note is not recognized.
+        /// </exception>
         public Pitch(int midiNumber, int instrument = 0)
         {
             Alter = GetAlterFromMidiNumber(midiNumber);
@@ -63,7 +74,7 @@ namespace LibiadaMusic.ScoreModel
                     Step = 'B';
                     break;
                 default:
-                    throw new Exception("Error Pitch contains non-recognized STEP letters!");
+                    throw new Exception("Pitch contains non-recognized STEP.");
             } 
 
             Octave = GetOctaveFromMidiNumber(midiNumber);
@@ -99,40 +110,6 @@ namespace LibiadaMusic.ScoreModel
         /// диез/бемоль +1 диез; -1 бемоль
         /// </summary>
         public int Alter { get; private set; }
-
-        private int GetOctaveFromMidiNumber(int midiNumder)
-        {
-            return midiNumder/12;
-        }
-
-        private int GetStepFromMidiNumber(int midiNumder)
-        {
-            var notes = new[] {0, 2, 4, 5, 7, 9, 11};
-            var note = (int) Math.IEEERemainder(midiNumder, 12);
-            if (notes.Any(n => n == note))
-            {
-                return note;
-            }
-            else
-            {
-                note -= 1;
-                if (notes.Any(n => n == note))
-                {
-                    return note;
-                }
-                else
-                {
-                    throw new Exception("Note value is invalid: " + note);
-                }
-            }
-        }
-
-        private int GetAlterFromMidiNumber(int midiNumder)
-        {
-            var note = GetStepFromMidiNumber(midiNumder);
-            var rawNote = (int)Math.IEEERemainder(midiNumder, 12);
-            return rawNote == note ? 0 : 1;
-        }
 
         /// <summary>
         /// The clone.
@@ -179,6 +156,70 @@ namespace LibiadaMusic.ScoreModel
         {
             var md5 = MD5.Create();
             return md5.ComputeHash(BitConverter.GetBytes(MidiNumber));
+        }
+
+        /// <summary>
+        /// The get octave from midi number.
+        /// </summary>
+        /// <param name="midiNumber">
+        /// The midi number.
+        /// </param>
+        /// <returns>
+        /// The <see cref="int"/>.
+        /// </returns>
+        private int GetOctaveFromMidiNumber(int midiNumber)
+        {
+            return midiNumber / 12;
+        }
+
+        /// <summary>
+        /// The get step from midi number.
+        /// </summary>
+        /// <param name="midiNumber">
+        /// The midi number.
+        /// </param>
+        /// <returns>
+        /// The <see cref="int"/>.
+        /// </returns>
+        /// <exception cref="Exception">
+        /// Thrown if step is invalid.
+        /// </exception>
+        private int GetStepFromMidiNumber(int midiNumber)
+        {
+            var notes = new[] { 0, 2, 4, 5, 7, 9, 11 };
+            var step = (int)Math.IEEERemainder(midiNumber, 12);
+            if (notes.Any(n => n == step))
+            {
+                return step;
+            }
+            else
+            {
+                step -= 1;
+                if (notes.Any(n => n == step))
+                {
+                    return step;
+                }
+                else
+                {
+                    throw new Exception("Note value is invalid: " + step);
+                }
+            }
+        }
+
+        /// <summary>
+        /// The get alter from midi number.
+        /// </summary>
+        /// <param name="midiNumber">
+        /// The midi number.
+        /// </param>
+        /// <returns>
+        /// The <see cref="int"/>.
+        /// </returns>
+        private int GetAlterFromMidiNumber(int midiNumber)
+        {
+            var note = GetStepFromMidiNumber(midiNumber);
+            var rawNote = (int)Math.IEEERemainder(midiNumber, 12);
+            return rawNote == note ? 0 : 1;
         }
 
         /// <summary>

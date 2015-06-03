@@ -41,6 +41,12 @@
         /// </summary>
         public List<Measure> MeasureList { get; private set; }
 
+        /// <summary>
+        /// The get notes.
+        /// </summary>
+        /// <returns>
+        /// The <see cref="List{ValueNote}"/>.
+        /// </returns>
         public List<ValueNote> GetNotes()
         {
             var result = new List<ValueNote>();

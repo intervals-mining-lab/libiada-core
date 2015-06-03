@@ -80,6 +80,24 @@
             }
         }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ValueNote"/> class.
+        /// </summary>
+        /// <param name="midiNumbers">
+        /// The midi numbers.
+        /// </param>
+        /// <param name="duration">
+        /// The duration.
+        /// </param>
+        /// <param name="triplet">
+        /// The triplet.
+        /// </param>
+        /// <param name="tie">
+        /// The tie.
+        /// </param>
+        /// <param name="priority">
+        /// The priority.
+        /// </param>
         public ValueNote(List<int> midiNumbers, Duration duration, bool triplet, Tie tie, int priority = -1)
         {
             Pitch = new List<Pitch>();
@@ -88,8 +106,6 @@
                 Pitch.Add(new Pitch(midinumber));
             }
         }
-
-
 
         /// <summary>
         /// Gets or sets the id of note.
@@ -236,6 +252,7 @@
             {
                 return false;
             }
+
             // одна нота - пауза
             if (Pitch == null || Pitch.Count == 0)
             {
