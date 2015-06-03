@@ -53,6 +53,12 @@
 
         public ValueNote ModifyNoteWithAttributes(ValueNote note)
         {
+            foreach (var pitch in note.Pitch)
+            {
+                var midiNumber = pitch.MidiNumber;
+
+            }
+            
             throw new NotImplementedException();
         }
 

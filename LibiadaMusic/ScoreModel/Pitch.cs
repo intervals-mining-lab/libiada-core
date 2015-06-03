@@ -1,4 +1,6 @@
-﻿namespace LibiadaMusic.ScoreModel
+﻿using System.Linq;
+
+namespace LibiadaMusic.ScoreModel
 {
     using System;
     using System.Security.Cryptography;
@@ -34,6 +36,41 @@
             Instrument = instrument;
         }
 
+        public Pitch(int midiNumber, int instrument = 0)
+        {
+            Alter = GetAlterFromMidiNumber(midiNumber);
+            switch (GetStepFromMidiNumber(midiNumber))
+            {
+                case 0:
+                    Step = 'C';
+                    break;
+                case 2:
+                    Step = 'D';
+                    break;
+                case 4:
+                    Step = 'E';
+                    break;
+                case 5:
+                    Step = 'F';
+                    break;
+                case 7:
+                    Step = 'G';
+                    break;
+                case 9:
+                    Step = 'A';
+                    break;
+                case 11:
+                    Step = 'B';
+                    break;
+                default:
+                    throw new Exception("Error Pitch contains non-recognized STEP letters!");
+            } 
+
+            Octave = GetOctaveFromMidiNumber(midiNumber);
+            MidiNumber = GetMidiNumberByParam();
+            Instrument = instrument;
+        }
+
         /// <summary>
         /// Gets note number.
         /// Unique note number in midi standart.
@@ -62,6 +99,40 @@
         /// диез/бемоль +1 диез; -1 бемоль
         /// </summary>
         public int Alter { get; private set; }
+
+        private int GetOctaveFromMidiNumber(int midiNumder)
+        {
+            return midiNumder/12;
+        }
+
+        private int GetStepFromMidiNumber(int midiNumder)
+        {
+            var notes = new[] {0, 2, 4, 5, 7, 9, 11};
+            var note = (int) Math.IEEERemainder(midiNumder, 12);
+            if (notes.Any(n => n == note))
+            {
+                return note;
+            }
+            else
+            {
+                note -= 1;
+                if (notes.Any(n => n == note))
+                {
+                    return note;
+                }
+                else
+                {
+                    throw new Exception("Note value is invalid: " + note);
+                }
+            }
+        }
+
+        private int GetAlterFromMidiNumber(int midiNumder)
+        {
+            var note = GetStepFromMidiNumber(midiNumder);
+            var rawNote = (int)Math.IEEERemainder(midiNumder, 12);
+            return rawNote == note ? 0 : 1;
+        }
 
         /// <summary>
         /// The clone.

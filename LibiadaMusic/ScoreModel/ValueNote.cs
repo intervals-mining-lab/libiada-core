@@ -80,6 +80,17 @@
             }
         }
 
+        public ValueNote(List<int> midiNumbers, Duration duration, bool triplet, Tie tie, int priority = -1)
+        {
+            Pitch = new List<Pitch>();
+            foreach (var midinumber in midiNumbers)
+            {
+                Pitch.Add(new Pitch(midinumber));
+            }
+        }
+
+
+
         /// <summary>
         /// Gets or sets the id of note.
         /// </summary>
