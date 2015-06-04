@@ -1,4 +1,6 @@
-﻿namespace LibiadaMusic.ScoreModel
+﻿using System.Collections.Generic;
+
+namespace LibiadaMusic.ScoreModel
 {
     using System;
     using System.Linq;
@@ -31,7 +33,7 @@
             Alter = alter;
             Step = step;
             Octave = octave;
-            MidiNumber = GetMidiNumberByParam();
+            MidiNumber = GetMidiNumber();
             Instrument = instrument;
         }
 
@@ -52,7 +54,7 @@
             Alter = MidiNumberManager.GetAlterFromMidiNumber(midiNumber);
             Step = MidiNumberManager.StepToNoteSymbol(MidiNumberManager.GetStepFromMidiNumber(midiNumber));
             Octave = MidiNumberManager.GetOctaveFromMidiNumber(midiNumber);
-            MidiNumber = GetMidiNumberByParam();
+            MidiNumber = GetMidiNumber();
             Instrument = instrument;
         }
 
@@ -142,7 +144,7 @@
         /// <exception cref="Exception">
         /// Thrown if step is unknown.
         /// </exception>
-        private int GetMidiNumberByParam()
+        private int GetMidiNumber()
         {
             int offset; // сдвиг от начала октавы, в зависимости от буквы ноты
             switch (Step)

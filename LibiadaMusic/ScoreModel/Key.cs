@@ -10,12 +10,12 @@
         /// <summary>
         /// bemoles(-), diez(+) (ex. -6 : 6 bemoles);
         /// </summary>
-        private int fifths;
+        public readonly int Fifths;
 
         /// <summary>
         /// Major or minor.
         /// </summary>
-        private string mode;
+        public readonly string Mode;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Key"/> class.
@@ -28,8 +28,8 @@
         /// </param>
         public Key(int fifths, string mode = "")
         {
-            this.fifths = fifths;
-            this.mode = mode;
+            Fifths = fifths;
+            Mode = mode;
         }
 
         /// <summary>
@@ -40,7 +40,7 @@
         /// </returns>
         public IBaseObject Clone()
         {
-            var temp = new Key(fifths, mode);
+            var temp = new Key(Fifths, Mode);
             return temp;
         }
 
@@ -55,7 +55,7 @@
         /// </returns>
         public override bool Equals(object obj)
         {
-            if ((fifths == ((Key)obj).fifths) && (mode == ((Key)obj).mode))
+            if ((Fifths == ((Key)obj).Fifths) && (Mode == ((Key)obj).Mode))
             {
                 return true;
             }

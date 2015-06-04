@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -8,6 +9,7 @@ namespace LibiadaMusic.ScoreModel
 {
     public static class MidiNumberManager
     {
+        private const byte NotesInOctave = 12;
         /// <summary>
         /// The get octave from midi number.
         /// </summary>
@@ -19,7 +21,7 @@ namespace LibiadaMusic.ScoreModel
         /// </returns>
         public static int GetOctaveFromMidiNumber(int midiNumber)
         {
-            return (midiNumber / 12) - 1;
+            return (midiNumber / NotesInOctave) - 1;
         }
 
         /// <summary>
@@ -37,7 +39,7 @@ namespace LibiadaMusic.ScoreModel
         public static int GetStepFromMidiNumber(int midiNumber)
         {
             var notes = new[] { 0, 2, 4, 5, 7, 9, 11 };
-            var step = midiNumber % 12;
+            var step = midiNumber % NotesInOctave;
             if (notes.Any(n => n == step))
             {
                 return step;
@@ -68,7 +70,7 @@ namespace LibiadaMusic.ScoreModel
         public static int GetAlterFromMidiNumber(int midiNumber)
         {
             var note = GetStepFromMidiNumber(midiNumber);
-            var rawNote = midiNumber % 12;
+            var rawNote = midiNumber % NotesInOctave;
             return rawNote == note ? 0 : 1;
         }
 
@@ -93,6 +95,37 @@ namespace LibiadaMusic.ScoreModel
                 default:
                     throw new Exception("Pitch contains non-recognized STEP.");
             } 
+        }
+
+        public static int ExtractMidiNumberModifiedWithMeasureAttributes(Pitch pitch, Key key)
+        {
+            var sharpOrder = new List<int> { 5, 0, 7, 2, 9, 4, 11 }; //#
+            var flatOrder = new List<int> { 11, 4, 9, 2, 7, 0, 5 };  //b
+            List<int> modifiers;
+            int shift;
+
+            if (key.Fifths > 0)
+            {
+                modifiers = sharpOrder;
+                shift = 1;
+            }
+            else
+            {
+                modifiers = flatOrder;
+                shift = -1;
+            }
+
+            var fifths = Math.Abs(key.Fifths);
+
+            for (int i = 0; i < fifths; i++)
+            {
+                if (pitch.Step == StepToNoteSymbol(modifiers[i]))
+                {
+                    return pitch.MidiNumber + shift;
+                }
+            }
+
+            return pitch.MidiNumber;
         }
     }
 }

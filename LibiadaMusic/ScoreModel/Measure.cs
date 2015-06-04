@@ -66,6 +66,7 @@
             {
                 var midiNumber = pitch.MidiNumber;
 
+                var newPitch = new Pitch(midiNumber);
             }
             
             throw new NotImplementedException();
