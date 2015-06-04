@@ -49,35 +49,9 @@
         /// </exception>
         public Pitch(int midiNumber, int instrument = 0)
         {
-            Alter = GetAlterFromMidiNumber(midiNumber);
-            switch (GetStepFromMidiNumber(midiNumber))
-            {
-                case 0:
-                    Step = 'C';
-                    break;
-                case 2:
-                    Step = 'D';
-                    break;
-                case 4:
-                    Step = 'E';
-                    break;
-                case 5:
-                    Step = 'F';
-                    break;
-                case 7:
-                    Step = 'G';
-                    break;
-                case 9:
-                    Step = 'A';
-                    break;
-                case 11:
-                    Step = 'B';
-                    break;
-                default:
-                    throw new Exception("Pitch contains non-recognized STEP.");
-            } 
-
-            Octave = GetOctaveFromMidiNumber(midiNumber);
+            Alter = MidiNumberManager.GetAlterFromMidiNumber(midiNumber);
+            Step = MidiNumberManager.StepToNoteSymbol(MidiNumberManager.GetStepFromMidiNumber(midiNumber));
+            Octave = MidiNumberManager.GetOctaveFromMidiNumber(midiNumber);
             MidiNumber = GetMidiNumberByParam();
             Instrument = instrument;
         }
@@ -159,70 +133,6 @@
         }
 
         /// <summary>
-        /// The get octave from midi number.
-        /// </summary>
-        /// <param name="midiNumber">
-        /// The midi number.
-        /// </param>
-        /// <returns>
-        /// The <see cref="int"/>.
-        /// </returns>
-        private int GetOctaveFromMidiNumber(int midiNumber)
-        {
-            return midiNumber / 12;
-        }
-
-        /// <summary>
-        /// The get step from midi number.
-        /// </summary>
-        /// <param name="midiNumber">
-        /// The midi number.
-        /// </param>
-        /// <returns>
-        /// The <see cref="int"/>.
-        /// </returns>
-        /// <exception cref="Exception">
-        /// Thrown if step is invalid.
-        /// </exception>
-        private int GetStepFromMidiNumber(int midiNumber)
-        {
-            var notes = new[] { 0, 2, 4, 5, 7, 9, 11 };
-            var step = (int)Math.IEEERemainder(midiNumber, 12);
-            if (notes.Any(n => n == step))
-            {
-                return step;
-            }
-            else
-            {
-                step -= 1;
-                if (notes.Any(n => n == step))
-                {
-                    return step;
-                }
-                else
-                {
-                    throw new Exception("Note value is invalid: " + step);
-                }
-            }
-        }
-
-        /// <summary>
-        /// The get alter from midi number.
-        /// </summary>
-        /// <param name="midiNumber">
-        /// The midi number.
-        /// </param>
-        /// <returns>
-        /// The <see cref="int"/>.
-        /// </returns>
-        private int GetAlterFromMidiNumber(int midiNumber)
-        {
-            var note = GetStepFromMidiNumber(midiNumber);
-            var rawNote = (int)Math.IEEERemainder(midiNumber, 12);
-            return rawNote == note ? 0 : 1;
-        }
-
-        /// <summary>
         /// The get midi number by param.
         /// вычисление глобального номера ноты через параметры
         /// </summary>
@@ -262,18 +172,7 @@
                     throw new Exception("Error Pitch contains non-recognized STEP letters!");
             }
 
-            return (12 * (Octave + 1)) + offset + Alter;
-        }
-
-        /// <summary>
-        /// The get params by midi number.
-        /// </summary>
-        /// <param name="midiNumber">
-        /// The midi number.
-        /// </param>
-        private void GetParamsByMidiNumber(int midiNumber)
-        {
-            // TODO: сделать вычисление параметров по глобальному номеру ноты, обратная операция получению номера из параметров
+            return (12*(Octave + 1)) + offset + Alter;
         }
     }
 }

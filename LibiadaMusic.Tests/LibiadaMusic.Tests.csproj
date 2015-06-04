@@ -65,6 +65,8 @@
     <Compile Include="MusicXml\XmlReaderTests.cs" />
     <Compile Include="ScoreModel\DurationTests.cs" />
     <Compile Include="ScoreModel\MeasureTests.cs" />
+    <Compile Include="ScoreModel\MidiNumberManagerTests.cs" />
+    <Compile Include="ScoreModel\PitchTests.cs" />
     <Compile Include="ScoreModel\ValueNoteTests.cs" />
     <Compile Include="ScoreModel\TieTests.cs" />
     <Compile Include="ScoreModel\CongenericScoreTrackTests.cs" />

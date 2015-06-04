@@ -105,6 +105,11 @@
             {
                 Pitch.Add(new Pitch(midinumber));
             }
+
+            Tie = tie;
+            Duration = (Duration)duration.Clone();
+            Triplet = triplet;
+            Priority = priority; 
         }
 
         /// <summary>
