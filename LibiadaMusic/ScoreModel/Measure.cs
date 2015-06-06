@@ -62,14 +62,15 @@
         /// </returns>
         public ValueNote ModifyNoteWithAttributes(ValueNote note)
         {
+            var newPitches = new List<Pitch>();
+
             foreach (var pitch in note.Pitch)
             {
-                var midiNumber = pitch.MidiNumber;
-
-                var newPitch = new Pitch(midiNumber);
+                var midiNumber = MidiNumberManager.ExtractMidiNumberModifiedWithMeasureAttributes(pitch, Attributes.Key);
+                newPitches.Add(new Pitch(midiNumber));
             }
             
-            throw new NotImplementedException();
+            return new ValueNote(newPitches,note.Duration,note.Triplet,note.Tie);
         }
 
         /// <summary>
