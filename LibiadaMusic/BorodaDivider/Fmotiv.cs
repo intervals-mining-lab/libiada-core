@@ -251,13 +251,11 @@
             return clone;
         }
 
-        // TODO: убрал метод override , соотвественно euals сейчас просто выполняет сравнение ссылок объектов переделать все частные
-
         /// <summary>
         /// The equals.
         /// </summary>
         /// <param name="obj">
-        /// The obj.
+        /// The object.
         /// </param>
         /// <returns>
         /// The <see cref="bool"/>.
@@ -322,7 +320,7 @@
         /// The fm equals.
         /// </summary>
         /// <param name="obj">
-        /// The obj.
+        /// The object.
         /// </param>
         /// <param name="paramPauseTreatment">
         /// The param pause treatment.

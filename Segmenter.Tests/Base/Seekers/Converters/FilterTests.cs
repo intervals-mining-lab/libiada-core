@@ -15,12 +15,12 @@
     public class FilterTests
     {
         /// <summary>
-        /// The str 1.
+        /// The string 1.
         /// </summary>
         private string str1;
 
         /// <summary>
-        /// The str 2.
+        /// The string 2.
         /// </summary>
         private string str2;
 

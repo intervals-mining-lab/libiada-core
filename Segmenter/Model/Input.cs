@@ -36,9 +36,9 @@
         public int Balance { get; set; }
 
         /// <summary>
-        /// Gets or sets the windowlength.
+        /// Gets or sets the window length.
         /// </summary>
-        public int Windowlength { get; set; }
+        public int WindowLength { get; set; }
 
         /// <summary>
         /// Gets or sets the window decrement.

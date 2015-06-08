@@ -245,7 +245,7 @@
         /// The equals.
         /// </summary>
         /// <param name="obj">
-        /// The obj.
+        /// The object.
         /// </param>
         /// <returns>
         /// The <see cref="bool"/>.

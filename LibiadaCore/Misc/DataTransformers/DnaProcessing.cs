@@ -7,7 +7,7 @@ namespace LibiadaCore.Misc.DataTransformers
     /// <summary>
     /// Class for various actions with dna sequences.
     /// </summary>
-    public static class DnaProcessing
+    public static class DnaProcessor
     {
         /// <summary>
         /// Checks if alphabet is appropriate for dna sequence,

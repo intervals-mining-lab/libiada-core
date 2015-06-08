@@ -23,7 +23,7 @@
         /// </returns>
         public static BaseChain EncodeAmino(BaseChain inputChain)
         {
-            DnaProcessing.CheckDnaAlphabet(inputChain.Alphabet);
+            DnaProcessor.CheckDnaAlphabet(inputChain.Alphabet);
 
             var count = (int)Math.Floor((double)inputChain.GetLength() / 3);
             var outChain = new BaseChain(count);
@@ -396,7 +396,7 @@
         /// </returns>
         public static BaseChain EncodeTriplets(BaseChain inputChain)
         {
-            DnaProcessing.CheckDnaAlphabet(inputChain.Alphabet);
+            DnaProcessor.CheckDnaAlphabet(inputChain.Alphabet);
 
             var resultLength = (int)Math.Floor((double)inputChain.GetLength() / 3);
             var resultChain = new BaseChain(resultLength);

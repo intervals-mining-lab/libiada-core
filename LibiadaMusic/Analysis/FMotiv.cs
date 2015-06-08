@@ -4,7 +4,7 @@
     using System.Collections;
 
     /// <summary>
-    /// The f motiv.
+    /// The formal motiv.
     /// </summary>
     public class FMotiv
     {
@@ -20,15 +20,15 @@
         /// <param name="occur">
         /// The occur.
         /// </param>
-        /// <param name="freq">
-        /// The freq.
+        /// <param name="frequency">
+        /// The frequency.
         /// </param>
-        public FMotiv(int id, string st, int occur, double freq)
+        public FMotiv(int id, string st, int occur, double frequency)
         {
             Id = id;
             Name = st;
             Occurrence = occur;
-            Frequency = freq;
+            Frequency = frequency;
             Probability = new ArrayList();
         }
 

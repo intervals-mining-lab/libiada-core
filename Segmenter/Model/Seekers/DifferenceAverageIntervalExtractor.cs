@@ -57,7 +57,7 @@
         }
 
         /// <summary>
-        /// The calc std.
+        /// Calculate std method.
         /// </summary>
         /// <param name="convoluted">
         /// The convoluted.

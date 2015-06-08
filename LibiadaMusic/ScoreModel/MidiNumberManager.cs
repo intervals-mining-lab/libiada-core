@@ -1,15 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace LibiadaMusic.ScoreModel
+﻿namespace LibiadaMusic.ScoreModel
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+
+    /// <summary>
+    /// The midi number manager.
+    /// </summary>
     public static class MidiNumberManager
     {
+        /// <summary>
+        /// The notes in octave.
+        /// </summary>
         private const byte NotesInOctave = 12;
+
         /// <summary>
         /// The get octave from midi number.
         /// </summary>
@@ -74,6 +78,18 @@ namespace LibiadaMusic.ScoreModel
             return rawNote == note ? 0 : 1;
         }
 
+        /// <summary>
+        /// The step to note symbol.
+        /// </summary>
+        /// <param name="step">
+        /// The step.
+        /// </param>
+        /// <returns>
+        /// The <see cref="char"/>.
+        /// </returns>
+        /// <exception cref="Exception">
+        /// Thrown if step is invalid.
+        /// </exception>
         public static char StepToNoteSymbol(int step)
         {
             switch (step)
@@ -93,14 +109,29 @@ namespace LibiadaMusic.ScoreModel
                 case 11:
                     return 'B';
                 default:
-                    throw new Exception("Pitch contains non-recognized STEP.");
+                    throw new ArgumentException("Pitch contains non-recognized STEP.");
             } 
         }
 
+        /// <summary>
+        /// The extract midi number modified with measure attributes.
+        /// </summary>
+        /// <param name="pitch">
+        /// The pitch.
+        /// </param>
+        /// <param name="key">
+        /// The key.
+        /// </param>
+        /// <returns>
+        /// The <see cref="int"/>.
+        /// </returns>
         public static int ExtractMidiNumberModifiedWithMeasureAttributes(Pitch pitch, Key key)
         {
-            var sharpOrder = new List<int> { 5, 0, 7, 2, 9, 4, 11 }; //#
-            var flatOrder = new List<int> { 11, 4, 9, 2, 7, 0, 5 };  //b
+            // #
+            var sharpOrder = new List<int> { 5, 0, 7, 2, 9, 4, 11 };
+
+            // b
+            var flatOrder = new List<int> { 11, 4, 9, 2, 7, 0, 5 };  
             List<int> modifiers;
             int shift;
 

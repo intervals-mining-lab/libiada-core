@@ -19,10 +19,10 @@ namespace AlphabetCheckers.Tests
         private BaseChain chainBase;
 
         /// <summary>
-        /// The init.
+        /// The initialization method.
         /// </summary>
         [SetUp]
-        public void Init()
+        public void Initialize()
         {
             chainBase = new BaseChain(10);
             chainBase[0] = new ValueString('1');

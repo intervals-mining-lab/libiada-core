@@ -1,12 +1,18 @@
-﻿using System;
-using LibiadaMusic.ScoreModel;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-
-namespace LibiadaMusic.Tests.ScoreModel
+﻿namespace LibiadaMusic.Tests.ScoreModel
 {
+    using LibiadaMusic.ScoreModel;
+
+    using Microsoft.VisualStudio.TestTools.UnitTesting;
+
+    /// <summary>
+    /// The midi number manager tests.
+    /// </summary>
     [TestClass]
     public class MidiNumberManagerTests
     {
+        /// <summary>
+        /// The get octave from midi number test.
+        /// </summary>
         [TestMethod]
         public void GetOctaveFromMidiNumberTest()
         {
@@ -19,6 +25,9 @@ namespace LibiadaMusic.Tests.ScoreModel
             Assert.AreEqual(initialPitch.Octave, octave);
         }
 
+        /// <summary>
+        /// The get step from midi number test.
+        /// </summary>
         [TestMethod]
         public void GetStepFromMidiNumberTest()
         {
@@ -31,6 +40,9 @@ namespace LibiadaMusic.Tests.ScoreModel
             Assert.AreEqual(initialPitch.Step, step);
         }
 
+        /// <summary>
+        /// The get alter from midi number test.
+        /// </summary>
         [TestMethod]
         public void GetAlterFromMidiNumberTest()
         {
@@ -43,6 +55,9 @@ namespace LibiadaMusic.Tests.ScoreModel
             Assert.AreEqual(initialPitch.Alter, alter);
         }
 
+        /// <summary>
+        /// The extract midi number modified with measure attributes test.
+        /// </summary>
         [TestMethod]
         public void ExtractMidiNumberModifiedWithMeasureAttributesTest()
         {

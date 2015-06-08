@@ -28,7 +28,7 @@
         /// </returns>
         public double Calculate(Chain chain, Link link)
         {
-            DnaProcessing.CheckDnaAlphabet(chain.Alphabet);
+            DnaProcessor.CheckDnaAlphabet(chain.Alphabet);
 
             var a = counter.Calculate(chain.CongenericChain(new ValueString("A")), link);
             var t = counter.Calculate(chain.CongenericChain(new ValueString("T")), link);

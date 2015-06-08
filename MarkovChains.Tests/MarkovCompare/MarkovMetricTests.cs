@@ -21,10 +21,10 @@ namespace MarkovChains.Tests.MarkovCompare
         private Chain testChain;
 
         /// <summary>
-        /// The init.
+        /// The initialization method.
         /// </summary>
         [SetUp]
-        public void Init()
+        public void Initialize()
         {
             testChain = new Chain(8);
             testChain.Set((ValueString)"A", 0);

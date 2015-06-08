@@ -309,7 +309,7 @@
         }
 
         /// <summary>
-        /// The calc priority mask.
+        /// Calculate priority mask method.
         /// </summary>
         /// <param name="measure">
         /// The measure.

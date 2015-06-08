@@ -61,7 +61,7 @@
         /// The equals.
         /// </summary>
         /// <param name="other">
-        /// The othet object.
+        /// The other object.
         /// </param>
         /// <returns>
         /// The <see cref="bool"/>.

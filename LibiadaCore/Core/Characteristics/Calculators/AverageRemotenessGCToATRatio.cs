@@ -28,7 +28,7 @@
         /// </returns>
         public double Calculate(Chain chain, Link link)
         {
-            DnaProcessing.CheckDnaAlphabet(chain.Alphabet);
+            DnaProcessor.CheckDnaAlphabet(chain.Alphabet);
 
             var g = remotenessCalculator.Calculate(chain.CongenericChain(new ValueString("G")), link);
             var c = remotenessCalculator.Calculate(chain.CongenericChain(new ValueString("C")), link);

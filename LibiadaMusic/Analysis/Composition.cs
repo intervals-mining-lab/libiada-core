@@ -23,12 +23,12 @@
         public double Periodicity;
 
         /// <summary>
-        /// The avg remoteness.
+        /// The average remoteness.
         /// </summary>
         public double AvgRemoteness;
 
         /// <summary>
-        /// The avg depth.
+        /// The average depth.
         /// </summary>
         public double AvgDepth;
 
@@ -68,12 +68,12 @@
         private Chain chain;
 
         /// <summary>
-        /// The freq diff.
+        /// The frequency difference.
         /// </summary>
         private Difference FreqDiff = new Difference();
 
         /// <summary>
-        /// The log n diff.
+        /// The log n difference.
         /// </summary>
         private Difference LogNDiff = new Difference();
 

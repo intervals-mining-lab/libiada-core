@@ -16,7 +16,7 @@ namespace PhantomChains.Tests
     /// The probability phantom chain generator tests.
     /// </summary>
     [TestFixture]
-    public class ProbabilityPhantomChainGeneratorTests
+    public class PhantomChainGeneratorTests
     {
         /// <summary>
         /// The mother.
@@ -24,10 +24,10 @@ namespace PhantomChains.Tests
         private TestObject mother;
 
         /// <summary>
-        /// The init.
+        /// The initialization method.
         /// </summary>
         [SetUp]
-        public void Init()
+        public void Initialize()
         {
             mother = new TestObject();
         }

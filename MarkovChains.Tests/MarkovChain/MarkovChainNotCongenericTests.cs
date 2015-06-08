@@ -29,10 +29,10 @@ namespace MarkovChains.Tests.MarkovChain
         private Chain testChain2;
 
         /// <summary>
-        /// The init.
+        /// The initialization method.
         /// </summary>
         [SetUp]
-        public void Init()
+        public void Initialize()
         {
             // Создаем цепь длинной 12
             // |a|d|b|a|a|c|b|b|a|a|c|a|

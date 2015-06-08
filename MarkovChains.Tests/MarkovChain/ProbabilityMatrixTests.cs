@@ -25,10 +25,10 @@ namespace MarkovChains.Tests.MarkovChain
         private Chain testChain2;
 
         /// <summary>
-        /// The init.
+        /// The initialization method.
         /// </summary>
         [SetUp]
-        public void Init()
+        public void Initialize()
         {
             testChain = new Chain(12);
             testChain.Set((ValueString)"a", 0);

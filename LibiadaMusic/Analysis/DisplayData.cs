@@ -48,12 +48,12 @@
         public double Periodicity;
 
         /// <summary>
-        /// The avg remoteness.
+        /// The average remoteness.
         /// </summary>
         public double AvgRemoteness;
 
         /// <summary>
-        /// The avg depth.
+        /// The average depth.
         /// </summary>
         public double AvgDepth;
 
@@ -88,12 +88,12 @@
         public ArrayList IdN = new ArrayList();
 
         /// <summary>
-        /// The rank_ freq p.
+        /// The rank_ frequency p.
         /// </summary>
         public ArrayList RankFreqP = new ArrayList();
 
         /// <summary>
-        /// The rank_ freq t.
+        /// The rank_ frequency t.
         /// </summary>
         public ArrayList RankFreqT = new ArrayList();
 
@@ -123,12 +123,12 @@
         public Difference DiffV = new Difference();
 
         /// <summary>
-        /// The diff r freq.
+        /// The difference r frequency.
         /// </summary>
         public Difference DiffRFreq = new Difference();
 
         /// <summary>
-        /// The diff lrln.
+        /// The difference lrln.
         /// </summary>
         public Difference DiffLRLN = new Difference();
     }

@@ -1,18 +1,18 @@
-﻿using System;
-using System.Text;
-using System.Collections.Generic;
-using LibiadaMusic.ScoreModel;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-
-namespace LibiadaMusic.Tests.ScoreModel
+﻿namespace LibiadaMusic.Tests.ScoreModel
 {
+    using LibiadaMusic.ScoreModel;
+
+    using Microsoft.VisualStudio.TestTools.UnitTesting;
+
     /// <summary>
-    /// Сводное описание для PitchTests
+    /// Pitch tests.
     /// </summary>
     [TestClass]
     public class PitchTests
     {
-
+        /// <summary>
+        /// The pitch constructor test.
+        /// </summary>
         [TestMethod]
         public void PitchConstructorTest()
         {

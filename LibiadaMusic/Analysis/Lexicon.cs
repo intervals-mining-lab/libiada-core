@@ -103,7 +103,7 @@
         }
 
         /// <summary>
-        /// The add f motiv.
+        /// The add formal motiv.
         /// </summary>
         /// <param name="name">
         /// The name.
@@ -111,17 +111,17 @@
         /// <param name="occur">
         /// The occur.
         /// </param>
-        /// <param name="freq">
-        /// The freq.
+        /// <param name="frequency">
+        /// The frequency.
         /// </param>
-        public void AddFMotiv(string name, int occur, double freq)
+        public void AddFMotiv(string name, int occur, double frequency)
         {
-            Data.Add(new FMotiv(newId, name, occur, freq));
+            Data.Add(new FMotiv(newId, name, occur, frequency));
             newId += 1;
             capacity += 1;
-            if (GreatFrequency < freq)
+            if (GreatFrequency < frequency)
             {
-                GreatFrequency = freq;
+                GreatFrequency = frequency;
                 greatOccur = occur;
             }
         }

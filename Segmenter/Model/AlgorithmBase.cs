@@ -76,7 +76,7 @@
             criterion = CriterionFactory.Make(parameters.StopCriterion, threshold, parameters);
             extractor = WordExtractorFactory.GetSeeker(parameters.Seeker);
             balance = parameters.Balance;
-            windowLen = parameters.Windowlength;
+            windowLen = parameters.WindowLength;
             windowDec = parameters.WindowDecrement;
         }
 

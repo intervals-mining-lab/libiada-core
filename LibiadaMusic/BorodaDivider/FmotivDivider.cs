@@ -951,7 +951,7 @@
         /// The fmotiv buffer.
         /// </param>
         /// <param name="fmotivList">
-        /// The fl temp.
+        /// The fmotiv list.
         /// </param>
         private void SecondTempMethod(Fmotiv fmotivBuffer, List<Fmotiv> fmotivList)
         {

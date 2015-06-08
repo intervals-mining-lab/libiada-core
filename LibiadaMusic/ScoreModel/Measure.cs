@@ -70,7 +70,7 @@
                 newPitches.Add(new Pitch(midiNumber));
             }
             
-            return new ValueNote(newPitches,note.Duration,note.Triplet,note.Tie);
+            return new ValueNote(newPitches, note.Duration, note.Triplet, note.Tie);
         }
 
         /// <summary>
@@ -135,7 +135,7 @@
         /// The equals.
         /// </summary>
         /// <param name="obj">
-        /// The obj.
+        /// The object.
         /// </param>
         /// <returns>
         /// The <see cref="bool"/>.

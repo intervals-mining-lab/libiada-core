@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-
-namespace LibiadaMusic.ScoreModel
+﻿namespace LibiadaMusic.ScoreModel
 {
     using System;
     using System.Linq;
@@ -174,7 +172,7 @@ namespace LibiadaMusic.ScoreModel
                     throw new Exception("Error Pitch contains non-recognized STEP letters!");
             }
 
-            return (12*(Octave + 1)) + offset + Alter;
+            return (12 * (Octave + 1)) + offset + Alter;
         }
     }
 }

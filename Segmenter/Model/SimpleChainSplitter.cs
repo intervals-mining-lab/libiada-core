@@ -12,7 +12,7 @@
     using Segmenter.Model.Seekers;
 
     /// <summary>
-    /// This class cuts and convoluts all occurrences of the found word
+    /// This class cuts and convoluts all occurrences of the found word.
     /// </summary>
     public sealed class SimpleChainSplitter : ChainSplitter
     {
