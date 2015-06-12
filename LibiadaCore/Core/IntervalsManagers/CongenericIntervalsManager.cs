@@ -24,7 +24,7 @@
         {
             building = chain.Building;
             int count = building.Count(b => b.Equals(1));
-            intervals = new int[count - 1];
+            Intervals = new int[count - 1];
             FillIntervals();
         }
 
@@ -46,7 +46,7 @@
         public CongenericIntervalsManager(Chain chain, int[] intervals, int start, int end)
         {
             building = chain.Building;
-            this.intervals = intervals;
+            Intervals = intervals;
             Start = start;
             End = end;
         }
@@ -61,9 +61,9 @@
 
             Start = indexes[0] - (-1);
 
-            for (int i = 0; i < intervals.Length; i++)
+            for (int i = 0; i < Intervals.Length; i++)
             {
-                intervals[i] = indexes[i + 1] - indexes[i];
+                Intervals[i] = indexes[i + 1] - indexes[i];
             }
 
             End = building.Length - indexes[indexes.Length - 1];

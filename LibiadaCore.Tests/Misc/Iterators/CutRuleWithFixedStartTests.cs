@@ -8,7 +8,7 @@
     /// The from fix start cut rule test.
     /// </summary>
     [TestFixture]
-    public class FromFixStartCutRuleTests
+    public class CutRuleWithFixedStartTests
     {
         /// <summary>
         /// The cut rule test.

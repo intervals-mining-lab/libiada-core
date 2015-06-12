@@ -5,8 +5,6 @@ namespace LibiadaCore.Tests.Core
     using LibiadaCore.Core;
     using LibiadaCore.Core.SimpleTypes;
 
-    using NUnit.Framework;
-
     /// <summary>
     /// The chains storage.
     /// </summary>

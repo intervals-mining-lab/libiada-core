@@ -267,7 +267,7 @@ namespace LibiadaCore.Core
                 return true;
             }
 
-            if (other as BaseChain == null)
+            if (!(other is BaseChain))
             {
                 return false;
             }

@@ -16,7 +16,7 @@ namespace MarkovChains.Tests.MarkovChain
     /// ипользуется на определенном шаге
     /// </summary>
     [TestFixture]
-    public class MarkovChainNotCongenericTests
+    public class MarkovChainNotCongenericStaticTests
     {
         /// <summary>
         /// Исходная цепь на которой будет происходить обучение

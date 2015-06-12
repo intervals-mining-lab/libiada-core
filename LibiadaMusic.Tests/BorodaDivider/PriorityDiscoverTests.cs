@@ -122,11 +122,7 @@
         {
             var pd = new PriorityDiscover();
 
-            var notes = new List<ValueNote>();
-            notes.Add(note);
-            notes.Add(bnote);
-            notes.Add(dnote);
-            notes.Add(anote);
+            var notes = new List<ValueNote> { note, bnote, dnote, anote };
             var measure = new Measure(notes, attributes);
             pd.CalculatePriorityMask(measure);
 

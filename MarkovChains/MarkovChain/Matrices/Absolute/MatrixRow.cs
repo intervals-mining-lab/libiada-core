@@ -2,6 +2,7 @@ namespace MarkovChains.MarkovChain.Matrices.Absolute
 {
     using System;
     using System.Collections;
+    using System.Linq;
 
     using Base;
 
@@ -25,8 +26,7 @@ namespace MarkovChains.MarkovChain.Matrices.Absolute
         /// <param name="dimensionality">
         /// Размерность матрицы
         /// </param>
-        public MatrixRow(int alphabetPower, int dimensionality)
-            : base(alphabetPower, dimensionality, new MatrixBuilder())
+        public MatrixRow(int alphabetPower, int dimensionality) : base(alphabetPower, dimensionality, new MatrixBuilder())
         {
         }
 
@@ -37,13 +37,7 @@ namespace MarkovChains.MarkovChain.Matrices.Absolute
         {
             get
             {
-                double sum = 0;
-                foreach (double i in ValueList)
-                {
-                    sum += i;
-                }
-
-                return sum;
+                return ValueList.Cast<double>().Sum();
             }
         }
 

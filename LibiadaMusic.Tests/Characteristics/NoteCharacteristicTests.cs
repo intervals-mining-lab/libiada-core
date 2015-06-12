@@ -9,10 +9,10 @@
     using Microsoft.VisualStudio.TestTools.UnitTesting;
 
     /// <summary>
-    /// The note remoteness tests.
+    /// The note characteristic tests.
     /// </summary>
     [TestClass]
-    public class NoteRemotenessTests
+    public class NoteCharacteristicTests
     {
         /// <summary>
         /// The value note remoteness test.

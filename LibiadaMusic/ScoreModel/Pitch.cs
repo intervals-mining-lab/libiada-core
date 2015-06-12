@@ -1,7 +1,6 @@
 ﻿namespace LibiadaMusic.ScoreModel
 {
     using System;
-    using System.Linq;
     using System.Security.Cryptography;
 
     using LibiadaCore.Core;
@@ -124,7 +123,7 @@
         /// The get hash code.
         /// </summary>
         /// <returns>
-        /// The <see cref="byte[]"/>.
+        /// The <see cref="T:byte[]"/>.
         /// </returns>
         public new byte[] GetHashCode()
         {

@@ -154,15 +154,15 @@
         {
             string outputString = string.Empty;
 
-            for (int i = 0; i < array.Count; i++)
+            foreach (object element in array)
             {
-                if (array[i] is IList)
+                if (element is IList)
                 {
-                    outputString += ArrayToString((IList)array[i], delimiter);
+                    outputString += ArrayToString((IList)element, delimiter);
                 }
                 else
                 {
-                    outputString += array[i];
+                    outputString += element;
                 }
             }
 

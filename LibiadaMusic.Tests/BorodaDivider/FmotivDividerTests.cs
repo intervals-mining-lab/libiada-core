@@ -247,8 +247,7 @@
             var attributes = new Attributes(new Size(2, 4, 1440), new Key(0, "major"));
 
             // создание и заполнение такта(ов) списками нот и атрибутами
-            var measures = new List<Measure>();
-            measures.Add(new Measure(notes, (Attributes)attributes.Clone()));
+            var measures = new List<Measure> { new Measure(notes, (Attributes)attributes.Clone()) };
 
             // создание моно трека
             var unitrack = new CongenericScoreTrack("track1", measures);

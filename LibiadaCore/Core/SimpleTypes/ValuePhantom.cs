@@ -78,9 +78,9 @@ namespace LibiadaCore.Core.SimpleTypes
         public new IBaseObject Clone()
         {
             var clone = new ValuePhantom();
-            for (int i = 0; i < Elements.Count; i++)
+            foreach (IBaseObject element in Elements)
             {
-                clone.Add(Elements[i]);
+                clone.Add(element);
             }
 
             return clone;

@@ -22,10 +22,10 @@
         public CongenericScoreTrack(string name, List<Measure> measureList)
         {
             MeasureList = new List<Measure>();
-            for (int i = 0; i < measureList.Count; i++)
+            foreach (Measure measure in measureList)
             {
-                // создаем список тактов, по средствам клонирования каждого такта.
-                MeasureList.Add((Measure)measureList[i].Clone());
+                // создаем список тактов, посредством клонирования каждого такта.
+                this.MeasureList.Add((Measure)measure.Clone());
             }
 
             Name = name;
@@ -126,7 +126,7 @@
         /// возвращает строй нот (в виде цепи натуральных чисел начиная с 0)
         /// </summary>
         /// <returns>
-        /// The <see cref="int[]"/>.
+        /// The <see cref="T:int[]"/>.
         /// </returns>
         public int[] NoteIdOrder()
         {
@@ -201,7 +201,7 @@
         /// возвращает строй тактов (в виде цепи натуральных чисел начиная с 0)
         /// </summary>
         /// <returns>
-        /// The <see cref="int[]"/>.
+        /// The <see cref="T:int[]"/>.
         /// </returns>
         public int[] MeasureIdOrder()
         {

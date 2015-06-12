@@ -1,7 +1,6 @@
 ﻿namespace LibiadaCore.Tests.Misc.DataTransformers
 {
     using System.Collections.Generic;
-    using System.Globalization;
 
     using LibiadaCore.Core;
     using LibiadaCore.Core.SimpleTypes;

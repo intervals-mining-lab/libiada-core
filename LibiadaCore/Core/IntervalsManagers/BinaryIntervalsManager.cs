@@ -1,7 +1,5 @@
 ﻿namespace LibiadaCore.Core.IntervalsManagers
 {
-    using System.Collections.Generic;
-
     using Characteristics.Calculators;
 
     /// <summary>
@@ -83,7 +81,7 @@
                 return -1;
             }
 
-            int secondElementOccurrence = SecondChain.GetAfter(firstElementFirstOccurrence);
+            int secondElementOccurrence = SecondChain.GetFirstAfter(firstElementFirstOccurrence);
 
             if (secondElementOccurrence == -1)
             {
@@ -146,7 +144,7 @@
         /// The get intervals.
         /// </summary>
         /// <returns>
-        /// The <see cref="int[]"/>.
+        /// The <see cref="T:int[]"/>.
         /// </returns>
         public int[] GetIntervals()
         {

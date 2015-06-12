@@ -1,6 +1,5 @@
 ﻿namespace LibiadaMusic.ScoreModel
 {
-    using System;
     using System.Collections.Generic;
 
     using LibiadaCore.Core;
@@ -29,9 +28,9 @@
             NoteList = new List<ValueNote>();
 
             // создаем список нот, по средствам клонирования каждой ноты.
-            for (int i = 0; i < noteList.Count; i++) 
+            foreach (ValueNote note in noteList)
             {
-                NoteList.Add((ValueNote)noteList[i].Clone());
+                NoteList.Add((ValueNote)note.Clone());
             }
         }
 

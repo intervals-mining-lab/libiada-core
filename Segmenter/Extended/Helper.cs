@@ -9,16 +9,20 @@
     public static class Helper
     {  
         /// <summary>
-        /// Designed for fast conversion a collection to the string object without delimiters
+        /// Designed for fast conversion a collection to the string object without delimiters.
         /// </summary>
-        /// <param name="list">list convertible sequence of words</param>
-        /// <returns>string composed of items in the collection</returns>
+        /// <param name="list">
+        /// List convertible sequence of words.
+        /// </param>
+        /// <returns>
+        /// String composed of items in the collection.
+        /// </returns>
         public static string ToString(List<string> list)
         {
             var result = new StringBuilder();
-            for (int i = 0; i < list.Count; i++)
+            foreach (string element in list)
             {
-                result.Append(list[i]);
+                result.Append(element);
             }
 
             return result.ToString();

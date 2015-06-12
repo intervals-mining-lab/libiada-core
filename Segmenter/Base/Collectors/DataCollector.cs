@@ -70,7 +70,7 @@
         /// Возвращает все вхождения из списка.
         /// </summary>
         /// <returns>
-        /// The <see cref="Dictionary"/>.
+        /// The <see cref="T:Dictionary{List{String, List{Int32}}}"/>.
         /// </returns>
         public Dictionary<List<string>, List<int>> Entry()
         {

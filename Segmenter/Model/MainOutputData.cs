@@ -76,7 +76,7 @@
         /// The get parameters.
         /// </summary>
         /// <returns>
-        /// The <see cref="Dictionary"/>.
+        /// The <see cref="Dictionary{String, String}"/>.
         /// </returns>
         public Dictionary<string, string> GetParameters()
         {
@@ -104,10 +104,14 @@
         }
 
         /// <summary>
-        /// Allows to add an additional information about research
+        /// Allows to add an additional information about research.
         /// </summary>
-        /// <param name="what">parameter name</param>
-        /// <param name="value">digit calculated value</param>
+        /// <param name="what">
+        /// Parameter name.
+        /// </param>
+        /// <param name="value">
+        /// Digit calculated value.
+        /// </param>
         public void AddInfo(IIdentifiable what, double value)
         {
             parameters.Add(what.GetName(), value.ToString());

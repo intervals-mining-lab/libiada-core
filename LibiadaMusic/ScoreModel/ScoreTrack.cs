@@ -25,11 +25,12 @@
         public ScoreTrack(string name, List<CongenericScoreTrack> congenericScoreTracks)
         {
             Name = name; // присваиваем имя музыкального трека
+            
             CongenericScoreTracks = new List<CongenericScoreTrack>();
-            for (int i = 0; i < congenericScoreTracks.Count; i++)
+            foreach (CongenericScoreTrack congenericScoreTrack in congenericScoreTracks)
             {
-                // создаем список монотреков, по средствам клонирования каждого монотрека.
-                CongenericScoreTracks.Add((CongenericScoreTrack)congenericScoreTracks[i].Clone());
+                // создаем список монотреков, посредством клонирования каждого монотрека.
+                CongenericScoreTracks.Add((CongenericScoreTrack)congenericScoreTrack.Clone());
             }
 
             // ПОЛИФОНИЧЕСКАЯ ВСТАВКА

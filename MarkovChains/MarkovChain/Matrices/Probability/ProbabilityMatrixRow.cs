@@ -2,6 +2,7 @@ namespace MarkovChains.MarkovChain.Matrices.Probability
 {
     using System;
     using System.Collections.Generic;
+    using System.Linq;
 
     using Absolute;
 
@@ -26,8 +27,7 @@ namespace MarkovChains.MarkovChain.Matrices.Probability
         /// <param name="dimensionality">
         /// Размерность матрицы
         /// </param>
-        public ProbabilityMatrixRow(int alphabetCardinality, int dimensionality)
-            : base(alphabetCardinality, dimensionality, new ProbabilityMatrixBuilder())
+        public ProbabilityMatrixRow(int alphabetCardinality, int dimensionality) : base(alphabetCardinality, dimensionality, new ProbabilityMatrixBuilder())
         {
         }
 
@@ -55,11 +55,7 @@ namespace MarkovChains.MarkovChain.Matrices.Probability
         /// </param>
         public void Fill(IOpenMatrix matrix)
         {
-            double temp = 0;
-            for (int i = 0; i < matrix.ValueList.Count; i++)
-            {
-                temp += (double)matrix.ValueList[i];
-            }
+            double temp = matrix.ValueList.Cast<double>().Sum();
 
             for (int i = 0; i < ValueList.Count; i++)
             {

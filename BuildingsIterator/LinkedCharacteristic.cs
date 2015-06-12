@@ -24,21 +24,6 @@ namespace BuildingsIterator
         /// <param name="calculator">
         /// The calculator of characteristic.
         /// </param>
-        /// <param name="link">
-        /// The link of characteristic.
-        /// </param>
-        public LinkedCharacteristic(IFullCalculator calculator, Link link)
-        {
-            this.calculator = calculator;
-            this.link = link;
-        }
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="LinkedCharacteristic"/> class.
-        /// </summary>
-        /// <param name="calculator">
-        /// The calculator of characteristic.
-        /// </param>
         public LinkedCharacteristic(IFullCalculator calculator)
         {
             this.calculator = calculator;

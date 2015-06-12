@@ -14,7 +14,7 @@
         /// The type.
         /// </param>
         /// <returns>
-        /// The <see cref="int[]"/>.
+        /// The <see cref="T:int[]"/>.
         /// </returns>
         /// <exception cref="Exception">
         /// Thrown if type is unknown.

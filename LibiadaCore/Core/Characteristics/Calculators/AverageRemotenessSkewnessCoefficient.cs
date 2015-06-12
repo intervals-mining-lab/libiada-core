@@ -1,7 +1,5 @@
 ﻿namespace LibiadaCore.Core.Characteristics.Calculators
 {
-    using System;
-
     /// <summary>
     /// Normalized asymmetry of average remoteness 
     /// in other words asymmetry coefficient (skewness) of average remoteness.

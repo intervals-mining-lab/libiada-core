@@ -33,7 +33,7 @@
                 case 2: 
                     return new ThresholdRandom(input.LeftBound, input.RightBound);
                 case 3: 
-                    return null; // Experemental threshold based on any log function
+                    return null; // Experimental threshold based on any log function
                 default:
                     throw new ArgumentException("Unknown index", "index");
             }

@@ -1,4 +1,4 @@
-namespace MarkovChains.Tests.MarkovChain
+namespace MarkovChains.Tests.MarkovChain.Matrices.Probability
 {
     using System;
 
@@ -16,7 +16,7 @@ namespace MarkovChains.Tests.MarkovChain
     /// The iteration matrix tests.
     /// </summary>
     [TestFixture]
-    public class IterationMatrixTests
+    public class ProbabilityMatrixTests
     {
         /// <summary>
         /// The test chain.

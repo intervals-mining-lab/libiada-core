@@ -74,12 +74,14 @@
         }
 
         /// <summary>
+        /// Gets original numerator.
         /// оригинальный числитель в дроби доли 
         /// (для сохранения после наложения триоли на длительность)
         /// </summary>
         public int Onumerator { get; private set; }
        
         /// <summary>
+        /// Gets original denominator.
         /// оригинальный знаменатель в дроби доли
         /// (для сохранения после наложения триоли на длительность)
         /// </summary>
@@ -104,6 +106,7 @@
         public int Ticks { get; private set; }
 
         /// <summary>
+        /// Gets duration value.
         ///  значение доли в десятичной дроби
         /// </summary>
         public double Value
@@ -112,6 +115,7 @@
         }
 
         /// <summary>
+        /// Gets original duration value.
         /// значение ОРИГИНАЛЬНОЙ доли в десятичной дроби
         /// </summary>
         public double OriginalValue
@@ -235,7 +239,7 @@
         /// The get hash code.
         /// </summary>
         /// <returns>
-        /// The <see cref="byte[]"/>.
+        /// The <see cref="T:byte[]"/>.
         /// </returns>
         public new byte[] GetHashCode()
         {

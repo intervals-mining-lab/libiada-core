@@ -66,12 +66,12 @@
             {
                 double val = generator.Next();
                 ulong curVal = 0;
-                for (int i = 0; i < Children.Count; i++)
+                foreach (TreeNode child in Children)
                 {
-                    curVal += Children[i].Volume;
+                    curVal += child.Volume;
                     if (val <= ((double)curVal / Volume))
                     {
-                        Children[i].FillChain(result, generator, table);
+                        child.FillChain(result, generator, table);
                         return;
                     }
                 }

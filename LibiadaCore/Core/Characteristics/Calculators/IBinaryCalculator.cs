@@ -33,7 +33,7 @@
         /// The link.
         /// </param>
         /// <returns>
-        /// <see cref="List{List{Double}}"/>.
+        /// <see cref="T:List{List{Double}}"/>.
         /// </returns>
         List<List<double>> CalculateAll(Chain chain, Link link);
     }

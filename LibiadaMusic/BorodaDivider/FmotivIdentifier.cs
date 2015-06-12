@@ -42,12 +42,12 @@
                 bool haveId = chain.FmotivList.Any(t => t.Id == i); // флаг того что есть такой id в цепочке
                 if (!haveId)
                 {
-                    for (int j = 0; j < chain.FmotivList.Count; j++)
+                    foreach (Fmotiv fmotiv in chain.FmotivList)
                     {
-                        if (chain.FmotivList[j].Id > i)
+                        if (fmotiv.Id > i)
                         {
                             // уменьшаем на 1 id тех фмотивов которые больше текущей  id - i, которой не нашлось в цепи
-                            chain.FmotivList[j].Id--;
+                            fmotiv.Id--;
                         }
                     }
 

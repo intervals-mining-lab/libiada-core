@@ -458,13 +458,7 @@
         /// <returns>a set of all of the keys and values</returns>
         public Dictionary<string, object> GetValueSet()
         {
-            var result = new Dictionary<string, object>();
-            foreach (KeyValuePair<string, object> keyValuePair in this)
-            {
-                result.Add(keyValuePair.Key, keyValuePair.Value);
-            }
-
-            return result;
+            return new Dictionary<string, object>(this);
         }
 
         /// <summary>

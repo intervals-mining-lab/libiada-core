@@ -185,17 +185,17 @@ namespace LibiadaCore.Core
         /// <summary>
         /// Returns position of first occurrence of element after given position. 
         /// </summary>
-        /// <param name="from">
+        /// <param name="index">
         /// Starting position for search.
         /// </param>
         /// <returns>
         /// Position of occurrence or -1 if occurrence after given not found.
         /// </returns>
-        public int GetAfter(int from)
+        public int GetFirstAfter(int index)
         {
             for (int i = 0; i < building.Count; i++)
             {
-                if (building[i] > from)
+                if (building[i] > index)
                 {
                     return building[i];
                 }

@@ -67,11 +67,17 @@
         }
 
         /// <summary>
-        /// Calculates the theoretical volume the alphabet for a chain
+        /// Calculates the theoretical volume the alphabet for a chain.
         /// </summary>
-        /// <param name="chain">an estimated chain</param>
-        /// <param name="alphabet">current alphabet</param>
-        /// <returns>the theoretical volume the alphabet</returns>
+        /// <param name="chain">
+        /// An estimated chain.
+        /// </param>
+        /// <param name="alphabet">
+        /// Current alphabet.
+        /// </param>
+        /// <returns>
+        /// The theoretical volume the alphabet.
+        /// </returns>
         public double TheoryVolume(ComplexChain chain, FrequencyDictionary alphabet)
         {
             double f = 0;

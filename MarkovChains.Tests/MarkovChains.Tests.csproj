@@ -45,10 +45,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="MarkovChain\Generators\MockGenerator.cs" />
-    <Compile Include="MarkovChain\IterationMatrixTests.cs" />
-    <Compile Include="MarkovChain\MarkovChainNotCongenericTests.cs" />
-    <Compile Include="MarkovChain\ProbabilityMatrixTests.cs" />
-    <Compile Include="MarkovCompare\MarkovMetricTests.cs" />
+    <Compile Include="MarkovChain\MarkovChainNotCongenericStaticTests.cs" />
+    <Compile Include="MarkovChain\Matrices\Probability\ProbabilityMatrixTests.cs" />
+    <Compile Include="MarkovCompare\MarkovMetricsTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

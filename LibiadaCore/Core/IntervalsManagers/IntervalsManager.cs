@@ -11,7 +11,7 @@
         /// Gets or sets main intervals block
         /// without start, end or cycle link.
         /// </summary>
-        protected int[] intervals;
+        protected int[] Intervals;
 
         /// <summary>
         /// Gets or sets interval from start of chain to first element.
@@ -34,46 +34,46 @@
             switch (link)
             {
                 case Link.None:
-                    result = new int[intervals.Length];
-                    for (int i = 0; i < intervals.Length; i++)
+                    result = new int[Intervals.Length];
+                    for (int i = 0; i < Intervals.Length; i++)
                     {
-                        result[i] = intervals[i];
+                        result[i] = Intervals[i];
                     }
 
                     return result;
                 case Link.Start:
-                    result = new int[intervals.Length + 1];
+                    result = new int[Intervals.Length + 1];
                     result[0] = Start;
-                    for (int i = 0; i < intervals.Length; i++)
+                    for (int i = 0; i < Intervals.Length; i++)
                     {
-                        result[i + 1] = intervals[i];
+                        result[i + 1] = Intervals[i];
                     }
 
                     return result;
                 case Link.End:
-                    result = new int[intervals.Length + 1];
-                    for (int i = 0; i < intervals.Length; i++)
+                    result = new int[Intervals.Length + 1];
+                    for (int i = 0; i < Intervals.Length; i++)
                     {
-                        result[i] = intervals[i];
+                        result[i] = Intervals[i];
                     }
 
                     result[result.Length - 1] = End;
                     return result;
                 case Link.Both:
-                    result = new int[intervals.Length + 2];
+                    result = new int[Intervals.Length + 2];
                     result[0] = Start;
-                    for (int i = 0; i < intervals.Length; i++)
+                    for (int i = 0; i < Intervals.Length; i++)
                     {
-                        result[i + 1] = intervals[i];
+                        result[i + 1] = Intervals[i];
                     }
 
                     result[result.Length - 1] = End;
                     return result;
                 case Link.Cycle:
-                    result = new int[intervals.Length + 1];
-                    for (int i = 0; i < intervals.Length; i++)
+                    result = new int[Intervals.Length + 1];
+                    for (int i = 0; i < Intervals.Length; i++)
                     {
-                        result[i] = intervals[i];
+                        result[i] = Intervals[i];
                     }
 
                     result[result.Length - 1] = Start + End - 1;

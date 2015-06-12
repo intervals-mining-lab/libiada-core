@@ -77,7 +77,7 @@ namespace MarkovChains.MarkovChain.Matrices.Probability
         /// The pred.
         /// </param>
         /// <returns>
-        /// The <see cref="Dictionary{IBaseObject, double}"/>.
+        /// The <see cref="Dictionary{IBaseObject, Double}"/>.
         /// </returns>
         /// <exception cref="ArgumentException">
         /// Thrown if pred length is 0 or pred length is more than Rank - 1.

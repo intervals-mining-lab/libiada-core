@@ -132,8 +132,7 @@
         {
             int N = 0;
             string s;
-            var ar = new List<FmotivName>();
-            ar = new List<FmotivName>(range.Data);
+            var ar = new List<FmotivName>(range.Data);
             while (ar.Count != 0)
             {
                 for (int i = 0; i < ar.Count; i++)

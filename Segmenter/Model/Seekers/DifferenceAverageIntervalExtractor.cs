@@ -31,7 +31,7 @@
         /// The par.
         /// </param>
         /// <returns>
-        /// The <see cref="KeyValuePair"/>.
+        /// The <see cref="T:KeyValuePair{List{String},List{Int32}}"/>.
         /// </returns>
         public override sealed KeyValuePair<List<string>, List<int>>? Find(ContentValues par)
         {

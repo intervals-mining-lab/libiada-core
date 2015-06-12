@@ -9,7 +9,7 @@
     /// The fmotiv identification tests.
     /// </summary>
     [TestClass]
-    public class FmotivIdentificationTests
+    public class FmotivIdentifierTests
     {
         /// <summary>
         /// The fmotiv identification first test.

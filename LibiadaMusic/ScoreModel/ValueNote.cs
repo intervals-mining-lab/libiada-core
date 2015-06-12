@@ -118,12 +118,12 @@
         public int Id { get; set; }
 
         /// <summary>
-        /// наличие триоли
+        /// Gets a value indicating whether note has triplet. (наличие триоли)
         /// </summary>
         public bool Triplet { get; private set; }
 
         /// <summary>
-        /// высота ноты
+        /// Gets note's pitches.
         /// </summary>
         public List<Pitch> Pitch { get; private set; }
 
@@ -133,12 +133,12 @@
         public Duration Duration { get; private set; }
 
         /// <summary>
-        /// сильная/слабая доля - приоритет доли
+        /// Gets or sets priority. (сильная/слабая доля - приоритет доли)
         /// </summary>
         public int Priority { get; set; }
 
         /// <summary>
-        /// есть ли лига
+        /// Gets or sets tie. (есть ли лига)
         /// </summary>
         public Tie Tie { get; set; }
 
@@ -288,7 +288,7 @@
         /// The get hash code.
         /// </summary>
         /// <returns>
-        /// The <see cref="byte[]"/>.
+        /// The <see cref="T:byte[]"/>.
         /// </returns>
         public new byte[] GetHashCode()
         {

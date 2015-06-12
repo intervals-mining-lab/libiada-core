@@ -51,13 +51,13 @@
     <Compile Include="Characteristics\AverageLengthTests.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Characteristics\NoteRemotenessTests.cs">
+    <Compile Include="Characteristics\NoteCharacteristicTests.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="BorodaDivider\FmotivTests.cs" />
     <Compile Include="BorodaDivider\FmotivChainTests.cs" />
     <Compile Include="BorodaDivider\FmotivDividerTests.cs" />
-    <Compile Include="BorodaDivider\FmotivIdentificationTests.cs" />
+    <Compile Include="BorodaDivider\FmotivIdentifierTests.cs" />
     <Compile Include="BorodaDivider\ParamEqualFMTests.cs" />
     <Compile Include="BorodaDivider\ParamPauseTreatmentTests.cs" />
     <Compile Include="BorodaDivider\PriorityDiscoverTests.cs" />

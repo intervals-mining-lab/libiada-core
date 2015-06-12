@@ -2,6 +2,7 @@
 {
     using System;
     using System.Collections.Generic;
+    using System.Linq;
     using System.Xml;
 
     using LibiadaMusic.ScoreModel;
@@ -387,15 +388,7 @@
         /// </returns>
         private bool ParseTriplet(XmlNode noteNode)
         {
-            foreach (XmlNode noteChild in noteNode.ChildNodes)
-            {
-                if (noteChild.Name == "time-modification")
-                {
-                    return true;
-                }
-            }
-
-            return false;
+            return noteNode.ChildNodes.Cast<XmlNode>().Any(noteChild => noteChild.Name == "time-modification");
         }
 
         /// <summary>

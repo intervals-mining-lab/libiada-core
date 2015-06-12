@@ -162,9 +162,9 @@
         {
             var ar = new List<double>();
 
-            for (int i = 0; i < Data.Count; i++)
+            foreach (FMotiv fmotiv in Data)
             {
-                ar.Add(Data[i].LogDepth);
+                ar.Add(fmotiv.LogDepth);
             }
 
             bool done = false;
@@ -196,9 +196,9 @@
         {
             var ar = new List<double>();
 
-            for (int i = 0; i < Data.Count; i++)
+            foreach (FMotiv fmotiv in Data)
             {
-                ar.Add(Data[i].Remoteness);
+                ar.Add(fmotiv.Remoteness);
             }
 
             bool done = false;

@@ -706,10 +706,10 @@
                         // вызываем рекурсию на оставшиеся ноты
                         // отправляем последовательность равнодлительных звуков на анализ, получаем цепочку фмотивов и заносим их в выходную последовательность
                         List<Fmotiv> dividedSameDuration = DivideSameDurationNotes(fmotivBuffer);
-                        for (int j = 0; j < dividedSameDuration.Count; j++)
+                        foreach (Fmotiv fmotiv in dividedSameDuration)
                         {
                             // заносим очередной фмотив
-                            result.Add((Fmotiv)dividedSameDuration[j].Clone());
+                            result.Add((Fmotiv)fmotiv.Clone());
                         }
 
                         return result;
@@ -973,10 +973,10 @@
                 // если больше 1 ноты, то вызываем рекурсию на оставшиеся ноты
                 // отправляем последовательность равнодлительных звуков на анализ, получаем цепочку фмотивов и заносим их в выходную последовательность
                 List<Fmotiv> dividedSameDuration = DivideSameDurationNotes(fmotivBuffer);
-                for (int j = 0; j < dividedSameDuration.Count; j++)
+                foreach (Fmotiv fmotiv in dividedSameDuration)
                 {
                     // заносим очередной фмотив
-                    fmotivList.Add((Fmotiv)dividedSameDuration[j].Clone());
+                    fmotivList.Add((Fmotiv)fmotiv.Clone());
                 }
             }
         }
