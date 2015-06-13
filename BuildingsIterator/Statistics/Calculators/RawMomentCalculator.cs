@@ -2,44 +2,41 @@ namespace BuildingsIterator.Statistics.Calculators
 {
     using System;
     using System.Collections.Generic;
+    using System.Linq;
 
     /// <summary>
-    /// Вычисляет начальный i-й момент выбоки.
+    /// Calculates ith raw moment of sample.
     /// </summary>
-    public class StartingPointCalculator : IOnePicksCalculator
+    public class RawMomentCalculator : IOnePicksCalculator
     {
         /// <summary>
-        /// Порядок момента.
+        /// Moment's power.
         /// </summary>
         private readonly int s = 1;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="StartingPointCalculator" /> class.
+        /// Initializes a new instance of the <see cref="RawMomentCalculator" /> class.
         /// </summary>
         /// <param name="i">
-        /// Порядок момента.
+        /// Moment's power.
         /// </param>
-        public StartingPointCalculator(int i)
+        public RawMomentCalculator(int i)
         {
             s = i;
         }
 
         /// <summary>
-        /// Метод вычисления начального момента выборки.
+        /// Calculates raw moment of given power for given sample.
         /// </summary>
         /// <param name="sample">
         /// The sample.
         /// </param>
         /// <returns>
-        /// Начальный момент.
+        /// Raw moment.
         /// </returns>
         public double Calculate(List<double> sample)
         {
-            double sum = 0;
-            for (int i = 0; i < sample.Count; i++)
-            {
-                sum += Math.Pow(sample[i], s);
-            }
+            double sum = sample.Sum(t => Math.Pow(t, s));
 
             sum /= sample.Count;
             return sum;

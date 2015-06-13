@@ -40,7 +40,7 @@ namespace LibiadaCore.Misc.Iterators
         {
             if (source == null || source.GetLength() < 1)
             {
-                throw new ArgumentException("Ќедопустимое значение аргумента итератора.", "source");
+                throw new ArgumentException("Sequence for iteration is null or empty.", "source");
             }
 
             Length = 1;

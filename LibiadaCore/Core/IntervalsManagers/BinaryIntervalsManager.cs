@@ -65,14 +65,14 @@
         }
 
         /// <summary>
-        /// Возвращает i-ый интервал 
-        /// между указанными элементами 
-        /// в бинарно-однродной цепи
+        /// Calculates ith interval for given occurrence of pair of elements in binary-congeneric sequence.
         /// </summary>
         /// <param name="occurrence">
-        /// номер вхождения начиная с 1
+        /// Occurrence number counted from one.
         /// </param>
-        /// <returns>Длина интервала</returns>
+        /// <returns>
+        /// Interval length.
+        /// </returns>
         public int GetBinaryInterval(int occurrence)
         {
             int firstElementFirstOccurrence = FirstChain.GetOccurrence(occurrence);
@@ -118,18 +118,17 @@
         }
 
         /// <summary>
-        /// Возвращает позицию первого вхождения указанного элемента 
-        /// после указанной позиции.
+        /// Returns position of first occurrence of second element after given position. 
         /// </summary>
-        /// <param name="from">
-        /// Начальная позиция для отсчёта.
+        /// <param name="index">
+        /// Starting index for search.
         /// </param>
         /// <returns>
-        /// Номер позиции или -1, если элемент после указанной позиции не встречается.
+        /// Position index or -1 if element after given position is not found.
         /// </returns>
-        public int GetAfter(int from)
+        public int GetFirstAfter(int index)
         {
-            for (int i = from; i < SecondChain.GetLength(); i++)
+            for (int i = index; i < SecondChain.GetLength(); i++)
             {
                 if (SecondChain[i].Equals(SecondChain.Element))
                 {

@@ -17,7 +17,7 @@ namespace LibiadaMusic.Tests.MusicXml
         /// The xml reader first test.
         /// </summary>
         [TestMethod]
-        public void XMLReaderFirstTest()
+        public void XmlReaderFirstTest()
         {
             var xr = new MusicXmlReader("../../LibiadaMusicexample7Liga.xml");
             Assert.IsNotNull(xr.MusicXmlDocument);
@@ -28,7 +28,7 @@ namespace LibiadaMusic.Tests.MusicXml
         /// The xml reader second test.
         /// </summary>
         [TestMethod]
-        public void XMLReaderSecondTest()
+        public void XmlReaderSecondTest()
         {
             var path = "../../LibiadaMusicexample7Liga.xml";
             var xr = new MusicXmlReader();

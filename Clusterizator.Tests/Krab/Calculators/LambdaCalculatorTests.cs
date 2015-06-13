@@ -39,16 +39,16 @@ namespace Clusterizator.Tests.Krab.Calculators
 
             var gm = new GraphManager(graph, el);
 
-            ICalculator calc = new LinearCalculator();
-            calc.Calculate(gm);
-            calc = new NormalizedLinearCalculator();
-            calc.Calculate(gm);
-            calc = new TauStarCalculator();
-            calc.Calculate(gm);
-            calc = new TauCalculator();
-            calc.Calculate(gm);
-            var lambdaCalc = new LambdaCalculator();
-            lambdaCalc.Calculate(gm, 2, 1);
+            ICalculator calculator = new LinearCalculator();
+            calculator.Calculate(gm);
+            calculator = new NormalizedLinearCalculator();
+            calculator.Calculate(gm);
+            calculator = new TauStarCalculator();
+            calculator.Calculate(gm);
+            calculator = new TauCalculator();
+            calculator.Calculate(gm);
+            var lambdaCalculator = new LambdaCalculator();
+            lambdaCalculator.Calculate(gm, 2, 1);
             Assert.AreEqual(57, Math.Round(gm.Connections[0].Lambda * 1000));
             Assert.AreEqual(678, Math.Round(gm.Connections[2].Lambda * 100));
             Assert.AreEqual(18, gm.Connections[1].Lambda);
@@ -96,16 +96,16 @@ namespace Clusterizator.Tests.Krab.Calculators
 
             var gm = new GraphManager(graph, el);
 
-            ICalculator calc = new LinearCalculator();
-            calc.Calculate(gm);
-            calc = new NormalizedLinearCalculator();
-            calc.Calculate(gm);
-            calc = new TauStarCalculator();
-            calc.Calculate(gm);
-            calc = new TauCalculator();
-            calc.Calculate(gm);
-            var lambdaCalc = new LambdaCalculator();
-            lambdaCalc.Calculate(gm, 2, 1);
+            ICalculator calculator = new LinearCalculator();
+            calculator.Calculate(gm);
+            calculator = new NormalizedLinearCalculator();
+            calculator.Calculate(gm);
+            calculator = new TauStarCalculator();
+            calculator.Calculate(gm);
+            calculator = new TauCalculator();
+            calculator.Calculate(gm);
+            var lambdaCalculator = new LambdaCalculator();
+            lambdaCalculator.Calculate(gm, 2, 1);
             Assert.AreEqual(1625, Math.Round(gm.Connections[0].Lambda * 100));
             Assert.AreEqual(9, Math.Round(gm.Connections[1].Lambda * 1000));
             Assert.AreEqual(2612, Math.Round(gm.Connections[2].Lambda * 100));

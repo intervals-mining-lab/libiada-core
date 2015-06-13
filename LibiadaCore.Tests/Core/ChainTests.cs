@@ -52,7 +52,7 @@ namespace LibiadaCore.Tests.Core
                 var actualIntervals = chains[0].CongenericChain(i).GetIntervals(Link.Both);
                 for (int j = 0; j < actualIntervals.Length; j++)
                 {
-                    Assert.AreEqual(intervals[i][j], actualIntervals[j], "не совпадают {0} интервалы {1} цепочки", j, i);
+                    Assert.AreEqual(intervals[i][j], actualIntervals[j], "{0} and {1} intervals of sequence are not equal", j, i);
                 }
             }
         }

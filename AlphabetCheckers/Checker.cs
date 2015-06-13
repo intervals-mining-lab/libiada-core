@@ -6,8 +6,7 @@ namespace AlphabetCheckers
     using LibiadaCore.Misc.Iterators;
 
     /// <summary>
-    /// Класс реализующий проверку соответствия заданного
-    /// алфавита и заданной цепи
+    /// Class checks accordance of given sequence and given alphabet.
     /// </summary>
     public class Checker
     {

@@ -40,14 +40,14 @@ namespace Clusterizator.Tests.Krab.Calculators
 
             var gm = new GraphManager(graph, el);
 
-            ICalculator calc = new LinearCalculator();
-            calc.Calculate(gm);
-            calc = new NormalizedLinearCalculator();
-            calc.Calculate(gm);
-            calc = new TauStarCalculator();
-            calc.Calculate(gm);
-            calc = new TauCalculator();
-            calc.Calculate(gm);
+            ICalculator calculator = new LinearCalculator();
+            calculator.Calculate(gm);
+            calculator = new NormalizedLinearCalculator();
+            calculator.Calculate(gm);
+            calculator = new TauStarCalculator();
+            calculator.Calculate(gm);
+            calculator = new TauCalculator();
+            calculator.Calculate(gm);
             Assert.AreEqual(107, Math.Round(gm.Connections[0].Tau * 1000));
             Assert.AreEqual(722, Math.Round(gm.Connections[2].Tau * 1000));
             Assert.AreEqual(1, gm.Connections[1].Tau);
@@ -93,15 +93,15 @@ namespace Clusterizator.Tests.Krab.Calculators
 
             var gm = new GraphManager(graph, el);
 
-            ICalculator calc = new LinearCalculator();
+            ICalculator calculator = new LinearCalculator();
 
-            calc.Calculate(gm);
-            calc = new NormalizedLinearCalculator();
-            calc.Calculate(gm);
-            calc = new TauStarCalculator();
-            calc.Calculate(gm);
-            calc = new TauCalculator();
-            calc.Calculate(gm);
+            calculator.Calculate(gm);
+            calculator = new NormalizedLinearCalculator();
+            calculator.Calculate(gm);
+            calculator = new TauStarCalculator();
+            calculator.Calculate(gm);
+            calculator = new TauCalculator();
+            calculator.Calculate(gm);
             Assert.AreEqual(854, Math.Round(gm.Connections[0].Tau * 1000));
             Assert.AreEqual(43, Math.Round(gm.Connections[1].Tau * 1000));
             Assert.AreEqual(1, gm.Connections[2].Tau);

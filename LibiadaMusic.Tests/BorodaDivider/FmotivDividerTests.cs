@@ -228,10 +228,10 @@
         }
 
         /// <summary>
-        /// The fmotiv divider fivth test.
+        /// The fmotiv divider fifth test.
         /// </summary>
         [TestMethod]
-        public void FmotivDividerFivthTest()
+        public void FmotivDividerFifthTest()
         {
             // создание и заполнения списка(ов) нот для такта(ов) монотрека
             var notes = new List<ValueNote>

@@ -109,7 +109,7 @@
             // Индекс в очередной генерируемой цепи
             int index = 0;
 
-            // По всем элементам
+            // cycle through elements
             for (int j = length - 1; j >= 0; j--)
             {
                 var element = (int)(temp / Math.Pow(alphabet.Cardinality, j));

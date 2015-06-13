@@ -40,7 +40,7 @@
                 {
                     if (currentEntrance == 0)
                     {
-                        currentEntrance = manager.GetAfter(manager.GetFirst(i));
+                        currentEntrance = manager.GetFirstAfter(manager.GetFirst(i));
                         if (link == Link.Start || link == Link.Both)
                         {
                             avG += Math.Log(currentEntrance, 2);
@@ -48,7 +48,7 @@
                     }
                     else
                     {
-                        int nextEntrance = manager.GetAfter(manager.GetFirst(i));
+                        int nextEntrance = manager.GetFirstAfter(manager.GetFirst(i));
                         avG += Math.Log(nextEntrance - currentEntrance, 2);
                         currentEntrance = nextEntrance;
                     }

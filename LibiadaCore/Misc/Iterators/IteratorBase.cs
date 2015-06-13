@@ -43,7 +43,7 @@ namespace LibiadaCore.Misc.Iterators
         {
             if (source == null || length <= 0 || source.GetLength() < length)
             {
-                throw new ArgumentException("Недопустимые значения аргументов итератора.");
+                throw new ArgumentException("Iterator arguments are invalid.");
             }
 
             Length = length;
@@ -84,7 +84,7 @@ namespace LibiadaCore.Misc.Iterators
         {
             if (Position < 0 || Position > MaxPosition)
             {
-                throw new InvalidOperationException("Текущая позиция итератора находится за пределами допустимого диапазона");
+                throw new InvalidOperationException("Iterator position is out of range.");
             }
 
             var result = new BaseChain();

@@ -49,7 +49,7 @@
     <Compile Include="Krab\Calculators\EquipotencyCalculatorSecondTests.cs" />
     <Compile Include="Krab\Calculators\LambdaCalculatorTests.cs" />
     <Compile Include="Krab\Calculators\LinearCalculatorTests.cs" />
-    <Compile Include="Krab\Calculators\NormalizedDistanceCalculatorTests.cs" />
+    <Compile Include="Krab\Calculators\NormalizedLinearCalculatorTests.cs" />
     <Compile Include="Krab\Calculators\TauCalculatorTests.cs" />
     <Compile Include="Krab\Calculators\TauStarCalculatorTests.cs" />
     <Compile Include="Krab\KrabClusterizationTests.cs" />

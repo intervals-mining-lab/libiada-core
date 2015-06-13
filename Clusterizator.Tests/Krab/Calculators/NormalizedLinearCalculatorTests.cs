@@ -13,7 +13,7 @@ namespace Clusterizator.Tests.Krab.Calculators
     /// The normalized distance calculator test.
     /// </summary>
     [TestFixture]
-    public class NormalizedDistanceCalculatorTests
+    public class NormalizedLinearCalculatorTests
     {
         /// <summary>
         /// The two points test.
@@ -34,11 +34,11 @@ namespace Clusterizator.Tests.Krab.Calculators
 
             var gm = new GraphManager(graph, el);
 
-            ICalculator calc = new LinearCalculator();
+            ICalculator calculator = new LinearCalculator();
 
-            calc.Calculate(gm);
-            calc = new NormalizedLinearCalculator();
-            calc.Calculate(gm);
+            calculator.Calculate(gm);
+            calculator = new NormalizedLinearCalculator();
+            calculator.Calculate(gm);
             Assert.AreEqual(1, gm.Connections[0].NormalizedDistance);
         }
 
@@ -62,10 +62,10 @@ namespace Clusterizator.Tests.Krab.Calculators
 
             var gm = new GraphManager(graph, el);
 
-            ICalculator calc = new LinearCalculator();
-            calc.Calculate(gm);
-            calc = new NormalizedLinearCalculator();
-            calc.Calculate(gm);
+            ICalculator calculator = new LinearCalculator();
+            calculator.Calculate(gm);
+            calculator = new NormalizedLinearCalculator();
+            calculator.Calculate(gm);
             Assert.AreEqual(1, gm.Connections[0].NormalizedDistance);
         }
 
@@ -94,10 +94,10 @@ namespace Clusterizator.Tests.Krab.Calculators
 
             var gm = new GraphManager(graph, el);
 
-            ICalculator calc = new LinearCalculator();
-            calc.Calculate(gm);
-            calc = new NormalizedLinearCalculator();
-            calc.Calculate(gm);
+            ICalculator calculator = new LinearCalculator();
+            calculator.Calculate(gm);
+            calculator = new NormalizedLinearCalculator();
+            calculator.Calculate(gm);
             Assert.AreEqual(278, Math.Round(gm.Connections[0].NormalizedDistance * 1000));
             Assert.AreEqual(722, Math.Round(gm.Connections[1].NormalizedDistance * 1000));
             Assert.AreEqual(1, gm.Connections[2].NormalizedDistance);
@@ -133,10 +133,10 @@ namespace Clusterizator.Tests.Krab.Calculators
 
             var gm = new GraphManager(graph, el);
 
-            ICalculator calc = new LinearCalculator();
-            calc.Calculate(gm);
-            calc = new NormalizedLinearCalculator();
-            calc.Calculate(gm);
+            ICalculator calculator = new LinearCalculator();
+            calculator.Calculate(gm);
+            calculator = new NormalizedLinearCalculator();
+            calculator.Calculate(gm);
             Assert.AreEqual(1, gm.Connections[0].NormalizedDistance);
         }
 
@@ -180,10 +180,10 @@ namespace Clusterizator.Tests.Krab.Calculators
 
             var gm = new GraphManager(graph, el);
 
-            ICalculator calc = new LinearCalculator();
-            calc.Calculate(gm);
-            calc = new NormalizedLinearCalculator();
-            calc.Calculate(gm);
+            ICalculator calculator = new LinearCalculator();
+            calculator.Calculate(gm);
+            calculator = new NormalizedLinearCalculator();
+            calculator.Calculate(gm);
             Assert.AreEqual(1, gm.Connections[0].NormalizedDistance);
             Assert.AreEqual(0, gm.Connections[1].NormalizedDistance);
             Assert.AreEqual(1, gm.Connections[2].NormalizedDistance);

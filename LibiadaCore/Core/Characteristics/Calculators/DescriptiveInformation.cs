@@ -3,15 +3,10 @@ namespace LibiadaCore.Core.Characteristics.Calculators
     using System;
 
     /// <summary>
-    /// Mazurs descriptive information.
+    /// Mazur's descriptive information.
     /// </summary>
     public class DescriptiveInformation : ICalculator
     {
-        /// <summary>
-        /// Average arithmetic interval length calculator.
-        /// </summary>
-        private readonly ICalculator arithmeticMean = new ArithmeticMean();
-
         /// <summary>
         /// Calculation method.
         /// </summary>
@@ -26,8 +21,9 @@ namespace LibiadaCore.Core.Characteristics.Calculators
         /// </returns>
         public double Calculate(CongenericChain chain, Link link)
         {
-            double occupancy = arithmeticMean.Calculate(chain, link);
-            return occupancy == 0 ? 1 : Math.Pow(occupancy, 1 / occupancy);
+            var calculator = new ArithmeticMean();
+            double arithmeticMean = calculator.Calculate(chain, link);
+            return arithmeticMean == 0 ? 1 : Math.Pow(arithmeticMean, 1 / arithmeticMean);
         }
 
         /// <summary>

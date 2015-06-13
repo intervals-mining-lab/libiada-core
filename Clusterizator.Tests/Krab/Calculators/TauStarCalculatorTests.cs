@@ -40,12 +40,12 @@ namespace Clusterizator.Tests.Krab.Calculators
 
             var gm = new GraphManager(graph, el);
 
-            ICalculator calc = new LinearCalculator();
-            calc.Calculate(gm);
-            calc = new NormalizedLinearCalculator();
-            calc.Calculate(gm);
-            calc = new TauStarCalculator();
-            calc.Calculate(gm);
+            ICalculator calculator = new LinearCalculator();
+            calculator.Calculate(gm);
+            calculator = new NormalizedLinearCalculator();
+            calculator.Calculate(gm);
+            calculator = new TauStarCalculator();
+            calculator.Calculate(gm);
             Assert.AreEqual(385, Math.Round(gm.Connections[0].TauStar * 1000));
             Assert.AreEqual(3.6, gm.Connections[1].TauStar);
             Assert.AreEqual(2.6, gm.Connections[2].TauStar);
@@ -94,12 +94,12 @@ namespace Clusterizator.Tests.Krab.Calculators
 
             var gm = new GraphManager(graph, el);
 
-            ICalculator calc = new LinearCalculator();
-            calc.Calculate(gm);
-            calc = new NormalizedLinearCalculator();
-            calc.Calculate(gm);
-            calc = new TauStarCalculator();
-            calc.Calculate(gm);
+            ICalculator calculator = new LinearCalculator();
+            calculator.Calculate(gm);
+            calculator = new NormalizedLinearCalculator();
+            calculator.Calculate(gm);
+            calculator = new TauStarCalculator();
+            calculator.Calculate(gm);
             Assert.AreEqual(4459, Math.Round(gm.Connections[0].TauStar * 1000));
             Assert.AreEqual(224, Math.Round(gm.Connections[1].TauStar * 1000));
             Assert.AreEqual(5223, Math.Round(gm.Connections[2].TauStar * 1000));

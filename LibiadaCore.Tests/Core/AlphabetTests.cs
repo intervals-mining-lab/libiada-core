@@ -41,6 +41,7 @@
         {
             var alphabet = new Alphabet();
             Assert.IsNotNull(alphabet);
+            Assert.AreEqual(0, alphabet.Cardinality);
         }
 
         /// <summary>

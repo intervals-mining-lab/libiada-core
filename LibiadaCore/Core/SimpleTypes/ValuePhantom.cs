@@ -1,7 +1,7 @@
 namespace LibiadaCore.Core.SimpleTypes
 {
     /// <summary>
-    /// Фантомное сообщение, хранящее в себе несколько вариантов значений одной позиции.
+    /// Phantom value containing several alternative elements in one position.
     /// </summary>
     public class ValuePhantom : Alphabet, IBaseObject
     {
@@ -25,12 +25,12 @@ namespace LibiadaCore.Core.SimpleTypes
         }
 
         /// <summary>
-        /// Метод добавляет фантомное сообщение к данному, путем объединения.
-        /// Все элементы второго объединяемого сообщения, не содержащиеся в первом фантомном сообщении,
-        /// добавляются к первому. То есть, происходит пересечение фантомных сообщений, как 
-        /// классических множеств результат записывается в первое сообщение.
+        /// Adds phantom value by merging.
+        /// All not duplicated elements from second phantom value are added to this phantom value.
         /// </summary>
-        /// <param name="messagePhantom">Второе сообщение</param>
+        /// <param name="messagePhantom">
+        /// Phantom value to add.
+        /// </param>
         public void Add(ValuePhantom messagePhantom)
         {
             if (messagePhantom != null)
@@ -46,10 +46,14 @@ namespace LibiadaCore.Core.SimpleTypes
         }
 
         /// <summary>
-        /// Добавляет объект в фантомное сообщение.
+        /// Adds object to phantom elements list.
         /// </summary>
-        /// <param name="baseObject">Новый объект</param>
-        /// <returns>Индекс нового объекта или -1 если его не удалось добавить</returns>
+        /// <param name="baseObject">
+        /// Object to add.
+        /// </param>
+        /// <returns>
+        /// Index of new element or -1 if element not added.
+        /// </returns>
         public override int Add(IBaseObject baseObject)
         {
             if (baseObject != null && !baseObject.Equals(NullValue.Instance()))
@@ -72,9 +76,11 @@ namespace LibiadaCore.Core.SimpleTypes
         }
 
         /// <summary>
-        /// Метод копирования фантомного сообщения
+        /// Cloning method.
         /// </summary>
-        /// <returns>Копия объекта</returns>
+        /// <returns>
+        /// Phantom value clone.
+        /// </returns>
         public new IBaseObject Clone()
         {
             var clone = new ValuePhantom();

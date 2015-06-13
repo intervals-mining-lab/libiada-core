@@ -229,9 +229,9 @@
             var m5 = new Measure(notes5, attr);
             var m6 = new Measure(notes6, attr);
 
-            var mlist = new List<Measure> { m1, m2, m3, m4, m5, m5, m2, m3, m6 };
+            var measuresList = new List<Measure> { m1, m2, m3, m4, m5, m5, m2, m3, m6 };
 
-            var uni = new CongenericScoreTrack("a1", mlist);
+            var uni = new CongenericScoreTrack("a1", measuresList);
 
             Assert.AreEqual(uni.MeasureOrder()[0].Id, 0);
             Assert.AreEqual(uni.MeasureOrder()[1].Id, 1);

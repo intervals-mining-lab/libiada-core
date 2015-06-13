@@ -1,7 +1,7 @@
 ﻿namespace LibiadaCore.Core.Characteristics.Calculators
 {
     /// <summary>
-    /// Asymmetry of average remoteness. Third central moment. Третий центральный момент.
+    /// Asymmetry of average remoteness. Third central moment.
     /// </summary>
     public class EntropySkewness : IFullCalculator
     {

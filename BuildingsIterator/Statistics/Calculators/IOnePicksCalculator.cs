@@ -10,12 +10,12 @@ namespace BuildingsIterator.Statistics.Calculators
         /// <summary>
         /// The calculate.
         /// </summary>
-        /// <param name="values">
-        /// The values.
+        /// <param name="sample">
+        /// The sample of double values.
         /// </param>
         /// <returns>
         /// The <see cref="double"/>.
         /// </returns>
-        double Calculate(List<double> values);
+        double Calculate(List<double> sample);
     }
 }

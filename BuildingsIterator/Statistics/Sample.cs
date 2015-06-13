@@ -5,9 +5,9 @@ namespace BuildingsIterator.Statistics
     using BuildingsIterator.Statistics.Calculators;
 
     /// <summary>
-    /// Класс выборки
+    /// Class storing sample.
     /// </summary>
-    public class Picks
+    public class Sample
     {
         /// <summary>
         /// The values.
@@ -20,33 +20,37 @@ namespace BuildingsIterator.Statistics
         private readonly string name;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="Picks"/> class.
+        /// Initializes a new instance of the <see cref="Sample"/> class.
         /// </summary>
         /// <param name="name">
         /// The name.
         /// </param>
-        public Picks(string name)
+        public Sample(string name)
         {
             this.name = name;
             values = new List<double>();
         }
 
         /// <summary>
-        /// Добавляет очередной элемент к выборке
+        /// Adds element to sample.
         /// </summary>
-        /// <param name="value">Значение добавляемого элемента</param>
+        /// <param name="value">
+        /// Element to add.
+        /// </param>
         public void Add(double value)
         {
             values.Add(value);
         }
 
         /// <summary>
-        /// Заполняет массив строковых значений выборки
+        /// Converts sample to string list.
         /// </summary>
-        /// <param name="mass">Заполняемый массив</param>
+        /// <param name="mass">
+        /// Array to fill.
+        /// </param>
         public void FillList(List<string> mass)
         {
-            List<double>.Enumerator iterator = values.GetEnumerator();
+            var iterator = values.GetEnumerator();
             while (iterator.MoveNext())
             {
                 mass.Add(iterator.Current.ToString());
@@ -54,11 +58,15 @@ namespace BuildingsIterator.Statistics
         }
 
         /// <summary>
-        /// Возвращает заданную характеристику выборки
+        /// Calculates given characteristic of sample.
         /// </summary>
-        /// <param name="calculator">Калькулятор вычисляющий характеристику</param>
-        /// <returns>Значение характеристики</returns>
-        public double GetPicksCharacteristic(IOnePicksCalculator calculator)
+        /// <param name="calculator">
+        /// Characteristic calculator.
+        /// </param>
+        /// <returns>
+        /// Characteristic value.
+        /// </returns>
+        public double GetSampleCharacteristic(IOnePicksCalculator calculator)
         {
             return calculator.Calculate(values);
         }

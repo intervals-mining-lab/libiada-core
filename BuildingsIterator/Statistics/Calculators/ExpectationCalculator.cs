@@ -3,22 +3,22 @@ namespace BuildingsIterator.Statistics.Calculators
     using System.Collections.Generic;
 
     /// <summary>
-    /// Класс-калюкулятор для вычисления математического ожидания выборки
+    /// Calculator for expected value (first central moment or mathematical expectation).
     /// </summary>
     public class ExpectationCalculator : IOnePicksCalculator
     {
         /// <summary>
-        /// Вычисление математического ожидания
+        /// Calculates expected value for given sample.
         /// </summary>
-        /// <param name="values">
-        /// Статистическая выборка
+        /// <param name="sample">
+        /// The sample of double values.
         /// </param>
         /// <returns>
-        /// Математическое ожидание
+        /// Mathematical expectation.
         /// </returns>
-        public double Calculate(List<double> values)
+        public double Calculate(List<double> sample)
         {
-            return (new StartingPointCalculator(1)).Calculate(values);
+            return (new RawMomentCalculator(1)).Calculate(sample);
         }
     }
 }

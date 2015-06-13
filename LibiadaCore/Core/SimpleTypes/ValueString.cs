@@ -1,5 +1,7 @@
 namespace LibiadaCore.Core.SimpleTypes
 {
+    using System;
+
     /// <summary>
     /// String-element class.
     /// </summary>
@@ -18,6 +20,13 @@ namespace LibiadaCore.Core.SimpleTypes
         /// </param>
         public ValueString(string value)
         {
+            if (string.IsNullOrEmpty(value))
+            {
+                throw value == null ?
+                        new ArgumentNullException("value", "String value is null.") :
+                        new ArgumentException("String value is empty.", "value");
+            }
+
             Value = (string)value.Clone();
         }
 
@@ -30,13 +39,6 @@ namespace LibiadaCore.Core.SimpleTypes
         public ValueString(char value)
         {
             Value = value.ToString();
-        }
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="ValueString"/> class.
-        /// </summary>
-        protected ValueString()
-        {
         }
 
         /// <summary>

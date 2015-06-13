@@ -18,7 +18,6 @@
         {
             var rule = new CutRuleWithShiftedAndFixedStart(18, 3, 5);
 
-            // объект, который бегает по массиву
             CutRuleIterator iterator = rule.GetIterator(); 
 
             for (int i = 8; i <= 17; i += 3)

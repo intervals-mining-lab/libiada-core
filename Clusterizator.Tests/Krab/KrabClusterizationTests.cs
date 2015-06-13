@@ -49,7 +49,7 @@ namespace Clusterizator.Tests.Krab
         }
 
         /// <summary>
-        /// The clusterization test.
+        /// The clustering test.
         /// </summary>
         [Test]
         public void ClusterizationTest()
@@ -67,7 +67,7 @@ namespace Clusterizator.Tests.Krab
         }
 
         /// <summary>
-        /// The simple all variants clusterization test.
+        /// The simple all variants clustering test.
         /// </summary>
         [Test]
         public void SimpleAllVariantsClusterizationTest()
@@ -92,7 +92,7 @@ namespace Clusterizator.Tests.Krab
         }
 
         /// <summary>
-        /// The all variants clusterization 2 d test.
+        /// The all variants clustering 2 d test.
         /// </summary>
         [Test]
         public void AllVariantsClusterization2DTest()

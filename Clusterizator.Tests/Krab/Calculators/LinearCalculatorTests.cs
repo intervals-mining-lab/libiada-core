@@ -34,8 +34,8 @@ namespace Clusterizator.Tests.Krab.Calculators
 
             var gm = new GraphManager(con, el);
 
-            var calc = new LinearCalculator();
-            calc.Calculate(gm);
+            var calculator = new LinearCalculator();
+            calculator.Calculate(gm);
             Assert.AreEqual(0, gm.Connections[0].Distance);
         }
 
@@ -57,8 +57,8 @@ namespace Clusterizator.Tests.Krab.Calculators
 
             var gm = new GraphManager(con, el);
 
-            var calc = new LinearCalculator();
-            calc.Calculate(gm);
+            var calculator = new LinearCalculator();
+            calculator.Calculate(gm);
             Assert.AreEqual(0, gm.Connections[0].Distance);
         }
 
@@ -87,8 +87,8 @@ namespace Clusterizator.Tests.Krab.Calculators
 
             var gm = new GraphManager(con, el);
 
-            var calc = new LinearCalculator();
-            calc.Calculate(gm);
+            var calculator = new LinearCalculator();
+            calculator.Calculate(gm);
             Assert.AreEqual(5, gm.Connections[0].Distance);
             Assert.AreEqual(13, gm.Connections[1].Distance);
             Assert.AreEqual(18, gm.Connections[2].Distance);
@@ -124,8 +124,8 @@ namespace Clusterizator.Tests.Krab.Calculators
 
             var gm = new GraphManager(con, el);
 
-            var calc = new LinearCalculator();
-            calc.Calculate(gm);
+            var calculator = new LinearCalculator();
+            calculator.Calculate(gm);
             Assert.AreEqual(22293, Math.Round(gm.Connections[0].Distance * 1000));
         }
 
@@ -168,8 +168,8 @@ namespace Clusterizator.Tests.Krab.Calculators
 
             var gm = new GraphManager(con, el);
 
-            var calc = new LinearCalculator();
-            calc.Calculate(gm);
+            var calculator = new LinearCalculator();
+            calculator.Calculate(gm);
             Assert.AreEqual(22293, Math.Round(gm.Connections[0].Distance * 1000));
             Assert.AreEqual(0, Math.Round(gm.Connections[1].Distance * 1000));
             Assert.AreEqual(22293, Math.Round(gm.Connections[2].Distance * 1000));

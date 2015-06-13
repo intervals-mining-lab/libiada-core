@@ -135,30 +135,13 @@
         /// </returns>
         public static string ArrayToString(IList array)
         {
-            return ArrayToString(array, Environment.NewLine);
-        }
-
-        /// <summary>
-        /// The array to string.
-        /// </summary>
-        /// <param name="array">
-        /// The array.
-        /// </param>
-        /// <param name="delimiter">
-        /// The delimiter.
-        /// </param>
-        /// <returns>
-        /// The <see cref="string"/>.
-        /// </returns>
-        public static string ArrayToString(IList array, string delimiter)
-        {
             string outputString = string.Empty;
 
             foreach (object element in array)
             {
                 if (element is IList)
                 {
-                    outputString += ArrayToString((IList)element, delimiter);
+                    outputString += ArrayToString((IList)element);
                 }
                 else
                 {
@@ -209,7 +192,7 @@
             {
                 if (array[i] is IList)
                 {
-                    outputString += ArrayToString((IList)array[i], delimiter);
+                    outputString += ArrayToString((IList)array[i]);
                 }
                 else
                 {

@@ -28,7 +28,7 @@
         /// <param name="source">
         /// Source chain.
         /// </param>
-        /// <returns>
+        /// <returns>/
         /// Dissimilar chain.
         /// </returns>
         public static Chain Create(BaseChain source)
