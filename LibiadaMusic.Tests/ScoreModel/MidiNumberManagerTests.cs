@@ -54,27 +54,5 @@
             alter = MidiNumberManager.GetAlterFromMidiNumber(initialPitch.MidiNumber);
             Assert.AreEqual(initialPitch.Alter, alter);
         }
-
-        /// <summary>
-        /// The extract midi number modified with measure attributes test.
-        /// </summary>
-        [TestMethod]
-        public void ExtractMidiNumberModifiedWithMeasureAttributesTest()
-        {
-            var initialPitch = new Pitch(1, 'A', 0);
-            var key = new Key(0);
-            var modifiedMidiNumber = MidiNumberManager.ExtractMidiNumberModifiedWithMeasureAttributes(initialPitch, key);
-            Assert.AreEqual(initialPitch.MidiNumber, modifiedMidiNumber);
-
-            initialPitch = new Pitch(5, 'C', 1);
-            key = new Key(0);
-            modifiedMidiNumber = MidiNumberManager.ExtractMidiNumberModifiedWithMeasureAttributes(initialPitch, key);
-            Assert.AreEqual(initialPitch.MidiNumber, modifiedMidiNumber);
-
-            initialPitch = new Pitch(5, 'B', 1);
-            key = new Key(-2);
-            modifiedMidiNumber = MidiNumberManager.ExtractMidiNumberModifiedWithMeasureAttributes(initialPitch, key);
-            Assert.AreEqual(initialPitch.MidiNumber - 1, modifiedMidiNumber);
-        }
     }
 }

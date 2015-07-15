@@ -1,7 +1,7 @@
 ﻿namespace LibiadaMusic.ScoreModel
 {
     using System.Collections.Generic;
-
+    using System.Linq;
     using LibiadaCore.Core;
 
     /// <summary>
@@ -61,13 +61,7 @@
         /// </returns>
         public ValueNote ModifyNoteWithAttributes(ValueNote note)
         {
-            var newPitches = new List<Pitch>();
-
-            foreach (var pitch in note.Pitch)
-            {
-                var midiNumber = MidiNumberManager.ExtractMidiNumberModifiedWithMeasureAttributes(pitch, Attributes.Key);
-                newPitches.Add(new Pitch(midiNumber));
-            }
+            var newPitches = note.Pitch.Select(p => new Pitch(p.MidiNumber)).ToList();
             
             return new ValueNote(newPitches, note.Duration, note.Triplet, note.Tie);
         }

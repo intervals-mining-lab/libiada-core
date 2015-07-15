@@ -44,22 +44,20 @@
         {
             var notes = new[] { 0, 2, 4, 5, 7, 9, 11 };
             var step = midiNumber % NotesInOctave;
+
             if (notes.Any(n => n == step))
             {
                 return step;
             }
-            else
+
+            step--;
+
+            if (notes.Any(n => n == step))
             {
-                step -= 1;
-                if (notes.Any(n => n == step))
-                {
-                    return step;
-                }
-                else
-                {
-                    throw new Exception("Note value is invalid: " + step);
-                }
+                return step;
             }
+
+            throw new Exception("Note value is invalid: " + step);
         }
 
         /// <summary>
@@ -111,52 +109,6 @@
                 default:
                     throw new ArgumentException("Pitch contains non-recognized STEP.");
             } 
-        }
-
-        /// <summary>
-        /// The extract midi number modified with measure attributes.
-        /// </summary>
-        /// <param name="pitch">
-        /// The pitch.
-        /// </param>
-        /// <param name="key">
-        /// The key.
-        /// </param>
-        /// <returns>
-        /// The <see cref="int"/>.
-        /// </returns>
-        public static int ExtractMidiNumberModifiedWithMeasureAttributes(Pitch pitch, Key key)
-        {
-            // #
-            var sharpOrder = new List<int> { 5, 0, 7, 2, 9, 4, 11 };
-
-            // b
-            var flatOrder = new List<int> { 11, 4, 9, 2, 7, 0, 5 };  
-            List<int> modifiers;
-            int shift;
-
-            if (key.Fifths > 0)
-            {
-                modifiers = sharpOrder;
-                shift = 1;
-            }
-            else
-            {
-                modifiers = flatOrder;
-                shift = -1;
-            }
-
-            var fifths = Math.Abs(key.Fifths);
-
-            for (int i = 0; i < fifths; i++)
-            {
-                if (pitch.Step == StepToNoteSymbol(modifiers[i]))
-                {
-                    return pitch.MidiNumber + shift;
-                }
-            }
-
-            return pitch.MidiNumber;
         }
     }
 }

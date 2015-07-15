@@ -1,7 +1,7 @@
 ﻿namespace LibiadaMusic.ScoreModel
 {
     using System.Collections.Generic;
-
+    using System.Linq;
     using LibiadaCore.Core;
 
     /// <summary>
@@ -55,9 +55,9 @@
             {
                 foreach (ValueNote note in measure.NoteList)
                 {
-                    var resultNote = (ValueNote)note.Clone();
-                    resultNote = measure.ModifyNoteWithAttributes(resultNote);
-                    result.Add(resultNote);
+                    var newPitches = note.Pitch.Select(p => new Pitch(p.MidiNumber)).ToList();
+
+                    result.Add(new ValueNote(newPitches, note.Duration, note.Triplet, note.Tie));
                 }
             }
 
@@ -114,7 +114,7 @@
                     temp[i].Id = n;
 
                     // увеличиваем счетчик уникальных
-                    n = n + 1; 
+                    n++; 
                 }
             }
 
@@ -189,7 +189,7 @@
                     temp[i].Id = n;
 
                     // увеличиваем счетчик уникальных
-                    n = n + 1; 
+                    n++; 
                 }
             }
 
@@ -249,12 +249,7 @@
                 }
             }
 
-            if (equalMeasureList)
-            {
-                return true;
-            }
-
-            return false;
+            return equalMeasureList;
         }
     }
 }
