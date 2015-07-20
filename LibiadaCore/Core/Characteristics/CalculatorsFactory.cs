@@ -94,7 +94,8 @@ namespace LibiadaCore.Core.Characteristics
         /// </summary>
         private static readonly List<Type> AccordanceCalculators = new List<Type>
                                                             {
-                                                                typeof(ComplianceDegree)
+                                                                typeof(PartialComplianceDegree),
+                                                                typeof(MutualComplianceDegree)
                                                             };
 
         /// <summary>

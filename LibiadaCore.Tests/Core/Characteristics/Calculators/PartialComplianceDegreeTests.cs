@@ -6,7 +6,7 @@
     /// The compliance degree tests.
     /// </summary>
     [TestFixture]
-    public class ComplianceDegreeTests : AccordanceCalculatorsTests
+    public class PartialComplianceDegreeTests : AccordanceCalculatorsTests
     {
         /// <summary>
         /// Tests initialization method.
@@ -14,7 +14,7 @@
         [TestFixtureSetUp]
         public void Initialization()
         {
-            Initialization("ComplianceDegree");
+            Initialization("PartialComplianceDegree");
         }
 
         /// <summary>
@@ -39,6 +39,13 @@
         public void ComplianceDegreeTest(int index, double firstValue, double secondValue)
         {
             CalculationTest(index, firstValue, secondValue);
+        }
+
+        [TestCase(6, 7, 0.6008)]
+        [TestCase(7, 6, 0.5)]
+        public void ComplianceDegreeTest(int firstIndex, int secondIndex, double firstValue)
+        {
+            CalculationTest(firstIndex, secondIndex, firstValue);
         }
     }
 }

@@ -56,7 +56,8 @@
     <Compile Include="Core\Characteristics\Calculators\AverageRemotenessMKSkewTests.cs" />
     <Compile Include="Core\Characteristics\Calculators\AverageRemotenessRYSkewTests.cs" />
     <Compile Include="Core\Characteristics\Calculators\AverageRemotenessSWSkewTests.cs" />
-    <Compile Include="Core\Characteristics\Calculators\ComplianceDegreeTests.cs" />
+    <Compile Include="Core\Characteristics\Calculators\MutualComplianceDegreeTests.cs" />
+    <Compile Include="Core\Characteristics\Calculators\PartialComplianceDegreeTests.cs" />
     <Compile Include="Core\Characteristics\Calculators\AlphabeticAverageRemotenessTests.cs" />
     <Compile Include="Core\Characteristics\Calculators\AlphabeticDepthTests.cs" />
     <Compile Include="Core\Characteristics\Calculators\CalculatorsTests.cs" />

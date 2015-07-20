@@ -15,9 +15,14 @@
     public abstract class AccordanceCalculatorsTests
     {
         /// <summary>
-        /// The chains.
+        /// The binary chains.
         /// </summary>
         protected readonly List<Chain> Chains = ChainsStorage.BinaryChains;
+
+        /// <summary>
+        /// The congeneric chains.
+        /// </summary>
+        protected readonly List<CongenericChain> CongenericChains = ChainsStorage.CongenericChains;
 
         /// <summary>
         /// The elements.
@@ -54,10 +59,19 @@
         /// </param>
         protected void CalculationTest(int index, double firstValue, double secondValue)
         {
-            double result1 = Calculator.Calculate(new AccordanceIntervalsManager(Chains[index].CongenericChain(elements["A"]), Chains[index].CongenericChain(elements["B"])), Link.End);
-            double result2 = Calculator.Calculate(new AccordanceIntervalsManager(Chains[index].CongenericChain(elements["B"]), Chains[index].CongenericChain(elements["A"])), Link.End);
+            var firstChain = Chains[index].CongenericChain(elements["A"]);
+            var secondChain = Chains[index].CongenericChain(elements["B"]);
+            double result1 = Calculator.Calculate(firstChain, secondChain, Link.End);
+            double result2 = Calculator.Calculate(secondChain, firstChain, Link.End);
             Assert.AreEqual(firstValue, result1, 0.0001);
             Assert.AreEqual(secondValue, result2, 0.0001);
         }
+
+        protected void CalculationTest(int firstIndex, int secondIndex, double firstValue)
+        {
+            double result = Calculator.Calculate(CongenericChains[firstIndex], CongenericChains[secondIndex], Link.End);
+            Assert.AreEqual(firstValue, result, 0.0001);
+        }
+
     }
 }

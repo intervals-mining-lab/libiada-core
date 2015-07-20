@@ -57,8 +57,9 @@
     <Compile Include="Core\Characteristics\Calculators\EntropySkewnessCoefficient.cs" />
     <Compile Include="Core\Characteristics\Calculators\EntropyStandardDeviation.cs" />
     <Compile Include="Core\Characteristics\Calculators\IAccordanceCalculator.cs" />
+    <Compile Include="Core\Characteristics\Calculators\MutualComplianceDegree.cs" />
     <Compile Include="Core\Characteristics\Calculators\RemotenessDispersion.cs" />
-    <Compile Include="Core\Characteristics\Calculators\ComplianceDegree.cs" />
+    <Compile Include="Core\Characteristics\Calculators\PartialComplianceDegree.cs" />
     <Compile Include="Core\Characteristics\Calculators\GCSkew.cs" />
     <Compile Include="Core\Characteristics\Calculators\GCToATRatio.cs" />
     <Compile Include="Core\Characteristics\Calculators\MKSkew.cs" />

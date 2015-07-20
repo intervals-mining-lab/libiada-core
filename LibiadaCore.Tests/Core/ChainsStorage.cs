@@ -84,7 +84,13 @@ namespace LibiadaCore.Tests.Core
                                new CongenericChain(new[] { 100, 100000, 500000 }, Elements["A"], 1000000),
 
                                // a a a a a
-                               new CongenericChain(new[] { 0, 1, 2, 3, 4 }, Elements["A"], 5)
+                               new CongenericChain(new[] { 0, 1, 2, 3, 4 }, Elements["A"], 5),
+
+                               // a _ _ a _ _ _ _ _ _ _ _ _ _ _ _ _ _
+                               new CongenericChain(new[] { 0, 3 }, Elements["A"], 18),
+
+                               // _ _ a _ _ _ _ _ _ _ _ _ _ _ _ _ _ a
+                               new CongenericChain(new[] { 2, 17 }, Elements["A"], 18)
                         };
             }
         }

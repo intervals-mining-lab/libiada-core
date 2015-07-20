@@ -1,4 +1,6 @@
-﻿namespace LibiadaCore.Core.Characteristics.Calculators
+﻿using System.ComponentModel;
+
+namespace LibiadaCore.Core.Characteristics.Calculators
 {
     using System;
     using LibiadaCore.Core.IntervalsManagers;
@@ -6,22 +8,11 @@
     /// <summary>
     /// The compliance degree.
     /// </summary>
-    public class ComplianceDegree : IAccordanceCalculator
+    public class PartialComplianceDegree : IAccordanceCalculator
     {
-        /// <summary>
-        /// The calculate.
-        /// </summary>
-        /// <param name="manager">
-        /// The manager.
-        /// </param>
-        /// <param name="link">
-        /// The link.
-        /// </param>
-        /// <returns>
-        /// The <see cref="double"/>.
-        /// </returns>
-        public double Calculate(AccordanceIntervalsManager manager, Link link)
+        public double Calculate(CongenericChain firstChain, CongenericChain secondChain, Link link)
         {
+            var manager = new AccordanceIntervalsManager(firstChain, secondChain);
             if (manager.FilteredFirstIntervals.Count == 0)
             {
                 return 0;
