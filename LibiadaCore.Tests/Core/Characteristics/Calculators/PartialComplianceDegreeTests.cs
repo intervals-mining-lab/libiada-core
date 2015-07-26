@@ -43,6 +43,16 @@
 
         [TestCase(6, 7, 0.6008)]
         [TestCase(7, 6, 0.5)]
+        [TestCase(8, 9, 0.9843)]
+        [TestCase(9, 8, 0.7787)]
+        [TestCase(10, 11, 0.4131)]
+        [TestCase(11, 10, 0.1796)]
+        [TestCase(12, 13, 0.4401)]
+        [TestCase(13, 12, 0.3353)]
+        [TestCase(13, 14, 0.942)]
+        [TestCase(14, 13, 0.739)]
+        [TestCase(15, 16, 0.942)]
+        [TestCase(16, 15, 0.739)]
         public void ComplianceDegreeTest(int firstIndex, int secondIndex, double firstValue)
         {
             CalculationTest(firstIndex, secondIndex, firstValue);

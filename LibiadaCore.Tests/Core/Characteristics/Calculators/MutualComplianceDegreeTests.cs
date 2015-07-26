@@ -17,6 +17,16 @@ namespace LibiadaCore.Tests.Core.Characteristics.Calculators
 
         [TestCase(6, 7, 0.5481)]
         [TestCase(7, 6, 0.5481)]
+        [TestCase(8, 9, 0.8755)]
+        [TestCase(9, 8, 0.8755)]
+        [TestCase(10, 11, 0.2724)]
+        [TestCase(11, 10, 0.2724)]
+        [TestCase(12, 13, 0.3841)]
+        [TestCase(13, 12, 0.3841)]
+        [TestCase(13, 14, 0.835)]
+        [TestCase(14, 13, 0.835)]
+        [TestCase(15, 16, 0.835)]
+        [TestCase(16, 15, 0.835)]
         public void ComplianceDegreeTest(int firstIndex, int secondIndex, double firstValue)
         {
             CalculationTest(firstIndex, secondIndex, firstValue);
