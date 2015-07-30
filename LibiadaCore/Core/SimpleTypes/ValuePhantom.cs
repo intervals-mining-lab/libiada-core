@@ -28,18 +28,18 @@ namespace LibiadaCore.Core.SimpleTypes
         /// Adds phantom value by merging.
         /// All not duplicated elements from second phantom value are added to this phantom value.
         /// </summary>
-        /// <param name="messagePhantom">
+        /// <param name="phantomValue">
         /// Phantom value to add.
         /// </param>
-        public void Add(ValuePhantom messagePhantom)
+        public void Add(ValuePhantom phantomValue)
         {
-            if (messagePhantom != null)
+            if (phantomValue != null)
             {
-                for (int i = 0; i < messagePhantom.Cardinality; i++)
+                for (int i = 0; i < phantomValue.Cardinality; i++)
                 {
-                    if (!Contains(messagePhantom[i]))
+                    if (!Contains(phantomValue[i]))
                     {
-                        Add(messagePhantom[i]);
+                        Add(phantomValue[i]);
                     }
                 }
             }
@@ -136,15 +136,15 @@ namespace LibiadaCore.Core.SimpleTypes
         /// <summary>
         /// The equals as phantom.
         /// </summary>
-        /// <param name="messagePhantom">
-        /// The message phantom.
+        /// <param name="phantomValue">
+        /// The phantom value.
         /// </param>
         /// <returns>
         /// The <see cref="bool"/>.
         /// </returns>
-        private bool EqualsAsPhantom(ValuePhantom messagePhantom)
+        private bool EqualsAsPhantom(ValuePhantom phantomValue)
         {
-            return base.Equals(messagePhantom);
+            return base.Equals(phantomValue);
         }
     }
 }

@@ -27,7 +27,7 @@ namespace LibiadaCore.Core.Characteristics
                                                                 typeof(IntervalsSum),
                                                                 typeof(Length),
                                                                 typeof(Periodicity),
-                                                                typeof(PhantomMessagesCount),
+                                                                typeof(VariationsCount),
                                                                 typeof(Probability),
                                                                 typeof(Regularity),
                                                                 typeof(Volume)

@@ -29,8 +29,8 @@
             var redundancyCalculator = new Redundancy();
 
             double redundancy = redundancyCalculator.Calculate(manager, link);
-            int pairs = manager.PairsCount;
-            return redundancy * (2 * pairs) / (manager.FirstChain.OccurrencesCount + manager.SecondChain.OccurrencesCount);
+
+            return redundancy * (2 * manager.PairsCount) / (manager.FirstChain.OccurrencesCount + manager.SecondChain.OccurrencesCount);
         }
     }
 }

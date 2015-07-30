@@ -8,7 +8,7 @@
     public class Volume : ICalculator
     {
         /// <summary>
-        /// Calculated as multiplication of all intervals.
+        /// Calculated as product of all intervals in sequence.
         /// </summary>
         /// <param name="chain">
         /// Source sequence.

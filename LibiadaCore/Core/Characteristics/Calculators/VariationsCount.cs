@@ -6,7 +6,7 @@
     /// Count of probable sequences that can be generated 
     /// from given phantom chain (sequence containing phantom messages).
     /// </summary>
-    public class PhantomMessagesCount : ICalculator
+    public class VariationsCount : ICalculator
     {
         /// <summary>
         /// Calculation method.
@@ -18,7 +18,7 @@
         /// Link of intervals in chain.
         /// </param>
         /// <returns>
-        /// Phantom chain count as <see cref="double"/>.
+        /// Variations count as <see cref="double"/>.
         /// </returns>
         public double Calculate(CongenericChain chain, Link link)
         {
@@ -45,7 +45,7 @@
         /// Link of intervals in chain.
         /// </param>
         /// <returns>
-        /// Phantom chain count as <see cref="double"/>.
+        /// Variations count as <see cref="double"/>.
         /// </returns>
         public double Calculate(Chain chain, Link link)
         {
