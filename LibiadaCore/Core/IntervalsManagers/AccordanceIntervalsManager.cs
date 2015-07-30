@@ -70,13 +70,11 @@
             int[] firstIntervals = firstChain.GetIntervals(Link.End);
             int[] secondIntervals = secondChain.GetIntervals(Link.End);
 
-            int j = 1;
-
             for (int i = 1; i <= FirstOccurrencesCount; i++)
             {
                 int firstPosition = firstChain.GetOccurrence(i);
                 int nextFirstPosition = firstChain.GetOccurrence(i + 1) == -1 ? Length : firstChain.GetOccurrence(i + 1);
-                for (; j <= secondChain.OccurrencesCount; j++)
+                for (int j = 1; j <= secondChain.OccurrencesCount; j++)
                 {
                     int secondOccurrence = secondChain.GetOccurrence(j);
                     if (secondOccurrence >= firstPosition && secondOccurrence < nextFirstPosition)
