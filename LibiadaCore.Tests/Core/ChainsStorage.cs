@@ -69,57 +69,58 @@ namespace LibiadaCore.Tests.Core
             {
                 return new List<CongenericChain>
                            {
-                               // _ _ _ a a _ _ a _ _
+                               // 0  _ _ _ a a _ _ a _ _
                                new CongenericChain(new[] { 3, 4, 7 }, Elements["A"], 10),
 
-                               // _ _ _ b _ b b _ _ _ _ b _ _ _
+                               // 1  _ _ _ b _ b b _ _ _ _ b _ _ _
                                new CongenericChain(new[] { 3, 5, 6, 11 }, Elements["B"], 15),
 
-                               // a
+                               // 2  a
                                new CongenericChain(new[] { 0 }, Elements["A"], 1),
 
-                               // _ _ _ _ _ _ _ a
+                               // 3  _ _ _ _ _ _ _ a
                                new CongenericChain(new[] { 7 }, Elements["A"], 8),
 
+                               // 4
                                new CongenericChain(new[] { 100, 100000, 500000 }, Elements["A"], 1000000),
 
-                               // a a a a a
+                               // 5  a a a a a
                                new CongenericChain(new[] { 0, 1, 2, 3, 4 }, Elements["A"], 5),
 
-                               // a _ _ a _ _ _ _ _ _ _ _ _ _ _ _ _ _
+                               // 6  a _ _ a _ _ _ _ _ _ _ _ _ _ _ _ _ _
                                new CongenericChain(new[] { 0, 3 }, Elements["A"], 18),
 
-                               // _ _ a _ _ _ _ _ _ _ _ _ _ _ _ _ _ a
+                               // 7  _ _ a _ _ _ _ _ _ _ _ _ _ _ _ _ _ a
                                new CongenericChain(new[] { 2, 17 }, Elements["A"], 18),
 
-                               // a _ _ _ _ a _ _ _ _ _ a _ _ _ _ _ _ _ a _ _ _ _ a _ _ _ _
+                               // 8  a _ _ _ _ a _ _ _ _ _ a _ _ _ _ _ _ _ a _ _ _ _ a _ _ _ _
                                new CongenericChain(new[] { 0, 5, 11, 19, 24 }, Elements["A"], 30),
 
-                               // _ _ a _ _ _ a _ _ _ _ _ _ _ _ a _ _ _ _ _ _ _ a _ _ a _ _
+                               // 9  _ _ a _ _ _ a _ _ _ _ _ _ _ _ a _ _ _ _ _ _ _ a _ _ a _ _
                                new CongenericChain(new[] { 2, 6, 15, 23, 26 }, Elements["A"], 30),
 
-                               // a _ _ _ _ _ _ _ a _ a _ _ a _ _ _ _ _ _
+                               // 10 a _ _ _ _ _ _ _ a _ a _ _ a _ _ _ _ _ _
                                new CongenericChain(new[] { 0, 8, 10, 13 }, Elements["A"], 20),
 
-                               // _ a a _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ a _
+                               // 11 _ a a _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ a _
                                new CongenericChain(new[] { 1, 2, 18 }, Elements["A"], 20),
 
-                               // a _ _ _ _ _ _ _ a _ _ a _ a _ a _ a _ a _ _ _ _ a _ _
+                               // 12 a _ _ _ _ _ _ _ a _ _ a _ a _ a _ a _ a _ _ _ _ a _ _
                                new CongenericChain(new[] { 0, 8, 11, 13, 15, 17, 19, 24 }, Elements["A"], 27),
 
-                               // _ a _ a a _ a _ _ a a _ _ _ _ a _ _ _ _ _ _ a _ _ _ a
+                               // 13 _ a _ a a _ a _ _ a a _ _ _ _ a _ _ _ _ _ _ a _ _ _ a
                                new CongenericChain(new[] { 1, 3, 4, 9, 10, 22, 26 }, Elements["A"], 27),
 
-                               // a _ _ a _ _ _ _ _ a _ a _ _ _ _ _ 
+                               // 14 a _ _ a _ _ _ _ _ a _ a _ _ _ _ _ 
                                new CongenericChain(new[] { 0, 3, 9, 11 }, Elements["A"], 17),
 
-                               // _ a _ _ _ _ _ a _ _ a _ _ _ a _ _
+                               // 15 _ a _ _ _ _ _ a _ _ a _ _ _ a _ _
                                new CongenericChain(new[] { 1, 7, 10, 14 }, Elements["A"], 17),
 
-                               // a _ _ _ a _ _ _ _ _ a _ _ a _ _ _ _ _ _ _ _ _
+                               // 16 a _ _ _ a _ _ _ _ _ a _ _ a _ _ _ _ _ _ _ _ _
                                new CongenericChain(new[] { 0, 4, 10, 13 }, Elements["A"], 23),
 
-                               // _ a _ _ _ _ _ _ _ a _ _ a _ _ _ _ _ a _ _ _ _
+                               // 17 _ a _ _ _ _ _ _ _ a _ _ a _ _ _ _ _ a _ _ _ _
                                new CongenericChain(new[] { 1, 9, 12, 18 }, Elements["A"], 23),
                         };
             }
