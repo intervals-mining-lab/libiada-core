@@ -23,10 +23,10 @@ namespace LibiadaCore.Tests.Core.Characteristics.Calculators
         [TestCase(11, 10, 0.2724)]
         [TestCase(12, 13, 0.3841)]
         [TestCase(13, 12, 0.3841)]
-        [TestCase(14, 15, 0.835)]
-        [TestCase(15, 14, 0.835)]
-        [TestCase(16, 17, 0.835)]
-        [TestCase(17, 16, 0.835)]
+        [TestCase(14, 15, 0.8352)]
+        [TestCase(15, 14, 0.8352)]
+        [TestCase(16, 17, 0.8350)]
+        [TestCase(17, 16, 0.8350)]
         public void MutualComplianceDegreeTest(int firstIndex, int secondIndex, double firstValue)
         {
             CalculationTest(firstIndex, secondIndex, firstValue);
