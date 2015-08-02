@@ -109,7 +109,7 @@ namespace LibiadaCore.Tests.Core
                                new CongenericChain(new[] { 0, 8, 11, 13, 15, 17, 19, 24 }, Elements["A"], 27),
 
                                // 13 _ a _ a a _ a _ _ a a _ _ _ _ a _ _ _ _ _ _ a _ _ _ a
-                               new CongenericChain(new[] { 1, 3, 4, 9, 10, 22, 26 }, Elements["A"], 27),
+                               new CongenericChain(new[] { 1, 3, 4, 6, 9, 10, 22, 26 }, Elements["A"], 27),
 
                                // 14 a _ _ a _ _ _ _ _ a _ a _ _ _ _ _ 
                                new CongenericChain(new[] { 0, 3, 9, 11 }, Elements["A"], 17),

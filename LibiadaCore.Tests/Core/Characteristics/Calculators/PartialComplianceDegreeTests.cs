@@ -49,10 +49,10 @@
         [TestCase(11, 10, 0.1796)]
         [TestCase(12, 13, 0.4401)]
         [TestCase(13, 12, 0.3353)]
-        [TestCase(14, 15, 0.942)]
-        [TestCase(15, 14, 0.739)]
-        [TestCase(16, 17, 0.942)]
-        [TestCase(17, 16, 0.739)]
+        [TestCase(14, 15, 0.9428)]
+        [TestCase(15, 14, 0.7399)]
+        [TestCase(16, 17, 0.9428)]
+        [TestCase(17, 16, 0.7394)]
         public void PartialComplianceDegreeTest(int firstIndex, int secondIndex, double firstValue)
         {
             CalculationTest(firstIndex, secondIndex, firstValue);
