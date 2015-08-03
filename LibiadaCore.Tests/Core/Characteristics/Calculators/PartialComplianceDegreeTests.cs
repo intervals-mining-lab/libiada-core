@@ -41,6 +41,18 @@
             CalculationTest(index, firstValue, secondValue);
         }
 
+        /// <summary>
+        /// The partial compliance degree test.
+        /// </summary>
+        /// <param name="firstIndex">
+        /// The first index.
+        /// </param>
+        /// <param name="secondIndex">
+        /// The second index.
+        /// </param>
+        /// <param name="firstValue">
+        /// The first value.
+        /// </param>
         [TestCase(6, 7, 0.6008)]
         [TestCase(7, 6, 0.5)]
         [TestCase(8, 9, 0.9843)]

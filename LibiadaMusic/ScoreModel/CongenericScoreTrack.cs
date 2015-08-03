@@ -25,7 +25,7 @@
             foreach (Measure measure in measureList)
             {
                 // создаем список тактов, посредством клонирования каждого такта.
-                this.MeasureList.Add((Measure)measure.Clone());
+                MeasureList.Add((Measure)measure.Clone());
             }
 
             Name = name;

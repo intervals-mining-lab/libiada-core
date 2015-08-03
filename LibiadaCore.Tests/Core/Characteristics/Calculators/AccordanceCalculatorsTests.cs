@@ -5,7 +5,6 @@
     using LibiadaCore.Core;
     using LibiadaCore.Core.Characteristics;
     using LibiadaCore.Core.Characteristics.Calculators;
-    using LibiadaCore.Core.IntervalsManagers;
 
     using NUnit.Framework;
 
@@ -17,12 +16,12 @@
         /// <summary>
         /// The binary chains.
         /// </summary>
-        protected readonly List<Chain> Chains = ChainsStorage.BinaryChains;
+        private readonly List<Chain> chains = ChainsStorage.BinaryChains;
 
         /// <summary>
         /// The congeneric chains.
         /// </summary>
-        protected readonly List<CongenericChain> CongenericChains = ChainsStorage.CongenericChains;
+        private readonly List<CongenericChain> congenericChains = ChainsStorage.CongenericChains;
 
         /// <summary>
         /// The elements.
@@ -30,9 +29,9 @@
         private readonly Dictionary<string, IBaseObject> elements = ChainsStorage.Elements;
 
         /// <summary>
-        /// Gets the calculator.
+        /// Gets or sets the calculator.
         /// </summary>
-        protected IAccordanceCalculator Calculator { get; private set; }
+        private IAccordanceCalculator Calculator { get; set; }
 
         /// <summary>
         /// The initialization.
@@ -59,19 +58,30 @@
         /// </param>
         protected void CalculationTest(int index, double firstValue, double secondValue)
         {
-            var firstChain = Chains[index].CongenericChain(elements["A"]);
-            var secondChain = Chains[index].CongenericChain(elements["B"]);
+            var firstChain = chains[index].CongenericChain(elements["A"]);
+            var secondChain = chains[index].CongenericChain(elements["B"]);
             double result1 = Calculator.Calculate(firstChain, secondChain, Link.End);
             double result2 = Calculator.Calculate(secondChain, firstChain, Link.End);
             Assert.AreEqual(firstValue, result1, 0.0001);
             Assert.AreEqual(secondValue, result2, 0.0001);
         }
 
+        /// <summary>
+        /// The calculation test.
+        /// </summary>
+        /// <param name="firstIndex">
+        /// The first index.
+        /// </param>
+        /// <param name="secondIndex">
+        /// The second index.
+        /// </param>
+        /// <param name="firstValue">
+        /// The first value.
+        /// </param>
         protected void CalculationTest(int firstIndex, int secondIndex, double firstValue)
         {
-            double result = Calculator.Calculate(CongenericChains[firstIndex], CongenericChains[secondIndex], Link.End);
+            double result = Calculator.Calculate(congenericChains[firstIndex], congenericChains[secondIndex], Link.End);
             Assert.AreEqual(firstValue, result, 0.0001);
         }
-
     }
 }

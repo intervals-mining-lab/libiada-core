@@ -1,8 +1,10 @@
-﻿using NUnit.Framework;
-
-namespace LibiadaCore.Tests.Core.Characteristics.Calculators
+﻿namespace LibiadaCore.Tests.Core.Characteristics.Calculators
 {
+    using NUnit.Framework;
 
+    /// <summary>
+    /// The mutual compliance degree tests.
+    /// </summary>
     [TestFixture]
     public class MutualComplianceDegreeTests : AccordanceCalculatorsTests
     {
@@ -15,6 +17,18 @@ namespace LibiadaCore.Tests.Core.Characteristics.Calculators
             Initialization("MutualComplianceDegree");
         }
 
+        /// <summary>
+        /// The mutual compliance degree test.
+        /// </summary>
+        /// <param name="firstIndex">
+        /// The first index.
+        /// </param>
+        /// <param name="secondIndex">
+        /// The second index.
+        /// </param>
+        /// <param name="firstValue">
+        /// The first value.
+        /// </param>
         [TestCase(6, 7, 0.5481)]
         [TestCase(7, 6, 0.5481)]
         [TestCase(8, 9, 0.8755)]
