@@ -146,7 +146,7 @@
     <Compile Include="Core\SimpleTypes\ValuePhantom.cs" />
     <Compile Include="Core\SimpleTypes\ValueDouble.cs" />
     <Compile Include="Core\SimpleTypes\ValueString.cs" />
-    <Compile Include="Core\SimpleTypes\VauleInt.cs" />
+    <Compile Include="Core\SimpleTypes\ValueInt.cs" />
     <Compile Include="Core\CongenericChain.cs" />
     <Compile Include="Core\Alphabet.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
