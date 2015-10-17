@@ -60,6 +60,135 @@ namespace LibiadaCore.Tests.Core
             }
         }
 
+        public static List<Chain> HighOrderChains
+        {
+            get
+            {
+
+                var result = new List<Chain>();
+                // 1 1 3 1 5 4 3 3 1 4
+                var chain = new Chain(10);
+                chain[0] = new ValueInt(1);
+                chain[1] = new ValueInt(1);
+                chain[2] = new ValueInt(3);
+                chain[3] = new ValueInt(1);
+                chain[4] = new ValueInt(5);
+                chain[5] = new ValueInt(4);
+                chain[6] = new ValueInt(3);
+                chain[7] = new ValueInt(3);
+                chain[8] = new ValueInt(1);
+                chain[9] = new ValueInt(4);
+                result.Add(chain);
+
+                // 5 7 1 3 5 2 4 3 2 1
+                chain = new Chain(10);
+                chain[0] = new ValueInt(5);
+                chain[1] = new ValueInt(7);
+                chain[2] = new ValueInt(1);
+                chain[3] = new ValueInt(3);
+                chain[4] = new ValueInt(5);
+                chain[5] = new ValueInt(2);
+                chain[6] = new ValueInt(4);
+                chain[7] = new ValueInt(3);
+                chain[8] = new ValueInt(2);
+                chain[9] = new ValueInt(1);
+                result.Add(chain);
+
+                // 1 2 3 1 5 5 3 2 7 5
+                chain = new Chain(10);
+                chain[0] = new ValueInt(1);
+                chain[1] = new ValueInt(2);
+                chain[2] = new ValueInt(3);
+                chain[3] = new ValueInt(1);
+                chain[4] = new ValueInt(5);
+                chain[5] = new ValueInt(5);
+                chain[6] = new ValueInt(3);
+                chain[7] = new ValueInt(2);
+                chain[8] = new ValueInt(7);
+                chain[9] = new ValueInt(5);
+                result.Add(chain);
+
+                // 1 4 1 3 3 4 4 1 2 1
+                chain = new Chain(10);
+                chain[0] = new ValueInt(1);
+                chain[1] = new ValueInt(4);
+                chain[2] = new ValueInt(1);
+                chain[3] = new ValueInt(3);
+                chain[4] = new ValueInt(3);
+                chain[5] = new ValueInt(4);
+                chain[6] = new ValueInt(4);
+                chain[7] = new ValueInt(1);
+                chain[8] = new ValueInt(2);
+                chain[9] = new ValueInt(1);
+                result.Add(chain);
+
+                chain = new Chain(10);
+                chain[0] = new ValueInt(2);
+                chain[1] = new ValueInt(4);
+                chain[2] = new ValueInt(5);
+                chain[3] = new ValueInt(1);
+                chain[4] = new ValueInt(6);
+                chain[5] = new ValueInt(1);
+                chain[6] = new ValueInt(4);
+                chain[7] = new ValueInt(2);
+                chain[8] = new ValueInt(2);
+                chain[9] = new ValueInt(1);
+                result.Add(chain);
+               
+                return result;
+            }
+        }
+        public static List<Chain> DissimilarChains
+        {
+            get
+            {
+
+                var result = new List<Chain>();
+                // 1 2 1 2 1 3 3 2 3 4
+                var chain = new Chain(10);
+                chain[0] = new ValueInt(1);
+                chain[1] = new ValueInt(2);
+                chain[2] = new ValueInt(1);
+                chain[3] = new ValueInt(2);
+                chain[4] = new ValueInt(1);
+                chain[5] = new ValueInt(3);
+                chain[6] = new ValueInt(3);
+                chain[7] = new ValueInt(2);
+                chain[8] = new ValueInt(3);
+                chain[9] = new ValueInt(4);
+                result.Add(chain);
+       
+                // 1 1 1 2 1 2 3 3 2 2
+                chain = new Chain(10);
+                chain[0] = new ValueInt(1);
+                chain[1] = new ValueInt(1);
+                chain[2] = new ValueInt(1);
+                chain[3] = new ValueInt(2);
+                chain[4] = new ValueInt(1);
+                chain[5] = new ValueInt(2);
+                chain[6] = new ValueInt(3);
+                chain[7] = new ValueInt(3);
+                chain[8] = new ValueInt(2);
+                chain[9] = new ValueInt(2);
+                result.Add(chain);
+
+                // 1 2 1 3 1 4 1 2 2 5
+                chain = new Chain(10);
+                chain[0] = new ValueInt(1);
+                chain[1] = new ValueInt(2);
+                chain[2] = new ValueInt(1);
+                chain[3] = new ValueInt(3);
+                chain[4] = new ValueInt(1);
+                chain[5] = new ValueInt(4);
+                chain[6] = new ValueInt(1);
+                chain[7] = new ValueInt(2);
+                chain[8] = new ValueInt(2);
+                chain[9] = new ValueInt(5);
+                result.Add(chain);
+
+                return result;
+            }
+        }
         /// <summary>
         /// Gets the congeneric chains.
         /// </summary>

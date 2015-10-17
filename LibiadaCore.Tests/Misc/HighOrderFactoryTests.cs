@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using LibiadaCore.Core;
-using LibiadaCore.Core.SimpleTypes;
+﻿using LibiadaCore.Core;
 using LibiadaCore.Tests.Core;
 
 namespace LibiadaCore.Tests.Misc
@@ -15,22 +9,24 @@ namespace LibiadaCore.Tests.Misc
     [TestFixture]
     public class HighOrderFactoryTests
     {
-        [Test]
-        public void ChainTest()
+        [TestCase(0, 0, Link.Start)]
+        [TestCase(1, 1, Link.End)]
+        [TestCase(1, 2, Link.Start)]
+        [TestCase(0, 3, Link.End)]
+        public void ChainTest(int chainIndex, int resultIndex, Link link)
         {
-            var result = HighOrderFactory.Create(ChainsStorage.Chains[0], Link.Start);
-            var expected = new Chain(10);
-            expected[0] = new ValueInt(1);
-            expected[1] = new ValueInt(1);
-            expected[2] = new ValueInt(3);
-            expected[3] = new ValueInt(1);
-            expected[4] = new ValueInt(5);
-            expected[5] = new ValueInt(4);
-            expected[6] = new ValueInt(3);
-            expected[7] = new ValueInt(3);
-            expected[8] = new ValueInt(1);
-            expected[9] = new ValueInt(4);
+            var result = HighOrderFactory.Create(ChainsStorage.Chains[chainIndex], link);
+            var expected = ChainsStorage.HighOrderChains[resultIndex];
             Assert.AreEqual(expected, result);
+        }
+
+        [Test]
+        public void ThirdOrderTest()
+        {
+            var result = HighOrderFactory.Create(ChainsStorage.Chains[0], Link.End);
+            result = HighOrderFactory.Create(result, Link.End);
+            var expected = ChainsStorage.HighOrderChains[4];
+            Assert.AreEqual(expected, result); 
         }
     }
 }

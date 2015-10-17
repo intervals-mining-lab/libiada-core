@@ -1,5 +1,4 @@
-﻿using System.Dynamic;
-using LibiadaCore.Core.IntervalsManagers;
+﻿using LibiadaCore.Core.IntervalsManagers;
 
 namespace LibiadaCore.Misc
 {
