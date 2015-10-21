@@ -122,6 +122,35 @@ namespace LibiadaCore.Tests.Core
                 chain[9] = new ValueInt(1);
                 result.Add(chain);
 
+                // 1 4 1 3 3 4 4 6 6 1
+                chain = new Chain(10);
+                chain[0] = new ValueInt(1);
+                chain[1] = new ValueInt(4);
+                chain[2] = new ValueInt(1);
+                chain[3] = new ValueInt(3);
+                chain[4] = new ValueInt(3);
+                chain[5] = new ValueInt(4);
+                chain[6] = new ValueInt(6);
+                chain[7] = new ValueInt(1);
+                chain[8] = new ValueInt(6);
+                chain[9] = new ValueInt(1);
+                result.Add(chain);
+
+                // 1 1 6 1 6 4 3 3 1 4
+                chain = new Chain(10);
+                chain[0] = new ValueInt(1);
+                chain[1] = new ValueInt(1);
+                chain[2] = new ValueInt(6);
+                chain[3] = new ValueInt(1);
+                chain[4] = new ValueInt(6);
+                chain[5] = new ValueInt(4);
+                chain[6] = new ValueInt(3);
+                chain[7] = new ValueInt(3);
+                chain[8] = new ValueInt(1);
+                chain[9] = new ValueInt(4);
+                result.Add(chain);
+
+                // 2 4 5 1 6 1 4 2 2 1
                 chain = new Chain(10);
                 chain[0] = new ValueInt(2);
                 chain[1] = new ValueInt(4);

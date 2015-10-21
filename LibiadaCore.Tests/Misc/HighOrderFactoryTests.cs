@@ -13,6 +13,8 @@ namespace LibiadaCore.Tests.Misc
         [TestCase(1, 1, Link.End)]
         [TestCase(1, 2, Link.Start)]
         [TestCase(0, 3, Link.End)]
+        [TestCase(0, 4, Link.CycleStart)]
+        [TestCase(0, 5, Link.CycleEnd)]
         public void ChainTest(int chainIndex, int resultIndex, Link link)
         {
             var result = HighOrderFactory.Create(ChainsStorage.Chains[chainIndex], link);
@@ -25,7 +27,7 @@ namespace LibiadaCore.Tests.Misc
         {
             var result = HighOrderFactory.Create(ChainsStorage.Chains[0], Link.End);
             result = HighOrderFactory.Create(result, Link.End);
-            var expected = ChainsStorage.HighOrderChains[4];
+            var expected = ChainsStorage.HighOrderChains[6];
             Assert.AreEqual(expected, result); 
         }
     }

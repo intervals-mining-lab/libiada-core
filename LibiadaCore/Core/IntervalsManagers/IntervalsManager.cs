@@ -78,6 +78,24 @@
 
                     result[result.Length - 1] = Start + End - 1;
                     return result;
+                case Link.CycleStart:
+                    result = new int[Intervals.Length + 1];
+                    for (int i = 0; i < Intervals.Length; i++)
+                    {
+                        result[i] = Intervals[i];
+                    }
+
+                    result[result.Length - 1] = Start + End - 1;
+                    return result;
+                case Link.CycleEnd:
+                    result = new int[Intervals.Length + 1];
+                    result[0] = Start + End - 1;
+                    for (int i = 0; i < Intervals.Length; i++)
+                    {
+                        result[i + 1] = Intervals[i];
+                    }
+                    return result;
+
                 default:
                     throw new InvalidEnumArgumentException("link", (int)link, typeof(Link));
             }

@@ -10,7 +10,7 @@ namespace LibiadaCore.Misc
     {
         public static Chain Create(Chain source, Link link)
         {
-            if (link != Link.Start && link != Link.End) 
+            if (link != Link.Start && link != Link.End && link != Link.CycleEnd && link != Link.CycleStart) 
             {
                 throw new ArgumentException("UnknownLink");
             }

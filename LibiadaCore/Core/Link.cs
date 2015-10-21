@@ -47,6 +47,20 @@ namespace LibiadaCore.Core
         /// and interval from last element to end of chain 
         /// are summed into one interval.
         /// </summary>
-        Cycle = 5
+        Cycle = 5,
+
+        /// <summary>
+        /// Cyclic link to start.
+        /// Intervals are calculated as in cyclic link
+        /// and writen to first element(position) of pair.
+        /// </summary>
+        CycleStart = 6,
+
+        /// <summary>
+        /// Cyclic link to end.
+        /// Intervals are calculated as in cyclic link
+        /// and writen to second element(position) of pair.
+        /// </summary>
+        CycleEnd = 7
     }
 }
