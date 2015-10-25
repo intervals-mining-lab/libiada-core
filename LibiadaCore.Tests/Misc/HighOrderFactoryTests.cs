@@ -1,27 +1,45 @@
-﻿using LibiadaCore.Core;
-using LibiadaCore.Tests.Core;
-
-namespace LibiadaCore.Tests.Misc
+﻿namespace LibiadaCore.Tests.Misc
 {
+    using LibiadaCore.Core;
     using LibiadaCore.Misc;
+    using LibiadaCore.Tests.Core;
 
     using NUnit.Framework;
+
+    /// <summary>
+    /// The high order factory tests.
+    /// </summary>
     [TestFixture]
     public class HighOrderFactoryTests
     {
+        /// <summary>
+        /// The second order test.
+        /// </summary>
+        /// <param name="chainIndex">
+        /// The chain index.
+        /// </param>
+        /// <param name="resultIndex">
+        /// The result index.
+        /// </param>
+        /// <param name="link">
+        /// The link.
+        /// </param>
         [TestCase(0, 0, Link.Start)]
         [TestCase(1, 1, Link.End)]
         [TestCase(1, 2, Link.Start)]
         [TestCase(0, 3, Link.End)]
         [TestCase(0, 4, Link.CycleStart)]
         [TestCase(0, 5, Link.CycleEnd)]
-        public void ChainTest(int chainIndex, int resultIndex, Link link)
+        public void SecondOrderTest(int chainIndex, int resultIndex, Link link)
         {
             var result = HighOrderFactory.Create(ChainsStorage.Chains[chainIndex], link);
             var expected = ChainsStorage.HighOrderChains[resultIndex];
             Assert.AreEqual(expected, result);
         }
 
+        /// <summary>
+        /// The third order test.
+        /// </summary>
         [Test]
         public void ThirdOrderTest()
         {

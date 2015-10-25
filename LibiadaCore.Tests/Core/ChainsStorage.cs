@@ -64,8 +64,8 @@ namespace LibiadaCore.Tests.Core
         {
             get
             {
-
                 var result = new List<Chain>();
+
                 // 1 1 3 1 5 4 3 3 1 4
                 var chain = new Chain(10);
                 chain[0] = new ValueInt(1);
@@ -167,12 +167,16 @@ namespace LibiadaCore.Tests.Core
                 return result;
             }
         }
+
+        /// <summary>
+        /// Gets the dissimilar chains.
+        /// </summary>
         public static List<Chain> DissimilarChains
         {
             get
             {
-
                 var result = new List<Chain>();
+
                 // 1 2 1 2 1 3 3 2 3 4
                 var chain = new Chain(10);
                 chain[0] = new ValueInt(1);
@@ -218,6 +222,7 @@ namespace LibiadaCore.Tests.Core
                 return result;
             }
         }
+
         /// <summary>
         /// Gets the congeneric chains.
         /// </summary>

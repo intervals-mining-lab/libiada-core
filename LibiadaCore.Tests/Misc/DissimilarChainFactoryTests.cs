@@ -1,11 +1,24 @@
-﻿using LibiadaCore.Misc;
-using LibiadaCore.Tests.Core;
-using NUnit.Framework;
-
-namespace LibiadaCore.Tests.Misc
+﻿namespace LibiadaCore.Tests.Misc
 {
-    class DissimilarChainFactoryTests
+    using LibiadaCore.Misc;
+    using LibiadaCore.Tests.Core;
+
+    using NUnit.Framework;
+
+    /// <summary>
+    /// The dissimilar chain factory tests.
+    /// </summary>
+    public class DissimilarChainFactoryTests
     {
+        /// <summary>
+        /// The chain test.
+        /// </summary>
+        /// <param name="chainIndex">
+        /// The chain index.
+        /// </param>
+        /// <param name="resultIndex">
+        /// The result index.
+        /// </param>
         [TestCase(0, 0)]
         [TestCase(1, 1)]
         [TestCase(2, 2)]

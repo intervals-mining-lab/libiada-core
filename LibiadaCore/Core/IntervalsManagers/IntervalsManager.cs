@@ -94,6 +94,7 @@
                     {
                         result[i + 1] = Intervals[i];
                     }
+
                     return result;
 
                 default:
