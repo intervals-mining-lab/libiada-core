@@ -4,18 +4,12 @@ namespace LibiadaCore.Core
     using System.Linq;
 
     using IntervalsManagers;
-    using SimpleTypes;
-
+   
     /// <summary>
     /// Sequence class.
     /// </summary>
     public class Chain : BaseChain, IBaseObject
     {
-        /// <summary>
-        /// The dissimilar chains.
-        /// </summary>
-        private Chain[] dissimilarChains;
-
         /// <summary>
         /// The congeneric chains.
         /// </summary>
@@ -243,42 +237,7 @@ namespace LibiadaCore.Core
 
             congenericChains = null;
         }
-
-        /// <summary>
-        /// Fills all dissimilar chains of this chain.
-        /// </summary>
-        public void FillDissimilarChains()
-        {
-            if (dissimilarChains.Length > 0)
-            {
-                return;
-            }
-
-            var counters = new List<int>();
-            for (int j = 0; j < Alphabet.Cardinality; j++)
-            {
-                counters.Add(0);
-            }
-
-            for (int i = 0; i < building.Length; i++)
-            {
-                int element = ++counters[building[i]];
-                if (dissimilarChains.Length < element)
-                {
-                    var temp = new Chain[element];
-                    for (int j = 0; j < dissimilarChains.Length; j++)
-                    {
-                        temp[j] = dissimilarChains[j];
-                    }
-
-                    dissimilarChains = temp;
-                    dissimilarChains[dissimilarChains.Length - 1] = new Chain();
-                }
-
-                dissimilarChains[element].Set(new ValueInt(building[i]), i);
-            }
-        } 
-
+        
         /// <summary>
         /// Returns position of given occurrence of given element.
         /// </summary>
