@@ -60,6 +60,9 @@ namespace LibiadaCore.Tests.Core
             }
         }
 
+        /// <summary>
+        /// Gets chains with high order.
+        /// </summary>
         public static List<Chain> HighOrderChains
         {
             get
