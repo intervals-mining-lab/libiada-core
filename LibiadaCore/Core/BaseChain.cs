@@ -184,7 +184,7 @@ namespace LibiadaCore.Core
         {
             building[index] = 0;
 
-            // TODO: Удалять элемент из алфавита если он последний
+            // TODO: remove element from alphabet if last entry is removed.
         }
 
         /// <summary>
@@ -197,7 +197,7 @@ namespace LibiadaCore.Core
         {
             building = ArrayManipulator.DeleteAt(building, index);
 
-            // TODO: Удалять элемент из алфавита если он последний
+            // TODO: remove element from alphabet if last entry is removed.
         }
 
         /// <summary>

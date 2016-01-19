@@ -4,17 +4,15 @@
     using System.Collections;
 
     /// <summary>
-    /// Класс для вычисления эвклидова расстояния
+    /// Euclidean distance calculator.
     /// </summary>
     public class LinearCalculator : ICalculator
     {
         /// <summary>
-        /// Метод интерфейса ICalculator
-        /// вычисляюший эвклидово расстояние
-        /// между всем объектами графа
+        /// Euclidean distance calculation mathod.
         /// </summary>
         /// <param name="graph">
-        /// Массив связей графа.
+        /// Connections graph.
         /// </param>
         public void Calculate(GraphManager graph)
         {
@@ -22,12 +20,9 @@
             {
                 double distance = 0;
 
-                // Получаем энумераторы для перебора всех точек
-                IDictionaryEnumerator firstCounter =
-                    graph.Elements[graph.Connections[i].FirstElementIndex].Content.GetEnumerator();
+                // enumerating through al nodes
+                IDictionaryEnumerator firstCounter = graph.Elements[graph.Connections[i].FirstElementIndex].Content.GetEnumerator();
                 firstCounter.Reset();
-
-                // Переходим к начальным точкам
                 firstCounter.MoveNext();
                 for (int j = 0; j < graph.Elements[graph.Connections[i].FirstElementIndex].Content.Count; j++)
                 {

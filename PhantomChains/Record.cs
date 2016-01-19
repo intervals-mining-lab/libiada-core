@@ -5,18 +5,18 @@
     using LibiadaCore.Core.SimpleTypes;
 
     /// <summary>
-    /// Запись соответствующая одному уровню дерева варинтов.
+    /// Slice of one level in variants tree.
     /// </summary>
     public class Record
     {
         /// <summary>
-        /// Фантомное сообщение, находящееся в определенной позиции фантомной цепи 
-        /// и представляющее варианты содержимого узлов этого же уровня в дереве вариантов.
+        /// Phantom value in given position of phantom sequence 
+        /// representing variants of content of current level in variants tree. 
         /// </summary>
         public readonly ValuePhantom Content;
 
         /// <summary>
-        /// Количество варинтов, накопившееся к данному уровню дерева.
+        /// Variants count on this level of variants tree.
         /// </summary>
         public readonly ulong Volume;
 
@@ -24,13 +24,13 @@
         /// Initializes a new instance of the <see cref="Record"/> class.
         /// </summary>
         /// <param name="message">
-        /// Фантомное сообщение в данной позиции фантомной цепи
+        /// Phantom message on the current position of sequence.
         /// </param>
         /// <param name="volume">
-        /// Суммарное количество варинтов построения до данной позиции
+        /// Variants count for current position.
         /// </param>
         /// <exception cref="ArgumentNullException">
-        /// Исключение возникает в слчае отирицательного количества вариантов
+        /// Thrown if there is no message.
         /// </exception>
         public Record(ValuePhantom message, ulong volume)
         {

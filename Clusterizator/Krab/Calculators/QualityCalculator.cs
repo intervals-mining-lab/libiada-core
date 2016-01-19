@@ -3,7 +3,7 @@ namespace Clusterizator.Krab.Calculators
     using System;
 
     /// <summary>
-    /// Калькулятор, вычисляющий характеристику качества разбиения
+    /// Clusterization quality calculator.
     /// </summary>
     public static class QualityCalculator
     {
@@ -27,7 +27,7 @@ namespace Clusterizator.Krab.Calculators
             double quality = Math.Pow(EquipotencyCalculator.Calculate(currentGraph), powerWeight);
             for (int i = 0; i < currentGraph.Connections.Count; i++)
             {
-                // H домножается на лямбда-расстояние разорванной связи
+                // H is multiplied by lambda-distance of disconnected link
                 if (currentGraph.Connections[i].Connected != sourceGraph.Connections[i].Connected)
                 {
                     quality *= currentGraph.Connections[i].Lambda;

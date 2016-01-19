@@ -4,22 +4,23 @@ namespace Clusterizator.Krab.Calculators
     using System.Collections.Generic;
 
     /// <summary>
-    /// Класс вычисляющий степень равномощности множеств
+    /// Class calculating equipotency of sets
+    /// (disproportion of elements counts of sets).
     /// </summary>
     public static class EquipotencyCalculator
     {
         /// <summary>
-        /// Метод для вычисления равномощности множеств
+        /// Equipotency calculation method.
         /// </summary>
         /// <param name="manager">
-        /// класс хранящий граф и список его точек
+        /// Storage of graph nodes and connections.
         /// </param>
         /// <returns>
         /// Equipotency of sets. 
         /// </returns>
         public static double Calculate(GraphManager manager)
         {
-            // Находим количество элементов в каждом таксоне
+            // calculating nodes count in each group
             var taxonPower = new List<int>();
             for (int i = 0; i < manager.GetNextTaxonNumber(); i++)
             {
@@ -32,7 +33,7 @@ namespace Clusterizator.Krab.Calculators
                 taxonPower[taxonNumber]++;
             }
 
-            // Находим общее число непустых таксонов
+            // calculating number of not empty groups
             int taxonCount = 0;
             for (int k = 0; k < taxonPower.Count; k++)
             {
@@ -42,14 +43,14 @@ namespace Clusterizator.Krab.Calculators
                 }
             }
 
-            // Вычисляем характеристику равномощности таксонов - h
-            // количество таксонов в степени количества таксонов
+            // calculating equipotency of groups - h
+            // groups count to the power of groups count.
             double h = Math.Pow(taxonCount, taxonCount);
             for (int m = 0; m < taxonPower.Count; m++)
             {
                 if (taxonPower[m] != 0)
                 {
-                    // мощность таксона, делёная на общее количество элементов
+                    // Elements count in group divided by elements count in whole graph.
                     h *= (double)taxonPower[m] / manager.Elements.Count;
                 }
             }

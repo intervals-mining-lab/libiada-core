@@ -54,7 +54,7 @@
                 v *= (uint)temp.Cardinality;
             }
 
-            // корню дерева не ставится в соответствие фантомное сообщение
+            // tree root is associated with phantom message
             var t = new ValuePhantom { NullValue.Instance() };
             table[0] = new Record(t, v);
         }

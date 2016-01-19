@@ -14,49 +14,30 @@
     public class ScramblingGenerator
     {
         /// <summary>
-        /// The alphabet.
-        /// </summary>
-        private Alphabet alphabet;
-
-        /// <summary>
-        /// The length.
-        /// </summary>
-        private int length;
-
-        /// <summary>
-        /// The characteristic.
-        /// </summary>
-        private List<LinkedCharacteristic> characteristic;
-
-        /// <summary>
         /// Генерирует хештаблицу со всеми возможными строями в качестве ключа,
         /// и списком характеристик в качестве значения.
         /// </summary>
         /// <param name="alphabet">
-        /// Алфавит на основе которого генерируем цепочки.
+        /// Alphabet for generated sequences.
         /// </param>
-        /// <param name="len">
-        /// Длинна генерируемых цепочек.
+        /// <param name="length">
+        /// Length of generated sequences.
         /// </param>
-        /// <param name="charact">
-        /// Массив интерфейсов вычисляемых характеристик.
+        /// <param name="characteristic">
+        /// Calculated characteristics.
         /// </param>
         /// <returns>
         /// The <see cref="ChainPicksWithCharacteristics"/>.
         /// </returns>
-        public ChainPicksWithCharacteristics Generate(Alphabet alphabet, int len, List<LinkedCharacteristic> charact) 
+        public ChainPicksWithCharacteristics Generate(Alphabet alphabet, int length, List<LinkedCharacteristic> characteristic) 
         {
-            this.alphabet = alphabet;
-            length = len;
-            characteristic = charact;
-
             var hashTable = new Hashtable();
 
             // По всем возможным цепочкам (Для оптимизации скорости генерируется цепочки с одинаковой первой буквой)
             for (int i = 0; i < Math.Pow(alphabet.Cardinality, length - 1); i++)
             {
-                Chain chain = GenerateChain(i);
-                List<double> characteristics = CalculateCharacteristics(chain);
+                Chain chain = GenerateChain(alphabet, i, length);
+                List<double> characteristics = CalculateCharacteristics(chain, characteristic);
                 try
                 {
                     hashTable.Add(ArrayManipulator.ArrayToString(chain.Building), characteristics);
@@ -66,7 +47,7 @@
                 }
             }
 
-            return new ChainPicksWithCharacteristics(hashTable, charact);
+            return new ChainPicksWithCharacteristics(hashTable, characteristic);
         }
 
         /// <summary>
@@ -75,10 +56,13 @@
         /// <param name="chain">
         /// The chain.
         /// </param>
+        /// <param name="characteristic">
+        /// The characteristic for calculation.
+        /// </param>
         /// <returns>
         /// The <see cref="List{Double}"/>.
         /// </returns>
-        private List<double> CalculateCharacteristics(Chain chain)
+        private List<double> CalculateCharacteristics(Chain chain, List<LinkedCharacteristic> characteristic)
         {
             var characteristics = new List<double>(characteristic.Count);
             foreach (LinkedCharacteristic calculator in characteristic)
@@ -92,13 +76,19 @@
         /// <summary>
         /// The generate chain.
         /// </summary>
+        /// <param name="alphabet">
+        /// Generated sequence alphabet.
+        /// </param>
         /// <param name="i">
         /// The i.
+        /// </param>
+        /// <param name="length">
+        /// Generated sequence length.
         /// </param>
         /// <returns>
         /// The <see cref="Chain"/>.
         /// </returns>
-        private Chain GenerateChain(int i)
+        private Chain GenerateChain(Alphabet alphabet, int i, int length)
         {
             // Очередная цепочка
             var chain = new Chain(length);

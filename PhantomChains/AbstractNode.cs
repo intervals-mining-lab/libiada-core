@@ -7,7 +7,7 @@
     using MarkovChains.MarkovChain.Generators;
 
     /// <summary>
-    /// Интерфейс элемента дерева
+    /// Tree node interface.
     /// </summary>
     public abstract class AbstractNode
     {
@@ -32,36 +32,45 @@
         protected int StartPosition { get; set; }
 
         /// <summary>
-        /// Интерфейс рекурсивного метода осуществляющего декременту вариантов построения в данной ветви.
-        /// Также уменьшает количество вариантов данного узла на 1. Вызывается после генерации очередного занчения.
+        /// Interface of recursive method decrementing variations of current branch.
+        /// Also decreases variants count of current node by 1. Called after generation of another value.
         /// </summary>
         /// <returns>
-        /// Булевый флаг, показывающий нужно ли производить проверку детей
-        /// на отсутствие дальнейших вариантов. Если флаг имеет значение false,
-        /// то действие не требуется. Если же true, то требуется проверить дочерние элементы 
-        /// на наличие возможных вариантов, и удалить детей в которых больше нет вариантов. 
+        /// Recursion flag for children. 
+        /// If true further validation is required. 
+        /// If false no further validation is required. 
         /// </returns>
         public abstract bool Decrement();
 
         /// <summary>
-        /// Метод, возвращающий дочерний для данного элемент дерева по его индексу.
+        /// Searcheck child element by its index.
         /// </summary>
-        /// <param name="index">Индекс дочернего элемента</param>
-        /// <returns>Дочерний элемент</returns>
+        /// <param name="index">
+        /// Index of child element.
+        /// </param>
+        /// <returns>
+        /// Child element as <see cref="TreeNode"/>.
+        /// </returns>
         public TreeNode GetChild(int index)
         {
             return Children[index];
         }
 
         /// <summary>
-        /// Метод, выбирающий какой из потомков будет генерировать очередной элемент цепи.
+        /// Choosing which child will generate next element of sequence.
         /// </summary>
-        /// <param name="result">Генерируемая цепь</param>
-        /// <param name="generator">Генератор случайных чисел</param>
-        /// <param name="table">Таблица с параметрами фантомной цепи</param>
+        /// <param name="result">
+        /// Intermediate result.
+        /// </param>
+        /// <param name="generator">
+        /// Random numbers generator.
+        /// </param>
+        /// <param name="table">
+        /// Phantom sequence parameters table.
+        /// </param>
         protected void Find(BaseChain result, IGenerator generator, PhantomTable table)
         {
-            // если элемент не листовой
+            // if not leaf node
             if (Children.Count != 0)
             {
                 double val = generator.Next();
@@ -78,8 +87,7 @@
             }
             else
             {
-                // если дочерних элементов нет, то генерация закончена
-                // и запускаем процедуру декременты варинтов в данной ветви
+                // if there is no children nodes then generation is done and decrement procedure is started
                 Decrement();
             }
         }

@@ -4,7 +4,7 @@ namespace BuildingsIterator
     using LibiadaCore.Core.Characteristics.Calculators;
 
     /// <summary>
-    /// ѕара, калькул€тор характеристики и прив€зка
+    /// Pair of characteristic calculator and link.
     /// </summary>
     public abstract class LinkedCharacteristic
     {

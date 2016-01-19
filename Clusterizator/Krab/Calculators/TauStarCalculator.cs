@@ -4,48 +4,46 @@ namespace Clusterizator.Krab.Calculators
     using System.Collections.Generic;
 
     /// <summary>
-    /// Класс для вычисления локальной плотности точек
-    /// в окрестности данной пары точек
+    /// Calculator of local density of nodes.
     /// </summary>
     public class TauStarCalculator : ICalculator
     {
         /// <summary>
-        /// Метод вычисляющий локальную плотность точек 
-        /// в окрестности данной пары точек
+        /// Local density of nodes in neighborhood of given pair of nodes calculation method.
         /// </summary>
         /// <param name="graph">
-        /// Массив связей графа.
+        /// Connections graph.
         /// </param>
         public void Calculate(GraphManager graph)
         {
             for (int i = 0; i < graph.Connections.Count; i++)
             {
                 Connection connection = graph.Connections[i];
-                double bMin = GetBmin(graph.Connections, graph.Elements.Count, connection.FirstElementIndex, connection.SecondElementIndex);
-                connection.TauStar = connection.Distance / bMin;
+                double bMinimum = GetBMinimum(graph.Connections, graph.Elements.Count, connection.FirstElementIndex, connection.SecondElementIndex);
+                connection.TauStar = connection.Distance / bMinimum;
             }
         }
 
         /// <summary>
-        /// Вычисляет минимальное расстояние до пары точек,
-        /// т.е. ищет самое короткое ребро среди смежных данным точкам
+        /// Calculates minimal distance to the nodes pair
+        /// (searches for the shortest adjacent connection).
         /// </summary>
         /// <param name="graph">
-        /// Массив связей графа
+        /// Connections graph.
         /// </param>
         /// <param name="elementsPower">
         /// Count of elements.
         /// </param>
         /// <param name="firstElement">
-        /// первая точка
+        /// First node.
         /// </param>
         /// <param name="secondElement">
-        /// вторая точка
+        /// Second node.
         /// </param>
         /// <returns>
-        /// Bmin - минимальное расстояние
+        /// Bminimum - minimal distance.
         /// </returns>
-        private double GetBmin(List<Connection> graph, int elementsPower, int firstElement, int secondElement)
+        private double GetBMinimum(List<Connection> graph, int elementsPower, int firstElement, int secondElement)
         {
             double min = Math.Min(
                 SearchForMinimum(graph, elementsPower, firstElement, secondElement),
@@ -73,23 +71,23 @@ namespace Clusterizator.Krab.Calculators
         /// </returns>
         private double SearchForMinimum(List<Connection> graph, int elementsPower, int element, int exceptedElement)
         {
-            // текущее минимальное расстояние
+            // current minimum distance
             double min = double.MaxValue; 
 
             int blockBeginning = 0;
             for (int i = 0; i < element; i++)
             {
-                // ищём начало нужного нам блока
+                // searching start ofrequired block
                 blockBeginning += BlockLength(i, elementsPower); 
             }
 
-            // сумма длин предыдущих блоков
+            // sum of previous blocks lengthes
             int blockSum = 0;
 
-            // сдвиг внутри блока
+            // shift inside block
             int shift = element - 1; 
 
-            // цикл перебора отдельных значений в массиве пар вершин 
+            // cycling through separate values in array of connections (pairs of nodes) 
             for (int k = 0, j = element - 1; shift >= 0; j = blockSum + (--shift), k++)
             {
                 if ((min > graph[j].Distance) && 
@@ -102,10 +100,10 @@ namespace Clusterizator.Krab.Calculators
                 blockSum += BlockLength(k, elementsPower);
             }
             
-            // вычисляем длину блока
+            // calculating block length
             int ourBlockLength = BlockLength(element, elementsPower);
 
-            // перебор блока от начала до конца
+            // iterating block from start to the end
             for (int k = blockBeginning; k < blockBeginning + ourBlockLength; k++) 
             {
                 if ((min > graph[k].Distance) && 

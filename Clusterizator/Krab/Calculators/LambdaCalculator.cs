@@ -3,16 +3,15 @@ namespace Clusterizator.Krab.Calculators
     using System;
 
     /// <summary>
-    /// Класс вычисляющий лямбда-расстояние для всех точек графа
+    /// Lambda-distance calculator (for KRAB clusterization)
     /// </summary>
     public class LambdaCalculator
     {
         /// <summary>
-        /// Метод интерфейса ICalculator, 
-        /// вычисляющий лямбда-расстояние
+        /// Lambda-distance calculation method.
         /// </summary>
         /// <param name="graph">
-        /// Массив связей графа.
+        /// Connections graph.
         /// </param>
         /// <param name="normalizedDistanceWeight">
         /// The normalized distance weight.

@@ -4,18 +4,17 @@ namespace Clusterizator.Krab
     using System.Linq;
 
     /// <summary>
-    /// Класс хранящий граф и список его вершин,
-    /// а также оперирующий с этими вершинами
+    /// Class representing graph of connected nodes.
     /// </summary>
     public class GraphManager
     {
         /// <summary>
-        /// Массив связей графа.
+        /// Nodes connections in graph.
         /// </summary>
         public readonly List<Connection> Connections;
 
         /// <summary>
-        /// Массив вершин.
+        /// Nodes of graph.
         /// </summary>
         public readonly List<GraphElement> Elements;
 
@@ -35,80 +34,77 @@ namespace Clusterizator.Krab
         }
 
         /// <summary>
-        /// Метод соединяющий две вершины
+        /// Nodes connection method.
         /// </summary>
-        /// <param name="index1">
-        /// Индекс первой вершины
+        /// <param name="firstIndex">
+        /// First node index.
         /// </param>
-        /// <param name="index2">
-        /// Индекс второй вершины
+        /// <param name="secondIndex">
+        /// Second node index.
         /// </param>
-        public void Connect(int index1, int index2)
+        public void Connect(int firstIndex, int secondIndex)
         {
-            // если вершины уже в одном таксоне
-            if ((Elements[index1].TaxonNumber == Elements[index2].TaxonNumber) && (Elements[index1].TaxonNumber != 0))
+            // if nodes are already in one group
+            if ((Elements[firstIndex].TaxonNumber == Elements[secondIndex].TaxonNumber) && (Elements[firstIndex].TaxonNumber != 0))
             {
                 return;
             }
 
-            // если обе не входят ни в один таксон
-            if ((Elements[index1].TaxonNumber == 0) && (Elements[index2].TaxonNumber == 0))
+            // if both nodes doesn't belong to any group
+            if ((Elements[firstIndex].TaxonNumber == 0) && (Elements[secondIndex].TaxonNumber == 0))
             {
-                // создаём новый таксон
-                Elements[index1].TaxonNumber = GetNextTaxonNumber();
-                Elements[index2].TaxonNumber = Elements[index1].TaxonNumber;
-                Connections[SearchConnection(index1, index2)].Connected = true;
+                // creating new group
+                Elements[firstIndex].TaxonNumber = GetNextTaxonNumber();
+                Elements[secondIndex].TaxonNumber = Elements[firstIndex].TaxonNumber;
+                Connections[SearchConnection(firstIndex, secondIndex)].Connected = true;
             }
-            else if (Elements[index1].TaxonNumber == 0)
+            else if (Elements[firstIndex].TaxonNumber == 0)
             {
-                // если только первый элемент никуда не входит
-                // прикрепляем первый элемент к существующему таксону
-                Elements[index1].TaxonNumber = Elements[index2].TaxonNumber;
-                Connections[SearchConnection(index1, index2)].Connected = true;
+                // if only first element doesn't belong to any group connecting it to the existing group
+                Elements[firstIndex].TaxonNumber = Elements[secondIndex].TaxonNumber;
+                Connections[SearchConnection(firstIndex, secondIndex)].Connected = true;
             }
-            else if (Elements[index2].TaxonNumber == 0)
+            else if (Elements[secondIndex].TaxonNumber == 0)
             {
-                // если только второй никуда не входит
-                // прикрепляем второй элемент к существующему таксону
-                Elements[index2].TaxonNumber = Elements[index1].TaxonNumber;
-                Connections[SearchConnection(index1, index2)].Connected = true;
+                // if only second element doesn't belong to any group connecting it to the existing group
+                Elements[secondIndex].TaxonNumber = Elements[firstIndex].TaxonNumber;
+                Connections[SearchConnection(firstIndex, secondIndex)].Connected = true;
             }
-            else if (Elements[index1].TaxonNumber > Elements[index2].TaxonNumber)
+            else if (Elements[firstIndex].TaxonNumber > Elements[secondIndex].TaxonNumber)
             {
-                // если первый элемент в таксоне с большим номером
-                // перенумеруем таксон первого элемента
-                Renumber(index1, Elements[index2].TaxonNumber);
-                Connections[SearchConnection(index1, index2)].Connected = true;
+                // if group of first element has bigger number then we renumber it
+                Renumber(firstIndex, Elements[secondIndex].TaxonNumber);
+                Connections[SearchConnection(firstIndex, secondIndex)].Connected = true;
             }
-            else if (Elements[index2].TaxonNumber > Elements[index1].TaxonNumber)
+            else if (Elements[secondIndex].TaxonNumber > Elements[firstIndex].TaxonNumber)
             {
-                // если второй в таксоне с большим номером
-                // перенумеруем таксон второго элемента
-                Renumber(index2, Elements[index1].TaxonNumber);
-                Connections[SearchConnection(index1, index2)].Connected = true;
+                // if group of second element has bigger number then we renumber it
+                Renumber(secondIndex, Elements[firstIndex].TaxonNumber);
+                Connections[SearchConnection(firstIndex, secondIndex)].Connected = true;
             }
         }
         
         /// <summary>
-        /// Метод ищущий соединение по паре вершин
+        /// Searches connection index for pair of nodes.
         /// </summary>
-        /// <param name="element1">
-        /// Первая вершина
+        /// <param name="firstElement">
+        /// First node.
         /// </param>
-        /// <param name="element2">
-        /// Вторая вершина
+        /// <param name="secondElement">
+        /// Second node.
         /// </param>
-        /// <returns>Соединение пары вершин
+        /// <returns>
+        /// Index of connection in graph as.
         /// </returns>
-        public int SearchConnection(GraphElement element1, GraphElement element2)
+        public int SearchConnection(GraphElement firstElement, GraphElement secondElement)
         {
             for (int i = 0; i < Connections.Count; i++)
             {
-                bool normalOrder = element1.Id.Equals(Elements[Connections[i].FirstElementIndex].Id) &&
-                                   element2.Id.Equals(Elements[Connections[i].SecondElementIndex].Id);
+                bool normalOrder = firstElement.Id.Equals(Elements[Connections[i].FirstElementIndex].Id) &&
+                                   secondElement.Id.Equals(Elements[Connections[i].SecondElementIndex].Id);
 
-                bool inverseOrder = element2.Id.Equals(Elements[Connections[i].FirstElementIndex].Id) &&
-                                    element1.Id.Equals(Elements[Connections[i].SecondElementIndex].Id);
+                bool inverseOrder = secondElement.Id.Equals(Elements[Connections[i].FirstElementIndex].Id) &&
+                                    firstElement.Id.Equals(Elements[Connections[i].SecondElementIndex].Id);
                 if (normalOrder || inverseOrder)
                 {
                     return i;
@@ -119,10 +115,10 @@ namespace Clusterizator.Krab
         }
 
         /// <summary>
-        /// Метод вычисляющий номер для нового таксона
+        /// Calculates number of new group.
         /// </summary>
         /// <returns>
-        /// Ещё не занятый минимальный номер
+        /// Minimum unoccupied number of group.
         /// </returns>
         public int GetNextTaxonNumber()
         {
@@ -130,27 +126,27 @@ namespace Clusterizator.Krab
         }
 
         /// <summary>
-        /// Метод разрывающий связь между парой вершин и 
-        /// перенумеровывающий получившиеся таксоны
+        /// Removes connection between given nodes.
+        /// Also renumbers groups emerging as result of disconnection.
         /// </summary>
-        /// <param name="element1">
-        /// Первая вершина
+        /// <param name="firstElement">
+        /// First node.
         /// </param>
-        /// <param name="element2">
-        /// Вторая вершина
+        /// <param name="secondElement">
+        /// Second node.
         /// </param>
-        public void Cut(GraphElement element1, GraphElement element2)
+        public void Cut(GraphElement firstElement, GraphElement secondElement)
         {
-            Connection connection = Connections[SearchConnection(element1, element2)];
+            Connection connection = Connections[SearchConnection(firstElement, secondElement)];
             Cut(connection);
         }
 
         /// <summary>
-        /// Метод разрывает связь между указанной парой вершин и 
-        /// перенумеровывает получившиеся таксоны
+        /// Removes given connection between given nodes.
+        /// Also renumbers groups emerging as result of disconnection.
         /// </summary>
         /// <param name="connection">
-        /// Пара вершин
+        /// Connected nodes pair.
         /// </param>
         public void Cut(Connection connection)
         {
@@ -164,10 +160,10 @@ namespace Clusterizator.Krab
         }
 
         /// <summary>
-        /// Метод возвращает копию объекта
+        /// Method creates copy of graph.
         /// </summary>
         /// <returns>
-        /// копия графа
+        /// Copy of graph as <see cref="GraphManager"/>
         /// </returns>
         public GraphManager Clone()
         {
@@ -187,7 +183,7 @@ namespace Clusterizator.Krab
         }
 
         /// <summary>
-        /// Метод строит кратчайший незамкнутый путь (КНП)
+        /// Method is connecting nodes into "shortest unclosed path" (snp).
         /// </summary>
         public void ConnectGraph()
         {
@@ -196,10 +192,10 @@ namespace Clusterizator.Krab
                 var minDistance = double.MaxValue;
                 int pointNumber = -1;
 
-                // поиск кратчайшего ребра доступного для соединения
+                // searching for shortest available connection
                 for (int j = 0; j < Connections.Count; j++)
                 {
-                    // проверка на то что вершины не принадлежат одному графу
+                    // checking that noeds are in different subgraphs
                     bool taxonNumberCheck = (Elements[Connections[j].FirstElementIndex].TaxonNumber !=
                                              Elements[Connections[j].SecondElementIndex].TaxonNumber)
                                             || (Elements[Connections[j].FirstElementIndex].TaxonNumber == 0);
@@ -215,21 +211,21 @@ namespace Clusterizator.Krab
         }
 
         /// <summary>
-        /// Метод рекурсивно перенумерующий связанные вершины графа
+        /// Recursive method for renumeration of connected graph nodes.
         /// </summary>
         /// <param name="index">
-        /// Номер элемента для перенумерования
+        /// Index of element for renumeration.
         /// </param>
         /// <param name="newNumber">
-        /// Новый номер таксона
+        /// New group number.
         /// </param>
         private void Renumber(int index, int newNumber)
         {
-            // меняем таксон текушего элемента
+            // changing group of current node
             Elements[index].TaxonNumber = newNumber;
             for (int i = 0; i < Connections.Count; i++)
             {
-                // для всех соединённых пар вершин
+                // for all connected nodes
                 if (Connections[i].Connected)
                 {
                     if ((Connections[i].FirstElementIndex == index)
@@ -247,13 +243,13 @@ namespace Clusterizator.Krab
         }
 
         /// <summary>
-        /// Метод поиска соединения по индексам вершин
+        /// Connection search by nodes indexes.
         /// </summary>
         /// <param name="index1">
-        /// индекс первого элемента
+        /// First element index.
         /// </param>
         /// <param name="index2">
-        /// индекс второго элемента
+        /// Second element index.
         /// </param>
         /// <returns>
         /// The <see cref="int"/>.

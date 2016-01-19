@@ -55,7 +55,7 @@ namespace Clusterizator.Tests.Krab
         public void ClusterizationTest()
         {
             var krab = new KrabClusterization(dt, 4, 2, 1);
-            var result = krab.Clusterizate(2).Clusters;
+            var result = krab.Cluster(2).Clusters;
 
             Assert.IsTrue(((Cluster)result[1]).Items.Contains((long)1));
             Assert.IsTrue(((Cluster)result[1]).Items.Contains((long)3));
@@ -87,7 +87,7 @@ namespace Clusterizator.Tests.Krab
             var dataTable = new DataTable { object1, object2, object3, object4 };
 
             var krab = new KrabClusterization(dataTable, 4, 2, 1);
-            var result = krab.ClusterizateAllVariants().Variants;
+            var result = krab.ClusterAllVariants().Variants;
             Assert.AreEqual(3, result.Count);
         }
 
@@ -116,7 +116,7 @@ namespace Clusterizator.Tests.Krab
             var dataTable = new DataTable { object1, object2, object3, object4 };
 
             var krab = new KrabClusterization(dataTable, 4, 2, 1);
-            var result = krab.ClusterizateAllVariants().Variants;
+            var result = krab.ClusterAllVariants().Variants;
             Assert.AreEqual(3, result.Count);
         }
     }

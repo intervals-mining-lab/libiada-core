@@ -8,7 +8,7 @@ namespace PhantomChains
     using MarkovChains.MarkovChain.Generators;
 
     /// <summary>
-    /// Класс-узел дерева ваиантов
+    /// Variants tree node.
     /// </summary>
     public class TreeNode : AbstractNode
     {
@@ -26,22 +26,22 @@ namespace PhantomChains
         /// Initializes a new instance of the <see cref="TreeNode"/> class.
         /// </summary>
         /// <param name="parent">
-        /// Родительский узел
+        /// Parent node.
         /// </param>
         /// <param name="content">
-        /// Вариант содержимого соответствующий данному узлу
+        /// Content of the this node.
         /// </param>
         /// <param name="table">
-        /// Таблица с параметрами
+        /// Parameters table.
         /// </param>
         /// <exception cref="ArgumentNullException">
-        /// Если родительский элемент не задан, возникает исключение
+        /// Thrown if parent is null.
         /// </exception>
         public TreeNode(AbstractNode parent, IBaseObject content, PhantomTable table)
         {
             if (parent == null)
             {
-                throw new ArgumentNullException("parent", "Отсутствует родительский элемент в дереве вариантов");
+                throw new ArgumentNullException("parent", "Parent node is null");
             }
 
             this.parent = parent;
@@ -84,6 +84,7 @@ namespace PhantomChains
         ///  если цепочка заполнена не до конца.
         /// </summary>
         /// <param name="result">
+        /// 
         /// Генерируемая цепочка
         /// </param>
         /// <param name="generator">

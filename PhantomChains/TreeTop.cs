@@ -6,7 +6,7 @@
     using MarkovChains.MarkovChain.Generators;
 
     /// <summary>
-    /// Корневой узел дерева враинтов.
+    /// Root node of variants tree.
     /// </summary>
     public class TreeTop : AbstractNode
     {

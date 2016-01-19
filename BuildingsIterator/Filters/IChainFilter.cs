@@ -1,12 +1,12 @@
 namespace BuildingsIterator.Filters
 {
     /// <summary>
-    /// Интерфес фильтра цепей.
+    /// Interface of sequences filter.
     /// </summary>
     public interface IChainFilter
     {
         /// <summary>
-        /// Возвращает булевое значение валидности результата фильтрации.
+        /// Checks if building fits the filtering criteria.
         /// </summary>
         /// <param name="building">
         /// Building to check.

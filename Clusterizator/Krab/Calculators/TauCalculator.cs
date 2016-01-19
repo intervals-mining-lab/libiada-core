@@ -3,17 +3,15 @@ namespace Clusterizator.Krab.Calculators
     using System.Collections.Generic;
 
     /// <summary>
-    /// Класс для вычисления нормированной локальной плотности точек
-    /// в окрестности данной пары точек
+    /// Calculator of local density of nodes.
     /// </summary>
     public class TauCalculator : ICalculator
     {
         /// <summary>
-        /// Метод вычисляющий нормированную локальную плотность точек 
-        /// в окрестности данной пары точек
+        /// Local density of nodes in neighborhood of given pair of nodes calculation method.
         /// </summary>
         /// <param name="graph">
-        /// Массив связей графа.
+        /// Connections graph.
         /// </param>
         public void Calculate(GraphManager graph)
         {
@@ -25,13 +23,13 @@ namespace Clusterizator.Krab.Calculators
         }
 
         /// <summary>
-        /// Метод вычислияет максимальную плотность точек в графе
+        /// Maximum density calculation method.
         /// </summary>
         /// <param name="graph">
-        /// Массив связей графа.
+        /// Connections graph.
         /// </param>
         /// <returns>
-        /// Tmax - максимальная плотность
+        /// Tmax - maximum density of nodes in graph.
         /// </returns>
         private double GetTauStarMax(List<Connection> graph)
         {

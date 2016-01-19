@@ -1,13 +1,13 @@
 namespace Clusterizator.Krab.Calculators
 {
     /// <summary>
-    /// Интерфейс калькулятора,
-    /// реализуемый при расчётах кластеризации
+    /// Distance calculator interface.
+    /// (used for clusterization)
     /// </summary>
     public interface ICalculator
     {
         /// <summary>
-        /// Метод реализует какое-либо вычисление для графа.
+        /// Distance calculation for the graph.
         /// </summary>
         /// <param name="graph">
         /// Connections graph.

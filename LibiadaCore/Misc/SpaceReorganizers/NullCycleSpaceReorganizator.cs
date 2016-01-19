@@ -10,7 +10,7 @@ namespace LibiadaCore.Misc.SpaceReorganizers
     /// </summary>
     public class NullCycleSpaceReorganizer : SpaceReorganizer
     {
-        // TODO: проверить, нужен ли вообще этот класс и делает ли он то что заявлено.
+        // TODO: check if this class is needed of if it does what it say it does.
 
         /// <summary>
         /// Markov chain level.

@@ -4,7 +4,7 @@ namespace BuildingsIterator
     using System.Collections.Generic;
 
     /// <summary>
-    ///  ласс выборки цепочек с характеристиками.
+    /// Sequences with characteristics sample.
     /// </summary>
     public class ChainPicksWithCharacteristics
     {
@@ -17,10 +17,10 @@ namespace BuildingsIterator
         /// Initializes a new instance of the <see cref="ChainPicksWithCharacteristics"/> class.
         /// </summary>
         /// <param name="chains">
-        /// ’еш таблица с цепочками и вычисленными характеристиками.
+        /// Hashtable with sequences and calculated characteristics.
         /// </param>
         /// <param name="characters">
-        /// ћассив характеристик и прив€зок.
+        /// Array of characteristics and links.
         /// </param>
         public ChainPicksWithCharacteristics(Hashtable chains, List<LinkedCharacteristic> characters)
         {

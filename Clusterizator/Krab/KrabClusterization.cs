@@ -2,11 +2,12 @@ namespace Clusterizator.Krab
 {
     using System.Collections;
     using System.Collections.Generic;
+    using System.Linq;
 
     using Clusterizator.Krab.Calculators;
 
     /// <summary>
-    /// Класс реализующий кластеризацию методом KRAB
+    /// KRAB clusterization class.
     /// </summary>
     public class KrabClusterization : IClusterization
     {
@@ -47,18 +48,16 @@ namespace Clusterizator.Krab
         /// </param>
         public KrabClusterization(DataTable dataTable, double powerWeight, double normalizedDistanceWeight, double distanceWeight)
         {
-            // массив связей(пар вершин)
+            // all connections (pairs of elements)
             var connections = new List<Connection>(); 
 
-            // массив вершин
+            // all elements
             var elements = new List<GraphElement>();
 
             this.powerWeight = powerWeight;
 
             IEnumerator counter = dataTable.GetEnumerator();
             counter.Reset();
-
-            // Установка на нулевой элемент
             counter.MoveNext();
             for (int i = 0; i < dataTable.Count; i++)
             {
@@ -66,7 +65,7 @@ namespace Clusterizator.Krab
 
                 elements.Add(new GraphElement(((DataObject)current.Value).Vault, current.Key));
                 
-                // переход к следующему элементу
+                // moving to the next element
                 counter.MoveNext();
             }
 
@@ -80,52 +79,44 @@ namespace Clusterizator.Krab
 
             manager = new GraphManager(connections, elements);
 
-            // вычисление расстояний
+            // calculating distances
             CommonCalculator.CalculateCharacteristic(manager, normalizedDistanceWeight, distanceWeight); 
             manager.ConnectGraph();
         }
 
         /// <summary>
-        /// Метод, осущствляющий кластеризацию на заданное количество классов
+        /// Clusterization method for given groups number.
         /// </summary>
-        /// <param name="clusters">
-        /// Количество кластеров
+        /// <param name="clustersCount">
+        /// Groups count.
         /// </param>
         /// <returns>
-        /// Оптимальный вариант разбиения
+        /// Optimal clusterization as <see cref="ClusterizationVariants"/>.
         /// </returns>
-        public ClusterizationResult Clusterizate(int clusters)
+        public ClusterizationResult Cluster(int clustersCount)
         {
             GraphManager tempManager = manager.Clone();
-            ChooseDivision(clusters, 0, manager);
+            ChooseDivision(clustersCount, 0, manager);
             var result = new ClusterizationResult();
-            var tempRes = new List<ArrayList>();
+            var tempResult = new List<ArrayList>();
             for (int i = 0; i < optimalDivide.GetNextTaxonNumber(); i++)
             {
-                tempRes.Add(new ArrayList());
+                tempResult.Add(new ArrayList());
             }
 
-            // Извлекаем кластеры из графа
-            for (int j = 0; j < optimalDivide.Elements.Count; j++)
+            // extracting clusters from the graph
+            foreach (GraphElement element in this.optimalDivide.Elements)
             {
-                tempRes[optimalDivide.Elements[j].TaxonNumber].Add(optimalDivide.Elements[j]);
+                tempResult[element.TaxonNumber].Add(element);
             }
 
-            var res = new List<ArrayList>();
+            // saving only not empty groups
+            tempResult = tempResult.Where(t => t.Count > 0).ToList();
 
-            // Сохраняем только непустые кластеры
-            for (int k = 0; k < tempRes.Count; k++)
+            // adding groups to the result container
+            foreach (ArrayList cluster in tempResult)
             {
-                if (tempRes[k].Count > 0)
-                {
-                    res.Add(tempRes[k]);
-                }
-            }
-
-            // Складываем кластеры в нужный контейнер с результатами
-            for (int l = 0; l < res.Count; l++)
-            {
-                result.Clusters.Add(new Cluster(res[l]));
+                result.Clusters.Add(new Cluster(cluster));
             }
 
             manager = tempManager;
@@ -133,57 +124,56 @@ namespace Clusterizator.Krab
         }
 
         /// <summary>
-        /// Метод, осуществляющий кластеризацию с количествок кластеров 
-        /// меньше или равное заданому
+        /// Clusterization method for given or less nuber of groups.
         /// </summary>
-        /// <param name="clusters">
-        /// Количество кластеров
+        /// <param name="MaximumClustersCount">
+        /// Maximum groups count.
         /// </param>
         /// <returns>
-        /// Результат разбиения
+        /// Clustering result as <see cref="ClusterizationVariants"/>.
         /// </returns>
-        public ClusterizationVariants ClusterizateVariantCountClustersBelow(int clusters)
+        public ClusterizationVariants ClusterVariantCountClustersBelow(int MaximumClustersCount)
         {
             var temp = new ClusterizationVariants();
-            for (int i = 2; i <= clusters; i++)
+            for (int i = 2; i <= MaximumClustersCount; i++)
             {
-                temp.Variants.Add(Clusterizate(i));
+                temp.Variants.Add(Cluster(i));
             }
 
             return temp;
         }
 
         /// <summary>
-        /// Метод, осуществляющий разбиение на все возможные кластеры
+        /// Dividing into all possible divisions.
         /// </summary>
         /// <returns>
-        /// Результат разбиения
+        /// Clustering result as <see cref="ClusterizationVariants"/>.
         /// </returns>
-        public ClusterizationVariants ClusterizateAllVariants()
+        public ClusterizationVariants ClusterAllVariants()
         {
-            return ClusterizateVariantCountClustersBelow(manager.Elements.Count);
+            return ClusterVariantCountClustersBelow(manager.Elements.Count);
         }
 
         /// <summary>
-        /// Рекурсивный метод поиска оптимального разбиения графа на таксоны
+        /// Recursive method for finding optimal division of graph into clusters (groups).
         /// </summary>
         /// <param name="clusters">
-        /// Оставшееся количество кластеров для отделения
+        /// Clusters left to separate.
         /// </param>
         /// <param name="position">
-        /// Начальная позиция для перебора
+        /// Starting position for iteration.
         /// </param>
         /// <param name="currentManager">
-        /// Граф и его обработчик
+        /// Graph and its manager.
         /// </param>
         private void ChooseDivision(int clusters, int position, GraphManager currentManager)
         {
-            // если ещё требуются рекурсивные вызовы процедуры 
+            // if recursive calls are required 
             if (clusters > 1)
             {
                 for (int i = position; i < (manager.Connections.Count - clusters); i++)
                 {
-                    // копируем граф, чтобы разорвать одну из его дуг
+                    // creatingcopy of graph to be able to disconnect pair of nodes (cut the link)
                     GraphManager tempManager = currentManager.Clone();
                     if (tempManager.Connections[i].Connected)
                     {
@@ -194,11 +184,11 @@ namespace Clusterizator.Krab
             }
             else
             {
-                // вычисление качества разбиения
+                // calculating clusterization quality
                 double f = QualityCalculator.Calculate(currentManager, manager, powerWeight);
                 if (f > optimalF)
                 {
-                    // сохранение оптимального разбиения
+                    // saving optimal clusterization
                     optimalDivide = currentManager;
                     optimalF = f;
                 }

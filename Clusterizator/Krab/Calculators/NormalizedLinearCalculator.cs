@@ -5,15 +5,15 @@ namespace Clusterizator.Krab.Calculators
     using System.Linq;
 
     /// <summary>
-    /// Класс для вычисления нормированного эвклидового расстояния 
+    /// Normalized euclidean distance calculator.
     /// </summary>
     public class NormalizedLinearCalculator : ICalculator
     {
         /// <summary>
-        /// Метод вычисляющий нормированное расстояние 
+        /// Normalized euclidean distance calculation method. 
         /// </summary>
         /// <param name="graph">
-        /// Массив связей графа.
+        /// Connections graph.
         /// </param>
         public void Calculate(GraphManager graph)
         {
@@ -23,7 +23,7 @@ namespace Clusterizator.Krab.Calculators
                 return;
             }
 
-            // Ограничиваем диапазон расстояний в интервале (0;1]
+            // Normalizing all distances to range (0;1]
             foreach (Connection connection in graph.Connections)
             {
                 connection.NormalizedDistance = connection.Distance / diameter;
@@ -31,14 +31,14 @@ namespace Clusterizator.Krab.Calculators
         }
 
         /// <summary>
-        /// Метод для нахождения диаметра графа
-        /// (наибольшей дуги графа)
+        /// Graph diameter calculation method.
+        /// Calculated as longest connection in graph
         /// </summary>
         /// <param name="graph">
-        /// Массив связей графа
+        /// Connections graph.
         /// </param>
         /// <returns>
-        /// d - максимальное расстояние
+        /// d - maximum distance.
         /// </returns>
         private double GetDiameter(IEnumerable<Connection> graph)
         {

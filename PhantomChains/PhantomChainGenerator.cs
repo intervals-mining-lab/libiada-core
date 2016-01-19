@@ -10,12 +10,12 @@ namespace PhantomChains
     using MarkovChains.MarkovChain.Generators;
 
     /// <summary>
-    /// Генератор фаонтомных цепей.
+    /// Phantom sequences generator.
     /// </summary>
     public class PhantomChainGenerator
     {
         /// <summary>
-        /// Количество возможных вариантов для данной цепи
+        /// Number of possible variants for given sequence.
         /// </summary>
         public readonly ulong Variants = ulong.MaxValue;
 
@@ -35,7 +35,7 @@ namespace PhantomChains
         private readonly IGenerator generator;
 
         /// <summary>
-        /// Древья вариантов построения для отдельных участков фантомной цепи (длиной 30 элементов)
+        /// Variants trees for separate fragments of phantom sequence (length 30 elements).
         /// </summary>
         private readonly List<TreeTop> tree = new List<TreeTop>();
 
@@ -72,8 +72,7 @@ namespace PhantomChains
                 tree.Add(null);
             }
 
-            // цикл подсчёта вариантов в каждом дереве 
-            // и создания деревьев
+            // variants count calculation cycle 
             for (int i = 0; i < tempChains.Count; i++)
             {
                 for (int j = 0; j < tempChains[i].GetLength(); j++)
@@ -105,13 +104,17 @@ namespace PhantomChains
         }
 
         /// <summary>
-        /// Метод осуществляет генерацию заданного количества цепей
+        /// Generates given number of sequences.
         /// </summary>
-        /// <param name="i">Требуемое количество генетических последовательностей</param>
-        /// <returns>Массив цепочек</returns>
-        public List<BaseChain> Generate(ulong i)
+        /// <param name="count">
+        /// Required sequences count.
+        /// </param>
+        /// <returns>
+        /// Generated sequences.
+        /// </returns>
+        public List<BaseChain> Generate(ulong count)
         {
-            if (i > Variants)
+            if (count > Variants)
             {
                 throw new Exception();
             }
@@ -125,7 +128,7 @@ namespace PhantomChains
 
             generator.Reset();
             int chainCounter = 0;
-            while (res.Count != (uint)i)
+            while (res.Count != (uint)count)
             {
                 int counter = 0;
                 res.Add(new BaseChain(totalLength));

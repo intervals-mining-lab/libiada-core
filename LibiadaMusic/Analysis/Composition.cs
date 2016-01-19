@@ -390,7 +390,6 @@
 
             for (int i = 0; i < PLex.Capacity; i++)
             {
-                // на время эксперимента комментарий
                 DisplayData.IdN.Add(new[] { PLex.Data[i].Id, PLex.Data[i].Occurrence });
 
                 DisplayData.RankFreqP.Add(new[] { PLex.RData()[i].Rank, PLex.RData()[i].Frequency });

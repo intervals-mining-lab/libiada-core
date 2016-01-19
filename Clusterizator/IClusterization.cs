@@ -1,7 +1,7 @@
 namespace Clusterizator
 {
     /// <summary>
-    /// Интерфейс методов кластеризации 
+    /// Clusterization methods interface. 
     /// </summary>
     public interface IClusterization
     {
@@ -14,7 +14,7 @@ namespace Clusterizator
         /// <returns>
         /// The <see cref="ClusterizationResult"/>.
         /// </returns>
-        ClusterizationResult Clusterizate(int clusters);
+        ClusterizationResult Cluster(int clusters);
 
         /// <summary>
         /// The clusterizate variant count clusters below.
@@ -25,7 +25,7 @@ namespace Clusterizator
         /// <returns>
         /// The <see cref="ClusterizationVariants"/>.
         /// </returns>
-        ClusterizationVariants ClusterizateVariantCountClustersBelow(int clusters);
+        ClusterizationVariants ClusterVariantCountClustersBelow(int clusters);
 
         /// <summary>
         /// The clusterizate all variants.
@@ -33,6 +33,6 @@ namespace Clusterizator
         /// <returns>
         /// The <see cref="ClusterizationVariants"/>.
         /// </returns>
-        ClusterizationVariants ClusterizateAllVariants();
+        ClusterizationVariants ClusterAllVariants();
     }
 }
