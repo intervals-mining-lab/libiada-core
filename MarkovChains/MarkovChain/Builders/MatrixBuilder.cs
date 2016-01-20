@@ -8,16 +8,16 @@ namespace MarkovChains.MarkovChain.Builders
     public class MatrixBuilder : IMatrixBuilder
     {
         /// <summary>
-        /// Создать матрицу.
+        /// Creates matrix.
         /// </summary>
         /// <param name="alphabetCardinality">
-        /// Мощность алфавита
+        /// Alphabet cardinality.
         /// </param>
         /// <param name="i">
-        /// Размерность матрицы
+        /// The dimensionality of the matrix.
         /// </param>
         /// <returns>
-        /// Элемент матрицы
+        /// Element of matrix as <see cref="object"/>.
         /// </returns>
         public object Create(int alphabetCardinality, int i)
         {

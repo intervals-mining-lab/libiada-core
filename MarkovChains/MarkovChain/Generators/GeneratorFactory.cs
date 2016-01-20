@@ -3,19 +3,21 @@ namespace MarkovChains.MarkovChain.Generators
     using System;
 
     /// <summary>
-    /// Статический класс - фабрика генераторов случайных чисел
+    /// Random generators factory.
     /// </summary>
     public static class GeneratorFactory
     {
         /// <summary>
-        /// Метод создающий генератор случайных величин заданного типа
+        /// Creates random generator of given type.
         /// </summary>
-        /// <param name="generator">Тип генератора</param>
+        /// <param name="generator">
+        /// Generator type.
+        /// </param>
         /// <returns>
-        /// Генератор случайных чисел
+        /// Random numbers generator.
         /// </returns>
         /// <exception cref="ArgumentException">
-        /// Неизвестный тип генератора вызывает исключение
+        /// Thrown if generator type is unknown.
         /// </exception>
         public static IGenerator Create(GeneratorType generator)
         {

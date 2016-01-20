@@ -80,7 +80,7 @@ namespace AlphabetCheckers
 
                     if (alphabet.Contains(word))
                     {
-                        // положительный вариант конца поиска решения
+                        // solution is found 
                         if (chain4Check.GetLength() == (int)list[i])
                         {
                             actChain.RemoveCharacter((int)list[i]);

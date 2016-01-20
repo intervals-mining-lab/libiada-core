@@ -53,10 +53,10 @@
         }
 
         /// <summary>
-        /// Возвращает список позиций указанной цепочки?
+        /// Returns list of positions of given sequence?
         /// </summary>
         /// <param name="chain">
-        /// Цепочка?
+        /// Sequence?
         /// </param>
         /// <returns>
         /// The <see cref="List{Int32}"/>.
@@ -67,7 +67,7 @@
         }
 
         /// <summary>
-        /// Возвращает все вхождения из списка.
+        /// Returns all entries from dictionary.
         /// </summary>
         /// <returns>
         /// The <see cref="T:Dictionary{List{String, List{Int32}}}"/>.

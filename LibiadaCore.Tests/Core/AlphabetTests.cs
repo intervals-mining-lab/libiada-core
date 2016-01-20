@@ -215,7 +215,8 @@
         }
 
         /// <summary>
-        /// Тест проверки ненарушения целостности при возвращении значения
+        /// Testing that alphabet creates internal copy of the element
+        /// so it cannot be changed from outside.
         /// </summary>
         [Test]
         public void ToArrayTest()
@@ -228,28 +229,6 @@
             alphabet1.Add(new ValueString('b'));
             alphabet1.Add(c);
             alphabet1.Add(new ValueString('d'));
-            alphabet1.Add(e);
-
-            Assert.AreNotSame(e, alphabet1[4]);
-            Assert.AreNotSame(c, alphabet1[2]);
-            Assert.AreNotSame(a, alphabet1[0]);
-        }
-
-        /// <summary>
-        /// Тест проверки ненарушения целостности при возвращении значения
-        /// </summary>
-        [Test]
-        public void ToListTest()
-        {
-            var a = new ValueString('a');
-            var b = new ValueString('b');
-            var c = new ValueString('c');
-            var d = new ValueString('d');
-            var e = new ValueString('e');
-            alphabet1.Add(a);
-            alphabet1.Add(b);
-            alphabet1.Add(c);
-            alphabet1.Add(d);
             alphabet1.Add(e);
 
             Assert.AreNotSame(e, alphabet1[4]);

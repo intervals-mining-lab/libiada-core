@@ -6,16 +6,16 @@ namespace MarkovChains.MarkovChain.Builders
     public interface IMatrixBuilder
     {
         /// <summary>
-        ///  Создает элемент матрицы 
+        /// Creates element of matrix.
         /// </summary>
         /// <param name="alphabetCardinality">
         /// Alphabet cardinality.
         /// </param>
         /// <param name="i">
-        /// Размерность создавемого элемента
+        /// The dimensionality of the created element.
         /// </param>
         /// <returns>
-        /// Объект присваеваемый в качетсве элемента матрице
+        /// Element of matrix.
         /// </returns>
         object Create(int alphabetCardinality, int i);
     }

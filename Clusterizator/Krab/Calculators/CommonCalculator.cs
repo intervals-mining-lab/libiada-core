@@ -6,8 +6,8 @@ namespace Clusterizator.Krab.Calculators
     public static class CommonCalculator
     {
         /// <summary>
-        /// Вычисляет по очереди эвклидово расстояние, нормированное эвклидово расстояние,
-        ///  локальную плотность точек, нормированную локальную плотность точек и лямбда-расстояние
+        /// Calculates euclidean distance, normalized euclidean distance, local nodes density,
+        /// normalized local nodes density and lambda-distance.
         /// </summary>
         /// <param name="graph">
         /// Array of graph links.

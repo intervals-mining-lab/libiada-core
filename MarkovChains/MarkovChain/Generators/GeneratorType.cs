@@ -1,12 +1,12 @@
 namespace MarkovChains.MarkovChain.Generators
 {
     /// <summary>
-    /// Типы генераторов случайных величин
+    /// Types of random number generators.
     /// </summary>
     public enum GeneratorType
     {
         /// <summary>
-        /// Генератор основанный на стандарном Random class
+        /// Standart generator.
         /// </summary>
         SimpleGenerator
     }

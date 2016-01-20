@@ -14,7 +14,7 @@ namespace MarkovChains.MarkovChain.Builders
         /// The alphabet cardinality.
         /// </param>
         /// <param name="i">
-        /// The i.
+        /// The dimensionality of the matrix.
         /// </param>
         /// <returns>
         /// The <see cref="object"/>.

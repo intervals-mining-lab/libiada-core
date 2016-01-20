@@ -3,7 +3,7 @@ namespace MarkovChains.MarkovChain.Generators
     using System;
 
     /// <summary>
-    /// Генератор основанный на стандарном Random class
+    /// Random generator based on standart class <see cref="Random"/>.
     /// </summary>
     public class SimpleGenerator : IGenerator
     {

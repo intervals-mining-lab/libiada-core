@@ -4,7 +4,7 @@ namespace BuildingsIterator.Filters
     using LibiadaCore.Core.Characteristics.Calculators;
 
     /// <summary>
-    /// Фильтр отфильтровывающий цепи по равенству частот вхождения элементов
+    /// Filter for sequences with equal frequencies of their elements.
     /// </summary>
     public class ChainFilterBySameFrequency : IChainFilter
     {

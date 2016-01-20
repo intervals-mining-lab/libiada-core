@@ -14,8 +14,8 @@
     public class ScramblingGenerator
     {
         /// <summary>
-        /// Генерирует хештаблицу со всеми возможными строями в качестве ключа,
-        /// и списком характеристик в качестве значения.
+        /// Generates hashtable with all possible combinations as keys 
+        /// and characteristics list as values.
         /// </summary>
         /// <param name="alphabet">
         /// Alphabet for generated sequences.
@@ -90,13 +90,13 @@
         /// </returns>
         private Chain GenerateChain(Alphabet alphabet, int i, int length)
         {
-            // Очередная цепочка
+            // next sequence
             var chain = new Chain(length);
 
             // Переменная для хранения остатка от деления на основание системы счисления (Мощность алфавита)
             int temp = i;
 
-            // Индекс в очередной генерируемой цепи
+            // index of currently generated sequence
             int index = 0;
 
             // cycle through elements

@@ -14,7 +14,7 @@ namespace MarkovChains.MarkovChain.Matrices.Probability
     using LibiadaCore.Core.SimpleTypes;
 
     /// <summary>
-    /// Матрица-строка веротяностей.
+    /// One dimensional (row) probability matrix.
     /// </summary>
     public class ProbabilityMatrixRow : MatrixRowCommon, IProbabilityMatrix, IWritableMatrix
     {
@@ -22,10 +22,10 @@ namespace MarkovChains.MarkovChain.Matrices.Probability
         /// Initializes a new instance of the <see cref="ProbabilityMatrixRow"/> class.
         /// </summary>
         /// <param name="alphabetCardinality">
-        /// Мощность алфавита
+        /// Alphabet cardinality.
         /// </param>
         /// <param name="dimensionality">
-        /// Размерность матрицы
+        /// The dimensionality of the matrix.
         /// </param>
         public ProbabilityMatrixRow(int alphabetCardinality, int dimensionality) : base(alphabetCardinality, dimensionality, new ProbabilityMatrixBuilder())
         {
