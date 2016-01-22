@@ -11,15 +11,6 @@
     public class AverageRemotenessGCRatioTests : FullCalculatorsTests
     {
         /// <summary>
-        /// Tests initialization method.
-        /// </summary>
-        [TestFixtureSetUp]
-        public void Initialization()
-        {
-            Initialization("AverageRemotenessGCRatio");
-        }
-
-        /// <summary>
         /// The calculation test.
         /// </summary>
         /// <param name="index">

@@ -11,15 +11,6 @@ namespace LibiadaCore.Tests.Core.Characteristics.Calculators
     public class PeriodicityTests : CalculatorsTests
     {
         /// <summary>
-        /// Tests initialization method.
-        /// </summary>
-        [TestFixtureSetUp]
-        public void Initialization()
-        {
-            Initialization("Periodicity");
-        }
-
-        /// <summary>
         /// The congeneric calculation test.
         /// </summary>
         /// <param name="index">

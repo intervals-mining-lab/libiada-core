@@ -11,15 +11,6 @@ namespace LibiadaCore.Tests.Core.Characteristics.Calculators
     public class AlphabetCardinalityTests : FullCalculatorsTests
     {
         /// <summary>
-        /// Tests initialization method.
-        /// </summary>
-        [TestFixtureSetUp]
-        public void Initialization()
-        {
-            Initialization("AlphabetCardinality");
-        }
-
-        /// <summary>
         /// The chain calculation test.
         /// </summary>
         /// <param name="index">

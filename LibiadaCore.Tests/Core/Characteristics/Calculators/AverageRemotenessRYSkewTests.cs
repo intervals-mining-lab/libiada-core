@@ -11,15 +11,6 @@
     public class AverageRemotenessRYSkewTests : FullCalculatorsTests
     {
         /// <summary>
-        /// Tests initialization method.
-        /// </summary>
-        [TestFixtureSetUp]
-        public void Initialization()
-        {
-            Initialization("AverageRemotenessRYSkew");
-        }
-
-        /// <summary>
         /// The calculation test.
         /// </summary>
         /// <param name="index">

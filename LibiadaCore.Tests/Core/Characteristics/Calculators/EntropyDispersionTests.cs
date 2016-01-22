@@ -11,15 +11,6 @@
     public class EntropyDispersionTests : FullCalculatorsTests
     {
         /// <summary>
-        /// Tests initialization method.
-        /// </summary>
-        [TestFixtureSetUp]
-        public void Initialization()
-        {
-            Initialization("EntropyDispersion");
-        }
-
-        /// <summary>
         /// The average remoteness dispersion test.
         /// </summary>
         /// <param name="index">

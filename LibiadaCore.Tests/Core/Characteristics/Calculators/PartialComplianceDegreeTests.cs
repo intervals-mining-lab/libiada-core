@@ -9,15 +9,6 @@
     public class PartialComplianceDegreeTests : AccordanceCalculatorsTests
     {
         /// <summary>
-        /// Tests initialization method.
-        /// </summary>
-        [TestFixtureSetUp]
-        public void Initialization()
-        {
-            Initialization("PartialComplianceDegree");
-        }
-
-        /// <summary>
         /// The compliance degree test.
         /// </summary>
         /// <param name="index">

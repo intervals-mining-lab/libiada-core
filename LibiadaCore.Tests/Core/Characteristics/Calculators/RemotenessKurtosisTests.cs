@@ -11,15 +11,6 @@
     public class RemotenessKurtosisTests : FullCalculatorsTests
     {
         /// <summary>
-        /// Tests initialization method.
-        /// </summary>
-        [TestFixtureSetUp]
-        public void Initialization()
-        {
-            Initialization("RemotenessKurtosis");
-        }
-
-        /// <summary>
         /// The average remoteness dispersion test.
         /// </summary>
         /// <param name="index">

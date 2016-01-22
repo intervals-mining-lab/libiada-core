@@ -11,15 +11,6 @@
     public class RemotenessDispersionTests : FullCalculatorsTests
     {
         /// <summary>
-        /// Tests initialization method.
-        /// </summary>
-        [TestFixtureSetUp]
-        public void Initialization()
-        {
-            Initialization("RemotenessDispersion");
-        }
-
-        /// <summary>
         /// The average remoteness dispersion test.
         /// </summary>
         /// <param name="index">

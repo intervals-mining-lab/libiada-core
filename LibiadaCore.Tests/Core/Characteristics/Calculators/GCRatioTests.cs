@@ -11,15 +11,6 @@
     public class GCRatioTests : FullCalculatorsTests
     {
         /// <summary>
-        /// Tests initialization method.
-        /// </summary>
-        [TestFixtureSetUp]
-        public void Initialization()
-        {
-            Initialization("GCRatio");
-        }
-
-        /// <summary>
         /// The calculation test.
         /// </summary>
         /// <param name="index">

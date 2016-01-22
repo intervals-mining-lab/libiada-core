@@ -24,19 +24,19 @@
         private readonly Dictionary<string, IBaseObject> elements = ChainsStorage.Elements;
 
         /// <summary>
-        /// Gets the calculator.
+        /// Gets or sets the calculator.
         /// </summary>
-        protected IBinaryCalculator Calculator { get; private set; }
+        protected IBinaryCalculator Calculator { get; set; }
 
         /// <summary>
-        /// The initialization.
+        /// Calculator initialization method.
         /// </summary>
-        /// <param name="calculator">
-        /// The calculator.
-        /// </param>
-        protected void Initialization(string calculator)
+        [TestFixtureSetUp]
+        public virtual void Initialization()
         {
-            Calculator = CalculatorsFactory.CreateBinaryCalculator(calculator);
+            var testClassName = this.GetType().Name;
+            var calculatorName = testClassName.Substring(0, testClassName.Length - 5);
+            Calculator = CalculatorsFactory.CreateBinaryCalculator(calculatorName);
         }
 
         /// <summary>

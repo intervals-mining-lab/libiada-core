@@ -14,15 +14,6 @@
     public class InvolvedPartialDependenceCoefficientTests : BinaryCalculatorsTests
     {
         /// <summary>
-        /// Tests initialization method.
-        /// </summary>
-        [TestFixtureSetUp]
-        public void Initialization()
-        {
-            Initialization("InvolvedPartialDependenceCoefficient");
-        }
-
-        /// <summary>
         /// The k 2 test.
         /// </summary>
         /// <param name="index">

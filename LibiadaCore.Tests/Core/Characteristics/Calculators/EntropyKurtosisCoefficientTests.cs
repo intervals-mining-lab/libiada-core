@@ -11,15 +11,6 @@
     public class EntropyKurtosisCoefficientTests : FullCalculatorsTests
     {
         /// <summary>
-        /// Tests initialization method.
-        /// </summary>
-        [TestFixtureSetUp]
-        public void Initialization()
-        {
-            Initialization("EntropyKurtosisCoefficient");
-        }
-
-        /// <summary>
         /// The average remoteness dispersion test.
         /// </summary>
         /// <param name="index">

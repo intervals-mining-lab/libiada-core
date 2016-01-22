@@ -11,15 +11,6 @@
     public class AverageRemotenessKurtosisCoefficientTests : FullCalculatorsTests
     {
         /// <summary>
-        /// Tests initialization method.
-        /// </summary>
-        [TestFixtureSetUp]
-        public void Initialization()
-        {
-            Initialization("AverageRemotenessKurtosisCoefficient");
-        }
-
-        /// <summary>
         /// The average remoteness dispersion test.
         /// </summary>
         /// <param name="index">

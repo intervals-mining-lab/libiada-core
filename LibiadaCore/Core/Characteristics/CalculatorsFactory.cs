@@ -30,7 +30,8 @@ namespace LibiadaCore.Core.Characteristics
                                                                 typeof(VariationsCount),
                                                                 typeof(Probability),
                                                                 typeof(Regularity),
-                                                                typeof(Volume)
+                                                                typeof(Volume),
+                                                                typeof(Uniformity)
                                                             };
 
         /// <summary>

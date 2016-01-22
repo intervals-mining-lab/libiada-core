@@ -9,15 +9,6 @@
     public class MutualComplianceDegreeTests : AccordanceCalculatorsTests
     {
         /// <summary>
-        /// Tests initialization method.
-        /// </summary>
-        [TestFixtureSetUp]
-        public void Initialization()
-        {
-            Initialization("MutualComplianceDegree");
-        }
-
-        /// <summary>
         /// The mutual compliance degree test.
         /// </summary>
         /// <param name="firstIndex">

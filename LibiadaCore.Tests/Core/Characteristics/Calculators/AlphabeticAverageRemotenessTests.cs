@@ -11,15 +11,6 @@
     public class AlphabeticAverageRemotenessTests : FullCalculatorsTests
     {
         /// <summary>
-        /// Tests initialization method.
-        /// </summary>
-        [TestFixtureSetUp]
-        public void Initialization()
-        {
-            Initialization("AlphabeticAverageRemoteness");
-        }
-
-        /// <summary>
         /// The chain calculation test.
         /// </summary>
         /// <param name="index">

@@ -14,15 +14,6 @@
     public class PartialDependenceCoefficientTests : BinaryCalculatorsTests
     {
         /// <summary>
-        /// Tests initialization method.
-        /// </summary>
-        [TestFixtureSetUp]
-        public void Initialization()
-        {
-            Initialization("PartialDependenceCoefficient");
-        }
-
-        /// <summary>
         /// The k 1 test.
         /// </summary>
         /// <param name="index">

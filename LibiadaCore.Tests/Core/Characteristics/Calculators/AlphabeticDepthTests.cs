@@ -11,15 +11,6 @@
     public class AlphabeticDepthTests : FullCalculatorsTests
     {
         /// <summary>
-        /// Tests initialization method.
-        /// </summary>
-        [TestFixtureSetUp]
-        public void Initialization()
-        {
-            Initialization("AlphabeticDepth");
-        }
-
-        /// <summary>
         /// The chain calculation test.
         /// </summary>
         /// <param name="index">

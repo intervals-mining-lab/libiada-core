@@ -11,15 +11,6 @@
     public class AverageRemotenessGCSkewTests : FullCalculatorsTests
     {
         /// <summary>
-        /// Tests initialization method.
-        /// </summary>
-        [TestFixtureSetUp]
-        public void Initialization()
-        {
-            Initialization("AverageRemotenessGCSkew");
-        }
-
-        /// <summary>
         /// The calculation test.
         /// </summary>
         /// <param name="index">

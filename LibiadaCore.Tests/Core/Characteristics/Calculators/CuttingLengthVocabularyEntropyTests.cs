@@ -11,15 +11,6 @@ namespace LibiadaCore.Tests.Core.Characteristics.Calculators
     public class CuttingLengthVocabularyEntropyTests : CalculatorsTests
     {
         /// <summary>
-        /// Tests initialization method.
-        /// </summary>
-        [TestFixtureSetUp]
-        public void Initialization()
-        {
-            Initialization("CuttingLengthVocabularyEntropy");
-        }
-
-        /// <summary>
         /// The congeneric calculation test.
         /// </summary>
         /// <param name="index">

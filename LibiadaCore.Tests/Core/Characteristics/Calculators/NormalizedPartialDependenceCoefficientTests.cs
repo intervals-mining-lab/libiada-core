@@ -14,15 +14,6 @@
     public class NormalizedPartialDependenceCoefficientTests : BinaryCalculatorsTests
     {
         /// <summary>
-        /// Tests initialization method.
-        /// </summary>
-        [TestFixtureSetUp]
-        public void Initialization()
-        {
-            Initialization("NormalizedPartialDependenceCoefficient");
-        }
-
-        /// <summary>
         /// The normalized k 1 test.
         /// </summary>
         /// <param name="index">

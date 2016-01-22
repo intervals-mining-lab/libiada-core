@@ -11,15 +11,6 @@
     public class IntervalsSumTests : CalculatorsTests
     {
         /// <summary>
-        /// The set up.
-        /// </summary>
-        [TestFixtureSetUp]
-        public void Initialization()
-        {
-            Initialization("IntervalsSum");
-        }
-
-        /// <summary>
         /// The congeneric calculation test.
         /// </summary>
         /// <param name="index">

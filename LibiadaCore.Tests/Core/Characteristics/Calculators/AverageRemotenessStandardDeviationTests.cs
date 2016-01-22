@@ -11,15 +11,6 @@
     public class AverageRemotenessStandardDeviationTests : FullCalculatorsTests
     {
         /// <summary>
-        /// Tests initialization method.
-        /// </summary>
-        [TestFixtureSetUp]
-        public void Initialization()
-        {
-            Initialization("AverageRemotenessStandardDeviation");
-        }
-
-        /// <summary>
         /// Standard Deviation test.
         /// </summary>
         /// <param name="index">

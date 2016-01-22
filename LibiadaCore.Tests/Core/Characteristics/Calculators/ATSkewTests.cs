@@ -11,15 +11,6 @@
     public class ATSkewTests : FullCalculatorsTests 
     {
         /// <summary>
-        /// Tests initialization method.
-        /// </summary>
-        [TestFixtureSetUp]
-        public void Initialization()
-        {
-            Initialization("ATSkew");
-        }
-
-        /// <summary>
         /// The calculation test.
         /// </summary>
         /// <param name="index">

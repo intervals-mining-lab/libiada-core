@@ -9,15 +9,6 @@
     public class RedundancyTests : BinaryCalculatorsTests
     {
         /// <summary>
-        /// Tests initialization method.
-        /// </summary>
-        [TestFixtureSetUp]
-        public void Initialization()
-        {
-            Initialization("Redundancy");
-        }
-
-        /// <summary>
         /// The chain calculation test.
         /// </summary>
         /// <param name="index">

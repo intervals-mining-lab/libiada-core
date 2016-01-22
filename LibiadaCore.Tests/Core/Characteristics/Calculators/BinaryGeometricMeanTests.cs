@@ -1,5 +1,7 @@
 ﻿namespace LibiadaCore.Tests.Core.Characteristics.Calculators
 {
+    using LibiadaCore.Core.Characteristics;
+
     using NUnit.Framework;
 
     /// <summary>
@@ -9,12 +11,12 @@
     public class BinaryGeometricMeanTests : BinaryCalculatorsTests
     {
         /// <summary>
-        /// Tests initialization method.
+        /// Calculator initialization method.
         /// </summary>
         [TestFixtureSetUp]
-        public void Initialization()
+        public override void Initialization()
         {
-            Initialization("GeometricMean");
+            Calculator = CalculatorsFactory.CreateBinaryCalculator("GeometricMean");
         }
 
         /// <summary>

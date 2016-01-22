@@ -11,15 +11,6 @@ namespace LibiadaCore.Tests.Core.Characteristics.Calculators
     public class CuttingLengthTests : CalculatorsTests
     {
         /// <summary>
-        /// Tests initialization method.
-        /// </summary>
-        [TestFixtureSetUp]
-        public void Initialization()
-        {
-            Initialization("CuttingLength");
-        }
-
-        /// <summary>
         /// The congeneric calculation test.
         /// </summary>
         /// <param name="index">

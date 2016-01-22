@@ -71,6 +71,7 @@
     <Compile Include="Core\Characteristics\Calculators\RemotenessStandardDeviation.cs" />
     <Compile Include="Core\Characteristics\Calculators\RYSkew.cs" />
     <Compile Include="Core\Characteristics\Calculators\SWSkew.cs" />
+    <Compile Include="Core\Characteristics\Calculators\Uniformity.cs" />
     <Compile Include="Core\IntervalsManagers\AccordanceIntervalsManager.cs" />
     <Compile Include="Misc\DataTransformers\DnaProcessing.cs" />
     <Compile Include="Core\Characteristics\Calculators\GCRatio.cs" />

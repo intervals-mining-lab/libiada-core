@@ -11,15 +11,6 @@
     public class EntropyStandardDeviationTests : FullCalculatorsTests
     {
         /// <summary>
-        /// Tests initialization method.
-        /// </summary>
-        [TestFixtureSetUp]
-        public void Initialization()
-        {
-            Initialization("EntropyStandardDeviation");
-        }
-
-        /// <summary>
         /// Standard Deviation test.
         /// </summary>
         /// <param name="index">

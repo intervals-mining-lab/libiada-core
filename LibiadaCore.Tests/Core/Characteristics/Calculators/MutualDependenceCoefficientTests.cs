@@ -14,15 +14,6 @@
     public class MutualDependenceCoefficientTests : BinaryCalculatorsTests
     {
         /// <summary>
-        /// Tests initialization method.
-        /// </summary>
-        [TestFixtureSetUp]
-        public void Initialization()
-        {
-            Initialization("MutualDependenceCoefficient");
-        }
-
-        /// <summary>
         /// The k 3 test.
         /// </summary>
         /// <param name="index">
