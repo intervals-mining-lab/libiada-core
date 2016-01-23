@@ -22,17 +22,11 @@
         /// <param name="value">
         /// The value.
         /// </param>
-        [TestCase(0, Link.None, 0.7925)]
-        [TestCase(0, Link.Start, 1.195)]
-        [TestCase(0, Link.End, 1.0567)]
-        [TestCase(0, Link.Both, 1.2925)]
-        [TestCase(0, Link.Cycle, 1.39)]
-
-        [TestCase(1, Link.None, 1.1073)]
-        [TestCase(1, Link.Start, 1.3305)]
-        [TestCase(1, Link.End, 1.3305)]
-        [TestCase(1, Link.Both, 1.4644)]
-        [TestCase(1, Link.Cycle, 1.5323)]
+        [TestCase(0, Link.None, -0.2925)]
+        [TestCase(0, Link.Start, -0.6644)]
+        [TestCase(0, Link.End, -0.5328)]
+        [TestCase(0, Link.Both, -0.7618)]
+        [TestCase(0, Link.Cycle, -0.8689)]
 
         [TestCase(2, Link.None, 0)]
         [TestCase(2, Link.Start, 0)]
@@ -41,10 +35,10 @@
         [TestCase(2, Link.Cycle, 0)]
 
         [TestCase(3, Link.None, 0)]
-        [TestCase(3, Link.Start, 3)]
+        [TestCase(3, Link.Start, -2.625)]
         [TestCase(3, Link.End, 0)]
-        [TestCase(3, Link.Both, 1.5)]
-        [TestCase(3, Link.Cycle, 3)]
+        [TestCase(3, Link.Both, -1.0178)]
+        [TestCase(3, Link.Cycle, -2.625)]
 
         [TestCase(5, Link.None, 0)]
         [TestCase(5, Link.Start, 0)]
@@ -68,11 +62,11 @@
         /// <param name="value">
         /// The value.
         /// </param>
-        [TestCase(0, Link.None, 1.0242)]
-        [TestCase(0, Link.Start, 1.1077)]
-        [TestCase(0, Link.End, 1.017)]
-        [TestCase(0, Link.Both, 1.0828)]
-        [TestCase(0, Link.Cycle, 1.234)]
+        [TestCase(0, Link.None, 0.5041)]
+        [TestCase(0, Link.Start, 0.4733)]
+        [TestCase(0, Link.End, 0.5424)]
+        [TestCase(0, Link.Both, 0.4957)]
+        [TestCase(0, Link.Cycle, 0.337)]
         public void ChainCalculationTest(int index, Link link, double value)
         {
             ChainCharacteristicTest(index, link, value);
