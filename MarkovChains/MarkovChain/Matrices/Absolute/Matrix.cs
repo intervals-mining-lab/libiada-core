@@ -71,10 +71,10 @@ namespace MarkovChains.MarkovChain.Matrices.Absolute
         }
 
         /// <summary>
-        /// Получить вероятностную матрицу из данной матрицы
+        /// Calculates probability matrix from this matrix.
         /// </summary>
         /// <returns>
-        /// Веротяностая матрица
+        /// Matrix of probabilities.
         /// </returns>
         public IProbabilityMatrix ProbabilityMatrix()
         {
@@ -86,7 +86,7 @@ namespace MarkovChains.MarkovChain.Matrices.Absolute
         /// <summary>
         /// Increments matrix value by 1.
         /// </summary>
-        public void IncValue()
+        public void IncrementValue()
         {
             Value += 1;
         }
@@ -111,7 +111,7 @@ namespace MarkovChains.MarkovChain.Matrices.Absolute
             }
 
             int index = arrayToTeach[0];
-            ((IAbsoluteMatrix)ValueList[index]).IncValue();
+            ((IAbsoluteMatrix)ValueList[index]).IncrementValue();
 
             if (arrayToTeach.Length <= 1)
             {

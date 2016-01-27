@@ -92,7 +92,7 @@ namespace MarkovChains.Tests.MarkovChain.Matrices.Probability
         }
 
         /// <summary>
-        /// The add length more than chain rang test.
+        /// The add length more than chain rank test.
         /// </summary>
         [Test]
         [ExpectedException(typeof(ArgumentException))]

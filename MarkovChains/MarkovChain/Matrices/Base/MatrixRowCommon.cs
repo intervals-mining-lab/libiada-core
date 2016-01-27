@@ -5,8 +5,8 @@ namespace MarkovChains.MarkovChain.Matrices.Base
     using MarkovChains.MarkovChain.Builders;
 
     /// <summary>
-    /// Матрица-строка содержит вещетвенные числа в качестве элементов. 
-    /// Размерность = 1.
+    /// Row of the matrix containing doubles as values.
+    /// Dimensionality = 1.
     /// </summary>
     public class MatrixRowCommon : MatrixBase
     {
@@ -14,16 +14,15 @@ namespace MarkovChains.MarkovChain.Matrices.Base
         /// Initializes a new instance of the <see cref="MatrixRowCommon"/> class.
         /// </summary>
         /// <param name="alphabetCardinality">
-        /// Мощность алфавита
+        /// Alphabet of the matrix.
         /// </param>
         /// <param name="dimensionality">
-        /// размерность матрицы
+        /// Dimensionality of the matrix.
         /// </param>
         /// <param name="builder">
-        /// Правило создания матриц
+        ///  Creation rule for the matrix.
         /// </param>
-        public MatrixRowCommon(int alphabetCardinality, int dimensionality, IMatrixBuilder builder)
-            : base(alphabetCardinality, dimensionality, builder)
+        public MatrixRowCommon(int alphabetCardinality, int dimensionality, IMatrixBuilder builder) : base(alphabetCardinality, dimensionality, builder)
         {
         }
 

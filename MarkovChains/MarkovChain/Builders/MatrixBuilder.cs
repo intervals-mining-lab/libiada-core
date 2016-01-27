@@ -3,7 +3,7 @@ namespace MarkovChains.MarkovChain.Builders
     using MarkovChains.MarkovChain.Matrices.Absolute;
 
     /// <summary>
-    /// Правило создания матрицы для матрицы абсолютных заначений
+    /// Matrix of absolute (numeric) values creation rule.
     /// </summary>
     public class MatrixBuilder : IMatrixBuilder
     {

@@ -12,7 +12,7 @@ namespace MarkovChains.MarkovChain.Matrices.Probability
     using LibiadaCore.Core;
 
     /// <summary>
-    /// Матрица веротяностей. 
+    /// Matrix of probabilities.
     /// </summary>
     public class ProbabilityMatrix : MatrixCommon, IProbabilityMatrix, IWritableMatrix
     {
@@ -20,13 +20,12 @@ namespace MarkovChains.MarkovChain.Matrices.Probability
         /// Initializes a new instance of the <see cref="ProbabilityMatrix"/> class.
         /// </summary>
         /// <param name="alphabetPower">
-        /// Мощность алфавита
+        /// Alphabet of the matrix.
         /// </param>
         /// <param name="dimensionality">
-        /// Размерность матрицы
+        /// Dimensionality of the matrix.
         /// </param>
-        public ProbabilityMatrix(int alphabetPower, int dimensionality)
-            : base(alphabetPower, dimensionality, new ProbabilityMatrixBuilder())
+        public ProbabilityMatrix(int alphabetPower, int dimensionality) : base(alphabetPower, dimensionality, new ProbabilityMatrixBuilder())
         {
         }
 

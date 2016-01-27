@@ -13,7 +13,7 @@ namespace MarkovChains.MarkovChain.Matrices.Absolute
     using Probability;
 
     /// <summary>
-    /// Матрица-строка абсолютных значений.
+    /// Row of absolute value matrix.
     /// </summary>
     public class MatrixRow : MatrixRowCommon, IAbsoluteMatrix, IOpenMatrix
     {
@@ -21,10 +21,10 @@ namespace MarkovChains.MarkovChain.Matrices.Absolute
         /// Initializes a new instance of the <see cref="MatrixRow"/> class.
         /// </summary>
         /// <param name="alphabetPower">
-        /// Алфавит для матрицы
+        /// Alphabet of the matrix.
         /// </param>
         /// <param name="dimensionality">
-        /// Размерность матрицы
+        /// Dimensionality of the matrix.
         /// </param>
         public MatrixRow(int alphabetPower, int dimensionality) : base(alphabetPower, dimensionality, new MatrixBuilder())
         {
@@ -77,7 +77,7 @@ namespace MarkovChains.MarkovChain.Matrices.Absolute
         /// <summary>
         /// The inc value.
         /// </summary>
-        public void IncValue()
+        public void IncrementValue()
         {
             Value += 1;
         }

@@ -3,7 +3,7 @@ namespace MarkovChains.MarkovChain
     using MarkovChains.MarkovChain.Generators;
 
     /// <summary>
-    /// Класс описывающий статичную однородную марковскую цепь
+    /// Static congeneric markov chain class.
     /// </summary>
     public class MarkovChainCongenericStatic :
         MarkovChainNotCongenericStatic
@@ -11,13 +11,13 @@ namespace MarkovChains.MarkovChain
         /// <summary>
         /// Initializes a new instance of the <see cref="MarkovChainCongenericStatic"/> class.
         /// </summary>
-        /// <param name="rang">
-        /// Порядок марковской цепи
+        /// <param name="rank">
+        /// Rank of markov chain.
         /// </param>
         /// <param name="generator">
-        /// Random generator.
+        /// Random numbers generator.
         /// </param>
-        public MarkovChainCongenericStatic(int rang, IGenerator generator) : base(rang, 0, generator)
+        public MarkovChainCongenericStatic(int rank, IGenerator generator) : base(rank, 0, generator)
         {
         }
     }

@@ -3,32 +3,32 @@ namespace MarkovChains.MarkovChain
     using System;
 
     /// <summary>
-    /// Перечисление типов марковских цепей.
+    /// Enumeration of markov chain types.
     /// </summary>
     [Serializable]
     public enum GeneratingMethod
     {
         /// <summary>
-        /// Однородная марковская цепь.
-        /// Вероятности не зависят от шага
+        /// Congeneric markov chain.
+        /// Probabilities does not depend on the step.
         /// </summary>
         StaticCongeneric,
 
         /// <summary>
-        /// Неоднородная марковская цепь.
-        /// Вероятности не зависят от шага
+        /// Not congeneric (dissimilar) markov chain.
+        /// Probabilities does not depend on the step.
         /// </summary>
         StaticNotCongeneric,
 
         /// <summary>
-        /// Однородная марковская цепь.
-        /// Вероятности зависят от шага
+        /// Congeneric markov chain.
+        /// Probabilities depends on the step.
         /// </summary>
         DynamicCongeneric,
 
         /// <summary>
-        /// Неоднородная марковская цепь.
-        /// Вероятности зависят от шага
+        /// Not congeneric (dissimilar) markov chain.
+        /// Probabilities depends on the step.
         /// </summary>
         DynamicNotCongeneric,
 

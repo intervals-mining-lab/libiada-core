@@ -1,7 +1,7 @@
 namespace MarkovChains.MarkovChain.Builders
 {
     /// <summary>
-    /// Интерфейс для правила создания матриц.
+    /// Interface of matrix creation rule.
     /// </summary>
     public interface IMatrixBuilder
     {

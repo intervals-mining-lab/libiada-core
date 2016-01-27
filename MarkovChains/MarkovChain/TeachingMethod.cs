@@ -1,22 +1,22 @@
 namespace MarkovChains.MarkovChain
 {
     /// <summary>
-    /// Метод предобработки цепи
+    /// Chain preprocessing method.
     /// </summary>
     public enum TeachingMethod
     {
         /// <summary>
-        /// Отсутсвие предобработки
+        /// No preprocessing.
         /// </summary>
         None,
 
         /// <summary>
-        /// Замыкание в кольцо (используя статистические данные)
+        /// Loopback (using statistical data).
         /// </summary>
         Cycle,
 
         /// <summary>
-        /// Замыкание в кольцо (используя информацию о строе цепи)
+        /// Loopback (usinginformation about order of the chain).
         /// </summary>
         CycleBuilding
     }

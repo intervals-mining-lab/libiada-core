@@ -52,11 +52,14 @@ namespace PhantomChains
         }
 
         /// <summary>
-        /// Рекурсивый метод уменьшения количества вариантов в данной ветви
-        /// и удаления пустых ветвей.
-        /// Также уменьшает количество вариантов данного узла на 1.
+        /// Recursive method decrementing variations of current branch.
+        /// Also decreases variants count of current node by 1. Called after generation of another value.
         /// </summary>
-        /// <returns>Флаг говорящий что нужно продолжать поиски пустой ветви</returns>
+        /// <returns>
+        /// Recursion flag for children. 
+        /// If true further validation is required. 
+        /// If false no further validation is required. 
+        /// </returns>
         public override bool Decrement()
         {
             Volume--;
@@ -79,19 +82,17 @@ namespace PhantomChains
         }
 
         /// <summary>
-        ///  Метод добавляющий в заполняемую цепочку ещё один элемент
-        ///  и вызывающий аналогичный метод у одного из потомков 
-        ///  если цепочка заполнена не до конца.
+        /// Method adds new element into generated sequence.
+        /// And calls the same method of one of the children if sequence is incomplete.
         /// </summary>
         /// <param name="result">
-        /// 
-        /// Генерируемая цепочка
+        /// Generated sequence.
         /// </param>
         /// <param name="generator">
-        /// Генератор случайных чисел
+        /// Random number generator.
         /// </param>
         /// <param name="table">
-        /// Таблица с параметрами
+        /// Parameters table.
         /// </param>
         public void FillChain(BaseChain result, IGenerator generator, PhantomTable table)
         {

@@ -3,7 +3,7 @@ namespace MarkovChains.MarkovChain.Builders
     using MarkovChains.MarkovChain.Matrices.Probability;
 
     /// <summary>
-    /// ѕравило создани€ матрицы дл€ веро€тностной матрицы
+    /// Probabilities matrix creation rule.
     /// </summary>
     public class ProbabilityMatrixBuilder : IMatrixBuilder
     {

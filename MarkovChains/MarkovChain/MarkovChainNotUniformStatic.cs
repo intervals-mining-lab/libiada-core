@@ -6,42 +6,42 @@ namespace MarkovChains.MarkovChain
     using MarkovChains.MarkovChain.Generators;
 
     /// <summary>
-    /// Класс описывающий статичную неоднородную марковскую цепь.
+    /// Static non congeneric (heterogeneous) markov chain class.
     /// </summary>
     public class MarkovChainNotCongenericStatic : MarkovChainBase
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="MarkovChainNotCongenericStatic"/> class.
         /// </summary>
-        /// <param name="rang">
-        /// Порядок марковской цепи.
+        /// <param name="rank">
+        /// Markov chain rank.
         /// </param>
-        /// <param name="congenericRang">
-        /// Неоднородность цепи.
+        /// <param name="heterogeneityRank">
+        /// Heterogeneity rank.
         /// </param>
         /// <param name="generator">
         /// Random numbers generator.
         /// </param>
-        public MarkovChainNotCongenericStatic(int rang, int congenericRang, IGenerator generator) : base(rang, congenericRang, generator)
+        public MarkovChainNotCongenericStatic(int rank, int heterogeneityRank, IGenerator generator) : base(rank, heterogeneityRank, generator)
         {
         }
 
         /// <summary>
-        /// Генерация марковской цепочки.
+        /// Generates sequence.
         /// </summary>
-        /// <param name="i">
-        /// Длинна генерируемой цепи.
+        /// <param name="length">
+        /// Length of generated sequence.
         /// </param>
-        /// <param name="chainRang">
-        /// Ранг генерируемой цепи.
+        /// <param name="chainRank">
+        /// Rank of used markov chain.
         /// </param>
         /// <returns>
-        /// Сгенерированная цепь.
+        /// Generated sequence as <see cref="BaseChain"/>.
         /// </returns>
-        public override BaseChain Generate(int i, int chainRang)
+        public override BaseChain Generate(int length, int chainRank)
         {
             var temp = new BaseChain();
-            temp.ClearAndSetNewLength(i);
+            temp.ClearAndSetNewLength(length);
             var read = Rank > 1 ? new IteratorStart(temp, Rank - 1, 1) : null;
             var write = new IteratorWritableStart(temp);
             if (read != null)
@@ -54,9 +54,9 @@ namespace MarkovChains.MarkovChain
             Generator.Reset();
 
             int m = 0;
-            for (int j = 0; j < i; j++)
+            for (int j = 0; j < length; j++)
             {
-                if (m == CongenericRank + 1)
+                if (m == HeterogeneityRank + 1)
                 {
                     m = 0;
                 }

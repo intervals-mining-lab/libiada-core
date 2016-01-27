@@ -46,7 +46,7 @@ namespace MarkovChains.Tests.MarkovCompare
             var markov = new MarkovChainNotCongenericStatic(2, 0, new MockGenerator());
             markov.Teach(testChain, TeachingMethod.Cycle);
             var ma = new MarkovMetrics();
-            Assert.AreEqual(ma.GetMiddleArith(markov), ma.GetMiddleArith(markov));
+            Assert.AreEqual(ma.GetArithmeticalMean(markov), ma.GetArithmeticalMean(markov));
         }
     }
 }

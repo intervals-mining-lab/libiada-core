@@ -5,7 +5,7 @@ namespace MarkovChains.MarkovChain.Matrices.Base
     using Builders;
 
     /// <summary>
-    /// Базовые класс для матриц
+    /// Base class of matrixes.
     /// </summary>
     public abstract class MatrixBase
     {
@@ -15,13 +15,12 @@ namespace MarkovChains.MarkovChain.Matrices.Base
         protected readonly int AlphabetCardinality;
 
         /// <summary>
-        /// Вектор элементов матриц.
+        /// Array of matrix elements.
         /// </summary>
         protected readonly ArrayList ValueList;
 
         /// <summary>
-        /// Размерность матрицы.
-        /// Только чтение.
+        /// Dimensionality of the matrix.
         /// </summary>
         protected readonly int Rank;
 
@@ -29,13 +28,13 @@ namespace MarkovChains.MarkovChain.Matrices.Base
         /// Initializes a new instance of the <see cref="MatrixBase"/> class.
         /// </summary>
         /// <param name="alphabetCardinality">
-        /// Мощность алфавита
+        /// Alphabet of the matrix.
         /// </param>
         /// <param name="dimensionality">
-        /// Размерность матрицы
+        /// Dimensionality of the matrix.
         /// </param>
         /// <param name="builder">
-        /// Правило создания матриц
+        /// Rule for creating the matrix.
         /// </param>
         public MatrixBase(int alphabetCardinality, int dimensionality, IMatrixBuilder builder)
         {
@@ -54,7 +53,7 @@ namespace MarkovChains.MarkovChain.Matrices.Base
         public double Value { get; protected set; }
 
         /// <summary>
-        /// Возвращает частоту появления объекта.
+        /// Gets frequency of the object.
         /// </summary>
         /// <param name="indexes">
         /// The indexes.

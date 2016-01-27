@@ -101,8 +101,8 @@
         /// <summary>
         /// The theory frequency.
         /// </summary>
-        /// <param name="rang">
-        /// The rang.
+        /// <param name="rank">
+        /// The rank.
         /// </param>
         /// <param name="b">
         /// The b.
@@ -113,9 +113,9 @@
         /// <returns>
         /// The <see cref="double"/>.
         /// </returns>
-        public double TheoryFrequency(int rang, double b, double k)
+        public double TheoryFrequency(int rank, double b, double k)
         {
-            return k / (b + rang);
+            return k / (b + rank);
         }
 
         /// <summary>

@@ -4,20 +4,20 @@
     using MarkovChains.MarkovChain.Matrices.Probability;
 
     /// <summary>
-    /// Класс предназначеный для получения метрик марковских цепей
+    /// Markov chain metrics calculator.
     /// </summary>
     public class MarkovMetrics
     {
         /// <summary>
-        /// Выдает метрику как среднее арифметическое вероятностей
+        /// Calculates arithmetical mean of all probabilities.
         /// </summary>
         /// <param name="chain">
-        /// Обсчитываемая цепь
+        /// Markov chain.
         /// </param>
         /// <returns>
-        /// Среднее арифметическое вероятностей
+        /// arithmetical mean of all probabilities.
         /// </returns>
-        public double GetMiddleArith(MarkovChainNotCongenericStatic chain)
+        public double GetArithmeticalMean(MarkovChainNotCongenericStatic chain)
         {
             IProbabilityMatrix matrix = chain.PropabilityMatrix;
             for (int i = 0; i < chain.Alphabet.Cardinality; i++)

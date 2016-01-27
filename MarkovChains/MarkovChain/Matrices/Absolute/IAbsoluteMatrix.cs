@@ -13,26 +13,30 @@ namespace MarkovChains.MarkovChain.Matrices.Absolute
         double Count { get; }
 
         /// <summary>
-        /// Добавляем элемент в частотный словарь
+        /// Adds element to the frequency dictionary.
         /// </summary>
         /// <param name="arrayToTeach">
         /// The array to teach.
         /// </param>
         /// <returns>
-        /// Число которое теперь хранится по данному адресу
+        /// Number stored at given key.
         /// </returns>
         double Add(int[] arrayToTeach);
 
         /// <summary>
-        /// Увеличить занчение данной матрицы
+        /// Increments value of this matrix.
         /// </summary>
-        void IncValue();
+        void IncrementValue();
 
         /// <summary>
-        ///  Получить сумму элеметов по данному адресу
+        /// Calculates sum of elements at given key.
         /// </summary>
-        /// <param name="arrayOfIndexes">Адрес элементов</param>
-        /// <returns>Сумма элементов матрицы с данным адрессом</returns>
+        /// <param name="arrayOfIndexes">
+        /// Key of the elements.
+        /// </param>
+        /// <returns>
+        /// Sum of matrix elements at given address.
+        /// </returns>
         double Sum(int[] arrayOfIndexes);
 
         /// <summary>

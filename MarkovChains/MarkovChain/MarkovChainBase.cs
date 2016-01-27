@@ -33,9 +33,9 @@ namespace MarkovChains.MarkovChain
         protected readonly IProbabilityMatrix[] ProbabilityMatrixes;
 
         /// <summary>
-        /// The congeneric rank.
+        /// The heterogeneity rank.
         /// </summary>
-        protected readonly int CongenericRank;
+        protected readonly int HeterogeneityRank;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="MarkovChainBase"/> class.
@@ -43,26 +43,26 @@ namespace MarkovChains.MarkovChain
         /// <param name="rank">
         /// Markov chain rank.
         /// </param>
-        /// <param name="congenericRang">
-        /// Порядок неоднородности.
+        /// <param name="heterogeneityRang">
+        /// Heterogeneity rank.
         /// </param>
         /// <param name="generator">
-        /// Генератор используемый при генерировании последовательнсти.
+        /// Random numbers generator used for sequence generation.
         /// </param>
         /// <exception cref="ArgumentException">
         /// Thrown if rank is less than 1 or generator is null.
         /// </exception>
-        public MarkovChainBase(int rank, int congenericRang, IGenerator generator)
+        public MarkovChainBase(int rank, int heterogeneityRang, IGenerator generator)
         {
             if ((rank < 1) || (generator == null))
             {
-                throw new ArgumentException("Ошибка при создании марковской цепи");
+                throw new ArgumentException("Error during creation of markov chain.");
             }
 
             Rank = rank;
             Generator = generator;
-            CongenericRank = congenericRang;
-            ProbabilityMatrixes = new IProbabilityMatrix[congenericRang + 1];
+            HeterogeneityRank = heterogeneityRang;
+            ProbabilityMatrixes = new IProbabilityMatrix[heterogeneityRang + 1];
         }
 
         /// <summary>
@@ -82,34 +82,34 @@ namespace MarkovChains.MarkovChain
         public Alphabet Alphabet { get; private set; }
 
         /// <summary>
-        /// Генерировать цепь заданно длинной.
-        /// Использовать Информацию марковской цепи максимального порядка (порядок указаный при создании объекта).
+        /// Generates sequence of given length.
+        /// Uses rank given upon creation.
         /// </summary>
-        /// <param name="i">
-        /// Длинна генерируемой цепи.
+        /// <param name="length">
+        /// Length of generated sequence.
         /// </param>
         /// <returns>
-        /// Реализация Марковской цепи.
+        /// Generated sequence <see cref="BaseChain"/>.
         /// </returns>
-        public BaseChain Generate(int i)
+        public BaseChain Generate(int length)
         {
-            return Generate(i, Rank);
+            return Generate(length, Rank);
         }
 
         /// <summary>
-        /// Генерировать цепь заданно длинной.
-        /// Использовать Информацию марковской цепи указанного порядка ( не более порядока указаного при создании объекта).
+        /// Generates sequence of given length.
+        /// Uses given rank but not higher than given upon creation.
         /// </summary>
-        /// <param name="i">
-        /// Длина генерируемой цепи.
+        /// <param name="length">
+        /// Length of generated sequence.
         /// </param>
         /// <param name="rank">
-        /// Порядок марковской цепи используемый при реализации.
+        /// Rank of markov chain used in generaton of sequence.
         /// </param>
         /// <returns>
-        /// The <see cref="BaseChain"/>.
+        /// Generated sequence <see cref="BaseChain"/>.
         /// </returns>
-        public abstract BaseChain Generate(int i, int rank);
+        public abstract BaseChain Generate(int length, int rank);
 
         /// <summary>
         /// Teaches markov chain using provided sequence.
@@ -123,9 +123,9 @@ namespace MarkovChains.MarkovChain
         public virtual void Teach(BaseChain chain, TeachingMethod method)
         {
             var builder = new MatrixBuilder();
-            var absMatrix = new IAbsoluteMatrix[CongenericRank + 1];
+            var absMatrix = new IAbsoluteMatrix[HeterogeneityRank + 1];
             Alphabet = chain.Alphabet;
-            for (int i = 0; i < CongenericRank + 1; i++)
+            for (int i = 0; i < HeterogeneityRank + 1; i++)
             {
                 absMatrix[i] = (IAbsoluteMatrix)builder.Create(Alphabet.Cardinality, Rank);
             }
@@ -138,14 +138,14 @@ namespace MarkovChains.MarkovChain
 
             int k = 0;
 
-            // Здесь будем заполнять матрицы
+            // filling matrixes
             while (it.Next())
             {
                 ++k;
-                int m = k % (CongenericRank + 1);
+                int m = k % (HeterogeneityRank + 1);
                 if (m == 0)
                 {
-                    m = CongenericRank + 1;
+                    m = HeterogeneityRank + 1;
                 }
 
                 BaseChain chainToTeach = (BaseChain)it.Current();
@@ -158,20 +158,20 @@ namespace MarkovChains.MarkovChain
                 absMatrix[m - 1].Add(indexedChain);
             }
 
-            for (int i = 0; i < CongenericRank + 1; i++)
+            for (int i = 0; i < HeterogeneityRank + 1; i++)
             {
                 ProbabilityMatrixes[i] = absMatrix[i].ProbabilityMatrix();
             }
         }
 
         /// <summary>
-        /// Возвращает сгенерированную марковскую цепь полученную из индексов.
+        /// Gets generated sequence from indexes.
         /// </summary>
         /// <param name="list">
         /// The list.
         /// </param>
         /// <returns>
-        /// Реализация марковской цепи.
+        /// Generated sequence <see cref="BaseChain"/>.
         /// </returns>
         protected IBaseObject GetObject(Dictionary<IBaseObject, double> list)
         {

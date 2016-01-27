@@ -58,15 +58,13 @@
         }
 
         /// <summary>
-        /// Рекурсивный метод, осуществляющий декременту вариантов построения в данной ветви.
-        /// Также уменьшает количество вариантов данного узла на 1. 
-        /// Вызывается после генерации очередного занчения.
+        /// Recursive method decrementing variations of current branch.
+        /// Also decreases variants count of current node by 1. Called after generation of another value.
         /// </summary>
         /// <returns>
-        /// Булевый флаг, показывающий нужно ли производить проверку детей
-        /// на отсутствие дальнейших вариантов. Если флаг имеет значение false,
-        /// то действие не требуется. Если же true, то требуется проверить дочерние элементы 
-        /// на наличие возможных вариантов, и удалить детей в которых больше нет вариантов. 
+        /// Recursion flag for children. 
+        /// If true further validation is required. 
+        /// If false no further validation is required.
         /// </returns>
         public override bool Decrement()
         {
@@ -84,11 +82,10 @@
         }
 
         /// <summary>
-        /// Метод, в котором задаётся длина генерируемой цепочки
-        /// и запускается её генерация
+        /// Method starting generation of the sequence.
         /// </summary>
         /// <returns>
-        /// Сгенерированная цепочка
+        /// Generated sequence.
         /// </returns>
         public BaseChain Generate()
         {

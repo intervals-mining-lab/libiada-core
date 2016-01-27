@@ -3,8 +3,8 @@ namespace MarkovChains.MarkovChain.Matrices.Base
     using MarkovChains.MarkovChain.Builders;
 
     /// <summary>
-    /// Матрица содержащая в качестве элементов другие матрицы. 
-    /// Размерность более 1.
+    /// Matrix containing other matrixes as elements.
+    /// Dimensionality is greater than 1.
     /// </summary>
     public class MatrixCommon : MatrixBase
     {
@@ -12,13 +12,13 @@ namespace MarkovChains.MarkovChain.Matrices.Base
         /// Initializes a new instance of the <see cref="MatrixCommon"/> class.
         /// </summary>
         /// <param name="alphabetCardinality">
-        /// Мощность алфавита
+        /// Alphabet of the matrix.
         /// </param>
         /// <param name="dimensionality">
-        /// размерность матрицы
+        /// Dimensionality of the matrix.
         /// </param>
         /// <param name="builder">
-        /// Правило создания матриц
+        /// Rule for creation of the matrix.
         /// </param>
         public MatrixCommon(int alphabetCardinality, int dimensionality, IMatrixBuilder builder) : base(alphabetCardinality, dimensionality, builder)
         {

@@ -15,35 +15,35 @@ namespace MarkovChains.MarkovChain
         /// <param name="method">
         /// Chain type.
         /// </param>
-        /// <param name="rang">
+        /// <param name="rank">
         /// Chain's rank.
         /// </param>
-        /// <param name="congenericRang">
-        /// Неоднородность цепи
+        /// <param name="heterogeneityRank">
+        /// Heterogeneity rank of the sequence.
         /// </param>
         /// <param name="generator">
-        /// Генератор используемый в цепи
+        /// Random numbers generator.
         /// </param>
         /// <returns>
-        /// Марковская цепь
+        /// Markov chain as <see cref="MarkovChainBase"/>.
         /// </returns>
         /// <exception cref="Exception">
         /// Thrown if chain type is unknown.
         /// </exception>
-        public MarkovChainBase Create(GeneratingMethod method, int rang, int congenericRang, IGenerator generator)
+        public MarkovChainBase Create(GeneratingMethod method, int rank, int heterogeneityRank, IGenerator generator)
         {
             switch (method)
             {
                 case GeneratingMethod.DynamicNotCongeneric:
                     return null;
                 case GeneratingMethod.StaticNotCongeneric:
-                    return new MarkovChainNotCongenericStatic(rang, congenericRang, generator);
+                    return new MarkovChainNotCongenericStatic(rank, heterogeneityRank, generator);
                 case GeneratingMethod.DynamicCongeneric:
                     return null; 
                 case GeneratingMethod.StaticCongeneric:
-                    return new MarkovChainCongenericStatic(rang, generator);
+                    return new MarkovChainCongenericStatic(rank, generator);
                 case GeneratingMethod.Random:
-                    return new MarkovChainRandom(rang, generator);
+                    return new MarkovChainRandom(rank, generator);
                 default:
                     throw new ArgumentException("This type of markov chain does not registered in system", "method");
             }

@@ -34,7 +34,7 @@ namespace MarkovChains.Tests.MarkovChain
         [SetUp]
         public void Initialize()
         {
-            // Создаем цепь длинной 12
+            // Creating sequence containing 12 elements.
             // |a|d|b|a|a|c|b|b|a|a|c|a|
             testChain = new Chain(12);
             testChain.Set((ValueString)"a", 0);
@@ -66,7 +66,7 @@ namespace MarkovChains.Tests.MarkovChain
         }
 
         /// <summary>
-        /// The markov chain not congeneric zero rang two test.
+        /// The markov chain not congeneric zero rank two test.
         /// </summary>
         [Test]
         public void MarkovChainNotCongenericZeroRangTwoTest()
@@ -148,7 +148,7 @@ namespace MarkovChains.Tests.MarkovChain
         }
 
         /// <summary>
-        /// The markov chain not congeneric one rang two test.
+        /// The markov chain not congeneric one rank two test.
         /// </summary>
         [Test]
         public void MarkovChainNotCongenericOneRangTwoTest()
@@ -253,7 +253,7 @@ namespace MarkovChains.Tests.MarkovChain
         }
 
         /// <summary>
-        /// The markov chain not congeneric dynamic zero rang two test.
+        /// The markov chain not congeneric dynamic zero rank two test.
         /// </summary>
         [Test]
         public void MarkovChainNotCongenericDynamicZeroRangTwoTest()
@@ -329,7 +329,7 @@ namespace MarkovChains.Tests.MarkovChain
         }
 
         /// <summary>
-        /// The markov chain not congeneric dynamic one rang two test.
+        /// The markov chain not congeneric dynamic one rank two test.
         /// </summary>
         [Test]
         public void MarkovChainNotCongenericDynamicOneRangTwoTest()
