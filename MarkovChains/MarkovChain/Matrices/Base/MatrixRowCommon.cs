@@ -42,7 +42,7 @@ namespace MarkovChains.MarkovChain.Matrices.Base
         {
             if (indexes == null)
             {
-                throw new ArgumentNullException("indexes", "Ошибка адресации");
+                throw new ArgumentNullException("indexes", "Addressing error");
             }
 
             return (double)ValueList[indexes[0]];

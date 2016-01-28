@@ -20,7 +20,7 @@ namespace MarkovChains.MarkovChain.Matrices.Probability
         void Fill(IOpenMatrix matrix);
 
         /// <summary>
-        /// Получение вектора вероятностей лежащего по адресу
+        /// Get probabilities vector at specified address.
         /// </summary>
         /// <param name="alphabet">
         /// The alphabet.

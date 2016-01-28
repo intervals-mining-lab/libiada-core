@@ -96,7 +96,7 @@ namespace MarkovChains.Tests.MarkovChain.Matrices.Probability
         /// </summary>
         [Test]
         [ExpectedException(typeof(ArgumentException))]
-        public void AddLengthMoreThanChainRangTest()
+        public void AddLengthMoreThanChainRankTest()
         {
             alphabet.Add(a);
             alphabet.Add(b);

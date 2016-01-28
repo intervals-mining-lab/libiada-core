@@ -43,7 +43,7 @@ namespace MarkovChains.MarkovChain
         /// <param name="rank">
         /// Markov chain rank.
         /// </param>
-        /// <param name="heterogeneityRang">
+        /// <param name="heterogeneityRank">
         /// Heterogeneity rank.
         /// </param>
         /// <param name="generator">
@@ -52,7 +52,7 @@ namespace MarkovChains.MarkovChain
         /// <exception cref="ArgumentException">
         /// Thrown if rank is less than 1 or generator is null.
         /// </exception>
-        public MarkovChainBase(int rank, int heterogeneityRang, IGenerator generator)
+        public MarkovChainBase(int rank, int heterogeneityRank, IGenerator generator)
         {
             if ((rank < 1) || (generator == null))
             {
@@ -61,8 +61,8 @@ namespace MarkovChains.MarkovChain
 
             Rank = rank;
             Generator = generator;
-            HeterogeneityRank = heterogeneityRang;
-            ProbabilityMatrixes = new IProbabilityMatrix[heterogeneityRang + 1];
+            HeterogeneityRank = heterogeneityRank;
+            ProbabilityMatrixes = new IProbabilityMatrix[heterogeneityRank + 1];
         }
 
         /// <summary>

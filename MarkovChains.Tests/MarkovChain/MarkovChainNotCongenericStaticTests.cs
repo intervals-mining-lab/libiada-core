@@ -10,23 +10,22 @@ namespace MarkovChains.Tests.MarkovChain
     using NUnit.Framework;
 
     /// <summary>
-    /// Тестируем неоднородную марковскую цепь 
-    /// неоднородная марковская цепь представляет собой 
-    /// несколько однородных марковских цепей каждая из которых 
-    /// ипользуется на определенном шаге
+    /// Tests of non congeneric markov chain.
+    /// Non congeneric (heterogeneous) chain is several separated markov chains (matrixes) 
+    /// each one is used on separate step.
     /// </summary>
     [TestFixture]
     public class MarkovChainNotCongenericStaticTests
     {
         /// <summary>
-        /// Исходная цепь на которой будет происходить обучение
+        /// Source sequence for teaching markov chain.
         /// </summary>
         private Chain testChain;
 
         /// <summary>
-        /// The test chain 2.
+        /// Another sequence for teaching markov chain.
         /// </summary>
-        private Chain testChain2;
+        private Chain secondTestChain;
 
         /// <summary>
         /// The initialization method.
@@ -50,58 +49,55 @@ namespace MarkovChains.Tests.MarkovChain
             testChain.Set((ValueString)"c", 10);
             testChain.Set((ValueString)"a", 11);
 
-            testChain2 = new Chain(12);
-            testChain2.Set((ValueString)"a", 0);
-            testChain2.Set((ValueString)"a", 1);
-            testChain2.Set((ValueString)"a", 2);
-            testChain2.Set((ValueString)"a", 3);
-            testChain2.Set((ValueString)"a", 4);
-            testChain2.Set((ValueString)"a", 5);
-            testChain2.Set((ValueString)"b", 6);
-            testChain2.Set((ValueString)"a", 7);
-            testChain2.Set((ValueString)"a", 8);
-            testChain2.Set((ValueString)"a", 9);
-            testChain2.Set((ValueString)"b", 10);
-            testChain2.Set((ValueString)"a", 11);
+            secondTestChain = new Chain(12);
+            secondTestChain.Set((ValueString)"a", 0);
+            secondTestChain.Set((ValueString)"a", 1);
+            secondTestChain.Set((ValueString)"a", 2);
+            secondTestChain.Set((ValueString)"a", 3);
+            secondTestChain.Set((ValueString)"a", 4);
+            secondTestChain.Set((ValueString)"a", 5);
+            secondTestChain.Set((ValueString)"b", 6);
+            secondTestChain.Set((ValueString)"a", 7);
+            secondTestChain.Set((ValueString)"a", 8);
+            secondTestChain.Set((ValueString)"a", 9);
+            secondTestChain.Set((ValueString)"b", 10);
+            secondTestChain.Set((ValueString)"a", 11);
         }
 
         /// <summary>
         /// The markov chain not congeneric zero rank two test.
         /// </summary>
         [Test]
-        public void MarkovChainNotCongenericZeroRangTwoTest()
+        public void MarkovChainNotCongenericZeroRankTwoTest()
         {
-            // Используем генератор заглушку
+            // using mock of random generator
             IGenerator generator = new MockGenerator();
 
-            // Порядок цепи 2 
-            // Значит что каждый элемент зависит от одного предудушего
-            const int MarkovChainRang = 2;
+            // rank of markov chain is 2 (each element depends on one previous element)
+            const int MarkovChainRank = 2;
 
-            // неоднородность 1 
-            // следовательно допускаем имеется 2 модели для четных и нечетных позиций
-            const int NoCongenericRang = 0;
+            // heterogeneity is 1 (there are 2 models - for odd and even positions)
+            const int NoCongenericRank = 0;
 
-            // Создаем марковскую модель передавая её ранг, неоднородность и генератор
-            var markovChain = new MarkovChainNotCongenericStatic(MarkovChainRang, NoCongenericRang, generator);
+            // creating markov chain
+            var markovChain = new MarkovChainNotCongenericStatic(MarkovChainRank, NoCongenericRank, generator);
 
-            // Длинна генерируемой цепи
+            // length of generated sequence
             const int Length = 30;
 
-            // Обучаем цепь 
-            // TeachingMethod.None значнт не какой предворительной обработки цепи не проводится
-            markovChain.Teach(testChain2, TeachingMethod.Cycle);
+            // teaching markov chain (TeachingMethod.None means there is no preprocessing)
+            markovChain.Teach(secondTestChain, TeachingMethod.Cycle);
 
             var temp = markovChain.Generate(Length);
 
             /* 
-             * 1. Цепь a a a a a a b a a a b a
-             *   первый уровень (безусловная вероятность)
+             * 1. Sequence a a a a a a b a a a b a
+             *   first level (unconditional probability)
              *   
-             *    a| 10/12 (0,83333)  не более 0,83333| 
-             *    b| 2/12 (0,16667)  не более 1|
+             *    a| 10/12 (0,83333)  not more than 0,83333| 
+             *    b| 2/12 (0,16667)  not more than 1|
              * 
-             *   второй уровень (условная с учетом 1 предыдущего элемента)
+             *   second level (conditional probability taking into account 1 previous element)
              * 
              *    |   a  |   b  |
              * ---|------|------|
@@ -111,7 +107,7 @@ namespace MarkovChains.Tests.MarkovChain
              * ---|------|------|
              */
 
-            // Цепь которую хотим получить
+            // expected result of generation 
             var resultTheory = new Chain(30);
             resultTheory[0] = (ValueString)"a"; // "a" 0.77;
             resultTheory[1] = (ValueString)"a"; // "a" 0.15;
@@ -153,30 +149,28 @@ namespace MarkovChains.Tests.MarkovChain
         [Test]
         public void MarkovChainNotCongenericOneRangTwoTest()
         {
-            // Используем генератор заглушку
+            // using mock of random generator
             IGenerator generator = new MockGenerator();
 
-            // Порядок цепи 2 
-            // Значит что каждый элемент зависит от одного предудушего
-            const int MarkovChainRang = 2;
+            // rank of markov chain is 2 (each element depends on one previous element)
+            const int MarkovChainRank = 2;
 
-            // неоднородность 1 
-            // следовательно допускаем имеется 2 модели для четных и нечетных позиций
-            const int NoCongenericRang = 1;
+            // heterogeneity is 1 (there are 2 models - for odd and even positions)
+            const int NoCongenericRank = 1;
 
-            // Создаем марковскую модель передавая её ранг, неоднородность и генератор
-            var markovChain = new MarkovChainNotCongenericStatic(MarkovChainRang, NoCongenericRang, generator);
 
-            // Длинна генерируемой цепи
+            // creating markov chain
+            var markovChain = new MarkovChainNotCongenericStatic(MarkovChainRank, NoCongenericRank, generator);
+
+            // length of generated sequence
             const int Length = 12;
 
-            // Обучаем цепь 
-            // TeachingMethod.None значнт не какой предворительной обработки цепи не проводится
+            // teaching markov chain (TeachingMethod.None means there is no preprocessing)
             markovChain.Teach(testChain, TeachingMethod.None);
 
             var temp = markovChain.Generate(Length);
 
-            /**
+            /*
              * Внутри неоднородной марковской цепи существует n однородных марковских цепей. n - порядок неоднородности цепи
              * порядок данных однородных цепей равен порядку неоднородной цепи
              * однородные цепи используются по очереди как при обучении так и  при генерации.
@@ -184,15 +178,15 @@ namespace MarkovChains.Tests.MarkovChain
              * В данном тесте внутри неоднородной марковской цепи есть 2 однородные цепи.
              * Матрицы переходных вероятностей (в скобках указано кол-во входений при обучении) в них такие
              * 
-             * 1. Цепь 
-             *   первый уровень (безусловная вероятность)
+             * 1. Sequence 
+             *   first level (unconditional probability)
              *   
              *    a| 1/2 (3) |
              *    b| 1/3 (2) |
              *    c| 1/6 (1) |
              *    d| 0 (0)   |
              * 
-             *   второй уровень (условная с учетом 1 предыдущего элемента)
+             *   second level (conditional probability taking into account 1 previous element)
              * 
              *    |   a  |   b  |  с   |  d   |
              * ---|------|------|------|------|
@@ -205,15 +199,15 @@ namespace MarkovChains.Tests.MarkovChain
              *  d | 0(0) | 0(0) | 0(0) | 0(0) |
              * ---|------|------|------|------|
              * 
-             * 2. Цепь 
-             *   первый уровень (безусловная вероятность)
+             * 2. Sequence 
+             *   first level (unconditional probability)
              *   
              *    a| 2/5 (2) |
              *    b| 1/5 (1) |
              *    c| 1/5 (1) |
              *    d| 1/5 (1) |
              * 
-             *   второй уровень (условная с учетом 1 предыдущего элемента)
+             *   second level (conditional probability taking into account 1 previous element)
              * 
              *    |   a  |   b  |  с   |  d   |
              * ---|------|------|------|------|
@@ -227,27 +221,27 @@ namespace MarkovChains.Tests.MarkovChain
              * ---|------|------|------|------|
              * 
              * 
-             * при обученни так будут заноситься фрагменты 
-             *   |-| |-| |-| |-| |-|   <>- Во вторую цепь
+             * During teaching pairs are added as folowing 
+             *   |-| |-| |-| |-| |-|   <>- In second markov chain
              * a d b a a c b b a a c a
-             * |_| |_| |_| |_| |_| |_| <>- В первую цепь
+             * |_| |_| |_| |_| |_| |_| <>- In first markov chain
              * 
              */
 
-            // Цепь которую хотим получить
+            // expected result of generation
             var result = new Chain(12);
-            result.Set((ValueString)"b", 0); // 1 цепь вероятность по первому уровню. выпало  0,77 Получаем b
-            result.Set((ValueString)"a", 1); // 2 цепь вероятность по второму уровню. выпало  0.15 Получаем a
-            result.Set((ValueString)"c", 2); // 1 цепь вероятность по второму уровню. выпало  0.96 Получаем с
-            result.Set((ValueString)"b", 3); // 2 цепь вероятность по второму уровню. выпало  0.61 Получаем b
-            result.Set((ValueString)"a", 4); // 1 цепь вероятность по второму уровню. выпало  0.15 Получаем a
-            result.Set((ValueString)"c", 5); // 2 цепь вероятность по второму уровню. выпало  0.85 Получаем c
-            result.Set((ValueString)"a", 6); // 1 цепь вероятность по второму уровню. выпало  0.67 Получаем a
-            result.Set((ValueString)"c", 7); // 2 цепь вероятность по второму уровню. выпало  0.51 Получаем c
-            result.Set((ValueString)"a", 8); // 1 цепь вероятность по второму уровню. выпало  0.71 Получаем a
-            result.Set((ValueString)"a", 9); // 2 цепь вероятность по второму уровню. выпало  0.2 Получаем a
-            result.Set((ValueString)"c", 10); // 1 цепь вероятность по второму уровню. выпало  0.77 Получаем с
-            result.Set((ValueString)"b", 11); // 2 цепь вероятность по второму уровню. выпало  0.15 Получаем b
+            result.Set((ValueString)"b", 0); // 1 chain. цепь вероятность по первому уровню. выпало  0,77 Получаем b
+            result.Set((ValueString)"a", 1); // 2 chain. вероятность по второму уровню. выпало  0.15 Получаем a
+            result.Set((ValueString)"c", 2); // 1 chain. вероятность по второму уровню. выпало  0.96 Получаем с
+            result.Set((ValueString)"b", 3); // 2 chain. вероятность по второму уровню. выпало  0.61 Получаем b
+            result.Set((ValueString)"a", 4); // 1 chain. вероятность по второму уровню. выпало  0.15 Получаем a
+            result.Set((ValueString)"c", 5); // 2 chain. вероятность по второму уровню. выпало  0.85 Получаем c
+            result.Set((ValueString)"a", 6); // 1 chain. вероятность по второму уровню. выпало  0.67 Получаем a
+            result.Set((ValueString)"c", 7); // 2 chain. вероятность по второму уровню. выпало  0.51 Получаем c
+            result.Set((ValueString)"a", 8); // 1 chain. вероятность по второму уровню. выпало  0.71 Получаем a
+            result.Set((ValueString)"a", 9); // 2 chain. вероятность по второму уровню. выпало  0.2 Получаем a
+            result.Set((ValueString)"c", 10); // 1 chain. вероятность по второму уровню. выпало  0.77 Получаем с
+            result.Set((ValueString)"b", 11); // 2 chain. вероятность по второму уровню. выпало  0.15 Получаем b
 
             Assert.AreEqual(result, temp);
         }
@@ -258,33 +252,34 @@ namespace MarkovChains.Tests.MarkovChain
         [Test]
         public void MarkovChainNotCongenericDynamicZeroRangTwoTest()
         {
-            /*  // Используем генератор заглушку
-            IGenerator Generator = new MockGenerator();
-            // Порядок цепи 2 
-            // Значит что каждый элемент зависит от одного предудушего
-            int MarkovChainRang = 2;
-            // неоднородность 1 
-            // следовательно допускаем имеется 2 модели для четных и нечетных позиций
-            int NoCongenericRang = 0;
-            // Создаем марковскую модель передавая её ранг, неоднородность и генератор
-            MarkovChainNotCongenericDynamic<Chain, Chain> MarkovChain = new MarkovChainNotCongenericDynamic<Chain, Chain>(MarkovChainRang, NoCongenericRang, Generator);
+              // using mock of random generator
+            IGenerator generator = new MockGenerator();
 
-            // Длинна генерируемой цепи
-            int Length = 30;
-            // Обучаем цепь 
-            // TeachingMethod.None значнт не какой предворительной обработки цепи не проводится
-            MarkovChain.Teach(TestChain2, TeachingMethod.Cycle);
+            // rank of markov chain is 2 (each element depends on one previous element)
+            int markovChainRank = 2;
 
-            Chain Temp = MarkovChain.Generate(Length);*/
+            // heterogeneity is 1 (there are 2 models - for odd and even positions)
+            int notCongenericRank = 0;
+
+            // creating markov chain
+            // MarkovChainNotCongenericDynamic<Chain, Chain> MarkovChain = new MarkovChainNotCongenericDynamic<Chain, Chain>(markovChainRank, notCongenericRank, generator);
+
+            // length of generated sequence
+            int length = 30;
+
+            // teaching markov chain (TeachingMethod.None means there is no preprocessing)
+            // MarkovChain.Teach(secondTestChain, TeachingMethod.Cycle);
+
+            // Chain Temp = MarkovChain.Generate(length);
 
             /* 
-             * 1. Цепь a a a a a a b a a a b a
-             *   первый уровень (безусловная вероятность)
+             * 1. Sequence a a a a a a b a a a b a
+             *   first level (unconditional probability)
              *   
-             *    a| 10/12 (0,83333)  не более 0,83333| 
-             *    b| 2/12 (0,16667)  не более 1|
+             *    a| 10/12 (0,83333) not more than 0,83333| 
+             *    b| 2/12 (0,16667)  not more than 1|
              * 
-             *   второй уровень (условная с учетом 1 предыдущего элемента)
+             *   second level (conditional probability taking into account 1 previous element)
              * 
              *    |   a  |   b  |
              * ---|------|------|
@@ -294,7 +289,7 @@ namespace MarkovChains.Tests.MarkovChain
              * ---|------|------|
              */
 
-            // Цепь которую хотим получить
+            // expected result of generation
             var resultTheory = new Chain(30);
             resultTheory[0] = (ValueString)"a"; // "a" 0.77;
             resultTheory[1] = (ValueString)"a"; // "a" 0.15;
@@ -334,24 +329,25 @@ namespace MarkovChains.Tests.MarkovChain
         [Test]
         public void MarkovChainNotCongenericDynamicOneRangTwoTest()
         {
-            /*   // Используем генератор заглушку
-            IGenerator Generator = new MockGenerator();
-            // Порядок цепи 2 
-            // Значит что каждый элемент зависит от одного предудушего
-            int MarkovChainRang = 2;
-            // неоднородность 1 
-            // следовательно допускаем имеется 2 модели для четных и нечетных позиций
-            int NoCongenericRang = 1;
-            // Создаем марковскую модель передавая её ранг, неоднородность и генератор
-            MarkovChainNotCongenericDynamic<Chain, Chain> MarkovChain = new MarkovChainNotCongenericDynamic<Chain, Chain>(MarkovChainRang, NoCongenericRang, Generator);
+            // using mock of random generator
+            IGenerator generator = new MockGenerator();
 
-            // Длинна генерируемой цепи
-            int Length = 12;
-            // Обучаем цепь 
-            // TeachingMethod.None значнт не какой предворительной обработки цепи не проводится
-            MarkovChain.Teach(TestChain, TeachingMethod.None);
+            // rank of markov chain is 2 (each element depends on one previous element)
+            int markovChainRank = 2;
 
-            Chain Temp = MarkovChain.Generate(Length);*/
+            // heterogeneity is 1 (there are 2 models - for odd and even positions)
+            int notCongenericRank = 1;
+
+            // creating markov chain
+            // MarkovChainNotCongenericDynamic<Chain, Chain> MarkovChain = new MarkovChainNotCongenericDynamic<Chain, Chain>(markovChainRank, notCongenericRank, generator);
+
+            // length of generated sequence
+            int length = 12;
+
+            // teaching markov chain (TeachingMethod.None means there is no preprocessing)
+            // MarkovChain.Teach(TestChain, TeachingMethod.None);
+
+            // Chain Temp = MarkovChain.Generate(length);
 
             /**
              * Внутри неоднородной марковской цепи существует n однородных марковских цепей. n - порядок неоднородности цепи
@@ -361,15 +357,15 @@ namespace MarkovChains.Tests.MarkovChain
              * В данном тесте внутри неоднородной марковской цепи есть 2 однородные цепи.
              * Матрицы переходных вероятностей (в скобках указано кол-во входений при обучении) в них такие
              * 
-             * 1. Цепь 
-             *   первый уровень (безусловная вероятность)
+             * 1. Sequence 
+             *   first level (unconditional probability)
              *   
              *    a| 1/2 (3) |
              *    b| 1/3 (2) |
              *    c| 1/6 (1) |
              *    d| 0 (0)   |
              * 
-             *   второй уровень (условная с учетом 1 предыдущего элемента)
+             *   second level (conditional probability taking into account 1 previous element)
              * 
              *    |   a  |   b  |  с   |  d   |
              * ---|------|------|------|------|
@@ -382,15 +378,15 @@ namespace MarkovChains.Tests.MarkovChain
              *  d | 0(0) | 0(0) | 0(0) | 0(0) |
              * ---|------|------|------|------|
              * 
-             * 2. Цепь 
-             *   первый уровень (безусловная вероятность)
+             * 2. Sequence 
+             *   first level (unconditional probability)
              *   
              *    a| 2/5 (2) |
              *    b| 1/5 (1) |
              *    c| 1/5 (1) |
              *    d| 1/5 (1) |
              * 
-             *   второй уровень (условная с учетом 1 предыдущего элемента)
+             *   second level (conditional probability taking into account 1 previous element)
              * 
              *    |   a  |   b  |  с   |  d   |
              * ---|------|------|------|------|
@@ -404,27 +400,27 @@ namespace MarkovChains.Tests.MarkovChain
              * ---|------|------|------|------|
              * 
              * 
-             * при обученни так будут заноситься фрагменты 
-             *   |-| |-| |-| |-| |-|   <>- Во вторую цепь
+             * During teaching pairs are added as folowing 
+             *   |-| |-| |-| |-| |-|   <>- In second markov chain
              * a d b a a c b b a a c a
-             * |_| |_| |_| |_| |_| |_| <>- В первую цепь
+             * |_| |_| |_| |_| |_| |_| <>- In first markov chain
              * 
              */
 
-            // Цепь которую хотим получить
+            // expected result of generation
             var result = new Chain(12);
-            result.Set((ValueString)"b", 0); // 1 цепь вероятность по первому уровню. выпало  0,77 Получаем b
-            result.Set((ValueString)"a", 1); // 2 цепь вероятность по второму уровню. выпало  0.15 Получаем a
-            result.Set((ValueString)"c", 2); // 1 цепь вероятность по второму уровню. выпало  0.96 Получаем с
-            result.Set((ValueString)"b", 3); // 2 цепь вероятность по второму уровню. выпало  0.61 Получаем b
-            result.Set((ValueString)"a", 4); // 1 цепь вероятность по второму уровню. выпало  0.15 Получаем a
-            result.Set((ValueString)"c", 5); // 2 цепь вероятность по второму уровню. выпало  0.85 Получаем c
-            result.Set((ValueString)"a", 6); // 1 цепь вероятность по второму уровню. выпало  0.67 Получаем a
-            result.Set((ValueString)"c", 7); // 2 цепь вероятность по второму уровню. выпало  0.51 Получаем c
-            result.Set((ValueString)"a", 8); // 1 цепь вероятность по второму уровню. выпало  0.71 Получаем a
-            result.Set((ValueString)"a", 9); // 2 цепь вероятность по второму уровню. выпало  0.2 Получаем a
-            result.Set((ValueString)"c", 10); // 1 цепь вероятность по второму уровню. выпало  0.77 Получаем с
-            result.Set((ValueString)"b", 11); // 2 цепь вероятность по второму уровню. выпало  0.15 Получаем b
+            result.Set((ValueString)"b", 0); // 1 chain. вероятность по первому уровню. выпало  0,77 Получаем b
+            result.Set((ValueString)"a", 1); // 2 chain. вероятность по второму уровню. выпало  0.15 Получаем a
+            result.Set((ValueString)"c", 2); // 1 chain. вероятность по второму уровню. выпало  0.96 Получаем с
+            result.Set((ValueString)"b", 3); // 2 chain. вероятность по второму уровню. выпало  0.61 Получаем b
+            result.Set((ValueString)"a", 4); // 1 chain. вероятность по второму уровню. выпало  0.15 Получаем a
+            result.Set((ValueString)"c", 5); // 2 chain. вероятность по второму уровню. выпало  0.85 Получаем c
+            result.Set((ValueString)"a", 6); // 1 chain. вероятность по второму уровню. выпало  0.67 Получаем a
+            result.Set((ValueString)"c", 7); // 2 chain. вероятность по второму уровню. выпало  0.51 Получаем c
+            result.Set((ValueString)"a", 8); // 1 chain. вероятность по второму уровню. выпало  0.71 Получаем a
+            result.Set((ValueString)"a", 9); // 2 chain. вероятность по второму уровню. выпало  0.2 Получаем a
+            result.Set((ValueString)"c", 10); // 1 chain. вероятность по второму уровню. выпало  0.77 Получаем с
+            result.Set((ValueString)"b", 11); // 2 chain. вероятность по второму уровню. выпало  0.15 Получаем b
         }
     }
 }
