@@ -30,8 +30,8 @@
         {
             DnaProcessor.CheckDnaAlphabet(chain.Alphabet);
 
-            var g = counter.Calculate(chain.CongenericChain(new ValueString("G")), link);
-            var c = counter.Calculate(chain.CongenericChain(new ValueString("C")), link);
+            var g = counter.Calculate(chain.GetOrCreateCongenericChain(new ValueString("G")), link);
+            var c = counter.Calculate(chain.GetOrCreateCongenericChain(new ValueString("C")), link);
             var l = counter.Calculate(chain, link);
 
             var result = 100 * (g + c) / l;

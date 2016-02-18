@@ -130,6 +130,21 @@ namespace LibiadaCore.Core
             return result;
         }
 
+        public CongenericChain TryGetCongenericChain(IBaseObject element)
+        {
+            if (!alphabet.Contains(element))
+            {
+                return null;
+            }
+
+            return CongenericChain(element);
+        }
+
+        public CongenericChain GetOrCreateCongenericChain(IBaseObject element)
+        {
+            return TryGetCongenericChain(element) ?? new CongenericChain(element);
+        }
+
         /// <summary>
         /// Returns clone of congeneric sequence by index of its element in alphabet.
         /// </summary>

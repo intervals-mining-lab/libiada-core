@@ -32,6 +32,7 @@ namespace LibiadaCore.Core
         /// </summary>
         private CongenericIntervalsManager intervalsManager;
 
+
         /// <summary>
         /// Initializes a new instance of the <see cref="CongenericChain"/> class.
         /// </summary>
@@ -45,6 +46,12 @@ namespace LibiadaCore.Core
         {
             this.element = element;
             this.length = length;
+        }
+
+        public CongenericChain(IBaseObject element)
+        {
+            this.element = element;
+            length = 0;
         }
 
         /// <summary>
