@@ -43,10 +43,9 @@ namespace LibiadaCore.Tests.Core
         /// The constructor less zero test.
         /// </summary>
         [Test]
-        [ExpectedException(typeof(ArgumentException))]
         public void ConstructorLessZeroTest()
         {
-            new BaseChain(-10);
+            Assert.Throws(typeof(ArgumentException), () => new BaseChain(-10));
         }
 
         /// <summary>

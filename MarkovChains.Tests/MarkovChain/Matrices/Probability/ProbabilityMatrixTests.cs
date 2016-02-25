@@ -95,7 +95,6 @@ namespace MarkovChains.Tests.MarkovChain.Matrices.Probability
         /// The add length more than chain rank test.
         /// </summary>
         [Test]
-        [ExpectedException(typeof(ArgumentException))]
         public void AddLengthMoreThanChainRankTest()
         {
             alphabet.Add(a);
@@ -114,7 +113,7 @@ namespace MarkovChains.Tests.MarkovChain.Matrices.Probability
             arrayCh[0] = alphabet.IndexOf(baseChain[0]);
             arrayCh[1] = alphabet.IndexOf(baseChain[1]);
             arrayCh[2] = alphabet.IndexOf(baseChain[2]);
-            matrix.Add(arrayCh);
+            Assert.Throws(typeof(ArgumentException), () => matrix.Add(arrayCh));
         }
 
         /// <summary>
@@ -674,7 +673,6 @@ namespace MarkovChains.Tests.MarkovChain.Matrices.Probability
         /// The larger n test.
         /// </summary>
         [Test]
-        [ExpectedException(typeof(ArgumentOutOfRangeException))]
         public void LargerNTest()
         {
             alphabet.Add(a);
@@ -690,7 +688,7 @@ namespace MarkovChains.Tests.MarkovChain.Matrices.Probability
             var array = new int[baseChain.GetLength()];
             array[0] = alphabet.IndexOf(baseChain[0]);
             array[1] = alphabet.IndexOf(baseChain[1]);
-            matrix.FrequencyFromObject(array);
+            Assert.Throws(typeof(ArgumentOutOfRangeException), () => matrix.FrequencyFromObject(array));
         }
     }
 }

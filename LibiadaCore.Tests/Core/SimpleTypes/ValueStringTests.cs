@@ -16,20 +16,18 @@ namespace LibiadaCore.Tests.Core.SimpleTypes
         /// The null string value test.
         /// </summary>
         [Test]
-        [ExpectedException(typeof(ArgumentNullException))]
         public void NullStringValueTest()
         {
-            new ValueString(null);
+            Assert.Throws(typeof(ArgumentNullException), () => new ValueString(null));
         }
 
         /// <summary>
         /// The empty string value test.
         /// </summary>
         [Test]
-        [ExpectedException(typeof(ArgumentException))]
         public void EmptyStringValueTest()
         {
-            new ValueString(string.Empty);
+            Assert.Throws(typeof(ArgumentException), () => new ValueString(string.Empty));
         }
 
         /// <summary>

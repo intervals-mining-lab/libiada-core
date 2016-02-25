@@ -19,7 +19,8 @@ namespace LibiadaCore.Tests.Core.SimpleTypes
             int x = new ValueInt(1) + new ValueInt(3);
             Assert.AreEqual(4, x);
             ValueInt y = new ValueInt(1) + new ValueInt(3);
-            Assert.AreEqual(4, y);
+            Assert.AreEqual(4, (int)y);
+            Assert.IsTrue(4.Equals(y));
         }
     }
 }

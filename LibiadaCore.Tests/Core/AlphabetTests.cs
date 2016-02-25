@@ -48,11 +48,10 @@
         /// The add same test.
         /// </summary>
         [Test]
-        [ExpectedException(typeof(Exception))]
         public void AddSameTest()
         {
             alphabet1.Add(new ValueInt(2));
-            alphabet1.Add(new ValueInt(2));
+            Assert.Throws(typeof(Exception), () => alphabet1.Add(new ValueInt(2)));
         }
 
         /// <summary>
@@ -109,10 +108,9 @@
         /// The null test.
         /// </summary>
         [Test]
-        [ExpectedException(typeof(NullReferenceException))]
         public void NullTest()
         {
-            alphabet1.Add(null);
+            Assert.Throws(typeof(NullReferenceException), () => alphabet1.Add(null));
         }
 
         /// <summary>
