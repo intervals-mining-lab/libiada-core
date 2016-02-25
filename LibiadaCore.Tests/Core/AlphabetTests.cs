@@ -51,7 +51,7 @@
         public void AddSameTest()
         {
             alphabet1.Add(new ValueInt(2));
-            Assert.Throws(typeof(Exception), () => alphabet1.Add(new ValueInt(2)));
+            Assert.Throws<Exception>(() => alphabet1.Add(new ValueInt(2)));
         }
 
         /// <summary>
@@ -110,7 +110,7 @@
         [Test]
         public void NullTest()
         {
-            Assert.Throws(typeof(NullReferenceException), () => alphabet1.Add(null));
+            Assert.Throws<NullReferenceException>(() => alphabet1.Add(null));
         }
 
         /// <summary>

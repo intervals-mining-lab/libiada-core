@@ -18,7 +18,7 @@ namespace LibiadaCore.Tests.Core.SimpleTypes
         [Test]
         public void NullStringValueTest()
         {
-            Assert.Throws(typeof(ArgumentNullException), () => new ValueString(null));
+            Assert.Throws<ArgumentNullException>(() => new ValueString(null));
         }
 
         /// <summary>
@@ -27,7 +27,7 @@ namespace LibiadaCore.Tests.Core.SimpleTypes
         [Test]
         public void EmptyStringValueTest()
         {
-            Assert.Throws(typeof(ArgumentException), () => new ValueString(string.Empty));
+            Assert.Throws<ArgumentException>(() => new ValueString(string.Empty));
         }
 
         /// <summary>

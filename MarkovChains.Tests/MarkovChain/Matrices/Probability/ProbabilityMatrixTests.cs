@@ -113,7 +113,7 @@ namespace MarkovChains.Tests.MarkovChain.Matrices.Probability
             arrayCh[0] = alphabet.IndexOf(baseChain[0]);
             arrayCh[1] = alphabet.IndexOf(baseChain[1]);
             arrayCh[2] = alphabet.IndexOf(baseChain[2]);
-            Assert.Throws(typeof(ArgumentException), () => matrix.Add(arrayCh));
+            Assert.Throws<ArgumentException>(() => matrix.Add(arrayCh));
         }
 
         /// <summary>
@@ -688,7 +688,7 @@ namespace MarkovChains.Tests.MarkovChain.Matrices.Probability
             var array = new int[baseChain.GetLength()];
             array[0] = alphabet.IndexOf(baseChain[0]);
             array[1] = alphabet.IndexOf(baseChain[1]);
-            Assert.Throws(typeof(ArgumentOutOfRangeException), () => matrix.FrequencyFromObject(array));
+            Assert.Throws<ArgumentOutOfRangeException>(() => matrix.FrequencyFromObject(array));
         }
     }
 }
