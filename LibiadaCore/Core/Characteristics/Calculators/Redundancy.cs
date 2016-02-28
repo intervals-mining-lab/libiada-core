@@ -9,7 +9,7 @@
     /// </summary>
     public class Redundancy : BinaryCalculator
     {
-        // TODO: refactor to using of intervals manager
+        // TODO: refactor to using intervals manager
 
         /// <summary>
         /// Calculation method.

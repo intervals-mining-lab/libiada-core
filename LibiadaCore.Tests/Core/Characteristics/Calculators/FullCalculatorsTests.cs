@@ -26,7 +26,7 @@
         /// <summary>
         /// Calculator initialization method.
         /// </summary>
-        [TestFixtureSetUp]
+        [OneTimeSetUp]
         public void Initialization()
         {
             var testClassName = this.GetType().Name;

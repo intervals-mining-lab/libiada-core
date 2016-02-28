@@ -54,9 +54,9 @@
             var m1 = new Measure(notes, attr);
             var m2 = new Measure(notes2, attr);
 
-            var mlist = new List<Measure> { m1, m2 };
+            var mList = new List<Measure> { m1, m2 };
 
-            var uni = new CongenericScoreTrack("a1", mlist);
+            var uni = new CongenericScoreTrack("a1", mList);
 
             Assert.AreNotEqual(uni.NoteOrder()[0].Id, 1);
 

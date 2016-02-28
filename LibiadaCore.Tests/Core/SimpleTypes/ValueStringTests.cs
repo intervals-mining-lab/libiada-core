@@ -37,6 +37,7 @@ namespace LibiadaCore.Tests.Core.SimpleTypes
         public void EqualsTest()
         {
             Assert.AreEqual(new ValueString("1"), new ValueString("1"));
+            Assert.AreEqual(new ValueString("abc"), new ValueString("abc"));
         }
     }
 }

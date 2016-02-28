@@ -52,8 +52,8 @@ namespace LibiadaCore.Core
         /// <summary>
         /// Adds element to the end of alphabet.
         /// </summary>
-        /// <param name="baseObject">
-        /// Added element.
+        /// <param name="element">
+        /// Element to add.
         /// </param>
         /// <returns>
         /// Index of new element in alphabet.
@@ -64,20 +64,20 @@ namespace LibiadaCore.Core
         /// <exception cref="NullReferenceException">
         /// Thrown if added element is null.
         /// </exception>
-        public virtual int Add(IBaseObject baseObject)
+        public virtual int Add(IBaseObject element)
         {
-            if (baseObject == null)
+            if (element == null)
             {
                 throw new NullReferenceException();
             }
 
-            if (Elements.Contains(baseObject))
+            if (Elements.Contains(element))
             {
-                throw new Exception("Element '" + baseObject + "' is already in alphabet.");
+                throw new ArgumentException("Element '" + element + "' is already in alphabet.", "element");
             }
 
-            Elements.Add(baseObject.Clone());
-            return Elements.IndexOf(baseObject);
+            Elements.Add(element.Clone());
+            return Elements.IndexOf(element);
         }
 
         /// <summary>

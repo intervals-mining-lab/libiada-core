@@ -60,27 +60,37 @@ namespace LibiadaCore.Tests.Core
         /// <summary>
         /// The get element position test.
         /// </summary>
-        [Test]
-        public void GetElementPositionTest()
+        /// <param name="expected">
+        /// The expected position.
+        /// </param>
+        /// <param name="chainIndex">
+        /// The chain index.
+        /// </param>
+        /// <param name="element">
+        /// The element.
+        /// </param>
+        /// <param name="occurrence">
+        /// The occurrence number.
+        /// </param>
+        [TestCase(2, 2, "A", 1)]
+        [TestCase(8, 2, "A", 2)]
+        [TestCase(-1, 2, "A", 3)]
+        [TestCase(0, 2, "C", 1)]
+        [TestCase(1, 2, "C", 2)]
+        [TestCase(3, 2, "C", 3)]
+        [TestCase(5, 2, "C", 4)]
+        [TestCase(9, 2, "C", 5)]
+        [TestCase(-1, 2, "C", 6)]
+        [TestCase(4, 2, "G", 1)]
+        [TestCase(-1, 2, "G", 2)]
+        [TestCase(-1, 2, "G", 3)]
+        [TestCase(6, 2, "T", 1)]
+        [TestCase(7, 2, "T", 2)]
+        [TestCase(-1, 2, "T", 3)]
+        public void GetElementPositionTest(int expected, int chainIndex, string element, int occurrence)
         {
-            Assert.AreEqual(2, chains[2].GetOccurrence(elements["A"], 1));
-            Assert.AreEqual(8, chains[2].GetOccurrence(elements["A"], 2));
-            Assert.AreEqual(-1, chains[2].GetOccurrence(elements["A"], 3));
-
-            Assert.AreEqual(0, chains[2].GetOccurrence(elements["C"], 1));
-            Assert.AreEqual(1, chains[2].GetOccurrence(elements["C"], 2));
-            Assert.AreEqual(3, chains[2].GetOccurrence(elements["C"], 3));
-            Assert.AreEqual(5, chains[2].GetOccurrence(elements["C"], 4));
-            Assert.AreEqual(9, chains[2].GetOccurrence(elements["C"], 5));
-            Assert.AreEqual(-1, chains[2].GetOccurrence(elements["C"], 6));
-
-            Assert.AreEqual(4, chains[2].GetOccurrence(elements["G"], 1));
-            Assert.AreEqual(-1, chains[2].GetOccurrence(elements["G"], 2));
-            Assert.AreEqual(-1, chains[2].GetOccurrence(elements["G"], 3));
-
-            Assert.AreEqual(6, chains[2].GetOccurrence(elements["T"], 1));
-            Assert.AreEqual(7, chains[2].GetOccurrence(elements["T"], 2));
-            Assert.AreEqual(-1, chains[2].GetOccurrence(elements["T"], 3));
+            var actual = chains[chainIndex].GetOccurrence(elements[element], occurrence);
+            Assert.AreEqual(expected, actual);
         }
     }
 }

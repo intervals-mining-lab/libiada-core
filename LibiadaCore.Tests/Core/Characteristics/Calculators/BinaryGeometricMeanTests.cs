@@ -13,7 +13,7 @@
         /// <summary>
         /// Calculator initialization method.
         /// </summary>
-        [TestFixtureSetUp]
+        [OneTimeSetUp]
         public override void Initialization()
         {
             Calculator = CalculatorsFactory.CreateBinaryCalculator("GeometricMean");

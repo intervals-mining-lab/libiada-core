@@ -31,7 +31,7 @@
         /// <summary>
         /// Calculator initialization method.
         /// </summary>
-        [TestFixtureSetUp]
+        [OneTimeSetUp]
         public virtual void Initialization()
         {
             var testClassName = this.GetType().Name;
