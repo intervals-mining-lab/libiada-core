@@ -54,6 +54,25 @@
         }
 
         /// <summary>
+        /// Tests that all elements in alphabet are unique.
+        /// </summary>
+        [Test]
+        public void UniqueElementsTest()
+        {
+            firstAlphabet.Add(new ValueInt(2));
+            firstAlphabet.Add(new ValueInt(3));
+            firstAlphabet.Add(new ValueInt(4));
+            firstAlphabet.Add(new ValueInt(5));
+            firstAlphabet.Add(new ValueString("2"));
+            firstAlphabet.Add(new ValueString("3"));
+            firstAlphabet.Add(new ValueString("5"));
+            firstAlphabet.Add(new ValueString("1"));
+            firstAlphabet[0] = new ValueString("3");
+            Assert.Throws<ArgumentException>(() => firstAlphabet.Add(new ValueInt(5)));
+            Assert.That(firstAlphabet, Is.Unique);
+        }
+
+        /// <summary>
         /// The get test.
         /// </summary>
         [Test]

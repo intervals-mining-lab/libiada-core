@@ -64,11 +64,7 @@
         [Test]
         public void FourPointsZeroTest()
         {
-            var connected = new[]
-                {
-                    true, false, false, false, true, false,
-                    false, true, false, false
-                };
+            var connected = new[] { true, false, false, false, true, false, false, true, false, false };
 
             for (int i = 0; i < connected.Length; i++)
             {
@@ -93,11 +89,7 @@
         [Test]
         public void FourPointsOneTest()
         {
-            var connected = new[]
-                {
-                    true, false, false, false,
-                    false, false, false, false, false, true
-                };
+            var connected = new[] { true, false, false, false, false, false, false, false, false, true };
             for (int i = 0; i < connected.Length; i++)
             {
                 manager.Connections[i].Connected = connected[i];
