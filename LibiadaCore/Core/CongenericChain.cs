@@ -18,9 +18,9 @@ namespace LibiadaCore.Core
         private readonly IBaseObject element;
 
         /// <summary>
-        /// The building.
+        /// Positions of all occurrences of the element in congeneric sequence.
         /// </summary>
-        private List<int> building = new List<int>();
+        private List<int> positions = new List<int>();
 
         /// <summary>
         /// The chain length.
@@ -30,7 +30,7 @@ namespace LibiadaCore.Core
         /// <summary>
         /// The intervals manager.
         /// </summary>
-        private CongenericIntervalsManager intervalsManager;
+        private ICongenericIntervalsManager intervalsManager;
 
 
         /// <summary>
@@ -46,19 +46,27 @@ namespace LibiadaCore.Core
         {
             this.element = element;
             this.length = length;
-        }
-
-        public CongenericChain(IBaseObject element)
-        {
-            this.element = element;
-            length = 0;
+            positions = new List<int>();
         }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="CongenericChain"/> class.
         /// </summary>
-        /// <param name="building">
-        /// The building.
+        /// <param name="element">
+        /// The element.
+        /// </param>
+        public CongenericChain(IBaseObject element)
+        {
+            this.element = element;
+            length = 0;
+            positions = new List<int>();
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="CongenericChain"/> class.
+        /// </summary>
+        /// <param name="positions">
+        /// The positions of all elements in congeneric sequence.
         /// </param>
         /// <param name="element">
         /// Element of this congeneric sequence.
@@ -66,11 +74,11 @@ namespace LibiadaCore.Core
         /// <param name="length">
         /// Length of this chain.
         /// </param>
-        public CongenericChain(IEnumerable<int> building, IBaseObject element, int length)
+        public CongenericChain(IEnumerable<int> positions, IBaseObject element, int length)
         {
             this.length = length;
             this.element = element.Clone();
-            this.building = building.OrderBy(b => b).ToList();
+            this.positions = positions.OrderBy(b => b).ToList();
         }
 
         /// <summary>
@@ -84,7 +92,7 @@ namespace LibiadaCore.Core
         /// </param>
         public CongenericChain(bool[] map, IBaseObject element)
         {
-            this.length = map.Length;
+            length = map.Length;
             this.element = element;
             for (int i = 0; i < map.Length; i++)
             {
@@ -100,7 +108,7 @@ namespace LibiadaCore.Core
         /// </summary>
         public int OccurrencesCount
         {
-            get { return building.Count; }
+            get { return positions.Count; }
         }
 
         /// <summary>
@@ -119,12 +127,23 @@ namespace LibiadaCore.Core
             get
             {
                 var result = new int[length];
-                for (int i = 0; i < building.Count; i++)
+                for (int i = 0; i < positions.Count; i++)
                 {
-                    result[building[i]] = 1;
+                    result[positions[i]] = 1;
                 }
 
                 return result;
+            }
+        }
+
+        /// <summary>
+        /// Gets positions of all elements in congeneric sequence.
+        /// </summary>
+        public int[] Positions
+        {
+            get
+            {
+                return positions.ToArray();
             }
         }
 
@@ -147,7 +166,7 @@ namespace LibiadaCore.Core
 
             intervalsManager = null;
             length = newLength;
-            building = new List<int>();
+            positions = new List<int>();
         }
 
         /// <summary>
@@ -163,7 +182,7 @@ namespace LibiadaCore.Core
         {
             if (intervalsManager == null)
             {
-                intervalsManager = new CongenericIntervalsManager(this);
+                intervalsManager = positions.Count != 0 ? (ICongenericIntervalsManager)new CongenericIntervalsManager(this) : new NullCongenericIntervalsManager();
             }
 
             return intervalsManager.GetIntervals(link);
@@ -181,12 +200,12 @@ namespace LibiadaCore.Core
         /// </returns>
         public int GetOccurrence(int occurrence)
         {
-            if (occurrence - 1 >= building.Count)
+            if (occurrence - 1 >= positions.Count)
             {
                 return -1;
             }
 
-            return building[occurrence - 1];
+            return positions[occurrence - 1];
         }
 
         /// <summary>
@@ -200,11 +219,11 @@ namespace LibiadaCore.Core
         /// </returns>
         public int GetFirstAfter(int index)
         {
-            for (int i = 0; i < building.Count; i++)
+            for (int i = 0; i < positions.Count; i++)
             {
-                if (building[i] > index)
+                if (positions[i] > index)
                 {
-                    return building[i];
+                    return positions[i];
                 }
             }
 
@@ -256,10 +275,10 @@ namespace LibiadaCore.Core
 
             intervalsManager = null;
 
-            if (!building.Contains(index))
+            if (!positions.Contains(index))
             {
-                building.Add(index);
-                building = building.OrderBy(b => b).ToList();
+                positions.Add(index);
+                positions = positions.OrderBy(b => b).ToList();
             }
         }
 
@@ -275,7 +294,7 @@ namespace LibiadaCore.Core
         /// </returns>
         public override IBaseObject Get(int index)
         {
-            return building.Contains(index) ? element.Clone() : NullValue.Instance();
+            return positions.Contains(index) ? element.Clone() : NullValue.Instance();
         }
 
         /// <summary>
@@ -291,16 +310,16 @@ namespace LibiadaCore.Core
         {
             intervalsManager = null;
             length--;
-            if (building.Contains(index))
+            if (positions.Contains(index))
             {
-                building.Remove(index);
+                positions.Remove(index);
             }
 
-            for (int i = 0; i < building.Count; i++)
+            for (int i = 0; i < positions.Count; i++)
             {
-                if (index < building[i])
+                if (index < positions[i])
                 {
-                    building[i]--;
+                    positions[i]--;
                 }
             }
         }
@@ -315,7 +334,7 @@ namespace LibiadaCore.Core
         public override void RemoveAt(int index)
         {
             intervalsManager = null;
-            building.Remove(index);
+            positions.Remove(index);
         }
 
         /// <summary>
@@ -393,7 +412,7 @@ namespace LibiadaCore.Core
         /// </returns>
         public override IBaseObject Clone()
         {
-            return new CongenericChain(building, Element, length);
+            return new CongenericChain(positions, Element, length);
         }
     }
 }

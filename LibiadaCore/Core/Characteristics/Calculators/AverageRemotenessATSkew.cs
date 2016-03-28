@@ -30,8 +30,8 @@
         {
             DnaProcessor.CheckDnaAlphabet(chain.Alphabet);
 
-            var a = remotenessCalculator.Calculate(chain.CongenericChain(new ValueString("A")), link);
-            var t = remotenessCalculator.Calculate(chain.CongenericChain(new ValueString("T")), link);
+            var a = remotenessCalculator.Calculate(chain.GetOrCreateCongenericChain(new ValueString("A")), link);
+            var t = remotenessCalculator.Calculate(chain.GetOrCreateCongenericChain(new ValueString("T")), link);
 
             var result = (a - t) / (a + t);
 

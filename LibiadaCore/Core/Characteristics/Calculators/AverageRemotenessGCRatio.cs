@@ -30,8 +30,8 @@
         {
             DnaProcessor.CheckDnaAlphabet(chain.Alphabet);
 
-            var g = remotenessCalculator.Calculate(chain.CongenericChain(new ValueString("G")), link);
-            var c = remotenessCalculator.Calculate(chain.CongenericChain(new ValueString("C")), link);
+            var g = remotenessCalculator.Calculate(chain.GetOrCreateCongenericChain(new ValueString("G")), link);
+            var c = remotenessCalculator.Calculate(chain.GetOrCreateCongenericChain(new ValueString("C")), link);
             var l = remotenessCalculator.Calculate(chain, link);
 
             var result = 100 * (g + c) / l;

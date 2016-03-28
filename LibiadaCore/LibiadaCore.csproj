@@ -73,6 +73,7 @@
     <Compile Include="Core\Characteristics\Calculators\SWSkew.cs" />
     <Compile Include="Core\Characteristics\Calculators\Uniformity.cs" />
     <Compile Include="Core\IntervalsManagers\AccordanceIntervalsManager.cs" />
+    <Compile Include="Core\IntervalsManagers\NullCongenericIntervalsManager.cs" />
     <Compile Include="Misc\DataTransformers\DnaProcessing.cs" />
     <Compile Include="Core\Characteristics\Calculators\GCRatio.cs" />
     <Compile Include="Core\Characteristics\Calculators\ICalculator.cs" />
@@ -142,7 +143,7 @@
     <Compile Include="Core\Characteristics\CalculatorsFactory.cs" />
     <Compile Include="Core\IBaseObject.cs" />
     <Compile Include="Core\IntervalsManagers\CongenericIntervalsManager.cs" />
-    <Compile Include="Core\IntervalsManagers\IntervalsManager.cs" />
+    <Compile Include="Core\IntervalsManagers\ICongenericIntervalsManager.cs" />
     <Compile Include="Core\IntervalsManagers\BinaryIntervalsManager.cs" />
     <Compile Include="Core\Link.cs" />
     <Compile Include="Core\SimpleTypes\NullValue.cs" />

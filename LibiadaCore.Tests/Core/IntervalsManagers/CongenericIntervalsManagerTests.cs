@@ -1,6 +1,9 @@
 ﻿namespace LibiadaCore.Tests.Core.IntervalsManagers
 {
+    using System.Collections.Generic;
+
     using LibiadaCore.Core;
+    using LibiadaCore.Core.IntervalsManagers;
 
     using NUnit.Framework;
 
@@ -8,8 +11,18 @@
     /// The congeneric intervals manager test.
     /// </summary>
     [TestFixture]
-    public class CongenericIntervalsManagerTests : AbstractIntervalsManagerTests
+    public class CongenericIntervalsManagerTests 
     {
+        /// <summary>
+        /// The congeneric chains.
+        /// </summary>
+        private readonly List<CongenericChain> congenericChains = ChainsStorage.CongenericChains;
+
+        /// <summary>
+        /// The intervals.
+        /// </summary>
+        private readonly List<Dictionary<Link, List<int>>> allIntervals = ChainsStorage.Intervals;
+
         /// <summary>
         /// The congeneric intervals manager creation none link test.
         /// </summary>
@@ -56,7 +69,15 @@
         [TestCase(5, Link.None)]
         public void CongenericIntervalsManagerCreationNoneLinkTest(int index, Link link)
         {
-            IntervalsManagerTest(index, link);
+            var intervalsManager = new CongenericIntervalsManager(congenericChains[index]);
+            var intervals = allIntervals[index][link];
+
+            Assert.AreEqual(intervalsManager.GetIntervals(link).Length, intervals.Count);
+
+            for (int i = 0; i < intervals.Count; i++)
+            {
+                Assert.AreEqual(intervals[i], intervalsManager.GetIntervals(link)[i]);
+            }
         }
     }
 }

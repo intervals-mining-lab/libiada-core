@@ -311,7 +311,7 @@ namespace LibiadaCore.Core
                 int end = building.Length - intervals[k].Last();
                 intervals[k].RemoveAt(0);
 
-                congenericChains[k].SetIntervalManager(new CongenericIntervalsManager(this, intervals[k].ToArray(), start, end));
+                congenericChains[k].SetIntervalManager(new CongenericIntervalsManager(intervals[k].ToArray(), start, end));
             }
         }
 

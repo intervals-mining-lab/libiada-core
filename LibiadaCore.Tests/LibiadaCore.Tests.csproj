@@ -127,7 +127,6 @@
     <Compile Include="Core\Characteristics\Calculators\ProbabilityTests.cs" />
     <Compile Include="Core\Characteristics\Calculators\RegularityTests.cs" />
     <Compile Include="Core\Characteristics\Calculators\VolumeTests.cs" />
-    <Compile Include="Core\IntervalsManagers\AbstractIntervalsManagerTests.cs" />
     <Compile Include="Core\IntervalsManagers\CongenericIntervalsManagerTests.cs" />
     <Compile Include="Core\SimpleTypes\NullValueTests.cs" />
     <Compile Include="Core\SimpleTypes\ValuePhantomTests.cs" />
