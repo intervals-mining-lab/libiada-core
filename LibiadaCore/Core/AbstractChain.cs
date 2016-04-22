@@ -103,14 +103,22 @@
         /// </returns>
         public new string ToString()
         {
+            return ToString(string.Empty);
+        }
+
+        public string ToString(string delimiter)
+        {
             var builder = new StringBuilder();
 
-            for (int i = 0; i < GetLength(); i++)
+            var length = GetLength();
+
+            for (int i = 0; i < length; i++)
             {
                 builder.Append(this[i]);
+                builder.Append(delimiter);
             }
 
-            return builder.ToString();
+            return builder.ToString(0, builder.Length - delimiter.Length);
         }
     }
 }

@@ -288,7 +288,7 @@ namespace LibiadaCore.Core
 
             return true;
         }
-
+        
         /// <summary>
         /// Fills the clone of chain with clones of alphabet and building.
         /// </summary>

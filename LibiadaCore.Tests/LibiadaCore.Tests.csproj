@@ -45,6 +45,7 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Core\AbstractChainTests.cs" />
     <Compile Include="Core\Characteristics\Calculators\AccordanceCalculatorsTests.cs" />
     <Compile Include="Core\Characteristics\Calculators\ATSkewTests.cs" />
     <Compile Include="Core\Characteristics\Calculators\AverageRemotenessATSkewTests.cs" />
