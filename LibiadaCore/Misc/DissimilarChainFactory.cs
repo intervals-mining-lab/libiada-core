@@ -35,15 +35,12 @@
         {
             var result = new Chain(source.GetLength());
             Alphabet sourceAlphabet = source.Alphabet;
-            var entries = new List<int>();
-            for (int j = 0; j < sourceAlphabet.Cardinality; j++)
-            {
-                entries.Add(0);
-            }
+            var entries = new int[sourceAlphabet.Cardinality];
 
             for (int i = 0; i < source.GetLength(); i++)
             {
-                int entry = ++entries[sourceAlphabet.IndexOf(source[i])];
+                int elementIndex = sourceAlphabet.IndexOf(source[i]);
+                int entry = ++entries[elementIndex];
                 result.Set(new ValueInt(entry), i);
             }
 

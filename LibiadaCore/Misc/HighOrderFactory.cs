@@ -36,25 +36,20 @@
 
             var result = new Chain(source.GetLength());
             Alphabet sourceAlphabet = source.Alphabet;
-            var entries = new List<int>();
-            for (int j = 0; j < sourceAlphabet.Cardinality; j++)
-            {
-                entries.Add(0);
-            }
+            var entries = new int[sourceAlphabet.Cardinality];
 
-            var intervals = new List<int[]>();
+            var intervals = new int[sourceAlphabet.Cardinality][];
             
             for (int j = 0; j < sourceAlphabet.Cardinality; j++)
             {
                 var intervalsManager = new CongenericIntervalsManager(source.CongenericChain(j));
-                intervals.Add(intervalsManager.GetIntervals(link));
+                intervals[j] = intervalsManager.GetIntervals(link);
             }
             
             for (int i = 0; i < source.GetLength(); i++)
             {
                 var elementIndex = sourceAlphabet.IndexOf(source[i]);
-                int entry = entries[elementIndex];
-                entries[elementIndex]++;
+                int entry = entries[elementIndex]++;
                 var interval = intervals[elementIndex][entry];
                 result.Set(new ValueInt(interval), i);
             }
