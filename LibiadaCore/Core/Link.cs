@@ -20,7 +20,7 @@ namespace LibiadaCore.Core
         /// No link.
         /// Both interval from start of chain to first element
         /// and interval from last element to end of chain 
-        /// are taken into account.
+        /// are not taken into account.
         /// </summary>
         [Display(Name = "None")]
         [Description(" The first and the last intervals to boundaries of sequence are not taken into account")]
