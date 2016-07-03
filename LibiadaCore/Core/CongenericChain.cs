@@ -32,7 +32,6 @@ namespace LibiadaCore.Core
         /// </summary>
         private ICongenericIntervalsManager intervalsManager;
 
-
         /// <summary>
         /// Initializes a new instance of the <see cref="CongenericChain"/> class.
         /// </summary>

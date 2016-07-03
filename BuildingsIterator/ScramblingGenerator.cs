@@ -40,7 +40,7 @@
                 List<double> characteristics = CalculateCharacteristics(chain, characteristic);
                 try
                 {
-                    hashTable.Add(ArrayManipulator.ArrayToString(chain.Building), characteristics);
+                    hashTable.Add(ArrayExtensions.ToStringWithoutDelimiter(chain.Building), characteristics);
                 }
                 catch (Exception)
                 {

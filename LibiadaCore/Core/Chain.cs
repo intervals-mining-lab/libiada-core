@@ -130,6 +130,16 @@ namespace LibiadaCore.Core
             return result;
         }
 
+        /// <summary>
+        /// Tries to get congeneric chain. 
+        /// if there is no such chain returns null.
+        /// </summary>
+        /// <param name="element">
+        /// The element of seeked congeneric chain.
+        /// </param>
+        /// <returns>
+        /// The <see cref="CongenericChain"/>.
+        /// </returns>
         public CongenericChain TryGetCongenericChain(IBaseObject element)
         {
             if (!alphabet.Contains(element))
@@ -140,6 +150,15 @@ namespace LibiadaCore.Core
             return CongenericChain(element);
         }
 
+        /// <summary>
+        /// Gets or creates congeneric chain.
+        /// </summary>
+        /// <param name="element">
+        /// The element of congeneric chain.
+        /// </param>
+        /// <returns>
+        /// The <see cref="CongenericChain"/>.
+        /// </returns>
         public CongenericChain GetOrCreateCongenericChain(IBaseObject element)
         {
             return TryGetCongenericChain(element) ?? new CongenericChain(element);

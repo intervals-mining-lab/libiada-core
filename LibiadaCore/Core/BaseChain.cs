@@ -195,7 +195,7 @@ namespace LibiadaCore.Core
         /// </param>
         public override void DeleteAt(int index)
         {
-            building = ArrayManipulator.DeleteAt(building, index);
+            building = ArrayExtensions.DeleteAt(building, index);
 
             // TODO: remove element from alphabet if last entry is removed.
         }

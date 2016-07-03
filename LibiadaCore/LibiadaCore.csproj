@@ -82,7 +82,7 @@
     <Compile Include="Core\Characteristics\Calculators\AverageRemotenessDispersion.cs" />
     <Compile Include="Core\Characteristics\Calculators\AverageRemotenessSkewness.cs" />
     <Compile Include="Core\Characteristics\Calculators\AverageRemotenessStandardDeviation.cs" />
-    <Compile Include="Misc\ArrayManipulator.cs" />
+    <Compile Include="Misc\ArrayExtensions.cs" />
     <Compile Include="Misc\DataTransformers\DnaTransformer.cs" />
     <Compile Include="Misc\DissimilarChainFactory.cs" />
     <Compile Include="Misc\HighOrderFactory.cs" />

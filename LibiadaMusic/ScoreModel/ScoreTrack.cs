@@ -98,8 +98,6 @@
         /// <returns>
         /// The <see cref="CongenericScoreTrack"/>.
         /// </returns>
-        /// <exception cref="Exception">
-        /// </exception>
         private CongenericScoreTrack MergedTracks(List<CongenericScoreTrack> tracks)
         {
             // список склеенных дорожек

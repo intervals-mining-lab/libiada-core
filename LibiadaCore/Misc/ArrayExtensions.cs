@@ -3,14 +3,15 @@
     using System;
     using System.Collections;
     using System.Collections.Generic;
+    using System.Text;
 
     /// <summary>
-    /// Static class with methods for array manipulation.
+    /// Array extensions methods.
     /// </summary>
-    public static class ArrayManipulator
+    public static class ArrayExtensions
     {
         /// <summary>
-        /// Method for deleting one element with its cell from array.
+        /// Method for deleting one element and its cell from array.
         /// </summary>
         /// <typeparam name="T">
         /// Array type.
@@ -24,7 +25,7 @@
         /// <returns>
         /// Array that shorter than source by one element.
         /// </returns>
-        public static T[] DeleteAt<T>(T[] source, int index)
+        public static T[] DeleteAt<T>(this T[] source, int index)
         {
             var result = new T[source.Length - 1];
             if (index > 0)
@@ -36,7 +37,7 @@
             {
                 Array.Copy(source, index + 1, result, index, source.Length - index - 1);
             }
-                
+
             return result;
         }
 
@@ -52,7 +53,7 @@
         /// <returns>
         /// Array that shorter than source by one element.
         /// </returns>
-        public static int[] DeleteAt(int[] source, int index)
+        public static int[] DeleteAt(this int[] source, int index)
         {
             var result = new int[source.Length - 1];
             if (index > 0)
@@ -83,7 +84,7 @@
         /// <returns>
         /// The <see cref="Array.int"/>.
         /// </returns>
-        public static int[] AllIndexesOf<T>(T[] source, T element)
+        public static int[] AllIndexesOf<T>(this T[] source, T element)
         {
             var result = new List<int>();
 
@@ -110,7 +111,7 @@
         /// <returns>
         /// The <see cref="Array.int"/>.
         /// </returns>
-        public static int[] AllIndexesOf(int[] source, int element)
+        public static int[] AllIndexesOf(this int[] source, int element)
         {
             var result = new List<int>();
             for (int i = 0; i < source.Length; i++)
@@ -133,20 +134,13 @@
         /// <returns>
         /// The <see cref="string"/>.
         /// </returns>
-        public static string ArrayToString(IList array)
+        public static string ToStringWithoutDelimiter(this IList array)
         {
             string outputString = string.Empty;
 
             foreach (object element in array)
             {
-                if (element is IList)
-                {
-                    outputString += ArrayToString((IList)element);
-                }
-                else
-                {
-                    outputString += element;
-                }
+                outputString += element is IList ? ToStringWithoutDelimiter((IList)element) : element;
             }
 
             return outputString;
@@ -164,9 +158,9 @@
         /// <returns>
         /// The <see cref="string"/>.
         /// </returns>
-        public static string ArrayToStringGeneric<T>(IList<T> array)
+        public static string ToStringWithDefaultDelimiter<T>(this IList<T> array)
         {
-            return ArrayToStringGeneric(array, Environment.NewLine);
+            return ToString(array, Environment.NewLine);
         }
 
         /// <summary>
@@ -184,28 +178,18 @@
         /// <returns>
         /// The <see cref="string"/>.
         /// </returns>
-        public static string ArrayToStringGeneric<T>(IList<T> array, string delimiter)
+        public static string ToString<T>(this IList<T> array, string delimiter)
         {
-            string outputString = string.Empty;
+            StringBuilder builder = new StringBuilder();
 
             for (int i = 0; i < array.Count; i++)
             {
-                if (array[i] is IList)
-                {
-                    outputString += ArrayToString((IList)array[i]);
-                }
-                else
-                {
-                    outputString += array[i];
-                }
+                builder.Append(array[i] is IList ? ToStringWithoutDelimiter((IList)array[i]) : array[i].ToString());
+                builder.Append(delimiter);
 
-                if (i != array.Count - 1)
-                {
-                    outputString += delimiter;
-                }
             }
 
-            return outputString;
+            return builder.ToString(0, builder.Length - delimiter.Length);
         }
 
         /// <summary>
@@ -220,12 +204,12 @@
         /// <returns>
         /// The <see cref="T:int[]"/>.
         /// </returns>
-        public static int[] RotateArray(int[] array, uint rotations)
+        public static int[] Rotate(this int[] array, uint rotations)
         {
             var result = new int[array.Length];
-            Array.Copy(array, rotations, result, 0, array.Length - rotations); 
+            Array.Copy(array, rotations, result, 0, array.Length - rotations);
             Array.Copy(array, 0, result, result.Length - rotations, rotations);
-            
+
             return result;
         }
 
@@ -238,7 +222,7 @@
         /// <returns>
         /// The <see cref="bool"/>.
         /// </returns>
-        public static bool IsSorted(int[] array)
+        public static bool IsSorted(this int[] array)
         {
             for (int i = 1; i < array.Length; i++)
             {
@@ -260,7 +244,7 @@
         /// <returns>
         /// The <see cref="bool"/>.
         /// </returns>
-        public static bool IsSorted(List<int> array)
+        public static bool IsSorted(this List<int> array)
         {
             for (int i = 1; i < array.Count; i++)
             {

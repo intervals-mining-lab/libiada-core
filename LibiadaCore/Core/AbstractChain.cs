@@ -106,6 +106,15 @@
             return ToString(string.Empty);
         }
 
+        /// <summary>
+        /// Converts sequence to string.
+        /// </summary>
+        /// <param name="delimiter">
+        /// Delimiter added between elements.
+        /// </param>
+        /// <returns>
+        /// Sequence as <see cref="string"/>.
+        /// </returns>
         public string ToString(string delimiter)
         {
             var builder = new StringBuilder();

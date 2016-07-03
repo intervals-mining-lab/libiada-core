@@ -158,7 +158,6 @@ namespace MarkovChains.Tests.MarkovChain
             // heterogeneity is 1 (there are 2 models - for odd and even positions)
             const int NoCongenericRank = 1;
 
-
             // creating markov chain
             var markovChain = new MarkovChainNotCongenericStatic(MarkovChainRank, NoCongenericRank, generator);
 

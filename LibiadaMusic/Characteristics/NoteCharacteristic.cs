@@ -34,8 +34,6 @@
         /// <returns>
         /// The <see cref="double"/>.
         /// </returns>
-        /// <exception cref="Exception">
-        /// </exception>
         public static double CalculateRemoteness(FmotivChain chain)
         {
             if (Calculate(chain))
@@ -55,8 +53,6 @@
         /// <returns>
         /// The <see cref="double"/>.
         /// </returns>
-        /// <exception cref="Exception">
-        /// </exception>
         public static double CalculateDepth(FmotivChain chain)
         {
             if (Calculate(chain))
