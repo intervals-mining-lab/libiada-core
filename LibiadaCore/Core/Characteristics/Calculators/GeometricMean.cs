@@ -67,7 +67,7 @@ namespace LibiadaCore.Core.Characteristics.Calculators
         /// </returns>
         public override double Calculate(BinaryIntervalsManager manager, Link link)
         {
-            // dependence component on it self is 0.
+            // dependence of the component on itself is 0.
             if (manager.FirstElement.Equals(manager.SecondElement))
             {
                 return 0;

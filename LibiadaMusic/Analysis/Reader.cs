@@ -22,19 +22,20 @@
         /// </param>
         public void SetData(string path)
         {
-            var fs = new FileStream(path, FileMode.Open);
-            var br = new BinaryReader(fs);
-
-            char[] chars = br.ReadChars((int)fs.Length);
-            string str = string.Empty;
-            for (int i = 0; i < fs.Length; i++)
+            using (var fs = new FileStream(path, FileMode.Open))
             {
-                str = str + chars[i];
-            }
+                var br = new BinaryReader(fs);
 
-            char[] sep = { '\r', '\n' };
-            Data = str.Split(sep, (int)fs.Length, StringSplitOptions.RemoveEmptyEntries);
-            fs.Close();
+                char[] chars = br.ReadChars((int)fs.Length);
+                string str = string.Empty;
+                for (int i = 0; i < fs.Length; i++)
+                {
+                    str = str + chars[i];
+                }
+
+                char[] sep = { '\r', '\n' };
+                Data = str.Split(sep, (int)fs.Length, StringSplitOptions.RemoveEmptyEntries);
+            }
         }
 
         /// <summary>
@@ -47,23 +48,22 @@
         {
             // Объявляем и забиваем файл в документ 
             var xd = new XmlDocument();
-            var fs = new FileStream(path, FileMode.Open);
-            xd.Load(fs);
-
-            // Создаем и заполняем лист по тегу "element" 
-            XmlNodeList list = xd.GetElementsByTagName("element"); 
-            string str = string.Empty;
-            for (int i = 0; i < list.Count; i++)
+            using (var fs = new FileStream(path, FileMode.Open))
             {
-                // вносим в строку следующий ф-мотив + разделитель
-                str += list.Item(i).InnerText + '\r' + '\n'; 
+                xd.Load(fs);
+
+                // Создаем и заполняем лист по тегу "element" 
+                XmlNodeList list = xd.GetElementsByTagName("element");
+                string str = string.Empty;
+                for (int i = 0; i < list.Count; i++)
+                {
+                    // вносим в строку следующий ф-мотив + разделитель
+                    str += list.Item(i).InnerText + '\r' + '\n';
+                }
+
+                char[] sep = { '\r', '\n' };
+                Data = str.Split(sep, (int)fs.Length, StringSplitOptions.RemoveEmptyEntries);
             }
-
-            char[] sep = { '\r', '\n' };
-            Data = str.Split(sep, (int)fs.Length, StringSplitOptions.RemoveEmptyEntries);
-
-            // Закрываем поток
-            fs.Close(); 
         }
     }
 }

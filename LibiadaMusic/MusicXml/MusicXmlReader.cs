@@ -77,11 +77,13 @@
         {
             // Объявляем и забиваем файл в XMLдокумент  
             var xd = new XmlDocument();
-            var fs = new FileStream(path, FileMode.Open);
-            xd.Load(fs);
-            curDoc = null;
-            curDoc = (XmlDocument)xd.Clone();
-            fs.Close();
+            using (var fs = new FileStream(path, FileMode.Open))
+            {
+                xd.Load(fs);
+                curDoc = null;
+                curDoc = (XmlDocument)xd.Clone();
+            }
+
             FileName = Path.GetFileNameWithoutExtension(path); // сохраняем имя прочтенного файла
         }
     }
