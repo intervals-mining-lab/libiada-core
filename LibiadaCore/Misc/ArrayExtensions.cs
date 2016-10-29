@@ -186,7 +186,6 @@
             {
                 builder.Append(array[i] is IList ? ToStringWithoutDelimiter((IList)array[i]) : array[i].ToString());
                 builder.Append(delimiter);
-
             }
 
             return builder.ToString(0, builder.Length - delimiter.Length);

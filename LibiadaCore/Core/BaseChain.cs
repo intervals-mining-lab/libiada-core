@@ -14,6 +14,11 @@ namespace LibiadaCore.Core
     public class BaseChain : AbstractChain
     {
         /// <summary>
+        /// Sequence id (from database).
+        /// </summary>
+        public readonly long Id;
+
+        /// <summary>
         /// The building of chain.
         /// </summary>
         protected int[] building;
@@ -90,6 +95,25 @@ namespace LibiadaCore.Core
 
             this.building = (int[])building.Clone();
             this.alphabet = (Alphabet)alphabet.Clone();
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="BaseChain"/> class 
+        /// with provided building and alphabet.
+        /// Only simple validation is made.
+        /// </summary>
+        /// <param name="building">
+        /// The building of chain.
+        /// </param>
+        /// <param name="alphabet">
+        /// The alphabet of chain.
+        /// </param>
+        /// <param name="id">
+        /// Id of sequence
+        /// </param>
+        public BaseChain(int[] building, Alphabet alphabet, long id) : this(building, alphabet)
+        {
+            Id = id;
         }
 
         /// <summary>
