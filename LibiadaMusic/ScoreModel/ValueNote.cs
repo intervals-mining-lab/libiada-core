@@ -42,14 +42,14 @@
             else
             {
                 // если нота - пауза, то не может быть лиги на паузу
-                Tie = Tie.None; 
+                Tie = Tie.None;
             }
 
             Duration = (Duration)duration.Clone();
             Triplet = triplet;
 
             // приоритет если указан
-            Priority = priority; 
+            Priority = priority;
         }
 
         /// <summary>
@@ -70,8 +70,7 @@
         /// <param name="priority">
         /// The priority.
         /// </param>
-        public ValueNote(List<Pitch> pitchList, Duration duration, bool triplet, Tie tie, int priority = -1)
-            : this((Pitch)null, duration, triplet, tie, priority)
+        public ValueNote(List<Pitch> pitchList, Duration duration, bool triplet, Tie tie, int priority = -1) : this((Pitch)null, duration, triplet, tie, priority)
         {
             if (pitchList.Count > 0)
             {
@@ -109,7 +108,7 @@
             Tie = tie;
             Duration = (Duration)duration.Clone();
             Triplet = triplet;
-            Priority = priority; 
+            Priority = priority;
         }
 
         /// <summary>

@@ -113,7 +113,7 @@ namespace LibiadaCore.Core
         /// If another object is not alphabet returns false.
         /// In comparison order is not taken into account.
         /// </summary>
-        /// <param name="other"> 
+        /// <param name="other">
         /// Some object.
         /// </param>
         /// <returns>

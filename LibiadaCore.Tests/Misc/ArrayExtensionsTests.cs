@@ -101,7 +101,7 @@
         public void ToStringTest()
         {
             var source = new[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
-            
+
             var expected = "1 2 3 4 5 6 7 8 9 10";
             Assert.AreEqual(expected, source.ToString(" "));
 

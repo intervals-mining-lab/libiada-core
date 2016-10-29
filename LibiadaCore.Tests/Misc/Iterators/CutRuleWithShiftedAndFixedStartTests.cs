@@ -18,7 +18,7 @@
         {
             var rule = new CutRuleWithShiftedAndFixedStart(18, 3, 5);
 
-            CutRuleIterator iterator = rule.GetIterator(); 
+            CutRuleIterator iterator = rule.GetIterator();
 
             for (int i = 8; i <= 17; i += 3)
             {

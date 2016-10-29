@@ -27,6 +27,6 @@
         public double Calculate(Chain chain, Link link)
         {
             return Math.Sqrt(remotenessDispersion.Calculate(chain, link));
-        } 
+        }
     }
 }

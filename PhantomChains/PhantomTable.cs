@@ -6,7 +6,7 @@
     using LibiadaCore.Core.SimpleTypes;
 
     /// <summary>
-    /// Class, containing data for building tree of variants. 
+    /// Class, containing data for building tree of variants.
     /// </summary>
     public class PhantomTable
     {

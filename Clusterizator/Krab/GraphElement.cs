@@ -15,10 +15,10 @@ namespace Clusterizator.Krab
         /// <summary>
         /// Initializes a new instance of the <see cref="GraphElement"/> class.
         /// </summary>
-        /// <param name="element"> 
+        /// <param name="element">
         /// Coordinates of point.
         /// </param>
-        /// <param name="name"> 
+        /// <param name="name">
         /// Object name.
         /// </param>
         public GraphElement(HybridDictionary element, object name)

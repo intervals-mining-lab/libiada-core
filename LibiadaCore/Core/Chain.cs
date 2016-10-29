@@ -4,7 +4,7 @@ namespace LibiadaCore.Core
     using System.Linq;
 
     using IntervalsManagers;
-   
+
     /// <summary>
     /// Sequence class.
     /// </summary>
@@ -123,7 +123,7 @@ namespace LibiadaCore.Core
 
         /// <summary>
         /// Returns clone of congeneric sequence of given element.
-        /// If there is no such element in chain returns null. 
+        /// If there is no such element in chain returns null.
         /// </summary>
         /// <param name="baseObject">
         /// Element of congeneric chain.
@@ -150,7 +150,7 @@ namespace LibiadaCore.Core
         }
 
         /// <summary>
-        /// Tries to get congeneric chain. 
+        /// Tries to get congeneric chain.
         /// if there is no such chain returns null.
         /// </summary>
         /// <param name="element">
@@ -290,7 +290,7 @@ namespace LibiadaCore.Core
 
             congenericChains = null;
         }
-        
+
         /// <summary>
         /// Returns position of given occurrence of given element.
         /// </summary>

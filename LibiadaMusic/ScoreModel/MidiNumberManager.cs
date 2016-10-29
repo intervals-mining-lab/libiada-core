@@ -108,7 +108,7 @@
                     return 'B';
                 default:
                     throw new ArgumentException("Pitch contains non-recognized STEP.");
-            } 
+            }
         }
     }
 }

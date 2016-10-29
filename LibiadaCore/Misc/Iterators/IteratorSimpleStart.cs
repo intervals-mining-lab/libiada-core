@@ -7,7 +7,7 @@ namespace LibiadaCore.Misc.Iterators
     /// <summary>
     /// Iterator that goes from start of the chain and reading one element at a time.
     /// </summary>
-    public class IteratorSimpleStart 
+    public class IteratorSimpleStart
     {
         /// <summary>
         /// Length of subsequence.
@@ -93,8 +93,8 @@ namespace LibiadaCore.Misc.Iterators
 
         /// <summary>
         /// Returns iterator to the starting position.
-        /// Before reading first value 
-        /// <see cref="IteratorBase.Next()"/> 
+        /// Before reading first value.
+        /// <see cref="IteratorBase.Next()"/>
         /// method should be called.
         /// </summary>
         public void Reset()

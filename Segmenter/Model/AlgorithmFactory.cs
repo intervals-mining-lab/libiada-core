@@ -23,13 +23,13 @@
         {
             switch (index)
             {
-                case 0: 
+                case 0:
                     return new AlgorithmBase(input);
-                case 1: 
+                case 1:
                     return null;
                 default:
                     throw new ArgumentException("Unknown index", "index");
             }
-        } 
+        }
     }
 }

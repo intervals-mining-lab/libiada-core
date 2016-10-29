@@ -248,7 +248,7 @@
                                     growingDurationChain = true;
 
                                     // сохранили сколько нот/пауз входит в буфер
-                                    n = fmotivBuffer.NoteList.Count; 
+                                    n = fmotivBuffer.NoteList.Count;
                                 }
                             }
                         }
@@ -266,7 +266,7 @@
 
                                 // помещаем в буффер2 последнюю собранную ноту - большей длительности чем все равнодлительные
                                 // так как меняется в процессе
-                                int count = fmotivBuffer.NoteList.Count; 
+                                int count = fmotivBuffer.NoteList.Count;
                                 for (int i = n; i < count; i++)
                                 {
                                     fmotivBuffer2.NoteList.Add((ValueNote)fmotivBuffer.NoteList[n].Clone());
@@ -304,7 +304,7 @@
                                 sameDurationChain = false;
 
                                 // сохранили сколько нот/пауз входит в текущий буфер
-                                n = fmotivBuffer.NoteList.Count; 
+                                n = fmotivBuffer.NoteList.Count;
                             }
 
                             // если длительность предпоследнего равна длительности последнего
@@ -352,7 +352,7 @@
                                 sameDurationChain = false;
 
                                 // сохранили сколько нот/пауз входит в текущий буфер
-                                n = fmotivBuffer.NoteList.Count; 
+                                n = fmotivBuffer.NoteList.Count;
                             }
                         }
                         else
@@ -394,7 +394,7 @@
                                         growingDurationChain = false;
 
                                         // убрали флаг сбора возрастающей последовательности
-                                        combination = false; 
+                                        combination = false;
                                     }
                                     else
                                     {
@@ -644,7 +644,7 @@
                             string typeF = "ПМТ"; // тип ПМТ если не триоль
                             if (TempComparator(fmotivBuffer))
                             {
-                                typeF = "ЧМТ"; // если есть хотя б один знак триоли 
+                                typeF = "ЧМТ"; // если есть хотя б один знак триоли
                             }
 
                             // собираем в цикле, пока не кончатся ноты в буфере 2 полноценные ноты в зависимости от того, чем мы считаем паузу
@@ -737,7 +737,7 @@
                         string typeF = "ПМТ"; // тип ПМТ если не триоль
                         if (TempComparator(fmotivBuffer))
                         {
-                            typeF = "ЧМТ"; // если есть хотя б один знак триоли 
+                            typeF = "ЧМТ"; // если есть хотя б один знак триоли
                         }
 
                         // собираем в цикле, пока не кончатся ноты в буфере 3 полноценные ноты в зависимости от того, чем мы считаем паузу 

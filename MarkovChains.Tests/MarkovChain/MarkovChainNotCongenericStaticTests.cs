@@ -90,15 +90,15 @@ namespace MarkovChains.Tests.MarkovChain
 
             var temp = markovChain.Generate(Length);
 
-            /* 
+            /*
              * 1. Sequence a a a a a a b a a a b a
              *   first level (unconditional probability)
-             *   
-             *    a| 10/12 (0,83333)  not more than 0,83333| 
+             *
+             *    a| 10/12 (0,83333)  not more than 0,83333|
              *    b| 2/12 (0,16667)  not more than 1|
-             * 
+             *
              *   second level (conditional probability taking into account 1 previous element)
-             * 
+             *
              *    |   a  |   b  |
              * ---|------|------|
              *  a |7/9(7)|2/9(2)|
@@ -107,7 +107,7 @@ namespace MarkovChains.Tests.MarkovChain
              * ---|------|------|
              */
 
-            // expected result of generation 
+            // expected result of generation
             var resultTheory = new Chain(30);
             resultTheory[0] = (ValueString)"a"; // "a" 0.77;
             resultTheory[1] = (ValueString)"a"; // "a" 0.15;
@@ -138,7 +138,7 @@ namespace MarkovChains.Tests.MarkovChain
             resultTheory[26] = (ValueString)"a"; // "a" 0.67;
             resultTheory[27] = (ValueString)"a"; // "a" 0.51;
             resultTheory[28] = (ValueString)"a"; // "a" 0.71;
-            resultTheory[29] = (ValueString)"a"; // "a" 0.2; 
+            resultTheory[29] = (ValueString)"a"; // "a" 0.2;
 
             Assert.AreEqual(resultTheory, temp);
         }
@@ -173,20 +173,20 @@ namespace MarkovChains.Tests.MarkovChain
              * Внутри неоднородной марковской цепи существует n однородных марковских цепей. n - порядок неоднородности цепи
              * порядок данных однородных цепей равен порядку неоднородной цепи
              * однородные цепи используются по очереди как при обучении так и  при генерации.
-             * 
+             *
              * В данном тесте внутри неоднородной марковской цепи есть 2 однородные цепи.
              * Матрицы переходных вероятностей (в скобках указано кол-во входений при обучении) в них такие
-             * 
-             * 1. Sequence 
+             *
+             * 1. Sequence
              *   first level (unconditional probability)
-             *   
+             *
              *    a| 1/2 (3) |
              *    b| 1/3 (2) |
              *    c| 1/6 (1) |
              *    d| 0 (0)   |
-             * 
+             *
              *   second level (conditional probability taking into account 1 previous element)
-             * 
+             *
              *    |   a  |   b  |  с   |  d   |
              * ---|------|------|------|------|
              *  a |0,3(1)| 0(0) |0,3(1)|0,3(1)|
@@ -197,17 +197,17 @@ namespace MarkovChains.Tests.MarkovChain
              * ---|------|------|------|------|
              *  d | 0(0) | 0(0) | 0(0) | 0(0) |
              * ---|------|------|------|------|
-             * 
-             * 2. Sequence 
+             *
+             * 2. Sequence
              *   first level (unconditional probability)
-             *   
+             *
              *    a| 2/5 (2) |
              *    b| 1/5 (1) |
              *    c| 1/5 (1) |
              *    d| 1/5 (1) |
-             * 
+             *
              *   second level (conditional probability taking into account 1 previous element)
-             * 
+             *
              *    |   a  |   b  |  с   |  d   |
              * ---|------|------|------|------|
              *  a |0,5(1)| 0(0) |0,5(1)| 0(0) |
@@ -218,13 +218,13 @@ namespace MarkovChains.Tests.MarkovChain
              * ---|------|------|------|------|
              *  d | 0(0) | 1(1) | 0(0) | 0(0) |
              * ---|------|------|------|------|
-             * 
-             * 
-             * During teaching pairs are added as folowing 
+             *
+             *
+             * During teaching pairs are added as folowing
              *   |-| |-| |-| |-| |-|   <>- In second markov chain
              * a d b a a c b b a a c a
              * |_| |_| |_| |_| |_| |_| <>- In first markov chain
-             * 
+             *
              */
 
             // expected result of generation
@@ -271,15 +271,15 @@ namespace MarkovChains.Tests.MarkovChain
 
             // Chain Temp = MarkovChain.Generate(length);
 
-            /* 
+            /*
              * 1. Sequence a a a a a a b a a a b a
              *   first level (unconditional probability)
-             *   
-             *    a| 10/12 (0,83333) not more than 0,83333| 
+             *
+             *    a| 10/12 (0,83333) not more than 0,83333|
              *    b| 2/12 (0,16667)  not more than 1|
-             * 
+             *
              *   second level (conditional probability taking into account 1 previous element)
-             * 
+             *
              *    |   a  |   b  |
              * ---|------|------|
              *  a |7/9(7)|2/9(2)|
@@ -319,7 +319,7 @@ namespace MarkovChains.Tests.MarkovChain
             resultTheory[26] = (ValueString)"a"; // "a" 0.67;
             resultTheory[27] = (ValueString)"a"; // "a" 0.51;
             resultTheory[28] = (ValueString)"a"; // "a" 0.71;
-            resultTheory[29] = (ValueString)"a"; // "a" 0.2; 
+            resultTheory[29] = (ValueString)"a"; // "a" 0.2;
         }
 
         /// <summary>
@@ -352,20 +352,20 @@ namespace MarkovChains.Tests.MarkovChain
              * Внутри неоднородной марковской цепи существует n однородных марковских цепей. n - порядок неоднородности цепи
              * порядок данных однородных цепей равен порядку неоднородной цепи
              * однородные цепи используются по очереди как при обучении так и  при генерации.
-             * 
+             *
              * В данном тесте внутри неоднородной марковской цепи есть 2 однородные цепи.
              * Матрицы переходных вероятностей (в скобках указано кол-во входений при обучении) в них такие
-             * 
-             * 1. Sequence 
+             *
+             * 1. Sequence
              *   first level (unconditional probability)
-             *   
+             *
              *    a| 1/2 (3) |
              *    b| 1/3 (2) |
              *    c| 1/6 (1) |
              *    d| 0 (0)   |
-             * 
+             *
              *   second level (conditional probability taking into account 1 previous element)
-             * 
+             *
              *    |   a  |   b  |  с   |  d   |
              * ---|------|------|------|------|
              *  a |0,3(1)| 0(0) |0,3(1)|0,3(1)|
@@ -376,17 +376,17 @@ namespace MarkovChains.Tests.MarkovChain
              * ---|------|------|------|------|
              *  d | 0(0) | 0(0) | 0(0) | 0(0) |
              * ---|------|------|------|------|
-             * 
-             * 2. Sequence 
+             *
+             * 2. Sequence
              *   first level (unconditional probability)
-             *   
+             *
              *    a| 2/5 (2) |
              *    b| 1/5 (1) |
              *    c| 1/5 (1) |
              *    d| 1/5 (1) |
-             * 
+             *
              *   second level (conditional probability taking into account 1 previous element)
-             * 
+             *
              *    |   a  |   b  |  с   |  d   |
              * ---|------|------|------|------|
              *  a |0,5(1)| 0(0) |0,5(1)| 0(0) |
@@ -397,13 +397,13 @@ namespace MarkovChains.Tests.MarkovChain
              * ---|------|------|------|------|
              *  d | 0(0) | 1(1) | 0(0) | 0(0) |
              * ---|------|------|------|------|
-             * 
-             * 
-             * During teaching pairs are added as folowing 
+             *
+             *
+             * During teaching pairs are added as folowing
              *   |-| |-| |-| |-| |-|   <>- In second markov chain
              * a d b a a c b b a a c a
              * |_| |_| |_| |_| |_| |_| <>- In first markov chain
-             * 
+             *
              */
 
             // expected result of generation

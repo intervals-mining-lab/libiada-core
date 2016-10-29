@@ -72,25 +72,25 @@ namespace Clusterizator.Krab.Calculators
         private double SearchForMinimum(List<Connection> graph, int elementsPower, int element, int exceptedElement)
         {
             // current minimum distance
-            double min = double.MaxValue; 
+            double min = double.MaxValue;
 
             int blockBeginning = 0;
             for (int i = 0; i < element; i++)
             {
                 // searching start ofrequired block
-                blockBeginning += BlockLength(i, elementsPower); 
+                blockBeginning += BlockLength(i, elementsPower);
             }
 
             // sum of previous blocks lengthes
             int blockSum = 0;
 
             // shift inside block
-            int shift = element - 1; 
+            int shift = element - 1;
 
-            // cycling through separate values in array of connections (pairs of nodes) 
+            // cycling through separate values in array of connections (pairs of nodes)
             for (int k = 0, j = element - 1; shift >= 0; j = blockSum + (--shift), k++)
             {
-                if ((min > graph[j].Distance) && 
+                if ((min > graph[j].Distance) &&
                     (graph[j].SecondElementIndex != exceptedElement) &&
                     (graph[j].FirstElementIndex != exceptedElement))
                 {
@@ -99,14 +99,14 @@ namespace Clusterizator.Krab.Calculators
 
                 blockSum += BlockLength(k, elementsPower);
             }
-            
+
             // calculating block length
             int ourBlockLength = BlockLength(element, elementsPower);
 
             // iterating block from start to the end
-            for (int k = blockBeginning; k < blockBeginning + ourBlockLength; k++) 
+            for (int k = blockBeginning; k < blockBeginning + ourBlockLength; k++)
             {
-                if ((min > graph[k].Distance) && 
+                if ((min > graph[k].Distance) &&
                     (graph[k].SecondElementIndex != exceptedElement) &&
                     (graph[k].FirstElementIndex != exceptedElement))
                 {

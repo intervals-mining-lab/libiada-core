@@ -26,7 +26,7 @@
             {
                 throw new Exception("Unable to count average length with no elements in chain!");
             }
-                
+
             int noteCount = 0; // счетчик нот всей цепочки фмотивов
 
             foreach (Fmotiv fmotiv in chain.FmotivList)

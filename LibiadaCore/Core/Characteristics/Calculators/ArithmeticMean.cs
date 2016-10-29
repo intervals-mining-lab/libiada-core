@@ -39,7 +39,7 @@ namespace LibiadaCore.Core.Characteristics.Calculators
         /// <summary>
         /// Calculates multiplication of all intervals 
         /// between nearest similar elements in sequence
-        /// divided by number of intervals. 
+        /// divided by number of intervals.
         /// </summary>
         /// <param name="chain">
         /// Source sequence.

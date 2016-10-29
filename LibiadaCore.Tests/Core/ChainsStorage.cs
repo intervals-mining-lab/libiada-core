@@ -45,16 +45,16 @@ namespace LibiadaCore.Tests.Core
 
                                // A C T T G A T A C G
                                // A _ _ _ _ A _ A _ _
-                               // _ C _ _ _ _ _ _ C _ 
+                               // _ C _ _ _ _ _ _ C _
                                // _ _ T T _ _ T _ _ _
                                // _ _ _ _ G _ _ _ _ G
                                new Chain("ACTTGATACG"),
 
                                // C C A C G C T T A C
                                // C C _ C _ C _ _ _ C
-                               // _ _ A _ _ _ _ _ A _ 
-                               // _ _ _ _ G _ _ _ _ _ 
-                               // _ _ _ _ _ _ T T _ _  
+                               // _ _ A _ _ _ _ _ A _
+                               // _ _ _ _ G _ _ _ _ _
+                               // _ _ _ _ _ _ T T _ _
                                new Chain("CCACGCTTAC")
                            };
             }
@@ -166,7 +166,7 @@ namespace LibiadaCore.Tests.Core
                 chain[8] = new ValueInt(2);
                 chain[9] = new ValueInt(1);
                 result.Add(chain);
-               
+
                 return result;
             }
         }
@@ -193,7 +193,7 @@ namespace LibiadaCore.Tests.Core
                 chain[8] = new ValueInt(3);
                 chain[9] = new ValueInt(4);
                 result.Add(chain);
-       
+
                 // 1 1 1 2 1 2 3 3 2 2
                 chain = new Chain(10);
                 chain[0] = new ValueInt(1);
@@ -277,7 +277,7 @@ namespace LibiadaCore.Tests.Core
                                // 13 _ a _ a a _ a _ _ a a _ _ _ _ a _ _ _ _ _ _ a _ _ _ a
                                new CongenericChain(new[] { 1, 3, 4, 6, 9, 10, 22, 26 }, Elements["A"], 27),
 
-                               // 14 a _ _ a _ _ _ _ _ a _ a _ _ _ _ _ 
+                               // 14 a _ _ a _ _ _ _ _ a _ a _ _ _ _ _
                                new CongenericChain(new[] { 0, 3, 9, 11 }, Elements["A"], 17),
 
                                // 15 _ a _ _ _ _ _ a _ _ a _ _ _ a _ _
@@ -569,7 +569,7 @@ namespace LibiadaCore.Tests.Core
                         { Link.Cycle, new List<int> { 99900, 400000, 500100 } },
                         { Link.None, new List<int> { 99900, 400000 } }
                     },
-                    
+
                     new Dictionary<Link, List<int>>
                     {
                         { Link.Start, new List<int> { 1, 1, 1, 1, 1 } },

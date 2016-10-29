@@ -16,7 +16,7 @@ namespace Clusterizator.Krab.Calculators
         /// Storage of graph nodes and connections.
         /// </param>
         /// <returns>
-        /// Equipotency of sets. 
+        /// Equipotency of sets.
         /// </returns>
         public static double Calculate(GraphManager manager)
         {

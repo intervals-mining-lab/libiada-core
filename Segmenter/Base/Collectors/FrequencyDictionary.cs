@@ -113,7 +113,7 @@
         {
             var list = new List<KeyValuePair<string, List<int>>>(words);
             list.Sort((firstPair, nextPair) => firstPair.Value.Count.CompareTo(nextPair.Value.Count));
-            
+
             list.Reverse();
             return list;
         }
@@ -184,7 +184,7 @@
             {
             }
         }
-        
+
         /// <summary>
         /// Returns true if this FrequencyDictionary contains the specified word.
         /// More formally, returns true if and only if this FrequencyDictionary contains at least one word.

@@ -39,7 +39,7 @@ namespace MarkovChains.MarkovChain
                 case GeneratingMethod.StaticNotCongeneric:
                     return new MarkovChainNotCongenericStatic(rank, heterogeneityRank, generator);
                 case GeneratingMethod.DynamicCongeneric:
-                    return null; 
+                    return null;
                 case GeneratingMethod.StaticCongeneric:
                     return new MarkovChainCongenericStatic(rank, generator);
                 case GeneratingMethod.Random:

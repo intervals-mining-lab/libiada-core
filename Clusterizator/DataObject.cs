@@ -68,7 +68,7 @@ namespace Clusterizator
         public IBaseObject Clone()
         {
             var clone = new DataObject();
-            
+
             foreach (var key in Vault.Keys)
             {
                 clone.Add(key.ToString(), Get(key.ToString()));

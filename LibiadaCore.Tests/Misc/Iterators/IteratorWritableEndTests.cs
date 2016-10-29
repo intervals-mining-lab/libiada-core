@@ -34,14 +34,14 @@ namespace LibiadaCore.Tests.Misc.Iterators
         [Test]
         public void WriteTest()
         {
-            var messages = new List<ValueString> 
+            var messages = new List<ValueString>
                 {
                     new ValueString('1'), new ValueString('3'), new ValueString('2'),
                     new ValueString('2'), new ValueString('1'), new ValueString('2'),
                     new ValueString('1'), new ValueString('3'), new ValueString('3'),
                     new ValueString('1'), new ValueString('2'), new ValueString('1')
                 };
-            
+
             var toWrite = new Chain(12);
             var iteratorWrite = new IteratorWritableEnd(toWrite);
             int i = 0;

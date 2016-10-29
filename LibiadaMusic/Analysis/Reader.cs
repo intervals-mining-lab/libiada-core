@@ -46,13 +46,13 @@
         /// </param>
         public void SetXmlData(string path)
         {
-            // Объявляем и забиваем файл в документ 
+            // Объявляем и забиваем файл в документ
             var xd = new XmlDocument();
             using (var fs = new FileStream(path, FileMode.Open))
             {
                 xd.Load(fs);
 
-                // Создаем и заполняем лист по тегу "element" 
+                // Создаем и заполняем лист по тегу "element"
                 XmlNodeList list = xd.GetElementsByTagName("element");
                 string str = string.Empty;
                 for (int i = 0; i < list.Count; i++)

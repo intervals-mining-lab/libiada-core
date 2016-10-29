@@ -62,7 +62,7 @@
         public ValueNote ModifyNoteWithAttributes(ValueNote note)
         {
             var newPitches = note.Pitch.Select(p => new Pitch(p.MidiNumber)).ToList();
-            
+
             return new ValueNote(newPitches, note.Duration, note.Triplet, note.Tie);
         }
 

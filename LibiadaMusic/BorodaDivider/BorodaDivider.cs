@@ -26,7 +26,7 @@
         public List<FmotivChain> Divide(ScoreTrack scoreTrack, ParamPauseTreatment paramPauseTreatment, ParamEqualFM paramEqualFM)
         {
             var chains = new List<FmotivChain>();
-            
+
             foreach (CongenericScoreTrack congenericTrack in scoreTrack.CongenericScoreTracks)
             {
                 var fmotivChain = (FmotivChain)Divide(congenericTrack, paramPauseTreatment, paramEqualFM).Clone();

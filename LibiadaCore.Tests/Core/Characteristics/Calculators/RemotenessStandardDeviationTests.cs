@@ -30,6 +30,6 @@
         public void ChainCalculationTest(int index, Link link, double value)
         {
             ChainCharacteristicTest(0, link, value);
-        } 
+        }
     }
 }

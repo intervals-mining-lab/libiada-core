@@ -28,23 +28,23 @@
         {
             switch (index)
             {
-                case 0: 
+                case 0:
                     return new CriterionPartialOrlov(threshold, input.Precision);
-                case 1: 
+                case 1:
                     return new CriterionMinSymmetryByShrader(threshold, input.Precision);
-                case 2: 
+                case 2:
                     return new CriterionMinSymmetryByIntervals(threshold, input.Precision);
-                case 3: 
+                case 3:
                     return new CriterionEqualityOfDepths(threshold, input.Precision);
-                case 4: 
+                case 4:
                     return new CriterionAttitudeOfRemoteness(threshold, input.Precision);
-                case 5: 
+                case 5:
                     return new CriterionMinimumRegularity(threshold, input.Precision);
-                case 6: 
+                case 6:
                     return new CriterionGoldenRatio(threshold, input.Precision);
                 default:
                     throw new ArgumentException("Unknown index", "index");
             }
-        } 
+        }
     }
 }

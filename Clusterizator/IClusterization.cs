@@ -1,7 +1,7 @@
 namespace Clusterizator
 {
     /// <summary>
-    /// Clusterization methods interface. 
+    /// Clusterization methods interface.
     /// </summary>
     public interface IClusterization
     {

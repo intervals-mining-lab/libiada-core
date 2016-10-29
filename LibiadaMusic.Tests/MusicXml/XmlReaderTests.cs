@@ -40,14 +40,14 @@ namespace LibiadaMusic.Tests.MusicXml
                 xdoc = xr.MusicXmlDocument;
                 Assert.Fail();
             }
-            catch (Exception e) 
+            catch (Exception e)
             {
                 if (e.Message != "LibiadaMusic.XMLReader:you are trying to get empty XmlDocument!")
                 {
                     Assert.Fail();
                 }
             }
-            
+
             xr.LoadMusicXmlDocument(path);
             xdoc = xr.MusicXmlDocument;
             Assert.IsNotNull(xdoc);

@@ -65,7 +65,7 @@
 
             filter.GetChain().ToString();
             chain.ToString();
-            Assert.True(3 == hits);
+            Assert.True(hits == 3);
         }
 
         /// <summary>
@@ -83,7 +83,7 @@
             {
                 sb.Append(s);
             }
-            
+
             string result = filter.GetChain().ToString();
             string buf = chain.ToString();
             Assert.True(buf.Length - result.Length == hits);

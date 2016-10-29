@@ -25,7 +25,7 @@
         public ScoreTrack(string name, List<CongenericScoreTrack> congenericScoreTracks)
         {
             Name = name; // присваиваем имя музыкального трека
-            
+
             CongenericScoreTracks = new List<CongenericScoreTrack>();
             foreach (CongenericScoreTrack congenericScoreTrack in congenericScoreTracks)
             {
@@ -104,7 +104,7 @@
             var temp = (CongenericScoreTrack)tracks[0].Clone();
 
             // список склеенных тактов
-            var tempList = new List<Measure>(temp.MeasureList); 
+            var tempList = new List<Measure>(temp.MeasureList);
             for (int i = 1; i < tracks.Count; i++)
             {
                 if (tempList.Count != tracks[i].MeasureList.Count)

@@ -2,7 +2,7 @@
 {
     /// <summary>
     /// The uniformity calculator.
-    /// Calculates difference between entropy and average remoteness 
+    /// Calculates difference between entropy and average remoteness.
     /// </summary>
     public class Uniformity : ICalculator
     {

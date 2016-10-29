@@ -36,9 +36,9 @@
         /// Also decreases variants count of current node by 1. Called after generation of another value.
         /// </summary>
         /// <returns>
-        /// Recursion flag for children. 
-        /// If true further validation is required. 
-        /// If false no further validation is required. 
+        /// Recursion flag for children.
+        /// If true further validation is required.
+        /// If false no further validation is required.
         /// </returns>
         public abstract bool Decrement();
 

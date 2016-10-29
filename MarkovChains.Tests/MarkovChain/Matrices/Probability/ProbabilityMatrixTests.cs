@@ -120,7 +120,7 @@ namespace MarkovChains.Tests.MarkovChain.Matrices.Probability
         /// The get with indexes test.
         /// </summary>
         [Test]
-        public void GetWithIndexesTest() 
+        public void GetWithIndexesTest()
         {
             alphabet.Add(a); // 0 => a
             alphabet.Add(b); // 1 => b

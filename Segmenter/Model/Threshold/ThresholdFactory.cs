@@ -26,17 +26,17 @@
         {
             switch (index)
             {
-                case 0: 
+                case 0:
                     return new ThresholdLinear(input.LeftBound, input.RightBound, input.Step);
-                case 1: 
+                case 1:
                     return new ThresholdDichotomous(input.LeftBound, input.RightBound);
-                case 2: 
+                case 2:
                     return new ThresholdRandom(input.LeftBound, input.RightBound);
-                case 3: 
+                case 3:
                     return null; // Experimental threshold based on any log function
                 default:
                     throw new ArgumentException("Unknown index", "index");
             }
-        } 
+        }
     }
 }

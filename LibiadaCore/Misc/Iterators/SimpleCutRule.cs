@@ -27,7 +27,7 @@
         }
 
         /// <summary>
-        /// Creates an iterator for this cut rule. 
+        /// Creates an iterator for this cut rule.
         /// </summary>
         /// <returns>
         /// The <see cref="CutRuleIterator"/>.

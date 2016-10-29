@@ -39,13 +39,13 @@ namespace LibiadaCore.Tests.Misc.Iterators
 
             // 12 - 3 + 1
             var message2 = new List<Chain>
-                { 
+                {
                     // 121331212|231|
                     new Chain("231"),
 
                     // 12133121|223|1
                     new Chain("223"),
-                
+
                     // 1213312|122|31
                     new Chain("122"),
 
@@ -67,8 +67,8 @@ namespace LibiadaCore.Tests.Misc.Iterators
                     // 1|213|31212231
                     new Chain("213"),
 
-                    // |121|331212231 
-                    new Chain("121") 
+                    // |121|331212231
+                    new Chain("121")
                 };
 
             int i = 0;
@@ -91,8 +91,8 @@ namespace LibiadaCore.Tests.Misc.Iterators
             int step = 3;
             var iterator = new IteratorEnd(chainToIterate, length, step);
 
-            var message2 = new List<Chain> 
-                            { 
+            var message2 = new List<Chain>
+                            {
                                 // 121331212|231|
                                 new Chain("231"),
 
@@ -103,7 +103,7 @@ namespace LibiadaCore.Tests.Misc.Iterators
                                 new Chain("331"),
 
                                  // |121|331212231
-                                 new Chain("121") 
+                                 new Chain("121")
                              };
 
             int i = 0;

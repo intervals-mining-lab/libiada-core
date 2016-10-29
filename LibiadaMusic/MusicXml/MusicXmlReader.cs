@@ -75,7 +75,7 @@
         /// </param>
         private void LoadNotes(string path)
         {
-            // Объявляем и забиваем файл в XMLдокумент  
+            // Объявляем и забиваем файл в XML-документ
             var xd = new XmlDocument();
             using (var fs = new FileStream(path, FileMode.Open))
             {

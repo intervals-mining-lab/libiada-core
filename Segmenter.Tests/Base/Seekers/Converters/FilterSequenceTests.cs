@@ -21,12 +21,12 @@
         {
             var list1 = new List<string>
                 {
-                    "ABABAB", 
-                    "ABATAT", 
-                    "TABABAB", 
-                    "ABTABAB", 
-                    "ABABAB", 
-                    "ABABAB", 
+                    "ABABAB",
+                    "ABATAT",
+                    "TABABAB",
+                    "ABTABAB",
+                    "ABABAB",
+                    "ABABAB",
                     "ABABAB"
                 };
             var listSequence1 = new List<string> { "ABATAT", "TABABAB" };

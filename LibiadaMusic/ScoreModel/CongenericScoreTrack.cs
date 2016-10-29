@@ -89,7 +89,7 @@
             temp[0].Id = 0;
 
             // счетчик для уникальных
-            int n = 1; 
+            int n = 1;
 
             // для остальных процедура цикла
             for (int i = 1; i < temp.Count; i++)
@@ -114,7 +114,7 @@
                     temp[i].Id = n;
 
                     // увеличиваем счетчик уникальных
-                    n++; 
+                    n++;
                 }
             }
 
@@ -133,7 +133,7 @@
             List<ValueNote> temp = NoteOrder();
 
             // строй из Id, а не из объектов типа Note
-            var idTemp = new int[temp.Count]; 
+            var idTemp = new int[temp.Count];
             for (int i = 0; i < temp.Count; i++)
             {
                 idTemp[i] = temp[i].Id;
@@ -164,7 +164,7 @@
             temp[0].Id = 0;
 
             // счетчик для уникальных
-            int n = 1; 
+            int n = 1;
 
             // для остальных процедура цикла
             for (int i = 1; i < temp.Count; i++)
@@ -189,7 +189,7 @@
                     temp[i].Id = n;
 
                     // увеличиваем счетчик уникальных
-                    n++; 
+                    n++;
                 }
             }
 
@@ -208,7 +208,7 @@
             List<Measure> temp = MeasureOrder();
 
             // строй из Id, а не из объектов типа Measure
-            var idTemp = new int[temp.Count]; 
+            var idTemp = new int[temp.Count];
             for (int i = 0; i < temp.Count; i++)
             {
                 idTemp[i] = temp[i].Id;

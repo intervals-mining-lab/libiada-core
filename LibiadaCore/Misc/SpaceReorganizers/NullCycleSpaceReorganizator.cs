@@ -38,7 +38,7 @@ namespace LibiadaCore.Misc.SpaceReorganizers
         /// <see cref="AbstractChain"/>.
         /// </returns>
         /// <exception cref="InvalidOperationException">
-        /// Thrown if level is less than 0. 
+        /// Thrown if level is less than 0.
         /// </exception>
         public override AbstractChain Reorganize(AbstractChain source)
         {

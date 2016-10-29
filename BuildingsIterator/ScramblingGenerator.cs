@@ -29,7 +29,7 @@
         /// <returns>
         /// The <see cref="ChainPicksWithCharacteristics"/>.
         /// </returns>
-        public ChainPicksWithCharacteristics Generate(Alphabet alphabet, int length, List<LinkedCharacteristic> characteristic) 
+        public ChainPicksWithCharacteristics Generate(Alphabet alphabet, int length, List<LinkedCharacteristic> characteristic)
         {
             var hashTable = new Hashtable();
 

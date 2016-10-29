@@ -46,7 +46,7 @@ namespace PhantomChains.Tests
             alpha.Add((ValueString)'c');
             pm1 = new ValuePhantom { alpha[2], alpha[1] };
             pm2 = new ValuePhantom { alpha[0] };
-            
+
             chain.Set(PhantomMessageBc, 0);
             chain.Set(PhantomMessageA, 1);
             chain.Set(PhantomMessageA, 2);

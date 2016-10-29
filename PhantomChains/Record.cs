@@ -11,7 +11,7 @@
     {
         /// <summary>
         /// Phantom value in given position of phantom sequence 
-        /// representing variants of content of current level in variants tree. 
+        /// representing variants of content of current level in variants tree.
         /// </summary>
         public readonly ValuePhantom Content;
 

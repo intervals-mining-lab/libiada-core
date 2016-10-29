@@ -19,7 +19,7 @@
             int length = 12;
             int step = 3;
             var rule = new CutRuleWithFixedStart(length, step);
-            CutRuleIterator iterator = rule.GetIterator(); 
+            CutRuleIterator iterator = rule.GetIterator();
 
             for (int i = step; i <= length; i += step)
             {

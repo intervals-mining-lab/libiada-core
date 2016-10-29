@@ -3,10 +3,10 @@ namespace LibiadaCore.Core.Characteristics.Calculators
     using System;
 
     /// <summary>
-    /// Entropy. 
-    /// Amount of information. 
+    /// Entropy.
+    /// Amount of information.
     /// Amount of identifying information (average for one element).
-    /// Shannon information. 
+    /// Shannon information.
     /// Shannon entropy.
     /// </summary>
     public class IdentificationInformation : ICalculator

@@ -27,6 +27,6 @@
             var list2 = new List<string> { "ABAC", "A" };
             var seek = new SeekerSequence(new StartIterator(new ComplexChain(list1), length, step));
             Assert.True(seek.Seek(list2) == 3);
-        } 
+        }
     }
 }

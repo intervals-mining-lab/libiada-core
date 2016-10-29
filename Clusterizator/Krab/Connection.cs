@@ -81,11 +81,11 @@ namespace Clusterizator.Krab
         {
             var clone = new Connection(FirstElementIndex, SecondElementIndex)
                 {
-                    Connected = Connected, 
-                    Distance = Distance, 
-                    NormalizedDistance = NormalizedDistance, 
-                    TauStar = TauStar, 
-                    Tau = Tau, 
+                    Connected = Connected,
+                    Distance = Distance,
+                    NormalizedDistance = NormalizedDistance,
+                    TauStar = TauStar,
+                    Tau = Tau,
                     Lambda = Lambda
                 };
             return clone;

@@ -46,7 +46,7 @@
             var result = HighOrderFactory.Create(ChainsStorage.Chains[0], Link.End);
             result = HighOrderFactory.Create(result, Link.End);
             var expected = ChainsStorage.HighOrderChains[6];
-            Assert.AreEqual(expected, result); 
+            Assert.AreEqual(expected, result);
         }
     }
 }

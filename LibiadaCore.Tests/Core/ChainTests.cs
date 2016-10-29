@@ -43,8 +43,8 @@ namespace LibiadaCore.Tests.Core
         {
             var intervals = new List<List<int>>
                 {
-                    new List<int> { 1, 1, 4, 4, 1 }, 
-                    new List<int> { 3, 1, 3, 4 }, 
+                    new List<int> { 1, 1, 4, 4, 1 },
+                    new List<int> { 3, 1, 3, 4 },
                     new List<int> { 5, 3, 1, 2 }
                 };
             for (int i = 0; i < chains[0].Alphabet.Cardinality; i++)

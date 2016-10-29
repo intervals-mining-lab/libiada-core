@@ -25,8 +25,8 @@ namespace LibiadaCore.Misc.Iterators
 
         /// <summary>
         /// Returns iterator to the starting position.
-        /// Before reading first value 
-        /// <see cref="IIterator.Next()"/> 
+        /// Before reading first value.
+        /// <see cref="IIterator.Next()"/>
         /// method should be called.
         /// </summary>
         void Reset();

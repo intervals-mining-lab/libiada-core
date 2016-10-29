@@ -11,7 +11,7 @@
     /// The congeneric intervals manager test.
     /// </summary>
     [TestFixture]
-    public class CongenericIntervalsManagerTests 
+    public class CongenericIntervalsManagerTests
     {
         /// <summary>
         /// The congeneric chains.

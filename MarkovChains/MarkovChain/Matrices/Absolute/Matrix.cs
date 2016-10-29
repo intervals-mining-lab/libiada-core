@@ -138,7 +138,7 @@ namespace MarkovChains.MarkovChain.Matrices.Absolute
         /// </returns>
         public double Sum(int[] arrayOfIndexes)
         {
-            if (null != arrayOfIndexes && (arrayOfIndexes[0] != -1))
+            if (arrayOfIndexes != null && (arrayOfIndexes[0] != -1))
             {
                 int index = arrayOfIndexes[0];
                 int[] newArray = (arrayOfIndexes.Length == 1) ? null : GetChainLess(arrayOfIndexes);

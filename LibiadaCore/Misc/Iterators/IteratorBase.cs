@@ -49,7 +49,7 @@ namespace LibiadaCore.Misc.Iterators
             Length = length;
             Step = step;
             Source = source;
-            MaxPosition = Source.GetLength() - Length; 
+            MaxPosition = Source.GetLength() - Length;
             Reset();
         }
 
@@ -100,8 +100,8 @@ namespace LibiadaCore.Misc.Iterators
 
         /// <summary>
         /// Returns iterator to the starting position.
-        /// Before reading first value 
-        /// <see cref="IteratorBase.Next()"/> 
+        /// Before reading first value.
+        /// <see cref="IteratorBase.Next()"/>
         /// method should be called.
         /// </summary>
         public abstract void Reset();

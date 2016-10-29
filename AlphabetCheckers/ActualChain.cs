@@ -8,7 +8,7 @@ namespace AlphabetCheckers
     /// <summary>
     /// Class representing actual chain.
     /// </summary>
-    public class ActualChain : ICloneable 
+    public class ActualChain : ICloneable
     {
         /// <summary>
         /// The result chain.

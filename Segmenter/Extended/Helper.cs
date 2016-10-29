@@ -7,7 +7,7 @@
     /// Contains methods that will facilitate your work
     /// </summary>
     public static class Helper
-    {  
+    {
         /// <summary>
         /// Designed for fast conversion a collection to the string object without delimiters.
         /// </summary>

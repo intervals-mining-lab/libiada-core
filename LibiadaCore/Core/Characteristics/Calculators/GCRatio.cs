@@ -13,7 +13,7 @@
         /// The elements counter.
         /// </summary>
         private readonly ICalculator counter = new ElementsCount();
-        
+
         /// <summary>
         /// Calculation method.
         /// </summary>

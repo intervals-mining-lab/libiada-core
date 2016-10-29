@@ -32,6 +32,6 @@
             double standardDeviation = remotenessStandardDeviation.Calculate(chain, link);
 
             return remotenessSkewness.Calculate(chain, link) / (standardDeviation * standardDeviation * standardDeviation);
-        } 
+        }
     }
 }

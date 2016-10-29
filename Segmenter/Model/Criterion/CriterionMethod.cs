@@ -64,7 +64,7 @@
                 criteria = (Frequency(left, chainLength, minusLength)
                             * Frequency(right, chainLength, minusLength))
                            / Frequency(middle, chainLength, midlLength);
-            }   
+            }
 
             return criteria;
         }

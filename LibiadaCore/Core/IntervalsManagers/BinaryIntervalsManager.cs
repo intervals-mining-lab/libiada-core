@@ -118,7 +118,7 @@
         }
 
         /// <summary>
-        /// Returns position of first occurrence of second element after given position. 
+        /// Returns position of first occurrence of second element after given position.
         /// </summary>
         /// <param name="index">
         /// Starting index for search.
@@ -191,7 +191,7 @@
             }
 
             // Start = GetAfter(1);
-            
+
             // End = GetAfter()
         }
     }

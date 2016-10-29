@@ -54,7 +54,7 @@
 
             XmlNodeList congenericList = scoreNode.GetElementsByTagName("part");
 
-            // Создаем и заполняем лист по тегу "part"  
+            // Создаем и заполняем лист по тегу "part"
             for (int i = 0; i < congenericList.Count; i++)
             {
                 // TODO: вероятно нужна проверка на то есть ли такой атрибут - имя моно трека, если нет то задать счетчиком i
@@ -336,7 +336,7 @@
             bool start = false;
 
             // флаг наличия конца лиги
-            bool stop = false; 
+            bool stop = false;
             foreach (XmlNode noteChild in noteNode.ChildNodes)
             {
                 if (noteChild.Name == "tie")

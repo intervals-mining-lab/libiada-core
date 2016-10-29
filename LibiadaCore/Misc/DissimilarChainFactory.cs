@@ -12,7 +12,7 @@
     /// <para>
     /// Chain                    A|T|T|A|C|G|T|C|A
     /// Building                 1|2|2|1|3|4|2|3|1
-    /// Dissimilar building      1|1|2|2|1|1|3|2|3 
+    /// Dissimilar building      1|1|2|2|1|1|3|2|3
     /// </para>
     /// <para>
     /// Chain alphabet       A|T|C|G

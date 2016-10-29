@@ -83,7 +83,7 @@ namespace Clusterizator.Krab
                 Connections[SearchConnection(firstIndex, secondIndex)].Connected = true;
             }
         }
-        
+
         /// <summary>
         /// Searches connection index for pair of nodes.
         /// </summary>

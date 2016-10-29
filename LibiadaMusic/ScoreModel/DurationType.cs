@@ -22,7 +22,7 @@
         public static int[] ParseType(string type)
         {
             // формируем массив из 2 элементов Numerator и Denominator по типу длительности
-            var numDenom = new int[2]; 
+            var numDenom = new int[2];
             switch (type)
             {
                 case "whole":

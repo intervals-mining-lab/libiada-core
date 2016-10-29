@@ -10,7 +10,7 @@ namespace Clusterizator.Krab.Calculators
     public class NormalizedLinearCalculator : ICalculator
     {
         /// <summary>
-        /// Normalized euclidean distance calculation method. 
+        /// Normalized euclidean distance calculation method.
         /// </summary>
         /// <param name="graph">
         /// Connections graph.

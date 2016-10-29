@@ -72,7 +72,7 @@ namespace PhantomChains
                 tree.Add(null);
             }
 
-            // variants count calculation cycle 
+            // variants count calculation cycle
             for (int i = 0; i < tempChains.Count; i++)
             {
                 for (int j = 0; j < tempChains[i].GetLength(); j++)

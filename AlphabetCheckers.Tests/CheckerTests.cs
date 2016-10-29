@@ -151,13 +151,13 @@ namespace AlphabetCheckers.Tests
             var chainBase = new BaseChain("1234123212");
 
             var alphabet = new Alphabet();
-            
+
             var chain = new BaseChain("123");
             alphabet.Add(chain);
 
             chain = new BaseChain("4");
             alphabet.Add(chain);
-            
+
             chain = new BaseChain("12");
             alphabet.Add(chain);
 

@@ -22,7 +22,7 @@
             var rule = new CutRuleWithFixedStart(source.Length, 3);
             List<string> cuts = DiffCutter.Cut(source, rule);
 
-            Assert.AreEqual("ree", cuts[0]); 
+            Assert.AreEqual("ree", cuts[0]);
             Assert.AreEqual("reegwv", cuts[1]);
             Assert.AreEqual("reegwvwvw", cuts[2]);
         }

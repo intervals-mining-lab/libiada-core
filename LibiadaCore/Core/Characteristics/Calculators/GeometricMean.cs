@@ -30,7 +30,7 @@ namespace LibiadaCore.Core.Characteristics.Calculators
         public double Calculate(CongenericChain chain, Link link)
         {
             double remoteness = averageRemoteness.Calculate(chain, link);
-            
+
             return Math.Pow(2, remoteness);
         }
 
@@ -49,7 +49,7 @@ namespace LibiadaCore.Core.Characteristics.Calculators
         public double Calculate(Chain chain, Link link)
         {
             double remoteness = averageRemoteness.Calculate(chain, link);
-            
+
             return Math.Pow(2, remoteness);
         }
 

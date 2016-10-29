@@ -1,7 +1,6 @@
 ﻿namespace LibiadaCore.Misc
 {
     using System;
-    using System.Collections.Generic;
 
     using LibiadaCore.Core;
     using LibiadaCore.Core.IntervalsManagers;
@@ -29,7 +28,7 @@
         /// </exception>
         public static Chain Create(Chain source, Link link)
         {
-            if (link != Link.Start && link != Link.End && link != Link.CycleEnd && link != Link.CycleStart) 
+            if (link != Link.Start && link != Link.End && link != Link.CycleEnd && link != Link.CycleStart)
             {
                 throw new ArgumentException("Unknown link", "link");
             }
@@ -39,13 +38,13 @@
             var entries = new int[sourceAlphabet.Cardinality];
 
             var intervals = new int[sourceAlphabet.Cardinality][];
-            
+
             for (int j = 0; j < sourceAlphabet.Cardinality; j++)
             {
                 var intervalsManager = new CongenericIntervalsManager(source.CongenericChain(j));
                 intervals[j] = intervalsManager.GetIntervals(link);
             }
-            
+
             for (int i = 0; i < source.GetLength(); i++)
             {
                 var elementIndex = sourceAlphabet.IndexOf(source[i]);

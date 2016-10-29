@@ -8,7 +8,7 @@ namespace LibiadaCore.Core
     using LibiadaCore.Misc;
 
     /// <summary>
-    /// Basic sequence class. 
+    /// Basic sequence class.
     /// Stores alphabet and building.
     /// </summary>
     public class BaseChain : AbstractChain
@@ -175,7 +175,7 @@ namespace LibiadaCore.Core
         /// Sets or replaces element in specified position.
         /// </summary>
         /// <param name="item">
-        /// Element to set. 
+        /// Element to set.
         /// </param>
         /// <param name="index">
         /// Position in sequence.
@@ -312,7 +312,7 @@ namespace LibiadaCore.Core
 
             return true;
         }
-        
+
         /// <summary>
         /// Fills the clone of chain with clones of alphabet and building.
         /// </summary>

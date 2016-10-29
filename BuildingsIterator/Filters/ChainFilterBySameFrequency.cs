@@ -21,7 +21,7 @@ namespace BuildingsIterator.Filters
         {
             var chain = new Chain(building);
             var countCalculator = new ElementsCount();
-            
+
             var firstCount = (int)countCalculator.Calculate(chain.CongenericChain(0), Link.Start);
             for (int i = 1; i < chain.Alphabet.Cardinality; i++)
             {

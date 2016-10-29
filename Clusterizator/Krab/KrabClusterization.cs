@@ -49,7 +49,7 @@ namespace Clusterizator.Krab
         public KrabClusterization(DataTable dataTable, double powerWeight, double normalizedDistanceWeight, double distanceWeight)
         {
             // all connections (pairs of elements)
-            var connections = new List<Connection>(); 
+            var connections = new List<Connection>();
 
             // all elements
             var elements = new List<GraphElement>();
@@ -64,7 +64,7 @@ namespace Clusterizator.Krab
                 var current = (DictionaryEntry)counter.Current;
 
                 elements.Add(new GraphElement(((DataObject)current.Value).Vault, current.Key));
-                
+
                 // moving to the next element
                 counter.MoveNext();
             }
@@ -80,7 +80,7 @@ namespace Clusterizator.Krab
             manager = new GraphManager(connections, elements);
 
             // calculating distances
-            CommonCalculator.CalculateCharacteristic(manager, normalizedDistanceWeight, distanceWeight); 
+            CommonCalculator.CalculateCharacteristic(manager, normalizedDistanceWeight, distanceWeight);
             manager.ConnectGraph();
         }
 
@@ -168,7 +168,7 @@ namespace Clusterizator.Krab
         /// </param>
         private void ChooseDivision(int clusters, int position, GraphManager currentManager)
         {
-            // if recursive calls are required 
+            // if recursive calls are required
             if (clusters > 1)
             {
                 for (int i = position; i < (manager.Connections.Count - clusters); i++)

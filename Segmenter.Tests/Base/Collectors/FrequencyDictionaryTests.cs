@@ -57,7 +57,7 @@
         /// </summary>
         [Test]
         public void GetTest()
-        {                                     
+        {
             // AACAGGTGCCCCTTATTT
             var alphabet = new FrequencyDictionary(chain);
             string[] words = { "A", "G", "C", "T", "WORD", "AG" };
@@ -199,6 +199,6 @@
             {
                 Assert.True(alphabet.Contains(alphabet.GetWord(index)));
             }
-        } 
+        }
     }
 }

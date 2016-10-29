@@ -208,7 +208,7 @@ namespace LibiadaCore.Core
         }
 
         /// <summary>
-        /// Returns position of first occurrence of element after given position. 
+        /// Returns position of first occurrence of element after given position.
         /// </summary>
         /// <param name="index">
         /// Starting position for search.
