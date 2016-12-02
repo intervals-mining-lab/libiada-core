@@ -13,7 +13,15 @@ namespace Clusterizator.kMeans
         {
             KMeans kmeans = new KMeans(clustersCount);
 
-            return kmeans.Compute(data);
+            var clusters = kmeans.Learn(data);
+            var result = new int[data.Length];
+
+            for(int i = 0; i < result.Length; i++)
+            {
+                result[i] = clusters.Decide(data[i]);
+            }
+
+            return result;
         }
     }
 }
