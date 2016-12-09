@@ -26,19 +26,20 @@
         [SetUp]
         public void Initialization()
         {
-            var hd1 = new HybridDictionary { { "y", 0 }, { "x", 10 } };
-            var hd2 = new HybridDictionary { { "y", 2 }, { "x", 15 } };
-            var hd3 = new HybridDictionary { { "y", 5 }, { "x", 25 } };
-            var hd4 = new HybridDictionary { { "y", 6 }, { "x", 15 } };
-            var hd5 = new HybridDictionary { { "y", 6 }, { "x", 18 } };
+            //НЕ ЗАБЫТЬ УДАЛИТЬ!!!
+            //var hd1 = new HybridDictionary { { "y", 0 }, { "x", 10 } };
+            //var hd2 = new HybridDictionary { { "y", 2 }, { "x", 15 } };
+            //var hd3 = new HybridDictionary { { "y", 5 }, { "x", 25 } };
+            //var hd4 = new HybridDictionary { { "y", 6 }, { "x", 15 } };
+            //var hd5 = new HybridDictionary { { "y", 6 }, { "x", 18 } };
 
             var elements = new List<GraphElement>
                 {
-                    new GraphElement(hd1, "1"),
-                    new GraphElement(hd2, "2"),
-                    new GraphElement(hd3, "3"),
-                    new GraphElement(hd4, "4"),
-                    new GraphElement(hd5, "5")
+                    new GraphElement(new[] { 0.0, 10.0 }, "1"),
+                    new GraphElement(new[] { 2.0, 15.0 }, "2"),
+                    new GraphElement(new[] { 5.0, 25.0 }, "3"),
+                    new GraphElement(new[] { 6.0, 15.0 }, "4"),
+                    new GraphElement(new[] { 6.0, 18.0 }, "5")
                 };
 
             var connections = new List<Connection>

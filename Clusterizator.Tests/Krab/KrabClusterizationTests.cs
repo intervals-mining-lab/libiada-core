@@ -54,70 +54,24 @@ namespace Clusterizator.Tests.Krab
         [Test]
         public void ClusterizationTest()
         {
-            var krab = new KrabClusterization(dt, 4, 2, 1);
-            var result = krab.Cluster(2).Clusters;
+            var krab = new KrabClusterization(4, 2, 1);
+            var result = krab.Cluster(2,
+                new[] { 
+                    new[] { 2.0, 2.0 }, 
+                    new[] { 5.0, 2.0 },
+                    new[] { 4.0, 3.0 }, 
+                    new[] { 3.0, 6.0 }, 
+                    new[] { 8.0, 8.0 }, 
+                    new[] { 9.0, 7.0 } 
+                });
 
-            Assert.IsTrue(((Cluster)result[1]).Items.Contains((long)1));
-            Assert.IsTrue(((Cluster)result[1]).Items.Contains((long)3));
-            Assert.IsTrue(((Cluster)result[1]).Items.Contains((long)2));
-            Assert.IsTrue(((Cluster)result[1]).Items.Contains((long)4));
+            Assert.AreEqual(result[0], 2);
+            Assert.AreEqual(result[1], 2);
+            Assert.AreEqual(result[2], 2);
+            Assert.AreEqual(result[3], 2);
 
-            Assert.IsTrue(((Cluster)result[0]).Items.Contains((long)5));
-            Assert.IsTrue(((Cluster)result[0]).Items.Contains((long)6));
-        }
-
-        /// <summary>
-        /// The simple all variants clustering test.
-        /// </summary>
-        [Test]
-        public void SimpleAllVariantsClusterizationTest()
-        {
-            var object1 = new DataObject { Id = 1 };
-            object1.Add("x", 2);
-
-            var object2 = new DataObject { Id = 2 };
-            object2.Add("x", 5);
-
-            var object3 = new DataObject { Id = 3 };
-            object3.Add("x", 4);
-
-            var object4 = new DataObject { Id = 4 };
-            object4.Add("x", 3);
-
-            var dataTable = new DataTable { object1, object2, object3, object4 };
-
-            var krab = new KrabClusterization(dataTable, 4, 2, 1);
-            var result = krab.ClusterAllVariants().Variants;
-            Assert.AreEqual(3, result.Count);
-        }
-
-        /// <summary>
-        /// The all variants clustering 2 d test.
-        /// </summary>
-        [Test]
-        public void AllVariantsClusterization2DTest()
-        {
-            var object1 = new DataObject { Id = 1 };
-            object1.Add("x", 2);
-            object1.Add("y", 2);
-
-            var object2 = new DataObject { Id = 2 };
-            object2.Add("x", 5);
-            object2.Add("y", 2);
-
-            var object3 = new DataObject { Id = 3 };
-            object3.Add("x", 4);
-            object3.Add("y", 3);
-
-            var object4 = new DataObject { Id = 4 };
-            object4.Add("x", 3);
-            object4.Add("y", 6);
-
-            var dataTable = new DataTable { object1, object2, object3, object4 };
-
-            var krab = new KrabClusterization(dataTable, 4, 2, 1);
-            var result = krab.ClusterAllVariants().Variants;
-            Assert.AreEqual(3, result.Count);
+            Assert.AreEqual(result[4], 1);
+            Assert.AreEqual(result[5], 1);
         }
     }
 }

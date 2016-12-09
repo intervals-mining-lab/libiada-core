@@ -5,6 +5,7 @@ namespace Clusterizator
     using Clusterizator.Krab;
 
     using LibiadaCore.Core;
+    using System.Collections.Generic;
 
     /// <summary>
     /// The cluster.
@@ -22,7 +23,7 @@ namespace Clusterizator
         /// <param name="points">
         /// The points.
         /// </param>
-        public Cluster(ArrayList points)
+        public Cluster(List<GraphElement> points)
         {
             for (int i = 0; i < points.Count; i++)
             {

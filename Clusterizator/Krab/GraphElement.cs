@@ -21,7 +21,7 @@ namespace Clusterizator.Krab
         /// <param name="name">
         /// Object name.
         /// </param>
-        public GraphElement(HybridDictionary element, object name)
+        public GraphElement(double[] element, object name)
         {
             Content = element;
             Id = name;
@@ -36,7 +36,7 @@ namespace Clusterizator.Krab
         /// <summary>
         /// Gets or sets the point coordinates as HybridDictionary.
         /// </summary>
-        public HybridDictionary Content { get; set; }
+        public double[] Content { get; set; }
 
         /// <summary>
         /// Gets or sets this point taxon number.

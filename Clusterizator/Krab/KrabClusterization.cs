@@ -9,12 +9,22 @@ namespace Clusterizator.Krab
     /// <summary>
     /// KRAB clusterization class.
     /// </summary>
-    public class KrabClusterization : IClusterization
+    public class KrabClusterization : IClustirizator
     {
         /// <summary>
         /// The power weight.
         /// </summary>
         private readonly double powerWeight;
+
+        /// <summary>
+        /// The normalized distance weight.
+        /// </summary>
+        private readonly double normalizedDistanceWeight;
+
+        /// <summary>
+        /// The distance weight.
+        /// </summary>
+        private readonly double distanceWeight;
 
         /// <summary>
         /// The manager.
@@ -46,7 +56,23 @@ namespace Clusterizator.Krab
         /// <param name="distanceWeight">
         /// The distance weight.
         /// </param>
-        public KrabClusterization(DataTable dataTable, double powerWeight, double normalizedDistanceWeight, double distanceWeight)
+        public KrabClusterization(double powerWeight, double normalizedDistanceWeight, double distanceWeight)
+        {
+            this.powerWeight = powerWeight;
+            this.normalizedDistanceWeight = normalizedDistanceWeight;
+            this.distanceWeight = distanceWeight;
+        }
+
+        /// <summary>
+        /// Clusterization method for given groups number.
+        /// </summary>
+        /// <param name="clustersCount">
+        /// Groups count.
+        /// </param>
+        /// <returns>
+        /// Optimal clusterization as <see cref="ClusterizationVariants"/>.
+        /// </returns>
+        public int[] Cluster(int clustersCount, double[][] data)
         {
             // all connections (pairs of elements)
             var connections = new List<Connection>();
@@ -54,19 +80,9 @@ namespace Clusterizator.Krab
             // all elements
             var elements = new List<GraphElement>();
 
-            this.powerWeight = powerWeight;
-
-            IEnumerator counter = dataTable.GetEnumerator();
-            counter.Reset();
-            counter.MoveNext();
-            for (int i = 0; i < dataTable.Count; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                var current = (DictionaryEntry)counter.Current;
-
-                elements.Add(new GraphElement(((DataObject)current.Value).Vault, current.Key));
-
-                // moving to the next element
-                counter.MoveNext();
+                elements.Add(new GraphElement(data[i], i));
             }
 
             for (int j = 0; j < elements.Count - 1; j++)
@@ -82,76 +98,18 @@ namespace Clusterizator.Krab
             // calculating distances
             CommonCalculator.CalculateCharacteristic(manager, normalizedDistanceWeight, distanceWeight);
             manager.ConnectGraph();
-        }
-
-        /// <summary>
-        /// Clusterization method for given groups number.
-        /// </summary>
-        /// <param name="clustersCount">
-        /// Groups count.
-        /// </param>
-        /// <returns>
-        /// Optimal clusterization as <see cref="ClusterizationVariants"/>.
-        /// </returns>
-        public ClusterizationResult Cluster(int clustersCount)
-        {
             GraphManager tempManager = manager.Clone();
             ChooseDivision(clustersCount, 0, manager);
-            var result = new ClusterizationResult();
-            var tempResult = new List<ArrayList>();
-            for (int i = 0; i < optimalDivide.GetNextTaxonNumber(); i++)
-            {
-                tempResult.Add(new ArrayList());
-            }
+            var result = new int[data.Length];
 
             // extracting clusters from the graph
-            foreach (GraphElement element in this.optimalDivide.Elements)
+            for (int j = 0; j < optimalDivide.Elements.Count; j++)
             {
-                tempResult[element.TaxonNumber].Add(element);
-            }
-
-            // saving only not empty groups
-            tempResult = tempResult.Where(t => t.Count > 0).ToList();
-
-            // adding groups to the result container
-            foreach (ArrayList cluster in tempResult)
-            {
-                result.Clusters.Add(new Cluster(cluster));
+                result[j] = optimalDivide.Elements[j].TaxonNumber;
             }
 
             manager = tempManager;
             return result;
-        }
-
-        /// <summary>
-        /// Clusterization method for given or less nuber of groups.
-        /// </summary>
-        /// <param name="MaximumClustersCount">
-        /// Maximum groups count.
-        /// </param>
-        /// <returns>
-        /// Clustering result as <see cref="ClusterizationVariants"/>.
-        /// </returns>
-        public ClusterizationVariants ClusterVariantCountClustersBelow(int MaximumClustersCount)
-        {
-            var temp = new ClusterizationVariants();
-            for (int i = 2; i <= MaximumClustersCount; i++)
-            {
-                temp.Variants.Add(Cluster(i));
-            }
-
-            return temp;
-        }
-
-        /// <summary>
-        /// Dividing into all possible divisions.
-        /// </summary>
-        /// <returns>
-        /// Clustering result as <see cref="ClusterizationVariants"/>.
-        /// </returns>
-        public ClusterizationVariants ClusterAllVariants()
-        {
-            return ClusterVariantCountClustersBelow(manager.Elements.Count);
         }
 
         /// <summary>

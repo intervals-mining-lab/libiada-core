@@ -29,21 +29,21 @@ namespace Clusterizator.Tests.Krab
         [SetUp]
         public void Initialization()
         {
-            var hd1 = new HybridDictionary { { "x", 2 }, { "y", 3 } };
+            /*var hd1 = new HybridDictionary { { "x", 2 }, { "y", 3 } };
             var hd2 = new HybridDictionary { { "x", 3 }, { "y", 5 } };
             var hd3 = new HybridDictionary { { "x", 6 }, { "y", 2 } };
             var hd4 = new HybridDictionary { { "x", 6 }, { "y", 5 } };
             var hd5 = new HybridDictionary { { "x", 7 }, { "y", 4 } };
-            var hd6 = new HybridDictionary { { "x", 8 }, { "y", 3 } };
+            var hd6 = new HybridDictionary { { "x", 8 }, { "y", 3 } };*/
 
             elementsList = new List<GraphElement>
                                {
-                                   new GraphElement(hd1, "1"),
-                                   new GraphElement(hd2, "2"),
-                                   new GraphElement(hd3, "3"),
-                                   new GraphElement(hd4, "4"),
-                                   new GraphElement(hd5, "5"),
-                                   new GraphElement(hd6, "6")
+                                   new GraphElement(new[] { 2.0, 3.0 }, "1"),
+                                   new GraphElement(new[] { 3.0, 5.0 }, "2"),
+                                   new GraphElement(new[] { 6.0, 2.0 }, "3"),
+                                   new GraphElement(new[] { 6.0, 5.0 }, "4"),
+                                   new GraphElement(new[] { 7.0, 4.0 }, "5"),
+                                   new GraphElement(new[] { 8.0, 3.0 }, "6")
                                };
 
             connectionsList = new List<Connection>

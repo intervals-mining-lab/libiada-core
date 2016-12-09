@@ -9,7 +9,7 @@
     public class LinearCalculator : ICalculator
     {
         /// <summary>
-        /// Euclidean distance calculation mathod.
+        /// Euclidean distance calculation method.
         /// </summary>
         /// <param name="graph">
         /// Connections graph.
@@ -20,16 +20,12 @@
             {
                 double distance = 0;
 
-                // enumerating through al nodes
-                IDictionaryEnumerator firstCounter = graph.Elements[graph.Connections[i].FirstElementIndex].Content.GetEnumerator();
-                firstCounter.Reset();
-                firstCounter.MoveNext();
-                for (int j = 0; j < graph.Elements[graph.Connections[i].FirstElementIndex].Content.Count; j++)
+                for (int j = 0; j < graph.Elements[graph.Connections[i].FirstElementIndex].Content.Length; j++)
                 {
-                    double element = Convert.ToDouble(firstCounter.Value) -
-                                     Convert.ToDouble(graph.Elements[graph.Connections[i].SecondElementIndex].Content[firstCounter.Key]);
-                    distance += element * element;
-                    firstCounter.MoveNext();
+                    double substriction = graph.Elements[graph.Connections[i].FirstElementIndex].Content[j] -
+                                     graph.Elements[graph.Connections[i].SecondElementIndex].Content[j];
+
+                    distance += substriction * substriction;
                 }
 
                 distance = Math.Sqrt(distance);

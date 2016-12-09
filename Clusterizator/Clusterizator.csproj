@@ -62,6 +62,7 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IClustirizator.cs" />
     <Compile Include="kMeans\KMeansClusterization.cs" />
     <Compile Include="Krab\KrabClusterization.cs" />
     <Compile Include="Krab\Calculators\CommonCalculator.cs" />

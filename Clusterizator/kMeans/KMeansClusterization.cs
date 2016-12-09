@@ -7,7 +7,7 @@ using Accord.MachineLearning;
 
 namespace Clusterizator.kMeans
 {
-    public class KMeansClusterization
+    public class KMeansClusterization : IClustirizator
     {
         public int[] Cluster(int clustersCount, double[][] data)
         {
@@ -18,7 +18,7 @@ namespace Clusterizator.kMeans
 
             for(int i = 0; i < result.Length; i++)
             {
-                result[i] = clusters.Decide(data[i]);
+                    result[i] = clusters.Decide(data[i]);
             }
 
             return result;

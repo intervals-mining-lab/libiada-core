@@ -25,17 +25,17 @@ namespace Clusterizator.Tests.Krab.Calculators
         [SetUp]
         public void Initialization()
         {
-            var hd1 = new HybridDictionary { { "y", 0 } };
+            /*var hd1 = new HybridDictionary { { "y", 0 } };
             var hd2 = new HybridDictionary { { "y", 2 } };
             var hd3 = new HybridDictionary { { "y", 5 } };
-            var hd4 = new HybridDictionary { { "y", 6 } };
+            var hd4 = new HybridDictionary { { "y", 6 } };*/
 
             var elements = new List<GraphElement>
                                {
-                                   new GraphElement(hd1, "1"),
-                                   new GraphElement(hd2, "2"),
-                                   new GraphElement(hd3, "3"),
-                                   new GraphElement(hd4, "4")
+                                   new GraphElement(new[] { 0.0 }, "1"),
+                                   new GraphElement(new[] { 2.0 }, "2"),
+                                   new GraphElement(new[] { 5.0 }, "3"),
+                                   new GraphElement(new[] { 6.0 }, "4")
                                };
 
             var connections = new List<Connection>

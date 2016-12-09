@@ -21,11 +21,11 @@ namespace Clusterizator.Tests.Krab.Calculators
         [Test]
         public void TwoPointsTest()
         {
-            var element = new HybridDictionary { { "characteristic", 15.0 } };
-            var node1 = new GraphElement(element, "node1");
+            //var element = new HybridDictionary { { "characteristic", 15.0 } };
+            var node1 = new GraphElement(new[] { 15.0 }, "node1");
 
-            var element2 = new HybridDictionary { { "characteristic", 15.0 } };
-            var node2 = new GraphElement(element2, "node2");
+            //var element2 = new HybridDictionary { { "characteristic", 15.0 } };
+            var node2 = new GraphElement(new[] { 15.0 }, "node2");
 
             var el = new List<GraphElement> { node1, node2 };
 
@@ -45,11 +45,11 @@ namespace Clusterizator.Tests.Krab.Calculators
         [Test]
         public void TwoIntPointsTest()
         {
-            var element = new HybridDictionary { { "characteristic", 15 } };
-            var node1 = new GraphElement(element, "node1");
+            //var element = new HybridDictionary { { "characteristic", 15 } };
+            var node1 = new GraphElement(new[] { 15.0 }, "node1");
 
-            var element2 = new HybridDictionary { { "characteristic", 15 } };
-            var node2 = new GraphElement(element2, "node2");
+            //var element2 = new HybridDictionary { { "characteristic", 15 } };
+            var node2 = new GraphElement(new[] { 15.0 }, "node2");
             var el = new List<GraphElement> { node1, node2 };
 
             var conn1 = new Connection(0, 1);
@@ -68,14 +68,14 @@ namespace Clusterizator.Tests.Krab.Calculators
         [Test]
         public void ThreePointsTest()
         {
-            var element = new HybridDictionary { { "characteristic", 15.0 } };
-            var node1 = new GraphElement(element, "node1");
+            //var element = new HybridDictionary { { "characteristic", 15.0 } };
+            var node1 = new GraphElement(new[] { 15.0 }, "node1");
 
-            var element2 = new HybridDictionary { { "characteristic", 10.0 } };
-            var node2 = new GraphElement(element2, "node2");
+            //var element2 = new HybridDictionary { { "characteristic", 10.0 } };
+            var node2 = new GraphElement(new[] { 10.0 }, "node2");
 
-            var element3 = new HybridDictionary { { "characteristic", -3.0 } };
-            var node3 = new GraphElement(element3, "node3");
+            //var element3 = new HybridDictionary { { "characteristic", -3.0 } };
+            var node3 = new GraphElement(new[] { -3.0 }, "node3");
 
             var el = new List<GraphElement> { node1, node2, node3 };
 
@@ -100,21 +100,21 @@ namespace Clusterizator.Tests.Krab.Calculators
         [Test]
         public void TwoPoints3DTest()
         {
-            var element = new HybridDictionary
+            /*var element = new HybridDictionary
                               {
                                   { "characteristic", 15.0 },
                                   { "characteristic2", 1.0 },
                                   { "characteristic3", -20.0 }
-                              };
-            var node1 = new GraphElement(element, "node1");
+                              };*/
+            var node1 = new GraphElement(new[] { 15.0, 1.0, -20.0  }, "node1");
 
-            var element2 = new HybridDictionary
+            /*var element2 = new HybridDictionary
                                {
                                    { "characteristic", 0.0 },
                                    { "characteristic2", -3.0 },
                                    { "characteristic3", -4.0 }
-                               };
-            var node2 = new GraphElement(element2, "node2");
+                               };*/
+            var node2 = new GraphElement(new[] { 0.0, -3.0, -4.0 }, "node2");
 
             var el = new List<GraphElement> { node1, node2 };
 
@@ -135,29 +135,29 @@ namespace Clusterizator.Tests.Krab.Calculators
         [Test]
         public void ThreePoints3DTest()
         {
-            var element = new HybridDictionary
+            /*var element = new HybridDictionary
                               {
                                   { "characteristic", 15.0 },
                                   { "characteristic2", 1.0 },
                                   { "characteristic3", -20.0 }
-                              };
-            var node1 = new GraphElement(element, "node1");
+                              };*/
+            var node1 = new GraphElement(new[] { 15.0, 1.0, -20.0 }, "node1");
 
-            var element2 = new HybridDictionary
+            /*var element2 = new HybridDictionary
                                {
                                    { "characteristic", 0.0 },
                                    { "characteristic2", -3.0 },
                                    { "characteristic3", -4.0 }
-                               };
-            var node2 = new GraphElement(element2, "node2");
+                               };*/
+            var node2 = new GraphElement(new[] { 0.0, -3.0, -4.0 }, "node2");
 
-            var element3 = new HybridDictionary
+            /*var element3 = new HybridDictionary
                                {
                                    { "characteristic", 15.0 },
                                    { "characteristic2", 1.0 },
                                    { "characteristic3", -20.0 }
-                               };
-            var node3 = new GraphElement(element3, "node3");
+                               };*/
+            var node3 = new GraphElement(new[] { 15.0, 1.0, -20.0 }, "node3");
 
             var el = new List<GraphElement> { node1, node2, node3 };
 
