@@ -1,7 +1,6 @@
 namespace Clusterizator.Tests.Krab.Calculators
 {
     using System.Collections.Generic;
-    using System.Collections.Specialized;
 
     using Clusterizator.Krab;
     using Clusterizator.Krab.Calculators;
@@ -25,11 +24,6 @@ namespace Clusterizator.Tests.Krab.Calculators
         [SetUp]
         public void Initialization()
         {
-            /*var hd1 = new HybridDictionary { { "y", 0 } };
-            var hd2 = new HybridDictionary { { "y", 2 } };
-            var hd3 = new HybridDictionary { { "y", 5 } };
-            var hd4 = new HybridDictionary { { "y", 6 } };*/
-
             var elements = new List<GraphElement>
                                {
                                    new GraphElement(new[] { 0.0 }, "1"),

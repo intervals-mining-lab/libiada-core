@@ -55,15 +55,18 @@ namespace Clusterizator.Tests.Krab
         public void ClusterizationTest()
         {
             var krab = new KrabClusterization(4, 2, 1);
-            var result = krab.Cluster(2,
-                new[] { 
-                    new[] { 2.0, 2.0 }, 
-                    new[] { 5.0, 2.0 },
-                    new[] { 4.0, 3.0 }, 
-                    new[] { 3.0, 6.0 }, 
-                    new[] { 8.0, 8.0 }, 
-                    new[] { 9.0, 7.0 } 
-                });
+
+            var data = new[]
+                           {
+                               new[] { 2.0, 2.0 },
+                               new[] { 5.0, 2.0 },
+                               new[] { 4.0, 3.0 },
+                               new[] { 3.0, 6.0 },
+                               new[] { 8.0, 8.0 },
+                               new[] { 9.0, 7.0 }
+                           };
+
+            var result = krab.Cluster(2, data);
 
             Assert.AreEqual(result[0], 2);
             Assert.AreEqual(result[1], 2);

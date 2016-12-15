@@ -1,7 +1,6 @@
 namespace Clusterizator.Tests.Krab
 {
     using System.Collections.Generic;
-    using System.Collections.Specialized;
 
     using Clusterizator.Krab;
 
@@ -29,13 +28,6 @@ namespace Clusterizator.Tests.Krab
         [SetUp]
         public void Initialization()
         {
-            /*var hd1 = new HybridDictionary { { "x", 2 }, { "y", 3 } };
-            var hd2 = new HybridDictionary { { "x", 3 }, { "y", 5 } };
-            var hd3 = new HybridDictionary { { "x", 6 }, { "y", 2 } };
-            var hd4 = new HybridDictionary { { "x", 6 }, { "y", 5 } };
-            var hd5 = new HybridDictionary { { "x", 7 }, { "y", 4 } };
-            var hd6 = new HybridDictionary { { "x", 8 }, { "y", 3 } };*/
-
             elementsList = new List<GraphElement>
                                {
                                    new GraphElement(new[] { 2.0, 3.0 }, "1"),

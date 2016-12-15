@@ -2,7 +2,6 @@
 {
     using System;
     using System.Collections.Generic;
-    using System.Collections.Specialized;
 
     using Clusterizator.Krab;
     using Clusterizator.Krab.Calculators;
@@ -26,13 +25,6 @@
         [SetUp]
         public void Initialization()
         {
-            //НЕ ЗАБЫТЬ УДАЛИТЬ!!!
-            //var hd1 = new HybridDictionary { { "y", 0 }, { "x", 10 } };
-            //var hd2 = new HybridDictionary { { "y", 2 }, { "x", 15 } };
-            //var hd3 = new HybridDictionary { { "y", 5 }, { "x", 25 } };
-            //var hd4 = new HybridDictionary { { "y", 6 }, { "x", 15 } };
-            //var hd5 = new HybridDictionary { { "y", 6 }, { "x", 18 } };
-
             var elements = new List<GraphElement>
                 {
                     new GraphElement(new[] { 0.0, 10.0 }, "1"),
