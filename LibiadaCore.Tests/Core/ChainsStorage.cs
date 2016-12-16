@@ -55,7 +55,23 @@ namespace LibiadaCore.Tests.Core
                                // _ _ A _ _ _ _ _ A _
                                // _ _ _ _ G _ _ _ _ _
                                // _ _ _ _ _ _ T T _ _
-                               new Chain("CCACGCTTAC")
+                               new Chain("CCACGCTTAC"),
+
+                               // C G
+                               // C _
+                               // _ G
+                               new Chain("CG"),
+
+                               // C C C C
+                               // C C C C
+                               new Chain("CCCC"),
+
+                               // A C G T
+                               // A _ _ _
+                               // _ C _ _
+                               // _ _ G _
+                               // _ _ _ T
+                               new Chain("ACGT")
                            };
             }
         }

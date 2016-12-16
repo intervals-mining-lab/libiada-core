@@ -38,7 +38,7 @@
                 double nj = intervalsCount.Calculate(chain.CongenericChain(chain.Alphabet[i]), link);
                 double gj = averageRemoteness.Calculate(chain.CongenericChain(chain.Alphabet[i]), link);
                 double gDelta = gj - g;
-                result += n == 0 ? 0 : nj / n * gDelta * gDelta;
+                result += n == 0 ? 0 : gDelta * gDelta * nj / n;
             }
 
             return result;
