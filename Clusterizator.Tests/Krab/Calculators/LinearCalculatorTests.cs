@@ -88,7 +88,7 @@ namespace Clusterizator.Tests.Krab.Calculators
         [Test]
         public void TwoPoints3DTest()
         {
-            var node1 = new GraphElement(new[] { 15.0, 1.0, -20.0  }, "node1");
+            var node1 = new GraphElement(new[] { 15.0, 1.0, -20.0 }, "node1");
             var node2 = new GraphElement(new[] { 0.0, -3.0, -4.0 }, "node2");
 
             var el = new List<GraphElement> { node1, node2 };

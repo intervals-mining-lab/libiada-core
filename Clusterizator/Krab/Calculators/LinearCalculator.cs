@@ -1,7 +1,6 @@
 ﻿namespace Clusterizator.Krab.Calculators
 {
     using System;
-    using System.Collections;
 
     /// <summary>
     /// Euclidean distance calculator.
@@ -22,10 +21,10 @@
 
                 for (int j = 0; j < graph.Elements[graph.Connections[i].FirstElementIndex].Content.Length; j++)
                 {
-                    double substriction = graph.Elements[graph.Connections[i].FirstElementIndex].Content[j] -
+                    double substraction = graph.Elements[graph.Connections[i].FirstElementIndex].Content[j] -
                                      graph.Elements[graph.Connections[i].SecondElementIndex].Content[j];
 
-                    distance += substriction * substriction;
+                    distance += substraction * substraction;
                 }
 
                 distance = Math.Sqrt(distance);

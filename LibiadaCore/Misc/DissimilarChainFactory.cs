@@ -1,7 +1,5 @@
 ﻿namespace LibiadaCore.Misc
 {
-    using System.Collections.Generic;
-
     using LibiadaCore.Core;
     using LibiadaCore.Core.SimpleTypes;
 

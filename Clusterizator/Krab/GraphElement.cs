@@ -1,7 +1,5 @@
 namespace Clusterizator.Krab
 {
-    using System.Collections.Specialized;
-
     /// <summary>
     /// Point in graph.
     /// </summary>

@@ -47,11 +47,11 @@
     <Compile Include="Base\Collectors\FrequencyDictionaryTests.cs" />
     <Compile Include="Base\Iterators\EndIteratorTests.cs" />
     <Compile Include="Base\Iterators\StartIteratorTests.cs" />
-    <Compile Include="Base\Seekers\Converters\FilterSequenceTests.cs" />
+    <Compile Include="Base\Seekers\Converters\SequenceCleanerTests.cs" />
     <Compile Include="Base\Seekers\Converters\FilterTests.cs" />
     <Compile Include="Base\Seekers\SeekerSequenceTests.cs" />
     <Compile Include="Base\Seekers\SeekerTests.cs" />
-    <Compile Include="Base\Sequences\ComplexComplexChainTests.cs" />
+    <Compile Include="Base\Sequences\ComplexChainTests.cs" />
     <Compile Include="Model\Threshold\ThresholdLinearTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

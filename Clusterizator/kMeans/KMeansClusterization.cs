@@ -1,24 +1,34 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Accord.MachineLearning;
-
-namespace Clusterizator.kMeans
+﻿namespace Clusterizator.kMeans
 {
-    public class KMeansClusterization : IClustirizator
+    using Accord.MachineLearning;
+
+    /// <summary>
+    /// The k means clusterization.
+    /// </summary>
+    public class KMeansClusterization : IClusterizator
     {
+        /// <summary>
+        /// The cluster.
+        /// </summary>
+        /// <param name="clustersCount">
+        /// The clusters count.
+        /// </param>
+        /// <param name="data">
+        /// The data.
+        /// </param>
+        /// <returns>
+        /// The <see cref="T:int[]"/>.
+        /// </returns>
         public int[] Cluster(int clustersCount, double[][] data)
         {
-            KMeans kmeans = new KMeans(clustersCount);
+            KMeans kMeans = new KMeans(clustersCount);
 
-            var clusters = kmeans.Learn(data);
+            var clusters = kMeans.Learn(data);
             var result = new int[data.Length];
 
-            for(int i = 0; i < result.Length; i++)
+            for (int i = 0; i < result.Length; i++)
             {
-                    result[i] = clusters.Decide(data[i]);
+                result[i] = clusters.Decide(data[i]);
             }
 
             return result;

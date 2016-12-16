@@ -78,11 +78,9 @@
     <Compile Include="Krab\GraphElement.cs" />
     <Compile Include="Krab\GraphManager.cs" />
     <Compile Include="ClusterizationVariants.cs" />
-    <Compile Include="Cluster.cs" />
     <Compile Include="ClusterizationResult.cs" />
     <Compile Include="DataObject.cs" />
     <Compile Include="DataTable.cs" />
-    <Compile Include="IClusterization.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

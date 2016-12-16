@@ -1,15 +1,13 @@
 namespace Clusterizator.Krab
 {
-    using System.Collections;
     using System.Collections.Generic;
-    using System.Linq;
 
     using Clusterizator.Krab.Calculators;
 
     /// <summary>
     /// KRAB clusterization class.
     /// </summary>
-    public class KrabClusterization : IClustirizator
+    public class KrabClusterization : IClusterizator
     {
         /// <summary>
         /// The power weight.
@@ -44,9 +42,6 @@ namespace Clusterizator.Krab
         /// <summary>
         /// Initializes a new instance of the <see cref="KrabClusterization"/> class.
         /// </summary>
-        /// <param name="dataTable">
-        /// The data table.
-        /// </param>
         /// <param name="powerWeight">
         /// The power weight.
         /// </param>
@@ -68,6 +63,11 @@ namespace Clusterizator.Krab
         /// </summary>
         /// <param name="clustersCount">
         /// Groups count.
+        /// </param>
+        /// <param name="data">
+        /// Characteristics values for every object.
+        /// First dimension represents objects.
+        /// Second Dimension represents characteristics.
         /// </param>
         /// <returns>
         /// Optimal clusterization as <see cref="ClusterizationVariants"/>.

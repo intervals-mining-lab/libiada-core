@@ -8,7 +8,7 @@
     using Segmenter.Extended;
 
     /// <summary>
-    /// Used as a base for all kinds of word seekers for a chain
+    /// Used as a base for all kinds of word seekers for a chain.
     /// </summary>
     public abstract class WordExtractor
     {
@@ -30,7 +30,7 @@
         /// The current segmentation parameters.
         /// </param>
         /// <returns>
-        /// The <see cref="KeyValuePair"/>.
+        /// The <see cref="T:KeyValuePair{List{string},List{int}}?"/>.
         /// </returns>
         public abstract KeyValuePair<List<string>, List<int>>? Find(ContentValues parameters);
 
@@ -44,7 +44,7 @@
         /// The filter level.
         /// </param>
         /// <returns>
-        /// The <see cref="KeyValuePair"/>.
+        /// The <see cref="T:KeyValuePair{List{string},List{int}}?"/>.
         /// </returns>
         protected KeyValuePair<List<string>, List<int>>? DiscardCompositeWords(FrequencyDictionary alphabet, double level)
         {

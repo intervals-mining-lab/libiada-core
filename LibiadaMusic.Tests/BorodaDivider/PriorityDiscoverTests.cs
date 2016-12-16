@@ -324,15 +324,10 @@
         public void PriorityDiscoverTest()
         {
             var notes = new List<ValueNote> { note, bnote, anote };
-
             var notes1 = new List<ValueNote> { note, note, note };
-
             var notes2 = new List<ValueNote> { anote, note, bnote, note, bnote };
-
             var notes3 = new List<ValueNote> { note, dnote, note, note };
-
             var notes4 = new List<ValueNote> { сnote, сnote, сnote, ccnote, ccnote, ccnote };
-
             var notes5 = new List<ValueNote> { сccnote, сccnote, сccnote, сccnote, сccnote, сccnote, сccnote, note, note };
 
             var measure = new Measure(notes, attributes);
