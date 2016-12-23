@@ -37,7 +37,7 @@ namespace Clusterizator
 
                     return new KrabClusterization(powerWeight, normalizedDistanceWeight, distanceWeight);
                 default:
-                    throw new Exception();
+                    throw new Exception("Unknown clusterization type");
             }
         }
     }

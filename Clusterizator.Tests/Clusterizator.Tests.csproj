@@ -45,6 +45,7 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ClusterizatorsFactoryTests.cs" />
     <Compile Include="Krab\Calculators\EquipotencyCalculatorTests.cs" />
     <Compile Include="Krab\Calculators\EquipotencyCalculatorSecondTests.cs" />
     <Compile Include="Krab\Calculators\LambdaCalculatorTests.cs" />
