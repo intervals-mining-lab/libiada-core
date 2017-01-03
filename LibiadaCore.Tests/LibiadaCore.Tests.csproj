@@ -86,7 +86,8 @@
     <Compile Include="Core\Characteristics\Calculators\SWSkewTests.cs" />
     <Compile Include="Core\Characteristics\Calculators\UniformityTests.cs" />
     <Compile Include="Core\IntervalsManagers\BinaryIntervalsManagerTests.cs" />
-    <Compile Include="Misc\ArrayExtensionsTests.cs" />
+    <Compile Include="Extensions\ArrayExtensionsTests.cs" />
+    <Compile Include="Extensions\StringExtensionsTests.cs" />
     <Compile Include="Misc\DataTransformers\DnaTransformerTests.cs" />
     <Compile Include="Misc\DissimilarChainFactoryTests.cs" />
     <Compile Include="Misc\HighOrderFactoryTests.cs" />
@@ -151,6 +152,7 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\nuget.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

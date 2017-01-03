@@ -1,16 +1,16 @@
-﻿namespace LibiadaCore.Tests.Misc
+﻿namespace LibiadaCore.Tests.Extensions
 {
     using System;
     using System.Linq;
 
-    using LibiadaCore.Misc;
+    using LibiadaCore.Extensions;
 
     using NUnit.Framework;
 
     /// <summary>
     /// The array manipulator tests.
     /// </summary>
-    [TestFixture]
+    [TestFixture(TestOf = typeof(ArrayExtensions))]
     public class ArrayExtensionsTests
     {
         /// <summary>

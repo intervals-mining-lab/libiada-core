@@ -9,7 +9,7 @@
     /// <summary>
     /// The high order factory tests.
     /// </summary>
-    [TestFixture]
+    [TestFixture(TestOf = typeof(HighOrderFactory))]
     public class HighOrderFactoryTests
     {
         /// <summary>

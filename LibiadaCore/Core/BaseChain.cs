@@ -5,6 +5,7 @@ namespace LibiadaCore.Core
     using System.Linq;
 
     using LibiadaCore.Core.SimpleTypes;
+    using LibiadaCore.Extensions;
     using LibiadaCore.Misc;
 
     /// <summary>

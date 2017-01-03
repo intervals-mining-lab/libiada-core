@@ -5,7 +5,7 @@
     using System.Collections.Generic;
 
     using LibiadaCore.Core;
-
+    using LibiadaCore.Extensions;
     using LibiadaCore.Misc;
 
     /// <summary>

@@ -74,6 +74,8 @@
     <Compile Include="Core\Characteristics\Calculators\Uniformity.cs" />
     <Compile Include="Core\IntervalsManagers\AccordanceIntervalsManager.cs" />
     <Compile Include="Core\IntervalsManagers\NullCongenericIntervalsManager.cs" />
+    <Compile Include="Exceptions\TypeArgumentException.cs" />
+    <Compile Include="Extensions\StringExtensions.cs" />
     <Compile Include="Misc\DataTransformers\DnaProcessing.cs" />
     <Compile Include="Core\Characteristics\Calculators\GCRatio.cs" />
     <Compile Include="Core\Characteristics\Calculators\ICalculator.cs" />
@@ -82,7 +84,7 @@
     <Compile Include="Core\Characteristics\Calculators\AverageRemotenessDispersion.cs" />
     <Compile Include="Core\Characteristics\Calculators\AverageRemotenessSkewness.cs" />
     <Compile Include="Core\Characteristics\Calculators\AverageRemotenessStandardDeviation.cs" />
-    <Compile Include="Misc\ArrayExtensions.cs" />
+    <Compile Include="Extensions\ArrayExtensions.cs" />
     <Compile Include="Misc\DataTransformers\DnaTransformer.cs" />
     <Compile Include="Misc\DissimilarChainFactory.cs" />
     <Compile Include="Misc\HighOrderFactory.cs" />

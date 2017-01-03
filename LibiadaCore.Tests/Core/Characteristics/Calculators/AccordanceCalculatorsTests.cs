@@ -39,7 +39,7 @@
         [OneTimeSetUp]
         public void Initialization()
         {
-            var testClassName = this.GetType().Name;
+            var testClassName = GetType().Name;
             var calculatorName = testClassName.Substring(0, testClassName.Length - 5);
             Calculator = CalculatorsFactory.CreateAccordanceCalculator(calculatorName);
         }

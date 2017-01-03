@@ -8,6 +8,7 @@
     /// <summary>
     /// The dissimilar chain factory tests.
     /// </summary>
+    [TestFixture(TestOf = typeof(DissimilarChainFactory))]
     public class DissimilarChainFactoryTests
     {
         /// <summary>

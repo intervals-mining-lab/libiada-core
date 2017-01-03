@@ -1,4 +1,4 @@
-﻿namespace LibiadaCore.Misc
+﻿namespace LibiadaCore.Extensions
 {
     using System;
     using System.Collections;
