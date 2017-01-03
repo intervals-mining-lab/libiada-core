@@ -8,12 +8,12 @@ namespace LibiadaCore.Core.Characteristics.Calculators
         /// <summary>
         /// Average geometric interval calculator.
         /// </summary>
-        private readonly ICalculator geometricMean = new GeometricMean();
+        private readonly ICalculator geometricMeanCalculator = new GeometricMean();
 
         /// <summary>
         /// Descriptive informations calculator.
         /// </summary>
-        private readonly ICalculator descriptiveInformation = new DescriptiveInformation();
+        private readonly ICalculator descriptiveInformationCalculator = new DescriptiveInformation();
 
         /// <summary>
         /// Calculation method.
@@ -29,7 +29,9 @@ namespace LibiadaCore.Core.Characteristics.Calculators
         /// </returns>
         public double Calculate(CongenericChain chain, Link link)
         {
-            return geometricMean.Calculate(chain, link) / descriptiveInformation.Calculate(chain, link);
+            var geometricMean = geometricMeanCalculator.Calculate(chain, link);
+            var descriptiveInformation = descriptiveInformationCalculator.Calculate(chain, link);
+            return geometricMean / descriptiveInformation;
         }
 
         /// <summary>
@@ -46,7 +48,9 @@ namespace LibiadaCore.Core.Characteristics.Calculators
         /// </returns>
         public double Calculate(Chain chain, Link link)
         {
-            return geometricMean.Calculate(chain, link) / descriptiveInformation.Calculate(chain, link);
+            var geometricMean = geometricMeanCalculator.Calculate(chain, link);
+            var descriptiveInformation = descriptiveInformationCalculator.Calculate(chain, link);
+            return geometricMean / descriptiveInformation;
         }
     }
 }

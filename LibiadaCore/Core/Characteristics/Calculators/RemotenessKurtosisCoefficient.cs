@@ -31,7 +31,7 @@
         {
             double standardDeviation = remotenessStandardDeviation.Calculate(chain, link);
 
-            return remotenessKurtosis.Calculate(chain, link) / (standardDeviation * standardDeviation * standardDeviation * standardDeviation);
+            return standardDeviation == 0 ? 0 : remotenessKurtosis.Calculate(chain, link) / (standardDeviation * standardDeviation * standardDeviation * standardDeviation);
         }
     }
 }

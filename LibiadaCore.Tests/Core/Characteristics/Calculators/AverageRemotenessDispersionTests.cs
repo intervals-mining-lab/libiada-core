@@ -46,6 +46,7 @@
         /// </param>
         [TestCase(3, Link.None, 0)]
         [TestCase(5, Link.None, 0)]
+        [TestCase(7, Link.None, 0)]
         public void NoIntervalsTest(int index, Link link, double value)
         {
             ChainCharacteristicTest(index, link, value);

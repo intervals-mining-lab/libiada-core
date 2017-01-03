@@ -1,5 +1,7 @@
 namespace LibiadaCore.Tests.Core.Characteristics.Calculators
 {
+    using System;
+
     using LibiadaCore.Core;
 
     using NUnit.Framework;
@@ -16,26 +18,22 @@ namespace LibiadaCore.Tests.Core.Characteristics.Calculators
         /// <param name="index">
         /// The index.
         /// </param>
-        /// <param name="link">
-        /// The link.
-        /// </param>
         /// <param name="value">
         /// The value.
         /// </param>
-        [TestCase(0, Link.None, 3)]
-        [TestCase(0, Link.Start, 3)]
-        [TestCase(0, Link.End, 3)]
-        [TestCase(0, Link.Both, 3)]
-        [TestCase(0, Link.Cycle, 3)]
-
-        [TestCase(1, Link.None, 4)]
-        [TestCase(1, Link.Start, 4)]
-        [TestCase(1, Link.End, 4)]
-        [TestCase(1, Link.Both, 4)]
-        [TestCase(1, Link.Cycle, 4)]
-        public void ChainCalculationTest(int index, Link link, double value)
+        [TestCase(0, 3)]
+        [TestCase(1, 4)]
+        [TestCase(2, 4)]
+        [TestCase(3, 2)]
+        [TestCase(4, 1)]
+        [TestCase(5, 4)]
+        public void ChainCalculationTest(int index, double value)
         {
-            ChainCharacteristicTest(index, link, value);
+            var links = (Link[])Enum.GetValues(typeof(Link));
+            foreach (var link in links)
+            {
+                ChainCharacteristicTest(index, link, value);
+            }
         }
     }
 }

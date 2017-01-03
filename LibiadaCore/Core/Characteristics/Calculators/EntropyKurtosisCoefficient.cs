@@ -31,7 +31,7 @@
         {
             double standardDeviation = entropyStandardDeviation.Calculate(chain, link);
 
-            return entropyKurtosis.Calculate(chain, link) / (standardDeviation * standardDeviation * standardDeviation * standardDeviation);
+            return standardDeviation == 0 ? 0 : entropyKurtosis.Calculate(chain, link) / (standardDeviation * standardDeviation * standardDeviation * standardDeviation);
         }
     }
 }

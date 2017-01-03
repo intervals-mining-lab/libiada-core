@@ -32,13 +32,17 @@
             double result = 0;
             double g = averageRemoteness.Calculate(chain, link);
             int n = (int)intervalsCount.Calculate(chain, link);
+            if (n == 0)
+            {
+                return 0;
+            }
 
             for (int i = 0; i < chain.Alphabet.Cardinality; i++)
             {
                 double nj = intervalsCount.Calculate(chain.CongenericChain(chain.Alphabet[i]), link);
                 double gj = averageRemoteness.Calculate(chain.CongenericChain(chain.Alphabet[i]), link);
                 double gDelta = gj - g;
-                result += n == 0 ? 0 : gDelta * gDelta * nj / n;
+                result += gDelta * gDelta * nj / n;
             }
 
             return result;

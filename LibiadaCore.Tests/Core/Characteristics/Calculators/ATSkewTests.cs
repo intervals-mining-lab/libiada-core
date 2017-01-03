@@ -1,5 +1,7 @@
 ﻿namespace LibiadaCore.Tests.Core.Characteristics.Calculators
 {
+    using System;
+
     using LibiadaCore.Core;
 
     using NUnit.Framework;
@@ -16,21 +18,20 @@
         /// <param name="index">
         /// The index.
         /// </param>
-        /// <param name="link">
-        /// The link.
-        /// </param>
         /// <param name="value">
         /// The value.
         /// </param>
-        [TestCase(1, Link.None, 0)]
-        [TestCase(1, Link.Start, 0)]
-        [TestCase(1, Link.End, 0)]
-        [TestCase(1, Link.Both, 0)]
-        [TestCase(1, Link.Cycle, 0)]
-
-        public void CalculationTest(int index, Link link, double value)
+        [TestCase(1, 0)]
+        [TestCase(2, 0)]
+        [TestCase(5, 0)]
+        [TestCase(6, 0.6)]
+        public void CalculationTest(int index, double value)
         {
-            ChainCharacteristicTest(index, link, value);
+            var links = (Link[])Enum.GetValues(typeof(Link));
+            foreach (var link in links)
+            {
+                ChainCharacteristicTest(index, link, value);
+            }
         }
 
         /// <summary>
@@ -39,26 +40,18 @@
         /// <param name="index">
         /// The index.
         /// </param>
-        /// <param name="link">
-        /// The link.
-        /// </param>
         /// <param name="value">
         /// The value.
         /// </param>
-        [TestCase(3, Link.None, 0)]
-        [TestCase(3, Link.Start, 0)]
-        [TestCase(3, Link.End, 0)]
-        [TestCase(3, Link.Both, 0)]
-        [TestCase(3, Link.Cycle, 0)]
-
-        [TestCase(4, Link.None, 0)]
-        [TestCase(4, Link.Start, 0)]
-        [TestCase(4, Link.End, 0)]
-        [TestCase(4, Link.Both, 0)]
-        [TestCase(4, Link.Cycle, 0)]
-        public void SequenceWithoutATTest(int index, Link link, double value)
+        [TestCase(3, 0)]
+        [TestCase(4, 0)]
+        public void SequenceWithoutATTest(int index, double value)
         {
-            ChainCharacteristicTest(index, link, value);
+            var links = (Link[])Enum.GetValues(typeof(Link));
+            foreach (var link in links)
+            {
+                ChainCharacteristicTest(index, link, value);
+            }
         }
     }
 }

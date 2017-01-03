@@ -34,9 +34,7 @@
             var c = counter.Calculate(chain.GetOrCreateCongenericChain(new ValueString("C")), link);
             var l = counter.Calculate(chain, link);
 
-            var result = 100 * (g + c) / l;
-
-            return result;
+            return l == 0 ? 0 : 100 * (g + c) / l;
         }
     }
 }

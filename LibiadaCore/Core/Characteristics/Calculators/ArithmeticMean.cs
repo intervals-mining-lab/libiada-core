@@ -31,9 +31,9 @@ namespace LibiadaCore.Core.Characteristics.Calculators
         /// </returns>
         public double Calculate(CongenericChain chain, Link link)
         {
-            double sum = adder.Calculate(chain, link);
+            double intervalsSum = adder.Calculate(chain, link);
             int intervalsCount = (int)counter.Calculate(chain, link);
-            return intervalsCount == 0 ? 0 : sum / intervalsCount;
+            return intervalsCount == 0 ? 0 : intervalsSum / intervalsCount;
         }
 
         /// <summary>
@@ -52,9 +52,9 @@ namespace LibiadaCore.Core.Characteristics.Calculators
         /// </returns>
         public double Calculate(Chain chain, Link link)
         {
-            double sum = adder.Calculate(chain, link);
+            double intervalsSum = adder.Calculate(chain, link);
             int intervalsCount = (int)counter.Calculate(chain, link);
-            return intervalsCount == 0 ? 0 : sum / intervalsCount;
+            return intervalsCount == 0 ? 0 : intervalsSum / intervalsCount;
         }
     }
 }

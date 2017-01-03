@@ -18,7 +18,7 @@
         {
             string source = "Chaoyang virus strain Deming polyprotein gene, complete cds.";
             string expected = "Chaoyang virus strain Deming polyprotein gene";
-           
+ 
             string actual = source.TrimEnd(", complete cds.");
             Assert.AreEqual(expected, actual);
 

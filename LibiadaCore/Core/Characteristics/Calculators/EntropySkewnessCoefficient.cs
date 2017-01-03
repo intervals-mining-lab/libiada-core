@@ -32,7 +32,7 @@
         {
             double standardDeviation = entropyStandardDeviation.Calculate(chain, link);
 
-            return entropySkewness.Calculate(chain, link) / (standardDeviation * standardDeviation * standardDeviation);
+            return standardDeviation == 0 ? 0 : entropySkewness.Calculate(chain, link) / (standardDeviation * standardDeviation * standardDeviation);
         }
     }
 }

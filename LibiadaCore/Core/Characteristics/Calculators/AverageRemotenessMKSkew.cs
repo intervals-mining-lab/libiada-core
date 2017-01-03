@@ -36,9 +36,7 @@
             var t = remotenessCalculator.Calculate(chain.GetOrCreateCongenericChain(new ValueString("T")), link);
             var l = remotenessCalculator.Calculate(chain, link);
 
-            var result = ((c + a) - (g + t)) / l;
-
-            return result;
+            return l == 0 ? 0 : ((c + a) - (g + t)) / l;
         }
     }
 }

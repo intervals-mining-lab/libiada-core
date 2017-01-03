@@ -39,6 +39,11 @@
                 intervals.AddRange(chain.CongenericChain(i).GetIntervals(link).ToList());
             }
 
+            if (intervals.Count == 0)
+            {
+                return 0;
+            }
+
             List<int> uniqueIntervals = intervals.Distinct().ToList();
 
             List<int> intervalsCounts = new List<int>();
@@ -58,7 +63,7 @@
                 int nk = intervalsCounts[i];
                 double kDelta = uniqueIntervals[i];
                 double centeredRemoteness = Math.Log(kDelta, 2) - Math.Log(gDelta, 2);
-                result += nk == 0 ? 0 : centeredRemoteness * centeredRemoteness * centeredRemoteness * centeredRemoteness * nk / n;
+                result += centeredRemoteness * centeredRemoteness * centeredRemoteness * centeredRemoteness * nk / n;
             }
 
             return result;

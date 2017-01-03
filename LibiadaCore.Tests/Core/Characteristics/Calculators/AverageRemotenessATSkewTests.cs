@@ -60,5 +60,24 @@
         {
             ChainCharacteristicTest(index, link, value);
         }
+
+        /// <summary>
+        /// No intervals test.
+        /// </summary>
+        /// <param name="index">
+        /// The index.
+        /// </param>
+        /// <param name="link">
+        /// The link.
+        /// </param>
+        /// <param name="value">
+        /// The value.
+        /// </param>
+        [TestCase(5, Link.None, 0)]
+        [TestCase(7, Link.None, 0)]
+        public void NoIntervalsTest(int index, Link link, double value)
+        {
+            ChainCharacteristicTest(index, link, value);
+        }
     }
 }
