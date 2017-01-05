@@ -6,7 +6,7 @@ namespace LibiadaCore.Core
     /// <summary>
     /// Link of intervals.
     /// </summary>
-    public enum Link
+    public enum Link : byte
     {
         /// <summary>
         /// Link not applied in characteristic calculation.
