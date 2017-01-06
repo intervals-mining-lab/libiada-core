@@ -25,7 +25,7 @@
         /// <param name="instrument">
         /// The instrument.
         /// </param>
-        public Pitch(int octave, char step, int alter, int instrument = 0)
+        public Pitch(int octave, char step, short alter, int instrument = 0)
         {
             Alter = alter;
             Step = step;
@@ -82,7 +82,7 @@
         /// Gets alteration.
         /// диез/бемоль +1 диез; -1 бемоль
         /// </summary>
-        public int Alter { get; private set; }
+        public short Alter { get; private set; }
 
         /// <summary>
         /// The clone.

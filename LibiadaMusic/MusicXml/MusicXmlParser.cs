@@ -279,7 +279,7 @@
                 if (noteChild.Name == "pitch")
                 {
                     char step = '0';
-                    int alter = 0;
+                    short alter = 0;
                     int octave = 0;
                     bool hasStep = false;
                     bool hasOctave = false;
