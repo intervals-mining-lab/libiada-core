@@ -21,28 +21,28 @@
             // создание и заполнения списка(ов) нот для такта(ов) монотрека
             var notes = new List<ValueNote>
             {
-                new ValueNote(new Pitch(3, 'A', 2), new Duration(1, 16, false, 128), false, Tie.None, 3),
-                new ValueNote(new Pitch(3, 'E', 0), new Duration(1, 4, false, 512), false, Tie.None, 0),
-                new ValueNote(new Pitch(3, 'E', 0), new Duration(1, 4, false, 512), false, Tie.None, 0),
-                new ValueNote(new Pitch(3, 'C', 1), new Duration(1, 16, false, 128), false, Tie.None, 1),
-                new ValueNote(new Pitch(3, 'A', -1), new Duration(1, 16, false, 128), false, Tie.None, 3),
-                new ValueNote(new Pitch(3, 'D', 0), new Duration(1, 16, false, 128), false, Tie.None, 2),
-                new ValueNote(new Pitch(3, 'A', 2), new Duration(1, 16, false, 128), false, Tie.None, 3),
-                new ValueNote(new Pitch(3, 'C', 1), new Duration(1, 16, false, 128), false, Tie.None, 1),
-                new ValueNote(new Pitch(3, 'C', 1), new Duration(1, 16, false, 128), false, Tie.None, 1)
+                new ValueNote(new Pitch(3, 'A', Accidental.DoubleSharp), new Duration(1, 16, false, 128), false, Tie.None, 3),
+                new ValueNote(new Pitch(3, 'E', Accidental.Bekar), new Duration(1, 4, false, 512), false, Tie.None, 0),
+                new ValueNote(new Pitch(3, 'E', Accidental.Bekar), new Duration(1, 4, false, 512), false, Tie.None, 0),
+                new ValueNote(new Pitch(3, 'C', Accidental.Sharp), new Duration(1, 16, false, 128), false, Tie.None, 1),
+                new ValueNote(new Pitch(3, 'A', Accidental.Flat), new Duration(1, 16, false, 128), false, Tie.None, 3),
+                new ValueNote(new Pitch(3, 'D', Accidental.Bekar), new Duration(1, 16, false, 128), false, Tie.None, 2),
+                new ValueNote(new Pitch(3, 'A', Accidental.DoubleSharp), new Duration(1, 16, false, 128), false, Tie.None, 3),
+                new ValueNote(new Pitch(3, 'C', Accidental.Sharp), new Duration(1, 16, false, 128), false, Tie.None, 1),
+                new ValueNote(new Pitch(3, 'C', Accidental.Sharp), new Duration(1, 16, false, 128), false, Tie.None, 1)
             };
 
             var notes2 = new List<ValueNote>
             {
-                new ValueNote(new Pitch(3, 'B', 0), new Duration(1, 16, false, 128), false, Tie.None, 1),
-                new ValueNote(new Pitch(3, 'A', 2), new Duration(1, 16, false, 128), false, Tie.None, 3),
-                new ValueNote(new Pitch(3, 'E', 0), new Duration(1, 4, false, 512), false, Tie.None, 0),
-                new ValueNote(new Pitch(3, 'E', 0), new Duration(1, 4, false, 512), false, Tie.None, 0),
-                new ValueNote(new Pitch(3, 'C', 1), new Duration(1, 16, false, 128), false, Tie.None, 1),
-                new ValueNote(new Pitch(3, 'A', -1), new Duration(1, 16, false, 128), false, Tie.None, 3),
-                new ValueNote(new Pitch(3, 'D', 0), new Duration(1, 4, false, 128), false, Tie.None, 2),
-                new ValueNote(new Pitch(3, 'A', 2), new Duration(1, 16, false, 128), false, Tie.None, 3),
-                new ValueNote(new Pitch(3, 'C', 1), new Duration(1, 4, false, 128), false, Tie.None, 1),
+                new ValueNote(new Pitch(3, 'B', Accidental.Bekar), new Duration(1, 16, false, 128), false, Tie.None, 1),
+                new ValueNote(new Pitch(3, 'A', Accidental.DoubleSharp), new Duration(1, 16, false, 128), false, Tie.None, 3),
+                new ValueNote(new Pitch(3, 'E', Accidental.Bekar), new Duration(1, 4, false, 512), false, Tie.None, 0),
+                new ValueNote(new Pitch(3, 'E', Accidental.Bekar), new Duration(1, 4, false, 512), false, Tie.None, 0),
+                new ValueNote(new Pitch(3, 'C', Accidental.Sharp), new Duration(1, 16, false, 128), false, Tie.None, 1),
+                new ValueNote(new Pitch(3, 'A', Accidental.Flat), new Duration(1, 16, false, 128), false, Tie.None, 3),
+                new ValueNote(new Pitch(3, 'D', Accidental.Bekar), new Duration(1, 4, false, 128), false, Tie.None, 2),
+                new ValueNote(new Pitch(3, 'A', Accidental.DoubleSharp), new Duration(1, 16, false, 128), false, Tie.None, 3),
+                new ValueNote(new Pitch(3, 'C', Accidental.Sharp), new Duration(1, 4, false, 128), false, Tie.None, 1),
                 new ValueNote((Pitch)null, new Duration(1, 4, false, 128), false, Tie.None, 1),
                 new ValueNote((Pitch)null, new Duration(1, 4, false, 128), false, Tie.None, 1),
                 new ValueNote((Pitch)null, new Duration(1, 16, false, 128), false, Tie.None, 1),
@@ -99,28 +99,28 @@
             // создание и заполнения списка(ов) нот для такта(ов) монотрека
             var notes = new List<ValueNote>
             {
-                new ValueNote(new Pitch(3, 'A', 2), new Duration(1, 16, false, 128), false, Tie.None, 3),
-                new ValueNote(new Pitch(3, 'E', 0), new Duration(1, 4, false, 512), false, Tie.None, 0),
-                new ValueNote(new Pitch(3, 'E', 0), new Duration(1, 4, false, 512), false, Tie.None, 0),
-                new ValueNote(new Pitch(3, 'C', 1), new Duration(1, 16, false, 128), false, Tie.None, 1),
-                new ValueNote(new Pitch(3, 'A', -1), new Duration(1, 16, false, 128), false, Tie.None, 3),
-                new ValueNote(new Pitch(3, 'D', 0), new Duration(1, 16, false, 128), false, Tie.None, 2),
-                new ValueNote(new Pitch(3, 'A', 2), new Duration(1, 16, false, 128), false, Tie.None, 3),
-                new ValueNote(new Pitch(3, 'C', 1), new Duration(1, 16, false, 128), false, Tie.None, 1),
-                new ValueNote(new Pitch(3, 'C', 1), new Duration(1, 16, false, 128), false, Tie.None, 1)
+                new ValueNote(new Pitch(3, 'A', Accidental.DoubleSharp), new Duration(1, 16, false, 128), false, Tie.None, 3),
+                new ValueNote(new Pitch(3, 'E', Accidental.Bekar), new Duration(1, 4, false, 512), false, Tie.None, 0),
+                new ValueNote(new Pitch(3, 'E', Accidental.Bekar), new Duration(1, 4, false, 512), false, Tie.None, 0),
+                new ValueNote(new Pitch(3, 'C', Accidental.Sharp), new Duration(1, 16, false, 128), false, Tie.None, 1),
+                new ValueNote(new Pitch(3, 'A', Accidental.Flat), new Duration(1, 16, false, 128), false, Tie.None, 3),
+                new ValueNote(new Pitch(3, 'D', Accidental.Bekar), new Duration(1, 16, false, 128), false, Tie.None, 2),
+                new ValueNote(new Pitch(3, 'A', Accidental.DoubleSharp), new Duration(1, 16, false, 128), false, Tie.None, 3),
+                new ValueNote(new Pitch(3, 'C', Accidental.Sharp), new Duration(1, 16, false, 128), false, Tie.None, 1),
+                new ValueNote(new Pitch(3, 'C', Accidental.Sharp), new Duration(1, 16, false, 128), false, Tie.None, 1)
             };
 
             var notes2 = new List<ValueNote>
             {
-                new ValueNote(new Pitch(3, 'B', 0), new Duration(1, 16, false, 128), false, Tie.None, 1),
-                new ValueNote(new Pitch(3, 'A', 2), new Duration(1, 16, false, 128), false, Tie.None, 3),
-                new ValueNote(new Pitch(3, 'E', 0), new Duration(1, 4, false, 512), false, Tie.None, 0),
-                new ValueNote(new Pitch(3, 'E', 0), new Duration(1, 4, false, 512), false, Tie.None, 0),
-                new ValueNote(new Pitch(3, 'C', 1), new Duration(1, 16, false, 128), false, Tie.None, 1),
-                new ValueNote(new Pitch(3, 'A', -1), new Duration(1, 16, false, 128), false, Tie.None, 3),
-                new ValueNote(new Pitch(3, 'D', 0), new Duration(1, 4, false, 128), false, Tie.None, 2),
-                new ValueNote(new Pitch(3, 'A', 2), new Duration(1, 16, false, 128), false, Tie.None, 3),
-                new ValueNote(new Pitch(3, 'C', 1), new Duration(1, 4, false, 128), false, Tie.None, 1),
+                new ValueNote(new Pitch(3, 'B', Accidental.Bekar), new Duration(1, 16, false, 128), false, Tie.None, 1),
+                new ValueNote(new Pitch(3, 'A', Accidental.DoubleSharp), new Duration(1, 16, false, 128), false, Tie.None, 3),
+                new ValueNote(new Pitch(3, 'E', Accidental.Bekar), new Duration(1, 4, false, 512), false, Tie.None, 0),
+                new ValueNote(new Pitch(3, 'E', Accidental.Bekar), new Duration(1, 4, false, 512), false, Tie.None, 0),
+                new ValueNote(new Pitch(3, 'C', Accidental.Sharp), new Duration(1, 16, false, 128), false, Tie.None, 1),
+                new ValueNote(new Pitch(3, 'A', Accidental.Flat), new Duration(1, 16, false, 128), false, Tie.None, 3),
+                new ValueNote(new Pitch(3, 'D', Accidental.Bekar), new Duration(1, 4, false, 128), false, Tie.None, 2),
+                new ValueNote(new Pitch(3, 'A', Accidental.DoubleSharp), new Duration(1, 16, false, 128), false, Tie.None, 3),
+                new ValueNote(new Pitch(3, 'C', Accidental.Sharp), new Duration(1, 4, false, 128), false, Tie.None, 1),
                 new ValueNote((Pitch)null, new Duration(1, 4, false, 128), false, Tie.None, 1),
                 new ValueNote((Pitch)null, new Duration(1, 4, false, 128), false, Tie.None, 1),
                 new ValueNote((Pitch)null, new Duration(1, 16, false, 128), false, Tie.None, 1),
@@ -177,35 +177,35 @@
             // создание и заполнения списка(ов) нот для такта(ов) монотрека
             var notes = new List<ValueNote>
             {
-                new ValueNote(new Pitch(3, 'A', 2), new Duration(1, 16, false, 128), false, Tie.None, 3),
-                new ValueNote(new Pitch(3, 'E', 0), new Duration(1, 4, false, 512), false, Tie.None, 0),
-                new ValueNote(new Pitch(3, 'E', 0), new Duration(1, 4, false, 512), false, Tie.None, 0),
-                new ValueNote(new Pitch(3, 'C', 1), new Duration(1, 16, false, 128), false, Tie.None, 1)
+                new ValueNote(new Pitch(3, 'A', Accidental.DoubleSharp), new Duration(1, 16, false, 128), false, Tie.None, 3),
+                new ValueNote(new Pitch(3, 'E', Accidental.Bekar), new Duration(1, 4, false, 512), false, Tie.None, 0),
+                new ValueNote(new Pitch(3, 'E', Accidental.Bekar), new Duration(1, 4, false, 512), false, Tie.None, 0),
+                new ValueNote(new Pitch(3, 'C', Accidental.Sharp), new Duration(1, 16, false, 128), false, Tie.None, 1)
             };
 
             var notes3 = new List<ValueNote>
             {
-                new ValueNote(new Pitch(3, 'B', 0), new Duration(1, 16, false, 128), false, Tie.None, 3),
-                new ValueNote(new Pitch(3, 'E', 0), new Duration(1, 4, false, 512), false, Tie.None, 0),
-                new ValueNote(new Pitch(3, 'E', 0), new Duration(1, 4, false, 512), false, Tie.None, 0),
-                new ValueNote(new Pitch(3, 'C', 1), new Duration(1, 16, false, 128), false, Tie.None, 1)
+                new ValueNote(new Pitch(3, 'B', Accidental.Bekar), new Duration(1, 16, false, 128), false, Tie.None, 3),
+                new ValueNote(new Pitch(3, 'E', Accidental.Bekar), new Duration(1, 4, false, 512), false, Tie.None, 0),
+                new ValueNote(new Pitch(3, 'E', Accidental.Bekar), new Duration(1, 4, false, 512), false, Tie.None, 0),
+                new ValueNote(new Pitch(3, 'C', Accidental.Sharp), new Duration(1, 16, false, 128), false, Tie.None, 1)
             };
 
             var notes2 = new List<ValueNote>
             {
-                new ValueNote(new Pitch(3, 'B', 0), new Duration(1, 16, false, 128), false, Tie.None, 1),
-                new ValueNote(new Pitch(3, 'A', 2), new Duration(1, 16, false, 128), false, Tie.None, 3),
-                new ValueNote(new Pitch(3, 'E', 0), new Duration(1, 4, false, 512), false, Tie.None, 0),
-                new ValueNote(new Pitch(3, 'E', 0), new Duration(1, 4, false, 512), false, Tie.None, 0),
-                new ValueNote(new Pitch(3, 'C', 1), new Duration(1, 16, false, 128), false, Tie.None, 1)
+                new ValueNote(new Pitch(3, 'B', Accidental.Bekar), new Duration(1, 16, false, 128), false, Tie.None, 1),
+                new ValueNote(new Pitch(3, 'A', Accidental.DoubleSharp), new Duration(1, 16, false, 128), false, Tie.None, 3),
+                new ValueNote(new Pitch(3, 'E', Accidental.Bekar), new Duration(1, 4, false, 512), false, Tie.None, 0),
+                new ValueNote(new Pitch(3, 'E', Accidental.Bekar), new Duration(1, 4, false, 512), false, Tie.None, 0),
+                new ValueNote(new Pitch(3, 'C', Accidental.Sharp), new Duration(1, 16, false, 128), false, Tie.None, 1)
             };
 
             var notes4 = new List<ValueNote>
             {
-                new ValueNote(new Pitch(3, 'A', -1), new Duration(1, 16, false, 128), false, Tie.None, 3),
-                new ValueNote(new Pitch(3, 'D', 0), new Duration(1, 4, false, 128), false, Tie.None, 2),
-                new ValueNote(new Pitch(3, 'A', 2), new Duration(1, 16, false, 128), false, Tie.None, 3),
-                new ValueNote(new Pitch(3, 'C', 1), new Duration(1, 4, false, 128), false, Tie.None, 1)
+                new ValueNote(new Pitch(3, 'A', Accidental.Flat), new Duration(1, 16, false, 128), false, Tie.None, 3),
+                new ValueNote(new Pitch(3, 'D', Accidental.Bekar), new Duration(1, 4, false, 128), false, Tie.None, 2),
+                new ValueNote(new Pitch(3, 'A', Accidental.DoubleSharp), new Duration(1, 16, false, 128), false, Tie.None, 3),
+                new ValueNote(new Pitch(3, 'C', Accidental.Sharp), new Duration(1, 4, false, 128), false, Tie.None, 1)
             };
 
             var notes5 = new List<ValueNote>

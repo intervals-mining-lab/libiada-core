@@ -279,7 +279,7 @@
                 if (noteChild.Name == "pitch")
                 {
                     char step = '0';
-                    short alter = 0;
+                    Accidental alter = 0;
                     int octave = 0;
                     bool hasStep = false;
                     bool hasOctave = false;
@@ -292,7 +292,7 @@
                                 hasStep = true;
                                 break;
                             case "alter":
-                                alter = Convert.ToInt16(pitchChild.InnerText);
+                                alter = (Accidental)Convert.ToInt16(pitchChild.InnerText);
                                 break;
                             case "octave":
                                 octave = Convert.ToInt16(pitchChild.InnerText);

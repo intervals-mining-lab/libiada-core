@@ -25,7 +25,7 @@
         /// <param name="instrument">
         /// The instrument.
         /// </param>
-        public Pitch(int octave, char step, short alter, int instrument = 0)
+        public Pitch(int octave, char step, Accidental alter, int instrument = 0)
         {
             Alter = alter;
             Step = step;
@@ -82,7 +82,7 @@
         /// Gets alteration.
         /// диез/бемоль +1 диез; -1 бемоль
         /// </summary>
-        public short Alter { get; private set; }
+        public Accidental Alter { get; private set; }
 
         /// <summary>
         /// The clone.
@@ -171,7 +171,7 @@
                     throw new Exception("Error Pitch contains non-recognized STEP letters!");
             }
 
-            return (12 * (Octave + 1)) + offset + Alter;
+            return (12 * (Octave + 1)) + offset + (short)Alter;
         }
     }
 }

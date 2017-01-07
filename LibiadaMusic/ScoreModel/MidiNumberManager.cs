@@ -68,11 +68,11 @@
         /// <returns>
         /// The <see cref="int"/>.
         /// </returns>
-        public static short GetAlterFromMidiNumber(int midiNumber)
+        public static Accidental GetAlterFromMidiNumber(int midiNumber)
         {
             var note = GetStepFromMidiNumber(midiNumber);
             var rawNote = midiNumber % NotesInOctave;
-            return (short)(rawNote == note ? 0 : 1);
+            return (Accidental)(rawNote == note ? 0 : 1);
         }
 
         /// <summary>

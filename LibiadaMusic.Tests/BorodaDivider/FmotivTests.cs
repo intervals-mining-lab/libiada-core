@@ -17,12 +17,12 @@
         /// <summary>
         /// The note.
         /// </summary>
-        private ValueNote note = new ValueNote(new Pitch(1, 'E', 0), new Duration(1, 4, false, 480), false, Tie.None);
+        private ValueNote note = new ValueNote(new Pitch(1, 'E', Accidental.Bekar), new Duration(1, 4, false, 480), false, Tie.None);
 
         /// <summary>
         /// The anote.
         /// </summary>
-        private ValueNote anote = new ValueNote(new Pitch(1, 'B', 0), new Duration(1, 2, false, 960), false, 0);
+        private ValueNote anote = new ValueNote(new Pitch(1, 'B', Accidental.Bekar), new Duration(1, 2, false, 960), false, 0);
 
         /// <summary>
         /// The fmotiv test.
@@ -58,11 +58,11 @@
         {
             // проверка работы метода, который возвращает копию объекта (Fmotiv), только без пауз.
             var fmotiv = new Fmotiv("ПМТ", 0);
-            fmotiv.NoteList.Add(new ValueNote(new Pitch(1, 'A', 0), new Duration(1, 2, false, 480), false, Tie.None));
+            fmotiv.NoteList.Add(new ValueNote(new Pitch(1, 'A', Accidental.Bekar), new Duration(1, 2, false, 480), false, Tie.None));
             fmotiv.NoteList.Add(new ValueNote((Pitch)null, new Duration(1, 4, false, 480), false, Tie.None));
-            fmotiv.NoteList.Add(new ValueNote(new Pitch(1, 'A', 0), new Duration(1, 2, false, 480), false, Tie.None));
+            fmotiv.NoteList.Add(new ValueNote(new Pitch(1, 'A', Accidental.Bekar), new Duration(1, 2, false, 480), false, Tie.None));
             fmotiv.NoteList.Add(new ValueNote((Pitch)null, new Duration(1, 4, false, 480), false, Tie.None));
-            fmotiv.NoteList.Add(new ValueNote(new Pitch(1, 'A', 0), new Duration(1, 2, false, 480), false, Tie.None));
+            fmotiv.NoteList.Add(new ValueNote(new Pitch(1, 'A', Accidental.Bekar), new Duration(1, 2, false, 480), false, Tie.None));
             Assert.AreEqual(fmotiv.PauseTreatment((int)ParamPauseTreatment.Ignore).NoteList[0].Pitch[0].Step, 'A');
             Assert.AreEqual(fmotiv.PauseTreatment((int)ParamPauseTreatment.Ignore).NoteList[1].Pitch[0].Step, 'A');
             Assert.AreEqual(fmotiv.PauseTreatment((int)ParamPauseTreatment.Ignore).NoteList[2].Pitch[0].Step, 'A');
@@ -79,10 +79,10 @@
             var fmotiv = new Fmotiv("ПМТ", 0);
             fmotiv.NoteList.Add(new ValueNote((Pitch)null, new Duration(1, 4, false, 480), false, Tie.None));
             fmotiv.NoteList.Add(new ValueNote((Pitch)null, new Duration(1, 4, false, 480), false, Tie.None));
-            fmotiv.NoteList.Add(new ValueNote(new Pitch(1, 'A', 0), new Duration(1, 2, false, 480), false, Tie.None));
-            fmotiv.NoteList.Add(new ValueNote(new Pitch(1, 'A', 0), new Duration(1, 2, false, 480), false, Tie.None));
+            fmotiv.NoteList.Add(new ValueNote(new Pitch(1, 'A', Accidental.Bekar), new Duration(1, 2, false, 480), false, Tie.None));
+            fmotiv.NoteList.Add(new ValueNote(new Pitch(1, 'A', Accidental.Bekar), new Duration(1, 2, false, 480), false, Tie.None));
             fmotiv.NoteList.Add(new ValueNote((Pitch)null, new Duration(1, 4, false, 480), false, Tie.None));
-            fmotiv.NoteList.Add(new ValueNote(new Pitch(1, 'A', 0), new Duration(1, 2, false, 480), false, Tie.None));
+            fmotiv.NoteList.Add(new ValueNote(new Pitch(1, 'A', Accidental.Bekar), new Duration(1, 2, false, 480), false, Tie.None));
             Assert.AreEqual(fmotiv.PauseTreatment((int)ParamPauseTreatment.Ignore).NoteList[0].Pitch[0].Step, 'A');
             Assert.AreEqual(fmotiv.PauseTreatment((int)ParamPauseTreatment.Ignore).NoteList[1].Pitch[0].Step, 'A');
             Assert.AreEqual(fmotiv.PauseTreatment((int)ParamPauseTreatment.Ignore).NoteList[2].Pitch[0].Step, 'A');
@@ -98,12 +98,12 @@
             // проверка работы метода, который возвращает копию объекта (Fmotiv), c собранными залигованными нотами.
             var fmotiv = new Fmotiv("ПМТ", 0);
             fmotiv.NoteList.Add(new ValueNote((Pitch)null, new Duration(1, 2, false, 960), false, Tie.None, 0));
-            fmotiv.NoteList.Add(new ValueNote(new Pitch(1, 'A', 0), new Duration(1, 8, false, 480), false, Tie.Start, 2));
-            fmotiv.NoteList.Add(new ValueNote(new Pitch(1, 'A', 0), new Duration(1, 8, false, 480), false, Tie.Continue, 4));
-            fmotiv.NoteList.Add(new ValueNote(new Pitch(1, 'A', 0), new Duration(1, 8, false, 480), false, Tie.Continue, 3));
-            fmotiv.NoteList.Add(new ValueNote(new Pitch(1, 'A', 0), new Duration(1, 8, false, 480), false, Tie.End, 1));
+            fmotiv.NoteList.Add(new ValueNote(new Pitch(1, 'A', Accidental.Bekar), new Duration(1, 8, false, 480), false, Tie.Start, 2));
+            fmotiv.NoteList.Add(new ValueNote(new Pitch(1, 'A', Accidental.Bekar), new Duration(1, 8, false, 480), false, Tie.Continue, 4));
+            fmotiv.NoteList.Add(new ValueNote(new Pitch(1, 'A', Accidental.Bekar), new Duration(1, 8, false, 480), false, Tie.Continue, 3));
+            fmotiv.NoteList.Add(new ValueNote(new Pitch(1, 'A', Accidental.Bekar), new Duration(1, 8, false, 480), false, Tie.End, 1));
             fmotiv.NoteList.Add(new ValueNote((Pitch)null, new Duration(1, 4, false, 480), false, Tie.None, 3));
-            fmotiv.NoteList.Add(new ValueNote(new Pitch(1, 'A', 0), new Duration(1, 2, false, 480), false, Tie.None, 4));
+            fmotiv.NoteList.Add(new ValueNote(new Pitch(1, 'A', Accidental.Bekar), new Duration(1, 2, false, 480), false, Tie.None, 4));
 
             Assert.AreEqual(4, fmotiv.TieGathered().NoteList.Count);
             Assert.AreEqual(1920, fmotiv.TieGathered().NoteList[1].Duration.Ticks);
@@ -121,12 +121,12 @@
             // проверка работы метода, который возвращает копию объекта (Fmotiv), c собранными залигованными нотами.
             var fmotiv = new Fmotiv("ПМТ", 0);
             fmotiv.NoteList.Add(new ValueNote((Pitch)null, new Duration(1, 2, false, 960), false, Tie.None, 0));
-            fmotiv.NoteList.Add(new ValueNote(new Pitch(1, 'A', 0), new Duration(1, 8, 2, 3, false, 320), false, Tie.Start, 2));
-            fmotiv.NoteList.Add(new ValueNote(new Pitch(1, 'A', 0), new Duration(1, 8, 2, 3, false, 320), false, Tie.Continue, 4));
-            fmotiv.NoteList.Add(new ValueNote(new Pitch(1, 'A', 0), new Duration(1, 8, 2, 3, false, 320), false, Tie.Continue, 3));
-            fmotiv.NoteList.Add(new ValueNote(new Pitch(1, 'A', 0), new Duration(1, 8, false, 480), false, Tie.End, 1));
+            fmotiv.NoteList.Add(new ValueNote(new Pitch(1, 'A', Accidental.Bekar), new Duration(1, 8, 2, 3, false, 320), false, Tie.Start, 2));
+            fmotiv.NoteList.Add(new ValueNote(new Pitch(1, 'A', Accidental.Bekar), new Duration(1, 8, 2, 3, false, 320), false, Tie.Continue, 4));
+            fmotiv.NoteList.Add(new ValueNote(new Pitch(1, 'A', Accidental.Bekar), new Duration(1, 8, 2, 3, false, 320), false, Tie.Continue, 3));
+            fmotiv.NoteList.Add(new ValueNote(new Pitch(1, 'A', Accidental.Bekar), new Duration(1, 8, false, 480), false, Tie.End, 1));
             fmotiv.NoteList.Add(new ValueNote((Pitch)null, new Duration(1, 4, false, 480), false, Tie.None, 3));
-            fmotiv.NoteList.Add(new ValueNote(new Pitch(1, 'A', 0), new Duration(1, 2, false, 480), false, Tie.None, 4));
+            fmotiv.NoteList.Add(new ValueNote(new Pitch(1, 'A', Accidental.Bekar), new Duration(1, 2, false, 480), false, Tie.None, 4));
 
             Assert.AreEqual(4, fmotiv.TieGathered().NoteList.Count);
             Assert.AreEqual(1440, fmotiv.TieGathered().NoteList[1].Duration.Ticks);
@@ -144,8 +144,8 @@
             // проверка работы метода, который возвращает копию объекта (Fmotiv), c собранными залигованными нотами.
             // старт лиги, потом опять старт лиги
             var fmotiv = new Fmotiv("ПМТ", 0);
-            fmotiv.NoteList.Add(new ValueNote(new Pitch(1, 'A', 0), new Duration(1, 8, false, 480), false, Tie.Start, 2));
-            fmotiv.NoteList.Add(new ValueNote(new Pitch(1, 'A', 0), new Duration(1, 8, false, 480), false, Tie.Start, 2));
+            fmotiv.NoteList.Add(new ValueNote(new Pitch(1, 'A', Accidental.Bekar), new Duration(1, 8, false, 480), false, Tie.Start, 2));
+            fmotiv.NoteList.Add(new ValueNote(new Pitch(1, 'A', Accidental.Bekar), new Duration(1, 8, false, 480), false, Tie.Start, 2));
             try
             {
                 fmotiv.TieGathered();
@@ -161,8 +161,8 @@
 
             // после старта идет обычная нота без лиги
             fmotiv.NoteList.Clear();
-            fmotiv.NoteList.Add(new ValueNote(new Pitch(1, 'A', 0), new Duration(1, 2, false, 960), false, Tie.Start, 0));
-            fmotiv.NoteList.Add(new ValueNote(new Pitch(1, 'A', 0), new Duration(1, 2, false, 960), false, Tie.None, 0));
+            fmotiv.NoteList.Add(new ValueNote(new Pitch(1, 'A', Accidental.Bekar), new Duration(1, 2, false, 960), false, Tie.Start, 0));
+            fmotiv.NoteList.Add(new ValueNote(new Pitch(1, 'A', Accidental.Bekar), new Duration(1, 2, false, 960), false, Tie.None, 0));
             try
             {
                 fmotiv.TieGathered();
@@ -178,9 +178,9 @@
 
             // лига без старта
             var fmotiv1 = new Fmotiv("ПМТ", 0);
-            fmotiv1.NoteList.Add(new ValueNote(new Pitch(1, 'A', 0), new Duration(1, 8, false, 480), false, Tie.Continue, 4));
-            fmotiv1.NoteList.Add(new ValueNote(new Pitch(1, 'A', 0), new Duration(1, 8, false, 480), false, Tie.Continue, 3));
-            fmotiv1.NoteList.Add(new ValueNote(new Pitch(1, 'A', 0), new Duration(1, 8, false, 480), false, Tie.End, 1));
+            fmotiv1.NoteList.Add(new ValueNote(new Pitch(1, 'A', Accidental.Bekar), new Duration(1, 8, false, 480), false, Tie.Continue, 4));
+            fmotiv1.NoteList.Add(new ValueNote(new Pitch(1, 'A', Accidental.Bekar), new Duration(1, 8, false, 480), false, Tie.Continue, 3));
+            fmotiv1.NoteList.Add(new ValueNote(new Pitch(1, 'A', Accidental.Bekar), new Duration(1, 8, false, 480), false, Tie.End, 1));
             try
             {
                 fmotiv1.TieGathered();
@@ -196,7 +196,7 @@
 
             // в знаке лиги не {-1,0,1,2}
             var fmotiv2 = new Fmotiv("ПМТ", 0);
-            fmotiv2.NoteList.Add(new ValueNote(new Pitch(1, 'A', 0), new Duration(1, 8, false, 480), false, (Tie)9, 1));
+            fmotiv2.NoteList.Add(new ValueNote(new Pitch(1, 'A', Accidental.Bekar), new Duration(1, 8, false, 480), false, (Tie)9, 1));
             try
             {
                 fmotiv2.TieGathered();
@@ -212,8 +212,8 @@
 
             // в знаке лиги не {-1,0,1,2}
             var fmotiv3 = new Fmotiv("ПМТ", 0);
-            fmotiv3.NoteList.Add(new ValueNote(new Pitch(1, 'A', 0), new Duration(1, 8, false, 480), false, Tie.Start, 1));
-            fmotiv3.NoteList.Add(new ValueNote(new Pitch(1, 'B', 0), new Duration(1, 8, false, 480), false, Tie.End, 1));
+            fmotiv3.NoteList.Add(new ValueNote(new Pitch(1, 'A', Accidental.Bekar), new Duration(1, 8, false, 480), false, Tie.Start, 1));
+            fmotiv3.NoteList.Add(new ValueNote(new Pitch(1, 'B', Accidental.Bekar), new Duration(1, 8, false, 480), false, Tie.End, 1));
             try
             {
                 fmotiv3.TieGathered();
@@ -240,23 +240,23 @@
             var fmotiv3 = new Fmotiv("ПМТ", 0);
 
             fmotiv1.NoteList.Add(new ValueNote((Pitch)null, new Duration(1, 2, false, 960), false, Tie.None, 0));
-            fmotiv1.NoteList.Add(new ValueNote(new Pitch(1, 'A', 0), new Duration(1, 8, false, 480), false, Tie.Start, 2));
-            fmotiv1.NoteList.Add(new ValueNote(new Pitch(1, 'A', 0), new Duration(1, 8, false, 480), false, Tie.Continue, 4));
-            fmotiv1.NoteList.Add(new ValueNote(new Pitch(1, 'A', 0), new Duration(1, 8, false, 480), false, Tie.Continue, 3));
-            fmotiv1.NoteList.Add(new ValueNote(new Pitch(1, 'A', 0), new Duration(1, 8, false, 480), false, Tie.End, 1));
+            fmotiv1.NoteList.Add(new ValueNote(new Pitch(1, 'A', Accidental.Bekar), new Duration(1, 8, false, 480), false, Tie.Start, 2));
+            fmotiv1.NoteList.Add(new ValueNote(new Pitch(1, 'A', Accidental.Bekar), new Duration(1, 8, false, 480), false, Tie.Continue, 4));
+            fmotiv1.NoteList.Add(new ValueNote(new Pitch(1, 'A', Accidental.Bekar), new Duration(1, 8, false, 480), false, Tie.Continue, 3));
+            fmotiv1.NoteList.Add(new ValueNote(new Pitch(1, 'A', Accidental.Bekar), new Duration(1, 8, false, 480), false, Tie.End, 1));
             fmotiv1.NoteList.Add(new ValueNote((Pitch)null, new Duration(1, 4, false, 480), false, Tie.None, 3));
-            fmotiv1.NoteList.Add(new ValueNote(new Pitch(1, 'A', 0), new Duration(1, 2, false, 480), false, Tie.None, 4));
+            fmotiv1.NoteList.Add(new ValueNote(new Pitch(1, 'A', Accidental.Bekar), new Duration(1, 2, false, 480), false, Tie.None, 4));
 
             fmotiv2.NoteList.Add(new ValueNote((Pitch)null, new Duration(1, 4, false, 480), false, Tie.None, 0));
             fmotiv2.NoteList.Add(new ValueNote((Pitch)null, new Duration(1, 4, false, 480), false, Tie.None, 0));
-            fmotiv2.NoteList.Add(new ValueNote(new Pitch(1, 'A', 0), new Duration(1, 2, false, 1920), false, Tie.None, 1));
+            fmotiv2.NoteList.Add(new ValueNote(new Pitch(1, 'A', Accidental.Bekar), new Duration(1, 2, false, 1920), false, Tie.None, 1));
             fmotiv2.NoteList.Add(new ValueNote((Pitch)null, new Duration(1, 4, false, 480), false, Tie.None, 3));
-            fmotiv2.NoteList.Add(new ValueNote(new Pitch(1, 'A', 0), new Duration(1, 2, false, 480), false, Tie.None, 4));
+            fmotiv2.NoteList.Add(new ValueNote(new Pitch(1, 'A', Accidental.Bekar), new Duration(1, 2, false, 480), false, Tie.None, 4));
 
             fmotiv3.NoteList.Add(new ValueNote((Pitch)null, new Duration(1, 4, false, 480), false, Tie.None, 0));
-            fmotiv3.NoteList.Add(new ValueNote(new Pitch(1, 'B', 0), new Duration(1, 2, false, 1920), false, Tie.None, 1));
+            fmotiv3.NoteList.Add(new ValueNote(new Pitch(1, 'B', Accidental.Bekar), new Duration(1, 2, false, 1920), false, Tie.None, 1));
             fmotiv3.NoteList.Add(new ValueNote((Pitch)null, new Duration(1, 4, false, 480), false, Tie.None, 3));
-            fmotiv3.NoteList.Add(new ValueNote(new Pitch(1, 'A', 2), new Duration(1, 2, false, 480), false, Tie.None, 4));
+            fmotiv3.NoteList.Add(new ValueNote(new Pitch(1, 'A', Accidental.DoubleSharp), new Duration(1, 2, false, 480), false, Tie.None, 4));
 
             Assert.IsTrue(fmotiv1.Equals(fmotiv2));
             Assert.IsTrue(fmotiv1.Equals(fmotiv3));
@@ -265,7 +265,7 @@
             Assert.IsTrue(fmotiv3.Equals(fmotiv1));
             Assert.IsTrue(fmotiv2.Equals(fmotiv1));
 
-            fmotiv2.NoteList.Add(new ValueNote(new Pitch(1, 'A', 0), new Duration(1, 2, false, 480), false, Tie.None, 4));
+            fmotiv2.NoteList.Add(new ValueNote(new Pitch(1, 'A', Accidental.Bekar), new Duration(1, 2, false, 480), false, Tie.None, 4));
             Assert.IsTrue(!fmotiv1.Equals(fmotiv2));
         }
 
@@ -277,12 +277,12 @@
         {
             var fmotiv = new Fmotiv("ПМТ", 0);
             fmotiv.NoteList.Add(new ValueNote((Pitch)null, new Duration(1, 2, false, 960), false, Tie.None, 0));
-            fmotiv.NoteList.Add(new ValueNote(new Pitch(1, 'A', 0), new Duration(1, 8, 2, 3, false, 320), false, Tie.Start, 2));
-            fmotiv.NoteList.Add(new ValueNote(new Pitch(1, 'A', 0), new Duration(1, 8, 2, 3, false, 320), false, Tie.Continue, 4));
-            fmotiv.NoteList.Add(new ValueNote(new Pitch(1, 'A', 0), new Duration(1, 8, 2, 3, false, 320), false, Tie.Continue, 3));
-            fmotiv.NoteList.Add(new ValueNote(new Pitch(1, 'A', 0), new Duration(1, 8, false, 480), false, Tie.End, 1));
+            fmotiv.NoteList.Add(new ValueNote(new Pitch(1, 'A', Accidental.Bekar), new Duration(1, 8, 2, 3, false, 320), false, Tie.Start, 2));
+            fmotiv.NoteList.Add(new ValueNote(new Pitch(1, 'A', Accidental.Bekar), new Duration(1, 8, 2, 3, false, 320), false, Tie.Continue, 4));
+            fmotiv.NoteList.Add(new ValueNote(new Pitch(1, 'A', Accidental.Bekar), new Duration(1, 8, 2, 3, false, 320), false, Tie.Continue, 3));
+            fmotiv.NoteList.Add(new ValueNote(new Pitch(1, 'A', Accidental.Bekar), new Duration(1, 8, false, 480), false, Tie.End, 1));
             fmotiv.NoteList.Add(new ValueNote((Pitch)null, new Duration(1, 4, false, 480), false, Tie.None, 3));
-            fmotiv.NoteList.Add(new ValueNote(new Pitch(1, 'A', 0), new Duration(1, 2, false, 480), false, Tie.None, 4));
+            fmotiv.NoteList.Add(new ValueNote(new Pitch(1, 'A', Accidental.Bekar), new Duration(1, 2, false, 480), false, Tie.None, 4));
 
             Assert.IsTrue(fmotiv.Equals(fmotiv));
         }
@@ -295,19 +295,19 @@
         {
             var fmotiv = new Fmotiv("ПМТ", 0);
             fmotiv.NoteList.Add(new ValueNote((Pitch)null, new Duration(1, 2, false, 960), false, Tie.None, 0));
-            fmotiv.NoteList.Add(new ValueNote(new Pitch(2, 'A', 0), new Duration(1, 8, 2, 3, false, 320), false, Tie.Start, 2));
-            fmotiv.NoteList.Add(new ValueNote(new Pitch(2, 'A', 0), new Duration(1, 8, 2, 3, false, 320), false, Tie.Continue, 4));
-            fmotiv.NoteList.Add(new ValueNote(new Pitch(2, 'A', 0), new Duration(1, 8, 2, 3, false, 320), false, Tie.Continue, 3));
-            fmotiv.NoteList.Add(new ValueNote(new Pitch(2, 'A', 0), new Duration(1, 8, false, 480), false, Tie.End, 1));
+            fmotiv.NoteList.Add(new ValueNote(new Pitch(2, 'A', Accidental.Bekar), new Duration(1, 8, 2, 3, false, 320), false, Tie.Start, 2));
+            fmotiv.NoteList.Add(new ValueNote(new Pitch(2, 'A', Accidental.Bekar), new Duration(1, 8, 2, 3, false, 320), false, Tie.Continue, 4));
+            fmotiv.NoteList.Add(new ValueNote(new Pitch(2, 'A', Accidental.Bekar), new Duration(1, 8, 2, 3, false, 320), false, Tie.Continue, 3));
+            fmotiv.NoteList.Add(new ValueNote(new Pitch(2, 'A', Accidental.Bekar), new Duration(1, 8, false, 480), false, Tie.End, 1));
             fmotiv.NoteList.Add(new ValueNote((Pitch)null, new Duration(1, 4, false, 480), false, Tie.None, 3));
-            fmotiv.NoteList.Add(new ValueNote(new Pitch(2, 'A', 0), new Duration(1, 2, false, 480), false, Tie.None, 4));
+            fmotiv.NoteList.Add(new ValueNote(new Pitch(2, 'A', Accidental.Bekar), new Duration(1, 2, false, 480), false, Tie.None, 4));
 
             var fmotiv1 = new Fmotiv("ПМТ", 0);
-            fmotiv1.NoteList.Add(new ValueNote(new Pitch(3, 'A', 0), new Duration(1, 8, 2, 3, false, 320), false, Tie.Start, 0));
-            fmotiv1.NoteList.Add(new ValueNote(new Pitch(3, 'A', 0), new Duration(1, 8, 2, 3, false, 320), false, Tie.Continue, 1));
-            fmotiv1.NoteList.Add(new ValueNote(new Pitch(3, 'A', 0), new Duration(1, 8, 2, 3, false, 320), false, Tie.Continue, 3));
-            fmotiv1.NoteList.Add(new ValueNote(new Pitch(3, 'A', 0), new Duration(1, 8, false, 480), false, Tie.End, 2));
-            fmotiv1.NoteList.Add(new ValueNote(new Pitch(3, 'B', -2), new Duration(1, 2, false, 480), false, Tie.None, 5));
+            fmotiv1.NoteList.Add(new ValueNote(new Pitch(3, 'A', Accidental.Bekar), new Duration(1, 8, 2, 3, false, 320), false, Tie.Start, 0));
+            fmotiv1.NoteList.Add(new ValueNote(new Pitch(3, 'A', Accidental.Bekar), new Duration(1, 8, 2, 3, false, 320), false, Tie.Continue, 1));
+            fmotiv1.NoteList.Add(new ValueNote(new Pitch(3, 'A', Accidental.Bekar), new Duration(1, 8, 2, 3, false, 320), false, Tie.Continue, 3));
+            fmotiv1.NoteList.Add(new ValueNote(new Pitch(3, 'A', Accidental.Bekar), new Duration(1, 8, false, 480), false, Tie.End, 2));
+            fmotiv1.NoteList.Add(new ValueNote(new Pitch(3, 'B', Accidental.DoubleFlat), new Duration(1, 2, false, 480), false, Tie.None, 5));
 
             Assert.IsTrue(fmotiv.FmEquals(fmotiv1, ParamPauseTreatment.Ignore, ParamEqualFM.Sequent));
         }

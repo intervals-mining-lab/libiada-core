@@ -289,11 +289,11 @@
             // создание и заполнения списка(ов) нот для такта(ов) монотрека
             var notes = new List<ValueNote>
             {
-                new ValueNote(new Pitch(3, 'E', 0), new Duration(1, 4, false, 512), false, Tie.None, 0),
-                new ValueNote(new Pitch(3, 'C', 1), new Duration(1, 16, false, 128), false, Tie.None, 1),
-                new ValueNote(new Pitch(3, 'A', -1), new Duration(1, 16, false, 128), false, Tie.None, 3),
-                new ValueNote(new Pitch(3, 'D', 0), new Duration(1, 16, false, 128), false, Tie.None, 2),
-                new ValueNote(new Pitch(3, 'A', 2), new Duration(1, 16, false, 128), false, Tie.None, 3)
+                new ValueNote(new Pitch(3, 'E', Accidental.Bekar), new Duration(1, 4, false, 512), false, Tie.None, 0),
+                new ValueNote(new Pitch(3, 'C', Accidental.Sharp), new Duration(1, 16, false, 128), false, Tie.None, 1),
+                new ValueNote(new Pitch(3, 'A', Accidental.Flat), new Duration(1, 16, false, 128), false, Tie.None, 3),
+                new ValueNote(new Pitch(3, 'D', Accidental.Bekar), new Duration(1, 16, false, 128), false, Tie.None, 2),
+                new ValueNote(new Pitch(3, 'A', Accidental.DoubleSharp), new Duration(1, 16, false, 128), false, Tie.None, 3)
             };
 
             // создание атрибутов для такта(ов)
@@ -319,13 +319,13 @@
             var fmotiv2 = new Fmotiv("ПМТ", 1);
             var fmotiv3 = new Fmotiv("ПМТ", 2);
 
-            fmotiv1.NoteList.Add(new ValueNote(new Pitch(3, 'E', 0), new Duration(1, 4, false, 512), false, Tie.None));
+            fmotiv1.NoteList.Add(new ValueNote(new Pitch(3, 'E', Accidental.Bekar), new Duration(1, 4, false, 512), false, Tie.None));
 
-            fmotiv2.NoteList.Add(new ValueNote(new Pitch(3, 'C', 1), new Duration(1, 16, false, 128), false, Tie.None));
-            fmotiv2.NoteList.Add(new ValueNote(new Pitch(3, 'A', -1), new Duration(1, 16, false, 128), false, Tie.None));
+            fmotiv2.NoteList.Add(new ValueNote(new Pitch(3, 'C', Accidental.Sharp), new Duration(1, 16, false, 128), false, Tie.None));
+            fmotiv2.NoteList.Add(new ValueNote(new Pitch(3, 'A', Accidental.Flat), new Duration(1, 16, false, 128), false, Tie.None));
 
-            fmotiv3.NoteList.Add(new ValueNote(new Pitch(3, 'D', 0), new Duration(1, 16, false, 128), false, Tie.None));
-            fmotiv3.NoteList.Add(new ValueNote(new Pitch(3, 'A', 2), new Duration(1, 16, false, 128), false, Tie.None));
+            fmotiv3.NoteList.Add(new ValueNote(new Pitch(3, 'D', Accidental.Bekar), new Duration(1, 16, false, 128), false, Tie.None));
+            fmotiv3.NoteList.Add(new ValueNote(new Pitch(3, 'A', Accidental.DoubleSharp), new Duration(1, 16, false, 128), false, Tie.None));
 
             // записываем ф-мотивы в цепь ф-мотивов, которая будет сравниваться с получившейся
             var fmchain1 = new FmotivChain { Id = 0, Name = "track1" };

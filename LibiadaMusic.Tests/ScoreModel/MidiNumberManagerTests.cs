@@ -20,7 +20,7 @@
             var octave = MidiNumberManager.GetOctaveFromMidiNumber(initialPitch.MidiNumber);
             Assert.AreEqual(initialPitch.Octave, octave);
 
-            initialPitch = new Pitch(5, 'C', 1);
+            initialPitch = new Pitch(5, 'C', Accidental.Sharp);
             octave = MidiNumberManager.GetOctaveFromMidiNumber(initialPitch.MidiNumber);
             Assert.AreEqual(initialPitch.Octave, octave);
         }
@@ -31,11 +31,11 @@
         [TestMethod]
         public void GetStepFromMidiNumberTest()
         {
-            var initialPitch = new Pitch(1, 'A', 0);
+            var initialPitch = new Pitch(1, 'A', Accidental.Bekar);
             var step = MidiNumberManager.StepToNoteSymbol(MidiNumberManager.GetStepFromMidiNumber(initialPitch.MidiNumber));
             Assert.AreEqual(initialPitch.Step, step);
 
-            initialPitch = new Pitch(5, 'C', 1);
+            initialPitch = new Pitch(5, 'C', Accidental.Sharp);
             step = MidiNumberManager.StepToNoteSymbol(MidiNumberManager.GetStepFromMidiNumber(initialPitch.MidiNumber));
             Assert.AreEqual(initialPitch.Step, step);
         }
@@ -46,11 +46,11 @@
         [TestMethod]
         public void GetAlterFromMidiNumberTest()
         {
-            var initialPitch = new Pitch(1, 'A', 0);
+            var initialPitch = new Pitch(1, 'A', Accidental.Bekar);
             var alter = MidiNumberManager.GetAlterFromMidiNumber(initialPitch.MidiNumber);
             Assert.AreEqual(initialPitch.Alter, alter);
 
-            initialPitch = new Pitch(5, 'C', 1);
+            initialPitch = new Pitch(5, 'C', Accidental.Sharp);
             alter = MidiNumberManager.GetAlterFromMidiNumber(initialPitch.MidiNumber);
             Assert.AreEqual(initialPitch.Alter, alter);
         }

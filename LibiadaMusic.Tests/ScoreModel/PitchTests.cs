@@ -16,10 +16,10 @@
         [TestMethod]
         public void PitchConstructorTest()
         {
-            var initialPitch = new Pitch(1, 'A', 0);
+            var initialPitch = new Pitch(1, 'A', Accidental.Bekar);
             var midiNumberPitch = new Pitch(initialPitch.MidiNumber);
             Assert.AreEqual(initialPitch.MidiNumber, midiNumberPitch.MidiNumber);
-            initialPitch = new Pitch(5, 'C', 1);
+            initialPitch = new Pitch(5, 'C', Accidental.Sharp);
             midiNumberPitch = new Pitch(initialPitch.MidiNumber);
             Assert.AreEqual(initialPitch.MidiNumber, midiNumberPitch.MidiNumber);
         }
