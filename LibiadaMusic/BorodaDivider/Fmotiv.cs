@@ -195,7 +195,7 @@
                         }
 
                         // уже начавшаяся лига продолжается, с условием что будет еще следущая лигованная нота
-                        if (temp.NoteList[0].Tie == Tie.StartStop)
+                        if (temp.NoteList[0].Tie == Tie.Continue)
                         {
                             // добавляется длительность, и копируется старая высота звучания и приоритет
                             buffNote = new ValueNote(buffNote.Pitch, buffNote.Duration.AddDuration(temp.NoteList[0].Duration), buffNote.Triplet, Tie.None, buffNote.Priority);
@@ -206,7 +206,7 @@
                         else
                         {
                             // конечная нота в последовательности лигованных нот
-                            if (temp.NoteList[0].Tie == Tie.Stop)
+                            if (temp.NoteList[0].Tie == Tie.End)
                             {
                                 // добавляется длительность, и копируется старая высота звучания и приоритет
                                 buffNote = new ValueNote(buffNote.Pitch, buffNote.Duration.AddDuration(temp.NoteList[0].Duration), buffNote.Triplet, Tie.None, buffNote.Priority);

@@ -83,14 +83,14 @@
                     {
                         // TODO: желательно сделать проверку когда собирается очередная лига,
                         // не будет ли пуста цепь нот, до того как лига закончится (будет флаг конца лиги)
-                        while (noteChain[0].Tie == Tie.StartStop)
+                        while (noteChain[0].Tie == Tie.Continue)
                         {
                             // пока продолжается лига, заносим ноты в буфер
                             fmotivBuffer.NoteList.Add((ValueNote)noteChain[0].Clone());
                             noteChain.RemoveAt(0);
                         }
 
-                        if (noteChain[0].Tie == Tie.Stop)
+                        if (noteChain[0].Tie == Tie.End)
                         {
                             // если есть флаг конца лиги у очередной ноты, то заносим конечную ноту лиги в буфер
                             fmotivBuffer.NoteList.Add((ValueNote)noteChain[0].Clone());
@@ -526,14 +526,14 @@
                 {
                     // TODO: желательно сделать проверку когда собирается очередная лига,
                     // не будет ли пуста цепь нот, до того как лига закончится (будет флаг конца лиги)
-                    while (fmotivBuffer.NoteList[0].Tie == Tie.StartStop)
+                    while (fmotivBuffer.NoteList[0].Tie == Tie.Continue)
                     {
                         // пока продолжается лига, заносим ноты в буфер
                         fmotiv.NoteList.Add((ValueNote)fmotivBuffer.NoteList[0].Clone());
                         fmotivBuffer.NoteList.RemoveAt(0);
                     }
 
-                    if (fmotivBuffer.NoteList[0].Tie == Tie.Stop)
+                    if (fmotivBuffer.NoteList[0].Tie == Tie.End)
                     {
                         // если есть флаг конца лиги у очередной ноты, то заносим конечную ноту лиги в буфер
                         fmotiv.NoteList.Add((ValueNote)fmotivBuffer.NoteList[0].Clone());

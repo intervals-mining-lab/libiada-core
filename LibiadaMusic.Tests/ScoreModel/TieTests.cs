@@ -34,7 +34,7 @@
         [TestMethod]
         public void TieThirdTest()
         {
-            Assert.AreEqual(2, (int)Tie.Stop);
+            Assert.AreEqual(2, (int)Tie.End);
         }
 
         /// <summary>
@@ -43,7 +43,7 @@
         [TestMethod]
         public void TieFourthTest()
         {
-            Assert.AreEqual(3, (int)Tie.StartStop);
+            Assert.AreEqual(3, (int)Tie.Continue);
         }
     }
 }

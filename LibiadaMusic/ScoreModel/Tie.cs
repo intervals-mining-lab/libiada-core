@@ -1,5 +1,8 @@
 ﻿namespace LibiadaMusic.ScoreModel
 {
+    using System.ComponentModel;
+    using System.ComponentModel.DataAnnotations;
+
     /// <summary>
     ///  класс для заполнения объекта класса Note данными, в зависимости от наличия лиги
     /// </summary>
@@ -8,21 +11,29 @@
         /// <summary>
         /// Нет Лиги (0)
         /// </summary>
+        [Display(Name = "None")]
+        [Description("No tie on note")]
         None = 0,
 
         /// <summary>
         ///  Начало Лиги (1)
         /// </summary>
+        [Display(Name = "Start")]
+        [Description("Tie starts on the note")]
         Start = 1,
 
         /// <summary>
         /// Конец Лиги (2)
         /// </summary>
-        Stop = 2,
+        [Display(Name = "End")]
+        [Description("Tie ends on the note")]
+        End = 2,
 
         /// <summary>
         /// Конец и Начало следущей Лиги (3)
         /// </summary>
-        StartStop = 3
+        [Display(Name = "Continue")]
+        [Description("The note is inside the tie")]
+        Continue = 3
     }
 }

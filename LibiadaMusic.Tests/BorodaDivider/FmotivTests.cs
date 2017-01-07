@@ -99,9 +99,9 @@
             var fmotiv = new Fmotiv("ПМТ", 0);
             fmotiv.NoteList.Add(new ValueNote((Pitch)null, new Duration(1, 2, false, 960), false, Tie.None, 0));
             fmotiv.NoteList.Add(new ValueNote(new Pitch(1, 'A', 0), new Duration(1, 8, false, 480), false, Tie.Start, 2));
-            fmotiv.NoteList.Add(new ValueNote(new Pitch(1, 'A', 0), new Duration(1, 8, false, 480), false, Tie.StartStop, 4));
-            fmotiv.NoteList.Add(new ValueNote(new Pitch(1, 'A', 0), new Duration(1, 8, false, 480), false, Tie.StartStop, 3));
-            fmotiv.NoteList.Add(new ValueNote(new Pitch(1, 'A', 0), new Duration(1, 8, false, 480), false, Tie.Stop, 1));
+            fmotiv.NoteList.Add(new ValueNote(new Pitch(1, 'A', 0), new Duration(1, 8, false, 480), false, Tie.Continue, 4));
+            fmotiv.NoteList.Add(new ValueNote(new Pitch(1, 'A', 0), new Duration(1, 8, false, 480), false, Tie.Continue, 3));
+            fmotiv.NoteList.Add(new ValueNote(new Pitch(1, 'A', 0), new Duration(1, 8, false, 480), false, Tie.End, 1));
             fmotiv.NoteList.Add(new ValueNote((Pitch)null, new Duration(1, 4, false, 480), false, Tie.None, 3));
             fmotiv.NoteList.Add(new ValueNote(new Pitch(1, 'A', 0), new Duration(1, 2, false, 480), false, Tie.None, 4));
 
@@ -122,9 +122,9 @@
             var fmotiv = new Fmotiv("ПМТ", 0);
             fmotiv.NoteList.Add(new ValueNote((Pitch)null, new Duration(1, 2, false, 960), false, Tie.None, 0));
             fmotiv.NoteList.Add(new ValueNote(new Pitch(1, 'A', 0), new Duration(1, 8, 2, 3, false, 320), false, Tie.Start, 2));
-            fmotiv.NoteList.Add(new ValueNote(new Pitch(1, 'A', 0), new Duration(1, 8, 2, 3, false, 320), false, Tie.StartStop, 4));
-            fmotiv.NoteList.Add(new ValueNote(new Pitch(1, 'A', 0), new Duration(1, 8, 2, 3, false, 320), false, Tie.StartStop, 3));
-            fmotiv.NoteList.Add(new ValueNote(new Pitch(1, 'A', 0), new Duration(1, 8, false, 480), false, Tie.Stop, 1));
+            fmotiv.NoteList.Add(new ValueNote(new Pitch(1, 'A', 0), new Duration(1, 8, 2, 3, false, 320), false, Tie.Continue, 4));
+            fmotiv.NoteList.Add(new ValueNote(new Pitch(1, 'A', 0), new Duration(1, 8, 2, 3, false, 320), false, Tie.Continue, 3));
+            fmotiv.NoteList.Add(new ValueNote(new Pitch(1, 'A', 0), new Duration(1, 8, false, 480), false, Tie.End, 1));
             fmotiv.NoteList.Add(new ValueNote((Pitch)null, new Duration(1, 4, false, 480), false, Tie.None, 3));
             fmotiv.NoteList.Add(new ValueNote(new Pitch(1, 'A', 0), new Duration(1, 2, false, 480), false, Tie.None, 4));
 
@@ -178,9 +178,9 @@
 
             // лига без старта
             var fmotiv1 = new Fmotiv("ПМТ", 0);
-            fmotiv1.NoteList.Add(new ValueNote(new Pitch(1, 'A', 0), new Duration(1, 8, false, 480), false, Tie.StartStop, 4));
-            fmotiv1.NoteList.Add(new ValueNote(new Pitch(1, 'A', 0), new Duration(1, 8, false, 480), false, Tie.StartStop, 3));
-            fmotiv1.NoteList.Add(new ValueNote(new Pitch(1, 'A', 0), new Duration(1, 8, false, 480), false, Tie.Stop, 1));
+            fmotiv1.NoteList.Add(new ValueNote(new Pitch(1, 'A', 0), new Duration(1, 8, false, 480), false, Tie.Continue, 4));
+            fmotiv1.NoteList.Add(new ValueNote(new Pitch(1, 'A', 0), new Duration(1, 8, false, 480), false, Tie.Continue, 3));
+            fmotiv1.NoteList.Add(new ValueNote(new Pitch(1, 'A', 0), new Duration(1, 8, false, 480), false, Tie.End, 1));
             try
             {
                 fmotiv1.TieGathered();
@@ -213,7 +213,7 @@
             // в знаке лиги не {-1,0,1,2}
             var fmotiv3 = new Fmotiv("ПМТ", 0);
             fmotiv3.NoteList.Add(new ValueNote(new Pitch(1, 'A', 0), new Duration(1, 8, false, 480), false, Tie.Start, 1));
-            fmotiv3.NoteList.Add(new ValueNote(new Pitch(1, 'B', 0), new Duration(1, 8, false, 480), false, Tie.Stop, 1));
+            fmotiv3.NoteList.Add(new ValueNote(new Pitch(1, 'B', 0), new Duration(1, 8, false, 480), false, Tie.End, 1));
             try
             {
                 fmotiv3.TieGathered();
@@ -241,9 +241,9 @@
 
             fmotiv1.NoteList.Add(new ValueNote((Pitch)null, new Duration(1, 2, false, 960), false, Tie.None, 0));
             fmotiv1.NoteList.Add(new ValueNote(new Pitch(1, 'A', 0), new Duration(1, 8, false, 480), false, Tie.Start, 2));
-            fmotiv1.NoteList.Add(new ValueNote(new Pitch(1, 'A', 0), new Duration(1, 8, false, 480), false, Tie.StartStop, 4));
-            fmotiv1.NoteList.Add(new ValueNote(new Pitch(1, 'A', 0), new Duration(1, 8, false, 480), false, Tie.StartStop, 3));
-            fmotiv1.NoteList.Add(new ValueNote(new Pitch(1, 'A', 0), new Duration(1, 8, false, 480), false, Tie.Stop, 1));
+            fmotiv1.NoteList.Add(new ValueNote(new Pitch(1, 'A', 0), new Duration(1, 8, false, 480), false, Tie.Continue, 4));
+            fmotiv1.NoteList.Add(new ValueNote(new Pitch(1, 'A', 0), new Duration(1, 8, false, 480), false, Tie.Continue, 3));
+            fmotiv1.NoteList.Add(new ValueNote(new Pitch(1, 'A', 0), new Duration(1, 8, false, 480), false, Tie.End, 1));
             fmotiv1.NoteList.Add(new ValueNote((Pitch)null, new Duration(1, 4, false, 480), false, Tie.None, 3));
             fmotiv1.NoteList.Add(new ValueNote(new Pitch(1, 'A', 0), new Duration(1, 2, false, 480), false, Tie.None, 4));
 
@@ -278,9 +278,9 @@
             var fmotiv = new Fmotiv("ПМТ", 0);
             fmotiv.NoteList.Add(new ValueNote((Pitch)null, new Duration(1, 2, false, 960), false, Tie.None, 0));
             fmotiv.NoteList.Add(new ValueNote(new Pitch(1, 'A', 0), new Duration(1, 8, 2, 3, false, 320), false, Tie.Start, 2));
-            fmotiv.NoteList.Add(new ValueNote(new Pitch(1, 'A', 0), new Duration(1, 8, 2, 3, false, 320), false, Tie.StartStop, 4));
-            fmotiv.NoteList.Add(new ValueNote(new Pitch(1, 'A', 0), new Duration(1, 8, 2, 3, false, 320), false, Tie.StartStop, 3));
-            fmotiv.NoteList.Add(new ValueNote(new Pitch(1, 'A', 0), new Duration(1, 8, false, 480), false, Tie.Stop, 1));
+            fmotiv.NoteList.Add(new ValueNote(new Pitch(1, 'A', 0), new Duration(1, 8, 2, 3, false, 320), false, Tie.Continue, 4));
+            fmotiv.NoteList.Add(new ValueNote(new Pitch(1, 'A', 0), new Duration(1, 8, 2, 3, false, 320), false, Tie.Continue, 3));
+            fmotiv.NoteList.Add(new ValueNote(new Pitch(1, 'A', 0), new Duration(1, 8, false, 480), false, Tie.End, 1));
             fmotiv.NoteList.Add(new ValueNote((Pitch)null, new Duration(1, 4, false, 480), false, Tie.None, 3));
             fmotiv.NoteList.Add(new ValueNote(new Pitch(1, 'A', 0), new Duration(1, 2, false, 480), false, Tie.None, 4));
 
@@ -296,17 +296,17 @@
             var fmotiv = new Fmotiv("ПМТ", 0);
             fmotiv.NoteList.Add(new ValueNote((Pitch)null, new Duration(1, 2, false, 960), false, Tie.None, 0));
             fmotiv.NoteList.Add(new ValueNote(new Pitch(2, 'A', 0), new Duration(1, 8, 2, 3, false, 320), false, Tie.Start, 2));
-            fmotiv.NoteList.Add(new ValueNote(new Pitch(2, 'A', 0), new Duration(1, 8, 2, 3, false, 320), false, Tie.StartStop, 4));
-            fmotiv.NoteList.Add(new ValueNote(new Pitch(2, 'A', 0), new Duration(1, 8, 2, 3, false, 320), false, Tie.StartStop, 3));
-            fmotiv.NoteList.Add(new ValueNote(new Pitch(2, 'A', 0), new Duration(1, 8, false, 480), false, Tie.Stop, 1));
+            fmotiv.NoteList.Add(new ValueNote(new Pitch(2, 'A', 0), new Duration(1, 8, 2, 3, false, 320), false, Tie.Continue, 4));
+            fmotiv.NoteList.Add(new ValueNote(new Pitch(2, 'A', 0), new Duration(1, 8, 2, 3, false, 320), false, Tie.Continue, 3));
+            fmotiv.NoteList.Add(new ValueNote(new Pitch(2, 'A', 0), new Duration(1, 8, false, 480), false, Tie.End, 1));
             fmotiv.NoteList.Add(new ValueNote((Pitch)null, new Duration(1, 4, false, 480), false, Tie.None, 3));
             fmotiv.NoteList.Add(new ValueNote(new Pitch(2, 'A', 0), new Duration(1, 2, false, 480), false, Tie.None, 4));
 
             var fmotiv1 = new Fmotiv("ПМТ", 0);
             fmotiv1.NoteList.Add(new ValueNote(new Pitch(3, 'A', 0), new Duration(1, 8, 2, 3, false, 320), false, Tie.Start, 0));
-            fmotiv1.NoteList.Add(new ValueNote(new Pitch(3, 'A', 0), new Duration(1, 8, 2, 3, false, 320), false, Tie.StartStop, 1));
-            fmotiv1.NoteList.Add(new ValueNote(new Pitch(3, 'A', 0), new Duration(1, 8, 2, 3, false, 320), false, Tie.StartStop, 3));
-            fmotiv1.NoteList.Add(new ValueNote(new Pitch(3, 'A', 0), new Duration(1, 8, false, 480), false, Tie.Stop, 2));
+            fmotiv1.NoteList.Add(new ValueNote(new Pitch(3, 'A', 0), new Duration(1, 8, 2, 3, false, 320), false, Tie.Continue, 1));
+            fmotiv1.NoteList.Add(new ValueNote(new Pitch(3, 'A', 0), new Duration(1, 8, 2, 3, false, 320), false, Tie.Continue, 3));
+            fmotiv1.NoteList.Add(new ValueNote(new Pitch(3, 'A', 0), new Duration(1, 8, false, 480), false, Tie.End, 2));
             fmotiv1.NoteList.Add(new ValueNote(new Pitch(3, 'B', -2), new Duration(1, 2, false, 480), false, Tie.None, 5));
 
             Assert.IsTrue(fmotiv.FmEquals(fmotiv1, ParamPauseTreatment.Ignore, ParamEqualFM.Sequent));

@@ -57,6 +57,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
@@ -79,6 +80,7 @@
     <Compile Include="BorodaDivider\ParamEqualFM.cs" />
     <Compile Include="BorodaDivider\ParamPauseTreatment.cs" />
     <Compile Include="BorodaDivider\PriorityDiscover.cs" />
+    <Compile Include="ScoreModel\Accidental.cs" />
     <Compile Include="ScoreModel\Attributes.cs" />
     <Compile Include="ScoreModel\Duration.cs" />
     <Compile Include="ScoreModel\DurationType.cs" />

@@ -57,7 +57,7 @@
         [TestMethod]
         public void ValueNoteCloneTest()
         {
-            var note1 = new ValueNote(new Pitch(1, 'A', 0), new Duration(1, 4, false, 480), false, Tie.Stop);
+            var note1 = new ValueNote(new Pitch(1, 'A', 0), new Duration(1, 4, false, 480), false, Tie.End);
 
             var note2 = (ValueNote)note1.Clone();
 

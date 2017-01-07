@@ -191,7 +191,7 @@
             var notes = new List<ValueNote>
             {
                 new ValueNote(new Pitch(3, 'E', 0), new Duration(1, 8, false, 256), false, Tie.Start, 0),
-                new ValueNote(new Pitch(3, 'E', 0), new Duration(1, 8, false, 256), false, Tie.Stop, 2),
+                new ValueNote(new Pitch(3, 'E', 0), new Duration(1, 8, false, 256), false, Tie.End, 2),
                 new ValueNote(new Pitch(3, 'A', 0), new Duration(1, 4, false, 512), false, Tie.None, 1)
             };
 
@@ -217,7 +217,7 @@
             var fmotiv1 = new Fmotiv("ПМТ", 0);
 
             fmotiv1.NoteList.Add(new ValueNote(new Pitch(3, 'E', 0), new Duration(1, 8, false, 256), false, Tie.Start));
-            fmotiv1.NoteList.Add(new ValueNote(new Pitch(3, 'E', 0), new Duration(1, 8, false, 256), false, Tie.Stop));
+            fmotiv1.NoteList.Add(new ValueNote(new Pitch(3, 'E', 0), new Duration(1, 8, false, 256), false, Tie.End));
             fmotiv1.NoteList.Add(new ValueNote(new Pitch(3, 'A', 0), new Duration(1, 4, false, 512), false, Tie.None));
 
             // записываем ф-мотивы в цепь ф-мотивов, которая будет сравниваться с получившейся

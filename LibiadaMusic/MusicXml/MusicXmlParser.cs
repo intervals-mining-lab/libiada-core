@@ -358,7 +358,7 @@
             if (start && stop)
             {
                 // случай когда лига приходит в эту ноту, и с этой же ноты начинается следущая лига
-                return Tie.StartStop;
+                return Tie.Continue;
             }
 
             if (start)
@@ -370,7 +370,7 @@
             if (stop)
             {
                 // случай когда лига заканчивается на этой ноте
-                return Tie.Stop;
+                return Tie.End;
             }
 
             // когда нету лиги

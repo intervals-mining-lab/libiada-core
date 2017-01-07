@@ -37,7 +37,7 @@
             };
             var notes2 = new List<ValueNote>
             {
-                new ValueNote(new Pitch(3, 'F', 0), new Duration(1, 8, false, 512), false, Tie.Stop),
+                new ValueNote(new Pitch(3, 'F', 0), new Duration(1, 8, false, 512), false, Tie.End),
                 new ValueNote(new Pitch(3, 'B', 0), new Duration(1, 8, false, 512), false, Tie.None),
                 new ValueNote(new Pitch(3, 'G', 0), new Duration(1, 8, false, 512), false, Tie.None),
                 new ValueNote(new Pitch(4, 'C', 0), new Duration(1, 8, false, 512), false, Tie.None),
