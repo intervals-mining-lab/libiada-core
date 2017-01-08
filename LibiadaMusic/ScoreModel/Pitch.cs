@@ -25,7 +25,7 @@
         /// <param name="instrument">
         /// The instrument.
         /// </param>
-        public Pitch(int octave, char step, Accidental alter, int instrument = 0)
+        public Pitch(int octave, NoteSymbol step, Accidental alter, int instrument = 0)
         {
             Alter = alter;
             Step = step;
@@ -49,7 +49,7 @@
         public Pitch(int midiNumber, int instrument = 0)
         {
             Alter = MidiNumberManager.GetAlterFromMidiNumber(midiNumber);
-            Step = MidiNumberManager.StepToNoteSymbol(MidiNumberManager.GetStepFromMidiNumber(midiNumber));
+            Step = MidiNumberManager.GetNoteSymbolFromMidiNumber(midiNumber);
             Octave = MidiNumberManager.GetOctaveFromMidiNumber(midiNumber);
             MidiNumber = GetMidiNumber();
             Instrument = instrument;
@@ -66,7 +66,7 @@
         /// Gets step.
         /// ЗАГЛАВНАЯ (!) буква обозначающая "относительную" высоту ноты "A", "B" и т.д.
         /// </summary>
-        public char Step { get; private set; }
+        public NoteSymbol Step { get; private set; }
 
         /// <summary>
         /// Gets or sets the instrument.
@@ -143,35 +143,7 @@
         /// </exception>
         private int GetMidiNumber()
         {
-            int offset; // сдвиг от начала октавы, в зависимости от буквы ноты
-            switch (Step)
-            {
-                case 'C':
-                    offset = 0;
-                    break;
-                case 'D':
-                    offset = 2;
-                    break;
-                case 'E':
-                    offset = 4;
-                    break;
-                case 'F':
-                    offset = 5;
-                    break;
-                case 'G':
-                    offset = 7;
-                    break;
-                case 'A':
-                    offset = 9;
-                    break;
-                case 'B':
-                    offset = 11;
-                    break;
-                default:
-                    throw new Exception("Error Pitch contains non-recognized STEP letters!");
-            }
-
-            return (12 * (Octave + 1)) + offset + (short)Alter;
+            return (12 * (Octave + 1)) + (byte)Step + (short)Alter;
         }
     }
 }

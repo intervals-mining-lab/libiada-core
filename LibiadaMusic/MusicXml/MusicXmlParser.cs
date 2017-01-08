@@ -278,8 +278,8 @@
                 childName = noteChild.Name;
                 if (noteChild.Name == "pitch")
                 {
-                    char step = '0';
-                    Accidental alter = 0;
+                    NoteSymbol step = NoteSymbol.C;
+                    Accidental alter = Accidental.Bekar;
                     int octave = 0;
                     bool hasStep = false;
                     bool hasOctave = false;
@@ -288,7 +288,7 @@
                         switch (pitchChild.Name)
                         {
                             case "step":
-                                step = Convert.ToChar(pitchChild.InnerText);
+                                NoteSymbol.TryParse(pitchChild.InnerText, true, out step);
                                 hasStep = true;
                                 break;
                             case "alter":

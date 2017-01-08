@@ -17,12 +17,12 @@
         /// <summary>
         /// The note.
         /// </summary>
-        private ValueNote note = new ValueNote(new Pitch(1, 'E', 0), new Duration(1, 4, false, 480), false, Tie.None);
+        private ValueNote note = new ValueNote(new Pitch(1, NoteSymbol.E, 0), new Duration(1, 4, false, 480), false, Tie.None);
 
         /// <summary>
         /// The anote.
         /// </summary>
-        private ValueNote anote = new ValueNote(new Pitch(1, 'B', 0), new Duration(1, 2, false, 960), false, 0);
+        private ValueNote anote = new ValueNote(new Pitch(1, NoteSymbol.B, 0), new Duration(1, 2, false, 960), false, 0);
 
         /// <summary>
         /// The bnote.
@@ -32,22 +32,22 @@
         /// <summary>
         /// The сnote.
         /// </summary>
-        private ValueNote сnote = new ValueNote(new Pitch(1, 'A', 0), new Duration(1, 4, 2, 3, false, 200), true, 0);
+        private ValueNote сnote = new ValueNote(new Pitch(1, NoteSymbol.A, 0), new Duration(1, 4, 2, 3, false, 200), true, 0);
 
         /// <summary>
         /// The ccnote.
         /// </summary>
-        private ValueNote ccnote = new ValueNote(new Pitch(1, 'A', 0), new Duration(1, 8, 2, 3, false, 200), true, 0);
+        private ValueNote ccnote = new ValueNote(new Pitch(1, NoteSymbol.A, 0), new Duration(1, 8, 2, 3, false, 200), true, 0);
 
         /// <summary>
         /// The сccnote.
         /// </summary>
-        private ValueNote сccnote = new ValueNote(new Pitch(1, 'A', 0), new Duration(1, 8, 4, 7, false, 200), true, 0);
+        private ValueNote сccnote = new ValueNote(new Pitch(1, NoteSymbol.A, 0), new Duration(1, 8, 4, 7, false, 200), true, 0);
 
         /// <summary>
         /// The dnote.
         /// </summary>
-        private ValueNote dnote = new ValueNote(new Pitch(1, 'B', 0), new Duration(1, 16, false, 240), false, 0);
+        private ValueNote dnote = new ValueNote(new Pitch(1, NoteSymbol.B, 0), new Duration(1, 16, false, 240), false, 0);
 
         /// <summary>
         /// The attributes.
