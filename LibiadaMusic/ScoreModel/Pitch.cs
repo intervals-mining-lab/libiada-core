@@ -25,7 +25,7 @@
         /// <param name="instrument">
         /// The instrument.
         /// </param>
-        public Pitch(int octave, NoteSymbol step, Accidental alter, int instrument = 0)
+        public Pitch(int octave, NoteSymbol step, Accidental alter, Instrument instrument = Instrument.AnyOrUnknown)
         {
             Alter = alter;
             Step = step;
@@ -46,7 +46,7 @@
         /// <exception cref="Exception">
         /// Thrown if note is not recognized.
         /// </exception>
-        public Pitch(int midiNumber, int instrument = 0)
+        public Pitch(int midiNumber, Instrument instrument = Instrument.AnyOrUnknown)
         {
             Alter = MidiNumberManager.GetAlterFromMidiNumber(midiNumber);
             Step = MidiNumberManager.GetNoteSymbolFromMidiNumber(midiNumber);
@@ -71,7 +71,7 @@
         /// <summary>
         /// Gets or sets the instrument.
         /// </summary>
-        public int Instrument { private get; set; }
+        public Instrument Instrument { private get; set; }
 
         /// <summary>
         /// Gets the octave number.

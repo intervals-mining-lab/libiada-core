@@ -194,7 +194,7 @@
         /// <param name="instrument">
         /// The instrument.
         /// </param>
-        public void SetInstrument(int instrument)
+        public void SetInstrument(Instrument instrument)
         {
             foreach (Pitch p in Pitch)
             {
