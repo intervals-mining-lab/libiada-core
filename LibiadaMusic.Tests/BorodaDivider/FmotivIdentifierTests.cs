@@ -18,12 +18,12 @@
         public void FmotivIdentificationFirstTest()
         {
             // создание ф-мотивов
-            var fmotiv1 = new Fmotiv("ПМТ", 0);
-            var fmotiv2 = new Fmotiv("ПМТ", 1);
-            var fmotiv3 = new Fmotiv("ПМТ", 2);
-            var fmotiv4 = new Fmotiv("ПМТ", 3);
-            var fmotiv5 = new Fmotiv("ПМТ", 4);
-            var fmotiv6 = new Fmotiv("ПМТ", 5);
+            var fmotiv1 = new Fmotiv(FmotivType.CompleteMinimalMeasure, 0);
+            var fmotiv2 = new Fmotiv(FmotivType.CompleteMinimalMeasure, 1);
+            var fmotiv3 = new Fmotiv(FmotivType.CompleteMinimalMeasure, 2);
+            var fmotiv4 = new Fmotiv(FmotivType.CompleteMinimalMeasure, 3);
+            var fmotiv5 = new Fmotiv(FmotivType.CompleteMinimalMeasure, 4);
+            var fmotiv6 = new Fmotiv(FmotivType.CompleteMinimalMeasure, 5);
 
             fmotiv1.NoteList.Add(new ValueNote(new Pitch(3, NoteSymbol.E, 0), new Duration(1, 4, false, 512), false, Tie.None));
             fmotiv1.NoteList.Add(new ValueNote(new Pitch(3, NoteSymbol.A, 0), new Duration(1, 4, false, 512), false, Tie.None));
@@ -68,12 +68,12 @@
         public void FmotivIdentificationSecondTest()
         {
             // создание ф-мотивов
-            var fmotiv1 = new Fmotiv("ПМТ", 0);
-            var fmotiv2 = new Fmotiv("ПМТ", 1);
-            var fmotiv3 = new Fmotiv("ПМТ", 2);
-            var fmotiv4 = new Fmotiv("ПМТ", 3);
-            var fmotiv5 = new Fmotiv("ПМТ", 4);
-            var fmotiv6 = new Fmotiv("ПМТ", 5);
+            var fmotiv1 = new Fmotiv(FmotivType.CompleteMinimalMeasure, 0);
+            var fmotiv2 = new Fmotiv(FmotivType.CompleteMinimalMeasure, 1);
+            var fmotiv3 = new Fmotiv(FmotivType.CompleteMinimalMeasure, 2);
+            var fmotiv4 = new Fmotiv(FmotivType.CompleteMinimalMeasure, 3);
+            var fmotiv5 = new Fmotiv(FmotivType.CompleteMinimalMeasure, 4);
+            var fmotiv6 = new Fmotiv(FmotivType.CompleteMinimalMeasure, 5);
 
             fmotiv1.NoteList.Add(new ValueNote(new Pitch(3, NoteSymbol.E, 0), new Duration(1, 4, false, 512), false, Tie.None));
             fmotiv1.NoteList.Add(new ValueNote(new Pitch(3, NoteSymbol.A, 0), new Duration(1, 4, false, 512), false, Tie.None));

@@ -49,8 +49,8 @@
 
             // создание аналогов ф-мотивов, которые должны получиться, после разбиения
             // процедура определения одинаковых на данном этапе не производится
-            var fmotiv1 = new Fmotiv("ПМТ", 0);
-            var fmotiv2 = new Fmotiv("ПМТ", 1);
+            var fmotiv1 = new Fmotiv(FmotivType.CompleteMinimalMeasure, 0);
+            var fmotiv2 = new Fmotiv(FmotivType.CompleteMinimalMeasure, 1);
 
             fmotiv1.NoteList.Add(new ValueNote(new Pitch(3, NoteSymbol.E, 0), new Duration(1, 4, false, 512), false, Tie.None));
             fmotiv1.NoteList.Add(new ValueNote(new Pitch(3, NoteSymbol.A, 0), new Duration(1, 4, false, 512), false, Tie.None));
@@ -100,8 +100,8 @@
 
             // создание аналогов ф-мотивов, которые должны получиться, после разбиения
             // процедура определения одинаковых на данном этапе не производится
-            var fmotiv1 = new Fmotiv("ПМТ", 0);
-            var fmotiv2 = new Fmotiv("ПМТ", 1);
+            var fmotiv1 = new Fmotiv(FmotivType.CompleteMinimalMeasure, 0);
+            var fmotiv2 = new Fmotiv(FmotivType.CompleteMinimalMeasure, 1);
 
             fmotiv1.NoteList.Add(new ValueNote(new Pitch(3, NoteSymbol.E, 0), new Duration(1, 8, false, 512), false, Tie.None));
             fmotiv1.NoteList.Add(new ValueNote(new Pitch(3, NoteSymbol.A, 0), new Duration(1, 8, false, 512), false, Tie.None));
@@ -160,9 +160,9 @@
 
             // создание аналогов ф-мотивов, которые должны получиться, после разбиения
             // процедура определения одинаковых на данном этапе не производится
-            var fmotiv1 = new Fmotiv("ЧМТ", 0);
-            var fmotiv2 = new Fmotiv("ПМТВП", 1);
-            var fmotiv3 = new Fmotiv("ПМТ", 3);
+            var fmotiv1 = new Fmotiv(FmotivType.PartialMinimalMeasure, 0);
+            var fmotiv2 = new Fmotiv(FmotivType.CompleteMinimalMetrorhythmicGroup, 1);
+            var fmotiv3 = new Fmotiv(FmotivType.CompleteMinimalMeasure, 3);
 
             fmotiv1.NoteList.Add(new ValueNote(new Pitch(3, NoteSymbol.E, 0), new Duration(1, 4, false, 512), false, Tie.None));
 
@@ -214,7 +214,7 @@
 
             // создание аналогов ф-мотивов, которые должны получиться, после разбиения
             // процедура определения одинаковых на данном этапе не производится
-            var fmotiv1 = new Fmotiv("ПМТ", 0);
+            var fmotiv1 = new Fmotiv(FmotivType.CompleteMinimalMeasure, 0);
 
             fmotiv1.NoteList.Add(new ValueNote(new Pitch(3, NoteSymbol.E, 0), new Duration(1, 8, false, 256), false, Tie.Start));
             fmotiv1.NoteList.Add(new ValueNote(new Pitch(3, NoteSymbol.E, 0), new Duration(1, 8, false, 256), false, Tie.End));
@@ -262,8 +262,8 @@
 
             // создание аналогов ф-мотивов, которые должны получиться, после разбиения
             // процедура определения одинаковых на данном этапе не производится
-            var fmotiv1 = new Fmotiv("ПМТ", 0);
-            var fmotiv2 = new Fmotiv("ПМТ", 1);
+            var fmotiv1 = new Fmotiv(FmotivType.CompleteMinimalMeasure, 0);
+            var fmotiv2 = new Fmotiv(FmotivType.CompleteMinimalMeasure, 1);
 
             fmotiv1.NoteList.Add(new ValueNote(new Pitch(3, NoteSymbol.E, 0), new Duration(1, 8, 2, 3, false, 240), false, Tie.None));
             fmotiv1.NoteList.Add(new ValueNote(new Pitch(3, NoteSymbol.A, 0), new Duration(1, 8, 2, 3, false, 240), false, Tie.None));
@@ -315,9 +315,9 @@
 
             // создание аналогов ф-мотивов, которые должны получиться, после разбиения
             // процедура определения одинаковых на данном этапе не производится
-            var fmotiv1 = new Fmotiv("ЧМТ", 0);
-            var fmotiv2 = new Fmotiv("ПМТ", 1);
-            var fmotiv3 = new Fmotiv("ПМТ", 2);
+            var fmotiv1 = new Fmotiv(FmotivType.PartialMinimalMeasure, 0);
+            var fmotiv2 = new Fmotiv(FmotivType.CompleteMinimalMeasure, 1);
+            var fmotiv3 = new Fmotiv(FmotivType.CompleteMinimalMeasure, 2);
 
             fmotiv1.NoteList.Add(new ValueNote(new Pitch(3, NoteSymbol.E, Accidental.Bekar), new Duration(1, 4, false, 512), false, Tie.None));
 
@@ -369,7 +369,7 @@
 
             // создание аналогов ф-мотивов, которые должны получиться, после разбиения
             // процедура определения одинаковых на данном этапе не производится
-            var fmotiv1 = new Fmotiv("ПМТ", 0);
+            var fmotiv1 = new Fmotiv(FmotivType.CompleteMinimalMeasure, 0);
             fmotiv1.NoteList.Add(new ValueNote((Pitch)null, new Duration(1, 4, false, 512), false, Tie.None));
             fmotiv1.NoteList.Add(new ValueNote(new Pitch(3, NoteSymbol.A, 0), new Duration(1, 8, false, 256), false, Tie.None));
             fmotiv1.NoteList.Add(new ValueNote(new Pitch(3, NoteSymbol.B, 0), new Duration(1, 8, false, 256), false, Tie.None));
@@ -415,7 +415,7 @@
 
             // создание аналогов ф-мотивов, которые должны получиться, после разбиения
             // процедура определения одинаковых на данном этапе не производится
-            var fmotiv1 = new Fmotiv("ПМТ", 0);
+            var fmotiv1 = new Fmotiv(FmotivType.CompleteMinimalMeasure, 0);
             fmotiv1.NoteList.Add(new ValueNote(new Pitch(3, NoteSymbol.A, 0), new Duration(1, 8, false, 256), false, Tie.None));
             fmotiv1.NoteList.Add(new ValueNote((Pitch)null, new Duration(1, 8, false, 256), false, Tie.None));
             fmotiv1.NoteList.Add(new ValueNote(new Pitch(3, NoteSymbol.B, 0), new Duration(1, 8, false, 256), false, Tie.None));
@@ -462,10 +462,10 @@
 
             // создание аналогов ф-мотивов, которые должны получиться, после разбиения
             // процедура определения одинаковых на данном этапе не производится
-            var fmotiv1 = new Fmotiv("ПМТ", 0);
+            var fmotiv1 = new Fmotiv(FmotivType.CompleteMinimalMeasure, 0);
             fmotiv1.NoteList.Add(new ValueNote(new Pitch(3, NoteSymbol.A, 0), new Duration(1, 8, false, 256), false, Tie.None));
             fmotiv1.NoteList.Add(new ValueNote((Pitch)null, new Duration(1, 8, false, 256), false, Tie.None));
-            var fmotiv2 = new Fmotiv("ПМТ", 1);
+            var fmotiv2 = new Fmotiv(FmotivType.CompleteMinimalMeasure, 1);
             fmotiv2.NoteList.Add(new ValueNote(new Pitch(3, NoteSymbol.B, 0), new Duration(1, 8, false, 256), false, Tie.None));
             fmotiv2.NoteList.Add(new ValueNote(new Pitch(3, NoteSymbol.B, 0), new Duration(1, 8, false, 256), false, Tie.None));
 

@@ -34,7 +34,7 @@
             var chain = new FmotivChain { Name = congenericTrack.Name }; // выходная, результирующая цепочка разбитых ф-мотивов
             this.paramPauseTreatment = paramPauseTreatment;
 
-            var fmotivBuffer = new Fmotiv(string.Empty);
+            var fmotivBuffer = new Fmotiv(FmotivType.None);
 
             // буффер для накопления нот, для последующего анализа его содержимого
             var noteChain = new List<ValueNote>();
@@ -214,7 +214,7 @@
                         if (TempExtractor(fmotivBuffer, 0).Duration.Value > TempExtractor(fmotivBuffer, 1).Duration.Value)
                         {
                             // заносим ноты/паузы первой собранной ноты в очередной фмотив с типом ЧМТ, и удаляем из буфера
-                            var fm = new Fmotiv("ЧМТ", chain.FmotivList.Count);
+                            var fm = new Fmotiv(FmotivType.PartialMinimalMeasure, chain.FmotivList.Count);
                             for (int i = 0; i < n; i++)
                             {
                                 // заносим
@@ -262,7 +262,7 @@
                             if (TempExtractor(fmotivBuffer, ExtractNoteList(fmotivBuffer).Count - 2).Duration.Value <
                                 TempExtractor(fmotivBuffer, ExtractNoteList(fmotivBuffer).Count - 1).Duration.Value)
                             {
-                                var fmotivBuffer2 = new Fmotiv(string.Empty);
+                                var fmotivBuffer2 = new Fmotiv(FmotivType.None);
 
                                 // помещаем в буффер2 последнюю собранную ноту - большей длительности чем все равнодлительные
                                 // так как меняется в процессе
@@ -319,7 +319,7 @@
                             // если длительность предпоследнего больше длительности последнего
                             if (FifthTempComparator(fmotivBuffer))
                             {
-                                var fmotivBuffer2 = new Fmotiv(string.Empty);
+                                var fmotivBuffer2 = new Fmotiv(FmotivType.None);
 
                                 // помещаем в буффер2 последнюю собранную ноту - меньшей длительности чем все равнодлительные
                                 int count = fmotivBuffer.NoteList.Count; // так как меняется в процессе
@@ -372,7 +372,7 @@
                                     // также сохраняем не вошедшую последнюю ноту (не удаляем ее)
                                     if (combination)
                                     {
-                                        var fm = new Fmotiv(fmotivBuffer.Type + "ВП", chain.FmotivList.Count);
+                                        var fm = new Fmotiv((byte)fmotivBuffer.Type + FmotivType.IncreasingSequence, chain.FmotivList.Count);
 
                                         // ЧМТВП или ПМТВП
                                         for (int i = 0; i < n; i++)
@@ -398,7 +398,7 @@
                                     }
                                     else
                                     {
-                                        var fm = new Fmotiv("ВП", chain.FmotivList.Count);
+                                        var fm = new Fmotiv(FmotivType.IncreasingSequence, chain.FmotivList.Count);
                                         for (int i = 0; i < n; i++)
                                         {
                                             // заносим
@@ -428,7 +428,7 @@
             if (ExtractNoteList(fmotivBuffer).Count == 1)
             {
                 // заносим ноты/паузы 1 собранной ноты в очередной фмотив с типом ЧМТ, и удаляем из буфера
-                var fm = new Fmotiv("ЧМТ", chain.FmotivList.Count);
+                var fm = new Fmotiv(FmotivType.PartialMinimalMeasure, chain.FmotivList.Count);
 
                 // for (int i = 0; i < FmotivBuffer.NoteList.Count; i++)
                 foreach (ValueNote note in fmotivBuffer.NoteList)
@@ -469,7 +469,7 @@
                         if (combination)
                         {
                             // заносим оставшиеся ноты в комбинированный фмотив ЧМТ/ПМТ + ВП и в выходную цепочку
-                            var fm = new Fmotiv(fmotivBuffer.Type + "ВП", chain.FmotivList.Count); // ЧМТВП или ПМТВП
+                            var fm = new Fmotiv((byte)fmotivBuffer.Type + FmotivType.IncreasingSequence, chain.FmotivList.Count); // ЧМТВП или ПМТВП
                             foreach (ValueNote note in fmotivBuffer.NoteList)
                             {
                                 // заносим
@@ -485,7 +485,7 @@
                         else
                         {
                             // заносим оставшиеся ноты в фмотив ВП и в выходную цепочку
-                            var fm = new Fmotiv("ВП", chain.FmotivList.Count);
+                            var fm = new Fmotiv(FmotivType.IncreasingSequence, chain.FmotivList.Count);
                             foreach (ValueNote note in fmotivBuffer.NoteList)
                             {
                                 // заносим
@@ -593,7 +593,7 @@
 
                         // собираем в цикле, пока не кончатся ноты в буфере 2 полноценные ноты в зависимостиот того, чем мы считаем паузу 
                         // (когда звуковой след, надо добавить в след идущие паузы за последним звуком)
-                        result.Add(ThirdTempMethod(fmotivBuffer, "ПМТ", 2));
+                        result.Add(ThirdTempMethod(fmotivBuffer, FmotivType.CompleteMinimalMeasure, 2));
                     }
                     else
                     {
@@ -604,7 +604,7 @@
 
                         // собираем в цикле, пока не кончатся ноты в буфере 1 полноценную ноту в зависимостиот того, чем мы считаем паузу 
                         // (когда звуковой след, надо добавить в след идущие паузы за последним звуком)
-                        result.Add(ThirdTempMethod(fmotivBuffer, "ЧМТ", 1));
+                        result.Add(ThirdTempMethod(fmotivBuffer, FmotivType.PartialMinimalMeasure, 1));
 
                         // если осталась одна нота то заносим ее в фмотив ЧМТ
                         SecondTempMethod(fmotivBuffer, result);
@@ -634,17 +634,17 @@
 
                             // собираем в цикле, пока не кончатся ноты в буфере 3 полноценные ноты в зависимости от того, чем мы считаем паузу
                             // (когда звуковой след, надо добавить в след идущие паузы за последним звуком)
-                            result.Add(ThirdTempMethod(fmotivBuffer, "ПМТ", 3));
+                            result.Add(ThirdTempMethod(fmotivBuffer, FmotivType.CompleteMinimalMeasure, 3));
                         }
                         else
                         {
                             // приоритет первой ноты ниже или равен приоритету третьей ноты (собранные ноты)
                             // ПМТ и записываем все что входит в цепочку нот - в эти две собранные ноты, в очередной фмотив
                             // (ЧМТ - если есть знак триоли хотя бы у одной ноты)
-                            string typeF = "ПМТ"; // тип ПМТ если не триоль
+                            FmotivType typeF = FmotivType.CompleteMinimalMeasure; // тип ПМТ если не триоль
                             if (TempComparator(fmotivBuffer))
                             {
-                                typeF = "ЧМТ"; // если есть хотя б один знак триоли
+                                typeF = FmotivType.PartialMinimalMeasure; // если есть хотя б один знак триоли
                             }
 
                             // собираем в цикле, пока не кончатся ноты в буфере 2 полноценные ноты в зависимости от того, чем мы считаем паузу
@@ -665,7 +665,7 @@
 
                         // собираем в цикле, пока не кончатся ноты в буфере 1 полноценная нота в зависимости от того, чем мы считаем паузу 
                         // (когда звуковой след, надо добавить в след идущие паузы за последним звуком)
-                        result.Add(ThirdTempMethod(fmotivBuffer, "ЧМТ", 1));
+                        result.Add(ThirdTempMethod(fmotivBuffer, FmotivType.PartialMinimalMeasure, 1));
 
                         // если осталась одна нота то заносим ее в фмотив ЧМТ
                         SecondTempMethod(fmotivBuffer, result);
@@ -690,7 +690,7 @@
 
                         // собираем в цикле, пока не кончатся ноты в буфере 2 полноценные ноты в зависимости от того, чем мы считаем паузу 
                         // (когда звуковой след, надо добавить в след идущие паузы за последним звуком)
-                        result.Add(ThirdTempMethod(fmotivBuffer, "ПМТ", 2));
+                        result.Add(ThirdTempMethod(fmotivBuffer, FmotivType.CompleteMinimalMeasure, 2));
                     }
                     else
                     {
@@ -701,7 +701,7 @@
 
                         // собираем в цикле, пока не кончатся ноты в буфере 1 полноценную ноту в зависимости от того, чем мы считаем паузу 
                         // (когда звуковой след, надо добавить в след идущие паузы за последним звуком)
-                        result.Add(ThirdTempMethod(fmotivBuffer, "ЧМТ", 1));
+                        result.Add(ThirdTempMethod(fmotivBuffer, FmotivType.PartialMinimalMeasure, 1));
 
                         // вызываем рекурсию на оставшиеся ноты
                         // отправляем последовательность равнодлительных звуков на анализ, получаем цепочку фмотивов и заносим их в выходную последовательность
@@ -727,17 +727,17 @@
 
                         // собираем в цикле, пока не кончатся ноты в буфере 3 полноценные ноты в зависимости от того, чем мы считаем паузу 
                         // (когда звуковой след, надо добавить в след идущие паузы за последним звуком)
-                        result.Add(ThirdTempMethod(fmotivBuffer, "ПМТ", 3));
+                        result.Add(ThirdTempMethod(fmotivBuffer, FmotivType.CompleteMinimalMeasure, 3));
                     }
                     else
                     {
                         // приоритет первой ноты ниже или равен приоритету третьей ноты (собранные ноты)
                         // ПМТ и записываем все что входит в цепочку нот - в эти две собранные ноты, в очередной фмотив
                         // (ЧМТ - если есть знак триоли хотя бы у одной ноты)
-                        string typeF = "ПМТ"; // тип ПМТ если не триоль
+                        FmotivType typeF = FmotivType.CompleteMinimalMeasure; // тип ПМТ если не триоль
                         if (TempComparator(fmotivBuffer))
                         {
-                            typeF = "ЧМТ"; // если есть хотя б один знак триоли
+                            typeF = FmotivType.PartialMinimalMeasure; // если есть хотя б один знак триоли
                         }
 
                         // собираем в цикле, пока не кончатся ноты в буфере 3 полноценные ноты в зависимости от того, чем мы считаем паузу 
@@ -758,7 +758,7 @@
 
                     // собираем в цикле, пока не кончатся ноты в буфере 3 полноценные ноты в зависимости от того, чем мы считаем паузу 
                     // (когда звуковой след, надо добавить в след идущие паузы за последним звуком)
-                    result.Add(ThirdTempMethod(fmotivBuffer, "ЧМТ", 1));
+                    result.Add(ThirdTempMethod(fmotivBuffer, FmotivType.PartialMinimalMeasure, 1));
 
                     // если осталась одна нота то заносим ее в фмотив ЧМТ
                     SecondTempMethod(fmotivBuffer, result);
@@ -916,7 +916,7 @@
         /// <returns>
         /// The <see cref="Fmotiv"/>.
         /// </returns>
-        private Fmotiv ThirdTempMethod(Fmotiv fmotivBuffer, string fmotivType, int noteCount)
+        private Fmotiv ThirdTempMethod(Fmotiv fmotivBuffer, FmotivType fmotivType, int noteCount)
         {
             var fmotiv = new Fmotiv(fmotivType);
             while (fmotivBuffer.NoteList.Count > 0)
@@ -957,7 +957,7 @@
         {
             if (ExtractNoteList(fmotivBuffer).Count == 1)
             {
-                var fm = new Fmotiv("ЧМТ");
+                var fm = new Fmotiv(FmotivType.PartialMinimalMeasure);
                 for (int j = 0; j < fmotivBuffer.NoteList.Count; j++)
                 {
                     // заносим

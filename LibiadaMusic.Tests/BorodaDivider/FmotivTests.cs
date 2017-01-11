@@ -30,7 +30,7 @@
         [TestMethod]
         public void FmotivTest()
         {
-            var fmotiv = new Fmotiv("ПМТ", 0);
+            var fmotiv = new Fmotiv(FmotivType.CompleteMinimalMeasure, 0);
             var notelist = new List<ValueNote> { (ValueNote)note.Clone(), (ValueNote)anote.Clone(), (ValueNote)note.Clone() };
 
             fmotiv.NoteList.Add((ValueNote)note.Clone());
@@ -40,9 +40,9 @@
             Assert.AreEqual(notelist[0], fmotiv.NoteList[0]);
             Assert.AreEqual(notelist[1], fmotiv.NoteList[1]);
             Assert.AreEqual(notelist[2], fmotiv.NoteList[2]);
-            Assert.AreEqual("ПМТ", fmotiv.Type);
-            fmotiv.Type = "ПМТВП";
-            Assert.AreEqual("ПМТВП", fmotiv.Type);
+            Assert.AreEqual(FmotivType.CompleteMinimalMeasure, fmotiv.Type);
+            fmotiv.Type = FmotivType.CompleteMinimalMetrorhythmicGroup;
+            Assert.AreEqual(FmotivType.CompleteMinimalMetrorhythmicGroup, fmotiv.Type);
             Assert.AreEqual(0, fmotiv.Id);
             fmotiv.Id = 1;
             Assert.AreEqual(1, fmotiv.Id);
@@ -57,7 +57,7 @@
         public void FmotivWithoutPausesFirstTest()
         {
             // проверка работы метода, который возвращает копию объекта (Fmotiv), только без пауз.
-            var fmotiv = new Fmotiv("ПМТ", 0);
+            var fmotiv = new Fmotiv(FmotivType.CompleteMinimalMeasure, 0);
             fmotiv.NoteList.Add(new ValueNote(new Pitch(1, NoteSymbol.A, Accidental.Bekar), new Duration(1, 2, false, 480), false, Tie.None));
             fmotiv.NoteList.Add(new ValueNote((Pitch)null, new Duration(1, 4, false, 480), false, Tie.None));
             fmotiv.NoteList.Add(new ValueNote(new Pitch(1, NoteSymbol.A, Accidental.Bekar), new Duration(1, 2, false, 480), false, Tie.None));
@@ -76,7 +76,7 @@
         public void FmotivWithoutPausesSecondTest()
         {
             // проверка работы метода, который возвращает копию объекта (Fmotiv), только без пауз.
-            var fmotiv = new Fmotiv("ПМТ", 0);
+            var fmotiv = new Fmotiv(FmotivType.CompleteMinimalMeasure, 0);
             fmotiv.NoteList.Add(new ValueNote((Pitch)null, new Duration(1, 4, false, 480), false, Tie.None));
             fmotiv.NoteList.Add(new ValueNote((Pitch)null, new Duration(1, 4, false, 480), false, Tie.None));
             fmotiv.NoteList.Add(new ValueNote(new Pitch(1, NoteSymbol.A, Accidental.Bekar), new Duration(1, 2, false, 480), false, Tie.None));
@@ -96,7 +96,7 @@
         public void FmotivTieGatheredFirstTest()
         {
             // проверка работы метода, который возвращает копию объекта (Fmotiv), c собранными залигованными нотами.
-            var fmotiv = new Fmotiv("ПМТ", 0);
+            var fmotiv = new Fmotiv(FmotivType.CompleteMinimalMeasure, 0);
             fmotiv.NoteList.Add(new ValueNote((Pitch)null, new Duration(1, 2, false, 960), false, Tie.None, 0));
             fmotiv.NoteList.Add(new ValueNote(new Pitch(1, NoteSymbol.A, Accidental.Bekar), new Duration(1, 8, false, 480), false, Tie.Start, 2));
             fmotiv.NoteList.Add(new ValueNote(new Pitch(1, NoteSymbol.A, Accidental.Bekar), new Duration(1, 8, false, 480), false, Tie.Continue, 4));
@@ -119,7 +119,7 @@
         public void FmotivTieGatheredSecondTest()
         {
             // проверка работы метода, который возвращает копию объекта (Fmotiv), c собранными залигованными нотами.
-            var fmotiv = new Fmotiv("ПМТ", 0);
+            var fmotiv = new Fmotiv(FmotivType.CompleteMinimalMeasure, 0);
             fmotiv.NoteList.Add(new ValueNote((Pitch)null, new Duration(1, 2, false, 960), false, Tie.None, 0));
             fmotiv.NoteList.Add(new ValueNote(new Pitch(1, NoteSymbol.A, Accidental.Bekar), new Duration(1, 8, 2, 3, false, 320), false, Tie.Start, 2));
             fmotiv.NoteList.Add(new ValueNote(new Pitch(1, NoteSymbol.A, Accidental.Bekar), new Duration(1, 8, 2, 3, false, 320), false, Tie.Continue, 4));
@@ -143,7 +143,7 @@
         {
             // проверка работы метода, который возвращает копию объекта (Fmotiv), c собранными залигованными нотами.
             // старт лиги, потом опять старт лиги
-            var fmotiv = new Fmotiv("ПМТ", 0);
+            var fmotiv = new Fmotiv(FmotivType.CompleteMinimalMeasure, 0);
             fmotiv.NoteList.Add(new ValueNote(new Pitch(1, NoteSymbol.A, Accidental.Bekar), new Duration(1, 8, false, 480), false, Tie.Start, 2));
             fmotiv.NoteList.Add(new ValueNote(new Pitch(1, NoteSymbol.A, Accidental.Bekar), new Duration(1, 8, false, 480), false, Tie.Start, 2));
             try
@@ -177,7 +177,7 @@
             }
 
             // лига без старта
-            var fmotiv1 = new Fmotiv("ПМТ", 0);
+            var fmotiv1 = new Fmotiv(FmotivType.CompleteMinimalMeasure, 0);
             fmotiv1.NoteList.Add(new ValueNote(new Pitch(1, NoteSymbol.A, Accidental.Bekar), new Duration(1, 8, false, 480), false, Tie.Continue, 4));
             fmotiv1.NoteList.Add(new ValueNote(new Pitch(1, NoteSymbol.A, Accidental.Bekar), new Duration(1, 8, false, 480), false, Tie.Continue, 3));
             fmotiv1.NoteList.Add(new ValueNote(new Pitch(1, NoteSymbol.A, Accidental.Bekar), new Duration(1, 8, false, 480), false, Tie.End, 1));
@@ -195,7 +195,7 @@
             }
 
             // в знаке лиги не {-1,0,1,2}
-            var fmotiv2 = new Fmotiv("ПМТ", 0);
+            var fmotiv2 = new Fmotiv(FmotivType.CompleteMinimalMeasure, 0);
             fmotiv2.NoteList.Add(new ValueNote(new Pitch(1, NoteSymbol.A, Accidental.Bekar), new Duration(1, 8, false, 480), false, (Tie)9, 1));
             try
             {
@@ -211,7 +211,7 @@
             }
 
             // в знаке лиги не {-1,0,1,2}
-            var fmotiv3 = new Fmotiv("ПМТ", 0);
+            var fmotiv3 = new Fmotiv(FmotivType.CompleteMinimalMeasure, 0);
             fmotiv3.NoteList.Add(new ValueNote(new Pitch(1, NoteSymbol.A, Accidental.Bekar), new Duration(1, 8, false, 480), false, Tie.Start, 1));
             fmotiv3.NoteList.Add(new ValueNote(new Pitch(1, NoteSymbol.B, Accidental.Bekar), new Duration(1, 8, false, 480), false, Tie.End, 1));
             try
@@ -235,9 +235,9 @@
         public void FmotivEqualsFirstTest()
         {
             // проверка работы метода, который возвращает копию объекта (Fmotiv), c собранными залигованными нотами.
-            var fmotiv1 = new Fmotiv("ПМТ", 0);
-            var fmotiv2 = new Fmotiv("ПМТ", 0);
-            var fmotiv3 = new Fmotiv("ПМТ", 0);
+            var fmotiv1 = new Fmotiv(FmotivType.CompleteMinimalMeasure, 0);
+            var fmotiv2 = new Fmotiv(FmotivType.CompleteMinimalMeasure, 0);
+            var fmotiv3 = new Fmotiv(FmotivType.CompleteMinimalMeasure, 0);
 
             fmotiv1.NoteList.Add(new ValueNote((Pitch)null, new Duration(1, 2, false, 960), false, Tie.None, 0));
             fmotiv1.NoteList.Add(new ValueNote(new Pitch(1, NoteSymbol.A, Accidental.Bekar), new Duration(1, 8, false, 480), false, Tie.Start, 2));
@@ -275,7 +275,7 @@
         [TestMethod]
         public void FmotivEqualsSecondTest()
         {
-            var fmotiv = new Fmotiv("ПМТ", 0);
+            var fmotiv = new Fmotiv(FmotivType.CompleteMinimalMeasure, 0);
             fmotiv.NoteList.Add(new ValueNote((Pitch)null, new Duration(1, 2, false, 960), false, Tie.None, 0));
             fmotiv.NoteList.Add(new ValueNote(new Pitch(1, NoteSymbol.A, Accidental.Bekar), new Duration(1, 8, 2, 3, false, 320), false, Tie.Start, 2));
             fmotiv.NoteList.Add(new ValueNote(new Pitch(1, NoteSymbol.A, Accidental.Bekar), new Duration(1, 8, 2, 3, false, 320), false, Tie.Continue, 4));
@@ -293,7 +293,7 @@
         [TestMethod]
         public void FmotivEqualsThirdTest()
         {
-            var fmotiv = new Fmotiv("ПМТ", 0);
+            var fmotiv = new Fmotiv(FmotivType.CompleteMinimalMeasure, 0);
             fmotiv.NoteList.Add(new ValueNote((Pitch)null, new Duration(1, 2, false, 960), false, Tie.None, 0));
             fmotiv.NoteList.Add(new ValueNote(new Pitch(2, NoteSymbol.A, Accidental.Bekar), new Duration(1, 8, 2, 3, false, 320), false, Tie.Start, 2));
             fmotiv.NoteList.Add(new ValueNote(new Pitch(2, NoteSymbol.A, Accidental.Bekar), new Duration(1, 8, 2, 3, false, 320), false, Tie.Continue, 4));
@@ -302,7 +302,7 @@
             fmotiv.NoteList.Add(new ValueNote((Pitch)null, new Duration(1, 4, false, 480), false, Tie.None, 3));
             fmotiv.NoteList.Add(new ValueNote(new Pitch(2, NoteSymbol.A, Accidental.Bekar), new Duration(1, 2, false, 480), false, Tie.None, 4));
 
-            var fmotiv1 = new Fmotiv("ПМТ", 0);
+            var fmotiv1 = new Fmotiv(FmotivType.CompleteMinimalMeasure, 0);
             fmotiv1.NoteList.Add(new ValueNote(new Pitch(3, NoteSymbol.A, Accidental.Bekar), new Duration(1, 8, 2, 3, false, 320), false, Tie.Start, 0));
             fmotiv1.NoteList.Add(new ValueNote(new Pitch(3, NoteSymbol.A, Accidental.Bekar), new Duration(1, 8, 2, 3, false, 320), false, Tie.Continue, 1));
             fmotiv1.NoteList.Add(new ValueNote(new Pitch(3, NoteSymbol.A, Accidental.Bekar), new Duration(1, 8, 2, 3, false, 320), false, Tie.Continue, 3));

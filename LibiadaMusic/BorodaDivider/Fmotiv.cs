@@ -23,7 +23,7 @@
         /// порядковый номер - идентификатор
         /// (возможно введения доп id - глобального для словаря ф-мотивов)
         /// </param>
-        public Fmotiv(string type, int id = -1)
+        public Fmotiv(FmotivType type, int id = -1)
         {
             Id = id;
             Type = type;
@@ -38,7 +38,7 @@
         /// <summary>
         /// Gets or sets the type.
         /// </summary>
-        public string Type { get; set; }
+        public FmotivType Type { get; set; }
 
         /// <summary>
         /// Gets or sets id (-1 means not defined).

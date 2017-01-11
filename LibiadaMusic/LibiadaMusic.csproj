@@ -84,6 +84,7 @@
     <Compile Include="ScoreModel\Attributes.cs" />
     <Compile Include="ScoreModel\Duration.cs" />
     <Compile Include="ScoreModel\DurationType.cs" />
+    <Compile Include="ScoreModel\FmotivType.cs" />
     <Compile Include="ScoreModel\Instrument.cs" />
     <Compile Include="ScoreModel\Key.cs" />
     <Compile Include="ScoreModel\Measure.cs" />
