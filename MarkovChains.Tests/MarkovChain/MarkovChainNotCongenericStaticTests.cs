@@ -11,7 +11,7 @@ namespace MarkovChains.Tests.MarkovChain
 
     /// <summary>
     /// Tests of non congeneric markov chain.
-    /// Non congeneric (heterogeneous) chain is several separated markov chains (matrixes) 
+    /// Non congeneric (heterogeneous) chain is several separated markov chains (matrixes)
     /// each one is used on separate step.
     /// </summary>
     [TestFixture]

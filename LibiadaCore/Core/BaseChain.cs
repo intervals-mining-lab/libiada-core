@@ -77,7 +77,7 @@ namespace LibiadaCore.Core
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="BaseChain"/> class 
+        /// Initializes a new instance of the <see cref="BaseChain"/> class
         /// with provided building and alphabet.
         /// Only simple validation is made.
         /// </summary>
@@ -99,7 +99,7 @@ namespace LibiadaCore.Core
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="BaseChain"/> class 
+        /// Initializes a new instance of the <see cref="BaseChain"/> class
         /// with provided building and alphabet.
         /// Only simple validation is made.
         /// </summary>

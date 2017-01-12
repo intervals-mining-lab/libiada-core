@@ -1,24 +1,40 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Clusterizator.kMeans;
-using Clusterizator.Krab;
-
-namespace Clusterizator
+﻿namespace Clusterizator
 {
+    using System;
+    using System.Collections.Generic;
+
+    using Clusterizator.KMeans;
+    using Clusterizator.Krab;
+
+    /// <summary>
+    /// The clusterizators factory.
+    /// </summary>
     public static class ClusterizatorsFactory
     {
-        public static IClusterizator CreateClusterization(ClusterizationType type, Dictionary<string, double> parameters)
+        /// <summary>
+        /// The create clusterizator.
+        /// </summary>
+        /// <param name="type">
+        /// The type.
+        /// </param>
+        /// <param name="parameters">
+        /// The parameters.
+        /// </param>
+        /// <returns>
+        /// The <see cref="IClusterizator"/>.
+        /// </returns>
+        /// <exception cref="Exception">
+        /// Thrown if culsterizator type is invalid
+        /// </exception>
+        public static IClusterizator CreateClusterizator(ClusterizationType type, Dictionary<string, double> parameters)
         {
-            switch(type)
+            switch (type)
             {
-                case ClusterizationType.kMeans: 
+                case ClusterizationType.KMeans:
                     return new KMeansClusterization();
                 case ClusterizationType.Krab:
                     double powerWeight;
-                    if(!parameters.TryGetValue("powerWeight", out powerWeight))
+                    if (!parameters.TryGetValue("powerWeight", out powerWeight))
                     {
                         powerWeight = 1;
                     }

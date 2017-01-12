@@ -9,8 +9,8 @@ namespace LibiadaCore.Core.Characteristics.Calculators
     public class Depth : ICalculator
     {
         /// <summary>
-        /// Calculated as base 2 logarithm of multiplication 
-        /// of intervals between nearest elements 
+        /// Calculated as base 2 logarithm of multiplication
+        /// of intervals between nearest elements
         /// in congeneric sequence.
         /// </summary>
         /// <param name="chain">
@@ -30,8 +30,8 @@ namespace LibiadaCore.Core.Characteristics.Calculators
         }
 
         /// <summary>
-        /// Calculated as base 2 logarithm of multiplication 
-        /// of intervals between nearest elements 
+        /// Calculated as base 2 logarithm of multiplication
+        /// of intervals between nearest elements
         /// in congeneric sequence.
         /// </summary>
         /// <param name="chain">

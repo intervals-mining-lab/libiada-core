@@ -6,7 +6,7 @@ namespace LibiadaCore.Core.Characteristics.Calculators
     public class ElementsCount : ICalculator
     {
         /// <summary>
-        /// Amount of not empty positions, 
+        /// Amount of not empty positions,
         /// in other words elements count.
         /// </summary>
         /// <param name="chain">
@@ -24,7 +24,7 @@ namespace LibiadaCore.Core.Characteristics.Calculators
         }
 
         /// <summary>
-        /// Amount of not empty positions, 
+        /// Amount of not empty positions,
         /// in other words elements count.
         /// </summary>
         /// <param name="chain">

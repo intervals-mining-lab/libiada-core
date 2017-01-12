@@ -6,7 +6,6 @@
 
     using LibiadaCore.Exceptions;
 
-
     /// <summary>
     /// The enum helper.
     /// </summary>

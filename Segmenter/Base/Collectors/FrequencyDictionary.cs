@@ -201,7 +201,7 @@
         /// More formally, returns true if and only if this FrequencyDictionary contains at least one word.
         /// </summary>
         /// <param name="str">
-        /// word is built from letters 
+        /// word is built from letters
         /// whose presence in this FrequencyDictionary is to be tested
         /// </param>
         /// <returns>true if this FrequencyDictionary contains the specified word</returns>

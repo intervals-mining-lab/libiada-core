@@ -1,14 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Clusterizator
+﻿namespace Clusterizator
 {
+    /// <summary>
+    /// The clusterization type.
+    /// </summary>
     public enum ClusterizationType : byte
     {
-        kMeans = 1,
+        /// <summary>
+        /// The k means.
+        /// </summary>
+        KMeans = 1,
+
+        /// <summary>
+        /// The krab.
+        /// </summary>
         Krab = 2
     }
 }

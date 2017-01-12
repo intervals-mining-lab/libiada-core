@@ -16,7 +16,7 @@ namespace LibiadaCore.Core.Characteristics.Calculators
         private readonly ICalculator counter = new IntervalsCount();
 
         /// <summary>
-        /// Calculates multiplication of all intervals 
+        /// Calculates multiplication of all intervals
         /// between nearest elements in congeneric sequence
         /// divided by number of intervals.
         /// </summary>
@@ -37,7 +37,7 @@ namespace LibiadaCore.Core.Characteristics.Calculators
         }
 
         /// <summary>
-        /// Calculates multiplication of all intervals 
+        /// Calculates multiplication of all intervals
         /// between nearest similar elements in sequence
         /// divided by number of intervals.
         /// </summary>

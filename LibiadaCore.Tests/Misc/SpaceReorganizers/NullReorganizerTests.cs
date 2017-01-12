@@ -32,7 +32,7 @@ namespace LibiadaCore.Tests.Misc.SpaceReorganizers
         }
 
         /// <summary>
-        /// We need to test that we can correctly convert chain from 
+        /// We need to test that we can correctly convert chain from
         /// object parent class to object child class.
         /// </summary>
         [Test]
@@ -44,7 +44,7 @@ namespace LibiadaCore.Tests.Misc.SpaceReorganizers
         }
 
         /// <summary>
-        /// We need to test that we can correctly convert chain from 
+        /// We need to test that we can correctly convert chain from
         /// object child class to object parent class.
         /// </summary>
         [Test]

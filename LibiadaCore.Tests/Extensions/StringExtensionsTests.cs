@@ -18,7 +18,7 @@
         {
             string source = "Chaoyang virus strain Deming polyprotein gene, complete cds.";
             string expected = "Chaoyang virus strain Deming polyprotein gene";
- 
+
             string actual = source.TrimEnd(", complete cds.");
             Assert.AreEqual(expected, actual);
 
@@ -81,7 +81,7 @@
         }
 
         /// <summary>
-        /// Test for get largest repeating substring method 
+        /// Test for get largest repeating substring method
         /// with no substring to be found.
         /// </summary>
         [Test]

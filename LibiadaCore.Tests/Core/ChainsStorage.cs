@@ -88,8 +88,6 @@ namespace LibiadaCore.Tests.Core
                                // T T T T
                                // T T T T
                                new Chain("TTTT"),
-
-
                            };
             }
         }

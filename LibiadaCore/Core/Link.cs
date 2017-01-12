@@ -19,7 +19,7 @@ namespace LibiadaCore.Core
         /// <summary>
         /// No link.
         /// Both interval from start of chain to first element
-        /// and interval from last element to end of chain 
+        /// and interval from last element to end of chain
         /// are not taken into account.
         /// </summary>
         [Display(Name = "None")]
@@ -28,7 +28,7 @@ namespace LibiadaCore.Core
 
         /// <summary>
         /// Link to start.
-        /// Interval from last element to end of chain 
+        /// Interval from last element to end of chain
         /// is not taken into account.
         /// </summary>
         [Display(Name = "To the beginning")]
@@ -37,7 +37,7 @@ namespace LibiadaCore.Core
 
         /// <summary>
         /// Link to end.
-        /// Interval from start of chain to first element 
+        /// Interval from start of chain to first element
         /// is not taken into account.
         /// </summary>
         [Display(Name = "To the end")]
@@ -47,7 +47,7 @@ namespace LibiadaCore.Core
         /// <summary>
         /// Link to start and end.
         /// Both interval from start of chain to first element
-        /// and interval from last element to end of chain 
+        /// and interval from last element to end of chain
         /// are taken into account.
         /// </summary>
         [Display(Name = "To the beginning and to the end")]
@@ -58,7 +58,7 @@ namespace LibiadaCore.Core
         /// <summary>
         /// Cyclic link.
         /// Interval from start of chain to first element
-        /// and interval from last element to end of chain 
+        /// and interval from last element to end of chain
         /// are summed into one interval.
         /// </summary>
         [Display(Name = "Cyclic")]

@@ -1,7 +1,7 @@
 ﻿namespace LibiadaCore.Core.Characteristics.Calculators
 {
     /// <summary>
-    /// Normalized asymmetry of average remoteness 
+    /// Normalized asymmetry of average remoteness
     /// in other words asymmetry coefficient (skewness) of average remoteness.
     /// </summary>
     public class EntropySkewnessCoefficient : IFullCalculator

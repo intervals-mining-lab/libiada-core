@@ -3,7 +3,7 @@
     using LibiadaCore.Core.SimpleTypes;
 
     /// <summary>
-    /// Count of probable sequences that can be generated 
+    /// Count of probable sequences that can be generated
     /// from given phantom chain (sequence containing phantom messages).
     /// </summary>
     public class VariationsCount : ICalculator

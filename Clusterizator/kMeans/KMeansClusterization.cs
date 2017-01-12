@@ -1,4 +1,4 @@
-﻿namespace Clusterizator.kMeans
+﻿namespace Clusterizator.KMeans
 {
     using Accord.MachineLearning;
 

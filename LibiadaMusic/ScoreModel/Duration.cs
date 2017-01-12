@@ -75,7 +75,7 @@
 
         /// <summary>
         /// Gets original numerator.
-        /// оригинальный числитель в дроби доли 
+        /// оригинальный числитель в дроби доли
         /// (для сохранения после наложения триоли на длительность)
         /// </summary>
         public int Onumerator { get; private set; }

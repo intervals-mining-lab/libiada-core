@@ -3,6 +3,9 @@
     using System.ComponentModel;
     using System.ComponentModel.DataAnnotations;
 
+    /// <summary>
+    /// The accidental.
+    /// </summary>
     public enum Accidental : short
     {
         /// <summary>

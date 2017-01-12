@@ -6,7 +6,6 @@
 
     using LibiadaCore.Core;
     using LibiadaCore.Extensions;
-    using LibiadaCore.Misc;
 
     /// <summary>
     /// Генерирует все возможные сочетания.
@@ -14,7 +13,7 @@
     public class ScramblingGenerator
     {
         /// <summary>
-        /// Generates hashtable with all possible combinations as keys 
+        /// Generates hashtable with all possible combinations as keys
         /// and characteristics list as values.
         /// </summary>
         /// <param name="alphabet">
