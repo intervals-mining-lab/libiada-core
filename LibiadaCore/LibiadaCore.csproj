@@ -75,6 +75,7 @@
     <Compile Include="Core\IntervalsManagers\AccordanceIntervalsManager.cs" />
     <Compile Include="Core\IntervalsManagers\NullCongenericIntervalsManager.cs" />
     <Compile Include="Exceptions\TypeArgumentException.cs" />
+    <Compile Include="Extensions\EnumExtensions.cs" />
     <Compile Include="Extensions\StringExtensions.cs" />
     <Compile Include="Misc\DataTransformers\DnaProcessing.cs" />
     <Compile Include="Core\Characteristics\Calculators\GCRatio.cs" />

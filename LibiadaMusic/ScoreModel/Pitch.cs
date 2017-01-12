@@ -57,14 +57,12 @@
 
         /// <summary>
         /// Gets note number.
-        /// Unique note number in midi standart.
-        /// уникальный номер ноты по миди стандарту
+        /// Unique note number in midi standard.
         /// </summary>
         public int MidiNumber { get; private set; }
 
         /// <summary>
         /// Gets step.
-        /// ЗАГЛАВНАЯ (!) буква обозначающая "относительную" высоту ноты "A", "B" и т.д.
         /// </summary>
         public NoteSymbol Step { get; private set; }
 
@@ -80,7 +78,6 @@
 
         /// <summary>
         /// Gets alteration.
-        /// диез/бемоль +1 диез; -1 бемоль
         /// </summary>
         public Accidental Alter { get; private set; }
 
@@ -132,8 +129,7 @@
         }
 
         /// <summary>
-        /// The get midi number by param.
-        /// вычисление глобального номера ноты через параметры
+        /// Calculates midi number from pitch params.
         /// </summary>
         /// <returns>
         /// The <see cref="int"/>.
