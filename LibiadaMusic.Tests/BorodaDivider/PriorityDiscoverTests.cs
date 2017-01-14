@@ -6,12 +6,12 @@
     using LibiadaMusic.BorodaDivider;
     using LibiadaMusic.ScoreModel;
 
-    using Microsoft.VisualStudio.TestTools.UnitTesting;
+    using NUnit.Framework;
 
     /// <summary>
     /// The priority discover tests.
     /// </summary>
-    [TestClass]
+    [TestFixture]
     public class PriorityDiscoverTests
     {
         /// <summary>
@@ -72,7 +72,7 @@
         /// <summary>
         /// The priority get set test.
         /// </summary>
-        [TestMethod]
+        [Test]
         public void PriorityGetSetTest()
         {
             note.Priority = 0;
@@ -87,7 +87,7 @@
         /// <summary>
         /// The priority min duration test.
         /// </summary>
-        [TestMethod]
+        [Test]
         public void PriorityMinDurationTest()
         {
             var pd = new PriorityDiscover();
@@ -117,7 +117,7 @@
         /// <summary>
         /// The priority mask calculation first test.
         /// </summary>
-        [TestMethod]
+        [Test]
         public void PriorityMaskCalculationFirstTest()
         {
             var pd = new PriorityDiscover();
@@ -171,7 +171,7 @@
         /// <summary>
         /// The priority mask calculation second test.
         /// </summary>
-        [TestMethod]
+        [Test]
         public void PriorityMaskCalculationSecondTest()
         {
             var pd = new PriorityDiscover();
@@ -242,7 +242,7 @@
         /// <summary>
         /// The priority mask calculation third test.
         /// </summary>
-        [TestMethod]
+        [Test]
         public void PriorityMaskCalculationThirdTest()
         {
             var pd = new PriorityDiscover();
@@ -291,7 +291,7 @@
         /// <summary>
         /// The priority mask calculation fourth test.
         /// </summary>
-        [TestMethod]
+        [Test]
         public void PriorityMaskCalculationFourthTest()
         {
             var pd = new PriorityDiscover();
@@ -320,7 +320,7 @@
         /// <summary>
         /// The priority discover test.
         /// </summary>
-        [TestMethod]
+        [Test]
         public void PriorityDiscoverTest()
         {
             var notes = new List<ValueNote> { note, bnote, anote };

@@ -2,18 +2,18 @@
 {
     using LibiadaMusic.Analysis;
 
-    using Microsoft.VisualStudio.TestTools.UnitTesting;
+    using NUnit.Framework;
 
     /// <summary>
     /// The composition tests.
     /// </summary>
-    [TestClass]
+    [TestFixture]
     public class CompositionTests
     {
         /// <summary>
         /// The composition test.
         /// </summary>
-        [TestMethod]
+        [Test]
         public void CompositionTest()
         {
             var com = new Composition();

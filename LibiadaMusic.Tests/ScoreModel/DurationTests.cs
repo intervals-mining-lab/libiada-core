@@ -2,18 +2,18 @@
 {
     using LibiadaMusic.ScoreModel;
 
-    using Microsoft.VisualStudio.TestTools.UnitTesting;
+    using NUnit.Framework;
 
     /// <summary>
     /// The duration tests.
     /// </summary>
-    [TestClass]
+    [TestFixture]
     public class DurationTests
     {
         /// <summary>
         /// The add duration test.
         /// </summary>
-        [TestMethod]
+        [Test]
         public void AddDurationTest()
         {
             var duration1 = new Duration(1, 2, false, 480);

@@ -6,18 +6,18 @@
     using LibiadaMusic.Characteristics;
     using LibiadaMusic.ScoreModel;
 
-    using Microsoft.VisualStudio.TestTools.UnitTesting;
+    using NUnit.Framework;
 
     /// <summary>
     /// The note characteristic tests.
     /// </summary>
-    [TestClass]
+    [TestFixture]
     public class NoteCharacteristicTests
     {
         /// <summary>
         /// The value note remoteness test.
         /// </summary>
-        [TestMethod]
+        [Test]
         public void ValueNoteRemotenessTest()
         {
             var fmotiv1 = new Fmotiv(FmotivType.CompleteMinimalMeasure, 0);
@@ -39,7 +39,7 @@
         /// <summary>
         /// The value note remoteness pause test.
         /// </summary>
-        [TestMethod]
+        [Test]
         public void ValueNoteRemotenessPauseTest()
         {
             var fmotiv1 = new Fmotiv(FmotivType.CompleteMinimalMeasure, 0);
@@ -62,7 +62,7 @@
         /// <summary>
         /// The value note remoteness tie test.
         /// </summary>
-        [TestMethod]
+        [Test]
         public void ValueNoteRemotenessTieTest()
         {
             var fmotiv1 = new Fmotiv(FmotivType.CompleteMinimalMeasure, 0);
@@ -85,7 +85,7 @@
         /// <summary>
         /// The value note remoteness oct test.
         /// </summary>
-        [TestMethod]
+        [Test]
         public void ValueNoteRemotenessOctTest()
         {
             var fmotiv1 = new Fmotiv(FmotivType.CompleteMinimalMeasure, 0);

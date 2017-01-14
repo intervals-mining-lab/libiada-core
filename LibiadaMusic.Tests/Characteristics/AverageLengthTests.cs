@@ -6,18 +6,18 @@
     using LibiadaMusic.Characteristics;
     using LibiadaMusic.ScoreModel;
 
-    using Microsoft.VisualStudio.TestTools.UnitTesting;
+    using NUnit.Framework;
 
     /// <summary>
     /// The average length tests.
     /// </summary>
-    [TestClass]
+    [TestFixture]
     public class AverageLengthTests
     {
         /// <summary>
         /// The average length first test.
         /// </summary>
-        [TestMethod]
+        [Test]
         public void AverageLengthFirstTest()
         {
             var fmotiv1 = new Fmotiv(FmotivType.CompleteMinimalMeasure, 0);
@@ -39,7 +39,7 @@
         /// <summary>
         /// The average length second test.
         /// </summary>
-        [TestMethod]
+        [Test]
         public void AverageLengthSecondTest()
         {
             var fmotiv1 = new Fmotiv(FmotivType.CompleteMinimalMeasure, 0);
@@ -65,7 +65,7 @@
         /// <summary>
         /// The average length pause test.
         /// </summary>
-        [TestMethod]
+        [Test]
         public void AverageLengthPauseTest()
         {
             var fmotiv1 = new Fmotiv(FmotivType.CompleteMinimalMeasure, 0);
@@ -92,7 +92,7 @@
         /// <summary>
         /// The average length tie test.
         /// </summary>
-        [TestMethod]
+        [Test]
         public void AverageLengthTieTest()
         {
             var fmotiv1 = new Fmotiv(FmotivType.CompleteMinimalMeasure, 0);
@@ -120,7 +120,7 @@
         /// <summary>
         /// The average length third test.
         /// </summary>
-        [TestMethod]
+        [Test]
         public void AverageLengthThirdTest()
         {
             var fmotiv1 = new Fmotiv(FmotivType.CompleteMinimalMeasure, 0);
@@ -136,7 +136,7 @@
         /// <summary>
         /// The average length half test.
         /// </summary>
-        [TestMethod]
+        [Test]
         public void AverageLengthHalfTest()
         {
             var fmotiv1 = new Fmotiv(FmotivType.CompleteMinimalMeasure, 0);
@@ -157,7 +157,7 @@
         /// <summary>
         /// The average length error test.
         /// </summary>
-        [TestMethod]
+        [Test]
         public void AverageLengthErrorTest()
         {
             try

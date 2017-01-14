@@ -3,18 +3,18 @@
     using LibiadaMusic.BorodaDivider;
     using LibiadaMusic.ScoreModel;
 
-    using Microsoft.VisualStudio.TestTools.UnitTesting;
+    using NUnit.Framework;
 
     /// <summary>
     /// The fmotiv identification tests.
     /// </summary>
-    [TestClass]
+    [TestFixture]
     public class FmotivIdentifierTests
     {
         /// <summary>
         /// The fmotiv identification first test.
         /// </summary>
-        [TestMethod]
+        [Test]
         public void FmotivIdentificationFirstTest()
         {
             // создание ф-мотивов
@@ -64,7 +64,7 @@
         /// <summary>
         /// The fmotiv identification second test.
         /// </summary>
-        [TestMethod]
+        [Test]
         public void FmotivIdentificationSecondTest()
         {
             // создание ф-мотивов

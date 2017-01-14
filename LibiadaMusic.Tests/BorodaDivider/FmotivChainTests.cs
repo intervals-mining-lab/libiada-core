@@ -3,18 +3,18 @@
     using LibiadaMusic.BorodaDivider;
     using LibiadaMusic.ScoreModel;
 
-    using Microsoft.VisualStudio.TestTools.UnitTesting;
+    using NUnit.Framework;
 
     /// <summary>
     /// The fmotiv chain tests.
     /// </summary>
-    [TestClass]
+    [TestFixture]
     public class FmotivChainTests
     {
         /// <summary>
         /// The fmotiv chain test.
         /// </summary>
-        [TestMethod]
+        [Test]
         public void FmotivChainTest()
         {
             var chain = new FmotivChain { Id = 0 };
@@ -29,7 +29,7 @@
         /// <summary>
         /// The fmotiv chain equals test.
         /// </summary>
-        [TestMethod]
+        [Test]
         public void FmotivChainEqualsTest()
         {
             var fmotiv1 = new Fmotiv(FmotivType.CompleteMinimalMeasure, 0);

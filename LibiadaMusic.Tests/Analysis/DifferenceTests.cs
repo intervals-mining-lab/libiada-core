@@ -2,18 +2,18 @@
 {
     using LibiadaMusic.Analysis;
 
-    using Microsoft.VisualStudio.TestTools.UnitTesting;
+    using NUnit.Framework;
 
     /// <summary>
     /// The difference tests.
     /// </summary>
-    [TestClass]
+    [TestFixture]
     public class DifferenceTests
     {
         /// <summary>
         /// The difference test.
         /// </summary>
-        [TestMethod]
+        [Test]
         public void DifferenceTest()
         {
             var dif1 = new Difference();

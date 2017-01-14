@@ -5,12 +5,12 @@
     using LibiadaMusic.BorodaDivider;
     using LibiadaMusic.ScoreModel;
 
-    using Microsoft.VisualStudio.TestTools.UnitTesting;
+    using NUnit.Framework;
 
     /// <summary>
     /// The fmotiv divider tests.
     /// </summary>
-    [TestClass]
+    [TestFixture]
     public class FmotivDividerTests
     {
         // ТЕСТЫ ПМТ
@@ -18,7 +18,7 @@
         /// <summary>
         /// The fmotiv divider first test.
         /// </summary>
-        [TestMethod]
+        [Test]
         public void FmotivDividerFirstTest()
         {
             // создание и заполнения списка(ов) нот для такта(ов) монотрека
@@ -69,7 +69,7 @@
         /// <summary>
         /// The fmotiv divider second test.
         /// </summary>
-        [TestMethod]
+        [Test]
         public void FmotivDividerSecondTest()
         {
             // создание и заполнения списка(ов) нот для такта(ов) монотрека
@@ -120,7 +120,7 @@
         /// <summary>
         /// The test fmotiv third divider.
         /// </summary>
-        [TestMethod]
+        [Test]
         public void TestFmotivThirdDivider()
         {
             // создание и заполнения списка(ов) нот для такта(ов) монотрека
@@ -184,7 +184,7 @@
         /// <summary>
         /// The fmotiv divider fourth test.
         /// </summary>
-        [TestMethod]
+        [Test]
         public void FmotivDividerFourthTest()
         {
             // создание и заполнения списка(ов) нот для такта(ов) монотрека
@@ -230,7 +230,7 @@
         /// <summary>
         /// The fmotiv divider fifth test.
         /// </summary>
-        [TestMethod]
+        [Test]
         public void FmotivDividerFifthTest()
         {
             // создание и заполнения списка(ов) нот для такта(ов) монотрека
@@ -283,7 +283,7 @@
         /// <summary>
         /// The fmotiv divider sixth test.
         /// </summary>
-        [TestMethod]
+        [Test]
         public void FmotivDividerSixthTest()
         {
             // создание и заполнения списка(ов) нот для такта(ов) монотрека
@@ -339,7 +339,7 @@
         /// <summary>
         /// The fmotiv divider seventh test.
         /// </summary>
-        [TestMethod]
+        [Test]
         public void FmotivDividerSeventhTest()
         {
             // создание и заполнения списка(ов) нот для такта(ов) монотрека
@@ -384,7 +384,7 @@
         /// <summary>
         /// The fmotiv divider eighth test.
         /// </summary>
-        [TestMethod]
+        [Test]
         public void FmotivDividerEighthTest()
         {
             // создание и заполнения списка(ов) нот для такта(ов) монотрека
@@ -431,7 +431,7 @@
         /// <summary>
         /// The fmotiv divider pause silence test.
         /// </summary>
-        [TestMethod]
+        [Test]
         public void FmotivDividerPauseSilenceTest()
         {
             // создание и заполнения списка(ов) нот для такта(ов) монотрека

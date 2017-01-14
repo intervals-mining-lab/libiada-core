@@ -2,18 +2,18 @@
 {
     using LibiadaMusic.ScoreModel;
 
-    using Microsoft.VisualStudio.TestTools.UnitTesting;
+    using NUnit.Framework;
 
     /// <summary>
     /// The value note tests.
     /// </summary>
-    [TestClass]
+    [TestFixture]
     public class ValueNoteTests
     {
         /// <summary>
         /// The value note equals first test.
         /// </summary>
-        [TestMethod]
+        [Test]
         public void ValueNoteEqualsFirstTest()
         {
             var note1 = new ValueNote(new Pitch(1, NoteSymbol.A, Accidental.Bekar), new Duration(1, 4, false, 480), false, Tie.None);
@@ -26,7 +26,7 @@
         /// <summary>
         /// The value note equals second test.
         /// </summary>
-        [TestMethod]
+        [Test]
         public void ValueNoteEqualsSecondTest()
         {
             var note1 = new ValueNote(new Pitch(1, NoteSymbol.A, Accidental.Bekar), new Duration(1, 4, false, 480), false, Tie.None);
@@ -39,7 +39,7 @@
         /// <summary>
         /// The multi note equals test.
         /// </summary>
-        [TestMethod]
+        [Test]
         public void MultiNoteEqualsTest()
         {
             var note1 = new ValueNote(new Pitch(1, NoteSymbol.A, Accidental.Bekar), new Duration(1, 4, false, 480), false, Tie.None);
@@ -54,7 +54,7 @@
         /// <summary>
         /// The value note clone test.
         /// </summary>
-        [TestMethod]
+        [Test]
         public void ValueNoteCloneTest()
         {
             var note1 = new ValueNote(new Pitch(1, NoteSymbol.A, Accidental.Bekar), new Duration(1, 4, false, 480), false, Tie.End);

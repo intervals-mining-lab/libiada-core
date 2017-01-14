@@ -5,18 +5,18 @@
     using LibiadaMusic.MusicXml;
     using LibiadaMusic.ScoreModel;
 
-    using Microsoft.VisualStudio.TestTools.UnitTesting;
+    using NUnit.Framework;
 
     /// <summary>
     /// The music xml parser tests.
     /// </summary>
-    [TestClass]
+    [TestFixture]
     public class MusicXmlParserTests
     {
         /// <summary>
         /// The xml parser test.
         /// </summary>
-        [TestMethod]
+        [Test]
         public void XmlParserTest()
         {
             var xmlReader = new MusicXmlReader("../../LibiadaMusicexample7Liga.xml");
@@ -104,7 +104,7 @@
         /// <summary>
         /// The poly xml parser test.
         /// </summary>
-        [TestMethod]
+        [Test]
         public void PolyXmlParserTest()
         {
             var xmlReader = new MusicXmlReader("../../polytest.xml");
@@ -132,7 +132,7 @@
         /// <summary>
         /// The xml parser file name test.
         /// </summary>
-        [TestMethod]
+        [Test]
         public void XmlParserFileNameTest()
         {
         }
@@ -140,7 +140,7 @@
         /// <summary>
         /// The xml parser scoretrack test.
         /// </summary>
-        [TestMethod]
+        [Test]
         public void XmlParserScoretrackTest()
         {
         }
@@ -148,7 +148,7 @@
         /// <summary>
         /// The xml parser congeneric scoretrack test.
         /// </summary>
-        [TestMethod]
+        [Test]
         public void XmlParserCongenericScoretrackTest()
         {
         }
@@ -156,7 +156,7 @@
         /// <summary>
         /// The xml parser measure test.
         /// </summary>
-        [TestMethod]
+        [Test]
         public void XmlParserMeasureTest()
         {
         }
@@ -164,7 +164,7 @@
         /// <summary>
         /// The xml parser note test.
         /// </summary>
-        [TestMethod]
+        [Test]
         public void XmlParserNoteTest()
         {
         }
@@ -172,7 +172,7 @@
         /// <summary>
         /// The xml parser attributes test.
         /// </summary>
-        [TestMethod]
+        [Test]
         public void XmlParserAttributesTest()
         {
         }
@@ -180,7 +180,7 @@
         /// <summary>
         /// The xml parser pitch test.
         /// </summary>
-        [TestMethod]
+        [Test]
         public void XmlParserPitchTest()
         {
         }
@@ -188,7 +188,7 @@
         /// <summary>
         /// The xml parser duration test.
         /// </summary>
-        [TestMethod]
+        [Test]
         public void XmlParserDurationTest()
         {
         }
@@ -196,7 +196,7 @@
         /// <summary>
         /// The xml parser tie test.
         /// </summary>
-        [TestMethod]
+        [Test]
         public void XmlParserTieTest()
         {
         }
@@ -204,7 +204,7 @@
         /// <summary>
         /// The xml parser triplet test.
         /// </summary>
-        [TestMethod]
+        [Test]
         public void XmlParserTripletTest()
         {
         }

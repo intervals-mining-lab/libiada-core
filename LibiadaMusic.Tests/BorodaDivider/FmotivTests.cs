@@ -6,12 +6,12 @@
     using LibiadaMusic.BorodaDivider;
     using LibiadaMusic.ScoreModel;
 
-    using Microsoft.VisualStudio.TestTools.UnitTesting;
+    using NUnit.Framework;
 
     /// <summary>
     /// The fmotiv tests.
     /// </summary>
-    [TestClass]
+    [TestFixture]
     public class FmotivTests
     {
         /// <summary>
@@ -27,7 +27,7 @@
         /// <summary>
         /// The fmotiv test.
         /// </summary>
-        [TestMethod]
+        [Test]
         public void FmotivTest()
         {
             var fmotiv = new Fmotiv(FmotivType.CompleteMinimalMeasure, 0);
@@ -53,7 +53,7 @@
         /// <summary>
         /// The fmotiv without pauses first test.
         /// </summary>
-        [TestMethod]
+        [Test]
         public void FmotivWithoutPausesFirstTest()
         {
             // проверка работы метода, который возвращает копию объекта (Fmotiv), только без пауз.
@@ -72,7 +72,7 @@
         /// <summary>
         /// The fmotiv without pauses second test.
         /// </summary>
-        [TestMethod]
+        [Test]
         public void FmotivWithoutPausesSecondTest()
         {
             // проверка работы метода, который возвращает копию объекта (Fmotiv), только без пауз.
@@ -92,7 +92,7 @@
         /// <summary>
         /// The fmotiv tie gathered first test.
         /// </summary>
-        [TestMethod]
+        [Test]
         public void FmotivTieGatheredFirstTest()
         {
             // проверка работы метода, который возвращает копию объекта (Fmotiv), c собранными залигованными нотами.
@@ -115,7 +115,7 @@
         /// <summary>
         /// The fmotiv tie gathered second test.
         /// </summary>
-        [TestMethod]
+        [Test]
         public void FmotivTieGatheredSecondTest()
         {
             // проверка работы метода, который возвращает копию объекта (Fmotiv), c собранными залигованными нотами.
@@ -138,7 +138,7 @@
         /// <summary>
         /// The fmotiv tie gathered third test.
         /// </summary>
-        [TestMethod]
+        [Test]
         public void FmotivTieGatheredThirdTest()
         {
             // проверка работы метода, который возвращает копию объекта (Fmotiv), c собранными залигованными нотами.
@@ -231,7 +231,7 @@
         /// <summary>
         /// The fmotiv equals first test.
         /// </summary>
-        [TestMethod]
+        [Test]
         public void FmotivEqualsFirstTest()
         {
             // проверка работы метода, который возвращает копию объекта (Fmotiv), c собранными залигованными нотами.
@@ -272,7 +272,7 @@
         /// <summary>
         /// The fmotiv equals second test.
         /// </summary>
-        [TestMethod]
+        [Test]
         public void FmotivEqualsSecondTest()
         {
             var fmotiv = new Fmotiv(FmotivType.CompleteMinimalMeasure, 0);
@@ -290,7 +290,7 @@
         /// <summary>
         /// The fmotiv equals third test.
         /// </summary>
-        [TestMethod]
+        [Test]
         public void FmotivEqualsThirdTest()
         {
             var fmotiv = new Fmotiv(FmotivType.CompleteMinimalMeasure, 0);

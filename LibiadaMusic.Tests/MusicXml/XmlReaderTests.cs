@@ -5,18 +5,18 @@ namespace LibiadaMusic.Tests.MusicXml
 
     using LibiadaMusic.MusicXml;
 
-    using Microsoft.VisualStudio.TestTools.UnitTesting;
+    using NUnit.Framework;
 
     /// <summary>
     /// The xml reader tests.
     /// </summary>
-    [TestClass]
+    [TestFixture]
     public class XmlReaderTests
     {
         /// <summary>
         /// The xml reader first test.
         /// </summary>
-        [TestMethod]
+        [Test]
         public void XmlReaderFirstTest()
         {
             var xr = new MusicXmlReader("../../LibiadaMusicexample7Liga.xml");
@@ -27,7 +27,7 @@ namespace LibiadaMusic.Tests.MusicXml
         /// <summary>
         /// The xml reader second test.
         /// </summary>
-        [TestMethod]
+        [Test]
         public void XmlReaderSecondTest()
         {
             var path = "../../LibiadaMusicexample7Liga.xml";

@@ -2,18 +2,18 @@
 {
     using LibiadaMusic.BorodaDivider;
 
-    using Microsoft.VisualStudio.TestTools.UnitTesting;
+    using NUnit.Framework;
 
     /// <summary>
     /// The param equal fm tests.
     /// </summary>
-    [TestClass]
+    [TestFixture]
     public class ParamEqualFMTests
     {
         /// <summary>
         /// The param equal test.
         /// </summary>
-        [TestMethod]
+        [Test]
         public void ParamEqualTest()
         {
             Assert.AreEqual((int)ParamEqualFM.Sequent, 0);

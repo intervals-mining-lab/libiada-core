@@ -2,18 +2,18 @@
 {
     using LibiadaMusic.ScoreModel;
 
-    using Microsoft.VisualStudio.TestTools.UnitTesting;
+    using NUnit.Framework;
 
     /// <summary>
     /// Pitch tests.
     /// </summary>
-    [TestClass]
+    [TestFixture]
     public class PitchTests
     {
         /// <summary>
         /// The pitch constructor test.
         /// </summary>
-        [TestMethod]
+        [Test]
         public void PitchConstructorTest()
         {
             var initialPitch = new Pitch(1, NoteSymbol.A, Accidental.Bekar);

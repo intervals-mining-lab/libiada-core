@@ -2,18 +2,18 @@
 {
     using LibiadaMusic.BorodaDivider;
 
-    using Microsoft.VisualStudio.TestTools.UnitTesting;
+    using NUnit.Framework;
 
     /// <summary>
     /// The param pause treatment tests.
     /// </summary>
-    [TestClass]
+    [TestFixture]
     public class ParamPauseTreatmentTests
     {
         /// <summary>
         /// The param pause test.
         /// </summary>
-        [TestMethod]
+        [Test]
         public void ParamPauseTest()
         {
             Assert.AreEqual((int)ParamPauseTreatment.Ignore, 0);

@@ -4,18 +4,18 @@
 
     using LibiadaMusic.ScoreModel;
 
-    using Microsoft.VisualStudio.TestTools.UnitTesting;
+    using NUnit.Framework;
 
     /// <summary>
     /// The congeneric score track tests.
     /// </summary>
-    [TestClass]
+    [TestFixture]
     public class CongenericScoreTrackTests
     {
         /// <summary>
         /// The value note order first test.
         /// </summary>
-        [TestMethod]
+        [Test]
         public void ValueNoteOrderFirstTest()
         {
             // создание и заполнения списка(ов) нот для такта(ов) монотрека
@@ -93,7 +93,7 @@
         /// <summary>
         /// The value note order second test.
         /// </summary>
-        [TestMethod]
+        [Test]
         public void ValueNoteOrderSecondTest()
         {
             // создание и заполнения списка(ов) нот для такта(ов) монотрека
@@ -171,7 +171,7 @@
         /// <summary>
         /// The measure order test.
         /// </summary>
-        [TestMethod]
+        [Test]
         public void MeasureOrderTest()
         {
             // создание и заполнения списка(ов) нот для такта(ов) монотрека

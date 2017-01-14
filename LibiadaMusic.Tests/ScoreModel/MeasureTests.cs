@@ -4,18 +4,18 @@
 
     using LibiadaMusic.ScoreModel;
 
-    using Microsoft.VisualStudio.TestTools.UnitTesting;
+    using NUnit.Framework;
 
     /// <summary>
     /// The measure tests.
     /// </summary>
-    [TestClass]
+    [TestFixture]
     public class MeasureTests
     {
         /// <summary>
         /// The measure first test.
         /// </summary>
-        [TestMethod]
+        [Test]
         public void MeasureFirstTest()
         {
             var notes = new List<ValueNote>();
@@ -39,7 +39,7 @@
         /// <summary>
         /// The measure second test.
         /// </summary>
-        [TestMethod]
+        [Test]
         public void MeasureSecondTest()
         {
             var notes = new List<ValueNote>();

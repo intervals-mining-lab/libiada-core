@@ -2,18 +2,18 @@
 {
     using LibiadaMusic.ScoreModel;
 
-    using Microsoft.VisualStudio.TestTools.UnitTesting;
+    using NUnit.Framework;
 
     /// <summary>
     /// The midi number manager tests.
     /// </summary>
-    [TestClass]
+    [TestFixture]
     public class MidiNumberManagerTests
     {
         /// <summary>
         /// The get octave from midi number test.
         /// </summary>
-        [TestMethod]
+        [Test]
         public void GetOctaveFromMidiNumberTest()
         {
             var initialPitch = new Pitch(1, NoteSymbol.A, 0);
@@ -28,7 +28,7 @@
         /// <summary>
         /// Test for GetNoteSymbolFromMidiNumber method.
         /// </summary>
-        [TestMethod]
+        [Test]
         public void GetNoteSymbolFromMidiNumberTest()
         {
             var initialPitch = new Pitch(1, NoteSymbol.A, Accidental.Bekar);
@@ -43,7 +43,7 @@
         /// <summary>
         /// The get alter from midi number test.
         /// </summary>
-        [TestMethod]
+        [Test]
         public void GetAlterFromMidiNumberTest()
         {
             var initialPitch = new Pitch(1, NoteSymbol.A, Accidental.Bekar);
