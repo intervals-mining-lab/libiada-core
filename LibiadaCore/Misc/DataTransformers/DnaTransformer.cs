@@ -27,6 +27,8 @@
 
             var count = (int)Math.Floor((double)inputChain.GetLength() / 3);
             var outChain = new BaseChain(count);
+
+            // TODO: rewrite this horror
             for (int i = 0; i < count * 3; i += 3)
             {
                 string first = inputChain[i].ToString();

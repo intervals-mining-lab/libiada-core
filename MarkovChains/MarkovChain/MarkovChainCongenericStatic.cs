@@ -5,8 +5,7 @@ namespace MarkovChains.MarkovChain
     /// <summary>
     /// Static congeneric markov chain class.
     /// </summary>
-    public class MarkovChainCongenericStatic :
-        MarkovChainNotCongenericStatic
+    public class MarkovChainCongenericStatic : MarkovChainNotCongenericStatic
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="MarkovChainCongenericStatic"/> class.
