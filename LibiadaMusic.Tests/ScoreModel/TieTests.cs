@@ -1,49 +1,98 @@
 ﻿namespace LibiadaMusic.Tests.ScoreModel
 {
+    using System.Linq;
+
+    using LibiadaCore.Extensions;
+
     using LibiadaMusic.ScoreModel;
 
     using NUnit.Framework;
 
     /// <summary>
-    /// The tie tests.
+    /// Tie enum tests.
     /// </summary>
-    [TestFixture]
+    [TestFixture(TestOf = typeof(Tie))]
     public class TieTests
     {
         /// <summary>
-        /// The tie first test.
+        /// The ties count.
+        /// </summary>
+        private const int TiesCount = 4;
+
+        /// <summary>
+        /// Tests count of ties.
         /// </summary>
         [Test]
-        public void TieFirstTest()
+        public void TieCountTest()
         {
-            Assert.AreEqual(0, (int)Tie.None);
+            var actualCount = ArrayExtensions.ToArray<Tie>().Length;
+            Assert.AreEqual(TiesCount, actualCount);
         }
 
         /// <summary>
-        /// The tie second test.
+        /// Tests values of ties.
         /// </summary>
         [Test]
-        public void TieSecondTest()
+        public void TieValuesTest()
         {
-            Assert.AreEqual(1, (int)Tie.Start);
+            var ties = ArrayExtensions.ToArray<Tie>();
+            for (int i = 0; i < TiesCount; i++)
+            {
+                Assert.IsTrue(ties.Contains((Tie)i));
+            }
         }
 
         /// <summary>
-        /// The tie third test.
+        /// Tests names of ties.
         /// </summary>
-        [Test]
-        public void TieThirdTest()
+        /// <param name="tie">
+        /// The tie.
+        /// </param>
+        /// <param name="name">
+        /// The name.
+        /// </param>
+        [TestCase((Tie)0, "None")]
+        [TestCase((Tie)1, "Start")]
+        [TestCase((Tie)2, "End")]
+        [TestCase((Tie)3, "Continue")]
+        public void TieNamesTest(Tie tie, string name)
         {
-            Assert.AreEqual(2, (int)Tie.End);
+            Assert.AreEqual(name, tie.GetName());
         }
 
         /// <summary>
-        /// The tie fourth test.
+        /// Tests that all ties have display value.
+        /// </summary>
+        /// <param name="tie">
+        /// The tie.
+        /// </param>
+        [Test]
+        public void TieHasDisplayValueTest([Values]Tie tie)
+        {
+            Assert.IsFalse(string.IsNullOrEmpty(tie.GetDisplayValue()));
+        }
+
+        /// <summary>
+        /// Tests that all ties have description.
+        /// </summary>
+        /// <param name="tie">
+        /// The tie.
+        /// </param>
+        [Test]
+        public void TieHasDescriptionTest([Values]Tie tie)
+        {
+            Assert.IsFalse(string.IsNullOrEmpty(tie.GetDescription()));
+        }
+
+        /// <summary>
+        /// Tests that all ties values are unique.
         /// </summary>
         [Test]
-        public void TieFourthTest()
+        public void TieValuesUniqueTest()
         {
-            Assert.AreEqual(3, (int)Tie.Continue);
+            var ties = ArrayExtensions.ToArray<Tie>();
+            var tieValues = ties.Cast<byte>();
+            Assert.That(tieValues, Is.Unique);
         }
     }
 }

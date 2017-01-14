@@ -62,6 +62,7 @@
     <Compile Include="ScoreModel\InstrumentTests.cs" />
     <Compile Include="ScoreModel\MeasureTests.cs" />
     <Compile Include="ScoreModel\MidiNumberManagerTests.cs" />
+    <Compile Include="ScoreModel\NoteSymbolTests.cs" />
     <Compile Include="ScoreModel\PitchTests.cs" />
     <Compile Include="ScoreModel\TieTests.cs" />
     <Compile Include="ScoreModel\ValueNoteTests.cs" />
