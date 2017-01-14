@@ -55,8 +55,11 @@
     <Compile Include="MusicXml\MusicXmlParserTests.cs" />
     <Compile Include="MusicXml\XmlReaderTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ScoreModel\AccidentalTests.cs" />
     <Compile Include="ScoreModel\CongenericScoreTrackTests.cs" />
     <Compile Include="ScoreModel\DurationTests.cs" />
+    <Compile Include="ScoreModel\FmotivTypeTests.cs" />
+    <Compile Include="ScoreModel\InstrumentTests.cs" />
     <Compile Include="ScoreModel\MeasureTests.cs" />
     <Compile Include="ScoreModel\MidiNumberManagerTests.cs" />
     <Compile Include="ScoreModel\PitchTests.cs" />

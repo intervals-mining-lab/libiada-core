@@ -12,7 +12,7 @@
         /// Temporary state until segmentation algorithm will be refactored.
         /// </summary>
         [Display(Name = "None")]
-        [Description("")]
+        [Description("Temporary used during segmentation procedure")]
         None = 0,
 
         /// <summary>
