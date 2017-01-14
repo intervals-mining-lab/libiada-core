@@ -9,7 +9,7 @@
     <OutputType>Library</OutputType>
     <AssemblyName>LibiadaMusic</AssemblyName>
     <RootNamespace>LibiadaMusic</RootNamespace>
-    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileUpgradeFlags>
     </FileUpgradeFlags>
     <UpgradeBackupLocation>
