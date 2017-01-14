@@ -17,57 +17,57 @@
         /// <summary>
         /// The note.
         /// </summary>
-        private ValueNote note = new ValueNote(new Pitch(1, NoteSymbol.E, 0), new Duration(1, 4, false, 480), false, Tie.None);
+        private readonly ValueNote note = new ValueNote(new Pitch(1, NoteSymbol.E, 0), new Duration(1, 4, false, 480), false, Tie.None);
 
         /// <summary>
         /// The anote.
         /// </summary>
-        private ValueNote anote = new ValueNote(new Pitch(1, NoteSymbol.B, 0), new Duration(1, 2, false, 960), false, 0);
+        private readonly ValueNote aNote = new ValueNote(new Pitch(1, NoteSymbol.B, 0), new Duration(1, 2, false, 960), false, 0);
 
         /// <summary>
         /// The bnote.
         /// </summary>
-        private ValueNote bnote = new ValueNote((Pitch)null, new Duration(1, 4, false, 480), false, 0);
+        private readonly ValueNote bNote = new ValueNote((Pitch)null, new Duration(1, 4, false, 480), false, 0);
 
         /// <summary>
         /// The сnote.
         /// </summary>
-        private ValueNote сnote = new ValueNote(new Pitch(1, NoteSymbol.A, 0), new Duration(1, 4, 2, 3, false, 200), true, 0);
+        private readonly ValueNote сNote = new ValueNote(new Pitch(1, NoteSymbol.A, 0), new Duration(1, 4, 2, 3, false, 200), true, 0);
 
         /// <summary>
         /// The ccnote.
         /// </summary>
-        private ValueNote ccnote = new ValueNote(new Pitch(1, NoteSymbol.A, 0), new Duration(1, 8, 2, 3, false, 200), true, 0);
+        private readonly ValueNote ccNote = new ValueNote(new Pitch(1, NoteSymbol.A, 0), new Duration(1, 8, 2, 3, false, 200), true, 0);
 
         /// <summary>
         /// The сccnote.
         /// </summary>
-        private ValueNote сccnote = new ValueNote(new Pitch(1, NoteSymbol.A, 0), new Duration(1, 8, 4, 7, false, 200), true, 0);
+        private readonly ValueNote сccNote = new ValueNote(new Pitch(1, NoteSymbol.A, 0), new Duration(1, 8, 4, 7, false, 200), true, 0);
 
         /// <summary>
         /// The dnote.
         /// </summary>
-        private ValueNote dnote = new ValueNote(new Pitch(1, NoteSymbol.B, 0), new Duration(1, 16, false, 240), false, 0);
+        private readonly ValueNote dNote = new ValueNote(new Pitch(1, NoteSymbol.B, 0), new Duration(1, 16, false, 240), false, 0);
 
         /// <summary>
         /// The attributes.
         /// </summary>
-        private Attributes attributes = new Attributes(new Size(4, 4, 480), new Key(0, "minor"));
+        private readonly Attributes attributes = new Attributes(new Size(4, 4, 480), new Key(0, "minor"));
 
         /// <summary>
         /// The attributes 1.
         /// </summary>
-        private Attributes attributes1 = new Attributes(new Size(3, 4, 480), new Key(0, "minor"));
+        private readonly Attributes attributes1 = new Attributes(new Size(3, 4, 480), new Key(0, "minor"));
 
         /// <summary>
         /// The attributes 2.
         /// </summary>
-        private Attributes attributes2 = new Attributes(new Size(12, 8, 480), new Key(0, "minor"));
+        private readonly Attributes attributes2 = new Attributes(new Size(12, 8, 480), new Key(0, "minor"));
 
         /// <summary>
         /// The attributes 3.
         /// </summary>
-        private Attributes attributes3 = new Attributes(new Size(13, 16, 480), new Key(0, "minor"));
+        private readonly Attributes attributes3 = new Attributes(new Size(13, 16, 480), new Key(0, "minor"));
 
         /// <summary>
         /// The priority get set test.
@@ -76,12 +76,12 @@
         public void PriorityGetSetTest()
         {
             note.Priority = 0;
-            anote.Priority = -1;
-            bnote.Priority = 3;
+            aNote.Priority = -1;
+            bNote.Priority = 3;
 
             Assert.AreEqual(0, note.Priority);
-            Assert.AreEqual(3, bnote.Priority);
-            Assert.AreEqual(-1, anote.Priority);
+            Assert.AreEqual(3, bNote.Priority);
+            Assert.AreEqual(-1, aNote.Priority);
         }
 
         /// <summary>
@@ -92,7 +92,7 @@
         {
             var pd = new PriorityDiscover();
 
-            var notes = new List<ValueNote> { note, bnote, dnote, anote };
+            var notes = new List<ValueNote> { note, bNote, dNote, aNote };
             var measure = new Measure(notes, attributes);
 
             // минимальнвя длительность ноты в такте measure 1/16 = 0.0625 у ноты dnote
@@ -122,7 +122,7 @@
         {
             var pd = new PriorityDiscover();
 
-            var notes = new List<ValueNote> { note, bnote, dnote, anote };
+            var notes = new List<ValueNote> { note, bNote, dNote, aNote };
             var measure = new Measure(notes, attributes);
             pd.CalculatePriorityMask(measure);
 
@@ -176,7 +176,7 @@
         {
             var pd = new PriorityDiscover();
 
-            var notes = new List<ValueNote> { note, bnote, dnote, anote };
+            var notes = new List<ValueNote> { note, bNote, dNote, aNote };
             var measure = new Measure(notes, attributes2);
             pd.CalculatePriorityMask(measure);
 
@@ -247,7 +247,7 @@
         {
             var pd = new PriorityDiscover();
 
-            var notes = new List<ValueNote> { note, bnote, dnote, anote };
+            var notes = new List<ValueNote> { note, bNote, dNote, aNote };
             var measure = new Measure(notes, attributes3);
             pd.CalculatePriorityMask(measure);
 
@@ -296,7 +296,7 @@
         {
             var pd = new PriorityDiscover();
 
-            var notes = new List<ValueNote> { note, anote };
+            var notes = new List<ValueNote> { note, aNote };
             var measure = new Measure(notes, attributes1);
             pd.CalculatePriorityMask(measure);
 
@@ -323,12 +323,12 @@
         [Test]
         public void PriorityDiscoverTest()
         {
-            var notes = new List<ValueNote> { note, bnote, anote };
+            var notes = new List<ValueNote> { note, bNote, aNote };
             var notes1 = new List<ValueNote> { note, note, note };
-            var notes2 = new List<ValueNote> { anote, note, bnote, note, bnote };
-            var notes3 = new List<ValueNote> { note, dnote, note, note };
-            var notes4 = new List<ValueNote> { сnote, сnote, сnote, ccnote, ccnote, ccnote };
-            var notes5 = new List<ValueNote> { сccnote, сccnote, сccnote, сccnote, сccnote, сccnote, сccnote, note, note };
+            var notes2 = new List<ValueNote> { aNote, note, bNote, note, bNote };
+            var notes3 = new List<ValueNote> { note, dNote, note, note };
+            var notes4 = new List<ValueNote> { сNote, сNote, сNote, ccNote, ccNote, ccNote };
+            var notes5 = new List<ValueNote> { сccNote, сccNote, сccNote, сccNote, сccNote, сccNote, сccNote, note, note };
 
             var measure = new Measure(notes, attributes);
             var measure1 = new Measure(notes1, attributes1);
@@ -387,8 +387,8 @@
             Assert.AreEqual(2, measure5.NoteList[8].Priority);
 
             Assert.AreEqual(-1, note.Priority);
-            Assert.AreEqual(-1, bnote.Priority);
-            Assert.AreEqual(-1, anote.Priority);
+            Assert.AreEqual(-1, bNote.Priority);
+            Assert.AreEqual(-1, aNote.Priority);
         }
     }
 }

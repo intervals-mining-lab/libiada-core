@@ -17,12 +17,12 @@
         /// <summary>
         /// The note.
         /// </summary>
-        private ValueNote note = new ValueNote(new Pitch(1, NoteSymbol.E, Accidental.Bekar), new Duration(1, 4, false, 480), false, Tie.None);
+        private readonly ValueNote note = new ValueNote(new Pitch(1, NoteSymbol.E, Accidental.Bekar), new Duration(1, 4, false, 480), false, Tie.None);
 
         /// <summary>
         /// The anote.
         /// </summary>
-        private ValueNote anote = new ValueNote(new Pitch(1, NoteSymbol.B, Accidental.Bekar), new Duration(1, 2, false, 960), false, 0);
+        private readonly ValueNote aNote = new ValueNote(new Pitch(1, NoteSymbol.B, Accidental.Bekar), new Duration(1, 2, false, 960), false, 0);
 
         /// <summary>
         /// The fmotiv test.
@@ -31,10 +31,10 @@
         public void FmotivTest()
         {
             var fmotiv = new Fmotiv(FmotivType.CompleteMinimalMeasure, 0);
-            var notelist = new List<ValueNote> { (ValueNote)note.Clone(), (ValueNote)anote.Clone(), (ValueNote)note.Clone() };
+            var notelist = new List<ValueNote> { (ValueNote)note.Clone(), (ValueNote)aNote.Clone(), (ValueNote)note.Clone() };
 
             fmotiv.NoteList.Add((ValueNote)note.Clone());
-            fmotiv.NoteList.Add((ValueNote)anote.Clone());
+            fmotiv.NoteList.Add((ValueNote)aNote.Clone());
             fmotiv.NoteList.Add((ValueNote)note.Clone());
 
             Assert.AreEqual(notelist[0], fmotiv.NoteList[0]);

@@ -19,7 +19,7 @@
         [Test]
         public void XmlParserTest()
         {
-            var xmlReader = new MusicXmlReader("../../LibiadaMusicexample7Liga.xml");
+            var xmlReader = new MusicXmlReader(SystemData.BinFolderPath + "/LibiadaMusicexample7Liga.xml");
             var parser = new MusicXmlParser();
 
             parser.Execute(xmlReader.MusicXmlDocument, xmlReader.FileName);
@@ -107,7 +107,7 @@
         [Test]
         public void PolyXmlParserTest()
         {
-            var xmlReader = new MusicXmlReader("../../polytest.xml");
+            var xmlReader = new MusicXmlReader(SystemData.BinFolderPath + "/polytest.xml");
             var parser = new MusicXmlParser();
 
             parser.Execute(xmlReader.MusicXmlDocument, xmlReader.FileName);
@@ -135,6 +135,7 @@
         [Test]
         public void XmlParserFileNameTest()
         {
+            Assert.Fail();
         }
 
         /// <summary>
@@ -143,6 +144,7 @@
         [Test]
         public void XmlParserScoretrackTest()
         {
+            Assert.Fail();
         }
 
         /// <summary>
@@ -151,6 +153,7 @@
         [Test]
         public void XmlParserCongenericScoretrackTest()
         {
+            Assert.Fail();
         }
 
         /// <summary>
@@ -159,6 +162,7 @@
         [Test]
         public void XmlParserMeasureTest()
         {
+            Assert.Fail();
         }
 
         /// <summary>
@@ -167,6 +171,7 @@
         [Test]
         public void XmlParserNoteTest()
         {
+            Assert.Fail();
         }
 
         /// <summary>
@@ -175,6 +180,7 @@
         [Test]
         public void XmlParserAttributesTest()
         {
+            Assert.Fail();
         }
 
         /// <summary>
@@ -183,6 +189,7 @@
         [Test]
         public void XmlParserPitchTest()
         {
+            Assert.Fail();
         }
 
         /// <summary>
@@ -191,6 +198,7 @@
         [Test]
         public void XmlParserDurationTest()
         {
+            Assert.Fail();
         }
 
         /// <summary>
@@ -199,6 +207,7 @@
         [Test]
         public void XmlParserTieTest()
         {
+            Assert.Fail();
         }
 
         /// <summary>
@@ -207,6 +216,7 @@
         [Test]
         public void XmlParserTripletTest()
         {
+            Assert.Fail();
         }
     }
 }

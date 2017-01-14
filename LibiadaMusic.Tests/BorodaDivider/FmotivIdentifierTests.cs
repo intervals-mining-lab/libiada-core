@@ -104,7 +104,6 @@
 
             var fmid = new FmotivIdentifier();
 
-            // FmotivChain fmidentedchain = new FmotivChain();
             Assert.AreEqual(0, fmid.GetIdentification(fmchain1, ParamPauseTreatment.Ignore, ParamEqualFM.Sequent).FmotivList[0].Id);
             Assert.AreEqual(0, fmid.GetIdentification(fmchain1, ParamPauseTreatment.Ignore, ParamEqualFM.Sequent).FmotivList[1].Id);
             Assert.AreEqual(0, fmid.GetIdentification(fmchain1, ParamPauseTreatment.Ignore, ParamEqualFM.Sequent).FmotivList[2].Id);

@@ -160,17 +160,9 @@
         [Test]
         public void AverageLengthErrorTest()
         {
-            try
-            {
-                var chain = new FmotivChain { Id = 0 };
-            }
-            catch (Exception e)
-            {
-                if (e.Message != "Unaible to count average length with no elements in chain!")
-                {
-                    Assert.Fail();
-                }
-            }
+            FmotivChain chain = new FmotivChain { Id = 0 };
+            var exception = Assert.Throws<Exception>(() => AverageLength.Calculate(chain));
+            Assert.AreEqual("Unable to count average length with no elements in chain!", exception.Message);
         }
     }
 }
