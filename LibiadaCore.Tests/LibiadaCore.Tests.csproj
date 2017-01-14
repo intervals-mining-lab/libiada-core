@@ -86,6 +86,7 @@
     <Compile Include="Core\Characteristics\Calculators\SWSkewTests.cs" />
     <Compile Include="Core\Characteristics\Calculators\UniformityTests.cs" />
     <Compile Include="Core\IntervalsManagers\BinaryIntervalsManagerTests.cs" />
+    <Compile Include="Core\LinkTests.cs" />
     <Compile Include="Extensions\ArrayExtensionsTests.cs" />
     <Compile Include="Extensions\StringExtensionsTests.cs" />
     <Compile Include="Misc\DataTransformers\DnaTransformerTests.cs" />
