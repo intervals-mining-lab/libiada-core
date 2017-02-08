@@ -6,16 +6,6 @@ namespace LibiadaCore.Core.Characteristics.Calculators.FullCalculators
     public class ArithmeticMean : IFullCalculator
     {
         /// <summary>
-        /// Intervals length sum calculator.
-        /// </summary>
-        private readonly IFullCalculator adder = new IntervalsSum();
-
-        /// <summary>
-        /// Intervals count calculator.
-        /// </summary>
-        private readonly IFullCalculator counter = new IntervalsCount();
-
-        /// <summary>
         /// Calculates multiplication of all intervals
         /// between nearest similar elements in sequence
         /// divided by number of intervals.
@@ -31,8 +21,11 @@ namespace LibiadaCore.Core.Characteristics.Calculators.FullCalculators
         /// </returns>
         public double Calculate(Chain chain, Link link)
         {
+            var adder = new IntervalsSum();
+            var counter = new IntervalsCount();
+
             double intervalsSum = adder.Calculate(chain, link);
-            int intervalsCount = (int)counter.Calculate(chain, link);
+            var intervalsCount = (int)counter.Calculate(chain, link);
             return intervalsCount == 0 ? 0 : intervalsSum / intervalsCount;
         }
     }

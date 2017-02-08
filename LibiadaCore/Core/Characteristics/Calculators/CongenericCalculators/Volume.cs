@@ -21,8 +21,7 @@
         /// </returns>
         public double Calculate(CongenericChain chain, Link link)
         {
-            var intervals = chain.GetIntervals(link);
-
+            int[] intervals = chain.GetIntervals(link);
             return intervals.Length == 0 ? 1 : intervals.Aggregate((result, interval) => result * interval);
         }
     }

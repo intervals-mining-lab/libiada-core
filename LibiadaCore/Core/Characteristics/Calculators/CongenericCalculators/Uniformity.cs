@@ -7,16 +7,6 @@
     public class Uniformity : ICongenericCalculator
     {
         /// <summary>
-        /// Average remoteness calculator.
-        /// </summary>
-        private readonly ICongenericCalculator remotenessCalculator = new AverageRemoteness();
-
-        /// <summary>
-        /// Entropy calculator.
-        /// </summary>
-        private readonly ICongenericCalculator entropyCalculator = new IdentificationInformation();
-
-        /// <summary>
         /// Calculation method for congeneric sequences.
         /// </summary>
         /// <param name="chain">
@@ -30,6 +20,9 @@
         /// </returns>
         public double Calculate(CongenericChain chain, Link link)
         {
+            var remotenessCalculator = new AverageRemoteness();
+            var entropyCalculator = new IdentificationInformation();
+
             return entropyCalculator.Calculate(chain, link) - remotenessCalculator.Calculate(chain, link);
         }
     }

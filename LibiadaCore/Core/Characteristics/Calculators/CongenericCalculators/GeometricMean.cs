@@ -8,11 +8,6 @@ namespace LibiadaCore.Core.Characteristics.Calculators.CongenericCalculators
     public class GeometricMean : ICongenericCalculator
     {
         /// <summary>
-        /// Depth characteristic calculator.
-        /// </summary>
-        private readonly ICongenericCalculator averageRemoteness = new AverageRemoteness();
-
-        /// <summary>
         /// Calculation method.
         /// </summary>
         /// <param name="chain">
@@ -26,8 +21,9 @@ namespace LibiadaCore.Core.Characteristics.Calculators.CongenericCalculators
         /// </returns>
         public double Calculate(CongenericChain chain, Link link)
         {
-            double remoteness = averageRemoteness.Calculate(chain, link);
+            var averageRemoteness = new AverageRemoteness();
 
+            double remoteness = averageRemoteness.Calculate(chain, link);
             return Math.Pow(2, remoteness);
         }
     }

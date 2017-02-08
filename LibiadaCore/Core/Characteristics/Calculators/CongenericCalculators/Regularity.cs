@@ -6,16 +6,6 @@ namespace LibiadaCore.Core.Characteristics.Calculators.CongenericCalculators
     public class Regularity : ICongenericCalculator
     {
         /// <summary>
-        /// Average geometric interval calculator.
-        /// </summary>
-        private readonly ICongenericCalculator geometricMeanCalculator = new GeometricMean();
-
-        /// <summary>
-        /// Descriptive informations calculator.
-        /// </summary>
-        private readonly ICongenericCalculator descriptiveInformationCalculator = new DescriptiveInformation();
-
-        /// <summary>
         /// Calculation method.
         /// </summary>
         /// <param name="chain">
@@ -29,8 +19,11 @@ namespace LibiadaCore.Core.Characteristics.Calculators.CongenericCalculators
         /// </returns>
         public double Calculate(CongenericChain chain, Link link)
         {
-            var geometricMean = geometricMeanCalculator.Calculate(chain, link);
-            var descriptiveInformation = descriptiveInformationCalculator.Calculate(chain, link);
+            var geometricMeanCalculator = new GeometricMean();
+            var descriptiveInformationCalculator = new DescriptiveInformation();
+
+            double geometricMean = geometricMeanCalculator.Calculate(chain, link);
+            double descriptiveInformation = descriptiveInformationCalculator.Calculate(chain, link);
             return geometricMean / descriptiveInformation;
         }
     }

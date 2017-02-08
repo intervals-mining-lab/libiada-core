@@ -6,16 +6,6 @@ namespace LibiadaCore.Core.Characteristics.Calculators.FullCalculators
     public class Regularity : IFullCalculator
     {
         /// <summary>
-        /// Average geometric interval calculator.
-        /// </summary>
-        private readonly IFullCalculator geometricMeanCalculator = new GeometricMean();
-
-        /// <summary>
-        /// Descriptive informations calculator.
-        /// </summary>
-        private readonly IFullCalculator descriptiveInformationCalculator = new DescriptiveInformation();
-
-        /// <summary>
         /// Calculation method.
         /// </summary>
         /// <param name="chain">
@@ -29,8 +19,11 @@ namespace LibiadaCore.Core.Characteristics.Calculators.FullCalculators
         /// </returns>
         public double Calculate(Chain chain, Link link)
         {
-            var geometricMean = geometricMeanCalculator.Calculate(chain, link);
-            var descriptiveInformation = descriptiveInformationCalculator.Calculate(chain, link);
+            var geometricMeanCalculator = new GeometricMean();
+            var descriptiveInformationCalculator = new DescriptiveInformation();
+
+            double geometricMean = geometricMeanCalculator.Calculate(chain, link);
+            double descriptiveInformation = descriptiveInformationCalculator.Calculate(chain, link);
             return geometricMean / descriptiveInformation;
         }
     }

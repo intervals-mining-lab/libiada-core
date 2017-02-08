@@ -30,8 +30,8 @@ namespace LibiadaCore.Core.Characteristics.Calculators.FullCalculators
         /// </returns>
         public double Calculate(Chain chain, Link link)
         {
-            var geometricMean = geometricMeanCalculator.Calculate(chain, link);
-            var arithmeticMean = arithmeticMeanCalculator.Calculate(chain, link);
+            double geometricMean = geometricMeanCalculator.Calculate(chain, link);
+            double arithmeticMean = arithmeticMeanCalculator.Calculate(chain, link);
             return arithmeticMean == 0 ? 0 : geometricMean / arithmeticMean;
         }
     }

@@ -7,16 +7,6 @@
     public class EntropySkewnessCoefficient : IFullCalculator
     {
         /// <summary>
-        /// Average remoteness skewness.
-        /// </summary>
-        private readonly IFullCalculator entropySkewness = new EntropySkewness();
-
-        /// <summary>
-        /// Average remoteness standard deviation.
-        /// </summary>
-        private readonly IFullCalculator entropyStandardDeviation = new EntropyStandardDeviation();
-
-        /// <summary>
         /// Calculation method.
         /// </summary>
         /// <param name="chain">
@@ -30,6 +20,9 @@
         /// </returns>
         public double Calculate(Chain chain, Link link)
         {
+            var entropySkewness = new EntropySkewness();
+            var entropyStandardDeviation = new EntropyStandardDeviation();
+
             double standardDeviation = entropyStandardDeviation.Calculate(chain, link);
 
             return standardDeviation == 0 ? 0 : entropySkewness.Calculate(chain, link) / (standardDeviation * standardDeviation * standardDeviation);

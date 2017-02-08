@@ -19,8 +19,9 @@ namespace LibiadaCore.Core.Characteristics.Calculators.FullCalculators
         /// </returns>
         public double Calculate(Chain chain, Link link)
         {
-            double result = 0;
             var calculator = new CongenericCalculators.Probability();
+
+            double result = 0;
             for (int i = 0; i < chain.Alphabet.Cardinality; i++)
             {
                 result += calculator.Calculate(chain.CongenericChain(i), link);

@@ -10,16 +10,6 @@
     public class RemotenessKurtosis : IFullCalculator
     {
         /// <summary>
-        /// The intervals count.
-        /// </summary>
-        private readonly IFullCalculator intervalsCount = new IntervalsCount();
-
-        /// <summary>
-        /// The geometric mean.
-        /// </summary>
-        private readonly IFullCalculator geometricMean = new GeometricMean();
-
-        /// <summary>
         /// Calculation method.
         /// </summary>
         /// <param name="chain">
@@ -33,7 +23,7 @@
         /// </returns>
         public double Calculate(Chain chain, Link link)
         {
-            List<int> intervals = new List<int>();
+            var intervals = new List<int>();
             for (int i = 0; i < chain.Alphabet.Cardinality; i++)
             {
                 intervals.AddRange(chain.CongenericChain(i).GetIntervals(link).ToList());
@@ -46,17 +36,20 @@
 
             List<int> uniqueIntervals = intervals.Distinct().ToList();
 
-            List<int> intervalsCounts = new List<int>();
+            var intervalsCounts = new List<int>();
 
             for (int i = 0; i < uniqueIntervals.Count; i++)
             {
-                var currentInterval = uniqueIntervals[i];
+                int currentInterval = uniqueIntervals[i];
                 intervalsCounts.Add(intervals.Count(interval => interval == currentInterval));
             }
 
+            var intervalsCount = new IntervalsCount();
+            var geometricMean = new GeometricMean();
+
             double result = 0;
             double gDelta = geometricMean.Calculate(chain, link);
-            int n = (int)intervalsCount.Calculate(chain, link);
+            var n = (int)intervalsCount.Calculate(chain, link);
 
             for (int i = 0; i < uniqueIntervals.Count; i++)
             {

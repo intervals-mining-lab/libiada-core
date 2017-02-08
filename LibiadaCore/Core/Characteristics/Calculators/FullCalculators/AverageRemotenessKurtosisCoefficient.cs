@@ -6,16 +6,6 @@
     public class AverageRemotenessKurtosisCoefficient : IFullCalculator
     {
         /// <summary>
-        /// Average remoteness skewness.
-        /// </summary>
-        private readonly IFullCalculator averageRemotenessKurtosis = new AverageRemotenessKurtosis();
-
-        /// <summary>
-        /// Average remoteness standard deviation.
-        /// </summary>
-        private readonly IFullCalculator averageRemotenessStandardDeviation = new AverageRemotenessStandardDeviation();
-
-        /// <summary>
         /// Calculation method.
         /// </summary>
         /// <param name="chain">
@@ -29,8 +19,10 @@
         /// </returns>
         public double Calculate(Chain chain, Link link)
         {
-            double standardDeviation = averageRemotenessStandardDeviation.Calculate(chain, link);
+            var averageRemotenessKurtosis = new AverageRemotenessKurtosis();
+            var averageRemotenessStandardDeviation = new AverageRemotenessStandardDeviation();
 
+            double standardDeviation = averageRemotenessStandardDeviation.Calculate(chain, link);
             return standardDeviation == 0 ? 0 : averageRemotenessKurtosis.Calculate(chain, link) / (standardDeviation * standardDeviation * standardDeviation * standardDeviation);
         }
     }

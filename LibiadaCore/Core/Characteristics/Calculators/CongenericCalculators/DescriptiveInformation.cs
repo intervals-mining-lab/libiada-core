@@ -22,6 +22,7 @@ namespace LibiadaCore.Core.Characteristics.Calculators.CongenericCalculators
         public double Calculate(CongenericChain chain, Link link)
         {
             var calculator = new ArithmeticMean();
+
             double arithmeticMean = calculator.Calculate(chain, link);
             return arithmeticMean == 0 ? 1 : Math.Pow(arithmeticMean, 1 / arithmeticMean);
         }

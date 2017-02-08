@@ -12,11 +12,6 @@ namespace LibiadaCore.Core.Characteristics.Calculators.CongenericCalculators
     public class IdentificationInformation : ICongenericCalculator
     {
         /// <summary>
-        /// Average arithmetic interval length calculator.
-        /// </summary>
-        private readonly ICongenericCalculator arithmeticMean = new ArithmeticMean();
-
-        /// <summary>
         /// Calculation method.
         /// </summary>
         /// <param name="chain">
@@ -30,8 +25,9 @@ namespace LibiadaCore.Core.Characteristics.Calculators.CongenericCalculators
         /// </returns>
         public double Calculate(CongenericChain chain, Link link)
         {
-            double mean = arithmeticMean.Calculate(chain, link);
+            var arithmeticMean = new ArithmeticMean();
 
+            double mean = arithmeticMean.Calculate(chain, link);
             return mean == 0 ? 0 : (-1 / mean) * Math.Log(1 / mean, 2);
         }
     }

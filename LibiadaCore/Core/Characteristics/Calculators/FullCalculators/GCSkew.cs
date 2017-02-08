@@ -1,6 +1,5 @@
 ﻿namespace LibiadaCore.Core.Characteristics.Calculators.FullCalculators
 {
-    using LibiadaCore.Core.Characteristics.Calculators.CongenericCalculators;
     using LibiadaCore.Core.SimpleTypes;
     using LibiadaCore.Misc.DataTransformers;
 
@@ -9,11 +8,6 @@
     /// </summary>
     public class GCSkew : IFullCalculator
     {
-        /// <summary>
-        /// The elements counter.
-        /// </summary>
-        private readonly ICongenericCalculator counter = new CongenericCalculators.ElementsCount();
-
         /// <summary>
         /// Calculation method.
         /// </summary>
@@ -30,10 +24,12 @@
         {
             DnaProcessor.CheckDnaAlphabet(chain.Alphabet);
 
-            var g = counter.Calculate(chain.GetOrCreateCongenericChain(new ValueString("G")), link);
-            var c = counter.Calculate(chain.GetOrCreateCongenericChain(new ValueString("C")), link);
+            var counter = new CongenericCalculators.ElementsCount();
 
-            return g + c == 0 ? 0 : (g - c) / (g + c);
+            var g = (int)counter.Calculate(chain.GetOrCreateCongenericChain(new ValueString("G")), link);
+            var c = (int)counter.Calculate(chain.GetOrCreateCongenericChain(new ValueString("C")), link);
+
+            return g + c == 0 ? 0 : (g - c) / (double)(g + c);
         }
     }
 }

@@ -1,7 +1,5 @@
 namespace LibiadaCore.Core.Characteristics.Calculators.FullCalculators
 {
-    using LibiadaCore.Core.Characteristics.Calculators.CongenericCalculators;
-
     /// <summary>
     /// Entropy.
     /// Amount of information.
@@ -11,11 +9,6 @@ namespace LibiadaCore.Core.Characteristics.Calculators.FullCalculators
     /// </summary>
     public class IdentificationInformation : IFullCalculator
     {
-        /// <summary>
-        /// Average arithmetic interval length calculator.
-        /// </summary>
-        private readonly ICongenericCalculator identificationInformation = new CongenericCalculators.IdentificationInformation();
-
         /// <summary>
         /// Calculation method.
         /// </summary>
@@ -30,8 +23,9 @@ namespace LibiadaCore.Core.Characteristics.Calculators.FullCalculators
         /// </returns>
         public double Calculate(Chain chain, Link link)
         {
-            double result = 0;
+            var identificationInformation = new CongenericCalculators.IdentificationInformation();
 
+            double result = 0;
             for (int i = 0; i < chain.Alphabet.Cardinality; i++)
             {
                 result += identificationInformation.Calculate(chain.CongenericChain(i), link);

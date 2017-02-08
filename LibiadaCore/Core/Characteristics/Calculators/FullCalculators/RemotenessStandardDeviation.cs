@@ -8,11 +8,6 @@
     public class RemotenessStandardDeviation : IFullCalculator
     {
         /// <summary>
-        /// The average remoteness dispersion.
-        /// </summary>
-        private readonly IFullCalculator remotenessDispersion = new RemotenessDispersion();
-
-        /// <summary>
         /// Calculation method.
         /// </summary>
         /// <param name="chain">
@@ -26,6 +21,7 @@
         /// </returns>
         public double Calculate(Chain chain, Link link)
         {
+            var remotenessDispersion = new RemotenessDispersion();
             return Math.Sqrt(remotenessDispersion.Calculate(chain, link));
         }
     }

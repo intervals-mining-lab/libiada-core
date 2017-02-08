@@ -1,6 +1,5 @@
 ﻿namespace LibiadaCore.Core.Characteristics.Calculators.FullCalculators
 {
-    using LibiadaCore.Core.Characteristics.Calculators.CongenericCalculators;
     using LibiadaCore.Core.SimpleTypes;
     using LibiadaCore.Misc.DataTransformers;
 
@@ -9,11 +8,6 @@
     /// </summary>
     public class SWSkew : IFullCalculator
     {
-        /// <summary>
-        /// The elements counter.
-        /// </summary>
-        private readonly ICongenericCalculator counter = new CongenericCalculators.ElementsCount();
-
         /// <summary>
         /// Calculation method.
         /// </summary>
@@ -29,15 +23,17 @@
         public double Calculate(Chain chain, Link link)
         {
             DnaProcessor.CheckDnaAlphabet(chain.Alphabet);
-            var calculator = new ElementsCount();
 
-            var g = counter.Calculate(chain.GetOrCreateCongenericChain(new ValueString("G")), link);
-            var c = counter.Calculate(chain.GetOrCreateCongenericChain(new ValueString("C")), link);
-            var a = counter.Calculate(chain.GetOrCreateCongenericChain(new ValueString("A")), link);
-            var t = counter.Calculate(chain.GetOrCreateCongenericChain(new ValueString("T")), link);
-            var l = calculator.Calculate(chain, link);
+            var congenericCounter = new CongenericCalculators.ElementsCount();
+            var counter = new ElementsCount();
 
-            return l == 0 ? 0 : ((g + c) - (a + t)) / l;
+            var g = (int)congenericCounter.Calculate(chain.GetOrCreateCongenericChain(new ValueString("G")), link);
+            var c = (int)congenericCounter.Calculate(chain.GetOrCreateCongenericChain(new ValueString("C")), link);
+            var a = (int)congenericCounter.Calculate(chain.GetOrCreateCongenericChain(new ValueString("A")), link);
+            var t = (int)congenericCounter.Calculate(chain.GetOrCreateCongenericChain(new ValueString("T")), link);
+            var l = (int)counter.Calculate(chain, link);
+
+            return l == 0 ? 0 : ((g + c) - (a + t)) / (double)l;
         }
     }
 }

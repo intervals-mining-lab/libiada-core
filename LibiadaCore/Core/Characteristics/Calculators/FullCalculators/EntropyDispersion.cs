@@ -6,16 +6,6 @@
     public class EntropyDispersion : IFullCalculator
     {
         /// <summary>
-        /// The average remoteness.
-        /// </summary>
-        private readonly IFullCalculator identificationInformation = new IdentificationInformation();
-
-        /// <summary>
-        /// The intervals count.
-        /// </summary>
-        private readonly IFullCalculator intervalsCount = new IntervalsCount();
-
-        /// <summary>
         /// Calculation method.
         /// </summary>
         /// <param name="chain">
@@ -29,9 +19,12 @@
         /// </returns>
         public double Calculate(Chain chain, Link link)
         {
+            var identificationInformation = new IdentificationInformation();
+            var intervalsCount = new IntervalsCount();
+
             double result = 0;
             double g = identificationInformation.Calculate(chain, link);
-            int n = (int)intervalsCount.Calculate(chain, link);
+            var n = (int)intervalsCount.Calculate(chain, link);
 
             var congenericIntervalsCount = new CongenericCalculators.IntervalsCount();
             var congenericAverageRemoteness = new CongenericCalculators.AverageRemoteness();

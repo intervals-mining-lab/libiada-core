@@ -19,12 +19,12 @@
         /// </returns>
         public double Calculate(Chain chain, Link link)
         {
-            double sum = 0;
             var calculator = new CongenericCalculators.IntervalsSum();
 
+            int sum = 0;
             for (int i = 0; i < chain.Alphabet.Cardinality; i++)
             {
-                sum += calculator.Calculate(chain.CongenericChain(i), link);
+                sum += (int)calculator.Calculate(chain.CongenericChain(i), link);
             }
 
             return sum;

@@ -7,16 +7,6 @@ namespace LibiadaCore.Core.Characteristics.Calculators.FullCalculators
     public class AverageRemoteness : IFullCalculator
     {
         /// <summary>
-        /// Depth characteristic calculator.
-        /// </summary>
-        private readonly IFullCalculator depthCalculator = new Depth();
-
-        /// <summary>
-        /// Intervals count calculator.
-        /// </summary>
-        private readonly IFullCalculator intervalsCount = new IntervalsCount();
-
-        /// <summary>
         /// Calculation method.
         /// </summary>
         /// <param name="chain">
@@ -30,9 +20,11 @@ namespace LibiadaCore.Core.Characteristics.Calculators.FullCalculators
         /// </returns>
         public double Calculate(Chain chain, Link link)
         {
-            double depth = depthCalculator.Calculate(chain, link);
-            int nj = (int)intervalsCount.Calculate(chain, link);
+            var depthCalculator = new Depth();
+            var intervalsCount = new IntervalsCount();
 
+            double depth = depthCalculator.Calculate(chain, link);
+            var nj = (int)intervalsCount.Calculate(chain, link);
             return nj == 0 ? 0 : depth / nj;
         }
     }

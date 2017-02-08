@@ -8,11 +8,6 @@ namespace LibiadaCore.Core.Characteristics.Calculators.CongenericCalculators
     public class CuttingLengthVocabularyEntropy : ICongenericCalculator
     {
         /// <summary>
-        /// Cut length calculator.
-        /// </summary>
-        private readonly ICongenericCalculator cutLength = new CuttingLength();
-
-        /// <summary>
         /// Calculation method.
         /// </summary>
         /// <param name="chain">
@@ -26,6 +21,7 @@ namespace LibiadaCore.Core.Characteristics.Calculators.CongenericCalculators
         /// </returns>
         public double Calculate(CongenericChain chain, Link link)
         {
+            var cutLength = new CuttingLength();
             return Math.Log(chain.GetLength() - cutLength.Calculate(chain, link) + 1, 2);
         }
     }

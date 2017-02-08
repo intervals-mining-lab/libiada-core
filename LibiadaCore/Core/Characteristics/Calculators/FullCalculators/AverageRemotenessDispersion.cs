@@ -6,16 +6,6 @@
     public class AverageRemotenessDispersion : IFullCalculator
     {
         /// <summary>
-        /// The average remoteness.
-        /// </summary>
-        private readonly IFullCalculator averageRemoteness = new AverageRemoteness();
-
-        /// <summary>
-        /// The intervals count.
-        /// </summary>
-        private readonly IFullCalculator intervalsCount = new IntervalsCount();
-
-        /// <summary>
         /// Calculation method.
         /// </summary>
         /// <param name="chain">
@@ -29,9 +19,12 @@
         /// </returns>
         public double Calculate(Chain chain, Link link)
         {
+            var averageRemoteness = new AverageRemoteness();
+            var intervalsCount = new IntervalsCount();
+
             double result = 0;
             double g = averageRemoteness.Calculate(chain, link);
-            int n = (int)intervalsCount.Calculate(chain, link);
+            var n = (int)intervalsCount.Calculate(chain, link);
             if (n == 0)
             {
                 return 0;

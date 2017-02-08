@@ -58,7 +58,6 @@
         private double Calculate(CongenericChain chain, Link link)
         {
             int[] intervals = chain.GetIntervals(link);
-
             return intervals.Length == 0 ? 0 : intervals.Sum(interval => Math.Log(interval, alphabetCardinality));
         }
     }

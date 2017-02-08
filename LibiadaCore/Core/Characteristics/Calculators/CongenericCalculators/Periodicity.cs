@@ -7,16 +7,6 @@ namespace LibiadaCore.Core.Characteristics.Calculators.CongenericCalculators
     public class Periodicity : ICongenericCalculator
     {
         /// <summary>
-        /// Average geometric interval calculator.
-        /// </summary>
-        private readonly ICongenericCalculator geometricMeanCalculator = new GeometricMean();
-
-        /// <summary>
-        /// Average arithmetic interval calculator.
-        /// </summary>
-        private readonly ICongenericCalculator arithmeticMeanCalculator = new ArithmeticMean();
-
-        /// <summary>
         /// Calculation method.
         /// </summary>
         /// <param name="chain">
@@ -30,8 +20,11 @@ namespace LibiadaCore.Core.Characteristics.Calculators.CongenericCalculators
         /// </returns>
         public double Calculate(CongenericChain chain, Link link)
         {
-            var geometricMean = geometricMeanCalculator.Calculate(chain, link);
-            var arithmeticMean = arithmeticMeanCalculator.Calculate(chain, link);
+            var geometricMeanCalculator = new GeometricMean();
+            var arithmeticMeanCalculator = new ArithmeticMean();
+
+            double geometricMean = geometricMeanCalculator.Calculate(chain, link);
+            double arithmeticMean = arithmeticMeanCalculator.Calculate(chain, link);
             return arithmeticMean == 0 ? 0 : geometricMean / arithmeticMean;
         }
     }

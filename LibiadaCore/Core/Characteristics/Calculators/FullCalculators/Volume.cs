@@ -19,9 +19,9 @@
         /// </returns>
         public double Calculate(Chain chain, Link link)
         {
-            double result = 1;
             var calculator = new CongenericCalculators.Volume();
 
+            double result = 1;
             for (int i = 0; i < chain.Alphabet.Cardinality; i++)
             {
                 result *= calculator.Calculate(chain.CongenericChain(i), link);

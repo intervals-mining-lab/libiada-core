@@ -31,7 +31,7 @@
         {
             double result = 0;
             double h = identificationInformation.Calculate(chain, link);
-            int n = (int)intervalsCount.Calculate(chain, link);
+            var n = (int)intervalsCount.Calculate(chain, link);
 
             var congenericIntervalsCount = new CongenericCalculators.IntervalsCount();
             var congenericIdentificationInformation = new CongenericCalculators.IdentificationInformation();

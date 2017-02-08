@@ -20,9 +20,9 @@ namespace LibiadaCore.Core.Characteristics.Calculators.FullCalculators
         /// </returns>
         public double Calculate(Chain chain, Link link)
         {
-            double count = 0;
             var calculator = new CongenericCalculators.ElementsCount();
 
+            double count = 0;
             for (int i = 0; i < chain.Alphabet.Cardinality; i++)
             {
                 count += calculator.Calculate(chain.CongenericChain(i), link);

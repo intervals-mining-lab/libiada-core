@@ -8,11 +8,6 @@ namespace LibiadaCore.Core.Characteristics.Calculators.FullCalculators
     public class CuttingLengthVocabularyEntropy : IFullCalculator
     {
         /// <summary>
-        /// Cut length calculator.
-        /// </summary>
-        private readonly IFullCalculator cutLength = new CuttingLength();
-
-        /// <summary>
         /// Calculation method.
         /// </summary>
         /// <param name="chain">
@@ -26,6 +21,7 @@ namespace LibiadaCore.Core.Characteristics.Calculators.FullCalculators
         /// </returns>
         public double Calculate(Chain chain, Link link)
         {
+            var cutLength = new CuttingLength();
             return Math.Log(chain.GetLength() - cutLength.Calculate(chain, link) + 1, 2);
         }
     }

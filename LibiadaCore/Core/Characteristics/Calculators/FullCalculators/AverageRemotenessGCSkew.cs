@@ -1,6 +1,5 @@
 ﻿namespace LibiadaCore.Core.Characteristics.Calculators.FullCalculators
 {
-    using LibiadaCore.Core.Characteristics.Calculators.CongenericCalculators;
     using LibiadaCore.Core.SimpleTypes;
     using LibiadaCore.Misc.DataTransformers;
 
@@ -9,11 +8,6 @@
     /// </summary>
     public class AverageRemotenessGCSkew : IFullCalculator
     {
-        /// <summary>
-        /// The elements counter.
-        /// </summary>
-        private readonly ICongenericCalculator remotenessCalculator = new CongenericCalculators.AverageRemoteness();
-
         /// <summary>
         /// Calculation method.
         /// </summary>
@@ -30,9 +24,10 @@
         {
             DnaProcessor.CheckDnaAlphabet(chain.Alphabet);
 
-            var g = remotenessCalculator.Calculate(chain.GetOrCreateCongenericChain(new ValueString("G")), link);
-            var c = remotenessCalculator.Calculate(chain.GetOrCreateCongenericChain(new ValueString("C")), link);
+            var congenericRemotenessCalculator = new CongenericCalculators.AverageRemoteness();
 
+            double g = congenericRemotenessCalculator.Calculate(chain.GetOrCreateCongenericChain(new ValueString("G")), link);
+            double c = congenericRemotenessCalculator.Calculate(chain.GetOrCreateCongenericChain(new ValueString("C")), link);
             return g + c == 0 ? 0 : (g - c) / (g + c);
         }
     }

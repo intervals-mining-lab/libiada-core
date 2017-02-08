@@ -8,11 +8,6 @@
     public class EntropyStandardDeviation : IFullCalculator
     {
         /// <summary>
-        /// The average remoteness dispersion.
-        /// </summary>
-        private readonly IFullCalculator entropyDispersion = new EntropyDispersion();
-
-        /// <summary>
         /// Calculation method.
         /// </summary>
         /// <param name="chain">
@@ -26,6 +21,7 @@
         /// </returns>
         public double Calculate(Chain chain, Link link)
         {
+            var entropyDispersion = new EntropyDispersion();
             return Math.Sqrt(entropyDispersion.Calculate(chain, link));
         }
     }

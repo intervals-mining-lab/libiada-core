@@ -1,6 +1,5 @@
 ﻿namespace LibiadaCore.Core.Characteristics.Calculators.FullCalculators
 {
-    using LibiadaCore.Core.Characteristics.Calculators.CongenericCalculators;
     using LibiadaCore.Core.SimpleTypes;
     using LibiadaCore.Misc.DataTransformers;
 
@@ -9,11 +8,6 @@
     /// </summary>
     public class AverageRemotenessMKSkew : IFullCalculator
     {
-        /// <summary>
-        /// The elements counter.
-        /// </summary>
-        private readonly ICongenericCalculator remotenessCalculator = new CongenericCalculators.AverageRemoteness();
-
         /// <summary>
         /// Calculation method.
         /// </summary>
@@ -30,14 +24,14 @@
         {
             DnaProcessor.CheckDnaAlphabet(chain.Alphabet);
 
-            var g = remotenessCalculator.Calculate(chain.GetOrCreateCongenericChain(new ValueString("G")), link);
-            var c = remotenessCalculator.Calculate(chain.GetOrCreateCongenericChain(new ValueString("C")), link);
-            var a = remotenessCalculator.Calculate(chain.GetOrCreateCongenericChain(new ValueString("A")), link);
-            var t = remotenessCalculator.Calculate(chain.GetOrCreateCongenericChain(new ValueString("T")), link);
-            var calculator = new AverageRemoteness();
+            var congenericRemotenessCalculator = new CongenericCalculators.AverageRemoteness();
+            var remotenessCalculator = new AverageRemoteness();
 
-            var l = calculator.Calculate(chain, link);
-
+            double g = congenericRemotenessCalculator.Calculate(chain.GetOrCreateCongenericChain(new ValueString("G")), link);
+            double c = congenericRemotenessCalculator.Calculate(chain.GetOrCreateCongenericChain(new ValueString("C")), link);
+            double a = congenericRemotenessCalculator.Calculate(chain.GetOrCreateCongenericChain(new ValueString("A")), link);
+            double t = congenericRemotenessCalculator.Calculate(chain.GetOrCreateCongenericChain(new ValueString("T")), link);
+            double l = remotenessCalculator.Calculate(chain, link);
             return l == 0 ? 0 : ((c + a) - (g + t)) / l;
         }
     }
