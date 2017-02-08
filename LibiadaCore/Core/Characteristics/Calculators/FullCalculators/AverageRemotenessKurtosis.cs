@@ -1,6 +1,4 @@
-﻿using LibiadaCore.Core.Characteristics.Calculators.CongenericCalculators;
-
-namespace LibiadaCore.Core.Characteristics.Calculators.FullCalculators
+﻿namespace LibiadaCore.Core.Characteristics.Calculators.FullCalculators
 {
     /// <summary>
     /// The average remoteness kurtosis.

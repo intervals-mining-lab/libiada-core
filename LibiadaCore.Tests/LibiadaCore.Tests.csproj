@@ -122,7 +122,7 @@
     <Compile Include="Misc\SpaceReorganizers\NullReorganizerTests.cs" />
     <Compile Include="Misc\SpaceReorganizers\NullCycleSpaceReorganizerTests.cs" />
     <Compile Include="Core\Characteristics\Calculators\BinaryCalculators\BinaryCalculatorsTests.cs" />
-    <Compile Include="Core\Characteristics\Calculators\BinaryCalculators\BinaryGeometricMeanTests.cs" />
+    <Compile Include="Core\Characteristics\Calculators\BinaryCalculators\GeometricMeanTests.cs" />
     <Compile Include="Core\Characteristics\Calculators\BinaryCalculators\InvolvedPartialDependenceCoefficientTests.cs" />
     <Compile Include="Core\Characteristics\Calculators\BinaryCalculators\MutualDependenceCoefficientTests.cs" />
     <Compile Include="Core\Characteristics\Calculators\BinaryCalculators\NormalizedPartialDependenceCoefficientTests.cs" />

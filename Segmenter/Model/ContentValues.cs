@@ -5,6 +5,7 @@
     using System.Text;
 
     using LibiadaCore.Core;
+    using LibiadaCore.Extensions;
 
     using Segmenter.Base;
     using Segmenter.Base.Collectors;
@@ -124,7 +125,7 @@
         /// <param name="value">the data for the value to put</param>
         public void Put(Parameter key, int value)
         {
-            Add(Enum.GetName(typeof(Parameter), key), value);
+            Add(key.GetName(), value);
         }
 
         /// <summary>
@@ -134,7 +135,7 @@
         /// <param name="value">the data for the value to put</param>
         public void Put(Parameter key, double value)
         {
-            Add(Enum.GetName(typeof(Parameter), key), value);
+            Add(key.GetName(), value);
         }
 
         /// <summary>

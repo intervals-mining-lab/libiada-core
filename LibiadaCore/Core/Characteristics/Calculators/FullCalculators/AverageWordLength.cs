@@ -1,7 +1,7 @@
-﻿using LibiadaCore.Core.SimpleTypes;
-
-namespace LibiadaCore.Core.Characteristics.Calculators.FullCalculators
+﻿namespace LibiadaCore.Core.Characteristics.Calculators.FullCalculators
 {
+    using LibiadaCore.Core.SimpleTypes;
+
     /// <summary>
     /// The average length of word (element) in sequence.
     /// </summary>

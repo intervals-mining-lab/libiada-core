@@ -6,7 +6,6 @@ namespace LibiadaCore.Core
 
     using LibiadaCore.Core.SimpleTypes;
     using LibiadaCore.Extensions;
-    using LibiadaCore.Misc;
 
     /// <summary>
     /// Basic sequence class.

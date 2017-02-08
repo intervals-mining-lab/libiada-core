@@ -1,8 +1,8 @@
-using System;
-using System.Collections.Generic;
-
 namespace LibiadaCore.Core.Characteristics.Calculators.BinaryCalculators
 {
+    using System;
+    using System.Collections.Generic;
+
     /// <summary>
     /// Static factory of different calculators.
     /// </summary>
@@ -39,7 +39,7 @@ namespace LibiadaCore.Core.Characteristics.Calculators.BinaryCalculators
             {
                 if (type == calculator.Name)
                 {
-                    return (IBinaryCalculator) Activator.CreateInstance(calculator);
+                    return (IBinaryCalculator)Activator.CreateInstance(calculator);
                 }
             }
 

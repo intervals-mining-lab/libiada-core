@@ -1,6 +1,4 @@
-﻿using LibiadaCore.Core.Characteristics.Calculators.CongenericCalculators;
-
-namespace LibiadaCore.Core.Characteristics.Calculators.FullCalculators
+﻿namespace LibiadaCore.Core.Characteristics.Calculators.FullCalculators
 {
     /// <summary>
     /// Dispersion of average remoteness.
@@ -38,6 +36,7 @@ namespace LibiadaCore.Core.Characteristics.Calculators.FullCalculators
             {
                 return 0;
             }
+
             var congenericAverageRemoteness = new CongenericCalculators.AverageRemoteness();
             var congenericIntervalsCount = new CongenericCalculators.IntervalsCount();
 

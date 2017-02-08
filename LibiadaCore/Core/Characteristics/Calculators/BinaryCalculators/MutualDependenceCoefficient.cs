@@ -1,8 +1,9 @@
-﻿using System;
-using LibiadaCore.Core.IntervalsManagers;
-
-namespace LibiadaCore.Core.Characteristics.Calculators.BinaryCalculators
+﻿namespace LibiadaCore.Core.Characteristics.Calculators.BinaryCalculators
 {
+    using System;
+
+    using LibiadaCore.Core.IntervalsManagers;
+
     /// <summary>
     /// Mutual dependence coefficient of binary chain.
     /// </summary>

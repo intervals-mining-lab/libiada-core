@@ -1,8 +1,8 @@
-using System;
-using System.Collections.Generic;
-
 namespace LibiadaCore.Core.Characteristics.Calculators.FullCalculators
 {
+    using System;
+    using System.Collections.Generic;
+
     /// <summary>
     /// Static factory of different calculators.
     /// </summary>

@@ -1,7 +1,7 @@
-﻿using LibiadaCore.Core.SimpleTypes;
-
-namespace LibiadaCore.Core.Characteristics.Calculators.CongenericCalculators
+﻿namespace LibiadaCore.Core.Characteristics.Calculators.CongenericCalculators
 {
+    using LibiadaCore.Core.SimpleTypes;
+
     /// <summary>
     /// Count of probable sequences that can be generated
     /// from given phantom chain (sequence containing phantom messages).

@@ -1,8 +1,8 @@
-﻿using System;
-using System.Linq;
-
-namespace LibiadaCore.Core.Characteristics.Calculators.FullCalculators
+﻿namespace LibiadaCore.Core.Characteristics.Calculators.FullCalculators
 {
+    using System;
+    using System.Linq;
+
     /// <summary>
     /// Depth with logarithm base equals cardinality of alphabet.
     /// </summary>

@@ -1,10 +1,9 @@
-﻿using LibiadaCore.Core.Characteristics.Calculators.BinaryCalculators;
-
-namespace LibiadaCore.Tests.Core.Characteristics.Calculators
+﻿namespace LibiadaCore.Tests.Core.Characteristics.Calculators.BinaryCalculators
 {
     using System.Collections.Generic;
 
     using LibiadaCore.Core;
+    using LibiadaCore.Core.Characteristics.Calculators.BinaryCalculators;
 
     using NUnit.Framework;
 
@@ -34,7 +33,7 @@ namespace LibiadaCore.Tests.Core.Characteristics.Calculators
         [OneTimeSetUp]
         public virtual void Initialization()
         {
-            var testClassName = this.GetType().Name;
+            var testClassName = GetType().Name;
             var calculatorName = testClassName.Substring(0, testClassName.Length - 5);
             Calculator = BinaryCalculatorsFactory.CreateBinaryCalculator(calculatorName);
         }

@@ -1,7 +1,7 @@
-using System;
-
 namespace LibiadaCore.Core.Characteristics.Calculators.FullCalculators
 {
+    using LibiadaCore.Core.Characteristics.Calculators.CongenericCalculators;
+
     /// <summary>
     /// Entropy.
     /// Amount of information.

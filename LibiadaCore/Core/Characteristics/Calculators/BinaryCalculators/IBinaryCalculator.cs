@@ -1,8 +1,9 @@
-﻿using System.Collections.Generic;
-using LibiadaCore.Core.IntervalsManagers;
-
-namespace LibiadaCore.Core.Characteristics.Calculators.BinaryCalculators
+﻿namespace LibiadaCore.Core.Characteristics.Calculators.BinaryCalculators
 {
+    using System.Collections.Generic;
+
+    using LibiadaCore.Core.IntervalsManagers;
+
     /// <summary>
     /// Interface of binary calculators.
     /// </summary>

@@ -1,9 +1,7 @@
-using LibiadaCore.Core.Characteristics.Calculators.FullCalculators;
-
 namespace BuildingsIterator
 {
     using LibiadaCore.Core;
-    using LibiadaCore.Core.Characteristics.Calculators;
+    using LibiadaCore.Core.Characteristics.Calculators.FullCalculators;
 
     /// <summary>
     /// Pair of characteristic calculator and link.

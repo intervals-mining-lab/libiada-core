@@ -1,8 +1,9 @@
-﻿using System;
-using LibiadaCore.Core.IntervalsManagers;
-
-namespace LibiadaCore.Core.Characteristics.Calculators.AccordanceCalculators
+﻿namespace LibiadaCore.Core.Characteristics.Calculators.AccordanceCalculators
 {
+    using System;
+
+    using LibiadaCore.Core.IntervalsManagers;
+
     /// <summary>
     /// Partial compliance degree calculator.
     /// </summary>

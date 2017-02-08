@@ -1,8 +1,9 @@
-﻿using LibiadaCore.Core.SimpleTypes;
-using LibiadaCore.Misc.DataTransformers;
-
-namespace LibiadaCore.Core.Characteristics.Calculators.FullCalculators
+﻿namespace LibiadaCore.Core.Characteristics.Calculators.FullCalculators
 {
+    using LibiadaCore.Core.Characteristics.Calculators.CongenericCalculators;
+    using LibiadaCore.Core.SimpleTypes;
+    using LibiadaCore.Misc.DataTransformers;
+
     /// <summary>
     /// The gc ratio.
     /// </summary>

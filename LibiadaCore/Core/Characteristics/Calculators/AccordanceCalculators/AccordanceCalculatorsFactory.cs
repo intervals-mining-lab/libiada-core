@@ -1,8 +1,8 @@
-using System;
-using System.Collections.Generic;
-
 namespace LibiadaCore.Core.Characteristics.Calculators.AccordanceCalculators
 {
+    using System;
+    using System.Collections.Generic;
+
     /// <summary>
     /// Static factory of different calculators.
     /// </summary>
@@ -16,6 +16,7 @@ namespace LibiadaCore.Core.Characteristics.Calculators.AccordanceCalculators
                                                                 typeof(PartialComplianceDegree),
                                                                 typeof(MutualComplianceDegree)
                                                             };
+
         /// <summary>
         ///  Create binary calculator method.
         /// </summary>

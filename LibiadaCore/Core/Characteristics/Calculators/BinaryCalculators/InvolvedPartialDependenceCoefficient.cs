@@ -1,7 +1,7 @@
-﻿using LibiadaCore.Core.IntervalsManagers;
-
-namespace LibiadaCore.Core.Characteristics.Calculators.BinaryCalculators
+﻿namespace LibiadaCore.Core.Characteristics.Calculators.BinaryCalculators
 {
+    using LibiadaCore.Core.IntervalsManagers;
+
     /// <summary>
     /// Involved partial dependence coefficient of binary chain.
     /// </summary>

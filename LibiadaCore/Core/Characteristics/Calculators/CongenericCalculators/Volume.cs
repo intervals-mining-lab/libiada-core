@@ -1,7 +1,7 @@
-﻿using System.Linq;
-
-namespace LibiadaCore.Core.Characteristics.Calculators.CongenericCalculators
+﻿namespace LibiadaCore.Core.Characteristics.Calculators.CongenericCalculators
 {
+    using System.Linq;
+
     /// <summary>
     /// Volume of sequence.
     /// </summary>

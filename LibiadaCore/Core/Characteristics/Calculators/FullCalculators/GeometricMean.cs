@@ -1,10 +1,7 @@
-using System;
-using System.Linq;
-using LibiadaCore.Core.Characteristics.Calculators.BinaryCalculators;
-using LibiadaCore.Core.IntervalsManagers;
-
 namespace LibiadaCore.Core.Characteristics.Calculators.FullCalculators
 {
+    using System;
+
     /// <summary>
     /// Average geometric value of interval length.
     /// </summary>

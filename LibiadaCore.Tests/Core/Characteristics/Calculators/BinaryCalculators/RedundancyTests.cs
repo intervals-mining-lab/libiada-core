@@ -1,4 +1,4 @@
-﻿namespace LibiadaCore.Tests.Core.Characteristics.Calculators
+﻿namespace LibiadaCore.Tests.Core.Characteristics.Calculators.BinaryCalculators
 {
     using NUnit.Framework;
 

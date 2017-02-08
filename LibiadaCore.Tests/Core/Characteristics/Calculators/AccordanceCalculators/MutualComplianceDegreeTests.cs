@@ -1,4 +1,4 @@
-﻿namespace LibiadaCore.Tests.Core.Characteristics.Calculators
+﻿namespace LibiadaCore.Tests.Core.Characteristics.Calculators.AccordanceCalculators
 {
     using NUnit.Framework;
 
@@ -34,7 +34,7 @@
         [TestCase(17, 16, 0.8350)]
         public void MutualComplianceDegreeTest(int firstIndex, int secondIndex, double firstValue)
         {
-            CalculationTest(firstIndex, secondIndex, firstValue);
+            this.CalculationTest(firstIndex, secondIndex, firstValue);
         }
     }
 }

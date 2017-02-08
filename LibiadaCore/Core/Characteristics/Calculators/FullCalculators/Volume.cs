@@ -1,6 +1,4 @@
-﻿using System.Linq;
-
-namespace LibiadaCore.Core.Characteristics.Calculators.FullCalculators
+﻿namespace LibiadaCore.Core.Characteristics.Calculators.FullCalculators
 {
     /// <summary>
     /// Volume of sequence.

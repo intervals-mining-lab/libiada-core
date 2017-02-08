@@ -1,11 +1,12 @@
-﻿using System.Collections.Generic;
-using LibiadaCore.Core;
-using LibiadaCore.Core.Characteristics.Calculators;
-using LibiadaCore.Core.Characteristics.Calculators.CongenericCalculators;
-using NUnit.Framework;
-
-namespace LibiadaCore.Tests.Core.Characteristics.Calculators.CongenericCalculators
+﻿namespace LibiadaCore.Tests.Core.Characteristics.Calculators.CongenericCalculators
 {
+    using System.Collections.Generic;
+
+    using LibiadaCore.Core;
+    using LibiadaCore.Core.Characteristics.Calculators.CongenericCalculators;
+
+    using NUnit.Framework;
+
     /// <summary>
     /// The calculators tests.
     /// </summary>

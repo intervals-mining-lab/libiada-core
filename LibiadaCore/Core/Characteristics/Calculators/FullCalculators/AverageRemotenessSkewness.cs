@@ -36,6 +36,7 @@
             {
                 return 0;
             }
+
             var congenericIntervalsCount = new CongenericCalculators.IntervalsCount();
             var congenericAverageRemoteness = new CongenericCalculators.AverageRemoteness();
 

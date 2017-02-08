@@ -1,8 +1,6 @@
-﻿using LibiadaCore.Core.Characteristics.Calculators.BinaryCalculators;
-
-namespace LibiadaCore.Tests.Core.Characteristics.Calculators
+﻿namespace LibiadaCore.Tests.Core.Characteristics.Calculators.BinaryCalculators
 {
-    using LibiadaCore.Core.Characteristics;
+    using LibiadaCore.Core.Characteristics.Calculators.BinaryCalculators;
 
     using NUnit.Framework;
 
@@ -10,7 +8,7 @@ namespace LibiadaCore.Tests.Core.Characteristics.Calculators
     /// The binary geometric mean test.
     /// </summary>
     [TestFixture]
-    public class BinaryGeometricMeanTests : BinaryCalculatorsTests
+    public class GeometricMeanTests : BinaryCalculatorsTests
     {
         /// <summary>
         /// Calculator initialization method.
@@ -18,7 +16,7 @@ namespace LibiadaCore.Tests.Core.Characteristics.Calculators
         [OneTimeSetUp]
         public override void Initialization()
         {
-            Calculator = BinaryCalculatorsFactory.CreateBinaryCalculator("GeometricMean");
+            this.Calculator = BinaryCalculatorsFactory.CreateBinaryCalculator("GeometricMean");
         }
 
         /// <summary>
@@ -36,7 +34,7 @@ namespace LibiadaCore.Tests.Core.Characteristics.Calculators
         [TestCase(0, 1.7321, 1)]
         public void SpatialDependenceTest(int index, double firstValue, double secondValue)
         {
-            CalculationTest(index, firstValue, secondValue);
+            this.CalculationTest(index, firstValue, secondValue);
         }
     }
 }

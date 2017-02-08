@@ -1,8 +1,8 @@
-using System;
-using System.Linq;
-
 namespace LibiadaCore.Core.Characteristics.Calculators.CongenericCalculators
 {
+    using System;
+    using System.Linq;
+
     /// <summary>
     /// Characteristic of chain depth.
     /// </summary>

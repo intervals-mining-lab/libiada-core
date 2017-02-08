@@ -157,7 +157,7 @@ namespace LibiadaCore.Core
         /// The element of seeked congeneric chain.
         /// </param>
         /// <returns>
-        /// The <see cref="CongenericChain"/>.
+        /// The <see cref="T:CongenericChain"/>.
         /// </returns>
         public CongenericChain TryGetCongenericChain(IBaseObject element)
         {
@@ -176,7 +176,7 @@ namespace LibiadaCore.Core
         /// The element of congeneric chain.
         /// </param>
         /// <returns>
-        /// The <see cref="CongenericChain"/>.
+        /// The <see cref="T:CongenericChain"/>.
         /// </returns>
         public CongenericChain GetOrCreateCongenericChain(IBaseObject element)
         {

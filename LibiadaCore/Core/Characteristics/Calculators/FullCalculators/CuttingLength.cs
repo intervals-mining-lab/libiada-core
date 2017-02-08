@@ -1,7 +1,7 @@
-using LibiadaCore.Misc.Iterators;
-
 namespace LibiadaCore.Core.Characteristics.Calculators.FullCalculators
 {
+    using LibiadaCore.Misc.Iterators;
+
     /// <summary>
     /// Sadovsky cut length.
     /// </summary>

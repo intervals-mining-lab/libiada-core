@@ -1,11 +1,10 @@
-﻿using LibiadaCore.Core.Characteristics.Calculators.FullCalculators;
-
-namespace LibiadaMusic.Analysis
+﻿namespace LibiadaMusic.Analysis
 {
     using System;
     using System.Collections.Generic;
 
     using LibiadaCore.Core;
+    using LibiadaCore.Core.Characteristics.Calculators.FullCalculators;
     using LibiadaCore.Core.SimpleTypes;
 
     /// <summary>

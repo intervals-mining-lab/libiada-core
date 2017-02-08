@@ -1,9 +1,9 @@
 ﻿namespace Segmenter.Model
 {
-    using System;
     using System.Collections.Generic;
 
     using LibiadaCore.Core.SimpleTypes;
+    using LibiadaCore.Extensions;
 
     using Segmenter.Base;
     using Segmenter.Base.Collectors;
@@ -43,10 +43,10 @@
         /// </returns>
         public override ComplexChain Cut(ContentValues parameters)
         {
-            int maxWindowLen = (int)parameters.Get(Enum.GetName(typeof(Parameter), Parameter.Window));
-            int windowDec = (int)parameters.Get(Enum.GetName(typeof(Parameter), Parameter.WindowDecrement));
+            int maxWindowLen = (int)parameters.Get(Parameter.Window.GetName());
+            int windowDec = (int)parameters.Get(Parameter.WindowDecrement.GetName());
 
-            convoluted = (ComplexChain)parameters.Get(Formalism.GetName(typeof(Formalism), Formalism.Sequence));
+            convoluted = (ComplexChain)parameters.Get(Formalism.Sequence.GetName());
             alphabet = new FrequencyDictionary();
 
             for (int winLen = maxWindowLen; (winLen >= windowDec) && (winLen > 1); winLen -= windowDec)

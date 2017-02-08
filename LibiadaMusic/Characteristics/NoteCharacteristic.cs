@@ -1,12 +1,10 @@
-﻿using LibiadaCore.Core.Characteristics.Calculators.FullCalculators;
-
-namespace LibiadaMusic.Characteristics
+﻿namespace LibiadaMusic.Characteristics
 {
     using System;
     using System.Collections.Generic;
 
     using LibiadaCore.Core;
-    using LibiadaCore.Core.Characteristics.Calculators;
+    using LibiadaCore.Core.Characteristics.Calculators.FullCalculators;
     using LibiadaCore.Core.SimpleTypes;
 
     using LibiadaMusic.BorodaDivider;

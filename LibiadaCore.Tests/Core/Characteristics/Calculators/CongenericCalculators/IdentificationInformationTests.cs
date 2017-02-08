@@ -1,8 +1,9 @@
-using LibiadaCore.Core;
-using NUnit.Framework;
-
 namespace LibiadaCore.Tests.Core.Characteristics.Calculators.CongenericCalculators
 {
+    using LibiadaCore.Core;
+
+    using NUnit.Framework;
+
     /// <summary>
     /// The identification information test.
     /// </summary>

@@ -1,5 +1,3 @@
-using System;
-
 namespace LibiadaCore.Core.Characteristics.Calculators.FullCalculators
 {
     /// <summary>

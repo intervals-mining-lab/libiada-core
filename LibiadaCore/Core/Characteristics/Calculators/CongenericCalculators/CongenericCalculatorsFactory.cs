@@ -1,8 +1,8 @@
-using System;
-using System.Collections.Generic;
-
 namespace LibiadaCore.Core.Characteristics.Calculators.CongenericCalculators
 {
+    using System;
+    using System.Collections.Generic;
+
     /// <summary>
     /// Static factory of different calculators.
     /// </summary>
@@ -32,7 +32,6 @@ namespace LibiadaCore.Core.Characteristics.Calculators.CongenericCalculators
                                                                 typeof(Volume),
                                                                 typeof(Uniformity)
                                                             };
-
 
         /// <summary>
         /// Create congeneric calculator method.

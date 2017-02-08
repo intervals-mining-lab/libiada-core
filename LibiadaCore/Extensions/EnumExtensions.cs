@@ -3,6 +3,7 @@
     using System;
     using System.ComponentModel;
     using System.ComponentModel.DataAnnotations;
+    using System.Globalization;
 
     using LibiadaCore.Exceptions;
 
@@ -32,7 +33,7 @@
                 throw new TypeArgumentException("Type argument must be enum.");
             }
 
-            var fieldInfo = type.GetField(value.ToString());
+            var fieldInfo = type.GetField(value.ToString(CultureInfo.InvariantCulture));
 
             var descriptionAttributes = fieldInfo.GetCustomAttributes(typeof(DisplayAttribute), false) as DisplayAttribute[];
 
@@ -41,7 +42,7 @@
                 return string.Empty;
             }
 
-            return (descriptionAttributes.Length > 0) ? descriptionAttributes[0].Name : value.ToString();
+            return (descriptionAttributes.Length > 0) ? descriptionAttributes[0].Name : value.ToString(CultureInfo.InvariantCulture);
         }
 
         /// <summary>
@@ -92,7 +93,7 @@
                 throw new TypeArgumentException("Type argument must be enum.");
             }
 
-            var memberInfo = type.GetMember(value.ToString());
+            var memberInfo = type.GetMember(value.ToString(CultureInfo.InvariantCulture));
             var attributes = memberInfo[0].GetCustomAttributes(typeof(DescriptionAttribute), false);
             return ((DescriptionAttribute)attributes[0]).Description;
         }
@@ -123,7 +124,7 @@
                 throw new TypeArgumentException("Type argument must be enum.");
             }
 
-            var memberInfo = type.GetMember(value.ToString());
+            var memberInfo = type.GetMember(value.ToString(CultureInfo.InvariantCulture));
             var attributes = memberInfo[0].GetCustomAttributes(typeof(TAttribute), false);
             return (attributes.Length > 0) ? (TAttribute)attributes[0] : null;
         }

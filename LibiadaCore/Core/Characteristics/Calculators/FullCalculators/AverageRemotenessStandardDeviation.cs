@@ -1,7 +1,7 @@
-﻿using System;
-
-namespace LibiadaCore.Core.Characteristics.Calculators.FullCalculators
+﻿namespace LibiadaCore.Core.Characteristics.Calculators.FullCalculators
 {
+    using System;
+
     /// <summary>
     /// Standard deviation of average remoteness (square root of dispersion of average remoteness).
     /// </summary>

@@ -1,7 +1,7 @@
-﻿using System;
-
-namespace LibiadaCore.Core.Characteristics.Calculators.AccordanceCalculators
+﻿namespace LibiadaCore.Core.Characteristics.Calculators.AccordanceCalculators
 {
+    using System;
+
     /// <summary>
     /// The mutual compliance degree.
     /// </summary>

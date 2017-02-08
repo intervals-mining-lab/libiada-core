@@ -1,4 +1,4 @@
-﻿namespace LibiadaCore.Core.Characteristics.Calculators
+﻿namespace LibiadaCore.Core.Characteristics.Calculators.CongenericCalculators
 {
     /// <summary>
     /// The congeneric chain calculator interface.

@@ -1,6 +1,7 @@
 ﻿namespace Segmenter.Model
 {
     using System.Collections.Generic;
+    using System.Globalization;
 
     using LibiadaCore.Core;
 
@@ -100,7 +101,7 @@
         /// <param name="value">digit value</param>
         public void AddInfo(IIdentifiable what, IDefinable value)
         {
-            parameters.Add(what.GetName(), value.GetValue().ToString());
+            parameters.Add(what.GetName(), value.GetValue().ToString(CultureInfo.InvariantCulture));
         }
 
         /// <summary>
@@ -114,7 +115,7 @@
         /// </param>
         public void AddInfo(IIdentifiable what, double value)
         {
-            parameters.Add(what.GetName(), value.ToString());
+            parameters.Add(what.GetName(), value.ToString(CultureInfo.InvariantCulture));
         }
     }
 }

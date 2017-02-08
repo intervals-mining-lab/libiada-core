@@ -54,16 +54,15 @@
         /// </returns>
         public override int Seek(List<string> required)
         {
-            int index = 0;
             result = new List<int>();
             while (iterator.HasNext())
             {
                 List<string> sequence = iterator.Next();
-                for (List<string>.Enumerator iter = sequence.GetEnumerator(); iter.MoveNext(); index++)
+                for (int i = 0; i < sequence.Count; i++)
                 {
-                    if (iter.Current.Equals(required[first]))
+                    if (sequence[i].Equals(required[first]))
                     {
-                        result.Add(index);
+                        result.Add(i);
                     }
                 }
             }
