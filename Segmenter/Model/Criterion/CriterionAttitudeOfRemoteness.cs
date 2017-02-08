@@ -1,8 +1,8 @@
-﻿namespace Segmenter.Model.Criterion
+﻿using LibiadaCore.Core.Characteristics.Calculators.FullCalculators;
+
+namespace Segmenter.Model.Criterion
 {
     using System;
-
-    using LibiadaCore.Core.Characteristics.Calculators;
 
     using Segmenter.Base.Collectors;
     using Segmenter.Base.Sequences;

@@ -1,10 +1,11 @@
-﻿namespace LibiadaMusic.Analysis
+﻿using LibiadaCore.Core.Characteristics.Calculators.FullCalculators;
+
+namespace LibiadaMusic.Analysis
 {
     using System;
     using System.Collections.Generic;
 
     using LibiadaCore.Core;
-    using LibiadaCore.Core.Characteristics.Calculators;
     using LibiadaCore.Core.SimpleTypes;
 
     /// <summary>
@@ -263,10 +264,11 @@
         {
             var calculator = new Depth();
             AvgDepth = calculator.Calculate(MakeNewChain(), Link.End);
+            var congenericCalculator = new LibiadaCore.Core.Characteristics.Calculators.CongenericCalculators.Depth();
 
             for (int i = 0; i < PLex.Capacity; i++)
             {
-                PLex.Data[i].Depth = calculator.Calculate(MakeNewChain().CongenericChain(i), Link.End);
+                PLex.Data[i].Depth = congenericCalculator.Calculate(MakeNewChain().CongenericChain(i), Link.End);
             }
         }
 
@@ -277,10 +279,11 @@
         {
             var calculator = new AverageRemoteness();
             AvgRemoteness = calculator.Calculate(chain, Link.End);
+            var congenericCalculator = new LibiadaCore.Core.Characteristics.Calculators.CongenericCalculators.AverageRemoteness();
 
             for (int i = 0; i < PLex.Capacity; i++)
             {
-                PLex.Data[i].Remoteness = calculator.Calculate(chain.CongenericChain(i), Link.End);
+                PLex.Data[i].Remoteness = congenericCalculator.Calculate(chain.CongenericChain(i), Link.End);
             }
         }
 

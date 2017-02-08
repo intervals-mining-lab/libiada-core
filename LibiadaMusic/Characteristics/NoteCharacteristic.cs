@@ -1,4 +1,6 @@
-﻿namespace LibiadaMusic.Characteristics
+﻿using LibiadaCore.Core.Characteristics.Calculators.FullCalculators;
+
+namespace LibiadaMusic.Characteristics
 {
     using System;
     using System.Collections.Generic;

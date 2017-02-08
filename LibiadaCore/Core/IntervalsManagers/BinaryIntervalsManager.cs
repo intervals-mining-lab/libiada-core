@@ -1,7 +1,7 @@
-﻿namespace LibiadaCore.Core.IntervalsManagers
-{
-    using Characteristics.Calculators;
+﻿using LibiadaCore.Core.Characteristics.Calculators.CongenericCalculators;
 
+namespace LibiadaCore.Core.IntervalsManagers
+{
     /// <summary>
     /// The relation interval manager.
     /// </summary>

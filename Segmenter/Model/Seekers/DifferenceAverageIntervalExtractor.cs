@@ -1,9 +1,9 @@
-﻿namespace Segmenter.Model.Seekers
+﻿using LibiadaCore.Core.Characteristics.Calculators.FullCalculators;
+
+namespace Segmenter.Model.Seekers
 {
     using System;
     using System.Collections.Generic;
-
-    using LibiadaCore.Core.Characteristics.Calculators;
 
     using Segmenter.Base;
     using Segmenter.Base.Collectors;

@@ -1,3 +1,5 @@
+using LibiadaCore.Core.Characteristics.Calculators.FullCalculators;
+
 namespace BuildingsIterator
 {
     using LibiadaCore.Core;
