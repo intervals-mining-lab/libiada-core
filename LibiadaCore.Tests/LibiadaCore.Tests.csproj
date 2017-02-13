@@ -46,8 +46,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Core\AbstractChainTests.cs" />
+    <Compile Include="Core\Characteristics\Calculators\AccordanceCalculators\AccordanceCalculatorsFactoryTests.cs" />
     <Compile Include="Core\Characteristics\Calculators\AccordanceCalculators\AccordanceCalculatorsTests.cs" />
+    <Compile Include="Core\Characteristics\Calculators\BinaryCalculators\BinaryCalculatorsFactoryTests.cs" />
     <Compile Include="Core\Characteristics\Calculators\CongenericCalculators\AverageRemotenessTests.cs" />
+    <Compile Include="Core\Characteristics\Calculators\CongenericCalculators\CongenericCalculatorsFactoryTests.cs" />
     <Compile Include="Core\Characteristics\Calculators\CongenericCalculators\CuttingLengthTests.cs" />
     <Compile Include="Core\Characteristics\Calculators\CongenericCalculators\CuttingLengthVocabularyEntropyTests.cs" />
     <Compile Include="Core\Characteristics\Calculators\CongenericCalculators\DepthTests.cs" />
@@ -85,6 +88,7 @@
     <Compile Include="Core\Characteristics\Calculators\FullCalculators\EntropySkewnessCoefficientTests.cs" />
     <Compile Include="Core\Characteristics\Calculators\FullCalculators\EntropySkewnessTests.cs" />
     <Compile Include="Core\Characteristics\Calculators\FullCalculators\EntropyStandardDeviationTests.cs" />
+    <Compile Include="Core\Characteristics\Calculators\FullCalculators\FullCalculatorsFactoryTests.cs" />
     <Compile Include="Core\Characteristics\Calculators\FullCalculators\GCRatioTests.cs" />
     <Compile Include="Core\Characteristics\Calculators\FullCalculators\AverageRemotenessSkewnessCoefficientTests.cs" />
     <Compile Include="Core\Characteristics\Calculators\FullCalculators\AverageRemotenessDispersionTests.cs" />

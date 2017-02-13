@@ -220,6 +220,8 @@ namespace LibiadaCore.Core.Characteristics.Calculators.FullCalculators
                     return new VariationsCount();
                 case FullCharacteristic.Volume:
                     return new Volume();
+                default:
+                    throw new ArgumentException("Unknown full characteristic type");
             }
         }
     }

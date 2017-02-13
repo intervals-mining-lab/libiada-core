@@ -60,7 +60,7 @@ namespace LibiadaCore.Core.Characteristics.Calculators.BinaryCalculators
             return CreateBinaryCalculator(type.Name);
         }
 
-        public static IBinaryCalculator CreatCalculator(BinaryCharacteristic type)
+        public static IBinaryCalculator CreateCalculator(BinaryCharacteristic type)
         {
             switch (type)
             {
