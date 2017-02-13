@@ -1,13 +1,26 @@
-﻿using System;
-using LibiadaCore.Core.Characteristics.Calculators.CongenericCalculators;
-using NUnit.Framework;
-using GeometricMean = LibiadaCore.Core.Characteristics.Calculators.CongenericCalculators.GeometricMean;
-
-namespace LibiadaCore.Tests.Core.Characteristics.Calculators.CongenericCalculators
+﻿namespace LibiadaCore.Tests.Core.Characteristics.Calculators.CongenericCalculators
 {
+    using System;
+
+    using LibiadaCore.Core.Characteristics.Calculators.CongenericCalculators;
+
+    using NUnit.Framework;
+
+    /// <summary>
+    /// The congeneric calculators factory tests.
+    /// </summary>
     [TestFixture(TestOf = typeof(CongenericCalculatorsFactory))]
     public class CongenericCalculatorsFactoryTests
     {
+        /// <summary>
+        /// Calculator creation test.
+        /// </summary>
+        /// <param name="type">
+        /// The type.
+        /// </param>
+        /// <param name="calculator">
+        /// The calculator.
+        /// </param>
         [TestCase(CongenericCharacteristic.ArithmeticMean, typeof(ArithmeticMean))]
         [TestCase(CongenericCharacteristic.AverageRemoteness, typeof(AverageRemoteness))]
         [TestCase(CongenericCharacteristic.CuttingLength, typeof(CuttingLength))]
@@ -31,6 +44,9 @@ namespace LibiadaCore.Tests.Core.Characteristics.Calculators.CongenericCalculato
             Assert.IsInstanceOf(calculator, CongenericCalculatorsFactory.CreateCalculator(type));
         }
 
+        /// <summary>
+        /// The wrong calculator type test.
+        /// </summary>
         [Test]
         public void WrongCalculatorTypeTest()
         {

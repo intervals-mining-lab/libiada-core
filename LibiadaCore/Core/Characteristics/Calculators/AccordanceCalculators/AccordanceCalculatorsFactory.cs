@@ -56,13 +56,25 @@ namespace LibiadaCore.Core.Characteristics.Calculators.AccordanceCalculators
             return CreateAccordanceCalculator(type.Name);
         }
 
+        /// <summary>
+        /// The create calculator.
+        /// </summary>
+        /// <param name="type">
+        /// The type.
+        /// </param>
+        /// <returns>
+        /// The <see cref="IAccordanceCalculator"/>.
+        /// </returns>
+        /// <exception cref="ArgumentException">
+        /// Thrown if calculator type is unknown.
+        /// </exception>
         public static IAccordanceCalculator CreateCalculator(AccordanceCharacteristic type)
         {
             switch (type)
             {
                 case AccordanceCharacteristic.MutualComplianceDegree:
-                    return  new MutualComplianceDegree();
-                case AccordanceCharacteristic.PartialComplianceDegree: 
+                    return new MutualComplianceDegree();
+                case AccordanceCharacteristic.PartialComplianceDegree:
                     return new PartialComplianceDegree();
                 default:
                     throw new ArgumentException("Unknown accordance characteristic type");

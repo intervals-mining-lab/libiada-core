@@ -108,6 +108,18 @@ namespace LibiadaCore.Core.Characteristics.Calculators.FullCalculators
             return CreateFullCalculator(type.Name);
         }
 
+        /// <summary>
+        /// The create calculator.
+        /// </summary>
+        /// <param name="type">
+        /// The type.
+        /// </param>
+        /// <returns>
+        /// The <see cref="IFullCalculator"/>.
+        /// </returns>
+        /// <exception cref="ArgumentException">
+        /// Thrown if calculator type is unknown.
+        /// </exception>
         public static IFullCalculator CreateCalculator(FullCharacteristic type)
         {
             switch (type)

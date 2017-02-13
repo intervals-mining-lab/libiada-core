@@ -60,6 +60,18 @@ namespace LibiadaCore.Core.Characteristics.Calculators.BinaryCalculators
             return CreateBinaryCalculator(type.Name);
         }
 
+        /// <summary>
+        /// The create calculator.
+        /// </summary>
+        /// <param name="type">
+        /// The type.
+        /// </param>
+        /// <returns>
+        /// The <see cref="IBinaryCalculator"/>.
+        /// </returns>
+        /// <exception cref="ArgumentException">
+        /// Thrown if calculator type is unknown.
+        /// </exception>
         public static IBinaryCalculator CreateCalculator(BinaryCharacteristic type)
         {
             switch (type)

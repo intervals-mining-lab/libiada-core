@@ -1,12 +1,26 @@
-﻿using System;
-using LibiadaCore.Core.Characteristics.Calculators.FullCalculators;
-using NUnit.Framework;
-
-namespace LibiadaCore.Tests.Core.Characteristics.Calculators.FullCalculators
+﻿namespace LibiadaCore.Tests.Core.Characteristics.Calculators.FullCalculators
 {
+    using System;
+
+    using LibiadaCore.Core.Characteristics.Calculators.FullCalculators;
+
+    using NUnit.Framework;
+
+    /// <summary>
+    /// The full calculators factory tests.
+    /// </summary>
     [TestFixture(TestOf = typeof(FullCalculatorsFactory))]
     public class FullCalculatorsFactoryTests
     {
+        /// <summary>
+        /// Calculator creation test.
+        /// </summary>
+        /// <param name="type">
+        /// The type.
+        /// </param>
+        /// <param name="calculator">
+        /// The calculator.
+        /// </param>
         [TestCase(FullCharacteristic.AlphabetCardinality, typeof(AlphabetCardinality))]
         [TestCase(FullCharacteristic.AlphabeticAverageRemoteness, typeof(AlphabeticAverageRemoteness))]
         [TestCase(FullCharacteristic.AlphabeticDepth, typeof(AlphabeticDepth))]
@@ -66,10 +80,13 @@ namespace LibiadaCore.Tests.Core.Characteristics.Calculators.FullCalculators
             Assert.IsInstanceOf(calculator, FullCalculatorsFactory.CreateCalculator(type));
         }
 
+        /// <summary>
+        /// The wrong calculator type test.
+        /// </summary>
         [Test]
         public void WrongCalculatorTypeTest()
         {
-            Assert.Throws<ArgumentException>(()=>FullCalculatorsFactory.CreateCalculator(0));
+            Assert.Throws<ArgumentException>(() => FullCalculatorsFactory.CreateCalculator(0));
         }
     }
 }

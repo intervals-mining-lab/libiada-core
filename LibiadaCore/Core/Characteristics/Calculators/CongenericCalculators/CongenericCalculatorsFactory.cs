@@ -72,6 +72,18 @@ namespace LibiadaCore.Core.Characteristics.Calculators.CongenericCalculators
             return CreateCongenericCalculator(type.Name);
         }
 
+        /// <summary>
+        /// The create calculator.
+        /// </summary>
+        /// <param name="type">
+        /// The type.
+        /// </param>
+        /// <returns>
+        /// The <see cref="ICongenericCalculator"/>.
+        /// </returns>
+        /// <exception cref="ArgumentException">
+        /// Thrown if calculator type is unknown.
+        /// </exception>
         public static ICongenericCalculator CreateCalculator(CongenericCharacteristic type)
         {
             switch (type)
