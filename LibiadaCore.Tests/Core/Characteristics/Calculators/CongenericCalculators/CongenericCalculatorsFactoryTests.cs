@@ -30,5 +30,11 @@ namespace LibiadaCore.Tests.Core.Characteristics.Calculators.CongenericCalculato
         {
             Assert.IsInstanceOf(calculator, CongenericCalculatorsFactory.CreateCalculator(type));
         }
+
+        [Test]
+        public void WrongCalculatorTypeTest()
+        {
+            Assert.Throws<ArgumentException>(() => CongenericCalculatorsFactory.CreateCalculator(0));
+        }
     }
 }

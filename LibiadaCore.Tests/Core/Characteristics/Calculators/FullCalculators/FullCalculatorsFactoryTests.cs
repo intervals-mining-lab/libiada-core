@@ -65,5 +65,11 @@ namespace LibiadaCore.Tests.Core.Characteristics.Calculators.FullCalculators
         {
             Assert.IsInstanceOf(calculator, FullCalculatorsFactory.CreateCalculator(type));
         }
+
+        [Test]
+        public void WrongCalculatorTypeTest()
+        {
+            Assert.Throws<ArgumentException>(()=>FullCalculatorsFactory.CreateCalculator(0));
+        }
     }
 }

@@ -13,5 +13,11 @@ namespace LibiadaCore.Tests.Core.Characteristics.Calculators.AccordanceCalculato
         {
             Assert.IsInstanceOf(calculator, AccordanceCalculatorsFactory.CreateCalculator(type));
         }
+
+        [Test]
+        public void WrongCalculatorTypeTest()
+        {
+            Assert.Throws<ArgumentException>(() => AccordanceCalculatorsFactory.CreateCalculator(0));
+        }
     }
 }

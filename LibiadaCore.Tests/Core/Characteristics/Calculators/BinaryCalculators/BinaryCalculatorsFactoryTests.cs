@@ -17,5 +17,11 @@ namespace LibiadaCore.Tests.Core.Characteristics.Calculators.BinaryCalculators
         {
             Assert.IsInstanceOf(calculator, BinaryCalculatorsFactory.CreateCalculator(type));
         }
+
+        [Test]
+        public void WrongCalculatorTypeTest()
+        {
+            Assert.Throws<ArgumentException>(() => BinaryCalculatorsFactory.CreateCalculator(0));
+        }
     }
 }
