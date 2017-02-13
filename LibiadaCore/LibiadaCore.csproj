@@ -42,9 +42,12 @@
   <ItemGroup>
     <Compile Include="Core\AbstractChain.cs" />
     <Compile Include="Core\Characteristics\Calculators\AccordanceCalculators\AccordanceCalculatorsFactory.cs" />
+    <Compile Include="Core\Characteristics\Calculators\AccordanceCalculators\AccordanceCharacteristic.cs" />
     <Compile Include="Core\Characteristics\Calculators\BinaryCalculators\BinaryCalculatorsFactory.cs" />
+    <Compile Include="Core\Characteristics\Calculators\BinaryCalculators\BinaryCharacteristic.cs" />
     <Compile Include="Core\Characteristics\Calculators\BinaryCalculators\GeometricMean.cs" />
     <Compile Include="Core\Characteristics\Calculators\CongenericCalculators\CongenericCalculatorsFactory.cs" />
+    <Compile Include="Core\Characteristics\Calculators\CongenericCalculators\CongenericCharacteristic.cs" />
     <Compile Include="Core\Characteristics\Calculators\CongenericCalculators\CuttingLength.cs" />
     <Compile Include="Core\Characteristics\Calculators\CongenericCalculators\Depth.cs" />
     <Compile Include="Core\Characteristics\Calculators\CongenericCalculators\DescriptiveInformation.cs" />
@@ -82,6 +85,7 @@
     <Compile Include="Core\Characteristics\Calculators\FullCalculators\CuttingLengthVocabularyEntropy.cs" />
     <Compile Include="Core\Characteristics\Calculators\AccordanceCalculators\IAccordanceCalculator.cs" />
     <Compile Include="Core\Characteristics\Calculators\AccordanceCalculators\MutualComplianceDegree.cs" />
+    <Compile Include="Core\Characteristics\Calculators\FullCalculators\FullCharacteristic.cs" />
     <Compile Include="Core\Characteristics\Calculators\FullCalculators\RemotenessDispersion.cs" />
     <Compile Include="Core\Characteristics\Calculators\AccordanceCalculators\PartialComplianceDegree.cs" />
     <Compile Include="Core\Characteristics\Calculators\FullCalculators\GCSkew.cs" />

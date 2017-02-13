@@ -55,5 +55,18 @@ namespace LibiadaCore.Core.Characteristics.Calculators.AccordanceCalculators
         {
             return CreateAccordanceCalculator(type.Name);
         }
+
+        public static IAccordanceCalculator CreateCalculator(AccordanceCharacteristic type)
+        {
+            switch (type)
+            {
+                case AccordanceCharacteristic.MutualComplianceDegree:
+                    return  new MutualComplianceDegree();
+                case AccordanceCharacteristic.PartialComplianceDegree: 
+                    return new PartialComplianceDegree();
+                default:
+                    throw new ArgumentException("Unknown accordance characteristic type");
+            }
+        }
     }
 }

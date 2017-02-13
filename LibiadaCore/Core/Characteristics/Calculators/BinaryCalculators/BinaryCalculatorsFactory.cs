@@ -59,5 +59,26 @@ namespace LibiadaCore.Core.Characteristics.Calculators.BinaryCalculators
         {
             return CreateBinaryCalculator(type.Name);
         }
+
+        public static IBinaryCalculator CreatCalculator(BinaryCharacteristic type)
+        {
+            switch (type)
+            {
+                case BinaryCharacteristic.GeometricMean:
+                    return new GeometricMean();
+                case BinaryCharacteristic.InvolvedPartialDependenceCoefficient:
+                    return new InvolvedPartialDependenceCoefficient();
+                case BinaryCharacteristic.MutualDependenceCoefficient:
+                    return new MutualDependenceCoefficient();
+                case BinaryCharacteristic.NormalizedPartialDependenceCoefficient:
+                    return new NormalizedPartialDependenceCoefficient();
+                case BinaryCharacteristic.PartialDependenceCoefficient:
+                    return new PartialDependenceCoefficient();
+                case BinaryCharacteristic.Redundancy:
+                    return new Redundancy();
+                default:
+                    throw new ArgumentException("Unknown binary characteristic type");
+            }
+        }
     }
 }
