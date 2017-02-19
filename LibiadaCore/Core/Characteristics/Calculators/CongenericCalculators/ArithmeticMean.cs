@@ -6,7 +6,7 @@ namespace LibiadaCore.Core.Characteristics.Calculators.CongenericCalculators
     public class ArithmeticMean : ICongenericCalculator
     {
         /// <summary>
-        /// Calculates multiplication of all intervals
+        /// Calculates sum of all intervals
         /// between nearest elements in congeneric sequence
         /// divided by number of intervals.
         /// </summary>

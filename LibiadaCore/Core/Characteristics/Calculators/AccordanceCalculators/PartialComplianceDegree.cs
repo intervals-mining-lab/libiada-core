@@ -26,7 +26,7 @@
         /// </returns>
         public double Calculate(CongenericChain firstChain, CongenericChain secondChain, Link link)
         {
-            var manager = new AccordanceIntervalsManager(firstChain, secondChain);
+            var manager = new AccordanceIntervalsManager(firstChain, secondChain, link);
             if (manager.FilteredFirstIntervals.Count == 0)
             {
                 return 0;

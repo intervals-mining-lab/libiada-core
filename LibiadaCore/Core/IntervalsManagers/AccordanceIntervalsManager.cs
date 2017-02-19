@@ -1,5 +1,6 @@
 ﻿namespace LibiadaCore.Core.IntervalsManagers
 {
+    using System;
     using System.Collections.Generic;
 
     /// <summary>
@@ -51,7 +52,10 @@
         /// <param name="secondChain">
         /// The second chain.
         /// </param>
-        public AccordanceIntervalsManager(CongenericChain firstChain, CongenericChain secondChain)
+        /// <param name="link">
+        /// The link.
+        /// </param>
+        public AccordanceIntervalsManager(CongenericChain firstChain, CongenericChain secondChain, Link link)
         {
             this.firstChain = firstChain;
             this.secondChain = secondChain;
@@ -59,16 +63,24 @@
             FirstOccurrencesCount = firstChain.OccurrencesCount;
             SecondOccurrencesCount = secondChain.OccurrencesCount;
 
-            FillAccordanceIntervals();
+            FillAccordanceIntervals(link);
         }
 
         /// <summary>
         /// The fill accordance intervals.
         /// </summary>
-        private void FillAccordanceIntervals()
+        /// <param name="link">
+        /// The link.
+        /// </param>
+        private void FillAccordanceIntervals(Link link)
         {
-            int[] firstIntervals = firstChain.GetIntervals(Link.End);
-            int[] secondIntervals = secondChain.GetIntervals(Link.End);
+            if (link != Link.End)
+            {
+                throw new NotImplementedException();
+            }
+
+            int[] firstIntervals = firstChain.GetIntervals(link);
+            int[] secondIntervals = secondChain.GetIntervals(link);
 
             for (int i = 1; i <= FirstOccurrencesCount; i++)
             {
