@@ -78,7 +78,7 @@
         /// </returns>
         public override double Distortion(ComplexChain chain, FrequencyDictionary alphabet)
         {
-            return (remoteness.Calculate(chain, chain.Anchor) / remoteness.Calculate(chain.Original(), chain.Anchor)) - wordAverageLength.Calculate(chain, chain.Anchor);
+            return (remoteness.Calculate(chain, chain.Anchor) / remoteness.Calculate(chain.Original(), chain.Anchor)) - wordAverageLength.Calculate(chain);
         }
     }
 }

@@ -5,7 +5,7 @@
     /// <summary>
     /// The average length of word (element) in sequence.
     /// </summary>
-    public class AverageWordLength : IFullCalculator
+    public class AverageWordLength : NonLinkableFullCalculator
     {
         /// <summary>
         /// Calculation method.
@@ -13,16 +13,12 @@
         /// <param name="chain">
         /// Source sequence.
         /// </param>
-        /// <param name="link">
-        /// Redundant parameter, not used in calculations.
-        /// </param>
         /// <returns>
         /// Average word length in <see cref="double"/> value.
         /// </returns>
-        public double Calculate(Chain chain, Link link)
+        public override double Calculate(Chain chain)
         {
             int chainLength = chain.GetLength();
-
             int sum = 0;
 
             for (int i = 0; i < chainLength; i++)

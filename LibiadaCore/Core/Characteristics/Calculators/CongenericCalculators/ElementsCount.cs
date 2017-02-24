@@ -3,7 +3,7 @@ namespace LibiadaCore.Core.Characteristics.Calculators.CongenericCalculators
     /// <summary>
     /// Elements count.
     /// </summary>
-    public class ElementsCount : ICongenericCalculator
+    public class ElementsCount : NonLinkableCongenericCalculator
     {
         /// <summary>
         /// Amount of not empty positions,
@@ -12,13 +12,10 @@ namespace LibiadaCore.Core.Characteristics.Calculators.CongenericCalculators
         /// <param name="chain">
         /// Source sequence.
         /// </param>
-        /// <param name="link">
-        /// Redundant parameter, not used in calculations.
-        /// </param>
         /// <returns>
         /// Elements count in chain as <see cref="double"/>.
         /// </returns>
-        public double Calculate(CongenericChain chain, Link link)
+        public override double Calculate(CongenericChain chain)
         {
             return chain.OccurrencesCount;
         }

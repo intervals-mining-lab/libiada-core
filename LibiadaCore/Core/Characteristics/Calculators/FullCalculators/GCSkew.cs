@@ -6,7 +6,7 @@
     /// <summary>
     /// The gc ratio.
     /// </summary>
-    public class GCSkew : IFullCalculator
+    public class GCSkew : NonLinkableFullCalculator
     {
         /// <summary>
         /// Calculation method.
@@ -14,20 +14,17 @@
         /// <param name="chain">
         /// Source sequence.
         /// </param>
-        /// <param name="link">
-        /// Link of intervals in chain.
-        /// </param>
         /// <returns>
         /// G+C skew value as <see cref="double"/>.
         /// </returns>
-        public double Calculate(Chain chain, Link link)
+        public override double Calculate(Chain chain)
         {
             DnaProcessor.CheckDnaAlphabet(chain.Alphabet);
 
             var counter = new CongenericCalculators.ElementsCount();
 
-            var g = (int)counter.Calculate(chain.GetOrCreateCongenericChain(new ValueString("G")), link);
-            var c = (int)counter.Calculate(chain.GetOrCreateCongenericChain(new ValueString("C")), link);
+            var g = (int)counter.Calculate(chain.GetOrCreateCongenericChain(new ValueString("G")));
+            var c = (int)counter.Calculate(chain.GetOrCreateCongenericChain(new ValueString("C")));
 
             return g + c == 0 ? 0 : (g - c) / (double)(g + c);
         }

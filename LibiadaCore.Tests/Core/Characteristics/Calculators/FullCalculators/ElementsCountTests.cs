@@ -22,11 +22,7 @@ namespace LibiadaCore.Tests.Core.Characteristics.Calculators.FullCalculators
         /// <param name="value">
         /// The value.
         /// </param>
-        [TestCase(0, Link.None, 10)]
-        [TestCase(0, Link.Start, 10)]
-        [TestCase(0, Link.End, 10)]
-        [TestCase(0, Link.Both, 10)]
-        [TestCase(0, Link.Cycle, 10)]
+        [TestCase(0, Link.NotApplied, 10)]
         public void ChainCalculationTest(int index, Link link, double value)
         {
             ChainCharacteristicTest(index, link, value);

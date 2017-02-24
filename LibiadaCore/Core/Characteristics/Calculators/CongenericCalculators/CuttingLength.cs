@@ -5,7 +5,7 @@ namespace LibiadaCore.Core.Characteristics.Calculators.CongenericCalculators
     /// <summary>
     /// Sadovsky cut length.
     /// </summary>
-    public class CuttingLength : ICongenericCalculator
+    public class CuttingLength : NonLinkableCongenericCalculator
     {
         /// <summary>
         /// Calculation method.
@@ -13,13 +13,10 @@ namespace LibiadaCore.Core.Characteristics.Calculators.CongenericCalculators
         /// <param name="chain">
         /// Source sequence.
         /// </param>
-        /// <param name="link">
-        /// Redundant parameter, not used in calculations.
-        /// </param>
         /// <returns>
         /// Cut length as <see cref="double"/>.
         /// </returns>
-        public double Calculate(CongenericChain chain, Link link)
+        public override double Calculate(CongenericChain chain)
         {
             return CutCommon(chain);
         }
@@ -37,7 +34,7 @@ namespace LibiadaCore.Core.Characteristics.Calculators.CongenericCalculators
         {
             for (int length = 1; length <= chain.GetLength(); length++)
             {
-                if (CheckRecoveryAvailable(chain, length))
+                if (IsRecoveryPossible(chain, length))
                 {
                     return length;
                 }
@@ -47,7 +44,7 @@ namespace LibiadaCore.Core.Characteristics.Calculators.CongenericCalculators
         }
 
         /// <summary>
-        /// The check recovery available.
+        /// Checks if recovery possible.
         /// </summary>
         /// <param name="chain">
         /// Source sequence.
@@ -58,7 +55,7 @@ namespace LibiadaCore.Core.Characteristics.Calculators.CongenericCalculators
         /// <returns>
         /// true if chain is recoverable form L-grams.
         /// </returns>
-        private bool CheckRecoveryAvailable(AbstractChain chain, int length)
+        private bool IsRecoveryPossible(AbstractChain chain, int length)
         {
             var iterator = new IteratorStart(chain, length, 1);
             var alphabet = new Alphabet();

@@ -2,9 +2,8 @@ namespace LibiadaCore.Core.Characteristics.Calculators.FullCalculators
 {
     /// <summary>
     /// Sequence length.
-    /// Link is not used in calculation.
     /// </summary>
-    public class Length : IFullCalculator
+    public class Length : NonLinkableFullCalculator
     {
         /// <summary>
         /// Calculation method.
@@ -12,13 +11,10 @@ namespace LibiadaCore.Core.Characteristics.Calculators.FullCalculators
         /// <param name="chain">
         /// Source sequence.
         /// </param>
-        /// <param name="link">
-        /// Redundant parameter, not used in calculations.
-        /// </param>
         /// <returns>
         /// Chain length as <see cref="double"/>.
         /// </returns>
-        public double Calculate(Chain chain, Link link)
+        public override double Calculate(Chain chain)
         {
             return chain.GetLength();
         }

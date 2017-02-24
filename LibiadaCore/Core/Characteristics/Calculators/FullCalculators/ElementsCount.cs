@@ -3,7 +3,7 @@ namespace LibiadaCore.Core.Characteristics.Calculators.FullCalculators
     /// <summary>
     /// Elements count.
     /// </summary>
-    public class ElementsCount : IFullCalculator
+    public class ElementsCount : NonLinkableFullCalculator
     {
         /// <summary>
         /// Amount of not empty positions,
@@ -12,23 +12,20 @@ namespace LibiadaCore.Core.Characteristics.Calculators.FullCalculators
         /// <param name="chain">
         /// Source sequence.
         /// </param>
-        /// <param name="link">
-        /// Redundant parameter, not used in calculations.
-        /// </param>
         /// <returns>
         /// Elements count in chain as <see cref="double"/>.
         /// </returns>
-        public double Calculate(Chain chain, Link link)
+        public override double Calculate(Chain chain)
         {
             var calculator = new CongenericCalculators.ElementsCount();
 
-            double count = 0;
+            int count = 0;
             for (int i = 0; i < chain.Alphabet.Cardinality; i++)
             {
-                count += calculator.Calculate(chain.CongenericChain(i), link);
+                count += (int)calculator.Calculate(chain.CongenericChain(i));
             }
 
-            return (int)count;
+            return count;
         }
     }
 }

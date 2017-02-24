@@ -38,9 +38,9 @@
         [OneTimeSetUp]
         public void Initialization()
         {
-            var testClassName = this.GetType().Name;
-            var calculatorName = testClassName.Substring(0, testClassName.Length - 5);
-            this.Calculator = AccordanceCalculatorsFactory.CreateAccordanceCalculator(calculatorName);
+            string testClassName = GetType().Name;
+            string calculatorName = testClassName.Substring(0, testClassName.Length - 5);
+            Calculator = AccordanceCalculatorsFactory.CreateAccordanceCalculator(calculatorName);
         }
 
         /// <summary>
@@ -57,10 +57,10 @@
         /// </param>
         protected void CalculationTest(int index, double firstValue, double secondValue)
         {
-            var firstChain = this.chains[index].CongenericChain(this.elements["A"]);
-            var secondChain = this.chains[index].CongenericChain(this.elements["B"]);
-            double result1 = this.Calculator.Calculate(firstChain, secondChain, Link.End);
-            double result2 = this.Calculator.Calculate(secondChain, firstChain, Link.End);
+            var firstChain = chains[index].CongenericChain(elements["A"]);
+            var secondChain = chains[index].CongenericChain(elements["B"]);
+            double result1 = Calculator.Calculate(firstChain, secondChain, Link.End);
+            double result2 = Calculator.Calculate(secondChain, firstChain, Link.End);
             Assert.AreEqual(firstValue, result1, 0.0001);
             Assert.AreEqual(secondValue, result2, 0.0001);
         }
@@ -79,7 +79,7 @@
         /// </param>
         protected void CalculationTest(int firstIndex, int secondIndex, double firstValue)
         {
-            double result = this.Calculator.Calculate(this.congenericChains[firstIndex], this.congenericChains[secondIndex], Link.End);
+            double result = Calculator.Calculate(congenericChains[firstIndex], congenericChains[secondIndex], Link.End);
             Assert.AreEqual(firstValue, result, 0.0001);
         }
     }

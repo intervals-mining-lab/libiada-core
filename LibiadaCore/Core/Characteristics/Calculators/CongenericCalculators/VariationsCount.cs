@@ -6,7 +6,7 @@
     /// Count of probable sequences that can be generated
     /// from given phantom chain (sequence containing phantom messages).
     /// </summary>
-    public class VariationsCount : ICongenericCalculator
+    public class VariationsCount : NonLinkableCongenericCalculator
     {
         /// <summary>
         /// Calculation method.
@@ -14,13 +14,10 @@
         /// <param name="chain">
         /// Source sequence.
         /// </param>
-        /// <param name="link">
-        /// Link of intervals in chain.
-        /// </param>
         /// <returns>
         /// Variations count as <see cref="double"/>.
         /// </returns>
-        public double Calculate(CongenericChain chain, Link link)
+        public override double Calculate(CongenericChain chain)
         {
             int count = 1;
             for (int i = 0; i < chain.GetLength(); i++)

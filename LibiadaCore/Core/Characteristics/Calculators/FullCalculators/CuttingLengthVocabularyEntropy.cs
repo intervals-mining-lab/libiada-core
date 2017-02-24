@@ -5,7 +5,7 @@ namespace LibiadaCore.Core.Characteristics.Calculators.FullCalculators
     /// <summary>
     /// Sadovsky entropy of dictionary.
     /// </summary>
-    public class CuttingLengthVocabularyEntropy : IFullCalculator
+    public class CuttingLengthVocabularyEntropy : NonLinkableFullCalculator
     {
         /// <summary>
         /// Calculation method.
@@ -13,16 +13,13 @@ namespace LibiadaCore.Core.Characteristics.Calculators.FullCalculators
         /// <param name="chain">
         /// Source sequence.
         /// </param>
-        /// <param name="link">
-        /// Redundant parameter, not used in calculations.
-        /// </param>
         /// <returns>
         /// Cut length vocabulary entropy as <see cref="double"/>.
         /// </returns>
-        public double Calculate(Chain chain, Link link)
+        public override double Calculate(Chain chain)
         {
             var cutLength = new CuttingLength();
-            return Math.Log(chain.GetLength() - cutLength.Calculate(chain, link) + 1, 2);
+            return Math.Log(chain.GetLength() - cutLength.Calculate(chain) + 1, 2);
         }
     }
 }

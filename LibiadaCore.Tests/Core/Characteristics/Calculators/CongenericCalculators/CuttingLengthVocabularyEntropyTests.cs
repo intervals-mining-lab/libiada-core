@@ -16,20 +16,13 @@ namespace LibiadaCore.Tests.Core.Characteristics.Calculators.CongenericCalculato
         /// <param name="index">
         /// The index.
         /// </param>
-        /// <param name="link">
-        /// The link.
-        /// </param>
         /// <param name="value">
         /// The value.
         /// </param>
-        [TestCase(0, Link.None, 2.8074)]
-        [TestCase(0, Link.Start, 2.8074)]
-        [TestCase(0, Link.End, 2.8074)]
-        [TestCase(0, Link.Both, 2.8074)]
-        [TestCase(0, Link.Cycle, 2.8074)]
-        public void CongenericCalculationTest(int index, Link link, double value)
+        [TestCase(0, 2.8074)]
+        public void CongenericCalculationTest(int index, double value)
         {
-            CongenericChainCharacteristicTest(index, link, value);
+            CongenericChainCharacteristicTest(index, Link.NotApplied, value);
         }
     }
 }

@@ -22,11 +22,7 @@ namespace LibiadaCore.Tests.Core.Characteristics.Calculators.FullCalculators
         /// <param name="value">
         /// The value.
         /// </param>
-        [TestCase(0, Link.None, 1)]
-        [TestCase(0, Link.Start, 1)]
-        [TestCase(0, Link.End, 1)]
-        [TestCase(0, Link.Both, 1)]
-        [TestCase(0, Link.Cycle, 1)]
+        [TestCase(0, Link.NotApplied, 1)]
         public void ChainCalculationTest(int index, Link link, double value)
         {
             ChainCharacteristicTest(index, link, value);
@@ -38,18 +34,15 @@ namespace LibiadaCore.Tests.Core.Characteristics.Calculators.FullCalculators
         /// <param name="index">
         /// The index.
         /// </param>
-        /// <param name="link">
-        /// The link.
-        /// </param>
         /// <param name="value">
         /// The value.
         /// </param>
-        [TestCase(3, Link.None, 1)]
-        [TestCase(5, Link.None, 1)]
-        [TestCase(7, Link.None, 1)]
-        public void NoIntervalsTest(int index, Link link, double value)
+        [TestCase(3, 1)]
+        [TestCase(5, 1)]
+        [TestCase(7, 1)]
+        public void NoIntervalsTest(int index, double value)
         {
-            ChainCharacteristicTest(index, link, value);
+            ChainCharacteristicTest(index, Link.NotApplied, value);
         }
     }
 }

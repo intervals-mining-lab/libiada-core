@@ -31,7 +31,7 @@
             var c = (int)congenericCounter.Calculate(chain.GetOrCreateCongenericChain(new ValueString("C")), link);
             var a = (int)congenericCounter.Calculate(chain.GetOrCreateCongenericChain(new ValueString("A")), link);
             var t = (int)congenericCounter.Calculate(chain.GetOrCreateCongenericChain(new ValueString("T")), link);
-            var l = (int)counter.Calculate(chain, link);
+            var l = (int)counter.Calculate(chain);
 
             return l == 0 ? 0 : ((g + a) - (c + t)) / (double)l;
         }

@@ -18,11 +18,6 @@
         protected readonly List<CongenericChain> CongenericChains = ChainsStorage.CongenericChains;
 
         /// <summary>
-        /// The chains.
-        /// </summary>
-        protected readonly List<Chain> Chains = ChainsStorage.Chains;
-
-        /// <summary>
         /// Gets or sets the calculator.
         /// </summary>
         private ICongenericCalculator Calculator { get; set; }
@@ -33,8 +28,8 @@
         [OneTimeSetUp]
         public void Initialization()
         {
-            var testClassName = this.GetType().Name;
-            var calculatorName = testClassName.Substring(0, testClassName.Length - 5);
+            string testClassName = GetType().Name;
+            string calculatorName = testClassName.Substring(0, testClassName.Length - 5);
             Calculator = CongenericCalculatorsFactory.CreateCongenericCalculator(calculatorName);
         }
 

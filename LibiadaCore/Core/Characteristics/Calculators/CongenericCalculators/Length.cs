@@ -4,7 +4,7 @@ namespace LibiadaCore.Core.Characteristics.Calculators.CongenericCalculators
     /// Sequence length.
     /// Link is not used in calculation.
     /// </summary>
-    public class Length : ICongenericCalculator
+    public class Length : NonLinkableCongenericCalculator
     {
         /// <summary>
         /// Calculation method.
@@ -12,13 +12,10 @@ namespace LibiadaCore.Core.Characteristics.Calculators.CongenericCalculators
         /// <param name="chain">
         /// Source sequence.
         /// </param>
-        /// <param name="link">
-        /// Redundant parameter, not used in calculations.
-        /// </param>
         /// <returns>
         /// Chain length as <see cref="double"/>.
         /// </returns>
-        public double Calculate(CongenericChain chain, Link link)
+        public override double Calculate(CongenericChain chain)
         {
             return chain.GetLength();
         }

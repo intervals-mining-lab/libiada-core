@@ -1,7 +1,5 @@
 namespace LibiadaCore.Tests.Core.Characteristics.Calculators.FullCalculators
 {
-    using System;
-
     using LibiadaCore.Core;
 
     using NUnit.Framework;
@@ -29,11 +27,7 @@ namespace LibiadaCore.Tests.Core.Characteristics.Calculators.FullCalculators
         [TestCase(5, 4)]
         public void ChainCalculationTest(int index, double value)
         {
-            var links = (Link[])Enum.GetValues(typeof(Link));
-            foreach (var link in links)
-            {
-                ChainCharacteristicTest(index, link, value);
-            }
+            ChainCharacteristicTest(index, Link.NotApplied, value);
         }
     }
 }

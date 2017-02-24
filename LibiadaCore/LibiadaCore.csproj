@@ -57,6 +57,7 @@
     <Compile Include="Core\Characteristics\Calculators\CongenericCalculators\IntervalsCount.cs" />
     <Compile Include="Core\Characteristics\Calculators\CongenericCalculators\IntervalsSum.cs" />
     <Compile Include="Core\Characteristics\Calculators\CongenericCalculators\Length.cs" />
+    <Compile Include="Core\Characteristics\Calculators\CongenericCalculators\NonLinkableCongenericCalculator.cs" />
     <Compile Include="Core\Characteristics\Calculators\CongenericCalculators\Periodicity.cs" />
     <Compile Include="Core\Characteristics\Calculators\CongenericCalculators\Probability.cs" />
     <Compile Include="Core\Characteristics\Calculators\CongenericCalculators\Regularity.cs" />
@@ -86,6 +87,7 @@
     <Compile Include="Core\Characteristics\Calculators\AccordanceCalculators\IAccordanceCalculator.cs" />
     <Compile Include="Core\Characteristics\Calculators\AccordanceCalculators\MutualComplianceDegree.cs" />
     <Compile Include="Core\Characteristics\Calculators\FullCalculators\FullCharacteristic.cs" />
+    <Compile Include="Core\Characteristics\Calculators\FullCalculators\NonLinkableFullCalculator.cs" />
     <Compile Include="Core\Characteristics\Calculators\FullCalculators\RemotenessDispersion.cs" />
     <Compile Include="Core\Characteristics\Calculators\AccordanceCalculators\PartialComplianceDegree.cs" />
     <Compile Include="Core\Characteristics\Calculators\FullCalculators\GCSkew.cs" />

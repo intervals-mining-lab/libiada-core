@@ -36,27 +36,17 @@
 
             List<int> uniqueIntervals = intervals.Distinct().ToList();
 
-            var intervalsCounts = new List<int>();
-
-            for (int i = 0; i < uniqueIntervals.Count; i++)
-            {
-                int currentInterval = uniqueIntervals[i];
-                intervalsCounts.Add(intervals.Count(interval => interval == currentInterval));
-            }
-
             var intervalsCount = new IntervalsCount();
             var geometricMean = new GeometricMean();
 
             double result = 0;
             double gDelta = geometricMean.Calculate(chain, link);
-            var n = (int)intervalsCount.Calculate(chain, link);
+            double n = intervalsCount.Calculate(chain, link);
 
-            for (int i = 0; i < uniqueIntervals.Count; i++)
+            foreach (int kDelta in uniqueIntervals)
             {
-                int nk = intervalsCounts[i];
-                double kDelta = uniqueIntervals[i];
                 double centeredRemoteness = Math.Log(kDelta, 2) - Math.Log(gDelta, 2);
-                result += centeredRemoteness * centeredRemoteness * centeredRemoteness * centeredRemoteness * nk / n;
+                result += centeredRemoteness * centeredRemoteness * centeredRemoteness * centeredRemoteness * intervals.Count(interval => interval == kDelta) / n;
             }
 
             return result;

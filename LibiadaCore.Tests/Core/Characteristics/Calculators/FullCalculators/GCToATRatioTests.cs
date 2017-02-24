@@ -16,21 +16,13 @@
         /// <param name="index">
         /// The index.
         /// </param>
-        /// <param name="link">
-        /// The link.
-        /// </param>
         /// <param name="value">
         /// The value.
         /// </param>
-        [TestCase(1, Link.None, 0.6666)]
-        [TestCase(1, Link.Start, 0.6666)]
-        [TestCase(1, Link.End, 0.6666)]
-        [TestCase(1, Link.Both, 0.6666)]
-        [TestCase(1, Link.Cycle, 0.6666)]
-
-        public void CalculationTest(int index, Link link, double value)
+        [TestCase(1, 0.6666)]
+        public void CalculationTest(int index, double value)
         {
-            ChainCharacteristicTest(index, link, value);
+            ChainCharacteristicTest(index, Link.NotApplied, value);
         }
 
         /// <summary>
@@ -39,26 +31,14 @@
         /// <param name="index">
         /// The index.
         /// </param>
-        /// <param name="link">
-        /// The link.
-        /// </param>
         /// <param name="value">
         /// The value.
         /// </param>
-        [TestCase(3, Link.None, 0)]
-        [TestCase(3, Link.Start, 0)]
-        [TestCase(3, Link.End, 0)]
-        [TestCase(3, Link.Both, 0)]
-        [TestCase(3, Link.Cycle, 0)]
-
-        [TestCase(4, Link.None, 0)]
-        [TestCase(4, Link.Start, 0)]
-        [TestCase(4, Link.End, 0)]
-        [TestCase(4, Link.Both, 0)]
-        [TestCase(4, Link.Cycle, 0)]
-        public void SequenceWithoutATTest(int index, Link link, double value)
+        [TestCase(3, 0)]
+        [TestCase(4, 0)]
+        public void SequenceWithoutATTest(int index, double value)
         {
-            ChainCharacteristicTest(index, link, value);
+            ChainCharacteristicTest(index, Link.NotApplied, value);
         }
     }
 }

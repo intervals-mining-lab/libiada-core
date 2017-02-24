@@ -6,7 +6,7 @@
     /// <summary>
     /// The gc ratio.
     /// </summary>
-    public class GCRatio : IFullCalculator
+    public class GCRatio : NonLinkableFullCalculator
     {
         /// <summary>
         /// Calculation method.
@@ -14,22 +14,19 @@
         /// <param name="chain">
         /// Source sequence.
         /// </param>
-        /// <param name="link">
-        /// Link of intervals in chain.
-        /// </param>
         /// <returns>
         /// G+C Ratio value as <see cref="double"/>.
         /// </returns>
-        public double Calculate(Chain chain, Link link)
+        public override double Calculate(Chain chain)
         {
             DnaProcessor.CheckDnaAlphabet(chain.Alphabet);
 
             var congenericCounter = new CongenericCalculators.ElementsCount();
             var counter = new ElementsCount();
 
-            var g = (int)congenericCounter.Calculate(chain.GetOrCreateCongenericChain(new ValueString("G")), link);
-            var c = (int)congenericCounter.Calculate(chain.GetOrCreateCongenericChain(new ValueString("C")), link);
-            var l = (int)counter.Calculate(chain, link);
+            var g = (int)congenericCounter.Calculate(chain.GetOrCreateCongenericChain(new ValueString("G")));
+            var c = (int)congenericCounter.Calculate(chain.GetOrCreateCongenericChain(new ValueString("C")));
+            var l = (int)counter.Calculate(chain);
 
             return l == 0 ? 0 : 100 * (g + c) / (double)l;
         }

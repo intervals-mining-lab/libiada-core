@@ -34,7 +34,7 @@
         [TestCase(17, 16, 0.8350)]
         public void MutualComplianceDegreeTest(int firstIndex, int secondIndex, double firstValue)
         {
-            this.CalculationTest(firstIndex, secondIndex, firstValue);
+            CalculationTest(firstIndex, secondIndex, firstValue);
         }
     }
 }

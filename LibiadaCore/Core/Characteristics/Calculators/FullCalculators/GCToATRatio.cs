@@ -6,7 +6,7 @@
     /// <summary>
     /// The gc ratio.
     /// </summary>
-    public class GCToATRatio : IFullCalculator
+    public class GCToATRatio : NonLinkableFullCalculator
     {
         /// <summary>
         /// Calculation method.
@@ -14,22 +14,19 @@
         /// <param name="chain">
         /// Source sequence.
         /// </param>
-        /// <param name="link">
-        /// Link of intervals in chain.
-        /// </param>
         /// <returns>
         /// G+C Ratio value as <see cref="double"/> .
         /// </returns>
-        public double Calculate(Chain chain, Link link)
+        public override double Calculate(Chain chain)
         {
             DnaProcessor.CheckDnaAlphabet(chain.Alphabet);
 
             var counter = new CongenericCalculators.ElementsCount();
 
-            var g = (int)counter.Calculate(chain.GetOrCreateCongenericChain(new ValueString("G")), link);
-            var c = (int)counter.Calculate(chain.GetOrCreateCongenericChain(new ValueString("C")), link);
-            var a = (int)counter.Calculate(chain.GetOrCreateCongenericChain(new ValueString("A")), link);
-            var t = (int)counter.Calculate(chain.GetOrCreateCongenericChain(new ValueString("T")), link);
+            var g = (int)counter.Calculate(chain.GetOrCreateCongenericChain(new ValueString("G")));
+            var c = (int)counter.Calculate(chain.GetOrCreateCongenericChain(new ValueString("C")));
+            var a = (int)counter.Calculate(chain.GetOrCreateCongenericChain(new ValueString("A")));
+            var t = (int)counter.Calculate(chain.GetOrCreateCongenericChain(new ValueString("T")));
 
             return a + t == 0 ? 0 : (g + c) / (double)(a + t);
         }

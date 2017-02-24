@@ -1,7 +1,5 @@
 ﻿namespace LibiadaCore.Tests.Core.Characteristics.Calculators.FullCalculators
 {
-    using System;
-
     using LibiadaCore.Core;
 
     using NUnit.Framework;
@@ -27,11 +25,7 @@
         [TestCase(6, 0.6)]
         public void CalculationTest(int index, double value)
         {
-            var links = (Link[])Enum.GetValues(typeof(Link));
-            foreach (var link in links)
-            {
-                ChainCharacteristicTest(index, link, value);
-            }
+            ChainCharacteristicTest(index, Link.NotApplied, value);
         }
 
         /// <summary>
@@ -47,11 +41,8 @@
         [TestCase(4, 0)]
         public void SequenceWithoutATTest(int index, double value)
         {
-            var links = (Link[])Enum.GetValues(typeof(Link));
-            foreach (var link in links)
-            {
-                ChainCharacteristicTest(index, link, value);
-            }
+
+            ChainCharacteristicTest(index, Link.NotApplied, value);
         }
     }
 }

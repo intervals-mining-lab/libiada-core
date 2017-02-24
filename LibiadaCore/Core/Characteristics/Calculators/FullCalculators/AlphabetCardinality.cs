@@ -3,7 +3,7 @@ namespace LibiadaCore.Core.Characteristics.Calculators.FullCalculators
     /// <summary>
     /// Count of alphabet elements.
     /// </summary>
-    public class AlphabetCardinality : IFullCalculator
+    public class AlphabetCardinality : NonLinkableFullCalculator
     {
         /// <summary>
         /// Calculation method.
@@ -11,13 +11,10 @@ namespace LibiadaCore.Core.Characteristics.Calculators.FullCalculators
         /// <param name="chain">
         /// Source sequence.
         /// </param>
-        /// <param name="link">
-        /// Redundant parameter, not used in calculations.
-        /// </param>
         /// <returns>
         /// Alphabet cardinality as <see cref="double"/>.
         /// </returns>
-        public double Calculate(Chain chain, Link link)
+        public override double Calculate(Chain chain)
         {
             return chain.Alphabet.Cardinality;
         }

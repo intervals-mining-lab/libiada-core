@@ -5,7 +5,7 @@ namespace LibiadaCore.Core.Characteristics.Calculators.FullCalculators
     /// <summary>
     /// Sadovsky cut length.
     /// </summary>
-    public class CuttingLength : IFullCalculator
+    public class CuttingLength : NonLinkableFullCalculator
     {
         /// <summary>
         /// Calculation method.
@@ -13,13 +13,10 @@ namespace LibiadaCore.Core.Characteristics.Calculators.FullCalculators
         /// <param name="chain">
         /// Source sequence.
         /// </param>
-        /// <param name="link">
-        /// Redundant parameter, not used in calculations.
-        /// </param>
         /// <returns>
         /// Cut length as <see cref="double"/>.
         /// </returns>
-        public double Calculate(Chain chain, Link link)
+        public override double Calculate(Chain chain)
         {
             return CutCommon(chain);
         }
@@ -37,7 +34,7 @@ namespace LibiadaCore.Core.Characteristics.Calculators.FullCalculators
         {
             for (int length = 1; length <= chain.GetLength(); length++)
             {
-                if (CheckRecoveryAvailable(chain, length))
+                if (IsRecoveryPossible(chain, length))
                 {
                     return length;
                 }
@@ -58,7 +55,7 @@ namespace LibiadaCore.Core.Characteristics.Calculators.FullCalculators
         /// <returns>
         /// true if chain is recoverable form L-grams.
         /// </returns>
-        private bool CheckRecoveryAvailable(AbstractChain chain, int length)
+        private bool IsRecoveryPossible(AbstractChain chain, int length)
         {
             var iterator = new IteratorStart(chain, length, 1);
             var alphabet = new Alphabet();
