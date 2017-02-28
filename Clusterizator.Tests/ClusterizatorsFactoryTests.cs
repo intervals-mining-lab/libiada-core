@@ -45,7 +45,7 @@
         public void SelectionTest()
         {
             var parameters = new Dictionary<string, double>();
-            Assert.Throws<Exception>(() => ClusterizatorsFactory.CreateClusterizator((ClusterizationType)3, parameters));
+            Assert.Throws<Exception>(() => ClusterizatorsFactory.CreateClusterizator((ClusterizationType)0, parameters));
         }
     }
 }
