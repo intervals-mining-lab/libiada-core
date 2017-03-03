@@ -41,7 +41,6 @@
         [TestCase(4, 0)]
         public void SequenceWithoutATTest(int index, double value)
         {
-
             ChainCharacteristicTest(index, Link.NotApplied, value);
         }
     }

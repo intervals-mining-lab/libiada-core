@@ -1,8 +1,7 @@
-﻿using System.ComponentModel;
-using System.ComponentModel.DataAnnotations;
-
-namespace Clusterizator
+﻿namespace Clusterizator
 {
+    using System.ComponentModel;
+    using System.ComponentModel.DataAnnotations;
 
     /// <summary>
     /// The clusterization type.
