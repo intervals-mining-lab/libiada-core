@@ -20,6 +20,13 @@
         /// </summary>
         [Display(Name = "KRAB clusterization")]
         [Description("KRAB clusterization")]
-        Krab = 2
+        Krab = 2,
+
+        /// <summary>
+        /// The mean shift.
+        /// </summary>
+        [Display(Name = "Mean shift")]
+        [Description("Mean shift clusterization")]
+        MeanShift = 3
     }
 }

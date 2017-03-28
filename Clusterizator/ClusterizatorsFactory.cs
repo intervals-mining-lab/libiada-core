@@ -1,4 +1,6 @@
-﻿namespace Clusterizator
+﻿using Clusterizator.MeanShift;
+
+namespace Clusterizator
 {
     using System;
     using System.Collections.Generic;
@@ -52,6 +54,19 @@
                     }
 
                     return new KrabClusterization(powerWeight, normalizedDistanceWeight, distanceWeight);
+                case ClusterizationType.MeanShift:
+                    double bandwidth;
+                    if (!parameters.TryGetValue("bandwidth", out bandwidth))
+                    {
+                        bandwidth = 0;
+                    }
+
+                    double dimension;
+                    if (!parameters.TryGetValue("dimension", out dimension))
+                    {
+                        dimension = 0;
+                    }
+                    return new MeanShiftClusterization((int) dimension, bandwidth);
                 default:
                     throw new Exception("Unknown clusterization type");
             }

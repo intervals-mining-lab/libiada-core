@@ -84,6 +84,7 @@
     <Compile Include="ClusterizationResult.cs" />
     <Compile Include="DataObject.cs" />
     <Compile Include="DataTable.cs" />
+    <Compile Include="MeanShift\MeanShiftClusterization.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
