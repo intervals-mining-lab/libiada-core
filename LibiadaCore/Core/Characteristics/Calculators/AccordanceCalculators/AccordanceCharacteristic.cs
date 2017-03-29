@@ -1,4 +1,6 @@
-﻿namespace LibiadaCore.Core.Characteristics.Calculators.AccordanceCalculators
+﻿using System.ComponentModel;
+
+namespace LibiadaCore.Core.Characteristics.Calculators.AccordanceCalculators
 {
     using System.ComponentModel.DataAnnotations;
 
@@ -10,13 +12,15 @@
         /// <summary>
         /// The mutual compliance degree.
         /// </summary>
-        [Display(Name = "Mutual Compliance Degree")]
+        [Display(Name = "Mutual compliance degree")]
+        [Description("Geometric mean of two partial compliances degrees")]
         MutualComplianceDegree = 1,
 
         /// <summary>
         /// The partial compliance degree.
         /// </summary>
-        [Display(Name = "Partial Compliance Degree")]
+        [Display(Name = "Partial compliance degree")]
+        [Description(" ")]
         PartialComplianceDegree = 2
     }
 }
