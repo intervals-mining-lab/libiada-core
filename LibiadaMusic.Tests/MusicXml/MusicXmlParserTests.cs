@@ -19,7 +19,7 @@
         [Test]
         public void XmlParserTest()
         {
-            var xmlReader = new MusicXmlReader(SystemData.BinFolderPath + "/LibiadaMusicexample7Liga.xml");
+            var xmlReader = new MusicXmlReader(TestContext.CurrentContext.TestDirectory + "/../../LibiadaMusicExample7Liga.xml");
             var parser = new MusicXmlParser();
 
             parser.Execute(xmlReader.MusicXmlDocument, xmlReader.FileName);
@@ -107,7 +107,7 @@
         [Test]
         public void PolyXmlParserTest()
         {
-            var xmlReader = new MusicXmlReader(SystemData.BinFolderPath + "/polytest.xml");
+            var xmlReader = new MusicXmlReader(TestContext.CurrentContext.TestDirectory + "/polytest.xml");
             var parser = new MusicXmlParser();
 
             parser.Execute(xmlReader.MusicXmlDocument, xmlReader.FileName);
@@ -139,19 +139,19 @@
         }
 
         /// <summary>
-        /// The xml parser scoretrack test.
+        /// The xml parser score track test.
         /// </summary>
         [Test]
-        public void XmlParserScoretrackTest()
+        public void XmlParserScoreTrackTest()
         {
             Assert.Fail();
         }
 
         /// <summary>
-        /// The xml parser congeneric scoretrack test.
+        /// The xml parser congeneric score track test.
         /// </summary>
         [Test]
-        public void XmlParserCongenericScoretrackTest()
+        public void XmlParserCongenericScoreTrackTest()
         {
             Assert.Fail();
         }
