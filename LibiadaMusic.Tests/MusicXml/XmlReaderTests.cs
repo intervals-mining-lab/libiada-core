@@ -19,7 +19,7 @@ namespace LibiadaMusic.Tests.MusicXml
         [Test]
         public void XmlReaderFirstTest()
         {
-            var xr = new MusicXmlReader(TestContext.CurrentContext.TestDirectory + "/../../LibiadaMusicExample7Liga.xml");
+            var xr = new MusicXmlReader(SystemData.ProjectFolderPath + "LibiadaMusicExample7Liga.xml");
             Assert.IsNotNull(xr.MusicXmlDocument);
             Assert.AreEqual("LibiadaMusicExample7Liga", xr.FileName);
         }
@@ -36,7 +36,7 @@ namespace LibiadaMusic.Tests.MusicXml
             var exception = Assert.Throws<Exception>(() => xmlDocument = xr.MusicXmlDocument);
             Assert.AreEqual("LibiadaMusic.XMLReader:you are trying to get empty XmlDocument!", exception.Message);
 
-            xr.LoadMusicXmlDocument(TestContext.CurrentContext.TestDirectory + "/../../LibiadaMusicExample7Liga.xml");
+            xr.LoadMusicXmlDocument(SystemData.ProjectFolderPath + "LibiadaMusicExample7Liga.xml");
             xmlDocument = xr.MusicXmlDocument;
             Assert.IsNotNull(xmlDocument);
             Assert.AreEqual("LibiadaMusicExample7Liga", xr.FileName);

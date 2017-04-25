@@ -1,7 +1,6 @@
 ﻿namespace LibiadaMusic.Tests
 {
-    using System.IO;
-    using System.Reflection;
+    using NUnit.Framework;
 
     /// <summary>
     /// The system data.
@@ -11,6 +10,6 @@
         /// <summary>
         /// The bin folder path.
         /// </summary>
-        public static readonly string BinFolderPath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().CodeBase).Replace(@"file:\", string.Empty);
+        public static readonly string ProjectFolderPath = TestContext.CurrentContext.TestDirectory + "/../../";
     }
 }

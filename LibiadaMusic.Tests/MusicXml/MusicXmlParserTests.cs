@@ -19,7 +19,7 @@
         [Test]
         public void XmlParserTest()
         {
-            var xmlReader = new MusicXmlReader(TestContext.CurrentContext.TestDirectory + "/../../LibiadaMusicExample7Liga.xml");
+            var xmlReader = new MusicXmlReader(SystemData.ProjectFolderPath + "LibiadaMusicExample7Liga.xml");
             var parser = new MusicXmlParser();
 
             parser.Execute(xmlReader.MusicXmlDocument, xmlReader.FileName);
