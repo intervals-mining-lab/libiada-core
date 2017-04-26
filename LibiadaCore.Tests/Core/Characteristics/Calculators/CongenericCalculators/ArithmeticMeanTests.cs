@@ -1,3 +1,5 @@
+using LibiadaCore.Core.Characteristics.Calculators.CongenericCalculators;
+
 namespace LibiadaCore.Tests.Core.Characteristics.Calculators.CongenericCalculators
 {
     using LibiadaCore.Core;
@@ -8,8 +10,9 @@ namespace LibiadaCore.Tests.Core.Characteristics.Calculators.CongenericCalculato
     /// The arithmetic mean test.
     /// </summary>
     [TestFixture]
-    public class ArithmeticMeanTests : CongenericCalculatorsTests
+    public class ArithmeticMeanTests : CongenericCalculatorsTests<ArithmeticMean>
     {
+
         /// <summary>
         /// The congeneric calculation test.
         /// </summary>

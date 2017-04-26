@@ -1,3 +1,5 @@
+using LibiadaCore.Core.Characteristics.Calculators.CongenericCalculators;
+
 namespace LibiadaCore.Tests.Core.Characteristics.Calculators.CongenericCalculators
 {
     using LibiadaCore.Core;
@@ -8,7 +10,7 @@ namespace LibiadaCore.Tests.Core.Characteristics.Calculators.CongenericCalculato
     /// The cut length test.
     /// </summary>
     [TestFixture]
-    public class CuttingLengthTests : CongenericCalculatorsTests
+    public class CuttingLengthTests : CongenericCalculatorsTests<CuttingLength>
     {
         /// <summary>
         /// The congeneric calculation test.

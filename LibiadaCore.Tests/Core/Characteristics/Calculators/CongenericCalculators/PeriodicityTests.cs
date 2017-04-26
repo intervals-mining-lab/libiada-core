@@ -1,3 +1,5 @@
+using LibiadaCore.Core.Characteristics.Calculators.CongenericCalculators;
+
 namespace LibiadaCore.Tests.Core.Characteristics.Calculators.CongenericCalculators
 {
     using LibiadaCore.Core;
@@ -8,7 +10,7 @@ namespace LibiadaCore.Tests.Core.Characteristics.Calculators.CongenericCalculato
     /// The periodicity test.
     /// </summary>
     [TestFixture]
-    public class PeriodicityTests : CongenericCalculatorsTests
+    public class PeriodicityTests : CongenericCalculatorsTests<Periodicity>
     {
         /// <summary>
         /// The congeneric calculation test.

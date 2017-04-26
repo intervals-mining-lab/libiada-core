@@ -1,3 +1,5 @@
+using LibiadaCore.Core.Characteristics.Calculators.CongenericCalculators;
+
 namespace LibiadaCore.Tests.Core.Characteristics.Calculators.CongenericCalculators
 {
     using LibiadaCore.Core;
@@ -8,7 +10,7 @@ namespace LibiadaCore.Tests.Core.Characteristics.Calculators.CongenericCalculato
     /// The probability test.
     /// </summary>
     [TestFixture]
-    public class ProbabilityTests : CongenericCalculatorsTests
+    public class ProbabilityTests : CongenericCalculatorsTests<Probability>
     {
         /// <summary>
         /// The congeneric calculation test.

@@ -1,4 +1,6 @@
-﻿namespace LibiadaCore.Tests.Core.Characteristics.Calculators.FullCalculators
+﻿using LibiadaCore.Core.Characteristics.Calculators.FullCalculators;
+
+namespace LibiadaCore.Tests.Core.Characteristics.Calculators.FullCalculators
 {
     using LibiadaCore.Core;
 
@@ -8,7 +10,7 @@
     /// The remoteness kurtosis tests.
     /// </summary>
     [TestFixture]
-    public class RemotenessKurtosisTests : FullCalculatorsTests
+    public class RemotenessKurtosisTests : FullCalculatorsTests<RemotenessKurtosis>
     {
         /// <summary>
         /// The average remoteness dispersion test.

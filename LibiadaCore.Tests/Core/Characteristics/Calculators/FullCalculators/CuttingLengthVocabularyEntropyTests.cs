@@ -1,3 +1,5 @@
+using LibiadaCore.Core.Characteristics.Calculators.FullCalculators;
+
 namespace LibiadaCore.Tests.Core.Characteristics.Calculators.FullCalculators
 {
     using LibiadaCore.Core;
@@ -8,8 +10,9 @@ namespace LibiadaCore.Tests.Core.Characteristics.Calculators.FullCalculators
     /// The cut length vocabulary entropy test.
     /// </summary>
     [TestFixture]
-    public class CuttingLengthVocabularyEntropyTests : FullCalculatorsTests
+    public class CuttingLengthVocabularyEntropyTests : FullCalculatorsTests<CuttingLengthVocabularyEntropy>
     {
+
         /// <summary>
         /// The calculation test.
         /// </summary>

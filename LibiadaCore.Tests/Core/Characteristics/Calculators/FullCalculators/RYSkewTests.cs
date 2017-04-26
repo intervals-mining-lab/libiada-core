@@ -1,4 +1,6 @@
-﻿namespace LibiadaCore.Tests.Core.Characteristics.Calculators.FullCalculators
+﻿using LibiadaCore.Core.Characteristics.Calculators.FullCalculators;
+
+namespace LibiadaCore.Tests.Core.Characteristics.Calculators.FullCalculators
 {
     using LibiadaCore.Core;
 
@@ -8,7 +10,7 @@
     /// The depth test.
     /// </summary>
     [TestFixture]
-    public class RYSkewTests : FullCalculatorsTests
+    public class RYSkewTests : FullCalculatorsTests<RYSkew>
     {
         /// <summary>
         /// The calculation test.

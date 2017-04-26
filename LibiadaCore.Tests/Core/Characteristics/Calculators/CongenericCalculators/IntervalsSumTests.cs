@@ -1,4 +1,6 @@
-﻿namespace LibiadaCore.Tests.Core.Characteristics.Calculators.CongenericCalculators
+﻿using LibiadaCore.Core.Characteristics.Calculators.CongenericCalculators;
+
+namespace LibiadaCore.Tests.Core.Characteristics.Calculators.CongenericCalculators
 {
     using LibiadaCore.Core;
 
@@ -8,7 +10,7 @@
     /// The intervals sum test.
     /// </summary>
     [TestFixture]
-    public class IntervalsSumTests : CongenericCalculatorsTests
+    public class IntervalsSumTests : CongenericCalculatorsTests<IntervalsSum>
     {
         /// <summary>
         /// The congeneric calculation test.

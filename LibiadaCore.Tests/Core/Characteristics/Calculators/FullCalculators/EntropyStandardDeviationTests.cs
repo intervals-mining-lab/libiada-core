@@ -1,4 +1,6 @@
-﻿namespace LibiadaCore.Tests.Core.Characteristics.Calculators.FullCalculators
+﻿using LibiadaCore.Core.Characteristics.Calculators.FullCalculators;
+
+namespace LibiadaCore.Tests.Core.Characteristics.Calculators.FullCalculators
 {
     using LibiadaCore.Core;
 
@@ -8,8 +10,9 @@
     /// Standard Deviation test.
     /// </summary>
     [TestFixture]
-    public class EntropyStandardDeviationTests : FullCalculatorsTests
+    public class EntropyStandardDeviationTests : FullCalculatorsTests<EntropyStandardDeviation>
     {
+
         /// <summary>
         /// Standard Deviation test.
         /// </summary>

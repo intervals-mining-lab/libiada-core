@@ -1,3 +1,5 @@
+using LibiadaCore.Core.Characteristics.Calculators.FullCalculators;
+
 namespace LibiadaCore.Tests.Core.Characteristics.Calculators.FullCalculators
 {
     using LibiadaCore.Core;
@@ -8,7 +10,7 @@ namespace LibiadaCore.Tests.Core.Characteristics.Calculators.FullCalculators
     /// The length test.
     /// </summary>
     [TestFixture]
-    public class LengthTests : FullCalculatorsTests
+    public class LengthTests : FullCalculatorsTests<Length>
     {
         /// <summary>
         /// The chain calculation test.

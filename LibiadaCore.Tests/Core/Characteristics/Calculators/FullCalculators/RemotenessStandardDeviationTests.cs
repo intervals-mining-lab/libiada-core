@@ -1,4 +1,6 @@
-﻿namespace LibiadaCore.Tests.Core.Characteristics.Calculators.FullCalculators
+﻿using LibiadaCore.Core.Characteristics.Calculators.FullCalculators;
+
+namespace LibiadaCore.Tests.Core.Characteristics.Calculators.FullCalculators
 {
     using LibiadaCore.Core;
 
@@ -8,7 +10,7 @@
     /// The remoteness standard deviation tests.
     /// </summary>
     [TestFixture]
-    public class RemotenessStandardDeviationTests : FullCalculatorsTests
+    public class RemotenessStandardDeviationTests : FullCalculatorsTests<RemotenessStandardDeviation>
     {
         /// <summary>
         /// Standard Deviation test.

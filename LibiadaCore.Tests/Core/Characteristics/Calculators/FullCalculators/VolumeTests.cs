@@ -1,4 +1,6 @@
-﻿namespace LibiadaCore.Tests.Core.Characteristics.Calculators.FullCalculators
+﻿using LibiadaCore.Core.Characteristics.Calculators.FullCalculators;
+
+namespace LibiadaCore.Tests.Core.Characteristics.Calculators.FullCalculators
 {
     using LibiadaCore.Core;
 
@@ -8,7 +10,7 @@
     /// The volume test.
     /// </summary>
     [TestFixture]
-    public class VolumeTests : FullCalculatorsTests
+    public class VolumeTests : FullCalculatorsTests<Volume>
     {
         /// <summary>
         /// The calculation test.

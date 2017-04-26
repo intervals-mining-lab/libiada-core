@@ -1,4 +1,6 @@
-﻿namespace LibiadaCore.Tests.Core.Characteristics.Calculators.FullCalculators
+﻿using LibiadaCore.Core.Characteristics.Calculators.FullCalculators;
+
+namespace LibiadaCore.Tests.Core.Characteristics.Calculators.FullCalculators
 {
     using LibiadaCore.Core;
 
@@ -8,7 +10,7 @@
     /// The average remoteness dispersion test.
     /// </summary>
     [TestFixture]
-    public class AverageRemotenessDispersionTests : FullCalculatorsTests
+    public class AverageRemotenessDispersionTests : FullCalculatorsTests<AverageRemotenessDispersion>
     {
         /// <summary>
         /// The average remoteness dispersion test.

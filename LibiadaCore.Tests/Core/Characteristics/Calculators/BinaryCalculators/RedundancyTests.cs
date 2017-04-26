@@ -1,4 +1,6 @@
-﻿namespace LibiadaCore.Tests.Core.Characteristics.Calculators.BinaryCalculators
+﻿using LibiadaCore.Core.Characteristics.Calculators.BinaryCalculators;
+
+namespace LibiadaCore.Tests.Core.Characteristics.Calculators.BinaryCalculators
 {
     using NUnit.Framework;
 
@@ -6,7 +8,7 @@
     /// The redundancy test.
     /// </summary>
     [TestFixture]
-    public class RedundancyTests : BinaryCalculatorsTests
+    public class RedundancyTests : BinaryCalculatorsTests<Redundancy>
     {
         /// <summary>
         /// The chain calculation test.

@@ -8,17 +8,8 @@
     /// The binary geometric mean test.
     /// </summary>
     [TestFixture]
-    public class GeometricMeanTests : BinaryCalculatorsTests
+    public class GeometricMeanTests : BinaryCalculatorsTests<GeometricMean>
     {
-        /// <summary>
-        /// Calculator initialization method.
-        /// </summary>
-        [OneTimeSetUp]
-        public override void Initialization()
-        {
-            Calculator = BinaryCalculatorsFactory.CreateBinaryCalculator("GeometricMean");
-        }
-
         /// <summary>
         /// The spatial dependence test.
         /// </summary>

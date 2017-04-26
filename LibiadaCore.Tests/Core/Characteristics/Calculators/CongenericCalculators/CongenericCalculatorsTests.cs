@@ -10,7 +10,7 @@
     /// <summary>
     /// The calculators tests.
     /// </summary>
-    public abstract class CongenericCalculatorsTests
+    public abstract class CongenericCalculatorsTests<T> where T : ICongenericCalculator, new()
     {
         /// <summary>
         /// The congeneric chains.
@@ -20,18 +20,7 @@
         /// <summary>
         /// Gets or sets the calculator.
         /// </summary>
-        private ICongenericCalculator Calculator { get; set; }
-
-        /// <summary>
-        /// Calculator initialization method.
-        /// </summary>
-        [OneTimeSetUp]
-        public void Initialization()
-        {
-            string testClassName = GetType().Name;
-            string calculatorName = testClassName.Substring(0, testClassName.Length - 5);
-            Calculator = CongenericCalculatorsFactory.CreateCongenericCalculator(calculatorName);
-        }
+        private T calculator = new T();
 
         /// <summary>
         /// The congeneric chain characteristic test.
@@ -47,7 +36,7 @@
         /// </param>
         protected void CongenericChainCharacteristicTest(int index, Link link, double value)
         {
-            Assert.AreEqual(value, Calculator.Calculate(CongenericChains[index], link), 0.0001);
+            Assert.AreEqual(value, calculator.Calculate(CongenericChains[index], link), 0.0001);
         }
     }
 }

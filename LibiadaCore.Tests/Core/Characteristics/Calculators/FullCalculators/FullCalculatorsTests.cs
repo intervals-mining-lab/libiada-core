@@ -10,7 +10,7 @@
     /// <summary>
     /// The abstract calculator test.
     /// </summary>
-    public abstract class FullCalculatorsTests
+    public abstract class FullCalculatorsTests<T> where T : IFullCalculator, new ()
     {
         /// <summary>
         /// The chains.
@@ -20,18 +20,7 @@
         /// <summary>
         /// Gets or sets the calculator.
         /// </summary>
-        private IFullCalculator Calculator { get; set; }
-
-        /// <summary>
-        /// Calculator initialization method.
-        /// </summary>
-        [OneTimeSetUp]
-        public void Initialization()
-        {
-            var testClassName = GetType().Name;
-            var calculatorName = testClassName.Substring(0, testClassName.Length - 5);
-            Calculator = FullCalculatorsFactory.CreateFullCalculator(calculatorName);
-        }
+        private T calculator = new T();
 
         /// <summary>
         /// The chain characteristic test.
@@ -48,7 +37,7 @@
         protected void ChainCharacteristicTest(int index, Link link, double value)
         {
             chains[index].FillIntervalManagers();
-            Assert.AreEqual(value, Calculator.Calculate(chains[index], link), 0.0001);
+            Assert.AreEqual(value, calculator.Calculate(chains[index], link), 0.0001);
         }
     }
 }

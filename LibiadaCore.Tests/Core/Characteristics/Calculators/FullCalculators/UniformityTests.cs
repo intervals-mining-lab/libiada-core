@@ -1,4 +1,6 @@
-﻿namespace LibiadaCore.Tests.Core.Characteristics.Calculators.FullCalculators
+﻿using LibiadaCore.Core.Characteristics.Calculators.FullCalculators;
+
+namespace LibiadaCore.Tests.Core.Characteristics.Calculators.FullCalculators
 {
     using LibiadaCore.Core;
 
@@ -8,7 +10,7 @@
     /// The uniformity calculator tests.
     /// </summary>
     [TestFixture]
-    public class UniformityTests : FullCalculatorsTests
+    public class UniformityTests : FullCalculatorsTests<Uniformity>
     {
         /// <summary>
         /// The chain calculation test.

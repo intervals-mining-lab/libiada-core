@@ -1,4 +1,6 @@
-﻿namespace LibiadaCore.Tests.Core.Characteristics.Calculators.FullCalculators
+﻿using LibiadaCore.Core.Characteristics.Calculators.FullCalculators;
+
+namespace LibiadaCore.Tests.Core.Characteristics.Calculators.FullCalculators
 {
     using LibiadaCore.Core;
 
@@ -8,8 +10,9 @@
     /// The entropy kurtosis coefficient tests.
     /// </summary>
     [TestFixture]
-    public class EntropyKurtosisCoefficientTests : FullCalculatorsTests
+    public class EntropyKurtosisCoefficientTests : FullCalculatorsTests<EntropyKurtosisCoefficient>
     {
+
         /// <summary>
         /// The average remoteness dispersion test.
         /// </summary>

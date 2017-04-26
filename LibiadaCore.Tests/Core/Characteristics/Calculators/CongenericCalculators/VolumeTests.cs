@@ -1,4 +1,6 @@
-﻿namespace LibiadaCore.Tests.Core.Characteristics.Calculators.CongenericCalculators
+﻿using LibiadaCore.Core.Characteristics.Calculators.CongenericCalculators;
+
+namespace LibiadaCore.Tests.Core.Characteristics.Calculators.CongenericCalculators
 {
     using LibiadaCore.Core;
 
@@ -8,7 +10,7 @@
     /// The volume test.
     /// </summary>
     [TestFixture]
-    public class VolumeTests : CongenericCalculatorsTests
+    public class VolumeTests : CongenericCalculatorsTests<Volume>
     {
         /// <summary>
         /// The congeneric calculation test.

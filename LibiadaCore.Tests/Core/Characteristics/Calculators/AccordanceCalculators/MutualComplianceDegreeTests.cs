@@ -1,4 +1,6 @@
-﻿namespace LibiadaCore.Tests.Core.Characteristics.Calculators.AccordanceCalculators
+﻿using LibiadaCore.Core.Characteristics.Calculators.AccordanceCalculators;
+
+namespace LibiadaCore.Tests.Core.Characteristics.Calculators.AccordanceCalculators
 {
     using NUnit.Framework;
 
@@ -6,7 +8,7 @@
     /// The mutual compliance degree tests.
     /// </summary>
     [TestFixture]
-    public class MutualComplianceDegreeTests : AccordanceCalculatorsTests
+    public class MutualComplianceDegreeTests : AccordanceCalculatorsTests<MutualComplianceDegree>
     {
         /// <summary>
         /// The mutual compliance degree test.

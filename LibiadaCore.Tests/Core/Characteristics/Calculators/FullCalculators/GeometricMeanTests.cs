@@ -1,3 +1,5 @@
+using LibiadaCore.Core.Characteristics.Calculators.FullCalculators;
+
 namespace LibiadaCore.Tests.Core.Characteristics.Calculators.FullCalculators
 {
     using LibiadaCore.Core;
@@ -8,7 +10,7 @@ namespace LibiadaCore.Tests.Core.Characteristics.Calculators.FullCalculators
     /// The geometric mean test.
     /// </summary>
     [TestFixture]
-    public class GeometricMeanTests : FullCalculatorsTests
+    public class GeometricMeanTests : FullCalculatorsTests<GeometricMean>
     {
         /// <summary>
         /// The calculation test.

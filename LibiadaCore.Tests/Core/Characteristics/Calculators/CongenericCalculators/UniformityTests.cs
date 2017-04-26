@@ -1,4 +1,6 @@
-﻿namespace LibiadaCore.Tests.Core.Characteristics.Calculators.CongenericCalculators
+﻿using LibiadaCore.Core.Characteristics.Calculators.CongenericCalculators;
+
+namespace LibiadaCore.Tests.Core.Characteristics.Calculators.CongenericCalculators
 {
     using LibiadaCore.Core;
 
@@ -8,7 +10,7 @@
     /// The uniformity calculator tests.
     /// </summary>
     [TestFixture]
-    public class UniformityTests : CongenericCalculatorsTests
+    public class UniformityTests : CongenericCalculatorsTests<Uniformity>
     {
         /// <summary>
         /// The congeneric calculation test.

@@ -1,3 +1,5 @@
+using LibiadaCore.Core.Characteristics.Calculators.FullCalculators;
+
 namespace LibiadaCore.Tests.Core.Characteristics.Calculators.FullCalculators
 {
     using LibiadaCore.Core;
@@ -8,7 +10,7 @@ namespace LibiadaCore.Tests.Core.Characteristics.Calculators.FullCalculators
     /// The depth test.
     /// </summary>
     [TestFixture]
-    public class DepthTests : FullCalculatorsTests
+    public class DepthTests : FullCalculatorsTests<Depth>
     {
         /// <summary>
         /// The calculation test.

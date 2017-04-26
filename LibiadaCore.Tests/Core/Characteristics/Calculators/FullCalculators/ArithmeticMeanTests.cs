@@ -1,3 +1,5 @@
+using LibiadaCore.Core.Characteristics.Calculators.FullCalculators;
+
 namespace LibiadaCore.Tests.Core.Characteristics.Calculators.FullCalculators
 {
     using LibiadaCore.Core;
@@ -8,7 +10,7 @@ namespace LibiadaCore.Tests.Core.Characteristics.Calculators.FullCalculators
     /// The arithmetic mean test.
     /// </summary>
     [TestFixture]
-    public class ArithmeticMeanTests : FullCalculatorsTests
+    public class ArithmeticMeanTests : FullCalculatorsTests<ArithmeticMean>
     {
         /// <summary>
         /// The chain calculation test.

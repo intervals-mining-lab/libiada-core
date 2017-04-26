@@ -1,4 +1,6 @@
-﻿namespace LibiadaCore.Tests.Core.Characteristics.Calculators.FullCalculators
+﻿using LibiadaCore.Core.Characteristics.Calculators.FullCalculators;
+
+namespace LibiadaCore.Tests.Core.Characteristics.Calculators.FullCalculators
 {
     using LibiadaCore.Core;
 
@@ -8,7 +10,7 @@
     /// The alphabetic depth test.
     /// </summary>
     [TestFixture]
-    public class AlphabeticDepthTests : FullCalculatorsTests
+    public class AlphabeticDepthTests : FullCalculatorsTests<AlphabeticDepth>
     {
         /// <summary>
         /// The chain calculation test.

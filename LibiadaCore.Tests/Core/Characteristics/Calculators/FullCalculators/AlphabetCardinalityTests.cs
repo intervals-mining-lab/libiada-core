@@ -1,3 +1,5 @@
+using LibiadaCore.Core.Characteristics.Calculators.FullCalculators;
+
 namespace LibiadaCore.Tests.Core.Characteristics.Calculators.FullCalculators
 {
     using LibiadaCore.Core;
@@ -8,7 +10,7 @@ namespace LibiadaCore.Tests.Core.Characteristics.Calculators.FullCalculators
     /// The alphabet cardinality test.
     /// </summary>
     [TestFixture]
-    public class AlphabetCardinalityTests : FullCalculatorsTests
+    public class AlphabetCardinalityTests : FullCalculatorsTests<AlphabetCardinality>
     {
         /// <summary>
         /// The chain calculation test.

@@ -1,3 +1,5 @@
+using LibiadaCore.Core.Characteristics.Calculators.FullCalculators;
+
 namespace LibiadaCore.Tests.Core.Characteristics.Calculators.FullCalculators
 {
     using LibiadaCore.Core;
@@ -8,8 +10,9 @@ namespace LibiadaCore.Tests.Core.Characteristics.Calculators.FullCalculators
     /// The descriptive information test.
     /// </summary>
     [TestFixture]
-    public class DescriptiveInformationTests : FullCalculatorsTests
+    public class DescriptiveInformationTests : FullCalculatorsTests<DescriptiveInformation>
     {
+
         /// <summary>
         /// The chain calculation test.
         /// </summary>

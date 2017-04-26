@@ -1,4 +1,6 @@
-﻿namespace LibiadaCore.Tests.Core.Characteristics.Calculators.AccordanceCalculators
+﻿using LibiadaCore.Core.Characteristics.Calculators.AccordanceCalculators;
+
+namespace LibiadaCore.Tests.Core.Characteristics.Calculators.AccordanceCalculators
 {
     using NUnit.Framework;
 
@@ -6,7 +8,7 @@
     /// The compliance degree tests.
     /// </summary>
     [TestFixture]
-    public class PartialComplianceDegreeTests : AccordanceCalculatorsTests
+    public class PartialComplianceDegreeTests : AccordanceCalculatorsTests<PartialComplianceDegree>
     {
         /// <summary>
         /// The compliance degree test.

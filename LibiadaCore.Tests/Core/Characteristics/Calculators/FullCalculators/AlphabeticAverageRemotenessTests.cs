@@ -1,4 +1,6 @@
-﻿namespace LibiadaCore.Tests.Core.Characteristics.Calculators.FullCalculators
+﻿using LibiadaCore.Core.Characteristics.Calculators.FullCalculators;
+
+namespace LibiadaCore.Tests.Core.Characteristics.Calculators.FullCalculators
 {
     using LibiadaCore.Core;
 
@@ -8,7 +10,7 @@
     /// The alphabetic average remoteness test.
     /// </summary>
     [TestFixture]
-    public class AlphabeticAverageRemotenessTests : FullCalculatorsTests
+    public class AlphabeticAverageRemotenessTests : FullCalculatorsTests<AlphabeticAverageRemoteness>
     {
         /// <summary>
         /// The chain calculation test.

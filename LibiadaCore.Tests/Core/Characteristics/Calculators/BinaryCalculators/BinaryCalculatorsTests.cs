@@ -1,4 +1,6 @@
-﻿namespace LibiadaCore.Tests.Core.Characteristics.Calculators.BinaryCalculators
+﻿using System.Runtime.InteropServices.ComTypes;
+
+namespace LibiadaCore.Tests.Core.Characteristics.Calculators.BinaryCalculators
 {
     using System.Collections.Generic;
 
@@ -10,7 +12,7 @@
     /// <summary>
     /// The abstract binary calculator test.
     /// </summary>
-    public abstract class BinaryCalculatorsTests
+    public abstract class BinaryCalculatorsTests<T> where T : IBinaryCalculator, new()
     {
         /// <summary>
         /// The chains.
@@ -25,18 +27,7 @@
         /// <summary>
         /// Gets or sets the calculator.
         /// </summary>
-        protected IBinaryCalculator Calculator { get; set; }
-
-        /// <summary>
-        /// Calculator initialization method.
-        /// </summary>
-        [OneTimeSetUp]
-        public virtual void Initialization()
-        {
-            var testClassName = GetType().Name;
-            var calculatorName = testClassName.Substring(0, testClassName.Length - 5);
-            Calculator = BinaryCalculatorsFactory.CreateBinaryCalculator(calculatorName);
-        }
+        protected T calculator = new T();
 
         /// <summary>
         /// The calculation test.
@@ -52,8 +43,8 @@
         /// </param>
         protected void CalculationTest(int index, double firstValue, double secondValue)
         {
-            double result1 = Calculator.Calculate(Chains[index].GetRelationIntervalsManager(elements["A"], elements["B"]), Link.End);
-            double result2 = Calculator.Calculate(Chains[index].GetRelationIntervalsManager(elements["B"], elements["A"]), Link.End);
+            double result1 = calculator.Calculate(Chains[index].GetRelationIntervalsManager(elements["A"], elements["B"]), Link.End);
+            double result2 = calculator.Calculate(Chains[index].GetRelationIntervalsManager(elements["B"], elements["A"]), Link.End);
             Assert.AreEqual(firstValue, result1, 0.0001);
             Assert.AreEqual(secondValue, result2, 0.0001);
         }

@@ -1,3 +1,5 @@
+using LibiadaCore.Core.Characteristics.Calculators.FullCalculators;
+
 namespace LibiadaCore.Tests.Core.Characteristics.Calculators.FullCalculators
 {
     using LibiadaCore.Core;
@@ -8,8 +10,9 @@ namespace LibiadaCore.Tests.Core.Characteristics.Calculators.FullCalculators
     /// The elements count test.
     /// </summary>
     [TestFixture]
-    public class ElementsCountTests : FullCalculatorsTests
+    public class ElementsCountTests : FullCalculatorsTests<ElementsCount>
     {
+
         /// <summary>
         /// The chain calculation test.
         /// </summary>

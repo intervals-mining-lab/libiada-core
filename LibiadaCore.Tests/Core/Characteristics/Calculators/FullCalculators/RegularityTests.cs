@@ -1,3 +1,5 @@
+using LibiadaCore.Core.Characteristics.Calculators.FullCalculators;
+
 namespace LibiadaCore.Tests.Core.Characteristics.Calculators.FullCalculators
 {
     using LibiadaCore.Core;
@@ -8,7 +10,7 @@ namespace LibiadaCore.Tests.Core.Characteristics.Calculators.FullCalculators
     /// The regularity test.
     /// </summary>
     [TestFixture]
-    public class RegularityTests : FullCalculatorsTests
+    public class RegularityTests : FullCalculatorsTests<Regularity>
     {
         /// <summary>
         /// The chain calculation test.

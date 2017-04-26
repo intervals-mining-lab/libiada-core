@@ -10,7 +10,7 @@
     /// <summary>
     /// The accordance calculators tests.
     /// </summary>
-    public abstract class AccordanceCalculatorsTests
+    public abstract class AccordanceCalculatorsTests<T> where T : IAccordanceCalculator, new()
     {
         /// <summary>
         /// The binary chains.
@@ -30,18 +30,7 @@
         /// <summary>
         /// Gets or sets the calculator.
         /// </summary>
-        private IAccordanceCalculator Calculator { get; set; }
-
-        /// <summary>
-        /// Calculator initialization method.
-        /// </summary>
-        [OneTimeSetUp]
-        public void Initialization()
-        {
-            string testClassName = GetType().Name;
-            string calculatorName = testClassName.Substring(0, testClassName.Length - 5);
-            Calculator = AccordanceCalculatorsFactory.CreateAccordanceCalculator(calculatorName);
-        }
+        private readonly T calculator = new T();
 
         /// <summary>
         /// The calculation test.
@@ -59,8 +48,8 @@
         {
             var firstChain = chains[index].CongenericChain(elements["A"]);
             var secondChain = chains[index].CongenericChain(elements["B"]);
-            double result1 = Calculator.Calculate(firstChain, secondChain, Link.End);
-            double result2 = Calculator.Calculate(secondChain, firstChain, Link.End);
+            double result1 = calculator.Calculate(firstChain, secondChain, Link.End);
+            double result2 = calculator.Calculate(secondChain, firstChain, Link.End);
             Assert.AreEqual(firstValue, result1, 0.0001);
             Assert.AreEqual(secondValue, result2, 0.0001);
         }
@@ -79,7 +68,7 @@
         /// </param>
         protected void CalculationTest(int firstIndex, int secondIndex, double firstValue)
         {
-            double result = Calculator.Calculate(congenericChains[firstIndex], congenericChains[secondIndex], Link.End);
+            double result = calculator.Calculate(congenericChains[firstIndex], congenericChains[secondIndex], Link.End);
             Assert.AreEqual(firstValue, result, 0.0001);
         }
     }

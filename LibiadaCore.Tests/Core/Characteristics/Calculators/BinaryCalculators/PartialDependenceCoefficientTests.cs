@@ -1,4 +1,6 @@
-﻿namespace LibiadaCore.Tests.Core.Characteristics.Calculators.BinaryCalculators
+﻿using LibiadaCore.Core.Characteristics.Calculators.BinaryCalculators;
+
+namespace LibiadaCore.Tests.Core.Characteristics.Calculators.BinaryCalculators
 {
     using System;
     using System.Collections.Generic;
@@ -11,7 +13,7 @@
     /// The partial dependence coefficient test.
     /// </summary>
     [TestFixture]
-    public class PartialDependenceCoefficientTests : BinaryCalculatorsTests
+    public class PartialDependenceCoefficientTests : BinaryCalculatorsTests<PartialDependenceCoefficient>
     {
         /// <summary>
         /// The k 1 test.
@@ -53,21 +55,21 @@
         [Test]
         public void GetK1Test()
         {
-            List<List<double>> result = Calculator.CalculateAll(Chains[1], Link.End);
+            List<List<double>> result = calculator.CalculateAll(Chains[1], Link.End);
 
             Assert.AreEqual(0, result[0][0]);
             Assert.AreEqual(0, result[0][1]);
             Assert.AreEqual(0, result[1][0]);
             Assert.AreEqual(0, result[1][1]);
 
-            result = Calculator.CalculateAll(Chains[10], Link.End);
+            result = calculator.CalculateAll(Chains[10], Link.End);
 
             Assert.AreEqual(0, result[0][0]);
             Assert.AreEqual(0.614, Math.Round(result[0][1], 3));
             Assert.AreEqual(0.402, Math.Round(result[1][0], 3));
             Assert.AreEqual(0, result[1][1]);
 
-            result = Calculator.CalculateAll(Chains[18], Link.End);
+            result = calculator.CalculateAll(Chains[18], Link.End);
 
             Assert.AreEqual(0, result[0][0]);
             Assert.AreEqual(0.4055, Math.Round(result[0][1], 4));

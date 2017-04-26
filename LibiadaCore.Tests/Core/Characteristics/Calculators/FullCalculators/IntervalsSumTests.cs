@@ -1,4 +1,6 @@
-﻿namespace LibiadaCore.Tests.Core.Characteristics.Calculators.FullCalculators
+﻿using LibiadaCore.Core.Characteristics.Calculators.FullCalculators;
+
+namespace LibiadaCore.Tests.Core.Characteristics.Calculators.FullCalculators
 {
     using LibiadaCore.Core;
 
@@ -8,7 +10,7 @@
     /// The intervals sum test.
     /// </summary>
     [TestFixture]
-    public class IntervalsSumTests : FullCalculatorsTests
+    public class IntervalsSumTests : FullCalculatorsTests<IntervalsSum>
     {
         /// <summary>
         /// The chain calculation test.

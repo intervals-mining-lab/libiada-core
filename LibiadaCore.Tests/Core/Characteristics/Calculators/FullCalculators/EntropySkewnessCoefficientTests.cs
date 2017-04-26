@@ -1,4 +1,6 @@
-﻿namespace LibiadaCore.Tests.Core.Characteristics.Calculators.FullCalculators
+﻿using LibiadaCore.Core.Characteristics.Calculators.FullCalculators;
+
+namespace LibiadaCore.Tests.Core.Characteristics.Calculators.FullCalculators
 {
     using LibiadaCore.Core;
 
@@ -8,8 +10,9 @@
     /// The average remoteness asymmetry test.
     /// </summary>
     [TestFixture]
-    public class EntropySkewnessCoefficientTests : FullCalculatorsTests
+    public class EntropySkewnessCoefficientTests : FullCalculatorsTests<EntropySkewnessCoefficient>
     {
+
         /// <summary>
         /// The average remoteness dispersion test.
         /// </summary>
