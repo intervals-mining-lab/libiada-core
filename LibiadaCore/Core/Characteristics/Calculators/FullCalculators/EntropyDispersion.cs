@@ -23,17 +23,17 @@
             var intervalsCount = new IntervalsCount();
 
             double result = 0;
-            double g = identificationInformation.Calculate(chain, link);
+            double h = identificationInformation.Calculate(chain, link);
             var n = (int)intervalsCount.Calculate(chain, link);
 
             var congenericIntervalsCount = new CongenericCalculators.IntervalsCount();
-            var congenericAverageRemoteness = new CongenericCalculators.AverageRemoteness();
+            var congenericIdentificationInformation = new CongenericCalculators.IdentificationInformation();
 
             for (int i = 0; i < chain.Alphabet.Cardinality; i++)
             {
                 double nj = congenericIntervalsCount.Calculate(chain.CongenericChain(chain.Alphabet[i]), link);
-                double gj = congenericAverageRemoteness.Calculate(chain.CongenericChain(chain.Alphabet[i]), link);
-                double deltaH = gj - g;
+                double hj = congenericIdentificationInformation.Calculate(chain.CongenericChain(chain.Alphabet[i]), link);
+                double deltaH = hj - h;
                 result += n == 0 ? 0 : nj / n * deltaH * deltaH;
             }
 
