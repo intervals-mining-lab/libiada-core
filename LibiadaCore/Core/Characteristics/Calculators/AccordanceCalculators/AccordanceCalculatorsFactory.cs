@@ -1,7 +1,6 @@
 namespace LibiadaCore.Core.Characteristics.Calculators.AccordanceCalculators
 {
-    using System;
-    using System.Collections.Generic;
+    using System.ComponentModel;
 
     /// <summary>
     /// Static factory of different calculators.
@@ -17,7 +16,7 @@ namespace LibiadaCore.Core.Characteristics.Calculators.AccordanceCalculators
         /// <returns>
         /// The <see cref="IAccordanceCalculator"/>.
         /// </returns>
-        /// <exception cref="ArgumentException">
+        /// <exception cref="InvalidEnumArgumentException">
         /// Thrown if calculator type is unknown.
         /// </exception>
         public static IAccordanceCalculator CreateCalculator(AccordanceCharacteristic type)
@@ -29,7 +28,7 @@ namespace LibiadaCore.Core.Characteristics.Calculators.AccordanceCalculators
                 case AccordanceCharacteristic.PartialComplianceDegree:
                     return new PartialComplianceDegree();
                 default:
-                    throw new ArgumentException("Unknown accordance characteristic type");
+                    throw new InvalidEnumArgumentException(nameof(type), (int)type, typeof(AccordanceCharacteristic));
             }
         }
     }

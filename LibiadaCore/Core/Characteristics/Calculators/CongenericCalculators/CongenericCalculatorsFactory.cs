@@ -1,7 +1,6 @@
 namespace LibiadaCore.Core.Characteristics.Calculators.CongenericCalculators
 {
-    using System;
-    using System.Collections.Generic;
+    using System.ComponentModel;
 
     /// <summary>
     /// Static factory of different calculators.
@@ -17,7 +16,7 @@ namespace LibiadaCore.Core.Characteristics.Calculators.CongenericCalculators
         /// <returns>
         /// The <see cref="ICongenericCalculator"/>.
         /// </returns>
-        /// <exception cref="ArgumentException">
+        /// <exception cref="InvalidEnumArgumentException">
         /// Thrown if calculator type is unknown.
         /// </exception>
         public static ICongenericCalculator CreateCalculator(CongenericCharacteristic type)
@@ -61,7 +60,7 @@ namespace LibiadaCore.Core.Characteristics.Calculators.CongenericCalculators
                 case CongenericCharacteristic.Volume:
                     return new Volume();
                 default:
-                    throw new ArgumentException("Unknown congeneric characteristic type");
+                    throw new InvalidEnumArgumentException(nameof(type), (int)type, typeof(CongenericCharacteristic));
             }
         }
     }

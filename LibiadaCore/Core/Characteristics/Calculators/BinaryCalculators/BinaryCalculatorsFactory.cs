@@ -1,7 +1,6 @@
 namespace LibiadaCore.Core.Characteristics.Calculators.BinaryCalculators
 {
-    using System;
-    using System.Collections.Generic;
+    using System.ComponentModel;
 
     /// <summary>
     /// Static factory of different calculators.
@@ -17,7 +16,7 @@ namespace LibiadaCore.Core.Characteristics.Calculators.BinaryCalculators
         /// <returns>
         /// The <see cref="IBinaryCalculator"/>.
         /// </returns>
-        /// <exception cref="ArgumentException">
+        /// <exception cref="InvalidEnumArgumentException">
         /// Thrown if calculator type is unknown.
         /// </exception>
         public static IBinaryCalculator CreateCalculator(BinaryCharacteristic type)
@@ -37,7 +36,7 @@ namespace LibiadaCore.Core.Characteristics.Calculators.BinaryCalculators
                 case BinaryCharacteristic.Redundancy:
                     return new Redundancy();
                 default:
-                    throw new ArgumentException("Unknown binary characteristic type");
+                    throw new InvalidEnumArgumentException(nameof(type), (int)type, typeof(BinaryCharacteristic));
             }
         }
     }

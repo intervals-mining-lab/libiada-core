@@ -2,6 +2,7 @@
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel;
 
     using LibiadaCore.Core;
 
@@ -115,7 +116,7 @@
                         return (Fmotiv)Clone();
 
                 default:
-                    throw new Exception("Error Fmotiv.PauseTreatment parameter contains wrong value!");
+                    throw new InvalidEnumArgumentException(nameof(paramPauseTreatment), (int)paramPauseTreatment, typeof(ParamPauseTreatment));
             }
         }
 
@@ -415,7 +416,7 @@
                             break;
 
                         default:
-                            throw new Exception("Error Fmotiv.ParamEqualFM parameter contains wrong value!");
+                            throw new InvalidEnumArgumentException(nameof(paramEqualFM), (int)paramEqualFM, typeof(ParamEqualFM));
                     }
                 }
             }

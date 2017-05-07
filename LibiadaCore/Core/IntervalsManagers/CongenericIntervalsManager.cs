@@ -143,7 +143,7 @@
                     return result;
 
                 default:
-                    throw new InvalidEnumArgumentException("link", (int)link, typeof(Link));
+                    throw new InvalidEnumArgumentException(nameof(link), (int)link, typeof(Link));
             }
         }
 

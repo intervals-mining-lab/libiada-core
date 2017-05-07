@@ -1,7 +1,6 @@
 namespace LibiadaCore.Core.Characteristics.Calculators.FullCalculators
 {
-    using System;
-    using System.Collections.Generic;
+    using System.ComponentModel;
 
     /// <summary>
     /// Static factory of different calculators.
@@ -17,7 +16,7 @@ namespace LibiadaCore.Core.Characteristics.Calculators.FullCalculators
         /// <returns>
         /// The <see cref="IFullCalculator"/>.
         /// </returns>
-        /// <exception cref="ArgumentException">
+        /// <exception cref="InvalidEnumArgumentException">
         /// Thrown if calculator type is unknown.
         /// </exception>
         public static IFullCalculator CreateCalculator(FullCharacteristic type)
@@ -133,7 +132,7 @@ namespace LibiadaCore.Core.Characteristics.Calculators.FullCalculators
                 case FullCharacteristic.Volume:
                     return new Volume();
                 default:
-                    throw new ArgumentException("Unknown full characteristic type");
+                    throw new InvalidEnumArgumentException(nameof(type), (int)type, typeof(FullCharacteristic));
             }
         }
     }

@@ -341,7 +341,8 @@
             {
                 if (noteChild.Name == "tie")
                 {
-                    switch (noteChild.Attributes["type"].Value)
+                    string tieType = noteChild.Attributes?["type"].Value;
+                    switch (tieType)
                     {
                         case "start":
                             start = true;
@@ -350,7 +351,7 @@
                             stop = true;
                             break;
                         default:
-                            throw new Exception("LibiadaMusic.XmlParser: error while Note parsing: Tie type unknown");
+                            throw new InvalidOperationException($"Unknown tie type {tieType}");
                     }
                 }
             }

@@ -63,7 +63,7 @@
                     numDenom[1] = 256;
                     break;
                 default:
-                    throw new Exception("LibiadaMusic.ScoreModel: Error unknown duration type!");
+                    throw new InvalidOperationException($"Unknown duration type {type}");
             }
 
             return numDenom;

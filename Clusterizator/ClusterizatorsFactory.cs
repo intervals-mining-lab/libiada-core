@@ -4,6 +4,7 @@ namespace Clusterizator
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel;
 
     using Clusterizator.KMeans;
     using Clusterizator.Krab;
@@ -35,40 +36,36 @@ namespace Clusterizator
                 case ClusterizationType.KMeans:
                     return new KMeansClusterization();
                 case ClusterizationType.Krab:
-                    double powerWeight;
-                    if (!parameters.TryGetValue("powerWeight", out powerWeight))
+                    if (!parameters.TryGetValue("powerWeight",  out double powerWeight))
                     {
                         powerWeight = 1;
                     }
 
-                    double normalizedDistanceWeight;
-                    if (!parameters.TryGetValue("normalizedDistanceWeight", out normalizedDistanceWeight))
+                    if (!parameters.TryGetValue("normalizedDistanceWeight", out double normalizedDistanceWeight))
                     {
                         normalizedDistanceWeight = 1;
                     }
 
-                    double distanceWeight;
-                    if (!parameters.TryGetValue("distanceWeight", out distanceWeight))
+                    if (!parameters.TryGetValue("distanceWeight", out double distanceWeight))
                     {
                         distanceWeight = 4;
                     }
 
                     return new KrabClusterization(powerWeight, normalizedDistanceWeight, distanceWeight);
                 case ClusterizationType.MeanShift:
-                    double bandwidth;
-                    if (!parameters.TryGetValue("bandwidth", out bandwidth))
+                    if (!parameters.TryGetValue("bandwidth", out double bandwidth))
                     {
                         bandwidth = 0;
                     }
 
-                    double dimension;
-                    if (!parameters.TryGetValue("dimension", out dimension))
+                    if (!parameters.TryGetValue("dimension", out double dimension))
                     {
                         dimension = 0;
                     }
-                    return new MeanShiftClusterization((int) dimension, bandwidth);
+
+                    return new MeanShiftClusterization((int)dimension, bandwidth);
                 default:
-                    throw new Exception("Unknown clusterization type");
+                    throw new InvalidEnumArgumentException(nameof(type), (int)type, typeof(ClusterizationType));
             }
         }
     }

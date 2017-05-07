@@ -2,6 +2,8 @@
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel;
+
     using LibiadaMusic.ScoreModel;
 
     /// <summary>
@@ -131,7 +133,7 @@
                                     next = true;
                                     break;
                                 default:
-                                    throw new Exception("Error Fmotiv.PauseTreatment parameter contains wrong value!");
+                                    throw new InvalidEnumArgumentException(nameof(paramPauseTreatment), (int)paramPauseTreatment, typeof(ParamPauseTreatment));
                             }
                         }
                         else
@@ -191,7 +193,7 @@
                             next = true;
                             break;
                         default:
-                            throw new Exception("Error Fmotiv.PauseTreatment parameter contains wrong value!");
+                            throw new InvalidEnumArgumentException(nameof(paramPauseTreatment), (int)paramPauseTreatment, typeof(ParamPauseTreatment));
                     }
                 }
 
