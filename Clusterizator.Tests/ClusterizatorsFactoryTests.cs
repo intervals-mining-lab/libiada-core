@@ -7,6 +7,7 @@
     using Clusterizator.Krab;
 
     using NUnit.Framework;
+    using System.ComponentModel;
 
     /// <summary>
     /// The clusterizators factory tests.
@@ -45,7 +46,7 @@
         public void SelectionTest()
         {
             var parameters = new Dictionary<string, double>();
-            Assert.Throws<Exception>(() => ClusterizatorsFactory.CreateClusterizator(0, parameters));
+            Assert.Throws<InvalidEnumArgumentException>(() => ClusterizatorsFactory.CreateClusterizator(0, parameters));
         }
     }
 }

@@ -5,6 +5,7 @@
     using LibiadaCore.Core.Characteristics.Calculators.AccordanceCalculators;
 
     using NUnit.Framework;
+    using System.ComponentModel;
 
     /// <summary>
     /// The accordance calculators factory tests.
@@ -34,7 +35,7 @@
         [Test]
         public void WrongCalculatorTypeTest()
         {
-            Assert.Throws<ArgumentException>(() => AccordanceCalculatorsFactory.CreateCalculator(0));
+            Assert.Throws<InvalidEnumArgumentException>(() => AccordanceCalculatorsFactory.CreateCalculator(0));
         }
     }
 }
