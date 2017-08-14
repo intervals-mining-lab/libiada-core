@@ -1,6 +1,7 @@
 ﻿namespace LibiadaCore.Tests.Core.Characteristics.Calculators.BinaryCalculators
 {
     using System;
+    using System.ComponentModel;
 
     using LibiadaCore.Core.Characteristics.Calculators.BinaryCalculators;
 
@@ -38,7 +39,7 @@
         [Test]
         public void WrongCalculatorTypeTest()
         {
-            Assert.Throws<ArgumentException>(() => BinaryCalculatorsFactory.CreateCalculator(0));
+            Assert.Throws<InvalidEnumArgumentException>(() => BinaryCalculatorsFactory.CreateCalculator(0));
         }
     }
 }

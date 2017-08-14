@@ -1,6 +1,7 @@
 ﻿namespace LibiadaCore.Tests.Core.Characteristics.Calculators.CongenericCalculators
 {
     using System;
+    using System.ComponentModel;
 
     using LibiadaCore.Core.Characteristics.Calculators.CongenericCalculators;
 
@@ -50,7 +51,7 @@
         [Test]
         public void WrongCalculatorTypeTest()
         {
-            Assert.Throws<ArgumentException>(() => CongenericCalculatorsFactory.CreateCalculator(0));
+            Assert.Throws<InvalidEnumArgumentException>(() => CongenericCalculatorsFactory.CreateCalculator(0));
         }
     }
 }

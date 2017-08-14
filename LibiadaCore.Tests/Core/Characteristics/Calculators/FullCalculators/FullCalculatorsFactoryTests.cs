@@ -1,6 +1,7 @@
 ﻿namespace LibiadaCore.Tests.Core.Characteristics.Calculators.FullCalculators
 {
     using System;
+    using System.ComponentModel;
 
     using LibiadaCore.Core.Characteristics.Calculators.FullCalculators;
 
@@ -86,7 +87,7 @@
         [Test]
         public void WrongCalculatorTypeTest()
         {
-            Assert.Throws<ArgumentException>(() => FullCalculatorsFactory.CreateCalculator(0));
+            Assert.Throws<InvalidEnumArgumentException>(() => FullCalculatorsFactory.CreateCalculator(0));
         }
     }
 }
