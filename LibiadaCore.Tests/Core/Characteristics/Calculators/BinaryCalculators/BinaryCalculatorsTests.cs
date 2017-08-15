@@ -1,6 +1,4 @@
-﻿using System.Runtime.InteropServices.ComTypes;
-
-namespace LibiadaCore.Tests.Core.Characteristics.Calculators.BinaryCalculators
+﻿namespace LibiadaCore.Tests.Core.Characteristics.Calculators.BinaryCalculators
 {
     using System.Collections.Generic;
 

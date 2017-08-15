@@ -2,12 +2,12 @@
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel;
 
     using Clusterizator.KMeans;
     using Clusterizator.Krab;
 
     using NUnit.Framework;
-    using System.ComponentModel;
 
     /// <summary>
     /// The clusterizators factory tests.
