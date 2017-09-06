@@ -2,7 +2,7 @@
 *.userprefs
 *.DotSettings.user
 *.suo
-
+.vs/
 [Dd]ebug/
 [Rr]elease/
 x64/

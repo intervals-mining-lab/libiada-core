@@ -9,9 +9,9 @@ namespace Clusterizator.MeanShift
     {
         private readonly MeanShift meanShift;
 
-        public MeanShiftClusterization(int dimension, double bandwidth)
+        public MeanShiftClusterization(double bandwidth)
         {
-            meanShift = new MeanShift(dimension, new UniformKernel(), bandwidth);
+            meanShift = new MeanShift(new UniformKernel(), bandwidth);
         }
 
         public int[] Cluster(int clustersCount, double[][] data)

@@ -107,7 +107,7 @@
         [Test]
         public void PolyXmlParserTest()
         {
-            var xmlReader = new MusicXmlReader(TestContext.CurrentContext.TestDirectory + "/polytest.xml");
+            var xmlReader = new MusicXmlReader(SystemData.ProjectFolderPath + "polytest.xml");
             var parser = new MusicXmlParser();
 
             parser.Execute(xmlReader.MusicXmlDocument, xmlReader.FileName);

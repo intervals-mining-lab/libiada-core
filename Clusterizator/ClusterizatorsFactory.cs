@@ -25,7 +25,7 @@ namespace Clusterizator
         /// <returns>
         /// The <see cref="IClusterizator"/>.
         /// </returns>
-        /// <exception cref="Exception">
+        /// <exception cref="InvalidEnumArgumentException">
         /// Thrown if culsterizator type is invalid
         /// </exception>
         public static IClusterizator CreateClusterizator(ClusterizationType type, Dictionary<string, double> parameters)
@@ -57,12 +57,7 @@ namespace Clusterizator
                         bandwidth = 0;
                     }
 
-                    if (!parameters.TryGetValue("dimension", out double dimension))
-                    {
-                        dimension = 0;
-                    }
-
-                    return new MeanShiftClusterization((int)dimension, bandwidth);
+                    return new MeanShiftClusterization(bandwidth);
                 default:
                     throw new InvalidEnumArgumentException(nameof(type), (int)type, typeof(ClusterizationType));
             }
