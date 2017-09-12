@@ -25,13 +25,15 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Clusterizator.Tests", "Clus
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LibiadaMusic.Tests", "LibiadaMusic.Tests\LibiadaMusic.Tests.csproj", "{2EEACAE8-040A-4AA0-A854-8AFA23550D65}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Segmenter.Tests", "Segmenter.Tests\Segmenter.Tests.csproj", "{3617371D-258A-457C-9182-410179CF5C5A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Segmenter.Tests", "Segmenter.Tests\Segmenter.Tests.csproj", "{3617371D-258A-457C-9182-410179CF5C5A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PhantomChains.Tests", "PhantomChains.Tests\PhantomChains.Tests.csproj", "{5883148F-5DE6-42EF-83C5-0B58AD83AF09}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PhantomChains.Tests", "PhantomChains.Tests\PhantomChains.Tests.csproj", "{5883148F-5DE6-42EF-83C5-0B58AD83AF09}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MarkovChains.Tests", "MarkovChains.Tests\MarkovChains.Tests.csproj", "{89E495F4-1D43-41DF-9843-6C3DA68569DA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MarkovChains.Tests", "MarkovChains.Tests\MarkovChains.Tests.csproj", "{89E495F4-1D43-41DF-9843-6C3DA68569DA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AlphabetCheckers.Tests", "AlphabetCheckers.Tests\AlphabetCheckers.Tests.csproj", "{7142FA5E-D276-4FB2-99AC-A7B343E3C5A4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AlphabetCheckers.Tests", "AlphabetCheckers.Tests\AlphabetCheckers.Tests.csproj", "{7142FA5E-D276-4FB2-99AC-A7B343E3C5A4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SequenceGenerator", "SequenceGenerator\SequenceGenerator.csproj", "{D179384A-097F-472D-86B6-2A00F339A1D3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -99,6 +101,10 @@ Global
 		{7142FA5E-D276-4FB2-99AC-A7B343E3C5A4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7142FA5E-D276-4FB2-99AC-A7B343E3C5A4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7142FA5E-D276-4FB2-99AC-A7B343E3C5A4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D179384A-097F-472D-86B6-2A00F339A1D3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D179384A-097F-472D-86B6-2A00F339A1D3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D179384A-097F-472D-86B6-2A00F339A1D3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D179384A-097F-472D-86B6-2A00F339A1D3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
