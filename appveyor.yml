@@ -12,3 +12,5 @@ before_build:
 build:
   project: LibiadaCore.sln
   verbosity: minimal
+before_test:
+- cmd: dotnet test
