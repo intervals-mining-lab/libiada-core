@@ -28,6 +28,5 @@ namespace SequenceGeneretor.Tests
             var actual = sequenceGenerator.GenerateSequences(3, 2);
             Assert.AreEqual(expected, actual);
         }
-        
     }
 }

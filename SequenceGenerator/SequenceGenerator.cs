@@ -10,9 +10,8 @@ namespace SequenceGenerator
         {
             var result = new List<BaseChain>();
             var iterator = new SequenceIterator(length, alphabetCardinality);
-            foreach (var sequence1 in iterator)
+            foreach (int[] sequence in iterator)
             {
-                int[] sequence = (int[])sequence1;
                 var elements = new List<IBaseObject>(sequence.Length);
                 for (int i = 0; i < sequence.Length; i++)
                 {

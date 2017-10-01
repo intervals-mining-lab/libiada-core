@@ -42,23 +42,12 @@ namespace SequenceGenerator
 
         public IEnumerator GetEnumerator()
         {
-            bool carry;
-            int index = 0;
-            do
+            int count = (int)Math.Pow(alphabetCardinality, sequence.Length);
+            for (int i = 0; i < count; i++)
             {
                 yield return (int[])sequence.Clone();
-                sequence[index]++;
-                if (sequence[index] >= alphabetCardinality)
-                {
-                    carry = true;
-                    sequence[index] = 0;
-                    index++;
-                }
-                else
-                {
-                    carry = false;
-                }
-            } while (carry && index < sequence.Length);
+                IterateSequencesCounter();
+            }
         }
     }
 }
