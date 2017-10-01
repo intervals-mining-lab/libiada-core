@@ -24,12 +24,7 @@ namespace SequenceGenerator
 
         public List<BaseChain> GenerateSequences(int length)
         {
-            var result = new List<BaseChain>();
-            for (int i = 1; i <= length; i++)
-            {
-                result.AddRange(GenerateSequences(length, i));
-            }
-            return result;
+            return GenerateSequences(length, length);
         }
     }
 }
