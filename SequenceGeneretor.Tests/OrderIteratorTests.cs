@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using NUnit.Framework.Internal;
-using NUnit.Framework;
-using SequenceGenerator;
-
-namespace SequenceGeneretor.Tests
+﻿namespace SequenceGeneretor.Tests
 {
+    using NUnit.Framework;
+
+    using SequenceGenerator;
+
     [TestFixture]
     public class OrderIteratorTests
     {
@@ -21,7 +18,8 @@ namespace SequenceGeneretor.Tests
             {
                 iterator.IterateOrderCounter();
             }
-            var actual = iterator.Iterator;
+
+            int[] actual = iterator.Iterator;
             Assert.AreEqual(expected, actual);
         }
 
@@ -31,18 +29,20 @@ namespace SequenceGeneretor.Tests
             var iterator = new OrderIterator(3, 2);
             var expected = new[]
             {
-                new[]{1, 1, 1},
-                new[]{1, 2, 1},
-                new[]{1, 1, 2},
-                new[]{1, 2, 2}
-
+                new[] { 1, 1, 1 },
+                new[] { 1, 1, 2 },
+                new[] { 1, 2, 1 },
+                new[] { 1, 2, 2 }
             };
+
             int i = 0;
             foreach (var actual in iterator)
             {
                 Assert.AreEqual(expected[i], actual);
                 i++;
             }
+
+            Assert.AreEqual(expected.Length, i);
         }
     }
 }

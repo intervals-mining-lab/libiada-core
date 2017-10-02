@@ -1,41 +1,37 @@
-﻿using System.Collections.Generic;
-using LibiadaCore.Core;
-using LibiadaCore.Core.SimpleTypes;
-
-namespace SequenceGenerator
+﻿namespace SequenceGenerator
 {
+    using System.Collections.Generic;
+    using System.Linq;
+
     public class OrderGenerator
     {
-        public List<BaseChain> GenerateOrders(int length, int alphabetCardinality)
+        public List<int[]> GenerateOrders(int length, int alphabetCardinality)
         {
-            var result = new List<BaseChain>();
+            var result = new List<int[]>();
             var iterator = new OrderIterator(length, alphabetCardinality);
             foreach (int[] order in iterator)
             {
-                var elements = new List<IBaseObject>(order.Length);
-                for (int i = 0; i < order.Length; i++)
-                {
-                    elements.Add(new ValueInt(order[i]));
-                }
-                result.Add(new BaseChain(elements));
+                result.Add(order);
             }
+
             return result;
         }
 
-        public List<BaseChain> StrictGenerateOrders(int length, int alphabetCardinality)
+        public List<int[]> StrictGenerateOrders(int length, int alphabetCardinality)
         {
             var result = GenerateOrders(length, alphabetCardinality);
             for (int i = result.Count - 1; i >= 0; i--)
             {
-                if (result[i].Alphabet.Cardinality < alphabetCardinality)
+                if (result[i].Distinct().ToArray().Length < alphabetCardinality)
                 {
                     result.RemoveAt(i);
                 }
             }
+
             return result;
         }
 
-        public List<BaseChain> GenerateOrders(int length)
+        public List<int[]> GenerateOrders(int length)
         {
             return GenerateOrders(length, length);
         }

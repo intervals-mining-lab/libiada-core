@@ -1,9 +1,10 @@
-﻿using System.Collections.Generic;
-using LibiadaCore.Core;
-using LibiadaCore.Core.SimpleTypes;
-
-namespace SequenceGenerator
+﻿namespace SequenceGenerator
 {
+    using System.Collections.Generic;
+
+    using LibiadaCore.Core;
+    using LibiadaCore.Core.SimpleTypes;
+
     public class SequenceGenerator
     {
         public List<BaseChain> GenerateSequences(int length, int alphabetCardinality)
@@ -17,8 +18,10 @@ namespace SequenceGenerator
                 {
                     elements.Add(new ValueInt(sequence[i]));
                 }
+
                 result.Add(new BaseChain(elements));
             }
+
             return result;
         }
 

@@ -1,8 +1,8 @@
-﻿using System;
-using System.Collections;
-
-namespace SequenceGenerator
+﻿namespace SequenceGenerator
 {
+    using System;
+    using System.Collections;
+
     public class SequenceIterator : IEnumerable
     {
         private readonly int[] sequence;
@@ -14,6 +14,7 @@ namespace SequenceGenerator
             {
                 throw new ArgumentException("Alphabet cardinality can't be greater than sequence length", nameof(alphabetCardinality));
             }
+
             sequence = new int[length];
             this.alphabetCardinality = alphabetCardinality;
         }
@@ -37,7 +38,8 @@ namespace SequenceGenerator
                 {
                     carry = false;
                 }
-            } while (carry && index < sequence.Length);
+            }
+            while (carry && index < sequence.Length);
         }
 
         public IEnumerator GetEnumerator()

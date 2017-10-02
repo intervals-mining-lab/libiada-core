@@ -1,9 +1,10 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using LibiadaCore.Core;
-
-namespace SequenceGenerator
+﻿namespace SequenceGenerator
 {
+    using System.Collections.Generic;
+    using System.Linq;
+
+    using LibiadaCore.Core;
+
     public class StrictSequenceGenerator
     {
         public List<BaseChain> GenerateSequences(int length, int alphabetCardinality)
@@ -17,6 +18,7 @@ namespace SequenceGenerator
                     result.RemoveAt(i);
                 }
             }
+
             return result;
         }
 
@@ -27,6 +29,7 @@ namespace SequenceGenerator
             {
                 result.AddRange(GenerateSequences(length, i));
             }
+
             return result.Distinct().ToList();
         }
     }

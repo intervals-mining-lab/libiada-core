@@ -1,8 +1,8 @@
-﻿using System;
-using System.Collections;
-
-namespace SequenceGenerator
+﻿namespace SequenceGenerator
 {
+    using System;
+    using System.Collections;
+
     public class OrderIterator : IEnumerable
     {
         private readonly int[] order;
@@ -15,76 +15,51 @@ namespace SequenceGenerator
                 throw new ArgumentException("Alphabet cardinality can't be greater than sequence length", nameof(alphabetCardinality));
             }
 
+            this.alphabetCardinality = alphabetCardinality;
             order = new int[length];
             for (int i = 0; i < length; i++)
             {
                 order[i] = 1;
             }
-
-            this.alphabetCardinality = alphabetCardinality;
         }
 
         public int[] Iterator => (int[])order.Clone();
 
         public void IterateOrderCounter()
         {
-            bool carry;
-            int index = 0;
+            var maximums = new int[order.Length];
             int max = 1;
-            do
+            for (int i = 0; i < maximums.Length; i++)
             {
-                order[index]++;
-                if (order[index] > max)
-                {
-                    carry = true;
-                    order[index] = 1;
-                    index++;
-                    if (max < alphabetCardinality)
-                    {
-                        max++;
-                    }
-                }
-                else
-                {
-                    carry = false;
-                }
-            } while (carry && index < order.Length);
-        }
-
-        public IEnumerator GetEnumerator()
-        {
-            int[] checkArr = new int[order.Length];
-            bool check = false;
-            int max = 1;
-            for (int i = 0; i < checkArr.Length; i++)
-            {
-                checkArr[i] = max;
-                if (max < alphabetCardinality)
+                maximums[i] = max;
+                if ((max <= order[i]) && (max < alphabetCardinality))
                 {
                     max++;
                 }
             }
-            while (true)
+
+            for (int i = order.Length - 1; i >= 0; i--)
             {
-                for (int i = 0; i < checkArr.Length; i++)
+                order[i]++;
+                if (order[i] > maximums[i])
                 {
-                    if (checkArr[i] == order[i])
-                    {
-                        check = true;
-                    }
-                    else
-                    {
-                        check = false;
-                        break;
-                    }
+                    order[i] = 1;
                 }
-                yield return (int[])order.Clone();
-                if (check)
+                else
                 {
                     break;
                 }
+            }
+        }
+
+        public IEnumerator GetEnumerator()
+        {
+            do
+            {
+                yield return (int[])order.Clone();
                 IterateOrderCounter();
             }
+            while (false && order[order.Length - 1] < order.Length);
         }
     }
 }

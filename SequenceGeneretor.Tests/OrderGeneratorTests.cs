@@ -1,69 +1,62 @@
-﻿using System.Collections.Generic;
-using LibiadaCore.Core;
-using LibiadaCore.Core.SimpleTypes;
-using NUnit.Framework;
-using SequenceGenerator;
-
-namespace SequenceGeneretor.Tests
+﻿namespace SequenceGeneretor.Tests
 {
+    using System.Collections.Generic;
+
+    using NUnit.Framework;
+
+    using SequenceGenerator;
+
     [TestFixture]
     public class OrderGeneratorTests
     {
         [Test]
         public void GeneratorTest()
         {
-            var one = new ValueInt(1);
-            var two = new ValueInt(2);
-            var expected = new List<BaseChain>
+            var expected = new List<int[]>
             {
-                new BaseChain(new List<IBaseObject> { one, one, one }),
-                new BaseChain(new List<IBaseObject> { one, two, one }),
-                new BaseChain(new List<IBaseObject> { one, one, two }),
-                new BaseChain(new List<IBaseObject> { one, two, two })
+                new[] { 1, 1, 1 },
+                new[] { 1, 1, 2 },
+                new[] { 1, 2, 1 },
+                new[] { 1, 2, 2 },
             };
+
             var orderGenerator = new OrderGenerator();
-            var actual = orderGenerator.GenerateOrders(3, 2);
+            List<int[]> actual = orderGenerator.GenerateOrders(3, 2);
             Assert.AreEqual(expected, actual);
         }
 
         [Test]
         public void CompleteGeneratorTest()
         {
-            var one = new ValueInt(1);
-            var two = new ValueInt(2);
-            var three = new ValueInt(3);
-            var expected = new List<BaseChain>
+            var expected = new List<int[]>
             {
-                new BaseChain(new List<IBaseObject> { one, one, one }),
-                new BaseChain(new List<IBaseObject> { one, two, one }),
-                new BaseChain(new List<IBaseObject> { one, one, two }),
-                new BaseChain(new List<IBaseObject> { one, two, two }),
-                new BaseChain(new List<IBaseObject> { one, one, three }),
-                new BaseChain(new List<IBaseObject> { one, two, three })
+                new[] { 1, 1, 1 },
+                new[] { 1, 1, 2 },
+                new[] { 1, 2, 1 },
+                new[] { 1, 2, 2 },
+                new[] { 1, 2, 3 }
             };
+
             var orderGenerator = new OrderGenerator();
-            var actual = orderGenerator.GenerateOrders(3);
+            List<int[]> actual = orderGenerator.GenerateOrders(3);
             Assert.AreEqual(expected, actual);
         }
 
         [Test]
         public void StrictGeneratorTest()
         {
-            var one = new ValueInt(1);
-            var two = new ValueInt(2);
-            var three = new ValueInt(3);
-            var expected = new List<BaseChain>
+            var expected = new List<int[]>
             {
-                new BaseChain(new List<IBaseObject> { one, two, three, one }),
-                new BaseChain(new List<IBaseObject> { one, one, three, two }),
-                new BaseChain(new List<IBaseObject> { one, two, three, two }),
-                new BaseChain(new List<IBaseObject> { one, two, one, three }),
-                new BaseChain(new List<IBaseObject> { one, one, two, three }),
-                new BaseChain(new List<IBaseObject> { one, two, two, three }),
-                new BaseChain(new List<IBaseObject> { one, two, three, three }),
+                new[] { 1, 1, 2, 3 },
+                new[] { 1, 2, 1, 3 },
+                new[] { 1, 2, 2, 3 },
+                new[] { 1, 2, 3, 1 },
+                new[] { 1, 2, 3, 2 },
+                new[] { 1, 2, 3, 3 }
             };
+
             var orderGenerator = new OrderGenerator();
-            var actual = orderGenerator.StrictGenerateOrders(4, 3);
+            List<int[]> actual = orderGenerator.StrictGenerateOrders(4, 3);
             Assert.AreEqual(expected, actual);
         }
     }
