@@ -6,7 +6,10 @@
     public class OrderIterator : IEnumerable
     {
         private readonly int[] order;
+
         private readonly int alphabetCardinality;
+
+        private bool hasNext = true;
 
         public OrderIterator(int length, int alphabetCardinality)
         {
@@ -44,6 +47,10 @@
                 if (order[i] > maximums[i])
                 {
                     order[i] = 1;
+                    if (i == 1)
+                    {
+                        hasNext = false;
+                    }
                 }
                 else
                 {
@@ -59,7 +66,7 @@
                 yield return (int[])order.Clone();
                 IterateOrderCounter();
             }
-            while (false && order[order.Length - 1] < order.Length);
+            while (hasNext);
         }
     }
 }

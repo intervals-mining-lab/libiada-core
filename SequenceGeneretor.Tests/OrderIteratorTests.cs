@@ -8,8 +8,8 @@
     public class OrderIteratorTests
     {
         [TestCase(new[] { 1, 1, 1 }, 0)]
-        [TestCase(new[] { 1, 2, 1 }, 1)]
-        [TestCase(new[] { 1, 1, 2 }, 2)]
+        [TestCase(new[] { 1, 1, 2 }, 1)]
+        [TestCase(new[] { 1, 2, 1 }, 2)]
         [TestCase(new[] { 1, 2, 2 }, 3)]
         public void IteratorTest(int[] expected, int iterations)
         {
