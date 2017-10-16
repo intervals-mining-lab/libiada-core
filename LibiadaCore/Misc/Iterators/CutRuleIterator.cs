@@ -47,7 +47,7 @@
         public bool Next()
         {
             i++;
-            return (starts.Count() > i) && (ends.Count() > i);
+            return (starts.Count > i) && (ends.Count > i);
         }
 
         /// <summary>

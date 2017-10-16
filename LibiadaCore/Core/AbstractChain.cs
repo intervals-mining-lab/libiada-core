@@ -2,6 +2,8 @@
 {
     using System.Text;
 
+    using LibiadaCore.Core.SimpleTypes;
+
     /// <summary>
     /// The abstract chain.
     /// </summary>

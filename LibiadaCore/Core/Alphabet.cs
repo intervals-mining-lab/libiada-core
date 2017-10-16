@@ -18,10 +18,7 @@ namespace LibiadaCore.Core
         /// <summary>
         /// Gets count of elements in alphabet.
         /// </summary>
-        public int Cardinality
-        {
-            get { return Elements.Count; }
-        }
+        public int Cardinality => Elements.Count;
 
         /// <summary>
         /// Indexer. Allows to get or set element by index.

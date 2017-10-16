@@ -87,8 +87,7 @@ namespace LibiadaCore.Misc.Iterators
                 throw new InvalidOperationException("Iterator position is out of range.");
             }
 
-            var result = new BaseChain();
-            result.ClearAndSetNewLength(Length);
+            var result = new BaseChain(Length);
 
             for (int i = 0; i < Length; i++)
             {

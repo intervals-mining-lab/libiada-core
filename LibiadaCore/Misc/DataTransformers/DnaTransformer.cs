@@ -1,9 +1,12 @@
 ﻿namespace LibiadaCore.Misc.DataTransformers
 {
     using System;
+    using System.Collections.Generic;
 
     using Core;
     using Core.SimpleTypes;
+
+    using LibiadaCore.Misc.Iterators;
 
     /// <summary>
     /// Static class for transformation of DNA sequences
@@ -25,8 +28,83 @@
         {
             // TODO: add translationTable param
             DnaProcessor.CheckDnaAlphabet(inputChain.Alphabet);
+            var aminoMap = new Dictionary<string, ValueString>
+            {
+                { "TTT", "F" },
+                { "TTC", "F" },
+                { "TTA", "L" },
+                { "TTG", "L" },
+                { "TCT", "S" },
+                { "TCC", "S" },
+                { "TCA", "S" },
+                { "TCG", "S" },
+                { "TAT", "Y" },
+                { "TAC", "Y" },
+                { "TAA", "X" },
+                { "TAG", "X" },
+                { "TGT", "C" },
+                { "TGC", "C" },
+                { "TGA", "X" },
+                { "TGG", "W" },
+                { "CTT", "L" },
+                { "CTC", "L" },
+                { "CTA", "L" },
+                { "CTG", "L" },
+                { "CCT", "P" },
+                { "CCC", "P" },
+                { "CCA", "P" },
+                { "CCG", "P" },
+                { "CAT", "H" },
+                { "CAC", "H" },
+                { "CAA", "Q" },
+                { "CAG", "Q" },
+                { "CGT", "R" },
+                { "CGC", "R" },
+                { "CGA", "R" },
+                { "CGG", "R" },
+                { "ATT", "I" },
+                { "ATC", "I" },
+                { "ATA", "I" },
+                { "ATG", "M" },
+                { "ACT", "T" },
+                { "ACC", "T" },
+                { "ACA", "T" },
+                { "ACG", "T" },
+                { "AAT", "N" },
+                { "AAC", "N" },
+                { "AAA", "K" },
+                { "AAG", "K" },
+                { "AGT", "S" },
+                { "AGC", "S" },
+                { "AGA", "R" },
+                { "AGG", "R" },
+                { "GTT", "V" },
+                { "GTC", "V" },
+                { "GTA", "V" },
+                { "GTG", "V" },
+                { "GCT", "A" },
+                { "GCC", "A" },
+                { "GCA", "A" },
+                { "GCG", "A" },
+                { "GAT", "D" },
+                { "GAC", "D" },
+                { "GAA", "E" },
+                { "GAG", "E" },
+                { "GGT", "G" },
+                { "GGC", "G" },
+                { "GGA", "G" },
+                { "GGG", "G" }
+            };
 
-            throw new NotImplementedException("Old code was horrifying so it was removed");
+            var result = new BaseChain(inputChain.GetLength() / 3);
+            List<string> codons = DiffCutter.Cut(inputChain.ToString(),new SimpleCutRule(inputChain.GetLength(), 3, 3));
+
+            for (int i = 0; i < codons.Count; i++)
+            {
+                result.Set(aminoMap[codons[i]], i);
+            }
+
+            return result;
         }
 
         /// <summary>

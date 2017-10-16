@@ -1,5 +1,6 @@
 namespace LibiadaCore.Misc.Iterators
 {
+    using System;
 
     using LibiadaCore.Core;
 

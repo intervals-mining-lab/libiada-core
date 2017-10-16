@@ -19,7 +19,7 @@
         /// </param>
         public SimpleCutRule(int chainLength, int step, int windowLength)
         {
-            for (int i = 0; i + windowLength < chainLength; i += step)
+            for (int i = 0; i + windowLength <= chainLength; i += step)
             {
                 Starts.Add(i);
                 Ends.Add(windowLength + i);

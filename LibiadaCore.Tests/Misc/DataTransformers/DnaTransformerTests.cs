@@ -100,12 +100,7 @@
         [TestCase("GGG", "G")]
         public void EncodeAminoTest(string triplet, string amino)
         {
-            var input = new BaseChain(triplet.Length);
-            for (int i = 0; i < triplet.Length; i++)
-            {
-                input[i] = new ValueString(triplet[i]);
-            }
-
+            var input = new BaseChain(triplet);
             BaseChain result = DnaTransformer.EncodeAmino(input);
 
             for (int i = 0; i < result.GetLength(); i++)
