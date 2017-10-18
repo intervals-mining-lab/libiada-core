@@ -255,13 +255,12 @@
         public static BaseChain EncodeTriplets(BaseChain inputChain)
         {
             DnaProcessor.CheckDnaAlphabet(inputChain.Alphabet);
+            var resultChain = new BaseChain(inputChain.GetLength() / 3);
+            List<string> codons = DiffCutter.Cut(inputChain.ToString(), new SimpleCutRule(inputChain.GetLength(), 3, 3));
 
-            var resultLength = (int)Math.Floor((double)inputChain.GetLength() / 3);
-            var resultChain = new BaseChain(resultLength);
-
-            for (int i = 0; i < resultLength * 3; i += 3)
+            for (int i = 0; i < resultChain.GetLength(); i++)
             {
-                resultChain[i / 3] = new ValueString(inputChain[i].ToString() + inputChain[i + 1] + inputChain[i + 2]);
+                resultChain.Set((ValueString)codons[i], i);
             }
 
             return resultChain;
