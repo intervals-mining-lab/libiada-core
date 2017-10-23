@@ -5,6 +5,6 @@ namespace LibiadaCore.Images
 {
     public interface IImageOrderExtractor
     {
-        BaseChain ExtractOrder(Point[,] image);
+        BaseChain ExtractOrder(Color[,] image);
     }
 }

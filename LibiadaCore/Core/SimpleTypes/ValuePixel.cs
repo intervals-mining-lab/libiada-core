@@ -1,15 +1,12 @@
 ﻿using ImageSharp;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace LibiadaCore.Core.SimpleTypes
 {
     public class ValuePixel : IBaseObject
     {
-        private readonly Point value;
+        private readonly Color value;
 
-        public ValuePixel(Point value)
+        public ValuePixel(Color value)
         {
             this.value = value;
         }
