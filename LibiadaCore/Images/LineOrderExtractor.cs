@@ -9,7 +9,7 @@ namespace LibiadaCore.Images
         public BaseChain ExtractOrder(Color[,] image)
         {
             int[] order = new int[image.GetLength(0) * image.GetLength(1)];
-            Alphabet alphabet = new Alphabet();
+            Alphabet alphabet = new Alphabet { NullValue.Instance() };
             for (int i = 0; i < image.GetLength(0); i++)
             {
                 for (int j = 0; j < image.GetLength(1); j++)
@@ -18,9 +18,6 @@ namespace LibiadaCore.Images
                     if (pixelIndex == -1)
                     {
                         alphabet.Add(new ValuePixel(image[i, j]));
-                    }
-                    else
-                    {
                         pixelIndex = alphabet.IndexOf(new ValuePixel(image[i, j]));
                     }
 

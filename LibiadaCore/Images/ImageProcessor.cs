@@ -5,7 +5,7 @@ namespace LibiadaCore.Images
 {
     public class ImageProcessor
     {
-        public BaseChain ProcessImage(Image image, IImageTransformer[] imageTransformers, IMatrixTransformer[] matrixTransformers, IImageOrderExtractor orderExtractor)
+        public static BaseChain ProcessImage(Image image, IImageTransformer[] imageTransformers, IMatrixTransformer[] matrixTransformers, IImageOrderExtractor orderExtractor)
         {
             for (int i = 0; i < imageTransformers.Length; i++)
             {
