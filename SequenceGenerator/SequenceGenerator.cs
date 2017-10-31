@@ -25,6 +25,20 @@
             return result;
         }
 
+        public List<BaseChain> StrictGenerateSequences(int length, int alphabetCardinality)
+        {
+            var result = GenerateSequences(length, alphabetCardinality);
+            for (int i = result.Count - 1; i >= 0; i--)
+            {
+                if (result[i].Alphabet.Cardinality < alphabetCardinality)
+                {
+                    result.RemoveAt(i);
+                }
+            }
+
+            return result;
+        }
+
         public List<BaseChain> GenerateSequences(int length)
         {
             return GenerateSequences(length, length);
