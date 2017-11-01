@@ -1,11 +1,13 @@
-﻿using ImageSharp;
-using LibiadaCore.Core;
-using LibiadaCore.Core.SimpleTypes;
-using LibiadaCore.Images;
-using NUnit.Framework;
-
-namespace LibiadaCore.Tests.Images
+﻿namespace LibiadaCore.Tests.Images
 {
+    using ImageSharp;
+
+    using LibiadaCore.Core;
+    using LibiadaCore.Core.SimpleTypes;
+    using LibiadaCore.Images;
+
+    using NUnit.Framework;
+
     [TestFixture]
     public class ImageProcessorTests
     {
@@ -95,7 +97,7 @@ namespace LibiadaCore.Tests.Images
         }
 
         [Test]
-        public void FiveSimpleTest()
+        public void FourthSimpleTest()
         {
             Image image = new Image(4, 1);
             image.InitPixels(4, 1);

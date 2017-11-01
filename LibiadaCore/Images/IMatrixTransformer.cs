@@ -1,7 +1,7 @@
-﻿using ImageSharp;
-
-namespace LibiadaCore.Images
+﻿namespace LibiadaCore.Images
 {
+    using ImageSharp;
+
     public interface IMatrixTransformer
     {
         Color[,] Transform(Color[,] image);

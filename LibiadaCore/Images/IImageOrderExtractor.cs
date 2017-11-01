@@ -1,8 +1,9 @@
-﻿using LibiadaCore.Core;
-using ImageSharp;
-
-namespace LibiadaCore.Images
+﻿namespace LibiadaCore.Images
 {
+    using ImageSharp;
+
+    using LibiadaCore.Core;
+
     public interface IImageOrderExtractor
     {
         BaseChain ExtractOrder(Color[,] image);

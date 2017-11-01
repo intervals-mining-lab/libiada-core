@@ -1,9 +1,10 @@
-﻿using ImageSharp;
-using LibiadaCore.Core;
-using LibiadaCore.Core.SimpleTypes;
-
-namespace LibiadaCore.Images
+﻿namespace LibiadaCore.Images
 {
+    using ImageSharp;
+
+    using LibiadaCore.Core;
+    using LibiadaCore.Core.SimpleTypes;
+
     public class ZigzagOrderExtractor : IImageOrderExtractor
     {
         public BaseChain ExtractOrder(Color[,] image)

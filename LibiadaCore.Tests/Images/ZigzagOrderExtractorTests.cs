@@ -1,11 +1,13 @@
-﻿using ImageSharp;
-using LibiadaCore.Core;
-using LibiadaCore.Core.SimpleTypes;
-using LibiadaCore.Images;
-using NUnit.Framework;
-
-namespace LibiadaCore.Tests.Images
+﻿namespace LibiadaCore.Tests.Images
 {
+    using ImageSharp;
+
+    using LibiadaCore.Core;
+    using LibiadaCore.Core.SimpleTypes;
+    using LibiadaCore.Images;
+
+    using NUnit.Framework;
+
     [TestFixture]
     public class ZigzagOrderExtractorTests
     {
@@ -43,24 +45,24 @@ namespace LibiadaCore.Tests.Images
         {
             Image image = new Image(2, 2);
             image.InitPixels(2, 2);
-            image.Pixels[0] = Color.Gray;
+            image.Pixels[0] = Color.Black;
             image.Pixels[1] = Color.Blue;
             image.Pixels[2] = Color.Red;
-            image.Pixels[3] = Color.Brown;
+            image.Pixels[3] = Color.White;
 
 
             BaseChain actual = ImageProcessor.ProcessImage(image, new IImageTransformer[0], new IMatrixTransformer[0], new ZigzagOrderExtractor());
 
-            ValuePixel gray = new ValuePixel(Color.Gray);
+            ValuePixel black = new ValuePixel(Color.Black);
             ValuePixel blue = new ValuePixel(Color.Blue);
             ValuePixel red = new ValuePixel(Color.Red);
-            ValuePixel brown = new ValuePixel(Color.Brown);
+            ValuePixel white = new ValuePixel(Color.White);
 
             BaseChain expected = new BaseChain(4);
 
-            expected[0] = gray;
+            expected[0] = black;
             expected[1] = blue;
-            expected[2] = brown;
+            expected[2] = white;
             expected[3] = red;
 
             Assert.AreEqual(expected, actual);
@@ -71,53 +73,53 @@ namespace LibiadaCore.Tests.Images
         {
             Image image = new Image(1, 4);
             image.InitPixels(1, 4);
-            image.Pixels[0] = Color.Gray;
+            image.Pixels[0] = Color.Black;
             image.Pixels[1] = Color.Blue;
             image.Pixels[2] = Color.Red;
-            image.Pixels[3] = Color.Brown;
+            image.Pixels[3] = Color.White;
 
 
             BaseChain actual = ImageProcessor.ProcessImage(image, new IImageTransformer[0], new IMatrixTransformer[0], new ZigzagOrderExtractor());
 
-            ValuePixel gray = new ValuePixel(Color.Gray);
+            ValuePixel black = new ValuePixel(Color.Black);
             ValuePixel blue = new ValuePixel(Color.Blue);
             ValuePixel red = new ValuePixel(Color.Red);
-            ValuePixel brown = new ValuePixel(Color.Brown);
+            ValuePixel white = new ValuePixel(Color.White);
 
             BaseChain expected = new BaseChain(4);
 
-            expected[0] = gray;
+            expected[0] = black;
             expected[1] = blue;
-            expected[2] = brown;
-            expected[3] = red;
+            expected[2] = red;
+            expected[3] = white;
 
             Assert.AreEqual(expected, actual);
         }
 
         [Test]
-        public void FiveSimpleTest()
+        public void FourthSimpleTest()
         {
             Image image = new Image(4, 1);
             image.InitPixels(4, 1);
-            image.Pixels[0] = Color.Gray;
+            image.Pixels[0] = Color.Black;
             image.Pixels[1] = Color.Blue;
             image.Pixels[2] = Color.Red;
-            image.Pixels[3] = Color.Brown;
+            image.Pixels[3] = Color.White;
 
 
             BaseChain actual = ImageProcessor.ProcessImage(image, new IImageTransformer[0], new IMatrixTransformer[0], new ZigzagOrderExtractor());
 
-            ValuePixel gray = new ValuePixel(Color.Gray);
+            ValuePixel black = new ValuePixel(Color.Black);
             ValuePixel blue = new ValuePixel(Color.Blue);
             ValuePixel red = new ValuePixel(Color.Red);
-            ValuePixel brown = new ValuePixel(Color.Brown);
+            ValuePixel white = new ValuePixel(Color.White);
 
             BaseChain expected = new BaseChain(4);
 
-            expected[0] = gray;
+            expected[0] = black;
             expected[1] = blue;
-            expected[2] = brown;
-            expected[3] = red;
+            expected[2] = red;
+            expected[3] = white;
 
             Assert.AreEqual(expected, actual);
 
