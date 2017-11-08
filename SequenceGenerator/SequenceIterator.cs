@@ -16,6 +16,10 @@
             }
 
             sequence = new int[length];
+            for (int i = 0; i < sequence.Length; i++)
+            {
+                sequence[i] = 1;
+            }
             this.alphabetCardinality = alphabetCardinality;
         }
 
@@ -28,10 +32,10 @@
             do
             {
                 sequence[index]++;
-                if (sequence[index] >= alphabetCardinality)
+                if (sequence[index] > alphabetCardinality)
                 {
                     carry = true;
-                    sequence[index] = 0;
+                    sequence[index] = 1;
                     index++;
                 }
                 else

@@ -6,14 +6,14 @@ namespace SequenceGeneretor.Tests
     [TestFixture]
     public class SequenceIteratorTests
     {
-        [TestCase(new[] { 0, 0, 0 }, 0)]
-        [TestCase(new[] { 1, 0, 0 }, 1)]
-        [TestCase(new[] { 0, 1, 0 }, 2)]
-        [TestCase(new[] { 1, 1, 0 }, 3)]
-        [TestCase(new[] { 0, 0, 1 }, 4)]
-        [TestCase(new[] { 1, 0, 1 }, 5)]
-        [TestCase(new[] { 0, 1, 1 }, 6)]
-        [TestCase(new[] { 1, 1, 1 }, 7)]
+        [TestCase(new[] { 1, 1, 1 }, 0)]
+        [TestCase(new[] { 2, 1, 1 }, 1)]
+        [TestCase(new[] { 1, 2, 1 }, 2)]
+        [TestCase(new[] { 2, 2, 1 }, 3)]
+        [TestCase(new[] { 1, 1, 2 }, 4)]
+        [TestCase(new[] { 2, 1, 2 }, 5)]
+        [TestCase(new[] { 1, 2, 2 }, 6)]
+        [TestCase(new[] { 2, 2, 2 }, 7)]
         public void IteratorTest(int[] expected, int iterations)
         {
             var iterator = new SequenceIterator(3, 2);
@@ -31,14 +31,14 @@ namespace SequenceGeneretor.Tests
             var iterator = new SequenceIterator(3, 2);
             var expected = new[]
                 {
-                    new[]{0, 0, 0},
-                    new[]{1, 0, 0},
-                    new[]{0, 1, 0},
-                    new[]{1, 1, 0},
-                    new[]{0, 0, 1},
-                    new[]{1, 0, 1},
-                    new[]{0, 1, 1},
-                    new[]{1, 1, 1}
+                    new[]{1, 1, 1},
+                    new[]{2, 1, 1},
+                    new[]{1, 2, 1},
+                    new[]{2, 2, 1},
+                    new[]{1, 1, 2},
+                    new[]{2, 1, 2},
+                    new[]{1, 2, 2},
+                    new[]{2, 2, 2}
                     
                 };
             int i = 0;
