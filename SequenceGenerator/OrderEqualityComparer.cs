@@ -4,19 +4,20 @@ namespace SequenceGenerator
 {
     public class OrderEqualityComparer : IEqualityComparer<int[]>
     {
-        public bool Equals(int[] x, int[] y)
+        public bool Equals(int[] first, int[] second)
         {
-            if (x.Length != y.Length)
+            if (first.Length != second.Length)
             {
                 return false;
             }
-            for (int i = 0; i < x.Length; i++)
+            for (int i = 0; i < first.Length; i++)
             {
-                if (x[i] != y[i])
+                if (first[i] != second[i])
                 {
                     return false;
                 }
             }
+
             return true;
         }
 
@@ -25,10 +26,7 @@ namespace SequenceGenerator
             int result = 17;
             for (int i = 0; i < obj.Length; i++)
             {
-                unchecked
-                {
-                    result = result * 23 + obj[i];
-                }
+                result = unchecked(result * 23 + obj[i]);
             }
             return result;
         }
