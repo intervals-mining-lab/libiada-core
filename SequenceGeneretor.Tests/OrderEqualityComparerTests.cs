@@ -1,13 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using NUnit.Framework;
-using SequenceGenerator;
-
-namespace SequenceGeneretor.Tests
+﻿namespace SequenceGeneretor.Tests
 {
+    using NUnit.Framework;
+
+    using SequenceGenerator;
+
     [TestFixture]
-    class OrderEqualityComparerTests
+    public class OrderEqualityComparerTests
     {
         [TestCase(new[] { 1, 1, 1 }, new[] { 1, 1, 1 }, true)]
         [TestCase(new[] { 2, 1, 1 }, new[] { 1, 1, 1 }, false)]
