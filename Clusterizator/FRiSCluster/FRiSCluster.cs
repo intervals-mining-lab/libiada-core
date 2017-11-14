@@ -53,12 +53,14 @@
                 compacts[i] = new double[data.Length];
             }
 
-            CalculateCompactnessForAllPoints(pillarIndexes, compacts);
-            pillarIndexes.Add(Array.IndexOf(compacts[1], compacts[1].Max()));
+            int maxCompactnessIndex = CalculateCompactnessForPotentialPillars(pillarIndexes);
+            pillarIndexes.Add(maxCompactnessIndex);
             int[] clustersBelonging = DetermineClusters(pillarIndexes);
 
-            pillarIndexes[0] = ReselectPillar(pillarIndexes[0], pillarIndexes, clustersBelonging);
-            pillarIndexes[1] = ReselectPillar(pillarIndexes[1], pillarIndexes, clustersBelonging);
+            for (int i = 0; i < pillarIndexes.Count; i++)
+            {
+                pillarIndexes[i] = ReselectPillar(pillarIndexes[i], pillarIndexes, clustersBelonging);
+            }
 
             throw new NotImplementedException();
         }
@@ -73,32 +75,27 @@
 
                 for (int j = 0; j < clusterPointsIndexes.Length; j++)
                 {
-                    var nearestPillarDistance = new List<double>();
-                    for (int k = 0; k < pillarIndexes.Count; k++)
-                    {
-                        if (pillarIndexes[k] != pillarIndex)
-                        {
-                            nearestPillarDistance.Add(distances[j, pillarIndexes[k]]);
-                        }
-                    }
-
-                    clusterCompactness[i] += CalculateSimilarityFunction(distances[i, j], nearestPillarDistance.Min());
+                    clusterCompactness[i] += CalculateSimilarityFunction(distances[i, j], DistanceToNearestCompetitivePillar(pillarIndexes, j, pillarIndex));
                 }
             }
             int clusterPillarIndex = Array.IndexOf(clusterCompactness, clusterCompactness.Max());
             return clusterPointsIndexes[clusterPillarIndex];
         }
 
-        private void CalculateCompactnessForAllPoints(List<int> pillarIndexes, double[][] compacts)
+        private int CalculateCompactnessForPotentialPillars(List<int> pillarIndexes)
         {
+            double[] compacts = new double[data.Length];
             for (int i = 0; i < data.Length; i++)
             {
-                if (i != pillarIndexes[0])
+                if (!pillarIndexes.Contains(i))
                 {
-                    int[] clustersBelonging = DetermineClusters(pillarIndexes);
-                    compacts[1][i] = CalculateCompactness(clustersBelonging, i, pillarIndexes[0]);
+                    var tempPillarIndexes = new List<int>(pillarIndexes) { i };
+                    int[] clustersBelonging = DetermineClusters(tempPillarIndexes);
+                    compacts[i] = CalculateCompactness(clustersBelonging, i, tempPillarIndexes);
                 }
             }
+
+            return Array.IndexOf(compacts, compacts.Max());
         }
 
         private void CalculateDistances()
@@ -139,17 +136,31 @@
             return clustersBelonging;
         }
 
-        private double CalculateCompactness(int[] clustersBelonging, int pillarIndex, int competitorPillarIndex)
+        private double CalculateCompactness(int[] clustersBelonging, int pillarIndex, List<int> pillarIndexes)
         {
             double compactness = 0;
             for (int j = 0; j < distances.Length; j++)
             {
                 if (clustersBelonging[j] == pillarIndex)
                 {
-                    compactness += CalculateSimilarityFunction(distances[pillarIndex, j], distances[competitorPillarIndex, j]);
+                    compactness += CalculateSimilarityFunction(distances[pillarIndex, j], DistanceToNearestCompetitivePillar(pillarIndexes, j, pillarIndex));
                 }
             }
             return compactness;
+        }
+
+        private double DistanceToNearestCompetitivePillar(List<int> pillarIndexes, int pointIndex, int pillarIndex)
+        {
+            var nearestPillarDistance = new List<double>();
+            for (int k = 0; k < pillarIndexes.Count; k++)
+            {
+                if (pillarIndexes[k] != pillarIndex)
+                {
+                    nearestPillarDistance.Add(distances[pointIndex, pillarIndexes[k]]);
+                }
+            }
+
+            return nearestPillarDistance.Min();
         }
     }
 }
