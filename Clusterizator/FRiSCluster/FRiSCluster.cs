@@ -1,6 +1,5 @@
 ﻿namespace Clusterizator.FRiSCluster
 {
-    using LibiadaCore.Extensions;
     using System;
     using System.Collections.Generic;
     using System.Linq;
@@ -30,7 +29,6 @@
             double rStar = 1;
             CalculateDistances();//distances[i][j] - дистанция от i-го объекта до j-го
 
-            //var similarityFunction = new double[data.Length, data.Length];
             var averageSimilarityFunction = new double[data.Length];// значения средней формулы сходимости объектов множества в конкуренции с виртуальным множеством B
 
             for (int i = 0; i < data.Length; i++)
@@ -47,19 +45,16 @@
             double maxSimilarity = averageSimilarityFunction.Max();//максимум средней сходимости элементов в конкуренции с B
             pillarIndexes.Add(Array.IndexOf(averageSimilarityFunction, maxSimilarity));
 
-            var compacts = new double[data.Length][];//суммы мер сходств аналогичная компактности
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 1; i < maximumClusters; i++)
             {
-                compacts[i] = new double[data.Length];
-            }
+                int maxCompactnessIndex = CalculateCompactnessForPotentialPillars(pillarIndexes);
+                pillarIndexes.Add(maxCompactnessIndex);
+                int[] clustersBelonging = DetermineClusters(pillarIndexes);
 
-            int maxCompactnessIndex = CalculateCompactnessForPotentialPillars(pillarIndexes);
-            pillarIndexes.Add(maxCompactnessIndex);
-            int[] clustersBelonging = DetermineClusters(pillarIndexes);
-
-            for (int i = 0; i < pillarIndexes.Count; i++)
-            {
-                pillarIndexes[i] = ReselectPillar(pillarIndexes[i], pillarIndexes, clustersBelonging);
+                for (int j = 0; j < pillarIndexes.Count; j++)
+                {
+                    pillarIndexes[j] = ReselectPillar(pillarIndexes[j], pillarIndexes, clustersBelonging);
+                }
             }
 
             throw new NotImplementedException();
@@ -84,18 +79,18 @@
 
         private int CalculateCompactnessForPotentialPillars(List<int> pillarIndexes)
         {
-            double[] compacts = new double[data.Length];
+            var compactness = new double[data.Length];
             for (int i = 0; i < data.Length; i++)
             {
                 if (!pillarIndexes.Contains(i))
                 {
                     var tempPillarIndexes = new List<int>(pillarIndexes) { i };
                     int[] clustersBelonging = DetermineClusters(tempPillarIndexes);
-                    compacts[i] = CalculateCompactness(clustersBelonging, i, tempPillarIndexes);
+                    compactness[i] = CalculateCompactness(clustersBelonging, i, tempPillarIndexes);
                 }
             }
 
-            return Array.IndexOf(compacts, compacts.Max());
+            return Array.IndexOf(compactness, compactness.Max());
         }
 
         private void CalculateDistances()
