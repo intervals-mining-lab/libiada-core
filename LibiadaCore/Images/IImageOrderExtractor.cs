@@ -1,11 +1,10 @@
 ﻿namespace LibiadaCore.Images
 {
-    using ImageSharp;
-
     using LibiadaCore.Core;
+    using SixLabors.ImageSharp;
 
     public interface IImageOrderExtractor
     {
-        BaseChain ExtractOrder(Color[,] image);
+        BaseChain ExtractOrder(Rgba32[,] image);
     }
 }

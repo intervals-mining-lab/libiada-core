@@ -1,13 +1,13 @@
 ﻿namespace LibiadaCore.Images
 {
-    using ImageSharp;
 
     using LibiadaCore.Core;
     using LibiadaCore.Core.SimpleTypes;
+    using SixLabors.ImageSharp;
 
     public class ZigzagOrderExtractor : IImageOrderExtractor
     {
-        public BaseChain ExtractOrder(Color[,] image)
+        public BaseChain ExtractOrder(Rgba32[,] image)
         {
             int[] order = new int[image.GetLength(0) * image.GetLength(1)];
             Alphabet alphabet = new Alphabet { NullValue.Instance() };

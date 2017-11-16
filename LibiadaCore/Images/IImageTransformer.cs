@@ -1,9 +1,9 @@
 ﻿namespace LibiadaCore.Images
 {
-    using ImageSharp;
+    using SixLabors.ImageSharp;
 
     public interface IImageTransformer
     {
-        Image Transform(Image image);
+        Image<Rgba32> Transform(Image<Rgba32> image);
     }
 }

@@ -1,39 +1,38 @@
 ﻿namespace LibiadaCore.Tests.Images
 {
-    using ImageSharp;
 
     using LibiadaCore.Core;
     using LibiadaCore.Core.SimpleTypes;
     using LibiadaCore.Images;
 
     using NUnit.Framework;
+    using SixLabors.ImageSharp;
 
     [TestFixture]
     public class ZigzagOrderExtractorTests
     {
         [Test]
-        public void SimpleTest()
+        public void ZigzagSimpleTest()
         {
-            Image image = new Image(2, 3);
-            image.InitPixels(2, 3);
-            image.Pixels[0] = Color.Black;
-            image.Pixels[1] = Color.White;
-            image.Pixels[2] = Color.Black;
-            image.Pixels[3] = Color.White;
-            image.Pixels[4] = Color.Black;
-            image.Pixels[5] = Color.White;
+            Image<Rgba32> image = new Image<Rgba32>(2, 3);
+            image[0, 0] = Rgba32.Black;
+            image[0, 1] = Rgba32.White;
+            image[0, 2] = Rgba32.Black;
+            image[1, 0] = Rgba32.White;
+            image[1, 1] = Rgba32.Black;
+            image[1, 2] = Rgba32.White;
 
             BaseChain actual = ImageProcessor.ProcessImage(image, new IImageTransformer[0], new IMatrixTransformer[0], new ZigzagOrderExtractor());
 
-            ValuePixel black = new ValuePixel(Color.Black);
-            ValuePixel white = new ValuePixel(Color.White);
+            ValuePixel black = new ValuePixel(Rgba32.Black);
+            ValuePixel white = new ValuePixel(Rgba32.White);
 
             BaseChain expected = new BaseChain(6);
 
             expected[0] = black;
             expected[1] = white;
-            expected[2] = white;
-            expected[3] = black;
+            expected[2] = black;
+            expected[3] = white;
             expected[4] = black;
             expected[5] = white;
 
@@ -41,22 +40,21 @@
         }
 
         [Test]
-        public void SecondSimpleTest()
+        public void ZigzagSecondSimpleTest()
         {
-            Image image = new Image(2, 2);
-            image.InitPixels(2, 2);
-            image.Pixels[0] = Color.Black;
-            image.Pixels[1] = Color.Blue;
-            image.Pixels[2] = Color.Red;
-            image.Pixels[3] = Color.White;
+            Image<Rgba32> image = new Image<Rgba32>(2, 2);
+            image[0, 0] = Rgba32.Black;
+            image[0, 1] = Rgba32.Blue;
+            image[1, 0] = Rgba32.Red;
+            image[1, 1] = Rgba32.White;
 
 
             BaseChain actual = ImageProcessor.ProcessImage(image, new IImageTransformer[0], new IMatrixTransformer[0], new ZigzagOrderExtractor());
 
-            ValuePixel black = new ValuePixel(Color.Black);
-            ValuePixel blue = new ValuePixel(Color.Blue);
-            ValuePixel red = new ValuePixel(Color.Red);
-            ValuePixel white = new ValuePixel(Color.White);
+            ValuePixel black = new ValuePixel(Rgba32.Black);
+            ValuePixel blue = new ValuePixel(Rgba32.Blue);
+            ValuePixel red = new ValuePixel(Rgba32.Red);
+            ValuePixel white = new ValuePixel(Rgba32.White);
 
             BaseChain expected = new BaseChain(4);
 
@@ -69,22 +67,21 @@
         }
 
         [Test]
-        public void ThirdSimpleTest()
+        public void ZigzagThirdSimpleTest()
         {
-            Image image = new Image(1, 4);
-            image.InitPixels(1, 4);
-            image.Pixels[0] = Color.Black;
-            image.Pixels[1] = Color.Blue;
-            image.Pixels[2] = Color.Red;
-            image.Pixels[3] = Color.White;
+            Image<Rgba32> image = new Image<Rgba32>(1, 4);
+            image[0, 0] = Rgba32.Black;
+            image[0, 1] = Rgba32.Blue;
+            image[0, 2] = Rgba32.Red;
+            image[0, 3] = Rgba32.White;
 
 
             BaseChain actual = ImageProcessor.ProcessImage(image, new IImageTransformer[0], new IMatrixTransformer[0], new ZigzagOrderExtractor());
 
-            ValuePixel black = new ValuePixel(Color.Black);
-            ValuePixel blue = new ValuePixel(Color.Blue);
-            ValuePixel red = new ValuePixel(Color.Red);
-            ValuePixel white = new ValuePixel(Color.White);
+            ValuePixel black = new ValuePixel(Rgba32.Black);
+            ValuePixel blue = new ValuePixel(Rgba32.Blue);
+            ValuePixel red = new ValuePixel(Rgba32.Red);
+            ValuePixel white = new ValuePixel(Rgba32.White);
 
             BaseChain expected = new BaseChain(4);
 
@@ -97,22 +94,22 @@
         }
 
         [Test]
-        public void FourthSimpleTest()
+        public void ZigzagFourthSimpleTest()
         {
-            Image image = new Image(4, 1);
-            image.InitPixels(4, 1);
-            image.Pixels[0] = Color.Black;
-            image.Pixels[1] = Color.Blue;
-            image.Pixels[2] = Color.Red;
-            image.Pixels[3] = Color.White;
+            Image<Rgba32> image = new Image<Rgba32>(4, 1);
+            image[0, 0] = Rgba32.Black;
+            image[1, 0] = Rgba32.Blue;
+            image[2, 0] = Rgba32.Red;
+            image[3, 0] = Rgba32.White;
+
 
 
             BaseChain actual = ImageProcessor.ProcessImage(image, new IImageTransformer[0], new IMatrixTransformer[0], new ZigzagOrderExtractor());
 
-            ValuePixel black = new ValuePixel(Color.Black);
-            ValuePixel blue = new ValuePixel(Color.Blue);
-            ValuePixel red = new ValuePixel(Color.Red);
-            ValuePixel white = new ValuePixel(Color.White);
+            ValuePixel black = new ValuePixel(Rgba32.Black);
+            ValuePixel blue = new ValuePixel(Rgba32.Blue);
+            ValuePixel red = new ValuePixel(Rgba32.Red);
+            ValuePixel white = new ValuePixel(Rgba32.White);
 
             BaseChain expected = new BaseChain(4);
 

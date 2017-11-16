@@ -1,12 +1,12 @@
-﻿using ImageSharp;
+﻿using SixLabors.ImageSharp;
 
 namespace LibiadaCore.Core.SimpleTypes
 {
     public class ValuePixel : IBaseObject
     {
-        private readonly Color value;
+        private readonly Rgba32 value;
 
-        public ValuePixel(Color value)
+        public ValuePixel(Rgba32 value)
         {
             this.value = value;
         }

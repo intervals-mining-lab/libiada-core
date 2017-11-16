@@ -1,9 +1,9 @@
-﻿namespace LibiadaCore.Images
-{
-    using ImageSharp;
+﻿using SixLabors.ImageSharp;
 
+namespace LibiadaCore.Images
+{
     public interface IMatrixTransformer
     {
-        Color[,] Transform(Color[,] image);
+        Rgba32[,] Transform(Rgba32[,] image);
     }
 }
