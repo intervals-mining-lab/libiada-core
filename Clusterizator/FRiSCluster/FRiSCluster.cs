@@ -87,6 +87,11 @@
                     var tempPillarIndexes = new List<int>(pillarIndexes) { i };
                     int[] clustersBelonging = DetermineClusters(tempPillarIndexes);
                     compactness[i] = CalculateCompactness(clustersBelonging, i, tempPillarIndexes);
+                    for (int j = 0; j < pillarIndexes.Count; j++)
+                    {
+                        compactness[i] = CalculateCompactness(clustersBelonging, pillarIndexes[j], tempPillarIndexes);
+                    }
+                    compactness[i] /= data.Length;
                 }
             }
 
