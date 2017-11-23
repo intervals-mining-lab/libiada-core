@@ -27,6 +27,7 @@
         {
             this.data = data;
             double rStar = 1;
+            double[] compactness = new double[maximumClusters];
             CalculateDistances();//distances[i][j] - дистанция от i-го объекта до j-го
 
             var averageSimilarityFunction = new double[data.Length];// значения средней формулы сходимости объектов множества в конкуренции с виртуальным множеством B
@@ -53,14 +54,14 @@
 
                 for (int j = 0; j < pillarIndexes.Count; j++)
                 {
-                    pillarIndexes[j] = ReselectPillar(pillarIndexes[j], pillarIndexes, clustersBelonging);
+                    (pillarIndexes[j], compactness[i]) = ReselectPillar(pillarIndexes[j], pillarIndexes, clustersBelonging);
                 }
             }
 
             throw new NotImplementedException();
         }
 
-        private int ReselectPillar(int pillarIndex, List<int> pillarIndexes, int[] clustersBelonging)
+        private (int, double) ReselectPillar(int pillarIndex, List<int> pillarIndexes, int[] clustersBelonging)
         {
             int[] clusterPointsIndexes = data.Select((d, i) => i).Where(i => clustersBelonging[i] == pillarIndex).ToArray();
             var clusterCompactness = new double[clusterPointsIndexes.Length];
@@ -72,9 +73,18 @@
                 {
                     clusterCompactness[i] += CalculateSimilarityFunction(distances[i, j], DistanceToNearestCompetitivePillar(pillarIndexes, j, pillarIndex));
                 }
+                for(int k = 0; k < pillarIndexes.Count; k++)
+                {
+                    if(pillarIndexes[k] != pillarIndex)
+                    {
+                        clusterCompactness[i] += CalculateCompactness(clustersBelonging, pillarIndexes[k], pillarIndexes);
+                    }
+                }
+                clusterCompactness[i] /= data.Length;
             }
-            int clusterPillarIndex = Array.IndexOf(clusterCompactness, clusterCompactness.Max());
-            return clusterPointsIndexes[clusterPillarIndex];
+            double maxCompactness = clusterCompactness.Max();
+            int clusterPillarIndex = Array.IndexOf(clusterCompactness, maxCompactness);
+            return (clusterPointsIndexes[clusterPillarIndex], maxCompactness);
         }
 
         private int CalculateCompactnessForPotentialPillars(List<int> pillarIndexes)
