@@ -4,7 +4,7 @@
     using System.Collections.Generic;
     using System.Linq;
 
-    class FRiSCluster : IClusterizator
+    public class FRiSCluster : IClusterizator
     {
         private readonly int minimumClusters;
         private readonly int maximumClusters;

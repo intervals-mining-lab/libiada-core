@@ -15,4 +15,8 @@
     <ProjectReference Include="..\LibiadaCore\LibiadaCore.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Clusterizator\" />
+  </ItemGroup>
+
 </Project>
