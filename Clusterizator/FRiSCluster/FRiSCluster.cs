@@ -49,8 +49,8 @@
 
             for (int i = 2; i <= maximumClusters; i++)
             {
-                int maxCompactnessIndex = CalculateCompactnessForPotentialPillars(pillarIndexes[i]);
                 pillarIndexes.Add(i, new List<int>(pillarIndexes[i - 1]));
+                int maxCompactnessIndex = CalculateCompactnessForPotentialPillars(pillarIndexes[i]);
                 pillarIndexes[i].Add(maxCompactnessIndex);
                 clustersBelonging[i] = DetermineClusters(pillarIndexes[i]);
 
@@ -133,8 +133,8 @@
 
         private int[] DetermineClusters(List<int> pillarIndexes)
         {
-            var clustersBelonging = new int[distances.Length];
-            for (int i = 0; i < distances.Length; i++)
+            var clustersBelonging = new int[data.Length];
+            for (int i = 0; i < data.Length; i++)
             {
                 var clusterNumber = 0;
                 for (int j = 1; j < pillarIndexes.Count; j++)
@@ -152,7 +152,7 @@
         private double CalculateCompactness(int[] clustersBelonging, int pillarIndex, List<int> pillarIndexes)
         {
             double compactness = 0;
-            for (int j = 0; j < distances.Length; j++)
+            for (int j = 0; j < data.Length; j++)
             {
                 if (clustersBelonging[j] == pillarIndex)
                 {
