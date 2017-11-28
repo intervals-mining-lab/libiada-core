@@ -70,7 +70,7 @@ namespace LibiadaCore.Core
 
             if (Elements.Contains(element))
             {
-                throw new ArgumentException("Element '" + element + "' is already in alphabet.", "element");
+                throw new ArgumentException($"Element '{element}' is already in alphabet.", "element");
             }
 
             Elements.Add(element.Clone());

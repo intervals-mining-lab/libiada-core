@@ -19,7 +19,7 @@ namespace LibiadaMusic.Tests.MusicXml
         [Test]
         public void XmlReaderFirstTest()
         {
-            var xr = new MusicXmlReader(SystemData.ProjectFolderPath + "LibiadaMusicExample7Liga.xml");
+            var xr = new MusicXmlReader($"{SystemData.ProjectFolderPath}LibiadaMusicExample7Liga.xml");
             Assert.IsNotNull(xr.MusicXmlDocument);
             Assert.AreEqual("LibiadaMusicExample7Liga", xr.FileName);
         }
@@ -31,15 +31,22 @@ namespace LibiadaMusic.Tests.MusicXml
         public void XmlReaderSecondTest()
         {
             var xr = new MusicXmlReader();
-            XmlDocument xmlDocument;
-
-            var exception = Assert.Throws<Exception>(() => xmlDocument = xr.MusicXmlDocument);
-            Assert.AreEqual("LibiadaMusic.XMLReader:you are trying to get empty XmlDocument!", exception.Message);
-
-            xr.LoadMusicXmlDocument(SystemData.ProjectFolderPath + "LibiadaMusicExample7Liga.xml");
-            xmlDocument = xr.MusicXmlDocument;
+            xr.LoadMusicXmlDocument($"{SystemData.ProjectFolderPath}LibiadaMusicExample7Liga.xml");
+            XmlDocument xmlDocument = xr.MusicXmlDocument;
             Assert.IsNotNull(xmlDocument);
             Assert.AreEqual("LibiadaMusicExample7Liga", xr.FileName);
+        }
+
+        /// <summary>
+        /// The xml reader empty document test.
+        /// </summary>
+        [Test]
+        public void XmlReaderEmptyDocumentTest()
+        {
+            var xr = new MusicXmlReader();
+            XmlDocument xmlDocument;
+            var exception = Assert.Throws<Exception>(() => xmlDocument = xr.MusicXmlDocument);
+            Assert.AreEqual("LibiadaMusic.XMLReader:you are trying to get empty XmlDocument!", exception.Message);
         }
     }
 }

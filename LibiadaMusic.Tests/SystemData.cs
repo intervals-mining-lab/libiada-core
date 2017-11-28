@@ -10,6 +10,6 @@
         /// <summary>
         /// The bin folder path.
         /// </summary>
-        public static readonly string ProjectFolderPath = TestContext.CurrentContext.TestDirectory + "/../../../";
+        public static readonly string ProjectFolderPath = $"{TestContext.CurrentContext.TestDirectory}/../../../";
     }
 }

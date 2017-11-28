@@ -269,7 +269,7 @@ namespace LibiadaCore.Core
         {
             if (index >= length || index < 0)
             {
-                throw new ArgumentOutOfRangeException("Index of added element is out of bounds (index = " + index + ", chain length = " + length + ").");
+                throw new ArgumentOutOfRangeException($"Index of added element is out of bounds (index = {index}, sequence length = {length}).");
             }
 
             intervalsManager = null;
