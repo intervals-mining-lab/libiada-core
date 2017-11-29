@@ -24,7 +24,7 @@
         [Test]
         public void LinkCountTest()
         {
-            var actualCount = ArrayExtensions.ToArray<Link>().Length;
+            var actualCount = EnumExtensions.ToArray<Link>().Length;
             Assert.AreEqual(LinksCount, actualCount);
         }
 
@@ -34,7 +34,7 @@
         [Test]
         public void LinkValuesTest()
         {
-            var links = ArrayExtensions.ToArray<Link>();
+            var links = EnumExtensions.ToArray<Link>();
             for (int i = 0; i < LinksCount; i++)
             {
                 Assert.IsTrue(links.Contains((Link)i));
@@ -93,7 +93,7 @@
         [Test]
         public void LinkValuesUniqueTest()
         {
-            var links = ArrayExtensions.ToArray<Link>();
+            var links = EnumExtensions.ToArray<Link>();
             var linkValues = links.Cast<byte>();
             Assert.That(linkValues, Is.Unique);
         }

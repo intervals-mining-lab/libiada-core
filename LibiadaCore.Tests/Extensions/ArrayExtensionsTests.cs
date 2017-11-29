@@ -40,7 +40,7 @@
         [Test]
         public void ToArrayTest()
         {
-            var actual = ArrayExtensions.ToArray<TestEnum>();
+            var actual = EnumExtensions.ToArray<TestEnum>();
             var expected = new[] { TestEnum.First, TestEnum.Second, TestEnum.Third };
 
             Assert.AreEqual(expected, actual);
@@ -207,6 +207,20 @@
             source = new[] { 1, 2, 1, 3, 4, 10 };
             Assert.IsFalse(source.IsSorted());
             Assert.IsFalse(source.ToList().IsSorted());
+        }
+
+        /// <summary>
+        /// The sub-array extraction method test.
+        /// </summary>
+        [Test]
+        public void SubArrayTest()
+        {
+            var source = new[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+            Assert.AreEqual(new[] { 1 }, source.SubArray(0, 1));
+            Assert.AreEqual(new[] { 1, 2 }, source.SubArray(0, 2));
+            Assert.AreEqual(new[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 }, source.SubArray(0, 10));
+            Assert.AreEqual(new[] { 2 }, source.SubArray(1, 1));
+            Assert.AreEqual(new[] { 2, 3, 4, 5, 6, 7, 8, 9, 10 }, source.SubArray(1, 9));
         }
     }
 }

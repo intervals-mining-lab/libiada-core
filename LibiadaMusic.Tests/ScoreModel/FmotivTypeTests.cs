@@ -25,7 +25,7 @@
         [Test]
         public void FmotivTypeCountTest()
         {
-            var actualCount = ArrayExtensions.ToArray<FmotivType>().Length;
+            var actualCount = EnumExtensions.ToArray<FmotivType>().Length;
             Assert.AreEqual(FmotivTypesCount, actualCount);
         }
 
@@ -35,7 +35,7 @@
         [Test]
         public void FmotivTypeValuesTest()
         {
-            var fmotivTypes = ArrayExtensions.ToArray<FmotivType>();
+            var fmotivTypes = EnumExtensions.ToArray<FmotivType>();
             for (int i = 0; i < FmotivTypesCount; i++)
             {
                 Assert.IsTrue(fmotivTypes.Contains((FmotivType)i));
@@ -92,7 +92,7 @@
         [Test]
         public void FmotivTypeValuesUniqueTest()
         {
-            var fmotivTypes = ArrayExtensions.ToArray<FmotivType>();
+            var fmotivTypes = EnumExtensions.ToArray<FmotivType>();
             var fmotivTypeValues = fmotivTypes.Cast<byte>();
             Assert.That(fmotivTypeValues, Is.Unique);
         }

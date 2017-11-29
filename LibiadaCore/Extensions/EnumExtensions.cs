@@ -39,7 +39,7 @@
 
             if (descriptionAttributes == null)
             {
-                return string.Empty;
+                return String.Empty;
             }
 
             return (descriptionAttributes.Length > 0) ? descriptionAttributes[0].Name : value.ToString(CultureInfo.InvariantCulture);
@@ -127,6 +127,30 @@
             var memberInfo = type.GetMember(value.ToString(CultureInfo.InvariantCulture));
             var attributes = memberInfo[0].GetCustomAttributes(typeof(TAttribute), false);
             return (attributes.Length > 0) ? (TAttribute)attributes[0] : null;
+        }
+
+        /// <summary>
+        /// Converts given enum type values into array.
+        /// </summary>
+        /// <typeparam name="T">
+        /// Enum type.
+        /// </typeparam>
+        /// <returns>
+        /// The <see cref="T:T[]"/>.
+        /// </returns>
+        /// <exception cref="TypeArgumentException">
+        /// Thrown if type argument is not enum.
+        /// </exception>
+        public static T[] ToArray<T>() where T : struct, IComparable, IFormattable, IConvertible
+        {
+            Type type = typeof(T);
+
+            if (!type.IsEnum)
+            {
+                throw new TypeArgumentException("Type argument must be enum.");
+            }
+
+            return (T[])Enum.GetValues(type);
         }
     }
 }

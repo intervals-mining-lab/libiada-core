@@ -259,27 +259,27 @@
         }
 
         /// <summary>
-        /// Converts given enum type values into array.
+        /// Extracts sub-array from given array.
         /// </summary>
+        /// <param name="data">
+        /// The data.
+        /// </param>
+        /// <param name="index">
+        /// The index.
+        /// </param>
+        /// <param name="length">
+        /// The length.
+        /// </param>
         /// <typeparam name="T">
-        /// Enum type.
         /// </typeparam>
         /// <returns>
-        /// The <see cref="T:T[]"/>.
+        /// The <see cref="Array"/>.
         /// </returns>
-        /// <exception cref="TypeArgumentException">
-        /// Thrown if type argument is not enum.
-        /// </exception>
-        public static T[] ToArray<T>() where T : struct, IComparable, IFormattable, IConvertible
+        public static T[] SubArray<T>(this T[] data, int index, int length)
         {
-            Type type = typeof(T);
-
-            if (!type.IsEnum)
-            {
-                throw new TypeArgumentException("Type argument must be enum.");
-            }
-
-            return (T[])Enum.GetValues(type);
+            var result = new T[length];
+            Array.Copy(data, index, result, 0, length);
+            return result;
         }
     }
 }

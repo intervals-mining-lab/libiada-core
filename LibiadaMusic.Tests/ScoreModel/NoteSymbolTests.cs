@@ -25,7 +25,7 @@
         [Test]
         public void NoteSymbolCountTest()
         {
-            var actualCount = ArrayExtensions.ToArray<NoteSymbol>().Length;
+            var actualCount = EnumExtensions.ToArray<NoteSymbol>().Length;
             Assert.AreEqual(NoteSymbolsCount, actualCount);
         }
 
@@ -35,7 +35,7 @@
         [Test]
         public void NoteSymbolValuesTest()
         {
-            var noteSymbols = ArrayExtensions.ToArray<NoteSymbol>();
+            var noteSymbols = EnumExtensions.ToArray<NoteSymbol>();
             Assert.IsTrue(noteSymbols.Contains((NoteSymbol)0));
             Assert.IsTrue(noteSymbols.Contains((NoteSymbol)2));
             Assert.IsTrue(noteSymbols.Contains((NoteSymbol)4));
@@ -96,7 +96,7 @@
         [Test]
         public void NoteSymbolValuesUniqueTest()
         {
-            var noteSymbols = ArrayExtensions.ToArray<NoteSymbol>();
+            var noteSymbols = EnumExtensions.ToArray<NoteSymbol>();
             var noteSymbolValues = noteSymbols.Cast<byte>();
             Assert.That(noteSymbolValues, Is.Unique);
         }

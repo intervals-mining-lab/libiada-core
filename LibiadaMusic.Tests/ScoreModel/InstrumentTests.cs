@@ -25,7 +25,7 @@
         [Test]
         public void InstrumentCountTest()
         {
-            var actualCount = ArrayExtensions.ToArray<Instrument>().Length;
+            var actualCount = EnumExtensions.ToArray<Instrument>().Length;
             Assert.AreEqual(InstrumentsCount, actualCount);
         }
 
@@ -35,7 +35,7 @@
         [Test]
         public void InstrumentValuesTest()
         {
-            var instruments = ArrayExtensions.ToArray<Instrument>();
+            var instruments = EnumExtensions.ToArray<Instrument>();
             for (int i = 0; i < InstrumentsCount; i++)
             {
                 Assert.IsTrue(instruments.Contains((Instrument)i));
@@ -87,7 +87,7 @@
         [Test]
         public void InstrumentValuesUniqueTest()
         {
-            var instruments = ArrayExtensions.ToArray<Instrument>();
+            var instruments = EnumExtensions.ToArray<Instrument>();
             var instrumentValues = instruments.Cast<byte>();
             Assert.That(instrumentValues, Is.Unique);
         }

@@ -25,7 +25,7 @@
         [Test]
         public void AccidentalCountTest()
         {
-            var actualCount = ArrayExtensions.ToArray<Accidental>().Length;
+            var actualCount = EnumExtensions.ToArray<Accidental>().Length;
             Assert.AreEqual(AccidentalsCount, actualCount);
         }
 
@@ -35,7 +35,7 @@
         [Test]
         public void AccidentalValuesTest()
         {
-            var accidentals = ArrayExtensions.ToArray<Accidental>();
+            var accidentals = EnumExtensions.ToArray<Accidental>();
             for (int i = -2; i < AccidentalsCount - 2; i++)
             {
                 Assert.IsTrue(accidentals.Contains((Accidental)i));
@@ -91,7 +91,7 @@
         [Test]
         public void AccidentalValuesUniqueTest()
         {
-            var accidentals = ArrayExtensions.ToArray<Accidental>();
+            var accidentals = EnumExtensions.ToArray<Accidental>();
             var accidentalValues = accidentals.Cast<short>();
             Assert.That(accidentalValues, Is.Unique);
         }
