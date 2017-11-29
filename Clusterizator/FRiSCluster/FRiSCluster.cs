@@ -32,7 +32,7 @@
             //var pillarIndexes = new Dictionary<int,List<int>>();//столпы
             //var clustersBelonging = new Dictionary<int, int[]>();
             double optimalCompactness = double.MinValue;
-            List<int> optimalPillarIndexes;
+            List<int> optimalPillarIndexes = new List<int>();
             int[] optimalClustersBelonging = null;
             double currentCompactness = double.MinValue;
             List<int> currentPillarIndexes = new List<int>();
@@ -64,18 +64,24 @@
                 {
                     (currentPillarIndexes[j], currentCompactness) = ReselectPillar(currentPillarIndexes[j], currentPillarIndexes, currentClustersBelonging);
                 }
-                if(currentPillarIndexes.Count == minimumClusters)
+                currentClustersBelonging = DetermineClusters(currentPillarIndexes);
+                if (currentPillarIndexes.Count == minimumClusters)
                 {
                     optimalCompactness = currentCompactness;
                     optimalClustersBelonging = (int[])currentClustersBelonging.Clone();
                     optimalPillarIndexes = new List<int>(currentPillarIndexes);
                 }
-                if(currentPillarIndexes.Count > minimumClusters && currentCompactness > optimalCompactness)
+                if(currentPillarIndexes.Count > minimumClusters && currentCompactness > optimalCompactness && currentPillarIndexes.Count <= maximumClusters )
                 {
                     optimalCompactness = currentCompactness;
                     optimalClustersBelonging = (int[])currentClustersBelonging.Clone();
                     optimalPillarIndexes = new List<int>(currentPillarIndexes);
                 }
+            }
+            for(int i = 0; i < optimalClustersBelonging.Length; i++)
+            {
+                optimalClustersBelonging[i] = optimalPillarIndexes.IndexOf(optimalClustersBelonging[i]);
+                optimalClustersBelonging[i]++;
             }
             if (optimalClustersBelonging == null)
             {
