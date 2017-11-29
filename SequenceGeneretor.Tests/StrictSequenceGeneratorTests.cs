@@ -1,11 +1,14 @@
-﻿using System.Collections.Generic;
-using LibiadaCore.Core;
-using LibiadaCore.Core.SimpleTypes;
-using NUnit.Framework;
-using SequenceGenerator;
-
-namespace SequenceGeneretor.Tests
+﻿namespace SequenceGeneretor.Tests
 {
+    using System.Collections.Generic;
+
+    using LibiadaCore.Core;
+    using LibiadaCore.Core.SimpleTypes;
+
+    using NUnit.Framework;
+
+    using SequenceGenerator;
+
     [TestFixture]
     public class StrictSequenceGeneratorTests
     {

@@ -30,7 +30,7 @@
 
             if (!type.IsEnum)
             {
-                throw new TypeArgumentException("Type argument must be enum.");
+                throw new TypeArgumentException("Type argument must be enum.", type);
             }
 
             var fieldInfo = type.GetField(value.ToString(CultureInfo.InvariantCulture));
@@ -66,7 +66,7 @@
 
             if (!type.IsEnum)
             {
-                throw new TypeArgumentException("Type argument must be enum.");
+                throw new TypeArgumentException("Type argument must be enum.", type);
             }
 
             return Enum.GetName(type, value);
@@ -90,7 +90,7 @@
 
             if (!type.IsEnum)
             {
-                throw new TypeArgumentException("Type argument must be enum.");
+                throw new TypeArgumentException("Type argument must be enum.", type);
             }
 
             var memberInfo = type.GetMember(value.ToString(CultureInfo.InvariantCulture));
@@ -121,7 +121,7 @@
 
             if (!type.IsEnum)
             {
-                throw new TypeArgumentException("Type argument must be enum.");
+                throw new TypeArgumentException("Type argument must be enum.", type);
             }
 
             var memberInfo = type.GetMember(value.ToString(CultureInfo.InvariantCulture));
@@ -147,7 +147,7 @@
 
             if (!type.IsEnum)
             {
-                throw new TypeArgumentException("Type argument must be enum.");
+                throw new TypeArgumentException("Type argument must be enum.", type);
             }
 
             return (T[])Enum.GetValues(type);
