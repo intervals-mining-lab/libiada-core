@@ -1,5 +1,8 @@
 ﻿namespace LibiadaCore.Extensions
 {
+    using System;
+    using System.Linq;
+
     /// <summary>
     /// Class containing extension methods for string class.
     /// </summary>
@@ -51,6 +54,25 @@
             }
 
             return source;
+        }
+
+        /// <summary>
+        /// The is subset of.
+        /// </summary>
+        /// <param name="first">
+        /// The first.
+        /// </param>
+        /// <param name="second">
+        /// The second.
+        /// </param>
+        /// <returns>
+        /// The <see cref="bool"/>.
+        /// </returns>
+        public static bool IsSubsetOf(this string first, string second)
+        {
+            string[] words = first.Split(new[] { " " }, StringSplitOptions.RemoveEmptyEntries);
+
+            return words.All(second.Contains);
         }
     }
 }

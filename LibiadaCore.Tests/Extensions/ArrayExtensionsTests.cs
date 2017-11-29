@@ -14,39 +14,6 @@
     public class ArrayExtensionsTests
     {
         /// <summary>
-        /// The test enum.
-        /// </summary>
-        private enum TestEnum : byte
-        {
-            /// <summary>
-            /// The first.
-            /// </summary>
-            First = 1,
-
-            /// <summary>
-            /// The second.
-            /// </summary>
-            Second = 2,
-
-            /// <summary>
-            /// The third.
-            /// </summary>
-            Third = 3
-        }
-
-        /// <summary>
-        /// Tests ToArray method.
-        /// </summary>
-        [Test]
-        public void ToArrayTest()
-        {
-            var actual = EnumExtensions.ToArray<TestEnum>();
-            var expected = new[] { TestEnum.First, TestEnum.Second, TestEnum.Third };
-
-            Assert.AreEqual(expected, actual);
-        }
-
-        /// <summary>
         /// Delete element at position test.
         /// </summary>
         [Test]
@@ -54,7 +21,7 @@
         {
             var source = new[] { 1, 2, 2, 4, 4, 2, 7, 2, 3, 1 };
 
-            var result = source.DeleteAt(6);
+            int[] result = source.DeleteAt(6);
             var expected = new[] { 1, 2, 2, 4, 4, 2, 2, 3, 1 };
             Assert.AreEqual(expected, result);
 
@@ -75,7 +42,7 @@
         {
             var source = new[] { "test", "a", "a", "test", "test", "b", "1" };
 
-            var result = source.DeleteAt(6);
+            string[] result = source.DeleteAt(6);
             var expected = new[] { "test", "a", "a", "test", "test", "b" };
             Assert.AreEqual(expected, result);
 
@@ -150,7 +117,7 @@
         {
             var source = new[] { 1, 2, 3 };
 
-            var expected = "1" + Environment.NewLine + "2" + Environment.NewLine + "3";
+            string expected = "1" + Environment.NewLine + "2" + Environment.NewLine + "3";
             Assert.AreEqual(expected, source.ToStringWithDefaultDelimiter());
         }
 
