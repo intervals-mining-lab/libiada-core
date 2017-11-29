@@ -1,5 +1,6 @@
 ﻿namespace Clusterizator.FRiSCluster
 {
+    using Clusterizator.Exceptions;
     using System;
     using System.Collections.Generic;
     using System.Linq;
@@ -27,9 +28,15 @@
         {
             this.data = data;
             double rStar = 1;
-            var compactness = new Dictionary<int,double>();
-            var pillarIndexes = new Dictionary<int,List<int>>();//столпы
-            var clustersBelonging = new Dictionary<int, int[]>();
+            //var compactness = new Dictionary<int,double>();
+            //var pillarIndexes = new Dictionary<int,List<int>>();//столпы
+            //var clustersBelonging = new Dictionary<int, int[]>();
+            double optimalCompactness = double.MinValue;
+            List<int> optimalPillarIndexes;
+            int[] optimalClustersBelonging = null;
+            double currentCompactness = double.MinValue;
+            List<int> currentPillarIndexes = new List<int>();
+            int[] currentClustersBelonging = new int[data.Length];
             CalculateDistances();//distances[i][j] - дистанция от i-го объекта до j-го
 
             var averageSimilarityFunction = new double[data.Length];// значения средней формулы сходимости объектов множества в конкуренции с виртуальным множеством B
@@ -45,23 +52,36 @@
             }
 
             double maxSimilarity = averageSimilarityFunction.Max();//максимум средней сходимости элементов в конкуренции с B
-            pillarIndexes.Add(1, new List<int>() { Array.IndexOf(averageSimilarityFunction, maxSimilarity) });
+            currentPillarIndexes.Add(Array.IndexOf(averageSimilarityFunction, maxSimilarity));
 
-            for (int i = 2; i <= maximumClusters; i++)
+            while(currentPillarIndexes.Count < maximumClusters)
             {
-                pillarIndexes.Add(i, new List<int>(pillarIndexes[i - 1]));
-                int maxCompactnessIndex = CalculateCompactnessForPotentialPillars(pillarIndexes[i]);
-                pillarIndexes[i].Add(maxCompactnessIndex);
-                clustersBelonging[i] = DetermineClusters(pillarIndexes[i]);
+                int maxCompactnessIndex = CalculateCompactnessForPotentialPillars(currentPillarIndexes);
+                currentPillarIndexes.Add(maxCompactnessIndex);
+                currentClustersBelonging = DetermineClusters(currentPillarIndexes);
 
-                for (int j = 0; j < pillarIndexes.Count; j++)
+                for (int j = 0; j < currentPillarIndexes.Count; j++)
                 {
-                    (pillarIndexes[i][j], compactness[i]) = ReselectPillar(pillarIndexes[i][j], pillarIndexes[i], clustersBelonging[i]);
+                    (currentPillarIndexes[j], currentCompactness) = ReselectPillar(currentPillarIndexes[j], currentPillarIndexes, currentClustersBelonging);
+                }
+                if(currentPillarIndexes.Count == minimumClusters)
+                {
+                    optimalCompactness = currentCompactness;
+                    optimalClustersBelonging = (int[])currentClustersBelonging.Clone();
+                    optimalPillarIndexes = new List<int>(currentPillarIndexes);
+                }
+                if(currentPillarIndexes.Count > minimumClusters && currentCompactness > optimalCompactness)
+                {
+                    optimalCompactness = currentCompactness;
+                    optimalClustersBelonging = (int[])currentClustersBelonging.Clone();
+                    optimalPillarIndexes = new List<int>(currentPillarIndexes);
                 }
             }
-            var maxCompactness = compactness.Values.Max();
-            var optimalClusterization = compactness.Where((k, v) => v == maxCompactness).First().Key;
-            return clustersBelonging[optimalClusterization];
+            if (optimalClustersBelonging == null)
+            {
+                throw new ClusterizationFailureException("Failed to conduct clusterization");
+            }
+            return optimalClustersBelonging;
         }
 
         private (int, double) ReselectPillar(int pillarIndex, List<int> pillarIndexes, int[] clustersBelonging)
@@ -136,7 +156,7 @@
             var clustersBelonging = new int[data.Length];
             for (int i = 0; i < data.Length; i++)
             {
-                var clusterNumber = 0;
+                var clusterNumber = pillarIndexes[0];
                 for (int j = 1; j < pillarIndexes.Count; j++)
                 {
                     if (distances[pillarIndexes[j], i] < distances[clusterNumber, i])
