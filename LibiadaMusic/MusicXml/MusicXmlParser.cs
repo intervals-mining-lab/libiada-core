@@ -58,7 +58,9 @@
             for (int i = 0; i < congenericList.Count; i++)
             {
                 // TODO: вероятно нужна проверка на то есть ли такой атрибут - имя моно трека, если нет то задать счетчиком i
-                temp.Add(new CongenericScoreTrack(congenericList[i].Attributes["id"].Value, ParseMeasures(congenericList[i].Clone())));
+                var name = congenericList[i].Attributes["id"].Value;
+                var measures = ParseMeasures(congenericList[i].Clone());
+                temp.Add(new CongenericScoreTrack(name, measures));
             }
 
             return temp;
@@ -79,7 +81,9 @@
             var measures = new List<Measure>();
             for (int i = 0; i < measureList.Count; i++)
             {
-                measures.Add(new Measure(ParseNotes(measureList[i].Clone()), ParseAttributes(measureList[i].Clone())));
+                var notes = ParseNotes(measureList[i].Clone());
+                var attributes = ParseAttributes(measureList[i].Clone());
+                measures.Add(new Measure(notes, attributes));
             }
 
             return measures;
