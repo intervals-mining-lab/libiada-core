@@ -28,11 +28,8 @@
         {
             this.data = data;
             double rStar = 1;
-            //var compactness = new Dictionary<int,double>();
-            //var pillarIndexes = new Dictionary<int,List<int>>();//столпы
-            //var clustersBelonging = new Dictionary<int, int[]>();
             double optimalCompactness = double.MinValue;
-            List<int> optimalPillarIndexes = new List<int>();
+            List<int> optimalPillarIndexes = null;
             int[] optimalClustersBelonging = null;
             double currentCompactness = double.MinValue;
             List<int> currentPillarIndexes = new List<int>();
@@ -64,6 +61,7 @@
                 {
                     (currentPillarIndexes[j], currentCompactness) = ReselectPillar(currentPillarIndexes[j], currentPillarIndexes, currentClustersBelonging);
                 }
+
                 currentClustersBelonging = DetermineClusters(currentPillarIndexes);
                 if (currentPillarIndexes.Count == minimumClusters)
                 {
