@@ -3,6 +3,7 @@
     using System;
     using System.Collections.Generic;
     using System.Linq;
+    using System.Threading;
     using System.Xml;
 
     using LibiadaMusic.ScoreModel;
@@ -79,11 +80,36 @@
         {
             XmlNodeList measureList = congenericScoreNode.ChildNodes;
             var measures = new List<Measure>();
+            bool isOnRepat = false;
+            List<Measure> repeatedMeasures = new List<Measure>();
             for (int i = 0; i < measureList.Count; i++)
             {
                 var notes = ParseNotes(measureList[i].Clone());
                 var attributes = ParseAttributes(measureList[i].Clone());
-                measures.Add(new Measure(notes, attributes));
+                var childNodes = measureList[i]?.ChildNodes;
+                var lastNode = childNodes?[childNodes.Count - 1];
+                if ((lastNode?.Name == "barline") && (lastNode.ChildNodes[0].Attributes["direction"].Value == "forward"))
+                {
+                    repeatedMeasures = new List<Measure>() { new Measure(notes, attributes) };
+                    isOnRepat = true;
+                }
+                else if (isOnRepat)
+                {
+                    repeatedMeasures.Add(new Measure(notes, attributes));
+                    if ((lastNode?.Name == "barline") && (lastNode.ChildNodes[0].Attributes["direction"].Value == "backward"))
+                    {
+                        isOnRepat = false;
+                        ushort repeatCount = Convert.ToUInt16(lastNode.ChildNodes[0].Attributes["times"].Value);
+                        for (int j = 0; j < repeatCount; j++)
+                        {
+                            measures.AddRange(repeatedMeasures);
+                        }
+                    }
+                }
+                else
+                {
+                    measures.Add(new Measure(notes, attributes));
+                }
             }
 
             return measures;
