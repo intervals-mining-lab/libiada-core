@@ -17,7 +17,7 @@
         }
 
         [Test]
-        public void FoutrPointsClusterTest()
+        public void FourPointsClusterTest()
         {
             var Cluster = new FRiSCluster(2, 2);
             double[][] data = { new double[] { -5 }, new double[] { -4 }, new double[] { 4 }, new double[] { 5 } };

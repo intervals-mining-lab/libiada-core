@@ -32,8 +32,7 @@
             List<int> optimalPillarIndexes = null;
             int[] optimalClustersBelonging = null;
             double currentCompactness = double.MinValue;
-            List<int> currentPillarIndexes = new List<int>();
-            int[] currentClustersBelonging = new int[data.Length];
+            var currentPillarIndexes = new List<int>();
             CalculateDistances();//distances[i][j] - дистанция от i-го объекта до j-го
 
             var averageSimilarityFunction = new double[data.Length];// значения средней формулы сходимости объектов множества в конкуренции с виртуальным множеством B
@@ -53,15 +52,14 @@
 
             while(currentPillarIndexes.Count < maximumClusters)
             {
-                int maxCompactnessIndex = CalculateCompactnessForPotentialPillars(currentPillarIndexes);
-                currentPillarIndexes.Add(maxCompactnessIndex);
-                currentClustersBelonging = DetermineClusters(currentPillarIndexes);
+                int[] currentClustersBelonging = AddPillar(currentPillarIndexes);
 
                 for (int j = 0; j < currentPillarIndexes.Count; j++)
                 {
                     (currentPillarIndexes[j], currentCompactness) = ReselectPillar(currentPillarIndexes[j], currentPillarIndexes, currentClustersBelonging);
                 }
 
+                // updating data points references to new pillars
                 currentClustersBelonging = DetermineClusters(currentPillarIndexes);
                 if (currentPillarIndexes.Count == minimumClusters)
                 {
@@ -69,23 +67,32 @@
                     optimalClustersBelonging = (int[])currentClustersBelonging.Clone();
                     optimalPillarIndexes = new List<int>(currentPillarIndexes);
                 }
-                if(currentPillarIndexes.Count > minimumClusters && currentCompactness > optimalCompactness && currentPillarIndexes.Count <= maximumClusters )
+                if(currentPillarIndexes.Count > minimumClusters && currentCompactness > optimalCompactness)
                 {
                     optimalCompactness = currentCompactness;
                     optimalClustersBelonging = (int[])currentClustersBelonging.Clone();
                     optimalPillarIndexes = new List<int>(currentPillarIndexes);
                 }
             }
-            for(int i = 0; i < optimalClustersBelonging.Length; i++)
-            {
-                optimalClustersBelonging[i] = optimalPillarIndexes.IndexOf(optimalClustersBelonging[i]);
-                optimalClustersBelonging[i]++;
-            }
+
             if (optimalClustersBelonging == null)
             {
                 throw new ClusterizationFailureException("Failed to conduct clusterization");
             }
+
+            for (int i = 0; i < optimalClustersBelonging.Length; i++)
+            {
+                optimalClustersBelonging[i] = optimalPillarIndexes.IndexOf(optimalClustersBelonging[i]) + 1;
+            }
+
             return optimalClustersBelonging;
+        }
+
+        private int[] AddPillar(List<int> currentPillarIndexes)
+        {
+            int maxCompactnessIndex = CalculateCompactnessForPotentialPillars(currentPillarIndexes);
+            currentPillarIndexes.Add(maxCompactnessIndex);
+            return DetermineClusters(currentPillarIndexes);
         }
 
         private (int, double) ReselectPillar(int pillarIndex, List<int> pillarIndexes, int[] clustersBelonging)
