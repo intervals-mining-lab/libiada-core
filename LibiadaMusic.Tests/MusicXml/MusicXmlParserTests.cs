@@ -130,6 +130,25 @@
         }
 
         /// <summary>
+        /// Test for measure repeat parse in MusicXml.
+        /// </summary>
+        [Test]
+        public void RepeaterTest()
+        {
+            var xmlReader = new MusicXmlReader($"{SystemData.ProjectFolderPath}repeatertest.xml");
+            var parser = new MusicXmlParser();
+
+            parser.Execute(xmlReader.MusicXmlDocument, xmlReader.FileName);
+
+            Assert.AreEqual(xmlReader.FileName, parser.ScoreModel.Name);
+            Assert.AreEqual(parser.ScoreModel.CongenericScoreTracks.Count, 1);
+            Assert.AreEqual(parser.ScoreModel.CongenericScoreTracks[0].MeasureList.Count, 8);
+            Assert.AreEqual(parser.ScoreModel.CongenericScoreTracks[0].MeasureList[0].NoteList.Count, 1);
+            Assert.IsTrue(parser.ScoreModel.CongenericScoreTracks[0].MeasureList[0].Equals(parser.ScoreModel.CongenericScoreTracks[0].MeasureList[4]));
+            Assert.IsTrue(parser.ScoreModel.CongenericScoreTracks[0].MeasureList[1].Equals(parser.ScoreModel.CongenericScoreTracks[0].MeasureList[5]));
+        }
+
+        /// <summary>
         /// The xml parser file name test.
         /// </summary>
         [Test]
