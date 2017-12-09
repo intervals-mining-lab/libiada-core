@@ -33,9 +33,12 @@
             int[] optimalClustersBelonging = null;
             double currentCompactness = double.MinValue;
             var currentPillarIndexes = new List<int>();
-            CalculateDistances();//distances[i][j] - дистанция от i-го объекта до j-го
 
-            var averageSimilarityFunction = new double[data.Length];// значения средней формулы сходимости объектов множества в конкуренции с виртуальным множеством B
+            //distances[i][j] - distance from i-th element to j-th
+            CalculateDistances();
+
+            // average compatitive similarity in comparison to virtual sample (set) B
+            var averageSimilarityFunction = new double[data.Length];
 
             for (int i = 0; i < data.Length; i++)
             {
@@ -47,7 +50,8 @@
                 averageSimilarityFunction[i] = localSimilarity / data.Length;
             }
 
-            double maxSimilarity = averageSimilarityFunction.Max();//максимум средней сходимости элементов в конкуренции с B
+            // maximum of average similarity in competition with sample (set) B
+            double maxSimilarity = averageSimilarityFunction.Max();
             currentPillarIndexes.Add(Array.IndexOf(averageSimilarityFunction, maxSimilarity));
 
             while(currentPillarIndexes.Count < maximumClusters)
