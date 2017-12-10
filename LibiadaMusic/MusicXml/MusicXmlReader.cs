@@ -10,16 +10,10 @@
     public class MusicXmlReader
     {
         /// <summary>
-        /// Текущий прочитанный MusicXML файл
+        /// MusicXml file as XmlDocument.
         /// </summary>
-        private XmlDocument curDoc;
+        private XmlDocument musicXmlDocument;
 
-        /// <summary>
-        /// Initializes a new instance of the <see cref="MusicXmlReader"/> class.
-        /// </summary>
-        public MusicXmlReader()
-        {
-        }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="MusicXmlReader"/> class.
@@ -33,9 +27,15 @@
         }
 
         /// <summary>
-        /// Gets path to MusicXML file.
+        /// Initializes a new instance of the <see cref="MusicXmlReader"/> class.
         /// </summary>
-        public string FileName { get; private set; }
+        /// <param name="stream">
+        /// The stream.
+        /// </param>
+        public MusicXmlReader(Stream stream)
+        {
+            LoadNotes(stream);
+        }
 
         /// <summary>
         /// Gets the music xml document.
@@ -47,24 +47,13 @@
         {
             get
             {
-                if (curDoc != null)
+                if (musicXmlDocument != null)
                 {
-                    return (XmlDocument)curDoc.Clone();
+                    return (XmlDocument)musicXmlDocument.Clone();
                 }
 
                 throw new Exception("LibiadaMusic.XMLReader:you are trying to get empty XmlDocument!");
             }
-        }
-
-        /// <summary>
-        /// The load music xml document.
-        /// </summary>
-        /// <param name="path">
-        /// The path.
-        /// </param>
-        public void LoadMusicXmlDocument(string path)
-        {
-            LoadNotes(path);
         }
 
         /// <summary>
@@ -75,16 +64,23 @@
         /// </param>
         private void LoadNotes(string path)
         {
-            // Объявляем и забиваем файл в XML-документ
-            var xd = new XmlDocument();
             using (var fs = new FileStream(path, FileMode.Open))
             {
-                xd.Load(fs);
-                curDoc = null;
-                curDoc = (XmlDocument)xd.Clone();
+                LoadNotes(fs);
             }
+        }
 
-            FileName = Path.GetFileNameWithoutExtension(path); // сохраняем имя прочтенного файла
+        /// <summary>
+        /// The load notes.
+        /// </summary>
+        /// <param name="stream">
+        /// Data stream with musicXml file.
+        /// </param>
+        private void LoadNotes(Stream stream)
+        {
+            var xd = new XmlDocument();
+            xd.Load(stream);
+            musicXmlDocument = (XmlDocument)xd.Clone();
         }
     }
 }

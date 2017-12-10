@@ -22,10 +22,8 @@
         /// <param name="congenericScoreTracks">
         /// The congeneric score tracks.
         /// </param>
-        public ScoreTrack(string name, List<CongenericScoreTrack> congenericScoreTracks)
+        public ScoreTrack(List<CongenericScoreTrack> congenericScoreTracks)
         {
-            Name = name; // присваиваем имя музыкального трека
-
             CongenericScoreTracks = new List<CongenericScoreTrack>();
             foreach (CongenericScoreTrack congenericScoreTrack in congenericScoreTracks)
             {
@@ -39,10 +37,7 @@
             CongenericScoreTracks.Add(temp);
         }
 
-        /// <summary>
-        /// Gets name of music track.
-        /// </summary>
-        public string Name { get; private set; }
+    
 
         /// <summary>
         /// Gets congeneric tracks list.
@@ -57,7 +52,7 @@
         /// </returns>
         public IBaseObject Clone()
         {
-            return new ScoreTrack(Name, CongenericScoreTracks);
+            return new ScoreTrack(CongenericScoreTracks);
         }
 
         /// <summary>

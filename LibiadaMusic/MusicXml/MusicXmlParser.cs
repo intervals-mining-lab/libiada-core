@@ -3,7 +3,6 @@
     using System;
     using System.Collections.Generic;
     using System.Linq;
-    using System.Threading;
     using System.Xml;
 
     using LibiadaMusic.ScoreModel;
@@ -30,14 +29,11 @@
         /// <param name="xmlDocument">
         /// The xml document.
         /// </param>
-        /// <param name="filename">
-        /// The filename.
-        /// </param>
-        public void Execute(XmlDocument xmlDocument, string filename)
+        public void Execute(XmlDocument xmlDocument)
         {
             // TODO: проверка схемы Xml на соотвествие схеме MusicXml
             // создаем объект модели музыкального текста из Xml документа
-            ScoreModel = new ScoreTrack(filename, ParseCongenericScoreTracks((XmlDocument)xmlDocument.Clone()));
+            ScoreModel = new ScoreTrack(ParseCongenericScoreTracks((XmlDocument)xmlDocument.Clone()));
         }
 
         /// <summary>

@@ -14,20 +14,20 @@
     public class MusicXmlParserTests
     {
         /// <summary>
-        /// The xml parser test.
+        /// The score track.
         /// </summary>
-        [Test]
-        public void XmlParserTest()
+        private ScoreTrack scoreTrack;
+
+        /// <summary>
+        /// The music xml parser set up.
+        /// </summary>
+        [OneTimeSetUp]
+        public void MusicXmlParserSetUp()
         {
-            var xmlReader = new MusicXmlReader($"{SystemData.ProjectFolderPath}LibiadaMusicExample7Liga.xml");
-            var parser = new MusicXmlParser();
+            // Measures attributes
+            var attributes = new Attributes(new Size(7, 8, 1024), new Key(0, "major"));
 
-            parser.Execute(xmlReader.MusicXmlDocument, xmlReader.FileName);
-
-            // Создание атрибутов для такта
-            var attributes1 = new Attributes(new Size(7, 8, 1024), new Key(0, "major"));
-
-            // Создание списков нот для каждого из 4 тактов
+            // notes lists for each measure
             var notes1 = new List<ValueNote>
             {
                 new ValueNote(new Pitch(3, NoteSymbol.E, 0), new Duration(1, 2, false, 2048), false, Tie.None),
@@ -75,30 +75,41 @@
                 new ValueNote(new Pitch(4, NoteSymbol.C, 0), new Duration(1, 16, false, 256), false, Tie.None)
             };
 
-            // создание списка тактов для монофонического трека p0
+            // measures list for congeneric score track
             var measures1 = new List<Measure>
             {
-                new Measure(notes1, (Attributes)attributes1.Clone()),
-                new Measure(notes2, (Attributes)attributes1.Clone()),
-                new Measure(notes3, (Attributes)attributes1.Clone()),
-                new Measure(notes4, (Attributes)attributes1.Clone())
+                new Measure(notes1, (Attributes)attributes.Clone()),
+                new Measure(notes2, (Attributes)attributes.Clone()),
+                new Measure(notes3, (Attributes)attributes.Clone()),
+                new Measure(notes4, (Attributes)attributes.Clone())
             };
 
-            // создание списка монофонических треков для полного музыкального трека
-            var utracks = new List<CongenericScoreTrack> { new CongenericScoreTrack("p0", measures1) };
+            // single uniform score track
+            var uniformTracks = new List<CongenericScoreTrack> { new CongenericScoreTrack("p0", measures1) };
 
-            // создание полной модели музыкального трека/текста, с присвоением имени файла
-            var scoreModel = new ScoreTrack("LibiadaMusicexample7Liga", utracks);
+            // whole music sequence
+            scoreTrack = new ScoreTrack(uniformTracks);
+        }
 
-            Assert.AreEqual(xmlReader.FileName, parser.ScoreModel.Name);
-            Assert.AreEqual(scoreModel.CongenericScoreTracks[0].MeasureList[0].Attributes, parser.ScoreModel.CongenericScoreTracks[0].MeasureList[0].Attributes);
-            Assert.AreEqual(scoreModel.CongenericScoreTracks[0].MeasureList[0].NoteList[0], parser.ScoreModel.CongenericScoreTracks[0].MeasureList[0].NoteList[0]);
-            Assert.AreEqual(scoreModel.CongenericScoreTracks[0].MeasureList[0], parser.ScoreModel.CongenericScoreTracks[0].MeasureList[0]);
-            Assert.AreEqual(scoreModel.CongenericScoreTracks[0].MeasureList[1], parser.ScoreModel.CongenericScoreTracks[0].MeasureList[1]);
-            Assert.AreEqual(scoreModel.CongenericScoreTracks[0].MeasureList[2], parser.ScoreModel.CongenericScoreTracks[0].MeasureList[2]);
-            Assert.AreEqual(scoreModel.CongenericScoreTracks[0].MeasureList[3], parser.ScoreModel.CongenericScoreTracks[0].MeasureList[3]);
-            Assert.AreEqual(scoreModel.CongenericScoreTracks[0], parser.ScoreModel.CongenericScoreTracks[0]);
-            Assert.AreEqual(scoreModel, parser.ScoreModel);
+
+        /// <summary>
+        /// The xml parser test.
+        /// </summary>
+        [Test]
+        public void XmlParserTest()
+        {
+            var xmlReader = new MusicXmlReader($"{SystemData.ProjectFolderPath}LibiadaMusicExample7Liga.xml");
+            var parser = new MusicXmlParser();
+            parser.Execute(xmlReader.MusicXmlDocument);
+
+            Assert.AreEqual(scoreTrack.CongenericScoreTracks[0].MeasureList[0].Attributes, parser.ScoreModel.CongenericScoreTracks[0].MeasureList[0].Attributes);
+            Assert.AreEqual(scoreTrack.CongenericScoreTracks[0].MeasureList[0].NoteList[0], parser.ScoreModel.CongenericScoreTracks[0].MeasureList[0].NoteList[0]);
+            Assert.AreEqual(scoreTrack.CongenericScoreTracks[0].MeasureList[0], parser.ScoreModel.CongenericScoreTracks[0].MeasureList[0]);
+            Assert.AreEqual(scoreTrack.CongenericScoreTracks[0].MeasureList[1], parser.ScoreModel.CongenericScoreTracks[0].MeasureList[1]);
+            Assert.AreEqual(scoreTrack.CongenericScoreTracks[0].MeasureList[2], parser.ScoreModel.CongenericScoreTracks[0].MeasureList[2]);
+            Assert.AreEqual(scoreTrack.CongenericScoreTracks[0].MeasureList[3], parser.ScoreModel.CongenericScoreTracks[0].MeasureList[3]);
+            Assert.AreEqual(scoreTrack.CongenericScoreTracks[0], parser.ScoreModel.CongenericScoreTracks[0]);
+            Assert.AreEqual(scoreTrack, parser.ScoreModel);
         }
 
         /// <summary>
@@ -109,10 +120,8 @@
         {
             var xmlReader = new MusicXmlReader($"{SystemData.ProjectFolderPath}polytest.xml");
             var parser = new MusicXmlParser();
+            parser.Execute(xmlReader.MusicXmlDocument);
 
-            parser.Execute(xmlReader.MusicXmlDocument, xmlReader.FileName);
-
-            Assert.AreEqual(xmlReader.FileName, parser.ScoreModel.Name);
             Assert.AreEqual(parser.ScoreModel.CongenericScoreTracks.Count, 1);
             Assert.AreEqual(parser.ScoreModel.CongenericScoreTracks[0].MeasureList.Count, 3);
             Assert.AreEqual(parser.ScoreModel.CongenericScoreTracks[0].MeasureList[0].NoteList.Count, 5);
@@ -137,10 +146,8 @@
         {
             var xmlReader = new MusicXmlReader($"{SystemData.ProjectFolderPath}repeatertest.xml");
             var parser = new MusicXmlParser();
+            parser.Execute(xmlReader.MusicXmlDocument);
 
-            parser.Execute(xmlReader.MusicXmlDocument, xmlReader.FileName);
-
-            Assert.AreEqual(xmlReader.FileName, parser.ScoreModel.Name);
             Assert.AreEqual(parser.ScoreModel.CongenericScoreTracks.Count, 1);
             Assert.AreEqual(parser.ScoreModel.CongenericScoreTracks[0].MeasureList.Count, 8);
             Assert.AreEqual(parser.ScoreModel.CongenericScoreTracks[0].MeasureList[0].NoteList.Count, 1);
@@ -149,21 +156,16 @@
         }
 
         /// <summary>
-        /// The xml parser file name test.
-        /// </summary>
-        [Test]
-        public void XmlParserFileNameTest()
-        {
-            Assert.Fail();
-        }
-
-        /// <summary>
         /// The xml parser score track test.
         /// </summary>
         [Test]
         public void XmlParserScoreTrackTest()
         {
-            Assert.Fail();
+            var xmlReader = new MusicXmlReader($"{SystemData.ProjectFolderPath}LibiadaMusicExample7Liga.xml");
+            var parser = new MusicXmlParser();
+            parser.Execute(xmlReader.MusicXmlDocument);
+
+            Assert.AreEqual(scoreTrack,  parser.ScoreModel);
         }
 
         /// <summary>
@@ -172,7 +174,11 @@
         [Test]
         public void XmlParserCongenericScoreTrackTest()
         {
-            Assert.Fail();
+            var xmlReader = new MusicXmlReader($"{SystemData.ProjectFolderPath}LibiadaMusicExample7Liga.xml");
+            var parser = new MusicXmlParser();
+            parser.Execute(xmlReader.MusicXmlDocument);
+
+            Assert.AreEqual(scoreTrack.CongenericScoreTracks[0], parser.ScoreModel.CongenericScoreTracks[0]);
         }
 
         /// <summary>
@@ -181,7 +187,17 @@
         [Test]
         public void XmlParserMeasureTest()
         {
-            Assert.Fail();
+            var xmlReader = new MusicXmlReader($"{SystemData.ProjectFolderPath}LibiadaMusicExample7Liga.xml");
+            var parser = new MusicXmlParser();
+            parser.Execute(xmlReader.MusicXmlDocument);
+
+            List<Measure> expectedMeasures = scoreTrack.CongenericScoreTracks[0].MeasureList;
+            List<Measure> actualMeasures = parser.ScoreModel.CongenericScoreTracks[0].MeasureList;
+            Assert.AreEqual(expectedMeasures.Count, actualMeasures.Count);
+            for (int i = 0; i < expectedMeasures.Count; i++)
+            {
+                Assert.AreEqual(scoreTrack.CongenericScoreTracks[0].MeasureList[i], parser.ScoreModel.CongenericScoreTracks[0].MeasureList[i]);
+            }
         }
 
         /// <summary>
@@ -190,7 +206,23 @@
         [Test]
         public void XmlParserNoteTest()
         {
-            Assert.Fail();
+            var xmlReader = new MusicXmlReader($"{SystemData.ProjectFolderPath}LibiadaMusicExample7Liga.xml");
+            var parser = new MusicXmlParser();
+            parser.Execute(xmlReader.MusicXmlDocument);
+
+            List<Measure> expectedMeasures = scoreTrack.CongenericScoreTracks[0].MeasureList;
+            List<Measure> actualMeasures = parser.ScoreModel.CongenericScoreTracks[0].MeasureList;
+            Assert.AreEqual(expectedMeasures.Count, actualMeasures.Count);
+            for (int i = 0; i < expectedMeasures.Count; i++)
+            {
+                List<ValueNote> expectedNotes = expectedMeasures[i].NoteList;
+                List<ValueNote> actualNotes = actualMeasures[i].NoteList;
+                Assert.AreEqual(expectedNotes.Count, actualNotes.Count);
+                for (int j = 0; j < expectedNotes.Count; j++)
+                {
+                    Assert.AreEqual(expectedNotes[j], actualNotes[j]);
+                }
+            }
         }
 
         /// <summary>
@@ -199,7 +231,21 @@
         [Test]
         public void XmlParserAttributesTest()
         {
-            Assert.Fail();
+            var xmlReader = new MusicXmlReader($"{SystemData.ProjectFolderPath}LibiadaMusicExample7Liga.xml");
+            var parser = new MusicXmlParser();
+            parser.Execute(xmlReader.MusicXmlDocument);
+
+            List<Measure> expectedMeasures = scoreTrack.CongenericScoreTracks[0].MeasureList;
+            List<Measure> actualMeasures = parser.ScoreModel.CongenericScoreTracks[0].MeasureList;
+            Assert.AreEqual(expectedMeasures.Count, actualMeasures.Count);
+            for (int i = 0; i < expectedMeasures.Count; i++)
+            {
+                Attributes expectedAttributes = scoreTrack.CongenericScoreTracks[0].MeasureList[i].Attributes;
+                Attributes actualAttributes = parser.ScoreModel.CongenericScoreTracks[0].MeasureList[i].Attributes;
+                Assert.AreEqual(expectedAttributes, actualAttributes);
+                Assert.AreEqual(expectedAttributes.Key, actualAttributes.Key);
+                Assert.AreEqual(expectedAttributes.Size, actualAttributes.Size);
+            }
         }
 
         /// <summary>
@@ -208,7 +254,27 @@
         [Test]
         public void XmlParserPitchTest()
         {
-            Assert.Fail();
+            var xmlReader = new MusicXmlReader($"{SystemData.ProjectFolderPath}LibiadaMusicExample7Liga.xml");
+            var parser = new MusicXmlParser();
+            parser.Execute(xmlReader.MusicXmlDocument);
+
+            List<Measure> expectedMeasures = scoreTrack.CongenericScoreTracks[0].MeasureList;
+            List<Measure> actualMeasures = parser.ScoreModel.CongenericScoreTracks[0].MeasureList;
+            Assert.AreEqual(expectedMeasures.Count, actualMeasures.Count);
+            for (int i = 0; i < expectedMeasures.Count; i++)
+            {
+                List<ValueNote> expectedNotes = expectedMeasures[i].NoteList;
+                List<ValueNote> actualNotes = actualMeasures[i].NoteList;
+                Assert.AreEqual(expectedNotes.Count, actualNotes.Count);
+                for (int j = 0; j < expectedNotes.Count; j++)
+                {
+                    Assert.AreEqual(expectedNotes[j].Pitch.Count, actualNotes[j].Pitch.Count);
+                    for (int k = 0; k < expectedNotes[j].Pitch.Count; k++)
+                    {
+                        Assert.AreEqual(expectedNotes[j].Pitch[k], actualNotes[j].Pitch[k]);
+                    }
+                }
+            }
         }
 
         /// <summary>
@@ -217,7 +283,23 @@
         [Test]
         public void XmlParserDurationTest()
         {
-            Assert.Fail();
+            var xmlReader = new MusicXmlReader($"{SystemData.ProjectFolderPath}LibiadaMusicExample7Liga.xml");
+            var parser = new MusicXmlParser();
+            parser.Execute(xmlReader.MusicXmlDocument);
+
+            List<Measure> expectedMeasures = scoreTrack.CongenericScoreTracks[0].MeasureList;
+            List<Measure> actualMeasures = parser.ScoreModel.CongenericScoreTracks[0].MeasureList;
+            Assert.AreEqual(expectedMeasures.Count, actualMeasures.Count);
+            for (int i = 0; i < expectedMeasures.Count; i++)
+            {
+                List<ValueNote> expectedNotes = expectedMeasures[i].NoteList;
+                List<ValueNote> actualNotes = actualMeasures[i].NoteList;
+                Assert.AreEqual(expectedNotes.Count, actualNotes.Count);
+                for (int j = 0; j < expectedNotes.Count; j++)
+                {
+                    Assert.AreEqual(expectedNotes[j].Duration, actualNotes[j].Duration);
+                }
+            }
         }
 
         /// <summary>
@@ -226,7 +308,23 @@
         [Test]
         public void XmlParserTieTest()
         {
-            Assert.Fail();
+            var xmlReader = new MusicXmlReader($"{SystemData.ProjectFolderPath}LibiadaMusicExample7Liga.xml");
+            var parser = new MusicXmlParser();
+            parser.Execute(xmlReader.MusicXmlDocument);
+
+            List<Measure> expectedMeasures = scoreTrack.CongenericScoreTracks[0].MeasureList;
+            List<Measure> actualMeasures = parser.ScoreModel.CongenericScoreTracks[0].MeasureList;
+            Assert.AreEqual(expectedMeasures.Count, actualMeasures.Count);
+            for (int i = 0; i < expectedMeasures.Count; i++)
+            {
+                List<ValueNote> expectedNotes = expectedMeasures[i].NoteList;
+                List<ValueNote> actualNotes = actualMeasures[i].NoteList;
+                Assert.AreEqual(expectedNotes.Count, actualNotes.Count);
+                for (int j = 0; j < expectedNotes.Count; j++)
+                {
+                    Assert.AreEqual(expectedNotes[j].Tie, actualNotes[j].Tie);
+                }
+            }
         }
 
         /// <summary>
@@ -235,7 +333,23 @@
         [Test]
         public void XmlParserTripletTest()
         {
-            Assert.Fail();
+            var xmlReader = new MusicXmlReader($"{SystemData.ProjectFolderPath}LibiadaMusicExample7Liga.xml");
+            var parser = new MusicXmlParser();
+            parser.Execute(xmlReader.MusicXmlDocument);
+
+            List<Measure> expectedMeasures = scoreTrack.CongenericScoreTracks[0].MeasureList;
+            List<Measure> actualMeasures = parser.ScoreModel.CongenericScoreTracks[0].MeasureList;
+            Assert.AreEqual(expectedMeasures.Count, actualMeasures.Count);
+            for (int i = 0; i < expectedMeasures.Count; i++)
+            {
+                List<ValueNote> expectedNotes = expectedMeasures[i].NoteList;
+                List<ValueNote> actualNotes = actualMeasures[i].NoteList;
+                Assert.AreEqual(expectedNotes.Count, actualNotes.Count);
+                for (int j = 0; j < expectedNotes.Count; j++)
+                {
+                    Assert.AreEqual(expectedNotes[j].Triplet, actualNotes[j].Triplet);
+                }
+            }
         }
     }
 }
