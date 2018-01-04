@@ -16,9 +16,6 @@
         /// <summary>
         /// Initializes a new instance of the <see cref="ScoreTrack"/> class.
         /// </summary>
-        /// <param name="name">
-        /// The name.
-        /// </param>
         /// <param name="congenericScoreTracks">
         /// The congeneric score tracks.
         /// </param>
@@ -37,7 +34,7 @@
             CongenericScoreTracks.Add(temp);
         }
 
-    
+
 
         /// <summary>
         /// Gets congeneric tracks list.

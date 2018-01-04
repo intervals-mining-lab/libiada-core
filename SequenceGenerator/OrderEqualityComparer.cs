@@ -1,7 +1,7 @@
-﻿using System.Collections.Generic;
-
-namespace SequenceGenerator
+﻿namespace SequenceGenerator
 {
+    using System.Collections.Generic;
+
     public class OrderEqualityComparer : IEqualityComparer<int[]>
     {
         public bool Equals(int[] first, int[] second)
@@ -10,6 +10,7 @@ namespace SequenceGenerator
             {
                 return false;
             }
+
             for (int i = 0; i < first.Length; i++)
             {
                 if (first[i] != second[i])
@@ -28,6 +29,7 @@ namespace SequenceGenerator
             {
                 result = unchecked(result * 23 + obj[i]);
             }
+
             return result;
         }
     }

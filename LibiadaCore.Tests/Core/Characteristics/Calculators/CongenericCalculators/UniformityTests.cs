@@ -1,8 +1,7 @@
-﻿using LibiadaCore.Core.Characteristics.Calculators.CongenericCalculators;
-
-namespace LibiadaCore.Tests.Core.Characteristics.Calculators.CongenericCalculators
+﻿namespace LibiadaCore.Tests.Core.Characteristics.Calculators.CongenericCalculators
 {
     using LibiadaCore.Core;
+    using LibiadaCore.Core.Characteristics.Calculators.CongenericCalculators;
 
     using NUnit.Framework;
 

@@ -10,6 +10,9 @@
     /// <summary>
     /// The abstract binary calculator test.
     /// </summary>
+    /// <typeparam name="T">
+    /// Characteristic calculator type.
+    /// </typeparam>
     public abstract class BinaryCalculatorsTests<T> where T : IBinaryCalculator, new()
     {
         /// <summary>
@@ -18,14 +21,14 @@
         protected readonly List<Chain> Chains = ChainsStorage.BinaryChains;
 
         /// <summary>
+        /// Gets or sets the calculator.
+        /// </summary>
+        protected readonly T calculator = new T();
+
+        /// <summary>
         /// The elements.
         /// </summary>
         private readonly Dictionary<string, IBaseObject> elements = ChainsStorage.Elements;
-
-        /// <summary>
-        /// Gets or sets the calculator.
-        /// </summary>
-        protected T calculator = new T();
 
         /// <summary>
         /// The calculation test.

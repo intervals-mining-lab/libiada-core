@@ -22,10 +22,9 @@
             int count = 1;
             for (int i = 0; i < chain.GetLength(); i++)
             {
-                var j = chain[i] as ValuePhantom;
-                if (j != null)
+                if (chain[i] is ValuePhantom phantomValue)
                 {
-                    count *= ((ValuePhantom)chain[i]).Cardinality;
+                    count *= phantomValue.Cardinality;
                 }
             }
 

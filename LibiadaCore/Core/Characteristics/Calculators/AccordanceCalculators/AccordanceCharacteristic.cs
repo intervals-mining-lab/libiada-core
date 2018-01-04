@@ -1,7 +1,6 @@
-﻿using System.ComponentModel;
-
-namespace LibiadaCore.Core.Characteristics.Calculators.AccordanceCalculators
+﻿namespace LibiadaCore.Core.Characteristics.Calculators.AccordanceCalculators
 {
+    using System.ComponentModel;
     using System.ComponentModel.DataAnnotations;
 
     /// <summary>

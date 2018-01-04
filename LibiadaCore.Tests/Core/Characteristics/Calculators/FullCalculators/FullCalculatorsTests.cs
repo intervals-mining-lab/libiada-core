@@ -10,6 +10,9 @@
     /// <summary>
     /// The abstract calculator test.
     /// </summary>
+    /// <typeparam name="T">
+    /// Calculator type.
+    /// </typeparam>
     public abstract class FullCalculatorsTests<T> where T : IFullCalculator, new ()
     {
         /// <summary>
@@ -20,7 +23,7 @@
         /// <summary>
         /// Gets or sets the calculator.
         /// </summary>
-        private T calculator = new T();
+        private readonly T calculator = new T();
 
         /// <summary>
         /// The chain characteristic test.

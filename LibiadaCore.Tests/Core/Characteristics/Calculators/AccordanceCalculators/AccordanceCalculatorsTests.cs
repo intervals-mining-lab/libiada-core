@@ -10,6 +10,9 @@
     /// <summary>
     /// The accordance calculators tests.
     /// </summary>
+    /// <typeparam name="T">
+    /// Characteristic calculator type
+    /// </typeparam>
     public abstract class AccordanceCalculatorsTests<T> where T : IAccordanceCalculator, new()
     {
         /// <summary>

@@ -91,7 +91,6 @@
             scoreTrack = new ScoreTrack(uniformTracks);
         }
 
-
         /// <summary>
         /// The xml parser test.
         /// </summary>

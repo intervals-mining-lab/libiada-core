@@ -1,7 +1,6 @@
-﻿using System.ComponentModel;
-
-namespace LibiadaCore.Core.Characteristics.Calculators.CongenericCalculators
+﻿namespace LibiadaCore.Core.Characteristics.Calculators.CongenericCalculators
 {
+    using System.ComponentModel;
     using System.ComponentModel.DataAnnotations;
 
     /// <summary>

@@ -1,8 +1,7 @@
-﻿using LibiadaCore.Core.Characteristics.Calculators.FullCalculators;
-
-namespace LibiadaCore.Tests.Core.Characteristics.Calculators.FullCalculators
+﻿namespace LibiadaCore.Tests.Core.Characteristics.Calculators.FullCalculators
 {
     using LibiadaCore.Core;
+    using LibiadaCore.Core.Characteristics.Calculators.FullCalculators;
 
     using NUnit.Framework;
 
@@ -12,7 +11,6 @@ namespace LibiadaCore.Tests.Core.Characteristics.Calculators.FullCalculators
     [TestFixture]
     public class AverageRemotenessSWSkewTests : FullCalculatorsTests<AverageRemotenessSWSkew>
     {
-
         /// <summary>
         /// The calculation test.
         /// </summary>

@@ -1,7 +1,7 @@
-﻿using LibiadaCore.Core.Characteristics.Calculators.AccordanceCalculators;
-
-namespace LibiadaCore.Tests.Core.Characteristics.Calculators.AccordanceCalculators
+﻿namespace LibiadaCore.Tests.Core.Characteristics.Calculators.AccordanceCalculators
 {
+    using LibiadaCore.Core.Characteristics.Calculators.AccordanceCalculators;
+
     using NUnit.Framework;
 
     /// <summary>

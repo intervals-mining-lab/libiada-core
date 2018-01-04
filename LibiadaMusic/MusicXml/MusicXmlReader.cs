@@ -14,7 +14,6 @@
         /// </summary>
         private XmlDocument musicXmlDocument;
 
-
         /// <summary>
         /// Initializes a new instance of the <see cref="MusicXmlReader"/> class.
         /// </summary>

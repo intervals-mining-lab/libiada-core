@@ -20,6 +20,7 @@
             {
                 sequence[i] = 1;
             }
+
             this.alphabetCardinality = alphabetCardinality;
         }
 

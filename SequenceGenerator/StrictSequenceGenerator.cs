@@ -11,7 +11,7 @@
         {
             var sequenceGenerator = new SequenceGenerator();
             var result = sequenceGenerator.GenerateSequences(length, alphabetCardinality);
-            for(int i = result.Count - 1; i >= 0; i--)
+            for (int i = result.Count - 1; i >= 0; i--)
             {
                 if (result[i].Alphabet.Cardinality < alphabetCardinality)
                 {

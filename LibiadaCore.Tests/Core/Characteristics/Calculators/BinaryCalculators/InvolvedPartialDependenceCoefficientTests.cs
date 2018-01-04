@@ -1,11 +1,10 @@
-﻿using LibiadaCore.Core.Characteristics.Calculators.BinaryCalculators;
-
-namespace LibiadaCore.Tests.Core.Characteristics.Calculators.BinaryCalculators
+﻿namespace LibiadaCore.Tests.Core.Characteristics.Calculators.BinaryCalculators
 {
     using System;
     using System.Collections.Generic;
 
     using LibiadaCore.Core;
+    using LibiadaCore.Core.Characteristics.Calculators.BinaryCalculators;
 
     using NUnit.Framework;
 

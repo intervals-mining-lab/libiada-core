@@ -1,7 +1,7 @@
-﻿using LibiadaCore.Core.Characteristics.Calculators.BinaryCalculators;
-
-namespace LibiadaCore.Tests.Core.Characteristics.Calculators.BinaryCalculators
+﻿namespace LibiadaCore.Tests.Core.Characteristics.Calculators.BinaryCalculators
 {
+    using LibiadaCore.Core.Characteristics.Calculators.BinaryCalculators;
+
     using NUnit.Framework;
 
     /// <summary>

@@ -1,8 +1,9 @@
-﻿using NUnit.Framework;
-using SequenceGenerator;
-
-namespace SequenceGeneretor.Tests
+﻿namespace SequenceGeneretor.Tests
 {
+    using NUnit.Framework;
+
+    using SequenceGenerator;
+
     [TestFixture]
     public class SequenceIteratorTests
     {
@@ -21,6 +22,7 @@ namespace SequenceGeneretor.Tests
             {
                 iterator.IterateSequencesCounter();
             }
+
             var actual = iterator.Iterator;
             Assert.AreEqual(expected, actual);
         }
@@ -31,15 +33,14 @@ namespace SequenceGeneretor.Tests
             var iterator = new SequenceIterator(3, 2);
             var expected = new[]
                 {
-                    new[]{1, 1, 1},
-                    new[]{2, 1, 1},
-                    new[]{1, 2, 1},
-                    new[]{2, 2, 1},
-                    new[]{1, 1, 2},
-                    new[]{2, 1, 2},
-                    new[]{1, 2, 2},
-                    new[]{2, 2, 2}
-                    
+                    new[] { 1, 1, 1 },
+                    new[] { 2, 1, 1 },
+                    new[] { 1, 2, 1 },
+                    new[] { 2, 2, 1 },
+                    new[] { 1, 1, 2 },
+                    new[] { 2, 1, 2 },
+                    new[] { 1, 2, 2 },
+                    new[] { 2, 2, 2 }
                 };
             int i = 0;
             foreach (var actual in iterator)

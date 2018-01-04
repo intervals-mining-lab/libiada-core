@@ -1,8 +1,7 @@
-using LibiadaCore.Core.Characteristics.Calculators.CongenericCalculators;
-
 namespace LibiadaCore.Tests.Core.Characteristics.Calculators.CongenericCalculators
 {
     using LibiadaCore.Core;
+    using LibiadaCore.Core.Characteristics.Calculators.CongenericCalculators;
 
     using NUnit.Framework;
 
@@ -12,7 +11,6 @@ namespace LibiadaCore.Tests.Core.Characteristics.Calculators.CongenericCalculato
     [TestFixture]
     public class ArithmeticMeanTests : CongenericCalculatorsTests<ArithmeticMean>
     {
-
         /// <summary>
         /// The congeneric calculation test.
         /// </summary>

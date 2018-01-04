@@ -1,7 +1,6 @@
-﻿using System.ComponentModel;
-
-namespace LibiadaCore.Core.Characteristics.Calculators.BinaryCalculators
+﻿namespace LibiadaCore.Core.Characteristics.Calculators.BinaryCalculators
 {
+    using System.ComponentModel;
     using System.ComponentModel.DataAnnotations;
 
     /// <summary>
