@@ -23,7 +23,7 @@
         /// <summary>
         /// Gets or sets the calculator.
         /// </summary>
-        protected readonly T calculator = new T();
+        protected readonly T Calculator = new T();
 
         /// <summary>
         /// The elements.
@@ -44,8 +44,8 @@
         /// </param>
         protected void CalculationTest(int index, double firstValue, double secondValue)
         {
-            double result1 = calculator.Calculate(Chains[index].GetRelationIntervalsManager(elements["A"], elements["B"]), Link.End);
-            double result2 = calculator.Calculate(Chains[index].GetRelationIntervalsManager(elements["B"], elements["A"]), Link.End);
+            double result1 = Calculator.Calculate(Chains[index].GetRelationIntervalsManager(elements["A"], elements["B"]), Link.End);
+            double result2 = Calculator.Calculate(Chains[index].GetRelationIntervalsManager(elements["B"], elements["A"]), Link.End);
             Assert.AreEqual(firstValue, result1, 0.0001);
             Assert.AreEqual(secondValue, result2, 0.0001);
         }

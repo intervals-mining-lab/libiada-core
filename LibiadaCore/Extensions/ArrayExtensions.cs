@@ -5,8 +5,6 @@
     using System.Collections.Generic;
     using System.Text;
 
-    using LibiadaCore.Exceptions;
-
     /// <summary>
     /// Array extensions methods.
     /// </summary>
@@ -138,14 +136,14 @@
         /// </returns>
         public static string ToStringWithoutDelimiter(this IList array)
         {
-            string outputString = string.Empty;
+            var builder = new StringBuilder();
 
             foreach (object element in array)
             {
-                outputString += element is IList ? ToStringWithoutDelimiter((IList)element) : element;
+                builder.Append(element is IList list ? ToStringWithoutDelimiter(list) : element);
             }
 
-            return outputString;
+            return builder.ToString();
         }
 
         /// <summary>
@@ -182,11 +180,11 @@
         /// </returns>
         public static string ToString<T>(this IList<T> array, string delimiter)
         {
-            StringBuilder builder = new StringBuilder();
+            var builder = new StringBuilder();
 
-            for (int i = 0; i < array.Count; i++)
+            foreach (T element in array)
             {
-                builder.Append(array[i] is IList ? ToStringWithoutDelimiter((IList)array[i]) : array[i].ToString());
+                builder.Append(element is IList listElement ? listElement.ToStringWithoutDelimiter() : element.ToString());
                 builder.Append(delimiter);
             }
 
@@ -271,6 +269,7 @@
         /// The length.
         /// </param>
         /// <typeparam name="T">
+        /// Type of the array elements.
         /// </typeparam>
         /// <returns>
         /// The <see cref="Array"/>.

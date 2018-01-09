@@ -28,7 +28,6 @@
         {
             this.link = link;
             calculator = FullCalculatorsFactory.CreateCalculator(type);
-
         }
 
         /// <summary>

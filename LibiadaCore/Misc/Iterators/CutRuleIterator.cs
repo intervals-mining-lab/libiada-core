@@ -1,7 +1,6 @@
 ﻿namespace LibiadaCore.Misc.Iterators
 {
     using System.Collections.Generic;
-    using System.Linq;
 
     /// <summary>
     /// The cut rule iterator.
@@ -21,7 +20,7 @@
         /// <summary>
         /// The counter.
         /// </summary>
-        private int i = -1;
+        private int index = -1;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="CutRuleIterator"/> class.
@@ -46,8 +45,8 @@
         /// </returns>
         public bool Next()
         {
-            i++;
-            return (starts.Count > i) && (ends.Count > i);
+            index++;
+            return (starts.Count > index) && (ends.Count > index);
         }
 
         /// <summary>
@@ -58,7 +57,7 @@
         /// </returns>
         public int GetStartPosition()
         {
-            return starts[i];
+            return starts[index];
         }
 
         /// <summary>
@@ -69,7 +68,7 @@
         /// </returns>
         public int GetEndPosition()
         {
-            return ends[i];
+            return ends[index];
         }
     }
 }

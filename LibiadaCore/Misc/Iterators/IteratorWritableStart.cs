@@ -1,6 +1,5 @@
 namespace LibiadaCore.Misc.Iterators
 {
-
     using LibiadaCore.Core;
 
     /// <summary>
@@ -16,9 +15,6 @@ namespace LibiadaCore.Misc.Iterators
         /// <param name="source">
         /// Source chain.
         /// </param>
-        /// <exception cref="ArgumentException">
-        /// Thrown if one or more arguments are invalid.
-        /// </exception>
         public IteratorWritableStart(AbstractChain source) : base(source, 1, 1)
         {
         }

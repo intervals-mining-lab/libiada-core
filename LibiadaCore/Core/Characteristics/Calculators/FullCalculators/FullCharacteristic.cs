@@ -1,7 +1,6 @@
-﻿using System.ComponentModel;
-
-namespace LibiadaCore.Core.Characteristics.Calculators.FullCalculators
+﻿namespace LibiadaCore.Core.Characteristics.Calculators.FullCalculators
 {
+    using System.ComponentModel;
     using System.ComponentModel.DataAnnotations;
 
     /// <summary>

@@ -1,7 +1,5 @@
 namespace LibiadaCore.Misc.Iterators
 {
-    using System;
-
     using LibiadaCore.Core;
 
     /// <summary>
@@ -21,9 +19,6 @@ namespace LibiadaCore.Misc.Iterators
         /// <param name="step">
         /// Shift of iterator.
         /// </param>
-        /// <exception cref="ArgumentException">
-        /// Thrown if one or more arguments are invalid.
-        /// </exception>
         public IteratorStart(AbstractChain source, int length, int step) : base(source, length, step)
         {
         }
