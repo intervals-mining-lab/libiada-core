@@ -280,5 +280,21 @@
             Array.Copy(data, index, result, 0, length);
             return result;
         }
+
+        public static IEnumerable<T> SliceRow<T>(this T[,] array, int row)
+        {
+            for(int i = 0; i < array.GetLength(0); i++)
+            {
+                yield return array[i, row];
+            }
+        }
+
+        public static IEnumerable<T> SliceColumn<T>(this T[,] array, int column)
+        {
+            for (int i = 0; i < array.GetLength(1); i++)
+            {
+                yield return array[column, i];
+            }
+        }
     }
 }
