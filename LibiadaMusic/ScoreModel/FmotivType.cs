@@ -19,21 +19,21 @@
         /// The complete minimal measure.
         /// </summary>
         [Display(Name = "Complete minimal measure")]
-        [Description("")]
+        [Description("Sequence of two notes of identical duration, first of which is metrically stronger than the second one (or three notes if there is a tresillo)")]
         CompleteMinimalMeasure = 1,
 
         /// <summary>
         /// The partial minimal measure.
         /// </summary>
         [Display(Name = "Partial minimal measure")]
-        [Description("")]
+        [Description("Note or pair of notes (in case of tresillo) that do not form complete minimal measure with any adjacent note")]
         PartialMinimalMeasure = 2,
 
         /// <summary>
         /// The increasing sequence.
         /// </summary>
         [Display(Name = "Increasing sequence")]
-        [Description("")]
+        [Description("Sequence of notes in which every next note is longer than the previous one")]
         IncreasingSequence = 3,
 
         /// <summary>
