@@ -1,10 +1,10 @@
-﻿namespace Clusterizator.Tests
+﻿using Clusterizator.kMeans;
+
+namespace Clusterizator.Tests
 {
     using System;
     using System.Collections.Generic;
     using System.ComponentModel;
-
-    using Clusterizator.KMeans;
     using Clusterizator.Krab;
 
     using NUnit.Framework;

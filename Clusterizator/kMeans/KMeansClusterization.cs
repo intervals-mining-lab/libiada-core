@@ -1,7 +1,7 @@
-﻿namespace Clusterizator.KMeans
-{
-    using Accord.MachineLearning;
+﻿using Accord.MachineLearning;
 
+namespace Clusterizator.kMeans
+{
     /// <summary>
     /// The k means clusterization.
     /// </summary>

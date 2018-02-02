@@ -1,11 +1,10 @@
-﻿using Clusterizator.MeanShift;
+﻿using Clusterizator.kMeans;
+using Clusterizator.MeanShift;
 
 namespace Clusterizator
 {
     using System.Collections.Generic;
     using System.ComponentModel;
-
-    using Clusterizator.KMeans;
     using Clusterizator.Krab;
 
     /// <summary>
