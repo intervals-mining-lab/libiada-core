@@ -1,10 +1,11 @@
-﻿using LibiadaCore.Core;
-using LibiadaCore.Core.SimpleTypes;
-using LibiadaCore.Music;
-using NUnit.Framework;
-
-namespace LibiadaCore.Tests.Music
+﻿namespace LibiadaCore.Tests.Music
 {
+    using LibiadaCore.Core;
+    using LibiadaCore.Core.SimpleTypes;
+    using LibiadaCore.Music;
+
+    using NUnit.Framework;
+
     /// <summary>
     /// The fmotiv identification tests.
     /// </summary>

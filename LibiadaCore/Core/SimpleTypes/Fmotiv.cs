@@ -1,10 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using LibiadaCore.Music;
-
-namespace LibiadaCore.Core.SimpleTypes
+﻿namespace LibiadaCore.Core.SimpleTypes
 {
+    using System;
+    using System.Collections.Generic;
+    using System.ComponentModel;
+
+    using LibiadaCore.Music;
+
     /// <summary>
     /// класс для хранения ф-мотива
     /// </summary>

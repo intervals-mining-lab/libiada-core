@@ -1,11 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using LibiadaCore.Core;
-using LibiadaCore.Core.SimpleTypes;
-
-namespace LibiadaCore.Music
+﻿namespace LibiadaCore.Music
 {
+    using System;
+    using System.Collections.Generic;
+    using System.ComponentModel;
+
+    using LibiadaCore.Core;
+    using LibiadaCore.Core.SimpleTypes;
+
     /// <summary>
     /// The fmotiv divider.
     /// </summary>

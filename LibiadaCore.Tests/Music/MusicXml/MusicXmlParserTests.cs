@@ -1,11 +1,13 @@
-﻿using System.Collections.Generic;
-using LibiadaCore.Core;
-using LibiadaCore.Core.SimpleTypes;
-using LibiadaCore.Music.MusicXml;
-using NUnit.Framework;
-
-namespace LibiadaCore.Tests.Music.MusicXml
+﻿namespace LibiadaCore.Tests.Music.MusicXml
 {
+    using System.Collections.Generic;
+
+    using LibiadaCore.Core;
+    using LibiadaCore.Core.SimpleTypes;
+    using LibiadaCore.Music.MusicXml;
+
+    using NUnit.Framework;
+
     /// <summary>
     /// The music xml parser tests.
     /// </summary>
@@ -24,7 +26,7 @@ namespace LibiadaCore.Tests.Music.MusicXml
         public void MusicXmlParserSetUp()
         {
             // Measures attributes
-            var attributes = new Attributes(new Size(7, 8, 1024), new Key(0, "major"));
+            var attributes = new MeasureAttributes(new Size(7, 8, 1024), new Key(0, "major"));
 
             // notes lists for each measure
             var notes1 = new List<ValueNote>
@@ -77,10 +79,10 @@ namespace LibiadaCore.Tests.Music.MusicXml
             // measures list for congeneric score track
             var measures1 = new List<Measure>
             {
-                new Measure(notes1, (Attributes)attributes.Clone()),
-                new Measure(notes2, (Attributes)attributes.Clone()),
-                new Measure(notes3, (Attributes)attributes.Clone()),
-                new Measure(notes4, (Attributes)attributes.Clone())
+                new Measure(notes1, (MeasureAttributes)attributes.Clone()),
+                new Measure(notes2, (MeasureAttributes)attributes.Clone()),
+                new Measure(notes3, (MeasureAttributes)attributes.Clone()),
+                new Measure(notes4, (MeasureAttributes)attributes.Clone())
             };
 
             // single uniform score track
@@ -238,8 +240,8 @@ namespace LibiadaCore.Tests.Music.MusicXml
             Assert.AreEqual(expectedMeasures.Count, actualMeasures.Count);
             for (int i = 0; i < expectedMeasures.Count; i++)
             {
-                Attributes expectedAttributes = scoreTrack.CongenericScoreTracks[0].MeasureList[i].Attributes;
-                Attributes actualAttributes = parser.ScoreModel.CongenericScoreTracks[0].MeasureList[i].Attributes;
+                MeasureAttributes expectedAttributes = scoreTrack.CongenericScoreTracks[0].MeasureList[i].Attributes;
+                MeasureAttributes actualAttributes = parser.ScoreModel.CongenericScoreTracks[0].MeasureList[i].Attributes;
                 Assert.AreEqual(expectedAttributes, actualAttributes);
                 Assert.AreEqual(expectedAttributes.Key, actualAttributes.Key);
                 Assert.AreEqual(expectedAttributes.Size, actualAttributes.Size);

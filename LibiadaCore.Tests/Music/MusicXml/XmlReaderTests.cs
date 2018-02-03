@@ -1,8 +1,9 @@
-using LibiadaCore.Music.MusicXml;
-using NUnit.Framework;
-
 namespace LibiadaCore.Tests.Music.MusicXml
 {
+    using LibiadaCore.Music.MusicXml;
+
+    using NUnit.Framework;
+
     /// <summary>
     /// The xml reader tests.
     /// </summary>

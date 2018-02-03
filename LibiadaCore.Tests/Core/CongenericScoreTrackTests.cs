@@ -1,10 +1,12 @@
-﻿using System.Collections.Generic;
-using LibiadaCore.Core;
-using LibiadaCore.Core.SimpleTypes;
-using NUnit.Framework;
-
-namespace LibiadaCore.Tests.Core
+﻿namespace LibiadaCore.Tests.Core
 {
+    using System.Collections.Generic;
+
+    using LibiadaCore.Core;
+    using LibiadaCore.Core.SimpleTypes;
+
+    using NUnit.Framework;
+
     /// <summary>
     /// The congeneric score track tests.
     /// </summary>
@@ -48,7 +50,7 @@ namespace LibiadaCore.Tests.Core
                 new ValueNote((Pitch)null, new Duration(1, 16, false, 128), false, Tie.None, 1)
             };
 
-            var attr = new Attributes(new Size(4, 4), new Key(5));
+            var attr = new MeasureAttributes(new Size(4, 4), new Key(5));
 
             var m1 = new Measure(notes, attr);
             var m2 = new Measure(notes2, attr);
@@ -126,7 +128,7 @@ namespace LibiadaCore.Tests.Core
                 new ValueNote((Pitch)null, new Duration(1, 16, false, 128), false, Tie.None, 1)
             };
 
-            var attr = new Attributes(new Size(4, 4), new Key(5));
+            var attr = new MeasureAttributes(new Size(4, 4), new Key(5));
 
             var m1 = new Measure(notes, attr);
             var m2 = new Measure(notes2, attr);
@@ -219,7 +221,7 @@ namespace LibiadaCore.Tests.Core
                 new ValueNote((Pitch)null, new Duration(1, 16, false, 128), false, Tie.None, 1)
             };
 
-            var attr = new Attributes(new Size(4, 4, 128), new Key(5));
+            var attr = new MeasureAttributes(new Size(4, 4, 128), new Key(5));
 
             var m1 = new Measure(notes, attr);
             var m2 = new Measure(notes2, attr);

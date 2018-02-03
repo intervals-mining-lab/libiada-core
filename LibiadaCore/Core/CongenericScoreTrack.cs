@@ -1,9 +1,10 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using LibiadaCore.Core.SimpleTypes;
-
-namespace LibiadaCore.Core
+﻿namespace LibiadaCore.Core
 {
+    using System.Collections.Generic;
+    using System.Linq;
+
+    using LibiadaCore.Core.SimpleTypes;
+
     /// <summary>
     /// The congeneric score track.
     /// монофонический (моно) трек

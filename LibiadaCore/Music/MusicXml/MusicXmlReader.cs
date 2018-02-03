@@ -1,9 +1,9 @@
-﻿using System;
-using System.IO;
-using System.Xml;
-
-namespace LibiadaCore.Music.MusicXml
+﻿namespace LibiadaCore.Music.MusicXml
 {
+    using System;
+    using System.IO;
+    using System.Xml;
+
     /// <summary>
     /// The music xml reader.
     /// </summary>

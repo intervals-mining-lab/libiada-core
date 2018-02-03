@@ -1,9 +1,10 @@
-﻿using LibiadaCore.Core;
-using LibiadaCore.Core.SimpleTypes;
-using NUnit.Framework;
-
-namespace LibiadaCore.Tests.Core
+﻿namespace LibiadaCore.Tests.Core
 {
+    using LibiadaCore.Core;
+    using LibiadaCore.Core.SimpleTypes;
+
+    using NUnit.Framework;
+
     /// <summary>
     /// The fmotiv chain tests.
     /// </summary>

@@ -1,8 +1,9 @@
-﻿using LibiadaCore.Core.SimpleTypes;
-using NUnit.Framework;
-
-namespace LibiadaCore.Tests.Core.SimpleTypes
+﻿namespace LibiadaCore.Tests.Core.SimpleTypes
 {
+    using LibiadaCore.Core.SimpleTypes;
+
+    using NUnit.Framework;
+
     /// <summary>
     /// The value note tests.
     /// </summary>

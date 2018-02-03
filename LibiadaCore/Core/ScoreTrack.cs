@@ -1,9 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using LibiadaCore.Core.SimpleTypes;
-
-namespace LibiadaCore.Core
+﻿namespace LibiadaCore.Core
 {
+    using System;
+    using System.Collections.Generic;
+
+    using LibiadaCore.Core.SimpleTypes;
+
     /// <summary>
     /// полный музыкальный текст/трек
     /// </summary>

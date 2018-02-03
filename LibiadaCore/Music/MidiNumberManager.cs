@@ -1,9 +1,10 @@
-﻿using System;
-using System.Linq;
-using LibiadaCore.Core.SimpleTypes;
-
-namespace LibiadaCore.Music
+﻿namespace LibiadaCore.Music
 {
+    using System;
+    using System.Linq;
+
+    using LibiadaCore.Core.SimpleTypes;
+
     /// <summary>
     /// The midi number manager.
     /// </summary>

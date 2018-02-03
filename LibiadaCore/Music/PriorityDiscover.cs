@@ -60,7 +60,7 @@ namespace LibiadaCore.Music
         public void Calculate(Measure measure)
         {
             // создаем новый такт, куда будут складываться ноты, после определения их приоритета.
-            var temp = new Measure(new List<ValueNote>(), (Attributes)measure.Attributes.Clone());
+            var temp = new Measure(new List<ValueNote>(), (MeasureAttributes)measure.Attributes.Clone());
 
             // считаем маску приоритетов для такта
             CalculatePriorityMask(measure);
@@ -318,7 +318,7 @@ namespace LibiadaCore.Music
         public void CalculatePriorityMask(Measure measure)
         {
             // создание объекта маски с атрибутами оригинала и пустым списком нот
-            PriorityMask = new Measure(new List<ValueNote>(), (Attributes)measure.Attributes.Clone());
+            PriorityMask = new Measure(new List<ValueNote>(), (MeasureAttributes)measure.Attributes.Clone());
 
             //---------------------------Занесение начальных долей размера такта---------------------------
             //---------------------------------------------------------------------------------------------
@@ -439,7 +439,7 @@ namespace LibiadaCore.Music
 
             while (!stop)
             {
-                var temp = new Measure(new List<ValueNote>(), (Attributes)PriorityMask.Attributes.Clone());
+                var temp = new Measure(new List<ValueNote>(), (MeasureAttributes)PriorityMask.Attributes.Clone());
 
                 // создание объекта буфера для перехода к следущей маске нижнего уровня
 

@@ -1,7 +1,7 @@
-﻿using System;
-
-namespace LibiadaCore.Core.SimpleTypes
+﻿namespace LibiadaCore.Core.SimpleTypes
 {
+    using System;
+
     /// <summary>
     /// размер в такте
     /// size is beats/beatbase (ex size = 3/4; beats=3; beatbase=4;)

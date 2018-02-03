@@ -1,8 +1,9 @@
-﻿using System.Collections.Generic;
-using LibiadaCore.Core;
-
-namespace LibiadaCore.Music
+﻿namespace LibiadaCore.Music
 {
+    using System.Collections.Generic;
+
+    using LibiadaCore.Core;
+
     /// <summary>
     /// The boroda divider.
     /// </summary>

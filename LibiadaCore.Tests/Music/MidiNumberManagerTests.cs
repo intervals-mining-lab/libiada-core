@@ -1,9 +1,10 @@
-﻿using LibiadaCore.Core.SimpleTypes;
-using LibiadaCore.Music;
-using NUnit.Framework;
-
-namespace LibiadaCore.Tests.Music
+﻿namespace LibiadaCore.Tests.Music
 {
+    using LibiadaCore.Core.SimpleTypes;
+    using LibiadaCore.Music;
+
+    using NUnit.Framework;
+
     /// <summary>
     /// The midi number manager tests.
     /// </summary>

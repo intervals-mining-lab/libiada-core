@@ -1,9 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Security.Cryptography;
-
-namespace LibiadaCore.Core.SimpleTypes
+﻿namespace LibiadaCore.Core.SimpleTypes
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Security.Cryptography;
+
     /// <summary>
     /// Class presenting a note value.
     /// </summary>
@@ -98,9 +98,9 @@ namespace LibiadaCore.Core.SimpleTypes
         public ValueNote(List<int> midiNumbers, Duration duration, bool triplet, Tie tie, int priority = -1)
         {
             Pitch = new List<Pitch>();
-            foreach (var midinumber in midiNumbers)
+            foreach (var midiNumber in midiNumbers)
             {
-                Pitch.Add(new Pitch(midinumber));
+                Pitch.Add(new Pitch(midiNumber));
             }
 
             Tie = tie;
@@ -249,8 +249,7 @@ namespace LibiadaCore.Core.SimpleTypes
         /// </returns>
         public override bool Equals(object obj)
         {
-            var other = obj as ValueNote;
-            if (other == null)
+            if (!(obj is ValueNote other))
             {
                 return false;
             }

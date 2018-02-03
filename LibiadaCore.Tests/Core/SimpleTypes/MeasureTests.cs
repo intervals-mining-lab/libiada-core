@@ -1,9 +1,11 @@
-﻿using System.Collections.Generic;
-using LibiadaCore.Core.SimpleTypes;
-using NUnit.Framework;
-
-namespace LibiadaCore.Tests.Core.SimpleTypes
+﻿namespace LibiadaCore.Tests.Core.SimpleTypes
 {
+    using System.Collections.Generic;
+
+    using LibiadaCore.Core.SimpleTypes;
+
+    using NUnit.Framework;
+
     /// <summary>
     /// The measure tests.
     /// </summary>
@@ -18,7 +20,7 @@ namespace LibiadaCore.Tests.Core.SimpleTypes
         {
             var notes = new List<ValueNote>();
             var notes2 = new List<ValueNote>();
-            var attributes = new Attributes(new Size(4, 4, 512), new Key(5));
+            var attributes = new MeasureAttributes(new Size(4, 4, 512), new Key(5));
 
             notes.Add(new ValueNote(new Pitch(3, NoteSymbol.A, 0), new Duration(1, 4, false, 128), false, Tie.None));
             notes.Add(new ValueNote(new Pitch(3, NoteSymbol.B, 0), new Duration(1, 4, false, 128), false, Tie.None));
@@ -42,8 +44,8 @@ namespace LibiadaCore.Tests.Core.SimpleTypes
         {
             var notes = new List<ValueNote>();
             var notes2 = new List<ValueNote>();
-            var attributes = new Attributes(new Size(4, 4, 512), new Key(5));
-            var attributes2 = new Attributes(new Size(3, 4, 512), new Key(5));
+            var attributes = new MeasureAttributes(new Size(4, 4, 512), new Key(5));
+            var attributes2 = new MeasureAttributes(new Size(3, 4, 512), new Key(5));
 
             notes.Add(new ValueNote(new Pitch(3, NoteSymbol.A, 0), new Duration(1, 4, false, 128), false, Tie.None));
             notes.Add(new ValueNote(new Pitch(3, NoteSymbol.B, 0), new Duration(1, 4, false, 128), false, Tie.None));

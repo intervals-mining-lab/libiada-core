@@ -1,9 +1,10 @@
-﻿using System.Linq;
-using LibiadaCore.Core;
-using LibiadaCore.Core.SimpleTypes;
-
-namespace LibiadaCore.Music
+﻿namespace LibiadaCore.Music
 {
+    using System.Linq;
+
+    using LibiadaCore.Core;
+    using LibiadaCore.Core.SimpleTypes;
+
     /// <summary>
     /// The fmotiv identifier.
     /// </summary>

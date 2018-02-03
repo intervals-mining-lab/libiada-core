@@ -2,12 +2,11 @@
 {
     /// <summary>
     /// Measure attributes.
-    /// атрибуты такта.
     /// </summary>
-    public class Attributes : IBaseObject
+    public class MeasureAttributes : IBaseObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="Attributes"/> class.
+        /// Initializes a new instance of the <see cref="MeasureAttributes"/> class.
         /// </summary>
         /// <param name="size">
         /// The size.
@@ -15,7 +14,7 @@
         /// <param name="key">
         /// The key.
         /// </param>
-        public Attributes(Size size, Key key)
+        public MeasureAttributes(Size size, Key key)
         {
             if (size != null)
             {
@@ -46,7 +45,7 @@
         /// </returns>
         public IBaseObject Clone()
         {
-            return new Attributes(Size, Key);
+            return new MeasureAttributes(Size, Key);
         }
 
         /// <summary>
@@ -60,7 +59,7 @@
         /// </returns>
         public override bool Equals(object obj)
         {
-            if (Key.Equals(((Attributes)obj).Key) && Size.Equals(((Attributes)obj).Size))
+            if (Key.Equals(((MeasureAttributes)obj).Key) && Size.Equals(((MeasureAttributes)obj).Size))
             {
                 return true;
             }

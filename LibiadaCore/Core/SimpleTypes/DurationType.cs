@@ -1,7 +1,7 @@
-﻿using System;
-
-namespace LibiadaCore.Core.SimpleTypes
+﻿namespace LibiadaCore.Core.SimpleTypes
 {
+    using System;
+
     /// <summary>
     /// The duration type.
     /// </summary>

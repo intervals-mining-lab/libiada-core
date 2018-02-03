@@ -1,9 +1,10 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using LibiadaCore.Core.SimpleTypes;
-
-namespace LibiadaCore.Core
+﻿namespace LibiadaCore.Core
 {
+    using System.Collections.Generic;
+    using System.Linq;
+
+    using LibiadaCore.Core.SimpleTypes;
+
     /// <summary>
     /// класс для хранения последовательности ф-мотив
     /// </summary>
@@ -18,7 +19,7 @@ namespace LibiadaCore.Core
         }
 
         /// <summary>
-        /// Gets fmotives list.
+        /// Gets fmotifs list.
         /// </summary>
         public List<Fmotiv> FmotivList { get; private set; }
 

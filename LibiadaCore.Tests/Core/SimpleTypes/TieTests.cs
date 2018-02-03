@@ -1,10 +1,12 @@
-﻿using System.Linq;
-using LibiadaCore.Core.SimpleTypes;
-using LibiadaCore.Extensions;
-using NUnit.Framework;
-
-namespace LibiadaCore.Tests.Core.SimpleTypes
+﻿namespace LibiadaCore.Tests.Core.SimpleTypes
 {
+    using System.Linq;
+
+    using LibiadaCore.Core.SimpleTypes;
+    using LibiadaCore.Extensions;
+
+    using NUnit.Framework;
+
     /// <summary>
     /// Tie enum tests.
     /// </summary>

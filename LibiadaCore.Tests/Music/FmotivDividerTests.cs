@@ -1,11 +1,13 @@
-﻿using System.Collections.Generic;
-using LibiadaCore.Core;
-using LibiadaCore.Core.SimpleTypes;
-using LibiadaCore.Music;
-using NUnit.Framework;
-
-namespace LibiadaCore.Tests.Music
+﻿namespace LibiadaCore.Tests.Music
 {
+    using System.Collections.Generic;
+
+    using LibiadaCore.Core;
+    using LibiadaCore.Core.SimpleTypes;
+    using LibiadaCore.Music;
+
+    using NUnit.Framework;
+
     /// <summary>
     /// The fmotiv divider tests.
     /// </summary>
@@ -30,10 +32,10 @@ namespace LibiadaCore.Tests.Music
             };
 
             // создание атрибутов для такта(ов)
-            var attributes = new Attributes(new Size(2, 4, 1024), new Key(0, "major"));
+            var attributes = new MeasureAttributes(new Size(2, 4, 1024), new Key(0, "major"));
 
             // создание и заполнение такта(ов) списками нот и атрибутами
-            var measures = new List<Measure> { new Measure(notes, (Attributes)attributes.Clone()) };
+            var measures = new List<Measure> { new Measure(notes, (MeasureAttributes)attributes.Clone()) };
 
             // создание моно трека
             var unitrack = new CongenericScoreTrack("track1", measures);
@@ -81,10 +83,10 @@ namespace LibiadaCore.Tests.Music
             };
 
             // создание атрибутов для такта(ов)
-            var attributes = new Attributes(new Size(2, 4, 1024), new Key(0, "major"));
+            var attributes = new MeasureAttributes(new Size(2, 4, 1024), new Key(0, "major"));
 
             // создание и заполнение такта(ов) списками нот и атрибутами
-            var measures = new List<Measure> { new Measure(notes, (Attributes)attributes.Clone()) };
+            var measures = new List<Measure> { new Measure(notes, (MeasureAttributes)attributes.Clone()) };
 
             // создание моно трека
             var unitrack = new CongenericScoreTrack("track1", measures);
@@ -137,13 +139,13 @@ namespace LibiadaCore.Tests.Music
             };
 
             // создание атрибутов для такта(ов)
-            var attributes = new Attributes(new Size(2, 4, 1024), new Key(0, "major"));
+            var attributes = new MeasureAttributes(new Size(2, 4, 1024), new Key(0, "major"));
 
             // создание и заполнение такта(ов) списками нот и атрибутами
             var measures = new List<Measure>
             {
-                new Measure(notes, (Attributes)attributes.Clone()),
-                new Measure(notes1, (Attributes)attributes.Clone())
+                new Measure(notes, (MeasureAttributes)attributes.Clone()),
+                new Measure(notes1, (MeasureAttributes)attributes.Clone())
             };
 
             // создание моно трека
@@ -195,10 +197,10 @@ namespace LibiadaCore.Tests.Music
             };
 
             // создание атрибутов для такта(ов)
-            var attributes = new Attributes(new Size(2, 4, 1024), new Key(0, "major"));
+            var attributes = new MeasureAttributes(new Size(2, 4, 1024), new Key(0, "major"));
 
             // создание и заполнение такта(ов) списками нот и атрибутами
-            var measures = new List<Measure> { new Measure(notes, (Attributes)attributes.Clone()) };
+            var measures = new List<Measure> { new Measure(notes, (MeasureAttributes)attributes.Clone()) };
 
             // создание моно трека
             var unitrack = new CongenericScoreTrack("track1", measures);
@@ -243,10 +245,10 @@ namespace LibiadaCore.Tests.Music
             };
 
             // создание атрибутов для такта(ов)
-            var attributes = new Attributes(new Size(2, 4, 1440), new Key(0, "major"));
+            var attributes = new MeasureAttributes(new Size(2, 4, 1440), new Key(0, "major"));
 
             // создание и заполнение такта(ов) списками нот и атрибутами
-            var measures = new List<Measure> { new Measure(notes, (Attributes)attributes.Clone()) };
+            var measures = new List<Measure> { new Measure(notes, (MeasureAttributes)attributes.Clone()) };
 
             // создание моно трека
             var unitrack = new CongenericScoreTrack("track1", measures);
@@ -296,10 +298,10 @@ namespace LibiadaCore.Tests.Music
             };
 
             // создание атрибутов для такта(ов)
-            var attributes = new Attributes(new Size(2, 4, 1024), new Key(0, "major"));
+            var attributes = new MeasureAttributes(new Size(2, 4, 1024), new Key(0, "major"));
 
             // создание и заполнение такта(ов) списками нот и атрибутами
-            var measures = new List<Measure> { new Measure(notes, (Attributes)attributes.Clone()) };
+            var measures = new List<Measure> { new Measure(notes, (MeasureAttributes)attributes.Clone()) };
 
             // создание моно трека
             var unitrack = new CongenericScoreTrack("track1", measures);
@@ -350,10 +352,10 @@ namespace LibiadaCore.Tests.Music
             };
 
             // создание атрибутов для такта(ов)
-            var attributes = new Attributes(new Size(2, 4, 1024), new Key(0, "major"));
+            var attributes = new MeasureAttributes(new Size(2, 4, 1024), new Key(0, "major"));
 
             // создание и заполнение такта(ов) списками нот и атрибутами
-            var measures = new List<Measure> { new Measure(notes, (Attributes)attributes.Clone()) };
+            var measures = new List<Measure> { new Measure(notes, (MeasureAttributes)attributes.Clone()) };
 
             // создание моно трека
             var unitrack = new CongenericScoreTrack("track1", measures);
@@ -396,10 +398,10 @@ namespace LibiadaCore.Tests.Music
             };
 
             // создание атрибутов для такта(ов)
-            var attributes = new Attributes(new Size(2, 4, 1024), new Key(0, "major"));
+            var attributes = new MeasureAttributes(new Size(2, 4, 1024), new Key(0, "major"));
 
             // создание и заполнение такта(ов) списками нот и атрибутами
-            var measures = new List<Measure> { new Measure(notes, (Attributes)attributes.Clone()) };
+            var measures = new List<Measure> { new Measure(notes, (MeasureAttributes)attributes.Clone()) };
 
             // создание моно трека
             var unitrack = new CongenericScoreTrack("track1", measures);
@@ -443,10 +445,10 @@ namespace LibiadaCore.Tests.Music
             };
 
             // создание атрибутов для такта(ов)
-            var attributes = new Attributes(new Size(2, 4, 1024), new Key(0, "major"));
+            var attributes = new MeasureAttributes(new Size(2, 4, 1024), new Key(0, "major"));
 
             // создание и заполнение такта(ов) списками нот и атрибутами
-            var measures = new List<Measure> { new Measure(notes, (Attributes)attributes.Clone()) };
+            var measures = new List<Measure> { new Measure(notes, (MeasureAttributes)attributes.Clone()) };
 
             // создание моно трека
             var unitrack = new CongenericScoreTrack("track1", measures);

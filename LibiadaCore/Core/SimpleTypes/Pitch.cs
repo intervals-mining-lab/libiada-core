@@ -1,9 +1,10 @@
-﻿using System;
-using System.Security.Cryptography;
-using LibiadaCore.Music;
-
-namespace LibiadaCore.Core.SimpleTypes
+﻿namespace LibiadaCore.Core.SimpleTypes
 {
+    using System;
+    using System.Security.Cryptography;
+
+    using LibiadaCore.Music;
+
     /// <summary>
     /// высота ноты
     /// </summary>

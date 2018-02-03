@@ -1,8 +1,8 @@
-﻿using System.ComponentModel;
-using System.ComponentModel.DataAnnotations;
-
-namespace LibiadaCore.Core.SimpleTypes
+﻿namespace LibiadaCore.Core.SimpleTypes
 {
+    using System.ComponentModel;
+    using System.ComponentModel.DataAnnotations;
+
     /// <summary>
     /// The fmotiv type.
     /// </summary>
@@ -42,7 +42,7 @@ namespace LibiadaCore.Core.SimpleTypes
         /// Can be calculated as sum of both mentioned above.
         /// </summary>
         [Display(Name = "Complete minimal metrorhythmic group")]
-        [Description("One of two subtypes of minimal metrorhythmic group with complete minimal measure at the begining")]
+        [Description("One of two subtypes of minimal metrorhythmic group with complete minimal measure at the beginning")]
         CompleteMinimalMetrorhythmicGroup = 4,
 
         /// <summary>
@@ -51,7 +51,7 @@ namespace LibiadaCore.Core.SimpleTypes
         /// Can be calculated as sum of both mentioned above.
         /// </summary>
         [Display(Name = "Partial minimal metrorhythmic group")]
-        [Description("One of two subtypes of minimal metrorhythmic group with partial minimal measure at the begining")]
+        [Description("One of two subtypes of minimal metrorhythmic group with partial minimal measure at the beginning")]
         PartialMinimalMetrorhythmicGroup = 5
     }
 }

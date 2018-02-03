@@ -1,10 +1,10 @@
-﻿using System;
-using System.Security.Cryptography;
-
-namespace LibiadaCore.Core.SimpleTypes
+﻿namespace LibiadaCore.Core.SimpleTypes
 {
+    using System;
+    using System.Security.Cryptography;
+
     /// <summary>
-    /// длительности ноты
+    /// Note duration
     /// </summary>
     public class Duration : IBaseObject
     {

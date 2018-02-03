@@ -1,8 +1,8 @@
-﻿using System.ComponentModel;
-using System.ComponentModel.DataAnnotations;
-
-namespace LibiadaCore.Core.SimpleTypes
+﻿namespace LibiadaCore.Core.SimpleTypes
 {
+    using System.ComponentModel;
+    using System.ComponentModel.DataAnnotations;
+
     /// <summary>
     /// Instrument of the pitch.
     /// </summary>

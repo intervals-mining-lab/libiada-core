@@ -1,8 +1,8 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-
-namespace LibiadaCore.Core.SimpleTypes
+﻿namespace LibiadaCore.Core.SimpleTypes
 {
+    using System.Collections.Generic;
+    using System.Linq;
+
     /// <summary>
     /// The measure.
     /// </summary>
@@ -17,11 +17,11 @@ namespace LibiadaCore.Core.SimpleTypes
         /// <param name="attributes">
         /// The attributes.
         /// </param>
-        public Measure(List<ValueNote> noteList, Attributes attributes)
+        public Measure(List<ValueNote> noteList, MeasureAttributes attributes)
         {
             if (attributes != null)
             {
-                Attributes = (Attributes)attributes.Clone();
+                Attributes = (MeasureAttributes)attributes.Clone();
             }
 
             NoteList = new List<ValueNote>();
@@ -42,7 +42,7 @@ namespace LibiadaCore.Core.SimpleTypes
         /// <summary>
         /// Gets the attributes.
         /// </summary>
-        public Attributes Attributes { get; private set; }
+        public MeasureAttributes Attributes { get; private set; }
 
         /// <summary>
         /// Gets or sets the id of measure.

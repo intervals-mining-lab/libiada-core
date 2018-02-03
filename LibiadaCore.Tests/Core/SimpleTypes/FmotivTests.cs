@@ -1,11 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using LibiadaCore.Core.SimpleTypes;
-using LibiadaCore.Music;
-using NUnit.Framework;
-
-namespace LibiadaCore.Tests.Core.SimpleTypes
+﻿namespace LibiadaCore.Tests.Core.SimpleTypes
 {
+    using System;
+    using System.Collections.Generic;
+
+    using LibiadaCore.Core.SimpleTypes;
+    using LibiadaCore.Music;
+
+    using NUnit.Framework;
+
     /// <summary>
     /// The fmotiv tests.
     /// </summary>
@@ -18,7 +20,7 @@ namespace LibiadaCore.Tests.Core.SimpleTypes
         private readonly ValueNote note = new ValueNote(new Pitch(1, NoteSymbol.E, Accidental.Bekar), new Duration(1, 4, false, 480), false, Tie.None);
 
         /// <summary>
-        /// The anote.
+        /// The a note.
         /// </summary>
         private readonly ValueNote aNote = new ValueNote(new Pitch(1, NoteSymbol.B, Accidental.Bekar), new Duration(1, 2, false, 960), false, 0);
 

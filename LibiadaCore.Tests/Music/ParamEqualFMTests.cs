@@ -1,8 +1,9 @@
-﻿using LibiadaCore.Music;
-using NUnit.Framework;
-
-namespace LibiadaCore.Tests.Music
+﻿namespace LibiadaCore.Tests.Music
 {
+    using LibiadaCore.Music;
+
+    using NUnit.Framework;
+
     /// <summary>
     /// The param equal fm tests.
     /// </summary>

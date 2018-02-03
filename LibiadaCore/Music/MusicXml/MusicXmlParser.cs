@@ -1,12 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Xml;
-using LibiadaCore.Core;
-using LibiadaCore.Core.SimpleTypes;
-
-namespace LibiadaCore.Music.MusicXml
+﻿namespace LibiadaCore.Music.MusicXml
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Xml;
+
+    using LibiadaCore.Core;
+    using LibiadaCore.Core.SimpleTypes;
+
     /// <summary>
     /// The music xml parser.
     /// </summary>
@@ -15,7 +16,7 @@ namespace LibiadaCore.Music.MusicXml
         /// <summary>
         /// The current attributes.
         /// </summary>
-        private Attributes currentAttributes;
+        private MeasureAttributes currentAttributes;
 
         /// <summary>
         /// Gets score model.
@@ -118,9 +119,9 @@ namespace LibiadaCore.Music.MusicXml
         /// The measure node.
         /// </param>
         /// <returns>
-        /// The <see cref="Attributes"/>.
+        /// The <see cref="MeasureAttributes"/>.
         /// </returns>
-        private Attributes ParseAttributes(XmlNode measureNode)
+        private MeasureAttributes ParseAttributes(XmlNode measureNode)
         {
             foreach (XmlNode measureChild in measureNode.ChildNodes)
             {
@@ -130,7 +131,7 @@ namespace LibiadaCore.Music.MusicXml
 
                     Size size = ParseSize(measureChild.Clone()) ?? (Size)currentAttributes.Size.Clone();
 
-                    currentAttributes = new Attributes(size, key);
+                    currentAttributes = new MeasureAttributes(size, key);
                     return currentAttributes;
                 }
             }
