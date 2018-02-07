@@ -6,7 +6,7 @@
     /// <summary>
     /// The fmotiv type.
     /// </summary>
-    public enum FmotivType : byte
+    public enum FmotifType : byte
     {
         /// <summary>
         /// Temporary state until segmentation algorithm will be refactored.

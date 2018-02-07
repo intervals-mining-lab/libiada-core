@@ -10,7 +10,7 @@
     /// <summary>
     /// Fmotiv type enum tests.
     /// </summary>
-    [TestFixture(TestOf = typeof(FmotivType))]
+    [TestFixture(TestOf = typeof(FmotifType))]
     public class FmotivTypeTests
     {
         /// <summary>
@@ -24,7 +24,7 @@
         [Test]
         public void FmotivTypeCountTest()
         {
-            var actualCount = EnumExtensions.ToArray<FmotivType>().Length;
+            var actualCount = EnumExtensions.ToArray<FmotifType>().Length;
             Assert.AreEqual(FmotivTypesCount, actualCount);
         }
 
@@ -34,10 +34,10 @@
         [Test]
         public void FmotivTypeValuesTest()
         {
-            var fmotivTypes = EnumExtensions.ToArray<FmotivType>();
+            var fmotivTypes = EnumExtensions.ToArray<FmotifType>();
             for (int i = 0; i < FmotivTypesCount; i++)
             {
-                Assert.IsTrue(fmotivTypes.Contains((FmotivType)i));
+                Assert.IsTrue(fmotivTypes.Contains((FmotifType)i));
             }
         }
 
@@ -50,13 +50,13 @@
         /// <param name="name">
         /// The name.
         /// </param>
-        [TestCase((FmotivType)0, "None")]
-        [TestCase((FmotivType)1, "CompleteMinimalMeasure")]
-        [TestCase((FmotivType)2, "PartialMinimalMeasure")]
-        [TestCase((FmotivType)3, "IncreasingSequence")]
-        [TestCase((FmotivType)4, "CompleteMinimalMetrorhythmicGroup")]
-        [TestCase((FmotivType)5, "PartialMinimalMetrorhythmicGroup")]
-        public void FmotivTypeNamesTest(FmotivType fmotivType, string name)
+        [TestCase((FmotifType)0, "None")]
+        [TestCase((FmotifType)1, "CompleteMinimalMeasure")]
+        [TestCase((FmotifType)2, "PartialMinimalMeasure")]
+        [TestCase((FmotifType)3, "IncreasingSequence")]
+        [TestCase((FmotifType)4, "CompleteMinimalMetrorhythmicGroup")]
+        [TestCase((FmotifType)5, "PartialMinimalMetrorhythmicGroup")]
+        public void FmotivTypeNamesTest(FmotifType fmotivType, string name)
         {
             Assert.AreEqual(name, fmotivType.GetName());
         }
@@ -68,7 +68,7 @@
         /// The fmotiv type.
         /// </param>
         [Test]
-        public void FmotivTypeHasDisplayValueTest([Values]FmotivType fmotivType)
+        public void FmotivTypeHasDisplayValueTest([Values]FmotifType fmotivType)
         {
             Assert.IsFalse(string.IsNullOrEmpty(fmotivType.GetDisplayValue()));
         }
@@ -80,7 +80,7 @@
         /// The fmotiv type.
         /// </param>
         [Test]
-        public void FmotivTypeHasDescriptionTest([Values]FmotivType fmotivType)
+        public void FmotivTypeHasDescriptionTest([Values]FmotifType fmotivType)
         {
             Assert.IsFalse(string.IsNullOrEmpty(fmotivType.GetDescription()));
         }
@@ -91,7 +91,7 @@
         [Test]
         public void FmotivTypeValuesUniqueTest()
         {
-            var fmotivTypes = EnumExtensions.ToArray<FmotivType>();
+            var fmotivTypes = EnumExtensions.ToArray<FmotifType>();
             var fmotivTypeValues = fmotivTypes.Cast<byte>();
             Assert.That(fmotivTypeValues, Is.Unique);
         }

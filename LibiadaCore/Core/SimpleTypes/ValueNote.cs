@@ -98,7 +98,7 @@
         public ValueNote(List<int> midiNumbers, Duration duration, bool triplet, Tie tie, int priority = -1)
         {
             Pitch = new List<Pitch>();
-            foreach (var midiNumber in midiNumbers)
+            foreach (int midiNumber in midiNumbers)
             {
                 Pitch.Add(new Pitch(midiNumber));
             }
@@ -152,7 +152,7 @@
         {
             var clone = new List<ValueNote>(0) { (ValueNote)Clone(), (ValueNote)Clone() };
             clone[0].Duration = duration;
-            clone[1].Duration = Duration.SubDuration(duration);
+            clone[1].Duration = Duration.SubtractDuration(duration);
             return clone;
         }
 
@@ -277,7 +277,7 @@
             return Duration.Equals(other.Duration) && PitchEquals(other.Pitch) && (Tie == other.Tie) && (Triplet == other.Triplet);
 
             // TODO: сделать сравнение не по всей ноте/объекту, а еще только по месту например,
-            // TODO: из сравнения исключить триплет, так может различать одинаковые по длительности ноты, но записанные по разному(!)
+            // TODO: из сравнения исключить триплет, так можно различать одинаковые по длительности ноты, но записанные по разному(!)
         }
 
         /// <summary>
@@ -289,7 +289,7 @@
         public new byte[] GetHashCode()
         {
             var hash = new List<byte>();
-            foreach (var pitch in Pitch)
+            foreach (Pitch pitch in Pitch)
             {
                 hash.AddRange(pitch.GetHashCode());
             }

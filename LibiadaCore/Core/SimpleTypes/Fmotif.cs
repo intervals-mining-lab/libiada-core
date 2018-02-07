@@ -7,12 +7,12 @@
     using LibiadaCore.Music;
 
     /// <summary>
-    /// класс для хранения ф-мотива
+    /// Class representing formal motif.
     /// </summary>
-    public class Fmotiv : IBaseObject
+    public class Fmotif : IBaseObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="Fmotiv"/> class.
+        /// Initializes a new instance of the <see cref="Fmotif"/> class.
         /// </summary>
         /// <param name="type">
         /// The type.
@@ -22,11 +22,12 @@
         /// порядковый номер - идентификатор
         /// (возможно введения доп id - глобального для словаря ф-мотивов)
         /// </param>
-        public Fmotiv(FmotivType type, int id = -1)
+        public Fmotif(FmotifType type, ParamPauseTreatment pauseTreatmentParameter, int id = -1)
         {
             Id = id;
             Type = type;
             NoteList = new List<ValueNote>();
+            PauseTreatmentParameter = pauseTreatmentParameter;
         }
 
         /// <summary>
@@ -37,13 +38,14 @@
         /// <summary>
         /// Gets or sets the type.
         /// </summary>
-        public FmotivType Type { get; set; }
+        public FmotifType Type { get; set; }
 
         /// <summary>
         /// Gets or sets id (-1 means not defined).
         /// </summary>
         public int Id { get; set; }
 
+        public ParamPauseTreatment PauseTreatmentParameter { get; private set; }
         // TODO: убрать все частные и заменить на общие!!!!!!!!! заменил все withoutpauses() на PauseTreatment с параметорм ignore
 
         /// <summary>
@@ -53,19 +55,19 @@
         /// The param pause treatment.
         /// </param>
         /// <returns>
-        /// The <see cref="Fmotiv"/>.
+        /// The <see cref="Fmotif"/>.
         /// </returns>
         /// <exception cref="Exception">
         /// Thrown if paramPauseTreatment is unknown.
         /// </exception>
-        public Fmotiv PauseTreatment(ParamPauseTreatment paramPauseTreatment)
+        public Fmotif PauseTreatment(ParamPauseTreatment paramPauseTreatment)
         {
             // возвращает копию этого объекта
             switch (paramPauseTreatment)
             {
                 case ParamPauseTreatment.Ignore:
                         // удаляем все паузы в возвращаемом объекте (0) (паузы игнорируются)
-                        var temp = (Fmotiv)Clone();
+                        var temp = (Fmotif)Clone();
                         for (int i = 0; i < temp.NoteList.Count; i++)
                         {
                             if (temp.NoteList[i].Pitch != null && temp.NoteList[i].Pitch.Count == 0)
@@ -80,7 +82,7 @@
                 case ParamPauseTreatment.NoteTrace:
                         // длительность паузы прибавляется к предыдущей ноте,
                         // а она сама удаляется из текста (1) (пауза - звуковой след ноты)
-                        var temp2 = (Fmotiv)Clone();
+                        var temp2 = (Fmotif)Clone();
 
                         // если пауза стоит вначале текста (и текст не пустой) то она удаляется
                         while (temp2.NoteList.Count > 0)
@@ -111,7 +113,7 @@
                 case ParamPauseTreatment.SilenceNote:
                         // Пауза - звук тишины, рассматривается как нота без высоты звучания (2)
                         // ничего не треуется
-                        return (Fmotiv)Clone();
+                        return (Fmotif)Clone();
 
                 default:
                     throw new InvalidEnumArgumentException(nameof(paramPauseTreatment), (int)paramPauseTreatment, typeof(ParamPauseTreatment));
@@ -122,18 +124,18 @@
         /// The tie gathered.
         /// </summary>
         /// <returns>
-        /// The <see cref="Fmotiv"/>.
+        /// The <see cref="Fmotif"/>.
         /// </returns>
         /// <exception cref="Exception">
         /// Thrown in many cases.
         /// </exception>
-        public Fmotiv TieGathered()
+        public Fmotif TieGathered()
         {
             // возвращает копию этого объекта, соединив все залигованные ноты, если такие имеются
             // (тоесть вместо трех залигованных нот в фмотиве будет отображаться одна, с суммарной длительностью но такой же высотой
             ValueNote buffNote = null;
-            var temp = (Fmotiv)Clone();
-            var tempGathered = new Fmotiv(Type, Id);
+            var temp = (Fmotif)Clone();
+            var tempGathered = new Fmotif(Type, PauseTreatmentParameter, Id);
 
             int count = temp.NoteList.Count;
 
@@ -241,7 +243,7 @@
         /// </returns>
         public IBaseObject Clone()
         {
-            var clone = new Fmotiv(Type, Id);
+            var clone = new Fmotif(Type, PauseTreatmentParameter, Id);
             foreach (ValueNote note in NoteList)
             {
                 clone.NoteList.Add((ValueNote)note.Clone());
@@ -262,8 +264,8 @@
         public override bool Equals(object obj)
         {
             // для сравнения паузы не нужны, поэтому сравнивае ф-мотивы без пауз (они игнорируются, но входят в состав ф-мотива)
-            Fmotiv self = PauseTreatment(ParamPauseTreatment.Ignore).TieGathered();
-            Fmotiv other = ((Fmotiv)obj).PauseTreatment(ParamPauseTreatment.Ignore).TieGathered();
+            Fmotif self = PauseTreatment(ParamPauseTreatment.Ignore).TieGathered();
+            Fmotif other = ((Fmotif)obj).PauseTreatment(ParamPauseTreatment.Ignore).TieGathered();
             int modulation = 0;
             bool firstTime = true;
 
@@ -336,8 +338,8 @@
         public bool FmEquals(object obj, ParamPauseTreatment paramPauseTreatment, ParamEqualFM paramEqualFM)
         {
             // для сравнения паузы не нужны, поэтому сравнивае ф-мотивы без пауз (они игнорируются, но входят в состав ф-мотива)
-            Fmotiv self = PauseTreatment(paramPauseTreatment).TieGathered();
-            Fmotiv other = ((Fmotiv)obj).PauseTreatment(paramPauseTreatment).TieGathered();
+            Fmotif self = PauseTreatment(paramPauseTreatment).TieGathered();
+            Fmotif other = ((Fmotif)obj).PauseTreatment(paramPauseTreatment).TieGathered();
             int modulation = 0;
             bool firstTime = true;
 

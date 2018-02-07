@@ -1,6 +1,7 @@
 ﻿namespace LibiadaCore.Core.SimpleTypes
 {
     using System;
+    using System.IO.Compression;
 
     /// <summary>
     /// The duration type.
@@ -19,54 +20,55 @@
         /// <exception cref="Exception">
         /// Thrown if type is unknown.
         /// </exception>
-        public static int[] ParseType(string type)
+        public static (int, int) ParseType(string type)
         {
             // формируем массив из 2 элементов Numerator и Denominator по типу длительности
-            var numDenom = new int[2];
+            int numerator;
+            int denominator;
             switch (type)
             {
                 case "whole":
-                    numDenom[0] = 1;
-                    numDenom[1] = 1;
+                    numerator = 1;
+                    denominator = 1;
                     break;
                 case "half":
-                    numDenom[0] = 1;
-                    numDenom[1] = 2;
+                    numerator = 1;
+                    denominator = 2;
                     break;
                 case "quarter":
-                    numDenom[0] = 1;
-                    numDenom[1] = 4;
+                    numerator = 1;
+                    denominator = 4;
                     break;
                 case "eighth":
-                    numDenom[0] = 1;
-                    numDenom[1] = 8;
+                    numerator = 1;
+                    denominator = 8;
                     break;
                 case "16th":
-                    numDenom[0] = 1;
-                    numDenom[1] = 16;
+                    numerator = 1;
+                    denominator = 16;
                     break;
-                case "32nd": // в Guiter Pro обозначается 32th - как 1/32.. мде..
+                case "32nd": // в Guitar Pro обозначается 32th - как 1/32.. мде..
                 case "32th":
-                    numDenom[0] = 1;
-                    numDenom[1] = 32;
+                    numerator = 1;
+                    denominator = 32;
                     break;
                 case "64th":
-                    numDenom[0] = 1;
-                    numDenom[1] = 64;
+                    numerator = 1;
+                    denominator = 64;
                     break;
                 case "128th":
-                    numDenom[0] = 1;
-                    numDenom[1] = 128;
+                    numerator = 1;
+                    denominator = 128;
                     break;
                 case "256th":
-                    numDenom[0] = 1;
-                    numDenom[1] = 256;
+                    numerator = 1;
+                    denominator = 256;
                     break;
                 default:
                     throw new InvalidOperationException($"Unknown duration type {type}");
             }
 
-            return numDenom;
+            return (numerator, denominator);
         }
     }
 }

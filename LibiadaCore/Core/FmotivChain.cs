@@ -8,20 +8,20 @@
     /// <summary>
     /// класс для хранения последовательности ф-мотив
     /// </summary>
-    public class FmotivChain : IBaseObject
+    public class FmotifChain : IBaseObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="FmotivChain"/> class.
+        /// Initializes a new instance of the <see cref="FmotifChain"/> class.
         /// </summary>
-        public FmotivChain()
+        public FmotifChain()
         {
-            FmotivList = new List<Fmotiv>();
+            FmotifsList = new List<Fmotif>();
         }
 
         /// <summary>
         /// Gets fmotifs list.
         /// </summary>
-        public List<Fmotiv> FmotivList { get; private set; }
+        public List<Fmotif> FmotifsList { get; private set; }
 
         /// <summary>
         /// Gets or sets name of mono track.
@@ -41,10 +41,10 @@
         /// </returns>
         public IBaseObject Clone()
         {
-            var clone = new FmotivChain();
-            foreach (Fmotiv fmotiv in FmotivList)
+            var clone = new FmotifChain();
+            foreach (Fmotif fmotiv in FmotifsList)
             {
-                clone.FmotivList.Add((Fmotiv)fmotiv.Clone());
+                clone.FmotifsList.Add((Fmotif)fmotiv.Clone());
             }
 
             clone.Id = Id;
@@ -64,13 +64,13 @@
         /// </returns>
         public override bool Equals(object obj)
         {
-            var other = (FmotivChain)obj;
+            var other = (FmotifChain)obj;
             if (Name != other.Name || Id != other.Id)
             {
                 return false;
             }
 
-            return FmotivList.SequenceEqual(other.FmotivList);
+            return FmotifsList.SequenceEqual(other.FmotifsList);
         }
     }
 }

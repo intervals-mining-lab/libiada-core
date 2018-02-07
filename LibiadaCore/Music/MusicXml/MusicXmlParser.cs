@@ -469,13 +469,15 @@
                 }
             }
 
+            (int numerator, int denominator) = DurationType.ParseType(type);
+
             if (hasTimeModification)
             {
-                var parsedType = DurationType.ParseType(type);
-                return new Duration(parsedType[0], parsedType[1], normalNotes, actualNotes, dot, duration);
+                return new Duration(numerator, denominator, normalNotes, actualNotes, dot, duration);
             }
 
-            return new Duration(DurationType.ParseType(type)[0], DurationType.ParseType(type)[1], dot, duration);
+
+            return new Duration(numerator, denominator, dot, duration);
         }
     }
 }

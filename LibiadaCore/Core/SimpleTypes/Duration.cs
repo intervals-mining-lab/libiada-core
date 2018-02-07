@@ -45,11 +45,11 @@
         /// <param name="denominator">
         /// The denominator.
         /// </param>
-        /// <param name="tripletnum">
-        /// The tripletnum.
+        /// <param name="tripleNumerator">
+        /// The triple numerator.
         /// </param>
-        /// <param name="tripletdenom">
-        /// The tripletdenom.
+        /// <param name="tripleDenominator">
+        /// The triple denominator.
         /// </param>
         /// <param name="doted">
         /// The doted.
@@ -57,14 +57,14 @@
         /// <param name="ticks">
         /// The ticks.
         /// </param>
-        public Duration(int numerator, int denominator, int tripletnum, int tripletdenom, bool doted, int ticks)
+        public Duration(int numerator, int denominator, int tripleNumerator, int tripleDenominator, bool doted, int ticks)
         {
             Numerator = numerator;
             Denominator = denominator;
             Onumerator = numerator;
             Odenominator = denominator;
             Ticks = ticks;
-            PlaceTriplet(tripletnum, tripletdenom);
+            PlaceTriplet(tripleNumerator, tripleDenominator);
             if (doted)
             {
                 PlaceDot();
@@ -135,6 +135,8 @@
             int newnum = (Numerator * duration.Denominator) + (duration.Numerator * Denominator);
             int newdenom = Denominator * duration.Denominator;
 
+            //TODO: проверить избыточность одного из циклов
+
             for (int i = 2; i <= newnum; i++)
             {
                 // если числитель делится на i
@@ -188,7 +190,7 @@
         /// <returns>
         /// The <see cref="Duration"/>.
         /// </returns>
-        public Duration SubDuration(Duration duration)
+        public Duration SubtractDuration(Duration duration)
         {
             var temp = (Duration)duration.Clone();
             temp.Ticks = -temp.Ticks;
@@ -246,7 +248,7 @@
         }
 
         /// <summary>
-        /// The placedot.
+        /// The place dot.
         /// </summary>
         private void PlaceDot()
         {
@@ -265,16 +267,16 @@
         /// <summary>
         /// The place triplet.
         /// </summary>
-        /// <param name="triplnum">
-        /// The triplnum.
+        /// <param name="tripleNumerator">
+        /// The triple numerator.
         /// </param>
-        /// <param name="tripldenom">
-        /// The tripldenom.
+        /// <param name="tripleDenominator">
+        /// The triple denominator.
         /// </param>
-        private void PlaceTriplet(int triplnum, int tripldenom)
+        private void PlaceTriplet(int tripleNumerator, int tripleDenominator)
         {
-            Numerator = Numerator * triplnum;
-            Denominator = Denominator * tripldenom;
+            Numerator = Numerator * tripleNumerator;
+            Denominator = Denominator * tripleDenominator;
         }
     }
 }

@@ -12,49 +12,49 @@
         /// C note.
         /// </summary>
         [Display(Name = "C")]
-        [Description("До")]
+        [Description("Do")]
         C = 0,
 
         /// <summary>
         /// D note.
         /// </summary>
         [Display(Name = "D")]
-        [Description("Ре")]
+        [Description("Re")]
         D = 2,
 
         /// <summary>
         /// E note.
         /// </summary>
         [Display(Name = "E")]
-        [Description("Ми")]
+        [Description("Mi")]
         E = 4,
 
         /// <summary>
         /// F note.
         /// </summary>
         [Display(Name = "F")]
-        [Description("Фа")]
+        [Description("Fa")]
         F = 5,
 
         /// <summary>
         /// G note.
         /// </summary>
         [Display(Name = "G")]
-        [Description("Соль")]
+        [Description("Sol")]
         G = 7,
 
         /// <summary>
         /// A note.
         /// </summary>
         [Display(Name = "A")]
-        [Description("Ля")]
+        [Description("La")]
         A = 9,
 
         /// <summary>
         /// B note.
         /// </summary>
         [Display(Name = "B")]
-        [Description("Си")]
+        [Description("Si")]
         B = 11
     }
 }

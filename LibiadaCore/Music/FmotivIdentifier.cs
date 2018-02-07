@@ -23,29 +23,29 @@
         /// The param equal fm.
         /// </param>
         /// <returns>
-        /// The <see cref="FmotivChain"/>.
+        /// The <see cref="FmotifChain"/>.
         /// </returns>
-        public FmotivChain GetIdentification(FmotivChain fmotivChain, ParamPauseTreatment paramPauseTreatment, ParamEqualFM paramEqualFM)
+        public FmotifChain GetIdentification(FmotifChain fmotivChain, ParamPauseTreatment paramPauseTreatment, ParamEqualFM paramEqualFM)
         {
-            var chain = (FmotivChain)fmotivChain.Clone();
+            var chain = (FmotifChain)fmotivChain.Clone();
 
-            for (int i = 0; i < chain.FmotivList.Count; i++)
+            for (int i = 0; i < chain.FmotifsList.Count; i++)
             {
-                for (int j = i; j < chain.FmotivList.Count; j++)
+                for (int j = i; j < chain.FmotifsList.Count; j++)
                 {
-                    if (chain.FmotivList[i].FmEquals(chain.FmotivList[j], paramPauseTreatment, paramEqualFM))
+                    if (chain.FmotifsList[i].FmEquals(chain.FmotifsList[j], paramPauseTreatment, paramEqualFM))
                     {
-                        chain.FmotivList[j].Id = chain.FmotivList[i].Id;
+                        chain.FmotifsList[j].Id = chain.FmotifsList[i].Id;
                     }
                 }
             }
 
-            for (int i = 0; i < chain.FmotivList.Max(fl => fl.Id); i++)
+            for (int i = 0; i < chain.FmotifsList.Max(fl => fl.Id); i++)
             {
-                bool haveId = chain.FmotivList.Any(t => t.Id == i); // флаг того что есть такой id в цепочке
+                bool haveId = chain.FmotifsList.Any(t => t.Id == i); // флаг того что есть такой id в цепочке
                 if (!haveId)
                 {
-                    foreach (Fmotiv fmotiv in chain.FmotivList)
+                    foreach (Fmotif fmotiv in chain.FmotifsList)
                     {
                         if (fmotiv.Id > i)
                         {

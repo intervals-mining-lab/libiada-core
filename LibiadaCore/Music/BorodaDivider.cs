@@ -24,13 +24,13 @@
         /// <returns>
         /// The <see cref="List{FmotivChain}"/>.
         /// </returns>
-        public List<FmotivChain> Divide(ScoreTrack scoreTrack, ParamPauseTreatment paramPauseTreatment, ParamEqualFM paramEqualFM)
+        public List<FmotifChain> Divide(ScoreTrack scoreTrack, ParamPauseTreatment paramPauseTreatment, ParamEqualFM paramEqualFM)
         {
-            var chains = new List<FmotivChain>();
+            var chains = new List<FmotifChain>();
 
             foreach (CongenericScoreTrack congenericTrack in scoreTrack.CongenericScoreTracks)
             {
-                var fmotivChain = (FmotivChain)Divide(congenericTrack, paramPauseTreatment, paramEqualFM).Clone();
+                var fmotivChain = (FmotifChain)Divide(congenericTrack, paramPauseTreatment, paramEqualFM).Clone();
                 fmotivChain.Id = chains.Count;
                 chains.Add(fmotivChain);
             }
@@ -54,20 +54,20 @@
         /// как сравнивать ф-мотивы с секвентым переносом, либо нет
         /// </param>
         /// <returns>
-        /// The <see cref="FmotivChain"/>.
+        /// The <see cref="FmotifChain"/>.
         /// </returns>
-        public FmotivChain Divide(CongenericScoreTrack congenericTrack, ParamPauseTreatment paramPauseTreatment, ParamEqualFM paramEqualFM)
+        public FmotifChain Divide(CongenericScoreTrack congenericTrack, ParamPauseTreatment paramPauseTreatment, ParamEqualFM paramEqualFM)
         {
             // сохраняем имя цепи фмотивов как имя монотрека
             var priorityDiscover = new PriorityDiscover();
-            var fmotivDivider = new FmotivDivider();
+            var fmotivDivider = new FmotifDivider();
             var fmotivIdentifier = new FmotivIdentifier();
 
             // подсчет приоритетов
             priorityDiscover.Calculate(congenericTrack);
 
             // разбиение
-            FmotivChain chain = fmotivDivider.GetDivision(congenericTrack, paramPauseTreatment);
+            FmotifChain chain = fmotivDivider.GetDivision(congenericTrack, paramPauseTreatment);
 
             // нахождение одинаковых
             return fmotivIdentifier.GetIdentification(chain, paramPauseTreatment, paramEqualFM);

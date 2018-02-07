@@ -50,22 +50,6 @@
         public int Id { get; set; }
 
         /// <summary>
-        /// The modify note with attributes.
-        /// </summary>
-        /// <param name="note">
-        /// The note.
-        /// </param>
-        /// <returns>
-        /// The <see cref="ValueNote"/>.
-        /// </returns>
-        public ValueNote ModifyNoteWithAttributes(ValueNote note)
-        {
-            var newPitches = note.Pitch.Select(p => new Pitch(p.MidiNumber)).ToList();
-
-            return new ValueNote(newPitches, note.Duration, note.Triplet, note.Tie);
-        }
-
-        /// <summary>
         /// The merge measures.
         /// </summary>
         /// <param name="measure">
@@ -80,7 +64,7 @@
             {
                 if (NoteList[k].Duration.Equals(measure.NoteList[k].Duration))
                 {
-                    // ноты одинаковы по длине, можно просто склеить
+                    // ноты одинаковые по длине, можно просто склеить
                     NoteList[k].AddPitch(measure.NoteList[k].Pitch);
                 }
                 else
@@ -119,8 +103,8 @@
         /// </returns>
         public IBaseObject Clone()
         {
-            var temp = new Measure(NoteList, Attributes);
-            return temp;
+            var result = new Measure(NoteList, Attributes);
+            return result;
         }
 
         /// <summary>
@@ -155,7 +139,7 @@
             return true;
 
             // TODO: сделать сравнение не по всей ноте/объекту, а еще только по месту например,
-            // TODO: из сравнения исключить триплет, так может различать одинаковые по длительности ноты, но записанные по разному(!)
+            // TODO: из сравнения исключить триплет, так можно различать одинаковые по длительности ноты, но записанные по разному(!)
         }
     }
 }
