@@ -24,7 +24,8 @@
         public double Calculate(Chain chain, Link link)
         {
             var intervals = new List<int>();
-            for (int i = 0; i < chain.Alphabet.Cardinality; i++)
+            Alphabet alphabet = chain.Alphabet;
+            for (int i = 0; i < alphabet.Cardinality; i++)
             {
                 intervals.AddRange(chain.CongenericChain(i).GetIntervals(link).ToList());
             }

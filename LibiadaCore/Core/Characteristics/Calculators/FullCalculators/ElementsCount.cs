@@ -19,8 +19,9 @@ namespace LibiadaCore.Core.Characteristics.Calculators.FullCalculators
         {
             var calculator = new CongenericCalculators.ElementsCount();
 
+            Alphabet alphabet = chain.Alphabet;
             int count = 0;
-            for (int i = 0; i < chain.Alphabet.Cardinality; i++)
+            for (int i = 0; i < alphabet.Cardinality; i++)
             {
                 count += (int)calculator.Calculate(chain.CongenericChain(i));
             }

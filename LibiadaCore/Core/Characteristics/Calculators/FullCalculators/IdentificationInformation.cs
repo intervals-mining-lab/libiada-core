@@ -25,8 +25,9 @@ namespace LibiadaCore.Core.Characteristics.Calculators.FullCalculators
         {
             var identificationInformation = new CongenericCalculators.IdentificationInformation();
 
+            Alphabet alphabet = chain.Alphabet;
             double result = 0;
-            for (int i = 0; i < chain.Alphabet.Cardinality; i++)
+            for (int i = 0; i < alphabet.Cardinality; i++)
             {
                 result += identificationInformation.Calculate(chain.CongenericChain(i), link);
             }

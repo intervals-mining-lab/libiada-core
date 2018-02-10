@@ -21,8 +21,9 @@
         {
             var calculator = new CongenericCalculators.IntervalsSum();
 
+            Alphabet alphabet = chain.Alphabet;
             int sum = 0;
-            for (int i = 0; i < chain.Alphabet.Cardinality; i++)
+            for (int i = 0; i < alphabet.Cardinality; i++)
             {
                 sum += (int)calculator.Calculate(chain.CongenericChain(i), link);
             }

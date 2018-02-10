@@ -32,11 +32,11 @@
 
             var congenericIntervalsCount = new CongenericCalculators.IntervalsCount();
             var congenericAverageRemoteness = new CongenericCalculators.AverageRemoteness();
-
-            for (int i = 0; i < chain.Alphabet.Cardinality; i++)
+            Alphabet alphabet = chain.Alphabet;
+            for (int i = 0; i < alphabet.Cardinality; i++)
             {
-                double nj = congenericIntervalsCount.Calculate(chain.CongenericChain(chain.Alphabet[i]), link);
-                double gj = congenericAverageRemoteness.Calculate(chain.CongenericChain(chain.Alphabet[i]), link);
+                double nj = congenericIntervalsCount.Calculate(chain.CongenericChain(i), link);
+                double gj = congenericAverageRemoteness.Calculate(chain.CongenericChain(i), link);
                 double delta = gj - g;
                 result += delta * delta * delta * delta * nj / n;
             }

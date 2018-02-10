@@ -38,10 +38,11 @@
         public List<List<double>> CalculateAll(Chain chain, Link link)
         {
             var result = new List<List<double>>();
-            for (int i = 0; i < chain.Alphabet.Cardinality; i++)
+            var alphabetCardinality = chain.Alphabet.Cardinality;
+            for (int i = 0; i < alphabetCardinality; i++)
             {
                 result.Add(new List<double>());
-                for (int j = 0; j < chain.Alphabet.Cardinality; j++)
+                for (int j = 0; j < alphabetCardinality; j++)
                 {
                     result[i].Add(Calculate(chain.GetRelationIntervalsManager(i + 1, j + 1), link));
                 }

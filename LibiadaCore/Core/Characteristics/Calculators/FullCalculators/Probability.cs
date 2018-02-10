@@ -19,7 +19,8 @@ namespace LibiadaCore.Core.Characteristics.Calculators.FullCalculators
             var calculator = new CongenericCalculators.Probability();
 
             double result = 0;
-            for (int i = 0; i < chain.Alphabet.Cardinality; i++)
+            Alphabet alphabet = chain.Alphabet;
+            for (int i = 0; i < alphabet.Cardinality; i++)
             {
                 result += calculator.Calculate(chain.CongenericChain(i));
             }

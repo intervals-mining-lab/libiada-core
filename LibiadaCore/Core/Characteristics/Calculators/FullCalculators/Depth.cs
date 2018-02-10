@@ -23,8 +23,8 @@ namespace LibiadaCore.Core.Characteristics.Calculators.FullCalculators
         {
             double result = 0;
             var calculator = new CongenericCalculators.Depth();
-
-            for (int i = 0; i < chain.Alphabet.Cardinality; i++)
+            Alphabet alphabet = chain.Alphabet;
+            for (int i = 0; i < alphabet.Cardinality; i++)
             {
                 result += calculator.Calculate(chain.CongenericChain(i), link);
             }

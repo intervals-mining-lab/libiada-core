@@ -28,11 +28,11 @@
 
             var congenericIntervalsCount = new CongenericCalculators.IntervalsCount();
             var congenericIdentificationInformation = new CongenericCalculators.IdentificationInformation();
-
-            for (int i = 0; i < chain.Alphabet.Cardinality; i++)
+            Alphabet alphabet = chain.Alphabet;
+            for (int i = 0; i < alphabet.Cardinality; i++)
             {
-                double nj = congenericIntervalsCount.Calculate(chain.CongenericChain(chain.Alphabet[i]), link);
-                double hj = congenericIdentificationInformation.Calculate(chain.CongenericChain(chain.Alphabet[i]), link);
+                double nj = congenericIntervalsCount.Calculate(chain.CongenericChain(i), link);
+                double hj = congenericIdentificationInformation.Calculate(chain.CongenericChain(i), link);
                 double deltaH = hj - h;
                 result += n == 0 ? 0 : nj / n * deltaH * deltaH;
             }
