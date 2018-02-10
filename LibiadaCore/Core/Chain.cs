@@ -5,6 +5,8 @@ namespace LibiadaCore.Core
 
     using IntervalsManagers;
 
+    using LibiadaCore.Core.SimpleTypes;
+
     /// <summary>
     /// Sequence class.
     /// </summary>
@@ -93,6 +95,29 @@ namespace LibiadaCore.Core
         /// </param>
         public Chain(List<IBaseObject> source) : base(source)
         {
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Chain"/> class.
+        /// </summary>
+        /// <param name="source">
+        /// The source sequence of int values.
+        /// </param>
+        public Chain(short[] source)
+        {
+            alphabet = new Alphabet() { NullValue.Instance() };
+            building = new int[source.Length];
+            for (int i = 0; i < source.Length; i++)
+            {
+                if (!alphabet.Contains(new ValueInt(source[i])))
+                {
+                    alphabet.Add(new ValueInt(source[i]));
+                }
+
+                building[i] = alphabet.IndexOf(new ValueInt(source[i]));
+            }
+
+            FillCongenericChains();
         }
 
         /// <summary>
