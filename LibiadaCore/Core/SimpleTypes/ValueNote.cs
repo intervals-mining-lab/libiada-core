@@ -10,6 +10,16 @@
     public class ValueNote : IBaseObject
     {
         /// <summary>
+        /// Gets a value indicating whether note has triplet. (наличие триоли)
+        /// </summary>
+        public readonly bool Triplet;
+
+        /// <summary>
+        /// Gets note's pitches.
+        /// </summary>
+        public readonly List<Pitch> Pitch = new List<Pitch>();
+
+        /// <summary>
         /// Initializes a new instance of the <see cref="ValueNote"/> class.
         /// </summary>
         /// <param name="pitch">
@@ -29,8 +39,6 @@
         /// </param>
         public ValueNote(Pitch pitch, Duration duration, bool triplet, Tie tie, int priority = -1)
         {
-            Pitch = new List<Pitch>(0);
-
             // если не пауза то записываем высоту и наличие лиги
             if (pitch != null)
             {
@@ -97,7 +105,6 @@
         /// </param>
         public ValueNote(List<int> midiNumbers, Duration duration, bool triplet, Tie tie, int priority = -1)
         {
-            Pitch = new List<Pitch>();
             foreach (int midiNumber in midiNumbers)
             {
                 Pitch.Add(new Pitch(midiNumber));
@@ -113,16 +120,6 @@
         /// Gets or sets the id of note.
         /// </summary>
         public int Id { get; set; }
-
-        /// <summary>
-        /// Gets a value indicating whether note has triplet. (наличие триоли)
-        /// </summary>
-        public bool Triplet { get; private set; }
-
-        /// <summary>
-        /// Gets note's pitches.
-        /// </summary>
-        public List<Pitch> Pitch { get; private set; }
 
         /// <summary>
         /// Gets note duration.
@@ -187,20 +184,6 @@
         }
 
         /// <summary>
-        /// The set instrument.
-        /// </summary>
-        /// <param name="instrument">
-        /// The instrument.
-        /// </param>
-        public void SetInstrument(Instrument instrument)
-        {
-            foreach (Pitch p in Pitch)
-            {
-                p.Instrument = instrument;
-            }
-        }
-
-        /// <summary>
         /// The pitch equals.
         /// </summary>
         /// <param name="pitchList">
@@ -249,7 +232,7 @@
         /// </returns>
         public override bool Equals(object obj)
         {
-            if (!(obj is ValueNote other))
+            if (!(obj is ValueNote note))
             {
                 return false;
             }
@@ -258,47 +241,74 @@
             if (Pitch == null || Pitch.Count == 0)
             {
                 // другая нота - пауза
-                if (other.Pitch == null || other.Pitch.Count == 0)
+                if (note.Pitch == null || note.Pitch.Count == 0)
                 {
                     // у пауз сравниваем только их длительности
-                    return Duration.Equals(other.Duration);
+                    return Duration.Equals(note.Duration);
                 }
 
                 // пауза и нота не одинаковы
                 return false;
             }
 
-            if (other.Pitch == null || other.Pitch.Count == 0)
+            if (note.Pitch == null || note.Pitch.Count == 0)
             {
                 // нота и пауза не одно и то же
                 return false;
             }
 
-            return Duration.Equals(other.Duration) && PitchEquals(other.Pitch) && (Tie == other.Tie) && (Triplet == other.Triplet);
+            return Duration.Equals(note.Duration) && PitchEquals(note.Pitch) && (Tie == note.Tie) && (Triplet == note.Triplet);
 
             // TODO: сделать сравнение не по всей ноте/объекту, а еще только по месту например,
             // TODO: из сравнения исключить триплет, так можно различать одинаковые по длительности ноты, но записанные по разному(!)
         }
 
         /// <summary>
-        /// The get hash code.
+        /// Calculates MD5 hash code using
+        /// pitches, duration, Tie and Triplet.
         /// </summary>
         /// <returns>
         /// The <see cref="T:byte[]"/>.
         /// </returns>
-        public new byte[] GetHashCode()
+        public byte[] GetMD5HashCode()
         {
             var hash = new List<byte>();
             foreach (Pitch pitch in Pitch)
             {
-                hash.AddRange(pitch.GetHashCode());
+                hash.AddRange(pitch.GetMD5HashCode());
             }
 
-            hash.AddRange(Duration.GetHashCode());
+            hash.AddRange(Duration.GetMD5HashCode());
             hash.Add((byte)Tie);
             hash.Add(Convert.ToByte(Triplet));
-            var md5 = MD5.Create();
+            MD5 md5 = MD5.Create();
             return md5.ComputeHash(hash.ToArray());
+        }
+
+        /// <summary>
+        /// Calculates hash code using
+        /// <see cref="Triplet"/>, <see cref="Pitch"/>,
+        /// <see cref="Duration"/> and <see cref="Tie"/>.
+        /// </summary>
+        /// <returns>
+        /// The <see cref="int"/>.
+        /// </returns>
+        public override int GetHashCode()
+        {
+            unchecked
+            {
+                int hashCode = -2024996526;
+                hashCode = (hashCode * -1521134295) + Triplet.GetHashCode();
+                hashCode = (hashCode * -1521134295) + ((byte)Tie).GetHashCode();
+                hashCode = (hashCode * -1521134295) + Duration.GetHashCode();
+                foreach (Pitch pitch in Pitch)
+                {
+                    hashCode = (hashCode * -1521134295) + pitch.GetHashCode();
+                }
+
+                return hashCode;
+            }
+
         }
     }
 }

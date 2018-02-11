@@ -7,8 +7,6 @@ namespace LibiadaCore.Tests.Core
 
     using NUnit.Framework;
 
-    // TODO: FIX ORDER OF ARGUMENTS IN ALL AreEqual
-
     /// <summary>
     /// The base chain test.
     /// </summary>

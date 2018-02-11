@@ -25,7 +25,7 @@
         /// <param name="instrument">
         /// The instrument.
         /// </param>
-        public Pitch(int octave, NoteSymbol step, Accidental alter, Instrument instrument = Instrument.AnyOrUnknown)
+        public Pitch(byte octave, NoteSymbol step, Accidental alter, Instrument instrument = Instrument.AnyOrUnknown)
         {
             Alter = alter;
             Step = step;
@@ -59,27 +59,27 @@
         /// Gets note number.
         /// Unique note number in midi standard.
         /// </summary>
-        public int MidiNumber { get; private set; }
+        public int MidiNumber { get; }
 
         /// <summary>
         /// Gets step.
         /// </summary>
-        public NoteSymbol Step { get; private set; }
+        public NoteSymbol Step { get; }
 
         /// <summary>
-        /// Gets or sets the instrument.
+        /// Gets the instrument.
         /// </summary>
-        public Instrument Instrument { private get; set; }
+        public Instrument Instrument { get; }
 
         /// <summary>
         /// Gets the octave number.
         /// </summary>
-        public int Octave { get; private set; }
+        public byte Octave { get; }
 
         /// <summary>
         /// Gets alteration.
         /// </summary>
-        public Accidental Alter { get; private set; }
+        public Accidental Alter { get; }
 
         /// <summary>
         /// The clone.
@@ -87,10 +87,7 @@
         /// <returns>
         /// The <see cref="IBaseObject"/>.
         /// </returns>
-        public IBaseObject Clone()
-        {
-            return new Pitch(Octave, Step, Alter, Instrument);
-        }
+        public IBaseObject Clone() => new Pitch(Octave, Step, Alter, Instrument);
 
         /// <summary>
         /// The equals.
@@ -101,32 +98,27 @@
         /// <returns>
         /// The <see cref="bool"/>.
         /// </returns>
-        public override bool Equals(object obj)
-        {
-            if (!(obj is Pitch))
-            {
-                return false;
-            }
-
-            if (MidiNumber == ((Pitch)obj).MidiNumber)
-            {
-                return true;
-            }
-
-            return false;
-        }
+        public override bool Equals(object obj) => obj is Pitch pitch && MidiNumber == pitch.MidiNumber;
 
         /// <summary>
-        /// The get hash code.
+        /// Calculates MD5 hash code using midi number.
         /// </summary>
         /// <returns>
         /// The <see cref="T:byte[]"/>.
         /// </returns>
-        public new byte[] GetHashCode()
+        public byte[] GetMD5HashCode()
         {
-            var md5 = MD5.Create();
+            MD5 md5 = MD5.Create();
             return md5.ComputeHash(BitConverter.GetBytes(MidiNumber));
         }
+
+        /// <summary>
+        /// Calculates hash code using <see cref="MidiNumber"/>.
+        /// </summary>
+        /// <returns>
+        /// The <see cref="int"/>.
+        /// </returns>
+        public override int GetHashCode() => MidiNumber.GetHashCode();
 
         /// <summary>
         /// Calculates midi number from pitch params.
@@ -137,9 +129,6 @@
         /// <exception cref="Exception">
         /// Thrown if step is unknown.
         /// </exception>
-        private int GetMidiNumber()
-        {
-            return (12 * (Octave + 1)) + (byte)Step + (short)Alter;
-        }
+        private int GetMidiNumber() => (12 * (Octave + 1)) + (byte)Step + (short)Alter;
     }
 }

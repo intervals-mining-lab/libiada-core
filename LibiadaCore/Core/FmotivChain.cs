@@ -6,7 +6,7 @@
     using LibiadaCore.Core.SimpleTypes;
 
     /// <summary>
-    /// класс для хранения последовательности ф-мотив
+    /// Class storing Fmotifs sequence
     /// </summary>
     public class FmotifChain : IBaseObject
     {
@@ -21,17 +21,7 @@
         /// <summary>
         /// Gets fmotifs list.
         /// </summary>
-        public List<Fmotif> FmotifsList { get; private set; }
-
-        /// <summary>
-        /// Gets or sets name of mono track.
-        /// </summary>
-        public string Name { get; set; }
-
-        /// <summary>
-        ///  Gets or sets fmotiv id.
-        /// </summary>
-        public int Id { get; set; }
+        public List<Fmotif> FmotifsList { get; }
 
         /// <summary>
         /// The clone.
@@ -47,9 +37,6 @@
                 clone.FmotifsList.Add((Fmotif)fmotiv.Clone());
             }
 
-            clone.Id = Id;
-            clone.Name = Name;
-
             return clone;
         }
 
@@ -64,13 +51,32 @@
         /// </returns>
         public override bool Equals(object obj)
         {
-            var other = (FmotifChain)obj;
-            if (Name != other.Name || Id != other.Id)
+            if (ReferenceEquals(this, obj))
             {
-                return false;
+                return true;
             }
 
-            return FmotifsList.SequenceEqual(other.FmotifsList);
+            return obj is FmotifChain fmotifChain && FmotifsList.SequenceEqual(fmotifChain.FmotifsList);
+        }
+
+        /// <summary>
+        /// Calculates hash code using <see cref="FmotifsList"/>.
+        /// </summary>
+        /// <returns>
+        /// The <see cref="int"/>.
+        /// </returns>
+        public override int GetHashCode()
+        {
+            unchecked
+            {
+                int hashCode = -68587965;
+                foreach (Fmotif fmotif in FmotifsList)
+                {
+                    hashCode = (hashCode * -1521134295) + fmotif.GetHashCode();
+                }
+
+                return hashCode;
+            }
         }
     }
 }

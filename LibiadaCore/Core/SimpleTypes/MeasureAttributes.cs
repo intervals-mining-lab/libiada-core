@@ -66,5 +66,23 @@
 
             return false;
         }
+
+        /// <summary>
+        /// Calculates hash code using
+        /// <see cref="Key"/> and <see cref="Size"/>.
+        /// </summary>
+        /// <returns>
+        /// The <see cref="int"/>.
+        /// </returns>
+        public override int GetHashCode()
+        {
+            unchecked
+            {
+                var hashCode = 1812711144;
+                hashCode = (hashCode * -1521134295) + Size.GetHashCode();
+                hashCode = (hashCode * -1521134295) + Key.GetHashCode();
+                return hashCode;
+            }
+        }
     }
 }

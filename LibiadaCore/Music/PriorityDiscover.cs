@@ -1,10 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using LibiadaCore.Core;
-using LibiadaCore.Core.SimpleTypes;
-
-namespace LibiadaCore.Music
+﻿namespace LibiadaCore.Music
 {
+    using System;
+    using System.Collections.Generic;
+
+    using LibiadaCore.Core;
+    using LibiadaCore.Core.SimpleTypes;
+
     /// <summary>
     /// The priority discover.
     /// </summary>

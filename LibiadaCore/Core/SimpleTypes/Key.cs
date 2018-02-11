@@ -60,5 +60,24 @@
 
             return false;
         }
+
+        /// <summary>
+        /// calculates hash code using
+        /// <see cref="Fifths"/> and <see cref="Mode"/>.
+        /// </summary>
+        /// <returns>
+        /// The <see cref="int"/>.
+        /// </returns>
+        public override int GetHashCode()
+        {
+            unchecked
+            {
+                int hashCode = -1754147455;
+                hashCode = (hashCode * -1521134295) + Fifths.GetHashCode();
+                hashCode = (hashCode * 1521134295) + Mode.GetHashCode();
+                return hashCode;
+            }
+
+        }
     }
 }

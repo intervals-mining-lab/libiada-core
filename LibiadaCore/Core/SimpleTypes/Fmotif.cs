@@ -33,7 +33,7 @@
         /// <summary>
         /// Gets list of notes in fmotiv.
         /// </summary>
-        public List<ValueNote> NoteList { get; private set; }
+        public List<ValueNote> NoteList { get; }
 
         /// <summary>
         /// Gets or sets the type.
@@ -45,7 +45,11 @@
         /// </summary>
         public int Id { get; set; }
 
-        public ParamPauseTreatment PauseTreatmentParameter { get; private set; }
+        /// <summary>
+        /// Gets the pause treatment parameter.
+        /// </summary>
+        private ParamPauseTreatment PauseTreatmentParameter { get; }
+
         // TODO: убрать все частные и заменить на общие!!!!!!!!! заменил все withoutpauses() на PauseTreatment с параметорм ignore
 
         /// <summary>
@@ -223,9 +227,7 @@
                             }
                             else
                             {
-                                {
-                                    throw new Exception("LibiadaMusic: Tie is not valid!");
-                                }
+                                throw new Exception("LibiadaMusic: Tie is not valid!");
                             }
                         }
                     }

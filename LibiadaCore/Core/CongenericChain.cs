@@ -105,18 +105,12 @@ namespace LibiadaCore.Core
         /// <summary>
         /// Gets the occurrences count.
         /// </summary>
-        public int OccurrencesCount
-        {
-            get { return positions.Count; }
-        }
+        public int OccurrencesCount => positions.Count;
 
         /// <summary>
         /// Gets element chain filled with.
         /// </summary>
-        public IBaseObject Element
-        {
-            get { return element.Clone(); }
-        }
+        public IBaseObject Element => element.Clone();
 
         /// <summary>
         /// Gets the building.
@@ -165,7 +159,7 @@ namespace LibiadaCore.Core
 
             intervalsManager = null;
             length = newLength;
-            positions = new List<int>();
+            positions.Clear();
         }
 
         /// <summary>
@@ -235,10 +229,7 @@ namespace LibiadaCore.Core
         /// <returns>
         /// The <see cref="int"/>.
         /// </returns>
-        public override int GetLength()
-        {
-            return length;
-        }
+        public override int GetLength() => length;
 
         /// <summary>
         /// Sets item in provided position.
@@ -291,10 +282,7 @@ namespace LibiadaCore.Core
         /// <returns>
         /// Element or <see cref="NullValue"/>.
         /// </returns>
-        public override IBaseObject Get(int index)
-        {
-            return positions.Contains(index) ? element.Clone() : NullValue.Instance();
-        }
+        public override IBaseObject Get(int index) => positions.Contains(index) ? element.Clone() : NullValue.Instance();
 
         /// <summary>
         /// Deletes given position.
@@ -342,65 +330,28 @@ namespace LibiadaCore.Core
         /// <param name="manager">
         /// The manager.
         /// </param>
-        public void SetIntervalManager(CongenericIntervalsManager manager)
-        {
-            intervalsManager = manager;
-        }
+        public void SetIntervalManager(CongenericIntervalsManager manager) => intervalsManager = manager;
 
         /// <summary>
         /// The equals.
         /// </summary>
-        /// <param name="other">
+        /// <param name="obj">
         /// The other.
         /// </param>
         /// <returns>
         /// The <see cref="bool"/>.
         /// </returns>
-        public override bool Equals(object other)
+        public override bool Equals(object obj)
         {
-            if (other == null)
-            {
-                return false;
-            }
-
-            if (other.Equals(NullValue.Instance()))
-            {
-                for (int i = 0; i < length; i++)
-                {
-                    if (!Get(i).Equals(NullValue.Instance()))
-                    {
-                        return false;
-                    }
-                }
-
-                return true;
-            }
-
-            if (ReferenceEquals(this, other))
+            if (ReferenceEquals(this, obj))
             {
                 return true;
             }
 
-            if (!(other is CongenericChain))
-            {
-                return false;
-            }
-
-            var chainObject = (CongenericChain)other;
-            if (!element.Equals(chainObject.Element))
-            {
-                return false;
-            }
-
-            for (int i = 0; (i < chainObject.length) && (i < length); i++)
-            {
-                if (!this[i].Equals(chainObject[i]))
-                {
-                    return false;
-                }
-            }
-
-            return true;
+            return obj is CongenericChain other
+                && element.Equals(other.Element)
+                && length == other.length
+                && positions.SequenceEqual(other.positions);
         }
 
         /// <summary>
@@ -409,9 +360,29 @@ namespace LibiadaCore.Core
         /// <returns>
         /// The <see cref="IBaseObject"/>.
         /// </returns>
-        public override IBaseObject Clone()
+        public override IBaseObject Clone() => new CongenericChain(positions, Element, length);
+
+        /// <summary>
+        /// Calculates hash code using
+        /// <see cref="element"/>, <see cref="positions"/> and <see cref="length"/>.
+        /// </summary>
+        /// <returns>
+        /// The <see cref="int"/>.
+        /// </returns>
+        public override int GetHashCode()
         {
-            return new CongenericChain(positions, Element, length);
+            unchecked
+            {
+                var hashCode = 325361583;
+                hashCode = (hashCode * -1521134295) + element.GetHashCode();
+                hashCode = (hashCode * -1521134295) + length.GetHashCode();
+                foreach (int position in Positions)
+                {
+                    hashCode = (hashCode * 1566083941) + position.GetHashCode();
+                }
+
+                return hashCode;
+            }
         }
     }
 }

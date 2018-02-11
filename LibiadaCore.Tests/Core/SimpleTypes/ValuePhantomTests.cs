@@ -49,21 +49,5 @@ namespace LibiadaCore.Tests.Core.SimpleTypes
             var itsClone = (ValuePhantom)m1.Clone();
             Assert.AreEqual(m1, itsClone);
         }
-
-        /// <summary>
-        /// The equals null value test.
-        /// </summary>
-        [Test]
-        public void EqualsNullValueTest()
-        {
-            var m1 = new ValuePhantom();
-            Assert.AreEqual(m1, NullValue.Instance());
-
-            m1 = new ValuePhantom { new Chain(10) };
-            Assert.AreEqual(m1, NullValue.Instance());
-
-            m1.Add(new ValueString('1'));
-            Assert.AreNotEqual(m1, NullValue.Instance());
-        }
     }
 }

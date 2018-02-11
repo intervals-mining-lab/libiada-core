@@ -86,7 +86,7 @@
             };
 
             // single uniform score track
-            var uniformTracks = new List<CongenericScoreTrack> { new CongenericScoreTrack("p0", measures1) };
+            var uniformTracks = new List<CongenericScoreTrack> { new CongenericScoreTrack(measures1) };
 
             // whole music sequence
             scoreTrack = new ScoreTrack(uniformTracks);

@@ -14,13 +14,10 @@
         /// <summary>
         /// Initializes a new instance of the <see cref="CongenericScoreTrack"/> class.
         /// </summary>
-        /// <param name="name">
-        /// The name.
-        /// </param>
         /// <param name="measureList">
         /// The measure list.
         /// </param>
-        public CongenericScoreTrack(string name, List<Measure> measureList)
+        public CongenericScoreTrack(List<Measure> measureList)
         {
             MeasureList = new List<Measure>();
             foreach (Measure measure in measureList)
@@ -28,19 +25,12 @@
                 // создаем список тактов, посредством клонирования каждого такта.
                 MeasureList.Add((Measure)measure.Clone());
             }
-
-            Name = name;
         }
-
-        /// <summary>
-        /// Gets the name.
-        /// </summary>
-        public string Name { get; private set; }
 
         /// <summary>
         /// Gets the measure list.
         /// </summary>
-        public List<Measure> MeasureList { get; private set; }
+        public List<Measure> MeasureList { get; }
 
         /// <summary>
         /// The get notes.
@@ -224,10 +214,7 @@
         /// <returns>
         /// The <see cref="IBaseObject"/>.
         /// </returns>
-        public IBaseObject Clone()
-        {
-            return new CongenericScoreTrack(Name, MeasureList);
-        }
+        public IBaseObject Clone() => new CongenericScoreTrack(MeasureList);
 
         /// <summary>
         /// The equals.
@@ -240,17 +227,33 @@
         /// </returns>
         public override bool Equals(object obj)
         {
-            bool equalMeasureList = MeasureList.Count == ((CongenericScoreTrack)obj).MeasureList.Count;
-
-            for (int i = 0; i < MeasureList.Count; i++)
+            if (ReferenceEquals(this, obj))
             {
-                if (!MeasureList[i].Equals(((CongenericScoreTrack)obj).MeasureList[i]))
-                {
-                    equalMeasureList = false;
-                }
+                return true;
             }
 
-            return equalMeasureList;
+            return obj is CongenericScoreTrack other
+                && MeasureList.SequenceEqual(other.MeasureList);
+        }
+
+        /// <summary>
+        /// Calculates hash code using <see cref="MeasureList"/>.
+        /// </summary>
+        /// <returns>
+        /// The <see cref="int"/>.
+        /// </returns>
+        public override int GetHashCode()
+        {
+            unchecked
+            {
+                var hashCode = 773805597;
+                foreach (Measure measure in MeasureList)
+                {
+                    hashCode = (hashCode * -1521134295) + measure.GetHashCode();
+                }
+
+                return hashCode;
+            }
         }
     }
 }

@@ -1,7 +1,6 @@
 ﻿namespace LibiadaCore.Core.SimpleTypes
 {
     using System.Collections.Generic;
-    using System.Linq;
 
     /// <summary>
     /// The measure.
@@ -37,12 +36,12 @@
         /// Gets notes list.
         /// список нот, класса Note
         /// </summary>
-        public List<ValueNote> NoteList { get; private set; }
+        public List<ValueNote> NoteList { get; }
 
         /// <summary>
         /// Gets the attributes.
         /// </summary>
-        public MeasureAttributes Attributes { get; private set; }
+        public MeasureAttributes Attributes { get; }
 
         /// <summary>
         /// Gets or sets the id of measure.
@@ -118,28 +117,46 @@
         /// </returns>
         public override bool Equals(object obj)
         {
-            if (NoteList.Count != ((Measure)obj).NoteList.Count)
+            if (obj is Measure measure
+             && NoteList.Count == measure.NoteList.Count
+             && Attributes.Equals(measure.Attributes))
             {
-                return false;
-            }
-
-            if (!Attributes.Equals(((Measure)obj).Attributes))
-            {
-                return false;
-            }
-
-            for (int i = 0; i < NoteList.Count; i++)
-            {
-                if (!NoteList[i].Equals(((Measure)obj).NoteList[i]))
+                for (int i = 0; i < NoteList.Count; i++)
                 {
-                    return false;
+                    if (!NoteList[i].Equals(measure.NoteList[i]))
+                    {
+                        return false;
+                    }
                 }
+
+                return true;
             }
 
-            return true;
+            return false;
 
             // TODO: сделать сравнение не по всей ноте/объекту, а еще только по месту например,
             // TODO: из сравнения исключить триплет, так можно различать одинаковые по длительности ноты, но записанные по разному(!)
+        }
+
+        /// <summary>
+        /// Calculates hash code using
+        /// <see cref="Attributes"/> and <see cref="NoteList"/>.
+        /// </summary>
+        /// <returns>
+        /// The <see cref="int"/>.
+        /// </returns>
+        public override int GetHashCode()
+        {
+            unchecked
+            {
+                int hashCode = 68558965  ^ Attributes.GetHashCode();
+                foreach (ValueNote note in NoteList)
+                {
+                    hashCode = (hashCode * -1521134295) + note.GetHashCode();
+                }
+
+                return hashCode;
+            }
         }
     }
 }

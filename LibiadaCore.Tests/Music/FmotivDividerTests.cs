@@ -38,7 +38,7 @@
             var measures = new List<Measure> { new Measure(notes, (MeasureAttributes)attributes.Clone()) };
 
             // создание моно трека
-            var unitrack = new CongenericScoreTrack("track1", measures);
+            var unitrack = new CongenericScoreTrack(measures);
 
             // создание объекта для деления монотрека на фмотивы
             var fmdivider = new FmotifDivider();
@@ -46,7 +46,6 @@
             // создание результирующей цепочки фмотивов
             // вычисление, опрделение, разбиение на  ф-мотивы данного монотрека
             var chain = fmdivider.GetDivision(unitrack, ParamPauseTreatment.Ignore);
-            chain.Id = 0;
 
             // создание аналогов ф-мотивов, которые должны получиться, после разбиения
             // процедура определения одинаковых на данном этапе не производится
@@ -60,7 +59,7 @@
             fmotiv2.NoteList.Add(new ValueNote(new Pitch(3, NoteSymbol.A, 0), new Duration(1, 4, false, 512), false, Tie.None));
 
             // записываем ф-мотивы в цепь ф-мотивов, которая будет сравниваться с получившейся
-            var secondChain = new FmotifChain { Id = 0, Name = "track1" };
+            var secondChain = new FmotifChain();
             secondChain.FmotifsList.Add(fmotiv1);
             secondChain.FmotifsList.Add(fmotiv2);
 
@@ -89,7 +88,7 @@
             var measures = new List<Measure> { new Measure(notes, (MeasureAttributes)attributes.Clone()) };
 
             // создание моно трека
-            var unitrack = new CongenericScoreTrack("track1", measures);
+            var unitrack = new CongenericScoreTrack(measures);
 
             // создание объекта для деления монотрека на фмотивы
             var fmdivider = new FmotifDivider();
@@ -97,7 +96,6 @@
             // создание результирующей цепочки фмотивов
             // вычисление, опрделение, разбиение на  ф-мотивы данного монотрека
             FmotifChain fmchain = fmdivider.GetDivision(unitrack, (int)ParamPauseTreatment.Ignore);
-            fmchain.Id = 0;
 
             // создание аналогов ф-мотивов, которые должны получиться, после разбиения
             // процедура определения одинаковых на данном этапе не производится
@@ -111,7 +109,7 @@
             fmotiv2.NoteList.Add(new ValueNote(new Pitch(3, NoteSymbol.A, 0), new Duration(1, 8, false, 512), false, Tie.None));
 
             // записываем ф-мотивы в цепь ф-мотивов, которая будет сравниваться с получившейся
-            var fmchain1 = new FmotifChain { Id = 0, Name = "track1" };
+            var fmchain1 = new FmotifChain();
             fmchain1.FmotifsList.Add(fmotiv1);
             fmchain1.FmotifsList.Add(fmotiv2);
 
@@ -149,7 +147,7 @@
             };
 
             // создание моно трека
-            var unitrack = new CongenericScoreTrack("track1", measures);
+            var unitrack = new CongenericScoreTrack(measures);
 
             // создание объекта для деления монотрека на фмотивы
             var fmdivider = new FmotifDivider();
@@ -157,7 +155,6 @@
             // создание результирующей цепочки фмотивов
             // вычисление, опрделение, разбиение на  ф-мотивы данного монотрека
             var fmchain = fmdivider.GetDivision(unitrack, (int)ParamPauseTreatment.Ignore);
-            fmchain.Id = 0;
 
             // создание аналогов ф-мотивов, которые должны получиться, после разбиения
             // процедура определения одинаковых на данном этапе не производится
@@ -174,7 +171,7 @@
             fmotiv3.NoteList.Add(new ValueNote(new Pitch(3, NoteSymbol.E, 0), new Duration(1, 4, false, 512), false, Tie.None));
 
             // записываем ф-мотивы в цепь ф-мотивов, которая будет сравниваться с получившейся
-            var fmchain1 = new FmotifChain { Id = 0, Name = "track1" };
+            var fmchain1 = new FmotifChain();
             fmchain1.FmotifsList.Add(fmotiv1);
             fmchain1.FmotifsList.Add(fmotiv2);
             fmchain1.FmotifsList.Add(fmotiv3);
@@ -203,7 +200,7 @@
             var measures = new List<Measure> { new Measure(notes, (MeasureAttributes)attributes.Clone()) };
 
             // создание моно трека
-            var unitrack = new CongenericScoreTrack("track1", measures);
+            var unitrack = new CongenericScoreTrack(measures);
 
             // создание объекта для деления монотрека на фмотивы
             var fmdivider = new FmotifDivider();
@@ -211,7 +208,6 @@
             // создание результирующей цепочки фмотивов
             // вычисление, опрделение, разбиение на  ф-мотивы данного монотрека
             var fmchain = fmdivider.GetDivision(unitrack, (int)ParamPauseTreatment.Ignore);
-            fmchain.Id = 0;
 
             // создание аналогов ф-мотивов, которые должны получиться, после разбиения
             // процедура определения одинаковых на данном этапе не производится
@@ -222,7 +218,7 @@
             fmotiv1.NoteList.Add(new ValueNote(new Pitch(3, NoteSymbol.A, 0), new Duration(1, 4, false, 512), false, Tie.None));
 
             // записываем ф-мотивы в цепь ф-мотивов, которая будет сравниваться с получившейся
-            var fmchain1 = new FmotifChain { Id = 0, Name = "track1" };
+            var fmchain1 = new FmotifChain();
             fmchain1.FmotifsList.Add(fmotiv1);
 
             Assert.IsTrue(fmchain1.Equals(fmchain));
@@ -251,7 +247,7 @@
             var measures = new List<Measure> { new Measure(notes, (MeasureAttributes)attributes.Clone()) };
 
             // создание моно трека
-            var unitrack = new CongenericScoreTrack("track1", measures);
+            var unitrack = new CongenericScoreTrack(measures);
 
             // создание объекта для деления монотрека на фмотивы
             var fmdivider = new FmotifDivider();
@@ -259,7 +255,6 @@
             // создание результирующей цепочки фмотивов
             // вычисление, опрделение, разбиение на  ф-мотивы данного монотрека
             var fmchain = fmdivider.GetDivision(unitrack, (int)ParamPauseTreatment.Ignore);
-            fmchain.Id = 0;
 
             // создание аналогов ф-мотивов, которые должны получиться, после разбиения
             // процедура определения одинаковых на данном этапе не производится
@@ -274,7 +269,7 @@
             fmotiv2.NoteList.Add(new ValueNote(new Pitch(3, NoteSymbol.B, 0), new Duration(1, 8, false, 360), false, Tie.None));
 
             // записываем ф-мотивы в цепь ф-мотивов, которая будет сравниваться с получившейся
-            var fmchain1 = new FmotifChain { Id = 0, Name = "track1" };
+            var fmchain1 = new FmotifChain();
             fmchain1.FmotifsList.Add(fmotiv1);
             fmchain1.FmotifsList.Add(fmotiv2);
 
@@ -304,7 +299,7 @@
             var measures = new List<Measure> { new Measure(notes, (MeasureAttributes)attributes.Clone()) };
 
             // создание моно трека
-            var unitrack = new CongenericScoreTrack("track1", measures);
+            var unitrack = new CongenericScoreTrack(measures);
 
             // создание объекта для деления монотрека на фмотивы
             var fmdivider = new FmotifDivider();
@@ -312,7 +307,6 @@
             // создание результирующей цепочки фмотивов
             // вычисление, опрделение, разбиение на  ф-мотивы данного монотрека
             var fmchain = fmdivider.GetDivision(unitrack, (int)ParamPauseTreatment.Ignore);
-            fmchain.Id = 0;
 
             // создание аналогов ф-мотивов, которые должны получиться, после разбиения
             // процедура определения одинаковых на данном этапе не производится
@@ -329,7 +323,7 @@
             fmotiv3.NoteList.Add(new ValueNote(new Pitch(3, NoteSymbol.A, Accidental.DoubleSharp), new Duration(1, 16, false, 128), false, Tie.None));
 
             // записываем ф-мотивы в цепь ф-мотивов, которая будет сравниваться с получившейся
-            var fmchain1 = new FmotifChain { Id = 0, Name = "track1" };
+            var fmchain1 = new FmotifChain();
             fmchain1.FmotifsList.Add(fmotiv1);
             fmchain1.FmotifsList.Add(fmotiv2);
             fmchain1.FmotifsList.Add(fmotiv3);
@@ -358,7 +352,7 @@
             var measures = new List<Measure> { new Measure(notes, (MeasureAttributes)attributes.Clone()) };
 
             // создание моно трека
-            var unitrack = new CongenericScoreTrack("track1", measures);
+            var unitrack = new CongenericScoreTrack(measures);
 
             // создание объекта для деления монотрека на фмотивы
             var fmdivider = new FmotifDivider();
@@ -366,7 +360,6 @@
             // создание результирующей цепочки фмотивов
             // вычисление, опрделение, разбиение на  ф-мотивы данного монотрека
             FmotifChain fmchain = fmdivider.GetDivision(unitrack, (int)ParamPauseTreatment.Ignore);
-            fmchain.Id = 0;
 
             // создание аналогов ф-мотивов, которые должны получиться, после разбиения
             // процедура определения одинаковых на данном этапе не производится
@@ -376,7 +369,7 @@
             fmotiv1.NoteList.Add(new ValueNote(new Pitch(3, NoteSymbol.B, 0), new Duration(1, 8, false, 256), false, Tie.None));
 
             // записываем ф-мотивы в цепь ф-мотивов, которая будет сравниваться с получившейся
-            var fmchain1 = new FmotifChain { Id = 0, Name = "track1" };
+            var fmchain1 = new FmotifChain();
             fmchain1.FmotifsList.Add(fmotiv1);
 
             Assert.IsTrue(fmchain1.Equals(fmchain));
@@ -404,7 +397,7 @@
             var measures = new List<Measure> { new Measure(notes, (MeasureAttributes)attributes.Clone()) };
 
             // создание моно трека
-            var unitrack = new CongenericScoreTrack("track1", measures);
+            var unitrack = new CongenericScoreTrack(measures);
 
             // создание объекта для деления монотрека на фмотивы
             var fmdivider = new FmotifDivider();
@@ -412,7 +405,6 @@
             // создание результирующей цепочки фмотивов
             // вычисление, опрделение, разбиение на  ф-мотивы данного монотрека
             FmotifChain fmchain = fmdivider.GetDivision(unitrack, (int)ParamPauseTreatment.Ignore);
-            fmchain.Id = 0;
 
             // создание аналогов ф-мотивов, которые должны получиться, после разбиения
             // процедура определения одинаковых на данном этапе не производится
@@ -423,7 +415,7 @@
             fmotiv1.NoteList.Add(new ValueNote(new Pitch(3, NoteSymbol.B, 0), new Duration(1, 8, false, 256), false, Tie.None));
 
             // записываем ф-мотивы в цепь ф-мотивов, которая будет сравниваться с получившейся
-            var fmchain1 = new FmotifChain { Id = 0, Name = "track1" };
+            var fmchain1 = new FmotifChain();
             fmchain1.FmotifsList.Add(fmotiv1);
 
             Assert.IsTrue(fmchain1.Equals(fmchain));
@@ -451,7 +443,7 @@
             var measures = new List<Measure> { new Measure(notes, (MeasureAttributes)attributes.Clone()) };
 
             // создание моно трека
-            var unitrack = new CongenericScoreTrack("track1", measures);
+            var unitrack = new CongenericScoreTrack(measures);
 
             // создание объекта для деления монотрека на фмотивы
             var fmdivider = new FmotifDivider();
@@ -459,7 +451,6 @@
             // создание результирующей цепочки фмотивов
             // вычисление, опрделение, разбиение на  ф-мотивы данного монотрека
             FmotifChain fmchain = fmdivider.GetDivision(unitrack, ParamPauseTreatment.SilenceNote);
-            fmchain.Id = 0;
 
             // создание аналогов ф-мотивов, которые должны получиться, после разбиения
             // процедура определения одинаковых на данном этапе не производится
@@ -471,7 +462,7 @@
             fmotiv2.NoteList.Add(new ValueNote(new Pitch(3, NoteSymbol.B, 0), new Duration(1, 8, false, 256), false, Tie.None));
 
             // записываем ф-мотивы в цепь ф-мотивов, которая будет сравниваться с получившейся
-            var fmchain1 = new FmotifChain { Id = 0, Name = "track1" };
+            var fmchain1 = new FmotifChain();
             fmchain1.FmotifsList.Add(fmotiv1);
             fmchain1.FmotifsList.Add(fmotiv2);
 

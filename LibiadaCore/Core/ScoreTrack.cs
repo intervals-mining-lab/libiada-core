@@ -2,6 +2,7 @@
 {
     using System;
     using System.Collections.Generic;
+    using System.Linq;
 
     using LibiadaCore.Core.SimpleTypes;
 
@@ -14,6 +15,11 @@
         // PS:либо сделать на уровень структуры выше, где будет разбиение на Ф-мотивы
 
         /// <summary>
+        /// Gets congeneric tracks list.
+        /// </summary>
+        public readonly List<CongenericScoreTrack> CongenericScoreTracks = new List<CongenericScoreTrack>();
+
+        /// <summary>
         /// Initializes a new instance of the <see cref="ScoreTrack"/> class.
         /// </summary>
         /// <param name="congenericScoreTracks">
@@ -21,7 +27,6 @@
         /// </param>
         public ScoreTrack(List<CongenericScoreTrack> congenericScoreTracks)
         {
-            CongenericScoreTracks = new List<CongenericScoreTrack>();
             foreach (CongenericScoreTrack congenericScoreTrack in congenericScoreTracks)
             {
                 // создаем список монотреков, посредством клонирования каждого монотрека.
@@ -33,13 +38,6 @@
             CongenericScoreTracks.Clear();
             CongenericScoreTracks.Add(temp);
         }
-
-
-
-        /// <summary>
-        /// Gets congeneric tracks list.
-        /// </summary>
-        public List<CongenericScoreTrack> CongenericScoreTracks { get; private set; }
 
         /// <summary>
         /// The clone.
@@ -63,22 +61,32 @@
         /// </returns>
         public override bool Equals(object obj)
         {
-            bool equalCongenericScoreTracks = CongenericScoreTracks.Count == ((ScoreTrack)obj).CongenericScoreTracks.Count;
-
-            for (int i = 0; i < CongenericScoreTracks.Count; i++)
-            {
-                if (!CongenericScoreTracks[i].Equals(((ScoreTrack)obj).CongenericScoreTracks[i]))
-                {
-                    equalCongenericScoreTracks = false;
-                }
-            }
-
-            if (equalCongenericScoreTracks)
+            if (ReferenceEquals(this, obj))
             {
                 return true;
             }
 
-            return false;
+            return obj is ScoreTrack other && CongenericScoreTracks.SequenceEqual(other.CongenericScoreTracks);
+        }
+
+        /// <summary>
+        /// Calculates hash code using <see cref="CongenericScoreTracks"/>.
+        /// </summary>
+        /// <returns>
+        /// The <see cref="int"/>.
+        /// </returns>
+        public override int GetHashCode()
+        {
+            unchecked
+            {
+                int hashCode = -2011207718;
+                foreach (CongenericScoreTrack scoreTrack in CongenericScoreTracks)
+                {
+                    hashCode = (hashCode * -1521134295) + scoreTrack.GetHashCode();
+                }
+
+                return hashCode;
+            }
         }
 
         /// <summary>
@@ -114,7 +122,7 @@
                 }
             }
 
-            return new CongenericScoreTrack(temp.Name, tempList);
+            return new CongenericScoreTrack(tempList);
         }
     }
 }

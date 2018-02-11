@@ -78,7 +78,7 @@ namespace LibiadaCore.Core.SimpleTypes
                 return true;
             }
 
-            return Equals(other as ValueDouble);
+            return other is ValueDouble valueDouble && Equals(valueDouble);
         }
 
         /// <summary>
@@ -87,10 +87,7 @@ namespace LibiadaCore.Core.SimpleTypes
         /// <returns>
         /// The <see cref="string"/>.
         /// </returns>
-        public override string ToString()
-        {
-            return value.ToString(CultureInfo.InvariantCulture);
-        }
+        public override string ToString() => value.ToString(CultureInfo.InvariantCulture);
 
         /// <summary>
         /// The equals.
@@ -112,14 +109,11 @@ namespace LibiadaCore.Core.SimpleTypes
         }
 
         /// <summary>
-        /// The get hash code.
+        /// Calculates hash code using <see cref="value"/>.
         /// </summary>
         /// <returns>
         /// The <see cref="int"/>.
         /// </returns>
-        public override int GetHashCode()
-        {
-            return value.GetHashCode();
-        }
+        public override int GetHashCode() => value.GetHashCode();
     }
 }

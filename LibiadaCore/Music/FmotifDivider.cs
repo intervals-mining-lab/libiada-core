@@ -34,7 +34,7 @@
         /// </exception>
         public FmotifChain GetDivision(CongenericScoreTrack congenericTrack, ParamPauseTreatment paramPauseTreatment)
         {
-            var chain = new FmotifChain { Name = congenericTrack.Name }; // выходная, результирующая цепочка разбитых ф-мотивов
+            var chain = new FmotifChain(); // выходная, результирующая цепочка разбитых ф-мотивов
             this.paramPauseTreatment = paramPauseTreatment;
 
             var fmotifBuffer = new Fmotif(FmotifType.None, paramPauseTreatment);

@@ -3,6 +3,7 @@ namespace LibiadaCore.Core
     using System;
     using System.Collections;
     using System.Collections.Generic;
+    using System.Linq;
 
     /// <summary>
     /// Implementation of ordered set - alphabet of elements.
@@ -14,6 +15,11 @@ namespace LibiadaCore.Core
         /// The elements within alphabet.
         /// </summary>
         protected readonly List<IBaseObject> Elements = new List<IBaseObject>();
+
+        /// <summary>
+        /// The elements indexes.
+        /// </summary>
+        protected readonly Dictionary<IBaseObject, int> ElementsIndexes = new Dictionary<IBaseObject, int>();
 
         /// <summary>
         /// Gets count of elements in alphabet.
@@ -32,14 +38,11 @@ namespace LibiadaCore.Core
         /// </returns>
         public IBaseObject this[int index]
         {
-            get
-            {
-                return Elements[index].Clone();
-            }
+            get => Elements[index].Clone();
 
             set
             {
-                if (!Elements.Contains(value))
+                if (!ElementsIndexes.ContainsKey(value))
                 {
                     Elements[index] = value.Clone();
                 }
@@ -65,15 +68,17 @@ namespace LibiadaCore.Core
         {
             if (element == null)
             {
-                throw new NullReferenceException();
+                throw new ArgumentNullException(nameof(element), "Cannot add null into alphabet");
             }
 
-            if (Elements.Contains(element))
+            if (ElementsIndexes.ContainsKey(element))
             {
-                throw new ArgumentException($"Element '{element}' is already in alphabet.", "element");
+                throw new ArgumentException($"Element '{element}' is already in alphabet.", nameof(element));
             }
 
             Elements.Add(element.Clone());
+            ElementsIndexes.Add(Elements.Last(), Elements.Count - 1);
+
             return Elements.IndexOf(element);
         }
 
@@ -85,7 +90,13 @@ namespace LibiadaCore.Core
         /// </param>
         public virtual void Remove(int index)
         {
+            ElementsIndexes.Remove(Elements[index]);
             Elements.RemoveAt(index);
+
+            for (int i = index; i < Elements.Count; i++)
+            {
+                ElementsIndexes[Elements[i]]--;
+            }
         }
 
         /// <summary>
@@ -108,27 +119,21 @@ namespace LibiadaCore.Core
         /// <summary>
         /// Compares alphabet with another alphabet.
         /// If another object is not alphabet returns false.
-        /// In comparison order is not taken into account.
         /// </summary>
-        /// <param name="other">
+        /// <param name="obj">
         /// Some object.
         /// </param>
         /// <returns>
         /// true if alphabets are equal and false otherwise.
         /// </returns>
-        public override bool Equals(object other)
+        public override bool Equals(object obj)
         {
-            if (other == null)
-            {
-                return false;
-            }
-
-            if (ReferenceEquals(other, this))
+            if (ReferenceEquals(obj, this))
             {
                 return true;
             }
 
-            return EqualsAsAlphabet(other as Alphabet);
+            return obj is Alphabet other && Elements.SequenceEqual(other.Elements);
         }
 
         /// <summary>
@@ -143,7 +148,7 @@ namespace LibiadaCore.Core
         /// </returns>
         public int IndexOf(IBaseObject obj)
         {
-            return Elements.IndexOf(obj);
+            return ElementsIndexes.ContainsKey(obj) ? ElementsIndexes[obj] : -1;
         }
 
         /// <summary>
@@ -157,7 +162,7 @@ namespace LibiadaCore.Core
         /// </returns>
         public bool Contains(IBaseObject element)
         {
-            return Elements.Contains(element);
+            return ElementsIndexes.ContainsKey(element);
         }
 
         /// <summary>
@@ -192,9 +197,9 @@ namespace LibiadaCore.Core
         {
             var result = new List<IBaseObject>();
 
-            foreach (var vault in Elements)
+            foreach (IBaseObject element in Elements)
             {
-                result.Add(vault.Clone());
+                result.Add(element.Clone());
             }
 
             return result.ToArray();
@@ -210,56 +215,34 @@ namespace LibiadaCore.Core
         {
             var result = new List<IBaseObject>();
 
-            foreach (var vault in Elements)
+            foreach (IBaseObject element in Elements)
             {
-                result.Add(vault.Clone());
+                result.Add(element.Clone());
             }
 
             return result;
         }
 
         /// <summary>
-        /// Gets hash code.
+        /// Calculates hash code using
+        /// <see cref="Elements"/> hash codes.
         /// </summary>
         /// <returns>
         /// The <see cref="int"/>.
         /// </returns>
         public override int GetHashCode()
         {
-            int temp = 0;
-            foreach (IBaseObject o in Elements)
+            unchecked
             {
-                temp += 29 * o.GetHashCode();
-            }
-
-            return temp;
-        }
-
-        /// <summary>
-        /// Compares two alphabets.
-        /// </summary>
-        /// <param name="other">
-        /// Second alphabet for comparison.
-        /// </param>
-        /// <returns>
-        /// true if both alphabet contains equal elements and false otherwise.
-        /// </returns>
-        private bool EqualsAsAlphabet(Alphabet other)
-        {
-            if (other == null || Cardinality != other.Cardinality)
-            {
-                return false;
-            }
-
-            for (int i = 0; i < Cardinality; i++)
-            {
-                if (!Elements.Contains(other.Elements[i]))
+                int hashCode = -1573927371;
+                foreach (IBaseObject element in Elements)
                 {
-                    return false;
+                    hashCode = (hashCode * 1573927372) + element.GetHashCode();
                 }
+
+                return hashCode;
             }
 
-            return true;
         }
     }
 }

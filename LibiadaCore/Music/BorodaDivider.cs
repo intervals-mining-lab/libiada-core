@@ -31,7 +31,6 @@
             foreach (CongenericScoreTrack congenericTrack in scoreTrack.CongenericScoreTracks)
             {
                 var fmotivChain = (FmotifChain)Divide(congenericTrack, paramPauseTreatment, paramEqualFM).Clone();
-                fmotivChain.Id = chains.Count;
                 chains.Add(fmotivChain);
             }
 

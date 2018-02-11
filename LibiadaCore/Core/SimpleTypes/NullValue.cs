@@ -8,9 +8,9 @@ namespace LibiadaCore.Core.SimpleTypes
     public class NullValue : IBaseObject
     {
         /// <summary>
-        /// The single tone.
+        /// The singletone value.
         /// </summary>
-        private static readonly NullValue SingleTone = new NullValue();
+        private static readonly NullValue Value = new NullValue();
 
         /// <summary>
         /// Prevents a default instance of the <see cref="NullValue"/> class from being created.
@@ -25,35 +25,26 @@ namespace LibiadaCore.Core.SimpleTypes
         /// <returns>
         /// Reference on this object.
         /// </returns>
-        public static NullValue Instance()
-        {
-            return SingleTone;
-        }
+        public static NullValue Instance() => Value;
 
         /// <summary>
-        /// The get hash code.
+        /// Always returns -1 as hash code.
         /// </summary>
         /// <returns>
         /// The <see cref="int"/>.
         /// </returns>
-        public override int GetHashCode()
-        {
-            return 0;
-        }
+        public override int GetHashCode() => -1;
 
         /// <summary>
         /// The equals.
         /// </summary>
         /// <param name="other">
-        /// The other.
+        /// The other <see cref="IBaseObject"/>.
         /// </param>
         /// <returns>
         /// The <see cref="bool"/>.
         /// </returns>
-        public bool Equals(NullValue other)
-        {
-            return ReferenceEquals(this, other);
-        }
+        public bool Equals(IBaseObject other) => ReferenceEquals(this, other);
 
         /// <summary>
         /// The clone.
@@ -61,10 +52,7 @@ namespace LibiadaCore.Core.SimpleTypes
         /// <returns>
         /// The <see cref="IBaseObject"/>.
         /// </returns>
-        public IBaseObject Clone()
-        {
-            return Instance();
-        }
+        public IBaseObject Clone() => Instance();
 
         /// <summary>
         /// The equals.
@@ -75,10 +63,7 @@ namespace LibiadaCore.Core.SimpleTypes
         /// <returns>
         /// The <see cref="bool"/>.
         /// </returns>
-        public override bool Equals(object other)
-        {
-            return ReferenceEquals(this, other);
-        }
+        public override bool Equals(object other) => ReferenceEquals(this, other);
 
         /// <summary>
         /// Converts NullValue to "-" string.
@@ -86,9 +71,6 @@ namespace LibiadaCore.Core.SimpleTypes
         /// <returns>
         /// The <see cref="string"/>.
         /// </returns>
-        public override string ToString()
-        {
-            return "-";
-        }
+        public override string ToString() => "-";
     }
 }

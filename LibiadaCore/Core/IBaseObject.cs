@@ -24,5 +24,14 @@ namespace LibiadaCore.Core
         /// true of objects are equal and false otherwise.
         /// </returns>
         bool Equals(object other);
+
+        /// <summary>
+        /// Calculates hash code using
+        /// stored internal values.
+        /// </summary>
+        /// <returns>
+        /// The <see cref="int"/>.
+        /// </returns>
+        int GetHashCode();
     }
 }

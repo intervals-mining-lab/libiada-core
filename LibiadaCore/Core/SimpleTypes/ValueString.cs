@@ -23,8 +23,8 @@ namespace LibiadaCore.Core.SimpleTypes
             if (string.IsNullOrEmpty(value))
             {
                 throw value == null ?
-                        new ArgumentNullException("value", "String value is null.") :
-                        new ArgumentException("String value is empty.", "value");
+                        new ArgumentNullException(nameof(value), "String value is null.") :
+                        new ArgumentException("String value is empty.", nameof(value));
             }
 
             Value = (string)value.Clone();
@@ -36,10 +36,7 @@ namespace LibiadaCore.Core.SimpleTypes
         /// <param name="value">
         /// The <see cref="char"/> value of element.
         /// </param>
-        public ValueString(char value)
-        {
-            Value = value.ToString();
-        }
+        public ValueString(char value) => Value = value.ToString();
 
         /// <summary>
         /// Operator of implicit casting from ValueString to string.
@@ -50,10 +47,7 @@ namespace LibiadaCore.Core.SimpleTypes
         /// <returns>
         /// New <see cref="string"/>.
         /// </returns>
-        public static implicit operator string(ValueString from)
-        {
-            return from.Value;
-        }
+        public static implicit operator string(ValueString from) => from.Value;
 
         /// <summary>
         /// Operator of implicit casting from string to ValueString.
@@ -64,10 +58,7 @@ namespace LibiadaCore.Core.SimpleTypes
         /// <returns>
         /// New <see cref="ValueString"/>.
         /// </returns>
-        public static implicit operator ValueString(string from)
-        {
-            return new ValueString(from);
-        }
+        public static implicit operator ValueString(string from) => new ValueString(from);
 
         /// <summary>
         /// Operator of implicit casting from char to ValueString.
@@ -78,10 +69,7 @@ namespace LibiadaCore.Core.SimpleTypes
         /// <returns>
         /// New <see cref="ValueString"/>.
         /// </returns>
-        public static implicit operator ValueString(char from)
-        {
-            return new ValueString(from);
-        }
+        public static implicit operator ValueString(char from) => new ValueString(from);
 
         /// <summary>
         /// The clone.
@@ -89,10 +77,7 @@ namespace LibiadaCore.Core.SimpleTypes
         /// <returns>
         /// The <see cref="IBaseObject"/>.
         /// </returns>
-        public IBaseObject Clone()
-        {
-            return new ValueString(Value);
-        }
+        public IBaseObject Clone() => new ValueString(Value);
 
         /// <summary>
         /// The equals.
@@ -119,10 +104,7 @@ namespace LibiadaCore.Core.SimpleTypes
         /// <returns>
         /// The <see cref="string"/>.
         /// </returns>
-        public override string ToString()
-        {
-            return Value;
-        }
+        public override string ToString() => Value;
 
         /// <summary>
         /// The equals.
@@ -140,18 +122,15 @@ namespace LibiadaCore.Core.SimpleTypes
                 return false;
             }
 
-            return string.Equals(Value, other.Value);
+            return Value == other.Value;
         }
 
         /// <summary>
-        /// The get hash code.
+        /// Calculates hash code using <see cref="Value"/>.
         /// </summary>
         /// <returns>
         /// The <see cref="int"/>.
         /// </returns>
-        public override int GetHashCode()
-        {
-            return Value != null ? Value.GetHashCode() : 0;
-        }
+        public override int GetHashCode() => Value.GetHashCode();
     }
 }

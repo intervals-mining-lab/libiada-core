@@ -1,6 +1,7 @@
 namespace LibiadaCore.Core
 {
     using System;
+    using System.Collections;
     using System.Collections.Generic;
     using System.Linq;
 
@@ -34,10 +35,7 @@ namespace LibiadaCore.Core
         /// <param name="length">
         /// The length of chain.
         /// </param>
-        public BaseChain(int length)
-        {
-            ClearAndSetNewLength(length);
-        }
+        public BaseChain(int length) => ClearAndSetNewLength(length);
 
         /// <summary>
         /// Initializes a new instance of the <see cref="BaseChain"/> class with 0 length.
@@ -120,13 +118,7 @@ namespace LibiadaCore.Core
         /// Gets building of chain.
         /// Returns clone of building.
         /// </summary>
-        public int[] Building
-        {
-            get
-            {
-                return (int[])building.Clone();
-            }
-        }
+        public int[] Building => (int[])building.Clone();
 
         /// <summary>
         /// Gets alphabet of chain.
@@ -155,10 +147,7 @@ namespace LibiadaCore.Core
         /// <returns>
         /// Element from given position.
         /// </returns>
-        public override IBaseObject Get(int index)
-        {
-            return alphabet[building[index]];
-        }
+        public override IBaseObject Get(int index) => alphabet[building[index]];
 
         /// <summary>
         /// The length of chain.
@@ -166,10 +155,7 @@ namespace LibiadaCore.Core
         /// <returns>
         /// The <see cref="int"/>.
         /// </returns>
-        public override int GetLength()
-        {
-            return building.Length;
-        }
+        public override int GetLength() => building.Length;
 
         /// <summary>
         /// Sets or replaces element in specified position.
@@ -260,57 +246,43 @@ namespace LibiadaCore.Core
         /// <summary>
         /// The equals.
         /// </summary>
-        /// <param name="other">
+        /// <param name="obj">
         /// The other.
         /// </param>
         /// <returns>
         /// The <see cref="bool"/>.
         /// </returns>
-        public override bool Equals(object other)
+        public override bool Equals(object obj)
         {
-            if (other == null)
-            {
-                return false;
-            }
-
-            if (other.Equals(NullValue.Instance()))
-            {
-                for (int i = 0; i < building.Length; i++)
-                {
-                    if (!Get(i).Equals(NullValue.Instance()))
-                    {
-                        return false;
-                    }
-                }
-
-                return true;
-            }
-
-            if (ReferenceEquals(this, other))
+            if (ReferenceEquals(this, obj))
             {
                 return true;
             }
 
-            if (!(other is BaseChain))
-            {
-                return false;
-            }
+            return obj is BaseChain other
+                && alphabet.Equals(other.alphabet)
+                && building.SequenceEqual(other.building);
+        }
 
-            var chainObject = (BaseChain)other;
-            if (!alphabet.Equals(chainObject.alphabet))
+        /// <summary>
+        /// Generates hash code using
+        /// <see cref="alphabet"/> and <see cref="building"/>.
+        /// </summary>
+        /// <returns>
+        /// The <see cref="int"/>.
+        /// </returns>
+        public override int GetHashCode()
+        {
+            unchecked
             {
-                return false;
-            }
-
-            for (int i = 0; (i < chainObject.GetLength()) && (i < building.Length); i++)
-            {
-                if (!this[i].Equals(chainObject[i]))
+                int hashCode = -1845274089 ^ alphabet.GetHashCode();
+                foreach (int element in building)
                 {
-                    return false;
+                    hashCode = (hashCode * -1521134295) + element.GetHashCode();
                 }
-            }
 
-            return true;
+                return hashCode;
+            }
         }
 
         /// <summary>

@@ -56,9 +56,9 @@
             for (int i = 0; i < congenericList.Count; i++)
             {
                 // TODO: вероятно нужна проверка на то есть ли такой атрибут - имя моно трека, если нет то задать счетчиком i
-                var name = congenericList[i].Attributes["id"].Value;
-                var measures = ParseMeasures(congenericList[i].Clone());
-                temp.Add(new CongenericScoreTrack(name, measures));
+                string name = congenericList[i].Attributes["id"].Value;
+                List<Measure> measures = ParseMeasures(congenericList[i].Clone());
+                temp.Add(new CongenericScoreTrack(measures));
             }
 
             return temp;
@@ -77,25 +77,25 @@
         {
             XmlNodeList measureList = congenericScoreNode.ChildNodes;
             var measures = new List<Measure>();
-            bool isOnRepat = false;
-            List<Measure> repeatedMeasures = new List<Measure>();
+            bool isOnRepeat = false;
+            var repeatedMeasures = new List<Measure>();
             for (int i = 0; i < measureList.Count; i++)
             {
-                var notes = ParseNotes(measureList[i].Clone());
-                var attributes = ParseAttributes(measureList[i].Clone());
-                var childNodes = measureList[i]?.ChildNodes;
-                var lastNode = childNodes?[childNodes.Count - 1];
+                List<ValueNote> notes = ParseNotes(measureList[i].Clone());
+                MeasureAttributes attributes = ParseAttributes(measureList[i].Clone());
+                XmlNodeList childNodes = measureList[i]?.ChildNodes;
+                XmlNode lastNode = childNodes?[childNodes.Count - 1];
                 if ((lastNode?.Name == "barline") && (lastNode.ChildNodes[0].Attributes["direction"].Value == "forward"))
                 {
                     repeatedMeasures = new List<Measure>() { new Measure(notes, attributes) };
-                    isOnRepat = true;
+                    isOnRepeat = true;
                 }
-                else if (isOnRepat)
+                else if (isOnRepeat)
                 {
                     repeatedMeasures.Add(new Measure(notes, attributes));
                     if ((lastNode?.Name == "barline") && (lastNode.ChildNodes[0].Attributes["direction"].Value == "backward"))
                     {
-                        isOnRepat = false;
+                        isOnRepeat = false;
                         ushort repeatCount = Convert.ToUInt16(lastNode.ChildNodes[0].Attributes["times"].Value);
                         for (int j = 0; j < repeatCount; j++)
                         {
@@ -305,9 +305,9 @@
                 childName = noteChild.Name;
                 if (noteChild.Name == "pitch")
                 {
-                    NoteSymbol step = NoteSymbol.C;
-                    Accidental alter = Accidental.Bekar;
-                    int octave = 0;
+                    var step = NoteSymbol.C;
+                    var alter = Accidental.Bekar;
+                    byte octave = 0;
                     bool hasStep = false;
                     bool hasOctave = false;
                     foreach (XmlNode pitchChild in noteChild.ChildNodes)
@@ -315,14 +315,14 @@
                         switch (pitchChild.Name)
                         {
                             case "step":
-                                NoteSymbol.TryParse(pitchChild.InnerText, true, out step);
+                                Enum.TryParse(pitchChild.InnerText, true, out step);
                                 hasStep = true;
                                 break;
                             case "alter":
                                 alter = (Accidental)Convert.ToInt16(pitchChild.InnerText);
                                 break;
                             case "octave":
-                                octave = Convert.ToInt16(pitchChild.InnerText);
+                                octave = Convert.ToByte(pitchChild.InnerText);
                                 hasOctave = true;
                                 break;
                         }
@@ -475,7 +475,6 @@
             {
                 return new Duration(numerator, denominator, normalNotes, actualNotes, dot, duration);
             }
-
 
             return new Duration(numerator, denominator, dot, duration);
         }

@@ -45,7 +45,7 @@
             fmotiv6.NoteList.Add(new ValueNote(new Pitch(3, NoteSymbol.A, 0), new Duration(1, 4, false, 512), false, Tie.None));
 
             // записываем ф-мотивы в цепь ф-мотивов, которая будет сравниваться с получившейся
-            var fmchain1 = new FmotifChain { Id = 0, Name = "track1" };
+            var fmchain1 = new FmotifChain();
             fmchain1.FmotifsList.Add(fmotiv1);
             fmchain1.FmotifsList.Add(fmotiv2);
             fmchain1.FmotifsList.Add(fmotiv3);
@@ -95,7 +95,7 @@
             fmotiv6.NoteList.Add(new ValueNote(new Pitch(3, NoteSymbol.D, 0), new Duration(1, 4, false, 512), false, Tie.None));
 
             // записываем ф-мотивы в цепь ф-мотивов, которая будет сравниваться с получившейся
-            var fmchain1 = new FmotifChain { Id = 0, Name = "track1" };
+            var fmchain1 = new FmotifChain();
             fmchain1.FmotifsList.Add(fmotiv1);
             fmchain1.FmotifsList.Add(fmotiv2);
             fmchain1.FmotifsList.Add(fmotiv3);

@@ -4,7 +4,7 @@
     using System.Security.Cryptography;
 
     /// <summary>
-    /// Note duration
+    /// Note duration.
     /// </summary>
     public class Duration : IBaseObject
     {
@@ -27,8 +27,8 @@
         {
             Numerator = numerator;
             Denominator = denominator;
-            Onumerator = numerator;
-            Odenominator = denominator;
+            OriginalNumerator = numerator;
+            OriginalDenominator = denominator;
             Ticks = ticks;
             if (doted)
             {
@@ -61,8 +61,8 @@
         {
             Numerator = numerator;
             Denominator = denominator;
-            Onumerator = numerator;
-            Odenominator = denominator;
+            OriginalNumerator = numerator;
+            OriginalDenominator = denominator;
             Ticks = ticks;
             PlaceTriplet(tripleNumerator, tripleDenominator);
             if (doted)
@@ -76,14 +76,14 @@
         /// оригинальный числитель в дроби доли
         /// (для сохранения после наложения триоли на длительность)
         /// </summary>
-        public int Onumerator { get; private set; }
+        public int OriginalNumerator { get; private set; }
 
         /// <summary>
         /// Gets original denominator.
         /// оригинальный знаменатель в дроби доли
         /// (для сохранения после наложения триоли на длительность)
         /// </summary>
-        public int Odenominator { get; private set; }
+        public int OriginalDenominator { get; private set; }
 
         /// <summary>
         /// Gets numerator.
@@ -107,19 +107,13 @@
         /// Gets duration value.
         ///  значение доли в десятичной дроби
         /// </summary>
-        public double Value
-        {
-            get { return (double)Numerator / Denominator; }
-        }
+        public double Value => (double)Numerator / Denominator;
 
         /// <summary>
         /// Gets original duration value.
         /// значение ОРИГИНАЛЬНОЙ доли в десятичной дроби
         /// </summary>
-        public double OriginalValue
-        {
-            get { return (double)Onumerator / Odenominator; }
-        }
+        public double OriginalValue => (double)OriginalNumerator / OriginalDenominator;
 
         /// <summary>
         /// The add duration.
@@ -132,22 +126,22 @@
         /// </returns>
         public Duration AddDuration(Duration duration)
         {
-            int newnum = (Numerator * duration.Denominator) + (duration.Numerator * Denominator);
-            int newdenom = Denominator * duration.Denominator;
+            int newNumerator = (Numerator * duration.Denominator) + (duration.Numerator * Denominator);
+            int newDenominator = Denominator * duration.Denominator;
 
             //TODO: проверить избыточность одного из циклов
 
-            for (int i = 2; i <= newnum; i++)
+            for (int i = 2; i <= newNumerator; i++)
             {
                 // если числитель делится на i
-                if (newnum % i == 0)
+                if (newNumerator % i == 0)
                 {
                     // и знаменатель делится на i (на случай триоли например)
-                    if (newdenom % i == 0)
+                    if (newDenominator % i == 0)
                     {
                         // находим оставшиешся множители (могут входить в множимое по несколько раз)
-                        newnum /= i;
-                        newdenom /= i;
+                        newNumerator /= i;
+                        newDenominator /= i;
                         i--;
                     }
                 }
@@ -155,17 +149,17 @@
 
             //--cокращение получившейся дроби--
             // пока знаменатель больше 2
-            while (newdenom > 2)
+            while (newDenominator > 2)
             {
                 // если числитель делится на 2
-                if (newnum % 2 == 0)
+                if (newNumerator % 2 == 0)
                 {
                     // и знаменатель делится на 2 (на случай триоли например)
-                    if (newdenom % 2 == 0)
+                    if (newDenominator % 2 == 0)
                     {
                         // сокращаем на 2 дробь
-                        newnum /= 2;
-                        newdenom /= 2;
+                        newNumerator /= 2;
+                        newDenominator /= 2;
                     }
                     else
                     {
@@ -178,7 +172,7 @@
                 }
             }
 
-            return new Duration(newnum, newdenom, false, Ticks + duration.Ticks);
+            return new Duration(newNumerator, newDenominator, false, Ticks + duration.Ticks);
         }
 
         /// <summary>
@@ -208,8 +202,8 @@
         {
             var temp = new Duration(Numerator, Denominator, false, Ticks)
             {
-                Onumerator = Onumerator,
-                Odenominator = Odenominator
+                OriginalNumerator = OriginalNumerator,
+                OriginalDenominator = OriginalDenominator
             };
             return temp;
         }
@@ -236,15 +230,34 @@
         }
 
         /// <summary>
-        /// The get hash code.
+        /// calculates MD5 hash code using
+        /// <see cref="Value"/>.
         /// </summary>
         /// <returns>
         /// The <see cref="T:byte[]"/>.
         /// </returns>
-        public new byte[] GetHashCode()
+        public byte[] GetMD5HashCode()
         {
-            var md5 = MD5.Create();
+            MD5 md5 = MD5.Create();
             return md5.ComputeHash(BitConverter.GetBytes(Value));
+        }
+
+        /// <summary>
+        /// Calculates hash code using
+        /// <see cref="Numerator"/> and <see cref="Denominator"/>.
+        /// </summary>
+        /// <returns>
+        /// The <see cref="int"/>.
+        /// </returns>
+        public override int GetHashCode()
+        {
+            unchecked
+            {
+                int hashCode = -1534900553;
+                hashCode = (hashCode * -1521134295) + Numerator.GetHashCode();
+                hashCode = (hashCode * -1521134295) + Denominator.GetHashCode();
+                return hashCode;
+            }
         }
 
         /// <summary>

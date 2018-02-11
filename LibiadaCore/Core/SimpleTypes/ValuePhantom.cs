@@ -21,7 +21,7 @@ namespace LibiadaCore.Core.SimpleTypes
                 return true;
             }
 
-            return EqualsAsPhantom(other as ValuePhantom) || Equals(other as NullValue) || EqualsAsElement(other as IBaseObject);
+            return base.Equals(other as ValuePhantom) || EqualsAsElement(other as IBaseObject);
         }
 
         /// <summary>
@@ -131,20 +131,6 @@ namespace LibiadaCore.Core.SimpleTypes
             }
 
             return false;
-        }
-
-        /// <summary>
-        /// The equals as phantom.
-        /// </summary>
-        /// <param name="phantomValue">
-        /// The phantom value.
-        /// </param>
-        /// <returns>
-        /// The <see cref="bool"/>.
-        /// </returns>
-        private bool EqualsAsPhantom(ValuePhantom phantomValue)
-        {
-            return base.Equals(phantomValue);
         }
     }
 }

@@ -1,7 +1,7 @@
 ﻿namespace LibiadaCore.Music
 {
     using System;
-    using System.Linq;
+    using System.Collections.Generic;
 
     using LibiadaCore.Core.SimpleTypes;
 
@@ -24,9 +24,9 @@
         /// <returns>
         /// The <see cref="int"/>.
         /// </returns>
-        public static int GetOctaveFromMidiNumber(int midiNumber)
+        public static byte GetOctaveFromMidiNumber(int midiNumber)
         {
-            return (midiNumber / NotesInOctave) - 1;
+            return (byte)((midiNumber / NotesInOctave) - 1);
         }
 
         /// <summary>
@@ -43,17 +43,17 @@
         /// </exception>
         public static NoteSymbol GetNoteSymbolFromMidiNumber(int midiNumber)
         {
-            var notes = new[] { 0, 2, 4, 5, 7, 9, 11 };
-            var step = midiNumber % NotesInOctave;
+            var notes = new HashSet<int> { 0, 2, 4, 5, 7, 9, 11 };
+            int step = midiNumber % NotesInOctave;
 
-            if (notes.Any(n => n == step))
+            if (notes.Contains(step))
             {
                 return (NoteSymbol)step;
             }
 
             step--;
 
-            if (notes.Any(n => n == step))
+            if (notes.Contains(step))
             {
                 return (NoteSymbol)step;
             }
@@ -72,8 +72,8 @@
         /// </returns>
         public static Accidental GetAlterFromMidiNumber(int midiNumber)
         {
-            var note = GetNoteSymbolFromMidiNumber(midiNumber);
-            var rawNote = midiNumber % NotesInOctave;
+            NoteSymbol note = GetNoteSymbolFromMidiNumber(midiNumber);
+            int rawNote = midiNumber % NotesInOctave;
             return (Accidental)(rawNote == (byte)note ? 0 : 1);
         }
     }

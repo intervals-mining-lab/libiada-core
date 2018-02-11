@@ -9,10 +9,20 @@
     public class Size : IBaseObject
     {
         /// <summary>
+        /// Gets the beats.
+        /// </summary>
+        public readonly int Beats;
+
+        /// <summary>
+        /// Gets the beat base.
+        /// </summary>
+        public readonly int BeatBase;
+
+        /// <summary>
         /// The ticks per beat.
         /// size is beats/beatbase (ex size = 3/4; beats=3; beatbase=4;)
         /// </summary>
-        private int ticksPerBeat; // <divisions> TicksPerBeat (per 1/4)
+        private readonly int ticksPerBeat; // <divisions> TicksPerBeat (per 1/4)
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Size"/> class.
@@ -50,16 +60,6 @@
         }
 
         /// <summary>
-        /// Gets the beats.
-        /// </summary>
-        public int Beats { get; private set; }
-
-        /// <summary>
-        /// Gets the beat base.
-        /// </summary>
-        public int BeatBase { get; private set; }
-
-        /// <summary>
         /// Gets the ticks per beat.
         /// </summary>
         /// <exception cref="Exception">
@@ -84,10 +84,7 @@
         /// <returns>
         /// The <see cref="IBaseObject"/>.
         /// </returns>
-        public IBaseObject Clone()
-        {
-            return new Size(Beats, BeatBase, ticksPerBeat);
-        }
+        public IBaseObject Clone() => new Size(Beats, BeatBase, ticksPerBeat);
 
         /// <summary>
         /// The equals.
@@ -98,15 +95,28 @@
         /// <returns>
         /// The <see cref="bool"/>.
         /// </returns>
-        public override bool Equals(object obj)
-        {
-            if ((Beats == ((Size)obj).Beats) && (BeatBase == ((Size)obj).BeatBase) &&
-                (TicksPerBeat == ((Size)obj).TicksPerBeat))
-            {
-                return true;
-            }
+        public override bool Equals(object obj) => obj is Size size
+                                                && Beats == size.Beats
+                                                && BeatBase == size.BeatBase
+                                                && TicksPerBeat == size.TicksPerBeat;
 
-            return false;
+        /// <summary>
+        /// Calculates hash code using
+        /// <see cref="Beats"/>, <see cref="BeatBase"/> and <see cref="ticksPerBeat"/>.
+        /// </summary>
+        /// <returns>
+        /// The <see cref="int"/>.
+        /// </returns>
+        public override int GetHashCode()
+        {
+            unchecked
+            {
+                int hashCode = -1918903070;
+                hashCode = (hashCode * -1521134295) + Beats.GetHashCode();
+                hashCode = (hashCode * -1521134295) + BeatBase.GetHashCode();
+                hashCode = (hashCode * 397) + ticksPerBeat.GetHashCode();
+                return hashCode;
+            }
         }
     }
 }

@@ -128,7 +128,7 @@
         [Test]
         public void NullTest()
         {
-            Assert.Throws<NullReferenceException>(() => firstAlphabet.Add(null));
+            Assert.Throws<ArgumentNullException>(() => firstAlphabet.Add(null));
         }
 
         /// <summary>

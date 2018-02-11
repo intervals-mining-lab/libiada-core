@@ -18,10 +18,7 @@ namespace LibiadaCore.Core.SimpleTypes
         /// <param name="i">
         /// The i.
         /// </param>
-        public ValueInt(int i)
-        {
-            value = i;
-        }
+        public ValueInt(int i) => value = i;
 
         /// <summary>
         /// Operator of implicit casting from ValueInt to int.
@@ -32,10 +29,7 @@ namespace LibiadaCore.Core.SimpleTypes
         /// <returns>
         /// New <see cref="int"/>.
         /// </returns>
-        public static implicit operator int(ValueInt from)
-        {
-            return from.value;
-        }
+        public static implicit operator int(ValueInt from) => from.value;
 
         /// <summary>
         /// Operator of implicit casting from int to ValueInt.
@@ -46,10 +40,7 @@ namespace LibiadaCore.Core.SimpleTypes
         /// <returns>
         /// New <see cref="ValueInt"/>.
         /// </returns>
-        public static implicit operator ValueInt(int from)
-        {
-            return new ValueInt(from);
-        }
+        public static implicit operator ValueInt(int from) => new ValueInt(from);
 
         /// <summary>
         /// The clone.
@@ -57,22 +48,23 @@ namespace LibiadaCore.Core.SimpleTypes
         /// <returns>
         /// The <see cref="IBaseObject"/>.
         /// </returns>
-        public IBaseObject Clone()
-        {
-            return new ValueInt(value);
-        }
+        public IBaseObject Clone() => new ValueInt(value);
 
         /// <summary>
-        /// Determines whether the specified <see cref="T:System.Object"/> is equal to the current <see cref="T:System.Object"/>.
+        /// Determines whether the specified <see cref="T:System.Object"/>
+        /// is equal to the current <see cref="T:System.Object"/>.
         /// </summary>
         /// <param name="other">
-        /// The <see cref="T:System.Object"/> to compare with the current <see cref="T:System.Object"/>.
+        /// The <see cref="T:System.Object"/> to compare
+        /// with the current <see cref="T:System.Object"/>.
         /// </param>
         /// <filterpriority>
         /// 2
         /// </filterpriority>
         /// <returns>
-        /// true if the specified <see cref="T:System.Object"/> is equal to the current <see cref="T:System.Object"/>; otherwise, false.
+        /// true if the specified <see cref="T:System.Object"/>
+        /// is equal to the current <see cref="T:System.Object"/>;
+        /// otherwise, false.
         /// </returns>
         public override bool Equals(object other)
         {
@@ -81,12 +73,7 @@ namespace LibiadaCore.Core.SimpleTypes
                 return true;
             }
 
-            if (other is ValueInt)
-            {
-                return Equals((ValueInt)other);
-            }
-
-            return false;
+            return other is ValueInt otherValueInt && Equals(otherValueInt);
         }
 
         /// <summary>
@@ -96,10 +83,7 @@ namespace LibiadaCore.Core.SimpleTypes
         /// A string that represents the current object.
         /// </returns>
         /// <filterpriority>2</filterpriority>
-        public override string ToString()
-        {
-            return value.ToString(CultureInfo.InvariantCulture);
-        }
+        public override string ToString() => value.ToString(CultureInfo.InvariantCulture);
 
         /// <summary>
         /// The equals.
@@ -121,14 +105,11 @@ namespace LibiadaCore.Core.SimpleTypes
         }
 
         /// <summary>
-        /// The get hash code.
+        /// Calculates hash code using <see cref="value"/>.
         /// </summary>
         /// <returns>
         /// The <see cref="int"/>.
         /// </returns>
-        public override int GetHashCode()
-        {
-            return value.GetHashCode();
-        }
+        public override int GetHashCode() => value.GetHashCode();
     }
 }

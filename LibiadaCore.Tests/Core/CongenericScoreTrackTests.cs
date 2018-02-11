@@ -57,7 +57,7 @@
 
             var measuresList = new List<Measure> { m1, m2 };
 
-            var uni = new CongenericScoreTrack("a1", measuresList);
+            var uni = new CongenericScoreTrack(measuresList);
 
             Assert.AreNotEqual(uni.NoteOrder()[0].Id, 1);
 
@@ -135,7 +135,7 @@
 
             var measuresList = new List<Measure> { m1, m2 };
 
-            var uni = new CongenericScoreTrack("a1", measuresList);
+            var uni = new CongenericScoreTrack(measuresList);
 
             Assert.AreNotEqual(uni.NoteIdOrder()[0], 1);
 
@@ -232,7 +232,7 @@
 
             var measuresList = new List<Measure> { m1, m2, m3, m4, m5, m5, m2, m3, m6 };
 
-            var uni = new CongenericScoreTrack("a1", measuresList);
+            var uni = new CongenericScoreTrack(measuresList);
 
             Assert.AreEqual(uni.MeasureOrder()[0].Id, 0);
             Assert.AreEqual(uni.MeasureOrder()[1].Id, 1);
