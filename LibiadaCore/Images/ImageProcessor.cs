@@ -4,8 +4,29 @@
     using LibiadaCore.Core;
     using SixLabors.ImageSharp;
 
+    /// <summary>
+    /// The image processor.
+    /// </summary>
     public static class ImageProcessor
     {
+        /// <summary>
+        /// Processes the image.
+        /// </summary>
+        /// <param name="image">
+        /// The image.
+        /// </param>
+        /// <param name="imageTransformers">
+        /// The image transformers.
+        /// </param>
+        /// <param name="matrixTransformers">
+        /// The matrix transformers.
+        /// </param>
+        /// <param name="orderExtractor">
+        /// The order extractor.
+        /// </param>
+        /// <returns>
+        /// The <see cref="BaseChain"/>.
+        /// </returns>
         public static BaseChain ProcessImage(Image<Rgba32> image, IImageTransformer[] imageTransformers, IMatrixTransformer[] matrixTransformers, IImageOrderExtractor orderExtractor)
         {
             for (int i = 0; i < imageTransformers.Length; i++)

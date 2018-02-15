@@ -5,8 +5,20 @@
     using LibiadaCore.Core.SimpleTypes;
     using SixLabors.ImageSharp;
 
+    /// <summary>
+    /// The zigzag order extractor.
+    /// </summary>
     public class ZigzagOrderExtractor : IImageOrderExtractor
     {
+        /// <summary>
+        /// Extracts order moving in zigzags horizontally.
+        /// </summary>
+        /// <param name="image">
+        /// The image.
+        /// </param>
+        /// <returns>
+        /// The <see cref="BaseChain"/>.
+        /// </returns>
         public BaseChain ExtractOrder(Rgba32[,] image)
         {
             int[] order = new int[image.GetLength(0) * image.GetLength(1)];
