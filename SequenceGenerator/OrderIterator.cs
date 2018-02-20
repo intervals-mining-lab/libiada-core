@@ -3,14 +3,38 @@
     using System;
     using System.Collections;
 
+    /// <summary>
+    /// The order iterator.
+    /// </summary>
     public class OrderIterator : IEnumerable
     {
+        /// <summary>
+        /// The order.
+        /// </summary>
         private readonly int[] order;
 
+        /// <summary>
+        /// The alphabet cardinality.
+        /// </summary>
         private readonly int alphabetCardinality;
 
+        /// <summary>
+        /// The has next.
+        /// </summary>
         private bool hasNext = true;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="OrderIterator"/> class.
+        /// </summary>
+        /// <param name="length">
+        /// The order length.
+        /// </param>
+        /// <param name="alphabetCardinality">
+        /// The order alphabet cardinality.
+        /// </param>
+        /// <exception cref="ArgumentException">
+        /// Thrown if alphabet cardinality greater than length.
+        /// </exception>
         public OrderIterator(int length, int alphabetCardinality)
         {
             if (alphabetCardinality > length)
@@ -26,8 +50,14 @@
             }
         }
 
+        /// <summary>
+        /// The iterator.
+        /// </summary>
         public int[] Iterator => (int[])order.Clone();
 
+        /// <summary>
+        /// The iterate order counter.
+        /// </summary>
         public void IterateOrderCounter()
         {
             var maximums = new int[order.Length];
@@ -59,6 +89,12 @@
             }
         }
 
+        /// <summary>
+        /// The get enumerator.
+        /// </summary>
+        /// <returns>
+        /// The <see cref="IEnumerator"/>.
+        /// </returns>
         public IEnumerator GetEnumerator()
         {
             do

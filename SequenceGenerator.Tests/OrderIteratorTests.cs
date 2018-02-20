@@ -1,12 +1,22 @@
-﻿namespace SequenceGeneretor.Tests
+﻿namespace SequenceGenerator.Tests
 {
     using NUnit.Framework;
 
-    using SequenceGenerator;
-
+    /// <summary>
+    /// The order iterator tests.
+    /// </summary>
     [TestFixture]
     public class OrderIteratorTests
     {
+        /// <summary>
+        /// The iterator test.
+        /// </summary>
+        /// <param name="expected">
+        /// The expected.
+        /// </param>
+        /// <param name="iterations">
+        /// The iterations.
+        /// </param>
         [TestCase(new[] { 1, 1, 1 }, 0)]
         [TestCase(new[] { 1, 1, 2 }, 1)]
         [TestCase(new[] { 1, 2, 1 }, 2)]
@@ -23,6 +33,9 @@
             Assert.AreEqual(expected, actual);
         }
 
+        /// <summary>
+        /// The enumerator test.
+        /// </summary>
         [Test]
         public void EnumeratorTest()
         {

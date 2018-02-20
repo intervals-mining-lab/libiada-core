@@ -1,12 +1,25 @@
-﻿namespace SequenceGeneretor.Tests
+﻿namespace SequenceGenerator.Tests
 {
     using NUnit.Framework;
 
-    using SequenceGenerator;
-
+    /// <summary>
+    /// The order equality comparer tests.
+    /// </summary>
     [TestFixture]
     public class OrderEqualityComparerTests
     {
+        /// <summary>
+        /// The equals test.
+        /// </summary>
+        /// <param name="first">
+        /// The first.
+        /// </param>
+        /// <param name="second">
+        /// The second.
+        /// </param>
+        /// <param name="expected">
+        /// The expected.
+        /// </param>
         [TestCase(new[] { 1, 1, 1 }, new[] { 1, 1, 1 }, true)]
         [TestCase(new[] { 2, 1, 1 }, new[] { 1, 1, 1 }, false)]
         [TestCase(new[] { 1, 2, 1 }, new[] { 1, 2, 1 }, true)]
@@ -22,6 +35,15 @@
             Assert.AreEqual(expected, actual);
         }
 
+        /// <summary>
+        /// GetHashCode test.
+        /// </summary>
+        /// <param name="obj">
+        /// The obj.
+        /// </param>
+        /// <param name="expected">
+        /// The expected.
+        /// </param>
         [TestCase(new[] { 1, 1, 1 }, 207392)]
         [TestCase(new[] { 2, 1, 1 }, 207921)]
         [TestCase(new[] { 1, 2, 1 }, 207415)]

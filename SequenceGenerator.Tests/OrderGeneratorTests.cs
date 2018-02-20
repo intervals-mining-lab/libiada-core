@@ -1,14 +1,18 @@
-﻿namespace SequenceGeneretor.Tests
+﻿namespace SequenceGenerator.Tests
 {
     using System.Collections.Generic;
 
     using NUnit.Framework;
 
-    using SequenceGenerator;
-
+    /// <summary>
+    /// The order generator tests.
+    /// </summary>
     [TestFixture]
     public class OrderGeneratorTests
     {
+        /// <summary>
+        /// The generator test.
+        /// </summary>
         [Test]
         public void GeneratorTest()
         {
@@ -17,7 +21,7 @@
                 new[] { 1, 1, 1 },
                 new[] { 1, 1, 2 },
                 new[] { 1, 2, 1 },
-                new[] { 1, 2, 2 },
+                new[] { 1, 2, 2 }
             };
 
             var orderGenerator = new OrderGenerator();
@@ -25,6 +29,9 @@
             Assert.AreEqual(expected, actual);
         }
 
+        /// <summary>
+        /// The complete generator test.
+        /// </summary>
         [Test]
         public void CompleteGeneratorTest()
         {
@@ -42,6 +49,9 @@
             Assert.AreEqual(expected, actual);
         }
 
+        /// <summary>
+        /// The strict generator test.
+        /// </summary>
         [Test]
         public void StrictGeneratorTest()
         {

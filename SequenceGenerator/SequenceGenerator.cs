@@ -5,8 +5,24 @@
     using LibiadaCore.Core;
     using LibiadaCore.Core.SimpleTypes;
 
-    public class SequenceGenerator
+    /// <summary>
+    /// The sequence generator.
+    /// </summary>
+    public class SequenceGenerator : ISequenceGenerator
     {
+        /// <summary>
+        /// Generates numeric sequences using given length and
+        /// alphabet cardinality less or equal than given.
+        /// </summary>
+        /// <param name="length">
+        /// The sequence length.
+        /// </param>
+        /// <param name="alphabetCardinality">
+        /// The sequence alphabet cardinality.
+        /// </param>
+        /// <returns>
+        /// The <see cref="T:List{BaseChain}"/>.
+        /// </returns>
         public List<BaseChain> GenerateSequences(int length, int alphabetCardinality)
         {
             var result = new List<BaseChain>();
@@ -25,20 +41,15 @@
             return result;
         }
 
-        public List<BaseChain> StrictGenerateSequences(int length, int alphabetCardinality)
-        {
-            var result = GenerateSequences(length, alphabetCardinality);
-            for (int i = result.Count - 1; i >= 0; i--)
-            {
-                if (result[i].Alphabet.Cardinality < alphabetCardinality)
-                {
-                    result.RemoveAt(i);
-                }
-            }
-
-            return result;
-        }
-
+        /// <summary>
+        /// Generates numeric sequences using given length.
+        /// </summary>
+        /// <param name="length">
+        /// The sequence length.
+        /// </param>
+        /// <returns>
+        /// The <see cref="T:List{BaseChain}"/>.
+        /// </returns>
         public List<BaseChain> GenerateSequences(int length)
         {
             return GenerateSequences(length, length);

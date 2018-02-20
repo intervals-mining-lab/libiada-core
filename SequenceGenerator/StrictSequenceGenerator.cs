@@ -5,8 +5,23 @@
 
     using LibiadaCore.Core;
 
-    public class StrictSequenceGenerator
+    /// <summary>
+    /// The strict sequence generator.
+    /// </summary>
+    public class StrictSequenceGenerator : ISequenceGenerator
     {
+        /// <summary>
+        /// Generates numeric sequences using given length and alphabet cardinality.
+        /// </summary>
+        /// <param name="length">
+        /// The sequence length.
+        /// </param>
+        /// <param name="alphabetCardinality">
+        /// The sequence alphabet cardinality.
+        /// </param>
+        /// <returns>
+        /// The <see cref="T:List{BaseChain}"/>.
+        /// </returns>
         public List<BaseChain> GenerateSequences(int length, int alphabetCardinality)
         {
             var sequenceGenerator = new SequenceGenerator();
@@ -22,6 +37,15 @@
             return result;
         }
 
+        /// <summary>
+        /// Generates all sequences of given length with unique orders.
+        /// </summary>
+        /// <param name="length">
+        /// The length.
+        /// </param>
+        /// <returns>
+        /// The <see cref="T:List{BaseChain}"/>.
+        /// </returns>
         public List<BaseChain> GenerateSequences(int length)
         {
             var result = new List<BaseChain>();
