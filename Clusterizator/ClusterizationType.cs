@@ -27,6 +27,13 @@
         /// </summary>
         [Display(Name = "Mean shift")]
         [Description("Mean shift clusterization")]
-        MeanShift = 3
+        MeanShift = 3,
+
+        /// <summary>
+        /// The FRiS-Cluster.
+        /// </summary>
+        [Display(Name = "FRiS-Cluster")]
+        [Description("FRiS-Cluster clusterization")]
+        FRiSCluster = 4
     }
 }

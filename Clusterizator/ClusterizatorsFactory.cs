@@ -57,6 +57,11 @@ namespace Clusterizator
                     }
 
                     return new MeanShiftClusterization(bandwidth);
+                case ClusterizationType.FRiSCluster:
+                    int minimumClusters = (int)parameters["clustersCount"];
+                    int maximumClusters = (int)parameters["maximumClusters"];
+                    return new FRiSCluster.FRiSCluster(minimumClusters, maximumClusters);
+
                 default:
                     throw new InvalidEnumArgumentException(nameof(type), (int)type, typeof(ClusterizationType));
             }

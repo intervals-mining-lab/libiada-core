@@ -129,7 +129,7 @@
 
             for (int i = 0; i < optimalClustersBelonging.Length; i++)
             {
-                optimalClustersBelonging[i] = optimalPillarIndexes.IndexOf(optimalClustersBelonging[i]) + 1;
+                optimalClustersBelonging[i] = optimalPillarIndexes.IndexOf(optimalClustersBelonging[i]);
             }
 
             return optimalClustersBelonging;
