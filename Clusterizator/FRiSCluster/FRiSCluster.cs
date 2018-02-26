@@ -5,14 +5,43 @@
     using System.Collections.Generic;
     using System.Linq;
 
+    /// <summary>
+    /// The clusterization using Competitive Similarity Function.
+    /// </summary>
     public class FRiSCluster : IClusterizator
     {
+        /// <summary>
+        /// The minimum clusters number.
+        /// </summary>
         private readonly int minimumClusters;
+
+        /// <summary>
+        /// The maximum clusters number.
+        /// </summary>
         private readonly int maximumClusters;
+
+        /// <summary>
+        /// The distances between all data points.
+        /// </summary>
         private double[,] distances;
 
+        /// <summary>
+        /// The data points.
+        /// </summary>
         private double[][] data;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="FRiSCluster"/> class.
+        /// </summary>
+        /// <param name="minimumClusters">
+        /// The minimum clusters number.
+        /// </param>
+        /// <param name="maximumClusters">
+        /// The maximum clusters number.
+        /// </param>
+        /// <exception cref="ArgumentException">
+        /// Thrown if minimum clusters number is greater than maximum clusters number.
+        /// </exception>
         public FRiSCluster(int minimumClusters, int maximumClusters)
         {
             if (minimumClusters > maximumClusters)
@@ -24,6 +53,18 @@
             this.maximumClusters = maximumClusters;
         }
 
+        /// <summary>
+        /// Groups points into simple clusters using Competitive Similarity Function.
+        /// </summary>
+        /// <param name="clustersCount">
+        /// The clusters count.
+        /// </param>
+        /// <param name="data">
+        /// The data pints.
+        /// </param>
+        /// <returns>
+        /// The cluster number for each data point as <see cref="T:int[]"/>.
+        /// </returns>
         public int[] Cluster(int clustersCount, double[][] data)
         {
             this.data = data;
@@ -94,6 +135,15 @@
             return optimalClustersBelonging;
         }
 
+        /// <summary>
+        /// Adds new pillar using max compactness.
+        /// </summary>
+        /// <param name="currentPillarIndexes">
+        /// The current pillar indexes.
+        /// </param>
+        /// <returns>
+        /// The <see cref="int[]"/>.
+        /// </returns>
         private int[] AddPillar(List<int> currentPillarIndexes)
         {
             int maxCompactnessIndex = CalculateCompactnessForPotentialPillars(currentPillarIndexes);
@@ -101,6 +151,21 @@
             return DetermineClusters(currentPillarIndexes);
         }
 
+        /// <summary>
+        /// Reselects pillar inside cluster to provide max compactness.
+        /// </summary>
+        /// <param name="pillarIndex">
+        /// Index of the pillar to reselect.
+        /// </param>
+        /// <param name="pillarIndexes">
+        /// The pillar indexes.
+        /// </param>
+        /// <param name="clustersBelonging">
+        /// Information on belongings of all data points to clusters.
+        /// </param>
+        /// <returns>
+        /// The <see cref="T:(int, double)"/>.
+        /// </returns>
         private (int, double) ReselectPillar(int pillarIndex, List<int> pillarIndexes, int[] clustersBelonging)
         {
             int[] clusterPointsIndexes = data.Select((d, i) => i).Where(i => clustersBelonging[i] == pillarIndex).ToArray();
@@ -129,6 +194,18 @@
             return (clusterPointsIndexes[clusterPillarIndex], maxCompactness);
         }
 
+        /// <summary>
+        /// Finds data point with max compactness as new pillar.
+        /// Tries all data points as possible new pillar 
+        /// and selects one with maximum compactness.
+        /// </summary>
+        /// <param name="pillarIndexes">
+        /// List of hypothetical pillars
+        /// (not necessary the actual ones).
+        /// </param>
+        /// <returns>
+        /// The index of new pillar as <see cref="int"/>.
+        /// </returns>
         private int CalculateCompactnessForPotentialPillars(List<int> pillarIndexes)
         {
             var compactness = new double[data.Length];
@@ -151,6 +228,9 @@
             return Array.IndexOf(compactness, compactness.Max());
         }
 
+        /// <summary>
+        /// Calculates distances for all possible pairs of data points.
+        /// </summary>
         private void CalculateDistances()
         {
             distances = new double[data.Length, data.Length];
@@ -170,8 +250,30 @@
             }
         }
 
+        /// <summary>
+        /// Calculates similarity function for given pair of distances.
+        /// </summary>
+        /// <param name="r1">
+        /// The distance to the own pillar.
+        /// </param>
+        /// <param name="r2">
+        /// The distance to the nearest competitor pillar.
+        /// </param>
+        /// <returns>
+        /// The <see cref="double"/>.
+        /// </returns>
         private double CalculateSimilarityFunction(double r1, double r2) => 1 - r1 / (r1 + r2);
 
+        /// <summary>
+        /// Distributes data pints into clusters.
+        /// Determines pillars to which each data point belongs.
+        /// </summary>
+        /// <param name="pillarIndexes">
+        /// The pillars indexes.
+        /// </param>
+        /// <returns>
+        /// The index of cluster for each data point as <see cref="T:int[]"/>.
+        /// </returns>
         private int[] DetermineClusters(List<int> pillarIndexes)
         {
             var clustersBelonging = new int[data.Length];
@@ -192,6 +294,21 @@
             return clustersBelonging;
         }
 
+        /// <summary>
+        /// Calculates compactness measure for given set of pillars.
+        /// </summary>
+        /// <param name="clustersBelonging">
+        /// The clusters belonging.
+        /// </param>
+        /// <param name="pillarIndex">
+        /// The pillar index.
+        /// </param>
+        /// <param name="pillarIndexes">
+        /// The pillar indexes.
+        /// </param>
+        /// <returns>
+        /// The compactness as <see cref="double"/>.
+        /// </returns>
         private double CalculateCompactness(int[] clustersBelonging, int pillarIndex, List<int> pillarIndexes)
         {
             double compactness = 0;
@@ -206,6 +323,21 @@
             return compactness;
         }
 
+        /// <summary>
+        /// Calculates distance to nearest competitive pillar for given data point.
+        /// </summary>
+        /// <param name="pillarIndexes">
+        /// The pillar indexes.
+        /// </param>
+        /// <param name="pointIndex">
+        /// The point index.
+        /// </param>
+        /// <param name="pillarIndex">
+        /// Index of data point's pillar.
+        /// </param>
+        /// <returns>
+        /// The distance to nearest competitive pillar as <see cref="double"/>.
+        /// </returns>
         private double DistanceToNearestCompetitivePillar(List<int> pillarIndexes, int pointIndex, int pillarIndex)
         {
             var nearestPillarDistance = new List<double>();
