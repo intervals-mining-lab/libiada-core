@@ -63,9 +63,9 @@
             fmotiv.NoteList.Add(new ValueNote(new Pitch(1, NoteSymbol.A, Accidental.Bekar), new Duration(1, 2, false, 480), false, Tie.None));
             fmotiv.NoteList.Add(new ValueNote((Pitch)null, new Duration(1, 4, false, 480), false, Tie.None));
             fmotiv.NoteList.Add(new ValueNote(new Pitch(1, NoteSymbol.A, Accidental.Bekar), new Duration(1, 2, false, 480), false, Tie.None));
-            Assert.AreEqual(fmotiv.PauseTreatment((int)ParamPauseTreatment.Ignore).NoteList[0].Pitch[0].Step, NoteSymbol.A);
-            Assert.AreEqual(fmotiv.PauseTreatment((int)ParamPauseTreatment.Ignore).NoteList[1].Pitch[0].Step, NoteSymbol.A);
-            Assert.AreEqual(fmotiv.PauseTreatment((int)ParamPauseTreatment.Ignore).NoteList[2].Pitch[0].Step, NoteSymbol.A);
+            Assert.AreEqual(fmotiv.PauseTreatment((int)ParamPauseTreatment.Ignore).NoteList[0].Pitches[0].Step, NoteSymbol.A);
+            Assert.AreEqual(fmotiv.PauseTreatment((int)ParamPauseTreatment.Ignore).NoteList[1].Pitches[0].Step, NoteSymbol.A);
+            Assert.AreEqual(fmotiv.PauseTreatment((int)ParamPauseTreatment.Ignore).NoteList[2].Pitches[0].Step, NoteSymbol.A);
             Assert.AreEqual(fmotiv.PauseTreatment((int)ParamPauseTreatment.Ignore).NoteList.Count, 3);
         }
 
@@ -83,9 +83,9 @@
             fmotiv.NoteList.Add(new ValueNote(new Pitch(1, NoteSymbol.A, Accidental.Bekar), new Duration(1, 2, false, 480), false, Tie.None));
             fmotiv.NoteList.Add(new ValueNote((Pitch)null, new Duration(1, 4, false, 480), false, Tie.None));
             fmotiv.NoteList.Add(new ValueNote(new Pitch(1, NoteSymbol.A, Accidental.Bekar), new Duration(1, 2, false, 480), false, Tie.None));
-            Assert.AreEqual(fmotiv.PauseTreatment((int)ParamPauseTreatment.Ignore).NoteList[0].Pitch[0].Step, NoteSymbol.A);
-            Assert.AreEqual(fmotiv.PauseTreatment((int)ParamPauseTreatment.Ignore).NoteList[1].Pitch[0].Step, NoteSymbol.A);
-            Assert.AreEqual(fmotiv.PauseTreatment((int)ParamPauseTreatment.Ignore).NoteList[2].Pitch[0].Step, NoteSymbol.A);
+            Assert.AreEqual(fmotiv.PauseTreatment((int)ParamPauseTreatment.Ignore).NoteList[0].Pitches[0].Step, NoteSymbol.A);
+            Assert.AreEqual(fmotiv.PauseTreatment((int)ParamPauseTreatment.Ignore).NoteList[1].Pitches[0].Step, NoteSymbol.A);
+            Assert.AreEqual(fmotiv.PauseTreatment((int)ParamPauseTreatment.Ignore).NoteList[2].Pitches[0].Step, NoteSymbol.A);
             Assert.AreEqual(fmotiv.PauseTreatment((int)ParamPauseTreatment.Ignore).NoteList.Count, 3);
         }
 

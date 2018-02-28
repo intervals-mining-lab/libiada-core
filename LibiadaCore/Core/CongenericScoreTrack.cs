@@ -46,7 +46,7 @@
             {
                 foreach (ValueNote note in measure.NoteList)
                 {
-                    var newPitches = note.Pitch.Select(p => new Pitch(p.MidiNumber)).ToList();
+                    var newPitches = note.Pitches.Select(p => new Pitch(p.MidiNumber)).ToList();
 
                     result.Add(new ValueNote(newPitches, note.Duration, note.Triplet, note.Tie));
                 }

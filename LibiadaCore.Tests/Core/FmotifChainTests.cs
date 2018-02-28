@@ -23,8 +23,8 @@
             chain.FmotifsList[0].NoteList.Add(new ValueNote(new Pitch(0, NoteSymbol.A, 0), new Duration(1, 4, false, 480), false, Tie.None));
             chain.FmotifsList[0].NoteList.Add(new ValueNote(new Pitch(0, NoteSymbol.B, 0), new Duration(1, 2, false, 480), false, Tie.None));
             Assert.AreEqual(0, chain.FmotifsList[0].Id);
-            Assert.AreEqual(NoteSymbol.A, chain.FmotifsList[0].NoteList[0].Pitch[0].Step);
-            Assert.AreEqual(NoteSymbol.B, chain.FmotifsList[0].NoteList[1].Pitch[0].Step);
+            Assert.AreEqual(NoteSymbol.A, chain.FmotifsList[0].NoteList[0].Pitches[0].Step);
+            Assert.AreEqual(NoteSymbol.B, chain.FmotifsList[0].NoteList[1].Pitches[0].Step);
         }
 
         /// <summary>

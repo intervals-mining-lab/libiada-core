@@ -74,7 +74,7 @@
                         var temp = (Fmotif)Clone();
                         for (int i = 0; i < temp.NoteList.Count; i++)
                         {
-                            if (temp.NoteList[i].Pitch != null && temp.NoteList[i].Pitch.Count == 0)
+                            if (temp.NoteList[i].Pitches != null && temp.NoteList[i].Pitches.Count == 0)
                             {
                                 temp.NoteList.RemoveAt(i);
                                 i--;
@@ -91,7 +91,7 @@
                         // если пауза стоит вначале текста (и текст не пустой) то она удаляется
                         while (temp2.NoteList.Count > 0)
                         {
-                            if (temp2.NoteList[0].Pitch != null && temp2.NoteList[0].Pitch.Count > 0)
+                            if (temp2.NoteList[0].Pitches != null && temp2.NoteList[0].Pitches.Count > 0)
                             {
                                 break;
                             }
@@ -101,7 +101,7 @@
 
                         for (int i = 0; i < temp2.NoteList.Count; i++)
                         {
-                            if (temp2.NoteList[i].Pitch.Count == 0)
+                            if (temp2.NoteList[i].Pitches.Count == 0)
                             {
                                 // к длительности предыдущего звука добавляем длительность текущей паузы
                                 temp2.NoteList[i - 1].Duration.AddDuration((Duration)temp2.NoteList[i].Duration.Clone());
@@ -166,7 +166,7 @@
                 else
                 {
                     // пауза не может быть залигованна, ошибка если лига на паузе!
-                    if (temp.NoteList[0].Pitch.Count == 0)
+                    if (temp.NoteList[0].Pitches.Count == 0)
                     {
                         throw new Exception("LibiadaMusic: Pause can't be with Tie! Sorry!");
                     }
@@ -194,7 +194,7 @@
                         }
 
                         // высота залигованных нот должна быть одинакова
-                        if (!buffNote.PitchEquals(temp.NoteList[0].Pitch))
+                        if (!buffNote.PitchEquals(temp.NoteList[0].Pitches))
                         {
                             throw new Exception("LibiadaMusic: Pitches of tie notes not equal!");
                         }
@@ -203,7 +203,7 @@
                         if (temp.NoteList[0].Tie == Tie.Continue)
                         {
                             // добавляется длительность, и копируется старая высота звучания и приоритет
-                            buffNote = new ValueNote(buffNote.Pitch, buffNote.Duration.AddDuration(temp.NoteList[0].Duration), buffNote.Triplet, Tie.None, buffNote.Priority);
+                            buffNote = new ValueNote(buffNote.Pitches, buffNote.Duration.AddDuration(temp.NoteList[0].Duration), buffNote.Triplet, Tie.None, buffNote.Priority);
 
                             // очистка текущей позиции ноты, для перехода к следущей в очереди
                             temp.NoteList.RemoveAt(0);
@@ -214,7 +214,7 @@
                             if (temp.NoteList[0].Tie == Tie.End)
                             {
                                 // добавляется длительность, и копируется старая высота звучания и приоритет
-                                buffNote = new ValueNote(buffNote.Pitch, buffNote.Duration.AddDuration(temp.NoteList[0].Duration), buffNote.Triplet, Tie.None, buffNote.Priority);
+                                buffNote = new ValueNote(buffNote.Pitches, buffNote.Duration.AddDuration(temp.NoteList[0].Duration), buffNote.Triplet, Tie.None, buffNote.Priority);
 
                                 // завершен сбор лигованных нот, результат кладется в возвращаемый буфер.
                                 tempGathered.NoteList.Add((ValueNote)buffNote.Clone());
@@ -280,12 +280,12 @@
             for (int i = 0; i < self.NoteList.Count; i++)
             {
                 // одинаково ли количество высот в этих нотах?
-                if ((self.NoteList[i].Pitch == null) != (other.NoteList[i].Pitch == null))
+                if ((self.NoteList[i].Pitches == null) != (other.NoteList[i].Pitches == null))
                 {
                     return false;
                 }
 
-                if (self.NoteList[i].Pitch == null || self.NoteList[i].Pitch.Count != other.NoteList[i].Pitch.Count)
+                if (self.NoteList[i].Pitches == null || self.NoteList[i].Pitches.Count != other.NoteList[i].Pitches.Count)
                 {
                     // если нет - фмотивы - неодинаковы
                     return false;
@@ -298,18 +298,18 @@
                     return false;
                 }
 
-                for (int j = 0; j < self.NoteList[i].Pitch.Count; j++)
+                for (int j = 0; j < self.NoteList[i].Pitches.Count; j++)
                 {
                     if (firstTime)
                     {
                         // при первом сравнении вычисляем на сколько полутонов отличаются первые ноты,
                         // последущие должны отличаться на столько же, чтобы фмотивы были равны
-                        modulation = self.NoteList[i].Pitch[j].MidiNumber - other.NoteList[i].Pitch[j].MidiNumber;
+                        modulation = self.NoteList[i].Pitches[j].MidiNumber - other.NoteList[i].Pitches[j].MidiNumber;
                         firstTime = false;
                     }
 
                     // одинаковы ли при этом высоты / правильно ли присутствует секвентный перенос (модуляция)
-                    if (modulation != (self.NoteList[i].Pitch[j].MidiNumber - other.NoteList[i].Pitch[j].MidiNumber))
+                    if (modulation != (self.NoteList[i].Pitches[j].MidiNumber - other.NoteList[i].Pitches[j].MidiNumber))
                     {
                         return false;
                     }
@@ -354,7 +354,7 @@
             for (int i = 0; i < self.NoteList.Count; i++)
             {
                 // одинаково ли количество высот у нот?
-                if (self.NoteList[i].Pitch.Count != other.NoteList[i].Pitch.Count)
+                if (self.NoteList[i].Pitches.Count != other.NoteList[i].Pitches.Count)
                 {
                     // если нет - фмотивы - неодинаковы
                     return false;
@@ -367,9 +367,9 @@
                     return false;
                 }
 
-                if ((self.NoteList[i].Pitch.Count == 0) || (other.NoteList[i].Pitch.Count == 0))
+                if ((self.NoteList[i].Pitches.Count == 0) || (other.NoteList[i].Pitches.Count == 0))
                 {
-                    if (!((self.NoteList[i].Pitch.Count == 0) && (other.NoteList[i].Pitch.Count == 0)))
+                    if (!((self.NoteList[i].Pitches.Count == 0) && (other.NoteList[i].Pitches.Count == 0)))
                     {
                         // если одна из нот пауза, а вторая - нет, то ф-мотивы не одинаковы
                         return false;
@@ -384,20 +384,20 @@
                     switch (paramEqualFM)
                     {
                         case ParamEqualFM.Sequent: // учитывая секентный перенос (Sequent)
-                            for (int j = 0; j < self.NoteList[i].Pitch.Count; j++)
+                            for (int j = 0; j < self.NoteList[i].Pitches.Count; j++)
                             {
                                 if (firstTime)
                                 {
                                     // при первом сравнении вычисляем на сколько полутонов отличаются первые ноты,
                                     // последущие должны отличаться на столько же, чтобы фмотивы были равны
-                                    modulation = self.NoteList[i].Pitch[j].MidiNumber -
-                                                 other.NoteList[i].Pitch[j].MidiNumber;
+                                    modulation = self.NoteList[i].Pitches[j].MidiNumber -
+                                                 other.NoteList[i].Pitches[j].MidiNumber;
                                     firstTime = false;
                                 }
 
                                 // одинаковы ли при этом высоты / правильно ли присутствует секвентный перенос (модуляция)
                                 if (modulation !=
-                                    (self.NoteList[i].Pitch[j].MidiNumber - other.NoteList[i].Pitch[j].MidiNumber))
+                                    (self.NoteList[i].Pitches[j].MidiNumber - other.NoteList[i].Pitches[j].MidiNumber))
                                 {
                                     return false;
                                 }
@@ -407,9 +407,9 @@
 
                         case ParamEqualFM.NonSequent:
                             // без секвентного переноса (NonSequent)
-                            for (int j = 0; j < self.NoteList[i].Pitch.Count; j++)
+                            for (int j = 0; j < self.NoteList[i].Pitches.Count; j++)
                             {
-                                if (self.NoteList[i].Pitch[j].MidiNumber != other.NoteList[i].Pitch[j].MidiNumber)
+                                if (self.NoteList[i].Pitches[j].MidiNumber != other.NoteList[i].Pitches[j].MidiNumber)
                                 {
                                     return false;
                                 }

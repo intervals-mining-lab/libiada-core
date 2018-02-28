@@ -64,7 +64,7 @@
                 if (NoteList[k].Duration.Equals(measure.NoteList[k].Duration))
                 {
                     // ноты одинаковые по длине, можно просто склеить
-                    NoteList[k].AddPitch(measure.NoteList[k].Pitch);
+                    NoteList[k].AddPitch(measure.NoteList[k].Pitches);
                 }
                 else
                 {
@@ -75,7 +75,7 @@
                         tempNoteList.AddRange(measure.NoteList[k].SplitNote(NoteList[k].Duration));
                         measure.NoteList.RemoveAt(k);
                         measure.NoteList.InsertRange(k, tempNoteList);
-                        NoteList[k].AddPitch(measure.NoteList[k].Pitch);
+                        NoteList[k].AddPitch(measure.NoteList[k].Pitches);
                     }
                     else
                     {
@@ -83,7 +83,7 @@
                         tempNoteList.AddRange(NoteList[k].SplitNote(measure.NoteList[k].Duration));
                         NoteList.RemoveAt(k);
                         NoteList.InsertRange(k, tempNoteList);
-                        NoteList[k].AddPitch(measure.NoteList[k].Pitch);
+                        NoteList[k].AddPitch(measure.NoteList[k].Pitches);
                     }
                 }
 

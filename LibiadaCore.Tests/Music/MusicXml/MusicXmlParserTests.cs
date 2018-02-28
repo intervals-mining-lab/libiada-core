@@ -127,15 +127,15 @@
             Assert.AreEqual(parser.ScoreModel.CongenericScoreTracks[0].MeasureList[0].NoteList.Count, 5);
             Assert.AreEqual(parser.ScoreModel.CongenericScoreTracks[0].MeasureList[1].NoteList.Count, 6);
             Assert.AreEqual(parser.ScoreModel.CongenericScoreTracks[0].MeasureList[2].NoteList.Count, 4);
-            Assert.AreEqual(parser.ScoreModel.CongenericScoreTracks[0].MeasureList[0].NoteList[0].Pitch.Count, 2);
-            Assert.AreEqual(parser.ScoreModel.CongenericScoreTracks[0].MeasureList[2].NoteList[0].Pitch.Count, 3);
+            Assert.AreEqual(parser.ScoreModel.CongenericScoreTracks[0].MeasureList[0].NoteList[0].Pitches.Count, 2);
+            Assert.AreEqual(parser.ScoreModel.CongenericScoreTracks[0].MeasureList[2].NoteList[0].Pitches.Count, 3);
             Assert.AreEqual(parser.ScoreModel.CongenericScoreTracks[0].MeasureList[0].NoteList[0].Duration.Denominator, 4);
-            Assert.AreEqual(parser.ScoreModel.CongenericScoreTracks[0].MeasureList[0].NoteList[0].Pitch[0].Step.ToString(), "A");
-            Assert.AreEqual(parser.ScoreModel.CongenericScoreTracks[0].MeasureList[0].NoteList[0].Pitch[1].Step.ToString(), "C");
+            Assert.AreEqual(parser.ScoreModel.CongenericScoreTracks[0].MeasureList[0].NoteList[0].Pitches[0].Step.ToString(), "A");
+            Assert.AreEqual(parser.ScoreModel.CongenericScoreTracks[0].MeasureList[0].NoteList[0].Pitches[1].Step.ToString(), "C");
             Assert.AreEqual(parser.ScoreModel.CongenericScoreTracks[0].MeasureList[2].NoteList[0].Duration.Denominator, 8);
-            Assert.AreEqual(parser.ScoreModel.CongenericScoreTracks[0].MeasureList[2].NoteList[0].Pitch[0].Step.ToString(), "G");
-            Assert.AreEqual(parser.ScoreModel.CongenericScoreTracks[0].MeasureList[2].NoteList[0].Pitch[1].Step.ToString(), "G");
-            Assert.AreEqual(parser.ScoreModel.CongenericScoreTracks[0].MeasureList[2].NoteList[0].Pitch[2].Step.ToString(), "C");
+            Assert.AreEqual(parser.ScoreModel.CongenericScoreTracks[0].MeasureList[2].NoteList[0].Pitches[0].Step.ToString(), "G");
+            Assert.AreEqual(parser.ScoreModel.CongenericScoreTracks[0].MeasureList[2].NoteList[0].Pitches[1].Step.ToString(), "G");
+            Assert.AreEqual(parser.ScoreModel.CongenericScoreTracks[0].MeasureList[2].NoteList[0].Pitches[2].Step.ToString(), "C");
         }
 
         /// <summary>
@@ -268,10 +268,10 @@
                 Assert.AreEqual(expectedNotes.Count, actualNotes.Count);
                 for (int j = 0; j < expectedNotes.Count; j++)
                 {
-                    Assert.AreEqual(expectedNotes[j].Pitch.Count, actualNotes[j].Pitch.Count);
-                    for (int k = 0; k < expectedNotes[j].Pitch.Count; k++)
+                    Assert.AreEqual(expectedNotes[j].Pitches.Count, actualNotes[j].Pitches.Count);
+                    for (int k = 0; k < expectedNotes[j].Pitches.Count; k++)
                     {
-                        Assert.AreEqual(expectedNotes[j].Pitch[k], actualNotes[j].Pitch[k]);
+                        Assert.AreEqual(expectedNotes[j].Pitches[k], actualNotes[j].Pitches[k]);
                     }
                 }
             }

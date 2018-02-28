@@ -106,7 +106,7 @@
                                 case ParamPauseTreatment.Ignore:
                                     // удаляем все паузы в возвращаемом объекте (0) (паузы игнорируются)
                                     // если у очередной ноты нет лиги, то проверяем: если нота - не пауза, то выставляем флаг о следущей рассматриваемой ноте
-                                    if (fmotifBuffer.NoteList[fmotifBuffer.NoteList.Count - 1].Pitch.Count > 0)
+                                    if (fmotifBuffer.NoteList[fmotifBuffer.NoteList.Count - 1].Pitches.Count > 0)
                                     {
                                         next = true;
                                     }
@@ -117,7 +117,7 @@
                                     if (noteChain.Count > 0)
                                     {
                                         // если следующая не паузы то переходим к анализу буфера
-                                        if (noteChain[0].Pitch.Count > 0)
+                                        if (noteChain[0].Pitches.Count > 0)
                                         {
                                             next = true;
                                         }
@@ -157,7 +157,7 @@
                         case ParamPauseTreatment.Ignore:
                             // удаляем все паузы в возвращаемом объекте (0) (паузы игнорируются)
                             // если у очередной ноты нет лиги, то проверяем: если нота - не пауза, то выставляем флаг о следущей рассматриваемой ноте
-                            if (fmotifBuffer.NoteList[fmotifBuffer.NoteList.Count - 1].Pitch.Count > 0)
+                            if (fmotifBuffer.NoteList[fmotifBuffer.NoteList.Count - 1].Pitches.Count > 0)
                             {
                                 next = true;
                             }
@@ -166,7 +166,7 @@
                         case ParamPauseTreatment.NoteTrace:
                             // длительность паузы прибавляется к предыдущей ноте, а она сама удаляется из текста (1) (пауза - звуковой след ноты)
                             // проверяем: если нота - не пауза, то выставляем флаг о следущей рассматриваемой ноте
-                            if (fmotifBuffer.NoteList[fmotifBuffer.NoteList.Count - 1].Pitch.Count > 0)
+                            if (fmotifBuffer.NoteList[fmotifBuffer.NoteList.Count - 1].Pitches.Count > 0)
                             {
                                 wasNote = true;
                             }
@@ -174,7 +174,7 @@
                             if (noteChain.Count > 0)
                             {
                                 // если следующая в н. тексте не пауза то переходим к анализу буфера
-                                if ((noteChain[0].Pitch.Count > 0) && wasNote)
+                                if ((noteChain[0].Pitches.Count > 0) && wasNote)
                                 {
                                     next = true;
                                 }
@@ -932,7 +932,7 @@
                     }
 
                     if ((paramPauseTreatment == ParamPauseTreatment.NoteTrace) &&
-                        (fmotifBuffer.NoteList[0].Pitch.Count > 0))
+                        (fmotifBuffer.NoteList[0].Pitches.Count > 0))
                     {
                         break;
                     }

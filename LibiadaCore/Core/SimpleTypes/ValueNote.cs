@@ -17,7 +17,7 @@
         /// <summary>
         /// Gets note's pitches.
         /// </summary>
-        public readonly List<Pitch> Pitch = new List<Pitch>();
+        public readonly List<Pitch> Pitches;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ValueNote"/> class.
@@ -37,25 +37,9 @@
         /// <param name="priority">
         /// The priority.
         /// </param>
-        public ValueNote(Pitch pitch, Duration duration, bool triplet, Tie tie, int priority = -1)
+        public ValueNote(Pitch pitch, Duration duration, bool triplet, Tie tie, int priority = -1) :
+            this(pitch == null ? new List<Pitch>() : new List<Pitch>() { pitch }, duration, triplet, tie, priority)
         {
-            // если не пауза то записываем высоту и наличие лиги
-            if (pitch != null)
-            {
-                Pitch.Add((Pitch)pitch.Clone());
-                Tie = tie;
-            }
-            else
-            {
-                // если нота - пауза, то не может быть лиги на паузу
-                Tie = Tie.None;
-            }
-
-            Duration = (Duration)duration.Clone();
-            Triplet = triplet;
-
-            // приоритет если указан
-            Priority = priority;
         }
 
         /// <summary>
@@ -76,43 +60,25 @@
         /// <param name="priority">
         /// The priority.
         /// </param>
-        public ValueNote(List<Pitch> pitchList, Duration duration, bool triplet, Tie tie, int priority = -1) : this((Pitch)null, duration, triplet, tie, priority)
+        public ValueNote(List<Pitch> pitchList, Duration duration, bool triplet, Tie tie, int priority = -1)
         {
-            if (pitchList.Count > 0)
+            Pitches = pitchList == null ? new List<Pitch>() : new List<Pitch>(pitchList);
+
+            // если не пауза то записываем высоту и наличие лиги
+            if (Pitches.Count > 0)
             {
-                Pitch.AddRange(pitchList);
                 Tie = tie;
             }
-        }
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="ValueNote"/> class.
-        /// </summary>
-        /// <param name="midiNumbers">
-        /// The midi numbers.
-        /// </param>
-        /// <param name="duration">
-        /// The duration.
-        /// </param>
-        /// <param name="triplet">
-        /// The triplet.
-        /// </param>
-        /// <param name="tie">
-        /// The tie.
-        /// </param>
-        /// <param name="priority">
-        /// The priority.
-        /// </param>
-        public ValueNote(List<int> midiNumbers, Duration duration, bool triplet, Tie tie, int priority = -1)
-        {
-            foreach (int midiNumber in midiNumbers)
+            else
             {
-                Pitch.Add(new Pitch(midiNumber));
+                // если нота - пауза, то не может быть лиги на паузу
+                Tie = Tie.None;
             }
 
-            Tie = tie;
             Duration = (Duration)duration.Clone();
             Triplet = triplet;
+
+            // приоритет если указан
             Priority = priority;
         }
 
@@ -169,7 +135,7 @@
                 throw new ArgumentNullException("pitch");
             }
 
-            Pitch.Add(pitch);
+            Pitches.Add(pitch);
         }
 
         /// <summary>
@@ -180,7 +146,7 @@
         /// </param>
         public void AddPitch(List<Pitch> pitch)
         {
-            Pitch.AddRange(pitch);
+            Pitches.AddRange(pitch);
         }
 
         /// <summary>
@@ -194,14 +160,14 @@
         /// </returns>
         public bool PitchEquals(List<Pitch> pitchList)
         {
-            if (Pitch.Count != pitchList.Count)
+            if (Pitches.Count != pitchList.Count)
             {
                 return false;
             }
 
             for (int i = 0; i < pitchList.Count; i++)
             {
-                if (!Pitch[i].Equals(pitchList[i]))
+                if (!Pitches[i].Equals(pitchList[i]))
                 {
                     return false;
                 }
@@ -218,7 +184,7 @@
         /// </returns>
         public IBaseObject Clone()
         {
-            return new ValueNote(Pitch, Duration, Triplet, Tie, Priority);
+            return new ValueNote(Pitches, Duration, Triplet, Tie, Priority);
         }
 
         /// <summary>
@@ -238,10 +204,10 @@
             }
 
             // одна нота - пауза
-            if (Pitch == null || Pitch.Count == 0)
+            if (Pitches == null || Pitches.Count == 0)
             {
                 // другая нота - пауза
-                if (note.Pitch == null || note.Pitch.Count == 0)
+                if (note.Pitches == null || note.Pitches.Count == 0)
                 {
                     // у пауз сравниваем только их длительности
                     return Duration.Equals(note.Duration);
@@ -251,13 +217,13 @@
                 return false;
             }
 
-            if (note.Pitch == null || note.Pitch.Count == 0)
+            if (note.Pitches == null || note.Pitches.Count == 0)
             {
                 // нота и пауза не одно и то же
                 return false;
             }
 
-            return Duration.Equals(note.Duration) && PitchEquals(note.Pitch) && (Tie == note.Tie) && (Triplet == note.Triplet);
+            return Duration.Equals(note.Duration) && PitchEquals(note.Pitches) && (Tie == note.Tie) && (Triplet == note.Triplet);
 
             // TODO: сделать сравнение не по всей ноте/объекту, а еще только по месту например,
             // TODO: из сравнения исключить триплет, так можно различать одинаковые по длительности ноты, но записанные по разному(!)
@@ -273,7 +239,7 @@
         public byte[] GetMD5HashCode()
         {
             var hash = new List<byte>();
-            foreach (Pitch pitch in Pitch)
+            foreach (Pitch pitch in Pitches)
             {
                 hash.AddRange(pitch.GetMD5HashCode());
             }
@@ -287,7 +253,7 @@
 
         /// <summary>
         /// Calculates hash code using
-        /// <see cref="Triplet"/>, <see cref="Pitch"/>,
+        /// <see cref="Triplet"/>, <see cref="Pitches"/>,
         /// <see cref="Duration"/> and <see cref="Tie"/>.
         /// </summary>
         /// <returns>
@@ -301,7 +267,7 @@
                 hashCode = (hashCode * -1521134295) + Triplet.GetHashCode();
                 hashCode = (hashCode * -1521134295) + ((byte)Tie).GetHashCode();
                 hashCode = (hashCode * -1521134295) + Duration.GetHashCode();
-                foreach (Pitch pitch in Pitch)
+                foreach (Pitch pitch in Pitches)
                 {
                     hashCode = (hashCode * -1521134295) + pitch.GetHashCode();
                 }
