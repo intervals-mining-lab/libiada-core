@@ -2,6 +2,8 @@ namespace LibiadaCore.Core
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel;
+    using System.Diagnostics.CodeAnalysis;
     using System.Linq;
 
     using IntervalsManagers;
@@ -16,6 +18,11 @@ namespace LibiadaCore.Core
         /// The element.
         /// </summary>
         private readonly IBaseObject element;
+
+        /// <summary>
+        /// The arrangement type.
+        /// </summary>
+        private readonly ArrangementType arrangementType;
 
         /// <summary>
         /// Positions of all occurrences of the element in congeneric sequence.
@@ -41,11 +48,15 @@ namespace LibiadaCore.Core
         /// <param name="length">
         /// Length of this chain.
         /// </param>
-        public CongenericChain(IBaseObject element, int length)
+        /// <param name="arrangementType">
+        /// The arrangement Type.
+        /// </param>
+        public CongenericChain(IBaseObject element, int length, ArrangementType arrangementType = ArrangementType.Intervals)
         {
             this.element = element;
             this.length = length;
             positions = new List<int>();
+            this.arrangementType = arrangementType;
         }
 
         /// <summary>
@@ -54,11 +65,15 @@ namespace LibiadaCore.Core
         /// <param name="element">
         /// The element.
         /// </param>
-        public CongenericChain(IBaseObject element)
+        /// <param name="arrangementType">
+        /// The arrangement Type.
+        /// </param>
+        public CongenericChain(IBaseObject element, ArrangementType arrangementType = ArrangementType.Intervals)
         {
             this.element = element;
             length = 0;
             positions = new List<int>();
+            this.arrangementType = arrangementType;
         }
 
         /// <summary>
@@ -73,11 +88,15 @@ namespace LibiadaCore.Core
         /// <param name="length">
         /// Length of this chain.
         /// </param>
-        public CongenericChain(IEnumerable<int> positions, IBaseObject element, int length)
+        /// <param name="arrangementType">
+        /// The arrangement Type.
+        /// </param>
+        public CongenericChain(IEnumerable<int> positions, IBaseObject element, int length, ArrangementType arrangementType = ArrangementType.Intervals)
         {
             this.length = length;
             this.element = element.Clone();
             this.positions = positions.OrderBy(b => b).ToList();
+            this.arrangementType = arrangementType;
         }
 
         /// <summary>
@@ -89,7 +108,10 @@ namespace LibiadaCore.Core
         /// <param name="element">
         /// Element of this congeneric sequence.
         /// </param>
-        public CongenericChain(bool[] map, IBaseObject element)
+        /// <param name="arrangementType">
+        /// The arrangement Type.
+        /// </param>
+        public CongenericChain(bool[] map, IBaseObject element, ArrangementType arrangementType = ArrangementType.Intervals)
         {
             length = map.Length;
             this.element = element;
@@ -100,6 +122,7 @@ namespace LibiadaCore.Core
                     Set(i);
                 }
             }
+            this.arrangementType = arrangementType;
         }
 
         /// <summary>
@@ -150,6 +173,7 @@ namespace LibiadaCore.Core
         /// <exception cref="ArgumentException">
         /// Thrown if new length is less than 0.
         /// </exception>
+        [SuppressMessage("StyleCop.CSharp.ReadabilityRules", "SA1126:PrefixCallsCorrectly", Justification = "Reviewed. Suppression is OK here.")]
         public override void ClearAndSetNewLength(int newLength)
         {
             if (newLength < 0)
@@ -171,11 +195,23 @@ namespace LibiadaCore.Core
         /// <returns>
         /// The <see cref="T:List{int}"/>.
         /// </returns>
+        [SuppressMessage("StyleCop.CSharp.ReadabilityRules", "SA1126:PrefixCallsCorrectly", Justification = "Reviewed. Suppression is OK here.")]
         public int[] GetIntervals(Link link)
         {
             if (intervalsManager == null)
             {
-                intervalsManager = positions.Count != 0 ? (ICongenericIntervalsManager)new CongenericIntervalsManager(this) : new NullCongenericIntervalsManager();
+                switch (arrangementType)
+                {
+                    case ArrangementType.Intervals:
+                        intervalsManager = positions.Count != 0 ? (ICongenericIntervalsManager)new CongenericIntervalsManager(this) : new NullCongenericIntervalsManager();
+                        break;
+                    case ArrangementType.Series:
+                        intervalsManager = new CongenericSeriesManager(this);
+                        break;
+                    case ArrangementType.IntervalsAndSeries:
+                    default: throw new InvalidEnumArgumentException(nameof(arrangementType), (byte)arrangementType, typeof(ArrangementType));
+                }
+                
             }
 
             return intervalsManager.GetIntervals(link);
@@ -360,7 +396,7 @@ namespace LibiadaCore.Core
         /// <returns>
         /// The <see cref="IBaseObject"/>.
         /// </returns>
-        public override IBaseObject Clone() => new CongenericChain(positions, Element, length);
+        public override IBaseObject Clone() => new CongenericChain(positions, Element, length, arrangementType);
 
         /// <summary>
         /// Calculates hash code using
