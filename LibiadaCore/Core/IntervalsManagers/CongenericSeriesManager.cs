@@ -1,35 +1,67 @@
-﻿using LibiadaCore.Core.SimpleTypes;
-using System.Collections.Generic;
-using System.Linq;
-
-namespace LibiadaCore.Core.IntervalsManagers
+﻿namespace LibiadaCore.Core.IntervalsManagers
 {
+    using System.Collections.Generic;
+    using System.Linq;
+
+    using LibiadaCore.Core.SimpleTypes;
+
+    /// <summary>
+    /// The congeneric series manager.
+    /// </summary>
     public class CongenericSeriesManager : ICongenericIntervalsManager
     {
+        /// <summary>
+        /// The series.
+        /// </summary>
+        private readonly List<(int, int)> series = new List<(int, int)>();
 
-        private List<(int, int)> series = new List<(int, int)>();
-
+        /// <summary>
+        /// Initializes a new instance of the <see cref="CongenericSeriesManager"/> class.
+        /// </summary>
+        /// <param name="chain">
+        /// The chain.
+        /// </param>
         public CongenericSeriesManager(CongenericChain chain)
         {
-            series.Add(GetSeries(chain, 0));
-            do
+            for (int i = 1; i <= chain.OccurrencesCount; i++)
             {
-                series.Add(GetSeries(chain, series.Last().Item1 + series.Last().Item2));
+                series.Add(GetSeries(chain, i));
             }
-            while (chain.GetFirstAfter(series.Last().Item1 + series.Last().Item2) != -1); 
         }
 
-        private (int, int) GetSeries(CongenericChain chain, int position)
+        /// <summary>
+        /// The get series.
+        /// </summary>
+        /// <param name="chain">
+        /// The chain.
+        /// </param>
+        /// <param name="occurrence">
+        /// Occurrence index of the element.
+        /// </param>
+        /// <returns>
+        /// The <see cref="T:(int, int)"/>.
+        /// </returns>
+        private (int, int) GetSeries(CongenericChain chain, int occurrence)
         {
             int counter = 0;
-            int filledPosition = chain.GetFirstAfter(position);
-            while (chain[filledPosition + counter] != NullValue.Instance())
+            int position = chain.GetOccurrence(occurrence);
+            while (!chain[position + counter].Equals(NullValue.Instance()))
             {
                 counter++;
             }
-            return (filledPosition, counter);
+
+            return (position, counter);
         }
 
+        /// <summary>
+        /// The get intervals.
+        /// </summary>
+        /// <param name="link">
+        /// The link.
+        /// </param>
+        /// <returns>
+        /// The <see cref="int[]"/>.
+        /// </returns>
         public int[] GetIntervals(Link link)
         {
             return series.Select(s => s.Item2).ToArray();
