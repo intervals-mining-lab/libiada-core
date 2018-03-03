@@ -1,5 +1,6 @@
 ﻿namespace LibiadaCore.Core.IntervalsManagers
 {
+    using System;
     using System.Collections.Generic;
     using System.Linq;
 
@@ -13,20 +14,47 @@
         /// <summary>
         /// The series.
         /// </summary>
-        private readonly List<(int, int)> series = new List<(int, int)>();
+        private List<(int, int)> series;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="CongenericSeriesManager"/> class.
         /// </summary>
+        public CongenericSeriesManager()
+        {
+        }
+
+        /// <summary>
+        /// Initializes series manager with given sequence.
+        /// </summary>
         /// <param name="chain">
         /// The chain.
         /// </param>
-        public CongenericSeriesManager(CongenericChain chain)
+        public void Initialize(CongenericChain chain)
         {
+            series = new List<(int, int)>();
             for (int i = 1; i <= chain.OccurrencesCount; i++)
             {
                 series.Add(GetSeries(chain, i));
             }
+        }
+
+        /// <summary>
+        /// The get intervals.
+        /// </summary>
+        /// <param name="link">
+        /// The link.
+        /// </param>
+        /// <returns>
+        /// The <see cref="int[]"/>.
+        /// </returns>
+        public int[] GetIntervals(Link link)
+        {
+            if (series == null)
+            {
+                throw new Exception("Series manager is not initialized");
+            }
+
+            return series.Select(s => s.Item2).ToArray();
         }
 
         /// <summary>
@@ -51,20 +79,6 @@
             }
 
             return (position, counter);
-        }
-
-        /// <summary>
-        /// The get intervals.
-        /// </summary>
-        /// <param name="link">
-        /// The link.
-        /// </param>
-        /// <returns>
-        /// The <see cref="int[]"/>.
-        /// </returns>
-        public int[] GetIntervals(Link link)
-        {
-            return series.Select(s => s.Item2).ToArray();
         }
     }
 }

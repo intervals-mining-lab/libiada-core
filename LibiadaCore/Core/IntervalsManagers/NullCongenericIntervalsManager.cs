@@ -18,5 +18,15 @@
         {
             return new int[0];
         }
+
+        /// <summary>
+        /// Mock for initialization.
+        /// </summary>
+        /// <param name="chain">
+        /// The chain.
+        /// </param>
+        public void Initialize(CongenericChain chain)
+        {
+        }
     }
 }

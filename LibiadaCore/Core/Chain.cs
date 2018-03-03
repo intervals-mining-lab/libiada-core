@@ -13,11 +13,6 @@ namespace LibiadaCore.Core
     public class Chain : BaseChain, IBaseObject
     {
         /// <summary>
-        /// The arrangement type.
-        /// </summary>
-        private readonly ArrangementType arrangementType;
-
-        /// <summary>
         /// The congeneric chains.
         /// </summary>
         private CongenericChain[] congenericChains;
@@ -33,23 +28,16 @@ namespace LibiadaCore.Core
         /// <param name="length">
         /// The length of chain.
         /// </param>
-        /// <param name="arrangementType">
-        /// The arrangement Type.
-        /// </param>
-        public Chain(int length, ArrangementType arrangementType = ArrangementType.Intervals) : base(length)
+
+        public Chain(int length) : base(length)
         {
-            this.arrangementType = arrangementType;
         }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Chain"/> class.
         /// </summary>
-        /// <param name="arrangementType">
-        /// The arrangement Type.
-        /// </param>
-        public Chain(ArrangementType arrangementType = ArrangementType.Intervals)
+        public Chain()
         {
-            this.arrangementType = arrangementType;
         }
 
         /// <summary>
@@ -59,12 +47,8 @@ namespace LibiadaCore.Core
         /// <param name="source">
         /// The source string.
         /// </param>
-        /// <param name="arrangementType">
-        /// The arrangement Type.
-        /// </param>
-        public Chain(string source, ArrangementType arrangementType = ArrangementType.Intervals) : base(source)
+        public Chain(string source) : base(source)
         {
-            this.arrangementType = arrangementType;
             FillCongenericChains();
         }
 
@@ -79,12 +63,8 @@ namespace LibiadaCore.Core
         /// <param name="alphabet">
         /// The alphabet of chain.
         /// </param>
-        /// <param name="arrangementType">
-        /// The arrangement Type.
-        /// </param>
-        public Chain(int[] building, Alphabet alphabet, ArrangementType arrangementType = ArrangementType.Intervals) : base(building, alphabet)
+        public Chain(int[] building, Alphabet alphabet) : base(building, alphabet)
         {
-            this.arrangementType = arrangementType;
             FillCongenericChains();
         }
 
@@ -102,12 +82,8 @@ namespace LibiadaCore.Core
         /// <param name="id">
         /// Id of sequence.
         /// </param>
-        /// <param name="arrangementType">
-        /// The arrangement Type.
-        /// </param>
-        public Chain(int[] building, Alphabet alphabet, long id, ArrangementType arrangementType = ArrangementType.Intervals) : base(building, alphabet, id)
+        public Chain(int[] building, Alphabet alphabet, long id) : base(building, alphabet, id)
         {
-            this.arrangementType = arrangementType;
             FillCongenericChains();
         }
 
@@ -118,12 +94,8 @@ namespace LibiadaCore.Core
         /// <param name="source">
         /// The source string.
         /// </param>
-        /// <param name="arrangementType">
-        /// The arrangement Type.
-        /// </param>
-        public Chain(List<IBaseObject> source, ArrangementType arrangementType = ArrangementType.Intervals) : base(source)
+        public Chain(List<IBaseObject> source) : base(source)
         {
-            this.arrangementType = arrangementType;
         }
 
         /// <summary>
@@ -132,10 +104,7 @@ namespace LibiadaCore.Core
         /// <param name="source">
         /// The source sequence of int values.
         /// </param>
-        /// <param name="arrangementType">
-        /// The arrangement Type.
-        /// </param>
-        public Chain(short[] source, ArrangementType arrangementType = ArrangementType.Intervals)
+        public Chain(short[] source)
         {
             alphabet = new Alphabet() { NullValue.Instance() };
             building = new int[source.Length];
@@ -149,7 +118,6 @@ namespace LibiadaCore.Core
                 building[i] = alphabet.IndexOf(new ValueInt(source[i]));
             }
 
-            this.arrangementType = arrangementType;
             FillCongenericChains();
         }
 
@@ -174,7 +142,7 @@ namespace LibiadaCore.Core
         /// </returns>
         public new IBaseObject Clone()
         {
-            var clone = new Chain(building.Length, arrangementType);
+            var clone = new Chain(building.Length);
             FillClone(clone);
             return clone;
         }
@@ -407,7 +375,7 @@ namespace LibiadaCore.Core
                 int end = building.Length - intervals[k].Last();
                 intervals[k].RemoveAt(0);
 
-                congenericChains[k].SetIntervalManager(new CongenericIntervalsManager(intervals[k].ToArray(), start, end));
+                congenericChains[k].SetIntervalManager(intervals[k].ToArray(), start, end);
             }
         }
 
@@ -454,7 +422,7 @@ namespace LibiadaCore.Core
             congenericChains = new CongenericChain[alphabet.Cardinality - 1];
             for (int k = 0; k < alphabet.Cardinality - 1; k++)
             {
-                congenericChains[k] = new CongenericChain(occurrences[k], alphabet[k + 1], building.Length, arrangementType);
+                congenericChains[k] = new CongenericChain(occurrences[k], alphabet[k + 1], building.Length);
             }
         }
     }

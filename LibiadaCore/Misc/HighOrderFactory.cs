@@ -41,7 +41,8 @@
 
             for (int j = 0; j < sourceAlphabet.Cardinality; j++)
             {
-                var intervalsManager = new CongenericIntervalsManager(source.CongenericChain(j));
+                var intervalsManager = new CongenericIntervalsManager();
+                intervalsManager.Initialize(source.CongenericChain(j));
                 intervals[j] = intervalsManager.GetIntervals(link);
             }
 

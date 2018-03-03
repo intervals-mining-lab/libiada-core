@@ -15,5 +15,13 @@
         /// The <see cref="T:int[]"/>.
         /// </returns>
         int[] GetIntervals(Link link);
+
+        /// <summary>
+        /// Initializes arrangement manager.
+        /// </summary>
+        /// <param name="chain">
+        /// The chain.
+        /// </param>
+        void Initialize(CongenericChain chain);
     }
 }

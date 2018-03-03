@@ -2,8 +2,6 @@ namespace LibiadaCore.Core
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel;
-    using System.Diagnostics.CodeAnalysis;
     using System.Linq;
 
     using IntervalsManagers;
@@ -18,11 +16,6 @@ namespace LibiadaCore.Core
         /// The element.
         /// </summary>
         private readonly IBaseObject element;
-
-        /// <summary>
-        /// The arrangement type.
-        /// </summary>
-        private readonly ArrangementType arrangementType;
 
         /// <summary>
         /// Positions of all occurrences of the element in congeneric sequence.
@@ -48,15 +41,11 @@ namespace LibiadaCore.Core
         /// <param name="length">
         /// Length of this chain.
         /// </param>
-        /// <param name="arrangementType">
-        /// The arrangement Type.
-        /// </param>
-        public CongenericChain(IBaseObject element, int length, ArrangementType arrangementType = ArrangementType.Intervals)
+        public CongenericChain(IBaseObject element, int length)
         {
             this.element = element;
             this.length = length;
             positions = new List<int>();
-            this.arrangementType = arrangementType;
         }
 
         /// <summary>
@@ -65,15 +54,11 @@ namespace LibiadaCore.Core
         /// <param name="element">
         /// The element.
         /// </param>
-        /// <param name="arrangementType">
-        /// The arrangement Type.
-        /// </param>
-        public CongenericChain(IBaseObject element, ArrangementType arrangementType = ArrangementType.Intervals)
+        public CongenericChain(IBaseObject element)
         {
             this.element = element;
             length = 0;
             positions = new List<int>();
-            this.arrangementType = arrangementType;
         }
 
         /// <summary>
@@ -88,15 +73,11 @@ namespace LibiadaCore.Core
         /// <param name="length">
         /// Length of this chain.
         /// </param>
-        /// <param name="arrangementType">
-        /// The arrangement Type.
-        /// </param>
-        public CongenericChain(IEnumerable<int> positions, IBaseObject element, int length, ArrangementType arrangementType = ArrangementType.Intervals)
+        public CongenericChain(IEnumerable<int> positions, IBaseObject element, int length)
         {
             this.length = length;
             this.element = element.Clone();
             this.positions = positions.OrderBy(b => b).ToList();
-            this.arrangementType = arrangementType;
         }
 
         /// <summary>
@@ -108,10 +89,7 @@ namespace LibiadaCore.Core
         /// <param name="element">
         /// Element of this congeneric sequence.
         /// </param>
-        /// <param name="arrangementType">
-        /// The arrangement Type.
-        /// </param>
-        public CongenericChain(bool[] map, IBaseObject element, ArrangementType arrangementType = ArrangementType.Intervals)
+        public CongenericChain(bool[] map, IBaseObject element)
         {
             length = map.Length;
             this.element = element;
@@ -122,7 +100,6 @@ namespace LibiadaCore.Core
                     Set(i);
                 }
             }
-            this.arrangementType = arrangementType;
         }
 
         /// <summary>
@@ -173,7 +150,6 @@ namespace LibiadaCore.Core
         /// <exception cref="ArgumentException">
         /// Thrown if new length is less than 0.
         /// </exception>
-        [SuppressMessage("StyleCop.CSharp.ReadabilityRules", "SA1126:PrefixCallsCorrectly", Justification = "Reviewed. Suppression is OK here.")]
         public override void ClearAndSetNewLength(int newLength)
         {
             if (newLength < 0)
@@ -189,29 +165,46 @@ namespace LibiadaCore.Core
         /// <summary>
         /// Returns clone of intervals array including interval of given link.
         /// </summary>
+        /// <typeparam name="TArrangementManager">
+        /// Arrangement manager type.
+        /// </typeparam>
         /// <param name="link">
         /// The link.
         /// </param>
         /// <returns>
         /// The <see cref="T:List{int}"/>.
         /// </returns>
-        [SuppressMessage("StyleCop.CSharp.ReadabilityRules", "SA1126:PrefixCallsCorrectly", Justification = "Reviewed. Suppression is OK here.")]
+        public int[] GetIntervals<TArrangementManager>(Link link) where TArrangementManager : ICongenericIntervalsManager, new()
+        {
+            if (intervalsManager == null || intervalsManager.GetType() != typeof(TArrangementManager))
+            {
+                CreateArrangementManager<TArrangementManager>();
+            }
+
+            return intervalsManager.GetIntervals(link);
+        }
+
+        /// <summary>
+        /// Returns clone of intervals array including interval of given link.
+        /// </summary>
+        /// <param name="link">
+        /// The link.
+        /// </param>
+        /// <returns>
+        /// The <see cref="T:List{int}"/>.
+        /// </returns>
         public int[] GetIntervals(Link link)
         {
             if (intervalsManager == null)
             {
-                switch (arrangementType)
+                if (positions.Count == 0)
                 {
-                    case ArrangementType.Intervals:
-                        intervalsManager = positions.Count != 0 ? (ICongenericIntervalsManager)new CongenericIntervalsManager(this) : new NullCongenericIntervalsManager();
-                        break;
-                    case ArrangementType.Series:
-                        intervalsManager = new CongenericSeriesManager(this);
-                        break;
-                    case ArrangementType.IntervalsAndSeries:
-                    default: throw new InvalidEnumArgumentException(nameof(arrangementType), (byte)arrangementType, typeof(ArrangementType));
+                    CreateArrangementManager<NullCongenericIntervalsManager>();
                 }
-                
+                else
+                {
+                    CreateArrangementManager<CongenericIntervalsManager>();
+                }
             }
 
             return intervalsManager.GetIntervals(link);
@@ -363,10 +356,20 @@ namespace LibiadaCore.Core
         /// <summary>
         /// Sets interval manager of chain.
         /// </summary>
-        /// <param name="manager">
-        /// The manager.
+        /// <param name="intervals">
+        /// The intervals.
         /// </param>
-        public void SetIntervalManager(CongenericIntervalsManager manager) => intervalsManager = manager;
+        /// <param name="start">
+        /// The start.
+        /// </param>
+        /// <param name="end">
+        /// The end.
+        /// </param>
+        public void SetIntervalManager(int[] intervals, int start, int end)
+        {
+            intervalsManager = new CongenericIntervalsManager();
+            ((CongenericIntervalsManager)intervalsManager).Initialize(intervals, start, end);
+        } 
 
         /// <summary>
         /// The equals.
@@ -396,7 +399,7 @@ namespace LibiadaCore.Core
         /// <returns>
         /// The <see cref="IBaseObject"/>.
         /// </returns>
-        public override IBaseObject Clone() => new CongenericChain(positions, Element, length, arrangementType);
+        public override IBaseObject Clone() => new CongenericChain(positions, Element, length);
 
         /// <summary>
         /// Calculates hash code using
@@ -418,6 +421,23 @@ namespace LibiadaCore.Core
                 }
 
                 return hashCode;
+            }
+        }
+
+        /// <summary>
+        /// Creates arrangement manager.
+        /// </summary>
+        /// <typeparam name="TArrangementManager">
+        /// Arrangement manager type.
+        /// </typeparam>
+        private void CreateArrangementManager<TArrangementManager>() where TArrangementManager : ICongenericIntervalsManager, new()
+        {
+            if (intervalsManager == null || intervalsManager.GetType() != typeof(TArrangementManager))
+            {
+                intervalsManager = positions.Count == 0
+                                   ? (ICongenericIntervalsManager)new NullCongenericIntervalsManager()
+                                   : new TArrangementManager();
+                intervalsManager.Initialize(this);
             }
         }
     }

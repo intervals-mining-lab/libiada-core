@@ -12,15 +12,25 @@
         /// Gets or sets main intervals block
         /// without start, end or cycle link.
         /// </summary>
-        private readonly int[] intervals;
+        private int[] intervals;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="CongenericIntervalsManager"/> class.
         /// </summary>
+        public CongenericIntervalsManager()
+        {
+        }
+
+        /// <summary>
+        /// The initialize.
+        /// </summary>
         /// <param name="chain">
         /// The chain.
         /// </param>
-        public CongenericIntervalsManager(CongenericChain chain)
+        /// <exception cref="ArgumentException">
+        /// Thrown if sequence is empty.
+        /// </exception>
+        public void Initialize(CongenericChain chain)
         {
             var positions = chain.Positions;
             int count = positions.Length;
@@ -36,7 +46,7 @@
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="CongenericIntervalsManager"/> class.
+        /// The initialize.
         /// </summary>
         /// <param name="intervals">
         /// The intervals.
@@ -47,12 +57,13 @@
         /// <param name="end">
         /// The end.
         /// </param>
-        public CongenericIntervalsManager(int[] intervals, int start, int end)
+        public void Initialize(int[] intervals, int start, int end)
         {
             this.intervals = intervals;
             Start = start;
             End = end;
         }
+
 
         /// <summary>
         /// Gets or sets interval from start of chain to first element.
