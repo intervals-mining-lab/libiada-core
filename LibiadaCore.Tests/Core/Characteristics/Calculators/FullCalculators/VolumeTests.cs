@@ -52,5 +52,14 @@
         {
             ChainCharacteristicTest(index, link, value);
         }
+
+        /// <summary>
+        /// The series test.
+        /// </summary>
+        [Test]
+        public void SeriesTest()
+        {
+            SeriesCharacteristicTest(0, Link.NotApplied, 8);
+        }
     }
 }

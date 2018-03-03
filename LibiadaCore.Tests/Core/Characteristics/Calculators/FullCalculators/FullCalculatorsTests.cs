@@ -4,6 +4,7 @@
 
     using LibiadaCore.Core;
     using LibiadaCore.Core.Characteristics.Calculators.FullCalculators;
+    using LibiadaCore.Core.IntervalsManagers;
 
     using NUnit.Framework;
 
@@ -29,17 +30,35 @@
         /// The chain characteristic test.
         /// </summary>
         /// <param name="index">
-        /// The index.
+        /// The sequence index.
         /// </param>
         /// <param name="link">
         /// The link.
         /// </param>
         /// <param name="value">
-        /// The value.
+        /// The expected value.
         /// </param>
         protected void ChainCharacteristicTest(int index, Link link, double value)
         {
             chains[index].FillIntervalManagers();
+            Assert.AreEqual(value, calculator.Calculate(chains[index], link), 0.0001);
+        }
+
+        /// <summary>
+        /// The series characteristic test.
+        /// </summary>
+        /// <param name="index">
+        /// The sequence index.
+        /// </param>
+        /// <param name="link">
+        /// The link.
+        /// </param>
+        /// <param name="value">
+        /// The expected value.
+        /// </param>
+        protected void SeriesCharacteristicTest(int index, Link link, double value)
+        {
+            chains[index].SetArrangementManagers<CongenericSeriesManager>();
             Assert.AreEqual(value, calculator.Calculate(chains[index], link), 0.0001);
         }
     }

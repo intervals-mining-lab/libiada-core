@@ -28,7 +28,6 @@ namespace LibiadaCore.Core
         /// <param name="length">
         /// The length of chain.
         /// </param>
-
         public Chain(int length) : base(length)
         {
         }
@@ -376,6 +375,20 @@ namespace LibiadaCore.Core
                 intervals[k].RemoveAt(0);
 
                 congenericChains[k].SetIntervalManager(intervals[k].ToArray(), start, end);
+            }
+        }
+
+        /// <summary>
+        /// Sets arrangement managers for congeneric chains.
+        /// </summary>
+        /// <typeparam name="TArrangementManager">
+        /// Arrangement manager type.
+        /// </typeparam>
+        public void SetArrangementManagers<TArrangementManager>() where TArrangementManager : ICongenericArrangementManager, new()
+        {
+            foreach (var chain in congenericChains)
+            {
+                chain.CreateArrangementManager<TArrangementManager>();
             }
         }
 

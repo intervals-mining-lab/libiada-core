@@ -30,7 +30,7 @@ namespace LibiadaCore.Core
         /// <summary>
         /// The intervals manager.
         /// </summary>
-        private ICongenericIntervalsManager intervalsManager;
+        private ICongenericArrangementManager intervalsManager;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="CongenericChain"/> class.
@@ -174,7 +174,7 @@ namespace LibiadaCore.Core
         /// <returns>
         /// The <see cref="T:List{int}"/>.
         /// </returns>
-        public int[] GetIntervals<TArrangementManager>(Link link) where TArrangementManager : ICongenericIntervalsManager, new()
+        public int[] GetIntervals<TArrangementManager>(Link link) where TArrangementManager : ICongenericArrangementManager, new()
         {
             if (intervalsManager == null || intervalsManager.GetType() != typeof(TArrangementManager))
             {
@@ -399,7 +399,10 @@ namespace LibiadaCore.Core
         /// <returns>
         /// The <see cref="IBaseObject"/>.
         /// </returns>
-        public override IBaseObject Clone() => new CongenericChain(positions, Element, length);
+        public override IBaseObject Clone() => new CongenericChain(positions, Element, length)
+                                                   {
+                                                       intervalsManager = intervalsManager
+                                                   };
 
         /// <summary>
         /// Calculates hash code using
@@ -430,12 +433,12 @@ namespace LibiadaCore.Core
         /// <typeparam name="TArrangementManager">
         /// Arrangement manager type.
         /// </typeparam>
-        private void CreateArrangementManager<TArrangementManager>() where TArrangementManager : ICongenericIntervalsManager, new()
+        public void CreateArrangementManager<TArrangementManager>() where TArrangementManager : ICongenericArrangementManager, new()
         {
             if (intervalsManager == null || intervalsManager.GetType() != typeof(TArrangementManager))
             {
                 intervalsManager = positions.Count == 0
-                                   ? (ICongenericIntervalsManager)new NullCongenericIntervalsManager()
+                                   ? (ICongenericArrangementManager)new NullCongenericIntervalsManager()
                                    : new TArrangementManager();
                 intervalsManager.Initialize(this);
             }

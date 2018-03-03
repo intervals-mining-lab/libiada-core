@@ -3,7 +3,7 @@
     /// <summary>
     /// The intervals manager.
     /// </summary>
-    public interface ICongenericIntervalsManager
+    public interface ICongenericArrangementManager
     {
         /// <summary>
         /// Returns Intervals with given link.

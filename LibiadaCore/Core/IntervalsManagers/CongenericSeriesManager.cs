@@ -9,7 +9,7 @@
     /// <summary>
     /// The congeneric series manager.
     /// </summary>
-    public class CongenericSeriesManager : ICongenericIntervalsManager
+    public class CongenericSeriesManager : ICongenericArrangementManager
     {
         /// <summary>
         /// The series.
