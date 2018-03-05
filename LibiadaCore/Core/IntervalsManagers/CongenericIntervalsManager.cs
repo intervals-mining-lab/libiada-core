@@ -15,10 +15,32 @@
         private int[] intervals;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="CongenericIntervalsManager"/> class.
+        /// Gets or sets interval from start of chain to first element.
         /// </summary>
-        public CongenericIntervalsManager()
+        private int Start { get; set; }
+
+        /// <summary>
+        /// Gets or sets interval from last element to end of chain.
+        /// </summary>
+        private int End { get; set; }
+
+        /// <summary>
+        /// The initialize.
+        /// </summary>
+        /// <param name="intervals">
+        /// The intervals.
+        /// </param>
+        /// <param name="start">
+        /// The start.
+        /// </param>
+        /// <param name="end">
+        /// The end.
+        /// </param>
+        public void Initialize(int[] intervals, int start, int end)
         {
+            this.intervals = intervals;
+            Start = start;
+            End = end;
         }
 
         /// <summary>
@@ -44,36 +66,6 @@
             intervals = new int[count - 1];
             FillIntervals(positions, chain.GetLength());
         }
-
-        /// <summary>
-        /// The initialize.
-        /// </summary>
-        /// <param name="intervals">
-        /// The intervals.
-        /// </param>
-        /// <param name="start">
-        /// The start.
-        /// </param>
-        /// <param name="end">
-        /// The end.
-        /// </param>
-        public void Initialize(int[] intervals, int start, int end)
-        {
-            this.intervals = intervals;
-            Start = start;
-            End = end;
-        }
-
-
-        /// <summary>
-        /// Gets or sets interval from start of chain to first element.
-        /// </summary>
-        private int Start { get; set; }
-
-        /// <summary>
-        /// Gets or sets interval from last element to end of chain.
-        /// </summary>
-        private int End { get; set; }
 
         /// <summary>
         /// Method, returning intervals array by link.

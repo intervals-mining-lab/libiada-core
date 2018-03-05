@@ -371,7 +371,7 @@ namespace LibiadaCore.Core
             for (int k = 0; k < intervals.Length; k++)
             {
                 int start = intervals[k][0];
-                int end = building.Length - intervals[k].Last();
+                int end = building.Length - occurrences[k];
                 intervals[k].RemoveAt(0);
 
                 congenericChains[k].SetIntervalManager(intervals[k].ToArray(), start, end);
