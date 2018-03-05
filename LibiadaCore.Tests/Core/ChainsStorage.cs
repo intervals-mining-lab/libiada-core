@@ -13,84 +13,74 @@ namespace LibiadaCore.Tests.Core
         /// <summary>
         /// Gets dictionary of elements.
         /// </summary>
-        public static Dictionary<string, IBaseObject> Elements
-        {
-            get
-            {
-                return new Dictionary<string, IBaseObject>
-                           {
-                               { "A", new ValueString("A") },
-                               { "B", new ValueString("B") },
-                               { "C", new ValueString("C") },
-                               { "G", new ValueString("G") },
-                               { "T", new ValueString("T") }
-                           };
-            }
-        }
+        public static Dictionary<string, IBaseObject> Elements =>
+            new Dictionary<string, IBaseObject>
+                {
+                    { "A", new ValueString("A") },
+                    { "B", new ValueString("B") },
+                    { "C", new ValueString("C") },
+                    { "G", new ValueString("G") },
+                    { "T", new ValueString("T") }
+                };
 
         /// <summary>
         /// Gets the chains.
         /// </summary>
-        public static List<Chain> Chains
-        {
-            get
-            {
-                return new List<Chain>
-                           {
-                               // B B A A C B A C C B
-                               // _ _ A A _ _ A _ _ _
-                               // B B _ _ _ B _ _ _ B
-                               // _ _ _ _ C _ _ C C _
-                               new Chain("BBAACBACCB"),
+        public static List<Chain> Chains =>
+            new List<Chain>
+                {
+                    // B B A A C B A C C B
+                    // _ _ A A _ _ A _ _ _
+                    // B B _ _ _ B _ _ _ B
+                    // _ _ _ _ C _ _ C C _
+                    new Chain("BBAACBACCB"),
 
-                               // A C T T G A T A C G
-                               // A _ _ _ _ A _ A _ _
-                               // _ C _ _ _ _ _ _ C _
-                               // _ _ T T _ _ T _ _ _
-                               // _ _ _ _ G _ _ _ _ G
-                               new Chain("ACTTGATACG"),
+                    // A C T T G A T A C G
+                    // A _ _ _ _ A _ A _ _
+                    // _ C _ _ _ _ _ _ C _
+                    // _ _ T T _ _ T _ _ _
+                    // _ _ _ _ G _ _ _ _ G
+                    new Chain("ACTTGATACG"),
 
-                               // C C A C G C T T A C
-                               // C C _ C _ C _ _ _ C
-                               // _ _ A _ _ _ _ _ A _
-                               // _ _ _ _ G _ _ _ _ _
-                               // _ _ _ _ _ _ T T _ _
-                               new Chain("CCACGCTTAC"),
+                    // C C A C G C T T A C
+                    // C C _ C _ C _ _ _ C
+                    // _ _ A _ _ _ _ _ A _
+                    // _ _ _ _ G _ _ _ _ _
+                    // _ _ _ _ _ _ T T _ _
+                    new Chain("CCACGCTTAC"),
 
-                               // C G
-                               // C _
-                               // _ G
-                               new Chain("CG"),
+                    // C G
+                    // C _
+                    // _ G
+                    new Chain("CG"),
 
-                               // C C C C
-                               // C C C C
-                               new Chain("CCCC"),
+                    // C C C C
+                    // C C C C
+                    new Chain("CCCC"),
 
-                               // A C G T
-                               // A _ _ _
-                               // _ C _ _
-                               // _ _ G _
-                               // _ _ _ T
-                               new Chain("ACGT"),
+                    // A C G T
+                    // A _ _ _
+                    // _ C _ _
+                    // _ _ G _
+                    // _ _ _ T
+                    new Chain("ACGT"),
 
-                               // A A A A C G T
-                               // A A A A _ _ _
-                               // _ _ _ _ C _ _
-                               // _ _ _ _ _ G _
-                               // _ _ _ _ _ _ T
-                               new Chain("AAAACGT"),
+                    // A A A A C G T
+                    // A A A A _ _ _
+                    // _ _ _ _ C _ _
+                    // _ _ _ _ _ G _
+                    // _ _ _ _ _ _ T
+                    new Chain("AAAACGT"),
 
-                               // T A
-                               // T _
-                               // _ A
-                               new Chain("TA"),
+                    // T A
+                    // T _
+                    // _ A
+                    new Chain("TA"),
 
-                               // T T T T
-                               // T T T T
-                               new Chain("TTTT"),
-                           };
-            }
-        }
+                    // T T T T
+                    // T T T T
+                    new Chain("TTTT"),
+                };
 
         /// <summary>
         /// Gets chains with high order.
@@ -102,101 +92,115 @@ namespace LibiadaCore.Tests.Core
                 var result = new List<Chain>();
 
                 // 1 1 3 1 5 4 3 3 1 4
-                var chain = new Chain(10);
-                chain[0] = new ValueInt(1);
-                chain[1] = new ValueInt(1);
-                chain[2] = new ValueInt(3);
-                chain[3] = new ValueInt(1);
-                chain[4] = new ValueInt(5);
-                chain[5] = new ValueInt(4);
-                chain[6] = new ValueInt(3);
-                chain[7] = new ValueInt(3);
-                chain[8] = new ValueInt(1);
-                chain[9] = new ValueInt(4);
+                var chain = new Chain(10)
+                                {
+                                    [0] = new ValueInt(1),
+                                    [1] = new ValueInt(1),
+                                    [2] = new ValueInt(3),
+                                    [3] = new ValueInt(1),
+                                    [4] = new ValueInt(5),
+                                    [5] = new ValueInt(4),
+                                    [6] = new ValueInt(3),
+                                    [7] = new ValueInt(3),
+                                    [8] = new ValueInt(1),
+                                    [9] = new ValueInt(4)
+                                };
                 result.Add(chain);
 
                 // 5 7 1 3 5 2 4 3 2 1
-                chain = new Chain(10);
-                chain[0] = new ValueInt(5);
-                chain[1] = new ValueInt(7);
-                chain[2] = new ValueInt(1);
-                chain[3] = new ValueInt(3);
-                chain[4] = new ValueInt(5);
-                chain[5] = new ValueInt(2);
-                chain[6] = new ValueInt(4);
-                chain[7] = new ValueInt(3);
-                chain[8] = new ValueInt(2);
-                chain[9] = new ValueInt(1);
+                chain = new Chain(10)
+                            {
+                                [0] = new ValueInt(5),
+                                [1] = new ValueInt(7),
+                                [2] = new ValueInt(1),
+                                [3] = new ValueInt(3),
+                                [4] = new ValueInt(5),
+                                [5] = new ValueInt(2),
+                                [6] = new ValueInt(4),
+                                [7] = new ValueInt(3),
+                                [8] = new ValueInt(2),
+                                [9] = new ValueInt(1)
+                            };
                 result.Add(chain);
 
                 // 1 2 3 1 5 5 3 2 7 5
-                chain = new Chain(10);
-                chain[0] = new ValueInt(1);
-                chain[1] = new ValueInt(2);
-                chain[2] = new ValueInt(3);
-                chain[3] = new ValueInt(1);
-                chain[4] = new ValueInt(5);
-                chain[5] = new ValueInt(5);
-                chain[6] = new ValueInt(3);
-                chain[7] = new ValueInt(2);
-                chain[8] = new ValueInt(7);
-                chain[9] = new ValueInt(5);
+                chain = new Chain(10)
+                            {
+                                [0] = new ValueInt(1),
+                                [1] = new ValueInt(2),
+                                [2] = new ValueInt(3),
+                                [3] = new ValueInt(1),
+                                [4] = new ValueInt(5),
+                                [5] = new ValueInt(5),
+                                [6] = new ValueInt(3),
+                                [7] = new ValueInt(2),
+                                [8] = new ValueInt(7),
+                                [9] = new ValueInt(5)
+                            };
                 result.Add(chain);
 
                 // 1 4 1 3 3 4 4 1 2 1
-                chain = new Chain(10);
-                chain[0] = new ValueInt(1);
-                chain[1] = new ValueInt(4);
-                chain[2] = new ValueInt(1);
-                chain[3] = new ValueInt(3);
-                chain[4] = new ValueInt(3);
-                chain[5] = new ValueInt(4);
-                chain[6] = new ValueInt(4);
-                chain[7] = new ValueInt(1);
-                chain[8] = new ValueInt(2);
-                chain[9] = new ValueInt(1);
+                chain = new Chain(10)
+                            {
+                                [0] = new ValueInt(1),
+                                [1] = new ValueInt(4),
+                                [2] = new ValueInt(1),
+                                [3] = new ValueInt(3),
+                                [4] = new ValueInt(3),
+                                [5] = new ValueInt(4),
+                                [6] = new ValueInt(4),
+                                [7] = new ValueInt(1),
+                                [8] = new ValueInt(2),
+                                [9] = new ValueInt(1)
+                            };
                 result.Add(chain);
 
                 // 1 4 1 3 3 4 4 6 6 1
-                chain = new Chain(10);
-                chain[0] = new ValueInt(1);
-                chain[1] = new ValueInt(4);
-                chain[2] = new ValueInt(1);
-                chain[3] = new ValueInt(3);
-                chain[4] = new ValueInt(3);
-                chain[5] = new ValueInt(4);
-                chain[6] = new ValueInt(6);
-                chain[7] = new ValueInt(1);
-                chain[8] = new ValueInt(6);
-                chain[9] = new ValueInt(1);
+                chain = new Chain(10)
+                            {
+                                [0] = new ValueInt(1),
+                                [1] = new ValueInt(4),
+                                [2] = new ValueInt(1),
+                                [3] = new ValueInt(3),
+                                [4] = new ValueInt(3),
+                                [5] = new ValueInt(4),
+                                [6] = new ValueInt(6),
+                                [7] = new ValueInt(1),
+                                [8] = new ValueInt(6),
+                                [9] = new ValueInt(1)
+                            };
                 result.Add(chain);
 
                 // 1 1 6 1 6 4 3 3 1 4
-                chain = new Chain(10);
-                chain[0] = new ValueInt(1);
-                chain[1] = new ValueInt(1);
-                chain[2] = new ValueInt(6);
-                chain[3] = new ValueInt(1);
-                chain[4] = new ValueInt(6);
-                chain[5] = new ValueInt(4);
-                chain[6] = new ValueInt(3);
-                chain[7] = new ValueInt(3);
-                chain[8] = new ValueInt(1);
-                chain[9] = new ValueInt(4);
+                chain = new Chain(10)
+                            {
+                                [0] = new ValueInt(1),
+                                [1] = new ValueInt(1),
+                                [2] = new ValueInt(6),
+                                [3] = new ValueInt(1),
+                                [4] = new ValueInt(6),
+                                [5] = new ValueInt(4),
+                                [6] = new ValueInt(3),
+                                [7] = new ValueInt(3),
+                                [8] = new ValueInt(1),
+                                [9] = new ValueInt(4)
+                            };
                 result.Add(chain);
 
                 // 2 4 5 1 6 1 4 2 2 1
-                chain = new Chain(10);
-                chain[0] = new ValueInt(2);
-                chain[1] = new ValueInt(4);
-                chain[2] = new ValueInt(5);
-                chain[3] = new ValueInt(1);
-                chain[4] = new ValueInt(6);
-                chain[5] = new ValueInt(1);
-                chain[6] = new ValueInt(4);
-                chain[7] = new ValueInt(2);
-                chain[8] = new ValueInt(2);
-                chain[9] = new ValueInt(1);
+                chain = new Chain(10)
+                            {
+                                [0] = new ValueInt(2),
+                                [1] = new ValueInt(4),
+                                [2] = new ValueInt(5),
+                                [3] = new ValueInt(1),
+                                [4] = new ValueInt(6),
+                                [5] = new ValueInt(1),
+                                [6] = new ValueInt(4),
+                                [7] = new ValueInt(2),
+                                [8] = new ValueInt(2),
+                                [9] = new ValueInt(1)
+                            };
                 result.Add(chain);
 
                 return result;
@@ -213,45 +217,51 @@ namespace LibiadaCore.Tests.Core
                 var result = new List<Chain>();
 
                 // 1 2 1 2 1 3 3 2 3 4
-                var chain = new Chain(10);
-                chain[0] = new ValueInt(1);
-                chain[1] = new ValueInt(2);
-                chain[2] = new ValueInt(1);
-                chain[3] = new ValueInt(2);
-                chain[4] = new ValueInt(1);
-                chain[5] = new ValueInt(3);
-                chain[6] = new ValueInt(3);
-                chain[7] = new ValueInt(2);
-                chain[8] = new ValueInt(3);
-                chain[9] = new ValueInt(4);
+                var chain = new Chain(10)
+                                {
+                                    [0] = new ValueInt(1),
+                                    [1] = new ValueInt(2),
+                                    [2] = new ValueInt(1),
+                                    [3] = new ValueInt(2),
+                                    [4] = new ValueInt(1),
+                                    [5] = new ValueInt(3),
+                                    [6] = new ValueInt(3),
+                                    [7] = new ValueInt(2),
+                                    [8] = new ValueInt(3),
+                                    [9] = new ValueInt(4)
+                                };
                 result.Add(chain);
 
                 // 1 1 1 2 1 2 3 3 2 2
-                chain = new Chain(10);
-                chain[0] = new ValueInt(1);
-                chain[1] = new ValueInt(1);
-                chain[2] = new ValueInt(1);
-                chain[3] = new ValueInt(2);
-                chain[4] = new ValueInt(1);
-                chain[5] = new ValueInt(2);
-                chain[6] = new ValueInt(3);
-                chain[7] = new ValueInt(3);
-                chain[8] = new ValueInt(2);
-                chain[9] = new ValueInt(2);
+                chain = new Chain(10)
+                            {
+                                [0] = new ValueInt(1),
+                                [1] = new ValueInt(1),
+                                [2] = new ValueInt(1),
+                                [3] = new ValueInt(2),
+                                [4] = new ValueInt(1),
+                                [5] = new ValueInt(2),
+                                [6] = new ValueInt(3),
+                                [7] = new ValueInt(3),
+                                [8] = new ValueInt(2),
+                                [9] = new ValueInt(2)
+                            };
                 result.Add(chain);
 
                 // 1 2 1 3 1 4 1 2 2 5
-                chain = new Chain(10);
-                chain[0] = new ValueInt(1);
-                chain[1] = new ValueInt(2);
-                chain[2] = new ValueInt(1);
-                chain[3] = new ValueInt(3);
-                chain[4] = new ValueInt(1);
-                chain[5] = new ValueInt(4);
-                chain[6] = new ValueInt(1);
-                chain[7] = new ValueInt(2);
-                chain[8] = new ValueInt(2);
-                chain[9] = new ValueInt(5);
+                chain = new Chain(10)
+                            {
+                                [0] = new ValueInt(1),
+                                [1] = new ValueInt(2),
+                                [2] = new ValueInt(1),
+                                [3] = new ValueInt(3),
+                                [4] = new ValueInt(1),
+                                [5] = new ValueInt(4),
+                                [6] = new ValueInt(1),
+                                [7] = new ValueInt(2),
+                                [8] = new ValueInt(2),
+                                [9] = new ValueInt(5)
+                            };
                 result.Add(chain);
 
                 return result;
@@ -261,68 +271,63 @@ namespace LibiadaCore.Tests.Core
         /// <summary>
         /// Gets the congeneric chains.
         /// </summary>
-        public static List<CongenericChain> CongenericChains
-        {
-            get
-            {
-                return new List<CongenericChain>
-                           {
-                               // 0  _ _ _ a a _ _ a _ _
-                               new CongenericChain(new[] { 3, 4, 7 }, Elements["A"], 10),
+        public static List<CongenericChain> CongenericChains =>
+            new List<CongenericChain>
+                {
+                    // 0  _ _ _ a a _ _ a _ _
+                    new CongenericChain(new[] { 3, 4, 7 }, Elements["A"], 10),
 
-                               // 1  _ _ _ b _ b b _ _ _ _ b _ _ _
-                               new CongenericChain(new[] { 3, 5, 6, 11 }, Elements["B"], 15),
+                    // 1  _ _ _ b _ b b _ _ _ _ b _ _ _
+                    new CongenericChain(new[] { 3, 5, 6, 11 }, Elements["B"], 15),
 
-                               // 2  a
-                               new CongenericChain(new[] { 0 }, Elements["A"], 1),
+                    // 2  a
+                    new CongenericChain(new[] { 0 }, Elements["A"], 1),
 
-                               // 3  _ _ _ _ _ _ _ a
-                               new CongenericChain(new[] { 7 }, Elements["A"], 8),
+                    // 3  _ _ _ _ _ _ _ a
+                    new CongenericChain(new[] { 7 }, Elements["A"], 8),
 
-                               // 4
-                               new CongenericChain(new[] { 100, 100000, 500000 }, Elements["A"], 1000000),
+                    // 4
+                    new CongenericChain(new[] { 100, 100000, 500000 }, Elements["A"], 1000000),
 
-                               // 5  a a a a a
-                               new CongenericChain(new[] { 0, 1, 2, 3, 4 }, Elements["A"], 5),
+                    // 5  a a a a a
+                    new CongenericChain(new[] { 0, 1, 2, 3, 4 }, Elements["A"], 5),
 
-                               // 6  a _ _ a _ _ _ _ _ _ _ _ _ _ _ _ _ _
-                               new CongenericChain(new[] { 0, 3 }, Elements["A"], 18),
+                    // 6  a _ _ a _ _ _ _ _ _ _ _ _ _ _ _ _ _
+                    new CongenericChain(new[] { 0, 3 }, Elements["A"], 18),
 
-                               // 7  _ _ a _ _ _ _ _ _ _ _ _ _ _ _ _ _ a
-                               new CongenericChain(new[] { 2, 17 }, Elements["A"], 18),
+                    // 7  _ _ a _ _ _ _ _ _ _ _ _ _ _ _ _ _ a
+                    new CongenericChain(new[] { 2, 17 }, Elements["A"], 18),
 
-                               // 8  a _ _ _ _ a _ _ _ _ _ a _ _ _ _ _ _ _ a _ _ _ _ a _ _ _ _
-                               new CongenericChain(new[] { 0, 5, 11, 19, 24 }, Elements["A"], 30),
+                    // 8  a _ _ _ _ a _ _ _ _ _ a _ _ _ _ _ _ _ a _ _ _ _ a _ _ _ _
+                    new CongenericChain(new[] { 0, 5, 11, 19, 24 }, Elements["A"], 30),
 
-                               // 9  _ _ a _ _ _ a _ _ _ _ _ _ _ _ a _ _ _ _ _ _ _ a _ _ a _ _
-                               new CongenericChain(new[] { 2, 6, 15, 23, 26 }, Elements["A"], 30),
+                    // 9  _ _ a _ _ _ a _ _ _ _ _ _ _ _ a _ _ _ _ _ _ _ a _ _ a _ _
+                    new CongenericChain(new[] { 2, 6, 15, 23, 26 }, Elements["A"], 30),
 
-                               // 10 a _ _ _ _ _ _ _ a _ a _ _ a _ _ _ _ _ _
-                               new CongenericChain(new[] { 0, 8, 10, 13 }, Elements["A"], 20),
+                    // 10 a _ _ _ _ _ _ _ a _ a _ _ a _ _ _ _ _ _
+                    new CongenericChain(new[] { 0, 8, 10, 13 }, Elements["A"], 20),
 
-                               // 11 _ a a _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ a _
-                               new CongenericChain(new[] { 1, 2, 18 }, Elements["A"], 20),
+                    // 11 _ a a _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ a _
+                    new CongenericChain(new[] { 1, 2, 18 }, Elements["A"], 20),
 
-                               // 12 a _ _ _ _ _ _ _ a _ _ a _ a _ a _ a _ a _ _ _ _ a _ _
-                               new CongenericChain(new[] { 0, 8, 11, 13, 15, 17, 19, 24 }, Elements["A"], 27),
+                    // 12 a _ _ _ _ _ _ _ a _ _ a _ a _ a _ a _ a _ _ _ _ a _ _
+                    new CongenericChain(new[] { 0, 8, 11, 13, 15, 17, 19, 24 }, Elements["A"], 27),
 
-                               // 13 _ a _ a a _ a _ _ a a _ _ _ _ a _ _ _ _ _ _ a _ _ _ a
-                               new CongenericChain(new[] { 1, 3, 4, 6, 9, 10, 22, 26 }, Elements["A"], 27),
+                    // 13 _ a _ a a _ a _ _ a a _ _ _ _ a _ _ _ _ _ _ a _ _ _ a
+                    new CongenericChain(new[] { 1, 3, 4, 6, 9, 10, 22, 26 }, Elements["A"], 27),
 
-                               // 14 a _ _ a _ _ _ _ _ a _ a _ _ _ _ _
-                               new CongenericChain(new[] { 0, 3, 9, 11 }, Elements["A"], 17),
+                    // 14 a _ _ a _ _ _ _ _ a _ a _ _ _ _ _
+                    new CongenericChain(new[] { 0, 3, 9, 11 }, Elements["A"], 17),
 
-                               // 15 _ a _ _ _ _ _ a _ _ a _ _ _ a _ _
-                               new CongenericChain(new[] { 1, 7, 10, 14 }, Elements["A"], 17),
+                    // 15 _ a _ _ _ _ _ a _ _ a _ _ _ a _ _
+                    new CongenericChain(new[] { 1, 7, 10, 14 }, Elements["A"], 17),
 
-                               // 16 a _ _ _ a _ _ _ _ _ a _ _ a _ _ _ _ _ _ _ _ _
-                               new CongenericChain(new[] { 0, 4, 10, 13 }, Elements["A"], 23),
+                    // 16 a _ _ _ a _ _ _ _ _ a _ _ a _ _ _ _ _ _ _ _ _
+                    new CongenericChain(new[] { 0, 4, 10, 13 }, Elements["A"], 23),
 
-                               // 17 _ a _ _ _ _ _ _ _ a _ _ a _ _ _ _ _ a _ _ _ _
-                               new CongenericChain(new[] { 1, 9, 12, 18 }, Elements["A"], 23),
-                        };
-            }
-        }
+                    // 17 _ a _ _ _ _ _ _ _ a _ _ a _ _ _ _ _ a _ _ _ _
+                    new CongenericChain(new[] { 1, 9, 12, 18 }, Elements["A"], 23),
+                };
 
         /// <summary>
         /// Gets the chains.
@@ -551,67 +556,62 @@ namespace LibiadaCore.Tests.Core
         /// <summary>
         /// Gets the intervals.
         /// </summary>
-        public static List<Dictionary<Link, List<int>>> Intervals
-        {
-            get
-            {
-                return new List<Dictionary<Link, List<int>>>
+        public static List<Dictionary<Link, List<int>>> Intervals =>
+            new List<Dictionary<Link, List<int>>>
                 {
                     new Dictionary<Link, List<int>>
-                    {
-                        { Link.Start, new List<int> { 4, 1, 3 } },
-                        { Link.End, new List<int> { 1, 3, 3 } },
-                        { Link.Both, new List<int> { 4, 1, 3, 3 } },
-                        { Link.Cycle, new List<int> { 1, 3, 6 } },
-                        { Link.None, new List<int> { 1, 3 } }
-                    },
+                        {
+                            { Link.Start, new List<int> { 4, 1, 3 } },
+                            { Link.End, new List<int> { 1, 3, 3 } },
+                            { Link.Both, new List<int> { 4, 1, 3, 3 } },
+                            { Link.Cycle, new List<int> { 1, 3, 6 } },
+                            { Link.None, new List<int> { 1, 3 } }
+                        },
 
                     new Dictionary<Link, List<int>>
-                    {
-                        { Link.Start, new List<int> { 4, 2, 1, 5 } },
-                        { Link.End, new List<int> { 2, 1, 5, 4 } },
-                        { Link.Both, new List<int> { 4, 2, 1, 5, 4 } },
-                        { Link.Cycle, new List<int> { 2, 1, 5, 7 } },
-                        { Link.None, new List<int> { 2, 1, 5 } }
-                    },
+                        {
+                            { Link.Start, new List<int> { 4, 2, 1, 5 } },
+                            { Link.End, new List<int> { 2, 1, 5, 4 } },
+                            { Link.Both, new List<int> { 4, 2, 1, 5, 4 } },
+                            { Link.Cycle, new List<int> { 2, 1, 5, 7 } },
+                            { Link.None, new List<int> { 2, 1, 5 } }
+                        },
 
                     new Dictionary<Link, List<int>>
-                    {
-                        { Link.Start, new List<int> { 1 } },
-                        { Link.End, new List<int> { 1 } },
-                        { Link.Both, new List<int> { 1, 1 } },
-                        { Link.Cycle, new List<int> { 1 } },
-                        { Link.None, new List<int>() }
-                    },
+                        {
+                            { Link.Start, new List<int> { 1 } },
+                            { Link.End, new List<int> { 1 } },
+                            { Link.Both, new List<int> { 1, 1 } },
+                            { Link.Cycle, new List<int> { 1 } },
+                            { Link.None, new List<int>() }
+                        },
 
                     new Dictionary<Link, List<int>>
-                    {
-                        { Link.Start, new List<int> { 8 } },
-                        { Link.End, new List<int> { 1 } },
-                        { Link.Both, new List<int> { 8, 1 } },
-                        { Link.Cycle, new List<int> { 8 } },
-                        { Link.None, new List<int>() }
-                    },
+                        {
+                            { Link.Start, new List<int> { 8 } },
+                            { Link.End, new List<int> { 1 } },
+                            { Link.Both, new List<int> { 8, 1 } },
+                            { Link.Cycle, new List<int> { 8 } },
+                            { Link.None, new List<int>() }
+                        },
 
                     new Dictionary<Link, List<int>>
-                    {
-                        { Link.Start, new List<int> { 101, 99900, 400000 } },
-                        { Link.End, new List<int> { 99900, 400000, 500000 } },
-                        { Link.Both, new List<int> { 101, 99900, 400000, 500000 } },
-                        { Link.Cycle, new List<int> { 99900, 400000, 500100 } },
-                        { Link.None, new List<int> { 99900, 400000 } }
-                    },
+                        {
+                            { Link.Start, new List<int> { 101, 99900, 400000 } },
+                            { Link.End, new List<int> { 99900, 400000, 500000 } },
+                            { Link.Both, new List<int> { 101, 99900, 400000, 500000 } },
+                            { Link.Cycle, new List<int> { 99900, 400000, 500100 } },
+                            { Link.None, new List<int> { 99900, 400000 } }
+                        },
 
                     new Dictionary<Link, List<int>>
-                    {
-                        { Link.Start, new List<int> { 1, 1, 1, 1, 1 } },
-                        { Link.End, new List<int> { 1, 1, 1, 1, 1 } },
-                        { Link.Both, new List<int> { 1, 1, 1, 1, 1, 1 } },
-                        { Link.Cycle, new List<int> { 1, 1, 1, 1, 1 } },
-                        { Link.None, new List<int> { 1, 1, 1, 1 } }
-                    }
+                        {
+                            { Link.Start, new List<int> { 1, 1, 1, 1, 1 } },
+                            { Link.End, new List<int> { 1, 1, 1, 1, 1 } },
+                            { Link.Both, new List<int> { 1, 1, 1, 1, 1, 1 } },
+                            { Link.Cycle, new List<int> { 1, 1, 1, 1, 1 } },
+                            { Link.None, new List<int> { 1, 1, 1, 1 } }
+                        }
                 };
-            }
-        }
     }
 }
