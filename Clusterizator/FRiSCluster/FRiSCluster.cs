@@ -70,16 +70,11 @@
             this.data = data;
 
             double rStar = 1;
-            double optimalCompactness = double.MinValue;
-            List<int> optimalPillarIndexes = null;
-            int[] optimalClustersBelonging = null;
-            double currentCompactness = double.MinValue;
-            var currentPillarIndexes = new List<int>();
-
+            
             //distances[i][j] - distance from i-th element to j-th
             CalculateDistances();
 
-            // average compatitive similarity in comparison to virtual sample (set) B
+            // average competitive similarity in comparison to virtual sample (set) B
             var averageSimilarityFunction = new double[data.Length];
 
             for (int i = 0; i < data.Length; i++)
@@ -93,43 +88,66 @@
                 averageSimilarityFunction[i] = localSimilarity / data.Length;
             }
 
+            var optimalClustersBelonging = Cluster(averageSimilarityFunction);
+
+            return optimalClustersBelonging;
+        }
+
+        private int[] Cluster(double[] averageSimilarityFunction)
+        {
             // maximum of average similarity in competition with sample (set) B
+            var currentPillarIndexes = new List<int>();
             double maxSimilarity = averageSimilarityFunction.Max();
             currentPillarIndexes.Add(Array.IndexOf(averageSimilarityFunction, maxSimilarity));
+
+            double currentCompactness = double.MinValue;
+            double optimalCompactness = double.MinValue;
+            int[] optimalClustersBelonging = null;
 
             while (currentPillarIndexes.Count < maximumClusters)
             {
                 int[] currentClustersBelonging = AddPillar(currentPillarIndexes);
+                //bool pillarsNotEqual = true;
+                //while (pillarsNotEqual)
+                //{
+                    var tempPillarIndexes = new List<int>(currentPillarIndexes);
+                    for (int j = 0; j < currentPillarIndexes.Count; j++)
+                    {
+                        (currentPillarIndexes[j], currentCompactness) = ReselectPillar(
+                            currentPillarIndexes[j],
+                            currentPillarIndexes,
+                            currentClustersBelonging);
+                    }
 
-                for (int j = 0; j < currentPillarIndexes.Count; j++)
-                {
-                    (currentPillarIndexes[j], currentCompactness) = ReselectPillar(currentPillarIndexes[j], currentPillarIndexes, currentClustersBelonging);
-                }
-
-                // updating data points references to new pillars
-                currentClustersBelonging = DetermineClusters(currentPillarIndexes);
+                    // updating data points references to new pillars
+                    currentClustersBelonging = DetermineClusters(currentPillarIndexes);
+                //    pillarsNotEqual = false;
+                //    for (int i = 0; i < currentPillarIndexes.Count; i++)
+                //    {
+                //        if (currentPillarIndexes[i] != tempPillarIndexes[i])
+                //        {
+                //            pillarsNotEqual = true;
+                //            break;
+                //        }
+                //    }
+                //}
+                
                 if (currentPillarIndexes.Count == minimumClusters)
                 {
                     optimalCompactness = currentCompactness;
                     optimalClustersBelonging = (int[])currentClustersBelonging.Clone();
-                    optimalPillarIndexes = new List<int>(currentPillarIndexes);
                 }
+
                 if (currentPillarIndexes.Count > minimumClusters && currentCompactness > optimalCompactness)
                 {
                     optimalCompactness = currentCompactness;
                     optimalClustersBelonging = (int[])currentClustersBelonging.Clone();
-                    optimalPillarIndexes = new List<int>(currentPillarIndexes);
                 }
             }
 
             if (optimalClustersBelonging == null)
             {
                 throw new ClusterizationFailureException("Failed to conduct clusterization");
-            }
-
-            for (int i = 0; i < optimalClustersBelonging.Length; i++)
-            {
-                optimalClustersBelonging[i] = optimalPillarIndexes.IndexOf(optimalClustersBelonging[i]);
             }
 
             return optimalClustersBelonging;
@@ -142,7 +160,7 @@
         /// The current pillar indexes.
         /// </param>
         /// <returns>
-        /// The <see cref="int[]"/>.
+        /// The <see cref="T:int[]"/>.
         /// </returns>
         private int[] AddPillar(List<int> currentPillarIndexes)
         {
@@ -168,7 +186,7 @@
         /// </returns>
         private (int, double) ReselectPillar(int pillarIndex, List<int> pillarIndexes, int[] clustersBelonging)
         {
-            int[] clusterPointsIndexes = data.Select((d, i) => i).Where(i => clustersBelonging[i] == pillarIndex).ToArray();
+            int[] clusterPointsIndexes = data.Select((d, i) => i).Where(i => clustersBelonging[i] == pillarIndexes.IndexOf(pillarIndex)).ToArray();
             var clusterCompactness = new double[clusterPointsIndexes.Length];
 
             for (int i = 0; i < clusterPointsIndexes.Length; i++)
@@ -280,13 +298,13 @@
 
             for (int i = 0; i < data.Length; i++)
             {
-                var clusterNumber = pillarIndexes[0];
+                var clusterNumber = 0;
 
                 for (int j = 1; j < pillarIndexes.Count; j++)
                 {
                     if (distances[pillarIndexes[j], i] < distances[clusterNumber, i])
                     {
-                        clusterNumber = pillarIndexes[j];
+                        clusterNumber = j;
                     }
                 }
                 clustersBelonging[i] = clusterNumber;
@@ -315,7 +333,7 @@
 
             for (int j = 0; j < data.Length; j++)
             {
-                if (clustersBelonging[j] == pillarIndex)
+                if (clustersBelonging[j] == pillarIndexes.IndexOf(pillarIndex))
                 {
                     compactness += CalculateSimilarityFunction(distances[pillarIndex, j], DistanceToNearestCompetitivePillar(pillarIndexes, j, pillarIndex));
                 }
