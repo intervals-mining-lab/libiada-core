@@ -24,13 +24,13 @@
         /// <param name="newWidth">
         /// The new width.
         /// </param>
-        /// <param name="newHight">
-        /// The new hight.
+        /// <param name="newHeight">
+        /// The new height.
         /// </param>
-        public ImageResizer(int newWidth, int newHight)
+        public ImageResizer(int newWidth, int newHeight)
         {
             destinationWidth = newWidth;
-            destinationHeight = newHight;
+            destinationHeight = newHeight;
         }
 
         /// <summary>
