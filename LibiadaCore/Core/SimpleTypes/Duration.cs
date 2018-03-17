@@ -72,6 +72,30 @@
         }
 
         /// <summary>
+        /// Initializes a new instance of the <see cref="Duration"/> class.
+        /// </summary>
+        /// <param name="numerator">
+        /// The numerator.
+        /// </param>
+        /// <param name="denominator">
+        /// The denominator.
+        /// </param>
+        /// <param name="originalNumerator">
+        /// The original numerator.
+        /// </param>
+        /// <param name="originalDenominator">
+        /// The original denominator.
+        /// </param>
+        /// <param name="ticks">
+        /// The ticks.
+        /// </param>
+        public Duration(int numerator, int denominator, int originalNumerator, int originalDenominator, int ticks):this(numerator, denominator, false, ticks)
+        {
+            OriginalNumerator = originalNumerator;
+            OriginalDenominator = originalDenominator;
+        }
+
+        /// <summary>
         /// Gets original numerator.
         /// оригинальный числитель в дроби доли
         /// (для сохранения после наложения триоли на длительность)
