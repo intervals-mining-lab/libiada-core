@@ -23,9 +23,9 @@
         /// <param name="value">
         /// The value.
         /// </param>
-        [TestCase(0, Link.Cycle, 1.095776)]
-        [TestCase(1, Link.Cycle, 0.0704)]
-        [TestCase(2, Link.Cycle, 0.0168)]
+        [TestCase(0, Link.Cycle, 1.095779)]
+        [TestCase(1, Link.Cycle, 2.16918)]
+        [TestCase(2, Link.Cycle, 1.66709)]
         [TestCase(3, Link.Cycle, 0.25)]
         [TestCase(4, Link.Cycle, 0)]
         [TestCase(5, Link.Cycle, 2.25)]
