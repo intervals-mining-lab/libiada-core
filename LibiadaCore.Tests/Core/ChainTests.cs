@@ -49,7 +49,7 @@ namespace LibiadaCore.Tests.Core
                 };
             for (int i = 0; i < chains[0].Alphabet.Cardinality; i++)
             {
-                var actualIntervals = chains[0].CongenericChain(i).GetIntervals(Link.Both);
+                var actualIntervals = chains[0].CongenericChain(i).GetArrangement(Link.Both);
                 for (int j = 0; j < actualIntervals.Length; j++)
                 {
                     Assert.AreEqual(intervals[i][j], actualIntervals[j], "{0} and {1} intervals of sequence are not equal", j, i);

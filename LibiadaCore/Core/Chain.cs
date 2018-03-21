@@ -381,14 +381,15 @@ namespace LibiadaCore.Core
         /// <summary>
         /// Sets arrangement managers for congeneric chains.
         /// </summary>
-        /// <typeparam name="TArrangementManager">
-        /// Arrangement manager type.
-        /// </typeparam>
-        public void SetArrangementManagers<TArrangementManager>() where TArrangementManager : ICongenericArrangementManager, new()
+        /// <param name="arrangementType">
+        /// The arrangement Type.
+        /// </param>
+        public void SetArrangementManagers(ArrangementType arrangementType = ArrangementType.Intervals) 
         {
             foreach (var chain in congenericChains)
             {
-                chain.CreateArrangementManager<TArrangementManager>();
+                chain.CreateArrangementManager(arrangementType);
+                chain.CurrentArrangementType = arrangementType;
             }
         }
 

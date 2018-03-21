@@ -2,6 +2,7 @@ namespace LibiadaCore.Core
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel;
     using System.Linq;
 
     using IntervalsManagers;
@@ -12,6 +13,11 @@ namespace LibiadaCore.Core
     /// </summary>
     public class CongenericChain : AbstractChain
     {
+        /// <summary>
+        /// The current arrangement type.
+        /// </summary>
+        public ArrangementType CurrentArrangementType = ArrangementType.Intervals;
+
         /// <summary>
         /// The element.
         /// </summary>
@@ -30,7 +36,17 @@ namespace LibiadaCore.Core
         /// <summary>
         /// The intervals manager.
         /// </summary>
-        private ICongenericArrangementManager intervalsManager;
+        private IArrangementManager intervalsManager;
+
+        /// <summary>
+        /// The series manager.
+        /// </summary>
+        private IArrangementManager seriesManager;
+
+        /// <summary>
+        /// The series intervals manager.
+        /// </summary>
+        private IArrangementManager seriesIntervalsManager;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="CongenericChain"/> class.
@@ -165,27 +181,29 @@ namespace LibiadaCore.Core
         /// <summary>
         /// Returns clone of intervals array including interval of given link.
         /// </summary>
-        /// <typeparam name="TArrangementManager">
-        /// Arrangement manager type.
-        /// </typeparam>
         /// <param name="link">
         /// The link.
         /// </param>
         /// <returns>
-        /// The <see cref="T:List{int}"/>.
+        /// The <see cref="int[]"/>.
         /// </returns>
-        public int[] GetIntervals<TArrangementManager>(Link link) where TArrangementManager : ICongenericArrangementManager, new()
+        public int[] GetArrangement(Link link)
         {
-            if (intervalsManager == null || intervalsManager.GetType() != typeof(TArrangementManager))
+            switch (CurrentArrangementType)
             {
-                CreateArrangementManager<TArrangementManager>();
+                case ArrangementType.Intervals:
+                    return GetIntervals(link);
+                case ArrangementType.Series:
+                    return GetSeries(link);
+                case ArrangementType.IntervalsAndSeries:
+                    return GetSeriesAndIntervals(link);
+                default:
+                    throw new InvalidEnumArgumentException(nameof(CurrentArrangementType), (int)CurrentArrangementType, typeof(ArrangementType));
             }
-
-            return intervalsManager.GetIntervals(link);
         }
 
         /// <summary>
-        /// Returns clone of intervals array including interval of given link.
+        /// Returns clone of intervals array including interval for given link.
         /// </summary>
         /// <param name="link">
         /// The link.
@@ -197,18 +215,50 @@ namespace LibiadaCore.Core
         {
             if (intervalsManager == null)
             {
-                if (positions.Count == 0)
-                {
-                    CreateArrangementManager<NullCongenericIntervalsManager>();
-                }
-                else
-                {
-                    CreateArrangementManager<CongenericIntervalsManager>();
-                }
+                CreateIntervalsManager();
             }
 
             return intervalsManager.GetIntervals(link);
         }
+
+        /// <summary>
+        /// Returns clone of series array including series for given link.
+        /// </summary>
+        /// <param name="link">
+        /// The link.
+        /// </param>
+        /// <returns>
+        /// The <see cref="int[]"/>.
+        /// </returns>
+        public int[] GetSeries(Link link)
+        {
+            if (seriesManager == null)
+            {
+                CreateSeriesManager();
+            }
+
+            return seriesManager.GetIntervals(link);
+        }
+
+        /// <summary>
+        /// Returns clone of series and intervals arrays.
+        /// </summary>
+        /// <param name="link">
+        /// The link.
+        /// </param>
+        /// <returns>
+        /// The <see cref="int[]"/>.
+        /// </returns>
+        public int[] GetSeriesAndIntervals(Link link)
+        {
+            if (seriesIntervalsManager == null)
+            {
+                CreateSeriesIntervalsManager();
+            }
+
+            return seriesIntervalsManager.GetIntervals(link);
+        }
+
 
         /// <summary>
         /// Returns position of given occurrence of element of this chain.
@@ -367,9 +417,9 @@ namespace LibiadaCore.Core
         /// </param>
         public void SetIntervalManager(int[] intervals, int start, int end)
         {
-            intervalsManager = new CongenericIntervalsManager();
-            ((CongenericIntervalsManager)intervalsManager).Initialize(intervals, start, end);
-        } 
+            intervalsManager = new IntervalsManager();
+            ((IntervalsManager)intervalsManager).Initialize(intervals, start, end);
+        }
 
         /// <summary>
         /// The equals.
@@ -400,9 +450,9 @@ namespace LibiadaCore.Core
         /// The <see cref="IBaseObject"/>.
         /// </returns>
         public override IBaseObject Clone() => new CongenericChain(positions, Element, length)
-                                                   {
-                                                       intervalsManager = intervalsManager
-                                                   };
+        {
+            intervalsManager = intervalsManager
+        };
 
         /// <summary>
         /// Calculates hash code using
@@ -428,19 +478,71 @@ namespace LibiadaCore.Core
         }
 
         /// <summary>
-        /// Creates arrangement manager.
+        /// Creates arrangement manager of given type.
         /// </summary>
-        /// <typeparam name="TArrangementManager">
-        /// Arrangement manager type.
-        /// </typeparam>
-        public void CreateArrangementManager<TArrangementManager>() where TArrangementManager : ICongenericArrangementManager, new()
+        /// <param name="arrangementType">
+        /// The arrangement type.
+        /// </param>
+        /// <exception cref="InvalidEnumArgumentException">
+        /// Thrown if arrangement type is unknown.
+        /// </exception>
+        public void CreateArrangementManager(ArrangementType arrangementType = ArrangementType.Intervals)
         {
-            if (intervalsManager == null || intervalsManager.GetType() != typeof(TArrangementManager))
+            switch (arrangementType)
+            {
+                case ArrangementType.Intervals:
+                    CreateIntervalsManager();
+                    break;
+                case ArrangementType.Series:
+                    CreateSeriesManager();
+                    break;
+                case ArrangementType.IntervalsAndSeries:
+                    CreateSeriesIntervalsManager();
+                    break;
+                default:
+                    throw new InvalidEnumArgumentException(nameof(arrangementType), (int)arrangementType, typeof(ArrangementType));
+            }
+        }
+
+        /// <summary>
+        /// Creates intervals manager.
+        /// </summary>
+        public void CreateIntervalsManager()
+        {
+            if (intervalsManager == null)
             {
                 intervalsManager = positions.Count == 0
-                                   ? (ICongenericArrangementManager)new NullCongenericIntervalsManager()
-                                   : new TArrangementManager();
+                                       ? (IArrangementManager)new NullIntervalsManager()
+                                       : new IntervalsManager();
                 intervalsManager.Initialize(this);
+            }
+        }
+
+        /// <summary>
+        /// Creates series manager.
+        /// </summary>
+        public void CreateSeriesManager()
+        {
+            if (seriesManager == null)
+            {
+                seriesManager = positions.Count == 0
+                                       ? (IArrangementManager)new NullIntervalsManager()
+                                       : new IntervalsManager();
+                seriesManager.Initialize(this);
+            }
+        }
+
+        /// <summary>
+        /// Creates complex series and intervals manager.
+        /// </summary>
+        public void CreateSeriesIntervalsManager()
+        {
+            if (seriesIntervalsManager == null)
+            {
+                seriesIntervalsManager = positions.Count == 0
+                                       ? (IArrangementManager)new NullIntervalsManager()
+                                       : new IntervalsManager();
+                seriesIntervalsManager.Initialize(this);
             }
         }
     }

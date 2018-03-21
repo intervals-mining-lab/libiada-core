@@ -79,8 +79,8 @@
                 throw new NotImplementedException();
             }
 
-            int[] firstIntervals = firstChain.GetIntervals(link);
-            int[] secondIntervals = secondChain.GetIntervals(link);
+            int[] firstIntervals = firstChain.GetArrangement(link);
+            int[] secondIntervals = secondChain.GetArrangement(link);
 
             for (int i = 1; i <= FirstOccurrencesCount; i++)
             {

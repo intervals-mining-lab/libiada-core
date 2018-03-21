@@ -6,7 +6,7 @@
     /// <summary>
     /// The congeneric intervals manager.
     /// </summary>
-    public class CongenericIntervalsManager : ICongenericArrangementManager
+    public class IntervalsManager : IArrangementManager
     {
         /// <summary>
         /// Gets or sets main intervals block

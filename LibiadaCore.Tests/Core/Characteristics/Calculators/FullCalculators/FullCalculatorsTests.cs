@@ -58,7 +58,7 @@
         /// </param>
         protected void SeriesCharacteristicTest(int index, Link link, double value)
         {
-            chains[index].SetArrangementManagers<CongenericSeriesManager>();
+            chains[index].SetArrangementManagers(ArrangementType.Series);
             Assert.AreEqual(value, calculator.Calculate(chains[index], link), 0.0001);
         }
     }

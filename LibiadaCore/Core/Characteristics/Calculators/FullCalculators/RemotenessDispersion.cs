@@ -27,7 +27,7 @@
             Alphabet alphabet = chain.Alphabet;
             for (int i = 0; i < alphabet.Cardinality; i++)
             {
-                intervals.AddRange(chain.CongenericChain(i).GetIntervals(link).ToList());
+                intervals.AddRange(chain.CongenericChain(i).GetArrangement(link).ToList());
             }
 
             if (intervals.Count == 0)

@@ -11,7 +11,7 @@
     /// The congeneric intervals manager test.
     /// </summary>
     [TestFixture]
-    public class CongenericIntervalsManagerTests
+    public class IntervalsManagerTests
     {
         /// <summary>
         /// The congeneric chains.
@@ -67,9 +67,9 @@
         [TestCase(5, Link.Both)]
         [TestCase(5, Link.Cycle)]
         [TestCase(5, Link.None)]
-        public void CongenericIntervalsManagerCreationNoneLinkTest(int index, Link link)
+        public void IntervalsManagerCreationNoneLinkTest(int index, Link link)
         {
-            var intervalsManager = new CongenericIntervalsManager();
+            var intervalsManager = new IntervalsManager();
             intervalsManager.Initialize(congenericChains[index]);
             var intervals = allIntervals[index][link];
 

@@ -9,7 +9,7 @@
     /// <summary>
     /// The congeneric series manager.
     /// </summary>
-    public class CongenericSeriesManager : ICongenericArrangementManager
+    public class SeriesManager : IArrangementManager
     {
         /// <summary>
         /// The series.
@@ -17,9 +17,9 @@
         private List<(int, int)> series;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="CongenericSeriesManager"/> class.
+        /// Initializes a new instance of the <see cref="SeriesManager"/> class.
         /// </summary>
-        public CongenericSeriesManager()
+        public SeriesManager()
         {
         }
 

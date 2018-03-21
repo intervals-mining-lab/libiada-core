@@ -1,6 +1,5 @@
 ﻿namespace LibiadaCore.Tests.Core.IntervalsManagers
 {
-    using System;
     using System.Collections.Generic;
 
     using LibiadaCore.Core;
@@ -12,7 +11,7 @@
     /// The congeneric series manager tests.
     /// </summary>
     [TestFixture]
-    public class CongenericSeriesManagerTests
+    public class SeriesManagerTests
     {
         /// <summary>
         /// The congeneric chains.
@@ -48,7 +47,7 @@
         [TestCase(17, new[] { 1, 1, 1, 1 })]
         public void SimpleSeriesManagerTest01(int index, int[] expected)
         {
-            CongenericSeriesManager manager = new CongenericSeriesManager();
+            SeriesManager manager = new SeriesManager();
             manager.Initialize(congenericChains[index]);
             var actual = manager.GetIntervals(Link.NotApplied);
             Assert.AreEqual(expected, actual);

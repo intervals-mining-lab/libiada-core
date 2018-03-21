@@ -3,7 +3,7 @@
     /// <summary>
     /// Congeneric intervals manager implementation for empty sequences.
     /// </summary>
-    public class NullCongenericIntervalsManager : ICongenericArrangementManager
+    public class NullIntervalsManager : IArrangementManager
     {
         /// <summary>
         /// Returns empty array.
