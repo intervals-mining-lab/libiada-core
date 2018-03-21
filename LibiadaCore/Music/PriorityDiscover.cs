@@ -318,6 +318,8 @@
         /// </param>
         public void CalculatePriorityMask(Measure measure)
         {
+            int priority = 0;
+
             // создание объекта маски с атрибутами оригинала и пустым списком нот
             PriorityMask = new Measure(new List<ValueNote>(), (MeasureAttributes)measure.Attributes.Clone());
 
@@ -325,7 +327,7 @@
             //---------------------------------------------------------------------------------------------
             var newDuration = new Duration(1, measure.Attributes.Size.BeatBase, false, measure.Attributes.Size.TicksPerBeat);
 
-            PriorityMask.NoteList.Add(new ValueNote((Pitch)null, newDuration, false, Tie.None, 0));
+            PriorityMask.NoteList.Add(new ValueNote((Pitch)null, newDuration, false, Tie.None, priority));
 
             // первая доля в такте всегда самая сильная и выделяется НАИВЫСШИМ приоритетом 0
             if (measure.Attributes.Size.Beats % 2 == 0)
@@ -337,86 +339,78 @@
                     if (i % 2 == 0)
                     {
                         // относительно сильная доля с приоритетом 1
-                        const int Priority = 1;
-                        var duration = new Duration(1, measure.Attributes.Size.BeatBase, false, measure.Attributes.Size.TicksPerBeat);
-                        PriorityMask.NoteList.Add(new ValueNote((Pitch)null, duration, false, Tie.None, Priority));
+                        priority = 1;
+                        
                     }
                     else
                     {
                         // слабая доля с приоритетом 2
-                        int priority = 2;
+                        priority = 2;
 
                         // если всего две доли то более слабая будет иметь приоритет 1, так как больше нет долей
                         if (measure.Attributes.Size.Beats == 2)
                         {
                             priority = 1;
                         }
-
-                        var duration = new Duration(1, measure.Attributes.Size.BeatBase, false, measure.Attributes.Size.TicksPerBeat);
-                        PriorityMask.NoteList.Add(new ValueNote((Pitch)null, duration, false, Tie.None, priority));
                     }
+
+                    var duration = new Duration(1, measure.Attributes.Size.BeatBase, false, measure.Attributes.Size.TicksPerBeat);
+                    PriorityMask.NoteList.Add(new ValueNote((Pitch)null, duration, false, Tie.None, priority));
+                }
+            }
+            else if (measure.Attributes.Size.Beats % 3 == 0)
+            {
+                // ПМТ-3 - трёхдольный метр/размер такта
+                for (int i = 1; i < measure.Attributes.Size.Beats; i++)
+                {
+                    // начиная со второй доли заполняем чередуя приоритет через две доли
+                    if (i % 3 == 0)
+                    {
+                        // относительно сильная доля с приоритетом 1
+                        priority = 1;
+                    }
+                    else
+                    {
+                        // слабая доля с приоритетом 2
+                        priority = 2;
+
+                        // если всего три доли то более слабые будут иметь приоритет 1, так как больше нет других долей
+                        if (measure.Attributes.Size.Beats == 3)
+                        {
+                            priority = 1;
+                        }
+                    }
+
+                    var duration = new Duration(1, measure.Attributes.Size.BeatBase, false, measure.Attributes.Size.TicksPerBeat);
+                    PriorityMask.NoteList.Add(new ValueNote((Pitch)null, duration, false, Tie.None, priority));
                 }
             }
             else
             {
-                if (measure.Attributes.Size.Beats % 3 == 0)
+                // ПМТ-К сложный метр/размер такта
+                for (int i = 1; i < measure.Attributes.Size.Beats; i++)
                 {
-                    // ПМТ-3 - трёхдольный метр/размер такта
-                    for (int i = 1; i < measure.Attributes.Size.Beats; i++)
+                    // начиная со второй доли заполняем чередуя приоритет через
+                    // одну долю и последнюю долю записываем как слабую
+                    if (i % 2 == 0)
                     {
-                        // начиная со второй доли заполняем чередуя приоритет через две доли
-                        if (i % 3 == 0)
-                        {
-                            // относительно сильная доля с приоритетом 1
-                            int priority = 1;
-                            var duration = new Duration(1, measure.Attributes.Size.BeatBase, false, measure.Attributes.Size.TicksPerBeat);
-                            PriorityMask.NoteList.Add(new ValueNote((Pitch)null, duration, false, Tie.None, priority));
-                        }
-                        else
-                        {
-                            // слабая доля с приоритетом 2
-                            int priority = 2;
+                        // относительно сильная доля с приоритетом 1
+                        priority = 1;
 
-                            // если всего три доли то более слабые будут иметь приоритет 1, так как больше нет других долей
-                            if (measure.Attributes.Size.Beats == 3)
-                            {
-                                priority = 1;
-                            }
-
-                            var duration = new Duration(1, measure.Attributes.Size.BeatBase, false, measure.Attributes.Size.TicksPerBeat);
-                            PriorityMask.NoteList.Add(new ValueNote((Pitch)null, duration, false, Tie.None, priority));
+                        // если сильная доля последняя - записываем ее как слабую в ПМТ-3
+                        if (i == measure.Attributes.Size.Beats - 1)
+                        {
+                            priority = 2;
                         }
                     }
-                }
-                else
-                {
-                    // ПМТ-К сложный метр/размер такта
-                    for (int i = 1; i < measure.Attributes.Size.Beats; i++)
+                    else
                     {
-                        // начиная со второй доли заполняем чередуя приоритет через
-                        // одну долю и последнюю долю записываем как слабую
-                        if (i % 2 == 0)
-                        {
-                            // относительно сильная доля с приоритетом 1
-                            int priority = 1;
-
-                            // если сильная доля последняя - записываем ее как слабую в ПМТ-3
-                            if (i == measure.Attributes.Size.Beats - 1)
-                            {
-                                priority = 2;
-                            }
-
-                            var duration = new Duration(1, measure.Attributes.Size.BeatBase, false, measure.Attributes.Size.TicksPerBeat);
-                            PriorityMask.NoteList.Add(new ValueNote((Pitch)null, duration, false, Tie.None, priority));
-                        }
-                        else
-                        {
-                            // слабая доля с приоритетом 2
-                            const int Priority = 2;
-                            var duration = new Duration(1, measure.Attributes.Size.BeatBase, false, measure.Attributes.Size.TicksPerBeat);
-                            PriorityMask.NoteList.Add(new ValueNote((Pitch)null, duration, false, Tie.None, Priority));
-                        }
+                        // слабая доля с приоритетом 2
+                        priority = 2;
                     }
+
+                    var duration = new Duration(1, measure.Attributes.Size.BeatBase, false, measure.Attributes.Size.TicksPerBeat);
+                    PriorityMask.NoteList.Add(new ValueNote((Pitch)null, duration, false, Tie.None, priority));
                 }
             }
 
@@ -425,14 +419,14 @@
             //------------------------------------------------------------------------------------------------------
 
             // флаг останова, когда просчитаются приоритеты для всех нот,
-            // длительность которых окажется меньше либо равна минимальной, деленной на 2 (так как может быть точка у ноты, котору. возможно описать только 3 нотами короче в два раза чем сама нота),
+            // длительность которых окажется меньше либо равна минимальной, деленной на 2 (так как может быть точка у ноты, которую возможно описать только 3 нотами короче в два раза чем сама нота),
             // если они уже просчитаны для всех нот, то процесс заканчивается
             bool stop = true;
-
-            // проверка: останов будет тогда, когда длительности ВСЕХ нот в маске будут меньше либо равны длительности минимально ноты
+            double minDuration = MinDuration(measure);
+            // проверка: останов будет тогда, когда длительности ВСЕХ нот в маске будут меньше либо равны длительности минимальной ноты
             foreach (ValueNote note in PriorityMask.NoteList)
             {
-                if (note.Duration.Value > MinDuration(measure) / 2)
+                if (note.Duration.Value > minDuration / 2)
                 {
                     stop = false;
                 }
