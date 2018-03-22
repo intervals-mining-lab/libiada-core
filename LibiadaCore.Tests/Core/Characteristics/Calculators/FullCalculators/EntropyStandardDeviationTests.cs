@@ -23,14 +23,14 @@
         /// <param name="value">
         /// The value.
         /// </param>
-        [TestCase(0, Link.Cycle, 1.095776)]
-        [TestCase(1, Link.Cycle, 0.0704)]
-        [TestCase(2, Link.Cycle, 0.0168)]
-        [TestCase(3, Link.Cycle, 0.25)]
+        [TestCase(0, Link.Cycle, 1.046795)]
+        [TestCase(1, Link.Cycle, 1.47281)]
+        [TestCase(2, Link.Cycle, 1.29291)]
+        [TestCase(3, Link.Cycle, 0.5)]
         [TestCase(4, Link.Cycle, 0)]
-        [TestCase(5, Link.Cycle, 2.25)]
-        [TestCase(6, Link.Cycle, 0.0168)]
-        [TestCase(7, Link.Cycle, 0.25)]
+        [TestCase(5, Link.Cycle, 1.5)]
+        [TestCase(6, Link.Cycle, 1.22938)]
+        [TestCase(7, Link.Cycle, 0.5)]
         [TestCase(8, Link.Cycle, 0)]
         public void ChainCalculationTest(int index, Link link, double value)
         {
