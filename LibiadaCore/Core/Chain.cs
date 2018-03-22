@@ -388,9 +388,10 @@ namespace LibiadaCore.Core
         {
             foreach (var chain in congenericChains)
             {
-                chain.CreateArrangementManager(arrangementType);
                 chain.CurrentArrangementType = arrangementType;
+                chain.CreateArrangementManager(arrangementType);
             }
+
         }
 
         /// <summary>

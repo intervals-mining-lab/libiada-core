@@ -16,7 +16,16 @@ namespace LibiadaCore.Core
         /// <summary>
         /// The current arrangement type.
         /// </summary>
-        public ArrangementType CurrentArrangementType = ArrangementType.Intervals;
+        private ArrangementType currentArrangementType;
+
+        /// <summary>
+        /// Gets or sets the current arrangement type.
+        /// </summary>
+        public ArrangementType CurrentArrangementType
+        {
+            get => currentArrangementType;
+            set => currentArrangementType = value;
+        }
 
         /// <summary>
         /// The element.
@@ -451,7 +460,7 @@ namespace LibiadaCore.Core
         /// </returns>
         public override IBaseObject Clone() => new CongenericChain(positions, Element, length)
         {
-            intervalsManager = intervalsManager
+            currentArrangementType = currentArrangementType
         };
 
         /// <summary>
@@ -527,7 +536,7 @@ namespace LibiadaCore.Core
             {
                 seriesManager = positions.Count == 0
                                        ? (IArrangementManager)new NullIntervalsManager()
-                                       : new IntervalsManager();
+                                       : new SeriesManager();
                 seriesManager.Initialize(this);
             }
         }
@@ -541,7 +550,7 @@ namespace LibiadaCore.Core
             {
                 seriesIntervalsManager = positions.Count == 0
                                        ? (IArrangementManager)new NullIntervalsManager()
-                                       : new IntervalsManager();
+                                       : new SeriesIntervalsManager();
                 seriesIntervalsManager.Initialize(this);
             }
         }
