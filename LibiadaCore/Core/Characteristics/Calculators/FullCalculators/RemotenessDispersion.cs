@@ -4,6 +4,8 @@
     using System.Collections.Generic;
     using System.Linq;
 
+    using LibiadaCore.Extensions;
+
     /// <summary>
     /// The remoteness dispersion.
     /// </summary>
@@ -35,7 +37,9 @@
                 return 0;
             }
 
-            List<int> uniqueIntervals = intervals.Distinct().ToList();
+            var intervalsDictionary = intervals
+                                     .GroupBy(i => i)
+                                     .ToDictionary(i => i.Key, i => i.Count());
 
             var intervalsCount = new IntervalsCount();
             var geometricMean = new GeometricMean();
@@ -44,10 +48,10 @@
             double gDelta = geometricMean.Calculate(chain, link);
             double n = intervalsCount.Calculate(chain, link);
 
-            foreach (int kDelta in uniqueIntervals)
+            foreach ((int interval, int count) in intervalsDictionary)
             {
-                double centeredRemoteness = Math.Log(kDelta, 2) - Math.Log(gDelta, 2);
-                result += centeredRemoteness * centeredRemoteness * intervals.Count(interval => interval == kDelta) / n;
+                double centeredRemoteness = Math.Log(interval, 2) - Math.Log(gDelta, 2);
+                result += centeredRemoteness * centeredRemoteness * count / n;
             }
 
             return result;

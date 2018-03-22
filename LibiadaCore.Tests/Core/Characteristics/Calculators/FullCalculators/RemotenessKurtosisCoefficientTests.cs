@@ -27,7 +27,7 @@
         [TestCase(0, Link.Start, 1.2832018)]
         [TestCase(0, Link.End, 1.2351903)]
         [TestCase(0, Link.Both, 1.3146229)]
-        [TestCase(0, Link.Cycle, 1.5013118)]
+        [TestCase(0, Link.Cycle, 1.337076)]
         public void ChainCalculationTest(int index, Link link, double value)
         {
             ChainCharacteristicTest(0, link, value);
