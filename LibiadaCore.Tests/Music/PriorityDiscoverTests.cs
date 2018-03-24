@@ -124,44 +124,44 @@
 
             var notes = new List<ValueNote> { note, bNote, dNote, aNote };
             var measure = new Measure(notes, attributes);
-            pd.CalculatePriorityMask(measure);
+            var priorityMask = pd.CalculatePriorityMask(measure);
 
             // так как минимальная длительность ноты в такте 1/16 то маска приоритетов должна разложиться (посчитаться) до 1/32
-            Assert.AreEqual(0, pd.PriorityMask.NoteList[0].Priority);
-            Assert.AreEqual(5, pd.PriorityMask.NoteList[1].Priority);
-            Assert.AreEqual(4, pd.PriorityMask.NoteList[2].Priority);
-            Assert.AreEqual(5, pd.PriorityMask.NoteList[3].Priority);
-            Assert.AreEqual(3, pd.PriorityMask.NoteList[4].Priority);
-            Assert.AreEqual(5, pd.PriorityMask.NoteList[5].Priority);
-            Assert.AreEqual(4, pd.PriorityMask.NoteList[6].Priority);
-            Assert.AreEqual(5, pd.PriorityMask.NoteList[7].Priority);
-            Assert.AreEqual(2, pd.PriorityMask.NoteList[8].Priority);
-            Assert.AreEqual(5, pd.PriorityMask.NoteList[9].Priority);
-            Assert.AreEqual(4, pd.PriorityMask.NoteList[10].Priority);
-            Assert.AreEqual(5, pd.PriorityMask.NoteList[11].Priority);
-            Assert.AreEqual(3, pd.PriorityMask.NoteList[12].Priority);
-            Assert.AreEqual(5, pd.PriorityMask.NoteList[13].Priority);
-            Assert.AreEqual(4, pd.PriorityMask.NoteList[14].Priority);
-            Assert.AreEqual(5, pd.PriorityMask.NoteList[15].Priority);
-            Assert.AreEqual(1, pd.PriorityMask.NoteList[16].Priority);
-            Assert.AreEqual(5, pd.PriorityMask.NoteList[17].Priority);
-            Assert.AreEqual(4, pd.PriorityMask.NoteList[18].Priority);
-            Assert.AreEqual(5, pd.PriorityMask.NoteList[19].Priority);
-            Assert.AreEqual(3, pd.PriorityMask.NoteList[20].Priority);
-            Assert.AreEqual(5, pd.PriorityMask.NoteList[21].Priority);
-            Assert.AreEqual(4, pd.PriorityMask.NoteList[22].Priority);
-            Assert.AreEqual(5, pd.PriorityMask.NoteList[23].Priority);
-            Assert.AreEqual(2, pd.PriorityMask.NoteList[24].Priority);
-            Assert.AreEqual(5, pd.PriorityMask.NoteList[25].Priority);
-            Assert.AreEqual(4, pd.PriorityMask.NoteList[26].Priority);
-            Assert.AreEqual(5, pd.PriorityMask.NoteList[27].Priority);
-            Assert.AreEqual(3, pd.PriorityMask.NoteList[28].Priority);
-            Assert.AreEqual(5, pd.PriorityMask.NoteList[29].Priority);
-            Assert.AreEqual(4, pd.PriorityMask.NoteList[30].Priority);
-            Assert.AreEqual(5, pd.PriorityMask.NoteList[31].Priority);
+            Assert.AreEqual(0, priorityMask.NoteList[0].Priority);
+            Assert.AreEqual(5, priorityMask.NoteList[1].Priority);
+            Assert.AreEqual(4, priorityMask.NoteList[2].Priority);
+            Assert.AreEqual(5, priorityMask.NoteList[3].Priority);
+            Assert.AreEqual(3, priorityMask.NoteList[4].Priority);
+            Assert.AreEqual(5, priorityMask.NoteList[5].Priority);
+            Assert.AreEqual(4, priorityMask.NoteList[6].Priority);
+            Assert.AreEqual(5, priorityMask.NoteList[7].Priority);
+            Assert.AreEqual(2, priorityMask.NoteList[8].Priority);
+            Assert.AreEqual(5, priorityMask.NoteList[9].Priority);
+            Assert.AreEqual(4, priorityMask.NoteList[10].Priority);
+            Assert.AreEqual(5, priorityMask.NoteList[11].Priority);
+            Assert.AreEqual(3, priorityMask.NoteList[12].Priority);
+            Assert.AreEqual(5, priorityMask.NoteList[13].Priority);
+            Assert.AreEqual(4, priorityMask.NoteList[14].Priority);
+            Assert.AreEqual(5, priorityMask.NoteList[15].Priority);
+            Assert.AreEqual(1, priorityMask.NoteList[16].Priority);
+            Assert.AreEqual(5, priorityMask.NoteList[17].Priority);
+            Assert.AreEqual(4, priorityMask.NoteList[18].Priority);
+            Assert.AreEqual(5, priorityMask.NoteList[19].Priority);
+            Assert.AreEqual(3, priorityMask.NoteList[20].Priority);
+            Assert.AreEqual(5, priorityMask.NoteList[21].Priority);
+            Assert.AreEqual(4, priorityMask.NoteList[22].Priority);
+            Assert.AreEqual(5, priorityMask.NoteList[23].Priority);
+            Assert.AreEqual(2, priorityMask.NoteList[24].Priority);
+            Assert.AreEqual(5, priorityMask.NoteList[25].Priority);
+            Assert.AreEqual(4, priorityMask.NoteList[26].Priority);
+            Assert.AreEqual(5, priorityMask.NoteList[27].Priority);
+            Assert.AreEqual(3, priorityMask.NoteList[28].Priority);
+            Assert.AreEqual(5, priorityMask.NoteList[29].Priority);
+            Assert.AreEqual(4, priorityMask.NoteList[30].Priority);
+            Assert.AreEqual(5, priorityMask.NoteList[31].Priority);
 
             // проверка длительностей
-            foreach (var lnote in pd.PriorityMask.NoteList)
+            foreach (var lnote in priorityMask.NoteList)
             {
                 Assert.AreEqual(1, lnote.Duration.Numerator);
                 Assert.AreEqual(32, lnote.Duration.Denominator);
@@ -178,61 +178,61 @@
 
             var notes = new List<ValueNote> { note, bNote, dNote, aNote };
             var measure = new Measure(notes, attributes2);
-            pd.CalculatePriorityMask(measure);
+            var priorityMask = pd.CalculatePriorityMask(measure);
 
             // так как минимальная длительность ноты в такте 1/16 то маска приоритетов должна разложиться (посчитаться) до 1/32
             // размер 12/8, поэтому будет считаться приоритет для 48/32 нот
-            Assert.AreEqual(0, pd.PriorityMask.NoteList[0].Priority);
-            Assert.AreEqual(4, pd.PriorityMask.NoteList[1].Priority);
-            Assert.AreEqual(3, pd.PriorityMask.NoteList[2].Priority);
-            Assert.AreEqual(4, pd.PriorityMask.NoteList[3].Priority);
-            Assert.AreEqual(2, pd.PriorityMask.NoteList[4].Priority);
-            Assert.AreEqual(4, pd.PriorityMask.NoteList[5].Priority);
-            Assert.AreEqual(3, pd.PriorityMask.NoteList[6].Priority);
-            Assert.AreEqual(4, pd.PriorityMask.NoteList[7].Priority);
-            Assert.AreEqual(1, pd.PriorityMask.NoteList[8].Priority);
-            Assert.AreEqual(4, pd.PriorityMask.NoteList[9].Priority);
-            Assert.AreEqual(3, pd.PriorityMask.NoteList[10].Priority);
-            Assert.AreEqual(4, pd.PriorityMask.NoteList[11].Priority);
-            Assert.AreEqual(2, pd.PriorityMask.NoteList[12].Priority);
-            Assert.AreEqual(4, pd.PriorityMask.NoteList[13].Priority);
-            Assert.AreEqual(3, pd.PriorityMask.NoteList[14].Priority);
-            Assert.AreEqual(4, pd.PriorityMask.NoteList[15].Priority);
-            Assert.AreEqual(1, pd.PriorityMask.NoteList[16].Priority);
-            Assert.AreEqual(4, pd.PriorityMask.NoteList[17].Priority);
-            Assert.AreEqual(3, pd.PriorityMask.NoteList[18].Priority);
-            Assert.AreEqual(4, pd.PriorityMask.NoteList[19].Priority);
-            Assert.AreEqual(2, pd.PriorityMask.NoteList[20].Priority);
-            Assert.AreEqual(4, pd.PriorityMask.NoteList[21].Priority);
-            Assert.AreEqual(3, pd.PriorityMask.NoteList[22].Priority);
-            Assert.AreEqual(4, pd.PriorityMask.NoteList[23].Priority);
-            Assert.AreEqual(1, pd.PriorityMask.NoteList[24].Priority);
-            Assert.AreEqual(4, pd.PriorityMask.NoteList[25].Priority);
-            Assert.AreEqual(3, pd.PriorityMask.NoteList[26].Priority);
-            Assert.AreEqual(4, pd.PriorityMask.NoteList[27].Priority);
-            Assert.AreEqual(2, pd.PriorityMask.NoteList[28].Priority);
-            Assert.AreEqual(4, pd.PriorityMask.NoteList[29].Priority);
-            Assert.AreEqual(3, pd.PriorityMask.NoteList[30].Priority);
-            Assert.AreEqual(4, pd.PriorityMask.NoteList[31].Priority);
-            Assert.AreEqual(1, pd.PriorityMask.NoteList[32].Priority);
-            Assert.AreEqual(4, pd.PriorityMask.NoteList[33].Priority);
-            Assert.AreEqual(3, pd.PriorityMask.NoteList[34].Priority);
-            Assert.AreEqual(4, pd.PriorityMask.NoteList[35].Priority);
-            Assert.AreEqual(2, pd.PriorityMask.NoteList[36].Priority);
-            Assert.AreEqual(4, pd.PriorityMask.NoteList[37].Priority);
-            Assert.AreEqual(3, pd.PriorityMask.NoteList[38].Priority);
-            Assert.AreEqual(4, pd.PriorityMask.NoteList[39].Priority);
-            Assert.AreEqual(1, pd.PriorityMask.NoteList[40].Priority);
-            Assert.AreEqual(4, pd.PriorityMask.NoteList[41].Priority);
-            Assert.AreEqual(3, pd.PriorityMask.NoteList[42].Priority);
-            Assert.AreEqual(4, pd.PriorityMask.NoteList[43].Priority);
-            Assert.AreEqual(2, pd.PriorityMask.NoteList[44].Priority);
-            Assert.AreEqual(4, pd.PriorityMask.NoteList[45].Priority);
-            Assert.AreEqual(3, pd.PriorityMask.NoteList[46].Priority);
-            Assert.AreEqual(4, pd.PriorityMask.NoteList[47].Priority);
+            Assert.AreEqual(0, priorityMask.NoteList[0].Priority);
+            Assert.AreEqual(4, priorityMask.NoteList[1].Priority);
+            Assert.AreEqual(3, priorityMask.NoteList[2].Priority);
+            Assert.AreEqual(4, priorityMask.NoteList[3].Priority);
+            Assert.AreEqual(2, priorityMask.NoteList[4].Priority);
+            Assert.AreEqual(4, priorityMask.NoteList[5].Priority);
+            Assert.AreEqual(3, priorityMask.NoteList[6].Priority);
+            Assert.AreEqual(4, priorityMask.NoteList[7].Priority);
+            Assert.AreEqual(1, priorityMask.NoteList[8].Priority);
+            Assert.AreEqual(4, priorityMask.NoteList[9].Priority);
+            Assert.AreEqual(3, priorityMask.NoteList[10].Priority);
+            Assert.AreEqual(4, priorityMask.NoteList[11].Priority);
+            Assert.AreEqual(2, priorityMask.NoteList[12].Priority);
+            Assert.AreEqual(4, priorityMask.NoteList[13].Priority);
+            Assert.AreEqual(3, priorityMask.NoteList[14].Priority);
+            Assert.AreEqual(4, priorityMask.NoteList[15].Priority);
+            Assert.AreEqual(1, priorityMask.NoteList[16].Priority);
+            Assert.AreEqual(4, priorityMask.NoteList[17].Priority);
+            Assert.AreEqual(3, priorityMask.NoteList[18].Priority);
+            Assert.AreEqual(4, priorityMask.NoteList[19].Priority);
+            Assert.AreEqual(2, priorityMask.NoteList[20].Priority);
+            Assert.AreEqual(4, priorityMask.NoteList[21].Priority);
+            Assert.AreEqual(3, priorityMask.NoteList[22].Priority);
+            Assert.AreEqual(4, priorityMask.NoteList[23].Priority);
+            Assert.AreEqual(1, priorityMask.NoteList[24].Priority);
+            Assert.AreEqual(4, priorityMask.NoteList[25].Priority);
+            Assert.AreEqual(3, priorityMask.NoteList[26].Priority);
+            Assert.AreEqual(4, priorityMask.NoteList[27].Priority);
+            Assert.AreEqual(2, priorityMask.NoteList[28].Priority);
+            Assert.AreEqual(4, priorityMask.NoteList[29].Priority);
+            Assert.AreEqual(3, priorityMask.NoteList[30].Priority);
+            Assert.AreEqual(4, priorityMask.NoteList[31].Priority);
+            Assert.AreEqual(1, priorityMask.NoteList[32].Priority);
+            Assert.AreEqual(4, priorityMask.NoteList[33].Priority);
+            Assert.AreEqual(3, priorityMask.NoteList[34].Priority);
+            Assert.AreEqual(4, priorityMask.NoteList[35].Priority);
+            Assert.AreEqual(2, priorityMask.NoteList[36].Priority);
+            Assert.AreEqual(4, priorityMask.NoteList[37].Priority);
+            Assert.AreEqual(3, priorityMask.NoteList[38].Priority);
+            Assert.AreEqual(4, priorityMask.NoteList[39].Priority);
+            Assert.AreEqual(1, priorityMask.NoteList[40].Priority);
+            Assert.AreEqual(4, priorityMask.NoteList[41].Priority);
+            Assert.AreEqual(3, priorityMask.NoteList[42].Priority);
+            Assert.AreEqual(4, priorityMask.NoteList[43].Priority);
+            Assert.AreEqual(2, priorityMask.NoteList[44].Priority);
+            Assert.AreEqual(4, priorityMask.NoteList[45].Priority);
+            Assert.AreEqual(3, priorityMask.NoteList[46].Priority);
+            Assert.AreEqual(4, priorityMask.NoteList[47].Priority);
 
             // проверка длительностей
-            foreach (var lnote in pd.PriorityMask.NoteList)
+            foreach (var lnote in priorityMask.NoteList)
             {
                 Assert.AreEqual(1, lnote.Duration.Numerator);
                 Assert.AreEqual(32, lnote.Duration.Denominator);
@@ -249,39 +249,39 @@
 
             var notes = new List<ValueNote> { note, bNote, dNote, aNote };
             var measure = new Measure(notes, attributes3);
-            pd.CalculatePriorityMask(measure);
+            var priorityMask = pd.CalculatePriorityMask(measure);
 
             // так как минимальная длительность ноты в такте 1/16 то маска приоритетов должна разложиться (посчитаться) до 1/32
             // размер 13/16, поэтому будет считаться приоритет для 26/32 нот
-            Assert.AreEqual(0, pd.PriorityMask.NoteList[0].Priority);
-            Assert.AreEqual(3, pd.PriorityMask.NoteList[1].Priority);
-            Assert.AreEqual(2, pd.PriorityMask.NoteList[2].Priority);
-            Assert.AreEqual(3, pd.PriorityMask.NoteList[3].Priority);
-            Assert.AreEqual(1, pd.PriorityMask.NoteList[4].Priority);
-            Assert.AreEqual(3, pd.PriorityMask.NoteList[5].Priority);
-            Assert.AreEqual(2, pd.PriorityMask.NoteList[6].Priority);
-            Assert.AreEqual(3, pd.PriorityMask.NoteList[7].Priority);
-            Assert.AreEqual(1, pd.PriorityMask.NoteList[8].Priority);
-            Assert.AreEqual(3, pd.PriorityMask.NoteList[9].Priority);
-            Assert.AreEqual(2, pd.PriorityMask.NoteList[10].Priority);
-            Assert.AreEqual(3, pd.PriorityMask.NoteList[11].Priority);
-            Assert.AreEqual(1, pd.PriorityMask.NoteList[12].Priority);
-            Assert.AreEqual(3, pd.PriorityMask.NoteList[13].Priority);
-            Assert.AreEqual(2, pd.PriorityMask.NoteList[14].Priority);
-            Assert.AreEqual(3, pd.PriorityMask.NoteList[15].Priority);
-            Assert.AreEqual(1, pd.PriorityMask.NoteList[16].Priority);
-            Assert.AreEqual(3, pd.PriorityMask.NoteList[17].Priority);
-            Assert.AreEqual(2, pd.PriorityMask.NoteList[18].Priority);
-            Assert.AreEqual(3, pd.PriorityMask.NoteList[19].Priority);
-            Assert.AreEqual(1, pd.PriorityMask.NoteList[20].Priority);
-            Assert.AreEqual(3, pd.PriorityMask.NoteList[21].Priority);
-            Assert.AreEqual(2, pd.PriorityMask.NoteList[22].Priority);
-            Assert.AreEqual(3, pd.PriorityMask.NoteList[23].Priority);
-            Assert.AreEqual(2, pd.PriorityMask.NoteList[24].Priority);
-            Assert.AreEqual(3, pd.PriorityMask.NoteList[25].Priority);
+            Assert.AreEqual(0, priorityMask.NoteList[0].Priority);
+            Assert.AreEqual(3, priorityMask.NoteList[1].Priority);
+            Assert.AreEqual(2, priorityMask.NoteList[2].Priority);
+            Assert.AreEqual(3, priorityMask.NoteList[3].Priority);
+            Assert.AreEqual(1, priorityMask.NoteList[4].Priority);
+            Assert.AreEqual(3, priorityMask.NoteList[5].Priority);
+            Assert.AreEqual(2, priorityMask.NoteList[6].Priority);
+            Assert.AreEqual(3, priorityMask.NoteList[7].Priority);
+            Assert.AreEqual(1, priorityMask.NoteList[8].Priority);
+            Assert.AreEqual(3, priorityMask.NoteList[9].Priority);
+            Assert.AreEqual(2, priorityMask.NoteList[10].Priority);
+            Assert.AreEqual(3, priorityMask.NoteList[11].Priority);
+            Assert.AreEqual(1, priorityMask.NoteList[12].Priority);
+            Assert.AreEqual(3, priorityMask.NoteList[13].Priority);
+            Assert.AreEqual(2, priorityMask.NoteList[14].Priority);
+            Assert.AreEqual(3, priorityMask.NoteList[15].Priority);
+            Assert.AreEqual(1, priorityMask.NoteList[16].Priority);
+            Assert.AreEqual(3, priorityMask.NoteList[17].Priority);
+            Assert.AreEqual(2, priorityMask.NoteList[18].Priority);
+            Assert.AreEqual(3, priorityMask.NoteList[19].Priority);
+            Assert.AreEqual(1, priorityMask.NoteList[20].Priority);
+            Assert.AreEqual(3, priorityMask.NoteList[21].Priority);
+            Assert.AreEqual(2, priorityMask.NoteList[22].Priority);
+            Assert.AreEqual(3, priorityMask.NoteList[23].Priority);
+            Assert.AreEqual(2, priorityMask.NoteList[24].Priority);
+            Assert.AreEqual(3, priorityMask.NoteList[25].Priority);
 
             // проверка длительностей
-            foreach (var lnote in pd.PriorityMask.NoteList)
+            foreach (var lnote in priorityMask.NoteList)
             {
                 Assert.AreEqual(1, lnote.Duration.Numerator);
                 Assert.AreEqual(32, lnote.Duration.Denominator);
@@ -298,19 +298,19 @@
 
             var notes = new List<ValueNote> { note, aNote };
             var measure = new Measure(notes, attributes1);
-            pd.CalculatePriorityMask(measure);
+            var priorityMask = pd.CalculatePriorityMask(measure);
 
             // так как минимальная длительность ноты в такте 1/4 то маска приоритетов должна разложиться (посчитаться) до 1/4
             // размер 3/4, поэтому будет считаться приоритет для 3/4 нот
-            Assert.AreEqual(0, pd.PriorityMask.NoteList[0].Priority);
-            Assert.AreEqual(2, pd.PriorityMask.NoteList[1].Priority);
-            Assert.AreEqual(1, pd.PriorityMask.NoteList[2].Priority);
-            Assert.AreEqual(2, pd.PriorityMask.NoteList[3].Priority);
-            Assert.AreEqual(1, pd.PriorityMask.NoteList[4].Priority);
-            Assert.AreEqual(2, pd.PriorityMask.NoteList[5].Priority);
+            Assert.AreEqual(0, priorityMask.NoteList[0].Priority);
+            Assert.AreEqual(2, priorityMask.NoteList[1].Priority);
+            Assert.AreEqual(1, priorityMask.NoteList[2].Priority);
+            Assert.AreEqual(2, priorityMask.NoteList[3].Priority);
+            Assert.AreEqual(1, priorityMask.NoteList[4].Priority);
+            Assert.AreEqual(2, priorityMask.NoteList[5].Priority);
 
             // проверка длительностей
-            foreach (var lnote in pd.PriorityMask.NoteList)
+            foreach (var lnote in priorityMask.NoteList)
             {
                 Assert.AreEqual(1, lnote.Duration.Numerator);
                 Assert.AreEqual(8, lnote.Duration.Denominator);
