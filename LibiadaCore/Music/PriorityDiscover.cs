@@ -414,25 +414,29 @@
                 }
             }
 
+            double minDuration = MinDuration(measure);
+
+            SplitPriorityMask(minDuration);
+        }
+
+        /// <summary>
+        /// The split priority mask.
+        /// </summary>
+        /// <param name="minDuration">
+        /// The minimal note duration in measure.
+        /// </param>
+        private void SplitPriorityMask(double minDuration)
+        {
             //---------------------------Разложение долей такта на более низкий уровень, ---------------------------
             //---------------------------пока не будут известны приоритеты для нот с минимальной длительностью------
             //------------------------------------------------------------------------------------------------------
+            
 
             // флаг останова, когда просчитаются приоритеты для всех нот,
             // длительность которых окажется меньше либо равна минимальной, деленной на 2 (так как может быть точка у ноты, которую возможно описать только 3 нотами короче в два раза чем сама нота),
             // если они уже просчитаны для всех нот, то процесс заканчивается
-            bool stop = true;
-            double minDuration = MinDuration(measure);
             // проверка: останов будет тогда, когда длительности ВСЕХ нот в маске будут меньше либо равны длительности минимальной ноты
-            foreach (ValueNote note in PriorityMask.NoteList)
-            {
-                if (note.Duration.Value > minDuration / 2)
-                {
-                    stop = false;
-                }
-            }
-
-            while (!stop)
+            while (!NeedToStopSplitting(minDuration))
             {
                 var temp = new Measure(new List<ValueNote>(), (MeasureAttributes)PriorityMask.Attributes.Clone());
 
@@ -463,19 +467,31 @@
                 // присваем объекту маске новый получившейся объект уровня ниже
                 PriorityMask = (Measure)temp.Clone();
 
-                // высталение флага останова
-                stop = true;
-
                 // проверка: останов будет тогда, когда длительности ВСЕХ нот в маске будут меньше либо равны длительности минимальной ноты
                 // деленной на два (смотри выше из-за точки)
-                foreach (ValueNote note in PriorityMask.NoteList)
+            }
+        }
+
+        /// <summary>
+        /// Determines if priority mask needs further splitting.
+        /// </summary>
+        /// <param name="minDuration">
+        /// The min duration.
+        /// </param>
+        /// <returns>
+        /// The <see cref="bool"/>.
+        /// </returns>
+        private bool NeedToStopSplitting(double minDuration)
+        {
+            foreach (ValueNote note in PriorityMask.NoteList)
+            {
+                if (note.Duration.Value > minDuration / 2)
                 {
-                    if (note.Duration.Value > MinDuration(measure) / 2)
-                    {
-                        stop = false;
-                    }
+                    return false;
                 }
             }
+
+            return true;
         }
     }
 }
