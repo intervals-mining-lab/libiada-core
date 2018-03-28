@@ -79,7 +79,7 @@ namespace LibiadaCore.Core
             Elements.Add(element.Clone());
             ElementsIndexes.Add(Elements.Last(), Elements.Count - 1);
 
-            return Elements.IndexOf(element);
+            return ElementsIndexes[element];
         }
 
         /// <summary>
