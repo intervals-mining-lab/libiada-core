@@ -12,12 +12,6 @@
     public class PriorityDiscover
     {
         /// <summary>
-        /// Gets priority mask.
-        
-        /// </summary>
-        //public Measure PriorityMask { get; private set; }
-
-        /// <summary>
         /// The calculate.
         /// метод для подсчета приоритетов нот во всем Scoretrack
         /// </summary>
@@ -69,7 +63,7 @@
             var priorityMask = CalculatePriorityMask(measure);
 
             // соотнесение маски приоритетов и реального такта
-            double bufDuration = 0;
+            double durationBuffer = 0;
 
             // буфер длительности
             var noteBuf = new List<ValueNote>();
@@ -85,32 +79,14 @@
             {
                 if (note.Triplet)
                 {
+                    // TODO: проверять случай когда у нас в триоли ноты разной длительности
                     // если идет две триоли подряд, то как только первая сменяет вторую - меняется размер длительности у след. ноты
                     // и как только это произошло, нужно сначала проанализировать первую триоль и потом начать заполнять вторую
                     if ((note.Duration.Value != tripletDuration) && (noteBuf.Count > 0))
                     {
-                        while (bufDuration > 0.0000001)
-                        {
-                            // собираем буфер маски приоритетов для триоли,
-                            // собираем пока суммарная длительность нот маски не превышает длительность реальных нот триоли
-                            maskBuf.Add((ValueNote)priorityMask.NoteList[0].Clone());
-                            bufDuration = bufDuration - priorityMask.NoteList[0].Duration.Value;
-                            priorityMask.NoteList.RemoveAt(0);
-                        }
+                        FillTripletNotesPriority(durationBuffer, maskBuf, priorityMask, noteBuf, temp);
 
-                        // передача методу CountTriplet notebuf + maskbuf и расстановка приоритетов + передача обратно
-                        // занесение в выходной буфер результата определения приоритета нот триоли
-                        foreach (ValueNote tnote in CountTripletPriority(noteBuf, maskBuf))
-                        {
-                            temp.NoteList.Add((ValueNote)tnote.Clone());
-                        }
-
-                        // Temp.Notelist.AddRange(CountTripletPriority(noteBuf,maskBuf));
-
-                        // зануление буферов
-                        noteBuf.Clear();
-                        maskBuf.Clear();
-                        bufDuration = 0;
+                        durationBuffer = 0;
                     }
 
                     // последовательность реальных нот триоли (триплета) заносится в буфер для дальнейшей обработки
@@ -119,48 +95,25 @@
                     tripletDuration = note.Duration.Value;
 
                     // сохраняем размерность триоли/ новой триоли (если две подряд)
-                    bufDuration = bufDuration + note.Duration.Value;
+                    durationBuffer += note.Duration.Value;
                 }
                 else
                 {
                     // если следущая нота не триоль, то проверка, собиралась ли она шагом ранее, если да то вызов метода CollectTriplet,
                     if (noteBuf.Count > 0)
                     {
-                        while (bufDuration > 0.0000001)
-                        {
-                            // собираем буфер маски приоритетов для триоли,
-                            // собираем пока суммарная длительность нот маски не превышает длительность реальных нот триоли
-                            maskBuf.Add((ValueNote)priorityMask.NoteList[0].Clone());
-                            bufDuration = bufDuration - priorityMask.NoteList[0].Duration.Value;
-                            priorityMask.NoteList.RemoveAt(0);
-                        }
-
-                        // передача методу CountTriplet notebuf + maskbuf и расстановка приоритетов + передача обратно
-                        // занесение в выходной буфер результата определения приоритета нот триоли
-                        foreach (ValueNote tnote in CountTripletPriority(noteBuf, maskBuf))
-                        {
-                            temp.NoteList.Add((ValueNote)tnote.Clone());
-                        }
-
-                        // Temp.Notelist.AddRange(CountTripletPriority(noteBuf,maskBuf));
-
-                        // зануление буферов
-                        noteBuf.Clear();
-                        maskBuf.Clear();
+                        FillTripletNotesPriority(durationBuffer, maskBuf, priorityMask, noteBuf, temp);
                     }
 
                     // так как следущая нота не триплет, то определяем ее приоритет по следущему алгоритму
                     // присвоение приоритета при нахожении начала позиции следущей ноты в маске приоритетов
                     note.Priority = priorityMask.NoteList[0].Priority;
 
-                    // занесение в буфер длительности следующей ноты маски приоритетов
-                    bufDuration = priorityMask.NoteList[0].Duration.Value;
-
-                    // удаление этой ноты из общей маски приоритетов
-                    priorityMask.NoteList.RemoveAt(0);
+                    // Обнуляем буфер длительности
+                    durationBuffer = 0;
 
                     // цикл, если набралось в буфер нот общей длительностью равной реальной ноте, то переходим к следующей реальной ноте
-                    while ((note.Duration.Value - bufDuration) > 0.0000001)
+                    while ((note.Duration.Value - durationBuffer) > 0.0000001)
                     {
                         if (priorityMask.NoteList.Count < 1)
                         {
@@ -168,38 +121,20 @@
                         }
 
                         // набор длительностей нот маски, и их удаление из очереди
-                        bufDuration = bufDuration + priorityMask.NoteList[0].Duration.Value;
+                        durationBuffer += priorityMask.NoteList[0].Duration.Value;
                         priorityMask.NoteList.RemoveAt(0);
                     }
 
                     // переход к следующей реальной ноте
                     temp.NoteList.Add((ValueNote)note.Clone());
-                    bufDuration = bufDuration - note.Duration.Value;
+                    durationBuffer -= note.Duration.Value;
                 }
             }
 
             // проверка буфера триоли, на случай когда триоль стоит в конце, чтобы не было потери нот
             if (noteBuf.Count > 0)
             {
-                while (bufDuration > 0.0000001)
-                {
-                    // собираем буфер маски приоритетов для триоли,
-                    // собираем пока суммарная длительность нот маски не превышает длительность реальных нот триоли
-                    maskBuf.Add((ValueNote)priorityMask.NoteList[0].Clone());
-                    bufDuration = bufDuration - priorityMask.NoteList[0].Duration.Value;
-                    priorityMask.NoteList.RemoveAt(0);
-                }
-
-                // передача методу CountTriplet notebuf + maskbuf и расстановка приоритетов + передача обратно
-                // занесение в выходной буфер результата определения приоритета нот триоли
-                foreach (ValueNote tnote in CountTripletPriority(noteBuf, maskBuf))
-                {
-                    temp.NoteList.Add((ValueNote)tnote.Clone());
-                }
-
-                // зануление буферов
-                noteBuf.Clear();
-                maskBuf.Clear();
+                FillTripletNotesPriority(durationBuffer, maskBuf, priorityMask, noteBuf, temp);
             }
 
             // присваиваем полю приоритет входного объекта, вычисленный приоритет в Temp соответственно
@@ -216,60 +151,121 @@
         }
 
         /// <summary>
+        /// Fills triplet notes priority.
+        /// </summary>
+        /// <param name="durationBuffer">
+        /// The duration buffer.
+        /// </param>
+        /// <param name="maskBuffer">
+        /// The mask buffer.
+        /// </param>
+        /// <param name="priorityMask">
+        /// The priority mask.
+        /// </param>
+        /// <param name="noteBuffer">
+        /// The note buffer.
+        /// </param>
+        /// <param name="tempMeasure">
+        /// The temp measure.
+        /// </param>
+        private void FillTripletNotesPriority(double durationBuffer, List<ValueNote> maskBuffer, Measure priorityMask, List<ValueNote> noteBuffer, Measure tempMeasure)
+        {
+            AlignPriorityMaskForNextNote(durationBuffer, maskBuffer, priorityMask);
+
+            List<ValueNote> tripletPriority = CountTripletPriority(noteBuffer, maskBuffer);
+
+            // передача методу CountTriplet notebuf + maskbuf и расстановка приоритетов + передача обратно
+            // занесение в выходной буфер результата определения приоритета нот триоли
+            foreach (ValueNote tripletNote in tripletPriority)
+            {
+                tempMeasure.NoteList.Add((ValueNote)tripletNote.Clone());
+            }
+
+            // Temp.Notelist.AddRange(CountTripletPriority(noteBuf,maskBuf));
+
+            // зануление буферов
+            noteBuffer.Clear();
+            maskBuffer.Clear();
+        }
+
+        /// <summary>
+        /// Aligns priority mask for next note.
+        /// </summary>
+        /// <param name="durationBuffer">
+        /// The duration buffer.
+        /// </param>
+        /// <param name="maskBuffer">
+        /// The mask buffer.
+        /// </param>
+        /// <param name="priorityMask">
+        /// The priority mask.
+        /// </param>
+        private void AlignPriorityMaskForNextNote(double durationBuffer, List<ValueNote> maskBuffer, Measure priorityMask)
+        {
+            while (durationBuffer > 0.0000001)
+            {
+                // собираем буфер маски приоритетов для триоли,
+                // собираем пока суммарная длительность нот маски не превышает длительность реальных нот триоли
+                maskBuffer.Add((ValueNote)priorityMask.NoteList[0].Clone());
+                durationBuffer -= priorityMask.NoteList[0].Duration.Value;
+                priorityMask.NoteList.RemoveAt(0);
+            }
+        }
+
+        /// <summary>
         /// The count triplet priority.
         /// </summary>
-        /// <param name="noteBuf">
+        /// <param name="noteBuffer">
         /// The note buf.
         /// </param>
-        /// <param name="maskBuf">
+        /// <param name="maskBuffer">
         /// The mask buffer.
         /// </param>
         /// <returns>
         /// The <see cref="List{ValueNote}"/>.
         /// </returns>
-        public List<ValueNote> CountTripletPriority(List<ValueNote> noteBuf, List<ValueNote> maskBuf)
+        private List<ValueNote> CountTripletPriority(List<ValueNote> noteBuffer, List<ValueNote> maskBuffer)
         {
             // TODO: расчет приоритетов для триоли с числом нот больше 3 выполняется по четко не определенному правилу, сделать как должно быть
             var temp = new List<ValueNote>();
-            int count = noteBuf.Count;
 
             // записываем в отдельный счетчик т.к. значение noteBuf.Count меняется во время цикла
-            for (int i = 0; i < count; i++)
+            while (noteBuffer.Count > 0)
             {
-                if (maskBuf.Count < 1)
+                if (maskBuffer.Count == 0)
                 {
                     // если для разбираемой очереди нот-триолей, в очереди нот маски приоритетов не осталось нот,
                     // то следущей ноте-триоли присваивается приоритеты предыдущей ноты-триоли
-                    noteBuf[0].Priority = temp[temp.Count - 1].Priority;
-                    temp.Add((ValueNote)noteBuf[0].Clone());
-                    noteBuf.RemoveAt(0);
+                    noteBuffer[0].Priority = temp[temp.Count - 1].Priority;
+                    temp.Add((ValueNote)noteBuffer[0].Clone());
+                    noteBuffer.RemoveAt(0);
                 }
                 else
                 {
-                    noteBuf[0].Priority = maskBuf[0].Priority;
-
                     // отнимаем из маски приоритетов нот на сумму равную номинальному (не реальному) значению длительности триольной ноты
-                    double bufduration = noteBuf[0].Duration.OriginalValue;
+                    double durationBuffer = noteBuffer[0].Duration.OriginalValue;
+
+                    noteBuffer[0].Priority = maskBuffer[0].Priority;
 
                     // добавляем ноту триоль в выходной буфер
-                    temp.Add((ValueNote)noteBuf[0].Clone());
+                    temp.Add((ValueNote)noteBuffer[0].Clone());
 
                     // удаляем ноту-триоль из разбираемой очереди
-                    noteBuf.RemoveAt(0);
-                    while (bufduration > 0.0000001)
+                    noteBuffer.RemoveAt(0);
+                    while (durationBuffer > 0.0000001)
                     {
                         // по одной удаляем из маски приоритетов ноты, сумма длительностей которых равна номинальной длительности текущей разбираемой ноты
-                        if (maskBuf.Count < 1)
+                        if (maskBuffer.Count < 1)
                         {
                             // если ноты в маске закончились то выходим из цикла
                             break;
                         }
 
                         // отнимаем из значения длительности ноты-триоли длительность очередной ноты маски
-                        bufduration = bufduration - maskBuf[0].Duration.Value;
+                        durationBuffer -= maskBuffer[0].Duration.Value;
 
                         // удаляем ноту маски из очереди (маски приоритетов)
-                        maskBuf.RemoveAt(0);
+                        maskBuffer.RemoveAt(0);
                     }
                 }
             }
