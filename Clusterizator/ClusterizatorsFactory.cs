@@ -1,11 +1,11 @@
-﻿using Clusterizator.kMeans;
-using Clusterizator.MeanShift;
-
-namespace Clusterizator
+﻿namespace Clusterizator
 {
     using System.Collections.Generic;
     using System.ComponentModel;
+
+    using Clusterizator.kMeans;
     using Clusterizator.Krab;
+    using Clusterizator.MeanShift;
 
     /// <summary>
     /// The clusterizators factory.
@@ -25,7 +25,7 @@ namespace Clusterizator
         /// The <see cref="IClusterizator"/>.
         /// </returns>
         /// <exception cref="InvalidEnumArgumentException">
-        /// Thrown if culsterizator type is invalid
+        /// Thrown if culsterizator type is invalid.
         /// </exception>
         public static IClusterizator CreateClusterizator(ClusterizationType type, Dictionary<string, double> parameters)
         {
@@ -58,8 +58,8 @@ namespace Clusterizator
 
                     return new MeanShiftClusterization(bandwidth);
                 case ClusterizationType.FRiSCluster:
-                    int minimumClusters = (int)parameters["clustersCount"];
-                    int maximumClusters = (int)parameters["maximumClusters"];
+                    var minimumClusters = (int)parameters["clustersCount"];
+                    var maximumClusters = (int)parameters["maximumClusters"];
                     return new FRiSCluster.FRiSCluster(minimumClusters, maximumClusters);
 
                 default:
