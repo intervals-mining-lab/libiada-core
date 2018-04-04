@@ -5,7 +5,7 @@ namespace LibiadaCore.Core
     using System.ComponentModel;
     using System.Linq;
 
-    using IntervalsManagers;
+    using ArrangementManagers;
     using SimpleTypes;
 
     /// <summary>
@@ -227,7 +227,7 @@ namespace LibiadaCore.Core
                 CreateIntervalsManager();
             }
 
-            return intervalsManager.GetIntervals(link);
+            return intervalsManager.GetArrangement(link);
         }
 
         /// <summary>
@@ -246,7 +246,7 @@ namespace LibiadaCore.Core
                 CreateSeriesManager();
             }
 
-            return seriesManager.GetIntervals(link);
+            return seriesManager.GetArrangement(link);
         }
 
         /// <summary>
@@ -265,7 +265,7 @@ namespace LibiadaCore.Core
                 CreateSeriesIntervalsManager();
             }
 
-            return seriesIntervalsManager.GetIntervals(link);
+            return seriesIntervalsManager.GetArrangement(link);
         }
 
 
@@ -521,7 +521,7 @@ namespace LibiadaCore.Core
             if (intervalsManager == null)
             {
                 intervalsManager = positions.Count == 0
-                                       ? (IArrangementManager)new NullIntervalsManager()
+                                       ? (IArrangementManager)new NullArrangementManager()
                                        : new IntervalsManager();
                 intervalsManager.Initialize(this);
             }
@@ -535,7 +535,7 @@ namespace LibiadaCore.Core
             if (seriesManager == null)
             {
                 seriesManager = positions.Count == 0
-                                       ? (IArrangementManager)new NullIntervalsManager()
+                                       ? (IArrangementManager)new NullArrangementManager()
                                        : new SeriesManager();
                 seriesManager.Initialize(this);
             }
@@ -549,7 +549,7 @@ namespace LibiadaCore.Core
             if (seriesIntervalsManager == null)
             {
                 seriesIntervalsManager = positions.Count == 0
-                                       ? (IArrangementManager)new NullIntervalsManager()
+                                       ? (IArrangementManager)new NullArrangementManager()
                                        : new SeriesIntervalsManager();
                 seriesIntervalsManager.Initialize(this);
             }

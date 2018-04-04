@@ -1,4 +1,4 @@
-﻿namespace LibiadaCore.Core.IntervalsManagers
+﻿namespace LibiadaCore.Core.ArrangementManagers
 {
     /// <summary>
     /// The intervals manager.
@@ -14,7 +14,7 @@
         /// <returns>
         /// The <see cref="T:int[]"/>.
         /// </returns>
-        int[] GetIntervals(Link link);
+        int[] GetArrangement(Link link);
 
         /// <summary>
         /// Initializes arrangement manager.

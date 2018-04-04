@@ -3,8 +3,8 @@
     using System.Collections.Generic;
 
     using LibiadaCore.Core;
+    using LibiadaCore.Core.ArrangementManagers;
     using LibiadaCore.Core.Characteristics.Calculators.FullCalculators;
-    using LibiadaCore.Core.IntervalsManagers;
 
     using NUnit.Framework;
 

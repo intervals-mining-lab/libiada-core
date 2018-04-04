@@ -3,7 +3,7 @@ namespace LibiadaCore.Core.Characteristics.Calculators.BinaryCalculators
     using System;
     using System.Linq;
 
-    using LibiadaCore.Core.IntervalsManagers;
+    using LibiadaCore.Core.ArrangementManagers;
 
     /// <summary>
     /// Average geometric value of interval length.

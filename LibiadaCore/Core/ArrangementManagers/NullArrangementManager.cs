@@ -1,9 +1,9 @@
-﻿namespace LibiadaCore.Core.IntervalsManagers
+﻿namespace LibiadaCore.Core.ArrangementManagers
 {
     /// <summary>
-    /// Congeneric intervals manager implementation for empty sequences.
+    /// Congeneric arrangement manager implementation for empty sequences.
     /// </summary>
-    public class NullIntervalsManager : IArrangementManager
+    public class NullArrangementManager : IArrangementManager
     {
         /// <summary>
         /// Returns empty array.
@@ -14,7 +14,7 @@
         /// <returns>
         /// Returns empty array of <see cref="T:int[]"/>.
         /// </returns>
-        public int[] GetIntervals(Link link)
+        public int[] GetArrangement(Link link)
         {
             return new int[0];
         }

@@ -1,4 +1,4 @@
-﻿namespace LibiadaCore.Tests.Core.IntervalsManagers
+﻿namespace LibiadaCore.Tests.Core.ArrangementManagers
 {
     using System.Collections.Generic;
 

@@ -1,4 +1,4 @@
-﻿namespace LibiadaCore.Core.IntervalsManagers
+﻿namespace LibiadaCore.Core.ArrangementManagers
 {
     using System;
     using System.ComponentModel;
@@ -42,7 +42,7 @@
             Start = start;
             End = end;
         }
-
+        
         /// <summary>
         /// The initialize.
         /// </summary>
@@ -76,7 +76,7 @@
         /// <returns>
         /// List of intervals.
         /// </returns>
-        public int[] GetIntervals(Link link)
+        public int[] GetArrangement(Link link)
         {
             int[] result;
             switch (link)

@@ -1,9 +1,9 @@
-﻿namespace LibiadaCore.Tests.Core.IntervalsManagers
+﻿namespace LibiadaCore.Tests.Core.ArrangementManagers
 {
     using System.Collections.Generic;
 
     using LibiadaCore.Core;
-    using LibiadaCore.Core.IntervalsManagers;
+    using LibiadaCore.Core.ArrangementManagers;
 
     using NUnit.Framework;
 
@@ -73,11 +73,11 @@
             intervalsManager.Initialize(congenericChains[index]);
             var intervals = allIntervals[index][link];
 
-            Assert.AreEqual(intervalsManager.GetIntervals(link).Length, intervals.Count);
+            Assert.AreEqual(intervalsManager.GetArrangement(link).Length, intervals.Count);
 
             for (int i = 0; i < intervals.Count; i++)
             {
-                Assert.AreEqual(intervals[i], intervalsManager.GetIntervals(link)[i]);
+                Assert.AreEqual(intervals[i], intervalsManager.GetArrangement(link)[i]);
             }
         }
     }

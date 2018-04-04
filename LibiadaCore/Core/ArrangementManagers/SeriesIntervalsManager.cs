@@ -1,10 +1,10 @@
-﻿using System;
-
-namespace LibiadaCore.Core.IntervalsManagers
+﻿namespace LibiadaCore.Core.ArrangementManagers
 {
+    using System;
+
     public class SeriesIntervalsManager : IArrangementManager
     {
-        public int[] GetIntervals(Link link)
+        public int[] GetArrangement(Link link)
         {
             throw new NotImplementedException();
         }

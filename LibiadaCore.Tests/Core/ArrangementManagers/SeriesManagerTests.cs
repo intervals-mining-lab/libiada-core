@@ -1,9 +1,9 @@
-﻿namespace LibiadaCore.Tests.Core.IntervalsManagers
+﻿namespace LibiadaCore.Tests.Core.ArrangementManagers
 {
     using System.Collections.Generic;
 
     using LibiadaCore.Core;
-    using LibiadaCore.Core.IntervalsManagers;
+    using LibiadaCore.Core.ArrangementManagers;
 
     using NUnit.Framework;
 
@@ -19,7 +19,7 @@
         private readonly List<CongenericChain> congenericChains = ChainsStorage.CongenericChains;
 
         /// <summary>
-        /// The simple series manager test 01.
+        /// The simple series manager tests.
         /// </summary>
         /// <param name="index">
         /// The index of congeneric sequence.
@@ -45,11 +45,11 @@
         [TestCase(15, new[] { 1, 1, 1, 1 })]
         [TestCase(16, new[] { 1, 1, 1, 1 })]
         [TestCase(17, new[] { 1, 1, 1, 1 })]
-        public void SimpleSeriesManagerTest01(int index, int[] expected)
+        public void SimpleSeriesManagerTests(int index, int[] expected)
         {
             SeriesManager manager = new SeriesManager();
             manager.Initialize(congenericChains[index]);
-            var actual = manager.GetIntervals(Link.NotApplied);
+            var actual = manager.GetArrangement(Link.NotApplied);
             Assert.AreEqual(expected, actual);
         }
     }

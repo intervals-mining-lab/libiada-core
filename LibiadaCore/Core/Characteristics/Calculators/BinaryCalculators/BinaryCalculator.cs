@@ -2,7 +2,7 @@
 {
     using System.Collections.Generic;
 
-    using LibiadaCore.Core.IntervalsManagers;
+    using LibiadaCore.Core.ArrangementManagers;
 
     /// <summary>
     /// Abstract class common for all binary calculators.

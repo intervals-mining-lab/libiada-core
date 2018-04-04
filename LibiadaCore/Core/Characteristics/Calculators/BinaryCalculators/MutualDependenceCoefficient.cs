@@ -2,7 +2,7 @@
 {
     using System;
 
-    using LibiadaCore.Core.IntervalsManagers;
+    using LibiadaCore.Core.ArrangementManagers;
 
     /// <summary>
     /// Mutual dependence coefficient of binary chain.

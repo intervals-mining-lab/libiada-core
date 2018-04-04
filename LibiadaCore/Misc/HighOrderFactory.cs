@@ -3,7 +3,7 @@
     using System;
 
     using LibiadaCore.Core;
-    using LibiadaCore.Core.IntervalsManagers;
+    using LibiadaCore.Core.ArrangementManagers;
     using LibiadaCore.Core.SimpleTypes;
 
     /// <summary>
@@ -43,7 +43,7 @@
             {
                 var intervalsManager = new IntervalsManager();
                 intervalsManager.Initialize(source.CongenericChain(j));
-                intervals[j] = intervalsManager.GetIntervals(link);
+                intervals[j] = intervalsManager.GetArrangement(link);
             }
 
             for (int i = 0; i < source.GetLength(); i++)

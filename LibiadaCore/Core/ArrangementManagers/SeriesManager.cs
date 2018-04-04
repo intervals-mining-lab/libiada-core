@@ -1,4 +1,4 @@
-﻿namespace LibiadaCore.Core.IntervalsManagers
+﻿namespace LibiadaCore.Core.ArrangementManagers
 {
     using System;
     using System.Collections.Generic;
@@ -39,15 +39,15 @@
         }
 
         /// <summary>
-        /// The get intervals.
+        /// Gets series from congeneric sequence.
         /// </summary>
         /// <param name="link">
         /// The link.
         /// </param>
         /// <returns>
-        /// The <see cref="int[]"/>.
+        /// The <see cref="T:int[]"/>.
         /// </returns>
-        public int[] GetIntervals(Link link)
+        public int[] GetArrangement(Link link)
         {
             if (series == null)
             {
@@ -58,7 +58,7 @@
         }
 
         /// <summary>
-        /// The get series.
+        /// Gets series from given occurrence.
         /// </summary>
         /// <param name="chain">
         /// The chain.

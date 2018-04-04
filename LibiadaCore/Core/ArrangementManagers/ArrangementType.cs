@@ -1,4 +1,4 @@
-﻿namespace LibiadaCore.Core.IntervalsManagers
+﻿namespace LibiadaCore.Core.ArrangementManagers
 {
     /// <summary>
     /// The arrangement type.

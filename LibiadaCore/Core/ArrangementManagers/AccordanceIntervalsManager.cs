@@ -1,4 +1,4 @@
-﻿namespace LibiadaCore.Core.IntervalsManagers
+﻿namespace LibiadaCore.Core.ArrangementManagers
 {
     using System;
     using System.Collections.Generic;
