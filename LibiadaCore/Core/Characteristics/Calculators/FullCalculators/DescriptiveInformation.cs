@@ -15,7 +15,7 @@ namespace LibiadaCore.Core.Characteristics.Calculators.FullCalculators
         /// Link of intervals in chain.
         /// </param>
         /// <returns>
-        /// Descriptive informations count as <see cref="double"/>.
+        /// Count of descriptive informations as <see cref="double"/>.
         /// </returns>
         public double Calculate(Chain chain, Link link)
         {

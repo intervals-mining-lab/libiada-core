@@ -17,7 +17,7 @@ namespace LibiadaCore.Core.Characteristics.Calculators.CongenericCalculators
         /// Link of intervals in chain.
         /// </param>
         /// <returns>
-        /// Descriptive informations count as <see cref="double"/>.
+        /// Count of descriptive informations as <see cref="double"/>.
         /// </returns>
         public double Calculate(CongenericChain chain, Link link)
         {
