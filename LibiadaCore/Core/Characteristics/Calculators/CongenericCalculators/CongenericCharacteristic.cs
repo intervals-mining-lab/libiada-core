@@ -132,6 +132,48 @@
         /// </summary>
         [Display(Name = "Volume")]
         [Description("Calculated as product of all intervals in sequence")]
-        Volume = 18
+        Volume = 18,
+
+        /// <summary>
+        /// The remoteness dispersion.
+        /// </summary>
+        [Display(Name = "Remoteness Dispersion")]
+        [Description("")]
+        RemotenessDispersion = 19,
+
+        /// <summary>
+        /// The remoteness kurtosis.
+        /// </summary>
+        [Display(Name = "Remoteness Kurtosis")]
+        [Description("")]
+        RemotenessKurtosis = 20,
+
+        /// <summary>
+        /// The remoteness kurtosis coefficient.
+        /// </summary>
+        [Display(Name = "Remoteness Kurtosis Coefficient")]
+        [Description("")]
+        RemotenessKurtosisCoefficient = 21,
+
+        /// <summary>
+        /// The remoteness skewness.
+        /// </summary>
+        [Display(Name = "Remoteness Skewness")]
+        [Description("")]
+        RemotenessSkewness = 22,
+
+        /// <summary>
+        /// The remoteness skewness coefficient.
+        /// </summary>
+        [Display(Name = "Remoteness Skewness Coefficient")]
+        [Description("")]
+        RemotenessSkewnessCoefficient = 23,
+
+        /// <summary>
+        /// The remoteness standard deviation.
+        /// </summary>
+        [Display(Name = "Remoteness Standard Deviation")]
+        [Description("")]
+        RemotenessStandardDeviation = 24
     }
 }

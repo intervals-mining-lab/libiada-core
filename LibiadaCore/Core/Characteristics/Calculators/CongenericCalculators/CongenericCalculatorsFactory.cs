@@ -8,7 +8,7 @@ namespace LibiadaCore.Core.Characteristics.Calculators.CongenericCalculators
     public static class CongenericCalculatorsFactory
     {
         /// <summary>
-        /// The create calculator.
+        /// Creates calculator for given congeneric characteristic.
         /// </summary>
         /// <param name="type">
         /// The type.
@@ -59,6 +59,18 @@ namespace LibiadaCore.Core.Characteristics.Calculators.CongenericCalculators
                     return new VariationsCount();
                 case CongenericCharacteristic.Volume:
                     return new Volume();
+                case CongenericCharacteristic.RemotenessDispersion:
+                    return new RemotenessDispersion();
+                case CongenericCharacteristic.RemotenessKurtosis:
+                    return new RemotenessKurtosis();
+                case CongenericCharacteristic.RemotenessKurtosisCoefficient:
+                    return new RemotenessKurtosisCoefficient();
+                case CongenericCharacteristic.RemotenessSkewness:
+                    return new RemotenessSkewness();
+                case CongenericCharacteristic.RemotenessSkewnessCoefficient:
+                    return new RemotenessSkewnessCoefficient();
+                case CongenericCharacteristic.RemotenessStandardDeviation:
+                    return new RemotenessStandardDeviation();
                 default:
                     throw new InvalidEnumArgumentException(nameof(type), (int)type, typeof(CongenericCharacteristic));
             }
