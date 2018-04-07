@@ -54,7 +54,7 @@
         /// <returns>
         /// The <see cref="Measure"/>.
         /// </returns>
-        public Measure Calculate(Measure measure)
+        public void Calculate(Measure measure)
         {
             // создаем новый такт, куда будут складываться ноты, после определения их приоритета.
             var temp = new Measure(new List<ValueNote>(), (MeasureAttributes)measure.Attributes.Clone());
@@ -66,10 +66,10 @@
             double durationBuffer = 0;
 
             // буфер длительности
-            var noteBuf = new List<ValueNote>();
+            var noteBuffer = new List<ValueNote>();
 
             // буфер нот для сбора триоли и передачи в CollectTriplet
-            var maskBuf = new List<ValueNote>();
+            var maskBuffer = new List<ValueNote>();
 
             // буфер маски приоритетов для сбора приоритетов маски под триолью и передачи в CollectTriplet
             double tripletDuration = 0;
@@ -82,16 +82,16 @@
                     // TODO: проверять случай когда у нас в триоли ноты разной длительности
                     // если идет две триоли подряд, то как только первая сменяет вторую - меняется размер длительности у след. ноты
                     // и как только это произошло, нужно сначала проанализировать первую триоль и потом начать заполнять вторую
-                    if ((note.Duration.Value != tripletDuration) && (noteBuf.Count > 0))
+                    if ((note.Duration.Value != tripletDuration) && (noteBuffer.Count > 0))
                     {
-                        FillTripletNotesPriority(durationBuffer, maskBuf, priorityMask, noteBuf, temp);
+                        FillTripletNotesPriority(durationBuffer, maskBuffer, priorityMask, noteBuffer, temp);
 
                         durationBuffer = 0;
                     }
 
                     // последовательность реальных нот триоли (триплета) заносится в буфер для дальнейшей обработки
                     // считается суммарная длительность триоли
-                    noteBuf.Add((ValueNote)note.Clone());
+                    noteBuffer.Add((ValueNote)note.Clone());
                     tripletDuration = note.Duration.Value;
 
                     // сохраняем размерность триоли/ новой триоли (если две подряд)
@@ -100,9 +100,9 @@
                 else
                 {
                     // если следущая нота не триоль, то проверка, собиралась ли она шагом ранее, если да то вызов метода CollectTriplet,
-                    if (noteBuf.Count > 0)
+                    if (noteBuffer.Count > 0)
                     {
-                        FillTripletNotesPriority(durationBuffer, maskBuf, priorityMask, noteBuf, temp);
+                        FillTripletNotesPriority(durationBuffer, maskBuffer, priorityMask, noteBuffer, temp);
                     }
 
                     // так как следущая нота не триплет, то определяем ее приоритет по следущему алгоритму
@@ -132,9 +132,9 @@
             }
 
             // проверка буфера триоли, на случай когда триоль стоит в конце, чтобы не было потери нот
-            if (noteBuf.Count > 0)
+            if (noteBuffer.Count > 0)
             {
-                FillTripletNotesPriority(durationBuffer, maskBuf, priorityMask, noteBuf, temp);
+                FillTripletNotesPriority(durationBuffer, maskBuffer, priorityMask, noteBuffer, temp);
             }
 
             // присваиваем полю приоритет входного объекта, вычисленный приоритет в Temp соответственно
@@ -146,8 +146,6 @@
                     throw new Exception("LibiadaMusic.PriorityDiscover: не выявлен приоритет для одной из нот (равен -1)");
                 }
             }
-
-            return priorityMask;
         }
 
         /// <summary>
@@ -181,7 +179,7 @@
                 tempMeasure.NoteList.Add((ValueNote)tripletNote.Clone());
             }
 
-            // Temp.Notelist.AddRange(CountTripletPriority(noteBuf,maskBuf));
+            //tempMeasure.NoteList.AddRange(CountTripletPriority(noteBuffer, maskBuffer));
 
             // зануление буферов
             noteBuffer.Clear();
