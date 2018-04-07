@@ -22,7 +22,7 @@
         /// The param equal fm.
         /// </param>
         /// <returns>
-        /// The <see cref="List{FmotivChain}"/>.
+        /// The <see cref="List{FmotifChain}"/>.
         /// </returns>
         public List<FmotifChain> Divide(ScoreTrack scoreTrack, ParamPauseTreatment paramPauseTreatment, ParamEqualFM paramEqualFM)
         {
@@ -30,8 +30,8 @@
 
             foreach (CongenericScoreTrack congenericTrack in scoreTrack.CongenericScoreTracks)
             {
-                var fmotivChain = (FmotifChain)Divide(congenericTrack, paramPauseTreatment, paramEqualFM).Clone();
-                chains.Add(fmotivChain);
+                var fmotifChain = (FmotifChain)Divide(congenericTrack, paramPauseTreatment, paramEqualFM).Clone();
+                chains.Add(fmotifChain);
             }
 
             return chains;
@@ -59,17 +59,17 @@
         {
             // сохраняем имя цепи фмотивов как имя монотрека
             var priorityDiscover = new PriorityDiscover();
-            var fmotivDivider = new FmotifDivider();
-            var fmotivIdentifier = new FmotivIdentifier();
+            var fmotifDivider = new FmotifDivider();
+            var fmotifIdentifier = new FmotifIdentifier();
 
             // подсчет приоритетов
             priorityDiscover.Calculate(congenericTrack);
 
             // разбиение
-            FmotifChain chain = fmotivDivider.GetDivision(congenericTrack, paramPauseTreatment);
+            FmotifChain chain = fmotifDivider.GetDivision(congenericTrack, paramPauseTreatment);
 
             // нахождение одинаковых
-            return fmotivIdentifier.GetIdentification(chain, paramPauseTreatment, paramEqualFM);
+            return fmotifIdentifier.GetIdentification(chain, paramPauseTreatment, paramEqualFM);
         }
     }
 }

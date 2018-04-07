@@ -9,18 +9,18 @@
     using NUnit.Framework;
 
     /// <summary>
-    /// The fmotiv divider tests.
+    /// The fmotif divider tests.
     /// </summary>
     [TestFixture]
-    public class FmotivDividerTests
+    public class FmotifDividerTests
     {
         // ТЕСТЫ ПМТ
 
         /// <summary>
-        /// The fmotiv divider first test.
+        /// The fmotif divider first test.
         /// </summary>
         [Test]
-        public void FmotivDividerFirstTest()
+        public void FmotifDividerFirstTest()
         {
             // создание и заполнения списка(ов) нот для такта(ов) монотрека
             var notes = new List<ValueNote>
@@ -49,28 +49,28 @@
 
             // создание аналогов ф-мотивов, которые должны получиться, после разбиения
             // процедура определения одинаковых на данном этапе не производится
-            var fmotiv1 = new Fmotif(FmotifType.CompleteMinimalMeasure, ParamPauseTreatment.Ignore, 0);
-            var fmotiv2 = new Fmotif(FmotifType.CompleteMinimalMeasure, ParamPauseTreatment.Ignore, 1);
+            var fmotif1 = new Fmotif(FmotifType.CompleteMinimalMeasure, ParamPauseTreatment.Ignore, 0);
+            var fmotif2 = new Fmotif(FmotifType.CompleteMinimalMeasure, ParamPauseTreatment.Ignore, 1);
 
-            fmotiv1.NoteList.Add(new ValueNote(new Pitch(3, NoteSymbol.E, 0), new Duration(1, 4, false, 512), false, Tie.None));
-            fmotiv1.NoteList.Add(new ValueNote(new Pitch(3, NoteSymbol.A, 0), new Duration(1, 4, false, 512), false, Tie.None));
+            fmotif1.NoteList.Add(new ValueNote(new Pitch(3, NoteSymbol.E, 0), new Duration(1, 4, false, 512), false, Tie.None));
+            fmotif1.NoteList.Add(new ValueNote(new Pitch(3, NoteSymbol.A, 0), new Duration(1, 4, false, 512), false, Tie.None));
 
-            fmotiv2.NoteList.Add(new ValueNote(new Pitch(3, NoteSymbol.E, 0), new Duration(1, 4, false, 512), false, Tie.None));
-            fmotiv2.NoteList.Add(new ValueNote(new Pitch(3, NoteSymbol.A, 0), new Duration(1, 4, false, 512), false, Tie.None));
+            fmotif2.NoteList.Add(new ValueNote(new Pitch(3, NoteSymbol.E, 0), new Duration(1, 4, false, 512), false, Tie.None));
+            fmotif2.NoteList.Add(new ValueNote(new Pitch(3, NoteSymbol.A, 0), new Duration(1, 4, false, 512), false, Tie.None));
 
             // записываем ф-мотивы в цепь ф-мотивов, которая будет сравниваться с получившейся
             var secondChain = new FmotifChain();
-            secondChain.FmotifsList.Add(fmotiv1);
-            secondChain.FmotifsList.Add(fmotiv2);
+            secondChain.FmotifsList.Add(fmotif1);
+            secondChain.FmotifsList.Add(fmotif2);
 
             Assert.IsTrue(secondChain.Equals(chain));
         }
 
         /// <summary>
-        /// The fmotiv divider second test.
+        /// The fmotif divider second test.
         /// </summary>
         [Test]
-        public void FmotivDividerSecondTest()
+        public void FmotifDividerSecondTest()
         {
             // создание и заполнения списка(ов) нот для такта(ов) монотрека
             var notes = new List<ValueNote>
@@ -99,28 +99,28 @@
 
             // создание аналогов ф-мотивов, которые должны получиться, после разбиения
             // процедура определения одинаковых на данном этапе не производится
-            var fmotiv1 = new Fmotif(FmotifType.CompleteMinimalMeasure, ParamPauseTreatment.Ignore, 0);
-            var fmotiv2 = new Fmotif(FmotifType.CompleteMinimalMeasure, ParamPauseTreatment.Ignore, 1);
+            var fmotif1 = new Fmotif(FmotifType.CompleteMinimalMeasure, ParamPauseTreatment.Ignore, 0);
+            var fmotif2 = new Fmotif(FmotifType.CompleteMinimalMeasure, ParamPauseTreatment.Ignore, 1);
 
-            fmotiv1.NoteList.Add(new ValueNote(new Pitch(3, NoteSymbol.E, 0), new Duration(1, 8, false, 512), false, Tie.None));
-            fmotiv1.NoteList.Add(new ValueNote(new Pitch(3, NoteSymbol.A, 0), new Duration(1, 8, false, 512), false, Tie.None));
+            fmotif1.NoteList.Add(new ValueNote(new Pitch(3, NoteSymbol.E, 0), new Duration(1, 8, false, 512), false, Tie.None));
+            fmotif1.NoteList.Add(new ValueNote(new Pitch(3, NoteSymbol.A, 0), new Duration(1, 8, false, 512), false, Tie.None));
 
-            fmotiv2.NoteList.Add(new ValueNote(new Pitch(3, NoteSymbol.E, 0), new Duration(1, 8, false, 512), false, Tie.None));
-            fmotiv2.NoteList.Add(new ValueNote(new Pitch(3, NoteSymbol.A, 0), new Duration(1, 8, false, 512), false, Tie.None));
+            fmotif2.NoteList.Add(new ValueNote(new Pitch(3, NoteSymbol.E, 0), new Duration(1, 8, false, 512), false, Tie.None));
+            fmotif2.NoteList.Add(new ValueNote(new Pitch(3, NoteSymbol.A, 0), new Duration(1, 8, false, 512), false, Tie.None));
 
             // записываем ф-мотивы в цепь ф-мотивов, которая будет сравниваться с получившейся
             var fmchain1 = new FmotifChain();
-            fmchain1.FmotifsList.Add(fmotiv1);
-            fmchain1.FmotifsList.Add(fmotiv2);
+            fmchain1.FmotifsList.Add(fmotif1);
+            fmchain1.FmotifsList.Add(fmotif2);
 
             Assert.IsTrue(fmchain1.Equals(fmchain));
         }
 
         /// <summary>
-        /// The test fmotiv third divider.
+        /// The test fmotif third divider.
         /// </summary>
         [Test]
-        public void TestFmotivThirdDivider()
+        public void TestFmotifThirdDivider()
         {
             // создание и заполнения списка(ов) нот для такта(ов) монотрека
             var notes = new List<ValueNote>
@@ -158,32 +158,32 @@
 
             // создание аналогов ф-мотивов, которые должны получиться, после разбиения
             // процедура определения одинаковых на данном этапе не производится
-            var fmotiv1 = new Fmotif(FmotifType.PartialMinimalMeasure, ParamPauseTreatment.Ignore, 0);
-            var fmotiv2 = new Fmotif(FmotifType.CompleteMinimalMetrorhythmicGroup, ParamPauseTreatment.Ignore, 1);
-            var fmotiv3 = new Fmotif(FmotifType.CompleteMinimalMeasure, ParamPauseTreatment.Ignore, 3);
+            var fmotif1 = new Fmotif(FmotifType.PartialMinimalMeasure, ParamPauseTreatment.Ignore, 0);
+            var fmotif2 = new Fmotif(FmotifType.CompleteMinimalMetrorhythmicGroup, ParamPauseTreatment.Ignore, 1);
+            var fmotif3 = new Fmotif(FmotifType.CompleteMinimalMeasure, ParamPauseTreatment.Ignore, 3);
 
-            fmotiv1.NoteList.Add(new ValueNote(new Pitch(3, NoteSymbol.E, 0), new Duration(1, 4, false, 512), false, Tie.None));
+            fmotif1.NoteList.Add(new ValueNote(new Pitch(3, NoteSymbol.E, 0), new Duration(1, 4, false, 512), false, Tie.None));
 
-            fmotiv2.NoteList.Add(new ValueNote(new Pitch(3, NoteSymbol.A, 0), new Duration(1, 8, false, 256), false, Tie.None));
-            fmotiv2.NoteList.Add(new ValueNote(new Pitch(3, NoteSymbol.E, 0), new Duration(1, 8, false, 256), false, Tie.None));
-            fmotiv2.NoteList.Add(new ValueNote(new Pitch(3, NoteSymbol.E, 0), new Duration(1, 4, false, 512), false, Tie.None));
+            fmotif2.NoteList.Add(new ValueNote(new Pitch(3, NoteSymbol.A, 0), new Duration(1, 8, false, 256), false, Tie.None));
+            fmotif2.NoteList.Add(new ValueNote(new Pitch(3, NoteSymbol.E, 0), new Duration(1, 8, false, 256), false, Tie.None));
+            fmotif2.NoteList.Add(new ValueNote(new Pitch(3, NoteSymbol.E, 0), new Duration(1, 4, false, 512), false, Tie.None));
 
-            fmotiv3.NoteList.Add(new ValueNote(new Pitch(3, NoteSymbol.E, 0), new Duration(1, 4, false, 512), false, Tie.None));
+            fmotif3.NoteList.Add(new ValueNote(new Pitch(3, NoteSymbol.E, 0), new Duration(1, 4, false, 512), false, Tie.None));
 
             // записываем ф-мотивы в цепь ф-мотивов, которая будет сравниваться с получившейся
             var fmchain1 = new FmotifChain();
-            fmchain1.FmotifsList.Add(fmotiv1);
-            fmchain1.FmotifsList.Add(fmotiv2);
-            fmchain1.FmotifsList.Add(fmotiv3);
+            fmchain1.FmotifsList.Add(fmotif1);
+            fmchain1.FmotifsList.Add(fmotif2);
+            fmchain1.FmotifsList.Add(fmotif3);
 
             Assert.IsTrue(fmchain1.Equals(fmchain));
         }
 
         /// <summary>
-        /// The fmotiv divider fourth test.
+        /// The fmotif divider fourth test.
         /// </summary>
         [Test]
-        public void FmotivDividerFourthTest()
+        public void FmotifDividerFourthTest()
         {
             // создание и заполнения списка(ов) нот для такта(ов) монотрека
             var notes = new List<ValueNote>
@@ -211,24 +211,24 @@
 
             // создание аналогов ф-мотивов, которые должны получиться, после разбиения
             // процедура определения одинаковых на данном этапе не производится
-            var fmotiv1 = new Fmotif(FmotifType.CompleteMinimalMeasure, ParamPauseTreatment.Ignore, 0);
+            var fmotif1 = new Fmotif(FmotifType.CompleteMinimalMeasure, ParamPauseTreatment.Ignore, 0);
 
-            fmotiv1.NoteList.Add(new ValueNote(new Pitch(3, NoteSymbol.E, 0), new Duration(1, 8, false, 256), false, Tie.Start));
-            fmotiv1.NoteList.Add(new ValueNote(new Pitch(3, NoteSymbol.E, 0), new Duration(1, 8, false, 256), false, Tie.End));
-            fmotiv1.NoteList.Add(new ValueNote(new Pitch(3, NoteSymbol.A, 0), new Duration(1, 4, false, 512), false, Tie.None));
+            fmotif1.NoteList.Add(new ValueNote(new Pitch(3, NoteSymbol.E, 0), new Duration(1, 8, false, 256), false, Tie.Start));
+            fmotif1.NoteList.Add(new ValueNote(new Pitch(3, NoteSymbol.E, 0), new Duration(1, 8, false, 256), false, Tie.End));
+            fmotif1.NoteList.Add(new ValueNote(new Pitch(3, NoteSymbol.A, 0), new Duration(1, 4, false, 512), false, Tie.None));
 
             // записываем ф-мотивы в цепь ф-мотивов, которая будет сравниваться с получившейся
             var fmchain1 = new FmotifChain();
-            fmchain1.FmotifsList.Add(fmotiv1);
+            fmchain1.FmotifsList.Add(fmotif1);
 
             Assert.IsTrue(fmchain1.Equals(fmchain));
         }
 
         /// <summary>
-        /// The fmotiv divider fifth test.
+        /// The fmotif divider fifth test.
         /// </summary>
         [Test]
-        public void FmotivDividerFifthTest()
+        public void FmotifDividerFifthTest()
         {
             // создание и заполнения списка(ов) нот для такта(ов) монотрека
             var notes = new List<ValueNote>
@@ -258,29 +258,29 @@
 
             // создание аналогов ф-мотивов, которые должны получиться, после разбиения
             // процедура определения одинаковых на данном этапе не производится
-            var fmotiv1 = new Fmotif(FmotifType.CompleteMinimalMeasure, ParamPauseTreatment.Ignore, 0);
-            var fmotiv2 = new Fmotif(FmotifType.CompleteMinimalMeasure, ParamPauseTreatment.Ignore, 1);
+            var fmotif1 = new Fmotif(FmotifType.CompleteMinimalMeasure, ParamPauseTreatment.Ignore, 0);
+            var fmotif2 = new Fmotif(FmotifType.CompleteMinimalMeasure, ParamPauseTreatment.Ignore, 1);
 
-            fmotiv1.NoteList.Add(new ValueNote(new Pitch(3, NoteSymbol.E, 0), new Duration(1, 8, 2, 3, false, 240), false, Tie.None));
-            fmotiv1.NoteList.Add(new ValueNote(new Pitch(3, NoteSymbol.A, 0), new Duration(1, 8, 2, 3, false, 240), false, Tie.None));
-            fmotiv1.NoteList.Add(new ValueNote(new Pitch(3, NoteSymbol.E, 0), new Duration(1, 8, 2, 3, false, 240), false, Tie.None));
-            fmotiv1.NoteList.Add(new ValueNote(new Pitch(3, NoteSymbol.A, 0), new Duration(1, 8, false, 360), false, Tie.None));
+            fmotif1.NoteList.Add(new ValueNote(new Pitch(3, NoteSymbol.E, 0), new Duration(1, 8, 2, 3, false, 240), false, Tie.None));
+            fmotif1.NoteList.Add(new ValueNote(new Pitch(3, NoteSymbol.A, 0), new Duration(1, 8, 2, 3, false, 240), false, Tie.None));
+            fmotif1.NoteList.Add(new ValueNote(new Pitch(3, NoteSymbol.E, 0), new Duration(1, 8, 2, 3, false, 240), false, Tie.None));
+            fmotif1.NoteList.Add(new ValueNote(new Pitch(3, NoteSymbol.A, 0), new Duration(1, 8, false, 360), false, Tie.None));
 
-            fmotiv2.NoteList.Add(new ValueNote(new Pitch(3, NoteSymbol.B, 0), new Duration(1, 8, false, 360), false, Tie.None));
+            fmotif2.NoteList.Add(new ValueNote(new Pitch(3, NoteSymbol.B, 0), new Duration(1, 8, false, 360), false, Tie.None));
 
             // записываем ф-мотивы в цепь ф-мотивов, которая будет сравниваться с получившейся
             var fmchain1 = new FmotifChain();
-            fmchain1.FmotifsList.Add(fmotiv1);
-            fmchain1.FmotifsList.Add(fmotiv2);
+            fmchain1.FmotifsList.Add(fmotif1);
+            fmchain1.FmotifsList.Add(fmotif2);
 
             Assert.IsTrue(fmchain1.Equals(fmchain));
         }
 
         /// <summary>
-        /// The fmotiv divider sixth test.
+        /// The fmotif divider sixth test.
         /// </summary>
         [Test]
-        public void FmotivDividerSixthTest()
+        public void FmotifDividerSixthTest()
         {
             // создание и заполнения списка(ов) нот для такта(ов) монотрека
             var notes = new List<ValueNote>
@@ -310,32 +310,32 @@
 
             // создание аналогов ф-мотивов, которые должны получиться, после разбиения
             // процедура определения одинаковых на данном этапе не производится
-            var fmotiv1 = new Fmotif(FmotifType.PartialMinimalMeasure, ParamPauseTreatment.Ignore, 0);
-            var fmotiv2 = new Fmotif(FmotifType.CompleteMinimalMeasure, ParamPauseTreatment.Ignore, 1);
-            var fmotiv3 = new Fmotif(FmotifType.CompleteMinimalMeasure, ParamPauseTreatment.Ignore, 2);
+            var fmotif1 = new Fmotif(FmotifType.PartialMinimalMeasure, ParamPauseTreatment.Ignore, 0);
+            var fmotif2 = new Fmotif(FmotifType.CompleteMinimalMeasure, ParamPauseTreatment.Ignore, 1);
+            var fmotif3 = new Fmotif(FmotifType.CompleteMinimalMeasure, ParamPauseTreatment.Ignore, 2);
 
-            fmotiv1.NoteList.Add(new ValueNote(new Pitch(3, NoteSymbol.E, Accidental.Bekar), new Duration(1, 4, false, 512), false, Tie.None));
+            fmotif1.NoteList.Add(new ValueNote(new Pitch(3, NoteSymbol.E, Accidental.Bekar), new Duration(1, 4, false, 512), false, Tie.None));
 
-            fmotiv2.NoteList.Add(new ValueNote(new Pitch(3, NoteSymbol.C, Accidental.Sharp), new Duration(1, 16, false, 128), false, Tie.None));
-            fmotiv2.NoteList.Add(new ValueNote(new Pitch(3, NoteSymbol.A, Accidental.Flat), new Duration(1, 16, false, 128), false, Tie.None));
+            fmotif2.NoteList.Add(new ValueNote(new Pitch(3, NoteSymbol.C, Accidental.Sharp), new Duration(1, 16, false, 128), false, Tie.None));
+            fmotif2.NoteList.Add(new ValueNote(new Pitch(3, NoteSymbol.A, Accidental.Flat), new Duration(1, 16, false, 128), false, Tie.None));
 
-            fmotiv3.NoteList.Add(new ValueNote(new Pitch(3, NoteSymbol.D, Accidental.Bekar), new Duration(1, 16, false, 128), false, Tie.None));
-            fmotiv3.NoteList.Add(new ValueNote(new Pitch(3, NoteSymbol.A, Accidental.DoubleSharp), new Duration(1, 16, false, 128), false, Tie.None));
+            fmotif3.NoteList.Add(new ValueNote(new Pitch(3, NoteSymbol.D, Accidental.Bekar), new Duration(1, 16, false, 128), false, Tie.None));
+            fmotif3.NoteList.Add(new ValueNote(new Pitch(3, NoteSymbol.A, Accidental.DoubleSharp), new Duration(1, 16, false, 128), false, Tie.None));
 
             // записываем ф-мотивы в цепь ф-мотивов, которая будет сравниваться с получившейся
             var fmchain1 = new FmotifChain();
-            fmchain1.FmotifsList.Add(fmotiv1);
-            fmchain1.FmotifsList.Add(fmotiv2);
-            fmchain1.FmotifsList.Add(fmotiv3);
+            fmchain1.FmotifsList.Add(fmotif1);
+            fmchain1.FmotifsList.Add(fmotif2);
+            fmchain1.FmotifsList.Add(fmotif3);
 
             Assert.IsTrue(fmchain1.Equals(fmchain));
         }
 
         /// <summary>
-        /// The fmotiv divider seventh test.
+        /// The fmotif divider seventh test.
         /// </summary>
         [Test]
-        public void FmotivDividerSeventhTest()
+        public void FmotifDividerSeventhTest()
         {
             // создание и заполнения списка(ов) нот для такта(ов) монотрека
             var notes = new List<ValueNote>
@@ -363,23 +363,23 @@
 
             // создание аналогов ф-мотивов, которые должны получиться, после разбиения
             // процедура определения одинаковых на данном этапе не производится
-            var fmotiv1 = new Fmotif(FmotifType.CompleteMinimalMeasure, ParamPauseTreatment.Ignore, 0);
-            fmotiv1.NoteList.Add(new ValueNote((Pitch)null, new Duration(1, 4, false, 512), false, Tie.None));
-            fmotiv1.NoteList.Add(new ValueNote(new Pitch(3, NoteSymbol.A, 0), new Duration(1, 8, false, 256), false, Tie.None));
-            fmotiv1.NoteList.Add(new ValueNote(new Pitch(3, NoteSymbol.B, 0), new Duration(1, 8, false, 256), false, Tie.None));
+            var fmotif1 = new Fmotif(FmotifType.CompleteMinimalMeasure, ParamPauseTreatment.Ignore, 0);
+            fmotif1.NoteList.Add(new ValueNote((Pitch)null, new Duration(1, 4, false, 512), false, Tie.None));
+            fmotif1.NoteList.Add(new ValueNote(new Pitch(3, NoteSymbol.A, 0), new Duration(1, 8, false, 256), false, Tie.None));
+            fmotif1.NoteList.Add(new ValueNote(new Pitch(3, NoteSymbol.B, 0), new Duration(1, 8, false, 256), false, Tie.None));
 
             // записываем ф-мотивы в цепь ф-мотивов, которая будет сравниваться с получившейся
             var fmchain1 = new FmotifChain();
-            fmchain1.FmotifsList.Add(fmotiv1);
+            fmchain1.FmotifsList.Add(fmotif1);
 
             Assert.IsTrue(fmchain1.Equals(fmchain));
         }
 
         /// <summary>
-        /// The fmotiv divider eighth test.
+        /// The fmotif divider eighth test.
         /// </summary>
         [Test]
-        public void FmotivDividerEighthTest()
+        public void FmotifDividerEighthTest()
         {
             // создание и заполнения списка(ов) нот для такта(ов) монотрека
             var notes = new List<ValueNote>
@@ -408,24 +408,24 @@
 
             // создание аналогов ф-мотивов, которые должны получиться, после разбиения
             // процедура определения одинаковых на данном этапе не производится
-            var fmotiv1 = new Fmotif(FmotifType.CompleteMinimalMeasure, ParamPauseTreatment.Ignore, 0);
-            fmotiv1.NoteList.Add(new ValueNote(new Pitch(3, NoteSymbol.A, 0), new Duration(1, 8, false, 256), false, Tie.None));
-            fmotiv1.NoteList.Add(new ValueNote((Pitch)null, new Duration(1, 8, false, 256), false, Tie.None));
-            fmotiv1.NoteList.Add(new ValueNote(new Pitch(3, NoteSymbol.B, 0), new Duration(1, 8, false, 256), false, Tie.None));
-            fmotiv1.NoteList.Add(new ValueNote(new Pitch(3, NoteSymbol.B, 0), new Duration(1, 8, false, 256), false, Tie.None));
+            var fmotif1 = new Fmotif(FmotifType.CompleteMinimalMeasure, ParamPauseTreatment.Ignore, 0);
+            fmotif1.NoteList.Add(new ValueNote(new Pitch(3, NoteSymbol.A, 0), new Duration(1, 8, false, 256), false, Tie.None));
+            fmotif1.NoteList.Add(new ValueNote((Pitch)null, new Duration(1, 8, false, 256), false, Tie.None));
+            fmotif1.NoteList.Add(new ValueNote(new Pitch(3, NoteSymbol.B, 0), new Duration(1, 8, false, 256), false, Tie.None));
+            fmotif1.NoteList.Add(new ValueNote(new Pitch(3, NoteSymbol.B, 0), new Duration(1, 8, false, 256), false, Tie.None));
 
             // записываем ф-мотивы в цепь ф-мотивов, которая будет сравниваться с получившейся
             var fmchain1 = new FmotifChain();
-            fmchain1.FmotifsList.Add(fmotiv1);
+            fmchain1.FmotifsList.Add(fmotif1);
 
             Assert.IsTrue(fmchain1.Equals(fmchain));
         }
 
         /// <summary>
-        /// The fmotiv divider pause silence test.
+        /// The fmotif divider pause silence test.
         /// </summary>
         [Test]
-        public void FmotivDividerPauseSilenceTest()
+        public void FmotifDividerPauseSilenceTest()
         {
             // создание и заполнения списка(ов) нот для такта(ов) монотрека
             var notes = new List<ValueNote>
@@ -454,22 +454,22 @@
 
             // создание аналогов ф-мотивов, которые должны получиться, после разбиения
             // процедура определения одинаковых на данном этапе не производится
-            var fmotiv1 = new Fmotif(FmotifType.CompleteMinimalMeasure, ParamPauseTreatment.Ignore, 0);
-            fmotiv1.NoteList.Add(new ValueNote(new Pitch(3, NoteSymbol.A, 0), new Duration(1, 8, false, 256), false, Tie.None));
-            fmotiv1.NoteList.Add(new ValueNote((Pitch)null, new Duration(1, 8, false, 256), false, Tie.None));
-            var fmotiv2 = new Fmotif(FmotifType.CompleteMinimalMeasure, ParamPauseTreatment.Ignore, 1);
-            fmotiv2.NoteList.Add(new ValueNote(new Pitch(3, NoteSymbol.B, 0), new Duration(1, 8, false, 256), false, Tie.None));
-            fmotiv2.NoteList.Add(new ValueNote(new Pitch(3, NoteSymbol.B, 0), new Duration(1, 8, false, 256), false, Tie.None));
+            var fmotif1 = new Fmotif(FmotifType.CompleteMinimalMeasure, ParamPauseTreatment.Ignore, 0);
+            fmotif1.NoteList.Add(new ValueNote(new Pitch(3, NoteSymbol.A, 0), new Duration(1, 8, false, 256), false, Tie.None));
+            fmotif1.NoteList.Add(new ValueNote((Pitch)null, new Duration(1, 8, false, 256), false, Tie.None));
+            var fmotif2 = new Fmotif(FmotifType.CompleteMinimalMeasure, ParamPauseTreatment.Ignore, 1);
+            fmotif2.NoteList.Add(new ValueNote(new Pitch(3, NoteSymbol.B, 0), new Duration(1, 8, false, 256), false, Tie.None));
+            fmotif2.NoteList.Add(new ValueNote(new Pitch(3, NoteSymbol.B, 0), new Duration(1, 8, false, 256), false, Tie.None));
 
             // записываем ф-мотивы в цепь ф-мотивов, которая будет сравниваться с получившейся
             var fmchain1 = new FmotifChain();
-            fmchain1.FmotifsList.Add(fmotiv1);
-            fmchain1.FmotifsList.Add(fmotiv2);
+            fmchain1.FmotifsList.Add(fmotif1);
+            fmchain1.FmotifsList.Add(fmotif2);
 
-            Assert.IsTrue(fmotiv1.FmEquals(fmotiv1, ParamPauseTreatment.SilenceNote, ParamEqualFM.Sequent));
-            Assert.IsTrue(fmotiv2.FmEquals(fmotiv2, ParamPauseTreatment.SilenceNote, ParamEqualFM.Sequent));
-            Assert.IsTrue(fmchain.FmotifsList[0].FmEquals(fmotiv1, ParamPauseTreatment.SilenceNote, ParamEqualFM.Sequent));
-            Assert.IsTrue(fmchain.FmotifsList[1].FmEquals(fmotiv2, ParamPauseTreatment.SilenceNote, ParamEqualFM.Sequent));
+            Assert.IsTrue(fmotif1.FmEquals(fmotif1, ParamPauseTreatment.SilenceNote, ParamEqualFM.Sequent));
+            Assert.IsTrue(fmotif2.FmEquals(fmotif2, ParamPauseTreatment.SilenceNote, ParamEqualFM.Sequent));
+            Assert.IsTrue(fmchain.FmotifsList[0].FmEquals(fmotif1, ParamPauseTreatment.SilenceNote, ParamEqualFM.Sequent));
+            Assert.IsTrue(fmchain.FmotifsList[1].FmEquals(fmotif2, ParamPauseTreatment.SilenceNote, ParamEqualFM.Sequent));
             Assert.IsTrue(fmchain1.Equals(fmchain));
         }
     }

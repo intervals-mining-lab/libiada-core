@@ -31,7 +31,7 @@
         }
 
         /// <summary>
-        /// Gets list of notes in fmotiv.
+        /// Gets list of notes in fmotif.
         /// </summary>
         public List<ValueNote> NoteList { get; }
 

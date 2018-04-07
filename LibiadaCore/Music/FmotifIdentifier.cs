@@ -6,15 +6,15 @@
     using LibiadaCore.Core.SimpleTypes;
 
     /// <summary>
-    /// The fmotiv identifier.
+    /// The fmotif identifier.
     /// </summary>
-    public class FmotivIdentifier
+    public class FmotifIdentifier
     {
         /// <summary>
         /// The get identification.
         /// </summary>
-        /// <param name="fmotivChain">
-        /// The fmotiv chain.
+        /// <param name="fmotifChain">
+        /// The fmotif chain.
         /// </param>
         /// <param name="paramPauseTreatment">
         /// The param pause treatment.
@@ -25,9 +25,9 @@
         /// <returns>
         /// The <see cref="FmotifChain"/>.
         /// </returns>
-        public FmotifChain GetIdentification(FmotifChain fmotivChain, ParamPauseTreatment paramPauseTreatment, ParamEqualFM paramEqualFM)
+        public FmotifChain GetIdentification(FmotifChain fmotifChain, ParamPauseTreatment paramPauseTreatment, ParamEqualFM paramEqualFM)
         {
-            var chain = (FmotifChain)fmotivChain.Clone();
+            var chain = (FmotifChain)fmotifChain.Clone();
 
             for (int i = 0; i < chain.FmotifsList.Count; i++)
             {
@@ -45,12 +45,12 @@
                 bool haveId = chain.FmotifsList.Any(t => t.Id == i); // флаг того что есть такой id в цепочке
                 if (!haveId)
                 {
-                    foreach (Fmotif fmotiv in chain.FmotifsList)
+                    foreach (Fmotif fmotif in chain.FmotifsList)
                     {
-                        if (fmotiv.Id > i)
+                        if (fmotif.Id > i)
                         {
                             // уменьшаем на 1 id тех фмотивов которые больше текущей  id - i, которой не нашлось в цепи
-                            fmotiv.Id--;
+                            fmotif.Id--;
                         }
                     }
 

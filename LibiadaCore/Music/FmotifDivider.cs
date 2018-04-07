@@ -8,7 +8,7 @@
     using LibiadaCore.Core.SimpleTypes;
 
     /// <summary>
-    /// The fmotiv divider.
+    /// The fmotif divider.
     /// </summary>
     public class FmotifDivider
     {
@@ -140,13 +140,13 @@
                         else
                         {
                             // когда лига не заканчивается флагом конца, то ошибка
-                            throw new Exception("LibiadaMusic: FmotivDivider, wrong Tie organization!End!");
+                            throw new Exception("LibiadaMusic: FmotifDivider, wrong Tie organization!End!");
                         }
                     }
                     else
                     {
                         // когда начинается лига не с флага начала, а с какого то другого, то ошибка
-                        throw new Exception("LibiadaMusic: FmotivDivider, wrong Tie organization!Begining!");
+                        throw new Exception("LibiadaMusic: FmotifDivider, wrong Tie organization!Begining!");
                     }
                 }
                 else
@@ -272,14 +272,14 @@
                             var last = TempExtractor(fmotifBuffer, ExtractNoteList(fmotifBuffer).Count - 1);
                             if (lastButOne.Duration.Value < last.Duration.Value)
                             {
-                                var fmotivBuffer2 = new Fmotif(FmotifType.None, paramPauseTreatment);
+                                var fmotifBuffer2 = new Fmotif(FmotifType.None, paramPauseTreatment);
 
                                 // помещаем в буффер2 последнюю собранную ноту - большей длительности чем все равнодлительные
                                 // так как меняется в процессе
                                 int count = fmotifBuffer.NoteList.Count;
                                 for (int i = n; i < count; i++)
                                 {
-                                    fmotivBuffer2.NoteList.Add((ValueNote)fmotifBuffer.NoteList[n].Clone());
+                                    fmotifBuffer2.NoteList.Add((ValueNote)fmotifBuffer.NoteList[n].Clone());
                                     fmotifBuffer.NoteList.RemoveAt(n);
                                 }
 
@@ -299,9 +299,9 @@
                                 fmotifBuffer = (Fmotif)dividedSameDuration[dividedSameDuration.Count - 1].Clone();
 
                                 // добавляем сохраненную ноту с большой длительностью
-                                for (int i = 0; i < fmotivBuffer2.NoteList.Count; i++)
+                                for (int i = 0; i < fmotifBuffer2.NoteList.Count; i++)
                                 {
-                                    fmotifBuffer.NoteList.Add((ValueNote)fmotivBuffer2.NoteList[i].Clone());
+                                    fmotifBuffer.NoteList.Add((ValueNote)fmotifBuffer2.NoteList[i].Clone());
                                 }
 
                                 // флаг комбинации
@@ -333,21 +333,21 @@
                             lastButOne = TempExtractor(fmotifBuffer, ExtractNoteList(fmotifBuffer).Count - 2);
                             if (lastButOne.Duration.Value > last.Duration.Value)
                             {
-                                var fmotivBuffer2 = new Fmotif(FmotifType.None, paramPauseTreatment);
+                                var fmotifBuffer2 = new Fmotif(FmotifType.None, paramPauseTreatment);
 
                                 // помещаем в буффер2 последнюю собранную ноту - меньшей длительности чем все равнодлительные
                                 int count = fmotifBuffer.NoteList.Count; // так как меняется в процессе
                                 for (int i = n; i < count; i++)
                                 {
-                                    fmotivBuffer2.NoteList.Add((ValueNote)fmotifBuffer.NoteList[n].Clone());
+                                    fmotifBuffer2.NoteList.Add((ValueNote)fmotifBuffer.NoteList[n].Clone());
                                     fmotifBuffer.NoteList.RemoveAt(n);
                                 }
 
                                 // отправляем последовательность равнодлительных звуков на анализ, получаем цепочку фмотивов и заносим их в выходную последовательность
-                                foreach (Fmotif fmotiv in DivideSameDurationNotes(fmotifBuffer))
+                                foreach (Fmotif fmotif in DivideSameDurationNotes(fmotifBuffer))
                                 {
                                     // заносим очередной фмотив
-                                    chain.FmotifsList.Add((Fmotif)fmotiv.Clone());
+                                    chain.FmotifsList.Add((Fmotif)fmotif.Clone());
 
                                     // присваиваем очередной id
                                     chain.FmotifsList[chain.FmotifsList.Count - 1].Id = chain.FmotifsList.Count - 1;
@@ -357,9 +357,9 @@
                                 fmotifBuffer.NoteList.Clear();
 
                                 // добавляем состав сохраненной ноты (паузы/лиги) с меньшей длительностью в буфер
-                                for (int i = 0; i < fmotivBuffer2.NoteList.Count; i++)
+                                for (int i = 0; i < fmotifBuffer2.NoteList.Count; i++)
                                 {
-                                    fmotifBuffer.NoteList.Add((ValueNote)fmotivBuffer2.NoteList[i].Clone());
+                                    fmotifBuffer.NoteList.Add((ValueNote)fmotifBuffer2.NoteList[i].Clone());
                                 }
 
                                 // убираем флаг для сбора равнодлительных нот
@@ -446,7 +446,7 @@
                 // заносим ноты/паузы 1 собранной ноты в очередной фмотив с типом ЧМТ, и удаляем из буфера
                 var fm = new Fmotif(FmotifType.PartialMinimalMeasure, paramPauseTreatment, chain.FmotifsList.Count);
 
-                // for (int i = 0; i < FmotivBuffer.NoteList.Count; i++)
+                // for (int i = 0; i < FmotifBuffer.NoteList.Count; i++)
                 foreach (ValueNote note in fmotifBuffer.NoteList)
                 {
                     // заносим
@@ -466,10 +466,10 @@
                 if (sameDurationChain)
                 {
                     // отправляем последовательность равнодлительных звуков на анализ, получаем цепочку фмотивов и заносим их в выходную последовательность
-                    foreach (Fmotif fmotiv in DivideSameDurationNotes(fmotifBuffer))
+                    foreach (Fmotif fmotif in DivideSameDurationNotes(fmotifBuffer))
                     {
                         // заносим очередной фмотив
-                        chain.FmotifsList.Add((Fmotif)fmotiv.Clone());
+                        chain.FmotifsList.Add((Fmotif)fmotif.Clone());
 
                         // присваиваем очередной id
                         chain.FmotifsList[chain.FmotifsList.Count - 1].Id = chain.FmotifsList.Count - 1;
@@ -524,47 +524,47 @@
         /// <summary>
         /// The temp method.
         /// </summary>
-        /// <param name="fmotiv">
-        /// The fmotiv.
+        /// <param name="fmotif">
+        /// The fmotif.
         /// </param>
-        /// <param name="fmotivBuffer">
-        /// The fmotiv buffer.
+        /// <param name="fmotifBuffer">
+        /// The fmotif buffer.
         /// </param>
         /// <exception cref="Exception">
         /// Thrown in different cases.
         /// </exception>
-        private static void MoveTiedNotesFromFmotivBufferToFmotiv(Fmotif fmotiv, Fmotif fmotivBuffer)
+        private static void MoveTiedNotesFromFmotifBufferToFmotif(Fmotif fmotif, Fmotif fmotifBuffer)
         {
-            if (fmotiv.NoteList[fmotiv.NoteList.Count - 1].Tie != Tie.None)
+            if (fmotif.NoteList[fmotif.NoteList.Count - 1].Tie != Tie.None)
             {
                 // если есть флаг начала лиги, то записываем в буфер все остальные лигованные ноты, пока не будет флага конца лиги
-                if (fmotiv.NoteList[fmotiv.NoteList.Count - 1].Tie == Tie.Start)
+                if (fmotif.NoteList[fmotif.NoteList.Count - 1].Tie == Tie.Start)
                 {
                     // TODO: желательно сделать проверку когда собирается очередная лига,
                     // не будет ли пуста цепь нот, до того как лига закончится (будет флаг конца лиги)
-                    while (fmotivBuffer.NoteList[0].Tie == Tie.Continue)
+                    while (fmotifBuffer.NoteList[0].Tie == Tie.Continue)
                     {
                         // пока продолжается лига, заносим ноты в буфер
-                        fmotiv.NoteList.Add((ValueNote)fmotivBuffer.NoteList[0].Clone());
-                        fmotivBuffer.NoteList.RemoveAt(0);
+                        fmotif.NoteList.Add((ValueNote)fmotifBuffer.NoteList[0].Clone());
+                        fmotifBuffer.NoteList.RemoveAt(0);
                     }
 
-                    if (fmotivBuffer.NoteList[0].Tie == Tie.End)
+                    if (fmotifBuffer.NoteList[0].Tie == Tie.End)
                     {
                         // если есть флаг конца лиги у очередной ноты, то заносим конечную ноту лиги в буфер
-                        fmotiv.NoteList.Add((ValueNote)fmotivBuffer.NoteList[0].Clone());
-                        fmotivBuffer.NoteList.RemoveAt(0);
+                        fmotif.NoteList.Add((ValueNote)fmotifBuffer.NoteList[0].Clone());
+                        fmotifBuffer.NoteList.RemoveAt(0);
                     }
                     else
                     {
                         // когда лига не заканчивается флагом конца, то ошибка
-                        throw new Exception("LibiadaMusic: FmotivDivider, wrong Tie organization!End!");
+                        throw new Exception("LibiadaMusic: FmotifDivider, wrong Tie organization!End!");
                     }
                 }
                 else
                 {
                     // когда начинается лига не с флага начала, а с какого то другого, то ошибка
-                    throw new Exception("LibiadaMusic: FmotivDivider, wrong Tie organization!Begining!");
+                    throw new Exception("LibiadaMusic: FmotifDivider, wrong Tie organization!Begining!");
                 }
             }
         }
@@ -572,8 +572,8 @@
         /// <summary>
         /// The divide same duration notes.
         /// </summary>
-        /// <param name="fmotivBuff">
-        /// The fmotiv buff.
+        /// <param name="fmotifBuff">
+        /// The fmotif buff.
         /// </param>
         /// <returns>
         /// The <see cref="List{FMotiv}"/>.
@@ -581,35 +581,35 @@
         /// <exception cref="Exception">
         /// Thrown if amount of collected notes in buffer is less than 2.
         /// </exception>
-        private List<Fmotif> DivideSameDurationNotes(Fmotif fmotivBuff)
+        private List<Fmotif> DivideSameDurationNotes(Fmotif fmotifBuff)
         {
             // создаем копию входного объекта
-            var fmotivBuffer = (Fmotif)fmotivBuff.Clone();
+            var fmotifBuffer = (Fmotif)fmotifBuff.Clone();
 
             // выходной список фмотивов
             var result = new List<Fmotif>();
 
             // проверка на случай когда в аругменте метода количество собранных нот (из пауз/лиг) меньше двух
-            if (ExtractNoteList(fmotivBuffer).Count < 2)
+            if (ExtractNoteList(fmotifBuffer).Count < 2)
             {
                 throw new Exception("LibiadaMusic DivideSameDurationNotes: notes < 2");
             }
 
-            if (ExtractNoteList(fmotivBuffer).Count % 2 == 0)
+            if (ExtractNoteList(fmotifBuffer).Count % 2 == 0)
             {
                 // то начинаем анализ из расчета : по две ноты в фмотиве
                 // сохраняем количество раз, так как потом меняется
-                int count = ExtractNoteList(fmotivBuffer).Count / 2;
+                int count = ExtractNoteList(fmotifBuffer).Count / 2;
                 for (int i = 0; i < count; i++)
                 {
-                    if (FirstPriorityIsLessThanSecond(fmotivBuffer))
+                    if (FirstPriorityIsLessThanSecond(fmotifBuffer))
                     {
                         // приоритет первой ноты выше приоритета второй ноты (собранные ноты)
                         // ПМТ и записываем все что входит в цепочку нот - в эти две собранные ноты, в очередной фмотив
 
                         // собираем в цикле, пока не кончатся ноты в буфере 2 полноценные ноты в зависимостиот того, чем мы считаем паузу
                         // (когда звуковой след, надо добавить в след идущие паузы за последним звуком)
-                        result.Add(ExtractGivenNotesCountFromFmotivBuffer(fmotivBuffer, FmotifType.CompleteMinimalMeasure, 2));
+                        result.Add(ExtractGivenNotesCountFromFmotifBuffer(fmotifBuffer, FmotifType.CompleteMinimalMeasure, 2));
                     }
                     else
                     {
@@ -620,10 +620,10 @@
 
                         // собираем в цикле, пока не кончатся ноты в буфере 1 полноценную ноту в зависимостиот того, чем мы считаем паузу
                         // (когда звуковой след, надо добавить в след идущие паузы за последним звуком)
-                        result.Add(ExtractGivenNotesCountFromFmotivBuffer(fmotivBuffer, FmotifType.PartialMinimalMeasure, 1));
+                        result.Add(ExtractGivenNotesCountFromFmotifBuffer(fmotifBuffer, FmotifType.PartialMinimalMeasure, 1));
 
                         // если осталась одна нота то заносим ее в фмотив ЧМТ
-                        SecondTempMethod(fmotivBuffer, result);
+                        SecondTempMethod(fmotifBuffer, result);
 
                         return result;
                     }
@@ -633,18 +633,18 @@
                 return result;
             }
 
-            if (ExtractNoteList(fmotivBuffer).Count % 3 == 0)
+            if (ExtractNoteList(fmotifBuffer).Count % 3 == 0)
             {
                 // то начинаем анализ из расчета : по три ноты в фмотиве
                 // сохраняем количество раз, так как потом меняется
-                int count = ExtractNoteList(fmotivBuffer).Count / 3;
+                int count = ExtractNoteList(fmotifBuffer).Count / 3;
                 for (int i = 0; i < count; i++)
                 {
-                    if (FirstPriorityIsLessThanSecond(fmotivBuffer))
+                    if (FirstPriorityIsLessThanSecond(fmotifBuffer))
                     {
                         // приоритет первой ноты выше приоритета второй ноты (собранные ноты)
-                        var first = TempExtractor(fmotivBuffer, 0);
-                        var third = TempExtractor(fmotivBuffer, 2);
+                        var first = TempExtractor(fmotifBuffer, 0);
+                        var third = TempExtractor(fmotifBuffer, 2);
                         if (first.Priority < third.Priority)
                         {
                             // приоритет первой ноты выше приоритета третьей ноты (собранные ноты)
@@ -652,7 +652,7 @@
 
                             // собираем в цикле, пока не кончатся ноты в буфере 3 полноценные ноты в зависимости от того, чем мы считаем паузу
                             // (когда звуковой след, надо добавить в след идущие паузы за последним звуком)
-                            result.Add(ExtractGivenNotesCountFromFmotivBuffer(fmotivBuffer, FmotifType.CompleteMinimalMeasure, 3));
+                            result.Add(ExtractGivenNotesCountFromFmotifBuffer(fmotifBuffer, FmotifType.CompleteMinimalMeasure, 3));
                         }
                         else
                         {
@@ -660,8 +660,8 @@
                             // ПМТ и записываем все что входит в цепочку нот - в эти две собранные ноты, в очередной фмотив
                             // (ЧМТ - если есть знак триоли хотя бы у одной ноты)
                             FmotifType typeF = FmotifType.CompleteMinimalMeasure; // тип ПМТ если не триоль
-                            first = TempExtractor(fmotivBuffer, 0);
-                            var second = TempExtractor(fmotivBuffer, 1);
+                            first = TempExtractor(fmotifBuffer, 0);
+                            var second = TempExtractor(fmotifBuffer, 1);
                             if (first.Triplet || second.Triplet)
                             {
                                 typeF = FmotifType.PartialMinimalMeasure; // если есть хотя б один знак триоли
@@ -669,10 +669,10 @@
 
                             // собираем в цикле, пока не кончатся ноты в буфере 2 полноценные ноты в зависимости от того, чем мы считаем паузу
                             // (когда звуковой след, надо добавить в след идущие паузы за последним звуком)
-                            result.Add(ExtractGivenNotesCountFromFmotivBuffer(fmotivBuffer, typeF, 2));
+                            result.Add(ExtractGivenNotesCountFromFmotifBuffer(fmotifBuffer, typeF, 2));
 
                             // если осталась одна нота то заносим ее в фмотив ЧМТ
-                            SecondTempMethod(fmotivBuffer, result);
+                            SecondTempMethod(fmotifBuffer, result);
                             return result;
                         }
                     }
@@ -685,10 +685,10 @@
 
                         // собираем в цикле, пока не кончатся ноты в буфере 1 полноценная нота в зависимости от того, чем мы считаем паузу
                         // (когда звуковой след, надо добавить в след идущие паузы за последним звуком)
-                        result.Add(ExtractGivenNotesCountFromFmotivBuffer(fmotivBuffer, FmotifType.PartialMinimalMeasure, 1));
+                        result.Add(ExtractGivenNotesCountFromFmotifBuffer(fmotifBuffer, FmotifType.PartialMinimalMeasure, 1));
 
                         // если осталась одна нота то заносим ее в фмотив ЧМТ
-                        SecondTempMethod(fmotivBuffer, result);
+                        SecondTempMethod(fmotifBuffer, result);
                         return result;
                     }
                 }
@@ -700,17 +700,17 @@
             {
                 // то начинаем анализ из расчета : по две ноты в фмотиве (к-3)/2 раза, а в последнем 3 ноты
                 // сохраняем количество раз, так как потом меняется
-                int count = (ExtractNoteList(fmotivBuffer).Count - 3) / 2;
+                int count = (ExtractNoteList(fmotifBuffer).Count - 3) / 2;
                 for (int i = 0; i < count; i++)
                 {
-                    if (FirstPriorityIsLessThanSecond(fmotivBuffer))
+                    if (FirstPriorityIsLessThanSecond(fmotifBuffer))
                     {
                         // приоритет первой ноты выше приоритета второй ноты (собранные ноты)
                         // ПМТ и записываем все что входит в цепочку нот - в эти две собранные ноты, в очередной фмотив
 
                         // собираем в цикле, пока не кончатся ноты в буфере 2 полноценные ноты в зависимости от того, чем мы считаем паузу
                         // (когда звуковой след, надо добавить в след идущие паузы за последним звуком)
-                        result.Add(ExtractGivenNotesCountFromFmotivBuffer(fmotivBuffer, FmotifType.CompleteMinimalMeasure, 2));
+                        result.Add(ExtractGivenNotesCountFromFmotifBuffer(fmotifBuffer, FmotifType.CompleteMinimalMeasure, 2));
                     }
                     else
                     {
@@ -721,15 +721,15 @@
 
                         // собираем в цикле, пока не кончатся ноты в буфере 1 полноценную ноту в зависимости от того, чем мы считаем паузу
                         // (когда звуковой след, надо добавить в след идущие паузы за последним звуком)
-                        result.Add(ExtractGivenNotesCountFromFmotivBuffer(fmotivBuffer, FmotifType.PartialMinimalMeasure, 1));
+                        result.Add(ExtractGivenNotesCountFromFmotifBuffer(fmotifBuffer, FmotifType.PartialMinimalMeasure, 1));
 
                         // вызываем рекурсию на оставшиеся ноты
                         // отправляем последовательность равнодлительных звуков на анализ, получаем цепочку фмотивов и заносим их в выходную последовательность
-                        List<Fmotif> dividedSameDuration = DivideSameDurationNotes(fmotivBuffer);
-                        foreach (Fmotif fmotiv in dividedSameDuration)
+                        List<Fmotif> dividedSameDuration = DivideSameDurationNotes(fmotifBuffer);
+                        foreach (Fmotif fmotif in dividedSameDuration)
                         {
                             // заносим очередной фмотив
-                            result.Add((Fmotif)fmotiv.Clone());
+                            result.Add((Fmotif)fmotif.Clone());
                         }
 
                         return result;
@@ -737,11 +737,11 @@
                 }
 
                 // анализируем оставшиеся 3 ноты
-                if (FirstPriorityIsLessThanSecond(fmotivBuffer))
+                if (FirstPriorityIsLessThanSecond(fmotifBuffer))
                 {
                     // приоритет первой ноты выше приоритета второй ноты (собранные ноты) !!!!!!!!!!!!!!!!!!! сравнение на саомо деле происход первой и третьей, разве нет? 08.04.2012
-                    var first = TempExtractor(fmotivBuffer, 0);
-                    var third = TempExtractor(fmotivBuffer, 2);
+                    var first = TempExtractor(fmotifBuffer, 0);
+                    var third = TempExtractor(fmotifBuffer, 2);
                     if (first.Priority < third.Priority)
                     {
                         // приоритет первой ноты выше приоритета третьей ноты (собранные ноты)
@@ -749,7 +749,7 @@
 
                         // собираем в цикле, пока не кончатся ноты в буфере 3 полноценные ноты в зависимости от того, чем мы считаем паузу
                         // (когда звуковой след, надо добавить в след идущие паузы за последним звуком)
-                        result.Add(ExtractGivenNotesCountFromFmotivBuffer(fmotivBuffer, FmotifType.CompleteMinimalMeasure, 3));
+                        result.Add(ExtractGivenNotesCountFromFmotifBuffer(fmotifBuffer, FmotifType.CompleteMinimalMeasure, 3));
                     }
                     else
                     {
@@ -757,8 +757,8 @@
                         // ПМТ и записываем все что входит в цепочку нот - в эти две собранные ноты, в очередной фмотив
                         // (ЧМТ - если есть знак триоли хотя бы у одной ноты)
                         FmotifType typeF = FmotifType.CompleteMinimalMeasure; // тип ПМТ если не триоль
-                        first = TempExtractor(fmotivBuffer, 0);
-                        var second = TempExtractor(fmotivBuffer, 1);
+                        first = TempExtractor(fmotifBuffer, 0);
+                        var second = TempExtractor(fmotifBuffer, 1);
                         if (first.Triplet || second.Triplet)
                         {
                             typeF = FmotifType.PartialMinimalMeasure; // если есть хотя б один знак триоли
@@ -766,10 +766,10 @@
 
                         // собираем в цикле, пока не кончатся ноты в буфере 3 полноценные ноты в зависимости от того, чем мы считаем паузу
                         // (когда звуковой след, надо добавить в след идущие паузы за последним звуком)
-                        result.Add(ExtractGivenNotesCountFromFmotivBuffer(fmotivBuffer, typeF, 2));
+                        result.Add(ExtractGivenNotesCountFromFmotifBuffer(fmotifBuffer, typeF, 2));
 
                         // если осталась одна нота то заносим ее в фмотив ЧМТ
-                        SecondTempMethod(fmotivBuffer, result);
+                        SecondTempMethod(fmotifBuffer, result);
                         return result;
                     }
                 }
@@ -782,10 +782,10 @@
 
                     // собираем в цикле, пока не кончатся ноты в буфере 3 полноценные ноты в зависимости от того, чем мы считаем паузу
                     // (когда звуковой след, надо добавить в след идущие паузы за последним звуком)
-                    result.Add(ExtractGivenNotesCountFromFmotivBuffer(fmotivBuffer, FmotifType.PartialMinimalMeasure, 1));
+                    result.Add(ExtractGivenNotesCountFromFmotifBuffer(fmotifBuffer, FmotifType.PartialMinimalMeasure, 1));
 
                     // если осталась одна нота то заносим ее в фмотив ЧМТ
-                    SecondTempMethod(fmotivBuffer, result);
+                    SecondTempMethod(fmotifBuffer, result);
                     return result;
                 }
 
@@ -797,8 +797,8 @@
         /// <summary>
         /// The temp extractor.
         /// </summary>
-        /// <param name="fmotivBuffer">
-        /// The fmotiv buffer.
+        /// <param name="fmotifBuffer">
+        /// The fmotif buffer.
         /// </param>
         /// <param name="index">
         /// The index.
@@ -806,38 +806,38 @@
         /// <returns>
         /// The <see cref="ValueNote"/>.
         /// </returns>
-        private ValueNote TempExtractor(Fmotif fmotivBuffer, int index)
+        private ValueNote TempExtractor(Fmotif fmotifBuffer, int index)
         {
-            return ExtractNoteList(fmotivBuffer)[index];
+            return ExtractNoteList(fmotifBuffer)[index];
         }
 
         /// <summary>
         /// The extract note list.
         /// </summary>
-        /// <param name="fmotivBuffer">
-        /// The fmotiv buffer.
+        /// <param name="fmotifBuffer">
+        /// The fmotif buffer.
         /// </param>
         /// <returns>
         /// The <see cref="List{ValueNote}"/>.
         /// </returns>
-        private List<ValueNote> ExtractNoteList(Fmotif fmotivBuffer)
+        private List<ValueNote> ExtractNoteList(Fmotif fmotifBuffer)
         {
-            return fmotivBuffer.PauseTreatment(paramPauseTreatment).TieGathered().NoteList;
+            return fmotifBuffer.PauseTreatment(paramPauseTreatment).TieGathered().NoteList;
         }
 
         /// <summary>
         /// The third temp comparator.
         /// </summary>
-        /// <param name="fmotivBuffer">
-        /// The fmotiv buffer.
+        /// <param name="fmotifBuffer">
+        /// The fmotif buffer.
         /// </param>
         /// <returns>
         /// The <see cref="bool"/>.
         /// </returns>
-        private bool FirstPriorityIsLessThanSecond(Fmotif fmotivBuffer)
+        private bool FirstPriorityIsLessThanSecond(Fmotif fmotifBuffer)
         {
-            var first = TempExtractor(fmotivBuffer, 0);
-            var second = TempExtractor(fmotivBuffer, 1);
+            var first = TempExtractor(fmotifBuffer, 0);
+            var second = TempExtractor(fmotifBuffer, 1);
             return first.Priority < second.Priority;
         }
 
@@ -856,12 +856,12 @@
         /// <returns>
         /// The <see cref="Fmotif"/>.
         /// </returns>
-        private Fmotif ExtractGivenNotesCountFromFmotivBuffer(Fmotif fmotifBuffer, FmotifType fmotifType, int noteCount)
+        private Fmotif ExtractGivenNotesCountFromFmotifBuffer(Fmotif fmotifBuffer, FmotifType fmotifType, int noteCount)
         {
-            var fmotiv = new Fmotif(fmotifType, paramPauseTreatment);
+            var fmotif = new Fmotif(fmotifType, paramPauseTreatment);
             while (fmotifBuffer.NoteList.Count > 0)
             {
-                if (ExtractNoteList(fmotiv).Count == noteCount)
+                if (ExtractNoteList(fmotif).Count == noteCount)
                 {
                     if (paramPauseTreatment != ParamPauseTreatment.NoteTrace)
                     {
@@ -875,48 +875,48 @@
                     }
                 }
 
-                fmotiv.NoteList.Add((ValueNote)fmotifBuffer.NoteList[0].Clone());
+                fmotif.NoteList.Add((ValueNote)fmotifBuffer.NoteList[0].Clone());
                 fmotifBuffer.NoteList.RemoveAt(0);
 
-                MoveTiedNotesFromFmotivBufferToFmotiv(fmotiv, fmotifBuffer);
+                MoveTiedNotesFromFmotifBufferToFmotif(fmotif, fmotifBuffer);
             }
 
-            return (Fmotif)fmotiv.Clone();
+            return (Fmotif)fmotif.Clone();
         }
 
         /// <summary>
         /// The second temp method.
         /// </summary>
-        /// <param name="fmotivBuffer">
-        /// The fmotiv buffer.
+        /// <param name="fmotifBuffer">
+        /// The fmotif buffer.
         /// </param>
-        /// <param name="fmotivList">
-        /// The fmotiv list.
+        /// <param name="fmotifList">
+        /// The fmotif list.
         /// </param>
-        private void SecondTempMethod(Fmotif fmotivBuffer, List<Fmotif> fmotivList)
+        private void SecondTempMethod(Fmotif fmotifBuffer, List<Fmotif> fmotifList)
         {
-            if (ExtractNoteList(fmotivBuffer).Count == 1)
+            if (ExtractNoteList(fmotifBuffer).Count == 1)
             {
                 var fm = new Fmotif(FmotifType.PartialMinimalMeasure, paramPauseTreatment);
-                for (int j = 0; j < fmotivBuffer.NoteList.Count; j++)
+                for (int j = 0; j < fmotifBuffer.NoteList.Count; j++)
                 {
                     // заносим
-                    fm.NoteList.Add((ValueNote)fmotivBuffer.NoteList[j].Clone());
+                    fm.NoteList.Add((ValueNote)fmotifBuffer.NoteList[j].Clone());
                 }
 
                 // добавляем в выходную цепочку получившийся фмотив
-                fmotivList.Add((Fmotif)fm.Clone());
-                fmotivBuffer.NoteList.Clear();
+                fmotifList.Add((Fmotif)fm.Clone());
+                fmotifBuffer.NoteList.Clear();
             }
             else
             {
                 // если больше 1 ноты, то вызываем рекурсию на оставшиеся ноты
                 // отправляем последовательность равнодлительных звуков на анализ, получаем цепочку фмотивов и заносим их в выходную последовательность
-                List<Fmotif> dividedSameDuration = DivideSameDurationNotes(fmotivBuffer);
-                foreach (Fmotif fmotiv in dividedSameDuration)
+                List<Fmotif> dividedSameDuration = DivideSameDurationNotes(fmotifBuffer);
+                foreach (Fmotif fmotif in dividedSameDuration)
                 {
                     // заносим очередной фмотив
-                    fmotivList.Add((Fmotif)fmotiv.Clone());
+                    fmotifList.Add((Fmotif)fmotif.Clone());
                 }
             }
         }

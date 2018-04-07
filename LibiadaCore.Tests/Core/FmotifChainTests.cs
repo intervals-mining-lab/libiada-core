@@ -7,16 +7,16 @@
     using NUnit.Framework;
 
     /// <summary>
-    /// The fmotiv chain tests.
+    /// The fmotif chain tests.
     /// </summary>
     [TestFixture]
     public class FmotifChainTests
     {
         /// <summary>
-        /// The fmotiv chain test.
+        /// The fmotif chain test.
         /// </summary>
         [Test]
-        public void FmotivChainTest()
+        public void FmotifChainTest()
         {
             var chain = new FmotifChain();
             chain.FmotifsList.Add(new Fmotif(FmotifType.CompleteMinimalMeasure, ParamPauseTreatment.Ignore, 0));
@@ -28,50 +28,50 @@
         }
 
         /// <summary>
-        /// The fmotiv chain equals test.
+        /// The fmotif chain equals test.
         /// </summary>
         [Test]
-        public void FmotivChainEqualsTest()
+        public void FmotifChainEqualsTest()
         {
-            var fmotiv1 = new Fmotif(FmotifType.CompleteMinimalMeasure, ParamPauseTreatment.Ignore, 0);
-            var fmotiv2 = new Fmotif(FmotifType.CompleteMinimalMeasure, ParamPauseTreatment.Ignore, 1);
+            var fmotif1 = new Fmotif(FmotifType.CompleteMinimalMeasure, ParamPauseTreatment.Ignore, 0);
+            var fmotif2 = new Fmotif(FmotifType.CompleteMinimalMeasure, ParamPauseTreatment.Ignore, 1);
 
-            fmotiv1.NoteList.Add(new ValueNote(new Pitch(3, NoteSymbol.E, 0), new Duration(1, 4, false, 512), false, Tie.None));
-            fmotiv1.NoteList.Add(new ValueNote(new Pitch(3, NoteSymbol.A, 0), new Duration(1, 4, false, 512), false, Tie.None));
+            fmotif1.NoteList.Add(new ValueNote(new Pitch(3, NoteSymbol.E, 0), new Duration(1, 4, false, 512), false, Tie.None));
+            fmotif1.NoteList.Add(new ValueNote(new Pitch(3, NoteSymbol.A, 0), new Duration(1, 4, false, 512), false, Tie.None));
 
-            fmotiv2.NoteList.Add(new ValueNote(new Pitch(3, NoteSymbol.B, 0), new Duration(1, 4, false, 512), false, Tie.None));
-            fmotiv2.NoteList.Add(new ValueNote(new Pitch(3, NoteSymbol.A, 0), new Duration(1, 4, false, 512), false, Tie.None));
+            fmotif2.NoteList.Add(new ValueNote(new Pitch(3, NoteSymbol.B, 0), new Duration(1, 4, false, 512), false, Tie.None));
+            fmotif2.NoteList.Add(new ValueNote(new Pitch(3, NoteSymbol.A, 0), new Duration(1, 4, false, 512), false, Tie.None));
 
             var firstChain = new FmotifChain();
-            firstChain.FmotifsList.Add(fmotiv1);
-            firstChain.FmotifsList.Add(fmotiv2);
+            firstChain.FmotifsList.Add(fmotif1);
+            firstChain.FmotifsList.Add(fmotif2);
 
             var secondChain = new FmotifChain();
-            secondChain.FmotifsList.Add(fmotiv1);
-            secondChain.FmotifsList.Add(fmotiv2);
+            secondChain.FmotifsList.Add(fmotif1);
+            secondChain.FmotifsList.Add(fmotif2);
             Assert.IsTrue(firstChain.Equals(secondChain));
 
             secondChain = new FmotifChain();
-            secondChain.FmotifsList.Add(fmotiv2);
-            secondChain.FmotifsList.Add(fmotiv1);
+            secondChain.FmotifsList.Add(fmotif2);
+            secondChain.FmotifsList.Add(fmotif1);
             Assert.IsFalse(firstChain.Equals(secondChain));
 
             secondChain = new FmotifChain();
-            secondChain.FmotifsList.Add(fmotiv2);
-            secondChain.FmotifsList.Add(fmotiv2);
+            secondChain.FmotifsList.Add(fmotif2);
+            secondChain.FmotifsList.Add(fmotif2);
             Assert.IsFalse(firstChain.Equals(secondChain));
 
             firstChain = new FmotifChain();
-            firstChain.FmotifsList.Add(fmotiv1);
-            firstChain.FmotifsList.Add(fmotiv1);
-            firstChain.FmotifsList.Add(fmotiv2);
-            firstChain.FmotifsList.Add(fmotiv1);
+            firstChain.FmotifsList.Add(fmotif1);
+            firstChain.FmotifsList.Add(fmotif1);
+            firstChain.FmotifsList.Add(fmotif2);
+            firstChain.FmotifsList.Add(fmotif1);
 
             secondChain = new FmotifChain();
-            secondChain.FmotifsList.Add(fmotiv1);
-            secondChain.FmotifsList.Add(fmotiv1);
-            secondChain.FmotifsList.Add(fmotiv2);
-            secondChain.FmotifsList.Add(fmotiv1);
+            secondChain.FmotifsList.Add(fmotif1);
+            secondChain.FmotifsList.Add(fmotif1);
+            secondChain.FmotifsList.Add(fmotif2);
+            secondChain.FmotifsList.Add(fmotif1);
             Assert.IsTrue(firstChain.Equals(secondChain));
         }
     }

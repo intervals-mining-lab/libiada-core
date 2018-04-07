@@ -32,9 +32,9 @@
         public IBaseObject Clone()
         {
             var clone = new FmotifChain();
-            foreach (Fmotif fmotiv in FmotifsList)
+            foreach (Fmotif fmotif in FmotifsList)
             {
-                clone.FmotifsList.Add((Fmotif)fmotiv.Clone());
+                clone.FmotifsList.Add((Fmotif)fmotif.Clone());
             }
 
             return clone;

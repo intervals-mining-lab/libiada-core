@@ -4,7 +4,7 @@
     using System.ComponentModel.DataAnnotations;
 
     /// <summary>
-    /// The fmotiv type.
+    /// The fmotif type.
     /// </summary>
     public enum FmotifType : byte
     {
