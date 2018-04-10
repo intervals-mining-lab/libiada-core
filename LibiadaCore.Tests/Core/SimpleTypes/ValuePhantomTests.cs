@@ -1,6 +1,5 @@
 namespace LibiadaCore.Tests.Core.SimpleTypes
 {
-    using LibiadaCore.Core;
     using LibiadaCore.Core.SimpleTypes;
 
     using NUnit.Framework;

@@ -1,7 +1,6 @@
 ﻿namespace LibiadaCore.Core.SimpleTypes
 {
     using System;
-    using System.IO.Compression;
 
     /// <summary>
     /// The duration type.
