@@ -6,6 +6,9 @@
 
     using NUnit.Framework;
 
+    /// <summary>
+    /// The average word length tests.
+    /// </summary>
     [TestFixture]
     public class AverageWordLengthTests : FullCalculatorsTests<AverageWordLength>
     {
@@ -29,6 +32,9 @@
             ChainCharacteristicTest(index, Link.NotApplied, value);
         }
 
+        /// <summary>
+        /// The calculation test.
+        /// </summary>
         [Test]
         public void CalculationTest()
         {
@@ -42,6 +48,36 @@
             };
             double actual = Calculator.Calculate(sequence, Link.NotApplied);
             Assert.AreEqual(5, actual, 0.0001);
+
+            sequence = new Chain(10)
+            {
+                [0] = new ValueString("qwer"),
+                [1] = new ValueString("kfjvu"),
+                [2] = new ValueString("osmejbh"),
+                [3] = new ValueString("sbwhjvuynr"),
+                [4] = new ValueString("yuekxogh"),
+                [5] = new ValueString("zxcbv"),
+                [6] = new ValueString("vngjm,m"),
+                [7] = new ValueString("e"),
+                [8] = new ValueString("hh"),
+                [9] = new ValueString("poiygtr")
+            };
+            actual = Calculator.Calculate(sequence, Link.NotApplied);
+            Assert.AreEqual(5.6, actual, 0.0001);
+
+            sequence = new Chain(8)
+            {
+                [0] = new ValueString("1234567"),
+                [1] = new ValueString("890"),
+                [2] = new ValueString("12"),
+                [3] = new ValueString("3456"),
+                [4] = new ValueString("7890123"),
+                [5] = new ValueString("4567890123"),
+                [6] = new ValueString("456789012"),
+                [7] = new ValueString("3456789012345")
+            };
+            actual = Calculator.Calculate(sequence, Link.NotApplied);
+            Assert.AreEqual(6.875, actual, 0.0001);
         }
     }
 }
