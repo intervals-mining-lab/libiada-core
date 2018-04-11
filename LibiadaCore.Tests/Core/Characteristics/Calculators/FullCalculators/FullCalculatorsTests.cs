@@ -24,7 +24,7 @@
         /// <summary>
         /// Gets or sets the calculator.
         /// </summary>
-        private readonly T calculator = new T();
+        protected readonly T Calculator = new T();
 
         /// <summary>
         /// The chain characteristic test.
@@ -41,7 +41,7 @@
         protected void ChainCharacteristicTest(int index, Link link, double value)
         {
             chains[index].FillIntervalManagers();
-            Assert.AreEqual(value, calculator.Calculate(chains[index], link), 0.0001);
+            Assert.AreEqual(value, this.Calculator.Calculate(chains[index], link), 0.0001);
         }
 
         /// <summary>
@@ -59,7 +59,7 @@
         protected void SeriesCharacteristicTest(int index, Link link, double value)
         {
             chains[index].SetArrangementManagers(ArrangementType.Series);
-            Assert.AreEqual(value, calculator.Calculate(chains[index], link), 0.0001);
+            Assert.AreEqual(value, this.Calculator.Calculate(chains[index], link), 0.0001);
         }
     }
 }
