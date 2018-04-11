@@ -384,6 +384,13 @@
         /// </summary>
         [Display(Name = "Volume")]
         [Description("Calculated as product of all intervals in sequence")]
-        Volume = 54
+        Volume = 54,
+
+        /// <summary>
+        /// The remoteness standard deviation.
+        /// </summary>
+        [Display(Name = "Information amount")]
+        [Description("The complete amount of information in sequence.")]
+        InformationAmount = 55
     }
 }

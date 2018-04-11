@@ -137,43 +137,50 @@
         /// <summary>
         /// The remoteness dispersion.
         /// </summary>
-        [Display(Name = "Remoteness Dispersion")]
+        [Display(Name = "Remoteness dispersion")]
         [Description("")]
         RemotenessDispersion = 19,
 
         /// <summary>
         /// The remoteness kurtosis.
         /// </summary>
-        [Display(Name = "Remoteness Kurtosis")]
+        [Display(Name = "Remoteness kurtosis")]
         [Description("")]
         RemotenessKurtosis = 20,
 
         /// <summary>
         /// The remoteness kurtosis coefficient.
         /// </summary>
-        [Display(Name = "Remoteness Kurtosis Coefficient")]
+        [Display(Name = "Remoteness kurtosis coefficient")]
         [Description("")]
         RemotenessKurtosisCoefficient = 21,
 
         /// <summary>
         /// The remoteness skewness.
         /// </summary>
-        [Display(Name = "Remoteness Skewness")]
+        [Display(Name = "Remoteness skewness")]
         [Description("")]
         RemotenessSkewness = 22,
 
         /// <summary>
         /// The remoteness skewness coefficient.
         /// </summary>
-        [Display(Name = "Remoteness Skewness Coefficient")]
+        [Display(Name = "Remoteness skewness coefficient")]
         [Description("")]
         RemotenessSkewnessCoefficient = 23,
 
         /// <summary>
         /// The remoteness standard deviation.
         /// </summary>
-        [Display(Name = "Remoteness Standard Deviation")]
+        [Display(Name = "Remoteness standard deviation")]
         [Description("")]
-        RemotenessStandardDeviation = 24
+        RemotenessStandardDeviation = 24,
+
+        /// <summary>
+        /// The remoteness standard deviation.
+        /// </summary>
+        [Display(Name = "Information amount")]
+        [Description("The complete amount of information in sequence.")]
+        InformationAmount = 25
     }
 }

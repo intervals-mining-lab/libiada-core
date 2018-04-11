@@ -71,6 +71,8 @@ namespace LibiadaCore.Core.Characteristics.Calculators.CongenericCalculators
                     return new RemotenessSkewnessCoefficient();
                 case CongenericCharacteristic.RemotenessStandardDeviation:
                     return new RemotenessStandardDeviation();
+                case CongenericCharacteristic.InformationAmount:
+                    return new InformationAmount();
                 default:
                     throw new InvalidEnumArgumentException(nameof(type), (int)type, typeof(CongenericCharacteristic));
             }
