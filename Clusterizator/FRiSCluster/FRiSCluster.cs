@@ -294,15 +294,15 @@
         /// </returns>
         private int[] DetermineClusters(List<int> pillarIndexes)
         {
-            var clustersBelonging = new int[data.Length];
+            var clustersBelonging = new int[distances.GetLength(0)];
 
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < clustersBelonging.Length; i++)
             {
                 var clusterNumber = 0;
 
                 for (int j = 1; j < pillarIndexes.Count; j++)
                 {
-                    if (distances[pillarIndexes[j], i] < distances[clusterNumber, i])
+                    if (distances[pillarIndexes[j], i] < distances[pillarIndexes[clusterNumber], i])
                     {
                         clusterNumber = j;
                     }
