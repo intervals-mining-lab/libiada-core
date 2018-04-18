@@ -5,7 +5,7 @@
     using NUnit.Framework;
 
     /// <summary>
-    /// The f ri s cluster tests.
+    /// The FRiS cluster tests.
     /// </summary>
     [TestFixture]
     public class FRiSClusterTests

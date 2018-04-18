@@ -6,7 +6,7 @@
     using NUnit.Framework;
 
     /// <summary>
-    /// The f ri s cluster tests.
+    /// The k-means cluster tests.
     /// </summary>
     [TestFixture]
     public class KMeansClusterizationTests
