@@ -170,35 +170,100 @@
         }
 
         /// <summary>
-        /// The equals test.
+        /// The equals tests.
         /// </summary>
-        [Test]
-        public void EqualsTest()
+        /// <param name="firstElementsList">
+        /// First alphabet elements list.
+        /// </param>
+        /// <param name="secondElementsList">
+        /// Second alphabet elements list.
+        /// </param>
+        /// <param name="equals">
+        /// Equals flag.
+        /// </param>
+        [TestCase(new[] { "a", "b", "c" }, new[] { "a", "b", "c" }, true)]
+        [TestCase(new[] { "a", "b", "c", "d" }, new[] { "a", "b", "c" }, false)]
+        [TestCase(new[] { "a", "c", "b" }, new[] { "a", "b", "c" }, false)]
+        [TestCase(new[] { "c", "b", "a" }, new[] { "a", "b", "c", "d" }, false)]
+        [TestCase(new[] { "aa", "bb", "cc" }, new[] { "a", "b", "c" }, false)]
+        [TestCase(new[] { "aa", "bb", "cc" }, new string[0], false)]
+        [TestCase(new string[0], new string[0], true)]
+        public void EqualsTests(string[] firstElementsList, string[] secondElementsList, bool equals)
         {
-            firstAlphabet.Add(new ValueString('a'));
-            firstAlphabet.Add(new ValueString('b'));
-            firstAlphabet.Add(new ValueString('c'));
-            secondAlphabet.Add(new ValueString('a'));
-            secondAlphabet.Add(new ValueString('b'));
-            secondAlphabet.Add(new ValueString('c'));
-            Assert.IsTrue(firstAlphabet.Equals(firstAlphabet.Clone()));
-            Assert.IsTrue(firstAlphabet.Equals(secondAlphabet));
+            foreach (string element in firstElementsList)
+            {
+                firstAlphabet.Add(new ValueString(element));
+            }
+
+            foreach (string element in secondElementsList)
+            {
+                secondAlphabet.Add(new ValueString(element));
+            }
+
+            Assert.AreEqual(equals, firstAlphabet.Equals(secondAlphabet));
+            Assert.AreEqual(equals, secondAlphabet.Equals(firstAlphabet));
         }
 
         /// <summary>
-        /// The equals for alphabet with equals composition but not equals order test.
+        /// Tests for alphabets comparison as sets.
+        /// </summary>
+        /// <param name="firstElementsList">
+        /// First alphabet elements list.
+        /// </param>
+        /// <param name="secondElementsList">
+        /// Second alphabet elements list.
+        /// </param>
+        /// <param name="equals">
+        /// Equals flag.
+        /// </param>
+        [TestCase(new[] { "a", "b", "c" }, new[] { "a", "b", "c" }, true)]
+        [TestCase(new[] { "a", "b", "c", "d" }, new[] { "a", "b", "c" }, false)]
+        [TestCase(new[] { "a", "c", "b" }, new[] { "a", "b", "c" }, true)]
+        [TestCase(new[] { "c", "b", "a" }, new[] { "a", "b", "c", "d" }, false)]
+        [TestCase(new[] { "aa", "bb", "cc" }, new[] { "a", "b", "c" }, false)]
+        [TestCase(new[] { "aa", "bb", "cc" }, new string[0], false)]
+        [TestCase(new string[0], new string[0], true)]
+        public void SetEqualsTests(string[] firstElementsList, string[] secondElementsList, bool equals)
+        {
+            foreach (string element in firstElementsList)
+            {
+                firstAlphabet.Add(new ValueString(element));
+            }
+
+            foreach (string element in secondElementsList)
+            {
+                secondAlphabet.Add(new ValueString(element));
+            }
+
+            Assert.AreEqual(equals, firstAlphabet.SetEquals(secondAlphabet));
+            Assert.AreEqual(equals, secondAlphabet.SetEquals(firstAlphabet));
+        }
+
+        /// <summary>
+        /// Tests for alphabets comparison as sets.
+        /// With alphabets containing NullValue.
         /// </summary>
         [Test]
-        public void EqualsForAlphabetWithEqualsCompositionButNotEqualsOrderTest()
+        public void SetEqualsWithNullValueTest()
         {
-            firstAlphabet.Add(new ValueString('a'));
-            firstAlphabet.Add(new ValueString('b'));
-            firstAlphabet.Add(new ValueString('c'));
-            secondAlphabet.Add(new ValueString('a'));
-            secondAlphabet.Add(new ValueString('b'));
-            secondAlphabet.Add(new ValueString('c'));
-            Assert.IsTrue(firstAlphabet.Equals(firstAlphabet.Clone()));
-            Assert.IsTrue(firstAlphabet.Equals(secondAlphabet));
+            firstAlphabet.Add(NullValue.Instance());
+            firstAlphabet.Add((ValueInt)1);
+            firstAlphabet.Add((ValueString)"a");
+            firstAlphabet.Add((ValueInt)2);
+            secondAlphabet.Add(NullValue.Instance());
+            secondAlphabet.Add((ValueInt)1);
+            secondAlphabet.Add((ValueString)"a");
+            secondAlphabet.Add((ValueInt)2);
+            Assert.IsTrue(firstAlphabet.SetEquals(secondAlphabet));
+
+            firstAlphabet = new Alphabet { NullValue.Instance(), (ValueInt)1, (ValueString)"a", (ValueInt)2 };
+            secondAlphabet = new Alphabet { NullValue.Instance(), (ValueInt)2, (ValueInt)1, (ValueString)"a" };
+            Assert.IsTrue(firstAlphabet.SetEquals(secondAlphabet));
+
+            firstAlphabet = new Alphabet { NullValue.Instance(), (ValueInt)1, (ValueString)"a", (ValueInt)2 };
+            secondAlphabet = new Alphabet { (ValueInt)2, (ValueInt)1, (ValueString)"a" };
+            Assert.IsFalse(firstAlphabet.SetEquals(secondAlphabet));
+            Assert.IsFalse(secondAlphabet.SetEquals(firstAlphabet));
         }
 
         /// <summary>

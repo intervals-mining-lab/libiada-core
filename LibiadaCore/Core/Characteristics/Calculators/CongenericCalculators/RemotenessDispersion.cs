@@ -27,7 +27,6 @@
         {
             var intervals = new List<int>();
             intervals.AddRange(chain.GetArrangement(link).ToList());
-            
 
             if (intervals.Count == 0)
             {

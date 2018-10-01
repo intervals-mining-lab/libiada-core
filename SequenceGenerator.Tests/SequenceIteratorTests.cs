@@ -44,7 +44,7 @@
         public void EnumeratorTest()
         {
             var iterator = new SequenceIterator(3, 2);
-            int[][] expected = 
+            int[][] expected =
             {
                 new[] { 1, 1, 1 },
                 new[] { 2, 1, 1 },

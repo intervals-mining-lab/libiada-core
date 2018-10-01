@@ -137,6 +137,26 @@ namespace LibiadaCore.Core
         }
 
         /// <summary>
+        /// Compares alphabet with another alphabet as sets.
+        /// Order of elements is not taken into account.
+        /// </summary>
+        /// <param name="other">
+        /// Another alphabet.
+        /// </param>
+        /// <returns>
+        /// true if alphabets are equal as sets and false otherwise.
+        /// </returns>
+        public bool SetEquals(Alphabet other)
+        {
+            if (Equals(other))
+            {
+                return true;
+            }
+
+            return new HashSet<IBaseObject>(Elements).SetEquals(new HashSet<IBaseObject>(other.Elements));
+        }
+
+        /// <summary>
         /// Searches position of element in alphabet.
         /// </summary>
         /// <param name="obj">
@@ -242,7 +262,6 @@ namespace LibiadaCore.Core
 
                 return hashCode;
             }
-
         }
     }
 }
