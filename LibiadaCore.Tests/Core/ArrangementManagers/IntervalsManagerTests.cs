@@ -27,7 +27,7 @@
         /// The congeneric intervals manager creation none link test.
         /// </summary>
         /// <param name="index">
-        /// The index.
+        /// Congeneric sequence index in <see cref="ChainsStorage"/>.
         /// </param>
         /// <param name="link">
         /// The link.

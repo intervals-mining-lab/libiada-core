@@ -29,7 +29,7 @@
         /// The congeneric chain characteristic test.
         /// </summary>
         /// <param name="index">
-        /// The index.
+        /// The congeneric sequence index in <see cref="ChainsStorage"/>.
         /// </param>
         /// <param name="link">
         /// The link.

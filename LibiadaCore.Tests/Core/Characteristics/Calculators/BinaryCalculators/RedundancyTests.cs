@@ -14,7 +14,7 @@
         /// The chain calculation test.
         /// </summary>
         /// <param name="index">
-        /// The index.
+        /// Binary sequence index in <see cref="ChainsStorage"/>.
         /// </param>
         /// <param name="firstValue">
         /// The first value.

@@ -16,7 +16,7 @@
         /// The chain calculation test.
         /// </summary>
         /// <param name="index">
-        /// The index.
+        /// Full sequence index in <see cref="ChainsStorage"/>.
         /// </param>
         /// <param name="value">
         /// The value.

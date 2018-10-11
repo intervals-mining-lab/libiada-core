@@ -18,7 +18,7 @@
         /// <summary>
         /// The binary chains.
         /// </summary>
-        private readonly List<Chain> chains = ChainsStorage.BinaryChains;
+        private readonly List<Chain> binaryChains = ChainsStorage.BinaryChains;
 
         /// <summary>
         /// The congeneric chains.
@@ -39,7 +39,7 @@
         /// The calculation test.
         /// </summary>
         /// <param name="index">
-        /// The index.
+        /// Binary sequence index in <see cref="ChainsStorage"/>.
         /// </param>
         /// <param name="firstValue">
         /// The first value.
@@ -49,8 +49,8 @@
         /// </param>
         protected void CalculationTest(int index, double firstValue, double secondValue)
         {
-            var firstChain = chains[index].CongenericChain(elements["A"]);
-            var secondChain = chains[index].CongenericChain(elements["B"]);
+            var firstChain = binaryChains[index].CongenericChain(elements["A"]);
+            var secondChain = binaryChains[index].CongenericChain(elements["B"]);
             double result1 = calculator.Calculate(firstChain, secondChain, Link.End);
             double result2 = calculator.Calculate(secondChain, firstChain, Link.End);
             Assert.AreEqual(firstValue, result1, 0.0001);
@@ -61,10 +61,10 @@
         /// The calculation test.
         /// </summary>
         /// <param name="firstIndex">
-        /// The first index.
+        /// First congeneric sequence index in <see cref="ChainsStorage"/>.
         /// </param>
         /// <param name="secondIndex">
-        /// The second index.
+        /// Second congeneric sequence index in <see cref="ChainsStorage"/>.
         /// </param>
         /// <param name="firstValue">
         /// The first value.

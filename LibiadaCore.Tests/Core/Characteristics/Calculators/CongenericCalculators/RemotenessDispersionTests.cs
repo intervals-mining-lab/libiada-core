@@ -1,4 +1,4 @@
-namespace LibiadaCore.Tests.Core.Characteristics.Calculators.CongenericCalculators
+﻿namespace LibiadaCore.Tests.Core.Characteristics.Calculators.CongenericCalculators
 {
     using LibiadaCore.Core;
     using LibiadaCore.Core.Characteristics.Calculators.CongenericCalculators;
@@ -6,31 +6,28 @@ namespace LibiadaCore.Tests.Core.Characteristics.Calculators.CongenericCalculato
     using NUnit.Framework;
 
     /// <summary>
-    /// The periodicity test.
+    /// The remoteness dispersion tests.
     /// </summary>
     [TestFixture]
-    public class PeriodicityTests : CongenericCalculatorsTests<Periodicity>
+    public class RemotenessDispersionTests : CongenericCalculatorsTests<RemotenessDispersion>
     {
         /// <summary>
-        /// The congeneric calculation test.
+        /// The average remoteness dispersion test.
         /// </summary>
         /// <param name="index">
         /// The congeneric sequence index in <see cref="ChainsStorage"/>.
         /// </param>
         /// <param name="link">
-        /// The link.
+        /// Redundant parameter, not used in calculations.
         /// </param>
         /// <param name="value">
         /// The value.
         /// </param>
-        [TestCase(0, Link.None, 0.8661)]
-        [TestCase(0, Link.Start, 0.8585)]
-        [TestCase(0, Link.End, 0.8915)]
-        [TestCase(0, Link.Both, 0.8907)]
-        [TestCase(0, Link.Cycle, 0.7862)]
+        [TestCase(0, Link.Start, 1.9364067)]
         public void CongenericCalculationTest(int index, Link link, double value)
         {
             CongenericChainCharacteristicTest(index, link, value);
         }
+        
     }
 }

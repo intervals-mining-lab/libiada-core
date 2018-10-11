@@ -15,7 +15,7 @@
         /// The calculation test.
         /// </summary>
         /// <param name="index">
-        /// The index.
+        /// Full sequence index in <see cref="ChainsStorage"/>.
         /// </param>
         /// <param name="link">
         /// The link.
@@ -38,7 +38,7 @@
         /// Sequence without Guanine or Cytozine calculation test.
         /// </summary>
         /// <param name="index">
-        /// The index.
+        /// Full sequence index in <see cref="ChainsStorage"/>.
         /// </param>
         /// <param name="link">
         /// The link.
@@ -66,7 +66,7 @@
         /// No intervals test.
         /// </summary>
         /// <param name="index">
-        /// The index.
+        /// Full sequence index in <see cref="ChainsStorage"/>.
         /// </param>
         /// <param name="link">
         /// The link.

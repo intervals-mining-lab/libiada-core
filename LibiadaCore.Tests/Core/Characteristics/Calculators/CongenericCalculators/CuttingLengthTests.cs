@@ -15,7 +15,7 @@ namespace LibiadaCore.Tests.Core.Characteristics.Calculators.CongenericCalculato
         /// The congeneric calculation test.
         /// </summary>
         /// <param name="index">
-        /// The index.
+        /// The congeneric sequence index in <see cref="ChainsStorage"/>.
         /// </param>
         /// <param name="value">
         /// The value.

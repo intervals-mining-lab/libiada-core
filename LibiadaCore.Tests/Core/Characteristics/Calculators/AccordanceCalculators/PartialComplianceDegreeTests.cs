@@ -14,7 +14,7 @@
         /// The compliance degree test.
         /// </summary>
         /// <param name="index">
-        /// The index.
+        /// Binary sequence index in <see cref="ChainsStorage"/>.
         /// </param>
         /// <param name="firstValue">
         /// The first value.
@@ -38,10 +38,10 @@
         /// The partial compliance degree test.
         /// </summary>
         /// <param name="firstIndex">
-        /// The first index.
+        /// First congeneric sequence index in <see cref="ChainsStorage"/>.
         /// </param>
         /// <param name="secondIndex">
-        /// The second index.
+        /// Second congeneric sequence index in <see cref="ChainsStorage"/>.
         /// </param>
         /// <param name="firstValue">
         /// The first value.

@@ -15,7 +15,7 @@ namespace LibiadaCore.Tests.Core.Characteristics.Calculators.FullCalculators
         /// The calculation test.
         /// </summary>
         /// <param name="index">
-        /// The index.
+        /// Full sequence index in <see cref="ChainsStorage"/>.
         /// </param>
         /// <param name="link">
         /// The link.
@@ -37,7 +37,7 @@ namespace LibiadaCore.Tests.Core.Characteristics.Calculators.FullCalculators
         /// No intervals test.
         /// </summary>
         /// <param name="index">
-        /// The index.
+        /// Full sequence index in <see cref="ChainsStorage"/>.
         /// </param>
         /// <param name="link">
         /// The link.

@@ -15,7 +15,7 @@
         /// The average remoteness dispersion test.
         /// </summary>
         /// <param name="index">
-        /// The index.
+        /// Full sequence index in <see cref="ChainsStorage"/>.
         /// </param>
         /// <param name="link">
         /// Redundant parameter, not used in calculations.
@@ -37,7 +37,7 @@
         /// No intervals test.
         /// </summary>
         /// <param name="index">
-        /// The index.
+        /// Full sequence index in <see cref="ChainsStorage"/>.
         /// </param>
         /// <param name="link">
         /// The link.
