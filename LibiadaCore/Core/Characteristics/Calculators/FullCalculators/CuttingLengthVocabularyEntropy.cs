@@ -19,7 +19,7 @@ namespace LibiadaCore.Core.Characteristics.Calculators.FullCalculators
         public override double Calculate(Chain chain)
         {
             var cutLength = new CuttingLength();
-            return Math.Log(chain.GetLength() - cutLength.Calculate(chain) + 1, 2);
+            return Math.Log(chain.Length - cutLength.Calculate(chain) + 1, 2);
         }
     }
 }

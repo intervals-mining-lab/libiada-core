@@ -33,7 +33,7 @@
                 throw new ArgumentException("Unknown link", "link");
             }
 
-            var result = new Chain(source.GetLength());
+            var result = new Chain(source.Length);
             Alphabet sourceAlphabet = source.Alphabet;
             var entries = new int[sourceAlphabet.Cardinality];
 
@@ -46,7 +46,7 @@
                 intervals[j] = intervalsManager.GetArrangement(link);
             }
 
-            for (int i = 0; i < source.GetLength(); i++)
+            for (int i = 0; i < source.Length; i++)
             {
                 var elementIndex = sourceAlphabet.IndexOf(source[i]);
                 int entry = entries[elementIndex]++;

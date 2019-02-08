@@ -31,11 +31,11 @@
         /// </returns>
         public static Chain Create(BaseChain source)
         {
-            var result = new Chain(source.GetLength());
+            var result = new Chain(source.Length);
             Alphabet sourceAlphabet = source.Alphabet;
             var entries = new int[sourceAlphabet.Cardinality];
 
-            for (int i = 0; i < source.GetLength(); i++)
+            for (int i = 0; i < source.Length; i++)
             {
                 int elementIndex = sourceAlphabet.IndexOf(source[i]);
                 int entry = ++entries[elementIndex];

@@ -32,12 +32,9 @@
         }
 
         /// <summary>
-        /// The length of chain.
+        /// The length of the sequence.
         /// </summary>
-        /// <returns>
-        /// The <see cref="int"/>.
-        /// </returns>
-        public abstract int GetLength();
+        public abstract int Length { get; }
 
         /// <summary>
         /// Sets or replaces element in specified position.
@@ -119,7 +116,7 @@
         {
             var builder = new StringBuilder();
 
-            var length = GetLength();
+            var length = Length;
 
             for (int i = 0; i < length; i++)
             {

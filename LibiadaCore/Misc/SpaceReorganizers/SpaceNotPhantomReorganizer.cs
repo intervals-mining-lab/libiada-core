@@ -20,8 +20,8 @@ namespace LibiadaCore.Misc.SpaceReorganizers
         public override AbstractChain Reorganize(AbstractChain source)
         {
             var resent = new BaseChain();
-            resent.ClearAndSetNewLength(source.GetLength());
-            for (int i = 0; i < source.GetLength(); i++)
+            resent.ClearAndSetNewLength(source.Length);
+            for (int i = 0; i < source.Length; i++)
             {
                 var phantom = source[i] as ValuePhantom;
                 resent.Set(phantom != null ? phantom[0] : source[i], i);

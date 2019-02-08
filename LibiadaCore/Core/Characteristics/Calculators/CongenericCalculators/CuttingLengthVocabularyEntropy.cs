@@ -22,7 +22,7 @@ namespace LibiadaCore.Core.Characteristics.Calculators.CongenericCalculators
         public double Calculate(CongenericChain chain, Link link)
         {
             var cutLength = new CuttingLength();
-            return Math.Log(chain.GetLength() - cutLength.Calculate(chain, link) + 1, 2);
+            return Math.Log(chain.Length - cutLength.Calculate(chain, link) + 1, 2);
         }
     }
 }

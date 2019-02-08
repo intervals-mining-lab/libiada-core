@@ -59,7 +59,7 @@
         {
             this.firstChain = firstChain;
             this.secondChain = secondChain;
-            Length = firstChain.GetLength();
+            Length = firstChain.Length;
             FirstOccurrencesCount = firstChain.OccurrencesCount;
             SecondOccurrencesCount = secondChain.OccurrencesCount;
 

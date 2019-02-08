@@ -16,7 +16,7 @@ namespace LibiadaCore.Core.Characteristics.Calculators.FullCalculators
         /// </returns>
         public override double Calculate(Chain chain)
         {
-            return chain.GetLength();
+            return chain.Length;
         }
     }
 }

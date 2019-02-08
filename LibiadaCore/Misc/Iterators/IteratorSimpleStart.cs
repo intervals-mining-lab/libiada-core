@@ -38,7 +38,7 @@ namespace LibiadaCore.Misc.Iterators
         /// </exception>
         public IteratorSimpleStart(AbstractChain source, int step)
         {
-            if (source == null || source.GetLength() < 1)
+            if (source == null || source.Length < 1)
             {
                 throw new ArgumentException("Sequence for iteration is null or empty.", "source");
             }
@@ -46,7 +46,7 @@ namespace LibiadaCore.Misc.Iterators
             Length = 1;
             Step = step;
             Source = source;
-            MaxPosition = Source.GetLength() - Length;
+            MaxPosition = Source.Length - Length;
             Reset();
         }
 

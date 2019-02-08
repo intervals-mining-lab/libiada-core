@@ -45,7 +45,7 @@ namespace LibiadaCore.Misc.SpaceReorganizers
         public override AbstractChain Reorganize(AbstractChain source)
         {
             var result = new BaseChain();
-            result.ClearAndSetNewLength(source.GetLength() / blockSize);
+            result.ClearAndSetNewLength(source.Length / blockSize);
             IteratorBase iteratorFrom;
             IWritableIterator iteratorTo;
 

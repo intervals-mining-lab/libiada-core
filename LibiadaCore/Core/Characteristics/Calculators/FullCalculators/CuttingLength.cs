@@ -32,7 +32,7 @@ namespace LibiadaCore.Core.Characteristics.Calculators.FullCalculators
         /// </returns>
         private double CutCommon(AbstractChain chain)
         {
-            for (int length = 1; length <= chain.GetLength(); length++)
+            for (int length = 1; length <= chain.Length; length++)
             {
                 if (IsRecoveryPossible(chain, length))
                 {
@@ -40,7 +40,7 @@ namespace LibiadaCore.Core.Characteristics.Calculators.FullCalculators
                 }
             }
 
-            return chain.GetLength();
+            return chain.Length;
         }
 
         /// <summary>

@@ -64,7 +64,7 @@
             }
 
             intervals = new int[count - 1];
-            FillIntervals(positions, chain.GetLength());
+            FillIntervals(positions, chain.Length);
         }
 
         /// <summary>

@@ -26,7 +26,7 @@ namespace LibiadaCore.Misc.SpaceReorganizers
             }
 
             result = new BaseChain();
-            result.ClearAndSetNewLength(source.GetLength());
+            result.ClearAndSetNewLength(source.Length);
 
             var iteratorRead = new IteratorSimpleStart(source, 1);
             var iteratorWrite = new IteratorWritableStart(result);
@@ -35,7 +35,7 @@ namespace LibiadaCore.Misc.SpaceReorganizers
             iteratorRead.Next();
             iteratorWrite.Next();
 
-            for (int i = 0; i < source.GetLength(); i++)
+            for (int i = 0; i < source.Length; i++)
             {
                 iteratorWrite.WriteValue(iteratorRead.Current());
                 iteratorRead.Next();

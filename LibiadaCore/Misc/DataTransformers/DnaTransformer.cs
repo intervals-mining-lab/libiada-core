@@ -96,8 +96,8 @@
                 { "GGG", "G" }
             };
 
-            var result = new BaseChain(inputChain.GetLength() / 3);
-            List<string> codons = DiffCutter.Cut(inputChain.ToString(),new SimpleCutRule(inputChain.GetLength(), 3, 3));
+            var result = new BaseChain(inputChain.Length / 3);
+            List<string> codons = DiffCutter.Cut(inputChain.ToString(),new SimpleCutRule(inputChain.Length, 3, 3));
 
             for (int i = 0; i < codons.Count; i++)
             {
@@ -119,8 +119,8 @@
         /// </returns>
         public static BaseChain Decode(BaseChain inputChain)
         {
-            var resultChain = new BaseChain(inputChain.GetLength());
-            for (int i = 0; i < inputChain.GetLength(); i++)
+            var resultChain = new BaseChain(inputChain.Length);
+            for (int i = 0; i < inputChain.Length; i++)
             {
                 string aminoAcid = inputChain[i].ToString();
                 var element = new ValuePhantom();
@@ -255,10 +255,10 @@
         public static BaseChain EncodeTriplets(BaseChain inputChain)
         {
             DnaProcessor.CheckDnaAlphabet(inputChain.Alphabet);
-            var resultChain = new BaseChain(inputChain.GetLength() / 3);
-            List<string> codons = DiffCutter.Cut(inputChain.ToString(), new SimpleCutRule(inputChain.GetLength(), 3, 3));
+            var resultChain = new BaseChain(inputChain.Length / 3);
+            List<string> codons = DiffCutter.Cut(inputChain.ToString(), new SimpleCutRule(inputChain.Length, 3, 3));
 
-            for (int i = 0; i < resultChain.GetLength(); i++)
+            for (int i = 0; i < resultChain.Length; i++)
             {
                 resultChain.Set((ValueString)codons[i], i);
             }

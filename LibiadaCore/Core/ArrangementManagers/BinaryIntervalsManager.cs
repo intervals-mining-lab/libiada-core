@@ -57,7 +57,7 @@
             SecondElement = secondChain.Element;
             FirstChain = firstChain;
             SecondChain = secondChain;
-            Length = firstChain.GetLength();
+            Length = firstChain.Length;
 
             PairsCount = FillPairsCount();
             relationIntervals = new int[PairsCount];
@@ -128,7 +128,7 @@
         /// </returns>
         public int GetFirstAfter(int index)
         {
-            for (int i = index; i < SecondChain.GetLength(); i++)
+            for (int i = index; i < SecondChain.Length; i++)
             {
                 if (SecondChain[i].Equals(SecondChain.Element))
                 {

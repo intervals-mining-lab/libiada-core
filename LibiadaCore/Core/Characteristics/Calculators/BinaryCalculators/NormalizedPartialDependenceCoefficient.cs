@@ -30,7 +30,7 @@
             var partialDependenceCoefficient = new PartialDependenceCoefficient();
 
             double k1 = partialDependenceCoefficient.Calculate(manager, link);
-            return k1 * 2 * manager.PairsCount / manager.FirstChain.GetLength();
+            return k1 * 2 * manager.PairsCount / manager.FirstChain.Length;
         }
     }
 }
