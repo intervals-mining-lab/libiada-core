@@ -10,6 +10,8 @@
     /// </summary>
     public class StrictSequenceGenerator : ISequenceGenerator
     {
+        private SequenceGenerator sequenceGenerator = new SequenceGenerator();
+
         /// <summary>
         /// Generates numeric sequences using given length and alphabet cardinality.
         /// </summary>
@@ -24,7 +26,6 @@
         /// </returns>
         public List<BaseChain> GenerateSequences(int length, int alphabetCardinality)
         {
-            var sequenceGenerator = new SequenceGenerator();
             var result = sequenceGenerator.GenerateSequences(length, alphabetCardinality);
             for (int i = result.Count - 1; i >= 0; i--)
             {
