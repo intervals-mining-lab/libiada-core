@@ -17,7 +17,7 @@ namespace LibiadaCore.Core.Characteristics.Calculators.CongenericCalculators
         /// </returns>
         public override double Calculate(CongenericChain chain)
         {
-            return chain.GetLength();
+            return chain.Length;
         }
     }
 }

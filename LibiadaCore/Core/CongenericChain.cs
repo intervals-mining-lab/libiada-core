@@ -311,13 +311,8 @@ namespace LibiadaCore.Core
             return -1;
         }
 
-        /// <summary>
-        /// The get length.
-        /// </summary>
-        /// <returns>
-        /// The <see cref="int"/>.
-        /// </returns>
-        public override int GetLength() => length;
+        /// <inheritdoc />
+        public override int Length => length;
 
         /// <summary>
         /// Sets item in provided position.

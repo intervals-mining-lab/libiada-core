@@ -103,7 +103,7 @@
             var input = new BaseChain(triplet);
             BaseChain result = DnaTransformer.EncodeAmino(input);
 
-            for (int i = 0; i < result.GetLength(); i++)
+            for (int i = 0; i < result.Length; i++)
             {
                 Assert.AreEqual(new ValueString(amino[i]), result[i]);
             }
@@ -305,7 +305,7 @@
 
             BaseChain result = DnaTransformer.EncodeTriplets(input);
 
-            for (int i = 0; i < result.GetLength(); i++)
+            for (int i = 0; i < result.Length; i++)
             {
                 Assert.AreEqual(new ValueString(triplet.Substring(i * 3, 3)), result[i]);
             }

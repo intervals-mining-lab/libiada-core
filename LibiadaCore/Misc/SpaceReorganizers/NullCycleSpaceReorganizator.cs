@@ -53,8 +53,8 @@ namespace LibiadaCore.Misc.SpaceReorganizers
             }
 
             var result = new BaseChain();
-            result.ClearAndSetNewLength(source.GetLength() + level);
-            for (int i = 0; i < source.GetLength(); i++)
+            result.ClearAndSetNewLength(source.Length + level);
+            for (int i = 0; i < source.Length; i++)
             {
                 result[i] = source[i];
             }
@@ -63,9 +63,9 @@ namespace LibiadaCore.Misc.SpaceReorganizers
             iterator.Reset();
             iterator.Next();
             AbstractChain addition = iterator.Current();
-            for (int i = 0; i < addition.GetLength(); i++)
+            for (int i = 0; i < addition.Length; i++)
             {
-                result[source.GetLength() + i] = addition[i];
+                result[source.Length + i] = addition[i];
             }
 
             return result;

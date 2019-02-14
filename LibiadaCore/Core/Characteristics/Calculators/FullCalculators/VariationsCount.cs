@@ -20,7 +20,7 @@
         public override double Calculate(Chain chain)
         {
             int count = 1;
-            for (int i = 0; i < chain.GetLength(); i++)
+            for (int i = 0; i < chain.Length; i++)
             {
                 var j = chain[i] as ValuePhantom;
                 if (j != null)

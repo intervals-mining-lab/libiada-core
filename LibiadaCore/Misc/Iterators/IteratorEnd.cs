@@ -48,7 +48,7 @@ namespace LibiadaCore.Misc.Iterators
         /// </summary>
         public override void Reset()
         {
-            Position = Source.GetLength() - Length + Step;
+            Position = Source.Length - Length + Step;
         }
     }
 }

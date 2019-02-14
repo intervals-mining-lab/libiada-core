@@ -18,7 +18,7 @@
         /// </returns>
         public override double Calculate(Chain chain)
         {
-            int chainLength = chain.GetLength();
+            int chainLength = chain.Length;
             int sum = 0;
 
             for (int i = 0; i < chainLength; i++)

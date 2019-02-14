@@ -148,13 +148,14 @@ namespace LibiadaCore.Core
         /// </returns>
         public override IBaseObject Get(int index) => alphabet[building[index]];
 
+        /// <inheritdoc />
         /// <summary>
-        /// The length of chain.
+        /// As length of the sequence's order.
         /// </summary>
         /// <returns>
         /// The <see cref="int"/>.
         /// </returns>
-        public override int GetLength() => building.Length;
+        public override int Length => building.Length;
 
         /// <summary>
         /// Sets or replaces element in specified position.

@@ -41,7 +41,7 @@ namespace LibiadaCore.Misc.Iterators
         /// </exception>
         public IteratorBase(AbstractChain source, int length, int step)
         {
-            if (source == null || length <= 0 || source.GetLength() < length)
+            if (source == null || length <= 0 || source.Length < length)
             {
                 throw new ArgumentException("Iterator arguments are invalid.");
             }
@@ -49,7 +49,7 @@ namespace LibiadaCore.Misc.Iterators
             Length = length;
             Step = step;
             Source = source;
-            MaxPosition = Source.GetLength() - Length;
+            MaxPosition = Source.Length - Length;
             Reset();
         }
 
