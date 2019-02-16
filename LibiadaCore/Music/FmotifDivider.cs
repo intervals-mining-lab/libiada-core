@@ -576,7 +576,7 @@
         /// The fmotif buff.
         /// </param>
         /// <returns>
-        /// The <see cref="List{FMotiv}"/>.
+        /// The <see cref="List{Fmotif}"/>.
         /// </returns>
         /// <exception cref="Exception">
         /// Thrown if amount of collected notes in buffer is less than 2.

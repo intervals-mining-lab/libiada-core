@@ -3,6 +3,7 @@
     using System;
     using System.Collections.Generic;
     using System.ComponentModel;
+    using System.Security.Cryptography;
 
     using LibiadaCore.Music;
 
@@ -424,6 +425,50 @@
             }
 
             return true;
+        }
+
+        /// <summary>
+        /// Calculates MD5 hash code using
+        /// notes, fmotif type and param pause treatment.
+        /// </summary>
+        /// <returns>
+        /// The <see cref="T:byte[]"/>.
+        /// </returns>
+        public byte[] GetMD5HashCode()
+        {
+            var hash = new List<byte>();
+            foreach (ValueNote note in NoteList)
+            {
+                hash.AddRange(note.GetMD5HashCode());
+            }
+            hash.Add((byte)Type);
+            hash.Add((byte)(PauseTreatmentParameter));
+            MD5 md5 = MD5.Create();
+            return md5.ComputeHash(hash.ToArray());
+        }
+
+        /// <summary>
+        /// Calculates hash code using
+        /// notes, fmotif type and param pause treatment.
+        /// </summary>
+        /// <returns>
+        /// The <see cref="int"/>.
+        /// </returns>
+        public override int GetHashCode()
+        {
+            unchecked
+            {
+                int hashCode = -2024996526;
+                hashCode = (hashCode * -1521134295) + ((byte)Type).GetHashCode();
+                hashCode = (hashCode * -1521134295) + PauseTreatmentParameter.GetHashCode();
+                foreach (ValueNote note in NoteList)
+                {
+                    hashCode = (hashCode * -1521134295) + note.GetHashCode();
+                }
+
+                return hashCode;
+            }
+
         }
     }
 }
