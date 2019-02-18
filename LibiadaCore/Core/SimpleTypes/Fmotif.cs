@@ -23,7 +23,7 @@
         /// порядковый номер - идентификатор
         /// (возможно введения доп id - глобального для словаря ф-мотивов)
         /// </param>
-        public Fmotif(FmotifType type, ParamPauseTreatment pauseTreatmentParameter, int id = -1)
+        public Fmotif(FmotifType type, ParamPauseTreatment pauseTreatmentParameter, long id = -1)
         {
             Id = id;
             Type = type;
@@ -44,7 +44,7 @@
         /// <summary>
         /// Gets or sets id (-1 means not defined).
         /// </summary>
-        public int Id { get; set; }
+        public long Id { get; set; }
 
         /// <summary>
         /// Gets the pause treatment parameter.
@@ -442,7 +442,7 @@
                 hash.AddRange(note.GetMD5HashCode());
             }
             hash.Add((byte)Type);
-            hash.Add((byte)(PauseTreatmentParameter));
+            hash.Add((byte)PauseTreatmentParameter);
             MD5 md5 = MD5.Create();
             return md5.ComputeHash(hash.ToArray());
         }
