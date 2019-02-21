@@ -1,6 +1,7 @@
 ﻿namespace LibiadaCore.Core.SimpleTypes
 {
     using System.Collections.Generic;
+    using System.Security.Cryptography;
 
     /// <summary>
     /// The measure.
@@ -25,7 +26,7 @@
 
             NoteList = new List<ValueNote>();
 
-            // создаем список нот, по средствам клонирования каждой ноты.
+            // создаем список нот посредством клонирования каждой ноты.
             foreach (ValueNote note in noteList)
             {
                 NoteList.Add((ValueNote)note.Clone());
@@ -46,7 +47,7 @@
         /// <summary>
         /// Gets or sets the id of measure.
         /// </summary>
-        public int Id { get; set; }
+        public long Id { get; set; }
 
         /// <summary>
         /// The merge measures.
@@ -136,6 +137,28 @@
 
             // TODO: сделать сравнение не по всей ноте/объекту, а еще только по месту например,
             // TODO: из сравнения исключить триплет, так можно различать одинаковые по длительности ноты, но записанные по разному(!)
+        }
+
+        /// <summary>
+        /// Calculates MD5 hash code using
+        /// notes and attributes.
+        /// </summary>
+        /// <returns>
+        /// The <see cref="T:byte[]"/>.
+        /// </returns>
+        public byte[] GetMD5HashCode()
+        {
+            var hash = new List<byte>();
+            foreach (ValueNote note in NoteList)
+            {
+                hash.AddRange(note.GetMD5HashCode());
+            }
+            hash.Add((byte)Attributes.Key.Fifths);
+            hash.Add((byte)Attributes.Size.BeatBase);
+            hash.Add((byte)Attributes.Size.Beats);
+            hash.Add((byte)Attributes.Size.TicksPerBeat);
+            MD5 md5 = MD5.Create();
+            return md5.ComputeHash(hash.ToArray());
         }
 
         /// <summary>

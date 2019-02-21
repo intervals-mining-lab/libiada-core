@@ -194,12 +194,12 @@
         /// <returns>
         /// The <see cref="T:int[]"/>.
         /// </returns>
-        public int[] MeasureIdOrder()
+        public long[] MeasureIdOrder()
         {
             List<Measure> temp = MeasureOrder();
 
             // строй из Id, а не из объектов типа Measure
-            var idTemp = new int[temp.Count];
+            var idTemp = new long[temp.Count];
             for (int i = 0; i < temp.Count; i++)
             {
                 idTemp[i] = temp[i].Id;
