@@ -268,7 +268,9 @@
                             break;
                         }
 
-                        notes.Add(new ValueNote(ParsePitch(measureChild.Clone()), ParseDuration(measureChild.Clone()), ParseTriplet(measureChild.Clone()), ParseTie(measureChild.Clone())));
+                        var note = new ValueNote(ParsePitch(measureChild.Clone()), ParseDuration(measureChild.Clone()), ParseTriplet(measureChild.Clone()), ParseTie(measureChild.Clone()));
+                        note.Pitches.Sort();
+                        notes.Add(note);
                         hasNotes = true;
                         break;
                     }
