@@ -4,6 +4,7 @@
     using System.ComponentModel;
     using System.ComponentModel.DataAnnotations;
     using System.Globalization;
+    using LibiadaCore.Attributes;
     using LibiadaCore.Core;
     using LibiadaCore.Exceptions;
 
@@ -135,7 +136,7 @@
        
         public static Link GetLink<T>(this T value) where T : struct, IComparable, IFormattable, IConvertible
         {
-            return value.GetLink();
+            return value.GetAttribute<T, LinkAttribute>().Value;
         }
 
         /// <summary>
