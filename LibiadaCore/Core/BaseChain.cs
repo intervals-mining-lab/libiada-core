@@ -96,6 +96,26 @@ namespace LibiadaCore.Core
 
         /// <summary>
         /// Initializes a new instance of the <see cref="BaseChain"/> class
+        /// with provided order and generates alphabet as numeric sequence.
+        /// Only simple validation is made.
+        /// </summary>
+        /// <param name="building">
+        /// The building of chain.
+        /// </param>
+        public BaseChain(int[] building) : this(building.Length)
+        {
+            var alphabetCardinality = building.Max();
+            var alphabet = new Alphabet { NullValue.Instance() };
+            for (int i = 1; i <= alphabetCardinality; i++)
+            {
+                alphabet.Add((ValueInt)i);
+            }
+            this.building = (int[])building.Clone();
+            this.alphabet = alphabet;
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="BaseChain"/> class
         /// with provided building and alphabet.
         /// Only simple validation is made.
         /// </summary>
