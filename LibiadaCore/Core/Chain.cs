@@ -86,6 +86,19 @@ namespace LibiadaCore.Core
         }
 
         /// <summary>
+        /// Initializes a new instance of the <see cref="Chain"/> class
+        /// with provided order and numeric sequence.
+        /// Only simple validation is made.
+        /// </summary>
+        /// <param name="building">
+        /// The building of chain.
+        /// </param>
+        public Chain(int[] building) : base(building)
+        {
+            FillCongenericChains();
+        }
+
+        /// <summary>
         /// Initializes a new instance of the <see cref="Chain"/> class from string.
         /// Each character becomes element.
         /// </summary>

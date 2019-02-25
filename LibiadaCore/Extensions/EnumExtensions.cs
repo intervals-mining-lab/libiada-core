@@ -4,7 +4,8 @@
     using System.ComponentModel;
     using System.ComponentModel.DataAnnotations;
     using System.Globalization;
-
+    using LibiadaCore.Attributes;
+    using LibiadaCore.Core;
     using LibiadaCore.Exceptions;
 
     /// <summary>
@@ -127,6 +128,15 @@
             var memberInfo = type.GetMember(value.ToString(CultureInfo.InvariantCulture));
             var attributes = memberInfo[0].GetCustomAttributes(typeof(TAttribute), false);
             return (attributes.Length > 0) ? (TAttribute)attributes[0] : null;
+        }
+
+        /// <returns>
+        /// Link value as <see cref="Link"/>
+        /// </returns>
+       
+        public static Link GetLink<T>(this T value) where T : struct, IComparable, IFormattable, IConvertible
+        {
+            return value.GetAttribute<T, LinkAttribute>().Value;
         }
 
         /// <summary>
