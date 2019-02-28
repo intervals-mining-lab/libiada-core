@@ -130,10 +130,18 @@
             return (attributes.Length > 0) ? (TAttribute)attributes[0] : null;
         }
 
+        /// <summary>
+        /// Gets link attribute value for given enum value.
+        /// </summary>
+        /// <typeparam name="T">
+        /// Enum with link attribute.
+        /// </typeparam>
+        /// <param name="value">
+        /// Enum value.
+        /// </param>
         /// <returns>
-        /// Link value as <see cref="Link"/>
+        /// Link attribute value as <see cref="Link"/>
         /// </returns>
-       
         public static Link GetLink<T>(this T value) where T : struct, IComparable, IFormattable, IConvertible
         {
             return value.GetAttribute<T, LinkAttribute>().Value;

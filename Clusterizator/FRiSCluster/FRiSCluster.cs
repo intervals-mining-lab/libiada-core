@@ -70,7 +70,7 @@
             this.data = data;
 
             double rStar = 1;
-            
+
             //distances[i][j] - distance from i-th element to j-th
             CalculateDistances();
 
@@ -131,7 +131,7 @@
                 //        }
                 //    }
                 //}
-                
+
                 if (currentPillarIndexes.Count == minimumClusters)
                 {
                     optimalCompactness = currentCompactness;
@@ -184,7 +184,7 @@
         /// <returns>
         /// The <see cref="T:(int, double)"/>.
         /// </returns>
-        private (int, double) ReselectPillar(int pillarIndex, List<int> pillarIndexes, int[] clustersBelonging)
+        private (int clusterPointsIndex, double compactness) ReselectPillar(int pillarIndex, List<int> pillarIndexes, int[] clustersBelonging)
         {
             int[] clusterPointsIndexes = data.Select((d, i) => i).Where(i => clustersBelonging[i] == pillarIndexes.IndexOf(pillarIndex)).ToArray();
             var clusterCompactness = new double[clusterPointsIndexes.Length];
@@ -214,7 +214,7 @@
 
         /// <summary>
         /// Finds data point with max compactness as new pillar.
-        /// Tries all data points as possible new pillar 
+        /// Tries all data points as possible new pillar
         /// and selects one with maximum compactness.
         /// </summary>
         /// <param name="pillarIndexes">

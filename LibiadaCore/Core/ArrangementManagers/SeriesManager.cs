@@ -14,7 +14,7 @@
         /// <summary>
         /// The series.
         /// </summary>
-        private List<(int, int)> series;
+        private List<(int start, int length)> series;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="SeriesManager"/> class.
@@ -31,7 +31,7 @@
         /// </param>
         public void Initialize(CongenericChain chain)
         {
-            series = new List<(int, int)>();
+            series = new List<(int start, int length)>();
             for (int i = 1; i <= chain.OccurrencesCount; i++)
             {
                 series.Add(GetSeries(chain, i));
@@ -54,7 +54,7 @@
                 throw new Exception("Series manager is not initialized");
             }
 
-            return series.Select(s => s.Item2).ToArray();
+            return series.Select(s => s.length).ToArray();
         }
 
         /// <summary>
@@ -69,7 +69,7 @@
         /// <returns>
         /// The <see cref="T:(int, int)"/>.
         /// </returns>
-        private (int, int) GetSeries(CongenericChain chain, int occurrence)
+        private (int start, int length) GetSeries(CongenericChain chain, int occurrence)
         {
             int counter = 0;
             int position = chain.GetOccurrence(occurrence);
