@@ -1,6 +1,7 @@
 ﻿namespace SequenceGenerator.Tests
 {
     using System.Collections.Generic;
+    using System.Linq;
 
     using NUnit.Framework;
 
@@ -68,6 +69,39 @@
             var orderGenerator = new OrderGenerator();
             List<int[]> actual = orderGenerator.StrictGenerateOrders(4, 3);
             Assert.AreEqual(expected, actual);
+        }
+
+        [Test]
+        public void OrderValid()
+        {
+            var expectedLength = 4;
+            var expectedAlphabetCardinality = 3;
+            var orderGenerator = new OrderGenerator();
+            List<int[]> actual = orderGenerator.StrictGenerateOrders(expectedLength, expectedAlphabetCardinality);
+            Assert.True(actual.All(o => o.Length == expectedLength),"Invalid length");
+            Assert.True(actual.All(o => o.Max() == expectedAlphabetCardinality), "Invlaid alphabet cardinality");
+            var isFailed = false;
+            foreach (var order in actual)
+            {
+                var currentMax = 1;
+                for (int i = 0; i < order.Length; i++)
+                {
+                    if (order[i] > currentMax)
+                    {
+                        isFailed = true;
+                        break;
+                    }
+                    else if (order[i] == currentMax)
+                    {
+                        currentMax++;
+                    }
+                }
+                if (isFailed)
+                {
+                    break;
+                }
+            }
+            Assert.False(isFailed,"Invalid order");
         }
     }
 }
