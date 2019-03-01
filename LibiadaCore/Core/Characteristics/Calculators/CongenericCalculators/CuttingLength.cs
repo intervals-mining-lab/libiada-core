@@ -1,6 +1,6 @@
 namespace LibiadaCore.Core.Characteristics.Calculators.CongenericCalculators
 {
-    using LibiadaCore.Misc.Iterators;
+    using LibiadaCore.Iterators;
 
     /// <summary>
     /// Sadovsky cut length.

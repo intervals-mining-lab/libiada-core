@@ -1,7 +1,7 @@
 ﻿namespace LibiadaCore.Core.Characteristics.Calculators.FullCalculators
 {
     using LibiadaCore.Core.SimpleTypes;
-    using LibiadaCore.Misc.DataTransformers;
+    using LibiadaCore.DataTransformers;
 
     /// <summary>
     /// Statistical genetic characteristic SW skew.
