@@ -19,12 +19,12 @@
         public void FmotifIdentificationFirstTest()
         {
             // создание ф-мотивов
-            var fmotif1 = new Fmotif(FmotifType.CompleteMinimalMeasure, ParamPauseTreatment.Ignore, 0);
-            var fmotif2 = new Fmotif(FmotifType.CompleteMinimalMeasure, ParamPauseTreatment.Ignore, 1);
-            var fmotif3 = new Fmotif(FmotifType.CompleteMinimalMeasure, ParamPauseTreatment.Ignore, 2);
-            var fmotif4 = new Fmotif(FmotifType.CompleteMinimalMeasure, ParamPauseTreatment.Ignore, 3);
-            var fmotif5 = new Fmotif(FmotifType.CompleteMinimalMeasure, ParamPauseTreatment.Ignore, 4);
-            var fmotif6 = new Fmotif(FmotifType.CompleteMinimalMeasure, ParamPauseTreatment.Ignore, 5);
+            var fmotif1 = new Fmotif(FmotifType.CompleteMinimalMeasure, PauseTreatment.Ignore, 0);
+            var fmotif2 = new Fmotif(FmotifType.CompleteMinimalMeasure, PauseTreatment.Ignore, 1);
+            var fmotif3 = new Fmotif(FmotifType.CompleteMinimalMeasure, PauseTreatment.Ignore, 2);
+            var fmotif4 = new Fmotif(FmotifType.CompleteMinimalMeasure, PauseTreatment.Ignore, 3);
+            var fmotif5 = new Fmotif(FmotifType.CompleteMinimalMeasure, PauseTreatment.Ignore, 4);
+            var fmotif6 = new Fmotif(FmotifType.CompleteMinimalMeasure, PauseTreatment.Ignore, 5);
 
             fmotif1.NoteList.Add(new ValueNote(new Pitch(3, NoteSymbol.E, 0), new Duration(1, 4, false, 512), false, Tie.None));
             fmotif1.NoteList.Add(new ValueNote(new Pitch(3, NoteSymbol.A, 0), new Duration(1, 4, false, 512), false, Tie.None));
@@ -54,12 +54,12 @@
             fmchain1.FmotifsList.Add(fmotif6);
 
             var fmid = new FmotifIdentifier();
-            Assert.AreEqual(0, fmid.GetIdentification(fmchain1, ParamPauseTreatment.Ignore, ParamEqualFM.Sequent).FmotifsList[0].Id);
-            Assert.AreEqual(1, fmid.GetIdentification(fmchain1, ParamPauseTreatment.Ignore, ParamEqualFM.Sequent).FmotifsList[1].Id);
-            Assert.AreEqual(1, fmid.GetIdentification(fmchain1, ParamPauseTreatment.Ignore, ParamEqualFM.Sequent).FmotifsList[2].Id);
-            Assert.AreEqual(1, fmid.GetIdentification(fmchain1, ParamPauseTreatment.Ignore, ParamEqualFM.Sequent).FmotifsList[3].Id);
-            Assert.AreEqual(0, fmid.GetIdentification(fmchain1, ParamPauseTreatment.Ignore, ParamEqualFM.Sequent).FmotifsList[4].Id);
-            Assert.AreEqual(0, fmid.GetIdentification(fmchain1, ParamPauseTreatment.Ignore, ParamEqualFM.Sequent).FmotifsList[5].Id);
+            Assert.AreEqual(0, fmid.GetIdentification(fmchain1, PauseTreatment.Ignore, true).FmotifsList[0].Id);
+            Assert.AreEqual(1, fmid.GetIdentification(fmchain1, PauseTreatment.Ignore, true).FmotifsList[1].Id);
+            Assert.AreEqual(1, fmid.GetIdentification(fmchain1, PauseTreatment.Ignore, true).FmotifsList[2].Id);
+            Assert.AreEqual(1, fmid.GetIdentification(fmchain1, PauseTreatment.Ignore, true).FmotifsList[3].Id);
+            Assert.AreEqual(0, fmid.GetIdentification(fmchain1, PauseTreatment.Ignore, true).FmotifsList[4].Id);
+            Assert.AreEqual(0, fmid.GetIdentification(fmchain1, PauseTreatment.Ignore, true).FmotifsList[5].Id);
         }
 
         /// <summary>
@@ -69,12 +69,12 @@
         public void FmotifIdentificationSecondTest()
         {
             // создание ф-мотивов
-            var fmotif1 = new Fmotif(FmotifType.CompleteMinimalMeasure, ParamPauseTreatment.Ignore, 0);
-            var fmotif2 = new Fmotif(FmotifType.CompleteMinimalMeasure, ParamPauseTreatment.Ignore, 1);
-            var fmotif3 = new Fmotif(FmotifType.CompleteMinimalMeasure, ParamPauseTreatment.Ignore, 2);
-            var fmotif4 = new Fmotif(FmotifType.CompleteMinimalMeasure, ParamPauseTreatment.Ignore, 3);
-            var fmotif5 = new Fmotif(FmotifType.CompleteMinimalMeasure, ParamPauseTreatment.Ignore, 4);
-            var fmotif6 = new Fmotif(FmotifType.CompleteMinimalMeasure, ParamPauseTreatment.Ignore, 5);
+            var fmotif1 = new Fmotif(FmotifType.CompleteMinimalMeasure, PauseTreatment.Ignore, 0);
+            var fmotif2 = new Fmotif(FmotifType.CompleteMinimalMeasure, PauseTreatment.Ignore, 1);
+            var fmotif3 = new Fmotif(FmotifType.CompleteMinimalMeasure, PauseTreatment.Ignore, 2);
+            var fmotif4 = new Fmotif(FmotifType.CompleteMinimalMeasure, PauseTreatment.Ignore, 3);
+            var fmotif5 = new Fmotif(FmotifType.CompleteMinimalMeasure, PauseTreatment.Ignore, 4);
+            var fmotif6 = new Fmotif(FmotifType.CompleteMinimalMeasure, PauseTreatment.Ignore, 5);
 
             fmotif1.NoteList.Add(new ValueNote(new Pitch(3, NoteSymbol.E, 0), new Duration(1, 4, false, 512), false, Tie.None));
             fmotif1.NoteList.Add(new ValueNote(new Pitch(3, NoteSymbol.A, 0), new Duration(1, 4, false, 512), false, Tie.None));
@@ -105,12 +105,12 @@
 
             var fmid = new FmotifIdentifier();
 
-            Assert.AreEqual(0, fmid.GetIdentification(fmchain1, ParamPauseTreatment.Ignore, ParamEqualFM.Sequent).FmotifsList[0].Id);
-            Assert.AreEqual(0, fmid.GetIdentification(fmchain1, ParamPauseTreatment.Ignore, ParamEqualFM.Sequent).FmotifsList[1].Id);
-            Assert.AreEqual(0, fmid.GetIdentification(fmchain1, ParamPauseTreatment.Ignore, ParamEqualFM.Sequent).FmotifsList[2].Id);
-            Assert.AreEqual(1, fmid.GetIdentification(fmchain1, ParamPauseTreatment.Ignore, ParamEqualFM.Sequent).FmotifsList[3].Id);
-            Assert.AreEqual(2, fmid.GetIdentification(fmchain1, ParamPauseTreatment.Ignore, ParamEqualFM.Sequent).FmotifsList[4].Id);
-            Assert.AreEqual(3, fmid.GetIdentification(fmchain1, ParamPauseTreatment.Ignore, ParamEqualFM.Sequent).FmotifsList[5].Id);
+            Assert.AreEqual(0, fmid.GetIdentification(fmchain1, PauseTreatment.Ignore, true).FmotifsList[0].Id);
+            Assert.AreEqual(0, fmid.GetIdentification(fmchain1, PauseTreatment.Ignore, true).FmotifsList[1].Id);
+            Assert.AreEqual(0, fmid.GetIdentification(fmchain1, PauseTreatment.Ignore, true).FmotifsList[2].Id);
+            Assert.AreEqual(1, fmid.GetIdentification(fmchain1, PauseTreatment.Ignore, true).FmotifsList[3].Id);
+            Assert.AreEqual(2, fmid.GetIdentification(fmchain1, PauseTreatment.Ignore, true).FmotifsList[4].Id);
+            Assert.AreEqual(3, fmid.GetIdentification(fmchain1, PauseTreatment.Ignore, true).FmotifsList[5].Id);
         }
     }
 }

@@ -8,7 +8,7 @@
     /// The param pause treatment tests.
     /// </summary>
     [TestFixture]
-    public class ParamPauseTreatmentTests
+    public class PauseTreatmentTests
     {
         /// <summary>
         /// The param pause test.
@@ -16,9 +16,9 @@
         [Test]
         public void ParamPauseTest()
         {
-            Assert.AreEqual((int)ParamPauseTreatment.Ignore, 0);
-            Assert.AreEqual((int)ParamPauseTreatment.NoteTrace, 1);
-            Assert.AreEqual((int)ParamPauseTreatment.SilenceNote, 2);
+            Assert.AreEqual((int)PauseTreatment.Ignore, 1);
+            Assert.AreEqual((int)PauseTreatment.NoteTrace, 2);
+            Assert.AreEqual((int)PauseTreatment.SilenceNote, 3);
         }
     }
 }

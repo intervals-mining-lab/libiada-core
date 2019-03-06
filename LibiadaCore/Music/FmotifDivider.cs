@@ -15,7 +15,7 @@
         /// <summary>
         ///  Параметр сохраняется для всего экземпляра класса и потом используется.
         /// </summary>
-        private ParamPauseTreatment paramPauseTreatment;
+        private PauseTreatment pauseTreatment;
 
         /// <summary>
         /// The get division.
@@ -32,12 +32,12 @@
         /// <exception cref="Exception">
         /// Thrown in many cases.
         /// </exception>
-        public FmotifChain GetDivision(CongenericScoreTrack congenericTrack, ParamPauseTreatment paramPauseTreatment)
+        public FmotifChain GetDivision(CongenericScoreTrack congenericTrack, PauseTreatment pauseTreatment)
         {
             var chain = new FmotifChain(); // выходная, результирующая цепочка разбитых ф-мотивов
-            this.paramPauseTreatment = paramPauseTreatment;
+            this.pauseTreatment = pauseTreatment;
 
-            var fmotifBuffer = new Fmotif(FmotifType.None, paramPauseTreatment);
+            var fmotifBuffer = new Fmotif(FmotifType.None, pauseTreatment);
 
             // буффер для накопления нот, для последующего анализа его содержимого
             var noteChain = new List<ValueNote>();
@@ -101,9 +101,9 @@
 
                             wasNote = true; // была нота пермещена в буфер
 
-                            switch (paramPauseTreatment)
+                            switch (pauseTreatment)
                             {
-                                case ParamPauseTreatment.Ignore:
+                                case PauseTreatment.Ignore:
                                     // удаляем все паузы в возвращаемом объекте (0) (паузы игнорируются)
                                     // если у очередной ноты нет лиги, то проверяем: если нота - не пауза, то выставляем флаг о следущей рассматриваемой ноте
                                     if (fmotifBuffer.NoteList[fmotifBuffer.NoteList.Count - 1].Pitches.Count > 0)
@@ -112,7 +112,7 @@
                                     }
 
                                     break;
-                                case ParamPauseTreatment.NoteTrace:
+                                case PauseTreatment.NoteTrace:
                                     // длительность паузы прибавляется к предыдущей ноте, а она сама удаляется из текста (1) (пауза - звуковой след ноты)
                                     if (noteChain.Count > 0)
                                     {
@@ -128,13 +128,13 @@
                                     }
 
                                     break;
-                                case ParamPauseTreatment.SilenceNote:
+                                case PauseTreatment.SilenceNote:
                                     // Пауза - звук тишины, рассматривается как нота без высоты звучания (2)
                                     // ничего не треуется
                                     next = true;
                                     break;
                                 default:
-                                    throw new InvalidEnumArgumentException(nameof(paramPauseTreatment), (int)paramPauseTreatment, typeof(ParamPauseTreatment));
+                                    throw new InvalidEnumArgumentException(nameof(pauseTreatment), (int)pauseTreatment, typeof(PauseTreatment));
                             }
                         }
                         else
@@ -152,9 +152,9 @@
                 else
                 {
                     // если у очередной ноты нет лиги
-                    switch (paramPauseTreatment)
+                    switch (pauseTreatment)
                     {
-                        case ParamPauseTreatment.Ignore:
+                        case PauseTreatment.Ignore:
                             // удаляем все паузы в возвращаемом объекте (0) (паузы игнорируются)
                             // если у очередной ноты нет лиги, то проверяем: если нота - не пауза, то выставляем флаг о следущей рассматриваемой ноте
                             if (fmotifBuffer.NoteList[fmotifBuffer.NoteList.Count - 1].Pitches.Count > 0)
@@ -163,7 +163,7 @@
                             }
 
                             break;
-                        case ParamPauseTreatment.NoteTrace:
+                        case PauseTreatment.NoteTrace:
                             // длительность паузы прибавляется к предыдущей ноте, а она сама удаляется из текста (1) (пауза - звуковой след ноты)
                             // проверяем: если нота - не пауза, то выставляем флаг о следущей рассматриваемой ноте
                             if (fmotifBuffer.NoteList[fmotifBuffer.NoteList.Count - 1].Pitches.Count > 0)
@@ -188,13 +188,13 @@
                             }
 
                             break;
-                        case ParamPauseTreatment.SilenceNote:
+                        case PauseTreatment.SilenceNote:
                             // Пауза - звук тишины, рассматривается как нота без высоты звучания (2)
                             // ничего не треуется
                             next = true;
                             break;
                         default:
-                            throw new InvalidEnumArgumentException(nameof(paramPauseTreatment), (int)paramPauseTreatment, typeof(ParamPauseTreatment));
+                            throw new InvalidEnumArgumentException(nameof(pauseTreatment), (int)pauseTreatment, typeof(PauseTreatment));
                     }
                 }
 
@@ -219,7 +219,7 @@
                         if (first.Duration.Value > second.Duration.Value)
                         {
                             // заносим ноты/паузы первой собранной ноты в очередной фмотив с типом ЧМТ, и удаляем из буфера
-                            var fm = new Fmotif(FmotifType.PartialMinimalMeasure, paramPauseTreatment, chain.FmotifsList.Count);
+                            var fm = new Fmotif(FmotifType.PartialMinimalMeasure, pauseTreatment, chain.FmotifsList.Count);
                             for (int i = 0; i < n; i++)
                             {
                                 // заносим
@@ -272,7 +272,7 @@
                             var last = TempExtractor(fmotifBuffer, ExtractNoteList(fmotifBuffer).Count - 1);
                             if (lastButOne.Duration.Value < last.Duration.Value)
                             {
-                                var fmotifBuffer2 = new Fmotif(FmotifType.None, paramPauseTreatment);
+                                var fmotifBuffer2 = new Fmotif(FmotifType.None, pauseTreatment);
 
                                 // помещаем в буффер2 последнюю собранную ноту - большей длительности чем все равнодлительные
                                 // так как меняется в процессе
@@ -333,7 +333,7 @@
                             lastButOne = TempExtractor(fmotifBuffer, ExtractNoteList(fmotifBuffer).Count - 2);
                             if (lastButOne.Duration.Value > last.Duration.Value)
                             {
-                                var fmotifBuffer2 = new Fmotif(FmotifType.None, paramPauseTreatment);
+                                var fmotifBuffer2 = new Fmotif(FmotifType.None, pauseTreatment);
 
                                 // помещаем в буффер2 последнюю собранную ноту - меньшей длительности чем все равнодлительные
                                 int count = fmotifBuffer.NoteList.Count; // так как меняется в процессе
@@ -388,7 +388,7 @@
                                     // также сохраняем не вошедшую последнюю ноту (не удаляем ее)
                                     if (combination)
                                     {
-                                        var fm = new Fmotif((byte)fmotifBuffer.Type + FmotifType.IncreasingSequence, paramPauseTreatment, chain.FmotifsList.Count);
+                                        var fm = new Fmotif((byte)fmotifBuffer.Type + FmotifType.IncreasingSequence, pauseTreatment, chain.FmotifsList.Count);
 
                                         // ЧМТВП или ПМТВП
                                         for (int i = 0; i < n; i++)
@@ -414,7 +414,7 @@
                                     }
                                     else
                                     {
-                                        var fm = new Fmotif(FmotifType.IncreasingSequence, paramPauseTreatment, chain.FmotifsList.Count);
+                                        var fm = new Fmotif(FmotifType.IncreasingSequence, pauseTreatment, chain.FmotifsList.Count);
                                         for (int i = 0; i < n; i++)
                                         {
                                             // заносим
@@ -444,7 +444,7 @@
             if (ExtractNoteList(fmotifBuffer).Count == 1)
             {
                 // заносим ноты/паузы 1 собранной ноты в очередной фмотив с типом ЧМТ, и удаляем из буфера
-                var fm = new Fmotif(FmotifType.PartialMinimalMeasure, paramPauseTreatment, chain.FmotifsList.Count);
+                var fm = new Fmotif(FmotifType.PartialMinimalMeasure, pauseTreatment, chain.FmotifsList.Count);
 
                 // for (int i = 0; i < FmotifBuffer.NoteList.Count; i++)
                 foreach (ValueNote note in fmotifBuffer.NoteList)
@@ -485,7 +485,7 @@
                         if (combination)
                         {
                             // заносим оставшиеся ноты в комбинированный фмотив ЧМТ/ПМТ + ВП и в выходную цепочку
-                            var fm = new Fmotif((byte)fmotifBuffer.Type + FmotifType.IncreasingSequence, paramPauseTreatment, chain.FmotifsList.Count); // ЧМТВП или ПМТВП
+                            var fm = new Fmotif((byte)fmotifBuffer.Type + FmotifType.IncreasingSequence, pauseTreatment, chain.FmotifsList.Count); // ЧМТВП или ПМТВП
                             foreach (ValueNote note in fmotifBuffer.NoteList)
                             {
                                 // заносим
@@ -501,7 +501,7 @@
                         else
                         {
                             // заносим оставшиеся ноты в фмотив ВП и в выходную цепочку
-                            var fm = new Fmotif(FmotifType.IncreasingSequence, paramPauseTreatment, chain.FmotifsList.Count);
+                            var fm = new Fmotif(FmotifType.IncreasingSequence, pauseTreatment, chain.FmotifsList.Count);
                             foreach (ValueNote note in fmotifBuffer.NoteList)
                             {
                                 // заносим
@@ -822,7 +822,7 @@
         /// </returns>
         private List<ValueNote> ExtractNoteList(Fmotif fmotifBuffer)
         {
-            return fmotifBuffer.PauseTreatment(paramPauseTreatment).TieGathered().NoteList;
+            return fmotifBuffer.PauseTreatmentProcedure(pauseTreatment).TieGathered().NoteList;
         }
 
         /// <summary>
@@ -858,17 +858,17 @@
         /// </returns>
         private Fmotif ExtractGivenNotesCountFromFmotifBuffer(Fmotif fmotifBuffer, FmotifType fmotifType, int noteCount)
         {
-            var fmotif = new Fmotif(fmotifType, paramPauseTreatment);
+            var fmotif = new Fmotif(fmotifType, pauseTreatment);
             while (fmotifBuffer.NoteList.Count > 0)
             {
                 if (ExtractNoteList(fmotif).Count == noteCount)
                 {
-                    if (paramPauseTreatment != ParamPauseTreatment.NoteTrace)
+                    if (pauseTreatment != PauseTreatment.NoteTrace)
                     {
                         break;
                     }
 
-                    if ((paramPauseTreatment == ParamPauseTreatment.NoteTrace) &&
+                    if ((pauseTreatment == PauseTreatment.NoteTrace) &&
                         (fmotifBuffer.NoteList[0].Pitches.Count > 0))
                     {
                         break;
@@ -897,7 +897,7 @@
         {
             if (ExtractNoteList(fmotifBuffer).Count == 1)
             {
-                var fm = new Fmotif(FmotifType.PartialMinimalMeasure, paramPauseTreatment);
+                var fm = new Fmotif(FmotifType.PartialMinimalMeasure, pauseTreatment);
                 for (int j = 0; j < fmotifBuffer.NoteList.Count; j++)
                 {
                     // заносим

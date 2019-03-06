@@ -45,12 +45,12 @@
 
             // создание результирующей цепочки фмотивов
             // вычисление, опрделение, разбиение на  ф-мотивы данного монотрека
-            var chain = fmdivider.GetDivision(unitrack, ParamPauseTreatment.Ignore);
+            var chain = fmdivider.GetDivision(unitrack, PauseTreatment.Ignore);
 
             // создание аналогов ф-мотивов, которые должны получиться, после разбиения
             // процедура определения одинаковых на данном этапе не производится
-            var fmotif1 = new Fmotif(FmotifType.CompleteMinimalMeasure, ParamPauseTreatment.Ignore, 0);
-            var fmotif2 = new Fmotif(FmotifType.CompleteMinimalMeasure, ParamPauseTreatment.Ignore, 1);
+            var fmotif1 = new Fmotif(FmotifType.CompleteMinimalMeasure, PauseTreatment.Ignore, 0);
+            var fmotif2 = new Fmotif(FmotifType.CompleteMinimalMeasure, PauseTreatment.Ignore, 1);
 
             fmotif1.NoteList.Add(new ValueNote(new Pitch(3, NoteSymbol.E, 0), new Duration(1, 4, false, 512), false, Tie.None));
             fmotif1.NoteList.Add(new ValueNote(new Pitch(3, NoteSymbol.A, 0), new Duration(1, 4, false, 512), false, Tie.None));
@@ -95,12 +95,12 @@
 
             // создание результирующей цепочки фмотивов
             // вычисление, опрделение, разбиение на  ф-мотивы данного монотрека
-            FmotifChain fmchain = fmdivider.GetDivision(unitrack, (int)ParamPauseTreatment.Ignore);
+            FmotifChain fmchain = fmdivider.GetDivision(unitrack, PauseTreatment.Ignore);
 
             // создание аналогов ф-мотивов, которые должны получиться, после разбиения
             // процедура определения одинаковых на данном этапе не производится
-            var fmotif1 = new Fmotif(FmotifType.CompleteMinimalMeasure, ParamPauseTreatment.Ignore, 0);
-            var fmotif2 = new Fmotif(FmotifType.CompleteMinimalMeasure, ParamPauseTreatment.Ignore, 1);
+            var fmotif1 = new Fmotif(FmotifType.CompleteMinimalMeasure, PauseTreatment.Ignore, 0);
+            var fmotif2 = new Fmotif(FmotifType.CompleteMinimalMeasure, PauseTreatment.Ignore, 1);
 
             fmotif1.NoteList.Add(new ValueNote(new Pitch(3, NoteSymbol.E, 0), new Duration(1, 8, false, 512), false, Tie.None));
             fmotif1.NoteList.Add(new ValueNote(new Pitch(3, NoteSymbol.A, 0), new Duration(1, 8, false, 512), false, Tie.None));
@@ -154,13 +154,13 @@
 
             // создание результирующей цепочки фмотивов
             // вычисление, опрделение, разбиение на  ф-мотивы данного монотрека
-            var fmchain = fmdivider.GetDivision(unitrack, (int)ParamPauseTreatment.Ignore);
+            var fmchain = fmdivider.GetDivision(unitrack, PauseTreatment.Ignore);
 
             // создание аналогов ф-мотивов, которые должны получиться, после разбиения
             // процедура определения одинаковых на данном этапе не производится
-            var fmotif1 = new Fmotif(FmotifType.PartialMinimalMeasure, ParamPauseTreatment.Ignore, 0);
-            var fmotif2 = new Fmotif(FmotifType.CompleteMinimalMetrorhythmicGroup, ParamPauseTreatment.Ignore, 1);
-            var fmotif3 = new Fmotif(FmotifType.CompleteMinimalMeasure, ParamPauseTreatment.Ignore, 3);
+            var fmotif1 = new Fmotif(FmotifType.PartialMinimalMeasure, PauseTreatment.Ignore, 0);
+            var fmotif2 = new Fmotif(FmotifType.CompleteMinimalMetrorhythmicGroup, PauseTreatment.Ignore, 1);
+            var fmotif3 = new Fmotif(FmotifType.CompleteMinimalMeasure, PauseTreatment.Ignore, 3);
 
             fmotif1.NoteList.Add(new ValueNote(new Pitch(3, NoteSymbol.E, 0), new Duration(1, 4, false, 512), false, Tie.None));
 
@@ -207,11 +207,11 @@
 
             // создание результирующей цепочки фмотивов
             // вычисление, опрделение, разбиение на  ф-мотивы данного монотрека
-            var fmchain = fmdivider.GetDivision(unitrack, (int)ParamPauseTreatment.Ignore);
+            var fmchain = fmdivider.GetDivision(unitrack, PauseTreatment.Ignore);
 
             // создание аналогов ф-мотивов, которые должны получиться, после разбиения
             // процедура определения одинаковых на данном этапе не производится
-            var fmotif1 = new Fmotif(FmotifType.CompleteMinimalMeasure, ParamPauseTreatment.Ignore, 0);
+            var fmotif1 = new Fmotif(FmotifType.CompleteMinimalMeasure, PauseTreatment.Ignore, 0);
 
             fmotif1.NoteList.Add(new ValueNote(new Pitch(3, NoteSymbol.E, 0), new Duration(1, 8, false, 256), false, Tie.Start));
             fmotif1.NoteList.Add(new ValueNote(new Pitch(3, NoteSymbol.E, 0), new Duration(1, 8, false, 256), false, Tie.End));
@@ -254,12 +254,12 @@
 
             // создание результирующей цепочки фмотивов
             // вычисление, опрделение, разбиение на  ф-мотивы данного монотрека
-            var fmchain = fmdivider.GetDivision(unitrack, (int)ParamPauseTreatment.Ignore);
+            var fmchain = fmdivider.GetDivision(unitrack, PauseTreatment.Ignore);
 
             // создание аналогов ф-мотивов, которые должны получиться, после разбиения
             // процедура определения одинаковых на данном этапе не производится
-            var fmotif1 = new Fmotif(FmotifType.CompleteMinimalMeasure, ParamPauseTreatment.Ignore, 0);
-            var fmotif2 = new Fmotif(FmotifType.CompleteMinimalMeasure, ParamPauseTreatment.Ignore, 1);
+            var fmotif1 = new Fmotif(FmotifType.CompleteMinimalMeasure, PauseTreatment.Ignore, 0);
+            var fmotif2 = new Fmotif(FmotifType.CompleteMinimalMeasure, PauseTreatment.Ignore, 1);
 
             fmotif1.NoteList.Add(new ValueNote(new Pitch(3, NoteSymbol.E, 0), new Duration(1, 8, 2, 3, false, 240), false, Tie.None));
             fmotif1.NoteList.Add(new ValueNote(new Pitch(3, NoteSymbol.A, 0), new Duration(1, 8, 2, 3, false, 240), false, Tie.None));
@@ -306,13 +306,13 @@
 
             // создание результирующей цепочки фмотивов
             // вычисление, опрделение, разбиение на  ф-мотивы данного монотрека
-            var fmchain = fmdivider.GetDivision(unitrack, (int)ParamPauseTreatment.Ignore);
+            var fmchain = fmdivider.GetDivision(unitrack, PauseTreatment.Ignore);
 
             // создание аналогов ф-мотивов, которые должны получиться, после разбиения
             // процедура определения одинаковых на данном этапе не производится
-            var fmotif1 = new Fmotif(FmotifType.PartialMinimalMeasure, ParamPauseTreatment.Ignore, 0);
-            var fmotif2 = new Fmotif(FmotifType.CompleteMinimalMeasure, ParamPauseTreatment.Ignore, 1);
-            var fmotif3 = new Fmotif(FmotifType.CompleteMinimalMeasure, ParamPauseTreatment.Ignore, 2);
+            var fmotif1 = new Fmotif(FmotifType.PartialMinimalMeasure, PauseTreatment.Ignore, 0);
+            var fmotif2 = new Fmotif(FmotifType.CompleteMinimalMeasure, PauseTreatment.Ignore, 1);
+            var fmotif3 = new Fmotif(FmotifType.CompleteMinimalMeasure, PauseTreatment.Ignore, 2);
 
             fmotif1.NoteList.Add(new ValueNote(new Pitch(3, NoteSymbol.E, Accidental.Bekar), new Duration(1, 4, false, 512), false, Tie.None));
 
@@ -359,11 +359,11 @@
 
             // создание результирующей цепочки фмотивов
             // вычисление, опрделение, разбиение на  ф-мотивы данного монотрека
-            FmotifChain fmchain = fmdivider.GetDivision(unitrack, (int)ParamPauseTreatment.Ignore);
+            FmotifChain fmchain = fmdivider.GetDivision(unitrack, PauseTreatment.Ignore);
 
             // создание аналогов ф-мотивов, которые должны получиться, после разбиения
             // процедура определения одинаковых на данном этапе не производится
-            var fmotif1 = new Fmotif(FmotifType.CompleteMinimalMeasure, ParamPauseTreatment.Ignore, 0);
+            var fmotif1 = new Fmotif(FmotifType.CompleteMinimalMeasure, PauseTreatment.Ignore, 0);
             fmotif1.NoteList.Add(new ValueNote((Pitch)null, new Duration(1, 4, false, 512), false, Tie.None));
             fmotif1.NoteList.Add(new ValueNote(new Pitch(3, NoteSymbol.A, 0), new Duration(1, 8, false, 256), false, Tie.None));
             fmotif1.NoteList.Add(new ValueNote(new Pitch(3, NoteSymbol.B, 0), new Duration(1, 8, false, 256), false, Tie.None));
@@ -404,11 +404,11 @@
 
             // создание результирующей цепочки фмотивов
             // вычисление, опрделение, разбиение на  ф-мотивы данного монотрека
-            FmotifChain fmchain = fmdivider.GetDivision(unitrack, (int)ParamPauseTreatment.Ignore);
+            FmotifChain fmchain = fmdivider.GetDivision(unitrack, PauseTreatment.Ignore);
 
             // создание аналогов ф-мотивов, которые должны получиться, после разбиения
             // процедура определения одинаковых на данном этапе не производится
-            var fmotif1 = new Fmotif(FmotifType.CompleteMinimalMeasure, ParamPauseTreatment.Ignore, 0);
+            var fmotif1 = new Fmotif(FmotifType.CompleteMinimalMeasure, PauseTreatment.Ignore, 0);
             fmotif1.NoteList.Add(new ValueNote(new Pitch(3, NoteSymbol.A, 0), new Duration(1, 8, false, 256), false, Tie.None));
             fmotif1.NoteList.Add(new ValueNote((Pitch)null, new Duration(1, 8, false, 256), false, Tie.None));
             fmotif1.NoteList.Add(new ValueNote(new Pitch(3, NoteSymbol.B, 0), new Duration(1, 8, false, 256), false, Tie.None));
@@ -450,14 +450,14 @@
 
             // создание результирующей цепочки фмотивов
             // вычисление, опрделение, разбиение на  ф-мотивы данного монотрека
-            FmotifChain fmchain = fmdivider.GetDivision(unitrack, ParamPauseTreatment.SilenceNote);
+            FmotifChain fmchain = fmdivider.GetDivision(unitrack, PauseTreatment.SilenceNote);
 
             // создание аналогов ф-мотивов, которые должны получиться, после разбиения
             // процедура определения одинаковых на данном этапе не производится
-            var fmotif1 = new Fmotif(FmotifType.CompleteMinimalMeasure, ParamPauseTreatment.Ignore, 0);
+            var fmotif1 = new Fmotif(FmotifType.CompleteMinimalMeasure, PauseTreatment.Ignore, 0);
             fmotif1.NoteList.Add(new ValueNote(new Pitch(3, NoteSymbol.A, 0), new Duration(1, 8, false, 256), false, Tie.None));
             fmotif1.NoteList.Add(new ValueNote((Pitch)null, new Duration(1, 8, false, 256), false, Tie.None));
-            var fmotif2 = new Fmotif(FmotifType.CompleteMinimalMeasure, ParamPauseTreatment.Ignore, 1);
+            var fmotif2 = new Fmotif(FmotifType.CompleteMinimalMeasure, PauseTreatment.Ignore, 1);
             fmotif2.NoteList.Add(new ValueNote(new Pitch(3, NoteSymbol.B, 0), new Duration(1, 8, false, 256), false, Tie.None));
             fmotif2.NoteList.Add(new ValueNote(new Pitch(3, NoteSymbol.B, 0), new Duration(1, 8, false, 256), false, Tie.None));
 
@@ -466,10 +466,10 @@
             fmchain1.FmotifsList.Add(fmotif1);
             fmchain1.FmotifsList.Add(fmotif2);
 
-            Assert.IsTrue(fmotif1.FmEquals(fmotif1, ParamPauseTreatment.SilenceNote, ParamEqualFM.Sequent));
-            Assert.IsTrue(fmotif2.FmEquals(fmotif2, ParamPauseTreatment.SilenceNote, ParamEqualFM.Sequent));
-            Assert.IsTrue(fmchain.FmotifsList[0].FmEquals(fmotif1, ParamPauseTreatment.SilenceNote, ParamEqualFM.Sequent));
-            Assert.IsTrue(fmchain.FmotifsList[1].FmEquals(fmotif2, ParamPauseTreatment.SilenceNote, ParamEqualFM.Sequent));
+            Assert.IsTrue(fmotif1.FmEquals(fmotif1, PauseTreatment.SilenceNote, true));
+            Assert.IsTrue(fmotif2.FmEquals(fmotif2, PauseTreatment.SilenceNote, true));
+            Assert.IsTrue(fmchain.FmotifsList[0].FmEquals(fmotif1, PauseTreatment.SilenceNote, true));
+            Assert.IsTrue(fmchain.FmotifsList[1].FmEquals(fmotif2, PauseTreatment.SilenceNote, true));
             Assert.IsTrue(fmchain1.Equals(fmchain));
         }
     }

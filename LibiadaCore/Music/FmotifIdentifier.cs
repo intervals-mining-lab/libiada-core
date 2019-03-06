@@ -16,16 +16,16 @@
         /// <param name="fmotifChain">
         /// The fmotif chain.
         /// </param>
-        /// <param name="paramPauseTreatment">
+        /// <param name="pauseTreatment">
         /// The param pause treatment.
         /// </param>
-        /// <param name="paramEqualFM">
-        /// The param equal fm.
+        /// <param name="sequentialTransfer">
+        /// The sequential transfer parameter.
         /// </param>
         /// <returns>
         /// The <see cref="FmotifChain"/>.
         /// </returns>
-        public FmotifChain GetIdentification(FmotifChain fmotifChain, ParamPauseTreatment paramPauseTreatment, ParamEqualFM paramEqualFM)
+        public FmotifChain GetIdentification(FmotifChain fmotifChain, PauseTreatment pauseTreatment, bool sequentialTransfer)
         {
             var chain = (FmotifChain)fmotifChain.Clone();
 
@@ -33,7 +33,7 @@
             {
                 for (int j = i; j < chain.FmotifsList.Count; j++)
                 {
-                    if (chain.FmotifsList[i].FmEquals(chain.FmotifsList[j], paramPauseTreatment, paramEqualFM))
+                    if (chain.FmotifsList[i].FmEquals(chain.FmotifsList[j], pauseTreatment, sequentialTransfer))
                     {
                         chain.FmotifsList[j].Id = chain.FmotifsList[i].Id;
                     }

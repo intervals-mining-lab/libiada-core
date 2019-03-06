@@ -30,7 +30,7 @@
         [Test]
         public void FmotifTest()
         {
-            var fmotif = new Fmotif(FmotifType.CompleteMinimalMeasure, ParamPauseTreatment.Ignore, 0);
+            var fmotif = new Fmotif(FmotifType.CompleteMinimalMeasure, PauseTreatment.Ignore, 0);
             var notelist = new List<ValueNote> { (ValueNote)note.Clone(), (ValueNote)aNote.Clone(), (ValueNote)note.Clone() };
 
             fmotif.NoteList.Add((ValueNote)note.Clone());
@@ -57,16 +57,16 @@
         public void FmotifWithoutPausesFirstTest()
         {
             // проверка работы метода, который возвращает копию объекта (Fmotif), только без пауз.
-            var fmotif = new Fmotif(FmotifType.CompleteMinimalMeasure, ParamPauseTreatment.Ignore, 0);
+            var fmotif = new Fmotif(FmotifType.CompleteMinimalMeasure, PauseTreatment.Ignore, 0);
             fmotif.NoteList.Add(new ValueNote(new Pitch(1, NoteSymbol.A, Accidental.Bekar), new Duration(1, 2, false, 480), false, Tie.None));
             fmotif.NoteList.Add(new ValueNote((Pitch)null, new Duration(1, 4, false, 480), false, Tie.None));
             fmotif.NoteList.Add(new ValueNote(new Pitch(1, NoteSymbol.A, Accidental.Bekar), new Duration(1, 2, false, 480), false, Tie.None));
             fmotif.NoteList.Add(new ValueNote((Pitch)null, new Duration(1, 4, false, 480), false, Tie.None));
             fmotif.NoteList.Add(new ValueNote(new Pitch(1, NoteSymbol.A, Accidental.Bekar), new Duration(1, 2, false, 480), false, Tie.None));
-            Assert.AreEqual(fmotif.PauseTreatment((int)ParamPauseTreatment.Ignore).NoteList[0].Pitches[0].Step, NoteSymbol.A);
-            Assert.AreEqual(fmotif.PauseTreatment((int)ParamPauseTreatment.Ignore).NoteList[1].Pitches[0].Step, NoteSymbol.A);
-            Assert.AreEqual(fmotif.PauseTreatment((int)ParamPauseTreatment.Ignore).NoteList[2].Pitches[0].Step, NoteSymbol.A);
-            Assert.AreEqual(fmotif.PauseTreatment((int)ParamPauseTreatment.Ignore).NoteList.Count, 3);
+            Assert.AreEqual(fmotif.PauseTreatmentProcedure(PauseTreatment.Ignore).NoteList[0].Pitches[0].Step, NoteSymbol.A);
+            Assert.AreEqual(fmotif.PauseTreatmentProcedure(PauseTreatment.Ignore).NoteList[1].Pitches[0].Step, NoteSymbol.A);
+            Assert.AreEqual(fmotif.PauseTreatmentProcedure(PauseTreatment.Ignore).NoteList[2].Pitches[0].Step, NoteSymbol.A);
+            Assert.AreEqual(fmotif.PauseTreatmentProcedure(PauseTreatment.Ignore).NoteList.Count, 3);
         }
 
         /// <summary>
@@ -76,17 +76,17 @@
         public void FmotifWithoutPausesSecondTest()
         {
             // проверка работы метода, который возвращает копию объекта (Fmotif), только без пауз.
-            var fmotif = new Fmotif(FmotifType.CompleteMinimalMeasure, ParamPauseTreatment.Ignore, 0);
+            var fmotif = new Fmotif(FmotifType.CompleteMinimalMeasure, PauseTreatment.Ignore, 0);
             fmotif.NoteList.Add(new ValueNote((Pitch)null, new Duration(1, 4, false, 480), false, Tie.None));
             fmotif.NoteList.Add(new ValueNote((Pitch)null, new Duration(1, 4, false, 480), false, Tie.None));
             fmotif.NoteList.Add(new ValueNote(new Pitch(1, NoteSymbol.A, Accidental.Bekar), new Duration(1, 2, false, 480), false, Tie.None));
             fmotif.NoteList.Add(new ValueNote(new Pitch(1, NoteSymbol.A, Accidental.Bekar), new Duration(1, 2, false, 480), false, Tie.None));
             fmotif.NoteList.Add(new ValueNote((Pitch)null, new Duration(1, 4, false, 480), false, Tie.None));
             fmotif.NoteList.Add(new ValueNote(new Pitch(1, NoteSymbol.A, Accidental.Bekar), new Duration(1, 2, false, 480), false, Tie.None));
-            Assert.AreEqual(fmotif.PauseTreatment((int)ParamPauseTreatment.Ignore).NoteList[0].Pitches[0].Step, NoteSymbol.A);
-            Assert.AreEqual(fmotif.PauseTreatment((int)ParamPauseTreatment.Ignore).NoteList[1].Pitches[0].Step, NoteSymbol.A);
-            Assert.AreEqual(fmotif.PauseTreatment((int)ParamPauseTreatment.Ignore).NoteList[2].Pitches[0].Step, NoteSymbol.A);
-            Assert.AreEqual(fmotif.PauseTreatment((int)ParamPauseTreatment.Ignore).NoteList.Count, 3);
+            Assert.AreEqual(fmotif.PauseTreatmentProcedure(PauseTreatment.Ignore).NoteList[0].Pitches[0].Step, NoteSymbol.A);
+            Assert.AreEqual(fmotif.PauseTreatmentProcedure(PauseTreatment.Ignore).NoteList[1].Pitches[0].Step, NoteSymbol.A);
+            Assert.AreEqual(fmotif.PauseTreatmentProcedure(PauseTreatment.Ignore).NoteList[2].Pitches[0].Step, NoteSymbol.A);
+            Assert.AreEqual(fmotif.PauseTreatmentProcedure(PauseTreatment.Ignore).NoteList.Count, 3);
         }
 
         /// <summary>
@@ -96,7 +96,7 @@
         public void FmotifTieGatheredFirstTest()
         {
             // проверка работы метода, который возвращает копию объекта (Fmotif), c собранными залигованными нотами.
-            var fmotif = new Fmotif(FmotifType.CompleteMinimalMeasure, ParamPauseTreatment.Ignore, 0);
+            var fmotif = new Fmotif(FmotifType.CompleteMinimalMeasure, PauseTreatment.Ignore, 0);
             fmotif.NoteList.Add(new ValueNote((Pitch)null, new Duration(1, 2, false, 960), false, Tie.None, 0));
             fmotif.NoteList.Add(new ValueNote(new Pitch(1, NoteSymbol.A, Accidental.Bekar), new Duration(1, 8, false, 480), false, Tie.Start, 2));
             fmotif.NoteList.Add(new ValueNote(new Pitch(1, NoteSymbol.A, Accidental.Bekar), new Duration(1, 8, false, 480), false, Tie.Continue, 4));
@@ -119,7 +119,7 @@
         public void FmotifTieGatheredSecondTest()
         {
             // проверка работы метода, который возвращает копию объекта (Fmotif), c собранными залигованными нотами.
-            var fmotif = new Fmotif(FmotifType.CompleteMinimalMeasure, ParamPauseTreatment.Ignore, 0);
+            var fmotif = new Fmotif(FmotifType.CompleteMinimalMeasure, PauseTreatment.Ignore, 0);
             fmotif.NoteList.Add(new ValueNote((Pitch)null, new Duration(1, 2, false, 960), false, Tie.None, 0));
             fmotif.NoteList.Add(new ValueNote(new Pitch(1, NoteSymbol.A, Accidental.Bekar), new Duration(1, 8, 2, 3, false, 320), false, Tie.Start, 2));
             fmotif.NoteList.Add(new ValueNote(new Pitch(1, NoteSymbol.A, Accidental.Bekar), new Duration(1, 8, 2, 3, false, 320), false, Tie.Continue, 4));
@@ -143,7 +143,7 @@
         {
             // проверка работы метода, который возвращает копию объекта (Fmotif), c собранными залигованными нотами.
             // старт лиги, потом опять старт лиги
-            var fmotif = new Fmotif(FmotifType.CompleteMinimalMeasure, ParamPauseTreatment.Ignore, 0);
+            var fmotif = new Fmotif(FmotifType.CompleteMinimalMeasure, PauseTreatment.Ignore, 0);
             fmotif.NoteList.Add(new ValueNote(new Pitch(1, NoteSymbol.A, Accidental.Bekar), new Duration(1, 8, false, 480), false, Tie.Start, 2));
             fmotif.NoteList.Add(new ValueNote(new Pitch(1, NoteSymbol.A, Accidental.Bekar), new Duration(1, 8, false, 480), false, Tie.Start, 2));
             try
@@ -177,7 +177,7 @@
             }
 
             // лига без старта
-            var fmotif1 = new Fmotif(FmotifType.CompleteMinimalMeasure, ParamPauseTreatment.Ignore, 0);
+            var fmotif1 = new Fmotif(FmotifType.CompleteMinimalMeasure, PauseTreatment.Ignore, 0);
             fmotif1.NoteList.Add(new ValueNote(new Pitch(1, NoteSymbol.A, Accidental.Bekar), new Duration(1, 8, false, 480), false, Tie.Continue, 4));
             fmotif1.NoteList.Add(new ValueNote(new Pitch(1, NoteSymbol.A, Accidental.Bekar), new Duration(1, 8, false, 480), false, Tie.Continue, 3));
             fmotif1.NoteList.Add(new ValueNote(new Pitch(1, NoteSymbol.A, Accidental.Bekar), new Duration(1, 8, false, 480), false, Tie.End, 1));
@@ -195,7 +195,7 @@
             }
 
             // в знаке лиги не {-1,0,1,2}
-            var fmotif2 = new Fmotif(FmotifType.CompleteMinimalMeasure, ParamPauseTreatment.Ignore, 0);
+            var fmotif2 = new Fmotif(FmotifType.CompleteMinimalMeasure, PauseTreatment.Ignore, 0);
             fmotif2.NoteList.Add(new ValueNote(new Pitch(1, NoteSymbol.A, Accidental.Bekar), new Duration(1, 8, false, 480), false, (Tie)9, 1));
             try
             {
@@ -211,7 +211,7 @@
             }
 
             // в знаке лиги не {-1,0,1,2}
-            var fmotif3 = new Fmotif(FmotifType.CompleteMinimalMeasure, ParamPauseTreatment.Ignore, 0);
+            var fmotif3 = new Fmotif(FmotifType.CompleteMinimalMeasure, PauseTreatment.Ignore, 0);
             fmotif3.NoteList.Add(new ValueNote(new Pitch(1, NoteSymbol.A, Accidental.Bekar), new Duration(1, 8, false, 480), false, Tie.Start, 1));
             fmotif3.NoteList.Add(new ValueNote(new Pitch(1, NoteSymbol.B, Accidental.Bekar), new Duration(1, 8, false, 480), false, Tie.End, 1));
             try
@@ -235,9 +235,9 @@
         public void FmotifEqualsFirstTest()
         {
             // проверка работы метода, который возвращает копию объекта (Fmotif), c собранными залигованными нотами.
-            var fmotif1 = new Fmotif(FmotifType.CompleteMinimalMeasure, ParamPauseTreatment.Ignore, 0);
-            var fmotif2 = new Fmotif(FmotifType.CompleteMinimalMeasure, ParamPauseTreatment.Ignore, 0);
-            var fmotif3 = new Fmotif(FmotifType.CompleteMinimalMeasure, ParamPauseTreatment.Ignore, 0);
+            var fmotif1 = new Fmotif(FmotifType.CompleteMinimalMeasure, PauseTreatment.Ignore, 0);
+            var fmotif2 = new Fmotif(FmotifType.CompleteMinimalMeasure, PauseTreatment.Ignore, 0);
+            var fmotif3 = new Fmotif(FmotifType.CompleteMinimalMeasure, PauseTreatment.Ignore, 0);
 
             fmotif1.NoteList.Add(new ValueNote((Pitch)null, new Duration(1, 2, false, 960), false, Tie.None, 0));
             fmotif1.NoteList.Add(new ValueNote(new Pitch(1, NoteSymbol.A, Accidental.Bekar), new Duration(1, 8, false, 480), false, Tie.Start, 2));
@@ -275,7 +275,7 @@
         [Test]
         public void FmotifEqualsSecondTest()
         {
-            var fmotif = new Fmotif(FmotifType.CompleteMinimalMeasure, ParamPauseTreatment.Ignore, 0);
+            var fmotif = new Fmotif(FmotifType.CompleteMinimalMeasure, PauseTreatment.Ignore, 0);
             fmotif.NoteList.Add(new ValueNote((Pitch)null, new Duration(1, 2, false, 960), false, Tie.None, 0));
             fmotif.NoteList.Add(new ValueNote(new Pitch(1, NoteSymbol.A, Accidental.Bekar), new Duration(1, 8, 2, 3, false, 320), false, Tie.Start, 2));
             fmotif.NoteList.Add(new ValueNote(new Pitch(1, NoteSymbol.A, Accidental.Bekar), new Duration(1, 8, 2, 3, false, 320), false, Tie.Continue, 4));
@@ -293,7 +293,7 @@
         [Test]
         public void FmotifEqualsThirdTest()
         {
-            var fmotif = new Fmotif(FmotifType.CompleteMinimalMeasure, ParamPauseTreatment.Ignore, 0);
+            var fmotif = new Fmotif(FmotifType.CompleteMinimalMeasure, PauseTreatment.Ignore, 0);
             fmotif.NoteList.Add(new ValueNote((Pitch)null, new Duration(1, 2, false, 960), false, Tie.None, 0));
             fmotif.NoteList.Add(new ValueNote(new Pitch(2, NoteSymbol.A, Accidental.Bekar), new Duration(1, 8, 2, 3, false, 320), false, Tie.Start, 2));
             fmotif.NoteList.Add(new ValueNote(new Pitch(2, NoteSymbol.A, Accidental.Bekar), new Duration(1, 8, 2, 3, false, 320), false, Tie.Continue, 4));
@@ -302,14 +302,14 @@
             fmotif.NoteList.Add(new ValueNote((Pitch)null, new Duration(1, 4, false, 480), false, Tie.None, 3));
             fmotif.NoteList.Add(new ValueNote(new Pitch(2, NoteSymbol.A, Accidental.Bekar), new Duration(1, 2, false, 480), false, Tie.None, 4));
 
-            var fmotif1 = new Fmotif(FmotifType.CompleteMinimalMeasure, ParamPauseTreatment.Ignore, 0);
+            var fmotif1 = new Fmotif(FmotifType.CompleteMinimalMeasure, PauseTreatment.Ignore, 0);
             fmotif1.NoteList.Add(new ValueNote(new Pitch(3, NoteSymbol.A, Accidental.Bekar), new Duration(1, 8, 2, 3, false, 320), false, Tie.Start, 0));
             fmotif1.NoteList.Add(new ValueNote(new Pitch(3, NoteSymbol.A, Accidental.Bekar), new Duration(1, 8, 2, 3, false, 320), false, Tie.Continue, 1));
             fmotif1.NoteList.Add(new ValueNote(new Pitch(3, NoteSymbol.A, Accidental.Bekar), new Duration(1, 8, 2, 3, false, 320), false, Tie.Continue, 3));
             fmotif1.NoteList.Add(new ValueNote(new Pitch(3, NoteSymbol.A, Accidental.Bekar), new Duration(1, 8, false, 480), false, Tie.End, 2));
             fmotif1.NoteList.Add(new ValueNote(new Pitch(3, NoteSymbol.B, Accidental.DoubleFlat), new Duration(1, 2, false, 480), false, Tie.None, 5));
 
-            Assert.IsTrue(fmotif.FmEquals(fmotif1, ParamPauseTreatment.Ignore, ParamEqualFM.Sequent));
+            Assert.IsTrue(fmotif.FmEquals(fmotif1, PauseTreatment.Ignore, true));
         }
     }
 }

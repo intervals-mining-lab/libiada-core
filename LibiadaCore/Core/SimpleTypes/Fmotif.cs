@@ -23,12 +23,12 @@
         /// порядковый номер - идентификатор
         /// (возможно введения доп id - глобального для словаря ф-мотивов)
         /// </param>
-        public Fmotif(FmotifType type, ParamPauseTreatment pauseTreatmentParameter, long id = -1)
+        public Fmotif(FmotifType type, PauseTreatment pauseTreatment, long id = -1)
         {
             Id = id;
             Type = type;
             NoteList = new List<ValueNote>();
-            PauseTreatmentParameter = pauseTreatmentParameter;
+            PauseTreatment = pauseTreatment;
         }
 
         /// <summary>
@@ -49,28 +49,28 @@
         /// <summary>
         /// Gets the pause treatment parameter.
         /// </summary>
-        private ParamPauseTreatment PauseTreatmentParameter { get; }
+        private PauseTreatment PauseTreatment { get; }
 
         // TODO: убрать все частные и заменить на общие!!!!!!!!! заменил все withoutpauses() на PauseTreatment с параметорм ignore
 
         /// <summary>
         /// The pause treatment.
         /// </summary>
-        /// <param name="paramPauseTreatment">
+        /// <param name="pauseTreatment">
         /// The param pause treatment.
         /// </param>
         /// <returns>
         /// The <see cref="Fmotif"/>.
         /// </returns>
         /// <exception cref="Exception">
-        /// Thrown if paramPauseTreatment is unknown.
+        /// Thrown if pauseTreatment is unknown.
         /// </exception>
-        public Fmotif PauseTreatment(ParamPauseTreatment paramPauseTreatment)
+        public Fmotif PauseTreatmentProcedure(PauseTreatment pauseTreatment)
         {
             // возвращает копию этого объекта
-            switch (paramPauseTreatment)
+            switch (pauseTreatment)
             {
-                case ParamPauseTreatment.Ignore:
+                case PauseTreatment.Ignore:
                         // удаляем все паузы в возвращаемом объекте (0) (паузы игнорируются)
                         var temp = (Fmotif)Clone();
                         for (int i = 0; i < temp.NoteList.Count; i++)
@@ -84,7 +84,7 @@
 
                         return temp;
 
-                case ParamPauseTreatment.NoteTrace:
+                case PauseTreatment.NoteTrace:
                         // длительность паузы прибавляется к предыдущей ноте,
                         // а она сама удаляется из текста (1) (пауза - звуковой след ноты)
                         var temp2 = (Fmotif)Clone();
@@ -115,13 +115,13 @@
 
                         return temp2;
 
-                case ParamPauseTreatment.SilenceNote:
+                case PauseTreatment.SilenceNote:
                         // Пауза - звук тишины, рассматривается как нота без высоты звучания (2)
                         // ничего не треуется
                         return (Fmotif)Clone();
 
                 default:
-                    throw new InvalidEnumArgumentException(nameof(paramPauseTreatment), (int)paramPauseTreatment, typeof(ParamPauseTreatment));
+                    throw new InvalidEnumArgumentException(nameof(pauseTreatment), (int)pauseTreatment, typeof(PauseTreatment));
             }
         }
 
@@ -140,7 +140,7 @@
             // (то есть вместо трех залигованных нот в фмотиве будет отображаться одна, с суммарной длительностью но такой же высотой
             ValueNote buffNote = null;
             var temp = (Fmotif)Clone();
-            var tempGathered = new Fmotif(Type, PauseTreatmentParameter, Id);
+            var tempGathered = new Fmotif(Type, PauseTreatment, Id);
 
             int count = temp.NoteList.Count;
 
@@ -246,7 +246,7 @@
         /// </returns>
         public IBaseObject Clone()
         {
-            var clone = new Fmotif(Type, PauseTreatmentParameter, Id);
+            var clone = new Fmotif(Type, PauseTreatment, Id);
             foreach (ValueNote note in NoteList)
             {
                 clone.NoteList.Add((ValueNote)note.Clone());
@@ -267,8 +267,8 @@
         public override bool Equals(object obj)
         {
             // для сравнения паузы не нужны, поэтому сравнивае ф-мотивы без пауз (они игнорируются, но входят в состав ф-мотива)
-            Fmotif self = PauseTreatment(ParamPauseTreatment.Ignore).TieGathered();
-            Fmotif other = ((Fmotif)obj).PauseTreatment(ParamPauseTreatment.Ignore).TieGathered();
+            Fmotif self = PauseTreatmentProcedure(PauseTreatment.Ignore).TieGathered();
+            Fmotif other = ((Fmotif)obj).PauseTreatmentProcedure(PauseTreatment.Ignore).TieGathered();
             int modulation = 0;
             bool firstTime = true;
 
@@ -329,20 +329,20 @@
         /// <param name="paramPauseTreatment">
         /// The param pause treatment.
         /// </param>
-        /// <param name="paramEqualFM">
-        /// The param equal fm.
+        /// <param name="sequentialTransfer">
+        /// The sequential transfer parameter.
         /// </param>
         /// <returns>
         /// The <see cref="bool"/>.
         /// </returns>
         /// <exception cref="Exception">
-        /// Thrown if paramEqualFM is unknown.
+        /// Thrown if sequential transfer parameter is unknown.
         /// </exception>
-        public bool FmEquals(object obj, ParamPauseTreatment paramPauseTreatment, ParamEqualFM paramEqualFM)
+        public bool FmEquals(object obj, PauseTreatment paramPauseTreatment, bool sequentialTransfer)
         {
             // для сравнения паузы не нужны, поэтому сравнивае ф-мотивы без пауз (они игнорируются, но входят в состав ф-мотива)
-            Fmotif self = PauseTreatment(paramPauseTreatment).TieGathered();
-            Fmotif other = ((Fmotif)obj).PauseTreatment(paramPauseTreatment).TieGathered();
+            Fmotif self = PauseTreatmentProcedure(paramPauseTreatment).TieGathered();
+            Fmotif other = ((Fmotif)obj).PauseTreatmentProcedure(paramPauseTreatment).TieGathered();
             int modulation = 0;
             bool firstTime = true;
 
@@ -382,9 +382,9 @@
                 {
                     // если две ноты - не паузы
                     // в зависимости от параметра учета секвентного переноса
-                    switch (paramEqualFM)
+                    switch (sequentialTransfer)
                     {
-                        case ParamEqualFM.Sequent: // учитывая секентный перенос (Sequent)
+                        case true: // учитывая секентный перенос (Sequent)
                             for (int j = 0; j < self.NoteList[i].Pitches.Count; j++)
                             {
                                 if (firstTime)
@@ -406,7 +406,7 @@
 
                             break;
 
-                        case ParamEqualFM.NonSequent:
+                        case false:
                             // без секвентного переноса (NonSequent)
                             for (int j = 0; j < self.NoteList[i].Pitches.Count; j++)
                             {
@@ -419,7 +419,7 @@
                             break;
 
                         default:
-                            throw new InvalidEnumArgumentException(nameof(paramEqualFM), (int)paramEqualFM, typeof(ParamEqualFM));
+                            throw new InvalidEnumArgumentException(nameof(sequentialTransfer));
                     }
                 }
             }
@@ -442,7 +442,7 @@
                 hash.AddRange(note.GetMD5HashCode());
             }
             hash.Add((byte)Type);
-            hash.Add((byte)PauseTreatmentParameter);
+            hash.Add((byte)PauseTreatment);
             MD5 md5 = MD5.Create();
             return md5.ComputeHash(hash.ToArray());
         }
@@ -460,7 +460,7 @@
             {
                 int hashCode = -2024996526;
                 hashCode = (hashCode * -1521134295) + ((byte)Type).GetHashCode();
-                hashCode = (hashCode * -1521134295) + PauseTreatmentParameter.GetHashCode();
+                hashCode = (hashCode * -1521134295) + PauseTreatment.GetHashCode();
                 foreach (ValueNote note in NoteList)
                 {
                     hashCode = (hashCode * -1521134295) + note.GetHashCode();
