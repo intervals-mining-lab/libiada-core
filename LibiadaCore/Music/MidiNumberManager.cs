@@ -24,9 +24,9 @@
         /// <returns>
         /// The <see cref="int"/>.
         /// </returns>
-        public static byte GetOctaveFromMidiNumber(int midiNumber)
+        public static short GetOctaveFromMidiNumber(int midiNumber)
         {
-            return (byte)((midiNumber / NotesInOctave) - 1);
+            return (short)((midiNumber / NotesInOctave) - 1);
         }
 
         /// <summary>

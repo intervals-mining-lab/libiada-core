@@ -18,6 +18,11 @@
             FmotifsList = new List<Fmotif>();
         }
 
+        public FmotifChain(List<Fmotif> fmotifsList)
+        {
+            FmotifsList = fmotifsList;
+        }
+
         /// <summary>
         /// Gets fmotifs list.
         /// </summary>

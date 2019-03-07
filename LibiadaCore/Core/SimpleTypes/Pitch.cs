@@ -25,7 +25,7 @@
         /// <param name="instrument">
         /// The instrument.
         /// </param>
-        public Pitch(byte octave, NoteSymbol step, Accidental alter, Instrument instrument = Instrument.AnyOrUnknown)
+        public Pitch(short octave, NoteSymbol step, Accidental alter, Instrument instrument = Instrument.AnyOrUnknown)
         {
             Alter = alter;
             Step = step;
@@ -74,7 +74,7 @@
         /// <summary>
         /// Gets the octave number.
         /// </summary>
-        public byte Octave { get; }
+        public short Octave { get; }
 
         /// <summary>
         /// Gets alteration.

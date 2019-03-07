@@ -69,7 +69,7 @@
             FmotifChain chain = fmotifDivider.GetDivision(congenericTrack, pauseTreatment);
 
             // нахождение одинаковых
-            return fmotifIdentifier.GetIdentification(chain, pauseTreatment, sequentialTransfer);
+            return fmotifIdentifier.GetIdentification(chain, sequentialTransfer);
         }
     }
 }

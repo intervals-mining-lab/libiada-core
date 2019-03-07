@@ -54,12 +54,12 @@
             fmchain1.FmotifsList.Add(fmotif6);
 
             var fmid = new FmotifIdentifier();
-            Assert.AreEqual(0, fmid.GetIdentification(fmchain1, PauseTreatment.Ignore, true).FmotifsList[0].Id);
-            Assert.AreEqual(1, fmid.GetIdentification(fmchain1, PauseTreatment.Ignore, true).FmotifsList[1].Id);
-            Assert.AreEqual(1, fmid.GetIdentification(fmchain1, PauseTreatment.Ignore, true).FmotifsList[2].Id);
-            Assert.AreEqual(1, fmid.GetIdentification(fmchain1, PauseTreatment.Ignore, true).FmotifsList[3].Id);
-            Assert.AreEqual(0, fmid.GetIdentification(fmchain1, PauseTreatment.Ignore, true).FmotifsList[4].Id);
-            Assert.AreEqual(0, fmid.GetIdentification(fmchain1, PauseTreatment.Ignore, true).FmotifsList[5].Id);
+            Assert.AreEqual(0, fmid.GetIdentification(fmchain1, true).FmotifsList[0].Id);
+            Assert.AreEqual(1, fmid.GetIdentification(fmchain1, true).FmotifsList[1].Id);
+            Assert.AreEqual(1, fmid.GetIdentification(fmchain1, true).FmotifsList[2].Id);
+            Assert.AreEqual(1, fmid.GetIdentification(fmchain1, true).FmotifsList[3].Id);
+            Assert.AreEqual(0, fmid.GetIdentification(fmchain1, true).FmotifsList[4].Id);
+            Assert.AreEqual(0, fmid.GetIdentification(fmchain1, true).FmotifsList[5].Id);
         }
 
         /// <summary>
@@ -105,12 +105,12 @@
 
             var fmid = new FmotifIdentifier();
 
-            Assert.AreEqual(0, fmid.GetIdentification(fmchain1, PauseTreatment.Ignore, true).FmotifsList[0].Id);
-            Assert.AreEqual(0, fmid.GetIdentification(fmchain1, PauseTreatment.Ignore, true).FmotifsList[1].Id);
-            Assert.AreEqual(0, fmid.GetIdentification(fmchain1, PauseTreatment.Ignore, true).FmotifsList[2].Id);
-            Assert.AreEqual(1, fmid.GetIdentification(fmchain1, PauseTreatment.Ignore, true).FmotifsList[3].Id);
-            Assert.AreEqual(2, fmid.GetIdentification(fmchain1, PauseTreatment.Ignore, true).FmotifsList[4].Id);
-            Assert.AreEqual(3, fmid.GetIdentification(fmchain1, PauseTreatment.Ignore, true).FmotifsList[5].Id);
+            Assert.AreEqual(0, fmid.GetIdentification(fmchain1, true).FmotifsList[0].Id);
+            Assert.AreEqual(0, fmid.GetIdentification(fmchain1, true).FmotifsList[1].Id);
+            Assert.AreEqual(0, fmid.GetIdentification(fmchain1, true).FmotifsList[2].Id);
+            Assert.AreEqual(1, fmid.GetIdentification(fmchain1, true).FmotifsList[3].Id);
+            Assert.AreEqual(2, fmid.GetIdentification(fmchain1, true).FmotifsList[4].Id);
+            Assert.AreEqual(3, fmid.GetIdentification(fmchain1, true).FmotifsList[5].Id);
         }
     }
 }

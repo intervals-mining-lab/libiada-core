@@ -1,5 +1,7 @@
 ﻿namespace LibiadaCore.Music
 {
+    using System;
+    using System.Collections.Generic;
     using System.Linq;
 
     using LibiadaCore.Core;
@@ -25,15 +27,26 @@
         /// <returns>
         /// The <see cref="FmotifChain"/>.
         /// </returns>
-        public FmotifChain GetIdentification(FmotifChain fmotifChain, PauseTreatment pauseTreatment, bool sequentialTransfer)
+        public FmotifChain GetIdentification(FmotifChain fmotifChain, bool sequentialTransfer)
         {
             var chain = (FmotifChain)fmotifChain.Clone();
+
+            if (sequentialTransfer)
+            {
+                var fmotifs = new Fmotif[fmotifChain.FmotifsList.Count];
+                for (int i = 0; i < chain.FmotifsList.Count; i++)
+                {
+                    fmotifs[i] = FmotifSequentialTransfer(chain.FmotifsList[i]);
+                }
+
+                chain = new FmotifChain(fmotifs.ToList());
+            }
 
             for (int i = 0; i < chain.FmotifsList.Count; i++)
             {
                 for (int j = i; j < chain.FmotifsList.Count; j++)
                 {
-                    if (chain.FmotifsList[i].FmEquals(chain.FmotifsList[j], pauseTreatment, sequentialTransfer))
+                    if (chain.FmotifsList[i].Equals(chain.FmotifsList[j]))
                     {
                         chain.FmotifsList[j].Id = chain.FmotifsList[i].Id;
                     }
@@ -60,6 +73,26 @@
             }
 
             return chain;
+        }
+
+        public Fmotif FmotifSequentialTransfer(Fmotif fmotif)
+        {
+            
+            int minMidiNumber = fmotif.NoteList.Min(n => n.Pitches.Count > 0 ? n.Pitches.Min(p => p.MidiNumber) : int.MaxValue);
+
+            for (int i = 0; i < fmotif.NoteList.Count; i++)
+            {
+                if (fmotif.NoteList[i].Pitches.Count > 0)
+                {
+                    for (int j = 0; j < fmotif.NoteList[i].Pitches.Count; j++)
+                    {
+                        // TODO: проверить, что минимальная высота будет правильной
+                        fmotif.NoteList[i].Pitches[j] = new Pitch(fmotif.NoteList[i].Pitches[j].MidiNumber - minMidiNumber);
+                    }
+                }
+            }
+
+            return fmotif;
         }
     }
 }
