@@ -3,20 +3,20 @@ using System.Collections.Generic;
 using LibiadaCore.Extensions;
 using LibiadaCore.TimeSeries.Aggregators;
 
-namespace LibiadaCore.TimeSeries
+namespace LibiadaCore.TimeSeries.MultiDimensional
 {
-    public class EuclideanTimeSeriesComparerByShortest: ITimeSeriesComparer
+    public class EuclideanTimeSeriesComparerByShortest: IMultiDimensionalTimeSeriesComparer
     {
-        private EuclideanDistanceBetweenPointsCalculator calculator;
+        private EuclideanDistanceBetweenMultiDimensionalPointsCalculator calculator;
         private IDistancesAggregator aggregator;
 
-        private EuclideanTimeSeriesComparerByShortest(EuclideanDistanceBetweenPointsCalculator calculator, IDistancesAggregator aggregator = null)
+        private EuclideanTimeSeriesComparerByShortest(EuclideanDistanceBetweenMultiDimensionalPointsCalculator calculator, IDistancesAggregator aggregator = null)
         {
             this.calculator = calculator;
             this.aggregator = aggregator ?? new Min();
         }
 
-        public double GetDistance(double[] firstTimeSerie, double[] secondTimeSerie)
+        public double GetDistance(double[][] firstTimeSerie, double[][] secondTimeSerie)
         {
             if (firstTimeSerie.Length == secondTimeSerie.Length)
             {
@@ -34,5 +34,4 @@ namespace LibiadaCore.TimeSeries
 
             return aggregator.Aggregate(distances);
         }
-    }
 }

@@ -5,6 +5,6 @@ namespace LibiadaCore.TimeSeries
 {
     public interface ITimeSeriesComparer
     {
-        List<double> GetDistance(double[] firstTimeSerie, double[] secondTimeSerie);
+        double GetDistance(double[] firstTimeSerie, double[] secondTimeSerie);
     }
 }

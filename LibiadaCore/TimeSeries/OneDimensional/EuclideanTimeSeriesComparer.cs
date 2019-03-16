@@ -1,16 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
-using LibiadaCore.Extensions;
 using LibiadaCore.TimeSeries.Aggregators;
 
 namespace LibiadaCore.TimeSeries
 {
-    public class EuclideanTimeSeriesComparerByShortest: ITimeSeriesComparer
+    public class EuclideanTimeSeriesComparer: ITimeSeriesComparer
     {
         private EuclideanDistanceBetweenPointsCalculator calculator;
         private IDistancesAggregator aggregator;
 
-        private EuclideanTimeSeriesComparerByShortest(EuclideanDistanceBetweenPointsCalculator calculator, IDistancesAggregator aggregator = null)
+        private EuclideanTimeSeriesComparer(EuclideanDistanceBetweenPointsCalculator calculator, IDistancesAggregator aggregator = null)
         {
             this.calculator = calculator;
             this.aggregator = aggregator ?? new Min();
@@ -18,16 +17,14 @@ namespace LibiadaCore.TimeSeries
 
         public double GetDistance(double[] firstTimeSerie, double[] secondTimeSerie)
         {
-            if (firstTimeSerie.Length == secondTimeSerie.Length)
+            if (firstTimeSerie.Length != secondTimeSerie.Length)
             {
                 throw new Exception();
             }
 
-            int shortestLength = firstTimeSerie.SelectShortestLength(secondTimeSerie);
-
             List<double> distances = new List<double>();
 
-            for (int i = 0; i < shortestLength; i++)
+            for (int i = 0; i < firstTimeSerie.Length; i++)
             {
                 distances.Add(calculator.GetDistance(firstTimeSerie[i], secondTimeSerie[i]));
             }
