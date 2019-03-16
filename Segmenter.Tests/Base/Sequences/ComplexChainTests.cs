@@ -105,7 +105,7 @@
         public void ConcatOneTest()
         {
             int start = 0;
-            int end = chain.GetLength();
+            int end = chain.Length;
 
             var firstComplexChain = new ComplexChain(chain.Substring(start, end / 2));
             var secondComplexChain = new ComplexChain(chain.Substring(end / 2, end));
@@ -120,7 +120,7 @@
         public void ConcatTwoTest()
         {
             int start = 0;
-            int end = chain.GetLength();
+            int end = chain.Length;
 
             var firstComplexChain = new ComplexChain(chain.Substring(start, end - 1));
             var secondComplexChain = new ComplexChain(chain.Substring(end - 1, end));
@@ -136,10 +136,10 @@
         {
             ComplexChain foreignComplexChain = chain.Clone();
 
-            Assert.True(chain.GetLength() != differentComplexChain.GetLength());
-            Assert.True(chain.GetLength() == foreignComplexChain.GetLength());
+            Assert.True(chain.Length != differentComplexChain.Length);
+            Assert.True(chain.Length == foreignComplexChain.Length);
             foreignComplexChain.ClearAt(0);
-            Assert.True(chain.GetLength() != foreignComplexChain.GetLength());
+            Assert.True(chain.Length != foreignComplexChain.Length);
         }
 
         /// <summary>

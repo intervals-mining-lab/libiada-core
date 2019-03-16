@@ -92,7 +92,7 @@
         public List<string> ToList()
         {
             var result = new List<string>();
-            for (int i = 0; i < GetLength(); i++)
+            for (int i = 0; i < Length; i++)
             {
                 result.Add(this[i].ToString());
             }
@@ -141,12 +141,12 @@
         /// </returns>
         public bool Equals(ComplexChain complexChain)
         {
-            if (complexChain.GetLength() != GetLength())
+            if (complexChain.Length != Length)
             {
                 return false;
             }
 
-            for (int index = 0; index < complexChain.GetLength(); index++)
+            for (int index = 0; index < complexChain.Length; index++)
             {
                 if (!this[index].ToString().Equals(complexChain[index].ToString()))
                 {
@@ -174,13 +174,13 @@
             }
 
             ComplexChain temp = Clone();
-            ClearAndSetNewLength(GetLength() + 1);
-            for (int i = 0; i < temp.GetLength(); i++)
+            ClearAndSetNewLength(Length + 1);
+            for (int i = 0; i < temp.Length; i++)
             {
                 this[i] = temp[i];
             }
 
-            this[GetLength() - 1] = new ValueString(str);
+            this[Length - 1] = new ValueString(str);
             return this;
         }
 
@@ -202,15 +202,15 @@
 
             ComplexChain temp = Clone();
 
-            ClearAndSetNewLength(GetLength() + sequence.GetLength());
-            for (int i = 0; i < temp.GetLength(); i++)
+            ClearAndSetNewLength(Length + sequence.Length);
+            for (int i = 0; i < temp.Length; i++)
             {
                 this[i] = temp[i];
             }
 
-            for (int j = 0; j < sequence.GetLength(); j++)
+            for (int j = 0; j < sequence.Length; j++)
             {
-                this[j + temp.GetLength()] = sequence[j];
+                this[j + temp.Length] = sequence[j];
             }
 
             return this;
@@ -224,7 +224,7 @@
         /// </returns>
         public bool IsEmpty()
         {
-            return GetLength() == 0;
+            return Length == 0;
         }
 
         /// <summary>
@@ -234,7 +234,7 @@
         /// <param name="len">count of words cut out</param>
         public void Remove(int pos, int len)
         {
-            if ((pos + len) > GetLength())
+            if ((pos + len) > Length)
             {
                 return;
             }
@@ -255,7 +255,7 @@
             int wordEnd = pos + len;
             var temporarySplice = new StringBuilder();
             temporarySplice.Clear();
-            if (wordEnd > GetLength())
+            if (wordEnd > Length)
             {
                 return;
             }

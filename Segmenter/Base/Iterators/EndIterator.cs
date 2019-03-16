@@ -25,7 +25,7 @@
         /// </param>
         public EndIterator(ComplexChain chain, int length, int step) : base(chain, length, step)
         {
-            CursorPosition = chain.GetLength() - windowLength + 1;
+            CursorPosition = chain.Length - windowLength + 1;
         }
 
         /// <summary>
@@ -100,7 +100,7 @@
         /// </returns>
         public override bool Move(int position)
         {
-            if ((position >= 0) && (chain.GetLength() >= windowLength + position))
+            if ((position >= 0) && (chain.Length >= windowLength + position))
             {
                 CursorPosition = position;
                 return true;
