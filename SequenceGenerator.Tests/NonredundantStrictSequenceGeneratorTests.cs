@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace SequenceGenerator.Tests
+﻿namespace SequenceGenerator.Tests
 {
     using System.Collections.Generic;
 
@@ -11,10 +7,15 @@ namespace SequenceGenerator.Tests
 
     using NUnit.Framework;
 
+    /// <summary>
+    /// The non-redundant strict sequence generator tests.
+    /// </summary>
     [TestFixture]
-    class NonredundantStrictSequenceGeneratorTests
+    public class NonRedundantStrictSequenceGeneratorTests
     {
-
+        /// <summary>
+        /// The generator test.
+        /// </summary>
         [Test]
         public void GeneratorTest()
         {
@@ -30,7 +31,7 @@ namespace SequenceGenerator.Tests
                 new BaseChain(new List<IBaseObject> { two, one, two }),
                 new BaseChain(new List<IBaseObject> { one, two, two })
             };
-            var strictSequenceGenerator = new NonredundantStrictSequenceGenerator();
+            var strictSequenceGenerator = new NonRedundantStrictSequenceGenerator();
             var actual = strictSequenceGenerator.GenerateSequences(3, 2);
             Assert.AreEqual(expected, actual);
             expected = new List<BaseChain>
@@ -51,7 +52,10 @@ namespace SequenceGenerator.Tests
             actual = strictSequenceGenerator.GenerateSequences(3, 3);
             Assert.AreEqual(expected, actual);
         }
-        
+
+        /// <summary>
+        /// The complete generator test.
+        /// </summary>
         [Test]
         public void CompleteGeneratorTest()
         {
@@ -74,7 +78,7 @@ namespace SequenceGenerator.Tests
                 new BaseChain(new List<IBaseObject> { two, one, three }),
                 new BaseChain(new List<IBaseObject> { one, two, three }),
             };
-            var strictSequenceGenerator = new NonredundantStrictSequenceGenerator();
+            var strictSequenceGenerator = new NonRedundantStrictSequenceGenerator();
             var actual = strictSequenceGenerator.GenerateSequences(3);
             Assert.AreEqual(expected, actual);
         }
