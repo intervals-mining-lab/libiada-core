@@ -1,8 +1,8 @@
-﻿using System.ComponentModel;
-using System.ComponentModel.DataAnnotations;
-
-namespace LibiadaCore.Music
+﻿namespace LibiadaCore.Music
 {
+    using System.ComponentModel;
+    using System.ComponentModel.DataAnnotations;
+
     /// <summary>
     /// класс для выбора отношения к паузам
     /// (игнорировать, длительность добавлять к предыдущему звуку, рассматривать как ноту "тишины")
