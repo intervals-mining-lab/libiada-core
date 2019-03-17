@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace SequenceGenerator.Tests
+﻿namespace SequenceGenerator.Tests
 {
     using System.Collections.Generic;
 
@@ -11,9 +7,15 @@ namespace SequenceGenerator.Tests
 
     using NUnit.Framework;
 
+    /// <summary>
+    /// The non redundant sequence generator tests.
+    /// </summary>
     [TestFixture]
-    public class NonredundantSequenceGeneratorTests
+    public class NonRedundantSequenceGeneratorTests
     {
+        /// <summary>
+        /// The generator test.
+        /// </summary>
         [Test]
         public void GeneratorTest()
         {
@@ -29,11 +31,14 @@ namespace SequenceGenerator.Tests
                 new BaseChain(new List<IBaseObject> { two, one, two }),
                 new BaseChain(new List<IBaseObject> { one, two, two }),
             };
-            var sequenceGenerator = new NonredundantSequenceGenerator();
+            var sequenceGenerator = new NonRedundantSequenceGenerator();
             var actual = sequenceGenerator.GenerateSequences(3, 2);
             Assert.AreEqual(expected, actual);
         }
-        
+
+        /// <summary>
+        /// The complete generator test.
+        /// </summary>
         [Test]
         public void CompleteGeneratorTest()
         {
@@ -56,7 +61,7 @@ namespace SequenceGenerator.Tests
                 new BaseChain(new List<IBaseObject> { two, one, three }),
                 new BaseChain(new List<IBaseObject> { one, two, three }),
             };
-            var sequenceGenerator = new NonredundantSequenceGenerator();
+            var sequenceGenerator = new NonRedundantSequenceGenerator();
             var actual = sequenceGenerator.GenerateSequences(3);
             Assert.AreEqual(expected, actual);
         }
