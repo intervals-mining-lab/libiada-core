@@ -85,7 +85,7 @@
         /// <summary>
         /// Gets or sets the id of note.
         /// </summary>
-        public int Id { get; set; }
+        public long Id { get; set; }
 
         /// <summary>
         /// Gets note duration.

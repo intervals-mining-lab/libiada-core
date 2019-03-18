@@ -266,6 +266,10 @@
         /// </returns>
         public override bool Equals(object obj)
         {
+            if (obj == null || !(obj is Fmotif))
+            {
+                return false;
+            }
             // для сравнения паузы не нужны, поэтому сравнивае ф-мотивы без пауз (они игнорируются, но входят в состав ф-мотива)
             Fmotif self = PauseTreatmentProcedure(PauseTreatment.Ignore).TieGathered();
             Fmotif other = ((Fmotif)obj).PauseTreatmentProcedure(PauseTreatment.Ignore).TieGathered();

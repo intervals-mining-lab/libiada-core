@@ -119,12 +119,12 @@
         /// <returns>
         /// The <see cref="T:int[]"/>.
         /// </returns>
-        public int[] NoteIdOrder()
+        public long[] NoteIdOrder()
         {
             List<ValueNote> temp = NoteOrder();
 
             // строй из Id, а не из объектов типа Note
-            var idTemp = new int[temp.Count];
+            var idTemp = new long[temp.Count];
             for (int i = 0; i < temp.Count; i++)
             {
                 idTemp[i] = temp[i].Id;
