@@ -2,7 +2,7 @@
 
 namespace LibiadaCore.TimeSeries
 {
-    public abstract class EuclideanDistanceBetweenPointsCalculator: IDistanceBetweenOneDimensionalPoints
+    public abstract class EuclideanDistanceBetweenOneDimensionalPointsCalculator: IDistanceBetweenOneDimensionalPoints
     {
         public double GetDistance(double firstPoint, double secondPoint)
         {

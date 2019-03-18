@@ -6,10 +6,10 @@ namespace LibiadaCore.TimeSeries
 {
     public class EuclideanTimeSeriesComparer: ITimeSeriesComparer
     {
-        private EuclideanDistanceBetweenPointsCalculator calculator;
+        private EuclideanDistanceBetweenOneDimensionalPointsCalculator calculator;
         private IDistancesAggregator aggregator;
 
-        private EuclideanTimeSeriesComparer(EuclideanDistanceBetweenPointsCalculator calculator, IDistancesAggregator aggregator = null)
+        private EuclideanTimeSeriesComparer(EuclideanDistanceBetweenOneDimensionalPointsCalculator calculator, IDistancesAggregator aggregator = null)
         {
             this.calculator = calculator;
             this.aggregator = aggregator ?? new Min();

@@ -5,12 +5,12 @@ using LibiadaCore.TimeSeries.Aggregators;
 
 namespace LibiadaCore.TimeSeries
 {
-    public class EuclideanTimeSeriesComparerByShortest: ITimeSeriesComparer
+    public class HammingTimeSeriesComparerByShortest: ITimeSeriesComparer
     {
-        private EuclideanDistanceBetweenOneDimensionalPointsCalculator calculator;
+        private HammingDistanceBetweenOneDimensionalPointsCalculator calculator;
         private IDistancesAggregator aggregator;
 
-        private EuclideanTimeSeriesComparerByShortest(EuclideanDistanceBetweenOneDimensionalPointsCalculator calculator, IDistancesAggregator aggregator = null)
+        private HammingTimeSeriesComparerByShortest(HammingDistanceBetweenOneDimensionalPointsCalculator calculator, IDistancesAggregator aggregator = null)
         {
             this.calculator = calculator;
             this.aggregator = aggregator ?? new Min();
