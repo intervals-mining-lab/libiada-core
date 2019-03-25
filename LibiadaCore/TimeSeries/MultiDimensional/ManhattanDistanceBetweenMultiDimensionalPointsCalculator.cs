@@ -2,7 +2,7 @@
 
 namespace LibiadaCore.TimeSeries.MultiDimensional
 {
-    public class ManhattanDistanceBetweenMultiDimensionalPointsCalculator: IDistanceBetweenMultiDimensionalPoints
+    public class ManhattanDistanceBetweenMultiDimensionalPointsCalculator: IMultiDimensionalPointsDistance
     {
         public double GetDistance(double[] firstPoint, double[] secondPoint)
         {

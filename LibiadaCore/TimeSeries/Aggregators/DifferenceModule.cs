@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace LibiadaCore.TimeSeries.Aggregators
 {
-    public class DifferenceModule: IDistancesAggregator
+    public class DifferenceModule : IDistancesAggregator
     {
         public double Aggregate(List<double> distances)
         {

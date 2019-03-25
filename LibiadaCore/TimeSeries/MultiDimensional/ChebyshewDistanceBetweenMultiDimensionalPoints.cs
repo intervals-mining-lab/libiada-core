@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace LibiadaCore.TimeSeries.MultiDimensional
 {
-    public class ChebyshewDistanceBetweenMultiDimensionalPoints: IDistanceBetweenMultiDimensionalPoints
+    public class ChebyshewDistanceBetweenMultiDimensionalPoints: IMultiDimensionalPointsDistance
     {
         public double GetDistance(double[] firstPoint, double[] secondPoint)
         {

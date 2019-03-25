@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace LibiadaCore.TimeSeries.Aggregators
 {
-    public class SumSquareRoot: IDistancesAggregator
+    public class SumSquareRoot : IDistancesAggregator
     {
         public double Aggregate(List<double> distances)
         {

@@ -7,13 +7,13 @@ using LibiadaCore.TimeSeries.Comparers;
 
 namespace LibiadaCore.TimeSeries.OneDimensional
 {
-    public class EuclideanTimeSeriesComparer: ITimeSeriesDistanceCalculator
+    public class OneDimensionalTimeSeriesComparer : IOneDimensionalTimeSeriesComparer
     {
         private ITimeSeriesAligner aligner;
-        private EuclideanDistanceBetweenOneDimensionalPointsCalculator calculator;
+        private IOneDimensionalPointsDistance calculator;
         private IDistancesAggregator aggregator;
 
-        private EuclideanTimeSeriesComparer(ITimeSeriesAligner aligner, EuclideanDistanceBetweenOneDimensionalPointsCalculator calculator, IDistancesAggregator aggregator = null)
+        private OneDimensionalTimeSeriesComparer(ITimeSeriesAligner aligner, IOneDimensionalPointsDistance calculator, IDistancesAggregator aggregator = null)
         {
             this.aligner = aligner;
             this.calculator = calculator;
