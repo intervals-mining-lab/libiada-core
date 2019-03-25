@@ -1,8 +1,8 @@
 ﻿using System;
 
-namespace LibiadaCore.TimeSeries
+namespace LibiadaCore.TimeSeries.OneDimensional
 {
-    public abstract class EuclideanDistanceBetweenOneDimensionalPointsCalculator: IDistanceBetweenOneDimensionalPoints
+    public abstract class EuclideanDistanceBetweenOneDimensionalPointsCalculator: IOneDimensionalPointsDistance
     {
         public double GetDistance(double firstPoint, double secondPoint)
         {
