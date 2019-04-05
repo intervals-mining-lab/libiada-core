@@ -1,4 +1,4 @@
-﻿namespace LibiadaCore.TimeSeries.Comparers
+﻿namespace LibiadaCore.TimeSeries.Aligners
 {
     public interface ITimeSeriesAligner
     {

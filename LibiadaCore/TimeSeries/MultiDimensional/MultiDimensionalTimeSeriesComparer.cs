@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using LibiadaCore.TimeSeries.Aggregators;
+using LibiadaCore.TimeSeries.Aligners;
 using LibiadaCore.TimeSeries.Comparers;
 using LibiadaCore.TimeSeries.OneDimensional;
 
