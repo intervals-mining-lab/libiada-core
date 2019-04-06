@@ -1,4 +1,5 @@
-﻿using LibiadaCore.Extensions;
+﻿using System;
+using LibiadaCore.Extensions;
 using LibiadaCore.TimeSeries.Comparers;
 
 namespace LibiadaCore.TimeSeries.Aligners
@@ -12,7 +13,7 @@ namespace LibiadaCore.TimeSeries.Aligners
             double[][] first = new double[1][];
             double[][] second = new double[1][];
 
-            int startIndex = secondSeries.Length - firstSeries.Length;
+            int startIndex = Math.Abs(secondSeries.Length - firstSeries.Length);
 
             first[0] = firstSeries.SubArray(0, shortestLength);
             second[0] = secondSeries.SubArray(startIndex, secondSeries.Length - startIndex);
