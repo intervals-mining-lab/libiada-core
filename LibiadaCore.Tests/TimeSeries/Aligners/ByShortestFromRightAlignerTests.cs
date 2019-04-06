@@ -1,9 +1,5 @@
-﻿using System;
-using LibiadaCore.Extensions;
-
-namespace LibiadaCore.Tests.TimeSeries.Aligners
+﻿namespace LibiadaCore.Tests.TimeSeries.Aligners
 {
-    using LibiadaCore.Core;
     using LibiadaCore.TimeSeries.Aligners;
 
     using NUnit.Framework;

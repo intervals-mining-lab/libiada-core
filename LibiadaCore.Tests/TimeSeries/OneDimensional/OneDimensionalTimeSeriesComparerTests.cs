@@ -1,6 +1,4 @@
-﻿
-
-using LibiadaCore.TimeSeries.Aggregators;
+﻿using LibiadaCore.TimeSeries.Aggregators;
 using LibiadaCore.TimeSeries.Aligners;
 
 namespace LibiadaCore.Tests.TimeSeries.OneDimensional
@@ -21,8 +19,8 @@ namespace LibiadaCore.Tests.TimeSeries.OneDimensional
         {
             var aligner = new ByShortestAligner();
             var calculator = new EuclideanDistanceBetweenOneDimensionalPointsCalculator();
-            var agregator = new Average();
-            var comparer = new OneDimensionalTimeSeriesComparer(aligner, calculator, agregator);
+            var aggregator = new Average();
+            var comparer = new OneDimensionalTimeSeriesComparer(aligner, calculator, aggregator);
             double result = comparer.GetDistance(firstSeries, secondSeries);
             Assert.AreEqual(result, expected);
         }
