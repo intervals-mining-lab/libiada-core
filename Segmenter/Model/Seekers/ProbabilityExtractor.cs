@@ -23,13 +23,13 @@
         /// <returns>
         /// The <see cref="T:KeyValuePair{List{string},List{int}}?"/>.
         /// </returns>
-        public override sealed KeyValuePair<List<string>, List<int>>? Find(ContentValues par)
+        public override sealed KeyValuePair<List<string>, List<int>>? Find(Dictionary<string, object> par)
         {
-            var convoluted = (ComplexChain)par.Get(Enum.GetName(typeof(Formalism), Formalism.Sequence));
-            double pbalance = (int)par.Get(Enum.GetName(typeof(Parameter), Parameter.Balance)) / 100.0;
-            int windowLen = (int)par.Get(Enum.GetName(typeof(Parameter), Parameter.Window));
-            var alphabet = (FrequencyDictionary)par.Get(Enum.GetName(typeof(Formalism), Formalism.Alphabet));
-            var level = (double)par.Get(Enum.GetName(typeof(Parameter), Parameter.CurrentThreshold));
+            var convoluted = (ComplexChain)par["Sequence"];
+            double pbalance = (int)par["Balance"] / 100.0;
+            int windowLen = (int)par["Window"];
+            var alphabet = (FrequencyDictionary)par["Alphabet"];
+            var level = (double)par["CurrentThreshold"];
             int scanStep = 1;
             int disp = 0;
             int length = convoluted.Length;
