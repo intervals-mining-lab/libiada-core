@@ -11,8 +11,8 @@ namespace LibiadaCore.Tests.TimeSeries.OneDimensional
     [TestFixture]
     public class OneDimensionalTimeSeriesComparerTests
     {
-        private static object[][] combination_tests = new[] {
-            new object[] {new double[]{1,2,3,4,5}, new double[]{1,2,3,4,5}, 0},
+        private static object[][] combination_tests = {
+            new object[] {new double[]{1,2,3,4,5}, new double[]{1,2,3,4,5}, 0}
         };
 
         [TestCaseSource("combination_tests")]
@@ -21,8 +21,8 @@ namespace LibiadaCore.Tests.TimeSeries.OneDimensional
         {
             var aligner = new ByShortestAligner();
             var calculator = new EuclideanDistanceBetweenOneDimensionalPointsCalculator();
-            var aggregator = new Average();
-            var comparer = new OneDimensionalTimeSeriesComparer(aligner, calculator, aggregator);
+            var agregator = new Average();
+            var comparer = new OneDimensionalTimeSeriesComparer(aligner, calculator, agregator);
             double result = comparer.GetDistance(firstSeries, secondSeries);
             Assert.AreEqual(result, expected);
         }
