@@ -1,8 +1,5 @@
-﻿using System;
-
-namespace LibiadaCore.Tests.TimeSeries.OneDimensional
+﻿namespace LibiadaCore.Tests.TimeSeries.OneDimensional
 {
-    using LibiadaCore.Core;
     using LibiadaCore.TimeSeries.OneDimensional;
 
     using NUnit.Framework;
@@ -10,12 +7,10 @@ namespace LibiadaCore.Tests.TimeSeries.OneDimensional
     [TestFixture]
     public class EuclideanDistanceBetweeOneDimensionalPointsTests
     {
-        private double firstPoint = 1.01;
-        private double secondPoint = 1.3;
-        private double expectedDistance = 1.3 - 1.01;
-
-        [Test]
-        public void EuclideanDistanceTest()
+        [TestCase(1.01, 1.3, 1.3-1.01)]
+        [TestCase(1.98765, 1.98765, 0)]
+        [TestCase(1.12345, 1.98765, 1.98765 - 1.12345)]
+        public void EuclideanDistanceTest(double firstPoint, double secondPoint, double expectedDistance)
         {
             var calculator = new EuclideanDistanceBetweenOneDimensionalPointsCalculator();
             double result = calculator.GetDistance(firstPoint, secondPoint);

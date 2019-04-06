@@ -1,18 +1,18 @@
 ﻿namespace LibiadaCore.Tests.TimeSeries.OneDimensional
 {
-    using LibiadaCore.Core;
     using LibiadaCore.TimeSeries.OneDimensional;
 
     using NUnit.Framework;
 
+    [TestFixture]
     public class HammingDistanceBetweenOneDimensionalPointsTests
     {
-        private double firstPoint = 102.01;
-        private double secondPoint = 1.3;
-        private double expectedDistance = 3;
-
-        [Test]
-        public void HammingDistanceTest()
+        [TestCase(102.01, 1.3, 3)]
+        [TestCase(10.01, 1.31, 3)]
+        [TestCase(1.1, 1.3, 1)]
+        [TestCase(9999.9999, 8888.8888, 8)]
+        [TestCase(999.9999, 8888.8888, 8)]
+        public void HammingDistanceTest(double firstPoint, double secondPoint, int expectedDistance)
         {
             var calculator = new HammingDistanceBetweenOneDimensionalPointsCalculator();
             double result = calculator.GetDistance(firstPoint, secondPoint);

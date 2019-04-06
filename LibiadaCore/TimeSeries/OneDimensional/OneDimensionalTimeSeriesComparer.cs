@@ -11,7 +11,7 @@ namespace LibiadaCore.TimeSeries.OneDimensional
         private IOneDimensionalPointsDistance calculator;
         private IDistancesAggregator aggregator;
 
-        private OneDimensionalTimeSeriesComparer(ITimeSeriesAligner aligner, IOneDimensionalPointsDistance calculator, IDistancesAggregator aggregator = null)
+        public OneDimensionalTimeSeriesComparer(ITimeSeriesAligner aligner, IOneDimensionalPointsDistance calculator, IDistancesAggregator aggregator = null)
         {
             this.aligner = aligner;
             this.calculator = calculator;
