@@ -2,7 +2,7 @@
 using LibiadaCore.TimeSeries.Aggregators;
 using NUnit.Framework;
 
-namespace LibiadaCore.Tests.TimeSeries.Agregators
+namespace LibiadaCore.Tests.TimeSeries.Aggregators
 {
     [TestFixture]
     public class SumSquareRootTests
