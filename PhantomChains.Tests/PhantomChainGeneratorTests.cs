@@ -4,9 +4,8 @@ namespace PhantomChains.Tests
 
     using LibiadaCore.Core;
     using LibiadaCore.Core.SimpleTypes;
-    using LibiadaCore.Misc.DataTransformers;
-    using LibiadaCore.Misc.Iterators;
-
+    using LibiadaCore.DataTransformers;
+    using LibiadaCore.Iterators;
     using MarkovChains.MarkovChain.Generators;
     using MarkovChains.Tests.MarkovChain.Generators;
 
@@ -137,7 +136,7 @@ namespace PhantomChains.Tests
             BaseChain forBuild = DnaTransformer.Decode(sourceChain);
             var gen = new PhantomChainGenerator(forBuild, new SimpleGenerator());
             List<BaseChain> res = gen.Generate(1);
-            Assert.AreEqual(9, res[0].GetLength());
+            Assert.AreEqual(9, res[0].Length);
         }
     }
 }

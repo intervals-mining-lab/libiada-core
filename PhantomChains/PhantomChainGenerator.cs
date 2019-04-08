@@ -5,8 +5,7 @@ namespace PhantomChains
 
     using LibiadaCore.Core;
     using LibiadaCore.Core.SimpleTypes;
-    using LibiadaCore.Misc.SpaceReorganizers;
-
+    using LibiadaCore.SpaceReorganizers;
     using MarkovChains.MarkovChain.Generators;
 
     /// <summary>
@@ -58,14 +57,14 @@ namespace PhantomChains
             this.generator = generator;
             var reorganizer = new SpacePhantomReorganizer();
             var internalChain = (BaseChain)reorganizer.Reorganize(chain);
-            for (int w = 0; w < internalChain.GetLength(); w++)
+            for (int w = 0; w < internalChain.Length; w++)
             {
                 totalLength += ((ValuePhantom)internalChain[w])[0].ToString().Length;
             }
 
             ulong tempVariants = 1;
             int counter = 0;
-            for (int k = 0; k < (int)Math.Ceiling((double)internalChain.GetLength() / BasicChainLength); k++)
+            for (int k = 0; k < (int)Math.Ceiling((double)internalChain.Length / BasicChainLength); k++)
             {
                 tempChains.Add(new BaseChain());
                 tempChains[k].ClearAndSetNewLength(BasicChainLength);
@@ -75,10 +74,10 @@ namespace PhantomChains
             // variants count calculation cycle
             for (int i = 0; i < tempChains.Count; i++)
             {
-                for (int j = 0; j < tempChains[i].GetLength(); j++)
+                for (int j = 0; j < tempChains[i].Length; j++)
                 {
                     ValuePhantom tempMessage;
-                    if (counter < internalChain.GetLength())
+                    if (counter < internalChain.Length)
                     {
                         tempMessage = (ValuePhantom)internalChain[counter];
                         tempChains[i][j] = tempMessage;
@@ -135,9 +134,9 @@ namespace PhantomChains
                 for (int l = 0; l < tree.Count; l++)
                 {
                     tempRes[l] = tree[l].Generate();
-                    for (int u = 0; u < tempRes[l].GetLength(); u++)
+                    for (int u = 0; u < tempRes[l].Length; u++)
                     {
-                        if (counter < res[chainCounter].GetLength())
+                        if (counter < res[chainCounter].Length)
                         {
                             res[chainCounter][counter] = tempRes[l][u];
                             counter++;
