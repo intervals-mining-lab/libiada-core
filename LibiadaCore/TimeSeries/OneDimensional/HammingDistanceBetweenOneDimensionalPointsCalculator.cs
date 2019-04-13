@@ -1,7 +1,22 @@
 ﻿namespace LibiadaCore.TimeSeries.OneDimensional
 {
+    /// <summary>
+    /// The hamming distance between one dimensional points calculator.
+    /// </summary>
     public class HammingDistanceBetweenOneDimensionalPointsCalculator : IOneDimensionalPointsDistance
     {
+        /// <summary>
+        /// The get distance.
+        /// </summary>
+        /// <param name="firstPoint">
+        /// The first point.
+        /// </param>
+        /// <param name="secondPoint">
+        /// The second point.
+        /// </param>
+        /// <returns>
+        /// The <see cref="double"/>.
+        /// </returns>
         public double GetDistance(double firstPoint, double secondPoint)
         {
             string[] firstPointStringArray = firstPoint.ToString("0.00000000000000").Split(',');
