@@ -1,10 +1,24 @@
-﻿using LibiadaCore.Extensions;
-using LibiadaCore.TimeSeries.Comparers;
-
-namespace LibiadaCore.TimeSeries.Aligners
+﻿namespace LibiadaCore.TimeSeries.Aligners
 {
+    using LibiadaCore.Extensions;
+
+    /// <summary>
+    /// The by shortest aligner.
+    /// </summary>
     public class ByShortestAligner : ITimeSeriesAligner
     {
+        /// <summary>
+        /// The align series.
+        /// </summary>
+        /// <param name="firstSeries">
+        /// The first series.
+        /// </param>
+        /// <param name="secondSeries">
+        /// The second series.
+        /// </param>
+        /// <returns>
+        /// The <see T:cref="(double[][] first, double[][] second)"/>.
+        /// </returns>
         public (double[][] first, double[][] second) AlignSeries(double[] firstSeries, double[] secondSeries)
         {
             int shortestLength = firstSeries.SelectShortestLength(secondSeries);
