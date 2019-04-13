@@ -1,10 +1,22 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace LibiadaCore.TimeSeries.Aggregators
+﻿namespace LibiadaCore.TimeSeries.Aggregators
 {
+    using System;
+    using System.Collections.Generic;
+
+    /// <summary>
+    /// The difference square root aggregator.
+    /// </summary>
     public class DifferenceSquareRoot : IDistancesAggregator
     {
+        /// <summary>
+        /// The aggregate.
+        /// </summary>
+        /// <param name="distances">
+        /// The distances.
+        /// </param>
+        /// <returns>
+        /// The <see cref="double"/>.
+        /// </returns>
         public double Aggregate(List<double> distances)
         {
             double distance = distances[0];
