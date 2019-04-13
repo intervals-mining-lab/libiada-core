@@ -1,25 +1,39 @@
-﻿using System.Collections.Generic;
-using LibiadaCore.TimeSeries.Aggregators;
-using NUnit.Framework;
-
-namespace LibiadaCore.Tests.TimeSeries.Aggregators
+﻿namespace LibiadaCore.Tests.TimeSeries.Aggregators
 {
+    using System.Collections.Generic;
+
+    using LibiadaCore.TimeSeries.Aggregators;
+
+    using NUnit.Framework;
+
+    /// <summary>
+    /// The sum module aggregator tests.
+    /// </summary>
     [TestFixture]
     public class SumModuleTests
     {
-        private static List<double> distances = new List<double>()
+        /// <summary>
+        /// The distances list.
+        /// </summary>
+        private static readonly List<double> distances = new List<double>()
         {
-            1,2,3,4,5
+            1, 2, 3, 4, 5
         };
 
-        private double sumMod = 15;
+        /// <summary>
+        /// The expected sum mod value.
+        /// </summary>
+        private const double sumMod = 15;
 
+        /// <summary>
+        /// The sum module aggregator test.
+        /// </summary>
         [Test]
         public void SumModuleTest()
         {
-            var agregator = new SumModule();
-            double result = agregator.Aggregate(distances);
-            Assert.AreEqual(result, sumMod);
+            var aggregator = new SumModule();
+            double result = aggregator.Aggregate(distances);
+            Assert.AreEqual(sumMod, result);
         }
     }
 }

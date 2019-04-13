@@ -1,25 +1,39 @@
-﻿using System.Collections.Generic;
-using LibiadaCore.TimeSeries.Aggregators;
-using NUnit.Framework;
-
-namespace LibiadaCore.Tests.TimeSeries.Aggregators
+﻿namespace LibiadaCore.Tests.TimeSeries.Aggregators
 {
+    using System.Collections.Generic;
+
+    using LibiadaCore.TimeSeries.Aggregators;
+
+    using NUnit.Framework;
+
+    /// <summary>
+    /// The max aggregator tests.
+    /// </summary>
     [TestFixture]
     public class MaxTests
     {
-        private static List<double> distances = new List<double>()
+        /// <summary>
+        /// The distances list.
+        /// </summary>
+        private static readonly List<double> distances = new List<double>()
         {
-            1,2,3,4,5
+            1, 2, 3, 4, 5
         };
 
-        private double max = 5;
+        /// <summary>
+        /// The expected max value.
+        /// </summary>
+        private const double max = 5;
 
+        /// <summary>
+        /// The max aggregator test.
+        /// </summary>
         [Test]
         public void MaxTest()
         {
-            var agregator = new Max();
-            double result = agregator.Aggregate(distances);
-            Assert.AreEqual(result, max);
+            var aggregator = new Max();
+            double result = aggregator.Aggregate(distances);
+            Assert.AreEqual(max, result);
         }
     }
 }

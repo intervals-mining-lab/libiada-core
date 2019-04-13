@@ -1,25 +1,39 @@
-﻿using System.Collections.Generic;
-using LibiadaCore.TimeSeries.Aggregators;
-using NUnit.Framework;
-
-namespace LibiadaCore.Tests.TimeSeries.Aggregators
+﻿namespace LibiadaCore.Tests.TimeSeries.Aggregators
 {
+    using System.Collections.Generic;
+
+    using LibiadaCore.TimeSeries.Aggregators;
+
+    using NUnit.Framework;
+
+    /// <summary>
+    /// The difference module aggregator tests.
+    /// </summary>
     [TestFixture]
     public class DifferenceModuleTests
     {
-        private static List<double> distances = new List<double>()
+        /// <summary>
+        /// The distances list.
+        /// </summary>
+        private static readonly List<double> distances = new List<double>()
         {
-            1,2,3,4,5
+            1, 2, 3, 4, 5
         };
 
-        private double diffMod = 13;
+        /// <summary>
+        /// The expected difference module value.
+        /// </summary>
+        private const double diffMod = 13;
 
+        /// <summary>
+        /// The difference module test.
+        /// </summary>
         [Test]
         public void DifferenceModuleTest()
         {
-            var agregator = new DifferenceModule();
-            double result = agregator.Aggregate(distances);
-            Assert.AreEqual(result, diffMod);
+            var aggregator = new DifferenceModule();
+            double result = aggregator.Aggregate(distances);
+            Assert.AreEqual(diffMod, result);
         }
     }
 }

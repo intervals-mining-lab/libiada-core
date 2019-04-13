@@ -4,8 +4,8 @@
     {
         public double GetDistance(double firstPoint, double secondPoint)
         {
-            string[] firstPointStringArray = firstPoint.ToString().Split(',');
-            string[] secondPointStringArray = secondPoint.ToString().Split(',');
+            string[] firstPointStringArray = firstPoint.ToString("0.00000000000000").Split(',');
+            string[] secondPointStringArray = secondPoint.ToString("0.00000000000000").Split(',');
 
             string intPartFirst = firstPointStringArray[0];
             string intPartSecond = secondPointStringArray[0];
@@ -25,6 +25,16 @@
                 }
             }
 
+            int distance = 0;
+
+            for (int i = 0; i < intPartFirst.Length; i++)
+            {
+                if (intPartFirst[i] != intPartSecond[i])
+                {
+                    distance++;
+                }
+            }
+
             string fracPartFirst = firstPointStringArray[1];
             string fracPartSecond = secondPointStringArray[1];
 
@@ -35,16 +45,6 @@
             else
             {
                 fracPartSecond = secondPointStringArray[1].Substring(0, firstPointStringArray[1].Length);
-            }
-
-            int distance = 0;
-
-            for (int i = 0; i < intPartFirst.Length; i++)
-            {
-                if (intPartFirst[i] != intPartSecond[i])
-                {
-                    distance++;
-                }
             }
 
             for (int i = 0; i < fracPartFirst.Length; i++)

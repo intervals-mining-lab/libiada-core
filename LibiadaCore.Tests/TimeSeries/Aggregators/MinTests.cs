@@ -1,25 +1,39 @@
-﻿using System.Collections.Generic;
-using LibiadaCore.TimeSeries.Aggregators;
-using NUnit.Framework;
-
-namespace LibiadaCore.Tests.TimeSeries.Aggregators
+﻿namespace LibiadaCore.Tests.TimeSeries.Aggregators
 {
+    using System.Collections.Generic;
+
+    using LibiadaCore.TimeSeries.Aggregators;
+
+    using NUnit.Framework;
+
+    /// <summary>
+    /// The min aggregator tests.
+    /// </summary>
     [TestFixture]
     public class MinTests
     {
-        private static List<double> distances = new List<double>()
+        /// <summary>
+        /// The distances list.
+        /// </summary>
+        private static readonly List<double> distances = new List<double>()
         {
-            1,2,3,4,5
+            1, 2, 3, 4, 5
         };
 
-        private double min = 1;
+        /// <summary>
+        /// The expected min value.
+        /// </summary>
+        private const double min = 1;
 
+        /// <summary>
+        /// The min aggregator test.
+        /// </summary>
         [Test]
         public void MinTest()
         {
-            var agregator = new Min();
-            double result = agregator.Aggregate(distances);
-            Assert.AreEqual(result, min);
+            var aggregator = new Min();
+            double result = aggregator.Aggregate(distances);
+            Assert.AreEqual(min, result);
         }
     }
 }
