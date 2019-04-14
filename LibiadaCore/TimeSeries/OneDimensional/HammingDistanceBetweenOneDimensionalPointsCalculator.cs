@@ -53,15 +53,6 @@
             string fracPartFirst = firstPointStringArray[1];
             string fracPartSecond = secondPointStringArray[1];
 
-            if (firstPointStringArray[1].Length > secondPointStringArray[1].Length)
-            {
-                fracPartFirst = firstPointStringArray[1].Substring(0, secondPointStringArray[1].Length);
-            }
-            else
-            {
-                fracPartSecond = secondPointStringArray[1].Substring(0, firstPointStringArray[1].Length);
-            }
-
             for (int i = 0; i < fracPartFirst.Length; i++)
             {
                 if (fracPartFirst[i] != fracPartSecond[i])
