@@ -17,7 +17,8 @@
         /// </summary>
         private static readonly object[][] CombinationTests =
         {
-            //ByShortestAligner tests with Euclidean distance calculator
+
+            // ByShortestAligner tests with Euclidean distance calculator
             new object[]
             {
                 new double[] { 1, 2, 3, 4, 5 }, new double[] { 1, 2, 3, 4, 5 }, 0,
@@ -67,7 +68,8 @@
                 new EuclideanDistanceBetweenOneDimensionalPointsCalculator(),
                 new SumSquareRoot()
             },
-            //ByShortestAligner tests with Hamming distance calculator
+
+            // ByShortestAligner tests with Hamming distance calculator
             new object[]
             {
                 new double[] { -1, -2, -3, -4, -5 }, new double[] { 1, 2, 3, 4, 5 }, 1,
@@ -117,7 +119,8 @@
                 new HammingDistanceBetweenOneDimensionalPointsCalculator(),
                 new SumSquareRoot()
             },
-            //ByShortestFromRightAligner tests with Euclidean distance calculator
+
+            // ByShortestFromRightAligner tests with Euclidean distance calculator
             new object[]
             {
                 new double[] { 1, 2, 3, 4, 5 }, new double[] { 2, 3, 4, 5, 6 }, 1,
@@ -167,7 +170,8 @@
                 new EuclideanDistanceBetweenOneDimensionalPointsCalculator(),
                 new SumSquareRoot()
             },
-            //ByShortestFromRightAligner tests with Hamming distance calculator
+
+            // ByShortestFromRightAligner tests with Hamming distance calculator
             new object[]
             {
                 new double[] { 1, 2, 3, 4, 5 }, new[] { 1.01234, 2.01234, 3.01234, 4.01234, 5.01234 }, 4,
@@ -217,7 +221,8 @@
                 new HammingDistanceBetweenOneDimensionalPointsCalculator(),
                 new SumSquareRoot()
             },
-            //AllOffsetsAligner tests with Euclidean distance calculator
+
+            // AllOffsetsAligner tests with Euclidean distance calculator
             new object[]
             {
                 new double[] { 1, 2, 3, 4, 5 }, new double[] { 1, 2, 3, 4, 5 }, 0,
@@ -267,7 +272,8 @@
                 new EuclideanDistanceBetweenOneDimensionalPointsCalculator(),
                 new SumSquareRoot()
             },
-            //AllOffsetsAligner tests with Hamming distance calculator
+
+            // AllOffsetsAligner tests with Hamming distance calculator
             new object[]
             {
                 new double[] { 1, 2, 3, 4, 5 }, new double[] { 1, 2, 3, 4, 5 }, 0,
