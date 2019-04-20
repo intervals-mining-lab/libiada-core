@@ -1,32 +1,58 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using LibiadaCore.Core;
-using LibiadaCore.Core.SimpleTypes;
-
-namespace SequenceGenerator
+﻿namespace SequenceGenerator
 {
-    public class NonredundantSequenceGenerator : ISequenceGenerator
-    {
-        private SequenceGenerator redundantSequenceGenerator = new SequenceGenerator();
+    using System.Collections.Generic;
+    using System.Linq;
 
+    using LibiadaCore.Core;
+    using LibiadaCore.Core.SimpleTypes;
+
+    /// <summary>
+    /// The non-redundant sequence generator.
+    /// </summary>
+    public class NonRedundantSequenceGenerator : ISequenceGenerator
+    {
+        /// <summary>
+        /// The redundant sequence generator.
+        /// </summary>
+        private readonly SequenceGenerator redundantSequenceGenerator = new SequenceGenerator();
+
+        /// <summary>
+        /// The generate sequences.
+        /// </summary>
+        /// <param name="length">
+        /// The length.
+        /// </param>
+        /// <param name="alphabetCardinality">
+        /// The alphabet cardinality.
+        /// </param>
+        /// <returns>
+        /// The <see cref="List{BaseChain}"/>.
+        /// </returns>
         public List<BaseChain> GenerateSequences(int length, int alphabetCardinality)
         {
             var redundantResult = redundantSequenceGenerator.GenerateSequences(length, alphabetCardinality);
-            var nonredundantResult = new List<BaseChain>();
+            var nonRedundantResult = new List<BaseChain>();
             foreach (var chain in redundantResult)
             {
                 var chainAlphabetCardinality = chain.Alphabet.Cardinality;
-                bool nonredundant = chain.Alphabet.All(el => (ValueInt)el <= chainAlphabetCardinality);
-                if (nonredundant)
+                bool nonRedundant = chain.Alphabet.All(el => (ValueInt)el <= chainAlphabetCardinality);
+                if (nonRedundant)
                 {
-                    nonredundantResult.Add(chain);
+                    nonRedundantResult.Add(chain);
                 }
             }
-            return nonredundantResult;
+            return nonRedundantResult;
         }
 
+        /// <summary>
+        /// The generate sequences.
+        /// </summary>
+        /// <param name="length">
+        /// The length.
+        /// </param>
+        /// <returns>
+        /// The <see cref="List"/>.
+        /// </returns>
         public List<BaseChain> GenerateSequences(int length)
         {
             return GenerateSequences(length, length);

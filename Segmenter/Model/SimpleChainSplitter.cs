@@ -3,9 +3,7 @@
     using System.Collections.Generic;
 
     using LibiadaCore.Core.SimpleTypes;
-    using LibiadaCore.Extensions;
 
-    using Segmenter.Base;
     using Segmenter.Base.Collectors;
     using Segmenter.Base.Sequences;
     using Segmenter.Extended;
@@ -41,12 +39,12 @@
         /// <returns>
         /// The convoluted chain <see cref="ComplexChain"/>.
         /// </returns>
-        public override ComplexChain Cut(ContentValues parameters)
+        public override ComplexChain Cut(Dictionary<string, object> parameters)
         {
-            int maxWindowLen = (int)parameters.Get(Parameter.Window.GetName());
-            int windowDec = (int)parameters.Get(Parameter.WindowDecrement.GetName());
+            int maxWindowLen = (int)parameters["Window"];
+            int windowDec = (int)parameters["WindowDecrement"];
 
-            convoluted = (ComplexChain)parameters.Get(Formalism.Sequence.GetName());
+            convoluted = (ComplexChain)parameters["Sequence"];
             alphabet = new FrequencyDictionary();
 
             for (int winLen = maxWindowLen; (winLen >= windowDec) && (winLen > 1); winLen -= windowDec)
@@ -84,11 +82,11 @@
         /// <param name="winLen">
         /// The win len.
         /// </param>
-        private void UpdateParams(ContentValues par, int winLen)
+        private void UpdateParams(Dictionary<string, object> par, int winLen)
         {
-            par.Put(Formalism.Sequence.ToString(), convoluted.ToString());
-            par.Put(Formalism.Alphabet.ToString(), alphabet.ToString());
-            par.Put(Parameter.Window, winLen);
+            par.Add("Sequence", convoluted.ToString());
+            par.Add("Alphabet", alphabet.ToString());
+            par.Add("Window", winLen);
         }
 
         /// <summary>
@@ -96,7 +94,7 @@
         /// </summary>
         private void FindLastWords()
         {
-            for (int index = 0; index < convoluted.GetLength(); index++)
+            for (int index = 0; index < convoluted.Length; index++)
             {
                 ValueString letter;
                 if ((letter = (ValueString)convoluted[index]).Value.Length == 1)

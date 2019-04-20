@@ -47,7 +47,7 @@
                 isString = true;
             }
 
-            if ((source != null) && (source.GetLength() != 0))
+            if ((source != null) && (source.Length != 0))
             {
                 var temp = (ValuePhantom)source[0];
                 for (int i = 0; i < temp.Cardinality; i++)

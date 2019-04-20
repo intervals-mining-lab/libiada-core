@@ -4,8 +4,7 @@
     using System.Collections.Generic;
 
     using LibiadaCore.Core.Characteristics.Calculators.FullCalculators;
-
-    using Segmenter.Base;
+    
     using Segmenter.Base.Collectors;
     using Segmenter.Base.Iterators;
     using Segmenter.Base.Sequences;
@@ -33,12 +32,12 @@
         /// <returns>
         /// The <see cref="T:KeyValuePair{List{String},List{Int32}}"/>.
         /// </returns>
-        public override sealed KeyValuePair<List<string>, List<int>>? Find(ContentValues par)
+        public override sealed KeyValuePair<List<string>, List<int>>? Find(Dictionary<string, object> par)
         {
-            var convoluted = (ComplexChain)par.Get(Enum.GetName(typeof(Formalism), Formalism.Sequence));
-            var windowLen = (int)par.Get(Enum.GetName(typeof(Parameter), Parameter.Window));
-            var alphabet = (FrequencyDictionary)par.Get(Enum.GetName(typeof(Formalism), Formalism.Alphabet));
-            var level = (double)par.Get(Enum.GetName(typeof(Parameter), Parameter.CurrentThreshold));
+            var convoluted = (ComplexChain)par["Sequence"];
+            var windowLen = (int)par["Window"];
+            var alphabet = (FrequencyDictionary)par["Alphabet"];
+            var level = (double)par["CurrentThreshold"];
 
             int scanStep = 1;
             int disp = 0;

@@ -1,5 +1,7 @@
 ﻿namespace Segmenter.Model
 {
+    using System.Collections.Generic;
+
     using Segmenter.Base.Collectors;
     using Segmenter.Base.Sequences;
 
@@ -35,6 +37,6 @@
         /// <returns>
         /// The <see cref="ComplexChain"/>.
         /// </returns>
-        public abstract ComplexChain Cut(ContentValues par);
+        public abstract ComplexChain Cut(Dictionary<string, object> par);
     }
 }

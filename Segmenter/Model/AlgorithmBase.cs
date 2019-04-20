@@ -85,9 +85,9 @@
         /// </summary>
         public new void Slot()
         {
-            var par = new ContentValues();
-            par.Put(Formalism.Sequence, chain = new ComplexChain(inputs[0].Chain));
-            par.Put(Formalism.Alphabet, alphabet = new FrequencyDictionary(chain));
+            var par = new Dictionary<string, object>();
+            par.Add("Sequence", chain = new ComplexChain(inputs[0].Chain));
+            par.Add("Alphabet", alphabet = new FrequencyDictionary(chain));
 
             while (criterion.State(chain, alphabet))
             {
@@ -123,13 +123,13 @@
         /// <param name="nextThreshold">
         /// The next threshold.
         /// </param>
-        private void UpdateParams(ContentValues par, double nextThreshold)
+        private void UpdateParams(Dictionary<string, object> par, double nextThreshold)
         {
-            par.Put(Formalism.Sequence, chain = new ComplexChain(inputs[0].Chain));
-            par.Put(Parameter.Balance, balance);
-            par.Put(Parameter.Window, windowLen);
-            par.Put(Parameter.WindowDecrement, windowDec);
-            par.Put(Parameter.CurrentThreshold, nextThreshold);
+            par.Add("Sequence", chain = new ComplexChain(inputs[0].Chain));
+            par.Add("Balance", balance);
+            par.Add("Window", windowLen);
+            par.Add("WindowDecrement", windowDec);
+            par.Add("CurrentThreshold", nextThreshold);
         }
     }
 }

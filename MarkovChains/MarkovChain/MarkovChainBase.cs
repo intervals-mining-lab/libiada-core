@@ -4,9 +4,8 @@ namespace MarkovChains.MarkovChain
     using System.Collections.Generic;
 
     using LibiadaCore.Core;
-    using LibiadaCore.Misc.Iterators;
-    using LibiadaCore.Misc.SpaceReorganizers;
-
+    using LibiadaCore.Iterators;
+    using LibiadaCore.SpaceReorganizers;
     using MarkovChains.MarkovChain.Builders;
     using MarkovChains.MarkovChain.Generators;
     using MarkovChains.MarkovChain.Matrices.Absolute;
