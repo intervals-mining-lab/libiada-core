@@ -17,32 +17,12 @@
         /// </summary>
         private static readonly object[][] CombinationTests =
         {
+            //ByShortestAligner tests with Euclidean distance calculator
             new object[]
             {
                 new double[] { 1, 2, 3, 4, 5 }, new double[] { 1, 2, 3, 4, 5 }, 0,
                 new ByShortestAligner(),
                 new EuclideanDistanceBetweenOneDimensionalPointsCalculator(),
-                new Average()
-            },
-            new object[]
-            {
-                new double[] { 1, 2, 3, 4, 5 }, new double[] { 2, 3, 4, 5, 6 }, 1,
-                new ByShortestFromRightAligner(),
-                new EuclideanDistanceBetweenOneDimensionalPointsCalculator(),
-                new Average()
-            },
-            new object[]
-            {
-                new double[] { -1, -2, -3, -4, -5 }, new double[] { 1, 2, 3, 4, 5 }, 1,
-                new ByShortestAligner(),
-                new HammingDistanceBetweenOneDimensionalPointsCalculator(),
-                new Average()
-            },
-            new object[]
-            {
-                new double[] { 1, 2, 3, 4, 5 }, new[] { 1.01234, 2.01234, 3.01234, 4.01234, 5.01234 }, 4,
-                new ByShortestFromRightAligner(),
-                new HammingDistanceBetweenOneDimensionalPointsCalculator(),
                 new Average()
             },
             new object[]
@@ -55,50 +35,8 @@
             new object[]
             {
                 new double[] { 1, 2, 3, 4, 5 }, new double[] { 1, 2, 3, 4, 5 }, 0,
-                new ByShortestFromRightAligner(),
-                new EuclideanDistanceBetweenOneDimensionalPointsCalculator(),
-                new DifferenceModule()
-            },
-            new object[]
-            {
-                new double[] { 1, 2, 3, 4, 5 }, new double[] { 1, 2, 3, 4, 5 }, 0,
-                new ByShortestAligner(),
-                new HammingDistanceBetweenOneDimensionalPointsCalculator(),
-                new DifferenceModule()
-            },
-            new object[]
-            {
-                new double[] { 1, 2, 3, 4, 5 }, new double[] { 1, 2, 3, 4, 5 }, 0,
-                new ByShortestFromRightAligner(),
-                new HammingDistanceBetweenOneDimensionalPointsCalculator(),
-                new DifferenceModule()
-            },
-            new object[]
-            {
-                new double[] { 1, 2, 3, 4, 5 }, new double[] { 1, 2, 3, 4, 5 }, 0,
                 new ByShortestAligner(),
                 new EuclideanDistanceBetweenOneDimensionalPointsCalculator(),
-                new DifferenceSquareRoot()
-            },
-            new object[]
-            {
-                new double[] { 1, 2, 3, 4, 5 }, new double[] { 1, 2, 3, 4, 5 }, 0,
-                new ByShortestFromRightAligner(),
-                new EuclideanDistanceBetweenOneDimensionalPointsCalculator(),
-                new DifferenceSquareRoot()
-            },
-            new object[]
-            {
-                new double[] { 1, 2, 3, 4, 5 }, new double[] { 1, 2, 3, 4, 5 }, 0,
-                new ByShortestAligner(),
-                new HammingDistanceBetweenOneDimensionalPointsCalculator(),
-                new DifferenceSquareRoot()
-            },
-            new object[]
-            {
-                new double[] { 1, 2, 3, 4, 5 }, new double[] { 1, 2, 3, 4, 5 }, 0,
-                new ByShortestFromRightAligner(),
-                new HammingDistanceBetweenOneDimensionalPointsCalculator(),
                 new DifferenceSquareRoot()
             },
             new object[]
@@ -111,9 +49,45 @@
             new object[]
             {
                 new double[] { 1, 2, 3, 4, 5 }, new double[] { 1, 2, 3, 4, 5 }, 0,
-                new ByShortestFromRightAligner(),
+                new ByShortestAligner(),
                 new EuclideanDistanceBetweenOneDimensionalPointsCalculator(),
-                new Max()
+                new Min()
+            },
+            new object[]
+            {
+                new double[] { 1, 2, 3, 4, 5 }, new double[] { 1, 2, 3, 4, 5 }, 0,
+                new ByShortestAligner(),
+                new EuclideanDistanceBetweenOneDimensionalPointsCalculator(),
+                new SumModule()
+            },
+            new object[]
+            {
+                new double[] { 1, 2, 3, 4, 5 }, new double[] { 1, 2, 3, 4, 5 }, 0,
+                new ByShortestAligner(),
+                new EuclideanDistanceBetweenOneDimensionalPointsCalculator(),
+                new SumSquareRoot()
+            },
+            //ByShortestAligner tests with Hamming distance calculator
+            new object[]
+            {
+                new double[] { -1, -2, -3, -4, -5 }, new double[] { 1, 2, 3, 4, 5 }, 1,
+                new ByShortestAligner(),
+                new HammingDistanceBetweenOneDimensionalPointsCalculator(),
+                new Average()
+            },
+            new object[]
+            {
+                new double[] { 1, 2, 3, 4, 5 }, new double[] { 1, 2, 3, 4, 5 }, 0,
+                new ByShortestAligner(),
+                new HammingDistanceBetweenOneDimensionalPointsCalculator(),
+                new DifferenceModule()
+            },
+            new object[]
+            {
+                new double[] { 1, 2, 3, 4, 5 }, new double[] { 1, 2, 3, 4, 5 }, 0,
+                new ByShortestAligner(),
+                new HammingDistanceBetweenOneDimensionalPointsCalculator(),
+                new DifferenceSquareRoot()
             },
             new object[]
             {
@@ -125,6 +99,99 @@
             new object[]
             {
                 new double[] { 1, 2, 3, 4, 5 }, new double[] { 1, 2, 3, 4, 5 }, 0,
+                new ByShortestAligner(),
+                new HammingDistanceBetweenOneDimensionalPointsCalculator(),
+                new Min()
+            },
+            new object[]
+            {
+                new double[] { 1, 2, 3, 4, 5 }, new double[] { 1, 2, 3, 4, 5 }, 0,
+                new ByShortestAligner(),
+                new HammingDistanceBetweenOneDimensionalPointsCalculator(),
+                new SumModule()
+            },
+            new object[]
+            {
+                new double[] { 1, 2, 3, 4, 5 }, new double[] { 1, 2, 3, 4, 5 }, 0,
+                new ByShortestAligner(),
+                new HammingDistanceBetweenOneDimensionalPointsCalculator(),
+                new SumSquareRoot()
+            },
+            //ByShortestFromRightAligner tests with Euclidean distance calculator
+            new object[]
+            {
+                new double[] { 1, 2, 3, 4, 5 }, new double[] { 2, 3, 4, 5, 6 }, 1,
+                new ByShortestFromRightAligner(),
+                new EuclideanDistanceBetweenOneDimensionalPointsCalculator(),
+                new Average()
+            },
+            new object[]
+            {
+                new double[] { 1, 2, 3, 4, 5 }, new double[] { 1, 2, 3, 4, 5 }, 0,
+                new ByShortestFromRightAligner(),
+                new EuclideanDistanceBetweenOneDimensionalPointsCalculator(),
+                new DifferenceModule()
+            },
+            new object[]
+            {
+                new double[] { 1, 2, 3, 4, 5 }, new double[] { 1, 2, 3, 4, 5 }, 0,
+                new ByShortestFromRightAligner(),
+                new EuclideanDistanceBetweenOneDimensionalPointsCalculator(),
+                new DifferenceSquareRoot()
+            },
+            new object[]
+            {
+                new double[] { 1, 2, 3, 4, 5 }, new double[] { 1, 2, 3, 4, 5 }, 0,
+                new ByShortestFromRightAligner(),
+                new EuclideanDistanceBetweenOneDimensionalPointsCalculator(),
+                new Max()
+            },
+            new object[]
+            {
+                new double[] { 1, 2, 3, 4, 5 }, new double[] { 1, 2, 3, 4, 5 }, 0,
+                new ByShortestFromRightAligner(),
+                new EuclideanDistanceBetweenOneDimensionalPointsCalculator(),
+                new Min()
+            },
+            new object[]
+            {
+                new double[] { 1, 2, 3, 4, 5 }, new double[] { 1, 2, 3, 4, 5 }, 0,
+                new ByShortestFromRightAligner(),
+                new EuclideanDistanceBetweenOneDimensionalPointsCalculator(),
+                new SumModule()
+            },
+            new object[]
+            {
+                new double[] { 1, 2, 3, 4, 5 }, new double[] { 1, 2, 3, 4, 5 }, 0,
+                new ByShortestFromRightAligner(),
+                new EuclideanDistanceBetweenOneDimensionalPointsCalculator(),
+                new SumSquareRoot()
+            },
+            //ByShortestFromRightAligner tests with Hamming distance calculator
+            new object[]
+            {
+                new double[] { 1, 2, 3, 4, 5 }, new[] { 1.01234, 2.01234, 3.01234, 4.01234, 5.01234 }, 4,
+                new ByShortestFromRightAligner(),
+                new HammingDistanceBetweenOneDimensionalPointsCalculator(),
+                new Average()
+            },
+            new object[]
+            {
+                new double[] { 1, 2, 3, 4, 5 }, new double[] { 1, 2, 3, 4, 5 }, 0,
+                new ByShortestFromRightAligner(),
+                new HammingDistanceBetweenOneDimensionalPointsCalculator(),
+                new DifferenceModule()
+            },
+            new object[]
+            {
+                new double[] { 1, 2, 3, 4, 5 }, new double[] { 1, 2, 3, 4, 5 }, 0,
+                new ByShortestFromRightAligner(),
+                new HammingDistanceBetweenOneDimensionalPointsCalculator(),
+                new DifferenceSquareRoot()
+            },
+            new object[]
+            {
+                new double[] { 1, 2, 3, 4, 5 }, new double[] { 1, 2, 3, 4, 5 }, 0,
                 new ByShortestFromRightAligner(),
                 new HammingDistanceBetweenOneDimensionalPointsCalculator(),
                 new Max()
@@ -132,51 +199,9 @@
             new object[]
             {
                 new double[] { 1, 2, 3, 4, 5 }, new double[] { 1, 2, 3, 4, 5 }, 0,
-                new ByShortestAligner(),
-                new EuclideanDistanceBetweenOneDimensionalPointsCalculator(),
-                new Min()
-            },
-            new object[]
-            {
-                new double[] { 1, 2, 3, 4, 5 }, new double[] { 1, 2, 3, 4, 5 }, 0,
-                new ByShortestFromRightAligner(),
-                new EuclideanDistanceBetweenOneDimensionalPointsCalculator(),
-                new Min()
-            },
-            new object[]
-            {
-                new double[] { 1, 2, 3, 4, 5 }, new double[] { 1, 2, 3, 4, 5 }, 0,
-                new ByShortestAligner(),
-                new HammingDistanceBetweenOneDimensionalPointsCalculator(),
-                new Min()
-            },
-            new object[]
-            {
-                new double[] { 1, 2, 3, 4, 5 }, new double[] { 1, 2, 3, 4, 5 }, 0,
                 new ByShortestFromRightAligner(),
                 new HammingDistanceBetweenOneDimensionalPointsCalculator(),
                 new Min()
-            },
-            new object[]
-            {
-                new double[] { 1, 2, 3, 4, 5 }, new double[] { 1, 2, 3, 4, 5 }, 0,
-                new ByShortestAligner(),
-                new EuclideanDistanceBetweenOneDimensionalPointsCalculator(),
-                new SumModule()
-            },
-            new object[]
-            {
-                new double[] { 1, 2, 3, 4, 5 }, new double[] { 1, 2, 3, 4, 5 }, 0,
-                new ByShortestFromRightAligner(),
-                new EuclideanDistanceBetweenOneDimensionalPointsCalculator(),
-                new SumModule()
-            },
-            new object[]
-            {
-                new double[] { 1, 2, 3, 4, 5 }, new double[] { 1, 2, 3, 4, 5 }, 0,
-                new ByShortestAligner(),
-                new HammingDistanceBetweenOneDimensionalPointsCalculator(),
-                new SumModule()
             },
             new object[]
             {
@@ -188,31 +213,110 @@
             new object[]
             {
                 new double[] { 1, 2, 3, 4, 5 }, new double[] { 1, 2, 3, 4, 5 }, 0,
-                new ByShortestAligner(),
-                new EuclideanDistanceBetweenOneDimensionalPointsCalculator(),
-                new SumSquareRoot()
-            },
-            new object[]
-            {
-                new double[] { 1, 2, 3, 4, 5 }, new double[] { 1, 2, 3, 4, 5 }, 0,
-                new ByShortestFromRightAligner(),
-                new EuclideanDistanceBetweenOneDimensionalPointsCalculator(),
-                new SumSquareRoot()
-            },
-            new object[]
-            {
-                new double[] { 1, 2, 3, 4, 5 }, new double[] { 1, 2, 3, 4, 5 }, 0,
-                new ByShortestAligner(),
-                new HammingDistanceBetweenOneDimensionalPointsCalculator(),
-                new SumSquareRoot()
-            },
-            new object[]
-            {
-                new double[] { 1, 2, 3, 4, 5 }, new double[] { 1, 2, 3, 4, 5 }, 0,
                 new ByShortestFromRightAligner(),
                 new HammingDistanceBetweenOneDimensionalPointsCalculator(),
                 new SumSquareRoot()
             },
+            //AllOffsetsAligner tests with Euclidean distance calculator
+            new object[]
+            {
+                new double[] { 1, 2, 3, 4, 5 }, new double[] { 1, 2, 3, 4, 5 }, 0,
+                new AllOffsetsAligner(),
+                new EuclideanDistanceBetweenOneDimensionalPointsCalculator(),
+                new Average()
+            },
+            new object[]
+            {
+                new double[] { 1, 2, 3, 4, 5 }, new double[] { 1, 2, 3, 4, 5 }, 0,
+                new AllOffsetsAligner(),
+                new EuclideanDistanceBetweenOneDimensionalPointsCalculator(),
+                new DifferenceModule()
+            },
+            new object[]
+            {
+                new double[] { 1, 2, 3, 4, 5 }, new double[] { 1, 2, 3, 4, 5 }, 0,
+                new AllOffsetsAligner(),
+                new EuclideanDistanceBetweenOneDimensionalPointsCalculator(),
+                new DifferenceSquareRoot()
+            },
+            new object[]
+            {
+                new double[] { 1, 2, 3, 4, 5 }, new double[] { 1, 2, 3, 4, 5 }, 0,
+                new AllOffsetsAligner(),
+                new EuclideanDistanceBetweenOneDimensionalPointsCalculator(),
+                new Max()
+            },
+            new object[]
+            {
+                new double[] { 1, 2, 3, 4, 5 }, new double[] { 1, 2, 3, 4, 5 }, 0,
+                new AllOffsetsAligner(),
+                new EuclideanDistanceBetweenOneDimensionalPointsCalculator(),
+                new Min()
+            },
+            new object[]
+            {
+                new double[] { 1, 2, 3, 4, 5 }, new double[] { 1, 2, 3, 4, 5 }, 0,
+                new AllOffsetsAligner(),
+                new EuclideanDistanceBetweenOneDimensionalPointsCalculator(),
+                new SumModule()
+            },
+            new object[]
+            {
+                new double[] { 1, 2, 3, 4, 5 }, new double[] { 1, 2, 3, 4, 5 }, 0,
+                new AllOffsetsAligner(),
+                new EuclideanDistanceBetweenOneDimensionalPointsCalculator(),
+                new SumSquareRoot()
+            },
+            //AllOffsetsAligner tests with Hamming distance calculator
+            new object[]
+            {
+                new double[] { 1, 2, 3, 4, 5 }, new double[] { 1, 2, 3, 4, 5 }, 0,
+                new AllOffsetsAligner(),
+                new HammingDistanceBetweenOneDimensionalPointsCalculator(),
+                new Average()
+            },
+            new object[]
+            {
+                new double[] { 1, 2, 3, 4, 5 }, new double[] { 1, 2, 3, 4, 5 }, 0,
+                new AllOffsetsAligner(),
+                new HammingDistanceBetweenOneDimensionalPointsCalculator(),
+                new DifferenceModule()
+            },
+            new object[]
+            {
+                new double[] { 1, 2, 3, 4, 5 }, new double[] { 1, 2, 3, 4, 5 }, 0,
+                new AllOffsetsAligner(),
+                new HammingDistanceBetweenOneDimensionalPointsCalculator(),
+                new DifferenceSquareRoot()
+            },
+            new object[]
+            {
+                new double[] { 1, 2, 3, 4, 5 }, new double[] { 1, 2, 3, 4, 5 }, 0,
+                new AllOffsetsAligner(),
+                new HammingDistanceBetweenOneDimensionalPointsCalculator(),
+                new Max()
+            },
+            new object[]
+            {
+                new double[] { 1, 2, 3, 4, 5 }, new double[] { 1, 2, 3, 4, 5 }, 0,
+                new AllOffsetsAligner(),
+                new HammingDistanceBetweenOneDimensionalPointsCalculator(),
+                new Min()
+            },
+            new object[]
+            {
+                new double[] { 1, 2, 3, 4, 5 }, new double[] { 1, 2, 3, 4, 5 }, 0,
+                new AllOffsetsAligner(),
+                new HammingDistanceBetweenOneDimensionalPointsCalculator(),
+                new SumModule()
+            },
+            new object[]
+            {
+                new double[] { 1, 2, 3, 4, 5 }, new double[] { 1, 2, 3, 4, 5 }, 0,
+                new AllOffsetsAligner(),
+                new HammingDistanceBetweenOneDimensionalPointsCalculator(),
+                new SumSquareRoot()
+            }
         };
 
         /// <summary>
