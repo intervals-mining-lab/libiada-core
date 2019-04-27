@@ -1,4 +1,4 @@
-﻿namespace LibiadaCore.TimeSeries.OneDimensional
+﻿namespace LibiadaCore.TimeSeries.OneDimensional.DistanceCalculators
 {
     /// <summary>
     /// The hamming distance between one dimensional points calculator.

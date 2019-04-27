@@ -1,4 +1,4 @@
-﻿namespace LibiadaCore.TimeSeries.OneDimensional
+﻿namespace LibiadaCore.TimeSeries.OneDimensional.DistanceCalculators
 {
     using System;
 

@@ -1,6 +1,6 @@
-﻿namespace LibiadaCore.Tests.TimeSeries.OneDimensional
+﻿namespace LibiadaCore.Tests.TimeSeries.OneDimensional.DistanceCalculatorsTests
 {
-    using LibiadaCore.TimeSeries.OneDimensional;
+    using LibiadaCore.TimeSeries.OneDimensional.DistanceCalculators;
 
     using NUnit.Framework;
 

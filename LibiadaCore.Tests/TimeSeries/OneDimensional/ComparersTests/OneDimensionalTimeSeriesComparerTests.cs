@@ -1,8 +1,9 @@
-﻿namespace LibiadaCore.Tests.TimeSeries.OneDimensional
+﻿namespace LibiadaCore.Tests.TimeSeries.OneDimensional.ComparersTests
 {
     using LibiadaCore.TimeSeries.Aggregators;
     using LibiadaCore.TimeSeries.Aligners;
-    using LibiadaCore.TimeSeries.OneDimensional;
+    using LibiadaCore.TimeSeries.OneDimensional.Comparers;
+    using LibiadaCore.TimeSeries.OneDimensional.DistanceCalculators;
 
     using NUnit.Framework;
 

@@ -1,10 +1,11 @@
-﻿namespace LibiadaCore.TimeSeries.OneDimensional
+﻿namespace LibiadaCore.TimeSeries.OneDimensional.Comparers
 {
     using System.Collections.Generic;
     using System.Linq;
 
     using LibiadaCore.TimeSeries.Aggregators;
     using LibiadaCore.TimeSeries.Aligners;
+    using LibiadaCore.TimeSeries.OneDimensional.DistanceCalculators;
 
     /// <summary>
     /// The one dimensional time series comparer.
@@ -59,7 +60,7 @@
         /// </returns>
         public double GetDistance(double[] firstTimeSeries, double[] secondTimeSeries)
         {
-            (double[][] first, double[][] second) = aligner.AlignSeries(firstTimeSeries, secondTimeSeries);
+            (double[][] first, double[][] second) = this.aligner.AlignSeries(firstTimeSeries, secondTimeSeries);
 
             double[] aggregated = new double[first.Length];
 
@@ -68,10 +69,10 @@
                 List<double> distances = new List<double>();
                 for (int j = 0; j < first[0].Length; j++)
                 {
-                    distances.Add(calculator.GetDistance(first[i][j], second[i][j]));
+                    distances.Add(this.calculator.GetDistance(first[i][j], second[i][j]));
                 }
 
-                aggregated[i] = aggregator.Aggregate(distances);
+                aggregated[i] = this.aggregator.Aggregate(distances);
             }
 
             return aggregated.Min();

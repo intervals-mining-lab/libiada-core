@@ -34,8 +34,8 @@
             var aligner = new ByShortestFromRightAligner();
             var result = aligner.AlignSeries(shortTimeSeries, longTimeSeries);
             Assert.AreEqual(result.first[0].Length, result.second[0].Length);
-            Assert.AreEqual(result.first[0], shortTimeSeries);
-            Assert.AreEqual(result.second[0], expectedSubArray);
+            Assert.AreEqual(shortTimeSeries, result.first[0]);
+            Assert.AreEqual(expectedSubArray, result.second[0]);
         }
     }
 }
