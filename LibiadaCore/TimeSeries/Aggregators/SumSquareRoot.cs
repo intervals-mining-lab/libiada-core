@@ -20,7 +20,7 @@
         /// </returns>
         public double Aggregate(List<double> distances)
         {
-            return Math.Sqrt(distances.Sum());
+            return Math.Sqrt(Math.Abs(distances.Sum()));
         }
     }
 }

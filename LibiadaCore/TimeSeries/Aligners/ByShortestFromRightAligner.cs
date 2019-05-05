@@ -23,15 +23,22 @@
         /// </returns>
         public (double[][] first, double[][] second) AlignSeries(double[] firstSeries, double[] secondSeries)
         {
-            int shortestLength = firstSeries.SelectShortestLength(secondSeries);
 
             double[][] first = new double[1][];
             double[][] second = new double[1][];
 
-            int startIndex = Math.Abs(secondSeries.Length - firstSeries.Length);
+            int startIndex = Math.Abs(firstSeries.Length - secondSeries.Length);
 
-            first[0] = firstSeries.SubArray(0, shortestLength);
-            second[0] = secondSeries.SubArray(startIndex, secondSeries.Length - startIndex);
+            if (firstSeries.Length < secondSeries.Length)
+            {
+                first[0] = firstSeries;
+                second[0] = secondSeries.SubArray(startIndex, secondSeries.Length - startIndex);
+            }
+            else
+            {
+                first[0] = firstSeries.SubArray(startIndex, firstSeries.Length - startIndex);
+                second[0] = secondSeries;
+            }
 
             return (first, second);
         }
