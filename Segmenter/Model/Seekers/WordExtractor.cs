@@ -32,7 +32,7 @@
         /// <returns>
         /// The <see cref="T:KeyValuePair{List{string},List{int}}?"/>.
         /// </returns>
-        public abstract KeyValuePair<List<string>, List<int>>? Find(ContentValues parameters);
+        public abstract KeyValuePair<List<string>, List<int>>? Find(Dictionary<string, object> parameters);
 
         /// <summary>
         /// Discards all words which enter in the alphabet and contains compound words

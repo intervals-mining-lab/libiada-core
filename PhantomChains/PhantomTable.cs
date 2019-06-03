@@ -31,7 +31,7 @@
             BaseChain internalChain = source;
             ulong v = 1;
             StartPositions.Add(0);
-            for (int j = 0; j < internalChain.GetLength(); j++)
+            for (int j = 0; j < internalChain.Length; j++)
             {
                 if ((((ValuePhantom)internalChain[j])[0] is ValueString)
                     || (((ValuePhantom)internalChain[j])[0] is BaseChain))
@@ -47,7 +47,7 @@
             }
 
             table.Add(null);
-            for (int i = internalChain.GetLength(); i > 0; i--)
+            for (int i = internalChain.Length; i > 0; i--)
             {
                 var temp = (ValuePhantom)internalChain[i - 1];
                 table[i] = new Record(temp, v);

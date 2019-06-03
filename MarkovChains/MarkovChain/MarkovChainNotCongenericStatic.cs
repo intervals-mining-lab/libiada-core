@@ -1,8 +1,7 @@
 namespace MarkovChains.MarkovChain
 {
     using LibiadaCore.Core;
-    using LibiadaCore.Misc.Iterators;
-
+    using LibiadaCore.Iterators;
     using MarkovChains.MarkovChain.Generators;
 
     /// <summary>
@@ -76,8 +75,8 @@ namespace MarkovChains.MarkovChain
                 if (read != null)
                 {
                     BaseChain chain = (BaseChain)read.Current();
-                    var indexedChain = new int[chain.GetLength()];
-                    for (int k = 0; k < chain.GetLength(); k++)
+                    var indexedChain = new int[chain.Length];
+                    for (int k = 0; k < chain.Length; k++)
                     {
                         indexedChain[k] = Alphabet.IndexOf(chain[k]);
                     }

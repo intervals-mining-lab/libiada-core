@@ -4,9 +4,8 @@ namespace MarkovChains.Tests.MarkovChain.Matrices.Probability
 
     using LibiadaCore.Core;
     using LibiadaCore.Core.SimpleTypes;
-    using LibiadaCore.Misc.Iterators;
-    using LibiadaCore.Misc.SpaceReorganizers;
-
+    using LibiadaCore.Iterators;
+    using LibiadaCore.SpaceReorganizers;
     using MarkovChains.MarkovChain.Matrices.Absolute;
     using MarkovChains.MarkovChain.Matrices.Probability;
 
@@ -109,7 +108,7 @@ namespace MarkovChains.Tests.MarkovChain.Matrices.Probability
             baseChain.Set(b, 2);
 
             matrix = new Matrix(alphabet.Cardinality, 2);
-            var arrayCh = new int[baseChain.GetLength()];
+            var arrayCh = new int[baseChain.Length];
             arrayCh[0] = alphabet.IndexOf(baseChain[0]);
             arrayCh[1] = alphabet.IndexOf(baseChain[1]);
             arrayCh[2] = alphabet.IndexOf(baseChain[2]);
@@ -228,8 +227,8 @@ namespace MarkovChains.Tests.MarkovChain.Matrices.Probability
             while (it.Next())
             {
                 var chain = it.Current();
-                var arrayToTeach = new int[chain.GetLength()];
-                for (var i = 0; i < chain.GetLength(); i++)
+                var arrayToTeach = new int[chain.Length];
+                for (var i = 0; i < chain.Length; i++)
                 {
                     arrayToTeach[i] = testChain.Alphabet.IndexOf(chain[i]);
                 }
@@ -455,8 +454,8 @@ namespace MarkovChains.Tests.MarkovChain.Matrices.Probability
             while (it.Next())
             {
                 var chain = it.Current();
-                var arrayToTeach = new int[chain.GetLength()];
-                for (var i = 0; i < chain.GetLength(); i++)
+                var arrayToTeach = new int[chain.Length];
+                for (var i = 0; i < chain.Length; i++)
                 {
                     arrayToTeach[i] = testChain.Alphabet.IndexOf(chain[i]);
                 }
@@ -685,7 +684,7 @@ namespace MarkovChains.Tests.MarkovChain.Matrices.Probability
             baseChain.Set(c, 1);
 
             matrix = new Matrix(alphabet.Cardinality, 2);
-            var array = new int[baseChain.GetLength()];
+            var array = new int[baseChain.Length];
             array[0] = alphabet.IndexOf(baseChain[0]);
             array[1] = alphabet.IndexOf(baseChain[1]);
             Assert.Throws<ArgumentOutOfRangeException>(() => matrix.FrequencyFromObject(array));
