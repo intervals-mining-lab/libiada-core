@@ -446,7 +446,6 @@
                 hash.AddRange(note.GetMD5HashCode());
             }
             hash.Add((byte)Type);
-            hash.Add((byte)PauseTreatment);
             MD5 md5 = MD5.Create();
             return md5.ComputeHash(hash.ToArray());
         }
@@ -464,7 +463,6 @@
             {
                 int hashCode = -2024996526;
                 hashCode = (hashCode * -1521134295) + ((byte)Type).GetHashCode();
-                hashCode = (hashCode * -1521134295) + PauseTreatment.GetHashCode();
                 foreach (ValueNote note in NoteList)
                 {
                     hashCode = (hashCode * -1521134295) + note.GetHashCode();

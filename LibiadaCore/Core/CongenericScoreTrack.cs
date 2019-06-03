@@ -167,7 +167,7 @@
                 {
                     if (temp[i].Equals(temp[j]))
                     {
-                        // еси уже такой идентифицировался
+                        // если уже такой идентифицировался
                         temp[i].Id = temp[j].Id;
                         identified = true;
                     }
