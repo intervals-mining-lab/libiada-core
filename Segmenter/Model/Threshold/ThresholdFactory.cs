@@ -1,4 +1,6 @@
-﻿namespace Segmenter.Model.Threshold
+﻿using System.ComponentModel;
+
+namespace Segmenter.Model.Threshold
 {
     using System;
 
@@ -10,8 +12,8 @@
         /// <summary>
         /// The make.
         /// </summary>
-        /// <param name="index">
-        /// The index.
+        /// <param name="threshold">
+        /// The threshold.
         /// </param>
         /// <param name="input">
         /// The input.
@@ -22,20 +24,20 @@
         /// <exception cref="ArgumentException">
         /// Thrown if index is unknown.
         /// </exception>
-        public static ThresholdVariator Make(int index, Input input)
+        public static ThresholdVariator Make(Threshold threshold, Input input)
         {
-            switch (index)
+            switch (threshold)
             {
-                case 0:
+                case Threshold.Linear:
                     return new ThresholdLinear(input.LeftBound, input.RightBound, input.Step);
-                case 1:
+                case Threshold.Dichotomous:
                     return new ThresholdDichotomous(input.LeftBound, input.RightBound);
-                case 2:
+                case Threshold.Random:
                     return new ThresholdRandom(input.LeftBound, input.RightBound);
-                case 3:
+                case Threshold.Log:
                     return null; // Experimental threshold based on any log function
                 default:
-                    throw new ArgumentException("Unknown index", "index");
+                    throw new InvalidEnumArgumentException(nameof(threshold), (int)threshold, typeof(Threshold));
             }
         }
     }

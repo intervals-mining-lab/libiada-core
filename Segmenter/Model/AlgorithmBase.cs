@@ -73,7 +73,7 @@
             : base(parameters)
         {
             threshold = ThresholdFactory.Make(parameters.ThresholdMethod, parameters);
-            criterion = CriterionFactory.Make(parameters.StopCriterion, threshold, parameters);
+            criterion = CriterionFactory.Make(parameters.StopCriterion, threshold, parameters.Precision);
             extractor = WordExtractorFactory.GetSeeker(parameters.Seeker);
             balance = parameters.Balance;
             windowLen = parameters.WindowLength;

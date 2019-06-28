@@ -1,6 +1,6 @@
 ﻿namespace Segmenter.Model.Seekers
 {
-    using System;
+    using System.ComponentModel;
 
     /// <summary>
     /// Creates a method for extracting a word in the chain based on a concrete rule
@@ -10,24 +10,24 @@
         /// <summary>
         /// The get seeker.
         /// </summary>
-        /// <param name="index">
-        /// The index.
+        /// <param name="deviationCalculationMethod">
+        /// The deviation calculation method.
         /// </param>
         /// <returns>
         /// The <see cref="WordExtractor"/>.
         /// </returns>
-        public static WordExtractor GetSeeker(int index)
+        public static WordExtractor GetSeeker(DeviationCalculationMethod deviationCalculationMethod)
         {
-            switch (index)
+            switch (deviationCalculationMethod)
             {
-                case 0:
+                case DeviationCalculationMethod.ProbabilityMethod:
                     return new ProbabilityExtractor();
-                case 1:
+                case DeviationCalculationMethod.AverageIntervalDifference:
                     return new DifferenceAverageIntervalExtractor();
-                case 2:
+                case DeviationCalculationMethod.Null:
                     return null;
                 default:
-                    throw new ArgumentException("Unknown index", "index");
+                    throw new InvalidEnumArgumentException(nameof(deviationCalculationMethod), (int)deviationCalculationMethod, typeof(DeviationCalculationMethod));
             }
         }
 
@@ -44,12 +44,12 @@
         {
             if (other is ProbabilityExtractor)
             {
-                return GetSeeker(0);
+                return GetSeeker(DeviationCalculationMethod.ProbabilityMethod);
             }
 
             if (other is DifferenceAverageIntervalExtractor)
             {
-                return GetSeeker(1);
+                return GetSeeker(DeviationCalculationMethod.AverageIntervalDifference);
             }
 
             return null;

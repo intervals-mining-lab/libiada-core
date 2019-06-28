@@ -5,16 +5,20 @@ namespace Segmenter.Model.Threshold
 {
     public enum Threshold : byte
     {
-        [Display(Name = "Threshold dichotomous")]
+        [Display(Name = "Dichotomous threshold")]
         [Description("")]
-        ThresholdDichotomous = 1,
+        Dichotomous = 1,
 
-        [Display(Name = "Threshold linear")]
+        [Display(Name = "Linear threshold")]
         [Description("")]
-        ThresholdLinear = 2,
+        Linear = 2,
 
-        [Display(Name = "Threshold random")]
+        [Display(Name = "Random threshold")]
         [Description("")]
-        ThresholdRandom = 3
+        Random = 3,
+
+        [Display(Name = "Logarithmic threshold")]
+        [Description("")]
+        Log = 4
     }
 }

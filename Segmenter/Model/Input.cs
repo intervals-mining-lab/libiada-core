@@ -1,5 +1,9 @@
-﻿namespace Segmenter.Model
+﻿using Segmenter.Model.Seekers;
+
+namespace Segmenter.Model
 {
+    using Segmenter.Model.Criterion;
+
     /// <summary>
     /// Contains all input parameters
     /// </summary>
@@ -8,7 +12,7 @@
         /// <summary>
         /// Gets or sets the seeker.
         /// </summary>
-        public int Seeker { get; set; }
+        public DeviationCalculationMethod Seeker { get; set; }
 
         /// <summary>
         /// Gets or sets the precision.
@@ -58,12 +62,12 @@
         /// <summary>
         /// Gets or sets the threshold method.
         /// </summary>
-        public int ThresholdMethod { get; set; }
+        public Threshold.Threshold ThresholdMethod { get; set; }
 
         /// <summary>
         /// Gets or sets the stop criterion.
         /// </summary>
-        public int StopCriterion { get; set; }
+        public SegmentationCriterion StopCriterion { get; set; }
 
         /// <summary>
         /// Gets or sets the chain.

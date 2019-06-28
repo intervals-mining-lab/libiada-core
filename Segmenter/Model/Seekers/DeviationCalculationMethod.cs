@@ -11,6 +11,10 @@ namespace Segmenter.Model.Seekers
 
         [Display(Name = "Probability method")]
         [Description("")]
-        ProbabilityMethod = 2
+        ProbabilityMethod = 2,
+
+        [Display(Name = "Null")]
+        [Description("")]
+        Null = 3
     }
 }

@@ -3,7 +3,6 @@
     using System;
     using System.Collections.Generic;
 
-    using Segmenter.Base;
     using Segmenter.Base.Collectors;
     using Segmenter.Base.Iterators;
     using Segmenter.Base.Sequences;
