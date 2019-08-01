@@ -156,7 +156,6 @@
             hash.Add((byte)Attributes.Key.Fifths);
             hash.Add((byte)Attributes.Size.BeatBase);
             hash.Add((byte)Attributes.Size.Beats);
-            hash.Add((byte)Attributes.Size.TicksPerBeat);
             MD5 md5 = MD5.Create();
             return md5.ComputeHash(hash.ToArray());
         }
@@ -172,7 +171,10 @@
         {
             unchecked
             {
-                int hashCode = 68558965  ^ Attributes.GetHashCode();
+                int hashCode = 68558965;
+                hashCode = (hashCode * -1521134295) + ((byte)Attributes.Key.Fifths).GetHashCode();
+                hashCode = (hashCode * -1521134295) + ((byte)Attributes.Size.BeatBase).GetHashCode();
+                hashCode = (hashCode * -1521134295) + ((byte)Attributes.Size.Beats).GetHashCode();
                 foreach (ValueNote note in NoteList)
                 {
                     hashCode = (hashCode * -1521134295) + note.GetHashCode();
