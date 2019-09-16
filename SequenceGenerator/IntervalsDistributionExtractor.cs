@@ -23,5 +23,23 @@ namespace SequenceGenerator
             }
             return intervalsDistribution;
         }
+
+        public static Dictionary<IntervalsDistribution, List<int[]>> GetOrdersIntervalsDistributionsAccordance(int[][] orders, Link link)
+        {
+            var accordance = new Dictionary<IntervalsDistribution, List<int[]>>();
+            foreach (var order in orders)
+            {
+                var orderIntervalsDistribution = IntervalsDistributionExtractor.GetIntervalsDistribution(order, link);
+                if (accordance.ContainsKey(orderIntervalsDistribution))
+                {
+                    accordance[orderIntervalsDistribution].Add(order);
+                }
+                else
+                {
+                    accordance.Add(orderIntervalsDistribution, new List<int[]> { order });
+                }
+            }
+            return accordance;
+        }
     }
 }

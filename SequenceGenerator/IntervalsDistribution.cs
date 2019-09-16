@@ -66,8 +66,8 @@ namespace SequenceGenerator
                 int hashCode = -1573927371;
                 foreach (var element in Distribution)
                 {
-                    hashCode = (hashCode * 1573927372) + element.Key.GetHashCode();
-                    hashCode = (hashCode * 1573927372) + element.Value.GetHashCode();
+                    hashCode = hashCode ^ element.Key.GetHashCode();
+                    hashCode = hashCode ^ element.Value.GetHashCode();
                 }
 
                 return hashCode;
