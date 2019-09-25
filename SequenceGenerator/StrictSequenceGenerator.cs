@@ -4,6 +4,7 @@
     using System.Linq;
 
     using LibiadaCore.Core;
+    using LibiadaCore.Core.SimpleTypes;
 
     /// <summary>
     /// The strict sequence generator.
@@ -26,15 +27,20 @@
         /// </returns>
         public List<BaseChain> GenerateSequences(int length, int alphabetCardinality)
         {
-            var result = sequenceGenerator.GenerateSequences(length, alphabetCardinality);
-            for (int i = result.Count - 1; i >= 0; i--)
+            var result = new List<BaseChain>();
+            var iterator = new SequenceIterator(length, alphabetCardinality);
+            foreach(int[] sequence in iterator)
             {
-                if (result[i].Alphabet.Cardinality < alphabetCardinality)
+                if(sequence.Distinct().Count() == alphabetCardinality)
                 {
-                    result.RemoveAt(i);
+                    var elements = new List<IBaseObject>(sequence.Length);
+                    for (int i = 0; i < sequence.Length; i++)
+                    {
+                        elements.Add(new ValueInt(sequence[i]));
+                    }
+                    result.Add(new BaseChain(elements));
                 }
             }
-
             return result;
         }
 
