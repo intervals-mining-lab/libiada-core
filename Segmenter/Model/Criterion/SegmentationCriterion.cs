@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Segmenter.Model.Criterion
 {
-    public enum SegmentationCriterion
+    public enum SegmentationCriterion : byte
     {
         [Display(Name = "Partial orlov criterion")]
         [Description("")]

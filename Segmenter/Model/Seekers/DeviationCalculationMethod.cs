@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Segmenter.Model.Seekers
 {
-    public enum DeviationCalculationMethod
+    public enum DeviationCalculationMethod : byte
     {
         [Display(Name = "Average interval difference")]
         [Description("")]
