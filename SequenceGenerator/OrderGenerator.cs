@@ -47,12 +47,13 @@
         /// </returns>
         public List<int[]> StrictGenerateOrders(int length, int alphabetCardinality)
         {
-            var result = GenerateOrders(length, alphabetCardinality);
-            for (int i = result.Count - 1; i >= 0; i--)
+            var result = new List<int[]>();
+            var iterator = new OrderIterator(length, alphabetCardinality);
+            foreach (int[] order in iterator)
             {
-                if (result[i].Distinct().ToArray().Length < alphabetCardinality)
+                if (order.Distinct().Count() == alphabetCardinality)
                 {
-                    result.RemoveAt(i);
+                    result.Add(order);
                 }
             }
 
