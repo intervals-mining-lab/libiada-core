@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Clusterizator.ML
 {
-    public class ChainData
+    public class ClusterizationData
     {
         public float[] Characteristics { get; set; }
     }

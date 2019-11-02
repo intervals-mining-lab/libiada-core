@@ -13,8 +13,4 @@
     <ProjectReference Include="..\LibiadaCore\LibiadaCore.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="ML.NET\Converter\" />
-  </ItemGroup>
-
 </Project>
