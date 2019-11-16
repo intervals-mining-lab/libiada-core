@@ -5,7 +5,7 @@ using System.Text;
 
 namespace LibiadaCore.DataTransformers
 {
-    class OrderGenerator
+    public class OrderGenerator
     {
         static int Factorial(int num)
         {
@@ -27,7 +27,7 @@ namespace LibiadaCore.DataTransformers
             }
         }
 
-        static int[][] GetOrders(int componentCount)
+        public static int[][] GetOrders(int componentCount)
         {
             HashSet<char> characterSet = new HashSet<char>();
             for (int j = 0; j < componentCount; j++)
