@@ -10,7 +10,7 @@ namespace Clusterizator.ML
 {
     public class Trainer
     {
-        public MLContext _context { get; set; }
+        public MLContext _context { get; private set; }
         
         public Trainer()
         {
