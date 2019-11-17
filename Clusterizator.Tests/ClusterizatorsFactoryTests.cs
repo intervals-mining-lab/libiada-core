@@ -43,7 +43,7 @@ namespace Clusterizator.Tests
         /// The selection test.
         /// </summary>
         [Test]
-        public void SelectionTest()
+        public void SelectionErrorTest()
         {
             var parameters = new Dictionary<string, double>();
             Assert.Throws<InvalidEnumArgumentException>(() => ClusterizatorsFactory.CreateClusterizator(0, parameters));
