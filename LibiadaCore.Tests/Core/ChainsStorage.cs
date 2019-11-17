@@ -33,53 +33,107 @@ namespace LibiadaCore.Tests.Core
                     // _ _ A A _ _ A _ _ _
                     // B B _ _ _ B _ _ _ B
                     // _ _ _ _ C _ _ C C _
-                    new Chain("BBAACBACCB"),
+                    new Chain("BBAACBACCB"), // 0
 
                     // A C T T G A T A C G
                     // A _ _ _ _ A _ A _ _
                     // _ C _ _ _ _ _ _ C _
                     // _ _ T T _ _ T _ _ _
                     // _ _ _ _ G _ _ _ _ G
-                    new Chain("ACTTGATACG"),
+                    new Chain("ACTTGATACG"), // 1
 
                     // C C A C G C T T A C
                     // C C _ C _ C _ _ _ C
                     // _ _ A _ _ _ _ _ A _
                     // _ _ _ _ G _ _ _ _ _
                     // _ _ _ _ _ _ T T _ _
-                    new Chain("CCACGCTTAC"),
+                    new Chain("CCACGCTTAC"), // 2
 
                     // C G
                     // C _
                     // _ G
-                    new Chain("CG"),
+                    new Chain("CG"), // 3
 
                     // C C C C
                     // C C C C
-                    new Chain("CCCC"),
+                    new Chain("CCCC"), // 4
 
                     // A C G T
                     // A _ _ _
                     // _ C _ _
                     // _ _ G _
                     // _ _ _ T
-                    new Chain("ACGT"),
+                    new Chain("ACGT"), // 5
 
                     // A A A A C G T
                     // A A A A _ _ _
                     // _ _ _ _ C _ _
                     // _ _ _ _ _ G _
                     // _ _ _ _ _ _ T
-                    new Chain("AAAACGT"),
+                    new Chain("AAAACGT"), // 6
 
                     // T A
                     // T _
                     // _ A
-                    new Chain("TA"),
+                    new Chain("TA"), // 7
 
                     // T T T T
                     // T T T T
-                    new Chain("TTTT"),
+                    new Chain("TTTT"), // 8
+
+                    // A B C A B C A B C
+                    // A _ _ A _ _ A _ _
+                    // _ B _ _ B _ _ B _
+                    // _ _ C _ _ C _ _ C
+                    new Chain("ABCABCABC"), // 9
+
+                    // C B C A B C A B C
+                    // - _ _ A _ _ A _ _
+                    // _ B _ _ B _ _ B _
+                    // C _ C _ _ C _ _ C
+                    new Chain("CBCABCABC"), // 10
+
+                    // A B A A B C A B C
+                    // A _ A A _ _ A _ _
+                    // _ B _ _ B _ _ B _
+                    // _ _ _ _ _ C _ _ C
+                    new Chain("ABAABCABC"), // 11
+
+                    // A B B A B C A B C
+                    // A _ _ A _ _ A _ _
+                    // _ B B _ B _ _ B _
+                    // _ _ _ _ _ C _ _ C
+                    new Chain("ABBABCABC"), // 12
+
+                    // A B C A B B A B C
+                    // A _ _ A _ _ A _ _
+                    // _ B _ _ B B _ B _
+                    // _ _ C _ _ _ _ _ C
+                    new Chain("ABCABBABC"), // 13
+
+                    // A B C A B C A A C
+                    // A _ _ A _ _ A A _
+                    // _ B _ _ B _ _ _ _
+                    // _ _ C _ _ C _ _ C
+                    new Chain("ABCABCAAC"), // 14
+
+                    // A B C A B C A C C
+                    // A _ _ A _ _ A _ _
+                    // _ B _ _ B _ _ _ _
+                    // _ _ C _ _ C _ C C
+                    new Chain("ABCABCACC"), // 15
+
+                    // A B C A B C A B B
+                    // A _ _ A _ _ A _ _
+                    // _ B _ _ B _ _ B B
+                    // _ _ C _ _ C _ _ _
+                    new Chain("ABCABCABB"), // 16
+
+                    // A B C A B C A B C
+                    // A _ _ A _ _ A _ _
+                    // _ B _ _ B _ _ B _
+                    // _ _ C _ _ C _ _ C
+                    new Chain("ABCABCABC"), // 17
                 };
 
         /// <summary>

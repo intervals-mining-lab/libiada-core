@@ -120,5 +120,30 @@ namespace LibiadaCore.Tests.Core
             Assert.AreEqual(chain, itsClone);
             Assert.AreNotSame(chain, itsClone);
         }
+
+        [TestCase(9, 0, "C", 10)]
+        [TestCase(9, 3, "A", 11)]
+        [TestCase(9, 2, "B", 12)]
+        [TestCase(9, 5, "B", 13)]
+        [TestCase(9, 6, "A", 14)]
+        [TestCase(9, 7, "C", 15)]
+        [TestCase(9, 8, "B", 16)]
+        [TestCase(9, 0, "A", 17)]
+        [TestCase(9, 1, "B", 17)]
+        [TestCase(9, 2, "C", 17)]
+        [TestCase(9, 3, "A", 17)]
+        [TestCase(9, 4, "B", 17)]
+        [TestCase(9, 5, "C", 17)]
+        [TestCase(9, 6, "A", 17)]
+        [TestCase(9, 7, "B", 17)]
+        [TestCase(9, 8, "C", 17)]
+
+        public void SetTests(int sourceIndex, int index, string element, int expectedIndex)
+        {
+            Chain source = ChainsStorage.Chains[sourceIndex];
+            Chain expected = ChainsStorage.Chains[expectedIndex];
+            source.Set(new ValueString(element), index);
+            Assert.AreEqual(expected, source);
+        }
     }
 }
