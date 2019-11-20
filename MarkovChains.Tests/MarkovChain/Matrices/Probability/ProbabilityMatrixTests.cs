@@ -75,19 +75,7 @@ namespace MarkovChains.Tests.MarkovChain.Matrices.Probability
             d = new ValueString('d');
             f = new ValueString('f');
 
-            testChain = new Chain(12);
-            testChain.Set((ValueString)"a", 0);
-            testChain.Set((ValueString)"d", 1);
-            testChain.Set((ValueString)"b", 2);
-            testChain.Set((ValueString)"a", 3);
-            testChain.Set((ValueString)"a", 4);
-            testChain.Set((ValueString)"c", 5);
-            testChain.Set((ValueString)"b", 6);
-            testChain.Set((ValueString)"b", 7);
-            testChain.Set((ValueString)"a", 8);
-            testChain.Set((ValueString)"a", 9);
-            testChain.Set((ValueString)"c", 10);
-            testChain.Set((ValueString)"a", 11);
+            testChain = new Chain("adbaacbbaaca");
         }
 
         /// <summary>
@@ -96,16 +84,9 @@ namespace MarkovChains.Tests.MarkovChain.Matrices.Probability
         [Test]
         public void AddLengthMoreThanChainRankTest()
         {
-            alphabet.Add(a);
-            alphabet.Add(b);
-            alphabet.Add(c);
-            alphabet.Add(d);
+            alphabet = new Alphabet { a, b, c, d };
 
-            baseChain = new BaseChain(3);
-
-            baseChain.Set(a, 0);
-            baseChain.Set(b, 1);
-            baseChain.Set(b, 2);
+            baseChain = new BaseChain("abb");
 
             matrix = new Matrix(alphabet.Cardinality, 2);
             var arrayCh = new int[baseChain.Length];
@@ -126,27 +107,14 @@ namespace MarkovChains.Tests.MarkovChain.Matrices.Probability
             alphabet.Add(c); // 2 => c
             alphabet.Add(d); // 3 => d
 
-            baseChain = new BaseChain(2);
-            var ch1 = new BaseChain(2);
-            var ch2 = new BaseChain(2);
-            var ch3 = new BaseChain(2);
-
-            var ch4 = new BaseChain(2);
-            var ch5 = new BaseChain(1);
-            var ch6 = new BaseChain(1);
-            var ch7 = new BaseChain(1);
-
-            baseChain.Set(a, 0);
-            baseChain.Set(b, 1);
-
-            ch1.Set(c, 0);
-            ch1.Set(b, 1);
-
-            ch2.Set(b, 0);
-            ch2.Set(a, 1);
-
-            ch3.Set(b, 0);
-            ch3.Set(c, 1);
+            baseChain = new BaseChain("ab");
+            var ch1 = new BaseChain("cb");
+            var ch2 = new BaseChain("ba");
+            var ch3 = new BaseChain("bc");
+            var ch4 = new BaseChain("ac");
+            var ch5 = new BaseChain("b");
+            var ch6 = new BaseChain("a");
+            var ch7 = new BaseChain("c");
 
             matrix = new Matrix(alphabet.Cardinality, 2);
 
@@ -185,27 +153,18 @@ namespace MarkovChains.Tests.MarkovChain.Matrices.Probability
             arrayToTeach[1] = alphabet.IndexOf(ch1[1]);
             Assert.AreEqual(2, matrix.FrequencyFromObject(arrayToTeach));
 
-            ch4.Set(a, 0);
-            ch4.Set(c, 1);
-
             arrayToTeach = new int[2];
             arrayToTeach[0] = alphabet.IndexOf(ch4[0]);
             arrayToTeach[1] = alphabet.IndexOf(ch4[1]);
             Assert.AreEqual(0, matrix.FrequencyFromObject(arrayToTeach));
 
-            ch5.Set(b, 0);
-
             arrayToTeach = new int[1];
             arrayToTeach[0] = alphabet.IndexOf(ch5[0]);
             Assert.AreEqual(3, matrix.FrequencyFromObject(arrayToTeach));
 
-            ch6.Set(a, 0);
-
             arrayToTeach = new int[1];
             arrayToTeach[0] = alphabet.IndexOf(ch6[0]);
             Assert.AreEqual(1, matrix.FrequencyFromObject(arrayToTeach));
-
-            ch7.Set(c, 0);
 
             arrayToTeach = new int[1];
             arrayToTeach[0] = alphabet.IndexOf(ch7[0]);
@@ -679,9 +638,7 @@ namespace MarkovChains.Tests.MarkovChain.Matrices.Probability
             alphabet.Add(c);
             alphabet.Add(d);
 
-            baseChain = new BaseChain(2);
-            baseChain.Set(f, 0);
-            baseChain.Set(c, 1);
+            baseChain = new BaseChain("fc");
 
             matrix = new Matrix(alphabet.Cardinality, 2);
             var array = new int[baseChain.Length];

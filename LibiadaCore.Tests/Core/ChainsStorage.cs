@@ -415,7 +415,12 @@ namespace LibiadaCore.Tests.Core
             // 19 A B _ _ _ _ A B _ _ _ A B _ _ _ _ _ _ _ _ A B
             new Chain(
                 new[] { 1, 2, 0, 0, 0, 0, 1, 2, 0, 0, 0, 1, 2, 0, 0, 0, 0, 0, 0, 0, 0, 1, 2 },
-                new Alphabet() { NullValue.Instance(), Elements["A"], Elements["B"] })
+                new Alphabet() { NullValue.Instance(), Elements["A"], Elements["B"] }),
+
+            // 20  A C A _ C C _ A A A C C A
+            new Chain(
+                new [] { 1, 2, 1, 0, 2, 2, 0, 1, 1, 1, 2, 2, 1 },
+                new Alphabet(){ NullValue.Instance(), Elements["A"], Elements["C"] })
         };
 
         /// <summary>
