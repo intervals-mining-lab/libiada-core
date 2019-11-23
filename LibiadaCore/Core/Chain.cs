@@ -396,7 +396,7 @@ namespace LibiadaCore.Core
         /// <param name="arrangementType">
         /// The arrangement Type.
         /// </param>
-        public void SetArrangementManagers(ArrangementType arrangementType = ArrangementType.Intervals) 
+        public void SetArrangementManagers(ArrangementType arrangementType = ArrangementType.Intervals)
         {
             foreach (var chain in congenericChains)
             {

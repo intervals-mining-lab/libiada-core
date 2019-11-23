@@ -11,6 +11,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\LibiadaCore\LibiadaCore.csproj" />
+    <PackageReference Include="System.ComponentModel.Annotations" Version="4.4.1" />
   </ItemGroup>
 
 </Project>

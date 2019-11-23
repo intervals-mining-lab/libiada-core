@@ -95,15 +95,15 @@
                 { "GGG", "G" }
             };
 
-            var result = new BaseChain(inputChain.Length / 3);
+            var result = new List<IBaseObject>(inputChain.Length / 3);
             List<string> codons = DiffCutter.Cut(inputChain.ToString(),new SimpleCutRule(inputChain.Length, 3, 3));
 
-            for (int i = 0; i < codons.Count; i++)
+            foreach (string codon in codons)
             {
-                result.Set(aminoMap[codons[i]], i);
+                result.Add(aminoMap[codon]);
             }
 
-            return result;
+            return new BaseChain(result);
         }
 
         /// <summary>
@@ -118,7 +118,7 @@
         /// </returns>
         public static BaseChain Decode(BaseChain inputChain)
         {
-            var resultChain = new BaseChain(inputChain.Length);
+            var result = new List<IBaseObject>();
             for (int i = 0; i < inputChain.Length; i++)
             {
                 string aminoAcid = inputChain[i].ToString();
@@ -235,10 +235,10 @@
                         throw new InvalidOperationException($"Unknown amino acid {aminoAcid}");
                 }
 
-                resultChain[i] = element;
+                result.Add(element);
             }
 
-            return resultChain;
+            return new BaseChain(result);
         }
 
         /// <summary>
@@ -254,15 +254,15 @@
         public static BaseChain EncodeTriplets(BaseChain inputChain)
         {
             DnaProcessor.CheckDnaAlphabet(inputChain.Alphabet);
-            var resultChain = new BaseChain(inputChain.Length / 3);
+            var result = new List<IBaseObject>();
             List<string> codons = DiffCutter.Cut(inputChain.ToString(), new SimpleCutRule(inputChain.Length, 3, 3));
 
-            for (int i = 0; i < resultChain.Length; i++)
+            foreach (string codon in codons)
             {
-                resultChain.Set((ValueString)codons[i], i);
+                result.Add((ValueString)codon);
             }
 
-            return resultChain;
+            return new BaseChain(result);
         }
     }
 }

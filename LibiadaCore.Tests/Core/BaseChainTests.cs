@@ -120,5 +120,53 @@ namespace LibiadaCore.Tests.Core
             Assert.AreEqual(chain, itsClone);
             Assert.AreNotSame(chain, itsClone);
         }
+
+        [TestCase(9, 0, "C", 10)]
+        [TestCase(9, 3, "A", 11)]
+        [TestCase(9, 2, "B", 12)]
+        [TestCase(9, 5, "B", 13)]
+        [TestCase(9, 6, "A", 14)]
+        [TestCase(9, 7, "C", 15)]
+        [TestCase(9, 8, "B", 16)]
+        [TestCase(9, 0, "A", 17)]
+        [TestCase(9, 1, "B", 17)]
+        [TestCase(9, 2, "C", 17)]
+        [TestCase(9, 3, "A", 17)]
+        [TestCase(9, 4, "B", 17)]
+        [TestCase(9, 5, "C", 17)]
+        [TestCase(9, 6, "A", 17)]
+        [TestCase(9, 7, "B", 17)]
+        [TestCase(9, 8, "C", 17)]
+        public void SetInFullSequenceTests(int sourceIndex, int index, string element, int expectedIndex)
+        {
+            Chain source = ChainsStorage.Chains[sourceIndex];
+            char[] charArraySource = source.ToString().ToCharArray();
+            Chain expected = ChainsStorage.Chains[expectedIndex];
+
+            source.Set(new ValueString(element), index);
+            Assert.AreEqual(expected, source);
+
+            charArraySource[index] = element[0];
+            expected = new Chain(new string(charArraySource));
+            Assert.AreEqual(expected, source);
+        }
+
+        [TestCase(18, 0, "A", 19)]
+        [TestCase(18, 1, "A", 20)]
+        [TestCase(19, 1, "A", 21)]
+        [TestCase(19, 1, "B", 22)]
+        [TestCase(19, 0, "B", 23)]
+        [TestCase(19, 3, "A", 24)]
+        [TestCase(19, 5, "B", 25)]
+        [TestCase(25, 3, "B", 26)]
+        [TestCase(29, 0, "A", 27)]
+        public void SetInSparseSequenceTests(int sourceIndex, int index, string element, int expectedIndex)
+        {
+            Chain source = ChainsStorage.Chains[sourceIndex];
+            Chain expected = ChainsStorage.Chains[expectedIndex];
+
+            source.Set(new ValueString(element), index);
+            Assert.AreEqual(expected, source);
+        }
     }
 }

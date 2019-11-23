@@ -11,7 +11,7 @@ namespace MarkovChains.Tests.MarkovChain
 
     /// <summary>
     /// Tests of non congeneric markov chain.
-    /// Non congeneric (heterogeneous) chain is several separated markov chains (matrixes)
+    /// Non congeneric (heterogeneous) chain is several separated markov chains (matrices)
     /// each one is used on separate step.
     /// </summary>
     [TestFixture]
@@ -33,35 +33,9 @@ namespace MarkovChains.Tests.MarkovChain
         [SetUp]
         public void Initialize()
         {
-            // Creating sequence containing 12 elements.
-            // |a|d|b|a|a|c|b|b|a|a|c|a|
-            testChain = new Chain(12);
-            testChain.Set((ValueString)"a", 0);
-            testChain.Set((ValueString)"d", 1);
-            testChain.Set((ValueString)"b", 2);
-            testChain.Set((ValueString)"a", 3);
-            testChain.Set((ValueString)"a", 4);
-            testChain.Set((ValueString)"c", 5);
-            testChain.Set((ValueString)"b", 6);
-            testChain.Set((ValueString)"b", 7);
-            testChain.Set((ValueString)"a", 8);
-            testChain.Set((ValueString)"a", 9);
-            testChain.Set((ValueString)"c", 10);
-            testChain.Set((ValueString)"a", 11);
-
-            secondTestChain = new Chain(12);
-            secondTestChain.Set((ValueString)"a", 0);
-            secondTestChain.Set((ValueString)"a", 1);
-            secondTestChain.Set((ValueString)"a", 2);
-            secondTestChain.Set((ValueString)"a", 3);
-            secondTestChain.Set((ValueString)"a", 4);
-            secondTestChain.Set((ValueString)"a", 5);
-            secondTestChain.Set((ValueString)"b", 6);
-            secondTestChain.Set((ValueString)"a", 7);
-            secondTestChain.Set((ValueString)"a", 8);
-            secondTestChain.Set((ValueString)"a", 9);
-            secondTestChain.Set((ValueString)"b", 10);
-            secondTestChain.Set((ValueString)"a", 11);
+            // Creating sequences containing 12 elements.
+            testChain = new Chain("adbaacbbaaca");
+            secondTestChain = new Chain("aaaaaabaaaba");
         }
 
         /// <summary>
@@ -108,37 +82,37 @@ namespace MarkovChains.Tests.MarkovChain
              */
 
             // expected result of generation
-            var resultTheory = new Chain(30);
-            resultTheory[0] = (ValueString)"a"; // "a" 0.77;
-            resultTheory[1] = (ValueString)"a"; // "a" 0.15;
-            resultTheory[2] = (ValueString)"b"; // "b" 0.96;
-            resultTheory[3] = (ValueString)"a"; // "a" 0.61;
-            resultTheory[4] = (ValueString)"a"; // "a" 0.15;
-            resultTheory[5] = (ValueString)"b"; // "b" 0.85;
-            resultTheory[6] = (ValueString)"a"; // "a" 0.67;
-            resultTheory[7] = (ValueString)"a"; // "a" 0.51;
-            resultTheory[8] = (ValueString)"a"; // "a" 0.71;
-            resultTheory[9] = (ValueString)"a"; // "a" 0.2;
-            resultTheory[10] = (ValueString)"a"; // "a" 0.77;
-            resultTheory[11] = (ValueString)"a"; // "a" 0.15;
-            resultTheory[12] = (ValueString)"b"; // "b" 0.96;
-            resultTheory[13] = (ValueString)"a"; // "a" 0.61;
-            resultTheory[14] = (ValueString)"a"; // "a" 0.15;
-            resultTheory[15] = (ValueString)"b"; // "b" 0.85;
-            resultTheory[16] = (ValueString)"a"; // "a" 0.67;
-            resultTheory[17] = (ValueString)"a"; // "a" 0.51;
-            resultTheory[18] = (ValueString)"a"; // "a" 0.71;
-            resultTheory[19] = (ValueString)"a"; // "a" 0.2;
-            resultTheory[20] = (ValueString)"a"; // "a" 0.77;
-            resultTheory[21] = (ValueString)"a"; // "a" 0.15;
-            resultTheory[22] = (ValueString)"b"; // "b" 0.96;
-            resultTheory[23] = (ValueString)"a"; // "a" 0.61;
-            resultTheory[24] = (ValueString)"a"; // "a" 0.15;
-            resultTheory[25] = (ValueString)"b"; // "b" 0.85;
-            resultTheory[26] = (ValueString)"a"; // "a" 0.67;
-            resultTheory[27] = (ValueString)"a"; // "a" 0.51;
-            resultTheory[28] = (ValueString)"a"; // "a" 0.71;
-            resultTheory[29] = (ValueString)"a"; // "a" 0.2;
+            var resultTheory = new Chain("aabaabaaaaaabaabaaaaaabaabaaaa");
+            // "a" 0.77;
+            // "a" 0.15;
+            // "b" 0.96;
+            // "a" 0.61;
+            // "a" 0.15;
+            // "b" 0.85;
+            // "a" 0.67;
+            // "a" 0.51;
+            // "a" 0.71;
+            // "a" 0.2;
+            // "a" 0.77;
+            // "a" 0.15;
+            // "b" 0.96;
+            // "a" 0.61;
+            // "a" 0.15;
+            // "b" 0.85;
+            // "a" 0.67;
+            // "a" 0.51;
+            // "a" 0.71;
+            // "a" 0.2;
+            // "a" 0.77;
+            // "a" 0.15;
+            // "b" 0.96;
+            // "a" 0.61;
+            // "a" 0.15;
+            // "b" 0.85;
+            // "a" 0.67;
+            // "a" 0.51;
+            // "a" 0.71;
+            // "a" 0.2;
 
             Assert.AreEqual(resultTheory, temp);
         }
@@ -228,19 +202,19 @@ namespace MarkovChains.Tests.MarkovChain
              */
 
             // expected result of generation
-            var result = new Chain(12);
-            result.Set((ValueString)"b", 0); // 1 chain. цепь вероятность по первому уровню. выпало  0,77 Получаем b
-            result.Set((ValueString)"a", 1); // 2 chain. вероятность по второму уровню. выпало  0.15 Получаем a
-            result.Set((ValueString)"c", 2); // 1 chain. вероятность по второму уровню. выпало  0.96 Получаем с
-            result.Set((ValueString)"b", 3); // 2 chain. вероятность по второму уровню. выпало  0.61 Получаем b
-            result.Set((ValueString)"a", 4); // 1 chain. вероятность по второму уровню. выпало  0.15 Получаем a
-            result.Set((ValueString)"c", 5); // 2 chain. вероятность по второму уровню. выпало  0.85 Получаем c
-            result.Set((ValueString)"a", 6); // 1 chain. вероятность по второму уровню. выпало  0.67 Получаем a
-            result.Set((ValueString)"c", 7); // 2 chain. вероятность по второму уровню. выпало  0.51 Получаем c
-            result.Set((ValueString)"a", 8); // 1 chain. вероятность по второму уровню. выпало  0.71 Получаем a
-            result.Set((ValueString)"a", 9); // 2 chain. вероятность по второму уровню. выпало  0.2 Получаем a
-            result.Set((ValueString)"c", 10); // 1 chain. вероятность по второму уровню. выпало  0.77 Получаем с
-            result.Set((ValueString)"b", 11); // 2 chain. вероятность по второму уровню. выпало  0.15 Получаем b
+            var result = new Chain("bacbacacaacb");
+            // 1 chain. цепь вероятность по первому уровню. выпало  0,77 Получаем b
+            // 2 chain. вероятность по второму уровню. выпало  0.15 Получаем a
+            // 1 chain. вероятность по второму уровню. выпало  0.96 Получаем с
+            // 2 chain. вероятность по второму уровню. выпало  0.61 Получаем b
+            // 1 chain. вероятность по второму уровню. выпало  0.15 Получаем a
+            // 2 chain. вероятность по второму уровню. выпало  0.85 Получаем c
+            // 1 chain. вероятность по второму уровню. выпало  0.67 Получаем a
+            // 2 chain. вероятность по второму уровню. выпало  0.51 Получаем c
+            // 1 chain. вероятность по второму уровню. выпало  0.71 Получаем a
+            // 2 chain. вероятность по второму уровню. выпало  0.2 Получаем a
+            // 1 chain. вероятность по второму уровню. выпало  0.77 Получаем с
+            // 2 chain. вероятность по второму уровню. выпало  0.15 Получаем b
 
             Assert.AreEqual(result, temp);
         }
@@ -289,37 +263,37 @@ namespace MarkovChains.Tests.MarkovChain
              */
 
             // expected result of generation
-            var resultTheory = new Chain(30);
-            resultTheory[0] = (ValueString)"a"; // "a" 0.77;
-            resultTheory[1] = (ValueString)"a"; // "a" 0.15;
-            resultTheory[2] = (ValueString)"b"; // "b" 0.96;
-            resultTheory[3] = (ValueString)"a"; // "a" 0.61;
-            resultTheory[4] = (ValueString)"a"; // "a" 0.15;
-            resultTheory[5] = (ValueString)"b"; // "b" 0.85;
-            resultTheory[6] = (ValueString)"a"; // "a" 0.67;
-            resultTheory[7] = (ValueString)"a"; // "a" 0.51;
-            resultTheory[8] = (ValueString)"a"; // "a" 0.71;
-            resultTheory[9] = (ValueString)"a"; // "a" 0.2;
-            resultTheory[10] = (ValueString)"a"; // "a" 0.77;
-            resultTheory[11] = (ValueString)"a"; // "a" 0.15;
-            resultTheory[12] = (ValueString)"b"; // "b" 0.96;
-            resultTheory[13] = (ValueString)"a"; // "a" 0.61;
-            resultTheory[14] = (ValueString)"a"; // "a" 0.15;
-            resultTheory[15] = (ValueString)"b"; // "b" 0.85;
-            resultTheory[16] = (ValueString)"a"; // "a" 0.67;
-            resultTheory[17] = (ValueString)"a"; // "a" 0.51;
-            resultTheory[18] = (ValueString)"a"; // "a" 0.71;
-            resultTheory[19] = (ValueString)"a"; // "a" 0.2;
-            resultTheory[20] = (ValueString)"a"; // "a" 0.77;
-            resultTheory[21] = (ValueString)"a"; // "a" 0.15;
-            resultTheory[22] = (ValueString)"b"; // "b" 0.96;
-            resultTheory[23] = (ValueString)"a"; // "a" 0.61;
-            resultTheory[24] = (ValueString)"a"; // "a" 0.15;
-            resultTheory[25] = (ValueString)"b"; // "b" 0.85;
-            resultTheory[26] = (ValueString)"a"; // "a" 0.67;
-            resultTheory[27] = (ValueString)"a"; // "a" 0.51;
-            resultTheory[28] = (ValueString)"a"; // "a" 0.71;
-            resultTheory[29] = (ValueString)"a"; // "a" 0.2;
+            var resultTheory = new Chain("aabaabaaaaaabaabaaaaaabaabaaaa");
+            // "a" 0.77;
+            // "a" 0.15;
+            // "b" 0.96;
+            // "a" 0.61;
+            // "a" 0.15;
+            // "b" 0.85;
+            // "a" 0.67;
+            // "a" 0.51;
+            // "a" 0.71;
+            // "a" 0.2;
+            // "a" 0.77;
+            // "a" 0.15;
+            // "b" 0.96;
+            // "a" 0.61;
+            // "a" 0.15;
+            // "b" 0.85;
+            // "a" 0.67;
+            // "a" 0.51;
+            // "a" 0.71;
+            // "a" 0.2;
+            // "a" 0.77;
+            // "a" 0.15;
+            // "b" 0.96;
+            // "a" 0.61;
+            // "a" 0.15;
+            // "b" 0.85;
+            // "a" 0.67;
+            // "a" 0.51;
+            // "a" 0.71;
+            // "a" 0.2;
         }
 
         /// <summary>
@@ -407,19 +381,19 @@ namespace MarkovChains.Tests.MarkovChain
              */
 
             // expected result of generation
-            var result = new Chain(12);
-            result.Set((ValueString)"b", 0); // 1 chain. вероятность по первому уровню. выпало  0,77 Получаем b
-            result.Set((ValueString)"a", 1); // 2 chain. вероятность по второму уровню. выпало  0.15 Получаем a
-            result.Set((ValueString)"c", 2); // 1 chain. вероятность по второму уровню. выпало  0.96 Получаем с
-            result.Set((ValueString)"b", 3); // 2 chain. вероятность по второму уровню. выпало  0.61 Получаем b
-            result.Set((ValueString)"a", 4); // 1 chain. вероятность по второму уровню. выпало  0.15 Получаем a
-            result.Set((ValueString)"c", 5); // 2 chain. вероятность по второму уровню. выпало  0.85 Получаем c
-            result.Set((ValueString)"a", 6); // 1 chain. вероятность по второму уровню. выпало  0.67 Получаем a
-            result.Set((ValueString)"c", 7); // 2 chain. вероятность по второму уровню. выпало  0.51 Получаем c
-            result.Set((ValueString)"a", 8); // 1 chain. вероятность по второму уровню. выпало  0.71 Получаем a
-            result.Set((ValueString)"a", 9); // 2 chain. вероятность по второму уровню. выпало  0.2 Получаем a
-            result.Set((ValueString)"c", 10); // 1 chain. вероятность по второму уровню. выпало  0.77 Получаем с
-            result.Set((ValueString)"b", 11); // 2 chain. вероятность по второму уровню. выпало  0.15 Получаем b
+            var result = new Chain("bacbacacaacb");
+            // 1 chain. вероятность по первому уровню. выпало  0,77 Получаем b
+            // 2 chain. вероятность по второму уровню. выпало  0.15 Получаем a
+            // 1 chain. вероятность по второму уровню. выпало  0.96 Получаем с
+            // 2 chain. вероятность по второму уровню. выпало  0.61 Получаем b
+            // 1 chain. вероятность по второму уровню. выпало  0.15 Получаем a
+            // 2 chain. вероятность по второму уровню. выпало  0.85 Получаем c
+            // 1 chain. вероятность по второму уровню. выпало  0.67 Получаем a
+            // 2 chain. вероятность по второму уровню. выпало  0.51 Получаем c
+            // 1 chain. вероятность по второму уровню. выпало  0.71 Получаем a
+            // 2 chain. вероятность по второму уровню. выпало  0.2 Получаем a
+            // 1 chain. вероятность по второму уровню. выпало  0.77 Получаем с
+            // 2 chain. вероятность по второму уровню. выпало  0.15 Получаем b
         }
     }
 }
