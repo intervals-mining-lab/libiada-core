@@ -43,7 +43,7 @@
         [Test]
         public void GetOrdersTest1()
         {
-            string exp = "";
+            string expected = "";
             string result = "";
             var resultArray = OrderGenerator.GetOrders(2);
 
@@ -52,15 +52,15 @@
                 for (int j = 0; j < 2; j++)
                 {
                     result += resultArray[i][j].ToString();
-                    exp += Expected1[i][j].ToString();
+                    expected += Expected1[i][j].ToString();
                 }
             }
-            Assert.AreEqual(exp, result);
+            Assert.AreEqual(expected, result);
         }
         [Test]
         public void GetOrdersTest2()
         {
-            string exp = "";
+            string expected = "";
             string result = "";
             var resultArray = OrderGenerator.GetOrders(3);
 
@@ -69,10 +69,10 @@
                 for (int j = 0; j < 3; j++)
                 {
                     result += resultArray[i][j].ToString();
-                    exp += Expected2[i][j].ToString();
+                    expected += Expected2[i][j].ToString();
                 }
             }
-            Assert.AreEqual(exp, result);
+            Assert.AreEqual(expected, result);
         }
 
     }

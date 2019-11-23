@@ -4,9 +4,22 @@ using System.Collections.Generic;
 
 namespace LibiadaCore.DataTransformers
 {
-    public class SequenceConcatenator
+    /// <summary>
+    /// Class for constructing different concatenations of sequences sets.
+    /// In other words it generates all possible orderings of several sequences.
+    /// </summary>
+    public static class SequenceConcatenator
     {
-        public IEnumerable<Chain> GenerateConcatenations(Chain[] sourceSequences)
+        /// <summary>
+        /// Yields array of all possible concatenations of all sequences of given array.
+        /// </summary>
+        /// <param name="sourceSequences">
+        /// Array of sequences to concatenate.
+        /// </param>
+        /// <returns>
+        /// Collection of sequences concatenated in various orders.
+        /// </returns>
+        public static IEnumerable<Chain> GenerateConcatenations(Chain[] sourceSequences)
         {
             int[][] orders = OrderGenerator.GetOrders(sourceSequences.Length);
 
@@ -15,7 +28,18 @@ namespace LibiadaCore.DataTransformers
                 yield return Concatenate(sourceSequences, orders[i]);
             }
         }
-
+        /// <summary>
+        /// Concatenates sequences in given order.
+        /// </summary>
+        /// <param name="sourceSequences">
+        /// Sequences to concatenate.
+        /// </param>
+        /// <param name="order">
+        /// Order in which sequences are concatenated.
+        /// </param>
+        /// <returns>
+        /// <see cref="Chain"/> of all source sequences in given order.
+        /// </returns>
         public static Chain Concatenate(Chain[] sourceSequences, int[] order)
         {
             int resultLength = 0;
@@ -36,6 +60,16 @@ namespace LibiadaCore.DataTransformers
             return result;
         }
 
+
+        /// <summary>
+        /// Concatenates sequences in given order.
+        /// </summary>
+        /// <param name="sourceSequences">
+        /// Sequences to concatenate.
+        /// </param>
+        /// <returns>
+        /// <see cref="Chain"/> of all source sequences in ascending order.
+        /// </returns>
         public static Chain ConcatenateOrder(Chain[] sourceSequences)
         {
             int resultLength = 0;
@@ -54,10 +88,11 @@ namespace LibiadaCore.DataTransformers
                 for (int m = 0; m < chain.Alphabet.Cardinality; m++)
                 {
                     if (!resultAlphabet.Contains(chain.Alphabet[m]))
+                    {
                         resultAlphabet.Add(chain.Alphabet[m]);
+                    }
                     coder.Add(m + 1, resultAlphabet.IndexOf(chain.Alphabet[m]));
                 }
-
                 for (int j = 0; j < chain.Length; j++)
                 {
                     result[k] = coder[building[j]];
