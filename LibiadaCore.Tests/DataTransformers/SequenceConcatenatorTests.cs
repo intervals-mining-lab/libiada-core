@@ -16,14 +16,21 @@
 
         public static Chain expectedChain = new Chain("BBAACBACCBACTTGATACGCCACGCTTAC");
 
-       /* public static int[] order = OrderGenerator.GetOrders(3)[0];
+        public static Chain[] expectedChains =
+        {
+            new Chain("BBAACBACCBACTTGATACGCCACGCTTAC"), new Chain("BBAACBACCBCCACGCTTACACTTGATACG"),
+            new Chain("ACTTGATACGCCACGCTTACBBAACBACCB"), new Chain("ACTTGATACGBBAACBACCBCCACGCTTAC"), 
+            new Chain("CCACGCTTACBBAACBACCBACTTGATACG"), new Chain("CCACGCTTACACTTGATACGBBAACBACCB") 
+        };
+
+        public static int[] order = new[] { 0, 1, 2 };
 
         [Test]
-        public void ConcatenationMethod1Test()
+        public void ConcatenateTest()
         {
             var result = SequenceConcatenator.Concatenate(sourceChains, order);
             Assert.AreEqual(expectedChain, result);
-        }*/
+        }
         [Test]
         public void ConcatenateOrderTest()
         {
@@ -32,7 +39,13 @@
             Assert.AreEqual(expectedChain, result);
         }
 
-
+        [Test]
+        public void GenerateConcatenationsTest()
+        {
+            var sc = new SequenceConcatenator();
+            var result = sc.GenerateConcatenations(sourceChains);
+            Assert.AreEqual(expectedChains, result);
+        }
 
         
 

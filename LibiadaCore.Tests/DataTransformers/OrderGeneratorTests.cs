@@ -41,7 +41,7 @@
             Assert.AreEqual(Expected2.Length, result.Length);
         }
         [Test]
-        public void ContentTest1()
+        public void GetOrdersTest1()
         {
             string exp = "";
             string result = "";
@@ -58,7 +58,7 @@
             Assert.AreEqual(exp, result);
         }
         [Test]
-        public void ContentTest2()
+        public void GetOrdersTest2()
         {
             string exp = "";
             string result = "";
