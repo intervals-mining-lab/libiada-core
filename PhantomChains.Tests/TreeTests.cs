@@ -1,5 +1,7 @@
 namespace PhantomChains.Tests
 {
+    using System.Collections.Generic;
+
     using LibiadaCore.Core;
     using LibiadaCore.Core.SimpleTypes;
 
@@ -23,20 +25,16 @@ namespace PhantomChains.Tests
             var m2 = new ValuePhantom { new ValueString('4'), new ValueString('3') };
             var m3 = new ValuePhantom { new ValueString('a') };
 
-            var test = new BaseChain(4);
-            test.Set(m1, 0);
-            test.Set(m2, 1);
-            test.Set(m2, 2);
-            test.Set(m3, 3);
+            var test = new BaseChain(new List<IBaseObject>(){ m1, m2, m2, m3 });
 
-            IGenerator gen = new SimpleGenerator();
-            var tree = new TreeTop(test, gen);
+            IGenerator generator = new SimpleGenerator();
+            var tree = new TreeTop(test, generator);
             Assert.AreEqual(12, tree.Volume);
-            var ch1 = tree.GetChild(0);
+            TreeNode ch1 = tree.GetChild(0);
             Assert.AreEqual(4, ch1.Volume);
-            var ch2 = tree.GetChild(1);
+            TreeNode ch2 = tree.GetChild(1);
             Assert.AreEqual(4, ch2.Volume);
-            var ch3 = tree.GetChild(2);
+            TreeNode ch3 = tree.GetChild(2);
             Assert.AreEqual(4, ch3.Volume);
         }
     }

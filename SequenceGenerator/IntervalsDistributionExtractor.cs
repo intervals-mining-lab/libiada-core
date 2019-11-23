@@ -10,7 +10,7 @@ namespace SequenceGenerator
     {
         public static IntervalsDistribution GetIntervalsDistribution(int[] order, Link link)
         {
-            var sequence = new Chain(order.Select(Convert.ToInt16).ToArray());
+            var sequence = new Chain(order);
             sequence.FillIntervalManagers();
             var intervalsDistribution = new IntervalsDistribution();
             foreach (var el in sequence.Alphabet.ToList())

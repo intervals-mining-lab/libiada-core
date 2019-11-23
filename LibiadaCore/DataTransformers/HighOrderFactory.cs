@@ -1,6 +1,7 @@
 ﻿namespace LibiadaCore.DataTransformers
 {
     using System;
+    using System.Collections.Generic;
 
     using LibiadaCore.Core;
     using LibiadaCore.Core.ArrangementManagers;
@@ -30,13 +31,12 @@
         {
             if (link != Link.Start && link != Link.End && link != Link.CycleEnd && link != Link.CycleStart)
             {
-                throw new ArgumentException("Unknown link", "link");
+                throw new ArgumentException("Unknown or inapplicable link", nameof(link));
             }
 
-            var result = new Chain(source.Length);
+            var result = new List<IBaseObject>();
             Alphabet sourceAlphabet = source.Alphabet;
             var entries = new int[sourceAlphabet.Cardinality];
-
             var intervals = new int[sourceAlphabet.Cardinality][];
 
             for (int j = 0; j < sourceAlphabet.Cardinality; j++)
@@ -48,13 +48,13 @@
 
             for (int i = 0; i < source.Length; i++)
             {
-                var elementIndex = sourceAlphabet.IndexOf(source[i]);
+                int elementIndex = sourceAlphabet.IndexOf(source[i]);
                 int entry = entries[elementIndex]++;
-                var interval = intervals[elementIndex][entry];
-                result.Set(new ValueInt(interval), i);
+                int interval = intervals[elementIndex][entry];
+                result.Add(new ValueInt(interval));
             }
 
-            return result;
+            return new Chain(result);
         }
     }
 }
