@@ -122,10 +122,10 @@ namespace LibiadaCore.Tests.Core
         }
 
         [TestCase(9, 0, "C", 10)]
-        [TestCase(9, 3, "A", 11)]
+        [TestCase(9, 2, "A", 11)]
         [TestCase(9, 2, "B", 12)]
         [TestCase(9, 5, "B", 13)]
-        [TestCase(9, 6, "A", 14)]
+        [TestCase(9, 7, "A", 14)]
         [TestCase(9, 7, "C", 15)]
         [TestCase(9, 8, "B", 16)]
         [TestCase(9, 0, "A", 17)]

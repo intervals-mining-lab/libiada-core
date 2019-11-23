@@ -1,4 +1,6 @@
-﻿namespace LibiadaCore.Core
+﻿using System.Collections.Generic;
+
+namespace LibiadaCore.Core
 {
     using System.Text;
 
@@ -119,6 +121,42 @@
             }
 
             return builder.ToString(0, builder.Length - delimiter.Length);
+        }
+
+        /// <summary>
+        /// Converts sequence to array.
+        /// </summary>
+        /// <returns>
+        /// Sequence as <see cref="T:IBaseObject[]"/>.
+        /// </returns>
+        public IBaseObject[] ToArray()
+        {
+            var result = new IBaseObject[Length];
+
+            for (int i = 0; i < Length; i++)
+            {
+                result[i] = this[i];
+            }
+
+            return result;
+        }
+
+        /// <summary>
+        /// Converts sequence to array.
+        /// </summary>
+        /// <returns>
+        /// Sequence as <see cref="T:IBaseObject[]"/>.
+        /// </returns>
+        public List<IBaseObject> ToList()
+        {
+            var result = new List<IBaseObject>();
+
+            for (int i = 0; i < Length; i++)
+            {
+                result.Add(this[i]);
+            }
+
+            return result;
         }
     }
 }
