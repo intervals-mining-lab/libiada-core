@@ -39,8 +39,8 @@
             {
             new Chain("BBAACBACCBACTTGATACGCCACGCTTAC"),
             new Chain("BBAACBACCBCCACGCTTACACTTGATACG"),
-            new Chain("ACTTGATACGCCACGCTTACBBAACBACCB"), 
             new Chain("ACTTGATACGBBAACBACCBCCACGCTTAC"),
+            new Chain("ACTTGATACGCCACGCTTACBBAACBACCB"),
             new Chain("CCACGCTTACBBAACBACCBACTTGATACG"), 
             new Chain("CCACGCTTACACTTGATACGBBAACBACCB")
             };

@@ -22,8 +22,8 @@
         {
             new int[] { 0, 1, 2 },
             new int[] { 0, 2, 1 },
-            new int[] { 1, 2, 0 },
             new int[] { 1, 0, 2 },
+            new int[] { 1, 2, 0 },
             new int[] { 2, 0, 1 },
             new int[] { 2, 1, 0 },
         };

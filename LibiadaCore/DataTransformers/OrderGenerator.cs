@@ -10,7 +10,7 @@ namespace LibiadaCore.DataTransformers
     public class OrderGenerator
     {
         /// <summary>
-        /// Calculate factorial of given number.
+        /// Calculates factorial of given number.
         /// </summary>
         /// <param name="number">
         /// Number to calculate factorial.
@@ -29,9 +29,28 @@ namespace LibiadaCore.DataTransformers
         }
 
         /// <summary>
-        /// Yields one of permutation.
+        /// Swaps two elements of array
         /// </summary>
-        /// <param name="characterSet">
+        /// <param name="componentArray">
+        /// Source array
+        /// </param>
+        /// <param name="index">
+        /// Index of element in array to swap
+        /// </param>
+        /// <param name="indexToSwap">
+        /// Index of element in array to swap
+        /// </param>
+        public static void Swap(int[] componentArray, int index, int indexToSwap)
+        {
+            int temp = componentArray[index];
+            componentArray[index] = componentArray[indexToSwap];
+            componentArray[indexToSwap] = temp;
+        }
+
+        /// <summary>
+        /// Generates one of permutation.
+        /// </summary>
+        /// <param name="componentArray">
         /// Set of elements to permute.
         /// </param>
         /// <param name="componentCount">
@@ -40,22 +59,31 @@ namespace LibiadaCore.DataTransformers
         /// <returns>
         /// Set of given elements in a certain order.
         /// </returns>
-        static IEnumerable<string> Combinations(HashSet<char> characterSet, int componentCount)
+        public static bool NextSet(int[] componentArray, int componentCount)
         {
-            if (componentCount == 0)
+            int index = componentCount - 2;
+            while (index != -1 && componentArray[index] >= componentArray[index + 1])
             {
-                yield return "";
+                index--;
             }
 
-            foreach (var character in characterSet.ToList())
+            if (index == -1)
             {
-                characterSet.Remove(character);
-                foreach (var symbol in Combinations(characterSet, componentCount - 1))
-                {
-                    yield return character + symbol;
-                }
-                characterSet.Add(character);
+                return false;
             }
+            int indexToSwap = componentCount - 1;
+            while (componentArray[index] >= componentArray[indexToSwap])
+            {
+                indexToSwap--;
+            }
+            Swap(componentArray, index, indexToSwap);
+            int i = index + 1;
+            int j = componentCount - 1;
+            while (i < j)
+            {
+                Swap(componentArray, i++, j--);
+            }
+            return true;
         }
 
         /// <summary>
@@ -69,30 +97,27 @@ namespace LibiadaCore.DataTransformers
         /// </returns>
         public static int[][] GetOrders(int componentCount)
         {
-            HashSet<char> characterSet = new HashSet<char>();
-            for (int j = 0; j < componentCount; j++)
-            {
-                characterSet.Add((char) j);
-            }
-
             int orderCount = Factorial(componentCount);
+            int[] componentSet = new int[componentCount];
             int[][] ordersArray = new int[orderCount][];
             for (int j = 0; j < orderCount; j++)
             {
                 ordersArray[j] = new int[componentCount];
             }
-
-            int i = 0;
-            foreach (var variant in Combinations(characterSet, componentCount))
+            for (int j = 0; j < componentCount; j++)
             {
-                for (int j = 0; j < variant.Length; j++)
+                componentSet[j] = j;
+                ordersArray[0][j] = j;
+            }
+            int i = 1;
+            while (NextSet(componentSet, componentCount))
+            {
+                for (int j = 0; j < componentCount; j++)
                 {
-                    ordersArray[i][j] = Convert.ToInt32(variant[j]);
+                    ordersArray[i][j] = componentSet[j];
                 }
-
                 i++;
             }
-
             return ordersArray;
         }
 
