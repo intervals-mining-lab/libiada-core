@@ -21,7 +21,7 @@ namespace LibiadaCore.DataTransformers
         /// </returns>
         public static IEnumerable<Chain> GenerateConcatenations(Chain[] sourceSequences)
         {
-            int[][] orders = OrderGenerator.GetOrders(sourceSequences.Length);
+            int[][] orders = PermutationGenerator.GetOrders(sourceSequences.Length);
 
             for(int i = 0; i < orders.Length; i++)
             {
