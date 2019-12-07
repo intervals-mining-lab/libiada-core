@@ -51,17 +51,7 @@ namespace LibiadaCore.Core
         /// </param>
         public BaseChain(List<IBaseObject> elements) : this(elements.Count)
         {
-            for (int i = 0; i < building.Length; i++)
-            {
-                int elementIndex = alphabet.IndexOf(elements[i]);
-                if (elementIndex == -1)
-                {
-                    alphabet.Add(elements[i]);
-                    elementIndex = alphabet.Cardinality - 1;
-                }
-
-                building[i] = elementIndex;
-            }
+            FillAlphabetAndBuilduing(elements);
         }
 
         /// <summary>
@@ -194,15 +184,44 @@ namespace LibiadaCore.Core
                 throw new NullReferenceException();
             }
 
-            RemoveAt(index);
-            int position = alphabet.IndexOf(item);
-            if (position == -1)
+            if (item.Equals(this[index]))
             {
-                alphabet.Add(item);
-                position = alphabet.Cardinality - 1;
+                return;
             }
 
-            building[index] = position;
+            int max = 0;
+            for (int i = 0; i < index; i++)
+            {
+                if (max < building[i])
+                {
+                    max = building[i];
+                }
+            }
+
+            if (max + 1 == alphabet.Cardinality)
+            {
+                if (!alphabet.Contains(item))
+                {
+                    alphabet.Add(item);
+                }
+
+                building[index] = alphabet.IndexOf(item);
+                return;
+            }
+
+            if(!alphabet.Contains(item))
+            {
+                if (building.Count(el => el == building[index]) == 1)
+                {
+                    alphabet[building[index]] = item;
+                    return;
+                }
+            }
+
+            var chain = ToArray();
+            chain[index] = item;
+            alphabet = new Alphabet { NullValue.Instance() };
+            FillAlphabetAndBuilduing(chain);
         }
 
         /// <summary>
@@ -319,6 +338,21 @@ namespace LibiadaCore.Core
             {
                 clone.building = (int[])building.Clone();
                 clone.alphabet = (Alphabet)alphabet.Clone();
+            }
+        }
+
+        private void FillAlphabetAndBuilduing(IList<IBaseObject> elements)
+        {
+            for (int i = 0; i < building.Length; i++)
+            {
+                int elementIndex = alphabet.IndexOf(elements[i]);
+                if (elementIndex == -1)
+                {
+                    alphabet.Add(elements[i]);
+                    elementIndex = alphabet.Cardinality - 1;
+                }
+
+                building[i] = elementIndex;
             }
         }
     }
