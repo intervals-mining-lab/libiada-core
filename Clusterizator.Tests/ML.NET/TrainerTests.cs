@@ -34,7 +34,7 @@ namespace Clusterizator.Tests.ML
         public void Test()
         {
             var ml = new Trainer();
-            var model = ml.TrainModel(_data, out SchemaDefinition schema);
+            var model = ml.TrainModel(_data, 2, out SchemaDefinition schema);
             var predictor = ml._context.Model.CreatePredictionEngine<ClusterizationData, ClusterPrediction>(model, inputSchemaDefinition:schema);
             var data = Mapper.Convert(_data);
             foreach(var point in data)

@@ -34,6 +34,10 @@
         /// </summary>
         [Display(Name = "FRiS-Cluster")]
         [Description("FRiS-Cluster clusterization")]
-        FRiSCluster = 4
+        FRiSCluster = 4,
+
+        [Display(Name = "KMeansMLNet")]
+        [Description("KMeansMLNet clusterization")]
+        KMeansMLNet = 5
     }
 }

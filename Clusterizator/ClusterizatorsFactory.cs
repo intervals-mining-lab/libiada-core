@@ -6,6 +6,7 @@
     using Clusterizator.kMeans;
     using Clusterizator.Krab;
     using Clusterizator.MeanShift;
+    using Clusterizator.ML.NET;
 
     /// <summary>
     /// The clusterizators factory.
@@ -61,6 +62,10 @@
                     var minimumClusters = (int)parameters["clustersCount"];
                     var maximumClusters = (int)parameters["maximumClusters"];
                     return new FRiSCluster.FRiSCluster(minimumClusters, maximumClusters);
+
+                case ClusterizationType.KMeansMLNet:
+                    var clustersCount = (int)parameters["clustersCount"];
+                    return new KMeansMLNet();
 
                 default:
                     throw new InvalidEnumArgumentException(nameof(type), (int)type, typeof(ClusterizationType));
