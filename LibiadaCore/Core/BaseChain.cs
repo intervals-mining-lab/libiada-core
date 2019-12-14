@@ -53,7 +53,14 @@ namespace LibiadaCore.Core
         {
             for (int i = 0; i < building.Length; i++)
             {
-                Set(elements[i], i);
+                int elementIndex = alphabet.IndexOf(elements[i]);
+                if (elementIndex == -1)
+                {
+                    alphabet.Add(elements[i]);
+                    elementIndex = alphabet.Cardinality - 1;
+                }
+
+                building[i] = elementIndex;
             }
         }
 
@@ -64,12 +71,8 @@ namespace LibiadaCore.Core
         /// <param name="source">
         /// The source string.
         /// </param>
-        public BaseChain(string source) : this(source.Length)
+        public BaseChain(string source) : this(source.Select(e => (IBaseObject)new ValueString(e)).ToList())
         {
-            for (int i = 0; i < source.Length; i++)
-            {
-                Set(new ValueString(source[i]), i);
-            }
         }
 
         /// <summary>
@@ -105,13 +108,11 @@ namespace LibiadaCore.Core
         public BaseChain(int[] building) : this(building.Length)
         {
             var alphabetCardinality = building.Max();
-            var alphabet = new Alphabet { NullValue.Instance() };
             for (int i = 1; i <= alphabetCardinality; i++)
             {
                 alphabet.Add((ValueInt)i);
             }
             this.building = (int[])building.Clone();
-            this.alphabet = alphabet;
         }
 
         /// <summary>
@@ -295,6 +296,7 @@ namespace LibiadaCore.Core
         {
             unchecked
             {
+                //TODO: try to make alphabet and/or building readonly.
                 int hashCode = -1845274089 ^ alphabet.GetHashCode();
                 foreach (int element in building)
                 {

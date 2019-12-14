@@ -1,7 +1,6 @@
 namespace MarkovChains.Tests.MarkovCompare
 {
     using LibiadaCore.Core;
-    using LibiadaCore.Core.SimpleTypes;
 
     using MarkovChains.MarkovChain;
     using MarkovChains.MarkovCompare;
@@ -26,15 +25,7 @@ namespace MarkovChains.Tests.MarkovCompare
         [SetUp]
         public void Initialize()
         {
-            testChain = new Chain(8);
-            testChain.Set((ValueString)"A", 0);
-            testChain.Set((ValueString)"G", 1);
-            testChain.Set((ValueString)"T", 2);
-            testChain.Set((ValueString)"A", 3);
-            testChain.Set((ValueString)"A", 4);
-            testChain.Set((ValueString)"G", 5);
-            testChain.Set((ValueString)"T", 6);
-            testChain.Set((ValueString)"C", 7);
+            testChain = new Chain("AGTAAGTC");
         }
 
         /// <summary>

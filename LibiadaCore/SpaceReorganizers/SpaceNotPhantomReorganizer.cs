@@ -1,5 +1,7 @@
 namespace LibiadaCore.SpaceReorganizers
 {
+    using System.Collections.Generic;
+
     using LibiadaCore.Core;
     using LibiadaCore.Core.SimpleTypes;
 
@@ -19,15 +21,15 @@ namespace LibiadaCore.SpaceReorganizers
         /// </returns>
         public override AbstractChain Reorganize(AbstractChain source)
         {
-            var resent = new BaseChain();
-            resent.ClearAndSetNewLength(source.Length);
+            var elements = new List<IBaseObject>();
+
             for (int i = 0; i < source.Length; i++)
             {
-                var phantom = source[i] as ValuePhantom;
-                resent.Set(phantom != null ? phantom[0] : source[i], i);
+                IBaseObject element = (source[i] as ValuePhantom)?[0] ?? source[i];
+                elements.Add(element);
             }
 
-            return resent;
+            return new BaseChain(elements);
         }
     }
 }

@@ -1,5 +1,7 @@
 namespace PhantomChains.Tests
 {
+    using System.Collections.Generic;
+
     using LibiadaCore.Core;
     using LibiadaCore.Core.SimpleTypes;
 
@@ -26,7 +28,7 @@ namespace PhantomChains.Tests
         /// <summary>
         /// The alpha.
         /// </summary>
-        private readonly Alphabet alpha = new Alphabet();
+        private readonly Alphabet alphabet = new Alphabet() { (ValueString)"a", (ValueString)"b", (ValueString)"c" };
 
         /// <summary>
         /// The chain 2.
@@ -38,75 +40,32 @@ namespace PhantomChains.Tests
         /// </summary>
         public TestObject()
         {
-            chain = new BaseChain(10);
-            chain2 = new BaseChain(5);
+            pm1 = new ValuePhantom { alphabet[2], alphabet[1] };
+            pm2 = new ValuePhantom { alphabet[0] };
 
-            alpha.Add((ValueString)'a');
-            alpha.Add((ValueString)'b');
-            alpha.Add((ValueString)'c');
-            pm1 = new ValuePhantom { alpha[2], alpha[1] };
-            pm2 = new ValuePhantom { alpha[0] };
+            chain = new BaseChain(new [] { 1, 2, 2, 1, 2, 1, 2, 1, 2, 2 }, new Alphabet() { NullValue.Instance(), PhantomMessageBc, PhantomMessageA });
 
-            chain.Set(PhantomMessageBc, 0);
-            chain.Set(PhantomMessageA, 1);
-            chain.Set(PhantomMessageA, 2);
-            chain.Set(PhantomMessageBc, 3);
-            chain.Set(PhantomMessageA, 4);
-            chain.Set(PhantomMessageBc, 5);
-            chain.Set(PhantomMessageA, 6);
-            chain.Set(PhantomMessageBc, 7);
-            chain.Set(PhantomMessageA, 8);
-            chain.Set(PhantomMessageA, 9);
-
-            chain2.Set(alpha[1], 0);
-            chain2.Set(PhantomMessageA, 1);
-            chain2.Set(PhantomMessageBc, 2);
-            chain2.Set(alpha[0], 3);
-            chain2.Set(PhantomMessageBc, 4);
+            chain2 = new BaseChain(new List<IBaseObject>(){ alphabet[1], PhantomMessageA, PhantomMessageBc, alphabet[0], PhantomMessageBc });
         }
 
         /// <summary>
         /// Gets the phantom message bc.
         /// </summary>
-        public ValuePhantom PhantomMessageBc
-        {
-            get
-            {
-                return (ValuePhantom)pm1.Clone();
-            }
-        }
+        public ValuePhantom PhantomMessageBc => (ValuePhantom)pm1.Clone();
 
         /// <summary>
         /// Gets the phantom message a.
         /// </summary>
-        public ValuePhantom PhantomMessageA
-        {
-            get
-            {
-                return (ValuePhantom)pm2.Clone();
-            }
-        }
+        public ValuePhantom PhantomMessageA => (ValuePhantom)pm2.Clone();
 
         /// <summary>
         /// Gets the source chain.
         /// </summary>
-        public BaseChain SourceChain
-        {
-            get
-            {
-                return (BaseChain)chain.Clone();
-            }
-        }
+        public BaseChain SourceChain => (BaseChain)chain.Clone();
 
         /// <summary>
-        /// Gets the unnormal chain.
+        /// Gets the unnormalized chain.
         /// </summary>
-        public BaseChain UnnormalChain
-        {
-            get
-            {
-                return chain2;
-            }
-        }
+        public BaseChain UnnormalizedChain => chain2;
     }
 }

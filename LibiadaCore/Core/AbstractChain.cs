@@ -20,15 +20,9 @@
         /// </returns>
         public IBaseObject this[int index]
         {
-            get
-            {
-                return Get(index);
-            }
+            get => Get(index);
 
-            set
-            {
-                Set(value, index);
-            }
+            set => Set(value, index);
         }
 
         /// <summary>

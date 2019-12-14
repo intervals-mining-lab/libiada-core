@@ -1,5 +1,7 @@
 ﻿namespace LibiadaCore.DataTransformers
 {
+    using System.Collections.Generic;
+
     using LibiadaCore.Core;
     using LibiadaCore.Core.SimpleTypes;
 
@@ -9,12 +11,12 @@
     /// <example>
     /// <para>
     /// Chain                    A|T|T|A|C|G|T|C|A
-    /// Building                 1|2|2|1|3|4|2|3|1
-    /// Dissimilar building      1|1|2|2|1|1|3|2|3
+    /// Order                    1|2|2|1|3|4|2|3|1
+    /// Dissimilar order         1|1|2|2|1|1|3|2|3
     /// </para>
     /// <para>
-    /// Chain alphabet       A|T|C|G
-    /// Dissimilar alphabet  1|2|3
+    /// Source chain alphabet A|T|C|G
+    /// Dissimilar alphabet 1|2|3
     /// </para>
     /// </example>
     /// </summary>
@@ -31,7 +33,7 @@
         /// </returns>
         public static Chain Create(BaseChain source)
         {
-            var result = new Chain(source.Length);
+            var result = new List<IBaseObject>();
             Alphabet sourceAlphabet = source.Alphabet;
             var entries = new int[sourceAlphabet.Cardinality];
 
@@ -39,10 +41,10 @@
             {
                 int elementIndex = sourceAlphabet.IndexOf(source[i]);
                 int entry = ++entries[elementIndex];
-                result.Set(new ValueInt(entry), i);
+                result.Add(new ValueInt(entry));
             }
 
-            return result;
+            return new Chain(result);
         }
     }
 }
