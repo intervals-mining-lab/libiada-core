@@ -103,9 +103,9 @@ namespace LibiadaCore.Core
         /// Each character becomes element.
         /// </summary>
         /// <param name="source">
-        /// The source string.
+        /// The source collection of <see cref="IBaseObject"/>.
         /// </param>
-        public Chain(List<IBaseObject> source) : base(source)
+        public Chain(IReadOnlyList<IBaseObject> source) : base(source)
         {
         }
 
@@ -191,7 +191,7 @@ namespace LibiadaCore.Core
         /// if there is no such chain returns null.
         /// </summary>
         /// <param name="element">
-        /// The element of seeked congeneric chain.
+        /// The element of desired congeneric chain.
         /// </param>
         /// <returns>
         /// The <see cref="T:CongenericChain"/>.
@@ -394,7 +394,7 @@ namespace LibiadaCore.Core
         /// Sets arrangement managers for congeneric chains.
         /// </summary>
         /// <param name="arrangementType">
-        /// The arrangement Type.
+        /// The arrangement Type. By default set to intervals.
         /// </param>
         public void SetArrangementManagers(ArrangementType arrangementType = ArrangementType.Intervals)
         {

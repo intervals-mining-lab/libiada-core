@@ -49,9 +49,9 @@ namespace LibiadaCore.Core
         /// <param name="elements">
         /// The elements.
         /// </param>
-        public BaseChain(List<IBaseObject> elements) : this(elements.Count)
+        public BaseChain(IReadOnlyList<IBaseObject> elements) : this(elements.Count)
         {
-            FillAlphabetAndBuilduing(elements);
+            FillAlphabetAndBuilding(elements);
         }
 
         /// <summary>
@@ -218,10 +218,11 @@ namespace LibiadaCore.Core
                 }
             }
 
-            var chain = ToArray();
+            IBaseObject[] chain = ToArray();
             chain[index] = item;
             alphabet = new Alphabet { NullValue.Instance() };
-            FillAlphabetAndBuilduing(chain);
+
+            FillAlphabetAndBuilding(chain);
         }
 
         /// <summary>
@@ -341,7 +342,7 @@ namespace LibiadaCore.Core
             }
         }
 
-        private void FillAlphabetAndBuilduing(IList<IBaseObject> elements)
+        private void FillAlphabetAndBuilding(IReadOnlyList<IBaseObject> elements)
         {
             for (int i = 0; i < building.Length; i++)
             {
