@@ -344,7 +344,7 @@
                 }
             }
 
-            throw new Exception("LibiadaMusic.XmlParser: error while Note parsing: no pitch or rest: " + childName);
+            throw new Exception($"LibiadaMusic.XmlParser: error while Note parsing: no pitch or rest: {childName}");
         }
 
         /// <summary>
