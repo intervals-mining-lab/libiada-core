@@ -60,7 +60,7 @@
         /// <param name="priority">
         /// The priority.
         /// </param>
-        public ValueNote(List<Pitch> pitchList, Duration duration, bool triplet, Tie tie, int priority = -1)
+        public ValueNote(IReadOnlyList<Pitch> pitchList, Duration duration, bool triplet, Tie tie, int priority = -1)
         {
             Pitches = pitchList == null ? new List<Pitch>() : new List<Pitch>(pitchList);
 
@@ -227,28 +227,6 @@
 
             // TODO: сделать сравнение не по всей ноте/объекту, а еще только по месту например,
             // TODO: из сравнения исключить триплет, так можно различать одинаковые по длительности ноты, но записанные по разному(!)
-        }
-
-        /// <summary>
-        /// Calculates MD5 hash code using
-        /// pitches, duration, Tie and Triplet.
-        /// </summary>
-        /// <returns>
-        /// The <see cref="T:byte[]"/>.
-        /// </returns>
-        public byte[] GetMD5HashCode()
-        {
-            var hash = new List<byte>();
-            foreach (Pitch pitch in Pitches)
-            {
-                hash.AddRange(pitch.GetMD5HashCode());
-            }
-
-            hash.AddRange(Duration.GetMD5HashCode());
-            hash.Add((byte)Tie);
-            hash.Add(Convert.ToByte(Triplet));
-            MD5 md5 = MD5.Create();
-            return md5.ComputeHash(hash.ToArray());
         }
 
         /// <summary>

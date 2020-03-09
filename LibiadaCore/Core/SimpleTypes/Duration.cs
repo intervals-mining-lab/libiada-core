@@ -1,7 +1,6 @@
 ﻿namespace LibiadaCore.Core.SimpleTypes
 {
     using System;
-    using System.Security.Cryptography;
 
     /// <summary>
     /// Note duration.
@@ -20,16 +19,12 @@
         /// <param name="doted">
         /// The doted.
         /// </param>
-        /// <param name="ticks">
-        /// The ticks.
-        /// </param>
-        public Duration(int numerator, int denominator, bool doted, int ticks)
+        public Duration(int numerator, int denominator, bool doted)
         {
             Numerator = numerator;
             Denominator = denominator;
             OriginalNumerator = numerator;
             OriginalDenominator = denominator;
-            Ticks = ticks;
             if (doted)
             {
                 PlaceDot();
@@ -54,16 +49,12 @@
         /// <param name="doted">
         /// The doted.
         /// </param>
-        /// <param name="ticks">
-        /// The ticks.
-        /// </param>
-        public Duration(int numerator, int denominator, int tripleNumerator, int tripleDenominator, bool doted, int ticks)
+        public Duration(int numerator, int denominator, int tripleNumerator, int tripleDenominator, bool doted)
         {
             Numerator = numerator;
             Denominator = denominator;
             OriginalNumerator = numerator;
             OriginalDenominator = denominator;
-            Ticks = ticks;
             PlaceTriplet(tripleNumerator, tripleDenominator);
             if (doted)
             {
@@ -86,10 +77,7 @@
         /// <param name="originalDenominator">
         /// The original denominator.
         /// </param>
-        /// <param name="ticks">
-        /// The ticks.
-        /// </param>
-        public Duration(int numerator, int denominator, int originalNumerator, int originalDenominator, int ticks):this(numerator, denominator, false, ticks)
+        public Duration(int numerator, int denominator, int originalNumerator, int originalDenominator):this(numerator, denominator, false)
         {
             OriginalNumerator = originalNumerator;
             OriginalDenominator = originalDenominator;
@@ -120,12 +108,6 @@
         /// знаменатель в дроби доли
         /// </summary>
         public int Denominator { get; private set; }
-
-        /// <summary>
-        /// Gets number of midi tiks.
-        /// сколько МИДИ тиков в доле
-        /// </summary>
-        public int Ticks { get; private set; }
 
         /// <summary>
         /// Gets duration value.
@@ -196,7 +178,7 @@
                 }
             }
 
-            return new Duration(newNumerator, newDenominator, false, Ticks + duration.Ticks);
+            return new Duration(newNumerator, newDenominator, false);
         }
 
         /// <summary>
@@ -211,7 +193,6 @@
         public Duration SubtractDuration(Duration duration)
         {
             var temp = (Duration)duration.Clone();
-            temp.Ticks = -temp.Ticks;
             temp.Numerator = -temp.Numerator;
             return AddDuration(temp);
         }
@@ -224,7 +205,7 @@
         /// </returns>
         public IBaseObject Clone()
         {
-            var temp = new Duration(Numerator, Denominator, false, Ticks)
+            var temp = new Duration(Numerator, Denominator, false)
             {
                 OriginalNumerator = OriginalNumerator,
                 OriginalDenominator = OriginalDenominator
@@ -245,25 +226,12 @@
         {
             if (Math.Abs(Value - ((Duration)obj).Value) < 0.000001)
             {
-                // если модул разности двух double меньше заданной точности,
+                // если модуль разности двух double меньше заданной точности,
                 // то можно считать что эти double равны
                 return true;
             }
 
             return false;
-        }
-
-        /// <summary>
-        /// calculates MD5 hash code using
-        /// <see cref="Value"/>.
-        /// </summary>
-        /// <returns>
-        /// The <see cref="T:byte[]"/>.
-        /// </returns>
-        public byte[] GetMD5HashCode()
-        {
-            MD5 md5 = MD5.Create();
-            return md5.ComputeHash(BitConverter.GetBytes(Value));
         }
 
         /// <summary>
@@ -312,8 +280,8 @@
         /// </param>
         private void PlaceTriplet(int tripleNumerator, int tripleDenominator)
         {
-            Numerator = Numerator * tripleNumerator;
-            Denominator = Denominator * tripleDenominator;
+            Numerator *= tripleNumerator;
+            Denominator *= tripleDenominator;
         }
     }
 }

@@ -1,8 +1,7 @@
-﻿namespace LibiadaCore.Core.SimpleTypes
-{
-    using System.Collections.Generic;
-    using System.Security.Cryptography;
+﻿using System.Collections.Generic;
 
+namespace LibiadaCore.Core.SimpleTypes
+{
     /// <summary>
     /// The measure.
     /// </summary>
@@ -140,27 +139,6 @@
         }
 
         /// <summary>
-        /// Calculates MD5 hash code using
-        /// notes and attributes.
-        /// </summary>
-        /// <returns>
-        /// The <see cref="T:byte[]"/>.
-        /// </returns>
-        public byte[] GetMD5HashCode()
-        {
-            var hash = new List<byte>();
-            foreach (ValueNote note in NoteList)
-            {
-                hash.AddRange(note.GetMD5HashCode());
-            }
-            hash.Add((byte)Attributes.Key.Fifths);
-            hash.Add((byte)Attributes.Size.BeatBase);
-            hash.Add((byte)Attributes.Size.Beats);
-            MD5 md5 = MD5.Create();
-            return md5.ComputeHash(hash.ToArray());
-        }
-
-        /// <summary>
         /// Calculates hash code using
         /// <see cref="Attributes"/> and <see cref="NoteList"/>.
         /// </summary>
@@ -172,9 +150,9 @@
             unchecked
             {
                 int hashCode = 68558965;
-                hashCode = (hashCode * -1521134295) + ((byte)Attributes.Key.Fifths).GetHashCode();
-                hashCode = (hashCode * -1521134295) + ((byte)Attributes.Size.BeatBase).GetHashCode();
-                hashCode = (hashCode * -1521134295) + ((byte)Attributes.Size.Beats).GetHashCode();
+                hashCode = (hashCode * -1521134295) + Attributes.Key.Fifths.GetHashCode();
+                hashCode = (hashCode * -1521134295) + Attributes.Size.GetHashCode();
+                hashCode = (hashCode * -1521134295) + Attributes.Size.Beats.GetHashCode();
                 foreach (ValueNote note in NoteList)
                 {
                     hashCode = (hashCode * -1521134295) + note.GetHashCode();

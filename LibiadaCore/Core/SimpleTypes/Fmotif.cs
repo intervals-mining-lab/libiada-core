@@ -432,25 +432,6 @@
         }
 
         /// <summary>
-        /// Calculates MD5 hash code using
-        /// notes, fmotif type and param pause treatment.
-        /// </summary>
-        /// <returns>
-        /// The <see cref="T:byte[]"/>.
-        /// </returns>
-        public byte[] GetMD5HashCode()
-        {
-            var hash = new List<byte>();
-            foreach (ValueNote note in NoteList)
-            {
-                hash.AddRange(note.GetMD5HashCode());
-            }
-            hash.Add((byte)Type);
-            MD5 md5 = MD5.Create();
-            return md5.ComputeHash(hash.ToArray());
-        }
-
-        /// <summary>
         /// Calculates hash code using
         /// notes, fmotif type and param pause treatment.
         /// </summary>

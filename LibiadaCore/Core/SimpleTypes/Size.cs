@@ -1,10 +1,7 @@
 ﻿namespace LibiadaCore.Core.SimpleTypes
 {
-    using System;
-
     /// <summary>
-    /// размер в такте
-    /// size is beats/beatbase (ex size = 3/4; beats=3; beatbase=4;)
+    /// The size of measure is beats / beatbase (ex size = 3/4; beats=3; beatbase=4;)
     /// </summary>
     public class Size : IBaseObject
     {
@@ -19,12 +16,6 @@
         public readonly int BeatBase;
 
         /// <summary>
-        /// The ticks per beat.
-        /// size is beats/beatbase (ex size = 3/4; beats=3; beatbase=4;)
-        /// </summary>
-        private readonly int ticksPerBeat; // <divisions> TicksPerBeat (per 1/4)
-
-        /// <summary>
         /// Initializes a new instance of the <see cref="Size"/> class.
         /// </summary>
         /// <param name="beats">
@@ -37,45 +28,6 @@
         {
             Beats = beats;
             BeatBase = beatBase;
-            ticksPerBeat = -1; // не определенно
-        }
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="Size"/> class.
-        /// </summary>
-        /// <param name="beats">
-        /// The beats.
-        /// </param>
-        /// <param name="beatBase">
-        /// The beat base.
-        /// </param>
-        /// <param name="ticksPerBeat">
-        /// The ticks per beat.
-        /// </param>
-        public Size(int beats, int beatBase, int ticksPerBeat)
-        {
-            Beats = beats;
-            BeatBase = beatBase;
-            this.ticksPerBeat = ticksPerBeat;
-        }
-
-        /// <summary>
-        /// Gets the ticks per beat.
-        /// </summary>
-        /// <exception cref="Exception">
-        /// Thrown if ticksPerBeat is -1.
-        /// </exception>
-        public int TicksPerBeat
-        {
-            get
-            {
-                if (ticksPerBeat != -1)
-                {
-                    return ticksPerBeat;
-                }
-
-                throw new Exception("LibiadaMusic: Error getting not defined TicksPerBeat property!");
-            }
         }
 
         /// <summary>
@@ -84,7 +36,7 @@
         /// <returns>
         /// The <see cref="IBaseObject"/>.
         /// </returns>
-        public IBaseObject Clone() => new Size(Beats, BeatBase, ticksPerBeat);
+        public IBaseObject Clone() => new Size(Beats, BeatBase);
 
         /// <summary>
         /// The equals.
@@ -97,12 +49,11 @@
         /// </returns>
         public override bool Equals(object obj) => obj is Size size
                                                 && Beats == size.Beats
-                                                && BeatBase == size.BeatBase
-                                                && TicksPerBeat == size.TicksPerBeat;
+                                                && BeatBase == size.BeatBase;
 
         /// <summary>
         /// Calculates hash code using
-        /// <see cref="Beats"/>, <see cref="BeatBase"/> and <see cref="ticksPerBeat"/>.
+        /// <see cref="Beats"/>, <see cref="BeatBase"/> .
         /// </summary>
         /// <returns>
         /// The <see cref="int"/>.
@@ -114,7 +65,6 @@
                 int hashCode = -1918903070;
                 hashCode = (hashCode * -1521134295) + Beats.GetHashCode();
                 hashCode = (hashCode * -1521134295) + BeatBase.GetHashCode();
-                hashCode = (hashCode * 397) + ticksPerBeat.GetHashCode();
                 return hashCode;
             }
         }
