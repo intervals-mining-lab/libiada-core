@@ -19,7 +19,7 @@
         /// <param name="doted">
         /// The doted.
         /// </param>
-        public Duration(int numerator, int denominator, bool doted)
+        public Duration(int numerator, int denominator, bool doted = false)
         {
             Numerator = numerator;
             Denominator = denominator;
@@ -77,7 +77,7 @@
         /// <param name="originalDenominator">
         /// The original denominator.
         /// </param>
-        public Duration(int numerator, int denominator, int originalNumerator, int originalDenominator):this(numerator, denominator, false)
+        public Duration(int numerator, int denominator, int originalNumerator, int originalDenominator):this(numerator, denominator)
         {
             OriginalNumerator = originalNumerator;
             OriginalDenominator = originalDenominator;
