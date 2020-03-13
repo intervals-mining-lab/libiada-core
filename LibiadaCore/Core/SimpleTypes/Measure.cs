@@ -23,9 +23,8 @@ namespace LibiadaCore.Core.SimpleTypes
                 Attributes = (MeasureAttributes)attributes.Clone();
             }
 
-            NoteList = new List<ValueNote>();
+            NoteList = new List<ValueNote>(noteList.Count);
 
-            // создаем список нот посредством клонирования каждой ноты.
             foreach (ValueNote note in noteList)
             {
                 NoteList.Add((ValueNote)note.Clone());
@@ -34,7 +33,6 @@ namespace LibiadaCore.Core.SimpleTypes
 
         /// <summary>
         /// Gets notes list.
-        /// список нот, класса Note
         /// </summary>
         public List<ValueNote> NoteList { get; }
 
@@ -95,16 +93,12 @@ namespace LibiadaCore.Core.SimpleTypes
         }
 
         /// <summary>
-        /// The clone.
+        /// Creates copy of current measure.
         /// </summary>
         /// <returns>
-        /// The <see cref="IBaseObject"/>.
+        /// The measure as <see cref="IBaseObject"/>.
         /// </returns>
-        public IBaseObject Clone()
-        {
-            var result = new Measure(NoteList, Attributes);
-            return result;
-        }
+        public IBaseObject Clone() => new Measure(NoteList, Attributes);
 
         /// <summary>
         /// The equals.
@@ -117,13 +111,13 @@ namespace LibiadaCore.Core.SimpleTypes
         /// </returns>
         public override bool Equals(object obj)
         {
-            if (obj is Measure measure
-             && NoteList.Count == measure.NoteList.Count
-             && Attributes.Equals(measure.Attributes))
+            if (obj is Measure other
+             && NoteList.Count == other.NoteList.Count
+             && Attributes.Equals(other.Attributes))
             {
                 for (int i = 0; i < NoteList.Count; i++)
                 {
-                    if (!NoteList[i].Equals(measure.NoteList[i]))
+                    if (!NoteList[i].Equals(other.NoteList[i]))
                     {
                         return false;
                     }
@@ -150,9 +144,7 @@ namespace LibiadaCore.Core.SimpleTypes
             unchecked
             {
                 int hashCode = 68558965;
-                hashCode = (hashCode * -1521134295) + Attributes.Key.Fifths.GetHashCode();
-                hashCode = (hashCode * -1521134295) + Attributes.Size.GetHashCode();
-                hashCode = (hashCode * -1521134295) + Attributes.Size.Beats.GetHashCode();
+                hashCode = (hashCode * -1521134295) + Attributes.GetHashCode();
                 foreach (ValueNote note in NoteList)
                 {
                     hashCode = (hashCode * -1521134295) + note.GetHashCode();

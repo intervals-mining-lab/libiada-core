@@ -36,14 +36,10 @@
         /// <returns>
         /// The <see cref="IBaseObject"/>.
         /// </returns>
-        public IBaseObject Clone()
-        {
-            var temp = new Key(Fifths, Mode);
-            return temp;
-        }
+        public IBaseObject Clone() => new Key(Fifths, Mode);
 
         /// <summary>
-        /// The equals.
+        /// Compares <see cref="Mode"/> and <see cref="Fifths"/> of the keys.
         /// </summary>
         /// <param name="obj">
         /// The object.
@@ -51,18 +47,10 @@
         /// <returns>
         /// The <see cref="bool"/>.
         /// </returns>
-        public override bool Equals(object obj)
-        {
-            if ((Fifths == ((Key)obj).Fifths) && (Mode == ((Key)obj).Mode))
-            {
-                return true;
-            }
-
-            return false;
-        }
+        public override bool Equals(object obj) => obj is Key otherKey && Fifths == otherKey.Fifths && Mode == otherKey.Mode;
 
         /// <summary>
-        /// calculates hash code using
+        /// Calculates hash code using
         /// <see cref="Fifths"/> and <see cref="Mode"/>.
         /// </summary>
         /// <returns>

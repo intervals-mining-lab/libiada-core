@@ -47,9 +47,9 @@
         /// <returns>
         /// The <see cref="bool"/>.
         /// </returns>
-        public override bool Equals(object obj) => obj is Size size
-                                                && Beats == size.Beats
-                                                && BeatBase == size.BeatBase;
+        public override bool Equals(object obj) => obj is Size other
+                                                        && Beats == other.Beats
+                                                        && BeatBase == other.BeatBase;
 
         /// <summary>
         /// Calculates hash code using

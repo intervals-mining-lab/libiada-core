@@ -2,7 +2,6 @@
 {
     using System;
     using System.Collections.Generic;
-    using System.Security.Cryptography;
 
     /// <summary>
     /// Class presenting a note value.
@@ -78,7 +77,6 @@
             Duration = (Duration)duration.Clone();
             Triplet = triplet;
 
-            // приоритет если указан
             Priority = priority;
         }
 
@@ -132,7 +130,7 @@
         {
             if (pitch == null)
             {
-                throw new ArgumentNullException("pitch");
+                throw new ArgumentNullException(nameof(pitch));
             }
 
             Pitches.Add(pitch);
@@ -146,6 +144,11 @@
         /// </param>
         public void AddPitch(List<Pitch> pitch)
         {
+            if (pitch == null)
+            {
+                throw new ArgumentNullException(nameof(pitch));
+            }
+
             Pitches.AddRange(pitch);
         }
 
@@ -198,7 +201,7 @@
         /// </returns>
         public override bool Equals(object obj)
         {
-            if (!(obj is ValueNote note))
+            if (!(obj is ValueNote otherNote))
             {
                 return false;
             }
@@ -207,23 +210,23 @@
             if (Pitches == null || Pitches.Count == 0)
             {
                 // другая нота - пауза
-                if (note.Pitches == null || note.Pitches.Count == 0)
+                if (otherNote.Pitches == null || otherNote.Pitches.Count == 0)
                 {
                     // у пауз сравниваем только их длительности
-                    return Duration.Equals(note.Duration);
+                    return Duration.Equals(otherNote.Duration);
                 }
 
                 // пауза и нота не одинаковы
                 return false;
             }
 
-            if (note.Pitches == null || note.Pitches.Count == 0)
+            if (otherNote.Pitches == null || otherNote.Pitches.Count == 0)
             {
                 // нота и пауза не одно и то же
                 return false;
             }
 
-            return Duration.Equals(note.Duration) && PitchEquals(note.Pitches) && (Tie == note.Tie) && (Triplet == note.Triplet);
+            return Duration.Equals(otherNote.Duration) && PitchEquals(otherNote.Pitches) && (Tie == otherNote.Tie) && (Triplet == otherNote.Triplet);
 
             // TODO: сделать сравнение не по всей ноте/объекту, а еще только по месту например,
             // TODO: из сравнения исключить триплет, так можно различать одинаковые по длительности ноты, но записанные по разному(!)
@@ -231,28 +234,41 @@
 
         /// <summary>
         /// Calculates hash code using
+        /// string representation of th note, based on
         /// <see cref="Triplet"/>, <see cref="Pitches"/>,
         /// <see cref="Duration"/> and <see cref="Tie"/>.
         /// </summary>
         /// <returns>
         /// The <see cref="int"/>.
         /// </returns>
-        public override int GetHashCode()
-        {
-            unchecked
-            {
-                int hashCode = -2024996526;
-                hashCode = (hashCode * -1521134295) + Triplet.GetHashCode();
-                hashCode = (hashCode * -1521134295) + ((byte)Tie).GetHashCode();
-                hashCode = (hashCode * -1521134295) + Duration.GetHashCode();
-                foreach (Pitch pitch in Pitches)
-                {
-                    hashCode = (hashCode * -1521134295) + pitch.GetHashCode();
-                }
+        public override int GetHashCode() => ToString().GetHashCode();
 
-                return hashCode;
+        /// <summary>
+        /// Represents note as string using params
+        /// <see cref="Triplet"/>, <see cref="Pitches"/>,
+        /// <see cref="Duration"/> and <see cref="Tie"/>.
+        /// </summary>
+        /// <returns>
+        /// Note as <see cref="string"/>
+        /// </returns>
+        public override string ToString()
+        {
+            var result = new List<string>(10);
+            result.Add(Duration.ToString());
+            result.Add("MidiNumbers:");
+            for (int i = 0; i < Pitches.Count; i++)
+            {
+                result.Add(Pitches[i].ToString());
             }
 
+            result.Add($"Tie: {Tie}");
+
+            if (Triplet)
+            {
+                result.Add("Triplet");
+            }
+
+            return string.Join(" ", result);
         }
     }
 }

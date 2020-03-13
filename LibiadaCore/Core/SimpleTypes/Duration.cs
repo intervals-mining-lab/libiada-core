@@ -98,20 +98,17 @@
         public int OriginalDenominator { get; private set; }
 
         /// <summary>
-        /// Gets numerator.
-        /// числитель в дроби доли
+        /// Numerator of the fraction representing duration.
         /// </summary>
         public int Numerator { get; private set; }
 
         /// <summary>
-        /// Gets denominator.
-        /// знаменатель в дроби доли
+        /// Denominator of the fraction representing duration.
         /// </summary>
         public int Denominator { get; private set; }
 
         /// <summary>
-        /// Gets duration value.
-        ///  значение доли в десятичной дроби
+        /// Duration as double precision floating pint value.
         /// </summary>
         public double Value => (double)Numerator / Denominator;
 
@@ -214,7 +211,10 @@
         }
 
         /// <summary>
-        /// The equals.
+        /// Compares duration values
+        /// (not numerator and denominator separately).
+        /// если модуль разности двух double меньше заданной точности,
+        /// то можно считать что эти double равны
         /// </summary>
         /// <param name="obj">
         /// The object.
@@ -222,17 +222,7 @@
         /// <returns>
         /// The <see cref="bool"/>.
         /// </returns>
-        public override bool Equals(object obj)
-        {
-            if (Math.Abs(Value - ((Duration)obj).Value) < 0.000001)
-            {
-                // если модуль разности двух double меньше заданной точности,
-                // то можно считать что эти double равны
-                return true;
-            }
-
-            return false;
-        }
+        public override bool Equals(object obj) => obj is Duration other && Math.Abs(Value - other.Value) < 0.000001;
 
         /// <summary>
         /// Calculates hash code using
@@ -241,15 +231,18 @@
         /// <returns>
         /// The <see cref="int"/>.
         /// </returns>
-        public override int GetHashCode()
+        public override int GetHashCode() => ToString().GetHashCode();
+
+        /// <summary>
+        /// Represents duration as string
+        /// as "Duration: {Numerator}/{Denominator}".
+        /// </summary>
+        /// <returns>
+        /// Duration as <see cref="string"/>
+        /// </returns>
+        public override string ToString()
         {
-            unchecked
-            {
-                int hashCode = -1534900553;
-                hashCode = (hashCode * -1521134295) + Numerator.GetHashCode();
-                hashCode = (hashCode * -1521134295) + Denominator.GetHashCode();
-                return hashCode;
-            }
+            return $"Duration: {Numerator}/{Denominator}";
         }
 
         /// <summary>
@@ -259,7 +252,7 @@
         {
             if ((Numerator % 2) == 0)
             {
-                // если четный числитель, то прибавляем к нему половину
+                // if numerator is even we just increase it by one half
                 Numerator = (int)(Numerator * 1.5);
             }
             else
