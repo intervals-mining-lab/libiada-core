@@ -69,8 +69,7 @@
         [TestCase(5, Link.None)]
         public void IntervalsManagerCreationNoneLinkTest(int index, Link link)
         {
-            var intervalsManager = new IntervalsManager();
-            intervalsManager.Initialize(congenericChains[index]);
+            var intervalsManager = new IntervalsManager(congenericChains[index]);
             var intervals = allIntervals[index][link];
 
             Assert.AreEqual(intervalsManager.GetArrangement(link).Length, intervals.Count);

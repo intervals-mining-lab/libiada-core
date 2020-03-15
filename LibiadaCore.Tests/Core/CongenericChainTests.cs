@@ -145,24 +145,6 @@ namespace LibiadaCore.Tests.Core
             Assert.AreNotEqual(position, congenericChain.Positions);
         }
 
-        /// <summary>
-        /// The SetIntervalManager test.
-        /// </summary>
-        [Test]
-        public void SetIntervalManagerTest()
-        {
-            int[] intervals = new int[0];
-            congenericChain[0] = message;
-            int start = 1;
-            int end = 9;
-            congenericChain.SetIntervalManager(intervals, start, end);
-            int[] actualIntervals = congenericChain.GetArrangement(Link.Both);
-            int intervalsCount = 2;
-            Assert.AreEqual(intervalsCount, actualIntervals.Length);
-            Assert.AreEqual(start, actualIntervals[0]);
-            Assert.AreEqual(end, actualIntervals[1]);
-        }
-
         ///<sumary>
         /// GetFirstAfter empty seuqence test.
         ///</sumary

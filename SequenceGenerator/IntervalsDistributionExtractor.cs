@@ -1,8 +1,5 @@
 ﻿using LibiadaCore.Core;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace SequenceGenerator
 {
@@ -11,7 +8,6 @@ namespace SequenceGenerator
         public static IntervalsDistribution GetIntervalsDistribution(int[] order, Link link)
         {
             var sequence = new Chain(order);
-            sequence.FillIntervalManagers();
             var intervalsDistribution = new IntervalsDistribution();
             foreach (var el in sequence.Alphabet.ToList())
             {

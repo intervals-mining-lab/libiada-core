@@ -110,9 +110,9 @@ namespace LibiadaCore.Core
         /// </returns>
         public string ToString(string delimiter)
         {
-            var builder = new StringBuilder();
-
             var length = Length;
+
+            var builder = new StringBuilder(length * 2);
 
             for (int i = 0; i < length; i++)
             {
@@ -131,9 +131,10 @@ namespace LibiadaCore.Core
         /// </returns>
         public IBaseObject[] ToArray()
         {
-            var result = new IBaseObject[Length];
+            var length = Length;
+            var result = new IBaseObject[length];
 
-            for (int i = 0; i < Length; i++)
+            for (int i = 0; i < length; i++)
             {
                 result[i] = this[i];
             }
@@ -149,9 +150,10 @@ namespace LibiadaCore.Core
         /// </returns>
         public List<IBaseObject> ToList()
         {
-            var result = new List<IBaseObject>();
+            var length = Length;
+            var result = new List<IBaseObject>(length);
 
-            for (int i = 0; i < Length; i++)
+            for (int i = 0; i < length; i++)
             {
                 result.Add(this[i]);
             }
