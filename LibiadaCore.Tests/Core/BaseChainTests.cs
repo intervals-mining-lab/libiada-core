@@ -144,6 +144,20 @@ namespace LibiadaCore.Tests.Core
         }
 
         /// <summary>
+        /// The dekete test.
+        /// </summary>
+        [Test]
+        public void DeleteTest()
+        {
+            var chain = new BaseChain(10);
+            chain.Set(new ValueString('1'), 0);
+            Assert.IsTrue(((ValueString)chain[0]).Equals("1"));
+
+            chain.DeleteAt(0);
+            Assert.AreEqual(NullValue.Instance(), chain[0]);
+        }
+
+        /// <summary>
         /// The get length test.
         /// </summary>
         [Test]

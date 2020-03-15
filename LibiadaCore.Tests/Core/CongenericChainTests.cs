@@ -4,6 +4,7 @@ namespace LibiadaCore.Tests.Core
     using LibiadaCore.Core.SimpleTypes;
 
     using NUnit.Framework;
+    using System.Collections.Generic;
 
     /// <summary>
     /// The congeneric chain test.
@@ -92,5 +93,101 @@ namespace LibiadaCore.Tests.Core
             Assert.AreNotEqual(message, congenericChain.Get(3));
             Assert.AreEqual(NullValue.Instance(), congenericChain.Get(3));
         }
+
+        /// <summary>
+        /// The delete test.
+        /// </summary>
+        [Test]
+        public void DeleteTest()
+        {
+            congenericChain.Set(message, 3);
+            congenericChain.DeleteAt(3);
+            Assert.AreNotEqual(message, congenericChain.Get(3));
+            Assert.AreEqual(NullValue.Instance(), congenericChain.Get(3));
+        }
+
+        /// <summary>
+        /// The clear and set new length test.
+        /// </summary>
+        [Test]
+        public void ClearAndSetNewLengthTest()
+        {
+            var newLength = 5;
+            congenericChain.ClearAndSetNewLength(newLength);
+            Assert.AreEqual(newLength, congenericChain.Length);
+            Assert.IsEmpty(congenericChain.Positions);
+        }
+
+        /// <summary>
+        /// The CongenericChain test.
+        /// </summary>
+       [Test]
+        public void CongenericChainTest()
+        {
+            var element = new ValueString("A");
+            var result = new CongenericChain(element);
+            Assert.AreEqual(element, result.Element);
+            Assert.That(result.Length, Is.Zero);
+            Assert.IsEmpty(result.Positions);
+            Assert.That(result.OccurrencesCount, Is.Zero);
+        }
+
+        /// <summary>
+        /// The Set test.
+        /// </summary>
+        [Test]
+        public void SetTest()
+        {
+            List<int> position = new List<int>();
+            position.Add(4);
+            int index = 5;
+            congenericChain.Set(index);
+            Assert.AreNotEqual(position, congenericChain.Positions);
+        }
+
+        ///<sumary>
+        /// GetFirstAfter empty seuqence test.
+        ///</sumary
+        [Test]
+        public void GetFirstAfterEmptyTest()
+        {
+            int index = 3;
+            int expectedIndex = -1;
+            Assert.AreEqual(expectedIndex, congenericChain.GetFirstAfter(index));
+        }
+
+        /// <summary>
+        /// GetFirstAfter test.
+        /// </summary>
+        [Test]
+        public void GetFirstAfterTest()
+        {
+            int index = 0;
+            int expectedIndex = -1;
+
+            congenericChain.Set(0);
+            Assert.AreEqual(expectedIndex, congenericChain.GetFirstAfter(index));
+
+            congenericChain.Set(9);
+            expectedIndex = 9;
+            Assert.AreEqual(expectedIndex, congenericChain.GetFirstAfter(index));
+
+            index = 5;
+            expectedIndex = 9;
+            Assert.AreEqual(expectedIndex, congenericChain.GetFirstAfter(index));
+
+            congenericChain.Set(5);
+            index = 0;
+            expectedIndex = 5;
+            Assert.AreEqual(expectedIndex, congenericChain.GetFirstAfter(index));
+            
+            index = 4;
+            Assert.AreEqual(expectedIndex, congenericChain.GetFirstAfter(index));
+
+            index = 5;
+            expectedIndex = 9;
+            Assert.AreEqual(expectedIndex, congenericChain.GetFirstAfter(index));
+        }
+
     }
 }

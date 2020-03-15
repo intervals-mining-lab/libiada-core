@@ -40,8 +40,7 @@
         /// </param>
         protected void ChainCharacteristicTest(int index, Link link, double value)
         {
-            chains[index].FillIntervalManagers();
-            Assert.AreEqual(value, this.Calculator.Calculate(chains[index], link), 0.0001);
+            Assert.AreEqual(value, Calculator.Calculate(chains[index], link), 0.0001);
         }
 
         /// <summary>
@@ -59,7 +58,7 @@
         protected void SeriesCharacteristicTest(int index, Link link, double value)
         {
             chains[index].SetArrangementManagers(ArrangementType.Series);
-            Assert.AreEqual(value, this.Calculator.Calculate(chains[index], link), 0.0001);
+            Assert.AreEqual(value, Calculator.Calculate(chains[index], link), 0.0001);
         }
     }
 }

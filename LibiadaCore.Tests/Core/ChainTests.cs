@@ -6,6 +6,11 @@ namespace LibiadaCore.Tests.Core
 
     using NUnit.Framework;
 
+    using LibiadaCore.Core.SimpleTypes;
+
+    using ArrangementManagers;
+    using LibiadaCore.Core.Characteristics.Calculators.CongenericCalculators;
+
     /// <summary>
     /// The chain test.
     /// </summary>
@@ -34,6 +39,22 @@ namespace LibiadaCore.Tests.Core
 
             Assert.AreEqual(congenericChainA, chainCreatedCongenericChain);
         }
+
+        /// <summary>
+        ///Chain Test
+        /// </summary>
+       [Test]
+        public void ChainTest()
+        {
+            var source = new short[] { 1, 2, 3, 2, 2, 4, 5, 1 };
+            var actual = new Chain(source);
+            var alphabet = new Alphabet() {new ValueInt(1), new ValueInt(2) , new ValueInt(3) , new ValueInt(4), new ValueInt(5) };
+            Assert.AreEqual(alphabet,actual.Alphabet);
+
+            var building = new int[] { 1, 2, 3, 2, 2, 4, 5, 1 };
+            Assert.AreEqual(building, actual.Building);
+        }
+   
 
         /// <summary>
         /// The intervals test.

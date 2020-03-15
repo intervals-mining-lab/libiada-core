@@ -419,10 +419,15 @@ namespace LibiadaCore.Core
         /// <param name="end">
         /// The end.
         /// </param>
-        public void SetIntervalManager(int[] intervals, int start, int end)
+        public void FillIntervalManager()
         {
-            intervalsManager = new IntervalsManager();
-            ((IntervalsManager)intervalsManager).Initialize(intervals, start, end);
+            if (positions.Count == 0)
+            {
+                intervalsManager = new NullArrangementManager();
+                return;
+            }
+
+            intervalsManager = new IntervalsManager(this);
         }
 
         /// <summary>
@@ -517,8 +522,7 @@ namespace LibiadaCore.Core
             {
                 intervalsManager = positions.Count == 0
                                        ? (IArrangementManager)new NullArrangementManager()
-                                       : new IntervalsManager();
-                intervalsManager.Initialize(this);
+                                       : new IntervalsManager(this);
             }
         }
 
@@ -531,8 +535,7 @@ namespace LibiadaCore.Core
             {
                 seriesManager = positions.Count == 0
                                        ? (IArrangementManager)new NullArrangementManager()
-                                       : new SeriesManager();
-                seriesManager.Initialize(this);
+                                       : new SeriesManager(this);
             }
         }
 
@@ -545,8 +548,7 @@ namespace LibiadaCore.Core
             {
                 seriesIntervalsManager = positions.Count == 0
                                        ? (IArrangementManager)new NullArrangementManager()
-                                       : new SeriesIntervalsManager();
-                seriesIntervalsManager.Initialize(this);
+                                       : new SeriesIntervalsManager(this);
             }
         }
     }
