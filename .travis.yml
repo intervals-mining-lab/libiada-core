@@ -4,9 +4,6 @@ mono: none
 dotnet: 3.0
 jobs:
   include:
-    - stage: build
-      script:
-        - dotnet build
     - stage: test
       script: 
         - dotnet test
