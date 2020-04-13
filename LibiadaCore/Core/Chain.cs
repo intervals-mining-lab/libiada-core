@@ -103,9 +103,9 @@ namespace LibiadaCore.Core
         /// Each character becomes element.
         /// </summary>
         /// <param name="source">
-        /// The source string.
+        /// The source collection of <see cref="IBaseObject"/>.
         /// </param>
-        public Chain(List<IBaseObject> source) : base(source)
+        public Chain(IReadOnlyList<IBaseObject> source) : base(source)
         {
         }
 
@@ -191,7 +191,7 @@ namespace LibiadaCore.Core
         /// if there is no such chain returns null.
         /// </summary>
         /// <param name="element">
-        /// The element of seeked congeneric chain.
+        /// The element of desired congeneric chain.
         /// </param>
         /// <returns>
         /// The <see cref="T:CongenericChain"/>.
@@ -351,50 +351,10 @@ namespace LibiadaCore.Core
         }
 
         /// <summary>
-        /// Fills all interval managers.
-        /// </summary>
-        public void FillIntervalManagers()
-        {
-            var occurrences = new int[alphabet.Cardinality - 1];
-            for (int i = 0; i < occurrences.Length; i++)
-            {
-                occurrences[i] = -1;
-            }
-
-            var intervals = new List<int>[alphabet.Cardinality - 1];
-
-            for (int i = 0; i < intervals.Length; i++)
-            {
-                intervals[i] = new List<int>();
-            }
-
-            for (int j = 0; j < building.Length; j++)
-            {
-                int value = building[j] - 1;
-                intervals[value].Add(j - occurrences[value]);
-                occurrences[value] = j;
-            }
-
-            if (congenericChains == null)
-            {
-                FillCongenericChains();
-            }
-
-            for (int k = 0; k < intervals.Length; k++)
-            {
-                int start = intervals[k][0];
-                int end = building.Length - occurrences[k];
-                intervals[k].RemoveAt(0);
-
-                congenericChains[k].SetIntervalManager(intervals[k].ToArray(), start, end);
-            }
-        }
-
-        /// <summary>
         /// Sets arrangement managers for congeneric chains.
         /// </summary>
         /// <param name="arrangementType">
-        /// The arrangement Type.
+        /// The arrangement Type. By default set to intervals.
         /// </param>
         public void SetArrangementManagers(ArrangementType arrangementType = ArrangementType.Intervals)
         {

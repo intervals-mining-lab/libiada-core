@@ -36,7 +36,7 @@ namespace LibiadaCore.DataTransformers
             {
                 if (!completeAlphabet.Contains(alphabet[i]))
                 {
-                    throw new Exception("Alphabet contains at least 1 wrong element: " + alphabet[i]);
+                    throw new Exception($"Alphabet contains at least 1 wrong element: {alphabet[i]}.");
                 }
             }
         }

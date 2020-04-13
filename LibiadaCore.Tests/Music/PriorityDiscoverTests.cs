@@ -17,57 +17,57 @@
         /// <summary>
         /// The note.
         /// </summary>
-        private readonly ValueNote note = new ValueNote(new Pitch(1, NoteSymbol.E, 0), new Duration(1, 4, false, 480), false, Tie.None);
+        private readonly ValueNote note = new ValueNote(new Pitch(1, NoteSymbol.E, 0), new Duration(1, 4, false), false, Tie.None);
 
         /// <summary>
         /// The a note.
         /// </summary>
-        private readonly ValueNote aNote = new ValueNote(new Pitch(1, NoteSymbol.B, 0), new Duration(1, 2, false, 960), false, 0);
+        private readonly ValueNote aNote = new ValueNote(new Pitch(1, NoteSymbol.B, 0), new Duration(1, 2, false), false, 0);
 
         /// <summary>
         /// The b note.
         /// </summary>
-        private readonly ValueNote bNote = new ValueNote((Pitch)null, new Duration(1, 4, false, 480), false, 0);
+        private readonly ValueNote bNote = new ValueNote((Pitch)null, new Duration(1, 4, false), false, 0);
 
         /// <summary>
         /// The с note.
         /// </summary>
-        private readonly ValueNote сNote = new ValueNote(new Pitch(1, NoteSymbol.A, 0), new Duration(1, 4, 2, 3, false, 200), true, 0);
+        private readonly ValueNote сNote = new ValueNote(new Pitch(1, NoteSymbol.A, 0), new Duration(1, 4, 2, 3, false), true, 0);
 
         /// <summary>
         /// The cc note.
         /// </summary>
-        private readonly ValueNote ccNote = new ValueNote(new Pitch(1, NoteSymbol.A, 0), new Duration(1, 8, 2, 3, false, 200), true, 0);
+        private readonly ValueNote ccNote = new ValueNote(new Pitch(1, NoteSymbol.A, 0), new Duration(1, 8, 2, 3, false), true, 0);
 
         /// <summary>
         /// The сcc note.
         /// </summary>
-        private readonly ValueNote сccNote = new ValueNote(new Pitch(1, NoteSymbol.A, 0), new Duration(1, 8, 4, 7, false, 200), true, 0);
+        private readonly ValueNote сccNote = new ValueNote(new Pitch(1, NoteSymbol.A, 0), new Duration(1, 8, 4, 7, false), true, 0);
 
         /// <summary>
         /// The d note.
         /// </summary>
-        private readonly ValueNote dNote = new ValueNote(new Pitch(1, NoteSymbol.B, 0), new Duration(1, 16, false, 240), false, 0);
+        private readonly ValueNote dNote = new ValueNote(new Pitch(1, NoteSymbol.B, 0), new Duration(1, 16, false), false, 0);
 
         /// <summary>
         /// The attributes.
         /// </summary>
-        private readonly MeasureAttributes attributes = new MeasureAttributes(new Size(4, 4, 480), new Key(0, "minor"));
+        private readonly MeasureAttributes attributes = new MeasureAttributes(new Size(4, 4), new Key(0, "minor"));
 
         /// <summary>
         /// The attributes 1.
         /// </summary>
-        private readonly MeasureAttributes attributes1 = new MeasureAttributes(new Size(3, 4, 480), new Key(0, "minor"));
+        private readonly MeasureAttributes attributes1 = new MeasureAttributes(new Size(3, 4), new Key(0, "minor"));
 
         /// <summary>
         /// The attributes 2.
         /// </summary>
-        private readonly MeasureAttributes attributes2 = new MeasureAttributes(new Size(12, 8, 480), new Key(0, "minor"));
+        private readonly MeasureAttributes attributes2 = new MeasureAttributes(new Size(12, 8), new Key(0, "minor"));
 
         /// <summary>
         /// The attributes 3.
         /// </summary>
-        private readonly MeasureAttributes attributes3 = new MeasureAttributes(new Size(13, 16, 480), new Key(0, "minor"));
+        private readonly MeasureAttributes attributes3 = new MeasureAttributes(new Size(13, 16), new Key(0, "minor"));
 
         /// <summary>
         /// The priority get set test.
@@ -95,23 +95,11 @@
             var notes = new List<ValueNote> { note, bNote, dNote, aNote };
             var measure = new Measure(notes, attributes);
 
-            // минимальнвя длительность ноты в такте measure 1/16 = 0.0625 у ноты dnote
+            // minimal note duration in measure is 1/16 = 0.0625 (dNote)
             Assert.IsTrue(Math.Abs(pd.MinDuration(measure) - 0.0625) < 0.00001);
 
-            // когда такт передается пустой, должен выкинуться эксепшн
             measure.NoteList.Clear();
-            try
-            {
-                Assert.IsTrue(Math.Abs(pd.MinDuration(measure) - 0.0625) < 0.00001);
-                Assert.Fail("нет эксепшна при пустом такте");
-            }
-            catch (Exception e)
-            {
-                if (e.Message != "LibiadaMusic.OIP: обнаружен пустой такт при выявлении приоритета!")
-                {
-                    Assert.Fail();
-                }
-            }
+            Assert.Throws<ArgumentException>(() => pd.MinDuration(measure));
         }
 
         /// <summary>

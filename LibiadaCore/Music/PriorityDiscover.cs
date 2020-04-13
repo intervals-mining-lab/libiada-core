@@ -287,15 +287,14 @@
         public double MinDuration(Measure measure)
         {
             // Метод находит минимальную длительность ноты/паузы в такте
-            double value = 0;
+            double value;
             if (measure.NoteList.Count > 0)
             {
                 value = measure.NoteList[0].Duration.Value;
             }
             else
             {
-                // заносим в буфер первый элемент массива длительностей нот, если такт пустой - ошибка!
-                throw new Exception("LibiadaMusic.OIP: обнаружен пустой такт при выявлении приоритета!");
+                throw new ArgumentException("During priority discover found empty measure.", nameof(measure));
             }
 
             foreach (ValueNote note in measure.NoteList)
@@ -329,7 +328,7 @@
 
             //---------------------------Занесение начальных долей размера такта---------------------------
             //---------------------------------------------------------------------------------------------
-            var newDuration = new Duration(1, measure.Attributes.Size.BeatBase, false, measure.Attributes.Size.TicksPerBeat);
+            var newDuration = new Duration(1, measure.Attributes.Size.BeatBase, false);
 
             priorityMask.NoteList.Add(new ValueNote((Pitch)null, newDuration, false, Tie.None, priority));
 
@@ -344,7 +343,6 @@
                     {
                         // относительно сильная доля с приоритетом 1
                         priority = 1;
-                        
                     }
                     else
                     {
@@ -358,7 +356,7 @@
                         }
                     }
 
-                    var duration = new Duration(1, measure.Attributes.Size.BeatBase, false, measure.Attributes.Size.TicksPerBeat);
+                    var duration = new Duration(1, measure.Attributes.Size.BeatBase, false);
                     priorityMask.NoteList.Add(new ValueNote((Pitch)null, duration, false, Tie.None, priority));
                 }
             }
@@ -385,7 +383,7 @@
                         }
                     }
 
-                    var duration = new Duration(1, measure.Attributes.Size.BeatBase, false, measure.Attributes.Size.TicksPerBeat);
+                    var duration = new Duration(1, measure.Attributes.Size.BeatBase, false);
                     priorityMask.NoteList.Add(new ValueNote((Pitch)null, duration, false, Tie.None, priority));
                 }
             }
@@ -413,7 +411,7 @@
                         priority = 2;
                     }
 
-                    var duration = new Duration(1, measure.Attributes.Size.BeatBase, false, measure.Attributes.Size.TicksPerBeat);
+                    var duration = new Duration(1, measure.Attributes.Size.BeatBase, false);
                     priorityMask.NoteList.Add(new ValueNote((Pitch)null, duration, false, Tie.None, priority));
                 }
             }
@@ -442,7 +440,6 @@
             //---------------------------Разложение долей такта на более низкий уровень, ---------------------------
             //---------------------------пока не будут известны приоритеты для нот с минимальной длительностью------
             //------------------------------------------------------------------------------------------------------
-            
 
             // флаг останова, когда просчитаются приоритеты для всех нот,
             // длительность которых окажется меньше либо равна минимальной, деленной на 2 (так как может быть точка у ноты, которую возможно описать только 3 нотами короче в два раза чем сама нота),
@@ -467,11 +464,11 @@
 
                 for (int i = 0; i < priorityMask.NoteList.Count; i++)
                 {
-                    var duration = new Duration(1, priorityMask.NoteList[i].Duration.Denominator * 2, false, priorityMask.NoteList[i].Duration.Ticks / 2);
+                    var duration = new Duration(1, priorityMask.NoteList[i].Duration.Denominator * 2, false);
 
                     temp.NoteList.Add(new ValueNote((Pitch)null, duration, false, Tie.None, priorityMask.NoteList[i].Priority));
 
-                    duration = new Duration(1, priorityMask.NoteList[i].Duration.Denominator * 2, false, priorityMask.NoteList[i].Duration.Ticks / 2);
+                    duration = new Duration(1, priorityMask.NoteList[i].Duration.Denominator * 2, false);
 
                     temp.NoteList.Add(new ValueNote((Pitch)null, duration, false, Tie.None, maxPriority + 1));
                 }
@@ -489,6 +486,9 @@
         /// <summary>
         /// Determines if priority mask needs further splitting.
         /// </summary>
+        /// <param name="priorityMask">
+        /// Priority mask as <see cref="Measure"/>.
+        /// </param>
         /// <param name="minDuration">
         /// The min duration.
         /// </param>

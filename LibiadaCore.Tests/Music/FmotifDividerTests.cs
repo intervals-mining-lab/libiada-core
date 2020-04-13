@@ -25,14 +25,14 @@
             // создание и заполнения списка(ов) нот для такта(ов) монотрека
             var notes = new List<ValueNote>
             {
-                new ValueNote(new Pitch(3, NoteSymbol.E, 0), new Duration(1, 4, false, 512), false, Tie.None, 0),
-                new ValueNote(new Pitch(3, NoteSymbol.A, 0), new Duration(1, 4, false, 512), false, Tie.None, 1),
-                new ValueNote(new Pitch(3, NoteSymbol.E, 0), new Duration(1, 4, false, 512), false, Tie.None, 0),
-                new ValueNote(new Pitch(3, NoteSymbol.A, 0), new Duration(1, 4, false, 512), false, Tie.None, 1)
+                new ValueNote(new Pitch(3, NoteSymbol.E, 0), new Duration(1, 4, false), false, Tie.None, 0),
+                new ValueNote(new Pitch(3, NoteSymbol.A, 0), new Duration(1, 4, false), false, Tie.None, 1),
+                new ValueNote(new Pitch(3, NoteSymbol.E, 0), new Duration(1, 4, false), false, Tie.None, 0),
+                new ValueNote(new Pitch(3, NoteSymbol.A, 0), new Duration(1, 4, false), false, Tie.None, 1)
             };
 
             // создание атрибутов для такта(ов)
-            var attributes = new MeasureAttributes(new Size(2, 4, 1024), new Key(0, "major"));
+            var attributes = new MeasureAttributes(new Size(2, 4), new Key(0, "major"));
 
             // создание и заполнение такта(ов) списками нот и атрибутами
             var measures = new List<Measure> { new Measure(notes, (MeasureAttributes)attributes.Clone()) };
@@ -52,11 +52,11 @@
             var fmotif1 = new Fmotif(FmotifType.CompleteMinimalMeasure, PauseTreatment.Ignore, 0);
             var fmotif2 = new Fmotif(FmotifType.CompleteMinimalMeasure, PauseTreatment.Ignore, 1);
 
-            fmotif1.NoteList.Add(new ValueNote(new Pitch(3, NoteSymbol.E, 0), new Duration(1, 4, false, 512), false, Tie.None));
-            fmotif1.NoteList.Add(new ValueNote(new Pitch(3, NoteSymbol.A, 0), new Duration(1, 4, false, 512), false, Tie.None));
+            fmotif1.NoteList.Add(new ValueNote(new Pitch(3, NoteSymbol.E, 0), new Duration(1, 4, false), false, Tie.None));
+            fmotif1.NoteList.Add(new ValueNote(new Pitch(3, NoteSymbol.A, 0), new Duration(1, 4, false), false, Tie.None));
 
-            fmotif2.NoteList.Add(new ValueNote(new Pitch(3, NoteSymbol.E, 0), new Duration(1, 4, false, 512), false, Tie.None));
-            fmotif2.NoteList.Add(new ValueNote(new Pitch(3, NoteSymbol.A, 0), new Duration(1, 4, false, 512), false, Tie.None));
+            fmotif2.NoteList.Add(new ValueNote(new Pitch(3, NoteSymbol.E, 0), new Duration(1, 4, false), false, Tie.None));
+            fmotif2.NoteList.Add(new ValueNote(new Pitch(3, NoteSymbol.A, 0), new Duration(1, 4, false), false, Tie.None));
 
             // записываем ф-мотивы в цепь ф-мотивов, которая будет сравниваться с получившейся
             var secondChain = new FmotifChain();
@@ -75,14 +75,14 @@
             // создание и заполнения списка(ов) нот для такта(ов) монотрека
             var notes = new List<ValueNote>
             {
-                new ValueNote(new Pitch(3, NoteSymbol.E, 0), new Duration(1, 8, false, 512), false, Tie.None, 0),
-                new ValueNote(new Pitch(3, NoteSymbol.A, 0), new Duration(1, 8, false, 512), false, Tie.None, 2),
-                new ValueNote(new Pitch(3, NoteSymbol.E, 0), new Duration(1, 8, false, 512), false, Tie.None, 1),
-                new ValueNote(new Pitch(3, NoteSymbol.A, 0), new Duration(1, 8, false, 512), false, Tie.None, 2)
+                new ValueNote(new Pitch(3, NoteSymbol.E, 0), new Duration(1, 8, false), false, Tie.None, 0),
+                new ValueNote(new Pitch(3, NoteSymbol.A, 0), new Duration(1, 8, false), false, Tie.None, 2),
+                new ValueNote(new Pitch(3, NoteSymbol.E, 0), new Duration(1, 8, false), false, Tie.None, 1),
+                new ValueNote(new Pitch(3, NoteSymbol.A, 0), new Duration(1, 8, false), false, Tie.None, 2)
             };
 
             // создание атрибутов для такта(ов)
-            var attributes = new MeasureAttributes(new Size(2, 4, 1024), new Key(0, "major"));
+            var attributes = new MeasureAttributes(new Size(2, 4), new Key(0, "major"));
 
             // создание и заполнение такта(ов) списками нот и атрибутами
             var measures = new List<Measure> { new Measure(notes, (MeasureAttributes)attributes.Clone()) };
@@ -102,11 +102,11 @@
             var fmotif1 = new Fmotif(FmotifType.CompleteMinimalMeasure, PauseTreatment.Ignore, 0);
             var fmotif2 = new Fmotif(FmotifType.CompleteMinimalMeasure, PauseTreatment.Ignore, 1);
 
-            fmotif1.NoteList.Add(new ValueNote(new Pitch(3, NoteSymbol.E, 0), new Duration(1, 8, false, 512), false, Tie.None));
-            fmotif1.NoteList.Add(new ValueNote(new Pitch(3, NoteSymbol.A, 0), new Duration(1, 8, false, 512), false, Tie.None));
+            fmotif1.NoteList.Add(new ValueNote(new Pitch(3, NoteSymbol.E, 0), new Duration(1, 8, false), false, Tie.None));
+            fmotif1.NoteList.Add(new ValueNote(new Pitch(3, NoteSymbol.A, 0), new Duration(1, 8, false), false, Tie.None));
 
-            fmotif2.NoteList.Add(new ValueNote(new Pitch(3, NoteSymbol.E, 0), new Duration(1, 8, false, 512), false, Tie.None));
-            fmotif2.NoteList.Add(new ValueNote(new Pitch(3, NoteSymbol.A, 0), new Duration(1, 8, false, 512), false, Tie.None));
+            fmotif2.NoteList.Add(new ValueNote(new Pitch(3, NoteSymbol.E, 0), new Duration(1, 8, false), false, Tie.None));
+            fmotif2.NoteList.Add(new ValueNote(new Pitch(3, NoteSymbol.A, 0), new Duration(1, 8, false), false, Tie.None));
 
             // записываем ф-мотивы в цепь ф-мотивов, которая будет сравниваться с получившейся
             var fmchain1 = new FmotifChain();
@@ -125,19 +125,19 @@
             // создание и заполнения списка(ов) нот для такта(ов) монотрека
             var notes = new List<ValueNote>
             {
-                new ValueNote(new Pitch(3, NoteSymbol.E, 0), new Duration(1, 4, false, 512), false, Tie.None, 0),
-                new ValueNote(new Pitch(3, NoteSymbol.A, 0), new Duration(1, 8, false, 256), false, Tie.None, 1),
-                new ValueNote(new Pitch(3, NoteSymbol.E, 0), new Duration(1, 8, false, 256), false, Tie.None, 2)
+                new ValueNote(new Pitch(3, NoteSymbol.E, 0), new Duration(1, 4, false), false, Tie.None, 0),
+                new ValueNote(new Pitch(3, NoteSymbol.A, 0), new Duration(1, 8, false), false, Tie.None, 1),
+                new ValueNote(new Pitch(3, NoteSymbol.E, 0), new Duration(1, 8, false), false, Tie.None, 2)
             };
 
             var notes1 = new List<ValueNote>
             {
-                new ValueNote(new Pitch(3, NoteSymbol.E, 0), new Duration(1, 4, false, 512), false, Tie.None, 0),
-                new ValueNote(new Pitch(3, NoteSymbol.E, 0), new Duration(1, 4, false, 512), false, Tie.None, 1)
+                new ValueNote(new Pitch(3, NoteSymbol.E, 0), new Duration(1, 4, false), false, Tie.None, 0),
+                new ValueNote(new Pitch(3, NoteSymbol.E, 0), new Duration(1, 4, false), false, Tie.None, 1)
             };
 
             // создание атрибутов для такта(ов)
-            var attributes = new MeasureAttributes(new Size(2, 4, 1024), new Key(0, "major"));
+            var attributes = new MeasureAttributes(new Size(2, 4), new Key(0, "major"));
 
             // создание и заполнение такта(ов) списками нот и атрибутами
             var measures = new List<Measure>
@@ -162,13 +162,13 @@
             var fmotif2 = new Fmotif(FmotifType.CompleteMinimalMetrorhythmicGroup, PauseTreatment.Ignore, 1);
             var fmotif3 = new Fmotif(FmotifType.CompleteMinimalMeasure, PauseTreatment.Ignore, 3);
 
-            fmotif1.NoteList.Add(new ValueNote(new Pitch(3, NoteSymbol.E, 0), new Duration(1, 4, false, 512), false, Tie.None));
+            fmotif1.NoteList.Add(new ValueNote(new Pitch(3, NoteSymbol.E, 0), new Duration(1, 4, false), false, Tie.None));
 
-            fmotif2.NoteList.Add(new ValueNote(new Pitch(3, NoteSymbol.A, 0), new Duration(1, 8, false, 256), false, Tie.None));
-            fmotif2.NoteList.Add(new ValueNote(new Pitch(3, NoteSymbol.E, 0), new Duration(1, 8, false, 256), false, Tie.None));
-            fmotif2.NoteList.Add(new ValueNote(new Pitch(3, NoteSymbol.E, 0), new Duration(1, 4, false, 512), false, Tie.None));
+            fmotif2.NoteList.Add(new ValueNote(new Pitch(3, NoteSymbol.A, 0), new Duration(1, 8, false), false, Tie.None));
+            fmotif2.NoteList.Add(new ValueNote(new Pitch(3, NoteSymbol.E, 0), new Duration(1, 8, false), false, Tie.None));
+            fmotif2.NoteList.Add(new ValueNote(new Pitch(3, NoteSymbol.E, 0), new Duration(1, 4, false), false, Tie.None));
 
-            fmotif3.NoteList.Add(new ValueNote(new Pitch(3, NoteSymbol.E, 0), new Duration(1, 4, false, 512), false, Tie.None));
+            fmotif3.NoteList.Add(new ValueNote(new Pitch(3, NoteSymbol.E, 0), new Duration(1, 4, false), false, Tie.None));
 
             // записываем ф-мотивы в цепь ф-мотивов, которая будет сравниваться с получившейся
             var fmchain1 = new FmotifChain();
@@ -188,13 +188,13 @@
             // создание и заполнения списка(ов) нот для такта(ов) монотрека
             var notes = new List<ValueNote>
             {
-                new ValueNote(new Pitch(3, NoteSymbol.E, 0), new Duration(1, 8, false, 256), false, Tie.Start, 0),
-                new ValueNote(new Pitch(3, NoteSymbol.E, 0), new Duration(1, 8, false, 256), false, Tie.End, 2),
-                new ValueNote(new Pitch(3, NoteSymbol.A, 0), new Duration(1, 4, false, 512), false, Tie.None, 1)
+                new ValueNote(new Pitch(3, NoteSymbol.E, 0), new Duration(1, 8, false), false, Tie.Start, 0),
+                new ValueNote(new Pitch(3, NoteSymbol.E, 0), new Duration(1, 8, false), false, Tie.End, 2),
+                new ValueNote(new Pitch(3, NoteSymbol.A, 0), new Duration(1, 4, false), false, Tie.None, 1)
             };
 
             // создание атрибутов для такта(ов)
-            var attributes = new MeasureAttributes(new Size(2, 4, 1024), new Key(0, "major"));
+            var attributes = new MeasureAttributes(new Size(2, 4), new Key(0, "major"));
 
             // создание и заполнение такта(ов) списками нот и атрибутами
             var measures = new List<Measure> { new Measure(notes, (MeasureAttributes)attributes.Clone()) };
@@ -213,9 +213,9 @@
             // процедура определения одинаковых на данном этапе не производится
             var fmotif1 = new Fmotif(FmotifType.CompleteMinimalMeasure, PauseTreatment.Ignore, 0);
 
-            fmotif1.NoteList.Add(new ValueNote(new Pitch(3, NoteSymbol.E, 0), new Duration(1, 8, false, 256), false, Tie.Start));
-            fmotif1.NoteList.Add(new ValueNote(new Pitch(3, NoteSymbol.E, 0), new Duration(1, 8, false, 256), false, Tie.End));
-            fmotif1.NoteList.Add(new ValueNote(new Pitch(3, NoteSymbol.A, 0), new Duration(1, 4, false, 512), false, Tie.None));
+            fmotif1.NoteList.Add(new ValueNote(new Pitch(3, NoteSymbol.E, 0), new Duration(1, 8, false), false, Tie.Start));
+            fmotif1.NoteList.Add(new ValueNote(new Pitch(3, NoteSymbol.E, 0), new Duration(1, 8, false), false, Tie.End));
+            fmotif1.NoteList.Add(new ValueNote(new Pitch(3, NoteSymbol.A, 0), new Duration(1, 4, false), false, Tie.None));
 
             // записываем ф-мотивы в цепь ф-мотивов, которая будет сравниваться с получившейся
             var fmchain1 = new FmotifChain();
@@ -233,15 +233,15 @@
             // создание и заполнения списка(ов) нот для такта(ов) монотрека
             var notes = new List<ValueNote>
             {
-                new ValueNote(new Pitch(3, NoteSymbol.E, 0), new Duration(1, 8, 2, 3, false, 240), false, Tie.None, 0),
-                new ValueNote(new Pitch(3, NoteSymbol.A, 0), new Duration(1, 8, 2, 3, false, 240), false, Tie.None, 1),
-                new ValueNote(new Pitch(3, NoteSymbol.E, 0), new Duration(1, 8, 2, 3, false, 240), false, Tie.None, 1),
-                new ValueNote(new Pitch(3, NoteSymbol.A, 0), new Duration(1, 8, false, 360), false, Tie.None, 0),
-                new ValueNote(new Pitch(3, NoteSymbol.B, 0), new Duration(1, 8, false, 360), false, Tie.None, 1)
+                new ValueNote(new Pitch(3, NoteSymbol.E, 0), new Duration(1, 8, 2, 3, false), false, Tie.None, 0),
+                new ValueNote(new Pitch(3, NoteSymbol.A, 0), new Duration(1, 8, 2, 3, false), false, Tie.None, 1),
+                new ValueNote(new Pitch(3, NoteSymbol.E, 0), new Duration(1, 8, 2, 3, false), false, Tie.None, 1),
+                new ValueNote(new Pitch(3, NoteSymbol.A, 0), new Duration(1, 8, false), false, Tie.None, 0),
+                new ValueNote(new Pitch(3, NoteSymbol.B, 0), new Duration(1, 8, false), false, Tie.None, 1)
             };
 
             // создание атрибутов для такта(ов)
-            var attributes = new MeasureAttributes(new Size(2, 4, 1440), new Key(0, "major"));
+            var attributes = new MeasureAttributes(new Size(2, 4), new Key(0, "major"));
 
             // создание и заполнение такта(ов) списками нот и атрибутами
             var measures = new List<Measure> { new Measure(notes, (MeasureAttributes)attributes.Clone()) };
@@ -261,12 +261,12 @@
             var fmotif1 = new Fmotif(FmotifType.CompleteMinimalMeasure, PauseTreatment.Ignore, 0);
             var fmotif2 = new Fmotif(FmotifType.CompleteMinimalMeasure, PauseTreatment.Ignore, 1);
 
-            fmotif1.NoteList.Add(new ValueNote(new Pitch(3, NoteSymbol.E, 0), new Duration(1, 8, 2, 3, false, 240), false, Tie.None));
-            fmotif1.NoteList.Add(new ValueNote(new Pitch(3, NoteSymbol.A, 0), new Duration(1, 8, 2, 3, false, 240), false, Tie.None));
-            fmotif1.NoteList.Add(new ValueNote(new Pitch(3, NoteSymbol.E, 0), new Duration(1, 8, 2, 3, false, 240), false, Tie.None));
-            fmotif1.NoteList.Add(new ValueNote(new Pitch(3, NoteSymbol.A, 0), new Duration(1, 8, false, 360), false, Tie.None));
+            fmotif1.NoteList.Add(new ValueNote(new Pitch(3, NoteSymbol.E, 0), new Duration(1, 8, 2, 3, false), false, Tie.None));
+            fmotif1.NoteList.Add(new ValueNote(new Pitch(3, NoteSymbol.A, 0), new Duration(1, 8, 2, 3, false), false, Tie.None));
+            fmotif1.NoteList.Add(new ValueNote(new Pitch(3, NoteSymbol.E, 0), new Duration(1, 8, 2, 3, false), false, Tie.None));
+            fmotif1.NoteList.Add(new ValueNote(new Pitch(3, NoteSymbol.A, 0), new Duration(1, 8, false), false, Tie.None));
 
-            fmotif2.NoteList.Add(new ValueNote(new Pitch(3, NoteSymbol.B, 0), new Duration(1, 8, false, 360), false, Tie.None));
+            fmotif2.NoteList.Add(new ValueNote(new Pitch(3, NoteSymbol.B, 0), new Duration(1, 8, false), false, Tie.None));
 
             // записываем ф-мотивы в цепь ф-мотивов, которая будет сравниваться с получившейся
             var fmchain1 = new FmotifChain();
@@ -285,15 +285,15 @@
             // создание и заполнения списка(ов) нот для такта(ов) монотрека
             var notes = new List<ValueNote>
             {
-                new ValueNote(new Pitch(3, NoteSymbol.E, Accidental.Bekar), new Duration(1, 4, false, 512), false, Tie.None, 0),
-                new ValueNote(new Pitch(3, NoteSymbol.C, Accidental.Sharp), new Duration(1, 16, false, 128), false, Tie.None, 1),
-                new ValueNote(new Pitch(3, NoteSymbol.A, Accidental.Flat), new Duration(1, 16, false, 128), false, Tie.None, 3),
-                new ValueNote(new Pitch(3, NoteSymbol.D, Accidental.Bekar), new Duration(1, 16, false, 128), false, Tie.None, 2),
-                new ValueNote(new Pitch(3, NoteSymbol.A, Accidental.DoubleSharp), new Duration(1, 16, false, 128), false, Tie.None, 3)
+                new ValueNote(new Pitch(3, NoteSymbol.E, Accidental.Bekar), new Duration(1, 4, false), false, Tie.None, 0),
+                new ValueNote(new Pitch(3, NoteSymbol.C, Accidental.Sharp), new Duration(1, 16, false), false, Tie.None, 1),
+                new ValueNote(new Pitch(3, NoteSymbol.A, Accidental.Flat), new Duration(1, 16, false), false, Tie.None, 3),
+                new ValueNote(new Pitch(3, NoteSymbol.D, Accidental.Bekar), new Duration(1, 16, false), false, Tie.None, 2),
+                new ValueNote(new Pitch(3, NoteSymbol.A, Accidental.DoubleSharp), new Duration(1, 16, false), false, Tie.None, 3)
             };
 
             // создание атрибутов для такта(ов)
-            var attributes = new MeasureAttributes(new Size(2, 4, 1024), new Key(0, "major"));
+            var attributes = new MeasureAttributes(new Size(2, 4), new Key(0, "major"));
 
             // создание и заполнение такта(ов) списками нот и атрибутами
             var measures = new List<Measure> { new Measure(notes, (MeasureAttributes)attributes.Clone()) };
@@ -314,13 +314,13 @@
             var fmotif2 = new Fmotif(FmotifType.CompleteMinimalMeasure, PauseTreatment.Ignore, 1);
             var fmotif3 = new Fmotif(FmotifType.CompleteMinimalMeasure, PauseTreatment.Ignore, 2);
 
-            fmotif1.NoteList.Add(new ValueNote(new Pitch(3, NoteSymbol.E, Accidental.Bekar), new Duration(1, 4, false, 512), false, Tie.None));
+            fmotif1.NoteList.Add(new ValueNote(new Pitch(3, NoteSymbol.E, Accidental.Bekar), new Duration(1, 4, false), false, Tie.None));
 
-            fmotif2.NoteList.Add(new ValueNote(new Pitch(3, NoteSymbol.C, Accidental.Sharp), new Duration(1, 16, false, 128), false, Tie.None));
-            fmotif2.NoteList.Add(new ValueNote(new Pitch(3, NoteSymbol.A, Accidental.Flat), new Duration(1, 16, false, 128), false, Tie.None));
+            fmotif2.NoteList.Add(new ValueNote(new Pitch(3, NoteSymbol.C, Accidental.Sharp), new Duration(1, 16, false), false, Tie.None));
+            fmotif2.NoteList.Add(new ValueNote(new Pitch(3, NoteSymbol.A, Accidental.Flat), new Duration(1, 16, false), false, Tie.None));
 
-            fmotif3.NoteList.Add(new ValueNote(new Pitch(3, NoteSymbol.D, Accidental.Bekar), new Duration(1, 16, false, 128), false, Tie.None));
-            fmotif3.NoteList.Add(new ValueNote(new Pitch(3, NoteSymbol.A, Accidental.DoubleSharp), new Duration(1, 16, false, 128), false, Tie.None));
+            fmotif3.NoteList.Add(new ValueNote(new Pitch(3, NoteSymbol.D, Accidental.Bekar), new Duration(1, 16, false), false, Tie.None));
+            fmotif3.NoteList.Add(new ValueNote(new Pitch(3, NoteSymbol.A, Accidental.DoubleSharp), new Duration(1, 16, false), false, Tie.None));
 
             // записываем ф-мотивы в цепь ф-мотивов, которая будет сравниваться с получившейся
             var fmchain1 = new FmotifChain();
@@ -340,13 +340,13 @@
             // создание и заполнения списка(ов) нот для такта(ов) монотрека
             var notes = new List<ValueNote>
             {
-                new ValueNote((Pitch)null, new Duration(1, 4, false, 512), false, Tie.None, 0),
-                new ValueNote(new Pitch(3, NoteSymbol.A, 0), new Duration(1, 8, false, 256), false, Tie.None, 1),
-                new ValueNote(new Pitch(3, NoteSymbol.B, 0), new Duration(1, 8, false, 256), false, Tie.None, 2)
+                new ValueNote((Pitch)null, new Duration(1, 4, false), false, Tie.None, 0),
+                new ValueNote(new Pitch(3, NoteSymbol.A, 0), new Duration(1, 8, false), false, Tie.None, 1),
+                new ValueNote(new Pitch(3, NoteSymbol.B, 0), new Duration(1, 8, false), false, Tie.None, 2)
             };
 
             // создание атрибутов для такта(ов)
-            var attributes = new MeasureAttributes(new Size(2, 4, 1024), new Key(0, "major"));
+            var attributes = new MeasureAttributes(new Size(2, 4), new Key(0, "major"));
 
             // создание и заполнение такта(ов) списками нот и атрибутами
             var measures = new List<Measure> { new Measure(notes, (MeasureAttributes)attributes.Clone()) };
@@ -364,9 +364,9 @@
             // создание аналогов ф-мотивов, которые должны получиться, после разбиения
             // процедура определения одинаковых на данном этапе не производится
             var fmotif1 = new Fmotif(FmotifType.CompleteMinimalMeasure, PauseTreatment.Ignore, 0);
-            fmotif1.NoteList.Add(new ValueNote((Pitch)null, new Duration(1, 4, false, 512), false, Tie.None));
-            fmotif1.NoteList.Add(new ValueNote(new Pitch(3, NoteSymbol.A, 0), new Duration(1, 8, false, 256), false, Tie.None));
-            fmotif1.NoteList.Add(new ValueNote(new Pitch(3, NoteSymbol.B, 0), new Duration(1, 8, false, 256), false, Tie.None));
+            fmotif1.NoteList.Add(new ValueNote((Pitch)null, new Duration(1, 4, false), false, Tie.None));
+            fmotif1.NoteList.Add(new ValueNote(new Pitch(3, NoteSymbol.A, 0), new Duration(1, 8, false), false, Tie.None));
+            fmotif1.NoteList.Add(new ValueNote(new Pitch(3, NoteSymbol.B, 0), new Duration(1, 8, false), false, Tie.None));
 
             // записываем ф-мотивы в цепь ф-мотивов, которая будет сравниваться с получившейся
             var fmchain1 = new FmotifChain();
@@ -384,14 +384,14 @@
             // создание и заполнения списка(ов) нот для такта(ов) монотрека
             var notes = new List<ValueNote>
             {
-                new ValueNote(new Pitch(3, NoteSymbol.A, 0), new Duration(1, 8, false, 256), false, Tie.None, 0),
-                new ValueNote(new Pitch(3, NoteSymbol.B, 0), new Duration(1, 8, false, 256), false, Tie.None, 2),
-                new ValueNote((Pitch)null, new Duration(1, 8, false, 256), false, Tie.None, 1),
-                new ValueNote(new Pitch(3, NoteSymbol.B, 0), new Duration(1, 8, false, 256), false, Tie.None, 2)
+                new ValueNote(new Pitch(3, NoteSymbol.A, 0), new Duration(1, 8, false), false, Tie.None, 0),
+                new ValueNote(new Pitch(3, NoteSymbol.B, 0), new Duration(1, 8, false), false, Tie.None, 2),
+                new ValueNote((Pitch)null, new Duration(1, 8, false), false, Tie.None, 1),
+                new ValueNote(new Pitch(3, NoteSymbol.B, 0), new Duration(1, 8, false), false, Tie.None, 2)
             };
 
             // создание атрибутов для такта(ов)
-            var attributes = new MeasureAttributes(new Size(2, 4, 1024), new Key(0, "major"));
+            var attributes = new MeasureAttributes(new Size(2, 4), new Key(0, "major"));
 
             // создание и заполнение такта(ов) списками нот и атрибутами
             var measures = new List<Measure> { new Measure(notes, (MeasureAttributes)attributes.Clone()) };
@@ -409,10 +409,10 @@
             // создание аналогов ф-мотивов, которые должны получиться, после разбиения
             // процедура определения одинаковых на данном этапе не производится
             var fmotif1 = new Fmotif(FmotifType.CompleteMinimalMeasure, PauseTreatment.Ignore, 0);
-            fmotif1.NoteList.Add(new ValueNote(new Pitch(3, NoteSymbol.A, 0), new Duration(1, 8, false, 256), false, Tie.None));
-            fmotif1.NoteList.Add(new ValueNote((Pitch)null, new Duration(1, 8, false, 256), false, Tie.None));
-            fmotif1.NoteList.Add(new ValueNote(new Pitch(3, NoteSymbol.B, 0), new Duration(1, 8, false, 256), false, Tie.None));
-            fmotif1.NoteList.Add(new ValueNote(new Pitch(3, NoteSymbol.B, 0), new Duration(1, 8, false, 256), false, Tie.None));
+            fmotif1.NoteList.Add(new ValueNote(new Pitch(3, NoteSymbol.A, 0), new Duration(1, 8, false), false, Tie.None));
+            fmotif1.NoteList.Add(new ValueNote((Pitch)null, new Duration(1, 8, false), false, Tie.None));
+            fmotif1.NoteList.Add(new ValueNote(new Pitch(3, NoteSymbol.B, 0), new Duration(1, 8, false), false, Tie.None));
+            fmotif1.NoteList.Add(new ValueNote(new Pitch(3, NoteSymbol.B, 0), new Duration(1, 8, false), false, Tie.None));
 
             // записываем ф-мотивы в цепь ф-мотивов, которая будет сравниваться с получившейся
             var fmchain1 = new FmotifChain();
@@ -430,14 +430,14 @@
             // создание и заполнения списка(ов) нот для такта(ов) монотрека
             var notes = new List<ValueNote>
             {
-                new ValueNote(new Pitch(3, NoteSymbol.A, 0), new Duration(1, 8, false, 256), false, Tie.None, 0),
-                new ValueNote((Pitch)null, new Duration(1, 8, false, 256), false, Tie.None, 2),
-                new ValueNote(new Pitch(3, NoteSymbol.B, 0), new Duration(1, 8, false, 256), false, Tie.None, 1),
-                new ValueNote(new Pitch(3, NoteSymbol.B, 0), new Duration(1, 8, false, 256), false, Tie.None, 2)
+                new ValueNote(new Pitch(3, NoteSymbol.A, 0), new Duration(1, 8, false), false, Tie.None, 0),
+                new ValueNote((Pitch)null, new Duration(1, 8, false), false, Tie.None, 2),
+                new ValueNote(new Pitch(3, NoteSymbol.B, 0), new Duration(1, 8, false), false, Tie.None, 1),
+                new ValueNote(new Pitch(3, NoteSymbol.B, 0), new Duration(1, 8, false), false, Tie.None, 2)
             };
 
             // создание атрибутов для такта(ов)
-            var attributes = new MeasureAttributes(new Size(2, 4, 1024), new Key(0, "major"));
+            var attributes = new MeasureAttributes(new Size(2, 4), new Key(0, "major"));
 
             // создание и заполнение такта(ов) списками нот и атрибутами
             var measures = new List<Measure> { new Measure(notes, (MeasureAttributes)attributes.Clone()) };
@@ -455,11 +455,11 @@
             // создание аналогов ф-мотивов, которые должны получиться, после разбиения
             // процедура определения одинаковых на данном этапе не производится
             var fmotif1 = new Fmotif(FmotifType.CompleteMinimalMeasure, PauseTreatment.Ignore, 0);
-            fmotif1.NoteList.Add(new ValueNote(new Pitch(3, NoteSymbol.A, 0), new Duration(1, 8, false, 256), false, Tie.None));
-            fmotif1.NoteList.Add(new ValueNote((Pitch)null, new Duration(1, 8, false, 256), false, Tie.None));
+            fmotif1.NoteList.Add(new ValueNote(new Pitch(3, NoteSymbol.A, 0), new Duration(1, 8, false), false, Tie.None));
+            fmotif1.NoteList.Add(new ValueNote((Pitch)null, new Duration(1, 8, false), false, Tie.None));
             var fmotif2 = new Fmotif(FmotifType.CompleteMinimalMeasure, PauseTreatment.Ignore, 1);
-            fmotif2.NoteList.Add(new ValueNote(new Pitch(3, NoteSymbol.B, 0), new Duration(1, 8, false, 256), false, Tie.None));
-            fmotif2.NoteList.Add(new ValueNote(new Pitch(3, NoteSymbol.B, 0), new Duration(1, 8, false, 256), false, Tie.None));
+            fmotif2.NoteList.Add(new ValueNote(new Pitch(3, NoteSymbol.B, 0), new Duration(1, 8, false), false, Tie.None));
+            fmotif2.NoteList.Add(new ValueNote(new Pitch(3, NoteSymbol.B, 0), new Duration(1, 8, false), false, Tie.None));
 
             // записываем ф-мотивы в цепь ф-мотивов, которая будет сравниваться с получившейся
             var fmchain1 = new FmotifChain();

@@ -3,7 +3,6 @@
     using System;
     using System.Collections.Generic;
     using System.ComponentModel;
-    using System.Security.Cryptography;
 
     using LibiadaCore.Music;
 
@@ -17,6 +16,9 @@
         /// </summary>
         /// <param name="type">
         /// The type.
+        /// </param>
+        /// <param name="pauseTreatment">
+        /// Pause treatment parameter.
         /// </param>
         /// <param name="id">
         /// The id.
@@ -60,7 +62,7 @@
         /// The param pause treatment.
         /// </param>
         /// <returns>
-        /// The <see cref="Fmotif"/>.
+        /// Copy of the current <see cref="Fmotif"/>.
         /// </returns>
         /// <exception cref="Exception">
         /// Thrown if pauseTreatment is unknown.
@@ -71,54 +73,54 @@
             switch (pauseTreatment)
             {
                 case PauseTreatment.Ignore:
-                        // удаляем все паузы в возвращаемом объекте (0) (паузы игнорируются)
-                        var temp = (Fmotif)Clone();
-                        for (int i = 0; i < temp.NoteList.Count; i++)
+                    // удаляем все паузы в возвращаемом объекте (0) (паузы игнорируются)
+                    var temp = (Fmotif)Clone();
+                    for (int i = 0; i < temp.NoteList.Count; i++)
+                    {
+                        if (temp.NoteList[i].Pitches != null && temp.NoteList[i].Pitches.Count == 0)
                         {
-                            if (temp.NoteList[i].Pitches != null && temp.NoteList[i].Pitches.Count == 0)
-                            {
-                                temp.NoteList.RemoveAt(i);
-                                i--;
-                            }
+                            temp.NoteList.RemoveAt(i);
+                            i--;
                         }
+                    }
 
-                        return temp;
+                    return temp;
 
                 case PauseTreatment.NoteTrace:
-                        // длительность паузы прибавляется к предыдущей ноте,
-                        // а она сама удаляется из текста (1) (пауза - звуковой след ноты)
-                        var temp2 = (Fmotif)Clone();
+                    // длительность паузы прибавляется к предыдущей ноте,
+                    // а она сама удаляется из текста (1) (пауза - звуковой след ноты)
+                    var temp2 = (Fmotif)Clone();
 
-                        // если пауза стоит вначале текста (и текст не пустой) то она удаляется
-                        while (temp2.NoteList.Count > 0)
+                    // если пауза стоит вначале текста (и текст не пустой) то она удаляется
+                    while (temp2.NoteList.Count > 0)
+                    {
+                        if (temp2.NoteList[0].Pitches != null && temp2.NoteList[0].Pitches.Count > 0)
                         {
-                            if (temp2.NoteList[0].Pitches != null && temp2.NoteList[0].Pitches.Count > 0)
-                            {
-                                break;
-                            }
-
-                            temp2.NoteList.RemoveAt(0);
+                            break;
                         }
 
-                        for (int i = 0; i < temp2.NoteList.Count; i++)
+                        temp2.NoteList.RemoveAt(0);
+                    }
+
+                    for (int i = 0; i < temp2.NoteList.Count; i++)
+                    {
+                        if (temp2.NoteList[i].Pitches.Count == 0)
                         {
-                            if (temp2.NoteList[i].Pitches.Count == 0)
-                            {
-                                // к длительности предыдущего звука добавляем длительность текущей паузы
-                                temp2.NoteList[i - 1].Duration.AddDuration((Duration)temp2.NoteList[i].Duration.Clone());
+                            // к длительности предыдущего звука добавляем длительность текущей паузы
+                            temp2.NoteList[i - 1].Duration.AddDuration((Duration)temp2.NoteList[i].Duration.Clone());
 
-                                // удаляем паузу
-                                temp2.NoteList.RemoveAt(i);
-                                i--;
-                            }
+                            // удаляем паузу
+                            temp2.NoteList.RemoveAt(i);
+                            i--;
                         }
+                    }
 
-                        return temp2;
+                    return temp2;
 
                 case PauseTreatment.SilenceNote:
-                        // Пауза - звук тишины, рассматривается как нота без высоты звучания (2)
-                        // ничего не треуется
-                        return (Fmotif)Clone();
+                    // Пауза - звук тишины, рассматривается как нота без высоты звучания (2)
+                    // ничего не треуется
+                    return (Fmotif)Clone();
 
                 default:
                     throw new InvalidEnumArgumentException(nameof(pauseTreatment), (int)pauseTreatment, typeof(PauseTreatment));
@@ -266,11 +268,11 @@
         /// </returns>
         public override bool Equals(object obj)
         {
-            if (obj == null || !(obj is Fmotif))
+            if (!(obj is Fmotif))
             {
                 return false;
             }
-            // для сравнения паузы не нужны, поэтому сравнивае ф-мотивы без пауз (они игнорируются, но входят в состав ф-мотива)
+            // для сравнения паузы не нужны, поэтому сравниваем ф-мотивы без пауз (они игнорируются, но входят в состав ф-мотива)
             Fmotif self = PauseTreatmentProcedure(PauseTreatment.Ignore).TieGathered();
             Fmotif other = ((Fmotif)obj).PauseTreatmentProcedure(PauseTreatment.Ignore).TieGathered();
             int modulation = 0;
@@ -284,37 +286,43 @@
 
             for (int i = 0; i < self.NoteList.Count; i++)
             {
+                ValueNote selfNote = self.NoteList[i];
+                ValueNote otherNote = other.NoteList[i];
+
                 // одинаково ли количество высот в этих нотах?
-                if ((self.NoteList[i].Pitches == null) != (other.NoteList[i].Pitches == null))
+                if ((selfNote.Pitches == null) != (otherNote.Pitches == null))
                 {
                     return false;
                 }
 
-                if (self.NoteList[i].Pitches == null || self.NoteList[i].Pitches.Count != other.NoteList[i].Pitches.Count)
+                if (selfNote.Pitches == null || selfNote.Pitches.Count != otherNote.Pitches.Count)
                 {
                     // если нет - фмотивы - неодинаковы
                     return false;
                 }
 
                 // одинаковы ли длительности у нот?
-                if (!self.NoteList[i].Duration.Equals(other.NoteList[i].Duration))
+                if (!selfNote.Duration.Equals(otherNote.Duration))
                 {
                     // если нет - фмотивы - неодинаковы
                     return false;
                 }
 
-                for (int j = 0; j < self.NoteList[i].Pitches.Count; j++)
+                for (int j = 0; j < selfNote.Pitches.Count; j++)
                 {
+                    var selfPitch = selfNote.Pitches[j];
+                    var otherPitch = otherNote.Pitches[j];
+
                     if (firstTime)
                     {
                         // при первом сравнении вычисляем на сколько полутонов отличаются первые ноты,
                         // последущие должны отличаться на столько же, чтобы фмотивы были равны
-                        modulation = self.NoteList[i].Pitches[j].MidiNumber - other.NoteList[i].Pitches[j].MidiNumber;
+                        modulation = selfPitch.MidiNumber - otherPitch.MidiNumber;
                         firstTime = false;
                     }
 
                     // одинаковы ли при этом высоты / правильно ли присутствует секвентный перенос (модуляция)
-                    if (modulation != (self.NoteList[i].Pitches[j].MidiNumber - other.NoteList[i].Pitches[j].MidiNumber))
+                    if (modulation != (selfPitch.MidiNumber - otherPitch.MidiNumber))
                     {
                         return false;
                     }
@@ -327,8 +335,8 @@
         /// <summary>
         /// The fm equals.
         /// </summary>
-        /// <param name="obj">
-        /// The object.
+        /// <param name="other">
+        /// Fmotif for comparison.
         /// </param>
         /// <param name="paramPauseTreatment">
         /// The param pause treatment.
@@ -342,11 +350,11 @@
         /// <exception cref="Exception">
         /// Thrown if sequential transfer parameter is unknown.
         /// </exception>
-        public bool FmEquals(object obj, PauseTreatment paramPauseTreatment, bool sequentialTransfer)
+        public bool FmEquals(Fmotif other, PauseTreatment paramPauseTreatment, bool sequentialTransfer)
         {
             // для сравнения паузы не нужны, поэтому сравнивае ф-мотивы без пауз (они игнорируются, но входят в состав ф-мотива)
             Fmotif self = PauseTreatmentProcedure(paramPauseTreatment).TieGathered();
-            Fmotif other = ((Fmotif)obj).PauseTreatmentProcedure(paramPauseTreatment).TieGathered();
+            other = other.PauseTreatmentProcedure(paramPauseTreatment).TieGathered();
             int modulation = 0;
             bool firstTime = true;
 
@@ -358,23 +366,25 @@
 
             for (int i = 0; i < self.NoteList.Count; i++)
             {
+                ValueNote selfNote = self.NoteList[i];
+                ValueNote otherNote = other.NoteList[i];
                 // одинаково ли количество высот у нот?
-                if (self.NoteList[i].Pitches.Count != other.NoteList[i].Pitches.Count)
+                if (selfNote.Pitches.Count != otherNote.Pitches.Count)
                 {
                     // если нет - фмотивы - неодинаковы
                     return false;
                 }
 
                 // одинаковы ли длительности у нот?
-                if (!self.NoteList[i].Duration.Equals(other.NoteList[i].Duration))
+                if (!selfNote.Duration.Equals(otherNote.Duration))
                 {
                     // если нет - фмотивы - неодинаковы
                     return false;
                 }
 
-                if ((self.NoteList[i].Pitches.Count == 0) || (other.NoteList[i].Pitches.Count == 0))
+                if ((selfNote.Pitches.Count == 0) || (otherNote.Pitches.Count == 0))
                 {
-                    if (!((self.NoteList[i].Pitches.Count == 0) && (other.NoteList[i].Pitches.Count == 0)))
+                    if (!((selfNote.Pitches.Count == 0) && (otherNote.Pitches.Count == 0)))
                     {
                         // если одна из нот пауза, а вторая - нет, то ф-мотивы не одинаковы
                         return false;
@@ -386,44 +396,38 @@
                 {
                     // если две ноты - не паузы
                     // в зависимости от параметра учета секвентного переноса
-                    switch (sequentialTransfer)
+                    if (sequentialTransfer)
                     {
-                        case true: // учитывая секентный перенос (Sequent)
-                            for (int j = 0; j < self.NoteList[i].Pitches.Count; j++)
+                        // учитывая секентный перенос (Sequent)
+                        for (int j = 0; j < selfNote.Pitches.Count; j++)
+                        {
+                            var selfPitch = selfNote.Pitches[j];
+                            var otherPitch = otherNote.Pitches[j];
+                            if (firstTime)
                             {
-                                if (firstTime)
-                                {
-                                    // при первом сравнении вычисляем на сколько полутонов отличаются первые ноты,
-                                    // последущие должны отличаться на столько же, чтобы фмотивы были равны
-                                    modulation = self.NoteList[i].Pitches[j].MidiNumber -
-                                                 other.NoteList[i].Pitches[j].MidiNumber;
-                                    firstTime = false;
-                                }
-
-                                // одинаковы ли при этом высоты / правильно ли присутствует секвентный перенос (модуляция)
-                                if (modulation !=
-                                    (self.NoteList[i].Pitches[j].MidiNumber - other.NoteList[i].Pitches[j].MidiNumber))
-                                {
-                                    return false;
-                                }
+                                // при первом сравнении вычисляем на сколько полутонов отличаются первые ноты,
+                                // последущие должны отличаться на столько же, чтобы фмотивы были равны
+                                modulation = selfPitch.MidiNumber - otherPitch.MidiNumber;
+                                firstTime = false;
                             }
 
-                            break;
-
-                        case false:
-                            // без секвентного переноса (NonSequent)
-                            for (int j = 0; j < self.NoteList[i].Pitches.Count; j++)
+                            // одинаковы ли при этом высоты / правильно ли присутствует секвентный перенос (модуляция)
+                            if (modulation != (selfPitch.MidiNumber - otherPitch.MidiNumber))
                             {
-                                if (self.NoteList[i].Pitches[j].MidiNumber != other.NoteList[i].Pitches[j].MidiNumber)
-                                {
-                                    return false;
-                                }
+                                return false;
                             }
-
-                            break;
-
-                        default:
-                            throw new InvalidEnumArgumentException(nameof(sequentialTransfer));
+                        }
+                    }
+                    else
+                    {
+                        // без секвентного переноса (NonSequent)
+                        for (int j = 0; j < selfNote.Pitches.Count; j++)
+                        {
+                            if (selfNote.Pitches[j].MidiNumber != otherNote.Pitches[j].MidiNumber)
+                            {
+                                return false;
+                            }
+                        }
                     }
                 }
             }
@@ -432,27 +436,8 @@
         }
 
         /// <summary>
-        /// Calculates MD5 hash code using
-        /// notes, fmotif type and param pause treatment.
-        /// </summary>
-        /// <returns>
-        /// The <see cref="T:byte[]"/>.
-        /// </returns>
-        public byte[] GetMD5HashCode()
-        {
-            var hash = new List<byte>();
-            foreach (ValueNote note in NoteList)
-            {
-                hash.AddRange(note.GetMD5HashCode());
-            }
-            hash.Add((byte)Type);
-            MD5 md5 = MD5.Create();
-            return md5.ComputeHash(hash.ToArray());
-        }
-
-        /// <summary>
         /// Calculates hash code using
-        /// notes, fmotif type and param pause treatment.
+        /// <see cref="NoteList"/>, fmotif <see cref="Type"/> and param pause treatment.
         /// </summary>
         /// <returns>
         /// The <see cref="int"/>.
@@ -463,6 +448,8 @@
             {
                 int hashCode = -2024996526;
                 hashCode = (hashCode * -1521134295) + ((byte)Type).GetHashCode();
+                hashCode = (hashCode * -1521134295) + ((byte)PauseTreatment).GetHashCode();
+
                 foreach (ValueNote note in NoteList)
                 {
                     hashCode = (hashCode * -1521134295) + note.GetHashCode();

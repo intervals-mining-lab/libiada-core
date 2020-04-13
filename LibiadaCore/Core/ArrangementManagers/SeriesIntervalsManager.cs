@@ -4,12 +4,12 @@
 
     public class SeriesIntervalsManager : IArrangementManager
     {
-        public int[] GetArrangement(Link link)
+        public SeriesIntervalsManager(CongenericChain chain)
         {
             throw new NotImplementedException();
         }
 
-        public void Initialize(CongenericChain chain)
+        public int[] GetArrangement(Link link)
         {
             throw new NotImplementedException();
         }

@@ -1,8 +1,7 @@
-﻿namespace LibiadaCore.Core.SimpleTypes
-{
-    using System.Collections.Generic;
-    using System.Security.Cryptography;
+﻿using System.Collections.Generic;
 
+namespace LibiadaCore.Core.SimpleTypes
+{
     /// <summary>
     /// The measure.
     /// </summary>
@@ -24,9 +23,8 @@
                 Attributes = (MeasureAttributes)attributes.Clone();
             }
 
-            NoteList = new List<ValueNote>();
+            NoteList = new List<ValueNote>(noteList.Count);
 
-            // создаем список нот посредством клонирования каждой ноты.
             foreach (ValueNote note in noteList)
             {
                 NoteList.Add((ValueNote)note.Clone());
@@ -35,7 +33,6 @@
 
         /// <summary>
         /// Gets notes list.
-        /// список нот, класса Note
         /// </summary>
         public List<ValueNote> NoteList { get; }
 
@@ -96,16 +93,12 @@
         }
 
         /// <summary>
-        /// The clone.
+        /// Creates copy of current measure.
         /// </summary>
         /// <returns>
-        /// The <see cref="IBaseObject"/>.
+        /// The measure as <see cref="IBaseObject"/>.
         /// </returns>
-        public IBaseObject Clone()
-        {
-            var result = new Measure(NoteList, Attributes);
-            return result;
-        }
+        public IBaseObject Clone() => new Measure(NoteList, Attributes);
 
         /// <summary>
         /// The equals.
@@ -118,13 +111,13 @@
         /// </returns>
         public override bool Equals(object obj)
         {
-            if (obj is Measure measure
-             && NoteList.Count == measure.NoteList.Count
-             && Attributes.Equals(measure.Attributes))
+            if (obj is Measure other
+             && NoteList.Count == other.NoteList.Count
+             && Attributes.Equals(other.Attributes))
             {
                 for (int i = 0; i < NoteList.Count; i++)
                 {
-                    if (!NoteList[i].Equals(measure.NoteList[i]))
+                    if (!NoteList[i].Equals(other.NoteList[i]))
                     {
                         return false;
                     }
@@ -140,27 +133,6 @@
         }
 
         /// <summary>
-        /// Calculates MD5 hash code using
-        /// notes and attributes.
-        /// </summary>
-        /// <returns>
-        /// The <see cref="T:byte[]"/>.
-        /// </returns>
-        public byte[] GetMD5HashCode()
-        {
-            var hash = new List<byte>();
-            foreach (ValueNote note in NoteList)
-            {
-                hash.AddRange(note.GetMD5HashCode());
-            }
-            hash.Add((byte)Attributes.Key.Fifths);
-            hash.Add((byte)Attributes.Size.BeatBase);
-            hash.Add((byte)Attributes.Size.Beats);
-            MD5 md5 = MD5.Create();
-            return md5.ComputeHash(hash.ToArray());
-        }
-
-        /// <summary>
         /// Calculates hash code using
         /// <see cref="Attributes"/> and <see cref="NoteList"/>.
         /// </summary>
@@ -172,9 +144,7 @@
             unchecked
             {
                 int hashCode = 68558965;
-                hashCode = (hashCode * -1521134295) + ((byte)Attributes.Key.Fifths).GetHashCode();
-                hashCode = (hashCode * -1521134295) + ((byte)Attributes.Size.BeatBase).GetHashCode();
-                hashCode = (hashCode * -1521134295) + ((byte)Attributes.Size.Beats).GetHashCode();
+                hashCode = (hashCode * -1521134295) + Attributes.GetHashCode();
                 foreach (ValueNote note in NoteList)
                 {
                     hashCode = (hashCode * -1521134295) + note.GetHashCode();

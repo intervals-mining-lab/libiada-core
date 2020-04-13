@@ -20,15 +20,15 @@
         {
             var notes = new List<ValueNote>();
             var notes2 = new List<ValueNote>();
-            var attributes = new MeasureAttributes(new Size(4, 4, 512), new Key(5));
+            var attributes = new MeasureAttributes(new Size(4, 4), new Key(5));
 
-            notes.Add(new ValueNote(new Pitch(3, NoteSymbol.A, 0), new Duration(1, 4, false, 128), false, Tie.None));
-            notes.Add(new ValueNote(new Pitch(3, NoteSymbol.B, 0), new Duration(1, 4, false, 128), false, Tie.None));
-            notes.Add(new ValueNote(new Pitch(3, NoteSymbol.C, 0), new Duration(1, 16, false, 32), false, Tie.None));
+            notes.Add(new ValueNote(new Pitch(3, NoteSymbol.A, 0), new Duration(1, 4, false), false, Tie.None));
+            notes.Add(new ValueNote(new Pitch(3, NoteSymbol.B, 0), new Duration(1, 4, false), false, Tie.None));
+            notes.Add(new ValueNote(new Pitch(3, NoteSymbol.C, 0), new Duration(1, 16, false), false, Tie.None));
 
-            notes2.Add(new ValueNote(new Pitch(3, NoteSymbol.A, 0), new Duration(1, 4, false, 128), false, Tie.None));
-            notes2.Add(new ValueNote(new Pitch(3, NoteSymbol.B, 0), new Duration(1, 4, false, 128), false, Tie.None));
-            notes2.Add(new ValueNote(new Pitch(3, NoteSymbol.C, 0), new Duration(1, 16, false, 32), false, Tie.None));
+            notes2.Add(new ValueNote(new Pitch(3, NoteSymbol.A, 0), new Duration(1, 4, false), false, Tie.None));
+            notes2.Add(new ValueNote(new Pitch(3, NoteSymbol.B, 0), new Duration(1, 4, false), false, Tie.None));
+            notes2.Add(new ValueNote(new Pitch(3, NoteSymbol.C, 0), new Duration(1, 16, false), false, Tie.None));
 
             var m1 = new Measure(notes, attributes);
             var m2 = new Measure(notes2, attributes);
@@ -44,16 +44,16 @@
         {
             var notes = new List<ValueNote>();
             var notes2 = new List<ValueNote>();
-            var attributes = new MeasureAttributes(new Size(4, 4, 512), new Key(5));
-            var attributes2 = new MeasureAttributes(new Size(3, 4, 512), new Key(5));
+            var attributes = new MeasureAttributes(new Size(4, 4), new Key(5));
+            var attributes2 = new MeasureAttributes(new Size(3, 4), new Key(5));
 
-            notes.Add(new ValueNote(new Pitch(3, NoteSymbol.A, 0), new Duration(1, 4, false, 128), false, Tie.None));
-            notes.Add(new ValueNote(new Pitch(3, NoteSymbol.B, 0), new Duration(1, 4, false, 128), false, Tie.None));
-            notes.Add(new ValueNote(new Pitch(3, NoteSymbol.C, 0), new Duration(1, 16, false, 32), false, Tie.None));
+            notes.Add(new ValueNote(new Pitch(3, NoteSymbol.A, 0), new Duration(1, 4, false), false, Tie.None));
+            notes.Add(new ValueNote(new Pitch(3, NoteSymbol.B, 0), new Duration(1, 4, false), false, Tie.None));
+            notes.Add(new ValueNote(new Pitch(3, NoteSymbol.C, 0), new Duration(1, 16, false), false, Tie.None));
 
-            notes2.Add(new ValueNote(new Pitch(3, NoteSymbol.A, 0), new Duration(1, 4, false, 128), false, Tie.None));
-            notes2.Add(new ValueNote(new Pitch(3, NoteSymbol.B, 0), new Duration(1, 4, false, 128), false, Tie.None));
-            notes2.Add(new ValueNote(new Pitch(3, NoteSymbol.D, 0), new Duration(1, 16, false, 32), false, Tie.None));
+            notes2.Add(new ValueNote(new Pitch(3, NoteSymbol.A, 0), new Duration(1, 4, false), false, Tie.None));
+            notes2.Add(new ValueNote(new Pitch(3, NoteSymbol.B, 0), new Duration(1, 4, false), false, Tie.None));
+            notes2.Add(new ValueNote(new Pitch(3, NoteSymbol.D, 0), new Duration(1, 16, false), false, Tie.None));
 
             var m1 = new Measure(notes, attributes);
             var m2 = new Measure(notes2, attributes);
