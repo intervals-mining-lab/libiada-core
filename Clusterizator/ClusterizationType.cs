@@ -38,6 +38,8 @@
 
         [Display(Name = "KMeansMLNet")]
         [Description("KMeansMLNet clusterization")]
-        KMeansMLNet = 5
+        KMeansMLNet = 5,
+        
+        AffinityPropagation = 6
     }
 }
