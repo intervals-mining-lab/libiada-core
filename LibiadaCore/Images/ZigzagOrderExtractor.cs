@@ -1,10 +1,10 @@
-﻿namespace LibiadaCore.Images
+﻿using LibiadaCore.Core;
+using LibiadaCore.Core.SimpleTypes;
+
+using SixLabors.ImageSharp.PixelFormats;
+
+namespace LibiadaCore.Images
 {
-
-    using LibiadaCore.Core;
-    using LibiadaCore.Core.SimpleTypes;
-    using SixLabors.ImageSharp;
-
     /// <summary>
     /// The zigzag order extractor.
     /// </summary>

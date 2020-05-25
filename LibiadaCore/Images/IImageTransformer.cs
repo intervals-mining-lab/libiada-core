@@ -1,6 +1,7 @@
 ﻿namespace LibiadaCore.Images
 {
     using SixLabors.ImageSharp;
+    using SixLabors.ImageSharp.PixelFormats;
 
     /// <summary>
     /// The ImageTransformer interface.
