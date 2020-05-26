@@ -36,10 +36,8 @@
         [Description("FRiS-Cluster clusterization")]
         FRiSCluster = 4,
 
-        [Display(Name = "KMeansMLNet")]
-        [Description("KMeansMLNet clusterization")]
-        KMeansMLNet = 5,
-        
-        AffinityPropagation = 6
+        [Display(Name = "Affinity зropagation")]
+        [Description("Affinity зropagation clusterization")]
+        AffinityPropagation = 5
     }
 }

@@ -1,14 +1,14 @@
-﻿using Clusterizator.kMeans;
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+
+using Clusterizator.Krab;
+using Clusterizator.ML.NET;
+
+using NUnit.Framework;
 
 namespace Clusterizator.Tests
 {
-    using System;
-    using System.Collections.Generic;
-    using System.ComponentModel;
-    using Clusterizator.Krab;
-
-    using NUnit.Framework;
-
     /// <summary>
     /// The clusterizators factory tests.
     /// </summary>
@@ -24,7 +24,7 @@ namespace Clusterizator.Tests
         /// <param name="expected">
         /// The expected.
         /// </param>
-        [TestCase(ClusterizationType.KMeans, typeof(KMeansClusterization))]
+        [TestCase(ClusterizationType.KMeans, typeof(KMeansMLNet))]
         [TestCase(ClusterizationType.Krab, typeof(KrabClusterization))]
         public void SelectionTest(ClusterizationType type, Type expected)
         {

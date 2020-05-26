@@ -3,7 +3,6 @@
     using System.Collections.Generic;
     using System.ComponentModel;
 
-    using Clusterizator.kMeans;
     using Clusterizator.Krab;
     using Clusterizator.MeanShift;
     using Clusterizator.ML.NET;
@@ -33,7 +32,7 @@
             switch (type)
             {
                 case ClusterizationType.KMeans:
-                    return new KMeansClusterization();
+                    return new KMeansMLNet();
                 case ClusterizationType.Krab:
                     if (!parameters.TryGetValue("powerWeight",  out double powerWeight))
                     {
@@ -62,11 +61,6 @@
                     var minimumClusters = (int)parameters["clustersCount"];
                     var maximumClusters = (int)parameters["maximumClusters"];
                     return new FRiSCluster.FRiSCluster(minimumClusters, maximumClusters);
-
-                case ClusterizationType.KMeansMLNet:
-                    var clustersCount = (int)parameters["clustersCount"];
-                    return new KMeansMLNet();
-
                 default:
                     throw new InvalidEnumArgumentException(nameof(type), (int)type, typeof(ClusterizationType));
             }
