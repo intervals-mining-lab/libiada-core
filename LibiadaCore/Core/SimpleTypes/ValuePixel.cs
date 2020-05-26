@@ -1,6 +1,7 @@
-﻿namespace LibiadaCore.Core.SimpleTypes
+﻿using SixLabors.ImageSharp.PixelFormats;
+
+namespace LibiadaCore.Core.SimpleTypes
 {
-    using SixLabors.ImageSharp;
 
     /// <summary>
     /// The value pixel.

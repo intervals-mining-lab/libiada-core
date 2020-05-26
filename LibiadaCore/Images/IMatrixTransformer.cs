@@ -1,7 +1,7 @@
-﻿namespace LibiadaCore.Images
-{
-    using SixLabors.ImageSharp;
+﻿using SixLabors.ImageSharp.PixelFormats;
 
+namespace LibiadaCore.Images
+{
     /// <summary>
     /// The MatrixTransformer interface.
     /// </summary>

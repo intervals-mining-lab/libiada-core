@@ -1,7 +1,8 @@
 ﻿namespace LibiadaCore.Images
 {
     using SixLabors.ImageSharp;
-    using SixLabors.Primitives;
+    using SixLabors.ImageSharp.PixelFormats;
+    using SixLabors.ImageSharp.Processing;
 
     /// <summary>
     /// The image resizer.
