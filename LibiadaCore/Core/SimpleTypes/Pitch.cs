@@ -1,12 +1,11 @@
 ﻿namespace LibiadaCore.Core.SimpleTypes
 {
     using System;
-    using System.Security.Cryptography;
 
     using LibiadaCore.Music;
 
     /// <summary>
-    /// высота ноты
+    /// Pitch of a note.
     /// </summary>
     public class Pitch : IBaseObject
     {
@@ -82,35 +81,23 @@
         public Accidental Alter { get; }
 
         /// <summary>
-        /// The clone.
+        /// Creates a copy of pitch.
         /// </summary>
         /// <returns>
-        /// The <see cref="IBaseObject"/>.
+        /// The new pitch as <see cref="IBaseObject"/>.
         /// </returns>
         public IBaseObject Clone() => new Pitch(Octave, Step, Alter, Instrument);
 
         /// <summary>
-        /// The equals.
+        /// Compares midiNumbers of pitches.
         /// </summary>
         /// <param name="obj">
-        /// The object.
+        /// Another pitch.
         /// </param>
         /// <returns>
         /// The <see cref="bool"/>.
         /// </returns>
         public override bool Equals(object obj) => obj is Pitch pitch && MidiNumber == pitch.MidiNumber;
-
-        /// <summary>
-        /// Calculates MD5 hash code using midi number.
-        /// </summary>
-        /// <returns>
-        /// The <see cref="T:byte[]"/>.
-        /// </returns>
-        public byte[] GetMD5HashCode()
-        {
-            MD5 md5 = MD5.Create();
-            return md5.ComputeHash(BitConverter.GetBytes(MidiNumber));
-        }
 
         /// <summary>
         /// Calculates hash code using <see cref="MidiNumber"/>.
@@ -119,6 +106,15 @@
         /// The <see cref="int"/>.
         /// </returns>
         public override int GetHashCode() => MidiNumber.GetHashCode();
+
+
+        /// <summary>
+        /// Represents pitch as its midiNumber converted to string.
+        /// </summary>
+        /// <returns>
+        /// MidiNumber as <see cref="string"/>.
+        /// </returns>
+        public override string ToString() => MidiNumber.ToString();
 
         /// <summary>
         /// Calculates midi number from pitch params.

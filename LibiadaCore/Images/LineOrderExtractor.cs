@@ -1,9 +1,10 @@
-﻿namespace LibiadaCore.Images
-{
-    using LibiadaCore.Core;
-    using LibiadaCore.Core.SimpleTypes;
-    using SixLabors.ImageSharp;
+﻿using LibiadaCore.Core;
+using LibiadaCore.Core.SimpleTypes;
 
+using SixLabors.ImageSharp.PixelFormats;
+
+namespace LibiadaCore.Images
+{
     /// <summary>
     /// The line order extractor.
     /// </summary>

@@ -14,36 +14,75 @@ namespace LibiadaCore.Tests.Core
     public class BaseChainTests
     {
         /// <summary>
-        /// The chain base.
-        /// </summary>
-        private BaseChain chain;
-
-        /// <summary>
-        /// Tests initialization method.
-        /// </summary>
-        [SetUp]
-        public void Initialization()
-        {
-            chain = new BaseChain(10);
-        }
-
-        /// <summary>
-        /// The constructor test.
+        /// The constructor with given length test.
         /// </summary>
         [Test]
-        public void ConstructorTest()
+        public void ConstructorWithLengthTest()
         {
-            chain = new Chain(100);
+            var chain = new BaseChain(100);
             Assert.AreEqual(100, chain.Length);
+            var expectedOrder = new int[100];
+            Assert.AreEqual(expectedOrder, chain.Building);
+            var expectedAlphabet = new Alphabet();
+            Assert.AreEqual(expectedAlphabet, chain.Alphabet);
         }
 
         /// <summary>
-        /// The constructor less zero test.
+        /// The constructor with less than zero length test.
         /// </summary>
         [Test]
-        public void ConstructorLessZeroTest()
+        public void ConstructorLessZeroLengthTest()
         {
             Assert.Throws<ArgumentException>(() => new BaseChain(-10));
+        }
+
+        /// <summary>
+        /// Constructor with string tests.
+        /// </summary>
+        [Test]
+        public void ConstructorWithStringTest()
+        {
+            var chain = new BaseChain("A");
+            Assert.AreEqual(1, chain.Length);
+            var expectedOrder = new[] { 1 };
+            Assert.AreEqual(expectedOrder, chain.Building);
+            var expectedAlphabet = new Alphabet() { (ValueString)"A"};
+            Assert.AreEqual(expectedAlphabet, chain.Alphabet);
+
+            chain = new BaseChain("ABC");
+            Assert.AreEqual(3, chain.Length);
+            expectedOrder = new[] { 1, 2, 3 };
+            Assert.AreEqual(expectedOrder, chain.Building);
+            expectedAlphabet = new Alphabet() { (ValueString)"A", (ValueString)"B", (ValueString)"C" };
+            Assert.AreEqual(expectedAlphabet, chain.Alphabet);
+
+            chain = new BaseChain("AAABBBCCC");
+            Assert.AreEqual(9, chain.Length);
+            expectedOrder = new[] { 1, 1, 1, 2, 2, 2, 3, 3, 3 };
+            Assert.AreEqual(expectedOrder, chain.Building);
+            expectedAlphabet = new Alphabet() { (ValueString)"A", (ValueString)"B", (ValueString)"C" };
+            Assert.AreEqual(expectedAlphabet, chain.Alphabet);
+
+            chain = new BaseChain("AAABBBCCC");
+            Assert.AreEqual(9, chain.Length);
+            expectedOrder = new[] { 1, 1, 1, 2, 2, 2, 3, 3, 3 };
+            Assert.AreEqual(expectedOrder, chain.Building);
+            expectedAlphabet = new Alphabet() { (ValueString)"A", (ValueString)"B", (ValueString)"C" };
+            Assert.AreEqual(expectedAlphabet, chain.Alphabet);
+
+            chain = new BaseChain("BBBCCCAAA");
+            Assert.AreEqual(9, chain.Length);
+            expectedOrder = new[] { 1, 1, 1, 2, 2, 2, 3, 3, 3 };
+            Assert.AreEqual(expectedOrder, chain.Building);
+            expectedAlphabet = new Alphabet() { (ValueString)"B", (ValueString)"C", (ValueString)"A" };
+            Assert.AreEqual(expectedAlphabet, chain.Alphabet);
+
+            chain = new BaseChain("BBB---");
+            Assert.AreEqual(6, chain.Length);
+            expectedOrder = new[] { 1, 1, 1, 2, 2, 2 };
+            Assert.AreEqual(expectedOrder, chain.Building);
+            expectedAlphabet = new Alphabet() { (ValueString)"B", (ValueString)"-" };
+            Assert.AreEqual(expectedAlphabet, chain.Alphabet);
         }
 
         /// <summary>
@@ -52,6 +91,7 @@ namespace LibiadaCore.Tests.Core
         [Test]
         public void GetByThisTest()
         {
+            var chain = new BaseChain(10);
             chain.Set(new ValueString('1'), 0);
             Assert.IsTrue(((ValueString)chain[0]).Equals("1"));
         }
@@ -62,6 +102,7 @@ namespace LibiadaCore.Tests.Core
         [Test]
         public void SetByThisTest()
         {
+            var chain = new BaseChain(10);
             chain[0] = new ValueString('1');
             Assert.IsTrue(((ValueString)chain.Get(0)).Equals("1"));
         }
@@ -72,6 +113,7 @@ namespace LibiadaCore.Tests.Core
         [Test]
         public void GetTest()
         {
+            var chain = new BaseChain(10);
             chain.Set(new ValueString('1'), 0);
             Assert.IsTrue(((ValueString)chain.Get(0)).Equals("1"));
         }
@@ -82,6 +124,7 @@ namespace LibiadaCore.Tests.Core
         [Test]
         public void SetTest()
         {
+            var chain = new BaseChain(10);
             chain.Set(new ValueString('1'), 0);
             Assert.IsTrue(((ValueString)chain.Get(0)).Equals("1"));
         }
@@ -92,10 +135,25 @@ namespace LibiadaCore.Tests.Core
         [Test]
         public void RemoveTest()
         {
+            var chain = new BaseChain(10);
             chain.Set(new ValueString('1'), 0);
             Assert.IsTrue(((ValueString)chain[0]).Equals("1"));
 
             chain.RemoveAt(0);
+            Assert.AreEqual(NullValue.Instance(), chain[0]);
+        }
+
+        /// <summary>
+        /// The dekete test.
+        /// </summary>
+        [Test]
+        public void DeleteTest()
+        {
+            var chain = new BaseChain(10);
+            chain.Set(new ValueString('1'), 0);
+            Assert.IsTrue(((ValueString)chain[0]).Equals("1"));
+
+            chain.DeleteAt(0);
             Assert.AreEqual(NullValue.Instance(), chain[0]);
         }
 
@@ -105,6 +163,7 @@ namespace LibiadaCore.Tests.Core
         [Test]
         public void GetLengthTest()
         {
+            var chain = new BaseChain(10);
             Assert.AreEqual(10, chain.Length);
         }
 
@@ -114,7 +173,7 @@ namespace LibiadaCore.Tests.Core
         [Test]
         public void CloneTest()
         {
-            chain = new BaseChain("123456789A");
+            var chain = new BaseChain("123456789A");
 
             var itsClone = (BaseChain)chain.Clone();
             Assert.AreEqual(chain, itsClone);

@@ -14,14 +14,7 @@
         /// <summary>
         /// The series.
         /// </summary>
-        private List<(int start, int length)> series;
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="SeriesManager"/> class.
-        /// </summary>
-        public SeriesManager()
-        {
-        }
+        private readonly List<(int start, int length)> series;
 
         /// <summary>
         /// Initializes series manager with given sequence.
@@ -29,7 +22,7 @@
         /// <param name="chain">
         /// The chain.
         /// </param>
-        public void Initialize(CongenericChain chain)
+        public SeriesManager(CongenericChain chain)
         {
             series = new List<(int start, int length)>();
             for (int i = 1; i <= chain.OccurrencesCount; i++)

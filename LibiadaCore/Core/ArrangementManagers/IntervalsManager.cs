@@ -9,10 +9,10 @@
     public class IntervalsManager : IArrangementManager
     {
         /// <summary>
-        /// Gets or sets main intervals block
+        /// Gets main intervals block
         /// without start, end or cycle link.
         /// </summary>
-        private int[] intervals;
+        private readonly int[] intervals;
 
         /// <summary>
         /// Gets or sets interval from start of chain to first element.
@@ -36,13 +36,13 @@
         /// <param name="end">
         /// The end.
         /// </param>
-        public void Initialize(int[] intervals, int start, int end)
+        public IntervalsManager(int[] intervals, int start, int end)
         {
             this.intervals = intervals;
             Start = start;
             End = end;
         }
-        
+
         /// <summary>
         /// The initialize.
         /// </summary>
@@ -52,9 +52,9 @@
         /// <exception cref="ArgumentException">
         /// Thrown if sequence is empty.
         /// </exception>
-        public void Initialize(CongenericChain chain)
+        public IntervalsManager(CongenericChain chain)
         {
-            var positions = chain.Positions;
+            int[] positions = chain.Positions;
             int count = positions.Length;
 
             // if sequence is empty

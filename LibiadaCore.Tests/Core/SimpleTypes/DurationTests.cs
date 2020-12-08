@@ -16,8 +16,8 @@
         [Test]
         public void AddDurationTest()
         {
-            var duration1 = new Duration(1, 2, false, 480);
-            var duration2 = new Duration(1, 4, false, 240);
+            var duration1 = new Duration(1, 2, false);
+            var duration2 = new Duration(1, 4, false);
             var duration3 = duration1.AddDuration(duration2);
 
             // duration1
