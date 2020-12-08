@@ -44,7 +44,9 @@ namespace LibiadaCore.Core
             {
                 if (!ElementsIndexes.ContainsKey(value))
                 {
+                    ElementsIndexes.Remove(Elements[index]);
                     Elements[index] = value.Clone();
+                    ElementsIndexes[Elements[index]] = index;
                 }
             }
         }

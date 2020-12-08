@@ -28,25 +28,22 @@
         }
 
         /// <summary>
-        /// Gets size that contains Beats, beatbase, ticksperbeat.
+        /// Gets size that contains beats and beatBase.
         /// </summary>
-        public Size Size { get; private set; }
+        public Size Size { get; }
 
         /// <summary>
         /// Gets Key that contains fifths, mode.
         /// </summary>
-        public Key Key { get; private set; }
+        public Key Key { get; }
 
         /// <summary>
-        /// The clone.
+        /// Creates copy of current MeasureAttributes.
         /// </summary>
         /// <returns>
-        /// The <see cref="IBaseObject"/>.
+        /// The MeasureAttributes as <see cref="IBaseObject"/>.
         /// </returns>
-        public IBaseObject Clone()
-        {
-            return new MeasureAttributes(Size, Key);
-        }
+        public IBaseObject Clone() => new MeasureAttributes(Size, Key);
 
         /// <summary>
         /// The equals.
@@ -57,15 +54,7 @@
         /// <returns>
         /// The <see cref="bool"/>.
         /// </returns>
-        public override bool Equals(object obj)
-        {
-            if (Key.Equals(((MeasureAttributes)obj).Key) && Size.Equals(((MeasureAttributes)obj).Size))
-            {
-                return true;
-            }
-
-            return false;
-        }
+        public override bool Equals(object obj) => obj is MeasureAttributes other && Key.Equals(other.Key) && Size.Equals(other.Size);
 
         /// <summary>
         /// Calculates hash code using

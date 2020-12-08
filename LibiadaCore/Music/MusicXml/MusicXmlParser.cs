@@ -150,15 +150,11 @@
         /// </returns>
         private Size ParseSize(XmlNode attributeNode)
         {
-            int ticks = 0;
-            bool needTicks = false;
             foreach (XmlNode attributeChild in attributeNode.ChildNodes)
             {
                 switch (attributeChild.Name)
                 {
                     case "divisions":
-                        ticks = Convert.ToInt16(attributeChild.InnerText);
-                        needTicks = true;
                         break;
                     case "time":
                     {
@@ -178,12 +174,7 @@
                             }
                         }
 
-                        if (needTicks)
-                        {
-                            return new Size(beats, beatBase, ticks);
-                        }
-
-                        return new Size(beats, beatBase, currentAttributes.Size.TicksPerBeat);
+                        return new Size(beats, beatBase);
                     }
                 }
             }
@@ -344,7 +335,7 @@
                 }
             }
 
-            throw new Exception("LibiadaMusic.XmlParser: error while Note parsing: no pitch or rest: " + childName);
+            throw new Exception($"LibiadaMusic.XmlParser: error while Note parsing: no pitch or rest: {childName}");
         }
 
         /// <summary>
@@ -433,7 +424,6 @@
         private Duration ParseDuration(XmlNode noteNode)
         {
             string type = string.Empty;
-            int duration = 0;
             bool dot = false;
             bool hasTimeModification = false;
             int actualNotes = 0;
@@ -444,7 +434,6 @@
                 switch (noteChild.Name)
                 {
                     case "duration":
-                        duration = Convert.ToInt16(noteChild.InnerText);
                         break;
                     case "type":
                         type = noteChild.InnerText;
@@ -475,10 +464,10 @@
 
             if (hasTimeModification)
             {
-                return new Duration(numerator, denominator, normalNotes, actualNotes, dot, duration);
+                return new Duration(numerator, denominator, normalNotes, actualNotes, dot);
             }
 
-            return new Duration(numerator, denominator, dot, duration);
+            return new Duration(numerator, denominator, dot);
         }
     }
 }

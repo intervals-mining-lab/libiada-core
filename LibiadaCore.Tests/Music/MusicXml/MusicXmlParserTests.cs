@@ -26,54 +26,54 @@
         public void MusicXmlParserSetUp()
         {
             // Measures attributes
-            var attributes = new MeasureAttributes(new Size(7, 8, 1024), new Key(0, "major"));
+            var attributes = new MeasureAttributes(new Size(7, 8), new Key(0, "major"));
 
             // notes lists for each measure
             var notes1 = new List<ValueNote>
             {
-                new ValueNote(new Pitch(3, NoteSymbol.E, 0), new Duration(1, 2, false, 2048), false, Tie.None),
-                new ValueNote(new Pitch(3, NoteSymbol.A, 0), new Duration(1, 8, false, 512), false, Tie.None),
-                new ValueNote(new Pitch(3, NoteSymbol.A, 0), new Duration(1, 8, false, 512), false, Tie.None),
-                new ValueNote(new Pitch(3, NoteSymbol.F, 0), new Duration(1, 8, false, 512), false, Tie.Start)
+                new ValueNote(new Pitch(3, NoteSymbol.E, 0), new Duration(1, 2, false), false, Tie.None),
+                new ValueNote(new Pitch(3, NoteSymbol.A, 0), new Duration(1, 8, false), false, Tie.None),
+                new ValueNote(new Pitch(3, NoteSymbol.A, 0), new Duration(1, 8, false), false, Tie.None),
+                new ValueNote(new Pitch(3, NoteSymbol.F, 0), new Duration(1, 8, false), false, Tie.Start)
             };
             var notes2 = new List<ValueNote>
             {
-                new ValueNote(new Pitch(3, NoteSymbol.F, 0), new Duration(1, 8, false, 512), false, Tie.End),
-                new ValueNote(new Pitch(3, NoteSymbol.B, 0), new Duration(1, 8, false, 512), false, Tie.None),
-                new ValueNote(new Pitch(3, NoteSymbol.G, 0), new Duration(1, 8, false, 512), false, Tie.None),
-                new ValueNote(new Pitch(4, NoteSymbol.C, 0), new Duration(1, 8, false, 512), false, Tie.None),
-                new ValueNote(new Pitch(3, NoteSymbol.G, 0), new Duration(1, 8, false, 512), false, Tie.None),
-                new ValueNote(new Pitch(3, NoteSymbol.E, 0), new Duration(1, 8, false, 512), false, Tie.None),
-                new ValueNote(new Pitch(2, NoteSymbol.A, 0), new Duration(1, 8, false, 512), false, Tie.None)
+                new ValueNote(new Pitch(3, NoteSymbol.F, 0), new Duration(1, 8, false), false, Tie.End),
+                new ValueNote(new Pitch(3, NoteSymbol.B, 0), new Duration(1, 8, false), false, Tie.None),
+                new ValueNote(new Pitch(3, NoteSymbol.G, 0), new Duration(1, 8, false), false, Tie.None),
+                new ValueNote(new Pitch(4, NoteSymbol.C, 0), new Duration(1, 8, false), false, Tie.None),
+                new ValueNote(new Pitch(3, NoteSymbol.G, 0), new Duration(1, 8, false), false, Tie.None),
+                new ValueNote(new Pitch(3, NoteSymbol.E, 0), new Duration(1, 8, false), false, Tie.None),
+                new ValueNote(new Pitch(2, NoteSymbol.A, 0), new Duration(1, 8, false), false, Tie.None)
             };
             var notes3 = new List<ValueNote>
             {
-                new ValueNote(new Pitch(3, NoteSymbol.A, 0), new Duration(1, 16, false, 256), false, Tie.None),
-                new ValueNote(new Pitch(3, NoteSymbol.G, 0), new Duration(1, 16, false, 256), false, Tie.None),
-                new ValueNote(new Pitch(4, NoteSymbol.E, 0), new Duration(1, 16, false, 256), false, Tie.None),
-                new ValueNote(new Pitch(3, NoteSymbol.A, 0), new Duration(1, 16, false, 256), false, Tie.None),
-                new ValueNote(new Pitch(3, NoteSymbol.B, 0), new Duration(1, 16, false, 256), false, Tie.None),
-                new ValueNote(new Pitch(3, NoteSymbol.A, 0), new Duration(1, 16, false, 256), false, Tie.None),
-                new ValueNote(new Pitch(4, NoteSymbol.D, 0), new Duration(1, 8, true, 768), false, Tie.None),
-                new ValueNote(new Pitch(4, NoteSymbol.C, 0), new Duration(1, 8, true, 768), false, Tie.None),
-                new ValueNote((Pitch)null, new Duration(1, 8, false, 512), false, Tie.None)
+                new ValueNote(new Pitch(3, NoteSymbol.A, 0), new Duration(1, 16, false), false, Tie.None),
+                new ValueNote(new Pitch(3, NoteSymbol.G, 0), new Duration(1, 16, false), false, Tie.None),
+                new ValueNote(new Pitch(4, NoteSymbol.E, 0), new Duration(1, 16, false), false, Tie.None),
+                new ValueNote(new Pitch(3, NoteSymbol.A, 0), new Duration(1, 16, false), false, Tie.None),
+                new ValueNote(new Pitch(3, NoteSymbol.B, 0), new Duration(1, 16, false), false, Tie.None),
+                new ValueNote(new Pitch(3, NoteSymbol.A, 0), new Duration(1, 16, false), false, Tie.None),
+                new ValueNote(new Pitch(4, NoteSymbol.D, 0), new Duration(1, 8, true), false, Tie.None),
+                new ValueNote(new Pitch(4, NoteSymbol.C, 0), new Duration(1, 8, true), false, Tie.None),
+                new ValueNote((Pitch)null, new Duration(1, 8, false), false, Tie.None)
             };
             var notes4 = new List<ValueNote>
             {
-                new ValueNote(new Pitch(4, NoteSymbol.C, 0), new Duration(1, 16, false, 256), false, Tie.None),
-                new ValueNote(new Pitch(3, NoteSymbol.A, 0), new Duration(1, 16, false, 256), false, Tie.None),
-                new ValueNote(new Pitch(3, NoteSymbol.E, 0), new Duration(1, 16, false, 256), false, Tie.None),
-                new ValueNote(new Pitch(4, NoteSymbol.C, 0), new Duration(1, 16, false, 256), false, Tie.None),
-                new ValueNote(new Pitch(3, NoteSymbol.E, 0), new Duration(1, 16, false, 256), false, Tie.None),
-                new ValueNote(new Pitch(2, NoteSymbol.A, 0), new Duration(1, 16, false, 256), false, Tie.None),
-                new ValueNote(new Pitch(4, NoteSymbol.D, 0), new Duration(1, 16, false, 256), false, Tie.None),
-                new ValueNote(new Pitch(4, NoteSymbol.C, 0), new Duration(1, 16, false, 256), false, Tie.None),
-                new ValueNote(new Pitch(3, NoteSymbol.A, 0), new Duration(1, 16, false, 256), false, Tie.None),
-                new ValueNote(new Pitch(2, NoteSymbol.E, 0), new Duration(1, 16, false, 256), false, Tie.None),
-                new ValueNote(new Pitch(4, NoteSymbol.C, 0), new Duration(1, 16, false, 256), false, Tie.None),
-                new ValueNote(new Pitch(3, NoteSymbol.G, 0), new Duration(1, 16, false, 256), false, Tie.None),
-                new ValueNote(new Pitch(3, NoteSymbol.A, 0), new Duration(1, 16, false, 256), false, Tie.None),
-                new ValueNote(new Pitch(4, NoteSymbol.C, 0), new Duration(1, 16, false, 256), false, Tie.None)
+                new ValueNote(new Pitch(4, NoteSymbol.C, 0), new Duration(1, 16, false), false, Tie.None),
+                new ValueNote(new Pitch(3, NoteSymbol.A, 0), new Duration(1, 16, false), false, Tie.None),
+                new ValueNote(new Pitch(3, NoteSymbol.E, 0), new Duration(1, 16, false), false, Tie.None),
+                new ValueNote(new Pitch(4, NoteSymbol.C, 0), new Duration(1, 16, false), false, Tie.None),
+                new ValueNote(new Pitch(3, NoteSymbol.E, 0), new Duration(1, 16, false), false, Tie.None),
+                new ValueNote(new Pitch(2, NoteSymbol.A, 0), new Duration(1, 16, false), false, Tie.None),
+                new ValueNote(new Pitch(4, NoteSymbol.D, 0), new Duration(1, 16, false), false, Tie.None),
+                new ValueNote(new Pitch(4, NoteSymbol.C, 0), new Duration(1, 16, false), false, Tie.None),
+                new ValueNote(new Pitch(3, NoteSymbol.A, 0), new Duration(1, 16, false), false, Tie.None),
+                new ValueNote(new Pitch(2, NoteSymbol.E, 0), new Duration(1, 16, false), false, Tie.None),
+                new ValueNote(new Pitch(4, NoteSymbol.C, 0), new Duration(1, 16, false), false, Tie.None),
+                new ValueNote(new Pitch(3, NoteSymbol.G, 0), new Duration(1, 16, false), false, Tie.None),
+                new ValueNote(new Pitch(3, NoteSymbol.A, 0), new Duration(1, 16, false), false, Tie.None),
+                new ValueNote(new Pitch(4, NoteSymbol.C, 0), new Duration(1, 16, false), false, Tie.None)
             };
 
             // measures list for congeneric score track

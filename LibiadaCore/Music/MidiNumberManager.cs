@@ -58,7 +58,7 @@
                 return (NoteSymbol)step;
             }
 
-            throw new Exception("Note value is invalid: " + step);
+            throw new Exception($"Note value is invalid: {step}. MidiNumber was: ${midiNumber}.");
         }
 
         /// <summary>

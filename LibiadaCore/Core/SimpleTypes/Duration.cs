@@ -1,7 +1,6 @@
 ﻿namespace LibiadaCore.Core.SimpleTypes
 {
     using System;
-    using System.Security.Cryptography;
 
     /// <summary>
     /// Note duration.
@@ -20,16 +19,12 @@
         /// <param name="doted">
         /// The doted.
         /// </param>
-        /// <param name="ticks">
-        /// The ticks.
-        /// </param>
-        public Duration(int numerator, int denominator, bool doted, int ticks)
+        public Duration(int numerator, int denominator, bool doted = false)
         {
             Numerator = numerator;
             Denominator = denominator;
             OriginalNumerator = numerator;
             OriginalDenominator = denominator;
-            Ticks = ticks;
             if (doted)
             {
                 PlaceDot();
@@ -54,16 +49,12 @@
         /// <param name="doted">
         /// The doted.
         /// </param>
-        /// <param name="ticks">
-        /// The ticks.
-        /// </param>
-        public Duration(int numerator, int denominator, int tripleNumerator, int tripleDenominator, bool doted, int ticks)
+        public Duration(int numerator, int denominator, int tripleNumerator, int tripleDenominator, bool doted)
         {
             Numerator = numerator;
             Denominator = denominator;
             OriginalNumerator = numerator;
             OriginalDenominator = denominator;
-            Ticks = ticks;
             PlaceTriplet(tripleNumerator, tripleDenominator);
             if (doted)
             {
@@ -86,10 +77,7 @@
         /// <param name="originalDenominator">
         /// The original denominator.
         /// </param>
-        /// <param name="ticks">
-        /// The ticks.
-        /// </param>
-        public Duration(int numerator, int denominator, int originalNumerator, int originalDenominator, int ticks):this(numerator, denominator, false, ticks)
+        public Duration(int numerator, int denominator, int originalNumerator, int originalDenominator):this(numerator, denominator)
         {
             OriginalNumerator = originalNumerator;
             OriginalDenominator = originalDenominator;
@@ -110,26 +98,17 @@
         public int OriginalDenominator { get; private set; }
 
         /// <summary>
-        /// Gets numerator.
-        /// числитель в дроби доли
+        /// Numerator of the fraction representing duration.
         /// </summary>
         public int Numerator { get; private set; }
 
         /// <summary>
-        /// Gets denominator.
-        /// знаменатель в дроби доли
+        /// Denominator of the fraction representing duration.
         /// </summary>
         public int Denominator { get; private set; }
 
         /// <summary>
-        /// Gets number of midi tiks.
-        /// сколько МИДИ тиков в доле
-        /// </summary>
-        public int Ticks { get; private set; }
-
-        /// <summary>
-        /// Gets duration value.
-        ///  значение доли в десятичной дроби
+        /// Duration as double precision floating pint value.
         /// </summary>
         public double Value => (double)Numerator / Denominator;
 
@@ -196,7 +175,7 @@
                 }
             }
 
-            return new Duration(newNumerator, newDenominator, false, Ticks + duration.Ticks);
+            return new Duration(newNumerator, newDenominator, false);
         }
 
         /// <summary>
@@ -211,7 +190,6 @@
         public Duration SubtractDuration(Duration duration)
         {
             var temp = (Duration)duration.Clone();
-            temp.Ticks = -temp.Ticks;
             temp.Numerator = -temp.Numerator;
             return AddDuration(temp);
         }
@@ -224,7 +202,7 @@
         /// </returns>
         public IBaseObject Clone()
         {
-            var temp = new Duration(Numerator, Denominator, false, Ticks)
+            var temp = new Duration(Numerator, Denominator, false)
             {
                 OriginalNumerator = OriginalNumerator,
                 OriginalDenominator = OriginalDenominator
@@ -233,7 +211,10 @@
         }
 
         /// <summary>
-        /// The equals.
+        /// Compares duration values
+        /// (not numerator and denominator separately).
+        /// если модуль разности двух double меньше заданной точности,
+        /// то можно считать что эти double равны
         /// </summary>
         /// <param name="obj">
         /// The object.
@@ -241,30 +222,7 @@
         /// <returns>
         /// The <see cref="bool"/>.
         /// </returns>
-        public override bool Equals(object obj)
-        {
-            if (Math.Abs(Value - ((Duration)obj).Value) < 0.000001)
-            {
-                // если модул разности двух double меньше заданной точности,
-                // то можно считать что эти double равны
-                return true;
-            }
-
-            return false;
-        }
-
-        /// <summary>
-        /// calculates MD5 hash code using
-        /// <see cref="Value"/>.
-        /// </summary>
-        /// <returns>
-        /// The <see cref="T:byte[]"/>.
-        /// </returns>
-        public byte[] GetMD5HashCode()
-        {
-            MD5 md5 = MD5.Create();
-            return md5.ComputeHash(BitConverter.GetBytes(Value));
-        }
+        public override bool Equals(object obj) => obj is Duration other && Math.Abs(Value - other.Value) < 0.000001;
 
         /// <summary>
         /// Calculates hash code using
@@ -273,15 +231,18 @@
         /// <returns>
         /// The <see cref="int"/>.
         /// </returns>
-        public override int GetHashCode()
+        public override int GetHashCode() => ToString().GetHashCode();
+
+        /// <summary>
+        /// Represents duration as string
+        /// as "Duration: {Numerator}/{Denominator}".
+        /// </summary>
+        /// <returns>
+        /// Duration as <see cref="string"/>
+        /// </returns>
+        public override string ToString()
         {
-            unchecked
-            {
-                int hashCode = -1534900553;
-                hashCode = (hashCode * -1521134295) + Numerator.GetHashCode();
-                hashCode = (hashCode * -1521134295) + Denominator.GetHashCode();
-                return hashCode;
-            }
+            return $"Duration: {Numerator}/{Denominator}";
         }
 
         /// <summary>
@@ -291,7 +252,7 @@
         {
             if ((Numerator % 2) == 0)
             {
-                // если четный числитель, то прибавляем к нему половину
+                // if numerator is even we just increase it by one half
                 Numerator = (int)(Numerator * 1.5);
             }
             else
@@ -312,8 +273,8 @@
         /// </param>
         private void PlaceTriplet(int tripleNumerator, int tripleDenominator)
         {
-            Numerator = Numerator * tripleNumerator;
-            Denominator = Denominator * tripleDenominator;
+            Numerator *= tripleNumerator;
+            Denominator *= tripleDenominator;
         }
     }
 }

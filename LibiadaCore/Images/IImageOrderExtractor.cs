@@ -1,8 +1,8 @@
-﻿namespace LibiadaCore.Images
-{
-    using LibiadaCore.Core;
-    using SixLabors.ImageSharp;
+﻿using LibiadaCore.Core;
+using SixLabors.ImageSharp.PixelFormats;
 
+namespace LibiadaCore.Images
+{
     /// <summary>
     /// The ImageOrderExtractor interface.
     /// </summary>
