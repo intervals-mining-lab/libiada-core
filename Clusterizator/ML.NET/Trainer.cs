@@ -1,21 +1,20 @@
-﻿using Clusterizator.ML.NET.Converter;
-using Microsoft.ML;
-using Microsoft.ML.Data;
-using Microsoft.ML.Trainers;
-using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Clusterizator.ML
+﻿namespace Clusterizator.ML
 {
+    using Clusterizator.ML.NET.Converter;
+
+    using Microsoft.ML;
+    using Microsoft.ML.Data;
+    using Microsoft.ML.Trainers;
+
     public class Trainer
     {
-        public MLContext _context { get; private set; }
+        public MLContext context { get; private set; }
         
         public Trainer()
         {
-            _context = new MLContext();
+            context = new MLContext();
         }
+
         public TransformerChain<ClusteringPredictionTransformer<KMeansModelParameters>> TrainModel(double[][] inputData,int clustersCount, out SchemaDefinition schema)
         {
             var data = Mapper.Convert(inputData);
@@ -24,9 +23,9 @@ namespace Clusterizator.ML
             definedSchema[0].ColumnType = new VectorDataViewType
                 (((VectorDataViewType)definedSchema[0].ColumnType).ItemType,
                 featureDimension);
-            var dataView = _context.Data.LoadFromEnumerable(data, definedSchema);
-            var pipeline = _context.Transforms.Concatenate("Feautures", "Characteristics")
-                                    .Append(_context.Clustering.Trainers.KMeans("Characteristics", numberOfClusters: clustersCount));
+            var dataView = context.Data.LoadFromEnumerable(data, definedSchema);
+            var pipeline = context.Transforms.Concatenate("Feautures", "Characteristics")
+                                    .Append(context.Clustering.Trainers.KMeans("Characteristics", numberOfClusters: clustersCount));
             var model = pipeline.Fit(dataView);
             schema = definedSchema;
             return model;

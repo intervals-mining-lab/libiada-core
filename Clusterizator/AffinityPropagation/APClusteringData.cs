@@ -3,10 +3,15 @@
     internal class APClusteringData
     {
         public double[][] SimilarityMatrix { get; set; }
+
         public double[][] AvailabilityMatrix { get; set; }
+
         public double[][] ResponsibilityMatrix { get; set; }
+
         public double[][] Combined { get; set; }
+
         public int IterationCount { get; set; }
+
         public double Lambda { get; set; }
 
         private readonly int matrixLength;
@@ -61,23 +66,26 @@
                     current = ResponsibilityMatrix[i][indexB];
                     if (current < 0)
                     {
-                        current = 0.0;
+                        current = 0;
                     }
 
                     sum += current;
                 }
             }
+
             availability = sum;
             if (indexA != indexB)
             {
                 availability = ResponsibilityMatrix[indexB][indexB];
                 if (availability > 0)
                 {
-                    availability = 0.0;
+                    availability = 0;
                 }
             }
+
             AvailabilityMatrix[indexA][indexB] = Lambda * previous + (1 - Lambda) * availability;
         }
+
         public void UpdateAvailibility()
         {
             for (int i = 0; i < matrixLength; i++)
@@ -99,6 +107,7 @@
                 }
             }
         }
+
         public void UpdateCombined()
         {
             for (int i = 0; i < matrixLength; i++)
@@ -122,6 +131,7 @@
                     result[i] = i;
                 }
             }
+
             return result;
         }
     }

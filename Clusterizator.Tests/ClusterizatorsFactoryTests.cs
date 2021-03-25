@@ -1,14 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-
-using Clusterizator.Krab;
-using Clusterizator.ML.NET;
-
-using NUnit.Framework;
-
-namespace Clusterizator.Tests
+﻿namespace Clusterizator.Tests
 {
+    using System;
+    using System.Collections.Generic;
+    using System.ComponentModel;
+
+    using Clusterizator.Krab;
+    using Clusterizator.MeanShift;
+    using Clusterizator.ML.NET;
+
+    using NUnit.Framework;
+
     /// <summary>
     /// The clusterizators factory tests.
     /// </summary>
@@ -26,13 +27,18 @@ namespace Clusterizator.Tests
         /// </param>
         [TestCase(ClusterizationType.KMeans, typeof(KMeansMLNet))]
         [TestCase(ClusterizationType.Krab, typeof(KrabClusterization))]
+        [TestCase(ClusterizationType.AffinityPropagation, typeof(Clusterizator.AffinityPropagation.AffinityPropagation))]
+        [TestCase(ClusterizationType.FRiSCluster, typeof(Clusterizator.FRiSCluster.FRiSCluster))]
+        [TestCase(ClusterizationType.MeanShift, typeof(MeanShiftClusterization))]
         public void SelectionTest(ClusterizationType type, Type expected)
         {
             var parameters = new Dictionary<string, double>
             {
-                                            { "powerWeight", 1 },
-                                            { "normalizedDistanceWeight", 1 },
-                                            { "distanceWeight", 4 }
+                { "powerWeight", 1 },
+                { "normalizedDistanceWeight", 1 },
+                { "distanceWeight", 4 },
+                { "clustersCount", 2 },
+                { "maximumClusters", 3 }
             };
             var clusterizator = ClusterizatorsFactory.CreateClusterizator(type, parameters);
 

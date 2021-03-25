@@ -1,8 +1,9 @@
-﻿using Clusterizator.ML.NET;
-using NUnit.Framework;
-
-namespace Clusterizator.Tests.kMeans
+﻿namespace Clusterizator.Tests.kMeans
 {
+    using Clusterizator.ML.NET;
+
+    using NUnit.Framework;
+
     /// <summary>
     /// The k-means cluster tests.
     /// </summary>
@@ -43,7 +44,13 @@ namespace Clusterizator.Tests.kMeans
         public void TwoDimensionDataClusterTest()
         {
             var cluster = new KMeansMLNet();
-            double[][] data = { new double[] { -5, 1 }, new double[] { -5, 2 }, new double[] { 0, 0 }, new double[] { 1, 1 } };
+            double[][] data =
+            {
+                new double[] { -5, 1 },
+                new double[] { -5, 2 },
+                new double[] { 0, 0 },
+                new double[] { 1, 1 }
+            };
             int[] actual = cluster.Cluster(2, data);
             Assert.IsTrue(actual[0] == actual[1]);
             Assert.IsTrue(actual[0] != actual[2]);
@@ -57,7 +64,16 @@ namespace Clusterizator.Tests.kMeans
         public void MultipleDataPointsClusterTest()
         {
             var cluster = new KMeansMLNet();
-            double[][] data = { new[] { -2.1 }, new[] { -1.0 }, new[] { 0.3 }, new[] { 1.0 }, new[] { 1.1 }, new[] { 7.0 }, new[] { 9.0} };
+            double[][] data =
+            { 
+                new[] { -2.1 }, 
+                new[] { -1.0 }, 
+                new[] { 0.3 }, 
+                new[] { 1.0 }, 
+                new[] { 1.1 }, 
+                new[] { 7.0 }, 
+                new[] { 9.0 }
+            };
             int[] actual = cluster.Cluster(2, data);
             Assert.IsTrue(actual[0] == actual[1]);
             Assert.IsTrue(actual[0] == actual[2]);

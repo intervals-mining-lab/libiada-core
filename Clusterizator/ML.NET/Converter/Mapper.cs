@@ -1,30 +1,30 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Clusterizator.ML.NET.Converter
+﻿namespace Clusterizator.ML.NET.Converter
 {
     public class Mapper
     {
-        public static ClusterizationData[] Convert(double [][] data)
+        public static ClusterizationData[] Convert(double[][] data)
         {
-            var clusterizationData = new List<ClusterizationData>();
-            foreach (var chain in data)
+            var clusterizationData = new ClusterizationData[data.Length];
+            for (int i = 0; i < data.Length; i++)
             {
-                clusterizationData.Add(new ClusterizationData() { Characteristics = toFloatArray(chain)});
+                clusterizationData[i] = new ClusterizationData()
+                                            {
+                                                Characteristics = ToFloatArray(data[i])
+                                            };
             }
-            return clusterizationData.ToArray();
+
+            return clusterizationData;
         }
-        private static float[] toFloatArray(double[] arr)
+
+        private static float[] ToFloatArray(double[] source)
         {
-            if (arr == null) return null;
-            int n = arr.Length;
-            float[] ret = new float[n];
-            for (int i = 0; i < n; i++)
+            float[] result = new float[source.Length];
+            for (int i = 0; i < source.Length; i++)
             {
-                ret[i] = (float)arr[i];
+                result[i] = (float)source[i];
             }
-            return ret;
+
+            return result;
         }
     }
 }

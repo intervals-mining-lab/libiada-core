@@ -53,7 +53,7 @@
                 case ClusterizationType.MeanShift:
                     if (!parameters.TryGetValue("bandwidth", out double bandwidth))
                     {
-                        bandwidth = 0;
+                        bandwidth = 1;
                     }
 
                     return new MeanShiftClusterization(bandwidth);
@@ -61,6 +61,9 @@
                     var minimumClusters = (int)parameters["clustersCount"];
                     var maximumClusters = (int)parameters["maximumClusters"];
                     return new FRiSCluster.FRiSCluster(minimumClusters, maximumClusters);
+
+                case ClusterizationType.AffinityPropagation:
+                    return new AffinityPropagation.AffinityPropagation();
                 default:
                     throw new InvalidEnumArgumentException(nameof(type), (int)type, typeof(ClusterizationType));
             }

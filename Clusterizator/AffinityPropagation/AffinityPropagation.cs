@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Clusterizator.AffinityPropagation
+﻿namespace Clusterizator.AffinityPropagation
 {
     public class AffinityPropagation : IClusterizator
     {

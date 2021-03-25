@@ -1,10 +1,9 @@
-﻿
-namespace Clusterizator.MeanShift
+﻿namespace Clusterizator.MeanShift
 {
     using Accord.MachineLearning;
     using Accord.Statistics.Distributions.DensityKernels;
 
-    class MeanShiftClusterization : IClusterizator
+    public class MeanShiftClusterization : IClusterizator
     {
         private readonly MeanShift meanShift;
 

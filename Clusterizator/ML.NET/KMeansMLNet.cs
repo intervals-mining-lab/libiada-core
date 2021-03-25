@@ -1,27 +1,25 @@
-﻿using Clusterizator.ML.NET.Converter;
-
-namespace Clusterizator.ML.NET
+﻿namespace Clusterizator.ML.NET
 {
+    using Clusterizator.ML.NET.Converter;
+
     public class KMeansMLNet : IClusterizator
     {
-        private readonly Trainer trainer;
-        public KMeansMLNet()
-        {
-            trainer = new Trainer();
-        }
-
         public int[] Cluster(int clustersCount, double[][] data)
         {
+            Trainer trainer = new Trainer();
+
             int[] clusters = new int[data.Length];
             var model = trainer.TrainModel(data, clustersCount, out var schema);
-            var predictor = trainer._context.Model
+            var predictor = trainer.context.Model
                             .CreatePredictionEngine<ClusterizationData, ClusterPrediction>(model, inputSchemaDefinition: schema);
-            var datas = Mapper.Convert(data);
-            for (int i = 0; i < datas.Length; i++)
+            var clustrizationData = Mapper.Convert(data);
+            
+            for (int i = 0; i < clustrizationData.Length; i++)
             {
-                var result = predictor.Predict(datas[i]);
+                var result = predictor.Predict(clustrizationData[i]);
                 clusters[i] = (int)result.PredictedClusterId;
             }
+
             return clusters;
         }
     }

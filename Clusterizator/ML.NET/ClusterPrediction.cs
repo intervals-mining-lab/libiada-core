@@ -1,10 +1,7 @@
-﻿using Microsoft.ML.Data;
-using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Clusterizator.ML
+﻿namespace Clusterizator.ML
 {
+    using Microsoft.ML.Data;
+
     public class ClusterPrediction
     {
         [ColumnName("PredictedLabel")]

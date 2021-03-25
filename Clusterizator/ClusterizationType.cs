@@ -36,7 +36,10 @@
         [Description("FRiS-Cluster clusterization")]
         FRiSCluster = 4,
 
-        [Display(Name = "Affinity зropagation")]
+        /// <summary>
+        /// The affinity propagation clustering.
+        /// </summary>
+        [Display(Name = "Affinity propagation")]
         [Description("Affinity зropagation clusterization")]
         AffinityPropagation = 5
     }

@@ -1,20 +1,22 @@
-﻿using Clusterizator.ML;
-using Clusterizator.ML.NET.Converter;
-using Microsoft.ML.Data;
-using NUnit.Framework;
-using System;
-using System.Diagnostics;
-
-namespace Clusterizator.Tests.ML
+﻿namespace Clusterizator.Tests.ML
 {
+    using Clusterizator.ML;
+    using Clusterizator.ML.NET.Converter;
+    using Microsoft.ML.Data;
+
+    using NUnit.Framework;
+
+    using System.Diagnostics;
+
     [TestFixture(Category = "Unit", TestOf = typeof(Trainer))]
     public class TrainerTests
     {
-        private double[][] _data;
+        private double[][] data;
+
         [SetUp]
         public void SetUp()
         {
-            _data = new double[][] { 
+            data = new double[][] { 
                                      new double[] { 1.4172016973019848, 0.6992092204815338, 0.5162038850842143},
                                      new double[] { 1.4171502875265674, 0.6992873437232361, 0.5160427005430666},
                                      new double[] { 1.4136924686420713, 0.6954713046535896, 0.5239371049049106},
@@ -30,14 +32,17 @@ namespace Clusterizator.Tests.ML
                                      new double[] { 1.4630872253570406, 0.7352564289510857, 0.44368060105173246},
                                    };
         }
+
+
+        //TODO: add real tests!
         [Test]
         public void Test()
         {
             var ml = new Trainer();
-            var model = ml.TrainModel(_data, 2, out SchemaDefinition schema);
-            var predictor = ml._context.Model.CreatePredictionEngine<ClusterizationData, ClusterPrediction>(model, inputSchemaDefinition:schema);
-            var data = Mapper.Convert(_data);
-            foreach(var point in data)
+            var model = ml.TrainModel(data, 2, out SchemaDefinition schema);
+            var predictor = ml.context.Model.CreatePredictionEngine<ClusterizationData, ClusterPrediction>(model, inputSchemaDefinition:schema);
+            var clusterizationData = Mapper.Convert(data);
+            foreach(var point in clusterizationData)
             {
                 var prediction = predictor.Predict(point);
                 Debug.WriteLine($"Cluster: {prediction.PredictedClusterId}");
