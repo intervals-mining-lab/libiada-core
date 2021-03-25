@@ -25,7 +25,7 @@ namespace LibiadaCore.Core.Characteristics.Calculators.CongenericCalculators
         public double Calculate(CongenericChain chain, Link link)
         {
             int[] intervals = chain.GetArrangement(link);
-
+            // TODO: try using Log of multiplied intervals
             return intervals.Length == 0 ? 0 : intervals.Sum(interval => Math.Log(interval, 2));
         }
     }

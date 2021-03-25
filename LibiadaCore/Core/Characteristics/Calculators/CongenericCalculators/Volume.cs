@@ -1,6 +1,6 @@
 ﻿namespace LibiadaCore.Core.Characteristics.Calculators.CongenericCalculators
 {
-    using System.Linq;
+    using System.Numerics;
 
     /// <summary>
     /// Volume of sequence.
@@ -22,7 +22,9 @@
         public double Calculate(CongenericChain chain, Link link)
         {
             int[] intervals = chain.GetArrangement(link);
-            return intervals.Length == 0 ? 1 : intervals.Aggregate((result, interval) => result * interval);
+            BigInteger result = 1;
+            foreach (int interval in intervals) result *= interval;
+            return (double)result;
         }
     }
 }
