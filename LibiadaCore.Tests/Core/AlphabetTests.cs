@@ -316,5 +316,20 @@
             Assert.AreNotSame(c, firstAlphabet[2]);
             Assert.AreNotSame(a, firstAlphabet[0]);
         }
+
+        /// <summary>
+        /// Testing alphabet to string conversion.
+        /// </summary>
+        [Test]
+        public void ToStringTest()
+        {
+            firstAlphabet.Add(NullValue.Instance());
+            firstAlphabet.Add((ValueInt)1);
+            firstAlphabet.Add((ValueString)"a");
+            firstAlphabet.Add((ValueInt)2);
+
+            var result = firstAlphabet.ToString();
+            Assert.AreEqual("< -, 1, a, 2 >", result);
+        }
     }
 }
