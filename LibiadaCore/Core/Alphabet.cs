@@ -4,6 +4,7 @@ namespace LibiadaCore.Core
     using System.Collections;
     using System.Collections.Generic;
     using System.Linq;
+    using System.Text;
 
     /// <summary>
     /// Implementation of ordered set - alphabet of elements.
@@ -264,6 +265,22 @@ namespace LibiadaCore.Core
 
                 return hashCode;
             }
+        }
+
+        /// <summary>
+        /// Converts list of elements into string,
+        /// containing tuple of elements.
+        /// </summary>
+        /// <returns></returns>
+        public override string ToString()
+        {
+            StringBuilder result = new StringBuilder();
+            result.Append("< ");
+
+            foreach(var element in Elements) result.Append($"{element}, ");
+            result.Remove(result.Length - 2, 2);
+            result.Append(" >");
+            return result.ToString();
         }
     }
 }
