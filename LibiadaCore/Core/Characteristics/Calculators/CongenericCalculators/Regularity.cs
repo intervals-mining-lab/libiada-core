@@ -1,5 +1,7 @@
 namespace LibiadaCore.Core.Characteristics.Calculators.CongenericCalculators
 {
+    // TODO: remove because it duplicates periodicity 
+
     /// <summary>
     /// Regularity of sequence.
     /// </summary>

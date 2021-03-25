@@ -65,17 +65,6 @@ namespace LibiadaCore.Core.SimpleTypes
         }
 
         /// <summary>
-        /// The to string.
-        /// </summary>
-        /// <returns>
-        /// The <see cref="string"/>.
-        /// </returns>
-        public override string ToString()
-        {
-            return Elements[0].ToString();
-        }
-
-        /// <summary>
         /// Cloning method.
         /// </summary>
         /// <returns>

@@ -2,10 +2,13 @@
 {
     using System;
     using System.Collections.Generic;
+    using System.Linq;
 
     using LibiadaCore.Core;
     using LibiadaCore.Core.SimpleTypes;
     using LibiadaCore.Iterators;
+
+    using static DnaCodingTables;
 
     /// <summary>
     /// Static class for transformation of DNA sequences
@@ -14,96 +17,54 @@
     public static class DnaTransformer
     {
         /// <summary>
-        /// Translates DNA sequence into amino acids.
+        /// Translates DNA sequence into amino-acids.
         /// </summary>
         /// <param name="inputChain">
         /// DNA sequence.
         /// </param>
+        /// <param name="translationTable">
+        /// Number of the codon to amino-acid translation table.
+        /// 1 by default.
+        /// </param>
         /// <returns>
-        /// Amino acid sequence of type <see cref="BaseChain"/>.
+        /// Amino-acid sequence of type <see cref="BaseChain"/>.
         /// Elements are of <see cref="ValueString"/> type.
         /// </returns>
-        public static BaseChain EncodeAmino(BaseChain inputChain)
+        public static BaseChain EncodeAmino(BaseChain inputChain, byte translationTable = 1)
         {
-            // TODO: add translationTable param
-            DnaProcessor.CheckDnaAlphabet(inputChain.Alphabet);
-            var aminoMap = new Dictionary<string, ValueString>
+            if (!codingTables.ContainsKey(translationTable))
             {
-                { "TTT", "F" },
-                { "TTC", "F" },
-                { "TTA", "L" },
-                { "TTG", "L" },
-                { "TCT", "S" },
-                { "TCC", "S" },
-                { "TCA", "S" },
-                { "TCG", "S" },
-                { "TAT", "Y" },
-                { "TAC", "Y" },
-                { "TAA", "X" },
-                { "TAG", "X" },
-                { "TGT", "C" },
-                { "TGC", "C" },
-                { "TGA", "X" },
-                { "TGG", "W" },
-                { "CTT", "L" },
-                { "CTC", "L" },
-                { "CTA", "L" },
-                { "CTG", "L" },
-                { "CCT", "P" },
-                { "CCC", "P" },
-                { "CCA", "P" },
-                { "CCG", "P" },
-                { "CAT", "H" },
-                { "CAC", "H" },
-                { "CAA", "Q" },
-                { "CAG", "Q" },
-                { "CGT", "R" },
-                { "CGC", "R" },
-                { "CGA", "R" },
-                { "CGG", "R" },
-                { "ATT", "I" },
-                { "ATC", "I" },
-                { "ATA", "I" },
-                { "ATG", "M" },
-                { "ACT", "T" },
-                { "ACC", "T" },
-                { "ACA", "T" },
-                { "ACG", "T" },
-                { "AAT", "N" },
-                { "AAC", "N" },
-                { "AAA", "K" },
-                { "AAG", "K" },
-                { "AGT", "S" },
-                { "AGC", "S" },
-                { "AGA", "R" },
-                { "AGG", "R" },
-                { "GTT", "V" },
-                { "GTC", "V" },
-                { "GTA", "V" },
-                { "GTG", "V" },
-                { "GCT", "A" },
-                { "GCC", "A" },
-                { "GCA", "A" },
-                { "GCG", "A" },
-                { "GAT", "D" },
-                { "GAC", "D" },
-                { "GAA", "E" },
-                { "GAG", "E" },
-                { "GGT", "G" },
-                { "GGC", "G" },
-                { "GGA", "G" },
-                { "GGG", "G" }
-            };
-
-            var result = new List<IBaseObject>(inputChain.Length / 3);
-            List<string> codons = DiffCutter.Cut(inputChain.ToString(),new SimpleCutRule(inputChain.Length, 3, 3));
-
-            foreach (string codon in codons)
-            {
-                result.Add(aminoMap[codon]);
+                throw new ArgumentException($"Translation table number is not supported, but was {translationTable}", nameof(translationTable));
             }
 
-            return new BaseChain(result);
+            DnaProcessor.CheckDnaAlphabet(inputChain.Alphabet);
+
+            var aminoMap = codingTables[translationTable];
+
+            var result = new List<IBaseObject>(inputChain.Length / 3);
+            List<string> codons = DiffCutter.Cut(inputChain.ToString(), new SimpleCutRule(inputChain.Length, 3, 3));
+            
+            for (int i = 0; i < codons.Count; i++)
+            {
+                var aminoAcid = aminoMap[codons[i]];
+                
+                if (aminoAcid is ValuePhantom phantom && phantom.Count(p => !p.Equals((ValueString)"*")) != 1)
+                {
+                    throw new Exception($"Ambiguous amino code:{aminoAcid}");
+                }
+
+                var value = aminoAcid as ValueString ?? (ValueString)(aminoAcid as ValuePhantom).Single(p => !p.Equals((ValueString)"*"));
+
+                if (i != codons.Count - 1)
+                {
+                    if (((ValueString)"*").Equals(aminoAcid)) throw new Exception("Unexpected stop-codon inside coding sequence");
+                    else result.Add(value);
+                }
+                else if (aminoAcid.Equals((ValueString)"*")) return new BaseChain(result);
+                else throw new Exception("No stop-codon at the end of coding sequence");
+            }
+
+            throw new Exception("Unreachable code is reached");
         }
 
         /// <summary>
@@ -118,6 +79,7 @@
         /// </returns>
         public static BaseChain Decode(BaseChain inputChain)
         {
+            // TODO: add coding table param
             var result = new List<IBaseObject>();
             for (int i = 0; i < inputChain.Length; i++)
             {
