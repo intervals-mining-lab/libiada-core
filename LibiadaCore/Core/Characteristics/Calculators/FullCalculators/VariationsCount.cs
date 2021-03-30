@@ -1,10 +1,11 @@
 ﻿namespace LibiadaCore.Core.Characteristics.Calculators.FullCalculators
 {
     using LibiadaCore.Core.SimpleTypes;
+    using System.Numerics;
 
     /// <summary>
     /// Count of probable sequences that can be generated
-    /// from given phantom chain (sequence containing phantom messages).
+    /// from given phantom sequence (sequence containing phantom messages).
     /// </summary>
     public class VariationsCount : NonLinkableFullCalculator
     {
@@ -19,17 +20,16 @@
         /// </returns>
         public override double Calculate(Chain chain)
         {
-            int count = 1;
+            BigInteger count = 1;
             for (int i = 0; i < chain.Length; i++)
             {
-                var j = chain[i] as ValuePhantom;
-                if (j != null)
+                if (chain[i] is ValuePhantom message)
                 {
-                    count *= ((ValuePhantom)chain[i]).Cardinality;
+                    count *= message.Cardinality;
                 }
             }
 
-            return count;
+            return (double)count;
         }
     }
 }

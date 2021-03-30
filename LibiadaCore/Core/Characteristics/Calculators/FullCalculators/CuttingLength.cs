@@ -18,20 +18,6 @@ namespace LibiadaCore.Core.Characteristics.Calculators.FullCalculators
         /// </returns>
         public override double Calculate(Chain chain)
         {
-            return CutCommon(chain);
-        }
-
-        /// <summary>
-        /// The cut common.
-        /// </summary>
-        /// <param name="chain">
-        /// Source sequence.
-        /// </param>
-        /// <returns>
-        /// <see cref="double"/>.
-        /// </returns>
-        private double CutCommon(AbstractChain chain)
-        {
             for (int length = 1; length <= chain.Length; length++)
             {
                 if (IsRecoveryPossible(chain, length))
@@ -44,7 +30,7 @@ namespace LibiadaCore.Core.Characteristics.Calculators.FullCalculators
         }
 
         /// <summary>
-        /// The check recovery available.
+        /// Method for checking if reconstruction of original sequence is possible.
         /// </summary>
         /// <param name="chain">
         /// Source sequence.

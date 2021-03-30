@@ -16,7 +16,7 @@
         /// Source sequence.
         /// </param>
         /// <param name="link">
-        /// Link of intervals in chain.
+        /// Link of intervals in sequence.
         /// </param>
         /// <returns>
         /// Average remoteness dispersion <see cref="double"/> value.

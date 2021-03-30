@@ -1,5 +1,7 @@
 ﻿namespace LibiadaCore.Core.Characteristics.Calculators.FullCalculators
 {
+    using System.Numerics;
+
     /// <summary>
     /// Volume of sequence.
     /// </summary>
@@ -22,13 +24,13 @@
             var calculator = new CongenericCalculators.Volume();
 
             Alphabet alphabet = chain.Alphabet;
-            double result = 1;
+            BigInteger result = 1;
             for (int i = 0; i < alphabet.Cardinality; i++)
             {
-                result *= calculator.Calculate(chain.CongenericChain(i), link);
+                result *= (BigInteger)calculator.Calculate(chain.CongenericChain(i), link);
             }
 
-            return result;
+            return (double)result;
         }
     }
 }
