@@ -39,12 +39,14 @@
 
             double result = 0;
             double gDelta = geometricMean.Calculate(chain, link);
-            double n = intervalsCount.Calculate(chain, link);
-
-            foreach (int kDelta in uniqueIntervals)
+            double gDeltaLog = Math.Log(gDelta, 2);
+            double nj = intervalsCount.Calculate(chain, link);
+            foreach (int interval in uniqueIntervals)
             {
-                double centeredRemoteness = Math.Log(kDelta, 2) - Math.Log(gDelta, 2);
-                result += centeredRemoteness * centeredRemoteness * centeredRemoteness * centeredRemoteness * intervals.Count(interval => interval == kDelta) / n;
+                // number of intervals of certain length
+                double nk = intervals.Count(i => i == interval);
+                double centeredRemoteness = Math.Log(interval, 2) - gDeltaLog;
+                result += centeredRemoteness * centeredRemoteness * centeredRemoteness * centeredRemoteness * nk / nj;
             }
 
             return result;

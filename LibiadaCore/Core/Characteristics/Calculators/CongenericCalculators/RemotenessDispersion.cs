@@ -42,12 +42,12 @@
 
             double result = 0;
             double gDelta = geometricMean.Calculate(chain, link);
-            double n = intervalsCount.Calculate(chain, link);
-
-            foreach ((int interval, int count) in intervalsDictionary)
+            double nj = intervalsCount.Calculate(chain, link);
+            double gDeltaLog = Math.Log(gDelta, 2);
+            foreach ((int interval, int nk) in intervalsDictionary)
             {
-                double centeredRemoteness = Math.Log(interval, 2) - Math.Log(gDelta, 2);
-                result += centeredRemoteness * centeredRemoteness * count / n;
+                double centeredRemoteness = Math.Log(interval, 2) - gDeltaLog;
+                result += centeredRemoteness * centeredRemoteness * nk / nj;
             }
 
             return result;
