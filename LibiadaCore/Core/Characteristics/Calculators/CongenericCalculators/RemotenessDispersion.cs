@@ -25,8 +25,7 @@
         /// </returns>
         public double Calculate(CongenericChain chain, Link link)
         {
-            var intervals = new List<int>();
-            intervals.AddRange(chain.GetArrangement(link).ToList());
+            var intervals = chain.GetArrangement(link).ToList();
 
             if (intervals.Count == 0)
             {
@@ -38,12 +37,11 @@
                                      .ToDictionary(i => i.Key, i => i.Count());
 
             var intervalsCount = new IntervalsCount();
-            var geometricMean = new GeometricMean();
+            var averageRemoteness = new AverageRemoteness();
 
             double result = 0;
-            double gDelta = geometricMean.Calculate(chain, link);
             double nj = intervalsCount.Calculate(chain, link);
-            double gDeltaLog = Math.Log(gDelta, 2);
+            double gDeltaLog = averageRemoteness.Calculate(chain, link);
             foreach ((int interval, int nk) in intervalsDictionary)
             {
                 double centeredRemoteness = Math.Log(interval, 2) - gDeltaLog;
