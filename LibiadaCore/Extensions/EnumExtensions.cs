@@ -40,7 +40,7 @@
 
             if (descriptionAttributes == null)
             {
-                return String.Empty;
+                return string.Empty;
             }
 
             return (descriptionAttributes.Length > 0) ? descriptionAttributes[0].Name : value.ToString(CultureInfo.InvariantCulture);
