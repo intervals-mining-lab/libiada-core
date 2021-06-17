@@ -1,14 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace Segmenter.PoemsSegmenter
+﻿namespace Segmenter.PoemsSegmenter
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+
     public class PartialOrlovCriterion
     {
-        Dictionary<string, int> consonancesDictionary;
-        string text;
+        private Dictionary<string, int> consonancesDictionary;
+        private string text;
+
         public PartialOrlovCriterion(Dictionary<string, int> consonancesDictionary, string text)
         {
             this.consonancesDictionary = consonancesDictionary;
