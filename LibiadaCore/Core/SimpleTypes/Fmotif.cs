@@ -56,7 +56,7 @@
         // TODO: убрать все частные и заменить на общие!!!!!!!!! заменил все withoutpauses() на PauseTreatment с параметорм ignore
 
         /// <summary>
-        /// The pause treatment.
+        /// The pause treatment procedure.
         /// </summary>
         /// <param name="pauseTreatment">
         /// The param pause treatment.
@@ -69,7 +69,6 @@
         /// </exception>
         public Fmotif PauseTreatmentProcedure(PauseTreatment pauseTreatment)
         {
-            // возвращает копию этого объекта
             switch (pauseTreatment)
             {
                 case PauseTreatment.Ignore:
