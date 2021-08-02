@@ -1,10 +1,10 @@
-﻿using LibiadaCore.Core;
-
-using SixLabors.ImageSharp;
-using SixLabors.ImageSharp.PixelFormats;
-
-namespace LibiadaCore.Images
+﻿namespace LibiadaCore.Images
 {
+    using LibiadaCore.Core;
+
+    using SixLabors.ImageSharp;
+    using SixLabors.ImageSharp.PixelFormats;
+
     /// <summary>
     /// The image processor.
     /// </summary>
