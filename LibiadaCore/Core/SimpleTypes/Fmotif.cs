@@ -260,7 +260,7 @@
         /// The equals.
         /// </summary>
         /// <param name="obj">
-        /// The object.
+        /// Fmotif to compare to.
         /// </param>
         /// <returns>
         /// The <see cref="bool"/>.
