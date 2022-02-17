@@ -69,7 +69,7 @@
             expected = new[] { 6 };
             Assert.AreEqual(expected, source.AllIndexesOf(7));
 
-            expected = new int[0];
+            expected = Array.Empty<int>();
             Assert.AreEqual(expected, source.AllIndexesOf(11));
         }
 
@@ -90,7 +90,7 @@
             expected = new[] { 1, 4, 5 };
             Assert.AreEqual(expected, source.AllIndexesOf("test"));
 
-            expected = new int[0];
+            expected = Array.Empty<int>();
             Assert.AreEqual(expected, source.AllIndexesOf("another test"));
         }
 

@@ -1,10 +1,10 @@
-﻿using LibiadaCore.Core;
-using LibiadaCore.Core.SimpleTypes;
-
-using SixLabors.ImageSharp.PixelFormats;
-
-namespace LibiadaCore.Images
+﻿namespace LibiadaCore.Images
 {
+    using LibiadaCore.Core;
+    using LibiadaCore.Core.SimpleTypes;
+
+    using SixLabors.ImageSharp.PixelFormats;
+
     /// <summary>
     /// The line order extractor.
     /// </summary>
@@ -28,11 +28,12 @@ namespace LibiadaCore.Images
             {
                 for (int j = 0; j < image.GetLength(1); j++)
                 {
+                    // TODO: refactor this to user standard BaseChain constructor
                     var pixelIndex = alphabet.IndexOf(new ValuePixel(image[i, j]));
                     if (pixelIndex == -1)
                     {
                         alphabet.Add(new ValuePixel(image[i, j]));
-                        pixelIndex = alphabet.IndexOf(new ValuePixel(image[i, j]));
+                        pixelIndex = alphabet.Cardinality - 1; ;
                     }
 
                     order[i * image.GetLength(1) + j] = pixelIndex;

@@ -1,7 +1,7 @@
 namespace LibiadaCore.Core.Characteristics.Calculators.FullCalculators
 {
     /// <summary>
-    /// Characteristic of chain depth.
+    /// Seuqnece's depth characteristic calculator.
     /// </summary>
     public class Depth : IFullCalculator
     {
@@ -14,7 +14,7 @@ namespace LibiadaCore.Core.Characteristics.Calculators.FullCalculators
         /// Source sequence.
         /// </param>
         /// <param name="link">
-        /// Link of intervals in chain.
+        /// Link of intervals in sequence.
         /// </param>
         /// <returns>
         /// Average remoteness <see cref="double"/> value.

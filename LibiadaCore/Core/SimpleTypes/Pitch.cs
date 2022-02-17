@@ -91,13 +91,13 @@
         /// <summary>
         /// Compares midiNumbers of pitches.
         /// </summary>
-        /// <param name="obj">
-        /// Another pitch.
+        /// <param name="other">
+        /// Pitch to compare to.
         /// </param>
         /// <returns>
         /// The <see cref="bool"/>.
         /// </returns>
-        public override bool Equals(object obj) => obj is Pitch pitch && MidiNumber == pitch.MidiNumber;
+        public override bool Equals(object other) => other is Pitch pitch && MidiNumber == pitch.MidiNumber;
 
         /// <summary>
         /// Calculates hash code using <see cref="MidiNumber"/>.

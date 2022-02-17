@@ -23,7 +23,7 @@
         /// <param name="value">
         /// The value.
         /// </param>
-        [TestCase(0, Link.Start, 18.7483554)]
+        [TestCase(0, Link.Start, 0.82742)]
         public void CongenericCalculationTest(int index, Link link, double value)
         {
             CongenericChainCharacteristicTest(index, link, value);

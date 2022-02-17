@@ -41,13 +41,13 @@
         /// <summary>
         /// Compares <see cref="Mode"/> and <see cref="Fifths"/> of the keys.
         /// </summary>
-        /// <param name="obj">
-        /// The object.
+        /// <param name="other">
+        /// Key to compare to.
         /// </param>
         /// <returns>
         /// The <see cref="bool"/>.
         /// </returns>
-        public override bool Equals(object obj) => obj is Key otherKey && Fifths == otherKey.Fifths && Mode == otherKey.Mode;
+        public override bool Equals(object other) => other is Key otherKey && Fifths == otherKey.Fifths && Mode == otherKey.Mode;
 
         /// <summary>
         /// Calculates hash code using

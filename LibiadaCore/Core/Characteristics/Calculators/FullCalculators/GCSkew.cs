@@ -4,7 +4,7 @@
     using LibiadaCore.DataTransformers;
 
     /// <summary>
-    /// The gc ratio.
+    /// Statistical genetic characteristic GC skew.
     /// </summary>
     public class GCSkew : NonLinkableFullCalculator
     {

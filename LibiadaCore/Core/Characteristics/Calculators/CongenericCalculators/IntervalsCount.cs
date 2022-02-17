@@ -14,7 +14,7 @@ namespace LibiadaCore.Core.Characteristics.Calculators.CongenericCalculators
         /// Source sequence.
         /// </param>
         /// <param name="link">
-        /// Link of intervals in chain.
+        /// Link of intervals in sequence.
         /// </param>
         /// <returns>
         /// Intervals count in chain as <see cref="double"/>.

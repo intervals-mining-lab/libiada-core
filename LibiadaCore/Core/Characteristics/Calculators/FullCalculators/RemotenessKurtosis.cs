@@ -5,7 +5,7 @@
     using System.Linq;
 
     /// <summary>
-    /// The remoteness kurtosis.
+    /// The remoteness kurtosis by intervals lengths.
     /// </summary>
     public class RemotenessKurtosis : IFullCalculator
     {
@@ -16,7 +16,7 @@
         /// Source sequence.
         /// </param>
         /// <param name="link">
-        /// Link of intervals in chain.
+        /// Link of intervals in sequence.
         /// </param>
         /// <returns>
         /// Average remoteness dispersion <see cref="double"/> value.

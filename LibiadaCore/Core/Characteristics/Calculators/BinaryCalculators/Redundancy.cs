@@ -18,7 +18,7 @@
         /// Intervals manager.
         /// </param>
         /// <param name="link">
-        /// Link of intervals in chain.
+        /// Link of intervals in sequence.
         /// </param>
         /// <returns>
         /// Redundancy as <see cref="double"/>.
