@@ -12,7 +12,7 @@ namespace LibiadaCore.Core.Characteristics.Calculators.FullCalculators
         /// Source sequence.
         /// </param>
         /// <param name="link">
-        /// Link of intervals in chain.
+        /// Link of intervals in sequence.
         /// May be redundant for some characteristics.
         /// </param>
         /// <returns>

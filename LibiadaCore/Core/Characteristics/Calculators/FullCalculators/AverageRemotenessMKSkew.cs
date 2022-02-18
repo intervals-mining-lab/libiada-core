@@ -4,7 +4,7 @@
     using LibiadaCore.DataTransformers;
 
     /// <summary>
-    /// The mk skew.
+    /// The MK skew of congeneric average remotenesses.
     /// </summary>
     public class AverageRemotenessMKSkew : IFullCalculator
     {
@@ -15,7 +15,7 @@
         /// Source sequence.
         /// </param>
         /// <param name="link">
-        /// Link of intervals in chain.
+        /// Link of intervals in sequence.
         /// </param>
         /// <returns>
         /// MK skew value as <see cref="double"/>.

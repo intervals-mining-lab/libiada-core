@@ -1,7 +1,7 @@
 ﻿namespace LibiadaCore.Core.Characteristics.Calculators.FullCalculators
 {
     /// <summary>
-    /// The complete amount of information in sequence.
+    /// The total amount of information in sequence.
     /// Entropy multiplied by length.
     /// </summary>
     public class InformationAmount : IFullCalculator
@@ -22,8 +22,8 @@
         {
             double result = 0;
             var calculator = new CongenericCalculators.InformationAmount();
-            Alphabet alphabet = chain.Alphabet;
-            for (int i = 0; i < alphabet.Cardinality; i++)
+            int alphabetCardinality = chain.Alphabet.Cardinality;
+            for (int i = 0; i < alphabetCardinality; i++)
             {
                 result += calculator.Calculate(chain.CongenericChain(i), link);
             }

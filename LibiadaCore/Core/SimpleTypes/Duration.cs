@@ -77,7 +77,7 @@
         /// <param name="originalDenominator">
         /// The original denominator.
         /// </param>
-        public Duration(int numerator, int denominator, int originalNumerator, int originalDenominator):this(numerator, denominator)
+        public Duration(int numerator, int denominator, int originalNumerator, int originalDenominator) : this(numerator, denominator)
         {
             OriginalNumerator = originalNumerator;
             OriginalDenominator = originalDenominator;
@@ -85,14 +85,14 @@
 
         /// <summary>
         /// Gets original numerator.
-        /// оригинальный числитель в дроби доли
+        /// Used to preserve original duration.
         /// (для сохранения после наложения триоли на длительность)
         /// </summary>
         public int OriginalNumerator { get; private set; }
 
         /// <summary>
         /// Gets original denominator.
-        /// оригинальный знаменатель в дроби доли
+        /// Used to preserve original duration.
         /// (для сохранения после наложения триоли на длительность)
         /// </summary>
         public int OriginalDenominator { get; private set; }
@@ -114,15 +114,14 @@
 
         /// <summary>
         /// Gets original duration value.
-        /// значение ОРИГИНАЛЬНОЙ доли в десятичной дроби
         /// </summary>
         public double OriginalValue => (double)OriginalNumerator / OriginalDenominator;
 
         /// <summary>
-        /// The add duration.
+        /// Adds given duration to current duration.
         /// </summary>
         /// <param name="duration">
-        /// The duration.
+        /// Duration to add.
         /// </param>
         /// <returns>
         /// The <see cref="Duration"/>.
@@ -133,7 +132,6 @@
             int newDenominator = Denominator * duration.Denominator;
 
             //TODO: проверить избыточность одного из циклов
-
             for (int i = 2; i <= newNumerator; i++)
             {
                 // если числитель делится на i
@@ -151,7 +149,7 @@
             }
 
             //--cокращение получившейся дроби--
-            // пока знаменатель больше 2
+            // while denominator greater than 2
             while (newDenominator > 2)
             {
                 // если числитель делится на 2
@@ -179,10 +177,10 @@
         }
 
         /// <summary>
-        /// The sub duration.
+        /// Subtracts given duration from current duration.
         /// </summary>
         /// <param name="duration">
-        /// The duration.
+        /// Duration to subtract.
         /// </param>
         /// <returns>
         /// The <see cref="Duration"/>.
@@ -195,7 +193,7 @@
         }
 
         /// <summary>
-        /// The clone.
+        /// Clones current duration.
         /// </summary>
         /// <returns>
         /// The <see cref="IBaseObject"/>.
@@ -213,16 +211,16 @@
         /// <summary>
         /// Compares duration values
         /// (not numerator and denominator separately).
-        /// если модуль разности двух double меньше заданной точности,
-        /// то можно считать что эти double равны
+        /// If absolute value of durations difference is less than given precision 
+        /// they are considered to be equeal.
         /// </summary>
-        /// <param name="obj">
-        /// The object.
+        /// <param name="other">
+        /// Duration to compare to.
         /// </param>
         /// <returns>
         /// The <see cref="bool"/>.
         /// </returns>
-        public override bool Equals(object obj) => obj is Duration other && Math.Abs(Value - other.Value) < 0.000001;
+        public override bool Equals(object other) => other is Duration duration && Math.Abs(Value - duration.Value) < 0.000001;
 
         /// <summary>
         /// Calculates hash code using
@@ -246,17 +244,19 @@
         }
 
         /// <summary>
-        /// The place dot.
+        /// Palces dot.
+        /// I.e. extends duration by half.
         /// </summary>
         private void PlaceDot()
         {
             if ((Numerator % 2) == 0)
             {
-                // if numerator is even we just increase it by one half
+                // if numerator is even we just increase it by one and a half times
                 Numerator = (int)(Numerator * 1.5);
             }
             else
             {
+                // otherwise multiply it by 3/2
                 Numerator = Numerator * 3;
                 Denominator = Denominator * 2;
             }

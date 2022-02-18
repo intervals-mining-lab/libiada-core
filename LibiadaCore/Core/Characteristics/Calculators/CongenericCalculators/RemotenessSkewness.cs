@@ -16,16 +16,14 @@
         /// Source sequence.
         /// </param>
         /// <param name="link">
-        /// Link of intervals in chain.
+        /// Link of intervals in sequence.
         /// </param>
         /// <returns>
         /// Average remoteness dispersion <see cref="double"/> value.
         /// </returns>
         public double Calculate(CongenericChain chain, Link link)
         {
-            var intervals = new List<int>();
-            intervals.AddRange(chain.GetArrangement(link).ToList());
-            
+            var intervals = chain.GetArrangement(link).ToList();            
 
             if (intervals.Count == 0)
             {
@@ -35,16 +33,17 @@
             List<int> uniqueIntervals = intervals.Distinct().ToList();
 
             var intervalsCount = new IntervalsCount();
-            var geometricMean = new GeometricMean();
+            var averageRemoteness = new AverageRemoteness();
 
             double result = 0;
-            double gDelta = geometricMean.Calculate(chain, link);
-            double n = intervalsCount.Calculate(chain, link);
-
-            foreach (int kDelta in uniqueIntervals)
+            double gDeltaLog = averageRemoteness.Calculate(chain, link);
+            double nj = intervalsCount.Calculate(chain, link);
+            foreach (int interval in uniqueIntervals)
             {
-                double centeredRemoteness = Math.Log(kDelta, 2) - Math.Log(gDelta, 2);
-                result += centeredRemoteness * centeredRemoteness * centeredRemoteness * intervals.Count(interval => interval == kDelta) / n;
+                // number of intervals of certain length
+                double nk = intervals.Count(i => i == interval);
+                double centeredRemoteness = Math.Log(interval, 2) - gDeltaLog;
+                result += centeredRemoteness * centeredRemoteness * centeredRemoteness * nk / nj;
             }
 
             return result;

@@ -95,6 +95,8 @@ namespace LibiadaCore.Core.Characteristics.Calculators.FullCalculators
                     return new GeometricMean();
                 case FullCharacteristic.IdentificationInformation:
                     return new IdentificationInformation();
+                case FullCharacteristic.InformationAmount:
+                    return new InformationAmount();
                 case FullCharacteristic.IntervalsCount:
                     return new IntervalsCount();
                 case FullCharacteristic.IntervalsSum:
@@ -131,8 +133,6 @@ namespace LibiadaCore.Core.Characteristics.Calculators.FullCalculators
                     return new VariationsCount();
                 case FullCharacteristic.Volume:
                     return new Volume();
-                case FullCharacteristic.InformationAmount:
-                    return new InformationAmount();
                 default:
                     throw new InvalidEnumArgumentException(nameof(type), (int)type, typeof(FullCharacteristic));
             }

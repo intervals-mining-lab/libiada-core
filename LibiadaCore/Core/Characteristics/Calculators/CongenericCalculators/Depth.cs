@@ -17,7 +17,7 @@ namespace LibiadaCore.Core.Characteristics.Calculators.CongenericCalculators
         /// Congeneric sequence.
         /// </param>
         /// <param name="link">
-        /// Link of intervals in chain.
+        /// Link of intervals in sequence.
         /// </param>
         /// <returns>
         /// <see cref="double"/> value of depth.

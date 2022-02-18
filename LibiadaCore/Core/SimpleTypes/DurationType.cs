@@ -21,7 +21,6 @@
         /// </exception>
         public static (int, int) ParseType(string type)
         {
-            // формируем массив из 2 элементов Numerator и Denominator по типу длительности
             int numerator;
             int denominator;
             switch (type)
@@ -46,8 +45,8 @@
                     numerator = 1;
                     denominator = 16;
                     break;
-                case "32nd": // в Guitar Pro обозначается 32th - как 1/32.. мде..
-                case "32th":
+                case "32nd": 
+                case "32th": // in Guitar Pro marked as 32th
                     numerator = 1;
                     denominator = 32;
                     break;

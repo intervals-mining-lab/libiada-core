@@ -48,7 +48,6 @@ namespace LibiadaCore.Tests.Images
             image[1, 0] = Color.Red;
             image[1, 1] = Color.White;
 
-
             BaseChain actual = ImageProcessor.ProcessImage(image, new IImageTransformer[0], new IMatrixTransformer[0], new ZigzagOrderExtractor());
 
             ValuePixel black = new ValuePixel(Color.Black);
@@ -75,7 +74,6 @@ namespace LibiadaCore.Tests.Images
             image[0, 2] = Color.Red;
             image[0, 3] = Color.White;
 
-
             BaseChain actual = ImageProcessor.ProcessImage(image, new IImageTransformer[0], new IMatrixTransformer[0], new ZigzagOrderExtractor());
 
             ValuePixel black = new ValuePixel(Color.Black);
@@ -101,8 +99,6 @@ namespace LibiadaCore.Tests.Images
             image[1, 0] = Color.Blue;
             image[2, 0] = Color.Red;
             image[3, 0] = Color.White;
-
-
 
             BaseChain actual = ImageProcessor.ProcessImage(image, new IImageTransformer[0], new IMatrixTransformer[0], new ZigzagOrderExtractor());
 

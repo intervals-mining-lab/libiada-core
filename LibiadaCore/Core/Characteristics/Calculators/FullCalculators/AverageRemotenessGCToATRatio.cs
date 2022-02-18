@@ -4,7 +4,7 @@
     using LibiadaCore.DataTransformers;
 
     /// <summary>
-    /// The gc ratio.
+    /// The GC to AT ratio of congeneric average remotenesses.
     /// </summary>
     public class AverageRemotenessGCToATRatio : IFullCalculator
     {
@@ -15,7 +15,7 @@
         /// Source sequence.
         /// </param>
         /// <param name="link">
-        /// Link of intervals in chain.
+        /// Link of intervals in sequence.
         /// </param>
         /// <returns>
         /// G+C Ratio value as <see cref="double"/> .

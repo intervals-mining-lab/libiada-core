@@ -1,9 +1,13 @@
 ﻿namespace LibiadaCore.Extensions
 {
     using System;
+    using System.Collections.Generic;
     using System.ComponentModel;
     using System.ComponentModel.DataAnnotations;
     using System.Globalization;
+    using System.Linq;
+    using System.Reflection;
+
     using LibiadaCore.Attributes;
     using LibiadaCore.Core;
     using LibiadaCore.Exceptions;
@@ -40,7 +44,7 @@
 
             if (descriptionAttributes == null)
             {
-                return String.Empty;
+                return string.Empty;
             }
 
             return (descriptionAttributes.Length > 0) ? descriptionAttributes[0].Name : value.ToString(CultureInfo.InvariantCulture);
@@ -169,6 +173,35 @@
             }
 
             return (T[])Enum.GetValues(type);
+        }
+
+        /// <summary>
+        /// Extracts all enum values having given attribute.
+        /// </summary>
+        /// <typeparam name="T">
+        /// Enum to analyze.
+        /// </typeparam>
+        /// <param name="attributeType">
+        /// Type of attribute enum values must have.
+        /// </param>
+        /// <returns></returns>
+        public static IEnumerable<T> SelectAllWithAttribute<T>(Type attributeType) where T : struct, IComparable, IFormattable, IConvertible
+        {
+            Type type = typeof(T);
+
+            if (!type.IsEnum)
+            {
+                throw new TypeArgumentException("Type argument must be enum.", type);
+            }
+
+            if (!attributeType.IsSubclassOf(typeof(Attribute)))
+            {
+                throw new ArgumentException("The argument must be inherited fron attribute class.", nameof(attributeType));
+            }
+
+            return type.GetFields(BindingFlags.Public | BindingFlags.Static)
+                       .Where(field => field.IsDefined(attributeType, false))
+                       .Select(field => (T)field.GetValue(null));
         }
     }
 }
