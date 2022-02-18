@@ -1,10 +1,10 @@
 ﻿namespace LibiadaCore.Tests.DataTransformers
 {
-    using System.Collections.Generic;
     using System.Diagnostics;
+
     using LibiadaCore.Core;
-    using LibiadaCore.Core.SimpleTypes;
     using LibiadaCore.DataTransformers;
+    using LibiadaCore.Tests.Core;
 
     using NUnit.Framework;
 
@@ -12,43 +12,40 @@
     [TestFixture]
     public class SequenceConcatenatorTests
     {
-        public static Chain[] sourceChains = { new Chain("BBAACBACCB"), new Chain("ACTTGATACG"), new Chain("CCACGCTTAC"), };
-
-        public static Chain expectedChain = new Chain("BBAACBACCBACTTGATACGCCACGCTTAC");
-
-        public static int[] order = new[] { 0, 1, 2 };
-
         [Test]
         public void ConcatenateTest()
         {
-            var result = SequenceConcatenator.Concatenate(sourceChains, order);
-            Assert.AreEqual(expectedChain, result);
+            var sequencesIndexes = new[] { 0, 2, 1 };
+            var sourceChains = ChainsStorage.ConcatinationChains;
+            var result = SequenceConcatenator.Concatenate(new[] { sourceChains[0], sourceChains[1], sourceChains[2] }, sequencesIndexes);
+            Assert.AreEqual(sourceChains[4], result);
         }
+
         [Test]
-        public void ConcatenateOrderTest()
+        public void ConcatenateAsOrderedTest()
         {
-            var result = SequenceConcatenator.ConcatenateOrder(sourceChains);
+            var sourceChains = ChainsStorage.ConcatinationChains;
+            var result = SequenceConcatenator.ConcatenateAsOrdered(new[] { sourceChains[0], sourceChains[1], sourceChains[2] });
             Trace.WriteLine(result);
-            Assert.AreEqual(expectedChain, result);
+            Assert.AreEqual(sourceChains[3], result);
         }
 
         [Test]
         public void GenerateConcatenationsTest()
         {
+            var sourceChains = ChainsStorage.ConcatinationChains;
             Chain[] expectedChains =
             {
-            new Chain("BBAACBACCBACTTGATACGCCACGCTTAC"),
-            new Chain("BBAACBACCBCCACGCTTACACTTGATACG"),
-            new Chain("ACTTGATACGBBAACBACCBCCACGCTTAC"),
-            new Chain("ACTTGATACGCCACGCTTACBBAACBACCB"),
-            new Chain("CCACGCTTACBBAACBACCBACTTGATACG"), 
-            new Chain("CCACGCTTACACTTGATACGBBAACBACCB")
+                sourceChains[3],
+                sourceChains[4],
+                sourceChains[5],
+                sourceChains[6],
+                sourceChains[7],
+                sourceChains[8]
             };
-            var result = SequenceConcatenator.GenerateConcatenations(sourceChains);
+
+            var result = SequenceConcatenator.GenerateConcatenations(new[] { sourceChains[0], sourceChains[1], sourceChains[2] });
             Assert.AreEqual(expectedChains, result);
         }
-
-        
-
     }
 }

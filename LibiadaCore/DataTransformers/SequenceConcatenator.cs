@@ -1,9 +1,10 @@
-﻿using LibiadaCore.Core;
-using LibiadaCore.Core.SimpleTypes;
-using System.Collections.Generic;
-
-namespace LibiadaCore.DataTransformers
+﻿namespace LibiadaCore.DataTransformers
 {
+    using LibiadaCore.Core;
+    using LibiadaCore.Core.SimpleTypes;
+
+    using System.Collections.Generic;
+
     /// <summary>
     /// Class for constructing different concatenations of sequences sets.
     /// In other words it generates all possible orderings of several sequences.
@@ -23,11 +24,12 @@ namespace LibiadaCore.DataTransformers
         {
             int[][] orders = PermutationGenerator.GetOrders(sourceSequences.Length);
 
-            for(int i = 0; i < orders.Length; i++)
+            for (int i = 0; i < orders.Length; i++)
             {
                 yield return Concatenate(sourceSequences, orders[i]);
             }
         }
+
         /// <summary>
         /// Concatenates sequences in given order.
         /// </summary>
@@ -42,11 +44,13 @@ namespace LibiadaCore.DataTransformers
         /// </returns>
         public static Chain Concatenate(Chain[] sourceSequences, int[] order)
         {
+            // TODO: optimize this method
             int resultLength = 0;
             for (int i = 0; i < sourceSequences.Length; i++)
             {
                 resultLength += sourceSequences[i].Length;
             }
+
             Chain result = new Chain(resultLength);
             int resultIndex = 0;
             for (int i = 0; i < sourceSequences.Length; i++)
@@ -57,12 +61,12 @@ namespace LibiadaCore.DataTransformers
                     result[resultIndex++] = currentSequence[j];
                 }
             }
+
             return result;
         }
 
-
         /// <summary>
-        /// Concatenates sequences in given order.
+        /// Concatenates sequences as they ordered in input array.
         /// </summary>
         /// <param name="sourceSequences">
         /// Sequences to concatenate.
@@ -70,37 +74,41 @@ namespace LibiadaCore.DataTransformers
         /// <returns>
         /// <see cref="Chain"/> of all source sequences in ascending order.
         /// </returns>
-        public static Chain ConcatenateOrder(Chain[] sourceSequences)
+        public static Chain ConcatenateAsOrdered(Chain[] sourceSequences)
         {
+            // TODO: optimize this method
             int resultLength = 0;
             for (int i = 0; i < sourceSequences.Length; i++)
             {
                 resultLength += sourceSequences[i].Length;
             }
-            var result = new int[resultLength];
+
+            var resultOrder = new int[resultLength];
             var resultAlphabet = new Alphabet() { NullValue.Instance() };
-            int k = 0;
+            int resultIndex = 0;
             for (int i = 0; i < sourceSequences.Length; i++)
             {
                 var coder = new Dictionary<int, int>();
                 var chain = sourceSequences[i];
                 var building = chain.Building;
-                for (int m = 0; m < chain.Alphabet.Cardinality; m++)
+                var alphabet = chain.Alphabet;
+                for (int m = 0; m < alphabet.Cardinality; m++)
                 {
-                    if (!resultAlphabet.Contains(chain.Alphabet[m]))
+                    if (!resultAlphabet.Contains(alphabet[m]))
                     {
-                        resultAlphabet.Add(chain.Alphabet[m]);
+                        resultAlphabet.Add(alphabet[m]);
                     }
-                    coder.Add(m + 1, resultAlphabet.IndexOf(chain.Alphabet[m]));
+                    coder.Add(m + 1, resultAlphabet.IndexOf(alphabet[m]));
                 }
+
                 for (int j = 0; j < chain.Length; j++)
                 {
-                    result[k] = coder[building[j]];
-                    k++;
+                    resultOrder[resultIndex] = coder[building[j]];
+                    resultIndex++;
                 }
             }
-            return new Chain(result, resultAlphabet);
-        }
 
+            return new Chain(resultOrder, resultAlphabet);
+        }
     }
 }

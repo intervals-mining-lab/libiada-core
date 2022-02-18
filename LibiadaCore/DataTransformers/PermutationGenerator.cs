@@ -1,14 +1,50 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-
-namespace LibiadaCore.DataTransformers
+﻿namespace LibiadaCore.DataTransformers
 {
     /// <summary>
     /// Generates all possible permutations of given number of elements.
     /// </summary>
     public class PermutationGenerator
     {
+        /// <summary>
+        /// Generates all possible permutations of given count of elements.
+        /// </summary>
+        /// <param name="componentsCount">
+        /// Number of elements to permute.
+        /// </param>
+        /// <returns>
+        /// All possible orders of given number of elements.
+        /// </returns>
+        public static int[][] GetOrders(int componentsCount)
+        {
+            int orderCount = Factorial(componentsCount);
+            int[] componentSet = new int[componentsCount];
+            int[][] ordersArray = new int[orderCount][];
+
+            for (int j = 0; j < orderCount; j++)
+            {
+                ordersArray[j] = new int[componentsCount];
+            }
+
+            for (int j = 0; j < componentsCount; j++)
+            {
+                componentSet[j] = j;
+                ordersArray[0][j] = j;
+            }
+
+            int i = 1;
+            while (NextPermutation(componentSet, componentsCount))
+            {
+                for (int j = 0; j < componentsCount; j++)
+                {
+                    ordersArray[i][j] = componentSet[j];
+                }
+
+                i++;
+            }
+
+            return ordersArray;
+        }
+
         /// <summary>
         /// Calculates factorial of given number.
         /// </summary>
@@ -18,13 +54,14 @@ namespace LibiadaCore.DataTransformers
         /// <returns>
         /// Factorial of given number.
         /// </returns>
-        static int Factorial(int number)
+        private static int Factorial(int number)
         {
             int count = 1;
             for (int i = 2; i <= number; i++)
             {
                 count *= i;
             }
+
             return count;
         }
 
@@ -40,7 +77,7 @@ namespace LibiadaCore.DataTransformers
         /// <param name="indexToSwap">
         /// Index of element in array to swap
         /// </param>
-        public static void Swap(int[] componentArray, int index, int indexToSwap)
+        private static void Swap(int[] componentArray, int index, int indexToSwap)
         {
             int temp = componentArray[index];
             componentArray[index] = componentArray[indexToSwap];
@@ -48,20 +85,22 @@ namespace LibiadaCore.DataTransformers
         }
 
         /// <summary>
-        /// Generates one of permutation.
+        /// Generates next permutation.
         /// </summary>
         /// <param name="componentArray">
         /// Set of elements to permute.
         /// </param>
-        /// <param name="componentCount">
+        /// <param name="componentsCount">
         /// Length of permutation.
         /// </param>
         /// <returns>
         /// Set of given elements in a certain order.
         /// </returns>
-        public static bool NextSet(int[] componentArray, int componentCount)
+        private static bool NextPermutation(int[] componentArray, int componentsCount)
         {
-            int index = componentCount - 2;
+            // TODO: try to optimize or refactor this code.
+
+            int index = componentsCount - 2;
             while (index != -1 && componentArray[index] >= componentArray[index + 1])
             {
                 index--;
@@ -71,55 +110,22 @@ namespace LibiadaCore.DataTransformers
             {
                 return false;
             }
-            int indexToSwap = componentCount - 1;
+
+            int indexToSwap = componentsCount - 1;
             while (componentArray[index] >= componentArray[indexToSwap])
             {
                 indexToSwap--;
             }
+
             Swap(componentArray, index, indexToSwap);
             int i = index + 1;
-            int j = componentCount - 1;
+            int j = componentsCount - 1;
             while (i < j)
             {
                 Swap(componentArray, i++, j--);
             }
+
             return true;
         }
-
-        /// <summary>
-        /// Generates all possible permutations of given count of elements.
-        /// </summary>
-        /// <param name="componentCount">
-        /// Number of elements to permute.
-        /// </param>
-        /// <returns>
-        /// All possible orders of given number of elements.
-        /// </returns>
-        public static int[][] GetOrders(int componentCount)
-        {
-            int orderCount = Factorial(componentCount);
-            int[] componentSet = new int[componentCount];
-            int[][] ordersArray = new int[orderCount][];
-            for (int j = 0; j < orderCount; j++)
-            {
-                ordersArray[j] = new int[componentCount];
-            }
-            for (int j = 0; j < componentCount; j++)
-            {
-                componentSet[j] = j;
-                ordersArray[0][j] = j;
-            }
-            int i = 1;
-            while (NextSet(componentSet, componentCount))
-            {
-                for (int j = 0; j < componentCount; j++)
-                {
-                    ordersArray[i][j] = componentSet[j];
-                }
-                i++;
-            }
-            return ordersArray;
-        }
-
     }
 }

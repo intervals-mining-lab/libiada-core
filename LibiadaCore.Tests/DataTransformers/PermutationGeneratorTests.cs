@@ -1,14 +1,10 @@
 ﻿namespace LibiadaCore.Tests.DataTransformers
 {
-    using System.Collections.Generic;
-
-    using LibiadaCore.Core;
-    using LibiadaCore.Core.SimpleTypes;
     using LibiadaCore.DataTransformers;
 
     using NUnit.Framework;
+    using System.Linq;
 
-    
     [TestFixture]
     public class PermutationGeneratorTests
     {
@@ -29,51 +25,36 @@
         };
 
         [Test]
-        public void LengthTest1()
+        public void GetOrdersForTwoElementsTest()
         {
             var result = PermutationGenerator.GetOrders(2);
-            Assert.AreEqual(Expected1.Length, result.Length);
+
+            Assert.That(result.Length, Is.EqualTo(Expected1.Length));
+            for (int i = 0; i < Expected1.Length; i++)
+            {
+                var expected = Expected1[i];
+                Assert.That(result[i].Length, Is.EqualTo(expected.Length));
+                for (int j = 0; j < expected.Length; j++)
+                {
+                    Assert.That(result[i].SequenceEqual(expected));
+                }
+            }
         }
+
         [Test]
-        public void LengthTest2()
+        public void GetOrdersForThreeElementsTest()
         {
             var result = PermutationGenerator.GetOrders(3);
-            Assert.AreEqual(Expected2.Length, result.Length);
-        }
-        [Test]
-        public void GetOrdersTest1()
-        {
-            string expected = "";
-            string result = "";
-            var resultArray = PermutationGenerator.GetOrders(2);
-
-            for (int i = 0; i < 2; i++)
+            Assert.That(result.Length, Is.EqualTo(Expected2.Length));
+            for (int i = 0; i < Expected2.Length; i++)
             {
-                for (int j = 0; j < 2; j++)
+                var expected = Expected2[i];
+                Assert.That(result[i].Length, Is.EqualTo(expected.Length));
+                for (int j = 0; j < expected.Length; j++)
                 {
-                    result += resultArray[i][j].ToString();
-                    expected += Expected1[i][j].ToString();
+                    Assert.That(result[i].SequenceEqual(expected));
                 }
             }
-            Assert.AreEqual(expected, result);
         }
-        [Test]
-        public void GetOrdersTest2()
-        {
-            string expected = "";
-            string result = "";
-            var resultArray = PermutationGenerator.GetOrders(3);
-
-            for (int i = 0; i < 6; i++)
-            {
-                for (int j = 0; j < 3; j++)
-                {
-                    result += resultArray[i][j].ToString();
-                    expected += Expected2[i][j].ToString();
-                }
-            }
-            Assert.AreEqual(expected, result);
-        }
-
     }
 }

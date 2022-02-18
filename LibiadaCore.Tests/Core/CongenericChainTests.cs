@@ -112,7 +112,7 @@ namespace LibiadaCore.Tests.Core
         [Test]
         public void ClearAndSetNewLengthTest()
         {
-            var newLength = 5;
+            const int newLength = 5;
             congenericChain.ClearAndSetNewLength(newLength);
             Assert.AreEqual(newLength, congenericChain.Length);
             Assert.IsEmpty(congenericChain.Positions);
@@ -140,7 +140,7 @@ namespace LibiadaCore.Tests.Core
         {
             List<int> position = new List<int>();
             position.Add(4);
-            int index = 5;
+            const int index = 5;
             congenericChain.Set(index);
             Assert.AreNotEqual(position, congenericChain.Positions);
         }
@@ -151,8 +151,8 @@ namespace LibiadaCore.Tests.Core
         [Test]
         public void GetFirstAfterEmptyTest()
         {
-            int index = 3;
-            int expectedIndex = -1;
+            const int index = 3;
+            const int expectedIndex = -1;
             Assert.AreEqual(expectedIndex, congenericChain.GetFirstAfter(index));
         }
 
@@ -188,6 +188,5 @@ namespace LibiadaCore.Tests.Core
             expectedIndex = 9;
             Assert.AreEqual(expectedIndex, congenericChain.GetFirstAfter(index));
         }
-
     }
 }
