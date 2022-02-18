@@ -2,7 +2,7 @@ namespace LibiadaCore.Core.Characteristics.Calculators.FullCalculators
 {
     /// <summary>
     /// Periodicity.
-    /// Makes sense only for congeneric sequences.
+    /// TODO: check if it makes sense only for congeneric sequences.
     /// </summary>
     public class Periodicity : IFullCalculator
     {
@@ -23,7 +23,7 @@ namespace LibiadaCore.Core.Characteristics.Calculators.FullCalculators
         /// Source sequence.
         /// </param>
         /// <param name="link">
-        /// Link of intervals in chain.
+        /// Link of intervals in sequence.
         /// </param>
         /// <returns>
         /// Periodicity as <see cref="double"/>.

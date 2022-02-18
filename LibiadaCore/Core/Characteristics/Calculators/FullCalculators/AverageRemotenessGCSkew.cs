@@ -4,7 +4,7 @@
     using LibiadaCore.DataTransformers;
 
     /// <summary>
-    /// The gc ratio.
+    /// The GC skew of congeneric average remotenesses.
     /// </summary>
     public class AverageRemotenessGCSkew : IFullCalculator
     {
@@ -15,7 +15,7 @@
         /// Source sequence.
         /// </param>
         /// <param name="link">
-        /// Link of intervals in chain.
+        /// Link of intervals in sequence.
         /// </param>
         /// <returns>
         /// G+C skew value as <see cref="double"/>.

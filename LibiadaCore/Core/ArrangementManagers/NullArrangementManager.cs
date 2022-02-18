@@ -1,5 +1,7 @@
 ﻿namespace LibiadaCore.Core.ArrangementManagers
 {
+    using System;
+
     /// <summary>
     /// Congeneric arrangement manager implementation for empty sequences.
     /// </summary>
@@ -16,7 +18,7 @@
         /// </returns>
         public int[] GetArrangement(Link link)
         {
-            return new int[0];
+            return Array.Empty<int>();
         }
     }
 }

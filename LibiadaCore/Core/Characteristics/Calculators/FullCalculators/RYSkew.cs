@@ -4,7 +4,7 @@
     using LibiadaCore.DataTransformers;
 
     /// <summary>
-    /// The ry skew.
+    /// Statistical genetic characteristic RY skew.
     /// </summary>
     public class RYSkew : NonLinkableFullCalculator
     {

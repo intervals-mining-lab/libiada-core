@@ -7,12 +7,12 @@ namespace LibiadaCore.Tests.Core
     using LibiadaCore.Core.SimpleTypes;
 
     /// <summary>
-    /// The chains storage.
+    /// Storage of varios sequences orders and elements for testing.
     /// </summary>
     public static class ChainsStorage
     {
         /// <summary>
-        /// Gets dictionary of elements.
+        /// Creates dictionary of elements with their string reprasentations as keys.
         /// </summary>
         public static Dictionary<string, IBaseObject> Elements => new Dictionary<string, IBaseObject>
         {
@@ -24,7 +24,7 @@ namespace LibiadaCore.Tests.Core
         };
 
         /// <summary>
-        /// Gets the chains.
+        /// Creates list of chains.
         /// </summary>
         public static List<Chain> Chains => new List<Chain>
         {
@@ -197,59 +197,76 @@ namespace LibiadaCore.Tests.Core
         };
 
         /// <summary>
-        /// Gets chains with high order.
+        /// Cretes list of chains of "high order".
         /// </summary>
         public static List<Chain> HighOrderChains => new List<Chain>
         {
             // 1 1 3 1 5 4 3 3 1 4
-            new Chain(new ValueInt[] { 1, 1, 3, 1, 5, 4, 3, 3, 1, 4 }.Cast<IBaseObject>().ToList()), // 0
+            new Chain(new ValueInt[] { 1, 1, 3, 1, 5, 4, 3, 3, 1, 4 }.ToList()), // 0
 
             // 5 7 1 3 5 2 4 3 2 1
-            new Chain(new ValueInt[] { 5, 7, 1, 3, 5, 2, 4, 3, 2, 1 }.Cast<IBaseObject>().ToList()), // 1
+            new Chain(new ValueInt[] { 5, 7, 1, 3, 5, 2, 4, 3, 2, 1 }.ToList()), // 1
 
             // 1 2 3 1 5 5 3 2 7 5
-            new Chain(new ValueInt[] { 1, 2, 3, 1, 5, 5, 3, 2, 7, 5 }.Cast<IBaseObject>().ToList()), // 2
+            new Chain(new ValueInt[] { 1, 2, 3, 1, 5, 5, 3, 2, 7, 5 }.ToList()), // 2
 
             // 1 4 1 3 3 4 4 1 2 1
-            new Chain(new ValueInt[] { 1, 4, 1, 3, 3, 4, 4, 1, 2, 1 }.Cast<IBaseObject>().ToList()), // 3
+            new Chain(new ValueInt[] { 1, 4, 1, 3, 3, 4, 4, 1, 2, 1 }.ToList()), // 3
 
             // 1 4 1 3 3 4 6 1 6 1
-            new Chain(new ValueInt[] { 1, 4, 1, 3, 3, 4, 6, 1, 6, 1 }.Cast<IBaseObject>().ToList()), // 4
+            new Chain(new ValueInt[] { 1, 4, 1, 3, 3, 4, 6, 1, 6, 1 }.ToList()), // 4
 
 
             // 1 1 6 1 6 4 3 3 1 4
-            new Chain(new ValueInt[] { 1, 1, 6, 1, 6, 4, 3, 3, 1, 4 }.Cast<IBaseObject>().ToList()), // 5
+            new Chain(new ValueInt[] { 1, 1, 6, 1, 6, 4, 3, 3, 1, 4 }.ToList()), // 5
 
             // 2 4 5 1 6 1 4 2 2 1
-            new Chain(new ValueInt[] { 2, 4, 5, 1, 6, 1, 4, 2, 2, 1 }.Cast<IBaseObject>().ToList()), // 6
+            new Chain(new ValueInt[] { 2, 4, 5, 1, 6, 1, 4, 2, 2, 1 }.ToList()), // 6
         };
 
         /// <summary>
-        /// Gets the dissimilar chains.
+        /// Cretes list of chains for concatenation.
+        /// </summary>
+        public static List<Chain> ConcatinationChains => new List<Chain>
+        {
+            new Chain("BBAACBACCB"), // 0
+            new Chain("ACTTGATACG"), // 1
+            new Chain("CCACGCTTAC"), // 2
+            new Chain("BBAACBACCBACTTGATACGCCACGCTTAC"), // 3
+            new Chain("BBAACBACCBCCACGCTTACACTTGATACG"), // 4
+            new Chain("ACTTGATACGBBAACBACCBCCACGCTTAC"), // 5 
+            new Chain("ACTTGATACGCCACGCTTACBBAACBACCB"), // 6
+            new Chain("CCACGCTTACBBAACBACCBACTTGATACG"), // 7
+            new Chain("CCACGCTTACACTTGATACGBBAACBACCB") // 8
+        };
+
+
+        /// <summary>
+        /// Creates list of dissimilar chains.
         /// </summary>
         public static List<Chain> DissimilarChains => new List<Chain>
         {
             // 1 2 1 2 1 3 3 2 3 4
-            new Chain(new ValueInt[] { 1, 2, 1, 2, 1, 3, 3, 2, 3, 4 }.Cast<IBaseObject>().ToList()), // 0
+            new Chain(new ValueInt[] { 1, 2, 1, 2, 1, 3, 3, 2, 3, 4 }.ToList()), // 0
 
             // 1 1 1 2 1 2 3 3 2 2
-            new Chain(new ValueInt[] { 1, 1, 1, 2, 1, 2, 3, 3, 2, 2 }.Cast<IBaseObject>().ToList()), // 1
+            new Chain(new ValueInt[] { 1, 1, 1, 2, 1, 2, 3, 3, 2, 2 }.ToList()), // 1
 
             // 1 2 1 3 1 4 1 2 2 5
-            new Chain(new ValueInt[] { 1, 2, 1, 3, 1, 4, 1, 2, 2, 5 }.Cast<IBaseObject>().ToList()), // 2
+            new Chain(new ValueInt[] { 1, 2, 1, 3, 1, 4, 1, 2, 2, 5 }.ToList()), // 2
 
             // 1 1 2 2 3 1 2 3 3 1
-            new Chain(new ValueInt[] { 1, 1, 2, 2, 3, 1, 2, 3, 3, 1 }.Cast<IBaseObject>().ToList()), // 3
+            new Chain(new ValueInt[] { 1, 1, 2, 2, 3, 1, 2, 3, 3, 1 }.ToList()), // 3
 
             // 1 2 3 1 4 2 1 2 3 4
-            new Chain(new ValueInt[] { 1, 2, 3, 1, 4, 2, 1, 2, 3, 4 }.Cast<IBaseObject>().ToList()), // 4
+            new Chain(new ValueInt[] { 1, 2, 3, 1, 4, 2, 1, 2, 3, 4 }.ToList()), // 4
 
             // 1 1 2 1 3 1 4 2 3 1
-            new Chain(new ValueInt[] { 1, 1, 2, 1, 3, 1, 4, 2, 3, 1 }.Cast<IBaseObject>().ToList()), // 5
+            new Chain(new ValueInt[] { 1, 1, 2, 1, 3, 1, 4, 2, 3, 1 }.ToList()), // 5
         };
 
         /// <summary>
-        /// Gets the congeneric chains.
+        /// Creates list of congeneric chains.
         /// </summary>
         public static List<CongenericChain> CongenericChains => new List<CongenericChain>
         {
@@ -309,7 +326,7 @@ namespace LibiadaCore.Tests.Core
         };
 
         /// <summary>
-        /// Gets the chains.
+        /// Creates list of "binary" chains.
         /// </summary>
         public static List<Chain> BinaryChains => new List<Chain>
         {
@@ -424,7 +441,7 @@ namespace LibiadaCore.Tests.Core
         };
 
         /// <summary>
-        /// Gets the intervals.
+        /// Creates dictionary of intervals with <see cref="Link"/> as keys.
         /// </summary>
         public static List<Dictionary<Link, List<int>>> Intervals => new List<Dictionary<Link, List<int>>>
         {

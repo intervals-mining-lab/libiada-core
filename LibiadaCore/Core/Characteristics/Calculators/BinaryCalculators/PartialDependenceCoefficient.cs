@@ -14,7 +14,7 @@
         /// Intervals manager.
         /// </param>
         /// <param name="link">
-        /// Link of intervals in chain.
+        /// Link of intervals in sequence.
         /// </param>
         /// <returns>
         /// Partial dependence coefficient.

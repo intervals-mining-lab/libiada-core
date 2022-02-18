@@ -3,7 +3,7 @@
     using System;
 
     /// <summary>
-    /// The remoteness standard deviation.
+    /// The remoteness standard deviation by intervals lengths.
     /// </summary>
     public class RemotenessStandardDeviation : IFullCalculator
     {
@@ -14,7 +14,7 @@
         /// Source sequence.
         /// </param>
         /// <param name="link">
-        /// Link of intervals in chain.
+        /// Link of intervals in sequence.
         /// </param>
         /// <returns>
         /// Standard Deviation <see cref="double"/> value.

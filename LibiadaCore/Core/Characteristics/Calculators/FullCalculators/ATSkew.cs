@@ -4,7 +4,7 @@
     using LibiadaCore.DataTransformers;
 
     /// <summary>
-    /// The at skew.
+    /// Statistical genetic characteristic AT skew.
     /// </summary>
     public class ATSkew : NonLinkableFullCalculator
     {

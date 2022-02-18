@@ -4,7 +4,7 @@
     using System.ComponentModel.DataAnnotations;
 
     /// <summary>
-    /// The full characteristic.
+    /// The full sequence's characteristics enum.
     /// </summary>
     public enum FullCharacteristic : byte
     {

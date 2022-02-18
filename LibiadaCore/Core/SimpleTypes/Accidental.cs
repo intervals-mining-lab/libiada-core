@@ -12,35 +12,35 @@
         /// Double flat accidental.
         /// </summary>
         [Display(Name = "Double flat")]
-        [Description("Дубль-бемоль")]
+        [Description("Double flat")]
         DoubleFlat = -2,
 
         /// <summary>
         /// Flat accidental.
         /// </summary>
         [Display(Name = "Flat")]
-        [Description("Бемоль")]
+        [Description("Flat")]
         Flat = -1,
 
         /// <summary>
         /// Bekar accidental.
         /// </summary>
         [Display(Name = "Bekar")]
-        [Description("Бекар")]
+        [Description("Bekar")]
         Bekar = 0,
 
         /// <summary>
         /// Sharp accidental.
         /// </summary>
         [Display(Name = "Sharp")]
-        [Description("Диез")]
+        [Description("Sharp")]
         Sharp = 1,
 
         /// <summary>
         /// Double sharp accidental.
         /// </summary>
         [Display(Name = "Double sharp")]
-        [Description("Дубль-диез")]
+        [Description("Double sharp")]
         DoubleSharp = 2
     }
 }

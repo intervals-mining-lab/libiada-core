@@ -3,7 +3,7 @@
     using System;
 
     /// <summary>
-    /// Abstract class for all not linkable full chain characteristics calculators.
+    /// Abstract class for all not linkable complete sequence characteristics calculators.
     /// </summary>
     public abstract class NonLinkableFullCalculator : IFullCalculator
     {

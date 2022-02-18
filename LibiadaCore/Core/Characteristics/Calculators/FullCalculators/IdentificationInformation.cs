@@ -4,8 +4,8 @@ namespace LibiadaCore.Core.Characteristics.Calculators.FullCalculators
     /// Entropy.
     /// Amount of information.
     /// Amount of identifying information (average for one element).
-    /// Shannon information.
-    /// Shannon entropy.
+    /// Shannon's information.
+    /// Shannon's entropy.
     /// </summary>
     public class IdentificationInformation : IFullCalculator
     {
@@ -16,7 +16,7 @@ namespace LibiadaCore.Core.Characteristics.Calculators.FullCalculators
         /// Source sequence.
         /// </param>
         /// <param name="link">
-        /// Link of intervals in chain.
+        /// Link of intervals in sequence.
         /// </param>
         /// <returns>
         /// Count of identification informations as <see cref="double"/>.

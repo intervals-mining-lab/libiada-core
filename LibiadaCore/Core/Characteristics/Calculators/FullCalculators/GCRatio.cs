@@ -4,7 +4,7 @@
     using LibiadaCore.DataTransformers;
 
     /// <summary>
-    /// The gc ratio.
+    /// Statistical genetic characteristic GC ratio.
     /// </summary>
     public class GCRatio : NonLinkableFullCalculator
     {

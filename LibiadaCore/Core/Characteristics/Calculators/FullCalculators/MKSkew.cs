@@ -4,7 +4,7 @@
     using LibiadaCore.DataTransformers;
 
     /// <summary>
-    /// The mk skew.
+    /// Statistical genetic characteristic MK skew.
     /// </summary>
     public class MKSkew : NonLinkableFullCalculator
     {

@@ -1,6 +1,4 @@
-﻿using LibiadaCore.Core.Characteristics.Calculators.CongenericCalculators;
-
-namespace LibiadaCore.Extensions
+﻿namespace LibiadaCore.Extensions
 {
     using System;
     using System.Collections;
@@ -282,12 +280,6 @@ namespace LibiadaCore.Extensions
             Array.Copy(data, index, result, 0, length);
             return result;
         }
-
-        //public static int SelectShortestLength(double[] firstArray, double[] secondArray)
-        //{
-        //    int shorterLength = firstArray.Length < secondArray.Length ? firstArray.Length : secondArray.Length;
-        //    return shorterLength;
-        //}
 
         public static int SelectShortestLength(this Array firstArray, Array secondArray)
         {

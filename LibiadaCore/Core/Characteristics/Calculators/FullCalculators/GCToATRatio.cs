@@ -4,7 +4,7 @@
     using LibiadaCore.DataTransformers;
 
     /// <summary>
-    /// The gc ratio.
+    /// Statistical genetic characteristic GC to AT ratio.
     /// </summary>
     public class GCToATRatio : NonLinkableFullCalculator
     {
