@@ -33,7 +33,7 @@ namespace LibiadaCore.Tests.Core
         [Test]
         public void SimilarChainsGetTest()
         {
-            var congenericChainA = new CongenericChain(new[] { 2, 8 }, elements["A"], 10);
+            var congenericChainA = new CongenericChain(new List<int> { 2, 8 }, elements["A"], 10);
 
             var chainCreatedCongenericChain = chains[2].CongenericChain(elements["A"]);
 

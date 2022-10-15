@@ -98,7 +98,7 @@ namespace LibiadaCore.Core
         /// <param name="length">
         /// Length of this chain.
         /// </param>
-        public CongenericChain(IEnumerable<int> positions, IBaseObject element, int length)
+        public CongenericChain(List<int> positions, IBaseObject element, int length)
         {
             this.length = length;
             this.element = element.Clone();
@@ -351,7 +351,7 @@ namespace LibiadaCore.Core
             if (!positions.Contains(index))
             {
                 positions.Add(index);
-                positions = positions.OrderBy(b => b).ToList();
+                positions.Sort();
             }
         }
 

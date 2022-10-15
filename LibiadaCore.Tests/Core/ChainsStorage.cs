@@ -1,7 +1,6 @@
 namespace LibiadaCore.Tests.Core
 {
     using System.Collections.Generic;
-    using System.Linq;
 
     using LibiadaCore.Core;
     using LibiadaCore.Core.SimpleTypes;
@@ -202,26 +201,26 @@ namespace LibiadaCore.Tests.Core
         public static List<Chain> HighOrderChains => new List<Chain>
         {
             // 1 1 3 1 5 4 3 3 1 4
-            new Chain(new ValueInt[] { 1, 1, 3, 1, 5, 4, 3, 3, 1, 4 }.ToList()), // 0
+            new Chain(new List<ValueInt> { 1, 1, 3, 1, 5, 4, 3, 3, 1, 4 }), // 0
 
             // 5 7 1 3 5 2 4 3 2 1
-            new Chain(new ValueInt[] { 5, 7, 1, 3, 5, 2, 4, 3, 2, 1 }.ToList()), // 1
+            new Chain(new List<ValueInt> { 5, 7, 1, 3, 5, 2, 4, 3, 2, 1 }), // 1
 
             // 1 2 3 1 5 5 3 2 7 5
-            new Chain(new ValueInt[] { 1, 2, 3, 1, 5, 5, 3, 2, 7, 5 }.ToList()), // 2
+            new Chain(new List<ValueInt> { 1, 2, 3, 1, 5, 5, 3, 2, 7, 5 }), // 2
 
             // 1 4 1 3 3 4 4 1 2 1
-            new Chain(new ValueInt[] { 1, 4, 1, 3, 3, 4, 4, 1, 2, 1 }.ToList()), // 3
+            new Chain(new List<ValueInt> { 1, 4, 1, 3, 3, 4, 4, 1, 2, 1 }), // 3
 
             // 1 4 1 3 3 4 6 1 6 1
-            new Chain(new ValueInt[] { 1, 4, 1, 3, 3, 4, 6, 1, 6, 1 }.ToList()), // 4
+            new Chain(new List<ValueInt> { 1, 4, 1, 3, 3, 4, 6, 1, 6, 1 }), // 4
 
 
             // 1 1 6 1 6 4 3 3 1 4
-            new Chain(new ValueInt[] { 1, 1, 6, 1, 6, 4, 3, 3, 1, 4 }.ToList()), // 5
+            new Chain(new List<ValueInt> { 1, 1, 6, 1, 6, 4, 3, 3, 1, 4 }), // 5
 
             // 2 4 5 1 6 1 4 2 2 1
-            new Chain(new ValueInt[] { 2, 4, 5, 1, 6, 1, 4, 2, 2, 1 }.ToList()), // 6
+            new Chain(new List<ValueInt> { 2, 4, 5, 1, 6, 1, 4, 2, 2, 1 }), // 6
         };
 
         /// <summary>
@@ -247,22 +246,22 @@ namespace LibiadaCore.Tests.Core
         public static List<Chain> DissimilarChains => new List<Chain>
         {
             // 1 2 1 2 1 3 3 2 3 4
-            new Chain(new ValueInt[] { 1, 2, 1, 2, 1, 3, 3, 2, 3, 4 }.ToList()), // 0
+            new Chain(new List<ValueInt> { 1, 2, 1, 2, 1, 3, 3, 2, 3, 4 }), // 0
 
             // 1 1 1 2 1 2 3 3 2 2
-            new Chain(new ValueInt[] { 1, 1, 1, 2, 1, 2, 3, 3, 2, 2 }.ToList()), // 1
+            new Chain(new List<ValueInt> { 1, 1, 1, 2, 1, 2, 3, 3, 2, 2 }), // 1
 
             // 1 2 1 3 1 4 1 2 2 5
-            new Chain(new ValueInt[] { 1, 2, 1, 3, 1, 4, 1, 2, 2, 5 }.ToList()), // 2
+            new Chain(new List<ValueInt> { 1, 2, 1, 3, 1, 4, 1, 2, 2, 5 }), // 2
 
             // 1 1 2 2 3 1 2 3 3 1
-            new Chain(new ValueInt[] { 1, 1, 2, 2, 3, 1, 2, 3, 3, 1 }.ToList()), // 3
+            new Chain(new List<ValueInt> { 1, 1, 2, 2, 3, 1, 2, 3, 3, 1 }), // 3
 
             // 1 2 3 1 4 2 1 2 3 4
-            new Chain(new ValueInt[] { 1, 2, 3, 1, 4, 2, 1, 2, 3, 4 }.ToList()), // 4
+            new Chain(new List<ValueInt> { 1, 2, 3, 1, 4, 2, 1, 2, 3, 4 }), // 4
 
             // 1 1 2 1 3 1 4 2 3 1
-            new Chain(new ValueInt[] { 1, 1, 2, 1, 3, 1, 4, 2, 3, 1 }.ToList()), // 5
+            new Chain(new List<ValueInt> { 1, 1, 2, 1, 3, 1, 4, 2, 3, 1 }), // 5
         };
 
         /// <summary>
@@ -271,58 +270,58 @@ namespace LibiadaCore.Tests.Core
         public static List<CongenericChain> CongenericChains => new List<CongenericChain>
         {
             // 0  _ _ _ A A _ _ A _ _
-            new CongenericChain(new[] { 3, 4, 7 }, Elements["A"], 10),
+            new CongenericChain(new List<int> { 3, 4, 7 }, Elements["A"], 10),
 
             // 1  _ _ _ B _ B B _ _ _ _ B _ _ _
-            new CongenericChain(new[] { 3, 5, 6, 11 }, Elements["B"], 15),
+            new CongenericChain(new List<int> { 3, 5, 6, 11 }, Elements["B"], 15),
 
             // 2  B
-            new CongenericChain(new[] { 0 }, Elements["A"], 1),
+            new CongenericChain(new List<int> { 0 }, Elements["A"], 1),
 
             // 3  _ _ _ _ _ _ _ B
-            new CongenericChain(new[] { 7 }, Elements["A"], 8),
+            new CongenericChain(new List<int> { 7 }, Elements["A"], 8),
 
             // 4
-            new CongenericChain(new[] { 100, 100000, 500000 }, Elements["A"], 1000000),
+            new CongenericChain(new List<int> { 100, 100000, 500000 }, Elements["A"], 1000000),
 
             // 5  A A A A A
-            new CongenericChain(new[] { 0, 1, 2, 3, 4 }, Elements["A"], 5),
+            new CongenericChain(new List<int> { 0, 1, 2, 3, 4 }, Elements["A"], 5),
 
             // 6  A _ _ A _ _ _ _ _ _ _ _ _ _ _ _ _ _
-            new CongenericChain(new[] { 0, 3 }, Elements["A"], 18),
+            new CongenericChain(new List<int> { 0, 3 }, Elements["A"], 18),
 
             // 7  _ _ A _ _ _ _ _ _ _ _ _ _ _ _ _ _ a
-            new CongenericChain(new[] { 2, 17 }, Elements["A"], 18),
+            new CongenericChain(new List<int> { 2, 17 }, Elements["A"], 18),
 
             // 8  A _ _ _ _ A _ _ _ _ _ A _ _ _ _ _ _ _ A _ _ _ _ A _ _ _ _
-            new CongenericChain(new[] { 0, 5, 11, 19, 24 }, Elements["A"], 30),
+            new CongenericChain(new List<int> { 0, 5, 11, 19, 24 }, Elements["A"], 30),
 
             // 9  _ _ A _ _ _ A _ _ _ _ _ _ _ _ A _ _ _ _ _ _ _ A _ _ A _ _
-            new CongenericChain(new[] { 2, 6, 15, 23, 26 }, Elements["A"], 30),
+            new CongenericChain(new List<int> { 2, 6, 15, 23, 26 }, Elements["A"], 30),
 
             // 10 A _ _ _ _ _ _ _ A _ A _ _ A _ _ _ _ _ _
-            new CongenericChain(new[] { 0, 8, 10, 13 }, Elements["A"], 20),
+            new CongenericChain(new List<int> { 0, 8, 10, 13 }, Elements["A"], 20),
 
             // 11 _ A a _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ A _
-            new CongenericChain(new[] { 1, 2, 18 }, Elements["A"], 20),
+            new CongenericChain(new List<int> { 1, 2, 18 }, Elements["A"], 20),
 
             // 12 A _ _ _ _ _ _ _ A _ _ A _ A _ A _ A _ A _ _ _ _ A _ _
-            new CongenericChain(new[] { 0, 8, 11, 13, 15, 17, 19, 24 }, Elements["A"], 27),
+            new CongenericChain(new List<int> { 0, 8, 11, 13, 15, 17, 19, 24 }, Elements["A"], 27),
 
             // 13 _ A _ A a _ A _ _ A a _ _ _ _ A _ _ _ _ _ _ A _ _ _ A
-            new CongenericChain(new[] { 1, 3, 4, 6, 9, 10, 22, 26 }, Elements["A"], 27),
+            new CongenericChain(new List<int> { 1, 3, 4, 6, 9, 10, 22, 26 }, Elements["A"], 27),
 
             // 14 A _ _ A _ _ _ _ _ A _ A _ _ _ _ _
-            new CongenericChain(new[] { 0, 3, 9, 11 }, Elements["A"], 17),
+            new CongenericChain(new List<int> { 0, 3, 9, 11 }, Elements["A"], 17),
 
             // 15 _ A _ _ _ _ _ A _ _ A _ _ _ A _ _
-            new CongenericChain(new[] { 1, 7, 10, 14 }, Elements["A"], 17),
+            new CongenericChain(new List<int> { 1, 7, 10, 14 }, Elements["A"], 17),
 
             // 16 A _ _ _ A _ _ _ _ _ A _ _ A _ _ _ _ _ _ _ _ _
-            new CongenericChain(new[] { 0, 4, 10, 13 }, Elements["A"], 23),
+            new CongenericChain(new List<int> { 0, 4, 10, 13 }, Elements["A"], 23),
 
             // 17 _ A _ _ _ _ _ _ _ A _ _ A _ _ _ _ _ A _ _ _ _
-            new CongenericChain(new[] { 1, 9, 12, 18 }, Elements["A"], 23),
+            new CongenericChain(new List<int> { 1, 9, 12, 18 }, Elements["A"], 23),
         };
 
         /// <summary>
