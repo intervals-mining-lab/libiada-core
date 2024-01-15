@@ -1,27 +1,26 @@
-﻿namespace LibiadaCore.Tests.Core.SimpleTypes
+﻿namespace Libiada.Core.Tests.Core.SimpleTypes;
+
+using Libiada.Core.Core.SimpleTypes;
+
+using NUnit.Framework;
+
+/// <summary>
+/// Pitch tests.
+/// </summary>
+[TestFixture]
+public class PitchTests
 {
-    using LibiadaCore.Core.SimpleTypes;
-
-    using NUnit.Framework;
-
     /// <summary>
-    /// Pitch tests.
+    /// The pitch constructor test.
     /// </summary>
-    [TestFixture]
-    public class PitchTests
+    [Test]
+    public void PitchConstructorTest()
     {
-        /// <summary>
-        /// The pitch constructor test.
-        /// </summary>
-        [Test]
-        public void PitchConstructorTest()
-        {
-            var initialPitch = new Pitch(1, NoteSymbol.A, Accidental.Bekar);
-            var midiNumberPitch = new Pitch(initialPitch.MidiNumber);
-            Assert.AreEqual(initialPitch.MidiNumber, midiNumberPitch.MidiNumber);
-            initialPitch = new Pitch(5, NoteSymbol.C, Accidental.Sharp);
-            midiNumberPitch = new Pitch(initialPitch.MidiNumber);
-            Assert.AreEqual(initialPitch.MidiNumber, midiNumberPitch.MidiNumber);
-        }
+        var initialPitch = new Pitch(1, NoteSymbol.A, Accidental.Bekar);
+        var midiNumberPitch = new Pitch(initialPitch.MidiNumber);
+        Assert.AreEqual(initialPitch.MidiNumber, midiNumberPitch.MidiNumber);
+        initialPitch = new Pitch(5, NoteSymbol.C, Accidental.Sharp);
+        midiNumberPitch = new Pitch(initialPitch.MidiNumber);
+        Assert.AreEqual(initialPitch.MidiNumber, midiNumberPitch.MidiNumber);
     }
 }

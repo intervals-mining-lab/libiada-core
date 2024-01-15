@@ -1,32 +1,31 @@
-﻿namespace LibiadaCore.Tests.Core.Characteristics.Calculators.CongenericCalculators
+﻿namespace Libiada.Core.Tests.Core.Characteristics.Calculators.CongenericCalculators;
+
+using Libiada.Core.Core;
+using Libiada.Core.Core.Characteristics.Calculators.CongenericCalculators;
+
+using NUnit.Framework;
+
+/// <summary>
+/// The remoteness standard deviation tests.
+/// </summary>
+[TestFixture]
+public class RemotenessStandardDeviationTests : CongenericCalculatorsTests<RemotenessStandardDeviation>
 {
-    using LibiadaCore.Core;
-    using LibiadaCore.Core.Characteristics.Calculators.CongenericCalculators;
-
-    using NUnit.Framework;
-
     /// <summary>
-    /// The remoteness standard deviation tests.
+    /// Standard Deviation test.
     /// </summary>
-    [TestFixture]
-    public class RemotenessStandardDeviationTests : CongenericCalculatorsTests<RemotenessStandardDeviation>
+    /// <param name="index">
+    /// The congeneric sequence index in <see cref="ChainsStorage"/>.
+    /// </param>
+    /// <param name="link">
+    /// Redundant parameter, not used in calculations.
+    /// </param>
+    /// <param name="value">
+    /// The value.
+    /// </param>
+    [TestCase(0, Link.Start, 0.86180445)]
+    public void CongenericCalculationTest(int index, Link link, double value)
     {
-        /// <summary>
-        /// Standard Deviation test.
-        /// </summary>
-        /// <param name="index">
-        /// The congeneric sequence index in <see cref="ChainsStorage"/>.
-        /// </param>
-        /// <param name="link">
-        /// Redundant parameter, not used in calculations.
-        /// </param>
-        /// <param name="value">
-        /// The value.
-        /// </param>
-        [TestCase(0, Link.Start, 0.86180445)]
-        public void CongenericCalculationTest(int index, Link link, double value)
-        {
-            CongenericChainCharacteristicTest(index, link, value);
-        }
+        CongenericChainCharacteristicTest(index, link, value);
     }
 }

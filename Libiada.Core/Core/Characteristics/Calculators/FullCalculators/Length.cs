@@ -1,22 +1,21 @@
-namespace LibiadaCore.Core.Characteristics.Calculators.FullCalculators
+namespace Libiada.Core.Core.Characteristics.Calculators.FullCalculators;
+
+/// <summary>
+/// Sequence length.
+/// </summary>
+public class Length : NonLinkableFullCalculator
 {
     /// <summary>
-    /// Sequence length.
+    /// Calculation method.
     /// </summary>
-    public class Length : NonLinkableFullCalculator
+    /// <param name="chain">
+    /// Source sequence.
+    /// </param>
+    /// <returns>
+    /// Chain length as <see cref="double"/>.
+    /// </returns>
+    public override double Calculate(Chain chain)
     {
-        /// <summary>
-        /// Calculation method.
-        /// </summary>
-        /// <param name="chain">
-        /// Source sequence.
-        /// </param>
-        /// <returns>
-        /// Chain length as <see cref="double"/>.
-        /// </returns>
-        public override double Calculate(Chain chain)
-        {
-            return chain.Length;
-        }
+        return chain.Length;
     }
 }

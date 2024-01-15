@@ -1,13 +1,12 @@
-namespace MarkovChains.MarkovChain.Matrices.Probability
+namespace Libiada.MarkovChains.MarkovChain.Matrices.Probability;
+
+/// <summary>
+/// Interface of writable matrix value.
+/// </summary>
+public interface IWritableMatrix
 {
     /// <summary>
-    /// Interface of writable matrix value.
+    /// Gets or sets value of the matrix.
     /// </summary>
-    public interface IWritableMatrix
-    {
-        /// <summary>
-        /// Gets or sets value of the matrix.
-        /// </summary>
-        double Value { get; set; }
-    }
+    double Value { get; set; }
 }

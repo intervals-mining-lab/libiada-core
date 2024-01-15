@@ -1,81 +1,80 @@
-﻿namespace LibiadaCore.TimeSeries.OneDimensional.Comparers
-{
-    using System.Collections.Generic;
-    using System.Linq;
+﻿namespace Libiada.Core.TimeSeries.OneDimensional.Comparers;
 
-    using LibiadaCore.TimeSeries.Aggregators;
-    using LibiadaCore.TimeSeries.Aligners;
-    using LibiadaCore.TimeSeries.OneDimensional.DistanceCalculators;
+using System.Collections.Generic;
+using System.Linq;
+
+using Libiada.Core.TimeSeries.Aggregators;
+using Libiada.Core.TimeSeries.Aligners;
+using Libiada.Core.TimeSeries.OneDimensional.DistanceCalculators;
+
+/// <summary>
+/// The one dimensional time series comparer.
+/// </summary>
+public class OneDimensionalTimeSeriesComparer : IOneDimensionalTimeSeriesComparer
+{
+    /// <summary>
+    /// The aligner.
+    /// </summary>
+    private ITimeSeriesAligner aligner;
 
     /// <summary>
-    /// The one dimensional time series comparer.
+    /// The calculator.
     /// </summary>
-    public class OneDimensionalTimeSeriesComparer : IOneDimensionalTimeSeriesComparer
+    private IOneDimensionalPointsDistance calculator;
+
+    /// <summary>
+    /// The aggregator.
+    /// </summary>
+    private IDistancesAggregator aggregator;
+
+    /// <summary>
+    /// Initializes a new instance of the <see cref="OneDimensionalTimeSeriesComparer"/> class.
+    /// </summary>
+    /// <param name="aligner">
+    /// The aligner.
+    /// </param>
+    /// <param name="calculator">
+    /// The calculator.
+    /// </param>
+    /// <param name="aggregator">
+    /// The aggregator.
+    /// </param>
+    public OneDimensionalTimeSeriesComparer(ITimeSeriesAligner aligner, IOneDimensionalPointsDistance calculator, IDistancesAggregator aggregator = null)
     {
-        /// <summary>
-        /// The aligner.
-        /// </summary>
-        private ITimeSeriesAligner aligner;
+        this.aligner = aligner;
+        this.calculator = calculator;
+        this.aggregator = aggregator ?? new Min();
+    }
 
-        /// <summary>
-        /// The calculator.
-        /// </summary>
-        private IOneDimensionalPointsDistance calculator;
+    /// <summary>
+    /// The get distance between two time series.
+    /// </summary>
+    /// <param name="firstTimeSeries">
+    /// The first time series.
+    /// </param>
+    /// <param name="secondTimeSeries">
+    /// The second time series.
+    /// </param>
+    /// <returns>
+    /// The <see cref="double"/>.
+    /// </returns>
+    public double GetDistance(double[] firstTimeSeries, double[] secondTimeSeries)
+    {
+        (double[][] first, double[][] second) = this.aligner.AlignSeries(firstTimeSeries, secondTimeSeries);
 
-        /// <summary>
-        /// The aggregator.
-        /// </summary>
-        private IDistancesAggregator aggregator;
+        double[] aggregated = new double[first.Length];
 
-        /// <summary>
-        /// Initializes a new instance of the <see cref="OneDimensionalTimeSeriesComparer"/> class.
-        /// </summary>
-        /// <param name="aligner">
-        /// The aligner.
-        /// </param>
-        /// <param name="calculator">
-        /// The calculator.
-        /// </param>
-        /// <param name="aggregator">
-        /// The aggregator.
-        /// </param>
-        public OneDimensionalTimeSeriesComparer(ITimeSeriesAligner aligner, IOneDimensionalPointsDistance calculator, IDistancesAggregator aggregator = null)
+        for (int i = 0; i < first.Length; i++)
         {
-            this.aligner = aligner;
-            this.calculator = calculator;
-            this.aggregator = aggregator ?? new Min();
-        }
-
-        /// <summary>
-        /// The get distance between two time series.
-        /// </summary>
-        /// <param name="firstTimeSeries">
-        /// The first time series.
-        /// </param>
-        /// <param name="secondTimeSeries">
-        /// The second time series.
-        /// </param>
-        /// <returns>
-        /// The <see cref="double"/>.
-        /// </returns>
-        public double GetDistance(double[] firstTimeSeries, double[] secondTimeSeries)
-        {
-            (double[][] first, double[][] second) = this.aligner.AlignSeries(firstTimeSeries, secondTimeSeries);
-
-            double[] aggregated = new double[first.Length];
-
-            for (int i = 0; i < first.Length; i++)
+            List<double> distances = new List<double>();
+            for (int j = 0; j < first[0].Length; j++)
             {
-                List<double> distances = new List<double>();
-                for (int j = 0; j < first[0].Length; j++)
-                {
-                    distances.Add(this.calculator.GetDistance(first[i][j], second[i][j]));
-                }
-
-                aggregated[i] = this.aggregator.Aggregate(distances);
+                distances.Add(this.calculator.GetDistance(first[i][j], second[i][j]));
             }
 
-            return aggregated.Min();
+            aggregated[i] = this.aggregator.Aggregate(distances);
         }
+
+        return aggregated.Min();
     }
 }

@@ -1,100 +1,99 @@
-﻿namespace LibiadaCore.Core.ArrangementManagers
+﻿namespace Libiada.Core.Core.ArrangementManagers;
+
+using System;
+using System.Collections.Generic;
+
+/// <summary>
+/// The accordance intervals manager.
+/// </summary>
+public class AccordanceIntervalsManager
 {
-    using System;
-    using System.Collections.Generic;
+   /// <summary>
+    /// The chains length.
+    /// </summary>
+    public readonly int Length;
 
     /// <summary>
-    /// The accordance intervals manager.
+    /// First accordance  intervals.
     /// </summary>
-    public class AccordanceIntervalsManager
+    public readonly List<int> FilteredFirstIntervals = new List<int>();
+
+    /// <summary>
+    /// Second accordance intervals.
+    /// </summary>
+    public readonly List<int> FilteredSecondIntervals = new List<int>();
+
+    /// <summary>
+    /// First element occurrences count.
+    /// </summary>
+    public readonly int FirstOccurrencesCount;
+
+    /// <summary>
+    /// Second element occurrences count.
+    /// </summary>
+    public readonly int SecondOccurrencesCount;
+
+    /// <summary>
+    /// The first chain.
+    /// </summary>
+    private readonly CongenericChain firstChain;
+
+    /// <summary>
+    /// The second chain.
+    /// </summary>
+    private readonly CongenericChain secondChain;
+
+    /// <summary>
+    /// Initializes a new instance of the <see cref="AccordanceIntervalsManager"/> class.
+    /// </summary>
+    /// <param name="firstChain">
+    /// The first chain.
+    /// </param>
+    /// <param name="secondChain">
+    /// The second chain.
+    /// </param>
+    /// <param name="link">
+    /// The link.
+    /// </param>
+    public AccordanceIntervalsManager(CongenericChain firstChain, CongenericChain secondChain, Link link)
     {
-       /// <summary>
-        /// The chains length.
-        /// </summary>
-        public readonly int Length;
+        this.firstChain = firstChain;
+        this.secondChain = secondChain;
+        Length = firstChain.Length;
+        FirstOccurrencesCount = firstChain.OccurrencesCount;
+        SecondOccurrencesCount = secondChain.OccurrencesCount;
 
-        /// <summary>
-        /// First accordance  intervals.
-        /// </summary>
-        public readonly List<int> FilteredFirstIntervals = new List<int>();
+        FillAccordanceIntervals(link);
+    }
 
-        /// <summary>
-        /// Second accordance intervals.
-        /// </summary>
-        public readonly List<int> FilteredSecondIntervals = new List<int>();
-
-        /// <summary>
-        /// First element occurrences count.
-        /// </summary>
-        public readonly int FirstOccurrencesCount;
-
-        /// <summary>
-        /// Second element occurrences count.
-        /// </summary>
-        public readonly int SecondOccurrencesCount;
-
-        /// <summary>
-        /// The first chain.
-        /// </summary>
-        private readonly CongenericChain firstChain;
-
-        /// <summary>
-        /// The second chain.
-        /// </summary>
-        private readonly CongenericChain secondChain;
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="AccordanceIntervalsManager"/> class.
-        /// </summary>
-        /// <param name="firstChain">
-        /// The first chain.
-        /// </param>
-        /// <param name="secondChain">
-        /// The second chain.
-        /// </param>
-        /// <param name="link">
-        /// The link.
-        /// </param>
-        public AccordanceIntervalsManager(CongenericChain firstChain, CongenericChain secondChain, Link link)
+    /// <summary>
+    /// The fill accordance intervals.
+    /// </summary>
+    /// <param name="link">
+    /// The link.
+    /// </param>
+    private void FillAccordanceIntervals(Link link)
+    {
+        if (link != Link.End)
         {
-            this.firstChain = firstChain;
-            this.secondChain = secondChain;
-            Length = firstChain.Length;
-            FirstOccurrencesCount = firstChain.OccurrencesCount;
-            SecondOccurrencesCount = secondChain.OccurrencesCount;
-
-            FillAccordanceIntervals(link);
+            throw new NotImplementedException();
         }
 
-        /// <summary>
-        /// The fill accordance intervals.
-        /// </summary>
-        /// <param name="link">
-        /// The link.
-        /// </param>
-        private void FillAccordanceIntervals(Link link)
+        int[] firstIntervals = firstChain.GetArrangement(link);
+        int[] secondIntervals = secondChain.GetArrangement(link);
+
+        for (int i = 1; i <= FirstOccurrencesCount; i++)
         {
-            if (link != Link.End)
+            int firstPosition = firstChain.GetOccurrence(i);
+            int nextFirstPosition = firstChain.GetOccurrence(i + 1) == -1 ? Length : firstChain.GetOccurrence(i + 1);
+            for (int j = 1; j <= secondChain.OccurrencesCount; j++)
             {
-                throw new NotImplementedException();
-            }
-
-            int[] firstIntervals = firstChain.GetArrangement(link);
-            int[] secondIntervals = secondChain.GetArrangement(link);
-
-            for (int i = 1; i <= FirstOccurrencesCount; i++)
-            {
-                int firstPosition = firstChain.GetOccurrence(i);
-                int nextFirstPosition = firstChain.GetOccurrence(i + 1) == -1 ? Length : firstChain.GetOccurrence(i + 1);
-                for (int j = 1; j <= secondChain.OccurrencesCount; j++)
+                int secondOccurrence = secondChain.GetOccurrence(j);
+                if (secondOccurrence >= firstPosition && secondOccurrence < nextFirstPosition)
                 {
-                    int secondOccurrence = secondChain.GetOccurrence(j);
-                    if (secondOccurrence >= firstPosition && secondOccurrence < nextFirstPosition)
-                    {
-                        FilteredFirstIntervals.Add(firstIntervals[i - 1]);
-                        FilteredSecondIntervals.Add(secondIntervals[j - 1]);
-                        break;
-                    }
+                    FilteredFirstIntervals.Add(firstIntervals[i - 1]);
+                    FilteredSecondIntervals.Add(secondIntervals[j - 1]);
+                    break;
                 }
             }
         }

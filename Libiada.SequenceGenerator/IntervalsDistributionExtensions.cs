@@ -1,16 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿namespace Libiada.SequenceGenerator;
 
-namespace SequenceGenerator
+public static class IntervalsDistributionExtensions
 {
-    public static class IntervalsDistributionExtensions
-    {
 
-        public static IntervalsDistribution SetDistribution(this IntervalsDistribution intervalsDistribution, Dictionary<int, int> distribution)
-        {
-            intervalsDistribution.Distribution = distribution;
-            return intervalsDistribution;
-        }
+    public static IntervalsDistribution SetDistribution(this IntervalsDistribution intervalsDistribution, Dictionary<int, int> distribution)
+    {
+        intervalsDistribution.Distribution = distribution;
+        return intervalsDistribution;
     }
 }

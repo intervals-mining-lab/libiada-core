@@ -1,17 +1,16 @@
-namespace Clusterizator.Krab.Calculators
+namespace Libiada.Clusterizator.Krab.Calculators;
+
+/// <summary>
+/// Distance calculator interface.
+/// (used for clusterization)
+/// </summary>
+public interface ICalculator
 {
     /// <summary>
-    /// Distance calculator interface.
-    /// (used for clusterization)
+    /// Distance calculation for the graph.
     /// </summary>
-    public interface ICalculator
-    {
-        /// <summary>
-        /// Distance calculation for the graph.
-        /// </summary>
-        /// <param name="graph">
-        /// Connections graph.
-        /// </param>
-        void Calculate(GraphManager graph);
-    }
+    /// <param name="graph">
+    /// Connections graph.
+    /// </param>
+    void Calculate(GraphManager graph);
 }

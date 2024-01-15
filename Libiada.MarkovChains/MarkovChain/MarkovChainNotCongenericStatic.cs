@@ -1,91 +1,90 @@
-namespace MarkovChains.MarkovChain
+namespace Libiada.MarkovChains.MarkovChain;
+
+using Libiada.Core.Core;
+using Libiada.Core.Iterators;
+using MarkovChains.MarkovChain.Generators;
+
+/// <summary>
+/// Static non congeneric (heterogeneous) markov chain class.
+/// </summary>
+public class MarkovChainNotCongenericStatic : MarkovChainBase
 {
-    using LibiadaCore.Core;
-    using LibiadaCore.Iterators;
-    using MarkovChains.MarkovChain.Generators;
+    /// <summary>
+    /// Initializes a new instance of the <see cref="MarkovChainNotCongenericStatic"/> class.
+    /// </summary>
+    /// <param name="rank">
+    /// Markov chain rank.
+    /// </param>
+    /// <param name="heterogeneityRank">
+    /// Heterogeneity rank.
+    /// </param>
+    /// <param name="generator">
+    /// Random numbers generator.
+    /// </param>
+    public MarkovChainNotCongenericStatic(int rank, int heterogeneityRank, IGenerator generator) : base(rank, heterogeneityRank, generator)
+    {
+    }
 
     /// <summary>
-    /// Static non congeneric (heterogeneous) markov chain class.
+    /// Generates sequence.
     /// </summary>
-    public class MarkovChainNotCongenericStatic : MarkovChainBase
+    /// <param name="length">
+    /// Length of generated sequence.
+    /// </param>
+    /// <param name="chainRank">
+    /// Rank of used markov chain.
+    /// </param>
+    /// <returns>
+    /// Generated sequence as <see cref="BaseChain"/>.
+    /// </returns>
+    public override BaseChain Generate(int length, int chainRank)
     {
-        /// <summary>
-        /// Initializes a new instance of the <see cref="MarkovChainNotCongenericStatic"/> class.
-        /// </summary>
-        /// <param name="rank">
-        /// Markov chain rank.
-        /// </param>
-        /// <param name="heterogeneityRank">
-        /// Heterogeneity rank.
-        /// </param>
-        /// <param name="generator">
-        /// Random numbers generator.
-        /// </param>
-        public MarkovChainNotCongenericStatic(int rank, int heterogeneityRank, IGenerator generator) : base(rank, heterogeneityRank, generator)
+        var temp = new BaseChain();
+        temp.ClearAndSetNewLength(length);
+        var read = Rank > 1 ? new IteratorStart(temp, Rank - 1, 1) : null;
+        var write = new IteratorWritableStart(temp);
+        if (read != null)
         {
+            read.Reset();
+            read.Next();
         }
 
-        /// <summary>
-        /// Generates sequence.
-        /// </summary>
-        /// <param name="length">
-        /// Length of generated sequence.
-        /// </param>
-        /// <param name="chainRank">
-        /// Rank of used markov chain.
-        /// </param>
-        /// <returns>
-        /// Generated sequence as <see cref="BaseChain"/>.
-        /// </returns>
-        public override BaseChain Generate(int length, int chainRank)
+        write.Reset();
+        Generator.Reset();
+
+        int m = 0;
+        for (int j = 0; j < length; j++)
         {
-            var temp = new BaseChain();
-            temp.ClearAndSetNewLength(length);
-            var read = Rank > 1 ? new IteratorStart(temp, Rank - 1, 1) : null;
-            var write = new IteratorWritableStart(temp);
-            if (read != null)
+            if (m == HeterogeneityRank + 1)
             {
-                read.Reset();
-                read.Next();
+                m = 0;
             }
 
-            write.Reset();
-            Generator.Reset();
+            m += 1;
 
-            int m = 0;
-            for (int j = 0; j < length; j++)
+            write.Next();
+
+            if (j >= Rank)
             {
-                if (m == HeterogeneityRank + 1)
-                {
-                    m = 0;
-                }
-
-                m += 1;
-
-                write.Next();
-
-                if (j >= Rank)
-                {
-                    if (read != null)
-                    {
-                        read.Next();
-                    }
-                }
-
                 if (read != null)
                 {
-                    BaseChain chain = (BaseChain)read.Current();
-                    var indexedChain = new int[chain.Length];
-                    for (int k = 0; k < chain.Length; k++)
-                    {
-                        indexedChain[k] = Alphabet.IndexOf(chain[k]);
-                    }
-
-                    write.WriteValue(GetObject(ProbabilityMatrixes[m - 1].GetProbabilityVector(Alphabet, indexedChain)));
+                    read.Next();
                 }
             }
 
-            return temp;
+            if (read != null)
+            {
+                BaseChain chain = (BaseChain)read.Current();
+                var indexedChain = new int[chain.Length];
+                for (int k = 0; k < chain.Length; k++)
+                {
+                    indexedChain[k] = Alphabet.IndexOf(chain[k]);
+                }
+
+                write.WriteValue(GetObject(ProbabilityMatrixes[m - 1].GetProbabilityVector(Alphabet, indexedChain)));
+            }
         }
+
+        return temp;
     }
 }

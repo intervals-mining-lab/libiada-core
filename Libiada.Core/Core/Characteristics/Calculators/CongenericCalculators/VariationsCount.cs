@@ -1,34 +1,33 @@
-﻿namespace LibiadaCore.Core.Characteristics.Calculators.CongenericCalculators
+﻿namespace Libiada.Core.Core.Characteristics.Calculators.CongenericCalculators;
+
+using Libiada.Core.Core.SimpleTypes;
+
+/// <summary>
+/// Count of probable sequences that can be generated
+/// from given phantom chain (sequence containing phantom messages).
+/// </summary>
+public class VariationsCount : NonLinkableCongenericCalculator
 {
-    using LibiadaCore.Core.SimpleTypes;
-
     /// <summary>
-    /// Count of probable sequences that can be generated
-    /// from given phantom chain (sequence containing phantom messages).
+    /// Calculation method.
     /// </summary>
-    public class VariationsCount : NonLinkableCongenericCalculator
+    /// <param name="chain">
+    /// Source sequence.
+    /// </param>
+    /// <returns>
+    /// Variations count as <see cref="double"/>.
+    /// </returns>
+    public override double Calculate(CongenericChain chain)
     {
-        /// <summary>
-        /// Calculation method.
-        /// </summary>
-        /// <param name="chain">
-        /// Source sequence.
-        /// </param>
-        /// <returns>
-        /// Variations count as <see cref="double"/>.
-        /// </returns>
-        public override double Calculate(CongenericChain chain)
+        int count = 1;
+        for (int i = 0; i < chain.Length; i++)
         {
-            int count = 1;
-            for (int i = 0; i < chain.Length; i++)
+            if (chain[i] is ValuePhantom phantomValue)
             {
-                if (chain[i] is ValuePhantom phantomValue)
-                {
-                    count *= phantomValue.Cardinality;
-                }
+                count *= phantomValue.Cardinality;
             }
-
-            return count;
         }
+
+        return count;
     }
 }

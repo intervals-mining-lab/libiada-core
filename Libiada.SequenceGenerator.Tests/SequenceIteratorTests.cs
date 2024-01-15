@@ -1,67 +1,66 @@
-﻿namespace SequenceGenerator.Tests
+﻿namespace Libiada.SequenceGenerator.Tests;
+
+using NUnit.Framework;
+
+/// <summary>
+/// The sequence iterator tests.
+/// </summary>
+[TestFixture]
+public class SequenceIteratorTests
 {
-    using NUnit.Framework;
-
     /// <summary>
-    /// The sequence iterator tests.
+    /// The iterator test.
     /// </summary>
-    [TestFixture]
-    public class SequenceIteratorTests
+    /// <param name="expected">
+    /// The expected order.
+    /// </param>
+    /// <param name="iterations">
+    /// The iterations count.
+    /// </param>
+    [TestCase(new[] { 1, 1, 1 }, 0)]
+    [TestCase(new[] { 2, 1, 1 }, 1)]
+    [TestCase(new[] { 1, 2, 1 }, 2)]
+    [TestCase(new[] { 2, 2, 1 }, 3)]
+    [TestCase(new[] { 1, 1, 2 }, 4)]
+    [TestCase(new[] { 2, 1, 2 }, 5)]
+    [TestCase(new[] { 1, 2, 2 }, 6)]
+    [TestCase(new[] { 2, 2, 2 }, 7)]
+    public void IteratorTest(int[] expected, int iterations)
     {
-        /// <summary>
-        /// The iterator test.
-        /// </summary>
-        /// <param name="expected">
-        /// The expected order.
-        /// </param>
-        /// <param name="iterations">
-        /// The iterations count.
-        /// </param>
-        [TestCase(new[] { 1, 1, 1 }, 0)]
-        [TestCase(new[] { 2, 1, 1 }, 1)]
-        [TestCase(new[] { 1, 2, 1 }, 2)]
-        [TestCase(new[] { 2, 2, 1 }, 3)]
-        [TestCase(new[] { 1, 1, 2 }, 4)]
-        [TestCase(new[] { 2, 1, 2 }, 5)]
-        [TestCase(new[] { 1, 2, 2 }, 6)]
-        [TestCase(new[] { 2, 2, 2 }, 7)]
-        public void IteratorTest(int[] expected, int iterations)
+        var iterator = new SequenceIterator(3, 2);
+        for (int i = 0; i < iterations; i++)
         {
-            var iterator = new SequenceIterator(3, 2);
-            for (int i = 0; i < iterations; i++)
-            {
-                iterator.IterateSequencesCounter();
-            }
-
-            var actual = iterator.Iterator;
-            Assert.AreEqual(expected, actual);
+            iterator.IterateSequencesCounter();
         }
 
-        /// <summary>
-        /// The enumerator test.
-        /// </summary>
-        [Test]
-        public void EnumeratorTest()
-        {
-            var iterator = new SequenceIterator(3, 2);
-            int[][] expected =
-            {
-                new[] { 1, 1, 1 },
-                new[] { 2, 1, 1 },
-                new[] { 1, 2, 1 },
-                new[] { 2, 2, 1 },
-                new[] { 1, 1, 2 },
-                new[] { 2, 1, 2 },
-                new[] { 1, 2, 2 },
-                new[] { 2, 2, 2 }
-            };
-            int i = 0;
+        var actual = iterator.Iterator;
+        Assert.AreEqual(expected, actual);
+    }
 
-            foreach (int[] actual in iterator)
-            {
-                Assert.AreEqual(expected[i], actual);
-                i++;
-            }
+    /// <summary>
+    /// The enumerator test.
+    /// </summary>
+    [Test]
+    public void EnumeratorTest()
+    {
+        var iterator = new SequenceIterator(3, 2);
+        int[][] expected =
+        {
+            new[] { 1, 1, 1 },
+            new[] { 2, 1, 1 },
+            new[] { 1, 2, 1 },
+            new[] { 2, 2, 1 },
+            new[] { 1, 1, 2 },
+            new[] { 2, 1, 2 },
+            new[] { 1, 2, 2 },
+            new[] { 2, 2, 2 }
+        };
+        int i = 0;
+
+        foreach (int[] actual in iterator)
+        {
+            Assert.AreEqual(expected[i], actual);
+            i++;
         }
     }
 }

@@ -1,19 +1,18 @@
-namespace LibiadaCore.Iterators
-{
-    using LibiadaCore.Core;
+namespace Libiada.Core.Iterators;
 
+using Libiada.Core.Core;
+
+/// <summary>
+/// Writable iterators interface.
+/// Length of subsequence and shift of iterator should be equals 1.
+/// </summary>
+public interface IWritableIterator : IIterator
+{
     /// <summary>
-    /// Writable iterators interface.
-    /// Length of subsequence and shift of iterator should be equals 1.
+    /// Sets a value into current iterator position.
     /// </summary>
-    public interface IWritableIterator : IIterator
-    {
-        /// <summary>
-        /// Sets a value into current iterator position.
-        /// </summary>
-        /// <param name="value">
-        /// Value to write into current position of iterator.
-        /// </param>
-        void WriteValue(IBaseObject value);
-    }
+    /// <param name="value">
+    /// Value to write into current position of iterator.
+    /// </param>
+    void WriteValue(IBaseObject value);
 }

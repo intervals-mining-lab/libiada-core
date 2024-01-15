@@ -1,51 +1,50 @@
-﻿namespace LibiadaCore.Iterators
+﻿namespace Libiada.Core.Iterators;
+
+using System.Collections.Generic;
+
+/// <summary>
+/// Cut rule with default starts and ends.
+/// </summary>
+public class DefaultCutRule : CutRule
 {
-    using System.Collections.Generic;
+    /// <summary>
+    /// Initializes a new instance of the <see cref="DefaultCutRule"/> class.
+    /// </summary>
+    /// <param name="starts">
+    /// Start positions of subsequences.
+    /// </param>
+    /// <param name="ends">
+    /// End positions of subsequences.
+    /// </param>
+    public DefaultCutRule(List<int> starts, List<int> ends)
+    {
+        Starts.AddRange(starts);
+        Ends.AddRange(ends);
+    }
 
     /// <summary>
-    /// Cut rule with default starts and ends.
+    /// Initializes a new instance of the <see cref="DefaultCutRule"/> class with one subsequence.
     /// </summary>
-    public class DefaultCutRule : CutRule
+    /// <param name="start">
+    /// Start position of subsequence.
+    /// </param>
+    /// <param name="end">
+    /// End position of subsequence.
+    /// </param>
+    public DefaultCutRule(int start, int end)
     {
-        /// <summary>
-        /// Initializes a new instance of the <see cref="DefaultCutRule"/> class.
-        /// </summary>
-        /// <param name="starts">
-        /// Start positions of subsequences.
-        /// </param>
-        /// <param name="ends">
-        /// End positions of subsequences.
-        /// </param>
-        public DefaultCutRule(List<int> starts, List<int> ends)
-        {
-            Starts.AddRange(starts);
-            Ends.AddRange(ends);
-        }
+        Starts.Add(start);
+        Ends.Add(end);
+    }
 
-        /// <summary>
-        /// Initializes a new instance of the <see cref="DefaultCutRule"/> class with one subsequence.
-        /// </summary>
-        /// <param name="start">
-        /// Start position of subsequence.
-        /// </param>
-        /// <param name="end">
-        /// End position of subsequence.
-        /// </param>
-        public DefaultCutRule(int start, int end)
-        {
-            Starts.Add(start);
-            Ends.Add(end);
-        }
-
-        /// <summary>
-        /// Returns iterator for this cut rule.
-        /// </summary>
-        /// <returns>
-        /// The <see cref="CutRuleIterator"/>.
-        /// </returns>
-        public override CutRuleIterator GetIterator()
-        {
-            return new CutRuleIterator(Starts, Ends);
-        }
+    /// <summary>
+    /// Returns iterator for this cut rule.
+    /// </summary>
+    /// <returns>
+    /// The <see cref="CutRuleIterator"/>.
+    /// </returns>
+    public override CutRuleIterator GetIterator()
+    {
+        return new CutRuleIterator(Starts, Ends);
     }
 }

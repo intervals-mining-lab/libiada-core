@@ -1,26 +1,25 @@
-﻿namespace LibiadaCore.TimeSeries.Aggregators
-{
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
+﻿namespace Libiada.Core.TimeSeries.Aggregators;
 
+using System;
+using System.Collections.Generic;
+using System.Linq;
+
+/// <summary>
+/// The sum module aggregator.
+/// </summary>
+public class SumModule : IDistancesAggregator
+{
     /// <summary>
-    /// The sum module aggregator.
+    /// The aggregate.
     /// </summary>
-    public class SumModule : IDistancesAggregator
+    /// <param name="distances">
+    /// The distances.
+    /// </param>
+    /// <returns>
+    /// The <see cref="double"/>.
+    /// </returns>
+    public double Aggregate(List<double> distances)
     {
-        /// <summary>
-        /// The aggregate.
-        /// </summary>
-        /// <param name="distances">
-        /// The distances.
-        /// </param>
-        /// <returns>
-        /// The <see cref="double"/>.
-        /// </returns>
-        public double Aggregate(List<double> distances)
-        {
-            return Math.Abs(distances.Sum());
-        }
+        return Math.Abs(distances.Sum());
     }
 }

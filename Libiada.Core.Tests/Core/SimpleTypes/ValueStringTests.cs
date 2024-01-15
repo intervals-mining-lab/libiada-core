@@ -1,43 +1,42 @@
-namespace LibiadaCore.Tests.Core.SimpleTypes
+namespace Libiada.Core.Tests.Core.SimpleTypes;
+
+using System;
+
+using Libiada.Core.Core.SimpleTypes;
+
+using NUnit.Framework;
+
+/// <summary>
+/// The value string test.
+/// </summary>
+[TestFixture]
+public class ValueStringTests
 {
-    using System;
-
-    using LibiadaCore.Core.SimpleTypes;
-
-    using NUnit.Framework;
+    /// <summary>
+    /// The null string value test.
+    /// </summary>
+    [Test]
+    public void NullStringValueTest()
+    {
+        Assert.Throws<ArgumentNullException>(() => new ValueString(null));
+    }
 
     /// <summary>
-    /// The value string test.
+    /// The empty string value test.
     /// </summary>
-    [TestFixture]
-    public class ValueStringTests
+    [Test]
+    public void EmptyStringValueTest()
     {
-        /// <summary>
-        /// The null string value test.
-        /// </summary>
-        [Test]
-        public void NullStringValueTest()
-        {
-            Assert.Throws<ArgumentNullException>(() => new ValueString(null));
-        }
+        Assert.Throws<ArgumentException>(() => new ValueString(string.Empty));
+    }
 
-        /// <summary>
-        /// The empty string value test.
-        /// </summary>
-        [Test]
-        public void EmptyStringValueTest()
-        {
-            Assert.Throws<ArgumentException>(() => new ValueString(string.Empty));
-        }
-
-        /// <summary>
-        /// The equals test.
-        /// </summary>
-        [Test]
-        public void EqualsTest()
-        {
-            Assert.AreEqual(new ValueString("1"), new ValueString("1"));
-            Assert.AreEqual(new ValueString("abc"), new ValueString("abc"));
-        }
+    /// <summary>
+    /// The equals test.
+    /// </summary>
+    [Test]
+    public void EqualsTest()
+    {
+        Assert.AreEqual(new ValueString("1"), new ValueString("1"));
+        Assert.AreEqual(new ValueString("abc"), new ValueString("abc"));
     }
 }

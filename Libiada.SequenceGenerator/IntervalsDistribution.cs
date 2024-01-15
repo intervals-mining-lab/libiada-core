@@ -1,77 +1,71 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿namespace Libiada.SequenceGenerator;
 
-namespace SequenceGenerator
+public class IntervalsDistribution
 {
-    public class IntervalsDistribution
+    public Dictionary<int, int> Distribution { get; internal set; }
+
+
+    public IntervalsDistribution()
     {
-        public Dictionary<int, int> Distribution { get; internal set; }
+        Distribution = new Dictionary<int, int>();
+    }
 
-
-        public IntervalsDistribution()
+    public void AddInterval(int interval)
+    {
+        if (Distribution.ContainsKey(interval))
         {
-            Distribution = new Dictionary<int, int>();
+            Distribution[interval]++;
         }
-
-        public void AddInterval(int interval)
+        else
         {
-            if (Distribution.ContainsKey(interval))
-            {
-                Distribution[interval]++;
-            }
-            else
-            {
-                Distribution.Add(interval, 1);
-            }
+            Distribution.Add(interval, 1);
         }
+    }
 
-        public override bool Equals(object obj)
+    public override bool Equals(object obj)
+    {
+        if(!(obj is IntervalsDistribution))
         {
-            if(!(obj is IntervalsDistribution))
+            return false;
+        }
+        var distr = obj as IntervalsDistribution;
+        bool equal = false;
+        if (this.Distribution.Count == distr.Distribution.Count)
+        {
+            equal = true;
+            foreach (var pair in this.Distribution)
             {
-                return false;
-            }
-            var distr = obj as IntervalsDistribution;
-            bool equal = false;
-            if (this.Distribution.Count == distr.Distribution.Count)
-            {
-                equal = true;
-                foreach (var pair in this.Distribution)
+                int value;
+                if (distr.Distribution.TryGetValue(pair.Key, out value))
                 {
-                    int value;
-                    if (distr.Distribution.TryGetValue(pair.Key, out value))
-                    {
-                        if (value != pair.Value)
-                        {
-                            equal = false;
-                            break;
-                        }
-                    }
-                    else
+                    if (value != pair.Value)
                     {
                         equal = false;
                         break;
                     }
                 }
-            }
-            return equal;
-        }
-
-        public override int GetHashCode()
-        {
-            unchecked
-            {
-                int hashCode = -1573927371;
-                foreach (var element in Distribution)
+                else
                 {
-                    hashCode = hashCode ^ element.Key.GetHashCode();
-                    hashCode = hashCode ^ element.Value.GetHashCode();
+                    equal = false;
+                    break;
                 }
-
-                return hashCode;
             }
+        }
+        return equal;
+    }
+
+    public override int GetHashCode()
+    {
+        unchecked
+        {
+            int hashCode = -1573927371;
+            foreach (var element in Distribution)
+            {
+                hashCode = hashCode ^ element.Key.GetHashCode();
+                hashCode = hashCode ^ element.Value.GetHashCode();
+            }
+
+            return hashCode;
         }
     }
 }

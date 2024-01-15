@@ -1,46 +1,45 @@
-﻿namespace LibiadaCore.Tests.Extensions
+﻿namespace Libiada.Core.Tests.Extensions;
+
+using Libiada.Core.Extensions;
+
+using NUnit.Framework;
+
+/// <summary>
+/// The enum extensions tests.
+/// </summary>
+[TestFixture]
+public class EnumExtensionsTests
 {
-    using LibiadaCore.Extensions;
-
-    using NUnit.Framework;
-
     /// <summary>
-    /// The enum extensions tests.
+    /// The test enum.
     /// </summary>
-    [TestFixture]
-    public class EnumExtensionsTests
+    private enum TestEnum : byte
     {
         /// <summary>
-        /// The test enum.
+        /// The first.
         /// </summary>
-        private enum TestEnum : byte
-        {
-            /// <summary>
-            /// The first.
-            /// </summary>
-            First = 1,
-
-            /// <summary>
-            /// The second.
-            /// </summary>
-            Second = 2,
-
-            /// <summary>
-            /// The third.
-            /// </summary>
-            Third = 3
-        }
+        First = 1,
 
         /// <summary>
-        /// Test for ToArray method.
+        /// The second.
         /// </summary>
-        [Test]
-        public void ToArrayTest()
-        {
-            TestEnum[] actual = EnumExtensions.ToArray<TestEnum>();
-            var expected = new[] { TestEnum.First, TestEnum.Second, TestEnum.Third };
+        Second = 2,
 
-            Assert.AreEqual(expected, actual);
-        }
+        /// <summary>
+        /// The third.
+        /// </summary>
+        Third = 3
+    }
+
+    /// <summary>
+    /// Test for ToArray method.
+    /// </summary>
+    [Test]
+    public void ToArrayTest()
+    {
+        TestEnum[] actual = EnumExtensions.ToArray<TestEnum>();
+        var expected = new[] { TestEnum.First, TestEnum.Second, TestEnum.Third };
+
+        Assert.AreEqual(expected, actual);
     }
 }

@@ -1,23 +1,22 @@
-namespace MarkovChains.MarkovChain
+namespace Libiada.MarkovChains.MarkovChain;
+
+/// <summary>
+/// Chain preprocessing method.
+/// </summary>
+public enum TeachingMethod
 {
     /// <summary>
-    /// Chain preprocessing method.
+    /// No preprocessing.
     /// </summary>
-    public enum TeachingMethod
-    {
-        /// <summary>
-        /// No preprocessing.
-        /// </summary>
-        None,
+    None,
 
-        /// <summary>
-        /// Loopback (using statistical data).
-        /// </summary>
-        Cycle,
+    /// <summary>
+    /// Loopback (using statistical data).
+    /// </summary>
+    Cycle,
 
-        /// <summary>
-        /// Loopback (usinginformation about order of the chain).
-        /// </summary>
-        CycleBuilding
-    }
+    /// <summary>
+    /// Loopback (usinginformation about order of the chain).
+    /// </summary>
+    CycleBuilding
 }

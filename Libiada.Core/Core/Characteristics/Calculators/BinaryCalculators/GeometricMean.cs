@@ -1,40 +1,39 @@
-namespace LibiadaCore.Core.Characteristics.Calculators.BinaryCalculators
+namespace Libiada.Core.Core.Characteristics.Calculators.BinaryCalculators;
+
+using System;
+using System.Linq;
+
+using Libiada.Core.Core.ArrangementManagers;
+
+/// <summary>
+/// Average geometric value of interval length.
+/// </summary>
+public class GeometricMean : BinaryCalculator
 {
-    using System;
-    using System.Linq;
-
-    using LibiadaCore.Core.ArrangementManagers;
-
     /// <summary>
-    /// Average geometric value of interval length.
+    /// Calculated as geometric mean between two congeneric sequences.
     /// </summary>
-    public class GeometricMean : BinaryCalculator
+    /// <param name="manager">
+    /// Intervals manager.
+    /// </param>
+    /// <param name="link">
+    /// Link of intervals in sequence.
+    /// </param>
+    /// <returns>
+    /// Average geometric value.
+    /// </returns>
+    public override double Calculate(BinaryIntervalsManager manager, Link link)
     {
-        /// <summary>
-        /// Calculated as geometric mean between two congeneric sequences.
-        /// </summary>
-        /// <param name="manager">
-        /// Intervals manager.
-        /// </param>
-        /// <param name="link">
-        /// Link of intervals in sequence.
-        /// </param>
-        /// <returns>
-        /// Average geometric value.
-        /// </returns>
-        public override double Calculate(BinaryIntervalsManager manager, Link link)
+        // dependence of the component on itself is 0
+        if (manager.FirstElement.Equals(manager.SecondElement))
         {
-            // dependence of the component on itself is 0
-            if (manager.FirstElement.Equals(manager.SecondElement))
-            {
-                return 0;
-            }
-
-            int[] intervals = manager.GetIntervals();
-
-            double result = intervals.Where(t => t > 0).Sum(t => Math.Log(t, 2));
-
-            return Math.Pow(2, intervals.Length == 0 ? 0 : result / intervals.Length);
+            return 0;
         }
+
+        int[] intervals = manager.GetIntervals();
+
+        double result = intervals.Where(t => t > 0).Sum(t => Math.Log(t, 2));
+
+        return Math.Pow(2, intervals.Length == 0 ? 0 : result / intervals.Length);
     }
 }

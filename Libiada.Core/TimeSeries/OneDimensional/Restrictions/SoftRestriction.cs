@@ -1,22 +1,21 @@
-﻿namespace LibiadaCore.TimeSeries.OneDimensional.Restrictions
+﻿namespace Libiada.Core.TimeSeries.OneDimensional.Restrictions;
+
+/// <summary>
+/// The soft restriction.
+/// </summary>
+public class SoftRestriction : IRestriction
 {
     /// <summary>
-    /// The soft restriction.
+    /// The restrict.
     /// </summary>
-    public class SoftRestriction : IRestriction
+    /// <param name="differenceModulus">
+    /// The difference modulus.
+    /// </param>
+    /// <returns>
+    /// The <see cref="double"/>.
+    /// </returns>
+    public double Restrict(double differenceModulus)
     {
-        /// <summary>
-        /// The restrict.
-        /// </summary>
-        /// <param name="differenceModulus">
-        /// The difference modulus.
-        /// </param>
-        /// <returns>
-        /// The <see cref="double"/>.
-        /// </returns>
-        public double Restrict(double differenceModulus)
-        {
-            return differenceModulus / (1 + differenceModulus);
-        }
+        return differenceModulus / (1 + differenceModulus);
     }
 }

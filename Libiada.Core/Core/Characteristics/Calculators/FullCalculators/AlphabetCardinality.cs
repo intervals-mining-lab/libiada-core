@@ -1,22 +1,21 @@
-namespace LibiadaCore.Core.Characteristics.Calculators.FullCalculators
+namespace Libiada.Core.Core.Characteristics.Calculators.FullCalculators;
+
+/// <summary>
+/// Count of alphabet elements.
+/// </summary>
+public class AlphabetCardinality : NonLinkableFullCalculator
 {
     /// <summary>
-    /// Count of alphabet elements.
+    /// Calculation method.
     /// </summary>
-    public class AlphabetCardinality : NonLinkableFullCalculator
+    /// <param name="chain">
+    /// Source sequence.
+    /// </param>
+    /// <returns>
+    /// Alphabet cardinality as <see cref="double"/>.
+    /// </returns>
+    public override double Calculate(Chain chain)
     {
-        /// <summary>
-        /// Calculation method.
-        /// </summary>
-        /// <param name="chain">
-        /// Source sequence.
-        /// </param>
-        /// <returns>
-        /// Alphabet cardinality as <see cref="double"/>.
-        /// </returns>
-        public override double Calculate(Chain chain)
-        {
-            return chain.Alphabet.Cardinality;
-        }
+        return chain.Alphabet.Cardinality;
     }
 }

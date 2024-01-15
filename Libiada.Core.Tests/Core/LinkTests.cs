@@ -1,101 +1,100 @@
-﻿namespace LibiadaCore.Tests.Core
+﻿namespace Libiada.Core.Tests.Core;
+
+using System.Linq;
+
+using Libiada.Core.Core;
+using Libiada.Core.Extensions;
+
+using NUnit.Framework;
+
+/// <summary>
+/// Link enum tests.
+/// </summary>
+[TestFixture(TestOf = typeof(Link))]
+public class LinkTests
 {
-    using System.Linq;
-
-    using LibiadaCore.Core;
-    using LibiadaCore.Extensions;
-
-    using NUnit.Framework;
+    /// <summary>
+    /// The links count.
+    /// </summary>
+    private const int LinksCount = 8;
 
     /// <summary>
-    /// Link enum tests.
+    /// Tests count of links.
     /// </summary>
-    [TestFixture(TestOf = typeof(Link))]
-    public class LinkTests
+    [Test]
+    public void LinkCountTest()
     {
-        /// <summary>
-        /// The links count.
-        /// </summary>
-        private const int LinksCount = 8;
+        var actualCount = EnumExtensions.ToArray<Link>().Length;
+        Assert.AreEqual(LinksCount, actualCount);
+    }
 
-        /// <summary>
-        /// Tests count of links.
-        /// </summary>
-        [Test]
-        public void LinkCountTest()
+    /// <summary>
+    /// Tests values of links.
+    /// </summary>
+    [Test]
+    public void LinkValuesTest()
+    {
+        var links = EnumExtensions.ToArray<Link>();
+        for (int i = 0; i < LinksCount; i++)
         {
-            var actualCount = EnumExtensions.ToArray<Link>().Length;
-            Assert.AreEqual(LinksCount, actualCount);
+            Assert.IsTrue(links.Contains((Link)i));
         }
+    }
 
-        /// <summary>
-        /// Tests values of links.
-        /// </summary>
-        [Test]
-        public void LinkValuesTest()
-        {
-            var links = EnumExtensions.ToArray<Link>();
-            for (int i = 0; i < LinksCount; i++)
-            {
-                Assert.IsTrue(links.Contains((Link)i));
-            }
-        }
+    /// <summary>
+    /// Tests names of links.
+    /// </summary>
+    /// <param name="link">
+    /// The link.
+    /// </param>
+    /// <param name="name">
+    /// The name.
+    /// </param>
+    [TestCase((Link)0, "NotApplied")]
+    [TestCase((Link)1, "None")]
+    [TestCase((Link)2, "Start")]
+    [TestCase((Link)3, "End")]
+    [TestCase((Link)4, "Both")]
+    [TestCase((Link)5, "Cycle")]
+    [TestCase((Link)6, "CycleStart")]
+    [TestCase((Link)7, "CycleEnd")]
+    public void LinkNamesTest(Link link, string name)
+    {
+        Assert.AreEqual(name, link.GetName());
+    }
 
-        /// <summary>
-        /// Tests names of links.
-        /// </summary>
-        /// <param name="link">
-        /// The link.
-        /// </param>
-        /// <param name="name">
-        /// The name.
-        /// </param>
-        [TestCase((Link)0, "NotApplied")]
-        [TestCase((Link)1, "None")]
-        [TestCase((Link)2, "Start")]
-        [TestCase((Link)3, "End")]
-        [TestCase((Link)4, "Both")]
-        [TestCase((Link)5, "Cycle")]
-        [TestCase((Link)6, "CycleStart")]
-        [TestCase((Link)7, "CycleEnd")]
-        public void LinkNamesTest(Link link, string name)
-        {
-            Assert.AreEqual(name, link.GetName());
-        }
+    /// <summary>
+    /// Tests that all links have display value.
+    /// </summary>
+    /// <param name="link">
+    /// The link.
+    /// </param>
+    [Test]
+    public void LinkHasDisplayValueTest([Values]Link link)
+    {
+        Assert.IsFalse(string.IsNullOrEmpty(link.GetDisplayValue()));
+    }
 
-        /// <summary>
-        /// Tests that all links have display value.
-        /// </summary>
-        /// <param name="link">
-        /// The link.
-        /// </param>
-        [Test]
-        public void LinkHasDisplayValueTest([Values]Link link)
-        {
-            Assert.IsFalse(string.IsNullOrEmpty(link.GetDisplayValue()));
-        }
+    /// <summary>
+    /// Tests that all links have description.
+    /// </summary>
+    /// <param name="link">
+    /// The link.
+    /// </param>
+    [Test]
+    public void LinkHasDescriptionTest([Values]Link link)
+    {
+        Assert.IsFalse(string.IsNullOrEmpty(link.GetDescription()));
+    }
 
-        /// <summary>
-        /// Tests that all links have description.
-        /// </summary>
-        /// <param name="link">
-        /// The link.
-        /// </param>
-        [Test]
-        public void LinkHasDescriptionTest([Values]Link link)
-        {
-            Assert.IsFalse(string.IsNullOrEmpty(link.GetDescription()));
-        }
-
-        /// <summary>
-        /// Tests that all links values are unique.
-        /// </summary>
-        [Test]
-        public void LinkValuesUniqueTest()
-        {
-            var links = EnumExtensions.ToArray<Link>();
-            var linkValues = links.Cast<byte>();
-            Assert.That(linkValues, Is.Unique);
-        }
+    /// <summary>
+    /// Tests that all links values are unique.
+    /// </summary>
+    [Test]
+    public void LinkValuesUniqueTest()
+    {
+        var links = EnumExtensions.ToArray<Link>();
+        var linkValues = links.Cast<byte>();
+        Assert.That(linkValues, Is.Unique);
     }
 }

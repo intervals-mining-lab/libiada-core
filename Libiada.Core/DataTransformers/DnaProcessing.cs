@@ -1,43 +1,42 @@
-namespace LibiadaCore.DataTransformers
+namespace Libiada.Core.DataTransformers;
+
+using System;
+
+using Libiada.Core.Core;
+using Libiada.Core.Core.SimpleTypes;
+
+/// <summary>
+/// Class for various actions with dna sequences.
+/// </summary>
+public static class DnaProcessor
 {
-    using System;
-
-    using LibiadaCore.Core;
-    using LibiadaCore.Core.SimpleTypes;
-
     /// <summary>
-    /// Class for various actions with dna sequences.
+    /// Checks if alphabet is appropriate for dna sequence,
+    /// e.g. contains only nucleotide elements.
     /// </summary>
-    public static class DnaProcessor
+    /// <param name="alphabet">
+    /// Alphabet to check.
+    /// </param>
+    public static void CheckDnaAlphabet(Alphabet alphabet)
     {
-        /// <summary>
-        /// Checks if alphabet is appropriate for dna sequence,
-        /// e.g. contains only nucleotide elements.
-        /// </summary>
-        /// <param name="alphabet">
-        /// Alphabet to check.
-        /// </param>
-        public static void CheckDnaAlphabet(Alphabet alphabet)
+        if (alphabet.Cardinality > 4)
         {
-            if (alphabet.Cardinality > 4)
-            {
-                throw new Exception("DNA alphabet cardinality must be 4 or less");
-            }
+            throw new Exception("DNA alphabet cardinality must be 4 or less");
+        }
 
-            var completeAlphabet = new Alphabet
-            {
-                new ValueString("A"),
-                new ValueString("C"),
-                new ValueString("T"),
-                new ValueString("G")
-            };
+        var completeAlphabet = new Alphabet
+        {
+            new ValueString("A"),
+            new ValueString("C"),
+            new ValueString("T"),
+            new ValueString("G")
+        };
 
-            for (int i = 0; i < alphabet.Cardinality; i++)
+        for (int i = 0; i < alphabet.Cardinality; i++)
+        {
+            if (!completeAlphabet.Contains(alphabet[i]))
             {
-                if (!completeAlphabet.Contains(alphabet[i]))
-                {
-                    throw new Exception($"Alphabet contains at least 1 wrong element: {alphabet[i]}.");
-                }
+                throw new Exception($"Alphabet contains at least 1 wrong element: {alphabet[i]}.");
             }
         }
     }

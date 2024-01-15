@@ -1,74 +1,73 @@
-﻿namespace LibiadaCore.Iterators
+﻿namespace Libiada.Core.Iterators;
+
+using System.Collections.Generic;
+
+/// <summary>
+/// The cut rule iterator.
+/// </summary>
+public class CutRuleIterator
 {
-    using System.Collections.Generic;
+    /// <summary>
+    /// Starts of subsequences.
+    /// </summary>
+    private readonly List<int> starts;
 
     /// <summary>
-    /// The cut rule iterator.
+    /// Ends of subsequences.
     /// </summary>
-    public class CutRuleIterator
+    private readonly List<int> ends;
+
+    /// <summary>
+    /// The counter.
+    /// </summary>
+    private int index = -1;
+
+    /// <summary>
+    /// Initializes a new instance of the <see cref="CutRuleIterator"/> class.
+    /// </summary>
+    /// <param name="starts">
+    /// Starts of subsequences.
+    /// </param>
+    /// <param name="ends">
+    /// Ends of subsequences.
+    /// </param>
+    public CutRuleIterator(List<int> starts, List<int> ends)
     {
-        /// <summary>
-        /// Starts of subsequences.
-        /// </summary>
-        private readonly List<int> starts;
+        this.starts = starts;
+        this.ends = ends;
+    }
 
-        /// <summary>
-        /// Ends of subsequences.
-        /// </summary>
-        private readonly List<int> ends;
+    /// <summary>
+    /// Moves cursor to the next subsequence.
+    /// </summary>
+    /// <returns>
+    /// true if there is next element.
+    /// </returns>
+    public bool Next()
+    {
+        index++;
+        return (starts.Count > index) && (ends.Count > index);
+    }
 
-        /// <summary>
-        /// The counter.
-        /// </summary>
-        private int index = -1;
+    /// <summary>
+    /// Returns start position of current element.
+    /// </summary>
+    /// <returns>
+    /// Start position of current subsequence.
+    /// </returns>
+    public int GetStartPosition()
+    {
+        return starts[index];
+    }
 
-        /// <summary>
-        /// Initializes a new instance of the <see cref="CutRuleIterator"/> class.
-        /// </summary>
-        /// <param name="starts">
-        /// Starts of subsequences.
-        /// </param>
-        /// <param name="ends">
-        /// Ends of subsequences.
-        /// </param>
-        public CutRuleIterator(List<int> starts, List<int> ends)
-        {
-            this.starts = starts;
-            this.ends = ends;
-        }
-
-        /// <summary>
-        /// Moves cursor to the next subsequence.
-        /// </summary>
-        /// <returns>
-        /// true if there is next element.
-        /// </returns>
-        public bool Next()
-        {
-            index++;
-            return (starts.Count > index) && (ends.Count > index);
-        }
-
-        /// <summary>
-        /// Returns start position of current element.
-        /// </summary>
-        /// <returns>
-        /// Start position of current subsequence.
-        /// </returns>
-        public int GetStartPosition()
-        {
-            return starts[index];
-        }
-
-        /// <summary>
-        /// Returns end position of current element.
-        /// </summary>
-        /// <returns>
-        /// End position of current subsequence.
-        /// </returns>
-        public int GetEndPosition()
-        {
-            return ends[index];
-        }
+    /// <summary>
+    /// Returns end position of current element.
+    /// </summary>
+    /// <returns>
+    /// End position of current subsequence.
+    /// </returns>
+    public int GetEndPosition()
+    {
+        return ends[index];
     }
 }

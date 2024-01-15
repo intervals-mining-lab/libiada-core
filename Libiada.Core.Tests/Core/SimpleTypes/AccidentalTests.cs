@@ -1,98 +1,97 @@
-﻿namespace LibiadaCore.Tests.Core.SimpleTypes
+﻿namespace Libiada.Core.Tests.Core.SimpleTypes;
+
+using System.Linq;
+
+using Libiada.Core.Core.SimpleTypes;
+using Libiada.Core.Extensions;
+
+using NUnit.Framework;
+
+/// <summary>
+/// Accidental enum tests.
+/// </summary>
+[TestFixture(TestOf = typeof(Accidental))]
+public class AccidentalTests
 {
-    using System.Linq;
-
-    using LibiadaCore.Core.SimpleTypes;
-    using LibiadaCore.Extensions;
-
-    using NUnit.Framework;
+    /// <summary>
+    /// The accidentals count.
+    /// </summary>
+    private const int AccidentalsCount = 5;
 
     /// <summary>
-    /// Accidental enum tests.
+    /// Tests count of accidentals.
     /// </summary>
-    [TestFixture(TestOf = typeof(Accidental))]
-    public class AccidentalTests
+    [Test]
+    public void AccidentalCountTest()
     {
-        /// <summary>
-        /// The accidentals count.
-        /// </summary>
-        private const int AccidentalsCount = 5;
+        var actualCount = EnumExtensions.ToArray<Accidental>().Length;
+        Assert.AreEqual(AccidentalsCount, actualCount);
+    }
 
-        /// <summary>
-        /// Tests count of accidentals.
-        /// </summary>
-        [Test]
-        public void AccidentalCountTest()
+    /// <summary>
+    /// Tests values of accidentals.
+    /// </summary>
+    [Test]
+    public void AccidentalValuesTest()
+    {
+        var accidentals = EnumExtensions.ToArray<Accidental>();
+        for (int i = -2; i < AccidentalsCount - 2; i++)
         {
-            var actualCount = EnumExtensions.ToArray<Accidental>().Length;
-            Assert.AreEqual(AccidentalsCount, actualCount);
+            Assert.IsTrue(accidentals.Contains((Accidental)i));
         }
+    }
 
-        /// <summary>
-        /// Tests values of accidentals.
-        /// </summary>
-        [Test]
-        public void AccidentalValuesTest()
-        {
-            var accidentals = EnumExtensions.ToArray<Accidental>();
-            for (int i = -2; i < AccidentalsCount - 2; i++)
-            {
-                Assert.IsTrue(accidentals.Contains((Accidental)i));
-            }
-        }
+    /// <summary>
+    /// Tests names of accidentals.
+    /// </summary>
+    /// <param name="accidental">
+    /// The accidental.
+    /// </param>
+    /// <param name="name">
+    /// The name.
+    /// </param>
+    [TestCase((Accidental)(-2), "DoubleFlat")]
+    [TestCase((Accidental)(-1), "Flat")]
+    [TestCase((Accidental)0, "Bekar")]
+    [TestCase((Accidental)1, "Sharp")]
+    [TestCase((Accidental)2, "DoubleSharp")]
+    public void AccidentalNamesTest(Accidental accidental, string name)
+    {
+        Assert.AreEqual(name, accidental.GetName());
+    }
 
-        /// <summary>
-        /// Tests names of accidentals.
-        /// </summary>
-        /// <param name="accidental">
-        /// The accidental.
-        /// </param>
-        /// <param name="name">
-        /// The name.
-        /// </param>
-        [TestCase((Accidental)(-2), "DoubleFlat")]
-        [TestCase((Accidental)(-1), "Flat")]
-        [TestCase((Accidental)0, "Bekar")]
-        [TestCase((Accidental)1, "Sharp")]
-        [TestCase((Accidental)2, "DoubleSharp")]
-        public void AccidentalNamesTest(Accidental accidental, string name)
-        {
-            Assert.AreEqual(name, accidental.GetName());
-        }
+    /// <summary>
+    /// Tests that all accidentals have display value.
+    /// </summary>
+    /// <param name="accidental">
+    /// The accidental.
+    /// </param>
+    [Test]
+    public void AccidentalHasDisplayValueTest([Values]Accidental accidental)
+    {
+        Assert.IsFalse(string.IsNullOrEmpty(accidental.GetDisplayValue()));
+    }
 
-        /// <summary>
-        /// Tests that all accidentals have display value.
-        /// </summary>
-        /// <param name="accidental">
-        /// The accidental.
-        /// </param>
-        [Test]
-        public void AccidentalHasDisplayValueTest([Values]Accidental accidental)
-        {
-            Assert.IsFalse(string.IsNullOrEmpty(accidental.GetDisplayValue()));
-        }
+    /// <summary>
+    /// Tests that all accidentals have description.
+    /// </summary>
+    /// <param name="accidental">
+    /// The accidental.
+    /// </param>
+    [Test]
+    public void AccidentalHasDescriptionTest([Values]Accidental accidental)
+    {
+        Assert.IsFalse(string.IsNullOrEmpty(accidental.GetDescription()));
+    }
 
-        /// <summary>
-        /// Tests that all accidentals have description.
-        /// </summary>
-        /// <param name="accidental">
-        /// The accidental.
-        /// </param>
-        [Test]
-        public void AccidentalHasDescriptionTest([Values]Accidental accidental)
-        {
-            Assert.IsFalse(string.IsNullOrEmpty(accidental.GetDescription()));
-        }
-
-        /// <summary>
-        /// Tests that all accidentals values are unique.
-        /// </summary>
-        [Test]
-        public void AccidentalValuesUniqueTest()
-        {
-            var accidentals = EnumExtensions.ToArray<Accidental>();
-            var accidentalValues = accidentals.Cast<short>();
-            Assert.That(accidentalValues, Is.Unique);
-        }
+    /// <summary>
+    /// Tests that all accidentals values are unique.
+    /// </summary>
+    [Test]
+    public void AccidentalValuesUniqueTest()
+    {
+        var accidentals = EnumExtensions.ToArray<Accidental>();
+        var accidentalValues = accidentals.Cast<short>();
+        Assert.That(accidentalValues, Is.Unique);
     }
 }

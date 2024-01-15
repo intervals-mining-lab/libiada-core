@@ -1,35 +1,34 @@
-﻿namespace Segmenter.Model
-{
-    using System;
+﻿namespace Libiada.Segmenter.Model;
 
+using System;
+
+/// <summary>
+/// The algorithm factory.
+/// </summary>
+public static class AlgorithmFactory
+{
     /// <summary>
-    /// The algorithm factory.
+    /// The make.
     /// </summary>
-    public static class AlgorithmFactory
+    /// <param name="index">
+    /// The index.
+    /// </param>
+    /// <param name="input">
+    /// The input.
+    /// </param>
+    /// <returns>
+    /// The <see cref="Algorithm"/>.
+    /// </returns>
+    public static Algorithm Make(int index, Input input)
     {
-        /// <summary>
-        /// The make.
-        /// </summary>
-        /// <param name="index">
-        /// The index.
-        /// </param>
-        /// <param name="input">
-        /// The input.
-        /// </param>
-        /// <returns>
-        /// The <see cref="Algorithm"/>.
-        /// </returns>
-        public static Algorithm Make(int index, Input input)
+        switch (index)
         {
-            switch (index)
-            {
-                case 0:
-                    return new AlgorithmBase(input);
-                case 1:
-                    return null;
-                default:
-                    throw new ArgumentException("Unknown index", "index");
-            }
+            case 0:
+                return new AlgorithmBase(input);
+            case 1:
+                return null;
+            default:
+                throw new ArgumentException("Unknown index", "index");
         }
     }
 }

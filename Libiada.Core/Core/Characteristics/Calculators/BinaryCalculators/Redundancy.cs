@@ -1,71 +1,70 @@
-﻿namespace LibiadaCore.Core.Characteristics.Calculators.BinaryCalculators
-{
-    using System;
+﻿namespace Libiada.Core.Core.Characteristics.Calculators.BinaryCalculators;
 
-    using LibiadaCore.Core.ArrangementManagers;
+using System;
+
+using Libiada.Core.Core.ArrangementManagers;
+
+/// <summary>
+/// Redundancy of binary chain.
+/// </summary>
+public class Redundancy : BinaryCalculator
+{
+    // TODO: refactor to using intervals manager
 
     /// <summary>
-    /// Redundancy of binary chain.
+    /// Calculation method.
     /// </summary>
-    public class Redundancy : BinaryCalculator
+    /// <param name="manager">
+    /// Intervals manager.
+    /// </param>
+    /// <param name="link">
+    /// Link of intervals in sequence.
+    /// </param>
+    /// <returns>
+    /// Redundancy as <see cref="double"/>.
+    /// </returns>
+    public override double Calculate(BinaryIntervalsManager manager, Link link)
     {
-        // TODO: refactor to using intervals manager
-
-        /// <summary>
-        /// Calculation method.
-        /// </summary>
-        /// <param name="manager">
-        /// Intervals manager.
-        /// </param>
-        /// <param name="link">
-        /// Link of intervals in sequence.
-        /// </param>
-        /// <returns>
-        /// Redundancy as <see cref="double"/>.
-        /// </returns>
-        public override double Calculate(BinaryIntervalsManager manager, Link link)
+        // dependence of the component on itself is 0
+        if (manager.FirstElement.Equals(manager.SecondElement))
         {
-            // dependence of the component on itself is 0
-            if (manager.FirstElement.Equals(manager.SecondElement))
-            {
-                return 0;
-            }
+            return 0;
+        }
 
-            int firstElementCount = manager.FirstChain.OccurrencesCount;
-            double avG = 0;
-            int currentEntrance = 0;
-            for (int i = 1; i <= firstElementCount; i++)
+        int firstElementCount = manager.FirstChain.OccurrencesCount;
+        double avG = 0;
+        int currentEntrance = 0;
+        for (int i = 1; i <= firstElementCount; i++)
+        {
+            if (manager.GetBinaryInterval(i) > 0)
             {
-                if (manager.GetBinaryInterval(i) > 0)
+                if (currentEntrance == 0)
                 {
-                    if (currentEntrance == 0)
+                    currentEntrance = manager.GetFirstAfter(manager.GetFirst(i));
+                    if (link == Link.Start || link == Link.Both)
                     {
-                        currentEntrance = manager.GetFirstAfter(manager.GetFirst(i));
-                        if (link == Link.Start || link == Link.Both)
-                        {
-                            avG += Math.Log(currentEntrance, 2);
-                        }
-                    }
-                    else
-                    {
-                        int nextEntrance = manager.GetFirstAfter(manager.GetFirst(i));
-                        avG += Math.Log(nextEntrance - currentEntrance, 2);
-                        currentEntrance = nextEntrance;
+                        avG += Math.Log(currentEntrance, 2);
                     }
                 }
+                else
+                {
+                    int nextEntrance = manager.GetFirstAfter(manager.GetFirst(i));
+                    avG += Math.Log(nextEntrance - currentEntrance, 2);
+                    currentEntrance = nextEntrance;
+                }
             }
-
-            if (link == Link.End || link == Link.Both)
-            {
-                avG += Math.Log(manager.Length - currentEntrance, 2);
-            }
-
-            avG = manager.PairsCount == 0 ? 0 : avG / manager.PairsCount;
-
-            var geometricMeanCalculator = new GeometricMean();
-
-            double binaryGeometricMean = geometricMeanCalculator.Calculate(manager, link);
-            return 1 - (binaryGeometricMean / Math.Pow(2, avG));
         }
+
+        if (link == Link.End || link == Link.Both)
+        {
+            avG += Math.Log(manager.Length - currentEntrance, 2);
+        }
+
+        avG = manager.PairsCount == 0 ? 0 : avG / manager.PairsCount;
+
+        var geometricMeanCalculator = new GeometricMean();
+
+        double binaryGeometricMean = geometricMeanCalculator.Calculate(manager, link);
+        return 1 - (binaryGeometricMean / Math.Pow(2, avG));
     }
 }

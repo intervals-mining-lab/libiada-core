@@ -1,23 +1,22 @@
-namespace LibiadaCore.Tests.Music.MusicXml
+namespace Libiada.Core.Tests.Music.MusicXml;
+
+using Libiada.Core.Music.MusicXml;
+
+using NUnit.Framework;
+
+/// <summary>
+/// The xml reader tests.
+/// </summary>
+[TestFixture]
+public class XmlReaderTests
 {
-    using LibiadaCore.Music.MusicXml;
-
-    using NUnit.Framework;
-
     /// <summary>
-    /// The xml reader tests.
+    /// The xml reader first test.
     /// </summary>
-    [TestFixture]
-    public class XmlReaderTests
+    [Test]
+    public void XmlReaderFirstTest()
     {
-        /// <summary>
-        /// The xml reader first test.
-        /// </summary>
-        [Test]
-        public void XmlReaderFirstTest()
-        {
-            var xr = new MusicXmlReader($"{SystemData.ProjectFolderPath}LibiadaMusicExample7Liga.xml");
-            Assert.IsNotNull(xr.MusicXmlDocument);
-        }
+        var xr = new MusicXmlReader($"{SystemData.ProjectFolderPath}LibiadaMusicExample7Liga.xml");
+        Assert.IsNotNull(xr.MusicXmlDocument);
     }
 }

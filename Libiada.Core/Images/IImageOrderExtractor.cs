@@ -1,22 +1,21 @@
-﻿namespace LibiadaCore.Images
-{
-    using LibiadaCore.Core;
-    using SixLabors.ImageSharp.PixelFormats;
+﻿namespace Libiada.Core.Images;
 
+using Libiada.Core.Core;
+using SixLabors.ImageSharp.PixelFormats;
+
+/// <summary>
+/// The ImageOrderExtractor interface.
+/// </summary>
+public interface IImageOrderExtractor
+{
     /// <summary>
-    /// The ImageOrderExtractor interface.
+    /// Extracts order of image.
     /// </summary>
-    public interface IImageOrderExtractor
-    {
-        /// <summary>
-        /// Extracts order of image.
-        /// </summary>
-        /// <param name="image">
-        /// The image.
-        /// </param>
-        /// <returns>
-        /// The <see cref="BaseChain"/>.
-        /// </returns>
-        BaseChain ExtractOrder(Rgba32[,] image);
-    }
+    /// <param name="image">
+    /// The image.
+    /// </param>
+    /// <returns>
+    /// The <see cref="BaseChain"/>.
+    /// </returns>
+    BaseChain ExtractOrder(Rgba32[,] image);
 }

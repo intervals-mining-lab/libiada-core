@@ -1,64 +1,63 @@
-namespace LibiadaCore.Tests.Iterators
+namespace Libiada.Core.Tests.Iterators;
+
+using System.Collections.Generic;
+
+using Libiada.Core.Core;
+using Libiada.Core.Core.SimpleTypes;
+using Libiada.Core.Iterators;
+
+using NUnit.Framework;
+
+/// <summary>
+/// The iterator writable start test.
+/// </summary>
+[TestFixture]
+public class IteratorWritableStartTests
 {
-    using System.Collections.Generic;
-
-    using LibiadaCore.Core;
-    using LibiadaCore.Core.SimpleTypes;
-    using LibiadaCore.Iterators;
-
-    using NUnit.Framework;
+    /// <summary>
+    /// The chain to iterate.
+    /// </summary>
+    private Chain chainToIterate;
 
     /// <summary>
-    /// The iterator writable start test.
+    /// Tests initialization method.
     /// </summary>
-    [TestFixture]
-    public class IteratorWritableStartTests
+    [SetUp]
+    public void Initialization()
     {
-        /// <summary>
-        /// The chain to iterate.
-        /// </summary>
-        private Chain chainToIterate;
+        chainToIterate = new Chain("121331212231");
+    }
 
-        /// <summary>
-        /// Tests initialization method.
-        /// </summary>
-        [SetUp]
-        public void Initialization()
+    /// <summary>
+    /// The write test.
+    /// </summary>
+    [Test]
+    public void WriteTest()
+    {
+        var messages = new List<ValueString>(12)
+                           {
+                               new ValueString('1'),
+                               new ValueString('2'),
+                               new ValueString('1'),
+                               new ValueString('3'),
+                               new ValueString('3'),
+                               new ValueString('1'),
+                               new ValueString('2'),
+                               new ValueString('1'),
+                               new ValueString('2'),
+                               new ValueString('2'),
+                               new ValueString('3'),
+                               new ValueString('1')
+                           };
+
+        var toWrite = new Chain(12);
+        var iteratorWrite = new IteratorWritableStart(toWrite);
+        int i = 0;
+        while (iteratorWrite.Next())
         {
-            chainToIterate = new Chain("121331212231");
+            iteratorWrite.WriteValue(messages[i++]);
         }
 
-        /// <summary>
-        /// The write test.
-        /// </summary>
-        [Test]
-        public void WriteTest()
-        {
-            var messages = new List<ValueString>(12)
-                               {
-                                   new ValueString('1'),
-                                   new ValueString('2'),
-                                   new ValueString('1'),
-                                   new ValueString('3'),
-                                   new ValueString('3'),
-                                   new ValueString('1'),
-                                   new ValueString('2'),
-                                   new ValueString('1'),
-                                   new ValueString('2'),
-                                   new ValueString('2'),
-                                   new ValueString('3'),
-                                   new ValueString('1')
-                               };
-
-            var toWrite = new Chain(12);
-            var iteratorWrite = new IteratorWritableStart(toWrite);
-            int i = 0;
-            while (iteratorWrite.Next())
-            {
-                iteratorWrite.WriteValue(messages[i++]);
-            }
-
-            Assert.AreEqual(chainToIterate, toWrite);
-        }
+        Assert.AreEqual(chainToIterate, toWrite);
     }
 }

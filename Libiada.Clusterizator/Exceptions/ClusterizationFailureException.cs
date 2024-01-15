@@ -1,11 +1,8 @@
-﻿using System;
+﻿namespace Libiada.Clusterizator.Exceptions;
 
-namespace Clusterizator.Exceptions
+public class ClusterizationFailureException : ApplicationException
 {
-    public class ClusterizationFailureException : ApplicationException
+    public ClusterizationFailureException(string message) : base(message)
     {
-        public ClusterizationFailureException(string message) : base(message)
-        {
-        }
     }
 }

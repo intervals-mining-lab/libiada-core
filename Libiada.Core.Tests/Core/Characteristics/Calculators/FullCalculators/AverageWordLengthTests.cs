@@ -1,83 +1,82 @@
-﻿namespace LibiadaCore.Tests.Core.Characteristics.Calculators.FullCalculators
-{
-    using LibiadaCore.Core;
-    using LibiadaCore.Core.Characteristics.Calculators.FullCalculators;
-    using LibiadaCore.Core.SimpleTypes;
+﻿namespace Libiada.Core.Tests.Core.Characteristics.Calculators.FullCalculators;
 
-    using NUnit.Framework;
+using Libiada.Core.Core;
+using Libiada.Core.Core.Characteristics.Calculators.FullCalculators;
+using Libiada.Core.Core.SimpleTypes;
+
+using NUnit.Framework;
+
+/// <summary>
+/// The average word length tests.
+/// </summary>
+[TestFixture]
+public class AverageWordLengthTests : FullCalculatorsTests<AverageWordLength>
+{
+    /// <summary>
+    /// The chain calculation test.
+    /// </summary>
+    /// <param name="index">
+    /// Full sequence index in <see cref="ChainsStorage"/>.
+    /// </param>
+    /// <param name="value">
+    /// The value.
+    /// </param>
+    [TestCase(0, 1)]
+    [TestCase(1, 1)]
+    [TestCase(2, 1)]
+    [TestCase(3, 1)]
+    [TestCase(4, 1)]
+    [TestCase(5, 1)]
+    public void ChainCalculationTest(int index, double value)
+    {
+        ChainCharacteristicTest(index, Link.NotApplied, value);
+    }
 
     /// <summary>
-    /// The average word length tests.
+    /// The calculation test.
     /// </summary>
-    [TestFixture]
-    public class AverageWordLengthTests : FullCalculatorsTests<AverageWordLength>
+    [Test]
+    public void CalculationTest()
     {
-        /// <summary>
-        /// The chain calculation test.
-        /// </summary>
-        /// <param name="index">
-        /// Full sequence index in <see cref="ChainsStorage"/>.
-        /// </param>
-        /// <param name="value">
-        /// The value.
-        /// </param>
-        [TestCase(0, 1)]
-        [TestCase(1, 1)]
-        [TestCase(2, 1)]
-        [TestCase(3, 1)]
-        [TestCase(4, 1)]
-        [TestCase(5, 1)]
-        public void ChainCalculationTest(int index, double value)
+        var sequence = new Chain(5)
         {
-            ChainCharacteristicTest(index, Link.NotApplied, value);
-        }
+            [0] = new ValueString("bla"),
+            [1] = new ValueString("blablab"),
+            [2] = new ValueString("blablabla"),
+            [3] = new ValueString("bla"),
+            [4] = new ValueString("bla")
+        };
+        double actual = Calculator.Calculate(sequence, Link.NotApplied);
+        Assert.AreEqual(5, actual, 0.0001);
 
-        /// <summary>
-        /// The calculation test.
-        /// </summary>
-        [Test]
-        public void CalculationTest()
+        sequence = new Chain(10)
         {
-            var sequence = new Chain(5)
-            {
-                [0] = new ValueString("bla"),
-                [1] = new ValueString("blablab"),
-                [2] = new ValueString("blablabla"),
-                [3] = new ValueString("bla"),
-                [4] = new ValueString("bla")
-            };
-            double actual = Calculator.Calculate(sequence, Link.NotApplied);
-            Assert.AreEqual(5, actual, 0.0001);
+            [0] = new ValueString("qwer"),
+            [1] = new ValueString("kfjvu"),
+            [2] = new ValueString("osmejbh"),
+            [3] = new ValueString("sbwhjvuynr"),
+            [4] = new ValueString("yuekxogh"),
+            [5] = new ValueString("zxcbv"),
+            [6] = new ValueString("vngjm,m"),
+            [7] = new ValueString("e"),
+            [8] = new ValueString("hh"),
+            [9] = new ValueString("poiygtr")
+        };
+        actual = Calculator.Calculate(sequence, Link.NotApplied);
+        Assert.AreEqual(5.6, actual, 0.0001);
 
-            sequence = new Chain(10)
-            {
-                [0] = new ValueString("qwer"),
-                [1] = new ValueString("kfjvu"),
-                [2] = new ValueString("osmejbh"),
-                [3] = new ValueString("sbwhjvuynr"),
-                [4] = new ValueString("yuekxogh"),
-                [5] = new ValueString("zxcbv"),
-                [6] = new ValueString("vngjm,m"),
-                [7] = new ValueString("e"),
-                [8] = new ValueString("hh"),
-                [9] = new ValueString("poiygtr")
-            };
-            actual = Calculator.Calculate(sequence, Link.NotApplied);
-            Assert.AreEqual(5.6, actual, 0.0001);
-
-            sequence = new Chain(8)
-            {
-                [0] = new ValueString("1234567"),
-                [1] = new ValueString("890"),
-                [2] = new ValueString("12"),
-                [3] = new ValueString("3456"),
-                [4] = new ValueString("7890123"),
-                [5] = new ValueString("4567890123"),
-                [6] = new ValueString("456789012"),
-                [7] = new ValueString("3456789012345")
-            };
-            actual = Calculator.Calculate(sequence, Link.NotApplied);
-            Assert.AreEqual(6.875, actual, 0.0001);
-        }
+        sequence = new Chain(8)
+        {
+            [0] = new ValueString("1234567"),
+            [1] = new ValueString("890"),
+            [2] = new ValueString("12"),
+            [3] = new ValueString("3456"),
+            [4] = new ValueString("7890123"),
+            [5] = new ValueString("4567890123"),
+            [6] = new ValueString("456789012"),
+            [7] = new ValueString("3456789012345")
+        };
+        actual = Calculator.Calculate(sequence, Link.NotApplied);
+        Assert.AreEqual(6.875, actual, 0.0001);
     }
 }

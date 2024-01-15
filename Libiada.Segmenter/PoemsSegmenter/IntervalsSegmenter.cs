@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿namespace Libiada.Segmenter.PoemsSegmenter;
 
-namespace Segmenter.PoemsSegmenter
+class IntervalsSegmenter
 {
-    class IntervalsSegmenter
-    {
-    }
 }

@@ -1,32 +1,31 @@
-﻿namespace Segmenter.Model
+﻿namespace Libiada.Segmenter.Model;
+
+using System.Collections.Generic;
+
+using Segmenter.Model.Criterion;
+
+/// <summary>
+/// Calculates frequency for convoluted chain
+/// </summary>
+public class ConvolutedCriterionMethod : CriterionMethod
 {
-    using System.Collections.Generic;
-
-    using Segmenter.Model.Criterion;
-
     /// <summary>
-    /// Calculates frequency for convoluted chain
+    /// The frequency.
     /// </summary>
-    public class ConvolutedCriterionMethod : CriterionMethod
+    /// <param name="std">
+    /// The std.
+    /// </param>
+    /// <param name="chainLength">
+    /// The chain length.
+    /// </param>
+    /// <param name="windowLength">
+    /// The window length.
+    /// </param>
+    /// <returns>
+    /// The <see cref="double"/>.
+    /// </returns>
+    public override sealed double Frequency(List<int> std, int chainLength, int windowLength)
     {
-        /// <summary>
-        /// The frequency.
-        /// </summary>
-        /// <param name="std">
-        /// The std.
-        /// </param>
-        /// <param name="chainLength">
-        /// The chain length.
-        /// </param>
-        /// <param name="windowLength">
-        /// The window length.
-        /// </param>
-        /// <returns>
-        /// The <see cref="double"/>.
-        /// </returns>
-        public override sealed double Frequency(List<int> std, int chainLength, int windowLength)
-        {
-            return Probability(std.Count, chainLength - (std.Count * (windowLength - 1)));
-        }
+        return Probability(std.Count, chainLength - (std.Count * (windowLength - 1)));
     }
 }

@@ -1,46 +1,45 @@
-﻿namespace LibiadaCore.Core.Characteristics.Calculators.FullCalculators
+﻿namespace Libiada.Core.Core.Characteristics.Calculators.FullCalculators;
+
+using System;
+
+/// <summary>
+/// Abstract class for all not linkable complete sequence characteristics calculators.
+/// </summary>
+public abstract class NonLinkableFullCalculator : IFullCalculator
 {
-    using System;
-
     /// <summary>
-    /// Abstract class for all not linkable complete sequence characteristics calculators.
+    /// Calculates the characteristic.
     /// </summary>
-    public abstract class NonLinkableFullCalculator : IFullCalculator
+    /// <param name="chain">
+    /// Source sequence.
+    /// </param>
+    /// <param name="link">
+    /// Link can only be <see cref="Link.NotApplied"/> in this case.
+    /// </param>
+    /// <returns>
+    /// The <see cref="double"/>.
+    /// </returns>
+    /// <exception cref="ArgumentException">
+    /// Thrown if wrong <see cref="Link"/> is provided.
+    /// </exception>
+    public double Calculate(Chain chain, Link link)
     {
-        /// <summary>
-        /// Calculates the characteristic.
-        /// </summary>
-        /// <param name="chain">
-        /// Source sequence.
-        /// </param>
-        /// <param name="link">
-        /// Link can only be <see cref="Link.NotApplied"/> in this case.
-        /// </param>
-        /// <returns>
-        /// The <see cref="double"/>.
-        /// </returns>
-        /// <exception cref="ArgumentException">
-        /// Thrown if wrong <see cref="Link"/> is provided.
-        /// </exception>
-        public double Calculate(Chain chain, Link link)
+        if (link != Link.NotApplied)
         {
-            if (link != Link.NotApplied)
-            {
-                throw new ArgumentException("Not linkable characteristic calculator provided with link");
-            }
-
-            return Calculate(chain);
+            throw new ArgumentException("Not linkable characteristic calculator provided with link");
         }
 
-        /// <summary>
-        /// Main calculation method.
-        /// </summary>
-        /// <param name="chain">
-        /// The chain.
-        /// </param>
-        /// <returns>
-        /// The <see cref="double"/>.
-        /// </returns>
-        public abstract double Calculate(Chain chain);
+        return Calculate(chain);
     }
+
+    /// <summary>
+    /// Main calculation method.
+    /// </summary>
+    /// <param name="chain">
+    /// The chain.
+    /// </param>
+    /// <returns>
+    /// The <see cref="double"/>.
+    /// </returns>
+    public abstract double Calculate(Chain chain);
 }

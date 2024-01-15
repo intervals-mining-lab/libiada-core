@@ -1,32 +1,31 @@
-﻿namespace MarkovChains.MarkovCompare
+﻿namespace Libiada.MarkovChains.MarkovCompare;
+
+using MarkovChains.MarkovChain;
+using MarkovChains.MarkovChain.Matrices.Probability;
+
+/// <summary>
+/// Markov chain metrics calculator.
+/// </summary>
+public class MarkovMetrics
 {
-    using MarkovChains.MarkovChain;
-    using MarkovChains.MarkovChain.Matrices.Probability;
-
     /// <summary>
-    /// Markov chain metrics calculator.
+    /// Calculates arithmetical mean of all probabilities.
     /// </summary>
-    public class MarkovMetrics
+    /// <param name="chain">
+    /// Markov chain.
+    /// </param>
+    /// <returns>
+    /// arithmetical mean of all probabilities.
+    /// </returns>
+    public double GetArithmeticalMean(MarkovChainNotCongenericStatic chain)
     {
-        /// <summary>
-        /// Calculates arithmetical mean of all probabilities.
-        /// </summary>
-        /// <param name="chain">
-        /// Markov chain.
-        /// </param>
-        /// <returns>
-        /// arithmetical mean of all probabilities.
-        /// </returns>
-        public double GetArithmeticalMean(MarkovChainNotCongenericStatic chain)
+        IProbabilityMatrix matrix = chain.PropabilityMatrix;
+        for (int i = 0; i < chain.Alphabet.Cardinality; i++)
         {
-            IProbabilityMatrix matrix = chain.PropabilityMatrix;
-            for (int i = 0; i < chain.Alphabet.Cardinality; i++)
-            {
-                int[] array = { i };
-                matrix.GetProbabilityVector(chain.Alphabet, array);
-            }
-
-            return 0;
+            int[] array = { i };
+            matrix.GetProbabilityVector(chain.Alphabet, array);
         }
+
+        return 0;
     }
 }

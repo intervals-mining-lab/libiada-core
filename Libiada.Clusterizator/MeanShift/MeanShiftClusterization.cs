@@ -1,29 +1,28 @@
 ﻿
-namespace Clusterizator.MeanShift
+namespace Libiada.Clusterizator.MeanShift;
+
+using Accord.MachineLearning;
+using Accord.Statistics.Distributions.DensityKernels;
+
+class MeanShiftClusterization : IClusterizator
 {
-    using Accord.MachineLearning;
-    using Accord.Statistics.Distributions.DensityKernels;
+    private readonly MeanShift meanShift;
 
-    class MeanShiftClusterization : IClusterizator
+    public MeanShiftClusterization(double bandwidth)
     {
-        private readonly MeanShift meanShift;
+        meanShift = new MeanShift(new UniformKernel(), bandwidth);
+    }
 
-        public MeanShiftClusterization(double bandwidth)
+    public int[] Cluster(int clustersCount, double[][] data)
+    {
+        var clusters = meanShift.Learn(data);
+        var result = new int[data.Length];
+
+        for (int i = 0; i < result.Length; i++)
         {
-            meanShift = new MeanShift(new UniformKernel(), bandwidth);
+            result[i] = clusters.Decide(data[i]);
         }
 
-        public int[] Cluster(int clustersCount, double[][] data)
-        {
-            var clusters = meanShift.Learn(data);
-            var result = new int[data.Length];
-
-            for (int i = 0; i < result.Length; i++)
-            {
-                result[i] = clusters.Decide(data[i]);
-            }
-
-            return result;
-        }
+        return result;
     }
 }

@@ -1,31 +1,30 @@
-namespace LibiadaCore.Tests.Core.SimpleTypes
-{
-    using LibiadaCore.Core.SimpleTypes;
+namespace Libiada.Core.Tests.Core.SimpleTypes;
 
-    using NUnit.Framework;
+using Libiada.Core.Core.SimpleTypes;
+
+using NUnit.Framework;
+
+/// <summary>
+/// The null value test.
+/// </summary>
+[TestFixture]
+public class NullValueTests
+{
+    /// <summary>
+    /// The instance not null test.
+    /// </summary>
+    [Test]
+    public void InstanceNotNullTest()
+    {
+        Assert.IsNotNull(NullValue.Instance());
+    }
 
     /// <summary>
-    /// The null value test.
+    /// The instance single tone test.
     /// </summary>
-    [TestFixture]
-    public class NullValueTests
+    [Test]
+    public void InstanceSingleToneTest()
     {
-        /// <summary>
-        /// The instance not null test.
-        /// </summary>
-        [Test]
-        public void InstanceNotNullTest()
-        {
-            Assert.IsNotNull(NullValue.Instance());
-        }
-
-        /// <summary>
-        /// The instance single tone test.
-        /// </summary>
-        [Test]
-        public void InstanceSingleToneTest()
-        {
-            Assert.AreSame(NullValue.Instance(), NullValue.Instance());
-        }
+        Assert.AreSame(NullValue.Instance(), NullValue.Instance());
     }
 }

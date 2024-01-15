@@ -1,29 +1,28 @@
-namespace LibiadaCore.Tests.Core.Characteristics.Calculators.FullCalculators
+namespace Libiada.Core.Tests.Core.Characteristics.Calculators.FullCalculators;
+
+using Libiada.Core.Core;
+using Libiada.Core.Core.Characteristics.Calculators.FullCalculators;
+
+using NUnit.Framework;
+
+/// <summary>
+/// The length test.
+/// </summary>
+[TestFixture]
+public class LengthTests : FullCalculatorsTests<Length>
 {
-    using LibiadaCore.Core;
-    using LibiadaCore.Core.Characteristics.Calculators.FullCalculators;
-
-    using NUnit.Framework;
-
     /// <summary>
-    /// The length test.
+    /// The chain calculation test.
     /// </summary>
-    [TestFixture]
-    public class LengthTests : FullCalculatorsTests<Length>
+    /// <param name="index">
+    /// Full sequence index in <see cref="ChainsStorage"/>.
+    /// </param>
+    /// <param name="value">
+    /// The value.
+    /// </param>
+    [TestCase(0, 10)]
+    public void ChainCalculationTest(int index,  double value)
     {
-        /// <summary>
-        /// The chain calculation test.
-        /// </summary>
-        /// <param name="index">
-        /// Full sequence index in <see cref="ChainsStorage"/>.
-        /// </param>
-        /// <param name="value">
-        /// The value.
-        /// </param>
-        [TestCase(0, 10)]
-        public void ChainCalculationTest(int index,  double value)
-        {
-            ChainCharacteristicTest(index, Link.NotApplied, value);
-        }
+        ChainCharacteristicTest(index, Link.NotApplied, value);
     }
 }

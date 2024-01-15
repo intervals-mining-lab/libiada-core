@@ -1,67 +1,66 @@
-﻿namespace SequenceGenerator
-{
-    using System.Collections.Generic;
-    using System.Linq;
+﻿namespace Libiada.SequenceGenerator;
 
-    using LibiadaCore.Core;
-    using LibiadaCore.Core.SimpleTypes;
+using System.Collections.Generic;
+using System.Linq;
+
+using Libiada.Core.Core;
+using Libiada.Core.Core.SimpleTypes;
+
+/// <summary>
+/// The strict sequence generator.
+/// </summary>
+public class StrictSequenceGenerator : ISequenceGenerator
+{
+    private SequenceGenerator sequenceGenerator = new SequenceGenerator();
 
     /// <summary>
-    /// The strict sequence generator.
+    /// Generates numeric sequences using given length and alphabet cardinality.
     /// </summary>
-    public class StrictSequenceGenerator : ISequenceGenerator
+    /// <param name="length">
+    /// The sequence length.
+    /// </param>
+    /// <param name="alphabetCardinality">
+    /// The sequence alphabet cardinality.
+    /// </param>
+    /// <returns>
+    /// The <see cref="T:List{BaseChain}"/>.
+    /// </returns>
+    public List<BaseChain> GenerateSequences(int length, int alphabetCardinality)
     {
-        private SequenceGenerator sequenceGenerator = new SequenceGenerator();
-
-        /// <summary>
-        /// Generates numeric sequences using given length and alphabet cardinality.
-        /// </summary>
-        /// <param name="length">
-        /// The sequence length.
-        /// </param>
-        /// <param name="alphabetCardinality">
-        /// The sequence alphabet cardinality.
-        /// </param>
-        /// <returns>
-        /// The <see cref="T:List{BaseChain}"/>.
-        /// </returns>
-        public List<BaseChain> GenerateSequences(int length, int alphabetCardinality)
+        var result = new List<BaseChain>();
+        var iterator = new SequenceIterator(length, alphabetCardinality);
+        foreach(int[] sequence in iterator)
         {
-            var result = new List<BaseChain>();
-            var iterator = new SequenceIterator(length, alphabetCardinality);
-            foreach(int[] sequence in iterator)
+            if(sequence.Distinct().Count() == alphabetCardinality)
             {
-                if(sequence.Distinct().Count() == alphabetCardinality)
+                var elements = new List<IBaseObject>(sequence.Length);
+                for (int i = 0; i < sequence.Length; i++)
                 {
-                    var elements = new List<IBaseObject>(sequence.Length);
-                    for (int i = 0; i < sequence.Length; i++)
-                    {
-                        elements.Add(new ValueInt(sequence[i]));
-                    }
-                    result.Add(new BaseChain(elements));
+                    elements.Add(new ValueInt(sequence[i]));
                 }
+                result.Add(new BaseChain(elements));
             }
-            return result;
         }
+        return result;
+    }
 
-        /// <summary>
-        /// Generates all sequences of given length with unique orders.
-        /// </summary>
-        /// <param name="length">
-        /// The length.
-        /// </param>
-        /// <returns>
-        /// The <see cref="T:List{BaseChain}"/>.
-        /// </returns>
-        public List<BaseChain> GenerateSequences(int length)
+    /// <summary>
+    /// Generates all sequences of given length with unique orders.
+    /// </summary>
+    /// <param name="length">
+    /// The length.
+    /// </param>
+    /// <returns>
+    /// The <see cref="T:List{BaseChain}"/>.
+    /// </returns>
+    public List<BaseChain> GenerateSequences(int length)
+    {
+        var result = new List<BaseChain>();
+        for (int i = 1; i <= length; i++)
         {
-            var result = new List<BaseChain>();
-            for (int i = 1; i <= length; i++)
-            {
-                result.AddRange(GenerateSequences(length, i));
-            }
-
-            return result.Distinct().ToList();
+            result.AddRange(GenerateSequences(length, i));
         }
+
+        return result.Distinct().ToList();
     }
 }

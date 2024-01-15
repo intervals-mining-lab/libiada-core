@@ -1,40 +1,39 @@
-﻿namespace LibiadaCore.TimeSeries.Aligners
-{
-    using System.ComponentModel;
+﻿namespace Libiada.Core.TimeSeries.Aligners;
 
+using System.ComponentModel;
+
+/// <summary>
+/// The aligners factory.
+/// </summary>
+public class AlignersFactory
+{
     /// <summary>
-    /// The aligners factory.
+    /// The get aligner.
     /// </summary>
-    public class AlignersFactory
+    /// <param name="aligner">
+    /// The aligner.
+    /// </param>
+    /// <returns>
+    /// The <see cref="ITimeSeriesAligner"/>.
+    /// </returns>
+    /// <exception cref="InvalidEnumArgumentException">
+    /// </exception>
+    public ITimeSeriesAligner GetAligner(Aligner aligner)
     {
-        /// <summary>
-        /// The get aligner.
-        /// </summary>
-        /// <param name="aligner">
-        /// The aligner.
-        /// </param>
-        /// <returns>
-        /// The <see cref="ITimeSeriesAligner"/>.
-        /// </returns>
-        /// <exception cref="InvalidEnumArgumentException">
-        /// </exception>
-        public ITimeSeriesAligner GetAligner(Aligner aligner)
+        switch (aligner)
         {
-            switch (aligner)
-            {
-                case Aligner.ByShortestAligner:
-                    return new ByShortestAligner();
-                case Aligner.ByShortestFromRightAligner:
-                    return new ByShortestFromRightAligner();
-                case Aligner.AllOffsetsAligner:
-                    return new AllOffsetsAligner();
-                case Aligner.FirstElementDuplicator:
-                    return new FirstElementDuplicator();
-                case Aligner.LastElementDuplicator:
-                    return new LastElementDuplicator();
-                default:
-                    throw new InvalidEnumArgumentException(nameof(aligner), (int)aligner, typeof(Aligner));
-            }
+            case Aligner.ByShortestAligner:
+                return new ByShortestAligner();
+            case Aligner.ByShortestFromRightAligner:
+                return new ByShortestFromRightAligner();
+            case Aligner.AllOffsetsAligner:
+                return new AllOffsetsAligner();
+            case Aligner.FirstElementDuplicator:
+                return new FirstElementDuplicator();
+            case Aligner.LastElementDuplicator:
+                return new LastElementDuplicator();
+            default:
+                throw new InvalidEnumArgumentException(nameof(aligner), (int)aligner, typeof(Aligner));
         }
     }
 }

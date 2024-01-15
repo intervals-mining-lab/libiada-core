@@ -1,64 +1,63 @@
-﻿namespace LibiadaCore.Tests.Core.Characteristics.Calculators.FullCalculators
+﻿namespace Libiada.Core.Tests.Core.Characteristics.Calculators.FullCalculators;
+
+using System.Collections.Generic;
+
+using Libiada.Core.Core;
+using Libiada.Core.Core.ArrangementManagers;
+using Libiada.Core.Core.Characteristics.Calculators.FullCalculators;
+
+using NUnit.Framework;
+
+/// <summary>
+/// The abstract calculator test.
+/// </summary>
+/// <typeparam name="T">
+/// Calculator type.
+/// </typeparam>
+public abstract class FullCalculatorsTests<T> where T : IFullCalculator, new ()
 {
-    using System.Collections.Generic;
-
-    using LibiadaCore.Core;
-    using LibiadaCore.Core.ArrangementManagers;
-    using LibiadaCore.Core.Characteristics.Calculators.FullCalculators;
-
-    using NUnit.Framework;
+    /// <summary>
+    /// The chains.
+    /// </summary>
+    private readonly List<Chain> chains = ChainsStorage.Chains;
 
     /// <summary>
-    /// The abstract calculator test.
+    /// Gets or sets the calculator.
     /// </summary>
-    /// <typeparam name="T">
-    /// Calculator type.
-    /// </typeparam>
-    public abstract class FullCalculatorsTests<T> where T : IFullCalculator, new ()
+    protected readonly T Calculator = new T();
+
+    /// <summary>
+    /// The chain characteristic test.
+    /// </summary>
+    /// <param name="index">
+    /// The sequence index.
+    /// </param>
+    /// <param name="link">
+    /// The link.
+    /// </param>
+    /// <param name="value">
+    /// The expected value.
+    /// </param>
+    protected void ChainCharacteristicTest(int index, Link link, double value)
     {
-        /// <summary>
-        /// The chains.
-        /// </summary>
-        private readonly List<Chain> chains = ChainsStorage.Chains;
+        Assert.AreEqual(value, Calculator.Calculate(chains[index], link), 0.0001);
+    }
 
-        /// <summary>
-        /// Gets or sets the calculator.
-        /// </summary>
-        protected readonly T Calculator = new T();
-
-        /// <summary>
-        /// The chain characteristic test.
-        /// </summary>
-        /// <param name="index">
-        /// The sequence index.
-        /// </param>
-        /// <param name="link">
-        /// The link.
-        /// </param>
-        /// <param name="value">
-        /// The expected value.
-        /// </param>
-        protected void ChainCharacteristicTest(int index, Link link, double value)
-        {
-            Assert.AreEqual(value, Calculator.Calculate(chains[index], link), 0.0001);
-        }
-
-        /// <summary>
-        /// The series characteristic test.
-        /// </summary>
-        /// <param name="index">
-        /// The sequence index.
-        /// </param>
-        /// <param name="link">
-        /// The link.
-        /// </param>
-        /// <param name="value">
-        /// The expected value.
-        /// </param>
-        protected void SeriesCharacteristicTest(int index, Link link, double value)
-        {
-            chains[index].SetArrangementManagers(ArrangementType.Series);
-            Assert.AreEqual(value, Calculator.Calculate(chains[index], link), 0.0001);
-        }
+    /// <summary>
+    /// The series characteristic test.
+    /// </summary>
+    /// <param name="index">
+    /// The sequence index.
+    /// </param>
+    /// <param name="link">
+    /// The link.
+    /// </param>
+    /// <param name="value">
+    /// The expected value.
+    /// </param>
+    protected void SeriesCharacteristicTest(int index, Link link, double value)
+    {
+        chains[index].SetArrangementManagers(ArrangementType.Series);
+        Assert.AreEqual(value, Calculator.Calculate(chains[index], link), 0.0001);
     }
 }

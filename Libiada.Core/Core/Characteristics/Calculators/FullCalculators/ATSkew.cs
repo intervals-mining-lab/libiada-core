@@ -1,32 +1,31 @@
-﻿namespace LibiadaCore.Core.Characteristics.Calculators.FullCalculators
+﻿namespace Libiada.Core.Core.Characteristics.Calculators.FullCalculators;
+
+using Libiada.Core.Core.SimpleTypes;
+using Libiada.Core.DataTransformers;
+
+/// <summary>
+/// Statistical genetic characteristic AT skew.
+/// </summary>
+public class ATSkew : NonLinkableFullCalculator
 {
-    using LibiadaCore.Core.SimpleTypes;
-    using LibiadaCore.DataTransformers;
-
     /// <summary>
-    /// Statistical genetic characteristic AT skew.
+    /// Calculation method.
     /// </summary>
-    public class ATSkew : NonLinkableFullCalculator
+    /// <param name="chain">
+    /// Source sequence.
+    /// </param>
+    /// <returns>
+    /// AT skew value as <see cref="double"/>.
+    /// </returns>
+    public override double Calculate(Chain chain)
     {
-        /// <summary>
-        /// Calculation method.
-        /// </summary>
-        /// <param name="chain">
-        /// Source sequence.
-        /// </param>
-        /// <returns>
-        /// AT skew value as <see cref="double"/>.
-        /// </returns>
-        public override double Calculate(Chain chain)
-        {
-            DnaProcessor.CheckDnaAlphabet(chain.Alphabet);
+        DnaProcessor.CheckDnaAlphabet(chain.Alphabet);
 
-            var counter = new CongenericCalculators.ElementsCount();
+        var counter = new CongenericCalculators.ElementsCount();
 
-            var a = (int)counter.Calculate(chain.GetOrCreateCongenericChain(new ValueString("A")));
-            var t = (int)counter.Calculate(chain.GetOrCreateCongenericChain(new ValueString("T")));
+        var a = (int)counter.Calculate(chain.GetOrCreateCongenericChain(new ValueString("A")));
+        var t = (int)counter.Calculate(chain.GetOrCreateCongenericChain(new ValueString("T")));
 
-            return a + t == 0 ? 0 : (a - t) / (double)(a + t);
-        }
+        return a + t == 0 ? 0 : (a - t) / (double)(a + t);
     }
 }

@@ -1,24 +1,23 @@
-﻿namespace LibiadaCore.Tests.Music
+﻿namespace Libiada.Core.Tests.Music;
+
+using Libiada.Core.Music;
+
+using NUnit.Framework;
+
+/// <summary>
+/// The param pause treatment tests.
+/// </summary>
+[TestFixture]
+public class PauseTreatmentTests
 {
-    using LibiadaCore.Music;
-
-    using NUnit.Framework;
-
     /// <summary>
-    /// The param pause treatment tests.
+    /// The param pause test.
     /// </summary>
-    [TestFixture]
-    public class PauseTreatmentTests
+    [Test]
+    public void ParamPauseTest()
     {
-        /// <summary>
-        /// The param pause test.
-        /// </summary>
-        [Test]
-        public void ParamPauseTest()
-        {
-            Assert.AreEqual((int)PauseTreatment.Ignore, 1);
-            Assert.AreEqual((int)PauseTreatment.NoteTrace, 2);
-            Assert.AreEqual((int)PauseTreatment.SilenceNote, 3);
-        }
+        Assert.AreEqual((int)PauseTreatment.Ignore, 1);
+        Assert.AreEqual((int)PauseTreatment.NoteTrace, 2);
+        Assert.AreEqual((int)PauseTreatment.SilenceNote, 3);
     }
 }

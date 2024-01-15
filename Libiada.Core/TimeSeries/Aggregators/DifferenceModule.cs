@@ -1,30 +1,29 @@
-﻿namespace LibiadaCore.TimeSeries.Aggregators
-{
-    using System;
-    using System.Collections.Generic;
+﻿namespace Libiada.Core.TimeSeries.Aggregators;
 
+using System;
+using System.Collections.Generic;
+
+/// <summary>
+/// The difference module aggregator.
+/// </summary>
+public class DifferenceModule : IDistancesAggregator
+{
     /// <summary>
-    /// The difference module aggregator.
+    /// The aggregate.
     /// </summary>
-    public class DifferenceModule : IDistancesAggregator
+    /// <param name="distances">
+    /// The distances.
+    /// </param>
+    /// <returns>
+    /// The <see cref="double"/>.
+    /// </returns>
+    public double Aggregate(List<double> distances)
     {
-        /// <summary>
-        /// The aggregate.
-        /// </summary>
-        /// <param name="distances">
-        /// The distances.
-        /// </param>
-        /// <returns>
-        /// The <see cref="double"/>.
-        /// </returns>
-        public double Aggregate(List<double> distances)
+        double distance = distances[0];
+        for (int i = 1; i < distances.Count; i++)
         {
-            double distance = distances[0];
-            for (int i = 1; i < distances.Count; i++)
-            {
-                distance -= distances[i];
-            }
-            return Math.Abs(distance);
+            distance -= distances[i];
         }
+        return Math.Abs(distance);
     }
 }

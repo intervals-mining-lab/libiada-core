@@ -1,70 +1,69 @@
-namespace Clusterizator.Krab
+namespace Libiada.Clusterizator.Krab;
+
+/// <summary>
+/// Point in graph.
+/// </summary>
+public class GraphElement
 {
     /// <summary>
-    /// Point in graph.
+    /// The taxon number.
     /// </summary>
-    public class GraphElement
+    private int taxonNumber;
+
+    /// <summary>
+    /// Initializes a new instance of the <see cref="GraphElement"/> class.
+    /// </summary>
+    /// <param name="element">
+    /// Coordinates of point.
+    /// </param>
+    /// <param name="name">
+    /// Object name.
+    /// </param>
+    public GraphElement(double[] element, object name)
     {
-        /// <summary>
-        /// The taxon number.
-        /// </summary>
-        private int taxonNumber;
+        Content = element;
+        Id = name;
+        taxonNumber = 0;
+    }
 
-        /// <summary>
-        /// Initializes a new instance of the <see cref="GraphElement"/> class.
-        /// </summary>
-        /// <param name="element">
-        /// Coordinates of point.
-        /// </param>
-        /// <param name="name">
-        /// Object name.
-        /// </param>
-        public GraphElement(double[] element, object name)
+    /// <summary>
+    /// Gets the point name.
+    /// </summary>
+    public object Id { get; private set; }
+
+    /// <summary>
+    /// Gets or sets the point coordinates as HybridDictionary.
+    /// </summary>
+    public double[] Content { get; set; }
+
+    /// <summary>
+    /// Gets or sets this point taxon number.
+    /// </summary>
+    public int TaxonNumber
+    {
+        get
         {
-            Content = element;
-            Id = name;
-            taxonNumber = 0;
+            return taxonNumber;
         }
 
-        /// <summary>
-        /// Gets the point name.
-        /// </summary>
-        public object Id { get; private set; }
-
-        /// <summary>
-        /// Gets or sets the point coordinates as HybridDictionary.
-        /// </summary>
-        public double[] Content { get; set; }
-
-        /// <summary>
-        /// Gets or sets this point taxon number.
-        /// </summary>
-        public int TaxonNumber
+        set
         {
-            get
+            if (value >= 0)
             {
-                return taxonNumber;
-            }
-
-            set
-            {
-                if (value >= 0)
-                {
-                    taxonNumber = value;
-                }
+                taxonNumber = value;
             }
         }
+    }
 
-        /// <summary>
-        /// Creates copy of graph element.
-        /// </summary>
-        /// <returns>
-        /// Clone of current object.
-        /// </returns>
-        public GraphElement Clone()
-        {
-            var clone = new GraphElement(Content, Id) { TaxonNumber = taxonNumber };
-            return clone;
-        }
+    /// <summary>
+    /// Creates copy of graph element.
+    /// </summary>
+    /// <returns>
+    /// Clone of current object.
+    /// </returns>
+    public GraphElement Clone()
+    {
+        var clone = new GraphElement(Content, Id) { TaxonNumber = taxonNumber };
+        return clone;
     }
 }

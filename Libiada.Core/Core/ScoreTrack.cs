@@ -1,128 +1,127 @@
-﻿namespace LibiadaCore.Core
-{
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
+﻿namespace Libiada.Core.Core;
 
-    using LibiadaCore.Core.SimpleTypes;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+
+using Libiada.Core.Core.SimpleTypes;
+
+/// <summary>
+/// полный музыкальный текст/трек
+/// </summary>
+public class ScoreTrack : IBaseObject
+{
+    // TODO: сделать поля жанра/автора/типа произведения, для дальнейшего анализа,
+    // PS:либо сделать на уровень структуры выше, где будет разбиение на Ф-мотивы
 
     /// <summary>
-    /// полный музыкальный текст/трек
+    /// Gets congeneric tracks list.
     /// </summary>
-    public class ScoreTrack : IBaseObject
+    public readonly List<CongenericScoreTrack> CongenericScoreTracks = new List<CongenericScoreTrack>();
+
+    /// <summary>
+    /// Initializes a new instance of the <see cref="ScoreTrack"/> class.
+    /// </summary>
+    /// <param name="congenericScoreTracks">
+    /// The congeneric score tracks.
+    /// </param>
+    public ScoreTrack(List<CongenericScoreTrack> congenericScoreTracks)
     {
-        // TODO: сделать поля жанра/автора/типа произведения, для дальнейшего анализа,
-        // PS:либо сделать на уровень структуры выше, где будет разбиение на Ф-мотивы
-
-        /// <summary>
-        /// Gets congeneric tracks list.
-        /// </summary>
-        public readonly List<CongenericScoreTrack> CongenericScoreTracks = new List<CongenericScoreTrack>();
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="ScoreTrack"/> class.
-        /// </summary>
-        /// <param name="congenericScoreTracks">
-        /// The congeneric score tracks.
-        /// </param>
-        public ScoreTrack(List<CongenericScoreTrack> congenericScoreTracks)
+        foreach (CongenericScoreTrack congenericScoreTrack in congenericScoreTracks)
         {
-            foreach (CongenericScoreTrack congenericScoreTrack in congenericScoreTracks)
+            // создаем список монотреков, посредством клонирования каждого монотрека.
+            CongenericScoreTracks.Add((CongenericScoreTrack)congenericScoreTrack.Clone());
+        }
+
+        // ПОЛИФОНИЧЕСКАЯ ВСТАВКА
+        var temp = (CongenericScoreTrack)MergedTracks(CongenericScoreTracks).Clone();
+        CongenericScoreTracks.Clear();
+        CongenericScoreTracks.Add(temp);
+    }
+
+    /// <summary>
+    /// The clone.
+    /// </summary>
+    /// <returns>
+    /// The <see cref="IBaseObject"/>.
+    /// </returns>
+    public IBaseObject Clone()
+    {
+        return new ScoreTrack(CongenericScoreTracks);
+    }
+
+    /// <summary>
+    /// The equals.
+    /// </summary>
+    /// <param name="obj">
+    /// The object.
+    /// </param>
+    /// <returns>
+    /// The <see cref="bool"/>.
+    /// </returns>
+    public override bool Equals(object obj)
+    {
+        if (ReferenceEquals(this, obj))
+        {
+            return true;
+        }
+
+        return obj is ScoreTrack other && CongenericScoreTracks.SequenceEqual(other.CongenericScoreTracks);
+    }
+
+    /// <summary>
+    /// Calculates hash code using <see cref="CongenericScoreTracks"/>.
+    /// </summary>
+    /// <returns>
+    /// The <see cref="int"/>.
+    /// </returns>
+    public override int GetHashCode()
+    {
+        unchecked
+        {
+            int hashCode = -2011207718;
+            foreach (CongenericScoreTrack scoreTrack in CongenericScoreTracks)
             {
-                // создаем список монотреков, посредством клонирования каждого монотрека.
-                CongenericScoreTracks.Add((CongenericScoreTrack)congenericScoreTrack.Clone());
+                hashCode = (hashCode * -1521134295) + scoreTrack.GetHashCode();
             }
 
-            // ПОЛИФОНИЧЕСКАЯ ВСТАВКА
-            var temp = (CongenericScoreTrack)MergedTracks(CongenericScoreTracks).Clone();
-            CongenericScoreTracks.Clear();
-            CongenericScoreTracks.Add(temp);
+            return hashCode;
         }
+    }
 
-        /// <summary>
-        /// The clone.
-        /// </summary>
-        /// <returns>
-        /// The <see cref="IBaseObject"/>.
-        /// </returns>
-        public IBaseObject Clone()
-        {
-            return new ScoreTrack(CongenericScoreTracks);
-        }
+    /// <summary>
+    /// The merged tracks.
+    /// </summary>
+    /// <param name="tracks">
+    /// The tracks.
+    /// </param>
+    /// <returns>
+    /// The <see cref="CongenericScoreTrack"/>.
+    /// </returns>
+    private CongenericScoreTrack MergedTracks(List<CongenericScoreTrack> tracks)
+    {
+        // список склеенных дорожек
+        var temp = (CongenericScoreTrack)tracks[0].Clone();
 
-        /// <summary>
-        /// The equals.
-        /// </summary>
-        /// <param name="obj">
-        /// The object.
-        /// </param>
-        /// <returns>
-        /// The <see cref="bool"/>.
-        /// </returns>
-        public override bool Equals(object obj)
+        // список склеенных тактов
+        var tempList = new List<Measure>(temp.MeasureList);
+        for (int i = 1; i < tracks.Count; i++)
         {
-            if (ReferenceEquals(this, obj))
+            if (tempList.Count != tracks[i].MeasureList.Count)
             {
-                return true;
+                throw new Exception("ScoreTrack: invalid measure count");
             }
 
-            return obj is ScoreTrack other && CongenericScoreTracks.SequenceEqual(other.CongenericScoreTracks);
-        }
-
-        /// <summary>
-        /// Calculates hash code using <see cref="CongenericScoreTracks"/>.
-        /// </summary>
-        /// <returns>
-        /// The <see cref="int"/>.
-        /// </returns>
-        public override int GetHashCode()
-        {
-            unchecked
+            for (int j = 0; j < temp.MeasureList.Count; j++)
             {
-                int hashCode = -2011207718;
-                foreach (CongenericScoreTrack scoreTrack in CongenericScoreTracks)
-                {
-                    hashCode = (hashCode * -1521134295) + scoreTrack.GetHashCode();
-                }
-
-                return hashCode;
+                // склеивание j-тых тактов
+                var tempMeasure = (Measure)tracks[i].MeasureList[j].Clone();
+                tempMeasure.MergeMeasures(tempList[j]);
+                tempList.RemoveAt(j);
+                tempList.Insert(j, tempMeasure);
             }
         }
 
-        /// <summary>
-        /// The merged tracks.
-        /// </summary>
-        /// <param name="tracks">
-        /// The tracks.
-        /// </param>
-        /// <returns>
-        /// The <see cref="CongenericScoreTrack"/>.
-        /// </returns>
-        private CongenericScoreTrack MergedTracks(List<CongenericScoreTrack> tracks)
-        {
-            // список склеенных дорожек
-            var temp = (CongenericScoreTrack)tracks[0].Clone();
-
-            // список склеенных тактов
-            var tempList = new List<Measure>(temp.MeasureList);
-            for (int i = 1; i < tracks.Count; i++)
-            {
-                if (tempList.Count != tracks[i].MeasureList.Count)
-                {
-                    throw new Exception("ScoreTrack: invalid measure count");
-                }
-
-                for (int j = 0; j < temp.MeasureList.Count; j++)
-                {
-                    // склеивание j-тых тактов
-                    var tempMeasure = (Measure)tracks[i].MeasureList[j].Clone();
-                    tempMeasure.MergeMeasures(tempList[j]);
-                    tempList.RemoveAt(j);
-                    tempList.Insert(j, tempMeasure);
-                }
-            }
-
-            return new CongenericScoreTrack(tempList);
-        }
+        return new CongenericScoreTrack(tempList);
     }
 }

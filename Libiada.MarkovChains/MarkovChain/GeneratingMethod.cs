@@ -1,40 +1,39 @@
-namespace MarkovChains.MarkovChain
+namespace Libiada.MarkovChains.MarkovChain;
+
+using System;
+
+/// <summary>
+/// Enumeration of markov chain types.
+/// </summary>
+[Serializable]
+public enum GeneratingMethod
 {
-    using System;
+    /// <summary>
+    /// Congeneric markov chain.
+    /// Probabilities does not depend on the step.
+    /// </summary>
+    StaticCongeneric,
 
     /// <summary>
-    /// Enumeration of markov chain types.
+    /// Not congeneric (dissimilar) markov chain.
+    /// Probabilities does not depend on the step.
     /// </summary>
-    [Serializable]
-    public enum GeneratingMethod
-    {
-        /// <summary>
-        /// Congeneric markov chain.
-        /// Probabilities does not depend on the step.
-        /// </summary>
-        StaticCongeneric,
+    StaticNotCongeneric,
 
-        /// <summary>
-        /// Not congeneric (dissimilar) markov chain.
-        /// Probabilities does not depend on the step.
-        /// </summary>
-        StaticNotCongeneric,
+    /// <summary>
+    /// Congeneric markov chain.
+    /// Probabilities depends on the step.
+    /// </summary>
+    DynamicCongeneric,
 
-        /// <summary>
-        /// Congeneric markov chain.
-        /// Probabilities depends on the step.
-        /// </summary>
-        DynamicCongeneric,
+    /// <summary>
+    /// Not congeneric (dissimilar) markov chain.
+    /// Probabilities depends on the step.
+    /// </summary>
+    DynamicNotCongeneric,
 
-        /// <summary>
-        /// Not congeneric (dissimilar) markov chain.
-        /// Probabilities depends on the step.
-        /// </summary>
-        DynamicNotCongeneric,
-
-        /// <summary>
-        /// The random.
-        /// </summary>
-        Random
-    }
+    /// <summary>
+    /// The random.
+    /// </summary>
+    Random
 }
