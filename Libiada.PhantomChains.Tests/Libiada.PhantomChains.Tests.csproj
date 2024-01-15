@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net6.0</TargetFramework>
+    <TargetFramework>net8.0</TargetFramework>
   </PropertyGroup>
 
   <ItemGroup>
@@ -11,10 +11,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\LibiadaCore\LibiadaCore.csproj" />
-    <ProjectReference Include="..\MarkovChains.Tests\MarkovChains.Tests.csproj" />
-    <ProjectReference Include="..\MarkovChains\MarkovChains.csproj" />
-    <ProjectReference Include="..\PhantomChains\PhantomChains.csproj" />
+    <ProjectReference Include="..\Libiada.MarkovChains.Tests\Libiada.MarkovChains.Tests.csproj" />
+    <ProjectReference Include="..\Libiada.PhantomChains\Libiada.PhantomChains.csproj" />
   </ItemGroup>
 
 </Project>

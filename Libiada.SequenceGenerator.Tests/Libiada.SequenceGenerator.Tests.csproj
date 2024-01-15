@@ -1,14 +1,8 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net6.0</TargetFramework>
+    <TargetFramework>net8.0</TargetFramework>
   </PropertyGroup>
-
-  <ItemGroup>
-    <Compile Remove="Clusterizator\**" />
-    <EmbeddedResource Remove="Clusterizator\**" />
-    <None Remove="Clusterizator\**" />
-  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.10.0" />
@@ -17,7 +11,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Clusterizator\Clusterizator.csproj" />
+    <ProjectReference Include="..\Libiada.SequenceGenerator\Libiada.SequenceGenerator.csproj" />
   </ItemGroup>
 
 </Project>
