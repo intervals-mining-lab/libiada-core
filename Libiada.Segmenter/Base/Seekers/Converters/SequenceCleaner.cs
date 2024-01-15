@@ -1,7 +1,5 @@
 ﻿namespace Libiada.Segmenter.Base.Seekers.Converters;
 
-using System.Collections.Generic;
-
 using Segmenter.Base.Iterators;
 using Segmenter.Base.Sequences;
 

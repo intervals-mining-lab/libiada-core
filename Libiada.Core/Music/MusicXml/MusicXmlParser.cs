@@ -1,8 +1,5 @@
 ﻿namespace Libiada.Core.Music.MusicXml;
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Xml;
 
 using Libiada.Core.Core;

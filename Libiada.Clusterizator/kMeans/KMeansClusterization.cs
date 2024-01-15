@@ -1,6 +1,6 @@
-﻿using Accord.MachineLearning;
+﻿namespace Libiada.Clusterizator.kMeans;
 
-namespace Libiada.Clusterizator.kMeans;
+using Accord.MachineLearning;
 
 /// <summary>
 /// The k means clusterization.

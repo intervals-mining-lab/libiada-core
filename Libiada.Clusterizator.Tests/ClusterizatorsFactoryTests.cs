@@ -1,12 +1,8 @@
 ﻿namespace Libiada.Clusterizator.Tests;
 
-using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using Clusterizator.Krab;
 using Clusterizator.kMeans;
-
-using NUnit.Framework;
 
 /// <summary>
 /// The clusterizators factory tests.

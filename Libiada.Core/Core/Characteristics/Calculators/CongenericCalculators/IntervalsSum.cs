@@ -1,7 +1,5 @@
 ﻿namespace Libiada.Core.Core.Characteristics.Calculators.CongenericCalculators;
 
-using System.Linq;
-
 /// <summary>
 /// Sum of intervals lengths depending on link.
 /// </summary>

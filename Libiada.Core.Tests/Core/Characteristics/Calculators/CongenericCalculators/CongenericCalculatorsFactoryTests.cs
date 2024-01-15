@@ -1,11 +1,8 @@
 ﻿namespace Libiada.Core.Tests.Core.Characteristics.Calculators.CongenericCalculators;
 
-using System;
 using System.ComponentModel;
 
 using Libiada.Core.Core.Characteristics.Calculators.CongenericCalculators;
-
-using NUnit.Framework;
 
 /// <summary>
 /// The congeneric calculators factory tests.

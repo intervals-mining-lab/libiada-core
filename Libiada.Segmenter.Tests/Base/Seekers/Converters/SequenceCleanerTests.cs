@@ -1,9 +1,5 @@
 ﻿namespace Libiada.Segmenter.Tests.Base.Seekers.Converters;
 
-using System.Collections.Generic;
-
-using NUnit.Framework;
-
 using Segmenter.Base.Seekers.Converters;
 using Segmenter.Base.Sequences;
 

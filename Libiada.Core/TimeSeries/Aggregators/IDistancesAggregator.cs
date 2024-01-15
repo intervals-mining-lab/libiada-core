@@ -1,7 +1,5 @@
 ﻿namespace Libiada.Core.TimeSeries.Aggregators;
 
-using System.Collections.Generic;
-
 /// <summary>
 /// The DistancesAggregator interface.
 /// </summary>

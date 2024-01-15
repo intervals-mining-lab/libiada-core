@@ -1,7 +1,5 @@
 namespace Libiada.Clusterizator.Krab.Calculators;
 
-using System.Collections.Generic;
-
 /// <summary>
 /// Calculator of local density of nodes.
 /// </summary>

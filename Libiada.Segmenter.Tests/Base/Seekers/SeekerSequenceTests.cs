@@ -1,9 +1,5 @@
 ﻿namespace Libiada.Segmenter.Tests.Base.Seekers;
 
-using System.Collections.Generic;
-
-using NUnit.Framework;
-
 using Segmenter.Base.Iterators;
 using Segmenter.Base.Seekers;
 using Segmenter.Base.Sequences;

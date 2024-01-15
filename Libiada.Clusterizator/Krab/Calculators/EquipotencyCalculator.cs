@@ -1,8 +1,5 @@
 namespace Libiada.Clusterizator.Krab.Calculators;
 
-using System;
-using System.Collections.Generic;
-
 /// <summary>
 /// Class calculating equipotency of sets
 /// (disproportion of elements counts of sets).

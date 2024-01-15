@@ -1,7 +1,5 @@
 ﻿namespace Libiada.Core.Core.Characteristics.Calculators.AccordanceCalculators;
 
-using System;
-
 using Libiada.Core.Core.ArrangementManagers;
 
 /// <summary>

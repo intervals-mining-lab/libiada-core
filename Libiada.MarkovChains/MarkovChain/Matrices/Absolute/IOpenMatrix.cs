@@ -7,6 +7,8 @@ using System.Collections;
 /// </summary>
 public interface IOpenMatrix
 {
+
+    // TODO: update type
     /// <summary>
     /// Gets elements list of matrix.
     /// </summary>

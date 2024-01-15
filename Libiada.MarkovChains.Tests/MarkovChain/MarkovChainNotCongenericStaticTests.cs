@@ -1,13 +1,10 @@
 namespace Libiada.MarkovChains.Tests.MarkovChain;
 
 using Libiada.Core.Core;
-using Libiada.Core.Core.SimpleTypes;
 
 using MarkovChains.MarkovChain;
 using MarkovChains.MarkovChain.Generators;
 using MarkovChains.Tests.MarkovChain.Generators;
-
-using NUnit.Framework;
 
 /// <summary>
 /// Tests of non congeneric markov chain.

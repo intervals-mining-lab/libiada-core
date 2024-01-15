@@ -2,8 +2,6 @@
 
 using Libiada.Core.Music;
 
-using NUnit.Framework;
-
 /// <summary>
 /// The param pause treatment tests.
 /// </summary>

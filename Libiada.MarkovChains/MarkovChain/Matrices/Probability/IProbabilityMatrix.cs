@@ -1,7 +1,5 @@
 namespace Libiada.MarkovChains.MarkovChain.Matrices.Probability;
 
-using System.Collections.Generic;
-
 using Libiada.Core.Core;
 
 using MarkovChains.MarkovChain.Matrices.Absolute;

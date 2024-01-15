@@ -15,4 +15,8 @@
     <ProjectReference Include="..\Libiada.Segmenter\Libiada.Segmenter.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Using Include="NUnit.Framework" />
+  </ItemGroup>
+
 </Project>

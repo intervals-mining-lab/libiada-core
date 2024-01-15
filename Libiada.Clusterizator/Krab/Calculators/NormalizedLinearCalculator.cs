@@ -1,9 +1,5 @@
 namespace Libiada.Clusterizator.Krab.Calculators;
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-
 /// <summary>
 /// Normalized euclidean distance calculator.
 /// </summary>

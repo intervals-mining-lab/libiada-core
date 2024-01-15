@@ -3,8 +3,6 @@
 using Libiada.Core.Core;
 using Libiada.Core.Core.Characteristics.Calculators.CongenericCalculators;
 
-using NUnit.Framework;
-
 /// <summary>
 /// The remoteness skewness coefficient tests.
 /// </summary>

@@ -1,11 +1,7 @@
 ﻿namespace Libiada.SequenceGenerator.Tests;
 
-using System.Collections.Generic;
-
 using Libiada.Core.Core;
 using Libiada.Core.Core.SimpleTypes;
-
-using NUnit.Framework;
 
 /// <summary>
 /// The sequence generator tests.

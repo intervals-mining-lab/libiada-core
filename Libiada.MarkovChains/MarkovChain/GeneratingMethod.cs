@@ -1,7 +1,5 @@
 namespace Libiada.MarkovChains.MarkovChain;
 
-using System;
-
 /// <summary>
 /// Enumeration of markov chain types.
 /// </summary>

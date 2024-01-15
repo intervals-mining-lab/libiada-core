@@ -1,11 +1,7 @@
 namespace Libiada.Clusterizator.Tests.Krab.Calculators;
 
-using System.Collections.Generic;
-
 using Clusterizator.Krab;
 using Clusterizator.Krab.Calculators;
-
-using NUnit.Framework;
 
 /// <summary>
 /// The equipotency calculator test.

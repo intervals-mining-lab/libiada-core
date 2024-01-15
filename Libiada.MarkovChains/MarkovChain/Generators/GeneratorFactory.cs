@@ -1,7 +1,5 @@
 namespace Libiada.MarkovChains.MarkovChain.Generators;
 
-using System;
-
 /// <summary>
 /// Random generators factory.
 /// </summary>

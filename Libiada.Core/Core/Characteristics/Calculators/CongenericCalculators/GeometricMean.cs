@@ -1,7 +1,5 @@
 namespace Libiada.Core.Core.Characteristics.Calculators.CongenericCalculators;
 
-using System;
-
 /// <summary>
 /// Average geometric value of interval length.
 /// </summary>

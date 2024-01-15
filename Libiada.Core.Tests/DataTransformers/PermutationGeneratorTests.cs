@@ -2,9 +2,6 @@
 
 using Libiada.Core.DataTransformers;
 
-using NUnit.Framework;
-using System.Linq;
-
 [TestFixture]
 public class PermutationGeneratorTests
 {

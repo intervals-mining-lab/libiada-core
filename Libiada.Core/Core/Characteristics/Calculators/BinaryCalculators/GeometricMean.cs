@@ -1,8 +1,5 @@
 namespace Libiada.Core.Core.Characteristics.Calculators.BinaryCalculators;
 
-using System;
-using System.Linq;
-
 using Libiada.Core.Core.ArrangementManagers;
 
 /// <summary>

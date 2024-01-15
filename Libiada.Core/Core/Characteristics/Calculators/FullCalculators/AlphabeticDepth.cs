@@ -1,8 +1,5 @@
 ﻿namespace Libiada.Core.Core.Characteristics.Calculators.FullCalculators;
 
-using System;
-using System.Linq;
-
 /// <summary>
 /// Depth with cardinality of alphabet used as logarithm base.
 /// </summary>

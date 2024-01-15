@@ -2,8 +2,6 @@
 
 using Libiada.Core.Core;
 
-using NUnit.Framework;
-
 /// <summary>
 /// The abstract chain tests.
 /// </summary>

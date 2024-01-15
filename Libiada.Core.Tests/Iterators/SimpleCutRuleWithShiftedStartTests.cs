@@ -2,8 +2,6 @@
 
 using Libiada.Core.Iterators;
 
-using NUnit.Framework;
-
 /// <summary>
 /// The simple cut rule with shifted start test.
 /// </summary>

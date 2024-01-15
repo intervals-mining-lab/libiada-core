@@ -1,15 +1,12 @@
 namespace Libiada.MarkovChains.Tests.MarkovChain.Matrices.Probability;
 
-using System;
-
 using Libiada.Core.Core;
 using Libiada.Core.Core.SimpleTypes;
 using Libiada.Core.Iterators;
 using Libiada.Core.SpaceReorganizers;
+
 using MarkovChains.MarkovChain.Matrices.Absolute;
 using MarkovChains.MarkovChain.Matrices.Probability;
-
-using NUnit.Framework;
 
 /// <summary>
 /// The iteration matrix tests.

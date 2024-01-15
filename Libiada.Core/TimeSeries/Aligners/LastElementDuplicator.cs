@@ -1,8 +1,5 @@
 ﻿namespace Libiada.Core.TimeSeries.Aligners;
 
-using System.Collections.Generic;
-using System.Linq;
-
 /// <summary>
 /// The last element duplication aligner.
 /// </summary>

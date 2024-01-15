@@ -3,7 +3,6 @@ namespace Libiada.Core.Tests.Core.Characteristics.Calculators.CongenericCalculat
 using Libiada.Core.Core;
 using Libiada.Core.Core.Characteristics.Calculators.CongenericCalculators;
 
-using NUnit.Framework;
 
 /// <summary>
 /// The periodicity test.

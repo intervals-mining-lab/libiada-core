@@ -1,8 +1,5 @@
 ﻿namespace Libiada.Core.TimeSeries.Aggregators;
 
-using System;
-using System.Collections.Generic;
-
 /// <summary>
 /// The difference square root aggregator.
 /// </summary>

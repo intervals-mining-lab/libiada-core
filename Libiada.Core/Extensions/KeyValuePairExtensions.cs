@@ -1,7 +1,5 @@
 ﻿namespace Libiada.Core.Extensions;
 
-using System.Collections.Generic;
-
 /// <summary>
 /// Extensions for the KeyValuePair class.
 /// </summary>

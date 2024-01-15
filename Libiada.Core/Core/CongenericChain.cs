@@ -1,9 +1,6 @@
 namespace Libiada.Core.Core;
 
-using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
 
 using ArrangementManagers;
 using SimpleTypes;

@@ -1,7 +1,5 @@
 ﻿namespace Libiada.Core.Core.SimpleTypes;
 
-using System;
-
 /// <summary>
 /// Note duration.
 /// </summary>

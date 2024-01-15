@@ -1,11 +1,7 @@
 ﻿namespace Libiada.Core.Tests.Core.ArrangementManagers;
 
-using System.Collections.Generic;
-
 using Libiada.Core.Core;
 using Libiada.Core.Core.ArrangementManagers;
-
-using NUnit.Framework;
 
 /// <summary>
 /// The congeneric series manager tests.

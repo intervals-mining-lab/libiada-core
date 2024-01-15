@@ -1,10 +1,5 @@
 ﻿namespace Libiada.Segmenter.Tests.Base.Collectors;
 
-using System.Collections.Generic;
-using System.Linq;
-
-using NUnit.Framework;
-
 using Segmenter.Base.Collectors;
 using Segmenter.Base.Sequences;
 using Segmenter.Extended;

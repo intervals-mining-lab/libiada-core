@@ -1,8 +1,5 @@
 ﻿namespace Libiada.Segmenter.Model.Criterion;
 
-using System;
-using System.Collections.Generic;
-
 using Libiada.Core.Core;
 
 using Segmenter.Base.Collectors;

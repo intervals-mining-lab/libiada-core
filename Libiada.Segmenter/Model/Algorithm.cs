@@ -1,7 +1,5 @@
 ﻿namespace Libiada.Segmenter.Model;
 
-using System.Collections.Generic;
-
 /// <summary>
 /// The algorithm.
 /// </summary>

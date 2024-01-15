@@ -1,7 +1,5 @@
 ﻿namespace Libiada.Core.Core.Characteristics.Calculators.CongenericCalculators;
 
-using System;
-
 /// <summary>
 /// Abstract class for all not linkable congeneric characteristics calculators.
 /// </summary>

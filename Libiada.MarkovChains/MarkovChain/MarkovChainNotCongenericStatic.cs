@@ -2,6 +2,7 @@ namespace Libiada.MarkovChains.MarkovChain;
 
 using Libiada.Core.Core;
 using Libiada.Core.Iterators;
+
 using MarkovChains.MarkovChain.Generators;
 
 /// <summary>

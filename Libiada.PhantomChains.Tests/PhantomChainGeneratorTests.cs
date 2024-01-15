@@ -1,15 +1,12 @@
 namespace Libiada.PhantomChains.Tests;
 
-using System.Collections.Generic;
-
 using Libiada.Core.Core;
 using Libiada.Core.Core.SimpleTypes;
 using Libiada.Core.DataTransformers;
 using Libiada.Core.Iterators;
+
 using MarkovChains.MarkovChain.Generators;
 using MarkovChains.Tests.MarkovChain.Generators;
-
-using NUnit.Framework;
 
 /// <summary>
 /// The probability phantom chain generator tests.

@@ -2,8 +2,6 @@
 
 using Libiada.Core.Core.Characteristics.Calculators.AccordanceCalculators;
 
-using NUnit.Framework;
-
 /// <summary>
 /// The compliance degree tests.
 /// </summary>

@@ -1,9 +1,6 @@
 ﻿namespace Libiada.Clusterizator.FRiSCluster;
 
 using Clusterizator.Exceptions;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 
 /// <summary>
 /// The clusterization using Competitive Similarity Function.

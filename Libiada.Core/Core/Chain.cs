@@ -1,7 +1,5 @@
 namespace Libiada.Core.Core;
 
-using System.Collections.Generic;
-
 using ArrangementManagers;
 
 using Libiada.Core.Core.SimpleTypes;

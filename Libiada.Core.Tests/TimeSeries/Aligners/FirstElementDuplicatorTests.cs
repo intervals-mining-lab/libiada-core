@@ -1,11 +1,9 @@
 ﻿namespace Libiada.Core.Tests.TimeSeries.Aligners;
 
-using System;
 using System.Diagnostics;
 
 using Libiada.Core.TimeSeries.Aligners;
 
-using NUnit.Framework;
 
 /// <summary>
 /// The first element duplication aligner tests.

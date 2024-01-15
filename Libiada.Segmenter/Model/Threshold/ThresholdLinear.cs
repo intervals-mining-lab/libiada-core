@@ -1,7 +1,5 @@
 ﻿namespace Libiada.Segmenter.Model.Threshold;
 
-using System;
-
 /// <summary>
 /// The threshold changes under the law of decrease the right bound
 /// upon concrete value

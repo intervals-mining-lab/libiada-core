@@ -1,7 +1,5 @@
 ﻿namespace Libiada.Segmenter.Tests.Model.Threshold;
 
-using NUnit.Framework;
-
 using Segmenter.Model.Criterion;
 using Segmenter.Model.Threshold;
 

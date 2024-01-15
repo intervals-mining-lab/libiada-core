@@ -1,15 +1,7 @@
 namespace Libiada.Core.Tests.Core;
 
-using System.Collections.Generic;
-
 using Libiada.Core.Core;
-
-using NUnit.Framework;
-
 using Libiada.Core.Core.SimpleTypes;
-
-using ArrangementManagers;
-using Libiada.Core.Core.Characteristics.Calculators.CongenericCalculators;
 
 /// <summary>
 /// The chain test.

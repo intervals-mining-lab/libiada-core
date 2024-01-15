@@ -2,8 +2,6 @@
 
 using Libiada.Core.Core.Characteristics.Calculators.BinaryCalculators;
 
-using NUnit.Framework;
-
 /// <summary>
 /// The binary geometric mean test.
 /// </summary>

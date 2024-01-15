@@ -1,8 +1,5 @@
 ﻿namespace Libiada.SequenceGenerator;
 
-using System.Collections.Generic;
-using System.Linq;
-
 /// <summary>
 /// The order generator.
 /// </summary>

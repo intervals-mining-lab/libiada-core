@@ -3,8 +3,6 @@
 using Libiada.Core.Core;
 using Libiada.Core.Core.SimpleTypes;
 
-using System.Collections.Generic;
-
 /// <summary>
 /// Class for constructing different concatenations of sequences sets.
 /// In other words it generates all possible orderings of several sequences.

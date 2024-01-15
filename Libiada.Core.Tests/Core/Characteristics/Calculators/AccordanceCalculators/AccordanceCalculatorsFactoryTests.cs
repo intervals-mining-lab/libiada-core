@@ -1,11 +1,8 @@
 ﻿namespace Libiada.Core.Tests.Core.Characteristics.Calculators.AccordanceCalculators;
 
-using System;
 using System.ComponentModel;
 
 using Libiada.Core.Core.Characteristics.Calculators.AccordanceCalculators;
-
-using NUnit.Framework;
 
 /// <summary>
 /// The accordance calculators factory tests.

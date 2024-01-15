@@ -1,7 +1,5 @@
 namespace Libiada.Clusterizator.Krab;
 
-using System;
-
 /// <summary>
 /// Class-container for pair of points and their distances.
 /// </summary>

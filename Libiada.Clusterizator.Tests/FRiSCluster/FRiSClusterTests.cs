@@ -2,8 +2,6 @@
 
 using Clusterizator.FRiSCluster;
 
-using NUnit.Framework;
-
 /// <summary>
 /// The FRiS cluster tests.
 /// </summary>

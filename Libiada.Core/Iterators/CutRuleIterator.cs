@@ -1,7 +1,5 @@
 ﻿namespace Libiada.Core.Iterators;
 
-using System.Collections.Generic;
-
 /// <summary>
 /// The cut rule iterator.
 /// </summary>

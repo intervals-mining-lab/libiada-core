@@ -1,6 +1,5 @@
 ﻿namespace Libiada.Clusterizator;
 
-using System.Collections.Generic;
 using System.ComponentModel;
 
 using Clusterizator.kMeans;

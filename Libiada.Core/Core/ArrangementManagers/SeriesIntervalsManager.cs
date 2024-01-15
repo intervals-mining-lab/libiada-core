@@ -1,7 +1,5 @@
 ﻿namespace Libiada.Core.Core.ArrangementManagers;
 
-using System;
-
 public class SeriesIntervalsManager : IArrangementManager
 {
     public SeriesIntervalsManager(CongenericChain chain)

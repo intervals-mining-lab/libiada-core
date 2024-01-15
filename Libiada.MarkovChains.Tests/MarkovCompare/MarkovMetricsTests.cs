@@ -6,8 +6,6 @@ using MarkovChains.MarkovChain;
 using MarkovChains.MarkovCompare;
 using MarkovChains.Tests.MarkovChain.Generators;
 
-using NUnit.Framework;
-
 /// <summary>
 /// The markov metric tests.
 /// </summary>

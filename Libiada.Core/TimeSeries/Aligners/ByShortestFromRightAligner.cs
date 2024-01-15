@@ -1,7 +1,5 @@
 ﻿namespace Libiada.Core.TimeSeries.Aligners;
 
-using System;
-
 using Libiada.Core.Extensions;
 
 /// <summary>

@@ -1,7 +1,5 @@
 ﻿namespace Libiada.Core.Core.Characteristics.Calculators.FullCalculators;
 
-using System;
-
 /// <summary>
 /// The average remoteness with logarithm base equals cardinality of alphabet.
 /// </summary>

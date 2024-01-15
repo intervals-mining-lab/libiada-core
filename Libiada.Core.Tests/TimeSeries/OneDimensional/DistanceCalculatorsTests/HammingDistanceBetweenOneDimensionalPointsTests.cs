@@ -2,8 +2,6 @@
 
 using Libiada.Core.TimeSeries.OneDimensional.DistanceCalculators;
 
-using NUnit.Framework;
-
 /// <summary>
 /// The Hamming distance between one dimensional points tests.
 /// </summary>

@@ -1,9 +1,5 @@
 ﻿namespace Libiada.Core.Core.Characteristics.Calculators.CongenericCalculators;
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-
 /// <summary>
 /// The remoteness skewness.
 /// </summary>

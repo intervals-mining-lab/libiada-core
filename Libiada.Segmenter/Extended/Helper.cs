@@ -1,6 +1,5 @@
 ﻿namespace Libiada.Segmenter.Extended;
 
-using System.Collections.Generic;
 using System.Text;
 
 /// <summary>

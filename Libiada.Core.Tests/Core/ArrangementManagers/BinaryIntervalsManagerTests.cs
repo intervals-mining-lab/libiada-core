@@ -1,10 +1,6 @@
 ﻿namespace Libiada.Core.Tests.Core.ArrangementManagers;
 
-using System.Collections.Generic;
-
 using Libiada.Core.Core;
-
-using NUnit.Framework;
 
 /// <summary>
 /// The binary intervals manager tests.

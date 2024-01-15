@@ -1,10 +1,6 @@
 ﻿namespace Libiada.Core.Tests.Iterators;
 
-using System.Collections.Generic;
-
 using Libiada.Core.Iterators;
-
-using NUnit.Framework;
 
 /// <summary>
 /// The diff cutter test.

@@ -1,6 +1,7 @@
 ﻿namespace Libiada.SequenceGenerator;
 
 using Libiada.Core.Core;
+
 public static class IntervalsDistributionExtractor
 {
     public static IntervalsDistribution GetIntervalsDistribution(int[] order, Link link)

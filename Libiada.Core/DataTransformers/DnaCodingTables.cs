@@ -3,7 +3,6 @@
 using Libiada.Core.Core;
 using Libiada.Core.Core.SimpleTypes;
 
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 
 /// <summary>

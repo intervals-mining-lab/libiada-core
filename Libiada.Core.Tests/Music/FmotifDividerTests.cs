@@ -1,12 +1,8 @@
 ﻿namespace Libiada.Core.Tests.Music;
 
-using System.Collections.Generic;
-
 using Libiada.Core.Core;
 using Libiada.Core.Core.SimpleTypes;
 using Libiada.Core.Music;
-
-using NUnit.Framework;
 
 /// <summary>
 /// The fmotif divider tests.

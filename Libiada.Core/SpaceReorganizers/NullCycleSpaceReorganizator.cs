@@ -1,7 +1,5 @@
 namespace Libiada.Core.SpaceReorganizers;
 
-using System;
-
 using Libiada.Core.Core;
 using Libiada.Core.Iterators;
 

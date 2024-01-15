@@ -1,7 +1,5 @@
 namespace Libiada.MarkovChains.MarkovChain.Matrices.Base;
 
-using System;
-
 using MarkovChains.MarkovChain.Builders;
 
 /// <summary>

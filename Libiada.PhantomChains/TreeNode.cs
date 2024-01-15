@@ -1,7 +1,5 @@
 namespace Libiada.PhantomChains;
 
-using System;
-
 using Libiada.Core.Core;
 using Libiada.Core.Core.SimpleTypes;
 

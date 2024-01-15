@@ -4,8 +4,6 @@ using Libiada.Core.Core;
 using Libiada.Core.Core.Characteristics.Calculators.FullCalculators;
 using Libiada.Core.Core.SimpleTypes;
 
-using NUnit.Framework;
-
 /// <summary>
 /// The average word length tests.
 /// </summary>

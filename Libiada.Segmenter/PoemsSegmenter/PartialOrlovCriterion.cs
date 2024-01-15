@@ -1,9 +1,5 @@
 ﻿namespace Libiada.Segmenter.PoemsSegmenter;
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-
 public class PartialOrlovCriterion
 {
     private Dictionary<string, int> consonancesDictionary;
@@ -52,6 +48,4 @@ public class PartialOrlovCriterion
     {
         return consonancesDictionary.Sum(v => v.Value); // сумма всех вхождений
     }
-
 }
-

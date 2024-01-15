@@ -1,7 +1,5 @@
 namespace Libiada.Core.Core.Characteristics.Calculators.CongenericCalculators;
 
-using System;
-
 /// <summary>
 /// Mazur's descriptive information.
 /// </summary>

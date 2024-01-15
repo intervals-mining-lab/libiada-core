@@ -2,8 +2,6 @@
 
 using Libiada.Core.Exceptions;
 
-using NUnit.Framework;
-
 /// <summary>
 /// The type argument exception tests.
 /// </summary>

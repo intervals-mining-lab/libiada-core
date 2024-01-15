@@ -1,7 +1,5 @@
 ﻿namespace Libiada.Core.Core.Characteristics.Calculators.FullCalculators;
 
-using System;
-
 /// <summary>
 /// The remoteness standard deviation by intervals lengths.
 /// </summary>

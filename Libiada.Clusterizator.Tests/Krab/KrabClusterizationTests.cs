@@ -2,8 +2,6 @@ namespace Libiada.Clusterizator.Tests.Krab;
 
 using Clusterizator.Krab;
 
-using NUnit.Framework;
-
 /// <summary>
 /// The alternative krab test.
 /// </summary>

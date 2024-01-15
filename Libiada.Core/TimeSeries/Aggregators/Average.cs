@@ -1,8 +1,5 @@
 ﻿namespace Libiada.Core.TimeSeries.Aggregators;
 
-using System.Collections.Generic;
-using System.Linq;
-
 /// <summary>
 /// The average aggregator.
 /// </summary>

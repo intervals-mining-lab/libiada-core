@@ -15,4 +15,8 @@
     <ProjectReference Include="..\Libiada.SequenceGenerator\Libiada.SequenceGenerator.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Using Include="NUnit.Framework" />
+  </ItemGroup>
+
 </Project>

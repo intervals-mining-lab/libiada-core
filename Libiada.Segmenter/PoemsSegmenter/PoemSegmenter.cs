@@ -261,5 +261,4 @@ public class PoemSegmenter
 
         return poemChain;
     }
-
 }

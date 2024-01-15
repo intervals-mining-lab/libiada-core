@@ -1,8 +1,5 @@
 ﻿namespace Libiada.Core.TimeSeries.Aligners;
 
-using System;
-using System.Collections.Generic;
-
 /// <summary>
 /// The first element duplication aligner.
 /// </summary>

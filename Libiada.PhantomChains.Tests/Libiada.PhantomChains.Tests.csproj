@@ -16,4 +16,8 @@
     <ProjectReference Include="..\Libiada.PhantomChains\Libiada.PhantomChains.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Using Include="NUnit.Framework" />
+  </ItemGroup>
+
 </Project>

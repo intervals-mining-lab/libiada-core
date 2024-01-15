@@ -1,7 +1,5 @@
 namespace Libiada.Core.Iterators;
 
-using System;
-
 using Libiada.Core.Core;
 
 /// <summary>

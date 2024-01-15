@@ -1,6 +1,5 @@
 ﻿namespace Libiada.Core.Core.ArrangementManagers;
 
-using System;
 using System.ComponentModel;
 
 /// <summary>

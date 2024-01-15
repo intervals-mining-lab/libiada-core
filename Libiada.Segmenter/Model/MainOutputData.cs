@@ -1,6 +1,5 @@
 ﻿namespace Libiada.Segmenter.Model;
 
-using System.Collections.Generic;
 using System.Globalization;
 
 using Libiada.Core.Core;

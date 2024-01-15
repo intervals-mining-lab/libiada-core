@@ -1,9 +1,5 @@
 ﻿namespace Libiada.Segmenter.Model.Criterion;
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-
 using Segmenter.Base.Collectors;
 using Segmenter.Base.Sequences;
 using Segmenter.Model.Threshold;

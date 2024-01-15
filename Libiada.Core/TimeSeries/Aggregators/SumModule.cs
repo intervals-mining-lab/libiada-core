@@ -1,9 +1,5 @@
 ﻿namespace Libiada.Core.TimeSeries.Aggregators;
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-
 /// <summary>
 /// The sum module aggregator.
 /// </summary>

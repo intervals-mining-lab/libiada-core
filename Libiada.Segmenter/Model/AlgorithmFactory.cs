@@ -1,7 +1,5 @@
 ﻿namespace Libiada.Segmenter.Model;
 
-using System;
-
 /// <summary>
 /// The algorithm factory.
 /// </summary>

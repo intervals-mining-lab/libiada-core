@@ -5,8 +5,6 @@ using Libiada.Core.TimeSeries.Aligners;
 using Libiada.Core.TimeSeries.OneDimensional.Comparers;
 using Libiada.Core.TimeSeries.OneDimensional.DistanceCalculators;
 
-using NUnit.Framework;
-
 /// <summary>
 /// The one dimensional time series comparer tests.
 /// </summary>
@@ -361,5 +359,4 @@ public class OneDimensionalTimeSeriesComparerTests
         double result = comparer.GetDistance(firstSeries, secondSeries);
         Assert.AreEqual(result, expected);
     }
-
 }

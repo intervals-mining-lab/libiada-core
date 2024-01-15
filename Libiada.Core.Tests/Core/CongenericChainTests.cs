@@ -3,9 +3,6 @@ namespace Libiada.Core.Tests.Core;
 using Libiada.Core.Core;
 using Libiada.Core.Core.SimpleTypes;
 
-using NUnit.Framework;
-using System.Collections.Generic;
-
 /// <summary>
 /// The congeneric chain test.
 /// </summary>

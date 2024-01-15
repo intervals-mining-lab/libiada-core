@@ -3,8 +3,6 @@ namespace Libiada.Core.Tests.Core.Characteristics.Calculators.FullCalculators;
 using Libiada.Core.Core;
 using Libiada.Core.Core.Characteristics.Calculators.FullCalculators;
 
-using NUnit.Framework;
-
 /// <summary>
 /// The periodicity test.
 /// </summary>

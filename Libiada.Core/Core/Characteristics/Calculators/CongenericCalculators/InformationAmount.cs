@@ -1,7 +1,5 @@
 ﻿namespace Libiada.Core.Core.Characteristics.Calculators.CongenericCalculators;
 
-using System;
-
 /// <summary>
 /// The complete amount of information in sequence.
 /// Entropy multiplied by length.

@@ -1,11 +1,9 @@
 namespace Libiada.PhantomChains;
 
-using System;
-using System.Collections.Generic;
-
 using Libiada.Core.Core;
 using Libiada.Core.Core.SimpleTypes;
 using Libiada.Core.SpaceReorganizers;
+
 using MarkovChains.MarkovChain.Generators;
 
 /// <summary>

@@ -1,7 +1,5 @@
 ﻿namespace Libiada.SequenceGenerator.Tests;
 
-using NUnit.Framework;
-
 /// <summary>
 /// The order iterator tests.
 /// </summary>

@@ -1,12 +1,8 @@
 namespace Libiada.Core.Tests.Iterators;
 
-using System.Collections.Generic;
-
 using Libiada.Core.Core;
 using Libiada.Core.Core.SimpleTypes;
 using Libiada.Core.Iterators;
-
-using NUnit.Framework;
 
 /// <summary>
 /// The iterator writable end test.

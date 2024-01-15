@@ -1,8 +1,5 @@
 namespace Libiada.Clusterizator.Krab;
 
-using System.Collections.Generic;
-using System.Linq;
-
 /// <summary>
 /// Class representing graph of connected nodes.
 /// </summary>

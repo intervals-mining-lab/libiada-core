@@ -1,7 +1,5 @@
 ﻿namespace Libiada.Core.Core.Characteristics.Calculators.FullCalculators;
 
-using System;
-
 /// <summary>
 /// Abstract class for all not linkable complete sequence characteristics calculators.
 /// </summary>

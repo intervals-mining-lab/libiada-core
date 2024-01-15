@@ -1,7 +1,5 @@
 ﻿namespace Libiada.Segmenter.Base.Seekers;
 
-using System.Collections.Generic;
-
 using Interfaces;
 
 /// <summary>

@@ -1,9 +1,6 @@
 ﻿namespace Libiada.SequenceGenerator.Tests;
 
 using Libiada.Core.Core;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 public static class IntervalsDistributionsStorage
 {

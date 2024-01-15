@@ -1,13 +1,8 @@
 ﻿namespace Libiada.Core.Tests.DataTransformers;
 
-using System;
-using System.Collections.Generic;
-
 using Libiada.Core.Core;
 using Libiada.Core.Core.SimpleTypes;
 using Libiada.Core.DataTransformers;
-
-using NUnit.Framework;
 
 /// <summary>
 /// The DNA transformer test.

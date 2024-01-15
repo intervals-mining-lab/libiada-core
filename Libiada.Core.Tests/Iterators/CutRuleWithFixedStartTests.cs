@@ -2,8 +2,6 @@
 
 using Libiada.Core.Iterators;
 
-using NUnit.Framework;
-
 /// <summary>
 /// The from fix start cut rule test.
 /// </summary>

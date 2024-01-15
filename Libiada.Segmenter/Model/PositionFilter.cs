@@ -1,7 +1,5 @@
 ﻿namespace Libiada.Segmenter.Model;
 
-using System.Collections.Generic;
-
 /// <summary>
 /// Cleaning all cross words in the sequence
 /// </summary>

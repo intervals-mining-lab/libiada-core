@@ -1,11 +1,8 @@
 ﻿namespace Libiada.Core.Tests.Core.Characteristics.Calculators.FullCalculators;
 
-using System;
 using System.ComponentModel;
 
 using Libiada.Core.Core.Characteristics.Calculators.FullCalculators;
-
-using NUnit.Framework;
 
 /// <summary>
 /// The full calculators factory tests.

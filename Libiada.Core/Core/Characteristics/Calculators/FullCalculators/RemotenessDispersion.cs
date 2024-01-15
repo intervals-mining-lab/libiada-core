@@ -1,11 +1,5 @@
 ﻿namespace Libiada.Core.Core.Characteristics.Calculators.FullCalculators;
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-
-using Libiada.Core.Extensions;
-
 /// <summary>
 /// The remoteness dispersion by intervals lengths.
 /// </summary>
@@ -29,7 +23,7 @@ public class RemotenessDispersion : IFullCalculator
         Alphabet alphabet = chain.Alphabet;
         for (int i = 0; i < alphabet.Cardinality; i++)
         {
-            intervals.AddRange(chain.CongenericChain(i).GetArrangement(link).ToList());
+            intervals.AddRange(chain.CongenericChain(i).GetArrangement(link));
         }
 
         if (intervals.Count == 0)

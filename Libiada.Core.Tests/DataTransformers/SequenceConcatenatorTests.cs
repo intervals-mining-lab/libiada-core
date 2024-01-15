@@ -1,13 +1,8 @@
 ﻿namespace Libiada.Core.Tests.DataTransformers;
 
-using System.Diagnostics;
-
 using Libiada.Core.Core;
 using Libiada.Core.DataTransformers;
 using Libiada.Core.Tests.Core;
-
-using NUnit.Framework;
-
 
 [TestFixture]
 public class SequenceConcatenatorTests
@@ -26,7 +21,6 @@ public class SequenceConcatenatorTests
     {
         var sourceChains = ChainsStorage.ConcatinationChains;
         var result = SequenceConcatenator.ConcatenateAsOrdered(new[] { sourceChains[0], sourceChains[1], sourceChains[2] });
-        Trace.WriteLine(result);
         Assert.AreEqual(sourceChains[3], result);
     }
 

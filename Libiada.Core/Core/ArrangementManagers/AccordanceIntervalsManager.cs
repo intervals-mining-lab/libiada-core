@@ -1,8 +1,5 @@
 ﻿namespace Libiada.Core.Core.ArrangementManagers;
 
-using System;
-using System.Collections.Generic;
-
 /// <summary>
 /// The accordance intervals manager.
 /// </summary>

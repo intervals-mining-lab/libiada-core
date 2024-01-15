@@ -2,8 +2,6 @@
 
 using Libiada.Core.TimeSeries.Aligners;
 
-using NUnit.Framework;
-
 /// <summary>
 /// The all offsets aligner tests.
 /// </summary>

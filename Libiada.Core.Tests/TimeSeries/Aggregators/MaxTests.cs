@@ -1,10 +1,6 @@
 ﻿namespace Libiada.Core.Tests.TimeSeries.Aggregators;
 
-using System.Collections.Generic;
-
 using Libiada.Core.TimeSeries.Aggregators;
-
-using NUnit.Framework;
 
 /// <summary>
 /// The max aggregator tests.

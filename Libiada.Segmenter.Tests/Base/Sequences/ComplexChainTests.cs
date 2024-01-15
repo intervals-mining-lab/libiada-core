@@ -1,9 +1,5 @@
 ﻿namespace Libiada.Segmenter.Tests.Base.Sequences;
 
-using System.Collections.Generic;
-
-using NUnit.Framework;
-
 using Segmenter.Base.Sequences;
 
 /// <summary>

@@ -1,7 +1,5 @@
 ﻿namespace Libiada.Segmenter.Interfaces;
 
-using System.Collections.Generic;
-
 /// <summary>
 /// Provides search an entry one object to other
 /// </summary>

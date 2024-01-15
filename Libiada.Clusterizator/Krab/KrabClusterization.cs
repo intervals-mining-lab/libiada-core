@@ -1,7 +1,5 @@
 namespace Libiada.Clusterizator.Krab;
 
-using System.Collections.Generic;
-
 using Clusterizator.Krab.Calculators;
 
 /// <summary>

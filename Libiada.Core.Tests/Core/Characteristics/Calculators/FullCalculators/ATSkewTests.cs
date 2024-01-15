@@ -3,8 +3,6 @@
 using Libiada.Core.Core;
 using Libiada.Core.Core.Characteristics.Calculators.FullCalculators;
 
-using NUnit.Framework;
-
 /// <summary>
 /// The depth test.
 /// </summary>

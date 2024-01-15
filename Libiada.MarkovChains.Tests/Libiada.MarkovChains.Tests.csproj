@@ -15,4 +15,8 @@
     <ProjectReference Include="..\Libiada.MarkovChains\Libiada.MarkovChains.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Using Include="NUnit.Framework" />
+  </ItemGroup>
+
 </Project>

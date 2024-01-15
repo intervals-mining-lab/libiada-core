@@ -1,7 +1,5 @@
 namespace Libiada.PhantomChains.Tests;
 
-using System.Collections.Generic;
-
 using Libiada.Core.Core;
 using Libiada.Core.Core.SimpleTypes;
 

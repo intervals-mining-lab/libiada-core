@@ -1,12 +1,7 @@
 ﻿namespace Libiada.Core.Tests.Music;
 
-using System;
-using System.Collections.Generic;
-
 using Libiada.Core.Core.SimpleTypes;
 using Libiada.Core.Music;
-
-using NUnit.Framework;
 
 /// <summary>
 /// The priority discover tests.

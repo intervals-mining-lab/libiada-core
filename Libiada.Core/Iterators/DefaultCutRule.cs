@@ -1,7 +1,5 @@
 ﻿namespace Libiada.Core.Iterators;
 
-using System.Collections.Generic;
-
 /// <summary>
 /// Cut rule with default starts and ends.
 /// </summary>

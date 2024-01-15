@@ -4,8 +4,6 @@ using Libiada.Core.Core;
 using Libiada.Core.DataTransformers;
 using Libiada.Core.Tests.Core;
 
-using NUnit.Framework;
-
 /// <summary>
 /// The high order factory tests.
 /// </summary>

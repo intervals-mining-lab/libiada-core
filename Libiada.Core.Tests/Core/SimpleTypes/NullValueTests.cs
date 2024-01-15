@@ -2,8 +2,6 @@ namespace Libiada.Core.Tests.Core.SimpleTypes;
 
 using Libiada.Core.Core.SimpleTypes;
 
-using NUnit.Framework;
-
 /// <summary>
 /// The null value test.
 /// </summary>

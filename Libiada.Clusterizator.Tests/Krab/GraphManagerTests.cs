@@ -1,10 +1,6 @@
 namespace Libiada.Clusterizator.Tests.Krab;
 
-using System.Collections.Generic;
-
 using Clusterizator.Krab;
-
-using NUnit.Framework;
 
 /// <summary>
 /// The graph manager test.

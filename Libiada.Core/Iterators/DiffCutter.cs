@@ -1,7 +1,5 @@
 ﻿namespace Libiada.Core.Iterators;
 
-using System.Collections.Generic;
-
 /// <summary>
 /// Class that cut the string into substrings using provided cut rule.
 /// </summary>

@@ -1,7 +1,5 @@
 ﻿namespace Libiada.Core.Tests.Music;
 
-using NUnit.Framework;
-
 /// <summary>
 /// The system data.
 /// </summary>

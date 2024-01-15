@@ -1,7 +1,5 @@
 namespace Libiada.Clusterizator.Krab.Calculators;
 
-using System;
-
 /// <summary>
 /// Lambda-distance calculator (for KRAB clusterization)
 /// </summary>

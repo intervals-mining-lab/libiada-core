@@ -1,6 +1,5 @@
 ﻿namespace Libiada.SequenceGenerator;
 
-using System;
 using System.Collections;
 
 /// <summary>

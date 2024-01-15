@@ -1,7 +1,5 @@
 ﻿namespace Libiada.Clusterizator.Krab.Calculators;
 
-using System;
-
 /// <summary>
 /// Euclidean distance calculator.
 /// </summary>

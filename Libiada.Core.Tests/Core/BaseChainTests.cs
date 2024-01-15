@@ -1,11 +1,7 @@
 namespace Libiada.Core.Tests.Core;
 
-using System;
-
 using Libiada.Core.Core;
 using Libiada.Core.Core.SimpleTypes;
-
-using NUnit.Framework;
 
 /// <summary>
 /// The base chain test.

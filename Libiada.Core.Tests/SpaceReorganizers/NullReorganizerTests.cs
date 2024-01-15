@@ -3,8 +3,6 @@ namespace Libiada.Core.Tests.SpaceReorganizers;
 using Libiada.Core.Core;
 using Libiada.Core.SpaceReorganizers;
 
-using NUnit.Framework;
-
 /// <summary>
 /// Test space reorganizer NullReorganizer.
 /// </summary>

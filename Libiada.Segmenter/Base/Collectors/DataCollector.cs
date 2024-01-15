@@ -1,7 +1,5 @@
 ﻿namespace Libiada.Segmenter.Base.Collectors;
 
-using System.Collections.Generic;
-
 using Segmenter.Base.Iterators;
 
 /// <summary>

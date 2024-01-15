@@ -1,7 +1,5 @@
 ﻿namespace Libiada.Core.Core.ArrangementManagers;
 
-using System;
-
 /// <summary>
 /// Congeneric arrangement manager implementation for empty sequences.
 /// </summary>

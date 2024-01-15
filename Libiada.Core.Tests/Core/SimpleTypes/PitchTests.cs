@@ -2,8 +2,6 @@
 
 using Libiada.Core.Core.SimpleTypes;
 
-using NUnit.Framework;
-
 /// <summary>
 /// Pitch tests.
 /// </summary>

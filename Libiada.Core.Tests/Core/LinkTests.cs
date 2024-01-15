@@ -1,11 +1,7 @@
 ﻿namespace Libiada.Core.Tests.Core;
 
-using System.Linq;
-
 using Libiada.Core.Core;
 using Libiada.Core.Extensions;
-
-using NUnit.Framework;
 
 /// <summary>
 /// Link enum tests.

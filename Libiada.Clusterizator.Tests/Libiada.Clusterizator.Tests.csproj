@@ -21,4 +21,8 @@
     <ProjectReference Include="..\Libiada.Clusterizator\Libiada.Clusterizator.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Using Include="NUnit.Framework" />
+  </ItemGroup>
+
 </Project>

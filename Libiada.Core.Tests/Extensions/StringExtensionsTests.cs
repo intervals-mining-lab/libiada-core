@@ -2,8 +2,6 @@
 
 using Libiada.Core.Extensions;
 
-using NUnit.Framework;
-
 /// <summary>
 /// Tests for string extensions methods.
 /// </summary>

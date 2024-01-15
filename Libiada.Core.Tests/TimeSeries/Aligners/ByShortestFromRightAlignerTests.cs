@@ -2,8 +2,6 @@
 
 using Libiada.Core.TimeSeries.Aligners;
 
-using NUnit.Framework;
-
 /// <summary>
 /// The by shortest from right aligner tests.
 /// </summary>

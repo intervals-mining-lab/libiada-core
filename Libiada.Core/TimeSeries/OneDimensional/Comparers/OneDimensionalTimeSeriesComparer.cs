@@ -1,8 +1,5 @@
 ﻿namespace Libiada.Core.TimeSeries.OneDimensional.Comparers;
 
-using System.Collections.Generic;
-using System.Linq;
-
 using Libiada.Core.TimeSeries.Aggregators;
 using Libiada.Core.TimeSeries.Aligners;
 using Libiada.Core.TimeSeries.OneDimensional.DistanceCalculators;

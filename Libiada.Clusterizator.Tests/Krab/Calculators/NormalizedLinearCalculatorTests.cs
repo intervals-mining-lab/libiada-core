@@ -1,12 +1,7 @@
 namespace Libiada.Clusterizator.Tests.Krab.Calculators;
 
-using System;
-using System.Collections.Generic;
-
 using Clusterizator.Krab;
 using Clusterizator.Krab.Calculators;
-
-using NUnit.Framework;
 
 /// <summary>
 /// The normalized distance calculator test.

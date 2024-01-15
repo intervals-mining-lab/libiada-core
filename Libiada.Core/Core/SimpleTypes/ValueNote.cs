@@ -1,8 +1,5 @@
 ﻿namespace Libiada.Core.Core.SimpleTypes;
 
-using System;
-using System.Collections.Generic;
-
 /// <summary>
 /// Class presenting a note value.
 /// </summary>

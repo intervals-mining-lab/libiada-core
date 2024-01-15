@@ -1,11 +1,7 @@
 ﻿namespace Libiada.Core.Tests.Core.SimpleTypes;
 
-using System.Linq;
-
 using Libiada.Core.Core.SimpleTypes;
 using Libiada.Core.Extensions;
-
-using NUnit.Framework;
 
 /// <summary>
 /// Note symbol enum tests.

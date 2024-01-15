@@ -1,11 +1,7 @@
 ﻿namespace Libiada.Core.Tests.Core.Characteristics.Calculators.BinaryCalculators;
 
-using System.Collections.Generic;
-
 using Libiada.Core.Core;
 using Libiada.Core.Core.Characteristics.Calculators.BinaryCalculators;
-
-using NUnit.Framework;
 
 /// <summary>
 /// The abstract binary calculator test.

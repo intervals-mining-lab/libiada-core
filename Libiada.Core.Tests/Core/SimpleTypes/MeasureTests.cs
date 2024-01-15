@@ -1,10 +1,6 @@
 ﻿namespace Libiada.Core.Tests.Core.SimpleTypes;
 
-using System.Collections.Generic;
-
 using Libiada.Core.Core.SimpleTypes;
-
-using NUnit.Framework;
 
 /// <summary>
 /// The measure tests.

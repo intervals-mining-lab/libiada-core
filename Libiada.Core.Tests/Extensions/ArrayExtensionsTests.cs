@@ -1,11 +1,6 @@
 ﻿namespace Libiada.Core.Tests.Extensions;
 
-using System;
-using System.Linq;
-
 using Libiada.Core.Extensions;
-
-using NUnit.Framework;
 
 /// <summary>
 /// The array manipulator tests.

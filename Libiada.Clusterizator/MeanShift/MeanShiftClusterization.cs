@@ -1,5 +1,4 @@
-﻿
-namespace Libiada.Clusterizator.MeanShift;
+﻿namespace Libiada.Clusterizator.MeanShift;
 
 using Accord.MachineLearning;
 using Accord.Statistics.Distributions.DensityKernels;

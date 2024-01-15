@@ -1,8 +1,6 @@
 namespace Libiada.MarkovChains.MarkovChain.Matrices.Absolute;
 
-using System;
 using System.Collections;
-using System.Linq;
 
 using MarkovChains.MarkovChain.Builders;
 using MarkovChains.MarkovChain.Matrices.Base;

@@ -1,6 +1,5 @@
 ﻿namespace Libiada.Segmenter.Model.Threshold;
 
-using System;
 using System.ComponentModel;
 
 /// <summary>

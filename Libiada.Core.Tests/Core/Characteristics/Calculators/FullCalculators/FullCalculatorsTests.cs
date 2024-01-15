@@ -1,12 +1,8 @@
 ﻿namespace Libiada.Core.Tests.Core.Characteristics.Calculators.FullCalculators;
 
-using System.Collections.Generic;
-
 using Libiada.Core.Core;
 using Libiada.Core.Core.ArrangementManagers;
 using Libiada.Core.Core.Characteristics.Calculators.FullCalculators;
-
-using NUnit.Framework;
 
 /// <summary>
 /// The abstract calculator test.

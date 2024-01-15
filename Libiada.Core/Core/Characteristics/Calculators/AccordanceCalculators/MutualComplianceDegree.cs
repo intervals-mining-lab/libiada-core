@@ -1,7 +1,5 @@
 ﻿namespace Libiada.Core.Core.Characteristics.Calculators.AccordanceCalculators;
 
-using System;
-
 /// <summary>
 /// The mutual compliance degree.
 /// </summary>

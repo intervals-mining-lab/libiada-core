@@ -2,8 +2,6 @@
 
 using Libiada.Core.Extensions;
 
-using NUnit.Framework;
-
 /// <summary>
 /// The enum extensions tests.
 /// </summary>

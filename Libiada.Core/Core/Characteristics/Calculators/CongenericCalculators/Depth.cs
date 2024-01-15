@@ -1,8 +1,5 @@
 namespace Libiada.Core.Core.Characteristics.Calculators.CongenericCalculators;
 
-using System;
-using System.Linq;
-
 /// <summary>
 /// Characteristic of chain depth.
 /// </summary>

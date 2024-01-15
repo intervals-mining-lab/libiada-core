@@ -1,7 +1,5 @@
 ﻿namespace Libiada.Core.TimeSeries.OneDimensional.DistanceCalculators;
 
-using System;
-
 /// <summary>
 /// The euclidean distance between one dimensional points calculator.
 /// </summary>

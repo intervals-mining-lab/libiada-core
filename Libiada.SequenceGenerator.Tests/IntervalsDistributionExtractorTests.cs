@@ -1,10 +1,6 @@
 ﻿namespace Libiada.SequenceGenerator.Tests;
 
 using Libiada.Core.Core;
-using NUnit.Framework;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 [TestFixture]
 public class IntervalsDistributionExtractorTests

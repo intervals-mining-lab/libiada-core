@@ -1,7 +1,5 @@
 ﻿namespace Libiada.Core.Core.SimpleTypes;
 
-using System;
-
 using Libiada.Core.Music;
 
 /// <summary>

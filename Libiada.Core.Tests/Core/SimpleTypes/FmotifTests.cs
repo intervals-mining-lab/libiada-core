@@ -1,12 +1,7 @@
 ﻿namespace Libiada.Core.Tests.Core.SimpleTypes;
 
-using System;
-using System.Collections.Generic;
-
 using Libiada.Core.Core.SimpleTypes;
 using Libiada.Core.Music;
-
-using NUnit.Framework;
 
 /// <summary>
 /// The fmotif tests.

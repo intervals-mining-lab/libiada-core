@@ -1,8 +1,5 @@
 ﻿namespace Libiada.Core.Extensions;
 
-using System;
-using System.Linq;
-
 /// <summary>
 /// Class containing extension methods for string class.
 /// </summary>

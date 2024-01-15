@@ -1,10 +1,6 @@
 namespace Libiada.Core.Tests.Core.SimpleTypes;
 
-using System;
-
 using Libiada.Core.Core.SimpleTypes;
-
-using NUnit.Framework;
 
 /// <summary>
 /// The value string test.

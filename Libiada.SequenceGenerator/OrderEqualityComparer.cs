@@ -1,7 +1,5 @@
 ﻿namespace Libiada.SequenceGenerator;
 
-using System.Collections.Generic;
-
 /// <summary>
 /// The order equality comparer.
 /// </summary>

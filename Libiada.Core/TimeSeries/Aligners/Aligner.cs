@@ -1,6 +1,5 @@
 ﻿namespace Libiada.Core.TimeSeries.Aligners;
 
-using System;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 

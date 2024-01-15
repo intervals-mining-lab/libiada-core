@@ -3,8 +3,6 @@
 using Libiada.Core.Core.SimpleTypes;
 using Libiada.Core.Music;
 
-using NUnit.Framework;
-
 /// <summary>
 /// The midi number manager tests.
 /// </summary>

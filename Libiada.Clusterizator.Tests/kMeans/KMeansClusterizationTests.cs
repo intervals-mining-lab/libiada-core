@@ -1,9 +1,6 @@
 ﻿namespace Libiada.Clusterizator.Tests.kMeans;
 
-
 using Clusterizator.kMeans;
-
-using NUnit.Framework;
 
 /// <summary>
 /// The k-means cluster tests.

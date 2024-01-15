@@ -1,7 +1,5 @@
 ﻿namespace Libiada.Segmenter.Base.Sequences;
 
-using System;
-using System.Collections.Generic;
 using System.Text;
 
 using Libiada.Core.Core;

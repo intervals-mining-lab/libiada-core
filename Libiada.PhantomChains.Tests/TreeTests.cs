@@ -1,13 +1,9 @@
 namespace Libiada.PhantomChains.Tests;
 
-using System.Collections.Generic;
-
 using Libiada.Core.Core;
 using Libiada.Core.Core.SimpleTypes;
 
 using MarkovChains.MarkovChain.Generators;
-
-using NUnit.Framework;
 
 /// <summary>
 /// The tree tests.

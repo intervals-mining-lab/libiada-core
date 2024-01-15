@@ -1,7 +1,5 @@
 ﻿namespace Libiada.Segmenter.Interfaces;
 
-using System.Collections.Generic;
-
 /// <summary>
 /// The Iterator interface.
 /// </summary>
