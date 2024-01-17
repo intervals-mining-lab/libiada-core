@@ -18,7 +18,7 @@ public class BaseChainTests
         var chain = new BaseChain(100);
         Assert.AreEqual(100, chain.Length);
         var expectedOrder = new int[100];
-        Assert.AreEqual(expectedOrder, chain.Building);
+        Assert.AreEqual(expectedOrder, chain.Order);
         var expectedAlphabet = new Alphabet();
         Assert.AreEqual(expectedAlphabet, chain.Alphabet);
     }
@@ -41,42 +41,42 @@ public class BaseChainTests
         var chain = new BaseChain("A");
         Assert.AreEqual(1, chain.Length);
         var expectedOrder = new[] { 1 };
-        Assert.AreEqual(expectedOrder, chain.Building);
+        Assert.AreEqual(expectedOrder, chain.Order);
         var expectedAlphabet = new Alphabet() { (ValueString)"A"};
         Assert.AreEqual(expectedAlphabet, chain.Alphabet);
 
         chain = new BaseChain("ABC");
         Assert.AreEqual(3, chain.Length);
         expectedOrder = new[] { 1, 2, 3 };
-        Assert.AreEqual(expectedOrder, chain.Building);
+        Assert.AreEqual(expectedOrder, chain.Order);
         expectedAlphabet = new Alphabet() { (ValueString)"A", (ValueString)"B", (ValueString)"C" };
         Assert.AreEqual(expectedAlphabet, chain.Alphabet);
 
         chain = new BaseChain("AAABBBCCC");
         Assert.AreEqual(9, chain.Length);
         expectedOrder = new[] { 1, 1, 1, 2, 2, 2, 3, 3, 3 };
-        Assert.AreEqual(expectedOrder, chain.Building);
+        Assert.AreEqual(expectedOrder, chain.Order);
         expectedAlphabet = new Alphabet() { (ValueString)"A", (ValueString)"B", (ValueString)"C" };
         Assert.AreEqual(expectedAlphabet, chain.Alphabet);
 
         chain = new BaseChain("AAABBBCCC");
         Assert.AreEqual(9, chain.Length);
         expectedOrder = new[] { 1, 1, 1, 2, 2, 2, 3, 3, 3 };
-        Assert.AreEqual(expectedOrder, chain.Building);
+        Assert.AreEqual(expectedOrder, chain.Order);
         expectedAlphabet = new Alphabet() { (ValueString)"A", (ValueString)"B", (ValueString)"C" };
         Assert.AreEqual(expectedAlphabet, chain.Alphabet);
 
         chain = new BaseChain("BBBCCCAAA");
         Assert.AreEqual(9, chain.Length);
         expectedOrder = new[] { 1, 1, 1, 2, 2, 2, 3, 3, 3 };
-        Assert.AreEqual(expectedOrder, chain.Building);
+        Assert.AreEqual(expectedOrder, chain.Order);
         expectedAlphabet = new Alphabet() { (ValueString)"B", (ValueString)"C", (ValueString)"A" };
         Assert.AreEqual(expectedAlphabet, chain.Alphabet);
 
         chain = new BaseChain("BBB---");
         Assert.AreEqual(6, chain.Length);
         expectedOrder = new[] { 1, 1, 1, 2, 2, 2 };
-        Assert.AreEqual(expectedOrder, chain.Building);
+        Assert.AreEqual(expectedOrder, chain.Order);
         expectedAlphabet = new Alphabet() { (ValueString)"B", (ValueString)"-" };
         Assert.AreEqual(expectedAlphabet, chain.Alphabet);
     }

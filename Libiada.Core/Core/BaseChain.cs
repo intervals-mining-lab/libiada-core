@@ -5,7 +5,7 @@ using Libiada.Core.Extensions;
 
 /// <summary>
 /// Basic sequence class.
-/// Stores alphabet and building.
+/// Stores alphabet and order.
 /// </summary>
 public class BaseChain : AbstractChain
 {
@@ -15,9 +15,9 @@ public class BaseChain : AbstractChain
     public readonly long Id;
 
     /// <summary>
-    /// The building of chain.
+    /// The order of the sequence.
     /// </summary>
-    protected int[] building;
+    protected int[] order;
 
     /// <summary>
     /// The alphabet of chain.
@@ -47,7 +47,7 @@ public class BaseChain : AbstractChain
     /// </param>
     public BaseChain(IReadOnlyList<IBaseObject> elements) : this(elements.Count)
     {
-        FillAlphabetAndBuilding(elements);
+        FillAlphabetAndOrder(elements);
     }
 
     /// <summary>
@@ -63,23 +63,23 @@ public class BaseChain : AbstractChain
 
     /// <summary>
     /// Initializes a new instance of the <see cref="BaseChain"/> class
-    /// with provided building and alphabet.
+    /// with provided order and alphabet.
     /// Only simple validation is made.
     /// </summary>
-    /// <param name="building">
-    /// The building of chain.
+    /// <param name="order">
+    /// The order of chain.
     /// </param>
     /// <param name="alphabet">
     /// The alphabet of chain.
     /// </param>
-    public BaseChain(int[] building, Alphabet alphabet) : this(building.Length)
+    public BaseChain(int[] order, Alphabet alphabet) : this(order.Length)
     {
-        if (building.Max() + 1 != alphabet.Cardinality)
+        if (order.Max() + 1 != alphabet.Cardinality)
         {
-            throw new ArgumentException("Building max value does not corresponds with alphabet length.");
+            throw new ArgumentException("Order max value does not corresponds with alphabet length.");
         }
 
-        this.building = (int[])building.Clone();
+        this.order = (int[])order.Clone();
         this.alphabet = (Alphabet)alphabet.Clone();
     }
 
@@ -88,26 +88,26 @@ public class BaseChain : AbstractChain
     /// with provided order and generates alphabet as numeric sequence.
     /// Only simple validation is made.
     /// </summary>
-    /// <param name="building">
-    /// The building of chain.
+    /// <param name="order">
+    /// The order of chain.
     /// </param>
-    public BaseChain(int[] building) : this(building.Length)
+    public BaseChain(int[] order) : this(order.Length)
     {
-        var alphabetCardinality = building.Max();
+        var alphabetCardinality = order.Max();
         for (int i = 1; i <= alphabetCardinality; i++)
         {
             alphabet.Add((ValueInt)i);
         }
-        this.building = (int[])building.Clone();
+        this.order = (int[])order.Clone();
     }
 
     /// <summary>
     /// Initializes a new instance of the <see cref="BaseChain"/> class
-    /// with provided building and alphabet.
+    /// with provided order and alphabet.
     /// Only simple validation is made.
     /// </summary>
-    /// <param name="building">
-    /// The building of chain.
+    /// <param name="order">
+    /// The order of chain.
     /// </param>
     /// <param name="alphabet">
     /// The alphabet of chain.
@@ -115,16 +115,16 @@ public class BaseChain : AbstractChain
     /// <param name="id">
     /// Id of sequence
     /// </param>
-    public BaseChain(int[] building, Alphabet alphabet, long id) : this(building, alphabet)
+    public BaseChain(int[] order, Alphabet alphabet, long id) : this(order, alphabet)
     {
         Id = id;
     }
 
     /// <summary>
-    /// Gets building of chain.
-    /// Returns clone of building.
+    /// Gets order of the chain.
+    /// Returns clone of order.
     /// </summary>
-    public int[] Building => (int[])building.Clone();
+    public int[] Order => (int[])order.Clone();
 
     /// <summary>
     /// Gets alphabet of chain.
@@ -153,7 +153,7 @@ public class BaseChain : AbstractChain
     /// <returns>
     /// Element from given position.
     /// </returns>
-    public override IBaseObject Get(int index) => alphabet[building[index]];
+    public override IBaseObject Get(int index) => alphabet[order[index]];
 
     /// <inheritdoc />
     /// <summary>
@@ -162,7 +162,7 @@ public class BaseChain : AbstractChain
     /// <returns>
     /// The <see cref="int"/>.
     /// </returns>
-    public override int Length => building.Length;
+    public override int Length => order.Length;
 
     /// <summary>
     /// Sets or replaces element in specified position.
@@ -188,9 +188,9 @@ public class BaseChain : AbstractChain
         int max = 0;
         for (int i = 0; i < index; i++)
         {
-            if (max < building[i])
+            if (max < order[i])
             {
-                max = building[i];
+                max = order[i];
             }
         }
 
@@ -201,15 +201,15 @@ public class BaseChain : AbstractChain
                 alphabet.Add(item);
             }
 
-            building[index] = alphabet.IndexOf(item);
+            order[index] = alphabet.IndexOf(item);
             return;
         }
 
         if(!alphabet.Contains(item))
         {
-            if (building.Count(el => el == building[index]) == 1)
+            if (order.Count(el => el == order[index]) == 1)
             {
-                alphabet[building[index]] = item;
+                alphabet[order[index]] = item;
                 return;
             }
         }
@@ -218,7 +218,7 @@ public class BaseChain : AbstractChain
         chain[index] = item;
         alphabet = new Alphabet { NullValue.Instance() };
 
-        FillAlphabetAndBuilding(chain);
+        FillAlphabetAndOrder(chain);
     }
 
     /// <summary>
@@ -229,7 +229,7 @@ public class BaseChain : AbstractChain
     /// </param>
     public override void RemoveAt(int index)
     {
-        building[index] = 0;
+        order[index] = 0;
 
         // TODO: remove element from alphabet if last entry is removed.
     }
@@ -242,13 +242,13 @@ public class BaseChain : AbstractChain
     /// </param>
     public override void DeleteAt(int index)
     {
-        building = building.DeleteAt(index);
+        order = order.DeleteAt(index);
 
         // TODO: remove element from alphabet if last entry is removed.
     }
 
     /// <summary>
-    /// Deletes chain (building and alphabet) and creates new empty chain with given length.
+    /// Deletes chain (order and alphabet) and creates new empty chain with given length.
     /// </summary>
     /// <param name="length">
     /// New chain length.
@@ -263,7 +263,7 @@ public class BaseChain : AbstractChain
             throw new ArgumentException("Chain length shouldn't be less than 0.");
         }
 
-        building = new int[length];
+        order = new int[length];
         alphabet = new Alphabet { NullValue.Instance() };
     }
 
@@ -275,7 +275,7 @@ public class BaseChain : AbstractChain
     /// </returns>
     public override IBaseObject Clone()
     {
-        var clone = new BaseChain(building.Length);
+        var clone = new BaseChain(order.Length);
         FillClone(clone);
         return clone;
     }
@@ -298,12 +298,12 @@ public class BaseChain : AbstractChain
 
         return obj is BaseChain other
             && alphabet.Equals(other.alphabet)
-            && building.SequenceEqual(other.building);
+            && order.SequenceEqual(other.order);
     }
 
     /// <summary>
     /// Generates hash code using
-    /// <see cref="alphabet"/> and <see cref="building"/>.
+    /// <see cref="alphabet"/> and <see cref="order"/>.
     /// </summary>
     /// <returns>
     /// The <see cref="int"/>.
@@ -312,9 +312,9 @@ public class BaseChain : AbstractChain
     {
         unchecked
         {
-            //TODO: try to make alphabet and/or building readonly.
+            //TODO: try to make alphabet and/or order readonly.
             int hashCode = -1845274089 ^ alphabet.GetHashCode();
-            foreach (int element in building)
+            foreach (int element in order)
             {
                 hashCode = (hashCode * -1521134295) + element.GetHashCode();
             }
@@ -324,7 +324,7 @@ public class BaseChain : AbstractChain
     }
 
     /// <summary>
-    /// Fills the clone of chain with clones of alphabet and building.
+    /// Fills the clone of chain with clones of alphabet and order.
     /// </summary>
     /// <param name="clone">
     /// The clone.
@@ -333,14 +333,14 @@ public class BaseChain : AbstractChain
     {
         if (clone != null)
         {
-            clone.building = (int[])building.Clone();
+            clone.order = (int[])order.Clone();
             clone.alphabet = (Alphabet)alphabet.Clone();
         }
     }
 
-    private void FillAlphabetAndBuilding(IReadOnlyList<IBaseObject> elements)
+    private void FillAlphabetAndOrder(IReadOnlyList<IBaseObject> elements)
     {
-        for (int i = 0; i < building.Length; i++)
+        for (int i = 0; i < order.Length; i++)
         {
             int elementIndex = alphabet.IndexOf(elements[i]);
             if (elementIndex == -1)
@@ -349,7 +349,7 @@ public class BaseChain : AbstractChain
                 elementIndex = alphabet.Cardinality - 1;
             }
 
-            building[i] = elementIndex;
+            order[i] = elementIndex;
         }
     }
 }

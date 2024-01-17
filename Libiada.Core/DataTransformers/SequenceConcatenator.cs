@@ -88,7 +88,7 @@ public static class SequenceConcatenator
         {
             var coder = new Dictionary<int, int>();
             var chain = sourceSequences[i];
-            var building = chain.Building;
+            var order = chain.Order;
             var alphabet = chain.Alphabet;
             for (int m = 0; m < alphabet.Cardinality; m++)
             {
@@ -101,7 +101,7 @@ public static class SequenceConcatenator
 
             for (int j = 0; j < chain.Length; j++)
             {
-                resultOrder[resultIndex] = coder[building[j]];
+                resultOrder[resultIndex] = coder[order[j]];
                 resultIndex++;
             }
         }

@@ -70,7 +70,7 @@ public abstract class AbstractChain : IBaseObject
     public abstract void DeleteAt(int index);
 
     /// <summary>
-    /// Deletes chain (building and alphabet) and creates new empty chain with given length.
+    /// Deletes chain (order and alphabet) and creates new empty chain with given length.
     /// </summary>
     /// <param name="length">
     /// New chain length.

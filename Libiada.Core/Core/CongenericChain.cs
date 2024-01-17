@@ -135,9 +135,9 @@ public class CongenericChain : AbstractChain
     public IBaseObject Element => element.Clone();
 
     /// <summary>
-    /// Gets the building.
+    /// Gets the order.
     /// </summary>
-    public int[] Building
+    public int[] Order
     {
         get
         {
@@ -163,7 +163,7 @@ public class CongenericChain : AbstractChain
     }
 
     /// <summary>
-    /// Deletes chain (building and alphabet) and creates new empty chain with given length.
+    /// Deletes chain (order and alphabet) and creates new empty chain with given length.
     /// Saves old element (alphabet) of chain.
     /// </summary>
     /// <param name="newLength">

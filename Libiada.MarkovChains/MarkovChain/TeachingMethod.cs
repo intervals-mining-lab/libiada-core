@@ -16,7 +16,7 @@ public enum TeachingMethod
     Cycle,
 
     /// <summary>
-    /// Loopback (usinginformation about order of the chain).
+    /// Loopback (using information about order of the chain).
     /// </summary>
-    CycleBuilding
+    Cycleorder
 }

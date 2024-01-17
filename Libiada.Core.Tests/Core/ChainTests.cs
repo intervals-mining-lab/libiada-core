@@ -43,8 +43,8 @@ public class ChainTests
         var alphabet = new Alphabet() {new ValueInt(1), new ValueInt(2) , new ValueInt(3) , new ValueInt(4), new ValueInt(5) };
         Assert.AreEqual(alphabet,actual.Alphabet);
 
-        var building = new int[] { 1, 2, 3, 2, 2, 4, 5, 1 };
-        Assert.AreEqual(building, actual.Building);
+        var order = new int[] { 1, 2, 3, 2, 2, 4, 5, 1 };
+        Assert.AreEqual(order, actual.Order);
     }
 
 

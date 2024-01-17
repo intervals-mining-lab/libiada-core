@@ -50,27 +50,27 @@ public class Chain : BaseChain, IBaseObject
 
     /// <summary>
     /// Initializes a new instance of the <see cref="Chain"/> class
-    /// with provided building and alphabet.
+    /// with provided order and alphabet.
     /// Only simple validation is made.
     /// </summary>
-    /// <param name="building">
-    /// The building of chain.
+    /// <param name="order">
+    /// The order of chain.
     /// </param>
     /// <param name="alphabet">
     /// The alphabet of chain.
     /// </param>
-    public Chain(int[] building, Alphabet alphabet) : base(building, alphabet)
+    public Chain(int[] order, Alphabet alphabet) : base(order, alphabet)
     {
         FillCongenericChains();
     }
 
     /// <summary>
     /// Initializes a new instance of the <see cref="Chain"/> class
-    /// with provided building and alphabet.
+    /// with provided order and alphabet.
     /// Only simple validation is made.
     /// </summary>
-    /// <param name="building">
-    /// The building of chain.
+    /// <param name="order">
+    /// The order of chain.
     /// </param>
     /// <param name="alphabet">
     /// The alphabet of chain.
@@ -78,7 +78,7 @@ public class Chain : BaseChain, IBaseObject
     /// <param name="id">
     /// Id of sequence.
     /// </param>
-    public Chain(int[] building, Alphabet alphabet, long id) : base(building, alphabet, id)
+    public Chain(int[] order, Alphabet alphabet, long id) : base(order, alphabet, id)
     {
         FillCongenericChains();
     }
@@ -88,10 +88,10 @@ public class Chain : BaseChain, IBaseObject
     /// with provided order and numeric sequence.
     /// Only simple validation is made.
     /// </summary>
-    /// <param name="building">
-    /// The building of chain.
+    /// <param name="order">
+    /// The order of chain.
     /// </param>
-    public Chain(int[] building) : base(building)
+    public Chain(int[] order) : base(order)
     {
         FillCongenericChains();
     }
@@ -116,7 +116,7 @@ public class Chain : BaseChain, IBaseObject
     public Chain(short[] source)
     {
         alphabet = new Alphabet() { NullValue.Instance() };
-        building = new int[source.Length];
+        order = new int[source.Length];
         for (int i = 0; i < source.Length; i++)
         {
             if (!alphabet.Contains(new ValueInt(source[i])))
@@ -124,14 +124,14 @@ public class Chain : BaseChain, IBaseObject
                 alphabet.Add(new ValueInt(source[i]));
             }
 
-            building[i] = alphabet.IndexOf(new ValueInt(source[i]));
+            order[i] = alphabet.IndexOf(new ValueInt(source[i]));
         }
 
         FillCongenericChains();
     }
 
     /// <summary>
-    /// Deletes chain (building and alphabet) and creates new empty chain with given length.
+    /// Deletes chain (order and alphabet) and creates new empty chain with given length.
     /// </summary>
     /// <param name="length">
     /// New chain length.
@@ -151,7 +151,7 @@ public class Chain : BaseChain, IBaseObject
     /// </returns>
     public new IBaseObject Clone()
     {
-        var clone = new Chain(building.Length);
+        var clone = new Chain(order.Length);
         FillClone(clone);
         return clone;
     }
@@ -396,18 +396,18 @@ public class Chain : BaseChain, IBaseObject
             occurrences[i] = new List<int>();
         }
 
-        for (int j = 0; j < building.Length; j++)
+        for (int j = 0; j < order.Length; j++)
         {
-            if (building[j] != 0)
+            if (order[j] != 0)
             {
-                occurrences[building[j] - 1].Add(j);
+                occurrences[order[j] - 1].Add(j);
             }
         }
 
         congenericChains = new CongenericChain[alphabet.Cardinality - 1];
         for (int k = 0; k < alphabet.Cardinality - 1; k++)
         {
-            congenericChains[k] = new CongenericChain(occurrences[k], alphabet[k + 1], building.Length);
+            congenericChains[k] = new CongenericChain(occurrences[k], alphabet[k + 1], order.Length);
         }
     }
 }
