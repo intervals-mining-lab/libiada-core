@@ -1,9 +1,9 @@
-﻿namespace Libiada.Core.Core.Characteristics.Calculators.FullCalculators;
+﻿namespace Libiada.Core.Core.Characteristics.Calculators.CongenericCalculators;
 
 /// <summary>
-/// Calculator thst also stores the link.
+/// Calculator that also stores the link.
 /// </summary>
-public class LinkedFullCalculator
+public class LinkedCongenericCalculator
 {
     /// <summary>
     /// The link to use for calculation.
@@ -13,7 +13,7 @@ public class LinkedFullCalculator
     /// <summary>
     /// Actual characteristic calculator.
     /// </summary>
-    private readonly IFullCalculator calculator;
+    private readonly ICongenericCalculator calculator;
 
     /// <summary>
     /// Initializes a new instance of the <see cref="LinkedFullCalculator"/> class.
@@ -24,22 +24,22 @@ public class LinkedFullCalculator
     /// <param name="link">
     /// The link to use for calculation.
     /// </param>
-    public LinkedFullCalculator(FullCharacteristic type, Link link)
+    public LinkedCongenericCalculator(CongenericCharacteristic type, Link link)
     {
         this.link = link;
-        calculator = FullCalculatorsFactory.CreateCalculator(type);
+        calculator = CongenericCalculatorsFactory.CreateCalculator(type);
     }
 
     /// <summary>
     /// Calculates characteristic value with given calculator and link.
     /// </summary>
     /// <param name="sequence">
-    /// The sequence.
+    /// The congeneric sequence.
     /// </param>
     /// <returns>
     /// The <see cref="double"/>.
     /// </returns>
-    public double Calculate(Chain sequence)
+    public double Calculate(CongenericChain sequence)
     {
         return calculator.Calculate(sequence, link);
     }
