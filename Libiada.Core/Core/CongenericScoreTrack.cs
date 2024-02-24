@@ -3,8 +3,7 @@
 using Libiada.Core.Core.SimpleTypes;
 
 /// <summary>
-/// The congeneric score track.
-/// монофонический (моно) трек
+/// Represents monophonic (congeneric) score track.
 /// </summary>
 public class CongenericScoreTrack : IBaseObject
 {
@@ -19,7 +18,7 @@ public class CongenericScoreTrack : IBaseObject
         MeasureList = new List<Measure>();
         foreach (Measure measure in measureList)
         {
-            // создаем список тактов, посредством клонирования каждого такта.
+            // creating list of measures by cloning each of given measures
             MeasureList.Add((Measure)measure.Clone());
         }
     }
@@ -222,7 +221,7 @@ public class CongenericScoreTrack : IBaseObject
     /// <returns>
     /// The <see cref="bool"/>.
     /// </returns>
-    public override bool Equals(object obj)
+    public override bool Equals(object? obj)
     {
         if (ReferenceEquals(this, obj))
         {

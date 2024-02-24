@@ -54,7 +54,7 @@ public class ValueInt : IBaseObject
     /// Determines whether the specified <see cref="T:System.Object"/>
     /// is equal to the current <see cref="T:System.Object"/>.
     /// </summary>
-    /// <param name="other">
+    /// <param name="obj">
     /// The <see cref="T:System.Object"/> to compare
     /// with the current <see cref="T:System.Object"/>.
     /// </param>
@@ -66,14 +66,14 @@ public class ValueInt : IBaseObject
     /// is equal to the current <see cref="T:System.Object"/>;
     /// otherwise, false.
     /// </returns>
-    public override bool Equals(object other)
+    public override bool Equals(object? obj)
     {
-        if (ReferenceEquals(this, other))
+        if (ReferenceEquals(this, obj))
         {
             return true;
         }
 
-        return other is ValueInt otherValueInt && Equals(otherValueInt);
+        return obj is ValueInt otherValueInt && Equals(otherValueInt);
     }
 
     /// <summary>

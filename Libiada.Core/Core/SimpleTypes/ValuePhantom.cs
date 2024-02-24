@@ -8,20 +8,20 @@ public class ValuePhantom : Alphabet, IBaseObject
     /// <summary>
     /// The equals.
     /// </summary>
-    /// <param name="other">
+    /// <param name="obj">
     /// The other element.
     /// </param>
     /// <returns>
     /// The <see cref="bool"/>.
     /// </returns>
-    public override bool Equals(object other)
+    public override bool Equals(object? obj)
     {
-        if (ReferenceEquals(this, other))
+        if (ReferenceEquals(this, obj))
         {
             return true;
         }
 
-        return base.Equals(other as ValuePhantom) || EqualsAsElement(other as IBaseObject);
+        return base.Equals(obj as ValuePhantom) || EqualsAsElement(obj as IBaseObject);
     }
 
     /// <summary>
@@ -111,6 +111,7 @@ public class ValuePhantom : Alphabet, IBaseObject
     /// </returns>
     private bool EqualsAsElement(IBaseObject baseObject)
     {
+        // TODO: fix this
         for (int i = 0; i < Cardinality; i++)
         {
             if (IndexOf(baseObject) != -1)

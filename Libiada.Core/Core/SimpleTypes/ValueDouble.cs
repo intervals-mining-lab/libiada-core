@@ -68,17 +68,17 @@ public class ValueDouble : IBaseObject
     /// <returns>
     /// true if the specified <see cref="T:System.Object"/> is equal to the current <see cref="T:System.Object"/>; otherwise, false.
     /// </returns>
-    /// <param name="other">
+    /// <param name="obj">
     /// The <see cref="T:System.Object"/> to compare with the current <see cref="T:System.Object"/>.
     /// </param>
-    public override bool Equals(object other)
+    public override bool Equals(object? obj)
     {
-        if (ReferenceEquals(this, other))
+        if (ReferenceEquals(this, obj))
         {
             return true;
         }
 
-        return other is ValueDouble valueDouble && Equals(valueDouble);
+        return obj is ValueDouble valueDouble && Equals(valueDouble);
     }
 
     /// <summary>

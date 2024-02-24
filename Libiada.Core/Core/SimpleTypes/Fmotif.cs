@@ -263,12 +263,18 @@ public class Fmotif : IBaseObject
     /// <returns>
     /// The <see cref="bool"/>.
     /// </returns>
-    public override bool Equals(object obj)
+    public override bool Equals(object? obj)
     {
+        if (ReferenceEquals(this, obj))
+        {
+            return true;
+        }
+        
         if (!(obj is Fmotif))
         {
             return false;
         }
+
         // для сравнения паузы не нужны, поэтому сравниваем ф-мотивы без пауз (они игнорируются, но входят в состав ф-мотива)
         Fmotif self = PauseTreatmentProcedure(PauseTreatment.Ignore).TieGathered();
         Fmotif other = ((Fmotif)obj).PauseTreatmentProcedure(PauseTreatment.Ignore).TieGathered();

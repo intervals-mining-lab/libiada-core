@@ -212,13 +212,21 @@ public class Duration : IBaseObject
     /// If absolute value of durations difference is less than given precision 
     /// they are considered to be equeal.
     /// </summary>
-    /// <param name="other">
+    /// <param name="obj">
     /// Duration to compare to.
     /// </param>
     /// <returns>
     /// The <see cref="bool"/>.
     /// </returns>
-    public override bool Equals(object other) => other is Duration duration && Math.Abs(Value - duration.Value) < 0.000001;
+    public override bool Equals(object? obj)
+    {
+        if (ReferenceEquals(this, obj))
+        {
+            return true;
+        }
+
+        return obj is Duration duration && Math.Abs(Value - duration.Value) < 0.000001;
+    }
 
     /// <summary>
     /// Calculates hash code using

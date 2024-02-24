@@ -89,13 +89,21 @@ public class Pitch : IBaseObject
     /// <summary>
     /// Compares midiNumbers of pitches.
     /// </summary>
-    /// <param name="other">
+    /// <param name="obj">
     /// Pitch to compare to.
     /// </param>
     /// <returns>
     /// The <see cref="bool"/>.
     /// </returns>
-    public override bool Equals(object other) => other is Pitch pitch && MidiNumber == pitch.MidiNumber;
+    public override bool Equals(object? obj)
+    {
+        if (ReferenceEquals(this, obj))
+        {
+            return true;
+        }
+
+        return obj is Pitch pitch && MidiNumber == pitch.MidiNumber;
+    }
 
     /// <summary>
     /// Calculates hash code using <see cref="MidiNumber"/>.

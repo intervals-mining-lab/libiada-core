@@ -31,13 +31,21 @@ public class ValuePixel : IBaseObject
     /// <summary>
     /// Compares pixel to another object.
     /// </summary>
-    /// <param name="other">
+    /// <param name="obj">
     /// The other.
     /// </param>
     /// <returns>
     /// The <see cref="bool"/>.
     /// </returns>
-    public override bool Equals(object other) => other is ValuePixel pixel && value.Equals(pixel.value);
+    public override bool Equals(object? obj)
+    {
+        if (ReferenceEquals(this, obj))
+        {
+            return true;
+        }
+
+        return obj is ValuePixel pixel && value.Equals(pixel.value);
+    }
 
     /// <summary>
     /// Calculates hash code using <see cref="value"/>.

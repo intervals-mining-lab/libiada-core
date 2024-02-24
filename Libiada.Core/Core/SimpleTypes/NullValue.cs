@@ -57,13 +57,13 @@ public class NullValue : IBaseObject
     /// <summary>
     /// The equals.
     /// </summary>
-    /// <param name="other">
+    /// <param name="obj">
     /// The other element.
     /// </param>
     /// <returns>
     /// The <see cref="bool"/>.
     /// </returns>
-    public override bool Equals(object other) => ReferenceEquals(this, other);
+    public override bool Equals(object? obj) => ReferenceEquals(this, obj);
 
     /// <summary>
     /// Converts NullValue to "-" string.

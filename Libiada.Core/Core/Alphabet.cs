@@ -126,7 +126,7 @@ public class Alphabet : IBaseObject, IEnumerable<IBaseObject>
     /// <returns>
     /// true if alphabets are equal and false otherwise.
     /// </returns>
-    public override bool Equals(object obj)
+    public override bool Equals(object? obj)
     {
         if (ReferenceEquals(obj, this))
         {

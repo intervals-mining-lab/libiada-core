@@ -47,9 +47,17 @@ public class Size : IBaseObject
     /// <returns>
     /// The <see cref="bool"/>.
     /// </returns>
-    public override bool Equals(object obj) => obj is Size other
-                                                    && Beats == other.Beats
-                                                    && BeatBase == other.BeatBase;
+    public override bool Equals(object? obj)
+    {
+        if (ReferenceEquals(this, obj))
+        {
+            return true;
+        }
+
+        return obj is Size other
+            && Beats == other.Beats
+            && BeatBase == other.BeatBase;
+    }
 
     /// <summary>
     /// Calculates hash code using

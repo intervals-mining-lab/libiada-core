@@ -22,9 +22,14 @@ public class IntervalsDistribution
         }
     }
 
-    public override bool Equals(object obj)
+    public override bool Equals(object? obj)
     {
-        if(!(obj is IntervalsDistribution))
+        if (ReferenceEquals(this, obj))
+        {
+            return true;
+        }
+
+        if (!(obj is IntervalsDistribution))
         {
             return false;
         }

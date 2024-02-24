@@ -107,8 +107,13 @@ public class Measure : IBaseObject
     /// <returns>
     /// The <see cref="bool"/>.
     /// </returns>
-    public override bool Equals(object obj)
+    public override bool Equals(object? obj)
     {
+        if (ReferenceEquals(this, obj))
+        {
+            return true;
+        }
+
         if (obj is Measure other
          && NoteList.Count == other.NoteList.Count
          && Attributes.Equals(other.Attributes))

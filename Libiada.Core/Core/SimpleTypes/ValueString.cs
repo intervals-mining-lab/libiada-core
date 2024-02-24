@@ -80,20 +80,20 @@ public class ValueString : IBaseObject
     /// <summary>
     /// The equals.
     /// </summary>
-    /// <param name="other">
+    /// <param name="obj">
     /// The other element.
     /// </param>
     /// <returns>
     /// The <see cref="bool"/>.
     /// </returns>
-    public override bool Equals(object other)
+    public override bool Equals(object? obj)
     {
-        if (ReferenceEquals(this, other))
+        if (ReferenceEquals(this, obj))
         {
             return true;
         }
 
-        return Equals(other as ValueString);
+        return Equals(obj as ValueString);
     }
 
     /// <summary>
@@ -113,7 +113,7 @@ public class ValueString : IBaseObject
     /// <returns>
     /// The <see cref="bool"/>.
     /// </returns>
-    public bool Equals(ValueString other)
+    public bool Equals(ValueString? other)
     {
         if (other == null)
         {

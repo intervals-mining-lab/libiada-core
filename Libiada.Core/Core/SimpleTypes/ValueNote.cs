@@ -196,8 +196,13 @@ public class ValueNote : IBaseObject
     /// <returns>
     /// The <see cref="bool"/>.
     /// </returns>
-    public override bool Equals(object obj)
+    public override bool Equals(object? obj)
     {
+        if (ReferenceEquals(this, obj))
+        {
+            return true;
+        }
+
         if (!(obj is ValueNote otherNote))
         {
             return false;

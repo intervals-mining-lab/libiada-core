@@ -3,7 +3,7 @@
 using Libiada.Core.Core.SimpleTypes;
 
 /// <summary>
-/// полный музыкальный текст/трек
+/// Represents complete music track (text / sequence).
 /// </summary>
 public class ScoreTrack : IBaseObject
 {
@@ -55,7 +55,7 @@ public class ScoreTrack : IBaseObject
     /// <returns>
     /// The <see cref="bool"/>.
     /// </returns>
-    public override bool Equals(object obj)
+    public override bool Equals(object? obj)
     {
         if (ReferenceEquals(this, obj))
         {

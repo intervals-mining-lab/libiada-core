@@ -16,15 +16,8 @@ public class MeasureAttributes : IBaseObject
     /// </param>
     public MeasureAttributes(Size size, Key key)
     {
-        if (size != null)
-        {
             Size = (Size)size.Clone();
-        }
-
-        if (key != null)
-        {
             Key = (Key)key.Clone();
-        }
     }
 
     /// <summary>
@@ -54,7 +47,15 @@ public class MeasureAttributes : IBaseObject
     /// <returns>
     /// The <see cref="bool"/>.
     /// </returns>
-    public override bool Equals(object obj) => obj is MeasureAttributes other && Key.Equals(other.Key) && Size.Equals(other.Size);
+    public override bool Equals(object? obj)
+    {
+        if (ReferenceEquals(this, obj))
+        {
+            return true;
+        }
+
+        return obj is MeasureAttributes other && Key.Equals(other.Key) && Size.Equals(other.Size);
+    }
 
     /// <summary>
     /// Calculates hash code using
