@@ -11,18 +11,9 @@ using SimpleTypes;
 public class CongenericChain : AbstractChain
 {
     /// <summary>
-    /// The current arrangement type.
-    /// </summary>
-    private ArrangementType currentArrangementType;
-
-    /// <summary>
     /// Gets or sets the current arrangement type.
     /// </summary>
-    public ArrangementType CurrentArrangementType
-    {
-        get => currentArrangementType;
-        set => currentArrangementType = value;
-    }
+    public ArrangementType CurrentArrangementType { get; set; }
 
     /// <summary>
     /// The element.
@@ -32,7 +23,7 @@ public class CongenericChain : AbstractChain
     /// <summary>
     /// Positions of all occurrences of the element in congeneric sequence.
     /// </summary>
-    private List<int> positions = new List<int>();
+    private readonly List<int> positions = [];
 
     /// <summary>
     /// The chain length.
@@ -67,7 +58,6 @@ public class CongenericChain : AbstractChain
     {
         this.element = element;
         this.length = length;
-        positions = new List<int>();
     }
 
     /// <summary>
@@ -80,7 +70,6 @@ public class CongenericChain : AbstractChain
     {
         this.element = element;
         length = 0;
-        positions = new List<int>();
     }
 
     /// <summary>
@@ -195,17 +184,13 @@ public class CongenericChain : AbstractChain
     /// </returns>
     public int[] GetArrangement(Link link)
     {
-        switch (CurrentArrangementType)
+        return CurrentArrangementType switch
         {
-            case ArrangementType.Intervals:
-                return GetIntervals(link);
-            case ArrangementType.Series:
-                return GetSeries(link);
-            case ArrangementType.IntervalsAndSeries:
-                return GetSeriesAndIntervals(link);
-            default:
-                throw new InvalidEnumArgumentException(nameof(CurrentArrangementType), (int)CurrentArrangementType, typeof(ArrangementType));
-        }
+            ArrangementType.Intervals => GetIntervals(link),
+            ArrangementType.Series => GetSeries(link),
+            ArrangementType.IntervalsAndSeries => GetSeriesAndIntervals(link),
+            _ => throw new InvalidEnumArgumentException(nameof(CurrentArrangementType), (int)CurrentArrangementType, typeof(ArrangementType)),
+        };
     }
 
     /// <summary>
@@ -368,7 +353,6 @@ public class CongenericChain : AbstractChain
     /// Deletes given position.
     /// Clears element from position if any.
     /// Reduces chain length by 1.
-    /// The delete at.
     /// </summary>
     /// <param name="index">
     /// The index of position.
@@ -377,10 +361,7 @@ public class CongenericChain : AbstractChain
     {
         intervalsManager = null;
         length--;
-        if (positions.Contains(index))
-        {
-            positions.Remove(index);
-        }
+        positions.Remove(index);
 
         for (int i = 0; i < positions.Count; i++)
         {
@@ -457,7 +438,7 @@ public class CongenericChain : AbstractChain
     /// </returns>
     public override IBaseObject Clone() => new CongenericChain(positions, Element, length)
     {
-        currentArrangementType = currentArrangementType
+        CurrentArrangementType = CurrentArrangementType
     };
 
     /// <summary>
@@ -518,7 +499,7 @@ public class CongenericChain : AbstractChain
         if (intervalsManager == null)
         {
             intervalsManager = positions.Count == 0
-                                   ? (IArrangementManager)new NullArrangementManager()
+                                   ? new NullArrangementManager()
                                    : new IntervalsManager(this);
         }
     }
@@ -531,7 +512,7 @@ public class CongenericChain : AbstractChain
         if (seriesManager == null)
         {
             seriesManager = positions.Count == 0
-                                   ? (IArrangementManager)new NullArrangementManager()
+                                   ? new NullArrangementManager()
                                    : new SeriesManager(this);
         }
     }
@@ -544,7 +525,7 @@ public class CongenericChain : AbstractChain
         if (seriesIntervalsManager == null)
         {
             seriesIntervalsManager = positions.Count == 0
-                                   ? (IArrangementManager)new NullArrangementManager()
+                                   ? new NullArrangementManager()
                                    : new SeriesIntervalsManager(this);
         }
     }
