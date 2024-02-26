@@ -52,7 +52,7 @@ public class MusicXmlParserTests
             new ValueNote(new Pitch(3, NoteSymbol.A, 0), new Duration(1, 16, false), false, Tie.None),
             new ValueNote(new Pitch(4, NoteSymbol.D, 0), new Duration(1, 8, true), false, Tie.None),
             new ValueNote(new Pitch(4, NoteSymbol.C, 0), new Duration(1, 8, true), false, Tie.None),
-            new ValueNote((Pitch)null, new Duration(1, 8, false), false, Tie.None)
+            new ValueNote(new Duration(1, 8, false), false, Tie.None)
         };
         var notes4 = new List<ValueNote>
         {

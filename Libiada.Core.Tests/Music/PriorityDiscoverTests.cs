@@ -22,7 +22,7 @@ public class PriorityDiscoverTests
     /// <summary>
     /// The b note.
     /// </summary>
-    private readonly ValueNote bNote = new ValueNote((Pitch)null, new Duration(1, 4, false), false, 0);
+    private readonly ValueNote bNote = new ValueNote(new Duration(1, 4, false), false, 0);
 
     /// <summary>
     /// The с note.

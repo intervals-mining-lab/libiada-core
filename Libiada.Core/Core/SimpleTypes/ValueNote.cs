@@ -18,6 +18,26 @@ public class ValueNote : IBaseObject
     /// <summary>
     /// Initializes a new instance of the <see cref="ValueNote"/> class.
     /// </summary>
+    /// <param name="duration">
+    /// The duration.
+    /// </param>
+    /// <param name="triplet">
+    /// The triplet.
+    /// </param>
+    /// <param name="tie">
+    /// The tie.
+    /// </param>
+    /// <param name="priority">
+    /// The priority.
+    /// </param>
+    public ValueNote(Duration duration, bool triplet, Tie tie, int priority = -1) :
+        this(new List<Pitch>(), duration, triplet, tie, priority)
+    {
+    }
+
+    /// <summary>
+    /// Initializes a new instance of the <see cref="ValueNote"/> class.
+    /// </summary>
     /// <param name="pitch">
     /// The pitch.
     /// </param>
@@ -34,7 +54,7 @@ public class ValueNote : IBaseObject
     /// The priority.
     /// </param>
     public ValueNote(Pitch pitch, Duration duration, bool triplet, Tie tie, int priority = -1) :
-        this(pitch == null ? new List<Pitch>() : new List<Pitch>() { pitch }, duration, triplet, tie, priority)
+        this(new List<Pitch>() { pitch }, duration, triplet, tie, priority)
     {
     }
 
@@ -255,9 +275,11 @@ public class ValueNote : IBaseObject
     /// </returns>
     public override string ToString()
     {
-        var result = new List<string>(10);
-        result.Add(Duration.ToString());
-        result.Add("MidiNumbers:");
+        var result = new List<string>(4 + Pitches.Count)
+        {
+            Duration.ToString(),
+            "MidiNumbers:"
+        };
         for (int i = 0; i < Pitches.Count; i++)
         {
             result.Add(Pitches[i].ToString());

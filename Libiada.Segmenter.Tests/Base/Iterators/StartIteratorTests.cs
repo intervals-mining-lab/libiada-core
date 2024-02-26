@@ -38,7 +38,7 @@ public class StartIteratorTests
         while (iterator.HasNext())
         {
             iterator.Next();
-            countSteps = countSteps + 1;
+            countSteps++;
         }
 
         Assert.True(countSteps == iterator.MaxShifts);
@@ -48,7 +48,7 @@ public class StartIteratorTests
         while (iterator.HasNext())
         {
             iterator.Next();
-            countSteps = countSteps + 1;
+            countSteps++;
         }
 
         Assert.True(countSteps == iterator.MaxShifts);

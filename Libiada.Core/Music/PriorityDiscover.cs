@@ -327,7 +327,7 @@ public class PriorityDiscover
         //---------------------------------------------------------------------------------------------
         var newDuration = new Duration(1, measure.Attributes.Size.BeatBase, false);
 
-        priorityMask.NoteList.Add(new ValueNote((Pitch)null, newDuration, false, Tie.None, priority));
+        priorityMask.NoteList.Add(new ValueNote(newDuration, false, Tie.None, priority));
 
         // первая доля в такте всегда самая сильная и выделяется НАИВЫСШИМ приоритетом 0
         if (measure.Attributes.Size.Beats % 2 == 0)
@@ -354,7 +354,7 @@ public class PriorityDiscover
                 }
 
                 var duration = new Duration(1, measure.Attributes.Size.BeatBase, false);
-                priorityMask.NoteList.Add(new ValueNote((Pitch)null, duration, false, Tie.None, priority));
+                priorityMask.NoteList.Add(new ValueNote(duration, false, Tie.None, priority));
             }
         }
         else if (measure.Attributes.Size.Beats % 3 == 0)
@@ -381,7 +381,7 @@ public class PriorityDiscover
                 }
 
                 var duration = new Duration(1, measure.Attributes.Size.BeatBase, false);
-                priorityMask.NoteList.Add(new ValueNote((Pitch)null, duration, false, Tie.None, priority));
+                priorityMask.NoteList.Add(new ValueNote(duration, false, Tie.None, priority));
             }
         }
         else
@@ -409,7 +409,7 @@ public class PriorityDiscover
                 }
 
                 var duration = new Duration(1, measure.Attributes.Size.BeatBase, false);
-                priorityMask.NoteList.Add(new ValueNote((Pitch)null, duration, false, Tie.None, priority));
+                priorityMask.NoteList.Add(new ValueNote(duration, false, Tie.None, priority));
             }
         }
 
@@ -463,11 +463,11 @@ public class PriorityDiscover
             {
                 var duration = new Duration(1, priorityMask.NoteList[i].Duration.Denominator * 2, false);
 
-                temp.NoteList.Add(new ValueNote((Pitch)null, duration, false, Tie.None, priorityMask.NoteList[i].Priority));
+                temp.NoteList.Add(new ValueNote(duration, false, Tie.None, priorityMask.NoteList[i].Priority));
 
                 duration = new Duration(1, priorityMask.NoteList[i].Duration.Denominator * 2, false);
 
-                temp.NoteList.Add(new ValueNote((Pitch)null, duration, false, Tie.None, maxPriority + 1));
+                temp.NoteList.Add(new ValueNote(duration, false, Tie.None, maxPriority + 1));
             }
 
             // присваем объекту маске новый получившейся объект уровня ниже

@@ -336,7 +336,7 @@ public class FmotifDividerTests
         // создание и заполнения списка(ов) нот для такта(ов) монотрека
         var notes = new List<ValueNote>
         {
-            new ValueNote((Pitch)null, new Duration(1, 4, false), false, Tie.None, 0),
+            new ValueNote(new Duration(1, 4, false), false, Tie.None, 0),
             new ValueNote(new Pitch(3, NoteSymbol.A, 0), new Duration(1, 8, false), false, Tie.None, 1),
             new ValueNote(new Pitch(3, NoteSymbol.B, 0), new Duration(1, 8, false), false, Tie.None, 2)
         };
@@ -360,7 +360,7 @@ public class FmotifDividerTests
         // создание аналогов ф-мотивов, которые должны получиться, после разбиения
         // процедура определения одинаковых на данном этапе не производится
         var fmotif1 = new Fmotif(FmotifType.CompleteMinimalMeasure, PauseTreatment.Ignore, 0);
-        fmotif1.NoteList.Add(new ValueNote((Pitch)null, new Duration(1, 4, false), false, Tie.None));
+        fmotif1.NoteList.Add(new ValueNote(new Duration(1, 4, false), false, Tie.None));
         fmotif1.NoteList.Add(new ValueNote(new Pitch(3, NoteSymbol.A, 0), new Duration(1, 8, false), false, Tie.None));
         fmotif1.NoteList.Add(new ValueNote(new Pitch(3, NoteSymbol.B, 0), new Duration(1, 8, false), false, Tie.None));
 
@@ -382,7 +382,7 @@ public class FmotifDividerTests
         {
             new ValueNote(new Pitch(3, NoteSymbol.A, 0), new Duration(1, 8, false), false, Tie.None, 0),
             new ValueNote(new Pitch(3, NoteSymbol.B, 0), new Duration(1, 8, false), false, Tie.None, 2),
-            new ValueNote((Pitch)null, new Duration(1, 8, false), false, Tie.None, 1),
+            new ValueNote(new Duration(1, 8, false), false, Tie.None, 1),
             new ValueNote(new Pitch(3, NoteSymbol.B, 0), new Duration(1, 8, false), false, Tie.None, 2)
         };
 
@@ -406,7 +406,7 @@ public class FmotifDividerTests
         // процедура определения одинаковых на данном этапе не производится
         var fmotif1 = new Fmotif(FmotifType.CompleteMinimalMeasure, PauseTreatment.Ignore, 0);
         fmotif1.NoteList.Add(new ValueNote(new Pitch(3, NoteSymbol.A, 0), new Duration(1, 8, false), false, Tie.None));
-        fmotif1.NoteList.Add(new ValueNote((Pitch)null, new Duration(1, 8, false), false, Tie.None));
+        fmotif1.NoteList.Add(new ValueNote(new Duration(1, 8, false), false, Tie.None));
         fmotif1.NoteList.Add(new ValueNote(new Pitch(3, NoteSymbol.B, 0), new Duration(1, 8, false), false, Tie.None));
         fmotif1.NoteList.Add(new ValueNote(new Pitch(3, NoteSymbol.B, 0), new Duration(1, 8, false), false, Tie.None));
 
@@ -427,7 +427,7 @@ public class FmotifDividerTests
         var notes = new List<ValueNote>
         {
             new ValueNote(new Pitch(3, NoteSymbol.A, 0), new Duration(1, 8, false), false, Tie.None, 0),
-            new ValueNote((Pitch)null, new Duration(1, 8, false), false, Tie.None, 2),
+            new ValueNote(new Duration(1, 8, false), false, Tie.None, 2),
             new ValueNote(new Pitch(3, NoteSymbol.B, 0), new Duration(1, 8, false), false, Tie.None, 1),
             new ValueNote(new Pitch(3, NoteSymbol.B, 0), new Duration(1, 8, false), false, Tie.None, 2)
         };
@@ -452,7 +452,7 @@ public class FmotifDividerTests
         // процедура определения одинаковых на данном этапе не производится
         var fmotif1 = new Fmotif(FmotifType.CompleteMinimalMeasure, PauseTreatment.Ignore, 0);
         fmotif1.NoteList.Add(new ValueNote(new Pitch(3, NoteSymbol.A, 0), new Duration(1, 8, false), false, Tie.None));
-        fmotif1.NoteList.Add(new ValueNote((Pitch)null, new Duration(1, 8, false), false, Tie.None));
+        fmotif1.NoteList.Add(new ValueNote(new Duration(1, 8, false), false, Tie.None));
         var fmotif2 = new Fmotif(FmotifType.CompleteMinimalMeasure, PauseTreatment.Ignore, 1);
         fmotif2.NoteList.Add(new ValueNote(new Pitch(3, NoteSymbol.B, 0), new Duration(1, 8, false), false, Tie.None));
         fmotif2.NoteList.Add(new ValueNote(new Pitch(3, NoteSymbol.B, 0), new Duration(1, 8, false), false, Tie.None));

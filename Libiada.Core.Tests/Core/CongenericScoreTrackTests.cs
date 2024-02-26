@@ -40,10 +40,10 @@ public class CongenericScoreTrackTests
             new ValueNote(new Pitch(3, NoteSymbol.D, Accidental.Bekar), new Duration(1, 4, false), false, Tie.None, 2),
             new ValueNote(new Pitch(3, NoteSymbol.A, Accidental.DoubleSharp), new Duration(1, 16, false), false, Tie.None, 3),
             new ValueNote(new Pitch(3, NoteSymbol.C, Accidental.Sharp), new Duration(1, 4, false), false, Tie.None, 1),
-            new ValueNote((Pitch)null, new Duration(1, 4, false), false, Tie.None, 1),
-            new ValueNote((Pitch)null, new Duration(1, 4, false), false, Tie.None, 1),
-            new ValueNote((Pitch)null, new Duration(1, 16, false), false, Tie.None, 1),
-            new ValueNote((Pitch)null, new Duration(1, 16, false), false, Tie.None, 1)
+            new ValueNote( new Duration(1, 4, false), false, Tie.None, 1),
+            new ValueNote(new Duration(1, 4, false), false, Tie.None, 1),
+            new ValueNote(new Duration(1, 16, false), false, Tie.None, 1),
+            new ValueNote(new Duration(1, 16, false), false, Tie.None, 1)
         };
 
         var attr = new MeasureAttributes(new Size(4, 4), new Key(5));
@@ -118,10 +118,10 @@ public class CongenericScoreTrackTests
             new ValueNote(new Pitch(3, NoteSymbol.D, Accidental.Bekar), new Duration(1, 4, false), false, Tie.None, 2),
             new ValueNote(new Pitch(3, NoteSymbol.A, Accidental.DoubleSharp), new Duration(1, 16, false), false, Tie.None, 3),
             new ValueNote(new Pitch(3, NoteSymbol.C, Accidental.Sharp), new Duration(1, 4, false), false, Tie.None, 1),
-            new ValueNote((Pitch)null, new Duration(1, 4, false), false, Tie.None, 1),
-            new ValueNote((Pitch)null, new Duration(1, 4, false), false, Tie.None, 1),
-            new ValueNote((Pitch)null, new Duration(1, 16, false), false, Tie.None, 1),
-            new ValueNote((Pitch)null, new Duration(1, 16, false), false, Tie.None, 1)
+            new ValueNote(new Duration(1, 4, false), false, Tie.None, 1),
+            new ValueNote(new Duration(1, 4, false), false, Tie.None, 1),
+            new ValueNote(new Duration(1, 16, false), false, Tie.None, 1),
+            new ValueNote(new Duration(1, 16, false), false, Tie.None, 1)
         };
 
         var attr = new MeasureAttributes(new Size(4, 4), new Key(5));
@@ -207,14 +207,14 @@ public class CongenericScoreTrackTests
 
         var notes5 = new List<ValueNote>
         {
-            new ValueNote((Pitch)null, new Duration(1, 4, false), false, Tie.None, 1),
-            new ValueNote((Pitch)null, new Duration(1, 4, false), false, Tie.None, 1)
+            new ValueNote(new Duration(1, 4, false), false, Tie.None, 1),
+            new ValueNote(new Duration(1, 4, false), false, Tie.None, 1)
         };
 
         var notes6 = new List<ValueNote>
         {
-            new ValueNote((Pitch)null, new Duration(1, 16, false), false, Tie.None, 1),
-            new ValueNote((Pitch)null, new Duration(1, 16, false), false, Tie.None, 1)
+            new ValueNote(new Duration(1, 16, false), false, Tie.None, 1),
+            new ValueNote(new Duration(1, 16, false), false, Tie.None, 1)
         };
 
         var attr = new MeasureAttributes(new Size(4, 4), new Key(5));
