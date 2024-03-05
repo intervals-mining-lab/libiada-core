@@ -242,13 +242,15 @@ public class MusicXmlParser
         {
             if (measureChild.Name == "note")
             {
-                foreach (XmlNode chordChild in measureChild.Clone().ChildNodes)
+                var measureChildClone = measureChild.Clone();
+                foreach (XmlNode chordChild in measureChildClone.ChildNodes)
                 {
                     if (chordChild.Name == "chord")
                     {
                         // если найден "аккорд", то добавим текущую ноту к предыдущей уже мультиноте
-                        notes[notes.Count - 1].AddPitch(ParsePitch(measureChild.Clone()));
-                        if (notes[notes.Count - 1].Tie != ParseTie(measureChild.Clone()))
+                        var chordPitch = ParsePitch(measureChildClone);
+                        if(chordPitch != null) notes[notes.Count - 1].AddPitch(chordPitch);
+                        if (notes[notes.Count - 1].Tie != ParseTie(measureChildClone))
                         {
                             notes[notes.Count - 1].Tie = Tie.None;
                         }
@@ -256,7 +258,10 @@ public class MusicXmlParser
                         break;
                     }
 
-                    var note = new ValueNote(ParsePitch(measureChild.Clone()), ParseDuration(measureChild.Clone()), ParseTriplet(measureChild.Clone()), ParseTie(measureChild.Clone()));
+                    var pitch = ParsePitch(measureChildClone);
+                    ValueNote note = pitch == null
+                        ? new ValueNote(ParseDuration(measureChildClone), ParseTriplet(measureChildClone), ParseTie(measureChildClone))
+                        : new ValueNote(pitch, ParseDuration(measureChildClone), ParseTriplet(measureChildClone), ParseTie(measureChildClone));
                     note.Pitches.Sort();
                     notes.Add(note);
                     hasNotes = true;
@@ -287,7 +292,7 @@ public class MusicXmlParser
     /// <exception cref="Exception">
     /// Thrown if pitch doesn't have Octave or step.
     /// </exception>
-    private Pitch ParsePitch(XmlNode noteNode)
+    private Pitch? ParsePitch(XmlNode noteNode)
     {
         string childName = string.Empty;
         foreach (XmlNode noteChild in noteNode.ChildNodes)
