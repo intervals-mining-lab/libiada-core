@@ -1,0 +1,35 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Music\EtalonTestFiles\**" />
+    <EmbeddedResource Remove="Music\EtalonTestFiles\**" />
+    <None Remove="Music\EtalonTestFiles\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="Music\LibiadaMusicexample7Liga.xml" />
+    <None Remove="Music\polytest.xml" />
+    <None Remove="Music\repeatertest.xml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.10.0" />
+    <PackageReference Include="NUnit" Version="3.13.2" />
+    <PackageReference Include="NUnit3TestAdapter" Version="4.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Libiada.Core\Libiada.Core.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Using Include="NUnit.Framework" />
+  </ItemGroup>
+
+</Project>
