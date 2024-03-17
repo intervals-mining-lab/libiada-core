@@ -16,6 +16,6 @@ public class NullArrangementManager : IArrangementManager
     /// </returns>
     public int[] GetArrangement(Link link)
     {
-        return Array.Empty<int>();
+        return [];
     }
 }

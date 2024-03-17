@@ -89,7 +89,7 @@ public class ComplexChain : Chain
     /// </returns>
     public List<string> ToList()
     {
-        var result = new List<string>();
+        var result = new List<string>(Length);
         for (int i = 0; i < Length; i++)
         {
             result.Add(this[i].ToString());
@@ -104,11 +104,11 @@ public class ComplexChain : Chain
     /// <param name="index">
     /// The index.
     /// </param>
-    public void ClearAt(int index)
+    public override void DeleteAt(int index)
     {
         try
         {
-            DeleteAt(index);
+            base.DeleteAt(index);
         }
         catch (Exception)
         {

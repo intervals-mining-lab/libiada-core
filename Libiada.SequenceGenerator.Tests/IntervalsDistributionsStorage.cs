@@ -4,26 +4,26 @@ using Libiada.Core.Core;
 
 public static class IntervalsDistributionsStorage
 {
-    public static int[][] Orders => new int[][] {
-            new [] { 1,1,1,1 },
-            new [] { 1,1,1,2 },
-            new [] { 1,1,2,1 },
-            new [] { 1,1,2,2 },
-            new [] { 1,1,2,3 },
-            new [] { 1,2,1,1 },
-            new [] { 1,2,1,2 },
-            new [] { 1,2,1,3 },
-            new [] { 1,2,2,1 },
-            new [] { 1,2,2,2 },
-            new [] { 1,2,2,3 },
-            new [] { 1,2,3,1 },
-            new [] { 1,2,3,2 },
-            new [] { 1,2,3,3 },
-            new [] { 1,2,3,4 }
-        };
+    public static int[][] Orders => [
+            [1,1,1,1],
+            [1,1,1,2],
+            [1,1,2,1],
+            [1,1,2,2],
+            [1,1,2,3],
+            [1,2,1,1],
+            [1,2,1,2],
+            [1,2,1,3],
+            [1,2,2,1],
+            [1,2,2,2],
+            [1,2,2,3],
+            [1,2,3,1],
+            [1,2,3,2],
+            [1,2,3,3],
+            [1,2,3,4]
+        ];
 
     public static Dictionary<Link, IntervalsDistribution[]> IntervalsDistributions =>
-        new Dictionary<Link, IntervalsDistribution[]>()
+        new()
         {
             { Link.None, new IntervalsDistribution[]
                 {
@@ -72,7 +72,7 @@ public static class IntervalsDistributionsStorage
                     new IntervalsDistribution().SetDistribution(new Dictionary<int, int>(){
                         {1,1 }
                     }),
-                    new IntervalsDistribution().SetDistribution(new Dictionary<int, int>()),
+                    new IntervalsDistribution().SetDistribution([]),
                 }
             },
             { Link.Start, new IntervalsDistribution[]
@@ -511,7 +511,7 @@ public static class IntervalsDistributionsStorage
         };
 
     public static Dictionary<Link, Dictionary<IntervalsDistribution, List<int[]>>> OrdersIntervalsDistributionsAccordance =>
-        new Dictionary<Link, Dictionary<IntervalsDistribution, List<int[]>>>()
+        new()
         {
             { Link.None, new Dictionary<IntervalsDistribution, List<int[]>>()
                 {

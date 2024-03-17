@@ -38,6 +38,6 @@ public class EnumExtensionsTests
         TestEnum[] actual = EnumExtensions.ToArray<TestEnum>();
         var expected = new[] { TestEnum.First, TestEnum.Second, TestEnum.Third };
 
-        Assert.AreEqual(expected, actual);
+        Assert.That(actual, Is.EqualTo(expected));
     }
 }

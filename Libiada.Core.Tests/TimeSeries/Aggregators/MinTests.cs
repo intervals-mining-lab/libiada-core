@@ -11,10 +11,7 @@ public class MinTests
     /// <summary>
     /// The distances list.
     /// </summary>
-    private static readonly List<double> distances = new List<double>()
-    {
-        1, 2, 3, 4, 5
-    };
+    private static readonly List<double> distances = [1, 2, 3, 4, 5];
 
     /// <summary>
     /// The expected min value.
@@ -29,6 +26,6 @@ public class MinTests
     {
         var aggregator = new Min();
         double result = aggregator.Aggregate(distances);
-        Assert.AreEqual(min, result);
+        Assert.That(result, Is.EqualTo(min));
     }
 }

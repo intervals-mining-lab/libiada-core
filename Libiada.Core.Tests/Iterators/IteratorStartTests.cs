@@ -29,31 +29,31 @@ public class IteratorStartTests
     [Test]
     public void ReadWindowModeTest()
     {
-        int length = 3;
-        int step = 1;
-        var iterator = new IteratorStart(chainToIterate, length, step);
-        var message2 = new List<Chain>
-                           {
-                               new Chain("121"),
-                               new Chain("213"),
-                               new Chain("133"),
-                               new Chain("331"),
-                               new Chain("312"),
-                               new Chain("121"),
-                               new Chain("212"),
-                               new Chain("122"),
-                               new Chain("223"),
-                               new Chain("231")
-                           };
+        const int length = 3;
+        const int step = 1;
+        IteratorStart iterator = new(chainToIterate, length, step);
+        List<Chain> message2 =
+                           [
+                               new("121"),
+                               new("213"),
+                               new("133"),
+                               new("331"),
+                               new("312"),
+                               new("121"),
+                               new("212"),
+                               new("122"),
+                               new("223"),
+                               new("231")
+                           ];
 
         int i = 0;
         while (iterator.Next())
         {
-            var message1 = iterator.Current();
-            Assert.AreEqual(message1, message2[i++]);
+            AbstractChain message1 = iterator.Current();
+            Assert.That(message2[i++], Is.EqualTo(message1));
         }
 
-        Assert.AreEqual(--i, 9);
+        Assert.That(--i, Is.EqualTo(9));
     }
 
     /// <summary>
@@ -62,18 +62,18 @@ public class IteratorStartTests
     [Test]
     public void ReadBlockModeTest()
     {
-        int length = 3;
-        int step = 3;
-        var iterator = new IteratorStart(chainToIterate, length, step);
-        var message2 = new List<Chain> { new Chain("121"), new Chain("331"), new Chain("212"), new Chain("231") };
+        const int length = 3;
+        const int step = 3;
+        IteratorStart iterator = new(chainToIterate, length, step);
+        List<Chain> message2 = [new("121"), new("331"), new("212"), new("231")];
 
         int i = 0;
         while (iterator.Next())
         {
-            var message1 = iterator.Current();
-            Assert.AreEqual(message1, message2[i++]);
+            AbstractChain message1 = iterator.Current();
+            Assert.That(message2[i++], Is.EqualTo(message1));
         }
 
-        Assert.AreEqual(--i, 3);
+        Assert.That(--i, Is.EqualTo(3));
     }
 }

@@ -68,11 +68,11 @@ public class IntervalsManagerTests
         var intervalsManager = new IntervalsManager(congenericChains[index]);
         var intervals = allIntervals[index][link];
 
-        Assert.AreEqual(intervalsManager.GetArrangement(link).Length, intervals.Count);
+        Assert.That(intervals, Has.Count.EqualTo(intervalsManager.GetArrangement(link).Length));
 
         for (int i = 0; i < intervals.Count; i++)
         {
-            Assert.AreEqual(intervals[i], intervalsManager.GetArrangement(link)[i]);
+            Assert.That(intervalsManager.GetArrangement(link)[i], Is.EqualTo(intervals[i]));
         }
     }
 }

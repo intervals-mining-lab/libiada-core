@@ -27,7 +27,7 @@ public class BinaryCalculatorsFactoryTests
     [TestCase(BinaryCharacteristic.Redundancy, typeof(Redundancy))]
     public void CreateCalculatorTest(BinaryCharacteristic type, Type calculator)
     {
-        Assert.IsInstanceOf(calculator, BinaryCalculatorsFactory.CreateCalculator(type));
+        Assert.That(BinaryCalculatorsFactory.CreateCalculator(type), Is.TypeOf(calculator));
     }
 
     /// <summary>

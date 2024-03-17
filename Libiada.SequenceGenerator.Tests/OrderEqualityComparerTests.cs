@@ -30,7 +30,7 @@ public class OrderEqualityComparerTests
     {
         var comparer = new OrderEqualityComparer();
         var actual = comparer.Equals(first, second);
-        Assert.AreEqual(expected, actual);
+        Assert.That(actual, Is.EqualTo(expected));
     }
 
     /// <summary>
@@ -54,6 +54,6 @@ public class OrderEqualityComparerTests
     {
         var comparer = new OrderEqualityComparer();
         var actual = comparer.GetHashCode(obj);
-        Assert.AreEqual(expected, actual);
+        Assert.That(actual, Is.EqualTo(expected));
     }
 }

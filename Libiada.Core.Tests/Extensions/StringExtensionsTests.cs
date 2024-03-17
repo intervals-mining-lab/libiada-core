@@ -14,11 +14,11 @@ public class StringExtensionsTests
     [Test]
     public void TrimEndTest()
     {
-        var source = "Chaoyang virus strain Deming polyprotein gene, complete cds.";
-        var expected = "Chaoyang virus strain Deming polyprotein gene";
+        const string source = "Chaoyang virus strain Deming polyprotein gene, complete cds.";
+        const string expected = "Chaoyang virus strain Deming polyprotein gene";
 
         string actual = source.TrimEnd(", complete cds.");
-        Assert.AreEqual(expected, actual);
+        Assert.That(actual, Is.EqualTo(expected));
 
         actual = source.TrimEnd(", complete genome.")
                        .TrimEnd(", complete sequence.")
@@ -30,7 +30,7 @@ public class StringExtensionsTests
                        .TrimEnd(" complete CDS.")
                        .TrimEnd(" complete cds.")
                        .TrimEnd(" genome.");
-        Assert.AreEqual(expected, actual);
+        Assert.That(actual, Is.EqualTo(expected));
     }
 
     /// <summary>
@@ -43,27 +43,27 @@ public class StringExtensionsTests
         var expected = "Bagaza virus isolate BAGV/Spain/RLP-Hcc2/2010, complete genome.";
 
         string actual = source.TrimEnd(", complete cds");
-        Assert.AreEqual(expected, actual);
+        Assert.That(actual, Is.EqualTo(expected));
 
         actual = source.TrimEnd(", complete genome")
                        .TrimEnd(", complete sequence")
                        .TrimEnd(", complete CDS")
                        .TrimEnd(", complete cds")
                        .TrimEnd(", genome");
-        Assert.AreEqual(expected, actual);
+        Assert.That(actual, Is.EqualTo(expected));
 
         source = "Bagaza virus isolate BAGV/Spain/RLP-Hcc2/2010, complete genome";
         expected = "Bagaza virus isolate BAGV/Spain/RLP-Hcc2/2010, complete genome";
 
         actual = source.TrimEnd(", complete cds.");
-        Assert.AreEqual(expected, actual);
+        Assert.That(actual, Is.EqualTo(expected));
 
         actual = source.TrimEnd(", complete genome.")
                        .TrimEnd(", complete sequence.")
                        .TrimEnd(", complete CDS.")
                        .TrimEnd(", complete cds.")
                        .TrimEnd(", genome.");
-        Assert.AreEqual(expected, actual);
+        Assert.That(actual, Is.EqualTo(expected));
     }
 
     /// <summary>
@@ -72,10 +72,10 @@ public class StringExtensionsTests
     [Test]
     public void GetLargestRepeatingSubstringTest()
     {
-        string source = " abc abc abc abc ";
-        string expected = "abc";
+        const string source = " abc abc abc abc ";
+        const string expected = "abc";
         string actual = source.GetLargestRepeatingSubstring();
-        Assert.AreEqual(expected, actual);
+        Assert.That(actual, Is.EqualTo(expected));
     }
 
     /// <summary>
@@ -85,10 +85,10 @@ public class StringExtensionsTests
     [Test]
     public void GetLargestRepeatingSubstringNoSubstringTest()
     {
-        string source = " abc abc abc abf ";
-        string expected = " abc abc abc abf ";
+        const string source = " abc abc abc abf ";
+        const string expected = " abc abc abc abf ";
         string actual = source.GetLargestRepeatingSubstring();
-        Assert.AreEqual(expected, actual);
+        Assert.That(actual, Is.EqualTo(expected));
     }
 
     /// <summary>
@@ -97,13 +97,17 @@ public class StringExtensionsTests
     [Test]
     public void IsSubsetOfTest()
     {
-        var firstSource = "Salmonella enterica subsp. enterica serovar Paratyphi C str. RKS4594";
-        var secondSource = "enterica subsp. enterica serovar Paratyphi C str. Salmonella enterica subsp. enterica serovar Paratyphi C str.";
-        Assert.IsTrue(secondSource.IsSubsetOf(firstSource));
-        Assert.IsFalse(firstSource.IsSubsetOf(secondSource));
+        const string firstSource = "Salmonella enterica subsp. enterica serovar Paratyphi C str. RKS4594";
+        string secondSource = "enterica subsp. enterica serovar Paratyphi C str. Salmonella enterica subsp. enterica serovar Paratyphi C str.";
+
+        Assert.Multiple(() =>
+        {
+            Assert.That(secondSource.IsSubsetOf(firstSource));
+            Assert.That(firstSource.IsSubsetOf(secondSource), Is.False);
+        });
 
         secondSource = secondSource.GetLargestRepeatingSubstring();
-        Assert.IsTrue(secondSource.IsSubsetOf(firstSource));
+        Assert.That(secondSource.IsSubsetOf(firstSource));
     }
 
     /// <summary>
@@ -117,9 +121,9 @@ public class StringExtensionsTests
     [TestCase("Salmonella enterica subsp. enterica serovar Paratyphi C strain RKS4594")]
     public void IsSubsetOfItselfTest(string source)
     {
-        Assert.IsTrue(source.IsSubsetOf(source));
+        Assert.That(source.IsSubsetOf(source));
 
         source = source.GetLargestRepeatingSubstring();
-        Assert.IsTrue(source.IsSubsetOf(source));
+        Assert.That(source.IsSubsetOf(source));
     }
 }

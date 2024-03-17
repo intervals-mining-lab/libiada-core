@@ -31,7 +31,7 @@ public class ClusterizatorsFactoryTests
         };
         var clusterizator = ClusterizatorsFactory.CreateClusterizator(type, parameters);
 
-        Assert.IsInstanceOf(expected, clusterizator);
+        Assert.That(clusterizator, Is.InstanceOf(expected));
     }
 
     /// <summary>

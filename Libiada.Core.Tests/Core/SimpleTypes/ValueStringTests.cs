@@ -32,7 +32,10 @@ public class ValueStringTests
     [Test]
     public void EqualsTest()
     {
-        Assert.AreEqual(new ValueString("1"), new ValueString("1"));
-        Assert.AreEqual(new ValueString("abc"), new ValueString("abc"));
+        Assert.Multiple(() =>
+        {
+            Assert.That(new ValueString("1"), Is.EqualTo(new ValueString('1')));
+            Assert.That(new ValueString("abc"), Is.EqualTo(new ValueString("abc")));
+        });
     }
 }

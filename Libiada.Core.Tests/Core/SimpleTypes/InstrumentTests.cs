@@ -21,7 +21,7 @@ public class InstrumentTests
     public void InstrumentCountTest()
     {
         var actualCount = EnumExtensions.ToArray<Instrument>().Length;
-        Assert.AreEqual(InstrumentsCount, actualCount);
+        Assert.That(actualCount, Is.EqualTo(InstrumentsCount));
     }
 
     /// <summary>
@@ -33,7 +33,7 @@ public class InstrumentTests
         var instruments = EnumExtensions.ToArray<Instrument>();
         for (int i = 0; i < InstrumentsCount; i++)
         {
-            Assert.IsTrue(instruments.Contains((Instrument)i));
+            Assert.That(instruments, Does.Contain((Instrument)i));
         }
     }
 
@@ -49,7 +49,7 @@ public class InstrumentTests
     [TestCase((Instrument)0, "AnyOrUnknown")]
     public void InstrumentNamesTest(Instrument instrument, string name)
     {
-        Assert.AreEqual(name, instrument.GetName());
+        Assert.That(instrument.GetName(), Is.EqualTo(name));
     }
 
     /// <summary>
@@ -61,7 +61,7 @@ public class InstrumentTests
     [Test]
     public void InstrumentHasDisplayValueTest([Values]Instrument instrument)
     {
-        Assert.IsFalse(string.IsNullOrEmpty(instrument.GetDisplayValue()));
+        Assert.That(instrument.GetDisplayValue(), Is.Not.Empty);
     }
 
     /// <summary>
@@ -73,7 +73,7 @@ public class InstrumentTests
     [Test]
     public void InstrumentHasDescriptionTest([Values]Instrument instrument)
     {
-        Assert.IsFalse(string.IsNullOrEmpty(instrument.GetDescription()));
+        Assert.That(instrument.GetDescription(), Is.Not.Empty);
     }
 
     /// <summary>

@@ -30,7 +30,7 @@ public class IteratorWritableEndTests
     [Test]
     public void WriteTest()
     {
-        var messages = new List<ValueString> { '1', '3', '2', '2', '1', '2', '1', '3', '3', '1', '2', '1' };
+        List<ValueString> messages = ['1', '3', '2', '2', '1', '2', '1', '3', '3', '1', '2', '1'];
 
         var toWrite = new Chain(12);
         var iteratorWrite = new IteratorWritableEnd(toWrite);
@@ -40,6 +40,6 @@ public class IteratorWritableEndTests
             iteratorWrite.WriteValue(messages[i++]);
         }
 
-        Assert.AreEqual(chainToIterate, toWrite);
+        Assert.That(toWrite, Is.EqualTo(chainToIterate));
     }
 }

@@ -20,8 +20,7 @@ public class AccidentalTests
     [Test]
     public void AccidentalCountTest()
     {
-        var actualCount = EnumExtensions.ToArray<Accidental>().Length;
-        Assert.AreEqual(AccidentalsCount, actualCount);
+        Assert.That(EnumExtensions.ToArray<Accidental>(), Has.Length.EqualTo(AccidentalsCount));
     }
 
     /// <summary>
@@ -33,7 +32,7 @@ public class AccidentalTests
         var accidentals = EnumExtensions.ToArray<Accidental>();
         for (int i = -2; i < AccidentalsCount - 2; i++)
         {
-            Assert.IsTrue(accidentals.Contains((Accidental)i));
+            Assert.That(accidentals, Does.Contain((Accidental)i));
         }
     }
 
@@ -53,7 +52,7 @@ public class AccidentalTests
     [TestCase((Accidental)2, "DoubleSharp")]
     public void AccidentalNamesTest(Accidental accidental, string name)
     {
-        Assert.AreEqual(name, accidental.GetName());
+        Assert.That(accidental.GetName(), Is.EqualTo(name));
     }
 
     /// <summary>
@@ -65,7 +64,7 @@ public class AccidentalTests
     [Test]
     public void AccidentalHasDisplayValueTest([Values]Accidental accidental)
     {
-        Assert.IsFalse(string.IsNullOrEmpty(accidental.GetDisplayValue()));
+        Assert.That(accidental.GetDisplayValue(), Is.Not.Empty);
     }
 
     /// <summary>
@@ -77,7 +76,7 @@ public class AccidentalTests
     [Test]
     public void AccidentalHasDescriptionTest([Values]Accidental accidental)
     {
-        Assert.IsFalse(string.IsNullOrEmpty(accidental.GetDescription()));
+        Assert.That(accidental.GetDescription(), Is.Not.Empty);
     }
 
     /// <summary>

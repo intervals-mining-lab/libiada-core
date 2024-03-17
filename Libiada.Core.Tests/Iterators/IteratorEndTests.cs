@@ -29,52 +29,52 @@ public class IteratorEndTests
     [Test]
     public void ReadWindowModeTest()
     {
-        int length = 3;
-        int step = 1;
+        const int length = 3;
+        const int step = 1;
         var iterator = new IteratorEnd(chainToIterate, length, step);
 
         // 12 - 3 + 1
-        var message2 = new List<Chain>
-            {
+        List<Chain> message2 =
+            [
                 // 121331212|231|
-                new Chain("231"),
+                new("231"),
 
                 // 12133121|223|1
-                new Chain("223"),
+                new("223"),
 
                 // 1213312|122|31
-                new Chain("122"),
+                new("122"),
 
                 // 121331|212|231
-                new Chain("212"),
+                new("212"),
 
                 // 12133|121|2231
-                new Chain("121"),
+                new("121"),
 
                 // 1213|312|12231
-                new Chain("312"),
+                new("312"),
 
                 // 121|331|212231
-                new Chain("331"),
+                new("331"),
 
                 // 12|133|1212231
-                new Chain("133"),
+                new("133"),
 
                 // 1|213|31212231
-                new Chain("213"),
+                new("213"),
 
                 // |121|331212231
-                new Chain("121")
-            };
+                new("121")
+            ];
 
         int i = 0;
         while (iterator.Next())
         {
             var message1 = iterator.Current();
-            Assert.AreEqual(message1, message2[i++]);
+            Assert.That(message2[i++], Is.EqualTo(message1));
         }
 
-        Assert.AreEqual(--i, 9);
+        Assert.That(--i, Is.EqualTo(9));
     }
 
     /// <summary>
@@ -83,32 +83,32 @@ public class IteratorEndTests
     [Test]
     public void ReadBlockModeTest()
     {
-        int length = 3;
-        int step = 3;
+        const int length = 3;
+        const int step = 3;
         var iterator = new IteratorEnd(chainToIterate, length, step);
 
-        var message2 = new List<Chain>
-                        {
+        List<Chain> message2 =
+                        [
                             // 121331212|231|
-                            new Chain("231"),
+                            new("231"),
 
                             // 121331|212|231
-                            new Chain("212"),
+                            new("212"),
 
                             // 121|331|212231
-                            new Chain("331"),
+                            new("331"),
 
                              // |121|331212231
-                             new Chain("121")
-                         };
+                             new("121")
+                         ];
 
         int i = 0;
         while (iterator.Next())
         {
             var message1 = iterator.Current();
-            Assert.AreEqual(message1, message2[i++]);
+            Assert.That(message2[i++], Is.EqualTo(message1));
         }
 
-        Assert.AreEqual(--i, 3);
+        Assert.That(--i, Is.EqualTo(3));
     }
 }

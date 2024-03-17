@@ -14,11 +14,11 @@ public class AbstractChainTests
     [Test]
     public void ToStringTest()
     {
-        var stringExpected = "abcabccc";
-        var chain = new Chain(stringExpected);
-        Assert.AreEqual(stringExpected, chain.ToString());
-        var baseChain = new BaseChain(stringExpected);
-        Assert.AreEqual(stringExpected, baseChain.ToString());
+        const string expected = "abcabccc";
+        var chain = new Chain(expected);
+        Assert.That(chain.ToString(), Is.EqualTo(expected));
+        var baseChain = new BaseChain(expected);
+        Assert.That(baseChain.ToString(), Is.EqualTo(expected));
     }
 
     /// <summary>
@@ -27,17 +27,23 @@ public class AbstractChainTests
     [Test]
     public void ToStringDelimiterTest()
     {
-        var source = "abcabccc";
+        const string source = "abcabccc";
         var chain = new Chain(source);
         var baseChain = new BaseChain(source);
 
         var expected = "a b c a b c c c";
-        Assert.AreEqual(expected, chain.ToString(" "));
-        Assert.AreEqual(expected, baseChain.ToString(" "));
+        Assert.Multiple(() =>
+        {
+            Assert.That(chain.ToString(" "), Is.EqualTo(expected));
+            Assert.That(baseChain.ToString(" "), Is.EqualTo(expected));
+        });
 
         expected = "acbcccacbcccccc";
-        Assert.AreEqual(expected, chain.ToString("c"));
-        Assert.AreEqual(expected, baseChain.ToString("c"));
+        Assert.Multiple(() =>
+        {
+            Assert.That(chain.ToString("c"), Is.EqualTo(expected));
+            Assert.That(baseChain.ToString("c"), Is.EqualTo(expected));
+        });
     }
 
     /// <summary>
@@ -46,16 +52,22 @@ public class AbstractChainTests
     [Test]
     public void ToStringLongDelimiterTest()
     {
-        var source = "abcabccc";
+        const string source = "abcabccc";
         var chain = new Chain(source);
         var baseChain = new BaseChain(source);
 
         var expected = "a - b - c - a - b - c - c - c";
-        Assert.AreEqual(expected, chain.ToString(" - "));
-        Assert.AreEqual(expected, baseChain.ToString(" - "));
+        Assert.Multiple(() =>
+        {
+            Assert.That(chain.ToString(" - "), Is.EqualTo(expected));
+            Assert.That(baseChain.ToString(" - "), Is.EqualTo(expected));
+        });
 
         expected = "a, b, c, a, b, c, c, c";
-        Assert.AreEqual(expected, chain.ToString(", "));
-        Assert.AreEqual(expected, baseChain.ToString(", "));
+        Assert.Multiple(() =>
+        {
+            Assert.That(chain.ToString(", "), Is.EqualTo(expected));
+            Assert.That(baseChain.ToString(", "), Is.EqualTo(expected));
+        });
     }
 }

@@ -14,10 +14,10 @@ public class GraphElementTests
     [Test]
     public void NodeTest()
     {
-        var node = new GraphElement(new[] { 15.0 }, "node");
+        var node = new GraphElement([15.0], "node");
 
-        Assert.AreEqual(15, node.Content[0]);
-        Assert.AreEqual(0, node.TaxonNumber);
+        Assert.That(node.Content[0], Is.EqualTo(15));
+        Assert.That(node.TaxonNumber, Is.Zero);
     }
 
     /// <summary>
@@ -26,18 +26,17 @@ public class GraphElementTests
     [Test]
     public void NodeTwoTest()
     {
-        var node = new GraphElement(new[] { 15.0 }, 1) { TaxonNumber = 5 };
+        var node = new GraphElement([15.0], 1) { TaxonNumber = 5 };
 
-        Assert.AreEqual(15, node.Content[0]);
+        Assert.That(node.Content[0], Is.EqualTo(15));
 
-        node.Content = new[] { -8.0 };
+        node.Content = [-8.0];
 
-        Assert.AreEqual(-8, node.Content[0]);
-
-        Assert.AreEqual(5, node.TaxonNumber);
+        Assert.That(node.Content[0], Is.EqualTo(-8));
+        Assert.That(node.TaxonNumber, Is.EqualTo(5));
 
         node.TaxonNumber = -5;
-        Assert.AreEqual(5, node.TaxonNumber);
+        Assert.That(node.TaxonNumber, Is.EqualTo(5));
     }
 
     /// <summary>
@@ -46,11 +45,16 @@ public class GraphElementTests
     [Test]
     public void CloneTest()
     {
-        var node = new GraphElement(new[] { 15.0 }, "node");
+        var node = new GraphElement([15.0], "node");
         var nodeClone = node.Clone();
-        Assert.AreEqual(node.Content, nodeClone.Content);
-        Assert.AreEqual(node.Id, nodeClone.Id);
-        Assert.AreNotSame(node, nodeClone);
-        Assert.IsInstanceOf(typeof(GraphElement), nodeClone);
+
+        Assert.Multiple(() =>
+        {
+            Assert.That(nodeClone.Content, Is.EqualTo(node.Content));
+            Assert.That(nodeClone.Id, Is.EqualTo(node.Id));
+            Assert.That(nodeClone, Is.Not.SameAs(node));
+            Assert.That(nodeClone, Is.TypeOf(typeof(GraphElement)));
+        });
+        
     }
 }

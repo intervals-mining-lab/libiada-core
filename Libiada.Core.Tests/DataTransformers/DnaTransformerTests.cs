@@ -13,21 +13,21 @@ public class DnaTransformerTests
     [Test]
     public void UnexpectedStopCodonTest()
     {
-        var input = new BaseChain("TAGTGA");
+        BaseChain input = new("TAGTGA");
         Assert.Throws<Exception>(() => DnaTransformer.EncodeAmino(input));
     }
 
     [Test]
     public void NoStopCodonTest()
     {
-        var input = new BaseChain("AAAAAA");
+        BaseChain input = new("AAAAAA");
         Assert.Throws<Exception>(() => DnaTransformer.EncodeAmino(input));
     }
 
     [Test]
     public void WrongCodingTableNumberTest()
     {
-        var input = new BaseChain("TAGTGA");
+        BaseChain input = new("TAGTGA");
         Assert.Throws<ArgumentException>(() => DnaTransformer.EncodeAmino(input, 58));
     }
 
@@ -89,11 +89,11 @@ public class DnaTransformerTests
     [TestCase(33, "FFLLSSSSYYYCCWWLLLLPPPPHHQQRRRRIIIMTTTTNNKKSSSKVVVVAAAADDEEGGGG", "TTTTTCTTATTGTCTTCCTCATCGTATTACTAATGTTGCTGATGGCTTCTCCTACTGCCTCCCCCACCGCATCACCAACAGCGTCGCCGACGGATTATCATAATGACTACCACAACGAATAACAAAAAGAGTAGCAGAAGGGTTGTCGTAGTGGCTGCCGCAGCGGATGACGAAGAGGGTGGCGGAGGGTAG")]
     public void EncodeWithCodingTableTest(byte codingTable, string aminoSequence, string nucleotideSequcne)
     {
-        var input = new BaseChain(nucleotideSequcne);
+        BaseChain input = new(nucleotideSequcne);
         BaseChain result = DnaTransformer.EncodeAmino(input, codingTable);
-        var expected = new BaseChain(aminoSequence);
+        BaseChain expected = new(aminoSequence);
 
-        Assert.AreEqual(expected, result);
+        Assert.That(result, Is.EqualTo(expected));
     }
 
     /// <summary>
@@ -102,10 +102,10 @@ public class DnaTransformerTests
     [Test]
     public void SimpleDecodeTest()
     {
-        var input = new BaseChain("F");
+        BaseChain input = new("F");
         BaseChain result = DnaTransformer.Decode(input);
-        var mes = new ValuePhantom { new ValueString("TTT"), new ValueString("TTC") };
-        Assert.IsTrue(mes.Equals(result[0]));
+        ValuePhantom mes = [new ValueString("TTT"), new ValueString("TTC")];
+        Assert.That(mes, Is.EqualTo(result[0]));
     }
 
     /// <summary>
@@ -114,101 +114,91 @@ public class DnaTransformerTests
     [Test]
     public void DecodeTest()
     {
-        var input = new BaseChain("FLSYXCWPHQRIMTNKVADEG");
+        BaseChain input = new("FLSYXCWPHQRIMTNKVADEG");
 
-        var message = new List<ValuePhantom>
-                          {
-                              new ValuePhantom { new ValueString("TTT"), new ValueString("TTC") },
-                              new ValuePhantom
-                                  {
-                                      new ValueString("TTA"),
-                                      new ValueString("TTG"),
-                                      new ValueString("CTT"),
-                                      new ValueString("CTC"),
-                                      new ValueString("CTA"),
-                                      new ValueString("CTG")
-                                  },
-                              new ValuePhantom
-                                  {
-                                      new ValueString("TCT"),
-                                      new ValueString("TCC"),
-                                      new ValueString("TCA"),
-                                      new ValueString("TCG"),
-                                      new ValueString("AGT"),
-                                      new ValueString("AGC")
-                                  },
-                              new ValuePhantom { new ValueString("TAT"), new ValueString("TAC") },
-                              new ValuePhantom
-                                  {
-                                      new ValueString("TAA"),
-                                      new ValueString("TAG"),
-                                      new ValueString("TGA")
-                                  },
-                              new ValuePhantom { new ValueString("TGT"), new ValueString("TGC") },
-                              new ValuePhantom { new ValueString("TGG") },
-                              new ValuePhantom
-                                  {
-                                      new ValueString("CCT"),
-                                      new ValueString("CCC"),
-                                      new ValueString("CCA"),
-                                      new ValueString("CCG")
-                                  },
-                              new ValuePhantom { new ValueString("CAT"), new ValueString("CAC") },
-                              new ValuePhantom { new ValueString("CAA"), new ValueString("CAG") },
-                              new ValuePhantom
-                                  {
-                                      new ValueString("CGT"),
-                                      new ValueString("CGC"),
-                                      new ValueString("CGA"),
-                                      new ValueString("CGG"),
-                                      new ValueString("AGA"),
-                                      new ValueString("AGG")
-                                  },
-                              new ValuePhantom
-                                  {
-                                      new ValueString("ATT"),
-                                      new ValueString("ATC"),
-                                      new ValueString("ATA")
-                                  },
-                              new ValuePhantom { new ValueString("ATG") },
-                              new ValuePhantom
-                                  {
-                                      new ValueString("ACT"),
-                                      new ValueString("ACC"),
-                                      new ValueString("ACA"),
-                                      new ValueString("ACG")
-                                  },
-                              new ValuePhantom { new ValueString("AAT"), new ValueString("AAC") },
-                              new ValuePhantom { new ValueString("AAA"), new ValueString("AAG") },
-                              new ValuePhantom
-                                  {
-                                      new ValueString("GTT"),
-                                      new ValueString("GTC"),
-                                      new ValueString("GTA"),
-                                      new ValueString("GTG")
-                                  },
-                              new ValuePhantom
-                                  {
-                                      new ValueString("GCT"),
-                                      new ValueString("GCC"),
-                                      new ValueString("GCA"),
-                                      new ValueString("GCG")
-                                  },
-                              new ValuePhantom { new ValueString("GAT"), new ValueString("GAC") },
-                              new ValuePhantom { new ValueString("GAA"), new ValueString("GAG") },
-                              new ValuePhantom
-                                  {
-                                      new ValueString("GGT"),
-                                      new ValueString("GGC"),
-                                      new ValueString("GGA"),
-                                      new ValueString("GGG")
-                                  }
-                          };
+        List<ValuePhantom> message =
+            [
+                [new ValueString("TTT"), new ValueString("TTC")],
+                [
+                        new ValueString("TTA"),
+                        new ValueString("TTG"),
+                        new ValueString("CTT"),
+                        new ValueString("CTC"),
+                        new ValueString("CTA"),
+                        new ValueString("CTG")
+                    ],
+                [
+                        new ValueString("TCT"),
+                        new ValueString("TCC"),
+                        new ValueString("TCA"),
+                        new ValueString("TCG"),
+                        new ValueString("AGT"),
+                        new ValueString("AGC")
+                    ],
+                [new ValueString("TAT"), new ValueString("TAC")],
+                [
+                        new ValueString("TAA"),
+                        new ValueString("TAG"),
+                        new ValueString("TGA")
+                    ],
+                [new ValueString("TGT"), new ValueString("TGC")],
+                [new ValueString("TGG")],
+                [
+                        new ValueString("CCT"),
+                        new ValueString("CCC"),
+                        new ValueString("CCA"),
+                        new ValueString("CCG")
+                    ],
+                [new ValueString("CAT"), new ValueString("CAC")],
+                [new ValueString("CAA"), new ValueString("CAG")],
+                [
+                        new ValueString("CGT"),
+                        new ValueString("CGC"),
+                        new ValueString("CGA"),
+                        new ValueString("CGG"),
+                        new ValueString("AGA"),
+                        new ValueString("AGG")
+                    ],
+                [
+                        new ValueString("ATT"),
+                        new ValueString("ATC"),
+                        new ValueString("ATA")
+                    ],
+                [new ValueString("ATG")],
+                [
+                        new ValueString("ACT"),
+                        new ValueString("ACC"),
+                        new ValueString("ACA"),
+                        new ValueString("ACG")
+                    ],
+                [new ValueString("AAT"), new ValueString("AAC")],
+                [new ValueString("AAA"), new ValueString("AAG")],
+                [
+                        new ValueString("GTT"),
+                        new ValueString("GTC"),
+                        new ValueString("GTA"),
+                        new ValueString("GTG")
+                    ],
+                [
+                        new ValueString("GCT"),
+                        new ValueString("GCC"),
+                        new ValueString("GCA"),
+                        new ValueString("GCG")
+                    ],
+                [new ValueString("GAT"), new ValueString("GAC")],
+                [new ValueString("GAA"), new ValueString("GAG")],
+                [
+                        new ValueString("GGT"),
+                        new ValueString("GGC"),
+                        new ValueString("GGA"),
+                        new ValueString("GGG")
+                    ]
+            ];
 
         BaseChain result = DnaTransformer.Decode(input);
         for (int i = 0; i < message.Count; i++)
         {
-            Assert.IsTrue(result[i].Equals(message[i]));
+            Assert.That(result[i], Is.EqualTo(message[i]));
         }
     }
 
@@ -284,17 +274,15 @@ public class DnaTransformerTests
     [TestCase("GGG")]
     public void EncodeTripletsTest(string triplet)
     {
-        var input = new BaseChain(triplet.Length);
+        Assert.That(triplet, Has.Length.EqualTo(3));
+        BaseChain input = new(triplet.Length);
         for (int i = 0; i < triplet.Length; i++)
         {
             input[i] = new ValueString(triplet[i]);
         }
 
         BaseChain result = DnaTransformer.EncodeTriplets(input);
-
-        for (int i = 0; i < result.Length; i++)
-        {
-            Assert.AreEqual(new ValueString(triplet.Substring(i * 3, 3)), result[i]);
-        }
+        Assert.That(result, Has.Length.EqualTo(1));
+        Assert.That(result[0], Is.EqualTo(new ValueString(triplet)));
     }
 }

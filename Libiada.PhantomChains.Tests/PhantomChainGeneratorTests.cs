@@ -34,13 +34,12 @@ public class PhantomChainGeneratorTests
     [Test]
     public void FirstTest()
     {
-        var resultChain = new BaseChain(new[] { 1, 2, 2, 1, 2, 1, 2, 1, 2, 2 },
-            new Alphabet() { NullValue.Instance(), mother.PhantomMessageBc[1], mother.PhantomMessageA[0] });
+        var resultChain = new BaseChain([1, 2, 2, 1, 2, 1, 2, 1, 2, 2], [NullValue.Instance(), mother.PhantomMessageBc[1], mother.PhantomMessageA[0]]);
 
         var gen = new PhantomChainGenerator(mother.SourceChain, new MockGenerator());
-        List<BaseChain> res = gen.Generate(1);
-        Assert.AreEqual(res.Count, 1);
-        Assert.AreEqual(resultChain, res[0]);
+        List<BaseChain> result = gen.Generate(1);
+        Assert.That(result, Has.Count.EqualTo(1));
+        Assert.That(result[0], Is.EqualTo(resultChain));
     }
 
     /// <summary>
@@ -50,12 +49,12 @@ public class PhantomChainGeneratorTests
     public void SecondTest()
     {
         var resultChain = new BaseChain(
-            new [] { 1, 2, 1, 2, 3 },
-            new Alphabet(){NullValue.Instance(), mother.PhantomMessageBc[1], mother.PhantomMessageA[0], mother.PhantomMessageBc[0] });
+            [1, 2, 1, 2, 3],
+            [NullValue.Instance(), mother.PhantomMessageBc[1], mother.PhantomMessageA[0], mother.PhantomMessageBc[0]]);
         var gen = new PhantomChainGenerator(mother.UnnormalizedChain, new MockGenerator());
-        List<BaseChain> res = gen.Generate(1);
-        Assert.AreEqual(1, res.Count);
-        Assert.AreEqual(resultChain, res[0]);
+        List<BaseChain> result = gen.Generate(1);
+        Assert.That(result, Has.Count.EqualTo(1));
+        Assert.That(result[0], Is.EqualTo(resultChain));
     }
 
     /// <summary>
@@ -73,8 +72,8 @@ public class PhantomChainGeneratorTests
         }
 
         var gen = new PhantomChainGenerator(resultChain, new SimpleGenerator());
-        List<BaseChain> res = gen.Generate(3000);
-        Assert.AreEqual(res.Count, 3000);
+        List<BaseChain> result = gen.Generate(3000);
+        Assert.That(result, Has.Count.EqualTo(3000));
     }
 
     /// <summary>
@@ -105,7 +104,7 @@ public class PhantomChainGeneratorTests
             }
         }
 
-        Assert.AreEqual(0, counter);
+        Assert.That(counter, Is.EqualTo(0));
     }
 
     /// <summary>
@@ -117,7 +116,7 @@ public class PhantomChainGeneratorTests
         var sourceChain = new BaseChain(new List<IBaseObject>() { (ValueString)"X", (ValueString)"S", (ValueString)"C" });
         BaseChain forBuild = DnaTransformer.Decode(sourceChain);
         var gen = new PhantomChainGenerator(forBuild, new SimpleGenerator());
-        List<BaseChain> res = gen.Generate(1);
-        Assert.AreEqual(9, res[0].Length);
+        List<BaseChain> result = gen.Generate(1);
+        Assert.That(result[0].Length, Is.EqualTo(9));
     }
 }

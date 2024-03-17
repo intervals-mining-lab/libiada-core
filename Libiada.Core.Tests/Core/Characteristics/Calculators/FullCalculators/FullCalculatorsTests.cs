@@ -20,7 +20,7 @@ public abstract class FullCalculatorsTests<T> where T : IFullCalculator, new ()
     /// <summary>
     /// Gets or sets the calculator.
     /// </summary>
-    protected readonly T Calculator = new T();
+    protected readonly T Calculator = new();
 
     /// <summary>
     /// The chain characteristic test.
@@ -36,7 +36,7 @@ public abstract class FullCalculatorsTests<T> where T : IFullCalculator, new ()
     /// </param>
     protected void ChainCharacteristicTest(int index, Link link, double value)
     {
-        Assert.AreEqual(value, Calculator.Calculate(chains[index], link), 0.0001);
+        Assert.That(Calculator.Calculate(chains[index], link), Is.EqualTo(value).Within(0.0001d));
     }
 
     /// <summary>
@@ -54,6 +54,6 @@ public abstract class FullCalculatorsTests<T> where T : IFullCalculator, new ()
     protected void SeriesCharacteristicTest(int index, Link link, double value)
     {
         chains[index].SetArrangementManagers(ArrangementType.Series);
-        Assert.AreEqual(value, Calculator.Calculate(chains[index], link), 0.0001);
+        Assert.That(Calculator.Calculate(chains[index], link), Is.EqualTo(value).Within(0.0001d));
     }
 }

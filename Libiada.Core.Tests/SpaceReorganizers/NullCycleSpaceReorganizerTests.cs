@@ -33,7 +33,7 @@ public class NullCycleSpaceReorganizerTests
 
         var rebulder = new NullCycleSpaceReorganizer(1);
         var result = rebulder.Reorganize(testChain);
-        Assert.AreEqual(cycleTestChainLevel1, result);
+        Assert.That(result, Is.EqualTo(cycleTestChainLevel1));
     }
 
     /// <summary>
@@ -46,6 +46,6 @@ public class NullCycleSpaceReorganizerTests
 
         var reorganizer = new NullCycleSpaceReorganizer(5);
         var result = reorganizer.Reorganize(testChain);
-        Assert.AreEqual(cycleTestChainLevel5, result);
+        Assert.That(result, Is.EqualTo(cycleTestChainLevel5));
     }
 }

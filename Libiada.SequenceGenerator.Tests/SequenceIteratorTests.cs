@@ -32,7 +32,7 @@ public class SequenceIteratorTests
         }
 
         var actual = iterator.Iterator;
-        Assert.AreEqual(expected, actual);
+        Assert.That(actual, Is.EqualTo(expected));
     }
 
     /// <summary>
@@ -43,21 +43,21 @@ public class SequenceIteratorTests
     {
         var iterator = new SequenceIterator(3, 2);
         int[][] expected =
-        {
-            new[] { 1, 1, 1 },
-            new[] { 2, 1, 1 },
-            new[] { 1, 2, 1 },
-            new[] { 2, 2, 1 },
-            new[] { 1, 1, 2 },
-            new[] { 2, 1, 2 },
-            new[] { 1, 2, 2 },
-            new[] { 2, 2, 2 }
-        };
+        [
+            [1, 1, 1],
+            [2, 1, 1],
+            [1, 2, 1],
+            [2, 2, 1],
+            [1, 1, 2],
+            [2, 1, 2],
+            [1, 2, 2],
+            [2, 2, 2]
+        ];
         int i = 0;
 
         foreach (int[] actual in iterator)
         {
-            Assert.AreEqual(expected[i], actual);
+            Assert.That(actual, Is.EqualTo(expected[i]));
             i++;
         }
     }

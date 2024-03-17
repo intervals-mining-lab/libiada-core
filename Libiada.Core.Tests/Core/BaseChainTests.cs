@@ -16,11 +16,11 @@ public class BaseChainTests
     public void ConstructorWithLengthTest()
     {
         var chain = new BaseChain(100);
-        Assert.AreEqual(100, chain.Length);
+        Assert.That(chain.Length, Is.EqualTo(100));
         var expectedOrder = new int[100];
-        Assert.AreEqual(expectedOrder, chain.Order);
+        Assert.That(chain.Order, Is.EqualTo(expectedOrder));
         var expectedAlphabet = new Alphabet();
-        Assert.AreEqual(expectedAlphabet, chain.Alphabet);
+        Assert.That(chain.Alphabet, Is.EqualTo(expectedAlphabet));
     }
 
     /// <summary>
@@ -39,46 +39,46 @@ public class BaseChainTests
     public void ConstructorWithStringTest()
     {
         var chain = new BaseChain("A");
-        Assert.AreEqual(1, chain.Length);
+        Assert.That(chain.Length, Is.EqualTo(1));
         var expectedOrder = new[] { 1 };
-        Assert.AreEqual(expectedOrder, chain.Order);
+        Assert.That(chain.Order, Is.EqualTo(expectedOrder));
         var expectedAlphabet = new Alphabet() { (ValueString)"A"};
-        Assert.AreEqual(expectedAlphabet, chain.Alphabet);
+        Assert.That(chain.Alphabet, Is.EqualTo(expectedAlphabet));
 
         chain = new BaseChain("ABC");
-        Assert.AreEqual(3, chain.Length);
-        expectedOrder = new[] { 1, 2, 3 };
-        Assert.AreEqual(expectedOrder, chain.Order);
-        expectedAlphabet = new Alphabet() { (ValueString)"A", (ValueString)"B", (ValueString)"C" };
-        Assert.AreEqual(expectedAlphabet, chain.Alphabet);
+        Assert.That(chain.Length, Is.EqualTo(3));
+        expectedOrder = [1, 2, 3];
+        Assert.That(chain.Order, Is.EqualTo(expectedOrder));
+        expectedAlphabet = [(ValueString)"A", (ValueString)"B", (ValueString)"C"];
+        Assert.That(chain.Alphabet, Is.EqualTo(expectedAlphabet));
 
         chain = new BaseChain("AAABBBCCC");
-        Assert.AreEqual(9, chain.Length);
-        expectedOrder = new[] { 1, 1, 1, 2, 2, 2, 3, 3, 3 };
-        Assert.AreEqual(expectedOrder, chain.Order);
-        expectedAlphabet = new Alphabet() { (ValueString)"A", (ValueString)"B", (ValueString)"C" };
-        Assert.AreEqual(expectedAlphabet, chain.Alphabet);
+        Assert.That(chain.Length, Is.EqualTo(9));
+        expectedOrder = [1, 1, 1, 2, 2, 2, 3, 3, 3];
+        Assert.That(chain.Order, Is.EqualTo(expectedOrder));
+        expectedAlphabet = [(ValueString)"A", (ValueString)"B", (ValueString)"C"];
+        Assert.That(chain.Alphabet, Is.EqualTo(expectedAlphabet));
 
         chain = new BaseChain("AAABBBCCC");
-        Assert.AreEqual(9, chain.Length);
-        expectedOrder = new[] { 1, 1, 1, 2, 2, 2, 3, 3, 3 };
-        Assert.AreEqual(expectedOrder, chain.Order);
-        expectedAlphabet = new Alphabet() { (ValueString)"A", (ValueString)"B", (ValueString)"C" };
-        Assert.AreEqual(expectedAlphabet, chain.Alphabet);
+        Assert.That(chain.Length, Is.EqualTo(9));
+        expectedOrder = [1, 1, 1, 2, 2, 2, 3, 3, 3];
+        Assert.That(chain.Order, Is.EqualTo(expectedOrder));
+        expectedAlphabet = [(ValueString)"A", (ValueString)"B", (ValueString)"C"];
+        Assert.That(chain.Alphabet, Is.EqualTo(expectedAlphabet));
 
         chain = new BaseChain("BBBCCCAAA");
-        Assert.AreEqual(9, chain.Length);
-        expectedOrder = new[] { 1, 1, 1, 2, 2, 2, 3, 3, 3 };
-        Assert.AreEqual(expectedOrder, chain.Order);
-        expectedAlphabet = new Alphabet() { (ValueString)"B", (ValueString)"C", (ValueString)"A" };
-        Assert.AreEqual(expectedAlphabet, chain.Alphabet);
+        Assert.That(chain.Length, Is.EqualTo(9));
+        expectedOrder = [1, 1, 1, 2, 2, 2, 3, 3, 3];
+        Assert.That(chain.Order, Is.EqualTo(expectedOrder));
+        expectedAlphabet = [(ValueString)"B", (ValueString)"C", (ValueString)"A"];
+        Assert.That(chain.Alphabet, Is.EqualTo(expectedAlphabet));
 
         chain = new BaseChain("BBB---");
-        Assert.AreEqual(6, chain.Length);
-        expectedOrder = new[] { 1, 1, 1, 2, 2, 2 };
-        Assert.AreEqual(expectedOrder, chain.Order);
-        expectedAlphabet = new Alphabet() { (ValueString)"B", (ValueString)"-" };
-        Assert.AreEqual(expectedAlphabet, chain.Alphabet);
+        Assert.That(chain.Length, Is.EqualTo(6));
+        expectedOrder = [1, 1, 1, 2, 2, 2];
+        Assert.That(chain.Order, Is.EqualTo(expectedOrder));
+        expectedAlphabet = [(ValueString)"B", (ValueString)"-"];
+        Assert.That(chain.Alphabet, Is.EqualTo(expectedAlphabet));
     }
 
     /// <summary>
@@ -89,7 +89,7 @@ public class BaseChainTests
     {
         var chain = new BaseChain(10);
         chain.Set(new ValueString('1'), 0);
-        Assert.IsTrue(((ValueString)chain[0]).Equals("1"));
+        Assert.That(((ValueString)chain[0]).Equals("1"), Is.True);
     }
 
     /// <summary>
@@ -100,7 +100,7 @@ public class BaseChainTests
     {
         var chain = new BaseChain(10);
         chain[0] = new ValueString('1');
-        Assert.IsTrue(((ValueString)chain.Get(0)).Equals("1"));
+        Assert.That(((ValueString)chain.Get(0)).Equals("1"), Is.True);
     }
 
     /// <summary>
@@ -111,7 +111,7 @@ public class BaseChainTests
     {
         var chain = new BaseChain(10);
         chain.Set(new ValueString('1'), 0);
-        Assert.IsTrue(((ValueString)chain.Get(0)).Equals("1"));
+        Assert.That(((ValueString)chain.Get(0)).Equals("1"), Is.True);
     }
 
     /// <summary>
@@ -122,7 +122,7 @@ public class BaseChainTests
     {
         var chain = new BaseChain(10);
         chain.Set(new ValueString('1'), 0);
-        Assert.IsTrue(((ValueString)chain.Get(0)).Equals("1"));
+        Assert.That(((ValueString)chain.Get(0)).Equals("1"), Is.True);
     }
 
     /// <summary>
@@ -133,24 +133,24 @@ public class BaseChainTests
     {
         var chain = new BaseChain(10);
         chain.Set(new ValueString('1'), 0);
-        Assert.IsTrue(((ValueString)chain[0]).Equals("1"));
+        Assert.That(((ValueString)chain[0]).Equals("1"), Is.True);
 
         chain.RemoveAt(0);
-        Assert.AreEqual(NullValue.Instance(), chain[0]);
+        Assert.That(chain[0], Is.EqualTo(NullValue.Instance()));
     }
 
     /// <summary>
-    /// The dekete test.
+    /// The delete test.
     /// </summary>
     [Test]
     public void DeleteTest()
     {
         var chain = new BaseChain(10);
         chain.Set(new ValueString('1'), 0);
-        Assert.IsTrue(((ValueString)chain[0]).Equals("1"));
+        Assert.That(((ValueString)chain[0]).Equals("1"), Is.True);
 
         chain.DeleteAt(0);
-        Assert.AreEqual(NullValue.Instance(), chain[0]);
+        Assert.That(chain[0], Is.EqualTo(NullValue.Instance()));
     }
 
     /// <summary>
@@ -160,7 +160,7 @@ public class BaseChainTests
     public void GetLengthTest()
     {
         var chain = new BaseChain(10);
-        Assert.AreEqual(10, chain.Length);
+        Assert.That(chain.Length, Is.EqualTo(10));
     }
 
     /// <summary>
@@ -171,9 +171,9 @@ public class BaseChainTests
     {
         var chain = new BaseChain("123456789A");
 
-        var itsClone = (BaseChain)chain.Clone();
-        Assert.AreEqual(chain, itsClone);
-        Assert.AreNotSame(chain, itsClone);
+        var clone = (BaseChain)chain.Clone();
+        Assert.That(clone, Is.EqualTo(chain));
+        Assert.That(clone, Is.Not.SameAs(chain));
     }
 
     [TestCase(9, 0, "C", 10)]
@@ -199,11 +199,11 @@ public class BaseChainTests
         Chain expected = ChainsStorage.Chains[expectedIndex];
 
         source.Set(new ValueString(element), index);
-        Assert.AreEqual(expected, source);
+        Assert.That(source, Is.EqualTo(expected));
 
         charArraySource[index] = element[0];
         expected = new Chain(new string(charArraySource));
-        Assert.AreEqual(expected, source);
+        Assert.That(source, Is.EqualTo(expected));
     }
 
     [TestCase(18, 0, "A", 19)]
@@ -221,6 +221,6 @@ public class BaseChainTests
         Chain expected = ChainsStorage.Chains[expectedIndex];
 
         source.Set(new ValueString(element), index);
-        Assert.AreEqual(expected, source);
+        Assert.That(source, Is.EqualTo(expected));
     }
 }

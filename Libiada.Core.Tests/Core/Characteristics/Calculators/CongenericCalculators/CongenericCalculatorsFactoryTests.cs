@@ -39,7 +39,7 @@ public class CongenericCalculatorsFactoryTests
     [TestCase(CongenericCharacteristic.Volume, typeof(Volume))]
     public void CreateCalculatorTest(CongenericCharacteristic type, Type calculator)
     {
-        Assert.IsInstanceOf(calculator, CongenericCalculatorsFactory.CreateCalculator(type));
+        Assert.That(CongenericCalculatorsFactory.CreateCalculator(type), Is.TypeOf(calculator));
     }
 
     /// <summary>

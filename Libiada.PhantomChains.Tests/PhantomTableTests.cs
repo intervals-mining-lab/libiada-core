@@ -15,18 +15,21 @@ public class PhantomTableTests
     [Test]
     public void VolumeTest()
     {
-        var m3 = new ValuePhantom { new ValueString('a') };
-        var m1 = new ValuePhantom { new ValueString('1'), new ValueString('2'), new ValueString('3') };
-        var m2 = new ValuePhantom { new ValueString('4'), new ValueString('3') };
+        ValuePhantom m3 = [new ValueString('a')];
+        ValuePhantom m1 = [new ValueString('1'), new ValueString('2'), new ValueString('3')];
+        ValuePhantom m2 = [new ValueString('4'), new ValueString('3')];
 
-        var test = new BaseChain(new List<IBaseObject>() { m1, m2, m2, m3 });
+        BaseChain test = new(new List<IBaseObject>() { m1, m2, m2, m3 });
 
-        var table = new PhantomTable(test);
-        Assert.AreEqual(12, table[0].Volume);
-        Assert.AreEqual(4, table[1].Volume);
-        Assert.AreEqual(2, table[2].Volume);
-        Assert.AreEqual(1, table[3].Volume);
-        Assert.AreEqual(1, table[4].Volume);
+        PhantomTable table = new(test);
+        Assert.Multiple(() =>
+        {
+            Assert.That(table[0].Volume, Is.EqualTo(12));
+            Assert.That(table[1].Volume, Is.EqualTo(4));
+            Assert.That(table[2].Volume, Is.EqualTo(2));
+            Assert.That(table[3].Volume, Is.EqualTo(1));
+            Assert.That(table[4].Volume, Is.EqualTo(1));
+        });
     }
 
     /// <summary>
@@ -35,14 +38,17 @@ public class PhantomTableTests
     [Test]
     public void ContentTest()
     {
-        var m1 = new ValuePhantom { new ValueString('1'), new ValueString('2'), new ValueString('3') };
-        var m2 = new ValuePhantom { new ValueString('4'), new ValueString('3') };
+        ValuePhantom m1 = [new ValueString('1'), new ValueString('2'), new ValueString('3')];
+        ValuePhantom m2 = [new ValueString('4'), new ValueString('3')];
 
-        var test = new BaseChain(new List<IBaseObject>() { m1, m2, m2 });
+        BaseChain test = new(new List<IBaseObject>() { m1, m2, m2 });
 
-        var table = new PhantomTable(test);
-        Assert.AreEqual(m1, table[1].Content);
-        Assert.AreEqual(m2, table[2].Content);
-        Assert.AreEqual(m2, table[3].Content);
+        PhantomTable table = new(test);
+        Assert.Multiple(() =>
+        {
+            Assert.That(table[1].Content, Is.EqualTo(m1));
+            Assert.That(table[2].Content, Is.EqualTo(m2));
+            Assert.That(table[3].Content, Is.EqualTo(m2));
+        });
     }
 }

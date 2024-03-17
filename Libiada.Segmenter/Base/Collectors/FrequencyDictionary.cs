@@ -292,4 +292,14 @@ public class FrequencyDictionary
 
         return true;
     }
+
+    public override bool Equals(object? obj)
+    {
+        if(ReferenceEquals(this, obj)) return true;
+
+        if (obj == null) return false;
+
+        if (obj is not FrequencyDictionary other) return false;
+        return Equals(other);
+    }
 }

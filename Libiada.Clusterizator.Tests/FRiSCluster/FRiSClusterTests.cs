@@ -15,9 +15,9 @@ public class FRiSClusterTests
     public void SimpleClusterTest()
     {
         var cluster = new FRiSCluster(2, 2);
-        double[][] data = { new double[] { 1 }, new double[] { 2 }, new double[] { 10 } };
+        double[][] data = [[1], [2], [10]];
         int[] actual = cluster.Cluster(2, data);
-        Assert.AreEqual(new[] { 0, 0, 1 }, actual);
+        Assert.That(actual, Is.EqualTo(new[] { 0, 0, 1 }));
     }
 
     /// <summary>
@@ -27,9 +27,9 @@ public class FRiSClusterTests
     public void FourPointsClusterTest()
     {
         var cluster = new FRiSCluster(2, 2);
-        double[][] data = { new double[] { -5 }, new double[] { -4 }, new double[] { 4 }, new double[] { 5 } };
+        double[][] data = [[-5], [-4], [4], [5]];
         int[] actual = cluster.Cluster(2, data);
-        Assert.AreEqual(new[] { 0, 0, 1, 1 }, actual);
+        Assert.That(actual, Is.EqualTo(new int[] { 0, 0, 1, 1 }));
     }
 
     /// <summary>
@@ -39,9 +39,10 @@ public class FRiSClusterTests
     public void TwoDimensionDataClusterTest()
     {
         var cluster = new FRiSCluster(2, 2);
-        double[][] data = { new double[] { -5, 1 }, new double[] { -5, 2 }, new double[] { 0, 0 }, new double[] { 1, 1 } };
+        double[][] data = [[-5, 1], [-5, 2], [0, 0], [1, 1]];
         int[] actual = cluster.Cluster(2, data);
-        Assert.AreEqual(new[] { 0, 0, 1, 1 }, actual);
+        Assert.That(actual, Is.EqualTo(new int[] { 0, 0, 1, 1 }));
+
     }
 
     /// <summary>
@@ -51,8 +52,8 @@ public class FRiSClusterTests
     public void MultipleDataPointsClusterTest()
     {
         var cluster = new FRiSCluster(2, 2);
-        double[][] data = { new[] { -2.1 }, new[] { -1.0 }, new[] { 0.3 }, new[] { 1.0 }, new[] { 1.1 }, new[] { 7.0 }, new[] { 9.0} };
+        double[][] data = [[-2.1], [-1.0], [0.3], [1.0], [1.1], [7.0], [9.0]];
         int[] actual = cluster.Cluster(2, data);
-        Assert.AreEqual(new[] { 0, 0, 0, 0, 0, 1, 1 }, actual);
+        Assert.That(actual, Is.EqualTo(new int[] { 0, 0, 0, 0, 0, 1, 1 }));
     }
 }

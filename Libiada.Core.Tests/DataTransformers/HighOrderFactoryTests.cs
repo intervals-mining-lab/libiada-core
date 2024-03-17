@@ -32,7 +32,7 @@ public class HighOrderFactoryTests
     {
         var result = HighOrderFactory.Create(ChainsStorage.Chains[chainIndex], link);
         var expected = ChainsStorage.HighOrderChains[resultIndex];
-        Assert.AreEqual(expected, result);
+        Assert.That(result, Is.EqualTo(expected));
     }
 
     /// <summary>
@@ -44,6 +44,6 @@ public class HighOrderFactoryTests
         var result = HighOrderFactory.Create(ChainsStorage.Chains[0], Link.End);
         result = HighOrderFactory.Create(result, Link.End);
         var expected = ChainsStorage.HighOrderChains[6];
-        Assert.AreEqual(expected, result);
+        Assert.That(result, Is.EqualTo(expected));
     }
 }

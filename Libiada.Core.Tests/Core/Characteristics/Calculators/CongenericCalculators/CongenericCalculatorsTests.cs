@@ -19,7 +19,7 @@ public abstract class CongenericCalculatorsTests<T> where T : ICongenericCalcula
     /// <summary>
     /// Gets or sets the calculator.
     /// </summary>
-    private readonly T calculator = new T();
+    private readonly T calculator = new();
 
     /// <summary>
     /// The congeneric chain characteristic test.
@@ -35,6 +35,6 @@ public abstract class CongenericCalculatorsTests<T> where T : ICongenericCalcula
     /// </param>
     protected void CongenericChainCharacteristicTest(int index, Link link, double value)
     {
-        Assert.AreEqual(value, calculator.Calculate(congenericChains[index], link), 0.0001);
+        Assert.That(calculator.Calculate(congenericChains[index], link), Is.EqualTo(value).Within(0.0001d));
     }
 }

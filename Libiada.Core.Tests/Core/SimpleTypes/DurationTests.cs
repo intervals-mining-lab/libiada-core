@@ -18,22 +18,28 @@ public class DurationTests
         var duration2 = new Duration(1, 4, false);
         var duration3 = duration1.AddDuration(duration2);
 
-        // duration1
-        Assert.AreEqual(1, duration1.Numerator);
-        Assert.AreEqual(2, duration1.Denominator);
+        Assert.Multiple(() =>
+        {
+            // duration1
+            Assert.That(duration1.Numerator, Is.EqualTo(1));
+            Assert.That(duration1.Denominator, Is.EqualTo(2));
 
-        // duration2
-        Assert.AreEqual(1, duration2.Numerator);
-        Assert.AreEqual(4, duration2.Denominator);
+            // duration2
+            Assert.That(duration2.Numerator, Is.EqualTo(1));
+            Assert.That(duration2.Denominator, Is.EqualTo(4));
 
-        // duration3
-        Assert.AreEqual(3, duration3.Numerator);
-        Assert.AreEqual(4, duration3.Denominator);
+            // duration3
+            Assert.That(duration3.Numerator, Is.EqualTo(3));
+            Assert.That(duration3.Denominator, Is.EqualTo(4));
+        });
 
         duration3 = duration3.AddDuration(duration1);
 
-        // duration3'
-        Assert.AreEqual(5, duration3.Numerator);
-        Assert.AreEqual(4, duration3.Denominator);
+        Assert.Multiple(() =>
+        {
+            // duration3'
+            Assert.That(duration3.Numerator, Is.EqualTo(5));
+            Assert.That(duration3.Denominator, Is.EqualTo(4));
+        });
     }
 }

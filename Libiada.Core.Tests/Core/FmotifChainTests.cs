@@ -20,9 +20,9 @@ public class FmotifChainTests
         chain.FmotifsList.Add(new Fmotif(FmotifType.CompleteMinimalMeasure, PauseTreatment.Ignore, 0));
         chain.FmotifsList[0].NoteList.Add(new ValueNote(new Pitch(0, NoteSymbol.A, 0), new Duration(1, 4, false), false, Tie.None));
         chain.FmotifsList[0].NoteList.Add(new ValueNote(new Pitch(0, NoteSymbol.B, 0), new Duration(1, 2, false), false, Tie.None));
-        Assert.AreEqual(0, chain.FmotifsList[0].Id);
-        Assert.AreEqual(NoteSymbol.A, chain.FmotifsList[0].NoteList[0].Pitches[0].Step);
-        Assert.AreEqual(NoteSymbol.B, chain.FmotifsList[0].NoteList[1].Pitches[0].Step);
+        Assert.That(chain.FmotifsList[0].Id, Is.EqualTo(0));
+        Assert.That(chain.FmotifsList[0].NoteList[0].Pitches[0].Step, Is.EqualTo(NoteSymbol.A));
+        Assert.That(chain.FmotifsList[0].NoteList[1].Pitches[0].Step, Is.EqualTo(NoteSymbol.B));
     }
 
     /// <summary>
@@ -47,17 +47,17 @@ public class FmotifChainTests
         var secondChain = new FmotifChain();
         secondChain.FmotifsList.Add(fmotif1);
         secondChain.FmotifsList.Add(fmotif2);
-        Assert.IsTrue(firstChain.Equals(secondChain));
+        Assert.That(firstChain, Is.EqualTo(secondChain));
 
         secondChain = new FmotifChain();
         secondChain.FmotifsList.Add(fmotif2);
         secondChain.FmotifsList.Add(fmotif1);
-        Assert.IsFalse(firstChain.Equals(secondChain));
+        Assert.That(firstChain, Is.Not.EqualTo(secondChain));
 
         secondChain = new FmotifChain();
         secondChain.FmotifsList.Add(fmotif2);
         secondChain.FmotifsList.Add(fmotif2);
-        Assert.IsFalse(firstChain.Equals(secondChain));
+        Assert.That(firstChain, Is.Not.EqualTo(secondChain));
 
         firstChain = new FmotifChain();
         firstChain.FmotifsList.Add(fmotif1);
@@ -70,6 +70,6 @@ public class FmotifChainTests
         secondChain.FmotifsList.Add(fmotif1);
         secondChain.FmotifsList.Add(fmotif2);
         secondChain.FmotifsList.Add(fmotif1);
-        Assert.IsTrue(firstChain.Equals(secondChain));
+        Assert.That(firstChain, Is.EqualTo(secondChain));
     }
 }

@@ -25,7 +25,7 @@ public class DissimilarChainFactoryTests
     {
         var result = DissimilarChainFactory.Create(ChainsStorage.Chains[chainIndex]);
         var expected = ChainsStorage.DissimilarChains[resultIndex];
-        Assert.AreEqual(expected, result);
+        Assert.That(result, Is.EqualTo(expected));
     }
 
     /// <summary>
@@ -45,6 +45,6 @@ public class DissimilarChainFactoryTests
         var result = DissimilarChainFactory.Create(ChainsStorage.Chains[chainIndex]);
         result = DissimilarChainFactory.Create(result);
         var expected = ChainsStorage.DissimilarChains[resultIndex];
-        Assert.AreEqual(expected, result);
+        Assert.That(result, Is.EqualTo(expected));
     }
 }

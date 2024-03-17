@@ -35,6 +35,6 @@ public class MarkovMetricsTests
         var markov = new MarkovChainNotCongenericStatic(2, 0, new MockGenerator());
         markov.Teach(testChain, TeachingMethod.Cycle);
         var ma = new MarkovMetrics();
-        Assert.AreEqual(ma.GetArithmeticalMean(markov), ma.GetArithmeticalMean(markov));
+        Assert.That(ma.GetArithmeticalMean(markov), Is.EqualTo(ma.GetArithmeticalMean(markov)));
     }
 }

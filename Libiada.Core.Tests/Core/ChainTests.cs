@@ -25,11 +25,11 @@ public class ChainTests
     [Test]
     public void SimilarChainsGetTest()
     {
-        var congenericChainA = new CongenericChain(new List<int> { 2, 8 }, elements["A"], 10);
+        var congenericChainA = new CongenericChain([2, 8], elements["A"], 10);
 
         var chainCreatedCongenericChain = chains[2].CongenericChain(elements["A"]);
 
-        Assert.AreEqual(congenericChainA, chainCreatedCongenericChain);
+        Assert.That(chainCreatedCongenericChain, Is.EqualTo(congenericChainA));
     }
 
     /// <summary>
@@ -38,13 +38,13 @@ public class ChainTests
    [Test]
     public void ChainTest()
     {
-        var source = new short[] { 1, 2, 3, 2, 2, 4, 5, 1 };
+        short[] source = [1, 2, 3, 2, 2, 4, 5, 1];
         var actual = new Chain(source);
         var alphabet = new Alphabet() {new ValueInt(1), new ValueInt(2) , new ValueInt(3) , new ValueInt(4), new ValueInt(5) };
-        Assert.AreEqual(alphabet,actual.Alphabet);
+        Assert.That(actual.Alphabet, Is.EqualTo(alphabet));
 
         var order = new int[] { 1, 2, 3, 2, 2, 4, 5, 1 };
-        Assert.AreEqual(order, actual.Order);
+        Assert.That(actual.Order, Is.EqualTo(order));
     }
 
 
@@ -54,18 +54,18 @@ public class ChainTests
     [Test]
     public void IntervalsTest()
     {
-        var intervals = new List<List<int>>
-            {
-                new List<int> { 1, 1, 4, 4, 1 },
-                new List<int> { 3, 1, 3, 4 },
-                new List<int> { 5, 3, 1, 2 }
-            };
+        List<List<int>> intervals =
+            [
+                [1, 1, 4, 4, 1],
+                [3, 1, 3, 4],
+                [5, 3, 1, 2]
+            ];
         for (int i = 0; i < chains[0].Alphabet.Cardinality; i++)
         {
             var actualIntervals = chains[0].CongenericChain(i).GetArrangement(Link.Both);
             for (int j = 0; j < actualIntervals.Length; j++)
             {
-                Assert.AreEqual(intervals[i][j], actualIntervals[j], "{0} and {1} intervals of sequence are not equal", j, i);
+                Assert.That(actualIntervals[j], Is.EqualTo(intervals[i][j]), $"{j} and {i} intervals of sequence are not equal");
             }
         }
     }
@@ -103,6 +103,6 @@ public class ChainTests
     public void GetElementPositionTest(int expected, int chainIndex, string element, int occurrence)
     {
         var actual = chains[chainIndex].GetOccurrence(elements[element], occurrence);
-        Assert.AreEqual(expected, actual);
+        Assert.That(actual, Is.EqualTo(expected));
     }
 }

@@ -41,6 +41,6 @@ public class LinkedFullCalculatorTests
     {
         var calculator = new LinkedFullCalculator(type, link);
         double actual = calculator.Calculate(sequences[sequenceIndex]);
-        Assert.AreEqual(expected, actual, 0.0001);
+        Assert.That(actual, Is.EqualTo(expected).Within(0.0001d));
     }
 }

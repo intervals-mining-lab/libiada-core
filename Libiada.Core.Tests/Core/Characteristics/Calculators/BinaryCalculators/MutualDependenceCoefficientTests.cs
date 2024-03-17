@@ -49,28 +49,37 @@ public class MutualDependenceCoefficientTests : BinaryCalculatorsTests<MutualDep
     {
         List<List<double>> result = Calculator.CalculateAll(Chains[1], Link.End);
 
-        Assert.AreEqual(0, result[0][0]);
-        Assert.AreEqual(0, result[0][1]);
-        Assert.AreEqual(0, result[1][0]);
-        Assert.AreEqual(0, result[1][1]);
+        Assert.Multiple(() =>
+        {
+            Assert.That(result[0][0], Is.Zero);
+            Assert.That(result[0][1], Is.Zero);
+            Assert.That(result[1][0], Is.Zero);
+            Assert.That(result[1][1], Is.Zero);
+        });
 
         result = Calculator.CalculateAll(Chains[10], Link.End);
 
-        Assert.AreEqual(0, result[0][0]);
-        Assert.AreEqual(0.497, Math.Round(result[0][1], 3));
-        Assert.AreEqual(0.497, Math.Round(result[1][0], 3));
-        Assert.AreEqual(0, result[1][1]);
+        Assert.Multiple(() =>
+        {
+            Assert.That(result[0][0], Is.Zero);
+            Assert.That(result[0][1], Is.EqualTo(0.497).Within(0.001d));
+            Assert.That(result[1][0], Is.EqualTo(0.497).Within(0.001d));
+            Assert.That(result[1][1], Is.Zero);
+        });
 
         result = Calculator.CalculateAll(Chains[18], Link.End);
 
-        Assert.AreEqual(0, result[0][0]);
-        Assert.AreEqual(0.397, Math.Round(result[0][1], 3));
-        Assert.AreEqual(0.236, Math.Round(result[0][2], 3));
-        Assert.AreEqual(0.397, Math.Round(result[1][0], 3));
-        Assert.AreEqual(0, result[1][1]);
-        Assert.AreEqual(0.360, Math.Round(result[1][2], 3));
-        Assert.AreEqual(0.236, Math.Round(result[2][0], 3));
-        Assert.AreEqual(0.360, Math.Round(result[2][1], 3));
-        Assert.AreEqual(0, result[2][2]);
+        Assert.Multiple(() =>
+        {
+            Assert.That(result[0][0], Is.Zero);
+            Assert.That(result[0][1], Is.EqualTo(0.397).Within(0.001d));
+            Assert.That(result[0][2], Is.EqualTo(0.236).Within(0.001d));
+            Assert.That(result[1][0], Is.EqualTo(0.397).Within(0.001d));
+            Assert.That(result[1][1], Is.Zero);
+            Assert.That(result[1][2], Is.EqualTo(0.360).Within(0.001d));
+            Assert.That(result[2][0], Is.EqualTo(0.236).Within(0.001d));
+            Assert.That(result[2][1], Is.EqualTo(0.360).Within(0.001d));
+            Assert.That(result[2][2], Is.Zero);
+        });
     }
 }

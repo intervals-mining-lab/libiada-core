@@ -38,7 +38,7 @@ public class NullReorganizerTests
     {
         var reorganizer = new NullReorganizer();
         var result = reorganizer.Reorganize(chain);
-        Assert.AreEqual(baseChain, result);
+        Assert.That(result, Is.EqualTo(baseChain));
     }
 
     /// <summary>
@@ -50,6 +50,6 @@ public class NullReorganizerTests
     {
         var reorganizer = new NullReorganizer();
         var result = reorganizer.Reorganize(baseChain);
-        Assert.AreEqual(chain, result);
+        Assert.That(result, Is.EqualTo(chain));
     }
 }

@@ -29,7 +29,7 @@ public class MeasureTests
         var m1 = new Measure(notes, attributes);
         var m2 = new Measure(notes2, attributes);
 
-        Assert.IsTrue(m1.Equals(m2));
+        Assert.That(m1, Is.EqualTo(m2));
     }
 
     /// <summary>
@@ -55,7 +55,7 @@ public class MeasureTests
         var m2 = new Measure(notes2, attributes);
         var m3 = new Measure(notes2, attributes2);
 
-        Assert.IsFalse(m1.Equals(m2));
-        Assert.IsFalse(m2.Equals(m3));
+        Assert.That(m1, Is.Not.EqualTo(m2));
+        Assert.That(m2, Is.Not.EqualTo(m3));
     }
 }

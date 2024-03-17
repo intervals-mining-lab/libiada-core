@@ -16,12 +16,12 @@ public class SeekerSequenceTests
     [Test]
     public void SeekTest()
     {
-        int length = 2;
-        int step = 1;
+        const int length = 2;
+        const int step = 1;
 
-        var list1 = new List<string> { "ABAC", "A", "A", "A", "ABAC", "A", "ABC", "AC", "ABC", "AG", "ABC", "A", "AB", "A", "ABC", "ABAC", "A" };
-        var list2 = new List<string> { "ABAC", "A" };
-        var seek = new SeekerSequence(new StartIterator(new ComplexChain(list1), length, step));
-        Assert.True(seek.Seek(list2) == 3);
+        List<string> list1 = ["ABAC", "A", "A", "A", "ABAC", "A", "ABC", "AC", "ABC", "AG", "ABC", "A", "AB", "A", "ABC", "ABAC", "A"];
+        List<string> list2 = ["ABAC", "A"];
+        SeekerSequence seek = new(new StartIterator(new ComplexChain(list1), length, step));
+        Assert.That(seek.Seek(list2), Is.EqualTo(3));
     }
 }

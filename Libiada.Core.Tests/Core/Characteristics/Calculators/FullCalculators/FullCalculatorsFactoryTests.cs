@@ -75,7 +75,7 @@ public class FullCalculatorsFactoryTests
     [TestCase(FullCharacteristic.Volume, typeof(Volume))]
     public void CreateCalculatorTest(FullCharacteristic type, Type calculator)
     {
-        Assert.IsInstanceOf(calculator, FullCalculatorsFactory.CreateCalculator(type));
+        Assert.That(FullCalculatorsFactory.CreateCalculator(type), Is.TypeOf(calculator));
     }
 
     /// <summary>

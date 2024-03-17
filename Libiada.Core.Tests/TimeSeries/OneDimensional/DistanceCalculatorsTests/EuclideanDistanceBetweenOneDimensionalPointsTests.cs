@@ -28,6 +28,6 @@ public class EuclideanDistanceBetweenOneDimensionalPointsTests
     {
         var calculator = new EuclideanDistanceBetweenOneDimensionalPointsCalculator();
         double result = calculator.GetDistance(firstPoint, secondPoint);
-        Assert.AreEqual(result, expectedDistance);
+        Assert.That(result, Is.EqualTo(expectedDistance));
     }
 }

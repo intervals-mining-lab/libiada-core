@@ -1,7 +1,5 @@
 ﻿namespace Libiada.Core.Tests.TimeSeries.Aligners;
 
-using System.Diagnostics;
-
 using Libiada.Core.TimeSeries.Aligners;
 
 /// <summary>
@@ -13,10 +11,10 @@ public class LastElementDuplicatorTests
     /// The combination tests.
     /// </summary>
     private static readonly object[][] CombinationTests =
-    {
-        new object[] { new double[] { 1, 2, 3 }, new double[] { 1, 2, 3, 4, 5, 6, 4, 5, 6, 4, 5, 6, 4, 5, 6, 4, 5, 6, 4, 5, 6, 4, 5, 6 }, new double[] { 1, 2, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3 } },
-        new object[] { new double[] { 1, 2, 3, 4, 5, 6, 4, 5, 6, 4, 5, 6, 4, 5, 6, 4, 5, 6, 4, 5, 6, 4, 5, 6 }, new double[] { 1, 2, 3 }, new double[] { 1, 2, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3 } }
-    };
+    [
+        [new double[] { 1, 2, 3 }, new double[] { 1, 2, 3, 4, 5, 6, 4, 5, 6, 4, 5, 6, 4, 5, 6, 4, 5, 6, 4, 5, 6, 4, 5, 6 }, new double[] { 1, 2, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3 }],
+        [new double[] { 1, 2, 3, 4, 5, 6, 4, 5, 6, 4, 5, 6, 4, 5, 6, 4, 5, 6, 4, 5, 6, 4, 5, 6 }, new double[] { 1, 2, 3 }, new double[] { 1, 2, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3 }]
+    ];
 
     /// <summary>
     /// The last element duplication aligner test.
@@ -30,18 +28,13 @@ public class LastElementDuplicatorTests
     /// <param name="expected">
     /// The expected.
     /// </param>
-    [TestCaseSource("CombinationTests")]
+    [TestCaseSource(nameof(CombinationTests))]
 
     public void LastElementDuplicationAlignerTest(double[] firstTimeSeries, double[] secondTimeSeries, double[] expected)
     {
-        Stopwatch timer = new Stopwatch();
-        timer.Start();
         var aligner = new LastElementDuplicator();
-        var result = aligner.AlignSeries(firstTimeSeries, secondTimeSeries);
-        timer.Stop();
-        Console.WriteLine("Time elapsed: (ms) : {0}", timer.Elapsed.TotalMilliseconds);
-        Assert.AreEqual(
-            expected,
-            firstTimeSeries.Length < secondTimeSeries.Length ? result.first[0] : result.second[0]);
+        var (first, second) = aligner.AlignSeries(firstTimeSeries, secondTimeSeries);
+        var actual = firstTimeSeries.Length < secondTimeSeries.Length ? first[0] : second[0];
+        Assert.That(actual, Is.EqualTo(expected));
     }
 }

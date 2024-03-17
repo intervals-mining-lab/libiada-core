@@ -111,7 +111,7 @@ public class MarkovChainNotCongenericStaticTests
         // "a" 0.71;
         // "a" 0.2;
 
-        Assert.AreEqual(resultTheory, temp);
+        Assert.That(resultTheory, Is.EqualTo(temp));
     }
 
     /// <summary>
@@ -213,7 +213,7 @@ public class MarkovChainNotCongenericStaticTests
         // 1 chain. веро€тность по второму уровню. выпало  0.77 ѕолучаем с
         // 2 chain. веро€тность по второму уровню. выпало  0.15 ѕолучаем b
 
-        Assert.AreEqual(result, temp);
+        Assert.That(result, Is.EqualTo(temp));
     }
 
     /// <summary>

@@ -216,7 +216,7 @@ public class BaseChain : AbstractChain
 
         IBaseObject[] chain = ToArray();
         chain[index] = item;
-        alphabet = new Alphabet { NullValue.Instance() };
+        alphabet = [NullValue.Instance()];
 
         FillAlphabetAndOrder(chain);
     }
@@ -231,6 +231,8 @@ public class BaseChain : AbstractChain
     {
         order[index] = 0;
 
+        if (VerifyOrder()) return;
+        throw new NotImplementedException();
         // TODO: remove element from alphabet if last entry is removed.
     }
 
@@ -244,6 +246,8 @@ public class BaseChain : AbstractChain
     {
         order = order.DeleteAt(index);
 
+        if (VerifyOrder()) return;
+        throw new NotImplementedException();
         // TODO: remove element from alphabet if last entry is removed.
     }
 
@@ -264,7 +268,7 @@ public class BaseChain : AbstractChain
         }
 
         order = new int[length];
-        alphabet = new Alphabet { NullValue.Instance() };
+        alphabet = [NullValue.Instance()];
     }
 
     /// <summary>
@@ -351,5 +355,17 @@ public class BaseChain : AbstractChain
 
             order[i] = elementIndex;
         }
+    }
+
+    private bool VerifyOrder() 
+    {
+        int counter = 0;
+        for(int i = 0; i < order.Length; i++)
+        {
+            if (counter + 1 < order[i]) return false;
+            if (counter + 1 == order[i]) counter++;
+        }
+
+        return true;
     }
 }

@@ -15,9 +15,9 @@ public class ValueIntTests
     public void SumTest()
     {
         int x = new ValueInt(1) + new ValueInt(3);
-        Assert.AreEqual(4, x);
+        Assert.That(x, Is.EqualTo(4));
         ValueInt y = new ValueInt(1) + new ValueInt(3);
-        Assert.AreEqual(4, (int)y);
-        Assert.IsTrue(4.Equals(y));
+        Assert.That((int)y, Is.EqualTo(4));
+        Assert.That(4.Equals(y), Is.True);
     }
 }

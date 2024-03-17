@@ -11,10 +11,7 @@ public class AverageTests
     /// <summary>
     /// The distances list.
     /// </summary>
-    private static readonly List<double> distances = new List<double>()
-    {
-        1, 2, 3, 4, 5
-    };
+    private static readonly List<double> distances = [1, 2, 3, 4, 5];
 
     /// <summary>
     /// The expected average result.
@@ -29,6 +26,6 @@ public class AverageTests
     {
         var aggregator = new Average();
         double result = aggregator.Aggregate(distances);
-        Assert.AreEqual(average, result);
+        Assert.That(result, Is.EqualTo(average));
     }
 }

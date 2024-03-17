@@ -45,7 +45,7 @@ public class AverageWordLengthTests : FullCalculatorsTests<AverageWordLength>
             [4] = new ValueString("bla")
         };
         double actual = Calculator.Calculate(sequence, Link.NotApplied);
-        Assert.AreEqual(5, actual, 0.0001);
+        Assert.That(actual, Is.EqualTo(5).Within(0.0001d));
 
         sequence = new Chain(10)
         {
@@ -61,7 +61,7 @@ public class AverageWordLengthTests : FullCalculatorsTests<AverageWordLength>
             [9] = new ValueString("poiygtr")
         };
         actual = Calculator.Calculate(sequence, Link.NotApplied);
-        Assert.AreEqual(5.6, actual, 0.0001);
+        Assert.That(actual, Is.EqualTo(5.6).Within(0.0001d));
 
         sequence = new Chain(8)
         {
@@ -75,6 +75,6 @@ public class AverageWordLengthTests : FullCalculatorsTests<AverageWordLength>
             [7] = new ValueString("3456789012345")
         };
         actual = Calculator.Calculate(sequence, Link.NotApplied);
-        Assert.AreEqual(6.875, actual, 0.0001);
+        Assert.That(actual, Is.EqualTo(6.875).Within(0.0001d));
     }
 }

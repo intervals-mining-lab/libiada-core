@@ -25,12 +25,12 @@ public class TreeTests
 
         IGenerator generator = new SimpleGenerator();
         var tree = new TreeTop(test, generator);
-        Assert.AreEqual(12, tree.Volume);
+        Assert.That(tree.Volume, Is.EqualTo(12));
         TreeNode ch1 = tree.GetChild(0);
-        Assert.AreEqual(4, ch1.Volume);
+        Assert.That(ch1.Volume, Is.EqualTo(4));
         TreeNode ch2 = tree.GetChild(1);
-        Assert.AreEqual(4, ch2.Volume);
+        Assert.That(ch2.Volume, Is.EqualTo(4));
         TreeNode ch3 = tree.GetChild(2);
-        Assert.AreEqual(4, ch3.Volume);
+        Assert.That(ch3.Volume, Is.EqualTo(4));
     }
 }

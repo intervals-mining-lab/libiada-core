@@ -14,19 +14,19 @@ public class ArrayExtensionsTests
     [Test]
     public void DeleteAtIntArrayTest()
     {
-        var source = new[] { 1, 2, 2, 4, 4, 2, 7, 2, 3, 1 };
+        int[] source = [1, 2, 2, 4, 4, 2, 7, 2, 3, 1];
 
         int[] result = source.DeleteAt(6);
-        var expected = new[] { 1, 2, 2, 4, 4, 2, 2, 3, 1 };
-        Assert.AreEqual(expected, result);
+        int[] expected = [1, 2, 2, 4, 4, 2, 2, 3, 1];
+        Assert.That(result, Is.EqualTo(expected));
 
         result = result.DeleteAt(4);
-        expected = new[] { 1, 2, 2, 4, 2, 2, 3, 1 };
-        Assert.AreEqual(expected, result);
+        expected = [1, 2, 2, 4, 2, 2, 3, 1];
+        Assert.That(result, Is.EqualTo(expected));
 
         result = result.DeleteAt(0);
-        expected = new[] { 2, 2, 4, 2, 2, 3, 1 };
-        Assert.AreEqual(expected, result);
+        expected = [2, 2, 4, 2, 2, 3, 1];
+        Assert.That(result, Is.EqualTo(expected));
     }
 
     /// <summary>
@@ -35,19 +35,19 @@ public class ArrayExtensionsTests
     [Test]
     public void DeleteAtTest()
     {
-        var source = new[] { "test", "a", "a", "test", "test", "b", "1" };
+        string[] source = ["test", "a", "a", "test", "test", "b", "1"];
 
         string[] result = source.DeleteAt(6);
-        var expected = new[] { "test", "a", "a", "test", "test", "b" };
-        Assert.AreEqual(expected, result);
+        string[] expected = ["test", "a", "a", "test", "test", "b"];
+        Assert.That(result, Is.EqualTo(expected));
 
         result = result.DeleteAt(4);
-        expected = new[] { "test", "a", "a", "test", "b" };
-        Assert.AreEqual(expected, result);
+        expected = ["test", "a", "a", "test", "b"];
+        Assert.That(result, Is.EqualTo(expected));
 
         result = result.DeleteAt(0);
-        expected = new[] { "a", "a", "test", "b" };
-        Assert.AreEqual(expected, result);
+        expected = ["a", "a", "test", "b"];
+        Assert.That(result, Is.EqualTo(expected));
     }
 
     /// <summary>
@@ -56,16 +56,16 @@ public class ArrayExtensionsTests
     [Test]
     public void AllIndexesOfIntArrayTest()
     {
-        var source = new[] { 1, 2, 2, 4, 4, 2, 7, 2, 3, 1 };
+        int[] source = [1, 2, 2, 4, 4, 2, 7, 2, 3, 1];
 
-        var expected = new[] { 1, 2, 5, 7 };
-        Assert.AreEqual(expected, source.AllIndexesOf(2));
+        int[] expected = [1, 2, 5, 7];
+        Assert.That(source.AllIndexesOf(2), Is.EqualTo(expected));
 
-        expected = new[] { 6 };
-        Assert.AreEqual(expected, source.AllIndexesOf(7));
+        expected = [6];
+        Assert.That(source.AllIndexesOf(7), Is.EqualTo(expected));
 
-        expected = Array.Empty<int>();
-        Assert.AreEqual(expected, source.AllIndexesOf(11));
+        expected = [];
+        Assert.That(source.AllIndexesOf(11), Is.EqualTo(expected));
     }
 
     /// <summary>
@@ -74,19 +74,19 @@ public class ArrayExtensionsTests
     [Test]
     public void AllIndexesOfTest()
     {
-        var source = new[] { "a", "test", "a", "aa", "test", "test", "c" };
+        string[] source = ["a", "test", "a", "aa", "test", "test", "c"];
 
-        var expected = new[] { 0, 2 };
-        Assert.AreEqual(expected, source.AllIndexesOf("a"));
+        int[] expected = [0, 2];
+        Assert.That(source.AllIndexesOf("a"), Is.EqualTo(expected));
 
-        expected = new[] { 6 };
-        Assert.AreEqual(expected, source.AllIndexesOf("c"));
+        expected = [6];
+        Assert.That(source.AllIndexesOf("c"), Is.EqualTo(expected));
 
-        expected = new[] { 1, 4, 5 };
-        Assert.AreEqual(expected, source.AllIndexesOf("test"));
+        expected = [1, 4, 5];
+        Assert.That(source.AllIndexesOf("test"), Is.EqualTo(expected));
 
-        expected = Array.Empty<int>();
-        Assert.AreEqual(expected, source.AllIndexesOf("another test"));
+        expected = [];
+        Assert.That(source.AllIndexesOf("another test"), Is.EqualTo(expected));
     }
 
     /// <summary>
@@ -95,13 +95,13 @@ public class ArrayExtensionsTests
     [Test]
     public void ToStringTest()
     {
-        var source = new[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+        int[] source = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
-        var expected = "1 2 3 4 5 6 7 8 9 10";
-        Assert.AreEqual(expected, source.ToString(" "));
+        string expected = "1 2 3 4 5 6 7 8 9 10";
+        Assert.That(source.ToString(" "), Is.EqualTo(expected));
 
         expected = "1, 2, 3, 4, 5, 6, 7, 8, 9, 10";
-        Assert.AreEqual(expected, source.ToString(", "));
+        Assert.That(source.ToString(", "), Is.EqualTo(expected));
     }
 
     /// <summary>
@@ -110,10 +110,10 @@ public class ArrayExtensionsTests
     [Test]
     public void ToStringWithDefaultDelimiterTest()
     {
-        var source = new[] { 1, 2, 3 };
+        int[] source = [1, 2, 3];
 
         string expected = "1" + Environment.NewLine + "2" + Environment.NewLine + "3";
-        Assert.AreEqual(expected, source.ToStringWithDefaultDelimiter());
+        Assert.That(source.ToStringWithDefaultDelimiter(), Is.EqualTo(expected));
     }
 
     /// <summary>
@@ -122,10 +122,10 @@ public class ArrayExtensionsTests
     [Test]
     public void ToStringWithoutDelimiterTest()
     {
-        var source = new[] { 1, 2, 3, 2, 2 };
+        int[] source = [1, 2, 3, 2, 2];
 
-        var expected = "12322";
-        Assert.AreEqual(expected, source.ToStringWithoutDelimiter());
+        const string expected = "12322";
+        Assert.That(source.ToStringWithoutDelimiter(), Is.EqualTo(expected));
     }
 
     /// <summary>
@@ -134,18 +134,18 @@ public class ArrayExtensionsTests
     [Test]
     public void RotateTest()
     {
-        var source = new[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
-        var result = source.Rotate(1);
-        var expected = new[] { 2, 3, 4, 5, 6, 7, 8, 9, 10, 1 };
-        Assert.AreEqual(expected, result);
+        int[] source = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+        int[] result = source.Rotate(1);
+        int[] expected = [2, 3, 4, 5, 6, 7, 8, 9, 10, 1];
+        Assert.That(result, Is.EqualTo(expected));
 
         result = source.Rotate(2);
-        expected = new[] { 3, 4, 5, 6, 7, 8, 9, 10, 1, 2 };
-        Assert.AreEqual(expected, result);
+        expected = [3, 4, 5, 6, 7, 8, 9, 10, 1, 2];
+        Assert.That(result, Is.EqualTo(expected));
 
         result = source.Rotate(10);
-        expected = new[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
-        Assert.AreEqual(expected, result);
+        expected = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+        Assert.That(result, Is.EqualTo(expected));
     }
 
     /// <summary>
@@ -154,21 +154,33 @@ public class ArrayExtensionsTests
     [Test]
     public void IsSortedTest()
     {
-        var source = new[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
-        Assert.IsTrue(source.IsSorted());
-        Assert.IsTrue(source.ToList().IsSorted());
+        int[] source = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+        Assert.Multiple(() =>
+        {
+            Assert.That(source.IsSorted());
+            Assert.That(source.ToList().IsSorted());
+        });
 
-        source = new[] { 1 };
-        Assert.IsTrue(source.IsSorted());
-        Assert.IsTrue(source.ToList().IsSorted());
+        source = [1];
+        Assert.Multiple(() =>
+        {
+            Assert.That(source.IsSorted());
+            Assert.That(source.ToList().IsSorted());
+        });
 
-        source = new[] { 1, 2, 2, 2, 2, 10, 100, 10000 };
-        Assert.IsTrue(source.IsSorted());
-        Assert.IsTrue(source.ToList().IsSorted());
+        source = [1, 2, 2, 2, 2, 10, 100, 10000];
+        Assert.Multiple(() =>
+        {
+            Assert.That(source.IsSorted());
+            Assert.That(source.ToList().IsSorted());
+        });
 
-        source = new[] { 1, 2, 1, 3, 4, 10 };
-        Assert.IsFalse(source.IsSorted());
-        Assert.IsFalse(source.ToList().IsSorted());
+        source = [1, 2, 1, 3, 4, 10];
+        Assert.Multiple(() =>
+        {
+            Assert.That(source.IsSorted(), Is.False);
+            Assert.That(source.ToList().IsSorted(), Is.False);
+        });
     }
 
     /// <summary>
@@ -177,11 +189,16 @@ public class ArrayExtensionsTests
     [Test]
     public void SubArrayTest()
     {
-        var source = new[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
-        Assert.AreEqual(new[] { 1 }, source.SubArray(0, 1));
-        Assert.AreEqual(new[] { 1, 2 }, source.SubArray(0, 2));
-        Assert.AreEqual(new[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 }, source.SubArray(0, 10));
-        Assert.AreEqual(new[] { 2 }, source.SubArray(1, 1));
-        Assert.AreEqual(new[] { 2, 3, 4, 5, 6, 7, 8, 9, 10 }, source.SubArray(1, 9));
+        int[] source = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+        int[] expected = [1];
+        Assert.That(source.SubArray(0, 1), Is.EqualTo(expected));
+        expected = [1, 2];
+        Assert.That(source.SubArray(0, 2), Is.EqualTo(expected));
+        expected = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+        Assert.That(source.SubArray(0, 10), Is.EqualTo(expected));
+        expected = [2];
+        Assert.That(source.SubArray(1, 1), Is.EqualTo(expected));
+        expected = [2, 3, 4, 5, 6, 7, 8, 9, 10];
+        Assert.That(source.SubArray(1, 9), Is.EqualTo(expected));
     }
 }

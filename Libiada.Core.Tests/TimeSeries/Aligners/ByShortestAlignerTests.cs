@@ -11,17 +11,17 @@ public class ByShortestAlignerTests
     /// <summary>
     /// The short time series.
     /// </summary>
-    private readonly double[] shortTimeSeries = { 1.01, 2, 5, 17.3 };
+    private readonly double[] shortTimeSeries = [1.01, 2, 5, 17.3];
 
     /// <summary>
     /// The long time series.
     /// </summary>
-    private readonly double[] longTimeSeries = { 1.3, 2, 5, 17.4, 12, 23 };
+    private readonly double[] longTimeSeries = [1.3, 2, 5, 17.4, 12, 23];
 
     /// <summary>
     /// The expected sub array.
     /// </summary>
-    private readonly double[] expectedSubArray = { 1.3, 2, 5, 17.4 };
+    private readonly double[] expectedSubArray = [1.3, 2, 5, 17.4];
 
     /// <summary>
     /// The shortest align test.
@@ -31,8 +31,8 @@ public class ByShortestAlignerTests
     {
         var aligner = new ByShortestAligner();
         var result = aligner.AlignSeries(shortTimeSeries, longTimeSeries);
-        Assert.AreEqual(result.first[0].Length, result.second[0].Length);
-        Assert.AreEqual(shortTimeSeries, result.first[0]);
-        Assert.AreEqual(expectedSubArray, result.second[0]);
+        Assert.That(result.second[0], Has.Length.EqualTo(result.first[0].Length));
+        Assert.That(result.first[0], Is.EqualTo(shortTimeSeries));
+        Assert.That(result.second[0], Is.EqualTo(expectedSubArray));
     }
 }

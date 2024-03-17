@@ -30,28 +30,28 @@ public class EndIteratorTests
     [Test]
     public void HasNextTest()
     {
-        int lengthCut = 3;
-        int step = 1;
+        const int lengthCut = 3;
+        const int step = 1;
         int countSteps = 0;
 
-        var iterator = new EndIterator(complexChain, lengthCut, step);
+        EndIterator iterator = new(complexChain, lengthCut, step);
         while (iterator.HasNext())
         {
             iterator.Next();
-            countSteps = countSteps + 1;
+            countSteps++;
         }
 
-        Assert.AreEqual(countSteps, iterator.MaxShifts);
+        Assert.That(iterator.MaxShifts, Is.EqualTo(countSteps));
 
         countSteps = 0;
         iterator = new EndIterator(complexChain, lengthCut, step + 1);
         while (iterator.HasNext())
         {
             iterator.Next();
-            countSteps = countSteps + 1;
+            countSteps++;
         }
 
-        Assert.True(countSteps == iterator.MaxShifts);
+        Assert.That(iterator.MaxShifts, Is.EqualTo(countSteps));
     }
 
     /// <summary>
@@ -62,22 +62,22 @@ public class EndIteratorTests
     {
         List<string> cut;
         string[] triplesForStepOne =
-            {
+            [
                 "AAC", "ACA", "CAG", "AGG",
                 "GGT", "GTG", "TGC", "GCC",
                 "CCC", "CCC", "CCT", "CTT",
                 "TTA", "TAT", "ATT", "TTT"
-            };
-        string[] triplesForStepTwo = { "AAC", "CAG", "GGT", "TGC", "CCC", "CCT", "TTA", "ATT" };
-        int lengthCut = 3;
-        int step = 1;
+            ];
+        string[] triplesForStepTwo = ["AAC", "CAG", "GGT", "TGC", "CCC", "CCT", "TTA", "ATT"];
+        const int lengthCut = 3;
+        const int step = 1;
 
-        var iterator = new EndIterator(complexChain, lengthCut, step);
+        EndIterator iterator = new(complexChain, lengthCut, step);
 
         for (int i = iterator.MaxShifts - 1; i >= 0; i--)
         {
             cut = iterator.Next();
-            Assert.True(Helper.ToString(cut).Equals(triplesForStepOne[i]));
+            Assert.That(Helper.ToString(cut), Is.EqualTo(triplesForStepOne[i]));
         }
 
         iterator = new EndIterator(complexChain, lengthCut, step + 1);
@@ -85,7 +85,7 @@ public class EndIteratorTests
         for (int i = iterator.MaxShifts - 1; i >= 0; i--)
         {
             cut = iterator.Next();
-            Assert.True(Helper.ToString(cut).Equals(triplesForStepTwo[i]));
+            Assert.That(Helper.ToString(cut), Is.EqualTo(triplesForStepTwo[i]));
         }
     }
 
@@ -95,12 +95,12 @@ public class EndIteratorTests
     [Test]
     public void ResetTest()
     {
-        int lengthCut = 2;
-        int step = 1;
+        const int lengthCut = 2;
+        const int step = 1;
         int index = 0;
-        int position = 6;
-        var list1 = new List<string>
-            {
+        const int position = 6;
+        List<string> list1 =
+            [
                 "ABABAB",
                 "ABATAT",
                 "TABABAB",
@@ -108,18 +108,18 @@ public class EndIteratorTests
                 "ABABAB",
                 "ABABAB",
                 "ABABAB"
-            };
-        var chain = new ComplexChain(list1);
-        var iterator = new EndIterator(chain, lengthCut, step);
+            ];
+        ComplexChain chain = new(list1);
+        EndIterator iterator = new(chain, lengthCut, step);
         while (iterator.HasNext())
         {
             iterator.Next();
-            index = index + 1;
+            index++;
         }
 
         iterator.Reset();
 
-        Assert.True(iterator.Position() == position);
+        Assert.That(iterator.Position(), Is.EqualTo(position));
     }
 
     /// <summary>
@@ -128,11 +128,11 @@ public class EndIteratorTests
     [Test]
     public void GetMaxShiftsTest()
     {
-        int lengthCut = 3;
-        int step = 1;
-        int maxShifts = 16;
-        EndIterator iterator = new EndIterator(complexChain, lengthCut, step);
-        Assert.True(iterator.MaxShifts == maxShifts);
+        const int lengthCut = 3;
+        const int step = 1;
+        const int maxShifts = 16;
+        EndIterator iterator = new(complexChain, lengthCut, step);
+        Assert.That(iterator.MaxShifts, Is.EqualTo(maxShifts));
     }
 
     /// <summary>
@@ -141,11 +141,11 @@ public class EndIteratorTests
     [Test]
     public void MoveTest()
     {
-        int len = 2;
-        int step = 1;
-        int from = 1, to = 3;
-        var list1 = new List<string>
-            {
+        const int len = 2;
+        const int step = 1;
+        const int from = 1, to = 3;
+        List<string> list1 =
+            [
                 "ABABAB",
                 "ABATAT",
                 "TABABAB",
@@ -153,15 +153,15 @@ public class EndIteratorTests
                 "ABABAB",
                 "ABABAB",
                 "ABABAB"
-            };
+            ];
         List<string> list = list1.GetRange(@from, to - @from);
-        var chain = new ComplexChain(list1);
-        var iterator = new EndIterator(chain, len, step);
+        ComplexChain chain = new(list1);
+        EndIterator iterator = new(chain, len, step);
         iterator.Move(2);
         List<string> result = iterator.Next();
         for (int i = 0; i < list.Count; i++)
         {
-            Assert.True(list[i].Equals(result[i]));
+            Assert.That(list[i], Is.EqualTo(result[i]));
         }
     }
 }

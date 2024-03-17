@@ -6,20 +6,20 @@ using Libiada.Core.DataTransformers;
 public class PermutationGeneratorTests
 {
     private static readonly int[][] Expected1 =
-    {
-        new int[] { 0, 1 },
-        new int[] { 1, 0 },
-    };
+    [
+        [0, 1],
+        [1, 0],
+    ];
 
     private static readonly int[][] Expected2 =
-    {
-        new int[] { 0, 1, 2 },
-        new int[] { 0, 2, 1 },
-        new int[] { 1, 0, 2 },
-        new int[] { 1, 2, 0 },
-        new int[] { 2, 0, 1 },
-        new int[] { 2, 1, 0 },
-    };
+    [
+        [0, 1, 2],
+        [0, 2, 1],
+        [1, 0, 2],
+        [1, 2, 0],
+        [2, 0, 1],
+        [2, 1, 0],
+    ];
 
     [Test]
     public void GetOrdersForTwoElementsTest()

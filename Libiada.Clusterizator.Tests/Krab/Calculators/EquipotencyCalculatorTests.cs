@@ -22,20 +22,20 @@ public class EquipotencyCalculatorTests
     {
         var elements = new List<GraphElement>
                            {
-                               new GraphElement(new[] { 0.0 }, "1"),
-                               new GraphElement(new[] { 2.0 }, "2"),
-                               new GraphElement(new[] { 5.0 }, "3"),
-                               new GraphElement(new[] { 6.0 }, "4")
+                               new([0.0], "1"),
+                               new([2.0], "2"),
+                               new([5.0], "3"),
+                               new([6.0], "4")
                            };
 
         var connections = new List<Connection>
                               {
-                                  new Connection(0, 1),
-                                  new Connection(0, 2),
-                                  new Connection(0, 3),
-                                  new Connection(1, 2),
-                                  new Connection(1, 3),
-                                  new Connection(2, 3)
+                                  new(0, 1),
+                                  new(0, 2),
+                                  new(0, 3),
+                                  new(1, 2),
+                                  new(1, 3),
+                                  new(2, 3)
                               };
 
         manager = new GraphManager(connections, elements);
@@ -61,7 +61,7 @@ public class EquipotencyCalculatorTests
             manager.Elements[i].TaxonNumber = taxonNumbers[i];
         }
 
-        Assert.AreEqual(0.75, EquipotencyCalculator.Calculate(manager));
+        Assert.That(EquipotencyCalculator.Calculate(manager), Is.EqualTo(0.75));
     }
 
     /// <summary>
@@ -84,7 +84,7 @@ public class EquipotencyCalculatorTests
             manager.Elements[i].TaxonNumber = taxonNumbers[i];
         }
 
-        Assert.AreEqual(1, EquipotencyCalculator.Calculate(manager));
+        Assert.That(EquipotencyCalculator.Calculate(manager), Is.EqualTo(1));
     }
 
     /// <summary>
@@ -107,7 +107,7 @@ public class EquipotencyCalculatorTests
             manager.Elements[i].TaxonNumber = taxonNumbers[i];
         }
 
-        Assert.AreEqual(0.75, EquipotencyCalculator.Calculate(manager));
+        Assert.That(EquipotencyCalculator.Calculate(manager), Is.EqualTo(0.75));
     }
 
     /// <summary>
@@ -130,7 +130,7 @@ public class EquipotencyCalculatorTests
             manager.Elements[i].TaxonNumber = taxonNumbers[i];
         }
 
-        Assert.AreEqual(0.84375, EquipotencyCalculator.Calculate(manager));
+        Assert.That(EquipotencyCalculator.Calculate(manager), Is.EqualTo(0.84375));
     }
 
     /// <summary>
@@ -153,7 +153,7 @@ public class EquipotencyCalculatorTests
             manager.Elements[i].TaxonNumber = taxonNumbers[i];
         }
 
-        Assert.AreEqual(0.84375, EquipotencyCalculator.Calculate(manager));
+        Assert.That(EquipotencyCalculator.Calculate(manager), Is.EqualTo(0.84375));
     }
 
     /// <summary>
@@ -176,7 +176,7 @@ public class EquipotencyCalculatorTests
             manager.Elements[i].TaxonNumber = taxonNumbers[i];
         }
 
-        Assert.AreEqual(0.84375, EquipotencyCalculator.Calculate(manager));
+        Assert.That(EquipotencyCalculator.Calculate(manager) ,Is.EqualTo(0.84375));
     }
 
     /// <summary>
@@ -195,7 +195,7 @@ public class EquipotencyCalculatorTests
             manager.Elements[i].TaxonNumber = i + 1;
         }
 
-        Assert.AreEqual(1, EquipotencyCalculator.Calculate(manager));
+        Assert.That(EquipotencyCalculator.Calculate(manager), Is.EqualTo(1));
     }
 
     /// <summary>
@@ -218,7 +218,7 @@ public class EquipotencyCalculatorTests
             manager.Elements[i].TaxonNumber = taxonNumbers[i];
         }
 
-        Assert.AreEqual(1, EquipotencyCalculator.Calculate(manager));
+        Assert.That(EquipotencyCalculator.Calculate(manager), Is.EqualTo(1));
     }
 
     /// <summary>
@@ -241,6 +241,6 @@ public class EquipotencyCalculatorTests
             manager.Elements[i].TaxonNumber = taxonNumbers[i];
         }
 
-        Assert.AreEqual(1, EquipotencyCalculator.Calculate(manager));
+        Assert.That(EquipotencyCalculator.Calculate(manager), Is.EqualTo(1));
     }
 }

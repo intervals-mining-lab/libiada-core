@@ -21,7 +21,7 @@ public class FmotifTypeTests
     public void FmotifTypeCountTest()
     {
         var actualCount = EnumExtensions.ToArray<FmotifType>().Length;
-        Assert.AreEqual(FmotifTypesCount, actualCount);
+        Assert.That(actualCount, Is.EqualTo(FmotifTypesCount));
     }
 
     /// <summary>
@@ -33,7 +33,7 @@ public class FmotifTypeTests
         var fmotifTypes = EnumExtensions.ToArray<FmotifType>();
         for (int i = 0; i < FmotifTypesCount; i++)
         {
-            Assert.IsTrue(fmotifTypes.Contains((FmotifType)i));
+            Assert.That(fmotifTypes, Does.Contain((FmotifType)i));
         }
     }
 
@@ -54,7 +54,7 @@ public class FmotifTypeTests
     [TestCase((FmotifType)5, "PartialMinimalMetrorhythmicGroup")]
     public void FmotifTypeNamesTest(FmotifType fmotifType, string name)
     {
-        Assert.AreEqual(name, fmotifType.GetName());
+        Assert.That(fmotifType.GetName(), Is.EqualTo(name));
     }
 
     /// <summary>
@@ -66,7 +66,7 @@ public class FmotifTypeTests
     [Test]
     public void FmotifTypeHasDisplayValueTest([Values]FmotifType fmotifType)
     {
-        Assert.IsFalse(string.IsNullOrEmpty(fmotifType.GetDisplayValue()));
+        Assert.That(fmotifType.GetDisplayValue(), Is.Not.Empty);
     }
 
     /// <summary>
@@ -78,7 +78,7 @@ public class FmotifTypeTests
     [Test]
     public void FmotifTypeHasDescriptionTest([Values]FmotifType fmotifType)
     {
-        Assert.IsFalse(string.IsNullOrEmpty(fmotifType.GetDescription()));
+        Assert.That(fmotifType.GetDescription(), Is.Not.Empty);
     }
 
     /// <summary>

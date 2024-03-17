@@ -23,7 +23,7 @@ public class AccordanceCalculatorsFactoryTests
     [TestCase(AccordanceCharacteristic.PartialComplianceDegree, typeof(PartialComplianceDegree))]
     public void CreateCalculatorTest(AccordanceCharacteristic type, Type calculator)
     {
-        Assert.IsInstanceOf(calculator, AccordanceCalculatorsFactory.CreateCalculator(type));
+        Assert.That(AccordanceCalculatorsFactory.CreateCalculator(type), Is.TypeOf(calculator));
     }
 
     /// <summary>
