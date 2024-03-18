@@ -26,7 +26,8 @@ public static class HighOrderFactory
     /// </exception>
     public static Chain Create(Chain source, Link link)
     {
-        if (link != Link.Start && link != Link.End && link != Link.CycleEnd && link != Link.CycleStart)
+        Link[] applicableLinks = [Link.Start, Link.End, Link.CycleEnd, Link.CycleStart];
+        if (!applicableLinks.Contains(link))
         {
             throw new ArgumentException("Unknown or inapplicable link", nameof(link));
         }

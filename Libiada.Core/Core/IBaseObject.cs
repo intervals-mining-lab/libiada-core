@@ -21,7 +21,7 @@ public interface IBaseObject
     /// Object to compare to.
     /// </param>
     /// <returns>
-    /// true of objects are equal and false otherwise.
+    /// True if objects are equal and false otherwise.
     /// </returns>
     bool Equals(object other);
 
@@ -33,4 +33,10 @@ public interface IBaseObject
     /// The <see cref="int"/>.
     /// </returns>
     int GetHashCode();
+
+    /// <summary>
+    /// Converts <see cref="IBaseObject"/> to <see cref="string"/>
+    /// </summary>
+    /// <returns></returns>
+    string ToString();
 }
