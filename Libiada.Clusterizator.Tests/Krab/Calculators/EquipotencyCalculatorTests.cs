@@ -20,23 +20,23 @@ public class EquipotencyCalculatorTests
     [SetUp]
     public void Initialization()
     {
-        var elements = new List<GraphElement>
-                           {
+        List<GraphElement> elements =
+        [
                                new([0.0], "1"),
                                new([2.0], "2"),
                                new([5.0], "3"),
                                new([6.0], "4")
-                           };
+                           ];
 
-        var connections = new List<Connection>
-                              {
+        List<Connection> connections =
+        [
                                   new(0, 1),
                                   new(0, 2),
                                   new(0, 3),
                                   new(1, 2),
                                   new(1, 3),
                                   new(2, 3)
-                              };
+                              ];
 
         manager = new GraphManager(connections, elements);
     }
@@ -47,14 +47,14 @@ public class EquipotencyCalculatorTests
     [Test]
     public void FourPointsZeroTest()
     {
-        var connected = new[] { true, false, false, true, false, false };
+        bool[] connected = [true, false, false, true, false, false];
 
         for (int i = 0; i < connected.Length; i++)
         {
             manager.Connections[i].Connected = connected[i];
         }
 
-        var taxonNumbers = new[] { 1, 1, 1, 2 };
+        int[] taxonNumbers = [1, 1, 1, 2];
 
         for (int i = 0; i < taxonNumbers.Length; i++)
         {
@@ -70,14 +70,14 @@ public class EquipotencyCalculatorTests
     [Test]
     public void FourPointsOneTest()
     {
-        var connected = new[] { true, false, false, false, false, true };
+        bool[] connected = [true, false, false, false, false, true];
 
         for (int i = 0; i < connected.Length; i++)
         {
             manager.Connections[i].Connected = connected[i];
         }
 
-        var taxonNumbers = new[] { 1, 1, 2, 2 };
+        int[] taxonNumbers = [1, 1, 2, 2];
 
         for (int i = 0; i < taxonNumbers.Length; i++)
         {
@@ -93,14 +93,14 @@ public class EquipotencyCalculatorTests
     [Test]
     public void FourPointsTwoTest()
     {
-        var connected = new[] { false, false, false, true, false, true };
+        bool[] connected = [false, false, false, true, false, true];
 
         for (int i = 0; i < connected.Length; i++)
         {
             manager.Connections[i].Connected = connected[i];
         }
 
-        var taxonNumbers = new[] { 1, 2, 2, 2 };
+        int[] taxonNumbers = [1, 2, 2, 2];
 
         for (int i = 0; i < taxonNumbers.Length; i++)
         {
@@ -116,14 +116,14 @@ public class EquipotencyCalculatorTests
     [Test]
     public void FourPointsThreeTest()
     {
-        var connected = new[] { true, false, false, false, false, false };
+        bool[] connected = [true, false, false, false, false, false];
 
         for (int i = 0; i < connected.Length; i++)
         {
             manager.Connections[i].Connected = connected[i];
         }
 
-        var taxonNumbers = new[] { 1, 1, 2, 3 };
+        int[] taxonNumbers = [1, 1, 2, 3];
 
         for (int i = 0; i < taxonNumbers.Length; i++)
         {
@@ -139,14 +139,14 @@ public class EquipotencyCalculatorTests
     [Test]
     public void FourPointsFourTest()
     {
-        var connected = new[] { false, false, false, true, false, false };
+        bool[] connected = [false, false, false, true, false, false];
 
         for (int i = 0; i < connected.Length; i++)
         {
             manager.Connections[i].Connected = connected[i];
         }
 
-        var taxonNumbers = new[] { 1, 2, 2, 3 };
+        int[] taxonNumbers = [1, 2, 2, 3];
 
         for (int i = 0; i < taxonNumbers.Length; i++)
         {
@@ -162,14 +162,14 @@ public class EquipotencyCalculatorTests
     [Test]
     public void FourPointsFiveTest()
     {
-        var connected = new[] { false, false, false, true, false, true };
+        bool[] connected = [false, false, false, true, false, true];
 
         for (int i = 0; i < connected.Length; i++)
         {
             manager.Connections[i].Connected = connected[i];
         }
 
-        var taxonNumbers = new[] { 1, 2, 3, 3 };
+        int[] taxonNumbers = [1, 2, 3, 3];
 
         for (int i = 0; i < taxonNumbers.Length; i++)
         {
@@ -204,14 +204,14 @@ public class EquipotencyCalculatorTests
     [Test]
     public void FourPointsSevenTest()
     {
-        var connected = new[] { false, true, false, false, true, false };
+        bool[] connected = [false, true, false, false, true, false];
 
         for (int i = 0; i < connected.Length; i++)
         {
             manager.Connections[i].Connected = connected[i];
         }
 
-        var taxonNumbers = new[] { 1, 2, 1, 2 };
+        int[] taxonNumbers = [1, 2, 1, 2];
 
         for (int i = 0; i < taxonNumbers.Length; i++)
         {
@@ -227,14 +227,14 @@ public class EquipotencyCalculatorTests
     [Test]
     public void FourPointsElevenTest()
     {
-        var connected = new[] { false, true, false, false, true, false };
+        bool[] connected = [false, true, false, false, true, false];
 
         for (int i = 0; i < connected.Length; i++)
         {
             manager.Connections[i].Connected = connected[i];
         }
 
-        var taxonNumbers = new[] { 1, 2, 1, 2 };
+        int[] taxonNumbers = [1, 2, 1, 2];
 
         for (int i = 0; i < taxonNumbers.Length; i++)
         {

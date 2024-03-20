@@ -313,7 +313,7 @@ public class OneDimensionalTimeSeriesComparerTests
         IOneDimensionalPointsDistance calculator,
         IDistancesAggregator aggregator)
     {
-        var comparer = new OneDimensionalTimeSeriesComparer(aligner, calculator, aggregator);
+        OneDimensionalTimeSeriesComparer comparer = new(aligner, calculator, aggregator);
         double result = comparer.GetDistance(firstSeries, secondSeries);
         Assert.That(result, Is.EqualTo(expected));
     }

@@ -32,9 +32,9 @@ public class LastElementDuplicatorTests
 
     public void LastElementDuplicationAlignerTest(double[] firstTimeSeries, double[] secondTimeSeries, double[] expected)
     {
-        var aligner = new LastElementDuplicator();
-        var (first, second) = aligner.AlignSeries(firstTimeSeries, secondTimeSeries);
-        var actual = firstTimeSeries.Length < secondTimeSeries.Length ? first[0] : second[0];
+        LastElementDuplicator aligner = new();
+        (double[][] first, double[][] second) = aligner.AlignSeries(firstTimeSeries, secondTimeSeries);
+        double[] actual = firstTimeSeries.Length < secondTimeSeries.Length ? first[0] : second[0];
         Assert.That(actual, Is.EqualTo(expected));
     }
 }

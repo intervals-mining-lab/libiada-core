@@ -28,7 +28,7 @@ public class HammingDistanceBetweenOneDimensionalPointsTests
 
     public void HammingDistanceTest(double firstPoint, double secondPoint, int expectedDistance)
     {
-        var calculator = new HammingDistanceBetweenOneDimensionalPointsCalculator();
+        HammingDistanceBetweenOneDimensionalPointsCalculator calculator = new();
         double result = calculator.GetDistance(firstPoint, secondPoint);
         Assert.That(result, Is.EqualTo(expectedDistance));
     }

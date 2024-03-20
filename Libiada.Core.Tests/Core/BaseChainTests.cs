@@ -15,11 +15,11 @@ public class BaseChainTests
     [Test]
     public void ConstructorWithLengthTest()
     {
-        var chain = new BaseChain(100);
+        BaseChain chain = new(100);
         Assert.That(chain.Length, Is.EqualTo(100));
-        var expectedOrder = new int[100];
+        int[] expectedOrder = new int[100];
         Assert.That(chain.Order, Is.EqualTo(expectedOrder));
-        var expectedAlphabet = new Alphabet();
+        Alphabet expectedAlphabet = [];
         Assert.That(chain.Alphabet, Is.EqualTo(expectedAlphabet));
     }
 
@@ -38,11 +38,11 @@ public class BaseChainTests
     [Test]
     public void ConstructorWithStringTest()
     {
-        var chain = new BaseChain("A");
+        BaseChain chain = new("A");
         Assert.That(chain.Length, Is.EqualTo(1));
-        var expectedOrder = new[] { 1 };
+        int[] expectedOrder = [1];
         Assert.That(chain.Order, Is.EqualTo(expectedOrder));
-        var expectedAlphabet = new Alphabet() { (ValueString)"A"};
+        Alphabet expectedAlphabet = [(ValueString)"A"];
         Assert.That(chain.Alphabet, Is.EqualTo(expectedAlphabet));
 
         chain = new BaseChain("ABC");
@@ -87,7 +87,7 @@ public class BaseChainTests
     [Test]
     public void GetByThisTest()
     {
-        var chain = new BaseChain(10);
+        BaseChain chain = new(10);
         chain.Set(new ValueString('1'), 0);
         Assert.That(((ValueString)chain[0]).Equals("1"), Is.True);
     }
@@ -98,7 +98,7 @@ public class BaseChainTests
     [Test]
     public void SetByThisTest()
     {
-        var chain = new BaseChain(10);
+        BaseChain chain = new(10);
         chain[0] = new ValueString('1');
         Assert.That(((ValueString)chain.Get(0)).Equals("1"), Is.True);
     }
@@ -109,7 +109,7 @@ public class BaseChainTests
     [Test]
     public void GetTest()
     {
-        var chain = new BaseChain(10);
+        BaseChain chain = new(10);
         chain.Set(new ValueString('1'), 0);
         Assert.That(((ValueString)chain.Get(0)).Equals("1"), Is.True);
     }
@@ -120,7 +120,7 @@ public class BaseChainTests
     [Test]
     public void SetTest()
     {
-        var chain = new BaseChain(10);
+        BaseChain chain = new(10);
         chain.Set(new ValueString('1'), 0);
         Assert.That(((ValueString)chain.Get(0)).Equals("1"), Is.True);
     }
@@ -131,7 +131,7 @@ public class BaseChainTests
     [Test]
     public void RemoveTest()
     {
-        var chain = new BaseChain(10);
+        BaseChain chain = new(10);
         chain.Set(new ValueString('1'), 0);
         Assert.That(((ValueString)chain[0]).Equals("1"), Is.True);
 
@@ -145,7 +145,7 @@ public class BaseChainTests
     [Test]
     public void DeleteTest()
     {
-        var chain = new BaseChain(10);
+        BaseChain chain = new(10);
         chain.Set(new ValueString('1'), 0);
         Assert.That(((ValueString)chain[0]).Equals("1"), Is.True);
 
@@ -159,7 +159,7 @@ public class BaseChainTests
     [Test]
     public void GetLengthTest()
     {
-        var chain = new BaseChain(10);
+        BaseChain chain = new(10);
         Assert.That(chain.Length, Is.EqualTo(10));
     }
 
@@ -169,9 +169,9 @@ public class BaseChainTests
     [Test]
     public void CloneTest()
     {
-        var chain = new BaseChain("123456789A");
+        BaseChain chain = new("123456789A");
 
-        var clone = (BaseChain)chain.Clone();
+        BaseChain clone = (BaseChain)chain.Clone();
         Assert.That(clone, Is.EqualTo(chain));
         Assert.That(clone, Is.Not.SameAs(chain));
     }

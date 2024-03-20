@@ -16,8 +16,8 @@ public class CongenericScoreTrackTests
     public void ValueNoteOrderFirstTest()
     {
         // создание и заполнения списка(ов) нот для такта(ов) монотрека
-        var notes = new List<ValueNote>
-        {
+        List<ValueNote> notes =
+        [
             new(new Pitch(3, NoteSymbol.A, Accidental.DoubleSharp), new Duration(1, 16, false), false, Tie.None, 3),
             new(new Pitch(3, NoteSymbol.E, Accidental.Bekar), new Duration(1, 4, false), false, Tie.None, 0),
             new(new Pitch(3, NoteSymbol.E, Accidental.Bekar), new Duration(1, 4, false), false, Tie.None, 0),
@@ -27,10 +27,10 @@ public class CongenericScoreTrackTests
             new(new Pitch(3, NoteSymbol.A, Accidental.DoubleSharp), new Duration(1, 16, false), false, Tie.None, 3),
             new(new Pitch(3, NoteSymbol.C, Accidental.Sharp), new Duration(1, 16, false), false, Tie.None, 1),
             new(new Pitch(3, NoteSymbol.C, Accidental.Sharp), new Duration(1, 16, false), false, Tie.None, 1)
-        };
+        ];
 
-        var notes2 = new List<ValueNote>
-        {
+        List<ValueNote> notes2 =
+        [
             new(new Pitch(3, NoteSymbol.B, Accidental.Bekar), new Duration(1, 16, false), false, Tie.None, 1),
             new(new Pitch(3, NoteSymbol.A, Accidental.DoubleSharp), new Duration(1, 16, false), false, Tie.None, 3),
             new(new Pitch(3, NoteSymbol.E, Accidental.Bekar), new Duration(1, 4, false), false, Tie.None, 0),
@@ -44,16 +44,16 @@ public class CongenericScoreTrackTests
             new(new Duration(1, 4, false), false, Tie.None, 1),
             new(new Duration(1, 16, false), false, Tie.None, 1),
             new(new Duration(1, 16, false), false, Tie.None, 1)
-        };
+        ];
 
-        var attr = new MeasureAttributes(new Size(4, 4), new Key(5));
+        MeasureAttributes attr = new(new Size(4, 4), new Key(5));
 
-        var m1 = new Measure(notes, attr);
-        var m2 = new Measure(notes2, attr);
+        Measure m1 = new(notes, attr);
+        Measure m2 = new(notes2, attr);
 
-        var measuresList = new List<Measure> { m1, m2 };
+        List<Measure> measuresList = [m1, m2];
 
-        var uni = new CongenericScoreTrack(measuresList);
+        CongenericScoreTrack uni = new(measuresList);
 
         Assert.That(uni.NoteOrder()[0].Id, Is.Not.EqualTo(1));
 
@@ -94,8 +94,8 @@ public class CongenericScoreTrackTests
     public void ValueNoteOrderSecondTest()
     {
         // создание и заполнения списка(ов) нот для такта(ов) монотрека
-        var notes = new List<ValueNote>
-        {
+        List<ValueNote> notes =
+        [
             new(new Pitch(3, NoteSymbol.A, Accidental.DoubleSharp), new Duration(1, 16, false), false, Tie.None, 3),
             new(new Pitch(3, NoteSymbol.E, Accidental.Bekar), new Duration(1, 4, false), false, Tie.None, 0),
             new(new Pitch(3, NoteSymbol.E, Accidental.Bekar), new Duration(1, 4, false), false, Tie.None, 0),
@@ -105,10 +105,10 @@ public class CongenericScoreTrackTests
             new(new Pitch(3, NoteSymbol.A, Accidental.DoubleSharp), new Duration(1, 16, false), false, Tie.None, 3),
             new(new Pitch(3, NoteSymbol.C, Accidental.Sharp), new Duration(1, 16, false), false, Tie.None, 1),
             new(new Pitch(3, NoteSymbol.C, Accidental.Sharp), new Duration(1, 16, false), false, Tie.None, 1)
-        };
+        ];
 
-        var notes2 = new List<ValueNote>
-        {
+        List<ValueNote> notes2 =
+        [
             new(new Pitch(3, NoteSymbol.B, Accidental.Bekar), new Duration(1, 16, false), false, Tie.None, 1),
             new(new Pitch(3, NoteSymbol.A, Accidental.DoubleSharp), new Duration(1, 16, false), false, Tie.None, 3),
             new(new Pitch(3, NoteSymbol.E, Accidental.Bekar), new Duration(1, 4, false), false, Tie.None, 0),
@@ -122,16 +122,16 @@ public class CongenericScoreTrackTests
             new(new Duration(1, 4, false), false, Tie.None, 1),
             new(new Duration(1, 16, false), false, Tie.None, 1),
             new(new Duration(1, 16, false), false, Tie.None, 1)
-        };
+        ];
 
-        var attr = new MeasureAttributes(new Size(4, 4), new Key(5));
+        MeasureAttributes attr = new(new Size(4, 4), new Key(5));
 
-        var m1 = new Measure(notes, attr);
-        var m2 = new Measure(notes2, attr);
+        Measure m1 = new(notes, attr);
+        Measure m2 = new(notes2, attr);
 
-        var measuresList = new List<Measure> { m1, m2 };
+        List<Measure> measuresList = [m1, m2];
 
-        var uni = new CongenericScoreTrack(measuresList);
+        CongenericScoreTrack uni = new(measuresList);
 
         Assert.That(uni.NoteIdOrder()[0], Is.Not.EqualTo(1));
 
@@ -172,63 +172,63 @@ public class CongenericScoreTrackTests
     public void MeasureOrderTest()
     {
         // создание и заполнения списка(ов) нот для такта(ов) монотрека
-        var notes = new List<ValueNote>
-        {
+        List<ValueNote> notes =
+        [
             new(new Pitch(3, NoteSymbol.A, Accidental.DoubleSharp), new Duration(1, 16, false), false, Tie.None, 3),
             new(new Pitch(3, NoteSymbol.E, Accidental.Bekar), new Duration(1, 4, false), false, Tie.None, 0),
             new(new Pitch(3, NoteSymbol.E, Accidental.Bekar), new Duration(1, 4, false), false, Tie.None, 0),
             new(new Pitch(3, NoteSymbol.C, Accidental.Sharp), new Duration(1, 16, false), false, Tie.None, 1)
-        };
+        ];
 
-        var notes3 = new List<ValueNote>
-        {
+        List<ValueNote> notes3 =
+        [
             new(new Pitch(3, NoteSymbol.B, Accidental.Bekar), new Duration(1, 16, false), false, Tie.None, 3),
             new(new Pitch(3, NoteSymbol.E, Accidental.Bekar), new Duration(1, 4, false), false, Tie.None, 0),
             new(new Pitch(3, NoteSymbol.E, Accidental.Bekar), new Duration(1, 4, false), false, Tie.None, 0),
             new(new Pitch(3, NoteSymbol.C, Accidental.Sharp), new Duration(1, 16, false), false, Tie.None, 1)
-        };
+        ];
 
-        var notes2 = new List<ValueNote>
-        {
+        List<ValueNote> notes2 =
+        [
             new(new Pitch(3, NoteSymbol.B, Accidental.Bekar), new Duration(1, 16, false), false, Tie.None, 1),
             new(new Pitch(3, NoteSymbol.A, Accidental.DoubleSharp), new Duration(1, 16, false), false, Tie.None, 3),
             new(new Pitch(3, NoteSymbol.E, Accidental.Bekar), new Duration(1, 4, false), false, Tie.None, 0),
             new(new Pitch(3, NoteSymbol.E, Accidental.Bekar), new Duration(1, 4, false), false, Tie.None, 0),
             new(new Pitch(3, NoteSymbol.C, Accidental.Sharp), new Duration(1, 16, false), false, Tie.None, 1)
-        };
+        ];
 
-        var notes4 = new List<ValueNote>
-        {
+        List<ValueNote> notes4 =
+        [
             new(new Pitch(3, NoteSymbol.A, Accidental.Flat), new Duration(1, 16, false), false, Tie.None, 3),
             new(new Pitch(3, NoteSymbol.D, Accidental.Bekar), new Duration(1, 4, false), false, Tie.None, 2),
             new(new Pitch(3, NoteSymbol.A, Accidental.DoubleSharp), new Duration(1, 16, false), false, Tie.None, 3),
             new(new Pitch(3, NoteSymbol.C, Accidental.Sharp), new Duration(1, 4, false), false, Tie.None, 1)
-        };
+        ];
 
-        var notes5 = new List<ValueNote>
-        {
+        List<ValueNote> notes5 =
+        [
             new(new Duration(1, 4, false), false, Tie.None, 1),
             new(new Duration(1, 4, false), false, Tie.None, 1)
-        };
+        ];
 
-        var notes6 = new List<ValueNote>
-        {
+        List<ValueNote> notes6 =
+        [
             new(new Duration(1, 16, false), false, Tie.None, 1),
             new(new Duration(1, 16, false), false, Tie.None, 1)
-        };
+        ];
 
-        var attr = new MeasureAttributes(new Size(4, 4), new Key(5));
+        MeasureAttributes attr = new(new Size(4, 4), new Key(5));
 
-        var m1 = new Measure(notes, attr);
-        var m2 = new Measure(notes2, attr);
-        var m3 = new Measure(notes3, attr);
-        var m4 = new Measure(notes4, attr);
-        var m5 = new Measure(notes5, attr);
-        var m6 = new Measure(notes6, attr);
+        Measure m1 = new(notes, attr);
+        Measure m2 = new(notes2, attr);
+        Measure m3 = new(notes3, attr);
+        Measure m4 = new(notes4, attr);
+        Measure m5 = new(notes5, attr);
+        Measure m6 = new(notes6, attr);
 
-        var measuresList = new List<Measure> { m1, m2, m3, m4, m5, m5, m2, m3, m6 };
+        List<Measure> measuresList = [m1, m2, m3, m4, m5, m5, m2, m3, m6];
 
-        var uni = new CongenericScoreTrack(measuresList);
+        CongenericScoreTrack uni = new(measuresList);
 
         Assert.That(uni.MeasureOrder()[0].Id, Is.EqualTo(0));
         Assert.That(uni.MeasureOrder()[1].Id, Is.EqualTo(1));

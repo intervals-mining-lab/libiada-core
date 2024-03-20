@@ -108,9 +108,9 @@ public abstract class AbstractChain : IBaseObject
     /// </returns>
     public string ToString(string delimiter)
     {
-        var length = Length;
+        int length = Length;
 
-        var builder = new StringBuilder(length * 2);
+        StringBuilder builder = new(length * 2);
 
         for (int i = 0; i < length; i++)
         {
@@ -129,8 +129,8 @@ public abstract class AbstractChain : IBaseObject
     /// </returns>
     public IBaseObject[] ToArray()
     {
-        var length = Length;
-        var result = new IBaseObject[length];
+        int length = Length;
+        IBaseObject[] result = new IBaseObject[length];
 
         for (int i = 0; i < length; i++)
         {
@@ -148,8 +148,8 @@ public abstract class AbstractChain : IBaseObject
     /// </returns>
     public List<IBaseObject> ToList()
     {
-        var length = Length;
-        var result = new List<IBaseObject>(length);
+        int length = Length;
+        List<IBaseObject> result = new(length);
 
         for (int i = 0; i < length; i++)
         {

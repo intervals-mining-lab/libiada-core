@@ -23,13 +23,13 @@ public class ClusterizatorsFactoryTests
     [TestCase(ClusterizationType.Krab, typeof(KrabClusterization))]
     public void SelectionTest(ClusterizationType type, Type expected)
     {
-        var parameters = new Dictionary<string, double>
+        Dictionary<string, double> parameters = new()
         {
                                         { "powerWeight", 1 },
                                         { "normalizedDistanceWeight", 1 },
                                         { "distanceWeight", 4 }
         };
-        var clusterizator = ClusterizatorsFactory.CreateClusterizator(type, parameters);
+        IClusterizator clusterizator = ClusterizatorsFactory.CreateClusterizator(type, parameters);
 
         Assert.That(clusterizator, Is.InstanceOf(expected));
     }
@@ -40,7 +40,7 @@ public class ClusterizatorsFactoryTests
     [Test]
     public void SelectionErrorTest()
     {
-        var parameters = new Dictionary<string, double>();
+        Dictionary<string, double> parameters = [];
         Assert.Throws<InvalidEnumArgumentException>(() => ClusterizatorsFactory.CreateClusterizator(0, parameters));
     }
 }

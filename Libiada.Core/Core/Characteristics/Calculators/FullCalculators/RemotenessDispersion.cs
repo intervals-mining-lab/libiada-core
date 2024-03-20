@@ -19,7 +19,7 @@ public class RemotenessDispersion : IFullCalculator
     /// </returns>
     public double Calculate(Chain chain, Link link)
     {
-        var intervals = new List<int>();
+        List<int> intervals = [];
         Alphabet alphabet = chain.Alphabet;
         for (int i = 0; i < alphabet.Cardinality; i++)
         {
@@ -31,12 +31,12 @@ public class RemotenessDispersion : IFullCalculator
             return 0;
         }
 
-        var intervalsDictionary = intervals
+        Dictionary<int, int> intervalsDictionary = intervals
                                  .GroupBy(i => i)
                                  .ToDictionary(i => i.Key, i => i.Count());
 
-        var intervalsCount = new IntervalsCount();
-        var geometricMean = new GeometricMean();
+        IntervalsCount intervalsCount = new();
+        GeometricMean geometricMean = new();
 
         double result = 0;
         double gDelta = geometricMean.Calculate(chain, link);

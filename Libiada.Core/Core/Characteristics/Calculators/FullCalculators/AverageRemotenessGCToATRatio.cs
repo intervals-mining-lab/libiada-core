@@ -24,7 +24,7 @@ public class AverageRemotenessGCToATRatio : IFullCalculator
     {
         DnaProcessor.CheckDnaAlphabet(chain.Alphabet);
 
-        var congenericRemotenessCalculator = new CongenericCalculators.AverageRemoteness();
+        CongenericCalculators.AverageRemoteness congenericRemotenessCalculator = new();
 
         double g = congenericRemotenessCalculator.Calculate(chain.GetOrCreateCongenericChain(new ValueString("G")), link);
         double c = congenericRemotenessCalculator.Calculate(chain.GetOrCreateCongenericChain(new ValueString("C")), link);

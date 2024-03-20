@@ -115,7 +115,7 @@ public class Chain : BaseChain, IBaseObject
     /// </param>
     public Chain(short[] source)
     {
-        alphabet = new Alphabet() { NullValue.Instance() };
+        alphabet = [NullValue.Instance()];
         order = new int[source.Length];
         for (int i = 0; i < source.Length; i++)
         {
@@ -151,7 +151,7 @@ public class Chain : BaseChain, IBaseObject
     /// </returns>
     public new IBaseObject Clone()
     {
-        var clone = new Chain(order.Length);
+        Chain clone = new(order.Length);
         FillClone(clone);
         return clone;
     }
@@ -256,7 +256,7 @@ public class Chain : BaseChain, IBaseObject
             relationIntervalsManagers = new BinaryIntervalsManager[alphabet.Cardinality - 1, alphabet.Cardinality - 1];
         }
 
-        var intervalsManager = relationIntervalsManagers[first - 1, second - 1];
+        BinaryIntervalsManager? intervalsManager = relationIntervalsManagers[first - 1, second - 1];
 
         if (intervalsManager == null)
         {
@@ -356,7 +356,7 @@ public class Chain : BaseChain, IBaseObject
     /// </param>
     public void SetArrangementManagers(ArrangementType arrangementType = ArrangementType.Intervals)
     {
-        foreach (var chain in congenericChains)
+        foreach (CongenericChain chain in congenericChains)
         {
             chain.CurrentArrangementType = arrangementType;
             chain.CreateArrangementManager(arrangementType);
@@ -372,7 +372,7 @@ public class Chain : BaseChain, IBaseObject
     /// </param>
     protected void FillClone(IBaseObject clone)
     {
-        var tempChain = clone as Chain;
+        Chain? tempChain = clone as Chain;
         base.FillClone(tempChain);
         if (tempChain != null)
         {
@@ -389,11 +389,11 @@ public class Chain : BaseChain, IBaseObject
     /// </summary>
     private void FillCongenericChains()
     {
-        var occurrences = new List<int>[alphabet.Cardinality - 1];
+        List<int>[] occurrences = new List<int>[alphabet.Cardinality - 1];
 
         for (int i = 0; i < alphabet.Cardinality - 1; i++)
         {
-            occurrences[i] = new List<int>();
+            occurrences[i] = [];
         }
 
         for (int j = 0; j < order.Length; j++)

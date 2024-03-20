@@ -12,7 +12,7 @@ public abstract class AbstractNode
     /// <summary>
     /// The children.
     /// </summary>
-    protected readonly List<TreeNode> Children = new List<TreeNode>();
+    protected readonly List<TreeNode> Children = [];
 
     /// <summary>
     /// Gets or sets count of children elements.

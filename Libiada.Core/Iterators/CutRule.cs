@@ -9,12 +9,12 @@ public abstract class CutRule
     /// <summary>
     /// The starts.
     /// </summary>
-    protected readonly List<int> Starts = new List<int>();
+    protected readonly List<int> Starts = [];
 
     /// <summary>
     /// The stops.
     /// </summary>
-    protected readonly List<int> Ends = new List<int>();
+    protected readonly List<int> Ends = [];
 
     /// <summary>
     /// Method returning iterator for this cut rule.

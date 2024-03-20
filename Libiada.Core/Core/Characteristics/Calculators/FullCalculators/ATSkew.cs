@@ -21,10 +21,10 @@ public class ATSkew : NonLinkableFullCalculator
     {
         DnaProcessor.CheckDnaAlphabet(chain.Alphabet);
 
-        var counter = new CongenericCalculators.ElementsCount();
+        CongenericCalculators.ElementsCount counter = new();
 
-        var a = (int)counter.Calculate(chain.GetOrCreateCongenericChain(new ValueString("A")));
-        var t = (int)counter.Calculate(chain.GetOrCreateCongenericChain(new ValueString("T")));
+        int a = (int)counter.Calculate(chain.GetOrCreateCongenericChain(new ValueString("A")));
+        int t = (int)counter.Calculate(chain.GetOrCreateCongenericChain(new ValueString("T")));
 
         return a + t == 0 ? 0 : (a - t) / (double)(a + t);
     }

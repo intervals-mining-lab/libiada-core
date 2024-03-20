@@ -20,8 +20,8 @@ public class Uniformity : IFullCalculator
     /// </returns>
     public double Calculate(Chain chain, Link link)
     {
-        var remotenessCalculator = new AverageRemoteness();
-        var entropyCalculator = new IdentificationInformation();
+        AverageRemoteness remotenessCalculator = new();
+        IdentificationInformation entropyCalculator = new();
         return entropyCalculator.Calculate(chain, link) - remotenessCalculator.Calculate(chain, link);
     }
 }

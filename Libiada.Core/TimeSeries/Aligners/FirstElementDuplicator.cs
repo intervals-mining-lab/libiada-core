@@ -27,7 +27,7 @@ public class FirstElementDuplicator : ITimeSeriesAligner
 
         if (firstSeries.Length < secondSeries.Length)
         {
-            List<double> result = new List<double>(secondSeries.Length);
+            List<double> result = new(secondSeries.Length);
 
             for (int i = 0; i < length; i++)
             {
@@ -42,7 +42,7 @@ public class FirstElementDuplicator : ITimeSeriesAligner
         }
         else
         {
-            List<double> result = new List<double>(firstSeries.Length);
+            List<double> result = new(firstSeries.Length);
 
             for (int i = 0; i < length; i++)
             {

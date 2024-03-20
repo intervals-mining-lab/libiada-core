@@ -21,7 +21,7 @@ public class InformationAmount : IFullCalculator
     public double Calculate(Chain chain, Link link)
     {
         double result = 0;
-        var calculator = new CongenericCalculators.InformationAmount();
+        CongenericCalculators.InformationAmount calculator = new();
         int alphabetCardinality = chain.Alphabet.Cardinality;
         for (int i = 0; i < alphabetCardinality; i++)
         {

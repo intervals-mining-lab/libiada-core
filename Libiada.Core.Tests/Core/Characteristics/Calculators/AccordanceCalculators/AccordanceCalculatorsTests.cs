@@ -45,8 +45,8 @@ public abstract class AccordanceCalculatorsTests<T> where T : IAccordanceCalcula
     /// </param>
     protected void CalculationTest(int index, double firstValue, double secondValue)
     {
-        var firstChain = binaryChains[index].CongenericChain(elements["A"]);
-        var secondChain = binaryChains[index].CongenericChain(elements["B"]);
+        CongenericChain firstChain = binaryChains[index].CongenericChain(elements["A"]);
+        CongenericChain secondChain = binaryChains[index].CongenericChain(elements["B"]);
         double result1 = calculator.Calculate(firstChain, secondChain, Link.End);
         double result2 = calculator.Calculate(secondChain, firstChain, Link.End);
         Assert.That(result1, Is.EqualTo(firstValue).Within(0.0001d));

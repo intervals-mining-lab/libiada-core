@@ -25,9 +25,9 @@ public class ChainTests
     [Test]
     public void SimilarChainsGetTest()
     {
-        var congenericChainA = new CongenericChain([2, 8], elements["A"], 10);
+        CongenericChain congenericChainA = new([2, 8], elements["A"], 10);
 
-        var chainCreatedCongenericChain = chains[2].CongenericChain(elements["A"]);
+        CongenericChain chainCreatedCongenericChain = chains[2].CongenericChain(elements["A"]);
 
         Assert.That(chainCreatedCongenericChain, Is.EqualTo(congenericChainA));
     }
@@ -39,11 +39,11 @@ public class ChainTests
     public void ChainTest()
     {
         short[] source = [1, 2, 3, 2, 2, 4, 5, 1];
-        var actual = new Chain(source);
-        var alphabet = new Alphabet() {new ValueInt(1), new ValueInt(2) , new ValueInt(3) , new ValueInt(4), new ValueInt(5) };
+        Chain actual = new(source);
+        Alphabet alphabet = [new ValueInt(1), new ValueInt(2) , new ValueInt(3) , new ValueInt(4), new ValueInt(5)];
         Assert.That(actual.Alphabet, Is.EqualTo(alphabet));
 
-        var order = new int[] { 1, 2, 3, 2, 2, 4, 5, 1 };
+        int[] order = [1, 2, 3, 2, 2, 4, 5, 1];
         Assert.That(actual.Order, Is.EqualTo(order));
     }
 
@@ -62,7 +62,7 @@ public class ChainTests
             ];
         for (int i = 0; i < chains[0].Alphabet.Cardinality; i++)
         {
-            var actualIntervals = chains[0].CongenericChain(i).GetArrangement(Link.Both);
+            int[] actualIntervals = chains[0].CongenericChain(i).GetArrangement(Link.Both);
             for (int j = 0; j < actualIntervals.Length; j++)
             {
                 Assert.That(actualIntervals[j], Is.EqualTo(intervals[i][j]), $"{j} and {i} intervals of sequence are not equal");
@@ -102,7 +102,7 @@ public class ChainTests
     [TestCase(-1, 2, "T", 3)]
     public void GetElementPositionTest(int expected, int chainIndex, string element, int occurrence)
     {
-        var actual = chains[chainIndex].GetOccurrence(elements[element], occurrence);
+        int actual = chains[chainIndex].GetOccurrence(elements[element], occurrence);
         Assert.That(actual, Is.EqualTo(expected));
     }
 }

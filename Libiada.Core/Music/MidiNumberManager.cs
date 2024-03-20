@@ -40,7 +40,7 @@ public static class MidiNumberManager
     /// </exception>
     public static NoteSymbol GetNoteSymbolFromMidiNumber(int midiNumber)
     {
-        var notes = new HashSet<int> { 0, 2, 4, 5, 7, 9, 11 };
+        HashSet<int> notes = [0, 2, 4, 5, 7, 9, 11];
         int step = midiNumber % NotesInOctave;
 
         if (notes.Contains(step))

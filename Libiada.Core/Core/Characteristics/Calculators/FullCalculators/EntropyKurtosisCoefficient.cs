@@ -19,8 +19,8 @@ public class EntropyKurtosisCoefficient : IFullCalculator
     /// </returns>
     public double Calculate(Chain chain, Link link)
     {
-        var entropyKurtosis = new EntropyKurtosis();
-        var entropyStandardDeviation = new EntropyStandardDeviation();
+        EntropyKurtosis entropyKurtosis = new();
+        EntropyStandardDeviation entropyStandardDeviation = new();
 
         double standardDeviation = entropyStandardDeviation.Calculate(chain, link);
 

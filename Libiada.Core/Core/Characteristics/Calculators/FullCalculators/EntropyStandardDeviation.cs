@@ -19,7 +19,7 @@ public class EntropyStandardDeviation : IFullCalculator
     /// </returns>
     public double Calculate(Chain chain, Link link)
     {
-        var entropyDispersion = new EntropyDispersion();
+        EntropyDispersion entropyDispersion = new();
         return Math.Sqrt(entropyDispersion.Calculate(chain, link));
     }
 }

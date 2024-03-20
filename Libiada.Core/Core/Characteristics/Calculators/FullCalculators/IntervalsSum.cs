@@ -19,7 +19,7 @@ public class IntervalsSum : IFullCalculator
     /// </returns>
     public double Calculate(Chain chain, Link link)
     {
-        var calculator = new CongenericCalculators.IntervalsSum();
+        CongenericCalculators.IntervalsSum calculator = new();
 
         Alphabet alphabet = chain.Alphabet;
         int sum = 0;

@@ -20,7 +20,7 @@ public class IntervalsDistributionExtractorTests
     public void GetIntervalsDistributionTest(Link link)
     {
         List<IntervalsDistribution> actualInternalsDistribution = new(orders.Length);
-        foreach (var order in orders)
+        foreach (int[] order in orders)
         {
             actualInternalsDistribution.Add(IntervalsDistributionExtractor.GetIntervalsDistribution(order, link));
         }

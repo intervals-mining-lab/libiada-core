@@ -14,7 +14,7 @@ public class CutRuleWithShiftedAndFixedStartTests
     [Test]
     public void CutRuleTest()
     {
-        var rule = new CutRuleWithShiftedAndFixedStart(18, 3, 5);
+        CutRuleWithShiftedAndFixedStart rule = new(18, 3, 5);
 
         CutRuleIterator iterator = rule.GetIterator();
 

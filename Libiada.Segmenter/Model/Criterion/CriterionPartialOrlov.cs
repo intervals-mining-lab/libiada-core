@@ -162,7 +162,7 @@ public class CriterionPartialOrlov : Criterion
     /// </returns>
     public double Frequency(ComplexChain chain, string word)
     {
-        var temp = new List<object>(chain.Substring(0, chain.Length));
+        List<string> temp = new(chain.Substring(0, chain.Length));
         return Frequency(temp, word) / (double)chain.Length;
     }
 
@@ -178,7 +178,7 @@ public class CriterionPartialOrlov : Criterion
     /// <returns>
     /// The <see cref="int"/>.
     /// </returns>
-    public int Frequency(IEnumerable<object> c, object o)
+    public int Frequency(IEnumerable<string> c, object o)
     {
         int result = 0;
         if (o == null)

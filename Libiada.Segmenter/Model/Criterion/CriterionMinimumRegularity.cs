@@ -15,7 +15,7 @@ public class CriterionMinimumRegularity : Criterion
     /// <summary>
     /// The regularity.
     /// </summary>
-    private readonly DescriptiveInformation regularity = new DescriptiveInformation();
+    private readonly DescriptiveInformation regularity = new();
 
     /// <summary>
     /// Initializes a new instance of the <see cref="CriterionMinimumRegularity"/> class.

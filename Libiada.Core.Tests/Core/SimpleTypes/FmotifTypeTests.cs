@@ -20,7 +20,7 @@ public class FmotifTypeTests
     [Test]
     public void FmotifTypeCountTest()
     {
-        var actualCount = EnumExtensions.ToArray<FmotifType>().Length;
+        int actualCount = EnumExtensions.ToArray<FmotifType>().Length;
         Assert.That(actualCount, Is.EqualTo(FmotifTypesCount));
     }
 
@@ -30,7 +30,7 @@ public class FmotifTypeTests
     [Test]
     public void FmotifTypeValuesTest()
     {
-        var fmotifTypes = EnumExtensions.ToArray<FmotifType>();
+        FmotifType[] fmotifTypes = EnumExtensions.ToArray<FmotifType>();
         for (int i = 0; i < FmotifTypesCount; i++)
         {
             Assert.That(fmotifTypes, Does.Contain((FmotifType)i));
@@ -87,8 +87,8 @@ public class FmotifTypeTests
     [Test]
     public void FmotifTypeValuesUniqueTest()
     {
-        var fmotifTypes = EnumExtensions.ToArray<FmotifType>();
-        var fmotifTypeValues = fmotifTypes.Cast<byte>();
+        FmotifType[] fmotifTypes = EnumExtensions.ToArray<FmotifType>();
+        IEnumerable<byte> fmotifTypeValues = fmotifTypes.Cast<byte>();
         Assert.That(fmotifTypeValues, Is.Unique);
     }
 }

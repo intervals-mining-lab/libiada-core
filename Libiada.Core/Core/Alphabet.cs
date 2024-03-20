@@ -12,12 +12,12 @@ public class Alphabet : IBaseObject, IEnumerable<IBaseObject>
     /// <summary>
     /// The elements within alphabet.
     /// </summary>
-    protected readonly List<IBaseObject> Elements = new List<IBaseObject>();
+    protected readonly List<IBaseObject> Elements = [];
 
     /// <summary>
     /// The elements indexes.
     /// </summary>
-    protected readonly Dictionary<IBaseObject, int> ElementsIndexes = new Dictionary<IBaseObject, int>();
+    protected readonly Dictionary<IBaseObject, int> ElementsIndexes = [];
 
     /// <summary>
     /// Gets count of elements in alphabet.
@@ -107,11 +107,7 @@ public class Alphabet : IBaseObject, IEnumerable<IBaseObject>
     /// </returns>
     public IBaseObject Clone()
     {
-        var clone = new Alphabet();
-        foreach (IBaseObject element in Elements)
-        {
-            clone.Add(element);
-        }
+        Alphabet clone = [.. Elements];
 
         return clone;
     }
@@ -215,7 +211,7 @@ public class Alphabet : IBaseObject, IEnumerable<IBaseObject>
     /// </returns>
     public IBaseObject[] ToArray()
     {
-        var result = new List<IBaseObject>();
+        List<IBaseObject> result = [];
 
         foreach (IBaseObject element in Elements)
         {
@@ -233,7 +229,7 @@ public class Alphabet : IBaseObject, IEnumerable<IBaseObject>
     /// </returns>
     public List<IBaseObject> ToList()
     {
-        var result = new List<IBaseObject>();
+        List<IBaseObject> result = [];
 
         foreach (IBaseObject element in Elements)
         {
@@ -271,10 +267,10 @@ public class Alphabet : IBaseObject, IEnumerable<IBaseObject>
     /// <returns></returns>
     public override string ToString()
     {
-        StringBuilder result = new StringBuilder();
+        StringBuilder result = new();
         result.Append("< ");
 
-        foreach(var element in Elements) result.Append($"{element}, ");
+        foreach(IBaseObject element in Elements) result.Append($"{element}, ");
         result.Remove(result.Length - 2, 2);
         result.Append(" >");
         return result.ToString();

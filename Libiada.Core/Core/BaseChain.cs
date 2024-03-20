@@ -22,7 +22,7 @@ public class BaseChain : AbstractChain
     /// <summary>
     /// The alphabet of chain.
     /// </summary>
-    protected Alphabet alphabet = new Alphabet();
+    protected Alphabet alphabet = [];
 
     /// <summary>
     /// Initializes a new instance of the <see cref="BaseChain"/> class.
@@ -93,7 +93,7 @@ public class BaseChain : AbstractChain
     /// </param>
     public BaseChain(int[] order) : this(order.Length)
     {
-        var alphabetCardinality = order.Max();
+        int alphabetCardinality = order.Max();
         for (int i = 1; i <= alphabetCardinality; i++)
         {
             alphabet.Add((ValueInt)i);
@@ -135,7 +135,7 @@ public class BaseChain : AbstractChain
     {
         get
         {
-            var result = (Alphabet)alphabet.Clone();
+            Alphabet result = (Alphabet)alphabet.Clone();
 
             // Removing NullValue.
             result.Remove(0);
@@ -279,7 +279,7 @@ public class BaseChain : AbstractChain
     /// </returns>
     public override IBaseObject Clone()
     {
-        var clone = new BaseChain(order.Length);
+        BaseChain clone = new(order.Length);
         FillClone(clone);
         return clone;
     }

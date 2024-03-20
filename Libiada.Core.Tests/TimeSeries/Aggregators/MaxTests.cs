@@ -24,7 +24,7 @@ public class MaxTests
     [Test]
     public void MaxTest()
     {
-        var aggregator = new Max();
+        Max aggregator = new();
         double result = aggregator.Aggregate(distances);
         Assert.That(result, Is.EqualTo(max));
     }

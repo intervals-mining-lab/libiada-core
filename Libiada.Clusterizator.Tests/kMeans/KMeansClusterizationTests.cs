@@ -14,7 +14,7 @@ public class KMeansClusterizationTests
     [Test]
     public void SimpleClusterTest()
     {
-        var cluster = new KMeansClusterization();
+        KMeansClusterization cluster = new();
         double[][] data = [[1], [2], [10]];
         int[] actual = cluster.Cluster(2, data);
         Assert.That(actual[0], Is.EqualTo(actual[1]));
@@ -27,7 +27,7 @@ public class KMeansClusterizationTests
     [Test]
     public void FourPointsClusterTest()
     {
-        var cluster = new KMeansClusterization();
+        KMeansClusterization cluster = new();
         double[][] data = [[-5], [-4], [4], [5]];
         int[] actual = cluster.Cluster(2, data);
         Assert.That(actual[0], Is.EqualTo(actual[1]));
@@ -41,7 +41,7 @@ public class KMeansClusterizationTests
     [Test]
     public void TwoDimensionDataClusterTest()
     {
-        var cluster = new KMeansClusterization();
+        KMeansClusterization cluster = new();
         double[][] data = [[-5, 1], [-5, 2], [0, 0], [1, 1]];
         int[] actual = cluster.Cluster(2, data);
         Assert.That(actual[0], Is.EqualTo(actual[1]));
@@ -55,7 +55,7 @@ public class KMeansClusterizationTests
     [Test]
     public void MultipleDataPointsClusterTest()
     {
-        var cluster = new KMeansClusterization();
+        KMeansClusterization cluster = new();
         double[][] data = [[-2.1], [-1.0], [0.3], [1.0], [1.1], [7.0], [9.0]];
         int[] actual = cluster.Cluster(2, data);
         Assert.That(actual[0], Is.EqualTo(actual[1]));

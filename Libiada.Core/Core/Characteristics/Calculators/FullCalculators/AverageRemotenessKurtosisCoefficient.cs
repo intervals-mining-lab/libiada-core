@@ -19,8 +19,8 @@ public class AverageRemotenessKurtosisCoefficient : IFullCalculator
     /// </returns>
     public double Calculate(Chain chain, Link link)
     {
-        var averageRemotenessKurtosis = new AverageRemotenessKurtosis();
-        var averageRemotenessStandardDeviation = new AverageRemotenessStandardDeviation();
+        AverageRemotenessKurtosis averageRemotenessKurtosis = new();
+        AverageRemotenessStandardDeviation averageRemotenessStandardDeviation = new();
 
         double standardDeviation = averageRemotenessStandardDeviation.Calculate(chain, link);
         return standardDeviation == 0 ? 0 : averageRemotenessKurtosis.Calculate(chain, link) / (standardDeviation * standardDeviation * standardDeviation * standardDeviation);

@@ -14,7 +14,7 @@ public static class DnaCodingTables
     ///  Coding tables as dictionary of dictionaries 
     ///  with table numbers and codons as keys.
     /// </summary>
-    public static ReadOnlyDictionary<byte, ReadOnlyDictionary<string, IBaseObject>> codingTables = new ReadOnlyDictionary<byte, ReadOnlyDictionary<string, IBaseObject>>(
+    public static ReadOnlyDictionary<byte, ReadOnlyDictionary<string, IBaseObject>> codingTables = new(
         new Dictionary<byte, ReadOnlyDictionary<string, IBaseObject>>
     {
             {

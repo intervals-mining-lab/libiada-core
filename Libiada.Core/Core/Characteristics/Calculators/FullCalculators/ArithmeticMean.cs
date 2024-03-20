@@ -21,11 +21,11 @@ public class ArithmeticMean : IFullCalculator
     /// </returns>
     public double Calculate(Chain chain, Link link)
     {
-        var adder = new IntervalsSum();
-        var counter = new IntervalsCount();
+        IntervalsSum adder = new();
+        IntervalsCount counter = new();
 
         double intervalsSum = adder.Calculate(chain, link);
-        var intervalsCount = (int)counter.Calculate(chain, link);
+        int intervalsCount = (int)counter.Calculate(chain, link);
         return intervalsCount == 0 ? 0 : intervalsSum / intervalsCount;
     }
 }

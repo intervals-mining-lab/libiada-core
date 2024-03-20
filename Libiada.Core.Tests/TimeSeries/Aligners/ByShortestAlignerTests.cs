@@ -29,8 +29,8 @@ public class ByShortestAlignerTests
     [Test]
     public void ShortestAlignTest()
     {
-        var aligner = new ByShortestAligner();
-        var result = aligner.AlignSeries(shortTimeSeries, longTimeSeries);
+        ByShortestAligner aligner = new();
+        (double[][] first, double[][] second) result = aligner.AlignSeries(shortTimeSeries, longTimeSeries);
         Assert.That(result.second[0], Has.Length.EqualTo(result.first[0].Length));
         Assert.That(result.first[0], Is.EqualTo(shortTimeSeries));
         Assert.That(result.second[0], Is.EqualTo(expectedSubArray));

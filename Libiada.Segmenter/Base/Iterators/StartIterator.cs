@@ -46,7 +46,7 @@ public class StartIterator : BaseIterator
     {
         try
         {
-            CursorPosition = CursorPosition + step;
+            CursorPosition += step;
             currentCut = chain.Substring(CursorPosition, CursorPosition + windowLength);
         }
         catch (Exception)

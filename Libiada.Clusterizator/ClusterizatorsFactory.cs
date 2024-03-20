@@ -57,8 +57,8 @@ public static class ClusterizatorsFactory
 
                 return new MeanShiftClusterization(bandwidth);
             case ClusterizationType.FRiSCluster:
-                var minimumClusters = (int)parameters["clustersCount"];
-                var maximumClusters = (int)parameters["maximumClusters"];
+                int minimumClusters = (int)parameters["clustersCount"];
+                int maximumClusters = (int)parameters["maximumClusters"];
                 return new FRiSCluster.FRiSCluster(minimumClusters, maximumClusters);
 
             default:

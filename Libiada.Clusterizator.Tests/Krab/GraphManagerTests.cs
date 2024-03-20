@@ -65,7 +65,7 @@ public class GraphManagerTests
     [Test]
     public void UnConnectedGraphsTest()
     {
-        var connector = new GraphManager(connectionsList, elementsList);
+        GraphManager connector = new(connectionsList, elementsList);
         connector.Connect(2, 3);
 
         Assert.That(connectionsList[9].Connected, Is.True);
@@ -79,7 +79,7 @@ public class GraphManagerTests
     [Test]
     public void SearchConnectionTest()
     {
-        var connector = new GraphManager(connectionsList, elementsList);
+        GraphManager connector = new(connectionsList, elementsList);
         Assert.That(connector.SearchConnection(elementsList[0], elementsList[0]), Is.EqualTo(-1));
         Assert.That(connector.SearchConnection(elementsList[4], elementsList[4]), Is.EqualTo(-1));
         Assert.That(connector.SearchConnection(elementsList[0], elementsList[1]), Is.Zero);
@@ -95,7 +95,7 @@ public class GraphManagerTests
     [Test]
     public void OneConnectedGraphTest()
     {
-        var connector = new GraphManager(connectionsList, elementsList);
+        GraphManager connector = new(connectionsList, elementsList);
         connector.Connect(0, 2);
 
         Assert.That(connectionsList[1].Connected, Is.True);
@@ -110,7 +110,7 @@ public class GraphManagerTests
     [Test]
     public void BothConnectionGraphTest()
     {
-        var connector = new GraphManager(connectionsList, elementsList);
+        GraphManager connector = new(connectionsList, elementsList);
         connector.Connect(1, 5);
         Assert.That(connectionsList[8].Connected, Is.True);
         Assert.That(elementsList[0].TaxonNumber, Is.EqualTo(1));
@@ -125,7 +125,7 @@ public class GraphManagerTests
     [Test]
     public void UnBothConnectionGraphTest()
     {
-        var connector = new GraphManager(connectionsList, elementsList);
+        GraphManager connector = new(connectionsList, elementsList);
         connectionsList[1].Connected = true;
         elementsList[2].TaxonNumber = 1;
         connector.Connect(1, 2);
@@ -142,7 +142,7 @@ public class GraphManagerTests
     [Test]
     public void CutGraphTest()
     {
-        var connector = new GraphManager(connectionsList, elementsList);
+        GraphManager connector = new(connectionsList, elementsList);
         connector.Cut(elementsList[0], elementsList[1]);
 
         Assert.That(connectionsList[0].Connected, Is.False);
@@ -158,7 +158,7 @@ public class GraphManagerTests
     [Test]
     public void CutGraphTrioTest()
     {
-        var connector = new GraphManager(connectionsList, elementsList);
+        GraphManager connector = new(connectionsList, elementsList);
         connectionsList[1].Connected = true;
         elementsList[2].TaxonNumber = 1;
         connector.Cut(elementsList[0], elementsList[2]);
@@ -175,8 +175,8 @@ public class GraphManagerTests
     [Test]
     public void CloneTest()
     {
-        var connector = new GraphManager(connectionsList, elementsList);
-        var connector2 = connector.Clone();
+        GraphManager connector = new(connectionsList, elementsList);
+        GraphManager connector2 = connector.Clone();
 
         Assert.That(connector2, Is.TypeOf(typeof(GraphManager)));
         Assert.That(connector2.Connections[0], Is.TypeOf(typeof(Connection)));
@@ -201,14 +201,14 @@ public class GraphManagerTests
             elementsList[connectionsList[i].SecondElementIndex].TaxonNumber = 0;
         }
 
-        var lambdas = new[] { 10, 20, 15, 21, 6, 11, 12, 27, 16, 9, 25, 26, 13, 21, 22 };
+        int[] lambdas = [10, 20, 15, 21, 6, 11, 12, 27, 16, 9, 25, 26, 13, 21, 22];
 
         for (int i = 0; i < lambdas.Length; i++)
         {
             connectionsList[i].Lambda = lambdas[i];
         }
 
-        var connector = new GraphManager(connectionsList, elementsList);
+        GraphManager connector = new(connectionsList, elementsList);
         connector.ConnectGraph();
 
         Assert.That(connectionsList[0].Connected, Is.True);
@@ -234,7 +234,7 @@ public class GraphManagerTests
     [Test]
     public void CutConnectionTest()
     {
-        var connector = new GraphManager(connectionsList, elementsList);
+        GraphManager connector = new(connectionsList, elementsList);
         connector.Cut(connector.Connections[0]);
 
         Assert.That(connectionsList[0].Connected, Is.False);
@@ -250,7 +250,7 @@ public class GraphManagerTests
     [Test]
     public void CutConnectionTrioTest()
     {
-        var connector = new GraphManager(connectionsList, elementsList);
+        GraphManager connector = new(connectionsList, elementsList);
         connectionsList[1].Connected = true;
         elementsList[2].TaxonNumber = 1;
         connector.Cut(connector.Connections[1]);

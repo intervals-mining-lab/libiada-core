@@ -45,7 +45,7 @@ public class MusicXmlParser
     /// </returns>
     private List<CongenericScoreTrack> ParseCongenericScoreTracks(XmlDocument scoreNode)
     {
-        var temp = new List<CongenericScoreTrack>();
+        List<CongenericScoreTrack> temp = [];
 
         XmlNodeList congenericList = scoreNode.GetElementsByTagName("part");
 
@@ -73,18 +73,18 @@ public class MusicXmlParser
     private List<Measure> ParseMeasures(XmlNode congenericScoreNode)
     {
         XmlNodeList measureList = congenericScoreNode.ChildNodes;
-        var measures = new List<Measure>();
+        List<Measure> measures = [];
         bool isOnRepeat = false;
-        var repeatedMeasures = new List<Measure>();
+        List<Measure> repeatedMeasures = [];
         for (int i = 0; i < measureList.Count; i++)
         {
             List<ValueNote> notes = ParseNotes(measureList[i].Clone());
             MeasureAttributes attributes = ParseAttributes(measureList[i].Clone());
             XmlNodeList childNodes = measureList[i]?.ChildNodes;
-            XmlNode lastNode = childNodes?[childNodes.Count - 1];
+            XmlNode lastNode = childNodes?[^1];
             if ((lastNode?.Name == "barline") && (lastNode.ChildNodes[0].Attributes["direction"].Value == "forward"))
             {
-                repeatedMeasures = new List<Measure>() { new Measure(notes, attributes) };
+                repeatedMeasures = [new Measure(notes, attributes)];
                 isOnRepeat = true;
             }
             else if (isOnRepeat)
@@ -236,29 +236,29 @@ public class MusicXmlParser
     /// </returns>
     private List<ValueNote> ParseNotes(XmlNode measureNode)
     {
-        var notes = new List<ValueNote>();
+        List<ValueNote> notes = [];
         bool hasNotes = false;
         foreach (XmlNode measureChild in measureNode.ChildNodes)
         {
             if (measureChild.Name == "note")
             {
-                var measureChildClone = measureChild.Clone();
+                XmlNode measureChildClone = measureChild.Clone();
                 foreach (XmlNode chordChild in measureChildClone.ChildNodes)
                 {
                     if (chordChild.Name == "chord")
                     {
                         // если найден "аккорд", то добавим текущую ноту к предыдущей уже мультиноте
-                        var chordPitch = ParsePitch(measureChildClone);
-                        if(chordPitch != null) notes[notes.Count - 1].AddPitch(chordPitch);
-                        if (notes[notes.Count - 1].Tie != ParseTie(measureChildClone))
+                        Pitch? chordPitch = ParsePitch(measureChildClone);
+                        if(chordPitch != null) notes[^1].AddPitch(chordPitch);
+                        if (notes[^1].Tie != ParseTie(measureChildClone))
                         {
-                            notes[notes.Count - 1].Tie = Tie.None;
+                            notes[^1].Tie = Tie.None;
                         }
 
                         break;
                     }
 
-                    var pitch = ParsePitch(measureChildClone);
+                    Pitch? pitch = ParsePitch(measureChildClone);
                     ValueNote note = pitch == null
                         ? new ValueNote(ParseDuration(measureChildClone), ParseTriplet(measureChildClone), ParseTie(measureChildClone))
                         : new ValueNote(pitch, ParseDuration(measureChildClone), ParseTriplet(measureChildClone), ParseTie(measureChildClone));
@@ -300,8 +300,8 @@ public class MusicXmlParser
             childName = noteChild.Name;
             if (noteChild.Name == "pitch")
             {
-                var step = NoteSymbol.C;
-                var alter = Accidental.Bekar;
+                NoteSymbol step = NoteSymbol.C;
+                Accidental alter = Accidental.Bekar;
                 byte octave = 0;
                 bool hasStep = false;
                 bool hasOctave = false;

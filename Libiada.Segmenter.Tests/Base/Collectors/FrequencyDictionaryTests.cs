@@ -21,7 +21,7 @@ public class FrequencyDictionaryTests
     [Test]
     public void PutTest()
     {
-        var alphabet = new FrequencyDictionary(chain);
+        FrequencyDictionary alphabet = new(chain);
         const string word = "string";
         const string unknown = "WOW";
         const int pos = 20;
@@ -40,7 +40,7 @@ public class FrequencyDictionaryTests
     [Test]
     public void ContainsTest()
     {
-        var alphabet = new FrequencyDictionary(chain);
+        FrequencyDictionary alphabet = new(chain);
         string[] words = ["A", "G", "C", "T", "WORD", "AG"];
         Assert.Multiple(() =>
         {
@@ -60,7 +60,7 @@ public class FrequencyDictionaryTests
     public void GetTest()
     {
         // AACAGGTGCCCCTTATTT
-        var alphabet = new FrequencyDictionary(chain);
+        FrequencyDictionary alphabet = new(chain);
         string[] words = ["A", "G", "C", "T", "WORD", "AG"];
         int[] positionsA = [0, 1, 3, 14];
         int[] positionsG = [4, 5, 7];
@@ -82,7 +82,7 @@ public class FrequencyDictionaryTests
     [Test]
     public void RemoveTest()
     {
-        var alphabet = new FrequencyDictionary(chain);
+        FrequencyDictionary alphabet = new(chain);
         string[] words = ["A", "G", "C", "T", "WORD", "AG"];
         alphabet.Remove(words[0]);
         Assert.That(!alphabet.Contains(words[0]));
@@ -101,7 +101,7 @@ public class FrequencyDictionaryTests
     [Test]
     public void GetWordsTest()
     {
-        var alphabet = new FrequencyDictionary(chain);
+        FrequencyDictionary alphabet = new(chain);
         string[] words = ["A", "G", "C", "T"];
         List<string> alphabetWords = alphabet.GetWords();
         Assert.That(!words.Except(alphabetWords).Any());
@@ -114,8 +114,8 @@ public class FrequencyDictionaryTests
     public void FillOneTest()
     {
         string str = chain.ToString();
-        var alphabet1 = new FrequencyDictionary(str);
-        var alphabet2 = new FrequencyDictionary(chain);
+        FrequencyDictionary alphabet1 = new(str);
+        FrequencyDictionary alphabet2 = new(chain);
         Assert.That(alphabet1, Is.EqualTo(alphabet2));
     }
 
@@ -134,7 +134,7 @@ public class FrequencyDictionaryTests
     [Test]
     public void PowerTest()
     {
-        var alphabetChain = new FrequencyDictionary(chain);
+        FrequencyDictionary alphabetChain = new(chain);
         const int power = 4;
         Assert.That(alphabetChain.Count, Is.EqualTo(power));
     }
@@ -145,7 +145,7 @@ public class FrequencyDictionaryTests
     [Test]
     public void ClearTest()
     {
-        var alphabet = new FrequencyDictionary(chain);
+        FrequencyDictionary alphabet = new(chain);
         alphabet.Clear();
         Assert.That(alphabet.Count, Is.EqualTo(0));
     }
@@ -156,8 +156,8 @@ public class FrequencyDictionaryTests
     [Test]
     public void AddTest()
     {
-        var alphabet = new FrequencyDictionary();
-        var alphabetTest = new FrequencyDictionary(chain);
+        FrequencyDictionary alphabet = new();
+        FrequencyDictionary alphabetTest = new(chain);
         string[] words = ["A", "G", "C", "T"];
         const int power = 1;
         alphabet.Add(words[0], alphabetTest[words[0]]);
@@ -176,8 +176,8 @@ public class FrequencyDictionaryTests
     public void CloneTest()
     {
         string str = chain.ToString();
-        var alphabet1 = new FrequencyDictionary(str);
-        var alphabet2 = new FrequencyDictionary(chain);
+        FrequencyDictionary alphabet1 = new(str);
+        FrequencyDictionary alphabet2 = new(chain);
         FrequencyDictionary alphabet3 = alphabet2.Clone();
         Assert.Multiple(() =>
         {
@@ -193,8 +193,8 @@ public class FrequencyDictionaryTests
     public void EqualsTest()
     {
         string str = chain.ToString();
-        var alphabet1 = new FrequencyDictionary(str);
-        var alphabet2 = new FrequencyDictionary(chain);
+        FrequencyDictionary alphabet1 = new(str);
+        FrequencyDictionary alphabet2 = new(chain);
         Assert.That(alphabet1, Is.EqualTo(alphabet2));
         alphabet1.Remove(alphabet1.GetWord(1));
         Assert.That(alphabet1, Is.Not.EqualTo(alphabet2));
@@ -206,7 +206,7 @@ public class FrequencyDictionaryTests
     [Test]
     public void GetWordTest()
     {
-        var alphabet = new FrequencyDictionary(chain);
+        FrequencyDictionary alphabet = new(chain);
         for (int index = 0; index < alphabet.Count; index++)
         {
             Assert.That(alphabet.Contains(alphabet.GetWord(index)));

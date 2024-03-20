@@ -72,11 +72,7 @@ public class ValuePhantom : Alphabet, IBaseObject
     /// </returns>
     public new IBaseObject Clone()
     {
-        var clone = new ValuePhantom();
-        foreach (IBaseObject element in Elements)
-        {
-            clone.Add(element);
-        }
+        ValuePhantom clone = [.. Elements];
 
         return clone;
     }

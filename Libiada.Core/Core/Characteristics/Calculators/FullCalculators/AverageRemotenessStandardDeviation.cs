@@ -19,7 +19,7 @@ public class AverageRemotenessStandardDeviation : IFullCalculator
     /// </returns>
     public double Calculate(Chain chain, Link link)
     {
-        var averageRemotenessDispersion = new AverageRemotenessDispersion();
+        AverageRemotenessDispersion averageRemotenessDispersion = new();
         return Math.Sqrt(averageRemotenessDispersion.Calculate(chain, link));
     }
 }

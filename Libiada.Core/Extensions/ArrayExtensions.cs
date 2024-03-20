@@ -25,7 +25,7 @@ public static class ArrayExtensions
     /// </returns>
     public static T[] DeleteAt<T>(this T[] source, int index)
     {
-        var result = new T[source.Length - 1];
+        T[] result = new T[source.Length - 1];
         if (index > 0)
         {
             Array.Copy(source, 0, result, 0, index);
@@ -53,7 +53,7 @@ public static class ArrayExtensions
     /// </returns>
     public static int[] DeleteAt(this int[] source, int index)
     {
-        var result = new int[source.Length - 1];
+        int[] result = new int[source.Length - 1];
         if (index > 0)
         {
             Array.Copy(source, 0, result, 0, index);
@@ -84,7 +84,7 @@ public static class ArrayExtensions
     /// </returns>
     public static int[] AllIndexesOf<T>(this T[] source, T element)
     {
-        var result = new List<int>();
+        List<int> result = [];
 
         for (int i = 0; i < source.Length; i++)
         {
@@ -111,7 +111,7 @@ public static class ArrayExtensions
     /// </returns>
     public static int[] AllIndexesOf(this int[] source, int element)
     {
-        var result = new List<int>();
+        List<int> result = [];
         for (int i = 0; i < source.Length; i++)
         {
             if (source[i] == element)
@@ -134,7 +134,7 @@ public static class ArrayExtensions
     /// </returns>
     public static string ToStringWithoutDelimiter(this IList array)
     {
-        var builder = new StringBuilder();
+        StringBuilder builder = new();
 
         foreach (object element in array)
         {
@@ -178,7 +178,7 @@ public static class ArrayExtensions
     /// </returns>
     public static string ToString<T>(this IList<T> array, string delimiter)
     {
-        var builder = new StringBuilder();
+        StringBuilder builder = new();
 
         foreach (T element in array)
         {
@@ -203,7 +203,7 @@ public static class ArrayExtensions
     /// </returns>
     public static int[] Rotate(this int[] array, uint rotations)
     {
-        var result = new int[array.Length];
+        int[] result = new int[array.Length];
         Array.Copy(array, rotations, result, 0, array.Length - rotations);
         Array.Copy(array, 0, result, result.Length - rotations, rotations);
 
@@ -274,7 +274,7 @@ public static class ArrayExtensions
     /// </returns>
     public static T[] SubArray<T>(this T[] data, int index, int length)
     {
-        var result = new T[length];
+        T[] result = new T[length];
         Array.Copy(data, index, result, 0, length);
         return result;
     }

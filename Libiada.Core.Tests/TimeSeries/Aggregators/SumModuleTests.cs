@@ -24,7 +24,7 @@ public class SumModuleTests
     [Test]
     public void SumModuleTest()
     {
-        var aggregator = new SumModule();
+        SumModule aggregator = new();
         double result = aggregator.Aggregate(distances);
         Assert.That(result, Is.EqualTo(sumMod));
     }

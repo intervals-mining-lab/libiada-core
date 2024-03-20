@@ -21,10 +21,10 @@ public class KMeansClusterization : IClusterizator
     /// </returns>
     public int[] Cluster(int clustersCount, double[][] data)
     {
-        KMeans kMeans = new KMeans(clustersCount);
+        KMeans kMeans = new(clustersCount);
 
-        var clusters = kMeans.Learn(data);
-        var result = new int[data.Length];
+        KMeansClusterCollection clusters = kMeans.Learn(data);
+        int[] result = new int[data.Length];
 
         for (int i = 0; i < result.Length; i++)
         {

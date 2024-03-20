@@ -21,12 +21,12 @@ public class GCToATRatio : NonLinkableFullCalculator
     {
         DnaProcessor.CheckDnaAlphabet(chain.Alphabet);
 
-        var counter = new CongenericCalculators.ElementsCount();
+        CongenericCalculators.ElementsCount counter = new();
 
-        var g = (int)counter.Calculate(chain.GetOrCreateCongenericChain(new ValueString("G")));
-        var c = (int)counter.Calculate(chain.GetOrCreateCongenericChain(new ValueString("C")));
-        var a = (int)counter.Calculate(chain.GetOrCreateCongenericChain(new ValueString("A")));
-        var t = (int)counter.Calculate(chain.GetOrCreateCongenericChain(new ValueString("T")));
+        int g = (int)counter.Calculate(chain.GetOrCreateCongenericChain(new ValueString("G")));
+        int c = (int)counter.Calculate(chain.GetOrCreateCongenericChain(new ValueString("C")));
+        int a = (int)counter.Calculate(chain.GetOrCreateCongenericChain(new ValueString("A")));
+        int t = (int)counter.Calculate(chain.GetOrCreateCongenericChain(new ValueString("T")));
 
         return a + t == 0 ? 0 : (g + c) / (double)(a + t);
     }

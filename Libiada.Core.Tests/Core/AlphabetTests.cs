@@ -160,7 +160,7 @@ public class AlphabetTests
     [Test]
     public void CloneTest()
     {
-        var clone = firstAlphabet.Clone();
+        IBaseObject clone = firstAlphabet.Clone();
 
         Assert.That(firstAlphabet, Is.Not.SameAs(clone));
 
@@ -300,9 +300,9 @@ public class AlphabetTests
     [Test]
     public void ToArrayTest()
     {
-        var a = new ValueString('a');
-        var c = new ValueString('c');
-        var e = new ValueString('e');
+        ValueString a = new('a');
+        ValueString c = new('c');
+        ValueString e = new('e');
 
         firstAlphabet.Add(a);
         firstAlphabet.Add(new ValueString('b'));
@@ -329,7 +329,7 @@ public class AlphabetTests
         firstAlphabet.Add((ValueString)"a");
         firstAlphabet.Add((ValueInt)2);
 
-        var result = firstAlphabet.ToString();
+        string result = firstAlphabet.ToString();
         Assert.That(result, Is.EqualTo("< -, 1, a, 2 >"));
     }
 }

@@ -43,8 +43,8 @@ public class AllOffsetsAlignerTests
 
     public void AllOffsetsAlignTest(double[] firstSeries, double[] secondSeries, double[][] firstExpected, double[][] secondExpected)
     {
-        var aligner = new AllOffsetsAligner();
-        var (first, second) = aligner.AlignSeries(firstSeries, secondSeries);
+        AllOffsetsAligner aligner = new();
+        (double[][] first, double[][] second) = aligner.AlignSeries(firstSeries, secondSeries);
         Assert.Multiple(() =>
         {
             Assert.That(first, Is.EqualTo(firstExpected));

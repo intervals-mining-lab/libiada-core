@@ -14,7 +14,7 @@ public class ConnectionTests
     [Test]
     public void ConnectionOneTest()
     {
-        var connection = new Connection(0, 1);
+        Connection connection = new(0, 1);
         Assert.That(connection.Connected, Is.False);
     }
 
@@ -24,7 +24,7 @@ public class ConnectionTests
     [Test]
     public void CloneOneTest()
     {
-        var connection = new Connection(2, 5)
+        Connection connection = new(2, 5)
                         {
                             Connected = false,
                             Distance = 6,
@@ -33,7 +33,7 @@ public class ConnectionTests
                             TauStar = 7,
                             Lambda = 13
                         };
-        var secondConnection = connection.Clone();
+        Connection secondConnection = connection.Clone();
         Assert.Multiple(() =>
         {
             Assert.That(connection.Connected, Is.EqualTo(secondConnection.Connected));
@@ -56,7 +56,7 @@ public class ConnectionTests
     [Test]
     public void CloneTwoTest()
     {
-        var connection = new Connection(2, 3)
+        Connection connection = new(2, 3)
                         {
                             Connected = true,
                             Distance = 1,
@@ -65,7 +65,7 @@ public class ConnectionTests
                             TauStar = 0,
                             Lambda = 5
                         };
-        var secondConnection = connection.Clone();
+        Connection secondConnection = connection.Clone();
         Assert.Multiple(() =>
         {
             Assert.That(connection.Connected, Is.EqualTo(secondConnection.Connected));

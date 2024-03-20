@@ -32,8 +32,8 @@ public class IteratorWritableEndTests
     {
         List<ValueString> messages = ['1', '3', '2', '2', '1', '2', '1', '3', '3', '1', '2', '1'];
 
-        var toWrite = new Chain(12);
-        var iteratorWrite = new IteratorWritableEnd(toWrite);
+        Chain toWrite = new(12);
+        IteratorWritableEnd iteratorWrite = new(toWrite);
         int i = 0;
         while (iteratorWrite.Next())
         {

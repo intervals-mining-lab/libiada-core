@@ -21,8 +21,8 @@ public class Regularity : ICongenericCalculator
     /// </returns>
     public double Calculate(CongenericChain chain, Link link)
     {
-        var geometricMeanCalculator = new GeometricMean();
-        var descriptiveInformationCalculator = new DescriptiveInformation();
+        GeometricMean geometricMeanCalculator = new();
+        DescriptiveInformation descriptiveInformationCalculator = new();
 
         double geometricMean = geometricMeanCalculator.Calculate(chain, link);
         double descriptiveInformation = descriptiveInformationCalculator.Calculate(chain, link);

@@ -21,7 +21,7 @@ public class Volume : IFullCalculator
     /// </returns>
     public double Calculate(Chain chain, Link link)
     {
-        var calculator = new CongenericCalculators.Volume();
+        CongenericCalculators.Volume calculator = new();
 
         Alphabet alphabet = chain.Alphabet;
         BigInteger result = 1;

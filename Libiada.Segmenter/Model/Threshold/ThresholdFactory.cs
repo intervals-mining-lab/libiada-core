@@ -24,18 +24,13 @@ public static class ThresholdFactory
     /// </exception>
     public static ThresholdVariator Make(Threshold threshold, Input input)
     {
-        switch (threshold)
+        return threshold switch
         {
-            case Threshold.Linear:
-                return new ThresholdLinear(input.LeftBound, input.RightBound, input.Step);
-            case Threshold.Dichotomous:
-                return new ThresholdDichotomous(input.LeftBound, input.RightBound);
-            case Threshold.Random:
-                return new ThresholdRandom(input.LeftBound, input.RightBound);
-            case Threshold.Log:
-                return null; // Experimental threshold based on any log function
-            default:
-                throw new InvalidEnumArgumentException(nameof(threshold), (int)threshold, typeof(Threshold));
-        }
+            Threshold.Linear => new ThresholdLinear(input.LeftBound, input.RightBound, input.Step),
+            Threshold.Dichotomous => new ThresholdDichotomous(input.LeftBound, input.RightBound),
+            Threshold.Random => new ThresholdRandom(input.LeftBound, input.RightBound),
+            Threshold.Log => null,// Experimental threshold based on any log function
+            _ => throw new InvalidEnumArgumentException(nameof(threshold), (int)threshold, typeof(Threshold)),
+        };
     }
 }

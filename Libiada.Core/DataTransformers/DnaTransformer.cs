@@ -4,6 +4,8 @@ using Libiada.Core.Core;
 using Libiada.Core.Core.SimpleTypes;
 using Libiada.Core.Iterators;
 
+using System.Collections.ObjectModel;
+
 using static DnaCodingTables;
 
 /// <summary>
@@ -35,26 +37,26 @@ public static class DnaTransformer
 
         DnaProcessor.CheckDnaAlphabet(inputChain.Alphabet);
 
-        var aminoMap = codingTables[translationTable];
+        ReadOnlyDictionary<string, IBaseObject> aminoMap = codingTables[translationTable];
 
-        var result = new List<IBaseObject>(inputChain.Length / 3);
+        List<IBaseObject> result = new(inputChain.Length / 3);
         List<string> codons = DiffCutter.Cut(inputChain.ToString(), new SimpleCutRule(inputChain.Length, 3, 3));
         
         for (int i = 0; i < codons.Count; i++)
         {
-            var aminoAcid = aminoMap[codons[i]];
+            IBaseObject aminoAcid = aminoMap[codons[i]];
             
             if (aminoAcid is ValuePhantom phantom && phantom.Count(p => !p.Equals((ValueString)"*")) != 1)
             {
                 throw new Exception($"Ambiguous amino code:{aminoAcid}");
             }
 
-            var value = aminoAcid as ValueString ?? (ValueString)(aminoAcid as ValuePhantom).Single(p => !p.Equals((ValueString)"*"));
-
             if (i != codons.Count - 1)
             {
                 if (((ValueString)"*").Equals(aminoAcid)) throw new Exception("Unexpected stop-codon inside coding sequence");
-                else result.Add(value);
+
+                ValueString value = aminoAcid as ValueString ?? (ValueString)(aminoAcid as ValuePhantom).Single(p => !p.Equals((ValueString)"*"));
+                result.Add(value);
             }
             else if (aminoAcid.Equals((ValueString)"*")) return new BaseChain(result);
             else throw new Exception("No stop-codon at the end of coding sequence");
@@ -76,11 +78,11 @@ public static class DnaTransformer
     public static BaseChain Decode(BaseChain inputChain)
     {
         // TODO: add coding table param
-        var result = new List<IBaseObject>();
+        List<IBaseObject> result = [];
         for (int i = 0; i < inputChain.Length; i++)
         {
             string aminoAcid = inputChain[i].ToString();
-            var element = new ValuePhantom();
+            ValuePhantom element = [];
             switch (aminoAcid)
             {
                 case "F":
@@ -212,7 +214,7 @@ public static class DnaTransformer
     public static BaseChain EncodeTriplets(BaseChain inputChain)
     {
         DnaProcessor.CheckDnaAlphabet(inputChain.Alphabet);
-        var result = new List<IBaseObject>();
+        List<IBaseObject> result = [];
         List<string> codons = DiffCutter.Cut(inputChain.ToString(), new SimpleCutRule(inputChain.Length, 3, 3));
 
         foreach (string codon in codons)

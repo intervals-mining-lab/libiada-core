@@ -39,7 +39,7 @@ public class LinkedFullCalculatorTests
 
     public void CalculationTest(int sequenceIndex, FullCharacteristic type, Link link, double expected)
     {
-        var calculator = new LinkedFullCalculator(type, link);
+        LinkedFullCalculator calculator = new(type, link);
         double actual = calculator.Calculate(sequences[sequenceIndex]);
         Assert.That(actual, Is.EqualTo(expected).Within(0.0001d));
     }

@@ -29,7 +29,7 @@ public class NoteSymbolTests
     [Test]
     public void NoteSymbolValuesTest()
     {
-        var noteSymbols = EnumExtensions.ToArray<NoteSymbol>();
+        NoteSymbol[] noteSymbols = EnumExtensions.ToArray<NoteSymbol>();
         Assert.That(noteSymbols, Does.Contain((NoteSymbol)0));
         Assert.That(noteSymbols, Does.Contain((NoteSymbol)2));
         Assert.That(noteSymbols, Does.Contain((NoteSymbol)4));
@@ -90,8 +90,8 @@ public class NoteSymbolTests
     [Test]
     public void NoteSymbolValuesUniqueTest()
     {
-        var noteSymbols = EnumExtensions.ToArray<NoteSymbol>();
-        var noteSymbolValues = noteSymbols.Cast<byte>();
+        NoteSymbol[] noteSymbols = EnumExtensions.ToArray<NoteSymbol>();
+        IEnumerable<byte> noteSymbolValues = noteSymbols.Cast<byte>();
         Assert.That(noteSymbolValues, Is.Unique);
     }
 }

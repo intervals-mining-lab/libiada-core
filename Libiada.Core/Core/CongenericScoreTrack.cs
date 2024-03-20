@@ -15,7 +15,7 @@ public class CongenericScoreTrack : IBaseObject
     /// </param>
     public CongenericScoreTrack(List<Measure> measureList)
     {
-        MeasureList = new List<Measure>();
+        MeasureList = [];
         foreach (Measure measure in measureList)
         {
             // creating list of measures by cloning each of given measures
@@ -36,13 +36,13 @@ public class CongenericScoreTrack : IBaseObject
     /// </returns>
     public List<ValueNote> GetNotes()
     {
-        var result = new List<ValueNote>();
+        List<ValueNote> result = [];
 
         foreach (Measure measure in MeasureList)
         {
             foreach (ValueNote note in measure.NoteList)
             {
-                var newPitches = note.Pitches.Select(p => new Pitch(p.MidiNumber)).ToList();
+                List<Pitch> newPitches = note.Pitches.Select(p => new Pitch(p.MidiNumber)).ToList();
 
                 result.Add(new ValueNote(newPitches, note.Duration, note.Triplet, note.Tie));
             }
@@ -60,7 +60,7 @@ public class CongenericScoreTrack : IBaseObject
     /// </returns>
     public List<ValueNote> NoteOrder()
     {
-        var temp = new List<ValueNote>();
+        List<ValueNote> temp = [];
 
         // запись в одну цепочку
         foreach (Measure measure in MeasureList)
@@ -120,7 +120,7 @@ public class CongenericScoreTrack : IBaseObject
         List<ValueNote> temp = NoteOrder();
 
         // строй из Id, а не из объектов типа Note
-        var idTemp = new long[temp.Count];
+        long[] idTemp = new long[temp.Count];
         for (int i = 0; i < temp.Count; i++)
         {
             idTemp[i] = temp[i].Id;
@@ -138,7 +138,7 @@ public class CongenericScoreTrack : IBaseObject
     /// </returns>
     public List<Measure> MeasureOrder()
     {
-        var temp = new List<Measure>();
+        List<Measure> temp = [];
 
         // запись в одну цепочку
         foreach (Measure measure in MeasureList)
@@ -195,7 +195,7 @@ public class CongenericScoreTrack : IBaseObject
         List<Measure> temp = MeasureOrder();
 
         // строй из Id, а не из объектов типа Measure
-        var idTemp = new long[temp.Count];
+        long[] idTemp = new long[temp.Count];
         for (int i = 0; i < temp.Count; i++)
         {
             idTemp[i] = temp[i].Id;
@@ -242,7 +242,7 @@ public class CongenericScoreTrack : IBaseObject
     {
         unchecked
         {
-            var hashCode = 773805597;
+            int hashCode = 773805597;
             foreach (Measure measure in MeasureList)
             {
                 hashCode = (hashCode * -1521134295) + measure.GetHashCode();

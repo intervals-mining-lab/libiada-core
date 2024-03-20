@@ -68,7 +68,7 @@ public class MeasureAttributes : IBaseObject
     {
         unchecked
         {
-            var hashCode = 1812711144;
+            int hashCode = 1812711144;
             hashCode = (hashCode * -1521134295) + Size.GetHashCode();
             hashCode = (hashCode * -1521134295) + Key.GetHashCode();
             return hashCode;

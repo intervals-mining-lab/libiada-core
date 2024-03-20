@@ -20,7 +20,7 @@ public class TieTests
     [Test]
     public void TieCountTest()
     {
-        var actualCount = EnumExtensions.ToArray<Tie>().Length;
+        int actualCount = EnumExtensions.ToArray<Tie>().Length;
         Assert.That(actualCount, Is.EqualTo(TiesCount));
     }
 
@@ -30,7 +30,7 @@ public class TieTests
     [Test]
     public void TieValuesTest()
     {
-        var ties = EnumExtensions.ToArray<Tie>();
+        Tie[] ties = EnumExtensions.ToArray<Tie>();
         for (int i = 0; i < TiesCount; i++)
         {
             Assert.That(ties, Does.Contain((Tie)i));
@@ -85,8 +85,8 @@ public class TieTests
     [Test]
     public void TieValuesUniqueTest()
     {
-        var ties = EnumExtensions.ToArray<Tie>();
-        var tieValues = ties.Cast<byte>();
+        Tie[] ties = EnumExtensions.ToArray<Tie>();
+        IEnumerable<byte> tieValues = ties.Cast<byte>();
         Assert.That(tieValues, Is.Unique);
     }
 }

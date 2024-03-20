@@ -27,7 +27,7 @@ public class MutualDependenceCoefficient : BinaryCalculator
             return 0;
         }
 
-        var involvedCoefficientCalculator = new InvolvedPartialDependenceCoefficient();
+        InvolvedPartialDependenceCoefficient involvedCoefficientCalculator = new();
 
         double firstInvolvedCoefficient = involvedCoefficientCalculator.Calculate(manager, link);
         double secondInvolvedCoefficient = involvedCoefficientCalculator.Calculate(new BinaryIntervalsManager(manager.SecondChain, manager.FirstChain), link);

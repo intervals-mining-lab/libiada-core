@@ -23,7 +23,7 @@ public class IdentificationInformation : ICongenericCalculator
     /// </returns>
     public double Calculate(CongenericChain chain, Link link)
     {
-        var arithmeticMean = new ArithmeticMean();
+        ArithmeticMean arithmeticMean = new();
 
         double mean = arithmeticMean.Calculate(chain, link);
         return mean == 0 ? 0 : (-1 / mean) * Math.Log(1 / mean, 2);

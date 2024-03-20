@@ -19,7 +19,7 @@ public static class DiffCutter
     /// </returns>
     public static List<string> Cut(string chain, CutRule rule)
     {
-        var result = new List<string>();
+        List<string> result = [];
 
         rule.GetIterator();
         CutRuleIterator iterator = rule.GetIterator();

@@ -28,7 +28,7 @@ public static class CommonCalculator
         calculator.Calculate(graph);
         calculator = new TauCalculator();
         calculator.Calculate(graph);
-        var lambdaCalculator = new LambdaCalculator();
+        LambdaCalculator lambdaCalculator = new();
         lambdaCalculator.Calculate(graph, normalizedDistanceWeight, distanceWeight);
     }
 }

@@ -1,6 +1,7 @@
 ﻿namespace Libiada.Core.Tests.Core.ArrangementManagers;
 
 using Libiada.Core.Core;
+using Libiada.Core.Core.ArrangementManagers;
 
 /// <summary>
 /// The binary intervals manager tests.
@@ -19,8 +20,8 @@ public class BinaryIntervalsManagerTests
     [Test]
     public void GetBinaryIntervalTest()
     {
-        var chain = ChainsStorage.Chains[2];
-        var intervalManager = chain.GetRelationIntervalsManager(elements["A"], elements["C"]);
+        Chain chain = ChainsStorage.Chains[2];
+        BinaryIntervalsManager intervalManager = chain.GetRelationIntervalsManager(elements["A"], elements["C"]);
         Assert.Multiple(() =>
         {
             Assert.That(intervalManager.GetBinaryInterval(1), Is.EqualTo(1));
@@ -55,8 +56,8 @@ public class BinaryIntervalsManagerTests
     [Test]
     public void GetBinaryIntervalIncompleteChainTest()
     {
-        var chain = ChainsStorage.BinaryChains[20];
-        var intervalManager = chain.GetRelationIntervalsManager(elements["A"], elements["C"]);
+        Chain chain = ChainsStorage.BinaryChains[20];
+        BinaryIntervalsManager intervalManager = chain.GetRelationIntervalsManager(elements["A"], elements["C"]);
         Assert.Multiple(() =>
         {
             Assert.That(intervalManager.GetBinaryInterval(1), Is.EqualTo(1));

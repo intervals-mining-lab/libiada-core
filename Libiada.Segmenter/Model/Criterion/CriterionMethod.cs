@@ -48,7 +48,7 @@ public abstract class CriterionMethod
 
         List<int> left = minusOne.Positions(accord.GetRange(0, accord.Count - 1));
         List<int> right = minusOne.Positions(accord.GetRange(1, accord.Count - 1));
-        List<int> middle = midlLength != 0 ? mid.Positions(accord.GetRange(1, accord.Count - 2)) : new List<int>();
+        List<int> middle = midlLength != 0 ? mid.Positions(accord.GetRange(1, accord.Count - 2)) : [];
 
         double criteria = -1;
         if (winLen == shortWord)
@@ -94,7 +94,7 @@ public abstract class CriterionMethod
 
         int minusLength = winLen - 1;
         int start = stdData[0] + 1;
-        int end = chainLength - stdData[stdData.Count - 1] - minusLength;
+        int end = chainLength - stdData[^1] - minusLength;
         int pred = stdData[0];
         int j = 1;
         double multiplicate = 1;
@@ -109,17 +109,13 @@ public abstract class CriterionMethod
             }
         }
 
-        switch (anchor)
+        return anchor switch
         {
-            case Link.Start:
-                return 1 / Math.Pow(multiplicate * start, 1 / (double)j);
-            case Link.End:
-                return 1 / Math.Pow(multiplicate * end, 1 / (double)j);
-            case Link.Both:
-                return 0;
-            default:
-                return 0;
-        }
+            Link.Start => 1 / Math.Pow(multiplicate * start, 1 / (double)j),
+            Link.End => 1 / Math.Pow(multiplicate * end, 1 / (double)j),
+            Link.Both => 0,
+            _ => 0,
+        };
     }
 
     /// <summary>

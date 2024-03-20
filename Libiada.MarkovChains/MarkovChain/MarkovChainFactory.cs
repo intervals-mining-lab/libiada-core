@@ -30,20 +30,14 @@ public class MarkovChainFactory
     /// </exception>
     public MarkovChainBase Create(GeneratingMethod method, int rank, int heterogeneityRank, IGenerator generator)
     {
-        switch (method)
+        return method switch
         {
-            case GeneratingMethod.DynamicNotCongeneric:
-                return null;
-            case GeneratingMethod.StaticNotCongeneric:
-                return new MarkovChainNotCongenericStatic(rank, heterogeneityRank, generator);
-            case GeneratingMethod.DynamicCongeneric:
-                return null;
-            case GeneratingMethod.StaticCongeneric:
-                return new MarkovChainCongenericStatic(rank, generator);
-            case GeneratingMethod.Random:
-                return new MarkovChainRandom(rank, generator);
-            default:
-                throw new ArgumentException("This type of markov chain does not registered in system", "method");
-        }
+            GeneratingMethod.DynamicNotCongeneric => null,
+            GeneratingMethod.StaticNotCongeneric => new MarkovChainNotCongenericStatic(rank, heterogeneityRank, generator),
+            GeneratingMethod.DynamicCongeneric => null,
+            GeneratingMethod.StaticCongeneric => new MarkovChainCongenericStatic(rank, generator),
+            GeneratingMethod.Random => new MarkovChainRandom(rank, generator),
+            _ => throw new ArgumentException("This type of markov chain does not registered in system", "method"),
+        };
     }
 }

@@ -19,8 +19,8 @@ public class RemotenessKurtosisCoefficient : IFullCalculator
     /// </returns>
     public double Calculate(Chain chain, Link link)
     {
-        var remotenessKurtosis = new RemotenessKurtosis();
-        var remotenessStandardDeviation = new RemotenessStandardDeviation();
+        RemotenessKurtosis remotenessKurtosis = new();
+        RemotenessStandardDeviation remotenessStandardDeviation = new();
 
         double standardDeviation = remotenessStandardDeviation.Calculate(chain, link);
         return standardDeviation == 0 ? 0 : remotenessKurtosis.Calculate(chain, link) / (standardDeviation * standardDeviation * standardDeviation * standardDeviation);

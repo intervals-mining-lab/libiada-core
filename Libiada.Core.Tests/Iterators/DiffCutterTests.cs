@@ -15,7 +15,7 @@ public class DiffCutterTests
     public void DiffTest()
     {
         const string source = "reegwvwvw";
-        var rule = new CutRuleWithFixedStart(source.Length, 3);
+        CutRuleWithFixedStart rule = new(source.Length, 3);
         List<string> cuts = DiffCutter.Cut(source, rule);
 
         Assert.That(cuts[0], Is.EqualTo("ree"));

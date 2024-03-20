@@ -19,7 +19,7 @@ public class RemotenessStandardDeviation : ICongenericCalculator
     /// </returns>
     public double Calculate(CongenericChain chain, Link link)
     {
-        var remotenessDispersion = new RemotenessDispersion();
+        RemotenessDispersion remotenessDispersion = new();
         return Math.Sqrt(remotenessDispersion.Calculate(chain, link));
     }
 }

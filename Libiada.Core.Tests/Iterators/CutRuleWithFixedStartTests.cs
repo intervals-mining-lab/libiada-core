@@ -16,7 +16,7 @@ public class CutRuleWithFixedStartTests
     {
         const int length = 12;
         const int step = 3;
-        var rule = new CutRuleWithFixedStart(length, step);
+        CutRuleWithFixedStart rule = new(length, step);
         CutRuleIterator iterator = rule.GetIterator();
 
         for (int i = step; i <= length; i += step)

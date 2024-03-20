@@ -24,7 +24,7 @@ public class AverageTests
     [Test]
     public void AverageTest()
     {
-        var aggregator = new Average();
+        Average aggregator = new();
         double result = aggregator.Aggregate(distances);
         Assert.That(result, Is.EqualTo(average));
     }

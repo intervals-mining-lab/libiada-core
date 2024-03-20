@@ -73,10 +73,10 @@ public class KrabClusterization : IClusterizator
     public int[] Cluster(int clustersCount, double[][] data)
     {
         // all connections (pairs of elements)
-        var connections = new List<Connection>();
+        List<Connection> connections = [];
 
         // all elements
-        var elements = new List<GraphElement>();
+        List<GraphElement> elements = [];
 
         for (int i = 0; i < data.Length; i++)
         {
@@ -98,7 +98,7 @@ public class KrabClusterization : IClusterizator
         manager.ConnectGraph();
         GraphManager tempManager = manager.Clone();
         ChooseDivision(clustersCount, 0, manager);
-        var result = new int[data.Length];
+        int[] result = new int[data.Length];
 
         // extracting clusters from the graph
         for (int j = 0; j < optimalDivide.Elements.Count; j++)

@@ -19,19 +19,19 @@ public class AverageRemotenessSkewness : IFullCalculator
     /// </returns>
     public double Calculate(Chain chain, Link link)
     {
-        var averageRemoteness = new AverageRemoteness();
-        var intervalsCount = new IntervalsCount();
+        AverageRemoteness averageRemoteness = new();
+        IntervalsCount intervalsCount = new();
 
         double result = 0;
         double g = averageRemoteness.Calculate(chain, link);
-        var n = (int)intervalsCount.Calculate(chain, link);
+        int n = (int)intervalsCount.Calculate(chain, link);
         if (n == 0)
         {
             return 0;
         }
 
-        var congenericIntervalsCount = new CongenericCalculators.IntervalsCount();
-        var congenericAverageRemoteness = new CongenericCalculators.AverageRemoteness();
+        CongenericCalculators.IntervalsCount congenericIntervalsCount = new();
+        CongenericCalculators.AverageRemoteness congenericAverageRemoteness = new();
         Alphabet alphabet = chain.Alphabet;
         for (int i = 0; i < alphabet.Cardinality; i++)
         {

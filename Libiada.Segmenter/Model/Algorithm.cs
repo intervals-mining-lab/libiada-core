@@ -8,12 +8,12 @@ public class Algorithm
     /// <summary>
     /// The results.
     /// </summary>
-    protected List<MainOutputData> results = new List<MainOutputData>();
+    protected List<MainOutputData> results = [];
 
     /// <summary>
     /// The inputs.
     /// </summary>
-    protected List<Input> inputs = new List<Input>();
+    protected List<Input> inputs = [];
 
     /// <summary>
     /// Initializes a new instance of the <see cref="Algorithm"/> class.

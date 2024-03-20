@@ -16,7 +16,7 @@ public class MidiNumberManagerTests
     public void GetOctaveFromMidiNumberTest()
     {
         Pitch initialPitch = new(1, NoteSymbol.A, 0);
-        var octave = MidiNumberManager.GetOctaveFromMidiNumber(initialPitch.MidiNumber);
+        short octave = MidiNumberManager.GetOctaveFromMidiNumber(initialPitch.MidiNumber);
         Assert.That(octave, Is.EqualTo(initialPitch.Octave));
 
         initialPitch = new Pitch(5, NoteSymbol.C, Accidental.Sharp);
@@ -31,7 +31,7 @@ public class MidiNumberManagerTests
     public void GetNoteSymbolFromMidiNumberTest()
     {
         Pitch initialPitch = new(1, NoteSymbol.A, Accidental.Bekar);
-        var step = MidiNumberManager.GetNoteSymbolFromMidiNumber(initialPitch.MidiNumber);
+        NoteSymbol step = MidiNumberManager.GetNoteSymbolFromMidiNumber(initialPitch.MidiNumber);
         Assert.That(step, Is.EqualTo(initialPitch.Step));
 
         initialPitch = new Pitch(5, NoteSymbol.C, Accidental.Sharp);
@@ -46,7 +46,7 @@ public class MidiNumberManagerTests
     public void GetAlterFromMidiNumberTest()
     {
         Pitch initialPitch = new(1, NoteSymbol.A, Accidental.Bekar);
-        var alter = MidiNumberManager.GetAlterFromMidiNumber(initialPitch.MidiNumber);
+        Accidental alter = MidiNumberManager.GetAlterFromMidiNumber(initialPitch.MidiNumber);
         Assert.That(alter, Is.EqualTo(initialPitch.Alter));
 
         initialPitch = new Pitch(5, NoteSymbol.C, Accidental.Sharp);

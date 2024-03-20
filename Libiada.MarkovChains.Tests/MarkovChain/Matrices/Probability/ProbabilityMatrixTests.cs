@@ -86,7 +86,7 @@ public class ProbabilityMatrixTests
         baseChain = new BaseChain("abb");
 
         matrix = new Matrix(alphabet.Cardinality, 2);
-        var arrayCh = new int[baseChain.Length];
+        int[] arrayCh = new int[baseChain.Length];
         arrayCh[0] = alphabet.IndexOf(baseChain[0]);
         arrayCh[1] = alphabet.IndexOf(baseChain[1]);
         arrayCh[2] = alphabet.IndexOf(baseChain[2]);
@@ -105,19 +105,17 @@ public class ProbabilityMatrixTests
         alphabet.Add(d); // 3 => d
 
         baseChain = new BaseChain("ab");
-        var ch1 = new BaseChain("cb");
-        var ch2 = new BaseChain("ba");
-        var ch3 = new BaseChain("bc");
-        var ch4 = new BaseChain("ac");
-        var ch5 = new BaseChain("b");
-        var ch6 = new BaseChain("a");
-        var ch7 = new BaseChain("c");
+        BaseChain ch1 = new("cb");
+        BaseChain ch2 = new("ba");
+        BaseChain ch3 = new("bc");
+        BaseChain ch4 = new("ac");
+        BaseChain ch5 = new("b");
+        BaseChain ch6 = new("a");
+        BaseChain ch7 = new("c");
 
         matrix = new Matrix(alphabet.Cardinality, 2);
 
-        var arrayToTeach = new int[2];
-        arrayToTeach[0] = alphabet.IndexOf(ch1[0]);
-        arrayToTeach[1] = alphabet.IndexOf(ch1[1]);
+        int[] arrayToTeach = [alphabet.IndexOf(ch1[0]), alphabet.IndexOf(ch1[1])];
         matrix.Add(arrayToTeach);
 
         arrayToTeach = new int[2];
@@ -176,10 +174,10 @@ public class ProbabilityMatrixTests
     {
         matrix = new Matrix(testChain.Alphabet.Cardinality, 3);
 
-        var reorganizer = new NullCycleSpaceReorganizer(2);
+        NullCycleSpaceReorganizer reorganizer = new(2);
         testChain = (BaseChain)reorganizer.Reorganize(testChain);
 
-        var it = new IteratorStart(testChain, 3, 1);
+        IteratorStart it = new(testChain, 3, 1);
         while (it.Next())
         {
             var chain = it.Current();
@@ -192,9 +190,7 @@ public class ProbabilityMatrixTests
             matrix.Add(arrayToTeach);
         }
 
-        var toGet = new int[1];
-
-        toGet[0] = testChain.Alphabet.IndexOf((ValueString)"a");
+        int[] toGet = [testChain.Alphabet.IndexOf((ValueString)"a")];
         Assert.That(matrix.FrequencyFromObject(toGet), Is.EqualTo(6));
 
         toGet[0] = testChain.Alphabet.IndexOf((ValueString)"b");
@@ -403,10 +399,10 @@ public class ProbabilityMatrixTests
     {
         matrix = new Matrix(testChain.Alphabet.Cardinality, 3);
 
-        var reorganizer = new NullCycleSpaceReorganizer(2);
+        NullCycleSpaceReorganizer reorganizer = new(2);
         testChain = (BaseChain)reorganizer.Reorganize(testChain);
 
-        var it = new IteratorStart(testChain, 3, 1);
+        IteratorStart it = new(testChain, 3, 1);
         while (it.Next())
         {
             var chain = it.Current();
@@ -421,9 +417,7 @@ public class ProbabilityMatrixTests
 
         var probabilityMatrix = (ProbabilityMatrix)matrix.ProbabilityMatrix();
 
-        var toGet = new int[1];
-
-        toGet[0] = testChain.Alphabet.IndexOf((ValueString)"a");
+        int[] toGet = [testChain.Alphabet.IndexOf((ValueString)"a")];
         Assert.That(probabilityMatrix.FrequencyFromObject(toGet), Is.EqualTo(0.5));
 
         toGet[0] = testChain.Alphabet.IndexOf((ValueString)"b");
@@ -638,7 +632,7 @@ public class ProbabilityMatrixTests
         baseChain = new BaseChain("fc");
 
         matrix = new Matrix(alphabet.Cardinality, 2);
-        var array = new int[baseChain.Length];
+        int[] array = new int[baseChain.Length];
         array[0] = alphabet.IndexOf(baseChain[0]);
         array[1] = alphabet.IndexOf(baseChain[1]);
         Assert.Throws<ArgumentOutOfRangeException>(() => matrix.FrequencyFromObject(array));

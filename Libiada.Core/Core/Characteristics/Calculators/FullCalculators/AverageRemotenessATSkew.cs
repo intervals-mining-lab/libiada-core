@@ -24,7 +24,7 @@ public class AverageRemotenessATSkew : IFullCalculator
     {
         DnaProcessor.CheckDnaAlphabet(chain.Alphabet);
 
-        var congenericRemotenessCalculator = new CongenericCalculators.AverageRemoteness();
+        CongenericCalculators.AverageRemoteness congenericRemotenessCalculator = new();
 
         double a = congenericRemotenessCalculator.Calculate(chain.GetOrCreateCongenericChain(new ValueString("A")), link);
         double t = congenericRemotenessCalculator.Calculate(chain.GetOrCreateCongenericChain(new ValueString("T")), link);

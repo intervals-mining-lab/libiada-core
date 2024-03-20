@@ -27,7 +27,7 @@ public class InvolvedPartialDependenceCoefficient : BinaryCalculator
             return 0;
         }
 
-        var redundancyCalculator = new Redundancy();
+        Redundancy redundancyCalculator = new();
 
         double redundancy = redundancyCalculator.Calculate(manager, link);
         return redundancy * (2 * manager.PairsCount) / (manager.FirstChain.OccurrencesCount + manager.SecondChain.OccurrencesCount);

@@ -22,7 +22,7 @@ public class Depth : IFullCalculator
     public double Calculate(Chain chain, Link link)
     {
         double result = 0;
-        var calculator = new CongenericCalculators.Depth();
+        CongenericCalculators.Depth calculator = new();
         Alphabet alphabet = chain.Alphabet;
         for (int i = 0; i < alphabet.Cardinality; i++)
         {

@@ -42,7 +42,7 @@ public class ValuePhantomTests
     public void CloneTest()
     {
         ValuePhantom m1 = [new ValueString('1'), new ValueString('2'), new ValueString('3')];
-        var clone = (ValuePhantom)m1.Clone();
+        ValuePhantom clone = (ValuePhantom)m1.Clone();
 
         Assert.That(clone, Is.EqualTo(m1));
     }

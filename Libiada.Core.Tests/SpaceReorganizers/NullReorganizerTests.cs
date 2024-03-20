@@ -36,8 +36,8 @@ public class NullReorganizerTests
     [Test]
     public void FromParentToChildTest()
     {
-        var reorganizer = new NullReorganizer();
-        var result = reorganizer.Reorganize(chain);
+        NullReorganizer reorganizer = new();
+        AbstractChain result = reorganizer.Reorganize(chain);
         Assert.That(result, Is.EqualTo(baseChain));
     }
 
@@ -48,8 +48,8 @@ public class NullReorganizerTests
     [Test]
     public void FromChildToParentTest()
     {
-        var reorganizer = new NullReorganizer();
-        var result = reorganizer.Reorganize(baseChain);
+        NullReorganizer reorganizer = new();
+        AbstractChain result = reorganizer.Reorganize(baseChain);
         Assert.That(result, Is.EqualTo(chain));
     }
 }

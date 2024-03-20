@@ -24,7 +24,7 @@ public class DifferenceSquareRootTests
     [Test]
     public void DifferenceSquareRootTest()
     {
-        var aggregator = new DifferenceSquareRoot();
+        DifferenceSquareRoot aggregator = new();
         double result = aggregator.Aggregate(distances);
         Assert.That(result, Is.EqualTo(diffSqrt));
     }

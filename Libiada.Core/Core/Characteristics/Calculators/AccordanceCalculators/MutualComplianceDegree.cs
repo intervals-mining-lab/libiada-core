@@ -22,7 +22,7 @@ public class MutualComplianceDegree : IAccordanceCalculator
     /// </returns>
     public double Calculate(CongenericChain firstChain, CongenericChain secondChain, Link link)
     {
-        var partialAccordanceCalculator = new PartialComplianceDegree();
+        PartialComplianceDegree partialAccordanceCalculator = new();
         double firstResult = partialAccordanceCalculator.Calculate(firstChain, secondChain, link);
         double secondResult = partialAccordanceCalculator.Calculate(secondChain, firstChain, link);
         return Math.Sqrt(firstResult * secondResult);

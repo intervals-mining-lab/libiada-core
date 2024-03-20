@@ -23,11 +23,11 @@ public class SequenceGenerator : ISequenceGenerator
     /// </returns>
     public List<BaseChain> GenerateSequences(int length, int alphabetCardinality)
     {
-        var result = new List<BaseChain>();
-        var iterator = new SequenceIterator(length, alphabetCardinality);
+        List<BaseChain> result = [];
+        SequenceIterator iterator = new(length, alphabetCardinality);
         foreach (int[] sequence in iterator)
         {
-            var elements = new List<IBaseObject>(sequence.Length);
+            List<IBaseObject> elements = new(sequence.Length);
             for (int i = 0; i < sequence.Length; i++)
             {
                 elements.Add(new ValueInt(sequence[i]));

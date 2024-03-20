@@ -33,8 +33,8 @@ public class IteratorWritableStartTests
         List<ValueString> messages =
                            ['1', '2', '1', '3', '3', '1', '2', '1', '2', '2', '3', '1'];
 
-        var toWrite = new Chain(12);
-        var iteratorWrite = new IteratorWritableStart(toWrite);
+        Chain toWrite = new(12);
+        IteratorWritableStart iteratorWrite = new(toWrite);
         int i = 0;
         while (iteratorWrite.Next())
         {

@@ -20,7 +20,7 @@ public class SeriesManager : IArrangementManager
     /// </param>
     public SeriesManager(CongenericChain chain)
     {
-        series = new List<(int start, int length)>();
+        series = [];
         for (int i = 1; i <= chain.OccurrencesCount; i++)
         {
             series.Add(GetSeries(chain, i));

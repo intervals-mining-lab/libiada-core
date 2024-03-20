@@ -26,7 +26,7 @@ public class MainOutputData
     /// <summary>
     /// The parameters.
     /// </summary>
-    private Dictionary<string, string> parameters = new Dictionary<string, string>();
+    private Dictionary<string, string> parameters = [];
 
     /// <summary>
     /// The get chain.

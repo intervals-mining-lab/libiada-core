@@ -19,7 +19,7 @@ public class RemotenessKurtosis : IFullCalculator
     /// </returns>
     public double Calculate(Chain chain, Link link)
     {
-        var intervals = new List<int>();
+        List<int> intervals = [];
         Alphabet alphabet = chain.Alphabet;
         for (int i = 0; i < alphabet.Cardinality; i++)
         {
@@ -33,8 +33,8 @@ public class RemotenessKurtosis : IFullCalculator
 
         List<int> uniqueIntervals = intervals.Distinct().ToList();
 
-        var intervalsCount = new IntervalsCount();
-        var geometricMean = new GeometricMean();
+        IntervalsCount intervalsCount = new();
+        GeometricMean geometricMean = new();
 
         double result = 0;
         double gDelta = geometricMean.Calculate(chain, link);

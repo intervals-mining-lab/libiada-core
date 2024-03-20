@@ -11,7 +11,7 @@ public class NonRedundantStrictSequenceGenerator : ISequenceGenerator
     /// <summary>
     /// The redundant sequence generator.
     /// </summary>
-    private readonly StrictSequenceGenerator redundantSequenceGenerator = new StrictSequenceGenerator();
+    private readonly StrictSequenceGenerator redundantSequenceGenerator = new();
 
     /// <summary>
     /// The generate sequences.
@@ -27,11 +27,11 @@ public class NonRedundantStrictSequenceGenerator : ISequenceGenerator
     /// </returns>
     public List<BaseChain> GenerateSequences(int length, int alphabetCardinality)
     {
-        var redundantResult = redundantSequenceGenerator.GenerateSequences(length, alphabetCardinality);
-        var nonRedundantResult = new List<BaseChain>();
-        foreach (var chain in redundantResult)
+        List<BaseChain> redundantResult = redundantSequenceGenerator.GenerateSequences(length, alphabetCardinality);
+        List<BaseChain> nonRedundantResult = [];
+        foreach (BaseChain chain in redundantResult)
         {
-            var chainAlphabetCardinality = chain.Alphabet.Cardinality;
+            int chainAlphabetCardinality = chain.Alphabet.Cardinality;
             bool nonRedundant = chain.Alphabet.All(el => (ValueInt)el <= chainAlphabetCardinality);
             if (nonRedundant)
             {
@@ -53,7 +53,7 @@ public class NonRedundantStrictSequenceGenerator : ISequenceGenerator
     /// </returns>
     public List<BaseChain> GenerateSequences(int length)
     {
-        var result = new List<BaseChain>();
+        List<BaseChain> result = [];
         for (int i = 1; i <= length; i++)
         {
             result.AddRange(GenerateSequences(length, i));

@@ -21,22 +21,15 @@ public static class BinaryCalculatorsFactory
     /// </exception>
     public static IBinaryCalculator CreateCalculator(BinaryCharacteristic type)
     {
-        switch (type)
+        return type switch
         {
-            case BinaryCharacteristic.GeometricMean:
-                return new GeometricMean();
-            case BinaryCharacteristic.InvolvedPartialDependenceCoefficient:
-                return new InvolvedPartialDependenceCoefficient();
-            case BinaryCharacteristic.MutualDependenceCoefficient:
-                return new MutualDependenceCoefficient();
-            case BinaryCharacteristic.NormalizedPartialDependenceCoefficient:
-                return new NormalizedPartialDependenceCoefficient();
-            case BinaryCharacteristic.PartialDependenceCoefficient:
-                return new PartialDependenceCoefficient();
-            case BinaryCharacteristic.Redundancy:
-                return new Redundancy();
-            default:
-                throw new InvalidEnumArgumentException(nameof(type), (int)type, typeof(BinaryCharacteristic));
-        }
+            BinaryCharacteristic.GeometricMean => new GeometricMean(),
+            BinaryCharacteristic.InvolvedPartialDependenceCoefficient => new InvolvedPartialDependenceCoefficient(),
+            BinaryCharacteristic.MutualDependenceCoefficient => new MutualDependenceCoefficient(),
+            BinaryCharacteristic.NormalizedPartialDependenceCoefficient => new NormalizedPartialDependenceCoefficient(),
+            BinaryCharacteristic.PartialDependenceCoefficient => new PartialDependenceCoefficient(),
+            BinaryCharacteristic.Redundancy => new Redundancy(),
+            _ => throw new InvalidEnumArgumentException(nameof(type), (int)type, typeof(BinaryCharacteristic)),
+        };
     }
 }

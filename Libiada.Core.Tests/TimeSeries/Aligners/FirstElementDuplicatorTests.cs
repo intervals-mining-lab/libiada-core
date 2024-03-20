@@ -34,9 +34,9 @@ public class FirstElementDuplicatorTests
 
     public void FirstElementDuplicationAlignerTest(double[] firstTimeSeries, double[] secondTimeSeries, double[] expected)
     {
-        var aligner = new FirstElementDuplicator();
-        var (first, second) = aligner.AlignSeries(firstTimeSeries, secondTimeSeries);
-        var actual = firstTimeSeries.Length < secondTimeSeries.Length ? first[0] : second[0];
+        FirstElementDuplicator aligner = new();
+        (double[][] first, double[][] second) = aligner.AlignSeries(firstTimeSeries, secondTimeSeries);
+        double[] actual = firstTimeSeries.Length < secondTimeSeries.Length ? first[0] : second[0];
         Assert.That(actual, Is.EqualTo(expected));
     }
 }

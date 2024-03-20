@@ -31,9 +31,9 @@ public static class DissimilarChainFactory
     /// </returns>
     public static Chain Create(BaseChain source)
     {
-        var result = new List<IBaseObject>();
+        List<IBaseObject> result = [];
         Alphabet sourceAlphabet = source.Alphabet;
-        var entries = new int[sourceAlphabet.Cardinality];
+        int[] entries = new int[sourceAlphabet.Cardinality];
 
         for (int i = 0; i < source.Length; i++)
         {

@@ -36,13 +36,11 @@ public class MarkovChainRandom : MarkovChainNotCongenericStatic
     /// </param>
     public override void Teach(BaseChain chain, TeachingMethod method)
     {
-        var builder = new MatrixBuilder();
-        var absoluteMatrix = (IAbsoluteMatrix)builder.Create(chain.Alphabet.Cardinality, Rank);
+        MatrixBuilder builder = new();
+        IAbsoluteMatrix absoluteMatrix = (IAbsoluteMatrix)builder.Create(chain.Alphabet.Cardinality, Rank);
         for (int i = 0; i < chain.Alphabet.Cardinality; i++)
         {
-            int[] temp = new int[1];
-            temp[0] = chain.Alphabet.IndexOf(chain.Alphabet[i]);
-
+            int[] temp = [chain.Alphabet.IndexOf(chain.Alphabet[i])];
             absoluteMatrix.Add(temp);
         }
 

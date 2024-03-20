@@ -12,7 +12,7 @@ public class FmotifChain : IBaseObject
     /// </summary>
     public FmotifChain()
     {
-        FmotifsList = new List<Fmotif>();
+        FmotifsList = [];
     }
 
     public FmotifChain(List<Fmotif> fmotifsList)
@@ -33,7 +33,7 @@ public class FmotifChain : IBaseObject
     /// </returns>
     public IBaseObject Clone()
     {
-        var clone = new FmotifChain();
+        FmotifChain clone = new();
         foreach (Fmotif fmotif in FmotifsList)
         {
             clone.FmotifsList.Add((Fmotif)fmotif.Clone());

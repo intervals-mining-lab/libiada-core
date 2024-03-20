@@ -10,7 +10,7 @@ public class DataCollector
     /// <summary>
     /// The dictionary.
     /// </summary>
-    private Dictionary<List<string>, List<int>> dictionary = new Dictionary<List<string>, List<int>>();
+    private Dictionary<List<string>, List<int>> dictionary = [];
 
     /// <summary>
     /// The add.
@@ -44,7 +44,7 @@ public class DataCollector
     {
         if (!dictionary.ContainsKey(accord))
         {
-            dictionary.Add(accord, new List<int>());
+            dictionary.Add(accord, []);
         }
 
         dictionary[accord].Add(position + step);

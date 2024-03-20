@@ -22,7 +22,7 @@ public class ZigzagOrderExtractor : IImageOrderExtractor
     public BaseChain ExtractOrder(Rgba32[,] image)
     {
         int[] order = new int[image.GetLength(0) * image.GetLength(1)];
-        Alphabet alphabet = new Alphabet { NullValue.Instance() };
+        Alphabet alphabet = [NullValue.Instance()];
 
 
         for (int i = 0; i < image.GetLength(0); i++)
@@ -31,7 +31,7 @@ public class ZigzagOrderExtractor : IImageOrderExtractor
             {
                 for (int j = 0; j < image.GetLength(1); j++)
                 {
-                    var pixelIndex = alphabet.IndexOf(new ValuePixel(image[i, j]));
+                    int pixelIndex = alphabet.IndexOf(new ValuePixel(image[i, j]));
                     if (pixelIndex == -1)
                     {
                         alphabet.Add(new ValuePixel(image[i, j]));
@@ -45,7 +45,7 @@ public class ZigzagOrderExtractor : IImageOrderExtractor
             {
                 for (int j = image.GetLength(1) - 1, k = 0; j >= 0; j--, k++)
                 {
-                    var pixelIndex = alphabet.IndexOf(new ValuePixel(image[i, j]));
+                    int pixelIndex = alphabet.IndexOf(new ValuePixel(image[i, j]));
                     if (pixelIndex == -1)
                     {
                         alphabet.Add(new ValuePixel(image[i, j]));

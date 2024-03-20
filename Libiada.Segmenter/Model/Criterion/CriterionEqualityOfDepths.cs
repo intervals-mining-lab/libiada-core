@@ -14,7 +14,7 @@ public class CriterionEqualityOfDepths : Criterion
     /// <summary>
     /// The depth.
     /// </summary>
-    private readonly Depth depth = new Depth();
+    private readonly Depth depth = new();
 
     /// <summary>
     /// Initializes a new instance of the <see cref="CriterionEqualityOfDepths"/> class.

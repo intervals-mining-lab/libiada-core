@@ -28,8 +28,8 @@ public class OrderEqualityComparerTests
     [TestCase(new[] { 2, 2, 2 }, new[] { 1, 2, 2 }, false)]
     public void EqualsTest(int[] first, int[] second, bool expected)
     {
-        var comparer = new OrderEqualityComparer();
-        var actual = comparer.Equals(first, second);
+        OrderEqualityComparer comparer = new();
+        bool actual = comparer.Equals(first, second);
         Assert.That(actual, Is.EqualTo(expected));
     }
 
@@ -52,8 +52,8 @@ public class OrderEqualityComparerTests
     [TestCase(new[] { 2, 2, 2 }, 207945)]
     public void GetHashCodeTest(int[] obj, int expected)
     {
-        var comparer = new OrderEqualityComparer();
-        var actual = comparer.GetHashCode(obj);
+        OrderEqualityComparer comparer = new();
+        int actual = comparer.GetHashCode(obj);
         Assert.That(actual, Is.EqualTo(expected));
     }
 }

@@ -15,9 +15,9 @@ public class AbstractChainTests
     public void ToStringTest()
     {
         const string expected = "abcabccc";
-        var chain = new Chain(expected);
+        Chain chain = new(expected);
         Assert.That(chain.ToString(), Is.EqualTo(expected));
-        var baseChain = new BaseChain(expected);
+        BaseChain baseChain = new(expected);
         Assert.That(baseChain.ToString(), Is.EqualTo(expected));
     }
 
@@ -28,10 +28,10 @@ public class AbstractChainTests
     public void ToStringDelimiterTest()
     {
         const string source = "abcabccc";
-        var chain = new Chain(source);
-        var baseChain = new BaseChain(source);
+        Chain chain = new(source);
+        BaseChain baseChain = new(source);
 
-        var expected = "a b c a b c c c";
+        string expected = "a b c a b c c c";
         Assert.Multiple(() =>
         {
             Assert.That(chain.ToString(" "), Is.EqualTo(expected));
@@ -53,10 +53,10 @@ public class AbstractChainTests
     public void ToStringLongDelimiterTest()
     {
         const string source = "abcabccc";
-        var chain = new Chain(source);
-        var baseChain = new BaseChain(source);
+        Chain chain = new(source);
+        BaseChain baseChain = new(source);
 
-        var expected = "a - b - c - a - b - c - c - c";
+        string expected = "a - b - c - a - b - c - c - c";
         Assert.Multiple(() =>
         {
             Assert.That(chain.ToString(" - "), Is.EqualTo(expected));

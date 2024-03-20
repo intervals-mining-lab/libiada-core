@@ -19,19 +19,20 @@ public class RemotenessDispersion : ICongenericCalculator
     /// </returns>
     public double Calculate(CongenericChain chain, Link link)
     {
-        var intervals = chain.GetArrangement(link).ToList();
+        int[] intervals = chain.GetArrangement(link);
 
-        if (intervals.Count == 0)
+        if (intervals.Length == 0)
         {
             return 0;
         }
 
-        var intervalsDictionary = intervals
-                                 .GroupBy(i => i)
-                                 .ToDictionary(i => i.Key, i => i.Count());
+        // calcualting number of intervals of certain length
+        Dictionary<int, int> intervalsDictionary = intervals
+                                                     .GroupBy(i => i)
+                                                     .ToDictionary(i => i.Key, i => i.Count());
 
-        var intervalsCount = new IntervalsCount();
-        var averageRemoteness = new AverageRemoteness();
+        IntervalsCount intervalsCount = new();
+        AverageRemoteness averageRemoteness = new();
 
         double result = 0;
         double nj = intervalsCount.Calculate(chain, link);

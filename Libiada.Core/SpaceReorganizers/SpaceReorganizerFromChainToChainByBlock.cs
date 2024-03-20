@@ -44,7 +44,7 @@ public class SpaceReorganizerFromChainToChainByBlock : SpaceReorganizer
     /// </returns>
     public override AbstractChain Reorganize(AbstractChain source)
     {
-        var result = new BaseChain();
+        BaseChain result = new();
         result.ClearAndSetNewLength(source.Length / blockSize);
         IteratorBase iteratorFrom;
         IWritableIterator iteratorTo;

@@ -53,7 +53,7 @@ public class CongenericChainTests
     {
         congenericChain = new CongenericChain(message, 10);
 
-        var newMessage = (ValueString)congenericChain.Element;
+        ValueString newMessage = (ValueString)congenericChain.Element;
 
         Assert.That(newMessage, Is.Not.SameAs(congenericChain.Element));
     }
@@ -121,8 +121,8 @@ public class CongenericChainTests
    [Test]
     public void CongenericChainTest()
     {
-        var element = new ValueString("A");
-        var result = new CongenericChain(element);
+        ValueString element = new("A");
+        CongenericChain result = new(element);
         Assert.That(result.Element, Is.EqualTo(element));
         Assert.That(result.Length, Is.Zero);
         Assert.That(result.Positions, Is.Empty);

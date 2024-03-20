@@ -39,8 +39,8 @@ public class StringExtensionsTests
     [Test]
     public void TrimEndWithTrashTest()
     {
-        var source = "Bagaza virus isolate BAGV/Spain/RLP-Hcc2/2010, complete genome.";
-        var expected = "Bagaza virus isolate BAGV/Spain/RLP-Hcc2/2010, complete genome.";
+        string source = "Bagaza virus isolate BAGV/Spain/RLP-Hcc2/2010, complete genome.";
+        string expected = "Bagaza virus isolate BAGV/Spain/RLP-Hcc2/2010, complete genome.";
 
         string actual = source.TrimEnd(", complete cds");
         Assert.That(actual, Is.EqualTo(expected));

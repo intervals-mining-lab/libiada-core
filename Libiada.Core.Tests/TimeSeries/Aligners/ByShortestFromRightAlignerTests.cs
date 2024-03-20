@@ -34,8 +34,8 @@ public class ByShortestFromRightAlignerTests
     [Test]
     public void ShortestFromRightAlignTest()
     {
-        var aligner = new ByShortestFromRightAligner();
-        var result = aligner.AlignSeries(shortTimeSeries, longTimeSeries);
+        ByShortestFromRightAligner aligner = new();
+        (double[][] first, double[][] second) result = aligner.AlignSeries(shortTimeSeries, longTimeSeries);
 
         Assert.That(result.first[0], Is.EqualTo(shortTimeSeries));
         Assert.That(result.second[0], Is.EqualTo(second));

@@ -19,7 +19,7 @@ public class NullReorganizer : SpaceReorganizer
     /// </returns>
     public override AbstractChain Reorganize(AbstractChain source)
     {
-        var result = source.Clone() as AbstractChain;
+        AbstractChain? result = source.Clone() as AbstractChain;
         if (result != null)
         {
             return result;
@@ -28,8 +28,8 @@ public class NullReorganizer : SpaceReorganizer
         result = new BaseChain();
         result.ClearAndSetNewLength(source.Length);
 
-        var iteratorRead = new IteratorSimpleStart(source, 1);
-        var iteratorWrite = new IteratorWritableStart(result);
+        IteratorSimpleStart iteratorRead = new(source, 1);
+        IteratorWritableStart iteratorWrite = new(result);
         iteratorRead.Reset();
         iteratorWrite.Reset();
         iteratorRead.Next();

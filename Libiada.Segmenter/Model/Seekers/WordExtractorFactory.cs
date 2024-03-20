@@ -16,19 +16,15 @@ public static class WordExtractorFactory
     /// <returns>
     /// The <see cref="WordExtractor"/>.
     /// </returns>
-    public static WordExtractor GetSeeker(DeviationCalculationMethod deviationCalculationMethod)
+    public static WordExtractor? GetSeeker(DeviationCalculationMethod deviationCalculationMethod)
     {
-        switch (deviationCalculationMethod)
+        return deviationCalculationMethod switch
         {
-            case DeviationCalculationMethod.ProbabilityMethod:
-                return new ProbabilityExtractor();
-            case DeviationCalculationMethod.AverageIntervalDifference:
-                return new DifferenceAverageIntervalExtractor();
-            case DeviationCalculationMethod.Null:
-                return null;
-            default:
-                throw new InvalidEnumArgumentException(nameof(deviationCalculationMethod), (int)deviationCalculationMethod, typeof(DeviationCalculationMethod));
-        }
+            DeviationCalculationMethod.ProbabilityMethod => new ProbabilityExtractor(),
+            DeviationCalculationMethod.AverageIntervalDifference => new DifferenceAverageIntervalExtractor(),
+            DeviationCalculationMethod.Null => null,
+            _ => throw new InvalidEnumArgumentException(nameof(deviationCalculationMethod), (int)deviationCalculationMethod, typeof(DeviationCalculationMethod)),
+        };
     }
 
     /// <summary>
@@ -40,7 +36,7 @@ public static class WordExtractorFactory
     /// <returns>
     /// The <see cref="WordExtractor"/>.
     /// </returns>
-    public static WordExtractor GetSeeker(WordExtractor other)
+    public static WordExtractor? GetSeeker(WordExtractor other)
     {
         if (other is ProbabilityExtractor)
         {

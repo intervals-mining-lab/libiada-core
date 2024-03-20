@@ -34,9 +34,9 @@ public class PhantomChainGeneratorTests
     [Test]
     public void FirstTest()
     {
-        var resultChain = new BaseChain([1, 2, 2, 1, 2, 1, 2, 1, 2, 2], [NullValue.Instance(), mother.PhantomMessageBc[1], mother.PhantomMessageA[0]]);
+        BaseChain resultChain = new([1, 2, 2, 1, 2, 1, 2, 1, 2, 2], [NullValue.Instance(), mother.PhantomMessageBc[1], mother.PhantomMessageA[0]]);
 
-        var gen = new PhantomChainGenerator(mother.SourceChain, new MockGenerator());
+        PhantomChainGenerator gen = new(mother.SourceChain, new MockGenerator());
         List<BaseChain> result = gen.Generate(1);
         Assert.That(result, Has.Count.EqualTo(1));
         Assert.That(result[0], Is.EqualTo(resultChain));
@@ -48,10 +48,10 @@ public class PhantomChainGeneratorTests
     [Test]
     public void SecondTest()
     {
-        var resultChain = new BaseChain(
+        BaseChain resultChain = new(
             [1, 2, 1, 2, 3],
             [NullValue.Instance(), mother.PhantomMessageBc[1], mother.PhantomMessageA[0], mother.PhantomMessageBc[0]]);
-        var gen = new PhantomChainGenerator(mother.UnnormalizedChain, new MockGenerator());
+        PhantomChainGenerator gen = new(mother.UnnormalizedChain, new MockGenerator());
         List<BaseChain> result = gen.Generate(1);
         Assert.That(result, Has.Count.EqualTo(1));
         Assert.That(result[0], Is.EqualTo(resultChain));
@@ -63,15 +63,15 @@ public class PhantomChainGeneratorTests
     [Test]
     public void ThirdTest()
     {
-        var resultChain = new BaseChain(63);
-        var iterator = new IteratorWritableStart(resultChain);
+        BaseChain resultChain = new(63);
+        IteratorWritableStart iterator = new(resultChain);
         iterator.Reset();
         while (iterator.Next())
         {
             iterator.WriteValue(mother.PhantomMessageBc);
         }
 
-        var gen = new PhantomChainGenerator(resultChain, new SimpleGenerator());
+        PhantomChainGenerator gen = new(resultChain, new SimpleGenerator());
         List<BaseChain> result = gen.Generate(3000);
         Assert.That(result, Has.Count.EqualTo(3000));
     }
@@ -82,15 +82,15 @@ public class PhantomChainGeneratorTests
     [Test]
     public void FourthTest()
     {
-        var resultChain = new BaseChain(10);
-        var iterator = new IteratorWritableStart(resultChain);
+        BaseChain resultChain = new(10);
+        IteratorWritableStart iterator = new(resultChain);
         iterator.Reset();
         while (iterator.Next())
         {
             iterator.WriteValue(mother.PhantomMessageBc);
         }
 
-        var gen = new PhantomChainGenerator(resultChain, new SimpleGenerator());
+        PhantomChainGenerator gen = new(resultChain, new SimpleGenerator());
         List<BaseChain> res = gen.Generate(1000);
         int counter = 0;
         for (int i = 0; i < 999; i++)
@@ -113,9 +113,9 @@ public class PhantomChainGeneratorTests
     [Test]
     public void SixthTest()
     {
-        var sourceChain = new BaseChain(new List<IBaseObject>() { (ValueString)"X", (ValueString)"S", (ValueString)"C" });
+        BaseChain sourceChain = new(new List<IBaseObject>() { (ValueString)"X", (ValueString)"S", (ValueString)"C" });
         BaseChain forBuild = DnaTransformer.Decode(sourceChain);
-        var gen = new PhantomChainGenerator(forBuild, new SimpleGenerator());
+        PhantomChainGenerator gen = new(forBuild, new SimpleGenerator());
         List<BaseChain> result = gen.Generate(1);
         Assert.That(result[0].Length, Is.EqualTo(9));
     }

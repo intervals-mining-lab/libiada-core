@@ -13,13 +13,12 @@ public abstract class WordExtractor
     /// <summary>
     /// The word priority.
     /// </summary>
-    protected Dictionary<double, KeyValuePair<List<string>, List<int>>> wordPriority =
-        new Dictionary<double, KeyValuePair<List<string>, List<int>>>();
+    protected Dictionary<double, KeyValuePair<List<string>, List<int>>> wordPriority = [];
 
     /// <summary>
     /// The full entry.
     /// </summary>
-    protected DataCollector fullEntry = new DataCollector();
+    protected DataCollector fullEntry = new();
 
     /// <summary>
     /// Finds a word based on current parameters.
@@ -46,8 +45,8 @@ public abstract class WordExtractor
     /// </returns>
     protected KeyValuePair<List<string>, List<int>>? DiscardCompositeWords(FrequencyDictionary alphabet, double level)
     {
-        var stds = new List<double>(wordPriority.Keys);
-        var entries = new List<KeyValuePair<List<string>, List<int>>>(wordPriority.Values);
+        List<double> stds = new(wordPriority.Keys);
+        List<KeyValuePair<List<string>, List<int>>> entries = new(wordPriority.Values);
         for (int index = entries.Count; --index >= 0;)
         {
             List<string> entry = entries[index].Key;

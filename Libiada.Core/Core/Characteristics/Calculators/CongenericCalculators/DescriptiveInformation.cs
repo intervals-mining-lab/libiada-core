@@ -19,7 +19,7 @@ public class DescriptiveInformation : ICongenericCalculator
     /// </returns>
     public double Calculate(CongenericChain chain, Link link)
     {
-        var calculator = new ArithmeticMean();
+        ArithmeticMean calculator = new();
 
         double arithmeticMean = calculator.Calculate(chain, link);
         return arithmeticMean == 0 ? 1 : Math.Pow(arithmeticMean, 1 / arithmeticMean);

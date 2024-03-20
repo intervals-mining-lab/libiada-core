@@ -17,7 +17,7 @@ public class ElementsCount : NonLinkableFullCalculator
     /// </returns>
     public override double Calculate(Chain chain)
     {
-        var calculator = new CongenericCalculators.ElementsCount();
+        CongenericCalculators.ElementsCount calculator = new();
 
         Alphabet alphabet = chain.Alphabet;
         int count = 0;

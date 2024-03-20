@@ -16,7 +16,7 @@ public class FmotifChainTests
     [Test]
     public void FmotifChainTest()
     {
-        var chain = new FmotifChain();
+        FmotifChain chain = new();
         chain.FmotifsList.Add(new Fmotif(FmotifType.CompleteMinimalMeasure, PauseTreatment.Ignore, 0));
         chain.FmotifsList[0].NoteList.Add(new ValueNote(new Pitch(0, NoteSymbol.A, 0), new Duration(1, 4, false), false, Tie.None));
         chain.FmotifsList[0].NoteList.Add(new ValueNote(new Pitch(0, NoteSymbol.B, 0), new Duration(1, 2, false), false, Tie.None));
@@ -31,8 +31,8 @@ public class FmotifChainTests
     [Test]
     public void FmotifChainEqualsTest()
     {
-        var fmotif1 = new Fmotif(FmotifType.CompleteMinimalMeasure, PauseTreatment.Ignore, 0);
-        var fmotif2 = new Fmotif(FmotifType.CompleteMinimalMeasure, PauseTreatment.Ignore, 1);
+        Fmotif fmotif1 = new(FmotifType.CompleteMinimalMeasure, PauseTreatment.Ignore, 0);
+        Fmotif fmotif2 = new(FmotifType.CompleteMinimalMeasure, PauseTreatment.Ignore, 1);
 
         fmotif1.NoteList.Add(new ValueNote(new Pitch(3, NoteSymbol.E, 0), new Duration(1, 4, false), false, Tie.None));
         fmotif1.NoteList.Add(new ValueNote(new Pitch(3, NoteSymbol.A, 0), new Duration(1, 4, false), false, Tie.None));
@@ -40,11 +40,11 @@ public class FmotifChainTests
         fmotif2.NoteList.Add(new ValueNote(new Pitch(3, NoteSymbol.B, 0), new Duration(1, 4, false), false, Tie.None));
         fmotif2.NoteList.Add(new ValueNote(new Pitch(3, NoteSymbol.A, 0), new Duration(1, 4, false), false, Tie.None));
 
-        var firstChain = new FmotifChain();
+        FmotifChain firstChain = new();
         firstChain.FmotifsList.Add(fmotif1);
         firstChain.FmotifsList.Add(fmotif2);
 
-        var secondChain = new FmotifChain();
+        FmotifChain secondChain = new();
         secondChain.FmotifsList.Add(fmotif1);
         secondChain.FmotifsList.Add(fmotif2);
         Assert.That(firstChain, Is.EqualTo(secondChain));

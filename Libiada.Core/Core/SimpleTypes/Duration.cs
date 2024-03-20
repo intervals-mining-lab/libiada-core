@@ -185,7 +185,7 @@ public class Duration : IBaseObject
     /// </returns>
     public Duration SubtractDuration(Duration duration)
     {
-        var temp = (Duration)duration.Clone();
+        Duration temp = (Duration)duration.Clone();
         temp.Numerator = -temp.Numerator;
         return AddDuration(temp);
     }
@@ -198,7 +198,7 @@ public class Duration : IBaseObject
     /// </returns>
     public IBaseObject Clone()
     {
-        var temp = new Duration(Numerator, Denominator, false)
+        Duration temp = new(Numerator, Denominator, false)
         {
             OriginalNumerator = OriginalNumerator,
             OriginalDenominator = OriginalDenominator
@@ -263,8 +263,8 @@ public class Duration : IBaseObject
         else
         {
             // otherwise multiply it by 3/2
-            Numerator = Numerator * 3;
-            Denominator = Denominator * 2;
+            Numerator *= 3;
+            Denominator *= 2;
         }
     }
 

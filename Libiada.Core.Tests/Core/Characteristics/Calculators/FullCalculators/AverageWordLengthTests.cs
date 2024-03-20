@@ -36,7 +36,7 @@ public class AverageWordLengthTests : FullCalculatorsTests<AverageWordLength>
     [Test]
     public void CalculationTest()
     {
-        var sequence = new Chain(5)
+        Chain sequence = new(5)
         {
             [0] = new ValueString("bla"),
             [1] = new ValueString("blablab"),

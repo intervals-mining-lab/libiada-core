@@ -24,7 +24,7 @@ public class PhantomChainGenerator
     /// <summary>
     /// The temp chains.
     /// </summary>
-    private readonly List<BaseChain> tempChains = new List<BaseChain>();
+    private readonly List<BaseChain> tempChains = [];
 
     /// <summary>
     /// The gen.
@@ -34,7 +34,7 @@ public class PhantomChainGenerator
     /// <summary>
     /// Variants trees for separate fragments of phantom sequence (length 30 elements).
     /// </summary>
-    private readonly List<TreeTop> tree = new List<TreeTop>();
+    private readonly List<TreeTop> tree = [];
 
     /// <summary>
     /// The total length.
@@ -53,8 +53,8 @@ public class PhantomChainGenerator
     public PhantomChainGenerator(BaseChain chain, IGenerator generator)
     {
         this.generator = generator;
-        var reorganizer = new SpacePhantomReorganizer();
-        var internalChain = (BaseChain)reorganizer.Reorganize(chain);
+        SpacePhantomReorganizer reorganizer = new();
+        BaseChain internalChain = (BaseChain)reorganizer.Reorganize(chain);
         for (int w = 0; w < internalChain.Length; w++)
         {
             totalLength += ((ValuePhantom)internalChain[w])[0].ToString().Length;
@@ -82,7 +82,7 @@ public class PhantomChainGenerator
                 }
                 else
                 {
-                    tempMessage = new ValuePhantom { new ValueString('a') };
+                    tempMessage = [new ValueString('a')];
                     tempChains[i][j] = tempMessage;
                 }
 
@@ -116,8 +116,8 @@ public class PhantomChainGenerator
             throw new Exception();
         }
 
-        var res = new List<BaseChain>();
-        var tempRes = new List<BaseChain>();
+        List<BaseChain> res = [];
+        List<BaseChain> tempRes = [];
         for (int m = 0; m < tree.Count; m++)
         {
             tempRes.Add(null);
@@ -149,7 +149,7 @@ public class PhantomChainGenerator
             chainCounter++;
             if (tree.Count != 1)
             {
-                tree[tree.Count - 1] = new TreeTop(tempChains[tempChains.Count - 1], generator);
+                tree[^1] = new TreeTop(tempChains[^1], generator);
             }
         }
 

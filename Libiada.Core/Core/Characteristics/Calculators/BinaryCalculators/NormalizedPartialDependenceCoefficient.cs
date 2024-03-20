@@ -27,7 +27,7 @@ public class NormalizedPartialDependenceCoefficient : BinaryCalculator
             return 0;
         }
 
-        var partialDependenceCoefficient = new PartialDependenceCoefficient();
+        PartialDependenceCoefficient partialDependenceCoefficient = new();
 
         double k1 = partialDependenceCoefficient.Calculate(manager, link);
         return k1 * 2 * manager.PairsCount / manager.FirstChain.Length;

@@ -19,7 +19,7 @@ public class CuttingLengthVocabularyEntropy : ICongenericCalculator
     /// </returns>
     public double Calculate(CongenericChain chain, Link link)
     {
-        var cutLength = new CuttingLength();
+        CuttingLength cutLength = new();
         return Math.Log(chain.Length - cutLength.Calculate(chain, link) + 1, 2);
     }
 }

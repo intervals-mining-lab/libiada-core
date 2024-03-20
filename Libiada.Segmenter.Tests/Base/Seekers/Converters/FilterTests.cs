@@ -43,12 +43,12 @@ public class FilterTests
     [Test]
     public void FilteroutTest()
     {
-        var chain = new ComplexChain(list);
-        var filter = new Filter(chain);
+        ComplexChain chain = new(list);
+        Filter filter = new(chain);
         int hits = filter.FilterOut(str1);
 
         // TODO: find out why this code is not used
-        var sb = new StringBuilder(list.Count);
+        StringBuilder sb = new(list.Count);
         foreach (string s in list)
         {
             sb.Append(s);
@@ -72,11 +72,11 @@ public class FilterTests
     [Test]
     public void ReplaceTest()
     {
-        var chain = new ComplexChain(list);
-        var filter = new Filter(chain);
+        ComplexChain chain = new(list);
+        Filter filter = new(chain);
         int hits = filter.Replace(str2, "-");
 
-        var sb = new StringBuilder(list.Count);
+        StringBuilder sb = new(list.Count);
         foreach (string s in list)
         {
             sb.Append(s);

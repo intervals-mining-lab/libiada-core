@@ -21,10 +21,10 @@ public class GCSkew : NonLinkableFullCalculator
     {
         DnaProcessor.CheckDnaAlphabet(chain.Alphabet);
 
-        var counter = new CongenericCalculators.ElementsCount();
+        CongenericCalculators.ElementsCount counter = new();
 
-        var g = (int)counter.Calculate(chain.GetOrCreateCongenericChain(new ValueString("G")));
-        var c = (int)counter.Calculate(chain.GetOrCreateCongenericChain(new ValueString("C")));
+        int g = (int)counter.Calculate(chain.GetOrCreateCongenericChain(new ValueString("G")));
+        int c = (int)counter.Calculate(chain.GetOrCreateCongenericChain(new ValueString("C")));
 
         return g + c == 0 ? 0 : (g - c) / (double)(g + c);
     }

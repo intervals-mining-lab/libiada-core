@@ -19,8 +19,8 @@ public class Regularity : IFullCalculator
     /// </returns>
     public double Calculate(Chain chain, Link link)
     {
-        var geometricMeanCalculator = new GeometricMean();
-        var descriptiveInformationCalculator = new DescriptiveInformation();
+        GeometricMean geometricMeanCalculator = new();
+        DescriptiveInformation descriptiveInformationCalculator = new();
 
         double geometricMean = geometricMeanCalculator.Calculate(chain, link);
         double descriptiveInformation = descriptiveInformationCalculator.Calculate(chain, link);

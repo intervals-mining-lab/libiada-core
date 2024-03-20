@@ -29,7 +29,7 @@ public class SeekerSequence : Seeker
     /// </returns>
     public override int Seek(List<string> sequence)
     {
-        result = new List<int>();
+        result = [];
         while (iterator.HasNext())
         {
             List<string> chain = iterator.Next();

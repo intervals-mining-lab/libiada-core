@@ -31,7 +31,7 @@ public class ValueNote : IBaseObject
     /// The priority.
     /// </param>
     public ValueNote(Duration duration, bool triplet, Tie tie, int priority = -1) :
-        this(new List<Pitch>(), duration, triplet, tie, priority)
+        this([], duration, triplet, tie, priority)
     {
     }
 
@@ -54,7 +54,7 @@ public class ValueNote : IBaseObject
     /// The priority.
     /// </param>
     public ValueNote(Pitch pitch, Duration duration, bool triplet, Tie tie, int priority = -1) :
-        this(new List<Pitch>() { pitch }, duration, triplet, tie, priority)
+        this([pitch], duration, triplet, tie, priority)
     {
     }
 
@@ -78,7 +78,7 @@ public class ValueNote : IBaseObject
     /// </param>
     public ValueNote(IReadOnlyList<Pitch> pitchList, Duration duration, bool triplet, Tie tie, int priority = -1)
     {
-        Pitches = pitchList == null ? new List<Pitch>() : new List<Pitch>(pitchList);
+        Pitches = pitchList == null ? [] : new List<Pitch>(pitchList);
 
         // если не пауза то записываем высоту и наличие лиги
         if (Pitches.Count > 0)
@@ -128,7 +128,7 @@ public class ValueNote : IBaseObject
     /// </returns>
     public List<ValueNote> SplitNote(Duration duration)
     {
-        var clone = new List<ValueNote>(0) { (ValueNote)Clone(), (ValueNote)Clone() };
+        List<ValueNote> clone = new(0) { (ValueNote)Clone(), (ValueNote)Clone() };
         clone[0].Duration = duration;
         clone[1].Duration = Duration.SubtractDuration(duration);
         return clone;
@@ -145,10 +145,7 @@ public class ValueNote : IBaseObject
     /// </exception>
     public void AddPitch(Pitch pitch)
     {
-        if (pitch == null)
-        {
-            throw new ArgumentNullException(nameof(pitch));
-        }
+        ArgumentNullException.ThrowIfNull(pitch, nameof(pitch));
 
         Pitches.Add(pitch);
     }
@@ -161,10 +158,7 @@ public class ValueNote : IBaseObject
     /// </param>
     public void AddPitch(List<Pitch> pitch)
     {
-        if (pitch == null)
-        {
-            throw new ArgumentNullException(nameof(pitch));
-        }
+        ArgumentNullException.ThrowIfNull(pitch, nameof(pitch));
 
         Pitches.AddRange(pitch);
     }
@@ -223,16 +217,16 @@ public class ValueNote : IBaseObject
             return true;
         }
 
-        if (!(obj is ValueNote otherNote))
+        if (obj is not ValueNote otherNote)
         {
             return false;
         }
 
         // одна нота - пауза
-        if (Pitches == null || Pitches.Count == 0)
+        if (Pitches.Count == 0)
         {
             // другая нота - пауза
-            if (otherNote.Pitches == null || otherNote.Pitches.Count == 0)
+            if (otherNote.Pitches.Count == 0)
             {
                 // у пауз сравниваем только их длительности
                 return Duration.Equals(otherNote.Duration);
@@ -242,7 +236,7 @@ public class ValueNote : IBaseObject
             return false;
         }
 
-        if (otherNote.Pitches == null || otherNote.Pitches.Count == 0)
+        if (otherNote.Pitches.Count == 0)
         {
             // нота и пауза не одно и то же
             return false;
@@ -275,7 +269,7 @@ public class ValueNote : IBaseObject
     /// </returns>
     public override string ToString()
     {
-        var result = new List<string>(4 + Pitches.Count)
+        List<string> result = new(4 + Pitches.Count)
         {
             Duration.ToString(),
             "MidiNumbers:"

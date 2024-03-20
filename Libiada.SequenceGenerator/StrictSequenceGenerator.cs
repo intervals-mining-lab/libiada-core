@@ -8,7 +8,7 @@ using Libiada.Core.Core.SimpleTypes;
 /// </summary>
 public class StrictSequenceGenerator : ISequenceGenerator
 {
-    private SequenceGenerator sequenceGenerator = new SequenceGenerator();
+    private SequenceGenerator sequenceGenerator = new();
 
     /// <summary>
     /// Generates numeric sequences using given length and alphabet cardinality.
@@ -24,13 +24,13 @@ public class StrictSequenceGenerator : ISequenceGenerator
     /// </returns>
     public List<BaseChain> GenerateSequences(int length, int alphabetCardinality)
     {
-        var result = new List<BaseChain>();
-        var iterator = new SequenceIterator(length, alphabetCardinality);
+        List<BaseChain> result = [];
+        SequenceIterator iterator = new(length, alphabetCardinality);
         foreach(int[] sequence in iterator)
         {
             if(sequence.Distinct().Count() == alphabetCardinality)
             {
-                var elements = new List<IBaseObject>(sequence.Length);
+                List<IBaseObject> elements = new(sequence.Length);
                 for (int i = 0; i < sequence.Length; i++)
                 {
                     elements.Add(new ValueInt(sequence[i]));
@@ -52,7 +52,7 @@ public class StrictSequenceGenerator : ISequenceGenerator
     /// </returns>
     public List<BaseChain> GenerateSequences(int length)
     {
-        var result = new List<BaseChain>();
+        List<BaseChain> result = [];
         for (int i = 1; i <= length; i++)
         {
             result.AddRange(GenerateSequences(length, i));

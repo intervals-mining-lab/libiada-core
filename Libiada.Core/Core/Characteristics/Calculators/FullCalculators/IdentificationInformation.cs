@@ -23,7 +23,7 @@ public class IdentificationInformation : IFullCalculator
     /// </returns>
     public double Calculate(Chain chain, Link link)
     {
-        var identificationInformation = new CongenericCalculators.IdentificationInformation();
+        CongenericCalculators.IdentificationInformation identificationInformation = new();
 
         Alphabet alphabet = chain.Alphabet;
         double result = 0;

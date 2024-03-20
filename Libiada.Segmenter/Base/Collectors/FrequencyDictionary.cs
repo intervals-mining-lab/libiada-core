@@ -11,7 +11,7 @@ public class FrequencyDictionary
     /// <summary>
     /// The words.
     /// </summary>
-    private Dictionary<string, List<int>> words = new Dictionary<string, List<int>>();
+    private Dictionary<string, List<int>> words = [];
 
     /// <summary>
     /// Initializes a new instance of the <see cref="FrequencyDictionary"/> class.
@@ -108,7 +108,7 @@ public class FrequencyDictionary
     /// </returns>
     public List<KeyValuePair<string, List<int>>> SortByPower()
     {
-        var list = new List<KeyValuePair<string, List<int>>>(words);
+        List<KeyValuePair<string, List<int>>> list = new(words);
         list.Sort((firstPair, nextPair) => firstPair.Value.Count.CompareTo(nextPair.Value.Count));
 
         list.Reverse();
@@ -124,7 +124,7 @@ public class FrequencyDictionary
     {
         if (words.Count == 0)
         {
-            return new List<string>();
+            return [];
         }
 
         return new List<string>(words.Keys);
@@ -165,7 +165,7 @@ public class FrequencyDictionary
 
             if (!words.ContainsKey(str))
             {
-                var wordPositions = new List<int> { pos };
+                List<int> wordPositions = [pos];
                 words.Add(str, wordPositions);
             }
             else
@@ -255,7 +255,7 @@ public class FrequencyDictionary
     /// </returns>
     public FrequencyDictionary Clone()
     {
-        var alphabet = new FrequencyDictionary();
+        FrequencyDictionary alphabet = new();
         for (IEnumerator<string> e = words.Keys.GetEnumerator(); e.MoveNext();)
         {
             string word = e.Current;

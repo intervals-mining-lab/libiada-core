@@ -25,13 +25,13 @@ public class SequenceIteratorTests
     [TestCase(new[] { 2, 2, 2 }, 7)]
     public void IteratorTest(int[] expected, int iterations)
     {
-        var iterator = new SequenceIterator(3, 2);
+        SequenceIterator iterator = new(3, 2);
         for (int i = 0; i < iterations; i++)
         {
             iterator.IterateSequencesCounter();
         }
 
-        var actual = iterator.Iterator;
+        int[] actual = iterator.Iterator;
         Assert.That(actual, Is.EqualTo(expected));
     }
 
@@ -41,7 +41,7 @@ public class SequenceIteratorTests
     [Test]
     public void EnumeratorTest()
     {
-        var iterator = new SequenceIterator(3, 2);
+        SequenceIterator iterator = new(3, 2);
         int[][] expected =
         [
             [1, 1, 1],

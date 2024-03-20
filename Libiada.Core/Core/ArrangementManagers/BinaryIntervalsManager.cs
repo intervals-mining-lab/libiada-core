@@ -158,10 +158,10 @@ public class BinaryIntervalsManager
     /// </returns>
     private int FillPairsCount()
     {
-        var counter = 0;
+        int counter = 0;
 
-        var elementCounter = new ElementsCount();
-        var firstElementCount = (int)elementCounter.Calculate(FirstChain);
+        ElementsCount elementCounter = new();
+        int firstElementCount = (int)elementCounter.Calculate(FirstChain);
 
         for (int i = 1; i <= firstElementCount; i++)
         {

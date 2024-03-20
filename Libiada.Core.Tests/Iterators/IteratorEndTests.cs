@@ -31,7 +31,7 @@ public class IteratorEndTests
     {
         const int length = 3;
         const int step = 1;
-        var iterator = new IteratorEnd(chainToIterate, length, step);
+        IteratorEnd iterator = new(chainToIterate, length, step);
 
         // 12 - 3 + 1
         List<Chain> message2 =
@@ -70,7 +70,7 @@ public class IteratorEndTests
         int i = 0;
         while (iterator.Next())
         {
-            var message1 = iterator.Current();
+            AbstractChain message1 = iterator.Current();
             Assert.That(message2[i++], Is.EqualTo(message1));
         }
 
@@ -85,7 +85,7 @@ public class IteratorEndTests
     {
         const int length = 3;
         const int step = 3;
-        var iterator = new IteratorEnd(chainToIterate, length, step);
+        IteratorEnd iterator = new(chainToIterate, length, step);
 
         List<Chain> message2 =
                         [
@@ -105,7 +105,7 @@ public class IteratorEndTests
         int i = 0;
         while (iterator.Next())
         {
-            var message1 = iterator.Current();
+            AbstractChain message1 = iterator.Current();
             Assert.That(message2[i++], Is.EqualTo(message1));
         }
 

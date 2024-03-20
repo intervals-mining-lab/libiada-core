@@ -50,14 +50,14 @@ public class NullCycleSpaceReorganizer : SpaceReorganizer
             return source;
         }
 
-        var result = new BaseChain();
+        BaseChain result = new();
         result.ClearAndSetNewLength(source.Length + level);
         for (int i = 0; i < source.Length; i++)
         {
             result[i] = source[i];
         }
 
-        var iterator = new IteratorStart(source, level, 1);
+        IteratorStart iterator = new(source, level, 1);
         iterator.Reset();
         iterator.Next();
         AbstractChain addition = iterator.Current();

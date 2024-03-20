@@ -24,7 +24,7 @@ public class DifferenceModuleTests
     [Test]
     public void DifferenceModuleTest()
     {
-        var aggregator = new DifferenceModule();
+        DifferenceModule aggregator = new();
         double result = aggregator.Aggregate(distances);
         Assert.That(result, Is.EqualTo(diffMod));
     }

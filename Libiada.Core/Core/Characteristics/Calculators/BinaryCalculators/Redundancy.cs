@@ -60,7 +60,7 @@ public class Redundancy : BinaryCalculator
 
         avG = manager.PairsCount == 0 ? 0 : avG / manager.PairsCount;
 
-        var geometricMeanCalculator = new GeometricMean();
+        GeometricMean geometricMeanCalculator = new();
 
         double binaryGeometricMean = geometricMeanCalculator.Calculate(manager, link);
         return 1 - (binaryGeometricMean / Math.Pow(2, avG));

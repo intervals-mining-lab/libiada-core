@@ -24,11 +24,11 @@ public class BorodaDivider
     /// </returns>
     public List<FmotifChain> Divide(ScoreTrack scoreTrack, PauseTreatment pauseTreatment, bool sequentialTransfer)
     {
-        var chains = new List<FmotifChain>();
+        List<FmotifChain> chains = [];
 
         foreach (CongenericScoreTrack congenericTrack in scoreTrack.CongenericScoreTracks)
         {
-            var fmotifChain = (FmotifChain)Divide(congenericTrack, pauseTreatment, sequentialTransfer).Clone();
+            FmotifChain fmotifChain = (FmotifChain)Divide(congenericTrack, pauseTreatment, sequentialTransfer).Clone();
             chains.Add(fmotifChain);
         }
 
@@ -56,9 +56,9 @@ public class BorodaDivider
     public FmotifChain Divide(CongenericScoreTrack congenericTrack, PauseTreatment pauseTreatment, bool sequentialTransfer)
     {
         // сохраняем имя цепи фмотивов как имя монотрека
-        var priorityDiscover = new PriorityDiscover();
-        var fmotifDivider = new FmotifDivider();
-        var fmotifIdentifier = new FmotifIdentifier();
+        PriorityDiscover priorityDiscover = new();
+        FmotifDivider fmotifDivider = new();
+        FmotifIdentifier fmotifIdentifier = new();
 
         // подсчет приоритетов
         priorityDiscover.Calculate(congenericTrack);

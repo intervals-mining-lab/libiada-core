@@ -19,7 +19,7 @@ public class DescriptiveInformation : IFullCalculator
     /// </returns>
     public double Calculate(Chain chain, Link link)
     {
-        var calculator = new CongenericCalculators.DescriptiveInformation();
+        CongenericCalculators.DescriptiveInformation calculator = new();
 
         Alphabet alphabet = chain.Alphabet;
         double result = 1;

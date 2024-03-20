@@ -35,7 +35,7 @@ public static class ImageProcessor
             image = imageTransformers[i].Transform(image);
         }
 
-        var points = new Rgba32[image.Width, image.Height];
+        Rgba32[,] points = new Rgba32[image.Width, image.Height];
 
         for (int i = 0; i < image.Width; i++)
         {

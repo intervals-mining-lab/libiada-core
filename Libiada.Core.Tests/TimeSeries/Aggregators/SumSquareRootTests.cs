@@ -24,7 +24,7 @@ public class SumSquareRootTests
     [Test]
     public void SumSquareRootTest()
     {
-        var aggregator = new SumSquareRoot();
+        SumSquareRoot aggregator = new();
         double result = aggregator.Aggregate(distances);
         Assert.That(result, Is.EqualTo(sumSqrt));
     }

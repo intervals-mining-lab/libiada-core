@@ -31,10 +31,10 @@ public class EntropySkewness : IFullCalculator
     {
         double result = 0;
         double h = identificationInformation.Calculate(chain, link);
-        var n = (int)intervalsCount.Calculate(chain, link);
+        int n = (int)intervalsCount.Calculate(chain, link);
 
-        var congenericIntervalsCount = new CongenericCalculators.IntervalsCount();
-        var congenericIdentificationInformation = new CongenericCalculators.IdentificationInformation();
+        CongenericCalculators.IntervalsCount congenericIntervalsCount = new();
+        CongenericCalculators.IdentificationInformation congenericIdentificationInformation = new();
         Alphabet alphabet = chain.Alphabet;
         for (int i = 0; i < alphabet.Cardinality; i++)
         {

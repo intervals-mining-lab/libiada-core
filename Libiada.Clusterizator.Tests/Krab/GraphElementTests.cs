@@ -14,7 +14,7 @@ public class GraphElementTests
     [Test]
     public void NodeTest()
     {
-        var node = new GraphElement([15.0], "node");
+        GraphElement node = new([15.0], "node");
 
         Assert.That(node.Content[0], Is.EqualTo(15));
         Assert.That(node.TaxonNumber, Is.Zero);
@@ -26,7 +26,7 @@ public class GraphElementTests
     [Test]
     public void NodeTwoTest()
     {
-        var node = new GraphElement([15.0], 1) { TaxonNumber = 5 };
+        GraphElement node = new([15.0], 1) { TaxonNumber = 5 };
 
         Assert.That(node.Content[0], Is.EqualTo(15));
 
@@ -45,8 +45,8 @@ public class GraphElementTests
     [Test]
     public void CloneTest()
     {
-        var node = new GraphElement([15.0], "node");
-        var nodeClone = node.Clone();
+        GraphElement node = new([15.0], "node");
+        GraphElement nodeClone = node.Clone();
 
         Assert.Multiple(() =>
         {

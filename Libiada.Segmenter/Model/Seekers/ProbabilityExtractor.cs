@@ -21,11 +21,11 @@ public class ProbabilityExtractor : SubwordExtractor
     /// </returns>
     public override sealed KeyValuePair<List<string>, List<int>>? Find(Dictionary<string, object> par)
     {
-        var convoluted = (ComplexChain)par["Sequence"];
+        ComplexChain convoluted = (ComplexChain)par["Sequence"];
         double pbalance = (int)par["Balance"] / 100.0;
         int windowLen = (int)par["Window"];
-        var alphabet = (FrequencyDictionary)par["Alphabet"];
-        var level = (double)par["CurrentThreshold"];
+        FrequencyDictionary alphabet = (FrequencyDictionary)par["Alphabet"];
+        double level = (double)par["CurrentThreshold"];
         int scanStep = 1;
         int disp = 0;
         int length = convoluted.Length;
@@ -34,7 +34,7 @@ public class ProbabilityExtractor : SubwordExtractor
         minusOneEntry = new DataCollector();
         minusTwoEntry = new DataCollector();
 
-        var it = new StartIterator(convoluted, windowLen, scanStep);
+        StartIterator it = new(convoluted, windowLen, scanStep);
         CriterionMethod criteriaCalculator = new ConvolutedCriterionMethod();
 
         while (it.HasNext())

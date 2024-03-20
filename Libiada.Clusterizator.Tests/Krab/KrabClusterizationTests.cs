@@ -14,7 +14,7 @@ public class KrabClusterizationTests
     [Test]
     public void ClusterizationTest()
     {
-        var krab = new KrabClusterization(4, 2, 1);
+        KrabClusterization krab = new(4, 2, 1);
 
         double[][] data = [
                            [2.0, 2.0],
@@ -25,7 +25,7 @@ public class KrabClusterizationTests
                            [9.0, 7.0]
                           ];
 
-        var result = krab.Cluster(2, data);
+        int[] result = krab.Cluster(2, data);
 
         Assert.Multiple(() =>
         {

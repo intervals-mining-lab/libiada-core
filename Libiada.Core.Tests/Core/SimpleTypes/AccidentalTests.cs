@@ -29,7 +29,7 @@ public class AccidentalTests
     [Test]
     public void AccidentalValuesTest()
     {
-        var accidentals = EnumExtensions.ToArray<Accidental>();
+        Accidental[] accidentals = EnumExtensions.ToArray<Accidental>();
         for (int i = -2; i < AccidentalsCount - 2; i++)
         {
             Assert.That(accidentals, Does.Contain((Accidental)i));
@@ -85,8 +85,8 @@ public class AccidentalTests
     [Test]
     public void AccidentalValuesUniqueTest()
     {
-        var accidentals = EnumExtensions.ToArray<Accidental>();
-        var accidentalValues = accidentals.Cast<short>();
+        Accidental[] accidentals = EnumExtensions.ToArray<Accidental>();
+        IEnumerable<short> accidentalValues = accidentals.Cast<short>();
         Assert.That(accidentalValues, Is.Unique);
     }
 }

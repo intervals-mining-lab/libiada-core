@@ -72,7 +72,7 @@ public class FRiSCluster : IClusterizator
         CalculateDistances();
 
         // average competitive similarity in comparison to virtual sample (set) B
-        var averageSimilarityFunction = new double[data.Length];
+        double[] averageSimilarityFunction = new double[data.Length];
 
         for (int i = 0; i < data.Length; i++)
         {
@@ -85,7 +85,7 @@ public class FRiSCluster : IClusterizator
             averageSimilarityFunction[i] = localSimilarity / data.Length;
         }
 
-        var optimalClustersBelonging = Cluster(averageSimilarityFunction);
+        int[] optimalClustersBelonging = Cluster(averageSimilarityFunction);
 
         return optimalClustersBelonging;
     }
@@ -93,7 +93,7 @@ public class FRiSCluster : IClusterizator
     private int[] Cluster(double[] averageSimilarityFunction)
     {
         // maximum of average similarity in competition with sample (set) B
-        var currentPillarIndexes = new List<int>();
+        List<int> currentPillarIndexes = [];
         double maxSimilarity = averageSimilarityFunction.Max();
         currentPillarIndexes.Add(Array.IndexOf(averageSimilarityFunction, maxSimilarity));
 
@@ -107,7 +107,7 @@ public class FRiSCluster : IClusterizator
             //bool pillarsNotEqual = true;
             //while (pillarsNotEqual)
             //{
-                var tempPillarIndexes = new List<int>(currentPillarIndexes);
+            List<int> tempPillarIndexes = new(currentPillarIndexes);
                 for (int j = 0; j < currentPillarIndexes.Count; j++)
                 {
                     (currentPillarIndexes[j], currentCompactness) = ReselectPillar(
@@ -184,7 +184,7 @@ public class FRiSCluster : IClusterizator
     private (int clusterPointsIndex, double compactness) ReselectPillar(int pillarIndex, List<int> pillarIndexes, int[] clustersBelonging)
     {
         int[] clusterPointsIndexes = data.Select((d, i) => i).Where(i => clustersBelonging[i] == pillarIndexes.IndexOf(pillarIndex)).ToArray();
-        var clusterCompactness = new double[clusterPointsIndexes.Length];
+        double[] clusterCompactness = new double[clusterPointsIndexes.Length];
 
         for (int i = 0; i < clusterPointsIndexes.Length; i++)
         {
@@ -223,13 +223,13 @@ public class FRiSCluster : IClusterizator
     /// </returns>
     private int CalculateCompactnessForPotentialPillars(List<int> pillarIndexes)
     {
-        var compactness = new double[data.Length];
+        double[] compactness = new double[data.Length];
 
         for (int i = 0; i < data.Length; i++)
         {
             if (!pillarIndexes.Contains(i))
             {
-                var tempPillarIndexes = new List<int>(pillarIndexes) { i };
+                List<int> tempPillarIndexes = new(pillarIndexes) { i };
                 int[] clustersBelonging = DetermineClusters(tempPillarIndexes);
                 compactness[i] = CalculateCompactness(clustersBelonging, i, tempPillarIndexes);
                 for (int j = 0; j < pillarIndexes.Count; j++)
@@ -291,11 +291,11 @@ public class FRiSCluster : IClusterizator
     /// </returns>
     private int[] DetermineClusters(List<int> pillarIndexes)
     {
-        var clustersBelonging = new int[distances.GetLength(0)];
+        int[] clustersBelonging = new int[distances.GetLength(0)];
 
         for (int i = 0; i < clustersBelonging.Length; i++)
         {
-            var clusterNumber = 0;
+            int clusterNumber = 0;
 
             for (int j = 1; j < pillarIndexes.Count; j++)
             {
@@ -355,7 +355,7 @@ public class FRiSCluster : IClusterizator
     /// </returns>
     private double DistanceToNearestCompetitivePillar(List<int> pillarIndexes, int pointIndex, int pillarIndex)
     {
-        var nearestPillarDistance = new List<double>();
+        List<double> nearestPillarDistance = [];
 
         for (int k = 0; k < pillarIndexes.Count; k++)
         {

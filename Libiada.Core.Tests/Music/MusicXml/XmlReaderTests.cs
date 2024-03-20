@@ -14,7 +14,7 @@ public class XmlReaderTests
     [Test]
     public void XmlReaderFirstTest()
     {
-        var xr = new MusicXmlReader($"{SystemData.ProjectFolderPath}LibiadaMusicExample7Liga.xml");
+        MusicXmlReader xr = new($"{SystemData.ProjectFolderPath}LibiadaMusicExample7Liga.xml");
         Assert.That(xr.MusicXmlDocument, Is.Not.Null);
     }
 }

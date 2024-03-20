@@ -20,7 +20,7 @@ public class AlphabeticAverageRemoteness : IFullCalculator
     /// </returns>
     public double Calculate(Chain chain, Link link)
     {
-        var geometricMean = new GeometricMean();
+        GeometricMean geometricMean = new();
         int alphabetCardinality = chain.Alphabet.Cardinality;
         return Math.Log(geometricMean.Calculate(chain, link), alphabetCardinality);
     }

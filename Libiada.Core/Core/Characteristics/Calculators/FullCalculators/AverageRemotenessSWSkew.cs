@@ -24,8 +24,8 @@ public class AverageRemotenessSWSkew : IFullCalculator
     {
         DnaProcessor.CheckDnaAlphabet(chain.Alphabet);
 
-        var congenericRemotenessCalculator = new CongenericCalculators.AverageRemoteness();
-        var remotenessCalculator = new AverageRemoteness();
+        CongenericCalculators.AverageRemoteness congenericRemotenessCalculator = new();
+        AverageRemoteness remotenessCalculator = new();
 
         double g = congenericRemotenessCalculator.Calculate(chain.GetOrCreateCongenericChain(new ValueString("G")), link);
         double c = congenericRemotenessCalculator.Calculate(chain.GetOrCreateCongenericChain(new ValueString("C")), link);

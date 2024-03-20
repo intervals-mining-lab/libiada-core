@@ -14,9 +14,9 @@ public class DurationTests
     [Test]
     public void AddDurationTest()
     {
-        var duration1 = new Duration(1, 2, false);
-        var duration2 = new Duration(1, 4, false);
-        var duration3 = duration1.AddDuration(duration2);
+        Duration duration1 = new(1, 2, false);
+        Duration duration2 = new(1, 4, false);
+        Duration duration3 = duration1.AddDuration(duration2);
 
         Assert.Multiple(() =>
         {

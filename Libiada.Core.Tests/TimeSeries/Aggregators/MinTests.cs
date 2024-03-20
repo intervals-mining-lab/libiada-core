@@ -24,7 +24,7 @@ public class MinTests
     [Test]
     public void MinTest()
     {
-        var aggregator = new Min();
+        Min aggregator = new();
         double result = aggregator.Aggregate(distances);
         Assert.That(result, Is.EqualTo(min));
     }

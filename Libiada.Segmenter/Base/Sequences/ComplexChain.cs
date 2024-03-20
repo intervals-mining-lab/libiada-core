@@ -89,7 +89,7 @@ public class ComplexChain : Chain
     /// </returns>
     public List<string> ToList()
     {
-        var result = new List<string>(Length);
+        List<string> result = new(Length);
         for (int i = 0; i < Length; i++)
         {
             result.Add(this[i].ToString());
@@ -123,7 +123,7 @@ public class ComplexChain : Chain
     /// </returns>
     public new ComplexChain Clone()
     {
-        var chain = new ComplexChain(ToList()) { Anchor = Anchor };
+        ComplexChain chain = new(ToList()) { Anchor = Anchor };
 
         return chain;
     }
@@ -251,7 +251,7 @@ public class ComplexChain : Chain
     public void Join(int pos, int len)
     {
         int wordEnd = pos + len;
-        var temporarySplice = new StringBuilder();
+        StringBuilder temporarySplice = new();
         temporarySplice.Clear();
         if (wordEnd > Length)
         {

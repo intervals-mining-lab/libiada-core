@@ -18,7 +18,7 @@ public static class Helper
     /// </returns>
     public static string ToString(List<string> list)
     {
-        var result = new StringBuilder();
+        StringBuilder result = new();
         foreach (string element in list)
         {
             result.Append(element);

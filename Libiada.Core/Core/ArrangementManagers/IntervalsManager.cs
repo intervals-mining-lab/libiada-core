@@ -104,7 +104,7 @@ public class IntervalsManager : IArrangementManager
                     result[i] = intervals[i];
                 }
 
-                result[result.Length - 1] = End;
+                result[^1] = End;
                 return result;
             case Link.Both:
                 result = new int[intervals.Length + 2];
@@ -114,7 +114,7 @@ public class IntervalsManager : IArrangementManager
                     result[i + 1] = intervals[i];
                 }
 
-                result[result.Length - 1] = End;
+                result[^1] = End;
                 return result;
             case Link.Cycle:
                 result = new int[intervals.Length + 1];
@@ -123,7 +123,7 @@ public class IntervalsManager : IArrangementManager
                     result[i] = intervals[i];
                 }
 
-                result[result.Length - 1] = Start + End - 1;
+                result[^1] = Start + End - 1;
                 return result;
             case Link.CycleStart:
                 result = new int[intervals.Length + 1];
@@ -132,7 +132,7 @@ public class IntervalsManager : IArrangementManager
                     result[i] = intervals[i];
                 }
 
-                result[result.Length - 1] = Start + End - 1;
+                result[^1] = Start + End - 1;
                 return result;
             case Link.CycleEnd:
                 result = new int[intervals.Length + 1];
@@ -167,6 +167,6 @@ public class IntervalsManager : IArrangementManager
             intervals[i] = positions[i + 1] - positions[i];
         }
 
-        End = sequenceLength - positions[positions.Length - 1];
+        End = sequenceLength - positions[^1];
     }
 }
