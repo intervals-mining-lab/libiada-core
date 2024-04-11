@@ -78,10 +78,13 @@ public class AlphabetTests
         firstAlphabet.Add(new ValueInt(3));
         firstAlphabet.Add(new ValueInt(4));
         firstAlphabet.Add(new ValueInt(5));
-        Assert.That(firstAlphabet[0], Is.EqualTo(new ValueInt(2)));
-        Assert.That(firstAlphabet[1], Is.EqualTo(new ValueInt(3)));
-        Assert.That(firstAlphabet[2], Is.EqualTo(new ValueInt(4)));
-        Assert.That(firstAlphabet[3], Is.EqualTo(new ValueInt(5)));
+        Assert.Multiple(() =>
+        {
+            Assert.That(firstAlphabet[0], Is.EqualTo(new ValueInt(2)));
+            Assert.That(firstAlphabet[1], Is.EqualTo(new ValueInt(3)));
+            Assert.That(firstAlphabet[2], Is.EqualTo(new ValueInt(4)));
+            Assert.That(firstAlphabet[3], Is.EqualTo(new ValueInt(5)));
+        });
     }
 
     /// <summary>
@@ -95,10 +98,13 @@ public class AlphabetTests
         firstAlphabet.Add(new ValueInt(3));
         firstAlphabet.Add(new ValueInt(4));
         firstAlphabet[0] = new ValueInt(3);
-        Assert.That(firstAlphabet[0], Is.EqualTo(new ValueInt(2)));
-        Assert.That(firstAlphabet[1], Is.EqualTo(new ValueInt(1)));
-        Assert.That(firstAlphabet[2], Is.EqualTo(new ValueInt(3)));
-        Assert.That(firstAlphabet[3], Is.EqualTo(new ValueInt(4)));
+        Assert.Multiple(() =>
+        {
+            Assert.That(firstAlphabet[0], Is.EqualTo(new ValueInt(2)));
+            Assert.That(firstAlphabet[1], Is.EqualTo(new ValueInt(1)));
+            Assert.That(firstAlphabet[2], Is.EqualTo(new ValueInt(3)));
+            Assert.That(firstAlphabet[3], Is.EqualTo(new ValueInt(4)));
+        });
     }
 
     /// <summary>
@@ -112,10 +118,13 @@ public class AlphabetTests
         firstAlphabet.Add(new ValueString("5"));
         firstAlphabet.Add(new ValueString("1"));
         firstAlphabet[0] = new ValueString("3");
-        Assert.That(firstAlphabet[0], Is.EqualTo(new ValueString("2")));
-        Assert.That(firstAlphabet[1], Is.EqualTo(new ValueString("3")));
-        Assert.That(firstAlphabet[2], Is.EqualTo(new ValueString("5")));
-        Assert.That(firstAlphabet[3], Is.EqualTo(new ValueString("1")));
+        Assert.Multiple(() =>
+        {
+            Assert.That(firstAlphabet[0], Is.EqualTo(new ValueString("2")));
+            Assert.That(firstAlphabet[1], Is.EqualTo(new ValueString("3")));
+            Assert.That(firstAlphabet[2], Is.EqualTo(new ValueString("5")));
+            Assert.That(firstAlphabet[3], Is.EqualTo(new ValueString("1")));
+        });
     }
 
     /// <summary>
@@ -150,8 +159,11 @@ public class AlphabetTests
         firstAlphabet.Add(new ValueInt(300));
         firstAlphabet.Add(new ValueInt(400));
         firstAlphabet.Remove(2);
-        Assert.That(firstAlphabet.Cardinality, Is.EqualTo(3));
-        Assert.That(firstAlphabet[2], Is.EqualTo(new ValueInt(400)));
+        Assert.Multiple(() =>
+        {
+            Assert.That(firstAlphabet.Cardinality, Is.EqualTo(3));
+            Assert.That(firstAlphabet[2], Is.EqualTo(new ValueInt(400)));
+        });
     }
 
     /// <summary>
@@ -163,7 +175,6 @@ public class AlphabetTests
         IBaseObject clone = firstAlphabet.Clone();
 
         Assert.That(firstAlphabet, Is.Not.SameAs(clone));
-
         Assert.That(firstAlphabet, Is.EqualTo(clone));
     }
 
@@ -198,8 +209,11 @@ public class AlphabetTests
             secondAlphabet.Add(new ValueString(element));
         }
 
-        Assert.That(firstAlphabet.Equals(secondAlphabet), Is.EqualTo(equals));
-        Assert.That(secondAlphabet.Equals(firstAlphabet), Is.EqualTo(equals));
+        Assert.Multiple(() =>
+        {
+            Assert.That(firstAlphabet.Equals(secondAlphabet), Is.EqualTo(equals));
+            Assert.That(secondAlphabet.Equals(firstAlphabet), Is.EqualTo(equals));
+        });
     }
 
     /// <summary>
@@ -233,8 +247,11 @@ public class AlphabetTests
             secondAlphabet.Add(new ValueString(element));
         }
 
-        Assert.That(firstAlphabet.SetEquals(secondAlphabet), Is.EqualTo(equals));
-        Assert.That(secondAlphabet.SetEquals(firstAlphabet), Is.EqualTo(equals));
+        Assert.Multiple(() =>
+        {
+            Assert.That(firstAlphabet.SetEquals(secondAlphabet), Is.EqualTo(equals));
+            Assert.That(secondAlphabet.SetEquals(firstAlphabet), Is.EqualTo(equals));
+        });
     }
 
     /// <summary>
@@ -260,8 +277,11 @@ public class AlphabetTests
 
         firstAlphabet = [NullValue.Instance(), (ValueInt)1, (ValueString)"a", (ValueInt)2];
         secondAlphabet = [(ValueInt)2, (ValueInt)1, (ValueString)"a"];
-        Assert.That(firstAlphabet.SetEquals(secondAlphabet), Is.False);
-        Assert.That(secondAlphabet.SetEquals(firstAlphabet), Is.False);
+        Assert.Multiple(() =>
+        {
+            Assert.That(firstAlphabet.SetEquals(secondAlphabet), Is.False);
+            Assert.That(secondAlphabet.SetEquals(firstAlphabet), Is.False);
+        });
     }
 
     /// <summary>
@@ -273,10 +293,13 @@ public class AlphabetTests
         firstAlphabet.Add(new ValueString('a'));
         firstAlphabet.Add(new ValueString('b'));
         firstAlphabet.Add(new ValueString('c'));
-        Assert.That(firstAlphabet.Contains(new ValueString('a')), Is.True);
-        Assert.That(firstAlphabet.Contains(new ValueString('b')), Is.True);
-        Assert.That(firstAlphabet.Contains(new ValueString('c')), Is.True);
-        Assert.That(firstAlphabet.Contains(new ValueString('d')), Is.False);
+        Assert.Multiple(() =>
+        {
+            Assert.That(firstAlphabet.Contains(new ValueString('a')), Is.True);
+            Assert.That(firstAlphabet.Contains(new ValueString('b')), Is.True);
+            Assert.That(firstAlphabet.Contains(new ValueString('c')), Is.True);
+            Assert.That(firstAlphabet.Contains(new ValueString('d')), Is.False);
+        });
     }
 
     /// <summary>
@@ -288,9 +311,12 @@ public class AlphabetTests
         firstAlphabet.Add(new ValueString('a'));
         firstAlphabet.Add(new ValueString('b'));
         firstAlphabet.Add(new ValueString('c'));
-        Assert.That(firstAlphabet.IndexOf(new ValueString('d')), Is.EqualTo(-1));
-        Assert.That(firstAlphabet.IndexOf(new ValueString('a')), Is.Zero);
-        Assert.That(firstAlphabet.IndexOf(new ValueString('c')), Is.EqualTo(2));
+        Assert.Multiple(() =>
+        {
+            Assert.That(firstAlphabet.IndexOf(new ValueString('d')), Is.EqualTo(-1));
+            Assert.That(firstAlphabet.IndexOf(new ValueString('a')), Is.Zero);
+            Assert.That(firstAlphabet.IndexOf(new ValueString('c')), Is.EqualTo(2));
+        });
     }
 
     /// <summary>
@@ -328,8 +354,9 @@ public class AlphabetTests
         firstAlphabet.Add((ValueInt)1);
         firstAlphabet.Add((ValueString)"a");
         firstAlphabet.Add((ValueInt)2);
-
+        const string expected = "< -, 1, a, 2 >";
         string result = firstAlphabet.ToString();
-        Assert.That(result, Is.EqualTo("< -, 1, a, 2 >"));
+
+        Assert.That(result, Is.EqualTo(expected));
     }
 }

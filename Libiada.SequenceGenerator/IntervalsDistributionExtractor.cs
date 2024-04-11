@@ -24,7 +24,7 @@ public static class IntervalsDistributionExtractor
         Dictionary<IntervalsDistribution, List<int[]>> accordance = [];
         foreach (int[] order in orders)
         {
-            IntervalsDistribution orderIntervalsDistribution = IntervalsDistributionExtractor.GetIntervalsDistribution(order, link);
+            IntervalsDistribution orderIntervalsDistribution = GetIntervalsDistribution(order, link);
             if (accordance.ContainsKey(orderIntervalsDistribution))
             {
                 accordance[orderIntervalsDistribution].Add(order);

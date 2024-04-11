@@ -73,8 +73,8 @@ public class OrderGeneratorTests
         const int expectedAlphabetCardinality = 3;
         OrderGenerator orderGenerator = new();
         List<int[]> actual = orderGenerator.StrictGenerateOrders(expectedLength, expectedAlphabetCardinality);
-        Assert.That(actual.All(o => o.Length == expectedLength),"Invalid length");
-        Assert.That(actual.All(o => o.Max() == expectedAlphabetCardinality), "Invlaid alphabet cardinality");
+        Assert.That(actual.TrueForAll(o => o.Length == expectedLength),"Invalid length");
+        Assert.That(actual.TrueForAll(o => o.Max() == expectedAlphabetCardinality), "Invlaid alphabet cardinality");
         foreach (int[] order in actual)
         {
             int currentMax = 1;

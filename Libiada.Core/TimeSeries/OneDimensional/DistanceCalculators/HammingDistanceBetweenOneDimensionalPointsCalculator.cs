@@ -29,14 +29,14 @@ public class HammingDistanceBetweenOneDimensionalPointsCalculator : IOneDimensio
         {
             for (int i = 0; i < firstPointStringArray[0].Length - secondPointStringArray[0].Length; i++)
             {
-                intPartSecond = "0" + intPartSecond;
+                intPartSecond = $"0{intPartSecond}";
             }
         }
         else
         {
             for (int i = 0; i < secondPointStringArray[0].Length - firstPointStringArray[0].Length; i++)
             {
-                intPartFirst = "0" + intPartFirst;
+                intPartFirst = $"0{intPartFirst}";
             }
         }
 

@@ -119,12 +119,13 @@ public class Chain : BaseChain, IBaseObject
         order = new int[source.Length];
         for (int i = 0; i < source.Length; i++)
         {
-            if (!alphabet.Contains(new ValueInt(source[i])))
+            short element = source[i];
+            if (!alphabet.Contains(new ValueInt(element)))
             {
-                alphabet.Add(new ValueInt(source[i]));
+                alphabet.Add(new ValueInt(element));
             }
 
-            order[i] = alphabet.IndexOf(new ValueInt(source[i]));
+            order[i] = alphabet.IndexOf(new ValueInt(element));
         }
 
         FillCongenericChains();

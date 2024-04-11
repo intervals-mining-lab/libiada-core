@@ -69,7 +69,7 @@ class FrequencySegmenter
                         }
                     }
 
-                    if (candidateConsonance == "")
+                    if (candidateConsonance.Length == 0)
                     {
                         continue;
                     }
@@ -113,7 +113,7 @@ class FrequencySegmenter
 
         if (candidateConsonance == "ue")
         {
-            Console.WriteLine(candidateConsonance + " - " + deviation);
+            Console.WriteLine($"{candidateConsonance} - {deviation}");
         }
 
         if (deviation >= threshold)

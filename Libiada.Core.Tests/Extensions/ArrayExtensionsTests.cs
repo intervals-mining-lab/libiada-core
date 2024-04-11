@@ -112,7 +112,7 @@ public class ArrayExtensionsTests
     {
         int[] source = [1, 2, 3];
 
-        string expected = "1" + Environment.NewLine + "2" + Environment.NewLine + "3";
+        string expected = $"1{Environment.NewLine}2{Environment.NewLine}3";
         Assert.That(source.ToStringWithDefaultDelimiter(), Is.EqualTo(expected));
     }
 
