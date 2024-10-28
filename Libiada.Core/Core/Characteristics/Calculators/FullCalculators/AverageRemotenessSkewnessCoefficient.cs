@@ -20,10 +20,11 @@ public class AverageRemotenessSkewnessCoefficient : IFullCalculator
     /// </returns>
     public double Calculate(Chain chain, Link link)
     {
-        AverageRemotenessSkewness averageRemotenessSkewness = new();
-        AverageRemotenessStandardDeviation averageRemotenessStandardDeviation = new();
+        double averageRemotenessStandardDeviation = new AverageRemotenessStandardDeviation().Calculate(chain, link);
+        if (averageRemotenessStandardDeviation == 0) return 0;
 
-        double standardDeviation = averageRemotenessStandardDeviation.Calculate(chain, link);
-        return standardDeviation == 0 ? 0 : averageRemotenessSkewness.Calculate(chain, link) / (standardDeviation * standardDeviation * standardDeviation);
+        double averageRemotenessSkewness = new AverageRemotenessSkewness().Calculate(chain, link);
+
+        return averageRemotenessSkewness / (averageRemotenessStandardDeviation * averageRemotenessStandardDeviation * averageRemotenessStandardDeviation);
     }
 }

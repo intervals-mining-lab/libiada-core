@@ -19,13 +19,19 @@ public class DescriptiveInformation : IFullCalculator
     /// </returns>
     public double Calculate(Chain chain, Link link)
     {
-        CongenericCalculators.DescriptiveInformation calculator = new();
+        double n = new IntervalsCount().Calculate(chain, link);
+        if (n == 0) return 1;
 
-        Alphabet alphabet = chain.Alphabet;
+        CongenericCalculators.ArithmeticMean arithmeticMeanCalculator = new();
+        CongenericCalculators.IntervalsCount intervalsCountCalculator = new();
+        
         double result = 1;
-        for (int i = 0; i < alphabet.Cardinality; i++)
+        int alphabetCardinality = chain.Alphabet.Cardinality;
+        for (int i = 0; i < alphabetCardinality; i++)
         {
-            result *= calculator.Calculate(chain.CongenericChain(i), link);
+            double nj = intervalsCountCalculator.Calculate(chain.CongenericChain(i), link);
+            double arithmeticMean = arithmeticMeanCalculator.Calculate(chain.CongenericChain(i), link);
+            result *= Math.Pow(arithmeticMean, nj/n);
         }
 
         return result;

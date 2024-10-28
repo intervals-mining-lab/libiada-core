@@ -19,8 +19,8 @@ public class AlphabeticDepth : IFullCalculator
     /// </returns>
     public double Calculate(Chain chain, Link link)
     {
-        int alphabetCardinality = chain.Alphabet.Cardinality;
         double result = 0;
+        int alphabetCardinality = chain.Alphabet.Cardinality;
         for (int i = 0; i < alphabetCardinality; i++)
         {
             result += Calculate(chain.CongenericChain(i), link, alphabetCardinality);
@@ -50,6 +50,8 @@ public class AlphabeticDepth : IFullCalculator
     private double Calculate(CongenericChain chain, Link link, int alphabetCardinality)
     {
         int[] intervals = chain.GetArrangement(link);
-        return intervals.Length == 0 ? 0 : intervals.Sum(interval => Math.Log(interval, alphabetCardinality));
+        if (intervals.Length == 0) return 0;
+
+        return intervals.Sum(interval => Math.Log(interval, alphabetCardinality));
     }
 }

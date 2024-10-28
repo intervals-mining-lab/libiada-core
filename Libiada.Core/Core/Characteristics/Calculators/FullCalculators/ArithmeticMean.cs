@@ -21,11 +21,12 @@ public class ArithmeticMean : IFullCalculator
     /// </returns>
     public double Calculate(Chain chain, Link link)
     {
-        IntervalsSum adder = new();
-        IntervalsCount counter = new();
+        double intervalsCount = new IntervalsCount().Calculate(chain, link);
 
-        double intervalsSum = adder.Calculate(chain, link);
-        int intervalsCount = (int)counter.Calculate(chain, link);
-        return intervalsCount == 0 ? 0 : intervalsSum / intervalsCount;
+        // if tere are no intervals arithmetic mean is equals to geometric mean
+        if (intervalsCount == 0) return 1;
+
+        double intervalsSum = new IntervalsSum().Calculate(chain, link);
+        return intervalsSum / intervalsCount;
     }
 }

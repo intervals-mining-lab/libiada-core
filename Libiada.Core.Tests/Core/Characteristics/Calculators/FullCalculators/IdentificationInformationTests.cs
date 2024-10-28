@@ -21,11 +21,12 @@ public class IdentificationInformationTests : FullCalculatorsTests<Identificatio
     /// <param name="value">
     /// The value.
     /// </param>
-    [TestCase(0, Link.None, 1.5283)]
-    [TestCase(0, Link.Start, 1.581)]
-    [TestCase(0, Link.End, 1.5594)]
-    [TestCase(0, Link.Both, 1.5785)]
+    [TestCase(0, Link.None, 1.25069821459)]
+    [TestCase(0, Link.Start, 1.3709777)]
+    [TestCase(0, Link.End, 1.2532824857)]
+    [TestCase(0, Link.Both, 1.335618955)]
     [TestCase(0, Link.Cycle, 1.571)]
+    [TestCase(30, Link.Start, 0.77779373752225)]
     public void ChainCalculationTest(int index, Link link, double value)
     {
         ChainCharacteristicTest(index, link, value);

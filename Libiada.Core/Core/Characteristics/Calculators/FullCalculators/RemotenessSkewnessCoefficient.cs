@@ -19,10 +19,11 @@ public class RemotenessSkewnessCoefficient : IFullCalculator
     /// </returns>
     public double Calculate(Chain chain, Link link)
     {
-        RemotenessSkewness remotenessSkewness = new();
-        RemotenessStandardDeviation remotenessStandardDeviation = new();
+        double remotenessStandardDeviation = new RemotenessStandardDeviation().Calculate(chain, link);
+        if (remotenessStandardDeviation == 0) return 0;
 
-        double standardDeviation = remotenessStandardDeviation.Calculate(chain, link);
-        return standardDeviation == 0 ? 0 : remotenessSkewness.Calculate(chain, link) / (standardDeviation * standardDeviation * standardDeviation);
+        double remotenessSkewness = new RemotenessSkewness().Calculate(chain, link);
+
+        return remotenessSkewness / (remotenessStandardDeviation * remotenessStandardDeviation * remotenessStandardDeviation);
     }
 }

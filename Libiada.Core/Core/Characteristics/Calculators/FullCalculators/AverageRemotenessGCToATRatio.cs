@@ -30,6 +30,7 @@ public class AverageRemotenessGCToATRatio : IFullCalculator
         double c = congenericRemotenessCalculator.Calculate(chain.GetOrCreateCongenericChain(new ValueString("C")), link);
         double a = congenericRemotenessCalculator.Calculate(chain.GetOrCreateCongenericChain(new ValueString("A")), link);
         double t = congenericRemotenessCalculator.Calculate(chain.GetOrCreateCongenericChain(new ValueString("T")), link);
+
         return a + t == 0 ? 0 : (g + c) / (a + t);
     }
 }

@@ -28,7 +28,7 @@ public class RemotenessDispersionTests : FullCalculatorsTests<RemotenessDispersi
     [TestCase(0, Link.Cycle, 1.1161)]
     public void ChainCalculationTest(int index, Link link, double value)
     {
-        ChainCharacteristicTest(0, link, value);
+        ChainCharacteristicTest(index, link, value);
     }
 
     /// <summary>

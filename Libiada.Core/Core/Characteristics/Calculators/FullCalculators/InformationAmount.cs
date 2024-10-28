@@ -2,7 +2,7 @@
 
 /// <summary>
 /// The total amount of information in sequence.
-/// Entropy multiplied by length.
+/// Entropy multiplied by intervals count.
 /// </summary>
 public class InformationAmount : IFullCalculator
 {
@@ -20,14 +20,9 @@ public class InformationAmount : IFullCalculator
     /// </returns>
     public double Calculate(Chain chain, Link link)
     {
-        double result = 0;
-        CongenericCalculators.InformationAmount calculator = new();
-        int alphabetCardinality = chain.Alphabet.Cardinality;
-        for (int i = 0; i < alphabetCardinality; i++)
-        {
-            result += calculator.Calculate(chain.CongenericChain(i), link);
-        }
+        double entropy = new IdentificationInformation().Calculate(chain, link);
+        double intervalsCount = new IntervalsCount().Calculate(chain, link);
 
-        return result;
+        return entropy * intervalsCount;
     }
 }

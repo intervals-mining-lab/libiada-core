@@ -19,31 +19,27 @@ public class RemotenessKurtosis : IFullCalculator
     /// </returns>
     public double Calculate(Chain chain, Link link)
     {
+        double n = new IntervalsCount().Calculate(chain, link);
+        if (n == 0) return 0;
+
         List<int> intervals = [];
-        Alphabet alphabet = chain.Alphabet;
-        for (int i = 0; i < alphabet.Cardinality; i++)
+        int alphabetCardinality = chain.Alphabet.Cardinality;
+        for (int i = 0; i < alphabetCardinality; i++)
         {
-            intervals.AddRange(chain.CongenericChain(i).GetArrangement(link).ToList());
+            intervals.AddRange(chain.CongenericChain(i).GetArrangement(link));
         }
 
-        if (intervals.Count == 0)
-        {
-            return 0;
-        }
-
-        List<int> uniqueIntervals = intervals.Distinct().ToList();
-
-        IntervalsCount intervalsCount = new();
-        GeometricMean geometricMean = new();
+        Dictionary<int, int> intervalsDictionary = intervals
+                                 .GroupBy(i => i)
+                                 .ToDictionary(i => i.Key, i => i.Count());
 
         double result = 0;
-        double gDelta = geometricMean.Calculate(chain, link);
-        double n = intervalsCount.Calculate(chain, link);
+        double g = new AverageRemoteness().Calculate(chain, link);
 
-        foreach (int kDelta in uniqueIntervals)
+        foreach ((int interval, int nk) in intervalsDictionary)
         {
-            double centeredRemoteness = Math.Log(kDelta, 2) - Math.Log(gDelta, 2);
-            result += centeredRemoteness * centeredRemoteness * centeredRemoteness * centeredRemoteness * intervals.Count(interval => interval == kDelta) / n;
+            double centeredRemoteness = Math.Log(interval, 2) - g;
+            result += centeredRemoteness * centeredRemoteness * centeredRemoteness * centeredRemoteness * nk / n;
         }
 
         return result;

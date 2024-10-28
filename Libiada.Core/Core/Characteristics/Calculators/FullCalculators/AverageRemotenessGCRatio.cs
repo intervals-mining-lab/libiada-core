@@ -24,12 +24,14 @@ public class AverageRemotenessGCRatio : IFullCalculator
     {
         DnaProcessor.CheckDnaAlphabet(chain.Alphabet);
 
+        double l = new AverageRemoteness().Calculate(chain, link);
+        if (l == 0) return 0;
+
         CongenericCalculators.AverageRemoteness congenericRemotenessCalculator = new();
-        AverageRemoteness remotenessCalculator = new();
 
         double g = congenericRemotenessCalculator.Calculate(chain.GetOrCreateCongenericChain(new ValueString("G")), link);
         double c = congenericRemotenessCalculator.Calculate(chain.GetOrCreateCongenericChain(new ValueString("C")), link);
-        double l = remotenessCalculator.Calculate(chain, link);
-        return l == 0 ? 0 : 100 * (g + c) / l;
+
+        return 100 * (g + c) / l;
     }
 }

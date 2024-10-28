@@ -21,10 +21,11 @@ public class Depth : IFullCalculator
     /// </returns>
     public double Calculate(Chain chain, Link link)
     {
-        double result = 0;
         CongenericCalculators.Depth calculator = new();
-        Alphabet alphabet = chain.Alphabet;
-        for (int i = 0; i < alphabet.Cardinality; i++)
+
+        double result = 0;
+        int alphabetCardinality = chain.Alphabet.Cardinality;
+        for (int i = 0; i < alphabetCardinality; i++)
         {
             result += calculator.Calculate(chain.CongenericChain(i), link);
         }

@@ -19,9 +19,8 @@ public class GeometricMean : IFullCalculator
     /// </returns>
     public double Calculate(Chain chain, Link link)
     {
-        AverageRemoteness averageRemoteness = new();
+        double remoteness = new AverageRemoteness().Calculate(chain, link);
 
-        double remoteness = averageRemoteness.Calculate(chain, link);
         return Math.Pow(2, remoteness);
     }
 }

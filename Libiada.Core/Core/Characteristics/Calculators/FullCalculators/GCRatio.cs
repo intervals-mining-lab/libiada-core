@@ -21,13 +21,14 @@ public class GCRatio : NonLinkableFullCalculator
     {
         DnaProcessor.CheckDnaAlphabet(chain.Alphabet);
 
+        double l = new ElementsCount().Calculate(chain);
+        if (l == 0) return 0;
+
         CongenericCalculators.ElementsCount congenericCounter = new();
-        ElementsCount counter = new();
 
-        int g = (int)congenericCounter.Calculate(chain.GetOrCreateCongenericChain(new ValueString("G")));
-        int c = (int)congenericCounter.Calculate(chain.GetOrCreateCongenericChain(new ValueString("C")));
-        int l = (int)counter.Calculate(chain);
+        double g = congenericCounter.Calculate(chain.GetOrCreateCongenericChain(new ValueString("G")));
+        double c = congenericCounter.Calculate(chain.GetOrCreateCongenericChain(new ValueString("C")));
 
-        return l == 0 ? 0 : 100 * (g + c) / (double)l;
+        return 100 * (g + c) / l;
     }
 }

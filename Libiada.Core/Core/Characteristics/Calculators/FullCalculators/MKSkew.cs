@@ -21,15 +21,16 @@ public class MKSkew : NonLinkableFullCalculator
     {
         DnaProcessor.CheckDnaAlphabet(chain.Alphabet);
 
+        double l = new ElementsCount().Calculate(chain);
+        if (l == 0) return 0;
+
         CongenericCalculators.ElementsCount congenericCounter = new();
-        ElementsCount counter = new();
 
-        int g = (int)congenericCounter.Calculate(chain.GetOrCreateCongenericChain(new ValueString("G")));
-        int c = (int)congenericCounter.Calculate(chain.GetOrCreateCongenericChain(new ValueString("C")));
-        int a = (int)congenericCounter.Calculate(chain.GetOrCreateCongenericChain(new ValueString("A")));
-        int t = (int)congenericCounter.Calculate(chain.GetOrCreateCongenericChain(new ValueString("T")));
-        int l = (int)counter.Calculate(chain);
+        double g = congenericCounter.Calculate(chain.GetOrCreateCongenericChain(new ValueString("G")));
+        double c = congenericCounter.Calculate(chain.GetOrCreateCongenericChain(new ValueString("C")));
+        double a = congenericCounter.Calculate(chain.GetOrCreateCongenericChain(new ValueString("A")));
+        double t = congenericCounter.Calculate(chain.GetOrCreateCongenericChain(new ValueString("T")));
 
-        return l == 0 ? 0 : ((c + a) - (g + t)) / (double)l;
+        return ((c + a) - (g + t)) / l;
     }
 }

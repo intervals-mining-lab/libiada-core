@@ -26,6 +26,7 @@ public class AverageRemotenessTests : FullCalculatorsTests<AverageRemoteness>
     [TestCase(0, Link.End, 1.017)]
     [TestCase(0, Link.Both, 1.0828)]
     [TestCase(0, Link.Cycle, 1.234)]
+    [TestCase(30, Link.Start, 0.7169925)]
     public void ChainCalculationTest(int index, Link link, double value)
     {
         ChainCharacteristicTest(index, link, value);

@@ -25,111 +25,109 @@ public static class ChainsStorage
     /// </summary>
     public static List<Chain> Chains =>
     [
-        // B B A A C B A C C B
-        // _ _ A A _ _ A _ _ _
-        // B B _ _ _ B _ _ _ B
-        // _ _ _ _ C _ _ C C _
-        new Chain("BBAACBACCB"), // 0
+        // 0 B B A A C B A C C B
+        //   _ _ A A _ _ A _ _ _
+        //   B B _ _ _ B _ _ _ B
+        //   _ _ _ _ C _ _ C C _
+        new Chain("BBAACBACCB"),
 
-        // A C T T G A T A C G
-        // A _ _ _ _ A _ A _ _
-        // _ C _ _ _ _ _ _ C _
-        // _ _ T T _ _ T _ _ _
-        // _ _ _ _ G _ _ _ _ G
-        new Chain("ACTTGATACG"), // 1
+        // 1 A C T T G A T A C G
+        //   A _ _ _ _ A _ A _ _
+        //   _ C _ _ _ _ _ _ C _
+        //   _ _ T T _ _ T _ _ _
+        //   _ _ _ _ G _ _ _ _ G
+        new Chain("ACTTGATACG"),
 
-        // C C A C G C T T A C
-        // C C _ C _ C _ _ _ C
-        // _ _ A _ _ _ _ _ A _
-        // _ _ _ _ G _ _ _ _ _
-        // _ _ _ _ _ _ T T _ _
-        new Chain("CCACGCTTAC"), // 2
+        // 2 C C A C G C T T A C
+        //   C C _ C _ C _ _ _ C
+        //   _ _ A _ _ _ _ _ A _
+        //   _ _ _ _ G _ _ _ _ _
+        //   _ _ _ _ _ _ T T _ _
+        new Chain("CCACGCTTAC"),
 
-        // C G
-        // C _
-        // _ G
-        new Chain("CG"), // 3
+        // 3 C G
+        //   C _
+        //   _ G
+        new Chain("CG"),
 
-        // C C C C
-        // C C C C
-        new Chain("CCCC"), // 4
+        // 4 C C C C
+        new Chain("CCCC"),
 
-        // A C G T
-        // A _ _ _
-        // _ C _ _
-        // _ _ G _
-        // _ _ _ T
-        new Chain("ACGT"), // 5
+        // 5 A C G T
+        //   A _ _ _
+        //   _ C _ _
+        //   _ _ G _
+        //   _ _ _ T
+        new Chain("ACGT"),
 
-        // A A A A C G T
-        // A A A A _ _ _
-        // _ _ _ _ C _ _
-        // _ _ _ _ _ G _
-        // _ _ _ _ _ _ T
-        new Chain("AAAACGT"), // 6
+        // 6 A A A A C G T
+        //   A A A A _ _ _
+        //   _ _ _ _ C _ _
+        //   _ _ _ _ _ G _
+        //   _ _ _ _ _ _ T
+        new Chain("AAAACGT"),
 
-        // T A
-        // T _
-        // _ A
-        new Chain("TA"), // 7
+        // 7 T A
+        //   T _
+        //   _ A
+        new Chain("TA"),
 
-        // T T T T
-        // T T T T
-        new Chain("TTTT"), // 8
+        // 8 T T T T
+        new Chain("TTTT"),
 
-        // A B C A B C A B C
-        // A _ _ A _ _ A _ _
-        // _ B _ _ B _ _ B _
-        // _ _ C _ _ C _ _ C
-        new Chain("ABCABCABC"), // 9
+        // 9 A B C A B C A B C
+        //   A _ _ A _ _ A _ _
+        //   _ B _ _ B _ _ B _
+        //   _ _ C _ _ C _ _ C
+        new Chain("ABCABCABC"),
 
-        // C B C A B C A B C
-        // - _ _ A _ _ A _ _
-        // _ B _ _ B _ _ B _
-        // C _ C _ _ C _ _ C
-        new Chain("CBCABCABC"), // 10
+        // 10 C B C A B C A B C
+        //    - _ _ A _ _ A _ _
+        //    _ B _ _ B _ _ B _
+        //    C _ C _ _ C _ _ C
+        new Chain("CBCABCABC"),
 
-        // A B A A B C A B C
-        // A _ A A _ _ A _ _
-        // _ B _ _ B _ _ B _
-        // _ _ _ _ _ C _ _ C
-        new Chain("ABAABCABC"), // 11
+        // 11 A B A A B C A B C
+        //    A _ A A _ _ A _ _
+        //    _ B _ _ B _ _ B _
+        //    _ _ _ _ _ C _ _ C
+        new Chain("ABAABCABC"),
 
-        // A B B A B C A B C
-        // A _ _ A _ _ A _ _
-        // _ B B _ B _ _ B _
-        // _ _ _ _ _ C _ _ C
-        new Chain("ABBABCABC"), // 12
+        // 12 A B B A B C A B C
+        //    A _ _ A _ _ A _ _
+        //    _ B B _ B _ _ B _
+        //    _ _ _ _ _ C _ _ C
+        new Chain("ABBABCABC"),
 
-        // A B C A B B A B C
-        // A _ _ A _ _ A _ _
-        // _ B _ _ B B _ B _
-        // _ _ C _ _ _ _ _ C
-        new Chain("ABCABBABC"), // 13
+        // 13 A B C A B B A B C
+        //    A _ _ A _ _ A _ _
+        //    _ B _ _ B B _ B _
+        //    _ _ C _ _ _ _ _ C
+        new Chain("ABCABBABC"),
 
-        // A B C A B C A A C
-        // A _ _ A _ _ A A _
-        // _ B _ _ B _ _ _ _
-        // _ _ C _ _ C _ _ C
-        new Chain("ABCABCAAC"), // 14
+        // 14 A B C A B C A A C
+        //    A _ _ A _ _ A A _
+        //    _ B _ _ B _ _ _ _
+        //    _ _ C _ _ C _ _ C
+        new Chain("ABCABCAAC"),
 
-        // A B C A B C A C C
-        // A _ _ A _ _ A _ _
-        // _ B _ _ B _ _ _ _
-        // _ _ C _ _ C _ C C
-        new Chain("ABCABCACC"), // 15
+        // 15 A B C A B C A C C
+        //    A _ _ A _ _ A _ _
+        //    _ B _ _ B _ _ _ _
+        //    _ _ C _ _ C _ C C
+        new Chain("ABCABCACC"),
 
-        // A B C A B C A B B
-        // A _ _ A _ _ A _ _
-        // _ B _ _ B _ _ B B
-        // _ _ C _ _ C _ _ _
-        new Chain("ABCABCABB"), // 16
+        // 16 A B C A B C A B B
+        //    A _ _ A _ _ A _ _
+        //    _ B _ _ B _ _ B B
+        //    _ _ C _ _ C _ _ _
+        new Chain("ABCABCABB"),
 
-        // A B C A B C A B C
-        // A _ _ A _ _ A _ _
-        // _ B _ _ B _ _ B _
-        // _ _ C _ _ C _ _ C
-        new Chain("ABCABCABC"), // 17
+        // 17 A B C A B C A B C
+        //    A _ _ A _ _ A _ _
+        //    _ B _ _ B _ _ B _
+        //    _ _ C _ _ C _ _ C
+        new Chain("ABCABCABC"),
 
         // 18 _ _ _ _ _ _ _ _ _ _
         new Chain(
@@ -189,7 +187,12 @@ public static class ChainsStorage
         // 29 _ _ _ _ _ C _ _ _ _
         new Chain(
             [0, 0, 0, 0, 0, 1, 0, 0, 0, 0],
-            [NullValue.Instance(), Elements["C"]])
+            [NullValue.Instance(), Elements["C"]]),
+
+        // 30 A B A A B
+        //    A _ A A _
+        //    _ B _ _ B
+        new Chain("ABAAB")
 
     ];
 

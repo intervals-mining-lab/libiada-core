@@ -23,9 +23,9 @@ public class GCSkew : NonLinkableFullCalculator
 
         CongenericCalculators.ElementsCount counter = new();
 
-        int g = (int)counter.Calculate(chain.GetOrCreateCongenericChain(new ValueString("G")));
-        int c = (int)counter.Calculate(chain.GetOrCreateCongenericChain(new ValueString("C")));
+        double g = counter.Calculate(chain.GetOrCreateCongenericChain(new ValueString("G")));
+        double c = counter.Calculate(chain.GetOrCreateCongenericChain(new ValueString("C")));
 
-        return g + c == 0 ? 0 : (g - c) / (double)(g + c);
+        return g + c == 0 ? 0 : (g - c) / (g + c);
     }
 }

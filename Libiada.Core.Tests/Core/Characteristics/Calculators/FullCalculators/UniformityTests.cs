@@ -21,11 +21,12 @@ public class UniformityTests : FullCalculatorsTests<Uniformity>
     /// <param name="value">
     /// The value.
     /// </param>
-    [TestCase(0, Link.None, 0.5041)]
-    [TestCase(0, Link.Start, 0.4733)]
-    [TestCase(0, Link.End, 0.5424)]
-    [TestCase(0, Link.Both, 0.4957)]
+    [TestCase(0, Link.None, 0.22649821459)]
+    [TestCase(0, Link.Start, 0.2632777)]
+    [TestCase(0, Link.End, 0.2362824857)]
+    [TestCase(0, Link.Both, 0.252818955)]
     [TestCase(0, Link.Cycle, 0.337)]
+    [TestCase(30, Link.Start, 0.06080123752225)]
     public void ChainCalculationTest(int index, Link link, double value)
     {
         ChainCharacteristicTest(index, link, value);

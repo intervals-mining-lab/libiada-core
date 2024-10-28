@@ -6,6 +6,7 @@ namespace Libiada.Core.Core.Characteristics.Calculators.FullCalculators;
 /// Amount of identifying information (average for one element).
 /// Shannon's information.
 /// Shannon's entropy.
+/// Calculated here using intervals count and arithmetic mean interval.
 /// </summary>
 public class IdentificationInformation : IFullCalculator
 {
@@ -23,13 +24,19 @@ public class IdentificationInformation : IFullCalculator
     /// </returns>
     public double Calculate(Chain chain, Link link)
     {
-        CongenericCalculators.IdentificationInformation identificationInformation = new();
+        double n = new IntervalsCount().Calculate(chain, link);
+        if (n == 0) return 0;
 
-        Alphabet alphabet = chain.Alphabet;
+        CongenericCalculators.ArithmeticMean meanCalculator = new();
+        CongenericCalculators.IntervalsCount counter = new();
+
         double result = 0;
-        for (int i = 0; i < alphabet.Cardinality; i++)
+        int alphabetCardinality = chain.Alphabet.Cardinality;
+        for (int i = 0; i < alphabetCardinality; i++)
         {
-            result += identificationInformation.Calculate(chain.CongenericChain(i), link);
+            double nj = counter.Calculate(chain.CongenericChain(i), link);
+            double arithmeticMean = meanCalculator.Calculate(chain.CongenericChain(i), link);
+            result += (nj / n) * Math.Log2(arithmeticMean);
         }
 
         return result;

@@ -23,11 +23,11 @@ public class GCToATRatio : NonLinkableFullCalculator
 
         CongenericCalculators.ElementsCount counter = new();
 
-        int g = (int)counter.Calculate(chain.GetOrCreateCongenericChain(new ValueString("G")));
-        int c = (int)counter.Calculate(chain.GetOrCreateCongenericChain(new ValueString("C")));
-        int a = (int)counter.Calculate(chain.GetOrCreateCongenericChain(new ValueString("A")));
-        int t = (int)counter.Calculate(chain.GetOrCreateCongenericChain(new ValueString("T")));
+        double g = counter.Calculate(chain.GetOrCreateCongenericChain(new ValueString("G")));
+        double c = counter.Calculate(chain.GetOrCreateCongenericChain(new ValueString("C")));
+        double a = counter.Calculate(chain.GetOrCreateCongenericChain(new ValueString("A")));
+        double t = counter.Calculate(chain.GetOrCreateCongenericChain(new ValueString("T")));
 
-        return a + t == 0 ? 0 : (g + c) / (double)(a + t);
+        return a + t == 0 ? 0 : (g + c) / (a + t);
     }
 }

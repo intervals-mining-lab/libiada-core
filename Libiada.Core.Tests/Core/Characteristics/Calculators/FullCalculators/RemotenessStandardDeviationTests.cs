@@ -28,7 +28,7 @@ public class RemotenessStandardDeviationTests : FullCalculatorsTests<RemotenessS
     [TestCase(0, Link.Cycle, 1.0564604)]
     public void ChainCalculationTest(int index, Link link, double value)
     {
-        ChainCharacteristicTest(0, link, value);
+        ChainCharacteristicTest(index, link, value);
     }
 
     /// <summary>

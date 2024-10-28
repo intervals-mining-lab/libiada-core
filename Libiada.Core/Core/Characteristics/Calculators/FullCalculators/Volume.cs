@@ -22,10 +22,10 @@ public class Volume : IFullCalculator
     public double Calculate(Chain chain, Link link)
     {
         CongenericCalculators.Volume calculator = new();
-
-        Alphabet alphabet = chain.Alphabet;
+        
         BigInteger result = 1;
-        for (int i = 0; i < alphabet.Cardinality; i++)
+        int alphabetCardinality = chain.Alphabet.Cardinality;
+        for (int i = 0; i < alphabetCardinality; i++)
         {
             result *= (BigInteger)calculator.Calculate(chain.CongenericChain(i), link);
         }

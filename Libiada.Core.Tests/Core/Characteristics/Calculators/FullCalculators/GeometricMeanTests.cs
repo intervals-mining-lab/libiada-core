@@ -26,9 +26,10 @@ public class GeometricMeanTests : FullCalculatorsTests<GeometricMean>
     [TestCase(0, Link.End, 2.0237)]
     [TestCase(0, Link.Both, 2.1182)]
     [TestCase(0, Link.Cycle, 2.3522)]
+    [TestCase(30, Link.Start, 1.6437518295)]
     public void CalculationTest(int index, Link link, double value)
     {
-        ChainCharacteristicTest(0, link, value);
+        ChainCharacteristicTest(index, link, value);
     }
 
     /// <summary>

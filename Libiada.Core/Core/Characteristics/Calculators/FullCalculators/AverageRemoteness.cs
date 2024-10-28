@@ -20,11 +20,11 @@ public class AverageRemoteness : IFullCalculator
     /// </returns>
     public double Calculate(Chain chain, Link link)
     {
-        Depth depthCalculator = new();
-        IntervalsCount intervalsCount = new();
+        double n = new IntervalsCount().Calculate(chain, link);
+        if (n == 0) return 0;
 
-        double depth = depthCalculator.Calculate(chain, link);
-        int nj = (int)intervalsCount.Calculate(chain, link);
-        return nj == 0 ? 0 : depth / nj;
+        double depth = new Depth().Calculate(chain, link);
+
+        return depth / n;
     }
 }

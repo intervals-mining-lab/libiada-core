@@ -21,9 +21,9 @@ public class IntervalsSum : IFullCalculator
     {
         CongenericCalculators.IntervalsSum calculator = new();
 
-        Alphabet alphabet = chain.Alphabet;
         int sum = 0;
-        for (int i = 0; i < alphabet.Cardinality; i++)
+        int alphabetCardinality = chain.Alphabet.Cardinality;
+        for (int i = 0; i < alphabetCardinality; i++)
         {
             sum += (int)calculator.Calculate(chain.CongenericChain(i), link);
         }

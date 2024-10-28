@@ -7,16 +7,6 @@ namespace Libiada.Core.Core.Characteristics.Calculators.FullCalculators;
 public class Periodicity : IFullCalculator
 {
     /// <summary>
-    /// Average geometric interval calculator.
-    /// </summary>
-    private readonly IFullCalculator geometricMeanCalculator = new GeometricMean();
-
-    /// <summary>
-    /// Average arithmetic interval calculator.
-    /// </summary>
-    private readonly IFullCalculator arithmeticMeanCalculator = new ArithmeticMean();
-
-    /// <summary>
     /// Calculation method.
     /// </summary>
     /// <param name="chain">
@@ -30,8 +20,9 @@ public class Periodicity : IFullCalculator
     /// </returns>
     public double Calculate(Chain chain, Link link)
     {
-        double geometricMean = geometricMeanCalculator.Calculate(chain, link);
-        double arithmeticMean = arithmeticMeanCalculator.Calculate(chain, link);
-        return arithmeticMean == 0 ? 0 : geometricMean / arithmeticMean;
+        double geometricMean = new GeometricMean().Calculate(chain, link);
+        double arithmeticMean = new ArithmeticMean().Calculate(chain, link);
+
+        return geometricMean / arithmeticMean;
     }
 }

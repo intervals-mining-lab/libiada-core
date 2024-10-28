@@ -28,7 +28,7 @@ public class RemotenessKurtosisCoefficientTests : FullCalculatorsTests<Remotenes
     [TestCase(0, Link.Cycle, 1.337076)]
     public void ChainCalculationTest(int index, Link link, double value)
     {
-        ChainCharacteristicTest(0, link, value);
+        ChainCharacteristicTest(index, link, value);
     }
 
     /// <summary>

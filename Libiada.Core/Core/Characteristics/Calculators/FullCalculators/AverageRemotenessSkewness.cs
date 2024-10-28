@@ -18,22 +18,17 @@ public class AverageRemotenessSkewness : IFullCalculator
     /// Average remoteness dispersion <see cref="double"/> value.
     /// </returns>
     public double Calculate(Chain chain, Link link)
-    {
-        AverageRemoteness averageRemoteness = new();
-        IntervalsCount intervalsCount = new();
-
-        double result = 0;
-        double g = averageRemoteness.Calculate(chain, link);
-        int n = (int)intervalsCount.Calculate(chain, link);
-        if (n == 0)
-        {
-            return 0;
-        }
+    {        
+        double n = new IntervalsCount().Calculate(chain, link);
+        if (n == 0) return 0;
 
         CongenericCalculators.IntervalsCount congenericIntervalsCount = new();
         CongenericCalculators.AverageRemoteness congenericAverageRemoteness = new();
-        Alphabet alphabet = chain.Alphabet;
-        for (int i = 0; i < alphabet.Cardinality; i++)
+
+        double result = 0;
+        double g = new AverageRemoteness().Calculate(chain, link);
+        int alphabetCardinality = chain.Alphabet.Cardinality;
+        for (int i = 0; i < alphabetCardinality; i++)
         {
             double nj = congenericIntervalsCount.Calculate(chain.CongenericChain(i), link);
             double gj = congenericAverageRemoteness.Calculate(chain.CongenericChain(i), link);

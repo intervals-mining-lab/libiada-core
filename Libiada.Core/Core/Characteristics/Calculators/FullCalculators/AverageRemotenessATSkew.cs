@@ -28,6 +28,7 @@ public class AverageRemotenessATSkew : IFullCalculator
 
         double a = congenericRemotenessCalculator.Calculate(chain.GetOrCreateCongenericChain(new ValueString("A")), link);
         double t = congenericRemotenessCalculator.Calculate(chain.GetOrCreateCongenericChain(new ValueString("T")), link);
+
         return a + t == 0 ? 0 : (a - t) / (a + t);
     }
 }

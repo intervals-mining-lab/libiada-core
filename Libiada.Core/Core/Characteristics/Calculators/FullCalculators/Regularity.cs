@@ -19,11 +19,9 @@ public class Regularity : IFullCalculator
     /// </returns>
     public double Calculate(Chain chain, Link link)
     {
-        GeometricMean geometricMeanCalculator = new();
-        DescriptiveInformation descriptiveInformationCalculator = new();
+        double geometricMean = new GeometricMean().Calculate(chain, link);
+        double descriptiveInformation = new DescriptiveInformation().Calculate(chain, link);
 
-        double geometricMean = geometricMeanCalculator.Calculate(chain, link);
-        double descriptiveInformation = descriptiveInformationCalculator.Calculate(chain, link);
         return geometricMean / descriptiveInformation;
     }
 }

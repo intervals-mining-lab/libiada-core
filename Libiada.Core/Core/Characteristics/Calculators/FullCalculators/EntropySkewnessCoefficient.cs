@@ -20,11 +20,11 @@ public class EntropySkewnessCoefficient : IFullCalculator
     /// </returns>
     public double Calculate(Chain chain, Link link)
     {
-        EntropySkewness entropySkewness = new();
-        EntropyStandardDeviation entropyStandardDeviation = new();
+        double entropyStandardDeviation = new EntropyStandardDeviation().Calculate(chain, link);
+        if (entropyStandardDeviation == 0) return 0;
 
-        double standardDeviation = entropyStandardDeviation.Calculate(chain, link);
+        double entropySkewness = new EntropySkewness().Calculate(chain, link);
 
-        return standardDeviation == 0 ? 0 : entropySkewness.Calculate(chain, link) / (standardDeviation * standardDeviation * standardDeviation);
+        return entropySkewness / (entropyStandardDeviation * entropyStandardDeviation * entropyStandardDeviation);
     }
 }

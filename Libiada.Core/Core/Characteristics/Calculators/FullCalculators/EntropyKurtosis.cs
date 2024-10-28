@@ -19,22 +19,21 @@ public class EntropyKurtosis : IFullCalculator
     /// </returns>
     public double Calculate(Chain chain, Link link)
     {
-        IdentificationInformation identificationInformation = new();
-        IntervalsCount intervalsCount = new();
-
-        double result = 0;
-        double h = identificationInformation.Calculate(chain, link);
-        int n = (int)intervalsCount.Calculate(chain, link);
+        double n = new IntervalsCount().Calculate(chain, link);
+        if (n == 0) return 0;
 
         CongenericCalculators.IntervalsCount congenericIntervalsCount = new();
         CongenericCalculators.IdentificationInformation congenericIdentificationInformation = new();
-        Alphabet alphabet = chain.Alphabet;
-        for (int i = 0; i < alphabet.Cardinality; i++)
+
+        double result = 0;
+        double h = new IdentificationInformation().Calculate(chain, link);
+        int alphabetCardinality = chain.Alphabet.Cardinality;
+        for (int i = 0; i < alphabetCardinality; i++)
         {
             double nj = congenericIntervalsCount.Calculate(chain.CongenericChain(i), link);
             double hj = congenericIdentificationInformation.Calculate(chain.CongenericChain(i), link);
             double deltaH = hj - h;
-            result += n == 0 ? 0 : deltaH * deltaH * deltaH * deltaH * nj / n;
+            result += deltaH * deltaH * deltaH * deltaH * nj / n;
         }
 
         return result;

@@ -23,9 +23,9 @@ public class ATSkew : NonLinkableFullCalculator
 
         CongenericCalculators.ElementsCount counter = new();
 
-        int a = (int)counter.Calculate(chain.GetOrCreateCongenericChain(new ValueString("A")));
-        int t = (int)counter.Calculate(chain.GetOrCreateCongenericChain(new ValueString("T")));
+        double a = counter.Calculate(chain.GetOrCreateCongenericChain(new ValueString("A")));
+        double t = counter.Calculate(chain.GetOrCreateCongenericChain(new ValueString("T")));
 
-        return a + t == 0 ? 0 : (a - t) / (double)(a + t);
+        return a + t == 0 ? 0 : (a - t) / (a + t);
     }
 }

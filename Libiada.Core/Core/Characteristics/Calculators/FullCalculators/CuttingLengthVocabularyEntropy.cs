@@ -16,7 +16,7 @@ public class CuttingLengthVocabularyEntropy : NonLinkableFullCalculator
     /// </returns>
     public override double Calculate(Chain chain)
     {
-        CuttingLength cutLength = new();
-        return Math.Log(chain.Length - cutLength.Calculate(chain) + 1, 2);
+        double cutLength = new CuttingLength().Calculate(chain);
+        return Math.Log(chain.Length - cutLength + 1, 2);
     }
 }
