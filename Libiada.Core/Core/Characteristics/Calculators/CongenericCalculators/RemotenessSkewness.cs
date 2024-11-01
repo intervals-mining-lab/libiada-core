@@ -20,23 +20,17 @@ public class RemotenessSkewness : ICongenericCalculator
     public double Calculate(CongenericChain chain, Link link)
     {
         int[] intervals = chain.GetArrangement(link);            
-
-        if (intervals.Length == 0)
-        {
-            return 0;
-        }
+        if (intervals.Length == 0) return 0;
 
         // calcualting number of intervals of certain length
         Dictionary<int, int> intervalsDictionary = intervals
                                                      .GroupBy(i => i)
                                                      .ToDictionary(i => i.Key, i => i.Count());
 
-        IntervalsCount intervalsCount = new();
-        AverageRemoteness averageRemoteness = new();
-
         double result = 0;
-        double gDeltaLog = averageRemoteness.Calculate(chain, link);
-        double nj = intervalsCount.Calculate(chain, link);
+        double gDeltaLog = new AverageRemoteness().Calculate(chain, link);
+        double nj = new IntervalsCount().Calculate(chain, link);
+
         foreach ((int interval, int nk) in intervalsDictionary)
         {
             double centeredRemoteness = Math.Log(interval, 2) - gDeltaLog;

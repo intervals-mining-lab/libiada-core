@@ -19,9 +19,11 @@ public class GeometricMean : ICongenericCalculator
     /// </returns>
     public double Calculate(CongenericChain chain, Link link)
     {
-        AverageRemoteness averageRemoteness = new();
+        double intervalsCount = new IntervalsCount().Calculate(chain, link);
+        if (intervalsCount == 0) return 0;
 
-        double remoteness = averageRemoteness.Calculate(chain, link);
-        return Math.Pow(2, remoteness);
+        double remoteness = new AverageRemoteness().Calculate(chain, link);
+
+        return  Math.Pow(2, remoteness);
     }
 }

@@ -21,6 +21,6 @@ public class IntervalsSum : ICongenericCalculator
     {
         int[] intervals = chain.GetArrangement(link);
 
-        return intervals.Length == 0 ? 0 : intervals.Sum(interval => interval);
+        return intervals.Length == 0 ? 0 : intervals.Sum();
     }
 }

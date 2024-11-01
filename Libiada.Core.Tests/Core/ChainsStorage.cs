@@ -291,7 +291,7 @@ public static class ChainsStorage
         // 6  A _ _ A _ _ _ _ _ _ _ _ _ _ _ _ _ _
         new CongenericChain([0, 3], Elements["A"], 18),
 
-        // 7  _ _ A _ _ _ _ _ _ _ _ _ _ _ _ _ _ a
+        // 7  _ _ A _ _ _ _ _ _ _ _ _ _ _ _ _ _ A
         new CongenericChain([2, 17], Elements["A"], 18),
 
         // 8  A _ _ _ _ A _ _ _ _ _ A _ _ _ _ _ _ _ A _ _ _ _ A _ _ _ _
@@ -303,13 +303,13 @@ public static class ChainsStorage
         // 10 A _ _ _ _ _ _ _ A _ A _ _ A _ _ _ _ _ _
         new CongenericChain([0, 8, 10, 13], Elements["A"], 20),
 
-        // 11 _ A a _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ A _
+        // 11 _ A A _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ A _
         new CongenericChain([1, 2, 18], Elements["A"], 20),
 
         // 12 A _ _ _ _ _ _ _ A _ _ A _ A _ A _ A _ A _ _ _ _ A _ _
         new CongenericChain([0, 8, 11, 13, 15, 17, 19, 24], Elements["A"], 27),
 
-        // 13 _ A _ A a _ A _ _ A a _ _ _ _ A _ _ _ _ _ _ A _ _ _ A
+        // 13 _ A _ A A _ A _ _ A A _ _ _ _ A _ _ _ _ _ _ A _ _ _ A
         new CongenericChain([1, 3, 4, 6, 9, 10, 22, 26], Elements["A"], 27),
 
         // 14 A _ _ A _ _ _ _ _ A _ A _ _ _ _ _

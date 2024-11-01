@@ -22,8 +22,11 @@ public class Volume : ICongenericCalculator
     public double Calculate(CongenericChain chain, Link link)
     {
         int[] intervals = chain.GetArrangement(link);
+        if (intervals.Length == 0) return 1;
+
         BigInteger result = 1;
         foreach (int interval in intervals) result *= interval;
+
         return (double)result;
     }
 }

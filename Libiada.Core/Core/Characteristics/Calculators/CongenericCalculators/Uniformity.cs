@@ -20,9 +20,9 @@ public class Uniformity : ICongenericCalculator
     /// </returns>
     public double Calculate(CongenericChain chain, Link link)
     {
-        AverageRemoteness remotenessCalculator = new();
-        IdentificationInformation entropyCalculator = new();
+        double entropy = new IdentificationInformation().Calculate(chain, link);
+        double averageRemoteness = new AverageRemoteness().Calculate(chain, link);
 
-        return entropyCalculator.Calculate(chain, link) - remotenessCalculator.Calculate(chain, link);
+        return entropy - averageRemoteness;
     }
 }

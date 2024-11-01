@@ -19,10 +19,11 @@ public class RemotenessSkewnessCoefficient : ICongenericCalculator
     /// </returns>
     public double Calculate(CongenericChain chain, Link link)
     {
-        RemotenessSkewness remotenessSkewness = new();
-        RemotenessStandardDeviation remotenessStandardDeviation = new();
+        double standardDeviation = new RemotenessStandardDeviation().Calculate(chain, link);
+        if (standardDeviation == 0) return 0;
 
-        double standardDeviation = remotenessStandardDeviation.Calculate(chain, link);
-        return standardDeviation == 0 ? 0 : remotenessSkewness.Calculate(chain, link) / (standardDeviation * standardDeviation * standardDeviation);
+        double remotenessSkewness = new RemotenessSkewness().Calculate(chain, link);
+
+        return remotenessSkewness / (standardDeviation * standardDeviation * standardDeviation);
     }
 }

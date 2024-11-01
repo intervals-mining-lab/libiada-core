@@ -21,11 +21,11 @@ public class ArithmeticMean : ICongenericCalculator
     /// </returns>
     public double Calculate(CongenericChain chain, Link link)
     {
-        IntervalsSum adder = new();
-        IntervalsCount counter = new();
+        double intervalsCount = new IntervalsCount().Calculate(chain, link);
+        if (intervalsCount == 0) return 0;
 
-        double intervalsSum = adder.Calculate(chain, link);
-        int intervalsCount = (int)counter.Calculate(chain, link);
-        return intervalsCount == 0 ? 0 : intervalsSum / intervalsCount;
+        double intervalsSum = new IntervalsSum().Calculate(chain, link);
+
+        return intervalsSum / intervalsCount;
     }
 }

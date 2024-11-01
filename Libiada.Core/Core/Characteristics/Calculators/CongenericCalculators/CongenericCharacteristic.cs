@@ -44,13 +44,6 @@ public enum CongenericCharacteristic : byte
     Depth = 5,
 
     /// <summary>
-    /// The descriptive information.
-    /// </summary>
-    [Display(Name = "Descriptive information")]
-    [Description("Mazur's descriptive informations count")]
-    DescriptiveInformation = 6,
-
-    /// <summary>
     /// The elements count.
     /// </summary>
     [Display(Name = "Elements count")]
@@ -105,13 +98,6 @@ public enum CongenericCharacteristic : byte
     [Display(Name = "Frequency")]
     [Description("Frequency or probability of the element in sequence")]
     Probability = 14,
-
-    /// <summary>
-    /// The regularity.
-    /// </summary>
-    [Display(Name = "Regularity")]
-    [Description("Calculated as geometric mean divided by entropy")]
-    Regularity = 15,
 
     /// <summary>
     /// The uniformity.

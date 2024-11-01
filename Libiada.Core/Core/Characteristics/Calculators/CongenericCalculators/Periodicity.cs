@@ -20,11 +20,11 @@ public class Periodicity : ICongenericCalculator
     /// </returns>
     public double Calculate(CongenericChain chain, Link link)
     {
-        GeometricMean geometricMeanCalculator = new();
-        ArithmeticMean arithmeticMeanCalculator = new();
+        double arithmeticMean = new ArithmeticMean().Calculate(chain, link);
+        if (arithmeticMean == 0) return 0;
 
-        double geometricMean = geometricMeanCalculator.Calculate(chain, link);
-        double arithmeticMean = arithmeticMeanCalculator.Calculate(chain, link);
-        return arithmeticMean == 0 ? 0 : geometricMean / arithmeticMean;
+        double geometricMean = new GeometricMean().Calculate(chain, link);
+
+        return geometricMean / arithmeticMean;
     }
 }

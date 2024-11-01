@@ -22,6 +22,10 @@ public class RemotenessKurtosisTests : CongenericCalculatorsTests<RemotenessKurt
     /// The value.
     /// </param>
     [TestCase(0, Link.Start, 0.82742)]
+
+    [TestCase(2, Link.None, 0)]
+
+    [TestCase(3, Link.None, 0)]
     public void CongenericCalculationTest(int index, Link link, double value)
     {
         CongenericChainCharacteristicTest(index, link, value);

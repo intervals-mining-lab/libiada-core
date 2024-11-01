@@ -1,3 +1,5 @@
+using System.Numerics;
+
 namespace Libiada.Core.Core.Characteristics.Calculators.CongenericCalculators;
 
 /// <summary>
@@ -22,7 +24,11 @@ public class Depth : ICongenericCalculator
     public double Calculate(CongenericChain chain, Link link)
     {
         int[] intervals = chain.GetArrangement(link);
-        // TODO: try using Log of multiplied intervals
-        return intervals.Length == 0 ? 0 : intervals.Sum(interval => Math.Log(interval, 2));
+        if(intervals.Length == 0) return 0;
+
+        BigInteger volume = 1;
+        foreach(int interval in intervals) volume *= interval;
+
+        return BigInteger.Log(volume, 2);
     }
 }
