@@ -19,6 +19,11 @@ public class GCRatioTests : FullCalculatorsTests<GCRatio>
     /// The value.
     /// </param>
     [TestCase(1, 40)]
+    [TestCase(2, 60)]
+    [TestCase(3, 100)]
+    [TestCase(4, 100)]
+    [TestCase(5, 50)]
+    [TestCase(6, 28.57142857)]
     public void CalculationTest(int index, double value)
     {
         ChainCharacteristicTest(index, Link.NotApplied, value);

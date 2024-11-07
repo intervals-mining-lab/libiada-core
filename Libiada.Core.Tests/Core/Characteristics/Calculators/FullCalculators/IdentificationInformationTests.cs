@@ -26,6 +26,13 @@ public class IdentificationInformationTests : FullCalculatorsTests<Identificatio
     [TestCase(0, Link.End, 1.2532824857)]
     [TestCase(0, Link.Both, 1.335618955)]
     [TestCase(0, Link.Cycle, 1.571)]
+
+    [TestCase(2, Link.None, 1.210777084415)]
+    [TestCase(2, Link.Start, 1.5661778097771987)]
+    [TestCase(2, Link.End, 1.35849625)]
+    [TestCase(2, Link.Both, 1.5294637608763)]
+    [TestCase(2, Link.Cycle, 1.76096404744368)]
+
     [TestCase(30, Link.Start, 0.77779373752225)]
     public void ChainCalculationTest(int index, Link link, double value)
     {

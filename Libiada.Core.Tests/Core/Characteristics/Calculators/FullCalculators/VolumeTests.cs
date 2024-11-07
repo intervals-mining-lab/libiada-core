@@ -26,6 +26,12 @@ public class VolumeTests : FullCalculatorsTests<Volume>
     [TestCase(0, Link.End, 1152)]
     [TestCase(0, Link.Both, 17280)]
     [TestCase(0, Link.Cycle, 5184)]
+
+    [TestCase(2, Link.None, 96)]
+    [TestCase(2, Link.Start, 10080)]
+    [TestCase(2, Link.End, 3456)]
+    [TestCase(2, Link.Both, 362880)]
+    [TestCase(2, Link.Cycle, 34560)]
     public void CalculationTest(int index, Link link, double value)
     {
         ChainCharacteristicTest(index, link, value);

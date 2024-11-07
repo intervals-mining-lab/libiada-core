@@ -29,6 +29,7 @@ public class RemotenessSkewness : IFullCalculator
             intervals.AddRange(chain.CongenericChain(i).GetArrangement(link));
         }
 
+        // calcualting number of intervals of certain length
         Dictionary<int, int> intervalsDictionary = intervals
                                  .GroupBy(i => i)
                                  .ToDictionary(i => i.Key, i => i.Count());

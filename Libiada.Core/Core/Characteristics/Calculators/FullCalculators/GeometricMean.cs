@@ -21,6 +21,6 @@ public class GeometricMean : IFullCalculator
     {
         double remoteness = new AverageRemoteness().Calculate(chain, link);
 
-        return Math.Pow(2, remoteness);
+        return remoteness == 0 ? 0 : Math.Pow(2, remoteness);
     }
 }

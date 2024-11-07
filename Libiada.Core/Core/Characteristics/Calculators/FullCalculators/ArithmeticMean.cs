@@ -22,9 +22,7 @@ public class ArithmeticMean : IFullCalculator
     public double Calculate(Chain chain, Link link)
     {
         double intervalsCount = new IntervalsCount().Calculate(chain, link);
-
-        // if tere are no intervals arithmetic mean is equals to geometric mean
-        if (intervalsCount == 0) return 1;
+        if (intervalsCount == 0) return 0;
 
         double intervalsSum = new IntervalsSum().Calculate(chain, link);
         return intervalsSum / intervalsCount;

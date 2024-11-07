@@ -27,6 +27,11 @@ public class AverageRemotenessRYSkewTests : FullCalculatorsTests<AverageRemotene
     [TestCase(1, Link.Both, -0.0862)]
     [TestCase(1, Link.Cycle, 0.2050)]
 
+    [TestCase(2, Link.None, 1.444165399575)]
+    [TestCase(2, Link.Start, 1.6566498)]
+    [TestCase(2, Link.End, 2.369195368)]
+    [TestCase(2, Link.Both, 1.550897715)]
+    [TestCase(2, Link.Cycle, 2.14199532)]
     public void CalculationTest(int index, Link link, double value)
     {
         ChainCharacteristicTest(index, link, value);

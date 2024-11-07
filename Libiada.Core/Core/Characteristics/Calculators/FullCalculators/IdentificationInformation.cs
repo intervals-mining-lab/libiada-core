@@ -34,8 +34,11 @@ public class IdentificationInformation : IFullCalculator
         int alphabetCardinality = chain.Alphabet.Cardinality;
         for (int i = 0; i < alphabetCardinality; i++)
         {
-            double nj = counter.Calculate(chain.CongenericChain(i), link);
             double arithmeticMean = meanCalculator.Calculate(chain.CongenericChain(i), link);
+            if (arithmeticMean == 0) continue;
+
+            double nj = counter.Calculate(chain.CongenericChain(i), link);
+            
             result += (nj / n) * Math.Log2(arithmeticMean);
         }
 

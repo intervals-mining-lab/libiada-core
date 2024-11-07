@@ -27,6 +27,11 @@ public class AverageRemotenessGCToATRatioTests : FullCalculatorsTests<AverageRem
     [TestCase(1, Link.Both, 1.2505)]
     [TestCase(1, Link.Cycle, 1.4932)]
 
+    [TestCase(2, Link.None, 0.386852807)]
+    [TestCase(2, Link.Start, 0.894883976)]
+    [TestCase(2, Link.End, 1.309482246)]
+    [TestCase(2, Link.Both, 0.978885023)]
+    [TestCase(2, Link.Cycle, 1.06305297)]
     public void CalculationTest(int index, Link link, double value)
     {
         ChainCharacteristicTest(index, link, value);

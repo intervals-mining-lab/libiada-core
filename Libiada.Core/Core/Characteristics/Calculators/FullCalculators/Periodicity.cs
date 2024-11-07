@@ -20,9 +20,11 @@ public class Periodicity : IFullCalculator
     /// </returns>
     public double Calculate(Chain chain, Link link)
     {
-        double geometricMean = new GeometricMean().Calculate(chain, link);
         double arithmeticMean = new ArithmeticMean().Calculate(chain, link);
+        if (arithmeticMean == 0) return 0;
 
+        double geometricMean = new GeometricMean().Calculate(chain, link);
+        
         return geometricMean / arithmeticMean;
     }
 }

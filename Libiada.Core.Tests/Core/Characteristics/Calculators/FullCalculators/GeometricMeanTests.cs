@@ -26,6 +26,13 @@ public class GeometricMeanTests : FullCalculatorsTests<GeometricMean>
     [TestCase(0, Link.End, 2.0237)]
     [TestCase(0, Link.Both, 2.1182)]
     [TestCase(0, Link.Cycle, 2.3522)]
+
+    [TestCase(2, Link.None, 2.139826387867)]
+    [TestCase(2, Link.Start, 2.513888742864)]
+    [TestCase(2, Link.End, 2.25869387)]
+    [TestCase(2, Link.Both, 2.4953181811241978)]
+    [TestCase(2, Link.Cycle, 2.843527111557)]
+
     [TestCase(30, Link.Start, 1.6437518295)]
     public void CalculationTest(int index, Link link, double value)
     {

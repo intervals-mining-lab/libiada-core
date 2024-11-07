@@ -19,6 +19,13 @@ public class RYSkewTests : FullCalculatorsTests<RYSkew>
     /// The value.
     /// </param>
     [TestCase(1, 0)]
+    [TestCase(2, -0.4)]
+    [TestCase(3, 0)]
+    [TestCase(4, -1)]
+    [TestCase(5, 0)]
+    [TestCase(6, 0.42857142857)]
+    [TestCase(7, 0)]
+    [TestCase(8, -1)]
     public void CalculationTest(int index, double value)
     {
         ChainCharacteristicTest(index, Link.NotApplied, value);

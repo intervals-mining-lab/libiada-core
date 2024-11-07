@@ -21,9 +21,9 @@ public class CuttingLengthTests : FullCalculatorsTests<CuttingLength>
     /// <param name="value">
     /// The value.
     /// </param>
-    [TestCase(0, Link.NotApplied, 3)]
-    public void ChainCalculationTest(int index, Link link, double value)
+    [TestCase(0, 3)]
+    public void ChainCalculationTest(int index, double value)
     {
-        ChainCharacteristicTest(index, link, value);
+        ChainCharacteristicTest(index, Link.NotApplied, value);
     }
 }
