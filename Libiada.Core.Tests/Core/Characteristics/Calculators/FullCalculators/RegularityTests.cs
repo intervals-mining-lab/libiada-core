@@ -33,6 +33,12 @@ public class RegularityTests : FullCalculatorsTests<Regularity>
     [TestCase(2, Link.Both, 0.86439343863)]
     [TestCase(2, Link.Cycle, 0.838985343)]
 
+    [TestCase(4, Link.None, 1)]
+    [TestCase(4, Link.Start, 1)]
+    [TestCase(4, Link.End, 1)]
+    [TestCase(4, Link.Both, 1)]
+    [TestCase(4, Link.Cycle, 1)]
+
     [TestCase(30, Link.Start, 0.9587)]
     public void ChainCalculationTest(int index, Link link, double value)
     {

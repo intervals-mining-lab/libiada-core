@@ -33,6 +33,12 @@ public class PeriodicityTests : FullCalculatorsTests<Periodicity>
     [TestCase(2, Link.Both, 0.7939648758)]
     [TestCase(2, Link.Cycle, 0.71088177788925)]
 
+    [TestCase(4, Link.None, 1)]
+    [TestCase(4, Link.Start, 1)]
+    [TestCase(4, Link.End, 1)]
+    [TestCase(4, Link.Both, 1)]
+    [TestCase(4, Link.Cycle, 1)]
+
     [TestCase(30, Link.Start, 0.91319546)]
     public void ChainCalculationTest(int index, Link link, double value)
     {

@@ -33,6 +33,12 @@ public class ArithmeticMeanTests : FullCalculatorsTests<ArithmeticMean>
     [TestCase(2, Link.Both, 3.142857142857)]
     [TestCase(2, Link.Cycle, 4)]
 
+    [TestCase(4, Link.None, 1)]
+    [TestCase(4, Link.Start, 1)]
+    [TestCase(4, Link.End, 1)]
+    [TestCase(4, Link.Both, 1)]
+    [TestCase(4, Link.Cycle, 1)]
+
     [TestCase(30, Link.Start, 1.8)]
     public void ChainCalculationTest(int index, Link link, double value)
     {

@@ -33,6 +33,12 @@ public class DepthTests : FullCalculatorsTests<Depth>
     [TestCase(2, Link.Both, 18.469133)]
     [TestCase(2, Link.Cycle, 15.076815597)]
 
+    [TestCase(4, Link.None, 0)]
+    [TestCase(4, Link.Start, 0)]
+    [TestCase(4, Link.End, 0)]
+    [TestCase(4, Link.Both, 0)]
+    [TestCase(4, Link.Cycle, 0)]
+
     [TestCase(30, Link.Start, 3.5849625)]
     public void CalculationTest(int index, Link link, double value)
     {

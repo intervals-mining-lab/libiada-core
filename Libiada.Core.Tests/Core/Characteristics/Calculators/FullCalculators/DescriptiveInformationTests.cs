@@ -33,6 +33,12 @@ public class DescriptiveInformationTests : FullCalculatorsTests<DescriptiveInfor
     [TestCase(2, Link.Both, 2.8867851948)]
     [TestCase(2, Link.Cycle, 3.389245277)]
 
+    [TestCase(4, Link.None, 1)]
+    [TestCase(4, Link.Start, 1)]
+    [TestCase(4, Link.End, 1)]
+    [TestCase(4, Link.Both, 1)]
+    [TestCase(4, Link.Cycle, 1)]
+
     [TestCase(30, Link.Start, 1.71450693)]
     public void ChainCalculationTest(int index, Link link, double value)
     {

@@ -26,6 +26,24 @@ public class AverageRemotenessSkewnessCoefficientTests : FullCalculatorsTests<Av
     [TestCase(0, Link.End, 0.2583)]
     [TestCase(0, Link.Both, -0.4341)]
     [TestCase(0, Link.Cycle, -0.4082)]
+
+    [TestCase(2, Link.None, 0.7496522433)]
+    [TestCase(2, Link.Start, 0.5195114814)]
+    [TestCase(2, Link.End, 1.2615505633)]
+    [TestCase(2, Link.Both, 0.4029308102)]
+    [TestCase(2, Link.Cycle, 0.8748926874)]
+
+    [TestCase(4, Link.None, 0)]
+    [TestCase(4, Link.Start, 0)]
+    [TestCase(4, Link.End, 0)]
+    [TestCase(4, Link.Both, 0)]
+    [TestCase(4, Link.Cycle, 0)]
+
+    [TestCase(30, Link.None, 0.7071067812)]
+    [TestCase(30, Link.Start, 0.4082482905)]
+    [TestCase(30, Link.End, 0.4082482905)]
+    [TestCase(30, Link.Both, 0.2886751346)]
+    [TestCase(30, Link.Cycle, 0.4082482905)]
     public void ChainCalculationTest(int index, Link link, double value)
     {
         ChainCharacteristicTest(index, link, value);

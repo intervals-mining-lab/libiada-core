@@ -26,6 +26,24 @@ public class AverageRemotenessDispersionTests : FullCalculatorsTests<AverageRemo
     [TestCase(0, Link.End, 0.0169)]
     [TestCase(0, Link.Both, 0.0506)]
     [TestCase(0, Link.Cycle, 0.0365)]
+
+    [TestCase(2, Link.None, 0.5758459898)]
+    [TestCase(2, Link.Start, 0.3539214584)]
+    [TestCase(2, Link.End, 0.3746324241)]
+    [TestCase(2, Link.Both, 0.4057662147)]
+    [TestCase(2, Link.Cycle, 0.7039322237)]
+
+    [TestCase(4, Link.None, 0)]
+    [TestCase(4, Link.Start, 0)]
+    [TestCase(4, Link.End, 0)]
+    [TestCase(4, Link.Both, 0)]
+    [TestCase(4, Link.Cycle, 0)]
+
+    [TestCase(30, Link.None, 0.2615874729)]
+    [TestCase(30, Link.Start, 0.2207915344)]
+    [TestCase(30, Link.End, 0.0037990343)]
+    [TestCase(30, Link.Both, 0.0320311191)]
+    [TestCase(30, Link.Cycle, 0.0939945344)]
     public void ChainCalculationTest(int index, Link link, double value)
     {
         ChainCharacteristicTest(index, link, value);

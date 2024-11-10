@@ -32,6 +32,12 @@ public class IntervalsSumTests : FullCalculatorsTests<IntervalsSum>
     [TestCase(2, Link.End, 28)]
     [TestCase(2, Link.Both, 44)]
     [TestCase(2, Link.Cycle, 40)]
+
+    [TestCase(4, Link.None, 3)]
+    [TestCase(4, Link.Start, 4)]
+    [TestCase(4, Link.End, 4)]
+    [TestCase(4, Link.Both, 5)]
+    [TestCase(4, Link.Cycle, 4)]
     public void ChainCalculationTest(int index, Link link, double value)
     {
         ChainCharacteristicTest(index, link, value);

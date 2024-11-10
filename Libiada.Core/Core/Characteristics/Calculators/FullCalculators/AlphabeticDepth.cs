@@ -21,6 +21,8 @@ public class AlphabeticDepth : IFullCalculator
     {
         double result = 0;
         int alphabetCardinality = chain.Alphabet.Cardinality;
+        if (alphabetCardinality <= 1) return 0;
+
         for (int i = 0; i < alphabetCardinality; i++)
         {
             result += Calculate(chain.CongenericChain(i), link, alphabetCardinality);

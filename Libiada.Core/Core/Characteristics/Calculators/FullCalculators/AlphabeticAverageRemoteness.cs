@@ -24,6 +24,7 @@ public class AlphabeticAverageRemoteness : IFullCalculator
         if (geometricMean == 0) return 0;
 
         int alphabetCardinality = chain.Alphabet.Cardinality;
+        if (alphabetCardinality <= 1) return 0;
 
         return Math.Log(geometricMean, alphabetCardinality);
     }
