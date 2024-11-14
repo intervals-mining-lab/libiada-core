@@ -4,19 +4,19 @@ using Libiada.Core.Core;
 using Libiada.Core.Core.Characteristics.Calculators.CongenericCalculators;
 
 /// <summary>
-/// The remoteness dispersion tests.
+/// The remoteness variance tests.
 /// </summary>
 [TestFixture]
-public class RemotenessDispersionTests : CongenericCalculatorsTests<RemotenessDispersion>
+public class RemotenessVarianceTests : CongenericCalculatorsTests<RemotenessVariance>
 {
     /// <summary>
-    /// The average remoteness dispersion test.
+    /// The remoteness variance test.
     /// </summary>
     /// <param name="index">
     /// The congeneric sequence index in <see cref="ChainsStorage"/>.
     /// </param>
     /// <param name="link">
-    /// Redundant parameter, not used in calculations.
+    /// Binding of the intervals in the sequence.
     /// </param>
     /// <param name="value">
     /// The value.

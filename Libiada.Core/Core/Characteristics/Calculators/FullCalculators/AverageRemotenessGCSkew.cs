@@ -15,7 +15,7 @@ public class AverageRemotenessGCSkew : IFullCalculator
     /// Source sequence.
     /// </param>
     /// <param name="link">
-    /// Link of intervals in sequence.
+    /// Binding of the intervals in the sequence.
     /// </param>
     /// <returns>
     /// G+C skew value as <see cref="double"/>.

@@ -12,10 +12,10 @@ public class RemotenessSkewness : ICongenericCalculator
     /// Source sequence.
     /// </param>
     /// <param name="link">
-    /// Link of intervals in sequence.
+    /// Binding of the intervals in the sequence.
     /// </param>
     /// <returns>
-    /// Average remoteness dispersion <see cref="double"/> value.
+    /// Remoteness skewness <see cref="double"/> value.
     /// </returns>
     public double Calculate(CongenericChain chain, Link link)
     {

@@ -13,7 +13,7 @@ public class Uniformity : IFullCalculator
     /// The chain.
     /// </param>
     /// <param name="link">
-    /// The link.
+    /// Binding of the intervals in the sequence.
     /// </param>
     /// <returns>
     /// The <see cref="double"/>.

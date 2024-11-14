@@ -1,7 +1,7 @@
 ﻿namespace Libiada.Core.Core.Characteristics.Calculators.FullCalculators;
 
 /// <summary>
-/// The remoteness standard deviation by intervals lengths.
+/// Standard deviation of remoteneses by intervals lengths.
 /// </summary>
 public class RemotenessStandardDeviation : IFullCalculator
 {
@@ -12,15 +12,15 @@ public class RemotenessStandardDeviation : IFullCalculator
     /// Source sequence.
     /// </param>
     /// <param name="link">
-    /// Link of intervals in sequence.
+    /// Binding of the intervals in the sequence.
     /// </param>
     /// <returns>
-    /// Standard Deviation <see cref="double"/> value.
+    /// Remoteness standard deviation <see cref="double"/> value.
     /// </returns>
     public double Calculate(Chain chain, Link link)
     {
-        double remotenessDispersion = new RemotenessDispersion().Calculate(chain, link);
+        double remotenessVariance = new RemotenessVariance().Calculate(chain, link);
 
-        return Math.Sqrt(remotenessDispersion);
+        return Math.Sqrt(remotenessVariance);
     }
 }

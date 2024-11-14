@@ -58,11 +58,11 @@ public enum FullCharacteristic : byte
     AverageRemotenessATSkew = 7,
 
     /// <summary>
-    /// The average remoteness dispersion.
+    /// The average remoteness variance.
     /// </summary>
-    [Display(Name = "Average remoteness dispersion")]
-    [Description("Dispersion of remotenesses of congeneric sequences around average remoteness")]
-    AverageRemotenessDispersion = 8,
+    [Display(Name = "Average remoteness variance")]
+    [Description("Variance of remotenesses of congeneric sequences around average remoteness")]
+    AverageRemotenessVariance = 8,
 
     /// <summary>
     /// The average remoteness gc ratio.
@@ -184,11 +184,11 @@ public enum FullCharacteristic : byte
     ElementsCount = 25,
 
     /// <summary>
-    /// The entropy dispersion.
+    /// The entropy variance.
     /// </summary>
-    [Display(Name = "Entropy dispersion")]
-    [Description("Dispersion of entropy of congeneric sequences around entropy of complete sequence")]
-    EntropyDispersion = 26,
+    [Display(Name = "Entropy variance")]
+    [Description("Variance of entropy of congeneric sequences around entropy of complete sequence")]
+    EntropyVariance = 26,
 
     /// <summary>
     /// The entropy kurtosis.
@@ -310,11 +310,11 @@ public enum FullCharacteristic : byte
     Regularity = 43,
 
     /// <summary>
-    /// The remoteness dispersion.
+    /// The remoteness variance.
     /// </summary>
-    [Display(Name = "Remoteness dispersion")]
-    [Description("Dispersion of lengthes of individual intervals around average remoteness")]
-    RemotenessDispersion = 44,
+    [Display(Name = "Remoteness variance")]
+    [Description("Variance of lengthes of individual intervals around average remoteness")]
+    RemotenessVariance = 44,
 
     /// <summary>
     /// The remoteness kurtosis.

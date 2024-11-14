@@ -1,7 +1,7 @@
 ﻿namespace Libiada.Core.Core.Characteristics.Calculators.FullCalculators;
 
 /// <summary>
-/// The remoteness skewness by intervals lengths.
+/// Skewness of remoteneses by intervals lengths.
 /// </summary>
 public class RemotenessSkewness : IFullCalculator
 {
@@ -12,10 +12,10 @@ public class RemotenessSkewness : IFullCalculator
     /// Source sequence.
     /// </param>
     /// <param name="link">
-    /// Link of intervals in sequence.
+    /// Binding of the intervals in the sequence.
     /// </param>
     /// <returns>
-    /// Average remoteness dispersion <see cref="double"/> value.
+    /// Remoteness skewness <see cref="double"/> value.
     /// </returns>
     public double Calculate(Chain chain, Link link)
     {

@@ -10,13 +10,13 @@ using Libiada.Core.Core.Characteristics.Calculators.CongenericCalculators;
 public class RemotenessKurtosisTests : CongenericCalculatorsTests<RemotenessKurtosis>
 {
     /// <summary>
-    /// The average remoteness dispersion test.
+    /// The remoteness kurtosis test.
     /// </summary>
     /// <param name="index">
     /// The congeneric sequence index in <see cref="ChainsStorage"/>.
     /// </param>
     /// <param name="link">
-    /// Redundant parameter, not used in calculations.
+    /// Binding of the intervals.
     /// </param>
     /// <param name="value">
     /// The value.

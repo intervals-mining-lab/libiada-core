@@ -14,7 +14,7 @@ public class Depth : IFullCalculator
     /// Source sequence.
     /// </param>
     /// <param name="link">
-    /// Link of intervals in sequence.
+    /// Binding of the intervals in the sequence.
     /// </param>
     /// <returns>
     /// Average remoteness <see cref="double"/> value.

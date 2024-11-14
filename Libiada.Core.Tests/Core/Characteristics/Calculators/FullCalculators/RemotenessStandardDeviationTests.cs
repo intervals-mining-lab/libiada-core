@@ -16,7 +16,7 @@ public class RemotenessStandardDeviationTests : FullCalculatorsTests<RemotenessS
     /// Full sequence index in <see cref="ChainsStorage"/>.
     /// </param>
     /// <param name="link">
-    /// Redundant parameter, not used in calculations.
+    /// Binding of the intervals in the sequence.
     /// </param>
     /// <param name="value">
     /// The value.

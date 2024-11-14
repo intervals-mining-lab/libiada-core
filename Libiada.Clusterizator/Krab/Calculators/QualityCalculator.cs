@@ -6,7 +6,7 @@ namespace Libiada.Clusterizator.Krab.Calculators;
 public static class QualityCalculator
 {
     /// <summary>
-    /// The calculate.
+    /// Quality calculation method.
     /// </summary>
     /// <param name="currentGraph">
     /// The current graph.

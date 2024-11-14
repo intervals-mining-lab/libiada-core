@@ -50,7 +50,7 @@ public class ProbabilityExtractor : SubwordExtractor
     }
 
     /// <summary>
-    /// The calculate std.
+    /// std calculation method.
     /// </summary>
     /// <param name="convoluted">
     /// The convoluted.

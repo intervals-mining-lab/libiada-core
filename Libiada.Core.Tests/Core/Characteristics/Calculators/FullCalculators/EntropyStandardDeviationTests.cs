@@ -2,6 +2,7 @@
 
 using Libiada.Core.Core;
 using Libiada.Core.Core.Characteristics.Calculators.FullCalculators;
+using Libiada.Core.Core.SimpleTypes;
 
 /// <summary>
 /// Standard Deviation test.
@@ -16,7 +17,7 @@ public class EntropyStandardDeviationTests : FullCalculatorsTests<EntropyStandar
     /// Full sequence index in <see cref="ChainsStorage"/>.
     /// </param>
     /// <param name="link">
-    /// Redundant parameter, not used in calculations.
+    /// Binding of the intervals in the sequence.
     /// </param>
     /// <param name="value">
     /// The value.

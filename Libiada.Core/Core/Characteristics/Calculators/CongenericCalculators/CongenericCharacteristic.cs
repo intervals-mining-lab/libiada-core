@@ -121,11 +121,11 @@ public enum CongenericCharacteristic : byte
     Volume = 18,
 
     /// <summary>
-    /// The remoteness dispersion.
+    /// The remoteness variance.
     /// </summary>
-    [Display(Name = "Remoteness dispersion")]
+    [Display(Name = "Remoteness variance")]
     [Description("")]
-    RemotenessDispersion = 19,
+    RemotenessVariance = 19,
 
     /// <summary>
     /// The remoteness kurtosis.

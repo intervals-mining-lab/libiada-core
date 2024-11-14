@@ -7,13 +7,16 @@
 public class InformationAmount : ICongenericCalculator
 {
     /// <summary>
-    /// The calculate.
+    /// Calculation method.
+    /// Calculated here using arithmetis mean interval and 
+    /// intervals count instead of elements frequency and count
+    /// based on geometric mean interval formula.
     /// </summary>
     /// <param name="chain">
     /// The chain.
     /// </param>
     /// <param name="link">
-    /// The link.
+    /// Binding of the intervals in the sequence.
     /// </param>
     /// <returns>
     /// The <see cref="double"/>.

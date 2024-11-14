@@ -15,7 +15,7 @@ public class AverageRemotenessGCToATRatio : IFullCalculator
     /// Source sequence.
     /// </param>
     /// <param name="link">
-    /// Link of intervals in sequence.
+    /// Binding of the intervals in the sequence.
     /// </param>
     /// <returns>
     /// G+C Ratio value as <see cref="double"/> .

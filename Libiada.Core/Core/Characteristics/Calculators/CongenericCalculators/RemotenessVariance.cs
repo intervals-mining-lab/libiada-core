@@ -1,9 +1,9 @@
 ﻿namespace Libiada.Core.Core.Characteristics.Calculators.CongenericCalculators;
 
 /// <summary>
-/// The remoteness dispersion.
+/// The remoteness variance.
 /// </summary>
-public class RemotenessDispersion : ICongenericCalculator
+public class RemotenessVariance : ICongenericCalculator
 {
     /// <summary>
     /// Calculation method.
@@ -12,10 +12,10 @@ public class RemotenessDispersion : ICongenericCalculator
     /// Source sequence.
     /// </param>
     /// <param name="link">
-    /// Link of intervals in sequence.
+    /// Binding of the intervals in the sequence.
     /// </param>
     /// <returns>
-    /// Average remoteness dispersion <see cref="double"/> value.
+    /// Remoteness variance <see cref="double"/> value.
     /// </returns>
     public double Calculate(CongenericChain chain, Link link)
     {

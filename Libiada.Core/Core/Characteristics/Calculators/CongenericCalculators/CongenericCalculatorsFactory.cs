@@ -39,7 +39,7 @@ public static class CongenericCalculatorsFactory
             CongenericCharacteristic.Uniformity => new Uniformity(),
             CongenericCharacteristic.VariationsCount => new VariationsCount(),
             CongenericCharacteristic.Volume => new Volume(),
-            CongenericCharacteristic.RemotenessDispersion => new RemotenessDispersion(),
+            CongenericCharacteristic.RemotenessVariance => new RemotenessVariance(),
             CongenericCharacteristic.RemotenessKurtosis => new RemotenessKurtosis(),
             CongenericCharacteristic.RemotenessKurtosisCoefficient => new RemotenessKurtosisCoefficient(),
             CongenericCharacteristic.RemotenessSkewness => new RemotenessSkewness(),

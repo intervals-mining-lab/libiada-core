@@ -1,9 +1,9 @@
 ﻿namespace Libiada.Core.Core.Characteristics.Calculators.FullCalculators;
 
 /// <summary>
-/// Entropy of Dispersion.
+/// Variance of average remoteness in congeneric sequences.
 /// </summary>
-public class EntropyDispersion : IFullCalculator
+public class AverageRemotenessVariance : IFullCalculator
 {
     /// <summary>
     /// Calculation method.
@@ -12,28 +12,28 @@ public class EntropyDispersion : IFullCalculator
     /// Source sequence.
     /// </param>
     /// <param name="link">
-    /// Link of intervals in sequence.
+    /// Binding of the intervals in the sequence.
     /// </param>
     /// <returns>
-    /// Entropy dispersion <see cref="double"/> value.
+    /// Average remoteness variance <see cref="double"/> value.
     /// </returns>
     public double Calculate(Chain chain, Link link)
     {
         double n = new IntervalsCount().Calculate(chain, link);
         if (n == 0) return 0;
 
+        CongenericCalculators.AverageRemoteness congenericAverageRemoteness = new();
         CongenericCalculators.IntervalsCount congenericIntervalsCount = new();
-        CongenericCalculators.IdentificationInformation congenericIdentificationInformation = new();
 
         double result = 0;
-        double h = new IdentificationInformation().Calculate(chain, link);
+        double g = new AverageRemoteness().Calculate(chain, link);
         int alphabetCardinality = chain.Alphabet.Cardinality;
         for (int i = 0; i < alphabetCardinality; i++)
         {
             double nj = congenericIntervalsCount.Calculate(chain.CongenericChain(i), link);
-            double hj = congenericIdentificationInformation.Calculate(chain.CongenericChain(i), link);
-            double deltaH = hj - h;
-            result += deltaH * deltaH * nj / n;
+            double gj = congenericAverageRemoteness.Calculate(chain.CongenericChain(i), link);
+            double gDelta = gj - g;
+            result += gDelta * gDelta * nj / n;
         }
 
         return result;

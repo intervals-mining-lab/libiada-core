@@ -12,7 +12,7 @@ public class GeometricMean : IFullCalculator
     /// Source sequence.
     /// </param>
     /// <param name="link">
-    /// Link of intervals in sequence.
+    /// Binding of the intervals in the sequence.
     /// </param>
     /// <returns>
     /// Average geometric of intervals lengths as <see cref="double"/>.

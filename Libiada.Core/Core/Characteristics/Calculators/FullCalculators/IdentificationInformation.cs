@@ -12,12 +12,15 @@ public class IdentificationInformation : IFullCalculator
 {
     /// <summary>
     /// Calculation method.
+    /// Calculated here using arithmetis mean interval and 
+    /// intervals count instead of elements frequency 
+    /// based on geometric mean interval formula.
     /// </summary>
     /// <param name="chain">
     /// Source sequence.
     /// </param>
     /// <param name="link">
-    /// Link of intervals in sequence.
+    /// Binding of the intervals in the sequence.
     /// </param>
     /// <returns>
     /// Count of identification informations as <see cref="double"/>.

@@ -1,7 +1,7 @@
 ﻿namespace Libiada.Core.Core.Characteristics.Calculators.FullCalculators;
 
 /// <summary>
-/// The remoteness kurtosis coefficient by intervals lengths.
+/// Kurtosis coefficient of remoteneses by intervals lengths.
 /// </summary>
 public class RemotenessKurtosisCoefficient : IFullCalculator
 {
@@ -12,10 +12,10 @@ public class RemotenessKurtosisCoefficient : IFullCalculator
     /// Source sequence.
     /// </param>
     /// <param name="link">
-    /// Link of intervals in sequence.
+    /// Binding of the intervals in the sequence.
     /// </param>
     /// <returns>
-    /// Standard Deviation <see cref="double"/> value.
+    /// Remoteneses kurtosis coefficient <see cref="double"/> value.
     /// </returns>
     public double Calculate(Chain chain, Link link)
     {

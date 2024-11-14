@@ -10,13 +10,13 @@ using Libiada.Core.Core.Characteristics.Calculators.CongenericCalculators;
 public class RemotenessSkewnessCoefficientTests : CongenericCalculatorsTests<RemotenessSkewnessCoefficient>
 {
     /// <summary>
-    /// The average remoteness dispersion test.
+    /// The remoteness skewness coefficient test.
     /// </summary>
     /// <param name="index">
     /// The congeneric sequence index in <see cref="ChainsStorage"/>.
     /// </param>
     /// <param name="link">
-    /// Redundant parameter, not used in calculations.
+    /// Binding of the intervals in the sequence.
     /// </param>
     /// <param name="value">
     /// The value.

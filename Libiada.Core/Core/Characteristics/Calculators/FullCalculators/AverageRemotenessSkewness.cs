@@ -1,7 +1,7 @@
 ﻿namespace Libiada.Core.Core.Characteristics.Calculators.FullCalculators;
 
 /// <summary>
-/// Asymmetry of average remoteness. Third central moment.
+/// Asymmetry of average remotenesses in congeneric sequences. Third central moment.
 /// </summary>
 public class AverageRemotenessSkewness : IFullCalculator
 {
@@ -12,10 +12,10 @@ public class AverageRemotenessSkewness : IFullCalculator
     /// Source sequence.
     /// </param>
     /// <param name="link">
-    /// Link of intervals in sequence.
+    /// Binding of the intervals in the sequence.
     /// </param>
     /// <returns>
-    /// Average remoteness dispersion <see cref="double"/> value.
+    /// Average remoteness skewness <see cref="double"/> value.
     /// </returns>
     public double Calculate(Chain chain, Link link)
     {        

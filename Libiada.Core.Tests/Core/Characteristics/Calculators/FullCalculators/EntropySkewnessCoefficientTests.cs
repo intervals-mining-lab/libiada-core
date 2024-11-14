@@ -4,19 +4,19 @@ using Libiada.Core.Core;
 using Libiada.Core.Core.Characteristics.Calculators.FullCalculators;
 
 /// <summary>
-/// The average remoteness asymmetry test.
+/// The entropy asymmetry coefficient test.
 /// </summary>
 [TestFixture]
 public class EntropySkewnessCoefficientTests : FullCalculatorsTests<EntropySkewnessCoefficient>
 {
     /// <summary>
-    /// The average remoteness dispersion test.
+    /// The entropy asymmetry coefficient test.
     /// </summary>
     /// <param name="index">
     /// Full sequence index in <see cref="ChainsStorage"/>.
     /// </param>
     /// <param name="link">
-    /// Redundant parameter, not used in calculations.
+    /// Binding of the intervals in the sequence.
     /// </param>
     /// <param name="value">
     /// The value.

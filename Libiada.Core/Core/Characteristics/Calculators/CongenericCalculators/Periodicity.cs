@@ -13,7 +13,7 @@ public class Periodicity : ICongenericCalculator
     /// Source sequence.
     /// </param>
     /// <param name="link">
-    /// Link of intervals in sequence.
+    /// Binding of the intervals in the sequence.
     /// </param>
     /// <returns>
     /// Periodicity as <see cref="double"/>.

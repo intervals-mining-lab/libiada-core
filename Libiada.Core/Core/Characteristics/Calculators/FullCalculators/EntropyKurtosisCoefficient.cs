@@ -1,21 +1,24 @@
 ﻿namespace Libiada.Core.Core.Characteristics.Calculators.FullCalculators;
 
 /// <summary>
-/// The entropy kurtosis coefficient.
+/// Kurtosis coefficient of the entropy in congeneric sequences.
 /// </summary>
 public class EntropyKurtosisCoefficient : IFullCalculator
 {
     /// <summary>
     /// Calculation method.
+    /// Calculated here using arithmetis mean interval and 
+    /// intervals count instead of elements frequency 
+    /// based on geometric mean interval formula.
     /// </summary>
     /// <param name="chain">
     /// Source sequence.
     /// </param>
     /// <param name="link">
-    /// Link of intervals in sequence.
+    /// Binding of the intervals in the sequence.
     /// </param>
     /// <returns>
-    /// Standard Deviation <see cref="double"/> value.
+    /// Entropy kurtosis coefficient <see cref="double"/> value.
     /// </returns>
     public double Calculate(Chain chain, Link link)
     {

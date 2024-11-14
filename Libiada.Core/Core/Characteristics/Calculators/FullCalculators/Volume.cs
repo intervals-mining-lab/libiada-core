@@ -14,7 +14,7 @@ public class Volume : IFullCalculator
     /// Source sequence.
     /// </param>
     /// <param name="link">
-    /// Redundant parameter, not used in calculations.
+    /// Binding of the intervals in the sequence.
     /// </param>
     /// <returns>
     /// Volume characteristic of chain as <see cref="double"/>.

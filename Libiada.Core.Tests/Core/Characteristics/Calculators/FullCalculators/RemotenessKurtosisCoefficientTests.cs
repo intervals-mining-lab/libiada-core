@@ -10,13 +10,13 @@ using Libiada.Core.Core.Characteristics.Calculators.FullCalculators;
 public class RemotenessKurtosisCoefficientTests : FullCalculatorsTests<RemotenessKurtosisCoefficient>
 {
     /// <summary>
-    /// The average remoteness dispersion test.
+    /// The remoteness kurtosis coefficient test.
     /// </summary>
     /// <param name="index">
     /// Full sequence index in <see cref="ChainsStorage"/>.
     /// </param>
     /// <param name="link">
-    /// Redundant parameter, not used in calculations.
+    /// Binding of the intervals in the sequence.
     /// </param>
     /// <param name="value">
     /// The value.

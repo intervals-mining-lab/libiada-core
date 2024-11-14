@@ -12,10 +12,10 @@ public class RemotenessKurtosisCoefficient : ICongenericCalculator
     /// Source sequence.
     /// </param>
     /// <param name="link">
-    /// Link of intervals in sequence.
+    /// Binding of the intervals in the sequence.
     /// </param>
     /// <returns>
-    /// Standard Deviation <see cref="double"/> value.
+    /// Remoteness kurtosis coefficient <see cref="double"/> value.
     /// </returns>
     public double Calculate(CongenericChain chain, Link link)
     {
