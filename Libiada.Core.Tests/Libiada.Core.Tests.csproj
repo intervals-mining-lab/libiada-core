@@ -7,15 +7,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Music\EtalonTestFiles\**" />
-    <EmbeddedResource Remove="Music\EtalonTestFiles\**" />
-    <None Remove="Music\EtalonTestFiles\**" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Remove="Music\LibiadaMusicexample7Liga.xml" />
-    <None Remove="Music\polytest.xml" />
-    <None Remove="Music\repeatertest.xml" />
+    <Compile Remove="Music\XmlTestFiles\StandardTestFiles\**" />
+    <EmbeddedResource Remove="Music\XmlTestFiles\StandardTestFiles\**" />
+    <None Remove="Music\XmlTestFiles\StandardTestFiles\**" />
   </ItemGroup>
 
   <ItemGroup>
@@ -34,6 +28,18 @@
 
   <ItemGroup>
     <Using Include="NUnit.Framework" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Music\XmlTestFiles\LibiadaMusicexample7Liga.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Music\XmlTestFiles\polytest.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Music\XmlTestFiles\repeatertest.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 </Project>
