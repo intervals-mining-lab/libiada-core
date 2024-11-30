@@ -31,13 +31,13 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="Music\XmlTestFiles\LibiadaMusicexample7Liga.xml">
+    <None Update="Music\XmlTestFiles\LibiadaMusicExample7Liga.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="Music\XmlTestFiles\polytest.xml">
+    <None Update="Music\XmlTestFiles\PolyTest.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="Music\XmlTestFiles\repeatertest.xml">
+    <None Update="Music\XmlTestFiles\RepeaterTest.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>

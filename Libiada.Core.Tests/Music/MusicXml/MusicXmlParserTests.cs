@@ -121,7 +121,7 @@ public class MusicXmlParserTests
     [Test]
     public void PolyXmlParserTest()
     {
-        string xmlFilePath = Path.Join(TestContext.CurrentContext.TestDirectory, "Music", "XmlTestFiles", "polytest.xml");
+        string xmlFilePath = Path.Join(TestContext.CurrentContext.TestDirectory, "Music", "XmlTestFiles", "PolyTest.xml");
         MusicXmlReader xmlReader = new(xmlFilePath);
         MusicXmlParser parser = new();
         parser.Execute(xmlReader.MusicXmlDocument);
@@ -156,7 +156,7 @@ public class MusicXmlParserTests
     [Test]
     public void RepeaterTest()
     {
-        string xmlFilePath = Path.Join(TestContext.CurrentContext.TestDirectory, "Music", "XmlTestFiles", "repeatertest.xml");
+        string xmlFilePath = Path.Join(TestContext.CurrentContext.TestDirectory, "Music", "XmlTestFiles", "RepeaterTest.xml");
         MusicXmlReader xmlReader = new(xmlFilePath);
         MusicXmlParser parser = new();
         parser.Execute(xmlReader.MusicXmlDocument);
