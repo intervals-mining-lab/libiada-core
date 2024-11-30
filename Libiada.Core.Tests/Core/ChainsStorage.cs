@@ -309,7 +309,7 @@ public static class ChainsStorage
         // 12 A _ _ _ _ _ _ _ A _ _ A _ A _ A _ A _ A _ _ _ _ A _ _
         new CongenericChain([0, 8, 11, 13, 15, 17, 19, 24], Elements["A"], 27),
 
-        // 13 _ A _ A A _ A _ _ A A _ _ _ _ A _ _ _ _ _ _ A _ _ _ A
+        // 13 _ A _ A A _ A _ _ A A _ _ _ _ _ _ _ _ _ _ _ A _ _ _ A
         new CongenericChain([1, 3, 4, 6, 9, 10, 22, 26], Elements["A"], 27),
 
         // 14 A _ _ A _ _ _ _ _ A _ A _ _ _ _ _
