@@ -333,7 +333,7 @@ public static class ChainsStorage
 
         // 0 A A B A _ A _ _ B A
         new Chain(
-            [1, 1, 2, 1, 0, 1, 0, 0, 2],
+            [1, 1, 2, 1, 0, 1, 0, 0, 2, 1],
             [NullValue.Instance(), Elements["A"], Elements["B"]]),
 
         // ----------- sequences from Morozenko's paper -----------
@@ -367,13 +367,12 @@ public static class ChainsStorage
             [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2],
             [NullValue.Instance(), Elements["A"], Elements["B"]]),
 
-        // 7 A _ _ _ _ _ _ _ _ _ B _ B B A _ _ A A A _ _ A _ _ _ _ _ B
+        // 7 A _ _ _ _ _ _ _ B _ B B A _ _ A A A _ _ A _ _ _ _ _ B
         new Chain(
             [1, 0, 0, 0, 0, 0, 0, 0, 2, 0, 2, 0, 2, 2, 1, 0, 0, 1, 1, 1, 0, 0, 1, 0, 0, 0, 0, 0, 2],
             [NullValue.Instance(), Elements["A"], Elements["B"]]),
 
-        // 8
-        // 7 A _ _ A _ _ B _ _ _ _ _ A A _ A _ A _ _ _ B _ A B
+        // 8 A _ _ A _ _ B _ _ _ _ _ A A _ A _ A _ _ _ B _ A B
         new Chain(
             [1, 0, 0, 1, 0, 0, 2, 0, 0, 0, 0, 0, 1, 1, 0, 1, 0, 1, 0, 0, 0, 2, 0, 1, 2],
             [NullValue.Instance(), Elements["A"], Elements["B"]]),
@@ -388,7 +387,7 @@ public static class ChainsStorage
             [1, 0, 0, 0, 2, 0, 0, 0, 1, 0, 0, 0, 2, 0, 0, 0, 1, 2, 1, 2, 0, 0, 0, 0, 0, 0, 0, 0],
             [NullValue.Instance(), Elements["A"], Elements["B"]]),
 
-        // 11 A _ B _ _ _ _ _ _ A _ B _ _ _ _ A _ _ B _ _ _ _ A B _ 0
+        // 11 A _ B _ _ _ _ _ _ A _ B _ _ _ _ A _ _ B _ _ _ _ A B _ _
         new Chain(
             [1, 0, 2, 0, 0, 0, 0, 0, 0, 1, 0, 2, 0, 0, 0, 0, 1, 0, 0, 2, 0, 0, 0, 0, 1, 2, 0, 0],
             [NullValue.Instance(), Elements["A"], Elements["B"]]),

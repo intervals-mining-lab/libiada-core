@@ -21,6 +21,7 @@ public class NormalizedPartialDependenceCoefficientTests : BinaryCalculatorsTest
     /// <param name="secondValue">
     /// The second value.
     /// </param>
+    [TestCase(0, 0.2, 0.094680274)]
     [TestCase(1, 0, 0)]
     [TestCase(2, 0, 0)]
     [TestCase(3, 0, 0.1214)]
@@ -38,6 +39,7 @@ public class NormalizedPartialDependenceCoefficientTests : BinaryCalculatorsTest
     [TestCase(15, 0.0357, 0.1458)]
     [TestCase(16, 0.0904, 0.0478)]
     [TestCase(17, 0.1401, 0.0578)]
+    [TestCase(19, 0.264250038, -0.042347035)]
     public void NormalizedK1Test(int index, double firstValue, double secondValue)
     {
         CalculationTest(index, firstValue, secondValue);

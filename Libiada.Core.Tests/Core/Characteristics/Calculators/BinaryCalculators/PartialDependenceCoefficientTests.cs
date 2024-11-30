@@ -21,6 +21,7 @@ public class PartialDependenceCoefficientTests : BinaryCalculatorsTests<PartialD
     /// <param name="secondValue">
     /// The second value.
     /// </param>
+    [TestCase(0, 0.5, 0.236700684)]
     [TestCase(1, 0, 0)]
     [TestCase(2, 0, 0)]
     [TestCase(3, 0, 0.5461)]
@@ -38,6 +39,7 @@ public class PartialDependenceCoefficientTests : BinaryCalculatorsTests<PartialD
     [TestCase(15, 0.2143, 0.875)]
     [TestCase(16, 0.4369, 0.3469)]
     [TestCase(17, 0.6072, 0.3757)]
+    [TestCase(19, 0.759718859, -0.162330299)]
     public void K1Test(int index, double firstValue, double secondValue)
     {
         CalculationTest(index, firstValue, secondValue);

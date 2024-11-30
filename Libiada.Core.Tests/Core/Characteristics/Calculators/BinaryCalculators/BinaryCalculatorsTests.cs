@@ -42,7 +42,10 @@ public abstract class BinaryCalculatorsTests<T> where T : IBinaryCalculator, new
     {
         double result1 = Calculator.Calculate(Chains[index].GetRelationIntervalsManager(elements["A"], elements["B"]), Link.End);
         double result2 = Calculator.Calculate(Chains[index].GetRelationIntervalsManager(elements["B"], elements["A"]), Link.End);
-        Assert.That(result1, Is.EqualTo(firstValue).Within(0.0001));
-        Assert.That(result2, Is.EqualTo(secondValue).Within(0.0001));
+        Assert.Multiple(() =>
+        {
+            Assert.That(result1, Is.EqualTo(firstValue).Within(0.0001));
+            Assert.That(result2, Is.EqualTo(secondValue).Within(0.0001));
+        });
     }
 }

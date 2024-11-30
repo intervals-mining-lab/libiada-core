@@ -18,6 +18,7 @@ public class MutualDependenceCoefficientTests : BinaryCalculatorsTests<MutualDep
     /// <param name="value">
     /// The value.
     /// </param>
+    [TestCase(0, 0.310825552)]
     [TestCase(1, 0)]
     [TestCase(2, 0)]
     [TestCase(3, 0)]

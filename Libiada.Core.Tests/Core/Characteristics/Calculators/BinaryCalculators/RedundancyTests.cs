@@ -20,6 +20,7 @@ public class RedundancyTests : BinaryCalculatorsTests<Redundancy>
     /// <param name="secondValue">
     /// The second value.
     /// </param>
+    [TestCase(0, 0.5, 0.59175171)]
     [TestCase(1, 0, 0)]
     [TestCase(2, 0, 0)]
     [TestCase(3, 0, 0.7282)]
@@ -37,6 +38,7 @@ public class RedundancyTests : BinaryCalculatorsTests<Redundancy>
     [TestCase(15, 0.8571, 0.875)]
     [TestCase(16, 0.4369, 0.6938)]
     [TestCase(17, 0.6072, 0.5636)]
+    [TestCase(19, 0.759718859, -0.216440399)]
     public void ChainCalculationTest(int index, double firstValue, double secondValue)
     {
         CalculationTest(index, firstValue, secondValue);

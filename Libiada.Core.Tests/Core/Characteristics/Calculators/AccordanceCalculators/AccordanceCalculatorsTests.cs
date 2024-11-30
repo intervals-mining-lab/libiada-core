@@ -49,8 +49,11 @@ public abstract class AccordanceCalculatorsTests<T> where T : IAccordanceCalcula
         CongenericChain secondChain = binaryChains[index].CongenericChain(elements["B"]);
         double result1 = calculator.Calculate(firstChain, secondChain, Link.End);
         double result2 = calculator.Calculate(secondChain, firstChain, Link.End);
-        Assert.That(result1, Is.EqualTo(firstValue).Within(0.0001d));
-        Assert.That(result2, Is.EqualTo(secondValue).Within(0.0001d));
+        Assert.Multiple(() =>
+        {
+            Assert.That(result1, Is.EqualTo(firstValue).Within(0.0001d));
+            Assert.That(result2, Is.EqualTo(secondValue).Within(0.0001d));
+        });
     }
 
     /// <summary>
