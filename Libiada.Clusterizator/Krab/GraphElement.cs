@@ -63,7 +63,7 @@ public class GraphElement
     /// </returns>
     public GraphElement Clone()
     {
-        var clone = new GraphElement(Content, Id) { TaxonNumber = taxonNumber };
+        GraphElement clone = new(Content, Id) { TaxonNumber = taxonNumber };
         return clone;
     }
 }

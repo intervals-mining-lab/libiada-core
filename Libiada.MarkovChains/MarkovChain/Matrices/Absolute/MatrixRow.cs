@@ -1,7 +1,5 @@
 namespace Libiada.MarkovChains.MarkovChain.Matrices.Absolute;
 
-using System.Collections;
-
 using Base;
 
 using Builders;
@@ -42,11 +40,11 @@ public class MatrixRow : MatrixRowCommon, IAbsoluteMatrix, IOpenMatrix
     /// <summary>
     /// Gets the value list.
     /// </summary>
-    ArrayList IOpenMatrix.ValueList
+    List<object> IOpenMatrix.ValueList
     {
         get
         {
-            return (ArrayList)ValueList.Clone();
+            return new List<object>(ValueList);
         }
     }
 
@@ -110,7 +108,7 @@ public class MatrixRow : MatrixRowCommon, IAbsoluteMatrix, IOpenMatrix
     /// </returns>
     public IProbabilityMatrix ProbabilityMatrix()
     {
-        var temp = new ProbabilityMatrixRow(AlphabetCardinality, 1);
+        ProbabilityMatrixRow temp = new(AlphabetCardinality, 1);
         temp.Fill(this);
         return temp;
     }

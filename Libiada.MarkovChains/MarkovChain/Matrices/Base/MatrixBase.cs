@@ -1,7 +1,5 @@
 namespace Libiada.MarkovChains.MarkovChain.Matrices.Base;
 
-using System.Collections;
-
 using Builders;
 
 /// <summary>
@@ -17,7 +15,7 @@ public abstract class MatrixBase
     /// <summary>
     /// Array of matrix elements.
     /// </summary>
-    protected readonly ArrayList ValueList;
+    protected readonly List<object> ValueList;
 
     /// <summary>
     /// Dimensionality of the matrix.
@@ -39,7 +37,7 @@ public abstract class MatrixBase
     public MatrixBase(int alphabetCardinality, int dimensionality, IMatrixBuilder builder)
     {
         AlphabetCardinality = alphabetCardinality;
-        ValueList = new ArrayList();
+        ValueList = [];
         Rank = dimensionality;
         for (int i = 0; i < AlphabetCardinality; i++)
         {

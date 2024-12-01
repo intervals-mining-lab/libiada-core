@@ -15,7 +15,7 @@ public class PositionFilter
     {
         if (std.Count == 0)
         {
-            return new List<int>();
+            return [];
         }
 
         int pos = 1;

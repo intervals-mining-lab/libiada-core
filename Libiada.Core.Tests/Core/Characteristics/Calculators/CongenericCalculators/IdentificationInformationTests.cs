@@ -21,11 +21,11 @@ public class IdentificationInformationTests : CongenericCalculatorsTests<Identif
     /// <param name="value">
     /// The value.
     /// </param>
-    [TestCase(0, Link.None, 0.5)]
-    [TestCase(0, Link.Start, 0.5306)]
-    [TestCase(0, Link.End, 0.5239)]
-    [TestCase(0, Link.Both, 0.5307)]
-    [TestCase(0, Link.Cycle, 0.5211)]
+    [TestCase(0, Link.None, 1)]
+    [TestCase(0, Link.Start, 1.415037499)]
+    [TestCase(0, Link.End, 1.222392421336)]
+    [TestCase(0, Link.Both, 1.459431618637297)]
+    [TestCase(0, Link.Cycle, 1.736965594)]
 
     [TestCase(2, Link.None, 0)]
     [TestCase(2, Link.Start, 0)]
@@ -34,10 +34,10 @@ public class IdentificationInformationTests : CongenericCalculatorsTests<Identif
     [TestCase(2, Link.Cycle, 0)]
 
     [TestCase(3, Link.None, 0)]
-    [TestCase(3, Link.Start, 0.375)]
+    [TestCase(3, Link.Start, 3)]
     [TestCase(3, Link.End, 0)]
-    [TestCase(3, Link.Both, 0.4822)]
-    [TestCase(3, Link.Cycle, 0.375)]
+    [TestCase(3, Link.Both, 2.169925)]
+    [TestCase(3, Link.Cycle, 3)]
 
     [TestCase(5, Link.None, 0)]
     [TestCase(5, Link.Start, 0)]

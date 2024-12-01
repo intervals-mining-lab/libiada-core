@@ -15,7 +15,7 @@ public class AverageRemotenessSWSkew : IFullCalculator
     /// Source sequence.
     /// </param>
     /// <param name="link">
-    /// Link of intervals in sequence.
+    /// Binding of the intervals in the sequence.
     /// </param>
     /// <returns>
     /// SW skew value as <see cref="double"/>.
@@ -24,14 +24,16 @@ public class AverageRemotenessSWSkew : IFullCalculator
     {
         DnaProcessor.CheckDnaAlphabet(chain.Alphabet);
 
-        var congenericRemotenessCalculator = new CongenericCalculators.AverageRemoteness();
-        var remotenessCalculator = new AverageRemoteness();
+        double l = new AverageRemoteness().Calculate(chain, link);
+        if (l == 0) return 0;
+
+        CongenericCalculators.AverageRemoteness congenericRemotenessCalculator = new();
 
         double g = congenericRemotenessCalculator.Calculate(chain.GetOrCreateCongenericChain(new ValueString("G")), link);
         double c = congenericRemotenessCalculator.Calculate(chain.GetOrCreateCongenericChain(new ValueString("C")), link);
         double a = congenericRemotenessCalculator.Calculate(chain.GetOrCreateCongenericChain(new ValueString("A")), link);
         double t = congenericRemotenessCalculator.Calculate(chain.GetOrCreateCongenericChain(new ValueString("T")), link);
-        double l = remotenessCalculator.Calculate(chain, link);
-        return l == 0 ? 0 : ((g + c) - (a + t)) / l;
+        
+        return ((g + c) - (a + t)) / l;
     }
 }

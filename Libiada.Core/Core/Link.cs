@@ -18,8 +18,8 @@ public enum Link : byte
 
     /// <summary>
     /// No link.
-    /// Both interval from start of chain to first element
-    /// and interval from last element to end of chain
+    /// Both interval from the start of the chain to the first element occurrence
+    /// and interval from the last element occurrence to the end of the chain
     /// are not taken into account.
     /// </summary>
     [Display(Name = "None")]
@@ -27,17 +27,17 @@ public enum Link : byte
     None = 1,
 
     /// <summary>
-    /// Link to start.
-    /// Interval from last element to end of chain
-    /// is not taken into account.
+    /// Link to the start.
+    /// Interval from the last element occurrence 
+    /// to the end of the sequence is not taken into account.
     /// </summary>
     [Display(Name = "To the beginning")]
     [Description("Interval from the start of the sequence to the first occurrence of the element is taken into account")]
     Start = 2,
 
     /// <summary>
-    /// Link to end.
-    /// Interval from start of chain to first element
+    /// Link to the end.
+    /// Interval from the start of the chain to the first element occurrence
     /// is not taken into account.
     /// </summary>
     [Display(Name = "To the end")]
@@ -45,9 +45,9 @@ public enum Link : byte
     End = 3,
 
     /// <summary>
-    /// Link to start and end.
-    /// Both interval from start of chain to first element
-    /// and interval from last element to end of chain
+    /// Link to the start and the end.
+    /// Both interval from start of the chain to the first element occurrence
+    /// and the interval from the last element occurrence to the end of the chain
     /// are taken into account.
     /// </summary>
     [Display(Name = "To the beginning and to the end")]

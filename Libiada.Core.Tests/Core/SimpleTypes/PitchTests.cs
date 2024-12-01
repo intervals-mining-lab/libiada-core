@@ -14,11 +14,11 @@ public class PitchTests
     [Test]
     public void PitchConstructorTest()
     {
-        var initialPitch = new Pitch(1, NoteSymbol.A, Accidental.Bekar);
-        var midiNumberPitch = new Pitch(initialPitch.MidiNumber);
-        Assert.AreEqual(initialPitch.MidiNumber, midiNumberPitch.MidiNumber);
+        Pitch initialPitch = new(1, NoteSymbol.A, Accidental.Bekar);
+        Pitch midiNumberPitch = new(initialPitch.MidiNumber);
+        Assert.That(midiNumberPitch.MidiNumber, Is.EqualTo(initialPitch.MidiNumber));
         initialPitch = new Pitch(5, NoteSymbol.C, Accidental.Sharp);
         midiNumberPitch = new Pitch(initialPitch.MidiNumber);
-        Assert.AreEqual(initialPitch.MidiNumber, midiNumberPitch.MidiNumber);
+        Assert.That(midiNumberPitch.MidiNumber, Is.EqualTo(initialPitch.MidiNumber));
     }
 }

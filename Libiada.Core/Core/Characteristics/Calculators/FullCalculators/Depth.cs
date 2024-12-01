@@ -14,17 +14,18 @@ public class Depth : IFullCalculator
     /// Source sequence.
     /// </param>
     /// <param name="link">
-    /// Link of intervals in sequence.
+    /// Binding of the intervals in the sequence.
     /// </param>
     /// <returns>
     /// Average remoteness <see cref="double"/> value.
     /// </returns>
     public double Calculate(Chain chain, Link link)
     {
+        CongenericCalculators.Depth calculator = new();
+
         double result = 0;
-        var calculator = new CongenericCalculators.Depth();
-        Alphabet alphabet = chain.Alphabet;
-        for (int i = 0; i < alphabet.Cardinality; i++)
+        int alphabetCardinality = chain.Alphabet.Cardinality;
+        for (int i = 0; i < alphabetCardinality; i++)
         {
             result += calculator.Calculate(chain.CongenericChain(i), link);
         }

@@ -8,7 +8,7 @@ public class SimpleGenerator : IGenerator
     /// <summary>
     /// The random.
     /// </summary>
-    private Random random = new Random();
+    private Random random = new();
 
     /// <summary>
     /// The reset.

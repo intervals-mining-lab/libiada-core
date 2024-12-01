@@ -7,7 +7,7 @@ public class IntervalsDistribution
 
     public IntervalsDistribution()
     {
-        Distribution = new Dictionary<int, int>();
+        Distribution = [];
     }
 
     public void AddInterval(int interval)
@@ -33,7 +33,7 @@ public class IntervalsDistribution
         {
             return false;
         }
-        var distr = obj as IntervalsDistribution;
+        IntervalsDistribution? distr = obj as IntervalsDistribution;
         bool equal = false;
         if (this.Distribution.Count == distr.Distribution.Count)
         {
@@ -66,8 +66,8 @@ public class IntervalsDistribution
             int hashCode = -1573927371;
             foreach (var element in Distribution)
             {
-                hashCode = hashCode ^ element.Key.GetHashCode();
-                hashCode = hashCode ^ element.Value.GetHashCode();
+                hashCode ^= element.Key.GetHashCode();
+                hashCode ^= element.Value.GetHashCode();
             }
 
             return hashCode;

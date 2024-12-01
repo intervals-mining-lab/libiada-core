@@ -130,7 +130,7 @@ public class CongenericChain : AbstractChain
     {
         get
         {
-            var result = new int[length];
+            int[] result = new int[length];
             for (int i = 0; i < positions.Count; i++)
             {
                 result[positions[i]] = 1;
@@ -452,7 +452,7 @@ public class CongenericChain : AbstractChain
     {
         unchecked
         {
-            var hashCode = 325361583;
+            int hashCode = 325361583;
             hashCode = (hashCode * -1521134295) + element.GetHashCode();
             hashCode = (hashCode * -1521134295) + length.GetHashCode();
             foreach (int position in Positions)

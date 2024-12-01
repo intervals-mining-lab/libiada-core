@@ -99,7 +99,7 @@ public sealed class SimpleChainSplitter : ChainSplitter
             {
                 if (!alphabet.Contains(letter))
                 {
-                    alphabet.Add(letter, new List<int>());
+                    alphabet.Add(letter, []);
                 }
 
                 alphabet.Put(letter, index);

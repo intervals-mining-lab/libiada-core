@@ -15,12 +15,12 @@ public class CriterionAttitudeOfRemoteness : Criterion
     /// <summary>
     /// The word average length.
     /// </summary>
-    private readonly AverageWordLength wordAverageLength = new AverageWordLength();
+    private readonly AverageWordLength wordAverageLength = new();
 
     /// <summary>
     /// The remoteness.
     /// </summary>
-    private readonly AverageRemoteness remoteness = new AverageRemoteness();
+    private readonly AverageRemoteness remoteness = new();
 
     /// <summary>
     /// Initializes a new instance of the <see cref="CriterionAttitudeOfRemoteness"/> class.

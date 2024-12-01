@@ -21,14 +21,11 @@ public class ProbabilityMatrixBuilder : IMatrixBuilder
     /// </returns>
     public object Create(int alphabetCardinality, int i)
     {
-        switch (i)
+        return i switch
         {
-            case 0:
-                return (double)0;
-            case 1:
-                return new ProbabilityMatrixRow(alphabetCardinality, i);
-            default:
-                return new ProbabilityMatrix(alphabetCardinality, i);
-        }
+            0 => (double)0,
+            1 => new ProbabilityMatrixRow(alphabetCardinality, i),
+            _ => new ProbabilityMatrix(alphabetCardinality, i),
+        };
     }
 }

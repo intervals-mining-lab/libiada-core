@@ -12,32 +12,27 @@ public class RemotenessKurtosis : ICongenericCalculator
     /// Source sequence.
     /// </param>
     /// <param name="link">
-    /// Link of intervals in sequence.
+    /// Binding of the intervals in the sequence.
     /// </param>
     /// <returns>
-    /// Average remoteness dispersion <see cref="double"/> value.
+    /// Remoteness kurtosis <see cref="double"/> value.
     /// </returns>
     public double Calculate(CongenericChain chain, Link link)
     {
-        var intervals = chain.GetArrangement(link).ToList();            
+        int[] intervals = chain.GetArrangement(link);
+        if (intervals.Length == 0) return 0;
 
-        if (intervals.Count == 0)
-        {
-            return 0;
-        }
-
-        List<int> uniqueIntervals = intervals.Distinct().ToList();
-
-        var intervalsCount = new IntervalsCount();
-        var averageRemoteness = new AverageRemoteness();
+        // calcualting number of intervals of certain length
+        Dictionary<int, int> intervalsDictionary = intervals
+                                                     .GroupBy(i => i)
+                                                     .ToDictionary(i => i.Key, i => i.Count());
 
         double result = 0;
-        double gDeltaLog = averageRemoteness.Calculate(chain, link);
-        double nj = intervalsCount.Calculate(chain, link);
-        foreach (int interval in uniqueIntervals)
+        double gDeltaLog = new AverageRemoteness().Calculate(chain, link);
+        double nj = new IntervalsCount().Calculate(chain, link);
+
+        foreach ((int interval, int nk) in intervalsDictionary)
         {
-            // number of intervals of certain length
-            double nk = intervals.Count(i => i == interval);
             double centeredRemoteness = Math.Log(interval, 2) - gDeltaLog;
             result += centeredRemoteness * centeredRemoteness * centeredRemoteness * centeredRemoteness * nk / nj;
         }

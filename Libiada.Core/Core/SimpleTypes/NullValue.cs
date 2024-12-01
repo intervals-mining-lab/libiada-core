@@ -10,7 +10,7 @@ public class NullValue : IBaseObject
     /// <summary>
     /// The singletone value.
     /// </summary>
-    private static readonly NullValue Value = new NullValue();
+    private static readonly NullValue Value = new();
 
     /// <summary>
     /// Prevents a default instance of the <see cref="NullValue"/> class from being created.

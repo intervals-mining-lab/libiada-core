@@ -45,7 +45,7 @@ public class ImageResizer : IImageTransformer
     /// </returns>
     public Image<Rgba32> Transform(Image<Rgba32> image)
     {
-        var result = image.Clone();
+        Image<Rgba32> result = image.Clone();
         result.Mutate(i => i.Resize(new Size(destinationWidth, destinationHeight)));
         return result;
     }

@@ -12,7 +12,7 @@ public class AlphabeticAverageRemoteness : IFullCalculator
     /// Source sequence.
     /// </param>
     /// <param name="link">
-    /// Link of intervals in sequence.
+    /// Binding of the intervals in the sequence.
     /// </param>
     /// <returns>
     /// <see cref="double"/>
@@ -20,8 +20,12 @@ public class AlphabeticAverageRemoteness : IFullCalculator
     /// </returns>
     public double Calculate(Chain chain, Link link)
     {
-        var geometricMean = new GeometricMean();
+        double geometricMean = new GeometricMean().Calculate(chain, link);
+        if (geometricMean == 0) return 0;
+
         int alphabetCardinality = chain.Alphabet.Cardinality;
-        return Math.Log(geometricMean.Calculate(chain, link), alphabetCardinality);
+        if (alphabetCardinality <= 1) return 0;
+
+        return Math.Log(geometricMean, alphabetCardinality);
     }
 }

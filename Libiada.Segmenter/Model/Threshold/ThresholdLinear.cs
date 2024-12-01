@@ -55,7 +55,7 @@ public sealed class ThresholdLinear : ThresholdVariator
         if (current > leftBound)
         {
             current = rightBound;
-            rightBound = rightBound - step;
+            rightBound -= step;
             return current;
         }
 

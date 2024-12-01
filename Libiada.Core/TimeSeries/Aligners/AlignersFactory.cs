@@ -20,20 +20,14 @@ public class AlignersFactory
     /// </exception>
     public ITimeSeriesAligner GetAligner(Aligner aligner)
     {
-        switch (aligner)
+        return aligner switch
         {
-            case Aligner.ByShortestAligner:
-                return new ByShortestAligner();
-            case Aligner.ByShortestFromRightAligner:
-                return new ByShortestFromRightAligner();
-            case Aligner.AllOffsetsAligner:
-                return new AllOffsetsAligner();
-            case Aligner.FirstElementDuplicator:
-                return new FirstElementDuplicator();
-            case Aligner.LastElementDuplicator:
-                return new LastElementDuplicator();
-            default:
-                throw new InvalidEnumArgumentException(nameof(aligner), (int)aligner, typeof(Aligner));
-        }
+            Aligner.ByShortestAligner => new ByShortestAligner(),
+            Aligner.ByShortestFromRightAligner => new ByShortestFromRightAligner(),
+            Aligner.AllOffsetsAligner => new AllOffsetsAligner(),
+            Aligner.FirstElementDuplicator => new FirstElementDuplicator(),
+            Aligner.LastElementDuplicator => new LastElementDuplicator(),
+            _ => throw new InvalidEnumArgumentException(nameof(aligner), (int)aligner, typeof(Aligner)),
+        };
     }
 }

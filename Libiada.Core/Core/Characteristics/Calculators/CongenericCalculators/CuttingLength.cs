@@ -57,8 +57,8 @@ public class CuttingLength : NonLinkableCongenericCalculator
     /// </returns>
     private bool IsRecoveryPossible(AbstractChain chain, int length)
     {
-        var iterator = new IteratorStart(chain, length, 1);
-        var alphabet = new Alphabet();
+        IteratorStart iterator = new(chain, length, 1);
+        Alphabet alphabet = [];
 
         while (iterator.Next())
         {

@@ -26,7 +26,7 @@ public class PartialComplianceDegreeTests : AccordanceCalculatorsTests<PartialCo
     [TestCase(5, 0.9991, 0)]
     [TestCase(6, 0.5151, 0)]
     [TestCase(12, 0.9710, 0.5)]
-    [TestCase(15, 0.3563, 0)]
+    [TestCase(15, 0.3563, 0.32)]
     public void PartialComplianceDegreeTest(int index, double firstValue, double secondValue)
     {
         CalculationTest(index, firstValue, secondValue);
@@ -50,8 +50,8 @@ public class PartialComplianceDegreeTests : AccordanceCalculatorsTests<PartialCo
     [TestCase(9, 8, 0.7787)]
     [TestCase(10, 11, 0.4131)]
     [TestCase(11, 10, 0.1796)]
-    [TestCase(12, 13, 0.4401)]
-    [TestCase(13, 12, 0.3353)]
+    [TestCase(12, 13, 0.439373073)]
+    [TestCase(13, 12, 0.33179868)]
     [TestCase(14, 15, 0.9428)]
     [TestCase(15, 14, 0.7399)]
     [TestCase(16, 17, 0.9428)]

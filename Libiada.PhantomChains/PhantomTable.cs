@@ -11,12 +11,12 @@ public class PhantomTable
     /// <summary>
     /// List of starts positions of trees in phantom chain.
     /// </summary>
-    public readonly List<int> StartPositions = new List<int>();
+    public readonly List<int> StartPositions = [];
 
     /// <summary>
     /// The table.
     /// </summary>
-    private readonly List<Record> table = new List<Record>();
+    private readonly List<Record> table = [];
 
     /// <summary>
     /// Initializes a new instance of the <see cref="PhantomTable"/> class.
@@ -53,7 +53,7 @@ public class PhantomTable
         }
 
         // tree root is associated with phantom message
-        var t = new ValuePhantom { NullValue.Instance() };
+        ValuePhantom t = [NullValue.Instance()];
         table[0] = new Record(t, v);
     }
 

@@ -20,8 +20,8 @@ public class TieTests
     [Test]
     public void TieCountTest()
     {
-        var actualCount = EnumExtensions.ToArray<Tie>().Length;
-        Assert.AreEqual(TiesCount, actualCount);
+        int actualCount = EnumExtensions.ToArray<Tie>().Length;
+        Assert.That(actualCount, Is.EqualTo(TiesCount));
     }
 
     /// <summary>
@@ -30,10 +30,10 @@ public class TieTests
     [Test]
     public void TieValuesTest()
     {
-        var ties = EnumExtensions.ToArray<Tie>();
+        Tie[] ties = EnumExtensions.ToArray<Tie>();
         for (int i = 0; i < TiesCount; i++)
         {
-            Assert.IsTrue(ties.Contains((Tie)i));
+            Assert.That(ties, Does.Contain((Tie)i));
         }
     }
 
@@ -52,7 +52,7 @@ public class TieTests
     [TestCase((Tie)3, "Continue")]
     public void TieNamesTest(Tie tie, string name)
     {
-        Assert.AreEqual(name, tie.GetName());
+        Assert.That(tie.GetName(), Is.EqualTo(name));
     }
 
     /// <summary>
@@ -64,7 +64,7 @@ public class TieTests
     [Test]
     public void TieHasDisplayValueTest([Values]Tie tie)
     {
-        Assert.IsFalse(string.IsNullOrEmpty(tie.GetDisplayValue()));
+        Assert.That(tie.GetDisplayValue(), Is.Not.Empty);
     }
 
     /// <summary>
@@ -76,7 +76,7 @@ public class TieTests
     [Test]
     public void TieHasDescriptionTest([Values]Tie tie)
     {
-        Assert.IsFalse(string.IsNullOrEmpty(tie.GetDescription()));
+        Assert.That(tie.GetDescription(), Is.Not.Empty);
     }
 
     /// <summary>
@@ -85,8 +85,8 @@ public class TieTests
     [Test]
     public void TieValuesUniqueTest()
     {
-        var ties = EnumExtensions.ToArray<Tie>();
-        var tieValues = ties.Cast<byte>();
+        Tie[] ties = EnumExtensions.ToArray<Tie>();
+        IEnumerable<byte> tieValues = ties.Cast<byte>();
         Assert.That(tieValues, Is.Unique);
     }
 }

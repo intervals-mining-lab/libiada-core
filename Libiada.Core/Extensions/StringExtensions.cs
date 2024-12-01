@@ -71,4 +71,29 @@ public static class StringExtensions
 
         return words.All(second.Contains);
     }
+
+    /// <summary>
+    /// Converts current string to given enum value.
+    /// </summary>
+    /// <typeparam name="T">
+    /// Enum type.
+    /// </typeparam>
+    /// <param name="value">
+    /// Current value.
+    /// </param>
+    /// <returns>
+    /// Value of the given enum type.
+    /// </returns>
+    /// <exception cref="System.ArgumentException">
+    /// Thrown if invalid string representation of enum value is gprovided.
+    /// </exception>
+    public static T ToEnum<T>(this string value) where T : struct, IComparable, IFormattable, IConvertible
+    {
+        ArgumentException.ThrowIfNullOrEmpty(value);
+
+        if (!Enum.TryParse<T>(value, true, out T result))
+            throw new ArgumentException($"Invalind enum value. Enum: {typeof(T).FullName}, value: {value}.", nameof(value));
+
+        return result;
+    }
 }

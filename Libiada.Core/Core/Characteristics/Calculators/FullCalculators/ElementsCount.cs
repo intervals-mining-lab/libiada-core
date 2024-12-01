@@ -17,11 +17,11 @@ public class ElementsCount : NonLinkableFullCalculator
     /// </returns>
     public override double Calculate(Chain chain)
     {
-        var calculator = new CongenericCalculators.ElementsCount();
-
-        Alphabet alphabet = chain.Alphabet;
+        CongenericCalculators.ElementsCount calculator = new();
+        
         int count = 0;
-        for (int i = 0; i < alphabet.Cardinality; i++)
+        int alphabetCardinality = chain.Alphabet.Cardinality;
+        for (int i = 0; i < alphabetCardinality; i++)
         {
             count += (int)calculator.Calculate(chain.CongenericChain(i));
         }

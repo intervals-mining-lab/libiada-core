@@ -16,11 +16,11 @@ public class Probability : NonLinkableFullCalculator
     /// </returns>
     public override double Calculate(Chain chain)
     {
-        var calculator = new CongenericCalculators.Probability();
+        CongenericCalculators.Probability calculator = new();
 
         double result = 0;
-        Alphabet alphabet = chain.Alphabet;
-        for (int i = 0; i < alphabet.Cardinality; i++)
+        int alphabetCardinality = chain.Alphabet.Cardinality;
+        for (int i = 0; i < alphabetCardinality; i++)
         {
             result += calculator.Calculate(chain.CongenericChain(i));
         }

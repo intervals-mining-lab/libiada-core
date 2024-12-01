@@ -101,7 +101,7 @@ public class CriterionMinSymmetryByShrader : Criterion
             {
                 if (positions[index].Count >= meronIndex)
                 {
-                    countM = countM + 1;
+                    countM++;
                 }
             }
 

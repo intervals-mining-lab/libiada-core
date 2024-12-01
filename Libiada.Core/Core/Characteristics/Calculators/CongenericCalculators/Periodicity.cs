@@ -13,18 +13,18 @@ public class Periodicity : ICongenericCalculator
     /// Source sequence.
     /// </param>
     /// <param name="link">
-    /// Link of intervals in sequence.
+    /// Binding of the intervals in the sequence.
     /// </param>
     /// <returns>
     /// Periodicity as <see cref="double"/>.
     /// </returns>
     public double Calculate(CongenericChain chain, Link link)
     {
-        var geometricMeanCalculator = new GeometricMean();
-        var arithmeticMeanCalculator = new ArithmeticMean();
+        double arithmeticMean = new ArithmeticMean().Calculate(chain, link);
+        if (arithmeticMean == 0) return 0;
 
-        double geometricMean = geometricMeanCalculator.Calculate(chain, link);
-        double arithmeticMean = arithmeticMeanCalculator.Calculate(chain, link);
-        return arithmeticMean == 0 ? 0 : geometricMean / arithmeticMean;
+        double geometricMean = new GeometricMean().Calculate(chain, link);
+
+        return geometricMean / arithmeticMean;
     }
 }

@@ -37,7 +37,7 @@ public static class EnumExtensions
 
         var fieldInfo = type.GetField(value.ToString(CultureInfo.InvariantCulture));
 
-        var descriptionAttributes = fieldInfo.GetCustomAttributes(typeof(DisplayAttribute), false) as DisplayAttribute[];
+        var descriptionAttributes = fieldInfo?.GetCustomAttributes(typeof(DisplayAttribute), false) as DisplayAttribute[];
 
         if (descriptionAttributes == null)
         {
@@ -57,12 +57,12 @@ public static class EnumExtensions
     /// Enum type.
     /// </typeparam>
     /// <returns>
-    /// The <see cref="string"/>.
+    /// The <see cref="string"/> or <see langword="null"/> if value is not found.
     /// </returns>
     /// <exception cref="TypeArgumentException">
     /// Thrown if type argument is not enum.
     /// </exception>
-    public static string GetName<T>(this T value) where T : struct, IComparable, IFormattable, IConvertible
+    public static string? GetName<T>(this T value) where T : struct, IComparable, IFormattable, IConvertible
     {
         Type type = typeof(T);
 

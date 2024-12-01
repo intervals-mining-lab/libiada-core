@@ -49,7 +49,7 @@ public class SequenceCleaner : Filter
             if (chainsEquals)
             {
                 Chain.Remove(iterator.Position(), sequence.Count);
-                hits = hits + 1;
+                hits++;
             }
         }
 

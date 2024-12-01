@@ -63,7 +63,7 @@ public class OneDimensionalTimeSeriesComparer : IOneDimensionalTimeSeriesCompare
 
         for (int i = 0; i < first.Length; i++)
         {
-            List<double> distances = new List<double>();
+            List<double> distances = [];
             for (int j = 0; j < first[0].Length; j++)
             {
                 distances.Add(this.calculator.GetDistance(first[i][j], second[i][j]));

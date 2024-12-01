@@ -15,8 +15,9 @@ public class SequenceCleanerTests
     [Test]
     public void FilteroutTest()
     {
-        var list1 = new List<string>
-            {
+        // TODO: refactor this to use testcase
+        List<string> list1 =
+            [
                 "ABABAB",
                 "ABATAT",
                 "TABABAB",
@@ -24,24 +25,27 @@ public class SequenceCleanerTests
                 "ABABAB",
                 "ABABAB",
                 "ABABAB"
-            };
-        var listSequence1 = new List<string> { "ABATAT", "TABABAB" };
-        var listSequence2 = new List<string> { "ABABAB", "ABABAB" };
-        var listSequence3 = new List<string> { "ABABAB" };
-        var result1 = new List<string> { "ABABAB", "ABTABAB", "ABABAB", "ABABAB", "ABABAB" };
-        var result2 = new List<string> { "ABABAB", "ABATAT", "TABABAB", "ABTABAB", "ABABAB" };
-        var result3 = new List<string> { "ABATAT", "TABABAB", "ABTABAB" };
+            ];
+        List<string> listSequence1 = ["ABATAT", "TABABAB"];
+        List<string> listSequence2 = ["ABABAB", "ABABAB"];
+        List<string> listSequence3 = ["ABABAB"];
+        List<string> result1 = ["ABABAB", "ABTABAB", "ABABAB", "ABABAB", "ABABAB"];
+        List<string> result2 = ["ABABAB", "ABATAT", "TABABAB", "ABTABAB", "ABABAB"];
+        List<string> result3 = ["ABATAT", "TABABAB", "ABTABAB"];
 
-        var firstCleaner = new SequenceCleaner(new ComplexChain(list1));
-        var secondCleaner = new SequenceCleaner(new ComplexChain(list1));
-        var thirdCleaner = new SequenceCleaner(new ComplexChain(list1));
+        SequenceCleaner firstCleaner = new(new ComplexChain(list1));
+        SequenceCleaner secondCleaner = new(new ComplexChain(list1));
+        SequenceCleaner thirdCleaner = new(new ComplexChain(list1));
 
         firstCleaner.FilterOut(listSequence1);
         secondCleaner.FilterOut(listSequence2);
         thirdCleaner.FilterOut(listSequence3);
 
-        Assert.True((new ComplexChain(result1)).Equals(firstCleaner.GetChain()));
-        Assert.True((new ComplexChain(result2)).Equals(secondCleaner.GetChain()));
-        Assert.True((new ComplexChain(result3)).Equals(thirdCleaner.GetChain()));
+        Assert.Multiple(() =>
+        {
+            Assert.That(new ComplexChain(result1), Is.EqualTo(firstCleaner.GetChain()));
+            Assert.That(new ComplexChain(result2), Is.EqualTo(secondCleaner.GetChain()));
+            Assert.That(new ComplexChain(result3), Is.EqualTo(thirdCleaner.GetChain()));
+        });
     }
 }

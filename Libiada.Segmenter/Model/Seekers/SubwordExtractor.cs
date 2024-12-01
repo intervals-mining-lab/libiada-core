@@ -11,12 +11,12 @@ public abstract class SubwordExtractor : WordExtractor
     /// <summary>
     /// The minus one entry.
     /// </summary>
-    protected DataCollector minusOneEntry = new DataCollector();
+    protected DataCollector minusOneEntry = new();
 
     /// <summary>
     /// The minus two entry.
     /// </summary>
-    protected DataCollector minusTwoEntry = new DataCollector();
+    protected DataCollector minusTwoEntry = new();
 
     /// <summary>
     /// Do not ask any questions, because it really very fast and redundant is also to the point

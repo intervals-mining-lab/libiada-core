@@ -44,13 +44,6 @@ public enum CongenericCharacteristic : byte
     Depth = 5,
 
     /// <summary>
-    /// The descriptive information.
-    /// </summary>
-    [Display(Name = "Descriptive information")]
-    [Description("Mazur's descriptive informations count")]
-    DescriptiveInformation = 6,
-
-    /// <summary>
     /// The elements count.
     /// </summary>
     [Display(Name = "Elements count")]
@@ -107,13 +100,6 @@ public enum CongenericCharacteristic : byte
     Probability = 14,
 
     /// <summary>
-    /// The regularity.
-    /// </summary>
-    [Display(Name = "Regularity")]
-    [Description("Calculated as geometric mean divided by entropy")]
-    Regularity = 15,
-
-    /// <summary>
     /// The uniformity.
     /// </summary>
     [Display(Name = "Uniformity")]
@@ -135,11 +121,11 @@ public enum CongenericCharacteristic : byte
     Volume = 18,
 
     /// <summary>
-    /// The remoteness dispersion.
+    /// The remoteness variance.
     /// </summary>
-    [Display(Name = "Remoteness dispersion")]
+    [Display(Name = "Remoteness variance")]
     [Description("")]
-    RemotenessDispersion = 19,
+    RemotenessVariance = 19,
 
     /// <summary>
     /// The remoteness kurtosis.

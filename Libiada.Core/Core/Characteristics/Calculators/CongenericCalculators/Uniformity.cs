@@ -13,16 +13,16 @@ public class Uniformity : ICongenericCalculator
     /// The congeneric chain.
     /// </param>
     /// <param name="link">
-    /// The link.
+    /// Binding of the intervals in the sequence.
     /// </param>
     /// <returns>
     /// The <see cref="double"/>.
     /// </returns>
     public double Calculate(CongenericChain chain, Link link)
     {
-        var remotenessCalculator = new AverageRemoteness();
-        var entropyCalculator = new IdentificationInformation();
+        double entropy = new IdentificationInformation().Calculate(chain, link);
+        double averageRemoteness = new AverageRemoteness().Calculate(chain, link);
 
-        return entropyCalculator.Calculate(chain, link) - remotenessCalculator.Calculate(chain, link);
+        return entropy - averageRemoteness;
     }
 }

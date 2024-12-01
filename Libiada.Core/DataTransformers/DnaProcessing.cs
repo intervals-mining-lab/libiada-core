@@ -22,13 +22,13 @@ public static class DnaProcessor
             throw new Exception("DNA alphabet cardinality must be 4 or less");
         }
 
-        var completeAlphabet = new Alphabet
-        {
+        Alphabet completeAlphabet =
+        [
             new ValueString("A"),
             new ValueString("C"),
             new ValueString("T"),
             new ValueString("G")
-        };
+        ];
 
         for (int i = 0; i < alphabet.Cardinality; i++)
         {

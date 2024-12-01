@@ -115,7 +115,7 @@ public class CriterionPartialOrlov : Criterion
     }
 
     /// <summary>
-    /// The calculate b.
+    /// B calculation method.
     /// </summary>
     /// <param name="k">
     /// The k.
@@ -124,7 +124,7 @@ public class CriterionPartialOrlov : Criterion
     /// The f 1.
     /// </param>
     /// <returns>
-    /// The <see cref="double"/>.
+    /// B value as <see cref="double"/>.
     /// </returns>
     public double CalculateB(double k, double f1)
     {
@@ -132,7 +132,7 @@ public class CriterionPartialOrlov : Criterion
     }
 
     /// <summary>
-    /// The calculate k.
+    /// K calculation method.
     /// </summary>
     /// <param name="factFrequency">
     /// The fact frequency.
@@ -141,7 +141,7 @@ public class CriterionPartialOrlov : Criterion
     /// The length.
     /// </param>
     /// <returns>
-    /// The <see cref="double"/>.
+    /// K value as <see cref="double"/>.
     /// </returns>
     public double CalculateK(int factFrequency, int length)
     {
@@ -162,7 +162,7 @@ public class CriterionPartialOrlov : Criterion
     /// </returns>
     public double Frequency(ComplexChain chain, string word)
     {
-        var temp = new List<object>(chain.Substring(0, chain.Length));
+        List<string> temp = new(chain.Substring(0, chain.Length));
         return Frequency(temp, word) / (double)chain.Length;
     }
 
@@ -178,7 +178,7 @@ public class CriterionPartialOrlov : Criterion
     /// <returns>
     /// The <see cref="int"/>.
     /// </returns>
-    public int Frequency(IEnumerable<object> c, object o)
+    public int Frequency(IEnumerable<string> c, object o)
     {
         int result = 0;
         if (o == null)

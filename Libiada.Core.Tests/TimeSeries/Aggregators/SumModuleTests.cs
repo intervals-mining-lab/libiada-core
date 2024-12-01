@@ -2,7 +2,6 @@
 
 using Libiada.Core.TimeSeries.Aggregators;
 
-
 /// <summary>
 /// The sum module aggregator tests.
 /// </summary>
@@ -12,10 +11,7 @@ public class SumModuleTests
     /// <summary>
     /// The distances list.
     /// </summary>
-    private static readonly List<double> distances = new List<double>()
-    {
-        1, 2, 3, 4, 5
-    };
+    private static readonly List<double> distances = [1, 2, 3, 4, 5];
 
     /// <summary>
     /// The expected sum mod value.
@@ -28,8 +24,8 @@ public class SumModuleTests
     [Test]
     public void SumModuleTest()
     {
-        var aggregator = new SumModule();
+        SumModule aggregator = new();
         double result = aggregator.Aggregate(distances);
-        Assert.AreEqual(sumMod, result);
+        Assert.That(result, Is.EqualTo(sumMod));
     }
 }

@@ -26,7 +26,7 @@ public abstract class BaseIterator : IIterator
     /// <summary>
     /// The currentCut composed sequence was extracted from a chain
     /// </summary>
-    protected List<string> currentCut = new List<string>();
+    protected List<string> currentCut = [];
 
     /// <summary>
     /// Initializes a new instance of the <see cref="BaseIterator"/> class.

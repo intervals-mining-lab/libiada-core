@@ -12,18 +12,18 @@ public class IntervalsSum : IFullCalculator
     /// Source sequence.
     /// </param>
     /// <param name="link">
-    /// Link of intervals in sequence.
+    /// Binding of the intervals in the sequence.
     /// </param>
     /// <returns>
     /// Intervals sum as <see cref="double"/>.
     /// </returns>
     public double Calculate(Chain chain, Link link)
     {
-        var calculator = new CongenericCalculators.IntervalsSum();
+        CongenericCalculators.IntervalsSum calculator = new();
 
-        Alphabet alphabet = chain.Alphabet;
         int sum = 0;
-        for (int i = 0; i < alphabet.Cardinality; i++)
+        int alphabetCardinality = chain.Alphabet.Cardinality;
+        for (int i = 0; i < alphabetCardinality; i++)
         {
             sum += (int)calculator.Calculate(chain.CongenericChain(i), link);
         }

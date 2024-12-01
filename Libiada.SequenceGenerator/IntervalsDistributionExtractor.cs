@@ -6,12 +6,12 @@ public static class IntervalsDistributionExtractor
 {
     public static IntervalsDistribution GetIntervalsDistribution(int[] order, Link link)
     {
-        var sequence = new Chain(order);
-        var intervalsDistribution = new IntervalsDistribution();
-        foreach (var el in sequence.Alphabet.ToList())
+        Chain sequence = new(order);
+        IntervalsDistribution intervalsDistribution = new();
+        foreach (IBaseObject el in sequence.Alphabet.ToList())
         {
-            var congIntervals = sequence.CongenericChain(el).GetArrangement(link);
-            foreach (var interval in congIntervals)
+            int[] congIntervals = sequence.CongenericChain(el).GetArrangement(link);
+            foreach (int interval in congIntervals)
             {
                 intervalsDistribution.AddInterval(interval);
             }
@@ -21,17 +21,17 @@ public static class IntervalsDistributionExtractor
 
     public static Dictionary<IntervalsDistribution, List<int[]>> GetOrdersIntervalsDistributionsAccordance(int[][] orders, Link link)
     {
-        var accordance = new Dictionary<IntervalsDistribution, List<int[]>>();
-        foreach (var order in orders)
+        Dictionary<IntervalsDistribution, List<int[]>> accordance = [];
+        foreach (int[] order in orders)
         {
-            var orderIntervalsDistribution = IntervalsDistributionExtractor.GetIntervalsDistribution(order, link);
+            IntervalsDistribution orderIntervalsDistribution = GetIntervalsDistribution(order, link);
             if (accordance.ContainsKey(orderIntervalsDistribution))
             {
                 accordance[orderIntervalsDistribution].Add(order);
             }
             else
             {
-                accordance.Add(orderIntervalsDistribution, new List<int[]> { order });
+                accordance.Add(orderIntervalsDistribution, [order]);
             }
         }
         return accordance;

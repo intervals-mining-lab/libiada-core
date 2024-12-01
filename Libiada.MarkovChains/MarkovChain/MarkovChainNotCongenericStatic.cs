@@ -40,10 +40,10 @@ public class MarkovChainNotCongenericStatic : MarkovChainBase
     /// </returns>
     public override BaseChain Generate(int length, int chainRank)
     {
-        var temp = new BaseChain();
+        BaseChain temp = new();
         temp.ClearAndSetNewLength(length);
-        var read = Rank > 1 ? new IteratorStart(temp, Rank - 1, 1) : null;
-        var write = new IteratorWritableStart(temp);
+        IteratorStart? read = Rank > 1 ? new IteratorStart(temp, Rank - 1, 1) : null;
+        IteratorWritableStart write = new(temp);
         if (read != null)
         {
             read.Reset();
@@ -76,7 +76,7 @@ public class MarkovChainNotCongenericStatic : MarkovChainBase
             if (read != null)
             {
                 BaseChain chain = (BaseChain)read.Current();
-                var indexedChain = new int[chain.Length];
+                int[] indexedChain = new int[chain.Length];
                 for (int k = 0; k < chain.Length; k++)
                 {
                     indexedChain[k] = Alphabet.IndexOf(chain[k]);

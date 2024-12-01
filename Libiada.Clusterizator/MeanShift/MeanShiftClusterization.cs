@@ -14,8 +14,8 @@ class MeanShiftClusterization : IClusterizator
 
     public int[] Cluster(int clustersCount, double[][] data)
     {
-        var clusters = meanShift.Learn(data);
-        var result = new int[data.Length];
+        MeanShiftClusterCollection clusters = meanShift.Learn(data);
+        int[] result = new int[data.Length];
 
         for (int i = 0; i < result.Length; i++)
         {

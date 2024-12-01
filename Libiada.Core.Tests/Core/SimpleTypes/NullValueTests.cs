@@ -14,7 +14,7 @@ public class NullValueTests
     [Test]
     public void InstanceNotNullTest()
     {
-        Assert.IsNotNull(NullValue.Instance());
+        Assert.That(NullValue.Instance(), Is.Not.Null);
     }
 
     /// <summary>
@@ -23,6 +23,6 @@ public class NullValueTests
     [Test]
     public void InstanceSingleToneTest()
     {
-        Assert.AreSame(NullValue.Instance(), NullValue.Instance());
+        Assert.That(NullValue.Instance(), Is.SameAs(NullValue.Instance()));
     }
 }

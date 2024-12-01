@@ -22,7 +22,7 @@ public class MarkovMetrics
         IProbabilityMatrix matrix = chain.PropabilityMatrix;
         for (int i = 0; i < chain.Alphabet.Cardinality; i++)
         {
-            int[] array = { i };
+            int[] array = [i];
             matrix.GetProbabilityVector(chain.Alphabet, array);
         }
 

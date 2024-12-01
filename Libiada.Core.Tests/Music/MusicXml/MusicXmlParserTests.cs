@@ -22,67 +22,67 @@ public class MusicXmlParserTests
     public void MusicXmlParserSetUp()
     {
         // Measures attributes
-        var attributes = new MeasureAttributes(new Size(7, 8), new Key(0, "major"));
+        MeasureAttributes attributes = new(new Size(7, 8), new Key(0, "major"));
 
         // notes lists for each measure
-        var notes1 = new List<ValueNote>
-        {
-            new ValueNote(new Pitch(3, NoteSymbol.E, 0), new Duration(1, 2, false), false, Tie.None),
-            new ValueNote(new Pitch(3, NoteSymbol.A, 0), new Duration(1, 8, false), false, Tie.None),
-            new ValueNote(new Pitch(3, NoteSymbol.A, 0), new Duration(1, 8, false), false, Tie.None),
-            new ValueNote(new Pitch(3, NoteSymbol.F, 0), new Duration(1, 8, false), false, Tie.Start)
-        };
-        var notes2 = new List<ValueNote>
-        {
-            new ValueNote(new Pitch(3, NoteSymbol.F, 0), new Duration(1, 8, false), false, Tie.End),
-            new ValueNote(new Pitch(3, NoteSymbol.B, 0), new Duration(1, 8, false), false, Tie.None),
-            new ValueNote(new Pitch(3, NoteSymbol.G, 0), new Duration(1, 8, false), false, Tie.None),
-            new ValueNote(new Pitch(4, NoteSymbol.C, 0), new Duration(1, 8, false), false, Tie.None),
-            new ValueNote(new Pitch(3, NoteSymbol.G, 0), new Duration(1, 8, false), false, Tie.None),
-            new ValueNote(new Pitch(3, NoteSymbol.E, 0), new Duration(1, 8, false), false, Tie.None),
-            new ValueNote(new Pitch(2, NoteSymbol.A, 0), new Duration(1, 8, false), false, Tie.None)
-        };
-        var notes3 = new List<ValueNote>
-        {
-            new ValueNote(new Pitch(3, NoteSymbol.A, 0), new Duration(1, 16, false), false, Tie.None),
-            new ValueNote(new Pitch(3, NoteSymbol.G, 0), new Duration(1, 16, false), false, Tie.None),
-            new ValueNote(new Pitch(4, NoteSymbol.E, 0), new Duration(1, 16, false), false, Tie.None),
-            new ValueNote(new Pitch(3, NoteSymbol.A, 0), new Duration(1, 16, false), false, Tie.None),
-            new ValueNote(new Pitch(3, NoteSymbol.B, 0), new Duration(1, 16, false), false, Tie.None),
-            new ValueNote(new Pitch(3, NoteSymbol.A, 0), new Duration(1, 16, false), false, Tie.None),
-            new ValueNote(new Pitch(4, NoteSymbol.D, 0), new Duration(1, 8, true), false, Tie.None),
-            new ValueNote(new Pitch(4, NoteSymbol.C, 0), new Duration(1, 8, true), false, Tie.None),
-            new ValueNote(new Duration(1, 8, false), false, Tie.None)
-        };
-        var notes4 = new List<ValueNote>
-        {
-            new ValueNote(new Pitch(4, NoteSymbol.C, 0), new Duration(1, 16, false), false, Tie.None),
-            new ValueNote(new Pitch(3, NoteSymbol.A, 0), new Duration(1, 16, false), false, Tie.None),
-            new ValueNote(new Pitch(3, NoteSymbol.E, 0), new Duration(1, 16, false), false, Tie.None),
-            new ValueNote(new Pitch(4, NoteSymbol.C, 0), new Duration(1, 16, false), false, Tie.None),
-            new ValueNote(new Pitch(3, NoteSymbol.E, 0), new Duration(1, 16, false), false, Tie.None),
-            new ValueNote(new Pitch(2, NoteSymbol.A, 0), new Duration(1, 16, false), false, Tie.None),
-            new ValueNote(new Pitch(4, NoteSymbol.D, 0), new Duration(1, 16, false), false, Tie.None),
-            new ValueNote(new Pitch(4, NoteSymbol.C, 0), new Duration(1, 16, false), false, Tie.None),
-            new ValueNote(new Pitch(3, NoteSymbol.A, 0), new Duration(1, 16, false), false, Tie.None),
-            new ValueNote(new Pitch(2, NoteSymbol.E, 0), new Duration(1, 16, false), false, Tie.None),
-            new ValueNote(new Pitch(4, NoteSymbol.C, 0), new Duration(1, 16, false), false, Tie.None),
-            new ValueNote(new Pitch(3, NoteSymbol.G, 0), new Duration(1, 16, false), false, Tie.None),
-            new ValueNote(new Pitch(3, NoteSymbol.A, 0), new Duration(1, 16, false), false, Tie.None),
-            new ValueNote(new Pitch(4, NoteSymbol.C, 0), new Duration(1, 16, false), false, Tie.None)
-        };
+        List<ValueNote> notes1 =
+        [
+            new(new Pitch(3, NoteSymbol.E, 0), new Duration(1, 2, false), false, Tie.None),
+            new(new Pitch(3, NoteSymbol.A, 0), new Duration(1, 8, false), false, Tie.None),
+            new(new Pitch(3, NoteSymbol.A, 0), new Duration(1, 8, false), false, Tie.None),
+            new(new Pitch(3, NoteSymbol.F, 0), new Duration(1, 8, false), false, Tie.Start)
+        ];
+        List<ValueNote> notes2 =
+        [
+            new(new Pitch(3, NoteSymbol.F, 0), new Duration(1, 8, false), false, Tie.End),
+            new(new Pitch(3, NoteSymbol.B, 0), new Duration(1, 8, false), false, Tie.None),
+            new(new Pitch(3, NoteSymbol.G, 0), new Duration(1, 8, false), false, Tie.None),
+            new(new Pitch(4, NoteSymbol.C, 0), new Duration(1, 8, false), false, Tie.None),
+            new(new Pitch(3, NoteSymbol.G, 0), new Duration(1, 8, false), false, Tie.None),
+            new(new Pitch(3, NoteSymbol.E, 0), new Duration(1, 8, false), false, Tie.None),
+            new(new Pitch(2, NoteSymbol.A, 0), new Duration(1, 8, false), false, Tie.None)
+        ];
+        List<ValueNote> notes3 =
+        [
+            new(new Pitch(3, NoteSymbol.A, 0), new Duration(1, 16, false), false, Tie.None),
+            new(new Pitch(3, NoteSymbol.G, 0), new Duration(1, 16, false), false, Tie.None),
+            new(new Pitch(4, NoteSymbol.E, 0), new Duration(1, 16, false), false, Tie.None),
+            new(new Pitch(3, NoteSymbol.A, 0), new Duration(1, 16, false), false, Tie.None),
+            new(new Pitch(3, NoteSymbol.B, 0), new Duration(1, 16, false), false, Tie.None),
+            new(new Pitch(3, NoteSymbol.A, 0), new Duration(1, 16, false), false, Tie.None),
+            new(new Pitch(4, NoteSymbol.D, 0), new Duration(1, 8, true), false, Tie.None),
+            new(new Pitch(4, NoteSymbol.C, 0), new Duration(1, 8, true), false, Tie.None),
+            new(new Duration(1, 8, false), false, Tie.None)
+        ];
+        List<ValueNote> notes4 =
+        [
+            new(new Pitch(4, NoteSymbol.C, 0), new Duration(1, 16, false), false, Tie.None),
+            new(new Pitch(3, NoteSymbol.A, 0), new Duration(1, 16, false), false, Tie.None),
+            new(new Pitch(3, NoteSymbol.E, 0), new Duration(1, 16, false), false, Tie.None),
+            new(new Pitch(4, NoteSymbol.C, 0), new Duration(1, 16, false), false, Tie.None),
+            new(new Pitch(3, NoteSymbol.E, 0), new Duration(1, 16, false), false, Tie.None),
+            new(new Pitch(2, NoteSymbol.A, 0), new Duration(1, 16, false), false, Tie.None),
+            new(new Pitch(4, NoteSymbol.D, 0), new Duration(1, 16, false), false, Tie.None),
+            new(new Pitch(4, NoteSymbol.C, 0), new Duration(1, 16, false), false, Tie.None),
+            new(new Pitch(3, NoteSymbol.A, 0), new Duration(1, 16, false), false, Tie.None),
+            new(new Pitch(2, NoteSymbol.E, 0), new Duration(1, 16, false), false, Tie.None),
+            new(new Pitch(4, NoteSymbol.C, 0), new Duration(1, 16, false), false, Tie.None),
+            new(new Pitch(3, NoteSymbol.G, 0), new Duration(1, 16, false), false, Tie.None),
+            new(new Pitch(3, NoteSymbol.A, 0), new Duration(1, 16, false), false, Tie.None),
+            new(new Pitch(4, NoteSymbol.C, 0), new Duration(1, 16, false), false, Tie.None)
+        ];
 
         // measures list for congeneric score track
-        var measures1 = new List<Measure>
-        {
-            new Measure(notes1, (MeasureAttributes)attributes.Clone()),
-            new Measure(notes2, (MeasureAttributes)attributes.Clone()),
-            new Measure(notes3, (MeasureAttributes)attributes.Clone()),
-            new Measure(notes4, (MeasureAttributes)attributes.Clone())
-        };
+        List<Measure> measures1 =
+        [
+            new(notes1, (MeasureAttributes)attributes.Clone()),
+            new(notes2, (MeasureAttributes)attributes.Clone()),
+            new(notes3, (MeasureAttributes)attributes.Clone()),
+            new(notes4, (MeasureAttributes)attributes.Clone())
+        ];
 
         // single uniform score track
-        var uniformTracks = new List<CongenericScoreTrack> { new CongenericScoreTrack(measures1) };
+        List<CongenericScoreTrack> uniformTracks = [new(measures1)];
 
         // whole music sequence
         scoreTrack = new ScoreTrack(uniformTracks);
@@ -94,18 +94,25 @@ public class MusicXmlParserTests
     [Test]
     public void XmlParserTest()
     {
-        var xmlReader = new MusicXmlReader($"{SystemData.ProjectFolderPath}LibiadaMusicExample7Liga.xml");
-        var parser = new MusicXmlParser();
+        string xmlFilePath = Path.Join(TestContext.CurrentContext.TestDirectory, "Music", "XmlTestFiles", "LibiadaMusicExample7Liga.xml");
+        MusicXmlReader xmlReader = new(xmlFilePath);
+        MusicXmlParser parser = new();
         parser.Execute(xmlReader.MusicXmlDocument);
 
-        Assert.AreEqual(scoreTrack.CongenericScoreTracks[0].MeasureList[0].Attributes, parser.ScoreModel.CongenericScoreTracks[0].MeasureList[0].Attributes);
-        Assert.AreEqual(scoreTrack.CongenericScoreTracks[0].MeasureList[0].NoteList[0], parser.ScoreModel.CongenericScoreTracks[0].MeasureList[0].NoteList[0]);
-        Assert.AreEqual(scoreTrack.CongenericScoreTracks[0].MeasureList[0], parser.ScoreModel.CongenericScoreTracks[0].MeasureList[0]);
-        Assert.AreEqual(scoreTrack.CongenericScoreTracks[0].MeasureList[1], parser.ScoreModel.CongenericScoreTracks[0].MeasureList[1]);
-        Assert.AreEqual(scoreTrack.CongenericScoreTracks[0].MeasureList[2], parser.ScoreModel.CongenericScoreTracks[0].MeasureList[2]);
-        Assert.AreEqual(scoreTrack.CongenericScoreTracks[0].MeasureList[3], parser.ScoreModel.CongenericScoreTracks[0].MeasureList[3]);
-        Assert.AreEqual(scoreTrack.CongenericScoreTracks[0], parser.ScoreModel.CongenericScoreTracks[0]);
-        Assert.AreEqual(scoreTrack, parser.ScoreModel);
+        CongenericScoreTrack actual = parser.ScoreModel.CongenericScoreTracks[0];
+        CongenericScoreTrack expected = scoreTrack.CongenericScoreTracks[0];
+
+        Assert.Multiple(() =>
+        {
+            Assert.That(actual.MeasureList[0].Attributes, Is.EqualTo(expected.MeasureList[0].Attributes));
+            Assert.That(actual.MeasureList[0].NoteList[0], Is.EqualTo(expected.MeasureList[0].NoteList[0]));
+            Assert.That(actual.MeasureList[0], Is.EqualTo(expected.MeasureList[0]));
+            Assert.That(actual.MeasureList[1], Is.EqualTo(expected.MeasureList[1]));
+            Assert.That(actual.MeasureList[2], Is.EqualTo(expected.MeasureList[2]));
+            Assert.That(actual.MeasureList[3], Is.EqualTo(expected.MeasureList[3]));
+            Assert.That(actual, Is.EqualTo(expected));
+            Assert.That(parser.ScoreModel, Is.EqualTo(scoreTrack));
+        });
     }
 
     /// <summary>
@@ -114,24 +121,33 @@ public class MusicXmlParserTests
     [Test]
     public void PolyXmlParserTest()
     {
-        var xmlReader = new MusicXmlReader($"{SystemData.ProjectFolderPath}polytest.xml");
-        var parser = new MusicXmlParser();
+        string xmlFilePath = Path.Join(TestContext.CurrentContext.TestDirectory, "Music", "XmlTestFiles", "PolyTest.xml");
+        MusicXmlReader xmlReader = new(xmlFilePath);
+        MusicXmlParser parser = new();
         parser.Execute(xmlReader.MusicXmlDocument);
 
-        Assert.AreEqual(parser.ScoreModel.CongenericScoreTracks.Count, 1);
-        Assert.AreEqual(parser.ScoreModel.CongenericScoreTracks[0].MeasureList.Count, 3);
-        Assert.AreEqual(parser.ScoreModel.CongenericScoreTracks[0].MeasureList[0].NoteList.Count, 5);
-        Assert.AreEqual(parser.ScoreModel.CongenericScoreTracks[0].MeasureList[1].NoteList.Count, 6);
-        Assert.AreEqual(parser.ScoreModel.CongenericScoreTracks[0].MeasureList[2].NoteList.Count, 4);
-        Assert.AreEqual(parser.ScoreModel.CongenericScoreTracks[0].MeasureList[0].NoteList[0].Pitches.Count, 2);
-        Assert.AreEqual(parser.ScoreModel.CongenericScoreTracks[0].MeasureList[2].NoteList[0].Pitches.Count, 3);
-        Assert.AreEqual(parser.ScoreModel.CongenericScoreTracks[0].MeasureList[0].NoteList[0].Duration.Denominator, 4);
-        Assert.AreEqual(parser.ScoreModel.CongenericScoreTracks[0].MeasureList[0].NoteList[0].Pitches[0].Step.ToString(), "A");
-        Assert.AreEqual(parser.ScoreModel.CongenericScoreTracks[0].MeasureList[0].NoteList[0].Pitches[1].Step.ToString(), "C");
-        Assert.AreEqual(parser.ScoreModel.CongenericScoreTracks[0].MeasureList[2].NoteList[0].Duration.Denominator, 8);
-        Assert.AreEqual(parser.ScoreModel.CongenericScoreTracks[0].MeasureList[2].NoteList[0].Pitches[0].Step.ToString(), "G");
-        Assert.AreEqual(parser.ScoreModel.CongenericScoreTracks[0].MeasureList[2].NoteList[0].Pitches[1].Step.ToString(), "G");
-        Assert.AreEqual(parser.ScoreModel.CongenericScoreTracks[0].MeasureList[2].NoteList[0].Pitches[2].Step.ToString(), "C");
+        CongenericScoreTrack actual = parser.ScoreModel.CongenericScoreTracks[0];
+
+        Assert.Multiple(() =>
+        {
+            Assert.That(parser.ScoreModel.CongenericScoreTracks, Has.Count.EqualTo(1));
+            Assert.That(actual.MeasureList, Has.Count.EqualTo(3));
+        });
+        Assert.Multiple(() =>
+        {
+            Assert.That(actual.MeasureList[0].NoteList, Has.Count.EqualTo(5));
+            Assert.That(actual.MeasureList[1].NoteList, Has.Count.EqualTo(6));
+            Assert.That(actual.MeasureList[2].NoteList, Has.Count.EqualTo(4));
+            Assert.That(actual.MeasureList[0].NoteList[0].Pitches, Has.Count.EqualTo(2));
+            Assert.That(actual.MeasureList[2].NoteList[0].Pitches, Has.Count.EqualTo(3));
+            Assert.That(actual.MeasureList[0].NoteList[0].Duration.Denominator, Is.EqualTo(4));
+            Assert.That(actual.MeasureList[0].NoteList[0].Pitches[0].Step.ToString(), Is.EqualTo("A"));
+            Assert.That(actual.MeasureList[0].NoteList[0].Pitches[1].Step.ToString(), Is.EqualTo("C"));
+            Assert.That(actual.MeasureList[2].NoteList[0].Duration.Denominator, Is.EqualTo(8));
+            Assert.That(actual.MeasureList[2].NoteList[0].Pitches[0].Step.ToString(), Is.EqualTo("G"));
+            Assert.That(actual.MeasureList[2].NoteList[0].Pitches[1].Step.ToString(), Is.EqualTo("G"));
+            Assert.That(actual.MeasureList[2].NoteList[0].Pitches[2].Step.ToString(), Is.EqualTo("C"));
+        });
     }
 
     /// <summary>
@@ -140,15 +156,18 @@ public class MusicXmlParserTests
     [Test]
     public void RepeaterTest()
     {
-        var xmlReader = new MusicXmlReader($"{SystemData.ProjectFolderPath}repeatertest.xml");
-        var parser = new MusicXmlParser();
+        string xmlFilePath = Path.Join(TestContext.CurrentContext.TestDirectory, "Music", "XmlTestFiles", "RepeaterTest.xml");
+        MusicXmlReader xmlReader = new(xmlFilePath);
+        MusicXmlParser parser = new();
         parser.Execute(xmlReader.MusicXmlDocument);
 
-        Assert.AreEqual(parser.ScoreModel.CongenericScoreTracks.Count, 1);
-        Assert.AreEqual(parser.ScoreModel.CongenericScoreTracks[0].MeasureList.Count, 8);
-        Assert.AreEqual(parser.ScoreModel.CongenericScoreTracks[0].MeasureList[0].NoteList.Count, 1);
-        Assert.IsTrue(parser.ScoreModel.CongenericScoreTracks[0].MeasureList[0].Equals(parser.ScoreModel.CongenericScoreTracks[0].MeasureList[4]));
-        Assert.IsTrue(parser.ScoreModel.CongenericScoreTracks[0].MeasureList[1].Equals(parser.ScoreModel.CongenericScoreTracks[0].MeasureList[5]));
+        CongenericScoreTrack actual = parser.ScoreModel.CongenericScoreTracks[0];
+
+        Assert.That(parser.ScoreModel.CongenericScoreTracks, Has.Count.EqualTo(1));
+        Assert.That(actual.MeasureList, Has.Count.EqualTo(8));
+        Assert.That(actual.MeasureList[0].NoteList, Has.Count.EqualTo(1));
+        Assert.That(actual.MeasureList[0], Is.EqualTo(actual.MeasureList[4]));
+        Assert.That(actual.MeasureList[1], Is.EqualTo(actual.MeasureList[5]));
     }
 
     /// <summary>
@@ -157,11 +176,12 @@ public class MusicXmlParserTests
     [Test]
     public void XmlParserScoreTrackTest()
     {
-        var xmlReader = new MusicXmlReader($"{SystemData.ProjectFolderPath}LibiadaMusicExample7Liga.xml");
-        var parser = new MusicXmlParser();
+        string xmlFilePath = Path.Join(TestContext.CurrentContext.TestDirectory, "Music", "XmlTestFiles", "LibiadaMusicExample7Liga.xml");
+        MusicXmlReader xmlReader = new(xmlFilePath);
+        MusicXmlParser parser = new();
         parser.Execute(xmlReader.MusicXmlDocument);
 
-        Assert.AreEqual(scoreTrack,  parser.ScoreModel);
+        Assert.That(parser.ScoreModel, Is.EqualTo(scoreTrack));
     }
 
     /// <summary>
@@ -170,11 +190,12 @@ public class MusicXmlParserTests
     [Test]
     public void XmlParserCongenericScoreTrackTest()
     {
-        var xmlReader = new MusicXmlReader($"{SystemData.ProjectFolderPath}LibiadaMusicExample7Liga.xml");
-        var parser = new MusicXmlParser();
+        string xmlFilePath = Path.Join(TestContext.CurrentContext.TestDirectory, "Music", "XmlTestFiles", "LibiadaMusicExample7Liga.xml");
+        MusicXmlReader xmlReader = new(xmlFilePath);
+        MusicXmlParser parser = new();
         parser.Execute(xmlReader.MusicXmlDocument);
-
-        Assert.AreEqual(scoreTrack.CongenericScoreTracks[0], parser.ScoreModel.CongenericScoreTracks[0]);
+        CongenericScoreTrack actual = parser.ScoreModel.CongenericScoreTracks[0];
+        Assert.That(actual, Is.EqualTo(scoreTrack.CongenericScoreTracks[0]));
     }
 
     /// <summary>
@@ -183,16 +204,17 @@ public class MusicXmlParserTests
     [Test]
     public void XmlParserMeasureTest()
     {
-        var xmlReader = new MusicXmlReader($"{SystemData.ProjectFolderPath}LibiadaMusicExample7Liga.xml");
-        var parser = new MusicXmlParser();
+        string xmlFilePath = Path.Join(TestContext.CurrentContext.TestDirectory, "Music", "XmlTestFiles", "LibiadaMusicExample7Liga.xml");
+        MusicXmlReader xmlReader = new(xmlFilePath);
+        MusicXmlParser parser = new();
         parser.Execute(xmlReader.MusicXmlDocument);
-
+        CongenericScoreTrack actual = parser.ScoreModel.CongenericScoreTracks[0];
         List<Measure> expectedMeasures = scoreTrack.CongenericScoreTracks[0].MeasureList;
-        List<Measure> actualMeasures = parser.ScoreModel.CongenericScoreTracks[0].MeasureList;
-        Assert.AreEqual(expectedMeasures.Count, actualMeasures.Count);
+        List<Measure> actualMeasures = actual.MeasureList;
+        Assert.That(actualMeasures, Has.Count.EqualTo(expectedMeasures.Count));
         for (int i = 0; i < expectedMeasures.Count; i++)
         {
-            Assert.AreEqual(scoreTrack.CongenericScoreTracks[0].MeasureList[i], parser.ScoreModel.CongenericScoreTracks[0].MeasureList[i]);
+            Assert.That(actual.MeasureList[i], Is.EqualTo(scoreTrack.CongenericScoreTracks[0].MeasureList[i]));
         }
     }
 
@@ -202,21 +224,22 @@ public class MusicXmlParserTests
     [Test]
     public void XmlParserNoteTest()
     {
-        var xmlReader = new MusicXmlReader($"{SystemData.ProjectFolderPath}LibiadaMusicExample7Liga.xml");
-        var parser = new MusicXmlParser();
+        string xmlFilePath = Path.Join(TestContext.CurrentContext.TestDirectory, "Music", "XmlTestFiles", "LibiadaMusicExample7Liga.xml");
+        MusicXmlReader xmlReader = new(xmlFilePath);
+        MusicXmlParser parser = new();
         parser.Execute(xmlReader.MusicXmlDocument);
-
+        CongenericScoreTrack actual = parser.ScoreModel.CongenericScoreTracks[0];
         List<Measure> expectedMeasures = scoreTrack.CongenericScoreTracks[0].MeasureList;
-        List<Measure> actualMeasures = parser.ScoreModel.CongenericScoreTracks[0].MeasureList;
-        Assert.AreEqual(expectedMeasures.Count, actualMeasures.Count);
+        List<Measure> actualMeasures = actual.MeasureList;
+        Assert.That(actualMeasures, Has.Count.EqualTo(expectedMeasures.Count));
         for (int i = 0; i < expectedMeasures.Count; i++)
         {
             List<ValueNote> expectedNotes = expectedMeasures[i].NoteList;
             List<ValueNote> actualNotes = actualMeasures[i].NoteList;
-            Assert.AreEqual(expectedNotes.Count, actualNotes.Count);
+            Assert.That(actualNotes, Has.Count.EqualTo(expectedNotes.Count));
             for (int j = 0; j < expectedNotes.Count; j++)
             {
-                Assert.AreEqual(expectedNotes[j], actualNotes[j]);
+                Assert.That(actualNotes[j], Is.EqualTo(expectedNotes[j]));
             }
         }
     }
@@ -227,20 +250,21 @@ public class MusicXmlParserTests
     [Test]
     public void XmlParserAttributesTest()
     {
-        var xmlReader = new MusicXmlReader($"{SystemData.ProjectFolderPath}LibiadaMusicExample7Liga.xml");
-        var parser = new MusicXmlParser();
+        string xmlFilePath = Path.Join(TestContext.CurrentContext.TestDirectory, "Music", "XmlTestFiles", "LibiadaMusicExample7Liga.xml");
+        MusicXmlReader xmlReader = new(xmlFilePath);
+        MusicXmlParser parser = new();
         parser.Execute(xmlReader.MusicXmlDocument);
-
+        CongenericScoreTrack actual = parser.ScoreModel.CongenericScoreTracks[0];
         List<Measure> expectedMeasures = scoreTrack.CongenericScoreTracks[0].MeasureList;
-        List<Measure> actualMeasures = parser.ScoreModel.CongenericScoreTracks[0].MeasureList;
-        Assert.AreEqual(expectedMeasures.Count, actualMeasures.Count);
+        List<Measure> actualMeasures = actual.MeasureList;
+        Assert.That(actualMeasures, Has.Count.EqualTo(expectedMeasures.Count));
         for (int i = 0; i < expectedMeasures.Count; i++)
         {
             MeasureAttributes expectedAttributes = scoreTrack.CongenericScoreTracks[0].MeasureList[i].Attributes;
-            MeasureAttributes actualAttributes = parser.ScoreModel.CongenericScoreTracks[0].MeasureList[i].Attributes;
-            Assert.AreEqual(expectedAttributes, actualAttributes);
-            Assert.AreEqual(expectedAttributes.Key, actualAttributes.Key);
-            Assert.AreEqual(expectedAttributes.Size, actualAttributes.Size);
+            MeasureAttributes actualAttributes = actual.MeasureList[i].Attributes;
+            Assert.That(actualAttributes, Is.EqualTo(expectedAttributes));
+            Assert.That(actualAttributes.Key, Is.EqualTo(expectedAttributes.Key));
+            Assert.That(actualAttributes.Size, Is.EqualTo(expectedAttributes.Size));
         }
     }
 
@@ -250,24 +274,25 @@ public class MusicXmlParserTests
     [Test]
     public void XmlParserPitchTest()
     {
-        var xmlReader = new MusicXmlReader($"{SystemData.ProjectFolderPath}LibiadaMusicExample7Liga.xml");
-        var parser = new MusicXmlParser();
+        string xmlFilePath = Path.Join(TestContext.CurrentContext.TestDirectory, "Music", "XmlTestFiles", "LibiadaMusicExample7Liga.xml");
+        MusicXmlReader xmlReader = new(xmlFilePath);
+        MusicXmlParser parser = new();
         parser.Execute(xmlReader.MusicXmlDocument);
-
+        CongenericScoreTrack actual = parser.ScoreModel.CongenericScoreTracks[0];
         List<Measure> expectedMeasures = scoreTrack.CongenericScoreTracks[0].MeasureList;
-        List<Measure> actualMeasures = parser.ScoreModel.CongenericScoreTracks[0].MeasureList;
-        Assert.AreEqual(expectedMeasures.Count, actualMeasures.Count);
+        List<Measure> actualMeasures = actual.MeasureList;
+        Assert.That(actualMeasures, Has.Count.EqualTo(expectedMeasures.Count));
         for (int i = 0; i < expectedMeasures.Count; i++)
         {
             List<ValueNote> expectedNotes = expectedMeasures[i].NoteList;
             List<ValueNote> actualNotes = actualMeasures[i].NoteList;
-            Assert.AreEqual(expectedNotes.Count, actualNotes.Count);
+            Assert.That(actualNotes, Has.Count.EqualTo(expectedNotes.Count));
             for (int j = 0; j < expectedNotes.Count; j++)
             {
-                Assert.AreEqual(expectedNotes[j].Pitches.Count, actualNotes[j].Pitches.Count);
+                Assert.That(actualNotes[j].Pitches, Has.Count.EqualTo(expectedNotes[j].Pitches.Count));
                 for (int k = 0; k < expectedNotes[j].Pitches.Count; k++)
                 {
-                    Assert.AreEqual(expectedNotes[j].Pitches[k], actualNotes[j].Pitches[k]);
+                    Assert.That(actualNotes[j].Pitches[k], Is.EqualTo(expectedNotes[j].Pitches[k]));
                 }
             }
         }
@@ -279,21 +304,22 @@ public class MusicXmlParserTests
     [Test]
     public void XmlParserDurationTest()
     {
-        var xmlReader = new MusicXmlReader($"{SystemData.ProjectFolderPath}LibiadaMusicExample7Liga.xml");
-        var parser = new MusicXmlParser();
+        string xmlFilePath = Path.Join(TestContext.CurrentContext.TestDirectory, "Music", "XmlTestFiles", "LibiadaMusicExample7Liga.xml");
+        MusicXmlReader xmlReader = new(xmlFilePath);
+        MusicXmlParser parser = new();
         parser.Execute(xmlReader.MusicXmlDocument);
-
+        CongenericScoreTrack actual = parser.ScoreModel.CongenericScoreTracks[0];
         List<Measure> expectedMeasures = scoreTrack.CongenericScoreTracks[0].MeasureList;
-        List<Measure> actualMeasures = parser.ScoreModel.CongenericScoreTracks[0].MeasureList;
-        Assert.AreEqual(expectedMeasures.Count, actualMeasures.Count);
+        List<Measure> actualMeasures = actual.MeasureList;
+        Assert.That(actualMeasures, Has.Count.EqualTo(expectedMeasures.Count));
         for (int i = 0; i < expectedMeasures.Count; i++)
         {
             List<ValueNote> expectedNotes = expectedMeasures[i].NoteList;
             List<ValueNote> actualNotes = actualMeasures[i].NoteList;
-            Assert.AreEqual(expectedNotes.Count, actualNotes.Count);
+            Assert.That(actualNotes, Has.Count.EqualTo(expectedNotes.Count));
             for (int j = 0; j < expectedNotes.Count; j++)
             {
-                Assert.AreEqual(expectedNotes[j].Duration, actualNotes[j].Duration);
+                Assert.That(actualNotes[j].Duration, Is.EqualTo(expectedNotes[j].Duration));
             }
         }
     }
@@ -304,21 +330,22 @@ public class MusicXmlParserTests
     [Test]
     public void XmlParserTieTest()
     {
-        var xmlReader = new MusicXmlReader($"{SystemData.ProjectFolderPath}LibiadaMusicExample7Liga.xml");
-        var parser = new MusicXmlParser();
+        string xmlFilePath = Path.Join(TestContext.CurrentContext.TestDirectory, "Music", "XmlTestFiles", "LibiadaMusicExample7Liga.xml");
+        MusicXmlReader xmlReader = new(xmlFilePath);
+        MusicXmlParser parser = new();
         parser.Execute(xmlReader.MusicXmlDocument);
-
+        CongenericScoreTrack actual = parser.ScoreModel.CongenericScoreTracks[0];
         List<Measure> expectedMeasures = scoreTrack.CongenericScoreTracks[0].MeasureList;
-        List<Measure> actualMeasures = parser.ScoreModel.CongenericScoreTracks[0].MeasureList;
-        Assert.AreEqual(expectedMeasures.Count, actualMeasures.Count);
+        List<Measure> actualMeasures = actual.MeasureList;
+        Assert.That(actualMeasures, Has.Count.EqualTo(expectedMeasures.Count));
         for (int i = 0; i < expectedMeasures.Count; i++)
         {
             List<ValueNote> expectedNotes = expectedMeasures[i].NoteList;
             List<ValueNote> actualNotes = actualMeasures[i].NoteList;
-            Assert.AreEqual(expectedNotes.Count, actualNotes.Count);
+            Assert.That(actualNotes, Has.Count.EqualTo(expectedNotes.Count));
             for (int j = 0; j < expectedNotes.Count; j++)
             {
-                Assert.AreEqual(expectedNotes[j].Tie, actualNotes[j].Tie);
+                Assert.That(actualNotes[j].Tie, Is.EqualTo(expectedNotes[j].Tie));
             }
         }
     }
@@ -329,21 +356,22 @@ public class MusicXmlParserTests
     [Test]
     public void XmlParserTripletTest()
     {
-        var xmlReader = new MusicXmlReader($"{SystemData.ProjectFolderPath}LibiadaMusicExample7Liga.xml");
-        var parser = new MusicXmlParser();
+        string xmlFilePath = Path.Join(TestContext.CurrentContext.TestDirectory, "Music", "XmlTestFiles", "LibiadaMusicExample7Liga.xml");
+        MusicXmlReader xmlReader = new(xmlFilePath);
+        MusicXmlParser parser = new();
         parser.Execute(xmlReader.MusicXmlDocument);
-
+        CongenericScoreTrack actual = parser.ScoreModel.CongenericScoreTracks[0];
         List<Measure> expectedMeasures = scoreTrack.CongenericScoreTracks[0].MeasureList;
-        List<Measure> actualMeasures = parser.ScoreModel.CongenericScoreTracks[0].MeasureList;
-        Assert.AreEqual(expectedMeasures.Count, actualMeasures.Count);
+        List<Measure> actualMeasures = actual.MeasureList;
+        Assert.That(actualMeasures, Has.Count.EqualTo(expectedMeasures.Count));
         for (int i = 0; i < expectedMeasures.Count; i++)
         {
             List<ValueNote> expectedNotes = expectedMeasures[i].NoteList;
             List<ValueNote> actualNotes = actualMeasures[i].NoteList;
-            Assert.AreEqual(expectedNotes.Count, actualNotes.Count);
+            Assert.That(actualNotes, Has.Count.EqualTo(expectedNotes.Count));
             for (int j = 0; j < expectedNotes.Count; j++)
             {
-                Assert.AreEqual(expectedNotes[j].Triplet, actualNotes[j].Triplet);
+                Assert.That(actualNotes[j].Triplet, Is.EqualTo(expectedNotes[j].Triplet));
             }
         }
     }

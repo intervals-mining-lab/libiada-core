@@ -21,60 +21,32 @@ public static class CongenericCalculatorsFactory
     /// </exception>
     public static ICongenericCalculator CreateCalculator(CongenericCharacteristic type)
     {
-        switch (type)
+        return type switch
         {
-            case CongenericCharacteristic.ArithmeticMean:
-                return new ArithmeticMean();
-            case CongenericCharacteristic.AverageRemoteness:
-                return new AverageRemoteness();
-            case CongenericCharacteristic.CuttingLength:
-                return new CuttingLength();
-            case CongenericCharacteristic.CuttingLengthVocabularyEntropy:
-                return new CuttingLengthVocabularyEntropy();
-            case CongenericCharacteristic.Depth:
-                return new Depth();
-            case CongenericCharacteristic.DescriptiveInformation:
-                return new DescriptiveInformation();
-            case CongenericCharacteristic.ElementsCount:
-                return new ElementsCount();
-            case CongenericCharacteristic.GeometricMean:
-                return new GeometricMean();
-            case CongenericCharacteristic.IdentificationInformation:
-                return new IdentificationInformation();
-            case CongenericCharacteristic.IntervalsCount:
-                return new IntervalsCount();
-            case CongenericCharacteristic.IntervalsSum:
-                return new IntervalsSum();
-            case CongenericCharacteristic.Length:
-                return new Length();
-            case CongenericCharacteristic.Periodicity:
-                return new Periodicity();
-            case CongenericCharacteristic.Probability:
-                return new Probability();
-            case CongenericCharacteristic.Regularity:
-                return new Regularity();
-            case CongenericCharacteristic.Uniformity:
-                return new Uniformity();
-            case CongenericCharacteristic.VariationsCount:
-                return new VariationsCount();
-            case CongenericCharacteristic.Volume:
-                return new Volume();
-            case CongenericCharacteristic.RemotenessDispersion:
-                return new RemotenessDispersion();
-            case CongenericCharacteristic.RemotenessKurtosis:
-                return new RemotenessKurtosis();
-            case CongenericCharacteristic.RemotenessKurtosisCoefficient:
-                return new RemotenessKurtosisCoefficient();
-            case CongenericCharacteristic.RemotenessSkewness:
-                return new RemotenessSkewness();
-            case CongenericCharacteristic.RemotenessSkewnessCoefficient:
-                return new RemotenessSkewnessCoefficient();
-            case CongenericCharacteristic.RemotenessStandardDeviation:
-                return new RemotenessStandardDeviation();
-            case CongenericCharacteristic.InformationAmount:
-                return new InformationAmount();
-            default:
-                throw new InvalidEnumArgumentException(nameof(type), (int)type, typeof(CongenericCharacteristic));
-        }
+            CongenericCharacteristic.ArithmeticMean => new ArithmeticMean(),
+            CongenericCharacteristic.AverageRemoteness => new AverageRemoteness(),
+            CongenericCharacteristic.CuttingLength => new CuttingLength(),
+            CongenericCharacteristic.CuttingLengthVocabularyEntropy => new CuttingLengthVocabularyEntropy(),
+            CongenericCharacteristic.Depth => new Depth(),
+            CongenericCharacteristic.ElementsCount => new ElementsCount(),
+            CongenericCharacteristic.GeometricMean => new GeometricMean(),
+            CongenericCharacteristic.IdentificationInformation => new IdentificationInformation(),
+            CongenericCharacteristic.IntervalsCount => new IntervalsCount(),
+            CongenericCharacteristic.IntervalsSum => new IntervalsSum(),
+            CongenericCharacteristic.Length => new Length(),
+            CongenericCharacteristic.Periodicity => new Periodicity(),
+            CongenericCharacteristic.Probability => new Probability(),
+            CongenericCharacteristic.Uniformity => new Uniformity(),
+            CongenericCharacteristic.VariationsCount => new VariationsCount(),
+            CongenericCharacteristic.Volume => new Volume(),
+            CongenericCharacteristic.RemotenessVariance => new RemotenessVariance(),
+            CongenericCharacteristic.RemotenessKurtosis => new RemotenessKurtosis(),
+            CongenericCharacteristic.RemotenessKurtosisCoefficient => new RemotenessKurtosisCoefficient(),
+            CongenericCharacteristic.RemotenessSkewness => new RemotenessSkewness(),
+            CongenericCharacteristic.RemotenessSkewnessCoefficient => new RemotenessSkewnessCoefficient(),
+            CongenericCharacteristic.RemotenessStandardDeviation => new RemotenessStandardDeviation(),
+            CongenericCharacteristic.InformationAmount => new InformationAmount(),
+            _ => throw new InvalidEnumArgumentException(nameof(type), (int)type, typeof(CongenericCharacteristic)),
+        };
     }
 }

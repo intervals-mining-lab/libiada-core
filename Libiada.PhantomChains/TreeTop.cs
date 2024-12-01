@@ -91,7 +91,7 @@ public class TreeTop : AbstractNode
     {
         int len = table.Length - 1;
         len *= isString ? 3 : 1;
-        var result = new BaseChain(len);
+        BaseChain result = new(len);
 
         Find(result, generator, table);
         return result;

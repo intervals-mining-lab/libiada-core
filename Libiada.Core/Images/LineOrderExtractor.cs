@@ -21,15 +21,15 @@ public class LineOrderExtractor : IImageOrderExtractor
     /// </returns>
     public BaseChain ExtractOrder(Rgba32[,] image)
     {
-        var order = new int[image.GetLength(0) * image.GetLength(1)];
-        var alphabet = new Alphabet { NullValue.Instance() };
+        int[] order = new int[image.GetLength(0) * image.GetLength(1)];
+        Alphabet alphabet = [NullValue.Instance()];
 
         for (int i = 0; i < image.GetLength(0); i++)
         {
             for (int j = 0; j < image.GetLength(1); j++)
             {
                 // TODO: refactor this to user standard BaseChain constructor
-                var pixelIndex = alphabet.IndexOf(new ValuePixel(image[i, j]));
+                int pixelIndex = alphabet.IndexOf(new ValuePixel(image[i, j]));
                 if (pixelIndex == -1)
                 {
                     alphabet.Add(new ValuePixel(image[i, j]));

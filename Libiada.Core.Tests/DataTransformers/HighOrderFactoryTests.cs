@@ -30,9 +30,9 @@ public class HighOrderFactoryTests
     [TestCase(0, 5, Link.CycleEnd)]
     public void SecondOrderTest(int chainIndex, int resultIndex, Link link)
     {
-        var result = HighOrderFactory.Create(ChainsStorage.Chains[chainIndex], link);
-        var expected = ChainsStorage.HighOrderChains[resultIndex];
-        Assert.AreEqual(expected, result);
+        Chain result = HighOrderFactory.Create(ChainsStorage.Chains[chainIndex], link);
+        Chain expected = ChainsStorage.HighOrderChains[resultIndex];
+        Assert.That(result, Is.EqualTo(expected));
     }
 
     /// <summary>
@@ -41,9 +41,9 @@ public class HighOrderFactoryTests
     [Test]
     public void ThirdOrderTest()
     {
-        var result = HighOrderFactory.Create(ChainsStorage.Chains[0], Link.End);
+        Chain result = HighOrderFactory.Create(ChainsStorage.Chains[0], Link.End);
         result = HighOrderFactory.Create(result, Link.End);
-        var expected = ChainsStorage.HighOrderChains[6];
-        Assert.AreEqual(expected, result);
+        Chain expected = ChainsStorage.HighOrderChains[6];
+        Assert.That(result, Is.EqualTo(expected));
     }
 }

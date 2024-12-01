@@ -52,7 +52,7 @@ public class Seeker : Interfaces.Seeker
     /// </returns>
     public override int Seek(List<string> required)
     {
-        result = new List<int>();
+        result = [];
         while (iterator.HasNext())
         {
             List<string> sequence = iterator.Next();

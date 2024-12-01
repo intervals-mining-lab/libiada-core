@@ -1,5 +1,6 @@
 ﻿namespace Libiada.Core.Tests.DataTransformers;
 
+using Libiada.Core.Core;
 using Libiada.Core.DataTransformers;
 using Libiada.Core.Tests.Core;
 
@@ -23,9 +24,9 @@ public class DissimilarChainFactoryTests
     [TestCase(2, 2)]
     public void DissimilarOrderTest(int chainIndex, int resultIndex)
     {
-        var result = DissimilarChainFactory.Create(ChainsStorage.Chains[chainIndex]);
-        var expected = ChainsStorage.DissimilarChains[resultIndex];
-        Assert.AreEqual(expected, result);
+        Chain result = DissimilarChainFactory.Create(ChainsStorage.Chains[chainIndex]);
+        Chain expected = ChainsStorage.DissimilarChains[resultIndex];
+        Assert.That(result, Is.EqualTo(expected));
     }
 
     /// <summary>
@@ -42,9 +43,9 @@ public class DissimilarChainFactoryTests
     [TestCase(2, 5)]
     public void DissimilarSecondOrderTest(int chainIndex, int resultIndex)
     {
-        var result = DissimilarChainFactory.Create(ChainsStorage.Chains[chainIndex]);
+        Chain result = DissimilarChainFactory.Create(ChainsStorage.Chains[chainIndex]);
         result = DissimilarChainFactory.Create(result);
-        var expected = ChainsStorage.DissimilarChains[resultIndex];
-        Assert.AreEqual(expected, result);
+        Chain expected = ChainsStorage.DissimilarChains[resultIndex];
+        Assert.That(result, Is.EqualTo(expected));
     }
 }

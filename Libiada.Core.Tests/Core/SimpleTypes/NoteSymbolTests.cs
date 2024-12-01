@@ -20,8 +20,7 @@ public class NoteSymbolTests
     [Test]
     public void NoteSymbolCountTest()
     {
-        var actualCount = EnumExtensions.ToArray<NoteSymbol>().Length;
-        Assert.AreEqual(NoteSymbolsCount, actualCount);
+        Assert.That(EnumExtensions.ToArray<NoteSymbol>(), Has.Length.EqualTo(NoteSymbolsCount));
     }
 
     /// <summary>
@@ -30,14 +29,14 @@ public class NoteSymbolTests
     [Test]
     public void NoteSymbolValuesTest()
     {
-        var noteSymbols = EnumExtensions.ToArray<NoteSymbol>();
-        Assert.IsTrue(noteSymbols.Contains((NoteSymbol)0));
-        Assert.IsTrue(noteSymbols.Contains((NoteSymbol)2));
-        Assert.IsTrue(noteSymbols.Contains((NoteSymbol)4));
-        Assert.IsTrue(noteSymbols.Contains((NoteSymbol)5));
-        Assert.IsTrue(noteSymbols.Contains((NoteSymbol)7));
-        Assert.IsTrue(noteSymbols.Contains((NoteSymbol)9));
-        Assert.IsTrue(noteSymbols.Contains((NoteSymbol)11));
+        NoteSymbol[] noteSymbols = EnumExtensions.ToArray<NoteSymbol>();
+        Assert.That(noteSymbols, Does.Contain((NoteSymbol)0));
+        Assert.That(noteSymbols, Does.Contain((NoteSymbol)2));
+        Assert.That(noteSymbols, Does.Contain((NoteSymbol)4));
+        Assert.That(noteSymbols, Does.Contain((NoteSymbol)5));
+        Assert.That(noteSymbols, Does.Contain((NoteSymbol)7));
+        Assert.That(noteSymbols, Does.Contain((NoteSymbol)9));
+        Assert.That(noteSymbols, Does.Contain((NoteSymbol)11));
     }
 
     /// <summary>
@@ -58,7 +57,7 @@ public class NoteSymbolTests
     [TestCase((NoteSymbol)11, "B")]
     public void NoteSymbolNamesTest(NoteSymbol noteSymbol, string name)
     {
-        Assert.AreEqual(name, noteSymbol.GetName());
+        Assert.That(noteSymbol.GetName(), Is.EqualTo(name));
     }
 
     /// <summary>
@@ -70,7 +69,7 @@ public class NoteSymbolTests
     [Test]
     public void NoteSymbolHasDisplayValueTest([Values]NoteSymbol noteSymbol)
     {
-        Assert.IsFalse(string.IsNullOrEmpty(noteSymbol.GetDisplayValue()));
+        Assert.That(noteSymbol.GetDisplayValue(), Is.Not.Empty);
     }
 
     /// <summary>
@@ -82,7 +81,7 @@ public class NoteSymbolTests
     [Test]
     public void NoteSymbolHasDescriptionTest([Values]NoteSymbol noteSymbol)
     {
-        Assert.IsFalse(string.IsNullOrEmpty(noteSymbol.GetDescription()));
+        Assert.That(noteSymbol.GetDescription(), Is.Not.Empty);
     }
 
     /// <summary>
@@ -91,8 +90,8 @@ public class NoteSymbolTests
     [Test]
     public void NoteSymbolValuesUniqueTest()
     {
-        var noteSymbols = EnumExtensions.ToArray<NoteSymbol>();
-        var noteSymbolValues = noteSymbols.Cast<byte>();
+        NoteSymbol[] noteSymbols = EnumExtensions.ToArray<NoteSymbol>();
+        IEnumerable<byte> noteSymbolValues = noteSymbols.Cast<byte>();
         Assert.That(noteSymbolValues, Is.Unique);
     }
 }

@@ -31,6 +31,6 @@ public class GeometricMean : BinaryCalculator
 
         double result = intervals.Where(t => t > 0).Sum(t => Math.Log(t, 2));
 
-        return Math.Pow(2, intervals.Length == 0 ? 0 : result / intervals.Length);
+        return intervals.Length == 0 ? 0 : Math.Pow(2, result / intervals.Length);
     }
 }

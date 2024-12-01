@@ -21,14 +21,11 @@ public class MatrixBuilder : IMatrixBuilder
     /// </returns>
     public object Create(int alphabetCardinality, int i)
     {
-        switch (i)
+        return i switch
         {
-            case 0:
-                return (double)0;
-            case 1:
-                return new MatrixRow(alphabetCardinality, i);
-            default:
-                return new Matrix(alphabetCardinality, i);
-        }
+            0 => (double)0,
+            1 => new MatrixRow(alphabetCardinality, i),
+            _ => new Matrix(alphabetCardinality, i),
+        };
     }
 }

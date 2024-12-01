@@ -27,7 +27,7 @@ public class Fmotif : IBaseObject
     {
         Id = id;
         Type = type;
-        NoteList = new List<ValueNote>();
+        NoteList = [];
         PauseTreatment = pauseTreatment;
     }
 
@@ -245,7 +245,7 @@ public class Fmotif : IBaseObject
     /// </returns>
     public IBaseObject Clone()
     {
-        var clone = new Fmotif(Type, PauseTreatment, Id);
+        Fmotif clone = new(Type, PauseTreatment, Id);
         foreach (ValueNote note in NoteList)
         {
             clone.NoteList.Add((ValueNote)note.Clone());
@@ -313,8 +313,8 @@ public class Fmotif : IBaseObject
 
             for (int j = 0; j < selfNote.Pitches.Count; j++)
             {
-                var selfPitch = selfNote.Pitches[j];
-                var otherPitch = otherNote.Pitches[j];
+                Pitch selfPitch = selfNote.Pitches[j];
+                Pitch otherPitch = otherNote.Pitches[j];
 
                 if (firstTime)
                 {
@@ -404,8 +404,8 @@ public class Fmotif : IBaseObject
                     // учитывая секентный перенос (Sequent)
                     for (int j = 0; j < selfNote.Pitches.Count; j++)
                     {
-                        var selfPitch = selfNote.Pitches[j];
-                        var otherPitch = otherNote.Pitches[j];
+                        Pitch selfPitch = selfNote.Pitches[j];
+                        Pitch otherPitch = otherNote.Pitches[j];
                         if (firstTime)
                         {
                             // при первом сравнении вычисляем на сколько полутонов отличаются первые ноты,

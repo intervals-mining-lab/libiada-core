@@ -11,20 +11,18 @@ public class AllOffsetsAlignerTests
     /// The combination tests.
     /// </summary>
     private static readonly object[][] CombinationTests =
-        {
-            new object[]
-            {
-                new double[] { 1, 2, 3 }, new double[] { 1, 2, 3, 4, 5 },
-                new[] { new double[] { 1, 2, 3 }, new double[] { 1, 2, 3 }, new double[] { 1, 2, 3 } },
-                new[] { new double[] { 1, 2, 3 }, new double[] { 2, 3, 4 }, new double[] { 3, 4, 5 } }
-            },
-            new object[]
-            {
+        [
+            [
+                new double[] { 1.0d, 2, 3 }, new double[] { 1, 2, 3, 4, 5 },
+                new[] { new double[] { 1, 2, 3 }, [1, 2, 3], [1, 2, 3] },
+                new[] { new double[] { 1, 2, 3 }, [2, 3, 4], [3, 4, 5] }
+            ],
+            [
                 new double[] { 1, 2, 3, 4, 5, 6 }, new double[] { 1, 2, 3 },
-                new[] { new double[] { 1, 2, 3 }, new double[] { 2, 3, 4 }, new double[] { 3, 4, 5 }, new double[] { 4, 5, 6 } },
-                new[] { new double[] { 1, 2, 3 }, new double[] { 1, 2, 3 }, new double[] { 1, 2, 3 }, new double[] { 1, 2, 3 } }
-            }
-        };
+                new[] { new double[] { 1, 2, 3 }, [2, 3, 4], [3, 4, 5], [4, 5, 6] },
+                new[] { new double[] { 1, 2, 3 }, [1, 2, 3], [1, 2, 3], [1, 2, 3] }
+            ]
+        ];
 
     /// <summary>
     /// The all offsets align test.
@@ -41,13 +39,16 @@ public class AllOffsetsAlignerTests
     /// <param name="secondExpected">
     /// The second Expected.
     /// </param>
-    [TestCaseSource("CombinationTests")]
+    [TestCaseSource(nameof(CombinationTests))]
 
     public void AllOffsetsAlignTest(double[] firstSeries, double[] secondSeries, double[][] firstExpected, double[][] secondExpected)
     {
-        var aligner = new AllOffsetsAligner();
-        var result = aligner.AlignSeries(firstSeries, secondSeries);
-        Assert.AreEqual(firstExpected, result.first);
-        Assert.AreEqual(secondExpected, result.second);
+        AllOffsetsAligner aligner = new();
+        (double[][] first, double[][] second) = aligner.AlignSeries(firstSeries, secondSeries);
+        Assert.Multiple(() =>
+        {
+            Assert.That(first, Is.EqualTo(firstExpected));
+            Assert.That(second, Is.EqualTo(secondExpected));
+        });
     }
 }

@@ -51,7 +51,7 @@ public class MarkovChainNotCongenericStaticTests
         const int NoCongenericRank = 0;
 
         // creating markov chain
-        var markovChain = new MarkovChainNotCongenericStatic(MarkovChainRank, NoCongenericRank, generator);
+        MarkovChainNotCongenericStatic markovChain = new(MarkovChainRank, NoCongenericRank, generator);
 
         // length of generated sequence
         const int Length = 30;
@@ -79,7 +79,7 @@ public class MarkovChainNotCongenericStaticTests
          */
 
         // expected result of generation
-        var resultTheory = new Chain("aabaabaaaaaabaabaaaaaabaabaaaa");
+        Chain resultTheory = new("aabaabaaaaaabaabaaaaaabaabaaaa");
         // "a" 0.77;
         // "a" 0.15;
         // "b" 0.96;
@@ -111,7 +111,7 @@ public class MarkovChainNotCongenericStaticTests
         // "a" 0.71;
         // "a" 0.2;
 
-        Assert.AreEqual(resultTheory, temp);
+        Assert.That(resultTheory, Is.EqualTo(temp));
     }
 
     /// <summary>
@@ -130,7 +130,7 @@ public class MarkovChainNotCongenericStaticTests
         const int NoCongenericRank = 1;
 
         // creating markov chain
-        var markovChain = new MarkovChainNotCongenericStatic(MarkovChainRank, NoCongenericRank, generator);
+        MarkovChainNotCongenericStatic markovChain = new(MarkovChainRank, NoCongenericRank, generator);
 
         // length of generated sequence
         const int Length = 12;
@@ -199,7 +199,7 @@ public class MarkovChainNotCongenericStaticTests
          */
 
         // expected result of generation
-        var result = new Chain("bacbacacaacb");
+        Chain result = new("bacbacacaacb");
         // 1 chain. цепь веро€тность по первому уровню. выпало  0,77 ѕолучаем b
         // 2 chain. веро€тность по второму уровню. выпало  0.15 ѕолучаем a
         // 1 chain. веро€тность по второму уровню. выпало  0.96 ѕолучаем с
@@ -213,7 +213,7 @@ public class MarkovChainNotCongenericStaticTests
         // 1 chain. веро€тность по второму уровню. выпало  0.77 ѕолучаем с
         // 2 chain. веро€тность по второму уровню. выпало  0.15 ѕолучаем b
 
-        Assert.AreEqual(result, temp);
+        Assert.That(result, Is.EqualTo(temp));
     }
 
     /// <summary>
@@ -260,7 +260,7 @@ public class MarkovChainNotCongenericStaticTests
          */
 
         // expected result of generation
-        var resultTheory = new Chain("aabaabaaaaaabaabaaaaaabaabaaaa");
+        Chain resultTheory = new("aabaabaaaaaabaabaaaaaabaabaaaa");
         // "a" 0.77;
         // "a" 0.15;
         // "b" 0.96;
@@ -378,7 +378,7 @@ public class MarkovChainNotCongenericStaticTests
          */
 
         // expected result of generation
-        var result = new Chain("bacbacacaacb");
+        Chain result = new("bacbacacaacb");
         // 1 chain. веро€тность по первому уровню. выпало  0,77 ѕолучаем b
         // 2 chain. веро€тность по второму уровню. выпало  0.15 ѕолучаем a
         // 1 chain. веро€тность по второму уровню. выпало  0.96 ѕолучаем с

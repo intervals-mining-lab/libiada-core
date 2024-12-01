@@ -15,20 +15,20 @@ public class CustomIteratorTests
     [Test]
     public void CustomIteratorTest()
     {
-        var starts = new List<List<int>> { new List<int> { 0 }, new List<int> { 3 }, new List<int> { 5, 9 } };
-        var lengthes = new List<List<int>> { new List<int> { 2 }, new List<int> { 3 }, new List<int> { 2, 1 } };
+        List<List<int>> starts = [[0], [3], [5, 9]];
+        List<List<int>> lengthes = [[2], [3], [2, 1]];
 
-        var source = new Chain("abcdefghij");
+        Chain source = new("abcdefghij");
 
-        List<Chain> expected = new List<Chain> { new Chain("ab"), new Chain("def"), new Chain("fgj") };
+        List<Chain> expected = [new Chain("ab"), new Chain("def"), new Chain("fgj")];
 
-        var iterator = new CustomIterator(source, starts, lengthes);
+        CustomIterator iterator = new(source, starts, lengthes);
 
         for (int i = 0; iterator.Next(); i++)
         {
             Chain result = (Chain)iterator.Current();
 
-            Assert.AreEqual(expected[i], result);
+            Assert.That(result, Is.EqualTo(expected[i]));
         }
     }
 }

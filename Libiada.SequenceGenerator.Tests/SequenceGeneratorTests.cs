@@ -15,22 +15,22 @@ public class SequenceGeneratorTests
     [Test]
     public void GeneratorTest()
     {
-        var one = new ValueInt(1);
-        var two = new ValueInt(2);
-        var expected = new List<BaseChain>
-        {
-            new BaseChain(new List<IBaseObject> { one, one, one }),
-            new BaseChain(new List<IBaseObject> { two, one, one }),
-            new BaseChain(new List<IBaseObject> { one, two, one }),
-            new BaseChain(new List<IBaseObject> { two, two, one }),
-            new BaseChain(new List<IBaseObject> { one, one, two }),
-            new BaseChain(new List<IBaseObject> { two, one, two }),
-            new BaseChain(new List<IBaseObject> { one, two, two }),
-            new BaseChain(new List<IBaseObject> { two, two, two })
-        };
-        var sequenceGenerator = new SequenceGenerator();
-        var actual = sequenceGenerator.GenerateSequences(3, 2);
-        Assert.AreEqual(expected, actual);
+        ValueInt one = new(1);
+        ValueInt two = new(2);
+        List<BaseChain> expected =
+        [
+            new(new List<IBaseObject> { one, one, one }),
+            new(new List<IBaseObject> { two, one, one }),
+            new(new List<IBaseObject> { one, two, one }),
+            new(new List<IBaseObject> { two, two, one }),
+            new(new List<IBaseObject> { one, one, two }),
+            new(new List<IBaseObject> { two, one, two }),
+            new(new List<IBaseObject> { one, two, two }),
+            new(new List<IBaseObject> { two, two, two })
+        ];
+        SequenceGenerator sequenceGenerator = new();
+        List<BaseChain> actual = sequenceGenerator.GenerateSequences(3, 2);
+        Assert.That(actual, Is.EqualTo(expected));
     }
 
     /// <summary>
@@ -39,41 +39,41 @@ public class SequenceGeneratorTests
     [Test]
     public void CompleteGeneratorTest()
     {
-        var one = new ValueInt(1);
-        var two = new ValueInt(2);
-        var three = new ValueInt(3);
-        var expected = new List<BaseChain>
-        {
-            new BaseChain(new List<IBaseObject> { one, one, one }),
-            new BaseChain(new List<IBaseObject> { two, one, one }),
-            new BaseChain(new List<IBaseObject> { three, one, one }),
-            new BaseChain(new List<IBaseObject> { one, two, one }),
-            new BaseChain(new List<IBaseObject> { two, two, one }),
-            new BaseChain(new List<IBaseObject> { three, two, one }),
-            new BaseChain(new List<IBaseObject> { one, three, one }),
-            new BaseChain(new List<IBaseObject> { two, three, one }),
-            new BaseChain(new List<IBaseObject> { three, three, one }),
-            new BaseChain(new List<IBaseObject> { one, one, two }),
-            new BaseChain(new List<IBaseObject> { two, one, two }),
-            new BaseChain(new List<IBaseObject> { three, one, two }),
-            new BaseChain(new List<IBaseObject> { one, two, two }),
-            new BaseChain(new List<IBaseObject> { two, two, two }),
-            new BaseChain(new List<IBaseObject> { three, two, two }),
-            new BaseChain(new List<IBaseObject> { one, three, two }),
-            new BaseChain(new List<IBaseObject> { two, three, two }),
-            new BaseChain(new List<IBaseObject> { three, three, two }),
-            new BaseChain(new List<IBaseObject> { one, one, three }),
-            new BaseChain(new List<IBaseObject> { two, one, three }),
-            new BaseChain(new List<IBaseObject> { three, one, three }),
-            new BaseChain(new List<IBaseObject> { one, two, three }),
-            new BaseChain(new List<IBaseObject> { two, two, three }),
-            new BaseChain(new List<IBaseObject> { three, two, three }),
-            new BaseChain(new List<IBaseObject> { one, three, three }),
-            new BaseChain(new List<IBaseObject> { two, three, three }),
-            new BaseChain(new List<IBaseObject> { three, three, three })
-        };
-        var sequenceGenerator = new SequenceGenerator();
-        var actual = sequenceGenerator.GenerateSequences(3);
-        Assert.AreEqual(expected, actual);
+        ValueInt one = new(1);
+        ValueInt two = new(2);
+        ValueInt three = new(3);
+        List<BaseChain> expected =
+        [
+            new(new List<IBaseObject> { one, one, one }),
+            new(new List<IBaseObject> { two, one, one }),
+            new(new List<IBaseObject> { three, one, one }),
+            new(new List<IBaseObject> { one, two, one }),
+            new(new List<IBaseObject> { two, two, one }),
+            new(new List<IBaseObject> { three, two, one }),
+            new(new List<IBaseObject> { one, three, one }),
+            new(new List<IBaseObject> { two, three, one }),
+            new(new List<IBaseObject> { three, three, one }),
+            new(new List<IBaseObject> { one, one, two }),
+            new(new List<IBaseObject> { two, one, two }),
+            new(new List<IBaseObject> { three, one, two }),
+            new(new List<IBaseObject> { one, two, two }),
+            new(new List<IBaseObject> { two, two, two }),
+            new(new List<IBaseObject> { three, two, two }),
+            new(new List<IBaseObject> { one, three, two }),
+            new(new List<IBaseObject> { two, three, two }),
+            new(new List<IBaseObject> { three, three, two }),
+            new(new List<IBaseObject> { one, one, three }),
+            new(new List<IBaseObject> { two, one, three }),
+            new(new List<IBaseObject> { three, one, three }),
+            new(new List<IBaseObject> { one, two, three }),
+            new(new List<IBaseObject> { two, two, three }),
+            new(new List<IBaseObject> { three, two, three }),
+            new(new List<IBaseObject> { one, three, three }),
+            new(new List<IBaseObject> { two, three, three }),
+            new(new List<IBaseObject> { three, three, three })
+        ];
+        SequenceGenerator sequenceGenerator = new();
+        List<BaseChain> actual = sequenceGenerator.GenerateSequences(3);
+        Assert.That(actual, Is.EqualTo(expected));
     }
 }

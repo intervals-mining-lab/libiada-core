@@ -43,8 +43,8 @@ public class SeriesManagerTests
     [TestCase(17, new[] { 1, 1, 1, 1 })]
     public void SimpleSeriesManagerTests(int index, int[] expected)
     {
-        SeriesManager manager = new SeriesManager(congenericChains[index]);
+        SeriesManager manager = new(congenericChains[index]);
         int[] actual = manager.GetArrangement(Link.NotApplied);
-        Assert.AreEqual(expected, actual);
+        Assert.That(actual, Is.EqualTo(expected));
     }
 }

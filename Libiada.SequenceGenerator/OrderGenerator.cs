@@ -20,8 +20,8 @@ public class OrderGenerator
     /// </returns>
     public List<int[]> GenerateOrders(int length, int alphabetCardinality)
     {
-        var result = new List<int[]>();
-        var iterator = new OrderIterator(length, alphabetCardinality);
+        List<int[]> result = [];
+        OrderIterator iterator = new(length, alphabetCardinality);
         foreach (int[] order in iterator)
         {
             result.Add(order);
@@ -44,8 +44,8 @@ public class OrderGenerator
     /// </returns>
     public List<int[]> StrictGenerateOrders(int length, int alphabetCardinality)
     {
-        var result = new List<int[]>();
-        var iterator = new OrderIterator(length, alphabetCardinality);
+        List<int[]> result = [];
+        OrderIterator iterator = new(length, alphabetCardinality);
         foreach (int[] order in iterator)
         {
             if (order.Distinct().Count() == alphabetCardinality)

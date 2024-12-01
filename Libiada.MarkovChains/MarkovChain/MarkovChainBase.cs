@@ -118,8 +118,8 @@ public abstract class MarkovChainBase
     /// </param>
     public virtual void Teach(BaseChain chain, TeachingMethod method)
     {
-        var builder = new MatrixBuilder();
-        var absMatrix = new IAbsoluteMatrix[HeterogeneityRank + 1];
+        MatrixBuilder builder = new();
+        IAbsoluteMatrix[] absMatrix = new IAbsoluteMatrix[HeterogeneityRank + 1];
         Alphabet = chain.Alphabet;
         for (int i = 0; i < HeterogeneityRank + 1; i++)
         {
@@ -129,7 +129,7 @@ public abstract class MarkovChainBase
         SpaceReorganizer reorganizer = GetRebuilder(method);
         chain = (BaseChain)reorganizer.Reorganize(chain);
 
-        var it = new IteratorStart(chain, Rank, 1);
+        IteratorStart it = new(chain, Rank, 1);
         it.Reset();
 
         int k = 0;
@@ -145,7 +145,7 @@ public abstract class MarkovChainBase
             }
 
             BaseChain chainToTeach = (BaseChain)it.Current();
-            var indexedChain = new int[Rank];
+            int[] indexedChain = new int[Rank];
             for (int i = 0; i < Rank; i++)
             {
                 indexedChain[i] = chain.Alphabet.IndexOf(chainToTeach[i]);
@@ -201,14 +201,11 @@ public abstract class MarkovChainBase
     /// </exception>
     protected virtual SpaceReorganizer GetRebuilder(TeachingMethod method)
     {
-        switch (method)
+        return method switch
         {
-            case TeachingMethod.None:
-                return new NullReorganizer();
-            case TeachingMethod.Cycle:
-                return new NullCycleSpaceReorganizer(Rank - 1);
-            default:
-                throw new ArgumentException();
-        }
+            TeachingMethod.None => new NullReorganizer(),
+            TeachingMethod.Cycle => new NullCycleSpaceReorganizer(Rank - 1),
+            _ => throw new ArgumentException(),
+        };
     }
 }

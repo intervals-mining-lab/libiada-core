@@ -14,7 +14,7 @@ public class IntervalsCount : ICongenericCalculator
     /// Source sequence.
     /// </param>
     /// <param name="link">
-    /// Link of intervals in sequence.
+    /// Binding of the intervals in the sequence.
     /// </param>
     /// <returns>
     /// Intervals count in chain as <see cref="double"/>.

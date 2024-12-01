@@ -15,19 +15,19 @@ public class LinearCalculatorTests
     [Test]
     public void TwoPointsTest()
     {
-        var node1 = new GraphElement(new[] { 15.0 }, "node1");
-        var node2 = new GraphElement(new[] { 15.0 }, "node2");
+        GraphElement node1 = new([15.0], "node1");
+        GraphElement node2 = new([15.0], "node2");
 
-        var el = new List<GraphElement> { node1, node2 };
+        List<GraphElement> el = [node1, node2];
 
-        var conn1 = new Connection(0, 1);
-        var con = new List<Connection> { conn1 };
+        Connection conn1 = new(0, 1);
+        List<Connection> con = [conn1];
 
-        var gm = new GraphManager(con, el);
+        GraphManager gm = new(con, el);
 
-        var calculator = new LinearCalculator();
+        LinearCalculator calculator = new();
         calculator.Calculate(gm);
-        Assert.AreEqual(0, gm.Connections[0].Distance);
+        Assert.That(gm.Connections[0].Distance, Is.Zero);
     }
 
     /// <summary>
@@ -36,18 +36,18 @@ public class LinearCalculatorTests
     [Test]
     public void TwoIntPointsTest()
     {
-        var node1 = new GraphElement(new[] { 15.0 }, "node1");
-        var node2 = new GraphElement(new[] { 15.0 }, "node2");
-        var el = new List<GraphElement> { node1, node2 };
+        GraphElement node1 = new([15.0], "node1");
+        GraphElement node2 = new([15.0], "node2");
+        List<GraphElement> el = [node1, node2];
 
-        var conn1 = new Connection(0, 1);
-        var con = new List<Connection> { conn1 };
+        Connection conn1 = new(0, 1);
+        List<Connection> con = [conn1];
 
-        var gm = new GraphManager(con, el);
+        GraphManager gm = new(con, el);
 
-        var calculator = new LinearCalculator();
+        LinearCalculator calculator = new();
         calculator.Calculate(gm);
-        Assert.AreEqual(0, gm.Connections[0].Distance);
+        Assert.That(gm.Connections[0].Distance, Is.Zero);
     }
 
     /// <summary>
@@ -56,25 +56,29 @@ public class LinearCalculatorTests
     [Test]
     public void ThreePointsTest()
     {
-        var node1 = new GraphElement(new[] { 15.0 }, "node1");
-        var node2 = new GraphElement(new[] { 10.0 }, "node2");
-        var node3 = new GraphElement(new[] { -3.0 }, "node3");
+        GraphElement node1 = new([15.0], "node1");
+        GraphElement node2 = new([10.0], "node2");
+        GraphElement node3 = new([-3.0], "node3");
 
-        var el = new List<GraphElement> { node1, node2, node3 };
+        List<GraphElement> el = [node1, node2, node3];
 
-        var conn1 = new Connection(0, 1);
-        var conn2 = new Connection(1, 2);
-        var conn3 = new Connection(0, 2);
+        Connection conn1 = new(0, 1);
+        Connection conn2 = new(1, 2);
+        Connection conn3 = new(0, 2);
 
-        var con = new List<Connection> { conn1, conn2, conn3 };
+        List<Connection> con = [conn1, conn2, conn3];
 
-        var gm = new GraphManager(con, el);
+        GraphManager gm = new(con, el);
 
-        var calculator = new LinearCalculator();
+        LinearCalculator calculator = new();
         calculator.Calculate(gm);
-        Assert.AreEqual(5, gm.Connections[0].Distance);
-        Assert.AreEqual(13, gm.Connections[1].Distance);
-        Assert.AreEqual(18, gm.Connections[2].Distance);
+
+        Assert.Multiple(() =>
+        {
+            Assert.That(gm.Connections[0].Distance, Is.EqualTo(5));
+            Assert.That(gm.Connections[1].Distance, Is.EqualTo(13));
+            Assert.That(gm.Connections[2].Distance, Is.EqualTo(18));
+        });
     }
 
     /// <summary>
@@ -83,20 +87,21 @@ public class LinearCalculatorTests
     [Test]
     public void TwoPoints3DTest()
     {
-        var node1 = new GraphElement(new[] { 15.0, 1.0, -20.0 }, "node1");
-        var node2 = new GraphElement(new[] { 0.0, -3.0, -4.0 }, "node2");
+        GraphElement node1 = new([15.0, 1.0, -20.0], "node1");
+        GraphElement node2 = new([0.0, -3.0, -4.0], "node2");
 
-        var el = new List<GraphElement> { node1, node2 };
+        List<GraphElement> el = [node1, node2];
 
-        var conn1 = new Connection(0, 1);
+        Connection conn1 = new(0, 1);
 
-        var con = new List<Connection> { conn1 };
+        List<Connection> con = [conn1];
 
-        var gm = new GraphManager(con, el);
+        GraphManager gm = new(con, el);
 
-        var calculator = new LinearCalculator();
+        LinearCalculator calculator = new();
         calculator.Calculate(gm);
-        Assert.AreEqual(22293, Math.Round(gm.Connections[0].Distance * 1000));
+
+        Assert.That(gm.Connections[0].Distance, Is.EqualTo(22.293).Within(0.001d));
     }
 
     /// <summary>
@@ -105,23 +110,27 @@ public class LinearCalculatorTests
     [Test]
     public void ThreePoints3DTest()
     {
-        var node1 = new GraphElement(new[] { 15.0, 1.0, -20.0 }, "node1");
-        var node2 = new GraphElement(new[] { 0.0, -3.0, -4.0 }, "node2");
-        var node3 = new GraphElement(new[] { 15.0, 1.0, -20.0 }, "node3");
+        GraphElement node1 = new([15.0, 1.0, -20.0], "node1");
+        GraphElement node2 = new([0.0, -3.0, -4.0], "node2");
+        GraphElement node3 = new([15.0, 1.0, -20.0], "node3");
 
-        var el = new List<GraphElement> { node1, node2, node3 };
+        List<GraphElement> el = [node1, node2, node3];
 
-        var conn1 = new Connection(0, 1);
-        var conn2 = new Connection(0, 2);
-        var conn3 = new Connection(1, 2);
-        var con = new List<Connection> { conn1, conn2, conn3 };
+        Connection conn1 = new(0, 1);
+        Connection conn2 = new(0, 2);
+        Connection conn3 = new(1, 2);
+        List<Connection> con = [conn1, conn2, conn3];
 
-        var gm = new GraphManager(con, el);
+        GraphManager gm = new(con, el);
 
-        var calculator = new LinearCalculator();
+        LinearCalculator calculator = new();
         calculator.Calculate(gm);
-        Assert.AreEqual(22293, Math.Round(gm.Connections[0].Distance * 1000));
-        Assert.AreEqual(0, Math.Round(gm.Connections[1].Distance * 1000));
-        Assert.AreEqual(22293, Math.Round(gm.Connections[2].Distance * 1000));
+
+        Assert.Multiple(() =>
+        {
+            Assert.That(gm.Connections[0].Distance, Is.EqualTo(22.293).Within(0.001d));
+            Assert.That(gm.Connections[1].Distance, Is.Zero);
+            Assert.That(gm.Connections[2].Distance, Is.EqualTo(22.293).Within(0.001d));
+        });
     }
 }

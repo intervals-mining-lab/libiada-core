@@ -17,7 +17,7 @@ public class DifferenceAverageIntervalExtractor : WordExtractor
     /// </summary>
     public DifferenceAverageIntervalExtractor()
     {
-        wordPriority = new Dictionary<double, KeyValuePair<List<string>, List<int>>>();
+        wordPriority = [];
     }
 
     /// <summary>
@@ -31,15 +31,15 @@ public class DifferenceAverageIntervalExtractor : WordExtractor
     /// </returns>
     public override sealed KeyValuePair<List<string>, List<int>>? Find(Dictionary<string, object> par)
     {
-        var convoluted = (ComplexChain)par["Sequence"];
-        var windowLen = (int)par["Window"];
-        var alphabet = (FrequencyDictionary)par["Alphabet"];
-        var level = (double)par["CurrentThreshold"];
+        ComplexChain convoluted = (ComplexChain)par["Sequence"];
+        int windowLen = (int)par["Window"];
+        FrequencyDictionary alphabet = (FrequencyDictionary)par["Alphabet"];
+        double level = (double)par["CurrentThreshold"];
 
         int scanStep = 1;
         int disp = 0;
 
-        var it = new StartIterator(convoluted, windowLen, scanStep);
+        StartIterator it = new(convoluted, windowLen, scanStep);
 
         while (it.HasNext())
         {
@@ -63,13 +63,13 @@ public class DifferenceAverageIntervalExtractor : WordExtractor
     /// </param>
     public void CalculateStd(ComplexChain convoluted, int windowLen)
     {
-        var geometricMean = new GeometricMean();
-        var arithmeticMean = new ArithmeticMean();
+        GeometricMean geometricMean = new();
+        ArithmeticMean arithmeticMean = new();
 
         foreach (KeyValuePair<List<string>, List<int>> accord in fullEntry.Entry())
         {
             PositionFilter.Filtrate(accord.Value, windowLen);
-            var temp = new ComplexChain(accord.Value);
+            ComplexChain temp = new(accord.Value);
             double geometric = geometricMean.Calculate(temp, convoluted.Anchor);
             double arithmetic = arithmeticMean.Calculate(temp, convoluted.Anchor);
             double std = 1 - (1 / Math.Abs(arithmetic - geometric));

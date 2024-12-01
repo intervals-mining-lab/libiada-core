@@ -26,19 +26,20 @@ public static class HighOrderFactory
     /// </exception>
     public static Chain Create(Chain source, Link link)
     {
-        if (link != Link.Start && link != Link.End && link != Link.CycleEnd && link != Link.CycleStart)
+        Link[] applicableLinks = [Link.Start, Link.End, Link.CycleEnd, Link.CycleStart];
+        if (!applicableLinks.Contains(link))
         {
             throw new ArgumentException("Unknown or inapplicable link", nameof(link));
         }
 
-        var result = new List<IBaseObject>();
+        List<IBaseObject> result = [];
         Alphabet sourceAlphabet = source.Alphabet;
-        var entries = new int[sourceAlphabet.Cardinality];
-        var intervals = new int[sourceAlphabet.Cardinality][];
+        int[] entries = new int[sourceAlphabet.Cardinality];
+        int[][] intervals = new int[sourceAlphabet.Cardinality][];
 
         for (int j = 0; j < sourceAlphabet.Cardinality; j++)
         {
-            var intervalsManager = new IntervalsManager(source.CongenericChain(j));
+            IntervalsManager intervalsManager = new(source.CongenericChain(j));
             intervals[j] = intervalsManager.GetArrangement(link);
         }
 

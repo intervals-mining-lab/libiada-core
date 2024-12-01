@@ -59,7 +59,7 @@ public class OrderIterator : IEnumerable
     /// </summary>
     public void IterateOrderCounter()
     {
-        var maximums = new int[order.Length];
+        int[] maximums = new int[order.Length];
         int max = 1;
         for (int i = 0; i < maximums.Length; i++)
         {

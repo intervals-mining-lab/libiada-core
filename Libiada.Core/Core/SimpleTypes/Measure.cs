@@ -64,7 +64,7 @@ public class Measure : IBaseObject
             }
             else
             {
-                var tempNoteList = new List<ValueNote>(0);
+                List<ValueNote> tempNoteList = [];
                 if (NoteList[k].Duration.Value < measure.NoteList[k].Duration.Value)
                 {
                     // нота из склеенного массива короче, значит нужно вторую разделить на две и склеить

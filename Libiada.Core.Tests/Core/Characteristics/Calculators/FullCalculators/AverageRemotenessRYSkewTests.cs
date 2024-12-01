@@ -21,11 +21,23 @@ public class AverageRemotenessRYSkewTests : FullCalculatorsTests<AverageRemotene
     /// <param name="value">
     /// The value.
     /// </param>
-    [TestCase(1, Link.None, 0.2290)]
+    [TestCase(1, Link.None, 0.229)]
     [TestCase(1, Link.Start, 0.3138)]
     [TestCase(1, Link.End, -0.2065)]
     [TestCase(1, Link.Both, -0.0862)]
-    [TestCase(1, Link.Cycle, 0.2050)]
+    [TestCase(1, Link.Cycle, 0.205)]
+
+    [TestCase(2, Link.None, 1.444165399575)]
+    [TestCase(2, Link.Start, 1.6566498)]
+    [TestCase(2, Link.End, 2.369195368)]
+    [TestCase(2, Link.Both, 1.550897715)]
+    [TestCase(2, Link.Cycle, 2.14199532)]
+
+    [TestCase(4, Link.None, 0)]
+    [TestCase(4, Link.Start, 0)]
+    [TestCase(4, Link.End, 0)]
+    [TestCase(4, Link.Both, 0)]
+    [TestCase(4, Link.Cycle, 0)]
 
     public void CalculationTest(int index, Link link, double value)
     {

@@ -40,7 +40,7 @@ public class ValueInt : IBaseObject
     /// <returns>
     /// New <see cref="ValueInt"/>.
     /// </returns>
-    public static implicit operator ValueInt(int from) => new ValueInt(from);
+    public static implicit operator ValueInt(int from) => new(from);
 
     /// <summary>
     /// The clone.

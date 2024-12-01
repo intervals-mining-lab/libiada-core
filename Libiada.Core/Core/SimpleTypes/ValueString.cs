@@ -56,7 +56,7 @@ public class ValueString : IBaseObject
     /// <returns>
     /// New <see cref="ValueString"/>.
     /// </returns>
-    public static implicit operator ValueString(string from) => new ValueString(from);
+    public static implicit operator ValueString(string from) => new(from);
 
     /// <summary>
     /// Operator of implicit casting from char to ValueString.
@@ -67,7 +67,7 @@ public class ValueString : IBaseObject
     /// <returns>
     /// New <see cref="ValueString"/>.
     /// </returns>
-    public static implicit operator ValueString(char from) => new ValueString(from);
+    public static implicit operator ValueString(char from) => new(from);
 
     /// <summary>
     /// The clone.

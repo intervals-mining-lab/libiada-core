@@ -1,40 +1,42 @@
 ﻿namespace Libiada.Core.Core.Characteristics.Calculators.FullCalculators;
 
 /// <summary>
-/// The entropy kurtosis.
+/// Kurtosis of the entropy in congeneric sequences.
 /// </summary>
 public class EntropyKurtosis : IFullCalculator
 {
     /// <summary>
     /// Calculation method.
+    /// Calculated here using arithmetis mean interval and 
+    /// intervals count instead of elements frequency 
+    /// based on geometric mean interval formula.
     /// </summary>
     /// <param name="chain">
     /// Source sequence.
     /// </param>
     /// <param name="link">
-    /// Link of intervals in sequence.
+    /// Binding of the intervals in the sequence.
     /// </param>
     /// <returns>
-    /// Entropy Kurtosis <see cref="double"/> value.
+    /// Entropy kurtosis <see cref="double"/> value.
     /// </returns>
     public double Calculate(Chain chain, Link link)
     {
-        var identificationInformation = new IdentificationInformation();
-        var intervalsCount = new IntervalsCount();
+        double n = new IntervalsCount().Calculate(chain, link);
+        if (n == 0) return 0;
+
+        CongenericCalculators.IntervalsCount congenericIntervalsCount = new();
+        CongenericCalculators.IdentificationInformation congenericIdentificationInformation = new();
 
         double result = 0;
-        double h = identificationInformation.Calculate(chain, link);
-        var n = (int)intervalsCount.Calculate(chain, link);
-
-        var congenericIntervalsCount = new CongenericCalculators.IntervalsCount();
-        var congenericIdentificationInformation = new CongenericCalculators.IdentificationInformation();
-        Alphabet alphabet = chain.Alphabet;
-        for (int i = 0; i < alphabet.Cardinality; i++)
+        double h = new IdentificationInformation().Calculate(chain, link);
+        int alphabetCardinality = chain.Alphabet.Cardinality;
+        for (int i = 0; i < alphabetCardinality; i++)
         {
             double nj = congenericIntervalsCount.Calculate(chain.CongenericChain(i), link);
             double hj = congenericIdentificationInformation.Calculate(chain.CongenericChain(i), link);
             double deltaH = hj - h;
-            result += n == 0 ? 0 : deltaH * deltaH * deltaH * deltaH * nj / n;
+            result += deltaH * deltaH * deltaH * deltaH * nj / n;
         }
 
         return result;

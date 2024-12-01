@@ -35,11 +35,11 @@ public abstract class BinaryCalculator : IBinaryCalculator
     /// </returns>
     public List<List<double>> CalculateAll(Chain chain, Link link)
     {
-        var result = new List<List<double>>();
-        var alphabetCardinality = chain.Alphabet.Cardinality;
+        List<List<double>> result = [];
+        int alphabetCardinality = chain.Alphabet.Cardinality;
         for (int i = 0; i < alphabetCardinality; i++)
         {
-            result.Add(new List<double>());
+            result.Add([]);
             for (int j = 0; j < alphabetCardinality; j++)
             {
                 result[i].Add(Calculate(chain.GetRelationIntervalsManager(i + 1, j + 1), link));

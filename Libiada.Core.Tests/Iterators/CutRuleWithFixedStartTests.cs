@@ -14,16 +14,19 @@ public class CutRuleWithFixedStartTests
     [Test]
     public void CutRuleTest()
     {
-        int length = 12;
-        int step = 3;
-        var rule = new CutRuleWithFixedStart(length, step);
+        const int length = 12;
+        const int step = 3;
+        CutRuleWithFixedStart rule = new(length, step);
         CutRuleIterator iterator = rule.GetIterator();
 
         for (int i = step; i <= length; i += step)
         {
             iterator.Next();
-            Assert.AreEqual(0, iterator.GetStartPosition());
-            Assert.AreEqual(i, iterator.GetEndPosition());
+            Assert.Multiple(() =>
+            {
+                Assert.That(iterator.GetStartPosition(), Is.EqualTo(0));
+                Assert.That(iterator.GetEndPosition(), Is.EqualTo(i));
+            });
         }
     }
 }

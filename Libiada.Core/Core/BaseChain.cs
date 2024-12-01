@@ -22,7 +22,7 @@ public class BaseChain : AbstractChain
     /// <summary>
     /// The alphabet of chain.
     /// </summary>
-    protected Alphabet alphabet = new Alphabet();
+    protected Alphabet alphabet = [];
 
     /// <summary>
     /// Initializes a new instance of the <see cref="BaseChain"/> class.
@@ -93,7 +93,7 @@ public class BaseChain : AbstractChain
     /// </param>
     public BaseChain(int[] order) : this(order.Length)
     {
-        var alphabetCardinality = order.Max();
+        int alphabetCardinality = order.Max();
         for (int i = 1; i <= alphabetCardinality; i++)
         {
             alphabet.Add((ValueInt)i);
@@ -135,7 +135,7 @@ public class BaseChain : AbstractChain
     {
         get
         {
-            var result = (Alphabet)alphabet.Clone();
+            Alphabet result = (Alphabet)alphabet.Clone();
 
             // Removing NullValue.
             result.Remove(0);
@@ -216,7 +216,7 @@ public class BaseChain : AbstractChain
 
         IBaseObject[] chain = ToArray();
         chain[index] = item;
-        alphabet = new Alphabet { NullValue.Instance() };
+        alphabet = [NullValue.Instance()];
 
         FillAlphabetAndOrder(chain);
     }
@@ -231,6 +231,8 @@ public class BaseChain : AbstractChain
     {
         order[index] = 0;
 
+        if (VerifyOrder()) return;
+        throw new NotImplementedException();
         // TODO: remove element from alphabet if last entry is removed.
     }
 
@@ -244,6 +246,8 @@ public class BaseChain : AbstractChain
     {
         order = order.DeleteAt(index);
 
+        if (VerifyOrder()) return;
+        throw new NotImplementedException();
         // TODO: remove element from alphabet if last entry is removed.
     }
 
@@ -264,7 +268,7 @@ public class BaseChain : AbstractChain
         }
 
         order = new int[length];
-        alphabet = new Alphabet { NullValue.Instance() };
+        alphabet = [NullValue.Instance()];
     }
 
     /// <summary>
@@ -275,7 +279,7 @@ public class BaseChain : AbstractChain
     /// </returns>
     public override IBaseObject Clone()
     {
-        var clone = new BaseChain(order.Length);
+        BaseChain clone = new(order.Length);
         FillClone(clone);
         return clone;
     }
@@ -351,5 +355,17 @@ public class BaseChain : AbstractChain
 
             order[i] = elementIndex;
         }
+    }
+
+    private bool VerifyOrder() 
+    {
+        int counter = 0;
+        for(int i = 0; i < order.Length; i++)
+        {
+            if (counter + 1 < order[i]) return false;
+            if (counter + 1 == order[i]) counter++;
+        }
+
+        return true;
     }
 }

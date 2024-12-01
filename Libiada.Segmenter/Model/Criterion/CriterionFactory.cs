@@ -25,24 +25,16 @@ public static class CriterionFactory
     /// </returns>
     public static Criterion Make(SegmentationCriterion criterion, ThresholdVariator threshold, double precision)
     {
-        switch (criterion)
+        return criterion switch
         {
-            case SegmentationCriterion.CriterionPartialOrlov:
-                return new CriterionPartialOrlov(threshold, precision);
-            case SegmentationCriterion.CriterionMinSymmetryByShrader:
-                return new CriterionMinSymmetryByShrader(threshold, precision);
-            case SegmentationCriterion.CriterionMinSymmetryByIntervals:
-                return new CriterionMinSymmetryByIntervals(threshold, precision);
-            case SegmentationCriterion.CriterionEqualityOfDepths:
-                return new CriterionEqualityOfDepths(threshold, precision);
-            case SegmentationCriterion.CriterionAttitudeOfRemoteness:
-                return new CriterionAttitudeOfRemoteness(threshold, precision);
-            case SegmentationCriterion.CriterionMinimumRegularity:
-                return new CriterionMinimumRegularity(threshold, precision);
-            case SegmentationCriterion.CriterionGoldenRatio:
-                return new CriterionGoldenRatio(threshold, precision);
-            default:
-                throw new InvalidEnumArgumentException(nameof(criterion), (int)criterion, typeof(SegmentationCriterion));
-        }
+            SegmentationCriterion.CriterionPartialOrlov => new CriterionPartialOrlov(threshold, precision),
+            SegmentationCriterion.CriterionMinSymmetryByShrader => new CriterionMinSymmetryByShrader(threshold, precision),
+            SegmentationCriterion.CriterionMinSymmetryByIntervals => new CriterionMinSymmetryByIntervals(threshold, precision),
+            SegmentationCriterion.CriterionEqualityOfDepths => new CriterionEqualityOfDepths(threshold, precision),
+            SegmentationCriterion.CriterionAttitudeOfRemoteness => new CriterionAttitudeOfRemoteness(threshold, precision),
+            SegmentationCriterion.CriterionMinimumRegularity => new CriterionMinimumRegularity(threshold, precision),
+            SegmentationCriterion.CriterionGoldenRatio => new CriterionGoldenRatio(threshold, precision),
+            _ => throw new InvalidEnumArgumentException(nameof(criterion), (int)criterion, typeof(SegmentationCriterion)),
+        };
     }
 }

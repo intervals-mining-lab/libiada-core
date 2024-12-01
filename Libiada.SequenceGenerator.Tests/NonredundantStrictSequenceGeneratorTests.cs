@@ -15,38 +15,38 @@ public class NonRedundantStrictSequenceGeneratorTests
     [Test]
     public void GeneratorTest()
     {
-        var one = new ValueInt(1);
-        var two = new ValueInt(2);
-        var three = new ValueInt(3);
-        var expected = new List<BaseChain>
-        {
-            new BaseChain(new List<IBaseObject> { two, one, one }),
-            new BaseChain(new List<IBaseObject> { one, two, one }),
-            new BaseChain(new List<IBaseObject> { two, two, one }),
-            new BaseChain(new List<IBaseObject> { one, one, two }),
-            new BaseChain(new List<IBaseObject> { two, one, two }),
-            new BaseChain(new List<IBaseObject> { one, two, two })
-        };
-        var strictSequenceGenerator = new NonRedundantStrictSequenceGenerator();
-        var actual = strictSequenceGenerator.GenerateSequences(3, 2);
-        Assert.AreEqual(expected, actual);
-        expected = new List<BaseChain>
-                       {
-                           new BaseChain(new List<IBaseObject> { one, one, one })
-                       };
+        ValueInt one = new(1);
+        ValueInt two = new(2);
+        ValueInt three = new(3);
+        List<BaseChain> expected =
+        [
+            new(new List<IBaseObject> { two, one, one }),
+            new(new List<IBaseObject> { one, two, one }),
+            new(new List<IBaseObject> { two, two, one }),
+            new(new List<IBaseObject> { one, one, two }),
+            new(new List<IBaseObject> { two, one, two }),
+            new(new List<IBaseObject> { one, two, two })
+        ];
+        NonRedundantStrictSequenceGenerator strictSequenceGenerator = new();
+        List<BaseChain> actual = strictSequenceGenerator.GenerateSequences(3, 2);
+        Assert.That(actual, Is.EqualTo(expected));
+        expected =
+                       [
+                           new(new List<IBaseObject> { one, one, one })
+                       ];
         actual = strictSequenceGenerator.GenerateSequences(3, 1);
-        Assert.AreEqual(expected, actual);
-        expected = new List<BaseChain>
-                       {
-                           new BaseChain(new List<IBaseObject> { three, two, one }),
-                           new BaseChain(new List<IBaseObject> { two, three, one }),
-                           new BaseChain(new List<IBaseObject> { three, one, two }),
-                           new BaseChain(new List<IBaseObject> { one, three, two }),
-                           new BaseChain(new List<IBaseObject> { two, one, three }),
-                           new BaseChain(new List<IBaseObject> { one, two, three })
-                       };
+        Assert.That(actual, Is.EqualTo(expected));
+        expected =
+                       [
+                           new(new List<IBaseObject> { three, two, one }),
+                           new(new List<IBaseObject> { two, three, one }),
+                           new(new List<IBaseObject> { three, one, two }),
+                           new(new List<IBaseObject> { one, three, two }),
+                           new(new List<IBaseObject> { two, one, three }),
+                           new(new List<IBaseObject> { one, two, three })
+                       ];
         actual = strictSequenceGenerator.GenerateSequences(3, 3);
-        Assert.AreEqual(expected, actual);
+        Assert.That(actual, Is.EqualTo(expected));
     }
 
     /// <summary>
@@ -55,27 +55,27 @@ public class NonRedundantStrictSequenceGeneratorTests
     [Test]
     public void CompleteGeneratorTest()
     {
-        var one = new ValueInt(1);
-        var two = new ValueInt(2);
-        var three = new ValueInt(3);
-        var expected = new List<BaseChain>
-        {
-            new BaseChain(new List<IBaseObject> { one, one, one }),
-            new BaseChain(new List<IBaseObject> { two, one, one }),
-            new BaseChain(new List<IBaseObject> { one, two, one }),
-            new BaseChain(new List<IBaseObject> { two, two, one }),
-            new BaseChain(new List<IBaseObject> { one, one, two }),
-            new BaseChain(new List<IBaseObject> { two, one, two }),
-            new BaseChain(new List<IBaseObject> { one, two, two }),
-            new BaseChain(new List<IBaseObject> { three, two, one }),
-            new BaseChain(new List<IBaseObject> { two, three, one }),
-            new BaseChain(new List<IBaseObject> { three, one, two }),
-            new BaseChain(new List<IBaseObject> { one, three, two }),
-            new BaseChain(new List<IBaseObject> { two, one, three }),
-            new BaseChain(new List<IBaseObject> { one, two, three }),
-        };
-        var strictSequenceGenerator = new NonRedundantStrictSequenceGenerator();
-        var actual = strictSequenceGenerator.GenerateSequences(3);
-        Assert.AreEqual(expected, actual);
+        ValueInt one = new(1);
+        ValueInt two = new(2);
+        ValueInt three = new(3);
+        List<BaseChain> expected =
+        [
+            new(new List<IBaseObject> { one, one, one }),
+            new(new List<IBaseObject> { two, one, one }),
+            new(new List<IBaseObject> { one, two, one }),
+            new(new List<IBaseObject> { two, two, one }),
+            new(new List<IBaseObject> { one, one, two }),
+            new(new List<IBaseObject> { two, one, two }),
+            new(new List<IBaseObject> { one, two, two }),
+            new(new List<IBaseObject> { three, two, one }),
+            new(new List<IBaseObject> { two, three, one }),
+            new(new List<IBaseObject> { three, one, two }),
+            new(new List<IBaseObject> { one, three, two }),
+            new(new List<IBaseObject> { two, one, three }),
+            new(new List<IBaseObject> { one, two, three }),
+        ];
+        NonRedundantStrictSequenceGenerator strictSequenceGenerator = new();
+        List<BaseChain> actual = strictSequenceGenerator.GenerateSequences(3);
+        Assert.That(actual, Is.EqualTo(expected));
     }
 }

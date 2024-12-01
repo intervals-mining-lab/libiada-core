@@ -12,18 +12,16 @@ public class Regularity : IFullCalculator
     /// Source sequence.
     /// </param>
     /// <param name="link">
-    /// Link of intervals in sequence.
+    /// Binding of the intervals in the sequence.
     /// </param>
     /// <returns>
     /// Regularity as <see cref="double"/>.
     /// </returns>
     public double Calculate(Chain chain, Link link)
     {
-        var geometricMeanCalculator = new GeometricMean();
-        var descriptiveInformationCalculator = new DescriptiveInformation();
+        double geometricMean = new GeometricMean().Calculate(chain, link);
+        double descriptiveInformation = new DescriptiveInformation().Calculate(chain, link);
 
-        double geometricMean = geometricMeanCalculator.Calculate(chain, link);
-        double descriptiveInformation = descriptiveInformationCalculator.Calculate(chain, link);
         return geometricMean / descriptiveInformation;
     }
 }

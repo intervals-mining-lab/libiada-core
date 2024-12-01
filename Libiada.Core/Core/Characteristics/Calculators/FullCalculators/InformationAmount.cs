@@ -2,32 +2,30 @@
 
 /// <summary>
 /// The total amount of information in sequence.
-/// Entropy multiplied by length.
+/// Entropy multiplied by intervals count.
 /// </summary>
 public class InformationAmount : IFullCalculator
 {
     /// <summary>
-    /// The calculate.
+    /// Calculation method.
+    /// Calculated here using arithmetis mean interval and 
+    /// intervals count instead of elements frequency 
+    /// based on geometric mean interval formula.
     /// </summary>
     /// <param name="chain">
     /// The chain.
     /// </param>
     /// <param name="link">
-    /// The link.
+    /// Binding of the intervals in the sequence.
     /// </param>
     /// <returns>
     /// The <see cref="double"/>.
     /// </returns>
     public double Calculate(Chain chain, Link link)
     {
-        double result = 0;
-        var calculator = new CongenericCalculators.InformationAmount();
-        int alphabetCardinality = chain.Alphabet.Cardinality;
-        for (int i = 0; i < alphabetCardinality; i++)
-        {
-            result += calculator.Calculate(chain.CongenericChain(i), link);
-        }
+        double entropy = new IdentificationInformation().Calculate(chain, link);
+        double intervalsCount = new IntervalsCount().Calculate(chain, link);
 
-        return result;
+        return entropy * intervalsCount;
     }
 }

@@ -18,7 +18,7 @@ public static class EquipotencyCalculator
     public static double Calculate(GraphManager manager)
     {
         // calculating nodes count in each group
-        var taxonPower = new List<int>();
+        List<int> taxonPower = [];
         for (int i = 0; i < manager.GetNextTaxonNumber(); i++)
         {
             taxonPower.Add(0);

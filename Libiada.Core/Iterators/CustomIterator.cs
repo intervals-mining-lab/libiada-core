@@ -87,7 +87,7 @@ public class CustomIterator : IIterator
     /// </returns>
     public AbstractChain Current()
     {
-        var elements = new List<IBaseObject>();
+        List<IBaseObject> elements = [];
 
         for (int i = 0; i < starts[counter].Count; i++)
         {

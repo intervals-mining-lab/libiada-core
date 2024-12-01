@@ -49,7 +49,7 @@ public static class SequenceConcatenator
             resultLength += sourceSequences[i].Length;
         }
 
-        Chain result = new Chain(resultLength);
+        Chain result = new(resultLength);
         int resultIndex = 0;
         for (int i = 0; i < sourceSequences.Length; i++)
         {
@@ -81,15 +81,15 @@ public static class SequenceConcatenator
             resultLength += sourceSequences[i].Length;
         }
 
-        var resultOrder = new int[resultLength];
-        var resultAlphabet = new Alphabet() { NullValue.Instance() };
+        int[] resultOrder = new int[resultLength];
+        Alphabet resultAlphabet = [NullValue.Instance()];
         int resultIndex = 0;
         for (int i = 0; i < sourceSequences.Length; i++)
         {
-            var coder = new Dictionary<int, int>();
-            var chain = sourceSequences[i];
-            var order = chain.Order;
-            var alphabet = chain.Alphabet;
+            Dictionary<int, int> coder = [];
+            Chain chain = sourceSequences[i];
+            int[] order = chain.Order;
+            Alphabet alphabet = chain.Alphabet;
             for (int m = 0; m < alphabet.Cardinality; m++)
             {
                 if (!resultAlphabet.Contains(alphabet[m]))

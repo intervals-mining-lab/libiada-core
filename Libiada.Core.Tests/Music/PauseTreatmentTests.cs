@@ -14,8 +14,9 @@ public class PauseTreatmentTests
     [Test]
     public void ParamPauseTest()
     {
-        Assert.AreEqual((int)PauseTreatment.Ignore, 1);
-        Assert.AreEqual((int)PauseTreatment.NoteTrace, 2);
-        Assert.AreEqual((int)PauseTreatment.SilenceNote, 3);
+        // TODO: Rewrite this as other enum tests
+        Assert.That((int)PauseTreatment.Ignore, Is.EqualTo(1));
+        Assert.That((int)PauseTreatment.NoteTrace, Is.EqualTo(2));
+        Assert.That((int)PauseTreatment.SilenceNote, Is.EqualTo(3));
     }
 }

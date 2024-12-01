@@ -13,15 +13,16 @@ public class Uniformity : IFullCalculator
     /// The chain.
     /// </param>
     /// <param name="link">
-    /// The link.
+    /// Binding of the intervals in the sequence.
     /// </param>
     /// <returns>
     /// The <see cref="double"/>.
     /// </returns>
     public double Calculate(Chain chain, Link link)
     {
-        var remotenessCalculator = new AverageRemoteness();
-        var entropyCalculator = new IdentificationInformation();
-        return entropyCalculator.Calculate(chain, link) - remotenessCalculator.Calculate(chain, link);
+        double averageRemoteness = new AverageRemoteness().Calculate(chain, link);
+        double entropy = new IdentificationInformation().Calculate(chain, link);
+
+        return entropy - averageRemoteness;
     }
 }

@@ -26,7 +26,7 @@ public class TestObject
     /// <summary>
     /// The alpha.
     /// </summary>
-    private readonly Alphabet alphabet = new Alphabet() { (ValueString)"a", (ValueString)"b", (ValueString)"c" };
+    private readonly Alphabet alphabet = [(ValueString)"a", (ValueString)"b", (ValueString)"c"];
 
     /// <summary>
     /// The chain 2.
@@ -38,10 +38,10 @@ public class TestObject
     /// </summary>
     public TestObject()
     {
-        pm1 = new ValuePhantom { alphabet[2], alphabet[1] };
-        pm2 = new ValuePhantom { alphabet[0] };
+        pm1 = [alphabet[2], alphabet[1]];
+        pm2 = [alphabet[0]];
 
-        chain = new BaseChain(new [] { 1, 2, 2, 1, 2, 1, 2, 1, 2, 2 }, new Alphabet() { NullValue.Instance(), PhantomMessageBc, PhantomMessageA });
+        chain = new BaseChain([1, 2, 2, 1, 2, 1, 2, 1, 2, 2], [NullValue.Instance(), PhantomMessageBc, PhantomMessageA]);
 
         chain2 = new BaseChain(new List<IBaseObject>(){ alphabet[1], PhantomMessageA, PhantomMessageBc, alphabet[0], PhantomMessageBc });
     }

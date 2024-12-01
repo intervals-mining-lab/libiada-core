@@ -26,8 +26,8 @@ public class EuclideanDistanceBetweenOneDimensionalPointsTests
 
     public void EuclideanDistanceTest(double firstPoint, double secondPoint, double expectedDistance)
     {
-        var calculator = new EuclideanDistanceBetweenOneDimensionalPointsCalculator();
+        EuclideanDistanceBetweenOneDimensionalPointsCalculator calculator = new();
         double result = calculator.GetDistance(firstPoint, secondPoint);
-        Assert.AreEqual(result, expectedDistance);
+        Assert.That(result, Is.EqualTo(expectedDistance));
     }
 }

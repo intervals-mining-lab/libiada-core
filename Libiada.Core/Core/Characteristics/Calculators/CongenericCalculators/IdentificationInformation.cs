@@ -11,21 +11,23 @@ public class IdentificationInformation : ICongenericCalculator
 {
     /// <summary>
     /// Calculation method.
+    /// Calculated here using arithmetis mean interval 
+    /// instead of elements frequency 
+    /// based on geometric mean interval formula.
     /// </summary>
     /// <param name="chain">
     /// Source sequence.
     /// </param>
     /// <param name="link">
-    /// Link of intervals in sequence.
+    /// Binding of the intervals in the sequence.
     /// </param>
     /// <returns>
     /// Count of identification informations as <see cref="double"/>.
     /// </returns>
     public double Calculate(CongenericChain chain, Link link)
     {
-        var arithmeticMean = new ArithmeticMean();
+        double mean = new ArithmeticMean().Calculate(chain, link);
 
-        double mean = arithmeticMean.Calculate(chain, link);
-        return mean == 0 ? 0 : (-1 / mean) * Math.Log(1 / mean, 2);
+        return mean == 0 ? 0 : Math.Log(mean, 2);
     }
 }

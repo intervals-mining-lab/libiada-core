@@ -29,7 +29,7 @@ public abstract class AccordanceCalculatorsTests<T> where T : IAccordanceCalcula
     /// <summary>
     /// Gets or sets the calculator.
     /// </summary>
-    private readonly T calculator = new T();
+    private readonly T calculator = new();
 
     /// <summary>
     /// The calculation test.
@@ -45,12 +45,15 @@ public abstract class AccordanceCalculatorsTests<T> where T : IAccordanceCalcula
     /// </param>
     protected void CalculationTest(int index, double firstValue, double secondValue)
     {
-        var firstChain = binaryChains[index].CongenericChain(elements["A"]);
-        var secondChain = binaryChains[index].CongenericChain(elements["B"]);
+        CongenericChain firstChain = binaryChains[index].CongenericChain(elements["A"]);
+        CongenericChain secondChain = binaryChains[index].CongenericChain(elements["B"]);
         double result1 = calculator.Calculate(firstChain, secondChain, Link.End);
         double result2 = calculator.Calculate(secondChain, firstChain, Link.End);
-        Assert.AreEqual(firstValue, result1, 0.0001);
-        Assert.AreEqual(secondValue, result2, 0.0001);
+        Assert.Multiple(() =>
+        {
+            Assert.That(result1, Is.EqualTo(firstValue).Within(0.0001d));
+            Assert.That(result2, Is.EqualTo(secondValue).Within(0.0001d));
+        });
     }
 
     /// <summary>
@@ -68,6 +71,6 @@ public abstract class AccordanceCalculatorsTests<T> where T : IAccordanceCalcula
     protected void CalculationTest(int firstIndex, int secondIndex, double firstValue)
     {
         double result = calculator.Calculate(congenericChains[firstIndex], congenericChains[secondIndex], Link.End);
-        Assert.AreEqual(firstValue, result, 0.0001);
+        Assert.That(result, Is.EqualTo(firstValue).Within(0.0001d));
     }
 }

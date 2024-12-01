@@ -20,8 +20,8 @@ public class LinkTests
     [Test]
     public void LinkCountTest()
     {
-        var actualCount = EnumExtensions.ToArray<Link>().Length;
-        Assert.AreEqual(LinksCount, actualCount);
+        int actualCount = EnumExtensions.ToArray<Link>().Length;
+        Assert.That(EnumExtensions.ToArray<Link>(), Has.Length.EqualTo(LinksCount));
     }
 
     /// <summary>
@@ -30,10 +30,10 @@ public class LinkTests
     [Test]
     public void LinkValuesTest()
     {
-        var links = EnumExtensions.ToArray<Link>();
+        Link[] links = EnumExtensions.ToArray<Link>();
         for (int i = 0; i < LinksCount; i++)
         {
-            Assert.IsTrue(links.Contains((Link)i));
+            Assert.That(links, Does.Contain((Link)i));
         }
     }
 
@@ -56,7 +56,7 @@ public class LinkTests
     [TestCase((Link)7, "CycleEnd")]
     public void LinkNamesTest(Link link, string name)
     {
-        Assert.AreEqual(name, link.GetName());
+        Assert.That(link.GetName(), Is.EqualTo(name));
     }
 
     /// <summary>
@@ -68,7 +68,7 @@ public class LinkTests
     [Test]
     public void LinkHasDisplayValueTest([Values]Link link)
     {
-        Assert.IsFalse(string.IsNullOrEmpty(link.GetDisplayValue()));
+        Assert.That(link.GetDisplayValue(), Is.Not.Empty);
     }
 
     /// <summary>
@@ -80,7 +80,7 @@ public class LinkTests
     [Test]
     public void LinkHasDescriptionTest([Values]Link link)
     {
-        Assert.IsFalse(string.IsNullOrEmpty(link.GetDescription()));
+        Assert.That(link.GetDescription(), Is.Not.Empty);
     }
 
     /// <summary>
@@ -89,8 +89,8 @@ public class LinkTests
     [Test]
     public void LinkValuesUniqueTest()
     {
-        var links = EnumExtensions.ToArray<Link>();
-        var linkValues = links.Cast<byte>();
+        Link[] links = EnumExtensions.ToArray<Link>();
+        IEnumerable<byte> linkValues = links.Cast<byte>();
         Assert.That(linkValues, Is.Unique);
     }
 }

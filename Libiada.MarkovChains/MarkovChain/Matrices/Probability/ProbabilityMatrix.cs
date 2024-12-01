@@ -80,7 +80,7 @@ public class ProbabilityMatrix : MatrixCommon, IProbabilityMatrix, IWritableMatr
     /// </exception>
     public Dictionary<IBaseObject, double> GetProbabilityVector(Alphabet alphabet, int[] pred)
     {
-        var result = new Dictionary<IBaseObject, double>();
+        Dictionary<IBaseObject, double> result = [];
         if ((pred.Length > Rank - 1) || (pred.Length == 0))
         {
             throw new ArgumentException();

@@ -18,10 +18,10 @@ class FrequencySegmenter
 
     public Dictionary<string, int> Segmentation()
     {
-        List<string> consonanceList = new List<string>();
-        Dictionary<string, int> consonancesDictionary = new Dictionary<string, int>();
+        List<string> consonanceList = [];
+        Dictionary<string, int> consonancesDictionary = [];
 
-        StringBuilder stringBuilder = new StringBuilder();
+        StringBuilder stringBuilder = new();
 
         for (int i = 0; i < textData.Length; i++)
         {
@@ -69,7 +69,7 @@ class FrequencySegmenter
                         }
                     }
 
-                    if (candidateConsonance == "")
+                    if (candidateConsonance.Length == 0)
                     {
                         continue;
                     }
@@ -113,7 +113,7 @@ class FrequencySegmenter
 
         if (candidateConsonance == "ue")
         {
-            Console.WriteLine(candidateConsonance + " - " + deviation);
+            Console.WriteLine($"{candidateConsonance} - {deviation}");
         }
 
         if (deviation >= threshold)

@@ -82,14 +82,16 @@ public class AlgorithmBase : Algorithm
     /// </summary>
     public new void Slot()
     {
-        var par = new Dictionary<string, object>();
-        par.Add("Sequence", chain = new ComplexChain(inputs[0].Chain));
-        par.Add("Alphabet", alphabet = new FrequencyDictionary(chain));
+        Dictionary<string, object> par = new()
+        {
+            { "Sequence", chain = new ComplexChain(inputs[0].Chain) },
+            { "Alphabet", alphabet = new FrequencyDictionary(chain) }
+        };
 
         while (criterion.State(chain, alphabet))
         {
             UpdateParams(par, threshold.Next(criterion));
-            var chainSplitter = new SimpleChainSplitter(extractor);
+            SimpleChainSplitter chainSplitter = new(extractor);
             chain = chainSplitter.Cut(par);
             alphabet = chainSplitter.FrequencyDictionary;
         }
@@ -103,7 +105,7 @@ public class AlgorithmBase : Algorithm
     /// </returns>
     public new List<MainOutputData> Upload()
     {
-        var resultUpdate = new MainOutputData();
+        MainOutputData resultUpdate = new();
         resultUpdate.AddInfo((IIdentifiable)criterion, criterion.Value);
         resultUpdate.AddInfo((IIdentifiable)threshold, threshold.Value);
 

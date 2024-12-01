@@ -19,14 +19,11 @@ public static class AlgorithmFactory
     /// </returns>
     public static Algorithm Make(int index, Input input)
     {
-        switch (index)
+        return index switch
         {
-            case 0:
-                return new AlgorithmBase(input);
-            case 1:
-                return null;
-            default:
-                throw new ArgumentException("Unknown index", "index");
-        }
+            0 => new AlgorithmBase(input),
+            1 => null,
+            _ => throw new ArgumentException("Unknown index", "index"),
+        };
     }
 }

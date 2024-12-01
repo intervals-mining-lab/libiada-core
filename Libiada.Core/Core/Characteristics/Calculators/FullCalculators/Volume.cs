@@ -14,18 +14,18 @@ public class Volume : IFullCalculator
     /// Source sequence.
     /// </param>
     /// <param name="link">
-    /// Redundant parameter, not used in calculations.
+    /// Binding of the intervals in the sequence.
     /// </param>
     /// <returns>
     /// Volume characteristic of chain as <see cref="double"/>.
     /// </returns>
     public double Calculate(Chain chain, Link link)
     {
-        var calculator = new CongenericCalculators.Volume();
-
-        Alphabet alphabet = chain.Alphabet;
+        CongenericCalculators.Volume calculator = new();
+        
         BigInteger result = 1;
-        for (int i = 0; i < alphabet.Cardinality; i++)
+        int alphabetCardinality = chain.Alphabet.Cardinality;
+        for (int i = 0; i < alphabetCardinality; i++)
         {
             result *= (BigInteger)calculator.Calculate(chain.CongenericChain(i), link);
         }

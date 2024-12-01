@@ -20,23 +20,23 @@ public class EquipotencyCalculatorTests
     [SetUp]
     public void Initialization()
     {
-        var elements = new List<GraphElement>
-                           {
-                               new GraphElement(new[] { 0.0 }, "1"),
-                               new GraphElement(new[] { 2.0 }, "2"),
-                               new GraphElement(new[] { 5.0 }, "3"),
-                               new GraphElement(new[] { 6.0 }, "4")
-                           };
+        List<GraphElement> elements =
+        [
+                               new([0.0], "1"),
+                               new([2.0], "2"),
+                               new([5.0], "3"),
+                               new([6.0], "4")
+                           ];
 
-        var connections = new List<Connection>
-                              {
-                                  new Connection(0, 1),
-                                  new Connection(0, 2),
-                                  new Connection(0, 3),
-                                  new Connection(1, 2),
-                                  new Connection(1, 3),
-                                  new Connection(2, 3)
-                              };
+        List<Connection> connections =
+        [
+                                  new(0, 1),
+                                  new(0, 2),
+                                  new(0, 3),
+                                  new(1, 2),
+                                  new(1, 3),
+                                  new(2, 3)
+                              ];
 
         manager = new GraphManager(connections, elements);
     }
@@ -47,21 +47,21 @@ public class EquipotencyCalculatorTests
     [Test]
     public void FourPointsZeroTest()
     {
-        var connected = new[] { true, false, false, true, false, false };
+        bool[] connected = [true, false, false, true, false, false];
 
         for (int i = 0; i < connected.Length; i++)
         {
             manager.Connections[i].Connected = connected[i];
         }
 
-        var taxonNumbers = new[] { 1, 1, 1, 2 };
+        int[] taxonNumbers = [1, 1, 1, 2];
 
         for (int i = 0; i < taxonNumbers.Length; i++)
         {
             manager.Elements[i].TaxonNumber = taxonNumbers[i];
         }
 
-        Assert.AreEqual(0.75, EquipotencyCalculator.Calculate(manager));
+        Assert.That(EquipotencyCalculator.Calculate(manager), Is.EqualTo(0.75));
     }
 
     /// <summary>
@@ -70,21 +70,21 @@ public class EquipotencyCalculatorTests
     [Test]
     public void FourPointsOneTest()
     {
-        var connected = new[] { true, false, false, false, false, true };
+        bool[] connected = [true, false, false, false, false, true];
 
         for (int i = 0; i < connected.Length; i++)
         {
             manager.Connections[i].Connected = connected[i];
         }
 
-        var taxonNumbers = new[] { 1, 1, 2, 2 };
+        int[] taxonNumbers = [1, 1, 2, 2];
 
         for (int i = 0; i < taxonNumbers.Length; i++)
         {
             manager.Elements[i].TaxonNumber = taxonNumbers[i];
         }
 
-        Assert.AreEqual(1, EquipotencyCalculator.Calculate(manager));
+        Assert.That(EquipotencyCalculator.Calculate(manager), Is.EqualTo(1));
     }
 
     /// <summary>
@@ -93,21 +93,21 @@ public class EquipotencyCalculatorTests
     [Test]
     public void FourPointsTwoTest()
     {
-        var connected = new[] { false, false, false, true, false, true };
+        bool[] connected = [false, false, false, true, false, true];
 
         for (int i = 0; i < connected.Length; i++)
         {
             manager.Connections[i].Connected = connected[i];
         }
 
-        var taxonNumbers = new[] { 1, 2, 2, 2 };
+        int[] taxonNumbers = [1, 2, 2, 2];
 
         for (int i = 0; i < taxonNumbers.Length; i++)
         {
             manager.Elements[i].TaxonNumber = taxonNumbers[i];
         }
 
-        Assert.AreEqual(0.75, EquipotencyCalculator.Calculate(manager));
+        Assert.That(EquipotencyCalculator.Calculate(manager), Is.EqualTo(0.75));
     }
 
     /// <summary>
@@ -116,21 +116,21 @@ public class EquipotencyCalculatorTests
     [Test]
     public void FourPointsThreeTest()
     {
-        var connected = new[] { true, false, false, false, false, false };
+        bool[] connected = [true, false, false, false, false, false];
 
         for (int i = 0; i < connected.Length; i++)
         {
             manager.Connections[i].Connected = connected[i];
         }
 
-        var taxonNumbers = new[] { 1, 1, 2, 3 };
+        int[] taxonNumbers = [1, 1, 2, 3];
 
         for (int i = 0; i < taxonNumbers.Length; i++)
         {
             manager.Elements[i].TaxonNumber = taxonNumbers[i];
         }
 
-        Assert.AreEqual(0.84375, EquipotencyCalculator.Calculate(manager));
+        Assert.That(EquipotencyCalculator.Calculate(manager), Is.EqualTo(0.84375));
     }
 
     /// <summary>
@@ -139,21 +139,21 @@ public class EquipotencyCalculatorTests
     [Test]
     public void FourPointsFourTest()
     {
-        var connected = new[] { false, false, false, true, false, false };
+        bool[] connected = [false, false, false, true, false, false];
 
         for (int i = 0; i < connected.Length; i++)
         {
             manager.Connections[i].Connected = connected[i];
         }
 
-        var taxonNumbers = new[] { 1, 2, 2, 3 };
+        int[] taxonNumbers = [1, 2, 2, 3];
 
         for (int i = 0; i < taxonNumbers.Length; i++)
         {
             manager.Elements[i].TaxonNumber = taxonNumbers[i];
         }
 
-        Assert.AreEqual(0.84375, EquipotencyCalculator.Calculate(manager));
+        Assert.That(EquipotencyCalculator.Calculate(manager), Is.EqualTo(0.84375));
     }
 
     /// <summary>
@@ -162,21 +162,21 @@ public class EquipotencyCalculatorTests
     [Test]
     public void FourPointsFiveTest()
     {
-        var connected = new[] { false, false, false, true, false, true };
+        bool[] connected = [false, false, false, true, false, true];
 
         for (int i = 0; i < connected.Length; i++)
         {
             manager.Connections[i].Connected = connected[i];
         }
 
-        var taxonNumbers = new[] { 1, 2, 3, 3 };
+        int[] taxonNumbers = [1, 2, 3, 3];
 
         for (int i = 0; i < taxonNumbers.Length; i++)
         {
             manager.Elements[i].TaxonNumber = taxonNumbers[i];
         }
 
-        Assert.AreEqual(0.84375, EquipotencyCalculator.Calculate(manager));
+        Assert.That(EquipotencyCalculator.Calculate(manager) ,Is.EqualTo(0.84375));
     }
 
     /// <summary>
@@ -195,7 +195,7 @@ public class EquipotencyCalculatorTests
             manager.Elements[i].TaxonNumber = i + 1;
         }
 
-        Assert.AreEqual(1, EquipotencyCalculator.Calculate(manager));
+        Assert.That(EquipotencyCalculator.Calculate(manager), Is.EqualTo(1));
     }
 
     /// <summary>
@@ -204,21 +204,21 @@ public class EquipotencyCalculatorTests
     [Test]
     public void FourPointsSevenTest()
     {
-        var connected = new[] { false, true, false, false, true, false };
+        bool[] connected = [false, true, false, false, true, false];
 
         for (int i = 0; i < connected.Length; i++)
         {
             manager.Connections[i].Connected = connected[i];
         }
 
-        var taxonNumbers = new[] { 1, 2, 1, 2 };
+        int[] taxonNumbers = [1, 2, 1, 2];
 
         for (int i = 0; i < taxonNumbers.Length; i++)
         {
             manager.Elements[i].TaxonNumber = taxonNumbers[i];
         }
 
-        Assert.AreEqual(1, EquipotencyCalculator.Calculate(manager));
+        Assert.That(EquipotencyCalculator.Calculate(manager), Is.EqualTo(1));
     }
 
     /// <summary>
@@ -227,20 +227,20 @@ public class EquipotencyCalculatorTests
     [Test]
     public void FourPointsElevenTest()
     {
-        var connected = new[] { false, true, false, false, true, false };
+        bool[] connected = [false, true, false, false, true, false];
 
         for (int i = 0; i < connected.Length; i++)
         {
             manager.Connections[i].Connected = connected[i];
         }
 
-        var taxonNumbers = new[] { 1, 2, 1, 2 };
+        int[] taxonNumbers = [1, 2, 1, 2];
 
         for (int i = 0; i < taxonNumbers.Length; i++)
         {
             manager.Elements[i].TaxonNumber = taxonNumbers[i];
         }
 
-        Assert.AreEqual(1, EquipotencyCalculator.Calculate(manager));
+        Assert.That(EquipotencyCalculator.Calculate(manager), Is.EqualTo(1));
     }
 }

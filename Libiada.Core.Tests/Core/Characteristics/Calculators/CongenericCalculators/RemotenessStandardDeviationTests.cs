@@ -16,12 +16,16 @@ public class RemotenessStandardDeviationTests : CongenericCalculatorsTests<Remot
     /// The congeneric sequence index in <see cref="ChainsStorage"/>.
     /// </param>
     /// <param name="link">
-    /// Redundant parameter, not used in calculations.
+    /// Binding of the intervals in the sequence.
     /// </param>
     /// <param name="value">
     /// The value.
     /// </param>
     [TestCase(0, Link.Start, 0.86180445)]
+
+    [TestCase(2, Link.None, 0)]
+
+    [TestCase(3, Link.None, 0)]
     public void CongenericCalculationTest(int index, Link link, double value)
     {
         CongenericChainCharacteristicTest(index, link, value);

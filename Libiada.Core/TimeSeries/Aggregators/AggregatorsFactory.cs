@@ -20,24 +20,16 @@ public class AggregatorsFactory
     /// </exception>
     public IDistancesAggregator GetAggregator(Aggregator aggregator)
     {
-        switch (aggregator)
+        return aggregator switch
         {
-            case Aggregator.Average:
-                return new Average();
-            case Aggregator.DifferenceModule:
-                return new DifferenceModule();
-            case Aggregator.DifferenceSquareRoot:
-                return new DifferenceSquareRoot();
-            case Aggregator.Max:
-                return new Max();
-            case Aggregator.Min:
-                return new Min();
-            case Aggregator.SumModule:
-                return new SumModule();
-            case Aggregator.SumSquareRoot:
-                return new SumSquareRoot();
-            default:
-                throw new InvalidEnumArgumentException(nameof(aggregator), (int)aggregator, typeof(Aggregator));
-        }
+            Aggregator.Average => new Average(),
+            Aggregator.DifferenceModule => new DifferenceModule(),
+            Aggregator.DifferenceSquareRoot => new DifferenceSquareRoot(),
+            Aggregator.Max => new Max(),
+            Aggregator.Min => new Min(),
+            Aggregator.SumModule => new SumModule(),
+            Aggregator.SumSquareRoot => new SumSquareRoot(),
+            _ => throw new InvalidEnumArgumentException(nameof(aggregator), (int)aggregator, typeof(Aggregator)),
+        };
     }
 }

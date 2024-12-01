@@ -24,6 +24,20 @@ public class AlphabetCardinalityTests : FullCalculatorsTests<AlphabetCardinality
     [TestCase(3, 2)]
     [TestCase(4, 1)]
     [TestCase(5, 4)]
+    [TestCase(6, 4)]
+    [TestCase(7, 2)]
+    [TestCase(8, 1)]
+    [TestCase(9, 3)]
+    [TestCase(10, 3)]
+    [TestCase(11, 3)]
+    [TestCase(12, 3)]
+    [TestCase(13, 3)]
+    [TestCase(14, 3)]
+    [TestCase(15, 3)]
+    [TestCase(16, 3)]
+    [TestCase(17, 3)]
+    [TestCase(18, 0)]
+    [TestCase(19, 1)]
     public void ChainCalculationTest(int index, double value)
     {
         ChainCharacteristicTest(index, Link.NotApplied, value);

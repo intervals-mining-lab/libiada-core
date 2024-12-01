@@ -19,7 +19,7 @@ public class SpaceNotPhantomReorganizer : SpaceReorganizer
     /// </returns>
     public override AbstractChain Reorganize(AbstractChain source)
     {
-        var elements = new List<IBaseObject>();
+        List<IBaseObject> elements = [];
 
         for (int i = 0; i < source.Length; i++)
         {

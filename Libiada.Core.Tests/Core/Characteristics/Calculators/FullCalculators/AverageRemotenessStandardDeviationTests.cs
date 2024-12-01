@@ -16,7 +16,7 @@ public class AverageRemotenessStandardDeviationTests : FullCalculatorsTests<Aver
     /// Full sequence index in <see cref="ChainsStorage"/>.
     /// </param>
     /// <param name="link">
-    /// Redundant parameter, not used in calculations.
+    /// Binding of the intervals in the sequence.
     /// </param>
     /// <param name="value">
     /// The value.
@@ -26,6 +26,24 @@ public class AverageRemotenessStandardDeviationTests : FullCalculatorsTests<Aver
     [TestCase(0, Link.End, 0.1298)]
     [TestCase(0, Link.Both, 0.225)]
     [TestCase(0, Link.Cycle, 0.191)]
+
+    [TestCase(2, Link.None, 0.7588451685)]
+    [TestCase(2, Link.Start, 0.5949129839)]
+    [TestCase(2, Link.End, 0.6120722377)]
+    [TestCase(2, Link.Both, 0.6369978137)]
+    [TestCase(2, Link.Cycle, 0.8390066887)]
+
+    [TestCase(4, Link.None, 0)]
+    [TestCase(4, Link.Start, 0)]
+    [TestCase(4, Link.End, 0)]
+    [TestCase(4, Link.Both, 0)]
+    [TestCase(4, Link.Cycle, 0)]
+
+    [TestCase(30, Link.None, 0.5114562277)]
+    [TestCase(30, Link.Start, 0.4698845969)]
+    [TestCase(30, Link.End, 0.0616363065)]
+    [TestCase(30, Link.Both, 0.1789723977)]
+    [TestCase(30, Link.Cycle, 0.3065852807)]
     public void ChainCalculationTest(int index, Link link, double value)
     {
         ChainCharacteristicTest(index, link, value);

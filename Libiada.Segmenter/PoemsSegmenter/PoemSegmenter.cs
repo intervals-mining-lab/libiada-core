@@ -11,7 +11,7 @@ public class PoemSegmenter
     public double balance;
     public string startText;
     public string segmentedText = "";
-    public List<string> consonanceOrderedList = new List<string>();
+    public List<string> consonanceOrderedList = [];
 
     public PoemSegmenter(string textData, int maxLength, double threshold, double balance)
     {
@@ -24,7 +24,7 @@ public class PoemSegmenter
 
     public (Dictionary<string, int>, string, string) StartSegmentation()
     {
-        Dictionary<string, int> consonancesDictionary = new Dictionary<string, int>();
+        Dictionary<string, int> consonancesDictionary = [];
         textData = textData.Replace("/n", "");
         while (true)
         {
@@ -32,7 +32,7 @@ public class PoemSegmenter
             consonanceOrderedList.Clear();
             consonancesDictionary = Segmentation();
 
-            var checkedDictionary = CheckSegmentationByCriteria(consonancesDictionary);
+            bool checkedDictionary = CheckSegmentationByCriteria(consonancesDictionary);
 
             if (checkedDictionary)
             {
@@ -48,14 +48,14 @@ public class PoemSegmenter
                 break;
             }
         }
-        var poemChain = GetPoemChain();
+        string poemChain = GetPoemChain();
         return (consonancesDictionary, poemChain, segmentedText);
     }
 
     public Dictionary<string, int> Segmentation()
     {
-        Dictionary<string, int> consonancesDictionary = new Dictionary<string, int>();
-        StringBuilder stringBuilder = new StringBuilder();
+        Dictionary<string, int> consonancesDictionary = [];
+        StringBuilder stringBuilder = new();
         int n = maxLength;
         for (int i = 0; i < textData.Length; i++)
         {
@@ -151,7 +151,7 @@ public class PoemSegmenter
 
     public Boolean CheckSegmentationByCriteria(Dictionary<string, int> consonancesDictionary)
     {
-        PartialOrlovCriterion criterionPartialOrlov = new PartialOrlovCriterion(consonancesDictionary, text);
+        PartialOrlovCriterion criterionPartialOrlov = new(consonancesDictionary, text);
         double theoreticVolumeDictionary = criterionPartialOrlov.TheoreticalDictionaryVolume();
         double actualVolumeDictionary = consonancesDictionary.Keys.Count;
         double difference = Math.Abs(actualVolumeDictionary - theoreticVolumeDictionary);

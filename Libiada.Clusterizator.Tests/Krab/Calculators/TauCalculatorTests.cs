@@ -15,19 +15,19 @@ public class TauCalculatorTests
     [Test]
     public void ThreePointsTest()
     {
-        var node1 = new GraphElement(new[] { 15.0 }, "node1");
-        var node2 = new GraphElement(new[] { 10.0 }, "node2");
-        var node3 = new GraphElement(new[] { -3.0 }, "node3");
+        GraphElement node1 = new([15.0], "node1");
+        GraphElement node2 = new([10.0], "node2");
+        GraphElement node3 = new([-3.0], "node3");
 
-        var el = new List<GraphElement> { node1, node2, node3 };
+        List<GraphElement> el = [node1, node2, node3];
 
-        var conn1 = new Connection(0, 1);
-        var conn2 = new Connection(0, 2);
-        var conn3 = new Connection(1, 2);
+        Connection conn1 = new(0, 1);
+        Connection conn2 = new(0, 2);
+        Connection conn3 = new(1, 2);
 
-        var graph = new List<Connection> { conn1, conn2, conn3 };
+        List<Connection> graph = [conn1, conn2, conn3];
 
-        var gm = new GraphManager(graph, el);
+        GraphManager gm = new(graph, el);
 
         ICalculator calculator = new LinearCalculator();
         calculator.Calculate(gm);
@@ -37,9 +37,13 @@ public class TauCalculatorTests
         calculator.Calculate(gm);
         calculator = new TauCalculator();
         calculator.Calculate(gm);
-        Assert.AreEqual(107, Math.Round(gm.Connections[0].Tau * 1000));
-        Assert.AreEqual(722, Math.Round(gm.Connections[2].Tau * 1000));
-        Assert.AreEqual(1, gm.Connections[1].Tau);
+
+        Assert.Multiple(() =>
+        {
+            Assert.That(gm.Connections[0].Tau, Is.EqualTo(0.107).Within(0.001d));
+            Assert.That(gm.Connections[1].Tau, Is.EqualTo(1));
+            Assert.That(gm.Connections[2].Tau, Is.EqualTo(0.722).Within(0.001d));
+        });
     }
 
     /// <summary>
@@ -48,19 +52,19 @@ public class TauCalculatorTests
     [Test]
     public void ThreePoints3DTest()
     {
-        var node1 = new GraphElement(new[] { 15.0, 1.0, -20.0 }, "node1");
-        var node2 = new GraphElement(new[] { 0.0, -3.0, -4.0 }, "node2");
-        var node3 = new GraphElement(new[] { 15.0, 1.0, -25.0 }, "node3");
+        GraphElement node1 = new([15.0, 1.0, -20.0], "node1");
+        GraphElement node2 = new([0.0, -3.0, -4.0], "node2");
+        GraphElement node3 = new([15.0, 1.0, -25.0], "node3");
 
-        var el = new List<GraphElement> { node1, node2, node3 };
+        List<GraphElement> el = [node1, node2, node3];
 
-        var conn1 = new Connection(0, 1);
-        var conn2 = new Connection(0, 2);
-        var conn3 = new Connection(1, 2);
+        Connection conn1 = new(0, 1);
+        Connection conn2 = new(0, 2);
+        Connection conn3 = new(1, 2);
 
-        var graph = new List<Connection> { conn1, conn2, conn3 };
+        List<Connection> graph = [conn1, conn2, conn3];
 
-        var gm = new GraphManager(graph, el);
+        GraphManager gm = new(graph, el);
 
         ICalculator calculator = new LinearCalculator();
 
@@ -71,8 +75,12 @@ public class TauCalculatorTests
         calculator.Calculate(gm);
         calculator = new TauCalculator();
         calculator.Calculate(gm);
-        Assert.AreEqual(854, Math.Round(gm.Connections[0].Tau * 1000));
-        Assert.AreEqual(43, Math.Round(gm.Connections[1].Tau * 1000));
-        Assert.AreEqual(1, gm.Connections[2].Tau);
+
+        Assert.Multiple(() =>
+        {
+            Assert.That(gm.Connections[0].Tau, Is.EqualTo(0.854).Within(0.001d));
+            Assert.That(gm.Connections[1].Tau, Is.EqualTo(0.043).Within(0.001d));
+            Assert.That(gm.Connections[2].Tau, Is.EqualTo(1));
+        });
     }
 }

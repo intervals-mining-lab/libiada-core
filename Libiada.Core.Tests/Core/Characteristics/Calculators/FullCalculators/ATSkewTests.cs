@@ -22,6 +22,8 @@ public class ATSkewTests : FullCalculatorsTests<ATSkew>
     [TestCase(2, 0)]
     [TestCase(5, 0)]
     [TestCase(6, 0.6)]
+    [TestCase(7, 0)]
+    [TestCase(8, -1)]
     public void CalculationTest(int index, double value)
     {
         ChainCharacteristicTest(index, Link.NotApplied, value);

@@ -164,8 +164,8 @@ public class GraphManager
     /// </returns>
     public GraphManager Clone()
     {
-        var tempConnections = new List<Connection>();
-        var tempGraphElements = new List<GraphElement>();
+        List<Connection> tempConnections = [];
+        List<GraphElement> tempGraphElements = [];
         for (int i = 0; i < Connections.Count; i++)
         {
             tempConnections.Add(Connections[i].Clone());
@@ -186,7 +186,7 @@ public class GraphManager
     {
         for (int i = 0; i < Elements.Count - 1; i++)
         {
-            var minDistance = double.MaxValue;
+            double minDistance = double.MaxValue;
             int pointNumber = -1;
 
             // searching for shortest available connection

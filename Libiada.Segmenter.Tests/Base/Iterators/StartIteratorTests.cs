@@ -30,18 +30,18 @@ public class StartIteratorTests
     [Test]
     public void HasNextTest()
     {
-        int lengthCut = 3;
-        int step = 1;
+        const int lengthCut = 3;
+        const int step = 1;
         int countSteps = 0;
 
-        var iterator = new StartIterator(chain, lengthCut, step);
+        StartIterator iterator = new(chain, lengthCut, step);
         while (iterator.HasNext())
         {
             iterator.Next();
             countSteps++;
         }
 
-        Assert.True(countSteps == iterator.MaxShifts);
+        Assert.That(countSteps, Is.EqualTo(iterator.MaxShifts));
 
         countSteps = 0;
         iterator = new StartIterator(chain, lengthCut, step + 1);
@@ -51,7 +51,7 @@ public class StartIteratorTests
             countSteps++;
         }
 
-        Assert.True(countSteps == iterator.MaxShifts);
+        Assert.That(countSteps, Is.EqualTo(iterator.MaxShifts));
     }
 
     /// <summary>
@@ -62,20 +62,20 @@ public class StartIteratorTests
     {
         List<string> cut;
         string[] triplesForStepOne =
-            {
+            [
                 "AAC", "ACA", "CAG", "AGG", "GGT", "GTG", "TGC", "GCC", "CCC", "CCC", "CCT",
                 "CTT", "TTA", "TAT", "ATT", "TTT"
-            };
-        string[] triplesForStepTwo = { "AAC", "CAG", "GGT", "TGC", "CCC", "CCT", "TTA", "ATT" };
-        int lengthCut = 3;
-        int step = 1;
+            ];
+        string[] triplesForStepTwo = ["AAC", "CAG", "GGT", "TGC", "CCC", "CCT", "TTA", "ATT"];
+        const int lengthCut = 3;
+        const int step = 1;
 
-        var iterator = new StartIterator(chain, lengthCut, step);
+        StartIterator iterator = new(chain, lengthCut, step);
 
         for (int i = 0; i < iterator.MaxShifts; i++)
         {
             cut = iterator.Next();
-            Assert.True(Helper.ToString(cut).Equals(triplesForStepOne[i]));
+            Assert.That(Helper.ToString(cut), Is.EqualTo(triplesForStepOne[i]));
         }
 
         iterator = new StartIterator(chain, lengthCut, step + 1);
@@ -83,7 +83,7 @@ public class StartIteratorTests
         for (int i = 0; i < iterator.MaxShifts; i++)
         {
             cut = iterator.Next();
-            Assert.True(Helper.ToString(cut).Equals(triplesForStepTwo[i]));
+            Assert.That(Helper.ToString(cut), Is.EqualTo(triplesForStepTwo[i]));
         }
     }
 
@@ -93,15 +93,15 @@ public class StartIteratorTests
     [Test]
     public void ResetTest()
     {
-        int length = 2;
-        int step = 1;
-        var iterator = new StartIterator(chain, length, step);
+        const int length = 2;
+        const int step = 1;
+        StartIterator iterator = new(chain, length, step);
         if (iterator.Move(3))
         {
             iterator.Reset();
         }
 
-        Assert.True(iterator.CursorPosition == -step);
+        Assert.That(iterator.CursorPosition, Is.EqualTo(-step));
     }
 
     /// <summary>
@@ -113,30 +113,30 @@ public class StartIteratorTests
         int length = 2;
         int step = 1;
         int position = 3;
-        var iterator = new StartIterator(chain, length, step);
+        StartIterator iterator = new(chain, length, step);
         iterator.Move(position);
-        Assert.True(iterator.CursorPosition == position);
+        Assert.That(iterator.CursorPosition, Is.EqualTo(position));
 
         position = 100;
         iterator.Move(position);
-        Assert.True(iterator.CursorPosition != position);
+        Assert.That(iterator.CursorPosition, Is.Not.EqualTo(position));
 
         position = chain.Length / 2;
         iterator.Move(position);
-        Assert.True(iterator.CursorPosition == position);
+        Assert.That(iterator.CursorPosition, Is.EqualTo(position));
 
         position = -1;
         iterator.Move(position);
-        Assert.True(iterator.CursorPosition != position);
+        Assert.That(iterator.CursorPosition, Is.Not.EqualTo(position));
 
         length = 3;
         step = 2;
         position = 3;
-        string triple = "GTG";
+        const string triple = "GTG";
         iterator = new StartIterator(chain, length, step);
         iterator.Move(position);
         iterator.Next();
-        Assert.AreEqual(triple, Helper.ToString(iterator.Current()));
+        Assert.That(Helper.ToString(iterator.Current()), Is.EqualTo(triple));
     }
 
     /// <summary>
@@ -145,11 +145,11 @@ public class StartIteratorTests
     [Test]
     public void GetMaxShiftsTest()
     {
-        int lengthCut = 3;
-        int step = 1;
-        int maxShifts = 16;
-        var iterator = new StartIterator(chain, lengthCut, step);
-        Assert.True(iterator.MaxShifts == maxShifts);
+        const int lengthCut = 3;
+        const int step = 1;
+        const int maxShifts = 16;
+        StartIterator iterator = new(chain, lengthCut, step);
+        Assert.That(iterator.MaxShifts, Is.EqualTo(maxShifts));
     }
 
     /// <summary>
@@ -158,18 +158,18 @@ public class StartIteratorTests
     [Test]
     public void GetPositionTest()
     {
-        int lengthCut = 2;
-        int step = 1;
-        var iterator = new StartIterator(chain, lengthCut, step);
+        const int lengthCut = 2;
+        const int step = 1;
+        StartIterator iterator = new(chain, lengthCut, step);
         iterator.Next();
-        Assert.True(iterator.CursorPosition == 0);
+        Assert.That(iterator.CursorPosition, Is.EqualTo(0));
         iterator.Next();
-        Assert.True(iterator.CursorPosition == 1);
+        Assert.That(iterator.CursorPosition, Is.EqualTo(1));
         for (int index = 2; index < iterator.MaxShifts; index++)
         {
             iterator.Next();
         }
 
-        Assert.True(iterator.CursorPosition == 16);
+        Assert.That(iterator.CursorPosition, Is.EqualTo(16));
     }
 }

@@ -11,10 +11,7 @@ public class SumSquareRootTests
     /// <summary>
     /// The distances list.
     /// </summary>
-    private static readonly List<double> distances = new List<double>()
-    {
-        1, 2, 3, 4, 5, 6, 7, 8
-    };
+    private static readonly List<double> distances = [1, 2, 3, 4, 5, 6, 7, 8];
 
     /// <summary>
     /// The expected sum sqrt.
@@ -27,8 +24,8 @@ public class SumSquareRootTests
     [Test]
     public void SumSquareRootTest()
     {
-        var aggregator = new SumSquareRoot();
+        SumSquareRoot aggregator = new();
         double result = aggregator.Aggregate(distances);
-        Assert.AreEqual(sumSqrt, result);
+        Assert.That(result, Is.EqualTo(sumSqrt));
     }
 }

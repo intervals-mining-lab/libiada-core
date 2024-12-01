@@ -15,7 +15,7 @@ public class AverageRemotenessGCToATRatio : IFullCalculator
     /// Source sequence.
     /// </param>
     /// <param name="link">
-    /// Link of intervals in sequence.
+    /// Binding of the intervals in the sequence.
     /// </param>
     /// <returns>
     /// G+C Ratio value as <see cref="double"/> .
@@ -24,12 +24,13 @@ public class AverageRemotenessGCToATRatio : IFullCalculator
     {
         DnaProcessor.CheckDnaAlphabet(chain.Alphabet);
 
-        var congenericRemotenessCalculator = new CongenericCalculators.AverageRemoteness();
+        CongenericCalculators.AverageRemoteness congenericRemotenessCalculator = new();
 
         double g = congenericRemotenessCalculator.Calculate(chain.GetOrCreateCongenericChain(new ValueString("G")), link);
         double c = congenericRemotenessCalculator.Calculate(chain.GetOrCreateCongenericChain(new ValueString("C")), link);
         double a = congenericRemotenessCalculator.Calculate(chain.GetOrCreateCongenericChain(new ValueString("A")), link);
         double t = congenericRemotenessCalculator.Calculate(chain.GetOrCreateCongenericChain(new ValueString("T")), link);
+
         return a + t == 0 ? 0 : (g + c) / (a + t);
     }
 }

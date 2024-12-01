@@ -15,13 +15,13 @@ public class MidiNumberManagerTests
     [Test]
     public void GetOctaveFromMidiNumberTest()
     {
-        var initialPitch = new Pitch(1, NoteSymbol.A, 0);
-        var octave = MidiNumberManager.GetOctaveFromMidiNumber(initialPitch.MidiNumber);
-        Assert.AreEqual(initialPitch.Octave, octave);
+        Pitch initialPitch = new(1, NoteSymbol.A, 0);
+        short octave = MidiNumberManager.GetOctaveFromMidiNumber(initialPitch.MidiNumber);
+        Assert.That(octave, Is.EqualTo(initialPitch.Octave));
 
         initialPitch = new Pitch(5, NoteSymbol.C, Accidental.Sharp);
         octave = MidiNumberManager.GetOctaveFromMidiNumber(initialPitch.MidiNumber);
-        Assert.AreEqual(initialPitch.Octave, octave);
+        Assert.That(octave, Is.EqualTo(initialPitch.Octave));
     }
 
     /// <summary>
@@ -30,13 +30,13 @@ public class MidiNumberManagerTests
     [Test]
     public void GetNoteSymbolFromMidiNumberTest()
     {
-        var initialPitch = new Pitch(1, NoteSymbol.A, Accidental.Bekar);
-        var step = MidiNumberManager.GetNoteSymbolFromMidiNumber(initialPitch.MidiNumber);
-        Assert.AreEqual(initialPitch.Step, step);
+        Pitch initialPitch = new(1, NoteSymbol.A, Accidental.Bekar);
+        NoteSymbol step = MidiNumberManager.GetNoteSymbolFromMidiNumber(initialPitch.MidiNumber);
+        Assert.That(step, Is.EqualTo(initialPitch.Step));
 
         initialPitch = new Pitch(5, NoteSymbol.C, Accidental.Sharp);
         step = MidiNumberManager.GetNoteSymbolFromMidiNumber(initialPitch.MidiNumber);
-        Assert.AreEqual(initialPitch.Step, step);
+        Assert.That(step, Is.EqualTo(initialPitch.Step));
     }
 
     /// <summary>
@@ -45,12 +45,12 @@ public class MidiNumberManagerTests
     [Test]
     public void GetAlterFromMidiNumberTest()
     {
-        var initialPitch = new Pitch(1, NoteSymbol.A, Accidental.Bekar);
-        var alter = MidiNumberManager.GetAlterFromMidiNumber(initialPitch.MidiNumber);
-        Assert.AreEqual(initialPitch.Alter, alter);
+        Pitch initialPitch = new(1, NoteSymbol.A, Accidental.Bekar);
+        Accidental alter = MidiNumberManager.GetAlterFromMidiNumber(initialPitch.MidiNumber);
+        Assert.That(alter, Is.EqualTo(initialPitch.Alter));
 
         initialPitch = new Pitch(5, NoteSymbol.C, Accidental.Sharp);
         alter = MidiNumberManager.GetAlterFromMidiNumber(initialPitch.MidiNumber);
-        Assert.AreEqual(initialPitch.Alter, alter);
+        Assert.That(alter, Is.EqualTo(initialPitch.Alter));
     }
 }

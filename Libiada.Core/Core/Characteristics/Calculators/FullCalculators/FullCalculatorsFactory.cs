@@ -21,120 +21,64 @@ public static class FullCalculatorsFactory
     /// </exception>
     public static IFullCalculator CreateCalculator(FullCharacteristic type)
     {
-        switch (type)
+        return type switch
         {
-            case FullCharacteristic.AlphabetCardinality:
-                return new AlphabetCardinality();
-            case FullCharacteristic.AlphabeticAverageRemoteness:
-                return new AlphabeticAverageRemoteness();
-            case FullCharacteristic.AlphabeticDepth:
-                return new AlphabeticDepth();
-            case FullCharacteristic.ArithmeticMean:
-                return new ArithmeticMean();
-            case FullCharacteristic.ATSkew:
-                return new ATSkew();
-            case FullCharacteristic.AverageRemoteness:
-                return new AverageRemoteness();
-            case FullCharacteristic.AverageRemotenessATSkew:
-                return new AverageRemotenessATSkew();
-            case FullCharacteristic.AverageRemotenessDispersion:
-                return new AverageRemotenessDispersion();
-            case FullCharacteristic.AverageRemotenessGCRatio:
-                return new AverageRemotenessGCRatio();
-            case FullCharacteristic.AverageRemotenessGCSkew:
-                return new AverageRemotenessGCSkew();
-            case FullCharacteristic.AverageRemotenessGCToATRatio:
-                return new AverageRemotenessGCToATRatio();
-            case FullCharacteristic.AverageRemotenessKurtosis:
-                return new AverageRemotenessKurtosis();
-            case FullCharacteristic.AverageRemotenessKurtosisCoefficient:
-                return new AverageRemotenessKurtosisCoefficient();
-            case FullCharacteristic.AverageRemotenessMKSkew:
-                return new AverageRemotenessMKSkew();
-            case FullCharacteristic.AverageRemotenessRYSkew:
-                return new AverageRemotenessRYSkew();
-            case FullCharacteristic.AverageRemotenessSkewness:
-                return new AverageRemotenessSkewness();
-            case FullCharacteristic.AverageRemotenessSkewnessCoefficient:
-                return new AverageRemotenessSkewnessCoefficient();
-            case FullCharacteristic.AverageRemotenessStandardDeviation:
-                return new AverageRemotenessStandardDeviation();
-            case FullCharacteristic.AverageRemotenessSWSkew:
-                return new AverageRemotenessSWSkew();
-            case FullCharacteristic.AverageWordLength:
-                return new AverageWordLength();
-            case FullCharacteristic.CuttingLength:
-                return new CuttingLength();
-            case FullCharacteristic.CuttingLengthVocabularyEntropy:
-                return new CuttingLengthVocabularyEntropy();
-            case FullCharacteristic.Depth:
-                return new Depth();
-            case FullCharacteristic.DescriptiveInformation:
-                return new DescriptiveInformation();
-            case FullCharacteristic.ElementsCount:
-                return new ElementsCount();
-            case FullCharacteristic.EntropyDispersion:
-                return new EntropyDispersion();
-            case FullCharacteristic.EntropyKurtosis:
-                return new EntropyKurtosis();
-            case FullCharacteristic.EntropyKurtosisCoefficient:
-                return new EntropyKurtosisCoefficient();
-            case FullCharacteristic.EntropySkewness:
-                return new EntropySkewness();
-            case FullCharacteristic.EntropySkewnessCoefficient:
-                return new EntropySkewnessCoefficient();
-            case FullCharacteristic.EntropyStandardDeviation:
-                return new EntropyStandardDeviation();
-            case FullCharacteristic.GCRatio:
-                return new GCRatio();
-            case FullCharacteristic.GCSkew:
-                return new GCSkew();
-            case FullCharacteristic.GCToATRatio:
-                return new GCToATRatio();
-            case FullCharacteristic.GeometricMean:
-                return new GeometricMean();
-            case FullCharacteristic.IdentificationInformation:
-                return new IdentificationInformation();
-            case FullCharacteristic.InformationAmount:
-                return new InformationAmount();
-            case FullCharacteristic.IntervalsCount:
-                return new IntervalsCount();
-            case FullCharacteristic.IntervalsSum:
-                return new IntervalsSum();
-            case FullCharacteristic.Length:
-                return new Length();
-            case FullCharacteristic.MKSkew:
-                return new MKSkew();
-            case FullCharacteristic.Periodicity:
-                return new Periodicity();
-            case FullCharacteristic.Probability:
-                return new Probability();
-            case FullCharacteristic.Regularity:
-                return new Regularity();
-            case FullCharacteristic.RemotenessDispersion:
-                return new RemotenessDispersion();
-            case FullCharacteristic.RemotenessKurtosis:
-                return new RemotenessKurtosis();
-            case FullCharacteristic.RemotenessKurtosisCoefficient:
-                return new RemotenessKurtosisCoefficient();
-            case FullCharacteristic.RemotenessSkewness:
-                return new RemotenessSkewness();
-            case FullCharacteristic.RemotenessSkewnessCoefficient:
-                return new RemotenessSkewnessCoefficient();
-            case FullCharacteristic.RemotenessStandardDeviation:
-                return new RemotenessStandardDeviation();
-            case FullCharacteristic.RYSkew:
-                return new RYSkew();
-            case FullCharacteristic.SWSkew:
-                return new SWSkew();
-            case FullCharacteristic.Uniformity:
-                return new Uniformity();
-            case FullCharacteristic.VariationsCount:
-                return new VariationsCount();
-            case FullCharacteristic.Volume:
-                return new Volume();
-            default:
-                throw new InvalidEnumArgumentException(nameof(type), (int)type, typeof(FullCharacteristic));
-        }
+            FullCharacteristic.AlphabetCardinality => new AlphabetCardinality(),
+            FullCharacteristic.AlphabeticAverageRemoteness => new AlphabeticAverageRemoteness(),
+            FullCharacteristic.AlphabeticDepth => new AlphabeticDepth(),
+            FullCharacteristic.ArithmeticMean => new ArithmeticMean(),
+            FullCharacteristic.ATSkew => new ATSkew(),
+            FullCharacteristic.AverageRemoteness => new AverageRemoteness(),
+            FullCharacteristic.AverageRemotenessATSkew => new AverageRemotenessATSkew(),
+            FullCharacteristic.AverageRemotenessVariance => new AverageRemotenessVariance(),
+            FullCharacteristic.AverageRemotenessGCRatio => new AverageRemotenessGCRatio(),
+            FullCharacteristic.AverageRemotenessGCSkew => new AverageRemotenessGCSkew(),
+            FullCharacteristic.AverageRemotenessGCToATRatio => new AverageRemotenessGCToATRatio(),
+            FullCharacteristic.AverageRemotenessKurtosis => new AverageRemotenessKurtosis(),
+            FullCharacteristic.AverageRemotenessKurtosisCoefficient => new AverageRemotenessKurtosisCoefficient(),
+            FullCharacteristic.AverageRemotenessMKSkew => new AverageRemotenessMKSkew(),
+            FullCharacteristic.AverageRemotenessRYSkew => new AverageRemotenessRYSkew(),
+            FullCharacteristic.AverageRemotenessSkewness => new AverageRemotenessSkewness(),
+            FullCharacteristic.AverageRemotenessSkewnessCoefficient => new AverageRemotenessSkewnessCoefficient(),
+            FullCharacteristic.AverageRemotenessStandardDeviation => new AverageRemotenessStandardDeviation(),
+            FullCharacteristic.AverageRemotenessSWSkew => new AverageRemotenessSWSkew(),
+            FullCharacteristic.AverageWordLength => new AverageWordLength(),
+            FullCharacteristic.CuttingLength => new CuttingLength(),
+            FullCharacteristic.CuttingLengthVocabularyEntropy => new CuttingLengthVocabularyEntropy(),
+            FullCharacteristic.Depth => new Depth(),
+            FullCharacteristic.DescriptiveInformation => new DescriptiveInformation(),
+            FullCharacteristic.ElementsCount => new ElementsCount(),
+            FullCharacteristic.EntropyVariance => new EntropyVariance(),
+            FullCharacteristic.EntropyKurtosis => new EntropyKurtosis(),
+            FullCharacteristic.EntropyKurtosisCoefficient => new EntropyKurtosisCoefficient(),
+            FullCharacteristic.EntropySkewness => new EntropySkewness(),
+            FullCharacteristic.EntropySkewnessCoefficient => new EntropySkewnessCoefficient(),
+            FullCharacteristic.EntropyStandardDeviation => new EntropyStandardDeviation(),
+            FullCharacteristic.GCRatio => new GCRatio(),
+            FullCharacteristic.GCSkew => new GCSkew(),
+            FullCharacteristic.GCToATRatio => new GCToATRatio(),
+            FullCharacteristic.GeometricMean => new GeometricMean(),
+            FullCharacteristic.IdentificationInformation => new IdentificationInformation(),
+            FullCharacteristic.InformationAmount => new InformationAmount(),
+            FullCharacteristic.IntervalsCount => new IntervalsCount(),
+            FullCharacteristic.IntervalsSum => new IntervalsSum(),
+            FullCharacteristic.Length => new Length(),
+            FullCharacteristic.MKSkew => new MKSkew(),
+            FullCharacteristic.Periodicity => new Periodicity(),
+            FullCharacteristic.Probability => new Probability(),
+            FullCharacteristic.Regularity => new Regularity(),
+            FullCharacteristic.RemotenessVariance => new RemotenessVariance(),
+            FullCharacteristic.RemotenessKurtosis => new RemotenessKurtosis(),
+            FullCharacteristic.RemotenessKurtosisCoefficient => new RemotenessKurtosisCoefficient(),
+            FullCharacteristic.RemotenessSkewness => new RemotenessSkewness(),
+            FullCharacteristic.RemotenessSkewnessCoefficient => new RemotenessSkewnessCoefficient(),
+            FullCharacteristic.RemotenessStandardDeviation => new RemotenessStandardDeviation(),
+            FullCharacteristic.RYSkew => new RYSkew(),
+            FullCharacteristic.SWSkew => new SWSkew(),
+            FullCharacteristic.Uniformity => new Uniformity(),
+            FullCharacteristic.VariationsCount => new VariationsCount(),
+            FullCharacteristic.Volume => new Volume(),
+            _ => throw new InvalidEnumArgumentException(nameof(type), (int)type, typeof(FullCharacteristic)),
+        };
     }
 }

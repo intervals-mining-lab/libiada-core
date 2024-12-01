@@ -10,35 +10,35 @@ public class SequenceConcatenatorTests
     [Test]
     public void ConcatenateTest()
     {
-        var sequencesIndexes = new[] { 0, 2, 1 };
-        var sourceChains = ChainsStorage.ConcatinationChains;
-        var result = SequenceConcatenator.Concatenate(new[] { sourceChains[0], sourceChains[1], sourceChains[2] }, sequencesIndexes);
-        Assert.AreEqual(sourceChains[4], result);
+        int[] sequencesIndexes = [0, 2, 1];
+        List<Chain> sourceChains = ChainsStorage.ConcatinationChains;
+        Chain result = SequenceConcatenator.Concatenate([sourceChains[0], sourceChains[1], sourceChains[2]], sequencesIndexes);
+        Assert.That(result, Is.EqualTo(sourceChains[4]));
     }
 
     [Test]
     public void ConcatenateAsOrderedTest()
     {
-        var sourceChains = ChainsStorage.ConcatinationChains;
-        var result = SequenceConcatenator.ConcatenateAsOrdered(new[] { sourceChains[0], sourceChains[1], sourceChains[2] });
-        Assert.AreEqual(sourceChains[3], result);
+        List<Chain> sourceChains = ChainsStorage.ConcatinationChains;
+        Chain result = SequenceConcatenator.ConcatenateAsOrdered([sourceChains[0], sourceChains[1], sourceChains[2]]);
+        Assert.That(result, Is.EqualTo(sourceChains[3]));
     }
 
     [Test]
     public void GenerateConcatenationsTest()
     {
-        var sourceChains = ChainsStorage.ConcatinationChains;
+        List<Chain> sourceChains = ChainsStorage.ConcatinationChains;
         Chain[] expectedChains =
-        {
+        [
             sourceChains[3],
             sourceChains[4],
             sourceChains[5],
             sourceChains[6],
             sourceChains[7],
             sourceChains[8]
-        };
+        ];
 
-        var result = SequenceConcatenator.GenerateConcatenations(new[] { sourceChains[0], sourceChains[1], sourceChains[2] });
-        Assert.AreEqual(expectedChains, result);
+        IEnumerable<Chain> result = SequenceConcatenator.GenerateConcatenations([sourceChains[0], sourceChains[1], sourceChains[2]]);
+        Assert.That(result, Is.EqualTo(expectedChains));
     }
 }

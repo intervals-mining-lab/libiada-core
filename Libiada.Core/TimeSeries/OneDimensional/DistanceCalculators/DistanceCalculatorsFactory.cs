@@ -6,14 +6,11 @@ public class DistanceCalculatorsFactory
 {
     public IOneDimensionalPointsDistance GetDistanceCalculator(DistanceCalculator calculator)
     {
-        switch (calculator)
+        return calculator switch
         {
-            case DistanceCalculator.EuclideanDistanceBetweenOneDimensionalPointsCalculator:
-                return new EuclideanDistanceBetweenOneDimensionalPointsCalculator();
-            case DistanceCalculator.HammingDistanceBetweenOneDimensionalPointsCalculator:
-                return new HammingDistanceBetweenOneDimensionalPointsCalculator();
-            default:
-                throw new InvalidEnumArgumentException(nameof(calculator), (int)calculator, typeof(DistanceCalculator));
-        }
+            DistanceCalculator.EuclideanDistanceBetweenOneDimensionalPointsCalculator => new EuclideanDistanceBetweenOneDimensionalPointsCalculator(),
+            DistanceCalculator.HammingDistanceBetweenOneDimensionalPointsCalculator => new HammingDistanceBetweenOneDimensionalPointsCalculator(),
+            _ => throw new InvalidEnumArgumentException(nameof(calculator), (int)calculator, typeof(DistanceCalculator)),
+        };
     }
 }

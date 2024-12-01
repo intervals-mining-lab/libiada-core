@@ -30,30 +30,17 @@ public class IteratorWritableStartTests
     [Test]
     public void WriteTest()
     {
-        var messages = new List<ValueString>(12)
-                           {
-                               new ValueString('1'),
-                               new ValueString('2'),
-                               new ValueString('1'),
-                               new ValueString('3'),
-                               new ValueString('3'),
-                               new ValueString('1'),
-                               new ValueString('2'),
-                               new ValueString('1'),
-                               new ValueString('2'),
-                               new ValueString('2'),
-                               new ValueString('3'),
-                               new ValueString('1')
-                           };
+        List<ValueString> messages =
+                           ['1', '2', '1', '3', '3', '1', '2', '1', '2', '2', '3', '1'];
 
-        var toWrite = new Chain(12);
-        var iteratorWrite = new IteratorWritableStart(toWrite);
+        Chain toWrite = new(12);
+        IteratorWritableStart iteratorWrite = new(toWrite);
         int i = 0;
         while (iteratorWrite.Next())
         {
             iteratorWrite.WriteValue(messages[i++]);
         }
 
-        Assert.AreEqual(chainToIterate, toWrite);
+        Assert.That(toWrite, Is.EqualTo(chainToIterate));
     }
 }

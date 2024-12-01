@@ -19,12 +19,10 @@ public static class GeneratorFactory
     /// </exception>
     public static IGenerator Create(GeneratorType generator)
     {
-        switch (generator)
+        return generator switch
         {
-            case GeneratorType.SimpleGenerator:
-                return new SimpleGenerator();
-            default:
-                throw new ArgumentException("This type of generator does not registered in system", "generator");
-        }
+            GeneratorType.SimpleGenerator => new SimpleGenerator(),
+            _ => throw new ArgumentException("This type of generator does not registered in system", "generator"),
+        };
     }
 }

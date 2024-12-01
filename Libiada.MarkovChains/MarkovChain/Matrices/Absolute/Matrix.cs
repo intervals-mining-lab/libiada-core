@@ -1,7 +1,5 @@
 namespace Libiada.MarkovChains.MarkovChain.Matrices.Absolute;
 
-using System.Collections;
-
 using MarkovChains.MarkovChain.Builders;
 using MarkovChains.MarkovChain.Matrices.Base;
 using MarkovChains.MarkovChain.Matrices.Probability;
@@ -38,11 +36,11 @@ public class Matrix : MatrixCommon, IAbsoluteMatrix, IOpenMatrix
     /// <summary>
     /// Gets the value list.
     /// </summary>
-    ArrayList IOpenMatrix.ValueList
+    List<object> IOpenMatrix.ValueList
     {
         get
         {
-            return (ArrayList)this.ValueList.Clone();
+            return new List<object>(ValueList);
         }
     }
 
@@ -76,7 +74,7 @@ public class Matrix : MatrixCommon, IAbsoluteMatrix, IOpenMatrix
     /// </returns>
     public IProbabilityMatrix ProbabilityMatrix()
     {
-        var temp = new ProbabilityMatrix(AlphabetCardinality, Rank);
+        ProbabilityMatrix temp = new(AlphabetCardinality, Rank);
         temp.Fill(this);
         return temp;
     }

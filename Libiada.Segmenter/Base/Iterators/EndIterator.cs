@@ -44,7 +44,7 @@ public sealed class EndIterator : BaseIterator
     /// </returns>
     public override List<string> Next()
     {
-        CursorPosition = CursorPosition - step;
+        CursorPosition -= step;
         try
         {
             currentCut = chain.Substring(CursorPosition, CursorPosition + windowLength);

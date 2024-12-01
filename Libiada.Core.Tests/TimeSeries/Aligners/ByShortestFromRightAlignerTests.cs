@@ -11,22 +11,22 @@ public class ByShortestFromRightAlignerTests
     /// <summary>
     /// The shortest time series.
     /// </summary>
-    private readonly double[] shortTimeSeries = { 1, 2, 3 };
+    private readonly double[] shortTimeSeries = [1, 2, 3];
 
     /// <summary>
     /// The longest time series.
     /// </summary>
-    private readonly double[] longTimeSeries = { 1, 2, 3, 4, 5 };
+    private readonly double[] longTimeSeries = [1, 2, 3, 4, 5];
 
     /// <summary>
     /// The first.
     /// </summary>
-    private readonly double[] first = { 1, 2, 3 };
+    private readonly double[] first = [1, 2, 3];
 
     /// <summary>
     /// The expected sub array.
     /// </summary>
-    private readonly double[] second = { 3, 4, 5 };
+    private readonly double[] second = [3, 4, 5];
 
     /// <summary>
     /// The shortest from right align test.
@@ -34,10 +34,13 @@ public class ByShortestFromRightAlignerTests
     [Test]
     public void ShortestFromRightAlignTest()
     {
-        var aligner = new ByShortestFromRightAligner();
-        var result = aligner.AlignSeries(shortTimeSeries, longTimeSeries);
+        ByShortestFromRightAligner aligner = new();
+        (double[][] firstResult, double[][] secondResult) = aligner.AlignSeries(shortTimeSeries, longTimeSeries);
 
-        Assert.AreEqual(shortTimeSeries, result.first[0]);
-        Assert.AreEqual(second, result.second[0]);
+        Assert.Multiple(() =>
+        {
+            Assert.That(firstResult[0], Is.EqualTo(shortTimeSeries));
+            Assert.That(secondResult[0], Is.EqualTo(second));
+        });
     }
 }

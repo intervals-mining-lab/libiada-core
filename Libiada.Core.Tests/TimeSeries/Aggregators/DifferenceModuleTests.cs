@@ -11,10 +11,7 @@ public class DifferenceModuleTests
     /// <summary>
     /// The distances list.
     /// </summary>
-    private static readonly List<double> distances = new List<double>()
-    {
-        1, 2, 3, 4, 5
-    };
+    private static readonly List<double> distances = [1, 2, 3, 4, 5];
 
     /// <summary>
     /// The expected difference module value.
@@ -27,8 +24,8 @@ public class DifferenceModuleTests
     [Test]
     public void DifferenceModuleTest()
     {
-        var aggregator = new DifferenceModule();
+        DifferenceModule aggregator = new();
         double result = aggregator.Aggregate(distances);
-        Assert.AreEqual(diffMod, result);
+        Assert.That(result, Is.EqualTo(diffMod));
     }
 }

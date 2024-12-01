@@ -16,14 +16,14 @@ public class PartialOrlovCriterion
         double K = CalculateK();
         double B = CalculateB(K);
         double Z = calculateZ();
-        Console.WriteLine("Z: " + Z);
+        Console.WriteLine($"Z: {Z}");
         return K * Z - B;
     }
 
     public double CalculateP1()
     {
         double maxEntriesNumber = consonancesDictionary.Values.Max(); // максимальное количество вхождений
-        Console.WriteLine("F1: " + maxEntriesNumber);
+        Console.WriteLine($"F1: {maxEntriesNumber}");
         double sumEntries = consonancesDictionary.Sum(v => v.Value); // сумма всех вхождений
         return maxEntriesNumber / sumEntries;
     }
@@ -39,7 +39,7 @@ public class PartialOrlovCriterion
     public double CalculateB(double K)
     {
         double frequenceMaxEntriesNumber = CalculateP1();
-        Console.WriteLine("P1: " + frequenceMaxEntriesNumber);
+        Console.WriteLine($"P1: {frequenceMaxEntriesNumber}");
         return (K / frequenceMaxEntriesNumber) - 1;
 
     }

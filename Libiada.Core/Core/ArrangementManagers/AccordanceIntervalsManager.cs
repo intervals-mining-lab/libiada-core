@@ -13,12 +13,12 @@ public class AccordanceIntervalsManager
     /// <summary>
     /// First accordance  intervals.
     /// </summary>
-    public readonly List<int> FilteredFirstIntervals = new List<int>();
+    public readonly List<int> FilteredFirstIntervals = [];
 
     /// <summary>
     /// Second accordance intervals.
     /// </summary>
-    public readonly List<int> FilteredSecondIntervals = new List<int>();
+    public readonly List<int> FilteredSecondIntervals = [];
 
     /// <summary>
     /// First element occurrences count.

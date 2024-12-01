@@ -13,7 +13,7 @@ public class ScoreTrack : IBaseObject
     /// <summary>
     /// Gets congeneric tracks list.
     /// </summary>
-    public readonly List<CongenericScoreTrack> CongenericScoreTracks = new List<CongenericScoreTrack>();
+    public readonly List<CongenericScoreTrack> CongenericScoreTracks = [];
 
     /// <summary>
     /// Initializes a new instance of the <see cref="ScoreTrack"/> class.
@@ -30,7 +30,7 @@ public class ScoreTrack : IBaseObject
         }
 
         // ПОЛИФОНИЧЕСКАЯ ВСТАВКА
-        var temp = (CongenericScoreTrack)MergedTracks(CongenericScoreTracks).Clone();
+        CongenericScoreTrack temp = (CongenericScoreTrack)MergedTracks(CongenericScoreTracks).Clone();
         CongenericScoreTracks.Clear();
         CongenericScoreTracks.Add(temp);
     }
@@ -97,10 +97,10 @@ public class ScoreTrack : IBaseObject
     private CongenericScoreTrack MergedTracks(List<CongenericScoreTrack> tracks)
     {
         // список склеенных дорожек
-        var temp = (CongenericScoreTrack)tracks[0].Clone();
+        CongenericScoreTrack temp = (CongenericScoreTrack)tracks[0].Clone();
 
         // список склеенных тактов
-        var tempList = new List<Measure>(temp.MeasureList);
+        List<Measure> tempList = new(temp.MeasureList);
         for (int i = 1; i < tracks.Count; i++)
         {
             if (tempList.Count != tracks[i].MeasureList.Count)
@@ -111,7 +111,7 @@ public class ScoreTrack : IBaseObject
             for (int j = 0; j < temp.MeasureList.Count; j++)
             {
                 // склеивание j-тых тактов
-                var tempMeasure = (Measure)tracks[i].MeasureList[j].Clone();
+                Measure tempMeasure = (Measure)tracks[i].MeasureList[j].Clone();
                 tempMeasure.MergeMeasures(tempList[j]);
                 tempList.RemoveAt(j);
                 tempList.Insert(j, tempMeasure);

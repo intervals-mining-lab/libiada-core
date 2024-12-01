@@ -14,8 +14,8 @@ public class TypeArgumentExceptionTests
     [Test]
     public void TypeArgumentExceptionMessageTest()
     {
-        var exception = new TypeArgumentException("test message");
-        Assert.AreEqual("test message", exception.Message);
+        TypeArgumentException exception = new("test message");
+        Assert.That(exception.Message, Is.EqualTo("test message"));
     }
 
     /// <summary>
@@ -24,8 +24,8 @@ public class TypeArgumentExceptionTests
     [Test]
     public void TypeArgumentExceptionActualTypeTest()
     {
-        var exception = new TypeArgumentException("test message", typeof(object));
-        Assert.IsNotNull(exception.ActualTypeArgument);
-        Assert.AreEqual(typeof(object).Name, exception.ActualTypeArgument.Name);
+        TypeArgumentException exception = new("test message", typeof(object));
+        Assert.That(exception.ActualTypeArgument, Is.Not.Null);
+        Assert.That(exception.ActualTypeArgument.Name, Is.EqualTo(typeof(object).Name));
     }
 }

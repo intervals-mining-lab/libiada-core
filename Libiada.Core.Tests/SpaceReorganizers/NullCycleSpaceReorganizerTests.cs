@@ -29,11 +29,11 @@ public class NullCycleSpaceReorganizerTests
     [Test]
     public void LevelOneTest()
     {
-        var cycleTestChainLevel1 = new Chain("adbaacbbaacaa");
+        Chain cycleTestChainLevel1 = new("adbaacbbaacaa");
 
-        var rebulder = new NullCycleSpaceReorganizer(1);
-        var result = rebulder.Reorganize(testChain);
-        Assert.AreEqual(cycleTestChainLevel1, result);
+        NullCycleSpaceReorganizer rebulder = new(1);
+        AbstractChain result = rebulder.Reorganize(testChain);
+        Assert.That(result, Is.EqualTo(cycleTestChainLevel1));
     }
 
     /// <summary>
@@ -42,10 +42,10 @@ public class NullCycleSpaceReorganizerTests
     [Test]
     public void LevelFiveTest()
     {
-        var cycleTestChainLevel5 = new Chain("adbaacbbaacaadbaa");
+        Chain cycleTestChainLevel5 = new("adbaacbbaacaadbaa");
 
-        var reorganizer = new NullCycleSpaceReorganizer(5);
-        var result = reorganizer.Reorganize(testChain);
-        Assert.AreEqual(cycleTestChainLevel5, result);
+        NullCycleSpaceReorganizer reorganizer = new(5);
+        AbstractChain result = reorganizer.Reorganize(testChain);
+        Assert.That(result, Is.EqualTo(cycleTestChainLevel5));
     }
 }

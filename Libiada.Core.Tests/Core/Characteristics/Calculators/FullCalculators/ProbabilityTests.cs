@@ -21,10 +21,20 @@ public class ProbabilityTests : FullCalculatorsTests<Probability>
     /// <param name="value">
     /// The value.
     /// </param>
-    [TestCase(0, Link.NotApplied, 1)]
-    public void ChainCalculationTest(int index, Link link, double value)
+    [TestCase(0, 1)]
+    [TestCase(1, 1)]
+    [TestCase(2, 1)]
+    [TestCase(18, 0)]
+    [TestCase(19, 0.1)]
+    [TestCase(20, 0.1)]
+    [TestCase(21, 0.2)]
+    [TestCase(22, 0.2)]
+    [TestCase(24, 0.2)]
+    [TestCase(26, 0.3)]
+    [TestCase(29, 0.1)]
+    public void ChainCalculationTest(int index, double value)
     {
-        ChainCharacteristicTest(index, link, value);
+        ChainCharacteristicTest(index, Link.NotApplied, value);
     }
 
     /// <summary>

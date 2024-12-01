@@ -16,9 +16,9 @@ public class Probability : NonLinkableCongenericCalculator
     /// </returns>
     public override double Calculate(CongenericChain chain)
     {
-        var count = new ElementsCount();
-        var length = new Length();
+        double count = new ElementsCount().Calculate(chain);
+        double length = new Length().Calculate(chain);
 
-        return count.Calculate(chain) / length.Calculate(chain);
+        return count / length;
     }
 }

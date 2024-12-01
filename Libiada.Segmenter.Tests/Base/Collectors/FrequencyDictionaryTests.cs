@@ -13,7 +13,7 @@ public class FrequencyDictionaryTests
     /// <summary>
     /// The chain.
     /// </summary>
-    private ComplexChain chain = new ComplexChain("AACAGGTGCCCCTTATTT");
+    private readonly ComplexChain chain = new("AACAGGTGCCCCTTATTT");
 
     /// <summary>
     /// The put test.
@@ -21,14 +21,17 @@ public class FrequencyDictionaryTests
     [Test]
     public void PutTest()
     {
-        var alphabet = new FrequencyDictionary(chain);
-        string word = "string";
-        string unknown = "WOW";
-        int pos = 20;
+        FrequencyDictionary alphabet = new(chain);
+        const string word = "string";
+        const string unknown = "WOW";
+        const int pos = 20;
         alphabet.Put(word, pos);
 
-        Assert.True(alphabet.Contains(word));
-        Assert.True(!alphabet.Contains(unknown));
+        Assert.Multiple(() =>
+        {
+            Assert.That(alphabet.Contains(word));
+            Assert.That(!alphabet.Contains(unknown));
+        });
     }
 
     /// <summary>
@@ -37,14 +40,17 @@ public class FrequencyDictionaryTests
     [Test]
     public void ContainsTest()
     {
-        var alphabet = new FrequencyDictionary(chain);
-        string[] words = { "A", "G", "C", "T", "WORD", "AG" };
-        Assert.True(alphabet.Contains(words[0]));
-        Assert.True(alphabet.Contains(words[1]));
-        Assert.True(alphabet.Contains(words[2]));
-        Assert.True(alphabet.Contains(words[3]));
-        Assert.True(!alphabet.Contains(words[4]));
-        Assert.True(!alphabet.Contains(words[5]));
+        FrequencyDictionary alphabet = new(chain);
+        string[] words = ["A", "G", "C", "T", "WORD", "AG"];
+        Assert.Multiple(() =>
+        {
+            Assert.That(alphabet.Contains(words[0]));
+            Assert.That(alphabet.Contains(words[1]));
+            Assert.That(alphabet.Contains(words[2]));
+            Assert.That(alphabet.Contains(words[3]));
+            Assert.That(!alphabet.Contains(words[4]));
+            Assert.That(!alphabet.Contains(words[5]));
+        });
     }
 
     /// <summary>
@@ -54,17 +60,20 @@ public class FrequencyDictionaryTests
     public void GetTest()
     {
         // AACAGGTGCCCCTTATTT
-        var alphabet = new FrequencyDictionary(chain);
-        string[] words = { "A", "G", "C", "T", "WORD", "AG" };
-        int[] positionsA = { 0, 1, 3, 14 };
-        int[] positionsG = { 4, 5, 7 };
-        int[] positionsC = { 2, 8, 9, 10, 11 };
-        int[] positionsT = { 6, 12, 13, 15, 16, 17 };
-        Helper.ArraysEqual(positionsA, alphabet[words[0]].ToArray());
-        Assert.True(Helper.ArraysEqual(positionsA, alphabet[words[0]].ToArray()));
-        Assert.True(Helper.ArraysEqual(positionsG, alphabet[words[1]].ToArray()));
-        Assert.True(Helper.ArraysEqual(positionsC, alphabet[words[2]].ToArray()));
-        Assert.True(Helper.ArraysEqual(positionsT, alphabet[words[3]].ToArray()));
+        FrequencyDictionary alphabet = new(chain);
+        string[] words = ["A", "G", "C", "T", "WORD", "AG"];
+        int[] positionsA = [0, 1, 3, 14];
+        int[] positionsG = [4, 5, 7];
+        int[] positionsC = [2, 8, 9, 10, 11];
+        int[] positionsT = [6, 12, 13, 15, 16, 17];
+        
+        Assert.Multiple(() =>
+        {
+            Assert.That(Helper.ArraysEqual(positionsA, alphabet[words[0]].ToArray()));
+            Assert.That(Helper.ArraysEqual(positionsG, alphabet[words[1]].ToArray()));
+            Assert.That(Helper.ArraysEqual(positionsC, alphabet[words[2]].ToArray()));
+            Assert.That(Helper.ArraysEqual(positionsT, alphabet[words[3]].ToArray()));
+        });
     }
 
     /// <summary>
@@ -73,17 +82,17 @@ public class FrequencyDictionaryTests
     [Test]
     public void RemoveTest()
     {
-        var alphabet = new FrequencyDictionary(chain);
-        string[] words = { "A", "G", "C", "T", "WORD", "AG" };
+        FrequencyDictionary alphabet = new(chain);
+        string[] words = ["A", "G", "C", "T", "WORD", "AG"];
         alphabet.Remove(words[0]);
-        Assert.True(!alphabet.Contains(words[0]));
+        Assert.That(!alphabet.Contains(words[0]));
         alphabet.Remove(words[1]);
-        Assert.True(!alphabet.Contains(words[1]));
+        Assert.That(!alphabet.Contains(words[1]));
         alphabet.Remove(words[2]);
-        Assert.True(!alphabet.Contains(words[2]));
+        Assert.That(!alphabet.Contains(words[2]));
         alphabet.Remove(words[3]);
-        Assert.True(!alphabet.Contains(words[3]));
-        Assert.True(alphabet.Count == 0);
+        Assert.That(!alphabet.Contains(words[3]));
+        Assert.That(alphabet.Count, Is.EqualTo(0));
     }
 
     /// <summary>
@@ -92,10 +101,10 @@ public class FrequencyDictionaryTests
     [Test]
     public void GetWordsTest()
     {
-        var alphabet = new FrequencyDictionary(chain);
-        string[] words = { "A", "G", "C", "T" };
+        FrequencyDictionary alphabet = new(chain);
+        string[] words = ["A", "G", "C", "T"];
         List<string> alphabetWords = alphabet.GetWords();
-        Assert.True(!words.Except(alphabetWords).Any());
+        Assert.That(!words.Except(alphabetWords).Any());
     }
 
     /// <summary>
@@ -105,9 +114,9 @@ public class FrequencyDictionaryTests
     public void FillOneTest()
     {
         string str = chain.ToString();
-        var alphabet1 = new FrequencyDictionary(str);
-        var alphabet2 = new FrequencyDictionary(chain);
-        Assert.True(alphabet1.Equals(alphabet2));
+        FrequencyDictionary alphabet1 = new(str);
+        FrequencyDictionary alphabet2 = new(chain);
+        Assert.That(alphabet1, Is.EqualTo(alphabet2));
     }
 
     /// <summary>
@@ -125,9 +134,9 @@ public class FrequencyDictionaryTests
     [Test]
     public void PowerTest()
     {
-        var alphabetChain = new FrequencyDictionary(chain);
-        int power = 4;
-        Assert.True(alphabetChain.Count == power);
+        FrequencyDictionary alphabetChain = new(chain);
+        const int power = 4;
+        Assert.That(alphabetChain.Count, Is.EqualTo(power));
     }
 
     /// <summary>
@@ -136,9 +145,9 @@ public class FrequencyDictionaryTests
     [Test]
     public void ClearTest()
     {
-        var alphabet = new FrequencyDictionary(chain);
+        FrequencyDictionary alphabet = new(chain);
         alphabet.Clear();
-        Assert.True(alphabet.Count == 0);
+        Assert.That(alphabet.Count, Is.EqualTo(0));
     }
 
     /// <summary>
@@ -147,13 +156,17 @@ public class FrequencyDictionaryTests
     [Test]
     public void AddTest()
     {
-        var alphabet = new FrequencyDictionary();
-        var alphabetTest = new FrequencyDictionary(chain);
-        string[] words = { "A", "G", "C", "T" };
-        int power = 1;
+        FrequencyDictionary alphabet = new();
+        FrequencyDictionary alphabetTest = new(chain);
+        string[] words = ["A", "G", "C", "T"];
+        const int power = 1;
         alphabet.Add(words[0], alphabetTest[words[0]]);
         alphabet.Add(words[0], alphabetTest[words[0]]);
-        Assert.True(alphabet.Contains(words[0]) && alphabet.Count == power);
+        Assert.Multiple(() =>
+        {
+            Assert.That(alphabet.Contains(words[0]));
+            Assert.That(alphabet.Count, Is.EqualTo(power));
+        });
     }
 
     /// <summary>
@@ -163,10 +176,14 @@ public class FrequencyDictionaryTests
     public void CloneTest()
     {
         string str = chain.ToString();
-        var alphabet1 = new FrequencyDictionary(str);
-        var alphabet2 = new FrequencyDictionary(chain);
+        FrequencyDictionary alphabet1 = new(str);
+        FrequencyDictionary alphabet2 = new(chain);
         FrequencyDictionary alphabet3 = alphabet2.Clone();
-        Assert.True(alphabet1.Equals(alphabet2) && alphabet3.Equals(alphabet1));
+        Assert.Multiple(() =>
+        {
+            Assert.That(alphabet1, Is.EqualTo(alphabet2));
+            Assert.That(alphabet3, Is.EqualTo(alphabet1));
+        });
     }
 
     /// <summary>
@@ -176,11 +193,11 @@ public class FrequencyDictionaryTests
     public void EqualsTest()
     {
         string str = chain.ToString();
-        var alphabet1 = new FrequencyDictionary(str);
-        var alphabet2 = new FrequencyDictionary(chain);
-        Assert.True(alphabet1.Equals(alphabet2));
+        FrequencyDictionary alphabet1 = new(str);
+        FrequencyDictionary alphabet2 = new(chain);
+        Assert.That(alphabet1, Is.EqualTo(alphabet2));
         alphabet1.Remove(alphabet1.GetWord(1));
-        Assert.True(!alphabet1.Equals(alphabet2));
+        Assert.That(alphabet1, Is.Not.EqualTo(alphabet2));
     }
 
     /// <summary>
@@ -189,10 +206,10 @@ public class FrequencyDictionaryTests
     [Test]
     public void GetWordTest()
     {
-        var alphabet = new FrequencyDictionary(chain);
+        FrequencyDictionary alphabet = new(chain);
         for (int index = 0; index < alphabet.Count; index++)
         {
-            Assert.True(alphabet.Contains(alphabet.GetWord(index)));
+            Assert.That(alphabet.Contains(alphabet.GetWord(index)));
         }
     }
 }

@@ -22,7 +22,7 @@ public class LastElementDuplicator : ITimeSeriesAligner
 
         double[][] first = new double[1][];
         double[][] second = new double[1][];
-        List<double> result = new List<double>();
+        List<double> result = [];
 
         if (firstSeries.Length < secondSeries.Length)
         {

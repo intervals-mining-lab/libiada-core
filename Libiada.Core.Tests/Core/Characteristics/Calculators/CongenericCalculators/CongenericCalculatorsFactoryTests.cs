@@ -24,7 +24,6 @@ public class CongenericCalculatorsFactoryTests
     [TestCase(CongenericCharacteristic.CuttingLength, typeof(CuttingLength))]
     [TestCase(CongenericCharacteristic.CuttingLengthVocabularyEntropy, typeof(CuttingLengthVocabularyEntropy))]
     [TestCase(CongenericCharacteristic.Depth, typeof(Depth))]
-    [TestCase(CongenericCharacteristic.DescriptiveInformation, typeof(DescriptiveInformation))]
     [TestCase(CongenericCharacteristic.ElementsCount, typeof(ElementsCount))]
     [TestCase(CongenericCharacteristic.GeometricMean, typeof(GeometricMean))]
     [TestCase(CongenericCharacteristic.IdentificationInformation, typeof(IdentificationInformation))]
@@ -33,13 +32,12 @@ public class CongenericCalculatorsFactoryTests
     [TestCase(CongenericCharacteristic.Length, typeof(Length))]
     [TestCase(CongenericCharacteristic.Periodicity, typeof(Periodicity))]
     [TestCase(CongenericCharacteristic.Probability, typeof(Probability))]
-    [TestCase(CongenericCharacteristic.Regularity, typeof(Regularity))]
     [TestCase(CongenericCharacteristic.Uniformity, typeof(Uniformity))]
     [TestCase(CongenericCharacteristic.VariationsCount, typeof(VariationsCount))]
     [TestCase(CongenericCharacteristic.Volume, typeof(Volume))]
     public void CreateCalculatorTest(CongenericCharacteristic type, Type calculator)
     {
-        Assert.IsInstanceOf(calculator, CongenericCalculatorsFactory.CreateCalculator(type));
+        Assert.That(CongenericCalculatorsFactory.CreateCalculator(type), Is.TypeOf(calculator));
     }
 
     /// <summary>

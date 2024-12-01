@@ -34,7 +34,7 @@ public class FilterTests
     {
         str1 = "A";
         str2 = "TA";
-        list = new List<string> { "ABABAB", "ABATAT", "TABABAB", "ABTABAB", "ABABAB", "ABABAB", "ABABAB" };
+        list = ["ABABAB", "ABATAT", "TABABAB", "ABTABAB", "ABABAB", "ABABAB", "ABABAB"];
     }
 
     /// <summary>
@@ -43,11 +43,12 @@ public class FilterTests
     [Test]
     public void FilteroutTest()
     {
-        var chain = new ComplexChain(list);
-        var filter = new Filter(chain);
+        ComplexChain chain = new(list);
+        Filter filter = new(chain);
         int hits = filter.FilterOut(str1);
 
-        var sb = new StringBuilder();
+        // TODO: find out why this code is not used
+        StringBuilder sb = new(list.Count);
         foreach (string s in list)
         {
             sb.Append(s);
@@ -55,14 +56,14 @@ public class FilterTests
 
         string result = filter.GetChain().ToString();
         string buf = chain.ToString();
-        Assert.True(buf.Length - result.Length == hits);
+        Assert.That(buf.Length - result.Length, Is.EqualTo(hits));
 
         filter = new Filter(chain);
         hits = filter.FilterOut(str2);
 
         filter.GetChain().ToString();
         chain.ToString();
-        Assert.True(hits == 3);
+        Assert.That(hits, Is.EqualTo(3));
     }
 
     /// <summary>
@@ -71,11 +72,11 @@ public class FilterTests
     [Test]
     public void ReplaceTest()
     {
-        var chain = new ComplexChain(list);
-        var filter = new Filter(chain);
+        ComplexChain chain = new(list);
+        Filter filter = new(chain);
         int hits = filter.Replace(str2, "-");
 
-        var sb = new StringBuilder();
+        StringBuilder sb = new(list.Count);
         foreach (string s in list)
         {
             sb.Append(s);
@@ -83,6 +84,6 @@ public class FilterTests
 
         string result = filter.GetChain().ToString();
         string buf = chain.ToString();
-        Assert.True(buf.Length - result.Length == hits);
+        Assert.That(buf.Length - result.Length, Is.EqualTo(hits));
     }
 }

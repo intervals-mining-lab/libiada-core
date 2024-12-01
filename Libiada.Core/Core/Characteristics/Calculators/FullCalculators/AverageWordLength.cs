@@ -18,9 +18,8 @@ public class AverageWordLength : NonLinkableFullCalculator
     /// </returns>
     public override double Calculate(Chain chain)
     {
-        int chainLength = chain.Length;
         int sum = 0;
-
+        int chainLength = chain.Length;
         for (int i = 0; i < chainLength; i++)
         {
             sum += ((ValueString)chain[i]).Value.Length;

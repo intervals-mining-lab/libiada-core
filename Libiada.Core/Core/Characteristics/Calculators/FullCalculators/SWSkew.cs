@@ -21,15 +21,16 @@ public class SWSkew : NonLinkableFullCalculator
     {
         DnaProcessor.CheckDnaAlphabet(chain.Alphabet);
 
-        var congenericCounter = new CongenericCalculators.ElementsCount();
-        var counter = new ElementsCount();
+        double l = new ElementsCount().Calculate(chain);
+        if (l == 0) return 0;
 
-        var g = (int)congenericCounter.Calculate(chain.GetOrCreateCongenericChain(new ValueString("G")));
-        var c = (int)congenericCounter.Calculate(chain.GetOrCreateCongenericChain(new ValueString("C")));
-        var a = (int)congenericCounter.Calculate(chain.GetOrCreateCongenericChain(new ValueString("A")));
-        var t = (int)congenericCounter.Calculate(chain.GetOrCreateCongenericChain(new ValueString("T")));
-        var l = (int)counter.Calculate(chain);
+        CongenericCalculators.ElementsCount congenericCounter = new();
 
-        return l == 0 ? 0 : ((g + c) - (a + t)) / (double)l;
+        double g = congenericCounter.Calculate(chain.GetOrCreateCongenericChain(new ValueString("G")));
+        double c = congenericCounter.Calculate(chain.GetOrCreateCongenericChain(new ValueString("C")));
+        double a = congenericCounter.Calculate(chain.GetOrCreateCongenericChain(new ValueString("A")));
+        double t = congenericCounter.Calculate(chain.GetOrCreateCongenericChain(new ValueString("T")));
+
+        return ((g + c) - (a + t)) / l;
     }
 }

@@ -25,11 +25,11 @@ public class FmotifIdentifier
     /// </returns>
     public FmotifChain GetIdentification(FmotifChain fmotifChain, bool sequentialTransfer)
     {
-        var chain = (FmotifChain)fmotifChain.Clone();
+        FmotifChain chain = (FmotifChain)fmotifChain.Clone();
 
         if (sequentialTransfer)
         {
-            var fmotifs = new Fmotif[fmotifChain.FmotifsList.Count];
+            Fmotif[] fmotifs = new Fmotif[fmotifChain.FmotifsList.Count];
             for (int i = 0; i < chain.FmotifsList.Count; i++)
             {
                 fmotifs[i] = FmotifSequentialTransfer(chain.FmotifsList[i]);

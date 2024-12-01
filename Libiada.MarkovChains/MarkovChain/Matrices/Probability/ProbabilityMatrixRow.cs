@@ -70,7 +70,7 @@ public class ProbabilityMatrixRow : MatrixRowCommon, IProbabilityMatrix, IWritab
     /// </returns>
     public Dictionary<IBaseObject, double> GetProbabilityVector(Alphabet alphabet)
     {
-        return GetProbabilityVector(alphabet, new int[] { });
+        return GetProbabilityVector(alphabet, []);
     }
 
     /// <summary>
@@ -100,7 +100,7 @@ public class ProbabilityMatrixRow : MatrixRowCommon, IProbabilityMatrix, IWritab
             throw new Exception();
         }
 
-        var result = new Dictionary<IBaseObject, double>();
+        Dictionary<IBaseObject, double> result = [];
         for (int i = 0; i < AlphabetCardinality; i++)
         {
             result.Add(alphabet[i], (double)ValueList[i]);

@@ -1,8 +1,8 @@
 ﻿namespace Libiada.Core.Core.Characteristics.Calculators.FullCalculators;
 
 /// <summary>
-/// Normalized asymmetry of average remoteness
-/// in other words asymmetry coefficient (skewness) of average remoteness.
+/// Normalized asymmetry of average remotenesses in congeneric sequences.
+/// in other words asymmetry coefficient (skewness) of average remotenesses.
 /// </summary>
 public class AverageRemotenessSkewnessCoefficient : IFullCalculator
 {
@@ -13,17 +13,18 @@ public class AverageRemotenessSkewnessCoefficient : IFullCalculator
     /// Source sequence.
     /// </param>
     /// <param name="link">
-    /// Link of intervals in sequence.
+    /// Binding of the intervals in the sequence.
     /// </param>
     /// <returns>
-    /// Standard Deviation <see cref="double"/> value.
+    /// Average remoteness skewness coefficient <see cref="double"/> value.
     /// </returns>
     public double Calculate(Chain chain, Link link)
     {
-        var averageRemotenessSkewness = new AverageRemotenessSkewness();
-        var averageRemotenessStandardDeviation = new AverageRemotenessStandardDeviation();
+        double averageRemotenessStandardDeviation = new AverageRemotenessStandardDeviation().Calculate(chain, link);
+        if (averageRemotenessStandardDeviation == 0) return 0;
 
-        double standardDeviation = averageRemotenessStandardDeviation.Calculate(chain, link);
-        return standardDeviation == 0 ? 0 : averageRemotenessSkewness.Calculate(chain, link) / (standardDeviation * standardDeviation * standardDeviation);
+        double averageRemotenessSkewness = new AverageRemotenessSkewness().Calculate(chain, link);
+
+        return averageRemotenessSkewness / (averageRemotenessStandardDeviation * averageRemotenessStandardDeviation * averageRemotenessStandardDeviation);
     }
 }

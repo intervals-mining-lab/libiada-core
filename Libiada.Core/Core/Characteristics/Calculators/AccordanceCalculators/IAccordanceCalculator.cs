@@ -6,7 +6,7 @@
 public interface IAccordanceCalculator
 {
     /// <summary>
-    /// The calculate.
+    /// Calculation method.
     /// </summary>
     /// <param name="firstChain">
     /// The first chain.

@@ -55,7 +55,7 @@ public class MatrixCommon : MatrixBase
     /// </returns>
     protected int[] GetChainLess(int[] indexes)
     {
-        var newIndexes = new int[indexes.Length - 1];
+        int[] newIndexes = new int[indexes.Length - 1];
         for (int i = 0; i < indexes.Length - 1; i++)
         {
             newIndexes[i] = indexes[i + 1];

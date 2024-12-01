@@ -77,7 +77,7 @@ public class Connection
     /// </returns>
     public Connection Clone()
     {
-        var clone = new Connection(FirstElementIndex, SecondElementIndex)
+        Connection clone = new(FirstElementIndex, SecondElementIndex)
             {
                 Connected = Connected,
                 Distance = Distance,

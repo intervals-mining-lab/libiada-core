@@ -1,33 +1,34 @@
-namespace Libiada.Core.Tests.Core.Characteristics.Calculators.CongenericCalculators;
+﻿namespace Libiada.Core.Tests.Core.Characteristics.Calculators.CongenericCalculators;
 
 using Libiada.Core.Core;
 using Libiada.Core.Core.Characteristics.Calculators.CongenericCalculators;
 
 /// <summary>
-/// The regularity test.
+/// The remoteness variance tests.
 /// </summary>
 [TestFixture]
-public class RegularityTests : CongenericCalculatorsTests<Regularity>
+public class RemotenessVarianceTests : CongenericCalculatorsTests<RemotenessVariance>
 {
     /// <summary>
-    /// The congeneric calculation test.
+    /// The remoteness variance test.
     /// </summary>
     /// <param name="index">
     /// The congeneric sequence index in <see cref="ChainsStorage"/>.
     /// </param>
     /// <param name="link">
-    /// The link.
+    /// Binding of the intervals in the sequence.
     /// </param>
     /// <param name="value">
     /// The value.
     /// </param>
-    [TestCase(0, Link.None, 1.2248)]
-    [TestCase(0, Link.Start, 1.5849)]
-    [TestCase(0, Link.End, 1.4467)]
-    [TestCase(0, Link.Both, 1.6956)]
-    [TestCase(0, Link.Cycle, 1.8263)]
+    [TestCase(0, Link.Start, 0.74270612)]
+
+    [TestCase(2, Link.None, 0)]
+
+    [TestCase(3, Link.None, 0)]
     public void CongenericCalculationTest(int index, Link link, double value)
     {
         CongenericChainCharacteristicTest(index, link, value);
     }
+    
 }

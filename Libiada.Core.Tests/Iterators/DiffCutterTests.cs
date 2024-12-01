@@ -14,12 +14,12 @@ public class DiffCutterTests
     [Test]
     public void DiffTest()
     {
-        string source = "reegwvwvw";
-        var rule = new CutRuleWithFixedStart(source.Length, 3);
+        const string source = "reegwvwvw";
+        CutRuleWithFixedStart rule = new(source.Length, 3);
         List<string> cuts = DiffCutter.Cut(source, rule);
 
-        Assert.AreEqual("ree", cuts[0]);
-        Assert.AreEqual("reegwv", cuts[1]);
-        Assert.AreEqual("reegwvwvw", cuts[2]);
+        Assert.That(cuts[0], Is.EqualTo("ree"));
+        Assert.That(cuts[1], Is.EqualTo("reegwv"));
+        Assert.That(cuts[2], Is.EqualTo("reegwvwvw"));
     }
 }

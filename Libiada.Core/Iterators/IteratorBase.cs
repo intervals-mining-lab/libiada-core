@@ -85,7 +85,7 @@ public abstract class IteratorBase : IIterator
             throw new InvalidOperationException("Iterator position is out of range.");
         }
 
-        var result = new BaseChain(Length);
+        BaseChain result = new(Length);
 
         for (int i = 0; i < Length; i++)
         {

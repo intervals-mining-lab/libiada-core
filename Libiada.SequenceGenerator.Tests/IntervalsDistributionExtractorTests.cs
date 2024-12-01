@@ -19,14 +19,14 @@ public class IntervalsDistributionExtractorTests
     [TestCase(Link.CycleEnd)]
     public void GetIntervalsDistributionTest(Link link)
     {
-        var actualInternalsDistribution = new List<IntervalsDistribution>();
-        foreach (var order in orders)
+        List<IntervalsDistribution> actualInternalsDistribution = new(orders.Length);
+        foreach (int[] order in orders)
         {
             actualInternalsDistribution.Add(IntervalsDistributionExtractor.GetIntervalsDistribution(order, link));
         }
         for (int i = 0; i < actualInternalsDistribution.Count; i++)
         {
-            Assert.AreEqual(intervalsDistributions[link][i], actualInternalsDistribution[i]);
+            Assert.That(actualInternalsDistribution[i], Is.EqualTo(intervalsDistributions[link][i]));
         }
     }
 
@@ -42,13 +42,13 @@ public class IntervalsDistributionExtractorTests
         var actualOrdersIntervalsDistributionsAccordance = IntervalsDistributionExtractor.GetOrdersIntervalsDistributionsAccordance(orders, link);
         foreach (var expected in ordersIntervalsDistributionsAccordance[link])
         {
-            Assert.True(actualOrdersIntervalsDistributionsAccordance.ContainsKey(expected.Key));
-            Assert.AreEqual(expected.Value.Count, actualOrdersIntervalsDistributionsAccordance[expected.Key].Count);
+            Assert.That(actualOrdersIntervalsDistributionsAccordance.ContainsKey(expected.Key));
+            Assert.That(actualOrdersIntervalsDistributionsAccordance[expected.Key], Has.Count.EqualTo(expected.Value.Count));
             for (int i = 0; i < expected.Value.Count; i++)
             {
                 for (int j = 0; j < expected.Value[i].Length; j++)
                 {
-                    Assert.AreEqual(expected.Value[i][j], actualOrdersIntervalsDistributionsAccordance[expected.Key][i][j]);
+                    Assert.That(actualOrdersIntervalsDistributionsAccordance[expected.Key][i][j], Is.EqualTo(expected.Value[i][j]));
                 }
             }
         }

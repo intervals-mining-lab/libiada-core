@@ -21,14 +21,11 @@ public static class AccordanceCalculatorsFactory
     /// </exception>
     public static IAccordanceCalculator CreateCalculator(AccordanceCharacteristic type)
     {
-        switch (type)
+        return type switch
         {
-            case AccordanceCharacteristic.MutualComplianceDegree:
-                return new MutualComplianceDegree();
-            case AccordanceCharacteristic.PartialComplianceDegree:
-                return new PartialComplianceDegree();
-            default:
-                throw new InvalidEnumArgumentException(nameof(type), (int)type, typeof(AccordanceCharacteristic));
-        }
+            AccordanceCharacteristic.MutualComplianceDegree => new MutualComplianceDegree(),
+            AccordanceCharacteristic.PartialComplianceDegree => new PartialComplianceDegree(),
+            _ => throw new InvalidEnumArgumentException(nameof(type), (int)type, typeof(AccordanceCharacteristic)),
+        };
     }
 }

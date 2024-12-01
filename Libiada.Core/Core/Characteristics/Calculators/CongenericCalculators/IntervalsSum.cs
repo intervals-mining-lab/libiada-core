@@ -12,7 +12,7 @@ public class IntervalsSum : ICongenericCalculator
     /// Source sequence.
     /// </param>
     /// <param name="link">
-    /// Link of intervals in sequence.
+    /// Binding of the intervals in the sequence.
     /// </param>
     /// <returns>
     /// Intervals sum as <see cref="double"/>.
@@ -21,6 +21,6 @@ public class IntervalsSum : ICongenericCalculator
     {
         int[] intervals = chain.GetArrangement(link);
 
-        return intervals.Length == 0 ? 0 : intervals.Sum(interval => interval);
+        return intervals.Length == 0 ? 0 : intervals.Sum();
     }
 }
