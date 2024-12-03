@@ -1,5 +1,7 @@
 ﻿namespace Libiada.Core.TimeSeries.OneDimensional.DistanceCalculators;
 
+using System.Globalization;
+
 /// <summary>
 /// The hamming distance between one dimensional points calculator.
 /// </summary>
@@ -19,22 +21,20 @@ public class HammingDistanceBetweenOneDimensionalPointsCalculator : IOneDimensio
     /// </returns>
     public double GetDistance(double firstPoint, double secondPoint)
     {
-        string[] firstPointStringArray = firstPoint.ToString("0.00000000000000").Split(',');
-        string[] secondPointStringArray = secondPoint.ToString("0.00000000000000").Split(',');
+        string[] firstPointStringArray = firstPoint.ToString("0.00000000000000", CultureInfo.InvariantCulture).Split('.');
+        string[] secondPointStringArray = secondPoint.ToString("0.00000000000000", CultureInfo.InvariantCulture).Split('.');
 
         string intPartFirst = firstPointStringArray[0];
         string intPartSecond = secondPointStringArray[0];
 
-        if (firstPointStringArray[0].Length > secondPointStringArray[0].Length)
+
+        while (intPartSecond.Length != intPartFirst.Length)
         {
-            for (int i = 0; i < firstPointStringArray[0].Length - secondPointStringArray[0].Length; i++)
+            if (intPartFirst.Length > intPartSecond.Length)
             {
                 intPartSecond = $"0{intPartSecond}";
             }
-        }
-        else
-        {
-            for (int i = 0; i < secondPointStringArray[0].Length - firstPointStringArray[0].Length; i++)
+            else
             {
                 intPartFirst = $"0{intPartFirst}";
             }
