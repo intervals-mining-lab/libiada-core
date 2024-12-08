@@ -15,13 +15,15 @@ public class AccidentalTests
     private const int AccidentalsCount = 5;
 
     /// <summary>
+    /// Array of all accidentals.
+    /// </summary>
+    private readonly Accidental[] accidentals = EnumExtensions.ToArray<Accidental>();
+
+    /// <summary>
     /// Tests count of accidentals.
     /// </summary>
     [Test]
-    public void AccidentalCountTest()
-    {
-        Assert.That(EnumExtensions.ToArray<Accidental>(), Has.Length.EqualTo(AccidentalsCount));
-    }
+    public void AccidentalCountTest() => Assert.That(accidentals, Has.Length.EqualTo(AccidentalsCount));
 
     /// <summary>
     /// Tests values of accidentals.
@@ -29,10 +31,9 @@ public class AccidentalTests
     [Test]
     public void AccidentalValuesTest()
     {
-        Accidental[] accidentals = EnumExtensions.ToArray<Accidental>();
         for (int i = -2; i < AccidentalsCount - 2; i++)
         {
-            Assert.That(accidentals, Does.Contain((Accidental)i));
+            Assert.That(accidentals, Contains.Item((Accidental)i));
         }
     }
 
@@ -50,10 +51,7 @@ public class AccidentalTests
     [TestCase((Accidental)0, "Bekar")]
     [TestCase((Accidental)1, "Sharp")]
     [TestCase((Accidental)2, "DoubleSharp")]
-    public void AccidentalNamesTest(Accidental accidental, string name)
-    {
-        Assert.That(accidental.GetName(), Is.EqualTo(name));
-    }
+    public void AccidentalNamesTest(Accidental accidental, string name) => Assert.That(accidental.GetName(), Is.EqualTo(name));
 
     /// <summary>
     /// Tests that all accidentals have display value.
@@ -62,10 +60,7 @@ public class AccidentalTests
     /// The accidental.
     /// </param>
     [Test]
-    public void AccidentalHasDisplayValueTest([Values]Accidental accidental)
-    {
-        Assert.That(accidental.GetDisplayValue(), Is.Not.Empty);
-    }
+    public void AccidentalHasDisplayValueTest([Values] Accidental accidental) => Assert.That(accidental.GetDisplayValue(), Is.Not.Empty);
 
     /// <summary>
     /// Tests that all accidentals have description.
@@ -74,19 +69,11 @@ public class AccidentalTests
     /// The accidental.
     /// </param>
     [Test]
-    public void AccidentalHasDescriptionTest([Values]Accidental accidental)
-    {
-        Assert.That(accidental.GetDescription(), Is.Not.Empty);
-    }
+    public void AccidentalHasDescriptionTest([Values] Accidental accidental) => Assert.That(accidental.GetDescription(), Is.Not.Empty);
 
     /// <summary>
     /// Tests that all accidentals values are unique.
     /// </summary>
     [Test]
-    public void AccidentalValuesUniqueTest()
-    {
-        Accidental[] accidentals = EnumExtensions.ToArray<Accidental>();
-        IEnumerable<short> accidentalValues = accidentals.Cast<short>();
-        Assert.That(accidentalValues, Is.Unique);
-    }
+    public void AccidentalValuesUniqueTest() => Assert.That(accidentals.Cast<short>(), Is.Unique);
 }

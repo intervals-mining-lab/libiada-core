@@ -15,14 +15,15 @@ public class TieTests
     private const int TiesCount = 4;
 
     /// <summary>
+    /// Array of all ties.
+    /// </summary>
+    private readonly Tie[] ties = EnumExtensions.ToArray<Tie>();
+
+    /// <summary>
     /// Tests count of ties.
     /// </summary>
     [Test]
-    public void TieCountTest()
-    {
-        int actualCount = EnumExtensions.ToArray<Tie>().Length;
-        Assert.That(actualCount, Is.EqualTo(TiesCount));
-    }
+    public void TieCountTest() => Assert.That(ties, Has.Length.EqualTo(TiesCount));
 
     /// <summary>
     /// Tests values of ties.
@@ -30,10 +31,9 @@ public class TieTests
     [Test]
     public void TieValuesTest()
     {
-        Tie[] ties = EnumExtensions.ToArray<Tie>();
         for (int i = 0; i < TiesCount; i++)
         {
-            Assert.That(ties, Does.Contain((Tie)i));
+            Assert.That(ties, Contains.Item((Tie)i));
         }
     }
 
@@ -50,10 +50,7 @@ public class TieTests
     [TestCase((Tie)1, "Start")]
     [TestCase((Tie)2, "End")]
     [TestCase((Tie)3, "Continue")]
-    public void TieNamesTest(Tie tie, string name)
-    {
-        Assert.That(tie.GetName(), Is.EqualTo(name));
-    }
+    public void TieNamesTest(Tie tie, string name) => Assert.That(tie.GetName(), Is.EqualTo(name));
 
     /// <summary>
     /// Tests that all ties have display value.
@@ -62,10 +59,7 @@ public class TieTests
     /// The tie.
     /// </param>
     [Test]
-    public void TieHasDisplayValueTest([Values]Tie tie)
-    {
-        Assert.That(tie.GetDisplayValue(), Is.Not.Empty);
-    }
+    public void TieHasDisplayValueTest([Values] Tie tie) => Assert.That(tie.GetDisplayValue(), Is.Not.Empty);
 
     /// <summary>
     /// Tests that all ties have description.
@@ -74,19 +68,11 @@ public class TieTests
     /// The tie.
     /// </param>
     [Test]
-    public void TieHasDescriptionTest([Values]Tie tie)
-    {
-        Assert.That(tie.GetDescription(), Is.Not.Empty);
-    }
+    public void TieHasDescriptionTest([Values] Tie tie) => Assert.That(tie.GetDescription(), Is.Not.Empty);
 
     /// <summary>
     /// Tests that all ties values are unique.
     /// </summary>
     [Test]
-    public void TieValuesUniqueTest()
-    {
-        Tie[] ties = EnumExtensions.ToArray<Tie>();
-        IEnumerable<byte> tieValues = ties.Cast<byte>();
-        Assert.That(tieValues, Is.Unique);
-    }
+    public void TieValuesUniqueTest() => Assert.That(ties.Cast<byte>(), Is.Unique);
 }

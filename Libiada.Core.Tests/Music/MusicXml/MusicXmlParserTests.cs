@@ -15,6 +15,8 @@ public class MusicXmlParserTests
     /// </summary>
     private ScoreTrack scoreTrack;
 
+    private readonly string TestDataFolderPath = Path.Join(TestContext.CurrentContext.TestDirectory, "Music", "XmlTestFiles");
+
     /// <summary>
     /// The music xml parser set up.
     /// </summary>
@@ -94,7 +96,7 @@ public class MusicXmlParserTests
     [Test]
     public void XmlParserTest()
     {
-        string xmlFilePath = Path.Join(TestContext.CurrentContext.TestDirectory, "Music", "XmlTestFiles", "LibiadaMusicExample7Liga.xml");
+        string xmlFilePath = Path.Join(TestDataFolderPath, "LibiadaMusicExample7Liga.xml");
         MusicXmlReader xmlReader = new(xmlFilePath);
         MusicXmlParser parser = new();
         parser.Execute(xmlReader.MusicXmlDocument);
@@ -121,7 +123,7 @@ public class MusicXmlParserTests
     [Test]
     public void PolyXmlParserTest()
     {
-        string xmlFilePath = Path.Join(TestContext.CurrentContext.TestDirectory, "Music", "XmlTestFiles", "PolyTest.xml");
+        string xmlFilePath = Path.Join(TestDataFolderPath, "PolyTest.xml");
         MusicXmlReader xmlReader = new(xmlFilePath);
         MusicXmlParser parser = new();
         parser.Execute(xmlReader.MusicXmlDocument);
@@ -156,7 +158,7 @@ public class MusicXmlParserTests
     [Test]
     public void RepeaterTest()
     {
-        string xmlFilePath = Path.Join(TestContext.CurrentContext.TestDirectory, "Music", "XmlTestFiles", "RepeaterTest.xml");
+        string xmlFilePath = Path.Join(TestDataFolderPath, "RepeaterTest.xml");
         MusicXmlReader xmlReader = new(xmlFilePath);
         MusicXmlParser parser = new();
         parser.Execute(xmlReader.MusicXmlDocument);
@@ -176,7 +178,7 @@ public class MusicXmlParserTests
     [Test]
     public void XmlParserScoreTrackTest()
     {
-        string xmlFilePath = Path.Join(TestContext.CurrentContext.TestDirectory, "Music", "XmlTestFiles", "LibiadaMusicExample7Liga.xml");
+        string xmlFilePath = Path.Join(TestDataFolderPath, "LibiadaMusicExample7Liga.xml");
         MusicXmlReader xmlReader = new(xmlFilePath);
         MusicXmlParser parser = new();
         parser.Execute(xmlReader.MusicXmlDocument);
@@ -190,7 +192,7 @@ public class MusicXmlParserTests
     [Test]
     public void XmlParserCongenericScoreTrackTest()
     {
-        string xmlFilePath = Path.Join(TestContext.CurrentContext.TestDirectory, "Music", "XmlTestFiles", "LibiadaMusicExample7Liga.xml");
+        string xmlFilePath = Path.Join(TestDataFolderPath, "LibiadaMusicExample7Liga.xml");
         MusicXmlReader xmlReader = new(xmlFilePath);
         MusicXmlParser parser = new();
         parser.Execute(xmlReader.MusicXmlDocument);
@@ -204,7 +206,7 @@ public class MusicXmlParserTests
     [Test]
     public void XmlParserMeasureTest()
     {
-        string xmlFilePath = Path.Join(TestContext.CurrentContext.TestDirectory, "Music", "XmlTestFiles", "LibiadaMusicExample7Liga.xml");
+        string xmlFilePath = Path.Join(TestDataFolderPath, "LibiadaMusicExample7Liga.xml");
         MusicXmlReader xmlReader = new(xmlFilePath);
         MusicXmlParser parser = new();
         parser.Execute(xmlReader.MusicXmlDocument);
@@ -224,7 +226,7 @@ public class MusicXmlParserTests
     [Test]
     public void XmlParserNoteTest()
     {
-        string xmlFilePath = Path.Join(TestContext.CurrentContext.TestDirectory, "Music", "XmlTestFiles", "LibiadaMusicExample7Liga.xml");
+        string xmlFilePath = Path.Join(TestDataFolderPath, "LibiadaMusicExample7Liga.xml");
         MusicXmlReader xmlReader = new(xmlFilePath);
         MusicXmlParser parser = new();
         parser.Execute(xmlReader.MusicXmlDocument);
@@ -250,7 +252,7 @@ public class MusicXmlParserTests
     [Test]
     public void XmlParserAttributesTest()
     {
-        string xmlFilePath = Path.Join(TestContext.CurrentContext.TestDirectory, "Music", "XmlTestFiles", "LibiadaMusicExample7Liga.xml");
+        string xmlFilePath = Path.Join(TestDataFolderPath, "LibiadaMusicExample7Liga.xml");
         MusicXmlReader xmlReader = new(xmlFilePath);
         MusicXmlParser parser = new();
         parser.Execute(xmlReader.MusicXmlDocument);
@@ -274,7 +276,7 @@ public class MusicXmlParserTests
     [Test]
     public void XmlParserPitchTest()
     {
-        string xmlFilePath = Path.Join(TestContext.CurrentContext.TestDirectory, "Music", "XmlTestFiles", "LibiadaMusicExample7Liga.xml");
+        string xmlFilePath = Path.Join(TestDataFolderPath, "LibiadaMusicExample7Liga.xml");
         MusicXmlReader xmlReader = new(xmlFilePath);
         MusicXmlParser parser = new();
         parser.Execute(xmlReader.MusicXmlDocument);
@@ -304,7 +306,7 @@ public class MusicXmlParserTests
     [Test]
     public void XmlParserDurationTest()
     {
-        string xmlFilePath = Path.Join(TestContext.CurrentContext.TestDirectory, "Music", "XmlTestFiles", "LibiadaMusicExample7Liga.xml");
+        string xmlFilePath = Path.Join(TestDataFolderPath, "LibiadaMusicExample7Liga.xml");
         MusicXmlReader xmlReader = new(xmlFilePath);
         MusicXmlParser parser = new();
         parser.Execute(xmlReader.MusicXmlDocument);
@@ -330,7 +332,7 @@ public class MusicXmlParserTests
     [Test]
     public void XmlParserTieTest()
     {
-        string xmlFilePath = Path.Join(TestContext.CurrentContext.TestDirectory, "Music", "XmlTestFiles", "LibiadaMusicExample7Liga.xml");
+        string xmlFilePath = Path.Join(TestDataFolderPath, "LibiadaMusicExample7Liga.xml");
         MusicXmlReader xmlReader = new(xmlFilePath);
         MusicXmlParser parser = new();
         parser.Execute(xmlReader.MusicXmlDocument);
@@ -356,7 +358,7 @@ public class MusicXmlParserTests
     [Test]
     public void XmlParserTripletTest()
     {
-        string xmlFilePath = Path.Join(TestContext.CurrentContext.TestDirectory, "Music", "XmlTestFiles", "LibiadaMusicExample7Liga.xml");
+        string xmlFilePath = Path.Join(TestDataFolderPath, "LibiadaMusicExample7Liga.xml");
         MusicXmlReader xmlReader = new(xmlFilePath);
         MusicXmlParser parser = new();
         parser.Execute(xmlReader.MusicXmlDocument);

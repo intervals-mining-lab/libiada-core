@@ -1,5 +1,6 @@
 namespace Libiada.Core.Core;
 
+using Libiada.Core.Attributes;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
@@ -14,6 +15,8 @@ public enum Link : byte
     /// </summary>
     [Display(Name = "Not applied")]
     [Description("Link is not applied")]
+    [Binding(Binding.NotApplicable)]
+    [BindingMode(BindingMode.NotApplicable)]
     NotApplied = 0,
 
     /// <summary>
@@ -24,6 +27,8 @@ public enum Link : byte
     /// </summary>
     [Display(Name = "None")]
     [Description(" The first and the last intervals to boundaries of sequence are not taken into account")]
+    [Binding(Binding.Beginning)]
+    [BindingMode(BindingMode.Lossy)]
     None = 1,
 
     /// <summary>
@@ -33,6 +38,8 @@ public enum Link : byte
     /// </summary>
     [Display(Name = "To the beginning")]
     [Description("Interval from the start of the sequence to the first occurrence of the element is taken into account")]
+    [Binding(Binding.Beginning)]
+    [BindingMode(BindingMode.Normal)]
     Start = 2,
 
     /// <summary>
@@ -42,6 +49,8 @@ public enum Link : byte
     /// </summary>
     [Display(Name = "To the end")]
     [Description("Interval from the last occurrence of the element to the end of the sequence is taken into account")]
+    [Binding(Binding.End)]
+    [BindingMode(BindingMode.Normal)]
     End = 3,
 
     /// <summary>
@@ -53,6 +62,8 @@ public enum Link : byte
     [Display(Name = "To the beginning and to the end")]
     [Description("Both intervals from the start of the sequence to the first occurrence of the element "
                  + "and from the last occurrence of the element to the end of the sequence are taken into account")]
+    [Binding(Binding.Beginning)]
+    [BindingMode(BindingMode.Redundant)]
     Both = 4,
 
     /// <summary>
@@ -64,6 +75,8 @@ public enum Link : byte
     [Display(Name = "Cyclic")]
     [Description("Interval from the last occurrence of the element to the end of the sequence added "
                  + "to the interval from the start of the sequence to the first occurrence of the element (as if sequence was cyclic)")]
+    [Binding(Binding.Beginning)]
+    [BindingMode(BindingMode.Cyclic)]
     Cycle = 5,
 
     /// <summary>
@@ -73,6 +86,8 @@ public enum Link : byte
     /// </summary>
     [Display(Name = "Cyclic to the beginning")]
     [Description("Cyclic reading from left to right (intervals are bound to the right position (element occurrence))")]
+    [Binding(Binding.Beginning)]
+    [BindingMode(BindingMode.Cyclic)]
     CycleStart = 6,
 
     /// <summary>
@@ -82,5 +97,7 @@ public enum Link : byte
     /// </summary>
     [Display(Name = "Cyclic to the end")]
     [Description("Cyclic reading from right to left (intervals are bound to the left position (element occurrence))")]
+    [Binding(Binding.End)]
+    [BindingMode(BindingMode.Cyclic)]
     CycleEnd = 7
 }

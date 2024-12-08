@@ -15,13 +15,17 @@ public class FmotifTypeTests
     private const int FmotifTypesCount = 6;
 
     /// <summary>
+    /// Array of all fmotif types.
+    /// </summary>
+    private readonly FmotifType[] fmotifTypes = EnumExtensions.ToArray<FmotifType>();
+
+    /// <summary>
     /// Tests count of fmotif types.
     /// </summary>
     [Test]
     public void FmotifTypeCountTest()
     {
-        int actualCount = EnumExtensions.ToArray<FmotifType>().Length;
-        Assert.That(actualCount, Is.EqualTo(FmotifTypesCount));
+        Assert.That(fmotifTypes, Has.Length.EqualTo(FmotifTypesCount));
     }
 
     /// <summary>
@@ -30,10 +34,9 @@ public class FmotifTypeTests
     [Test]
     public void FmotifTypeValuesTest()
     {
-        FmotifType[] fmotifTypes = EnumExtensions.ToArray<FmotifType>();
         for (int i = 0; i < FmotifTypesCount; i++)
         {
-            Assert.That(fmotifTypes, Does.Contain((FmotifType)i));
+            Assert.That(fmotifTypes, Contains.Item((FmotifType)i));
         }
     }
 
@@ -52,10 +55,7 @@ public class FmotifTypeTests
     [TestCase((FmotifType)3, "IncreasingSequence")]
     [TestCase((FmotifType)4, "CompleteMinimalMetrorhythmicGroup")]
     [TestCase((FmotifType)5, "PartialMinimalMetrorhythmicGroup")]
-    public void FmotifTypeNamesTest(FmotifType fmotifType, string name)
-    {
-        Assert.That(fmotifType.GetName(), Is.EqualTo(name));
-    }
+    public void FmotifTypeNamesTest(FmotifType fmotifType, string name) => Assert.That(fmotifType.GetName(), Is.EqualTo(name));
 
     /// <summary>
     /// Tests that all fmotif types have display value.
@@ -64,10 +64,7 @@ public class FmotifTypeTests
     /// The fmotif type.
     /// </param>
     [Test]
-    public void FmotifTypeHasDisplayValueTest([Values]FmotifType fmotifType)
-    {
-        Assert.That(fmotifType.GetDisplayValue(), Is.Not.Empty);
-    }
+    public void FmotifTypeHasDisplayValueTest([Values] FmotifType fmotifType) => Assert.That(fmotifType.GetDisplayValue(), Is.Not.Empty);
 
     /// <summary>
     /// Tests that all fmotif types have description.
@@ -76,19 +73,11 @@ public class FmotifTypeTests
     /// The fmotif type.
     /// </param>
     [Test]
-    public void FmotifTypeHasDescriptionTest([Values]FmotifType fmotifType)
-    {
-        Assert.That(fmotifType.GetDescription(), Is.Not.Empty);
-    }
+    public void FmotifTypeHasDescriptionTest([Values] FmotifType fmotifType) => Assert.That(fmotifType.GetDescription(), Is.Not.Empty);
 
     /// <summary>
     /// Tests that all fmotif types values are unique.
     /// </summary>
     [Test]
-    public void FmotifTypeValuesUniqueTest()
-    {
-        FmotifType[] fmotifTypes = EnumExtensions.ToArray<FmotifType>();
-        IEnumerable<byte> fmotifTypeValues = fmotifTypes.Cast<byte>();
-        Assert.That(fmotifTypeValues, Is.Unique);
-    }
+    public void FmotifTypeValuesUniqueTest() => Assert.That(fmotifTypes.Cast<byte>(), Is.Unique);
 }
