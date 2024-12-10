@@ -4,6 +4,10 @@ using System;
 
 using Libiada.Core.Core;
 
+/// <summary>
+/// Used to set link value to other enums.
+/// </summary>
+/// <seealso cref="System.Attribute" />
 [AttributeUsage(AttributeTargets.Field, AllowMultiple = false)]
 public class LinkAttribute : Attribute
 {

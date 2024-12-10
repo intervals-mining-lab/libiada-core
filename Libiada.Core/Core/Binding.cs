@@ -3,6 +3,9 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel;
 
+/// <summary>
+/// Represents binding (reading direction) of the intervals in the sequence.
+/// </summary>
 public enum Binding : byte
 {
     /// <summary>

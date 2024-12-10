@@ -3,6 +3,11 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel;
 
+/// <summary>
+/// Represents binding mode of the intervals in the sequence.
+/// In other words which of the intervals on the ends 
+/// of the sequence are taken into account and in what manner.
+/// </summary>
 public enum BindingMode : byte
 {
     /// <summary>
@@ -21,7 +26,8 @@ public enum BindingMode : byte
     Normal = 1,
 
     /// <summary>
-    /// Cyclic binding mode closes sequence into a loop and each element gets one corresponding interval.
+    /// Cyclic binding mode closes sequence into a loop 
+    /// and each element gets one corresponding interval.
     /// </summary>
     [Display(Name = "Cyclic binding mode")]
     [Description("Сloses sequence into a loop and each element gets one corresponding interval")]
