@@ -1,9 +1,10 @@
 ﻿namespace Libiada.Core.Core.Characteristics.Calculators.FullCalculators;
 
 /// <summary>
-/// Asymmetry of the entropy in congeneric sequences. Third central moment.
+/// Asymmetry of the identifying informations in congeneric sequences. Third central moment.
+/// Equals to Shannon's entropy (amount of information) skewness when cyclic bindind is used.
 /// </summary>
-public class EntropySkewness : IFullCalculator
+public class IdentifyingInformationSkewness : IFullCalculator
 {
     /// <summary>
     /// Calculation method.
@@ -18,7 +19,7 @@ public class EntropySkewness : IFullCalculator
     /// Binding of the intervals in the sequence.
     /// </param>
     /// <returns>
-    /// Entropy skewness <see cref="double"/> value.
+    /// Identifying informations (entropy) skewness <see cref="double"/> value.
     /// </returns>
     public double Calculate(Chain chain, Link link)
     {
@@ -26,15 +27,15 @@ public class EntropySkewness : IFullCalculator
         if (n == 0) return 0;
 
         CongenericCalculators.IntervalsCount congenericIntervalsCount = new();
-        CongenericCalculators.IdentificationInformation congenericIdentificationInformation = new();
+        CongenericCalculators.IdentifyingInformation congenericIdentifyingInformation = new();
 
         double result = 0;
-        double h = new IdentificationInformation().Calculate(chain, link);
+        double h = new IdentifyingInformation().Calculate(chain, link);
         int alphabetCardinality = chain.Alphabet.Cardinality;
         for (int i = 0; i < alphabetCardinality; i++)
         {
             double nj = congenericIntervalsCount.Calculate(chain.CongenericChain(i), link);
-            double hj = congenericIdentificationInformation.Calculate(chain.CongenericChain(i), link);
+            double hj = congenericIdentifyingInformation.Calculate(chain.CongenericChain(i), link);
             double deltaH = hj - h;
             result += deltaH * deltaH * deltaH * nj / n;
         }

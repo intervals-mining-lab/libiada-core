@@ -2,13 +2,12 @@ namespace Libiada.Core.Core.Characteristics.Calculators.FullCalculators;
 
 /// <summary>
 /// Entropy.
+/// Equals to Shannon's entropy when cyclic bindind is used.
 /// Amount of information.
-/// Amount of identifying information (average for one element).
-/// Shannon's information.
-/// Shannon's entropy.
+/// Amount of identifying informations (average for one element).
 /// Calculated here using intervals count and arithmetic mean interval.
 /// </summary>
-public class IdentificationInformation : IFullCalculator
+public class IdentifyingInformation : IFullCalculator
 {
     /// <summary>
     /// Calculation method.
@@ -23,7 +22,7 @@ public class IdentificationInformation : IFullCalculator
     /// Binding of the intervals in the sequence.
     /// </param>
     /// <returns>
-    /// Count of identification informations as <see cref="double"/>.
+    /// Count of identifying informations as <see cref="double"/>.
     /// </returns>
     public double Calculate(Chain chain, Link link)
     {

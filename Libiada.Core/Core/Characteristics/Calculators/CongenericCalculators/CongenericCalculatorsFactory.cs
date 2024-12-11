@@ -30,7 +30,7 @@ public static class CongenericCalculatorsFactory
             CongenericCharacteristic.Depth => new Depth(),
             CongenericCharacteristic.ElementsCount => new ElementsCount(),
             CongenericCharacteristic.GeometricMean => new GeometricMean(),
-            CongenericCharacteristic.IdentificationInformation => new IdentificationInformation(),
+            CongenericCharacteristic.IdentifyingInformation => new IdentifyingInformation(),
             CongenericCharacteristic.IntervalsCount => new IntervalsCount(),
             CongenericCharacteristic.IntervalsSum => new IntervalsSum(),
             CongenericCharacteristic.Length => new Length(),

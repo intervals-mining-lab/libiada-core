@@ -2,12 +2,11 @@ namespace Libiada.Core.Core.Characteristics.Calculators.CongenericCalculators;
 
 /// <summary>
 /// Entropy.
+/// Equals to Shannon's entropy when cyclic bindind is used.
 /// Amount of information.
-/// Amount of identifying information (average for one element).
-/// Shannon information.
-/// Shannon entropy.
+/// Amount of identifying informations (average for one element).
 /// </summary>
-public class IdentificationInformation : ICongenericCalculator
+public class IdentifyingInformation : ICongenericCalculator
 {
     /// <summary>
     /// Calculation method.
@@ -22,7 +21,7 @@ public class IdentificationInformation : ICongenericCalculator
     /// Binding of the intervals in the sequence.
     /// </param>
     /// <returns>
-    /// Count of identification informations as <see cref="double"/>.
+    /// Count of identifying informations as <see cref="double"/>.
     /// </returns>
     public double Calculate(CongenericChain chain, Link link)
     {

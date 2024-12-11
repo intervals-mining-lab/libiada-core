@@ -1,9 +1,10 @@
 ﻿namespace Libiada.Core.Core.Characteristics.Calculators.FullCalculators;
 
 /// <summary>
-/// Variance of the entropy in congeneric sequences.
+/// Variance of the identifying informations in congeneric sequences.
+/// Equals to entropy variance when cyclic bindind is used.
 /// </summary>
-public class EntropyVariance : IFullCalculator
+public class IdentifyingInformationVariance : IFullCalculator
 {
     /// <summary>
     /// Calculation method.
@@ -18,7 +19,7 @@ public class EntropyVariance : IFullCalculator
     /// Binding of the intervals in the sequence.
     /// </param>
     /// <returns>
-    /// Entropy variance <see cref="double"/> value.
+    /// Identifying informations (entropy) variance <see cref="double"/> value.
     /// </returns>
     public double Calculate(Chain chain, Link link)
     {
@@ -26,15 +27,15 @@ public class EntropyVariance : IFullCalculator
         if (n == 0) return 0;
 
         CongenericCalculators.IntervalsCount congenericIntervalsCount = new();
-        CongenericCalculators.IdentificationInformation congenericIdentificationInformation = new();
+        CongenericCalculators.IdentifyingInformation congenericIdentifyingInformation = new();
 
         double result = 0;
-        double h = new IdentificationInformation().Calculate(chain, link);
+        double h = new IdentifyingInformation().Calculate(chain, link);
         int alphabetCardinality = chain.Alphabet.Cardinality;
         for (int i = 0; i < alphabetCardinality; i++)
         {
             double nj = congenericIntervalsCount.Calculate(chain.CongenericChain(i), link);
-            double hj = congenericIdentificationInformation.Calculate(chain.CongenericChain(i), link);
+            double hj = congenericIdentifyingInformation.Calculate(chain.CongenericChain(i), link);
             double deltaH = hj - h;
             result += deltaH * deltaH * nj / n;
         }

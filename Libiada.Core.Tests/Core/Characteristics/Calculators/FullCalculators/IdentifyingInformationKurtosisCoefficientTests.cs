@@ -4,13 +4,13 @@ using Libiada.Core.Core;
 using Libiada.Core.Core.Characteristics.Calculators.FullCalculators;
 
 /// <summary>
-/// The entropy kurtosis coefficient tests.
+/// The identifying informations (entropy) kurtosis coefficient tests.
 /// </summary>
 [TestFixture]
-public class EntropyKurtosisCoefficientTests : FullCalculatorsTests<EntropyKurtosisCoefficient>
+public class IdentifyingInformationKurtosisCoefficientTests : FullCalculatorsTests<IdentifyingInformationKurtosisCoefficient>
 {
     /// <summary>
-    /// The entropy kurtosis coefficient test.
+    /// The identifying informations (entropy) kurtosis coefficient test.
     /// </summary>
     /// <param name="index">
     /// Full sequence index in <see cref="ChainsStorage"/>.

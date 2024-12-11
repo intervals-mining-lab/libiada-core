@@ -4,10 +4,10 @@ using Libiada.Core.Core;
 using Libiada.Core.Core.Characteristics.Calculators.FullCalculators;
 
 /// <summary>
-/// The identification information test.
+/// The identifying informations test.
 /// </summary>
-[TestFixture]
-public class IdentificationInformationTests : FullCalculatorsTests<IdentificationInformation>
+[TestFixture(TestOf = typeof(IdentifyingInformation))]
+public class IdentifyingInformationTests : FullCalculatorsTests<IdentifyingInformation>
 {
     /// <summary>
     /// The chain calculation test.

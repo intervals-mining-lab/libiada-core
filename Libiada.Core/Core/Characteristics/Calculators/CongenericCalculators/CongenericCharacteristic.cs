@@ -58,11 +58,11 @@ public enum CongenericCharacteristic : byte
     GeometricMean = 8,
 
     /// <summary>
-    /// The identification information.
+    /// The identifying informations.
     /// </summary>
-    [Display(Name = "Entropy")]
-    [Description("Shannon's information or amount of information or count of identification informations")]
-    IdentificationInformation = 9,
+    [Display(Name = "Identifying information")]
+    [Description("Equals to Shannon's entropy (amount of information) when cyclic binding is used")]
+    IdentifyingInformation = 9,
 
     /// <summary>
     /// The intervals count.
@@ -103,7 +103,7 @@ public enum CongenericCharacteristic : byte
     /// The uniformity.
     /// </summary>
     [Display(Name = "Uniformity")]
-    [Description("Normalized characteristic calculated as average remoteness substracted from entropy")]
+    [Description("Normalized characteristic calculated as average remoteness substracted from identifying informations (entropy)")]
     Uniformity = 16,
 
     /// <summary>

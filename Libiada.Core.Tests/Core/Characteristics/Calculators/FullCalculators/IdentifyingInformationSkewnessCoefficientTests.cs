@@ -4,13 +4,13 @@ using Libiada.Core.Core;
 using Libiada.Core.Core.Characteristics.Calculators.FullCalculators;
 
 /// <summary>
-/// The entropy asymmetry coefficient test.
+/// The identifying informations (entropy) asymmetry coefficient test.
 /// </summary>
 [TestFixture]
-public class EntropySkewnessCoefficientTests : FullCalculatorsTests<EntropySkewnessCoefficient>
+public class IdentifyingInformationSkewnessCoefficientTests : FullCalculatorsTests<IdentifyingInformationSkewnessCoefficient>
 {
     /// <summary>
-    /// The entropy asymmetry coefficient test.
+    /// The identifying informations (entropy) asymmetry coefficient test.
     /// </summary>
     /// <param name="index">
     /// Full sequence index in <see cref="ChainsStorage"/>.

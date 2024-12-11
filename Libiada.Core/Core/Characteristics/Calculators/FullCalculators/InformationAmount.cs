@@ -2,7 +2,7 @@
 
 /// <summary>
 /// The total amount of information in sequence.
-/// Entropy multiplied by intervals count.
+/// Identifying informations (entropy) multiplied by intervals count.
 /// </summary>
 public class InformationAmount : IFullCalculator
 {
@@ -23,9 +23,9 @@ public class InformationAmount : IFullCalculator
     /// </returns>
     public double Calculate(Chain chain, Link link)
     {
-        double entropy = new IdentificationInformation().Calculate(chain, link);
+        double identifyingInformation = new IdentifyingInformation().Calculate(chain, link);
         double intervalsCount = new IntervalsCount().Calculate(chain, link);
 
-        return entropy * intervalsCount;
+        return identifyingInformation * intervalsCount;
     }
 }

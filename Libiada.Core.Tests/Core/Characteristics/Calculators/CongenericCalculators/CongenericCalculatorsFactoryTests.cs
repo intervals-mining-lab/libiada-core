@@ -26,7 +26,7 @@ public class CongenericCalculatorsFactoryTests
     [TestCase(CongenericCharacteristic.Depth, typeof(Depth))]
     [TestCase(CongenericCharacteristic.ElementsCount, typeof(ElementsCount))]
     [TestCase(CongenericCharacteristic.GeometricMean, typeof(GeometricMean))]
-    [TestCase(CongenericCharacteristic.IdentificationInformation, typeof(IdentificationInformation))]
+    [TestCase(CongenericCharacteristic.IdentifyingInformation, typeof(IdentifyingInformation))]
     [TestCase(CongenericCharacteristic.IntervalsCount, typeof(IntervalsCount))]
     [TestCase(CongenericCharacteristic.IntervalsSum, typeof(IntervalsSum))]
     [TestCase(CongenericCharacteristic.Length, typeof(Length))]

@@ -2,7 +2,7 @@
 
 /// <summary>
 /// The complete amount of information in sequence.
-/// Entropy multiplied by intervals count.
+/// Identifying informations (entropy) multiplied by intervals count.
 /// </summary>
 public class InformationAmount : ICongenericCalculator
 {
@@ -23,11 +23,9 @@ public class InformationAmount : ICongenericCalculator
     /// </returns>
     public double Calculate(CongenericChain chain, Link link)
     {
-        double mean = new ArithmeticMean().Calculate(chain, link);
-        if (mean == 0) return 0;
-
+        double identifyingInformation = new IdentifyingInformation().Calculate(chain, link);
         double intervalsCount = new IntervalsCount().Calculate(chain, link);
 
-        return Math.Log(mean, 2) * intervalsCount;
+        return identifyingInformation * intervalsCount;
     }
 }

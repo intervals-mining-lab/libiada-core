@@ -1,9 +1,10 @@
 ﻿namespace Libiada.Core.Core.Characteristics.Calculators.FullCalculators;
 
 /// <summary>
-/// Standard deviation of the entropy in congeneric sequences (square root of variance of entropy).
+/// Standard deviation of the identifying informations in congeneric sequences (square root of variance of identifying informations).
+/// Equals to entropy standard deviation when cyclic bindind is used.
 /// </summary>
-public class EntropyStandardDeviation : IFullCalculator
+public class IdentifyingInformationStandardDeviation : IFullCalculator
 {
     /// <summary>
     /// Calculation method.
@@ -18,12 +19,12 @@ public class EntropyStandardDeviation : IFullCalculator
     /// Binding of the intervals in the sequence.
     /// </param>
     /// <returns>
-    /// Entropy standard deviation <see cref="double"/> value.
+    /// Identifying informations (entropy) standard deviation <see cref="double"/> value.
     /// </returns>
     public double Calculate(Chain chain, Link link)
     {
-        double entropyVariance = new EntropyVariance().Calculate(chain, link);
+        double identifyingInformationVariance = new IdentifyingInformationVariance().Calculate(chain, link);
 
-        return Math.Sqrt(entropyVariance);
+        return Math.Sqrt(identifyingInformationVariance);
     }
 }

@@ -2,7 +2,7 @@
 
 /// <summary>
 /// The uniformity calculator.
-/// Calculates difference between entropy and average remoteness.
+/// Calculates difference between identifying informations (entropy) and average remoteness.
 /// </summary>
 public class Uniformity : IFullCalculator
 {
@@ -21,8 +21,8 @@ public class Uniformity : IFullCalculator
     public double Calculate(Chain chain, Link link)
     {
         double averageRemoteness = new AverageRemoteness().Calculate(chain, link);
-        double entropy = new IdentificationInformation().Calculate(chain, link);
+        double identifyingInformation = new IdentifyingInformation().Calculate(chain, link);
 
-        return entropy - averageRemoteness;
+        return identifyingInformation - averageRemoteness;
     }
 }
