@@ -75,5 +75,5 @@ public class AccidentalTests
     /// Tests that all accidentals values are unique.
     /// </summary>
     [Test]
-    public void AccidentalValuesUniqueTest() => Assert.That(accidentals.Cast<short>(), Is.Unique);
+    public void AccidentalValuesUniqueTest() => Assert.That(accidentals.Cast<sbyte>(), Is.Unique);
 }

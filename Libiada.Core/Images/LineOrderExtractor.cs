@@ -28,7 +28,7 @@ public class LineOrderExtractor : IImageOrderExtractor
         {
             for (int j = 0; j < image.GetLength(1); j++)
             {
-                // TODO: refactor this to user standard BaseChain constructor
+                // TODO: refactor this to use standard BaseChain constructor
                 int pixelIndex = alphabet.IndexOf(new ValuePixel(image[i, j]));
                 if (pixelIndex == -1)
                 {
