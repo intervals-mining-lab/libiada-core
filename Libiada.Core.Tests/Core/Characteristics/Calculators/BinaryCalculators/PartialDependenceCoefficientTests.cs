@@ -13,7 +13,7 @@ public class PartialDependenceCoefficientTests : BinaryCalculatorsTests<PartialD
     /// The k 1 test.
     /// </summary>
     /// <param name="index">
-    /// Binary sequence index in <see cref="ChainsStorage"/>.
+    /// Binary sequence index in <see cref="SequencesStorage"/>.
     /// </param>
     /// <param name="firstValue">
     /// The first value.
@@ -51,7 +51,7 @@ public class PartialDependenceCoefficientTests : BinaryCalculatorsTests<PartialD
     [Test]
     public void GetK1Test()
     {
-        List<List<double>> result = Calculator.CalculateAll(Chains[1], Link.End);
+        List<List<double>> result = Calculator.CalculateAll(Sequences[1], Link.End);
 
         Assert.Multiple(() =>
         {
@@ -61,7 +61,7 @@ public class PartialDependenceCoefficientTests : BinaryCalculatorsTests<PartialD
             Assert.That(result[1][1], Is.Zero);
         });
 
-        result = Calculator.CalculateAll(Chains[10], Link.End);
+        result = Calculator.CalculateAll(Sequences[10], Link.End);
 
         Assert.Multiple(() =>
         {
@@ -71,7 +71,7 @@ public class PartialDependenceCoefficientTests : BinaryCalculatorsTests<PartialD
             Assert.That(result[1][1], Is.Zero);
         });
 
-        result = Calculator.CalculateAll(Chains[18], Link.End);
+        result = Calculator.CalculateAll(Sequences[18], Link.End);
 
         Assert.Multiple(() =>
         {

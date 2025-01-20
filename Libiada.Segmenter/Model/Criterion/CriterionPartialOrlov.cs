@@ -29,8 +29,8 @@ public class CriterionPartialOrlov : Criterion
     /// <summary>
     /// The state.
     /// </summary>
-    /// <param name="chain">
-    /// The chain.
+    /// <param name="sequence">
+    /// The sequence.
     /// </param>
     /// <param name="alphabet">
     /// The alphabet.
@@ -38,18 +38,18 @@ public class CriterionPartialOrlov : Criterion
     /// <returns>
     /// The <see cref="bool"/>.
     /// </returns>
-    public override bool State(ComplexChain chain, FrequencyDictionary alphabet)
+    public override bool State(ComplexSequence sequence, FrequencyDictionary alphabet)
     {
-        Update(chain, alphabet);
+        Update(sequence, alphabet);
         return (ThresholdToStop.Distance > ThresholdVariator.Precision)
-               && (Math.Abs(Distortion(chain, alphabet)) > precisionOfDifference);
+               && (Math.Abs(Distortion(sequence, alphabet)) > precisionOfDifference);
     }
 
     /// <summary>
     /// The distortion.
     /// </summary>
-    /// <param name="chain">
-    /// The chain.
+    /// <param name="sequence">
+    /// The sequence.
     /// </param>
     /// <param name="alphabet">
     /// The alphabet.
@@ -57,16 +57,16 @@ public class CriterionPartialOrlov : Criterion
     /// <returns>
     /// The <see cref="double"/>.
     /// </returns>
-    public override sealed double Distortion(ComplexChain chain, FrequencyDictionary alphabet)
+    public override sealed double Distortion(ComplexSequence sequence, FrequencyDictionary alphabet)
     {
-        return TheoryVolume(chain, alphabet) - alphabet.Count;
+        return TheoryVolume(sequence, alphabet) - alphabet.Count;
     }
 
     /// <summary>
-    /// Calculates the theoretical volume the alphabet for a chain.
+    /// Calculates the theoretical volume the alphabet for a sequence.
     /// </summary>
-    /// <param name="chain">
-    /// An estimated chain.
+    /// <param name="sequence">
+    /// An estimated sequence.
     /// </param>
     /// <param name="alphabet">
     /// Current alphabet.
@@ -74,20 +74,20 @@ public class CriterionPartialOrlov : Criterion
     /// <returns>
     /// The theoretical volume the alphabet.
     /// </returns>
-    public double TheoryVolume(ComplexChain chain, FrequencyDictionary alphabet)
+    public double TheoryVolume(ComplexSequence sequence, FrequencyDictionary alphabet)
     {
         double f = 0;
         List<string> wordsList = alphabet.GetWords();
         foreach (string word in wordsList)
         {
-            double freq = Frequency(chain, word);
+            double freq = Frequency(sequence, word);
             if (freq > f)
             {
                 f = freq;
             }
         }
 
-        double z = chain.Length;
+        double z = sequence.Length;
         double k = 1 / Math.Log(f * z);
         double b = (k / f) - 1;
         double v = (k * z) - b;
@@ -151,8 +151,8 @@ public class CriterionPartialOrlov : Criterion
     /// <summary>
     /// The frequency.
     /// </summary>
-    /// <param name="chain">
-    /// The chain.
+    /// <param name="sequence">
+    /// The sequence.
     /// </param>
     /// <param name="word">
     /// The word.
@@ -160,10 +160,10 @@ public class CriterionPartialOrlov : Criterion
     /// <returns>
     /// The <see cref="double"/>.
     /// </returns>
-    public double Frequency(ComplexChain chain, string word)
+    public double Frequency(ComplexSequence sequence, string word)
     {
-        List<string> temp = new(chain.Substring(0, chain.Length));
-        return Frequency(temp, word) / (double)chain.Length;
+        List<string> temp = new(sequence.Substring(0, sequence.Length));
+        return Frequency(temp, word) / (double)sequence.Length;
     }
 
     /// <summary>
@@ -194,21 +194,21 @@ public class CriterionPartialOrlov : Criterion
     }
 
     /// <summary>
-    /// The update.
+    /// The update method.
     /// </summary>
-    /// <param name="chain">
-    /// The chain.
+    /// <param name="sequence">
+    /// The sequence.
     /// </param>
     /// <param name="alphabet">
     /// The alphabet.
     /// </param>
-    private void Update(ComplexChain chain, FrequencyDictionary alphabet)
+    private void Update(ComplexSequence sequence, FrequencyDictionary alphabet)
     {
-        double dist = TheoryVolume(chain, alphabet) - alphabet.Count;
+        double dist = TheoryVolume(sequence, alphabet) - alphabet.Count;
         if (Math.Abs(Value) > Math.Abs(dist))
         {
             this.alphabet = alphabet.Clone();
-            this.chain = chain.Clone();
+            this.sequence = sequence.Clone();
             Value = dist;
             ThresholdToStop.SaveBest();
         }

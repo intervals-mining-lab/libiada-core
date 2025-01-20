@@ -14,9 +14,9 @@ using Segmenter.Model.Threshold;
 public class AlgorithmBase : Algorithm
 {
     /// <summary>
-    /// The chain.
+    /// The sequence.
     /// </summary>
-    private ComplexChain chain;
+    private ComplexSequence sequence;
 
     /// <summary>
     /// The alphabet.
@@ -84,16 +84,16 @@ public class AlgorithmBase : Algorithm
     {
         Dictionary<string, object> par = new()
         {
-            { "Sequence", chain = new ComplexChain(inputs[0].Chain) },
-            { "Alphabet", alphabet = new FrequencyDictionary(chain) }
+            { "Sequence", sequence = new ComplexSequence(inputs[0].Sequence) },
+            { "Alphabet", alphabet = new FrequencyDictionary(sequence) }
         };
 
-        while (criterion.State(chain, alphabet))
+        while (criterion.State(sequence, alphabet))
         {
             UpdateParams(par, threshold.Next(criterion));
-            SimpleChainSplitter chainSplitter = new(extractor);
-            chain = chainSplitter.Cut(par);
-            alphabet = chainSplitter.FrequencyDictionary;
+            SimpleSequenceSplitter sequenceSplitter = new(extractor);
+            sequence = sequenceSplitter.Cut(par);
+            alphabet = sequenceSplitter.FrequencyDictionary;
         }
     }
 
@@ -101,7 +101,7 @@ public class AlgorithmBase : Algorithm
     /// The upload.
     /// </summary>
     /// <returns>
-    /// The <see cref="List{MainOutputData}"/>.
+    /// The <see cref="List{Libiada.Segmenter.Model.MainOutputData}"/>.
     /// </returns>
     public new List<MainOutputData> Upload()
     {
@@ -124,7 +124,7 @@ public class AlgorithmBase : Algorithm
     /// </param>
     private void UpdateParams(Dictionary<string, object> par, double nextThreshold)
     {
-        par.Add("Sequence", chain = new ComplexChain(inputs[0].Chain));
+        par.Add("Sequence", sequence = new ComplexSequence(inputs[0].Sequence));
         par.Add("Balance", balance);
         par.Add("Window", windowLen);
         par.Add("WindowDecrement", windowDec);

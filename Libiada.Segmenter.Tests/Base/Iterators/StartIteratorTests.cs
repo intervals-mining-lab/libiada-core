@@ -11,9 +11,9 @@ using Segmenter.Extended;
 public class StartIteratorTests
 {
     /// <summary>
-    /// The chain.
+    /// The sequence.
     /// </summary>
-    private ComplexChain chain;
+    private ComplexSequence sequence;
 
     /// <summary>
     /// The set up.
@@ -21,7 +21,7 @@ public class StartIteratorTests
     [SetUp]
     public void SetUp()
     {
-        chain = new ComplexChain("AACAGGTGCCCCTTATTT");
+        sequence = new ComplexSequence("AACAGGTGCCCCTTATTT");
     }
 
     /// <summary>
@@ -34,7 +34,7 @@ public class StartIteratorTests
         const int step = 1;
         int countSteps = 0;
 
-        StartIterator iterator = new(chain, lengthCut, step);
+        StartIterator iterator = new(sequence, lengthCut, step);
         while (iterator.HasNext())
         {
             iterator.Next();
@@ -44,7 +44,7 @@ public class StartIteratorTests
         Assert.That(countSteps, Is.EqualTo(iterator.MaxShifts));
 
         countSteps = 0;
-        iterator = new StartIterator(chain, lengthCut, step + 1);
+        iterator = new StartIterator(sequence, lengthCut, step + 1);
         while (iterator.HasNext())
         {
             iterator.Next();
@@ -70,7 +70,7 @@ public class StartIteratorTests
         const int lengthCut = 3;
         const int step = 1;
 
-        StartIterator iterator = new(chain, lengthCut, step);
+        StartIterator iterator = new(sequence, lengthCut, step);
 
         for (int i = 0; i < iterator.MaxShifts; i++)
         {
@@ -78,7 +78,7 @@ public class StartIteratorTests
             Assert.That(Helper.ToString(cut), Is.EqualTo(triplesForStepOne[i]));
         }
 
-        iterator = new StartIterator(chain, lengthCut, step + 1);
+        iterator = new StartIterator(sequence, lengthCut, step + 1);
 
         for (int i = 0; i < iterator.MaxShifts; i++)
         {
@@ -95,7 +95,7 @@ public class StartIteratorTests
     {
         const int length = 2;
         const int step = 1;
-        StartIterator iterator = new(chain, length, step);
+        StartIterator iterator = new(sequence, length, step);
         if (iterator.Move(3))
         {
             iterator.Reset();
@@ -113,7 +113,7 @@ public class StartIteratorTests
         int length = 2;
         int step = 1;
         int position = 3;
-        StartIterator iterator = new(chain, length, step);
+        StartIterator iterator = new(sequence, length, step);
         iterator.Move(position);
         Assert.That(iterator.CursorPosition, Is.EqualTo(position));
 
@@ -121,7 +121,7 @@ public class StartIteratorTests
         iterator.Move(position);
         Assert.That(iterator.CursorPosition, Is.Not.EqualTo(position));
 
-        position = chain.Length / 2;
+        position = sequence.Length / 2;
         iterator.Move(position);
         Assert.That(iterator.CursorPosition, Is.EqualTo(position));
 
@@ -133,7 +133,7 @@ public class StartIteratorTests
         step = 2;
         position = 3;
         const string triple = "GTG";
-        iterator = new StartIterator(chain, length, step);
+        iterator = new StartIterator(sequence, length, step);
         iterator.Move(position);
         iterator.Next();
         Assert.That(Helper.ToString(iterator.Current()), Is.EqualTo(triple));
@@ -148,7 +148,7 @@ public class StartIteratorTests
         const int lengthCut = 3;
         const int step = 1;
         const int maxShifts = 16;
-        StartIterator iterator = new(chain, lengthCut, step);
+        StartIterator iterator = new(sequence, lengthCut, step);
         Assert.That(iterator.MaxShifts, Is.EqualTo(maxShifts));
     }
 
@@ -160,7 +160,7 @@ public class StartIteratorTests
     {
         const int lengthCut = 2;
         const int step = 1;
-        StartIterator iterator = new(chain, lengthCut, step);
+        StartIterator iterator = new(sequence, lengthCut, step);
         iterator.Next();
         Assert.That(iterator.CursorPosition, Is.EqualTo(0));
         iterator.Next();

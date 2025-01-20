@@ -51,19 +51,19 @@ public class ValueInt : IBaseObject
     public IBaseObject Clone() => new ValueInt(value);
 
     /// <summary>
-    /// Determines whether the specified <see cref="T:System.Object"/>
-    /// is equal to the current <see cref="T:System.Object"/>.
+    /// Determines whether the specified <see cref="object"/>
+    /// is equal to the current <see cref="object"/>.
     /// </summary>
     /// <param name="obj">
-    /// The <see cref="T:System.Object"/> to compare
-    /// with the current <see cref="T:System.Object"/>.
+    /// The <see cref="object"/> to compare
+    /// with the current <see cref="object"/>.
     /// </param>
     /// <filterpriority>
     /// 2
     /// </filterpriority>
     /// <returns>
-    /// true if the specified <see cref="T:System.Object"/>
-    /// is equal to the current <see cref="T:System.Object"/>;
+    /// true if the specified <see cref="object"/>
+    /// is equal to the current <see cref="object"/>;
     /// otherwise, false.
     /// </returns>
     public override bool Equals(object? obj)

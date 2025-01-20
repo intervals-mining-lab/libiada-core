@@ -11,25 +11,25 @@ public class SWSkew : NonLinkableFullCalculator
     /// <summary>
     /// Calculation method.
     /// </summary>
-    /// <param name="chain">
+    /// <param name="sequence">
     /// Source sequence.
     /// </param>
     /// <returns>
     /// SW skew value as <see cref="double"/>.
     /// </returns>
-    public override double Calculate(Chain chain)
+    public override double Calculate(ComposedSequence sequence)
     {
-        DnaProcessor.CheckDnaAlphabet(chain.Alphabet);
+        DnaProcessor.CheckDnaAlphabet(sequence.Alphabet);
 
-        double l = new ElementsCount().Calculate(chain);
+        double l = new ElementsCount().Calculate(sequence);
         if (l == 0) return 0;
 
         CongenericCalculators.ElementsCount congenericCounter = new();
 
-        double g = congenericCounter.Calculate(chain.GetOrCreateCongenericChain(new ValueString("G")));
-        double c = congenericCounter.Calculate(chain.GetOrCreateCongenericChain(new ValueString("C")));
-        double a = congenericCounter.Calculate(chain.GetOrCreateCongenericChain(new ValueString("A")));
-        double t = congenericCounter.Calculate(chain.GetOrCreateCongenericChain(new ValueString("T")));
+        double g = congenericCounter.Calculate(sequence.GetOrCreateCongenericSequence(new ValueString("G")));
+        double c = congenericCounter.Calculate(sequence.GetOrCreateCongenericSequence(new ValueString("C")));
+        double a = congenericCounter.Calculate(sequence.GetOrCreateCongenericSequence(new ValueString("A")));
+        double t = congenericCounter.Calculate(sequence.GetOrCreateCongenericSequence(new ValueString("T")));
 
         return ((g + c) - (a + t)) / l;
     }

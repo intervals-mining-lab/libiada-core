@@ -13,7 +13,7 @@ public class IdentifyingInformationKurtosisCoefficientTests : FullCalculatorsTes
     /// The identifying informations (entropy) kurtosis coefficient test.
     /// </summary>
     /// <param name="index">
-    /// Full sequence index in <see cref="ChainsStorage"/>.
+    /// Full sequence index in <see cref="SequencesStorage"/>.
     /// </param>
     /// <param name="link">
     /// Binding of the intervals in the sequence.
@@ -67,16 +67,16 @@ public class IdentifyingInformationKurtosisCoefficientTests : FullCalculatorsTes
     [TestCase(30, Link.End, 1.1666666667)]
     [TestCase(30, Link.Both, 1.0833333333)]
     [TestCase(30, Link.Cycle, 1.1666666667)]
-    public void ChainCalculationTest(int index, Link link, double value)
+    public void SequenceCalculationTest(int index, Link link, double value)
     {
-        ChainCharacteristicTest(index, link, value);
+        SequenceCharacteristicTest(index, link, value);
     }
 
     /// <summary>
     /// No intervals test.
     /// </summary>
     /// <param name="index">
-    /// Full sequence index in <see cref="ChainsStorage"/>.
+    /// Full sequence index in <see cref="SequencesStorage"/>.
     /// </param>
     /// <param name="link">
     /// The link.
@@ -89,6 +89,6 @@ public class IdentifyingInformationKurtosisCoefficientTests : FullCalculatorsTes
     [TestCase(7, Link.None, 0)]
     public void NoIntervalsTest(int index, Link link, double value)
     {
-        ChainCharacteristicTest(index, link, value);
+        SequenceCharacteristicTest(index, link, value);
     }
 }

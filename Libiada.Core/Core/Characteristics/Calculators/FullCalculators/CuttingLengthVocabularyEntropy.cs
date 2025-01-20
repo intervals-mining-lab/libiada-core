@@ -8,15 +8,15 @@ public class CuttingLengthVocabularyEntropy : NonLinkableFullCalculator
     /// <summary>
     /// Calculation method.
     /// </summary>
-    /// <param name="chain">
+    /// <param name="sequence">
     /// Source sequence.
     /// </param>
     /// <returns>
     /// Cut length vocabulary entropy as <see cref="double"/>.
     /// </returns>
-    public override double Calculate(Chain chain)
+    public override double Calculate(ComposedSequence sequence)
     {
-        double cutLength = new CuttingLength().Calculate(chain);
-        return Math.Log(chain.Length - cutLength + 1, 2);
+        double cutLength = new CuttingLength().Calculate(sequence);
+        return Math.Log(sequence.Length - cutLength + 1, 2);
     }
 }

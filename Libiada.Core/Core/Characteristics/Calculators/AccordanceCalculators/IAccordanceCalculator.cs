@@ -8,11 +8,11 @@ public interface IAccordanceCalculator
     /// <summary>
     /// Calculation method.
     /// </summary>
-    /// <param name="firstChain">
-    /// The first chain.
+    /// <param name="firstSequence">
+    /// The first sequence.
     /// </param>
-    /// <param name="secondChain">
-    /// The second chain.
+    /// <param name="secondSequence">
+    /// The second sequence.
     /// </param>
     /// <param name="link">
     /// The link.
@@ -20,5 +20,5 @@ public interface IAccordanceCalculator
     /// <returns>
     /// The <see cref="double"/>.
     /// </returns>
-    double Calculate(CongenericChain firstChain, CongenericChain secondChain, Link link);
+    double Calculate(CongenericSequence firstSequence, CongenericSequence secondSequence, Link link);
 }

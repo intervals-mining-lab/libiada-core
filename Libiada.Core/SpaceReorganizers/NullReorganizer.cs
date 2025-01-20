@@ -9,23 +9,23 @@ using Libiada.Core.Iterators;
 public class NullReorganizer : SpaceReorganizer
 {
     /// <summary>
-    /// Reorganizes <see cref="AbstractChain"/> into <see cref="AbstractChain"/>.
+    /// Reorganizes <see cref="AbstractSequence"/> into <see cref="AbstractSequence"/>.
     /// </summary>
     /// <param name="source">
-    /// Source chain.
+    /// Source sequence.
     /// </param>
     /// <returns>
-    /// The <see cref="AbstractChain"/>.
+    /// The <see cref="AbstractSequence"/>.
     /// </returns>
-    public override AbstractChain Reorganize(AbstractChain source)
+    public override AbstractSequence Reorganize(AbstractSequence source)
     {
-        AbstractChain? result = source.Clone() as AbstractChain;
+        AbstractSequence? result = source.Clone() as AbstractSequence;
         if (result != null)
         {
             return result;
         }
 
-        result = new BaseChain();
+        result = new Sequence();
         result.ClearAndSetNewLength(source.Length);
 
         IteratorSimpleStart iteratorRead = new(source, 1);

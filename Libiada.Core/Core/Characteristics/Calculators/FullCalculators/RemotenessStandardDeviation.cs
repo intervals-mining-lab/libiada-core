@@ -8,7 +8,7 @@ public class RemotenessStandardDeviation : IFullCalculator
     /// <summary>
     /// Calculation method.
     /// </summary>
-    /// <param name="chain">
+    /// <param name="sequence">
     /// Source sequence.
     /// </param>
     /// <param name="link">
@@ -17,9 +17,9 @@ public class RemotenessStandardDeviation : IFullCalculator
     /// <returns>
     /// Remoteness standard deviation <see cref="double"/> value.
     /// </returns>
-    public double Calculate(Chain chain, Link link)
+    public double Calculate(ComposedSequence sequence, Link link)
     {
-        double remotenessVariance = new RemotenessVariance().Calculate(chain, link);
+        double remotenessVariance = new RemotenessVariance().Calculate(sequence, link);
 
         return Math.Sqrt(remotenessVariance);
     }

@@ -13,7 +13,7 @@ public class AverageRemotenessVarianceTests : FullCalculatorsTests<AverageRemote
     /// The average remoteness variance test.
     /// </summary>
     /// <param name="index">
-    /// Full sequence index in <see cref="ChainsStorage"/>.
+    /// Full sequence index in <see cref="SequencesStorage"/>.
     /// </param>
     /// <param name="link">
     /// Binding of the intervals in the sequence.
@@ -44,16 +44,16 @@ public class AverageRemotenessVarianceTests : FullCalculatorsTests<AverageRemote
     [TestCase(30, Link.End, 0.0037990343)]
     [TestCase(30, Link.Both, 0.0320311191)]
     [TestCase(30, Link.Cycle, 0.0939945344)]
-    public void ChainCalculationTest(int index, Link link, double value)
+    public void SequenceCalculationTest(int index, Link link, double value)
     {
-        ChainCharacteristicTest(index, link, value);
+        SequenceCharacteristicTest(index, link, value);
     }
 
     /// <summary>
     /// No intervals test.
     /// </summary>
     /// <param name="index">
-    /// Full sequence index in <see cref="ChainsStorage"/>.
+    /// Full sequence index in <see cref="SequencesStorage"/>.
     /// </param>
     /// <param name="link">
     /// The link.
@@ -66,6 +66,6 @@ public class AverageRemotenessVarianceTests : FullCalculatorsTests<AverageRemote
     [TestCase(7, Link.None, 0)]
     public void NoIntervalsTest(int index, Link link, double value)
     {
-        ChainCharacteristicTest(index, link, value);
+        SequenceCharacteristicTest(index, link, value);
     }
 }

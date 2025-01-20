@@ -57,7 +57,7 @@ public class DataCollector
     /// Sequence?
     /// </param>
     /// <returns>
-    /// The <see cref="List{Int32}"/>.
+    /// The <see cref="List{int}"/>.
     /// </returns>
     public List<int> Positions(List<string> chain)
     {
@@ -68,7 +68,7 @@ public class DataCollector
     /// Returns all entries from dictionary.
     /// </summary>
     /// <returns>
-    /// The <see cref="T:Dictionary{List{String, List{Int32}}}"/>.
+    /// The <see cref="Dictionary{List{string, List{int}}}"/>.
     /// </returns>
     public Dictionary<List<string>, List<int>> Entry()
     {

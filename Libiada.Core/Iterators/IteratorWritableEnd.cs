@@ -3,8 +3,8 @@ namespace Libiada.Core.Iterators;
 using Libiada.Core.Core;
 
 /// <summary>
-/// Iterator tat moves from the end of chain to its beginning.
-/// Is able to write values into chain.
+/// Iterator tat moves from the end of sequence to its beginning.
+/// Is able to write values into sequence.
 /// </summary>
 public class IteratorWritableEnd : IteratorEnd, IWritableIterator
 {
@@ -13,12 +13,12 @@ public class IteratorWritableEnd : IteratorEnd, IWritableIterator
     /// Iterator returns single element and shifts by one element.
     /// </summary>
     /// <param name="source">
-    /// Source chain.
+    /// Source sequence.
     /// </param>
     /// <exception cref="ArgumentException">
     /// Thrown if one or more arguments are invalid.
     /// </exception>
-    public IteratorWritableEnd(AbstractChain source) : base(source, 1, 1)
+    public IteratorWritableEnd(AbstractSequence source) : base(source, 1, 1)
     {
     }
 

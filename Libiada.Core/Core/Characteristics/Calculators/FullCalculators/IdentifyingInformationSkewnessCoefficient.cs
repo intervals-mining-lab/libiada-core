@@ -13,7 +13,7 @@ public class IdentifyingInformationSkewnessCoefficient : IFullCalculator
     /// intervals count instead of elements frequency 
     /// based on geometric mean interval formula.
     /// </summary>
-    /// <param name="chain">
+    /// <param name="sequence">
     /// Source sequence.
     /// </param>
     /// <param name="link">
@@ -22,12 +22,12 @@ public class IdentifyingInformationSkewnessCoefficient : IFullCalculator
     /// <returns>
     /// Identifying informations (entropy) skewness coefficient <see cref="double"/> value.
     /// </returns>
-    public double Calculate(Chain chain, Link link)
+    public double Calculate(ComposedSequence sequence, Link link)
     {
-        double identifyingInformationStandardDeviation = new IdentifyingInformationStandardDeviation().Calculate(chain, link);
+        double identifyingInformationStandardDeviation = new IdentifyingInformationStandardDeviation().Calculate(sequence, link);
         if (identifyingInformationStandardDeviation == 0) return 0;
 
-        double identifyingInformationSkewness = new IdentifyingInformationSkewness().Calculate(chain, link);
+        double identifyingInformationSkewness = new IdentifyingInformationSkewness().Calculate(sequence, link);
 
         return identifyingInformationSkewness / (identifyingInformationStandardDeviation * identifyingInformationStandardDeviation * identifyingInformationStandardDeviation);
     }

@@ -8,7 +8,7 @@ public class RemotenessSkewness : IFullCalculator
     /// <summary>
     /// Calculation method.
     /// </summary>
-    /// <param name="chain">
+    /// <param name="sequence">
     /// Source sequence.
     /// </param>
     /// <param name="link">
@@ -17,16 +17,16 @@ public class RemotenessSkewness : IFullCalculator
     /// <returns>
     /// Remoteness skewness <see cref="double"/> value.
     /// </returns>
-    public double Calculate(Chain chain, Link link)
+    public double Calculate(ComposedSequence sequence, Link link)
     {
-        double n = new IntervalsCount().Calculate(chain, link);
+        double n = new IntervalsCount().Calculate(sequence, link);
         if (n == 0) return 0;
 
         List<int> intervals = [];
-        int alphabetCardinality = chain.Alphabet.Cardinality;
+        int alphabetCardinality = sequence.Alphabet.Cardinality;
         for (int i = 0; i < alphabetCardinality; i++)
         {
-            intervals.AddRange(chain.CongenericChain(i).GetArrangement(link));
+            intervals.AddRange(sequence.CongenericSequence(i).GetArrangement(link));
         }
 
         // calcualting number of intervals of certain length
@@ -35,7 +35,7 @@ public class RemotenessSkewness : IFullCalculator
                                  .ToDictionary(i => i.Key, i => i.Count());
 
         double result = 0;
-        double g = new AverageRemoteness().Calculate(chain, link);
+        double g = new AverageRemoteness().Calculate(sequence, link);
         
         foreach ((int interval, int nk) in intervalsDictionary)
         {

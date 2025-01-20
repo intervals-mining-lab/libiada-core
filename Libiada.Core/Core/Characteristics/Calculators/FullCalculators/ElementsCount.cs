@@ -9,21 +9,21 @@ public class ElementsCount : NonLinkableFullCalculator
     /// Amount of not empty positions,
     /// in other words elements count.
     /// </summary>
-    /// <param name="chain">
+    /// <param name="sequence">
     /// Source sequence.
     /// </param>
     /// <returns>
-    /// Elements count in chain as <see cref="double"/>.
+    /// Elements count in the sequence as <see cref="double"/>.
     /// </returns>
-    public override double Calculate(Chain chain)
+    public override double Calculate(ComposedSequence sequence)
     {
         CongenericCalculators.ElementsCount calculator = new();
         
         int count = 0;
-        int alphabetCardinality = chain.Alphabet.Cardinality;
+        int alphabetCardinality = sequence.Alphabet.Cardinality;
         for (int i = 0; i < alphabetCardinality; i++)
         {
-            count += (int)calculator.Calculate(chain.CongenericChain(i));
+            count += (int)calculator.Calculate(sequence.CongenericSequence(i));
         }
 
         return count;

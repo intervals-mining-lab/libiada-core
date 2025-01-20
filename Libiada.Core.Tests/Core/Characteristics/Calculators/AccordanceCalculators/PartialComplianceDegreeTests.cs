@@ -12,7 +12,7 @@ public class PartialComplianceDegreeTests : AccordanceCalculatorsTests<PartialCo
     /// The compliance degree test.
     /// </summary>
     /// <param name="index">
-    /// Binary sequence index in <see cref="ChainsStorage"/>.
+    /// Binary sequence index in <see cref="SequencesStorage"/>.
     /// </param>
     /// <param name="firstValue">
     /// The first value.
@@ -36,10 +36,10 @@ public class PartialComplianceDegreeTests : AccordanceCalculatorsTests<PartialCo
     /// The partial compliance degree test.
     /// </summary>
     /// <param name="firstIndex">
-    /// First congeneric sequence index in <see cref="ChainsStorage"/>.
+    /// First congeneric sequence index in <see cref="SequencesStorage"/>.
     /// </param>
     /// <param name="secondIndex">
-    /// Second congeneric sequence index in <see cref="ChainsStorage"/>.
+    /// Second congeneric sequence index in <see cref="SequencesStorage"/>.
     /// </param>
     /// <param name="firstValue">
     /// The first value.

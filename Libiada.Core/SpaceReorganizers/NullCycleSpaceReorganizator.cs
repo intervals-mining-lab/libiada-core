@@ -27,18 +27,18 @@ public class NullCycleSpaceReorganizer : SpaceReorganizer
     }
 
     /// <summary>
-    /// Reorganizes source chain.
+    /// Reorganizes source sequence.
     /// </summary>
     /// <param name="source">
-    /// Source chain.
+    /// Source sequence.
     /// </param>
     /// <returns>
-    /// <see cref="AbstractChain"/>.
+    /// <see cref="AbstractSequence"/>.
     /// </returns>
     /// <exception cref="InvalidOperationException">
     /// Thrown if level is less than 0.
     /// </exception>
-    public override AbstractChain Reorganize(AbstractChain source)
+    public override AbstractSequence Reorganize(AbstractSequence source)
     {
         if (level < 0)
         {
@@ -50,7 +50,7 @@ public class NullCycleSpaceReorganizer : SpaceReorganizer
             return source;
         }
 
-        BaseChain result = new();
+        Sequence result = new();
         result.ClearAndSetNewLength(source.Length + level);
         for (int i = 0; i < source.Length; i++)
         {
@@ -60,7 +60,7 @@ public class NullCycleSpaceReorganizer : SpaceReorganizer
         IteratorStart iterator = new(source, level, 1);
         iterator.Reset();
         iterator.Next();
-        AbstractChain addition = iterator.Current();
+        AbstractSequence addition = iterator.Current();
         for (int i = 0; i < addition.Length; i++)
         {
             result[source.Length + i] = addition[i];

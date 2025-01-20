@@ -12,18 +12,18 @@ public class VariationsCount : NonLinkableFullCalculator
     /// <summary>
     /// Calculation method.
     /// </summary>
-    /// <param name="chain">
+    /// <param name="sequence">
     /// Source sequence.
     /// </param>
     /// <returns>
     /// Variations count as <see cref="double"/>.
     /// </returns>
-    public override double Calculate(Chain chain)
+    public override double Calculate(ComposedSequence sequence)
     {
         BigInteger count = 1;
-        for (int i = 0; i < chain.Length; i++)
+        for (int i = 0; i < sequence.Length; i++)
         {
-            if (chain[i] is ValuePhantom message)
+            if (sequence[i] is ValuePhantom message)
             {
                 count *= message.Cardinality;
             }

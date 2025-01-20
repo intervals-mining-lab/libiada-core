@@ -8,24 +8,24 @@ public class IntervalsCount : IFullCalculator
     /// <summary>
     /// Calculation method.
     /// </summary>
-    /// <param name="chain">
+    /// <param name="sequence">
     /// Source sequence.
     /// </param>
     /// <param name="link">
     /// Binding of the intervals in the sequence.
     /// </param>
     /// <returns>
-    /// Intervals count in chain as <see cref="double"/>.
+    /// Intervals count in the sequence as <see cref="double"/>.
     /// </returns>
-    public double Calculate(Chain chain, Link link)
+    public double Calculate(ComposedSequence sequence, Link link)
     {
         CongenericCalculators.IntervalsCount calculator = new();
 
         int sum = 0;
-        int alphabetCardinality = chain.Alphabet.Cardinality;
+        int alphabetCardinality = sequence.Alphabet.Cardinality;
         for (int i = 0; i < alphabetCardinality; i++)
         {
-            sum += (int)calculator.Calculate(chain.CongenericChain(i), link);
+            sum += (int)calculator.Calculate(sequence.CongenericSequence(i), link);
         }
 
         return sum;

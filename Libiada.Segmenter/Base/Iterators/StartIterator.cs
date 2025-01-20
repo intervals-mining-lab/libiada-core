@@ -3,15 +3,15 @@
 using Segmenter.Base.Sequences;
 
 /// <summary>
-/// An iterator shifts its pointer through a chain left to right
-/// until it reach the end of the chain.
+/// An iterator shifts its pointer through a sequence left to right
+/// until it reach the end of the sequence.
 /// </summary>
 public class StartIterator : BaseIterator
 {
     /// <summary>
     /// Initializes a new instance of the <see cref="StartIterator" /> class.
     /// </summary>
-    /// <param name="chain">
+    /// <param name="sequence">
     /// An iterable sequence
     /// </param>
     /// <param name="windowLength">
@@ -20,8 +20,8 @@ public class StartIterator : BaseIterator
     /// <param name="step">
     /// The number of elements through which the pointer will jump at the next iteration
     /// </param>
-    public StartIterator(ComplexChain chain, int windowLength, int step)
-        : base(chain, windowLength, step)
+    public StartIterator(ComplexSequence sequence, int windowLength, int step)
+        : base(sequence, windowLength, step)
     {
     }
 
@@ -33,21 +33,21 @@ public class StartIterator : BaseIterator
     /// </returns>
     public override bool HasNext()
     {
-        return windowLength + CursorPosition + step <= chain.Length;
+        return windowLength + CursorPosition + step <= sequence.Length;
     }
 
     /// <summary>
     /// The next.
     /// </summary>
     /// <returns>
-    /// The <see cref="List{String}"/>.
+    /// The <see cref="List{string}"/>.
     /// </returns>
     public override List<string> Next()
     {
         try
         {
             CursorPosition += step;
-            currentCut = chain.Substring(CursorPosition, CursorPosition + windowLength);
+            currentCut = sequence.Substring(CursorPosition, CursorPosition + windowLength);
         }
         catch (Exception)
         {
@@ -79,7 +79,7 @@ public class StartIterator : BaseIterator
     /// The current.
     /// </summary>
     /// <returns>
-    /// The <see cref="List{String}"/>.
+    /// The <see cref="List{string}"/>.
     /// </returns>
     public override List<string> Current()
     {
@@ -97,7 +97,7 @@ public class StartIterator : BaseIterator
     /// </returns>
     public override bool Move(int position)
     {
-        if ((position >= 0) && (chain.Length >= windowLength + position))
+        if ((position >= 0) && (sequence.Length >= windowLength + position))
         {
             CursorPosition = position;
             return true;

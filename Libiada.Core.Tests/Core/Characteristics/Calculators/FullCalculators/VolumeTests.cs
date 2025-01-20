@@ -13,7 +13,7 @@ public class VolumeTests : FullCalculatorsTests<Volume>
     /// The calculation test.
     /// </summary>
     /// <param name="index">
-    /// Full sequence index in <see cref="ChainsStorage"/>.
+    /// Full sequence index in <see cref="SequencesStorage"/>.
     /// </param>
     /// <param name="link">
     /// The link.
@@ -40,14 +40,14 @@ public class VolumeTests : FullCalculatorsTests<Volume>
     [TestCase(4, Link.Cycle, 1)]
     public void CalculationTest(int index, Link link, double value)
     {
-        ChainCharacteristicTest(index, link, value);
+        SequenceCharacteristicTest(index, link, value);
     }
 
     /// <summary>
     /// No intervals test.
     /// </summary>
     /// <param name="index">
-    /// Full sequence index in <see cref="ChainsStorage"/>.
+    /// Full sequence index in <see cref="SequencesStorage"/>.
     /// </param>
     /// <param name="link">
     /// The link.
@@ -60,7 +60,7 @@ public class VolumeTests : FullCalculatorsTests<Volume>
     [TestCase(7, Link.None, 1)]
     public void NoIntervalsTest(int index, Link link, double value)
     {
-        ChainCharacteristicTest(index, link, value);
+        SequenceCharacteristicTest(index, link, value);
     }
 
     /// <summary>

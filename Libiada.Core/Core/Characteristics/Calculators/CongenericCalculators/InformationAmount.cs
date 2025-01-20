@@ -12,8 +12,8 @@ public class InformationAmount : ICongenericCalculator
     /// intervals count instead of elements frequency and count
     /// based on geometric mean interval formula.
     /// </summary>
-    /// <param name="chain">
-    /// The chain.
+    /// <param name="sequence">
+    /// The sequence.
     /// </param>
     /// <param name="link">
     /// Binding of the intervals in the sequence.
@@ -21,10 +21,10 @@ public class InformationAmount : ICongenericCalculator
     /// <returns>
     /// The <see cref="double"/>.
     /// </returns>
-    public double Calculate(CongenericChain chain, Link link)
+    public double Calculate(CongenericSequence sequence, Link link)
     {
-        double identifyingInformation = new IdentifyingInformation().Calculate(chain, link);
-        double intervalsCount = new IntervalsCount().Calculate(chain, link);
+        double identifyingInformation = new IdentifyingInformation().Calculate(sequence, link);
+        double intervalsCount = new IntervalsCount().Calculate(sequence, link);
 
         return identifyingInformation * intervalsCount;
     }

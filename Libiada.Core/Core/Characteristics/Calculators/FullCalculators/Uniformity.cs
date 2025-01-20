@@ -9,8 +9,8 @@ public class Uniformity : IFullCalculator
     /// <summary>
     /// Calculation method for complete sequences.
     /// </summary>
-    /// <param name="chain">
-    /// The chain.
+    /// <param name="sequence">
+    /// The sequence.
     /// </param>
     /// <param name="link">
     /// Binding of the intervals in the sequence.
@@ -18,10 +18,10 @@ public class Uniformity : IFullCalculator
     /// <returns>
     /// The <see cref="double"/>.
     /// </returns>
-    public double Calculate(Chain chain, Link link)
+    public double Calculate(ComposedSequence sequence, Link link)
     {
-        double averageRemoteness = new AverageRemoteness().Calculate(chain, link);
-        double identifyingInformation = new IdentifyingInformation().Calculate(chain, link);
+        double averageRemoteness = new AverageRemoteness().Calculate(sequence, link);
+        double identifyingInformation = new IdentifyingInformation().Calculate(sequence, link);
 
         return identifyingInformation - averageRemoteness;
     }

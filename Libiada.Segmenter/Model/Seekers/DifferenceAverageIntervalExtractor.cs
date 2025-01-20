@@ -27,11 +27,12 @@ public class DifferenceAverageIntervalExtractor : WordExtractor
     /// The par.
     /// </param>
     /// <returns>
-    /// The <see cref="T:KeyValuePair{List{String},List{Int32}}"/>.
+    /// The <see cref="KeyValuePair{List{string},List{int}}"/>.
     /// </returns>
     public override sealed KeyValuePair<List<string>, List<int>>? Find(Dictionary<string, object> par)
     {
-        ComplexChain convoluted = (ComplexChain)par["Sequence"];
+        // TODO: refactor it to rerturn tuple
+        ComplexSequence convoluted = (ComplexSequence)par["Sequence"];
         int windowLen = (int)par["Window"];
         FrequencyDictionary alphabet = (FrequencyDictionary)par["Alphabet"];
         double level = (double)par["CurrentThreshold"];
@@ -61,7 +62,7 @@ public class DifferenceAverageIntervalExtractor : WordExtractor
     /// <param name="windowLen">
     /// The window len.
     /// </param>
-    public void CalculateStd(ComplexChain convoluted, int windowLen)
+    public void CalculateStd(ComplexSequence convoluted, int windowLen)
     {
         GeometricMean geometricMean = new();
         ArithmeticMean arithmeticMean = new();
@@ -69,7 +70,7 @@ public class DifferenceAverageIntervalExtractor : WordExtractor
         foreach (KeyValuePair<List<string>, List<int>> accord in fullEntry.Entry())
         {
             PositionFilter.Filtrate(accord.Value, windowLen);
-            ComplexChain temp = new(accord.Value);
+            ComplexSequence temp = new(accord.Value);
             double geometric = geometricMean.Calculate(temp, convoluted.Anchor);
             double arithmetic = arithmeticMean.Calculate(temp, convoluted.Anchor);
             double std = 1 - (1 / Math.Abs(arithmetic - geometric));

@@ -33,7 +33,7 @@ public class LinkedCongenericCalculator(CongenericCharacteristic type, Link link
     /// <returns>
     /// The <see cref="double"/>.
     /// </returns>
-    public double Calculate(CongenericChain sequence)
+    public double Calculate(CongenericSequence sequence)
     {
         return calculator.Calculate(sequence, link);
     }

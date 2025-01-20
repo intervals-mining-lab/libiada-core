@@ -13,9 +13,9 @@ using MarkovChains.Tests.MarkovChain.Generators;
 public class MarkovMetricsTests
 {
     /// <summary>
-    /// The test chain.
+    /// The test sequence.
     /// </summary>
-    private Chain testChain;
+    private ComposedSequence testSequence;
 
     /// <summary>
     /// The initialization method.
@@ -23,7 +23,7 @@ public class MarkovMetricsTests
     [SetUp]
     public void Initialize()
     {
-        testChain = new Chain("AGTAAGTC");
+        testSequence = new ComposedSequence("AGTAAGTC");
     }
 
     /// <summary>
@@ -33,7 +33,7 @@ public class MarkovMetricsTests
     public void CompareSameChainTest()
     {
         MarkovChainNotCongenericStatic markov = new(2, 0, new MockGenerator());
-        markov.Teach(testChain, TeachingMethod.Cycle);
+        markov.Teach(testSequence, TeachingMethod.Cycle);
         MarkovMetrics ma = new();
         Assert.That(ma.GetArithmeticalMean(markov), Is.EqualTo(ma.GetArithmeticalMean(markov)));
     }

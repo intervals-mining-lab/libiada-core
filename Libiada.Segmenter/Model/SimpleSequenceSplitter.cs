@@ -10,7 +10,7 @@ using Segmenter.Model.Seekers;
 /// <summary>
 /// This class cuts and convoluts all occurrences of the found word.
 /// </summary>
-public sealed class SimpleChainSplitter : ChainSplitter
+public sealed class SimpleSequenceSplitter : SequenceSplitter
 {
     /// <summary>
     /// The extractor.
@@ -18,12 +18,12 @@ public sealed class SimpleChainSplitter : ChainSplitter
     private WordExtractor extractor;
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="SimpleChainSplitter"/> class.
+    /// Initializes a new instance of the <see cref="SimpleSequenceSplitter"/> class.
     /// </summary>
     /// <param name="extractor">
     /// The extractor.
     /// </param>
-    public SimpleChainSplitter(WordExtractor extractor)
+    public SimpleSequenceSplitter(WordExtractor extractor)
     {
         this.extractor = extractor;
     }
@@ -35,14 +35,14 @@ public sealed class SimpleChainSplitter : ChainSplitter
     /// The current parameters for segmentation.
     /// </param>
     /// <returns>
-    /// The convoluted chain <see cref="ComplexChain"/>.
+    /// The convoluted sequence <see cref="ComplexSequence"/>.
     /// </returns>
-    public override ComplexChain Cut(Dictionary<string, object> parameters)
+    public override ComplexSequence Cut(Dictionary<string, object> parameters)
     {
         int maxWindowLen = (int)parameters["Window"];
         int windowDec = (int)parameters["WindowDecrement"];
 
-        convoluted = (ComplexChain)parameters["Sequence"];
+        convoluted = (ComplexSequence)parameters["Sequence"];
         alphabet = new FrequencyDictionary();
 
         for (int winLen = maxWindowLen; (winLen >= windowDec) && (winLen > 1); winLen -= windowDec)
@@ -51,6 +51,7 @@ public sealed class SimpleChainSplitter : ChainSplitter
             while (flag)
             {
                 UpdateParams(parameters, winLen);
+                //TODO: refactor this to use tuples
                 KeyValuePair<List<string>, List<int>>? pair = WordExtractorFactory.GetSeeker(extractor).Find(parameters);
                 flag = pair != null;
                 if (flag)

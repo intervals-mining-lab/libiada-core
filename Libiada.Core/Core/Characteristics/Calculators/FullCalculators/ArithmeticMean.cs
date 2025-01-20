@@ -10,7 +10,7 @@ public class ArithmeticMean : IFullCalculator
     /// between nearest similar elements in sequence
     /// divided by number of intervals.
     /// </summary>
-    /// <param name="chain">
+    /// <param name="sequence">
     /// Source sequence.
     /// </param>
     /// <param name="link">
@@ -19,12 +19,12 @@ public class ArithmeticMean : IFullCalculator
     /// <returns>
     /// <see cref="double"/> value of average arithmetic of intervals lengths.
     /// </returns>
-    public double Calculate(Chain chain, Link link)
+    public double Calculate(ComposedSequence sequence, Link link)
     {
-        double intervalsCount = new IntervalsCount().Calculate(chain, link);
+        double intervalsCount = new IntervalsCount().Calculate(sequence, link);
         if (intervalsCount == 0) return 0;
 
-        double intervalsSum = new IntervalsSum().Calculate(chain, link);
+        double intervalsSum = new IntervalsSum().Calculate(sequence, link);
         return intervalsSum / intervalsCount;
     }
 }

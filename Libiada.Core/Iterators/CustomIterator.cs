@@ -20,7 +20,7 @@ public class CustomIterator : IIterator
     /// <summary>
     /// The source.
     /// </summary>
-    private readonly AbstractChain source;
+    private readonly AbstractSequence source;
 
     /// <summary>
     /// The counter.
@@ -42,7 +42,7 @@ public class CustomIterator : IIterator
     /// <exception cref="ArgumentException">
     /// Thrown if arguments are invalid.
     /// </exception>
-    public CustomIterator(AbstractChain source, List<List<int>> starts, List<List<int>> lengthes)
+    public CustomIterator(AbstractSequence source, List<List<int>> starts, List<List<int>> lengthes)
     {
         if (source == null || starts == null || lengthes == null)
         {
@@ -83,9 +83,9 @@ public class CustomIterator : IIterator
     /// The current.
     /// </summary>
     /// <returns>
-    /// The <see cref="AbstractChain"/>.
+    /// The <see cref="AbstractSequence"/>.
     /// </returns>
-    public AbstractChain Current()
+    public AbstractSequence Current()
     {
         List<IBaseObject> elements = [];
 
@@ -97,7 +97,7 @@ public class CustomIterator : IIterator
             }
         }
 
-        return new Chain(elements);
+        return new ComposedSequence(elements);
     }
 
     /// <summary>

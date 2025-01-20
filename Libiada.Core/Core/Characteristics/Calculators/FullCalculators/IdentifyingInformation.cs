@@ -15,7 +15,7 @@ public class IdentifyingInformation : IFullCalculator
     /// intervals count instead of elements frequency 
     /// based on geometric mean interval formula.
     /// </summary>
-    /// <param name="chain">
+    /// <param name="sequence">
     /// Source sequence.
     /// </param>
     /// <param name="link">
@@ -24,22 +24,22 @@ public class IdentifyingInformation : IFullCalculator
     /// <returns>
     /// Count of identifying informations as <see cref="double"/>.
     /// </returns>
-    public double Calculate(Chain chain, Link link)
+    public double Calculate(ComposedSequence sequence, Link link)
     {
-        double n = new IntervalsCount().Calculate(chain, link);
+        double n = new IntervalsCount().Calculate(sequence, link);
         if (n == 0) return 0;
 
         CongenericCalculators.ArithmeticMean meanCalculator = new();
         CongenericCalculators.IntervalsCount counter = new();
 
         double result = 0;
-        int alphabetCardinality = chain.Alphabet.Cardinality;
+        int alphabetCardinality = sequence.Alphabet.Cardinality;
         for (int i = 0; i < alphabetCardinality; i++)
         {
-            double arithmeticMean = meanCalculator.Calculate(chain.CongenericChain(i), link);
+            double arithmeticMean = meanCalculator.Calculate(sequence.CongenericSequence(i), link);
             if (arithmeticMean == 0) continue;
 
-            double nj = counter.Calculate(chain.CongenericChain(i), link);
+            double nj = counter.Calculate(sequence.CongenericSequence(i), link);
             
             result += (nj / n) * Math.Log2(arithmeticMean);
         }

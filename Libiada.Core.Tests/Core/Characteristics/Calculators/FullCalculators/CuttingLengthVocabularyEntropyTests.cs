@@ -13,7 +13,7 @@ public class CuttingLengthVocabularyEntropyTests : FullCalculatorsTests<CuttingL
     /// The calculation test.
     /// </summary>
     /// <param name="index">
-    /// Full sequence index in <see cref="ChainsStorage"/>.
+    /// Full sequence index in <see cref="SequencesStorage"/>.
     /// </param>
     /// <param name="link">
     /// The link.
@@ -24,6 +24,6 @@ public class CuttingLengthVocabularyEntropyTests : FullCalculatorsTests<CuttingL
     [TestCase(0, 3)]
     public void CalculationTest(int index, double value)
     {
-        ChainCharacteristicTest(index, Link.NotApplied, value);
+        SequenceCharacteristicTest(index, Link.NotApplied, value);
     }
 }

@@ -10,20 +10,20 @@ using Libiada.Core.Core.ArrangementManagers;
 public class IntervalsManagerTests
 {
     /// <summary>
-    /// The congeneric chains.
+    /// The congeneric sequences.
     /// </summary>
-    private readonly List<CongenericChain> congenericChains = ChainsStorage.CongenericChains;
+    private readonly List<CongenericSequence> congenericSequences = SequencesStorage.CongenericSequences;
 
     /// <summary>
     /// The intervals.
     /// </summary>
-    private readonly List<Dictionary<Link, List<int>>> allIntervals = ChainsStorage.Intervals;
+    private readonly List<Dictionary<Link, List<int>>> allIntervals = SequencesStorage.Intervals;
 
     /// <summary>
     /// The congeneric intervals manager creation none link test.
     /// </summary>
     /// <param name="index">
-    /// Congeneric sequence index in <see cref="ChainsStorage"/>.
+    /// Congeneric sequence index in <see cref="SequencesStorage"/>.
     /// </param>
     /// <param name="link">
     /// The link.
@@ -65,7 +65,7 @@ public class IntervalsManagerTests
     [TestCase(5, Link.None)]
     public void IntervalsManagerCreationNoneLinkTest(int index, Link link)
     {
-        IntervalsManager intervalsManager = new(congenericChains[index]);
+        IntervalsManager intervalsManager = new(congenericSequences[index]);
         List<int> intervals = allIntervals[index][link];
 
         Assert.That(intervals, Has.Count.EqualTo(intervalsManager.GetArrangement(link).Length));

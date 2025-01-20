@@ -32,17 +32,18 @@ public class SeekerSequence : Seeker
         result = [];
         while (iterator.HasNext())
         {
-            List<string> chain = iterator.Next();
-            bool chainsEquals = sequence.Count == chain.Count;
+            List<string> curentSequence = iterator.Next();
+            bool sequencesEquals = sequence.Count == curentSequence.Count;
             for (int i = 0; i < sequence.Count; i++)
             {
-                if (chain[i] != sequence[i])
+                if (curentSequence[i] != sequence[i])
                 {
-                    chainsEquals = false;
+                    sequencesEquals = false;
+                    // TODO: check if break is missing
                 }
             }
 
-            if (chainsEquals)
+            if (sequencesEquals)
             {
                 result.Add(iterator.Position());
             }

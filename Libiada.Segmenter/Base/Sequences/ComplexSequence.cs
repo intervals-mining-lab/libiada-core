@@ -6,9 +6,9 @@ using Libiada.Core.Core;
 using Libiada.Core.Core.SimpleTypes;
 
 /// <summary>
-/// The complex chain.
+/// The complex sequence.
 /// </summary>
-public class ComplexChain : Chain
+public class ComplexSequence : ComposedSequence
 {
     /// <summary>
     /// The anchor.
@@ -16,12 +16,12 @@ public class ComplexChain : Chain
     public Link Anchor = Link.Start;
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="ComplexChain"/> class.
+    /// Initializes a new instance of the <see cref="ComplexSequence"/> class.
     /// </summary>
     /// <param name="accord">
     /// The accord.
     /// </param>
-    public ComplexChain(List<int> accord)
+    public ComplexSequence(List<int> accord)
     {
         for (int i = 0; i < accord.Count; i++)
         {
@@ -30,23 +30,23 @@ public class ComplexChain : Chain
     }
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="ComplexChain"/> class.
+    /// Initializes a new instance of the <see cref="ComplexSequence"/> class.
     /// </summary>
     /// <param name="sequence">
     /// The sequence.
     /// </param>
-    public ComplexChain(string sequence)
+    public ComplexSequence(string sequence)
         : base(sequence)
     {
     }
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="ComplexChain"/> class.
+    /// Initializes a new instance of the <see cref="ComplexSequence"/> class.
     /// </summary>
     /// <param name="sequence">
     /// The sequence.
     /// </param>
-    public ComplexChain(List<string> sequence)
+    public ComplexSequence(List<string> sequence)
         : base(sequence.Count)
     {
         for (int i = 0; i < sequence.Count; i++)
@@ -65,7 +65,7 @@ public class ComplexChain : Chain
     /// The end index.
     /// </param>
     /// <returns>
-    /// The <see cref="List{String}"/>.
+    /// The <see cref="List{string}"/>.
     /// </returns>
     public List<string> Substring(int beginIndex, int endIndex)
     {
@@ -85,7 +85,7 @@ public class ComplexChain : Chain
     /// The to list.
     /// </summary>
     /// <returns>
-    /// The <see cref="List{String}"/>.
+    /// The <see cref="List{string}"/>.
     /// </returns>
     public List<string> ToList()
     {
@@ -119,34 +119,34 @@ public class ComplexChain : Chain
     /// The clone.
     /// </summary>
     /// <returns>
-    /// The <see cref="ComplexChain"/>.
+    /// The <see cref="ComplexSequence"/>.
     /// </returns>
-    public new ComplexChain Clone()
+    public new ComplexSequence Clone()
     {
-        ComplexChain chain = new(ToList()) { Anchor = Anchor };
+        ComplexSequence sequence = new(ToList()) { Anchor = Anchor };
 
-        return chain;
+        return sequence;
     }
 
     /// <summary>
     /// The equals.
     /// </summary>
-    /// <param name="complexChain">
-    /// The complex chain.
+    /// <param name="complexSequence">
+    /// The complex sequence.
     /// </param>
     /// <returns>
     /// The <see cref="bool"/>.
     /// </returns>
-    public bool Equals(ComplexChain complexChain)
+    public bool Equals(ComplexSequence complexSequence)
     {
-        if (complexChain.Length != Length)
+        if (complexSequence.Length != Length)
         {
             return false;
         }
 
-        for (int index = 0; index < complexChain.Length; index++)
+        for (int index = 0; index < complexSequence.Length; index++)
         {
-            if (!this[index].ToString().Equals(complexChain[index].ToString()))
+            if (!this[index].ToString().Equals(complexSequence[index].ToString()))
             {
                 return false;
             }
@@ -162,16 +162,16 @@ public class ComplexChain : Chain
     /// The string.
     /// </param>
     /// <returns>
-    /// The <see cref="ComplexChain"/>.
+    /// The <see cref="ComplexSequence"/>.
     /// </returns>
-    public ComplexChain Concat(string str)
+    public ComplexSequence Concat(string str)
     {
         if (string.IsNullOrEmpty(str))
         {
             return this;
         }
 
-        ComplexChain temp = Clone();
+        ComplexSequence temp = Clone();
         ClearAndSetNewLength(Length + 1);
         for (int i = 0; i < temp.Length; i++)
         {
@@ -189,16 +189,16 @@ public class ComplexChain : Chain
     /// The sequence.
     /// </param>
     /// <returns>
-    /// The <see cref="ComplexChain"/>.
+    /// The <see cref="ComplexSequence"/>.
     /// </returns>
-    public ComplexChain Concat(ComplexChain sequence)
+    public ComplexSequence Concat(ComplexSequence sequence)
     {
         if (sequence.IsEmpty())
         {
             return this;
         }
 
-        ComplexChain temp = Clone();
+        ComplexSequence temp = Clone();
 
         ClearAndSetNewLength(Length + sequence.Length);
         for (int i = 0; i < temp.Length; i++)
@@ -220,10 +220,7 @@ public class ComplexChain : Chain
     /// <returns>
     /// The <see cref="bool"/>.
     /// </returns>
-    public bool IsEmpty()
-    {
-        return Length == 0;
-    }
+    public bool IsEmpty() => Length == 0;
 
     /// <summary>
     /// Cuts a range of words from position to position + len cursorPosition
@@ -275,18 +272,20 @@ public class ComplexChain : Chain
     /// The original.
     /// </summary>
     /// <returns>
-    /// The <see cref="ComplexChain"/>.
+    /// The <see cref="ComplexSequence"/>.
     /// </returns>
-    public ComplexChain Original()
+    public ComplexSequence Original()
     {
-        return new ComplexChain(ToString());
+        return new ComplexSequence(ToString());
     }
 
     /// <summary>
-    /// Joins all hits from start chain to whole composed string
+    /// Joins all hits from the start of the sequence to whole composed string
     /// Very fast for long sequence, because there is no index check!
     /// </summary>
-    /// <param name="word">list of letters to compose</param>
+    /// <param name="word">
+    /// list of letters to compose
+    /// </param>
     public void JoinAll(List<string> word)
     {
         int length = word.Count;

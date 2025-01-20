@@ -41,7 +41,7 @@ public class MusicXmlParser
     /// The score node.
     /// </param>
     /// <returns>
-    /// The <see cref="List{CongenericScoreTrack}"/>.
+    /// The <see cref="List{Libiada.Core.Core.CongenericScoreTrack}"/>.
     /// </returns>
     private List<CongenericScoreTrack> ParseCongenericScoreTracks(XmlDocument scoreNode)
     {
@@ -68,7 +68,7 @@ public class MusicXmlParser
     /// The congeneric score node.
     /// </param>
     /// <returns>
-    /// The <see cref="List{Measure}"/>.
+    /// The <see cref="List{Libiada.Core.Core.SimpleTypes.Measure}"/>.
     /// </returns>
     private List<Measure> ParseMeasures(XmlNode congenericScoreNode)
     {
@@ -232,7 +232,7 @@ public class MusicXmlParser
     /// The measure node.
     /// </param>
     /// <returns>
-    /// The <see cref="List{ValueNote}"/>.
+    /// The <see cref="List{Libiada.Core.Core.SimpleTypes.ValueNote}"/>.
     /// </returns>
     private List<ValueNote> ParseNotes(XmlNode measureNode)
     {

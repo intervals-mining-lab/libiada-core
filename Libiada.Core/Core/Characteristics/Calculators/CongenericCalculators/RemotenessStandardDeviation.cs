@@ -8,7 +8,7 @@ public class RemotenessStandardDeviation : ICongenericCalculator
     /// <summary>
     /// Calculation method.
     /// </summary>
-    /// <param name="chain">
+    /// <param name="sequence">
     /// Source sequence.
     /// </param>
     /// <param name="link">
@@ -17,9 +17,9 @@ public class RemotenessStandardDeviation : ICongenericCalculator
     /// <returns>
     /// Remoteness standard deviation <see cref="double"/> value.
     /// </returns>
-    public double Calculate(CongenericChain chain, Link link)
+    public double Calculate(CongenericSequence sequence, Link link)
     {
-        double remotenessVariance = new RemotenessVariance().Calculate(chain, link);
+        double remotenessVariance = new RemotenessVariance().Calculate(sequence, link);
 
         return Math.Sqrt(remotenessVariance);
     }

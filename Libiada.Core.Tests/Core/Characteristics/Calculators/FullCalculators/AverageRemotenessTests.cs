@@ -10,10 +10,10 @@ using Libiada.Core.Core.Characteristics.Calculators.FullCalculators;
 public class AverageRemotenessTests : FullCalculatorsTests<AverageRemoteness>
 {
     /// <summary>
-    /// The chain calculation test.
+    /// The sequence calculation test.
     /// </summary>
     /// <param name="index">
-    /// Full sequence index in <see cref="ChainsStorage"/>.
+    /// Full sequence index in <see cref="SequencesStorage"/>.
     /// </param>
     /// <param name="link">
     /// The link.
@@ -66,16 +66,16 @@ public class AverageRemotenessTests : FullCalculatorsTests<AverageRemoteness>
     [TestCase(30, Link.End, 0.7169925001)]
     [TestCase(30, Link.Both, 0.654994643)]
     [TestCase(30, Link.Cycle, 0.9169925001)]
-    public void ChainCalculationTest(int index, Link link, double value)
+    public void SequenceCalculationTest(int index, Link link, double value)
     {
-        ChainCharacteristicTest(index, link, value);
+        SequenceCharacteristicTest(index, link, value);
     }
 
     /// <summary>
     /// No intervals test.
     /// </summary>
     /// <param name="index">
-    /// Full sequence index in <see cref="ChainsStorage"/>.
+    /// Full sequence index in <see cref="SequencesStorage"/>.
     /// </param>
     /// <param name="link">
     /// The link.
@@ -88,6 +88,6 @@ public class AverageRemotenessTests : FullCalculatorsTests<AverageRemoteness>
     [TestCase(7, Link.None, 0)]
     public void NoIntervalsTest(int index, Link link, double value)
     {
-        ChainCharacteristicTest(index, link, value);
+        SequenceCharacteristicTest(index, link, value);
     }
 }

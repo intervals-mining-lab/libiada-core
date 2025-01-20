@@ -11,7 +11,7 @@ public class AverageRemotenessMKSkew : IFullCalculator
     /// <summary>
     /// Calculation method.
     /// </summary>
-    /// <param name="chain">
+    /// <param name="sequence">
     /// Source sequence.
     /// </param>
     /// <param name="link">
@@ -20,19 +20,19 @@ public class AverageRemotenessMKSkew : IFullCalculator
     /// <returns>
     /// MK skew value as <see cref="double"/>.
     /// </returns>
-    public double Calculate(Chain chain, Link link)
+    public double Calculate(ComposedSequence sequence, Link link)
     {
-        DnaProcessor.CheckDnaAlphabet(chain.Alphabet);
+        DnaProcessor.CheckDnaAlphabet(sequence.Alphabet);
 
-        double l = new AverageRemoteness().Calculate(chain, link);
+        double l = new AverageRemoteness().Calculate(sequence, link);
         if (l == 0) return 0;
 
         CongenericCalculators.AverageRemoteness congenericRemotenessCalculator = new();
 
-        double g = congenericRemotenessCalculator.Calculate(chain.GetOrCreateCongenericChain(new ValueString("G")), link);
-        double c = congenericRemotenessCalculator.Calculate(chain.GetOrCreateCongenericChain(new ValueString("C")), link);
-        double a = congenericRemotenessCalculator.Calculate(chain.GetOrCreateCongenericChain(new ValueString("A")), link);
-        double t = congenericRemotenessCalculator.Calculate(chain.GetOrCreateCongenericChain(new ValueString("T")), link);
+        double g = congenericRemotenessCalculator.Calculate(sequence.GetOrCreateCongenericSequence(new ValueString("G")), link);
+        double c = congenericRemotenessCalculator.Calculate(sequence.GetOrCreateCongenericSequence(new ValueString("C")), link);
+        double a = congenericRemotenessCalculator.Calculate(sequence.GetOrCreateCongenericSequence(new ValueString("A")), link);
+        double t = congenericRemotenessCalculator.Calculate(sequence.GetOrCreateCongenericSequence(new ValueString("T")), link);
 
         return ((c + a) - (g + t)) / l;
     }

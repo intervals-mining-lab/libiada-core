@@ -66,7 +66,7 @@ public abstract class AbstractNode
     /// <param name="table">
     /// Phantom sequence parameters table.
     /// </param>
-    protected void Find(BaseChain result, IGenerator generator, PhantomTable table)
+    protected void Find(Sequence result, IGenerator generator, PhantomTable table)
     {
         // if not leaf node
         if (Children.Count != 0)
@@ -78,7 +78,7 @@ public abstract class AbstractNode
                 curVal += child.Volume;
                 if (val <= ((double)curVal / Volume))
                 {
-                    child.FillChain(result, generator, table);
+                    child.FillSequence(result, generator, table);
                     return;
                 }
             }

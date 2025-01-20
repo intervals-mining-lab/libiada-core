@@ -13,7 +13,7 @@ public class AverageRemotenessGCSkewTests : FullCalculatorsTests<AverageRemotene
     /// The calculation test.
     /// </summary>
     /// <param name="index">
-    /// Full sequence index in <see cref="ChainsStorage"/>.
+    /// Full sequence index in <see cref="SequencesStorage"/>.
     /// </param>
     /// <param name="link">
     /// The link.
@@ -41,14 +41,14 @@ public class AverageRemotenessGCSkewTests : FullCalculatorsTests<AverageRemotene
 
     public void CalculationTest(int index, Link link, double value)
     {
-        ChainCharacteristicTest(index, link, value);
+        SequenceCharacteristicTest(index, link, value);
     }
 
     /// <summary>
     /// Sequence without Guanine or Cytozine calculation test.
     /// </summary>
     /// <param name="index">
-    /// Full sequence index in <see cref="ChainsStorage"/>.
+    /// Full sequence index in <see cref="SequencesStorage"/>.
     /// </param>
     /// <param name="link">
     /// The link.
@@ -69,14 +69,14 @@ public class AverageRemotenessGCSkewTests : FullCalculatorsTests<AverageRemotene
     [TestCase(8, Link.Cycle, 0)]
     public void SequenceWithoutGCTest(int index, Link link, double value)
     {
-        ChainCharacteristicTest(index, link, value);
+        SequenceCharacteristicTest(index, link, value);
     }
 
     /// <summary>
     /// No intervals test.
     /// </summary>
     /// <param name="index">
-    /// Full sequence index in <see cref="ChainsStorage"/>.
+    /// Full sequence index in <see cref="SequencesStorage"/>.
     /// </param>
     /// <param name="link">
     /// The link.
@@ -88,6 +88,6 @@ public class AverageRemotenessGCSkewTests : FullCalculatorsTests<AverageRemotene
     [TestCase(5, Link.None, 0)]
     public void NoIntervalsTest(int index, Link link, double value)
     {
-        ChainCharacteristicTest(index, link, value);
+        SequenceCharacteristicTest(index, link, value);
     }
 }

@@ -19,9 +19,9 @@ public class TestObject
     private readonly ValuePhantom pm2;
 
     /// <summary>
-    /// The chain.
+    /// The sequence.
     /// </summary>
-    private readonly BaseChain chain;
+    private readonly Sequence sequence;
 
     /// <summary>
     /// The alpha.
@@ -29,9 +29,9 @@ public class TestObject
     private readonly Alphabet alphabet = [(ValueString)"a", (ValueString)"b", (ValueString)"c"];
 
     /// <summary>
-    /// The chain 2.
+    /// The sequence 2.
     /// </summary>
-    private readonly BaseChain chain2;
+    private readonly Sequence secondSequence;
 
     /// <summary>
     /// Initializes a new instance of the <see cref="TestObject"/> class.
@@ -41,9 +41,9 @@ public class TestObject
         pm1 = [alphabet[2], alphabet[1]];
         pm2 = [alphabet[0]];
 
-        chain = new BaseChain([1, 2, 2, 1, 2, 1, 2, 1, 2, 2], [NullValue.Instance(), PhantomMessageBc, PhantomMessageA]);
+        sequence = new Sequence([1, 2, 2, 1, 2, 1, 2, 1, 2, 2], [NullValue.Instance(), PhantomMessageBc, PhantomMessageA]);
 
-        chain2 = new BaseChain(new List<IBaseObject>(){ alphabet[1], PhantomMessageA, PhantomMessageBc, alphabet[0], PhantomMessageBc });
+        secondSequence = new Sequence([alphabet[1], PhantomMessageA, PhantomMessageBc, alphabet[0], PhantomMessageBc]);
     }
 
     /// <summary>
@@ -57,12 +57,12 @@ public class TestObject
     public ValuePhantom PhantomMessageA => (ValuePhantom)pm2.Clone();
 
     /// <summary>
-    /// Gets the source chain.
+    /// Gets the source sequence.
     /// </summary>
-    public BaseChain SourceChain => (BaseChain)chain.Clone();
+    public Sequence SourceSequence => (Sequence)sequence.Clone();
 
     /// <summary>
-    /// Gets the unnormalized chain.
+    /// Gets the unnormalized sequence.
     /// </summary>
-    public BaseChain UnnormalizedChain => chain2;
+    public Sequence UnnormalizedSequence => secondSequence;
 }

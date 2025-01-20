@@ -12,7 +12,7 @@ public class IdentifyingInformationKurtosisCoefficient : IFullCalculator
     /// intervals count instead of elements frequency 
     /// based on geometric mean interval formula.
     /// </summary>
-    /// <param name="chain">
+    /// <param name="sequence">
     /// Source sequence.
     /// </param>
     /// <param name="link">
@@ -21,12 +21,12 @@ public class IdentifyingInformationKurtosisCoefficient : IFullCalculator
     /// <returns>
     /// Identifying informations kurtosis coefficient <see cref="double"/> value.
     /// </returns>
-    public double Calculate(Chain chain, Link link)
+    public double Calculate(ComposedSequence sequence, Link link)
     {
-        double identifyingInformationStandardDeviation = new IdentifyingInformationStandardDeviation().Calculate(chain, link);
+        double identifyingInformationStandardDeviation = new IdentifyingInformationStandardDeviation().Calculate(sequence, link);
         if (identifyingInformationStandardDeviation == 0) return 0;
 
-        double identifyingInformationKurtosis = new IdentifyingInformationKurtosis().Calculate(chain, link);
+        double identifyingInformationKurtosis = new IdentifyingInformationKurtosis().Calculate(sequence, link);
 
         return identifyingInformationKurtosis / (identifyingInformationStandardDeviation * identifyingInformationStandardDeviation * identifyingInformationStandardDeviation * identifyingInformationStandardDeviation);
     }

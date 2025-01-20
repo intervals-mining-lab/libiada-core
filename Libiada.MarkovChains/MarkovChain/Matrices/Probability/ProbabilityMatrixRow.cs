@@ -66,7 +66,7 @@ public class ProbabilityMatrixRow : MatrixRowCommon, IProbabilityMatrix, IWritab
     /// The alphabet.
     /// </param>
     /// <returns>
-    /// The <see cref="T:Dictionary{IBaseObject, double}"/>.
+    /// The <see cref="Dictionary{Libiada.Core.Core.IBaseObject, double}"/>.
     /// </returns>
     public Dictionary<IBaseObject, double> GetProbabilityVector(Alphabet alphabet)
     {
@@ -83,7 +83,7 @@ public class ProbabilityMatrixRow : MatrixRowCommon, IProbabilityMatrix, IWritab
     /// The pred.
     /// </param>
     /// <returns>
-    /// The <see cref="T:Dictionary{IBaseObject, double}"/>.
+    /// The <see cref="Dictionary{Libiada.Core.Core.IBaseObject, double}"/>.
     /// </returns>
     /// <exception cref="ArgumentException">
     /// Thrown if alphabet cardinality is not equals AlphabetCardinality property of this object.

@@ -9,7 +9,7 @@ using MarkovChains.MarkovChain.Generators;
 /// <summary>
 /// Phantom sequences generator.
 /// </summary>
-public class PhantomChainGenerator
+public class PhantomSequenceGenerator
 {
     /// <summary>
     /// Number of possible variants for given sequence.
@@ -17,14 +17,14 @@ public class PhantomChainGenerator
     public readonly ulong Variants = ulong.MaxValue;
 
     /// <summary>
-    /// The basic chain length.
+    /// The basic sequence length.
     /// </summary>
-    private const int BasicChainLength = 30;
+    private const int BasicSequenceLength = 30;
 
     /// <summary>
-    /// The temp chains.
+    /// The temp sequences.
     /// </summary>
-    private readonly List<BaseChain> tempChains = [];
+    private readonly List<Sequence> tempSequences = [];
 
     /// <summary>
     /// The gen.
@@ -42,61 +42,61 @@ public class PhantomChainGenerator
     private readonly int totalLength;
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="PhantomChainGenerator"/> class.
+    /// Initializes a new instance of the <see cref="PhantomSequenceGenerator"/> class.
     /// </summary>
-    /// <param name="chain">
-    /// The chain.
+    /// <param name="sequence">
+    /// The sequence.
     /// </param>
     /// <param name="generator">
     /// The gen.
     /// </param>
-    public PhantomChainGenerator(BaseChain chain, IGenerator generator)
+    public PhantomSequenceGenerator(Sequence sequence, IGenerator generator)
     {
         this.generator = generator;
         SpacePhantomReorganizer reorganizer = new();
-        BaseChain internalChain = (BaseChain)reorganizer.Reorganize(chain);
-        for (int w = 0; w < internalChain.Length; w++)
+        Sequence internalSequence = (Sequence)reorganizer.Reorganize(sequence);
+        for (int w = 0; w < internalSequence.Length; w++)
         {
-            totalLength += ((ValuePhantom)internalChain[w])[0].ToString().Length;
+            totalLength += ((ValuePhantom)internalSequence[w])[0].ToString().Length;
         }
 
         ulong tempVariants = 1;
         int counter = 0;
-        for (int k = 0; k < (int)Math.Ceiling((double)internalChain.Length / BasicChainLength); k++)
+        for (int k = 0; k < (int)Math.Ceiling((double)internalSequence.Length / BasicSequenceLength); k++)
         {
-            tempChains.Add(new BaseChain());
-            tempChains[k].ClearAndSetNewLength(BasicChainLength);
+            tempSequences.Add(new Sequence());
+            tempSequences[k].ClearAndSetNewLength(BasicSequenceLength);
             tree.Add(null);
         }
 
         // variants count calculation cycle
-        for (int i = 0; i < tempChains.Count; i++)
+        for (int i = 0; i < tempSequences.Count; i++)
         {
-            for (int j = 0; j < tempChains[i].Length; j++)
+            for (int j = 0; j < tempSequences[i].Length; j++)
             {
                 ValuePhantom tempMessage;
-                if (counter < internalChain.Length)
+                if (counter < internalSequence.Length)
                 {
-                    tempMessage = (ValuePhantom)internalChain[counter];
-                    tempChains[i][j] = tempMessage;
+                    tempMessage = (ValuePhantom)internalSequence[counter];
+                    tempSequences[i][j] = tempMessage;
                 }
                 else
                 {
                     tempMessage = [new ValueString('a')];
-                    tempChains[i][j] = tempMessage;
+                    tempSequences[i][j] = tempMessage;
                 }
 
                 tempVariants *= (uint)tempMessage.Cardinality;
                 counter++;
             }
 
-            if ((i != tempChains.Count - 1) || (tempChains.Count == 1))
+            if ((i != tempSequences.Count - 1) || (tempSequences.Count == 1))
             {
                 Variants = Math.Min(Variants, tempVariants);
             }
 
             tempVariants = 1;
-            tree[i] = new TreeTop(tempChains[i], generator);
+            tree[i] = new TreeTop(tempSequences[i], generator);
         }
     }
 
@@ -109,34 +109,34 @@ public class PhantomChainGenerator
     /// <returns>
     /// Generated sequences.
     /// </returns>
-    public List<BaseChain> Generate(ulong count)
+    public List<Sequence> Generate(ulong count)
     {
         if (count > Variants)
         {
             throw new Exception();
         }
 
-        List<BaseChain> res = [];
-        List<BaseChain> tempRes = [];
+        List<Sequence> res = [];
+        List<Sequence> tempRes = [];
         for (int m = 0; m < tree.Count; m++)
         {
             tempRes.Add(null);
         }
 
         generator.Reset();
-        int chainCounter = 0;
+        int sequenceCounter = 0;
         while (res.Count != (uint)count)
         {
             int counter = 0;
-            res.Add(new BaseChain(totalLength));
+            res.Add(new Sequence(totalLength));
             for (int l = 0; l < tree.Count; l++)
             {
                 tempRes[l] = tree[l].Generate();
                 for (int u = 0; u < tempRes[l].Length; u++)
                 {
-                    if (counter < res[chainCounter].Length)
+                    if (counter < res[sequenceCounter].Length)
                     {
-                        res[chainCounter][counter] = tempRes[l][u];
+                        res[sequenceCounter][counter] = tempRes[l][u];
                         counter++;
                     }
                     else
@@ -146,16 +146,16 @@ public class PhantomChainGenerator
                 }
             }
 
-            chainCounter++;
+            sequenceCounter++;
             if (tree.Count != 1)
             {
-                tree[^1] = new TreeTop(tempChains[^1], generator);
+                tree[^1] = new TreeTop(tempSequences[^1], generator);
             }
         }
 
         for (int s = 0; s < tree.Count; s++)
         {
-            tree[s] = new TreeTop(tempChains[s], generator);
+            tree[s] = new TreeTop(tempSequences[s], generator);
         }
 
         return res;

@@ -10,18 +10,18 @@ public class Volume : ICongenericCalculator
     /// <summary>
     /// Calculated as product of all intervals in sequence.
     /// </summary>
-    /// <param name="chain">
+    /// <param name="sequence">
     /// Source sequence.
     /// </param>
     /// <param name="link">
     /// Binding of the intervals in the sequence.
     /// </param>
     /// <returns>
-    /// Volume characteristic of chain as <see cref="double"/>.
+    /// Volume characteristic of the sequence as <see cref="double"/>.
     /// </returns>
-    public double Calculate(CongenericChain chain, Link link)
+    public double Calculate(CongenericSequence sequence, Link link)
     {
-        int[] intervals = chain.GetArrangement(link);
+        int[] intervals = sequence.GetArrangement(link);
         if (intervals.Length == 0) return 1;
 
         BigInteger result = 1;

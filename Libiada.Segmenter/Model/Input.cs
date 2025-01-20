@@ -49,9 +49,9 @@ public class Input
     public int WindowDecrement { get; set; }
 
     /// <summary>
-    /// Gets or sets the chain name.
+    /// Gets or sets the sequence's name.
     /// </summary>
-    public string ChainName { get; set; }
+    public string SequenceName { get; set; }
 
     /// <summary>
     /// Gets or sets the algorithm.
@@ -69,7 +69,7 @@ public class Input
     public SegmentationCriterion StopCriterion { get; set; }
 
     /// <summary>
-    /// Gets or sets the chain.
+    /// Gets or sets the sequence.
     /// </summary>
-    public string Chain { get; set; }
+    public string Sequence { get; set; }
 }

@@ -8,7 +8,7 @@ using Segmenter.Model.Threshold;
 
 /// <summary>
 /// The criterion of minimum regularity.
-/// Allows you to identify the most irregular chain.
+/// Allows one to identify the most irregular sequence.
 /// </summary>
 public class CriterionMinimumRegularity : Criterion
 {
@@ -34,8 +34,8 @@ public class CriterionMinimumRegularity : Criterion
     /// <summary>
     /// The state.
     /// </summary>
-    /// <param name="chain">
-    /// The chain.
+    /// <param name="sequence">
+    /// The sequence.
     /// </param>
     /// <param name="alphabet">
     /// The alphabet.
@@ -43,12 +43,12 @@ public class CriterionMinimumRegularity : Criterion
     /// <returns>
     /// The <see cref="bool"/>.
     /// </returns>
-    public override bool State(ComplexChain chain, FrequencyDictionary alphabet)
+    public override bool State(ComplexSequence sequence, FrequencyDictionary alphabet)
     {
-        double distortion = Distortion(chain, alphabet);
+        double distortion = Distortion(sequence, alphabet);
         if (Math.Abs(Value) > Math.Abs(distortion))
         {
-            this.chain = chain.Clone();
+            this.sequence = sequence.Clone();
             this.alphabet = alphabet.Clone();
             Value = distortion;
             ThresholdToStop.SaveBest();
@@ -60,8 +60,8 @@ public class CriterionMinimumRegularity : Criterion
     /// <summary>
     /// The distortion.
     /// </summary>
-    /// <param name="chain">
-    /// The chain.
+    /// <param name="sequence">
+    /// The sequence.
     /// </param>
     /// <param name="alphabet">
     /// The alphabet.
@@ -69,8 +69,8 @@ public class CriterionMinimumRegularity : Criterion
     /// <returns>
     /// The <see cref="double"/>.
     /// </returns>
-    public override double Distortion(ComplexChain chain, FrequencyDictionary alphabet)
+    public override double Distortion(ComplexSequence sequence, FrequencyDictionary alphabet)
     {
-        return regularity.Calculate(chain, chain.Anchor);
+        return regularity.Calculate(sequence, sequence.Anchor);
     }
 }

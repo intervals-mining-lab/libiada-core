@@ -9,7 +9,7 @@ public class AverageRemoteness : IFullCalculator
     /// <summary>
     /// Calculation method.
     /// </summary>
-    /// <param name="chain">
+    /// <param name="sequence">
     /// Source sequence.
     /// </param>
     /// <param name="link">
@@ -18,12 +18,12 @@ public class AverageRemoteness : IFullCalculator
     /// <returns>
     /// Average remoteness <see cref="double"/> value.
     /// </returns>
-    public double Calculate(Chain chain, Link link)
+    public double Calculate(ComposedSequence sequence, Link link)
     {
-        double n = new IntervalsCount().Calculate(chain, link);
+        double n = new IntervalsCount().Calculate(sequence, link);
         if (n == 0) return 0;
 
-        double depth = new Depth().Calculate(chain, link);
+        double depth = new Depth().Calculate(sequence, link);
 
         return depth / n;
     }

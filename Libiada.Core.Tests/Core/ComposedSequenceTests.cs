@@ -4,42 +4,42 @@ using Libiada.Core.Core;
 using Libiada.Core.Core.SimpleTypes;
 
 /// <summary>
-/// The chain test.
+/// The sequence test.
 /// </summary>
 [TestFixture]
-public class ChainTests
+public class ComposedSequenceTests
 {
     /// <summary>
-    /// The chain.
+    /// The sequence.
     /// </summary>
-    private readonly List<Chain> chains = ChainsStorage.Chains;
+    private readonly List<ComposedSequence> sequences = SequencesStorage.CompusedSequences;
 
     /// <summary>
     /// The elements.
     /// </summary>
-    private readonly Dictionary<string, IBaseObject> elements = ChainsStorage.Elements;
+    private readonly Dictionary<string, IBaseObject> elements = SequencesStorage.Elements;
 
     /// <summary>
-    /// The similar chains get test.
+    /// The similar sequences get test.
     /// </summary>
     [Test]
-    public void SimilarChainsGetTest()
+    public void SimilarCongenericSequencesGetTest()
     {
-        CongenericChain congenericChainA = new([2, 8], elements["A"], 10);
+        CongenericSequence congenericSequenceA = new([2, 8], elements["A"], 10);
 
-        CongenericChain chainCreatedCongenericChain = chains[2].CongenericChain(elements["A"]);
+        CongenericSequence createdCongenericSequence = sequences[2].CongenericSequence(elements["A"]);
 
-        Assert.That(chainCreatedCongenericChain, Is.EqualTo(congenericChainA));
+        Assert.That(createdCongenericSequence, Is.EqualTo(congenericSequenceA));
     }
 
     /// <summary>
-    ///Chain Test
+    /// ComposedSequence Test
     /// </summary>
-   [Test]
-    public void ChainTest()
+    [Test]
+    public void ComposedSequenceTest()
     {
         short[] source = [1, 2, 3, 2, 2, 4, 5, 1];
-        Chain actual = new(source);
+        ComposedSequence actual = new(source);
         Alphabet alphabet = [new ValueInt(1), new ValueInt(2) , new ValueInt(3) , new ValueInt(4), new ValueInt(5)];
         Assert.That(actual.Alphabet, Is.EqualTo(alphabet));
 
@@ -60,9 +60,9 @@ public class ChainTests
                 [3, 1, 3, 4],
                 [5, 3, 1, 2]
             ];
-        for (int i = 0; i < chains[0].Alphabet.Cardinality; i++)
+        for (int i = 0; i < sequences[0].Alphabet.Cardinality; i++)
         {
-            int[] actualIntervals = chains[0].CongenericChain(i).GetArrangement(Link.Both);
+            int[] actualIntervals = sequences[0].CongenericSequence(i).GetArrangement(Link.Both);
             for (int j = 0; j < actualIntervals.Length; j++)
             {
                 Assert.That(actualIntervals[j], Is.EqualTo(intervals[i][j]), $"{j} and {i} intervals of sequence are not equal");
@@ -76,8 +76,8 @@ public class ChainTests
     /// <param name="expected">
     /// The expected position.
     /// </param>
-    /// <param name="chainIndex">
-    /// The chain index.
+    /// <param name="sequenceIndex">
+    /// The sequence index.
     /// </param>
     /// <param name="element">
     /// The element.
@@ -100,9 +100,9 @@ public class ChainTests
     [TestCase(6, 2, "T", 1)]
     [TestCase(7, 2, "T", 2)]
     [TestCase(-1, 2, "T", 3)]
-    public void GetElementPositionTest(int expected, int chainIndex, string element, int occurrence)
+    public void GetElementPositionTest(int expected, int sequenceIndex, string element, int occurrence)
     {
-        int actual = chains[chainIndex].GetOccurrence(elements[element], occurrence);
+        int actual = sequences[sequenceIndex].GetOccurrence(elements[element], occurrence);
         Assert.That(actual, Is.EqualTo(expected));
     }
 }

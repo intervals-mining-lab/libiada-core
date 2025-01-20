@@ -7,7 +7,7 @@ using Libiada.Core.Extensions;
 /// Basic sequence class.
 /// Stores alphabet and order.
 /// </summary>
-public class BaseChain : AbstractChain
+public class Sequence : AbstractSequence
 {
     /// <summary>
     /// Sequence id (from database).
@@ -20,59 +20,59 @@ public class BaseChain : AbstractChain
     protected int[] order;
 
     /// <summary>
-    /// The alphabet of chain.
+    /// The alphabet of the sequence.
     /// </summary>
     protected Alphabet alphabet = [];
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="BaseChain"/> class.
+    /// Initializes a new instance of the <see cref="Sequence"/> class.
     /// </summary>
     /// <param name="length">
-    /// The length of chain.
+    /// The length of the sequence.
     /// </param>
-    public BaseChain(int length) => ClearAndSetNewLength(length);
+    public Sequence(int length) => ClearAndSetNewLength(length);
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="BaseChain"/> class with 0 length.
+    /// Initializes a new instance of the <see cref="Sequence"/> class with 0 length.
     /// </summary>
-    public BaseChain()
+    public Sequence()
     {
     }
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="BaseChain"/> class from list of elements.
+    /// Initializes a new instance of the <see cref="Sequence"/> class from list of elements.
     /// </summary>
     /// <param name="elements">
     /// The elements.
     /// </param>
-    public BaseChain(IReadOnlyList<IBaseObject> elements) : this(elements.Count)
+    public Sequence(IReadOnlyList<IBaseObject> elements) : this(elements.Count)
     {
         FillAlphabetAndOrder(elements);
     }
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="BaseChain"/> class from string.
+    /// Initializes a new instance of the <see cref="Sequence"/> class from string.
     /// Each character becomes element.
     /// </summary>
     /// <param name="source">
     /// The source string.
     /// </param>
-    public BaseChain(string source) : this(source.Select(e => (IBaseObject)new ValueString(e)).ToList())
+    public Sequence(string source) : this(source.Select(e => (IBaseObject)new ValueString(e)).ToList())
     {
     }
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="BaseChain"/> class
+    /// Initializes a new instance of the <see cref="Sequence"/> class
     /// with provided order and alphabet.
     /// Only simple validation is made.
     /// </summary>
     /// <param name="order">
-    /// The order of chain.
+    /// The order of sequence.
     /// </param>
     /// <param name="alphabet">
-    /// The alphabet of chain.
+    /// The alphabet of sequence.
     /// </param>
-    public BaseChain(int[] order, Alphabet alphabet) : this(order.Length)
+    public Sequence(int[] order, Alphabet alphabet) : this(order.Length)
     {
         if (order.Max() + 1 != alphabet.Cardinality)
         {
@@ -84,14 +84,14 @@ public class BaseChain : AbstractChain
     }
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="BaseChain"/> class
+    /// Initializes a new instance of the <see cref="Sequence"/> class
     /// with provided order and generates alphabet as numeric sequence.
     /// Only simple validation is made.
     /// </summary>
     /// <param name="order">
-    /// The order of chain.
+    /// The order of the sequence.
     /// </param>
-    public BaseChain(int[] order) : this(order.Length)
+    public Sequence(int[] order) : this(order.Length)
     {
         int alphabetCardinality = order.Max();
         for (int i = 1; i <= alphabetCardinality; i++)
@@ -102,34 +102,34 @@ public class BaseChain : AbstractChain
     }
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="BaseChain"/> class
+    /// Initializes a new instance of the <see cref="Sequence"/> class
     /// with provided order and alphabet.
     /// Only simple validation is made.
     /// </summary>
     /// <param name="order">
-    /// The order of chain.
+    /// The order of the sequence.
     /// </param>
     /// <param name="alphabet">
-    /// The alphabet of chain.
+    /// The alphabet of the sequence.
     /// </param>
     /// <param name="id">
-    /// Id of sequence
+    /// Id of the sequence.
     /// </param>
-    public BaseChain(int[] order, Alphabet alphabet, long id) : this(order, alphabet)
+    public Sequence(int[] order, Alphabet alphabet, long id) : this(order, alphabet)
     {
         Id = id;
     }
 
     /// <summary>
-    /// Gets order of the chain.
+    /// Gets order of the sequence.
     /// Returns clone of order.
     /// </summary>
     public int[] Order => (int[])order.Clone();
 
     /// <summary>
-    /// Gets alphabet of chain.
+    /// Gets alphabet of the sequence.
     /// Returns clone of alphabet.
-    /// Removes NullValue (Element with 0 index) from clone.
+    /// Removes <see cref="NullValue"/> (Element with 0 index) from clone.
     /// </summary>
     public Alphabet Alphabet
     {
@@ -214,11 +214,11 @@ public class BaseChain : AbstractChain
             }
         }
 
-        IBaseObject[] chain = ToArray();
-        chain[index] = item;
+        IBaseObject[] sequence = ToArray();
+        sequence[index] = item;
         alphabet = [NullValue.Instance()];
 
-        FillAlphabetAndOrder(chain);
+        FillAlphabetAndOrder(sequence);
     }
 
     /// <summary>
@@ -252,10 +252,10 @@ public class BaseChain : AbstractChain
     }
 
     /// <summary>
-    /// Deletes chain (order and alphabet) and creates new empty chain with given length.
+    /// Deletes sequence (order and alphabet) and creates new empty sequence with given length.
     /// </summary>
     /// <param name="length">
-    /// New chain length.
+    /// New sequence length.
     /// </param>
     /// <exception cref="ArgumentException">
     /// Thrown if length of new sequence is less then zero.
@@ -264,7 +264,7 @@ public class BaseChain : AbstractChain
     {
         if (length < 0)
         {
-            throw new ArgumentException("Chain length shouldn't be less than 0.");
+            throw new ArgumentException("Sequence length shouldn't be less than 0.");
         }
 
         order = new int[length];
@@ -272,14 +272,14 @@ public class BaseChain : AbstractChain
     }
 
     /// <summary>
-    /// Creates clone of this chain.
+    /// Creates clone of this sequence.
     /// </summary>
     /// <returns>
     /// The <see cref="IBaseObject"/>.
     /// </returns>
     public override IBaseObject Clone()
     {
-        BaseChain clone = new(order.Length);
+        Sequence clone = new(order.Length);
         FillClone(clone);
         return clone;
     }
@@ -300,7 +300,7 @@ public class BaseChain : AbstractChain
             return true;
         }
 
-        return obj is BaseChain other
+        return obj is Sequence other
             && alphabet.Equals(other.alphabet)
             && order.SequenceEqual(other.order);
     }
@@ -328,12 +328,12 @@ public class BaseChain : AbstractChain
     }
 
     /// <summary>
-    /// Fills the clone of chain with clones of alphabet and order.
+    /// Fills the clone of the sequence with clones of alphabet and order.
     /// </summary>
     /// <param name="clone">
     /// The clone.
     /// </param>
-    protected void FillClone(BaseChain clone)
+    protected void FillClone(Sequence clone)
     {
         if (clone != null)
         {

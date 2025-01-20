@@ -13,7 +13,7 @@ public class RemotenessSkewnessTests : CongenericCalculatorsTests<RemotenessSkew
     /// The remoteness skewness test.
     /// </summary>
     /// <param name="index">
-    /// The congeneric sequence index in <see cref="ChainsStorage"/>.
+    /// The congeneric sequence index in <see cref="SequencesStorage"/>.
     /// </param>
     /// <param name="link">
     /// Binding of the intervals in the sequence.
@@ -28,6 +28,6 @@ public class RemotenessSkewnessTests : CongenericCalculatorsTests<RemotenessSkew
     [TestCase(3, Link.None, 0)]
     public void CongenericCalculationTest(int index, Link link, double value)
     {
-        CongenericChainCharacteristicTest(index, link, value);
+        CongenericSequenceCharacteristicTest(index, link, value);
     }
 }

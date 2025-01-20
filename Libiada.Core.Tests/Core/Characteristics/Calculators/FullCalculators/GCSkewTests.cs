@@ -13,7 +13,7 @@ public class GCSkewTests : FullCalculatorsTests<GCSkew>
     /// The calculation test.
     /// </summary>
     /// <param name="index">
-    /// Full sequence index in <see cref="ChainsStorage"/>.
+    /// Full sequence index in <see cref="SequencesStorage"/>.
     /// </param>
     /// <param name="value">
     /// The value.
@@ -26,14 +26,14 @@ public class GCSkewTests : FullCalculatorsTests<GCSkew>
     [TestCase(6, 0)]
     public void CalculationTest(int index, double value)
     {
-        ChainCharacteristicTest(index, Link.NotApplied, value);
+        SequenceCharacteristicTest(index, Link.NotApplied, value);
     }
 
     /// <summary>
     /// Sequence without Guanine or Cytozine calculation test.
     /// </summary>
     /// <param name="index">
-    /// Full sequence index in <see cref="ChainsStorage"/>.
+    /// Full sequence index in <see cref="SequencesStorage"/>.
     /// </param>
     /// <param name="value">
     /// The value.
@@ -42,6 +42,6 @@ public class GCSkewTests : FullCalculatorsTests<GCSkew>
     [TestCase(8, 0)]
     public void SequenceWithoutGCTest(int index, double value)
     {
-        ChainCharacteristicTest(index, Link.NotApplied, value);
+        SequenceCharacteristicTest(index, Link.NotApplied, value);
     }
 }

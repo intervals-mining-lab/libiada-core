@@ -10,14 +10,14 @@ using Segmenter.Base.Collectors;
 public abstract class CriterionMethod
 {
     /// <summary>
-    /// Calculates frequency for convoluted or no convoluted chain
+    /// Calculates frequency for convoluted or no convoluted sequence
     /// An actual characteristic of occurrence of the subject word in the sequence
     /// </summary>
     /// <param name="std">all positions of occurrence the word in the sequence</param>
-    /// <param name="chainLength">length of whole sequence</param>
+    /// <param name="sequenceLength">length of whole sequence</param>
     /// <param name="windowLength">length of the scanning window</param>
-    /// <returns>Frequency for convoluted or no convoluted chain</returns>
-    public abstract double Frequency(List<int> std, int chainLength, int windowLength);
+    /// <returns>Frequency for convoluted or no convoluted sequence</returns>
+    public abstract double Frequency(List<int> std, int sequenceLength, int windowLength);
 
     /// <summary>
     /// An estimated characteristic of occurrence of the subject word in the sequence
@@ -25,7 +25,7 @@ public abstract class CriterionMethod
     /// <param name="accord">
     /// Checking word.
     /// </param>
-    /// <param name="chainLength">
+    /// <param name="sequenceLength">
     /// Length of whole sequence.
     /// </param>
     /// <param name="winLen">
@@ -40,7 +40,7 @@ public abstract class CriterionMethod
     /// <returns>
     /// Design characteristic of occurrence of the word.
     /// </returns>
-    public double DesignExpected(List<string> accord, int chainLength, int winLen, DataCollector minusOne, DataCollector mid)
+    public double DesignExpected(List<string> accord, int sequenceLength, int winLen, DataCollector minusOne, DataCollector mid)
     {
         int shortWord = 2;
         int midlLength = winLen - 2;
@@ -53,39 +53,39 @@ public abstract class CriterionMethod
         double criteria = -1;
         if (winLen == shortWord)
         {
-            criteria = Frequency(left, chainLength, minusLength)
-                       * Frequency(right, chainLength, minusLength);
+            criteria = Frequency(left, sequenceLength, minusLength)
+                       * Frequency(right, sequenceLength, minusLength);
         }
         else if (middle != null)
         {
-            criteria = (Frequency(left, chainLength, minusLength)
-                        * Frequency(right, chainLength, minusLength))
-                       / Frequency(middle, chainLength, midlLength);
+            criteria = (Frequency(left, sequenceLength, minusLength)
+                        * Frequency(right, sequenceLength, minusLength))
+                       / Frequency(middle, sequenceLength, midlLength);
         }
 
         return criteria;
     }
 
     /// <summary>
-    /// Calculates frequency for convoluted or no convoluted chain by an interval estimation.
+    /// Calculates frequency for convoluted or no convoluted sequence by an interval estimation.
     /// An actual characteristic of occurrence of the subject word in the sequence.
     /// </summary>
     /// <param name="stdData">
     /// Positions of word.
     /// </param>
-    /// <param name="chainLength">
+    /// <param name="sequenceLength">
     /// Length of whole sequence.
     /// </param>
     /// <param name="winLen">
     /// Length of the scanning window.
     /// </param>
     /// <param name="anchor">
-    /// Binding to the chain.
+    /// Binding to the sequence.
     /// </param>
     /// <returns>
     /// Interval characteristic of occurrence of the word.
     /// </returns>
-    public double IntervalEstimate(List<int> stdData, int chainLength, int winLen, Link anchor)
+    public double IntervalEstimate(List<int> stdData, int sequenceLength, int winLen, Link anchor)
     {
         if (stdData.Count == 0)
         {
@@ -94,7 +94,7 @@ public abstract class CriterionMethod
 
         int minusLength = winLen - 1;
         int start = stdData[0] + 1;
-        int end = chainLength - stdData[^1] - minusLength;
+        int end = sequenceLength - stdData[^1] - minusLength;
         int pred = stdData[0];
         int j = 1;
         double multiplicate = 1;
@@ -124,15 +124,15 @@ public abstract class CriterionMethod
     /// <param name="count">
     /// The occurrences count.
     /// </param>
-    /// <param name="chainLen">
-    /// The chain len.
+    /// <param name="sequenceLength">
+    /// The sequence len.
     /// All events.
     /// </param>
     /// <returns>
     /// Probability as <see cref="double"/>.
     /// </returns>
-    protected double Probability(int count, int chainLen)
+    protected double Probability(int count, int sequenceLength)
     {
-        return count / (double)chainLen;
+        return count / (double)sequenceLength;
     }
 }

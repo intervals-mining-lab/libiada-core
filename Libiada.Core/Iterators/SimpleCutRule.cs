@@ -8,8 +8,8 @@ public class SimpleCutRule : CutRule
     /// <summary>
     /// Initializes a new instance of the <see cref="SimpleCutRule"/> class.
     /// </summary>
-    /// <param name="chainLength">
-    /// Chain length.
+    /// <param name="sequenceLength">
+    /// Sequence length.
     /// </param>
     /// <param name="step">
     /// Shift of iterator.
@@ -17,9 +17,9 @@ public class SimpleCutRule : CutRule
     /// <param name="windowLength">
     /// Length of returned subsequence.
     /// </param>
-    public SimpleCutRule(int chainLength, int step, int windowLength)
+    public SimpleCutRule(int sequenceLength, int step, int windowLength)
     {
-        for (int i = 0; i + windowLength <= chainLength; i += step)
+        for (int i = 0; i + windowLength <= sequenceLength; i += step)
         {
             Starts.Add(i);
             Ends.Add(windowLength + i);

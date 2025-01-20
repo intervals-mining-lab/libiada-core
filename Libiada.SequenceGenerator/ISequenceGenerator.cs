@@ -17,9 +17,9 @@ public interface ISequenceGenerator
     /// The sequence alphabet cardinality.
     /// </param>
     /// <returns>
-    /// The <see cref="T:List{BaseChain}"/>.
+    /// The <see cref="List{Libiada.Core.Core.Sequence}"/>.
     /// </returns>
-    List<BaseChain> GenerateSequences(int length, int alphabetCardinality);
+    List<Sequence> GenerateSequences(int length, int alphabetCardinality);
 
     /// <summary>
     /// Generates sequences using length.
@@ -28,7 +28,7 @@ public interface ISequenceGenerator
     /// The sequence length.
     /// </param>
     /// <returns>
-    /// The <see cref="T:List{BaseChain}"/>.
+    /// The <see cref="List{Libiada.Core.Core.Sequence}"/>.
     /// </returns>
-    List<BaseChain> GenerateSequences(int length);
+    List<Sequence> GenerateSequences(int length);
 }

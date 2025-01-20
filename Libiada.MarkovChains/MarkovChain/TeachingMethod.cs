@@ -1,7 +1,7 @@
 namespace Libiada.MarkovChains.MarkovChain;
 
 /// <summary>
-/// Chain preprocessing method.
+/// Sequence preprocessing method.
 /// </summary>
 public enum TeachingMethod
 {
@@ -16,7 +16,7 @@ public enum TeachingMethod
     Cycle,
 
     /// <summary>
-    /// Loopback (using information about order of the chain).
+    /// Loopback (using information about order of the sequence).
     /// </summary>
-    Cycleorder
+    CycleOrder
 }

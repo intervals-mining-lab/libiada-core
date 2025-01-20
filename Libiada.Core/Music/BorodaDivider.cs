@@ -20,19 +20,19 @@ public class BorodaDivider
     /// The sequential transfer parameter.
     /// </param>
     /// <returns>
-    /// The <see cref="List{FmotifChain}"/>.
+    /// The <see cref="List{Libiada.Core.Core.FmotifSequence}"/>.
     /// </returns>
-    public List<FmotifChain> Divide(ScoreTrack scoreTrack, PauseTreatment pauseTreatment, bool sequentialTransfer)
+    public List<FmotifSequence> Divide(ScoreTrack scoreTrack, PauseTreatment pauseTreatment, bool sequentialTransfer)
     {
-        List<FmotifChain> chains = [];
+        List<FmotifSequence> sequences = [];
 
         foreach (CongenericScoreTrack congenericTrack in scoreTrack.CongenericScoreTracks)
         {
-            FmotifChain fmotifChain = (FmotifChain)Divide(congenericTrack, pauseTreatment, sequentialTransfer).Clone();
-            chains.Add(fmotifChain);
+            FmotifSequence fmotifSequence = (FmotifSequence)Divide(congenericTrack, pauseTreatment, sequentialTransfer).Clone();
+            sequences.Add(fmotifSequence);
         }
 
-        return chains;
+        return sequences;
     }
 
     /// <summary>
@@ -51,9 +51,9 @@ public class BorodaDivider
     /// как сравнивать ф-мотивы с секвентым переносом, либо нет
     /// </param>
     /// <returns>
-    /// The <see cref="FmotifChain"/>.
+    /// The <see cref="FmotifSequence"/>.
     /// </returns>
-    public FmotifChain Divide(CongenericScoreTrack congenericTrack, PauseTreatment pauseTreatment, bool sequentialTransfer)
+    public FmotifSequence Divide(CongenericScoreTrack congenericTrack, PauseTreatment pauseTreatment, bool sequentialTransfer)
     {
         // сохраняем имя цепи фмотивов как имя монотрека
         PriorityDiscover priorityDiscover = new();
@@ -64,9 +64,9 @@ public class BorodaDivider
         priorityDiscover.Calculate(congenericTrack);
 
         // разбиение
-        FmotifChain chain = fmotifDivider.GetDivision(congenericTrack, pauseTreatment);
+        FmotifSequence sequence = fmotifDivider.GetDivision(congenericTrack, pauseTreatment);
 
         // нахождение одинаковых
-        return fmotifIdentifier.GetIdentification(chain, sequentialTransfer);
+        return fmotifIdentifier.GetIdentification(sequence, sequentialTransfer);
     }
 }

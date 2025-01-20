@@ -13,7 +13,7 @@ public class RYSkewTests : FullCalculatorsTests<RYSkew>
     /// The calculation test.
     /// </summary>
     /// <param name="index">
-    /// Full sequence index in <see cref="ChainsStorage"/>.
+    /// Full sequence index in <see cref="SequencesStorage"/>.
     /// </param>
     /// <param name="value">
     /// The value.
@@ -28,6 +28,6 @@ public class RYSkewTests : FullCalculatorsTests<RYSkew>
     [TestCase(8, -1)]
     public void CalculationTest(int index, double value)
     {
-        ChainCharacteristicTest(index, Link.NotApplied, value);
+        SequenceCharacteristicTest(index, Link.NotApplied, value);
     }
 }

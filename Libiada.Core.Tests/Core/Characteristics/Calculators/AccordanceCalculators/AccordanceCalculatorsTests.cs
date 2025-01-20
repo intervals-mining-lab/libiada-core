@@ -12,19 +12,19 @@ using Libiada.Core.Core.Characteristics.Calculators.AccordanceCalculators;
 public abstract class AccordanceCalculatorsTests<T> where T : IAccordanceCalculator, new()
 {
     /// <summary>
-    /// The binary chains.
+    /// The binary sequences.
     /// </summary>
-    private readonly List<Chain> binaryChains = ChainsStorage.BinaryChains;
+    private readonly List<ComposedSequence> binarySequences = SequencesStorage.BinarySequences;
 
     /// <summary>
-    /// The congeneric chains.
+    /// The congeneric sequences.
     /// </summary>
-    private readonly List<CongenericChain> congenericChains = ChainsStorage.CongenericChains;
+    private readonly List<CongenericSequence> congenericSequences = SequencesStorage.CongenericSequences;
 
     /// <summary>
     /// The elements.
     /// </summary>
-    private readonly Dictionary<string, IBaseObject> elements = ChainsStorage.Elements;
+    private readonly Dictionary<string, IBaseObject> elements = SequencesStorage.Elements;
 
     /// <summary>
     /// Gets or sets the calculator.
@@ -35,7 +35,7 @@ public abstract class AccordanceCalculatorsTests<T> where T : IAccordanceCalcula
     /// The calculation test.
     /// </summary>
     /// <param name="index">
-    /// Binary sequence index in <see cref="ChainsStorage"/>.
+    /// Binary sequence index in <see cref="SequencesStorage"/>.
     /// </param>
     /// <param name="firstValue">
     /// The first value.
@@ -45,10 +45,10 @@ public abstract class AccordanceCalculatorsTests<T> where T : IAccordanceCalcula
     /// </param>
     protected void CalculationTest(int index, double firstValue, double secondValue)
     {
-        CongenericChain firstChain = binaryChains[index].CongenericChain(elements["A"]);
-        CongenericChain secondChain = binaryChains[index].CongenericChain(elements["B"]);
-        double result1 = calculator.Calculate(firstChain, secondChain, Link.End);
-        double result2 = calculator.Calculate(secondChain, firstChain, Link.End);
+        CongenericSequence firstSequence = binarySequences[index].CongenericSequence(elements["A"]);
+        CongenericSequence secondSequence = binarySequences[index].CongenericSequence(elements["B"]);
+        double result1 = calculator.Calculate(firstSequence, secondSequence, Link.End);
+        double result2 = calculator.Calculate(secondSequence, firstSequence, Link.End);
         Assert.Multiple(() =>
         {
             Assert.That(result1, Is.EqualTo(firstValue).Within(0.0001d));
@@ -60,17 +60,17 @@ public abstract class AccordanceCalculatorsTests<T> where T : IAccordanceCalcula
     /// The calculation test.
     /// </summary>
     /// <param name="firstIndex">
-    /// First congeneric sequence index in <see cref="ChainsStorage"/>.
+    /// First congeneric sequence index in <see cref="SequencesStorage"/>.
     /// </param>
     /// <param name="secondIndex">
-    /// Second congeneric sequence index in <see cref="ChainsStorage"/>.
+    /// Second congeneric sequence index in <see cref="SequencesStorage"/>.
     /// </param>
     /// <param name="firstValue">
     /// The first value.
     /// </param>
     protected void CalculationTest(int firstIndex, int secondIndex, double firstValue)
     {
-        double result = calculator.Calculate(congenericChains[firstIndex], congenericChains[secondIndex], Link.End);
+        double result = calculator.Calculate(congenericSequences[firstIndex], congenericSequences[secondIndex], Link.End);
         Assert.That(result, Is.EqualTo(firstValue).Within(0.0001d));
     }
 }

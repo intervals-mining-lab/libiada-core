@@ -9,14 +9,14 @@ public class Length : NonLinkableCongenericCalculator
     /// <summary>
     /// Calculation method.
     /// </summary>
-    /// <param name="chain">
+    /// <param name="sequence">
     /// Source sequence.
     /// </param>
     /// <returns>
-    /// Chain length as <see cref="double"/>.
+    /// Sequence length as <see cref="double"/>.
     /// </returns>
-    public override double Calculate(CongenericChain chain)
+    public override double Calculate(CongenericSequence sequence)
     {
-        return chain.Length;
+        return sequence.Length;
     }
 }

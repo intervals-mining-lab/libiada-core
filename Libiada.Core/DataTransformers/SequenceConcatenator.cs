@@ -18,7 +18,7 @@ public static class SequenceConcatenator
     /// <returns>
     /// Collection of sequences concatenated in various orders.
     /// </returns>
-    public static IEnumerable<Chain> GenerateConcatenations(Chain[] sourceSequences)
+    public static IEnumerable<ComposedSequence> GenerateConcatenations(ComposedSequence[] sourceSequences)
     {
         int[][] orders = PermutationGenerator.GetOrders(sourceSequences.Length);
 
@@ -38,9 +38,9 @@ public static class SequenceConcatenator
     /// Order in which sequences are concatenated.
     /// </param>
     /// <returns>
-    /// <see cref="Chain"/> of all source sequences in given order.
+    /// <see cref="ComposedSequence"/> of all source sequences in given order.
     /// </returns>
-    public static Chain Concatenate(Chain[] sourceSequences, int[] order)
+    public static ComposedSequence Concatenate(ComposedSequence[] sourceSequences, int[] order)
     {
         // TODO: optimize this method
         int resultLength = 0;
@@ -49,11 +49,11 @@ public static class SequenceConcatenator
             resultLength += sourceSequences[i].Length;
         }
 
-        Chain result = new(resultLength);
+        ComposedSequence result = new(resultLength);
         int resultIndex = 0;
         for (int i = 0; i < sourceSequences.Length; i++)
         {
-            Chain currentSequence = sourceSequences[order[i]];
+            ComposedSequence currentSequence = sourceSequences[order[i]];
             for (int j = 0; j < currentSequence.Length; j++)
             {
                 result[resultIndex++] = currentSequence[j];
@@ -70,9 +70,9 @@ public static class SequenceConcatenator
     /// Sequences to concatenate.
     /// </param>
     /// <returns>
-    /// <see cref="Chain"/> of all source sequences in ascending order.
+    /// <see cref="ComposedSequence"/> of all source sequences in ascending order.
     /// </returns>
-    public static Chain ConcatenateAsOrdered(Chain[] sourceSequences)
+    public static ComposedSequence ConcatenateAsOrdered(ComposedSequence[] sourceSequences)
     {
         // TODO: optimize this method
         int resultLength = 0;
@@ -87,9 +87,9 @@ public static class SequenceConcatenator
         for (int i = 0; i < sourceSequences.Length; i++)
         {
             Dictionary<int, int> coder = [];
-            Chain chain = sourceSequences[i];
-            int[] order = chain.Order;
-            Alphabet alphabet = chain.Alphabet;
+            ComposedSequence sequence = sourceSequences[i];
+            int[] order = sequence.Order;
+            Alphabet alphabet = sequence.Alphabet;
             for (int m = 0; m < alphabet.Cardinality; m++)
             {
                 if (!resultAlphabet.Contains(alphabet[m]))
@@ -99,13 +99,13 @@ public static class SequenceConcatenator
                 coder.Add(m + 1, resultAlphabet.IndexOf(alphabet[m]));
             }
 
-            for (int j = 0; j < chain.Length; j++)
+            for (int j = 0; j < sequence.Length; j++)
             {
                 resultOrder[resultIndex] = coder[order[j]];
                 resultIndex++;
             }
         }
 
-        return new Chain(resultOrder, resultAlphabet);
+        return new ComposedSequence(resultOrder, resultAlphabet);
     }
 }

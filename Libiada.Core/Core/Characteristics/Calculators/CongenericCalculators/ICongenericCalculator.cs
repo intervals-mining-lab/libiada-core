@@ -1,14 +1,14 @@
 ﻿namespace Libiada.Core.Core.Characteristics.Calculators.CongenericCalculators;
 
 /// <summary>
-/// The congeneric chain calculator interface.
+/// The congeneric sequence calculator interface.
 /// </summary>
 public interface ICongenericCalculator
 {
     /// <summary>
     /// Calculates value of characteristic of congeneric sequence.
     /// </summary>
-    /// <param name="chain">
+    /// <param name="sequence">
     /// Source sequence.
     /// </param>
     /// <param name="link">
@@ -18,5 +18,5 @@ public interface ICongenericCalculator
     /// <returns>
     /// Characteristic value as <see cref="double"/>.
     /// </returns>
-    double Calculate(CongenericChain chain, Link link);
+    double Calculate(CongenericSequence sequence, Link link);
 }

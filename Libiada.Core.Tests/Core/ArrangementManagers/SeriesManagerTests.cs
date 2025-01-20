@@ -10,9 +10,9 @@ using Libiada.Core.Core.ArrangementManagers;
 public class SeriesManagerTests
 {
     /// <summary>
-    /// The congeneric chains.
+    /// The congeneric sequences.
     /// </summary>
-    private readonly List<CongenericChain> congenericChains = ChainsStorage.CongenericChains;
+    private readonly List<CongenericSequence> congenericSequences = SequencesStorage.CongenericSequences;
 
     /// <summary>
     /// The simple series manager tests.
@@ -43,7 +43,7 @@ public class SeriesManagerTests
     [TestCase(17, new[] { 1, 1, 1, 1 })]
     public void SimpleSeriesManagerTests(int index, int[] expected)
     {
-        SeriesManager manager = new(congenericChains[index]);
+        SeriesManager manager = new(congenericSequences[index]);
         int[] actual = manager.GetArrangement(Link.NotApplied);
         Assert.That(actual, Is.EqualTo(expected));
     }

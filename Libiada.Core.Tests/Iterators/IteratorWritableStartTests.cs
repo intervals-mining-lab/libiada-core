@@ -11,9 +11,9 @@ using Libiada.Core.Iterators;
 public class IteratorWritableStartTests
 {
     /// <summary>
-    /// The chain to iterate.
+    /// The sequence to iterate.
     /// </summary>
-    private Chain chainToIterate;
+    private ComposedSequence sequenceToIterate;
 
     /// <summary>
     /// Tests initialization method.
@@ -21,7 +21,7 @@ public class IteratorWritableStartTests
     [SetUp]
     public void Initialization()
     {
-        chainToIterate = new Chain("121331212231");
+        sequenceToIterate = new ComposedSequence("121331212231");
     }
 
     /// <summary>
@@ -33,7 +33,7 @@ public class IteratorWritableStartTests
         List<ValueString> messages =
                            ['1', '2', '1', '3', '3', '1', '2', '1', '2', '2', '3', '1'];
 
-        Chain toWrite = new(12);
+        ComposedSequence toWrite = new(12);
         IteratorWritableStart iteratorWrite = new(toWrite);
         int i = 0;
         while (iteratorWrite.Next())
@@ -41,6 +41,6 @@ public class IteratorWritableStartTests
             iteratorWrite.WriteValue(messages[i++]);
         }
 
-        Assert.That(toWrite, Is.EqualTo(chainToIterate));
+        Assert.That(toWrite, Is.EqualTo(sequenceToIterate));
     }
 }

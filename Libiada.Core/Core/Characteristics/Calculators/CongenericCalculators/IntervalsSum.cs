@@ -8,7 +8,7 @@ public class IntervalsSum : ICongenericCalculator
     /// <summary>
     /// Sum of intervals lengths in congeneric sequence.
     /// </summary>
-    /// <param name="chain">
+    /// <param name="sequence">
     /// Source sequence.
     /// </param>
     /// <param name="link">
@@ -17,9 +17,9 @@ public class IntervalsSum : ICongenericCalculator
     /// <returns>
     /// Intervals sum as <see cref="double"/>.
     /// </returns>
-    public double Calculate(CongenericChain chain, Link link)
+    public double Calculate(CongenericSequence sequence, Link link)
     {
-        int[] intervals = chain.GetArrangement(link);
+        int[] intervals = sequence.GetArrangement(link);
 
         return intervals.Length == 0 ? 0 : intervals.Sum();
     }

@@ -12,7 +12,7 @@ public class IdentifyingInformationStandardDeviation : IFullCalculator
     /// intervals count instead of elements frequency 
     /// based on geometric mean interval formula.
     /// </summary>
-    /// <param name="chain">
+    /// <param name="sequence">
     /// Source sequence.
     /// </param>
     /// <param name="link">
@@ -21,9 +21,9 @@ public class IdentifyingInformationStandardDeviation : IFullCalculator
     /// <returns>
     /// Identifying informations (entropy) standard deviation <see cref="double"/> value.
     /// </returns>
-    public double Calculate(Chain chain, Link link)
+    public double Calculate(ComposedSequence sequence, Link link)
     {
-        double identifyingInformationVariance = new IdentifyingInformationVariance().Calculate(chain, link);
+        double identifyingInformationVariance = new IdentifyingInformationVariance().Calculate(sequence, link);
 
         return Math.Sqrt(identifyingInformationVariance);
     }

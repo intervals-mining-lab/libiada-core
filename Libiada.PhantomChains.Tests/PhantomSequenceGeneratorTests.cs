@@ -9,10 +9,10 @@ using MarkovChains.MarkovChain.Generators;
 using MarkovChains.Tests.MarkovChain.Generators;
 
 /// <summary>
-/// The probability phantom chain generator tests.
+/// The probability phantom sequence generator tests.
 /// </summary>
 [TestFixture]
-public class PhantomChainGeneratorTests
+public class PhantomSequenceGeneratorTests
 {
     /// <summary>
     /// The mother.
@@ -34,12 +34,12 @@ public class PhantomChainGeneratorTests
     [Test]
     public void FirstTest()
     {
-        BaseChain resultChain = new([1, 2, 2, 1, 2, 1, 2, 1, 2, 2], [NullValue.Instance(), mother.PhantomMessageBc[1], mother.PhantomMessageA[0]]);
+        Sequence resultSequence = new([1, 2, 2, 1, 2, 1, 2, 1, 2, 2], [NullValue.Instance(), mother.PhantomMessageBc[1], mother.PhantomMessageA[0]]);
 
-        PhantomChainGenerator gen = new(mother.SourceChain, new MockGenerator());
-        List<BaseChain> result = gen.Generate(1);
+        PhantomSequenceGenerator gen = new(mother.SourceSequence, new MockGenerator());
+        List<Sequence> result = gen.Generate(1);
         Assert.That(result, Has.Count.EqualTo(1));
-        Assert.That(result[0], Is.EqualTo(resultChain));
+        Assert.That(result[0], Is.EqualTo(resultSequence));
     }
 
     /// <summary>
@@ -48,13 +48,13 @@ public class PhantomChainGeneratorTests
     [Test]
     public void SecondTest()
     {
-        BaseChain resultChain = new(
+        Sequence resultSequence = new(
             [1, 2, 1, 2, 3],
             [NullValue.Instance(), mother.PhantomMessageBc[1], mother.PhantomMessageA[0], mother.PhantomMessageBc[0]]);
-        PhantomChainGenerator gen = new(mother.UnnormalizedChain, new MockGenerator());
-        List<BaseChain> result = gen.Generate(1);
+        PhantomSequenceGenerator gen = new(mother.UnnormalizedSequence, new MockGenerator());
+        List<Sequence> result = gen.Generate(1);
         Assert.That(result, Has.Count.EqualTo(1));
-        Assert.That(result[0], Is.EqualTo(resultChain));
+        Assert.That(result[0], Is.EqualTo(resultSequence));
     }
 
     /// <summary>
@@ -63,16 +63,16 @@ public class PhantomChainGeneratorTests
     [Test]
     public void ThirdTest()
     {
-        BaseChain resultChain = new(63);
-        IteratorWritableStart iterator = new(resultChain);
+        Sequence resultCSequence = new(63);
+        IteratorWritableStart iterator = new(resultCSequence);
         iterator.Reset();
         while (iterator.Next())
         {
             iterator.WriteValue(mother.PhantomMessageBc);
         }
 
-        PhantomChainGenerator gen = new(resultChain, new SimpleGenerator());
-        List<BaseChain> result = gen.Generate(3000);
+        PhantomSequenceGenerator gen = new(resultCSequence, new SimpleGenerator());
+        List<Sequence> result = gen.Generate(3000);
         Assert.That(result, Has.Count.EqualTo(3000));
     }
 
@@ -82,16 +82,16 @@ public class PhantomChainGeneratorTests
     [Test]
     public void FourthTest()
     {
-        BaseChain resultChain = new(10);
-        IteratorWritableStart iterator = new(resultChain);
+        Sequence resultSequence = new(10);
+        IteratorWritableStart iterator = new(resultSequence);
         iterator.Reset();
         while (iterator.Next())
         {
             iterator.WriteValue(mother.PhantomMessageBc);
         }
 
-        PhantomChainGenerator gen = new(resultChain, new SimpleGenerator());
-        List<BaseChain> res = gen.Generate(1000);
+        PhantomSequenceGenerator gen = new(resultSequence, new SimpleGenerator());
+        List<Sequence> res = gen.Generate(1000);
         int counter = 0;
         for (int i = 0; i < 999; i++)
         {
@@ -113,10 +113,10 @@ public class PhantomChainGeneratorTests
     [Test]
     public void SixthTest()
     {
-        BaseChain sourceChain = new(new List<IBaseObject>() { (ValueString)"X", (ValueString)"S", (ValueString)"C" });
-        BaseChain forBuild = DnaTransformer.Decode(sourceChain);
-        PhantomChainGenerator gen = new(forBuild, new SimpleGenerator());
-        List<BaseChain> result = gen.Generate(1);
+        Sequence sourceSequence = new(new List<IBaseObject>() { (ValueString)"X", (ValueString)"S", (ValueString)"C" });
+        Sequence forBuild = DnaTransformer.Decode(sourceSequence);
+        PhantomSequenceGenerator gen = new(forBuild, new SimpleGenerator());
+        List<Sequence> result = gen.Generate(1);
         Assert.That(result[0].Length, Is.EqualTo(9));
     }
 }

@@ -10,9 +10,9 @@ using Libiada.Core.SpaceReorganizers;
 public class NullCycleSpaceReorganizerTests
 {
     /// <summary>
-    /// The test chain.
+    /// The test sequence.
     /// </summary>
-    private Chain testChain;
+    private ComposedSequence testSequence;
 
     /// <summary>
     /// Tests initialization method.
@@ -20,7 +20,7 @@ public class NullCycleSpaceReorganizerTests
     [SetUp]
     public void Initialization()
     {
-        testChain = new Chain("adbaacbbaaca");
+        testSequence = new ComposedSequence("adbaacbbaaca");
     }
 
     /// <summary>
@@ -29,11 +29,11 @@ public class NullCycleSpaceReorganizerTests
     [Test]
     public void LevelOneTest()
     {
-        Chain cycleTestChainLevel1 = new("adbaacbbaacaa");
+        ComposedSequence cycleTestSequenceLevel1 = new("adbaacbbaacaa");
 
         NullCycleSpaceReorganizer rebulder = new(1);
-        AbstractChain result = rebulder.Reorganize(testChain);
-        Assert.That(result, Is.EqualTo(cycleTestChainLevel1));
+        AbstractSequence result = rebulder.Reorganize(testSequence);
+        Assert.That(result, Is.EqualTo(cycleTestSequenceLevel1));
     }
 
     /// <summary>
@@ -42,10 +42,10 @@ public class NullCycleSpaceReorganizerTests
     [Test]
     public void LevelFiveTest()
     {
-        Chain cycleTestChainLevel5 = new("adbaacbbaacaadbaa");
+        ComposedSequence cycleTestSequenceLevel5 = new("adbaacbbaacaadbaa");
 
         NullCycleSpaceReorganizer reorganizer = new(5);
-        AbstractChain result = reorganizer.Reorganize(testChain);
-        Assert.That(result, Is.EqualTo(cycleTestChainLevel5));
+        AbstractSequence result = reorganizer.Reorganize(testSequence);
+        Assert.That(result, Is.EqualTo(cycleTestSequenceLevel5));
     }
 }

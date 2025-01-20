@@ -63,13 +63,13 @@ public class ValueDouble : IBaseObject
     }
 
     /// <summary>
-    /// Determines whether the specified <see cref="T:System.Object"/> is equal to the current <see cref="T:System.Object"/>.
+    /// Determines whether the specified <see cref="object"/> is equal to the current <see cref="object"/>.
     /// </summary>
     /// <returns>
-    /// true if the specified <see cref="T:System.Object"/> is equal to the current <see cref="T:System.Object"/>; otherwise, false.
+    /// true if the specified <see cref="object"/> is equal to the current <see cref="object"/>; otherwise, false.
     /// </returns>
     /// <param name="obj">
-    /// The <see cref="T:System.Object"/> to compare with the current <see cref="T:System.Object"/>.
+    /// The <see cref="object"/> to compare with the current <see cref="object"/>.
     /// </param>
     public override bool Equals(object? obj)
     {

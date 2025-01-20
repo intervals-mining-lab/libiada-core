@@ -41,7 +41,7 @@ public class FmotifDividerTests
 
         // создание результирующей цепочки фмотивов
         // вычисление, опрделение, разбиение на  ф-мотивы данного монотрека
-        FmotifChain chain = fmdivider.GetDivision(unitrack, PauseTreatment.Ignore);
+        FmotifSequence fmotifSequence = fmdivider.GetDivision(unitrack, PauseTreatment.Ignore);
 
         // создание аналогов ф-мотивов, которые должны получиться, после разбиения
         // процедура определения одинаковых на данном этапе не производится
@@ -55,11 +55,11 @@ public class FmotifDividerTests
         fmotif2.NoteList.Add(new ValueNote(new Pitch(3, NoteSymbol.A, 0), new Duration(1, 4, false), false, Tie.None));
 
         // записываем ф-мотивы в цепь ф-мотивов, которая будет сравниваться с получившейся
-        FmotifChain secondChain = new();
-        secondChain.FmotifsList.Add(fmotif1);
-        secondChain.FmotifsList.Add(fmotif2);
+        FmotifSequence secondFmotifSequence = new();
+        secondFmotifSequence.FmotifsList.Add(fmotif1);
+        secondFmotifSequence.FmotifsList.Add(fmotif2);
 
-        Assert.That(secondChain, Is.EqualTo(chain));
+        Assert.That(secondFmotifSequence, Is.EqualTo(fmotifSequence));
     }
 
     /// <summary>
@@ -91,7 +91,7 @@ public class FmotifDividerTests
 
         // создание результирующей цепочки фмотивов
         // вычисление, опрделение, разбиение на  ф-мотивы данного монотрека
-        FmotifChain fmchain = fmdivider.GetDivision(unitrack, PauseTreatment.Ignore);
+        FmotifSequence fmotifSequence = fmdivider.GetDivision(unitrack, PauseTreatment.Ignore);
 
         // создание аналогов ф-мотивов, которые должны получиться, после разбиения
         // процедура определения одинаковых на данном этапе не производится
@@ -105,11 +105,11 @@ public class FmotifDividerTests
         fmotif2.NoteList.Add(new ValueNote(new Pitch(3, NoteSymbol.A, 0), new Duration(1, 8, false), false, Tie.None));
 
         // записываем ф-мотивы в цепь ф-мотивов, которая будет сравниваться с получившейся
-        FmotifChain fmchain1 = new();
-        fmchain1.FmotifsList.Add(fmotif1);
-        fmchain1.FmotifsList.Add(fmotif2);
+        FmotifSequence secondFmotifSequence = new();
+        secondFmotifSequence.FmotifsList.Add(fmotif1);
+        secondFmotifSequence.FmotifsList.Add(fmotif2);
 
-        Assert.That(fmchain1, Is.EqualTo(fmchain));
+        Assert.That(secondFmotifSequence, Is.EqualTo(fmotifSequence));
     }
 
     /// <summary>
@@ -150,7 +150,7 @@ public class FmotifDividerTests
 
         // создание результирующей цепочки фмотивов
         // вычисление, опрделение, разбиение на  ф-мотивы данного монотрека
-        FmotifChain fmchain = fmdivider.GetDivision(unitrack, PauseTreatment.Ignore);
+        FmotifSequence fmotifSequence = fmdivider.GetDivision(unitrack, PauseTreatment.Ignore);
 
         // создание аналогов ф-мотивов, которые должны получиться, после разбиения
         // процедура определения одинаковых на данном этапе не производится
@@ -167,12 +167,12 @@ public class FmotifDividerTests
         fmotif3.NoteList.Add(new ValueNote(new Pitch(3, NoteSymbol.E, 0), new Duration(1, 4, false), false, Tie.None));
 
         // записываем ф-мотивы в цепь ф-мотивов, которая будет сравниваться с получившейся
-        FmotifChain fmchain1 = new();
-        fmchain1.FmotifsList.Add(fmotif1);
-        fmchain1.FmotifsList.Add(fmotif2);
-        fmchain1.FmotifsList.Add(fmotif3);
+        FmotifSequence secondFmotifSequence = new();
+        secondFmotifSequence.FmotifsList.Add(fmotif1);
+        secondFmotifSequence.FmotifsList.Add(fmotif2);
+        secondFmotifSequence.FmotifsList.Add(fmotif3);
 
-        Assert.That(fmchain1, Is.EqualTo(fmchain));
+        Assert.That(secondFmotifSequence, Is.EqualTo(fmotifSequence));
     }
 
     /// <summary>
@@ -203,7 +203,7 @@ public class FmotifDividerTests
 
         // создание результирующей цепочки фмотивов
         // вычисление, опрделение, разбиение на  ф-мотивы данного монотрека
-        FmotifChain fmchain = fmdivider.GetDivision(unitrack, PauseTreatment.Ignore);
+        FmotifSequence fmotifSequence = fmdivider.GetDivision(unitrack, PauseTreatment.Ignore);
 
         // создание аналогов ф-мотивов, которые должны получиться, после разбиения
         // процедура определения одинаковых на данном этапе не производится
@@ -214,10 +214,10 @@ public class FmotifDividerTests
         fmotif1.NoteList.Add(new ValueNote(new Pitch(3, NoteSymbol.A, 0), new Duration(1, 4, false), false, Tie.None));
 
         // записываем ф-мотивы в цепь ф-мотивов, которая будет сравниваться с получившейся
-        FmotifChain fmchain1 = new();
-        fmchain1.FmotifsList.Add(fmotif1);
+        FmotifSequence secondFmotifSequence = new();
+        secondFmotifSequence.FmotifsList.Add(fmotif1);
 
-        Assert.That(fmchain1, Is.EqualTo(fmchain));
+        Assert.That(secondFmotifSequence, Is.EqualTo(fmotifSequence));
     }
 
     /// <summary>
@@ -250,7 +250,7 @@ public class FmotifDividerTests
 
         // создание результирующей цепочки фмотивов
         // вычисление, опрделение, разбиение на  ф-мотивы данного монотрека
-        FmotifChain fmchain = fmdivider.GetDivision(unitrack, PauseTreatment.Ignore);
+        FmotifSequence fmotifSequence = fmdivider.GetDivision(unitrack, PauseTreatment.Ignore);
 
         // создание аналогов ф-мотивов, которые должны получиться, после разбиения
         // процедура определения одинаковых на данном этапе не производится
@@ -265,11 +265,11 @@ public class FmotifDividerTests
         fmotif2.NoteList.Add(new ValueNote(new Pitch(3, NoteSymbol.B, 0), new Duration(1, 8, false), false, Tie.None));
 
         // записываем ф-мотивы в цепь ф-мотивов, которая будет сравниваться с получившейся
-        FmotifChain fmchain1 = new();
-        fmchain1.FmotifsList.Add(fmotif1);
-        fmchain1.FmotifsList.Add(fmotif2);
+        FmotifSequence secondFmotifSequence = new();
+        secondFmotifSequence.FmotifsList.Add(fmotif1);
+        secondFmotifSequence.FmotifsList.Add(fmotif2);
 
-        Assert.That(fmchain1, Is.EqualTo(fmchain));
+        Assert.That(secondFmotifSequence, Is.EqualTo(fmotifSequence));
     }
 
     /// <summary>
@@ -302,7 +302,7 @@ public class FmotifDividerTests
 
         // создание результирующей цепочки фмотивов
         // вычисление, опрделение, разбиение на  ф-мотивы данного монотрека
-        FmotifChain fmchain = fmdivider.GetDivision(unitrack, PauseTreatment.Ignore);
+        FmotifSequence fmotifSequence = fmdivider.GetDivision(unitrack, PauseTreatment.Ignore);
 
         // создание аналогов ф-мотивов, которые должны получиться, после разбиения
         // процедура определения одинаковых на данном этапе не производится
@@ -319,12 +319,12 @@ public class FmotifDividerTests
         fmotif3.NoteList.Add(new ValueNote(new Pitch(3, NoteSymbol.A, Accidental.DoubleSharp), new Duration(1, 16, false), false, Tie.None));
 
         // записываем ф-мотивы в цепь ф-мотивов, которая будет сравниваться с получившейся
-        FmotifChain fmchain1 = new();
-        fmchain1.FmotifsList.Add(fmotif1);
-        fmchain1.FmotifsList.Add(fmotif2);
-        fmchain1.FmotifsList.Add(fmotif3);
+        FmotifSequence secondFmotifSequence = new();
+        secondFmotifSequence.FmotifsList.Add(fmotif1);
+        secondFmotifSequence.FmotifsList.Add(fmotif2);
+        secondFmotifSequence.FmotifsList.Add(fmotif3);
 
-        Assert.That(fmchain1, Is.EqualTo(fmchain));
+        Assert.That(secondFmotifSequence, Is.EqualTo(fmotifSequence));
     }
 
     /// <summary>
@@ -355,7 +355,7 @@ public class FmotifDividerTests
 
         // создание результирующей цепочки фмотивов
         // вычисление, опрделение, разбиение на  ф-мотивы данного монотрека
-        FmotifChain fmchain = fmdivider.GetDivision(unitrack, PauseTreatment.Ignore);
+        FmotifSequence fmotifSequence = fmdivider.GetDivision(unitrack, PauseTreatment.Ignore);
 
         // создание аналогов ф-мотивов, которые должны получиться, после разбиения
         // процедура определения одинаковых на данном этапе не производится
@@ -365,10 +365,10 @@ public class FmotifDividerTests
         fmotif1.NoteList.Add(new ValueNote(new Pitch(3, NoteSymbol.B, 0), new Duration(1, 8, false), false, Tie.None));
 
         // записываем ф-мотивы в цепь ф-мотивов, которая будет сравниваться с получившейся
-        FmotifChain fmchain1 = new();
-        fmchain1.FmotifsList.Add(fmotif1);
+        FmotifSequence secondFmotifSequence = new();
+        secondFmotifSequence.FmotifsList.Add(fmotif1);
 
-        Assert.That(fmchain1, Is.EqualTo(fmchain));
+        Assert.That(secondFmotifSequence, Is.EqualTo(fmotifSequence));
     }
 
     /// <summary>
@@ -400,7 +400,7 @@ public class FmotifDividerTests
 
         // создание результирующей цепочки фмотивов
         // вычисление, опрделение, разбиение на  ф-мотивы данного монотрека
-        FmotifChain fmchain = fmdivider.GetDivision(unitrack, PauseTreatment.Ignore);
+        FmotifSequence fmotifSequence = fmdivider.GetDivision(unitrack, PauseTreatment.Ignore);
 
         // создание аналогов ф-мотивов, которые должны получиться, после разбиения
         // процедура определения одинаковых на данном этапе не производится
@@ -411,10 +411,10 @@ public class FmotifDividerTests
         fmotif1.NoteList.Add(new ValueNote(new Pitch(3, NoteSymbol.B, 0), new Duration(1, 8, false), false, Tie.None));
 
         // записываем ф-мотивы в цепь ф-мотивов, которая будет сравниваться с получившейся
-        FmotifChain fmchain1 = new();
-        fmchain1.FmotifsList.Add(fmotif1);
+        FmotifSequence secondFmotifSequence = new();
+        secondFmotifSequence.FmotifsList.Add(fmotif1);
 
-        Assert.That(fmchain1, Is.EqualTo(fmchain));
+        Assert.That(secondFmotifSequence, Is.EqualTo(fmotifSequence));
     }
 
     /// <summary>
@@ -446,7 +446,7 @@ public class FmotifDividerTests
 
         // создание результирующей цепочки фмотивов
         // вычисление, опрделение, разбиение на  ф-мотивы данного монотрека
-        FmotifChain fmchain = fmdivider.GetDivision(unitrack, PauseTreatment.SilenceNote);
+        FmotifSequence fmofifSequence = fmdivider.GetDivision(unitrack, PauseTreatment.SilenceNote);
 
         // создание аналогов ф-мотивов, которые должны получиться, после разбиения
         // процедура определения одинаковых на данном этапе не производится
@@ -458,14 +458,14 @@ public class FmotifDividerTests
         fmotif2.NoteList.Add(new ValueNote(new Pitch(3, NoteSymbol.B, 0), new Duration(1, 8, false), false, Tie.None));
 
         // записываем ф-мотивы в цепь ф-мотивов, которая будет сравниваться с получившейся
-        FmotifChain fmchain1 = new();
-        fmchain1.FmotifsList.Add(fmotif1);
-        fmchain1.FmotifsList.Add(fmotif2);
+        FmotifSequence secondFmotifSequence = new();
+        secondFmotifSequence.FmotifsList.Add(fmotif1);
+        secondFmotifSequence.FmotifsList.Add(fmotif2);
 
         Assert.That(fmotif1.FmEquals(fmotif1, PauseTreatment.SilenceNote, true));
         Assert.That(fmotif2.FmEquals(fmotif2, PauseTreatment.SilenceNote, true));
-        Assert.That(fmchain.FmotifsList[0].FmEquals(fmotif1, PauseTreatment.SilenceNote, true));
-        Assert.That(fmchain.FmotifsList[1].FmEquals(fmotif2, PauseTreatment.SilenceNote, true));
-        Assert.That(fmchain1, Is.EqualTo(fmchain));
+        Assert.That(fmofifSequence.FmotifsList[0].FmEquals(fmotif1, PauseTreatment.SilenceNote, true));
+        Assert.That(fmofifSequence.FmotifsList[1].FmEquals(fmotif2, PauseTreatment.SilenceNote, true));
+        Assert.That(secondFmotifSequence, Is.EqualTo(fmofifSequence));
     }
 }

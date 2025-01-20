@@ -3,7 +3,7 @@
 using System.ComponentModel;
 
 /// <summary>
-/// Creates a method for extracting a word in the chain based on a concrete rule
+/// Creates a method for extracting a word in the sequence based on a concrete rule.
 /// </summary>
 public static class WordExtractorFactory
 {

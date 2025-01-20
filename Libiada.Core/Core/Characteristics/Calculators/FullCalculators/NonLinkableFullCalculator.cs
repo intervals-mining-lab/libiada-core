@@ -8,7 +8,7 @@ public abstract class NonLinkableFullCalculator : IFullCalculator
     /// <summary>
     /// Calculates the characteristic.
     /// </summary>
-    /// <param name="chain">
+    /// <param name="sequence">
     /// Source sequence.
     /// </param>
     /// <param name="link">
@@ -20,24 +20,24 @@ public abstract class NonLinkableFullCalculator : IFullCalculator
     /// <exception cref="ArgumentException">
     /// Thrown if wrong <see cref="Link"/> is provided.
     /// </exception>
-    public double Calculate(Chain chain, Link link)
+    public double Calculate(ComposedSequence sequence, Link link)
     {
         if (link != Link.NotApplied)
         {
             throw new ArgumentException("Not linkable characteristic calculator provided with link");
         }
 
-        return Calculate(chain);
+        return Calculate(sequence);
     }
 
     /// <summary>
     /// Main calculation method.
     /// </summary>
-    /// <param name="chain">
-    /// The chain.
+    /// <param name="sequence">
+    /// The sequence.
     /// </param>
     /// <returns>
     /// The <see cref="double"/>.
     /// </returns>
-    public abstract double Calculate(Chain chain);
+    public abstract double Calculate(ComposedSequence sequence);
 }

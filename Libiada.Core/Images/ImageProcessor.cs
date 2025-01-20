@@ -26,9 +26,9 @@ public static class ImageProcessor
     /// The order extractor.
     /// </param>
     /// <returns>
-    /// The <see cref="BaseChain"/>.
+    /// The <see cref="Sequence"/>.
     /// </returns>
-    public static BaseChain ProcessImage(Image<Rgba32> image, IImageTransformer[] imageTransformers, IMatrixTransformer[] matrixTransformers, IImageOrderExtractor orderExtractor)
+    public static Sequence ProcessImage(Image<Rgba32> image, IImageTransformer[] imageTransformers, IMatrixTransformer[] matrixTransformers, IImageOrderExtractor orderExtractor)
     {
         for (int i = 0; i < imageTransformers.Length; i++)
         {

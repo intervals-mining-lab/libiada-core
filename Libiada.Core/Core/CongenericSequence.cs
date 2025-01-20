@@ -6,9 +6,9 @@ using ArrangementManagers;
 using SimpleTypes;
 
 /// <summary>
-/// The congeneric chain.
+/// The congeneric sequence.
 /// </summary>
-public class CongenericChain : AbstractChain
+public class CongenericSequence : AbstractSequence
 {
     /// <summary>
     /// Gets or sets the current arrangement type.
@@ -26,7 +26,7 @@ public class CongenericChain : AbstractChain
     private readonly List<int> positions = [];
 
     /// <summary>
-    /// The chain length.
+    /// The sequence length.
     /// </summary>
     private int length;
 
@@ -46,34 +46,34 @@ public class CongenericChain : AbstractChain
     private IArrangementManager seriesIntervalsManager;
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="CongenericChain"/> class.
+    /// Initializes a new instance of the <see cref="CongenericSequence"/> class.
     /// </summary>
     /// <param name="element">
     /// Element of this congeneric sequence.
     /// </param>
     /// <param name="length">
-    /// Length of this chain.
+    /// Length of this sequence.
     /// </param>
-    public CongenericChain(IBaseObject element, int length)
+    public CongenericSequence(IBaseObject element, int length)
     {
         this.element = element;
         this.length = length;
     }
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="CongenericChain"/> class.
+    /// Initializes a new instance of the <see cref="CongenericSequence"/> class.
     /// </summary>
     /// <param name="element">
     /// The element.
     /// </param>
-    public CongenericChain(IBaseObject element)
+    public CongenericSequence(IBaseObject element)
     {
         this.element = element;
         length = 0;
     }
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="CongenericChain"/> class.
+    /// Initializes a new instance of the <see cref="CongenericSequence"/> class.
     /// </summary>
     /// <param name="positions">
     /// The positions of all elements in congeneric sequence.
@@ -82,9 +82,9 @@ public class CongenericChain : AbstractChain
     /// Element of this congeneric sequence.
     /// </param>
     /// <param name="length">
-    /// Length of this chain.
+    /// Length of this sequence.
     /// </param>
-    public CongenericChain(List<int> positions, IBaseObject element, int length)
+    public CongenericSequence(List<int> positions, IBaseObject element, int length)
     {
         this.length = length;
         this.element = element.Clone();
@@ -92,7 +92,7 @@ public class CongenericChain : AbstractChain
     }
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="CongenericChain"/> class.
+    /// Initializes a new instance of the <see cref="CongenericSequence"/> class.
     /// </summary>
     /// <param name="map">
     /// The map of elements.
@@ -100,7 +100,7 @@ public class CongenericChain : AbstractChain
     /// <param name="element">
     /// Element of this congeneric sequence.
     /// </param>
-    public CongenericChain(bool[] map, IBaseObject element)
+    public CongenericSequence(bool[] map, IBaseObject element)
     {
         length = map.Length;
         this.element = element;
@@ -119,7 +119,7 @@ public class CongenericChain : AbstractChain
     public int OccurrencesCount => positions.Count;
 
     /// <summary>
-    /// Gets element chain filled with.
+    /// Gets element sequence filled with.
     /// </summary>
     public IBaseObject Element => element.Clone();
 
@@ -152,11 +152,11 @@ public class CongenericChain : AbstractChain
     }
 
     /// <summary>
-    /// Deletes chain (order and alphabet) and creates new empty chain with given length.
-    /// Saves old element (alphabet) of chain.
+    /// Deletes sequence (order and alphabet) and creates new empty sequence with given length.
+    /// Saves old element (alphabet) of the sequence.
     /// </summary>
     /// <param name="newLength">
-    /// New chain length.
+    /// New sequence length.
     /// </param>
     /// <exception cref="ArgumentException">
     /// Thrown if new length is less than 0.
@@ -165,7 +165,7 @@ public class CongenericChain : AbstractChain
     {
         if (newLength < 0)
         {
-            throw new ArgumentException("Chain length shouldn't be less than 0.");
+            throw new ArgumentException("Sequence length shouldn't be less than 0.");
         }
 
         intervalsManager = null;
@@ -180,7 +180,7 @@ public class CongenericChain : AbstractChain
     /// The link.
     /// </param>
     /// <returns>
-    /// The <see cref="int[]"/>.
+    /// The <see cref="T:int[]"/>.
     /// </returns>
     public int[] GetArrangement(Link link)
     {
@@ -200,7 +200,7 @@ public class CongenericChain : AbstractChain
     /// The link.
     /// </param>
     /// <returns>
-    /// The <see cref="T:List{int}"/>.
+    /// The <see cref="List{int}"/>.
     /// </returns>
     public int[] GetIntervals(Link link)
     {
@@ -219,7 +219,7 @@ public class CongenericChain : AbstractChain
     /// The link.
     /// </param>
     /// <returns>
-    /// The <see cref="int[]"/>.
+    /// The <see cref="T:int[]"/>.
     /// </returns>
     public int[] GetSeries(Link link)
     {
@@ -238,7 +238,7 @@ public class CongenericChain : AbstractChain
     /// The link.
     /// </param>
     /// <returns>
-    /// The <see cref="int[]"/>.
+    /// The <see cref="T:int[]"/>.
     /// </returns>
     public int[] GetSeriesAndIntervals(Link link)
     {
@@ -252,7 +252,7 @@ public class CongenericChain : AbstractChain
 
 
     /// <summary>
-    /// Returns position of given occurrence of element of this chain.
+    /// Returns position of given occurrence of element of this sequence.
     /// If occurrence not found returns -1.
     /// </summary>
     /// <param name="occurrence">
@@ -298,8 +298,8 @@ public class CongenericChain : AbstractChain
 
     /// <summary>
     /// Sets item in provided position.
-    /// Clears position if element not from this chain.
-    /// Does nothing if position is empty and element not from this chain.
+    /// Clears position if element not from this sequence.
+    /// Does nothing if position is empty and element not from this sequence.
     /// </summary>
     /// <param name="item">
     /// The item.
@@ -352,7 +352,7 @@ public class CongenericChain : AbstractChain
     /// <summary>
     /// Deletes given position.
     /// Clears element from position if any.
-    /// Reduces chain length by 1.
+    /// Reduces sequence length by 1.
     /// </summary>
     /// <param name="index">
     /// The index of position.
@@ -374,7 +374,7 @@ public class CongenericChain : AbstractChain
 
     /// <summary>
     /// Removes element from given position.
-    /// Also clears interval manager of chain.
+    /// Also clears interval manager of sequence.
     /// </summary>
     /// <param name="index">
     /// Index of position.
@@ -386,7 +386,7 @@ public class CongenericChain : AbstractChain
     }
 
     /// <summary>
-    /// Sets interval manager of chain.
+    /// Sets interval manager of the sequence.
     /// </summary>
     /// <param name="intervals">
     /// The intervals.
@@ -424,19 +424,19 @@ public class CongenericChain : AbstractChain
             return true;
         }
 
-        return obj is CongenericChain other
+        return obj is CongenericSequence other
             && element.Equals(other.Element)
             && length == other.length
             && positions.SequenceEqual(other.positions);
     }
 
     /// <summary>
-    /// Creates clone of this chain.
+    /// Creates clone of this sequence.
     /// </summary>
     /// <returns>
     /// The <see cref="IBaseObject"/>.
     /// </returns>
-    public override IBaseObject Clone() => new CongenericChain(positions, Element, length)
+    public override IBaseObject Clone() => new CongenericSequence(positions, Element, length)
     {
         CurrentArrangementType = CurrentArrangementType
     };

@@ -10,11 +10,11 @@ public class PartialComplianceDegree : IAccordanceCalculator
     /// <summary>
     /// Calculation methods.
     /// </summary>
-    /// <param name="firstChain">
-    /// The first chain.
+    /// <param name="firstSequence">
+    /// The first sequence.
     /// </param>
-    /// <param name="secondChain">
-    /// The second chain.
+    /// <param name="secondSequence">
+    /// The second sequence.
     /// </param>
     /// <param name="link">
     /// The link.
@@ -22,9 +22,9 @@ public class PartialComplianceDegree : IAccordanceCalculator
     /// <returns>
     /// The <see cref="double"/>.
     /// </returns>
-    public double Calculate(CongenericChain firstChain, CongenericChain secondChain, Link link)
+    public double Calculate(CongenericSequence firstSequence, CongenericSequence secondSequence, Link link)
     {
-        AccordanceIntervalsManager manager = new(firstChain, secondChain, link);
+        AccordanceIntervalsManager manager = new(firstSequence, secondSequence, link);
         if (manager.FilteredFirstIntervals.Count == 0)
         {
             return 0;

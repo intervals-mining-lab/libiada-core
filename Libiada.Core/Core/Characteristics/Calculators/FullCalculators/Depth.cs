@@ -10,7 +10,7 @@ public class Depth : IFullCalculator
     /// of intervals between nearest elements
     /// in congeneric sequence.
     /// </summary>
-    /// <param name="chain">
+    /// <param name="sequence">
     /// Source sequence.
     /// </param>
     /// <param name="link">
@@ -19,15 +19,15 @@ public class Depth : IFullCalculator
     /// <returns>
     /// Average remoteness <see cref="double"/> value.
     /// </returns>
-    public double Calculate(Chain chain, Link link)
+    public double Calculate(ComposedSequence sequence, Link link)
     {
         CongenericCalculators.Depth calculator = new();
 
         double result = 0;
-        int alphabetCardinality = chain.Alphabet.Cardinality;
+        int alphabetCardinality = sequence.Alphabet.Cardinality;
         for (int i = 0; i < alphabetCardinality; i++)
         {
-            result += calculator.Calculate(chain.CongenericChain(i), link);
+            result += calculator.Calculate(sequence.CongenericSequence(i), link);
         }
 
         return result;

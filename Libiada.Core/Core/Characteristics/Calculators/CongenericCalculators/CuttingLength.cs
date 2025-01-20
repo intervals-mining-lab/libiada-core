@@ -10,54 +10,54 @@ public class CuttingLength : NonLinkableCongenericCalculator
     /// <summary>
     /// Calculation method.
     /// </summary>
-    /// <param name="chain">
+    /// <param name="sequence">
     /// Source sequence.
     /// </param>
     /// <returns>
     /// Cut length as <see cref="double"/>.
     /// </returns>
-    public override double Calculate(CongenericChain chain)
+    public override double Calculate(CongenericSequence sequence)
     {
-        return CutCommon(chain);
+        return CutCommon(sequence);
     }
 
     /// <summary>
     /// The cut common.
     /// </summary>
-    /// <param name="chain">
+    /// <param name="sequence">
     /// Source sequence.
     /// </param>
     /// <returns>
     /// <see cref="double"/>.
     /// </returns>
-    private double CutCommon(AbstractChain chain)
+    private double CutCommon(AbstractSequence sequence)
     {
-        for (int length = 1; length <= chain.Length; length++)
+        for (int length = 1; length <= sequence.Length; length++)
         {
-            if (IsRecoveryPossible(chain, length))
+            if (IsRecoveryPossible(sequence, length))
             {
                 return length;
             }
         }
 
-        return chain.Length;
+        return sequence.Length;
     }
 
     /// <summary>
     /// Checks if recovery possible.
     /// </summary>
-    /// <param name="chain">
+    /// <param name="sequence">
     /// Source sequence.
     /// </param>
     /// <param name="length">
     /// Length of L-gram.
     /// </param>
     /// <returns>
-    /// true if chain is recoverable form L-grams.
+    /// true if sequence is recoverable form L-grams.
     /// </returns>
-    private bool IsRecoveryPossible(AbstractChain chain, int length)
+    private bool IsRecoveryPossible(AbstractSequence sequence, int length)
     {
-        IteratorStart iterator = new(chain, length, 1);
+        IteratorStart iterator = new(sequence, length, 1);
         Alphabet alphabet = [];
 
         while (iterator.Next())

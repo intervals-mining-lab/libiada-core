@@ -4,9 +4,9 @@ using Libiada.Core.Core;
 using Libiada.Core.Iterators;
 
 /// <summary>
-/// The space reorganizer from chain to chain by block.
+/// The space reorganizer from sequence to sequence by block.
 /// </summary>
-public class SpaceReorganizerFromChainToChainByBlock : SpaceReorganizer
+public class SpaceReorganizerFromSequenceToSequenceByBlock : SpaceReorganizer
 {
     /// <summary>
     /// The link.
@@ -19,7 +19,7 @@ public class SpaceReorganizerFromChainToChainByBlock : SpaceReorganizer
     private readonly int blockSize;
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="SpaceReorganizerFromChainToChainByBlock"/> class.
+    /// Initializes a new instance of the <see cref="SpaceReorganizerFromSequenceToSequenceByBlock"/> class.
     /// </summary>
     /// <param name="link">
     /// The link.
@@ -27,24 +27,24 @@ public class SpaceReorganizerFromChainToChainByBlock : SpaceReorganizer
     /// <param name="blockSize">
     /// The block size.
     /// </param>
-    public SpaceReorganizerFromChainToChainByBlock(Link link, int blockSize)
+    public SpaceReorganizerFromSequenceToSequenceByBlock(Link link, int blockSize)
     {
         this.link = link;
         this.blockSize = blockSize;
     }
 
     /// <summary>
-    /// Reorganizes <see cref="AbstractChain"/> into <see cref="AbstractChain"/>.
+    /// Reorganizes <see cref="AbstractSequence"/> into <see cref="AbstractSequence"/>.
     /// </summary>
     /// <param name="source">
-    /// Source chain.
+    /// Source sequence.
     /// </param>
     /// <returns>
-    /// The <see cref="AbstractChain"/>.
+    /// The <see cref="AbstractSequence"/>.
     /// </returns>
-    public override AbstractChain Reorganize(AbstractChain source)
+    public override AbstractSequence Reorganize(AbstractSequence source)
     {
-        BaseChain result = new();
+        Sequence result = new();
         result.ClearAndSetNewLength(source.Length / blockSize);
         IteratorBase iteratorFrom;
         IWritableIterator iteratorTo;

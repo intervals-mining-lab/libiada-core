@@ -10,10 +10,10 @@ using Libiada.Core.Core.Characteristics.Calculators.FullCalculators;
 public class IntervalsSumTests : FullCalculatorsTests<IntervalsSum>
 {
     /// <summary>
-    /// The chain calculation test.
+    /// The sequence calculation test.
     /// </summary>
     /// <param name="index">
-    /// Full sequence index in <see cref="ChainsStorage"/>.
+    /// Full sequence index in <see cref="SequencesStorage"/>.
     /// </param>
     /// <param name="link">
     /// The link.
@@ -38,16 +38,16 @@ public class IntervalsSumTests : FullCalculatorsTests<IntervalsSum>
     [TestCase(4, Link.End, 4)]
     [TestCase(4, Link.Both, 5)]
     [TestCase(4, Link.Cycle, 4)]
-    public void ChainCalculationTest(int index, Link link, double value)
+    public void SequenceCalculationTest(int index, Link link, double value)
     {
-        ChainCharacteristicTest(index, link, value);
+        SequenceCharacteristicTest(index, link, value);
     }
 
     /// <summary>
     /// No intervals test.
     /// </summary>
     /// <param name="index">
-    /// Full sequence index in <see cref="ChainsStorage"/>.
+    /// Full sequence index in <see cref="SequencesStorage"/>.
     /// </param>
     /// <param name="link">
     /// The link.
@@ -60,6 +60,6 @@ public class IntervalsSumTests : FullCalculatorsTests<IntervalsSum>
     [TestCase(7, Link.None, 0)]
     public void NoIntervalsTest(int index, Link link, double value)
     {
-        ChainCharacteristicTest(index, link, value);
+        SequenceCharacteristicTest(index, link, value);
     }
 }

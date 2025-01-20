@@ -15,15 +15,15 @@ public class SeriesManager : IArrangementManager
     /// <summary>
     /// Initializes series manager with given sequence.
     /// </summary>
-    /// <param name="chain">
-    /// The chain.
+    /// <param name="sequence">
+    /// The sequence.
     /// </param>
-    public SeriesManager(CongenericChain chain)
+    public SeriesManager(CongenericSequence sequence)
     {
         series = [];
-        for (int i = 1; i <= chain.OccurrencesCount; i++)
+        for (int i = 1; i <= sequence.OccurrencesCount; i++)
         {
-            series.Add(GetSeries(chain, i));
+            series.Add(GetSeries(sequence, i));
         }
     }
 
@@ -49,20 +49,20 @@ public class SeriesManager : IArrangementManager
     /// <summary>
     /// Gets series from given occurrence.
     /// </summary>
-    /// <param name="chain">
-    /// The chain.
+    /// <param name="sequence">
+    /// The sequence.
     /// </param>
     /// <param name="occurrence">
     /// Occurrence index of the element.
     /// </param>
     /// <returns>
-    /// The <see cref="T:(int, int)"/>.
+    /// The <see cref="(int, int)"/>.
     /// </returns>
-    private (int start, int length) GetSeries(CongenericChain chain, int occurrence)
+    private (int start, int length) GetSeries(CongenericSequence sequence, int occurrence)
     {
         int counter = 0;
-        int position = chain.GetOccurrence(occurrence);
-        while (!chain[position + counter].Equals(NullValue.Instance()))
+        int position = sequence.GetOccurrence(occurrence);
+        while (!sequence[position + counter].Equals(NullValue.Instance()))
         {
             counter++;
         }

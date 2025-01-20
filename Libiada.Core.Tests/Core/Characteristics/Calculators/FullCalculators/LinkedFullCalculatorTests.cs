@@ -12,7 +12,7 @@ public class LinkedFullCalculatorTests
     /// <summary>
     /// The test sequences.
     /// </summary>
-    private readonly List<Chain> sequences = ChainsStorage.Chains;
+    private readonly List<ComposedSequence> sequences = SequencesStorage.CompusedSequences;
 
     /// <summary>
     /// Linked full characteristic calculator tests.

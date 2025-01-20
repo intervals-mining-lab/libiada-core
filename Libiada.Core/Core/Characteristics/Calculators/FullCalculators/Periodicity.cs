@@ -8,7 +8,7 @@ public class Periodicity : IFullCalculator
     /// <summary>
     /// Calculation method.
     /// </summary>
-    /// <param name="chain">
+    /// <param name="sequence">
     /// Source sequence.
     /// </param>
     /// <param name="link">
@@ -17,12 +17,12 @@ public class Periodicity : IFullCalculator
     /// <returns>
     /// Periodicity as <see cref="double"/>.
     /// </returns>
-    public double Calculate(Chain chain, Link link)
+    public double Calculate(ComposedSequence sequence, Link link)
     {
-        double arithmeticMean = new ArithmeticMean().Calculate(chain, link);
+        double arithmeticMean = new ArithmeticMean().Calculate(sequence, link);
         if (arithmeticMean == 0) return 0;
 
-        double geometricMean = new GeometricMean().Calculate(chain, link);
+        double geometricMean = new GeometricMean().Calculate(sequence, link);
         
         return geometricMean / arithmeticMean;
     }

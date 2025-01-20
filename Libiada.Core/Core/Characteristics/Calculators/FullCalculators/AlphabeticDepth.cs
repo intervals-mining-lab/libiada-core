@@ -8,7 +8,7 @@ public class AlphabeticDepth : IFullCalculator
     /// <summary>
     /// Logarithm of all intervals multiplied.
     /// </summary>
-    /// <param name="chain">
+    /// <param name="sequence">
     /// Source sequence.
     /// </param>
     /// <param name="link">
@@ -17,15 +17,15 @@ public class AlphabeticDepth : IFullCalculator
     /// <returns>
     /// <see cref="double"/> value of alphabetic average remoteness.
     /// </returns>
-    public double Calculate(Chain chain, Link link)
+    public double Calculate(ComposedSequence sequence, Link link)
     {
         double result = 0;
-        int alphabetCardinality = chain.Alphabet.Cardinality;
+        int alphabetCardinality = sequence.Alphabet.Cardinality;
         if (alphabetCardinality <= 1) return 0;
 
         for (int i = 0; i < alphabetCardinality; i++)
         {
-            result += Calculate(chain.CongenericChain(i), link, alphabetCardinality);
+            result += Calculate(sequence.CongenericSequence(i), link, alphabetCardinality);
         }
 
         return result;
@@ -34,7 +34,7 @@ public class AlphabeticDepth : IFullCalculator
     /// <summary>
     /// Logarithm of all intervals multiplied.
     /// </summary>
-    /// <param name="chain">
+    /// <param name="sequence">
     /// Source sequence.
     /// </param>
     /// <param name="link">
@@ -49,9 +49,9 @@ public class AlphabeticDepth : IFullCalculator
     /// <exception cref="ArgumentException">
     /// Thrown if link is unknown.
     /// </exception>
-    private double Calculate(CongenericChain chain, Link link, int alphabetCardinality)
+    private double Calculate(CongenericSequence sequence, Link link, int alphabetCardinality)
     {
-        int[] intervals = chain.GetArrangement(link);
+        int[] intervals = sequence.GetArrangement(link);
         if (intervals.Length == 0) return 0;
 
         return intervals.Sum(interval => Math.Log(interval, alphabetCardinality));

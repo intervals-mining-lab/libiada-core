@@ -8,7 +8,7 @@ public class GeometricMean : IFullCalculator
     /// <summary>
     /// Calculation method.
     /// </summary>
-    /// <param name="chain">
+    /// <param name="sequence">
     /// Source sequence.
     /// </param>
     /// <param name="link">
@@ -17,12 +17,12 @@ public class GeometricMean : IFullCalculator
     /// <returns>
     /// Average geometric of intervals lengths as <see cref="double"/>.
     /// </returns>
-    public double Calculate(Chain chain, Link link)
+    public double Calculate(ComposedSequence sequence, Link link)
     {
-        double intervalsCount = new IntervalsCount().Calculate(chain, link);
+        double intervalsCount = new IntervalsCount().Calculate(sequence, link);
         if (intervalsCount == 0) return 0;
 
-        double remoteness = new AverageRemoteness().Calculate(chain, link);
+        double remoteness = new AverageRemoteness().Calculate(sequence, link);
 
         return Math.Pow(2, remoteness);
     }

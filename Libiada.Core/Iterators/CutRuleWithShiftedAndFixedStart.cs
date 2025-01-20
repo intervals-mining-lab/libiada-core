@@ -9,7 +9,7 @@ public class CutRuleWithShiftedAndFixedStart : CutRule
     /// Initializes a new instance of the <see cref="CutRuleWithShiftedAndFixedStart"/> class.
     /// </summary>
     /// <param name="length">
-    /// Length of source chain.
+    /// Length of the source sequence.
     /// </param>
     /// <param name="step">
     /// Size of shift in elements.

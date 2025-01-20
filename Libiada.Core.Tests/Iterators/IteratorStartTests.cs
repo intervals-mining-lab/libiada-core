@@ -10,9 +10,9 @@ using Libiada.Core.Iterators;
 public class IteratorStartTests
 {
     /// <summary>
-    /// The chain to iterate.
+    /// The sequence to iterate.
     /// </summary>
-    private Chain chainToIterate;
+    private ComposedSequence sequenceToIterate;
 
     /// <summary>
     /// Tests initialization method.
@@ -20,7 +20,7 @@ public class IteratorStartTests
     [SetUp]
     public void Initialization()
     {
-        chainToIterate = new Chain("121331212231");
+        sequenceToIterate = new ComposedSequence("121331212231");
     }
 
     /// <summary>
@@ -31,8 +31,8 @@ public class IteratorStartTests
     {
         const int length = 3;
         const int step = 1;
-        IteratorStart iterator = new(chainToIterate, length, step);
-        List<Chain> message2 =
+        IteratorStart iterator = new(sequenceToIterate, length, step);
+        List<ComposedSequence> message2 =
                            [
                                new("121"),
                                new("213"),
@@ -49,7 +49,7 @@ public class IteratorStartTests
         int i = 0;
         while (iterator.Next())
         {
-            AbstractChain message1 = iterator.Current();
+            AbstractSequence message1 = iterator.Current();
             Assert.That(message2[i++], Is.EqualTo(message1));
         }
 
@@ -64,13 +64,13 @@ public class IteratorStartTests
     {
         const int length = 3;
         const int step = 3;
-        IteratorStart iterator = new(chainToIterate, length, step);
-        List<Chain> message2 = [new("121"), new("331"), new("212"), new("231")];
+        IteratorStart iterator = new(sequenceToIterate, length, step);
+        List<ComposedSequence> message2 = [new("121"), new("331"), new("212"), new("231")];
 
         int i = 0;
         while (iterator.Next())
         {
-            AbstractChain message1 = iterator.Current();
+            AbstractSequence message1 = iterator.Current();
             Assert.That(message2[i++], Is.EqualTo(message1));
         }
 

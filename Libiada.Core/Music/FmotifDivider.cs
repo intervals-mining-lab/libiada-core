@@ -25,30 +25,30 @@ public class FmotifDivider
     /// The param pause treatment.
     /// </param>
     /// <returns>
-    /// The <see cref="FmotifChain"/>.
+    /// The <see cref="FmotifSequence"/>.
     /// </returns>
     /// <exception cref="Exception">
     /// Thrown in many cases.
     /// </exception>
-    public FmotifChain GetDivision(CongenericScoreTrack congenericTrack, PauseTreatment pauseTreatment)
+    public FmotifSequence GetDivision(CongenericScoreTrack congenericTrack, PauseTreatment pauseTreatment)
     {
-        FmotifChain chain = new(); // выходная, результирующая цепочка разбитых ф-мотивов
+        FmotifSequence sequence = new(); // выходная, результирующая цепочка разбитых ф-мотивов
         this.pauseTreatment = pauseTreatment;
 
         Fmotif fmotifBuffer = new(FmotifType.None, pauseTreatment);
 
         // буффер для накопления нот, для последующего анализа его содержимого
-        List<ValueNote> noteChain = [];
+        List<ValueNote> noteSequence = [];
 
         // цепочка нот, куда поочередно складываются ноты из последовательности тактов
         // для дальнейшего их анализа и распределения по ф-мотивам.
 
-        // заполняем NoteChain всеми нотам из данной монофонической цепи unitrack
+        // заполняем Notesequence всеми нотам из данной монофонической цепи unitrack
         foreach (Measure measure in congenericTrack.MeasureList)
         {
             foreach (ValueNote note in measure.NoteList)
             {
-                noteChain.Add((ValueNote)note.Clone());
+                noteSequence.Add((ValueNote)note.Clone());
             }
         }
 
@@ -71,10 +71,10 @@ public class FmotifDivider
         bool combination = false;
 
         // пока анализируемая цепь содержит элементы, идет выполнение анализа ее содержимого
-        while (noteChain.Count > 0)
+        while (noteSequence.Count > 0)
         {
-            fmotifBuffer.NoteList.Add((ValueNote)noteChain[0].Clone());
-            noteChain.RemoveAt(0);
+            fmotifBuffer.NoteList.Add((ValueNote)noteSequence[0].Clone());
+            noteSequence.RemoveAt(0);
 
             // проверка на наличие лиги у очередной ноты, если есть то заносим в буффер все ноты, объединенные данной лигой
             if (fmotifBuffer.NoteList[^1].Tie != Tie.None)
@@ -84,18 +84,18 @@ public class FmotifDivider
                 {
                     // TODO: желательно сделать проверку когда собирается очередная лига,
                     // не будет ли пуста цепь нот, до того как лига закончится (будет флаг конца лиги)
-                    while (noteChain[0].Tie == Tie.Continue)
+                    while (noteSequence[0].Tie == Tie.Continue)
                     {
                         // пока продолжается лига, заносим ноты в буфер
-                        fmotifBuffer.NoteList.Add((ValueNote)noteChain[0].Clone());
-                        noteChain.RemoveAt(0);
+                        fmotifBuffer.NoteList.Add((ValueNote)noteSequence[0].Clone());
+                        noteSequence.RemoveAt(0);
                     }
 
-                    if (noteChain[0].Tie == Tie.End)
+                    if (noteSequence[0].Tie == Tie.End)
                     {
                         // если есть флаг конца лиги у очередной ноты, то заносим конечную ноту лиги в буфер
-                        fmotifBuffer.NoteList.Add((ValueNote)noteChain[0].Clone());
-                        noteChain.RemoveAt(0);
+                        fmotifBuffer.NoteList.Add((ValueNote)noteSequence[0].Clone());
+                        noteSequence.RemoveAt(0);
 
                         wasNote = true; // была нота пермещена в буфер
 
@@ -112,10 +112,10 @@ public class FmotifDivider
                                 break;
                             case PauseTreatment.NoteTrace:
                                 // длительность паузы прибавляется к предыдущей ноте, а она сама удаляется из текста (1) (пауза - звуковой след ноты)
-                                if (noteChain.Count > 0)
+                                if (noteSequence.Count > 0)
                                 {
                                     // если следующая не паузы то переходим к анализу буфера
-                                    if (noteChain[0].Pitches.Count > 0)
+                                    if (noteSequence[0].Pitches.Count > 0)
                                     {
                                         next = true;
                                     }
@@ -169,10 +169,10 @@ public class FmotifDivider
                             wasNote = true;
                         }
 
-                        if (noteChain.Count > 0)
+                        if (noteSequence.Count > 0)
                         {
                             // если следующая в н. тексте не пауза то переходим к анализу буфера
-                            if ((noteChain[0].Pitches.Count > 0) && wasNote)
+                            if ((noteSequence[0].Pitches.Count > 0) && wasNote)
                             {
                                 next = true;
                             }
@@ -217,7 +217,7 @@ public class FmotifDivider
                     if (first.Duration.Value > second.Duration.Value)
                     {
                         // заносим ноты/паузы первой собранной ноты в очередной фмотив с типом ЧМТ, и удаляем из буфера
-                        Fmotif fm = new(FmotifType.PartialMinimalMeasure, pauseTreatment, chain.FmotifsList.Count);
+                        Fmotif fm = new(FmotifType.PartialMinimalMeasure, pauseTreatment, sequence.FmotifsList.Count);
                         for (int i = 0; i < n; i++)
                         {
                             // заносим
@@ -228,7 +228,7 @@ public class FmotifDivider
                         }
 
                         // добавляем в выходную цепочку получившийся фмотив
-                        chain.FmotifsList.Add((Fmotif)fm.Clone());
+                        sequence.FmotifsList.Add((Fmotif)fm.Clone());
 
                         // сохранили n на случай если за этим фмотивом следует еще один ЧМТ
                         n = fmotifBuffer.NoteList.Count;
@@ -287,10 +287,10 @@ public class FmotifDivider
                             for (int i = 0; i < (dividedSameDuration.Count - 1); i++)
                             {
                                 // заносим очередной фмотив
-                                chain.FmotifsList.Add((Fmotif)dividedSameDuration[i].Clone());
+                                sequence.FmotifsList.Add((Fmotif)dividedSameDuration[i].Clone());
 
                                 // присваиваем очередной id
-                                chain.FmotifsList[^1].Id = chain.FmotifsList.Count - 1;
+                                sequence.FmotifsList[^1].Id = sequence.FmotifsList.Count - 1;
                             }
 
                             // в буфер заносим последний фмотив цепочки фмотивов нот с равнодлительностью
@@ -345,10 +345,10 @@ public class FmotifDivider
                             foreach (Fmotif fmotif in DivideSameDurationNotes(fmotifBuffer))
                             {
                                 // заносим очередной фмотив
-                                chain.FmotifsList.Add((Fmotif)fmotif.Clone());
+                                sequence.FmotifsList.Add((Fmotif)fmotif.Clone());
 
                                 // присваиваем очередной id
-                                chain.FmotifsList[^1].Id = chain.FmotifsList.Count - 1;
+                                sequence.FmotifsList[^1].Id = sequence.FmotifsList.Count - 1;
                             }
 
                             // очищаем буффер
@@ -386,7 +386,7 @@ public class FmotifDivider
                                 // также сохраняем не вошедшую последнюю ноту (не удаляем ее)
                                 if (combination)
                                 {
-                                    Fmotif fm = new((byte)fmotifBuffer.Type + FmotifType.IncreasingSequence, pauseTreatment, chain.FmotifsList.Count);
+                                    Fmotif fm = new((byte)fmotifBuffer.Type + FmotifType.IncreasingSequence, pauseTreatment, sequence.FmotifsList.Count);
 
                                     // ЧМТВП или ПМТВП
                                     for (int i = 0; i < n; i++)
@@ -399,7 +399,7 @@ public class FmotifDivider
                                     }
 
                                     // добавляем в выходную цепочку получившийся фмотив
-                                    chain.FmotifsList.Add((Fmotif)fm.Clone());
+                                    sequence.FmotifsList.Add((Fmotif)fm.Clone());
 
                                     // сохранили сколько нот/пауз осталось в буфере от последней не вошедшей в фмотив ноты
                                     n = fmotifBuffer.NoteList.Count;
@@ -412,7 +412,7 @@ public class FmotifDivider
                                 }
                                 else
                                 {
-                                    Fmotif fm = new(FmotifType.IncreasingSequence, pauseTreatment, chain.FmotifsList.Count);
+                                    Fmotif fm = new(FmotifType.IncreasingSequence, pauseTreatment, sequence.FmotifsList.Count);
                                     for (int i = 0; i < n; i++)
                                     {
                                         // заносим
@@ -423,7 +423,7 @@ public class FmotifDivider
                                     }
 
                                     // добавляем в выходную цепочку получившийся фмотив
-                                    chain.FmotifsList.Add((Fmotif)fm.Clone());
+                                    sequence.FmotifsList.Add((Fmotif)fm.Clone());
 
                                     // сохранили сколько нот/пауз осталось в буфере от последней не вошедшей в фмотив ноты
                                     n = fmotifBuffer.NoteList.Count;
@@ -442,7 +442,7 @@ public class FmotifDivider
         if (ExtractNoteList(fmotifBuffer).Count == 1)
         {
             // заносим ноты/паузы 1 собранной ноты в очередной фмотив с типом ЧМТ, и удаляем из буфера
-            Fmotif fm = new(FmotifType.PartialMinimalMeasure, pauseTreatment, chain.FmotifsList.Count);
+            Fmotif fm = new(FmotifType.PartialMinimalMeasure, pauseTreatment, sequence.FmotifsList.Count);
 
             // for (int i = 0; i < FmotifBuffer.NoteList.Count; i++)
             foreach (ValueNote note in fmotifBuffer.NoteList)
@@ -452,7 +452,7 @@ public class FmotifDivider
             }
 
             // добавляем в выходную цепочку получившийся фмотив
-            chain.FmotifsList.Add((Fmotif)fm.Clone());
+            sequence.FmotifsList.Add((Fmotif)fm.Clone());
 
             // очищаем буффер
             fmotifBuffer.NoteList.Clear();
@@ -467,10 +467,10 @@ public class FmotifDivider
                 foreach (Fmotif fmotif in DivideSameDurationNotes(fmotifBuffer))
                 {
                     // заносим очередной фмотив
-                    chain.FmotifsList.Add((Fmotif)fmotif.Clone());
+                    sequence.FmotifsList.Add((Fmotif)fmotif.Clone());
 
                     // присваиваем очередной id
-                    chain.FmotifsList[^1].Id = chain.FmotifsList.Count - 1;
+                    sequence.FmotifsList[^1].Id = sequence.FmotifsList.Count - 1;
                 }
 
                 // очищаем буффер
@@ -483,7 +483,7 @@ public class FmotifDivider
                     if (combination)
                     {
                         // заносим оставшиеся ноты в комбинированный фмотив ЧМТ/ПМТ + ВП и в выходную цепочку
-                        Fmotif fm = new((byte)fmotifBuffer.Type + FmotifType.IncreasingSequence, pauseTreatment, chain.FmotifsList.Count); // ЧМТВП или ПМТВП
+                        Fmotif fm = new((byte)fmotifBuffer.Type + FmotifType.IncreasingSequence, pauseTreatment, sequence.FmotifsList.Count); // ЧМТВП или ПМТВП
                         foreach (ValueNote note in fmotifBuffer.NoteList)
                         {
                             // заносим
@@ -491,7 +491,7 @@ public class FmotifDivider
                         }
 
                         // добавляем в выходную цепочку получившийся фмотив
-                        chain.FmotifsList.Add((Fmotif)fm.Clone());
+                        sequence.FmotifsList.Add((Fmotif)fm.Clone());
 
                         // очищаем буффер
                         fmotifBuffer.NoteList.Clear();
@@ -499,7 +499,7 @@ public class FmotifDivider
                     else
                     {
                         // заносим оставшиеся ноты в фмотив ВП и в выходную цепочку
-                        Fmotif fm = new(FmotifType.IncreasingSequence, pauseTreatment, chain.FmotifsList.Count);
+                        Fmotif fm = new(FmotifType.IncreasingSequence, pauseTreatment, sequence.FmotifsList.Count);
                         foreach (ValueNote note in fmotifBuffer.NoteList)
                         {
                             // заносим
@@ -507,7 +507,7 @@ public class FmotifDivider
                         }
 
                         // добавляем в выходную цепочку получившийся фмотив
-                        chain.FmotifsList.Add((Fmotif)fm.Clone());
+                        sequence.FmotifsList.Add((Fmotif)fm.Clone());
 
                         // очищаем буффер
                         fmotifBuffer.NoteList.Clear();
@@ -516,7 +516,7 @@ public class FmotifDivider
             }
         }
 
-        return chain;
+        return sequence;
     }
 
     /// <summary>
@@ -574,7 +574,7 @@ public class FmotifDivider
     /// The fmotif buff.
     /// </param>
     /// <returns>
-    /// The <see cref="List{Fmotif}"/>.
+    /// The <see cref="List{Libiada.Core.Core.SimpleTypes.Fmotif }"/>.
     /// </returns>
     /// <exception cref="Exception">
     /// Thrown if amount of collected notes in buffer is less than 2.
@@ -816,7 +816,7 @@ public class FmotifDivider
     /// The fmotif buffer.
     /// </param>
     /// <returns>
-    /// The <see cref="List{ValueNote}"/>.
+    /// The <see cref="List{Libiada.Core.Core.SimpleTypes.ValueNote}"/>.
     /// </returns>
     private List<ValueNote> ExtractNoteList(Fmotif fmotifBuffer)
     {

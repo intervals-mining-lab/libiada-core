@@ -10,10 +10,10 @@ using Libiada.Core.Core.Characteristics.Calculators.FullCalculators;
 public class AlphabetCardinalityTests : FullCalculatorsTests<AlphabetCardinality>
 {
     /// <summary>
-    /// The chain calculation test.
+    /// The sequence calculation test.
     /// </summary>
     /// <param name="index">
-    /// Full sequence index in <see cref="ChainsStorage"/>.
+    /// Full sequence index in <see cref="SequencesStorage"/>.
     /// </param>
     /// <param name="value">
     /// The value.
@@ -38,8 +38,8 @@ public class AlphabetCardinalityTests : FullCalculatorsTests<AlphabetCardinality
     [TestCase(17, 3)]
     [TestCase(18, 0)]
     [TestCase(19, 1)]
-    public void ChainCalculationTest(int index, double value)
+    public void SequenceCalculationTest(int index, double value)
     {
-        ChainCharacteristicTest(index, Link.NotApplied, value);
+        SequenceCharacteristicTest(index, Link.NotApplied, value);
     }
 }

@@ -4,10 +4,10 @@ using Libiada.Core.Core;
 using Libiada.Core.Core.SimpleTypes;
 
 /// <summary>
-/// The congeneric chain test.
+/// The congeneric sequence test.
 /// </summary>
 [TestFixture]
-public class CongenericChainTests
+public class CongenericSequenceTests
 {
     /// <summary>
     /// The message.
@@ -20,9 +20,9 @@ public class CongenericChainTests
     private ValueString wrongMessage;
 
     /// <summary>
-    /// The congeneric chain.
+    /// The congeneric sequence.
     /// </summary>
-    private CongenericChain congenericChain;
+    private CongenericSequence congenericSequence;
 
     /// <summary>
     /// Tests initialization method.
@@ -31,7 +31,7 @@ public class CongenericChainTests
     public void Initialization()
     {
         message = new ValueString('1');
-        congenericChain = new CongenericChain(message, 10);
+        congenericSequence = new CongenericSequence(message, 10);
         wrongMessage = new ValueString('2');
     }
 
@@ -41,8 +41,8 @@ public class CongenericChainTests
     [Test]
     public void ConstructorTest()
     {
-        Assert.That(congenericChain.Length, Is.EqualTo(10));
-        Assert.That(congenericChain.Element, Is.EqualTo(message));
+        Assert.That(congenericSequence.Length, Is.EqualTo(10));
+        Assert.That(congenericSequence.Element, Is.EqualTo(message));
     }
 
     /// <summary>
@@ -51,11 +51,11 @@ public class CongenericChainTests
     [Test]
     public void IndependenceMessageTest()
     {
-        congenericChain = new CongenericChain(message, 10);
+        congenericSequence = new CongenericSequence(message, 10);
 
-        ValueString newMessage = (ValueString)congenericChain.Element;
+        ValueString newMessage = (ValueString)congenericSequence.Element;
 
-        Assert.That(newMessage, Is.Not.SameAs(congenericChain.Element));
+        Assert.That(newMessage, Is.Not.SameAs(congenericSequence.Element));
     }
 
     /// <summary>
@@ -64,8 +64,8 @@ public class CongenericChainTests
     [Test]
     public void AddTest()
     {
-        congenericChain.Set(message, 3);
-        Assert.That(congenericChain.Get(3), Is.EqualTo(message));
+        congenericSequence.Set(message, 3);
+        Assert.That(congenericSequence.Get(3), Is.EqualTo(message));
     }
 
     /// <summary>
@@ -74,9 +74,9 @@ public class CongenericChainTests
     [Test]
     public void WrongMessageTest()
     {
-        congenericChain.Set(wrongMessage, 4);
-        Assert.That(congenericChain.Get(4), Is.Not.EqualTo(wrongMessage));
-        Assert.That(congenericChain.Get(4), Is.EqualTo(NullValue.Instance()));
+        congenericSequence.Set(wrongMessage, 4);
+        Assert.That(congenericSequence.Get(4), Is.Not.EqualTo(wrongMessage));
+        Assert.That(congenericSequence.Get(4), Is.EqualTo(NullValue.Instance()));
     }
 
     /// <summary>
@@ -85,10 +85,10 @@ public class CongenericChainTests
     [Test]
     public void RemoveTest()
     {
-        congenericChain.Set(message, 3);
-        congenericChain.RemoveAt(3);
-        Assert.That(congenericChain.Get(3), Is.Not.EqualTo(message));
-        Assert.That(congenericChain.Get(3), Is.EqualTo(NullValue.Instance()));
+        congenericSequence.Set(message, 3);
+        congenericSequence.RemoveAt(3);
+        Assert.That(congenericSequence.Get(3), Is.Not.EqualTo(message));
+        Assert.That(congenericSequence.Get(3), Is.EqualTo(NullValue.Instance()));
     }
 
     /// <summary>
@@ -97,10 +97,10 @@ public class CongenericChainTests
     [Test]
     public void DeleteTest()
     {
-        congenericChain.Set(message, 3);
-        congenericChain.DeleteAt(3);
-        Assert.That(congenericChain.Get(3), Is.Not.EqualTo(message));
-        Assert.That(congenericChain.Get(3), Is.EqualTo(NullValue.Instance()));
+        congenericSequence.Set(message, 3);
+        congenericSequence.DeleteAt(3);
+        Assert.That(congenericSequence.Get(3), Is.Not.EqualTo(message));
+        Assert.That(congenericSequence.Get(3), Is.EqualTo(NullValue.Instance()));
     }
 
     /// <summary>
@@ -110,19 +110,19 @@ public class CongenericChainTests
     public void ClearAndSetNewLengthTest()
     {
         const int newLength = 5;
-        congenericChain.ClearAndSetNewLength(newLength);
-        Assert.That(congenericChain.Length, Is.EqualTo(newLength));
-        Assert.That(congenericChain.Positions, Is.Empty);
+        congenericSequence.ClearAndSetNewLength(newLength);
+        Assert.That(congenericSequence.Length, Is.EqualTo(newLength));
+        Assert.That(congenericSequence.Positions, Is.Empty);
     }
 
     /// <summary>
-    /// The CongenericChain test.
+    /// The congeneric sequence test.
     /// </summary>
    [Test]
-    public void CongenericChainTest()
+    public void CongenericSequenceTest()
     {
         ValueString element = new("A");
-        CongenericChain result = new(element);
+        CongenericSequence result = new(element);
         Assert.That(result.Element, Is.EqualTo(element));
         Assert.That(result.Length, Is.Zero);
         Assert.That(result.Positions, Is.Empty);
@@ -137,8 +137,8 @@ public class CongenericChainTests
     {
         List<int> position = [4];
         const int index = 5;
-        congenericChain.Set(index);
-        Assert.That(congenericChain.Positions, Is.Not.EqualTo(position));
+        congenericSequence.Set(index);
+        Assert.That(congenericSequence.Positions, Is.Not.EqualTo(position));
     }
 
     ///<sumary>
@@ -149,7 +149,7 @@ public class CongenericChainTests
     {
         const int index = 3;
         const int expectedIndex = -1;
-        Assert.That(congenericChain.GetFirstAfter(index), Is.EqualTo(expectedIndex));
+        Assert.That(congenericSequence.GetFirstAfter(index), Is.EqualTo(expectedIndex));
     }
 
     /// <summary>
@@ -161,27 +161,27 @@ public class CongenericChainTests
         int index = 0;
         int expectedIndex = -1;
 
-        congenericChain.Set(0);
-        Assert.That(congenericChain.GetFirstAfter(index), Is.EqualTo(expectedIndex));
+        congenericSequence.Set(0);
+        Assert.That(congenericSequence.GetFirstAfter(index), Is.EqualTo(expectedIndex));
 
-        congenericChain.Set(9);
+        congenericSequence.Set(9);
         expectedIndex = 9;
-        Assert.That(congenericChain.GetFirstAfter(index), Is.EqualTo(expectedIndex));
+        Assert.That(congenericSequence.GetFirstAfter(index), Is.EqualTo(expectedIndex));
 
         index = 5;
         expectedIndex = 9;
-        Assert.That(congenericChain.GetFirstAfter(index), Is.EqualTo(expectedIndex));
+        Assert.That(congenericSequence.GetFirstAfter(index), Is.EqualTo(expectedIndex));
 
-        congenericChain.Set(5);
+        congenericSequence.Set(5);
         index = 0;
         expectedIndex = 5;
-        Assert.That(congenericChain.GetFirstAfter(index), Is.EqualTo(expectedIndex));
+        Assert.That(congenericSequence.GetFirstAfter(index), Is.EqualTo(expectedIndex));
         
         index = 4;
-        Assert.That(congenericChain.GetFirstAfter(index), Is.EqualTo(expectedIndex));
+        Assert.That(congenericSequence.GetFirstAfter(index), Is.EqualTo(expectedIndex));
 
         index = 5;
         expectedIndex = 9;
-        Assert.That(congenericChain.GetFirstAfter(index), Is.EqualTo(expectedIndex));
+        Assert.That(congenericSequence.GetFirstAfter(index), Is.EqualTo(expectedIndex));
     }
 }

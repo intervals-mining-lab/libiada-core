@@ -14,7 +14,7 @@ public class IdentifyingInformation : ICongenericCalculator
     /// instead of elements frequency 
     /// based on geometric mean interval formula.
     /// </summary>
-    /// <param name="chain">
+    /// <param name="sequence">
     /// Source sequence.
     /// </param>
     /// <param name="link">
@@ -23,9 +23,9 @@ public class IdentifyingInformation : ICongenericCalculator
     /// <returns>
     /// Count of identifying informations as <see cref="double"/>.
     /// </returns>
-    public double Calculate(CongenericChain chain, Link link)
+    public double Calculate(CongenericSequence sequence, Link link)
     {
-        double mean = new ArithmeticMean().Calculate(chain, link);
+        double mean = new ArithmeticMean().Calculate(sequence, link);
 
         return mean == 0 ? 0 : Math.Log(mean, 2);
     }

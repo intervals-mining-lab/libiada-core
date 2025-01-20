@@ -8,7 +8,7 @@ public class AverageRemotenessStandardDeviation : IFullCalculator
     /// <summary>
     /// Calculation method.
     /// </summary>
-    /// <param name="chain">
+    /// <param name="sequence">
     /// Source sequence.
     /// </param>
     /// <param name="link">
@@ -17,9 +17,9 @@ public class AverageRemotenessStandardDeviation : IFullCalculator
     /// <returns>
     /// Average remoteness standard Deviation <see cref="double"/> value.
     /// </returns>
-    public double Calculate(Chain chain, Link link)
+    public double Calculate(ComposedSequence sequence, Link link)
     {
-        double averageRemotenessVariance = new AverageRemotenessVariance().Calculate(chain, link);
+        double averageRemotenessVariance = new AverageRemotenessVariance().Calculate(sequence, link);
 
         return Math.Sqrt(averageRemotenessVariance);
     }

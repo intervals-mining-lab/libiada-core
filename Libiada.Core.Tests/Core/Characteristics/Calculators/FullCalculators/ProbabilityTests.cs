@@ -10,10 +10,10 @@ using Libiada.Core.Core.Characteristics.Calculators.FullCalculators;
 public class ProbabilityTests : FullCalculatorsTests<Probability>
 {
     /// <summary>
-    /// The chain calculation test.
+    /// The sequence calculation test.
     /// </summary>
     /// <param name="index">
-    /// Full sequence index in <see cref="ChainsStorage"/>.
+    /// Full sequence index in <see cref="SequencesStorage"/>.
     /// </param>
     /// <param name="link">
     /// The link.
@@ -32,16 +32,16 @@ public class ProbabilityTests : FullCalculatorsTests<Probability>
     [TestCase(24, 0.2)]
     [TestCase(26, 0.3)]
     [TestCase(29, 0.1)]
-    public void ChainCalculationTest(int index, double value)
+    public void SequenceCalculationTest(int index, double value)
     {
-        ChainCharacteristicTest(index, Link.NotApplied, value);
+        SequenceCharacteristicTest(index, Link.NotApplied, value);
     }
 
     /// <summary>
     /// No intervals test.
     /// </summary>
     /// <param name="index">
-    /// Full sequence index in <see cref="ChainsStorage"/>.
+    /// Full sequence index in <see cref="SequencesStorage"/>.
     /// </param>
     /// <param name="value">
     /// The value.
@@ -51,6 +51,6 @@ public class ProbabilityTests : FullCalculatorsTests<Probability>
     [TestCase(7, 1)]
     public void NoIntervalsTest(int index, double value)
     {
-        ChainCharacteristicTest(index, Link.NotApplied, value);
+        SequenceCharacteristicTest(index, Link.NotApplied, value);
     }
 }

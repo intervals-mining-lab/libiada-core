@@ -11,7 +11,7 @@ public class AverageRemotenessATSkew : IFullCalculator
     /// <summary>
     /// Calculation method.
     /// </summary>
-    /// <param name="chain">
+    /// <param name="sequence">
     /// Source sequence.
     /// </param>
     /// <param name="link">
@@ -20,14 +20,14 @@ public class AverageRemotenessATSkew : IFullCalculator
     /// <returns>
     /// AT skew value as <see cref="double"/>.
     /// </returns>
-    public double Calculate(Chain chain, Link link)
+    public double Calculate(ComposedSequence sequence, Link link)
     {
-        DnaProcessor.CheckDnaAlphabet(chain.Alphabet);
+        DnaProcessor.CheckDnaAlphabet(sequence.Alphabet);
 
         CongenericCalculators.AverageRemoteness congenericRemotenessCalculator = new();
 
-        double a = congenericRemotenessCalculator.Calculate(chain.GetOrCreateCongenericChain(new ValueString("A")), link);
-        double t = congenericRemotenessCalculator.Calculate(chain.GetOrCreateCongenericChain(new ValueString("T")), link);
+        double a = congenericRemotenessCalculator.Calculate(sequence.GetOrCreateCongenericSequence(new ValueString("A")), link);
+        double t = congenericRemotenessCalculator.Calculate(sequence.GetOrCreateCongenericSequence(new ValueString("T")), link);
 
         return a + t == 0 ? 0 : (a - t) / (a + t);
     }

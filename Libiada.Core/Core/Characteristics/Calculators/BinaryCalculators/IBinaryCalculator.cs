@@ -24,14 +24,14 @@ public interface IBinaryCalculator
     /// <summary>
     /// Calculates relative characteristics of all pairs of elements.
     /// </summary>
-    /// <param name="chain">
-    /// The chain.
+    /// <param name="sequence">
+    /// The sequence.
     /// </param>
     /// <param name="link">
     /// The link.
     /// </param>
     /// <returns>
-    /// <see cref="T:List{List{Double}}"/>.
+    /// <see cref="List{List{double}}"/>.
     /// </returns>
-    List<List<double>> CalculateAll(Chain chain, Link link);
+    List<List<double>> CalculateAll(ComposedSequence sequence, Link link);
 }

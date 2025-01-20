@@ -8,7 +8,7 @@ public class AverageRemotenessKurtosisCoefficient : IFullCalculator
     /// <summary>
     /// Calculation method.
     /// </summary>
-    /// <param name="chain">
+    /// <param name="sequence">
     /// Source sequence.
     /// </param>
     /// <param name="link">
@@ -17,12 +17,12 @@ public class AverageRemotenessKurtosisCoefficient : IFullCalculator
     /// <returns>
     /// Average remoteness kurtosis coefficient <see cref="double"/> value.
     /// </returns>
-    public double Calculate(Chain chain, Link link)
+    public double Calculate(ComposedSequence sequence, Link link)
     {
-        double averageRemotenessStandardDeviation = new AverageRemotenessStandardDeviation().Calculate(chain, link);
+        double averageRemotenessStandardDeviation = new AverageRemotenessStandardDeviation().Calculate(sequence, link);
         if (averageRemotenessStandardDeviation == 0) return 0;
 
-        double averageRemotenessKurtosis = new AverageRemotenessKurtosis().Calculate(chain, link);
+        double averageRemotenessKurtosis = new AverageRemotenessKurtosis().Calculate(sequence, link);
 
         return  averageRemotenessKurtosis / (averageRemotenessStandardDeviation * averageRemotenessStandardDeviation * averageRemotenessStandardDeviation * averageRemotenessStandardDeviation);
     }

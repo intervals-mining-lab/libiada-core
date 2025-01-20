@@ -79,7 +79,7 @@ public class Algorithm
     }
 
     /// <summary>
-    /// Returns characteristics of the chains and its
+    /// Returns characteristics of the sequences and its
     /// </summary>
     /// <returns>list of characteristics</returns>
     public List<MainOutputData> Upload()

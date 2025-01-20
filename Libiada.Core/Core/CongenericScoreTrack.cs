@@ -32,7 +32,7 @@ public class CongenericScoreTrack : IBaseObject
     /// The get notes.
     /// </summary>
     /// <returns>
-    /// The <see cref="List{ValueNote}"/>.
+    /// The <see cref="List{Libiada.Core.Core.SimpleTypes.ValueNote}"/>.
     /// </returns>
     public List<ValueNote> GetNotes()
     {
@@ -56,7 +56,7 @@ public class CongenericScoreTrack : IBaseObject
     /// возвращает строй объектов Note, проидентифицировав их
     /// </summary>
     /// <returns>
-    /// The <see cref="List{ValueNote}"/>.
+    /// The <see cref="List{Libiada.Core.Core.SimpleTypes.ValueNote}"/>.
     /// </returns>
     public List<ValueNote> NoteOrder()
     {
@@ -134,7 +134,7 @@ public class CongenericScoreTrack : IBaseObject
     /// возвращает строй объектов Measure, проидентифицировав их
     /// </summary>
     /// <returns>
-    /// The <see cref="List{Measure}"/>.
+    /// The <see cref="List{Libiada.Core.Core.SimpleTypes.Measure}"/>.
     /// </returns>
     public List<Measure> MeasureOrder()
     {

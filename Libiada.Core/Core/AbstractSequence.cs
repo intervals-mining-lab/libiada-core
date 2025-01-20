@@ -5,9 +5,9 @@ using System.Text;
 using Libiada.Core.Core.SimpleTypes;
 
 /// <summary>
-/// The abstract chain.
+/// The abstract sequence.
 /// </summary>
-public abstract class AbstractChain : IBaseObject
+public abstract class AbstractSequence : IBaseObject
 {
     /// <summary>
     /// Indexer. Returns element by index.
@@ -70,15 +70,15 @@ public abstract class AbstractChain : IBaseObject
     public abstract void DeleteAt(int index);
 
     /// <summary>
-    /// Deletes chain (order and alphabet) and creates new empty chain with given length.
+    /// Deletes sequence (order and alphabet) and creates new empty sequence with given length.
     /// </summary>
     /// <param name="length">
-    /// New chain length.
+    /// New sequence length.
     /// </param>
     public abstract void ClearAndSetNewLength(int length);
 
     /// <summary>
-    /// Creates clone of this chain.
+    /// Creates clone of this sequence.
     /// </summary>
     /// <returns>
     /// The <see cref="IBaseObject"/>.
@@ -86,7 +86,7 @@ public abstract class AbstractChain : IBaseObject
     public abstract IBaseObject Clone();
 
     /// <summary>
-    /// Converts chain to string.
+    /// Converts sequence to string.
     /// Empty positions are filled with <see cref="NullValue"/> ('-' symbol).
     /// </summary>
     /// <returns>

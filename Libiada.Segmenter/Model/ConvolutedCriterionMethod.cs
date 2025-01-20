@@ -3,7 +3,7 @@
 using Segmenter.Model.Criterion;
 
 /// <summary>
-/// Calculates frequency for convoluted chain
+/// Calculates frequency for convoluted sequence
 /// </summary>
 public class ConvolutedCriterionMethod : CriterionMethod
 {
@@ -13,8 +13,8 @@ public class ConvolutedCriterionMethod : CriterionMethod
     /// <param name="std">
     /// The std.
     /// </param>
-    /// <param name="chainLength">
-    /// The chain length.
+    /// <param name="sequenceLength">
+    /// The sequence length.
     /// </param>
     /// <param name="windowLength">
     /// The window length.
@@ -22,8 +22,8 @@ public class ConvolutedCriterionMethod : CriterionMethod
     /// <returns>
     /// The <see cref="double"/>.
     /// </returns>
-    public override sealed double Frequency(List<int> std, int chainLength, int windowLength)
+    public override sealed double Frequency(List<int> std, int sequenceLength, int windowLength)
     {
-        return Probability(std.Count, chainLength - (std.Count * (windowLength - 1)));
+        return Probability(std.Count, sequenceLength - (std.Count * (windowLength - 1)));
     }
 }

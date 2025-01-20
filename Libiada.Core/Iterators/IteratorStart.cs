@@ -3,7 +3,7 @@ namespace Libiada.Core.Iterators;
 using Libiada.Core.Core;
 
 /// <summary>
-/// Iterator that goes from start of the chain.
+/// Iterator that goes from start of the sequence.
 /// </summary>
 public class IteratorStart : IteratorBase
 {
@@ -11,7 +11,7 @@ public class IteratorStart : IteratorBase
     /// Initializes a new instance of the <see cref="IteratorStart"/> class.
     /// </summary>
     /// <param name="source">
-    /// Source chain.
+    /// Source sequence.
     /// </param>
     /// <param name="length">
     /// Length of subsequence.
@@ -19,7 +19,7 @@ public class IteratorStart : IteratorBase
     /// <param name="step">
     /// Shift of iterator.
     /// </param>
-    public IteratorStart(AbstractChain source, int length, int step) : base(source, length, step)
+    public IteratorStart(AbstractSequence source, int length, int step) : base(source, length, step)
     {
     }
 
@@ -27,7 +27,7 @@ public class IteratorStart : IteratorBase
     /// Moves iterator to the next position.
     /// </summary>
     /// <returns>
-    /// Returns false if end of the chain is reached. Otherwise returns true.
+    /// Returns false if end of the sequence is reached. Otherwise returns true.
     /// </returns>
     public override bool Next()
     {

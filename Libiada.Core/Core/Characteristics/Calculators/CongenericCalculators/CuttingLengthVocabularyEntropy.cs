@@ -8,17 +8,17 @@ public class CuttingLengthVocabularyEntropy : NonLinkableCongenericCalculator
     /// <summary>
     /// Calculation method.
     /// </summary>
-    /// <param name="chain">
+    /// <param name="sequence">
     /// Source sequence.
     /// </param>
     /// <returns>
     /// Cut length vocabulary entropy as <see cref="double"/>.
     /// </returns>
-    public override double Calculate(CongenericChain chain)
+    public override double Calculate(CongenericSequence sequence)
     {
-        double cuttingLength = new CuttingLength().Calculate(chain);
+        double cuttingLength = new CuttingLength().Calculate(sequence);
 
-        return Math.Log(chain.Length - cuttingLength + 1, 2);
+        return Math.Log(sequence.Length - cuttingLength + 1, 2);
     }
 
 }

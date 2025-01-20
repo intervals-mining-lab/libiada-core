@@ -8,24 +8,24 @@ using Libiada.Core.Core.Characteristics.Calculators.CongenericCalculators;
 public class BinaryIntervalsManager
 {
     /// <summary>
-    /// First chain element.
+    /// First sequence element.
     /// </summary>
     public readonly IBaseObject FirstElement;
 
     /// <summary>
-    /// Second chain element.
+    /// Second sequence element.
     /// </summary>
     public readonly IBaseObject SecondElement;
 
     /// <summary>
-    /// The first chain.
+    /// The first sequence.
     /// </summary>
-    public readonly CongenericChain FirstChain;
+    public readonly CongenericSequence FirstSequence;
 
     /// <summary>
-    /// The second chain.
+    /// The second sequence.
     /// </summary>
-    public readonly CongenericChain SecondChain;
+    public readonly CongenericSequence SecondSequence;
 
     /// <summary>
     /// The elements pairs count.
@@ -33,7 +33,7 @@ public class BinaryIntervalsManager
     public readonly int PairsCount;
 
     /// <summary>
-    /// The chains length.
+    /// The sequence length.
     /// </summary>
     public readonly int Length;
 
@@ -45,19 +45,19 @@ public class BinaryIntervalsManager
     /// <summary>
     /// Initializes a new instance of the <see cref="BinaryIntervalsManager"/> class.
     /// </summary>
-    /// <param name="firstChain">
-    /// The first chain.
+    /// <param name="firstSequence">
+    /// The first sequence.
     /// </param>
-    /// <param name="secondChain">
-    /// The second chain.
+    /// <param name="secondSequence">
+    /// The second sequence.
     /// </param>
-    public BinaryIntervalsManager(CongenericChain firstChain, CongenericChain secondChain)
+    public BinaryIntervalsManager(CongenericSequence firstSequence, CongenericSequence secondSequence)
     {
-        FirstElement = firstChain.Element;
-        SecondElement = secondChain.Element;
-        FirstChain = firstChain;
-        SecondChain = secondChain;
-        Length = firstChain.Length;
+        FirstElement = firstSequence.Element;
+        SecondElement = secondSequence.Element;
+        FirstSequence = firstSequence;
+        SecondSequence = secondSequence;
+        Length = firstSequence.Length;
 
         PairsCount = FillPairsCount();
         relationIntervals = new int[PairsCount];
@@ -75,20 +75,20 @@ public class BinaryIntervalsManager
     /// </returns>
     public int GetBinaryInterval(int occurrence)
     {
-        int firstElementFirstOccurrence = FirstChain.GetOccurrence(occurrence);
+        int firstElementFirstOccurrence = FirstSequence.GetOccurrence(occurrence);
         if (firstElementFirstOccurrence == -1)
         {
             return -1;
         }
 
-        int secondElementOccurrence = SecondChain.GetFirstAfter(firstElementFirstOccurrence);
+        int secondElementOccurrence = SecondSequence.GetFirstAfter(firstElementFirstOccurrence);
 
         if (secondElementOccurrence == -1)
         {
             return -1;
         }
 
-        int firstElementSecondOccurrence = FirstChain.GetOccurrence(occurrence + 1);
+        int firstElementSecondOccurrence = FirstSequence.GetOccurrence(occurrence + 1);
 
         if (firstElementSecondOccurrence == -1)
         {
@@ -114,7 +114,7 @@ public class BinaryIntervalsManager
     /// </returns>
     public int GetFirst(int entry)
     {
-        return FirstChain.GetOccurrence(entry);
+        return FirstSequence.GetOccurrence(entry);
     }
 
     /// <summary>
@@ -128,9 +128,9 @@ public class BinaryIntervalsManager
     /// </returns>
     public int GetFirstAfter(int index)
     {
-        for (int i = index; i < SecondChain.Length; i++)
+        for (int i = index; i < SecondSequence.Length; i++)
         {
-            if (SecondChain[i].Equals(SecondChain.Element))
+            if (SecondSequence[i].Equals(SecondSequence.Element))
             {
                 return i;
             }
@@ -161,7 +161,7 @@ public class BinaryIntervalsManager
         int counter = 0;
 
         ElementsCount elementCounter = new();
-        int firstElementCount = (int)elementCounter.Calculate(FirstChain);
+        int firstElementCount = (int)elementCounter.Calculate(FirstSequence);
 
         for (int i = 1; i <= firstElementCount; i++)
         {
@@ -181,7 +181,7 @@ public class BinaryIntervalsManager
     private void FillIntervals()
     {
         int counter = 0;
-        for (int i = 1; i <= FirstChain.OccurrencesCount; i++)
+        for (int i = 1; i <= FirstSequence.OccurrencesCount; i++)
         {
             int binaryInterval = GetBinaryInterval(i);
             if (binaryInterval > 0)

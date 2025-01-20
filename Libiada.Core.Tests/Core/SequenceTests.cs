@@ -4,10 +4,10 @@ using Libiada.Core.Core;
 using Libiada.Core.Core.SimpleTypes;
 
 /// <summary>
-/// The base chain test.
+/// The sequence test.
 /// </summary>
 [TestFixture]
-public class BaseChainTests
+public class SequenceTests
 {
     /// <summary>
     /// The constructor with given length test.
@@ -15,12 +15,12 @@ public class BaseChainTests
     [Test]
     public void ConstructorWithLengthTest()
     {
-        BaseChain chain = new(100);
-        Assert.That(chain.Length, Is.EqualTo(100));
+        Sequence sequence = new(100);
+        Assert.That(sequence.Length, Is.EqualTo(100));
         int[] expectedOrder = new int[100];
-        Assert.That(chain.Order, Is.EqualTo(expectedOrder));
+        Assert.That(sequence.Order, Is.EqualTo(expectedOrder));
         Alphabet expectedAlphabet = [];
-        Assert.That(chain.Alphabet, Is.EqualTo(expectedAlphabet));
+        Assert.That(sequence.Alphabet, Is.EqualTo(expectedAlphabet));
     }
 
     /// <summary>
@@ -29,7 +29,7 @@ public class BaseChainTests
     [Test]
     public void ConstructorLessZeroLengthTest()
     {
-        Assert.Throws<ArgumentException>(() => new BaseChain(-10));
+        Assert.Throws<ArgumentException>(() => new Sequence(-10));
     }
 
     /// <summary>
@@ -38,47 +38,47 @@ public class BaseChainTests
     [Test]
     public void ConstructorWithStringTest()
     {
-        BaseChain chain = new("A");
-        Assert.That(chain.Length, Is.EqualTo(1));
+        Sequence sequence = new("A");
+        Assert.That(sequence.Length, Is.EqualTo(1));
         int[] expectedOrder = [1];
-        Assert.That(chain.Order, Is.EqualTo(expectedOrder));
+        Assert.That(sequence.Order, Is.EqualTo(expectedOrder));
         Alphabet expectedAlphabet = [(ValueString)"A"];
-        Assert.That(chain.Alphabet, Is.EqualTo(expectedAlphabet));
+        Assert.That(sequence.Alphabet, Is.EqualTo(expectedAlphabet));
 
-        chain = new BaseChain("ABC");
-        Assert.That(chain.Length, Is.EqualTo(3));
+        sequence = new Sequence("ABC");
+        Assert.That(sequence.Length, Is.EqualTo(3));
         expectedOrder = [1, 2, 3];
-        Assert.That(chain.Order, Is.EqualTo(expectedOrder));
+        Assert.That(sequence.Order, Is.EqualTo(expectedOrder));
         expectedAlphabet = [(ValueString)"A", (ValueString)"B", (ValueString)"C"];
-        Assert.That(chain.Alphabet, Is.EqualTo(expectedAlphabet));
+        Assert.That(sequence.Alphabet, Is.EqualTo(expectedAlphabet));
 
-        chain = new BaseChain("AAABBBCCC");
-        Assert.That(chain.Length, Is.EqualTo(9));
+        sequence = new Sequence("AAABBBCCC");
+        Assert.That(sequence.Length, Is.EqualTo(9));
         expectedOrder = [1, 1, 1, 2, 2, 2, 3, 3, 3];
-        Assert.That(chain.Order, Is.EqualTo(expectedOrder));
+        Assert.That(sequence.Order, Is.EqualTo(expectedOrder));
         expectedAlphabet = [(ValueString)"A", (ValueString)"B", (ValueString)"C"];
-        Assert.That(chain.Alphabet, Is.EqualTo(expectedAlphabet));
+        Assert.That(sequence.Alphabet, Is.EqualTo(expectedAlphabet));
 
-        chain = new BaseChain("AAABBBCCC");
-        Assert.That(chain.Length, Is.EqualTo(9));
+        sequence = new Sequence("AAABBBCCC");
+        Assert.That(sequence.Length, Is.EqualTo(9));
         expectedOrder = [1, 1, 1, 2, 2, 2, 3, 3, 3];
-        Assert.That(chain.Order, Is.EqualTo(expectedOrder));
+        Assert.That(sequence.Order, Is.EqualTo(expectedOrder));
         expectedAlphabet = [(ValueString)"A", (ValueString)"B", (ValueString)"C"];
-        Assert.That(chain.Alphabet, Is.EqualTo(expectedAlphabet));
+        Assert.That(sequence.Alphabet, Is.EqualTo(expectedAlphabet));
 
-        chain = new BaseChain("BBBCCCAAA");
-        Assert.That(chain.Length, Is.EqualTo(9));
+        sequence = new Sequence("BBBCCCAAA");
+        Assert.That(sequence.Length, Is.EqualTo(9));
         expectedOrder = [1, 1, 1, 2, 2, 2, 3, 3, 3];
-        Assert.That(chain.Order, Is.EqualTo(expectedOrder));
+        Assert.That(sequence.Order, Is.EqualTo(expectedOrder));
         expectedAlphabet = [(ValueString)"B", (ValueString)"C", (ValueString)"A"];
-        Assert.That(chain.Alphabet, Is.EqualTo(expectedAlphabet));
+        Assert.That(sequence.Alphabet, Is.EqualTo(expectedAlphabet));
 
-        chain = new BaseChain("BBB---");
-        Assert.That(chain.Length, Is.EqualTo(6));
+        sequence = new Sequence("BBB---");
+        Assert.That(sequence.Length, Is.EqualTo(6));
         expectedOrder = [1, 1, 1, 2, 2, 2];
-        Assert.That(chain.Order, Is.EqualTo(expectedOrder));
+        Assert.That(sequence.Order, Is.EqualTo(expectedOrder));
         expectedAlphabet = [(ValueString)"B", (ValueString)"-"];
-        Assert.That(chain.Alphabet, Is.EqualTo(expectedAlphabet));
+        Assert.That(sequence.Alphabet, Is.EqualTo(expectedAlphabet));
     }
 
     /// <summary>
@@ -87,9 +87,9 @@ public class BaseChainTests
     [Test]
     public void GetByThisTest()
     {
-        BaseChain chain = new(10);
-        chain.Set(new ValueString('1'), 0);
-        Assert.That(((ValueString)chain[0]).Equals("1"), Is.True);
+        Sequence sequence = new(10);
+        sequence.Set(new ValueString('1'), 0);
+        Assert.That(((ValueString)sequence[0]).Equals("1"), Is.True);
     }
 
     /// <summary>
@@ -98,9 +98,9 @@ public class BaseChainTests
     [Test]
     public void SetByThisTest()
     {
-        BaseChain chain = new(10);
-        chain[0] = new ValueString('1');
-        Assert.That(((ValueString)chain.Get(0)).Equals("1"), Is.True);
+        Sequence sequence = new(10);
+        sequence[0] = new ValueString('1');
+        Assert.That(((ValueString)sequence.Get(0)).Equals("1"), Is.True);
     }
 
     /// <summary>
@@ -109,9 +109,9 @@ public class BaseChainTests
     [Test]
     public void GetTest()
     {
-        BaseChain chain = new(10);
-        chain.Set(new ValueString('1'), 0);
-        Assert.That(((ValueString)chain.Get(0)).Equals("1"), Is.True);
+        Sequence sequence = new(10);
+        sequence.Set(new ValueString('1'), 0);
+        Assert.That(((ValueString)sequence.Get(0)).Equals("1"), Is.True);
     }
 
     /// <summary>
@@ -120,9 +120,9 @@ public class BaseChainTests
     [Test]
     public void SetTest()
     {
-        BaseChain chain = new(10);
-        chain.Set(new ValueString('1'), 0);
-        Assert.That(((ValueString)chain.Get(0)).Equals("1"), Is.True);
+        Sequence sequence = new(10);
+        sequence.Set(new ValueString('1'), 0);
+        Assert.That(((ValueString)sequence.Get(0)).Equals("1"), Is.True);
     }
 
     /// <summary>
@@ -131,12 +131,12 @@ public class BaseChainTests
     [Test]
     public void RemoveTest()
     {
-        BaseChain chain = new(10);
-        chain.Set(new ValueString('1'), 0);
-        Assert.That(((ValueString)chain[0]).Equals("1"), Is.True);
+        Sequence sequence = new(10);
+        sequence.Set(new ValueString('1'), 0);
+        Assert.That(((ValueString)sequence[0]).Equals("1"), Is.True);
 
-        chain.RemoveAt(0);
-        Assert.That(chain[0], Is.EqualTo(NullValue.Instance()));
+        sequence.RemoveAt(0);
+        Assert.That(sequence[0], Is.EqualTo(NullValue.Instance()));
     }
 
     /// <summary>
@@ -145,12 +145,12 @@ public class BaseChainTests
     [Test]
     public void DeleteTest()
     {
-        BaseChain chain = new(10);
-        chain.Set(new ValueString('1'), 0);
-        Assert.That(((ValueString)chain[0]).Equals("1"), Is.True);
+        Sequence sequence = new(10);
+        sequence.Set(new ValueString('1'), 0);
+        Assert.That(((ValueString)sequence[0]).Equals("1"), Is.True);
 
-        chain.DeleteAt(0);
-        Assert.That(chain[0], Is.EqualTo(NullValue.Instance()));
+        sequence.DeleteAt(0);
+        Assert.That(sequence[0], Is.EqualTo(NullValue.Instance()));
     }
 
     /// <summary>
@@ -159,8 +159,8 @@ public class BaseChainTests
     [Test]
     public void GetLengthTest()
     {
-        BaseChain chain = new(10);
-        Assert.That(chain.Length, Is.EqualTo(10));
+        Sequence sequence = new(10);
+        Assert.That(sequence.Length, Is.EqualTo(10));
     }
 
     /// <summary>
@@ -169,11 +169,11 @@ public class BaseChainTests
     [Test]
     public void CloneTest()
     {
-        BaseChain chain = new("123456789A");
+        Sequence sequence = new("123456789A");
 
-        BaseChain clone = (BaseChain)chain.Clone();
-        Assert.That(clone, Is.EqualTo(chain));
-        Assert.That(clone, Is.Not.SameAs(chain));
+        Sequence clone = (Sequence)sequence.Clone();
+        Assert.That(clone, Is.EqualTo(sequence));
+        Assert.That(clone, Is.Not.SameAs(sequence));
     }
 
     [TestCase(9, 0, "C", 10)]
@@ -194,15 +194,15 @@ public class BaseChainTests
     [TestCase(9, 8, "C", 17)]
     public void SetInFullSequenceTests(int sourceIndex, int index, string element, int expectedIndex)
     {
-        Chain source = ChainsStorage.Chains[sourceIndex];
+        ComposedSequence source = SequencesStorage.CompusedSequences[sourceIndex];
         char[] charArraySource = source.ToString().ToCharArray();
-        Chain expected = ChainsStorage.Chains[expectedIndex];
+        ComposedSequence expected = SequencesStorage.CompusedSequences[expectedIndex];
 
         source.Set(new ValueString(element), index);
         Assert.That(source, Is.EqualTo(expected));
 
         charArraySource[index] = element[0];
-        expected = new Chain(new string(charArraySource));
+        expected = new ComposedSequence(new string(charArraySource));
         Assert.That(source, Is.EqualTo(expected));
     }
 
@@ -217,8 +217,8 @@ public class BaseChainTests
     [TestCase(29, 0, "A", 27)]
     public void SetInSparseSequenceTests(int sourceIndex, int index, string element, int expectedIndex)
     {
-        Chain source = ChainsStorage.Chains[sourceIndex];
-        Chain expected = ChainsStorage.Chains[expectedIndex];
+        ComposedSequence source = SequencesStorage.CompusedSequences[sourceIndex];
+        ComposedSequence expected = SequencesStorage.CompusedSequences[expectedIndex];
 
         source.Set(new ValueString(element), index);
         Assert.That(source, Is.EqualTo(expected));

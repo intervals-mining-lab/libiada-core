@@ -12,7 +12,7 @@ public class GeometricMeanTests : BinaryCalculatorsTests<GeometricMean>
     /// The spatial dependence test.
     /// </summary>
     /// <param name="index">
-    /// Binary sequence index in <see cref="ChainsStorage"/>.
+    /// Binary sequence index in <see cref="SequencesStorage"/>.
     /// </param>
     /// <param name="firstValue">
     /// The first value.

@@ -2,7 +2,7 @@
 
 public class SeriesIntervalsManager : IArrangementManager
 {
-    public SeriesIntervalsManager(CongenericChain chain)
+    public SeriesIntervalsManager(CongenericSequence sequence)
     {
         throw new NotImplementedException();
     }

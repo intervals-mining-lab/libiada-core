@@ -8,7 +8,7 @@ public class AverageRemotenessVariance : IFullCalculator
     /// <summary>
     /// Calculation method.
     /// </summary>
-    /// <param name="chain">
+    /// <param name="sequence">
     /// Source sequence.
     /// </param>
     /// <param name="link">
@@ -17,21 +17,21 @@ public class AverageRemotenessVariance : IFullCalculator
     /// <returns>
     /// Average remoteness variance <see cref="double"/> value.
     /// </returns>
-    public double Calculate(Chain chain, Link link)
+    public double Calculate(ComposedSequence sequence, Link link)
     {
-        double n = new IntervalsCount().Calculate(chain, link);
+        double n = new IntervalsCount().Calculate(sequence, link);
         if (n == 0) return 0;
 
         CongenericCalculators.AverageRemoteness congenericAverageRemoteness = new();
         CongenericCalculators.IntervalsCount congenericIntervalsCount = new();
 
         double result = 0;
-        double g = new AverageRemoteness().Calculate(chain, link);
-        int alphabetCardinality = chain.Alphabet.Cardinality;
+        double g = new AverageRemoteness().Calculate(sequence, link);
+        int alphabetCardinality = sequence.Alphabet.Cardinality;
         for (int i = 0; i < alphabetCardinality; i++)
         {
-            double nj = congenericIntervalsCount.Calculate(chain.CongenericChain(i), link);
-            double gj = congenericAverageRemoteness.Calculate(chain.CongenericChain(i), link);
+            double nj = congenericIntervalsCount.Calculate(sequence.CongenericSequence(i), link);
+            double gj = congenericAverageRemoteness.Calculate(sequence.CongenericSequence(i), link);
             double gDelta = gj - g;
             result += gDelta * gDelta * nj / n;
         }

@@ -27,8 +27,8 @@ public class CriterionGoldenRatio : Criterion
     /// <summary>
     /// The state.
     /// </summary>
-    /// <param name="chain">
-    /// The chain.
+    /// <param name="sequence">
+    /// The sequence.
     /// </param>
     /// <param name="alphabet">
     /// The alphabet.
@@ -36,13 +36,13 @@ public class CriterionGoldenRatio : Criterion
     /// <returns>
     /// The <see cref="bool"/>.
     /// </returns>
-    public override bool State(ComplexChain chain, FrequencyDictionary alphabet)
+    public override bool State(ComplexSequence sequence, FrequencyDictionary alphabet)
     {
-        double current = Distortion(chain, alphabet);
+        double current = Distortion(sequence, alphabet);
         if (Value > current)
         {
             Value = current;
-            this.chain = chain.Clone();
+            this.sequence = sequence.Clone();
             this.alphabet = alphabet.Clone();
             ThresholdToStop.SaveBest();
         }
@@ -53,8 +53,8 @@ public class CriterionGoldenRatio : Criterion
     /// <summary>
     /// The distortion.
     /// </summary>
-    /// <param name="chain">
-    /// The chain.
+    /// <param name="sequence">
+    /// The sequence.
     /// </param>
     /// <param name="alphabet">
     /// The alphabet.
@@ -62,7 +62,7 @@ public class CriterionGoldenRatio : Criterion
     /// <returns>
     /// The <see cref="double"/>.
     /// </returns>
-    public override double Distortion(ComplexChain chain, FrequencyDictionary alphabet)
+    public override double Distortion(ComplexSequence sequence, FrequencyDictionary alphabet)
     {
         double maxFrequency = MaxFrequency(alphabet);
         double power = alphabet.Count;

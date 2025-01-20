@@ -9,7 +9,7 @@ public class AverageRemotenessSkewnessCoefficient : IFullCalculator
     /// <summary>
     /// Calculation method.
     /// </summary>
-    /// <param name="chain">
+    /// <param name="sequence">
     /// Source sequence.
     /// </param>
     /// <param name="link">
@@ -18,12 +18,12 @@ public class AverageRemotenessSkewnessCoefficient : IFullCalculator
     /// <returns>
     /// Average remoteness skewness coefficient <see cref="double"/> value.
     /// </returns>
-    public double Calculate(Chain chain, Link link)
+    public double Calculate(ComposedSequence sequence, Link link)
     {
-        double averageRemotenessStandardDeviation = new AverageRemotenessStandardDeviation().Calculate(chain, link);
+        double averageRemotenessStandardDeviation = new AverageRemotenessStandardDeviation().Calculate(sequence, link);
         if (averageRemotenessStandardDeviation == 0) return 0;
 
-        double averageRemotenessSkewness = new AverageRemotenessSkewness().Calculate(chain, link);
+        double averageRemotenessSkewness = new AverageRemotenessSkewness().Calculate(sequence, link);
 
         return averageRemotenessSkewness / (averageRemotenessStandardDeviation * averageRemotenessStandardDeviation * averageRemotenessStandardDeviation);
     }

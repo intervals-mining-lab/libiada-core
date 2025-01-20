@@ -5,17 +5,17 @@ using Libiada.Core.Core.SimpleTypes;
 /// <summary>
 /// Class storing Fmotifs sequence
 /// </summary>
-public class FmotifChain : IBaseObject
+public class FmotifSequence : IBaseObject
 {
     /// <summary>
-    /// Initializes a new instance of the <see cref="FmotifChain"/> class.
+    /// Initializes a new instance of the <see cref="FmotifSequence"/> class.
     /// </summary>
-    public FmotifChain()
+    public FmotifSequence()
     {
         FmotifsList = [];
     }
 
-    public FmotifChain(List<Fmotif> fmotifsList)
+    public FmotifSequence(List<Fmotif> fmotifsList)
     {
         FmotifsList = fmotifsList;
     }
@@ -33,7 +33,7 @@ public class FmotifChain : IBaseObject
     /// </returns>
     public IBaseObject Clone()
     {
-        FmotifChain clone = new();
+        FmotifSequence clone = new();
         foreach (Fmotif fmotif in FmotifsList)
         {
             clone.FmotifsList.Add((Fmotif)fmotif.Clone());
@@ -58,7 +58,7 @@ public class FmotifChain : IBaseObject
             return true;
         }
 
-        return obj is FmotifChain fmotifChain && FmotifsList.SequenceEqual(fmotifChain.FmotifsList);
+        return obj is FmotifSequence fmotifSequence && FmotifsList.SequenceEqual(fmotifSequence.FmotifsList);
     }
 
     /// <summary>

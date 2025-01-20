@@ -7,113 +7,113 @@ using Libiada.Core.Core.SimpleTypes;
 /// <summary>
 /// Sequence class.
 /// </summary>
-public class Chain : BaseChain, IBaseObject
+public class ComposedSequence : Sequence, IBaseObject
 {
     /// <summary>
-    /// The congeneric chains.
+    /// The congeneric sequences.
     /// </summary>
-    private CongenericChain[] congenericChains;
+    private CongenericSequence[]? congenericSequences;
 
     /// <summary>
     /// The relation intervals managers.
     /// </summary>
-    private BinaryIntervalsManager[,] relationIntervalsManagers;
+    private BinaryIntervalsManager[,]? relationIntervalsManagers;
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="Chain"/> class.
+    /// Initializes a new instance of the <see cref="ComposedSequence"/> class.
     /// </summary>
     /// <param name="length">
-    /// The length of chain.
+    /// The length of the sequence.
     /// </param>
-    public Chain(int length) : base(length)
+    public ComposedSequence(int length) : base(length)
     {
     }
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="Chain"/> class.
+    /// Initializes a new instance of the <see cref="ComposedSequence"/> class.
     /// </summary>
-    public Chain()
+    public ComposedSequence()
     {
     }
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="Chain"/> class from string.
+    /// Initializes a new instance of the <see cref="ComposedSequence"/> class from string.
     /// Each character becomes element.
     /// </summary>
     /// <param name="source">
     /// The source string.
     /// </param>
-    public Chain(string source) : base(source)
+    public ComposedSequence(string source) : base(source)
     {
-        FillCongenericChains();
+        FillCongenericSequences();
     }
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="Chain"/> class
+    /// Initializes a new instance of the <see cref="ComposedSequence"/> class
     /// with provided order and alphabet.
     /// Only simple validation is made.
     /// </summary>
     /// <param name="order">
-    /// The order of chain.
+    /// The order of the sequence.
     /// </param>
     /// <param name="alphabet">
-    /// The alphabet of chain.
+    /// The alphabet of the sequence.
     /// </param>
-    public Chain(int[] order, Alphabet alphabet) : base(order, alphabet)
+    public ComposedSequence(int[] order, Alphabet alphabet) : base(order, alphabet)
     {
-        FillCongenericChains();
+        FillCongenericSequences();
     }
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="Chain"/> class
+    /// Initializes a new instance of the <see cref="ComposedSequence"/> class
     /// with provided order and alphabet.
     /// Only simple validation is made.
     /// </summary>
     /// <param name="order">
-    /// The order of chain.
+    /// The order of the sequence.
     /// </param>
     /// <param name="alphabet">
-    /// The alphabet of chain.
+    /// The alphabet of the sequence.
     /// </param>
     /// <param name="id">
     /// Id of sequence.
     /// </param>
-    public Chain(int[] order, Alphabet alphabet, long id) : base(order, alphabet, id)
+    public ComposedSequence(int[] order, Alphabet alphabet, long id) : base(order, alphabet, id)
     {
-        FillCongenericChains();
+        FillCongenericSequences();
     }
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="Chain"/> class
+    /// Initializes a new instance of the <see cref="ComposedSequence"/> class
     /// with provided order and numeric sequence.
     /// Only simple validation is made.
     /// </summary>
     /// <param name="order">
-    /// The order of chain.
+    /// The order of the sequence.
     /// </param>
-    public Chain(int[] order) : base(order)
+    public ComposedSequence(int[] order) : base(order)
     {
-        FillCongenericChains();
+        FillCongenericSequences();
     }
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="Chain"/> class from string.
+    /// Initializes a new instance of the <see cref="ComposedSequence"/> class from string.
     /// Each character becomes element.
     /// </summary>
     /// <param name="source">
     /// The source collection of <see cref="IBaseObject"/>.
     /// </param>
-    public Chain(IReadOnlyList<IBaseObject> source) : base(source)
+    public ComposedSequence(IReadOnlyList<IBaseObject> source) : base(source)
     {
     }
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="Chain"/> class.
+    /// Initializes a new instance of the <see cref="ComposedSequence"/> class.
     /// </summary>
     /// <param name="source">
     /// The source sequence of int values.
     /// </param>
-    public Chain(short[] source)
+    public ComposedSequence(short[] source)
     {
         alphabet = [NullValue.Instance()];
         order = new int[source.Length];
@@ -128,114 +128,114 @@ public class Chain : BaseChain, IBaseObject
             order[i] = alphabet.IndexOf(new ValueInt(element));
         }
 
-        FillCongenericChains();
+        FillCongenericSequences();
     }
 
     /// <summary>
-    /// Deletes chain (order and alphabet) and creates new empty chain with given length.
+    /// Deletes sequence (order and alphabet) and creates new empty sequence with given length.
     /// </summary>
     /// <param name="length">
-    /// New chain length.
+    /// New sequence length.
     /// </param>
     public override void ClearAndSetNewLength(int length)
     {
         base.ClearAndSetNewLength(length);
-        congenericChains = null;
+        congenericSequences = null;
         relationIntervalsManagers = null;
     }
 
     /// <summary>
-    /// Creates clone of this chain.
+    /// Creates clone of this sequence.
     /// </summary>
     /// <returns>
     /// The <see cref="IBaseObject"/>.
     /// </returns>
     public new IBaseObject Clone()
     {
-        Chain clone = new(order.Length);
+        ComposedSequence clone = new(order.Length);
         FillClone(clone);
         return clone;
     }
 
     /// <summary>
     /// Returns clone of congeneric sequence of given element.
-    /// If there is no such element in chain returns null.
+    /// If there is no such element in sequence returns null.
     /// </summary>
     /// <param name="baseObject">
-    /// Element of congeneric chain.
+    /// Element of congeneric sequence.
     /// </param>
     /// <returns>
-    /// The <see cref="T:CongenericChain"/>.
+    /// The <see cref="Core.CongenericSequence"/>.
     /// </returns>
-    public CongenericChain CongenericChain(IBaseObject baseObject)
+    public CongenericSequence CongenericSequence(IBaseObject baseObject)
     {
-        if (congenericChains == null)
+        if (congenericSequences == null)
         {
-            FillCongenericChains();
+            FillCongenericSequences();
         }
 
-        CongenericChain result = null;
+        CongenericSequence result = null;
 
         int pos = Alphabet.IndexOf(baseObject);
         if (pos != -1)
         {
-            result = (CongenericChain)congenericChains[pos].Clone();
+            result = (CongenericSequence)congenericSequences[pos].Clone();
         }
 
         return result;
     }
 
     /// <summary>
-    /// Tries to get congeneric chain.
-    /// if there is no such chain returns null.
+    /// Tries to get congeneric sequence.
+    /// if there is no such sequence returns null.
     /// </summary>
     /// <param name="element">
-    /// The element of desired congeneric chain.
+    /// The element of desired congeneric sequence.
     /// </param>
     /// <returns>
-    /// The <see cref="T:CongenericChain"/>.
+    /// The <see cref="Core.CongenericSequence"/>.
     /// </returns>
-    public CongenericChain TryGetCongenericChain(IBaseObject element)
+    public CongenericSequence TryGetCongenericSequence(IBaseObject element)
     {
         if (!alphabet.Contains(element))
         {
             return null;
         }
 
-        return CongenericChain(element);
+        return CongenericSequence(element);
     }
 
     /// <summary>
-    /// Gets or creates congeneric chain.
+    /// Gets or creates congeneric sequence.
     /// </summary>
     /// <param name="element">
-    /// The element of congeneric chain.
+    /// The element of congeneric sequence.
     /// </param>
     /// <returns>
-    /// The <see cref="T:CongenericChain"/>.
+    /// The <see cref="Core.CongenericSequence"/>.
     /// </returns>
-    public CongenericChain GetOrCreateCongenericChain(IBaseObject element)
+    public CongenericSequence GetOrCreateCongenericSequence(IBaseObject element)
     {
-        return TryGetCongenericChain(element) ?? new CongenericChain(element);
+        return TryGetCongenericSequence(element) ?? new CongenericSequence(element);
     }
 
     /// <summary>
     /// Returns clone of congeneric sequence by index of its element in alphabet.
     /// </summary>
     /// <param name="index">
-    /// Index of element of congeneric chain in alphabet.
+    /// Index of element of congeneric sequence in alphabet.
     /// </param>
     /// <returns>
-    /// The <see cref="T:CongenericChain"/>.
+    /// The <see cref="Core.CongenericSequence"/>.
     /// </returns>
-    public CongenericChain CongenericChain(int index)
+    public CongenericSequence CongenericSequence(int index)
     {
-        if (congenericChains == null)
+        if (congenericSequences == null)
         {
-            FillCongenericChains();
+            FillCongenericSequences();
         }
 
-        return (CongenericChain)congenericChains[index].Clone();
+        return (CongenericSequence)congenericSequences[index].Clone();
     }
 
     /// <summary>
@@ -261,7 +261,7 @@ public class Chain : BaseChain, IBaseObject
 
         if (intervalsManager == null)
         {
-            intervalsManager = new BinaryIntervalsManager(CongenericChain(first - 1), CongenericChain(second - 1));
+            intervalsManager = new BinaryIntervalsManager(CongenericSequence(first - 1), CongenericSequence(second - 1));
             relationIntervalsManagers[first - 1, second - 1] = intervalsManager;
         }
 
@@ -298,7 +298,7 @@ public class Chain : BaseChain, IBaseObject
     {
         base.Set(item, index);
 
-        congenericChains = null;
+        congenericSequences = null;
     }
 
     /// <summary>
@@ -311,7 +311,7 @@ public class Chain : BaseChain, IBaseObject
     {
         base.RemoveAt(index);
 
-        congenericChains = null;
+        congenericSequences = null;
     }
 
     /// <summary>
@@ -324,7 +324,7 @@ public class Chain : BaseChain, IBaseObject
     {
         base.DeleteAt(index);
 
-        congenericChains = null;
+        congenericSequences = null;
     }
 
     /// <summary>
@@ -341,54 +341,52 @@ public class Chain : BaseChain, IBaseObject
     /// </returns>
     public int GetOccurrence(IBaseObject element, int entry)
     {
-        if (congenericChains == null)
+        if (congenericSequences == null)
         {
-            FillCongenericChains();
+            FillCongenericSequences();
         }
 
-        return congenericChains[alphabet.IndexOf(element) - 1].GetOccurrence(entry);
+        return congenericSequences[alphabet.IndexOf(element) - 1].GetOccurrence(entry);
     }
 
     /// <summary>
-    /// Sets arrangement managers for congeneric chains.
+    /// Sets arrangement managers for congeneric sequences.
     /// </summary>
     /// <param name="arrangementType">
     /// The arrangement Type. By default set to intervals.
     /// </param>
     public void SetArrangementManagers(ArrangementType arrangementType = ArrangementType.Intervals)
     {
-        foreach (CongenericChain chain in congenericChains)
+        foreach (CongenericSequence sequence in congenericSequences)
         {
-            chain.CurrentArrangementType = arrangementType;
-            chain.CreateArrangementManager(arrangementType);
+            sequence.CurrentArrangementType = arrangementType;
+            sequence.CreateArrangementManager(arrangementType);
         }
 
     }
 
     /// <summary>
-    /// Fills clone of this chain.
+    /// Fills clone of this sequence.
     /// </summary>
     /// <param name="clone">
-    /// The clone of chain.
+    /// The clone of the sequence.
     /// </param>
     protected void FillClone(IBaseObject clone)
     {
-        Chain? tempChain = clone as Chain;
-        base.FillClone(tempChain);
-        if (tempChain != null)
+        ComposedSequence? sequence = clone as ComposedSequence;
+        base.FillClone(sequence);
+        if (sequence != null && congenericSequences != null)
         {
-            if (congenericChains != null)
-            {
-                tempChain.congenericChains = (CongenericChain[])congenericChains.Clone();
-            }
+            sequence.congenericSequences = (CongenericSequence[])congenericSequences.Clone();
+
         }
     }
 
     /// <summary>
-    /// Fills all congeneric chains of this chain.
-    /// All congeneric sequences stored in <see cref="congenericChains"/> field.
+    /// Fills all congeneric sequences of this sequence.
+    /// All congeneric sequences stored in <see cref="congenericSequences"/> field.
     /// </summary>
-    private void FillCongenericChains()
+    private void FillCongenericSequences()
     {
         List<int>[] occurrences = new List<int>[alphabet.Cardinality - 1];
 
@@ -405,10 +403,10 @@ public class Chain : BaseChain, IBaseObject
             }
         }
 
-        congenericChains = new CongenericChain[alphabet.Cardinality - 1];
+        congenericSequences = new CongenericSequence[alphabet.Cardinality - 1];
         for (int k = 0; k < alphabet.Cardinality - 1; k++)
         {
-            congenericChains[k] = new CongenericChain(occurrences[k], alphabet[k + 1], order.Length);
+            congenericSequences[k] = new CongenericSequence(occurrences[k], alphabet[k + 1], order.Length);
         }
     }
 }

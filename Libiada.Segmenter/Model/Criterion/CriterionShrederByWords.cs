@@ -26,8 +26,8 @@ public class CriterionShrederByWords : Criterion
     /// <summary>
     /// The state.
     /// </summary>
-    /// <param name="chain">
-    /// The chain.
+    /// <param name="sequence">
+    /// The sequence.
     /// </param>
     /// <param name="alphabet">
     /// The alphabet.
@@ -35,7 +35,7 @@ public class CriterionShrederByWords : Criterion
     /// <returns>
     /// The <see cref="bool"/>.
     /// </returns>
-    public override bool State(ComplexChain chain, FrequencyDictionary alphabet)
+    public override bool State(ComplexSequence sequence, FrequencyDictionary alphabet)
     {
         return false;
     }
@@ -43,8 +43,8 @@ public class CriterionShrederByWords : Criterion
     /// <summary>
     /// The distortion.
     /// </summary>
-    /// <param name="chain">
-    /// The chain.
+    /// <param name="sequence">
+    /// The sequence.
     /// </param>
     /// <param name="alphabet">
     /// The alphabet.
@@ -52,7 +52,7 @@ public class CriterionShrederByWords : Criterion
     /// <returns>
     /// The <see cref="double"/>.
     /// </returns>
-    public override double Distortion(ComplexChain chain, FrequencyDictionary alphabet)
+    public override double Distortion(ComplexSequence sequence, FrequencyDictionary alphabet)
     {
         return 0;
     }

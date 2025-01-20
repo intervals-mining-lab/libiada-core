@@ -3,7 +3,7 @@ namespace Libiada.Core.Core.Characteristics.Calculators.CongenericCalculators;
 using System.Numerics;
 
 /// <summary>
-/// Characteristic of chain depth.
+/// Characteristic of sequence depth.
 /// </summary>
 public class Depth : ICongenericCalculator
 {
@@ -12,7 +12,7 @@ public class Depth : ICongenericCalculator
     /// of intervals between nearest elements
     /// in congeneric sequence.
     /// </summary>
-    /// <param name="chain">
+    /// <param name="sequence">
     /// Congeneric sequence.
     /// </param>
     /// <param name="link">
@@ -21,9 +21,9 @@ public class Depth : ICongenericCalculator
     /// <returns>
     /// <see cref="double"/> value of depth.
     /// </returns>
-    public double Calculate(CongenericChain chain, Link link)
+    public double Calculate(CongenericSequence sequence, Link link)
     {
-        int[] intervals = chain.GetArrangement(link);
+        int[] intervals = sequence.GetArrangement(link);
         if(intervals.Length == 0) return 0;
 
         BigInteger volume = 1;

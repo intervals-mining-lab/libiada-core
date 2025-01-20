@@ -17,9 +17,9 @@ public class LineOrderExtractor : IImageOrderExtractor
     /// The image.
     /// </param>
     /// <returns>
-    /// The <see cref="BaseChain"/>.
+    /// The <see cref="Sequence"/>.
     /// </returns>
-    public BaseChain ExtractOrder(Rgba32[,] image)
+    public Sequence ExtractOrder(Rgba32[,] image)
     {
         int[] order = new int[image.GetLength(0) * image.GetLength(1)];
         Alphabet alphabet = [NullValue.Instance()];
@@ -28,7 +28,7 @@ public class LineOrderExtractor : IImageOrderExtractor
         {
             for (int j = 0; j < image.GetLength(1); j++)
             {
-                // TODO: refactor this to use standard BaseChain constructor
+                // TODO: refactor this to use standard Sequence constructor
                 int pixelIndex = alphabet.IndexOf(new ValuePixel(image[i, j]));
                 if (pixelIndex == -1)
                 {
@@ -40,6 +40,6 @@ public class LineOrderExtractor : IImageOrderExtractor
             }
         }
 
-        return new BaseChain(order, alphabet);
+        return new Sequence(order, alphabet);
     }
 }

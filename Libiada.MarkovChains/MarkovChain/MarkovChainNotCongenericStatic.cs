@@ -36,11 +36,11 @@ public class MarkovChainNotCongenericStatic : MarkovChainBase
     /// Rank of used markov chain.
     /// </param>
     /// <returns>
-    /// Generated sequence as <see cref="BaseChain"/>.
+    /// Generated sequence as <see cref="Sequence"/>.
     /// </returns>
-    public override BaseChain Generate(int length, int chainRank)
+    public override Sequence Generate(int length, int chainRank)
     {
-        BaseChain temp = new();
+        Sequence temp = new();
         temp.ClearAndSetNewLength(length);
         IteratorStart? read = Rank > 1 ? new IteratorStart(temp, Rank - 1, 1) : null;
         IteratorWritableStart write = new(temp);
@@ -75,11 +75,11 @@ public class MarkovChainNotCongenericStatic : MarkovChainBase
 
             if (read != null)
             {
-                BaseChain chain = (BaseChain)read.Current();
-                int[] indexedChain = new int[chain.Length];
-                for (int k = 0; k < chain.Length; k++)
+                Sequence sequence = (Sequence)read.Current();
+                int[] indexedChain = new int[sequence.Length];
+                for (int k = 0; k < sequence.Length; k++)
                 {
-                    indexedChain[k] = Alphabet.IndexOf(chain[k]);
+                    indexedChain[k] = Alphabet.IndexOf(sequence[k]);
                 }
 
                 write.WriteValue(GetObject(ProbabilityMatrixes[m - 1].GetProbabilityVector(Alphabet, indexedChain)));

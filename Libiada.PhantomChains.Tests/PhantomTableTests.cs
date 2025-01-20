@@ -19,7 +19,7 @@ public class PhantomTableTests
         ValuePhantom m1 = [new ValueString('1'), new ValueString('2'), new ValueString('3')];
         ValuePhantom m2 = [new ValueString('4'), new ValueString('3')];
 
-        BaseChain test = new(new List<IBaseObject>() { m1, m2, m2, m3 });
+        Sequence test = new(new List<IBaseObject>() { m1, m2, m2, m3 });
 
         PhantomTable table = new(test);
         Assert.Multiple(() =>
@@ -41,7 +41,7 @@ public class PhantomTableTests
         ValuePhantom m1 = [new ValueString('1'), new ValueString('2'), new ValueString('3')];
         ValuePhantom m2 = [new ValueString('4'), new ValueString('3')];
 
-        BaseChain test = new(new List<IBaseObject>() { m1, m2, m2 });
+        Sequence test = new(new List<IBaseObject>() { m1, m2, m2 });
 
         PhantomTable table = new(test);
         Assert.Multiple(() =>

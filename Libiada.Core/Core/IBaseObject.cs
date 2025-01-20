@@ -23,7 +23,7 @@ public interface IBaseObject
     /// <returns>
     /// True if objects are equal and false otherwise.
     /// </returns>
-    bool Equals(object other);
+    bool Equals(object? other);
 
     /// <summary>
     /// Calculates hash code using

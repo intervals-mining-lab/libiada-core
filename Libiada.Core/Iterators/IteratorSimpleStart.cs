@@ -3,7 +3,7 @@ namespace Libiada.Core.Iterators;
 using Libiada.Core.Core;
 
 /// <summary>
-/// Iterator that goes from start of the chain and reading one element at a time.
+/// Iterator that goes from start of the sequence and reading one element at a time.
 /// </summary>
 public class IteratorSimpleStart
 {
@@ -18,15 +18,15 @@ public class IteratorSimpleStart
     protected readonly int Step;
 
     /// <summary>
-    /// Source chain.
+    /// Source sequence.
     /// </summary>
-    protected readonly AbstractChain Source;
+    protected readonly AbstractSequence Source;
 
     /// <summary>
     /// Initializes a new instance of the <see cref="IteratorSimpleStart"/> class.
     /// </summary>
     /// <param name="source">
-    /// Source chain.
+    /// Source sequence.
     /// </param>
     /// <param name="step">
     /// Shift of iterator.
@@ -34,7 +34,7 @@ public class IteratorSimpleStart
     /// <exception cref="ArgumentException">
     /// Thrown if one or more arguments are invalid.
     /// </exception>
-    public IteratorSimpleStart(AbstractChain source, int step)
+    public IteratorSimpleStart(AbstractSequence source, int step)
     {
         if (source == null || source.Length < 1)
         {
@@ -62,7 +62,7 @@ public class IteratorSimpleStart
     /// Moves iterator to the next position.
     /// </summary>
     /// <returns>
-    /// Returns false if end of the chain is reached. Otherwise returns true.
+    /// Returns false if end of the sequence is reached. Otherwise returns true.
     /// </returns>
     public bool Next()
     {

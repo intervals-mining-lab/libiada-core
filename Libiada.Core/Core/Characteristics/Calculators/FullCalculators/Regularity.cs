@@ -8,7 +8,7 @@ public class Regularity : IFullCalculator
     /// <summary>
     /// Calculation method.
     /// </summary>
-    /// <param name="chain">
+    /// <param name="sequence">
     /// Source sequence.
     /// </param>
     /// <param name="link">
@@ -17,10 +17,10 @@ public class Regularity : IFullCalculator
     /// <returns>
     /// Regularity as <see cref="double"/>.
     /// </returns>
-    public double Calculate(Chain chain, Link link)
+    public double Calculate(ComposedSequence sequence, Link link)
     {
-        double geometricMean = new GeometricMean().Calculate(chain, link);
-        double descriptiveInformation = new DescriptiveInformation().Calculate(chain, link);
+        double geometricMean = new GeometricMean().Calculate(sequence, link);
+        double descriptiveInformation = new DescriptiveInformation().Calculate(sequence, link);
 
         return geometricMean / descriptiveInformation;
     }

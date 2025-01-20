@@ -1,14 +1,14 @@
 namespace Libiada.Core.Core.Characteristics.Calculators.FullCalculators;
 
 /// <summary>
-/// The Full chain calculator interface.
+/// The Full sequence calculator interface.
 /// </summary>
 public interface IFullCalculator
 {
     /// <summary>
     /// Calculate integral value of characteristic (for complete sequence).
     /// </summary>
-    /// <param name="chain">
+    /// <param name="sequence">
     /// Source sequence.
     /// </param>
     /// <param name="link">
@@ -18,5 +18,5 @@ public interface IFullCalculator
     /// <returns>
     /// Characteristic value as <see cref="double"/>.
     /// </returns>
-    double Calculate(Chain chain, Link link);
+    double Calculate(ComposedSequence sequence, Link link);
 }

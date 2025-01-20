@@ -9,7 +9,7 @@ using Libiada.Core.Core.SimpleTypes;
 public class PhantomTable
 {
     /// <summary>
-    /// List of starts positions of trees in phantom chain.
+    /// List of starts positions of trees in phantom sequence.
     /// </summary>
     public readonly List<int> StartPositions = [];
 
@@ -22,19 +22,19 @@ public class PhantomTable
     /// Initializes a new instance of the <see cref="PhantomTable"/> class.
     /// </summary>
     /// <param name="source">
-    /// Phantom chain.
+    /// Phantom sequence.
     /// </param>
-    public PhantomTable(BaseChain source)
+    public PhantomTable(Sequence source)
     {
-        BaseChain internalChain = source;
+        Sequence internalSequence = source;
         ulong v = 1;
         StartPositions.Add(0);
-        for (int j = 0; j < internalChain.Length; j++)
+        for (int j = 0; j < internalSequence.Length; j++)
         {
-            if ((((ValuePhantom)internalChain[j])[0] is ValueString)
-                || (((ValuePhantom)internalChain[j])[0] is BaseChain))
+            if ((((ValuePhantom)internalSequence[j])[0] is ValueString)
+                || (((ValuePhantom)internalSequence[j])[0] is Sequence))
             {
-                StartPositions.Add(StartPositions[j] + ((ValuePhantom)internalChain[j])[0].ToString().Length);
+                StartPositions.Add(StartPositions[j] + ((ValuePhantom)internalSequence[j])[0].ToString().Length);
             }
             else
             {
@@ -45,9 +45,9 @@ public class PhantomTable
         }
 
         table.Add(null);
-        for (int i = internalChain.Length; i > 0; i--)
+        for (int i = internalSequence.Length; i > 0; i--)
         {
-            var temp = (ValuePhantom)internalChain[i - 1];
+            var temp = (ValuePhantom)internalSequence[i - 1];
             table[i] = new Record(temp, v);
             v *= (uint)temp.Cardinality;
         }

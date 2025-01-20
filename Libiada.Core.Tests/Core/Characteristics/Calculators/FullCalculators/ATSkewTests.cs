@@ -13,7 +13,7 @@ public class ATSkewTests : FullCalculatorsTests<ATSkew>
     /// The calculation test.
     /// </summary>
     /// <param name="index">
-    /// Full sequence index in <see cref="ChainsStorage"/>.
+    /// Full sequence index in <see cref="SequencesStorage"/>.
     /// </param>
     /// <param name="value">
     /// The value.
@@ -26,14 +26,14 @@ public class ATSkewTests : FullCalculatorsTests<ATSkew>
     [TestCase(8, -1)]
     public void CalculationTest(int index, double value)
     {
-        ChainCharacteristicTest(index, Link.NotApplied, value);
+        SequenceCharacteristicTest(index, Link.NotApplied, value);
     }
 
     /// <summary>
     /// Sequence without Adenin or Timine calculation test.
     /// </summary>
     /// <param name="index">
-    /// Full sequence index in <see cref="ChainsStorage"/>.
+    /// Full sequence index in <see cref="SequencesStorage"/>.
     /// </param>
     /// <param name="value">
     /// The value.
@@ -42,6 +42,6 @@ public class ATSkewTests : FullCalculatorsTests<ATSkew>
     [TestCase(4, 0)]
     public void SequenceWithoutATTest(int index, double value)
     {
-        ChainCharacteristicTest(index, Link.NotApplied, value);
+        SequenceCharacteristicTest(index, Link.NotApplied, value);
     }
 }

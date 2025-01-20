@@ -8,7 +8,7 @@ public class RemotenessSkewnessCoefficient : ICongenericCalculator
     /// <summary>
     /// Calculation method.
     /// </summary>
-    /// <param name="chain">
+    /// <param name="sequence">
     /// Source sequence.
     /// </param>
     /// <param name="link">
@@ -17,12 +17,12 @@ public class RemotenessSkewnessCoefficient : ICongenericCalculator
     /// <returns>
     /// Remoteness skewness coefficient <see cref="double"/> value.
     /// </returns>
-    public double Calculate(CongenericChain chain, Link link)
+    public double Calculate(CongenericSequence sequence, Link link)
     {
-        double standardDeviation = new RemotenessStandardDeviation().Calculate(chain, link);
+        double standardDeviation = new RemotenessStandardDeviation().Calculate(sequence, link);
         if (standardDeviation == 0) return 0;
 
-        double remotenessSkewness = new RemotenessSkewness().Calculate(chain, link);
+        double remotenessSkewness = new RemotenessSkewness().Calculate(sequence, link);
 
         return remotenessSkewness / (standardDeviation * standardDeviation * standardDeviation);
     }

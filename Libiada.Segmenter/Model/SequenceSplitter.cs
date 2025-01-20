@@ -4,9 +4,9 @@ using Segmenter.Base.Collectors;
 using Segmenter.Base.Sequences;
 
 /// <summary>
-/// Used as a base for all kinds of word splitters for a chain
+/// Used as a base for all kinds of word splitters for a sequence
 /// </summary>
-public abstract class ChainSplitter
+public abstract class SequenceSplitter
 {
     /// <summary>
     /// The alphabet.
@@ -16,7 +16,7 @@ public abstract class ChainSplitter
     /// <summary>
     /// The convoluted.
     /// </summary>
-    protected ComplexChain convoluted;
+    protected ComplexSequence convoluted;
 
     /// <summary>
     /// Gets the frequency dictionary.
@@ -33,7 +33,7 @@ public abstract class ChainSplitter
     /// The par.
     /// </param>
     /// <returns>
-    /// The <see cref="ComplexChain"/>.
+    /// The <see cref="ComplexSequence"/>.
     /// </returns>
-    public abstract ComplexChain Cut(Dictionary<string, object> par);
+    public abstract ComplexSequence Cut(Dictionary<string, object> par);
 }

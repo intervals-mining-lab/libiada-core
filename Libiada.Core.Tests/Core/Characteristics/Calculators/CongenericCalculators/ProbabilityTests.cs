@@ -13,7 +13,7 @@ public class ProbabilityTests : CongenericCalculatorsTests<Probability>
     /// The congeneric calculation test.
     /// </summary>
     /// <param name="index">
-    /// The congeneric sequence index in <see cref="ChainsStorage"/>.
+    /// The congeneric sequence index in <see cref="SequencesStorage"/>.
     /// </param>
     /// <param name="value">
     /// The value.
@@ -21,6 +21,6 @@ public class ProbabilityTests : CongenericCalculatorsTests<Probability>
     [TestCase(0, 0.3)]
     public void CongenericCalculationTest(int index, double value)
     {
-        CongenericChainCharacteristicTest(index, Link.NotApplied, value);
+        CongenericSequenceCharacteristicTest(index, Link.NotApplied, value);
     }
 }

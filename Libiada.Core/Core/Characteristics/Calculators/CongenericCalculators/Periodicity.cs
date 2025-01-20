@@ -9,7 +9,7 @@ public class Periodicity : ICongenericCalculator
     /// <summary>
     /// Calculation method.
     /// </summary>
-    /// <param name="chain">
+    /// <param name="sequence">
     /// Source sequence.
     /// </param>
     /// <param name="link">
@@ -18,12 +18,12 @@ public class Periodicity : ICongenericCalculator
     /// <returns>
     /// Periodicity as <see cref="double"/>.
     /// </returns>
-    public double Calculate(CongenericChain chain, Link link)
+    public double Calculate(CongenericSequence sequence, Link link)
     {
-        double arithmeticMean = new ArithmeticMean().Calculate(chain, link);
+        double arithmeticMean = new ArithmeticMean().Calculate(sequence, link);
         if (arithmeticMean == 0) return 0;
 
-        double geometricMean = new GeometricMean().Calculate(chain, link);
+        double geometricMean = new GeometricMean().Calculate(sequence, link);
 
         return geometricMean / arithmeticMean;
     }

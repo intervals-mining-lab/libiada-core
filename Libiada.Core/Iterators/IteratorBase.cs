@@ -3,7 +3,7 @@ namespace Libiada.Core.Iterators;
 using Libiada.Core.Core;
 
 /// <summary>
-/// Abstract chain iterator.
+/// Abstract sequence iterator.
 /// </summary>
 public abstract class IteratorBase : IIterator
 {
@@ -18,15 +18,15 @@ public abstract class IteratorBase : IIterator
     protected readonly int Step;
 
     /// <summary>
-    /// Source chain.
+    /// Source sequence.
     /// </summary>
-    protected readonly AbstractChain Source;
+    protected readonly AbstractSequence Source;
 
     /// <summary>
     /// Initializes a new instance of the <see cref="IteratorBase"/> class.
     /// </summary>
     /// <param name="source">
-    /// Source chain.
+    /// Source sequence.
     /// </param>
     /// <param name="length">
     /// Length of subsequence.
@@ -37,7 +37,7 @@ public abstract class IteratorBase : IIterator
     /// <exception cref="ArgumentException">
     /// Thrown if one or more arguments are invalid.
     /// </exception>
-    public IteratorBase(AbstractChain source, int length, int step)
+    public IteratorBase(AbstractSequence source, int length, int step)
     {
         if (source == null || length <= 0 || source.Length < length)
         {
@@ -65,7 +65,7 @@ public abstract class IteratorBase : IIterator
     /// Moves iterator to the next position.
     /// </summary>
     /// <returns>
-    /// Returns false if end of the chain is reached. Otherwise returns true.
+    /// Returns false if end of the sequence is reached. Otherwise returns true.
     /// </returns>
     public abstract bool Next();
 
@@ -78,14 +78,14 @@ public abstract class IteratorBase : IIterator
     /// <exception cref="InvalidOperationException">
     /// Thrown if current position is invalid.
     /// </exception>
-    public virtual AbstractChain Current()
+    public virtual AbstractSequence Current()
     {
         if (Position < 0 || Position > MaxPosition)
         {
             throw new InvalidOperationException("Iterator position is out of range.");
         }
 
-        BaseChain result = new(Length);
+        Sequence result = new(Length);
 
         for (int i = 0; i < Length; i++)
         {

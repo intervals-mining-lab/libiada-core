@@ -3,7 +3,7 @@
 using Libiada.Core.Core.ArrangementManagers;
 
 /// <summary>
-/// Redundancy of binary chain.
+/// Redundancy of binary sequence.
 /// </summary>
 public class Redundancy : BinaryCalculator
 {
@@ -29,7 +29,7 @@ public class Redundancy : BinaryCalculator
             return 0;
         }
 
-        int firstElementCount = manager.FirstChain.OccurrencesCount;
+        int firstElementCount = manager.FirstSequence.OccurrencesCount;
         double avG = 0;
         int currentEntrance = 0;
         for (int i = 1; i <= firstElementCount; i++)
