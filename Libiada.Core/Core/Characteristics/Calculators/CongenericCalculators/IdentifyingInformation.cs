@@ -27,6 +27,6 @@ public class IdentifyingInformation : ICongenericCalculator
     {
         double mean = new ArithmeticMean().Calculate(sequence, link);
 
-        return mean == 0 ? 0 : Math.Log(mean, 2);
+        return mean == 0 ? 0 : Math.Log2(mean);
     }
 }

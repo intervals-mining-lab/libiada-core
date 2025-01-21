@@ -17,6 +17,6 @@ public class CuttingLengthVocabularyEntropy : NonLinkableFullCalculator
     public override double Calculate(ComposedSequence sequence)
     {
         double cutLength = new CuttingLength().Calculate(sequence);
-        return Math.Log(sequence.Length - cutLength + 1, 2);
+        return Math.Log2(sequence.Length - cutLength + 1);
     }
 }

@@ -18,7 +18,7 @@ public class CuttingLengthVocabularyEntropy : NonLinkableCongenericCalculator
     {
         double cuttingLength = new CuttingLength().Calculate(sequence);
 
-        return Math.Log(sequence.Length - cuttingLength + 1, 2);
+        return Math.Log2(sequence.Length - cuttingLength + 1);
     }
 
 }

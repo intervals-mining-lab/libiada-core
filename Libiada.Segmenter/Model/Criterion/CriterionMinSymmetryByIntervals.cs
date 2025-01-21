@@ -42,6 +42,7 @@ public class CriterionMinSymmetryByIntervals : Criterion
         for (int index = 0; index < alphabet.Count; index++)
         {
             int countT = positions[index].Count;
+            // TODO: check if this should be Log2
             taxons += (Math.Log(countT) * countT) - countT;
         }
 

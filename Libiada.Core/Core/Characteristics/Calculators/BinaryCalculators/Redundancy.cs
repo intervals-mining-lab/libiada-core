@@ -41,13 +41,13 @@ public class Redundancy : BinaryCalculator
                     currentEntrance = manager.GetFirstAfter(manager.GetFirst(i));
                     if (link == Link.Start || link == Link.Both)
                     {
-                        avG += Math.Log(currentEntrance, 2);
+                        avG += Math.Log2(currentEntrance);
                     }
                 }
                 else
                 {
                     int nextEntrance = manager.GetFirstAfter(manager.GetFirst(i));
-                    avG += Math.Log(nextEntrance - currentEntrance, 2);
+                    avG += Math.Log2(nextEntrance - currentEntrance);
                     currentEntrance = nextEntrance;
                 }
             }
@@ -55,7 +55,7 @@ public class Redundancy : BinaryCalculator
 
         if (link == Link.End || link == Link.Both)
         {
-            avG += Math.Log(manager.Length - currentEntrance, 2);
+            avG += Math.Log2(manager.Length - currentEntrance);
         }
 
         avG = manager.PairsCount == 0 ? 0 : avG / manager.PairsCount;

@@ -88,6 +88,7 @@ public class CriterionPartialOrlov : Criterion
         }
 
         double z = sequence.Length;
+        // TODO: check if this should be Log2
         double k = 1 / Math.Log(f * z);
         double b = (k / f) - 1;
         double v = (k * z) - b;
@@ -145,6 +146,7 @@ public class CriterionPartialOrlov : Criterion
     /// </returns>
     public double CalculateK(int factFrequency, int length)
     {
+        // TODO: check if this should be Log2
         return 1.0 / Math.Log(factFrequency * length);
     }
 

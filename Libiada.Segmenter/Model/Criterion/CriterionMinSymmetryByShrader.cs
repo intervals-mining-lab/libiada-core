@@ -87,6 +87,7 @@ public class CriterionMinSymmetryByShrader : Criterion
         for (int index = 0; index < alphabet.Count; index++)
         {
             int countT = positions[index].Count;
+            // TODO: check if this should be Log2
             taxons += (Math.Log(countT) * countT) - countT;
             int arraySize = positions[index].Count;
             if (arrayMaxLength < arraySize)
@@ -105,6 +106,7 @@ public class CriterionMinSymmetryByShrader : Criterion
                 }
             }
 
+            // TODO: check if this should be Log2
             merons += (Math.Log(countM) * countM) - countM;
             countM = 0;
         }

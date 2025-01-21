@@ -1,7 +1,5 @@
 ﻿namespace Libiada.Core.Core.Characteristics.Calculators.CongenericCalculators;
 
-using System.Numerics;
-
 /// <summary>
 /// Volume of sequence.
 /// </summary>
@@ -24,9 +22,9 @@ public class Volume : ICongenericCalculator
         int[] intervals = sequence.GetArrangement(link);
         if (intervals.Length == 0) return 1;
 
-        BigInteger result = 1;
+        double result = 1;
         foreach (int interval in intervals) result *= interval;
 
-        return (double)result;
+        return result;
     }
 }

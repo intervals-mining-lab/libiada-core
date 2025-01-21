@@ -33,6 +33,7 @@ public class PartialOrlovCriterion
         double maxEntriesNumber = consonancesDictionary.Values.Max();
         double Z = calculateZ();
         string textWithoutSpaces = text.Replace(" ", "");
+        // TODO: check if this should be Log2
         return 1 / Math.Log(maxEntriesNumber);
     }
 

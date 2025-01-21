@@ -39,7 +39,7 @@ public class RemotenessKurtosis : IFullCalculator
 
         foreach ((int interval, int nk) in intervalsDictionary)
         {
-            double centeredRemoteness = Math.Log(interval, 2) - g;
+            double centeredRemoteness = Math.Log2(interval) - g;
             result += centeredRemoteness * centeredRemoteness * centeredRemoteness * centeredRemoteness * nk / n;
         }
 

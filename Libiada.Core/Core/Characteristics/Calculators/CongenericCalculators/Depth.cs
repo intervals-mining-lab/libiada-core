@@ -26,9 +26,9 @@ public class Depth : ICongenericCalculator
         int[] intervals = sequence.GetArrangement(link);
         if(intervals.Length == 0) return 0;
 
-        BigInteger volume = 1;
-        foreach(int interval in intervals) volume *= interval;
+        double depth = 0;
+        foreach(int interval in intervals) depth += Math.Log2(interval);
 
-        return BigInteger.Log(volume, 2);
+        return depth;
     }
 }

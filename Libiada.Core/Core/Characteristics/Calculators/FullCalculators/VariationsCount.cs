@@ -1,7 +1,6 @@
 ﻿namespace Libiada.Core.Core.Characteristics.Calculators.FullCalculators;
 
 using Libiada.Core.Core.SimpleTypes;
-using System.Numerics;
 
 /// <summary>
 /// Count of probable sequences that can be generated
@@ -20,7 +19,7 @@ public class VariationsCount : NonLinkableFullCalculator
     /// </returns>
     public override double Calculate(ComposedSequence sequence)
     {
-        BigInteger count = 1;
+        double count = 1;
         for (int i = 0; i < sequence.Length; i++)
         {
             if (sequence[i] is ValuePhantom message)

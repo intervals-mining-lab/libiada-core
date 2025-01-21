@@ -33,7 +33,7 @@ public class RemotenessSkewness : ICongenericCalculator
 
         foreach ((int interval, int nk) in intervalsDictionary)
         {
-            double centeredRemoteness = Math.Log(interval, 2) - gDeltaLog;
+            double centeredRemoteness = Math.Log2(interval) - gDeltaLog;
             result += centeredRemoteness * centeredRemoteness * centeredRemoteness * nk / nj;
         }
 
