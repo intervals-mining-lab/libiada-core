@@ -11,34 +11,34 @@ public class SequenceConcatenatorTests
     public void ConcatenateTest()
     {
         int[] sequencesIndexes = [0, 2, 1];
-        List<Chain> sourceChains = ChainsStorage.ConcatinationChains;
-        Chain result = SequenceConcatenator.Concatenate([sourceChains[0], sourceChains[1], sourceChains[2]], sequencesIndexes);
-        Assert.That(result, Is.EqualTo(sourceChains[4]));
+        List<ComposedSequence> sourceSequences = SequencesStorage.ConcatinationSequences;
+        ComposedSequence result = SequenceConcatenator.Concatenate([sourceSequences[0], sourceSequences[1], sourceSequences[2]], sequencesIndexes);
+        Assert.That(result, Is.EqualTo(sourceSequences[4]));
     }
 
     [Test]
     public void ConcatenateAsOrderedTest()
     {
-        List<Chain> sourceChains = ChainsStorage.ConcatinationChains;
-        Chain result = SequenceConcatenator.ConcatenateAsOrdered([sourceChains[0], sourceChains[1], sourceChains[2]]);
-        Assert.That(result, Is.EqualTo(sourceChains[3]));
+        List<ComposedSequence> sourceSequences = SequencesStorage.ConcatinationSequences;
+        ComposedSequence result = SequenceConcatenator.ConcatenateAsOrdered([sourceSequences[0], sourceSequences[1], sourceSequences[2]]);
+        Assert.That(result, Is.EqualTo(sourceSequences[3]));
     }
 
     [Test]
     public void GenerateConcatenationsTest()
     {
-        List<Chain> sourceChains = ChainsStorage.ConcatinationChains;
-        Chain[] expectedChains =
+        List<ComposedSequence> sourceSequences = SequencesStorage.ConcatinationSequences;
+        ComposedSequence[] expectedSequences =
         [
-            sourceChains[3],
-            sourceChains[4],
-            sourceChains[5],
-            sourceChains[6],
-            sourceChains[7],
-            sourceChains[8]
+            sourceSequences[3],
+            sourceSequences[4],
+            sourceSequences[5],
+            sourceSequences[6],
+            sourceSequences[7],
+            sourceSequences[8]
         ];
 
-        IEnumerable<Chain> result = SequenceConcatenator.GenerateConcatenations([sourceChains[0], sourceChains[1], sourceChains[2]]);
-        Assert.That(result, Is.EqualTo(expectedChains));
+        IEnumerable<ComposedSequence> result = SequenceConcatenator.GenerateConcatenations([sourceSequences[0], sourceSequences[1], sourceSequences[2]]);
+        Assert.That(result, Is.EqualTo(expectedSequences));
     }
 }

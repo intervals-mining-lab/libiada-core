@@ -11,23 +11,24 @@ public class GCRatio : NonLinkableFullCalculator
     /// <summary>
     /// Calculation method.
     /// </summary>
-    /// <param name="chain">
+    /// <param name="sequence">
     /// Source sequence.
     /// </param>
     /// <returns>
     /// G+C Ratio value as <see cref="double"/>.
     /// </returns>
-    public override double Calculate(Chain chain)
+    public override double Calculate(ComposedSequence sequence)
     {
-        DnaProcessor.CheckDnaAlphabet(chain.Alphabet);
+        DnaProcessor.CheckDnaAlphabet(sequence.Alphabet);
+
+        double l = new ElementsCount().Calculate(sequence);
+        if (l == 0) return 0;
 
         CongenericCalculators.ElementsCount congenericCounter = new();
-        ElementsCount counter = new();
 
-        int g = (int)congenericCounter.Calculate(chain.GetOrCreateCongenericChain(new ValueString("G")));
-        int c = (int)congenericCounter.Calculate(chain.GetOrCreateCongenericChain(new ValueString("C")));
-        int l = (int)counter.Calculate(chain);
+        double g = congenericCounter.Calculate(sequence.GetOrCreateCongenericSequence(new ValueString("G")));
+        double c = congenericCounter.Calculate(sequence.GetOrCreateCongenericSequence(new ValueString("C")));
 
-        return l == 0 ? 0 : 100 * (g + c) / (double)l;
+        return 100 * (g + c) / l;
     }
 }

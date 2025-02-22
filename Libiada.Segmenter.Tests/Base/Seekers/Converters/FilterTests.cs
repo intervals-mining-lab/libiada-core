@@ -43,8 +43,8 @@ public class FilterTests
     [Test]
     public void FilteroutTest()
     {
-        ComplexChain chain = new(list);
-        Filter filter = new(chain);
+        ComplexSequence sequence = new(list);
+        Filter filter = new(sequence);
         int hits = filter.FilterOut(str1);
 
         // TODO: find out why this code is not used
@@ -54,15 +54,15 @@ public class FilterTests
             sb.Append(s);
         }
 
-        string result = filter.GetChain().ToString();
-        string buf = chain.ToString();
+        string result = filter.GetSequence().ToString();
+        string buf = sequence.ToString();
         Assert.That(buf.Length - result.Length, Is.EqualTo(hits));
 
-        filter = new Filter(chain);
+        filter = new Filter(sequence);
         hits = filter.FilterOut(str2);
 
-        filter.GetChain().ToString();
-        chain.ToString();
+        filter.GetSequence().ToString();
+        sequence.ToString();
         Assert.That(hits, Is.EqualTo(3));
     }
 
@@ -72,8 +72,8 @@ public class FilterTests
     [Test]
     public void ReplaceTest()
     {
-        ComplexChain chain = new(list);
-        Filter filter = new(chain);
+        ComplexSequence sequence = new(list);
+        Filter filter = new(sequence);
         int hits = filter.Replace(str2, "-");
 
         StringBuilder sb = new(list.Count);
@@ -82,8 +82,8 @@ public class FilterTests
             sb.Append(s);
         }
 
-        string result = filter.GetChain().ToString();
-        string buf = chain.ToString();
+        string result = filter.GetSequence().ToString();
+        string buf = sequence.ToString();
         Assert.That(buf.Length - result.Length, Is.EqualTo(hits));
     }
 }

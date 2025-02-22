@@ -17,7 +17,7 @@ public static class DnaTransformer
     /// <summary>
     /// Translates DNA sequence into amino-acids.
     /// </summary>
-    /// <param name="inputChain">
+    /// <param name="inputSequence">
     /// DNA sequence.
     /// </param>
     /// <param name="translationTable">
@@ -25,22 +25,22 @@ public static class DnaTransformer
     /// 1 by default.
     /// </param>
     /// <returns>
-    /// Amino-acid sequence of type <see cref="BaseChain"/>.
+    /// Amino-acid sequence of type <see cref="Sequence"/>.
     /// Elements are of <see cref="ValueString"/> type.
     /// </returns>
-    public static BaseChain EncodeAmino(BaseChain inputChain, byte translationTable = 1)
+    public static Sequence EncodeAmino(Sequence inputSequence, byte translationTable = 1)
     {
         if (!codingTables.ContainsKey(translationTable))
         {
             throw new ArgumentException($"Translation table number is not supported, but was {translationTable}", nameof(translationTable));
         }
 
-        DnaProcessor.CheckDnaAlphabet(inputChain.Alphabet);
+        DnaProcessor.CheckDnaAlphabet(inputSequence.Alphabet);
 
         ReadOnlyDictionary<string, IBaseObject> aminoMap = codingTables[translationTable];
 
-        List<IBaseObject> result = new(inputChain.Length / 3);
-        List<string> codons = DiffCutter.Cut(inputChain.ToString(), new SimpleCutRule(inputChain.Length, 3, 3));
+        List<IBaseObject> result = new(inputSequence.Length / 3);
+        List<string> codons = DiffCutter.Cut(inputSequence.ToString(), new SimpleCutRule(inputSequence.Length, 3, 3));
         
         for (int i = 0; i < codons.Count; i++)
         {
@@ -58,7 +58,7 @@ public static class DnaTransformer
                 ValueString value = aminoAcid as ValueString ?? (ValueString)(aminoAcid as ValuePhantom).Single(p => !p.Equals((ValueString)"*"));
                 result.Add(value);
             }
-            else if (aminoAcid.Equals((ValueString)"*")) return new BaseChain(result);
+            else if (aminoAcid.Equals((ValueString)"*")) return new Sequence(result);
             else throw new Exception("No stop-codon at the end of coding sequence");
         }
 
@@ -68,20 +68,20 @@ public static class DnaTransformer
     /// <summary>
     /// Translates amino acid sequences into phantom sequences.
     /// </summary>
-    /// <param name="inputChain">
+    /// <param name="inputSequence">
     /// Amino acid sequence.
     /// </param>
     /// <returns>
-    /// Phantom sequence of <see cref="BaseChain"/> type.
+    /// Phantom sequence of <see cref="Sequence"/> type.
     /// Elements are <see cref="ValuePhantom"/>.
     /// </returns>
-    public static BaseChain Decode(BaseChain inputChain)
+    public static Sequence Decode(Sequence inputSequence)
     {
         // TODO: add coding table param
         List<IBaseObject> result = [];
-        for (int i = 0; i < inputChain.Length; i++)
+        for (int i = 0; i < inputSequence.Length; i++)
         {
-            string aminoAcid = inputChain[i].ToString();
+            string aminoAcid = inputSequence[i].ToString();
             ValuePhantom element = [];
             switch (aminoAcid)
             {
@@ -198,30 +198,30 @@ public static class DnaTransformer
             result.Add(element);
         }
 
-        return new BaseChain(result);
+        return new Sequence(result);
     }
 
     /// <summary>
     /// Translates dna sequence into triplet sequence.
     /// </summary>
-    /// <param name="inputChain">
+    /// <param name="inputSequence">
     /// Nucleotide sequence.
     /// </param>
     /// <returns>
-    /// Triplet sequence of <see cref="BaseChain"/> type.
+    /// Triplet sequence of <see cref="Sequence"/> type.
     /// Elements are of <see cref="ValueString"/> type.
     /// </returns>
-    public static BaseChain EncodeTriplets(BaseChain inputChain)
+    public static Sequence EncodeTriplets(Sequence inputSequence)
     {
-        DnaProcessor.CheckDnaAlphabet(inputChain.Alphabet);
+        DnaProcessor.CheckDnaAlphabet(inputSequence.Alphabet);
         List<IBaseObject> result = [];
-        List<string> codons = DiffCutter.Cut(inputChain.ToString(), new SimpleCutRule(inputChain.Length, 3, 3));
+        List<string> codons = DiffCutter.Cut(inputSequence.ToString(), new SimpleCutRule(inputSequence.Length, 3, 3));
 
         foreach (string codon in codons)
         {
             result.Add((ValueString)codon);
         }
 
-        return new BaseChain(result);
+        return new Sequence(result);
     }
 }

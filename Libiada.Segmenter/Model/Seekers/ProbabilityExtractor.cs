@@ -17,11 +17,12 @@ public class ProbabilityExtractor : SubwordExtractor
     /// The par.
     /// </param>
     /// <returns>
-    /// The <see cref="T:KeyValuePair{List{string},List{int}}?"/>.
+    /// The <see cref="KeyValuePair{List{string},List{int}}?"/>.
     /// </returns>
     public override sealed KeyValuePair<List<string>, List<int>>? Find(Dictionary<string, object> par)
     {
-        ComplexChain convoluted = (ComplexChain)par["Sequence"];
+        // TODO: refactor it to rerturn tuple
+        ComplexSequence convoluted = (ComplexSequence)par["Sequence"];
         double pbalance = (int)par["Balance"] / 100.0;
         int windowLen = (int)par["Window"];
         FrequencyDictionary alphabet = (FrequencyDictionary)par["Alphabet"];
@@ -50,7 +51,7 @@ public class ProbabilityExtractor : SubwordExtractor
     }
 
     /// <summary>
-    /// The calculate std.
+    /// std calculation method.
     /// </summary>
     /// <param name="convoluted">
     /// The convoluted.
@@ -68,7 +69,7 @@ public class ProbabilityExtractor : SubwordExtractor
     /// The criteria calculator.
     /// </param>
     public void CalculateStd(
-        ComplexChain convoluted,
+        ComplexSequence convoluted,
         double pbalance,
         int windowLen,
         int length,

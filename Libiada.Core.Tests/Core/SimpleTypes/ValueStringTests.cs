@@ -35,7 +35,7 @@ public class ValueStringTests
         Assert.Multiple(() =>
         {
             Assert.That(new ValueString("1"), Is.EqualTo(new ValueString('1')));
-            Assert.That(new ValueString("abc"), Is.EqualTo(new ValueString("abc")));
+            Assert.That(new ValueString("abc"), Is.EqualTo(new ValueString("ab" + "c")));
         });
     }
 }

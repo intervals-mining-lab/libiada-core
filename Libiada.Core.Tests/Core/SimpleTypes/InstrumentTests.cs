@@ -15,14 +15,15 @@ public class InstrumentTests
     private const int InstrumentsCount = 1;
 
     /// <summary>
+    /// Array of all instruments.
+    /// </summary>
+    private readonly Instrument[] instruments = EnumExtensions.ToArray<Instrument>();
+
+    /// <summary>
     /// Tests count of instruments.
     /// </summary>
     [Test]
-    public void InstrumentCountTest()
-    {
-        int actualCount = EnumExtensions.ToArray<Instrument>().Length;
-        Assert.That(actualCount, Is.EqualTo(InstrumentsCount));
-    }
+    public void InstrumentCountTest() => Assert.That(instruments, Has.Length.EqualTo(InstrumentsCount));
 
     /// <summary>
     /// Tests values of instruments.
@@ -30,10 +31,9 @@ public class InstrumentTests
     [Test]
     public void InstrumentValuesTest()
     {
-        Instrument[] instruments = EnumExtensions.ToArray<Instrument>();
         for (int i = 0; i < InstrumentsCount; i++)
         {
-            Assert.That(instruments, Does.Contain((Instrument)i));
+            Assert.That(instruments, Contains.Item((Instrument)i));
         }
     }
 
@@ -47,10 +47,7 @@ public class InstrumentTests
     /// The name.
     /// </param>
     [TestCase((Instrument)0, "AnyOrUnknown")]
-    public void InstrumentNamesTest(Instrument instrument, string name)
-    {
-        Assert.That(instrument.GetName(), Is.EqualTo(name));
-    }
+    public void InstrumentNamesTest(Instrument instrument, string name) => Assert.That(instrument.GetName(), Is.EqualTo(name));
 
     /// <summary>
     /// Tests that all instruments have display value.
@@ -59,10 +56,7 @@ public class InstrumentTests
     /// The instrument.
     /// </param>
     [Test]
-    public void InstrumentHasDisplayValueTest([Values]Instrument instrument)
-    {
-        Assert.That(instrument.GetDisplayValue(), Is.Not.Empty);
-    }
+    public void InstrumentHasDisplayValueTest([Values] Instrument instrument) => Assert.That(instrument.GetDisplayValue(), Is.Not.Empty);
 
     /// <summary>
     /// Tests that all instruments have description.
@@ -71,19 +65,11 @@ public class InstrumentTests
     /// The instrument.
     /// </param>
     [Test]
-    public void InstrumentHasDescriptionTest([Values]Instrument instrument)
-    {
-        Assert.That(instrument.GetDescription(), Is.Not.Empty);
-    }
+    public void InstrumentHasDescriptionTest([Values] Instrument instrument) => Assert.That(instrument.GetDescription(), Is.Not.Empty);
 
     /// <summary>
     /// Tests that all instruments values are unique.
     /// </summary>
     [Test]
-    public void InstrumentValuesUniqueTest()
-    {
-        Instrument[] instruments = EnumExtensions.ToArray<Instrument>();
-        IEnumerable<byte> instrumentValues = instruments.Cast<byte>();
-        Assert.That(instrumentValues, Is.Unique);
-    }
+    public void InstrumentValuesUniqueTest() => Assert.That(instruments.Cast<byte>(), Is.Unique);
 }

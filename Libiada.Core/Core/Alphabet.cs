@@ -225,7 +225,7 @@ public class Alphabet : IBaseObject, IEnumerable<IBaseObject>
     /// Casts alphabet to list containing clones of all elements.
     /// </summary>
     /// <returns>
-    /// The <see cref="List{IBaseObject}"/>.
+    /// The <see cref="List{Libiada.Core.Core.IBaseObject}"/>.
     /// </returns>
     public List<IBaseObject> ToList()
     {

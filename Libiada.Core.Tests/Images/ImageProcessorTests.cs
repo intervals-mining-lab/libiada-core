@@ -21,12 +21,12 @@ public class ImageProcessorTests
         image[1, 1] = Color.Black;
         image[1, 2] = Color.White;
 
-        BaseChain actual = ImageProcessor.ProcessImage(image, [], [], new LineOrderExtractor());
+        Sequence actual = ImageProcessor.ProcessImage(image, [], [], new LineOrderExtractor());
 
         ValuePixel black = new(Color.Black);
         ValuePixel white = new(Color.White);
 
-        BaseChain expected = new(6);
+        Sequence expected = new(6);
 
         expected[0] = black;
         expected[1] = white;
@@ -48,14 +48,14 @@ public class ImageProcessorTests
         image[1, 1] = Color.Brown;
 
 
-        BaseChain actual = ImageProcessor.ProcessImage(image, [], [], new LineOrderExtractor());
+        Sequence actual = ImageProcessor.ProcessImage(image, [], [], new LineOrderExtractor());
 
         ValuePixel gray = new(Color.Gray);
         ValuePixel blue = new(Color.Blue);
         ValuePixel red = new(Color.Red);
         ValuePixel brown = new(Color.Brown);
 
-        BaseChain expected = new(4);
+        Sequence expected = new(4);
 
         expected[0] = gray;
         expected[1] = blue;
@@ -75,14 +75,14 @@ public class ImageProcessorTests
         image[0, 3] = Color.Brown;
 
 
-        BaseChain actual = ImageProcessor.ProcessImage(image, [], [], new LineOrderExtractor());
+        Sequence actual = ImageProcessor.ProcessImage(image, [], [], new LineOrderExtractor());
 
         ValuePixel gray = new(Color.Gray);
         ValuePixel blue = new(Color.Blue);
         ValuePixel red = new(Color.Red);
         ValuePixel brown = new(Color.Brown);
 
-        BaseChain expected = new(4);
+        Sequence expected = new(4);
 
         expected[0] = gray;
         expected[1] = blue;
@@ -102,14 +102,14 @@ public class ImageProcessorTests
         image[3, 0] = Color.Brown;
 
 
-        BaseChain actual = ImageProcessor.ProcessImage(image, [], [], new LineOrderExtractor());
+        Sequence actual = ImageProcessor.ProcessImage(image, [], [], new LineOrderExtractor());
 
         ValuePixel gray = new(Color.Gray);
         ValuePixel blue = new(Color.Blue);
         ValuePixel red = new(Color.Red);
         ValuePixel brown = new(Color.Brown);
 
-        BaseChain expected = new(4);
+        Sequence expected = new(4);
 
         expected[0] = gray;
         expected[1] = blue;

@@ -7,25 +7,34 @@ public class DescriptiveInformation : IFullCalculator
 {
     /// <summary>
     /// Calculation method.
+    /// Calculated here using arithmetis mean interval and 
+    /// intervals count instead of elements frequency 
+    /// based on geometric mean interval formula.
     /// </summary>
-    /// <param name="chain">
+    /// <param name="sequence">
     /// Source sequence.
     /// </param>
     /// <param name="link">
-    /// Link of intervals in sequence.
+    /// Binding of the intervals in the sequence.
     /// </param>
     /// <returns>
     /// Count of descriptive informations as <see cref="double"/>.
     /// </returns>
-    public double Calculate(Chain chain, Link link)
+    public double Calculate(ComposedSequence sequence, Link link)
     {
-        CongenericCalculators.DescriptiveInformation calculator = new();
+        double n = new IntervalsCount().Calculate(sequence, link);
+        if (n == 0) return 1;
 
-        Alphabet alphabet = chain.Alphabet;
+        CongenericCalculators.ArithmeticMean arithmeticMeanCalculator = new();
+        CongenericCalculators.IntervalsCount intervalsCountCalculator = new();
+        
         double result = 1;
-        for (int i = 0; i < alphabet.Cardinality; i++)
+        int alphabetCardinality = sequence.Alphabet.Cardinality;
+        for (int i = 0; i < alphabetCardinality; i++)
         {
-            result *= calculator.Calculate(chain.CongenericChain(i), link);
+            double nj = intervalsCountCalculator.Calculate(sequence.CongenericSequence(i), link);
+            double arithmeticMean = arithmeticMeanCalculator.Calculate(sequence.CongenericSequence(i), link);
+            result *= Math.Pow(arithmeticMean, nj/n);
         }
 
         return result;

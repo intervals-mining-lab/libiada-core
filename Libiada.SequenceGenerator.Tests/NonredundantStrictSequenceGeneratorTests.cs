@@ -18,7 +18,7 @@ public class NonRedundantStrictSequenceGeneratorTests
         ValueInt one = new(1);
         ValueInt two = new(2);
         ValueInt three = new(3);
-        List<BaseChain> expected =
+        List<Sequence> expected =
         [
             new(new List<IBaseObject> { two, one, one }),
             new(new List<IBaseObject> { one, two, one }),
@@ -28,7 +28,7 @@ public class NonRedundantStrictSequenceGeneratorTests
             new(new List<IBaseObject> { one, two, two })
         ];
         NonRedundantStrictSequenceGenerator strictSequenceGenerator = new();
-        List<BaseChain> actual = strictSequenceGenerator.GenerateSequences(3, 2);
+        List<Sequence> actual = strictSequenceGenerator.GenerateSequences(3, 2);
         Assert.That(actual, Is.EqualTo(expected));
         expected =
                        [
@@ -58,7 +58,7 @@ public class NonRedundantStrictSequenceGeneratorTests
         ValueInt one = new(1);
         ValueInt two = new(2);
         ValueInt three = new(3);
-        List<BaseChain> expected =
+        List<Sequence> expected =
         [
             new(new List<IBaseObject> { one, one, one }),
             new(new List<IBaseObject> { two, one, one }),
@@ -75,7 +75,7 @@ public class NonRedundantStrictSequenceGeneratorTests
             new(new List<IBaseObject> { one, two, three }),
         ];
         NonRedundantStrictSequenceGenerator strictSequenceGenerator = new();
-        List<BaseChain> actual = strictSequenceGenerator.GenerateSequences(3);
+        List<Sequence> actual = strictSequenceGenerator.GenerateSequences(3);
         Assert.That(actual, Is.EqualTo(expected));
     }
 }

@@ -8,17 +8,17 @@ public class Probability : NonLinkableCongenericCalculator
     /// <summary>
     /// Calculation method.
     /// </summary>
-    /// <param name="chain">
+    /// <param name="sequence">
     /// Source sequence.
     /// </param>
     /// <returns>
-    /// Frequency of element in congeneric chain as <see cref="double"/>.
+    /// Frequency of element in congeneric sequence as <see cref="double"/>.
     /// </returns>
-    public override double Calculate(CongenericChain chain)
+    public override double Calculate(CongenericSequence sequence)
     {
-        ElementsCount count = new();
-        Length length = new();
+        double count = new ElementsCount().Calculate(sequence);
+        double length = new Length().Calculate(sequence);
 
-        return count.Calculate(chain) / length.Calculate(chain);
+        return count / length;
     }
 }

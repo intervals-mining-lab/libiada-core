@@ -73,7 +73,7 @@ public class ProbabilityMatrix : MatrixCommon, IProbabilityMatrix, IWritableMatr
     /// The pred.
     /// </param>
     /// <returns>
-    /// The <see cref="Dictionary{IBaseObject, Double}"/>.
+    /// The <see cref="Dictionary{Libiada.Core.Core.IBaseObject, Double}"/>.
     /// </returns>
     /// <exception cref="ArgumentException">
     /// Thrown if pred length is 0 or pred length is more than Rank - 1.

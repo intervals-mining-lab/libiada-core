@@ -44,13 +44,6 @@ public enum CongenericCharacteristic : byte
     Depth = 5,
 
     /// <summary>
-    /// The descriptive information.
-    /// </summary>
-    [Display(Name = "Descriptive information")]
-    [Description("Mazur's descriptive informations count")]
-    DescriptiveInformation = 6,
-
-    /// <summary>
     /// The elements count.
     /// </summary>
     [Display(Name = "Elements count")]
@@ -65,11 +58,11 @@ public enum CongenericCharacteristic : byte
     GeometricMean = 8,
 
     /// <summary>
-    /// The identification information.
+    /// The identifying informations.
     /// </summary>
-    [Display(Name = "Entropy")]
-    [Description("Shannon's information or amount of information or count of identification informations")]
-    IdentificationInformation = 9,
+    [Display(Name = "Identifying information")]
+    [Description("Equals to Shannon's entropy (amount of information) when cyclic binding is used")]
+    IdentifyingInformation = 9,
 
     /// <summary>
     /// The intervals count.
@@ -107,17 +100,10 @@ public enum CongenericCharacteristic : byte
     Probability = 14,
 
     /// <summary>
-    /// The regularity.
-    /// </summary>
-    [Display(Name = "Regularity")]
-    [Description("Calculated as geometric mean divided by entropy")]
-    Regularity = 15,
-
-    /// <summary>
     /// The uniformity.
     /// </summary>
     [Display(Name = "Uniformity")]
-    [Description("Normalized characteristic calculated as average remoteness substracted from entropy")]
+    [Description("Normalized characteristic calculated as average remoteness substracted from identifying informations (entropy)")]
     Uniformity = 16,
 
     /// <summary>
@@ -135,11 +121,11 @@ public enum CongenericCharacteristic : byte
     Volume = 18,
 
     /// <summary>
-    /// The remoteness dispersion.
+    /// The remoteness variance.
     /// </summary>
-    [Display(Name = "Remoteness dispersion")]
+    [Display(Name = "Remoteness variance")]
     [Description("")]
-    RemotenessDispersion = 19,
+    RemotenessVariance = 19,
 
     /// <summary>
     /// The remoteness kurtosis.

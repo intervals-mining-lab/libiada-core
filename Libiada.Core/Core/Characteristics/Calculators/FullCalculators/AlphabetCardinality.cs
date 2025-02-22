@@ -8,14 +8,14 @@ public class AlphabetCardinality : NonLinkableFullCalculator
     /// <summary>
     /// Calculation method.
     /// </summary>
-    /// <param name="chain">
+    /// <param name="sequence">
     /// Source sequence.
     /// </param>
     /// <returns>
     /// Alphabet cardinality as <see cref="double"/>.
     /// </returns>
-    public override double Calculate(Chain chain)
+    public override double Calculate(ComposedSequence sequence)
     {
-        return chain.Alphabet.Cardinality;
+        return sequence.Alphabet.Cardinality;
     }
 }

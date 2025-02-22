@@ -2,26 +2,27 @@
 
 /// <summary>
 /// The uniformity calculator.
-/// Calculates difference between entropy and average remoteness.
+/// Calculates difference between identifying informations (entropy) and average remoteness.
 /// </summary>
 public class Uniformity : IFullCalculator
 {
     /// <summary>
     /// Calculation method for complete sequences.
     /// </summary>
-    /// <param name="chain">
-    /// The chain.
+    /// <param name="sequence">
+    /// The sequence.
     /// </param>
     /// <param name="link">
-    /// The link.
+    /// Binding of the intervals in the sequence.
     /// </param>
     /// <returns>
     /// The <see cref="double"/>.
     /// </returns>
-    public double Calculate(Chain chain, Link link)
+    public double Calculate(ComposedSequence sequence, Link link)
     {
-        AverageRemoteness remotenessCalculator = new();
-        IdentificationInformation entropyCalculator = new();
-        return entropyCalculator.Calculate(chain, link) - remotenessCalculator.Calculate(chain, link);
+        double averageRemoteness = new AverageRemoteness().Calculate(sequence, link);
+        double identifyingInformation = new IdentifyingInformation().Calculate(sequence, link);
+
+        return identifyingInformation - averageRemoteness;
     }
 }

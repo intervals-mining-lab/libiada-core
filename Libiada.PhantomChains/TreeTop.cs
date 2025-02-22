@@ -30,19 +30,19 @@ public class TreeTop : AbstractNode
     /// representing root element of the tree.
     /// </summary>
     /// <param name="source">
-    /// The input chain.
+    /// The input sequence.
     /// </param>
     /// <param name="generator">
     /// The gen.
     /// </param>
-    public TreeTop(BaseChain source, IGenerator generator)
+    public TreeTop(Sequence source, IGenerator generator)
     {
         table = new PhantomTable(source);
         this.generator = generator;
         StartPosition = 0;
         Volume = table[0].Volume;
         Level = -1;
-        if ((table[1].Content[0] is ValueString) || (table[1].Content[0] is BaseChain))
+        if ((table[1].Content[0] is ValueString) || (table[1].Content[0] is Sequence))
         {
             isString = true;
         }
@@ -87,11 +87,11 @@ public class TreeTop : AbstractNode
     /// <returns>
     /// Generated sequence.
     /// </returns>
-    public BaseChain Generate()
+    public Sequence Generate()
     {
         int len = table.Length - 1;
         len *= isString ? 3 : 1;
-        BaseChain result = new(len);
+        Sequence result = new(len);
 
         Find(result, generator, table);
         return result;

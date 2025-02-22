@@ -3,7 +3,7 @@
 using Libiada.Core.Core.ArrangementManagers;
 
 /// <summary>
-/// The partial dependence coefficient of binary chain.
+/// The partial dependence coefficient of binary sequence.
 /// </summary>
 public class PartialDependenceCoefficient : BinaryCalculator
 {
@@ -30,6 +30,6 @@ public class PartialDependenceCoefficient : BinaryCalculator
         Redundancy redundancyCalculator = new();
 
         double redundancy = redundancyCalculator.Calculate(manager, link);
-        return redundancy * manager.PairsCount / manager.SecondChain.OccurrencesCount;
+        return redundancy * manager.PairsCount / manager.SecondSequence.OccurrencesCount;
     }
 }

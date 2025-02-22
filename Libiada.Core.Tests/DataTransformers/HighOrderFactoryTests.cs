@@ -13,8 +13,8 @@ public class HighOrderFactoryTests
     /// <summary>
     /// The second order test.
     /// </summary>
-    /// <param name="chainIndex">
-    /// The chain index.
+    /// <param name="sequenceIndex">
+    /// The sequence index.
     /// </param>
     /// <param name="resultIndex">
     /// The result index.
@@ -28,10 +28,10 @@ public class HighOrderFactoryTests
     [TestCase(0, 3, Link.End)]
     [TestCase(0, 4, Link.CycleStart)]
     [TestCase(0, 5, Link.CycleEnd)]
-    public void SecondOrderTest(int chainIndex, int resultIndex, Link link)
+    public void SecondOrderTest(int sequenceIndex, int resultIndex, Link link)
     {
-        Chain result = HighOrderFactory.Create(ChainsStorage.Chains[chainIndex], link);
-        Chain expected = ChainsStorage.HighOrderChains[resultIndex];
+        ComposedSequence result = HighOrderFactory.Create(SequencesStorage.CompusedSequences[sequenceIndex], link);
+        ComposedSequence expected = SequencesStorage.HighOrderSequences[resultIndex];
         Assert.That(result, Is.EqualTo(expected));
     }
 
@@ -41,9 +41,9 @@ public class HighOrderFactoryTests
     [Test]
     public void ThirdOrderTest()
     {
-        Chain result = HighOrderFactory.Create(ChainsStorage.Chains[0], Link.End);
+        ComposedSequence result = HighOrderFactory.Create(SequencesStorage.CompusedSequences[0], Link.End);
         result = HighOrderFactory.Create(result, Link.End);
-        Chain expected = ChainsStorage.HighOrderChains[6];
+        ComposedSequence expected = SequencesStorage.HighOrderSequences[6];
         Assert.That(result, Is.EqualTo(expected));
     }
 }

@@ -13,9 +13,9 @@ using Libiada.Core.Core.Characteristics.Calculators.FullCalculators;
 public abstract class FullCalculatorsTests<T> where T : IFullCalculator, new ()
 {
     /// <summary>
-    /// The chains.
+    /// The sequences.
     /// </summary>
-    private readonly List<Chain> chains = ChainsStorage.Chains;
+    private readonly List<ComposedSequence> sequences = SequencesStorage.CompusedSequences;
 
     /// <summary>
     /// Gets or sets the calculator.
@@ -23,7 +23,7 @@ public abstract class FullCalculatorsTests<T> where T : IFullCalculator, new ()
     protected readonly T Calculator = new();
 
     /// <summary>
-    /// The chain characteristic test.
+    /// The sequence characteristic test.
     /// </summary>
     /// <param name="index">
     /// The sequence index.
@@ -34,9 +34,9 @@ public abstract class FullCalculatorsTests<T> where T : IFullCalculator, new ()
     /// <param name="value">
     /// The expected value.
     /// </param>
-    protected void ChainCharacteristicTest(int index, Link link, double value)
+    protected void SequenceCharacteristicTest(int index, Link link, double value)
     {
-        Assert.That(Calculator.Calculate(chains[index], link), Is.EqualTo(value).Within(0.0001d));
+        Assert.That(Calculator.Calculate(sequences[index], link), Is.EqualTo(value).Within(0.0001d));
     }
 
     /// <summary>
@@ -53,7 +53,7 @@ public abstract class FullCalculatorsTests<T> where T : IFullCalculator, new ()
     /// </param>
     protected void SeriesCharacteristicTest(int index, Link link, double value)
     {
-        chains[index].SetArrangementManagers(ArrangementType.Series);
-        Assert.That(Calculator.Calculate(chains[index], link), Is.EqualTo(value).Within(0.0001d));
+        sequences[index].SetArrangementManagers(ArrangementType.Series);
+        Assert.That(Calculator.Calculate(sequences[index], link), Is.EqualTo(value).Within(0.0001d));
     }
 }

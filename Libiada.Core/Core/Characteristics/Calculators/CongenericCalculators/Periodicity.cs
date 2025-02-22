@@ -9,22 +9,22 @@ public class Periodicity : ICongenericCalculator
     /// <summary>
     /// Calculation method.
     /// </summary>
-    /// <param name="chain">
+    /// <param name="sequence">
     /// Source sequence.
     /// </param>
     /// <param name="link">
-    /// Link of intervals in sequence.
+    /// Binding of the intervals in the sequence.
     /// </param>
     /// <returns>
     /// Periodicity as <see cref="double"/>.
     /// </returns>
-    public double Calculate(CongenericChain chain, Link link)
+    public double Calculate(CongenericSequence sequence, Link link)
     {
-        GeometricMean geometricMeanCalculator = new();
-        ArithmeticMean arithmeticMeanCalculator = new();
+        double arithmeticMean = new ArithmeticMean().Calculate(sequence, link);
+        if (arithmeticMean == 0) return 0;
 
-        double geometricMean = geometricMeanCalculator.Calculate(chain, link);
-        double arithmeticMean = arithmeticMeanCalculator.Calculate(chain, link);
-        return arithmeticMean == 0 ? 0 : geometricMean / arithmeticMean;
+        double geometricMean = new GeometricMean().Calculate(sequence, link);
+
+        return geometricMean / arithmeticMean;
     }
 }

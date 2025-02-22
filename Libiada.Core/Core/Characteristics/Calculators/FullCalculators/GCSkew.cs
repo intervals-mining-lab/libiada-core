@@ -11,21 +11,21 @@ public class GCSkew : NonLinkableFullCalculator
     /// <summary>
     /// Calculation method.
     /// </summary>
-    /// <param name="chain">
+    /// <param name="sequence">
     /// Source sequence.
     /// </param>
     /// <returns>
     /// G+C skew value as <see cref="double"/>.
     /// </returns>
-    public override double Calculate(Chain chain)
+    public override double Calculate(ComposedSequence sequence)
     {
-        DnaProcessor.CheckDnaAlphabet(chain.Alphabet);
+        DnaProcessor.CheckDnaAlphabet(sequence.Alphabet);
 
         CongenericCalculators.ElementsCount counter = new();
 
-        int g = (int)counter.Calculate(chain.GetOrCreateCongenericChain(new ValueString("G")));
-        int c = (int)counter.Calculate(chain.GetOrCreateCongenericChain(new ValueString("C")));
+        double g = counter.Calculate(sequence.GetOrCreateCongenericSequence(new ValueString("G")));
+        double c = counter.Calculate(sequence.GetOrCreateCongenericSequence(new ValueString("C")));
 
-        return g + c == 0 ? 0 : (g - c) / (double)(g + c);
+        return g + c == 0 ? 0 : (g - c) / (g + c);
     }
 }

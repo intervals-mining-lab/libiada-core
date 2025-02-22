@@ -15,7 +15,7 @@ public class FirstElementDuplicator : ITimeSeriesAligner
     /// The second series.
     /// </param>
     /// <returns>
-    /// The <see cref="(double[][] first, double[][] second)"/>.
+    /// The <see cref="T:(double[][] first, double[][] second)"/>.
     /// </returns>
     public (double[][] first, double[][] second) AlignSeries(double[] firstSeries, double[] secondSeries)
     {

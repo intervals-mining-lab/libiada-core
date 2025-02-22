@@ -13,7 +13,7 @@ public class CuttingLengthTests : CongenericCalculatorsTests<CuttingLength>
     /// The congeneric calculation test.
     /// </summary>
     /// <param name="index">
-    /// The congeneric sequence index in <see cref="ChainsStorage"/>.
+    /// The congeneric sequence index in <see cref="SequencesStorage"/>.
     /// </param>
     /// <param name="value">
     /// The value.
@@ -21,6 +21,6 @@ public class CuttingLengthTests : CongenericCalculatorsTests<CuttingLength>
     [TestCase(0, 4)]
     public void CongenericCalculationTest(int index, double value)
     {
-        CongenericChainCharacteristicTest(index, Link.NotApplied, value);
+        CongenericSequenceCharacteristicTest(index, Link.NotApplied, value);
     }
 }

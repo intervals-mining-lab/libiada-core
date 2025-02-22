@@ -15,7 +15,7 @@ public interface IImageOrderExtractor
     /// The image.
     /// </param>
     /// <returns>
-    /// The <see cref="BaseChain"/>.
+    /// The <see cref="Sequence"/>.
     /// </returns>
-    BaseChain ExtractOrder(Rgba32[,] image);
+    Sequence ExtractOrder(Rgba32[,] image);
 }

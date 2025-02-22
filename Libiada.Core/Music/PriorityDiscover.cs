@@ -218,7 +218,7 @@ public class PriorityDiscover
     /// The mask buffer.
     /// </param>
     /// <returns>
-    /// The <see cref="List{ValueNote}"/>.
+    /// The <see cref="List{Libiada.Core.Core.SimpleTypes.ValueNote}"/>.
     /// </returns>
     private List<ValueNote> CountTripletPriority(List<ValueNote> noteBuffer, List<ValueNote> maskBuffer)
     {

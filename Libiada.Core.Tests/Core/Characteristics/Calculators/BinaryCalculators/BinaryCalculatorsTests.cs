@@ -12,9 +12,9 @@ using Libiada.Core.Core.Characteristics.Calculators.BinaryCalculators;
 public abstract class BinaryCalculatorsTests<T> where T : IBinaryCalculator, new()
 {
     /// <summary>
-    /// The chains.
+    /// The sequences.
     /// </summary>
-    protected readonly List<Chain> Chains = ChainsStorage.BinaryChains;
+    protected readonly List<ComposedSequence> Sequences = SequencesStorage.BinarySequences;
 
     /// <summary>
     /// Gets or sets the calculator.
@@ -24,13 +24,13 @@ public abstract class BinaryCalculatorsTests<T> where T : IBinaryCalculator, new
     /// <summary>
     /// The elements.
     /// </summary>
-    private readonly Dictionary<string, IBaseObject> elements = ChainsStorage.Elements;
+    private readonly Dictionary<string, IBaseObject> elements = SequencesStorage.Elements;
 
     /// <summary>
     /// The calculation test.
     /// </summary>
     /// <param name="index">
-    /// Binary sequence index in <see cref="ChainsStorage"/>.
+    /// Binary sequence index in <see cref="SequencesStorage"/>.
     /// </param>
     /// <param name="firstValue">
     /// The first value.
@@ -40,9 +40,12 @@ public abstract class BinaryCalculatorsTests<T> where T : IBinaryCalculator, new
     /// </param>
     protected void CalculationTest(int index, double firstValue, double secondValue)
     {
-        double result1 = Calculator.Calculate(Chains[index].GetRelationIntervalsManager(elements["A"], elements["B"]), Link.End);
-        double result2 = Calculator.Calculate(Chains[index].GetRelationIntervalsManager(elements["B"], elements["A"]), Link.End);
-        Assert.That(result1, Is.EqualTo(firstValue).Within(0.0001));
-        Assert.That(result2, Is.EqualTo(secondValue).Within(0.0001));
+        double result1 = Calculator.Calculate(Sequences[index].GetRelationIntervalsManager(elements["A"], elements["B"]), Link.End);
+        double result2 = Calculator.Calculate(Sequences[index].GetRelationIntervalsManager(elements["B"], elements["A"]), Link.End);
+        Assert.Multiple(() =>
+        {
+            Assert.That(result1, Is.EqualTo(firstValue).Within(0.0001));
+            Assert.That(result2, Is.EqualTo(secondValue).Within(0.0001));
+        });
     }
 }

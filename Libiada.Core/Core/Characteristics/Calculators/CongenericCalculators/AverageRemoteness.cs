@@ -9,22 +9,22 @@ public class AverageRemoteness : ICongenericCalculator
     /// <summary>
     /// Calculation method.
     /// </summary>
-    /// <param name="chain">
+    /// <param name="sequence">
     /// Source sequence.
     /// </param>
     /// <param name="link">
-    /// Link of intervals in sequence.
+    /// Binding of the intervals in the sequence.
     /// </param>
     /// <returns>
     /// Average remoteness <see cref="double"/> value.
     /// </returns>
-    public double Calculate(CongenericChain chain, Link link)
+    public double Calculate(CongenericSequence sequence, Link link)
     {
-        Depth depthCalculator = new();
-        IntervalsCount intervalsCount = new();
+        double nj = new IntervalsCount().Calculate(sequence, link);
+        if (nj == 0) return 0;
 
-        double depth = depthCalculator.Calculate(chain, link);
-        int nj = (int)intervalsCount.Calculate(chain, link);
-        return nj == 0 ? 0 : depth / nj;
+        double depth = new Depth().Calculate(sequence, link);
+        
+        return depth / nj;
     }
 }

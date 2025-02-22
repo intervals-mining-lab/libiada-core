@@ -8,8 +8,8 @@ public class SimpleCutRuleWithShiftedStart : CutRule
     /// <summary>
     /// Initializes a new instance of the <see cref="SimpleCutRuleWithShiftedStart"/> class.
     /// </summary>
-    /// <param name="chainLength">
-    /// Chain length.
+    /// <param name="sequenceLength">
+    /// Sequence length.
     /// </param>
     /// <param name="step">
     /// Shift of iterator.
@@ -20,9 +20,9 @@ public class SimpleCutRuleWithShiftedStart : CutRule
     /// <param name="begin">
     /// Shift of start.
     /// </param>
-    public SimpleCutRuleWithShiftedStart(int chainLength, int step, int windowLength, int begin)
+    public SimpleCutRuleWithShiftedStart(int sequenceLength, int step, int windowLength, int begin)
     {
-        for (int i = begin; i + windowLength <= chainLength; i += step)
+        for (int i = begin; i + windowLength <= sequenceLength; i += step)
         {
             Starts.Add(i);
             Ends.Add(windowLength + i);

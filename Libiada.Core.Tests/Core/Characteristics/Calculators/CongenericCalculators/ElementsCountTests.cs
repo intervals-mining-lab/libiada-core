@@ -13,19 +13,19 @@ public class ElementsCountTests : CongenericCalculatorsTests<ElementsCount>
     /// The congeneric calculation test.
     /// </summary>
     /// <param name="index">
-    /// The congeneric sequence index in <see cref="ChainsStorage"/>.
+    /// The congeneric sequence index in <see cref="SequencesStorage"/>.
     /// </param>
     /// <param name="value">
     /// The value.
     /// </param>
     [TestCase(0, 3)]
-    [TestCase(1, 3)]
-    [TestCase(2, 3)]
-    [TestCase(3, 3)]
+    [TestCase(1, 4)]
+    [TestCase(2, 1)]
+    [TestCase(3, 1)]
     [TestCase(4, 3)]
-    [TestCase(5, 3)]
+    [TestCase(5, 5)]
     public void CongenericCalculationTest(int index, double value)
     {
-        CongenericChainCharacteristicTest(0, Link.NotApplied, value);
+        CongenericSequenceCharacteristicTest(index, Link.NotApplied, value);
     }
 }

@@ -13,11 +13,12 @@ public class MutualDependenceCoefficientTests : BinaryCalculatorsTests<MutualDep
     /// The k 3 test.
     /// </summary>
     /// <param name="index">
-    /// Binary sequence index in <see cref="ChainsStorage"/>.
+    /// Binary sequence index in <see cref="SequencesStorage"/>.
     /// </param>
     /// <param name="value">
     /// The value.
     /// </param>
+    [TestCase(0, 0.310825552)]
     [TestCase(1, 0)]
     [TestCase(2, 0)]
     [TestCase(3, 0)]
@@ -47,7 +48,7 @@ public class MutualDependenceCoefficientTests : BinaryCalculatorsTests<MutualDep
     [Test]
     public void GetK3Test()
     {
-        List<List<double>> result = Calculator.CalculateAll(Chains[1], Link.End);
+        List<List<double>> result = Calculator.CalculateAll(Sequences[1], Link.End);
 
         Assert.Multiple(() =>
         {
@@ -57,7 +58,7 @@ public class MutualDependenceCoefficientTests : BinaryCalculatorsTests<MutualDep
             Assert.That(result[1][1], Is.Zero);
         });
 
-        result = Calculator.CalculateAll(Chains[10], Link.End);
+        result = Calculator.CalculateAll(Sequences[10], Link.End);
 
         Assert.Multiple(() =>
         {
@@ -67,7 +68,7 @@ public class MutualDependenceCoefficientTests : BinaryCalculatorsTests<MutualDep
             Assert.That(result[1][1], Is.Zero);
         });
 
-        result = Calculator.CalculateAll(Chains[18], Link.End);
+        result = Calculator.CalculateAll(Sequences[18], Link.End);
 
         Assert.Multiple(() =>
         {

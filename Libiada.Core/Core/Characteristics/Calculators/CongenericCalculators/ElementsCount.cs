@@ -9,14 +9,14 @@ public class ElementsCount : NonLinkableCongenericCalculator
     /// Amount of not empty positions,
     /// in other words elements count.
     /// </summary>
-    /// <param name="chain">
+    /// <param name="sequence">
     /// Source sequence.
     /// </param>
     /// <returns>
-    /// Elements count in chain as <see cref="double"/>.
+    /// Elements count in sequence as <see cref="double"/>.
     /// </returns>
-    public override double Calculate(CongenericChain chain)
+    public override double Calculate(CongenericSequence sequence)
     {
-        return chain.OccurrencesCount;
+        return sequence.OccurrencesCount;
     }
 }

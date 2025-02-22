@@ -27,9 +27,9 @@ public abstract class Criterion : IDefinable
     protected FrequencyDictionary alphabet;
 
     /// <summary>
-    /// The chain.
+    /// The sequence.
     /// </summary>
-    protected ComplexChain chain;
+    protected ComplexSequence sequence;
 
     /// <summary>
     /// Initializes a new instance of the <see cref="Criterion"/> class.
@@ -54,23 +54,23 @@ public abstract class Criterion : IDefinable
     /// <summary>
     /// Returns the state of criterion. True, if everything is done, false - otherwise.
     /// </summary>
-    /// <param name="chain">
-    /// The chain.
+    /// <param name="sequence">
+    /// The sequence.
     /// </param>
     /// <param name="alphabet">
-    /// Chains alphabet.
+    /// Sequence alphabet.
     /// </param>
     /// <returns>
     /// The state of criterion.
     /// </returns>
-    public abstract bool State(ComplexChain chain, FrequencyDictionary alphabet);
+    public abstract bool State(ComplexSequence sequence, FrequencyDictionary alphabet);
 
     /// <summary>
     /// Returns distortion between necessary and calculated value.
     /// For example between theoretical and practical values.
     /// </summary>
-    /// <param name="chain">
-    /// The chain.
+    /// <param name="sequence">
+    /// The sequence.
     /// </param>
     /// <param name="alphabet">
     /// The alphabet.
@@ -78,7 +78,7 @@ public abstract class Criterion : IDefinable
     /// <returns>
     /// The <see cref="double"/>.
     /// </returns>
-    public abstract double Distortion(ComplexChain chain, FrequencyDictionary alphabet);
+    public abstract double Distortion(ComplexSequence sequence, FrequencyDictionary alphabet);
 
     /// <summary>
     /// Returns distortion between necessary and calculated value inside of criterion.
@@ -89,21 +89,21 @@ public abstract class Criterion : IDefinable
     /// </returns>
     public double Distortion()
     {
-        return Distortion(chain, alphabet);
+        return Distortion(sequence, alphabet);
     }
 
     /// <summary>
     ///  Updates data for computing a new value of the criterion.
     /// </summary>
-    /// <param name="chain">
-    /// A new chain.
+    /// <param name="sequence">
+    /// A new sequence.
     /// </param>
     /// <param name="alphabet">
     /// A new alphabet.
     /// </param>
-    public void Renew(ComplexChain chain, FrequencyDictionary alphabet)
+    public void Renew(ComplexSequence sequence, FrequencyDictionary alphabet)
     {
-        this.chain = chain;
+        this.sequence = sequence;
         this.alphabet = alphabet;
     }
 

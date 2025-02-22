@@ -8,11 +8,11 @@ public class MutualComplianceDegree : IAccordanceCalculator
     /// <summary>
     /// Calculation method.
     /// </summary>
-    /// <param name="firstChain">
-    /// The first chain.
+    /// <param name="firstSequence">
+    /// The first sequence.
     /// </param>
-    /// <param name="secondChain">
-    /// The second chain.
+    /// <param name="secondSequence">
+    /// The second sequence.
     /// </param>
     /// <param name="link">
     /// The link.
@@ -20,11 +20,11 @@ public class MutualComplianceDegree : IAccordanceCalculator
     /// <returns>
     /// The <see cref="double"/>.
     /// </returns>
-    public double Calculate(CongenericChain firstChain, CongenericChain secondChain, Link link)
+    public double Calculate(CongenericSequence firstSequence, CongenericSequence secondSequence, Link link)
     {
         PartialComplianceDegree partialAccordanceCalculator = new();
-        double firstResult = partialAccordanceCalculator.Calculate(firstChain, secondChain, link);
-        double secondResult = partialAccordanceCalculator.Calculate(secondChain, firstChain, link);
+        double firstResult = partialAccordanceCalculator.Calculate(firstSequence, secondSequence, link);
+        double secondResult = partialAccordanceCalculator.Calculate(secondSequence, firstSequence, link);
         return Math.Sqrt(firstResult * secondResult);
     }
 }

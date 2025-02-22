@@ -19,11 +19,11 @@ public class SequenceGenerator : ISequenceGenerator
     /// The sequence alphabet cardinality.
     /// </param>
     /// <returns>
-    /// The <see cref="T:List{BaseChain}"/>.
+    /// The <see cref="List{Libiada.Core.Core.Sequence}"/>.
     /// </returns>
-    public List<BaseChain> GenerateSequences(int length, int alphabetCardinality)
+    public List<Sequence> GenerateSequences(int length, int alphabetCardinality)
     {
-        List<BaseChain> result = [];
+        List<Sequence> result = [];
         SequenceIterator iterator = new(length, alphabetCardinality);
         foreach (int[] sequence in iterator)
         {
@@ -33,7 +33,7 @@ public class SequenceGenerator : ISequenceGenerator
                 elements.Add(new ValueInt(sequence[i]));
             }
 
-            result.Add(new BaseChain(elements));
+            result.Add(new Sequence(elements));
         }
 
         return result;
@@ -46,9 +46,9 @@ public class SequenceGenerator : ISequenceGenerator
     /// The sequence length.
     /// </param>
     /// <returns>
-    /// The <see cref="T:List{BaseChain}"/>.
+    /// The <see cref="List{Libiada.Core.Core.Sequence}"/>.
     /// </returns>
-    public List<BaseChain> GenerateSequences(int length)
+    public List<Sequence> GenerateSequences(int length)
     {
         return GenerateSequences(length, length);
     }

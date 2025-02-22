@@ -42,6 +42,7 @@ public class CriterionMinSymmetryByIntervals : Criterion
         for (int index = 0; index < alphabet.Count; index++)
         {
             int countT = positions[index].Count;
+            // TODO: check if this should be Log2
             taxons += (Math.Log(countT) * countT) - countT;
         }
 
@@ -67,8 +68,8 @@ public class CriterionMinSymmetryByIntervals : Criterion
     /// <summary>
     /// The state.
     /// </summary>
-    /// <param name="chain">
-    /// The chain.
+    /// <param name="sequence">
+    /// The sequence.
     /// </param>
     /// <param name="alphabet">
     /// The alphabet.
@@ -76,7 +77,7 @@ public class CriterionMinSymmetryByIntervals : Criterion
     /// <returns>
     /// The <see cref="bool"/>.
     /// </returns>
-    public override bool State(ComplexChain chain, FrequencyDictionary alphabet)
+    public override bool State(ComplexSequence sequence, FrequencyDictionary alphabet)
     {
         return false;
     }
@@ -84,8 +85,8 @@ public class CriterionMinSymmetryByIntervals : Criterion
     /// <summary>
     /// The distortion.
     /// </summary>
-    /// <param name="chain">
-    /// The chain.
+    /// <param name="sequence">
+    /// The sequence.
     /// </param>
     /// <param name="alphabet">
     /// The alphabet.
@@ -93,7 +94,7 @@ public class CriterionMinSymmetryByIntervals : Criterion
     /// <returns>
     /// The <see cref="double"/>.
     /// </returns>
-    public override double Distortion(ComplexChain chain, FrequencyDictionary alphabet)
+    public override double Distortion(ComplexSequence sequence, FrequencyDictionary alphabet)
     {
         return -1;
     }

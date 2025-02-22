@@ -10,9 +10,9 @@ using Libiada.Core.Iterators;
 public class IteratorEndTests
 {
     /// <summary>
-    /// The chain to iterate.
+    /// The sequence to iterate.
     /// </summary>
-    private Chain chainToIterate;
+    private ComposedSequence sequenceToIterate;
 
     /// <summary>
     /// Tests initialization method.
@@ -20,7 +20,7 @@ public class IteratorEndTests
     [SetUp]
     public void Initialization()
     {
-        chainToIterate = new Chain("121331212231");
+        sequenceToIterate = new ComposedSequence("121331212231");
     }
 
     /// <summary>
@@ -31,10 +31,10 @@ public class IteratorEndTests
     {
         const int length = 3;
         const int step = 1;
-        IteratorEnd iterator = new(chainToIterate, length, step);
+        IteratorEnd iterator = new(sequenceToIterate, length, step);
 
         // 12 - 3 + 1
-        List<Chain> message2 =
+        List<ComposedSequence> message2 =
             [
                 // 121331212|231|
                 new("231"),
@@ -70,7 +70,7 @@ public class IteratorEndTests
         int i = 0;
         while (iterator.Next())
         {
-            AbstractChain message1 = iterator.Current();
+            AbstractSequence message1 = iterator.Current();
             Assert.That(message2[i++], Is.EqualTo(message1));
         }
 
@@ -85,9 +85,9 @@ public class IteratorEndTests
     {
         const int length = 3;
         const int step = 3;
-        IteratorEnd iterator = new(chainToIterate, length, step);
+        IteratorEnd iterator = new(sequenceToIterate, length, step);
 
-        List<Chain> message2 =
+        List<ComposedSequence> message2 =
                         [
                             // 121331212|231|
                             new("231"),
@@ -105,7 +105,7 @@ public class IteratorEndTests
         int i = 0;
         while (iterator.Next())
         {
-            AbstractChain message1 = iterator.Current();
+            AbstractSequence message1 = iterator.Current();
             Assert.That(message2[i++], Is.EqualTo(message1));
         }
 

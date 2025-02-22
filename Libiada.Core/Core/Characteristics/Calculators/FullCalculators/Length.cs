@@ -8,14 +8,14 @@ public class Length : NonLinkableFullCalculator
     /// <summary>
     /// Calculation method.
     /// </summary>
-    /// <param name="chain">
+    /// <param name="sequence">
     /// Source sequence.
     /// </param>
     /// <returns>
-    /// Chain length as <see cref="double"/>.
+    /// Sequence length as <see cref="double"/>.
     /// </returns>
-    public override double Calculate(Chain chain)
+    public override double Calculate(ComposedSequence sequence)
     {
-        return chain.Length;
+        return sequence.Length;
     }
 }

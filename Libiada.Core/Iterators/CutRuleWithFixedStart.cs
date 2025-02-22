@@ -9,7 +9,7 @@ public class CutRuleWithFixedStart : CutRule
     /// Initializes a new instance of the <see cref="CutRuleWithFixedStart"/> class.
     /// </summary>
     /// <param name="length">
-    /// Length of full chain.
+    /// Length of the full sequence.
     /// </param>
     /// <param name="step">
     /// The step.

@@ -8,20 +8,24 @@ public class AlphabeticAverageRemoteness : IFullCalculator
     /// <summary>
     /// Calculation method.
     /// </summary>
-    /// <param name="chain">
+    /// <param name="sequence">
     /// Source sequence.
     /// </param>
     /// <param name="link">
-    /// Link of intervals in sequence.
+    /// Binding of the intervals in the sequence.
     /// </param>
     /// <returns>
     /// <see cref="double"/>
     /// Value of alphabetic average remoteness.
     /// </returns>
-    public double Calculate(Chain chain, Link link)
+    public double Calculate(ComposedSequence sequence, Link link)
     {
-        GeometricMean geometricMean = new();
-        int alphabetCardinality = chain.Alphabet.Cardinality;
-        return Math.Log(geometricMean.Calculate(chain, link), alphabetCardinality);
+        double geometricMean = new GeometricMean().Calculate(sequence, link);
+        if (geometricMean == 0) return 0;
+
+        int alphabetCardinality = sequence.Alphabet.Cardinality;
+        if (alphabetCardinality <= 1) return 0;
+
+        return Math.Log(geometricMean, alphabetCardinality);
     }
 }

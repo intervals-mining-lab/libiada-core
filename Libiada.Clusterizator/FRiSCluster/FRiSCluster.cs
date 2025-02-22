@@ -179,7 +179,7 @@ public class FRiSCluster : IClusterizator
     /// Information on belongings of all data points to clusters.
     /// </param>
     /// <returns>
-    /// The <see cref="T:(int, double)"/>.
+    /// The <see cref="(int, double)"/>.
     /// </returns>
     private (int clusterPointsIndex, double compactness) ReselectPillar(int pillarIndex, List<int> pillarIndexes, int[] clustersBelonging)
     {

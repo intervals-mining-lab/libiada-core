@@ -2,27 +2,30 @@
 
 /// <summary>
 /// The complete amount of information in sequence.
-/// Entropy multiplied by length.
+/// Identifying informations (entropy) multiplied by intervals count.
 /// </summary>
 public class InformationAmount : ICongenericCalculator
 {
     /// <summary>
-    /// The calculate.
+    /// Calculation method.
+    /// Calculated here using arithmetis mean interval and 
+    /// intervals count instead of elements frequency and count
+    /// based on geometric mean interval formula.
     /// </summary>
-    /// <param name="chain">
-    /// The chain.
+    /// <param name="sequence">
+    /// The sequence.
     /// </param>
     /// <param name="link">
-    /// The link.
+    /// Binding of the intervals in the sequence.
     /// </param>
     /// <returns>
     /// The <see cref="double"/>.
     /// </returns>
-    public double Calculate(CongenericChain chain, Link link)
+    public double Calculate(CongenericSequence sequence, Link link)
     {
-        ArithmeticMean arithmeticMean = new();
-        // TODO: try to calculate it using multiplied intervals
-        double mean = arithmeticMean.Calculate(chain, link);
-        return mean == 0 ? 0 : -Math.Log(1 / mean, 2);
+        double identifyingInformation = new IdentifyingInformation().Calculate(sequence, link);
+        double intervalsCount = new IntervalsCount().Calculate(sequence, link);
+
+        return identifyingInformation * intervalsCount;
     }
 }

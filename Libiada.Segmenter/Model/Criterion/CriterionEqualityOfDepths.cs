@@ -7,7 +7,7 @@ using Segmenter.Base.Sequences;
 using Segmenter.Model.Threshold;
 
 /// <summary>
-/// Criterion "Equality of depths". Goal to find a chain with the same amount of information
+/// Criterion "Equality of depths". Goal to find a sequence with the same amount of information.
 /// </summary>
 public class CriterionEqualityOfDepths : Criterion
 {
@@ -33,8 +33,8 @@ public class CriterionEqualityOfDepths : Criterion
     /// <summary>
     /// The state.
     /// </summary>
-    /// <param name="chain">
-    /// The chain.
+    /// <param name="sequence">
+    /// The sequence.
     /// </param>
     /// <param name="alphabet">
     /// The alphabet.
@@ -42,12 +42,12 @@ public class CriterionEqualityOfDepths : Criterion
     /// <returns>
     /// The <see cref="bool"/>.
     /// </returns>
-    public override bool State(ComplexChain chain, FrequencyDictionary alphabet)
+    public override bool State(ComplexSequence sequence, FrequencyDictionary alphabet)
     {
-        double currentDistortion = depth.Calculate(chain, chain.Anchor); // - calculate(gamutDeep, chain);
+        double currentDistortion = depth.Calculate(sequence, sequence.Anchor); // - calculate(gamutDeep, sequence);
         if (Math.Abs(currentDistortion) > Value)
         {
-            this.chain = chain.Clone();
+            this.sequence = sequence.Clone();
             this.alphabet = alphabet.Clone();
             ThresholdToStop.SaveBest();
             Value = currentDistortion;
@@ -59,8 +59,8 @@ public class CriterionEqualityOfDepths : Criterion
     /// <summary>
     /// The distortion.
     /// </summary>
-    /// <param name="chain">
-    /// The chain.
+    /// <param name="sequence">
+    /// The sequence.
     /// </param>
     /// <param name="alphabet">
     /// The alphabet.
@@ -68,8 +68,8 @@ public class CriterionEqualityOfDepths : Criterion
     /// <returns>
     /// The <see cref="double"/>.
     /// </returns>
-    public override double Distortion(ComplexChain chain, FrequencyDictionary alphabet)
+    public override double Distortion(ComplexSequence sequence, FrequencyDictionary alphabet)
     {
-        return depth.Calculate(chain.Original(), chain.Anchor); // - gamutDeep.Calculate(chain);
+        return depth.Calculate(sequence.Original(), sequence.Anchor); // - gamutDeep.Calculate(sequence);
     }
 }

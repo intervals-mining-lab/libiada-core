@@ -11,8 +11,8 @@ public class FmotifIdentifier
     /// <summary>
     /// The get identification.
     /// </summary>
-    /// <param name="fmotifChain">
-    /// The fmotif chain.
+    /// <param name="fmotifSequence">
+    /// The fmotif sequence.
     /// </param>
     /// <param name="pauseTreatment">
     /// The param pause treatment.
@@ -21,40 +21,40 @@ public class FmotifIdentifier
     /// The sequential transfer parameter.
     /// </param>
     /// <returns>
-    /// The <see cref="FmotifChain"/>.
+    /// The <see cref="FmotifSequence"/>.
     /// </returns>
-    public FmotifChain GetIdentification(FmotifChain fmotifChain, bool sequentialTransfer)
+    public FmotifSequence GetIdentification(FmotifSequence fmotifSequence, bool sequentialTransfer)
     {
-        FmotifChain chain = (FmotifChain)fmotifChain.Clone();
+        FmotifSequence sequence = (FmotifSequence)fmotifSequence.Clone();
 
         if (sequentialTransfer)
         {
-            Fmotif[] fmotifs = new Fmotif[fmotifChain.FmotifsList.Count];
-            for (int i = 0; i < chain.FmotifsList.Count; i++)
+            Fmotif[] fmotifs = new Fmotif[fmotifSequence.FmotifsList.Count];
+            for (int i = 0; i < sequence.FmotifsList.Count; i++)
             {
-                fmotifs[i] = FmotifSequentialTransfer(chain.FmotifsList[i]);
+                fmotifs[i] = FmotifSequentialTransfer(sequence.FmotifsList[i]);
             }
 
-            chain = new FmotifChain(fmotifs.ToList());
+            sequence = new FmotifSequence(fmotifs.ToList());
         }
 
-        for (int i = 0; i < chain.FmotifsList.Count; i++)
+        for (int i = 0; i < sequence.FmotifsList.Count; i++)
         {
-            for (int j = i; j < chain.FmotifsList.Count; j++)
+            for (int j = i; j < sequence.FmotifsList.Count; j++)
             {
-                if (chain.FmotifsList[i].Equals(chain.FmotifsList[j]))
+                if (sequence.FmotifsList[i].Equals(sequence.FmotifsList[j]))
                 {
-                    chain.FmotifsList[j].Id = chain.FmotifsList[i].Id;
+                    sequence.FmotifsList[j].Id = sequence.FmotifsList[i].Id;
                 }
             }
         }
 
-        for (int i = 0; i < chain.FmotifsList.Max(fl => fl.Id); i++)
+        for (int i = 0; i < sequence.FmotifsList.Max(fl => fl.Id); i++)
         {
-            bool haveId = chain.FmotifsList.Any(t => t.Id == i); // флаг того что есть такой id в цепочке
+            bool haveId = sequence.FmotifsList.Any(t => t.Id == i); // флаг того что есть такой id в цепочке
             if (!haveId)
             {
-                foreach (Fmotif fmotif in chain.FmotifsList)
+                foreach (Fmotif fmotif in sequence.FmotifsList)
                 {
                     if (fmotif.Id > i)
                     {
@@ -68,7 +68,7 @@ public class FmotifIdentifier
             }
         }
 
-        return chain;
+        return sequence;
     }
 
     public Fmotif FmotifSequentialTransfer(Fmotif fmotif)

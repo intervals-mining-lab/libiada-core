@@ -21,7 +21,7 @@ public class TreeTests
         ValuePhantom m2 = [new ValueString('4'), new ValueString('3')];
         ValuePhantom m3 = [new ValueString('a')];
 
-        BaseChain test = new(new List<IBaseObject>(){ m1, m2, m2, m3 });
+        Sequence test = new(new List<IBaseObject>(){ m1, m2, m2, m3 });
 
         IGenerator generator = new SimpleGenerator();
         TreeTop tree = new(test, generator);

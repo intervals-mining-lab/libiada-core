@@ -3,12 +3,12 @@
 using Libiada.Core.Core.ArrangementManagers;
 
 /// <summary>
-/// Involved partial dependence coefficient of binary chain.
+/// Involved partial dependence coefficient of binary sequence.
 /// </summary>
 public class InvolvedPartialDependenceCoefficient : BinaryCalculator
 {
     /// <summary>
-    /// Calculates involved partial dependence coefficient of binary chain.
+    /// Calculates involved partial dependence coefficient of binary sequence.
     /// </summary>
     /// <param name="manager">
     /// Intervals manager.
@@ -30,6 +30,6 @@ public class InvolvedPartialDependenceCoefficient : BinaryCalculator
         Redundancy redundancyCalculator = new();
 
         double redundancy = redundancyCalculator.Calculate(manager, link);
-        return redundancy * (2 * manager.PairsCount) / (manager.FirstChain.OccurrencesCount + manager.SecondChain.OccurrencesCount);
+        return redundancy * (2 * manager.PairsCount) / (manager.FirstSequence.OccurrencesCount + manager.SecondSequence.OccurrencesCount);
     }
 }

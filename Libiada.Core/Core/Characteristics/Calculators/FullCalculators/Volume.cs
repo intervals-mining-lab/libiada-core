@@ -1,7 +1,5 @@
 ﻿namespace Libiada.Core.Core.Characteristics.Calculators.FullCalculators;
 
-using System.Numerics;
-
 /// <summary>
 /// Volume of sequence.
 /// </summary>
@@ -10,24 +8,24 @@ public class Volume : IFullCalculator
     /// <summary>
     /// Calculation method.
     /// </summary>
-    /// <param name="chain">
+    /// <param name="sequence">
     /// Source sequence.
     /// </param>
     /// <param name="link">
-    /// Redundant parameter, not used in calculations.
+    /// Binding of the intervals in the sequence.
     /// </param>
     /// <returns>
-    /// Volume characteristic of chain as <see cref="double"/>.
+    /// Volume characteristic of the sequence as <see cref="double"/>.
     /// </returns>
-    public double Calculate(Chain chain, Link link)
+    public double Calculate(ComposedSequence sequence, Link link)
     {
         CongenericCalculators.Volume calculator = new();
-
-        Alphabet alphabet = chain.Alphabet;
-        BigInteger result = 1;
-        for (int i = 0; i < alphabet.Cardinality; i++)
+        
+        double result = 1;
+        int alphabetCardinality = sequence.Alphabet.Cardinality;
+        for (int i = 0; i < alphabetCardinality; i++)
         {
-            result *= (BigInteger)calculator.Calculate(chain.CongenericChain(i), link);
+            result *= calculator.Calculate(sequence.CongenericSequence(i), link);
         }
 
         return (double)result;

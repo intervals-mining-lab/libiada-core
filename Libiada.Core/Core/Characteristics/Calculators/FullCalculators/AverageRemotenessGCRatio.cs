@@ -11,25 +11,27 @@ public class AverageRemotenessGCRatio : IFullCalculator
     /// <summary>
     /// Calculation method.
     /// </summary>
-    /// <param name="chain">
+    /// <param name="sequence">
     /// Source sequence.
     /// </param>
     /// <param name="link">
-    /// Link of intervals in sequence.
+    /// Binding of the intervals in the sequence.
     /// </param>
     /// <returns>
     /// G+C Ratio value as <see cref="double"/>.
     /// </returns>
-    public double Calculate(Chain chain, Link link)
+    public double Calculate(ComposedSequence sequence, Link link)
     {
-        DnaProcessor.CheckDnaAlphabet(chain.Alphabet);
+        DnaProcessor.CheckDnaAlphabet(sequence.Alphabet);
+
+        double l = new AverageRemoteness().Calculate(sequence, link);
+        if (l == 0) return 0;
 
         CongenericCalculators.AverageRemoteness congenericRemotenessCalculator = new();
-        AverageRemoteness remotenessCalculator = new();
 
-        double g = congenericRemotenessCalculator.Calculate(chain.GetOrCreateCongenericChain(new ValueString("G")), link);
-        double c = congenericRemotenessCalculator.Calculate(chain.GetOrCreateCongenericChain(new ValueString("C")), link);
-        double l = remotenessCalculator.Calculate(chain, link);
-        return l == 0 ? 0 : 100 * (g + c) / l;
+        double g = congenericRemotenessCalculator.Calculate(sequence.GetOrCreateCongenericSequence(new ValueString("G")), link);
+        double c = congenericRemotenessCalculator.Calculate(sequence.GetOrCreateCongenericSequence(new ValueString("C")), link);
+
+        return 100 * (g + c) / l;
     }
 }

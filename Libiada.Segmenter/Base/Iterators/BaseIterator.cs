@@ -21,17 +21,17 @@ public abstract class BaseIterator : IIterator
     /// <summary>
     /// An iterate sequence
     /// </summary>
-    protected ComplexChain chain;
+    protected ComplexSequence sequence;
 
     /// <summary>
-    /// The currentCut composed sequence was extracted from a chain
+    /// The currentCut composed sequence was extracted from a sequence
     /// </summary>
     protected List<string> currentCut = [];
 
     /// <summary>
     /// Initializes a new instance of the <see cref="BaseIterator"/> class.
     /// </summary>
-    /// <param name="chain">
+    /// <param name="sequence">
     /// An iterated sequence.
     /// </param>
     /// <param name="length">
@@ -40,17 +40,17 @@ public abstract class BaseIterator : IIterator
     /// <param name="step">
     /// The number of elements through which the pointer will jump at the next iteration.
     /// </param>
-    public BaseIterator(ComplexChain chain, int length, int step)
+    public BaseIterator(ComplexSequence sequence, int length, int step)
     {
         CursorPosition = -1;
-        Initialize(chain, length, step);
+        Initialize(sequence, length, step);
     }
 
     /// <summary>
-    /// Gets or sets maximum number of iterations on this chain.
+    /// Gets or sets maximum number of iterations on this sequence.
     /// Amount of offsets for current sequence.
     /// </summary>
-    /// <returns>Maximum number of iterations on this chain</returns>
+    /// <returns>Maximum number of iterations on this sequence</returns>
     public int MaxShifts { get; protected set; }
 
     /// <summary>
@@ -72,10 +72,10 @@ public abstract class BaseIterator : IIterator
     }
 
     /// <summary>
-    /// Moves a pointer to specified cursorPosition
+    /// Moves a pointer to specified cursor position.
     /// </summary>
     /// <param name="position">
-    /// a cursorPosition in a chain subject to a cutting window
+    /// Cursor position in a sequence subject to a cutting window.
     /// </param>
     /// <returns>
     /// true if moving is available, false - otherwise
@@ -94,7 +94,7 @@ public abstract class BaseIterator : IIterator
     /// The next.
     /// </summary>
     /// <returns>
-    /// The <see cref="List{String}"/>.
+    /// The <see cref="List{string}"/>.
     /// </returns>
     public abstract List<string> Next();
 
@@ -115,7 +115,7 @@ public abstract class BaseIterator : IIterator
     /// The current.
     /// </summary>
     /// <returns>
-    /// The <see cref="List{String}"/>.
+    /// The <see cref="List{string}"/>.
     /// </returns>
     public abstract List<string> Current();
 
@@ -124,14 +124,14 @@ public abstract class BaseIterator : IIterator
     /// </summary>
     private void CalculateMaxShifts()
     {
-        MaxShifts = ((chain.Length - windowLength) / step) + 1;
+        MaxShifts = ((sequence.Length - windowLength) / step) + 1;
     }
 
     /// <summary>
     /// The initialize method.
     /// </summary>
-    /// <param name="chain">
-    /// The chain.
+    /// <param name="sequence">
+    /// The sequence.
     /// </param>
     /// <param name="windowLength">
     /// The window length.
@@ -139,13 +139,13 @@ public abstract class BaseIterator : IIterator
     /// <param name="step">
     /// The step.
     /// </param>
-    private void Initialize(ComplexChain chain, int windowLength, int step)
+    private void Initialize(ComplexSequence sequence, int windowLength, int step)
     {
         try
         {
-            int chainLength = chain.Length;
+            int sequenceLength = sequence.Length;
 
-            if ((chainLength < windowLength) || (windowLength == 0) || ((step < 1) || (step > chainLength)))
+            if ((sequenceLength < windowLength) || (windowLength == 0) || ((step < 1) || (step > sequenceLength)))
             {
                 throw new Exception();
             }
@@ -154,7 +154,7 @@ public abstract class BaseIterator : IIterator
         {
         }
 
-        this.chain = chain.Clone();
+        this.sequence = sequence.Clone();
         this.windowLength = windowLength;
         this.step = step;
         CursorPosition = -step;

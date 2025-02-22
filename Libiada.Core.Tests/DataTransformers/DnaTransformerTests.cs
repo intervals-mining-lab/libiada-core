@@ -13,21 +13,21 @@ public class DnaTransformerTests
     [Test]
     public void UnexpectedStopCodonTest()
     {
-        BaseChain input = new("TAGTGA");
+        Sequence input = new("TAGTGA");
         Assert.Throws<Exception>(() => DnaTransformer.EncodeAmino(input));
     }
 
     [Test]
     public void NoStopCodonTest()
     {
-        BaseChain input = new("AAAAAA");
+        Sequence input = new("AAAAAA");
         Assert.Throws<Exception>(() => DnaTransformer.EncodeAmino(input));
     }
 
     [Test]
     public void WrongCodingTableNumberTest()
     {
-        BaseChain input = new("TAGTGA");
+        Sequence input = new("TAGTGA");
         Assert.Throws<ArgumentException>(() => DnaTransformer.EncodeAmino(input, 58));
     }
 
@@ -89,9 +89,9 @@ public class DnaTransformerTests
     [TestCase(33, "FFLLSSSSYYYCCWWLLLLPPPPHHQQRRRRIIIMTTTTNNKKSSSKVVVVAAAADDEEGGGG", "TTTTTCTTATTGTCTTCCTCATCGTATTACTAATGTTGCTGATGGCTTCTCCTACTGCCTCCCCCACCGCATCACCAACAGCGTCGCCGACGGATTATCATAATGACTACCACAACGAATAACAAAAAGAGTAGCAGAAGGGTTGTCGTAGTGGCTGCCGCAGCGGATGACGAAGAGGGTGGCGGAGGGTAG")]
     public void EncodeWithCodingTableTest(byte codingTable, string aminoSequence, string nucleotideSequcne)
     {
-        BaseChain input = new(nucleotideSequcne);
-        BaseChain result = DnaTransformer.EncodeAmino(input, codingTable);
-        BaseChain expected = new(aminoSequence);
+        Sequence input = new(nucleotideSequcne);
+        Sequence result = DnaTransformer.EncodeAmino(input, codingTable);
+        Sequence expected = new(aminoSequence);
 
         Assert.That(result, Is.EqualTo(expected));
     }
@@ -102,8 +102,8 @@ public class DnaTransformerTests
     [Test]
     public void SimpleDecodeTest()
     {
-        BaseChain input = new("F");
-        BaseChain result = DnaTransformer.Decode(input);
+        Sequence input = new("F");
+        Sequence result = DnaTransformer.Decode(input);
         ValuePhantom mes = [new ValueString("TTT"), new ValueString("TTC")];
         Assert.That(mes, Is.EqualTo(result[0]));
     }
@@ -114,7 +114,7 @@ public class DnaTransformerTests
     [Test]
     public void DecodeTest()
     {
-        BaseChain input = new("FLSYXCWPHQRIMTNKVADEG");
+        Sequence input = new("FLSYXCWPHQRIMTNKVADEG");
 
         List<ValuePhantom> message =
             [
@@ -195,7 +195,7 @@ public class DnaTransformerTests
                     ]
             ];
 
-        BaseChain result = DnaTransformer.Decode(input);
+        Sequence result = DnaTransformer.Decode(input);
         for (int i = 0; i < message.Count; i++)
         {
             Assert.That(result[i], Is.EqualTo(message[i]));
@@ -275,13 +275,13 @@ public class DnaTransformerTests
     public void EncodeTripletsTest(string triplet)
     {
         Assert.That(triplet, Has.Length.EqualTo(3));
-        BaseChain input = new(triplet.Length);
+        Sequence input = new(triplet.Length);
         for (int i = 0; i < triplet.Length; i++)
         {
             input[i] = new ValueString(triplet[i]);
         }
 
-        BaseChain result = DnaTransformer.EncodeTriplets(input);
+        Sequence result = DnaTransformer.EncodeTriplets(input);
         Assert.That(result, Has.Length.EqualTo(1));
         Assert.That(result[0], Is.EqualTo(new ValueString(triplet)));
     }

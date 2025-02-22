@@ -12,9 +12,9 @@ using Libiada.Core.Core.Characteristics.Calculators.CongenericCalculators;
 public abstract class CongenericCalculatorsTests<T> where T : ICongenericCalculator, new()
 {
     /// <summary>
-    /// The congeneric chains.
+    /// The congeneric sequences.
     /// </summary>
-    private readonly List<CongenericChain> congenericChains = ChainsStorage.CongenericChains;
+    private readonly List<CongenericSequence> congenericSequences = SequencesStorage.CongenericSequences;
 
     /// <summary>
     /// Gets or sets the calculator.
@@ -22,10 +22,10 @@ public abstract class CongenericCalculatorsTests<T> where T : ICongenericCalcula
     private readonly T calculator = new();
 
     /// <summary>
-    /// The congeneric chain characteristic test.
+    /// The congeneric sequence characteristic test.
     /// </summary>
     /// <param name="index">
-    /// The congeneric sequence index in <see cref="ChainsStorage"/>.
+    /// The congeneric sequence index in <see cref="SequencesStorage"/>.
     /// </param>
     /// <param name="link">
     /// The link.
@@ -33,8 +33,8 @@ public abstract class CongenericCalculatorsTests<T> where T : ICongenericCalcula
     /// <param name="value">
     /// The value.
     /// </param>
-    protected void CongenericChainCharacteristicTest(int index, Link link, double value)
+    protected void CongenericSequenceCharacteristicTest(int index, Link link, double value)
     {
-        Assert.That(calculator.Calculate(congenericChains[index], link), Is.EqualTo(value).Within(0.0001d));
+        Assert.That(calculator.Calculate(congenericSequences[index], link), Is.EqualTo(value).Within(0.0001d));
     }
 }

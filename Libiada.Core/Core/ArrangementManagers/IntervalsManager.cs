@@ -14,12 +14,12 @@ public class IntervalsManager : IArrangementManager
     private readonly int[] intervals;
 
     /// <summary>
-    /// Gets or sets interval from start of chain to first element.
+    /// Gets or sets interval from start of the sequence to the first element.
     /// </summary>
     private int Start { get; set; }
 
     /// <summary>
-    /// Gets or sets interval from last element to end of chain.
+    /// Gets or sets interval from the last element to end of the sequence.
     /// </summary>
     private int End { get; set; }
 
@@ -45,25 +45,25 @@ public class IntervalsManager : IArrangementManager
     /// <summary>
     /// The initialize.
     /// </summary>
-    /// <param name="chain">
-    /// The chain.
+    /// <param name="sequence">
+    /// The sequence.
     /// </param>
     /// <exception cref="ArgumentException">
     /// Thrown if sequence is empty.
     /// </exception>
-    public IntervalsManager(CongenericChain chain)
+    public IntervalsManager(CongenericSequence sequence)
     {
-        int[] positions = chain.Positions;
+        int[] positions = sequence.Positions;
         int count = positions.Length;
 
         // if sequence is empty
         if (count == 0)
         {
-            throw new ArgumentException("Sequence should not be empty", "chain");
+            throw new ArgumentException("Sequence should not be empty", nameof(sequence));
         }
 
         intervals = new int[count - 1];
-        FillIntervals(positions, chain.Length);
+        FillIntervals(positions, sequence.Length);
     }
 
     /// <summary>

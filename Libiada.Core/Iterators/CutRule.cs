@@ -1,7 +1,7 @@
 ﻿namespace Libiada.Core.Iterators;
 
 /// <summary>
-/// The cut rule for chain.
+/// The cut rule for sequence.
 /// Contains start and end positions for all subsequences.
 /// </summary>
 public abstract class CutRule

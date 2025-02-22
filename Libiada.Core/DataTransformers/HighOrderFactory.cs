@@ -19,12 +19,12 @@ public static class HighOrderFactory
     /// The link.
     /// </param>
     /// <returns>
-    /// The <see cref="Chain"/>.
+    /// The <see cref="ComposedSequence"/>.
     /// </returns>
     /// <exception cref="ArgumentException">
     /// Thrown if link is unacceptable.
     /// </exception>
-    public static Chain Create(Chain source, Link link)
+    public static ComposedSequence Create(ComposedSequence source, Link link)
     {
         Link[] applicableLinks = [Link.Start, Link.End, Link.CycleEnd, Link.CycleStart];
         if (!applicableLinks.Contains(link))
@@ -39,7 +39,7 @@ public static class HighOrderFactory
 
         for (int j = 0; j < sourceAlphabet.Cardinality; j++)
         {
-            IntervalsManager intervalsManager = new(source.CongenericChain(j));
+            IntervalsManager intervalsManager = new(source.CongenericSequence(j));
             intervals[j] = intervalsManager.GetArrangement(link);
         }
 
@@ -51,6 +51,6 @@ public static class HighOrderFactory
             result.Add(new ValueInt(interval));
         }
 
-        return new Chain(result);
+        return new ComposedSequence(result);
     }
 }

@@ -1,49 +1,46 @@
 ﻿namespace Libiada.Core.Core.Characteristics.Calculators.FullCalculators;
 
 /// <summary>
-/// The remoteness skewness by intervals lengths.
+/// Skewness of remoteneses by intervals lengths.
 /// </summary>
 public class RemotenessSkewness : IFullCalculator
 {
     /// <summary>
     /// Calculation method.
     /// </summary>
-    /// <param name="chain">
+    /// <param name="sequence">
     /// Source sequence.
     /// </param>
     /// <param name="link">
-    /// Link of intervals in sequence.
+    /// Binding of the intervals in the sequence.
     /// </param>
     /// <returns>
-    /// Average remoteness dispersion <see cref="double"/> value.
+    /// Remoteness skewness <see cref="double"/> value.
     /// </returns>
-    public double Calculate(Chain chain, Link link)
+    public double Calculate(ComposedSequence sequence, Link link)
     {
+        double n = new IntervalsCount().Calculate(sequence, link);
+        if (n == 0) return 0;
+
         List<int> intervals = [];
-        Alphabet alphabet = chain.Alphabet;
-        for (int i = 0; i < alphabet.Cardinality; i++)
+        int alphabetCardinality = sequence.Alphabet.Cardinality;
+        for (int i = 0; i < alphabetCardinality; i++)
         {
-            intervals.AddRange(chain.CongenericChain(i).GetArrangement(link).ToList());
+            intervals.AddRange(sequence.CongenericSequence(i).GetArrangement(link));
         }
 
-        if (intervals.Count == 0)
-        {
-            return 0;
-        }
-
-        List<int> uniqueIntervals = intervals.Distinct().ToList();
-
-        IntervalsCount intervalsCount = new();
-        GeometricMean geometricMean = new();
+        // calcualting number of intervals of certain length
+        Dictionary<int, int> intervalsDictionary = intervals
+                                 .GroupBy(i => i)
+                                 .ToDictionary(i => i.Key, i => i.Count());
 
         double result = 0;
-        double gDelta = geometricMean.Calculate(chain, link);
-        double n = intervalsCount.Calculate(chain, link);
-
-        foreach (int kDelta in uniqueIntervals)
+        double g = new AverageRemoteness().Calculate(sequence, link);
+        
+        foreach ((int interval, int nk) in intervalsDictionary)
         {
-            double centeredRemoteness = Math.Log(kDelta, 2) - Math.Log(gDelta, 2);
-            result += centeredRemoteness * centeredRemoteness * centeredRemoteness * intervals.Count(interval => interval == kDelta) / n;
+            double centeredRemoteness = Math.Log2(interval) - g;
+            result += centeredRemoteness * centeredRemoteness * centeredRemoteness * nk / n;
         }
 
         return result;

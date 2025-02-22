@@ -11,10 +11,10 @@ using Libiada.Core.Core.SimpleTypes;
 public class AverageWordLengthTests : FullCalculatorsTests<AverageWordLength>
 {
     /// <summary>
-    /// The chain calculation test.
+    /// The sequence calculation test.
     /// </summary>
     /// <param name="index">
-    /// Full sequence index in <see cref="ChainsStorage"/>.
+    /// Full sequence index in <see cref="SequencesStorage"/>.
     /// </param>
     /// <param name="value">
     /// The value.
@@ -25,9 +25,9 @@ public class AverageWordLengthTests : FullCalculatorsTests<AverageWordLength>
     [TestCase(3, 1)]
     [TestCase(4, 1)]
     [TestCase(5, 1)]
-    public void ChainCalculationTest(int index, double value)
+    public void SequenceCalculationTest(int index, double value)
     {
-        ChainCharacteristicTest(index, Link.NotApplied, value);
+        SequenceCharacteristicTest(index, Link.NotApplied, value);
     }
 
     /// <summary>
@@ -36,7 +36,7 @@ public class AverageWordLengthTests : FullCalculatorsTests<AverageWordLength>
     [Test]
     public void CalculationTest()
     {
-        Chain sequence = new(5)
+        ComposedSequence sequence = new(5)
         {
             [0] = new ValueString("bla"),
             [1] = new ValueString("blablab"),
@@ -47,7 +47,7 @@ public class AverageWordLengthTests : FullCalculatorsTests<AverageWordLength>
         double actual = Calculator.Calculate(sequence, Link.NotApplied);
         Assert.That(actual, Is.EqualTo(5).Within(0.0001d));
 
-        sequence = new Chain(10)
+        sequence = new ComposedSequence(10)
         {
             [0] = new ValueString("qwer"),
             [1] = new ValueString("kfjvu"),
@@ -63,7 +63,7 @@ public class AverageWordLengthTests : FullCalculatorsTests<AverageWordLength>
         actual = Calculator.Calculate(sequence, Link.NotApplied);
         Assert.That(actual, Is.EqualTo(5.6).Within(0.0001d));
 
-        sequence = new Chain(8)
+        sequence = new ComposedSequence(8)
         {
             [0] = new ValueString("1234567"),
             [1] = new ValueString("890"),

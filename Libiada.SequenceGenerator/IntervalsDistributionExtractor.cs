@@ -6,11 +6,11 @@ public static class IntervalsDistributionExtractor
 {
     public static IntervalsDistribution GetIntervalsDistribution(int[] order, Link link)
     {
-        Chain sequence = new(order);
+        ComposedSequence sequence = new(order);
         IntervalsDistribution intervalsDistribution = new();
         foreach (IBaseObject el in sequence.Alphabet.ToList())
         {
-            int[] congIntervals = sequence.CongenericChain(el).GetArrangement(link);
+            int[] congIntervals = sequence.CongenericSequence(el).GetArrangement(link);
             foreach (int interval in congIntervals)
             {
                 intervalsDistribution.AddInterval(interval);

@@ -10,22 +10,21 @@ public class AverageWordLength : NonLinkableFullCalculator
     /// <summary>
     /// Calculation method.
     /// </summary>
-    /// <param name="chain">
+    /// <param name="sequence">
     /// Source sequence.
     /// </param>
     /// <returns>
     /// Average word length in <see cref="double"/> value.
     /// </returns>
-    public override double Calculate(Chain chain)
+    public override double Calculate(ComposedSequence sequence)
     {
-        int chainLength = chain.Length;
         int sum = 0;
-
-        for (int i = 0; i < chainLength; i++)
+        int sequenceLength = sequence.Length;
+        for (int i = 0; i < sequenceLength; i++)
         {
-            sum += ((ValueString)chain[i]).Value.Length;
+            sum += ((ValueString)sequence[i]).Value.Length;
         }
 
-        return sum / (double)chainLength;
+        return sum / (double)sequenceLength;
     }
 }

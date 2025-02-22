@@ -14,7 +14,7 @@ public class PeriodicityTests : CongenericCalculatorsTests<Periodicity>
     /// The congeneric calculation test.
     /// </summary>
     /// <param name="index">
-    /// The congeneric sequence index in <see cref="ChainsStorage"/>.
+    /// The congeneric sequence index in <see cref="SequencesStorage"/>.
     /// </param>
     /// <param name="link">
     /// The link.
@@ -27,8 +27,11 @@ public class PeriodicityTests : CongenericCalculatorsTests<Periodicity>
     [TestCase(0, Link.End, 0.8915)]
     [TestCase(0, Link.Both, 0.8907)]
     [TestCase(0, Link.Cycle, 0.7862)]
+
+    [TestCase(2, Link.None, 0)]
+    [TestCase(3, Link.None, 0)]
     public void CongenericCalculationTest(int index, Link link, double value)
     {
-        CongenericChainCharacteristicTest(index, link, value);
+        CongenericSequenceCharacteristicTest(index, link, value);
     }
 }

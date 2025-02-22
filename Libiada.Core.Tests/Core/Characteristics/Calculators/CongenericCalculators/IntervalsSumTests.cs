@@ -13,7 +13,7 @@ public class IntervalsSumTests : CongenericCalculatorsTests<IntervalsSum>
     /// The congeneric calculation test.
     /// </summary>
     /// <param name="index">
-    /// The congeneric sequence index in <see cref="ChainsStorage"/>.
+    /// The congeneric sequence index in <see cref="SequencesStorage"/>.
     /// </param>
     /// <param name="link">
     /// The link.
@@ -58,6 +58,6 @@ public class IntervalsSumTests : CongenericCalculatorsTests<IntervalsSum>
     [TestCase(5, Link.Cycle, 5)]
     public void CongenericCalculationTest(int index, Link link, double value)
     {
-        CongenericChainCharacteristicTest(index, link, value);
+        CongenericSequenceCharacteristicTest(index, link, value);
     }
 }

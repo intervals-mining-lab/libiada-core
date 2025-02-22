@@ -1,25 +1,26 @@
 ﻿namespace Libiada.Core.Core.Characteristics.Calculators.FullCalculators;
 
 /// <summary>
-/// Standard deviation of average remoteness (square root of dispersion of average remoteness).
+/// Standard deviation of average remoteness in congeneric sequernces (square root of variance of average remoteness).
 /// </summary>
 public class AverageRemotenessStandardDeviation : IFullCalculator
 {
     /// <summary>
     /// Calculation method.
     /// </summary>
-    /// <param name="chain">
+    /// <param name="sequence">
     /// Source sequence.
     /// </param>
     /// <param name="link">
-    /// Link of intervals in sequence.
+    /// Binding of the intervals in the sequence.
     /// </param>
     /// <returns>
-    /// Standard Deviation <see cref="double"/> value.
+    /// Average remoteness standard Deviation <see cref="double"/> value.
     /// </returns>
-    public double Calculate(Chain chain, Link link)
+    public double Calculate(ComposedSequence sequence, Link link)
     {
-        AverageRemotenessDispersion averageRemotenessDispersion = new();
-        return Math.Sqrt(averageRemotenessDispersion.Calculate(chain, link));
+        double averageRemotenessVariance = new AverageRemotenessVariance().Calculate(sequence, link);
+
+        return Math.Sqrt(averageRemotenessVariance);
     }
 }

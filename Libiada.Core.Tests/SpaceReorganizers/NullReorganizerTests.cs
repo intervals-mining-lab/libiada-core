@@ -10,14 +10,14 @@ using Libiada.Core.SpaceReorganizers;
 public class NullReorganizerTests
 {
     /// <summary>
-    /// The chain.
+    /// The sequence.
     /// </summary>
-    private Chain chain;
+    private ComposedSequence composedSequence;
 
     /// <summary>
-    /// The base chain.
+    /// The sequence.
     /// </summary>
-    private BaseChain baseChain;
+    private Sequence sequence;
 
     /// <summary>
     /// Tests initialization method.
@@ -25,31 +25,31 @@ public class NullReorganizerTests
     [SetUp]
     public void Initialization()
     {
-        chain = new Chain("adbaacbbaaca");
-        baseChain = new BaseChain("adbaacbbaaca");
+        composedSequence = new ComposedSequence("adbaacbbaaca");
+        sequence = new Sequence("adbaacbbaaca");
     }
 
     /// <summary>
-    /// We need to test that we can correctly convert chain from
+    /// We need to test that we can correctly convert sequence from
     /// object parent class to object child class.
     /// </summary>
     [Test]
     public void FromParentToChildTest()
     {
         NullReorganizer reorganizer = new();
-        AbstractChain result = reorganizer.Reorganize(chain);
-        Assert.That(result, Is.EqualTo(baseChain));
+        AbstractSequence result = reorganizer.Reorganize(composedSequence);
+        Assert.That(result, Is.EqualTo(sequence));
     }
 
     /// <summary>
-    /// We need to test that we can correctly convert chain from
+    /// We need to test that we can correctly convert sequence from
     /// object child class to object parent class.
     /// </summary>
     [Test]
     public void FromChildToParentTest()
     {
         NullReorganizer reorganizer = new();
-        AbstractChain result = reorganizer.Reorganize(baseChain);
-        Assert.That(result, Is.EqualTo(chain));
+        AbstractSequence result = reorganizer.Reorganize(sequence);
+        Assert.That(result, Is.EqualTo(composedSequence));
     }
 }

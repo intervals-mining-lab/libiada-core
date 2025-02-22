@@ -13,7 +13,7 @@ public class GeometricMeanTests : CongenericCalculatorsTests<GeometricMean>
     /// The congeneric calculation test.
     /// </summary>
     /// <param name="index">
-    /// The congeneric sequence index in <see cref="ChainsStorage"/>.
+    /// The congeneric sequence index in <see cref="SequencesStorage"/>.
     /// </param>
     /// <param name="link">
     /// The link.
@@ -33,13 +33,13 @@ public class GeometricMeanTests : CongenericCalculatorsTests<GeometricMean>
     [TestCase(1, Link.Both, 2.7595)]
     [TestCase(1, Link.Cycle, 2.8925)]
 
-    [TestCase(2, Link.None, 1)]
+    [TestCase(2, Link.None, 0)]
     [TestCase(2, Link.Start, 1)]
     [TestCase(2, Link.End, 1)]
     [TestCase(2, Link.Both, 1)]
     [TestCase(2, Link.Cycle, 1)]
 
-    [TestCase(3, Link.None, 1)]
+    [TestCase(3, Link.None, 0)]
     [TestCase(3, Link.Start, 8)]
     [TestCase(3, Link.End, 1)]
     [TestCase(3, Link.Both, 2.8284)]
@@ -52,6 +52,6 @@ public class GeometricMeanTests : CongenericCalculatorsTests<GeometricMean>
     [TestCase(5, Link.Cycle, 1)]
     public void CongenericCalculationTest(int index, Link link, double value)
     {
-        CongenericChainCharacteristicTest(index, link, value);
+        CongenericSequenceCharacteristicTest(index, link, value);
     }
 }

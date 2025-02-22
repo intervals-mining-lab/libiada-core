@@ -6,7 +6,7 @@ using Segmenter.Base.Collectors;
 using Segmenter.Extended;
 
 /// <summary>
-/// Used as a base for all kinds of word seekers for a chain.
+/// Used as a base for all kinds of word seekers for a sequence.
 /// </summary>
 public abstract class WordExtractor
 {
@@ -20,6 +20,7 @@ public abstract class WordExtractor
     /// </summary>
     protected DataCollector fullEntry = new();
 
+    // TODO: refactor it to rerturn tuple
     /// <summary>
     /// Finds a word based on current parameters.
     /// </summary>
@@ -27,7 +28,7 @@ public abstract class WordExtractor
     /// The current segmentation parameters.
     /// </param>
     /// <returns>
-    /// The <see cref="T:KeyValuePair{List{string},List{int}}?"/>.
+    /// The <see cref="KeyValuePair{List{string},List{int}}?"/>.
     /// </returns>
     public abstract KeyValuePair<List<string>, List<int>>? Find(Dictionary<string, object> parameters);
 
@@ -41,10 +42,11 @@ public abstract class WordExtractor
     /// The filter level.
     /// </param>
     /// <returns>
-    /// The <see cref="T:KeyValuePair{List{string},List{int}}?"/>.
+    /// The <see cref="KeyValuePair{List{string},List{int}}?"/>.
     /// </returns>
     protected KeyValuePair<List<string>, List<int>>? DiscardCompositeWords(FrequencyDictionary alphabet, double level)
     {
+        // TODO: refactor it to rerturn tuple
         List<double> stds = new(wordPriority.Keys);
         List<KeyValuePair<List<string>, List<int>>> entries = new(wordPriority.Values);
         for (int index = entries.Count; --index >= 0;)

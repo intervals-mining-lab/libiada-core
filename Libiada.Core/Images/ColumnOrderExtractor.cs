@@ -14,9 +14,9 @@ public class ColumnOrderExtractor : IImageOrderExtractor
  /// The source image as <see cref="Rgba32"/> two dimensional array.
  /// </param>
  /// <returns>
- /// The <see cref="BaseChain"/>.
+ /// The <see cref="Sequence"/>.
  /// </returns>
-    public BaseChain ExtractOrder(Rgba32[,] image)
+    public Sequence ExtractOrder(Rgba32[,] image)
     {
         int[] order = new int[image.GetLength(0) * image.GetLength(1)];
         Alphabet alphabet = [NullValue.Instance()];
@@ -36,6 +36,6 @@ public class ColumnOrderExtractor : IImageOrderExtractor
             }
         }
 
-        return new BaseChain(order, alphabet);
+        return new Sequence(order, alphabet);
     }
 }

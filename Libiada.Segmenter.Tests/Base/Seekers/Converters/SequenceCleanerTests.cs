@@ -33,9 +33,9 @@ public class SequenceCleanerTests
         List<string> result2 = ["ABABAB", "ABATAT", "TABABAB", "ABTABAB", "ABABAB"];
         List<string> result3 = ["ABATAT", "TABABAB", "ABTABAB"];
 
-        SequenceCleaner firstCleaner = new(new ComplexChain(list1));
-        SequenceCleaner secondCleaner = new(new ComplexChain(list1));
-        SequenceCleaner thirdCleaner = new(new ComplexChain(list1));
+        SequenceCleaner firstCleaner = new(new ComplexSequence(list1));
+        SequenceCleaner secondCleaner = new(new ComplexSequence(list1));
+        SequenceCleaner thirdCleaner = new(new ComplexSequence(list1));
 
         firstCleaner.FilterOut(listSequence1);
         secondCleaner.FilterOut(listSequence2);
@@ -43,9 +43,9 @@ public class SequenceCleanerTests
 
         Assert.Multiple(() =>
         {
-            Assert.That(new ComplexChain(result1), Is.EqualTo(firstCleaner.GetChain()));
-            Assert.That(new ComplexChain(result2), Is.EqualTo(secondCleaner.GetChain()));
-            Assert.That(new ComplexChain(result3), Is.EqualTo(thirdCleaner.GetChain()));
+            Assert.That(new ComplexSequence(result1), Is.EqualTo(firstCleaner.GetSequence()));
+            Assert.That(new ComplexSequence(result2), Is.EqualTo(secondCleaner.GetSequence()));
+            Assert.That(new ComplexSequence(result3), Is.EqualTo(thirdCleaner.GetSequence()));
         });
     }
 }

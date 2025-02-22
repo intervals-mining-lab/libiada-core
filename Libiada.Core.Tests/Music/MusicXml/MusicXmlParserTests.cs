@@ -15,6 +15,8 @@ public class MusicXmlParserTests
     /// </summary>
     private ScoreTrack scoreTrack;
 
+    private readonly string TestDataFolderPath = Path.Join(TestContext.CurrentContext.TestDirectory, "Music", "XmlTestFiles");
+
     /// <summary>
     /// The music xml parser set up.
     /// </summary>
@@ -94,7 +96,8 @@ public class MusicXmlParserTests
     [Test]
     public void XmlParserTest()
     {
-        MusicXmlReader xmlReader = new($"{SystemData.ProjectFolderPath}LibiadaMusicExample7Liga.xml");
+        string xmlFilePath = Path.Join(TestDataFolderPath, "LibiadaMusicExample7Liga.xml");
+        MusicXmlReader xmlReader = new(xmlFilePath);
         MusicXmlParser parser = new();
         parser.Execute(xmlReader.MusicXmlDocument);
 
@@ -120,7 +123,8 @@ public class MusicXmlParserTests
     [Test]
     public void PolyXmlParserTest()
     {
-        MusicXmlReader xmlReader = new($"{SystemData.ProjectFolderPath}polytest.xml");
+        string xmlFilePath = Path.Join(TestDataFolderPath, "PolyTest.xml");
+        MusicXmlReader xmlReader = new(xmlFilePath);
         MusicXmlParser parser = new();
         parser.Execute(xmlReader.MusicXmlDocument);
 
@@ -154,7 +158,8 @@ public class MusicXmlParserTests
     [Test]
     public void RepeaterTest()
     {
-        MusicXmlReader xmlReader = new($"{SystemData.ProjectFolderPath}repeatertest.xml");
+        string xmlFilePath = Path.Join(TestDataFolderPath, "RepeaterTest.xml");
+        MusicXmlReader xmlReader = new(xmlFilePath);
         MusicXmlParser parser = new();
         parser.Execute(xmlReader.MusicXmlDocument);
 
@@ -173,7 +178,8 @@ public class MusicXmlParserTests
     [Test]
     public void XmlParserScoreTrackTest()
     {
-        MusicXmlReader xmlReader = new($"{SystemData.ProjectFolderPath}LibiadaMusicExample7Liga.xml");
+        string xmlFilePath = Path.Join(TestDataFolderPath, "LibiadaMusicExample7Liga.xml");
+        MusicXmlReader xmlReader = new(xmlFilePath);
         MusicXmlParser parser = new();
         parser.Execute(xmlReader.MusicXmlDocument);
 
@@ -186,7 +192,8 @@ public class MusicXmlParserTests
     [Test]
     public void XmlParserCongenericScoreTrackTest()
     {
-        MusicXmlReader xmlReader = new($"{SystemData.ProjectFolderPath}LibiadaMusicExample7Liga.xml");
+        string xmlFilePath = Path.Join(TestDataFolderPath, "LibiadaMusicExample7Liga.xml");
+        MusicXmlReader xmlReader = new(xmlFilePath);
         MusicXmlParser parser = new();
         parser.Execute(xmlReader.MusicXmlDocument);
         CongenericScoreTrack actual = parser.ScoreModel.CongenericScoreTracks[0];
@@ -199,7 +206,8 @@ public class MusicXmlParserTests
     [Test]
     public void XmlParserMeasureTest()
     {
-        MusicXmlReader xmlReader = new($"{SystemData.ProjectFolderPath}LibiadaMusicExample7Liga.xml");
+        string xmlFilePath = Path.Join(TestDataFolderPath, "LibiadaMusicExample7Liga.xml");
+        MusicXmlReader xmlReader = new(xmlFilePath);
         MusicXmlParser parser = new();
         parser.Execute(xmlReader.MusicXmlDocument);
         CongenericScoreTrack actual = parser.ScoreModel.CongenericScoreTracks[0];
@@ -218,7 +226,8 @@ public class MusicXmlParserTests
     [Test]
     public void XmlParserNoteTest()
     {
-        MusicXmlReader xmlReader = new($"{SystemData.ProjectFolderPath}LibiadaMusicExample7Liga.xml");
+        string xmlFilePath = Path.Join(TestDataFolderPath, "LibiadaMusicExample7Liga.xml");
+        MusicXmlReader xmlReader = new(xmlFilePath);
         MusicXmlParser parser = new();
         parser.Execute(xmlReader.MusicXmlDocument);
         CongenericScoreTrack actual = parser.ScoreModel.CongenericScoreTracks[0];
@@ -243,7 +252,8 @@ public class MusicXmlParserTests
     [Test]
     public void XmlParserAttributesTest()
     {
-        MusicXmlReader xmlReader = new($"{SystemData.ProjectFolderPath}LibiadaMusicExample7Liga.xml");
+        string xmlFilePath = Path.Join(TestDataFolderPath, "LibiadaMusicExample7Liga.xml");
+        MusicXmlReader xmlReader = new(xmlFilePath);
         MusicXmlParser parser = new();
         parser.Execute(xmlReader.MusicXmlDocument);
         CongenericScoreTrack actual = parser.ScoreModel.CongenericScoreTracks[0];
@@ -266,7 +276,8 @@ public class MusicXmlParserTests
     [Test]
     public void XmlParserPitchTest()
     {
-        MusicXmlReader xmlReader = new($"{SystemData.ProjectFolderPath}LibiadaMusicExample7Liga.xml");
+        string xmlFilePath = Path.Join(TestDataFolderPath, "LibiadaMusicExample7Liga.xml");
+        MusicXmlReader xmlReader = new(xmlFilePath);
         MusicXmlParser parser = new();
         parser.Execute(xmlReader.MusicXmlDocument);
         CongenericScoreTrack actual = parser.ScoreModel.CongenericScoreTracks[0];
@@ -295,7 +306,8 @@ public class MusicXmlParserTests
     [Test]
     public void XmlParserDurationTest()
     {
-        MusicXmlReader xmlReader = new($"{SystemData.ProjectFolderPath}LibiadaMusicExample7Liga.xml");
+        string xmlFilePath = Path.Join(TestDataFolderPath, "LibiadaMusicExample7Liga.xml");
+        MusicXmlReader xmlReader = new(xmlFilePath);
         MusicXmlParser parser = new();
         parser.Execute(xmlReader.MusicXmlDocument);
         CongenericScoreTrack actual = parser.ScoreModel.CongenericScoreTracks[0];
@@ -320,7 +332,8 @@ public class MusicXmlParserTests
     [Test]
     public void XmlParserTieTest()
     {
-        MusicXmlReader xmlReader = new($"{SystemData.ProjectFolderPath}LibiadaMusicExample7Liga.xml");
+        string xmlFilePath = Path.Join(TestDataFolderPath, "LibiadaMusicExample7Liga.xml");
+        MusicXmlReader xmlReader = new(xmlFilePath);
         MusicXmlParser parser = new();
         parser.Execute(xmlReader.MusicXmlDocument);
         CongenericScoreTrack actual = parser.ScoreModel.CongenericScoreTracks[0];
@@ -345,7 +358,8 @@ public class MusicXmlParserTests
     [Test]
     public void XmlParserTripletTest()
     {
-        MusicXmlReader xmlReader = new($"{SystemData.ProjectFolderPath}LibiadaMusicExample7Liga.xml");
+        string xmlFilePath = Path.Join(TestDataFolderPath, "LibiadaMusicExample7Liga.xml");
+        MusicXmlReader xmlReader = new(xmlFilePath);
         MusicXmlParser parser = new();
         parser.Execute(xmlReader.MusicXmlDocument);
         CongenericScoreTrack actual = parser.ScoreModel.CongenericScoreTracks[0];

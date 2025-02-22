@@ -22,12 +22,12 @@ public class ZigzagOrderExtractorTests
         image[1, 1] = Color.Black;
         image[1, 2] = Color.White;
 
-        BaseChain actual = ImageProcessor.ProcessImage(image, [], [], new ZigzagOrderExtractor());
+        Sequence actual = ImageProcessor.ProcessImage(image, [], [], new ZigzagOrderExtractor());
 
         ValuePixel black = new(Color.Black);
         ValuePixel white = new(Color.White);
 
-        BaseChain expected = new(6);
+        Sequence expected = new(6);
 
         expected[0] = black;
         expected[1] = white;
@@ -48,14 +48,14 @@ public class ZigzagOrderExtractorTests
         image[1, 0] = Color.Red;
         image[1, 1] = Color.White;
 
-        BaseChain actual = ImageProcessor.ProcessImage(image, [], [], new ZigzagOrderExtractor());
+        Sequence actual = ImageProcessor.ProcessImage(image, [], [], new ZigzagOrderExtractor());
 
         ValuePixel black = new(Color.Black);
         ValuePixel blue = new(Color.Blue);
         ValuePixel red = new(Color.Red);
         ValuePixel white = new(Color.White);
 
-        BaseChain expected = new(4);
+        Sequence expected = new(4);
 
         expected[0] = black;
         expected[1] = blue;
@@ -74,14 +74,14 @@ public class ZigzagOrderExtractorTests
         image[0, 2] = Color.Red;
         image[0, 3] = Color.White;
 
-        BaseChain actual = ImageProcessor.ProcessImage(image, [], [], new ZigzagOrderExtractor());
+        Sequence actual = ImageProcessor.ProcessImage(image, [], [], new ZigzagOrderExtractor());
 
         ValuePixel black = new(Color.Black);
         ValuePixel blue = new(Color.Blue);
         ValuePixel red = new(Color.Red);
         ValuePixel white = new(Color.White);
 
-        BaseChain expected = new(4);
+        Sequence expected = new(4);
 
         expected[0] = black;
         expected[1] = blue;
@@ -100,14 +100,14 @@ public class ZigzagOrderExtractorTests
         image[2, 0] = Color.Red;
         image[3, 0] = Color.White;
 
-        BaseChain actual = ImageProcessor.ProcessImage(image, [], [], new ZigzagOrderExtractor());
+        Sequence actual = ImageProcessor.ProcessImage(image, [], [], new ZigzagOrderExtractor());
 
         ValuePixel black = new(Color.Black);
         ValuePixel blue = new(Color.Blue);
         ValuePixel red = new(Color.Red);
         ValuePixel white = new(Color.White);
 
-        BaseChain expected = new(4);
+        Sequence expected = new(4);
 
         expected[0] = black;
         expected[1] = blue;

@@ -10,17 +10,17 @@ public class IntervalsCount : ICongenericCalculator
     /// If link is to start and end then intervals count equals elements count + 1.
     /// If link is none then intervals count equals elements count - 1.
     /// </summary>
-    /// <param name="chain">
+    /// <param name="sequence">
     /// Source sequence.
     /// </param>
     /// <param name="link">
-    /// Link of intervals in sequence.
+    /// Binding of the intervals in the sequence.
     /// </param>
     /// <returns>
-    /// Intervals count in chain as <see cref="double"/>.
+    /// Intervals count in sequence as <see cref="double"/>.
     /// </returns>
-    public double Calculate(CongenericChain chain, Link link)
+    public double Calculate(CongenericSequence sequence, Link link)
     {
-        return chain.GetArrangement(link).Length;
+        return sequence.GetArrangement(link).Length;
     }
 }

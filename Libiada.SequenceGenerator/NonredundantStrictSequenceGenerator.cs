@@ -23,19 +23,19 @@ public class NonRedundantStrictSequenceGenerator : ISequenceGenerator
     /// The alphabet cardinality.
     /// </param>
     /// <returns>
-    /// The <see cref="List{BaseChain}"/>.
+    /// The <see cref="List{Libiada.Core.Core.Sequence}"/>.
     /// </returns>
-    public List<BaseChain> GenerateSequences(int length, int alphabetCardinality)
+    public List<Sequence> GenerateSequences(int length, int alphabetCardinality)
     {
-        List<BaseChain> redundantResult = redundantSequenceGenerator.GenerateSequences(length, alphabetCardinality);
-        List<BaseChain> nonRedundantResult = [];
-        foreach (BaseChain chain in redundantResult)
+        List<Sequence> redundantResult = redundantSequenceGenerator.GenerateSequences(length, alphabetCardinality);
+        List<Sequence> nonRedundantResult = [];
+        foreach (Sequence sequence in redundantResult)
         {
-            int chainAlphabetCardinality = chain.Alphabet.Cardinality;
-            bool nonRedundant = chain.Alphabet.All(el => (ValueInt)el <= chainAlphabetCardinality);
+            int chainAlphabetCardinality = sequence.Alphabet.Cardinality;
+            bool nonRedundant = sequence.Alphabet.All(el => (ValueInt)el <= chainAlphabetCardinality);
             if (nonRedundant)
             {
-                nonRedundantResult.Add(chain);
+                nonRedundantResult.Add(sequence);
             }
         }
 
@@ -49,11 +49,11 @@ public class NonRedundantStrictSequenceGenerator : ISequenceGenerator
     /// The length.
     /// </param>
     /// <returns>
-    /// The <see cref="List{BaseChain}"/>.
+    /// The <see cref="List{Libiada.Core.Core.Sequence}"/>.
     /// </returns>
-    public List<BaseChain> GenerateSequences(int length)
+    public List<Sequence> GenerateSequences(int length)
     {
-        List<BaseChain> result = [];
+        List<Sequence> result = [];
         for (int i = 1; i <= length; i++)
         {
             result.AddRange(GenerateSequences(length, i));

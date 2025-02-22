@@ -7,7 +7,7 @@ using MarkovChains.MarkovChain.Generators;
 using MarkovChains.MarkovChain.Matrices.Absolute;
 
 /// <summary>
-/// The markov chain random.
+/// The random markov chain .
 /// </summary>
 public class MarkovChainRandom : MarkovChainNotCongenericStatic
 {
@@ -28,19 +28,19 @@ public class MarkovChainRandom : MarkovChainNotCongenericStatic
     /// <summary>
     /// The teach.
     /// </summary>
-    /// <param name="chain">
-    /// The chain.
+    /// <param name="sequence">
+    /// The sequence.
     /// </param>
     /// <param name="method">
     /// The method.
     /// </param>
-    public override void Teach(BaseChain chain, TeachingMethod method)
+    public override void Teach(Sequence sequence, TeachingMethod method)
     {
         MatrixBuilder builder = new();
-        IAbsoluteMatrix absoluteMatrix = (IAbsoluteMatrix)builder.Create(chain.Alphabet.Cardinality, Rank);
-        for (int i = 0; i < chain.Alphabet.Cardinality; i++)
+        IAbsoluteMatrix absoluteMatrix = (IAbsoluteMatrix)builder.Create(sequence.Alphabet.Cardinality, Rank);
+        for (int i = 0; i < sequence.Alphabet.Cardinality; i++)
         {
-            int[] temp = [chain.Alphabet.IndexOf(chain.Alphabet[i])];
+            int[] temp = [sequence.Alphabet.IndexOf(sequence.Alphabet[i])];
             absoluteMatrix.Add(temp);
         }
 

@@ -8,13 +8,13 @@ using Libiada.Core.Core;
 public abstract class SpaceReorganizer
 {
     /// <summary>
-    /// Reorganizes <see cref="AbstractChain"/> into <see cref="AbstractChain"/>.
+    /// Reorganizes <see cref="AbstractSequence"/> into <see cref="AbstractSequence"/>.
     /// </summary>
     /// <param name="source">
-    /// Source chain.
+    /// Source sequence.
     /// </param>
     /// <returns>
-    /// The <see cref="AbstractChain"/>.
+    /// The <see cref="AbstractSequence"/>.
     /// </returns>
-    public abstract AbstractChain Reorganize(AbstractChain source);
+    public abstract AbstractSequence Reorganize(AbstractSequence source);
 }

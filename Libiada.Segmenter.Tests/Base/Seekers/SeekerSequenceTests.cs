@@ -21,7 +21,7 @@ public class SeekerSequenceTests
 
         List<string> list1 = ["ABAC", "A", "A", "A", "ABAC", "A", "ABC", "AC", "ABC", "AG", "ABC", "A", "AB", "A", "ABC", "ABAC", "A"];
         List<string> list2 = ["ABAC", "A"];
-        SeekerSequence seek = new(new StartIterator(new ComplexChain(list1), length, step));
+        SeekerSequence seek = new(new StartIterator(new ComplexSequence(list1), length, step));
         Assert.That(seek.Seek(list2), Is.EqualTo(3));
     }
 }

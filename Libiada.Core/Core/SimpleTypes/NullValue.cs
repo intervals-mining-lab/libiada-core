@@ -2,7 +2,7 @@ namespace Libiada.Core.Core.SimpleTypes;
 
 /// <summary>
 /// Null value class.
-/// Used to fill empty space in chains.
+/// Used to fill empty space in sequences.
 /// Implements singleton pattern.
 /// </summary>
 public class NullValue : IBaseObject

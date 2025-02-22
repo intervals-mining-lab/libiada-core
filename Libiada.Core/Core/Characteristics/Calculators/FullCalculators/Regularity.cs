@@ -8,22 +8,20 @@ public class Regularity : IFullCalculator
     /// <summary>
     /// Calculation method.
     /// </summary>
-    /// <param name="chain">
+    /// <param name="sequence">
     /// Source sequence.
     /// </param>
     /// <param name="link">
-    /// Link of intervals in sequence.
+    /// Binding of the intervals in the sequence.
     /// </param>
     /// <returns>
     /// Regularity as <see cref="double"/>.
     /// </returns>
-    public double Calculate(Chain chain, Link link)
+    public double Calculate(ComposedSequence sequence, Link link)
     {
-        GeometricMean geometricMeanCalculator = new();
-        DescriptiveInformation descriptiveInformationCalculator = new();
+        double geometricMean = new GeometricMean().Calculate(sequence, link);
+        double descriptiveInformation = new DescriptiveInformation().Calculate(sequence, link);
 
-        double geometricMean = geometricMeanCalculator.Calculate(chain, link);
-        double descriptiveInformation = descriptiveInformationCalculator.Calculate(chain, link);
         return geometricMean / descriptiveInformation;
     }
 }

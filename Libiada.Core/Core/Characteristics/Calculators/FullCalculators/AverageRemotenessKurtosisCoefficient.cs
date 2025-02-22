@@ -1,28 +1,29 @@
 ﻿namespace Libiada.Core.Core.Characteristics.Calculators.FullCalculators;
 
 /// <summary>
-/// The average remoteness kurtosis coefficient.
+/// Kurtosis coefficient of average remotenesses in congeneric sequences.
 /// </summary>
 public class AverageRemotenessKurtosisCoefficient : IFullCalculator
 {
     /// <summary>
     /// Calculation method.
     /// </summary>
-    /// <param name="chain">
+    /// <param name="sequence">
     /// Source sequence.
     /// </param>
     /// <param name="link">
-    /// Link of intervals in sequence.
+    /// Binding of the intervals in the sequence.
     /// </param>
     /// <returns>
-    /// Standard Deviation <see cref="double"/> value.
+    /// Average remoteness kurtosis coefficient <see cref="double"/> value.
     /// </returns>
-    public double Calculate(Chain chain, Link link)
+    public double Calculate(ComposedSequence sequence, Link link)
     {
-        AverageRemotenessKurtosis averageRemotenessKurtosis = new();
-        AverageRemotenessStandardDeviation averageRemotenessStandardDeviation = new();
+        double averageRemotenessStandardDeviation = new AverageRemotenessStandardDeviation().Calculate(sequence, link);
+        if (averageRemotenessStandardDeviation == 0) return 0;
 
-        double standardDeviation = averageRemotenessStandardDeviation.Calculate(chain, link);
-        return standardDeviation == 0 ? 0 : averageRemotenessKurtosis.Calculate(chain, link) / (standardDeviation * standardDeviation * standardDeviation * standardDeviation);
+        double averageRemotenessKurtosis = new AverageRemotenessKurtosis().Calculate(sequence, link);
+
+        return  averageRemotenessKurtosis / (averageRemotenessStandardDeviation * averageRemotenessStandardDeviation * averageRemotenessStandardDeviation * averageRemotenessStandardDeviation);
     }
 }

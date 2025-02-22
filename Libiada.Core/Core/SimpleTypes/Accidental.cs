@@ -6,7 +6,7 @@ using System.ComponentModel.DataAnnotations;
 /// <summary>
 /// The accidental.
 /// </summary>
-public enum Accidental : short
+public enum Accidental : sbyte
 {
     /// <summary>
     /// Double flat accidental.

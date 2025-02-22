@@ -1,28 +1,29 @@
 ﻿namespace Libiada.Core.Core.Characteristics.Calculators.FullCalculators;
 
 /// <summary>
-/// The remoteness skewness coefficient by intervals lengths.
+/// Skewness coefficient of remoteneses by intervals lengths.
 /// </summary>
 public class RemotenessSkewnessCoefficient : IFullCalculator
 {
     /// <summary>
     /// Calculation method.
     /// </summary>
-    /// <param name="chain">
+    /// <param name="sequence">
     /// Source sequence.
     /// </param>
     /// <param name="link">
-    /// Link of intervals in sequence.
+    /// Binding of the intervals in the sequence.
     /// </param>
     /// <returns>
-    /// Standard Deviation <see cref="double"/> value.
+    /// Remoteness skewness coefficient <see cref="double"/> value.
     /// </returns>
-    public double Calculate(Chain chain, Link link)
+    public double Calculate(ComposedSequence sequence, Link link)
     {
-        RemotenessSkewness remotenessSkewness = new();
-        RemotenessStandardDeviation remotenessStandardDeviation = new();
+        double remotenessStandardDeviation = new RemotenessStandardDeviation().Calculate(sequence, link);
+        if (remotenessStandardDeviation == 0) return 0;
 
-        double standardDeviation = remotenessStandardDeviation.Calculate(chain, link);
-        return standardDeviation == 0 ? 0 : remotenessSkewness.Calculate(chain, link) / (standardDeviation * standardDeviation * standardDeviation);
+        double remotenessSkewness = new RemotenessSkewness().Calculate(sequence, link);
+
+        return remotenessSkewness / (remotenessStandardDeviation * remotenessStandardDeviation * remotenessStandardDeviation);
     }
 }

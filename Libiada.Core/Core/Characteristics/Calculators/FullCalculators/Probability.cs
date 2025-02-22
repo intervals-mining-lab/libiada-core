@@ -8,21 +8,21 @@ public class Probability : NonLinkableFullCalculator
     /// <summary>
     /// For complete (full) sequence always equals 1.
     /// </summary>
-    /// <param name="chain">
+    /// <param name="sequence">
     /// Source sequence.
     /// </param>
     /// <returns>
-    /// if chain is full then 1, otherwise percent of filled positions as <see cref="double"/>.
+    /// if sequence is full then 1, otherwise percent of filled positions as <see cref="double"/>.
     /// </returns>
-    public override double Calculate(Chain chain)
+    public override double Calculate(ComposedSequence sequence)
     {
         CongenericCalculators.Probability calculator = new();
 
         double result = 0;
-        Alphabet alphabet = chain.Alphabet;
-        for (int i = 0; i < alphabet.Cardinality; i++)
+        int alphabetCardinality = sequence.Alphabet.Cardinality;
+        for (int i = 0; i < alphabetCardinality; i++)
         {
-            result += calculator.Calculate(chain.CongenericChain(i));
+            result += calculator.Calculate(sequence.CongenericSequence(i));
         }
 
         return result > 1 ? 1 : result;

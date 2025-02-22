@@ -10,10 +10,10 @@ using Libiada.Core.Core.Characteristics.Calculators.FullCalculators;
 public class AlphabeticDepthTests : FullCalculatorsTests<AlphabeticDepth>
 {
     /// <summary>
-    /// The chain calculation test.
+    /// The sequence calculation test.
     /// </summary>
     /// <param name="index">
-    /// Full sequence index in <see cref="ChainsStorage"/>.
+    /// Full sequence index in <see cref="SequencesStorage"/>.
     /// </param>
     /// <param name="link">
     /// The link.
@@ -26,8 +26,42 @@ public class AlphabeticDepthTests : FullCalculatorsTests<AlphabeticDepth>
     [TestCase(0, Link.End, 6.4165)]
     [TestCase(0, Link.Both, 8.8815)]
     [TestCase(0, Link.Cycle, 7.7856)]
-    public void ChainCalculationTest(int index, Link link, double value)
+
+    [TestCase(2, Link.None, 3.29248125)]
+    [TestCase(2, Link.Start, 6.649604)]
+    [TestCase(2, Link.End, 5.877443751)]
+    [TestCase(2, Link.Both, 9.2345665)]
+    [TestCase(2, Link.Cycle, 7.5384077985)]
+
+    [TestCase(4, Link.None, 0)]
+    [TestCase(4, Link.Start, 0)]
+    [TestCase(4, Link.End, 0)]
+    [TestCase(4, Link.Both, 0)]
+    [TestCase(4, Link.Cycle, 0)]
+
+    [TestCase(30, Link.Start, 3.5849625)]
+    public void SequenceCalculationTest(int index, Link link, double value)
     {
-        ChainCharacteristicTest(index, link, value);
+        SequenceCharacteristicTest(index, link, value);
+    }
+
+    /// <summary>
+    /// No intervals test.
+    /// </summary>
+    /// <param name="index">
+    /// Full sequence index in <see cref="SequencesStorage"/>.
+    /// </param>
+    /// <param name="link">
+    /// The link.
+    /// </param>
+    /// <param name="value">
+    /// The value.
+    /// </param>
+    [TestCase(3, Link.None, 0)]
+    [TestCase(5, Link.None, 0)]
+    [TestCase(7, Link.None, 0)]
+    public void NoIntervalsTest(int index, Link link, double value)
+    {
+        SequenceCharacteristicTest(index, link, value);
     }
 }

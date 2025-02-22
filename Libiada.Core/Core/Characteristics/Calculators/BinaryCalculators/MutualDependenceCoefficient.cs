@@ -3,7 +3,7 @@
 using Libiada.Core.Core.ArrangementManagers;
 
 /// <summary>
-/// Mutual dependence coefficient of binary chain.
+/// Mutual dependence coefficient of binary sequence.
 /// </summary>
 public class MutualDependenceCoefficient : BinaryCalculator
 {
@@ -30,7 +30,7 @@ public class MutualDependenceCoefficient : BinaryCalculator
         InvolvedPartialDependenceCoefficient involvedCoefficientCalculator = new();
 
         double firstInvolvedCoefficient = involvedCoefficientCalculator.Calculate(manager, link);
-        double secondInvolvedCoefficient = involvedCoefficientCalculator.Calculate(new BinaryIntervalsManager(manager.SecondChain, manager.FirstChain), link);
+        double secondInvolvedCoefficient = involvedCoefficientCalculator.Calculate(new BinaryIntervalsManager(manager.SecondSequence, manager.FirstSequence), link);
         double multipliedInvolvedCoefficient = firstInvolvedCoefficient * secondInvolvedCoefficient;
         return (firstInvolvedCoefficient < 0 || secondInvolvedCoefficient < 0) ? 0 : Math.Sqrt(multipliedInvolvedCoefficient);
     }

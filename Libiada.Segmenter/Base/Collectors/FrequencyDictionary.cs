@@ -37,7 +37,7 @@ public class FrequencyDictionary
     /// <param name="sequence">
     /// The sequence.
     /// </param>
-    public FrequencyDictionary(ComplexChain sequence)
+    public FrequencyDictionary(ComplexSequence sequence)
     {
         Fill(sequence);
     }
@@ -82,7 +82,7 @@ public class FrequencyDictionary
     /// Extracts new words and their places of occurrence from a current word sequence
     /// </summary>
     /// <param name="sequence">the current word sequence</param>
-    public void Fill(ComplexChain sequence)
+    public void Fill(ComplexSequence sequence)
     {
         Clear();
         for (int index = 0; index < sequence.Length; index++)
@@ -104,10 +104,11 @@ public class FrequencyDictionary
     /// The sort by power.
     /// </summary>
     /// <returns>
-    /// The <see cref="T:List{KeyValuePair{String, List{Int32}}}"/>.
+    /// The <see cref="List{KeyValuePair{string, List{int}}}"/>.
     /// </returns>
     public List<KeyValuePair<string, List<int>>> SortByPower()
     {
+        // TODO refactor it to return list of tuples
         List<KeyValuePair<string, List<int>>> list = new(words);
         list.Sort((firstPair, nextPair) => firstPair.Value.Count.CompareTo(nextPair.Value.Count));
 

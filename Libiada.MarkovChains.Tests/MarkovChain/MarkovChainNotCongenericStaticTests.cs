@@ -17,12 +17,12 @@ public class MarkovChainNotCongenericStaticTests
     /// <summary>
     /// Source sequence for teaching markov chain.
     /// </summary>
-    private Chain testChain;
+    private ComposedSequence testSequence;
 
     /// <summary>
     /// Another sequence for teaching markov chain.
     /// </summary>
-    private Chain secondTestChain;
+    private ComposedSequence secondTestSequence;
 
     /// <summary>
     /// The initialization method.
@@ -31,8 +31,8 @@ public class MarkovChainNotCongenericStaticTests
     public void Initialize()
     {
         // Creating sequences containing 12 elements.
-        testChain = new Chain("adbaacbbaaca");
-        secondTestChain = new Chain("aaaaaabaaaba");
+        testSequence = new ComposedSequence("adbaacbbaaca");
+        secondTestSequence = new ComposedSequence("aaaaaabaaaba");
     }
 
     /// <summary>
@@ -57,7 +57,7 @@ public class MarkovChainNotCongenericStaticTests
         const int Length = 30;
 
         // teaching markov chain (TeachingMethod.None means there is no preprocessing)
-        markovChain.Teach(secondTestChain, TeachingMethod.Cycle);
+        markovChain.Teach(secondTestSequence, TeachingMethod.Cycle);
 
         var temp = markovChain.Generate(Length);
 
@@ -79,7 +79,7 @@ public class MarkovChainNotCongenericStaticTests
          */
 
         // expected result of generation
-        Chain resultTheory = new("aabaabaaaaaabaabaaaaaabaabaaaa");
+        ComposedSequence resultTheory = new("aabaabaaaaaabaabaaaaaabaabaaaa");
         // "a" 0.77;
         // "a" 0.15;
         // "b" 0.96;
@@ -136,7 +136,7 @@ public class MarkovChainNotCongenericStaticTests
         const int Length = 12;
 
         // teaching markov chain (TeachingMethod.None means there is no preprocessing)
-        markovChain.Teach(testChain, TeachingMethod.None);
+        markovChain.Teach(testSequence, TeachingMethod.None);
 
         var temp = markovChain.Generate(Length);
 
@@ -199,7 +199,7 @@ public class MarkovChainNotCongenericStaticTests
          */
 
         // expected result of generation
-        Chain result = new("bacbacacaacb");
+        ComposedSequence result = new("bacbacacaacb");
         // 1 chain. цепь веро€тность по первому уровню. выпало  0,77 ѕолучаем b
         // 2 chain. веро€тность по второму уровню. выпало  0.15 ѕолучаем a
         // 1 chain. веро€тность по второму уровню. выпало  0.96 ѕолучаем с
@@ -232,15 +232,15 @@ public class MarkovChainNotCongenericStaticTests
         int notCongenericRank = 0;
 
         // creating markov chain
-        // MarkovChainNotCongenericDynamic<Chain, Chain> MarkovChain = new MarkovChainNotCongenericDynamic<Chain, Chain>(markovChainRank, notCongenericRank, generator);
+        // MarkovChainNotCongenericDynamic<ComposedSequence, ComposedSequence> MarkovChain = new MarkovChainNotCongenericDynamic<ComposedSequence, ComposedSequence>(markovChainRank, notCongenericRank, generator);
 
         // length of generated sequence
         int length = 30;
 
         // teaching markov chain (TeachingMethod.None means there is no preprocessing)
-        // MarkovChain.Teach(secondTestChain, TeachingMethod.Cycle);
+        // MarkovChain.Teach(secondTestSequence, TeachingMethod.Cycle);
 
-        // Chain Temp = MarkovChain.Generate(length);
+        // ComposedSequence Temp = MarkovChain.Generate(length);
 
         /*
          * 1. Sequence a a a a a a b a a a b a
@@ -260,7 +260,7 @@ public class MarkovChainNotCongenericStaticTests
          */
 
         // expected result of generation
-        Chain resultTheory = new("aabaabaaaaaabaabaaaaaabaabaaaa");
+        ComposedSequence resultTheory = new("aabaabaaaaaabaabaaaaaabaabaaaa");
         // "a" 0.77;
         // "a" 0.15;
         // "b" 0.96;
@@ -309,15 +309,15 @@ public class MarkovChainNotCongenericStaticTests
         int notCongenericRank = 1;
 
         // creating markov chain
-        // MarkovChainNotCongenericDynamic<Chain, Chain> MarkovChain = new MarkovChainNotCongenericDynamic<Chain, Chain>(markovChainRank, notCongenericRank, generator);
+        // MarkovChainNotCongenericDynamic<ComposedSequence, ComposedSequence> MarkovChain = new MarkovChainNotCongenericDynamic<ComposedSequence, ComposedSequence>(markovChainRank, notCongenericRank, generator);
 
         // length of generated sequence
         int length = 12;
 
         // teaching markov chain (TeachingMethod.None means there is no preprocessing)
-        // MarkovChain.Teach(TestChain, TeachingMethod.None);
+        // MarkovChain.Teach(testSequence, TeachingMethod.None);
 
-        // Chain Temp = MarkovChain.Generate(length);
+        // ComposedSequence Temp = MarkovChain.Generate(length);
 
         /**
          * ¬нутри неоднородной марковской цепи существует n однородных марковских цепей. n - пор€док неоднородности цепи
@@ -378,7 +378,7 @@ public class MarkovChainNotCongenericStaticTests
          */
 
         // expected result of generation
-        Chain result = new("bacbacacaacb");
+        ComposedSequence result = new("bacbacacaacb");
         // 1 chain. веро€тность по первому уровню. выпало  0,77 ѕолучаем b
         // 2 chain. веро€тность по второму уровню. выпало  0.15 ѕолучаем a
         // 1 chain. веро€тность по второму уровню. выпало  0.96 ѕолучаем с

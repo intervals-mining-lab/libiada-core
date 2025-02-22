@@ -8,7 +8,7 @@ public abstract class NonLinkableCongenericCalculator : ICongenericCalculator
     /// <summary>
     /// Calculates the characteristic.
     /// </summary>
-    /// <param name="chain">
+    /// <param name="sequence">
     /// Source sequence.
     /// </param>
     /// <param name="link">
@@ -20,24 +20,24 @@ public abstract class NonLinkableCongenericCalculator : ICongenericCalculator
     /// <exception cref="ArgumentException">
     /// Thrown if wrong <see cref="Link"/> is provided.
     /// </exception>
-    public double Calculate(CongenericChain chain, Link link)
+    public double Calculate(CongenericSequence sequence, Link link)
     {
         if (link != Link.NotApplied)
         {
             throw new ArgumentException("Not linkable characteristic calculator provided with link");
         }
 
-        return Calculate(chain);
+        return Calculate(sequence);
     }
 
     /// <summary>
     /// Main calculation method.
     /// </summary>
-    /// <param name="chain">
-    /// The chain.
+    /// <param name="sequence">
+    /// The sequence.
     /// </param>
     /// <returns>
     /// The <see cref="double"/>.
     /// </returns>
-    public abstract double Calculate(CongenericChain chain);
+    public abstract double Calculate(CongenericSequence sequence);
 }

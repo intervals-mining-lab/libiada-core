@@ -12,7 +12,7 @@ public class BinaryIntervalsManagerTests
     /// <summary>
     /// The elements.
     /// </summary>
-    private readonly Dictionary<string, IBaseObject> elements = ChainsStorage.Elements;
+    private readonly Dictionary<string, IBaseObject> elements = SequencesStorage.Elements;
 
     /// <summary>
     /// The get binary interval test.
@@ -20,8 +20,8 @@ public class BinaryIntervalsManagerTests
     [Test]
     public void GetBinaryIntervalTest()
     {
-        Chain chain = ChainsStorage.Chains[2];
-        BinaryIntervalsManager intervalManager = chain.GetRelationIntervalsManager(elements["A"], elements["C"]);
+        ComposedSequence sequence = SequencesStorage.CompusedSequences[2];
+        BinaryIntervalsManager intervalManager = sequence.GetRelationIntervalsManager(elements["A"], elements["C"]);
         Assert.Multiple(() =>
         {
             Assert.That(intervalManager.GetBinaryInterval(1), Is.EqualTo(1));
@@ -29,7 +29,7 @@ public class BinaryIntervalsManagerTests
             Assert.That(intervalManager.GetBinaryInterval(3), Is.EqualTo(-1));
         });
 
-        intervalManager = chain.GetRelationIntervalsManager(elements["C"], elements["A"]);
+        intervalManager = sequence.GetRelationIntervalsManager(elements["C"], elements["A"]);
         Assert.Multiple(() =>
         {
             Assert.That(intervalManager.GetBinaryInterval(1), Is.EqualTo(-1));
@@ -39,7 +39,7 @@ public class BinaryIntervalsManagerTests
             Assert.That(intervalManager.GetBinaryInterval(5), Is.EqualTo(-1));
         });
 
-        intervalManager = chain.GetRelationIntervalsManager(elements["C"], elements["T"]);
+        intervalManager = sequence.GetRelationIntervalsManager(elements["C"], elements["T"]);
         Assert.Multiple(() =>
         {
             Assert.That(intervalManager.GetBinaryInterval(1), Is.EqualTo(-1));
@@ -51,13 +51,13 @@ public class BinaryIntervalsManagerTests
     }
 
     /// <summary>
-    /// The get binary interval in incomplete chain test.
+    /// The get binary interval in incomplete sequence test.
     /// </summary>
     [Test]
-    public void GetBinaryIntervalIncompleteChainTest()
+    public void GetBinaryIntervalIncompleteSequenceTest()
     {
-        Chain chain = ChainsStorage.BinaryChains[20];
-        BinaryIntervalsManager intervalManager = chain.GetRelationIntervalsManager(elements["A"], elements["C"]);
+        ComposedSequence sequence = SequencesStorage.BinarySequences[20];
+        BinaryIntervalsManager intervalManager = sequence.GetRelationIntervalsManager(elements["A"], elements["C"]);
         Assert.Multiple(() =>
         {
             Assert.That(intervalManager.GetBinaryInterval(1), Is.EqualTo(1));
@@ -69,7 +69,7 @@ public class BinaryIntervalsManagerTests
             Assert.That(intervalManager.GetBinaryInterval(7), Is.EqualTo(-1));
         });
 
-        intervalManager = chain.GetRelationIntervalsManager(elements["C"], elements["A"]);
+        intervalManager = sequence.GetRelationIntervalsManager(elements["C"], elements["A"]);
         Assert.Multiple(() =>
         {
             Assert.That(intervalManager.GetBinaryInterval(1), Is.EqualTo(1));

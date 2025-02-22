@@ -3,7 +3,7 @@
 using Libiada.Core.Core.ArrangementManagers;
 
 /// <summary>
-/// The normalized partial dependence coefficient of binary chain.
+/// The normalized partial dependence coefficient of binary sequence.
 /// </summary>
 public class NormalizedPartialDependenceCoefficient : BinaryCalculator
 {
@@ -30,6 +30,6 @@ public class NormalizedPartialDependenceCoefficient : BinaryCalculator
         PartialDependenceCoefficient partialDependenceCoefficient = new();
 
         double k1 = partialDependenceCoefficient.Calculate(manager, link);
-        return k1 * 2 * manager.PairsCount / manager.FirstChain.Length;
+        return k1 * 2 * manager.PairsCount / manager.FirstSequence.Length;
     }
 }

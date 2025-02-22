@@ -9,15 +9,15 @@ using Libiada.Core.Core.SimpleTypes;
 public class SpaceNotPhantomReorganizer : SpaceReorganizer
 {
     /// <summary>
-    /// Reorganizes <see cref="AbstractChain"/> into <see cref="AbstractChain"/>.
+    /// Reorganizes <see cref="AbstractSequence"/> into <see cref="AbstractSequence"/>.
     /// </summary>
     /// <param name="source">
-    /// Source chain.
+    /// Source sequence.
     /// </param>
     /// <returns>
-    /// The <see cref="AbstractChain"/>.
+    /// The <see cref="AbstractSequence"/>.
     /// </returns>
-    public override AbstractChain Reorganize(AbstractChain source)
+    public override AbstractSequence Reorganize(AbstractSequence source)
     {
         List<IBaseObject> elements = [];
 
@@ -27,6 +27,6 @@ public class SpaceNotPhantomReorganizer : SpaceReorganizer
             elements.Add(element);
         }
 
-        return new BaseChain(elements);
+        return new Sequence(elements);
     }
 }

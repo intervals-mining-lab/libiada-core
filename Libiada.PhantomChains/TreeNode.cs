@@ -92,7 +92,7 @@ public class TreeNode : AbstractNode
     /// <param name="table">
     /// Parameters table.
     /// </param>
-    public void FillChain(BaseChain result, IGenerator generator, PhantomTable table)
+    public void FillSequence(Sequence result, IGenerator generator, PhantomTable table)
     {
         if ((table.Length != (Level + 2)) && (Children.Count == 0))
         {
@@ -103,7 +103,7 @@ public class TreeNode : AbstractNode
             }
         }
 
-        if ((id is BaseChain) || (id is ValueString))
+        if ((id is Sequence) || (id is ValueString))
         {
             string amino = id.ToString();
             for (int k = 0; k < amino.Length; k++)

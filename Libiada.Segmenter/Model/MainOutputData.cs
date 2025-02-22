@@ -14,9 +14,9 @@ using Segmenter.Interfaces;
 public class MainOutputData
 {
     /// <summary>
-    /// The chain.
+    /// The sequence.
     /// </summary>
-    private ComplexChain chain;
+    private ComplexSequence sequence;
 
     /// <summary>
     /// The alphabet.
@@ -29,25 +29,25 @@ public class MainOutputData
     private Dictionary<string, string> parameters = [];
 
     /// <summary>
-    /// The get chain.
+    /// The get sequence method.
     /// </summary>
     /// <returns>
-    /// The <see cref="Chain"/>.
+    /// The <see cref="ComposedSequence"/>.
     /// </returns>
-    public Chain GetChain()
+    public ComposedSequence GetSequence()
     {
-        return chain;
+        return sequence;
     }
 
     /// <summary>
-    /// The set chain.
+    /// The set sequence method.
     /// </summary>
-    /// <param name="chain">
-    /// The chain.
+    /// <param name="sequence">
+    /// The sequence.
     /// </param>
-    public void SetChain(ComplexChain chain)
+    public void SetSequence(ComplexSequence sequence)
     {
-        this.chain = chain;
+        this.sequence = sequence;
     }
 
     /// <summary>
@@ -76,7 +76,7 @@ public class MainOutputData
     /// The get parameters.
     /// </summary>
     /// <returns>
-    /// The <see cref="Dictionary{String, String}"/>.
+    /// The <see cref="Dictionary{string, string}"/>.
     /// </returns>
     public Dictionary<string, string> GetParameters()
     {

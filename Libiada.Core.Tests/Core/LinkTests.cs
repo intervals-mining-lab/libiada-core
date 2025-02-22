@@ -15,14 +15,15 @@ public class LinkTests
     private const int LinksCount = 8;
 
     /// <summary>
+    /// Array of all links.
+    /// </summary>
+    private readonly Link[] links = EnumExtensions.ToArray<Link>();
+
+    /// <summary>
     /// Tests count of links.
     /// </summary>
     [Test]
-    public void LinkCountTest()
-    {
-        int actualCount = EnumExtensions.ToArray<Link>().Length;
-        Assert.That(EnumExtensions.ToArray<Link>(), Has.Length.EqualTo(LinksCount));
-    }
+    public void LinkCountTest() => Assert.That(links, Has.Length.EqualTo(LinksCount));
 
     /// <summary>
     /// Tests values of links.
@@ -30,10 +31,9 @@ public class LinkTests
     [Test]
     public void LinkValuesTest()
     {
-        Link[] links = EnumExtensions.ToArray<Link>();
         for (int i = 0; i < LinksCount; i++)
         {
-            Assert.That(links, Does.Contain((Link)i));
+            Assert.That(links, Contains.Item((Link)i));
         }
     }
 
@@ -54,10 +54,7 @@ public class LinkTests
     [TestCase((Link)5, "Cycle")]
     [TestCase((Link)6, "CycleStart")]
     [TestCase((Link)7, "CycleEnd")]
-    public void LinkNamesTest(Link link, string name)
-    {
-        Assert.That(link.GetName(), Is.EqualTo(name));
-    }
+    public void LinkNamesTest(Link link, string name) => Assert.That(link.GetName(), Is.EqualTo(name));
 
     /// <summary>
     /// Tests that all links have display value.
@@ -66,10 +63,7 @@ public class LinkTests
     /// The link.
     /// </param>
     [Test]
-    public void LinkHasDisplayValueTest([Values]Link link)
-    {
-        Assert.That(link.GetDisplayValue(), Is.Not.Empty);
-    }
+    public void LinkHasDisplayValueTest([Values] Link link) => Assert.That(link.GetDisplayValue(), Is.Not.Empty);
 
     /// <summary>
     /// Tests that all links have description.
@@ -78,19 +72,11 @@ public class LinkTests
     /// The link.
     /// </param>
     [Test]
-    public void LinkHasDescriptionTest([Values]Link link)
-    {
-        Assert.That(link.GetDescription(), Is.Not.Empty);
-    }
+    public void LinkHasDescriptionTest([Values] Link link) => Assert.That(link.GetDescription(), Is.Not.Empty);
 
     /// <summary>
     /// Tests that all links values are unique.
     /// </summary>
     [Test]
-    public void LinkValuesUniqueTest()
-    {
-        Link[] links = EnumExtensions.ToArray<Link>();
-        IEnumerable<byte> linkValues = links.Cast<byte>();
-        Assert.That(linkValues, Is.Unique);
-    }
+    public void LinkValuesUniqueTest() => Assert.That(links.Cast<byte>(), Is.Unique);
 }

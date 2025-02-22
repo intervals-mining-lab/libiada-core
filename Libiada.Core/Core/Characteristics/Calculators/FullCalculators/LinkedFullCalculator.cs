@@ -39,7 +39,7 @@ public class LinkedFullCalculator
     /// <returns>
     /// The <see cref="double"/>.
     /// </returns>
-    public double Calculate(Chain sequence)
+    public double Calculate(ComposedSequence sequence)
     {
         return calculator.Calculate(sequence, link);
     }

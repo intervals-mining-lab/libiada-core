@@ -3,7 +3,7 @@
 using Libiada.Core.Core.ArrangementManagers;
 
 /// <summary>
-/// Redundancy of binary chain.
+/// Redundancy of binary sequence.
 /// </summary>
 public class Redundancy : BinaryCalculator
 {
@@ -29,7 +29,7 @@ public class Redundancy : BinaryCalculator
             return 0;
         }
 
-        int firstElementCount = manager.FirstChain.OccurrencesCount;
+        int firstElementCount = manager.FirstSequence.OccurrencesCount;
         double avG = 0;
         int currentEntrance = 0;
         for (int i = 1; i <= firstElementCount; i++)
@@ -41,13 +41,13 @@ public class Redundancy : BinaryCalculator
                     currentEntrance = manager.GetFirstAfter(manager.GetFirst(i));
                     if (link == Link.Start || link == Link.Both)
                     {
-                        avG += Math.Log(currentEntrance, 2);
+                        avG += Math.Log2(currentEntrance);
                     }
                 }
                 else
                 {
                     int nextEntrance = manager.GetFirstAfter(manager.GetFirst(i));
-                    avG += Math.Log(nextEntrance - currentEntrance, 2);
+                    avG += Math.Log2(nextEntrance - currentEntrance);
                     currentEntrance = nextEntrance;
                 }
             }
@@ -55,7 +55,7 @@ public class Redundancy : BinaryCalculator
 
         if (link == Link.End || link == Link.Both)
         {
-            avG += Math.Log(manager.Length - currentEntrance, 2);
+            avG += Math.Log2(manager.Length - currentEntrance);
         }
 
         avG = manager.PairsCount == 0 ? 0 : avG / manager.PairsCount;
@@ -63,6 +63,6 @@ public class Redundancy : BinaryCalculator
         GeometricMean geometricMeanCalculator = new();
 
         double binaryGeometricMean = geometricMeanCalculator.Calculate(manager, link);
-        return 1 - (binaryGeometricMean / Math.Pow(2, avG));
+        return manager.PairsCount == 0 ? 0 :  1 - (binaryGeometricMean / Math.Pow(2, avG));
     }
 }

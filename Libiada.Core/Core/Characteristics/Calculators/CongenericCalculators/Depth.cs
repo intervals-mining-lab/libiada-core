@@ -1,7 +1,9 @@
 namespace Libiada.Core.Core.Characteristics.Calculators.CongenericCalculators;
 
+using System.Numerics;
+
 /// <summary>
-/// Characteristic of chain depth.
+/// Characteristic of sequence depth.
 /// </summary>
 public class Depth : ICongenericCalculator
 {
@@ -10,19 +12,23 @@ public class Depth : ICongenericCalculator
     /// of intervals between nearest elements
     /// in congeneric sequence.
     /// </summary>
-    /// <param name="chain">
+    /// <param name="sequence">
     /// Congeneric sequence.
     /// </param>
     /// <param name="link">
-    /// Link of intervals in sequence.
+    /// Binding of the intervals in the sequence.
     /// </param>
     /// <returns>
     /// <see cref="double"/> value of depth.
     /// </returns>
-    public double Calculate(CongenericChain chain, Link link)
+    public double Calculate(CongenericSequence sequence, Link link)
     {
-        int[] intervals = chain.GetArrangement(link);
-        // TODO: try using Log of multiplied intervals
-        return intervals.Length == 0 ? 0 : intervals.Sum(interval => Math.Log(interval, 2));
+        int[] intervals = sequence.GetArrangement(link);
+        if(intervals.Length == 0) return 0;
+
+        double depth = 0;
+        foreach(int interval in intervals) depth += Math.Log2(interval);
+
+        return depth;
     }
 }

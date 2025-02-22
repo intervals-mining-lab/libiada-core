@@ -48,8 +48,8 @@ public class PoemSegmenter
                 break;
             }
         }
-        string poemChain = GetPoemChain();
-        return (consonancesDictionary, poemChain, segmentedText);
+        string poemSequence = GetPoemSequence();
+        return (consonancesDictionary, poemSequence, segmentedText);
     }
 
     public Dictionary<string, int> Segmentation()
@@ -188,9 +188,6 @@ public class PoemSegmenter
 
         return false;
     }
-
-
-
     public double CalculateDeviation(double actualFreq, double esimatedFreq)
     {
         return Math.Abs(actualFreq - esimatedFreq) / Math.Sqrt(esimatedFreq);
@@ -244,21 +241,21 @@ public class PoemSegmenter
 
     public int CalculateEntriesNumber(string candidateConsonance)
     {
-        int entriesNumber = text.Split(new string[] { candidateConsonance }, StringSplitOptions.None).Length - 1;
+        int entriesNumber = text.Split([candidateConsonance], StringSplitOptions.None).Length - 1;
         return entriesNumber;
     }
 
-    public string GetPoemChain()
+    public string GetPoemSequence()
     {
-        string poemChain = startText;
+        string poemSequence = startText;
         //string segmentedString = text;
         //var consonanceArray = consonanceDictionary.Select(kv => kv.Key).OrderByDescending(k => k.Length).ToArray();
 
         for (int i = 0; i < consonanceOrderedList.Count;  i++)
         {
-             poemChain = poemChain.Replace(consonanceOrderedList[i], (i + 1).ToString() + "-");
+             poemSequence = poemSequence.Replace(consonanceOrderedList[i], (i + 1).ToString() + "-");
         }
 
-        return poemChain;
+        return poemSequence;
     }
 }

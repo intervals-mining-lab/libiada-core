@@ -8,7 +8,7 @@ using Libiada.Core.Core.ArrangementManagers;
 public abstract class BinaryCalculator : IBinaryCalculator
 {
     /// <summary>
-    /// Calculation method for two congeneric chains.
+    /// Calculation method for two congeneric sequences.
     /// </summary>
     /// <param name="manager">
     /// Intervals manager.
@@ -24,7 +24,7 @@ public abstract class BinaryCalculator : IBinaryCalculator
     /// <summary>
     /// Calculation method for complete matrix of all pairs of elements.
     /// </summary>
-    /// <param name="chain">
+    /// <param name="sequence">
     /// Source sequence.
     /// </param>
     /// <param name="link">
@@ -33,16 +33,16 @@ public abstract class BinaryCalculator : IBinaryCalculator
     /// <returns>
     /// Square matrix of characteristics of all pairs of elements.
     /// </returns>
-    public List<List<double>> CalculateAll(Chain chain, Link link)
+    public List<List<double>> CalculateAll(ComposedSequence sequence, Link link)
     {
         List<List<double>> result = [];
-        int alphabetCardinality = chain.Alphabet.Cardinality;
+        int alphabetCardinality = sequence.Alphabet.Cardinality;
         for (int i = 0; i < alphabetCardinality; i++)
         {
             result.Add([]);
             for (int j = 0; j < alphabetCardinality; j++)
             {
-                result[i].Add(Calculate(chain.GetRelationIntervalsManager(i + 1, j + 1), link));
+                result[i].Add(Calculate(sequence.GetRelationIntervalsManager(i + 1, j + 1), link));
             }
         }
 

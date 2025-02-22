@@ -11,21 +11,21 @@ public class ATSkew : NonLinkableFullCalculator
     /// <summary>
     /// Calculation method.
     /// </summary>
-    /// <param name="chain">
+    /// <param name="sequence">
     /// Source sequence.
     /// </param>
     /// <returns>
     /// AT skew value as <see cref="double"/>.
     /// </returns>
-    public override double Calculate(Chain chain)
+    public override double Calculate(ComposedSequence sequence)
     {
-        DnaProcessor.CheckDnaAlphabet(chain.Alphabet);
+        DnaProcessor.CheckDnaAlphabet(sequence.Alphabet);
 
         CongenericCalculators.ElementsCount counter = new();
 
-        int a = (int)counter.Calculate(chain.GetOrCreateCongenericChain(new ValueString("A")));
-        int t = (int)counter.Calculate(chain.GetOrCreateCongenericChain(new ValueString("T")));
+        double a = counter.Calculate(sequence.GetOrCreateCongenericSequence(new ValueString("A")));
+        double t = counter.Calculate(sequence.GetOrCreateCongenericSequence(new ValueString("T")));
 
-        return a + t == 0 ? 0 : (a - t) / (double)(a + t);
+        return a + t == 0 ? 0 : (a - t) / (a + t);
     }
 }

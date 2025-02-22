@@ -13,7 +13,7 @@ public class AllOffsetsAlignerTests
     private static readonly object[][] CombinationTests =
         [
             [
-                new double[] { 1, 2, 3 }, new double[] { 1, 2, 3, 4, 5 },
+                new double[] { 1.0d, 2, 3 }, new double[] { 1, 2, 3, 4, 5 },
                 new[] { new double[] { 1, 2, 3 }, [1, 2, 3], [1, 2, 3] },
                 new[] { new double[] { 1, 2, 3 }, [2, 3, 4], [3, 4, 5] }
             ],

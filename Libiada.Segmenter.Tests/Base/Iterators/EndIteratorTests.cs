@@ -11,9 +11,9 @@ using Segmenter.Extended;
 public class EndIteratorTests
 {
     /// <summary>
-    /// The complex chain.
+    /// The complex sequence.
     /// </summary>
-    private ComplexChain complexChain;
+    private ComplexSequence complexSequence;
 
     /// <summary>
     /// The set up.
@@ -21,7 +21,7 @@ public class EndIteratorTests
     [SetUp]
     public void SetUp()
     {
-        complexChain = new ComplexChain("AACAGGTGCCCCTTATTT");
+        complexSequence = new ComplexSequence("AACAGGTGCCCCTTATTT");
     }
 
     /// <summary>
@@ -34,7 +34,7 @@ public class EndIteratorTests
         const int step = 1;
         int countSteps = 0;
 
-        EndIterator iterator = new(complexChain, lengthCut, step);
+        EndIterator iterator = new(complexSequence, lengthCut, step);
         while (iterator.HasNext())
         {
             iterator.Next();
@@ -44,7 +44,7 @@ public class EndIteratorTests
         Assert.That(iterator.MaxShifts, Is.EqualTo(countSteps));
 
         countSteps = 0;
-        iterator = new EndIterator(complexChain, lengthCut, step + 1);
+        iterator = new EndIterator(complexSequence, lengthCut, step + 1);
         while (iterator.HasNext())
         {
             iterator.Next();
@@ -72,7 +72,7 @@ public class EndIteratorTests
         const int lengthCut = 3;
         const int step = 1;
 
-        EndIterator iterator = new(complexChain, lengthCut, step);
+        EndIterator iterator = new(complexSequence, lengthCut, step);
 
         for (int i = iterator.MaxShifts - 1; i >= 0; i--)
         {
@@ -80,7 +80,7 @@ public class EndIteratorTests
             Assert.That(Helper.ToString(cut), Is.EqualTo(triplesForStepOne[i]));
         }
 
-        iterator = new EndIterator(complexChain, lengthCut, step + 1);
+        iterator = new EndIterator(complexSequence, lengthCut, step + 1);
 
         for (int i = iterator.MaxShifts - 1; i >= 0; i--)
         {
@@ -109,8 +109,8 @@ public class EndIteratorTests
                 "ABABAB",
                 "ABABAB"
             ];
-        ComplexChain chain = new(list1);
-        EndIterator iterator = new(chain, lengthCut, step);
+        ComplexSequence sequence = new(list1);
+        EndIterator iterator = new(sequence, lengthCut, step);
         while (iterator.HasNext())
         {
             iterator.Next();
@@ -131,7 +131,7 @@ public class EndIteratorTests
         const int lengthCut = 3;
         const int step = 1;
         const int maxShifts = 16;
-        EndIterator iterator = new(complexChain, lengthCut, step);
+        EndIterator iterator = new(complexSequence, lengthCut, step);
         Assert.That(iterator.MaxShifts, Is.EqualTo(maxShifts));
     }
 
@@ -155,8 +155,8 @@ public class EndIteratorTests
                 "ABABAB"
             ];
         List<string> list = list1.GetRange(@from, to - @from);
-        ComplexChain chain = new(list1);
-        EndIterator iterator = new(chain, len, step);
+        ComplexSequence sequence = new(list1);
+        EndIterator iterator = new(sequence, len, step);
         iterator.Move(2);
         List<string> result = iterator.Next();
         for (int i = 0; i < list.Count; i++)

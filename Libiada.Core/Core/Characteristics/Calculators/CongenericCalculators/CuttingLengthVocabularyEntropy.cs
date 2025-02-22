@@ -3,23 +3,22 @@ namespace Libiada.Core.Core.Characteristics.Calculators.CongenericCalculators;
 /// <summary>
 /// Sadovsky entropy of dictionary.
 /// </summary>
-public class CuttingLengthVocabularyEntropy : ICongenericCalculator
+public class CuttingLengthVocabularyEntropy : NonLinkableCongenericCalculator
 {
     /// <summary>
     /// Calculation method.
     /// </summary>
-    /// <param name="chain">
+    /// <param name="sequence">
     /// Source sequence.
-    /// </param>
-    /// <param name="link">
-    /// Redundant parameter, not used in calculations.
     /// </param>
     /// <returns>
     /// Cut length vocabulary entropy as <see cref="double"/>.
     /// </returns>
-    public double Calculate(CongenericChain chain, Link link)
+    public override double Calculate(CongenericSequence sequence)
     {
-        CuttingLength cutLength = new();
-        return Math.Log(chain.Length - cutLength.Calculate(chain, link) + 1, 2);
+        double cuttingLength = new CuttingLength().Calculate(sequence);
+
+        return Math.Log2(sequence.Length - cuttingLength + 1);
     }
+
 }

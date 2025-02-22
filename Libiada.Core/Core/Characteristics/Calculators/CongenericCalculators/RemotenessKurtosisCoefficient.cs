@@ -8,21 +8,22 @@ public class RemotenessKurtosisCoefficient : ICongenericCalculator
     /// <summary>
     /// Calculation method.
     /// </summary>
-    /// <param name="chain">
+    /// <param name="sequence">
     /// Source sequence.
     /// </param>
     /// <param name="link">
-    /// Link of intervals in sequence.
+    /// Binding of the intervals in the sequence.
     /// </param>
     /// <returns>
-    /// Standard Deviation <see cref="double"/> value.
+    /// Remoteness kurtosis coefficient <see cref="double"/> value.
     /// </returns>
-    public double Calculate(CongenericChain chain, Link link)
+    public double Calculate(CongenericSequence sequence, Link link)
     {
-        RemotenessKurtosis remotenessKurtosis = new();
-        RemotenessStandardDeviation remotenessStandardDeviation = new();
+        double remotenessStandardDeviation = new RemotenessStandardDeviation().Calculate(sequence, link);
+        if (remotenessStandardDeviation == 0) return 0;
 
-        double standardDeviation = remotenessStandardDeviation.Calculate(chain, link);
-        return standardDeviation == 0 ? 0 : remotenessKurtosis.Calculate(chain, link) / (standardDeviation * standardDeviation * standardDeviation * standardDeviation);
+        double remotenessKurtosis = new RemotenessKurtosis().Calculate(sequence, link);
+        
+        return  remotenessKurtosis / (remotenessStandardDeviation * remotenessStandardDeviation * remotenessStandardDeviation * remotenessStandardDeviation);
     }
 }

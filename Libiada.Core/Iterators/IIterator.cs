@@ -3,7 +3,7 @@ namespace Libiada.Core.Iterators;
 using Libiada.Core.Core;
 
 /// <summary>
-/// Interface of chain iterators.
+/// Interface of sequence iterators.
 /// </summary>
 public interface IIterator
 {
@@ -11,7 +11,7 @@ public interface IIterator
     /// Moves iterator to the next position.
     /// </summary>
     /// <returns>
-    /// Returns false if end of the chain is reached. Otherwise returns true.
+    /// Returns false if end of the sequence is reached. Otherwise returns true.
     /// </returns>
     bool Next();
 
@@ -21,7 +21,7 @@ public interface IIterator
     /// <returns>
     /// Current subsequence.
     /// </returns>
-    AbstractChain Current();
+    AbstractSequence Current();
 
     /// <summary>
     /// Returns iterator to the starting position.

@@ -11,9 +11,9 @@ using Sequences;
 public class Filter
 {
     /// <summary>
-    /// The chain.
+    /// The sequence.
     /// </summary>
-    protected readonly ComplexChain Chain;
+    protected readonly ComplexSequence Sequence;
 
     /// <summary>
     /// The replacement.
@@ -23,12 +23,12 @@ public class Filter
     /// <summary>
     /// Initializes a new instance of the <see cref="Filter"/> class.
     /// </summary>
-    /// <param name="chain">
-    /// The chain.
+    /// <param name="sequence">
+    /// The sequence.
     /// </param>
-    public Filter(ComplexChain chain)
+    public Filter(ComplexSequence sequence)
     {
-        Chain = chain.Clone();
+        Sequence = sequence.Clone();
     }
 
     /// <summary>
@@ -38,13 +38,13 @@ public class Filter
     /// <returns>number of hints</returns>
     public int FilterOut(string str)
     {
-        int len = Chain.ToString().Length;
-        for (int index = Chain.Length; --index >= 0;)
+        int len = Sequence.ToString().Length;
+        for (int index = Sequence.Length; --index >= 0;)
         {
-            Chain[index] = new ValueString(Chain[index].ToString().Replace(str, replacement));
-            if (Chain[index].ToString().Length == 0)
+            Sequence[index] = new ValueString(Sequence[index].ToString().Replace(str, replacement));
+            if (Sequence[index].ToString().Length == 0)
             {
-                Chain.Remove(index, 1);
+                Sequence.Remove(index, 1);
             }
         }
 
@@ -67,14 +67,14 @@ public class Filter
     }
 
     /// <summary>
-    /// The get chain.
+    ///Get sequence method.
     /// </summary>
     /// <returns>
-    /// The <see cref="ComplexChain"/>.
+    /// The <see cref="ComplexSequence"/>.
     /// </returns>
-    public ComplexChain GetChain()
+    public ComplexSequence GetSequence()
     {
-        return Chain.Clone();
+        return Sequence.Clone();
     }
 
     /// <summary>
@@ -91,7 +91,7 @@ public class Filter
     /// </returns>
     private int Hints(int len, string str)
     {
-        double per = (len - Chain.ToString().Length) / (double)(str.Length - replacement.Length);
+        double per = (len - Sequence.ToString().Length) / (double)(str.Length - replacement.Length);
         return (int)per;
     }
 }

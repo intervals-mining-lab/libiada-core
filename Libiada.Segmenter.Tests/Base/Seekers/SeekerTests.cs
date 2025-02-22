@@ -11,9 +11,9 @@ using Segmenter.Base.Sequences;
 public class SeekerTests
 {
     /// <summary>
-    /// The chain.
+    /// The sequence.
     /// </summary>
-    private ComplexChain chain;
+    private ComplexSequence sequence;
 
     /// <summary>
     /// The set up.
@@ -21,7 +21,7 @@ public class SeekerTests
     [SetUp]
     public void SetUp()
     {
-        chain = new ComplexChain("AACAGGTGCCCCTTATTT");
+        sequence = new ComplexSequence("AACAGGTGCCCCTTATTT");
     }
 
     /// <summary>
@@ -37,7 +37,7 @@ public class SeekerTests
         const string required3 = "T";
         const string required4 = "G";
 
-        Seeker seek = new(new StartIterator(chain, length, step));
+        Seeker seek = new(new StartIterator(sequence, length, step));
         seek.Seek([required1]);
         Assert.That(seek.Arrangement, Has.Count.EqualTo(4));
 
@@ -64,7 +64,7 @@ public class SeekerTests
         const string required3 = "TTA";
         List<string> list = ["AA", "AAAT", "AJJTTA"];
 
-        Seeker seek = new(new StartIterator(new ComplexChain(list), length, step));
+        Seeker seek = new(new StartIterator(new ComplexSequence(list), length, step));
         seek.Seek([required1]);
         Assert.That(seek.Arrangement, Has.Count.EqualTo(1));
 
@@ -84,7 +84,7 @@ public class SeekerTests
         const int length = 1;
         const int step = 1;
         const string required1 = "A";
-        Seeker seek = new(new StartIterator(chain, length, step));
+        Seeker seek = new(new StartIterator(sequence, length, step));
         seek.Seek([required1]);
         Assert.That(seek.Arrangement, Has.Count.EqualTo(4));
     }

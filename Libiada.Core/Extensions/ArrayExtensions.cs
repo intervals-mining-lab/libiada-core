@@ -80,7 +80,7 @@ public static class ArrayExtensions
     /// Type of source array and element.
     /// </typeparam>
     /// <returns>
-    /// The <see cref="Array.int"/>.
+    /// The <see cref="T:int[]"/>.
     /// </returns>
     public static int[] AllIndexesOf<T>(this T[] source, T element)
     {
@@ -107,7 +107,7 @@ public static class ArrayExtensions
     /// Element to be located.
     /// </param>
     /// <returns>
-    /// The <see cref="Array.int"/>.
+    /// The <see cref="T:int[]"/>.
     /// </returns>
     public static int[] AllIndexesOf(this int[] source, int element)
     {

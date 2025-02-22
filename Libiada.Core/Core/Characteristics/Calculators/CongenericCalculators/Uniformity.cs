@@ -2,27 +2,27 @@
 
 /// <summary>
 /// The uniformity calculator.
-/// Calculates difference between entropy and average remoteness.
+/// Calculates difference between identifying informations (entropy) and average remoteness.
 /// </summary>
 public class Uniformity : ICongenericCalculator
 {
     /// <summary>
     /// Calculation method for congeneric sequences.
     /// </summary>
-    /// <param name="chain">
-    /// The congeneric chain.
+    /// <param name="sequence">
+    /// The congeneric sequence.
     /// </param>
     /// <param name="link">
-    /// The link.
+    /// Binding of the intervals in the sequence.
     /// </param>
     /// <returns>
     /// The <see cref="double"/>.
     /// </returns>
-    public double Calculate(CongenericChain chain, Link link)
+    public double Calculate(CongenericSequence sequence, Link link)
     {
-        AverageRemoteness remotenessCalculator = new();
-        IdentificationInformation entropyCalculator = new();
+        double identifyingInformation = new IdentifyingInformation().Calculate(sequence, link);
+        double averageRemoteness = new AverageRemoteness().Calculate(sequence, link);
 
-        return entropyCalculator.Calculate(chain, link) - remotenessCalculator.Calculate(chain, link);
+        return identifyingInformation - averageRemoteness;
     }
 }

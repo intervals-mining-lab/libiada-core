@@ -43,21 +43,21 @@ public class FmotifIdentifierTests
         fmotif6.NoteList.Add(new ValueNote(new Pitch(3, NoteSymbol.A, 0), new Duration(1, 4, false), false, Tie.None));
 
         // записываем ф-мотивы в цепь ф-мотивов, которая будет сравниваться с получившейся
-        FmotifChain fmchain1 = new();
-        fmchain1.FmotifsList.Add(fmotif1);
-        fmchain1.FmotifsList.Add(fmotif2);
-        fmchain1.FmotifsList.Add(fmotif3);
-        fmchain1.FmotifsList.Add(fmotif4);
-        fmchain1.FmotifsList.Add(fmotif5);
-        fmchain1.FmotifsList.Add(fmotif6);
+        FmotifSequence firstFmotifSequence = new();
+        firstFmotifSequence.FmotifsList.Add(fmotif1);
+        firstFmotifSequence.FmotifsList.Add(fmotif2);
+        firstFmotifSequence.FmotifsList.Add(fmotif3);
+        firstFmotifSequence.FmotifsList.Add(fmotif4);
+        firstFmotifSequence.FmotifsList.Add(fmotif5);
+        firstFmotifSequence.FmotifsList.Add(fmotif6);
 
         FmotifIdentifier fmid = new();
-        Assert.That(fmid.GetIdentification(fmchain1, true).FmotifsList[0].Id, Is.EqualTo(0));
-        Assert.That(fmid.GetIdentification(fmchain1, true).FmotifsList[1].Id, Is.EqualTo(1));
-        Assert.That(fmid.GetIdentification(fmchain1, true).FmotifsList[2].Id, Is.EqualTo(1));
-        Assert.That(fmid.GetIdentification(fmchain1, true).FmotifsList[3].Id, Is.EqualTo(1));
-        Assert.That(fmid.GetIdentification(fmchain1, true).FmotifsList[4].Id, Is.EqualTo(0));
-        Assert.That(fmid.GetIdentification(fmchain1, true).FmotifsList[5].Id, Is.EqualTo(0));
+        Assert.That(fmid.GetIdentification(firstFmotifSequence, true).FmotifsList[0].Id, Is.EqualTo(0));
+        Assert.That(fmid.GetIdentification(firstFmotifSequence, true).FmotifsList[1].Id, Is.EqualTo(1));
+        Assert.That(fmid.GetIdentification(firstFmotifSequence, true).FmotifsList[2].Id, Is.EqualTo(1));
+        Assert.That(fmid.GetIdentification(firstFmotifSequence, true).FmotifsList[3].Id, Is.EqualTo(1));
+        Assert.That(fmid.GetIdentification(firstFmotifSequence, true).FmotifsList[4].Id, Is.EqualTo(0));
+        Assert.That(fmid.GetIdentification(firstFmotifSequence, true).FmotifsList[5].Id, Is.EqualTo(0));
     }
 
     /// <summary>
@@ -93,21 +93,21 @@ public class FmotifIdentifierTests
         fmotif6.NoteList.Add(new ValueNote(new Pitch(3, NoteSymbol.D, 0), new Duration(1, 4, false), false, Tie.None));
 
         // записываем ф-мотивы в цепь ф-мотивов, которая будет сравниваться с получившейся
-        FmotifChain fmchain1 = new();
-        fmchain1.FmotifsList.Add(fmotif1);
-        fmchain1.FmotifsList.Add(fmotif2);
-        fmchain1.FmotifsList.Add(fmotif3);
-        fmchain1.FmotifsList.Add(fmotif4);
-        fmchain1.FmotifsList.Add(fmotif5);
-        fmchain1.FmotifsList.Add(fmotif6);
+        FmotifSequence firstFmotifSequence = new();
+        firstFmotifSequence.FmotifsList.Add(fmotif1);
+        firstFmotifSequence.FmotifsList.Add(fmotif2);
+        firstFmotifSequence.FmotifsList.Add(fmotif3);
+        firstFmotifSequence.FmotifsList.Add(fmotif4);
+        firstFmotifSequence.FmotifsList.Add(fmotif5);
+        firstFmotifSequence.FmotifsList.Add(fmotif6);
 
         FmotifIdentifier fmid = new();
 
-        Assert.That(fmid.GetIdentification(fmchain1, true).FmotifsList[0].Id, Is.EqualTo(0));
-        Assert.That(fmid.GetIdentification(fmchain1, true).FmotifsList[1].Id, Is.EqualTo(0));
-        Assert.That(fmid.GetIdentification(fmchain1, true).FmotifsList[2].Id, Is.EqualTo(0));
-        Assert.That(fmid.GetIdentification(fmchain1, true).FmotifsList[3].Id, Is.EqualTo(1));
-        Assert.That(fmid.GetIdentification(fmchain1, true).FmotifsList[4].Id, Is.EqualTo(2));
-        Assert.That(fmid.GetIdentification(fmchain1, true).FmotifsList[5].Id, Is.EqualTo(3));
+        Assert.That(fmid.GetIdentification(firstFmotifSequence, true).FmotifsList[0].Id, Is.EqualTo(0));
+        Assert.That(fmid.GetIdentification(firstFmotifSequence, true).FmotifsList[1].Id, Is.EqualTo(0));
+        Assert.That(fmid.GetIdentification(firstFmotifSequence, true).FmotifsList[2].Id, Is.EqualTo(0));
+        Assert.That(fmid.GetIdentification(firstFmotifSequence, true).FmotifsList[3].Id, Is.EqualTo(1));
+        Assert.That(fmid.GetIdentification(firstFmotifSequence, true).FmotifsList[4].Id, Is.EqualTo(2));
+        Assert.That(fmid.GetIdentification(firstFmotifSequence, true).FmotifsList[5].Id, Is.EqualTo(3));
     }
 }

@@ -1,7 +1,5 @@
 ﻿namespace Libiada.Core.Core.Characteristics.Calculators.CongenericCalculators;
 
-using System.Numerics;
-
 /// <summary>
 /// Volume of sequence.
 /// </summary>
@@ -10,20 +8,23 @@ public class Volume : ICongenericCalculator
     /// <summary>
     /// Calculated as product of all intervals in sequence.
     /// </summary>
-    /// <param name="chain">
+    /// <param name="sequence">
     /// Source sequence.
     /// </param>
     /// <param name="link">
-    /// Redundant parameter, not used in calculations.
+    /// Binding of the intervals in the sequence.
     /// </param>
     /// <returns>
-    /// Volume characteristic of chain as <see cref="double"/>.
+    /// Volume characteristic of the sequence as <see cref="double"/>.
     /// </returns>
-    public double Calculate(CongenericChain chain, Link link)
+    public double Calculate(CongenericSequence sequence, Link link)
     {
-        int[] intervals = chain.GetArrangement(link);
-        BigInteger result = 1;
+        int[] intervals = sequence.GetArrangement(link);
+        if (intervals.Length == 0) return 1;
+
+        double result = 1;
         foreach (int interval in intervals) result *= interval;
-        return (double)result;
+
+        return result;
     }
 }

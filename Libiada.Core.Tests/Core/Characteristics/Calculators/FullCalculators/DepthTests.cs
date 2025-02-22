@@ -13,7 +13,7 @@ public class DepthTests : FullCalculatorsTests<Depth>
     /// The calculation test.
     /// </summary>
     /// <param name="index">
-    /// Full sequence index in <see cref="ChainsStorage"/>.
+    /// Full sequence index in <see cref="SequencesStorage"/>.
     /// </param>
     /// <param name="link">
     /// The link.
@@ -26,16 +26,30 @@ public class DepthTests : FullCalculatorsTests<Depth>
     [TestCase(0, Link.End, 10.1699)]
     [TestCase(0, Link.Both, 14.0768)]
     [TestCase(0, Link.Cycle, 12.3399)]
+
+    [TestCase(2, Link.None, 6.5849625)]
+    [TestCase(2, Link.Start, 13.299208)]
+    [TestCase(2, Link.End, 11.7548875)]
+    [TestCase(2, Link.Both, 18.469133)]
+    [TestCase(2, Link.Cycle, 15.076815597)]
+
+    [TestCase(4, Link.None, 0)]
+    [TestCase(4, Link.Start, 0)]
+    [TestCase(4, Link.End, 0)]
+    [TestCase(4, Link.Both, 0)]
+    [TestCase(4, Link.Cycle, 0)]
+
+    [TestCase(30, Link.Start, 3.5849625)]
     public void CalculationTest(int index, Link link, double value)
     {
-        ChainCharacteristicTest(index, link, value);
+        SequenceCharacteristicTest(index, link, value);
     }
 
     /// <summary>
     /// No intervals test.
     /// </summary>
     /// <param name="index">
-    /// Full sequence index in <see cref="ChainsStorage"/>.
+    /// Full sequence index in <see cref="SequencesStorage"/>.
     /// </param>
     /// <param name="link">
     /// The link.
@@ -48,6 +62,6 @@ public class DepthTests : FullCalculatorsTests<Depth>
     [TestCase(7, Link.None, 0)]
     public void NoIntervalsTest(int index, Link link, double value)
     {
-        ChainCharacteristicTest(index, link, value);
+        SequenceCharacteristicTest(index, link, value);
     }
 }

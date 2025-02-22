@@ -8,16 +8,16 @@ public static class DiffCutter
     /// <summary>
     /// Divides the string into substrings.
     /// </summary>
-    /// <param name="chain">
-    /// The chain.
+    /// <param name="sequence">
+    /// The sequence.
     /// </param>
     /// <param name="rule">
     /// The cut rule.
     /// </param>
     /// <returns>
-    /// Substrings of chain.
+    /// Substrings of the sequence.
     /// </returns>
-    public static List<string> Cut(string chain, CutRule rule)
+    public static List<string> Cut(string sequence, CutRule rule)
     {
         List<string> result = [];
 
@@ -26,7 +26,7 @@ public static class DiffCutter
 
         while (iterator.Next())
         {
-            string s = chain.Substring(iterator.GetStartPosition(), iterator.GetEndPosition() - iterator.GetStartPosition());
+            string s = sequence.Substring(iterator.GetStartPosition(), iterator.GetEndPosition() - iterator.GetStartPosition());
             result.Add(s);
         }
 

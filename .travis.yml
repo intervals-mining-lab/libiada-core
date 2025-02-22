@@ -1,7 +1,9 @@
 language: csharp
 solution: LibiadaCore.sln
 mono: none
-dotnet: 2.0.0
-dist: trusty
-script:
- - dotnet restore
+dotnet: 3.0
+jobs:
+  include:
+    - stage: test
+      script: 
+        - dotnet test

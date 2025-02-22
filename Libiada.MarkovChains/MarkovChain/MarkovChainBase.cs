@@ -85,9 +85,9 @@ public abstract class MarkovChainBase
     /// Length of generated sequence.
     /// </param>
     /// <returns>
-    /// Generated sequence <see cref="BaseChain"/>.
+    /// Generated sequence <see cref="Sequence"/>.
     /// </returns>
-    public BaseChain Generate(int length)
+    public Sequence Generate(int length)
     {
         return Generate(length, Rank);
     }
@@ -103,33 +103,33 @@ public abstract class MarkovChainBase
     /// Rank of markov chain used in generaton of sequence.
     /// </param>
     /// <returns>
-    /// Generated sequence <see cref="BaseChain"/>.
+    /// Generated sequence <see cref="Sequence"/>.
     /// </returns>
-    public abstract BaseChain Generate(int length, int rank);
+    public abstract Sequence Generate(int length, int rank);
 
     /// <summary>
     /// Teaches markov chain using provided sequence.
     /// </summary>
-    /// <param name="chain">
+    /// <param name="sequence">
     /// Sequence used for teaching.
     /// </param>
     /// <param name="method">
-    /// Chain preprocessing method.
+    /// Sequence preprocessing method.
     /// </param>
-    public virtual void Teach(BaseChain chain, TeachingMethod method)
+    public virtual void Teach(Sequence sequence, TeachingMethod method)
     {
         MatrixBuilder builder = new();
         IAbsoluteMatrix[] absMatrix = new IAbsoluteMatrix[HeterogeneityRank + 1];
-        Alphabet = chain.Alphabet;
+        Alphabet = sequence.Alphabet;
         for (int i = 0; i < HeterogeneityRank + 1; i++)
         {
             absMatrix[i] = (IAbsoluteMatrix)builder.Create(Alphabet.Cardinality, Rank);
         }
 
         SpaceReorganizer reorganizer = GetRebuilder(method);
-        chain = (BaseChain)reorganizer.Reorganize(chain);
+        sequence = (Sequence)reorganizer.Reorganize(sequence);
 
-        IteratorStart it = new(chain, Rank, 1);
+        IteratorStart it = new(sequence, Rank, 1);
         it.Reset();
 
         int k = 0;
@@ -144,11 +144,11 @@ public abstract class MarkovChainBase
                 m = HeterogeneityRank + 1;
             }
 
-            BaseChain chainToTeach = (BaseChain)it.Current();
+            Sequence sequenceToTeach = (Sequence)it.Current();
             int[] indexedChain = new int[Rank];
             for (int i = 0; i < Rank; i++)
             {
-                indexedChain[i] = chain.Alphabet.IndexOf(chainToTeach[i]);
+                indexedChain[i] = sequence.Alphabet.IndexOf(sequenceToTeach[i]);
             }
 
             absMatrix[m - 1].Add(indexedChain);
@@ -167,13 +167,14 @@ public abstract class MarkovChainBase
     /// The list.
     /// </param>
     /// <returns>
-    /// Generated sequence <see cref="BaseChain"/>.
+    /// Generated sequence <see cref="Sequence"/>.
     /// </returns>
     protected IBaseObject GetObject(Dictionary<IBaseObject, double> list)
     {
         IBaseObject result = null;
         double temp = 0;
         double probability = Generator.Next();
+        //TODO: refactor this to use tuples
         foreach (KeyValuePair<IBaseObject, double> pair in list)
         {
             temp += pair.Value;

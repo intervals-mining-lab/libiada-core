@@ -15,7 +15,7 @@ public interface ITimeSeriesAligner
     /// The second series.
     /// </param>
     /// <returns>
-    /// The <see T:cref="(double[][] first, double[][] second)"/>.
+    /// The <see cref="T:(double[][] first, double[][] second)"/>.
     /// </returns>
     (double[][] first, double[][] second) AlignSeries(double[] firstSeries, double[] secondSeries);
 }

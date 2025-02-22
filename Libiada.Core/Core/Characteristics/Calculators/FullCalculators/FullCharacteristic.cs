@@ -58,11 +58,11 @@ public enum FullCharacteristic : byte
     AverageRemotenessATSkew = 7,
 
     /// <summary>
-    /// The average remoteness dispersion.
+    /// The average remoteness variance.
     /// </summary>
-    [Display(Name = "Average remoteness dispersion")]
-    [Description("Dispersion of remotenesses of congeneric sequences around average remoteness")]
-    AverageRemotenessDispersion = 8,
+    [Display(Name = "Average remoteness variance")]
+    [Description("Variance of remotenesses of congeneric sequences around average remoteness")]
+    AverageRemotenessVariance = 8,
 
     /// <summary>
     /// The average remoteness gc ratio.
@@ -184,46 +184,46 @@ public enum FullCharacteristic : byte
     ElementsCount = 25,
 
     /// <summary>
-    /// The entropy dispersion.
+    /// The identifying informations (entropy) variance.
     /// </summary>
-    [Display(Name = "Entropy dispersion")]
-    [Description("Dispersion of entropy of congeneric sequences around entropy of complete sequence")]
-    EntropyDispersion = 26,
+    [Display(Name = "Identifying information variance")]
+    [Description("Variance of identifying informations (entropy) of congeneric sequences around identifying informations (entropy) of complete sequence")]
+    IdentifyingInformationVariance = 26,
 
     /// <summary>
-    /// The entropy kurtosis.
+    /// The identifying informations (entropy) kurtosis.
     /// </summary>
-    [Display(Name = "Entropy kurtosis")]
-    [Description("Entropy excess")]
-    EntropyKurtosis = 27,
+    [Display(Name = "Identifying information kurtosis")]
+    [Description("identifying informations (entropy) excess")]
+    IdentifyingInformationKurtosis = 27,
 
     /// <summary>
-    /// The entropy kurtosis coefficient.
+    /// The identifying informations (entropy) kurtosis coefficient.
     /// </summary>
-    [Display(Name = "Entropy kurtosis coefficient")]
-    [Description("Entropy excess coefficient")]
-    EntropyKurtosisCoefficient = 28,
+    [Display(Name = "Identifying information kurtosis coefficient")]
+    [Description("Identifying informations (entropy) excess coefficient")]
+    IdentifyingInformationKurtosisCoefficient = 28,
 
     /// <summary>
-    /// The entropy skewness.
+    /// The identifying informations (entropy) skewness.
     /// </summary>
-    [Display(Name = "Entropy skewness")]
-    [Description("Entropy assymetry")]
-    EntropySkewness = 29,
+    [Display(Name = "Identifying information skewness")]
+    [Description("Identifying informations (entropy) assymetry")]
+    IdentifyingInformationSkewness = 29,
 
     /// <summary>
-    /// The entropy skewness coefficient.
+    /// The identifying informations (entropy) skewness coefficient.
     /// </summary>
-    [Display(Name = "Entropy skewness coefficient")]
-    [Description("Entropy assymetry coefficient")]
-    EntropySkewnessCoefficient = 30,
+    [Display(Name = "Identifying information skewness coefficient")]
+    [Description("Identifying informations (entropy) assymetry coefficient")]
+    IdentifyingInformationSkewnessCoefficient = 30,
 
     /// <summary>
-    /// The entropy standard deviation.
+    /// The identifying informations (entropy) standard deviation.
     /// </summary>
-    [Display(Name = "Entropy standard deviation")]
-    [Description("Scatter of congeneric sequences' entropy around complete sequence entropy")]
-    EntropyStandardDeviation = 31,
+    [Display(Name = "Identifying information standard deviation")]
+    [Description("Scatter of congeneric sequences' identifying informations (entropy) around complete sequence identifying informations (entropy)")]
+    IdentifyingInformationStandardDeviation = 31,
 
     /// <summary>
     /// The gc ratio.
@@ -254,11 +254,11 @@ public enum FullCharacteristic : byte
     GeometricMean = 35,
 
     /// <summary>
-    /// The identification information.
+    /// The identifying informations.
     /// </summary>
-    [Display(Name = "Entropy")]
-    [Description("Shannon's information or amount of information or count of identification informations")]
-    IdentificationInformation = 36,
+    [Display(Name = "Identifying information")]
+    [Description("Equals to Shannon's entropy (amount of information) when cyclic binding is used")]
+    IdentifyingInformation = 36,
 
     /// <summary>
     /// The intervals count.
@@ -310,11 +310,11 @@ public enum FullCharacteristic : byte
     Regularity = 43,
 
     /// <summary>
-    /// The remoteness dispersion.
+    /// The remoteness variance.
     /// </summary>
-    [Display(Name = "Remoteness dispersion")]
-    [Description("Dispersion of lengthes of individual intervals around average remoteness")]
-    RemotenessDispersion = 44,
+    [Display(Name = "Remoteness variance")]
+    [Description("Variance of lengthes of individual intervals around average remoteness")]
+    RemotenessVariance = 44,
 
     /// <summary>
     /// The remoteness kurtosis.
@@ -369,7 +369,7 @@ public enum FullCharacteristic : byte
     /// The uniformity.
     /// </summary>
     [Display(Name = "Uniformity")]
-    [Description("Normalized characteristic calculated as average remoteness substracted from entropy")]
+    [Description("Normalized characteristic calculated as average remoteness substracted from identifying informations (entropy)")]
     Uniformity = 52,
 
     /// <summary>

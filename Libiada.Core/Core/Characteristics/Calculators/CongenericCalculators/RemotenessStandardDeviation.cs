@@ -8,18 +8,19 @@ public class RemotenessStandardDeviation : ICongenericCalculator
     /// <summary>
     /// Calculation method.
     /// </summary>
-    /// <param name="chain">
+    /// <param name="sequence">
     /// Source sequence.
     /// </param>
     /// <param name="link">
-    /// Link of intervals in sequence.
+    /// Binding of the intervals in the sequence.
     /// </param>
     /// <returns>
-    /// Standard Deviation <see cref="double"/> value.
+    /// Remoteness standard deviation <see cref="double"/> value.
     /// </returns>
-    public double Calculate(CongenericChain chain, Link link)
+    public double Calculate(CongenericSequence sequence, Link link)
     {
-        RemotenessDispersion remotenessDispersion = new();
-        return Math.Sqrt(remotenessDispersion.Calculate(chain, link));
+        double remotenessVariance = new RemotenessVariance().Calculate(sequence, link);
+
+        return Math.Sqrt(remotenessVariance);
     }
 }
