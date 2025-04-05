@@ -1,5 +1,6 @@
 ﻿namespace Libiada.Core.Music.MusicXml;
 
+using System.Globalization;
 using System.Xml;
 
 using Libiada.Core.Core;
@@ -82,22 +83,48 @@ public class MusicXmlParser
             MeasureAttributes attributes = ParseAttributes(measureList[i].Clone());
             XmlNodeList childNodes = measureList[i]?.ChildNodes;
             XmlNode lastNode = childNodes?[^1];
-            if ((lastNode?.Name == "barline") && (lastNode.ChildNodes[0].Attributes["direction"].Value == "forward"))
+            if ((lastNode?.Name == "barline") /*&& (lastNode.ChildNodes[0].Attributes["direction"].Value == "forward")*/)
             {
-                repeatedMeasures = [new Measure(notes, attributes)];
-                isOnRepeat = true;
+                foreach(XmlNode childNode in lastNode.ChildNodes)
+                {
+                    if (childNode.Name == "repeat")
+                    {
+                        if (childNode.Attributes["direction"].Value == "forward")
+                        {
+                            repeatedMeasures = [new Measure(notes, attributes)];
+                            isOnRepeat = true;
+                        }
+                    }
+                }
+                // repeatedMeasures = [new Measure(notes, attributes)];
+                // isOnRepeat = true;
             }
             else if (isOnRepeat)
             {
                 repeatedMeasures.Add(new Measure(notes, attributes));
-                if ((lastNode?.Name == "barline") && (lastNode.ChildNodes[0].Attributes["direction"].Value == "backward"))
+                if ((lastNode?.Name == "barline") /*&& (lastNode.ChildNodes[0].Attributes["direction"].Value == "backward")*/)
                 {
-                    isOnRepeat = false;
-                    ushort repeatCount = Convert.ToUInt16(lastNode.ChildNodes[0].Attributes["times"].Value);
-                    for (int j = 0; j < repeatCount; j++)
+                    foreach(XmlNode childNode in lastNode.ChildNodes)
                     {
-                        measures.AddRange(repeatedMeasures);
+                        if (childNode.Name == "repeat")
+                        {
+                            if (childNode.Attributes["direction"].Value == "backward")
+                            {
+                                isOnRepeat = false;
+                                ushort repeatCount = Convert.ToUInt16(childNode.Attributes["times"].Value);
+                                for (int j = 0; j < repeatCount; j++)
+                                {
+                                    measures.AddRange(repeatedMeasures);
+                                }
+                            }
+                        }
                     }
+                    // isOnRepeat = false;
+                    // ushort repeatCount = Convert.ToUInt16(lastNode.ChildNodes[0].Attributes["times"].Value);
+                    // for (int j = 0; j < repeatCount; j++)
+                    // {
+                    //     measures.AddRange(repeatedMeasures);
+                    // }
                 }
             }
             else
