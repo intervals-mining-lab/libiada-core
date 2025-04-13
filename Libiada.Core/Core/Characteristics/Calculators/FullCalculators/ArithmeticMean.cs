@@ -1,7 +1,7 @@
 namespace Libiada.Core.Core.Characteristics.Calculators.FullCalculators;
 
 /// <summary>
-/// Average arithmetic value of lengths of congeneric intervals in sequence.
+/// Average arithmetic value of intervals lengths in sequence.
 /// </summary>
 public class ArithmeticMean : IFullCalculator
 {

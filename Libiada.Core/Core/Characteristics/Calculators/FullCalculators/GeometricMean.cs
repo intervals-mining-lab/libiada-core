@@ -1,7 +1,7 @@
 namespace Libiada.Core.Core.Characteristics.Calculators.FullCalculators;
 
 /// <summary>
-/// Average geometric value of interval length.
+/// Average geometric value of intervals lengths.
 /// </summary>
 public class GeometricMean : IFullCalculator
 {
