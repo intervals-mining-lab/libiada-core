@@ -23,6 +23,74 @@ public class SequenceTests
         Assert.That(sequence.Alphabet, Is.EqualTo(expectedAlphabet));
     }
 
+
+    // Create sequence with elements 
+    [Test]
+    public void ConstrutorWithElementsTest()
+    {
+        var elements = new IBaseObject[] { new ValueInt(1), new ValueInt(2), new ValueInt(1) };
+        Sequence sequence = new(elements);
+
+        Assert.That(sequence.Length, Is.EqualTo(3));
+        Assert.That(sequence.Alphabet.Cardinality, Is.EqualTo(2));
+        Assert.That(sequence.Order, Is.EqualTo(new int[] { 1, 2, 1 }));
+
+        Assert.That(sequence.Length, Is.Not.EqualTo(4));
+        Assert.That(sequence.Alphabet.Cardinality, Is.Not.EqualTo(3));
+        Assert.That(sequence.Order, Is.Not.EqualTo(new int[] { 1, 2, 2 }));
+    }
+
+    // Create a sequence using the provided order and alphabet directly
+    [Test]
+    public void ConstructorWithOrderAndAlphabetTest()
+    {
+        int[] order = { 0, 1, 0 };
+        Alphabet alphabet = new() { new ValueInt(5), new ValueInt(7) };
+
+        Sequence sequence = new(order, alphabet);
+
+        Assert.That(sequence.Length, Is.EqualTo(3));
+        Assert.That(sequence.Alphabet.Cardinality, Is.EqualTo(1));
+        Assert.That(sequence.Order, Is.EqualTo(new int[] {0,1,0}));
+    }
+
+    // Create a sequence with numeric alphabet (1 to max order value)
+    [Test]
+    public void ConstructorWithOrderTest()
+    {
+        Sequence sequence = new(new int[] { 1, 2, 1 });
+
+        Assert.That(sequence.Length, Is.EqualTo(3));
+        Assert.That(sequence.Alphabet.Cardinality, Is.EqualTo(2));
+        Assert.That(sequence.Order, Is.EqualTo(new int[] { 1, 2, 1 }));
+
+        Assert.That(sequence.Length, Is.Not.EqualTo(4));
+        Assert.That(sequence.Alphabet.Cardinality, Is.Not.EqualTo(3));
+        Assert.That(sequence.Order, Is.Not.EqualTo(new int[] { 1, 2, 2 }));
+    }
+
+    // Create a sequence using provided order and alphabet and store the given ID
+    [Test]
+    public void ConstructorWithOrderAlphabetAndIdTest()
+    {
+        int[] order = { 0, 1, 0 };
+        Alphabet alphabet = new() { new ValueInt(4), new ValueInt(5) };
+        long id = 11;
+
+        Sequence sequence = new(order, alphabet, id);
+
+        Assert.That(sequence.Length, Is.EqualTo(3));
+        Assert.That(sequence.Alphabet.Cardinality, Is.EqualTo(1));
+        Assert.That(sequence.Order, Is.EqualTo(new int[] { 0, 1, 0 }));
+        Assert.That(sequence.Id, Is.EqualTo(11));
+
+        Assert.That(sequence.Length, Is.Not.EqualTo(4));
+        Assert.That(sequence.Alphabet.Cardinality, Is.Not.EqualTo(3));
+        Assert.That(sequence.Order, Is.Not.EqualTo(new int[] { 1, 2, 2 }));
+        Assert.That(sequence.Id, Is.Not.EqualTo(21));
+
+    }
+
     /// <summary>
     /// The constructor with less than zero length test.
     /// </summary>
