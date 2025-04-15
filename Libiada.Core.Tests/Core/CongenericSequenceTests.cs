@@ -45,6 +45,97 @@ public class CongenericSequenceTests
         Assert.That(congenericSequence.Element, Is.EqualTo(message));
     }
 
+    // Create a sequence with specified length and element
+    [Test]
+    public void ConstructorWithElementAndLengthTest()
+    {
+        IBaseObject element = new ValueInt(5);
+        int length = 10;
+
+        CongenericSequence sequence = new(element, length);
+
+        Assert.That(sequence.Length, Is.EqualTo(10));
+        Assert.That(sequence.Element, Is.EqualTo(element));
+
+        Assert.That(sequence.Length, Is.Not.EqualTo(15));
+        Assert.That(sequence.Element, Is.Not.EqualTo(new ValueInt(10)));
+
+    }
+
+
+    // Create a sequence with specified element
+    [Test]
+    public void ConstructorWithElementTests()
+    {
+        IBaseObject element = new ValueInt(10);
+
+        CongenericSequence sequence = new(element);
+
+        Assert.That(sequence.Element, Is.EqualTo(element));
+        Assert.That(sequence.Element, Is.Not.EqualTo(new ValueInt(100)));
+    }
+
+    [Test]
+    public void ConstructorWithPositionsElementAndLengthTests()
+    {
+        List<int> positions = new() { 1, 3, 5 };
+        IBaseObject element = new ValueInt(15);
+        int length = 6;
+
+        CongenericSequence sequence = new(positions, element, length);
+
+        Assert.That(sequence.Length, Is.EqualTo(6));
+        Assert.That(sequence.Element, Is.EqualTo(element));
+        Assert.That(sequence.Positions, Is.EqualTo(new int[] { 1, 3, 5 }));
+        Assert.That(sequence.OccurrencesCount, Is.EqualTo(3));
+    }
+
+    [Test]
+    public void ConstructorMapWithMixedValuesTests()
+    {
+        bool[] map1 = { false, true, false, true, false };
+        IBaseObject element1 = new ValueInt(5);
+        CongenericSequence sequence1 = new(map1, element1);
+
+        Assert.Multiple(() =>
+        {
+            Assert.That(sequence1.Length, Is.EqualTo(5));
+            Assert.That(sequence1.Element, Is.EqualTo(element1));
+            Assert.That(sequence1.OccurrencesCount, Is.EqualTo(2));
+            Assert.That(sequence1.Positions, Is.EqualTo(new int[] { 1, 3 }));
+        });
+    }
+
+    [Test]
+    public void ContructorMapWithAllFalseTests()
+    {
+        bool[] map2 = { false, false, false };
+        IBaseObject element2 = new ValueInt(7);
+        CongenericSequence sequence2 = new(map2, element2);
+
+        Assert.Multiple(() =>
+        {
+            Assert.That(sequence2.Length, Is.EqualTo(3));
+            Assert.That(sequence2.OccurrencesCount, Is.Zero);
+            Assert.That(sequence2.Positions, Is.Empty);
+        });
+    }
+
+    [Test]
+    public void ConstructorMapWintAllTrueTests()
+    {
+        bool[] map3 = { true, true, true, true };
+        IBaseObject element3 = new ValueInt(3);
+        CongenericSequence sequence3 = new(map3, element3);
+
+        Assert.Multiple(() =>
+        {
+            Assert.That(sequence3.Length, Is.EqualTo(4));
+            Assert.That(sequence3.OccurrencesCount, Is.EqualTo(4));
+            Assert.That(sequence3.Positions, Is.EqualTo(new int[] { 0, 1, 2, 3 }));
+        });
+    }
+
     /// <summary>
     /// The independence message test.
     /// </summary>
