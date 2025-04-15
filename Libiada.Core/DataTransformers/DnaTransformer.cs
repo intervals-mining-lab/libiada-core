@@ -41,11 +41,11 @@ public static class DnaTransformer
 
         List<IBaseObject> result = new(inputSequence.Length / 3);
         List<string> codons = DiffCutter.Cut(inputSequence.ToString(), new SimpleCutRule(inputSequence.Length, 3, 3));
-        
+
         for (int i = 0; i < codons.Count; i++)
         {
             IBaseObject aminoAcid = aminoMap[codons[i]];
-            
+
             if (aminoAcid is ValuePhantom phantom && phantom.Count(p => !p.Equals((ValueString)"*")) != 1)
             {
                 throw new Exception($"Ambiguous amino code:{aminoAcid}");
