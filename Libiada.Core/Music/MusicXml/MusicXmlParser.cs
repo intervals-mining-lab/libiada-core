@@ -97,7 +97,7 @@ public class MusicXmlParser
                     }
                     else if(childNode.Name == "bar-style")
                     {
-                        if(childNode.InnerText == "light-light")
+                        if(childNode.InnerText == "light-light" || childNode.InnerText == "light-heavy")
                         {
                             measures.Add(new Measure(notes, attributes));
                         }
