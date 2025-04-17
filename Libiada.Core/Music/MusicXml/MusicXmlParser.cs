@@ -95,6 +95,13 @@ public class MusicXmlParser
                             isOnRepeat = true;
                         }
                     }
+                    else if(childNode.Name == "bar-style")
+                    {
+                        if(childNode.InnerText == "light-light")
+                        {
+                            measures.Add(new Measure(notes, attributes));
+                        }
+                    }
                 }
                 // repeatedMeasures = [new Measure(notes, attributes)];
                 // isOnRepeat = true;
