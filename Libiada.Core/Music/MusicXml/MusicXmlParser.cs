@@ -156,7 +156,7 @@ public class MusicXmlParser
                             {
                                 if (childNode.Name == "bar-style")
                                 {
-                                    if (childNode.InnerText == "light-light" || childNode.InnerText == "light-heavy")
+                                    if (childNode.InnerText == "light-light" || childNode.InnerText == "light-heavy" || childNode.InnerText == "heavy-light")
                                     {
                                         measures.Add(new Measure(notes, attributes));
                                     }
