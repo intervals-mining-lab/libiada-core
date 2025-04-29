@@ -1,5 +1,6 @@
 ﻿namespace Libiada.Core.Music.MusicXml;
 
+using System.Globalization;
 using System.Xml;
 
 using Libiada.Core.Core;
@@ -75,30 +76,103 @@ public class MusicXmlParser
         XmlNodeList measureList = congenericScoreNode.ChildNodes;
         List<Measure> measures = [];
         bool isOnRepeat = false;
+        bool isFramed = false;
         List<Measure> repeatedMeasures = [];
+        List<Measure> framedMeasures = [];
         for (int i = 0; i < measureList.Count; i++)
         {
             List<ValueNote> notes = ParseNotes(measureList[i].Clone());
             MeasureAttributes attributes = ParseAttributes(measureList[i].Clone());
             XmlNodeList childNodes = measureList[i]?.ChildNodes;
-            XmlNode lastNode = childNodes?[^1];
-            if ((lastNode?.Name == "barline") && (lastNode.ChildNodes[0].Attributes["direction"].Value == "forward"))
+            //XmlNode lastNode = childNodes?[^1];
+            if (childNodes.Cast<XmlNode>().Any(node => node.Name == "barline"))
             {
-                repeatedMeasures = [new Measure(notes, attributes)];
-                isOnRepeat = true;
+                bool forEndingDiscontinue = false;
+                foreach (XmlNode barNode in childNodes)
+                {
+                    if (barNode.Name == "barline")
+                    {
+                        if (barNode.ChildNodes.Cast<XmlNode>().Any(node => node.Name == "ending"))
+                        {
+                            foreach (XmlNode childNode in barNode.ChildNodes)
+                            {
+                                if (childNode.Name == "ending")
+                                {
+                                    if (childNode.Attributes["number"].Value == "1" && childNode.Attributes["type"].Value == "start")
+                                    {
+                                        isOnRepeat = false;
+                                        isFramed = true;
+                                        framedMeasures.Add(new Measure(notes, attributes));
+                                    }
+                                    else if (childNode.Attributes["number"].Value == "2" && childNode.Attributes["type"].Value == "start")
+                                    {
+                                        if (forEndingDiscontinue)
+                                            break;
+                                        measures.Add(new Measure(notes, attributes));
+                                        forEndingDiscontinue = true;
+                                    }
+                                    else if (childNode.Attributes["number"].Value == "1" && childNode.Attributes["type"].Value == "stop")
+                                    {
+                                        isFramed = false;
+                                        framedMeasures.Add(new Measure(notes, attributes));
+                                    }
+                                }
+                            }
+                        }
+                        if (barNode.ChildNodes.Cast<XmlNode>().Any(node => node.Name == "repeat"))
+                        {
+                            foreach (XmlNode childNode in barNode.ChildNodes)
+                            {
+                                if (childNode.Name == "repeat")
+                                {
+                                    if (childNode.Attributes["direction"].Value == "forward")
+                                    {
+                                        repeatedMeasures = [new Measure(notes, attributes)];
+                                        isOnRepeat = true;
+                                    }
+                                    else if (childNode.Attributes["direction"].Value == "backward")
+                                    {
+                                        if(framedMeasures.Count == 0)
+                                            repeatedMeasures.Add(new Measure(notes, attributes));
+                                        isOnRepeat = false;
+                                        ushort repeatCount = Convert.ToUInt16(childNode.Attributes["times"]?.Value);
+                                        if (repeatCount < 1)
+                                            repeatCount = 2;
+                                        for (int j = 0; j < repeatCount; j++)
+                                        {
+                                            measures.AddRange(repeatedMeasures);
+                                            if (j == 0)
+                                                measures.AddRange(framedMeasures);
+                                        }
+                                        repeatedMeasures.Clear();
+                                        framedMeasures.Clear();
+                                    }
+                                }
+                            }
+                        }
+                        else
+                        {
+                            foreach (XmlNode childNode in barNode.ChildNodes)
+                            {
+                                if (childNode.Name == "bar-style")
+                                {
+                                    if (childNode.InnerText == "light-light" || childNode.InnerText == "light-heavy" || childNode.InnerText == "heavy-light")
+                                    {
+                                        measures.Add(new Measure(notes, attributes));
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
             }
             else if (isOnRepeat)
             {
                 repeatedMeasures.Add(new Measure(notes, attributes));
-                if ((lastNode?.Name == "barline") && (lastNode.ChildNodes[0].Attributes["direction"].Value == "backward"))
-                {
-                    isOnRepeat = false;
-                    ushort repeatCount = Convert.ToUInt16(lastNode.ChildNodes[0].Attributes["times"].Value);
-                    for (int j = 0; j < repeatCount; j++)
-                    {
-                        measures.AddRange(repeatedMeasures);
-                    }
-                }
+            }
+            else if(isFramed)
+            {
+                framedMeasures.Add(new Measure(notes, attributes));
             }
             else
             {
