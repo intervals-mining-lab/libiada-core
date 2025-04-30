@@ -136,6 +136,114 @@ public class CongenericSequenceTests
         });
     }
 
+    /// Verifies that manager is created correctly for both empty and non-empty sequences.
+    [Test]
+    [Ignore("SeriesIvtervals link start")]
+    public void CreateSeriesIntervalsManagerLinkStartTest()
+    {
+        CongenericSequence emptySequence = new(new ValueInt(1), 5);
+        CongenericSequence sequence = new(new ValueInt(1), 5);
+        sequence.Set(1);
+        sequence.Set(3);
+
+        emptySequence.CreateSeriesIntervalsManager();
+        sequence.CreateSeriesIntervalsManager();
+
+        Assert.That(emptySequence.GetSeriesAndIntervals(Link.Start), Is.Empty);
+        Assert.That(sequence.GetSeriesAndIntervals(Link.Start), Is.Not.Empty);
+    }
+
+    [Test]
+    [Ignore("SeriesIvtervals link end")]
+    public void CreateSeriesIntervalsManagerLinkEndTest()
+    {
+        CongenericSequence emptySequence = new(new ValueInt(1), 5);
+        CongenericSequence sequence = new(new ValueInt(1), 5);
+        sequence.Set(1);
+        sequence.Set(3);
+
+        emptySequence.CreateSeriesIntervalsManager();
+        sequence.CreateSeriesIntervalsManager();
+
+        Assert.That(emptySequence.GetSeriesAndIntervals(Link.End), Is.Empty);
+        Assert.That(sequence.GetSeriesAndIntervals(Link.End), Is.Not.Empty);
+    }
+
+    /// Verifies that intervals are calculated correctly.
+    [Test]
+    public void FillIntervalManagerTest()
+    {
+        CongenericSequence sequence = new(new ValueInt(1), 5);
+        sequence.Set(1);
+        sequence.Set(3);
+
+        sequence.FillIntervalManager();
+
+        Assert.That(sequence.GetIntervals(Link.Start), Is.Not.Empty);
+    }
+
+
+
+    /// Verifies that equal sequences have same hash codes
+    /// and different sequences have different hash codes.
+    [Test]
+    public void GetHashCodeTest()
+    {
+        CongenericSequence sequence1 = new(new ValueInt(1), 3);
+        sequence1.Set(0);
+        sequence1.Set(2);
+
+        CongenericSequence sequence2 = new(new ValueInt(1), 3);
+        sequence2.Set(0);
+        sequence2.Set(2);
+
+        CongenericSequence differentSequence = new(new ValueInt(1), 3);
+        differentSequence.Set(0);
+        differentSequence.Set(1);
+
+        Assert.That(sequence1.GetHashCode(), Is.EqualTo(sequence2.GetHashCode()));
+        Assert.That(sequence1.GetHashCode(), Is.Not.EqualTo(differentSequence.GetHashCode()));
+    }
+
+    /// Verifies that order array contains all zeros for empty sequence.
+    [Test]
+    public void OrderEmptySequenceTest()
+    {
+        CongenericSequence sequence = new(new ValueInt(1), 4);
+
+        int[] order = sequence.Order;
+
+        Assert.That(order, Is.EqualTo(new[] { 0, 0, 0, 0 }));
+    }
+
+
+    /// Verifies that order array contains all ones when sequence has elements in all positions.
+
+    [Test]
+    public void OrderFullSequenceTest()
+    {
+        CongenericSequence sequence = new(new ValueInt(1), 3);
+        sequence.Set(0);
+        sequence.Set(1);
+        sequence.Set(2);
+
+        int[] order = sequence.Order;
+
+        Assert.That(order, Is.EqualTo(new[] { 1, 1, 1 }));
+    }
+
+    /// Verifies that order array correctly represents a single element position.
+    [Test]
+    public void OrderSingleElementTest()
+    {
+        CongenericSequence sequence = new(new ValueInt(1), 5);
+        sequence.Set(2);
+
+        int[] order = sequence.Order;
+
+        Assert.That(order, Is.EqualTo(new[] { 0, 0, 1, 0, 0 }));
+    }
+
     /// <summary>
     /// The independence message test.
     /// </summary>
