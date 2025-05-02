@@ -27,9 +27,12 @@ public class SequenceTests
         randomSequence[0] = new ValueInt(3);
         randomSequence[2] = new ValueString("test");
         randomSequence[4] = new ValueInt(7);
-        Assert.That(randomSequence.Length, Is.EqualTo(5));
-        Assert.That(randomSequence[1], Is.EqualTo(NullValue.Instance()));
-        Assert.That(randomSequence[3], Is.EqualTo(NullValue.Instance()));
+        Assert.Multiple(() =>
+        {
+            Assert.That(randomSequence.Length, Is.EqualTo(5));
+            Assert.That(randomSequence[1], Is.EqualTo(NullValue.Instance()));
+            Assert.That(randomSequence[3], Is.EqualTo(NullValue.Instance()));
+        });
 
         // Length 1 sequence
         Sequence singleElementSeq = new(1);
@@ -41,46 +44,94 @@ public class SequenceTests
         Assert.That(emptySeq.Length, Is.EqualTo(0));
     }
 
+    /// <summary>
+    /// Constructors the normal operation tests.
+    /// </summary>
+    [Test]
+    public void ConstructorNormalOperationTests()
+    {
+        // Basic mixed sequence
+        Sequence sequence1 = new(new int[] { 1, 2, 3, 2, 1 });
+        Assert.Multiple(() =>
+        {
+            Assert.That(sequence1.Length, Is.EqualTo(5));
+            Assert.That(sequence1.Order, Is.EqualTo(new int[] { 1, 2, 3, 2, 1 }));
+            Assert.That(sequence1.Alphabet.Cardinality, Is.EqualTo(3));
+        });
+
+        // Longer sequence with repeating pattern
+        Sequence sequence2 = new(new int[] { 1, 2, 3, 1, 2, 3, 1, 2, 3 });
+        Assert.Multiple(() =>
+        {
+            Assert.That(sequence2.Length, Is.EqualTo(9));
+            Assert.That(sequence2.Order, Is.EqualTo(new int[] { 1, 2, 3, 1, 2, 3, 1, 2, 3 }));
+            Assert.That(sequence2.Alphabet.Cardinality, Is.EqualTo(3));
+        });
+
+        // Sequence with mostly unique elements and few repeats
+        Sequence sequence3 = new(new int[] { 1, 2, 3, 4, 2, 5, 6, 3 });
+        Assert.Multiple(() =>
+        {
+            Assert.That(sequence3.Length, Is.EqualTo(8));
+            Assert.That(sequence3.Order, Is.EqualTo(new int[] { 1, 2, 3, 4, 2, 5, 6, 3 }));
+            Assert.That(sequence3.Alphabet.Cardinality, Is.EqualTo(6));
+        });
+    }
 
     // Create sequence with elements 
     [Test]
     public void ConstrutorWithElementsTest()
     {
         var elements = new IBaseObject[] { new ValueInt(1), new ValueInt(2), new ValueInt(1) };
-        var uniqueElements = new IBaseObject[] { new ValueInt(1), new ValueInt(2), new ValueInt(3) };
-        var repeatedElement = new IBaseObject[] { new ValueInt(1), new ValueInt(1), new ValueInt(1) };
-        var singleElement = new IBaseObject[] { new ValueInt(1) };
-        var emptyElements = new IBaseObject[] { };
-
         Sequence sequence = new(elements);
+        Assert.Multiple(() =>
+        {
+            Assert.That(sequence.Length, Is.EqualTo(3));
+            Assert.That(sequence.Alphabet.Cardinality, Is.EqualTo(2));
+            Assert.That(sequence.Order, Is.EqualTo(new int[] { 1, 2, 1 }));
+        });
+
+        var uniqueElements = new IBaseObject[] { new ValueInt(1), new ValueInt(2), new ValueInt(3) };
         Sequence uniqueSequence = new(uniqueElements);
+        Assert.Multiple(() =>
+        {
+            Assert.That(uniqueSequence.Length, Is.EqualTo(3));
+            Assert.That(uniqueSequence.Alphabet.Cardinality, Is.EqualTo(3));
+            Assert.That(uniqueSequence.Order, Is.EqualTo(new int[] { 1, 2, 3 }));
+        });
+
+        var repeatedElement = new IBaseObject[] { new ValueInt(1), new ValueInt(1), new ValueInt(1) };
         Sequence repeatedSequence = new(repeatedElement);
+        Assert.Multiple(() =>
+        {
+            Assert.That(repeatedSequence.Length, Is.EqualTo(3));
+            Assert.That(repeatedSequence.Alphabet.Cardinality, Is.EqualTo(1));
+            Assert.That(repeatedSequence.Order, Is.EqualTo(new int[] { 1, 1, 1 }));
+        });
+
+        var singleElement = new IBaseObject[] { new ValueInt(1) };
         Sequence singleElementSequence = new(singleElement);
+        Assert.Multiple(() =>
+        {
+            Assert.That(singleElementSequence.Length, Is.EqualTo(1));
+            Assert.That(singleElementSequence.Alphabet.Cardinality, Is.EqualTo(1));
+            Assert.That(singleElementSequence.Order, Is.EqualTo(new int[] { 1 }));
+        });
+        
+        var emptyElements = new IBaseObject[] { };
         Sequence emptySequence = new(emptyElements);
-
-        Assert.That(sequence.Length, Is.EqualTo(3));
-        Assert.That(sequence.Alphabet.Cardinality, Is.EqualTo(2));
-        Assert.That(sequence.Order, Is.EqualTo(new int[] { 1, 2, 1 }));
-
-        Assert.That(uniqueSequence.Length, Is.EqualTo(3));
-        Assert.That(uniqueSequence.Alphabet.Cardinality, Is.EqualTo(3));
-        Assert.That(uniqueSequence.Order, Is.EqualTo(new int[] { 1, 2, 3 }));
-
-        Assert.That(repeatedSequence.Length, Is.EqualTo(3));
-        Assert.That(repeatedSequence.Alphabet.Cardinality, Is.EqualTo(1));
-        Assert.That(repeatedSequence.Order, Is.EqualTo(new int[] { 1, 1, 1 }));
-
-        Assert.That(singleElementSequence.Length, Is.EqualTo(1));
-        Assert.That(singleElementSequence.Alphabet.Cardinality, Is.EqualTo(1));
-        Assert.That(singleElementSequence.Order, Is.EqualTo(new int[] { 1 }));
-
-        Assert.That(emptySequence.Length, Is.EqualTo(0));
-        Assert.That(emptySequence.Alphabet.Cardinality, Is.EqualTo(0));
-        Assert.That(emptySequence.Order, Is.Empty);
+        Assert.Multiple(() =>
+        {
+            Assert.That(emptySequence.Length, Is.EqualTo(0));
+            Assert.That(emptySequence.Alphabet.Cardinality, Is.EqualTo(0));
+            Assert.That(emptySequence.Order, Is.Empty);
+        });
 
     }
 
-    // Create a sequence using the provided order and alphabet directly
+    /// <summary>
+    /// Constructors the with order and alphabet test.
+    /// </summary>
     [Test]
     public void ConstructorWithOrderAndAlphabetTest()
     {
@@ -127,40 +178,43 @@ public class SequenceTests
         });
 
         // Test case 4: Mixed value types in alphabet
-        int[] order5 = { 0, 1, 2, 1 };
-        Alphabet alphabet5 = new()
+        int[] order4 = { 0, 1, 2, 1 };
+        Alphabet alphabet4 = new()
         {
             new ValueInt(1),
             new ValueString("test"),
             new ValueInt(3)
         };
-        Sequence sequence5 = new(order5, alphabet5);
+        Sequence sequence4 = new(order4, alphabet4);
 
         Assert.Multiple(() =>
         {
-            Assert.That(sequence5.Length, Is.EqualTo(4));
-            Assert.That(sequence5.Alphabet.Cardinality, Is.EqualTo(2));
-            Assert.That(sequence5.Order, Is.EqualTo(new int[] { 0, 1, 2, 1 }));
+            Assert.That(sequence4.Length, Is.EqualTo(4));
+            Assert.That(sequence4.Alphabet.Cardinality, Is.EqualTo(2));
+            Assert.That(sequence4.Order, Is.EqualTo(new int[] { 0, 1, 2, 1 }));
         });
 
         // Test case 5: Alphabet smaller than order requires
-        int[] order = { 1, 2, 3, 4 };
-        Alphabet smallAlphabet = new() { new ValueInt(1), new ValueInt(2) };
-        Assert.Throws<ArgumentException>(() => new Sequence(order, smallAlphabet));
+        int[] order5 = { 1, 2, 3, 4 };
+        Alphabet alphabet5 = new() { new ValueInt(1), new ValueInt(2) };
+        Assert.Throws<ArgumentException>(() => new Sequence(order5, alphabet5));
 
         // Test case 6: Alphabet larger than order uses
-        int[] smallOrder = { 1, 2, 1 };
-        Alphabet largeAlphabet = new()
+        int[] order6 = { 1, 2, 1 };
+        Alphabet alphabet6 = new()
         {
             new ValueInt(1),
             new ValueInt(2),
             new ValueInt(3),
             new ValueInt(4)
         };
-        Assert.Throws<ArgumentException>(() => new Sequence(smallOrder, largeAlphabet));
+        Assert.Throws<ArgumentException>(() => new Sequence(order6, alphabet6));
 
     }
 
+    /// <summary>
+    /// Alphabets the without null value test.
+    /// </summary>
     [Test]
     [Ignore("Must Fall")]
     public void AlphabetWithoutNullValueTest()
@@ -169,7 +223,9 @@ public class SequenceTests
         Assert.Throws<ArgumentException>(() => new Sequence(new int[] { 0 }, noNullAlphabet));
     }
 
-    // Create a sequence with numeric alphabet (1 to max order value)
+    /// <summary>
+    /// Constructors the with with numeric alphabet (1 to max order value)
+    /// </summary>
     [Test]
     public void ConstructorWithOrderTest()
     {
@@ -201,26 +257,34 @@ public class SequenceTests
         });
 
         // Test case 4: Non-sequential numbers
-        Sequence sequence5 = new(new int[] { 5, 3, 5, 1 });
+        Sequence sequence4 = new(new int[] { 5, 3, 5, 1 });
         Assert.Multiple(() =>
         {
-            Assert.That(sequence5.Length, Is.EqualTo(4));
-            Assert.That(sequence5.Alphabet.Cardinality, Is.EqualTo(5));
-            Assert.That(sequence5.Order, Is.EqualTo(new int[] { 5, 3, 5, 1 }));
+            Assert.That(sequence4.Length, Is.EqualTo(4));
+            Assert.That(sequence4.Alphabet.Cardinality, Is.EqualTo(5));
+            Assert.That(sequence4.Order, Is.EqualTo(new int[] { 5, 3, 5, 1 }));
         });
 
         // Test case 5: Array not starting with 1
         Sequence nonSequentialSequence = new(new int[] { 3, 5, 4, 3 });
-        Assert.That(nonSequentialSequence.Order, Is.EqualTo(new int[] { 3, 5, 4, 3 }));
-        Assert.That(nonSequentialSequence.Alphabet.Cardinality, Is.EqualTo(5));
+        Assert.Multiple(() =>
+        {
+            Assert.That(nonSequentialSequence.Order, Is.EqualTo(new int[] { 3, 5, 4, 3 }));
+            Assert.That(nonSequentialSequence.Alphabet.Cardinality, Is.EqualTo(5));
+        });
 
         // Test case 6: Element 2 appears before 3
         Sequence outOfOrderSequence = new(new int[] { 1, 2, 4, 3, 2 });
-        Assert.That(outOfOrderSequence.Order, Is.EqualTo(new int[] { 1, 2, 4, 3, 2 }));
-        Assert.That(outOfOrderSequence.Alphabet.Cardinality, Is.EqualTo(4));
+        Assert.Multiple(() =>
+        {
+            Assert.That(outOfOrderSequence.Order, Is.EqualTo(new int[] { 1, 2, 4, 3, 2 }));
+            Assert.That(outOfOrderSequence.Alphabet.Cardinality, Is.EqualTo(4));
+        });
     }
 
-    // Create a sequence using provided order and alphabet and store the given ID
+    /// <summary>
+    /// Constructors the with order alphabet and identifier test.
+    /// </summary>
     [Test]
     public void ConstructorWithOrderAlphabetAndIdTest()
     {
@@ -230,19 +294,69 @@ public class SequenceTests
 
         Sequence sequence = new(order, alphabet, id);
 
-        Assert.That(sequence.Length, Is.EqualTo(3));
-        Assert.That(sequence.Alphabet.Cardinality, Is.EqualTo(1));
-        Assert.That(sequence.Order, Is.EqualTo(new int[] { 0, 1, 0 }));
-        Assert.That(sequence.Id, Is.EqualTo(11));
-
-        Assert.That(sequence.Length, Is.Not.EqualTo(4));
-        Assert.That(sequence.Alphabet.Cardinality, Is.Not.EqualTo(3));
-        Assert.That(sequence.Order, Is.Not.EqualTo(new int[] { 1, 2, 2 }));
-        Assert.That(sequence.Id, Is.Not.EqualTo(21));
+        Assert.Multiple(() =>
+        {
+            Assert.That(sequence.Length, Is.EqualTo(3));
+            Assert.That(sequence.Alphabet.Cardinality, Is.EqualTo(1));
+            Assert.That(sequence.Order, Is.EqualTo(new int[] { 0, 1, 0 }));
+            Assert.That(sequence.Id, Is.EqualTo(11));
+        });
 
     }
 
-    // Checking for equals
+    /// <summary>
+    /// Constructors the invalid data tests.
+    /// </summary>
+    [Test]
+    [Ignore("Fail")]
+    public void ConstructorInvalidDataTests()
+    {
+        // Test 1: Various non-sequential numbers
+        Assert.Multiple(() =>
+        {
+            Assert.Throws<ArgumentException>(() => new Sequence(new int[] { 1, 4, 2, 4 }));
+            Assert.Throws<ArgumentException>(() => new Sequence(new int[] { 1, 3, 2, 1 }));
+            Assert.Throws<ArgumentException>(() => new Sequence(new int[] { 2, 5, 3, 1 }));
+        });
+
+        // Test 2: Zero at different positions
+        Assert.Multiple(() =>
+        {
+            Assert.Throws<ArgumentException>(() => new Sequence(new int[] { 0, 1, 2 }));
+            Assert.Throws<ArgumentException>(() => new Sequence(new int[] { 1, 0, 2 }));
+            Assert.Throws<ArgumentException>(() => new Sequence(new int[] { 1, 2, 0 }));
+        });
+
+        // Test 3: Various negative elements
+        Assert.Multiple(() =>
+        {
+            Assert.Throws<ArgumentException>(() => new Sequence(new int[] { 1, -1, 2 }));
+            Assert.Throws<ArgumentException>(() => new Sequence(new int[] { -1, 1, 2 }));
+            Assert.Throws<ArgumentException>(() => new Sequence(new int[] { 1, 2, -3 }));
+            Assert.Throws<ArgumentException>(() => new Sequence(new int[] { -5, -3, -1 }));
+        });
+
+        // Test 4: Various alphabet mismatches
+        Alphabet tooSmallAlphabet1 = new() { new ValueInt(1) };
+        Alphabet tooSmallAlphabet2 = new() { new ValueInt(1), new ValueInt(2) };
+        Assert.Multiple(() =>
+        {
+            Assert.Throws<ArgumentException>(() => new Sequence(new int[] { 1, 2, 3 }, tooSmallAlphabet1));
+            Assert.Throws<ArgumentException>(() => new Sequence(new int[] { 1, 2, 3, 4 }, tooSmallAlphabet2));
+        });
+
+        Alphabet tooLargeAlphabet1 = new() { new ValueInt(1), new ValueInt(2), new ValueInt(3) };
+        Alphabet tooLargeAlphabet2 = new() { new ValueInt(1), new ValueInt(2), new ValueInt(3), new ValueInt(4) };
+        Assert.Multiple(() =>
+        {
+            Assert.Throws<ArgumentException>(() => new Sequence(new int[] { 1, 1 }, tooLargeAlphabet1));
+            Assert.Throws<ArgumentException>(() => new Sequence(new int[] { 1, 2 }, tooLargeAlphabet2));
+        });
+    }
+
+    /// <summary>
+    /// Equals the with different values test.
+    /// </summary>
     [Test]
     public void EqualWithDifferentValuesTest()
     {
@@ -250,11 +364,15 @@ public class SequenceTests
         Sequence sequence2 = new Sequence("ABC");
         Sequence sequence3 = new Sequence("ABD");
         Sequence sequence4 = sequence1;
-        Assert.That(sequence1.Equals(sequence2), Is.True);
-        Assert.That(sequence1.Equals(sequence3), Is.False);
-        Assert.That(sequence1.Equals(sequence4), Is.True);
-        Assert.That(sequence1.Equals(null), Is.False);
-        Assert.That(sequence1.Equals("not a sequence"), Is.False);
+        
+        Assert.Multiple(() =>
+        {
+            Assert.That(sequence1.Equals(sequence2), Is.True);
+            Assert.That(sequence1.Equals(sequence3), Is.False);
+            Assert.That(sequence1.Equals(sequence4), Is.True);
+            Assert.That(sequence1.Equals(null), Is.False);
+            Assert.That(sequence1.Equals("not a sequence"), Is.False);
+        });
 
     }
 
