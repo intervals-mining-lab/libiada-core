@@ -221,8 +221,11 @@ public class CongenericSequenceTests
         });
     }
 
+    /// <summary>
+    /// Constructors the invalid input test.
+    /// </summary>
     [Test]
-    [Ignore("Fail")]
+    [Ignore("Fail invalid input")]
     public void ConstructorInvalidInputTest()
     {
         Assert.Multiple(() =>
