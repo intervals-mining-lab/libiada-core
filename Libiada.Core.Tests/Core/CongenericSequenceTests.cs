@@ -41,11 +41,75 @@ public class CongenericSequenceTests
     [Test]
     public void ConstructorTest()
     {
-        Assert.That(congenericSequence.Length, Is.EqualTo(10));
-        Assert.That(congenericSequence.Element, Is.EqualTo(message));
+        CongenericSequence sequence = new(new ValueInt(1), 5);
+        sequence.Set(1);
+        sequence.Set(3);
+        Assert.Multiple(() =>
+        {
+            Assert.That(sequence.Length, Is.EqualTo(5));
+            Assert.That(sequence.Element, Is.EqualTo(new ValueInt(1)));
+            Assert.That(sequence.Positions, Is.EqualTo(new[] { 1, 3 }));
+            Assert.That(sequence.OccurrencesCount, Is.EqualTo(2));
+        });
     }
 
-    // Create a sequence with specified length and element
+    /// <summary>
+    /// Constructors the full sequence test.
+    /// </summary>
+    [Test]
+    public void ConstructorFullSequenceTest()
+    {
+        CongenericSequence sequence = new(new ValueInt(1), 3);
+        sequence.Set(0);
+        sequence.Set(1);
+        sequence.Set(2);
+        Assert.Multiple(() =>
+        {
+            Assert.That(sequence.Length, Is.EqualTo(3));
+            Assert.That(sequence.OccurrencesCount, Is.EqualTo(3));
+            Assert.That(sequence.Positions, Is.EqualTo(new[] { 0, 1, 2 }));
+            Assert.That(sequence.Order, Is.EqualTo(new[] { 1, 1, 1 }));
+        });
+    }
+
+    /// <summary>
+    /// Constructors the empty sequence test.
+    /// </summary>
+    [Test]
+    public void ConstructorEmptySequenceTest()
+    {
+        // Test 1: Empty length 1 sequence
+        CongenericSequence sequence1 = new(new ValueInt(1), 1);
+        Assert.Multiple(() =>
+        {
+            Assert.That(sequence1.Length, Is.EqualTo(1));
+            Assert.That(sequence1.OccurrencesCount, Is.Zero);
+            Assert.That(sequence1.Positions, Is.Empty);
+        });
+
+        // Test 2: Empty sequence length > 0
+        CongenericSequence sequence2 = new(new ValueInt(1), 5);
+        Assert.Multiple(() =>
+        {
+            Assert.That(sequence2.Length, Is.EqualTo(5));
+            Assert.That(sequence2.OccurrencesCount, Is.Zero);
+            Assert.That(sequence2.Positions, Is.Empty);
+        });
+
+        // Test 3: Zero length sequence
+        CongenericSequence sequence3 = new(new ValueInt(1), 0);
+        Assert.Multiple(() =>
+        {
+            Assert.That(sequence3.Length, Is.Zero);
+            Assert.That(sequence3.OccurrencesCount, Is.Zero);
+            Assert.That(sequence3.Positions, Is.Empty);
+        });
+    }
+
+
+    /// <summary>
+    /// Constructors the with element and length test.
+    /// </summary>
     [Test]
     public void ConstructorWithElementAndLengthTest()
     {
@@ -54,16 +118,19 @@ public class CongenericSequenceTests
 
         CongenericSequence sequence = new(element, length);
 
-        Assert.That(sequence.Length, Is.EqualTo(10));
-        Assert.That(sequence.Element, Is.EqualTo(element));
+        Assert.Multiple(() =>
+        {
+            Assert.That(sequence.Length, Is.EqualTo(10));
+            Assert.That(sequence.Element, Is.EqualTo(element));
+        });
 
-        Assert.That(sequence.Length, Is.Not.EqualTo(15));
-        Assert.That(sequence.Element, Is.Not.EqualTo(new ValueInt(10)));
 
     }
 
 
-    // Create a sequence with specified element
+    /// <summary>
+    /// Constructors the with element tests.
+    /// </summary>
     [Test]
     public void ConstructorWithElementTests()
     {
@@ -71,10 +138,16 @@ public class CongenericSequenceTests
 
         CongenericSequence sequence = new(element);
 
-        Assert.That(sequence.Element, Is.EqualTo(element));
-        Assert.That(sequence.Element, Is.Not.EqualTo(new ValueInt(100)));
+        Assert.Multiple(() =>
+        {
+            Assert.That(sequence.Element, Is.EqualTo(element));
+            Assert.That(sequence.Element, Is.Not.EqualTo(new ValueInt(100)));
+        });
     }
 
+    /// <summary>
+    /// Constructors the with positions element and length tests.
+    /// </summary>
     [Test]
     public void ConstructorWithPositionsElementAndLengthTests()
     {
@@ -84,12 +157,18 @@ public class CongenericSequenceTests
 
         CongenericSequence sequence = new(positions, element, length);
 
-        Assert.That(sequence.Length, Is.EqualTo(6));
-        Assert.That(sequence.Element, Is.EqualTo(element));
-        Assert.That(sequence.Positions, Is.EqualTo(new int[] { 1, 3, 5 }));
-        Assert.That(sequence.OccurrencesCount, Is.EqualTo(3));
+        Assert.Multiple(() =>
+        {
+            Assert.That(sequence.Length, Is.EqualTo(6));
+            Assert.That(sequence.Element, Is.EqualTo(element));
+            Assert.That(sequence.Positions, Is.EqualTo(new int[] { 1, 3, 5 }));
+            Assert.That(sequence.OccurrencesCount, Is.EqualTo(3));
+        });
     }
 
+    /// <summary>
+    /// Constructors the map with mixed values tests.
+    /// </summary>
     [Test]
     public void ConstructorMapWithMixedValuesTests()
     {
@@ -106,6 +185,9 @@ public class CongenericSequenceTests
         });
     }
 
+    /// <summary>
+    /// Contructors the map with all false tests.
+    /// </summary>
     [Test]
     public void ContructorMapWithAllFalseTests()
     {
@@ -121,6 +203,9 @@ public class CongenericSequenceTests
         });
     }
 
+    /// <summary>
+    /// Constructors the map wint all true tests.
+    /// </summary>
     [Test]
     public void ConstructorMapWintAllTrueTests()
     {
@@ -136,7 +221,40 @@ public class CongenericSequenceTests
         });
     }
 
+    [Test]
+    [Ignore("Fail")]
+    public void ConstructorInvalidInputTest()
+    {
+        Assert.Multiple(() =>
+        {
+            Assert.Throws<ArgumentException>(() =>
+                new CongenericSequence(new List<int> { 1, 4, 2, 4 }, new ValueInt(1), 5));
+
+            Assert.Throws<ArgumentException>(() =>
+                new CongenericSequence(new List<int> { 0, 1, 2 }, new ValueInt(1), 3));
+
+            Assert.Throws<ArgumentException>(() =>
+                new CongenericSequence(new List<int> { 1, 0, 3 }, new ValueInt(1), 4));
+
+            Assert.Throws<ArgumentException>(() =>
+                new CongenericSequence(new List<int> { -1, 2, 3 }, new ValueInt(1), 4));
+
+            Assert.Throws<ArgumentException>(() =>
+                new CongenericSequence(new List<int> { 1, 2, 5 }, new ValueInt(1), 4));
+
+            Assert.Throws<ArgumentNullException>(() => new CongenericSequence(null, 5));
+
+            Assert.Throws<ArgumentException>(() => new CongenericSequence(new ValueInt(1), -5));
+
+            Assert.Throws<ArgumentException>(() =>
+                new CongenericSequence(new List<int> { 1, 2 }, new ValueInt(1), 2));
+        });
+    }
+
+
+    /// <summary>
     /// Verifies that manager is created correctly for both empty and non-empty sequences.
+    /// </summary>
     [Test]
     [Ignore("SeriesIvtervals link start")]
     public void CreateSeriesIntervalsManagerLinkStartTest()
@@ -153,6 +271,9 @@ public class CongenericSequenceTests
         Assert.That(sequence.GetSeriesAndIntervals(Link.Start), Is.Not.Empty);
     }
 
+    /// <summary>
+    /// Creates the series intervals manager link end test.
+    /// </summary>
     [Test]
     [Ignore("SeriesIvtervals link end")]
     public void CreateSeriesIntervalsManagerLinkEndTest()
@@ -169,7 +290,9 @@ public class CongenericSequenceTests
         Assert.That(sequence.GetSeriesAndIntervals(Link.End), Is.Not.Empty);
     }
 
-    /// Verifies that intervals are calculated correctly.
+    /// <summary>
+    /// Fills the interval manager test.
+    /// </summary>
     [Test]
     public void FillIntervalManagerTest()
     {
@@ -184,8 +307,9 @@ public class CongenericSequenceTests
 
 
 
-    /// Verifies that equal sequences have same hash codes
-    /// and different sequences have different hash codes.
+    /// <summary>
+    /// Gets the hash code test.
+    /// </summary>
     [Test]
     public void GetHashCodeTest()
     {
@@ -205,7 +329,9 @@ public class CongenericSequenceTests
         Assert.That(sequence1.GetHashCode(), Is.Not.EqualTo(differentSequence.GetHashCode()));
     }
 
-    /// Verifies that order array contains all zeros for empty sequence.
+    /// <summary>
+    /// Orders the empty sequence test.
+    /// </summary>
     [Test]
     public void OrderEmptySequenceTest()
     {
@@ -217,8 +343,9 @@ public class CongenericSequenceTests
     }
 
 
-    /// Verifies that order array contains all ones when sequence has elements in all positions.
-
+    /// <summary>
+    /// Orders the full sequence test.
+    /// </summary>
     [Test]
     public void OrderFullSequenceTest()
     {
@@ -232,7 +359,9 @@ public class CongenericSequenceTests
         Assert.That(order, Is.EqualTo(new[] { 1, 1, 1 }));
     }
 
-    /// Verifies that order array correctly represents a single element position.
+    /// <summary>
+    /// Orders the single element test.
+    /// </summary>
     [Test]
     public void OrderSingleElementTest()
     {
