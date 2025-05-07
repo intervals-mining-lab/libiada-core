@@ -126,4 +126,59 @@ public class StringExtensionsTests
         source = source.GetLargestRepeatingSubstring();
         Assert.That(source.IsSubsetOf(source));
     }
+
+    private enum TestEnum
+    {
+        Value1,
+        Value2,
+        Value3
+    }
+
+    /// <summary>
+    /// Converts to enumvalidvaluetest.
+    /// </summary>
+    [Test]
+    public void ToEnumValidValueTest()
+    {
+        string value = "Value1";
+
+        TestEnum result = value.ToEnum<TestEnum>();
+
+        Assert.That(result, Is.EqualTo(TestEnum.Value1));
+    }
+
+    /// <summary>
+    /// Converts to enumcaseinsensitivetest.
+    /// </summary>
+    [Test]
+    public void ToEnumCaseInsensitiveTest()
+    {
+        string value = "value2";
+
+        TestEnum result = value.ToEnum<TestEnum>();
+
+        Assert.That(result, Is.EqualTo(TestEnum.Value2));
+    }
+
+    /// <summary>
+    /// Converts to enumemptystringtest.
+    /// </summary>
+    [Test]
+    public void ToEnumEmptyStringTest()
+    {
+        string value = string.Empty;
+
+        Assert.Throws<ArgumentException>(() => value.ToEnum<TestEnum>());
+    }
+
+    /// <summary>
+    /// Converts to enuminvalidvaluetest.
+    /// </summary>
+    [Test]
+    public void ToEnumInvalidValueTest()
+    {
+        string value = "InvalidValue";
+
+        Assert.Throws<ArgumentException>(() => value.ToEnum<TestEnum>());
+    }
 }

@@ -201,4 +201,88 @@ public class ArrayExtensionsTests
         expected = [2, 3, 4, 5, 6, 7, 8, 9, 10];
         Assert.That(source.SubArray(1, 9), Is.EqualTo(expected));
     }
+
+    /// <summary>
+    /// Slices the row with default values and quadratic matrix test.
+    /// </summary>
+    [Test]
+    public void SliceRowTest()
+    {
+        int[,] matrix = new int[3, 3]
+        {
+            {1,2,3 },
+            {4,5,6 },
+            {7,8,9 }
+        };
+
+        Assert.That(matrix.SliceRow(0).ToArray(), Is.EqualTo(new[] { 1, 4, 7 }));
+        Assert.That(matrix.SliceRow(1).ToArray(), Is.EqualTo(new[] { 2, 5, 8 }));
+        Assert.That(matrix.SliceRow(2).ToArray(), Is.EqualTo(new[] { 3, 6, 9 }));
+    }
+
+    /// <summary>
+    /// Slices the row with different dimensions test.
+    /// </summary>
+    [Test]
+    public void SliceRowWithDifferentDimensionsTest()
+    {
+        int[,] matrix = new int[2, 3]
+        {
+            { 1, 2, 3 },
+            { 4, 5, 6 }
+        };
+
+        Assert.That(matrix.SliceRow(0).ToArray(), Is.EqualTo(new[] { 1, 4 }));
+        Assert.That(matrix.SliceRow(1).ToArray(), Is.EqualTo(new[] { 2, 5 }));
+        Assert.That(matrix.SliceRow(2).ToArray(), Is.EqualTo(new[] { 3, 6 }));
+    }
+
+    /// <summary>
+    /// Slices the row with empty matrix test.
+    /// </summary>
+    [Test]
+    public void SliceRowWithEmptyMatrixTest()
+    {
+        int[,] matrix = new int[0, 0];
+
+        Assert.That(matrix.SliceRow(0).ToArray(), Is.Empty);
+    }
+
+    [Test]
+    public void SliceColumnTest()
+    {
+        int[,] matrix = new int[3, 3]
+        {
+            { 1, 2, 3 },
+            { 4, 5, 6 },
+            { 7, 8, 9 }
+        };
+
+        Assert.That(matrix.SliceColumn(0).ToArray(), Is.EqualTo(new[] { 1, 2, 3 }));
+        Assert.That(matrix.SliceColumn(1).ToArray(), Is.EqualTo(new[] { 4, 5, 6 }));
+        Assert.That(matrix.SliceColumn(2).ToArray(), Is.EqualTo(new[] { 7, 8, 9 }));
+    }
+
+    [Test]
+    public void SliceColumnWithDifferentDimensionsTest()
+    {
+        int[,] matrix = new int[3, 2]
+        {
+            { 1, 2 },
+            { 3, 4 },
+            { 5, 6 }
+        };
+
+        Assert.That(matrix.SliceColumn(0).ToArray(), Is.EqualTo(new[] { 1, 2 }));
+        Assert.That(matrix.SliceColumn(1).ToArray(), Is.EqualTo(new[] { 3, 4 }));
+        Assert.That(matrix.SliceColumn(2).ToArray(), Is.EqualTo(new[] { 5, 6 }));
+    }
+
+    [Test]
+    public void SliceColumnWithEmptyMatrixTest()
+    {
+        int[,] matrix = new int[0, 0];
+
+        Assert.That(matrix.SliceColumn(0).ToArray(), Is.Empty);
+    }
 }
