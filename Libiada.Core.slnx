@@ -1,0 +1,14 @@
+<Solution>
+  <Project Path="Libiada.Clusterizator.Tests/Libiada.Clusterizator.Tests.csproj" />
+  <Project Path="Libiada.Clusterizator/Libiada.Clusterizator.csproj" />
+  <Project Path="Libiada.Core.Tests/Libiada.Core.Tests.csproj" />
+  <Project Path="Libiada.Core/Libiada.Core.csproj" />
+  <Project Path="Libiada.MarkovChains.Tests/Libiada.MarkovChains.Tests.csproj" />
+  <Project Path="Libiada.MarkovChains/Libiada.MarkovChains.csproj" />
+  <Project Path="Libiada.PhantomChains.Tests/Libiada.PhantomChains.Tests.csproj" />
+  <Project Path="Libiada.PhantomChains/Libiada.PhantomChains.csproj" />
+  <Project Path="Libiada.Segmenter.Tests/Libiada.Segmenter.Tests.csproj" />
+  <Project Path="Libiada.Segmenter/Libiada.Segmenter.csproj" />
+  <Project Path="Libiada.SequenceGenerator.Tests/Libiada.SequenceGenerator.Tests.csproj" />
+  <Project Path="Libiada.SequenceGenerator/Libiada.SequenceGenerator.csproj" />
+</Solution>

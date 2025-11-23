@@ -10,7 +10,7 @@ install:
 before_build:
 - cmd: nuget restore
 build:
-  project: Libiada.Core.sln
+  project: Libiada.Core.slnx
   verbosity: minimal
 before_test:
 - cmd: dotnet test

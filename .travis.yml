@@ -1,7 +1,7 @@
 language: csharp
-solution: LibiadaCore.sln
+solution: LibiadaCore.slnx
 mono: none
-dotnet: 3.0
+dotnet: 10.0
 jobs:
   include:
     - stage: test
