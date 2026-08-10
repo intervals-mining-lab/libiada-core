@@ -5,7 +5,7 @@
 /// </summary>
 public class AccordanceIntervalsManager
 {
-   /// <summary>
+    /// <summary>
     /// The sequence length.
     /// </summary>
     public readonly int Length;
