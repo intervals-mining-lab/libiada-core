@@ -17,7 +17,7 @@ public class InstrumentTests
     /// <summary>
     /// Array of all instruments.
     /// </summary>
-    private readonly Instrument[] instruments = EnumExtensions.ToArray<Instrument>();
+    private readonly Instrument[] instruments = Enum.GetValues<Instrument>();
 
     /// <summary>
     /// Tests count of instruments.

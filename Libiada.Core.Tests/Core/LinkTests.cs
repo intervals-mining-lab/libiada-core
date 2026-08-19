@@ -17,7 +17,7 @@ public class LinkTests
     /// <summary>
     /// Array of all links.
     /// </summary>
-    private readonly Link[] links = EnumExtensions.ToArray<Link>();
+    private readonly Link[] links = Enum.GetValues<Link>();
 
     /// <summary>
     /// Tests count of links.

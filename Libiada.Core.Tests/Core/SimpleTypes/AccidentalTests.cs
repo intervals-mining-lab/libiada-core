@@ -17,7 +17,7 @@ public class AccidentalTests
     /// <summary>
     /// Array of all accidentals.
     /// </summary>
-    private readonly Accidental[] accidentals = EnumExtensions.ToArray<Accidental>();
+    private readonly Accidental[] accidentals = Enum.GetValues<Accidental>();
 
     /// <summary>
     /// Tests count of accidentals.

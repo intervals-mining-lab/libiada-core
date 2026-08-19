@@ -17,7 +17,7 @@ public class FmotifTypeTests
     /// <summary>
     /// Array of all fmotif types.
     /// </summary>
-    private readonly FmotifType[] fmotifTypes = EnumExtensions.ToArray<FmotifType>();
+    private readonly FmotifType[] fmotifTypes = Enum.GetValues<FmotifType>();
 
     /// <summary>
     /// Tests count of fmotif types.

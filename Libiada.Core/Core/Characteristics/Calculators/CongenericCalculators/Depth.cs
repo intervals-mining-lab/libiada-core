@@ -1,7 +1,4 @@
 namespace Libiada.Core.Core.Characteristics.Calculators.CongenericCalculators;
-
-using System.Numerics;
-
 /// <summary>
 /// Characteristic of sequence depth.
 /// </summary>

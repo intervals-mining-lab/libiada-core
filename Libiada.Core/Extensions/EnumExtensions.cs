@@ -1,13 +1,12 @@
 ﻿namespace Libiada.Core.Extensions;
-
-using System.ComponentModel;
-using System.ComponentModel.DataAnnotations;
-using System.Globalization;
-using System.Reflection;
-
+﻿
 using Libiada.Core.Attributes;
 using Libiada.Core.Core;
 using Libiada.Core.Exceptions;
+
+using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
+using System.Reflection;
 
 /// <summary>
 /// The enum helper.
@@ -26,16 +25,11 @@ public static class EnumExtensions
     /// <returns>
     /// The <see cref="string"/>.
     /// </returns>
-    public static string GetDisplayValue<T>(this T value) where T : struct, IComparable, IFormattable, IConvertible
+    public static string GetDisplayValue<T>(this T value) where T : struct, Enum
     {
         Type type = typeof(T);
 
-        if (!type.IsEnum)
-        {
-            throw new TypeArgumentException("Type argument must be enum.", type);
-        }
-
-        var fieldInfo = type.GetField(value.ToString(CultureInfo.InvariantCulture));
+        var fieldInfo = type.GetField(value.ToString());
 
         var descriptionAttributes = fieldInfo?.GetCustomAttributes(typeof(DisplayAttribute), false) as DisplayAttribute[];
 
@@ -44,7 +38,7 @@ public static class EnumExtensions
             return string.Empty;
         }
 
-        return (descriptionAttributes.Length > 0) ? descriptionAttributes[0].Name : value.ToString(CultureInfo.InvariantCulture);
+        return (descriptionAttributes.Length > 0) ? descriptionAttributes[0].Name : value.ToString();
     }
 
     /// <summary>
@@ -62,17 +56,7 @@ public static class EnumExtensions
     /// <exception cref="TypeArgumentException">
     /// Thrown if type argument is not enum.
     /// </exception>
-    public static string? GetName<T>(this T value) where T : struct, IComparable, IFormattable, IConvertible
-    {
-        Type type = typeof(T);
-
-        if (!type.IsEnum)
-        {
-            throw new TypeArgumentException("Type argument must be enum.", type);
-        }
-
-        return Enum.GetName(type, value);
-    }
+    public static string? GetName<T>(this T value) where T : struct, Enum => Enum.GetName<T>(value);
 
     /// <summary>
     /// Gets description attribute of the given enum value.
@@ -86,16 +70,16 @@ public static class EnumExtensions
     /// <returns>
     /// The <see cref="string"/>.
     /// </returns>
-    public static string GetDescription<T>(this T value) where T : struct, IComparable, IFormattable, IConvertible
+    public static string GetDescription<T>(this T value) where T : struct, Enum
     {
         Type type = value.GetType();
 
-        if (!type.IsEnum)
-        {
-            throw new TypeArgumentException("Type argument must be enum.", type);
-        }
+        //if (!type.IsEnum)
+        //{
+        //    throw new TypeArgumentException("Type argument must be enum.", type);
+        //}
 
-        var memberInfo = type.GetMember(value.ToString(CultureInfo.InvariantCulture));
+        var memberInfo = type.GetMember(value.ToString());
         var attributes = memberInfo[0].GetCustomAttributes(typeof(DescriptionAttribute), false);
         return ((DescriptionAttribute)attributes[0]).Description;
     }
@@ -115,18 +99,18 @@ public static class EnumExtensions
     /// <returns>
     /// The <see cref="TAttribute"/>.
     /// </returns>
-    public static TAttribute GetAttribute<T, TAttribute>(this T value)
-        where T : struct, IComparable, IFormattable, IConvertible
+    public static TAttribute? GetAttribute<T, TAttribute>(this T value)
+        where T : struct, Enum
         where TAttribute : Attribute
     {
         Type type = value.GetType();
 
-        if (!type.IsEnum)
-        {
-            throw new TypeArgumentException("Type argument must be enum.", type);
-        }
+        //if (!type.IsEnum)
+        //{
+        //    throw new TypeArgumentException("Type argument must be enum.", type);
+        //}
 
-        var memberInfo = type.GetMember(value.ToString(CultureInfo.InvariantCulture));
+        var memberInfo = type.GetMember(value.ToString());
         var attributes = memberInfo[0].GetCustomAttributes(typeof(TAttribute), false);
         return (attributes.Length > 0) ? (TAttribute)attributes[0] : null;
     }
@@ -143,34 +127,8 @@ public static class EnumExtensions
     /// <returns>
     /// Link attribute value as <see cref="Link"/>
     /// </returns>
-    public static Link GetLink<T>(this T value) where T : struct, IComparable, IFormattable, IConvertible
-    {
-        return value.GetAttribute<T, LinkAttribute>().Value;
-    }
+    public static Link GetLink<T>(this T value) where T : struct, Enum => value.GetAttribute<T, LinkAttribute>().Value;
 
-    /// <summary>
-    /// Converts given enum type values into array.
-    /// </summary>
-    /// <typeparam name="T">
-    /// Enum type.
-    /// </typeparam>
-    /// <returns>
-    /// The <see cref="T:T[]"/>.
-    /// </returns>
-    /// <exception cref="TypeArgumentException">
-    /// Thrown if type argument is not enum.
-    /// </exception>
-    public static T[] ToArray<T>() where T : struct, IComparable, IFormattable, IConvertible
-    {
-        Type type = typeof(T);
-
-        if (!type.IsEnum)
-        {
-            throw new TypeArgumentException("Type argument must be enum.", type);
-        }
-
-        return (T[])Enum.GetValues(type);
-    }
 
     /// <summary>
     /// Extracts all enum values having given attribute.
@@ -182,14 +140,14 @@ public static class EnumExtensions
     /// Type of attribute enum values must have.
     /// </param>
     /// <returns></returns>
-    public static IEnumerable<T> SelectAllWithAttribute<T>(Type attributeType) where T : struct, IComparable, IFormattable, IConvertible
+    public static IEnumerable<T> SelectAllWithAttribute<T>(Type attributeType) where T : struct, Enum
     {
         Type type = typeof(T);
 
-        if (!type.IsEnum)
-        {
-            throw new TypeArgumentException("Type argument must be enum.", type);
-        }
+        //if (!type.IsEnum)
+        //{
+        //    throw new TypeArgumentException("Type argument must be enum.", type);
+        //}
 
         if (!attributeType.IsSubclassOf(typeof(Attribute)))
         {

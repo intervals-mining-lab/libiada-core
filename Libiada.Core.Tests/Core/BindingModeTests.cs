@@ -1,8 +1,8 @@
-﻿namespace Libiada.Core.Tests.Core;
-
+﻿
 using Libiada.Core.Core;
 using Libiada.Core.Extensions;
 
+namespace Libiada.Core.Tests.Core;
 /// <summary>
 /// BindingMode enum tests.
 /// </summary>
@@ -17,7 +17,7 @@ public class BindingModeTests
     /// <summary>
     /// Array of all binding modes.
     /// </summary>
-    private readonly BindingMode[] bindingModes = EnumExtensions.ToArray<BindingMode>();
+    private readonly BindingMode[] bindingModes = Enum.GetValues<BindingMode>();
 
     /// <summary>
     /// Tests count of binding modes.

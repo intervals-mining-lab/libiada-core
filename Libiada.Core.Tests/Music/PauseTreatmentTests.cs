@@ -17,7 +17,7 @@ public class PauseTreatmentTests
     /// <summary>
     /// Array of all pause treatments.
     /// </summary>
-    private readonly PauseTreatment[] pauseTreatments = EnumExtensions.ToArray<PauseTreatment>();
+    private readonly PauseTreatment[] pauseTreatments = Enum.GetValues<PauseTreatment>();
 
     /// <summary>
     /// Tests count of pause treatments.

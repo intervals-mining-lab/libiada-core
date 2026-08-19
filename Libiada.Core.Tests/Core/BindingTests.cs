@@ -17,7 +17,7 @@ public class BindingTests
     /// <summary>
     /// Array of all bindings.
     /// </summary>
-    private readonly Binding[] bindings = EnumExtensions.ToArray<Binding>();
+    private readonly Binding[] bindings = Enum.GetValues<Binding>();
 
     /// <summary>
     /// Tests count of bindings.

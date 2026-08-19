@@ -17,7 +17,7 @@ public class NoteSymbolTests
     /// <summary>
     /// Array of all note symbols.
     /// </summary>
-    private readonly NoteSymbol[] noteSymbols = EnumExtensions.ToArray<NoteSymbol>();
+    private readonly NoteSymbol[] noteSymbols = Enum.GetValues<NoteSymbol>();
 
     /// <summary>
     /// Tests count of note symbols.

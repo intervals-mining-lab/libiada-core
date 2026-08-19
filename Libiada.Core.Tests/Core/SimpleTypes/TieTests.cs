@@ -17,7 +17,7 @@ public class TieTests
     /// <summary>
     /// Array of all ties.
     /// </summary>
-    private readonly Tie[] ties = EnumExtensions.ToArray<Tie>();
+    private readonly Tie[] ties = Enum.GetValues<Tie>();
 
     /// <summary>
     /// Tests count of ties.
