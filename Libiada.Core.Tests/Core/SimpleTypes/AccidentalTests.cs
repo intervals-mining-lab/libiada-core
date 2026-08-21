@@ -51,7 +51,7 @@ public class AccidentalTests
     [TestCase((Accidental)0, "Bekar")]
     [TestCase((Accidental)1, "Sharp")]
     [TestCase((Accidental)2, "DoubleSharp")]
-    public void AccidentalNamesTest(Accidental accidental, string name) => Assert.That(accidental.GetName(), Is.EqualTo(name));
+    public void AccidentalNamesTest(Accidental accidental, string name) => Assert.That(Enum.GetName(accidental), Is.EqualTo(name));
 
     /// <summary>
     /// Tests that all accidentals have display value.

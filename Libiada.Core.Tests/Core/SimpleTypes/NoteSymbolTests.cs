@@ -59,7 +59,7 @@ public class NoteSymbolTests
     [TestCase((NoteSymbol)7, "G")]
     [TestCase((NoteSymbol)9, "A")]
     [TestCase((NoteSymbol)11, "B")]
-    public void NoteSymbolNamesTest(NoteSymbol noteSymbol, string name) => Assert.That(noteSymbol.GetName(), Is.EqualTo(name));
+    public void NoteSymbolNamesTest(NoteSymbol noteSymbol, string name) => Assert.That(Enum.GetName(noteSymbol), Is.EqualTo(name));
 
     /// <summary>
     /// Tests that all note symbols have display value.

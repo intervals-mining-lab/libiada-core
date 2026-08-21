@@ -55,7 +55,7 @@ public class FmotifTypeTests
     [TestCase((FmotifType)3, "IncreasingSequence")]
     [TestCase((FmotifType)4, "CompleteMinimalMetrorhythmicGroup")]
     [TestCase((FmotifType)5, "PartialMinimalMetrorhythmicGroup")]
-    public void FmotifTypeNamesTest(FmotifType fmotifType, string name) => Assert.That(fmotifType.GetName(), Is.EqualTo(name));
+    public void FmotifTypeNamesTest(FmotifType fmotifType, string name) => Assert.That(Enum.GetName(fmotifType), Is.EqualTo(name));
 
     /// <summary>
     /// Tests that all fmotif types have display value.

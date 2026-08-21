@@ -49,7 +49,7 @@ public class BindingTests
     [TestCase((Binding)0, "NotApplicable")]
     [TestCase((Binding)1, "Beginning")]
     [TestCase((Binding)2, "End")]
-    public void BindingNamesTest(Binding binding, string name) => Assert.That(binding.GetName(), Is.EqualTo(name));
+    public void BindingNamesTest(Binding binding, string name) => Assert.That(Enum.GetName(binding), Is.EqualTo(name));
 
     /// <summary>
     /// Tests that all bindings have display value.

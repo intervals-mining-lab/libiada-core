@@ -51,7 +51,7 @@ public class BindingModeTests
     [TestCase((BindingMode)2, "Cyclic")]
     [TestCase((BindingMode)3, "Lossy")]
     [TestCase((BindingMode)4, "Redundant")]
-    public void BindingModeNamesTest(BindingMode bindingMode, string name) => Assert.That(bindingMode.GetName(), Is.EqualTo(name));
+    public void BindingModeNamesTest(BindingMode bindingMode, string name) => Assert.That(Enum.GetName(bindingMode), Is.EqualTo(name));
 
     /// <summary>
     /// Tests that all binding modes have display value.

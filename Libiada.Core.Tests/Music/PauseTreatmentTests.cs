@@ -50,7 +50,7 @@ public class PauseTreatmentTests
     [TestCase((PauseTreatment)1, "Ignore")]
     [TestCase((PauseTreatment)2, "NoteTrace")]
     [TestCase((PauseTreatment)3, "SilenceNote")]
-    public void PauseTreatmentNamesTest(PauseTreatment pauseTreatment, string name) => Assert.That(pauseTreatment.GetName(), Is.EqualTo(name));
+    public void PauseTreatmentNamesTest(PauseTreatment pauseTreatment, string name) => Assert.That(Enum.GetName(pauseTreatment), Is.EqualTo(name));
 
     /// <summary>
     /// Tests that all pause treatments have display value.

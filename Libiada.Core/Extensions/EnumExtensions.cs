@@ -2,7 +2,6 @@
 ﻿
 using Libiada.Core.Attributes;
 using Libiada.Core.Core;
-using Libiada.Core.Exceptions;
 
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
@@ -38,25 +37,8 @@ public static class EnumExtensions
             return string.Empty;
         }
 
-        return (descriptionAttributes.Length > 0) ? descriptionAttributes[0].Name : value.ToString();
+        return (descriptionAttributes.Length > 0) ? descriptionAttributes[0].Name ?? string.Empty : value.ToString();
     }
-
-    /// <summary>
-    /// Gets enum name as in code.
-    /// </summary>
-    /// <param name="value">
-    /// The nature.
-    /// </param>
-    /// <typeparam name="T">
-    /// Enum type.
-    /// </typeparam>
-    /// <returns>
-    /// The <see cref="string"/> or <see langword="null"/> if value is not found.
-    /// </returns>
-    /// <exception cref="TypeArgumentException">
-    /// Thrown if type argument is not enum.
-    /// </exception>
-    public static string? GetName<T>(this T value) where T : struct, Enum => Enum.GetName<T>(value);
 
     /// <summary>
     /// Gets description attribute of the given enum value.
@@ -73,11 +55,6 @@ public static class EnumExtensions
     public static string GetDescription<T>(this T value) where T : struct, Enum
     {
         Type type = value.GetType();
-
-        //if (!type.IsEnum)
-        //{
-        //    throw new TypeArgumentException("Type argument must be enum.", type);
-        //}
 
         var memberInfo = type.GetMember(value.ToString());
         var attributes = memberInfo[0].GetCustomAttributes(typeof(DescriptionAttribute), false);
@@ -105,11 +82,6 @@ public static class EnumExtensions
     {
         Type type = value.GetType();
 
-        //if (!type.IsEnum)
-        //{
-        //    throw new TypeArgumentException("Type argument must be enum.", type);
-        //}
-
         var memberInfo = type.GetMember(value.ToString());
         var attributes = memberInfo[0].GetCustomAttributes(typeof(TAttribute), false);
         return (attributes.Length > 0) ? (TAttribute)attributes[0] : null;
@@ -127,7 +99,8 @@ public static class EnumExtensions
     /// <returns>
     /// Link attribute value as <see cref="Link"/>
     /// </returns>
-    public static Link GetLink<T>(this T value) where T : struct, Enum => value.GetAttribute<T, LinkAttribute>().Value;
+    public static Link GetLink<T>(this T value) where T : struct, Enum =>
+        value.GetAttribute<T, LinkAttribute>()?.Value ?? throw new NullReferenceException($"Link attribute not found on enum value {Enum.GetName(value)}");
 
 
     /// <summary>
@@ -140,19 +113,12 @@ public static class EnumExtensions
     /// Type of attribute enum values must have.
     /// </param>
     /// <returns></returns>
-    public static IEnumerable<T> SelectAllWithAttribute<T>(Type attributeType) where T : struct, Enum
+    public static IEnumerable<T> SelectAllWithAttribute<T, TAttribute>()
+        where T : struct, Enum
+        where TAttribute : Attribute
     {
         Type type = typeof(T);
-
-        //if (!type.IsEnum)
-        //{
-        //    throw new TypeArgumentException("Type argument must be enum.", type);
-        //}
-
-        if (!attributeType.IsSubclassOf(typeof(Attribute)))
-        {
-            throw new ArgumentException("The argument must be inherited fron attribute class.", nameof(attributeType));
-        }
+        Type attributeType = typeof(TAttribute);
 
         return type.GetFields(BindingFlags.Public | BindingFlags.Static)
                    .Where(field => field.IsDefined(attributeType, false))

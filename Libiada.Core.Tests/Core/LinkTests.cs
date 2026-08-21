@@ -54,7 +54,7 @@ public class LinkTests
     [TestCase((Link)5, "Cycle")]
     [TestCase((Link)6, "CycleStart")]
     [TestCase((Link)7, "CycleEnd")]
-    public void LinkNamesTest(Link link, string name) => Assert.That(link.GetName(), Is.EqualTo(name));
+    public void LinkNamesTest(Link link, string name) => Assert.That(Enum.GetName(link), Is.EqualTo(name));
 
     /// <summary>
     /// Tests that all links have display value.

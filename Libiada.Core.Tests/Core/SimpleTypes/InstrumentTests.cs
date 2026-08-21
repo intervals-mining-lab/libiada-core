@@ -47,7 +47,7 @@ public class InstrumentTests
     /// The name.
     /// </param>
     [TestCase((Instrument)0, "AnyOrUnknown")]
-    public void InstrumentNamesTest(Instrument instrument, string name) => Assert.That(instrument.GetName(), Is.EqualTo(name));
+    public void InstrumentNamesTest(Instrument instrument, string name) => Assert.That(Enum.GetName(instrument), Is.EqualTo(name));
 
     /// <summary>
     /// Tests that all instruments have display value.

@@ -3,6 +3,7 @@
 using Libiada.Core.Attributes;
 using Libiada.Core.Core;
 using Libiada.Core.Extensions;
+
 using System.ComponentModel.DataAnnotations;
 
 /// <summary>
@@ -12,23 +13,17 @@ using System.ComponentModel.DataAnnotations;
 public class EnumExtensionsTests
 {
     /// <summary>
-    /// The test enum.
+    /// Sample enum for testing.
     /// </summary>
     private enum TestEnum : byte
     {
-        /// <summary>
-        /// The first.
-        /// </summary>
+        [Link(Link.Start)]
+        [Display(Name = "First Value")]
         First = 1,
 
-        /// <summary>
-        /// The second.
-        /// </summary>
+        [Link(Link.End)]
         Second = 2,
 
-        /// <summary>
-        /// The third.
-        /// </summary>
         Third = 3
     }
 
@@ -44,57 +39,43 @@ public class EnumExtensionsTests
         Assert.That(actual, Is.EqualTo(expected));
     }
 
-    private enum TestEnumValues
-    {
-        [Link(Link.Start)]
-        Value1,
-
-        [Link(Link.End)]
-        Value2,
-
-        Value3
-    }
-    private enum TestEnumWithCustomAttribute
-    {
-        [Display(Name = "First Value")]
-        Value1,
-        Value2
-    }
-
     [Test]
     public void GetLinkTest()
     {
-        Assert.That(TestEnumValues.Value1.GetLink(), Is.EqualTo(Link.Start));
-        Assert.That(TestEnumValues.Value2.GetLink(), Is.EqualTo(Link.End));
+        using (Assert.EnterMultipleScope())
+        {
+            Assert.That(TestEnum.First.GetLink(), Is.EqualTo(Link.Start));
+            Assert.That(TestEnum.Second.GetLink(), Is.EqualTo(Link.End));
+        }
     }
 
     [Test]
     public void GetLinkThrowsForValueWithoutAttribute()
     {
-        Assert.Throws<NullReferenceException>(() => TestEnumValues.Value3.GetLink());
+        Assert.Throws<NullReferenceException>(() => TestEnum.Third.GetLink());
     }
+
 
     [Test]
     public void GetAttributeTest()
     {
-        Assert.That(TestEnumWithCustomAttribute.Value1.GetAttribute<TestEnumWithCustomAttribute, DisplayAttribute>().Name, Is.EqualTo("First Value"));
-        Assert.That(TestEnumWithCustomAttribute.Value2.GetAttribute<TestEnumWithCustomAttribute, DisplayAttribute>(), Is.Null);
+        using (Assert.EnterMultipleScope())
+        {
+            Assert.That(TestEnum.First.GetAttribute<TestEnum, DisplayAttribute>()?.Name, Is.EqualTo("First Value"));
+            Assert.That(TestEnum.Second.GetAttribute<TestEnum, DisplayAttribute>(), Is.Null);
+        }
     }
 
     [Test]
     public void SelectAllWithAttributeTest()
     {
-        var valuesWithLink = EnumExtensions.SelectAllWithAttribute<TestEnumValues>(typeof(LinkAttribute));
-        var valuesWithDisplay = EnumExtensions.SelectAllWithAttribute<TestEnumWithCustomAttribute>(typeof(DisplayAttribute));
+        var valuesWithLink = EnumExtensions.SelectAllWithAttribute<TestEnum, LinkAttribute>();
+        var valuesWithDisplay = EnumExtensions.SelectAllWithAttribute<TestEnum, DisplayAttribute>();
 
-        Assert.That(valuesWithLink, Is.EquivalentTo(new[] { TestEnumValues.Value1, TestEnumValues.Value2 }));
-        Assert.That(valuesWithDisplay, Is.EquivalentTo(new[] { TestEnumWithCustomAttribute.Value1 }));
+        using (Assert.EnterMultipleScope())
+        {
+            Assert.That(valuesWithLink, Is.EquivalentTo([TestEnum.First, TestEnum.Second]));
+            Assert.That(valuesWithDisplay, Is.EquivalentTo([TestEnum.First]));
+        }
     }
-
-    [Test]
-    public void SelectAllWithAttributeThrowsForNonAttributeType()
-    {
-        Assert.Throws<ArgumentException>(() => EnumExtensions.SelectAllWithAttribute<TestEnumValues>(typeof(string)));
-    }
-
 }

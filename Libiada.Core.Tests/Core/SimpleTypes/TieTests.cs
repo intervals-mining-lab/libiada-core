@@ -50,7 +50,7 @@ public class TieTests
     [TestCase((Tie)1, "Start")]
     [TestCase((Tie)2, "End")]
     [TestCase((Tie)3, "Continue")]
-    public void TieNamesTest(Tie tie, string name) => Assert.That(tie.GetName(), Is.EqualTo(name));
+    public void TieNamesTest(Tie tie, string name) => Assert.That(Enum.GetName(tie), Is.EqualTo(name));
 
     /// <summary>
     /// Tests that all ties have display value.
